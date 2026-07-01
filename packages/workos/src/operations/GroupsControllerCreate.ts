@@ -9,6 +9,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerCreateInput {
+  organizationId: string;
+  name?: string;
+  description?: string | null;
+}
 export const GroupsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -16,11 +21,18 @@ export const GroupsControllerCreateInput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({ method: "POST", path: "/organizations/{organizationId}/groups" }),
-  );
-export type GroupsControllerCreateInput =
-  typeof GroupsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerCreateInput>;
 
 // Output Schema
+export interface GroupsControllerCreateOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const GroupsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -30,9 +42,7 @@ export const GroupsControllerCreateOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type GroupsControllerCreateOutput =
-  typeof GroupsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<GroupsControllerCreateOutput>;
 
 // The operation
 /**

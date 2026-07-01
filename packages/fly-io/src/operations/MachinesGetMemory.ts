@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesGetMemoryInput {
+  app_name: string;
+  machine_id: string;
+}
 export const MachinesGetMemoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,16 +18,18 @@ export const MachinesGetMemoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/apps/{app_name}/machines/{machine_id}/memory",
   }),
-);
-export type MachinesGetMemoryInput = typeof MachinesGetMemoryInput.Type;
+) as unknown as Schema.Codec<MachinesGetMemoryInput>;
 
 // Output Schema
+export interface MachinesGetMemoryOutput {
+  available_mb?: number;
+  limit_mb?: number;
+}
 export const MachinesGetMemoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available_mb: Schema.optional(Schema.Number),
     limit_mb: Schema.optional(Schema.Number),
-  });
-export type MachinesGetMemoryOutput = typeof MachinesGetMemoryOutput.Type;
+  }) as unknown as Schema.Codec<MachinesGetMemoryOutput>;
 
 // The operation
 /**

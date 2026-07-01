@@ -3,8 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateConversationModelInput {
+  id?: string;
+  model_name: string;
+  api_key?: string | Redacted.Redacted<string>;
+  history_collection: string;
+  account_id?: string;
+  system_prompt?: string;
+  ttl?: number;
+  max_bytes: number;
+  vllm_url?: string;
+}
 export const CreateConversationModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16,17 +28,18 @@ export const CreateConversationModelInput =
     ttl: Schema.optional(Schema.Number),
     max_bytes: Schema.Number,
     vllm_url: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/conversations/models" }));
-export type CreateConversationModelInput =
-  typeof CreateConversationModelInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/conversations/models" }),
+  ) as unknown as Schema.Codec<CreateConversationModelInput>;
 
 // Output Schema
+export interface CreateConversationModelOutput {
+  id: string;
+}
 export const CreateConversationModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type CreateConversationModelOutput =
-  typeof CreateConversationModelOutput.Type;
+  }) as unknown as Schema.Codec<CreateConversationModelOutput>;
 
 // The operation
 /**

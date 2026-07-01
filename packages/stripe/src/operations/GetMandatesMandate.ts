@@ -1,8 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetMandatesMandateInput {
+  mandate: string;
+  expand?: string;
+}
 export const GetMandatesMandateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mandate: Schema.String.pipe(T.PathParam()),
@@ -13,10 +22,112 @@ export const GetMandatesMandateInput =
       path: "/v1/mandates/{mandate}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetMandatesMandateInput = typeof GetMandatesMandateInput.Type;
+  ) as unknown as Schema.Codec<GetMandatesMandateInput>;
 
 // Output Schema
+export interface GetMandatesMandateOutput {
+  customer_acceptance: {
+    accepted_at: number | null;
+    offline?: {};
+    online?: { ip_address: string | null; user_agent: string | null };
+    type: "offline" | "online";
+  };
+  id: string;
+  livemode: boolean;
+  multi_use?: { amount?: number; currency?: string };
+  object: "mandate";
+  on_behalf_of?: string;
+  payment_method: unknown;
+  payment_method_details: {
+    acss_debit?: {
+      default_for?: ("invoice" | "subscription")[];
+      interval_description: string | null;
+      payment_schedule: "combined" | "interval" | "sporadic";
+      transaction_type: "business" | "personal";
+    };
+    amazon_pay?: {};
+    au_becs_debit?: { url: string };
+    bacs_debit?: {
+      display_name: string | null;
+      network_status: "accepted" | "pending" | "refused" | "revoked";
+      reference: string;
+      revocation_reason:
+        | "account_closed"
+        | "bank_account_restricted"
+        | "bank_ownership_changed"
+        | "could_not_process"
+        | "debit_not_authorized"
+        | null;
+      service_user_number: string | null;
+      url: string;
+    };
+    card?: {};
+    cashapp?: {};
+    kakao_pay?: {};
+    klarna?: {};
+    kr_card?: {};
+    link?: {};
+    naver_pay?: {};
+    nz_bank_account?: {};
+    paypal?: { billing_agreement_id: string | null; payer_id: string | null };
+    payto?: {
+      amount: number | null;
+      amount_type: "fixed" | "maximum";
+      end_date: string | null;
+      payment_schedule:
+        | "adhoc"
+        | "annual"
+        | "daily"
+        | "fortnightly"
+        | "monthly"
+        | "quarterly"
+        | "semi_annual"
+        | "weekly";
+      payments_per_period: number | null;
+      purpose:
+        | "dependant_support"
+        | "government"
+        | "loan"
+        | "mortgage"
+        | "other"
+        | "pension"
+        | "personal"
+        | "retail"
+        | "salary"
+        | "tax"
+        | "utility"
+        | null;
+      start_date: string | null;
+    };
+    pix?: {
+      amount_includes_iof?: "always" | "never";
+      amount_type?: "fixed" | "maximum";
+      end_date?: string;
+      payment_schedule?:
+        | "halfyearly"
+        | "monthly"
+        | "quarterly"
+        | "weekly"
+        | "yearly";
+      reference?: string;
+      start_date?: string;
+    };
+    revolut_pay?: {};
+    sepa_debit?: { reference: string; url: string };
+    twint?: {};
+    type: string;
+    upi?: {
+      amount: number | null;
+      amount_type: "fixed" | "maximum" | null;
+      description: string | null;
+      end_date: number | null;
+    };
+    us_bank_account?: { collection_method?: "paper" };
+  };
+  single_use?: { amount: number; currency: string };
+  status: "active" | "inactive" | "pending";
+  type: "multi_use" | "single_use";
+}
 export const GetMandatesMandateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer_acceptance: Schema.Struct({
@@ -32,7 +143,12 @@ export const GetMandatesMandateOutput =
     }),
     id: Schema.String,
     livemode: Schema.Boolean,
-    multi_use: Schema.optional(Schema.Struct({})),
+    multi_use: Schema.optional(
+      Schema.Struct({
+        amount: Schema.optional(Schema.Number),
+        currency: Schema.optional(Schema.String),
+      }),
+    ),
     object: Schema.Literals(["mandate"]),
     on_behalf_of: Schema.optional(Schema.String),
     payment_method: Schema.Unknown,
@@ -128,6 +244,26 @@ export const GetMandatesMandateOutput =
           start_date: Schema.NullOr(Schema.String),
         }),
       ),
+      pix: Schema.optional(
+        Schema.Struct({
+          amount_includes_iof: Schema.optional(
+            Schema.Literals(["always", "never"]),
+          ),
+          amount_type: Schema.optional(Schema.Literals(["fixed", "maximum"])),
+          end_date: Schema.optional(Schema.String),
+          payment_schedule: Schema.optional(
+            Schema.Literals([
+              "halfyearly",
+              "monthly",
+              "quarterly",
+              "weekly",
+              "yearly",
+            ]),
+          ),
+          reference: Schema.optional(Schema.String),
+          start_date: Schema.optional(Schema.String),
+        }),
+      ),
       revolut_pay: Schema.optional(Schema.Struct({})),
       sepa_debit: Schema.optional(
         Schema.Struct({
@@ -135,6 +271,7 @@ export const GetMandatesMandateOutput =
           url: Schema.String,
         }),
       ),
+      twint: Schema.optional(Schema.Struct({})),
       type: Schema.String,
       upi: Schema.optional(
         Schema.Struct({
@@ -158,8 +295,7 @@ export const GetMandatesMandateOutput =
     ),
     status: Schema.Literals(["active", "inactive", "pending"]),
     type: Schema.Literals(["multi_use", "single_use"]),
-  });
-export type GetMandatesMandateOutput = typeof GetMandatesMandateOutput.Type;
+  }) as unknown as Schema.Codec<GetMandatesMandateOutput>;
 
 // The operation
 /**

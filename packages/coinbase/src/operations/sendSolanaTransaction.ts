@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendSolanaTransactionInput {
+  network: "solana" | "solana-devnet";
+  transaction: string;
+  useCdpSponsor?: boolean;
+}
 export const SendSolanaTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals(["solana", "solana-devnet"]),
@@ -10,20 +15,20 @@ export const SendSolanaTransactionInput =
     useCdpSponsor: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/solana/accounts/send/transaction" }),
-  );
-export type SendSolanaTransactionInput = typeof SendSolanaTransactionInput.Type;
+  ) as unknown as Schema.Codec<SendSolanaTransactionInput>;
 
 // Output Schema
+export interface SendSolanaTransactionOutput {
+  transactionSignature: string;
+}
 export const SendSolanaTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionSignature: Schema.String,
-  });
-export type SendSolanaTransactionOutput =
-  typeof SendSolanaTransactionOutput.Type;
+  }) as unknown as Schema.Codec<SendSolanaTransactionOutput>;
 
 // The operation
 /**
- * Send a Solana transaction
+ * Send Solana transaction
  *
  * Signs and sends a single Solana transaction using multiple Solana accounts. The transaction may contain contain several instructions, each of which may require signatures from different account keys.
  * The transaction should be serialized into a byte array and base64 encoded. The API handles recent blockhash management and fee estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction.

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateQueryPatternsReportInput {
+  organization: string;
+  database: string;
+  branch: string;
+}
 export const CreateQueryPatternsReportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,18 @@ export const CreateQueryPatternsReportInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
     }),
-  );
-export type CreateQueryPatternsReportInput =
-  typeof CreateQueryPatternsReportInput.Type;
+  ) as unknown as Schema.Codec<CreateQueryPatternsReportInput>;
 
 // Output Schema
+export interface CreateQueryPatternsReportOutput {
+  id: string;
+  state: "pending" | "completed" | "failed";
+  created_at: string;
+  finished_at: string | null;
+  url: string;
+  download_url: string;
+  actor: { id: string; display_name: string; avatar_url: string };
+}
 export const CreateQueryPatternsReportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -32,9 +44,7 @@ export const CreateQueryPatternsReportOutput =
       display_name: Schema.String,
       avatar_url: Schema.String,
     }),
-  });
-export type CreateQueryPatternsReportOutput =
-  typeof CreateQueryPatternsReportOutput.Type;
+  }) as unknown as Schema.Codec<CreateQueryPatternsReportOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupDatabaseUserCertInput {
+  groupId: string;
+  username: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupDatabaseUserCertInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const CreateGroupDatabaseUserCertInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
     }),
-  );
-export type CreateGroupDatabaseUserCertInput =
-  typeof CreateGroupDatabaseUserCertInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupDatabaseUserCertInput>;
 
 // Output Schema
+export type CreateGroupDatabaseUserCertOutput = void;
 export const CreateGroupDatabaseUserCertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupDatabaseUserCertOutput =
-  typeof CreateGroupDatabaseUserCertOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupDatabaseUserCertOutput>;
 
 // The operation
 /**
  * Create One X.509 Certificate for One Database User
  *
- * Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Generates one X.509 certificate for the specified MongoDB user. Atlas manages the            certificate and MongoDB user that belong to one project.
  * To get MongoDB Cloud to generate a managed certificate for a database user, set `"x509Type" : "MANAGED"` on the desired MongoDB Database User.
  * If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mode, you must generate certificates for database users using your own CA.
  *

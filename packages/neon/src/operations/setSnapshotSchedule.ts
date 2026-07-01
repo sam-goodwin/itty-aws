@@ -3,6 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SetSnapshotScheduleInput {
+  project_id: string;
+  branch_id: string;
+  schedule: {
+    frequency: string;
+    hour?: number;
+    day?: number;
+    month?: number;
+    retention_seconds?: number;
+  }[];
+}
 export const SetSnapshotScheduleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,20 +32,22 @@ export const SetSnapshotScheduleInput =
       method: "PUT",
       path: "/projects/{project_id}/branches/{branch_id}/backup_schedule",
     }),
-  );
-export type SetSnapshotScheduleInput = typeof SetSnapshotScheduleInput.Type;
+  ) as unknown as Schema.Codec<SetSnapshotScheduleInput>;
 
 // Output Schema
+export interface SetSnapshotScheduleOutput {}
 export const SetSnapshotScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type SetSnapshotScheduleOutput = typeof SetSnapshotScheduleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<SetSnapshotScheduleOutput>;
 
 // The operation
 /**
  * Update backup schedule
  *
- * Update the backup schedule for the specified branch.
- * **Note** : This endpoint is currently in Beta.
+ * Updates the backup schedule for the specified branch.
+ * The schedule defines how often automatic snapshots are created (e.g., `hourly`, `daily`).
+ * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

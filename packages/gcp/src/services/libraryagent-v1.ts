@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,42 +29,42 @@ export interface GoogleExampleLibraryagentV1Shelf {
   theme?: string;
 }
 
-export const GoogleExampleLibraryagentV1Shelf: Schema.Schema<GoogleExampleLibraryagentV1Shelf> =
+export const GoogleExampleLibraryagentV1Shelf: Schema.Codec<GoogleExampleLibraryagentV1Shelf> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     theme: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleExampleLibraryagentV1Shelf" });
 
 export interface GoogleExampleLibraryagentV1ListShelvesResponse {
-  /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
-  nextPageToken?: string;
   /** The list of shelves. */
   shelves?: ReadonlyArray<GoogleExampleLibraryagentV1Shelf>;
+  /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
+  nextPageToken?: string;
 }
 
-export const GoogleExampleLibraryagentV1ListShelvesResponse: Schema.Schema<GoogleExampleLibraryagentV1ListShelvesResponse> =
+export const GoogleExampleLibraryagentV1ListShelvesResponse: Schema.Codec<GoogleExampleLibraryagentV1ListShelvesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     shelves: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Shelf)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleExampleLibraryagentV1ListShelvesResponse" });
 
 export interface GoogleExampleLibraryagentV1Book {
+  /** The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book. */
+  name?: string;
+  /** Value indicating whether the book has been read. */
+  read?: boolean;
   /** The name of the book author. */
   author?: string;
   /** The title of the book. */
   title?: string;
-  /** Value indicating whether the book has been read. */
-  read?: boolean;
-  /** The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book. */
-  name?: string;
 }
 
-export const GoogleExampleLibraryagentV1Book: Schema.Schema<GoogleExampleLibraryagentV1Book> =
+export const GoogleExampleLibraryagentV1Book: Schema.Codec<GoogleExampleLibraryagentV1Book> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    read: Schema.optional(Schema.Boolean),
     author: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
-    read: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleExampleLibraryagentV1Book" });
 
 export interface GoogleExampleLibraryagentV1ListBooksResponse {
@@ -74,7 +74,7 @@ export interface GoogleExampleLibraryagentV1ListBooksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleExampleLibraryagentV1ListBooksResponse: Schema.Schema<GoogleExampleLibraryagentV1ListBooksResponse> =
+export const GoogleExampleLibraryagentV1ListBooksResponse: Schema.Codec<GoogleExampleLibraryagentV1ListBooksResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     books: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Book)),
     nextPageToken: Schema.optional(Schema.String),
@@ -134,20 +134,50 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface GetShelvesRequest {
+  /** Required. The name of the shelf to retrieve. */
+  name: string;
+}
+
+export const GetShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetShelvesRequest>;
+
+export type GetShelvesResponse = GoogleExampleLibraryagentV1Shelf;
+export const GetShelvesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Shelf;
+
+export type GetShelvesError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a shelf. Returns NOT_FOUND if the shelf does not exist. */
+export const getShelves: API.OperationMethod<
+  GetShelvesRequest,
+  GetShelvesResponse,
+  GetShelvesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetShelvesRequest,
+  output: GetShelvesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListShelvesRequest {
-  /** Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
   /** A token identifying a page of results the server should return. Typically, this is the value of ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method. */
   pageToken?: string;
+  /** Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
 }
 
 export const ListShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/shelves" }),
   svc,
-) as unknown as Schema.Schema<ListShelvesRequest>;
+) as unknown as Schema.Codec<ListShelvesRequest>;
 
 export type ListShelvesResponse =
   GoogleExampleLibraryagentV1ListShelvesResponse;
@@ -172,104 +202,6 @@ export const listShelves: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetShelvesRequest {
-  /** Required. The name of the shelf to retrieve. */
-  name: string;
-}
-
-export const GetShelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetShelvesRequest>;
-
-export type GetShelvesResponse = GoogleExampleLibraryagentV1Shelf;
-export const GetShelvesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Shelf;
-
-export type GetShelvesError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a shelf. Returns NOT_FOUND if the shelf does not exist. */
-export const getShelves: API.OperationMethod<
-  GetShelvesRequest,
-  GetShelvesResponse,
-  GetShelvesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetShelvesRequest,
-  output: GetShelvesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetShelvesBooksRequest {
-  /** Required. The name of the book to retrieve. */
-  name: string;
-}
-
-export const GetShelvesBooksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "v1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetShelvesBooksRequest>;
-
-export type GetShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
-export const GetShelvesBooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
-
-export type GetShelvesBooksError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a book. Returns NOT_FOUND if the book does not exist. */
-export const getShelvesBooks: API.OperationMethod<
-  GetShelvesBooksRequest,
-  GetShelvesBooksResponse,
-  GetShelvesBooksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetShelvesBooksRequest,
-  output: GetShelvesBooksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ReturnShelvesBooksRequest {
-  /** Required. The name of the book to return. */
-  name: string;
-}
-
-export const ReturnShelvesBooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:return", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ReturnShelvesBooksRequest>;
-
-export type ReturnShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
-export const ReturnShelvesBooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
-
-export type ReturnShelvesBooksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before. */
-export const returnShelvesBooks: API.OperationMethod<
-  ReturnShelvesBooksRequest,
-  ReturnShelvesBooksResponse,
-  ReturnShelvesBooksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ReturnShelvesBooksRequest,
-  output: ReturnShelvesBooksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface BorrowShelvesBooksRequest {
   /** Required. The name of the book to borrow. */
   name: string;
@@ -281,7 +213,7 @@ export const BorrowShelvesBooksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:borrow", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BorrowShelvesBooksRequest>;
+  ) as unknown as Schema.Codec<BorrowShelvesBooksRequest>;
 
 export type BorrowShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const BorrowShelvesBooksResponse =
@@ -306,6 +238,38 @@ export const borrowShelvesBooks: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetShelvesBooksRequest {
+  /** Required. The name of the book to retrieve. */
+  name: string;
+}
+
+export const GetShelvesBooksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.String.pipe(T.HttpPath("name")),
+  },
+).pipe(
+  T.Http({ method: "GET", path: "v1/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetShelvesBooksRequest>;
+
+export type GetShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
+export const GetShelvesBooksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
+
+export type GetShelvesBooksError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a book. Returns NOT_FOUND if the book does not exist. */
+export const getShelvesBooks: API.OperationMethod<
+  GetShelvesBooksRequest,
+  GetShelvesBooksResponse,
+  GetShelvesBooksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetShelvesBooksRequest,
+  output: GetShelvesBooksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListShelvesBooksRequest {
   /** Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -323,7 +287,7 @@ export const ListShelvesBooksRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/books" }),
     svc,
-  ) as unknown as Schema.Schema<ListShelvesBooksRequest>;
+  ) as unknown as Schema.Codec<ListShelvesBooksRequest>;
 
 export type ListShelvesBooksResponse =
   GoogleExampleLibraryagentV1ListBooksResponse;
@@ -346,4 +310,40 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface ReturnShelvesBooksRequest {
+  /** Required. The name of the book to return. */
+  name: string;
+}
+
+export const ReturnShelvesBooksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:return", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<ReturnShelvesBooksRequest>;
+
+export type ReturnShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
+export const ReturnShelvesBooksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
+
+export type ReturnShelvesBooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before. */
+export const returnShelvesBooks: API.OperationMethod<
+  ReturnShelvesBooksRequest,
+  ReturnShelvesBooksResponse,
+  ReturnShelvesBooksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ReturnShelvesBooksRequest,
+  output: ReturnShelvesBooksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -25,22 +25,22 @@ const svc = T.Service({
 export interface SiteVerificationWebResourceResource {
   /** The email addresses of all verified owners. */
   owners?: ReadonlyArray<string>;
-  /** The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations. */
-  id?: string;
   /** The address and type of a site that is verified or will be verified. */
   site?: { identifier?: string; type?: string };
+  /** The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations. */
+  id?: string;
 }
 
-export const SiteVerificationWebResourceResource: Schema.Schema<SiteVerificationWebResourceResource> =
+export const SiteVerificationWebResourceResource: Schema.Codec<SiteVerificationWebResourceResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     owners: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.optional(Schema.String),
     site: Schema.optional(
       Schema.Struct({
         identifier: Schema.optional(Schema.String),
         type: Schema.optional(Schema.String),
       }),
     ),
+    id: Schema.optional(Schema.String),
   }).annotate({ identifier: "SiteVerificationWebResourceResource" });
 
 export interface SiteVerificationWebResourceListResponse {
@@ -48,7 +48,7 @@ export interface SiteVerificationWebResourceListResponse {
   items?: ReadonlyArray<SiteVerificationWebResourceResource>;
 }
 
-export const SiteVerificationWebResourceListResponse: Schema.Schema<SiteVerificationWebResourceListResponse> =
+export const SiteVerificationWebResourceListResponse: Schema.Codec<SiteVerificationWebResourceListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(SiteVerificationWebResourceResource)),
   }).annotate({ identifier: "SiteVerificationWebResourceListResponse" });
@@ -60,7 +60,7 @@ export interface SiteVerificationWebResourceGettokenRequest {
   verificationMethod?: string;
 }
 
-export const SiteVerificationWebResourceGettokenRequest: Schema.Schema<SiteVerificationWebResourceGettokenRequest> =
+export const SiteVerificationWebResourceGettokenRequest: Schema.Codec<SiteVerificationWebResourceGettokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     site: Schema.optional(
       Schema.Struct({
@@ -78,7 +78,7 @@ export interface SiteVerificationWebResourceGettokenResponse {
   method?: string;
 }
 
-export const SiteVerificationWebResourceGettokenResponse: Schema.Schema<SiteVerificationWebResourceGettokenResponse> =
+export const SiteVerificationWebResourceGettokenResponse: Schema.Codec<SiteVerificationWebResourceGettokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export const InsertWebResourceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "webResource", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertWebResourceRequest>;
+  ) as unknown as Schema.Codec<InsertWebResourceRequest>;
 
 export type InsertWebResourceResponse = SiteVerificationWebResourceResource;
 export const InsertWebResourceResponse =
@@ -179,6 +179,77 @@ export const insertWebResource: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface UpdateWebResourceRequest {
+  /** The id of a verified site or domain. */
+  id: string;
+  /** Request body */
+  body?: SiteVerificationWebResourceResource;
+}
+
+export const UpdateWebResourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+    body: Schema.optional(SiteVerificationWebResourceResource).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({ method: "PUT", path: "webResource/{id}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateWebResourceRequest>;
+
+export type UpdateWebResourceResponse = SiteVerificationWebResourceResource;
+export const UpdateWebResourceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
+
+export type UpdateWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Modify the list of owners for your website or domain. */
+export const updateWebResource: API.OperationMethod<
+  UpdateWebResourceRequest,
+  UpdateWebResourceResponse,
+  UpdateWebResourceError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateWebResourceRequest,
+  output: UpdateWebResourceResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetWebResourceRequest {
+  /** The id of a verified site or domain. */
+  id: string;
+}
+
+export const GetWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.HttpPath("id")),
+}).pipe(
+  T.Http({ method: "GET", path: "webResource/{id}" }),
+  svc,
+) as unknown as Schema.Codec<GetWebResourceRequest>;
+
+export type GetWebResourceResponse = SiteVerificationWebResourceResource;
+export const GetWebResourceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
+
+export type GetWebResourceError = DefaultErrors | NotFound | Forbidden;
+
+/** Get the most current data for a website or domain. */
+export const getWebResource: API.OperationMethod<
+  GetWebResourceRequest,
+  GetWebResourceResponse,
+  GetWebResourceError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetWebResourceRequest,
+  output: GetWebResourceResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface GetTokenWebResourceRequest {
   /** Request body */
   body?: SiteVerificationWebResourceGettokenRequest;
@@ -192,7 +263,7 @@ export const GetTokenWebResourceRequest =
   }).pipe(
     T.Http({ method: "POST", path: "token", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetTokenWebResourceRequest>;
+  ) as unknown as Schema.Codec<GetTokenWebResourceRequest>;
 
 export type GetTokenWebResourceResponse =
   SiteVerificationWebResourceGettokenResponse;
@@ -234,7 +305,7 @@ export const PatchWebResourceRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "webResource/{id}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchWebResourceRequest>;
+  ) as unknown as Schema.Codec<PatchWebResourceRequest>;
 
 export type PatchWebResourceResponse = SiteVerificationWebResourceResource;
 export const PatchWebResourceResponse =
@@ -259,85 +330,6 @@ export const patchWebResource: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateWebResourceRequest {
-  /** The id of a verified site or domain. */
-  id: string;
-  /** Request body */
-  body?: SiteVerificationWebResourceResource;
-}
-
-export const UpdateWebResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-    body: Schema.optional(SiteVerificationWebResourceResource).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({ method: "PUT", path: "webResource/{id}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateWebResourceRequest>;
-
-export type UpdateWebResourceResponse = SiteVerificationWebResourceResource;
-export const UpdateWebResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
-
-export type UpdateWebResourceError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Modify the list of owners for your website or domain. */
-export const updateWebResource: API.OperationMethod<
-  UpdateWebResourceRequest,
-  UpdateWebResourceResponse,
-  UpdateWebResourceError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateWebResourceRequest,
-  output: UpdateWebResourceResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteWebResourceRequest {
-  /** The id of a verified site or domain. */
-  id: string;
-}
-
-export const DeleteWebResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "webResource/{id}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteWebResourceRequest>;
-
-export interface DeleteWebResourceResponse {}
-export const DeleteWebResourceResponse: Schema.Schema<DeleteWebResourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Schema<DeleteWebResourceResponse>;
-
-export type DeleteWebResourceError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Relinquish ownership of a website or domain. */
-export const deleteWebResource: API.OperationMethod<
-  DeleteWebResourceRequest,
-  DeleteWebResourceResponse,
-  DeleteWebResourceError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteWebResourceRequest,
-  output: DeleteWebResourceResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListWebResourceRequest {}
 
 export const ListWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -345,7 +337,7 @@ export const ListWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "webResource" }),
   svc,
-) as unknown as Schema.Schema<ListWebResourceRequest>;
+) as unknown as Schema.Codec<ListWebResourceRequest>;
 
 export type ListWebResourceResponse = SiteVerificationWebResourceListResponse;
 export const ListWebResourceResponse =
@@ -365,32 +357,40 @@ export const listWebResource: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetWebResourceRequest {
+export interface DeleteWebResourceRequest {
   /** The id of a verified site or domain. */
   id: string;
 }
 
-export const GetWebResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String.pipe(T.HttpPath("id")),
-}).pipe(
-  T.Http({ method: "GET", path: "webResource/{id}" }),
-  svc,
-) as unknown as Schema.Schema<GetWebResourceRequest>;
+export const DeleteWebResourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.String.pipe(T.HttpPath("id")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "webResource/{id}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteWebResourceRequest>;
 
-export type GetWebResourceResponse = SiteVerificationWebResourceResource;
-export const GetWebResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
+export interface DeleteWebResourceResponse {}
+export const DeleteWebResourceResponse: Schema.Codec<DeleteWebResourceResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as any as Schema.Codec<DeleteWebResourceResponse>;
 
-export type GetWebResourceError = DefaultErrors | NotFound | Forbidden;
+export type DeleteWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Get the most current data for a website or domain. */
-export const getWebResource: API.OperationMethod<
-  GetWebResourceRequest,
-  GetWebResourceResponse,
-  GetWebResourceError,
+/** Relinquish ownership of a website or domain. */
+export const deleteWebResource: API.OperationMethod<
+  DeleteWebResourceRequest,
+  DeleteWebResourceResponse,
+  DeleteWebResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetWebResourceRequest,
-  output: GetWebResourceResponse,
-  errors: [NotFound, Forbidden],
+  input: DeleteWebResourceRequest,
+  output: DeleteWebResourceResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

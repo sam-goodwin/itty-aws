@@ -4,12 +4,20 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ActivityGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+  activityName: string;
+}
 export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -22,10 +30,35 @@ export const ActivityGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ActivityGetInput = typeof ActivityGetInput.Type;
+) as unknown as Schema.Codec<ActivityGetInput>;
 
 // Output Schema
+export interface ActivityGetOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    definition?: string;
+    parameterSets?: {
+      name?: string;
+      parameters?: {
+        name?: string;
+        type?: string;
+        isMandatory?: boolean;
+        isDynamic?: boolean;
+        position?: number;
+        valueFromPipeline?: boolean;
+        valueFromPipelineByPropertyName?: boolean;
+        valueFromRemainingArguments?: boolean;
+        description?: string;
+        validationSet?: { memberValue?: string }[];
+      }[];
+    }[];
+    outputTypes?: { name?: string; type?: string }[];
+    creationTime?: string;
+    lastModifiedTime?: string;
+    description?: string;
+  };
+}
 export const ActivityGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -76,8 +109,7 @@ export const ActivityGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       description: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ActivityGetOutput = typeof ActivityGetOutput.Type;
+}) as unknown as Schema.Codec<ActivityGetOutput>;
 
 // The operation
 /**
@@ -95,6 +127,12 @@ export const ActivityGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ActivityGetOutput,
 }));
 // Input Schema
+export interface ActivityListByModuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+}
 export const ActivityListByModuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -107,10 +145,38 @@ export const ActivityListByModuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ActivityListByModuleInput = typeof ActivityListByModuleInput.Type;
+  ) as unknown as Schema.Codec<ActivityListByModuleInput>;
 
 // Output Schema
+export interface ActivityListByModuleOutput {
+  value: {
+    id?: string;
+    name?: string;
+    properties?: {
+      definition?: string;
+      parameterSets?: {
+        name?: string;
+        parameters?: {
+          name?: string;
+          type?: string;
+          isMandatory?: boolean;
+          isDynamic?: boolean;
+          position?: number;
+          valueFromPipeline?: boolean;
+          valueFromPipelineByPropertyName?: boolean;
+          valueFromRemainingArguments?: boolean;
+          description?: string;
+          validationSet?: { memberValue?: string }[];
+        }[];
+      }[];
+      outputTypes?: { name?: string; type?: string }[];
+      creationTime?: string;
+      lastModifiedTime?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ActivityListByModuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -169,8 +235,7 @@ export const ActivityListByModuleOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ActivityListByModuleOutput = typeof ActivityListByModuleOutput.Type;
+  }) as unknown as Schema.Codec<ActivityListByModuleOutput>;
 
 // The operation
 /**
@@ -189,6 +254,11 @@ export const ActivityListByModule = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentRegistrationInformationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const AgentRegistrationInformationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -200,11 +270,15 @@ export const AgentRegistrationInformationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AgentRegistrationInformationGetInput =
-  typeof AgentRegistrationInformationGetInput.Type;
+  ) as unknown as Schema.Codec<AgentRegistrationInformationGetInput>;
 
 // Output Schema
+export interface AgentRegistrationInformationGetOutput {
+  dscMetaConfiguration?: string;
+  endpoint?: string;
+  keys?: { primary?: string; secondary?: string };
+  id?: string;
+}
 export const AgentRegistrationInformationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
@@ -216,9 +290,7 @@ export const AgentRegistrationInformationGetOutput =
       }),
     ),
     id: Schema.optional(Schema.String),
-  });
-export type AgentRegistrationInformationGetOutput =
-  typeof AgentRegistrationInformationGetOutput.Type;
+  }) as unknown as Schema.Codec<AgentRegistrationInformationGetOutput>;
 
 // The operation
 /**
@@ -235,6 +307,12 @@ export const AgentRegistrationInformationGet =
     outputSchema: AgentRegistrationInformationGetOutput,
   }));
 // Input Schema
+export interface AgentRegistrationInformationRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  keyName: "primary" | "secondary";
+}
 export const AgentRegistrationInformationRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -247,11 +325,15 @@ export const AgentRegistrationInformationRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation/regenerateKey",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AgentRegistrationInformationRegenerateKeyInput =
-  typeof AgentRegistrationInformationRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<AgentRegistrationInformationRegenerateKeyInput>;
 
 // Output Schema
+export interface AgentRegistrationInformationRegenerateKeyOutput {
+  dscMetaConfiguration?: string;
+  endpoint?: string;
+  keys?: { primary?: string; secondary?: string };
+  id?: string;
+}
 export const AgentRegistrationInformationRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dscMetaConfiguration: Schema.optional(Schema.String),
@@ -263,9 +345,7 @@ export const AgentRegistrationInformationRegenerateKeyOutput =
       }),
     ),
     id: Schema.optional(Schema.String),
-  });
-export type AgentRegistrationInformationRegenerateKeyOutput =
-  typeof AgentRegistrationInformationRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<AgentRegistrationInformationRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -282,6 +362,41 @@ export const AgentRegistrationInformationRegenerateKey =
     outputSchema: AgentRegistrationInformationRegenerateKeyOutput,
   }));
 // Input Schema
+export interface AutomationAccountCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  properties?: {
+    sku?: { name: "Free" | "Basic"; family?: string; capacity?: number };
+    encryption?: {
+      keyVaultProperties?: {
+        keyvaultUri?: string;
+        keyName?: string;
+        keyVersion?: string;
+      };
+      keySource?: "Microsoft.Automation" | "Microsoft.Keyvault";
+      identity?: { userAssignedIdentity?: unknown };
+    };
+    publicNetworkAccess?: boolean;
+    disableLocalAuth?: boolean;
+  };
+  name?: string;
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const AutomationAccountCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -351,11 +466,22 @@ export const AutomationAccountCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountCreateOrUpdateInput =
-  typeof AutomationAccountCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountCreateOrUpdateInput>;
 
 // Output Schema
+export interface AutomationAccountCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AutomationAccountCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -375,9 +501,7 @@ export const AutomationAccountCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AutomationAccountCreateOrUpdateOutput =
-  typeof AutomationAccountCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -394,6 +518,11 @@ export const AutomationAccountCreateOrUpdate =
     outputSchema: AutomationAccountCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AutomationAccountDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const AutomationAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -405,15 +534,12 @@ export const AutomationAccountDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountDeleteInput =
-  typeof AutomationAccountDeleteInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountDeleteInput>;
 
 // Output Schema
+export type AutomationAccountDeleteOutput = void;
 export const AutomationAccountDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AutomationAccountDeleteOutput =
-  typeof AutomationAccountDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AutomationAccountDeleteOutput>;
 
 // The operation
 /**
@@ -431,6 +557,11 @@ export const AutomationAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AutomationAccountGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const AutomationAccountGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -442,10 +573,22 @@ export const AutomationAccountGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountGetInput = typeof AutomationAccountGetInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountGetInput>;
 
 // Output Schema
+export interface AutomationAccountGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AutomationAccountGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -465,8 +608,7 @@ export const AutomationAccountGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AutomationAccountGetOutput = typeof AutomationAccountGetOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountGetOutput>;
 
 // The operation
 /**
@@ -484,6 +626,9 @@ export const AutomationAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AutomationAccountListInput {
+  subscriptionId: string;
+}
 export const AutomationAccountListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -493,10 +638,25 @@ export const AutomationAccountListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountListInput = typeof AutomationAccountListInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountListInput>;
 
 // Output Schema
+export interface AutomationAccountListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AutomationAccountListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -531,9 +691,7 @@ export const AutomationAccountListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AutomationAccountListOutput =
-  typeof AutomationAccountListOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountListOutput>;
 
 // The operation
 /**
@@ -551,6 +709,10 @@ export const AutomationAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AutomationAccountListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AutomationAccountListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -561,11 +723,25 @@ export const AutomationAccountListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountListByResourceGroupInput =
-  typeof AutomationAccountListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountListByResourceGroupInput>;
 
 // Output Schema
+export interface AutomationAccountListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AutomationAccountListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -600,9 +776,7 @@ export const AutomationAccountListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AutomationAccountListByResourceGroupOutput =
-  typeof AutomationAccountListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -618,6 +792,11 @@ export const AutomationAccountListByResourceGroup =
     outputSchema: AutomationAccountListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AutomationAccountListDeletedRunbooksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const AutomationAccountListDeletedRunbooksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -629,11 +808,25 @@ export const AutomationAccountListDeletedRunbooksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountListDeletedRunbooksInput =
-  typeof AutomationAccountListDeletedRunbooksInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountListDeletedRunbooksInput>;
 
 // Output Schema
+export interface AutomationAccountListDeletedRunbooksOutput {
+  value: {
+    properties?: {
+      runbookId?: string;
+      runbookType?: string;
+      runtime?: string;
+      runtimeEnvironment?: string | null;
+      creationTime?: string;
+      deletionTime?: string;
+    };
+    id?: string;
+    name?: string;
+    location?: string;
+  }[];
+  nextLink?: string;
+}
 export const AutomationAccountListDeletedRunbooksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -654,9 +847,7 @@ export const AutomationAccountListDeletedRunbooksOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AutomationAccountListDeletedRunbooksOutput =
-  typeof AutomationAccountListDeletedRunbooksOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountListDeletedRunbooksOutput>;
 
 // The operation
 /**
@@ -673,6 +864,41 @@ export const AutomationAccountListDeletedRunbooks =
     outputSchema: AutomationAccountListDeletedRunbooksOutput,
   }));
 // Input Schema
+export interface AutomationAccountUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  properties?: {
+    sku?: { name: "Free" | "Basic"; family?: string; capacity?: number };
+    encryption?: {
+      keyVaultProperties?: {
+        keyvaultUri?: string;
+        keyName?: string;
+        keyVersion?: string;
+      };
+      keySource?: "Microsoft.Automation" | "Microsoft.Keyvault";
+      identity?: { userAssignedIdentity?: unknown };
+    };
+    publicNetworkAccess?: boolean;
+    disableLocalAuth?: boolean;
+  };
+  name?: string;
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const AutomationAccountUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -742,11 +968,22 @@ export const AutomationAccountUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type AutomationAccountUpdateInput =
-  typeof AutomationAccountUpdateInput.Type;
+  ) as unknown as Schema.Codec<AutomationAccountUpdateInput>;
 
 // Output Schema
+export interface AutomationAccountUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AutomationAccountUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -766,9 +1003,7 @@ export const AutomationAccountUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AutomationAccountUpdateOutput =
-  typeof AutomationAccountUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AutomationAccountUpdateOutput>;
 
 // The operation
 /**
@@ -786,6 +1021,19 @@ export const AutomationAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificateCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  certificateName: string;
+  name: string;
+  properties: {
+    base64Value: string;
+    description?: string;
+    thumbprint?: string;
+    isExportable?: boolean;
+  };
+}
 export const CertificateCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -805,11 +1053,22 @@ export const CertificateCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type CertificateCreateOrUpdateInput =
-  typeof CertificateCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CertificateCreateOrUpdateInput>;
 
 // Output Schema
+export interface CertificateCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -829,9 +1088,7 @@ export const CertificateCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificateCreateOrUpdateOutput =
-  typeof CertificateCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CertificateCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -850,6 +1107,12 @@ export const CertificateCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificateDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  certificateName: string;
+}
 export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -863,12 +1126,12 @@ export const CertificateDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CertificateDeleteInput = typeof CertificateDeleteInput.Type;
+) as unknown as Schema.Codec<CertificateDeleteInput>;
 
 // Output Schema
-export const CertificateDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CertificateDeleteOutput = typeof CertificateDeleteOutput.Type;
+export type CertificateDeleteOutput = void;
+export const CertificateDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificateDeleteOutput>;
 
 // The operation
 /**
@@ -885,6 +1148,12 @@ export const CertificateDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificateDeleteOutput,
 }));
 // Input Schema
+export interface CertificateGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  certificateName: string;
+}
 export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -896,10 +1165,22 @@ export const CertificateGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CertificateGetInput = typeof CertificateGetInput.Type;
+) as unknown as Schema.Codec<CertificateGetInput>;
 
 // Output Schema
+export interface CertificateGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -918,8 +1199,7 @@ export const CertificateGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CertificateGetOutput = typeof CertificateGetOutput.Type;
+}) as unknown as Schema.Codec<CertificateGetOutput>;
 
 // The operation
 /**
@@ -936,6 +1216,11 @@ export const CertificateGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificateGetOutput,
 }));
 // Input Schema
+export interface CertificateListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const CertificateListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -947,11 +1232,25 @@ export const CertificateListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
       apiVersion: "2024-10-23",
     }),
-  );
-export type CertificateListByAutomationAccountInput =
-  typeof CertificateListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<CertificateListByAutomationAccountInput>;
 
 // Output Schema
+export interface CertificateListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificateListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -986,9 +1285,7 @@ export const CertificateListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CertificateListByAutomationAccountOutput =
-  typeof CertificateListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<CertificateListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -1005,6 +1302,14 @@ export const CertificateListByAutomationAccount =
     outputSchema: CertificateListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface CertificateUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  certificateName: string;
+  name?: string;
+  properties?: { description?: string };
+}
 export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1024,10 +1329,22 @@ export const CertificateUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CertificateUpdateInput = typeof CertificateUpdateInput.Type;
+) as unknown as Schema.Codec<CertificateUpdateInput>;
 
 // Output Schema
+export interface CertificateUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1047,8 +1364,7 @@ export const CertificateUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificateUpdateOutput = typeof CertificateUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CertificateUpdateOutput>;
 
 // The operation
 /**
@@ -1065,6 +1381,18 @@ export const CertificateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificateUpdateOutput,
 }));
 // Input Schema
+export interface ConnectionCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionName: string;
+  name: string;
+  properties: {
+    description?: string;
+    connectionType: { name?: string };
+    fieldDefinitionValues?: Record<string, string>;
+  };
+}
 export const ConnectionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1087,11 +1415,22 @@ export const ConnectionCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConnectionCreateOrUpdateInput =
-  typeof ConnectionCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectionCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectionCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1111,9 +1450,7 @@ export const ConnectionCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionCreateOrUpdateOutput =
-  typeof ConnectionCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1132,6 +1469,12 @@ export const ConnectionCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectionDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionName: string;
+}
 export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1143,12 +1486,12 @@ export const ConnectionDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ConnectionDeleteInput = typeof ConnectionDeleteInput.Type;
+) as unknown as Schema.Codec<ConnectionDeleteInput>;
 
 // Output Schema
-export const ConnectionDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectionDeleteOutput = typeof ConnectionDeleteOutput.Type;
+export type ConnectionDeleteOutput = void;
+export const ConnectionDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -1165,6 +1508,12 @@ export const ConnectionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionDeleteOutput,
 }));
 // Input Schema
+export interface ConnectionGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionName: string;
+}
 export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1176,10 +1525,22 @@ export const ConnectionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ConnectionGetInput = typeof ConnectionGetInput.Type;
+) as unknown as Schema.Codec<ConnectionGetInput>;
 
 // Output Schema
+export interface ConnectionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1198,8 +1559,7 @@ export const ConnectionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectionGetOutput = typeof ConnectionGetOutput.Type;
+}) as unknown as Schema.Codec<ConnectionGetOutput>;
 
 // The operation
 /**
@@ -1216,6 +1576,11 @@ export const ConnectionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionGetOutput,
 }));
 // Input Schema
+export interface ConnectionListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const ConnectionListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1227,11 +1592,25 @@ export const ConnectionListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConnectionListByAutomationAccountInput =
-  typeof ConnectionListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<ConnectionListByAutomationAccountInput>;
 
 // Output Schema
+export interface ConnectionListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1266,9 +1645,7 @@ export const ConnectionListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectionListByAutomationAccountOutput =
-  typeof ConnectionListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -1285,6 +1662,20 @@ export const ConnectionListByAutomationAccount =
     outputSchema: ConnectionListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface ConnectionTypeCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionTypeName: string;
+  name: string;
+  properties: {
+    isGlobal?: boolean;
+    fieldDefinitions: Record<
+      string,
+      { isEncrypted?: boolean; isOptional?: boolean; type: string }
+    >;
+  };
+}
 export const ConnectionTypeCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1309,11 +1700,22 @@ export const ConnectionTypeCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConnectionTypeCreateOrUpdateInput =
-  typeof ConnectionTypeCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectionTypeCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectionTypeCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionTypeCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1333,9 +1735,7 @@ export const ConnectionTypeCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionTypeCreateOrUpdateOutput =
-  typeof ConnectionTypeCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionTypeCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1353,6 +1753,12 @@ export const ConnectionTypeCreateOrUpdate =
     outputSchema: ConnectionTypeCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConnectionTypeDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionTypeName: string;
+}
 export const ConnectionTypeDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1365,13 +1771,12 @@ export const ConnectionTypeDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConnectionTypeDeleteInput = typeof ConnectionTypeDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConnectionTypeDeleteInput>;
 
 // Output Schema
+export type ConnectionTypeDeleteOutput = void;
 export const ConnectionTypeDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectionTypeDeleteOutput = typeof ConnectionTypeDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectionTypeDeleteOutput>;
 
 // The operation
 /**
@@ -1390,6 +1795,12 @@ export const ConnectionTypeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectionTypeGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionTypeName: string;
+}
 export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1403,10 +1814,22 @@ export const ConnectionTypeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ConnectionTypeGetInput = typeof ConnectionTypeGetInput.Type;
+) as unknown as Schema.Codec<ConnectionTypeGetInput>;
 
 // Output Schema
+export interface ConnectionTypeGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionTypeGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1426,8 +1849,7 @@ export const ConnectionTypeGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectionTypeGetOutput = typeof ConnectionTypeGetOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionTypeGetOutput>;
 
 // The operation
 /**
@@ -1444,6 +1866,11 @@ export const ConnectionTypeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionTypeGetOutput,
 }));
 // Input Schema
+export interface ConnectionTypeListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const ConnectionTypeListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1455,11 +1882,25 @@ export const ConnectionTypeListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConnectionTypeListByAutomationAccountInput =
-  typeof ConnectionTypeListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<ConnectionTypeListByAutomationAccountInput>;
 
 // Output Schema
+export interface ConnectionTypeListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectionTypeListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1494,9 +1935,7 @@ export const ConnectionTypeListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConnectionTypeListByAutomationAccountOutput =
-  typeof ConnectionTypeListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionTypeListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -1513,6 +1952,17 @@ export const ConnectionTypeListByAutomationAccount =
     outputSchema: ConnectionTypeListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface ConnectionUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  connectionName: string;
+  name?: string;
+  properties?: {
+    description?: string;
+    fieldDefinitionValues?: Record<string, string>;
+  };
+}
 export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1533,10 +1983,22 @@ export const ConnectionUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ConnectionUpdateInput = typeof ConnectionUpdateInput.Type;
+) as unknown as Schema.Codec<ConnectionUpdateInput>;
 
 // Output Schema
+export interface ConnectionUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1557,8 +2019,7 @@ export const ConnectionUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ConnectionUpdateOutput = typeof ConnectionUpdateOutput.Type;
+) as unknown as Schema.Codec<ConnectionUpdateOutput>;
 
 // The operation
 /**
@@ -1575,6 +2036,17 @@ export const ConnectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectionUpdateOutput,
 }));
 // Input Schema
+export interface ConvertGraphRunbookContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  rawContent?: {
+    schemaVersion?: string;
+    runbookDefinition?: string;
+    runbookType?: "GraphPowerShell" | "GraphPowerShellWorkflow";
+  };
+  graphRunbookJson?: string | null;
+}
 export const ConvertGraphRunbookContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1596,11 +2068,17 @@ export const ConvertGraphRunbookContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ConvertGraphRunbookContentInput =
-  typeof ConvertGraphRunbookContentInput.Type;
+  ) as unknown as Schema.Codec<ConvertGraphRunbookContentInput>;
 
 // Output Schema
+export interface ConvertGraphRunbookContentOutput {
+  rawContent?: {
+    schemaVersion?: string;
+    runbookDefinition?: string;
+    runbookType?: "GraphPowerShell" | "GraphPowerShellWorkflow";
+  };
+  graphRunbookJson?: string | null;
+}
 export const ConvertGraphRunbookContentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rawContent: Schema.optional(
@@ -1613,9 +2091,7 @@ export const ConvertGraphRunbookContentOutput =
       }),
     ),
     graphRunbookJson: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ConvertGraphRunbookContentOutput =
-  typeof ConvertGraphRunbookContentOutput.Type;
+  }) as unknown as Schema.Codec<ConvertGraphRunbookContentOutput>;
 
 // The operation
 /**
@@ -1633,6 +2109,18 @@ export const convertGraphRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  credentialName: string;
+  name: string;
+  properties: {
+    userName: string;
+    password: string | Redacted.Redacted<string>;
+    description?: string;
+  };
+}
 export const CredentialCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1651,11 +2139,22 @@ export const CredentialCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type CredentialCreateOrUpdateInput =
-  typeof CredentialCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CredentialCreateOrUpdateInput>;
 
 // Output Schema
+export interface CredentialCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1675,9 +2174,7 @@ export const CredentialCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialCreateOrUpdateOutput =
-  typeof CredentialCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CredentialCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1696,6 +2193,12 @@ export const CredentialCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  credentialName: string;
+}
 export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1707,12 +2210,12 @@ export const CredentialDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CredentialDeleteInput = typeof CredentialDeleteInput.Type;
+) as unknown as Schema.Codec<CredentialDeleteInput>;
 
 // Output Schema
-export const CredentialDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CredentialDeleteOutput = typeof CredentialDeleteOutput.Type;
+export type CredentialDeleteOutput = void;
+export const CredentialDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialDeleteOutput>;
 
 // The operation
 /**
@@ -1729,6 +2232,12 @@ export const CredentialDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CredentialDeleteOutput,
 }));
 // Input Schema
+export interface CredentialGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  credentialName: string;
+}
 export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1740,10 +2249,22 @@ export const CredentialGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CredentialGetInput = typeof CredentialGetInput.Type;
+) as unknown as Schema.Codec<CredentialGetInput>;
 
 // Output Schema
+export interface CredentialGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1762,8 +2283,7 @@ export const CredentialGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CredentialGetOutput = typeof CredentialGetOutput.Type;
+}) as unknown as Schema.Codec<CredentialGetOutput>;
 
 // The operation
 /**
@@ -1780,6 +2300,11 @@ export const CredentialGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CredentialGetOutput,
 }));
 // Input Schema
+export interface CredentialListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const CredentialListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1791,11 +2316,25 @@ export const CredentialListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
       apiVersion: "2024-10-23",
     }),
-  );
-export type CredentialListByAutomationAccountInput =
-  typeof CredentialListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<CredentialListByAutomationAccountInput>;
 
 // Output Schema
+export interface CredentialListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CredentialListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1830,9 +2369,7 @@ export const CredentialListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CredentialListByAutomationAccountOutput =
-  typeof CredentialListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<CredentialListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -1849,6 +2386,18 @@ export const CredentialListByAutomationAccount =
     outputSchema: CredentialListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface CredentialUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  credentialName: string;
+  name?: string;
+  properties?: {
+    userName?: string;
+    password?: string | Redacted.Redacted<string>;
+    description?: string;
+  };
+}
 export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1868,10 +2417,22 @@ export const CredentialUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type CredentialUpdateInput = typeof CredentialUpdateInput.Type;
+) as unknown as Schema.Codec<CredentialUpdateInput>;
 
 // Output Schema
+export interface CredentialUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1892,8 +2453,7 @@ export const CredentialUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type CredentialUpdateOutput = typeof CredentialUpdateOutput.Type;
+) as unknown as Schema.Codec<CredentialUpdateOutput>;
 
 // The operation
 /**
@@ -1910,6 +2470,9 @@ export const CredentialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CredentialUpdateOutput,
 }));
 // Input Schema
+export interface DeletedAutomationAccountsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DeletedAutomationAccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1919,11 +2482,23 @@ export const DeletedAutomationAccountsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DeletedAutomationAccountsListBySubscriptionInput =
-  typeof DeletedAutomationAccountsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeletedAutomationAccountsListBySubscriptionInput>;
 
 // Output Schema
+export interface DeletedAutomationAccountsListBySubscriptionOutput {
+  value?: {
+    properties?: {
+      automationAccountResourceId?: string;
+      automationAccountId?: string;
+      location?: string;
+      deletionTime?: string;
+    };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+  }[];
+}
 export const DeletedAutomationAccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1944,9 +2519,7 @@ export const DeletedAutomationAccountsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type DeletedAutomationAccountsListBySubscriptionOutput =
-  typeof DeletedAutomationAccountsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeletedAutomationAccountsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1961,6 +2534,35 @@ export const deletedAutomationAccountsListBySubscription =
     outputSchema: DeletedAutomationAccountsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DscConfigurationCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  configurationName: string;
+  properties: {
+    logVerbose?: boolean;
+    logProgress?: boolean;
+    source: {
+      hash?: { algorithm: string; value: string };
+      type?: "embeddedContent" | "uri";
+      value?: string;
+      version?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        type?: string;
+        isMandatory?: boolean;
+        position?: number;
+        defaultValue?: string;
+      }
+    >;
+    description?: string;
+  };
+  name?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DscConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2003,11 +2605,22 @@ export const DscConfigurationCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationCreateOrUpdateInput =
-  typeof DscConfigurationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationCreateOrUpdateInput>;
 
 // Output Schema
+export interface DscConfigurationCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscConfigurationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2027,9 +2640,7 @@ export const DscConfigurationCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DscConfigurationCreateOrUpdateOutput =
-  typeof DscConfigurationCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DscConfigurationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2047,6 +2658,12 @@ export const DscConfigurationCreateOrUpdate =
     outputSchema: DscConfigurationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DscConfigurationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  configurationName: string;
+}
 export const DscConfigurationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2059,15 +2676,12 @@ export const DscConfigurationDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationDeleteInput =
-  typeof DscConfigurationDeleteInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationDeleteInput>;
 
 // Output Schema
+export type DscConfigurationDeleteOutput = void;
 export const DscConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DscConfigurationDeleteOutput =
-  typeof DscConfigurationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -2086,6 +2700,12 @@ export const DscConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DscConfigurationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  configurationName: string;
+}
 export const DscConfigurationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2098,10 +2718,22 @@ export const DscConfigurationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationGetInput = typeof DscConfigurationGetInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationGetInput>;
 
 // Output Schema
+export interface DscConfigurationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2121,8 +2753,7 @@ export const DscConfigurationGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DscConfigurationGetOutput = typeof DscConfigurationGetOutput.Type;
+  }) as unknown as Schema.Codec<DscConfigurationGetOutput>;
 
 // The operation
 /**
@@ -2139,6 +2770,12 @@ export const DscConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DscConfigurationGetOutput,
 }));
 // Input Schema
+export interface DscConfigurationGetContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  configurationName: string;
+}
 export const DscConfigurationGetContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2151,15 +2788,12 @@ export const DscConfigurationGetContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationGetContentInput =
-  typeof DscConfigurationGetContentInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationGetContentInput>;
 
 // Output Schema
+export type DscConfigurationGetContentOutput = string;
 export const DscConfigurationGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type DscConfigurationGetContentOutput =
-  typeof DscConfigurationGetContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<DscConfigurationGetContentOutput>;
 
 // The operation
 /**
@@ -2178,6 +2812,15 @@ export const DscConfigurationGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DscConfigurationListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+  $skip?: number;
+  $top?: number;
+  $inlinecount?: string;
+}
 export const DscConfigurationListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2193,11 +2836,26 @@ export const DscConfigurationListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationListByAutomationAccountInput =
-  typeof DscConfigurationListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationListByAutomationAccountInput>;
 
 // Output Schema
+export interface DscConfigurationListByAutomationAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+}
 export const DscConfigurationListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2235,9 +2893,7 @@ export const DscConfigurationListByAutomationAccountOutput =
     ),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type DscConfigurationListByAutomationAccountOutput =
-  typeof DscConfigurationListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<DscConfigurationListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -2258,6 +2914,34 @@ export const DscConfigurationListByAutomationAccount =
     outputSchema: DscConfigurationListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface DscConfigurationUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  configurationName: string;
+  properties?: {
+    logVerbose?: boolean;
+    logProgress?: boolean;
+    source: {
+      hash?: { algorithm: string; value: string };
+      type?: "embeddedContent" | "uri";
+      value?: string;
+      version?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        type?: string;
+        isMandatory?: boolean;
+        position?: number;
+        defaultValue?: string;
+      }
+    >;
+    description?: string;
+  };
+  name?: string;
+  tags?: Record<string, string>;
+}
 export const DscConfigurationUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2301,11 +2985,22 @@ export const DscConfigurationUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscConfigurationUpdateInput =
-  typeof DscConfigurationUpdateInput.Type;
+  ) as unknown as Schema.Codec<DscConfigurationUpdateInput>;
 
 // Output Schema
+export interface DscConfigurationUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscConfigurationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2325,9 +3020,7 @@ export const DscConfigurationUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DscConfigurationUpdateOutput =
-  typeof DscConfigurationUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DscConfigurationUpdateOutput>;
 
 // The operation
 /**
@@ -2346,6 +3039,24 @@ export const DscConfigurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DscNodeConfigurationCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeConfigurationName: string;
+  properties?: {
+    source: {
+      hash?: { algorithm: string; value: string };
+      type?: "embeddedContent" | "uri";
+      value?: string;
+      version?: string;
+    };
+    configuration: { name?: string };
+    incrementNodeConfigurationBuild?: boolean;
+  };
+  name?: string;
+  tags?: Record<string, string>;
+}
 export const DscNodeConfigurationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2379,15 +3090,12 @@ export const DscNodeConfigurationCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscNodeConfigurationCreateOrUpdateInput =
-  typeof DscNodeConfigurationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DscNodeConfigurationCreateOrUpdateInput>;
 
 // Output Schema
+export type DscNodeConfigurationCreateOrUpdateOutput = void;
 export const DscNodeConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DscNodeConfigurationCreateOrUpdateOutput =
-  typeof DscNodeConfigurationCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2405,6 +3113,12 @@ export const DscNodeConfigurationCreateOrUpdate =
     outputSchema: DscNodeConfigurationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DscNodeConfigurationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeConfigurationName: string;
+}
 export const DscNodeConfigurationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2417,15 +3131,12 @@ export const DscNodeConfigurationDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscNodeConfigurationDeleteInput =
-  typeof DscNodeConfigurationDeleteInput.Type;
+  ) as unknown as Schema.Codec<DscNodeConfigurationDeleteInput>;
 
 // Output Schema
+export type DscNodeConfigurationDeleteOutput = void;
 export const DscNodeConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DscNodeConfigurationDeleteOutput =
-  typeof DscNodeConfigurationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -2444,6 +3155,12 @@ export const DscNodeConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DscNodeConfigurationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeConfigurationName: string;
+}
 export const DscNodeConfigurationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2456,11 +3173,22 @@ export const DscNodeConfigurationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscNodeConfigurationGetInput =
-  typeof DscNodeConfigurationGetInput.Type;
+  ) as unknown as Schema.Codec<DscNodeConfigurationGetInput>;
 
 // Output Schema
+export interface DscNodeConfigurationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscNodeConfigurationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2480,9 +3208,7 @@ export const DscNodeConfigurationGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DscNodeConfigurationGetOutput =
-  typeof DscNodeConfigurationGetOutput.Type;
+  }) as unknown as Schema.Codec<DscNodeConfigurationGetOutput>;
 
 // The operation
 /**
@@ -2501,6 +3227,15 @@ export const DscNodeConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DscNodeConfigurationListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+  $skip?: number;
+  $top?: number;
+  $inlinecount?: string;
+}
 export const DscNodeConfigurationListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2516,11 +3251,26 @@ export const DscNodeConfigurationListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscNodeConfigurationListByAutomationAccountInput =
-  typeof DscNodeConfigurationListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<DscNodeConfigurationListByAutomationAccountInput>;
 
 // Output Schema
+export interface DscNodeConfigurationListByAutomationAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+}
 export const DscNodeConfigurationListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2558,9 +3308,7 @@ export const DscNodeConfigurationListByAutomationAccountOutput =
     ),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type DscNodeConfigurationListByAutomationAccountOutput =
-  typeof DscNodeConfigurationListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<DscNodeConfigurationListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -2581,6 +3329,12 @@ export const DscNodeConfigurationListByAutomationAccount =
     outputSchema: DscNodeConfigurationListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface DscNodeDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+}
 export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2592,12 +3346,12 @@ export const DscNodeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type DscNodeDeleteInput = typeof DscNodeDeleteInput.Type;
+) as unknown as Schema.Codec<DscNodeDeleteInput>;
 
 // Output Schema
-export const DscNodeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DscNodeDeleteOutput = typeof DscNodeDeleteOutput.Type;
+export type DscNodeDeleteOutput = void;
+export const DscNodeDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DscNodeDeleteOutput>;
 
 // The operation
 /**
@@ -2614,6 +3368,12 @@ export const DscNodeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DscNodeDeleteOutput,
 }));
 // Input Schema
+export interface DscNodeGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+}
 export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2625,10 +3385,22 @@ export const DscNodeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type DscNodeGetInput = typeof DscNodeGetInput.Type;
+) as unknown as Schema.Codec<DscNodeGetInput>;
 
 // Output Schema
+export interface DscNodeGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscNodeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2647,8 +3419,7 @@ export const DscNodeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DscNodeGetOutput = typeof DscNodeGetOutput.Type;
+}) as unknown as Schema.Codec<DscNodeGetOutput>;
 
 // The operation
 /**
@@ -2665,6 +3436,15 @@ export const DscNodeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DscNodeGetOutput,
 }));
 // Input Schema
+export interface DscNodeListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+  $skip?: number;
+  $top?: number;
+  $inlinecount?: string;
+}
 export const DscNodeListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2680,11 +3460,26 @@ export const DscNodeListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
       apiVersion: "2024-10-23",
     }),
-  );
-export type DscNodeListByAutomationAccountInput =
-  typeof DscNodeListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<DscNodeListByAutomationAccountInput>;
 
 // Output Schema
+export interface DscNodeListByAutomationAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+  totalCount?: number;
+}
 export const DscNodeListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2722,9 +3517,7 @@ export const DscNodeListByAutomationAccountOutput =
     ),
     nextLink: Schema.optional(Schema.String),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type DscNodeListByAutomationAccountOutput =
-  typeof DscNodeListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<DscNodeListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -2745,6 +3538,13 @@ export const DscNodeListByAutomationAccount =
     outputSchema: DscNodeListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface DscNodeUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+  properties?: { nodeConfiguration?: { name?: string } };
+}
 export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2765,10 +3565,22 @@ export const DscNodeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type DscNodeUpdateInput = typeof DscNodeUpdateInput.Type;
+) as unknown as Schema.Codec<DscNodeUpdateInput>;
 
 // Output Schema
+export interface DscNodeUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DscNodeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2787,8 +3599,7 @@ export const DscNodeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DscNodeUpdateOutput = typeof DscNodeUpdateOutput.Type;
+}) as unknown as Schema.Codec<DscNodeUpdateOutput>;
 
 // The operation
 /**
@@ -2805,6 +3616,13 @@ export const DscNodeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DscNodeUpdateOutput,
 }));
 // Input Schema
+export interface FieldsListByTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+  typeName: string;
+}
 export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2817,10 +3635,13 @@ export const FieldsListByTypeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
     apiVersion: "2024-10-23",
   }),
-);
-export type FieldsListByTypeInput = typeof FieldsListByTypeInput.Type;
+) as unknown as Schema.Codec<FieldsListByTypeInput>;
 
 // Output Schema
+export interface FieldsListByTypeOutput {
+  value?: { name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2833,8 +3654,7 @@ export const FieldsListByTypeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type FieldsListByTypeOutput = typeof FieldsListByTypeOutput.Type;
+) as unknown as Schema.Codec<FieldsListByTypeOutput>;
 
 // The operation
 /**
@@ -2852,6 +3672,14 @@ export const FieldsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FieldsListByTypeOutput,
 }));
 // Input Schema
+export interface HybridRunbookWorkerGroupCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  properties?: { credential?: { name?: string } };
+  name?: string;
+}
 export const HybridRunbookWorkerGroupCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2874,11 +3702,22 @@ export const HybridRunbookWorkerGroupCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkerGroupCreateInput =
-  typeof HybridRunbookWorkerGroupCreateInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkerGroupCreateInput>;
 
 // Output Schema
+export interface HybridRunbookWorkerGroupCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkerGroupCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2898,9 +3737,7 @@ export const HybridRunbookWorkerGroupCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkerGroupCreateOutput =
-  typeof HybridRunbookWorkerGroupCreateOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkerGroupCreateOutput>;
 
 // The operation
 /**
@@ -2918,6 +3755,12 @@ export const HybridRunbookWorkerGroupCreate =
     outputSchema: HybridRunbookWorkerGroupCreateOutput,
   }));
 // Input Schema
+export interface HybridRunbookWorkerGroupDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+}
 export const HybridRunbookWorkerGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2930,15 +3773,12 @@ export const HybridRunbookWorkerGroupDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkerGroupDeleteInput =
-  typeof HybridRunbookWorkerGroupDeleteInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkerGroupDeleteInput>;
 
 // Output Schema
+export type HybridRunbookWorkerGroupDeleteOutput = void;
 export const HybridRunbookWorkerGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridRunbookWorkerGroupDeleteOutput =
-  typeof HybridRunbookWorkerGroupDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkerGroupDeleteOutput>;
 
 // The operation
 /**
@@ -2956,6 +3796,12 @@ export const HybridRunbookWorkerGroupDelete =
     outputSchema: HybridRunbookWorkerGroupDeleteOutput,
   }));
 // Input Schema
+export interface HybridRunbookWorkerGroupGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+}
 export const HybridRunbookWorkerGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2968,11 +3814,22 @@ export const HybridRunbookWorkerGroupGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkerGroupGetInput =
-  typeof HybridRunbookWorkerGroupGetInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkerGroupGetInput>;
 
 // Output Schema
+export interface HybridRunbookWorkerGroupGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkerGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2992,9 +3849,7 @@ export const HybridRunbookWorkerGroupGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkerGroupGetOutput =
-  typeof HybridRunbookWorkerGroupGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkerGroupGetOutput>;
 
 // The operation
 /**
@@ -3013,6 +3868,12 @@ export const HybridRunbookWorkerGroupGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridRunbookWorkerGroupListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const HybridRunbookWorkerGroupListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3025,11 +3886,25 @@ export const HybridRunbookWorkerGroupListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkerGroupListByAutomationAccountInput =
-  typeof HybridRunbookWorkerGroupListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkerGroupListByAutomationAccountInput>;
 
 // Output Schema
+export interface HybridRunbookWorkerGroupListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3064,9 +3939,7 @@ export const HybridRunbookWorkerGroupListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HybridRunbookWorkerGroupListByAutomationAccountOutput =
-  typeof HybridRunbookWorkerGroupListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkerGroupListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -3084,6 +3957,14 @@ export const HybridRunbookWorkerGroupListByAutomationAccount =
     outputSchema: HybridRunbookWorkerGroupListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface HybridRunbookWorkerGroupUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  properties?: { credential?: { name?: string } };
+  name?: string;
+}
 export const HybridRunbookWorkerGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3106,11 +3987,22 @@ export const HybridRunbookWorkerGroupUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkerGroupUpdateInput =
-  typeof HybridRunbookWorkerGroupUpdateInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkerGroupUpdateInput>;
 
 // Output Schema
+export interface HybridRunbookWorkerGroupUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkerGroupUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3130,9 +4022,7 @@ export const HybridRunbookWorkerGroupUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkerGroupUpdateOutput =
-  typeof HybridRunbookWorkerGroupUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkerGroupUpdateOutput>;
 
 // The operation
 /**
@@ -3150,6 +4040,15 @@ export const HybridRunbookWorkerGroupUpdate =
     outputSchema: HybridRunbookWorkerGroupUpdateOutput,
   }));
 // Input Schema
+export interface HybridRunbookWorkersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  hybridRunbookWorkerId: string;
+  properties?: { vmResourceId?: string };
+  name?: string;
+}
 export const HybridRunbookWorkersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3169,11 +4068,22 @@ export const HybridRunbookWorkersCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersCreateInput =
-  typeof HybridRunbookWorkersCreateInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersCreateInput>;
 
 // Output Schema
+export interface HybridRunbookWorkersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3193,9 +4103,7 @@ export const HybridRunbookWorkersCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkersCreateOutput =
-  typeof HybridRunbookWorkersCreateOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkersCreateOutput>;
 
 // The operation
 /**
@@ -3215,6 +4123,13 @@ export const HybridRunbookWorkersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridRunbookWorkersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  hybridRunbookWorkerId: string;
+}
 export const HybridRunbookWorkersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3228,15 +4143,12 @@ export const HybridRunbookWorkersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersDeleteInput =
-  typeof HybridRunbookWorkersDeleteInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersDeleteInput>;
 
 // Output Schema
+export type HybridRunbookWorkersDeleteOutput = void;
 export const HybridRunbookWorkersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridRunbookWorkersDeleteOutput =
-  typeof HybridRunbookWorkersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersDeleteOutput>;
 
 // The operation
 /**
@@ -3256,6 +4168,13 @@ export const HybridRunbookWorkersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridRunbookWorkersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  hybridRunbookWorkerId: string;
+}
 export const HybridRunbookWorkersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3269,11 +4188,22 @@ export const HybridRunbookWorkersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersGetInput =
-  typeof HybridRunbookWorkersGetInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersGetInput>;
 
 // Output Schema
+export interface HybridRunbookWorkersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3293,9 +4223,7 @@ export const HybridRunbookWorkersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkersGetOutput =
-  typeof HybridRunbookWorkersGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkersGetOutput>;
 
 // The operation
 /**
@@ -3315,6 +4243,13 @@ export const HybridRunbookWorkersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  $filter?: string;
+}
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3328,11 +4263,25 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersListByHybridRunbookWorkerGroupInput =
-  typeof HybridRunbookWorkersListByHybridRunbookWorkerGroupInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersListByHybridRunbookWorkerGroupInput>;
 
 // Output Schema
+export interface HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3367,9 +4316,7 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput =
-  typeof HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput>;
 
 // The operation
 /**
@@ -3388,6 +4335,13 @@ export const HybridRunbookWorkersListByHybridRunbookWorkerGroup =
     outputSchema: HybridRunbookWorkersListByHybridRunbookWorkerGroupOutput,
   }));
 // Input Schema
+export interface HybridRunbookWorkersMoveInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  hybridRunbookWorkerId: string;
+}
 export const HybridRunbookWorkersMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3401,15 +4355,12 @@ export const HybridRunbookWorkersMoveInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}/move",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersMoveInput =
-  typeof HybridRunbookWorkersMoveInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersMoveInput>;
 
 // Output Schema
+export type HybridRunbookWorkersMoveOutput = void;
 export const HybridRunbookWorkersMoveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridRunbookWorkersMoveOutput =
-  typeof HybridRunbookWorkersMoveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridRunbookWorkersMoveOutput>;
 
 // The operation
 /**
@@ -3429,6 +4380,15 @@ export const HybridRunbookWorkersMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridRunbookWorkersPatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  hybridRunbookWorkerGroupName: string;
+  hybridRunbookWorkerId: string;
+  properties?: { vmResourceId?: string };
+  name?: string;
+}
 export const HybridRunbookWorkersPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3448,11 +4408,22 @@ export const HybridRunbookWorkersPatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type HybridRunbookWorkersPatchInput =
-  typeof HybridRunbookWorkersPatchInput.Type;
+  ) as unknown as Schema.Codec<HybridRunbookWorkersPatchInput>;
 
 // Output Schema
+export interface HybridRunbookWorkersPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridRunbookWorkersPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3472,9 +4443,7 @@ export const HybridRunbookWorkersPatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridRunbookWorkersPatchOutput =
-  typeof HybridRunbookWorkersPatchOutput.Type;
+  }) as unknown as Schema.Codec<HybridRunbookWorkersPatchOutput>;
 
 // The operation
 /**
@@ -3494,6 +4463,17 @@ export const HybridRunbookWorkersPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+  properties: {
+    runbook?: { name?: string };
+    parameters?: Record<string, string>;
+    runOn?: string;
+  };
+}
 export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3514,10 +4494,22 @@ export const JobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobCreateInput = typeof JobCreateInput.Type;
+) as unknown as Schema.Codec<JobCreateInput>;
 
 // Output Schema
+export interface JobCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3536,8 +4528,7 @@ export const JobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobCreateOutput = typeof JobCreateOutput.Type;
+}) as unknown as Schema.Codec<JobCreateOutput>;
 
 // The operation
 /**
@@ -3555,6 +4546,12 @@ export const JobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobCreateOutput,
 }));
 // Input Schema
+export interface JobGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+}
 export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3566,10 +4563,22 @@ export const JobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobGetInput = typeof JobGetInput.Type;
+) as unknown as Schema.Codec<JobGetInput>;
 
 // Output Schema
+export interface JobGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3588,8 +4597,7 @@ export const JobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobGetOutput = typeof JobGetOutput.Type;
+}) as unknown as Schema.Codec<JobGetOutput>;
 
 // The operation
 /**
@@ -3607,6 +4615,12 @@ export const JobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobGetOutput,
 }));
 // Input Schema
+export interface JobGetRunbookContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+}
 export const JobGetRunbookContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3619,13 +4633,12 @@ export const JobGetRunbookContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
       apiVersion: "2024-10-23",
     }),
-  );
-export type JobGetRunbookContentInput = typeof JobGetRunbookContentInput.Type;
+  ) as unknown as Schema.Codec<JobGetRunbookContentInput>;
 
 // Output Schema
+export type JobGetRunbookContentOutput = string;
 export const JobGetRunbookContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type JobGetRunbookContentOutput = typeof JobGetRunbookContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<JobGetRunbookContentOutput>;
 
 // The operation
 /**
@@ -3645,6 +4658,12 @@ export const JobGetRunbookContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const JobListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3657,11 +4676,25 @@ export const JobListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
       apiVersion: "2024-10-23",
     }),
-  );
-export type JobListByAutomationAccountInput =
-  typeof JobListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<JobListByAutomationAccountInput>;
 
 // Output Schema
+export interface JobListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3696,9 +4729,7 @@ export const JobListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobListByAutomationAccountOutput =
-  typeof JobListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<JobListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -3718,6 +4749,12 @@ export const JobListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobResumeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+}
 export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3729,12 +4766,12 @@ export const JobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/resume",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobResumeInput = typeof JobResumeInput.Type;
+) as unknown as Schema.Codec<JobResumeInput>;
 
 // Output Schema
-export const JobResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobResumeOutput = typeof JobResumeOutput.Type;
+export type JobResumeOutput = void;
+export const JobResumeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobResumeOutput>;
 
 // The operation
 /**
@@ -3752,6 +4789,18 @@ export const JobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobResumeOutput,
 }));
 // Input Schema
+export interface JobScheduleCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobScheduleId: string;
+  properties: {
+    schedule: { name?: string };
+    runbook: { name?: string };
+    runOn?: string;
+    parameters?: Record<string, string>;
+  };
+}
 export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3775,10 +4824,22 @@ export const JobScheduleCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobScheduleCreateInput = typeof JobScheduleCreateInput.Type;
+) as unknown as Schema.Codec<JobScheduleCreateInput>;
 
 // Output Schema
+export interface JobScheduleCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobScheduleCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3798,8 +4859,7 @@ export const JobScheduleCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JobScheduleCreateOutput = typeof JobScheduleCreateOutput.Type;
+  }) as unknown as Schema.Codec<JobScheduleCreateOutput>;
 
 // The operation
 /**
@@ -3816,6 +4876,12 @@ export const JobScheduleCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobScheduleCreateOutput,
 }));
 // Input Schema
+export interface JobScheduleDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobScheduleId: string;
+}
 export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3829,12 +4895,12 @@ export const JobScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobScheduleDeleteInput = typeof JobScheduleDeleteInput.Type;
+) as unknown as Schema.Codec<JobScheduleDeleteInput>;
 
 // Output Schema
-export const JobScheduleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobScheduleDeleteOutput = typeof JobScheduleDeleteOutput.Type;
+export type JobScheduleDeleteOutput = void;
+export const JobScheduleDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobScheduleDeleteOutput>;
 
 // The operation
 /**
@@ -3851,6 +4917,12 @@ export const JobScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobScheduleDeleteOutput,
 }));
 // Input Schema
+export interface JobScheduleGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobScheduleId: string;
+}
 export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3862,10 +4934,22 @@ export const JobScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobScheduleGetInput = typeof JobScheduleGetInput.Type;
+) as unknown as Schema.Codec<JobScheduleGetInput>;
 
 // Output Schema
+export interface JobScheduleGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3884,8 +4968,7 @@ export const JobScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobScheduleGetOutput = typeof JobScheduleGetOutput.Type;
+}) as unknown as Schema.Codec<JobScheduleGetOutput>;
 
 // The operation
 /**
@@ -3902,6 +4985,12 @@ export const JobScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobScheduleGetOutput,
 }));
 // Input Schema
+export interface JobScheduleListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const JobScheduleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3914,11 +5003,25 @@ export const JobScheduleListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules",
       apiVersion: "2024-10-23",
     }),
-  );
-export type JobScheduleListByAutomationAccountInput =
-  typeof JobScheduleListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<JobScheduleListByAutomationAccountInput>;
 
 // Output Schema
+export interface JobScheduleListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobScheduleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3953,9 +5056,7 @@ export const JobScheduleListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobScheduleListByAutomationAccountOutput =
-  typeof JobScheduleListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<JobScheduleListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -3973,6 +5074,12 @@ export const JobScheduleListByAutomationAccount =
     outputSchema: JobScheduleListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface JobStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+}
 export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3984,12 +5091,12 @@ export const JobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/stop",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobStopInput = typeof JobStopInput.Type;
+) as unknown as Schema.Codec<JobStopInput>;
 
 // Output Schema
-export const JobStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobStopOutput = typeof JobStopOutput.Type;
+export type JobStopOutput = void;
+export const JobStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobStopOutput>;
 
 // The operation
 /**
@@ -4007,6 +5114,13 @@ export const JobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobStopOutput,
 }));
 // Input Schema
+export interface JobStreamGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+  jobStreamId: string;
+}
 export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4019,10 +5133,27 @@ export const JobStreamGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams/{jobStreamId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobStreamGetInput = typeof JobStreamGetInput.Type;
+) as unknown as Schema.Codec<JobStreamGetInput>;
 
 // Output Schema
+export interface JobStreamGetOutput {
+  id?: string;
+  properties?: {
+    jobStreamId?: string;
+    time?: string;
+    streamType?:
+      | "Progress"
+      | "Output"
+      | "Warning"
+      | "Error"
+      | "Debug"
+      | "Verbose"
+      | "Any";
+    streamText?: string;
+    summary?: string | null;
+    value?: Record<string, unknown>;
+  };
+}
 export const JobStreamGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   properties: Schema.optional(
@@ -4045,8 +5176,7 @@ export const JobStreamGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     }),
   ),
-});
-export type JobStreamGetOutput = typeof JobStreamGetOutput.Type;
+}) as unknown as Schema.Codec<JobStreamGetOutput>;
 
 // The operation
 /**
@@ -4065,6 +5195,13 @@ export const JobStreamGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobStreamGetOutput,
 }));
 // Input Schema
+export interface JobStreamListByJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+  $filter?: string;
+}
 export const JobStreamListByJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4078,10 +5215,30 @@ export const JobStreamListByJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
       apiVersion: "2024-10-23",
     }),
-  );
-export type JobStreamListByJobInput = typeof JobStreamListByJobInput.Type;
+  ) as unknown as Schema.Codec<JobStreamListByJobInput>;
 
 // Output Schema
+export interface JobStreamListByJobOutput {
+  value: {
+    id?: string;
+    properties?: {
+      jobStreamId?: string;
+      time?: string;
+      streamType?:
+        | "Progress"
+        | "Output"
+        | "Warning"
+        | "Error"
+        | "Debug"
+        | "Verbose"
+        | "Any";
+      streamText?: string;
+      summary?: string | null;
+      value?: Record<string, unknown>;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobStreamListByJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4112,8 +5269,7 @@ export const JobStreamListByJobOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobStreamListByJobOutput = typeof JobStreamListByJobOutput.Type;
+  }) as unknown as Schema.Codec<JobStreamListByJobOutput>;
 
 // The operation
 /**
@@ -4132,6 +5288,12 @@ export const JobStreamListByJob = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobStreamListByJobOutput,
 }));
 // Input Schema
+export interface JobSuspendInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  jobName: string;
+}
 export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4143,12 +5305,12 @@ export const JobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/suspend",
     apiVersion: "2024-10-23",
   }),
-);
-export type JobSuspendInput = typeof JobSuspendInput.Type;
+) as unknown as Schema.Codec<JobSuspendInput>;
 
 // Output Schema
-export const JobSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobSuspendOutput = typeof JobSuspendOutput.Type;
+export type JobSuspendOutput = void;
+export const JobSuspendOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobSuspendOutput>;
 
 // The operation
 /**
@@ -4166,6 +5328,11 @@ export const JobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobSuspendOutput,
 }));
 // Input Schema
+export interface KeysListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const KeysListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4177,11 +5344,16 @@ export const KeysListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
       apiVersion: "2024-10-23",
     }),
-  );
-export type KeysListByAutomationAccountInput =
-  typeof KeysListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<KeysListByAutomationAccountInput>;
 
 // Output Schema
+export interface KeysListByAutomationAccountOutput {
+  keys?: {
+    KeyName?: "Primary" | "Secondary";
+    Permissions?: "Read" | "Full";
+    Value?: string;
+  }[];
+}
 export const KeysListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(
@@ -4193,9 +5365,7 @@ export const KeysListByAutomationAccountOutput =
         }),
       ),
     ),
-  });
-export type KeysListByAutomationAccountOutput =
-  typeof KeysListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<KeysListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -4213,6 +5383,11 @@ export const KeysListByAutomationAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedWorkspaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const LinkedWorkspaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4224,15 +5399,16 @@ export const LinkedWorkspaceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
       apiVersion: "2024-10-23",
     }),
-  );
-export type LinkedWorkspaceGetInput = typeof LinkedWorkspaceGetInput.Type;
+  ) as unknown as Schema.Codec<LinkedWorkspaceGetInput>;
 
 // Output Schema
+export interface LinkedWorkspaceGetOutput {
+  id?: string;
+}
 export const LinkedWorkspaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
-  });
-export type LinkedWorkspaceGetOutput = typeof LinkedWorkspaceGetOutput.Type;
+  }) as unknown as Schema.Codec<LinkedWorkspaceGetOutput>;
 
 // The operation
 /**
@@ -4248,6 +5424,22 @@ export const LinkedWorkspaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LinkedWorkspaceGetOutput,
 }));
 // Input Schema
+export interface ModuleCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+  properties: {
+    contentLink: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  name?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ModuleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4275,10 +5467,22 @@ export const ModuleCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ModuleCreateOrUpdateInput = typeof ModuleCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ModuleCreateOrUpdateInput>;
 
 // Output Schema
+export interface ModuleCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModuleCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4298,8 +5502,7 @@ export const ModuleCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ModuleCreateOrUpdateOutput = typeof ModuleCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ModuleCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4318,6 +5521,12 @@ export const ModuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ModuleDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+}
 export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4329,12 +5538,12 @@ export const ModuleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ModuleDeleteInput = typeof ModuleDeleteInput.Type;
+) as unknown as Schema.Codec<ModuleDeleteInput>;
 
 // Output Schema
-export const ModuleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ModuleDeleteOutput = typeof ModuleDeleteOutput.Type;
+export type ModuleDeleteOutput = void;
+export const ModuleDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModuleDeleteOutput>;
 
 // The operation
 /**
@@ -4351,6 +5560,12 @@ export const ModuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModuleDeleteOutput,
 }));
 // Input Schema
+export interface ModuleGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+}
 export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4362,10 +5577,22 @@ export const ModuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ModuleGetInput = typeof ModuleGetInput.Type;
+) as unknown as Schema.Codec<ModuleGetInput>;
 
 // Output Schema
+export interface ModuleGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4384,8 +5611,7 @@ export const ModuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ModuleGetOutput = typeof ModuleGetOutput.Type;
+}) as unknown as Schema.Codec<ModuleGetOutput>;
 
 // The operation
 /**
@@ -4402,6 +5628,11 @@ export const ModuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModuleGetOutput,
 }));
 // Input Schema
+export interface ModuleListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const ModuleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4413,11 +5644,25 @@ export const ModuleListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ModuleListByAutomationAccountInput =
-  typeof ModuleListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<ModuleListByAutomationAccountInput>;
 
 // Output Schema
+export interface ModuleListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ModuleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4452,9 +5697,7 @@ export const ModuleListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ModuleListByAutomationAccountOutput =
-  typeof ModuleListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<ModuleListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -4471,6 +5714,22 @@ export const ModuleListByAutomationAccount =
     outputSchema: ModuleListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface ModuleUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+  properties?: {
+    contentLink?: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  name?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4501,10 +5760,22 @@ export const ModuleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ModuleUpdateInput = typeof ModuleUpdateInput.Type;
+) as unknown as Schema.Codec<ModuleUpdateInput>;
 
 // Output Schema
+export interface ModuleUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModuleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4523,8 +5794,7 @@ export const ModuleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ModuleUpdateOutput = typeof ModuleUpdateOutput.Type;
+}) as unknown as Schema.Codec<ModuleUpdateOutput>;
 
 // The operation
 /**
@@ -4541,6 +5811,12 @@ export const ModuleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModuleUpdateOutput,
 }));
 // Input Schema
+export interface NodeCountInformationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  countType: "status" | "nodeconfiguration";
+}
 export const NodeCountInformationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4555,11 +5831,13 @@ export const NodeCountInformationGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type NodeCountInformationGetInput =
-  typeof NodeCountInformationGetInput.Type;
+  ) as unknown as Schema.Codec<NodeCountInformationGetInput>;
 
 // Output Schema
+export interface NodeCountInformationGetOutput {
+  value?: { name?: string; properties?: { count?: number } }[];
+  totalCount?: number;
+}
 export const NodeCountInformationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4575,9 +5853,7 @@ export const NodeCountInformationGetOutput =
       ),
     ),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type NodeCountInformationGetOutput =
-  typeof NodeCountInformationGetOutput.Type;
+  }) as unknown as Schema.Codec<NodeCountInformationGetOutput>;
 
 // The operation
 /**
@@ -4596,6 +5872,13 @@ export const NodeCountInformationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NodeReportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+  reportId: string;
+}
 export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4608,10 +5891,56 @@ export const NodeReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type NodeReportsGetInput = typeof NodeReportsGetInput.Type;
+) as unknown as Schema.Codec<NodeReportsGetInput>;
 
 // Output Schema
+export interface NodeReportsGetOutput {
+  endTime?: string | null;
+  lastModifiedTime?: string;
+  startTime?: string | null;
+  type?: string;
+  reportId?: string;
+  status?: string;
+  refreshMode?: string;
+  rebootRequested?: string;
+  reportFormatVersion?: string;
+  configurationVersion?: string;
+  id?: string;
+  errors?: {
+    errorSource?: string;
+    resourceId?: string;
+    errorCode?: string;
+    errorMessage?: string;
+    locale?: string;
+    errorDetails?: string;
+  }[];
+  resources?: {
+    resourceId?: string;
+    sourceInfo?: string;
+    dependsOn?: { resourceId?: string }[];
+    moduleName?: string;
+    moduleVersion?: string;
+    resourceName?: string;
+    error?: string;
+    status?: string;
+    durationInSeconds?: number;
+    startDate?: string;
+  }[];
+  metaConfiguration?: {
+    configurationModeFrequencyMins?: number;
+    rebootNodeIfNeeded?: boolean;
+    configurationMode?: string;
+    actionAfterReboot?: string;
+    certificateId?: string;
+    refreshFrequencyMins?: number;
+    allowModuleOverwrite?: boolean;
+  };
+  hostName?: string;
+  iPV4Addresses?: string[];
+  iPV6Addresses?: string[];
+  numberOfResources?: number;
+  rawErrors?: string;
+}
 export const NodeReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.NullOr(Schema.String)),
   lastModifiedTime: Schema.optional(Schema.String),
@@ -4674,8 +6003,7 @@ export const NodeReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   iPV6Addresses: Schema.optional(Schema.Array(Schema.String)),
   numberOfResources: Schema.optional(Schema.Number),
   rawErrors: Schema.optional(Schema.String),
-});
-export type NodeReportsGetOutput = typeof NodeReportsGetOutput.Type;
+}) as unknown as Schema.Codec<NodeReportsGetOutput>;
 
 // The operation
 /**
@@ -4693,6 +6021,13 @@ export const NodeReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NodeReportsGetOutput,
 }));
 // Input Schema
+export interface NodeReportsGetContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+  reportId: string;
+}
 export const NodeReportsGetContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4706,14 +6041,12 @@ export const NodeReportsGetContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
       apiVersion: "2024-10-23",
     }),
-  );
-export type NodeReportsGetContentInput = typeof NodeReportsGetContentInput.Type;
+  ) as unknown as Schema.Codec<NodeReportsGetContentInput>;
 
 // Output Schema
+export type NodeReportsGetContentOutput = string;
 export const NodeReportsGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type NodeReportsGetContentOutput =
-  typeof NodeReportsGetContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<NodeReportsGetContentOutput>;
 
 // The operation
 /**
@@ -4733,6 +6066,13 @@ export const NodeReportsGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NodeReportsListByNodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  nodeId: string;
+  $filter?: string;
+}
 export const NodeReportsListByNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4746,10 +6086,59 @@ export const NodeReportsListByNodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports",
       apiVersion: "2024-10-23",
     }),
-  );
-export type NodeReportsListByNodeInput = typeof NodeReportsListByNodeInput.Type;
+  ) as unknown as Schema.Codec<NodeReportsListByNodeInput>;
 
 // Output Schema
+export interface NodeReportsListByNodeOutput {
+  value: {
+    endTime?: string | null;
+    lastModifiedTime?: string;
+    startTime?: string | null;
+    type?: string;
+    reportId?: string;
+    status?: string;
+    refreshMode?: string;
+    rebootRequested?: string;
+    reportFormatVersion?: string;
+    configurationVersion?: string;
+    id?: string;
+    errors?: {
+      errorSource?: string;
+      resourceId?: string;
+      errorCode?: string;
+      errorMessage?: string;
+      locale?: string;
+      errorDetails?: string;
+    }[];
+    resources?: {
+      resourceId?: string;
+      sourceInfo?: string;
+      dependsOn?: { resourceId?: string }[];
+      moduleName?: string;
+      moduleVersion?: string;
+      resourceName?: string;
+      error?: string;
+      status?: string;
+      durationInSeconds?: number;
+      startDate?: string;
+    }[];
+    metaConfiguration?: {
+      configurationModeFrequencyMins?: number;
+      rebootNodeIfNeeded?: boolean;
+      configurationMode?: string;
+      actionAfterReboot?: string;
+      certificateId?: string;
+      refreshFrequencyMins?: number;
+      allowModuleOverwrite?: boolean;
+    };
+    hostName?: string;
+    iPV4Addresses?: string[];
+    iPV6Addresses?: string[];
+    numberOfResources?: number;
+    rawErrors?: string;
+  }[];
+  nextLink?: string;
+}
 export const NodeReportsListByNodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4818,9 +6207,7 @@ export const NodeReportsListByNodeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NodeReportsListByNodeOutput =
-  typeof NodeReportsListByNodeOutput.Type;
+  }) as unknown as Schema.Codec<NodeReportsListByNodeOutput>;
 
 // The operation
 /**
@@ -4840,6 +6227,13 @@ export const NodeReportsListByNode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ObjectDataTypesListFieldsByModuleAndTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  moduleName: string;
+  typeName: string;
+}
 export const ObjectDataTypesListFieldsByModuleAndTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4853,11 +6247,13 @@ export const ObjectDataTypesListFieldsByModuleAndTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/objectDataTypes/{typeName}/fields",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ObjectDataTypesListFieldsByModuleAndTypeInput =
-  typeof ObjectDataTypesListFieldsByModuleAndTypeInput.Type;
+  ) as unknown as Schema.Codec<ObjectDataTypesListFieldsByModuleAndTypeInput>;
 
 // Output Schema
+export interface ObjectDataTypesListFieldsByModuleAndTypeOutput {
+  value?: { name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4869,9 +6265,7 @@ export const ObjectDataTypesListFieldsByModuleAndTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ObjectDataTypesListFieldsByModuleAndTypeOutput =
-  typeof ObjectDataTypesListFieldsByModuleAndTypeOutput.Type;
+  }) as unknown as Schema.Codec<ObjectDataTypesListFieldsByModuleAndTypeOutput>;
 
 // The operation
 /**
@@ -4890,6 +6284,12 @@ export const ObjectDataTypesListFieldsByModuleAndType =
     outputSchema: ObjectDataTypesListFieldsByModuleAndTypeOutput,
   }));
 // Input Schema
+export interface ObjectDataTypesListFieldsByTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  typeName: string;
+}
 export const ObjectDataTypesListFieldsByTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4902,11 +6302,13 @@ export const ObjectDataTypesListFieldsByTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/objectDataTypes/{typeName}/fields",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ObjectDataTypesListFieldsByTypeInput =
-  typeof ObjectDataTypesListFieldsByTypeInput.Type;
+  ) as unknown as Schema.Codec<ObjectDataTypesListFieldsByTypeInput>;
 
 // Output Schema
+export interface ObjectDataTypesListFieldsByTypeOutput {
+  value?: { name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ObjectDataTypesListFieldsByTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4918,9 +6320,7 @@ export const ObjectDataTypesListFieldsByTypeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ObjectDataTypesListFieldsByTypeOutput =
-  typeof ObjectDataTypesListFieldsByTypeOutput.Type;
+  }) as unknown as Schema.Codec<ObjectDataTypesListFieldsByTypeOutput>;
 
 // The operation
 /**
@@ -4938,6 +6338,7 @@ export const ObjectDataTypesListFieldsByType =
     outputSchema: ObjectDataTypesListFieldsByTypeOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4946,10 +6347,39 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Automation/operations",
     apiVersion: "2024-10-23",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          dimensions?: { name?: string; displayName?: string }[];
+        }[];
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5002,8 +6432,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -5016,6 +6445,33 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PackageCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  packageName: string;
+  properties: {
+    contentLink: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  allOf?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5072,10 +6528,22 @@ export const PackageCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PackageCreateOrUpdateInput = typeof PackageCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PackageCreateOrUpdateInput>;
 
 // Output Schema
+export interface PackageCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PackageCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5095,9 +6563,7 @@ export const PackageCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PackageCreateOrUpdateOutput =
-  typeof PackageCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PackageCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5117,6 +6583,13 @@ export const PackageCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PackageDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  packageName: string;
+}
 export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5129,12 +6602,12 @@ export const PackageDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type PackageDeleteInput = typeof PackageDeleteInput.Type;
+) as unknown as Schema.Codec<PackageDeleteInput>;
 
 // Output Schema
-export const PackageDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PackageDeleteOutput = typeof PackageDeleteOutput.Type;
+export type PackageDeleteOutput = void;
+export const PackageDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PackageDeleteOutput>;
 
 // The operation
 /**
@@ -5152,6 +6625,13 @@ export const PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PackageDeleteOutput,
 }));
 // Input Schema
+export interface PackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  packageName: string;
+}
 export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5164,10 +6644,22 @@ export const PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type PackageGetInput = typeof PackageGetInput.Type;
+) as unknown as Schema.Codec<PackageGetInput>;
 
 // Output Schema
+export interface PackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PackageGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5186,8 +6678,7 @@ export const PackageGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PackageGetOutput = typeof PackageGetOutput.Type;
+}) as unknown as Schema.Codec<PackageGetOutput>;
 
 // The operation
 /**
@@ -5205,6 +6696,12 @@ export const PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PackageGetOutput,
 }));
 // Input Schema
+export interface PackageListByRuntimeEnvironmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+}
 export const PackageListByRuntimeEnvironmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5217,11 +6714,25 @@ export const PackageListByRuntimeEnvironmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PackageListByRuntimeEnvironmentInput =
-  typeof PackageListByRuntimeEnvironmentInput.Type;
+  ) as unknown as Schema.Codec<PackageListByRuntimeEnvironmentInput>;
 
 // Output Schema
+export interface PackageListByRuntimeEnvironmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PackageListByRuntimeEnvironmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5256,9 +6767,7 @@ export const PackageListByRuntimeEnvironmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PackageListByRuntimeEnvironmentOutput =
-  typeof PackageListByRuntimeEnvironmentOutput.Type;
+  }) as unknown as Schema.Codec<PackageListByRuntimeEnvironmentOutput>;
 
 // The operation
 /**
@@ -5276,6 +6785,33 @@ export const PackageListByRuntimeEnvironment =
     outputSchema: PackageListByRuntimeEnvironmentOutput,
   }));
 // Input Schema
+export interface PackageUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  packageName: string;
+  properties?: {
+    contentLink?: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  allOf?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5325,10 +6861,22 @@ export const PackageUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type PackageUpdateInput = typeof PackageUpdateInput.Type;
+) as unknown as Schema.Codec<PackageUpdateInput>;
 
 // Output Schema
+export interface PackageUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PackageUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5347,8 +6895,7 @@ export const PackageUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PackageUpdateOutput = typeof PackageUpdateOutput.Type;
+}) as unknown as Schema.Codec<PackageUpdateOutput>;
 
 // The operation
 /**
@@ -5366,6 +6913,21 @@ export const PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PackageUpdateOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status?: string;
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5395,11 +6957,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5419,9 +6992,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5439,6 +7010,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5451,15 +7028,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -5477,6 +7051,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5489,11 +7069,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5513,9 +7104,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -5533,6 +7122,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const PrivateEndpointConnectionsListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5544,11 +7138,25 @@ export const PrivateEndpointConnectionsListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PrivateEndpointConnectionsListByAutomationAccountInput =
-  typeof PrivateEndpointConnectionsListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByAutomationAccountInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByAutomationAccountOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5585,9 +7193,7 @@ export const PrivateEndpointConnectionsListByAutomationAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByAutomationAccountOutput =
-  typeof PrivateEndpointConnectionsListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -5604,6 +7210,11 @@ export const PrivateEndpointConnectionsListByAutomationAccount =
     outputSchema: PrivateEndpointConnectionsListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesAutomationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const PrivateLinkResourcesAutomationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5615,11 +7226,25 @@ export const PrivateLinkResourcesAutomationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources",
       apiVersion: "2024-10-23",
     }),
-  );
-export type PrivateLinkResourcesAutomationInput =
-  typeof PrivateLinkResourcesAutomationInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesAutomationInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesAutomationOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesAutomationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5656,9 +7281,7 @@ export const PrivateLinkResourcesAutomationOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesAutomationOutput =
-  typeof PrivateLinkResourcesAutomationOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesAutomationOutput>;
 
 // The operation
 /**
@@ -5675,6 +7298,20 @@ export const PrivateLinkResourcesAutomation =
     outputSchema: PrivateLinkResourcesAutomationOutput,
   }));
 // Input Schema
+export interface Python2PackageCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+  properties: {
+    contentLink: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const Python2PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5700,11 +7337,22 @@ export const Python2PackageCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python2PackageCreateOrUpdateInput =
-  typeof Python2PackageCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<Python2PackageCreateOrUpdateInput>;
 
 // Output Schema
+export interface Python2PackageCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python2PackageCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5724,9 +7372,7 @@ export const Python2PackageCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python2PackageCreateOrUpdateOutput =
-  typeof Python2PackageCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<Python2PackageCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5744,6 +7390,12 @@ export const Python2PackageCreateOrUpdate =
     outputSchema: Python2PackageCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface Python2PackageDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+}
 export const Python2PackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5756,13 +7408,12 @@ export const Python2PackageDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python2PackageDeleteInput = typeof Python2PackageDeleteInput.Type;
+  ) as unknown as Schema.Codec<Python2PackageDeleteInput>;
 
 // Output Schema
+export type Python2PackageDeleteOutput = void;
 export const Python2PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type Python2PackageDeleteOutput = typeof Python2PackageDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<Python2PackageDeleteOutput>;
 
 // The operation
 /**
@@ -5781,6 +7432,12 @@ export const Python2PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface Python2PackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+}
 export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5794,10 +7451,22 @@ export const Python2PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type Python2PackageGetInput = typeof Python2PackageGetInput.Type;
+) as unknown as Schema.Codec<Python2PackageGetInput>;
 
 // Output Schema
+export interface Python2PackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python2PackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5817,8 +7486,7 @@ export const Python2PackageGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python2PackageGetOutput = typeof Python2PackageGetOutput.Type;
+  }) as unknown as Schema.Codec<Python2PackageGetOutput>;
 
 // The operation
 /**
@@ -5835,6 +7503,11 @@ export const Python2PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: Python2PackageGetOutput,
 }));
 // Input Schema
+export interface Python2PackageListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const Python2PackageListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5846,11 +7519,25 @@ export const Python2PackageListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python2PackageListByAutomationAccountInput =
-  typeof Python2PackageListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<Python2PackageListByAutomationAccountInput>;
 
 // Output Schema
+export interface Python2PackageListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const Python2PackageListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5885,9 +7572,7 @@ export const Python2PackageListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type Python2PackageListByAutomationAccountOutput =
-  typeof Python2PackageListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<Python2PackageListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -5904,6 +7589,13 @@ export const Python2PackageListByAutomationAccount =
     outputSchema: Python2PackageListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface Python2PackageUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+  tags?: Record<string, string>;
+}
 export const Python2PackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5917,10 +7609,22 @@ export const Python2PackageUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python2PackageUpdateInput = typeof Python2PackageUpdateInput.Type;
+  ) as unknown as Schema.Codec<Python2PackageUpdateInput>;
 
 // Output Schema
+export interface Python2PackageUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python2PackageUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5940,8 +7644,7 @@ export const Python2PackageUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python2PackageUpdateOutput = typeof Python2PackageUpdateOutput.Type;
+  }) as unknown as Schema.Codec<Python2PackageUpdateOutput>;
 
 // The operation
 /**
@@ -5960,6 +7663,20 @@ export const Python2PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface Python3PackageCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+  properties: {
+    contentLink: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const Python3PackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5985,11 +7702,22 @@ export const Python3PackageCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python3PackageCreateOrUpdateInput =
-  typeof Python3PackageCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<Python3PackageCreateOrUpdateInput>;
 
 // Output Schema
+export interface Python3PackageCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python3PackageCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6009,9 +7737,7 @@ export const Python3PackageCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python3PackageCreateOrUpdateOutput =
-  typeof Python3PackageCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<Python3PackageCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6029,6 +7755,12 @@ export const Python3PackageCreateOrUpdate =
     outputSchema: Python3PackageCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface Python3PackageDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+}
 export const Python3PackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6041,13 +7773,12 @@ export const Python3PackageDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python3PackageDeleteInput = typeof Python3PackageDeleteInput.Type;
+  ) as unknown as Schema.Codec<Python3PackageDeleteInput>;
 
 // Output Schema
+export type Python3PackageDeleteOutput = void;
 export const Python3PackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type Python3PackageDeleteOutput = typeof Python3PackageDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<Python3PackageDeleteOutput>;
 
 // The operation
 /**
@@ -6066,6 +7797,12 @@ export const Python3PackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface Python3PackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+}
 export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6079,10 +7816,22 @@ export const Python3PackageGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type Python3PackageGetInput = typeof Python3PackageGetInput.Type;
+) as unknown as Schema.Codec<Python3PackageGetInput>;
 
 // Output Schema
+export interface Python3PackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python3PackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6102,8 +7851,7 @@ export const Python3PackageGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python3PackageGetOutput = typeof Python3PackageGetOutput.Type;
+  }) as unknown as Schema.Codec<Python3PackageGetOutput>;
 
 // The operation
 /**
@@ -6120,6 +7868,11 @@ export const Python3PackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: Python3PackageGetOutput,
 }));
 // Input Schema
+export interface Python3PackageListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const Python3PackageListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6131,11 +7884,25 @@ export const Python3PackageListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python3PackageListByAutomationAccountInput =
-  typeof Python3PackageListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<Python3PackageListByAutomationAccountInput>;
 
 // Output Schema
+export interface Python3PackageListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const Python3PackageListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6170,9 +7937,7 @@ export const Python3PackageListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type Python3PackageListByAutomationAccountOutput =
-  typeof Python3PackageListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<Python3PackageListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -6189,6 +7954,13 @@ export const Python3PackageListByAutomationAccount =
     outputSchema: Python3PackageListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface Python3PackageUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  packageName: string;
+  tags?: Record<string, string>;
+}
 export const Python3PackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6202,10 +7974,22 @@ export const Python3PackageUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type Python3PackageUpdateInput = typeof Python3PackageUpdateInput.Type;
+  ) as unknown as Schema.Codec<Python3PackageUpdateInput>;
 
 // Output Schema
+export interface Python3PackageUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const Python3PackageUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6225,8 +8009,7 @@ export const Python3PackageUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type Python3PackageUpdateOutput = typeof Python3PackageUpdateOutput.Type;
+  }) as unknown as Schema.Codec<Python3PackageUpdateOutput>;
 
 // The operation
 /**
@@ -6245,6 +8028,58 @@ export const Python3PackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunbookCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+  properties: {
+    logVerbose?: boolean;
+    logProgress?: boolean;
+    runtimeEnvironment?: string;
+    runbookType:
+      | "Script"
+      | "Graph"
+      | "PowerShellWorkflow"
+      | "PowerShell"
+      | "GraphPowerShellWorkflow"
+      | "GraphPowerShell"
+      | "Python2"
+      | "Python3"
+      | "Python"
+      | "PowerShell72";
+    draft?: {
+      inEdit?: boolean;
+      draftContentLink?: {
+        uri?: string;
+        contentHash?: { algorithm: string; value: string };
+        version?: string;
+      };
+      creationTime?: string;
+      lastModifiedTime?: string;
+      parameters?: Record<
+        string,
+        {
+          type?: string;
+          isMandatory?: boolean;
+          position?: number;
+          defaultValue?: string;
+        }
+      >;
+      outputTypes?: string[];
+    };
+    publishContentLink?: {
+      uri?: string;
+      contentHash?: { algorithm: string; value: string };
+      version?: string;
+    };
+    description?: string;
+    logActivityTrace?: number;
+  };
+  name?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const RunbookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6322,10 +8157,22 @@ export const RunbookCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RunbookCreateOrUpdateInput = typeof RunbookCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RunbookCreateOrUpdateInput>;
 
 // Output Schema
+export interface RunbookCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RunbookCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6345,9 +8192,7 @@ export const RunbookCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RunbookCreateOrUpdateOutput =
-  typeof RunbookCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RunbookCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6366,6 +8211,12 @@ export const RunbookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunbookDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6377,12 +8228,12 @@ export const RunbookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookDeleteInput = typeof RunbookDeleteInput.Type;
+) as unknown as Schema.Codec<RunbookDeleteInput>;
 
 // Output Schema
-export const RunbookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RunbookDeleteOutput = typeof RunbookDeleteOutput.Type;
+export type RunbookDeleteOutput = void;
+export const RunbookDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDeleteOutput>;
 
 // The operation
 /**
@@ -6399,6 +8250,12 @@ export const RunbookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookDeleteOutput,
 }));
 // Input Schema
+export interface RunbookDraftGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6410,10 +8267,29 @@ export const RunbookDraftGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookDraftGetInput = typeof RunbookDraftGetInput.Type;
+) as unknown as Schema.Codec<RunbookDraftGetInput>;
 
 // Output Schema
+export interface RunbookDraftGetOutput {
+  inEdit?: boolean;
+  draftContentLink?: {
+    uri?: string;
+    contentHash?: { algorithm: string; value: string };
+    version?: string;
+  };
+  creationTime?: string;
+  lastModifiedTime?: string;
+  parameters?: Record<
+    string,
+    {
+      type?: string;
+      isMandatory?: boolean;
+      position?: number;
+      defaultValue?: string;
+    }
+  >;
+  outputTypes?: string[];
+}
 export const RunbookDraftGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   inEdit: Schema.optional(Schema.Boolean),
   draftContentLink: Schema.optional(
@@ -6442,8 +8318,7 @@ export const RunbookDraftGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   outputTypes: Schema.optional(Schema.Array(Schema.String)),
-});
-export type RunbookDraftGetOutput = typeof RunbookDraftGetOutput.Type;
+}) as unknown as Schema.Codec<RunbookDraftGetOutput>;
 
 // The operation
 /**
@@ -6460,6 +8335,12 @@ export const RunbookDraftGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookDraftGetOutput,
 }));
 // Input Schema
+export interface RunbookDraftGetContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookDraftGetContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6472,15 +8353,12 @@ export const RunbookDraftGetContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RunbookDraftGetContentInput =
-  typeof RunbookDraftGetContentInput.Type;
+  ) as unknown as Schema.Codec<RunbookDraftGetContentInput>;
 
 // Output Schema
+export type RunbookDraftGetContentOutput = string;
 export const RunbookDraftGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type RunbookDraftGetContentOutput =
-  typeof RunbookDraftGetContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookDraftGetContentOutput>;
 
 // The operation
 /**
@@ -6499,6 +8377,12 @@ export const RunbookDraftGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunbookDraftReplaceContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookDraftReplaceContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6511,15 +8395,12 @@ export const RunbookDraftReplaceContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RunbookDraftReplaceContentInput =
-  typeof RunbookDraftReplaceContentInput.Type;
+  ) as unknown as Schema.Codec<RunbookDraftReplaceContentInput>;
 
 // Output Schema
+export type RunbookDraftReplaceContentOutput = void;
 export const RunbookDraftReplaceContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RunbookDraftReplaceContentOutput =
-  typeof RunbookDraftReplaceContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookDraftReplaceContentOutput>;
 
 // The operation
 /**
@@ -6538,6 +8419,12 @@ export const RunbookDraftReplaceContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunbookDraftUndoEditInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookDraftUndoEditInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6550,10 +8437,60 @@ export const RunbookDraftUndoEditInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RunbookDraftUndoEditInput = typeof RunbookDraftUndoEditInput.Type;
+  ) as unknown as Schema.Codec<RunbookDraftUndoEditInput>;
 
 // Output Schema
+export interface RunbookDraftUndoEditOutput {
+  statusCode?:
+    | "Continue"
+    | "SwitchingProtocols"
+    | "OK"
+    | "Created"
+    | "Accepted"
+    | "NonAuthoritativeInformation"
+    | "NoContent"
+    | "ResetContent"
+    | "PartialContent"
+    | "MultipleChoices"
+    | "Ambiguous"
+    | "MovedPermanently"
+    | "Moved"
+    | "Found"
+    | "Redirect"
+    | "SeeOther"
+    | "RedirectMethod"
+    | "NotModified"
+    | "UseProxy"
+    | "Unused"
+    | "TemporaryRedirect"
+    | "RedirectKeepVerb"
+    | "BadRequest"
+    | "Unauthorized"
+    | "PaymentRequired"
+    | "Forbidden"
+    | "NotFound"
+    | "MethodNotAllowed"
+    | "NotAcceptable"
+    | "ProxyAuthenticationRequired"
+    | "RequestTimeout"
+    | "Conflict"
+    | "Gone"
+    | "LengthRequired"
+    | "PreconditionFailed"
+    | "RequestEntityTooLarge"
+    | "RequestUriTooLong"
+    | "UnsupportedMediaType"
+    | "RequestedRangeNotSatisfiable"
+    | "ExpectationFailed"
+    | "UpgradeRequired"
+    | "InternalServerError"
+    | "NotImplemented"
+    | "BadGateway"
+    | "ServiceUnavailable"
+    | "GatewayTimeout"
+    | "HttpVersionNotSupported";
+  requestId?: string;
+}
 export const RunbookDraftUndoEditOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     statusCode: Schema.optional(
@@ -6608,8 +8545,7 @@ export const RunbookDraftUndoEditOutput =
       ]),
     ),
     requestId: Schema.optional(Schema.String),
-  });
-export type RunbookDraftUndoEditOutput = typeof RunbookDraftUndoEditOutput.Type;
+  }) as unknown as Schema.Codec<RunbookDraftUndoEditOutput>;
 
 // The operation
 /**
@@ -6628,6 +8564,12 @@ export const RunbookDraftUndoEdit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunbookGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6639,10 +8581,22 @@ export const RunbookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookGetInput = typeof RunbookGetInput.Type;
+) as unknown as Schema.Codec<RunbookGetInput>;
 
 // Output Schema
+export interface RunbookGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RunbookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6661,8 +8615,7 @@ export const RunbookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RunbookGetOutput = typeof RunbookGetOutput.Type;
+}) as unknown as Schema.Codec<RunbookGetOutput>;
 
 // The operation
 /**
@@ -6679,6 +8632,12 @@ export const RunbookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookGetOutput,
 }));
 // Input Schema
+export interface RunbookGetContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6692,13 +8651,12 @@ export const RunbookGetContentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookGetContentInput = typeof RunbookGetContentInput.Type;
+) as unknown as Schema.Codec<RunbookGetContentInput>;
 
 // Output Schema
+export type RunbookGetContentOutput = string;
 export const RunbookGetContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type RunbookGetContentOutput = typeof RunbookGetContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<RunbookGetContentOutput>;
 
 // The operation
 /**
@@ -6715,6 +8673,11 @@ export const RunbookGetContent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookGetContentOutput,
 }));
 // Input Schema
+export interface RunbookListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const RunbookListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6726,11 +8689,25 @@ export const RunbookListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RunbookListByAutomationAccountInput =
-  typeof RunbookListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<RunbookListByAutomationAccountInput>;
 
 // Output Schema
+export interface RunbookListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RunbookListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6765,9 +8742,7 @@ export const RunbookListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RunbookListByAutomationAccountOutput =
-  typeof RunbookListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<RunbookListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -6784,6 +8759,12 @@ export const RunbookListByAutomationAccount =
     outputSchema: RunbookListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface RunbookPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6795,12 +8776,12 @@ export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/publish",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookPublishInput = typeof RunbookPublishInput.Type;
+) as unknown as Schema.Codec<RunbookPublishInput>;
 
 // Output Schema
-export const RunbookPublishOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RunbookPublishOutput = typeof RunbookPublishOutput.Type;
+export type RunbookPublishOutput = void;
+export const RunbookPublishOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RunbookPublishOutput>;
 
 // The operation
 /**
@@ -6817,6 +8798,21 @@ export const RunbookPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookPublishOutput,
 }));
 // Input Schema
+export interface RunbookUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+  properties?: {
+    description?: string;
+    logVerbose?: boolean;
+    logProgress?: boolean;
+    logActivityTrace?: number;
+  };
+  name?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6839,10 +8835,22 @@ export const RunbookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type RunbookUpdateInput = typeof RunbookUpdateInput.Type;
+) as unknown as Schema.Codec<RunbookUpdateInput>;
 
 // Output Schema
+export interface RunbookUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RunbookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6861,8 +8869,7 @@ export const RunbookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RunbookUpdateOutput = typeof RunbookUpdateOutput.Type;
+}) as unknown as Schema.Codec<RunbookUpdateOutput>;
 
 // The operation
 /**
@@ -6879,6 +8886,19 @@ export const RunbookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RunbookUpdateOutput,
 }));
 // Input Schema
+export interface RuntimeEnvironmentsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  properties?: {
+    runtime?: { language?: string; version?: string };
+    defaultPackages?: Record<string, string>;
+    description?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RuntimeEnvironmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6907,11 +8927,22 @@ export const RuntimeEnvironmentsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RuntimeEnvironmentsCreateInput =
-  typeof RuntimeEnvironmentsCreateInput.Type;
+  ) as unknown as Schema.Codec<RuntimeEnvironmentsCreateInput>;
 
 // Output Schema
+export interface RuntimeEnvironmentsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RuntimeEnvironmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6931,9 +8962,7 @@ export const RuntimeEnvironmentsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RuntimeEnvironmentsCreateOutput =
-  typeof RuntimeEnvironmentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<RuntimeEnvironmentsCreateOutput>;
 
 // The operation
 /**
@@ -6952,6 +8981,12 @@ export const RuntimeEnvironmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RuntimeEnvironmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+}
 export const RuntimeEnvironmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6964,15 +8999,12 @@ export const RuntimeEnvironmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RuntimeEnvironmentsDeleteInput =
-  typeof RuntimeEnvironmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RuntimeEnvironmentsDeleteInput>;
 
 // Output Schema
+export type RuntimeEnvironmentsDeleteOutput = void;
 export const RuntimeEnvironmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RuntimeEnvironmentsDeleteOutput =
-  typeof RuntimeEnvironmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RuntimeEnvironmentsDeleteOutput>;
 
 // The operation
 /**
@@ -6991,6 +9023,12 @@ export const RuntimeEnvironmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RuntimeEnvironmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+}
 export const RuntimeEnvironmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7003,11 +9041,22 @@ export const RuntimeEnvironmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RuntimeEnvironmentsGetInput =
-  typeof RuntimeEnvironmentsGetInput.Type;
+  ) as unknown as Schema.Codec<RuntimeEnvironmentsGetInput>;
 
 // Output Schema
+export interface RuntimeEnvironmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RuntimeEnvironmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7027,9 +9076,7 @@ export const RuntimeEnvironmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RuntimeEnvironmentsGetOutput =
-  typeof RuntimeEnvironmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<RuntimeEnvironmentsGetOutput>;
 
 // The operation
 /**
@@ -7048,6 +9095,11 @@ export const RuntimeEnvironmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RuntimeEnvironmentsListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const RuntimeEnvironmentsListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7059,11 +9111,25 @@ export const RuntimeEnvironmentsListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RuntimeEnvironmentsListByAutomationAccountInput =
-  typeof RuntimeEnvironmentsListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<RuntimeEnvironmentsListByAutomationAccountInput>;
 
 // Output Schema
+export interface RuntimeEnvironmentsListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RuntimeEnvironmentsListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7098,9 +9164,7 @@ export const RuntimeEnvironmentsListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RuntimeEnvironmentsListByAutomationAccountOutput =
-  typeof RuntimeEnvironmentsListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<RuntimeEnvironmentsListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -7117,6 +9181,21 @@ export const RuntimeEnvironmentsListByAutomationAccount =
     outputSchema: RuntimeEnvironmentsListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface RuntimeEnvironmentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runtimeEnvironmentName: string;
+  properties?: { defaultPackages?: Record<string, string> };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RuntimeEnvironmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7150,11 +9229,22 @@ export const RuntimeEnvironmentsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type RuntimeEnvironmentsUpdateInput =
-  typeof RuntimeEnvironmentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<RuntimeEnvironmentsUpdateInput>;
 
 // Output Schema
+export interface RuntimeEnvironmentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RuntimeEnvironmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7174,9 +9264,7 @@ export const RuntimeEnvironmentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RuntimeEnvironmentsUpdateOutput =
-  typeof RuntimeEnvironmentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RuntimeEnvironmentsUpdateOutput>;
 
 // The operation
 /**
@@ -7195,6 +9283,36 @@ export const RuntimeEnvironmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScheduleCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  scheduleName: string;
+  name: string;
+  properties: {
+    description?: string;
+    startTime: string;
+    expiryTime?: string | null;
+    interval?: unknown;
+    frequency: "OneTime" | "Day" | "Hour" | "Week" | "Month" | "Minute";
+    timeZone?: string;
+    advancedSchedule?: {
+      weekDays?: string[];
+      monthDays?: number[];
+      monthlyOccurrences?: {
+        occurrence?: number;
+        day?:
+          | "Monday"
+          | "Tuesday"
+          | "Wednesday"
+          | "Thursday"
+          | "Friday"
+          | "Saturday"
+          | "Sunday";
+      }[];
+    };
+  };
+}
 export const ScheduleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7247,11 +9365,22 @@ export const ScheduleCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ScheduleCreateOrUpdateInput =
-  typeof ScheduleCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScheduleCreateOrUpdateInput>;
 
 // Output Schema
+export interface ScheduleCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScheduleCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7271,9 +9400,7 @@ export const ScheduleCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScheduleCreateOrUpdateOutput =
-  typeof ScheduleCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduleCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7292,6 +9419,12 @@ export const ScheduleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScheduleDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  scheduleName: string;
+}
 export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7303,12 +9436,12 @@ export const ScheduleDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ScheduleDeleteInput = typeof ScheduleDeleteInput.Type;
+) as unknown as Schema.Codec<ScheduleDeleteInput>;
 
 // Output Schema
-export const ScheduleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScheduleDeleteOutput = typeof ScheduleDeleteOutput.Type;
+export type ScheduleDeleteOutput = void;
+export const ScheduleDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScheduleDeleteOutput>;
 
 // The operation
 /**
@@ -7325,6 +9458,12 @@ export const ScheduleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScheduleDeleteOutput,
 }));
 // Input Schema
+export interface ScheduleGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  scheduleName: string;
+}
 export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7336,10 +9475,22 @@ export const ScheduleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ScheduleGetInput = typeof ScheduleGetInput.Type;
+) as unknown as Schema.Codec<ScheduleGetInput>;
 
 // Output Schema
+export interface ScheduleGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7358,8 +9509,7 @@ export const ScheduleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScheduleGetOutput = typeof ScheduleGetOutput.Type;
+}) as unknown as Schema.Codec<ScheduleGetOutput>;
 
 // The operation
 /**
@@ -7376,6 +9526,11 @@ export const ScheduleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScheduleGetOutput,
 }));
 // Input Schema
+export interface ScheduleListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const ScheduleListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7387,11 +9542,25 @@ export const ScheduleListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
       apiVersion: "2024-10-23",
     }),
-  );
-export type ScheduleListByAutomationAccountInput =
-  typeof ScheduleListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<ScheduleListByAutomationAccountInput>;
 
 // Output Schema
+export interface ScheduleListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScheduleListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7426,9 +9595,7 @@ export const ScheduleListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScheduleListByAutomationAccountOutput =
-  typeof ScheduleListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<ScheduleListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -7445,6 +9612,14 @@ export const ScheduleListByAutomationAccount =
     outputSchema: ScheduleListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface ScheduleUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  scheduleName: string;
+  name?: string;
+  properties?: { description?: string; isEnabled?: boolean };
+}
 export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7463,10 +9638,22 @@ export const ScheduleUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type ScheduleUpdateInput = typeof ScheduleUpdateInput.Type;
+) as unknown as Schema.Codec<ScheduleUpdateInput>;
 
 // Output Schema
+export interface ScheduleUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScheduleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7485,8 +9672,7 @@ export const ScheduleUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScheduleUpdateOutput = typeof ScheduleUpdateOutput.Type;
+}) as unknown as Schema.Codec<ScheduleUpdateOutput>;
 
 // The operation
 /**
@@ -7503,6 +9689,12 @@ export const ScheduleUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScheduleUpdateOutput,
 }));
 // Input Schema
+export interface SoftwareUpdateConfigurationMachineRunsGetByIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  softwareUpdateConfigurationMachineRunId: string;
+}
 export const SoftwareUpdateConfigurationMachineRunsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7515,11 +9707,31 @@ export const SoftwareUpdateConfigurationMachineRunsGetByIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns/{softwareUpdateConfigurationMachineRunId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationMachineRunsGetByIdInput =
-  typeof SoftwareUpdateConfigurationMachineRunsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationMachineRunsGetByIdInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationMachineRunsGetByIdOutput {
+  name?: string;
+  id?: string;
+  properties?: {
+    targetComputer?: string;
+    targetComputerType?: string;
+    softwareUpdateConfiguration?: { name?: string };
+    status?: string;
+    osType?: string;
+    correlationId?: string;
+    sourceComputerId?: string;
+    startTime?: string;
+    endTime?: string | null;
+    configuredDuration?: string;
+    job?: { id?: string };
+    creationTime?: string;
+    createdBy?: string;
+    lastModifiedTime?: string;
+    lastModifiedBy?: string;
+    error?: { code?: string; message?: string };
+  };
+}
 export const SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -7557,9 +9769,7 @@ export const SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
         ),
       }),
     ),
-  });
-export type SoftwareUpdateConfigurationMachineRunsGetByIdOutput =
-  typeof SoftwareUpdateConfigurationMachineRunsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationMachineRunsGetByIdOutput>;
 
 // The operation
 /**
@@ -7578,6 +9788,14 @@ export const SoftwareUpdateConfigurationMachineRunsGetById =
     outputSchema: SoftwareUpdateConfigurationMachineRunsGetByIdOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationMachineRunsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+  $skip?: string;
+  $top?: string;
+}
 export const SoftwareUpdateConfigurationMachineRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7592,11 +9810,34 @@ export const SoftwareUpdateConfigurationMachineRunsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationMachineRunsListInput =
-  typeof SoftwareUpdateConfigurationMachineRunsListInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationMachineRunsListInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationMachineRunsListOutput {
+  value: {
+    name?: string;
+    id?: string;
+    properties?: {
+      targetComputer?: string;
+      targetComputerType?: string;
+      softwareUpdateConfiguration?: { name?: string };
+      status?: string;
+      osType?: string;
+      correlationId?: string;
+      sourceComputerId?: string;
+      startTime?: string;
+      endTime?: string | null;
+      configuredDuration?: string;
+      job?: { id?: string };
+      creationTime?: string;
+      createdBy?: string;
+      lastModifiedTime?: string;
+      lastModifiedBy?: string;
+      error?: { code?: string; message?: string };
+    };
+  }[];
+  nextLink?: string;
+}
 export const SoftwareUpdateConfigurationMachineRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7639,9 +9880,7 @@ export const SoftwareUpdateConfigurationMachineRunsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SoftwareUpdateConfigurationMachineRunsListOutput =
-  typeof SoftwareUpdateConfigurationMachineRunsListOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationMachineRunsListOutput>;
 
 // The operation
 /**
@@ -7662,6 +9901,12 @@ export const SoftwareUpdateConfigurationMachineRunsList =
     outputSchema: SoftwareUpdateConfigurationMachineRunsListOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationRunsGetByIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  softwareUpdateConfigurationRunId: string;
+}
 export const SoftwareUpdateConfigurationRunsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7674,11 +9919,31 @@ export const SoftwareUpdateConfigurationRunsGetByIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns/{softwareUpdateConfigurationRunId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationRunsGetByIdInput =
-  typeof SoftwareUpdateConfigurationRunsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationRunsGetByIdInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationRunsGetByIdOutput {
+  name?: string;
+  id?: string;
+  properties?: {
+    softwareUpdateConfiguration?: { name?: string };
+    status?: string;
+    configuredDuration?: string;
+    osType?: string;
+    startTime?: string;
+    endTime?: string | null;
+    computerCount?: number;
+    failedCount?: number;
+    creationTime?: string;
+    createdBy?: string;
+    lastModifiedTime?: string;
+    lastModifiedBy?: string;
+    tasks?: {
+      preTask?: { status?: string; source?: string; jobId?: string };
+      postTask?: { status?: string; source?: string; jobId?: string };
+    };
+  };
+}
 export const SoftwareUpdateConfigurationRunsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -7721,9 +9986,7 @@ export const SoftwareUpdateConfigurationRunsGetByIdOutput =
         ),
       }),
     ),
-  });
-export type SoftwareUpdateConfigurationRunsGetByIdOutput =
-  typeof SoftwareUpdateConfigurationRunsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationRunsGetByIdOutput>;
 
 // The operation
 /**
@@ -7742,6 +10005,14 @@ export const SoftwareUpdateConfigurationRunsGetById =
     outputSchema: SoftwareUpdateConfigurationRunsGetByIdOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationRunsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+  $skip?: string;
+  $top?: string;
+}
 export const SoftwareUpdateConfigurationRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7756,11 +10027,34 @@ export const SoftwareUpdateConfigurationRunsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationRunsListInput =
-  typeof SoftwareUpdateConfigurationRunsListInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationRunsListInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationRunsListOutput {
+  value: {
+    name?: string;
+    id?: string;
+    properties?: {
+      softwareUpdateConfiguration?: { name?: string };
+      status?: string;
+      configuredDuration?: string;
+      osType?: string;
+      startTime?: string;
+      endTime?: string | null;
+      computerCount?: number;
+      failedCount?: number;
+      creationTime?: string;
+      createdBy?: string;
+      lastModifiedTime?: string;
+      lastModifiedBy?: string;
+      tasks?: {
+        preTask?: { status?: string; source?: string; jobId?: string };
+        postTask?: { status?: string; source?: string; jobId?: string };
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const SoftwareUpdateConfigurationRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7808,9 +10102,7 @@ export const SoftwareUpdateConfigurationRunsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SoftwareUpdateConfigurationRunsListOutput =
-  typeof SoftwareUpdateConfigurationRunsListOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationRunsListOutput>;
 
 // The operation
 /**
@@ -7831,6 +10123,96 @@ export const SoftwareUpdateConfigurationRunsList =
     outputSchema: SoftwareUpdateConfigurationRunsListOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  softwareUpdateConfigurationName: string;
+  properties: {
+    updateConfiguration: {
+      operatingSystem: "Windows" | "Linux";
+      windows?: {
+        includedUpdateClassifications?:
+          | "Unclassified"
+          | "Critical"
+          | "Security"
+          | "UpdateRollup"
+          | "FeaturePack"
+          | "ServicePack"
+          | "Definition"
+          | "Tools"
+          | "Updates";
+        excludedKbNumbers?: string[];
+        includedKbNumbers?: string[];
+        rebootSetting?: string;
+      };
+      linux?: {
+        includedPackageClassifications?:
+          | "Unclassified"
+          | "Critical"
+          | "Security"
+          | "Other";
+        excludedPackageNameMasks?: string[];
+        includedPackageNameMasks?: string[];
+        rebootSetting?: string;
+      };
+      duration?: string;
+      azureVirtualMachines?: string[];
+      nonAzureComputerNames?: string[];
+      targets?: {
+        azureQueries?: {
+          scope?: string[];
+          locations?: string[];
+          tagSettings?: {
+            tags?: Record<string, string[]>;
+            filterOperator?: "All" | "Any";
+          };
+        }[];
+        nonAzureQueries?: { functionAlias?: string; workspaceId?: string }[];
+      };
+    };
+    scheduleInfo: {
+      startTime?: string;
+      startTimeOffsetMinutes?: number;
+      expiryTime?: string | null;
+      expiryTimeOffsetMinutes?: number;
+      isEnabled?: boolean;
+      nextRun?: string | null;
+      nextRunOffsetMinutes?: number;
+      interval?: number;
+      frequency?: "OneTime" | "Day" | "Hour" | "Week" | "Month" | "Minute";
+      timeZone?: string;
+      advancedSchedule?: {
+        weekDays?: string[];
+        monthDays?: number[];
+        monthlyOccurrences?: {
+          occurrence?: number;
+          day?:
+            | "Monday"
+            | "Tuesday"
+            | "Wednesday"
+            | "Thursday"
+            | "Friday"
+            | "Saturday"
+            | "Sunday";
+        }[];
+      };
+      creationTime?: string;
+      lastModifiedTime?: string;
+      description?: string;
+    };
+    provisioningState?: string;
+    error?: { code?: string; message?: string };
+    creationTime?: string;
+    createdBy?: string;
+    lastModifiedTime?: string;
+    lastModifiedBy?: string;
+    tasks?: {
+      preTask?: { parameters?: Record<string, string>; source?: string };
+      postTask?: { parameters?: Record<string, string>; source?: string };
+    };
+  };
+}
 export const SoftwareUpdateConfigurationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8002,11 +10384,22 @@ export const SoftwareUpdateConfigurationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationsCreateInput =
-  typeof SoftwareUpdateConfigurationsCreateInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationsCreateInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SoftwareUpdateConfigurationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8026,9 +10419,7 @@ export const SoftwareUpdateConfigurationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SoftwareUpdateConfigurationsCreateOutput =
-  typeof SoftwareUpdateConfigurationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationsCreateOutput>;
 
 // The operation
 /**
@@ -8047,6 +10438,12 @@ export const SoftwareUpdateConfigurationsCreate =
     outputSchema: SoftwareUpdateConfigurationsCreateOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  softwareUpdateConfigurationName: string;
+}
 export const SoftwareUpdateConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8059,15 +10456,12 @@ export const SoftwareUpdateConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationsDeleteInput =
-  typeof SoftwareUpdateConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationsDeleteInput>;
 
 // Output Schema
+export type SoftwareUpdateConfigurationsDeleteOutput = void;
 export const SoftwareUpdateConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SoftwareUpdateConfigurationsDeleteOutput =
-  typeof SoftwareUpdateConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SoftwareUpdateConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -8086,6 +10480,12 @@ export const SoftwareUpdateConfigurationsDelete =
     outputSchema: SoftwareUpdateConfigurationsDeleteOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationsGetByNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  softwareUpdateConfigurationName: string;
+}
 export const SoftwareUpdateConfigurationsGetByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8098,11 +10498,22 @@ export const SoftwareUpdateConfigurationsGetByNameInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationsGetByNameInput =
-  typeof SoftwareUpdateConfigurationsGetByNameInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationsGetByNameInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationsGetByNameOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SoftwareUpdateConfigurationsGetByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8122,9 +10533,7 @@ export const SoftwareUpdateConfigurationsGetByNameOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SoftwareUpdateConfigurationsGetByNameOutput =
-  typeof SoftwareUpdateConfigurationsGetByNameOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationsGetByNameOutput>;
 
 // The operation
 /**
@@ -8143,6 +10552,12 @@ export const SoftwareUpdateConfigurationsGetByName =
     outputSchema: SoftwareUpdateConfigurationsGetByNameOutput,
   }));
 // Input Schema
+export interface SoftwareUpdateConfigurationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const SoftwareUpdateConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8155,11 +10570,69 @@ export const SoftwareUpdateConfigurationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SoftwareUpdateConfigurationsListInput =
-  typeof SoftwareUpdateConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<SoftwareUpdateConfigurationsListInput>;
 
 // Output Schema
+export interface SoftwareUpdateConfigurationsListOutput {
+  value?: {
+    name?: string;
+    id?: string;
+    properties: {
+      updateConfiguration?: {
+        operatingSystem: "Windows" | "Linux";
+        windows?: {
+          includedUpdateClassifications?:
+            | "Unclassified"
+            | "Critical"
+            | "Security"
+            | "UpdateRollup"
+            | "FeaturePack"
+            | "ServicePack"
+            | "Definition"
+            | "Tools"
+            | "Updates";
+          excludedKbNumbers?: string[];
+          includedKbNumbers?: string[];
+          rebootSetting?: string;
+        };
+        linux?: {
+          includedPackageClassifications?:
+            | "Unclassified"
+            | "Critical"
+            | "Security"
+            | "Other";
+          excludedPackageNameMasks?: string[];
+          includedPackageNameMasks?: string[];
+          rebootSetting?: string;
+        };
+        duration?: string;
+        azureVirtualMachines?: string[];
+        nonAzureComputerNames?: string[];
+        targets?: {
+          azureQueries?: {
+            scope?: string[];
+            locations?: string[];
+            tagSettings?: {
+              tags?: Record<string, string[]>;
+              filterOperator?: "All" | "Any";
+            };
+          }[];
+          nonAzureQueries?: { functionAlias?: string; workspaceId?: string }[];
+        };
+      };
+      tasks?: {
+        preTask?: { parameters?: Record<string, string>; source?: string };
+        postTask?: { parameters?: Record<string, string>; source?: string };
+      };
+      frequency?: "OneTime" | "Day" | "Hour" | "Week" | "Month" | "Minute";
+      startTime?: string;
+      creationTime?: string;
+      lastModifiedTime?: string;
+      provisioningState?: string;
+      nextRun?: string | null;
+    };
+  }[];
+}
 export const SoftwareUpdateConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8297,9 +10770,7 @@ export const SoftwareUpdateConfigurationsListOutput =
         }),
       ),
     ),
-  });
-export type SoftwareUpdateConfigurationsListOutput =
-  typeof SoftwareUpdateConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<SoftwareUpdateConfigurationsListOutput>;
 
 // The operation
 /**
@@ -8318,6 +10789,26 @@ export const SoftwareUpdateConfigurationsList =
     outputSchema: SoftwareUpdateConfigurationsListOutput,
   }));
 // Input Schema
+export interface SourceControlCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  properties: {
+    repoUrl?: string;
+    branch?: string;
+    folderPath?: string;
+    autoSync?: boolean;
+    publishRunbook?: boolean;
+    sourceType?: "VsoGit" | "VsoTfvc" | "GitHub";
+    securityToken?: {
+      accessToken?: string | Redacted.Redacted<string>;
+      refreshToken?: string | Redacted.Redacted<string>;
+      tokenType?: "PersonalAccessToken" | "Oauth";
+    };
+    description?: string;
+  };
+}
 export const SourceControlCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8350,11 +10841,22 @@ export const SourceControlCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlCreateOrUpdateInput =
-  typeof SourceControlCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SourceControlCreateOrUpdateInput>;
 
 // Output Schema
+export interface SourceControlCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8374,9 +10876,7 @@ export const SourceControlCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SourceControlCreateOrUpdateOutput =
-  typeof SourceControlCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8395,6 +10895,12 @@ export const SourceControlCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SourceControlDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+}
 export const SourceControlDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8407,13 +10913,12 @@ export const SourceControlDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlDeleteInput = typeof SourceControlDeleteInput.Type;
+  ) as unknown as Schema.Codec<SourceControlDeleteInput>;
 
 // Output Schema
+export type SourceControlDeleteOutput = void;
 export const SourceControlDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SourceControlDeleteOutput = typeof SourceControlDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SourceControlDeleteOutput>;
 
 // The operation
 /**
@@ -8430,6 +10935,12 @@ export const SourceControlDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SourceControlDeleteOutput,
 }));
 // Input Schema
+export interface SourceControlGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+}
 export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8441,10 +10952,22 @@ export const SourceControlGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type SourceControlGetInput = typeof SourceControlGetInput.Type;
+) as unknown as Schema.Codec<SourceControlGetInput>;
 
 // Output Schema
+export interface SourceControlGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -8465,8 +10988,7 @@ export const SourceControlGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SourceControlGetOutput = typeof SourceControlGetOutput.Type;
+) as unknown as Schema.Codec<SourceControlGetOutput>;
 
 // The operation
 /**
@@ -8483,6 +11005,12 @@ export const SourceControlGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SourceControlGetOutput,
 }));
 // Input Schema
+export interface SourceControlListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const SourceControlListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8495,11 +11023,25 @@ export const SourceControlListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlListByAutomationAccountInput =
-  typeof SourceControlListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<SourceControlListByAutomationAccountInput>;
 
 // Output Schema
+export interface SourceControlListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SourceControlListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8534,9 +11076,7 @@ export const SourceControlListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SourceControlListByAutomationAccountOutput =
-  typeof SourceControlListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -8554,6 +11094,14 @@ export const SourceControlListByAutomationAccount =
     outputSchema: SourceControlListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface SourceControlSyncJobCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  sourceControlSyncJobId: string;
+  properties: { commitId: string };
+}
 export const SourceControlSyncJobCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8570,11 +11118,22 @@ export const SourceControlSyncJobCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlSyncJobCreateInput =
-  typeof SourceControlSyncJobCreateInput.Type;
+  ) as unknown as Schema.Codec<SourceControlSyncJobCreateInput>;
 
 // Output Schema
+export interface SourceControlSyncJobCreateOutput {
+  name?: string;
+  type?: string;
+  id?: string;
+  properties?: {
+    sourceControlSyncJobId?: string;
+    creationTime?: string;
+    provisioningState?: "Completed" | "Failed" | "Running";
+    startTime?: string | null;
+    endTime?: string | null;
+    syncType?: "PartialSync" | "FullSync";
+  };
+}
 export const SourceControlSyncJobCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -8592,9 +11151,7 @@ export const SourceControlSyncJobCreateOutput =
         syncType: Schema.optional(Schema.Literals(["PartialSync", "FullSync"])),
       }),
     ),
-  });
-export type SourceControlSyncJobCreateOutput =
-  typeof SourceControlSyncJobCreateOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlSyncJobCreateOutput>;
 
 // The operation
 /**
@@ -8614,6 +11171,13 @@ export const SourceControlSyncJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SourceControlSyncJobGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  sourceControlSyncJobId: string;
+}
 export const SourceControlSyncJobGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8627,11 +11191,21 @@ export const SourceControlSyncJobGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlSyncJobGetInput =
-  typeof SourceControlSyncJobGetInput.Type;
+  ) as unknown as Schema.Codec<SourceControlSyncJobGetInput>;
 
 // Output Schema
+export interface SourceControlSyncJobGetOutput {
+  id?: string;
+  properties?: {
+    sourceControlSyncJobId?: string;
+    creationTime?: string;
+    provisioningState?: "Completed" | "Failed" | "Running";
+    startTime?: string | null;
+    endTime?: string | null;
+    syncType?: "PartialSync" | "FullSync";
+    exception?: string;
+  };
+}
 export const SourceControlSyncJobGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8648,9 +11222,7 @@ export const SourceControlSyncJobGetOutput =
         exception: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SourceControlSyncJobGetOutput =
-  typeof SourceControlSyncJobGetOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlSyncJobGetOutput>;
 
 // The operation
 /**
@@ -8670,6 +11242,13 @@ export const SourceControlSyncJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SourceControlSyncJobListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  $filter?: string;
+}
 export const SourceControlSyncJobListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8683,11 +11262,25 @@ export const SourceControlSyncJobListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlSyncJobListByAutomationAccountInput =
-  typeof SourceControlSyncJobListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<SourceControlSyncJobListByAutomationAccountInput>;
 
 // Output Schema
+export interface SourceControlSyncJobListByAutomationAccountOutput {
+  value: {
+    name?: string;
+    type?: string;
+    id?: string;
+    properties?: {
+      sourceControlSyncJobId?: string;
+      creationTime?: string;
+      provisioningState?: "Completed" | "Failed" | "Running";
+      startTime?: string | null;
+      endTime?: string | null;
+      syncType?: "PartialSync" | "FullSync";
+    };
+  }[];
+  nextLink?: string;
+}
 export const SourceControlSyncJobListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8712,9 +11305,7 @@ export const SourceControlSyncJobListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SourceControlSyncJobListByAutomationAccountOutput =
-  typeof SourceControlSyncJobListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlSyncJobListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -8733,6 +11324,14 @@ export const SourceControlSyncJobListByAutomationAccount =
     outputSchema: SourceControlSyncJobListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface SourceControlSyncJobStreamsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  sourceControlSyncJobId: string;
+  streamId: string;
+}
 export const SourceControlSyncJobStreamsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8747,11 +11346,20 @@ export const SourceControlSyncJobStreamsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlSyncJobStreamsGetInput =
-  typeof SourceControlSyncJobStreamsGetInput.Type;
+  ) as unknown as Schema.Codec<SourceControlSyncJobStreamsGetInput>;
 
 // Output Schema
+export interface SourceControlSyncJobStreamsGetOutput {
+  id?: string;
+  properties?: {
+    sourceControlSyncJobStreamId?: string;
+    summary?: string;
+    time?: string | null;
+    streamType?: "Error" | "Output";
+    streamText?: string;
+    value?: Record<string, unknown>;
+  };
+}
 export const SourceControlSyncJobStreamsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8765,9 +11373,7 @@ export const SourceControlSyncJobStreamsGetOutput =
         value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
     ),
-  });
-export type SourceControlSyncJobStreamsGetOutput =
-  typeof SourceControlSyncJobStreamsGetOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlSyncJobStreamsGetOutput>;
 
 // The operation
 /**
@@ -8787,6 +11393,14 @@ export const SourceControlSyncJobStreamsGet =
     outputSchema: SourceControlSyncJobStreamsGetOutput,
   }));
 // Input Schema
+export interface SourceControlSyncJobStreamsListBySyncJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  sourceControlSyncJobId: string;
+  $filter?: string;
+}
 export const SourceControlSyncJobStreamsListBySyncJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8801,11 +11415,21 @@ export const SourceControlSyncJobStreamsListBySyncJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlSyncJobStreamsListBySyncJobInput =
-  typeof SourceControlSyncJobStreamsListBySyncJobInput.Type;
+  ) as unknown as Schema.Codec<SourceControlSyncJobStreamsListBySyncJobInput>;
 
 // Output Schema
+export interface SourceControlSyncJobStreamsListBySyncJobOutput {
+  value: {
+    id?: string;
+    properties?: {
+      sourceControlSyncJobStreamId?: string;
+      summary?: string;
+      time?: string | null;
+      streamType?: "Error" | "Output";
+    };
+  }[];
+  nextLink?: string;
+}
 export const SourceControlSyncJobStreamsListBySyncJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8822,9 +11446,7 @@ export const SourceControlSyncJobStreamsListBySyncJobOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SourceControlSyncJobStreamsListBySyncJobOutput =
-  typeof SourceControlSyncJobStreamsListBySyncJobOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlSyncJobStreamsListBySyncJobOutput>;
 
 // The operation
 /**
@@ -8844,6 +11466,24 @@ export const SourceControlSyncJobStreamsListBySyncJob =
     outputSchema: SourceControlSyncJobStreamsListBySyncJobOutput,
   }));
 // Input Schema
+export interface SourceControlUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  sourceControlName: string;
+  properties?: {
+    branch?: string;
+    folderPath?: string;
+    autoSync?: boolean;
+    publishRunbook?: boolean;
+    securityToken?: {
+      accessToken?: string | Redacted.Redacted<string>;
+      refreshToken?: string | Redacted.Redacted<string>;
+      tokenType?: "PersonalAccessToken" | "Oauth";
+    };
+    description?: string;
+  };
+}
 export const SourceControlUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8874,10 +11514,22 @@ export const SourceControlUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type SourceControlUpdateInput = typeof SourceControlUpdateInput.Type;
+  ) as unknown as Schema.Codec<SourceControlUpdateInput>;
 
 // Output Schema
+export interface SourceControlUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8897,8 +11549,7 @@ export const SourceControlUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SourceControlUpdateOutput = typeof SourceControlUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlUpdateOutput>;
 
 // The operation
 /**
@@ -8915,6 +11566,12 @@ export const SourceControlUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SourceControlUpdateOutput,
 }));
 // Input Schema
+export interface StatisticsListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const StatisticsListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8927,11 +11584,19 @@ export const StatisticsListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/statistics",
       apiVersion: "2024-10-23",
     }),
-  );
-export type StatisticsListByAutomationAccountInput =
-  typeof StatisticsListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<StatisticsListByAutomationAccountInput>;
 
 // Output Schema
+export interface StatisticsListByAutomationAccountOutput {
+  value?: {
+    counterProperty?: string;
+    counterValue?: number;
+    startTime?: string;
+    endTime?: string | null;
+    id?: string;
+  }[];
+  nextLink?: string;
+}
 export const StatisticsListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8946,9 +11611,7 @@ export const StatisticsListByAutomationAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StatisticsListByAutomationAccountOutput =
-  typeof StatisticsListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<StatisticsListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -8966,6 +11629,15 @@ export const StatisticsListByAutomationAccount =
     outputSchema: StatisticsListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface TestJobCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+  parameters?: Record<string, string>;
+  runOn?: string;
+  runtimeEnvironment?: string;
+}
 export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8980,10 +11652,22 @@ export const TestJobCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobCreateInput = typeof TestJobCreateInput.Type;
+) as unknown as Schema.Codec<TestJobCreateInput>;
 
 // Output Schema
+export interface TestJobCreateOutput {
+  creationTime?: string;
+  status?: string;
+  statusDetails?: string;
+  runOn?: string;
+  startTime?: string | null;
+  endTime?: string | null;
+  exception?: string;
+  lastModifiedTime?: string;
+  lastStatusModifiedTime?: string | null;
+  parameters?: Record<string, string>;
+  logActivityTrace?: number;
+}
 export const TestJobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
@@ -8996,8 +11680,7 @@ export const TestJobCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastStatusModifiedTime: Schema.optional(Schema.NullOr(Schema.String)),
   parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   logActivityTrace: Schema.optional(Schema.Number),
-});
-export type TestJobCreateOutput = typeof TestJobCreateOutput.Type;
+}) as unknown as Schema.Codec<TestJobCreateOutput>;
 
 // The operation
 /**
@@ -9014,6 +11697,12 @@ export const TestJobCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobCreateOutput,
 }));
 // Input Schema
+export interface TestJobGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9025,10 +11714,22 @@ export const TestJobGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobGetInput = typeof TestJobGetInput.Type;
+) as unknown as Schema.Codec<TestJobGetInput>;
 
 // Output Schema
+export interface TestJobGetOutput {
+  creationTime?: string;
+  status?: string;
+  statusDetails?: string;
+  runOn?: string;
+  startTime?: string | null;
+  endTime?: string | null;
+  exception?: string;
+  lastModifiedTime?: string;
+  lastStatusModifiedTime?: string | null;
+  parameters?: Record<string, string>;
+  logActivityTrace?: number;
+}
 export const TestJobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   creationTime: Schema.optional(Schema.String),
   status: Schema.optional(Schema.String),
@@ -9041,8 +11742,7 @@ export const TestJobGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   lastStatusModifiedTime: Schema.optional(Schema.NullOr(Schema.String)),
   parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   logActivityTrace: Schema.optional(Schema.Number),
-});
-export type TestJobGetOutput = typeof TestJobGetOutput.Type;
+}) as unknown as Schema.Codec<TestJobGetOutput>;
 
 // The operation
 /**
@@ -9059,6 +11759,12 @@ export const TestJobGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobGetOutput,
 }));
 // Input Schema
+export interface TestJobResumeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9070,12 +11776,12 @@ export const TestJobResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/resume",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobResumeInput = typeof TestJobResumeInput.Type;
+) as unknown as Schema.Codec<TestJobResumeInput>;
 
 // Output Schema
-export const TestJobResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TestJobResumeOutput = typeof TestJobResumeOutput.Type;
+export type TestJobResumeOutput = void;
+export const TestJobResumeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobResumeOutput>;
 
 // The operation
 /**
@@ -9092,6 +11798,12 @@ export const TestJobResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobResumeOutput,
 }));
 // Input Schema
+export interface TestJobStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9103,12 +11815,12 @@ export const TestJobStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/stop",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobStopInput = typeof TestJobStopInput.Type;
+) as unknown as Schema.Codec<TestJobStopInput>;
 
 // Output Schema
-export const TestJobStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TestJobStopOutput = typeof TestJobStopOutput.Type;
+export type TestJobStopOutput = void;
+export const TestJobStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobStopOutput>;
 
 // The operation
 /**
@@ -9125,6 +11837,13 @@ export const TestJobStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobStopOutput,
 }));
 // Input Schema
+export interface TestJobStreamsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+  jobStreamId: string;
+}
 export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9139,10 +11858,27 @@ export const TestJobStreamsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobStreamsGetInput = typeof TestJobStreamsGetInput.Type;
+) as unknown as Schema.Codec<TestJobStreamsGetInput>;
 
 // Output Schema
+export interface TestJobStreamsGetOutput {
+  id?: string;
+  properties?: {
+    jobStreamId?: string;
+    time?: string;
+    streamType?:
+      | "Progress"
+      | "Output"
+      | "Warning"
+      | "Error"
+      | "Debug"
+      | "Verbose"
+      | "Any";
+    streamText?: string;
+    summary?: string | null;
+    value?: Record<string, unknown>;
+  };
+}
 export const TestJobStreamsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9166,8 +11902,7 @@ export const TestJobStreamsGetOutput =
         value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
     ),
-  });
-export type TestJobStreamsGetOutput = typeof TestJobStreamsGetOutput.Type;
+  }) as unknown as Schema.Codec<TestJobStreamsGetOutput>;
 
 // The operation
 /**
@@ -9185,6 +11920,13 @@ export const TestJobStreamsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobStreamsGetOutput,
 }));
 // Input Schema
+export interface TestJobStreamsListByTestJobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+  $filter?: string;
+}
 export const TestJobStreamsListByTestJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9198,11 +11940,30 @@ export const TestJobStreamsListByTestJobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
       apiVersion: "2024-10-23",
     }),
-  );
-export type TestJobStreamsListByTestJobInput =
-  typeof TestJobStreamsListByTestJobInput.Type;
+  ) as unknown as Schema.Codec<TestJobStreamsListByTestJobInput>;
 
 // Output Schema
+export interface TestJobStreamsListByTestJobOutput {
+  value: {
+    id?: string;
+    properties?: {
+      jobStreamId?: string;
+      time?: string;
+      streamType?:
+        | "Progress"
+        | "Output"
+        | "Warning"
+        | "Error"
+        | "Debug"
+        | "Verbose"
+        | "Any";
+      streamText?: string;
+      summary?: string | null;
+      value?: Record<string, unknown>;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TestJobStreamsListByTestJobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9233,9 +11994,7 @@ export const TestJobStreamsListByTestJobOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TestJobStreamsListByTestJobOutput =
-  typeof TestJobStreamsListByTestJobOutput.Type;
+  }) as unknown as Schema.Codec<TestJobStreamsListByTestJobOutput>;
 
 // The operation
 /**
@@ -9255,6 +12014,12 @@ export const TestJobStreamsListByTestJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TestJobSuspendInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  runbookName: string;
+}
 export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9266,12 +12031,12 @@ export const TestJobSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/suspend",
     apiVersion: "2024-10-23",
   }),
-);
-export type TestJobSuspendInput = typeof TestJobSuspendInput.Type;
+) as unknown as Schema.Codec<TestJobSuspendInput>;
 
 // Output Schema
-export const TestJobSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TestJobSuspendOutput = typeof TestJobSuspendOutput.Type;
+export type TestJobSuspendOutput = void;
+export const TestJobSuspendOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestJobSuspendOutput>;
 
 // The operation
 /**
@@ -9288,6 +12053,11 @@ export const TestJobSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TestJobSuspendOutput,
 }));
 // Input Schema
+export interface UsagesListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const UsagesListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9299,11 +12069,20 @@ export const UsagesListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
       apiVersion: "2024-10-23",
     }),
-  );
-export type UsagesListByAutomationAccountInput =
-  typeof UsagesListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<UsagesListByAutomationAccountInput>;
 
 // Output Schema
+export interface UsagesListByAutomationAccountOutput {
+  value?: {
+    id?: string;
+    name?: { value?: string; localizedValue?: string };
+    unit?: string;
+    currentValue?: number;
+    limit?: number;
+    throttleStatus?: string;
+  }[];
+  nextLink?: string;
+}
 export const UsagesListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -9324,9 +12103,7 @@ export const UsagesListByAutomationAccountOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsagesListByAutomationAccountOutput =
-  typeof UsagesListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<UsagesListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -9343,6 +12120,14 @@ export const UsagesListByAutomationAccount =
     outputSchema: UsagesListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface VariableCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  variableName: string;
+  name: string;
+  properties: { value?: string; description?: string; isEncrypted?: boolean };
+}
 export const VariableCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9361,11 +12146,22 @@ export const VariableCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type VariableCreateOrUpdateInput =
-  typeof VariableCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VariableCreateOrUpdateInput>;
 
 // Output Schema
+export interface VariableCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VariableCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9385,9 +12181,7 @@ export const VariableCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VariableCreateOrUpdateOutput =
-  typeof VariableCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VariableCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9406,6 +12200,12 @@ export const VariableCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VariableDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  variableName: string;
+}
 export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9417,12 +12217,12 @@ export const VariableDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type VariableDeleteInput = typeof VariableDeleteInput.Type;
+) as unknown as Schema.Codec<VariableDeleteInput>;
 
 // Output Schema
-export const VariableDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VariableDeleteOutput = typeof VariableDeleteOutput.Type;
+export type VariableDeleteOutput = void;
+export const VariableDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VariableDeleteOutput>;
 
 // The operation
 /**
@@ -9439,6 +12239,12 @@ export const VariableDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VariableDeleteOutput,
 }));
 // Input Schema
+export interface VariableGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  variableName: string;
+}
 export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9450,10 +12256,22 @@ export const VariableGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type VariableGetInput = typeof VariableGetInput.Type;
+) as unknown as Schema.Codec<VariableGetInput>;
 
 // Output Schema
+export interface VariableGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VariableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9472,8 +12290,7 @@ export const VariableGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VariableGetOutput = typeof VariableGetOutput.Type;
+}) as unknown as Schema.Codec<VariableGetOutput>;
 
 // The operation
 /**
@@ -9490,6 +12307,11 @@ export const VariableGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VariableGetOutput,
 }));
 // Input Schema
+export interface VariableListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const VariableListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9501,11 +12323,25 @@ export const VariableListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
       apiVersion: "2024-10-23",
     }),
-  );
-export type VariableListByAutomationAccountInput =
-  typeof VariableListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<VariableListByAutomationAccountInput>;
 
 // Output Schema
+export interface VariableListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VariableListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9540,9 +12376,7 @@ export const VariableListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VariableListByAutomationAccountOutput =
-  typeof VariableListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<VariableListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -9559,6 +12393,14 @@ export const VariableListByAutomationAccount =
     outputSchema: VariableListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface VariableUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  variableName: string;
+  name?: string;
+  properties?: { value?: string; description?: string };
+}
 export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9577,10 +12419,22 @@ export const VariableUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type VariableUpdateInput = typeof VariableUpdateInput.Type;
+) as unknown as Schema.Codec<VariableUpdateInput>;
 
 // Output Schema
+export interface VariableUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VariableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9599,8 +12453,7 @@ export const VariableUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VariableUpdateOutput = typeof VariableUpdateOutput.Type;
+}) as unknown as Schema.Codec<VariableUpdateOutput>;
 
 // The operation
 /**
@@ -9617,6 +12470,26 @@ export const VariableUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VariableUpdateOutput,
 }));
 // Input Schema
+export interface WatcherCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+  properties?: {
+    executionFrequencyInSeconds?: number;
+    scriptName?: string;
+    scriptParameters?: Record<string, string>;
+    scriptRunOn?: string;
+    status?: string;
+    creationTime?: string;
+    lastModifiedTime?: string;
+    lastModifiedBy?: string;
+    description?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const WatcherCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9638,36 +12511,31 @@ export const WatcherCreateOrUpdateInput =
         description: Schema.optional(Schema.String),
       }),
     ),
+    etag: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type WatcherCreateOrUpdateInput = typeof WatcherCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WatcherCreateOrUpdateInput>;
 
 // Output Schema
+export interface WatcherCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatcherCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9687,9 +12555,7 @@ export const WatcherCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WatcherCreateOrUpdateOutput =
-  typeof WatcherCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WatcherCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9708,6 +12574,12 @@ export const WatcherCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WatcherDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+}
 export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9719,12 +12591,12 @@ export const WatcherDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WatcherDeleteInput = typeof WatcherDeleteInput.Type;
+) as unknown as Schema.Codec<WatcherDeleteInput>;
 
 // Output Schema
-export const WatcherDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatcherDeleteOutput = typeof WatcherDeleteOutput.Type;
+export type WatcherDeleteOutput = void;
+export const WatcherDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherDeleteOutput>;
 
 // The operation
 /**
@@ -9741,6 +12613,12 @@ export const WatcherDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatcherDeleteOutput,
 }));
 // Input Schema
+export interface WatcherGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+}
 export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9752,10 +12630,22 @@ export const WatcherGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WatcherGetInput = typeof WatcherGetInput.Type;
+) as unknown as Schema.Codec<WatcherGetInput>;
 
 // Output Schema
+export interface WatcherGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9774,8 +12664,7 @@ export const WatcherGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatcherGetOutput = typeof WatcherGetOutput.Type;
+}) as unknown as Schema.Codec<WatcherGetOutput>;
 
 // The operation
 /**
@@ -9792,6 +12681,12 @@ export const WatcherGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatcherGetOutput,
 }));
 // Input Schema
+export interface WatcherListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const WatcherListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9804,11 +12699,25 @@ export const WatcherListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
       apiVersion: "2024-10-23",
     }),
-  );
-export type WatcherListByAutomationAccountInput =
-  typeof WatcherListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<WatcherListByAutomationAccountInput>;
 
 // Output Schema
+export interface WatcherListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WatcherListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9843,9 +12752,7 @@ export const WatcherListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WatcherListByAutomationAccountOutput =
-  typeof WatcherListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<WatcherListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -9863,6 +12770,12 @@ export const WatcherListByAutomationAccount =
     outputSchema: WatcherListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface WatcherStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+}
 export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9874,12 +12787,12 @@ export const WatcherStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/start",
     apiVersion: "2024-10-23",
   }),
-);
-export type WatcherStartInput = typeof WatcherStartInput.Type;
+) as unknown as Schema.Codec<WatcherStartInput>;
 
 // Output Schema
-export const WatcherStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatcherStartOutput = typeof WatcherStartOutput.Type;
+export type WatcherStartOutput = void;
+export const WatcherStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStartOutput>;
 
 // The operation
 /**
@@ -9896,6 +12809,12 @@ export const WatcherStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatcherStartOutput,
 }));
 // Input Schema
+export interface WatcherStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+}
 export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9907,12 +12826,12 @@ export const WatcherStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}/stop",
     apiVersion: "2024-10-23",
   }),
-);
-export type WatcherStopInput = typeof WatcherStopInput.Type;
+) as unknown as Schema.Codec<WatcherStopInput>;
 
 // Output Schema
-export const WatcherStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WatcherStopOutput = typeof WatcherStopOutput.Type;
+export type WatcherStopOutput = void;
+export const WatcherStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WatcherStopOutput>;
 
 // The operation
 /**
@@ -9929,6 +12848,14 @@ export const WatcherStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatcherStopOutput,
 }));
 // Input Schema
+export interface WatcherUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  watcherName: string;
+  properties?: { executionFrequencyInSeconds?: number };
+  name?: string;
+}
 export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9946,10 +12873,22 @@ export const WatcherUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WatcherUpdateInput = typeof WatcherUpdateInput.Type;
+) as unknown as Schema.Codec<WatcherUpdateInput>;
 
 // Output Schema
+export interface WatcherUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9968,8 +12907,7 @@ export const WatcherUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WatcherUpdateOutput = typeof WatcherUpdateOutput.Type;
+}) as unknown as Schema.Codec<WatcherUpdateOutput>;
 
 // The operation
 /**
@@ -9986,6 +12924,21 @@ export const WatcherUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WatcherUpdateOutput,
 }));
 // Input Schema
+export interface WebhookCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  webhookName: string;
+  name: string;
+  properties: {
+    isEnabled?: boolean;
+    uri?: string;
+    expiryTime?: string;
+    parameters?: Record<string, string>;
+    runbook?: { name?: string };
+    runOn?: string;
+  };
+}
 export const WebhookCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10011,10 +12964,22 @@ export const WebhookCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
       apiVersion: "2024-10-23",
     }),
-  );
-export type WebhookCreateOrUpdateInput = typeof WebhookCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebhookCreateOrUpdateInput>;
 
 // Output Schema
+export interface WebhookCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10034,9 +12999,7 @@ export const WebhookCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebhookCreateOrUpdateOutput =
-  typeof WebhookCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebhookCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10055,6 +13018,12 @@ export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebhookDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  webhookName: string;
+}
 export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10066,12 +13035,12 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WebhookDeleteInput = typeof WebhookDeleteInput.Type;
+) as unknown as Schema.Codec<WebhookDeleteInput>;
 
 // Output Schema
-export const WebhookDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebhookDeleteOutput = typeof WebhookDeleteOutput.Type;
+export type WebhookDeleteOutput = void;
+export const WebhookDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
 
 // The operation
 /**
@@ -10088,6 +13057,11 @@ export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookDeleteOutput,
 }));
 // Input Schema
+export interface WebhookGenerateUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+}
 export const WebhookGenerateUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10099,13 +13073,12 @@ export const WebhookGenerateUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
       apiVersion: "2024-10-23",
     }),
-  );
-export type WebhookGenerateUriInput = typeof WebhookGenerateUriInput.Type;
+  ) as unknown as Schema.Codec<WebhookGenerateUriInput>;
 
 // Output Schema
+export type WebhookGenerateUriOutput = string;
 export const WebhookGenerateUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type WebhookGenerateUriOutput = typeof WebhookGenerateUriOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<WebhookGenerateUriOutput>;
 
 // The operation
 /**
@@ -10121,6 +13094,12 @@ export const WebhookGenerateUri = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookGenerateUriOutput,
 }));
 // Input Schema
+export interface WebhookGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  webhookName: string;
+}
 export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10132,10 +13111,22 @@ export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WebhookGetInput = typeof WebhookGetInput.Type;
+) as unknown as Schema.Codec<WebhookGetInput>;
 
 // Output Schema
+export interface WebhookGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -10154,8 +13145,7 @@ export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhookGetOutput = typeof WebhookGetOutput.Type;
+}) as unknown as Schema.Codec<WebhookGetOutput>;
 
 // The operation
 /**
@@ -10172,6 +13162,12 @@ export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WebhookGetOutput,
 }));
 // Input Schema
+export interface WebhookListByAutomationAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  $filter?: string;
+}
 export const WebhookListByAutomationAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10184,11 +13180,25 @@ export const WebhookListByAutomationAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
       apiVersion: "2024-10-23",
     }),
-  );
-export type WebhookListByAutomationAccountInput =
-  typeof WebhookListByAutomationAccountInput.Type;
+  ) as unknown as Schema.Codec<WebhookListByAutomationAccountInput>;
 
 // Output Schema
+export interface WebhookListByAutomationAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebhookListByAutomationAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10223,9 +13233,7 @@ export const WebhookListByAutomationAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebhookListByAutomationAccountOutput =
-  typeof WebhookListByAutomationAccountOutput.Type;
+  }) as unknown as Schema.Codec<WebhookListByAutomationAccountOutput>;
 
 // The operation
 /**
@@ -10243,6 +13251,19 @@ export const WebhookListByAutomationAccount =
     outputSchema: WebhookListByAutomationAccountOutput,
   }));
 // Input Schema
+export interface WebhookUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  automationAccountName: string;
+  webhookName: string;
+  name?: string;
+  properties?: {
+    isEnabled?: boolean;
+    runOn?: string;
+    parameters?: Record<string, string>;
+    description?: string;
+  };
+}
 export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10263,10 +13284,22 @@ export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
     apiVersion: "2024-10-23",
   }),
-);
-export type WebhookUpdateInput = typeof WebhookUpdateInput.Type;
+) as unknown as Schema.Codec<WebhookUpdateInput>;
 
 // Output Schema
+export interface WebhookUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -10285,8 +13318,7 @@ export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WebhookUpdateOutput = typeof WebhookUpdateOutput.Type;
+}) as unknown as Schema.Codec<WebhookUpdateOutput>;
 
 // The operation
 /**

@@ -4,19 +4,25 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteCurationSetInput {
+  curationSetName: string;
+}
 export const DeleteCurationSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     curationSetName: Schema.String.pipe(T.PathParam()),
   },
-).pipe(T.Http({ method: "DELETE", path: "/curation_sets/{curationSetName}" }));
-export type DeleteCurationSetInput = typeof DeleteCurationSetInput.Type;
+).pipe(
+  T.Http({ method: "DELETE", path: "/curation_sets/{curationSetName}" }),
+) as unknown as Schema.Codec<DeleteCurationSetInput>;
 
 // Output Schema
+export interface DeleteCurationSetOutput {
+  name: string;
+}
 export const DeleteCurationSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-  });
-export type DeleteCurationSetOutput = typeof DeleteCurationSetOutput.Type;
+  }) as unknown as Schema.Codec<DeleteCurationSetOutput>;
 
 // The operation
 /**

@@ -4,12 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface JobsBookShipmentPickUpInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  startTime: string;
+  endTime: string;
+  shipmentLocation: string;
+}
 export const JobsBookShipmentPickUpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24,18 +33,18 @@ export const JobsBookShipmentPickUpInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/bookShipmentPickUp",
       apiVersion: "2025-07-01",
     }),
-  );
-export type JobsBookShipmentPickUpInput =
-  typeof JobsBookShipmentPickUpInput.Type;
+  ) as unknown as Schema.Codec<JobsBookShipmentPickUpInput>;
 
 // Output Schema
+export interface JobsBookShipmentPickUpOutput {
+  confirmationNumber?: string;
+  readyByTime?: string;
+}
 export const JobsBookShipmentPickUpOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     confirmationNumber: Schema.optional(Schema.String),
     readyByTime: Schema.optional(Schema.String),
-  });
-export type JobsBookShipmentPickUpOutput =
-  typeof JobsBookShipmentPickUpOutput.Type;
+  }) as unknown as Schema.Codec<JobsBookShipmentPickUpOutput>;
 
 // The operation
 /**
@@ -53,6 +62,12 @@ export const JobsBookShipmentPickUp = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  reason: string;
+}
 export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -64,12 +79,12 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/cancel",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsCancelInput = typeof JobsCancelInput.Type;
+) as unknown as Schema.Codec<JobsCancelInput>;
 
 // Output Schema
-export const JobsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsCancelOutput = typeof JobsCancelOutput.Type;
+export type JobsCancelOutput = void;
+export const JobsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsCancelOutput>;
 
 // The operation
 /**
@@ -85,6 +100,414 @@ export const JobsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsCancelOutput,
 }));
 // Input Schema
+export interface JobsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  properties: {
+    transferType: "ImportToAzure" | "ExportFromAzure";
+    isCancellable?: boolean;
+    isDeletable?: boolean;
+    isShippingAddressEditable?: boolean;
+    reverseShippingDetailsUpdate?: "Enabled" | "Disabled" | "NotSupported";
+    reverseTransportPreferenceUpdate?: "Enabled" | "Disabled" | "NotSupported";
+    isPrepareToShipEnabled?: boolean;
+    status?:
+      | "DeviceOrdered"
+      | "DevicePrepared"
+      | "Dispatched"
+      | "Delivered"
+      | "PickedUp"
+      | "AtAzureDC"
+      | "DataCopy"
+      | "Completed"
+      | "CompletedWithErrors"
+      | "Cancelled"
+      | "Failed_IssueReportedAtCustomer"
+      | "Failed_IssueDetectedAtAzureDC"
+      | "Aborted"
+      | "CompletedWithWarnings"
+      | "ReadyToDispatchFromAzureDC"
+      | "ReadyToReceiveAtAzureDC"
+      | "Created"
+      | "ShippedToAzureDC"
+      | "AwaitingShipmentDetails"
+      | "PreparingToShipFromAzureDC"
+      | "ShippedToCustomer";
+    delayedStage?:
+      | "DeviceOrdered"
+      | "DevicePrepared"
+      | "Dispatched"
+      | "Delivered"
+      | "PickedUp"
+      | "AtAzureDC"
+      | "DataCopy"
+      | "Completed"
+      | "CompletedWithErrors"
+      | "Cancelled"
+      | "Failed_IssueReportedAtCustomer"
+      | "Failed_IssueDetectedAtAzureDC"
+      | "Aborted"
+      | "CompletedWithWarnings"
+      | "ReadyToDispatchFromAzureDC"
+      | "ReadyToReceiveAtAzureDC"
+      | "Created"
+      | "ShippedToAzureDC"
+      | "AwaitingShipmentDetails"
+      | "PreparingToShipFromAzureDC"
+      | "ShippedToCustomer";
+    startTime?: string;
+    error?: {
+      additionalInfo?: { info?: Record<string, unknown>; type?: string }[];
+      code?: string;
+      details?: unknown[];
+      message?: string;
+      target?: string;
+    };
+    details?: {
+      jobStages?: {
+        stageName?:
+          | "DeviceOrdered"
+          | "DevicePrepared"
+          | "Dispatched"
+          | "Delivered"
+          | "PickedUp"
+          | "AtAzureDC"
+          | "DataCopy"
+          | "Completed"
+          | "CompletedWithErrors"
+          | "Cancelled"
+          | "Failed_IssueReportedAtCustomer"
+          | "Failed_IssueDetectedAtAzureDC"
+          | "Aborted"
+          | "CompletedWithWarnings"
+          | "ReadyToDispatchFromAzureDC"
+          | "ReadyToReceiveAtAzureDC"
+          | "Created"
+          | "ShippedToAzureDC"
+          | "AwaitingShipmentDetails"
+          | "PreparingToShipFromAzureDC"
+          | "ShippedToCustomer";
+        displayName?: string;
+        stageStatus?:
+          | "None"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Cancelled"
+          | "Cancelling"
+          | "SucceededWithErrors"
+          | "WaitingForCustomerAction"
+          | "SucceededWithWarnings"
+          | "WaitingForCustomerActionForKek"
+          | "WaitingForCustomerActionForCleanUp"
+          | "CustomerActionPerformedForCleanUp"
+          | "CustomerActionPerformed";
+        stageTime?: string;
+        jobStageDetails?: unknown;
+        delayInformation?: {
+          status?: "Active" | "Resolved";
+          errorCode?:
+            | "InternalIssueDelay"
+            | "ActiveOrderLimitBreachedDelay"
+            | "HighDemandDelay"
+            | "LargeNumberOfFilesDelay";
+          description?: string;
+          startTime?: string;
+          resolutionTime?: string;
+        }[];
+      }[];
+      contactDetails: {
+        contactName: string;
+        phone: string;
+        phoneExtension?: string;
+        mobile?: string;
+        emailList: string[];
+        notificationPreference?: {
+          stageName:
+            | "DevicePrepared"
+            | "Dispatched"
+            | "Delivered"
+            | "PickedUp"
+            | "AtAzureDC"
+            | "DataCopy"
+            | "Created"
+            | "ShippedToCustomer";
+          sendNotification: boolean;
+        }[];
+      };
+      shippingAddress?: {
+        streetAddress1: string;
+        streetAddress2?: string;
+        streetAddress3?: string;
+        city?: string;
+        stateOrProvince?: string;
+        country: string;
+        postalCode?: string;
+        zipExtendedCode?: string;
+        companyName?: string;
+        addressType?: "None" | "Residential" | "Commercial";
+        skipAddressValidation?: boolean;
+        taxIdentificationNumber?: string;
+      };
+      deliveryPackage?: {
+        trackingUrl?: string;
+        carrierName?: string;
+        trackingId?: string;
+      };
+      returnPackage?: {
+        trackingUrl?: string;
+        carrierName?: string;
+        trackingId?: string;
+      };
+      dataImportDetails?: {
+        accountDetails: {
+          dataAccountType: "StorageAccount" | "ManagedDisk";
+          sharePassword?: string | Redacted.Redacted<string>;
+        };
+        logCollectionLevel?: "Error" | "Verbose";
+      }[];
+      dataExportDetails?: {
+        transferConfiguration: {
+          transferConfigurationType: "TransferAll" | "TransferUsingFilter";
+          transferFilterDetails?: {
+            include?: {
+              dataAccountType: "StorageAccount" | "ManagedDisk";
+              blobFilterDetails?: {
+                blobPrefixList?: string[];
+                blobPathList?: string[];
+                containerList?: string[];
+              };
+              azureFileFilterDetails?: {
+                filePrefixList?: string[];
+                filePathList?: string[];
+                fileShareList?: string[];
+              };
+              filterFileDetails?: {
+                filterFileType: "AzureBlob" | "AzureFile";
+                filterFilePath: string;
+              }[];
+            };
+          };
+          transferAllDetails?: {
+            include?: {
+              dataAccountType: "StorageAccount" | "ManagedDisk";
+              transferAllBlobs?: boolean;
+              transferAllFiles?: boolean;
+            };
+          };
+        };
+        logCollectionLevel?: "Error" | "Verbose";
+        accountDetails: {
+          dataAccountType: "StorageAccount" | "ManagedDisk";
+          sharePassword?: string | Redacted.Redacted<string>;
+        };
+      }[];
+      jobDetailsType:
+        | "DataBox"
+        | "DataBoxDisk"
+        | "DataBoxHeavy"
+        | "DataBoxCustomerDisk";
+      preferences?: {
+        preferredDataCenterRegion?: string[];
+        transportPreferences?: {
+          preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+          isUpdated?: boolean;
+        };
+        reverseTransportPreferences?: {
+          preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+          isUpdated?: boolean;
+        };
+        encryptionPreferences?: {
+          doubleEncryption?: "Enabled" | "Disabled";
+          hardwareEncryption?: "Enabled" | "Disabled";
+        };
+        storageAccountAccessTierPreferences?: "Archive"[];
+      };
+      reverseShippingDetails?: {
+        contactDetails?: {
+          contactName: string;
+          phone: string;
+          phoneExtension?: string;
+          mobile?: string;
+        };
+        shippingAddress?: {
+          streetAddress1: string;
+          streetAddress2?: string;
+          streetAddress3?: string;
+          city?: string;
+          stateOrProvince?: string;
+          country: string;
+          postalCode?: string;
+          zipExtendedCode?: string;
+          companyName?: string;
+          addressType?: "None" | "Residential" | "Commercial";
+          skipAddressValidation?: boolean;
+          taxIdentificationNumber?: string;
+        };
+        isUpdated?: boolean;
+      };
+      copyLogDetails?: {
+        copyLogDetailsType:
+          | "DataBox"
+          | "DataBoxDisk"
+          | "DataBoxHeavy"
+          | "DataBoxCustomerDisk";
+      }[];
+      reverseShipmentLabelSasKey?: string;
+      chainOfCustodySasKey?: string;
+      deviceErasureDetails?: {
+        deviceErasureStatus?:
+          | "None"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Cancelled"
+          | "Cancelling"
+          | "SucceededWithErrors"
+          | "WaitingForCustomerAction"
+          | "SucceededWithWarnings"
+          | "WaitingForCustomerActionForKek"
+          | "WaitingForCustomerActionForCleanUp"
+          | "CustomerActionPerformedForCleanUp"
+          | "CustomerActionPerformed";
+        erasureOrDestructionCertificateSasKey?: string;
+        secureErasureCertificateSasKey?: string;
+      };
+      keyEncryptionKey?: {
+        kekType: "MicrosoftManaged" | "CustomerManaged";
+        identityProperties?: {
+          type?: string;
+          userAssigned?: { resourceId?: string };
+        };
+        kekUrl?: string;
+        kekVaultResourceID?: string;
+      };
+      expectedDataSizeInTeraBytes?: number;
+      actions?: (
+        | "None"
+        | "MoveToCleanUpDevice"
+        | "Resume"
+        | "Restart"
+        | "ReachOutToOperation"
+      )[];
+      lastMitigationActionOnJob?: {
+        actionDateTimeInUtc?: string;
+        isPerformedByCustomer?: boolean;
+        customerResolution?:
+          | "None"
+          | "MoveToCleanUpDevice"
+          | "Resume"
+          | "Restart"
+          | "ReachOutToOperation";
+      };
+      datacenterAddress?: {
+        datacenterAddressType:
+          | "DatacenterAddressLocation"
+          | "DatacenterAddressInstruction";
+        supportedCarriersForReturnShipment?: string[];
+        dataCenterAzureLocation?: string;
+      };
+      dataCenterCode?:
+        | "Invalid"
+        | "BY2"
+        | "BY1"
+        | "ORK70"
+        | "AM2"
+        | "AMS20"
+        | "BY21"
+        | "BY24"
+        | "MWH01"
+        | "AMS06"
+        | "SSE90"
+        | "SYD03"
+        | "SYD23"
+        | "CBR20"
+        | "YTO20"
+        | "CWL20"
+        | "LON24"
+        | "BOM01"
+        | "BL20"
+        | "BL7"
+        | "SEL20"
+        | "TYO01"
+        | "BN1"
+        | "SN5"
+        | "CYS04"
+        | "TYO22"
+        | "YTO21"
+        | "YQB20"
+        | "FRA22"
+        | "MAA01"
+        | "CPQ02"
+        | "CPQ20"
+        | "SIN20"
+        | "HKG20"
+        | "SG2"
+        | "MEL23"
+        | "SEL21"
+        | "OSA20"
+        | "SHA03"
+        | "BJB"
+        | "JNB22"
+        | "JNB21"
+        | "MNZ21"
+        | "SN8"
+        | "AUH20"
+        | "ZRH20"
+        | "PUS20"
+        | "AdHoc"
+        | "CH1"
+        | "DSM05"
+        | "DUB07"
+        | "PNQ01"
+        | "SVG20"
+        | "OSA02"
+        | "OSA22"
+        | "PAR22"
+        | "BN7"
+        | "SN6"
+        | "BJS20"
+        | "BL24"
+        | "IDC5"
+        | "TYO23"
+        | "NTG20"
+        | "DXB23"
+        | "DSM11"
+        | "AMS25"
+        | "CPQ21"
+        | "OSA23";
+    };
+    cancellationReason?: string;
+    deliveryType?: "NonScheduled" | "Scheduled";
+    deliveryInfo?: { scheduledDateTime?: string };
+    isCancellableWithoutFee?: boolean;
+    allDevicesLost?: boolean;
+  };
+  sku: {
+    name: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+    displayName?: string;
+    family?: string;
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  identity?: {
+    type?: string;
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -700,10 +1123,22 @@ export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsCreateInput = typeof JobsCreateInput.Type;
+) as unknown as Schema.Codec<JobsCreateInput>;
 
 // Output Schema
+export interface JobsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -722,8 +1157,7 @@ export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsCreateOutput = typeof JobsCreateOutput.Type;
+}) as unknown as Schema.Codec<JobsCreateOutput>;
 
 // The operation
 /**
@@ -739,6 +1173,11 @@ export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsCreateOutput,
 }));
 // Input Schema
+export interface JobsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+}
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -749,12 +1188,12 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsDeleteInput = typeof JobsDeleteInput.Type;
+) as unknown as Schema.Codec<JobsDeleteInput>;
 
 // Output Schema
-export const JobsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
+export type JobsDeleteOutput = void;
+export const JobsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
 
 // The operation
 /**
@@ -770,6 +1209,12 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsDeleteOutput,
 }));
 // Input Schema
+export interface JobsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  $expand?: string;
+}
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -781,10 +1226,22 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsGetInput = typeof JobsGetInput.Type;
+) as unknown as Schema.Codec<JobsGetInput>;
 
 // Output Schema
+export interface JobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -803,8 +1260,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsGetOutput = typeof JobsGetOutput.Type;
+}) as unknown as Schema.Codec<JobsGetOutput>;
 
 // The operation
 /**
@@ -821,6 +1277,10 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
+export interface JobsListInput {
+  subscriptionId: string;
+  $skipToken?: string;
+}
 export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
@@ -830,10 +1290,25 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/jobs",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsListInput = typeof JobsListInput.Type;
+) as unknown as Schema.Codec<JobsListInput>;
 
 // Output Schema
+export interface JobsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -857,8 +1332,7 @@ export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type JobsListOutput = typeof JobsListOutput.Type;
+}) as unknown as Schema.Codec<JobsListOutput>;
 
 // The operation
 /**
@@ -873,6 +1347,11 @@ export const JobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsListOutput,
 }));
 // Input Schema
+export interface JobsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skipToken?: string;
+}
 export const JobsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -884,11 +1363,25 @@ export const JobsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs",
       apiVersion: "2025-07-01",
     }),
-  );
-export type JobsListByResourceGroupInput =
-  typeof JobsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<JobsListByResourceGroupInput>;
 
 // Output Schema
+export interface JobsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -923,9 +1416,7 @@ export const JobsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobsListByResourceGroupOutput =
-  typeof JobsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<JobsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -943,6 +1434,11 @@ export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobsListCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+}
 export const JobsListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -954,10 +1450,33 @@ export const JobsListCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/listCredentials",
       apiVersion: "2025-07-01",
     }),
-  );
-export type JobsListCredentialsInput = typeof JobsListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<JobsListCredentialsInput>;
 
 // Output Schema
+export interface JobsListCredentialsOutput {
+  value: {
+    jobName?: string;
+    jobSecrets?: {
+      jobSecretsType:
+        | "DataBox"
+        | "DataBoxDisk"
+        | "DataBoxHeavy"
+        | "DataBoxCustomerDisk";
+      dcAccessSecurityCode?: {
+        reverseDCAccessCode?: string;
+        forwardDCAccessCode?: string;
+      };
+      error?: {
+        additionalInfo?: { info?: Record<string, unknown>; type?: string }[];
+        code?: string;
+        details?: unknown[];
+        message?: string;
+        target?: string;
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobsListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1000,8 +1519,7 @@ export const JobsListCredentialsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JobsListCredentialsOutput = typeof JobsListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<JobsListCredentialsOutput>;
 
 // The operation
 /**
@@ -1017,6 +1535,12 @@ export const JobsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsListCredentialsOutput,
 }));
 // Input Schema
+export interface JobsMarkDevicesShippedInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  deliverToDcPackageDetails: { carrierName?: string; trackingId?: string };
+}
 export const JobsMarkDevicesShippedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1032,15 +1556,12 @@ export const JobsMarkDevicesShippedInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/markDevicesShipped",
       apiVersion: "2025-07-01",
     }),
-  );
-export type JobsMarkDevicesShippedInput =
-  typeof JobsMarkDevicesShippedInput.Type;
+  ) as unknown as Schema.Codec<JobsMarkDevicesShippedInput>;
 
 // Output Schema
+export type JobsMarkDevicesShippedOutput = void;
 export const JobsMarkDevicesShippedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsMarkDevicesShippedOutput =
-  typeof JobsMarkDevicesShippedOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsMarkDevicesShippedOutput>;
 
 // The operation
 /**
@@ -1058,6 +1579,111 @@ export const JobsMarkDevicesShipped = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JobsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  properties?: {
+    details?: {
+      contactDetails?: {
+        contactName: string;
+        phone: string;
+        phoneExtension?: string;
+        mobile?: string;
+        emailList: string[];
+        notificationPreference?: {
+          stageName:
+            | "DevicePrepared"
+            | "Dispatched"
+            | "Delivered"
+            | "PickedUp"
+            | "AtAzureDC"
+            | "DataCopy"
+            | "Created"
+            | "ShippedToCustomer";
+          sendNotification: boolean;
+        }[];
+      };
+      shippingAddress?: {
+        streetAddress1: string;
+        streetAddress2?: string;
+        streetAddress3?: string;
+        city?: string;
+        stateOrProvince?: string;
+        country: string;
+        postalCode?: string;
+        zipExtendedCode?: string;
+        companyName?: string;
+        addressType?: "None" | "Residential" | "Commercial";
+        skipAddressValidation?: boolean;
+        taxIdentificationNumber?: string;
+      };
+      reverseShippingDetails?: {
+        contactDetails?: {
+          contactName: string;
+          phone: string;
+          phoneExtension?: string;
+          mobile?: string;
+        };
+        shippingAddress?: {
+          streetAddress1: string;
+          streetAddress2?: string;
+          streetAddress3?: string;
+          city?: string;
+          stateOrProvince?: string;
+          country: string;
+          postalCode?: string;
+          zipExtendedCode?: string;
+          companyName?: string;
+          addressType?: "None" | "Residential" | "Commercial";
+          skipAddressValidation?: boolean;
+          taxIdentificationNumber?: string;
+        };
+        isUpdated?: boolean;
+      };
+      preferences?: {
+        preferredDataCenterRegion?: string[];
+        transportPreferences?: {
+          preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+          isUpdated?: boolean;
+        };
+        reverseTransportPreferences?: {
+          preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+          isUpdated?: boolean;
+        };
+        encryptionPreferences?: {
+          doubleEncryption?: "Enabled" | "Disabled";
+          hardwareEncryption?: "Enabled" | "Disabled";
+        };
+        storageAccountAccessTierPreferences?: "Archive"[];
+      };
+      keyEncryptionKey?: {
+        kekType: "MicrosoftManaged" | "CustomerManaged";
+        identityProperties?: {
+          type?: string;
+          userAssigned?: { resourceId?: string };
+        };
+        kekUrl?: string;
+        kekVaultResourceID?: string;
+      };
+      returnToCustomerPackageDetails?: {
+        carrierAccountNumber?: string;
+        carrierName?: string;
+        trackingId?: string;
+      };
+    };
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type?: string;
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1230,10 +1856,22 @@ export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}",
     apiVersion: "2025-07-01",
   }),
-);
-export type JobsUpdateInput = typeof JobsUpdateInput.Type;
+) as unknown as Schema.Codec<JobsUpdateInput>;
 
 // Output Schema
+export interface JobsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1252,8 +1890,7 @@ export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsUpdateOutput = typeof JobsUpdateOutput.Type;
+}) as unknown as Schema.Codec<JobsUpdateOutput>;
 
 // The operation
 /**
@@ -1270,6 +1907,25 @@ export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsUpdateOutput,
 }));
 // Input Schema
+export interface MitigateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  jobName: string;
+  customerResolutionCode?:
+    | "None"
+    | "MoveToCleanUpDevice"
+    | "Resume"
+    | "Restart"
+    | "ReachOutToOperation";
+  serialNumberCustomerResolutionMap?: Record<
+    string,
+    | "None"
+    | "MoveToCleanUpDevice"
+    | "Resume"
+    | "Restart"
+    | "ReachOutToOperation"
+  >;
+}
 export const MitigateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1301,12 +1957,12 @@ export const MitigateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/mitigate",
     apiVersion: "2025-07-01",
   }),
-);
-export type MitigateInput = typeof MitigateInput.Type;
+) as unknown as Schema.Codec<MitigateInput>;
 
 // Output Schema
-export const MitigateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MitigateOutput = typeof MitigateOutput.Type;
+export type MitigateOutput = void;
+export const MitigateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MitigateOutput>;
 
 // The operation
 /**
@@ -1322,6 +1978,7 @@ export const Mitigate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MitigateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1330,10 +1987,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataBox/operations",
     apiVersion: "2025-07-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    properties?: unknown;
+    origin?: string;
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1354,8 +2025,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1368,6 +2038,19 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServiceListAvailableSkusByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  transferType: "ImportToAzure" | "ExportFromAzure";
+  country: string;
+  skuNames?: (
+    | "DataBox"
+    | "DataBoxDisk"
+    | "DataBoxHeavy"
+    | "DataBoxCustomerDisk"
+  )[];
+}
 export const ServiceListAvailableSkusByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1391,11 +2074,50 @@ export const ServiceListAvailableSkusByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ServiceListAvailableSkusByResourceGroupInput =
-  typeof ServiceListAvailableSkusByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServiceListAvailableSkusByResourceGroupInput>;
 
 // Output Schema
+export interface ServiceListAvailableSkusByResourceGroupOutput {
+  value: {
+    sku?: {
+      name: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+      displayName?: string;
+      family?: string;
+      model?:
+        | "DataBox"
+        | "DataBoxDisk"
+        | "DataBoxHeavy"
+        | "DataBoxCustomerDisk"
+        | "AzureDataBox120"
+        | "AzureDataBox525";
+    };
+    enabled?: boolean;
+    properties?: {
+      dataLocationToServiceLocationMap?: {
+        dataLocation?: string;
+        serviceLocation?: string;
+      }[];
+      capacity?: {
+        usable?: string;
+        maximum?: string;
+        individualSkuUsable?: string;
+      };
+      costs?: { meterId?: string; meterType?: string; multiplier?: number }[];
+      apiVersions?: string[];
+      disabledReason?:
+        | "None"
+        | "Country"
+        | "Region"
+        | "Feature"
+        | "OfferType"
+        | "NoSubscriptionInfo";
+      disabledReasonMessage?: string;
+      requiredFeature?: string;
+      countriesWithinCommerceBoundary?: string[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceListAvailableSkusByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1470,9 +2192,7 @@ export const ServiceListAvailableSkusByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServiceListAvailableSkusByResourceGroupOutput =
-  typeof ServiceListAvailableSkusByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServiceListAvailableSkusByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1489,6 +2209,61 @@ export const ServiceListAvailableSkusByResourceGroup =
     outputSchema: ServiceListAvailableSkusByResourceGroupOutput,
   }));
 // Input Schema
+export interface ServiceRegionConfigurationInput {
+  subscriptionId: string;
+  location: string;
+  scheduleAvailabilityRequest?: {
+    storageLocation: string;
+    skuName: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+    country?: string;
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  transportAvailabilityRequest?: {
+    skuName?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  datacenterAddressRequest?: {
+    storageLocation: string;
+    skuName: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  deviceCapabilityRequest?: {
+    skuName?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+}
 export const ServiceRegionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1586,11 +2361,27 @@ export const ServiceRegionConfigurationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ServiceRegionConfigurationInput =
-  typeof ServiceRegionConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegionConfigurationInput>;
 
 // Output Schema
+export interface ServiceRegionConfigurationOutput {
+  scheduleAvailabilityResponse?: { availableDates?: string[] };
+  transportAvailabilityResponse?: {
+    transportAvailabilityDetails?: {
+      shipmentType?: "CustomerManaged" | "MicrosoftManaged";
+    }[];
+  };
+  datacenterAddressResponse?: {
+    datacenterAddressType:
+      | "DatacenterAddressLocation"
+      | "DatacenterAddressInstruction";
+    supportedCarriersForReturnShipment?: string[];
+    dataCenterAzureLocation?: string;
+  };
+  deviceCapabilityResponse?: {
+    deviceCapabilityDetails?: { hardwareEncryption?: "Enabled" | "Disabled" }[];
+  };
+}
 export const ServiceRegionConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleAvailabilityResponse: Schema.optional(
@@ -1636,9 +2427,7 @@ export const ServiceRegionConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ServiceRegionConfigurationOutput =
-  typeof ServiceRegionConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRegionConfigurationOutput>;
 
 // The operation
 /**
@@ -1655,6 +2444,62 @@ export const ServiceRegionConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceRegionConfigurationByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  scheduleAvailabilityRequest?: {
+    storageLocation: string;
+    skuName: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+    country?: string;
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  transportAvailabilityRequest?: {
+    skuName?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  datacenterAddressRequest?: {
+    storageLocation: string;
+    skuName: "DataBox" | "DataBoxDisk" | "DataBoxHeavy" | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+  deviceCapabilityRequest?: {
+    skuName?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk";
+    model?:
+      | "DataBox"
+      | "DataBoxDisk"
+      | "DataBoxHeavy"
+      | "DataBoxCustomerDisk"
+      | "AzureDataBox120"
+      | "AzureDataBox525";
+  };
+}
 export const ServiceRegionConfigurationByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1753,11 +2598,27 @@ export const ServiceRegionConfigurationByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/regionConfiguration",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ServiceRegionConfigurationByResourceGroupInput =
-  typeof ServiceRegionConfigurationByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegionConfigurationByResourceGroupInput>;
 
 // Output Schema
+export interface ServiceRegionConfigurationByResourceGroupOutput {
+  scheduleAvailabilityResponse?: { availableDates?: string[] };
+  transportAvailabilityResponse?: {
+    transportAvailabilityDetails?: {
+      shipmentType?: "CustomerManaged" | "MicrosoftManaged";
+    }[];
+  };
+  datacenterAddressResponse?: {
+    datacenterAddressType:
+      | "DatacenterAddressLocation"
+      | "DatacenterAddressInstruction";
+    supportedCarriersForReturnShipment?: string[];
+    dataCenterAzureLocation?: string;
+  };
+  deviceCapabilityResponse?: {
+    deviceCapabilityDetails?: { hardwareEncryption?: "Enabled" | "Disabled" }[];
+  };
+}
 export const ServiceRegionConfigurationByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scheduleAvailabilityResponse: Schema.optional(
@@ -1803,9 +2664,7 @@ export const ServiceRegionConfigurationByResourceGroupOutput =
         ),
       }),
     ),
-  });
-export type ServiceRegionConfigurationByResourceGroupOutput =
-  typeof ServiceRegionConfigurationByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRegionConfigurationByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1822,6 +2681,20 @@ export const ServiceRegionConfigurationByResourceGroup =
     outputSchema: ServiceRegionConfigurationByResourceGroupOutput,
   }));
 // Input Schema
+export interface ServiceValidateInputsInput {
+  subscriptionId: string;
+  location: string;
+  validationCategory: "JobCreationValidation";
+  individualRequestDetails: {
+    validationType:
+      | "ValidateAddress"
+      | "ValidateSubscriptionIsAllowedToCreateJob"
+      | "ValidatePreferences"
+      | "ValidateCreateOrderLimit"
+      | "ValidateSkuAvailability"
+      | "ValidateDataTransferDetails";
+  }[];
+}
 export const ServiceValidateInputsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1845,10 +2718,33 @@ export const ServiceValidateInputsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ServiceValidateInputsInput = typeof ServiceValidateInputsInput.Type;
+  ) as unknown as Schema.Codec<ServiceValidateInputsInput>;
 
 // Output Schema
+export interface ServiceValidateInputsOutput {
+  properties?: {
+    status?:
+      | "AllValidToProceed"
+      | "InputsRevisitRequired"
+      | "CertainInputValidationsSkipped";
+    individualResponseDetails?: {
+      validationType:
+        | "ValidateAddress"
+        | "ValidateSubscriptionIsAllowedToCreateJob"
+        | "ValidatePreferences"
+        | "ValidateCreateOrderLimit"
+        | "ValidateSkuAvailability"
+        | "ValidateDataTransferDetails";
+      error?: {
+        additionalInfo?: { info?: Record<string, unknown>; type?: string }[];
+        code?: string;
+        details?: unknown[];
+        message?: string;
+        target?: string;
+      };
+    }[];
+  };
+}
 export const ServiceValidateInputsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1894,9 +2790,7 @@ export const ServiceValidateInputsOutput =
         ),
       }),
     ),
-  });
-export type ServiceValidateInputsOutput =
-  typeof ServiceValidateInputsOutput.Type;
+  }) as unknown as Schema.Codec<ServiceValidateInputsOutput>;
 
 // The operation
 /**
@@ -1913,6 +2807,21 @@ export const ServiceValidateInputs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceValidateInputsByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  validationCategory: "JobCreationValidation";
+  individualRequestDetails: {
+    validationType:
+      | "ValidateAddress"
+      | "ValidateSubscriptionIsAllowedToCreateJob"
+      | "ValidatePreferences"
+      | "ValidateCreateOrderLimit"
+      | "ValidateSkuAvailability"
+      | "ValidateDataTransferDetails";
+  }[];
+}
 export const ServiceValidateInputsByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1937,11 +2846,33 @@ export const ServiceValidateInputsByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/validateInputs",
       apiVersion: "2025-07-01",
     }),
-  );
-export type ServiceValidateInputsByResourceGroupInput =
-  typeof ServiceValidateInputsByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServiceValidateInputsByResourceGroupInput>;
 
 // Output Schema
+export interface ServiceValidateInputsByResourceGroupOutput {
+  properties?: {
+    status?:
+      | "AllValidToProceed"
+      | "InputsRevisitRequired"
+      | "CertainInputValidationsSkipped";
+    individualResponseDetails?: {
+      validationType:
+        | "ValidateAddress"
+        | "ValidateSubscriptionIsAllowedToCreateJob"
+        | "ValidatePreferences"
+        | "ValidateCreateOrderLimit"
+        | "ValidateSkuAvailability"
+        | "ValidateDataTransferDetails";
+      error?: {
+        additionalInfo?: { info?: Record<string, unknown>; type?: string }[];
+        code?: string;
+        details?: unknown[];
+        message?: string;
+        target?: string;
+      };
+    }[];
+  };
+}
 export const ServiceValidateInputsByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1987,9 +2918,7 @@ export const ServiceValidateInputsByResourceGroupOutput =
         ),
       }),
     ),
-  });
-export type ServiceValidateInputsByResourceGroupOutput =
-  typeof ServiceValidateInputsByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServiceValidateInputsByResourceGroupOutput>;
 
 // The operation
 /**

@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateBranchChangeRequestInput {
+  organization: string;
+  database: string;
+  branch: string;
+  cluster_size?: string;
+  replicas?: number;
+  parameters?: Record<string, unknown>;
+}
 export const UpdateBranchChangeRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,43 @@ export const UpdateBranchChangeRequestInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/changes",
     }),
-  );
-export type UpdateBranchChangeRequestInput =
-  typeof UpdateBranchChangeRequestInput.Type;
+  ) as unknown as Schema.Codec<UpdateBranchChangeRequestInput>;
 
 // Output Schema
+export interface UpdateBranchChangeRequestOutput {
+  id: string;
+  restart: number[];
+  state: "queued" | "pending" | "resizing" | "canceled" | "completed";
+  started_at: string | null;
+  completed_at?: string | null;
+  created_at: string;
+  updated_at: string;
+  actor: { id: string; display_name: string; avatar_url: string };
+  cluster_name: string;
+  cluster_display_name: string;
+  cluster_metal: boolean;
+  replicas: number;
+  parameters: Record<string, unknown>;
+  previous_cluster_name: string;
+  previous_cluster_display_name: string;
+  previous_cluster_metal: boolean;
+  previous_replicas: number;
+  previous_parameters: Record<string, unknown>;
+  minimum_storage_bytes: number;
+  maximum_storage_bytes: number;
+  storage_autoscaling: boolean;
+  storage_shrinking: boolean;
+  storage_type: "gp3" | "io2" | "pd_ssd";
+  storage_iops: number;
+  storage_throughput_mibs: number;
+  previous_minimum_storage_bytes: number;
+  previous_maximum_storage_bytes: number;
+  previous_storage_autoscaling: boolean;
+  previous_storage_shrinking: boolean;
+  previous_storage_type: string;
+  previous_storage_iops: number;
+  previous_storage_throughput_mibs: number;
+}
 export const UpdateBranchChangeRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -66,9 +106,7 @@ export const UpdateBranchChangeRequestOutput =
     previous_storage_type: Schema.String,
     previous_storage_iops: Schema.Number,
     previous_storage_throughput_mibs: Schema.Number,
-  });
-export type UpdateBranchChangeRequestOutput =
-  typeof UpdateBranchChangeRequestOutput.Type;
+  }) as unknown as Schema.Codec<UpdateBranchChangeRequestOutput>;
 
 // The operation
 /**

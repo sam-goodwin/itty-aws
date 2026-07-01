@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetFinancialConnectionsTransactionsInput {
+  account: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+  transacted_at?: string;
+  transaction_refresh?: string;
+}
 export const GetFinancialConnectionsTransactionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
@@ -18,11 +27,28 @@ export const GetFinancialConnectionsTransactionsInput =
       path: "/v1/financial_connections/transactions",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetFinancialConnectionsTransactionsInput =
-  typeof GetFinancialConnectionsTransactionsInput.Type;
+  ) as unknown as Schema.Codec<GetFinancialConnectionsTransactionsInput>;
 
 // Output Schema
+export interface GetFinancialConnectionsTransactionsOutput {
+  data: {
+    account: string;
+    amount: number;
+    currency: string;
+    description: string;
+    id: string;
+    livemode: boolean;
+    object: "financial_connections.transaction";
+    status: "pending" | "posted" | "void";
+    status_transitions: { posted_at: number | null; void_at: number | null };
+    transacted_at: number;
+    transaction_refresh: string;
+    updated: number;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetFinancialConnectionsTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -47,9 +73,7 @@ export const GetFinancialConnectionsTransactionsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetFinancialConnectionsTransactionsOutput =
-  typeof GetFinancialConnectionsTransactionsOutput.Type;
+  }) as unknown as Schema.Codec<GetFinancialConnectionsTransactionsOutput>;
 
 // The operation
 /**

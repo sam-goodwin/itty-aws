@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingAssignmentRulesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingAssignmentRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,25 @@ export const ErrorTrackingAssignmentRulesListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/assignment_rules/",
+      path: "/api/projects/{project_id}/error_tracking/assignment_rules/",
     }),
-  );
-export type ErrorTrackingAssignmentRulesListInput =
-  typeof ErrorTrackingAssignmentRulesListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingAssignmentRulesListInput>;
 
 // Output Schema
+export interface ErrorTrackingAssignmentRulesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    filters?: unknown;
+    assignee?: { type?: "user" | "role"; id?: number | string } | null;
+    order_key?: number;
+    disabled_data?: unknown;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+}
 export const ErrorTrackingAssignmentRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -33,20 +49,20 @@ export const ErrorTrackingAssignmentRulesListOutput =
             Schema.NullOr(
               Schema.Struct({
                 type: Schema.optional(Schema.Literals(["user", "role"])),
-                id: Schema.optional(Schema.Unknown),
+                id: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.String]),
+                ),
               }),
             ),
           ),
           order_key: Schema.optional(Schema.Number),
-          disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          disabled_data: Schema.optional(Schema.Unknown),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.String),
         }),
       ),
     ),
-  });
-export type ErrorTrackingAssignmentRulesListOutput =
-  typeof ErrorTrackingAssignmentRulesListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingAssignmentRulesListOutput>;
 
 // The operation
 /**
@@ -59,5 +75,4 @@ export const errorTrackingAssignmentRulesList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesListInput,
     outputSchema: ErrorTrackingAssignmentRulesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service calls
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,29 @@ export class TurnKeyNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListSfusResponseResult {
+  /** The date and time the item was created. */
+  created?: string | null;
+  /** The date and time the item was last modified. */
+  modified?: string | null;
+  /** A short description of Calls app, not shown to end users. */
+  name?: string | null;
+  /** A Cloudflare-generated unique identifier for a item. */
+  uid?: string | null;
+}
+const ListSfusResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListSfusResponseResult>;
+
+// =============================================================================
 // Sfu
 // =============================================================================
 
@@ -60,7 +83,7 @@ export const GetSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/calls/apps/{appId}",
     }),
   ),
-) as unknown as Schema.Schema<GetSfuRequest>;
+) as unknown as Schema.Codec<GetSfuRequest>;
 
 export interface GetSfuResponse {
   /** The date and time the item was created. */
@@ -80,7 +103,7 @@ export const GetSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetSfuResponse>;
+) as unknown as Schema.Codec<GetSfuResponse>;
 
 export type GetSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
@@ -109,7 +132,7 @@ export const CreateSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "POST", path: "/accounts/{account_id}/calls/apps" }),
   ),
-) as unknown as Schema.Schema<CreateSfuRequest>;
+) as unknown as Schema.Codec<CreateSfuRequest>;
 
 export interface CreateSfuResponse {
   /** The date and time the item was created. */
@@ -133,7 +156,7 @@ export const CreateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       secret: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateSfuResponse>;
+) as unknown as Schema.Codec<CreateSfuResponse>;
 
 export type CreateSfuError = DefaultErrors | Forbidden;
 
@@ -167,7 +190,7 @@ export const UpdateSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/calls/apps/{appId}",
     }),
   ),
-) as unknown as Schema.Schema<UpdateSfuRequest>;
+) as unknown as Schema.Codec<UpdateSfuRequest>;
 
 export interface UpdateSfuResponse {
   /** The date and time the item was created. */
@@ -188,7 +211,7 @@ export const UpdateSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateSfuResponse>;
+) as unknown as Schema.Codec<UpdateSfuResponse>;
 
 export type UpdateSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
@@ -219,7 +242,7 @@ export const DeleteSfuRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/calls/apps/{appId}",
     }),
   ),
-) as unknown as Schema.Schema<DeleteSfuRequest>;
+) as unknown as Schema.Codec<DeleteSfuRequest>;
 
 export interface DeleteSfuResponse {
   /** The date and time the item was created. */
@@ -240,7 +263,7 @@ export const DeleteSfuResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteSfuResponse>;
+) as unknown as Schema.Codec<DeleteSfuResponse>;
 
 export type DeleteSfuError = DefaultErrors | CallsAppNotFound | Forbidden;
 
@@ -268,7 +291,7 @@ export const ListSfusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/calls/apps" })),
-) as unknown as Schema.Schema<ListSfusRequest>;
+) as unknown as Schema.Codec<ListSfusRequest>;
 
 export interface ListSfusResponse {
   result: {
@@ -281,16 +304,9 @@ export interface ListSfusResponse {
 
 export const ListSfusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
+    result: Schema.Array(ListSfusResponseResult),
   }),
-) as unknown as Schema.Schema<ListSfusResponse>;
+) as unknown as Schema.Codec<ListSfusResponse>;
 
 export type ListSfusError = DefaultErrors;
 
@@ -329,7 +345,7 @@ export const GetTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/calls/turn_keys/{keyId}",
     }),
   ),
-) as unknown as Schema.Schema<GetTurnRequest>;
+) as unknown as Schema.Codec<GetTurnRequest>;
 
 export interface GetTurnResponse {
   /** The date and time the item was created. */
@@ -349,7 +365,7 @@ export const GetTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetTurnResponse>;
+) as unknown as Schema.Codec<GetTurnResponse>;
 
 export type GetTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 
@@ -375,7 +391,7 @@ export const ListTurnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/calls/turn_keys" }),
   ),
-) as unknown as Schema.Schema<ListTurnsRequest>;
+) as unknown as Schema.Codec<ListTurnsRequest>;
 
 export interface ListTurnsResponse {
   result: {
@@ -389,16 +405,9 @@ export interface ListTurnsResponse {
 export const ListTurnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListSfusResponseResult),
     }),
-) as unknown as Schema.Schema<ListTurnsResponse>;
+) as unknown as Schema.Codec<ListTurnsResponse>;
 
 export type ListTurnsError = DefaultErrors;
 
@@ -435,7 +444,7 @@ export const CreateTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/calls/turn_keys",
       }),
     ),
-) as unknown as Schema.Schema<CreateTurnRequest>;
+) as unknown as Schema.Codec<CreateTurnRequest>;
 
 export interface CreateTurnResponse {
   /** The date and time the item was created. */
@@ -469,7 +478,7 @@ export const CreateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateTurnResponse>;
+) as unknown as Schema.Codec<CreateTurnResponse>;
 
 export type CreateTurnError = DefaultErrors | Forbidden;
 
@@ -504,7 +513,7 @@ export const UpdateTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/calls/turn_keys/{keyId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateTurnRequest>;
+) as unknown as Schema.Codec<UpdateTurnRequest>;
 
 export interface UpdateTurnResponse {
   /** The date and time the item was created. */
@@ -525,7 +534,7 @@ export const UpdateTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateTurnResponse>;
+) as unknown as Schema.Codec<UpdateTurnResponse>;
 
 export type UpdateTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 
@@ -557,7 +566,7 @@ export const DeleteTurnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/calls/turn_keys/{keyId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteTurnRequest>;
+) as unknown as Schema.Codec<DeleteTurnRequest>;
 
 export interface DeleteTurnResponse {
   /** The date and time the item was created. */
@@ -578,7 +587,7 @@ export const DeleteTurnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteTurnResponse>;
+) as unknown as Schema.Codec<DeleteTurnResponse>;
 
 export type DeleteTurnError = DefaultErrors | TurnKeyNotFound | Forbidden;
 

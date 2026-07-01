@@ -3,23 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmMessageInput {
+  address: string;
+  message: string;
+}
 export const SignEvmMessageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   message: Schema.String,
 }).pipe(
   T.Http({ method: "POST", path: "/v2/evm/accounts/{address}/sign/message" }),
-);
-export type SignEvmMessageInput = typeof SignEvmMessageInput.Type;
+) as unknown as Schema.Codec<SignEvmMessageInput>;
 
 // Output Schema
+export interface SignEvmMessageOutput {
+  signature: string;
+}
 export const SignEvmMessageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   signature: Schema.String,
-});
-export type SignEvmMessageOutput = typeof SignEvmMessageOutput.Type;
+}) as unknown as Schema.Codec<SignEvmMessageOutput>;
 
 // The operation
 /**
- * Sign an EIP-191 message
+ * Sign EIP-191 message
  *
  * Signs an [EIP-191](https://eips.ethereum.org/EIPS/eip-191) message with the given EVM account.
  * Per the specification, the message in the request body is prepended with `0x19 <0x45 (E)> <thereum Signed Message:\\n" + len(message)>` before being signed.

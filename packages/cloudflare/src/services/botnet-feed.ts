@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service botnet-feed
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -31,7 +31,7 @@ export const GetConfigAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/botnet_feed/configs/asn",
       }),
     ),
-) as unknown as Schema.Schema<GetConfigAsnRequest>;
+) as unknown as Schema.Codec<GetConfigAsnRequest>;
 
 export interface GetConfigAsnResponse {
   asn?: number | null;
@@ -42,7 +42,7 @@ export const GetConfigAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetConfigAsnResponse>;
+) as unknown as Schema.Codec<GetConfigAsnResponse>;
 
 export type GetConfigAsnError = DefaultErrors;
 
@@ -74,7 +74,7 @@ export const DeleteConfigAsnRequest =
         path: "/accounts/{account_id}/botnet_feed/configs/asn/{asnId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteConfigAsnRequest>;
+  ) as unknown as Schema.Codec<DeleteConfigAsnRequest>;
 
 export interface DeleteConfigAsnResponse {
   asn?: number | null;
@@ -85,7 +85,7 @@ export const DeleteConfigAsnResponse =
     Schema.Struct({
       asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteConfigAsnResponse>;
+  ) as unknown as Schema.Codec<DeleteConfigAsnResponse>;
 
 export type DeleteConfigAsnError = DefaultErrors;
 
@@ -124,7 +124,7 @@ export const DayReportAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/botnet_feed/asn/{asnId}/day_report",
       }),
     ),
-) as unknown as Schema.Schema<DayReportAsnRequest>;
+) as unknown as Schema.Codec<DayReportAsnRequest>;
 
 export interface DayReportAsnResponse {
   cidr?: string | null;
@@ -147,7 +147,7 @@ export const DayReportAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DayReportAsnResponse>;
+) as unknown as Schema.Codec<DayReportAsnResponse>;
 
 export type DayReportAsnError = DefaultErrors;
 
@@ -179,7 +179,7 @@ export const FullReportAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/botnet_feed/asn/{asnId}/full_report",
       }),
     ),
-) as unknown as Schema.Schema<FullReportAsnRequest>;
+) as unknown as Schema.Codec<FullReportAsnRequest>;
 
 export interface FullReportAsnResponse {
   cidr?: string | null;
@@ -202,7 +202,7 @@ export const FullReportAsnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<FullReportAsnResponse>;
+) as unknown as Schema.Codec<FullReportAsnResponse>;
 
 export type FullReportAsnError = DefaultErrors;
 

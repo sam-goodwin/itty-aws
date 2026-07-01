@@ -4,6 +4,48 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  distinct_id?: string | null;
+  viewed?: boolean;
+  viewers?: string[];
+  recording_duration?: number;
+  active_seconds?: number | null;
+  inactive_seconds?: number | null;
+  start_time?: string | null;
+  end_time?: string | null;
+  click_count?: number | null;
+  keypress_count?: number | null;
+  mouse_activity_count?: number | null;
+  console_log_count?: number | null;
+  console_warn_count?: number | null;
+  console_error_count?: number | null;
+  start_url?: string | null;
+  person?: {
+    id?: number;
+    name?: string;
+    distinct_ids?: string[];
+    properties?: unknown;
+    created_at?: string;
+    uuid?: string;
+    last_seen_at?: string | null;
+  };
+  retention_period_days?: number | null;
+  expiry_time?: string | null;
+  recording_ttl?: number | null;
+  snapshot_source?: string | null;
+  snapshot_library?: string | null;
+  ongoing?: boolean;
+  activity_score?: number | null;
+  has_summary?: boolean;
+  summary_outcome?: {
+    description?: string | null;
+    success?: boolean | null;
+  } | null;
+  external_references?: Record<string, unknown>[];
+  matches_filters?: boolean;
+}
 export const SessionRecordingsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -53,16 +95,56 @@ export const SessionRecordingsPartialUpdateInput =
     external_references: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    matches_filters: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/projects/{project_id}/session_recordings/{id}/",
     }),
-  );
-export type SessionRecordingsPartialUpdateInput =
-  typeof SessionRecordingsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingsPartialUpdateInput>;
 
 // Output Schema
+export interface SessionRecordingsPartialUpdateOutput {
+  id?: string;
+  distinct_id?: string | null;
+  viewed?: boolean;
+  viewers?: string[];
+  recording_duration?: number;
+  active_seconds?: number | null;
+  inactive_seconds?: number | null;
+  start_time?: string | null;
+  end_time?: string | null;
+  click_count?: number | null;
+  keypress_count?: number | null;
+  mouse_activity_count?: number | null;
+  console_log_count?: number | null;
+  console_warn_count?: number | null;
+  console_error_count?: number | null;
+  start_url?: string | null;
+  person?: {
+    id?: number;
+    name?: string;
+    distinct_ids?: string[];
+    properties?: unknown;
+    created_at?: string;
+    uuid?: string;
+    last_seen_at?: string | null;
+  };
+  retention_period_days?: number | null;
+  expiry_time?: string | null;
+  recording_ttl?: number | null;
+  snapshot_source?: string | null;
+  snapshot_library?: string | null;
+  ongoing?: boolean;
+  activity_score?: number | null;
+  has_summary?: boolean;
+  summary_outcome?: {
+    description?: string | null;
+    success?: boolean | null;
+  } | null;
+  external_references?: Record<string, unknown>[];
+  matches_filters?: boolean;
+}
 export const SessionRecordingsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -111,9 +193,8 @@ export const SessionRecordingsPartialUpdateOutput =
     external_references: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-  });
-export type SessionRecordingsPartialUpdateOutput =
-  typeof SessionRecordingsPartialUpdateOutput.Type;
+    matches_filters: Schema.optional(Schema.Boolean),
+  }) as unknown as Schema.Codec<SessionRecordingsPartialUpdateOutput>;
 
 // The operation
 /**

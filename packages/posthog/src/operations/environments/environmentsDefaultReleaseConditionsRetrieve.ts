@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EnvironmentsDefaultReleaseConditionsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const EnvironmentsDefaultReleaseConditionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const EnvironmentsDefaultReleaseConditionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/environments/{id}/default_release_conditions/",
     }),
-  );
-export type EnvironmentsDefaultReleaseConditionsRetrieveInput =
-  typeof EnvironmentsDefaultReleaseConditionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsRetrieveInput>;
 
 // Output Schema
+export type EnvironmentsDefaultReleaseConditionsRetrieveOutput = void;
 export const EnvironmentsDefaultReleaseConditionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsDefaultReleaseConditionsRetrieveOutput =
-  typeof EnvironmentsDefaultReleaseConditionsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsRetrieveOutput>;
 
 // The operation
 /**

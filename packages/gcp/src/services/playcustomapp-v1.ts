@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,28 +29,28 @@ export interface Organization {
   organizationName?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
+export const Organization: Schema.Codec<Organization> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.optional(Schema.String),
     organizationName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Organization" });
 
 export interface CustomApp {
-  /** Title for the Android app. */
-  title?: string;
   /** Output only. Package name of the created Android app. Only present in the API response. */
   packageName?: string;
   /** Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account. */
   organizations?: ReadonlyArray<Organization>;
+  /** Title for the Android app. */
+  title?: string;
   /** Default listing language in BCP 47 format. */
   languageCode?: string;
 }
 
-export const CustomApp: Schema.Schema<CustomApp> =
+export const CustomApp: Schema.Codec<CustomApp> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
     organizations: Schema.optional(Schema.Array(Organization)),
+    title: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomApp" });
 
@@ -126,7 +126,7 @@ export const CreateAccountsCustomAppsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateAccountsCustomAppsRequest>;
+  ) as unknown as Schema.Codec<CreateAccountsCustomAppsRequest>;
 
 export type CreateAccountsCustomAppsResponse = CustomApp;
 export const CreateAccountsCustomAppsResponse =

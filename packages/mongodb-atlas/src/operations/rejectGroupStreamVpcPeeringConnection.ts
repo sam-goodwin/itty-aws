@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RejectGroupStreamVpcPeeringConnectionInput {
+  groupId: string;
+  id: string;
+  envelope?: boolean;
+}
 export const RejectGroupStreamVpcPeeringConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const RejectGroupStreamVpcPeeringConnectionInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject",
     }),
-  );
-export type RejectGroupStreamVpcPeeringConnectionInput =
-  typeof RejectGroupStreamVpcPeeringConnectionInput.Type;
+  ) as unknown as Schema.Codec<RejectGroupStreamVpcPeeringConnectionInput>;
 
 // Output Schema
+export type RejectGroupStreamVpcPeeringConnectionOutput = void;
 export const RejectGroupStreamVpcPeeringConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RejectGroupStreamVpcPeeringConnectionOutput =
-  typeof RejectGroupStreamVpcPeeringConnectionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RejectGroupStreamVpcPeeringConnectionOutput>;
 
 // The operation
 /**

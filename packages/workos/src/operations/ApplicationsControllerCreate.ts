@@ -4,14 +4,23 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ApplicationsControllerCreateInput {}
 export const ApplicationsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/connect/applications" }),
-  );
-export type ApplicationsControllerCreateInput =
-  typeof ApplicationsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsControllerCreateInput>;
 
 // Output Schema
+export interface ApplicationsControllerCreateOutput {
+  object: string;
+  id: string;
+  client_id: string;
+  description: string | null;
+  name: string;
+  scopes: string[];
+  created_at: string;
+  updated_at: string;
+}
 export const ApplicationsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -22,9 +31,7 @@ export const ApplicationsControllerCreateOutput =
     scopes: Schema.Array(Schema.String),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type ApplicationsControllerCreateOutput =
-  typeof ApplicationsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsControllerCreateOutput>;
 
 // The operation
 /**

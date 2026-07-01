@@ -2,17 +2,271 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface V1GetAuthServiceConfigInput {
+  ref: string;
+}
 export const V1GetAuthServiceConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/config/auth" }));
-export type V1GetAuthServiceConfigInput =
-  typeof V1GetAuthServiceConfigInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{ref}/config/auth" }),
+  ) as unknown as Schema.Codec<V1GetAuthServiceConfigInput>;
 
 // Output Schema
+export interface V1GetAuthServiceConfigOutput {
+  api_max_request_duration: number | null;
+  db_max_pool_size: number | null;
+  db_max_pool_size_unit: "connections" | "percent" | null;
+  disable_signup: boolean | null;
+  external_anonymous_users_enabled: boolean | null;
+  external_apple_additional_client_ids: string | null;
+  external_apple_client_id: string | null;
+  external_apple_email_optional: boolean | null;
+  external_apple_enabled: boolean | null;
+  external_apple_secret: Redacted.Redacted<string> | null;
+  external_azure_client_id: string | null;
+  external_azure_email_optional: boolean | null;
+  external_azure_enabled: boolean | null;
+  external_azure_secret: Redacted.Redacted<string> | null;
+  external_azure_url: string | null;
+  external_bitbucket_client_id: string | null;
+  external_bitbucket_email_optional: boolean | null;
+  external_bitbucket_enabled: boolean | null;
+  external_bitbucket_secret: Redacted.Redacted<string> | null;
+  external_discord_client_id: string | null;
+  external_discord_email_optional: boolean | null;
+  external_discord_enabled: boolean | null;
+  external_discord_secret: Redacted.Redacted<string> | null;
+  external_email_enabled: boolean | null;
+  external_facebook_client_id: string | null;
+  external_facebook_email_optional: boolean | null;
+  external_facebook_enabled: boolean | null;
+  external_facebook_secret: Redacted.Redacted<string> | null;
+  external_figma_client_id: string | null;
+  external_figma_email_optional: boolean | null;
+  external_figma_enabled: boolean | null;
+  external_figma_secret: Redacted.Redacted<string> | null;
+  external_github_client_id: string | null;
+  external_github_email_optional: boolean | null;
+  external_github_enabled: boolean | null;
+  external_github_secret: Redacted.Redacted<string> | null;
+  external_gitlab_client_id: string | null;
+  external_gitlab_email_optional: boolean | null;
+  external_gitlab_enabled: boolean | null;
+  external_gitlab_secret: Redacted.Redacted<string> | null;
+  external_gitlab_url: string | null;
+  external_google_additional_client_ids: string | null;
+  external_google_client_id: string | null;
+  external_google_email_optional: boolean | null;
+  external_google_enabled: boolean | null;
+  external_google_secret: Redacted.Redacted<string> | null;
+  external_google_skip_nonce_check: boolean | null;
+  external_kakao_client_id: string | null;
+  external_kakao_email_optional: boolean | null;
+  external_kakao_enabled: boolean | null;
+  external_kakao_secret: Redacted.Redacted<string> | null;
+  external_keycloak_client_id: string | null;
+  external_keycloak_email_optional: boolean | null;
+  external_keycloak_enabled: boolean | null;
+  external_keycloak_secret: Redacted.Redacted<string> | null;
+  external_keycloak_url: string | null;
+  external_linkedin_oidc_client_id: string | null;
+  external_linkedin_oidc_email_optional: boolean | null;
+  external_linkedin_oidc_enabled: boolean | null;
+  external_linkedin_oidc_secret: Redacted.Redacted<string> | null;
+  external_slack_oidc_client_id: string | null;
+  external_slack_oidc_email_optional: boolean | null;
+  external_slack_oidc_enabled: boolean | null;
+  external_slack_oidc_secret: Redacted.Redacted<string> | null;
+  external_notion_client_id: string | null;
+  external_notion_email_optional: boolean | null;
+  external_notion_enabled: boolean | null;
+  external_notion_secret: Redacted.Redacted<string> | null;
+  external_phone_enabled: boolean | null;
+  external_slack_client_id: string | null;
+  external_slack_email_optional: boolean | null;
+  external_slack_enabled: boolean | null;
+  external_slack_secret: Redacted.Redacted<string> | null;
+  external_spotify_client_id: string | null;
+  external_spotify_email_optional: boolean | null;
+  external_spotify_enabled: boolean | null;
+  external_spotify_secret: Redacted.Redacted<string> | null;
+  external_twitch_client_id: string | null;
+  external_twitch_email_optional: boolean | null;
+  external_twitch_enabled: boolean | null;
+  external_twitch_secret: Redacted.Redacted<string> | null;
+  external_twitter_client_id: string | null;
+  external_twitter_email_optional: boolean | null;
+  external_twitter_enabled: boolean | null;
+  external_twitter_secret: Redacted.Redacted<string> | null;
+  external_x_client_id: string | null;
+  external_x_email_optional: boolean | null;
+  external_x_enabled: boolean | null;
+  external_x_secret: Redacted.Redacted<string> | null;
+  external_workos_client_id: string | null;
+  external_workos_enabled: boolean | null;
+  external_workos_secret: Redacted.Redacted<string> | null;
+  external_workos_url: string | null;
+  external_web3_solana_enabled: boolean | null;
+  external_web3_ethereum_enabled: boolean | null;
+  external_zoom_client_id: string | null;
+  external_zoom_email_optional: boolean | null;
+  external_zoom_enabled: boolean | null;
+  external_zoom_secret: Redacted.Redacted<string> | null;
+  hook_custom_access_token_enabled: boolean | null;
+  hook_custom_access_token_uri: string | null;
+  hook_custom_access_token_secrets: string | null;
+  hook_mfa_verification_attempt_enabled: boolean | null;
+  hook_mfa_verification_attempt_uri: string | null;
+  hook_mfa_verification_attempt_secrets: string | null;
+  hook_password_verification_attempt_enabled: boolean | null;
+  hook_password_verification_attempt_uri: Redacted.Redacted<string> | null;
+  hook_password_verification_attempt_secrets: Redacted.Redacted<string> | null;
+  hook_send_sms_enabled: boolean | null;
+  hook_send_sms_uri: string | null;
+  hook_send_sms_secrets: string | null;
+  hook_send_email_enabled: boolean | null;
+  hook_send_email_uri: string | null;
+  hook_send_email_secrets: string | null;
+  hook_before_user_created_enabled: boolean | null;
+  hook_before_user_created_uri: string | null;
+  hook_before_user_created_secrets: string | null;
+  hook_after_user_created_enabled: boolean | null;
+  hook_after_user_created_uri: string | null;
+  hook_after_user_created_secrets: string | null;
+  jwt_exp: number | null;
+  mailer_allow_unverified_email_sign_ins: boolean | null;
+  mailer_autoconfirm: boolean | null;
+  mailer_otp_exp: number;
+  mailer_otp_length: number | null;
+  mailer_secure_email_change_enabled: boolean | null;
+  mailer_subjects_confirmation: string | null;
+  mailer_subjects_email_change: string | null;
+  mailer_subjects_invite: string | null;
+  mailer_subjects_magic_link: string | null;
+  mailer_subjects_reauthentication: string | null;
+  mailer_subjects_recovery: string | null;
+  mailer_subjects_password_changed_notification: Redacted.Redacted<string> | null;
+  mailer_subjects_email_changed_notification: string | null;
+  mailer_subjects_phone_changed_notification: string | null;
+  mailer_subjects_mfa_factor_enrolled_notification: string | null;
+  mailer_subjects_mfa_factor_unenrolled_notification: string | null;
+  mailer_subjects_identity_linked_notification: string | null;
+  mailer_subjects_identity_unlinked_notification: string | null;
+  mailer_templates_confirmation_content: string | null;
+  mailer_templates_email_change_content: string | null;
+  mailer_templates_invite_content: string | null;
+  mailer_templates_magic_link_content: string | null;
+  mailer_templates_reauthentication_content: string | null;
+  mailer_templates_recovery_content: string | null;
+  mailer_templates_password_changed_notification_content: Redacted.Redacted<string> | null;
+  mailer_templates_email_changed_notification_content: string | null;
+  mailer_templates_phone_changed_notification_content: string | null;
+  mailer_templates_mfa_factor_enrolled_notification_content: string | null;
+  mailer_templates_mfa_factor_unenrolled_notification_content: string | null;
+  mailer_templates_identity_linked_notification_content: string | null;
+  mailer_templates_identity_unlinked_notification_content: string | null;
+  mailer_notifications_password_changed_enabled: boolean | null;
+  mailer_notifications_email_changed_enabled: boolean | null;
+  mailer_notifications_phone_changed_enabled: boolean | null;
+  mailer_notifications_mfa_factor_enrolled_enabled: boolean | null;
+  mailer_notifications_mfa_factor_unenrolled_enabled: boolean | null;
+  mailer_notifications_identity_linked_enabled: boolean | null;
+  mailer_notifications_identity_unlinked_enabled: boolean | null;
+  mfa_max_enrolled_factors: number | null;
+  mfa_totp_enroll_enabled: boolean | null;
+  mfa_totp_verify_enabled: boolean | null;
+  mfa_phone_enroll_enabled: boolean | null;
+  mfa_phone_verify_enabled: boolean | null;
+  mfa_web_authn_enroll_enabled: boolean | null;
+  mfa_web_authn_verify_enabled: boolean | null;
+  passkey_enabled: boolean;
+  webauthn_rp_display_name: string | null;
+  webauthn_rp_id: string | null;
+  webauthn_rp_origins: string | null;
+  mfa_phone_otp_length: number;
+  mfa_phone_template: string | null;
+  mfa_phone_max_frequency: number | null;
+  nimbus_oauth_client_id: string | null;
+  nimbus_oauth_email_optional: boolean | null;
+  nimbus_oauth_client_secret: Redacted.Redacted<string> | null;
+  password_hibp_enabled: boolean | null;
+  password_min_length: number | null;
+  password_required_characters:
+    | "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
+    | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
+    | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789:!@#$%^&*()_+-=[]{};'\\\\:\"|<>?,./`~"
+    | ""
+    | null;
+  rate_limit_anonymous_users: number | null;
+  rate_limit_email_sent: number | null;
+  rate_limit_sms_sent: number | null;
+  rate_limit_token_refresh: number | null;
+  rate_limit_verify: number | null;
+  rate_limit_otp: number | null;
+  rate_limit_web3: number | null;
+  refresh_token_rotation_enabled: boolean | null;
+  saml_enabled: boolean | null;
+  saml_external_url: string | null;
+  saml_allow_encrypted_assertions: boolean | null;
+  security_sb_forwarded_for_enabled: boolean | null;
+  security_captcha_enabled: boolean | null;
+  security_captcha_provider: "turnstile" | "hcaptcha" | null;
+  security_captcha_secret: Redacted.Redacted<string> | null;
+  security_manual_linking_enabled: boolean | null;
+  security_refresh_token_reuse_interval: number | null;
+  security_update_password_require_reauthentication: boolean | null;
+  sessions_inactivity_timeout: number | null;
+  sessions_single_per_user: boolean | null;
+  sessions_tags: string | null;
+  sessions_timebox: number | null;
+  site_url: string | null;
+  sms_autoconfirm: boolean | null;
+  sms_max_frequency: number | null;
+  sms_messagebird_access_key: string | null;
+  sms_messagebird_originator: string | null;
+  sms_otp_exp: number | null;
+  sms_otp_length: number;
+  sms_provider:
+    | "messagebird"
+    | "textlocal"
+    | "twilio"
+    | "twilio_verify"
+    | "vonage"
+    | null;
+  sms_template: string | null;
+  sms_test_otp: string | null;
+  sms_test_otp_valid_until: string | null;
+  sms_textlocal_api_key: string | null;
+  sms_textlocal_sender: string | null;
+  sms_twilio_account_sid: string | null;
+  sms_twilio_auth_token: string | null;
+  sms_twilio_content_sid: string | null;
+  sms_twilio_message_service_sid: string | null;
+  sms_twilio_verify_account_sid: string | null;
+  sms_twilio_verify_auth_token: string | null;
+  sms_twilio_verify_message_service_sid: string | null;
+  sms_vonage_api_key: string | null;
+  sms_vonage_api_secret: Redacted.Redacted<string> | null;
+  sms_vonage_from: string | null;
+  smtp_admin_email: string | null;
+  smtp_host: string | null;
+  smtp_max_frequency: number | null;
+  smtp_pass: string | null;
+  smtp_port: string | null;
+  smtp_sender_name: string | null;
+  smtp_user: string | null;
+  uri_allow_list: string | null;
+  oauth_server_enabled: boolean;
+  oauth_server_allow_dynamic_registration: boolean;
+  oauth_server_authorization_path: string | null;
+  custom_oauth_enabled: boolean;
+  custom_oauth_max_providers: number;
+}
 export const V1GetAuthServiceConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     api_max_request_duration: Schema.NullOr(Schema.Number),
@@ -26,96 +280,96 @@ export const V1GetAuthServiceConfigOutput =
     external_apple_client_id: Schema.NullOr(Schema.String),
     external_apple_email_optional: Schema.NullOr(Schema.Boolean),
     external_apple_enabled: Schema.NullOr(Schema.Boolean),
-    external_apple_secret: SensitiveNullableString,
+    external_apple_secret: SensitiveOutputNullableString,
     external_azure_client_id: Schema.NullOr(Schema.String),
     external_azure_email_optional: Schema.NullOr(Schema.Boolean),
     external_azure_enabled: Schema.NullOr(Schema.Boolean),
-    external_azure_secret: SensitiveNullableString,
+    external_azure_secret: SensitiveOutputNullableString,
     external_azure_url: Schema.NullOr(Schema.String),
     external_bitbucket_client_id: Schema.NullOr(Schema.String),
     external_bitbucket_email_optional: Schema.NullOr(Schema.Boolean),
     external_bitbucket_enabled: Schema.NullOr(Schema.Boolean),
-    external_bitbucket_secret: SensitiveNullableString,
+    external_bitbucket_secret: SensitiveOutputNullableString,
     external_discord_client_id: Schema.NullOr(Schema.String),
     external_discord_email_optional: Schema.NullOr(Schema.Boolean),
     external_discord_enabled: Schema.NullOr(Schema.Boolean),
-    external_discord_secret: SensitiveNullableString,
+    external_discord_secret: SensitiveOutputNullableString,
     external_email_enabled: Schema.NullOr(Schema.Boolean),
     external_facebook_client_id: Schema.NullOr(Schema.String),
     external_facebook_email_optional: Schema.NullOr(Schema.Boolean),
     external_facebook_enabled: Schema.NullOr(Schema.Boolean),
-    external_facebook_secret: SensitiveNullableString,
+    external_facebook_secret: SensitiveOutputNullableString,
     external_figma_client_id: Schema.NullOr(Schema.String),
     external_figma_email_optional: Schema.NullOr(Schema.Boolean),
     external_figma_enabled: Schema.NullOr(Schema.Boolean),
-    external_figma_secret: SensitiveNullableString,
+    external_figma_secret: SensitiveOutputNullableString,
     external_github_client_id: Schema.NullOr(Schema.String),
     external_github_email_optional: Schema.NullOr(Schema.Boolean),
     external_github_enabled: Schema.NullOr(Schema.Boolean),
-    external_github_secret: SensitiveNullableString,
+    external_github_secret: SensitiveOutputNullableString,
     external_gitlab_client_id: Schema.NullOr(Schema.String),
     external_gitlab_email_optional: Schema.NullOr(Schema.Boolean),
     external_gitlab_enabled: Schema.NullOr(Schema.Boolean),
-    external_gitlab_secret: SensitiveNullableString,
+    external_gitlab_secret: SensitiveOutputNullableString,
     external_gitlab_url: Schema.NullOr(Schema.String),
     external_google_additional_client_ids: Schema.NullOr(Schema.String),
     external_google_client_id: Schema.NullOr(Schema.String),
     external_google_email_optional: Schema.NullOr(Schema.Boolean),
     external_google_enabled: Schema.NullOr(Schema.Boolean),
-    external_google_secret: SensitiveNullableString,
+    external_google_secret: SensitiveOutputNullableString,
     external_google_skip_nonce_check: Schema.NullOr(Schema.Boolean),
     external_kakao_client_id: Schema.NullOr(Schema.String),
     external_kakao_email_optional: Schema.NullOr(Schema.Boolean),
     external_kakao_enabled: Schema.NullOr(Schema.Boolean),
-    external_kakao_secret: SensitiveNullableString,
+    external_kakao_secret: SensitiveOutputNullableString,
     external_keycloak_client_id: Schema.NullOr(Schema.String),
     external_keycloak_email_optional: Schema.NullOr(Schema.Boolean),
     external_keycloak_enabled: Schema.NullOr(Schema.Boolean),
-    external_keycloak_secret: SensitiveNullableString,
+    external_keycloak_secret: SensitiveOutputNullableString,
     external_keycloak_url: Schema.NullOr(Schema.String),
     external_linkedin_oidc_client_id: Schema.NullOr(Schema.String),
     external_linkedin_oidc_email_optional: Schema.NullOr(Schema.Boolean),
     external_linkedin_oidc_enabled: Schema.NullOr(Schema.Boolean),
-    external_linkedin_oidc_secret: SensitiveNullableString,
+    external_linkedin_oidc_secret: SensitiveOutputNullableString,
     external_slack_oidc_client_id: Schema.NullOr(Schema.String),
     external_slack_oidc_email_optional: Schema.NullOr(Schema.Boolean),
     external_slack_oidc_enabled: Schema.NullOr(Schema.Boolean),
-    external_slack_oidc_secret: SensitiveNullableString,
+    external_slack_oidc_secret: SensitiveOutputNullableString,
     external_notion_client_id: Schema.NullOr(Schema.String),
     external_notion_email_optional: Schema.NullOr(Schema.Boolean),
     external_notion_enabled: Schema.NullOr(Schema.Boolean),
-    external_notion_secret: SensitiveNullableString,
+    external_notion_secret: SensitiveOutputNullableString,
     external_phone_enabled: Schema.NullOr(Schema.Boolean),
     external_slack_client_id: Schema.NullOr(Schema.String),
     external_slack_email_optional: Schema.NullOr(Schema.Boolean),
     external_slack_enabled: Schema.NullOr(Schema.Boolean),
-    external_slack_secret: SensitiveNullableString,
+    external_slack_secret: SensitiveOutputNullableString,
     external_spotify_client_id: Schema.NullOr(Schema.String),
     external_spotify_email_optional: Schema.NullOr(Schema.Boolean),
     external_spotify_enabled: Schema.NullOr(Schema.Boolean),
-    external_spotify_secret: SensitiveNullableString,
+    external_spotify_secret: SensitiveOutputNullableString,
     external_twitch_client_id: Schema.NullOr(Schema.String),
     external_twitch_email_optional: Schema.NullOr(Schema.Boolean),
     external_twitch_enabled: Schema.NullOr(Schema.Boolean),
-    external_twitch_secret: SensitiveNullableString,
+    external_twitch_secret: SensitiveOutputNullableString,
     external_twitter_client_id: Schema.NullOr(Schema.String),
     external_twitter_email_optional: Schema.NullOr(Schema.Boolean),
     external_twitter_enabled: Schema.NullOr(Schema.Boolean),
-    external_twitter_secret: SensitiveNullableString,
+    external_twitter_secret: SensitiveOutputNullableString,
     external_x_client_id: Schema.NullOr(Schema.String),
     external_x_email_optional: Schema.NullOr(Schema.Boolean),
     external_x_enabled: Schema.NullOr(Schema.Boolean),
-    external_x_secret: SensitiveNullableString,
+    external_x_secret: SensitiveOutputNullableString,
     external_workos_client_id: Schema.NullOr(Schema.String),
     external_workos_enabled: Schema.NullOr(Schema.Boolean),
-    external_workos_secret: SensitiveNullableString,
+    external_workos_secret: SensitiveOutputNullableString,
     external_workos_url: Schema.NullOr(Schema.String),
     external_web3_solana_enabled: Schema.NullOr(Schema.Boolean),
     external_web3_ethereum_enabled: Schema.NullOr(Schema.Boolean),
     external_zoom_client_id: Schema.NullOr(Schema.String),
     external_zoom_email_optional: Schema.NullOr(Schema.Boolean),
     external_zoom_enabled: Schema.NullOr(Schema.Boolean),
-    external_zoom_secret: SensitiveNullableString,
+    external_zoom_secret: SensitiveOutputNullableString,
     hook_custom_access_token_enabled: Schema.NullOr(Schema.Boolean),
     hook_custom_access_token_uri: Schema.NullOr(Schema.String),
     hook_custom_access_token_secrets: Schema.NullOr(Schema.String),
@@ -123,8 +377,8 @@ export const V1GetAuthServiceConfigOutput =
     hook_mfa_verification_attempt_uri: Schema.NullOr(Schema.String),
     hook_mfa_verification_attempt_secrets: Schema.NullOr(Schema.String),
     hook_password_verification_attempt_enabled: Schema.NullOr(Schema.Boolean),
-    hook_password_verification_attempt_uri: SensitiveNullableString,
-    hook_password_verification_attempt_secrets: SensitiveNullableString,
+    hook_password_verification_attempt_uri: SensitiveOutputNullableString,
+    hook_password_verification_attempt_secrets: SensitiveOutputNullableString,
     hook_send_sms_enabled: Schema.NullOr(Schema.Boolean),
     hook_send_sms_uri: Schema.NullOr(Schema.String),
     hook_send_sms_secrets: Schema.NullOr(Schema.String),
@@ -149,7 +403,8 @@ export const V1GetAuthServiceConfigOutput =
     mailer_subjects_magic_link: Schema.NullOr(Schema.String),
     mailer_subjects_reauthentication: Schema.NullOr(Schema.String),
     mailer_subjects_recovery: Schema.NullOr(Schema.String),
-    mailer_subjects_password_changed_notification: SensitiveNullableString,
+    mailer_subjects_password_changed_notification:
+      SensitiveOutputNullableString,
     mailer_subjects_email_changed_notification: Schema.NullOr(Schema.String),
     mailer_subjects_phone_changed_notification: Schema.NullOr(Schema.String),
     mailer_subjects_mfa_factor_enrolled_notification: Schema.NullOr(
@@ -169,7 +424,7 @@ export const V1GetAuthServiceConfigOutput =
     mailer_templates_reauthentication_content: Schema.NullOr(Schema.String),
     mailer_templates_recovery_content: Schema.NullOr(Schema.String),
     mailer_templates_password_changed_notification_content:
-      SensitiveNullableString,
+      SensitiveOutputNullableString,
     mailer_templates_email_changed_notification_content: Schema.NullOr(
       Schema.String,
     ),
@@ -219,7 +474,7 @@ export const V1GetAuthServiceConfigOutput =
     mfa_phone_max_frequency: Schema.NullOr(Schema.Number),
     nimbus_oauth_client_id: Schema.NullOr(Schema.String),
     nimbus_oauth_email_optional: Schema.NullOr(Schema.Boolean),
-    nimbus_oauth_client_secret: SensitiveNullableString,
+    nimbus_oauth_client_secret: SensitiveOutputNullableString,
     password_hibp_enabled: Schema.NullOr(Schema.Boolean),
     password_min_length: Schema.NullOr(Schema.Number),
     password_required_characters: Schema.NullOr(
@@ -246,7 +501,7 @@ export const V1GetAuthServiceConfigOutput =
     security_captcha_provider: Schema.NullOr(
       Schema.Literals(["turnstile", "hcaptcha"]),
     ),
-    security_captcha_secret: SensitiveNullableString,
+    security_captcha_secret: SensitiveOutputNullableString,
     security_manual_linking_enabled: Schema.NullOr(Schema.Boolean),
     security_refresh_token_reuse_interval: Schema.NullOr(Schema.Number),
     security_update_password_require_reauthentication: Schema.NullOr(
@@ -285,7 +540,7 @@ export const V1GetAuthServiceConfigOutput =
     sms_twilio_verify_auth_token: Schema.NullOr(Schema.String),
     sms_twilio_verify_message_service_sid: Schema.NullOr(Schema.String),
     sms_vonage_api_key: Schema.NullOr(Schema.String),
-    sms_vonage_api_secret: SensitiveNullableString,
+    sms_vonage_api_secret: SensitiveOutputNullableString,
     sms_vonage_from: Schema.NullOr(Schema.String),
     smtp_admin_email: Schema.NullOr(Schema.String),
     smtp_host: Schema.NullOr(Schema.String),
@@ -300,9 +555,7 @@ export const V1GetAuthServiceConfigOutput =
     oauth_server_authorization_path: Schema.NullOr(Schema.String),
     custom_oauth_enabled: Schema.Boolean,
     custom_oauth_max_providers: Schema.Number,
-  });
-export type V1GetAuthServiceConfigOutput =
-  typeof V1GetAuthServiceConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1GetAuthServiceConfigOutput>;
 
 // The operation
 /**

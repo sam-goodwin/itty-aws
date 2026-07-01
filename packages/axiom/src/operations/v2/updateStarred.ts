@@ -4,6 +4,43 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateStarredInput {
+  id: string;
+  dataset?: string;
+  kind: "apl";
+  metadata: Record<string, string>;
+  name: string;
+  query: {
+    apl: string;
+    cursor?: string;
+    defaultLimit?: number;
+    defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
+    endTime?: string;
+    includeCursor?: boolean;
+    includeCursorField?: boolean;
+    libraries?: ReadonlyArray<string>;
+    queryOptions?: {
+      disableCache?: boolean;
+      disableStats?: boolean;
+      disableTrace?: boolean;
+      maxDataPoints?: number;
+      maxSeries?: number;
+      noAggregation?: boolean;
+      noFill?: boolean;
+      noInterpolation?: boolean;
+      priority?: "low" | "medium" | "high";
+      resolution?: string;
+      displayNull?: "auto" | "null" | "span" | "zero" | "";
+      overlayCharts?: "true" | "false" | "";
+      shownColumns?: string;
+      timeSeriesVariant?: "area" | "bars" | "line" | "lines" | "";
+      timeSeriesView?: "charts" | "resultsTable" | "charts|resultsTable" | "";
+    };
+    startTime?: string;
+    variables?: unknown;
+  };
+  who: string;
+}
 export const UpdateStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   dataset: Schema.optional(Schema.String),
@@ -60,10 +97,48 @@ export const UpdateStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     variables: Schema.optional(Schema.Unknown),
   }),
   who: Schema.String,
-}).pipe(T.Http({ method: "PUT", path: "/v2/apl-starred-queries/{id}" }));
-export type UpdateStarredInput = typeof UpdateStarredInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/apl-starred-queries/{id}" }),
+) as unknown as Schema.Codec<UpdateStarredInput>;
 
 // Output Schema
+export interface UpdateStarredOutput {
+  dataset?: string;
+  kind: "apl";
+  metadata: Record<string, string>;
+  name: string;
+  query: {
+    apl: string;
+    cursor?: string;
+    defaultLimit?: number;
+    defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
+    endTime?: string;
+    includeCursor?: boolean;
+    includeCursorField?: boolean;
+    libraries?: ReadonlyArray<string>;
+    queryOptions?: {
+      disableCache?: boolean;
+      disableStats?: boolean;
+      disableTrace?: boolean;
+      maxDataPoints?: number;
+      maxSeries?: number;
+      noAggregation?: boolean;
+      noFill?: boolean;
+      noInterpolation?: boolean;
+      priority?: "low" | "medium" | "high";
+      resolution?: string;
+      displayNull?: "auto" | "null" | "span" | "zero" | "";
+      overlayCharts?: "true" | "false" | "";
+      shownColumns?: string;
+      timeSeriesVariant?: "area" | "bars" | "line" | "lines" | "";
+      timeSeriesView?: "charts" | "resultsTable" | "charts|resultsTable" | "";
+    };
+    startTime?: string;
+    variables?: unknown;
+  };
+  who: string;
+  id: string;
+}
 export const UpdateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
@@ -120,8 +195,7 @@ export const UpdateStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   who: Schema.String,
   id: Schema.String,
-});
-export type UpdateStarredOutput = typeof UpdateStarredOutput.Type;
+}) as unknown as Schema.Codec<UpdateStarredOutput>;
 
 // The operation
 export const updateStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +33,20 @@ export const ObjectMediaPreviewsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/object_media_previews/{id}/",
     }),
-  );
-export type ObjectMediaPreviewsPartialUpdateInput =
-  typeof ObjectMediaPreviewsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsPartialUpdateInput>;
 
 // Output Schema
+export interface ObjectMediaPreviewsPartialUpdateOutput {
+  id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -37,9 +58,7 @@ export const ObjectMediaPreviewsPartialUpdateOutput =
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
     event_definition_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ObjectMediaPreviewsPartialUpdateOutput =
-  typeof ObjectMediaPreviewsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ObjectMediaPreviewsPartialUpdateOutput>;
 
 // The operation
 /**

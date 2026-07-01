@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupDatabaseUsersInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupDatabaseUsersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,21 +25,18 @@ export const ListGroupDatabaseUsersInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/databaseUsers",
     }),
-  );
-export type ListGroupDatabaseUsersInput =
-  typeof ListGroupDatabaseUsersInput.Type;
+  ) as unknown as Schema.Codec<ListGroupDatabaseUsersInput>;
 
 // Output Schema
+export type ListGroupDatabaseUsersOutput = void;
 export const ListGroupDatabaseUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupDatabaseUsersOutput =
-  typeof ListGroupDatabaseUsersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDatabaseUsersOutput>;
 
 // The operation
 /**
  * Return All Database Users in One Project
  *
- * Returns all database users that belong to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns all database users that belong to the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

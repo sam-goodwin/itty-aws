@@ -5,12 +5,246 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service billing
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface UsageGetResponseItem {
+  /** Public identifier of the Cloudflare account (account tag). */
+  billingAccountId: string;
+  /** Display name of the Cloudflare account. */
+  billingAccountName: string;
+  /** Highest-level classification of a charge based on the nature of how it gets billed. Currently only "Usage" is supported. */
+  chargeCategory: "Usage";
+  /** Self-contained summary of the charge's purpose and price. */
+  chargeDescription: string;
+  /** Indicates how often a charge occurs. Currently only "Usage-Based" is supported. */
+  chargeFrequency: "Usage-Based";
+  /** Exclusive end of the time interval during which the usage was consumed. */
+  chargePeriodEnd: string;
+  /** Inclusive start of the time interval during which the usage was consumed. */
+  chargePeriodStart: string;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
+  consumedQuantity: number;
+  /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
+  consumedUnit: string;
+  /** Name of the entity providing the underlying infrastructure or platform. */
+  hostProviderName: string;
+  /** Name of the entity responsible for invoicing for the services consumed. */
+  invoiceIssuerName: string;
+  /** Name of the entity that made the services available for purchase. */
+  serviceProviderName: string;
+  /** The display name of the billable metric. Cloudflare extension; replaces FOCUS SkuMeter. */
+  xBillableMetricName: string;
+  /** A charge serving as the basis for invoicing, inclusive of all reduced rates and discounts while excluding the amortization of upfront charges (one-time or recurring). */
+  billedCost?: number | null;
+  /** Currency that a charge was billed in (ISO 4217). */
+  billingCurrency?: string | null;
+  /** Exclusive end of the billing cycle that contains this usage record. */
+  billingPeriodEnd?: string | null;
+  /** Inclusive start of the billing cycle that contains this usage record. */
+  billingPeriodStart?: string | null;
+  /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
+  chargeClass?: "Correction" | null;
+  /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
+  contractedCost?: number | null;
+  /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
+  contractedUnitPrice?: number | null;
+  /** The amortized cost of the charge after applying all reduced rates, discounts, and the applicable portion of relevant, prepaid purchases (one-time or recurring) that covered the charge. */
+  effectiveCost?: number | null;
+  /** Cost calculated by multiplying ListUnitPrice and the corresponding PricingQuantity. */
+  listCost?: number | null;
+  /** Suggested provider-published unit price for a single PricingUnit of the associated billable metric, exclusive of any discounts. */
+  listUnitPrice?: number | null;
+  /** Volume of a given service used or purchased, based on the PricingUnit. */
+  pricingQuantity?: number | null;
+  /** Provider-specified measurement unit for determining unit prices, indicating how the provider rates measured usage after applying pricing rules like block pricing. */
+  pricingUnit?: string | null;
+  /** Provider-assigned identifier for an isolated geographic area where a service is provided. */
+  regionId?: string | null;
+  /** Name of an isolated geographic area where a service is provided. */
+  regionName?: string | null;
+  /** Unique identifier assigned to a grouping of services. For Cloudflare, this is the subscription or contract ID. */
+  subAccountId?: string | null;
+  /** Name assigned to a grouping of services. For Cloudflare, this is the subscription or contract display name. */
+  subAccountName?: string | null;
+  /** The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId. */
+  xBillableMetricId?: string | null;
+  /** The product family the charge belongs to (e.g., "R2", "Workers"). Cloudflare extension; replaces FOCUS ServiceName. */
+  xProductFamilyName?: string | null;
+  /** The identifier for the Cloudflare zone (zone tag). Cloudflare extension. */
+  xZoneId?: string | null;
+  /** The display name of the Cloudflare zone. Cloudflare extension. */
+  xZoneName?: string | null;
+}
+const UsageGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    billingAccountId: Schema.String,
+    billingAccountName: Schema.String,
+    chargeCategory: Schema.Literal("Usage"),
+    chargeDescription: Schema.String,
+    chargeFrequency: Schema.Literal("Usage-Based"),
+    chargePeriodEnd: Schema.String,
+    chargePeriodStart: Schema.String,
+    consumedQuantity: Schema.Number,
+    consumedUnit: Schema.String,
+    hostProviderName: Schema.String,
+    invoiceIssuerName: Schema.String,
+    serviceProviderName: Schema.String,
+    xBillableMetricName: Schema.String,
+    billedCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    billingCurrency: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    billingPeriodEnd: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    billingPeriodStart: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    chargeClass: Schema.optional(
+      Schema.Union([Schema.Literal("Correction"), Schema.Null]),
+    ),
+    contractedCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    contractedUnitPrice: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    effectiveCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    listCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    listUnitPrice: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    pricingQuantity: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    pricingUnit: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    regionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    regionName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    subAccountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    subAccountName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    xBillableMetricId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    xProductFamilyName: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    xZoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    xZoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      billingAccountId: "BillingAccountId",
+      billingAccountName: "BillingAccountName",
+      chargeCategory: "ChargeCategory",
+      chargeDescription: "ChargeDescription",
+      chargeFrequency: "ChargeFrequency",
+      chargePeriodEnd: "ChargePeriodEnd",
+      chargePeriodStart: "ChargePeriodStart",
+      consumedQuantity: "ConsumedQuantity",
+      consumedUnit: "ConsumedUnit",
+      hostProviderName: "HostProviderName",
+      invoiceIssuerName: "InvoiceIssuerName",
+      serviceProviderName: "ServiceProviderName",
+      xBillableMetricName: "x_BillableMetricName",
+      billedCost: "BilledCost",
+      billingCurrency: "BillingCurrency",
+      billingPeriodEnd: "BillingPeriodEnd",
+      billingPeriodStart: "BillingPeriodStart",
+      chargeClass: "ChargeClass",
+      contractedCost: "ContractedCost",
+      contractedUnitPrice: "ContractedUnitPrice",
+      effectiveCost: "EffectiveCost",
+      listCost: "ListCost",
+      listUnitPrice: "ListUnitPrice",
+      pricingQuantity: "PricingQuantity",
+      pricingUnit: "PricingUnit",
+      regionId: "RegionId",
+      regionName: "RegionName",
+      subAccountId: "SubAccountId",
+      subAccountName: "SubAccountName",
+      xBillableMetricId: "x_BillableMetricId",
+      xProductFamilyName: "x_ProductFamilyName",
+      xZoneId: "x_ZoneId",
+      xZoneName: "x_ZoneName",
+    }),
+  ),
+) as unknown as Schema.Codec<UsageGetResponseItem>;
+
+interface UsagePaygoResponseItem {
+  /** Specifies the billing currency code (ISO 4217). */
+  billingCurrency: string;
+  /** Indicates the start of the billing period. */
+  billingPeriodStart: string;
+  /** Indicates the end of the charge period. */
+  chargePeriodEnd: string;
+  /** Indicates the start of the charge period. */
+  chargePeriodStart: string;
+  /** Specifies the quantity consumed during this charge period. */
+  consumedQuantity: number;
+  /** A display name for the unit of measurement used for the product (for example, "GB-months", "GB-seconds"). May be empty when the unit is implicit in the service name. */
+  consumedUnit: string;
+  /** Specifies the cost for this charge period in the billing currency. */
+  contractedCost: number;
+  /** Specifies the cumulated cost for the billing period in the billing currency. */
+  cumulatedContractedCost: number;
+  /** Specifies the cumulated pricing quantity for the billing period. */
+  cumulatedPricingQuantity: number;
+  /** Specifies the pricing quantity for this charge period. */
+  pricingQuantity: number;
+  /** Identifies the Cloudflare service. */
+  serviceName: string;
+  /** Identifies the product family for the Cloudflare service. */
+  serviceFamilyName?: string | null;
+  /** The identifier for the Cloudflare subscription. */
+  subscriptionId?: string | null;
+  /** The identifier for the Cloudflare zone (zone tag). */
+  zoneId?: string | null;
+  /** The display name of the Cloudflare zone. */
+  zoneName?: string | null;
+}
+const UsagePaygoResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    billingCurrency: Schema.String,
+    billingPeriodStart: Schema.String,
+    chargePeriodEnd: Schema.String,
+    chargePeriodStart: Schema.String,
+    consumedQuantity: Schema.Number,
+    consumedUnit: Schema.String,
+    contractedCost: Schema.Number,
+    cumulatedContractedCost: Schema.Number,
+    cumulatedPricingQuantity: Schema.Number,
+    pricingQuantity: Schema.Number,
+    serviceName: Schema.String,
+    serviceFamilyName: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    subscriptionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      billingCurrency: "BillingCurrency",
+      billingPeriodStart: "BillingPeriodStart",
+      chargePeriodEnd: "ChargePeriodEnd",
+      chargePeriodStart: "ChargePeriodStart",
+      consumedQuantity: "ConsumedQuantity",
+      consumedUnit: "ConsumedUnit",
+      contractedCost: "ContractedCost",
+      cumulatedContractedCost: "CumulatedContractedCost",
+      cumulatedPricingQuantity: "CumulatedPricingQuantity",
+      pricingQuantity: "PricingQuantity",
+      serviceName: "ServiceName",
+      serviceFamilyName: "ServiceFamilyName",
+      subscriptionId: "SubscriptionId",
+      zoneId: "ZoneId",
+      zoneName: "ZoneName",
+    }),
+  ),
+) as unknown as Schema.Codec<UsagePaygoResponseItem>;
 
 // =============================================================================
 // Profile
@@ -28,7 +262,7 @@ export const GetProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/billing/profile" }),
     ),
-) as unknown as Schema.Schema<GetProfileRequest>;
+) as unknown as Schema.Codec<GetProfileRequest>;
 
 export interface GetProfileResponse {
   /** Billing item identifier tag. */
@@ -184,7 +418,7 @@ export const GetProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetProfileResponse>;
+) as unknown as Schema.Codec<GetProfileResponse>;
 
 export type GetProfileError = DefaultErrors;
 
@@ -223,7 +457,7 @@ export const GetUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/billable/usage" }),
   ),
-) as unknown as Schema.Schema<GetUsageRequest>;
+) as unknown as Schema.Codec<GetUsageRequest>;
 
 export type GetUsageResponse = {
   billingAccountId: string;
@@ -262,104 +496,8 @@ export type GetUsageResponse = {
 }[];
 
 export const GetUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-  Schema.Array(
-    Schema.Struct({
-      billingAccountId: Schema.String,
-      billingAccountName: Schema.String,
-      chargeCategory: Schema.Literal("Usage"),
-      chargeDescription: Schema.String,
-      chargeFrequency: Schema.Literal("Usage-Based"),
-      chargePeriodEnd: Schema.String,
-      chargePeriodStart: Schema.String,
-      consumedQuantity: Schema.Number,
-      consumedUnit: Schema.String,
-      hostProviderName: Schema.String,
-      invoiceIssuerName: Schema.String,
-      serviceProviderName: Schema.String,
-      xBillableMetricName: Schema.String,
-      billedCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      billingCurrency: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      billingPeriodEnd: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      billingPeriodStart: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      chargeClass: Schema.optional(
-        Schema.Union([Schema.Literal("Correction"), Schema.Null]),
-      ),
-      contractedCost: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      contractedUnitPrice: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      effectiveCost: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      listCost: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      listUnitPrice: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      pricingQuantity: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      pricingUnit: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      regionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      regionName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      subAccountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      subAccountName: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      xBillableMetricId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      xProductFamilyName: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      xZoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      xZoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        billingAccountId: "BillingAccountId",
-        billingAccountName: "BillingAccountName",
-        chargeCategory: "ChargeCategory",
-        chargeDescription: "ChargeDescription",
-        chargeFrequency: "ChargeFrequency",
-        chargePeriodEnd: "ChargePeriodEnd",
-        chargePeriodStart: "ChargePeriodStart",
-        consumedQuantity: "ConsumedQuantity",
-        consumedUnit: "ConsumedUnit",
-        hostProviderName: "HostProviderName",
-        invoiceIssuerName: "InvoiceIssuerName",
-        serviceProviderName: "ServiceProviderName",
-        xBillableMetricName: "x_BillableMetricName",
-        billedCost: "BilledCost",
-        billingCurrency: "BillingCurrency",
-        billingPeriodEnd: "BillingPeriodEnd",
-        billingPeriodStart: "BillingPeriodStart",
-        chargeClass: "ChargeClass",
-        contractedCost: "ContractedCost",
-        contractedUnitPrice: "ContractedUnitPrice",
-        effectiveCost: "EffectiveCost",
-        listCost: "ListCost",
-        listUnitPrice: "ListUnitPrice",
-        pricingQuantity: "PricingQuantity",
-        pricingUnit: "PricingUnit",
-        regionId: "RegionId",
-        regionName: "RegionName",
-        subAccountId: "SubAccountId",
-        subAccountName: "SubAccountName",
-        xBillableMetricId: "x_BillableMetricId",
-        xProductFamilyName: "x_ProductFamilyName",
-        xZoneId: "x_ZoneId",
-        xZoneName: "x_ZoneName",
-      }),
-    ),
-  ).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetUsageResponse>;
+  Schema.Array(UsageGetResponseItem).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetUsageResponse>;
 
 export type GetUsageError = DefaultErrors;
 
@@ -392,7 +530,7 @@ export const PaygoUsageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/paygo-usage" }),
     ),
-) as unknown as Schema.Schema<PaygoUsageRequest>;
+) as unknown as Schema.Codec<PaygoUsageRequest>;
 
 export type PaygoUsageResponse = {
   billingCurrency: string;
@@ -407,50 +545,14 @@ export type PaygoUsageResponse = {
   pricingQuantity: number;
   serviceName: string;
   serviceFamilyName?: string | null;
+  subscriptionId?: string | null;
   zoneId?: string | null;
   zoneName?: string | null;
 }[];
 
 export const PaygoUsageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Array(
-      Schema.Struct({
-        billingCurrency: Schema.String,
-        billingPeriodStart: Schema.String,
-        chargePeriodEnd: Schema.String,
-        chargePeriodStart: Schema.String,
-        consumedQuantity: Schema.Number,
-        consumedUnit: Schema.String,
-        contractedCost: Schema.Number,
-        cumulatedContractedCost: Schema.Number,
-        cumulatedPricingQuantity: Schema.Number,
-        pricingQuantity: Schema.Number,
-        serviceName: Schema.String,
-        serviceFamilyName: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        zoneId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          billingCurrency: "BillingCurrency",
-          billingPeriodStart: "BillingPeriodStart",
-          chargePeriodEnd: "ChargePeriodEnd",
-          chargePeriodStart: "ChargePeriodStart",
-          consumedQuantity: "ConsumedQuantity",
-          consumedUnit: "ConsumedUnit",
-          contractedCost: "ContractedCost",
-          cumulatedContractedCost: "CumulatedContractedCost",
-          cumulatedPricingQuantity: "CumulatedPricingQuantity",
-          pricingQuantity: "PricingQuantity",
-          serviceName: "ServiceName",
-          serviceFamilyName: "ServiceFamilyName",
-          zoneId: "ZoneId",
-          zoneName: "ZoneName",
-        }),
-      ),
-    ).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PaygoUsageResponse>;
+  () => Schema.Array(UsagePaygoResponseItem).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PaygoUsageResponse>;
 
 export type PaygoUsageError = DefaultErrors;
 

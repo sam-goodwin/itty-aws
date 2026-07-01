@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteViewInput {
+  id: string;
+}
 export const DeleteViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/views/{id}" }));
-export type DeleteViewInput = typeof DeleteViewInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/views/{id}" }),
+) as unknown as Schema.Codec<DeleteViewInput>;
 
 // Output Schema
-export const DeleteViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteViewOutput = typeof DeleteViewOutput.Type;
+export type DeleteViewOutput = void;
+export const DeleteViewOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteViewOutput>;
 
 // The operation
 export const deleteView = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

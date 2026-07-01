@@ -4,20 +4,72 @@ import * as T from "../traits.ts";
 import { Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DirectoriesControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  organization_id?: string;
+  search?: string;
+  domain?: string;
+}
 export const DirectoriesControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/directories" }));
-export type DirectoriesControllerListInput =
-  typeof DirectoriesControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/directories" }),
+  ) as unknown as Schema.Codec<DirectoriesControllerListInput>;
 
 // Output Schema
+export interface DirectoriesControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    organization_id?: string;
+    external_key?: string;
+    type?:
+      | "azure scim v2.0"
+      | "bamboohr"
+      | "breathe hr"
+      | "cezanne hr"
+      | "cyberark scim v2.0"
+      | "fourth hr"
+      | "generic scim v2.0"
+      | "gsuite directory"
+      | "hibob"
+      | "sailpoint scim v2.0"
+      | "jump cloud scim v2.0"
+      | "okta scim v2.0"
+      | "onelogin scim v2.0"
+      | "people hr"
+      | "personio"
+      | "pingfederate scim v2.0"
+      | "rippling scim v2.0"
+      | "s3"
+      | "sftp"
+      | "sftp workday"
+      | "workday";
+    state?:
+      | "linked"
+      | "validating"
+      | "invalid_credentials"
+      | "unlinked"
+      | "deleting";
+    name?: string;
+    domain?: string;
+    metadata?: { users: { active: number; inactive: number }; groups: number };
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const DirectoriesControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -84,9 +136,7 @@ export const DirectoriesControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type DirectoriesControllerListOutput =
-  typeof DirectoriesControllerListOutput.Type;
+  }) as unknown as Schema.Codec<DirectoriesControllerListOutput>;
 
 // The operation
 /**

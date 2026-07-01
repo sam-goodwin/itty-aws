@@ -3,6 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateEvmEip7702DelegationInput {
+  address: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "polygon"
+    | "ethereum"
+    | "ethereum-sepolia";
+  enableSpendPermissions?: boolean;
+}
 export const CreateEvmEip7702DelegationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -21,17 +33,16 @@ export const CreateEvmEip7702DelegationInput =
       method: "POST",
       path: "/v2/evm/accounts/{address}/eip7702/delegation",
     }),
-  );
-export type CreateEvmEip7702DelegationInput =
-  typeof CreateEvmEip7702DelegationInput.Type;
+  ) as unknown as Schema.Codec<CreateEvmEip7702DelegationInput>;
 
 // Output Schema
+export interface CreateEvmEip7702DelegationOutput {
+  delegationOperationId: string;
+}
 export const CreateEvmEip7702DelegationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegationOperationId: Schema.String,
-  });
-export type CreateEvmEip7702DelegationOutput =
-  typeof CreateEvmEip7702DelegationOutput.Type;
+  }) as unknown as Schema.Codec<CreateEvmEip7702DelegationOutput>;
 
 // The operation
 /**

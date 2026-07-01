@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupBackupPrivateEndpointsInput {
+  groupId: string;
+  cloudProvider: "AWS";
+  pretty?: boolean;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const ListGroupBackupPrivateEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const ListGroupBackupPrivateEndpointsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints",
     }),
-  );
-export type ListGroupBackupPrivateEndpointsInput =
-  typeof ListGroupBackupPrivateEndpointsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupBackupPrivateEndpointsInput>;
 
 // Output Schema
+export type ListGroupBackupPrivateEndpointsOutput = void;
 export const ListGroupBackupPrivateEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupBackupPrivateEndpointsOutput =
-  typeof ListGroupBackupPrivateEndpointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupPrivateEndpointsOutput>;
 
 // The operation
 /**

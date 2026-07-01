@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteJitAccessInput {
+  ref: string;
+  user_id: string;
+}
 export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -14,12 +18,12 @@ export const V1DeleteJitAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/v1/projects/{ref}/database/jit/{user_id}",
   }),
-);
-export type V1DeleteJitAccessInput = typeof V1DeleteJitAccessInput.Type;
+) as unknown as Schema.Codec<V1DeleteJitAccessInput>;
 
 // Output Schema
-export const V1DeleteJitAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeleteJitAccessOutput = typeof V1DeleteJitAccessOutput.Type;
+export type V1DeleteJitAccessOutput = void;
+export const V1DeleteJitAccessOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteJitAccessOutput>;
 
 // The operation
 /**

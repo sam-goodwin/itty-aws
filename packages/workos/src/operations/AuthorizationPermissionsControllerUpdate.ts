@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationPermissionsControllerUpdateInput {
+  slug: string;
+  name?: string;
+  description?: string | null;
+}
 export const AuthorizationPermissionsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
@@ -11,11 +16,20 @@ export const AuthorizationPermissionsControllerUpdateInput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({ method: "PATCH", path: "/authorization/permissions/{slug}" }),
-  );
-export type AuthorizationPermissionsControllerUpdateInput =
-  typeof AuthorizationPermissionsControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationPermissionsControllerUpdateInput>;
 
 // Output Schema
+export interface AuthorizationPermissionsControllerUpdateOutput {
+  object?: string;
+  id?: string;
+  slug?: string;
+  name?: string;
+  description?: string | null;
+  system?: boolean;
+  resource_type_slug?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthorizationPermissionsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -27,9 +41,7 @@ export const AuthorizationPermissionsControllerUpdateOutput =
     resource_type_slug: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationPermissionsControllerUpdateOutput =
-  typeof AuthorizationPermissionsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationPermissionsControllerUpdateOutput>;
 
 // The operation
 /**

@@ -4,12 +4,606 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AccessBridgesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
+  properties: {
+    ipv4ConnectedPrefix?: string;
+    ipv6ConnectedPrefix?: string;
+    networkId: string;
+    securityRules?: {
+      description?: string;
+      direction: "Inbound" | "Outbound";
+      ipv4Addresses?: string[];
+      ipv6Addresses?: string[];
+      port: string;
+    }[];
+    detailedStatus?: "Running" | "Degraded" | "Failed";
+    detailedStatusMessage?: string;
+    endpoints?: {
+      fqdn?: string;
+      ipv4Address?: string;
+      ipv6Address?: string;
+      name?: string;
+    }[];
+    protocol?: "TCP" | "UDP";
+    provisioningState?:
+      | "Accepted"
+      | "Canceled"
+      | "Failed"
+      | "Provisioning"
+      | "Succeeded";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
+export const AccessBridgesCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+    properties: Schema.Struct({
+      ipv4ConnectedPrefix: Schema.optional(Schema.String),
+      ipv6ConnectedPrefix: Schema.optional(Schema.String),
+      networkId: Schema.String,
+      securityRules: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            direction: Schema.Literals(["Inbound", "Outbound"]),
+            ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+            ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+            port: Schema.String,
+          }),
+        ),
+      ),
+      detailedStatus: Schema.optional(
+        Schema.Literals(["Running", "Degraded", "Failed"]),
+      ),
+      detailedStatusMessage: Schema.optional(Schema.String),
+      endpoints: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            fqdn: Schema.optional(Schema.String),
+            ipv4Address: Schema.optional(Schema.String),
+            ipv6Address: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      protocol: Schema.optional(Schema.Literals(["TCP", "UDP"])),
+      provisioningState: Schema.optional(
+        Schema.Literals([
+          "Accepted",
+          "Canceled",
+          "Failed",
+          "Provisioning",
+          "Succeeded",
+        ]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<AccessBridgesCreateOrUpdateInput>;
+
+// Output Schema
+export interface AccessBridgesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const AccessBridgesCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<AccessBridgesCreateOrUpdateOutput>;
+
+// The operation
+/**
+ * Create a new access bridge or update the properties of the existing access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ */
+export const AccessBridgesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: AccessBridgesCreateOrUpdateInput,
+    outputSchema: AccessBridgesCreateOrUpdateOutput,
+  }),
+);
+// Input Schema
+export interface AccessBridgesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
+}
+export const AccessBridgesDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<AccessBridgesDeleteInput>;
+
+// Output Schema
+export type AccessBridgesDeleteOutput = void;
+export const AccessBridgesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessBridgesDeleteOutput>;
+
+// The operation
+/**
+ * Delete the specified access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const AccessBridgesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesDeleteInput,
+  outputSchema: AccessBridgesDeleteOutput,
+}));
+// Input Schema
+export interface AccessBridgesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
+}
+export const AccessBridgesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accessBridgeName: Schema.Literals([
+    "Bastion",
+    "PrivateVault",
+    "StorageDashboard",
+  ]).pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+    apiVersion: "2026-07-01",
+  }),
+) as unknown as Schema.Codec<AccessBridgesGetInput>;
+
+// Output Schema
+export interface AccessBridgesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const AccessBridgesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  },
+) as unknown as Schema.Codec<AccessBridgesGetOutput>;
+
+// The operation
+/**
+ * Get the properties of the provided access bridge.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ */
+export const AccessBridgesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesGetInput,
+  outputSchema: AccessBridgesGetOutput,
+}));
+// Input Schema
+export interface AccessBridgesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
+export const AccessBridgesListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<AccessBridgesListByResourceGroupInput>;
+
+// Output Schema
+export interface AccessBridgesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
+export const AccessBridgesListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<AccessBridgesListByResourceGroupOutput>;
+
+// The operation
+/**
+ * Get a list of access bridges in the provided resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const AccessBridgesListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessBridgesListByResourceGroupInput,
+    outputSchema: AccessBridgesListByResourceGroupOutput,
+  }));
+// Input Schema
+export interface AccessBridgesListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
+export const AccessBridgesListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/accessBridges",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<AccessBridgesListBySubscriptionInput>;
+
+// Output Schema
+export interface AccessBridgesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
+export const AccessBridgesListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<AccessBridgesListBySubscriptionOutput>;
+
+// The operation
+/**
+ * Get a list of access bridges in the provided subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const AccessBridgesListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: AccessBridgesListBySubscriptionInput,
+    outputSchema: AccessBridgesListBySubscriptionOutput,
+  }));
+// Input Schema
+export interface AccessBridgesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessBridgeName: "Bastion" | "PrivateVault" | "StorageDashboard";
+  properties?: {
+    securityRules?: {
+      description?: string;
+      direction: "Inbound" | "Outbound";
+      ipv4Addresses?: string[];
+      ipv6Addresses?: string[];
+      port: string;
+    }[];
+  };
+  tags?: Record<string, string>;
+}
+export const AccessBridgesUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accessBridgeName: Schema.Literals([
+      "Bastion",
+      "PrivateVault",
+      "StorageDashboard",
+    ]).pipe(T.PathParam()),
+    properties: Schema.optional(
+      Schema.Struct({
+        securityRules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              description: Schema.optional(Schema.String),
+              direction: Schema.Literals(["Inbound", "Outbound"]),
+              ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+              ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+              port: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges/{accessBridgeName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<AccessBridgesUpdateInput>;
+
+// Output Schema
+export interface AccessBridgesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const AccessBridgesUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<AccessBridgesUpdateOutput>;
+
+// The operation
+/**
+ * Update properties of the provided access bridge, or update tags associated with the access bridge. Properties and tag updates can be done independently.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accessBridgeName - The name of the access bridge.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const AccessBridgesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: AccessBridgesUpdateInput,
+  outputSchema: AccessBridgesUpdateOutput,
+}));
+// Input Schema
+export interface AgentPoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  agentPoolName: string;
+  properties: {
+    administratorConfiguration?: {
+      adminUsername?: string;
+      sshPublicKeys?: { keyData: string }[];
+    };
+    agentOptions?: { hugepagesCount: number; hugepagesSize?: "2M" | "1G" };
+    attachedNetworkConfiguration?: {
+      l2Networks?: {
+        networkId: string;
+        pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+      }[];
+      l3Networks?: {
+        ipamEnabled?: "True" | "False";
+        networkId: string;
+        pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+      }[];
+      trunkedNetworks?: {
+        networkId: string;
+        pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+      }[];
+    };
+    availabilityZones?: string[];
+    count: number;
+    labels?: { key: string; value: string }[];
+    mode: "System" | "User" | "NotApplicable";
+    taints?: { key: string; value: string }[];
+    upgradeSettings?: {
+      drainTimeout?: number;
+      maxSurge?: string;
+      maxUnavailable?: string;
+    };
+    vmSkuName: string;
+    detailedStatus?: "Available" | "Error" | "Provisioning";
+    detailedStatusMessage?: string;
+    kubernetesVersion?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Canceled"
+      | "Deleting"
+      | "Failed"
+      | "InProgress"
+      | "Succeeded"
+      | "Updating";
+  };
+  etag?: string;
+  extendedLocation?: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AgentPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -147,13 +741,24 @@ export const AgentPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type AgentPoolsCreateOrUpdateInput =
-  typeof AgentPoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentPoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AgentPoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -173,9 +778,7 @@ export const AgentPoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentPoolsCreateOrUpdateOutput =
-  typeof AgentPoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentPoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -186,6 +789,8 @@ export type AgentPoolsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -194,6 +799,12 @@ export const AgentPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentPoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  agentPoolName: string;
+}
 export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -203,14 +814,14 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
+) as unknown as Schema.Codec<AgentPoolsDeleteInput>;
 
 // Output Schema
-export const AgentPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentPoolsDeleteOutput = typeof AgentPoolsDeleteOutput.Type;
+export type AgentPoolsDeleteOutput = void;
+export const AgentPoolsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -221,12 +832,20 @@ export type AgentPoolsDeleteOutput = typeof AgentPoolsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsDeleteInput,
   outputSchema: AgentPoolsDeleteOutput,
 }));
 // Input Schema
+export interface AgentPoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  agentPoolName: string;
+}
 export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -236,12 +855,24 @@ export const AgentPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type AgentPoolsGetInput = typeof AgentPoolsGetInput.Type;
+) as unknown as Schema.Codec<AgentPoolsGetInput>;
 
 // Output Schema
+export interface AgentPoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -260,8 +891,7 @@ export const AgentPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AgentPoolsGetOutput = typeof AgentPoolsGetOutput.Type;
+}) as unknown as Schema.Codec<AgentPoolsGetOutput>;
 
 // The operation
 /**
@@ -278,22 +908,45 @@ export const AgentPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentPoolsGetOutput,
 }));
 // Input Schema
+export interface AgentPoolsListByKubernetesClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const AgentPoolsListByKubernetesClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type AgentPoolsListByKubernetesClusterInput =
-  typeof AgentPoolsListByKubernetesClusterInput.Type;
+  ) as unknown as Schema.Codec<AgentPoolsListByKubernetesClusterInput>;
 
 // Output Schema
+export interface AgentPoolsListByKubernetesClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AgentPoolsListByKubernetesClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -328,9 +981,7 @@ export const AgentPoolsListByKubernetesClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AgentPoolsListByKubernetesClusterOutput =
-  typeof AgentPoolsListByKubernetesClusterOutput.Type;
+  }) as unknown as Schema.Codec<AgentPoolsListByKubernetesClusterOutput>;
 
 // The operation
 /**
@@ -340,6 +991,8 @@ export type AgentPoolsListByKubernetesClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const AgentPoolsListByKubernetesCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -347,6 +1000,22 @@ export const AgentPoolsListByKubernetesCluster =
     outputSchema: AgentPoolsListByKubernetesClusterOutput,
   }));
 // Input Schema
+export interface AgentPoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  agentPoolName: string;
+  properties?: {
+    administratorConfiguration?: { sshPublicKeys?: { keyData: string }[] };
+    count?: number;
+    upgradeSettings?: {
+      drainTimeout?: number;
+      maxSurge?: string;
+      maxUnavailable?: string;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -380,12 +1049,24 @@ export const AgentPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type AgentPoolsUpdateInput = typeof AgentPoolsUpdateInput.Type;
+) as unknown as Schema.Codec<AgentPoolsUpdateInput>;
 
 // Output Schema
+export interface AgentPoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -406,8 +1087,7 @@ export const AgentPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type AgentPoolsUpdateOutput = typeof AgentPoolsUpdateOutput.Type;
+) as unknown as Schema.Codec<AgentPoolsUpdateOutput>;
 
 // The operation
 /**
@@ -418,12 +1098,52 @@ export type AgentPoolsUpdateOutput = typeof AgentPoolsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param agentPoolName - The name of the Kubernetes cluster agent pool.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const AgentPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolsUpdateInput,
   outputSchema: AgentPoolsUpdateOutput,
 }));
 // Input Schema
+export interface BareMetalMachineKeySetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bareMetalMachineKeySetName: string;
+  properties: {
+    azureGroupId: string;
+    expiration: string;
+    jumpHostsAllowed: string[];
+    osGroupName?: string;
+    privilegeLevel: "Standard" | "Superuser" | "Other";
+    privilegeLevelName?: string;
+    userList: {
+      azureUserName: string;
+      description?: string;
+      sshPublicKey: { keyData: string };
+      userPrincipalName?: string;
+    }[];
+    detailedStatus?: "AllActive" | "SomeInvalid" | "AllInvalid" | "Validating";
+    detailedStatusMessage?: string;
+    lastValidation?: string;
+    userListStatus?: {
+      azureUserName?: string;
+      status?: "Active" | "Invalid";
+      statusMessage?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Provisioning";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BareMetalMachineKeySetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -487,13 +1207,24 @@ export const BareMetalMachineKeySetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachineKeySetsCreateOrUpdateInput =
-  typeof BareMetalMachineKeySetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachineKeySetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BareMetalMachineKeySetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachineKeySetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -513,9 +1244,7 @@ export const BareMetalMachineKeySetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachineKeySetsCreateOrUpdateOutput =
-  typeof BareMetalMachineKeySetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachineKeySetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -526,6 +1255,8 @@ export type BareMetalMachineKeySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -533,6 +1264,12 @@ export const BareMetalMachineKeySetsCreateOrUpdate =
     outputSchema: BareMetalMachineKeySetsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BareMetalMachineKeySetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bareMetalMachineKeySetName: string;
+}
 export const BareMetalMachineKeySetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -543,17 +1280,14 @@ export const BareMetalMachineKeySetsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachineKeySetsDeleteInput =
-  typeof BareMetalMachineKeySetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachineKeySetsDeleteInput>;
 
 // Output Schema
+export type BareMetalMachineKeySetsDeleteOutput = void;
 export const BareMetalMachineKeySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachineKeySetsDeleteOutput =
-  typeof BareMetalMachineKeySetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachineKeySetsDeleteOutput>;
 
 // The operation
 /**
@@ -564,6 +1298,8 @@ export type BareMetalMachineKeySetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -571,6 +1307,12 @@ export const BareMetalMachineKeySetsDelete =
     outputSchema: BareMetalMachineKeySetsDeleteOutput,
   }));
 // Input Schema
+export interface BareMetalMachineKeySetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bareMetalMachineKeySetName: string;
+}
 export const BareMetalMachineKeySetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -581,13 +1323,24 @@ export const BareMetalMachineKeySetsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachineKeySetsGetInput =
-  typeof BareMetalMachineKeySetsGetInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachineKeySetsGetInput>;
 
 // Output Schema
+export interface BareMetalMachineKeySetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachineKeySetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -607,9 +1360,7 @@ export const BareMetalMachineKeySetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachineKeySetsGetOutput =
-  typeof BareMetalMachineKeySetsGetOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachineKeySetsGetOutput>;
 
 // The operation
 /**
@@ -628,22 +1379,45 @@ export const BareMetalMachineKeySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachineKeySetsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const BareMetalMachineKeySetsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachineKeySetsListByClusterInput =
-  typeof BareMetalMachineKeySetsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachineKeySetsListByClusterInput>;
 
 // Output Schema
+export interface BareMetalMachineKeySetsListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BareMetalMachineKeySetsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -678,9 +1452,7 @@ export const BareMetalMachineKeySetsListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BareMetalMachineKeySetsListByClusterOutput =
-  typeof BareMetalMachineKeySetsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachineKeySetsListByClusterOutput>;
 
 // The operation
 /**
@@ -690,6 +1462,8 @@ export type BareMetalMachineKeySetsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachineKeySetsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -697,6 +1471,23 @@ export const BareMetalMachineKeySetsListByCluster =
     outputSchema: BareMetalMachineKeySetsListByClusterOutput,
   }));
 // Input Schema
+export interface BareMetalMachineKeySetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bareMetalMachineKeySetName: string;
+  properties?: {
+    expiration?: string;
+    jumpHostsAllowed?: string[];
+    userList?: {
+      azureUserName: string;
+      description?: string;
+      sshPublicKey: { keyData: string };
+      userPrincipalName?: string;
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const BareMetalMachineKeySetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -726,13 +1517,24 @@ export const BareMetalMachineKeySetsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets/{bareMetalMachineKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachineKeySetsUpdateInput =
-  typeof BareMetalMachineKeySetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachineKeySetsUpdateInput>;
 
 // Output Schema
+export interface BareMetalMachineKeySetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachineKeySetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -752,9 +1554,7 @@ export const BareMetalMachineKeySetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachineKeySetsUpdateOutput =
-  typeof BareMetalMachineKeySetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachineKeySetsUpdateOutput>;
 
 // The operation
 /**
@@ -765,6 +1565,8 @@ export type BareMetalMachineKeySetsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bareMetalMachineKeySetName - The name of the bare metal machine key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachineKeySetsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -772,6 +1574,12 @@ export const BareMetalMachineKeySetsUpdate =
     outputSchema: BareMetalMachineKeySetsUpdateOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesCordonInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  evacuate?: "True" | "False";
+}
 export const BareMetalMachinesCordonInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -782,17 +1590,14 @@ export const BareMetalMachinesCordonInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/cordon",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesCordonInput =
-  typeof BareMetalMachinesCordonInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesCordonInput>;
 
 // Output Schema
+export type BareMetalMachinesCordonOutput = void;
 export const BareMetalMachinesCordonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesCordonOutput =
-  typeof BareMetalMachinesCordonOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesCordonOutput>;
 
 // The operation
 /**
@@ -810,6 +1615,133 @@ export const BareMetalMachinesCordon = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  properties: {
+    bmcConnectionString: string;
+    bmcCredentials: {
+      password: string | Redacted.Redacted<string>;
+      username: string;
+    };
+    bmcMacAddress: string;
+    bootMacAddress: string;
+    machineDetails: string;
+    machineName: string;
+    machineSkuId: string;
+    rackId: string;
+    rackSlot: number;
+    serialNumber: string;
+    actionStates?: {
+      actionType?: string;
+      correlationId?: string;
+      endTime?: string;
+      message?: string;
+      startTime?: string;
+      status?: "Completed" | "InProgress" | "Failed";
+      stepStates?: {
+        endTime?: string;
+        message?: string;
+        startTime?: string;
+        status?: "Completed" | "InProgress" | "Failed" | "NotStarted";
+        stepName?: string;
+      }[];
+    }[];
+    associatedResourceIds?: string[];
+    bmcIpv4Address?: string;
+    bmcIpv6Address?: string;
+    caCertificate?: { hash?: string; value?: string };
+    clusterId?: string;
+    cordonStatus?: "Cordoned" | "Uncordoned";
+    detailedStatus?:
+      | "Preparing"
+      | "Error"
+      | "Available"
+      | "Provisioning"
+      | "Provisioned"
+      | "Deprovisioning";
+    detailedStatusMessage?: string;
+    hardwareInventory?: {
+      additionalHostInformation?: string;
+      interfaces?: {
+        linkStatus?: string;
+        macAddress?: string;
+        name?: string;
+        networkInterfaceId?: string;
+      }[];
+      nics?: {
+        lldpNeighbor?: {
+          portDescription?: string;
+          portName?: string;
+          systemDescription?: string;
+          systemName?: string;
+        };
+        macAddress?: string;
+        name?: string;
+      }[];
+    };
+    hardwareValidationStatus?: {
+      lastValidationTime?: string;
+      result?: "Pass" | "Fail";
+    };
+    hybridAksClustersAssociatedIds?: string[];
+    kubernetesNodeName?: string;
+    kubernetesVersion?: string;
+    machineClusterVersion?: string;
+    machineRoles?: string[];
+    monitoringConfigurationStatus?: {
+      logLevel?: "Default" | "Nexus";
+      metricsLevel?: "Default" | "Nexus";
+    };
+    oamIpv4Address?: string;
+    oamIpv6Address?: string;
+    osImage?: string;
+    powerState?: "On" | "Off";
+    readyState?: "True" | "False";
+    runtimeProtectionStatus?: {
+      agentHealthStatus?: "Healthy" | "Unhealthy";
+      agentHealthStatusIssues?: string[];
+      agentLicenseStatus?: "Licensed" | "Unlicensed";
+      definitionUpdateMode?: "Automatic" | "None";
+      definitionsLastUpdated?: string;
+      definitionsVersion?: string;
+      enforcementLevel?:
+        | "Audit"
+        | "Disabled"
+        | "OnDemand"
+        | "Passive"
+        | "RealTime";
+      scanCompletedTime?: string;
+      scanScheduledTime?: string;
+      scanStartedTime?: string;
+    };
+    secretRotationStatus?: {
+      expirePeriodDays?: number;
+      lastRotationTime?: string;
+      rotationPeriodDays?: number;
+      secretArchiveReference?: {
+        keyVaultId?: string;
+        keyVaultUri?: string;
+        secretName?: string;
+        secretVersion?: string;
+      };
+      secretType?: string;
+    }[];
+    serviceTag?: string;
+    virtualMachinesAssociatedIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BareMetalMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -862,6 +1794,8 @@ export const BareMetalMachinesCreateOrUpdateInput =
         ),
       ),
       associatedResourceIds: Schema.optional(Schema.Array(Schema.String)),
+      bmcIpv4Address: Schema.optional(Schema.String),
+      bmcIpv6Address: Schema.optional(Schema.String),
       caCertificate: Schema.optional(
         Schema.Struct({
           hash: Schema.optional(Schema.String),
@@ -927,6 +1861,12 @@ export const BareMetalMachinesCreateOrUpdateInput =
       kubernetesVersion: Schema.optional(Schema.String),
       machineClusterVersion: Schema.optional(Schema.String),
       machineRoles: Schema.optional(Schema.Array(Schema.String)),
+      monitoringConfigurationStatus: Schema.optional(
+        Schema.Struct({
+          logLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+          metricsLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+        }),
+      ),
       oamIpv4Address: Schema.optional(Schema.String),
       oamIpv6Address: Schema.optional(Schema.String),
       osImage: Schema.optional(Schema.String),
@@ -934,8 +1874,27 @@ export const BareMetalMachinesCreateOrUpdateInput =
       readyState: Schema.optional(Schema.Literals(["True", "False"])),
       runtimeProtectionStatus: Schema.optional(
         Schema.Struct({
+          agentHealthStatus: Schema.optional(
+            Schema.Literals(["Healthy", "Unhealthy"]),
+          ),
+          agentHealthStatusIssues: Schema.optional(Schema.Array(Schema.String)),
+          agentLicenseStatus: Schema.optional(
+            Schema.Literals(["Licensed", "Unlicensed"]),
+          ),
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           definitionsLastUpdated: Schema.optional(Schema.String),
           definitionsVersion: Schema.optional(Schema.String),
+          enforcementLevel: Schema.optional(
+            Schema.Literals([
+              "Audit",
+              "Disabled",
+              "OnDemand",
+              "Passive",
+              "RealTime",
+            ]),
+          ),
           scanCompletedTime: Schema.optional(Schema.String),
           scanScheduledTime: Schema.optional(Schema.String),
           scanStartedTime: Schema.optional(Schema.String),
@@ -984,13 +1943,24 @@ export const BareMetalMachinesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesCreateOrUpdateInput =
-  typeof BareMetalMachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface BareMetalMachinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1010,9 +1980,7 @@ export const BareMetalMachinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachinesCreateOrUpdateOutput =
-  typeof BareMetalMachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1022,6 +1990,8 @@ export type BareMetalMachinesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1029,6 +1999,11 @@ export const BareMetalMachinesCreateOrUpdate =
     outputSchema: BareMetalMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+}
 export const BareMetalMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1038,17 +2013,14 @@ export const BareMetalMachinesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesDeleteInput =
-  typeof BareMetalMachinesDeleteInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesDeleteInput>;
 
 // Output Schema
+export type BareMetalMachinesDeleteOutput = void;
 export const BareMetalMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesDeleteOutput =
-  typeof BareMetalMachinesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -1058,6 +2030,8 @@ export type BareMetalMachinesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1066,6 +2040,11 @@ export const BareMetalMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+}
 export const BareMetalMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1075,12 +2054,24 @@ export const BareMetalMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesGetInput = typeof BareMetalMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesGetInput>;
 
 // Output Schema
+export interface BareMetalMachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1100,8 +2091,7 @@ export const BareMetalMachinesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachinesGetOutput = typeof BareMetalMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachinesGetOutput>;
 
 // The operation
 /**
@@ -1119,21 +2109,43 @@ export const BareMetalMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const BareMetalMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesListByResourceGroupInput =
-  typeof BareMetalMachinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesListByResourceGroupInput>;
 
 // Output Schema
+export interface BareMetalMachinesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BareMetalMachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1168,9 +2180,7 @@ export const BareMetalMachinesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BareMetalMachinesListByResourceGroupOutput =
-  typeof BareMetalMachinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1179,6 +2189,8 @@ export type BareMetalMachinesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1186,20 +2198,41 @@ export const BareMetalMachinesListByResourceGroup =
     outputSchema: BareMetalMachinesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const BareMetalMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/bareMetalMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesListBySubscriptionInput =
-  typeof BareMetalMachinesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesListBySubscriptionInput>;
 
 // Output Schema
+export interface BareMetalMachinesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BareMetalMachinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1234,9 +2267,7 @@ export const BareMetalMachinesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BareMetalMachinesListBySubscriptionOutput =
-  typeof BareMetalMachinesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachinesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1244,6 +2275,8 @@ export type BareMetalMachinesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BareMetalMachinesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1251,6 +2284,12 @@ export const BareMetalMachinesListBySubscription =
     outputSchema: BareMetalMachinesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesPowerOffInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  skipShutdown?: "True" | "False";
+}
 export const BareMetalMachinesPowerOffInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1261,17 +2300,14 @@ export const BareMetalMachinesPowerOffInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/powerOff",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesPowerOffInput =
-  typeof BareMetalMachinesPowerOffInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesPowerOffInput>;
 
 // Output Schema
+export type BareMetalMachinesPowerOffOutput = void;
 export const BareMetalMachinesPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesPowerOffOutput =
-  typeof BareMetalMachinesPowerOffOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesPowerOffOutput>;
 
 // The operation
 /**
@@ -1289,26 +2325,30 @@ export const BareMetalMachinesPowerOff = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesReimageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  safeguardMode?: "All" | "None";
+}
 export const BareMetalMachinesReimageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     bareMetalMachineName: Schema.String.pipe(T.PathParam()),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/reimage",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesReimageInput =
-  typeof BareMetalMachinesReimageInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesReimageInput>;
 
 // Output Schema
+export type BareMetalMachinesReimageOutput = void;
 export const BareMetalMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesReimageOutput =
-  typeof BareMetalMachinesReimageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReimageOutput>;
 
 // The operation
 /**
@@ -1326,6 +2366,21 @@ export const BareMetalMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  bmcCredentials?: {
+    password: string | Redacted.Redacted<string>;
+    username: string;
+  };
+  bmcMacAddress?: string;
+  bootMacAddress?: string;
+  machineName?: string;
+  safeguardMode?: "All" | "None";
+  serialNumber?: string;
+  storagePolicy?: "Preserve" | "DiscardAll";
+}
 export const BareMetalMachinesReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1347,17 +2402,14 @@ export const BareMetalMachinesReplaceInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesReplaceInput =
-  typeof BareMetalMachinesReplaceInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesReplaceInput>;
 
 // Output Schema
+export type BareMetalMachinesReplaceOutput = void;
 export const BareMetalMachinesReplaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesReplaceOutput =
-  typeof BareMetalMachinesReplaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesReplaceOutput>;
 
 // The operation
 /**
@@ -1375,6 +2427,11 @@ export const BareMetalMachinesReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+}
 export const BareMetalMachinesRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1384,17 +2441,14 @@ export const BareMetalMachinesRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/restart",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesRestartInput =
-  typeof BareMetalMachinesRestartInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesRestartInput>;
 
 // Output Schema
+export type BareMetalMachinesRestartOutput = void;
 export const BareMetalMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesRestartOutput =
-  typeof BareMetalMachinesRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRestartOutput>;
 
 // The operation
 /**
@@ -1412,6 +2466,14 @@ export const BareMetalMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesRunCommandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  arguments?: string[];
+  limitTimeSeconds: number;
+  script: string;
+}
 export const BareMetalMachinesRunCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1424,17 +2486,14 @@ export const BareMetalMachinesRunCommandInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runCommand",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesRunCommandInput =
-  typeof BareMetalMachinesRunCommandInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesRunCommandInput>;
 
 // Output Schema
+export type BareMetalMachinesRunCommandOutput = void;
 export const BareMetalMachinesRunCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesRunCommandOutput =
-  typeof BareMetalMachinesRunCommandOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunCommandOutput>;
 
 // The operation
 /**
@@ -1452,6 +2511,13 @@ export const BareMetalMachinesRunCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesRunDataExtractsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  commands: { arguments?: string[]; command: string }[];
+  limitTimeSeconds: number;
+}
 export const BareMetalMachinesRunDataExtractsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1468,17 +2534,14 @@ export const BareMetalMachinesRunDataExtractsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtracts",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesRunDataExtractsInput =
-  typeof BareMetalMachinesRunDataExtractsInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsInput>;
 
 // Output Schema
+export type BareMetalMachinesRunDataExtractsOutput = void;
 export const BareMetalMachinesRunDataExtractsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesRunDataExtractsOutput =
-  typeof BareMetalMachinesRunDataExtractsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsOutput>;
 
 // The operation
 /**
@@ -1495,6 +2558,13 @@ export const BareMetalMachinesRunDataExtracts =
     outputSchema: BareMetalMachinesRunDataExtractsOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesRunDataExtractsRestrictedInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  commands: { arguments?: string[]; command: string }[];
+  limitTimeSeconds: number;
+}
 export const BareMetalMachinesRunDataExtractsRestrictedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1511,17 +2581,14 @@ export const BareMetalMachinesRunDataExtractsRestrictedInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runDataExtractsRestricted",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesRunDataExtractsRestrictedInput =
-  typeof BareMetalMachinesRunDataExtractsRestrictedInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsRestrictedInput>;
 
 // Output Schema
+export type BareMetalMachinesRunDataExtractsRestrictedOutput = void;
 export const BareMetalMachinesRunDataExtractsRestrictedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesRunDataExtractsRestrictedOutput =
-  typeof BareMetalMachinesRunDataExtractsRestrictedOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunDataExtractsRestrictedOutput>;
 
 // The operation
 /**
@@ -1538,6 +2605,13 @@ export const BareMetalMachinesRunDataExtractsRestricted =
     outputSchema: BareMetalMachinesRunDataExtractsRestrictedOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesRunReadCommandsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  commands: { arguments?: string[]; command: string }[];
+  limitTimeSeconds: number;
+}
 export const BareMetalMachinesRunReadCommandsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1554,17 +2628,14 @@ export const BareMetalMachinesRunReadCommandsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/runReadCommands",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesRunReadCommandsInput =
-  typeof BareMetalMachinesRunReadCommandsInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesRunReadCommandsInput>;
 
 // Output Schema
+export type BareMetalMachinesRunReadCommandsOutput = void;
 export const BareMetalMachinesRunReadCommandsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesRunReadCommandsOutput =
-  typeof BareMetalMachinesRunReadCommandsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesRunReadCommandsOutput>;
 
 // The operation
 /**
@@ -1581,6 +2652,11 @@ export const BareMetalMachinesRunReadCommands =
     outputSchema: BareMetalMachinesRunReadCommandsOutput,
   }));
 // Input Schema
+export interface BareMetalMachinesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+}
 export const BareMetalMachinesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1590,17 +2666,14 @@ export const BareMetalMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/start",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesStartInput =
-  typeof BareMetalMachinesStartInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesStartInput>;
 
 // Output Schema
+export type BareMetalMachinesStartOutput = void;
 export const BareMetalMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesStartOutput =
-  typeof BareMetalMachinesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesStartOutput>;
 
 // The operation
 /**
@@ -1618,6 +2691,11 @@ export const BareMetalMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesUncordonInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+}
 export const BareMetalMachinesUncordonInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1627,17 +2705,14 @@ export const BareMetalMachinesUncordonInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/uncordon",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesUncordonInput =
-  typeof BareMetalMachinesUncordonInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesUncordonInput>;
 
 // Output Schema
+export type BareMetalMachinesUncordonOutput = void;
 export const BareMetalMachinesUncordonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BareMetalMachinesUncordonOutput =
-  typeof BareMetalMachinesUncordonOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BareMetalMachinesUncordonOutput>;
 
 // The operation
 /**
@@ -1655,6 +2730,13 @@ export const BareMetalMachinesUncordon = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BareMetalMachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  bareMetalMachineName: string;
+  properties?: { machineDetails?: string };
+  tags?: Record<string, string>;
+}
 export const BareMetalMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1670,13 +2752,24 @@ export const BareMetalMachinesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BareMetalMachinesUpdateInput =
-  typeof BareMetalMachinesUpdateInput.Type;
+  ) as unknown as Schema.Codec<BareMetalMachinesUpdateInput>;
 
 // Output Schema
+export interface BareMetalMachinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BareMetalMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1696,9 +2789,7 @@ export const BareMetalMachinesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BareMetalMachinesUpdateOutput =
-  typeof BareMetalMachinesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BareMetalMachinesUpdateOutput>;
 
 // The operation
 /**
@@ -1708,6 +2799,8 @@ export type BareMetalMachinesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param bareMetalMachineName - The name of the bare metal machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BareMetalMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1716,6 +2809,41 @@ export const BareMetalMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BmcKeySetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bmcKeySetName: string;
+  properties: {
+    azureGroupId: string;
+    expiration: string;
+    privilegeLevel: "ReadOnly" | "Administrator";
+    userList: {
+      azureUserName: string;
+      description?: string;
+      sshPublicKey: { keyData: string };
+      userPrincipalName?: string;
+    }[];
+    detailedStatus?: "AllActive" | "SomeInvalid" | "AllInvalid" | "Validating";
+    detailedStatusMessage?: string;
+    lastValidation?: string;
+    userListStatus?: {
+      azureUserName?: string;
+      status?: "Active" | "Invalid";
+      statusMessage?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Provisioning";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BmcKeySetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1776,13 +2904,24 @@ export const BmcKeySetsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BmcKeySetsCreateOrUpdateInput =
-  typeof BmcKeySetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BmcKeySetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BmcKeySetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BmcKeySetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1802,9 +2941,7 @@ export const BmcKeySetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BmcKeySetsCreateOrUpdateOutput =
-  typeof BmcKeySetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BmcKeySetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1815,6 +2952,8 @@ export type BmcKeySetsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1823,6 +2962,12 @@ export const BmcKeySetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BmcKeySetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bmcKeySetName: string;
+}
 export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1832,14 +2977,14 @@ export const BmcKeySetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type BmcKeySetsDeleteInput = typeof BmcKeySetsDeleteInput.Type;
+) as unknown as Schema.Codec<BmcKeySetsDeleteInput>;
 
 // Output Schema
-export const BmcKeySetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BmcKeySetsDeleteOutput = typeof BmcKeySetsDeleteOutput.Type;
+export type BmcKeySetsDeleteOutput = void;
+export const BmcKeySetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BmcKeySetsDeleteOutput>;
 
 // The operation
 /**
@@ -1850,12 +2995,20 @@ export type BmcKeySetsDeleteOutput = typeof BmcKeySetsDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsDeleteInput,
   outputSchema: BmcKeySetsDeleteOutput,
 }));
 // Input Schema
+export interface BmcKeySetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bmcKeySetName: string;
+}
 export const BmcKeySetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1865,12 +3018,24 @@ export const BmcKeySetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type BmcKeySetsGetInput = typeof BmcKeySetsGetInput.Type;
+) as unknown as Schema.Codec<BmcKeySetsGetInput>;
 
 // Output Schema
+export interface BmcKeySetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BmcKeySetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1889,8 +3054,7 @@ export const BmcKeySetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BmcKeySetsGetOutput = typeof BmcKeySetsGetOutput.Type;
+}) as unknown as Schema.Codec<BmcKeySetsGetOutput>;
 
 // The operation
 /**
@@ -1907,22 +3071,45 @@ export const BmcKeySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BmcKeySetsGetOutput,
 }));
 // Input Schema
+export interface BmcKeySetsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const BmcKeySetsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type BmcKeySetsListByClusterInput =
-  typeof BmcKeySetsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<BmcKeySetsListByClusterInput>;
 
 // Output Schema
+export interface BmcKeySetsListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BmcKeySetsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1957,9 +3144,7 @@ export const BmcKeySetsListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BmcKeySetsListByClusterOutput =
-  typeof BmcKeySetsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<BmcKeySetsListByClusterOutput>;
 
 // The operation
 /**
@@ -1969,6 +3154,8 @@ export type BmcKeySetsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const BmcKeySetsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1977,6 +3164,22 @@ export const BmcKeySetsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BmcKeySetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  bmcKeySetName: string;
+  properties?: {
+    expiration?: string;
+    userList?: {
+      azureUserName: string;
+      description?: string;
+      sshPublicKey: { keyData: string };
+      userPrincipalName?: string;
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2004,12 +3207,24 @@ export const BmcKeySetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type BmcKeySetsUpdateInput = typeof BmcKeySetsUpdateInput.Type;
+) as unknown as Schema.Codec<BmcKeySetsUpdateInput>;
 
 // Output Schema
+export interface BmcKeySetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BmcKeySetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2030,8 +3245,7 @@ export const BmcKeySetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type BmcKeySetsUpdateOutput = typeof BmcKeySetsUpdateOutput.Type;
+) as unknown as Schema.Codec<BmcKeySetsUpdateOutput>;
 
 // The operation
 /**
@@ -2042,12 +3256,65 @@ export type BmcKeySetsUpdateOutput = typeof BmcKeySetsUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param bmcKeySetName - The name of the baseboard management controller key set.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const BmcKeySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BmcKeySetsUpdateInput,
   outputSchema: BmcKeySetsUpdateOutput,
 }));
 // Input Schema
+export interface CloudServicesNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudServicesNetworkName: string;
+  properties?: {
+    additionalEgressEndpoints?: {
+      category: string;
+      endpoints: { domainName: string; port?: number }[];
+    }[];
+    enableDefaultEgressEndpoints?: "True" | "False";
+    storageOptions?: {
+      mode?: "None" | "Standard";
+      sizeMiB?: number;
+      storageApplianceId?: string;
+    };
+    associatedResourceIds?: string[];
+    clusterId?: string;
+    detailedStatus?: "Error" | "Available" | "Provisioning";
+    detailedStatusMessage?: string;
+    enabledEgressEndpoints?: {
+      category: string;
+      endpoints: { domainName: string; port?: number }[];
+    }[];
+    hybridAksClustersAssociatedIds?: string[];
+    interfaceName?: string;
+    storageStatus?: {
+      mode?: "None" | "Standard";
+      sizeMiB?: number;
+      status?:
+        | "Available"
+        | "ExpandingVolume"
+        | "ExpansionFailed"
+        | "Initializing"
+        | "None"
+        | "Repairing";
+      statusMessage?: string;
+      volumeId?: string;
+    };
+    virtualMachinesAssociatedIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CloudServicesNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2110,6 +3377,9 @@ export const CloudServicesNetworksCreateOrUpdateInput =
                 "Available",
                 "ExpandingVolume",
                 "ExpansionFailed",
+                "Initializing",
+                "None",
+                "Repairing",
               ]),
             ),
             statusMessage: Schema.optional(Schema.String),
@@ -2141,13 +3411,24 @@ export const CloudServicesNetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksCreateOrUpdateInput =
-  typeof CloudServicesNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface CloudServicesNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudServicesNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2167,9 +3448,7 @@ export const CloudServicesNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudServicesNetworksCreateOrUpdateOutput =
-  typeof CloudServicesNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CloudServicesNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2179,6 +3458,8 @@ export type CloudServicesNetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2186,6 +3467,11 @@ export const CloudServicesNetworksCreateOrUpdate =
     outputSchema: CloudServicesNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CloudServicesNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudServicesNetworkName: string;
+}
 export const CloudServicesNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2195,17 +3481,14 @@ export const CloudServicesNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksDeleteInput =
-  typeof CloudServicesNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksDeleteInput>;
 
 // Output Schema
+export type CloudServicesNetworksDeleteOutput = void;
 export const CloudServicesNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CloudServicesNetworksDeleteOutput =
-  typeof CloudServicesNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudServicesNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -2215,6 +3498,8 @@ export type CloudServicesNetworksDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2223,6 +3508,11 @@ export const CloudServicesNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudServicesNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudServicesNetworkName: string;
+}
 export const CloudServicesNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2232,13 +3522,24 @@ export const CloudServicesNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksGetInput =
-  typeof CloudServicesNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksGetInput>;
 
 // Output Schema
+export interface CloudServicesNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudServicesNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2258,9 +3559,7 @@ export const CloudServicesNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudServicesNetworksGetOutput =
-  typeof CloudServicesNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<CloudServicesNetworksGetOutput>;
 
 // The operation
 /**
@@ -2278,21 +3577,43 @@ export const CloudServicesNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudServicesNetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const CloudServicesNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksListByResourceGroupInput =
-  typeof CloudServicesNetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface CloudServicesNetworksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudServicesNetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2327,9 +3648,7 @@ export const CloudServicesNetworksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudServicesNetworksListByResourceGroupOutput =
-  typeof CloudServicesNetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CloudServicesNetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2338,6 +3657,8 @@ export type CloudServicesNetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2345,20 +3666,41 @@ export const CloudServicesNetworksListByResourceGroup =
     outputSchema: CloudServicesNetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CloudServicesNetworksListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const CloudServicesNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksListBySubscriptionInput =
-  typeof CloudServicesNetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface CloudServicesNetworksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudServicesNetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2393,9 +3735,7 @@ export const CloudServicesNetworksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudServicesNetworksListBySubscriptionOutput =
-  typeof CloudServicesNetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CloudServicesNetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2403,6 +3743,8 @@ export type CloudServicesNetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const CloudServicesNetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2410,6 +3752,24 @@ export const CloudServicesNetworksListBySubscription =
     outputSchema: CloudServicesNetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CloudServicesNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudServicesNetworkName: string;
+  properties?: {
+    additionalEgressEndpoints?: {
+      category: string;
+      endpoints: { domainName: string; port?: number }[];
+    }[];
+    enableDefaultEgressEndpoints?: "True" | "False";
+    storageOptions?: {
+      mode?: "None" | "Standard";
+      sizeMiB?: number;
+      storageApplianceId?: string;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const CloudServicesNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2447,13 +3807,24 @@ export const CloudServicesNetworksUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type CloudServicesNetworksUpdateInput =
-  typeof CloudServicesNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<CloudServicesNetworksUpdateInput>;
 
 // Output Schema
+export interface CloudServicesNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudServicesNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2473,9 +3844,7 @@ export const CloudServicesNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudServicesNetworksUpdateOutput =
-  typeof CloudServicesNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CloudServicesNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -2485,6 +3854,8 @@ export type CloudServicesNetworksUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cloudServicesNetworkName - The name of the cloud services network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const CloudServicesNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2493,6 +3864,59 @@ export const CloudServicesNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClusterManagersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterManagerName: string;
+  properties: {
+    analyticsWorkspaceId?: string;
+    availabilityZones?: string[];
+    clusterVersions?: {
+      supportExpiryDate?: string;
+      targetClusterVersion?: string;
+    }[];
+    detailedStatus?:
+      | "Error"
+      | "Available"
+      | "Provisioning"
+      | "ProvisioningFailed"
+      | "Updating"
+      | "UpdateFailed";
+    detailedStatusMessage?: string;
+    fabricControllerId: string;
+    managedResourceGroupConfiguration?: { location?: string; name?: string };
+    managerExtendedLocation?: {
+      name: string;
+      type: "EdgeZone" | "CustomLocation";
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted"
+      | "Updating";
+    relayConfiguration?: { relayNamespaceId?: string };
+    vmSize?: string;
+  };
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  kind?: "Nexus" | "AzureLocal";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClusterManagersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2543,6 +3967,11 @@ export const ClusterManagersCreateOrUpdateInput =
           "Updating",
         ]),
       ),
+      relayConfiguration: Schema.optional(
+        Schema.Struct({
+          relayNamespaceId: Schema.optional(Schema.String),
+        }),
+      ),
       vmSize: Schema.optional(Schema.String),
     }),
     etag: Schema.optional(Schema.String),
@@ -2567,19 +3996,31 @@ export const ClusterManagersCreateOrUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.Literals(["Nexus", "AzureLocal"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersCreateOrUpdateInput =
-  typeof ClusterManagersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClusterManagersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterManagersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2599,9 +4040,7 @@ export const ClusterManagersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterManagersCreateOrUpdateOutput =
-  typeof ClusterManagersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClusterManagersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2611,6 +4050,8 @@ export type ClusterManagersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2618,6 +4059,11 @@ export const ClusterManagersCreateOrUpdate =
     outputSchema: ClusterManagersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ClusterManagersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterManagerName: string;
+}
 export const ClusterManagersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2627,16 +4073,14 @@ export const ClusterManagersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersDeleteInput = typeof ClusterManagersDeleteInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersDeleteInput>;
 
 // Output Schema
+export type ClusterManagersDeleteOutput = void;
 export const ClusterManagersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClusterManagersDeleteOutput =
-  typeof ClusterManagersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersDeleteOutput>;
 
 // The operation
 /**
@@ -2646,6 +4090,8 @@ export type ClusterManagersDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2654,6 +4100,11 @@ export const ClusterManagersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClusterManagersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterManagerName: string;
+}
 export const ClusterManagersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2663,12 +4114,24 @@ export const ClusterManagersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersGetInput = typeof ClusterManagersGetInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersGetInput>;
 
 // Output Schema
+export interface ClusterManagersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterManagersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2688,8 +4151,7 @@ export const ClusterManagersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterManagersGetOutput = typeof ClusterManagersGetOutput.Type;
+  }) as unknown as Schema.Codec<ClusterManagersGetOutput>;
 
 // The operation
 /**
@@ -2705,21 +4167,43 @@ export const ClusterManagersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClusterManagersGetOutput,
 }));
 // Input Schema
+export interface ClusterManagersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const ClusterManagersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersListByResourceGroupInput =
-  typeof ClusterManagersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClusterManagersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterManagersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2754,9 +4238,7 @@ export const ClusterManagersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterManagersListByResourceGroupOutput =
-  typeof ClusterManagersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClusterManagersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2765,6 +4247,8 @@ export type ClusterManagersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2772,20 +4256,41 @@ export const ClusterManagersListByResourceGroup =
     outputSchema: ClusterManagersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ClusterManagersListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const ClusterManagersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusterManagers",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersListBySubscriptionInput =
-  typeof ClusterManagersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersListBySubscriptionInput>;
 
 // Output Schema
+export interface ClusterManagersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterManagersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2820,9 +4325,7 @@ export const ClusterManagersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterManagersListBySubscriptionOutput =
-  typeof ClusterManagersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ClusterManagersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2830,6 +4333,8 @@ export type ClusterManagersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClusterManagersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2837,6 +4342,25 @@ export const ClusterManagersListBySubscription =
     outputSchema: ClusterManagersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ClusterManagersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterManagerName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const ClusterManagersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2868,12 +4392,24 @@ export const ClusterManagersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClusterManagersUpdateInput = typeof ClusterManagersUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClusterManagersUpdateInput>;
 
 // Output Schema
+export interface ClusterManagersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterManagersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2893,9 +4429,7 @@ export const ClusterManagersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterManagersUpdateOutput =
-  typeof ClusterManagersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClusterManagersUpdateOutput>;
 
 // The operation
 /**
@@ -2905,6 +4439,8 @@ export type ClusterManagersUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterManagerName - The name of the cluster manager.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClusterManagersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2913,6 +4449,57 @@ export const ClusterManagersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClusterManagersUpdateRelayPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterManagerName: string;
+  connectionState: "Approved" | "Rejected";
+  description?: string;
+  privateEndpointResourceId: string;
+}
+export const ClusterManagersUpdateRelayPrivateEndpointConnectionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterManagerName: Schema.String.pipe(T.PathParam()),
+    connectionState: Schema.Literals(["Approved", "Rejected"]),
+    description: Schema.optional(Schema.String),
+    privateEndpointResourceId: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers/{clusterManagerName}/updateRelayPrivateEndpointConnection",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<ClusterManagersUpdateRelayPrivateEndpointConnectionInput>;
+
+// Output Schema
+export type ClusterManagersUpdateRelayPrivateEndpointConnectionOutput = void;
+export const ClusterManagersUpdateRelayPrivateEndpointConnectionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterManagersUpdateRelayPrivateEndpointConnectionOutput>;
+
+// The operation
+/**
+ * Update the private endpoint connection for the Azure Relay namespace managed by the specified cluster manager. Use this operation to approve or reject a pending private endpoint connection request for the relay namespace managed by the cluster manager.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterManagerName - The name of the cluster manager.
+ */
+export const ClusterManagersUpdateRelayPrivateEndpointConnection =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionInput,
+    outputSchema: ClusterManagersUpdateRelayPrivateEndpointConnectionOutput,
+  }));
+// Input Schema
+export interface ClustersContinueUpdateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  machineGroupTargetingMode?: "AlphaByRack";
+  safeguardMode?: "All" | "None";
+}
 export const ClustersContinueUpdateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2921,21 +4508,19 @@ export const ClustersContinueUpdateVersionInput =
     machineGroupTargetingMode: Schema.optional(
       Schema.Literals(["AlphaByRack"]),
     ),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/continueUpdateVersion",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersContinueUpdateVersionInput =
-  typeof ClustersContinueUpdateVersionInput.Type;
+  ) as unknown as Schema.Codec<ClustersContinueUpdateVersionInput>;
 
 // Output Schema
+export type ClustersContinueUpdateVersionOutput = void;
 export const ClustersContinueUpdateVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersContinueUpdateVersionOutput =
-  typeof ClustersContinueUpdateVersionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersContinueUpdateVersionOutput>;
 
 // The operation
 /**
@@ -2952,6 +4537,230 @@ export const ClustersContinueUpdateVersion =
     outputSchema: ClustersContinueUpdateVersionOutput,
   }));
 // Input Schema
+export interface ClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties: {
+    aggregatorOrSingleRackDefinition: {
+      availabilityZone?: string;
+      bareMetalMachineConfigurationData?: {
+        bmcConnectionString?: string;
+        bmcCredentials: {
+          password: string | Redacted.Redacted<string>;
+          username: string;
+        };
+        bmcMacAddress: string;
+        bootMacAddress: string;
+        machineDetails?: string;
+        machineName?: string;
+        rackSlot: number;
+        serialNumber: string;
+      }[];
+      networkRackId: string;
+      rackLocation?: string;
+      rackSerialNumber: string;
+      rackSkuId: string;
+      storageApplianceConfigurationData?: {
+        adminCredentials: {
+          password: string | Redacted.Redacted<string>;
+          username: string;
+        };
+        rackSlot: number;
+        serialNumber: string;
+        storageApplianceName?: string;
+      }[];
+    };
+    analyticsOutputSettings?: {
+      analyticsWorkspaceId?: string;
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+    };
+    analyticsWorkspaceId?: string;
+    clusterLocation?: string;
+    clusterServicePrincipal?: {
+      applicationId: string;
+      password: string | Redacted.Redacted<string>;
+      principalId: string;
+      tenantId: string;
+    };
+    clusterType: "SingleRack" | "MultiRack";
+    clusterVersion: string;
+    commandOutputSettings?: {
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+      containerUrl?: string;
+      overrides?: {
+        associatedIdentity?: {
+          identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+          userAssignedIdentityResourceId?: string;
+        };
+        commandOutputType?:
+          | "BareMetalMachineRunCommand"
+          | "BareMetalMachineRunDataExtracts"
+          | "BareMetalMachineRunReadCommands"
+          | "ClusterSupportAdministrativeActions"
+          | "StorageRunReadCommands"
+          | "BareMetalMachineRunDataExtractsRestricted";
+        containerUrl?: string;
+      }[];
+    };
+    computeDeploymentThreshold?: {
+      grouping: "PerCluster" | "PerRack";
+      type: "CountSuccess" | "PercentSuccess";
+      value: number;
+    };
+    computeRackDefinitions?: {
+      availabilityZone?: string;
+      bareMetalMachineConfigurationData?: {
+        bmcConnectionString?: string;
+        bmcCredentials: {
+          password: string | Redacted.Redacted<string>;
+          username: string;
+        };
+        bmcMacAddress: string;
+        bootMacAddress: string;
+        machineDetails?: string;
+        machineName?: string;
+        rackSlot: number;
+        serialNumber: string;
+      }[];
+      networkRackId: string;
+      rackLocation?: string;
+      rackSerialNumber: string;
+      rackSkuId: string;
+      storageApplianceConfigurationData?: {
+        adminCredentials: {
+          password: string | Redacted.Redacted<string>;
+          username: string;
+        };
+        rackSlot: number;
+        serialNumber: string;
+        storageApplianceName?: string;
+      }[];
+    }[];
+    managedResourceGroupConfiguration?: { location?: string; name?: string };
+    networkFabricId: string;
+    runtimeProtectionConfiguration?: {
+      definitionUpdateMode?: "Automatic" | "None";
+      enforcementLevel?:
+        | "Audit"
+        | "Disabled"
+        | "OnDemand"
+        | "Passive"
+        | "RealTime";
+    };
+    secretArchive?: { keyVaultId: string; useKeyVault?: "True" | "False" };
+    secretArchiveSettings?: {
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+      vaultUri?: string;
+    };
+    updateStrategy?: {
+      maxUnavailable?: number;
+      strategyType: "Rack" | "PauseAfterRack";
+      thresholdType: "CountSuccess" | "PercentSuccess";
+      thresholdValue: number;
+      waitTimeMinutes?: number;
+    };
+    vulnerabilityScanningSettings?: { containerScan?: "Disabled" | "Enabled" };
+    actionStates?: {
+      actionType?: string;
+      correlationId?: string;
+      endTime?: string;
+      message?: string;
+      startTime?: string;
+      status?: "Completed" | "InProgress" | "Failed";
+      stepStates?: {
+        endTime?: string;
+        message?: string;
+        startTime?: string;
+        status?: "Completed" | "InProgress" | "Failed" | "NotStarted";
+        stepName?: string;
+      }[];
+    }[];
+    availableUpgradeVersions?: {
+      controlImpact?: "True" | "False";
+      expectedDuration?: string;
+      impactDescription?: string;
+      supportExpiryDate?: string;
+      targetClusterVersion?: string;
+      workloadImpact?: "True" | "False";
+    }[];
+    clusterCapacity?: {
+      availableApplianceStorageGB?: number;
+      availableCoreCount?: number;
+      availableHostStorageGB?: number;
+      availableMemoryGB?: number;
+      totalApplianceStorageGB?: number;
+      totalCoreCount?: number;
+      totalHostStorageGB?: number;
+      totalMemoryGB?: number;
+    };
+    clusterConnectionStatus?:
+      | "Connected"
+      | "Disconnected"
+      | "Timeout"
+      | "Undefined";
+    clusterExtendedLocation?: {
+      name: string;
+      type: "EdgeZone" | "CustomLocation";
+    };
+    clusterManagerConnectionStatus?: "Connected" | "Unreachable";
+    clusterManagerId?: string;
+    detailedStatus?:
+      | "PendingDeployment"
+      | "Deploying"
+      | "Running"
+      | "Updating"
+      | "UpdatePaused"
+      | "Degraded"
+      | "Deleting"
+      | "Disconnected"
+      | "Failed";
+    detailedStatusMessage?: string;
+    hybridAksExtendedLocation?: {
+      name: string;
+      type: "EdgeZone" | "CustomLocation";
+    };
+    lastSuccessfulVersionUpdateTime?: string;
+    managedCredentials?: string[];
+    manualActionCount?: number;
+    supportExpiryDate?: string;
+    workloadResourceIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Validating"
+      | "Updating";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  kind?: "Nexus" | "AzureLocal";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3058,6 +4867,7 @@ export const ClustersCreateOrUpdateInput =
                     "BareMetalMachineRunCommand",
                     "BareMetalMachineRunDataExtracts",
                     "BareMetalMachineRunReadCommands",
+                    "ClusterSupportAdministrativeActions",
                     "StorageRunReadCommands",
                     "BareMetalMachineRunDataExtractsRestricted",
                   ]),
@@ -3125,6 +4935,9 @@ export const ClustersCreateOrUpdateInput =
       networkFabricId: Schema.String,
       runtimeProtectionConfiguration: Schema.optional(
         Schema.Struct({
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           enforcementLevel: Schema.optional(
             Schema.Literals([
               "Audit",
@@ -3263,6 +5076,8 @@ export const ClustersCreateOrUpdateInput =
           type: Schema.Literals(["EdgeZone", "CustomLocation"]),
         }),
       ),
+      lastSuccessfulVersionUpdateTime: Schema.optional(Schema.String),
+      managedCredentials: Schema.optional(Schema.Array(Schema.String)),
       manualActionCount: Schema.optional(Schema.Number),
       supportExpiryDate: Schema.optional(Schema.String),
       workloadResourceIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3303,19 +5118,31 @@ export const ClustersCreateOrUpdateInput =
         ),
       }),
     ),
+    kind: Schema.optional(Schema.Literals(["Nexus", "AzureLocal"])),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersCreateOrUpdateInput =
-  typeof ClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3335,9 +5162,7 @@ export const ClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersCreateOrUpdateOutput =
-  typeof ClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3347,6 +5172,8 @@ export type ClustersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3355,6 +5182,11 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3363,14 +5195,14 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -3380,12 +5212,20 @@ export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersDeployInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  skipValidationsForMachines?: string[];
+}
 export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3395,14 +5235,14 @@ export const ClustersDeployInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/deploy",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ClustersDeployInput = typeof ClustersDeployInput.Type;
+) as unknown as Schema.Codec<ClustersDeployInput>;
 
 // Output Schema
-export const ClustersDeployOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeployOutput = typeof ClustersDeployOutput.Type;
+export type ClustersDeployOutput = void;
+export const ClustersDeployOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeployOutput>;
 
 // The operation
 /**
@@ -3418,6 +5258,11 @@ export const ClustersDeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeployOutput,
 }));
 // Input Schema
+export interface ClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3426,12 +5271,24 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3450,8 +5307,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -3467,21 +5323,90 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersInspectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  additionalActions?: "ResetHardware"[];
+  filterDevices?: { bareMetalMachineNames?: string[]; rackNames?: string[] };
+}
+export const ClustersInspectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  additionalActions: Schema.optional(
+    Schema.Array(Schema.Literals(["ResetHardware"])),
+  ),
+  filterDevices: Schema.optional(
+    Schema.Struct({
+      bareMetalMachineNames: Schema.optional(Schema.Array(Schema.String)),
+      rackNames: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/inspect",
+    apiVersion: "2026-07-01",
+  }),
+) as unknown as Schema.Codec<ClustersInspectInput>;
+
+// Output Schema
+export type ClustersInspectOutput = void;
+export const ClustersInspectOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersInspectOutput>;
+
+// The operation
+/**
+ * Trigger an inspection of the cluster to perform validation and optional corrective actions based on the supplied additional actions and filters.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const ClustersInspect = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ClustersInspectInput,
+  outputSchema: ClustersInspectOutput,
+}));
+// Input Schema
+export interface ClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3516,9 +5441,7 @@ export const ClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3527,6 +5450,8 @@ export type ClustersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3535,20 +5460,41 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersListBySubscriptionInput =
-  typeof ClustersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ClustersListBySubscriptionInput>;
 
 // Output Schema
+export interface ClustersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3583,9 +5529,7 @@ export const ClustersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListBySubscriptionOutput =
-  typeof ClustersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3593,6 +5537,8 @@ export type ClustersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3601,6 +5547,53 @@ export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersRotateCredentialInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  credentials: string[];
+}
+export const ClustersRotateCredentialInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    credentials: Schema.Array(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/rotateCredential",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<ClustersRotateCredentialInput>;
+
+// Output Schema
+export type ClustersRotateCredentialOutput = void;
+export const ClustersRotateCredentialOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRotateCredentialOutput>;
+
+// The operation
+/**
+ * Rotate the specified cluster credential.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const ClustersRotateCredential = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: ClustersRotateCredentialInput,
+    outputSchema: ClustersRotateCredentialOutput,
+  }),
+);
+// Input Schema
+export interface ClustersScanRuntimeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  scanActivity?: "Scan" | "Skip";
+}
 export const ClustersScanRuntimeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3611,15 +5604,14 @@ export const ClustersScanRuntimeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/scanRuntime",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersScanRuntimeInput = typeof ClustersScanRuntimeInput.Type;
+  ) as unknown as Schema.Codec<ClustersScanRuntimeInput>;
 
 // Output Schema
+export type ClustersScanRuntimeOutput = void;
 export const ClustersScanRuntimeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersScanRuntimeOutput = typeof ClustersScanRuntimeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersScanRuntimeOutput>;
 
 // The operation
 /**
@@ -3635,6 +5627,150 @@ export const ClustersScanRuntime = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersScanRuntimeOutput,
 }));
 // Input Schema
+export interface ClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    aggregatorOrSingleRackDefinition?: {
+      availabilityZone?: string;
+      bareMetalMachineConfigurationData?: {
+        bmcConnectionString?: string;
+        bmcCredentials?: {
+          password?: string | Redacted.Redacted<string>;
+          username?: string;
+        };
+        bmcMacAddress?: string;
+        bootMacAddress?: string;
+        machineDetails?: string;
+        machineName?: string;
+        rackSlot?: number;
+        serialNumber?: string;
+      }[];
+      networkRackId?: string;
+      rackLocation?: string;
+      rackSerialNumber?: string;
+      rackSkuId?: string;
+      storageApplianceConfigurationData?: {
+        adminCredentials?: {
+          password?: string | Redacted.Redacted<string>;
+          username?: string;
+        };
+        rackSlot?: number;
+        serialNumber?: string;
+        storageApplianceName?: string;
+      }[];
+    };
+    analyticsOutputSettings?: {
+      analyticsWorkspaceId?: string;
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+    };
+    clusterLocation?: string;
+    clusterServicePrincipal?: {
+      applicationId?: string;
+      password?: string | Redacted.Redacted<string>;
+      principalId?: string;
+      tenantId?: string;
+    };
+    commandOutputSettings?: {
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+      containerUrl?: string;
+      overrides?: {
+        associatedIdentity?: {
+          identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+          userAssignedIdentityResourceId?: string;
+        };
+        commandOutputType?:
+          | "BareMetalMachineRunCommand"
+          | "BareMetalMachineRunDataExtracts"
+          | "BareMetalMachineRunReadCommands"
+          | "ClusterSupportAdministrativeActions"
+          | "StorageRunReadCommands"
+          | "BareMetalMachineRunDataExtractsRestricted";
+        containerUrl?: string;
+      }[];
+    };
+    computeDeploymentThreshold?: {
+      grouping?: "PerCluster" | "PerRack";
+      type?: "CountSuccess" | "PercentSuccess";
+      value?: number;
+    };
+    computeRackDefinitions?: {
+      availabilityZone?: string;
+      bareMetalMachineConfigurationData?: {
+        bmcConnectionString?: string;
+        bmcCredentials?: {
+          password?: string | Redacted.Redacted<string>;
+          username?: string;
+        };
+        bmcMacAddress?: string;
+        bootMacAddress?: string;
+        machineDetails?: string;
+        machineName?: string;
+        rackSlot?: number;
+        serialNumber?: string;
+      }[];
+      networkRackId?: string;
+      rackLocation?: string;
+      rackSerialNumber?: string;
+      rackSkuId?: string;
+      storageApplianceConfigurationData?: {
+        adminCredentials?: {
+          password?: string | Redacted.Redacted<string>;
+          username?: string;
+        };
+        rackSlot?: number;
+        serialNumber?: string;
+        storageApplianceName?: string;
+      }[];
+    }[];
+    runtimeProtectionConfiguration?: {
+      definitionUpdateMode?: "Automatic" | "None";
+      enforcementLevel?:
+        | "Audit"
+        | "Disabled"
+        | "OnDemand"
+        | "Passive"
+        | "RealTime";
+    };
+    secretArchive?: { keyVaultId?: string; useKeyVault?: "True" | "False" };
+    secretArchiveSettings?: {
+      associatedIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+      vaultUri?: string;
+    };
+    updateStrategy?: {
+      maxUnavailable?: number;
+      strategyType?: "Rack" | "PauseAfterRack";
+      thresholdType?: "CountSuccess" | "PercentSuccess";
+      thresholdValue?: number;
+      waitTimeMinutes?: number;
+    };
+    vulnerabilityScanningSettings?: { containerScan?: "Disabled" | "Enabled" };
+  };
+  tags?: Record<string, string>;
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3669,32 +5805,36 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Array(
               Schema.Struct({
                 bmcConnectionString: Schema.optional(Schema.String),
-                bmcCredentials: Schema.Struct({
-                  password: SensitiveString,
-                  username: Schema.String,
-                }),
-                bmcMacAddress: Schema.String,
-                bootMacAddress: Schema.String,
+                bmcCredentials: Schema.optional(
+                  Schema.Struct({
+                    password: Schema.optional(SensitiveString),
+                    username: Schema.optional(Schema.String),
+                  }),
+                ),
+                bmcMacAddress: Schema.optional(Schema.String),
+                bootMacAddress: Schema.optional(Schema.String),
                 machineDetails: Schema.optional(Schema.String),
                 machineName: Schema.optional(Schema.String),
-                rackSlot: Schema.Number,
-                serialNumber: Schema.String,
+                rackSlot: Schema.optional(Schema.Number),
+                serialNumber: Schema.optional(Schema.String),
               }),
             ),
           ),
-          networkRackId: Schema.String,
+          networkRackId: Schema.optional(Schema.String),
           rackLocation: Schema.optional(Schema.String),
-          rackSerialNumber: Schema.String,
-          rackSkuId: Schema.String,
+          rackSerialNumber: Schema.optional(Schema.String),
+          rackSkuId: Schema.optional(Schema.String),
           storageApplianceConfigurationData: Schema.optional(
             Schema.Array(
               Schema.Struct({
-                adminCredentials: Schema.Struct({
-                  password: SensitiveString,
-                  username: Schema.String,
-                }),
-                rackSlot: Schema.Number,
-                serialNumber: Schema.String,
+                adminCredentials: Schema.optional(
+                  Schema.Struct({
+                    password: Schema.optional(SensitiveString),
+                    username: Schema.optional(Schema.String),
+                  }),
+                ),
+                rackSlot: Schema.optional(Schema.Number),
+                serialNumber: Schema.optional(Schema.String),
                 storageApplianceName: Schema.optional(Schema.String),
               }),
             ),
@@ -3720,10 +5860,10 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       clusterLocation: Schema.optional(Schema.String),
       clusterServicePrincipal: Schema.optional(
         Schema.Struct({
-          applicationId: Schema.String,
-          password: SensitiveString,
-          principalId: Schema.String,
-          tenantId: Schema.String,
+          applicationId: Schema.optional(Schema.String),
+          password: Schema.optional(SensitiveString),
+          principalId: Schema.optional(Schema.String),
+          tenantId: Schema.optional(Schema.String),
         }),
       ),
       commandOutputSettings: Schema.optional(
@@ -3761,6 +5901,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     "BareMetalMachineRunCommand",
                     "BareMetalMachineRunDataExtracts",
                     "BareMetalMachineRunReadCommands",
+                    "ClusterSupportAdministrativeActions",
                     "StorageRunReadCommands",
                     "BareMetalMachineRunDataExtractsRestricted",
                   ]),
@@ -3773,9 +5914,11 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       computeDeploymentThreshold: Schema.optional(
         Schema.Struct({
-          grouping: Schema.Literals(["PerCluster", "PerRack"]),
-          type: Schema.Literals(["CountSuccess", "PercentSuccess"]),
-          value: Schema.Number,
+          grouping: Schema.optional(Schema.Literals(["PerCluster", "PerRack"])),
+          type: Schema.optional(
+            Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          ),
+          value: Schema.optional(Schema.Number),
         }),
       ),
       computeRackDefinitions: Schema.optional(
@@ -3786,32 +5929,36 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               Schema.Array(
                 Schema.Struct({
                   bmcConnectionString: Schema.optional(Schema.String),
-                  bmcCredentials: Schema.Struct({
-                    password: SensitiveString,
-                    username: Schema.String,
-                  }),
-                  bmcMacAddress: Schema.String,
-                  bootMacAddress: Schema.String,
+                  bmcCredentials: Schema.optional(
+                    Schema.Struct({
+                      password: Schema.optional(SensitiveString),
+                      username: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  bmcMacAddress: Schema.optional(Schema.String),
+                  bootMacAddress: Schema.optional(Schema.String),
                   machineDetails: Schema.optional(Schema.String),
                   machineName: Schema.optional(Schema.String),
-                  rackSlot: Schema.Number,
-                  serialNumber: Schema.String,
+                  rackSlot: Schema.optional(Schema.Number),
+                  serialNumber: Schema.optional(Schema.String),
                 }),
               ),
             ),
-            networkRackId: Schema.String,
+            networkRackId: Schema.optional(Schema.String),
             rackLocation: Schema.optional(Schema.String),
-            rackSerialNumber: Schema.String,
-            rackSkuId: Schema.String,
+            rackSerialNumber: Schema.optional(Schema.String),
+            rackSkuId: Schema.optional(Schema.String),
             storageApplianceConfigurationData: Schema.optional(
               Schema.Array(
                 Schema.Struct({
-                  adminCredentials: Schema.Struct({
-                    password: SensitiveString,
-                    username: Schema.String,
-                  }),
-                  rackSlot: Schema.Number,
-                  serialNumber: Schema.String,
+                  adminCredentials: Schema.optional(
+                    Schema.Struct({
+                      password: Schema.optional(SensitiveString),
+                      username: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  rackSlot: Schema.optional(Schema.Number),
+                  serialNumber: Schema.optional(Schema.String),
                   storageApplianceName: Schema.optional(Schema.String),
                 }),
               ),
@@ -3821,6 +5968,9 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       runtimeProtectionConfiguration: Schema.optional(
         Schema.Struct({
+          definitionUpdateMode: Schema.optional(
+            Schema.Literals(["Automatic", "None"]),
+          ),
           enforcementLevel: Schema.optional(
             Schema.Literals([
               "Audit",
@@ -3834,7 +5984,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       secretArchive: Schema.optional(
         Schema.Struct({
-          keyVaultId: Schema.String,
+          keyVaultId: Schema.optional(Schema.String),
           useKeyVault: Schema.optional(Schema.Literals(["True", "False"])),
         }),
       ),
@@ -3857,9 +6007,13 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       updateStrategy: Schema.optional(
         Schema.Struct({
           maxUnavailable: Schema.optional(Schema.Number),
-          strategyType: Schema.Literals(["Rack", "PauseAfterRack"]),
-          thresholdType: Schema.Literals(["CountSuccess", "PercentSuccess"]),
-          thresholdValue: Schema.Number,
+          strategyType: Schema.optional(
+            Schema.Literals(["Rack", "PauseAfterRack"]),
+          ),
+          thresholdType: Schema.optional(
+            Schema.Literals(["CountSuccess", "PercentSuccess"]),
+          ),
+          thresholdValue: Schema.optional(Schema.Number),
           waitTimeMinutes: Schema.optional(Schema.Number),
         }),
       ),
@@ -3877,12 +6031,24 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3901,8 +6067,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -3912,32 +6077,40 @@ export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface ClustersUpdateVersionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  safeguardMode?: "All" | "None";
+  targetClusterVersion: string;
+}
 export const ClustersUpdateVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    safeguardMode: Schema.optional(Schema.Literals(["All", "None"])),
     targetClusterVersion: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/updateVersion",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ClustersUpdateVersionInput = typeof ClustersUpdateVersionInput.Type;
+  ) as unknown as Schema.Codec<ClustersUpdateVersionInput>;
 
 // Output Schema
+export type ClustersUpdateVersionOutput = void;
 export const ClustersUpdateVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersUpdateVersionOutput =
-  typeof ClustersUpdateVersionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUpdateVersionOutput>;
 
 // The operation
 /**
@@ -3955,6 +6128,31 @@ export const ClustersUpdateVersion = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConsolesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  consoleName: string;
+  properties: {
+    enabled: "True" | "False";
+    expiration?: string;
+    sshPublicKey: { keyData: string };
+    detailedStatus?: "Ready" | "Error";
+    detailedStatusMessage?: string;
+    privateLinkServiceId?: string;
+    virtualMachineAccessId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Provisioning";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConsolesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3992,13 +6190,24 @@ export const ConsolesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ConsolesCreateOrUpdateInput =
-  typeof ConsolesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConsolesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConsolesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConsolesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4018,9 +6227,7 @@ export const ConsolesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConsolesCreateOrUpdateOutput =
-  typeof ConsolesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConsolesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4031,6 +6238,8 @@ export type ConsolesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4039,6 +6248,12 @@ export const ConsolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConsolesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  consoleName: string;
+}
 export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4048,14 +6263,14 @@ export const ConsolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ConsolesDeleteInput = typeof ConsolesDeleteInput.Type;
+) as unknown as Schema.Codec<ConsolesDeleteInput>;
 
 // Output Schema
-export const ConsolesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConsolesDeleteOutput = typeof ConsolesDeleteOutput.Type;
+export type ConsolesDeleteOutput = void;
+export const ConsolesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConsolesDeleteOutput>;
 
 // The operation
 /**
@@ -4066,12 +6281,20 @@ export type ConsolesDeleteOutput = typeof ConsolesDeleteOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConsolesDeleteInput,
   outputSchema: ConsolesDeleteOutput,
 }));
 // Input Schema
+export interface ConsolesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  consoleName: string;
+}
 export const ConsolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4081,12 +6304,24 @@ export const ConsolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ConsolesGetInput = typeof ConsolesGetInput.Type;
+) as unknown as Schema.Codec<ConsolesGetInput>;
 
 // Output Schema
+export interface ConsolesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConsolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4105,8 +6340,7 @@ export const ConsolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConsolesGetOutput = typeof ConsolesGetOutput.Type;
+}) as unknown as Schema.Codec<ConsolesGetOutput>;
 
 // The operation
 /**
@@ -4123,22 +6357,45 @@ export const ConsolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConsolesGetOutput,
 }));
 // Input Schema
+export interface ConsolesListByVirtualMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const ConsolesListByVirtualMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type ConsolesListByVirtualMachineInput =
-  typeof ConsolesListByVirtualMachineInput.Type;
+  ) as unknown as Schema.Codec<ConsolesListByVirtualMachineInput>;
 
 // Output Schema
+export interface ConsolesListByVirtualMachineOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConsolesListByVirtualMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4173,9 +6430,7 @@ export const ConsolesListByVirtualMachineOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConsolesListByVirtualMachineOutput =
-  typeof ConsolesListByVirtualMachineOutput.Type;
+  }) as unknown as Schema.Codec<ConsolesListByVirtualMachineOutput>;
 
 // The operation
 /**
@@ -4185,6 +6440,8 @@ export type ConsolesListByVirtualMachineOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const ConsolesListByVirtualMachine =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4192,6 +6449,18 @@ export const ConsolesListByVirtualMachine =
     outputSchema: ConsolesListByVirtualMachineOutput,
   }));
 // Input Schema
+export interface ConsolesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  consoleName: string;
+  properties?: {
+    enabled?: "True" | "False";
+    expiration?: string;
+    sshPublicKey?: { keyData?: string };
+  };
+  tags?: Record<string, string>;
+}
 export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4203,7 +6472,7 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       expiration: Schema.optional(Schema.String),
       sshPublicKey: Schema.optional(
         Schema.Struct({
-          keyData: Schema.String,
+          keyData: Schema.optional(Schema.String),
         }),
       ),
     }),
@@ -4213,12 +6482,24 @@ export const ConsolesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles/{consoleName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type ConsolesUpdateInput = typeof ConsolesUpdateInput.Type;
+) as unknown as Schema.Codec<ConsolesUpdateInput>;
 
 // Output Schema
+export interface ConsolesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConsolesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4237,8 +6518,7 @@ export const ConsolesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConsolesUpdateOutput = typeof ConsolesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ConsolesUpdateOutput>;
 
 // The operation
 /**
@@ -4249,12 +6529,38 @@ export type ConsolesUpdateOutput = typeof ConsolesUpdateOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
  * @param consoleName - The name of the virtual machine console.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const ConsolesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConsolesUpdateInput,
   outputSchema: ConsolesUpdateOutput,
 }));
 // Input Schema
+export interface KubernetesClusterFeaturesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  featureName: string;
+  properties?: {
+    options?: { key: string; value: string }[];
+    availabilityLifecycle?: "Preview" | "GenerallyAvailable";
+    detailedStatus?: "Error" | "Provisioning" | "Installed";
+    detailedStatusMessage?: string;
+    required?: "True" | "False";
+    version?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Canceled"
+      | "Deleting"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const KubernetesClusterFeaturesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4299,13 +6605,24 @@ export const KubernetesClusterFeaturesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClusterFeaturesCreateOrUpdateInput =
-  typeof KubernetesClusterFeaturesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClusterFeaturesCreateOrUpdateInput>;
 
 // Output Schema
+export interface KubernetesClusterFeaturesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClusterFeaturesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4325,9 +6642,7 @@ export const KubernetesClusterFeaturesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClusterFeaturesCreateOrUpdateOutput =
-  typeof KubernetesClusterFeaturesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClusterFeaturesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4338,6 +6653,8 @@ export type KubernetesClusterFeaturesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4345,6 +6662,12 @@ export const KubernetesClusterFeaturesCreateOrUpdate =
     outputSchema: KubernetesClusterFeaturesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface KubernetesClusterFeaturesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  featureName: string;
+}
 export const KubernetesClusterFeaturesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4355,17 +6678,14 @@ export const KubernetesClusterFeaturesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClusterFeaturesDeleteInput =
-  typeof KubernetesClusterFeaturesDeleteInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClusterFeaturesDeleteInput>;
 
 // Output Schema
+export type KubernetesClusterFeaturesDeleteOutput = void;
 export const KubernetesClusterFeaturesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type KubernetesClusterFeaturesDeleteOutput =
-  typeof KubernetesClusterFeaturesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClusterFeaturesDeleteOutput>;
 
 // The operation
 /**
@@ -4376,6 +6696,8 @@ export type KubernetesClusterFeaturesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4383,6 +6705,12 @@ export const KubernetesClusterFeaturesDelete =
     outputSchema: KubernetesClusterFeaturesDeleteOutput,
   }));
 // Input Schema
+export interface KubernetesClusterFeaturesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  featureName: string;
+}
 export const KubernetesClusterFeaturesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4393,13 +6721,24 @@ export const KubernetesClusterFeaturesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClusterFeaturesGetInput =
-  typeof KubernetesClusterFeaturesGetInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClusterFeaturesGetInput>;
 
 // Output Schema
+export interface KubernetesClusterFeaturesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClusterFeaturesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4419,9 +6758,7 @@ export const KubernetesClusterFeaturesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClusterFeaturesGetOutput =
-  typeof KubernetesClusterFeaturesGetOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClusterFeaturesGetOutput>;
 
 // The operation
 /**
@@ -4439,22 +6776,45 @@ export const KubernetesClusterFeaturesGet =
     outputSchema: KubernetesClusterFeaturesGetOutput,
   }));
 // Input Schema
+export interface KubernetesClusterFeaturesListByKubernetesClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const KubernetesClusterFeaturesListByKubernetesClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     kubernetesClusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClusterFeaturesListByKubernetesClusterInput =
-  typeof KubernetesClusterFeaturesListByKubernetesClusterInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClusterFeaturesListByKubernetesClusterInput>;
 
 // Output Schema
+export interface KubernetesClusterFeaturesListByKubernetesClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KubernetesClusterFeaturesListByKubernetesClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4489,9 +6849,7 @@ export const KubernetesClusterFeaturesListByKubernetesClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type KubernetesClusterFeaturesListByKubernetesClusterOutput =
-  typeof KubernetesClusterFeaturesListByKubernetesClusterOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClusterFeaturesListByKubernetesClusterOutput>;
 
 // The operation
 /**
@@ -4501,6 +6859,8 @@ export type KubernetesClusterFeaturesListByKubernetesClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClusterFeaturesListByKubernetesCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4508,6 +6868,14 @@ export const KubernetesClusterFeaturesListByKubernetesCluster =
     outputSchema: KubernetesClusterFeaturesListByKubernetesClusterOutput,
   }));
 // Input Schema
+export interface KubernetesClusterFeaturesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  featureName: string;
+  properties?: { options?: { key: string; value: string }[] };
+  tags?: Record<string, string>;
+}
 export const KubernetesClusterFeaturesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4531,13 +6899,24 @@ export const KubernetesClusterFeaturesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features/{featureName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClusterFeaturesUpdateInput =
-  typeof KubernetesClusterFeaturesUpdateInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClusterFeaturesUpdateInput>;
 
 // Output Schema
+export interface KubernetesClusterFeaturesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClusterFeaturesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4557,9 +6936,7 @@ export const KubernetesClusterFeaturesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClusterFeaturesUpdateOutput =
-  typeof KubernetesClusterFeaturesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClusterFeaturesUpdateOutput>;
 
 // The operation
 /**
@@ -4570,6 +6947,8 @@ export type KubernetesClusterFeaturesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
  * @param featureName - The name of the feature.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClusterFeaturesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4577,6 +6956,185 @@ export const KubernetesClusterFeaturesUpdate =
     outputSchema: KubernetesClusterFeaturesUpdateOutput,
   }));
 // Input Schema
+export interface KubernetesClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  properties: {
+    aadConfiguration?: { adminGroupObjectIds: string[] };
+    administratorConfiguration?: {
+      adminUsername?: string;
+      sshPublicKeys?: { keyData: string }[];
+    };
+    controlPlaneNodeConfiguration: {
+      administratorConfiguration?: {
+        adminUsername?: string;
+        sshPublicKeys?: { keyData: string }[];
+      };
+      availabilityZones?: string[];
+      count: number;
+      vmSkuName: string;
+    };
+    initialAgentPoolConfigurations: {
+      administratorConfiguration?: {
+        adminUsername?: string;
+        sshPublicKeys?: { keyData: string }[];
+      };
+      agentOptions?: { hugepagesCount: number; hugepagesSize?: "2M" | "1G" };
+      attachedNetworkConfiguration?: {
+        l2Networks?: {
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+        l3Networks?: {
+          ipamEnabled?: "True" | "False";
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+        trunkedNetworks?: {
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+      };
+      availabilityZones?: string[];
+      count: number;
+      labels?: { key: string; value: string }[];
+      mode: "System" | "User" | "NotApplicable";
+      taints?: { key: string; value: string }[];
+      upgradeSettings?: {
+        drainTimeout?: number;
+        maxSurge?: string;
+        maxUnavailable?: string;
+      };
+      vmSkuName: string;
+      name: string;
+    }[];
+    kubernetesVersion: string;
+    managedResourceGroupConfiguration?: { location?: string; name?: string };
+    networkConfiguration: {
+      attachedNetworkConfiguration?: {
+        l2Networks?: {
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+        l3Networks?: {
+          ipamEnabled?: "True" | "False";
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+        trunkedNetworks?: {
+          networkId: string;
+          pluginType?: "DPDK" | "SRIOV" | "OSDevice" | "MACVLAN" | "IPVLAN";
+        }[];
+      };
+      bgpServiceLoadBalancerConfiguration?: {
+        bgpAdvertisements?: {
+          advertiseToFabric?: "True" | "False";
+          communities?: string[];
+          ipAddressPools: string[];
+          peers?: string[];
+        }[];
+        bgpPeers?: {
+          bfdEnabled?: "True" | "False";
+          bgpMultiHop?: "True" | "False";
+          holdTime?: string;
+          keepAliveTime?: string;
+          myAsn?: number;
+          name: string;
+          password?: string | Redacted.Redacted<string>;
+          peerAddress: string;
+          peerAsn: number;
+          peerPort?: number;
+        }[];
+        fabricPeeringEnabled?: "True" | "False";
+        ipAddressPools?: {
+          addresses: string[];
+          autoAssign?: "True" | "False";
+          name: string;
+          onlyUseHostIps?: "True" | "False";
+        }[];
+      };
+      cloudServicesNetworkId: string;
+      cniNetworkId: string;
+      dnsServiceIp?: string;
+      l2ServiceLoadBalancerConfiguration?: {
+        ipAddressPools?: {
+          addresses: string[];
+          autoAssign?: "True" | "False";
+          name: string;
+          onlyUseHostIps?: "True" | "False";
+        }[];
+      };
+      podCidrs?: string[];
+      serviceCidrs?: string[];
+    };
+    attachedNetworkIds?: string[];
+    availableUpgrades?: {
+      availabilityLifecycle?: "Preview" | "GenerallyAvailable";
+      version?: string;
+    }[];
+    clusterId?: string;
+    connectedClusterId?: string;
+    controlPlaneKubernetesVersion?: string;
+    detailedStatus?: "Available" | "Error" | "Provisioning";
+    detailedStatusMessage?: string;
+    featureStatuses?: {
+      detailedStatus?: "Running" | "Failed" | "Unknown";
+      detailedStatusMessage?: string;
+      name?: string;
+      version?: string;
+    }[];
+    nodes?: {
+      agentPoolId?: string;
+      availabilityZone?: string;
+      bareMetalMachineId?: string;
+      cpuCores?: number;
+      detailedStatus?:
+        | "Available"
+        | "Error"
+        | "Provisioning"
+        | "Running"
+        | "Scheduling"
+        | "Stopped"
+        | "Terminating"
+        | "Unknown";
+      detailedStatusMessage?: string;
+      diskSizeGB?: number;
+      image?: string;
+      kubernetesVersion?: string;
+      labels?: { key: string; value: string }[];
+      memorySizeGB?: number;
+      mode?: "System" | "User" | "NotApplicable";
+      name?: string;
+      networkAttachments?: {
+        attachedNetworkId: string;
+        defaultGateway?: "True" | "False";
+        ipAllocationMethod: "Dynamic" | "Static" | "Disabled";
+        ipv4Address?: string;
+        ipv6Address?: string;
+        macAddress?: string;
+        networkAttachmentName?: string;
+      }[];
+      powerState?: "On" | "Off" | "Unknown";
+      role?: "ControlPlane" | "Worker";
+      taints?: { key: string; value: string }[];
+      vmSkuName?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "InProgress"
+      | "Created"
+      | "Updating"
+      | "Deleting";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const KubernetesClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4987,13 +7545,24 @@ export const KubernetesClustersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersCreateOrUpdateInput =
-  typeof KubernetesClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface KubernetesClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5013,9 +7582,7 @@ export const KubernetesClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClustersCreateOrUpdateOutput =
-  typeof KubernetesClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5025,6 +7592,8 @@ export type KubernetesClustersCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5032,6 +7601,11 @@ export const KubernetesClustersCreateOrUpdate =
     outputSchema: KubernetesClustersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface KubernetesClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+}
 export const KubernetesClustersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5041,17 +7615,14 @@ export const KubernetesClustersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersDeleteInput =
-  typeof KubernetesClustersDeleteInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersDeleteInput>;
 
 // Output Schema
+export type KubernetesClustersDeleteOutput = void;
 export const KubernetesClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type KubernetesClustersDeleteOutput =
-  typeof KubernetesClustersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersDeleteOutput>;
 
 // The operation
 /**
@@ -5061,6 +7632,8 @@ export type KubernetesClustersDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5069,6 +7642,11 @@ export const KubernetesClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KubernetesClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+}
 export const KubernetesClustersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5078,12 +7656,24 @@ export const KubernetesClustersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersGetInput = typeof KubernetesClustersGetInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersGetInput>;
 
 // Output Schema
+export interface KubernetesClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClustersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5103,9 +7693,7 @@ export const KubernetesClustersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClustersGetOutput =
-  typeof KubernetesClustersGetOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClustersGetOutput>;
 
 // The operation
 /**
@@ -5123,21 +7711,43 @@ export const KubernetesClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KubernetesClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const KubernetesClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersListByResourceGroupInput =
-  typeof KubernetesClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface KubernetesClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KubernetesClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5172,9 +7782,7 @@ export const KubernetesClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type KubernetesClustersListByResourceGroupOutput =
-  typeof KubernetesClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5183,6 +7791,8 @@ export type KubernetesClustersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5190,20 +7800,41 @@ export const KubernetesClustersListByResourceGroup =
     outputSchema: KubernetesClustersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface KubernetesClustersListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const KubernetesClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesClusters",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersListBySubscriptionInput =
-  typeof KubernetesClustersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersListBySubscriptionInput>;
 
 // Output Schema
+export interface KubernetesClustersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KubernetesClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5238,9 +7869,7 @@ export const KubernetesClustersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type KubernetesClustersListBySubscriptionOutput =
-  typeof KubernetesClustersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClustersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5248,6 +7877,8 @@ export type KubernetesClustersListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const KubernetesClustersListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5255,6 +7886,12 @@ export const KubernetesClustersListBySubscription =
     outputSchema: KubernetesClustersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface KubernetesClustersRestartNodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  nodeName: string;
+}
 export const KubernetesClustersRestartNodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5265,17 +7902,14 @@ export const KubernetesClustersRestartNodeInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/restartNode",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersRestartNodeInput =
-  typeof KubernetesClustersRestartNodeInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersRestartNodeInput>;
 
 // Output Schema
+export type KubernetesClustersRestartNodeOutput = void;
 export const KubernetesClustersRestartNodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type KubernetesClustersRestartNodeOutput =
-  typeof KubernetesClustersRestartNodeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesClustersRestartNodeOutput>;
 
 // The operation
 /**
@@ -5292,6 +7926,20 @@ export const KubernetesClustersRestartNode =
     outputSchema: KubernetesClustersRestartNodeOutput,
   }));
 // Input Schema
+export interface KubernetesClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesClusterName: string;
+  properties?: {
+    administratorConfiguration?: { sshPublicKeys?: { keyData: string }[] };
+    controlPlaneNodeConfiguration?: {
+      administratorConfiguration?: { sshPublicKeys?: { keyData: string }[] };
+      count?: number;
+    };
+    kubernetesVersion?: string;
+  };
+  tags?: Record<string, string>;
+}
 export const KubernetesClustersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5334,13 +7982,24 @@ export const KubernetesClustersUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type KubernetesClustersUpdateInput =
-  typeof KubernetesClustersUpdateInput.Type;
+  ) as unknown as Schema.Codec<KubernetesClustersUpdateInput>;
 
 // Output Schema
+export interface KubernetesClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const KubernetesClustersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5360,9 +8019,7 @@ export const KubernetesClustersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type KubernetesClustersUpdateOutput =
-  typeof KubernetesClustersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesClustersUpdateOutput>;
 
 // The operation
 /**
@@ -5372,6 +8029,8 @@ export type KubernetesClustersUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param kubernetesClusterName - The name of the Kubernetes cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const KubernetesClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5380,6 +8039,488 @@ export const KubernetesClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KubernetesVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesVersionName: string;
+  properties: {
+    values?: { description?: string; version?: string }[];
+    provisioningState?: "Accepted" | "Canceled" | "Failed" | "Succeeded";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
+export const KubernetesVersionsCreateOrUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.Struct({
+      values: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            description: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      provisioningState: Schema.optional(
+        Schema.Literals(["Accepted", "Canceled", "Failed", "Succeeded"]),
+      ),
+    }),
+    etag: Schema.optional(Schema.String),
+    extendedLocation: Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literals(["EdgeZone", "CustomLocation"]),
+    }),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsCreateOrUpdateInput>;
+
+// Output Schema
+export interface KubernetesVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const KubernetesVersionsCreateOrUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<KubernetesVersionsCreateOrUpdateOutput>;
+
+// The operation
+/**
+ * Create the Kubernetes version resource or update its tags. This resource is system managed and should only be created with the name "default".
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsCreateOrUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsCreateOrUpdateInput,
+    outputSchema: KubernetesVersionsCreateOrUpdateOutput,
+  }));
+// Input Schema
+export interface KubernetesVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesVersionName: string;
+}
+export const KubernetesVersionsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsDeleteInput>;
+
+// Output Schema
+export type KubernetesVersionsDeleteOutput = void;
+export const KubernetesVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<KubernetesVersionsDeleteOutput>;
+
+// The operation
+/**
+ * Delete the specified Kubernetes version resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsDeleteInput,
+    outputSchema: KubernetesVersionsDeleteOutput,
+  }),
+);
+// Input Schema
+export interface KubernetesVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesVersionName: string;
+}
+export const KubernetesVersionsGetInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsGetInput>;
+
+// Output Schema
+export interface KubernetesVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const KubernetesVersionsGetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<KubernetesVersionsGetOutput>;
+
+// The operation
+/**
+ * Retrieve the Kubernetes version resource that describes the available Kubernetes versions for deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ */
+export const KubernetesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsGetInput,
+    outputSchema: KubernetesVersionsGetOutput,
+  }),
+);
+// Input Schema
+export interface KubernetesVersionsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
+export const KubernetesVersionsListByResourceGroupInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsListByResourceGroupInput>;
+
+// Output Schema
+export interface KubernetesVersionsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
+export const KubernetesVersionsListByResourceGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<KubernetesVersionsListByResourceGroupOutput>;
+
+// The operation
+/**
+ * Get a list of Kubernetes version resources in the provided resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const KubernetesVersionsListByResourceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsListByResourceGroupInput,
+    outputSchema: KubernetesVersionsListByResourceGroupOutput,
+  }));
+// Input Schema
+export interface KubernetesVersionsListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
+export const KubernetesVersionsListBySubscriptionInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesVersions",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsListBySubscriptionInput>;
+
+// Output Schema
+export interface KubernetesVersionsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
+export const KubernetesVersionsListBySubscriptionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<KubernetesVersionsListBySubscriptionOutput>;
+
+// The operation
+/**
+ * Get a list of Kubernetes version resources in the provided subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
+ */
+export const KubernetesVersionsListBySubscription =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: KubernetesVersionsListBySubscriptionInput,
+    outputSchema: KubernetesVersionsListBySubscriptionOutput,
+  }));
+// Input Schema
+export interface KubernetesVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kubernetesVersionName: string;
+  tags?: Record<string, string>;
+}
+export const KubernetesVersionsUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    kubernetesVersionName: Schema.String.pipe(T.PathParam()),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions/{kubernetesVersionName}",
+      apiVersion: "2026-07-01",
+    }),
+  ) as unknown as Schema.Codec<KubernetesVersionsUpdateInput>;
+
+// Output Schema
+export interface KubernetesVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
+export const KubernetesVersionsUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<KubernetesVersionsUpdateOutput>;
+
+// The operation
+/**
+ * Update tags associated with the Kubernetes version resource. No other properties are supported for update.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param kubernetesVersionName - The name of the Kubernetes version resource.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
+ */
+export const KubernetesVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: KubernetesVersionsUpdateInput,
+    outputSchema: KubernetesVersionsUpdateOutput,
+  }),
+);
+// Input Schema
+export interface L2NetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2NetworkName: string;
+  properties: {
+    hybridAksPluginType?: "DPDK" | "SRIOV" | "OSDevice";
+    interfaceName?: string;
+    l2IsolationDomainId: string;
+    associatedResourceIds?: string[];
+    clusterId?: string;
+    detailedStatus?: "Error" | "Available" | "Provisioning";
+    detailedStatusMessage?: string;
+    hybridAksClustersAssociatedIds?: string[];
+    virtualMachinesAssociatedIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const L2NetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5424,13 +8565,24 @@ export const L2NetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L2NetworksCreateOrUpdateInput =
-  typeof L2NetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<L2NetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface L2NetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2NetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5450,9 +8602,7 @@ export const L2NetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2NetworksCreateOrUpdateOutput =
-  typeof L2NetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<L2NetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5462,6 +8612,8 @@ export type L2NetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5470,6 +8622,11 @@ export const L2NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2NetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2NetworkName: string;
+}
 export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5478,14 +8635,14 @@ export const L2NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L2NetworksDeleteInput = typeof L2NetworksDeleteInput.Type;
+) as unknown as Schema.Codec<L2NetworksDeleteInput>;
 
 // Output Schema
-export const L2NetworksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type L2NetworksDeleteOutput = typeof L2NetworksDeleteOutput.Type;
+export type L2NetworksDeleteOutput = void;
+export const L2NetworksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2NetworksDeleteOutput>;
 
 // The operation
 /**
@@ -5495,12 +8652,19 @@ export type L2NetworksDeleteOutput = typeof L2NetworksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksDeleteInput,
   outputSchema: L2NetworksDeleteOutput,
 }));
 // Input Schema
+export interface L2NetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2NetworkName: string;
+}
 export const L2NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5509,12 +8673,24 @@ export const L2NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L2NetworksGetInput = typeof L2NetworksGetInput.Type;
+) as unknown as Schema.Codec<L2NetworksGetInput>;
 
 // Output Schema
+export interface L2NetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5533,8 +8709,7 @@ export const L2NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type L2NetworksGetOutput = typeof L2NetworksGetOutput.Type;
+}) as unknown as Schema.Codec<L2NetworksGetOutput>;
 
 // The operation
 /**
@@ -5550,21 +8725,43 @@ export const L2NetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: L2NetworksGetOutput,
 }));
 // Input Schema
+export interface L2NetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const L2NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L2NetworksListByResourceGroupInput =
-  typeof L2NetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<L2NetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface L2NetworksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2NetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5599,9 +8796,7 @@ export const L2NetworksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2NetworksListByResourceGroupOutput =
-  typeof L2NetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<L2NetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5610,6 +8805,8 @@ export type L2NetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5617,20 +8814,41 @@ export const L2NetworksListByResourceGroup =
     outputSchema: L2NetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface L2NetworksListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const L2NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L2NetworksListBySubscriptionInput =
-  typeof L2NetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<L2NetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface L2NetworksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2NetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5665,9 +8883,7 @@ export const L2NetworksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2NetworksListBySubscriptionOutput =
-  typeof L2NetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<L2NetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5675,6 +8891,8 @@ export type L2NetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L2NetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5682,6 +8900,12 @@ export const L2NetworksListBySubscription =
     outputSchema: L2NetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface L2NetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2NetworkName: string;
+  tags?: Record<string, string>;
+}
 export const L2NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5691,12 +8915,24 @@ export const L2NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks/{l2NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L2NetworksUpdateInput = typeof L2NetworksUpdateInput.Type;
+) as unknown as Schema.Codec<L2NetworksUpdateInput>;
 
 // Output Schema
+export interface L2NetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5717,8 +8953,7 @@ export const L2NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type L2NetworksUpdateOutput = typeof L2NetworksUpdateOutput.Type;
+) as unknown as Schema.Codec<L2NetworksUpdateOutput>;
 
 // The operation
 /**
@@ -5728,12 +8963,45 @@ export type L2NetworksUpdateOutput = typeof L2NetworksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2NetworkName - The name of the L2 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L2NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L2NetworksUpdateInput,
   outputSchema: L2NetworksUpdateOutput,
 }));
 // Input Schema
+export interface L3NetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3NetworkName: string;
+  properties: {
+    hybridAksIpamEnabled?: "True" | "False";
+    hybridAksPluginType?: "DPDK" | "SRIOV" | "OSDevice";
+    interfaceName?: string;
+    ipAllocationType?: "IPV4" | "IPV6" | "DualStack";
+    ipv4ConnectedPrefix?: string;
+    ipv6ConnectedPrefix?: string;
+    l3IsolationDomainId: string;
+    vlan: number;
+    associatedResourceIds?: string[];
+    clusterId?: string;
+    detailedStatus?: "Error" | "Available" | "Provisioning";
+    detailedStatusMessage?: string;
+    hybridAksClustersAssociatedIds?: string[];
+    virtualMachinesAssociatedIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const L3NetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5785,13 +9053,24 @@ export const L3NetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L3NetworksCreateOrUpdateInput =
-  typeof L3NetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<L3NetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface L3NetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3NetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5811,9 +9090,7 @@ export const L3NetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L3NetworksCreateOrUpdateOutput =
-  typeof L3NetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<L3NetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5823,6 +9100,8 @@ export type L3NetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5831,6 +9110,11 @@ export const L3NetworksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L3NetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3NetworkName: string;
+}
 export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5839,14 +9123,14 @@ export const L3NetworksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L3NetworksDeleteInput = typeof L3NetworksDeleteInput.Type;
+) as unknown as Schema.Codec<L3NetworksDeleteInput>;
 
 // Output Schema
-export const L3NetworksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type L3NetworksDeleteOutput = typeof L3NetworksDeleteOutput.Type;
+export type L3NetworksDeleteOutput = void;
+export const L3NetworksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L3NetworksDeleteOutput>;
 
 // The operation
 /**
@@ -5856,12 +9140,19 @@ export type L3NetworksDeleteOutput = typeof L3NetworksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksDeleteInput,
   outputSchema: L3NetworksDeleteOutput,
 }));
 // Input Schema
+export interface L3NetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3NetworkName: string;
+}
 export const L3NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5870,12 +9161,24 @@ export const L3NetworksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L3NetworksGetInput = typeof L3NetworksGetInput.Type;
+) as unknown as Schema.Codec<L3NetworksGetInput>;
 
 // Output Schema
+export interface L3NetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5894,8 +9197,7 @@ export const L3NetworksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type L3NetworksGetOutput = typeof L3NetworksGetOutput.Type;
+}) as unknown as Schema.Codec<L3NetworksGetOutput>;
 
 // The operation
 /**
@@ -5911,21 +9213,43 @@ export const L3NetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: L3NetworksGetOutput,
 }));
 // Input Schema
+export interface L3NetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const L3NetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L3NetworksListByResourceGroupInput =
-  typeof L3NetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<L3NetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface L3NetworksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L3NetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5960,9 +9284,7 @@ export const L3NetworksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L3NetworksListByResourceGroupOutput =
-  typeof L3NetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<L3NetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5971,6 +9293,8 @@ export type L3NetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5978,20 +9302,41 @@ export const L3NetworksListByResourceGroup =
     outputSchema: L3NetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface L3NetworksListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const L3NetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l3Networks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type L3NetworksListBySubscriptionInput =
-  typeof L3NetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<L3NetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface L3NetworksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L3NetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6026,9 +9371,7 @@ export const L3NetworksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L3NetworksListBySubscriptionOutput =
-  typeof L3NetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<L3NetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6036,6 +9379,8 @@ export type L3NetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const L3NetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6043,6 +9388,12 @@ export const L3NetworksListBySubscription =
     outputSchema: L3NetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface L3NetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3NetworkName: string;
+  tags?: Record<string, string>;
+}
 export const L3NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6052,12 +9403,24 @@ export const L3NetworksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks/{l3NetworkName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type L3NetworksUpdateInput = typeof L3NetworksUpdateInput.Type;
+) as unknown as Schema.Codec<L3NetworksUpdateInput>;
 
 // Output Schema
+export interface L3NetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -6078,8 +9441,7 @@ export const L3NetworksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type L3NetworksUpdateOutput = typeof L3NetworksUpdateOutput.Type;
+) as unknown as Schema.Codec<L3NetworksUpdateOutput>;
 
 // The operation
 /**
@@ -6089,12 +9451,37 @@ export type L3NetworksUpdateOutput = typeof L3NetworksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3NetworkName - The name of the L3 network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const L3NetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: L3NetworksUpdateInput,
   outputSchema: L3NetworksUpdateOutput,
 }));
 // Input Schema
+export interface MetricsConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  metricsConfigurationName: string;
+  properties: {
+    enabledMetrics?: string[];
+    collectionInterval: number;
+    detailedStatus?: "Processing" | "Applied" | "Error";
+    detailedStatusMessage?: string;
+    disabledMetrics?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Provisioning";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MetricsConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6130,13 +9517,24 @@ export const MetricsConfigurationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type MetricsConfigurationsCreateOrUpdateInput =
-  typeof MetricsConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MetricsConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface MetricsConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetricsConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6156,9 +9554,7 @@ export const MetricsConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetricsConfigurationsCreateOrUpdateOutput =
-  typeof MetricsConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MetricsConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6169,6 +9565,8 @@ export type MetricsConfigurationsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6176,6 +9574,12 @@ export const MetricsConfigurationsCreateOrUpdate =
     outputSchema: MetricsConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MetricsConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  metricsConfigurationName: string;
+}
 export const MetricsConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6186,17 +9590,14 @@ export const MetricsConfigurationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type MetricsConfigurationsDeleteInput =
-  typeof MetricsConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MetricsConfigurationsDeleteInput>;
 
 // Output Schema
+export type MetricsConfigurationsDeleteOutput = void;
 export const MetricsConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MetricsConfigurationsDeleteOutput =
-  typeof MetricsConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MetricsConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -6207,6 +9608,8 @@ export type MetricsConfigurationsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6215,6 +9618,12 @@ export const MetricsConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MetricsConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  metricsConfigurationName: string;
+}
 export const MetricsConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6225,13 +9634,24 @@ export const MetricsConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type MetricsConfigurationsGetInput =
-  typeof MetricsConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<MetricsConfigurationsGetInput>;
 
 // Output Schema
+export interface MetricsConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetricsConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6251,9 +9671,7 @@ export const MetricsConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetricsConfigurationsGetOutput =
-  typeof MetricsConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<MetricsConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -6272,22 +9690,45 @@ export const MetricsConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MetricsConfigurationsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const MetricsConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type MetricsConfigurationsListByClusterInput =
-  typeof MetricsConfigurationsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<MetricsConfigurationsListByClusterInput>;
 
 // Output Schema
+export interface MetricsConfigurationsListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MetricsConfigurationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6322,9 +9763,7 @@ export const MetricsConfigurationsListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MetricsConfigurationsListByClusterOutput =
-  typeof MetricsConfigurationsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<MetricsConfigurationsListByClusterOutput>;
 
 // The operation
 /**
@@ -6334,6 +9773,8 @@ export type MetricsConfigurationsListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const MetricsConfigurationsListByCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6341,6 +9782,14 @@ export const MetricsConfigurationsListByCluster =
     outputSchema: MetricsConfigurationsListByClusterOutput,
   }));
 // Input Schema
+export interface MetricsConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  metricsConfigurationName: string;
+  properties?: { collectionInterval?: number; enabledMetrics?: string[] };
+  tags?: Record<string, string>;
+}
 export const MetricsConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6358,13 +9807,24 @@ export const MetricsConfigurationsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations/{metricsConfigurationName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type MetricsConfigurationsUpdateInput =
-  typeof MetricsConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MetricsConfigurationsUpdateInput>;
 
 // Output Schema
+export interface MetricsConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MetricsConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6384,9 +9844,7 @@ export const MetricsConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MetricsConfigurationsUpdateOutput =
-  typeof MetricsConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MetricsConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -6397,6 +9855,8 @@ export type MetricsConfigurationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the cluster.
  * @param metricsConfigurationName - The name of the metrics configuration for the cluster.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const MetricsConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6405,18 +9865,33 @@ export const MetricsConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.NetworkCloud/operations",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -6439,8 +9914,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -6453,6 +9927,30 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface RacksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rackName: string;
+  properties: {
+    availabilityZone: string;
+    rackLocation: string;
+    rackSerialNumber: string;
+    rackSkuId: string;
+    clusterId?: string;
+    detailedStatus?: "Error" | "Available" | "Provisioning";
+    detailedStatusMessage?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RacksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6489,12 +9987,24 @@ export const RacksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type RacksCreateOrUpdateInput = typeof RacksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RacksCreateOrUpdateInput>;
 
 // Output Schema
+export interface RacksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RacksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6514,8 +10024,7 @@ export const RacksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RacksCreateOrUpdateOutput = typeof RacksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RacksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6525,12 +10034,19 @@ export type RacksCreateOrUpdateOutput = typeof RacksCreateOrUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksCreateOrUpdateInput,
   outputSchema: RacksCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface RacksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rackName: string;
+}
 export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6539,14 +10055,14 @@ export const RacksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type RacksDeleteInput = typeof RacksDeleteInput.Type;
+) as unknown as Schema.Codec<RacksDeleteInput>;
 
 // Output Schema
-export const RacksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RacksDeleteOutput = typeof RacksDeleteOutput.Type;
+export type RacksDeleteOutput = void;
+export const RacksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RacksDeleteOutput>;
 
 // The operation
 /**
@@ -6556,12 +10072,19 @@ export type RacksDeleteOutput = typeof RacksDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksDeleteInput,
   outputSchema: RacksDeleteOutput,
 }));
 // Input Schema
+export interface RacksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rackName: string;
+}
 export const RacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6570,12 +10093,24 @@ export const RacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type RacksGetInput = typeof RacksGetInput.Type;
+) as unknown as Schema.Codec<RacksGetInput>;
 
 // Output Schema
+export interface RacksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6594,8 +10129,7 @@ export const RacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RacksGetOutput = typeof RacksGetOutput.Type;
+}) as unknown as Schema.Codec<RacksGetOutput>;
 
 // The operation
 /**
@@ -6611,6 +10145,10 @@ export const RacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RacksGetOutput,
 }));
 // Input Schema
+export interface RackSkusGetInput {
+  subscriptionId: string;
+  rackSkuName: string;
+}
 export const RackSkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   rackSkuName: Schema.String.pipe(T.PathParam()),
@@ -6618,12 +10156,24 @@ export const RackSkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus/{rackSkuName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type RackSkusGetInput = typeof RackSkusGetInput.Type;
+) as unknown as Schema.Codec<RackSkusGetInput>;
 
 // Output Schema
+export interface RackSkusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RackSkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6642,8 +10192,7 @@ export const RackSkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RackSkusGetOutput = typeof RackSkusGetOutput.Type;
+}) as unknown as Schema.Codec<RackSkusGetOutput>;
 
 // The operation
 /**
@@ -6658,6 +10207,9 @@ export const RackSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RackSkusGetOutput,
 }));
 // Input Schema
+export interface RackSkusListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const RackSkusListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6665,13 +10217,27 @@ export const RackSkusListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type RackSkusListBySubscriptionInput =
-  typeof RackSkusListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RackSkusListBySubscriptionInput>;
 
 // Output Schema
+export interface RackSkusListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RackSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6706,9 +10272,7 @@ export const RackSkusListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RackSkusListBySubscriptionOutput =
-  typeof RackSkusListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RackSkusListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6724,21 +10288,43 @@ export const RackSkusListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RacksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const RacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type RacksListByResourceGroupInput =
-  typeof RacksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RacksListByResourceGroupInput>;
 
 // Output Schema
+export interface RacksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6773,9 +10359,7 @@ export const RacksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RacksListByResourceGroupOutput =
-  typeof RacksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RacksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6784,6 +10368,8 @@ export type RacksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6792,20 +10378,41 @@ export const RacksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RacksListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const RacksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/racks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type RacksListBySubscriptionInput =
-  typeof RacksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RacksListBySubscriptionInput>;
 
 // Output Schema
+export interface RacksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RacksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6840,9 +10447,7 @@ export const RacksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RacksListBySubscriptionOutput =
-  typeof RacksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RacksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6850,6 +10455,8 @@ export type RacksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const RacksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6858,6 +10465,13 @@ export const RacksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RacksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rackName: string;
+  properties?: { rackLocation?: string; rackSerialNumber?: string };
+  tags?: Record<string, string>;
+}
 export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6873,12 +10487,24 @@ export const RacksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks/{rackName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type RacksUpdateInput = typeof RacksUpdateInput.Type;
+) as unknown as Schema.Codec<RacksUpdateInput>;
 
 // Output Schema
+export interface RacksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RacksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6897,8 +10523,7 @@ export const RacksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RacksUpdateOutput = typeof RacksUpdateOutput.Type;
+}) as unknown as Schema.Codec<RacksUpdateOutput>;
 
 // The operation
 /**
@@ -6908,12 +10533,68 @@ export type RacksUpdateOutput = typeof RacksUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param rackName - The name of the rack.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const RacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: RacksUpdateInput,
   outputSchema: RacksUpdateOutput,
 }));
 // Input Schema
+export interface StorageAppliancesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+  properties: {
+    rackId: string;
+    storageApplianceSkuId: string;
+    rackSlot: number;
+    serialNumber: string;
+    administratorCredentials: {
+      password: string | Redacted.Redacted<string>;
+      username: string;
+    };
+    caCertificate?: { hash?: string; value?: string };
+    capacity?: number;
+    capacityUsed?: number;
+    clusterId?: string;
+    detailedStatus?: "Available" | "Degraded" | "Error" | "Provisioning";
+    detailedStatusMessage?: string;
+    expansionShelves?: { model?: string; version?: string }[];
+    managementIpv4Address?: string;
+    manufacturer?: string;
+    model?: string;
+    monitoringConfigurationStatus?: {
+      logLevel?: "Default" | "Nexus";
+      metricsLevel?: "Default" | "Nexus";
+    };
+    remoteVendorManagementFeature?: "Supported" | "Unsupported";
+    remoteVendorManagementStatus?: "Enabled" | "Disabled" | "Unsupported";
+    secretRotationStatus?: {
+      expirePeriodDays?: number;
+      lastRotationTime?: string;
+      rotationPeriodDays?: number;
+      secretArchiveReference?: {
+        keyVaultId?: string;
+        keyVaultUri?: string;
+        secretName?: string;
+        secretVersion?: string;
+      };
+      secretType?: string;
+    }[];
+    version?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const StorageAppliancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6941,9 +10622,23 @@ export const StorageAppliancesCreateOrUpdateInput =
         Schema.Literals(["Available", "Degraded", "Error", "Provisioning"]),
       ),
       detailedStatusMessage: Schema.optional(Schema.String),
+      expansionShelves: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            model: Schema.optional(Schema.String),
+            version: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
       managementIpv4Address: Schema.optional(Schema.String),
       manufacturer: Schema.optional(Schema.String),
       model: Schema.optional(Schema.String),
+      monitoringConfigurationStatus: Schema.optional(
+        Schema.Struct({
+          logLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+          metricsLevel: Schema.optional(Schema.Literals(["Default", "Nexus"])),
+        }),
+      ),
       remoteVendorManagementFeature: Schema.optional(
         Schema.Literals(["Supported", "Unsupported"]),
       ),
@@ -6990,13 +10685,24 @@ export const StorageAppliancesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesCreateOrUpdateInput =
-  typeof StorageAppliancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageAppliancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAppliancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7016,9 +10722,7 @@ export const StorageAppliancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAppliancesCreateOrUpdateOutput =
-  typeof StorageAppliancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAppliancesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7028,6 +10732,8 @@ export type StorageAppliancesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7035,6 +10741,11 @@ export const StorageAppliancesCreateOrUpdate =
     outputSchema: StorageAppliancesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StorageAppliancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+}
 export const StorageAppliancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7044,17 +10755,14 @@ export const StorageAppliancesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesDeleteInput =
-  typeof StorageAppliancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesDeleteInput>;
 
 // Output Schema
+export type StorageAppliancesDeleteOutput = void;
 export const StorageAppliancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAppliancesDeleteOutput =
-  typeof StorageAppliancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDeleteOutput>;
 
 // The operation
 /**
@@ -7064,6 +10772,8 @@ export type StorageAppliancesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7072,6 +10782,11 @@ export const StorageAppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAppliancesDisableRemoteVendorManagementInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+}
 export const StorageAppliancesDisableRemoteVendorManagementInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7081,17 +10796,14 @@ export const StorageAppliancesDisableRemoteVendorManagementInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/disableRemoteVendorManagement",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesDisableRemoteVendorManagementInput =
-  typeof StorageAppliancesDisableRemoteVendorManagementInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesDisableRemoteVendorManagementInput>;
 
 // Output Schema
+export type StorageAppliancesDisableRemoteVendorManagementOutput = void;
 export const StorageAppliancesDisableRemoteVendorManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAppliancesDisableRemoteVendorManagementOutput =
-  typeof StorageAppliancesDisableRemoteVendorManagementOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesDisableRemoteVendorManagementOutput>;
 
 // The operation
 /**
@@ -7108,6 +10820,12 @@ export const StorageAppliancesDisableRemoteVendorManagement =
     outputSchema: StorageAppliancesDisableRemoteVendorManagementOutput,
   }));
 // Input Schema
+export interface StorageAppliancesEnableRemoteVendorManagementInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+  supportEndpoints?: string[];
+}
 export const StorageAppliancesEnableRemoteVendorManagementInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7118,17 +10836,14 @@ export const StorageAppliancesEnableRemoteVendorManagementInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/enableRemoteVendorManagement",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesEnableRemoteVendorManagementInput =
-  typeof StorageAppliancesEnableRemoteVendorManagementInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesEnableRemoteVendorManagementInput>;
 
 // Output Schema
+export type StorageAppliancesEnableRemoteVendorManagementOutput = void;
 export const StorageAppliancesEnableRemoteVendorManagementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAppliancesEnableRemoteVendorManagementOutput =
-  typeof StorageAppliancesEnableRemoteVendorManagementOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesEnableRemoteVendorManagementOutput>;
 
 // The operation
 /**
@@ -7145,6 +10860,11 @@ export const StorageAppliancesEnableRemoteVendorManagement =
     outputSchema: StorageAppliancesEnableRemoteVendorManagementOutput,
   }));
 // Input Schema
+export interface StorageAppliancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+}
 export const StorageAppliancesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7154,12 +10874,24 @@ export const StorageAppliancesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesGetInput = typeof StorageAppliancesGetInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesGetInput>;
 
 // Output Schema
+export interface StorageAppliancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAppliancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7179,8 +10911,7 @@ export const StorageAppliancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAppliancesGetOutput = typeof StorageAppliancesGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageAppliancesGetOutput>;
 
 // The operation
 /**
@@ -7198,21 +10929,43 @@ export const StorageAppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAppliancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const StorageAppliancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesListByResourceGroupInput =
-  typeof StorageAppliancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesListByResourceGroupInput>;
 
 // Output Schema
+export interface StorageAppliancesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAppliancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7247,9 +11000,7 @@ export const StorageAppliancesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAppliancesListByResourceGroupOutput =
-  typeof StorageAppliancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<StorageAppliancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -7258,6 +11009,8 @@ export type StorageAppliancesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7265,20 +11018,41 @@ export const StorageAppliancesListByResourceGroup =
     outputSchema: StorageAppliancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface StorageAppliancesListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const StorageAppliancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/storageAppliances",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesListBySubscriptionInput =
-  typeof StorageAppliancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesListBySubscriptionInput>;
 
 // Output Schema
+export interface StorageAppliancesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAppliancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7313,9 +11087,7 @@ export const StorageAppliancesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAppliancesListBySubscriptionOutput =
-  typeof StorageAppliancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<StorageAppliancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -7323,6 +11095,8 @@ export type StorageAppliancesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const StorageAppliancesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7330,6 +11104,13 @@ export const StorageAppliancesListBySubscription =
     outputSchema: StorageAppliancesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface StorageAppliancesRunReadCommandsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+  commands: { arguments?: string[]; command: string }[];
+  limitTimeSeconds: number;
+}
 export const StorageAppliancesRunReadCommandsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7346,17 +11127,14 @@ export const StorageAppliancesRunReadCommandsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesRunReadCommandsInput =
-  typeof StorageAppliancesRunReadCommandsInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesRunReadCommandsInput>;
 
 // Output Schema
+export type StorageAppliancesRunReadCommandsOutput = void;
 export const StorageAppliancesRunReadCommandsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAppliancesRunReadCommandsOutput =
-  typeof StorageAppliancesRunReadCommandsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAppliancesRunReadCommandsOutput>;
 
 // The operation
 /**
@@ -7373,6 +11151,13 @@ export const StorageAppliancesRunReadCommands =
     outputSchema: StorageAppliancesRunReadCommandsOutput,
   }));
 // Input Schema
+export interface StorageAppliancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageApplianceName: string;
+  properties?: { serialNumber?: string };
+  tags?: Record<string, string>;
+}
 export const StorageAppliancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7388,13 +11173,24 @@ export const StorageAppliancesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type StorageAppliancesUpdateInput =
-  typeof StorageAppliancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageAppliancesUpdateInput>;
 
 // Output Schema
+export interface StorageAppliancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAppliancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7414,9 +11210,7 @@ export const StorageAppliancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAppliancesUpdateOutput =
-  typeof StorageAppliancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAppliancesUpdateOutput>;
 
 // The operation
 /**
@@ -7426,6 +11220,8 @@ export type StorageAppliancesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param storageApplianceName - The name of the storage appliance.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const StorageAppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7434,6 +11230,33 @@ export const StorageAppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TrunkedNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trunkedNetworkName: string;
+  properties: {
+    hybridAksPluginType?: "DPDK" | "SRIOV" | "OSDevice";
+    interfaceName?: string;
+    isolationDomainIds: string[];
+    vlans: number[];
+    associatedResourceIds?: string[];
+    clusterId?: string;
+    detailedStatus?: "Error" | "Available" | "Provisioning";
+    detailedStatusMessage?: string;
+    hybridAksClustersAssociatedIds?: string[];
+    virtualMachinesAssociatedIds?: string[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Accepted";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const TrunkedNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7479,13 +11302,24 @@ export const TrunkedNetworksCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksCreateOrUpdateInput =
-  typeof TrunkedNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface TrunkedNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrunkedNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7505,9 +11339,7 @@ export const TrunkedNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrunkedNetworksCreateOrUpdateOutput =
-  typeof TrunkedNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TrunkedNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7517,6 +11349,8 @@ export type TrunkedNetworksCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7524,6 +11358,11 @@ export const TrunkedNetworksCreateOrUpdate =
     outputSchema: TrunkedNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TrunkedNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trunkedNetworkName: string;
+}
 export const TrunkedNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7533,16 +11372,14 @@ export const TrunkedNetworksDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksDeleteInput = typeof TrunkedNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksDeleteInput>;
 
 // Output Schema
+export type TrunkedNetworksDeleteOutput = void;
 export const TrunkedNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TrunkedNetworksDeleteOutput =
-  typeof TrunkedNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrunkedNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -7552,6 +11389,8 @@ export type TrunkedNetworksDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7560,6 +11399,11 @@ export const TrunkedNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TrunkedNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trunkedNetworkName: string;
+}
 export const TrunkedNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7569,12 +11413,24 @@ export const TrunkedNetworksGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksGetInput = typeof TrunkedNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksGetInput>;
 
 // Output Schema
+export interface TrunkedNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrunkedNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7594,8 +11450,7 @@ export const TrunkedNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrunkedNetworksGetOutput = typeof TrunkedNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<TrunkedNetworksGetOutput>;
 
 // The operation
 /**
@@ -7611,21 +11466,43 @@ export const TrunkedNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TrunkedNetworksGetOutput,
 }));
 // Input Schema
+export interface TrunkedNetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const TrunkedNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksListByResourceGroupInput =
-  typeof TrunkedNetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface TrunkedNetworksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TrunkedNetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7660,9 +11537,7 @@ export const TrunkedNetworksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TrunkedNetworksListByResourceGroupOutput =
-  typeof TrunkedNetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<TrunkedNetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -7671,6 +11546,8 @@ export type TrunkedNetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7678,20 +11555,41 @@ export const TrunkedNetworksListByResourceGroup =
     outputSchema: TrunkedNetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface TrunkedNetworksListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const TrunkedNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/trunkedNetworks",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksListBySubscriptionInput =
-  typeof TrunkedNetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface TrunkedNetworksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TrunkedNetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7726,9 +11624,7 @@ export const TrunkedNetworksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TrunkedNetworksListBySubscriptionOutput =
-  typeof TrunkedNetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TrunkedNetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -7736,6 +11632,8 @@ export type TrunkedNetworksListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const TrunkedNetworksListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7743,6 +11641,12 @@ export const TrunkedNetworksListBySubscription =
     outputSchema: TrunkedNetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface TrunkedNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trunkedNetworkName: string;
+  tags?: Record<string, string>;
+}
 export const TrunkedNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7753,12 +11657,24 @@ export const TrunkedNetworksUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks/{trunkedNetworkName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type TrunkedNetworksUpdateInput = typeof TrunkedNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<TrunkedNetworksUpdateInput>;
 
 // Output Schema
+export interface TrunkedNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrunkedNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7778,9 +11694,7 @@ export const TrunkedNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrunkedNetworksUpdateOutput =
-  typeof TrunkedNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TrunkedNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -7790,6 +11704,8 @@ export type TrunkedNetworksUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param trunkedNetworkName - The name of the trunked network.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const TrunkedNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7798,6 +11714,13 @@ export const TrunkedNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesAssignRelayInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  machineId: string;
+  relayType?: "Platform" | "Public";
+}
 export const VirtualMachinesAssignRelayInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7809,17 +11732,14 @@ export const VirtualMachinesAssignRelayInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/assignRelay",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesAssignRelayInput =
-  typeof VirtualMachinesAssignRelayInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesAssignRelayInput>;
 
 // Output Schema
+export type VirtualMachinesAssignRelayOutput = void;
 export const VirtualMachinesAssignRelayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesAssignRelayOutput =
-  typeof VirtualMachinesAssignRelayOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesAssignRelayOutput>;
 
 // The operation
 /**
@@ -7837,6 +11757,105 @@ export const VirtualMachinesAssignRelay = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  properties: {
+    adminUsername: string;
+    bootMethod?: "BIOS" | "UEFI";
+    cloudServicesNetworkAttachment: {
+      attachedNetworkId: string;
+      defaultGateway?: "True" | "False";
+      ipAllocationMethod: "Dynamic" | "Static" | "Disabled";
+      ipv4Address?: string;
+      ipv6Address?: string;
+      macAddress?: string;
+      networkAttachmentName?: string;
+    };
+    cpuCores: number;
+    isolateEmulatorThread?: "False" | "True";
+    memorySizeGB: number;
+    networkAttachments?: {
+      attachedNetworkId: string;
+      defaultGateway?: "True" | "False";
+      ipAllocationMethod: "Dynamic" | "Static" | "Disabled";
+      ipv4Address?: string;
+      ipv6Address?: string;
+      macAddress?: string;
+      networkAttachmentName?: string;
+    }[];
+    networkData?: string;
+    networkDataContent?: string;
+    placementHints?: {
+      hintType: "Affinity" | "AntiAffinity";
+      resourceId: string;
+      schedulingExecution: "Hard" | "Soft";
+      scope: "Machine" | "Rack";
+    }[];
+    sshPublicKeys?: { keyData: string }[];
+    storageProfile: {
+      osDisk: {
+        createOption?: "Ephemeral" | "Persistent";
+        deleteOption?: "Delete";
+        diskSizeGB: number;
+      };
+      volumeAttachments?: string[];
+    };
+    userData?: string;
+    userDataContent?: string;
+    virtioInterface?: "Modern" | "Transitional";
+    vmDeviceModel?: "T1" | "T2" | "T3";
+    vmImage: string;
+    vmImageRepositoryCredentials?: {
+      password: string | Redacted.Redacted<string>;
+      registryUrl: string;
+      username: string;
+    };
+    availabilityZone?: string;
+    bareMetalMachineId?: string;
+    clusterId?: string;
+    consoleExtendedLocation?: {
+      name: string;
+      type: "EdgeZone" | "CustomLocation";
+    };
+    detailedStatus?:
+      | "Available"
+      | "Error"
+      | "Provisioning"
+      | "Running"
+      | "Scheduling"
+      | "Stopped"
+      | "Terminating"
+      | "Unknown";
+    detailedStatusMessage?: string;
+    powerState?: "Off" | "On" | "Unknown";
+    volumes?: string[];
+    provisioningState?:
+      | "Accepted"
+      | "Canceled"
+      | "Failed"
+      | "Provisioning"
+      | "Succeeded";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7985,13 +12004,24 @@ export const VirtualMachinesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesCreateOrUpdateInput =
-  typeof VirtualMachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8011,9 +12041,7 @@ export const VirtualMachinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesCreateOrUpdateOutput =
-  typeof VirtualMachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8023,6 +12051,8 @@ export type VirtualMachinesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8030,6 +12060,11 @@ export const VirtualMachinesCreateOrUpdate =
     outputSchema: VirtualMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8039,16 +12074,14 @@ export const VirtualMachinesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesDeleteInput>;
 
 // Output Schema
+export type VirtualMachinesDeleteOutput = void;
 export const VirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesDeleteOutput =
-  typeof VirtualMachinesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -8058,6 +12091,8 @@ export type VirtualMachinesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8066,6 +12101,11 @@ export const VirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8075,12 +12115,24 @@ export const VirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesGetInput = typeof VirtualMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesGetInput>;
 
 // Output Schema
+export interface VirtualMachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8100,8 +12152,7 @@ export const VirtualMachinesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesGetOutput = typeof VirtualMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesGetOutput>;
 
 // The operation
 /**
@@ -8117,21 +12168,43 @@ export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualMachinesGetOutput,
 }));
 // Input Schema
+export interface VirtualMachinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesListByResourceGroupInput =
-  typeof VirtualMachinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListByResourceGroupInput>;
 
 // Output Schema
+export interface VirtualMachinesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8166,9 +12239,7 @@ export const VirtualMachinesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesListByResourceGroupOutput =
-  typeof VirtualMachinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -8177,6 +12248,8 @@ export type VirtualMachinesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8184,20 +12257,41 @@ export const VirtualMachinesListByResourceGroup =
     outputSchema: VirtualMachinesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VirtualMachinesListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VirtualMachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/virtualMachines",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesListBySubscriptionInput =
-  typeof VirtualMachinesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesListBySubscriptionInput>;
 
 // Output Schema
+export interface VirtualMachinesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8232,9 +12326,7 @@ export const VirtualMachinesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachinesListBySubscriptionOutput =
-  typeof VirtualMachinesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -8242,6 +12334,8 @@ export type VirtualMachinesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VirtualMachinesListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8249,6 +12343,12 @@ export const VirtualMachinesListBySubscription =
     outputSchema: VirtualMachinesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VirtualMachinesPowerOffInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  skipShutdown?: "True" | "False";
+}
 export const VirtualMachinesPowerOffInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8259,17 +12359,14 @@ export const VirtualMachinesPowerOffInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/powerOff",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesPowerOffInput =
-  typeof VirtualMachinesPowerOffInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesPowerOffInput>;
 
 // Output Schema
+export type VirtualMachinesPowerOffOutput = void;
 export const VirtualMachinesPowerOffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesPowerOffOutput =
-  typeof VirtualMachinesPowerOffOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesPowerOffOutput>;
 
 // The operation
 /**
@@ -8287,6 +12384,11 @@ export const VirtualMachinesPowerOff = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesReimageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesReimageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8296,17 +12398,14 @@ export const VirtualMachinesReimageInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/reimage",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesReimageInput =
-  typeof VirtualMachinesReimageInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesReimageInput>;
 
 // Output Schema
+export type VirtualMachinesReimageOutput = void;
 export const VirtualMachinesReimageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesReimageOutput =
-  typeof VirtualMachinesReimageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesReimageOutput>;
 
 // The operation
 /**
@@ -8324,6 +12423,11 @@ export const VirtualMachinesReimage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesRestartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8333,17 +12437,14 @@ export const VirtualMachinesRestartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/restart",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesRestartInput =
-  typeof VirtualMachinesRestartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesRestartInput>;
 
 // Output Schema
+export type VirtualMachinesRestartOutput = void;
 export const VirtualMachinesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesRestartOutput =
-  typeof VirtualMachinesRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestartOutput>;
 
 // The operation
 /**
@@ -8361,6 +12462,11 @@ export const VirtualMachinesRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+}
 export const VirtualMachinesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8370,15 +12476,14 @@ export const VirtualMachinesStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/start",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesStartInput>;
 
 // Output Schema
+export type VirtualMachinesStartOutput = void;
 export const VirtualMachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachinesStartOutput = typeof VirtualMachinesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesStartOutput>;
 
 // The operation
 /**
@@ -8396,6 +12501,32 @@ export const VirtualMachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    vmImageRepositoryCredentials?: {
+      password?: string | Redacted.Redacted<string>;
+      registryUrl?: string;
+      username?: string;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const VirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8426,9 +12557,9 @@ export const VirtualMachinesUpdateInput =
       Schema.Struct({
         vmImageRepositoryCredentials: Schema.optional(
           Schema.Struct({
-            password: SensitiveString,
-            registryUrl: Schema.String,
-            username: Schema.String,
+            password: Schema.optional(SensitiveString),
+            registryUrl: Schema.optional(Schema.String),
+            username: Schema.optional(Schema.String),
           }),
         ),
       }),
@@ -8438,12 +12569,24 @@ export const VirtualMachinesUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachinesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8463,9 +12606,7 @@ export const VirtualMachinesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachinesUpdateOutput =
-  typeof VirtualMachinesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachinesUpdateOutput>;
 
 // The operation
 /**
@@ -8475,6 +12616,8 @@ export type VirtualMachinesUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param virtualMachineName - The name of the virtual machine.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8483,6 +12626,31 @@ export const VirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  volumeName: string;
+  properties: {
+    sizeMiB: number;
+    storageApplianceId?: string;
+    allocatedSizeMiB?: number;
+    assignedStorageApplianceId?: string;
+    attachedTo?: string[];
+    detailedStatus?: "Active" | "Error" | "Provisioning";
+    detailedStatusMessage?: string;
+    serialNumber?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Canceled"
+      | "Failed"
+      | "Provisioning"
+      | "Succeeded";
+  };
+  etag?: string;
+  extendedLocation: { name: string; type: "EdgeZone" | "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VolumesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8492,6 +12660,7 @@ export const VolumesCreateOrUpdateInput =
       sizeMiB: Schema.Number,
       storageApplianceId: Schema.optional(Schema.String),
       allocatedSizeMiB: Schema.optional(Schema.Number),
+      assignedStorageApplianceId: Schema.optional(Schema.String),
       attachedTo: Schema.optional(Schema.Array(Schema.String)),
       detailedStatus: Schema.optional(
         Schema.Literals(["Active", "Error", "Provisioning"]),
@@ -8519,12 +12688,24 @@ export const VolumesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VolumesCreateOrUpdateInput = typeof VolumesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VolumesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VolumesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8544,9 +12725,7 @@ export const VolumesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VolumesCreateOrUpdateOutput =
-  typeof VolumesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VolumesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8556,6 +12735,8 @@ export type VolumesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8564,6 +12745,11 @@ export const VolumesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  volumeName: string;
+}
 export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8572,14 +12758,14 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
+) as unknown as Schema.Codec<VolumesDeleteInput>;
 
 // Output Schema
-export const VolumesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
+export type VolumesDeleteOutput = void;
+export const VolumesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VolumesDeleteOutput>;
 
 // The operation
 /**
@@ -8589,12 +12775,19 @@ export type VolumesDeleteOutput = typeof VolumesDeleteOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VolumesDeleteInput,
   outputSchema: VolumesDeleteOutput,
 }));
 // Input Schema
+export interface VolumesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  volumeName: string;
+}
 export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8603,12 +12796,24 @@ export const VolumesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type VolumesGetInput = typeof VolumesGetInput.Type;
+) as unknown as Schema.Codec<VolumesGetInput>;
 
 // Output Schema
+export interface VolumesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8627,8 +12832,7 @@ export const VolumesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesGetOutput = typeof VolumesGetOutput.Type;
+}) as unknown as Schema.Codec<VolumesGetOutput>;
 
 // The operation
 /**
@@ -8644,21 +12848,43 @@ export const VolumesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VolumesGetOutput,
 }));
 // Input Schema
+export interface VolumesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VolumesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VolumesListByResourceGroupInput =
-  typeof VolumesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VolumesListByResourceGroupInput>;
 
 // Output Schema
+export interface VolumesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VolumesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8693,9 +12919,7 @@ export const VolumesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VolumesListByResourceGroupOutput =
-  typeof VolumesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VolumesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -8704,6 +12928,8 @@ export type VolumesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8712,20 +12938,41 @@ export const VolumesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumesListBySubscriptionInput {
+  subscriptionId: string;
+  $top?: number;
+  $skipToken?: string;
+}
 export const VolumesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    $top: Schema.optional(Schema.Number),
+    $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/volumes",
-      apiVersion: "2025-09-01",
+      apiVersion: "2026-07-01",
     }),
-  );
-export type VolumesListBySubscriptionInput =
-  typeof VolumesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VolumesListBySubscriptionInput>;
 
 // Output Schema
+export interface VolumesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VolumesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8760,9 +13007,7 @@ export const VolumesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VolumesListBySubscriptionOutput =
-  typeof VolumesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VolumesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -8770,6 +13015,8 @@ export type VolumesListBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param $top - The maximum number of resources to return from the operation. Example: '$top=10'.
+ * @param $skipToken - The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.
  */
 export const VolumesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8778,6 +13025,12 @@ export const VolumesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VolumesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  volumeName: string;
+  tags?: Record<string, string>;
+}
 export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8787,12 +13040,24 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes/{volumeName}",
-    apiVersion: "2025-09-01",
+    apiVersion: "2026-07-01",
   }),
-);
-export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;
+) as unknown as Schema.Codec<VolumesUpdateInput>;
 
 // Output Schema
+export interface VolumesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8811,8 +13076,7 @@ export const VolumesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VolumesUpdateOutput = typeof VolumesUpdateOutput.Type;
+}) as unknown as Schema.Codec<VolumesUpdateOutput>;
 
 // The operation
 /**
@@ -8822,6 +13086,8 @@ export type VolumesUpdateOutput = typeof VolumesUpdateOutput.Type;
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param volumeName - The name of the volume.
+ * @param If-Match - The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+ * @param If-None-Match - Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.
  */
 export const VolumesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: VolumesUpdateInput,

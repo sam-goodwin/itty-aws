@@ -3,13 +3,101 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCurrentUserInfoInput {}
 export const GetCurrentUserInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/users/me" }),
-  );
-export type GetCurrentUserInfoInput = typeof GetCurrentUserInfoInput.Type;
+  ) as unknown as Schema.Codec<GetCurrentUserInfoInput>;
 
 // Output Schema
+export interface GetCurrentUserInfoOutput {
+  active_seconds_limit: number;
+  billing_account?: {
+    state: "UNKNOWN" | "active" | "suspended" | "deactivated" | "deleted";
+    payment_source: {
+      type: string;
+      card?: {
+        last4: string;
+        brand?:
+          | "amex"
+          | "diners"
+          | "discover"
+          | "jcb"
+          | "mastercard"
+          | "unionpay"
+          | "unknown"
+          | "visa";
+        exp_month?: number;
+        exp_year?: number;
+      };
+    };
+    subscription_type:
+      | "UNKNOWN"
+      | "direct_sales"
+      | "direct_sales_v3"
+      | "aws_marketplace"
+      | "free_v2"
+      | "free_v3"
+      | "launch"
+      | "launch_v3"
+      | "scale"
+      | "scale_v3"
+      | "business"
+      | "vercel_pg_legacy";
+    payment_method:
+      | "UNKNOWN"
+      | "none"
+      | "stripe"
+      | "direct_payment"
+      | "aws_mp"
+      | "azure_mp"
+      | "vercel_mp"
+      | "staff"
+      | "trial"
+      | "sponsorship"
+      | "shared_payment_token";
+    quota_reset_at_last: string;
+    name: string;
+    email: string;
+    address_city: string;
+    address_country: string;
+    address_country_name?: string;
+    address_line1: string;
+    address_line2: string;
+    address_postal_code: string;
+    address_state: string;
+    orb_portal_url?: string;
+    tax_id?: string;
+    tax_id_type?: string;
+    plan_details?: { name: string; version?: { major: number; minor: number } };
+    spending_limit_cents?: number | null;
+  };
+  auth_accounts: {
+    email: string;
+    image: string;
+    login: string;
+    name: string;
+    provider:
+      | "github"
+      | "google"
+      | "hasura"
+      | "microsoft"
+      | "microsoftv2"
+      | "vercelmp"
+      | "keycloak";
+  }[];
+  email: string;
+  id: string;
+  image: string;
+  login: string;
+  name: string;
+  last_name: string;
+  projects_limit: number;
+  branches_limit: number;
+  max_autoscaling_limit: number;
+  compute_seconds_limit?: number;
+  plan: string;
+}
 export const GetCurrentUserInfoOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active_seconds_limit: Schema.Number,
@@ -126,14 +214,14 @@ export const GetCurrentUserInfoOutput =
     max_autoscaling_limit: Schema.Number,
     compute_seconds_limit: Schema.optional(Schema.Number),
     plan: Schema.String,
-  });
-export type GetCurrentUserInfoOutput = typeof GetCurrentUserInfoOutput.Type;
+  }) as unknown as Schema.Codec<GetCurrentUserInfoOutput>;
 
 // The operation
 /**
  * Retrieve current user details
  *
- * Retrieves information about the current Neon user account.
+ * Retrieves information about the currently authenticated Neon user,
+ * including account identifiers, plan details, and linked auth accounts.
  */
 export const getCurrentUserInfo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GetCurrentUserInfoInput,

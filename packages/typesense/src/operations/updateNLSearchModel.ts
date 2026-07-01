@@ -4,18 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateNLSearchModelInput {
+  modelId: string;
+}
 export const UpdateNLSearchModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "PUT", path: "/nl_search_models/{modelId}" }));
-export type UpdateNLSearchModelInput = typeof UpdateNLSearchModelInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/nl_search_models/{modelId}" }),
+  ) as unknown as Schema.Codec<UpdateNLSearchModelInput>;
 
 // Output Schema
+export interface UpdateNLSearchModelOutput {
+  id: string;
+}
 export const UpdateNLSearchModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type UpdateNLSearchModelOutput = typeof UpdateNLSearchModelOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNLSearchModelOutput>;
 
 // The operation
 /**

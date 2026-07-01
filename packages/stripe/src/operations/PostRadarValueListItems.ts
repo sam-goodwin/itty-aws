@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostRadarValueListItemsInput {
+  expand?: string[];
+  value: string;
+  value_list: string;
+}
 export const PostRadarValueListItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -14,11 +19,18 @@ export const PostRadarValueListItemsInput =
       path: "/v1/radar/value_list_items",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostRadarValueListItemsInput =
-  typeof PostRadarValueListItemsInput.Type;
+  ) as unknown as Schema.Codec<PostRadarValueListItemsInput>;
 
 // Output Schema
+export interface PostRadarValueListItemsOutput {
+  created: number;
+  created_by: string;
+  id: string;
+  livemode: boolean;
+  object: "radar.value_list_item";
+  value: string;
+  value_list: string;
+}
 export const PostRadarValueListItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -28,9 +40,7 @@ export const PostRadarValueListItemsOutput =
     object: Schema.Literals(["radar.value_list_item"]),
     value: Schema.String,
     value_list: Schema.String,
-  });
-export type PostRadarValueListItemsOutput =
-  typeof PostRadarValueListItemsOutput.Type;
+  }) as unknown as Schema.Codec<PostRadarValueListItemsOutput>;
 
 // The operation
 /**

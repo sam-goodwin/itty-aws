@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateHostnameConfigInput {
+  ref: string;
+  custom_hostname: string;
+}
 export const V1UpdateHostnameConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,36 @@ export const V1UpdateHostnameConfigInput =
       method: "POST",
       path: "/v1/projects/{ref}/custom-hostname/initialize",
     }),
-  );
-export type V1UpdateHostnameConfigInput =
-  typeof V1UpdateHostnameConfigInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateHostnameConfigInput>;
 
 // Output Schema
+export interface V1UpdateHostnameConfigOutput {
+  status:
+    | "1_not_started"
+    | "2_initiated"
+    | "3_challenge_verified"
+    | "4_origin_setup_completed"
+    | "5_services_reconfigured";
+  custom_hostname: string;
+  data: {
+    success: boolean;
+    errors: unknown[];
+    messages: unknown[];
+    result: {
+      id: string;
+      hostname: string;
+      ssl: {
+        status: string;
+        validation_records: { txt_name: string; txt_value: string }[];
+        validation_errors?: { message: string }[];
+      };
+      ownership_verification: { type: string; name: string; value: string };
+      custom_origin_server: string;
+      verification_errors?: string[];
+      status: string;
+    };
+  };
+}
 export const V1UpdateHostnameConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.Literals([
@@ -61,9 +90,7 @@ export const V1UpdateHostnameConfigOutput =
         status: Schema.String,
       }),
     }),
-  });
-export type V1UpdateHostnameConfigOutput =
-  typeof V1UpdateHostnameConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateHostnameConfigOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupAlertConfigInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DeleteGroupAlertConfigInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
     }),
-  );
-export type DeleteGroupAlertConfigInput =
-  typeof DeleteGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupAlertConfigInput>;
 
 // Output Schema
+export type DeleteGroupAlertConfigOutput = void;
 export const DeleteGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupAlertConfigOutput =
-  typeof DeleteGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAlertConfigOutput>;
 
 // The operation
 /**
  * Remove One Alert Configuration from One Project
  *
- * Removes one alert configuration from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+ * Removes one alert configuration from the specified project. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

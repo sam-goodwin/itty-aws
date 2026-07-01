@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface FlagTargetsControllerCreateTargetInput {
+  resourceId: string;
+  slug: string;
+}
 export const FlagTargetsControllerCreateTargetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const FlagTargetsControllerCreateTargetInput =
       method: "POST",
       path: "/feature-flags/{slug}/targets/{resourceId}",
     }),
-  );
-export type FlagTargetsControllerCreateTargetInput =
-  typeof FlagTargetsControllerCreateTargetInput.Type;
+  ) as unknown as Schema.Codec<FlagTargetsControllerCreateTargetInput>;
 
 // Output Schema
+export type FlagTargetsControllerCreateTargetOutput = void;
 export const FlagTargetsControllerCreateTargetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FlagTargetsControllerCreateTargetOutput =
-  typeof FlagTargetsControllerCreateTargetOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FlagTargetsControllerCreateTargetOutput>;
 
 // The operation
 /**

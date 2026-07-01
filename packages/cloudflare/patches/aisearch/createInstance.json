@@ -164,6 +164,104 @@
       },
       "modified_at": {
         "optional": true
+      },
+      "source_params.web_crawler.crawl_options": {
+        "optional": true,
+        "definition": {
+          "kind": "object",
+          "properties": [
+            {
+              "name": "depth",
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              },
+              "required": false
+            },
+            {
+              "name": "include_external_links",
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              },
+              "required": false
+            },
+            {
+              "name": "include_subdomains",
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              },
+              "required": false
+            },
+            {
+              "name": "max_age",
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              },
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": {
+                "kind": "union",
+                "values": [
+                  {
+                    "kind": "literal",
+                    "value": "all"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "sitemaps"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "links"
+                  }
+                ]
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "source_params.web_crawler.store_options": {
+        "optional": true,
+        "definition": {
+          "kind": "object",
+          "properties": [
+            {
+              "name": "storage_id",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "r2_jurisdiction",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "storage_type",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "source_params.web_crawler.parse_type": {
+        "addValues": [
+          "feed-rss"
+        ]
       }
     }
   },
@@ -176,6 +274,104 @@
       "syncInterval": {
         "type": "number",
         "optional": true
+      },
+      "sourceParams.web_crawler.crawl_options": {
+        "optional": true,
+        "definition": {
+          "kind": "object",
+          "properties": [
+            {
+              "name": "depth",
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              },
+              "required": false
+            },
+            {
+              "name": "include_external_links",
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              },
+              "required": false
+            },
+            {
+              "name": "include_subdomains",
+              "type": {
+                "kind": "primitive",
+                "value": "boolean"
+              },
+              "required": false
+            },
+            {
+              "name": "max_age",
+              "type": {
+                "kind": "primitive",
+                "value": "number"
+              },
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": {
+                "kind": "union",
+                "values": [
+                  {
+                    "kind": "literal",
+                    "value": "all"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "sitemaps"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "links"
+                  }
+                ]
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "sourceParams.web_crawler.store_options": {
+        "optional": true,
+        "definition": {
+          "kind": "object",
+          "properties": [
+            {
+              "name": "storage_id",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "r2_jurisdiction",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": false
+            },
+            {
+              "name": "storage_type",
+              "type": {
+                "kind": "primitive",
+                "value": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "sourceParams.web_crawler.parse_type": {
+        "addValues": [
+          "feed-rss"
+        ]
       }
     }
   }

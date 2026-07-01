@@ -78,6 +78,7 @@
               "schema": {
                 "type": "array",
                 "items": {
+                  "description": "A single query in the batch. Exactly one of aplRequest or\nmplRequest must be set; the populated field determines whether\nthe query is executed as APL or MPL (metrics).",
                   "type": "object",
                   "required": [
                     "queryId"
@@ -85,6 +86,9 @@
                   "properties": {
                     "aplRequest": {
                       "$ref": "#/components/schemas/APLRequestWithOptions"
+                    },
+                    "mplRequest": {
+                      "$ref": "#/components/schemas/MetricsRequestWithOptions"
                     },
                     "queryId": {
                       "description": "Unique identifier for this query in the batch",
@@ -99,7 +103,7 @@
         },
         "responses": {
           "200": {
-            "description": "SSE stream of query results",
+            "description": "SSE stream of query results. Each event carries a `kind` field\n(\"apl\" or \"mpl\") indicating how the `data` payload for that\nqueryId should be interpreted.",
             "headers": {
               "Content-Type": {
                 "schema": {
@@ -1120,16 +1124,8 @@
             "description": "Maximum number of groups to automatically bin into",
             "type": "integer"
           },
-          "queryEdgeDeployment": {
-            "description": "The edge deployment the query should be run in. If not specified, the query will be run in the default edge deployment of the org. Takes precedence over queryRegion.",
-            "type": "string"
-          },
           "queryOptions": {
             "$ref": "#/components/schemas/QueryOptions"
-          },
-          "queryRegion": {
-            "description": "The region the query should be run in. If not specified, the query will be run in the default region of the org.",
-            "type": "string"
           },
           "startTime": {
             "description": "start and end time for the query, these must be specified as RFC3339 strings\nor using relative time expressions (e.g. now-1h, now-1d, now-1w, etc)",

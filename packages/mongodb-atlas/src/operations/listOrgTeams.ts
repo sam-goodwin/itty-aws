@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgTeamsInput {
+  orgId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  includeCount?: boolean;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListOrgTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -11,18 +19,20 @@ export const ListOrgTeamsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeCount: Schema.optional(Schema.Boolean),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/teams" }));
-export type ListOrgTeamsInput = typeof ListOrgTeamsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/teams" }),
+) as unknown as Schema.Codec<ListOrgTeamsInput>;
 
 // Output Schema
-export const ListOrgTeamsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgTeamsOutput = typeof ListOrgTeamsOutput.Type;
+export type ListOrgTeamsOutput = void;
+export const ListOrgTeamsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgTeamsOutput>;
 
 // The operation
 /**
  * Return All Teams in One Organization
  *
- * Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+ * Returns all teams that belong to the specified organization. Teams enable you to grant project access roles to MongoDB Cloud users. MongoDB Cloud only returns teams for which you have access.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param itemsPerPage - Number of items that the response returns per page.

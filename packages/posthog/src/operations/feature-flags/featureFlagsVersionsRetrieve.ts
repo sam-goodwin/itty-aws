@@ -9,6 +9,11 @@ import {
 } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsVersionsRetrieveInput {
+  id: number;
+  project_id: string;
+  version_number: number;
+}
 export const FeatureFlagsVersionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -19,11 +24,32 @@ export const FeatureFlagsVersionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/{id}/versions/{version_number}/",
     }),
-  );
-export type FeatureFlagsVersionsRetrieveInput =
-  typeof FeatureFlagsVersionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsVersionsRetrieveInput>;
 
 // Output Schema
+export interface FeatureFlagsVersionsRetrieveOutput {
+  id?: number;
+  key?: string;
+  name?: string;
+  filters?: Record<string, unknown>;
+  active?: boolean;
+  deleted?: boolean;
+  version?: number | null;
+  rollback_conditions?: unknown;
+  performed_rollback?: boolean | null;
+  ensure_experience_continuity?: boolean | null;
+  has_enriched_analytics?: boolean | null;
+  is_remote_configuration?: boolean | null;
+  has_encrypted_payloads?: boolean | null;
+  evaluation_runtime?: "server" | "client" | "all" | "" | null;
+  bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+  last_called_at?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  is_historical?: boolean;
+  version_timestamp?: string | null;
+  modified_by?: number | null;
+}
 export const FeatureFlagsVersionsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -33,7 +59,7 @@ export const FeatureFlagsVersionsRetrieveOutput =
     active: Schema.optional(Schema.Boolean),
     deleted: Schema.optional(Schema.Boolean),
     version: Schema.optional(Schema.NullOr(Schema.Number)),
-    rollback_conditions: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    rollback_conditions: Schema.optional(Schema.Unknown),
     performed_rollback: Schema.optional(Schema.NullOr(Schema.Boolean)),
     ensure_experience_continuity: Schema.optional(
       Schema.NullOr(Schema.Boolean),
@@ -41,17 +67,29 @@ export const FeatureFlagsVersionsRetrieveOutput =
     has_enriched_analytics: Schema.optional(Schema.NullOr(Schema.Boolean)),
     is_remote_configuration: Schema.optional(Schema.NullOr(Schema.Boolean)),
     has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    evaluation_runtime: Schema.optional(Schema.Unknown),
-    bucketing_identifier: Schema.optional(Schema.Unknown),
+    evaluation_runtime: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["server", "client", "all"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    bucketing_identifier: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["distinct_id", "device_id"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
     last_called_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     is_historical: Schema.optional(Schema.Boolean),
     version_timestamp: Schema.optional(Schema.NullOr(Schema.String)),
     modified_by: Schema.optional(Schema.NullOr(Schema.Number)),
-  });
-export type FeatureFlagsVersionsRetrieveOutput =
-  typeof FeatureFlagsVersionsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsVersionsRetrieveOutput>;
 
 // The operation
 /**

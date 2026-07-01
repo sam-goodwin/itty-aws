@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAlertsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const LogsAlertsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
@@ -14,12 +18,12 @@ export const LogsAlertsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/api/projects/{project_id}/logs/alerts/{id}/",
   }),
-);
-export type LogsAlertsDestroyInput = typeof LogsAlertsDestroyInput.Type;
+) as unknown as Schema.Codec<LogsAlertsDestroyInput>;
 
 // Output Schema
-export const LogsAlertsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LogsAlertsDestroyOutput = typeof LogsAlertsDestroyOutput.Type;
+export type LogsAlertsDestroyOutput = void;
+export const LogsAlertsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogsAlertsDestroyOutput>;
 
 // The operation
 /**

@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UserInterviewsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const UserInterviewsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,13 +14,43 @@ export const UserInterviewsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/user_interviews/{id}/",
+      path: "/api/projects/{project_id}/user_interviews/{id}/",
     }),
-  );
-export type UserInterviewsRetrieveInput =
-  typeof UserInterviewsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewsRetrieveInput>;
 
 // Output Schema
+export interface UserInterviewsRetrieveOutput {
+  id?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  interviewee_emails?: string[];
+  interviewee_identifier?: string;
+  topic?: string | null;
+  transcript?: string;
+  summary?: string;
+  classifications?: ("abandoned" | "off-topic")[];
+  audio?: string;
+}
 export const UserInterviewsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -34,18 +67,37 @@ export const UserInterviewsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     created_at: Schema.optional(Schema.String),
     interviewee_emails: Schema.optional(Schema.Array(Schema.String)),
+    interviewee_identifier: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.NullOr(Schema.String)),
     transcript: Schema.optional(Schema.String),
     summary: Schema.optional(Schema.String),
+    classifications: Schema.optional(
+      Schema.Array(Schema.Literals(["abandoned", "off-topic"])),
+    ),
     audio: Schema.optional(Schema.String),
-  });
-export type UserInterviewsRetrieveOutput =
-  typeof UserInterviewsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UserInterviewsRetrieveOutput>;
 
 // The operation
 /**
@@ -57,6 +109,5 @@ export const userInterviewsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserInterviewsRetrieveInput,
     outputSchema: UserInterviewsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListTrafficBudgetsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  page?: number;
+  per_page?: number;
+  period?: string;
+  created_at?: string;
+  fingerprint?: string;
+}
 export const ListTrafficBudgetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -19,10 +29,46 @@ export const ListTrafficBudgetsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets",
     }),
-  );
-export type ListTrafficBudgetsInput = typeof ListTrafficBudgetsInput.Type;
+  ) as unknown as Schema.Codec<ListTrafficBudgetsInput>;
 
 // Output Schema
+export interface ListTrafficBudgetsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    mode: "enforce" | "warn" | "off";
+    capacity?: number | null;
+    rate?: number | null;
+    burst?: number | null;
+    concurrency?: number | null;
+    warning_threshold?: number | null;
+    actor: { id: string; display_name: string; avatar_url: string };
+    rules: {
+      id: string;
+      kind: "match" | "each";
+      tags: {
+        key_id: string;
+        key: string;
+        value: string;
+        source: "sql" | "system";
+      }[];
+      fingerprint?: string | null;
+      keyspace?: string | null;
+      actor: { id: string; display_name: string; avatar_url: string };
+      syntax_highlighted_sql: string;
+      created_at: string;
+      updated_at: string;
+    }[];
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const ListTrafficBudgetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -49,7 +95,7 @@ export const ListTrafficBudgetsOutput =
         rules: Schema.Array(
           Schema.Struct({
             id: Schema.String,
-            kind: Schema.Literals(["match"]),
+            kind: Schema.Literals(["match", "each"]),
             tags: Schema.Array(
               Schema.Struct({
                 key_id: Schema.String,
@@ -74,8 +120,7 @@ export const ListTrafficBudgetsOutput =
         updated_at: Schema.String,
       }),
     ),
-  });
-export type ListTrafficBudgetsOutput = typeof ListTrafficBudgetsOutput.Type;
+  }) as unknown as Schema.Codec<ListTrafficBudgetsOutput>;
 
 // The operation
 /**

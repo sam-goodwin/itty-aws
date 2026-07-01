@@ -1,9 +1,20 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HealthIssuesResolveCreateInput {
+  id: string;
+  project_id: string;
+  kind?: string;
+  severity?: "critical" | "warning" | "info";
+  status?: "active" | "resolved";
+  dismissed?: boolean;
+  payload?: Record<string, unknown>;
+  created_at?: string;
+  updated_at?: string;
+  resolved_at?: string | null;
+}
 export const HealthIssuesResolveCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +23,29 @@ export const HealthIssuesResolveCreateInput =
     severity: Schema.optional(Schema.Literals(["critical", "warning", "info"])),
     status: Schema.optional(Schema.Literals(["active", "resolved"])),
     dismissed: Schema.optional(Schema.Boolean),
-    payload: Schema.optional(Schema.Unknown),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/health_issues/{id}/resolve/",
+      path: "/api/projects/{project_id}/health_issues/{id}/resolve/",
     }),
-  );
-export type HealthIssuesResolveCreateInput =
-  typeof HealthIssuesResolveCreateInput.Type;
+  ) as unknown as Schema.Codec<HealthIssuesResolveCreateInput>;
 
 // Output Schema
+export interface HealthIssuesResolveCreateOutput {
+  id?: string;
+  kind?: string;
+  severity?: "critical" | "warning" | "info";
+  status?: "active" | "resolved";
+  dismissed?: boolean;
+  payload?: Record<string, unknown>;
+  created_at?: string;
+  updated_at?: string;
+  resolved_at?: string | null;
+}
 export const HealthIssuesResolveCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -33,13 +53,11 @@ export const HealthIssuesResolveCreateOutput =
     severity: Schema.optional(Schema.Literals(["critical", "warning", "info"])),
     status: Schema.optional(Schema.Literals(["active", "resolved"])),
     dismissed: Schema.optional(Schema.Boolean),
-    payload: Schema.optional(Schema.Unknown),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type HealthIssuesResolveCreateOutput =
-  typeof HealthIssuesResolveCreateOutput.Type;
+  }) as unknown as Schema.Codec<HealthIssuesResolveCreateOutput>;
 
 // The operation
 /**
@@ -51,6 +69,5 @@ export const healthIssuesResolveCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: HealthIssuesResolveCreateInput,
     outputSchema: HealthIssuesResolveCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

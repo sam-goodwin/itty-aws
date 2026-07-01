@@ -3,12 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrgApiKeysInput {
+  org_id: string;
+}
 export const ListOrgApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/organizations/{org_id}/api_keys" }));
-export type ListOrgApiKeysInput = typeof ListOrgApiKeysInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/organizations/{org_id}/api_keys" }),
+) as unknown as Schema.Codec<ListOrgApiKeysInput>;
 
 // Output Schema
+export type ListOrgApiKeysOutput = {
+  id: number;
+  name: string;
+  created_at: string;
+  created_by: { id: string; name: string; image: string };
+  last_used_at?: string | null;
+  last_used_from_addr: string;
+  project_id?: string;
+}[];
 export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
@@ -23,8 +36,7 @@ export const ListOrgApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     last_used_from_addr: Schema.String,
     project_id: Schema.optional(Schema.String),
   }),
-);
-export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
+) as unknown as Schema.Codec<ListOrgApiKeysOutput>;
 
 // The operation
 /**
@@ -33,7 +45,7 @@ export type ListOrgApiKeysOutput = typeof ListOrgApiKeysOutput.Type;
  * Retrieves the API keys for the specified organization.
  * The response does not include API key tokens. A token is only provided when creating an API key.
  * API keys can also be managed in the Neon Console.
- * For more information, see [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * For more information, see [Manage API keys](https://neon.com/docs/manage/api-keys/).
  *
  * @param org_id - The Neon organization ID
  */

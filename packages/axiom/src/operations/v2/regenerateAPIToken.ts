@@ -4,6 +4,53 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface RegenerateAPITokenInput {
+  id: string;
+  existingTokenExpiresAt: string;
+  newToken?: {
+    datasetCapabilities?: Record<
+      string,
+      {
+        data?: ReadonlyArray<"delete">;
+        ingest?: ReadonlyArray<"create">;
+        query?: ReadonlyArray<"read">;
+        share?: ReadonlyArray<"create" | "read" | "delete">;
+        starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+        trim?: ReadonlyArray<"update">;
+        vacuum?: ReadonlyArray<"update">;
+        virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      }
+    >;
+    description?: string;
+    expiresAt?: string | null;
+    name: string;
+    orgCapabilities?: {
+      annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      auditLog?: ReadonlyArray<"read">;
+      billing?: ReadonlyArray<"read" | "update">;
+      dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+      users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    };
+    viewCapabilities?: Record<
+      string,
+      {
+        query?: ReadonlyArray<"read">;
+        share?: ReadonlyArray<"create" | "read" | "delete">;
+      }
+    >;
+  };
+  newTokenExpiresAt?: string | null;
+}
 export const RegenerateAPITokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -127,10 +174,56 @@ export const RegenerateAPITokenInput =
       }),
     ),
     newTokenExpiresAt: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/v2/tokens/{id}/regenerate" }));
-export type RegenerateAPITokenInput = typeof RegenerateAPITokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/tokens/{id}/regenerate" }),
+  ) as unknown as Schema.Codec<RegenerateAPITokenInput>;
 
 // Output Schema
+export interface RegenerateAPITokenOutput {
+  datasetCapabilities: Record<
+    string,
+    {
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    }
+  >;
+  description?: string;
+  expiresAt?: string | null;
+  id: string;
+  name: string;
+  orgCapabilities: {
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+  };
+  samlAuthenticated?: boolean;
+  viewCapabilities?: Record<
+    string,
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
+  >;
+  token?: string;
+}
 export const RegenerateAPITokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     datasetCapabilities: Schema.Record(
@@ -214,8 +307,7 @@ export const RegenerateAPITokenOutput =
       ),
     ),
     token: Schema.optional(Schema.String),
-  });
-export type RegenerateAPITokenOutput = typeof RegenerateAPITokenOutput.Type;
+  }) as unknown as Schema.Codec<RegenerateAPITokenOutput>;
 
 // The operation
 /**

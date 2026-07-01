@@ -2,23 +2,111 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface SsoControllerTokenInput {
+  client_id: string;
+  client_secret: string;
+  code: string;
+  grant_type: string;
+}
 export const SsoControllerTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client_id: Schema.String,
     client_secret: Schema.String,
     code: Schema.String,
     grant_type: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/sso/token" }));
-export type SsoControllerTokenInput = typeof SsoControllerTokenInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/sso/token" }),
+  ) as unknown as Schema.Codec<SsoControllerTokenInput>;
 
 // Output Schema
+export interface SsoControllerTokenOutput {
+  token_type?: string;
+  access_token?: Redacted.Redacted<string>;
+  expires_in?: number;
+  profile?: {
+    object?: string;
+    id?: string;
+    organization_id?: string | null;
+    connection_id?: string;
+    connection_type?:
+      | "Pending"
+      | "ADFSSAML"
+      | "AdpOidc"
+      | "AppleOAuth"
+      | "Auth0Migration"
+      | "Auth0SAML"
+      | "AzureSAML"
+      | "BitbucketOAuth"
+      | "CasSAML"
+      | "ClassLinkSAML"
+      | "CleverOIDC"
+      | "CloudflareSAML"
+      | "CyberArkSAML"
+      | "DiscordOAuth"
+      | "DuoSAML"
+      | "EntraIdOIDC"
+      | "GenericOIDC"
+      | "GenericSAML"
+      | "GitHubOAuth"
+      | "GitLabOAuth"
+      | "GoogleOAuth"
+      | "GoogleOIDC"
+      | "GoogleSAML"
+      | "IntuitOAuth"
+      | "JumpCloudSAML"
+      | "KeycloakSAML"
+      | "LastPassSAML"
+      | "LinkedInOAuth"
+      | "LoginGovOidc"
+      | "MagicLink"
+      | "MicrosoftOAuth"
+      | "MiniOrangeSAML"
+      | "NetIqSAML"
+      | "OktaOIDC"
+      | "OktaSAML"
+      | "OneLoginSAML"
+      | "OracleSAML"
+      | "PingFederateSAML"
+      | "PingOneSAML"
+      | "RipplingSAML"
+      | "SalesforceSAML"
+      | "ShibbolethGenericSAML"
+      | "ShibbolethSAML"
+      | "SimpleSamlPhpSAML"
+      | "SalesforceOAuth"
+      | "SlackOAuth"
+      | "TestIdp"
+      | "VercelMarketplaceOAuth"
+      | "VercelOAuth"
+      | "VMwareSAML"
+      | "XeroOAuth";
+    idp_id?: string;
+    email?: string;
+    first_name?: string | null;
+    last_name?: string | null;
+    name?: string | null;
+    role?: { slug?: string } | null;
+    roles?: { slug?: string }[] | null;
+    groups?: string[];
+    custom_attributes?: Record<string, unknown>;
+    raw_attributes?: Record<string, unknown>;
+  };
+  oauth_tokens?: {
+    provider: string;
+    refresh_token: Redacted.Redacted<string>;
+    access_token: Redacted.Redacted<string>;
+    expires_at: number;
+    scopes: string[];
+  };
+}
 export const SsoControllerTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
-    access_token: Schema.optional(SensitiveString),
+    access_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.optional(Schema.Number),
     profile: Schema.optional(
       Schema.Struct({
@@ -85,8 +173,23 @@ export const SsoControllerTokenOutput =
         email: Schema.optional(Schema.String),
         first_name: Schema.optional(Schema.NullOr(Schema.String)),
         last_name: Schema.optional(Schema.NullOr(Schema.String)),
-        role: Schema.optional(Schema.Unknown),
-        roles: Schema.optional(Schema.Unknown),
+        name: Schema.optional(Schema.NullOr(Schema.String)),
+        role: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              slug: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        roles: Schema.optional(
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                slug: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        ),
         groups: Schema.optional(Schema.Array(Schema.String)),
         custom_attributes: Schema.optional(
           Schema.Record(Schema.String, Schema.Unknown),
@@ -99,14 +202,13 @@ export const SsoControllerTokenOutput =
     oauth_tokens: Schema.optional(
       Schema.Struct({
         provider: Schema.String,
-        refresh_token: SensitiveString,
-        access_token: SensitiveString,
+        refresh_token: SensitiveOutputString,
+        access_token: SensitiveOutputString,
         expires_at: Schema.Number,
         scopes: Schema.Array(Schema.String),
       }),
     ),
-  });
-export type SsoControllerTokenOutput = typeof SsoControllerTokenOutput.Type;
+  }) as unknown as Schema.Codec<SsoControllerTokenOutput>;
 
 // The operation
 /**

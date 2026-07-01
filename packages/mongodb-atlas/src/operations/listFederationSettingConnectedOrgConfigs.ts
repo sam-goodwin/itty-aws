@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListFederationSettingConnectedOrgConfigsInput {
+  federationSettingsId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const ListFederationSettingConnectedOrgConfigsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const ListFederationSettingConnectedOrgConfigsInput =
       method: "GET",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs",
     }),
-  );
-export type ListFederationSettingConnectedOrgConfigsInput =
-  typeof ListFederationSettingConnectedOrgConfigsInput.Type;
+  ) as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigsInput>;
 
 // Output Schema
+export type ListFederationSettingConnectedOrgConfigsOutput = void;
 export const ListFederationSettingConnectedOrgConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListFederationSettingConnectedOrgConfigsOutput =
-  typeof ListFederationSettingConnectedOrgConfigsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigsOutput>;
 
 // The operation
 /**

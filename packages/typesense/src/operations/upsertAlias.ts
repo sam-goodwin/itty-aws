@@ -4,18 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpsertAliasInput {
+  aliasName: string;
+  collection_name: string;
+}
 export const UpsertAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
   collection_name: Schema.String,
-}).pipe(T.Http({ method: "PUT", path: "/aliases/{aliasName}" }));
-export type UpsertAliasInput = typeof UpsertAliasInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/aliases/{aliasName}" }),
+) as unknown as Schema.Codec<UpsertAliasInput>;
 
 // Output Schema
+export interface UpsertAliasOutput {
+  name: string;
+  collection_name: string;
+}
 export const UpsertAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
-});
-export type UpsertAliasOutput = typeof UpsertAliasOutput.Type;
+}) as unknown as Schema.Codec<UpsertAliasOutput>;
 
 // The operation
 /**

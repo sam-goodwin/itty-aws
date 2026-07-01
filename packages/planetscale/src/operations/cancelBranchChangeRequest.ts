@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CancelBranchChangeRequestInput {
+  organization: string;
+  database: string;
+  branch: string;
+}
 export const CancelBranchChangeRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CancelBranchChangeRequestInput =
       method: "DELETE",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
     }),
-  );
-export type CancelBranchChangeRequestInput =
-  typeof CancelBranchChangeRequestInput.Type;
+  ) as unknown as Schema.Codec<CancelBranchChangeRequestInput>;
 
 // Output Schema
+export type CancelBranchChangeRequestOutput = void;
 export const CancelBranchChangeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CancelBranchChangeRequestOutput =
-  typeof CancelBranchChangeRequestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBranchChangeRequestOutput>;
 
 // The operation
 /**

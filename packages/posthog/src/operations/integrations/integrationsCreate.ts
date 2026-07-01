@@ -4,44 +4,120 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsCreateInput {
+  project_id: string;
+  id?: number;
+  kind?:
+    | "anthropic"
+    | "apns"
+    | "aws-s3"
+    | "azure-blob"
+    | "bing-ads"
+    | "clickup"
+    | "customerio-app"
+    | "customerio-track"
+    | "customerio-webhook"
+    | "databricks"
+    | "email"
+    | "firebase"
+    | "github"
+    | "gitlab"
+    | "google-ads"
+    | "google-analytics"
+    | "google-cloud-service-account"
+    | "google-cloud-storage"
+    | "google-pubsub"
+    | "google-search-console"
+    | "google-sheets"
+    | "hubspot"
+    | "intercom"
+    | "jira"
+    | "linear"
+    | "linkedin-ads"
+    | "meta-ads"
+    | "pinterest-ads"
+    | "postgresql"
+    | "reddit-ads"
+    | "s3-compatible"
+    | "salesforce"
+    | "slack"
+    | "slack-posthog-code"
+    | "snapchat"
+    | "stripe"
+    | "tiktok-ads"
+    | "twilio"
+    | "vercel";
+  config?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  errors?: string;
+  display_name?: string;
+}
 export const IntegrationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.Number),
     kind: Schema.optional(
       Schema.Literals([
-        "slack",
-        "slack-posthog-code",
-        "salesforce",
-        "hubspot",
-        "google-pubsub",
-        "google-cloud-storage",
-        "google-ads",
-        "google-sheets",
-        "google-cloud-service-account",
-        "snapchat",
-        "linkedin-ads",
-        "reddit-ads",
-        "tiktok-ads",
+        "anthropic",
+        "apns",
+        "aws-s3",
+        "azure-blob",
         "bing-ads",
-        "intercom",
+        "clickup",
+        "customerio-app",
+        "customerio-track",
+        "customerio-webhook",
+        "databricks",
         "email",
-        "linear",
+        "firebase",
         "github",
         "gitlab",
-        "meta-ads",
-        "twilio",
-        "clickup",
-        "vercel",
-        "databricks",
-        "azure-blob",
-        "firebase",
+        "google-ads",
+        "google-analytics",
+        "google-cloud-service-account",
+        "google-cloud-storage",
+        "google-pubsub",
+        "google-search-console",
+        "google-sheets",
+        "hubspot",
+        "intercom",
         "jira",
+        "linear",
+        "linkedin-ads",
+        "meta-ads",
         "pinterest-ads",
+        "postgresql",
+        "reddit-ads",
+        "s3-compatible",
+        "salesforce",
+        "slack",
+        "slack-posthog-code",
+        "snapchat",
         "stripe",
-        "customerio-app",
-        "customerio-webhook",
-        "customerio-track",
+        "tiktok-ads",
+        "twilio",
+        "vercel",
       ]),
     ),
     config: Schema.optional(Schema.Unknown),
@@ -59,7 +135,23 @@ export const IntegrationsCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -70,47 +162,121 @@ export const IntegrationsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/integrations/",
     }),
-  );
-export type IntegrationsCreateInput = typeof IntegrationsCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsCreateInput>;
 
 // Output Schema
+export interface IntegrationsCreateOutput {
+  id?: number;
+  kind?:
+    | "anthropic"
+    | "apns"
+    | "aws-s3"
+    | "azure-blob"
+    | "bing-ads"
+    | "clickup"
+    | "customerio-app"
+    | "customerio-track"
+    | "customerio-webhook"
+    | "databricks"
+    | "email"
+    | "firebase"
+    | "github"
+    | "gitlab"
+    | "google-ads"
+    | "google-analytics"
+    | "google-cloud-service-account"
+    | "google-cloud-storage"
+    | "google-pubsub"
+    | "google-search-console"
+    | "google-sheets"
+    | "hubspot"
+    | "intercom"
+    | "jira"
+    | "linear"
+    | "linkedin-ads"
+    | "meta-ads"
+    | "pinterest-ads"
+    | "postgresql"
+    | "reddit-ads"
+    | "s3-compatible"
+    | "salesforce"
+    | "slack"
+    | "slack-posthog-code"
+    | "snapchat"
+    | "stripe"
+    | "tiktok-ads"
+    | "twilio"
+    | "vercel";
+  config?: unknown;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  errors?: string;
+  display_name?: string;
+}
 export const IntegrationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     kind: Schema.optional(
       Schema.Literals([
-        "slack",
-        "slack-posthog-code",
-        "salesforce",
-        "hubspot",
-        "google-pubsub",
-        "google-cloud-storage",
-        "google-ads",
-        "google-sheets",
-        "google-cloud-service-account",
-        "snapchat",
-        "linkedin-ads",
-        "reddit-ads",
-        "tiktok-ads",
+        "anthropic",
+        "apns",
+        "aws-s3",
+        "azure-blob",
         "bing-ads",
-        "intercom",
+        "clickup",
+        "customerio-app",
+        "customerio-track",
+        "customerio-webhook",
+        "databricks",
         "email",
-        "linear",
+        "firebase",
         "github",
         "gitlab",
-        "meta-ads",
-        "twilio",
-        "clickup",
-        "vercel",
-        "databricks",
-        "azure-blob",
-        "firebase",
+        "google-ads",
+        "google-analytics",
+        "google-cloud-service-account",
+        "google-cloud-storage",
+        "google-pubsub",
+        "google-search-console",
+        "google-sheets",
+        "hubspot",
+        "intercom",
         "jira",
+        "linear",
+        "linkedin-ads",
+        "meta-ads",
         "pinterest-ads",
+        "postgresql",
+        "reddit-ads",
+        "s3-compatible",
+        "salesforce",
+        "slack",
+        "slack-posthog-code",
+        "snapchat",
         "stripe",
-        "customerio-app",
-        "customerio-webhook",
-        "customerio-track",
+        "tiktok-ads",
+        "twilio",
+        "vercel",
       ]),
     ),
     config: Schema.optional(Schema.Unknown),
@@ -128,14 +294,29 @@ export const IntegrationsCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     errors: Schema.optional(Schema.String),
     display_name: Schema.optional(Schema.String),
-  });
-export type IntegrationsCreateOutput = typeof IntegrationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsCreateOutput>;
 
 // The operation
 /**

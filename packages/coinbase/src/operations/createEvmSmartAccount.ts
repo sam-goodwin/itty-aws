@@ -3,14 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateEvmSmartAccountInput {
+  owners: string[];
+  name?: string;
+}
 export const CreateEvmSmartAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     owners: Schema.Array(Schema.String),
     name: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/evm/smart-accounts" }));
-export type CreateEvmSmartAccountInput = typeof CreateEvmSmartAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/evm/smart-accounts" }),
+  ) as unknown as Schema.Codec<CreateEvmSmartAccountInput>;
 
 // Output Schema
+export interface CreateEvmSmartAccountOutput {
+  address: string;
+  owners: string[];
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const CreateEvmSmartAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String,
@@ -19,13 +32,11 @@ export const CreateEvmSmartAccountOutput =
     policies: Schema.optional(Schema.Array(Schema.String)),
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
-  });
-export type CreateEvmSmartAccountOutput =
-  typeof CreateEvmSmartAccountOutput.Type;
+  }) as unknown as Schema.Codec<CreateEvmSmartAccountOutput>;
 
 // The operation
 /**
- * Create a Smart Account
+ * Create Smart Account
  *
  * Creates a new Smart Account.
  *

@@ -3,16 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEvmSmartAccountByNameInput {
+  name: string;
+}
 export const GetEvmSmartAccountByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/evm/smart-accounts/by-name/{name}" }),
-  );
-export type GetEvmSmartAccountByNameInput =
-  typeof GetEvmSmartAccountByNameInput.Type;
+  ) as unknown as Schema.Codec<GetEvmSmartAccountByNameInput>;
 
 // Output Schema
+export interface GetEvmSmartAccountByNameOutput {
+  address: string;
+  owners: string[];
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const GetEvmSmartAccountByNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String,
@@ -21,13 +30,11 @@ export const GetEvmSmartAccountByNameOutput =
     policies: Schema.optional(Schema.Array(Schema.String)),
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
-  });
-export type GetEvmSmartAccountByNameOutput =
-  typeof GetEvmSmartAccountByNameOutput.Type;
+  }) as unknown as Schema.Codec<GetEvmSmartAccountByNameOutput>;
 
 // The operation
 /**
- * Get a Smart Account by name
+ * Get Smart Account by name
  *
  * Gets a Smart Account by its name.
  *

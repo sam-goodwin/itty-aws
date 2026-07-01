@@ -4,15 +4,30 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface IngestToDatasetInput {
+  "dataset-id": string;
+  "timestamp-field"?: string;
+  "timestamp-format"?: string;
+  "csv-delimiter"?: string;
+}
 export const IngestToDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   "dataset-id": Schema.String.pipe(T.PathParam()),
   "timestamp-field": Schema.optional(Schema.String),
   "timestamp-format": Schema.optional(Schema.String),
   "csv-delimiter": Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v1/datasets/{dataset-id}/ingest" }));
-export type IngestToDatasetInput = typeof IngestToDatasetInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/datasets/{dataset-id}/ingest" }),
+) as unknown as Schema.Codec<IngestToDatasetInput>;
 
 // Output Schema
+export interface IngestToDatasetOutput {
+  blocksCreated: number;
+  failed: number;
+  failures?: ReadonlyArray<{ error: string; timestamp: string }>;
+  ingested: number;
+  processedBytes: number;
+  walLength: number;
+}
 export const IngestToDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   blocksCreated: Schema.Number,
   failed: Schema.Number,
@@ -27,8 +42,7 @@ export const IngestToDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ingested: Schema.Number,
   processedBytes: Schema.Number,
   walLength: Schema.Number,
-});
-export type IngestToDatasetOutput = typeof IngestToDatasetOutput.Type;
+}) as unknown as Schema.Codec<IngestToDatasetOutput>;
 
 // The operation
 /**

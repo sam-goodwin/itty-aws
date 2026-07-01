@@ -3,6 +3,56 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface QueryAplInput {
+  format: "legacy" | "tabular" | "tabular-rows";
+  nocache?: boolean;
+  saveAsKind?: string;
+  id?: string;
+  "streaming-duration"?: string;
+  "apl-source"?: string;
+  "apl-source-id"?: string;
+  totals?: boolean;
+  apl: string;
+  cursor?: string;
+  defaultLimit?: number;
+  defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
+  endTime?: string;
+  includeCursor?: boolean;
+  includeCursorField?: boolean;
+  libraries?: ReadonlyArray<string>;
+  maxBinAutoGroups?: number;
+  queryOptions?: {
+    against?: string;
+    againstStart?: string;
+    againstTimestamp?: string;
+    aggChartOpts?: string;
+    caseSensitive?: string;
+    containsTimeFilter?: string;
+    datasets?: string;
+    displayNull?: string;
+    editorContent?: string;
+    endColumn?: string;
+    endLineNumber?: string;
+    endTime?: string;
+    integrationsFilter?: string;
+    nanosecondPrecision?: string;
+    openIntervals?: string;
+    overlayCharts?: string;
+    queryObject?: string;
+    quickRange?: string;
+    resolution?: string;
+    resultsHistogram?: string;
+    selection?: string;
+    shownColumns?: string;
+    startColumn?: string;
+    startLineNumber?: string;
+    startTime?: string;
+    timeSeriesVariant?: string;
+    timeSeriesView?: string;
+  };
+  startTime?: string;
+  variables?: Record<string, unknown>;
+}
 export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   format: Schema.Literals(["legacy", "tabular", "tabular-rows"]),
   nocache: Schema.optional(Schema.Boolean),
@@ -28,7 +78,6 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeCursorField: Schema.optional(Schema.Boolean),
   libraries: Schema.optional(Schema.Array(Schema.String)),
   maxBinAutoGroups: Schema.optional(Schema.Number),
-  queryEdgeDeployment: Schema.optional(Schema.String),
   queryOptions: Schema.optional(
     Schema.Struct({
       against: Schema.optional(Schema.String),
@@ -60,15 +109,16 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       timeSeriesView: Schema.optional(Schema.String),
     }),
   ),
-  queryRegion: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
   variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-}).pipe(T.Http({ method: "POST", path: "/v1/datasets/_apl?format=tabular" }));
-export type QueryAplInput = typeof QueryAplInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v1/datasets/_apl?format=tabular" }),
+) as unknown as Schema.Codec<QueryAplInput>;
 
 // Output Schema
-export const QueryAplOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type QueryAplOutput = typeof QueryAplOutput.Type;
+export type QueryAplOutput = unknown;
+export const QueryAplOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<QueryAplOutput>;
 
 // The operation
 /**

@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationInvitesV2Input {
+  organizationSlug: string;
+}
 export const ListOrganizationInvitesV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -11,11 +14,17 @@ export const ListOrganizationInvitesV2Input =
       method: "GET",
       path: "/v2/organizations/{organizationSlug}/invites",
     }),
-  );
-export type ListOrganizationInvitesV2Input =
-  typeof ListOrganizationInvitesV2Input.Type;
+  ) as unknown as Schema.Codec<ListOrganizationInvitesV2Input>;
 
 // Output Schema
+export interface ListOrganizationInvitesV2Output {
+  invites?: {
+    id?: number;
+    email?: string;
+    role?: "admin" | "member" | "viewer";
+    created_at?: string;
+  }[];
+}
 export const ListOrganizationInvitesV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invites: Schema.optional(
@@ -24,14 +33,11 @@ export const ListOrganizationInvitesV2Output =
           id: Schema.optional(Schema.Number),
           email: Schema.optional(Schema.String),
           role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-          token: Schema.optional(Schema.String),
           created_at: Schema.optional(Schema.String),
         }),
       ),
     ),
-  });
-export type ListOrganizationInvitesV2Output =
-  typeof ListOrganizationInvitesV2Output.Type;
+  }) as unknown as Schema.Codec<ListOrganizationInvitesV2Output>;
 
 // The operation
 /**

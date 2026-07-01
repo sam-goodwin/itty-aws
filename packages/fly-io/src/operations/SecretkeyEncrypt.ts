@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretkeyEncryptInput {
+  app_name: string;
+  secret_name: string;
+  min_version?: string;
+  associated_data?: number[];
+  plaintext?: number[];
+}
 export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
@@ -15,16 +22,17 @@ export const SecretkeyEncryptInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/secretkeys/{secret_name}/encrypt",
   }),
-);
-export type SecretkeyEncryptInput = typeof SecretkeyEncryptInput.Type;
+) as unknown as Schema.Codec<SecretkeyEncryptInput>;
 
 // Output Schema
+export interface SecretkeyEncryptOutput {
+  ciphertext?: number[];
+}
 export const SecretkeyEncryptOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ciphertext: Schema.optional(Schema.Array(Schema.Number)),
   },
-);
-export type SecretkeyEncryptOutput = typeof SecretkeyEncryptOutput.Type;
+) as unknown as Schema.Codec<SecretkeyEncryptOutput>;
 
 // The operation
 /**

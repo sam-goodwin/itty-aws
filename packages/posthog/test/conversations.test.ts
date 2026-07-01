@@ -25,13 +25,13 @@ describe("Conversations", () => {
 
     const stubBody = (overrides: {
       project_id?: string;
-      ids?: ReadonlyArray<number>;
+      ids?: number[];
       action?: "add" | "remove" | "set";
-      tags?: ReadonlyArray<string>;
-    }) => ({
+      tags?: string[];
+    }): Conversations.ConversationsTicketsBulkUpdateTagsCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       ids: overrides.ids ?? [ticketId()],
-      action: (overrides.action ?? "add") as never,
+      action: overrides.action ?? "add",
       tags: overrides.tags ?? [`distilled-tag-${testRunId}`],
     });
 
@@ -49,13 +49,13 @@ describe("Conversations", () => {
           expect(Array.isArray(result.updated)).toBe(true);
           expect(Array.isArray(result.skipped)).toBe(true);
           // The targeted ticket should appear in either updated or skipped.
-          const total = result.updated.length + result.skipped.length;
+          const total = result.updated!.length + result.skipped!.length;
           expect(total).toBeGreaterThanOrEqual(1);
-          for (const u of result.updated) {
+          for (const u of result.updated!) {
             expect(typeof u.id).toBe("number");
             expect(Array.isArray(u.tags)).toBe(true);
           }
-          for (const s of result.skipped) {
+          for (const s of result.skipped!) {
             expect(typeof s.id).toBe("number");
             expect(typeof s.reason).toBe("string");
           }
@@ -129,19 +129,17 @@ describe("Conversations", () => {
     // demands many server-set fields (id, ticket_number, created_at,
     // updated_at, message_count, slack/email metadata, person, …). PostHog
     // ignores client-set values for server fields; we pass placeholders to
-    // satisfy the schema decoder. The assignee/channel_source schemas are
-    // declared as empty Structs but accept string discriminators on the
-    // wire — passed via `as never`.
+    // satisfy the schema decoder.
     const stubBody = (overrides: {
       project_id?: string;
       distinct_id?: string;
-    }) => ({
+    }): Conversations.ConversationsTicketsCreateInput => ({
       project_id: overrides.project_id ?? getProjectId(),
       // Server-set placeholders — required by the schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
       channel_source: "widget",
-      channel_detail: {},
+      channel_detail: null,
       distinct_id:
         overrides.distinct_id ?? `distilled-conv-${testRunId}`,
       assignee: {
@@ -186,14 +184,14 @@ describe("Conversations", () => {
 
           expect(result).toBeDefined();
           expect(typeof result.id).toBe("string");
-          expect(result.id.length).toBeGreaterThan(0);
+          expect(result.id!.length).toBeGreaterThan(0);
           expect(typeof result.ticket_number).toBe("number");
           expect(typeof result.created_at).toBe("string");
           expect(typeof result.updated_at).toBe("string");
           expect(typeof result.message_count).toBe("number");
           expect(typeof result.distinct_id).toBe("string");
           expect(result.person).toBeDefined();
-          expect(typeof result.person.id).toBe("string");
+          expect(typeof result.person!.id).toBe("string");
         }),
     );
 
@@ -253,13 +251,15 @@ describe("Conversations", () => {
     //
     // Output schema is Schema.Void — successful response decodes to
     // `undefined`.
-    const createStub = (distinctId: string) => ({
+    const createStub = (
+      distinctId: string,
+    ): Conversations.ConversationsTicketsCreateInput => ({
       project_id: getProjectId(),
       // Server-set placeholders — required by the create schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
       channel_source: "widget",
-      channel_detail: {},
+      channel_detail: null,
       distinct_id: distinctId,
       assignee: {
         id: null,
@@ -302,19 +302,19 @@ describe("Conversations", () => {
             createStub(`distilled-conv-del-${testRunId}`),
           );
           expect(typeof created.id).toBe("string");
-          expect(created.id.length).toBeGreaterThan(0);
+          expect(created.id!.length).toBeGreaterThan(0);
 
           // Act: destroy it. Output schema is Schema.Void → undefined.
           const result = yield* Conversations.conversationsTicketsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           });
           expect(result).toBeUndefined();
 
           // Assert: deleting again returns NotFound.
           const followUp = yield* Conversations.conversationsTicketsDestroy({
             project_id: getProjectId(),
-            id: created.id,
+            id: created.id!,
           }).pipe(Effect.flip);
           expect(followUp._tag).toBe("NotFound");
         }),
@@ -364,20 +364,20 @@ describe("Conversations", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(0);
-        expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(5);
+        expect(Array.isArray(result.results!)).toBe(true);
+        expect(result.results!.length).toBeLessThanOrEqual(5);
 
         // Validate shape of each entry, if any are present.
-        for (const entry of result.results) {
+        for (const entry of result.results!) {
           expect(typeof entry.id).toBe("string");
-          expect(entry.id.length).toBeGreaterThan(0);
+          expect(entry.id!.length).toBeGreaterThan(0);
           expect(typeof entry.ticket_number).toBe("number");
           expect(typeof entry.distinct_id).toBe("string");
           expect(typeof entry.created_at).toBe("string");
           expect(typeof entry.updated_at).toBe("string");
           expect(typeof entry.message_count).toBe("number");
           expect(entry.person).toBeDefined();
-          expect(typeof entry.person.id).toBe("string");
+          expect(typeof entry.person!.id).toBe("string");
         }
       }));
 
@@ -392,8 +392,8 @@ describe("Conversations", () => {
 
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
-        expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(1);
+        expect(Array.isArray(result.results!)).toBe(true);
+        expect(result.results!.length).toBeLessThanOrEqual(1);
       }));
 
     test("happy path - respects sla + channel_source filters", () =>
@@ -406,7 +406,7 @@ describe("Conversations", () => {
         });
 
         expect(result).toBeDefined();
-        expect(Array.isArray(result.results)).toBe(true);
+        expect(Array.isArray(result.results!)).toBe(true);
       }));
 
     test("error - NotFound for non-existent project_id", () =>
@@ -453,13 +453,15 @@ describe("Conversations", () => {
     // PATCH input is fully optional (apart from path params), so we only
     // pass the fields under test. We clean up the created ticket via
     // conversationsTicketsDestroy in Effect.ensuring.
-    const createStub = (distinctId: string) => ({
+    const createStub = (
+      distinctId: string,
+    ): Conversations.ConversationsTicketsCreateInput => ({
       project_id: getProjectId(),
       // Server-set placeholders — required by the create schema decoder.
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
       channel_source: "widget",
-      channel_detail: {},
+      channel_detail: null,
       distinct_id: distinctId,
       assignee: {
         id: null,
@@ -510,7 +512,7 @@ describe("Conversations", () => {
           const result =
             yield* Conversations.conversationsTicketsPartialUpdate({
               project_id: getProjectId(),
-              id: created.id,
+              id: created.id!,
               email_subject: updatedSubject,
             });
 
@@ -612,7 +614,7 @@ describe("Conversations", () => {
           expect(typeof result.updated_at).toBe("string");
           expect(typeof result.message_count).toBe("number");
           expect(result.person).toBeDefined();
-          expect(typeof result.person.id).toBe("string");
+          expect(typeof result.person!.id).toBe("string");
         }),
     );
 
@@ -642,28 +644,30 @@ describe("Conversations", () => {
     );
   });
 
-  describe("conversationsTicketsSuggestReplyCreate", () => {
+  describe("conversationsTicketsReplyCreate", () => {
     const ticketUuid = () => process.env.POSTHOG_CONVERSATION_TICKET_UUID!;
 
     test.skipIf(!process.env.POSTHOG_CONVERSATION_TICKET_UUID)(
-      "happy path - returns a suggested reply for a ticket",
+      "happy path - posts a reply to a ticket",
       () =>
         Effect.gen(function* () {
           const result =
-            yield* Conversations.conversationsTicketsSuggestReplyCreate({
+            yield* Conversations.conversationsTicketsReplyCreate({
               project_id: getProjectId(),
               id: ticketUuid(),
+              message: `distilled-reply-${testRunId}`,
             });
 
           expect(result).toBeDefined();
-          expect(typeof result.suggestion).toBe("string");
+          expect(typeof result.content).toBe("string");
         }),
     );
 
     test("error - NotFound for non-existent ticket id", () =>
-      Conversations.conversationsTicketsSuggestReplyCreate({
+      Conversations.conversationsTicketsReplyCreate({
         project_id: getProjectId(),
         id: "00000000-0000-0000-0000-000000000000",
+        message: `distilled-reply-${testRunId}`,
       }).pipe(
         Effect.flip,
         Effect.tap((e) =>
@@ -674,9 +678,10 @@ describe("Conversations", () => {
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
-      Conversations.conversationsTicketsSuggestReplyCreate({
+      Conversations.conversationsTicketsReplyCreate({
         project_id: `not-a-number-${testRunId}`,
         id: "00000000-0000-0000-0000-000000000000",
+        message: `distilled-reply-${testRunId}`,
       }).pipe(
         Effect.flip,
         Effect.map((e) =>
@@ -687,9 +692,10 @@ describe("Conversations", () => {
     test.skipIf(!process.env.POSTHOG_FORBIDDEN_PROJECT_ID)(
       "error - Forbidden when project is outside key scope",
       () =>
-        Conversations.conversationsTicketsSuggestReplyCreate({
+        Conversations.conversationsTicketsReplyCreate({
           project_id: process.env.POSTHOG_FORBIDDEN_PROJECT_ID!,
           id: "00000000-0000-0000-0000-000000000000",
+          message: `distilled-reply-${testRunId}`,
         }).pipe(
           Effect.flip,
           Effect.map((e) => expect(e._tag).toBe("Forbidden")),
@@ -708,12 +714,14 @@ describe("Conversations", () => {
     // The happy path creates a real ticket to update, so it shares the
     // opt-in gate POSTHOG_RUN_CONVERSATION_CREATE_TEST. Error paths still
     // run unconditionally with zero-UUIDs and placeholder bodies.
-    const createStub = (distinctId: string) => ({
+    const createStub = (
+      distinctId: string,
+    ): Conversations.ConversationsTicketsCreateInput => ({
       project_id: getProjectId(),
       id: "00000000-0000-0000-0000-000000000000",
       ticket_number: 0,
       channel_source: "widget",
-      channel_detail: {},
+      channel_detail: null,
       distinct_id: distinctId,
       assignee: {
         id: null,
@@ -752,12 +760,12 @@ describe("Conversations", () => {
       project_id: string,
       distinctId: string,
       overrides: { email_subject?: string | null } = {},
-    ) => ({
+    ): Conversations.ConversationsTicketsUpdateInput => ({
       project_id,
       id,
       ticket_number: 0,
-      channel_source: "widget" as never,
-      channel_detail: {},
+      channel_source: "widget",
+      channel_detail: null,
       distinct_id: distinctId,
       assignee: {
         id: null,
@@ -807,7 +815,7 @@ describe("Conversations", () => {
 
           // Act: PUT a replacement body that updates email_subject.
           const result = yield* Conversations.conversationsTicketsUpdate(
-            putStub(created.id, getProjectId(), distinctId, {
+            putStub(created.id!, getProjectId(), distinctId, {
               email_subject: updatedSubject,
             }),
           );
@@ -821,7 +829,7 @@ describe("Conversations", () => {
           expect(typeof result.updated_at).toBe("string");
           expect(typeof result.message_count).toBe("number");
           expect(result.person).toBeDefined();
-          expect(typeof result.person.id).toBe("string");
+          expect(typeof result.person!.id).toBe("string");
         }).pipe(
           Effect.ensuring(
             Effect.suspend(() =>
@@ -922,13 +930,13 @@ describe("Conversations", () => {
         expect(result).toBeDefined();
         expect(typeof result.id).toBe("string");
         expect(typeof result.short_id).toBe("string");
-        expect(result.short_id.length).toBeGreaterThan(0);
+        expect(result.short_id!.length).toBeGreaterThan(0);
         expect(result.name).toBe(name);
         expect(typeof result.created_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -1018,7 +1026,7 @@ describe("Conversations", () => {
         // Act: delete it.
         yield* Conversations.conversationsViewsDestroy({
           project_id: getProjectId(),
-          short_id: created.short_id,
+          short_id: created.short_id!,
         });
 
         // Mark cleanup as already done so the ensuring block is a no-op.
@@ -1027,7 +1035,7 @@ describe("Conversations", () => {
         // Assert: subsequent destroy of the same short_id surfaces NotFound.
         const err = yield* Conversations.conversationsViewsDestroy({
           project_id: getProjectId(),
-          short_id: created.short_id,
+          short_id: created.short_id!,
         }).pipe(Effect.flip);
         expect(err._tag).toBe("NotFound");
       }).pipe(
@@ -1110,19 +1118,19 @@ describe("Conversations", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(1);
-        expect(Array.isArray(result.results)).toBe(true);
-        const found = result.results.find((v) => v.short_id === created.short_id);
+        expect(Array.isArray(result.results!)).toBe(true);
+        const found = result.results!.find((v) => v.short_id === created.short_id);
         expect(found).toBeDefined();
         expect(found?.name).toBe(name);
-        for (const v of result.results) {
+        for (const v of result.results!) {
           expect(typeof v.id).toBe("string");
           expect(typeof v.short_id).toBe("string");
           expect(typeof v.name).toBe("string");
           expect(typeof v.created_at).toBe("string");
           expect(v.created_by).toBeDefined();
-          expect(typeof v.created_by.id).toBe("number");
-          expect(typeof v.created_by.uuid).toBe("string");
-          expect(typeof v.created_by.email).toBe("string");
+          expect(typeof v.created_by!.id).toBe("number");
+          expect(typeof v.created_by!.uuid).toBe("string");
+          expect(typeof v.created_by!.email).toBe("string");
         }
       }).pipe(
         Effect.ensuring(
@@ -1202,7 +1210,7 @@ describe("Conversations", () => {
         // Act: retrieve it.
         const result = yield* Conversations.conversationsViewsRetrieve({
           project_id: getProjectId(),
-          short_id: created.short_id,
+          short_id: created.short_id!,
         });
 
         // Assert: identity and shape.
@@ -1212,9 +1220,9 @@ describe("Conversations", () => {
         expect(result.name).toBe(name);
         expect(typeof result.created_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>

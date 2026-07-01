@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsConnectionTokenRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+}
 export const TasksRunsConnectionTokenRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,17 +19,16 @@ export const TasksRunsConnectionTokenRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/connection_token/",
     }),
-  );
-export type TasksRunsConnectionTokenRetrieveInput =
-  typeof TasksRunsConnectionTokenRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsConnectionTokenRetrieveInput>;
 
 // Output Schema
+export interface TasksRunsConnectionTokenRetrieveOutput {
+  token?: string;
+}
 export const TasksRunsConnectionTokenRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
-  });
-export type TasksRunsConnectionTokenRetrieveOutput =
-  typeof TasksRunsConnectionTokenRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsConnectionTokenRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +36,6 @@ export type TasksRunsConnectionTokenRetrieveOutput =
  *
  * Generate a JWT token for direct connection to the sandbox. Valid for 24 hours.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsConnectionTokenRetrieve =

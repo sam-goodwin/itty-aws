@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerGetInput {
+  organizationId: string;
+  groupId: string;
+}
 export const GroupsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,18 @@ export const GroupsControllerGetInput =
       method: "GET",
       path: "/organizations/{organizationId}/groups/{groupId}",
     }),
-  );
-export type GroupsControllerGetInput = typeof GroupsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerGetInput>;
 
 // Output Schema
+export interface GroupsControllerGetOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const GroupsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -26,8 +38,7 @@ export const GroupsControllerGetOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type GroupsControllerGetOutput = typeof GroupsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupsControllerGetOutput>;
 
 // The operation
 /**

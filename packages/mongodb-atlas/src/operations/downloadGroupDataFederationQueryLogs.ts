@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupDataFederationQueryLogsInput {
+  groupId: string;
+  tenantName: string;
+  endDate?: number;
+  startDate?: number;
+}
 export const DownloadGroupDataFederationQueryLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DownloadGroupDataFederationQueryLogsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz",
     }),
-  );
-export type DownloadGroupDataFederationQueryLogsInput =
-  typeof DownloadGroupDataFederationQueryLogsInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsInput>;
 
 // Output Schema
+export type DownloadGroupDataFederationQueryLogsOutput = void;
 export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupDataFederationQueryLogsOutput =
-  typeof DownloadGroupDataFederationQueryLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsOutput>;
 
 // The operation
 /**
  * Download Query Logs for One Federated Database Instance
  *
- * Downloads the query logs for the specified federated database instance. To use this resource, the requesting Service Account or API Key must have the Project Owner or Project Data Access Read Write roles. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
+ * Downloads the query logs for the specified federated database instance. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingPlaylistsListInput {
+  project_id: string;
+  created_by?: number;
+  limit?: number;
+  offset?: number;
+  short_id?: string;
+}
 export const SessionRecordingPlaylistsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,72 @@ export const SessionRecordingPlaylistsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/session_recording_playlists/",
     }),
-  );
-export type SessionRecordingPlaylistsListInput =
-  typeof SessionRecordingPlaylistsListInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingPlaylistsListInput>;
 
 // Output Schema
+export interface SessionRecordingPlaylistsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    short_id?: string;
+    name?: string | null;
+    derived_name?: string | null;
+    description?: string;
+    pinned?: boolean;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    deleted?: boolean;
+    filters?: unknown;
+    last_modified_at?: string;
+    last_modified_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    recordings_counts?: Record<string, Record<string, number | boolean | null>>;
+    type?: "collection" | "filters" | null;
+    is_synthetic?: boolean;
+    _create_in_folder?: string;
+  }[];
+}
 export const SessionRecordingPlaylistsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -51,7 +119,23 @@ export const SessionRecordingPlaylistsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -73,29 +157,53 @@ export const SessionRecordingPlaylistsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
           recordings_counts: Schema.optional(
             Schema.Record(
               Schema.String,
-              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Record(
+                Schema.String,
+                Schema.NullOr(Schema.Union([Schema.Number, Schema.Boolean])),
+              ),
             ),
           ),
-          type: Schema.optional(Schema.Unknown),
+          type: Schema.optional(
+            Schema.NullOr(Schema.Literals(["collection", "filters"])),
+          ),
           is_synthetic: Schema.optional(Schema.Boolean),
           _create_in_folder: Schema.optional(Schema.String),
         }),
       ),
     ),
-  });
-export type SessionRecordingPlaylistsListOutput =
-  typeof SessionRecordingPlaylistsListOutput.Type;
+  }) as unknown as Schema.Codec<SessionRecordingPlaylistsListOutput>;
 
 // The operation
 /**
- * Override list to include synthetic playlists
+ * Override list to include synthetic playlists.
+ * Synthetics have no DB row, so we compute each one's position in the merged
+ * sort and split the requested page between synthetics and a DB queryset slice.
+ * The merge/rank/sort is all in-memory, so each phase is wrapped in a span and
+ * the input sizes are recorded as span attributes — a slow response on a team
+ * with many playlists then shows up as a wide span against a large db_count.
  *
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.

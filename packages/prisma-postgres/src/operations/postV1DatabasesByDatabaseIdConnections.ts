@@ -2,20 +2,56 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostV1DatabasesByDatabaseIdConnectionsInput {
+  databaseId: string;
+  name: string;
+}
 export const PostV1DatabasesByDatabaseIdConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/v1/databases/{databaseId}/connections" }),
-  );
-export type PostV1DatabasesByDatabaseIdConnectionsInput =
-  typeof PostV1DatabasesByDatabaseIdConnectionsInput.Type;
+  ) as unknown as Schema.Codec<PostV1DatabasesByDatabaseIdConnectionsInput>;
 
 // Output Schema
+export interface PostV1DatabasesByDatabaseIdConnectionsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      pooled?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      accelerate?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+    };
+    connectionString: Redacted.Redacted<string>;
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+    host: string | null;
+    pass: string | null;
+    user: string | null;
+  };
+}
 export const PostV1DatabasesByDatabaseIdConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -30,25 +66,25 @@ export const PostV1DatabasesByDatabaseIdConnectionsOutput =
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         pooled: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         accelerate: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
       }),
-      connectionString: SensitiveString,
+      connectionString: SensitiveOutputString,
       directConnection: Schema.optional(
         Schema.NullOr(
           Schema.Struct({
@@ -67,9 +103,7 @@ export const PostV1DatabasesByDatabaseIdConnectionsOutput =
       pass: Schema.NullOr(Schema.String),
       user: Schema.NullOr(Schema.String),
     }),
-  });
-export type PostV1DatabasesByDatabaseIdConnectionsOutput =
-  typeof PostV1DatabasesByDatabaseIdConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<PostV1DatabasesByDatabaseIdConnectionsOutput>;
 
 // The operation
 /**

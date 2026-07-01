@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendUserOperationInput {
+  address: string;
+  userOpHash: string;
+  signature: string;
+}
 export const SendUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,45 @@ export const SendUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/v2/evm/smart-accounts/{address}/user-operations/{userOpHash}/send",
   }),
-);
-export type SendUserOperationInput = typeof SendUserOperationInput.Type;
+) as unknown as Schema.Codec<SendUserOperationInput>;
 
 // Output Schema
+export interface SendUserOperationOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const SendUserOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -66,12 +106,12 @@ export const SendUserOperationOutput =
         }),
       ),
     ),
-  });
-export type SendUserOperationOutput = typeof SendUserOperationOutput.Type;
+    expiresAt: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<SendUserOperationOutput>;
 
 // The operation
 /**
- * Send a user operation
+ * Send user operation
  *
  * Sends a user operation with a signature.
  * The payload to sign must be the `userOpHash` field of the user operation. This hash should be signed directly (not using `personal_sign` or EIP-191 message hashing).

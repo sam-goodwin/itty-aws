@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetExchangeRatesRateIdInput {
+  rate_id: string;
+  expand?: string;
+}
 export const GetExchangeRatesRateIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rate_id: Schema.String.pipe(T.PathParam()),
@@ -13,19 +17,20 @@ export const GetExchangeRatesRateIdInput =
       path: "/v1/exchange_rates/{rate_id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetExchangeRatesRateIdInput =
-  typeof GetExchangeRatesRateIdInput.Type;
+  ) as unknown as Schema.Codec<GetExchangeRatesRateIdInput>;
 
 // Output Schema
+export interface GetExchangeRatesRateIdOutput {
+  id: string;
+  object: "exchange_rate";
+  rates: Record<string, number>;
+}
 export const GetExchangeRatesRateIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.Literals(["exchange_rate"]),
     rates: Schema.Record(Schema.String, Schema.Number),
-  });
-export type GetExchangeRatesRateIdOutput =
-  typeof GetExchangeRatesRateIdOutput.Type;
+  }) as unknown as Schema.Codec<GetExchangeRatesRateIdOutput>;
 
 // The operation
 /**

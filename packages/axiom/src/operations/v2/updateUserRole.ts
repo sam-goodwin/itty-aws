@@ -4,13 +4,24 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateUserRoleInput {
+  id: string;
+  role: string;
+}
 export const UpdateUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   role: Schema.String,
-}).pipe(T.Http({ method: "PUT", path: "/v2/users/{id}/role" }));
-export type UpdateUserRoleInput = typeof UpdateUserRoleInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/users/{id}/role" }),
+) as unknown as Schema.Codec<UpdateUserRoleInput>;
 
 // Output Schema
+export interface UpdateUserRoleOutput {
+  email: string;
+  id: string;
+  name: string;
+  role?: { id: string; name: string };
+}
 export const UpdateUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
@@ -21,8 +32,7 @@ export const UpdateUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.String,
     }),
   ),
-});
-export type UpdateUserRoleOutput = typeof UpdateUserRoleOutput.Type;
+}) as unknown as Schema.Codec<UpdateUserRoleOutput>;
 
 // The operation
 /**

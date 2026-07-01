@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExperimentsEligibleFeatureFlagsRetrieveInput {
+  project_id: string;
+}
 export const ExperimentsEligibleFeatureFlagsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const ExperimentsEligibleFeatureFlagsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/experiments/eligible_feature_flags/",
     }),
-  );
-export type ExperimentsEligibleFeatureFlagsRetrieveInput =
-  typeof ExperimentsEligibleFeatureFlagsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsEligibleFeatureFlagsRetrieveInput>;
 
 // Output Schema
+export type ExperimentsEligibleFeatureFlagsRetrieveOutput = void;
 export const ExperimentsEligibleFeatureFlagsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsEligibleFeatureFlagsRetrieveOutput =
-  typeof ExperimentsEligibleFeatureFlagsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsEligibleFeatureFlagsRetrieveOutput>;
 
 // The operation
 /**

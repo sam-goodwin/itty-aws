@@ -3,6 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetBillingMetersIdEventSummariesInput {
+  id: string;
+  customer: string;
+  end_time: number;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  start_time: number;
+  starting_after?: string;
+  value_grouping_window?: "day" | "hour";
+}
 export const GetBillingMetersIdEventSummariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +31,23 @@ export const GetBillingMetersIdEventSummariesInput =
       path: "/v1/billing/meters/{id}/event_summaries",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBillingMetersIdEventSummariesInput =
-  typeof GetBillingMetersIdEventSummariesInput.Type;
+  ) as unknown as Schema.Codec<GetBillingMetersIdEventSummariesInput>;
 
 // Output Schema
+export interface GetBillingMetersIdEventSummariesOutput {
+  data: {
+    aggregated_value: number;
+    end_time: number;
+    id: string;
+    livemode: boolean;
+    meter: string;
+    object: "billing.meter_event_summary";
+    start_time: number;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetBillingMetersIdEventSummariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -41,9 +64,7 @@ export const GetBillingMetersIdEventSummariesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetBillingMetersIdEventSummariesOutput =
-  typeof GetBillingMetersIdEventSummariesOutput.Type;
+  }) as unknown as Schema.Codec<GetBillingMetersIdEventSummariesOutput>;
 
 // The operation
 /**

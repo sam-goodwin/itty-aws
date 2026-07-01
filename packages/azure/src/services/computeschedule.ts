@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ComputeSchedule/operations",
     apiVersion: "2025-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -43,8 +58,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -57,6 +71,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesCancelOperationsInput {
+  subscriptionId: string;
+  locationparameter: string;
+  operationIds: string[];
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesCancelOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -69,11 +89,39 @@ export const ScheduledActionsVirtualMachinesCancelOperationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesCancelOperations",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesCancelOperationsInput =
-  typeof ScheduledActionsVirtualMachinesCancelOperationsInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesCancelOperationsInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesCancelOperationsOutput {
+  results: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesCancelOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -125,9 +173,7 @@ export const ScheduledActionsVirtualMachinesCancelOperationsOutput =
         ),
       }),
     ),
-  });
-export type ScheduledActionsVirtualMachinesCancelOperationsOutput =
-  typeof ScheduledActionsVirtualMachinesCancelOperationsOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesCancelOperationsOutput>;
 
 // The operation
 /**
@@ -143,6 +189,24 @@ export const ScheduledActionsVirtualMachinesCancelOperations =
     outputSchema: ScheduledActionsVirtualMachinesCancelOperationsOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesExecuteCreateInput {
+  subscriptionId: string;
+  locationparameter: string;
+  resourceConfigParameters: {
+    baseProfile?: Record<string, unknown>;
+    resourceOverrides?: Record<string, unknown>[];
+    resourceCount: number;
+    resourcePrefix?: string;
+  };
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  correlationid?: string;
+}
 export const ScheduledActionsVirtualMachinesExecuteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -175,11 +239,42 @@ export const ScheduledActionsVirtualMachinesExecuteCreateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesExecuteCreateInput =
-  typeof ScheduledActionsVirtualMachinesExecuteCreateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteCreateInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesExecuteCreateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesExecuteCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -241,9 +336,7 @@ export const ScheduledActionsVirtualMachinesExecuteCreateOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesExecuteCreateOutput =
-  typeof ScheduledActionsVirtualMachinesExecuteCreateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteCreateOutput>;
 
 // The operation
 /**
@@ -259,6 +352,19 @@ export const ScheduledActionsVirtualMachinesExecuteCreate =
     outputSchema: ScheduledActionsVirtualMachinesExecuteCreateOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesExecuteDeallocateInput {
+  subscriptionId: string;
+  locationparameter: string;
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesExecuteDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -284,11 +390,42 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesExecuteDeallocateInput =
-  typeof ScheduledActionsVirtualMachinesExecuteDeallocateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteDeallocateInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesExecuteDeallocateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -350,9 +487,7 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesExecuteDeallocateOutput =
-  typeof ScheduledActionsVirtualMachinesExecuteDeallocateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteDeallocateOutput>;
 
 // The operation
 /**
@@ -368,6 +503,20 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocate =
     outputSchema: ScheduledActionsVirtualMachinesExecuteDeallocateOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesExecuteDeleteInput {
+  subscriptionId: string;
+  locationparameter: string;
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid?: string;
+  forceDeletion?: boolean;
+}
 export const ScheduledActionsVirtualMachinesExecuteDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -394,11 +543,42 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDelete",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesExecuteDeleteInput =
-  typeof ScheduledActionsVirtualMachinesExecuteDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteDeleteInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesExecuteDeleteOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesExecuteDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -460,9 +640,7 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesExecuteDeleteOutput =
-  typeof ScheduledActionsVirtualMachinesExecuteDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteDeleteOutput>;
 
 // The operation
 /**
@@ -478,6 +656,19 @@ export const ScheduledActionsVirtualMachinesExecuteDelete =
     outputSchema: ScheduledActionsVirtualMachinesExecuteDeleteOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesExecuteHibernateInput {
+  subscriptionId: string;
+  locationparameter: string;
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesExecuteHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -503,11 +694,42 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesExecuteHibernateInput =
-  typeof ScheduledActionsVirtualMachinesExecuteHibernateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteHibernateInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesExecuteHibernateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesExecuteHibernateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -569,9 +791,7 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesExecuteHibernateOutput =
-  typeof ScheduledActionsVirtualMachinesExecuteHibernateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteHibernateOutput>;
 
 // The operation
 /**
@@ -587,6 +807,19 @@ export const ScheduledActionsVirtualMachinesExecuteHibernate =
     outputSchema: ScheduledActionsVirtualMachinesExecuteHibernateOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesExecuteStartInput {
+  subscriptionId: string;
+  locationparameter: string;
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesExecuteStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -612,11 +845,42 @@ export const ScheduledActionsVirtualMachinesExecuteStartInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesExecuteStartInput =
-  typeof ScheduledActionsVirtualMachinesExecuteStartInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteStartInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesExecuteStartOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesExecuteStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -678,9 +942,7 @@ export const ScheduledActionsVirtualMachinesExecuteStartOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesExecuteStartOutput =
-  typeof ScheduledActionsVirtualMachinesExecuteStartOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesExecuteStartOutput>;
 
 // The operation
 /**
@@ -696,6 +958,11 @@ export const ScheduledActionsVirtualMachinesExecuteStart =
     outputSchema: ScheduledActionsVirtualMachinesExecuteStartOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesGetOperationErrorsInput {
+  subscriptionId: string;
+  locationparameter: string;
+  operationIds: string[];
+}
 export const ScheduledActionsVirtualMachinesGetOperationErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -707,11 +974,27 @@ export const ScheduledActionsVirtualMachinesGetOperationErrorsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesGetOperationErrorsInput =
-  typeof ScheduledActionsVirtualMachinesGetOperationErrorsInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesGetOperationErrorsInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesGetOperationErrorsOutput {
+  results: {
+    operationId?: string;
+    creationTime?: string;
+    activationTime?: string;
+    completedAt?: string;
+    operationErrors?: {
+      errorCode: string;
+      errorDetails: string;
+      timestamp?: string;
+      timeStamp?: string;
+      azureOperationName?: string;
+      crpOperationId?: string;
+    }[];
+    requestErrorCode?: string;
+    requestErrorDetails?: string;
+  }[];
+}
 export const ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -736,9 +1019,7 @@ export const ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
         requestErrorDetails: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScheduledActionsVirtualMachinesGetOperationErrorsOutput =
-  typeof ScheduledActionsVirtualMachinesGetOperationErrorsOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesGetOperationErrorsOutput>;
 
 // The operation
 /**
@@ -754,6 +1035,12 @@ export const ScheduledActionsVirtualMachinesGetOperationErrors =
     outputSchema: ScheduledActionsVirtualMachinesGetOperationErrorsOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesGetOperationStatusInput {
+  subscriptionId: string;
+  locationparameter: string;
+  operationIds: string[];
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesGetOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -766,11 +1053,39 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesGetOperationStatusInput =
-  typeof ScheduledActionsVirtualMachinesGetOperationStatusInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesGetOperationStatusInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesGetOperationStatusOutput {
+  results: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesGetOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.Array(
@@ -822,9 +1137,7 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusOutput =
         ),
       }),
     ),
-  });
-export type ScheduledActionsVirtualMachinesGetOperationStatusOutput =
-  typeof ScheduledActionsVirtualMachinesGetOperationStatusOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesGetOperationStatusOutput>;
 
 // The operation
 /**
@@ -840,6 +1153,26 @@ export const ScheduledActionsVirtualMachinesGetOperationStatus =
     outputSchema: ScheduledActionsVirtualMachinesGetOperationStatusOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesSubmitDeallocateInput {
+  subscriptionId: string;
+  locationparameter: string;
+  schedule: {
+    deadline?: string;
+    deadLine?: string;
+    timezone?: string;
+    timeZone?: string;
+    deadlineType: "Unknown" | "InitiateAt" | "CompleteBy";
+  };
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesSubmitDeallocateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -872,11 +1205,42 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitDeallocate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesSubmitDeallocateInput =
-  typeof ScheduledActionsVirtualMachinesSubmitDeallocateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitDeallocateInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesSubmitDeallocateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -938,9 +1302,7 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesSubmitDeallocateOutput =
-  typeof ScheduledActionsVirtualMachinesSubmitDeallocateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitDeallocateOutput>;
 
 // The operation
 /**
@@ -956,6 +1318,26 @@ export const ScheduledActionsVirtualMachinesSubmitDeallocate =
     outputSchema: ScheduledActionsVirtualMachinesSubmitDeallocateOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesSubmitHibernateInput {
+  subscriptionId: string;
+  locationparameter: string;
+  schedule: {
+    deadline?: string;
+    deadLine?: string;
+    timezone?: string;
+    timeZone?: string;
+    deadlineType: "Unknown" | "InitiateAt" | "CompleteBy";
+  };
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesSubmitHibernateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -988,11 +1370,42 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitHibernate",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesSubmitHibernateInput =
-  typeof ScheduledActionsVirtualMachinesSubmitHibernateInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitHibernateInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesSubmitHibernateOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesSubmitHibernateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -1054,9 +1467,7 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesSubmitHibernateOutput =
-  typeof ScheduledActionsVirtualMachinesSubmitHibernateOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitHibernateOutput>;
 
 // The operation
 /**
@@ -1072,6 +1483,26 @@ export const ScheduledActionsVirtualMachinesSubmitHibernate =
     outputSchema: ScheduledActionsVirtualMachinesSubmitHibernateOutput,
   }));
 // Input Schema
+export interface ScheduledActionsVirtualMachinesSubmitStartInput {
+  subscriptionId: string;
+  locationparameter: string;
+  schedule: {
+    deadline?: string;
+    deadLine?: string;
+    timezone?: string;
+    timeZone?: string;
+    deadlineType: "Unknown" | "InitiateAt" | "CompleteBy";
+  };
+  executionParameters: {
+    optimizationPreference?:
+      | "Cost"
+      | "Availability"
+      | "CostAvailabilityBalanced";
+    retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+  };
+  resources: { ids: string[] };
+  correlationid: string;
+}
 export const ScheduledActionsVirtualMachinesSubmitStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1104,11 +1535,42 @@ export const ScheduledActionsVirtualMachinesSubmitStartInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesSubmitStart",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ScheduledActionsVirtualMachinesSubmitStartInput =
-  typeof ScheduledActionsVirtualMachinesSubmitStartInput.Type;
+  ) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitStartInput>;
 
 // Output Schema
+export interface ScheduledActionsVirtualMachinesSubmitStartOutput {
+  description: string;
+  type: string;
+  location: string;
+  results?: {
+    resourceId?: string;
+    errorCode?: string;
+    errorDetails?: string;
+    operation?: {
+      operationId: string;
+      resourceId?: string;
+      opType?: "Unknown" | "Start" | "Deallocate" | "Hibernate";
+      subscriptionId?: string;
+      deadline?: string;
+      deadlineType?: "Unknown" | "InitiateAt" | "CompleteBy";
+      state?:
+        | "Unknown"
+        | "PendingScheduling"
+        | "Scheduled"
+        | "PendingExecution"
+        | "Executing"
+        | "Succeeded"
+        | "Failed"
+        | "Cancelled"
+        | "Blocked";
+      timezone?: string;
+      timeZone?: string;
+      resourceOperationError?: { errorCode: string; errorDetails: string };
+      completedAt?: string;
+      retryPolicy?: { retryCount?: number; retryWindowInMinutes?: number };
+    };
+  }[];
+}
 export const ScheduledActionsVirtualMachinesSubmitStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.String,
@@ -1170,9 +1632,7 @@ export const ScheduledActionsVirtualMachinesSubmitStartOutput =
         }),
       ),
     ),
-  });
-export type ScheduledActionsVirtualMachinesSubmitStartOutput =
-  typeof ScheduledActionsVirtualMachinesSubmitStartOutput.Type;
+  }) as unknown as Schema.Codec<ScheduledActionsVirtualMachinesSubmitStartOutput>;
 
 // The operation
 /**

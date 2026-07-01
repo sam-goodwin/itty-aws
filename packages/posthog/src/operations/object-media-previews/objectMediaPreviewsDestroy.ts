@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ObjectMediaPreviewsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const ObjectMediaPreviewsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/object_media_previews/{id}/",
     }),
-  );
-export type ObjectMediaPreviewsDestroyInput =
-  typeof ObjectMediaPreviewsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsDestroyInput>;
 
 // Output Schema
+export type ObjectMediaPreviewsDestroyOutput = void;
 export const ObjectMediaPreviewsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ObjectMediaPreviewsDestroyOutput =
-  typeof ObjectMediaPreviewsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ObjectMediaPreviewsDestroyOutput>;
 
 // The operation
 /**

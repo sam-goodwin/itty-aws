@@ -4,12 +4,48 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsTicketsListInput {
+  project_id: string;
+  assignee?: string;
+  channel_detail?:
+    | "github_issue"
+    | "slack_bot_mention"
+    | "slack_channel_message"
+    | "slack_emoji_reaction"
+    | "teams_bot_mention"
+    | "teams_channel_message"
+    | "widget_api"
+    | "widget_embedded";
+  channel_source?: "email" | "github" | "slack" | "teams" | "widget";
+  date_from?: string;
+  date_to?: string;
+  distinct_ids?: string;
+  limit?: number;
+  offset?: number;
+  order_by?:
+    | "-created_at"
+    | "-sla_due_at"
+    | "-ticket_number"
+    | "-updated_at"
+    | "created_at"
+    | "sla_due_at"
+    | "ticket_number"
+    | "updated_at";
+  priority?: string;
+  search?: string;
+  sla?: "at-risk" | "breached" | "on-track";
+  status?: string;
+  tags?: string;
+  tags_all?: string;
+  tags_exclude?: string;
+}
 export const ConversationsTicketsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     assignee: Schema.optional(Schema.String),
     channel_detail: Schema.optional(
       Schema.Literals([
+        "github_issue",
         "slack_bot_mention",
         "slack_channel_message",
         "slack_emoji_reaction",
@@ -20,7 +56,7 @@ export const ConversationsTicketsListInput =
       ]),
     ),
     channel_source: Schema.optional(
-      Schema.Literals(["email", "slack", "teams", "widget"]),
+      Schema.Literals(["email", "github", "slack", "teams", "widget"]),
     ),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -44,16 +80,79 @@ export const ConversationsTicketsListInput =
     sla: Schema.optional(Schema.Literals(["at-risk", "breached", "on-track"])),
     status: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.String),
+    tags_all: Schema.optional(Schema.String),
+    tags_exclude: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/api/projects/{project_id}/conversations/tickets/",
     }),
-  );
-export type ConversationsTicketsListInput =
-  typeof ConversationsTicketsListInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsListInput>;
 
 // Output Schema
+export interface ConversationsTicketsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    ticket_number?: number;
+    channel_source?: "widget" | "email" | "slack" | "teams" | "github";
+    channel_detail?:
+      | "slack_channel_message"
+      | "slack_bot_mention"
+      | "slack_emoji_reaction"
+      | "teams_channel_message"
+      | "teams_bot_mention"
+      | "widget_embedded"
+      | "widget_api"
+      | "github_issue"
+      | null;
+    distinct_id?: string;
+    status?: "new" | "open" | "pending" | "on_hold" | "resolved";
+    priority?: "low" | "medium" | "high" | "" | null;
+    assignee?: {
+      id?: string | null;
+      type?: string;
+      user?: Record<string, string> | null;
+      role?: Record<string, string> | null;
+    };
+    anonymous_traits?: unknown;
+    ai_resolved?: boolean;
+    escalation_reason?: string | null;
+    ai_triage?: unknown;
+    created_at?: string;
+    updated_at?: string;
+    message_count?: number;
+    last_message_at?: string | null;
+    last_message_text?: string | null;
+    unread_team_count?: number;
+    unread_customer_count?: number;
+    session_id?: string | null;
+    session_context?: unknown;
+    sla_due_at?: string | null;
+    snoozed_until?: string | null;
+    slack_channel_id?: string | null;
+    slack_thread_ts?: string | null;
+    slack_team_id?: string | null;
+    email_subject?: string | null;
+    email_from?: string | null;
+    email_to?: string | null;
+    cc_participants?: unknown;
+    github_repo?: string | null;
+    github_issue_number?: number | null;
+    organization_id?: string | null;
+    person?: {
+      id?: string;
+      name?: string;
+      distinct_ids?: string[];
+      properties?: Record<string, unknown>;
+      created_at?: string;
+      is_identified?: boolean;
+    } | null;
+    tags?: unknown[];
+  }[];
+}
 export const ConversationsTicketsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -65,14 +164,34 @@ export const ConversationsTicketsListOutput =
           id: Schema.optional(Schema.String),
           ticket_number: Schema.optional(Schema.Number),
           channel_source: Schema.optional(
-            Schema.Literals(["widget", "email", "slack", "teams"]),
+            Schema.Literals(["widget", "email", "slack", "teams", "github"]),
           ),
-          channel_detail: Schema.optional(Schema.Unknown),
+          channel_detail: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "slack_channel_message",
+                "slack_bot_mention",
+                "slack_emoji_reaction",
+                "teams_channel_message",
+                "teams_bot_mention",
+                "widget_embedded",
+                "widget_api",
+                "github_issue",
+              ]),
+            ),
+          ),
           distinct_id: Schema.optional(Schema.String),
           status: Schema.optional(
             Schema.Literals(["new", "open", "pending", "on_hold", "resolved"]),
           ),
-          priority: Schema.optional(Schema.Unknown),
+          priority: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals(["low", "medium", "high"]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
           assignee: Schema.optional(
             Schema.Struct({
               id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -88,6 +207,7 @@ export const ConversationsTicketsListOutput =
           anonymous_traits: Schema.optional(Schema.Unknown),
           ai_resolved: Schema.optional(Schema.Boolean),
           escalation_reason: Schema.optional(Schema.NullOr(Schema.String)),
+          ai_triage: Schema.optional(Schema.Unknown),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.String),
           message_count: Schema.optional(Schema.Number),
@@ -106,6 +226,9 @@ export const ConversationsTicketsListOutput =
           email_from: Schema.optional(Schema.NullOr(Schema.String)),
           email_to: Schema.optional(Schema.NullOr(Schema.String)),
           cc_participants: Schema.optional(Schema.Unknown),
+          github_repo: Schema.optional(Schema.NullOr(Schema.String)),
+          github_issue_number: Schema.optional(Schema.NullOr(Schema.Number)),
+          organization_id: Schema.optional(Schema.NullOr(Schema.String)),
           person: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -124,9 +247,7 @@ export const ConversationsTicketsListOutput =
         }),
       ),
     ),
-  });
-export type ConversationsTicketsListOutput =
-  typeof ConversationsTicketsListOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsTicketsListOutput>;
 
 // The operation
 /**
@@ -146,7 +267,9 @@ export type ConversationsTicketsListOutput =
  * @param search - Free-text search. A numeric value matches a ticket number exactly; otherwise matches against the customer's name or email (case-insensitive, partial match).
  * @param sla - Filter by SLA state. `breached` = past `sla_due_at`, `at-risk` = due within the next hour, `on-track` = more than an hour remaining.
  * @param status - Filter by status. Accepts a single value or a comma-separated list (e.g. `new,open,pending`). Valid values: `new`, `open`, `pending`, `on_hold`, `resolved`.
- * @param tags - JSON-encoded array of tag names to filter by, e.g. `["billing","urgent"]`.
+ * @param tags - JSON-encoded array of tag names; returns tickets with ANY of them (OR), e.g. `["billing","urgent"]`.
+ * @param tags_all - JSON-encoded array of tag names; returns tickets that have ALL of them (AND), e.g. `["billing","urgent"]`.
+ * @param tags_exclude - JSON-encoded array of tag names; returns tickets that have NONE of them (NOT), e.g. `["escalated"]`.
  */
 export const conversationsTicketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

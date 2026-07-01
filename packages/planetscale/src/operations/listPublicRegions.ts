@@ -4,15 +4,37 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListPublicRegionsInput {
+  page?: number;
+  per_page?: number;
+}
 export const ListPublicRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
   },
-).pipe(T.Http({ method: "GET", path: "/regions" }));
-export type ListPublicRegionsInput = typeof ListPublicRegionsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/regions" }),
+) as unknown as Schema.Codec<ListPublicRegionsInput>;
 
 // Output Schema
+export interface ListPublicRegionsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    provider: string;
+    enabled: boolean;
+    public_ip_addresses: string[];
+    display_name: string;
+    location: string;
+    slug: string;
+  }[];
+}
 export const ListPublicRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -32,8 +54,7 @@ export const ListPublicRegionsOutput =
         slug: Schema.String,
       }),
     ),
-  });
-export type ListPublicRegionsOutput = typeof ListPublicRegionsOutput.Type;
+  }) as unknown as Schema.Codec<ListPublicRegionsOutput>;
 
 // The operation
 /**

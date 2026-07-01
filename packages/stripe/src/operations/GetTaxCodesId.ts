@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTaxCodesIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetTaxCodesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
@@ -12,17 +16,21 @@ export const GetTaxCodesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/tax_codes/{id}",
     contentType: "form-urlencoded",
   }),
-);
-export type GetTaxCodesIdInput = typeof GetTaxCodesIdInput.Type;
+) as unknown as Schema.Codec<GetTaxCodesIdInput>;
 
 // Output Schema
+export interface GetTaxCodesIdOutput {
+  description: string;
+  id: string;
+  name: string;
+  object: "tax_code";
+}
 export const GetTaxCodesIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.String,
   id: Schema.String,
   name: Schema.String,
   object: Schema.Literals(["tax_code"]),
-});
-export type GetTaxCodesIdOutput = typeof GetTaxCodesIdOutput.Type;
+}) as unknown as Schema.Codec<GetTaxCodesIdOutput>;
 
 // The operation
 /**

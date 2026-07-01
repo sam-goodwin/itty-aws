@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsViewsRetrieveInput {
+  project_id: string;
+  short_id: string;
+}
 export const ConversationsViewsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,13 +15,39 @@ export const ConversationsViewsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/conversations/views/{short_id}/",
+      path: "/api/projects/{project_id}/conversations/views/{short_id}/",
     }),
-  );
-export type ConversationsViewsRetrieveInput =
-  typeof ConversationsViewsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ConversationsViewsRetrieveInput>;
 
 // Output Schema
+export interface ConversationsViewsRetrieveOutput {
+  id?: string;
+  short_id?: string;
+  name?: string;
+  filters?: Record<string, unknown>;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const ConversationsViewsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -38,13 +68,27 @@ export const ConversationsViewsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type ConversationsViewsRetrieveOutput =
-  typeof ConversationsViewsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsViewsRetrieveOutput>;
 
 // The operation
 /**

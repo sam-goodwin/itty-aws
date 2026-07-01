@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupStreamWorkspaceInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupStreamWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -11,21 +16,18 @@ export const CreateGroupStreamWorkspaceInput =
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/streams" }),
-  );
-export type CreateGroupStreamWorkspaceInput =
-  typeof CreateGroupStreamWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupStreamWorkspaceInput>;
 
 // Output Schema
+export type CreateGroupStreamWorkspaceOutput = void;
 export const CreateGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupStreamWorkspaceOutput =
-  typeof CreateGroupStreamWorkspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamWorkspaceOutput>;
 
 // The operation
 /**
  * Create One Stream Workspace
  *
- * Creates one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+ * Creates one stream workspace in the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

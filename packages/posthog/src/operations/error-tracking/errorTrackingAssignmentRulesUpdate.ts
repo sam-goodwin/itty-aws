@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingAssignmentRulesUpdateInput {
+  id: string;
+  project_id: string;
+  filters?: { type?: "AND" | "OR"; values?: unknown[] } | null;
+  assignee?: { type?: "user" | "role"; id?: number | string } | null;
+}
 export const ErrorTrackingAssignmentRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,34 +25,29 @@ export const ErrorTrackingAssignmentRulesUpdateInput =
       Schema.NullOr(
         Schema.Struct({
           type: Schema.optional(Schema.Literals(["user", "role"])),
-          id: Schema.optional(Schema.Unknown),
+          id: Schema.optional(Schema.Union([Schema.Number, Schema.String])),
         }),
       ),
     ),
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/api/environments/{project_id}/error_tracking/assignment_rules/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/assignment_rules/{id}/",
     }),
-  );
-export type ErrorTrackingAssignmentRulesUpdateInput =
-  typeof ErrorTrackingAssignmentRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingAssignmentRulesUpdateInput>;
 
 // Output Schema
+export type ErrorTrackingAssignmentRulesUpdateOutput = void;
 export const ErrorTrackingAssignmentRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingAssignmentRulesUpdateOutput =
-  typeof ErrorTrackingAssignmentRulesUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingAssignmentRulesUpdateOutput>;
 
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking assignment rule.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingAssignmentRulesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesUpdateInput,
     outputSchema: ErrorTrackingAssignmentRulesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

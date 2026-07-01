@@ -4,16 +4,29 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DatabasesByDatabaseIdUsageInput {
+  databaseId: string;
+  startDate?: string;
+  endDate?: string;
+}
 export const GetV1DatabasesByDatabaseIdUsageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     startDate: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/databases/{databaseId}/usage" }));
-export type GetV1DatabasesByDatabaseIdUsageInput =
-  typeof GetV1DatabasesByDatabaseIdUsageInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/databases/{databaseId}/usage" }),
+  ) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdUsageInput>;
 
 // Output Schema
+export interface GetV1DatabasesByDatabaseIdUsageOutput {
+  period: { start: string; end: string };
+  metrics: {
+    operations: { used: number; unit: string };
+    storage: { used: number; unit: string };
+  };
+  generatedAt: string;
+}
 export const GetV1DatabasesByDatabaseIdUsageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     period: Schema.Struct({
@@ -31,9 +44,7 @@ export const GetV1DatabasesByDatabaseIdUsageOutput =
       }),
     }),
     generatedAt: Schema.String,
-  });
-export type GetV1DatabasesByDatabaseIdUsageOutput =
-  typeof GetV1DatabasesByDatabaseIdUsageOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdUsageOutput>;
 
 // The operation
 /**

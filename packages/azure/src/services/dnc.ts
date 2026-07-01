@@ -4,13 +4,31 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ControllerCreateInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  properties?: {
+    resourceGuid?: string;
+    provisioningState?: "Deleting" | "Succeeded" | "Failed" | "Provisioning";
+    dncAppId?: string;
+    dncTenantId?: string;
+    dncEndpoint?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -34,10 +52,16 @@ export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
     apiVersion: "2021-03-15",
   }),
-);
-export type ControllerCreateInput = typeof ControllerCreateInput.Type;
+) as unknown as Schema.Codec<ControllerCreateInput>;
 
 // Output Schema
+export interface ControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ControllerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -46,14 +70,14 @@ export const ControllerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
-);
-export type ControllerCreateOutput = typeof ControllerCreateOutput.Type;
+) as unknown as Schema.Codec<ControllerCreateOutput>;
 
 // The operation
 /**
  * Create a dnc controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -62,8 +86,14 @@ export const ControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ControllerCreateOutput,
 }));
 // Input Schema
+export interface ControllerDeleteInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+}
 export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -71,18 +101,19 @@ export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
     apiVersion: "2021-03-15",
   }),
-);
-export type ControllerDeleteInput = typeof ControllerDeleteInput.Type;
+) as unknown as Schema.Codec<ControllerDeleteInput>;
 
 // Output Schema
-export const ControllerDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ControllerDeleteOutput = typeof ControllerDeleteOutput.Type;
+export type ControllerDeleteOutput = void;
+export const ControllerDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ControllerDeleteOutput>;
 
 // The operation
 /**
  * Deletes the DNC controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -91,9 +122,15 @@ export const ControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ControllerDeleteOutput,
 }));
 // Input Schema
+export interface ControllerGetDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+}
 export const ControllerGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -101,10 +138,16 @@ export const ControllerGetDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type ControllerGetDetailsInput = typeof ControllerGetDetailsInput.Type;
+  ) as unknown as Schema.Codec<ControllerGetDetailsInput>;
 
 // Output Schema
+export interface ControllerGetDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ControllerGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -112,14 +155,14 @@ export const ControllerGetDetailsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ControllerGetDetailsOutput = typeof ControllerGetDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ControllerGetDetailsOutput>;
 
 // The operation
 /**
  * Gets details about the specified dnc controller.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -130,8 +173,15 @@ export const ControllerGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ControllerPatchInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const ControllerPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -140,24 +190,30 @@ export const ControllerPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controller/{resourceName}",
     apiVersion: "2021-03-15",
   }),
-);
-export type ControllerPatchInput = typeof ControllerPatchInput.Type;
+) as unknown as Schema.Codec<ControllerPatchInput>;
 
 // Output Schema
+export interface ControllerPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ControllerPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ControllerPatchOutput = typeof ControllerPatchOutput.Type;
+}) as unknown as Schema.Codec<ControllerPatchOutput>;
 
 // The operation
 /**
  * Update dnc controller
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -166,6 +222,10 @@ export const ControllerPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ControllerPatchOutput,
 }));
 // Input Schema
+export interface DelegatedNetworkListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const DelegatedNetworkListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -176,11 +236,19 @@ export const DelegatedNetworkListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controllers",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedNetworkListByResourceGroupInput =
-  typeof DelegatedNetworkListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DelegatedNetworkListByResourceGroupInput>;
 
 // Output Schema
+export interface DelegatedNetworkListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const DelegatedNetworkListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -193,9 +261,7 @@ export const DelegatedNetworkListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DelegatedNetworkListByResourceGroupOutput =
-  typeof DelegatedNetworkListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedNetworkListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -211,6 +277,9 @@ export const DelegatedNetworkListByResourceGroup =
     outputSchema: DelegatedNetworkListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DelegatedNetworkListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DelegatedNetworkListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -220,11 +289,19 @@ export const DelegatedNetworkListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/controllers",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedNetworkListBySubscriptionInput =
-  typeof DelegatedNetworkListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DelegatedNetworkListBySubscriptionInput>;
 
 // Output Schema
+export interface DelegatedNetworkListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const DelegatedNetworkListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -237,9 +314,7 @@ export const DelegatedNetworkListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DelegatedNetworkListBySubscriptionOutput =
-  typeof DelegatedNetworkListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedNetworkListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -254,33 +329,40 @@ export const DelegatedNetworkListBySubscription =
     outputSchema: DelegatedNetworkListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServiceDeleteDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  forceDelete?: boolean;
+}
 export const DelegatedSubnetServiceDeleteDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServiceDeleteDetailsInput =
-  typeof DelegatedSubnetServiceDeleteDetailsInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServiceDeleteDetailsInput>;
 
 // Output Schema
+export type DelegatedSubnetServiceDeleteDetailsOutput = void;
 export const DelegatedSubnetServiceDeleteDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DelegatedSubnetServiceDeleteDetailsOutput =
-  typeof DelegatedSubnetServiceDeleteDetailsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DelegatedSubnetServiceDeleteDetailsOutput>;
 
 // The operation
 /**
  * Delete dnc DelegatedSubnet.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param forceDelete - Force delete resource
  */
 export const DelegatedSubnetServiceDeleteDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -288,9 +370,15 @@ export const DelegatedSubnetServiceDeleteDetails =
     outputSchema: DelegatedSubnetServiceDeleteDetailsOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServiceGetDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+}
 export const DelegatedSubnetServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -298,11 +386,16 @@ export const DelegatedSubnetServiceGetDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServiceGetDetailsInput =
-  typeof DelegatedSubnetServiceGetDetailsInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServiceGetDetailsInput>;
 
 // Output Schema
+export interface DelegatedSubnetServiceGetDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DelegatedSubnetServiceGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -310,15 +403,14 @@ export const DelegatedSubnetServiceGetDetailsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type DelegatedSubnetServiceGetDetailsOutput =
-  typeof DelegatedSubnetServiceGetDetailsOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedSubnetServiceGetDetailsOutput>;
 
 // The operation
 /**
  * Gets details about the specified dnc DelegatedSubnet Link.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -328,6 +420,10 @@ export const DelegatedSubnetServiceGetDetails =
     outputSchema: DelegatedSubnetServiceGetDetailsOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServiceListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const DelegatedSubnetServiceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -338,11 +434,19 @@ export const DelegatedSubnetServiceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServiceListByResourceGroupInput =
-  typeof DelegatedSubnetServiceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServiceListByResourceGroupInput>;
 
 // Output Schema
+export interface DelegatedSubnetServiceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const DelegatedSubnetServiceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -355,9 +459,7 @@ export const DelegatedSubnetServiceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DelegatedSubnetServiceListByResourceGroupOutput =
-  typeof DelegatedSubnetServiceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedSubnetServiceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -373,6 +475,9 @@ export const DelegatedSubnetServiceListByResourceGroup =
     outputSchema: DelegatedSubnetServiceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServiceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DelegatedSubnetServiceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -382,11 +487,19 @@ export const DelegatedSubnetServiceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServiceListBySubscriptionInput =
-  typeof DelegatedSubnetServiceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServiceListBySubscriptionInput>;
 
 // Output Schema
+export interface DelegatedSubnetServiceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const DelegatedSubnetServiceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -399,9 +512,7 @@ export const DelegatedSubnetServiceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DelegatedSubnetServiceListBySubscriptionOutput =
-  typeof DelegatedSubnetServiceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedSubnetServiceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -416,9 +527,16 @@ export const DelegatedSubnetServiceListBySubscription =
     outputSchema: DelegatedSubnetServiceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServicePatchDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const DelegatedSubnetServicePatchDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -427,11 +545,16 @@ export const DelegatedSubnetServicePatchDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServicePatchDetailsInput =
-  typeof DelegatedSubnetServicePatchDetailsInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServicePatchDetailsInput>;
 
 // Output Schema
+export interface DelegatedSubnetServicePatchDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DelegatedSubnetServicePatchDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -439,15 +562,14 @@ export const DelegatedSubnetServicePatchDetailsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type DelegatedSubnetServicePatchDetailsOutput =
-  typeof DelegatedSubnetServicePatchDetailsOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedSubnetServicePatchDetailsOutput>;
 
 // The operation
 /**
  * Patch delegated subnet resource
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -457,9 +579,26 @@ export const DelegatedSubnetServicePatchDetails =
     outputSchema: DelegatedSubnetServicePatchDetailsOutput,
   }));
 // Input Schema
+export interface DelegatedSubnetServicePutDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  properties?: {
+    resourceGuid?: string;
+    provisioningState?: "Deleting" | "Succeeded" | "Failed" | "Provisioning";
+    subnetDetails?: { id?: string };
+    controllerDetails?: { id?: string };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DelegatedSubnetServicePutDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -490,11 +629,16 @@ export const DelegatedSubnetServicePutDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type DelegatedSubnetServicePutDetailsInput =
-  typeof DelegatedSubnetServicePutDetailsInput.Type;
+  ) as unknown as Schema.Codec<DelegatedSubnetServicePutDetailsInput>;
 
 // Output Schema
+export interface DelegatedSubnetServicePutDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DelegatedSubnetServicePutDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -502,15 +646,14 @@ export const DelegatedSubnetServicePutDetailsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type DelegatedSubnetServicePutDetailsOutput =
-  typeof DelegatedSubnetServicePutDetailsOutput.Type;
+  }) as unknown as Schema.Codec<DelegatedSubnetServicePutDetailsOutput>;
 
 // The operation
 /**
  * Put delegated subnet resource
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -520,6 +663,7 @@ export const DelegatedSubnetServicePutDetails =
     outputSchema: DelegatedSubnetServicePutDetailsOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -528,10 +672,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DelegatedNetwork/operations",
     apiVersion: "2021-03-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -554,8 +712,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -568,9 +725,36 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OrchestratorInstanceServiceCreateInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  properties?: {
+    resourceGuid?: string;
+    provisioningState?: "Deleting" | "Succeeded" | "Failed" | "Provisioning";
+    orchestratorAppId?: string;
+    orchestratorTenantId?: string;
+    clusterRootCA?: string;
+    apiServerEndpoint?: string;
+    privateLinkResourceId?: string;
+    controllerDetails: { id?: string };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  kind: "Kubernetes";
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  tags?: Record<string, string>;
+}
 export const OrchestratorInstanceServiceCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -607,11 +791,22 @@ export const OrchestratorInstanceServiceCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServiceCreateInput =
-  typeof OrchestratorInstanceServiceCreateInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServiceCreateInput>;
 
 // Output Schema
+export interface OrchestratorInstanceServiceCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  kind: "Kubernetes";
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  tags?: Record<string, string>;
+}
 export const OrchestratorInstanceServiceCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -627,15 +822,14 @@ export const OrchestratorInstanceServiceCreateOutput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type OrchestratorInstanceServiceCreateOutput =
-  typeof OrchestratorInstanceServiceCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrchestratorInstanceServiceCreateOutput>;
 
 // The operation
 /**
  * Create a orchestrator instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -645,33 +839,40 @@ export const OrchestratorInstanceServiceCreate =
     outputSchema: OrchestratorInstanceServiceCreateOutput,
   }));
 // Input Schema
+export interface OrchestratorInstanceServiceDeleteInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  forceDelete?: boolean;
+}
 export const OrchestratorInstanceServiceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServiceDeleteInput =
-  typeof OrchestratorInstanceServiceDeleteInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServiceDeleteInput>;
 
 // Output Schema
+export type OrchestratorInstanceServiceDeleteOutput = void;
 export const OrchestratorInstanceServiceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrchestratorInstanceServiceDeleteOutput =
-  typeof OrchestratorInstanceServiceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrchestratorInstanceServiceDeleteOutput>;
 
 // The operation
 /**
  * Deletes the Orchestrator Instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param forceDelete - Force delete resource
  */
 export const OrchestratorInstanceServiceDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -679,9 +880,15 @@ export const OrchestratorInstanceServiceDelete =
     outputSchema: OrchestratorInstanceServiceDeleteOutput,
   }));
 // Input Schema
+export interface OrchestratorInstanceServiceGetDetailsInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+}
 export const OrchestratorInstanceServiceGetDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -689,11 +896,22 @@ export const OrchestratorInstanceServiceGetDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServiceGetDetailsInput =
-  typeof OrchestratorInstanceServiceGetDetailsInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServiceGetDetailsInput>;
 
 // Output Schema
+export interface OrchestratorInstanceServiceGetDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  kind: "Kubernetes";
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  tags?: Record<string, string>;
+}
 export const OrchestratorInstanceServiceGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -709,15 +927,14 @@ export const OrchestratorInstanceServiceGetDetailsOutput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type OrchestratorInstanceServiceGetDetailsOutput =
-  typeof OrchestratorInstanceServiceGetDetailsOutput.Type;
+  }) as unknown as Schema.Codec<OrchestratorInstanceServiceGetDetailsOutput>;
 
 // The operation
 /**
  * Gets details about the orchestrator instance.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -727,6 +944,10 @@ export const OrchestratorInstanceServiceGetDetails =
     outputSchema: OrchestratorInstanceServiceGetDetailsOutput,
   }));
 // Input Schema
+export interface OrchestratorInstanceServiceListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const OrchestratorInstanceServiceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -737,11 +958,25 @@ export const OrchestratorInstanceServiceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServiceListByResourceGroupInput =
-  typeof OrchestratorInstanceServiceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServiceListByResourceGroupInput>;
 
 // Output Schema
+export interface OrchestratorInstanceServiceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    kind: "Kubernetes";
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const OrchestratorInstanceServiceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -762,9 +997,7 @@ export const OrchestratorInstanceServiceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrchestratorInstanceServiceListByResourceGroupOutput =
-  typeof OrchestratorInstanceServiceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<OrchestratorInstanceServiceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -780,6 +1013,9 @@ export const OrchestratorInstanceServiceListByResourceGroup =
     outputSchema: OrchestratorInstanceServiceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface OrchestratorInstanceServiceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const OrchestratorInstanceServiceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -789,11 +1025,25 @@ export const OrchestratorInstanceServiceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/orchestrators",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServiceListBySubscriptionInput =
-  typeof OrchestratorInstanceServiceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServiceListBySubscriptionInput>;
 
 // Output Schema
+export interface OrchestratorInstanceServiceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    kind: "Kubernetes";
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const OrchestratorInstanceServiceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -814,9 +1064,7 @@ export const OrchestratorInstanceServiceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrchestratorInstanceServiceListBySubscriptionOutput =
-  typeof OrchestratorInstanceServiceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<OrchestratorInstanceServiceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -831,9 +1079,16 @@ export const OrchestratorInstanceServiceListBySubscription =
     outputSchema: OrchestratorInstanceServiceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface OrchestratorInstanceServicePatchInput {
+  resourceGroupName: string;
+  resourceName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const OrchestratorInstanceServicePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -842,11 +1097,22 @@ export const OrchestratorInstanceServicePatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators/{resourceName}",
       apiVersion: "2021-03-15",
     }),
-  );
-export type OrchestratorInstanceServicePatchInput =
-  typeof OrchestratorInstanceServicePatchInput.Type;
+  ) as unknown as Schema.Codec<OrchestratorInstanceServicePatchInput>;
 
 // Output Schema
+export interface OrchestratorInstanceServicePatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  kind: "Kubernetes";
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  tags?: Record<string, string>;
+}
 export const OrchestratorInstanceServicePatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -862,15 +1128,14 @@ export const OrchestratorInstanceServicePatchOutput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type OrchestratorInstanceServicePatchOutput =
-  typeof OrchestratorInstanceServicePatchOutput.Type;
+  }) as unknown as Schema.Codec<OrchestratorInstanceServicePatchOutput>;
 
 // The operation
 /**
  * Update Orchestrator Instance
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */

@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteGroupInput {
+  id: string;
+}
 export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/rbac/groups/{id}" }));
-export type DeleteGroupInput = typeof DeleteGroupInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/rbac/groups/{id}" }),
+) as unknown as Schema.Codec<DeleteGroupInput>;
 
 // Output Schema
-export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
+export type DeleteGroupOutput = void;
+export const DeleteGroupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupOutput>;
 
 // The operation
 /**

@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface BinaryHardeningListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const BinaryHardeningListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,11 +27,25 @@ export const BinaryHardeningListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/binaryHardeningResults",
       apiVersion: "2025-08-02",
     }),
-  );
-export type BinaryHardeningListByFirmwareInput =
-  typeof BinaryHardeningListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<BinaryHardeningListByFirmwareInput>;
 
 // Output Schema
+export interface BinaryHardeningListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BinaryHardeningListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -60,9 +80,7 @@ export const BinaryHardeningListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BinaryHardeningListByFirmwareOutput =
-  typeof BinaryHardeningListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<BinaryHardeningListByFirmwareOutput>;
 
 // The operation
 /**
@@ -80,6 +98,12 @@ export const BinaryHardeningListByFirmware =
     outputSchema: BinaryHardeningListByFirmwareOutput,
   }));
 // Input Schema
+export interface CryptoCertificatesListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const CryptoCertificatesListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -92,11 +116,25 @@ export const CryptoCertificatesListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoCertificates",
       apiVersion: "2025-08-02",
     }),
-  );
-export type CryptoCertificatesListByFirmwareInput =
-  typeof CryptoCertificatesListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<CryptoCertificatesListByFirmwareInput>;
 
 // Output Schema
+export interface CryptoCertificatesListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CryptoCertificatesListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -131,9 +169,7 @@ export const CryptoCertificatesListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CryptoCertificatesListByFirmwareOutput =
-  typeof CryptoCertificatesListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<CryptoCertificatesListByFirmwareOutput>;
 
 // The operation
 /**
@@ -151,6 +187,12 @@ export const CryptoCertificatesListByFirmware =
     outputSchema: CryptoCertificatesListByFirmwareOutput,
   }));
 // Input Schema
+export interface CryptoKeysListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const CryptoKeysListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -163,11 +205,25 @@ export const CryptoKeysListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys",
       apiVersion: "2025-08-02",
     }),
-  );
-export type CryptoKeysListByFirmwareInput =
-  typeof CryptoKeysListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<CryptoKeysListByFirmwareInput>;
 
 // Output Schema
+export interface CryptoKeysListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CryptoKeysListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -202,9 +258,7 @@ export const CryptoKeysListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CryptoKeysListByFirmwareOutput =
-  typeof CryptoKeysListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<CryptoKeysListByFirmwareOutput>;
 
 // The operation
 /**
@@ -223,6 +277,12 @@ export const CryptoKeysListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CvesListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const CvesListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -235,10 +295,25 @@ export const CvesListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cves",
       apiVersion: "2025-08-02",
     }),
-  );
-export type CvesListByFirmwareInput = typeof CvesListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<CvesListByFirmwareInput>;
 
 // Output Schema
+export interface CvesListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CvesListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -273,8 +348,7 @@ export const CvesListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CvesListByFirmwareOutput = typeof CvesListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<CvesListByFirmwareOutput>;
 
 // The operation
 /**
@@ -291,6 +365,29 @@ export const CvesListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CvesListByFirmwareOutput,
 }));
 // Input Schema
+export interface FirmwaresCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+  properties?: {
+    fileName?: string;
+    vendor?: string;
+    model?: string;
+    version?: string;
+    description?: string;
+    fileSize?: number;
+    status?: "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
+    statusMessages?: { errorCode?: number; message?: string }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Extracting"
+      | "Analyzing";
+  };
+}
 export const FirmwaresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -339,10 +436,22 @@ export const FirmwaresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
     apiVersion: "2025-08-02",
   }),
-);
-export type FirmwaresCreateInput = typeof FirmwaresCreateInput.Type;
+) as unknown as Schema.Codec<FirmwaresCreateInput>;
 
 // Output Schema
+export interface FirmwaresCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirmwaresCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -361,8 +470,7 @@ export const FirmwaresCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FirmwaresCreateOutput = typeof FirmwaresCreateOutput.Type;
+}) as unknown as Schema.Codec<FirmwaresCreateOutput>;
 
 // The operation
 /**
@@ -379,6 +487,12 @@ export const FirmwaresCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirmwaresCreateOutput,
 }));
 // Input Schema
+export interface FirmwaresDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const FirmwaresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -390,12 +504,12 @@ export const FirmwaresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
     apiVersion: "2025-08-02",
   }),
-);
-export type FirmwaresDeleteInput = typeof FirmwaresDeleteInput.Type;
+) as unknown as Schema.Codec<FirmwaresDeleteInput>;
 
 // Output Schema
-export const FirmwaresDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FirmwaresDeleteOutput = typeof FirmwaresDeleteOutput.Type;
+export type FirmwaresDeleteOutput = void;
+export const FirmwaresDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirmwaresDeleteOutput>;
 
 // The operation
 /**
@@ -412,6 +526,12 @@ export const FirmwaresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirmwaresDeleteOutput,
 }));
 // Input Schema
+export interface FirmwaresGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const FirmwaresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -423,10 +543,22 @@ export const FirmwaresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
     apiVersion: "2025-08-02",
   }),
-);
-export type FirmwaresGetInput = typeof FirmwaresGetInput.Type;
+) as unknown as Schema.Codec<FirmwaresGetInput>;
 
 // Output Schema
+export interface FirmwaresGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirmwaresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -445,8 +577,7 @@ export const FirmwaresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FirmwaresGetOutput = typeof FirmwaresGetOutput.Type;
+}) as unknown as Schema.Codec<FirmwaresGetOutput>;
 
 // The operation
 /**
@@ -463,6 +594,11 @@ export const FirmwaresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirmwaresGetOutput,
 }));
 // Input Schema
+export interface FirmwaresListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const FirmwaresListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -474,11 +610,25 @@ export const FirmwaresListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares",
       apiVersion: "2025-08-02",
     }),
-  );
-export type FirmwaresListByWorkspaceInput =
-  typeof FirmwaresListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<FirmwaresListByWorkspaceInput>;
 
 // Output Schema
+export interface FirmwaresListByWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FirmwaresListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -513,9 +663,7 @@ export const FirmwaresListByWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FirmwaresListByWorkspaceOutput =
-  typeof FirmwaresListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<FirmwaresListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -533,6 +681,29 @@ export const FirmwaresListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirmwaresUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+  properties?: {
+    fileName?: string;
+    vendor?: string;
+    model?: string;
+    version?: string;
+    description?: string;
+    fileSize?: number;
+    status?: "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
+    statusMessages?: { errorCode?: number; message?: string }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Extracting"
+      | "Analyzing";
+  };
+}
 export const FirmwaresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -581,10 +752,22 @@ export const FirmwaresUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
     apiVersion: "2025-08-02",
   }),
-);
-export type FirmwaresUpdateInput = typeof FirmwaresUpdateInput.Type;
+) as unknown as Schema.Codec<FirmwaresUpdateInput>;
 
 // Output Schema
+export interface FirmwaresUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirmwaresUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -603,8 +786,7 @@ export const FirmwaresUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FirmwaresUpdateOutput = typeof FirmwaresUpdateOutput.Type;
+}) as unknown as Schema.Codec<FirmwaresUpdateOutput>;
 
 // The operation
 /**
@@ -621,6 +803,7 @@ export const FirmwaresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirmwaresUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -629,10 +812,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.IoTFirmwareDefense/operations",
     apiVersion: "2025-08-02",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -655,8 +852,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -669,6 +865,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PasswordHashesListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const PasswordHashesListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -681,11 +883,25 @@ export const PasswordHashesListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/passwordHashes",
       apiVersion: "2025-08-02",
     }),
-  );
-export type PasswordHashesListByFirmwareInput =
-  typeof PasswordHashesListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<PasswordHashesListByFirmwareInput>;
 
 // Output Schema
+export interface PasswordHashesListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PasswordHashesListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -720,9 +936,7 @@ export const PasswordHashesListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PasswordHashesListByFirmwareOutput =
-  typeof PasswordHashesListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<PasswordHashesListByFirmwareOutput>;
 
 // The operation
 /**
@@ -740,6 +954,12 @@ export const PasswordHashesListByFirmware =
     outputSchema: PasswordHashesListByFirmwareOutput,
   }));
 // Input Schema
+export interface SbomComponentsListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const SbomComponentsListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -752,11 +972,25 @@ export const SbomComponentsListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/sbomComponents",
       apiVersion: "2025-08-02",
     }),
-  );
-export type SbomComponentsListByFirmwareInput =
-  typeof SbomComponentsListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<SbomComponentsListByFirmwareInput>;
 
 // Output Schema
+export interface SbomComponentsListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SbomComponentsListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -791,9 +1025,7 @@ export const SbomComponentsListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SbomComponentsListByFirmwareOutput =
-  typeof SbomComponentsListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<SbomComponentsListByFirmwareOutput>;
 
 // The operation
 /**
@@ -811,6 +1043,18 @@ export const SbomComponentsListByFirmware =
     outputSchema: SbomComponentsListByFirmwareOutput,
   }));
 // Input Schema
+export interface SummariesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+  summaryType:
+    | "Firmware"
+    | "CommonVulnerabilitiesAndExposures"
+    | "BinaryHardening"
+    | "CryptoCertificate"
+    | "CryptoKey";
+}
 export const SummariesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -829,10 +1073,22 @@ export const SummariesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}",
     apiVersion: "2025-08-02",
   }),
-);
-export type SummariesGetInput = typeof SummariesGetInput.Type;
+) as unknown as Schema.Codec<SummariesGetInput>;
 
 // Output Schema
+export interface SummariesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SummariesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -851,8 +1107,7 @@ export const SummariesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SummariesGetOutput = typeof SummariesGetOutput.Type;
+}) as unknown as Schema.Codec<SummariesGetOutput>;
 
 // The operation
 /**
@@ -870,6 +1125,12 @@ export const SummariesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SummariesGetOutput,
 }));
 // Input Schema
+export interface SummariesListByFirmwareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId: string;
+}
 export const SummariesListByFirmwareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -882,11 +1143,25 @@ export const SummariesListByFirmwareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries",
       apiVersion: "2025-08-02",
     }),
-  );
-export type SummariesListByFirmwareInput =
-  typeof SummariesListByFirmwareInput.Type;
+  ) as unknown as Schema.Codec<SummariesListByFirmwareInput>;
 
 // Output Schema
+export interface SummariesListByFirmwareOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SummariesListByFirmwareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -921,9 +1196,7 @@ export const SummariesListByFirmwareOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SummariesListByFirmwareOutput =
-  typeof SummariesListByFirmwareOutput.Type;
+  }) as unknown as Schema.Codec<SummariesListByFirmwareOutput>;
 
 // The operation
 /**
@@ -942,6 +1215,12 @@ export const SummariesListByFirmware = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UsageMetricsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const UsageMetricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -953,10 +1232,22 @@ export const UsageMetricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
     apiVersion: "2025-08-02",
   }),
-);
-export type UsageMetricsGetInput = typeof UsageMetricsGetInput.Type;
+) as unknown as Schema.Codec<UsageMetricsGetInput>;
 
 // Output Schema
+export interface UsageMetricsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsageMetricsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -975,8 +1266,7 @@ export const UsageMetricsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsageMetricsGetOutput = typeof UsageMetricsGetOutput.Type;
+}) as unknown as Schema.Codec<UsageMetricsGetOutput>;
 
 // The operation
 /**
@@ -993,6 +1283,11 @@ export const UsageMetricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsageMetricsGetOutput,
 }));
 // Input Schema
+export interface UsageMetricsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const UsageMetricsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1004,11 +1299,25 @@ export const UsageMetricsListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics",
       apiVersion: "2025-08-02",
     }),
-  );
-export type UsageMetricsListByWorkspaceInput =
-  typeof UsageMetricsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<UsageMetricsListByWorkspaceInput>;
 
 // Output Schema
+export interface UsageMetricsListByWorkspaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsageMetricsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1043,9 +1352,7 @@ export const UsageMetricsListByWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsageMetricsListByWorkspaceOutput =
-  typeof UsageMetricsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<UsageMetricsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -1063,6 +1370,29 @@ export const UsageMetricsListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Extracting"
+      | "Analyzing";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WorkspacesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1100,10 +1430,22 @@ export const WorkspacesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
     apiVersion: "2025-08-02",
   }),
-);
-export type WorkspacesCreateInput = typeof WorkspacesCreateInput.Type;
+) as unknown as Schema.Codec<WorkspacesCreateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1124,8 +1466,7 @@ export const WorkspacesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesCreateOutput = typeof WorkspacesCreateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesCreateOutput>;
 
 // The operation
 /**
@@ -1141,6 +1482,11 @@ export const WorkspacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesCreateOutput,
 }));
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1151,12 +1497,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
     apiVersion: "2025-08-02",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -1172,6 +1518,12 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesGenerateUploadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  firmwareId?: string;
+}
 export const WorkspacesGenerateUploadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1184,17 +1536,16 @@ export const WorkspacesGenerateUploadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/generateUploadUrl",
       apiVersion: "2025-08-02",
     }),
-  );
-export type WorkspacesGenerateUploadUrlInput =
-  typeof WorkspacesGenerateUploadUrlInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesGenerateUploadUrlInput>;
 
 // Output Schema
+export interface WorkspacesGenerateUploadUrlOutput {
+  url?: string;
+}
 export const WorkspacesGenerateUploadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-  });
-export type WorkspacesGenerateUploadUrlOutput =
-  typeof WorkspacesGenerateUploadUrlOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesGenerateUploadUrlOutput>;
 
 // The operation
 /**
@@ -1212,6 +1563,11 @@ export const WorkspacesGenerateUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1222,10 +1578,22 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
     apiVersion: "2025-08-02",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1244,8 +1612,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -1261,6 +1628,10 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1271,11 +1642,25 @@ export const WorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces",
       apiVersion: "2025-08-02",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1310,9 +1695,7 @@ export const WorkspacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1328,6 +1711,9 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1337,11 +1723,25 @@ export const WorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTFirmwareDefense/workspaces",
       apiVersion: "2025-08-02",
     }),
-  );
-export type WorkspacesListBySubscriptionInput =
-  typeof WorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkspacesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1376,9 +1776,7 @@ export const WorkspacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListBySubscriptionOutput =
-  typeof WorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1393,6 +1791,19 @@ export const WorkspacesListBySubscription =
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface WorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  sku?: {
+    name?: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1415,10 +1826,22 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
     apiVersion: "2025-08-02",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1439,8 +1862,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**

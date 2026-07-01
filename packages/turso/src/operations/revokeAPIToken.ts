@@ -4,16 +4,22 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RevokeAPITokenInput {
+  tokenName: string;
+}
 export const RevokeAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tokenName: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v1/auth/api-tokens/{tokenName}" }));
-export type RevokeAPITokenInput = typeof RevokeAPITokenInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v1/auth/api-tokens/{tokenName}" }),
+) as unknown as Schema.Codec<RevokeAPITokenInput>;
 
 // Output Schema
+export interface RevokeAPITokenOutput {
+  token?: string;
+}
 export const RevokeAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   token: Schema.optional(Schema.String),
-});
-export type RevokeAPITokenOutput = typeof RevokeAPITokenOutput.Type;
+}) as unknown as Schema.Codec<RevokeAPITokenOutput>;
 
 // The operation
 /**

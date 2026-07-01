@@ -3,16 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteBranchNeonAuthTrustedDomainInput {
+  project_id: string;
+  branch_id: string;
+  auth_provider: "mock" | "stack" | "better_auth";
+  domains: { domain: string }[];
+}
 export const DeleteBranchNeonAuthTrustedDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
-    auth_provider: Schema.Literals([
-      "mock",
-      "stack",
-      "stack_v2",
-      "better_auth",
-    ]),
+    auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
     domains: Schema.Array(
       Schema.Struct({
         domain: Schema.String,
@@ -23,21 +24,19 @@ export const DeleteBranchNeonAuthTrustedDomainInput =
       method: "DELETE",
       path: "/projects/{project_id}/branches/{branch_id}/auth/domains",
     }),
-  );
-export type DeleteBranchNeonAuthTrustedDomainInput =
-  typeof DeleteBranchNeonAuthTrustedDomainInput.Type;
+  ) as unknown as Schema.Codec<DeleteBranchNeonAuthTrustedDomainInput>;
 
 // Output Schema
+export type DeleteBranchNeonAuthTrustedDomainOutput = void;
 export const DeleteBranchNeonAuthTrustedDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteBranchNeonAuthTrustedDomainOutput =
-  typeof DeleteBranchNeonAuthTrustedDomainOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchNeonAuthTrustedDomainOutput>;
 
 // The operation
 /**
  * Delete domain from redirect_uri whitelist
  *
- * Deletes a domain from the redirect_uri whitelist for the specified project.
+ * Removes a domain from the redirect URI whitelist for the specified branch.
+ * After removal, the domain can no longer be used as a redirect target after authentication.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

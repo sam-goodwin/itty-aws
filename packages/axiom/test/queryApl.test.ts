@@ -34,7 +34,7 @@ describe("queryApl", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -60,7 +60,7 @@ describe("queryApl", () => {
       const error = await Effect.runPromise(effect);
       expect((error as { _tag: string })._tag).toBe("Unauthorized");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -75,6 +75,6 @@ describe("queryApl", () => {
 
       expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

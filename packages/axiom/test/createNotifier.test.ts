@@ -42,7 +42,7 @@ describe("createNotifier", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -78,6 +78,6 @@ describe("createNotifier", () => {
 
       await runEffect(effect);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

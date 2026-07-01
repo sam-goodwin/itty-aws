@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerDeleteInput {
+  resource_id: string;
+  cascade_delete?: boolean;
+}
 export const AuthorizationResourcesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const AuthorizationResourcesControllerDeleteInput =
       method: "DELETE",
       path: "/authorization/resources/{resource_id}",
     }),
-  );
-export type AuthorizationResourcesControllerDeleteInput =
-  typeof AuthorizationResourcesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerDeleteInput>;
 
 // Output Schema
+export type AuthorizationResourcesControllerDeleteOutput = void;
 export const AuthorizationResourcesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizationResourcesControllerDeleteOutput =
-  typeof AuthorizationResourcesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesControllerDeleteOutput>;
 
 // The operation
 /**

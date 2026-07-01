@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetPaymentMethodDomainsInput {
+  domain_name?: string;
+  enabled?: boolean;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetPaymentMethodDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain_name: Schema.optional(Schema.String),
@@ -17,11 +25,46 @@ export const GetPaymentMethodDomainsInput =
       path: "/v1/payment_method_domains",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetPaymentMethodDomainsInput =
-  typeof GetPaymentMethodDomainsInput.Type;
+  ) as unknown as Schema.Codec<GetPaymentMethodDomainsInput>;
 
 // Output Schema
+export interface GetPaymentMethodDomainsOutput {
+  data: {
+    amazon_pay: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+    apple_pay: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+    created: number;
+    domain_name: string;
+    enabled: boolean;
+    google_pay: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+    id: string;
+    klarna: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+    link: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+    livemode: boolean;
+    object: "payment_method_domain";
+    paypal: {
+      status: "active" | "inactive";
+      status_details?: { error_message: string };
+    };
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetPaymentMethodDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -85,9 +128,7 @@ export const GetPaymentMethodDomainsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetPaymentMethodDomainsOutput =
-  typeof GetPaymentMethodDomainsOutput.Type;
+  }) as unknown as Schema.Codec<GetPaymentMethodDomainsOutput>;
 
 // The operation
 /**

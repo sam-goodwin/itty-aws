@@ -4,12 +4,29 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AliasCreateInput {
+  aliasName: string;
+  properties?: {
+    displayName?: string;
+    workload?: "Production" | "DevTest";
+    billingScope?: string;
+    subscriptionId?: string;
+    resellerId?: string;
+    additionalProperties?: {
+      managementGroupId?: string;
+      subscriptionTenantId?: string;
+      subscriptionOwnerId?: string;
+      tags?: Record<string, string>;
+    };
+  };
+}
 export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       displayName: Schema.optional(Schema.String),
@@ -33,10 +50,36 @@ export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
     apiVersion: "2021-10-01",
   }),
-);
-export type AliasCreateInput = typeof AliasCreateInput.Type;
+) as unknown as Schema.Codec<AliasCreateInput>;
 
 // Output Schema
+export interface AliasCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    subscriptionId?: string;
+    displayName?: string;
+    provisioningState?: "Accepted" | "Succeeded" | "Failed";
+    acceptOwnershipUrl?: string;
+    acceptOwnershipState?: "Pending" | "Completed" | "Expired";
+    billingScope?: string;
+    workload?: "Production" | "DevTest";
+    resellerId?: string;
+    subscriptionOwnerId?: string;
+    managementGroupId?: string;
+    createdTime?: string;
+    tags?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AliasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -75,52 +118,91 @@ export const AliasCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AliasCreateOutput = typeof AliasCreateOutput.Type;
+}) as unknown as Schema.Codec<AliasCreateOutput>;
 
 // The operation
 /**
  * Create Alias Subscription.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasCreateInput,
   outputSchema: AliasCreateOutput,
 }));
 // Input Schema
-export const AliasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AliasDeleteInput {
+  aliasName: string;
+}
+export const AliasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
     apiVersion: "2021-10-01",
   }),
-);
-export type AliasDeleteInput = typeof AliasDeleteInput.Type;
+) as unknown as Schema.Codec<AliasDeleteInput>;
 
 // Output Schema
-export const AliasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AliasDeleteOutput = typeof AliasDeleteOutput.Type;
+export type AliasDeleteOutput = void;
+export const AliasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AliasDeleteOutput>;
 
 // The operation
 /**
  * Delete Alias.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasDeleteInput,
   outputSchema: AliasDeleteOutput,
 }));
 // Input Schema
-export const AliasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface AliasGetInput {
+  aliasName: string;
+}
+export const AliasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliasName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
     apiVersion: "2021-10-01",
   }),
-);
-export type AliasGetInput = typeof AliasGetInput.Type;
+) as unknown as Schema.Codec<AliasGetInput>;
 
 // Output Schema
+export interface AliasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    subscriptionId?: string;
+    displayName?: string;
+    provisioningState?: "Accepted" | "Succeeded" | "Failed";
+    acceptOwnershipUrl?: string;
+    acceptOwnershipState?: "Pending" | "Completed" | "Expired";
+    billingScope?: string;
+    workload?: "Production" | "DevTest";
+    resellerId?: string;
+    subscriptionOwnerId?: string;
+    managementGroupId?: string;
+    createdTime?: string;
+    tags?: Record<string, string>;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AliasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -159,18 +241,21 @@ export const AliasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AliasGetOutput = typeof AliasGetOutput.Type;
+}) as unknown as Schema.Codec<AliasGetOutput>;
 
 // The operation
 /**
  * Get Alias Subscription.
+ *
+ * @param aliasName - AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasGetInput,
   outputSchema: AliasGetOutput,
 }));
 // Input Schema
+export interface AliasListInput {}
 export const AliasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -179,10 +264,39 @@ export const AliasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Subscription/aliases",
     apiVersion: "2021-10-01",
   }),
-);
-export type AliasListInput = typeof AliasListInput.Type;
+) as unknown as Schema.Codec<AliasListInput>;
 
 // Output Schema
+export interface AliasListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      subscriptionId?: string;
+      displayName?: string;
+      provisioningState?: "Accepted" | "Succeeded" | "Failed";
+      acceptOwnershipUrl?: string;
+      acceptOwnershipState?: "Pending" | "Completed" | "Expired";
+      billingScope?: string;
+      workload?: "Production" | "DevTest";
+      resellerId?: string;
+      subscriptionOwnerId?: string;
+      managementGroupId?: string;
+      createdTime?: string;
+      tags?: Record<string, string>;
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AliasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -240,30 +354,51 @@ export const AliasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type AliasListOutput = typeof AliasListOutput.Type;
+}) as unknown as Schema.Codec<AliasListOutput>;
 
 // The operation
 /**
  * List Alias Subscription.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const AliasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AliasListInput,
   outputSchema: AliasListOutput,
 }));
 // Input Schema
+export interface BillingAccountGetPolicyInput {
+  billingAccountId: string;
+}
 export const BillingAccountGetPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Subscription/policies/default",
       apiVersion: "2021-10-01",
     }),
-  );
-export type BillingAccountGetPolicyInput =
-  typeof BillingAccountGetPolicyInput.Type;
+  ) as unknown as Schema.Codec<BillingAccountGetPolicyInput>;
 
 // Output Schema
+export interface BillingAccountGetPolicyOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    serviceTenants?: { tenantId?: string; tenantName?: string }[];
+    allowTransfers?: boolean;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BillingAccountGetPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -296,13 +431,14 @@ export const BillingAccountGetPolicyOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BillingAccountGetPolicyOutput =
-  typeof BillingAccountGetPolicyOutput.Type;
+  }) as unknown as Schema.Codec<BillingAccountGetPolicyOutput>;
 
 // The operation
 /**
  * Get Billing Account Policy.
+ *
+ * @param billingAccountId - Billing Account Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const BillingAccountGetPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -311,6 +447,7 @@ export const BillingAccountGetPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -319,10 +456,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Subscription/operations",
     apiVersion: "2021-10-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -341,20 +490,30 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists all of the available Microsoft.Subscription API operations.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SubscriptionAcceptOwnershipInput {
+  subscriptionId: string;
+  properties?: {
+    displayName: string;
+    managementGroupId?: string;
+    tags?: Record<string, string>;
+  };
+}
 export const SubscriptionAcceptOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         displayName: Schema.String,
@@ -368,19 +527,19 @@ export const SubscriptionAcceptOwnershipInput =
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnership",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionAcceptOwnershipInput =
-  typeof SubscriptionAcceptOwnershipInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionAcceptOwnershipInput>;
 
 // Output Schema
+export type SubscriptionAcceptOwnershipOutput = void;
 export const SubscriptionAcceptOwnershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SubscriptionAcceptOwnershipOutput =
-  typeof SubscriptionAcceptOwnershipOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SubscriptionAcceptOwnershipOutput>;
 
 // The operation
 /**
  * Accept subscription ownership.
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionAcceptOwnership = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -389,18 +548,30 @@ export const SubscriptionAcceptOwnership = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SubscriptionAcceptOwnershipStatusInput {
+  subscriptionId: string;
+}
 export const SubscriptionAcceptOwnershipStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionAcceptOwnershipStatusInput =
-  typeof SubscriptionAcceptOwnershipStatusInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionAcceptOwnershipStatusInput>;
 
 // Output Schema
+export interface SubscriptionAcceptOwnershipStatusOutput {
+  subscriptionId?: string;
+  acceptOwnershipState?: "Pending" | "Completed" | "Expired";
+  provisioningState?: "Pending" | "Accepted" | "Succeeded";
+  billingOwner?: string;
+  subscriptionTenantId?: string;
+  displayName?: string;
+  tags?: Record<string, string>;
+}
 export const SubscriptionAcceptOwnershipStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
@@ -414,13 +585,14 @@ export const SubscriptionAcceptOwnershipStatusOutput =
     subscriptionTenantId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type SubscriptionAcceptOwnershipStatusOutput =
-  typeof SubscriptionAcceptOwnershipStatusOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionAcceptOwnershipStatusOutput>;
 
 // The operation
 /**
  * Accept subscription ownership status.
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionAcceptOwnershipStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -428,58 +600,79 @@ export const SubscriptionAcceptOwnershipStatus =
     outputSchema: SubscriptionAcceptOwnershipStatusOutput,
   }));
 // Input Schema
+export interface SubscriptionCancelInput {
+  subscriptionId: string;
+}
 export const SubscriptionCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/cancel",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionCancelInput = typeof SubscriptionCancelInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionCancelInput>;
 
 // Output Schema
+export interface SubscriptionCancelOutput {
+  subscriptionId?: string;
+}
 export const SubscriptionCancelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type SubscriptionCancelOutput = typeof SubscriptionCancelOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionCancelOutput>;
 
 // The operation
 /**
  * The operation to cancel a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionCancelInput,
   outputSchema: SubscriptionCancelOutput,
 }));
 // Input Schema
+export interface SubscriptionEnableInput {
+  subscriptionId: string;
+}
 export const SubscriptionEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionEnableInput = typeof SubscriptionEnableInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionEnableInput>;
 
 // Output Schema
+export interface SubscriptionEnableOutput {
+  subscriptionId?: string;
+}
 export const SubscriptionEnableOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type SubscriptionEnableOutput = typeof SubscriptionEnableOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionEnableOutput>;
 
 // The operation
 /**
  * The operation to enable a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionEnableInput,
   outputSchema: SubscriptionEnableOutput,
 }));
 // Input Schema
+export interface SubscriptionOperationGetInput {
+  operationId: string;
+}
 export const SubscriptionOperationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationId: Schema.String.pipe(T.PathParam()),
@@ -489,23 +682,23 @@ export const SubscriptionOperationGetInput =
       path: "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionOperationGetInput =
-  typeof SubscriptionOperationGetInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionOperationGetInput>;
 
 // Output Schema
+export interface SubscriptionOperationGetOutput {
+  subscriptionLink?: string;
+}
 export const SubscriptionOperationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionLink: Schema.optional(Schema.String),
-  });
-export type SubscriptionOperationGetOutput =
-  typeof SubscriptionOperationGetOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionOperationGetOutput>;
 
 // The operation
 /**
  * Get the status of the pending Microsoft.Subscription API operations.
  *
  * @param operationId - The operation ID, which can be found from the Location field in the generate recommendation response header.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -514,6 +707,11 @@ export const SubscriptionOperationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SubscriptionPolicyAddUpdatePolicyForTenantInput {
+  blockSubscriptionsLeavingTenant?: boolean;
+  blockSubscriptionsIntoTenant?: boolean;
+  exemptedPrincipals?: string[];
+}
 export const SubscriptionPolicyAddUpdatePolicyForTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blockSubscriptionsLeavingTenant: Schema.optional(Schema.Boolean),
@@ -525,11 +723,28 @@ export const SubscriptionPolicyAddUpdatePolicyForTenantInput =
       path: "/providers/Microsoft.Subscription/policies/default",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionPolicyAddUpdatePolicyForTenantInput =
-  typeof SubscriptionPolicyAddUpdatePolicyForTenantInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionPolicyAddUpdatePolicyForTenantInput>;
 
 // Output Schema
+export interface SubscriptionPolicyAddUpdatePolicyForTenantOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    policyId?: string;
+    blockSubscriptionsLeavingTenant?: boolean;
+    blockSubscriptionsIntoTenant?: boolean;
+    exemptedPrincipals?: string[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SubscriptionPolicyAddUpdatePolicyForTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -557,13 +772,13 @@ export const SubscriptionPolicyAddUpdatePolicyForTenantOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SubscriptionPolicyAddUpdatePolicyForTenantOutput =
-  typeof SubscriptionPolicyAddUpdatePolicyForTenantOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionPolicyAddUpdatePolicyForTenantOutput>;
 
 // The operation
 /**
  * Create or Update Subscription tenant policy for user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyAddUpdatePolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -571,6 +786,7 @@ export const SubscriptionPolicyAddUpdatePolicyForTenant =
     outputSchema: SubscriptionPolicyAddUpdatePolicyForTenantOutput,
   }));
 // Input Schema
+export interface SubscriptionPolicyGetPolicyForTenantInput {}
 export const SubscriptionPolicyGetPolicyForTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -578,11 +794,28 @@ export const SubscriptionPolicyGetPolicyForTenantInput =
       path: "/providers/Microsoft.Subscription/policies/default",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionPolicyGetPolicyForTenantInput =
-  typeof SubscriptionPolicyGetPolicyForTenantInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionPolicyGetPolicyForTenantInput>;
 
 // Output Schema
+export interface SubscriptionPolicyGetPolicyForTenantOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    policyId?: string;
+    blockSubscriptionsLeavingTenant?: boolean;
+    blockSubscriptionsIntoTenant?: boolean;
+    exemptedPrincipals?: string[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SubscriptionPolicyGetPolicyForTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -610,13 +843,13 @@ export const SubscriptionPolicyGetPolicyForTenantOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SubscriptionPolicyGetPolicyForTenantOutput =
-  typeof SubscriptionPolicyGetPolicyForTenantOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionPolicyGetPolicyForTenantOutput>;
 
 // The operation
 /**
  * Get the subscription tenant policy for the user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyGetPolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -624,6 +857,7 @@ export const SubscriptionPolicyGetPolicyForTenant =
     outputSchema: SubscriptionPolicyGetPolicyForTenantOutput,
   }));
 // Input Schema
+export interface SubscriptionPolicyListPolicyForTenantInput {}
 export const SubscriptionPolicyListPolicyForTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -631,11 +865,31 @@ export const SubscriptionPolicyListPolicyForTenantInput =
       path: "/providers/Microsoft.Subscription/policies",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionPolicyListPolicyForTenantInput =
-  typeof SubscriptionPolicyListPolicyForTenantInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionPolicyListPolicyForTenantInput>;
 
 // Output Schema
+export interface SubscriptionPolicyListPolicyForTenantOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      policyId?: string;
+      blockSubscriptionsLeavingTenant?: boolean;
+      blockSubscriptionsIntoTenant?: boolean;
+      exemptedPrincipals?: string[];
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SubscriptionPolicyListPolicyForTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -680,13 +934,13 @@ export const SubscriptionPolicyListPolicyForTenantOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SubscriptionPolicyListPolicyForTenantOutput =
-  typeof SubscriptionPolicyListPolicyForTenantOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionPolicyListPolicyForTenantOutput>;
 
 // The operation
 /**
  * Get the subscription tenant policy for the user's tenant.
+ *
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionPolicyListPolicyForTenant =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -694,26 +948,37 @@ export const SubscriptionPolicyListPolicyForTenant =
     outputSchema: SubscriptionPolicyListPolicyForTenantOutput,
   }));
 // Input Schema
+export interface SubscriptionRenameInput {
+  subscriptionId: string;
+  subscriptionName?: string;
+}
 export const SubscriptionRenameInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    subscriptionName: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/rename",
       apiVersion: "2021-10-01",
     }),
-  );
-export type SubscriptionRenameInput = typeof SubscriptionRenameInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionRenameInput>;
 
 // Output Schema
+export interface SubscriptionRenameOutput {
+  subscriptionId?: string;
+}
 export const SubscriptionRenameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type SubscriptionRenameOutput = typeof SubscriptionRenameOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionRenameOutput>;
 
 // The operation
 /**
  * The operation to rename a subscription
+ *
+ * @param subscriptionId - Subscription Id.
+ * @param api-version - Version of the API to be used with the client request. Current version is 2021-10-01
  */
 export const SubscriptionRename = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionRenameInput,

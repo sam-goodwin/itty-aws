@@ -4,18 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetActionRunLogsInput {
+  ref: string;
+  run_id: string;
+}
 export const V1GetActionRunLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/actions/{run_id}/logs" }),
-  );
-export type V1GetActionRunLogsInput = typeof V1GetActionRunLogsInput.Type;
+  ) as unknown as Schema.Codec<V1GetActionRunLogsInput>;
 
 // Output Schema
-export const V1GetActionRunLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1GetActionRunLogsOutput = typeof V1GetActionRunLogsOutput.Type;
+export type V1GetActionRunLogsOutput = void;
+export const V1GetActionRunLogsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1GetActionRunLogsOutput>;
 
 // The operation
 /**

@@ -2,9 +2,18 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface V1UpdateProjectApiKeyInput {
+  ref: string;
+  id: string;
+  reveal?: boolean;
+  name?: string;
+  description?: string | null;
+  secret_jwt_template?: Record<string, unknown> | null;
+}
 export const V1UpdateProjectApiKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -17,13 +26,24 @@ export const V1UpdateProjectApiKeyInput =
     ),
   }).pipe(
     T.Http({ method: "PATCH", path: "/v1/projects/{ref}/api-keys/{id}" }),
-  );
-export type V1UpdateProjectApiKeyInput = typeof V1UpdateProjectApiKeyInput.Type;
+  ) as unknown as Schema.Codec<V1UpdateProjectApiKeyInput>;
 
 // Output Schema
+export interface V1UpdateProjectApiKeyOutput {
+  api_key?: Redacted.Redacted<string> | null;
+  id?: string | null;
+  type?: "legacy" | "publishable" | "secret" | null;
+  prefix?: string | null;
+  name: string;
+  description?: string | null;
+  hash?: string | null;
+  secret_jwt_template?: Record<string, unknown> | null;
+  inserted_at?: string | null;
+  updated_at?: string | null;
+}
 export const V1UpdateProjectApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    api_key: Schema.optional(SensitiveNullableString),
+    api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
       Schema.NullOr(Schema.Literals(["legacy", "publishable", "secret"])),
@@ -37,9 +57,7 @@ export const V1UpdateProjectApiKeyOutput =
     ),
     inserted_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type V1UpdateProjectApiKeyOutput =
-  typeof V1UpdateProjectApiKeyOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdateProjectApiKeyOutput>;
 
 // The operation
 /**

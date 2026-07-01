@@ -3,6 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTreasuryTransactionsInput {
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  financial_account: string;
+  limit?: number;
+  order_by?: "created" | "posted_at";
+  starting_after?: string;
+  status?: "open" | "posted" | "void";
+  status_transitions?: string;
+}
 export const GetTreasuryTransactionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
@@ -20,11 +31,96 @@ export const GetTreasuryTransactionsInput =
       path: "/v1/treasury/transactions",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTreasuryTransactionsInput =
-  typeof GetTreasuryTransactionsInput.Type;
+  ) as unknown as Schema.Codec<GetTreasuryTransactionsInput>;
 
 // Output Schema
+export interface GetTreasuryTransactionsOutput {
+  data: {
+    amount: number;
+    balance_impact: {
+      cash: number;
+      inbound_pending: number;
+      outbound_pending: number;
+    };
+    created: number;
+    currency: string;
+    description: string;
+    entries?: {
+      data: {
+        balance_impact: {
+          cash: number;
+          inbound_pending: number;
+          outbound_pending: number;
+        };
+        created: number;
+        currency: string;
+        effective_at: number;
+        financial_account: string;
+        flow: string | null;
+        flow_details?: unknown;
+        flow_type:
+          | "credit_reversal"
+          | "debit_reversal"
+          | "inbound_transfer"
+          | "issuing_authorization"
+          | "other"
+          | "outbound_payment"
+          | "outbound_transfer"
+          | "received_credit"
+          | "received_debit";
+        id: string;
+        livemode: boolean;
+        object: "treasury.transaction_entry";
+        transaction: string | unknown;
+        type:
+          | "credit_reversal"
+          | "credit_reversal_posting"
+          | "debit_reversal"
+          | "inbound_transfer"
+          | "inbound_transfer_return"
+          | "issuing_authorization_hold"
+          | "issuing_authorization_release"
+          | "other"
+          | "outbound_payment"
+          | "outbound_payment_cancellation"
+          | "outbound_payment_failure"
+          | "outbound_payment_posting"
+          | "outbound_payment_return"
+          | "outbound_transfer"
+          | "outbound_transfer_cancellation"
+          | "outbound_transfer_failure"
+          | "outbound_transfer_posting"
+          | "outbound_transfer_return"
+          | "received_credit"
+          | "received_debit";
+      }[];
+      has_more: boolean;
+      object: "list";
+      url: string;
+    } | null;
+    financial_account: string;
+    flow: string | null;
+    flow_details?: unknown;
+    flow_type:
+      | "credit_reversal"
+      | "debit_reversal"
+      | "inbound_transfer"
+      | "issuing_authorization"
+      | "other"
+      | "outbound_payment"
+      | "outbound_transfer"
+      | "received_credit"
+      | "received_debit";
+    id: string;
+    livemode: boolean;
+    object: "treasury.transaction";
+    status: "open" | "posted" | "void";
+    status_transitions: { posted_at: number | null; void_at: number | null };
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetTreasuryTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -68,7 +164,7 @@ export const GetTreasuryTransactionsOutput =
                   id: Schema.String,
                   livemode: Schema.Boolean,
                   object: Schema.Literals(["treasury.transaction_entry"]),
-                  transaction: Schema.Unknown,
+                  transaction: Schema.Union([Schema.String, Schema.Unknown]),
                   type: Schema.Literals([
                     "credit_reversal",
                     "credit_reversal_posting",
@@ -126,9 +222,7 @@ export const GetTreasuryTransactionsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetTreasuryTransactionsOutput =
-  typeof GetTreasuryTransactionsOutput.Type;
+  }) as unknown as Schema.Codec<GetTreasuryTransactionsOutput>;
 
 // The operation
 /**

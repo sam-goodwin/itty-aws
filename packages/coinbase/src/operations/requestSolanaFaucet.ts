@@ -3,19 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RequestSolanaFaucetInput {
+  address: string;
+  token: "sol" | "usdc" | "cbtusd";
+}
 export const RequestSolanaFaucetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String,
     token: Schema.Literals(["sol", "usdc", "cbtusd"]),
-  }).pipe(T.Http({ method: "POST", path: "/v2/solana/faucet" }));
-export type RequestSolanaFaucetInput = typeof RequestSolanaFaucetInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/solana/faucet" }),
+  ) as unknown as Schema.Codec<RequestSolanaFaucetInput>;
 
 // Output Schema
+export interface RequestSolanaFaucetOutput {
+  transactionSignature: string;
+}
 export const RequestSolanaFaucetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionSignature: Schema.String,
-  });
-export type RequestSolanaFaucetOutput = typeof RequestSolanaFaucetOutput.Type;
+  }) as unknown as Schema.Codec<RequestSolanaFaucetOutput>;
 
 // The operation
 /**

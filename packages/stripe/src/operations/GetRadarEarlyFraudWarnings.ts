@@ -1,8 +1,22 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetRadarEarlyFraudWarningsInput {
+  charge?: string;
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  payment_intent?: string;
+  starting_after?: string;
+}
 export const GetRadarEarlyFraudWarningsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     charge: Schema.optional(Schema.String),
@@ -18,11 +32,24 @@ export const GetRadarEarlyFraudWarningsInput =
       path: "/v1/radar/early_fraud_warnings",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetRadarEarlyFraudWarningsInput =
-  typeof GetRadarEarlyFraudWarningsInput.Type;
+  ) as unknown as Schema.Codec<GetRadarEarlyFraudWarningsInput>;
 
 // Output Schema
+export interface GetRadarEarlyFraudWarningsOutput {
+  data: {
+    actionable: boolean;
+    charge: unknown;
+    created: number;
+    fraud_type: string;
+    id: string;
+    livemode: boolean;
+    object: "radar.early_fraud_warning";
+    payment_intent?: unknown;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetRadarEarlyFraudWarningsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -40,9 +67,7 @@ export const GetRadarEarlyFraudWarningsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetRadarEarlyFraudWarningsOutput =
-  typeof GetRadarEarlyFraudWarningsOutput.Type;
+  }) as unknown as Schema.Codec<GetRadarEarlyFraudWarningsOutput>;
 
 // The operation
 /**

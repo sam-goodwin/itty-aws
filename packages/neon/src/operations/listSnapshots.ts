@@ -3,12 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListSnapshotsInput {
+  project_id: string;
+}
 export const ListSnapshotsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/snapshots" }));
-export type ListSnapshotsInput = typeof ListSnapshotsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}/snapshots" }),
+) as unknown as Schema.Codec<ListSnapshotsInput>;
 
 // Output Schema
+export interface ListSnapshotsOutput {
+  snapshots: {
+    id: string;
+    name: string;
+    lsn?: string;
+    timestamp?: string;
+    source_branch_id?: string;
+    created_at: string;
+    expires_at?: string;
+    manual?: boolean;
+    full_size?: number;
+    diff_size?: number;
+  }[];
+}
 export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshots: Schema.Array(
     Schema.Struct({
@@ -24,14 +42,14 @@ export const ListSnapshotsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       diff_size: Schema.optional(Schema.Number),
     }),
   ),
-});
-export type ListSnapshotsOutput = typeof ListSnapshotsOutput.Type;
+}) as unknown as Schema.Codec<ListSnapshotsOutput>;
 
 // The operation
 /**
  * List project snapshots
  *
- * List the snapshots for the specified project.
+ * Lists the snapshots for the specified project.
+ * Each snapshot represents a point-in-time backup of the project data.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

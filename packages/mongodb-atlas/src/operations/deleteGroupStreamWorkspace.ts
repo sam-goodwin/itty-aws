@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupStreamWorkspaceInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupStreamWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DeleteGroupStreamWorkspaceInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
     }),
-  );
-export type DeleteGroupStreamWorkspaceInput =
-  typeof DeleteGroupStreamWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupStreamWorkspaceInput>;
 
 // Output Schema
+export type DeleteGroupStreamWorkspaceOutput = void;
 export const DeleteGroupStreamWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupStreamWorkspaceOutput =
-  typeof DeleteGroupStreamWorkspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupStreamWorkspaceOutput>;
 
 // The operation
 /**
  * Delete One Stream Workspace
  *
- * Delete one stream workspace in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role, Project Owner role or Project Stream Processing Owner role.
+ * Delete one stream workspace in the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

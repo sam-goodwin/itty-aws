@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpgradePostgresVersionInput {
+  ref: string;
+  target_version: string;
+  release_channel?:
+    | "internal"
+    | "alpha"
+    | "beta"
+    | "ga"
+    | "withdrawn"
+    | "preview";
+}
 export const V1UpgradePostgresVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -18,17 +29,18 @@ export const V1UpgradePostgresVersionInput =
         "preview",
       ]),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/v1/projects/{ref}/upgrade" }));
-export type V1UpgradePostgresVersionInput =
-  typeof V1UpgradePostgresVersionInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/projects/{ref}/upgrade" }),
+  ) as unknown as Schema.Codec<V1UpgradePostgresVersionInput>;
 
 // Output Schema
+export interface V1UpgradePostgresVersionOutput {
+  tracking_id: string;
+}
 export const V1UpgradePostgresVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tracking_id: Schema.String,
-  });
-export type V1UpgradePostgresVersionOutput =
-  typeof V1UpgradePostgresVersionOutput.Type;
+  }) as unknown as Schema.Codec<V1UpgradePostgresVersionOutput>;
 
 // The operation
 /**

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest {
   scriptId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest> =
+export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
   }).annotate({
@@ -39,7 +39,7 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse {
   scriptId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse> =
+export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptId: Schema.optional(Schema.String),
   }).annotate({
@@ -53,7 +53,7 @@ export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest {
   authConfigId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest> =
+export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appsScriptProject: Schema.optional(Schema.String),
     authConfigId: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse {
   projectId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse> =
+export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
   }).annotate({
@@ -86,7 +86,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudKmsConfig {
   kmsProjectId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudKmsConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudKmsConfig> =
+export const GoogleCloudIntegrationsV1alphaCloudKmsConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaCloudKmsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kmsLocation: Schema.optional(Schema.String),
     kmsRing: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   enableManagedAiFeatures?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientRequest> =
+export const GoogleCloudIntegrationsV1alphaProvisionClientRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaProvisionClientRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudKmsConfig: Schema.optional(
       GoogleCloudIntegrationsV1alphaCloudKmsConfig,
@@ -129,7 +129,7 @@ export const GoogleCloudIntegrationsV1alphaProvisionClientRequest: Schema.Schema
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
+export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
@@ -144,7 +144,7 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorReque
   >;
 }
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest> =
+export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workflows: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -154,7 +154,7 @@ export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest: 
 
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse {}
 
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse> =
+export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
@@ -162,7 +162,7 @@ export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse:
 
 export interface GoogleCloudIntegrationsV1alphaDeprovisionClientRequest {}
 
-export const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaDeprovisionClientRequest> =
+export const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaDeprovisionClientRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaDeprovisionClientRequest",
   });
@@ -180,7 +180,7 @@ export interface GoogleCloudIntegrationsV1alphaCustomerConfig {
   cloudKmsConfig?: GoogleCloudIntegrationsV1alphaCloudKmsConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaCustomerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCustomerConfig> =
+export const GoogleCloudIntegrationsV1alphaCustomerConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaCustomerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableManagedAiFeatures: Schema.optional(Schema.Boolean),
     runAsServiceAccount: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export interface GoogleCloudIntegrationsV1alphaClientConfig {
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaClientConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaClientConfig> =
+export const GoogleCloudIntegrationsV1alphaClientConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaClientConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -262,7 +262,7 @@ export interface GoogleCloudIntegrationsV1alphaGetClientResponse {
   client?: GoogleCloudIntegrationsV1alphaClientConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaGetClientResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientResponse> =
+export const GoogleCloudIntegrationsV1alphaGetClientResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaGetClientResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client: Schema.optional(GoogleCloudIntegrationsV1alphaClientConfig),
   }).annotate({
@@ -276,7 +276,7 @@ export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest {
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest> =
+export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String),
     customerConfig: Schema.optional(
@@ -291,7 +291,7 @@ export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse {
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse> =
+export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerConfig: Schema.optional(
       GoogleCloudIntegrationsV1alphaCustomerConfig,
@@ -321,7 +321,7 @@ export interface GoogleCloudIntegrationsV1alphaProjectProperties {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaProjectProperties: Schema.Schema<GoogleCloudIntegrationsV1alphaProjectProperties> =
+export const GoogleCloudIntegrationsV1alphaProjectProperties: Schema.Codec<GoogleCloudIntegrationsV1alphaProjectProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipEnablementState: Schema.optional(Schema.String),
     provisionedRegions: Schema.optional(Schema.Array(Schema.String)),
@@ -335,7 +335,7 @@ export interface GoogleCloudIntegrationsV1alphaGetClientMetadataResponse {
   properties?: GoogleCloudIntegrationsV1alphaProjectProperties;
 }
 
-export const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGetClientMetadataResponse> =
+export const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaGetClientMetadataResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       GoogleCloudIntegrationsV1alphaProjectProperties,
@@ -349,7 +349,7 @@ export interface GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest {
   cloudKmsConfig?: GoogleCloudIntegrationsV1alphaCloudKmsConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest> =
+export const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudKmsConfig: Schema.optional(
       GoogleCloudIntegrationsV1alphaCloudKmsConfig,
@@ -363,7 +363,7 @@ export interface GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
   runAsServiceAccount?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest> =
+export const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runAsServiceAccount: Schema.optional(Schema.String),
   }).annotate({
@@ -375,7 +375,7 @@ export interface GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest {
   enableVariableMasking?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest> =
+export const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableVariableMasking: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -387,7 +387,7 @@ export interface GoogleCloudIntegrationsV1alphaToggleHttpRequest {
   enableHttpCall?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaToggleHttpRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaToggleHttpRequest> =
+export const GoogleCloudIntegrationsV1alphaToggleHttpRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaToggleHttpRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableHttpCall: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -409,7 +409,7 @@ export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest> =
+export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     functionName: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse {
   triggerUrl?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse> =
+export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -440,7 +440,7 @@ export interface GoogleCloudIntegrationsV1alphaClientCertificate {
   passphrase?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaClientCertificate: Schema.Schema<GoogleCloudIntegrationsV1alphaClientCertificate> =
+export const GoogleCloudIntegrationsV1alphaClientCertificate: Schema.Codec<GoogleCloudIntegrationsV1alphaClientCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sslCertificate: Schema.optional(Schema.String),
     encryptedPrivateKey: Schema.optional(Schema.String),
@@ -474,7 +474,7 @@ export interface GoogleCloudIntegrationsV1alphaCertificate {
   rawCertificate?: GoogleCloudIntegrationsV1alphaClientCertificate;
 }
 
-export const GoogleCloudIntegrationsV1alphaCertificate: Schema.Schema<GoogleCloudIntegrationsV1alphaCertificate> =
+export const GoogleCloudIntegrationsV1alphaCertificate: Schema.Codec<GoogleCloudIntegrationsV1alphaCertificate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -496,7 +496,7 @@ export interface GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListCertificatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListCertificatesResponse> =
+export const GoogleCloudIntegrationsV1alphaListCertificatesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListCertificatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificates: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaCertificate),
@@ -513,7 +513,7 @@ export interface GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   password?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUsernameAndPassword: Schema.Schema<GoogleCloudIntegrationsV1alphaUsernameAndPassword> =
+export const GoogleCloudIntegrationsV1alphaUsernameAndPassword: Schema.Codec<GoogleCloudIntegrationsV1alphaUsernameAndPassword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -526,7 +526,7 @@ export interface GoogleCloudIntegrationsV1alphaStringParameterArray {
   stringValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaStringParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaStringParameterArray> =
+export const GoogleCloudIntegrationsV1alphaStringParameterArray: Schema.Codec<GoogleCloudIntegrationsV1alphaStringParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -538,7 +538,7 @@ export interface GoogleCloudIntegrationsV1alphaIntParameterArray {
   intValues?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaIntParameterArray> =
+export const GoogleCloudIntegrationsV1alphaIntParameterArray: Schema.Codec<GoogleCloudIntegrationsV1alphaIntParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -550,7 +550,7 @@ export interface GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   doubleValues?: ReadonlyArray<number>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDoubleParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaDoubleParameterArray> =
+export const GoogleCloudIntegrationsV1alphaDoubleParameterArray: Schema.Codec<GoogleCloudIntegrationsV1alphaDoubleParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleValues: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
@@ -562,7 +562,7 @@ export interface GoogleCloudIntegrationsV1alphaBooleanParameterArray {
   booleanValues?: ReadonlyArray<boolean>;
 }
 
-export const GoogleCloudIntegrationsV1alphaBooleanParameterArray: Schema.Schema<GoogleCloudIntegrationsV1alphaBooleanParameterArray> =
+export const GoogleCloudIntegrationsV1alphaBooleanParameterArray: Schema.Codec<GoogleCloudIntegrationsV1alphaBooleanParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
   }).annotate({
@@ -590,7 +590,7 @@ export interface GoogleCloudIntegrationsV1alphaValueType {
   jsonValue?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaValueType: Schema.Schema<GoogleCloudIntegrationsV1alphaValueType> =
+export const GoogleCloudIntegrationsV1alphaValueType: Schema.Codec<GoogleCloudIntegrationsV1alphaValueType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     intValue: Schema.optional(Schema.String),
@@ -616,7 +616,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapField {
   literalValue?: GoogleCloudIntegrationsV1alphaValueType;
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMapField: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapField> =
+export const GoogleCloudIntegrationsV1alphaParameterMapField: Schema.Codec<GoogleCloudIntegrationsV1alphaParameterMapField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceKey: Schema.optional(Schema.String),
     literalValue: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
@@ -631,7 +631,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapEntry {
   value?: GoogleCloudIntegrationsV1alphaParameterMapField;
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMapEntry: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMapEntry> =
+export const GoogleCloudIntegrationsV1alphaParameterMapEntry: Schema.Codec<GoogleCloudIntegrationsV1alphaParameterMapEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
     value: Schema.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
@@ -686,7 +686,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMap {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaParameterMap: Schema.Schema<GoogleCloudIntegrationsV1alphaParameterMap> =
+export const GoogleCloudIntegrationsV1alphaParameterMap: Schema.Codec<GoogleCloudIntegrationsV1alphaParameterMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaParameterMapEntry),
@@ -708,7 +708,7 @@ export interface GoogleCloudIntegrationsV1alphaAccessToken {
   refreshTokenExpireTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAccessToken: Schema.Schema<GoogleCloudIntegrationsV1alphaAccessToken> =
+export const GoogleCloudIntegrationsV1alphaAccessToken: Schema.Codec<GoogleCloudIntegrationsV1alphaAccessToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     accessTokenExpireTime: Schema.optional(Schema.String),
@@ -747,7 +747,7 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   applyReauthPolicy?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode> =
+export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode: Schema.Codec<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
@@ -786,7 +786,7 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials> =
+export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials: Schema.Codec<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
@@ -825,7 +825,7 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials> =
+export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials: Schema.Codec<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
@@ -851,7 +851,7 @@ export interface GoogleCloudIntegrationsV1alphaJwt {
   jwt?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaJwt: Schema.Schema<GoogleCloudIntegrationsV1alphaJwt> =
+export const GoogleCloudIntegrationsV1alphaJwt: Schema.Codec<GoogleCloudIntegrationsV1alphaJwt> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jwtHeader: Schema.optional(Schema.String),
     jwtPayload: Schema.optional(Schema.String),
@@ -866,7 +866,7 @@ export interface GoogleCloudIntegrationsV1alphaAuthToken {
   token?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAuthToken: Schema.Schema<GoogleCloudIntegrationsV1alphaAuthToken> =
+export const GoogleCloudIntegrationsV1alphaAuthToken: Schema.Codec<GoogleCloudIntegrationsV1alphaAuthToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
@@ -879,7 +879,7 @@ export interface GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
   scope?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaServiceAccountCredentials: Schema.Schema<GoogleCloudIntegrationsV1alphaServiceAccountCredentials> =
+export const GoogleCloudIntegrationsV1alphaServiceAccountCredentials: Schema.Codec<GoogleCloudIntegrationsV1alphaServiceAccountCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -898,7 +898,7 @@ export interface GoogleCloudIntegrationsV1alphaOidcToken {
   tokenExpireTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaOidcToken: Schema.Schema<GoogleCloudIntegrationsV1alphaOidcToken> =
+export const GoogleCloudIntegrationsV1alphaOidcToken: Schema.Codec<GoogleCloudIntegrationsV1alphaOidcToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountEmail: Schema.optional(Schema.String),
     audience: Schema.optional(Schema.String),
@@ -940,7 +940,7 @@ export interface GoogleCloudIntegrationsV1alphaCredential {
   oidcToken?: GoogleCloudIntegrationsV1alphaOidcToken;
 }
 
-export const GoogleCloudIntegrationsV1alphaCredential: Schema.Schema<GoogleCloudIntegrationsV1alphaCredential> =
+export const GoogleCloudIntegrationsV1alphaCredential: Schema.Codec<GoogleCloudIntegrationsV1alphaCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentialType: Schema.optional(Schema.String),
     usernameAndPassword: Schema.optional(
@@ -1025,7 +1025,7 @@ export interface GoogleCloudIntegrationsV1alphaAuthConfig {
   overrideValidTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAuthConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaAuthConfig> =
+export const GoogleCloudIntegrationsV1alphaAuthConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1055,7 +1055,7 @@ export interface GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse> =
+export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authConfigs: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaAuthConfig),
@@ -1070,7 +1070,7 @@ export interface GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegions
   regions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse> =
+export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -1096,7 +1096,7 @@ export interface GoogleCloudConnectorsV1ConnectionStatus {
   status?: string;
 }
 
-export const GoogleCloudConnectorsV1ConnectionStatus: Schema.Schema<GoogleCloudConnectorsV1ConnectionStatus> =
+export const GoogleCloudConnectorsV1ConnectionStatus: Schema.Codec<GoogleCloudConnectorsV1ConnectionStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1108,7 +1108,7 @@ export interface GoogleCloudConnectorsV1Secret {
   secretVersion?: string;
 }
 
-export const GoogleCloudConnectorsV1Secret: Schema.Schema<GoogleCloudConnectorsV1Secret> =
+export const GoogleCloudConnectorsV1Secret: Schema.Codec<GoogleCloudConnectorsV1Secret> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudConnectorsV1Secret" });
@@ -1124,7 +1124,7 @@ export interface GoogleCloudConnectorsV1EncryptionKey {
   kmsKeyName?: string;
 }
 
-export const GoogleCloudConnectorsV1EncryptionKey: Schema.Schema<GoogleCloudConnectorsV1EncryptionKey> =
+export const GoogleCloudConnectorsV1EncryptionKey: Schema.Codec<GoogleCloudConnectorsV1EncryptionKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     kmsKeyName: Schema.optional(Schema.String),
@@ -1145,7 +1145,7 @@ export interface GoogleCloudConnectorsV1ConfigVariable {
   encryptionKeyValue?: GoogleCloudConnectorsV1EncryptionKey;
 }
 
-export const GoogleCloudConnectorsV1ConfigVariable: Schema.Schema<GoogleCloudConnectorsV1ConfigVariable> =
+export const GoogleCloudConnectorsV1ConfigVariable: Schema.Codec<GoogleCloudConnectorsV1ConfigVariable> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     intValue: Schema.optional(Schema.String),
@@ -1162,7 +1162,7 @@ export interface GoogleCloudConnectorsV1AuthConfigUserPassword {
   password?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigUserPassword: Schema.Schema<GoogleCloudConnectorsV1AuthConfigUserPassword> =
+export const GoogleCloudConnectorsV1AuthConfigUserPassword: Schema.Codec<GoogleCloudConnectorsV1AuthConfigUserPassword> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(GoogleCloudConnectorsV1Secret),
@@ -1177,7 +1177,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims {
   audience?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims> =
+export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims: Schema.Codec<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issuer: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
@@ -1193,7 +1193,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer {
   jwtClaims?: GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer> =
+export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer: Schema.Codec<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientKey: Schema.optional(GoogleCloudConnectorsV1Secret),
     jwtClaims: Schema.optional(
@@ -1210,7 +1210,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials {
   clientSecret?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials> =
+export const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials: Schema.Codec<GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
     clientSecret: Schema.optional(GoogleCloudConnectorsV1Secret),
@@ -1229,7 +1229,7 @@ export interface GoogleCloudConnectorsV1AuthConfigSshPublicKey {
   sshClientCertPass?: GoogleCloudConnectorsV1Secret;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigSshPublicKey: Schema.Schema<GoogleCloudConnectorsV1AuthConfigSshPublicKey> =
+export const GoogleCloudConnectorsV1AuthConfigSshPublicKey: Schema.Codec<GoogleCloudConnectorsV1AuthConfigSshPublicKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     sshClientCert: Schema.optional(GoogleCloudConnectorsV1Secret),
@@ -1256,7 +1256,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   authUri?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow> =
+export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow: Schema.Codec<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authCode: Schema.optional(Schema.String),
     pkceVerifier: Schema.optional(Schema.String),
@@ -1279,7 +1279,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManage
   scopes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged: Schema.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged> =
+export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged: Schema.Codec<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authCode: Schema.optional(Schema.String),
     redirectUri: Schema.optional(Schema.String),
@@ -1319,7 +1319,7 @@ export interface GoogleCloudConnectorsV1AuthConfig {
   authKey?: string;
 }
 
-export const GoogleCloudConnectorsV1AuthConfig: Schema.Schema<GoogleCloudConnectorsV1AuthConfig> =
+export const GoogleCloudConnectorsV1AuthConfig: Schema.Codec<GoogleCloudConnectorsV1AuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authType: Schema.optional(Schema.String),
     userPassword: Schema.optional(
@@ -1353,7 +1353,7 @@ export interface GoogleCloudConnectorsV1LockConfig {
   reason?: string;
 }
 
-export const GoogleCloudConnectorsV1LockConfig: Schema.Schema<GoogleCloudConnectorsV1LockConfig> =
+export const GoogleCloudConnectorsV1LockConfig: Schema.Codec<GoogleCloudConnectorsV1LockConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locked: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
@@ -1368,7 +1368,7 @@ export interface GoogleCloudConnectorsV1Destination {
   port?: number;
 }
 
-export const GoogleCloudConnectorsV1Destination: Schema.Schema<GoogleCloudConnectorsV1Destination> =
+export const GoogleCloudConnectorsV1Destination: Schema.Codec<GoogleCloudConnectorsV1Destination> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAttachment: Schema.optional(Schema.String),
     host: Schema.optional(Schema.String),
@@ -1382,7 +1382,7 @@ export interface GoogleCloudConnectorsV1DestinationConfig {
   destinations?: ReadonlyArray<GoogleCloudConnectorsV1Destination>;
 }
 
-export const GoogleCloudConnectorsV1DestinationConfig: Schema.Schema<GoogleCloudConnectorsV1DestinationConfig> =
+export const GoogleCloudConnectorsV1DestinationConfig: Schema.Codec<GoogleCloudConnectorsV1DestinationConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     destinations: Schema.optional(
@@ -1397,7 +1397,7 @@ export interface GoogleCloudConnectorsV1NodeConfig {
   maxNodeCount?: number;
 }
 
-export const GoogleCloudConnectorsV1NodeConfig: Schema.Schema<GoogleCloudConnectorsV1NodeConfig> =
+export const GoogleCloudConnectorsV1NodeConfig: Schema.Codec<GoogleCloudConnectorsV1NodeConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minNodeCount: Schema.optional(Schema.Number),
     maxNodeCount: Schema.optional(Schema.Number),
@@ -1410,7 +1410,7 @@ export interface GoogleCloudConnectorsV1LogConfig {
   level?: "LOG_LEVEL_UNSPECIFIED" | "ERROR" | "INFO" | "DEBUG" | (string & {});
 }
 
-export const GoogleCloudConnectorsV1LogConfig: Schema.Schema<GoogleCloudConnectorsV1LogConfig> =
+export const GoogleCloudConnectorsV1LogConfig: Schema.Codec<GoogleCloudConnectorsV1LogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     level: Schema.optional(Schema.String),
@@ -1439,7 +1439,7 @@ export interface GoogleCloudConnectorsV1SslConfig {
   additionalVariables?: ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
 }
 
-export const GoogleCloudConnectorsV1SslConfig: Schema.Schema<GoogleCloudConnectorsV1SslConfig> =
+export const GoogleCloudConnectorsV1SslConfig: Schema.Codec<GoogleCloudConnectorsV1SslConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     trustModel: Schema.optional(Schema.String),
@@ -1462,7 +1462,7 @@ export interface GoogleCloudConnectorsV1EventingConfigDeadLetterConfig {
   projectId?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig: Schema.Schema<GoogleCloudConnectorsV1EventingConfigDeadLetterConfig> =
+export const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig: Schema.Codec<GoogleCloudConnectorsV1EventingConfigDeadLetterConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
@@ -1475,7 +1475,7 @@ export interface GoogleCloudConnectorsV1EnrichmentConfig {
   appendAcl?: boolean;
 }
 
-export const GoogleCloudConnectorsV1EnrichmentConfig: Schema.Schema<GoogleCloudConnectorsV1EnrichmentConfig> =
+export const GoogleCloudConnectorsV1EnrichmentConfig: Schema.Codec<GoogleCloudConnectorsV1EnrichmentConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appendAcl: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudConnectorsV1EnrichmentConfig" });
@@ -1509,7 +1509,7 @@ export interface GoogleCloudConnectorsV1EventingConfig {
   allowedEventTypes?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudConnectorsV1EventingConfig: Schema.Schema<GoogleCloudConnectorsV1EventingConfig> =
+export const GoogleCloudConnectorsV1EventingConfig: Schema.Codec<GoogleCloudConnectorsV1EventingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     registrationDestinationConfig: Schema.optional(
       GoogleCloudConnectorsV1DestinationConfig,
@@ -1548,7 +1548,7 @@ export interface GoogleCloudConnectorsV1EventingStatus {
   description?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingStatus: Schema.Schema<GoogleCloudConnectorsV1EventingStatus> =
+export const GoogleCloudConnectorsV1EventingStatus: Schema.Codec<GoogleCloudConnectorsV1EventingStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -1569,7 +1569,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
   nextRefreshTime?: string;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData> =
+export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData: Schema.Codec<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1588,7 +1588,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions 
   webhookData?: ReadonlyArray<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions> =
+export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions: Schema.Codec<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webhookData: Schema.optional(
       Schema.Array(GoogleCloudConnectorsV1EventingRuntimeDataWebhookData),
@@ -1611,7 +1611,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeData {
   webhookSubscriptions?: GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions;
 }
 
-export const GoogleCloudConnectorsV1EventingRuntimeData: Schema.Schema<GoogleCloudConnectorsV1EventingRuntimeData> =
+export const GoogleCloudConnectorsV1EventingRuntimeData: Schema.Codec<GoogleCloudConnectorsV1EventingRuntimeData> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleCloudConnectorsV1EventingStatus),
     eventsListenerEndpoint: Schema.optional(Schema.String),
@@ -1631,7 +1631,7 @@ export interface GoogleCloudConnectorsV1HPAConfig {
   memoryUtilizationThreshold?: string;
 }
 
-export const GoogleCloudConnectorsV1HPAConfig: Schema.Schema<GoogleCloudConnectorsV1HPAConfig> =
+export const GoogleCloudConnectorsV1HPAConfig: Schema.Codec<GoogleCloudConnectorsV1HPAConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpuUtilizationThreshold: Schema.optional(Schema.String),
     memoryUtilizationThreshold: Schema.optional(Schema.String),
@@ -1644,7 +1644,7 @@ export interface GoogleCloudConnectorsV1ResourceRequests {
   memory?: string;
 }
 
-export const GoogleCloudConnectorsV1ResourceRequests: Schema.Schema<GoogleCloudConnectorsV1ResourceRequests> =
+export const GoogleCloudConnectorsV1ResourceRequests: Schema.Codec<GoogleCloudConnectorsV1ResourceRequests> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpu: Schema.optional(Schema.String),
     memory: Schema.optional(Schema.String),
@@ -1657,7 +1657,7 @@ export interface GoogleCloudConnectorsV1ResourceLimits {
   memory?: string;
 }
 
-export const GoogleCloudConnectorsV1ResourceLimits: Schema.Schema<GoogleCloudConnectorsV1ResourceLimits> =
+export const GoogleCloudConnectorsV1ResourceLimits: Schema.Codec<GoogleCloudConnectorsV1ResourceLimits> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cpu: Schema.optional(Schema.String),
     memory: Schema.optional(Schema.String),
@@ -1702,7 +1702,7 @@ export interface GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
     | (string & {});
 }
 
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig: Schema.Schema<GoogleCloudConnectorsV1ConnectorVersionInfraConfig> =
+export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig: Schema.Codec<GoogleCloudConnectorsV1ConnectorVersionInfraConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ratelimitThreshold: Schema.optional(Schema.String),
     internalclientRatelimitThreshold: Schema.optional(Schema.String),
@@ -1728,7 +1728,7 @@ export interface GoogleCloudConnectorsV1BillingConfig {
     | (string & {});
 }
 
-export const GoogleCloudConnectorsV1BillingConfig: Schema.Schema<GoogleCloudConnectorsV1BillingConfig> =
+export const GoogleCloudConnectorsV1BillingConfig: Schema.Codec<GoogleCloudConnectorsV1BillingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingCategory: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudConnectorsV1BillingConfig" });
@@ -1740,7 +1740,7 @@ export interface GoogleCloudConnectorsV1TrafficShapingConfig {
   duration?: string;
 }
 
-export const GoogleCloudConnectorsV1TrafficShapingConfig: Schema.Schema<GoogleCloudConnectorsV1TrafficShapingConfig> =
+export const GoogleCloudConnectorsV1TrafficShapingConfig: Schema.Codec<GoogleCloudConnectorsV1TrafficShapingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     quotaLimit: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -1834,7 +1834,7 @@ export interface GoogleCloudConnectorsV1Connection {
   fallbackOnAdminCredentials?: boolean;
 }
 
-export const GoogleCloudConnectorsV1Connection: Schema.Schema<GoogleCloudConnectorsV1Connection> =
+export const GoogleCloudConnectorsV1Connection: Schema.Codec<GoogleCloudConnectorsV1Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -1890,7 +1890,7 @@ export interface GoogleCloudIntegrationsV1alphaListConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListConnectionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListConnectionsResponse> =
+export const GoogleCloudIntegrationsV1alphaListConnectionsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connections: Schema.optional(
       Schema.Array(GoogleCloudConnectorsV1Connection),
@@ -1907,7 +1907,7 @@ export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   actions?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata: Schema.Schema<GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata> =
+export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata: Schema.Codec<GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entities: Schema.optional(Schema.Array(Schema.String)),
     actions: Schema.optional(Schema.Array(Schema.String)),
@@ -1924,7 +1924,7 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeEntitySchema {
   arrayFieldSchema?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema: Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema> =
+export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema: Schema.Codec<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entity: Schema.optional(Schema.String),
     fieldSchema: Schema.optional(Schema.String),
@@ -1940,7 +1940,7 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse> =
+export const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeEntitySchemas: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeEntitySchema),
@@ -1960,7 +1960,7 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeActionSchema {
   outputSchema?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema: Schema.Schema<GoogleCloudIntegrationsV1alphaRuntimeActionSchema> =
+export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema: Schema.Codec<GoogleCloudIntegrationsV1alphaRuntimeActionSchema> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     inputSchema: Schema.optional(Schema.String),
@@ -1976,7 +1976,7 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse> =
+export const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runtimeActionSchemas: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaRuntimeActionSchema),
@@ -1991,7 +1991,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter {
   objectValue?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter> =
+export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectValue: Schema.optional(Schema.String),
   }).annotate({
@@ -2002,7 +2002,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
   stringValues?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoStringParameterArray> =
+export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoStringParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2013,7 +2013,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoIntParameterArray {
   intValues?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoIntParameterArray> =
+export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoIntParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -2024,7 +2024,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray {
   doubleValues?: ReadonlyArray<number>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray> =
+export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleValues: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
@@ -2035,7 +2035,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoProtoParameterArray {
   protoValues?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray> =
+export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protoValues: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -2048,7 +2048,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
   booleanValues?: ReadonlyArray<boolean>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray> =
+export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
   }).annotate({
@@ -2070,7 +2070,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   jsonValue?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterValueType: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterValueType> =
+export const EnterpriseCrmFrontendsEventbusProtoParameterValueType: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParameterValueType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     intValue: Schema.optional(Schema.String),
@@ -2130,7 +2130,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterEntry {
   masked?: boolean;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterEntry> =
+export const EnterpriseCrmFrontendsEventbusProtoParameterEntry: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParameterEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(
@@ -2162,7 +2162,7 @@ export interface EnterpriseCrmEventbusProtoFailurePolicy {
   retryCondition?: string;
 }
 
-export const EnterpriseCrmEventbusProtoFailurePolicy: Schema.Schema<EnterpriseCrmEventbusProtoFailurePolicy> =
+export const EnterpriseCrmEventbusProtoFailurePolicy: Schema.Codec<EnterpriseCrmEventbusProtoFailurePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retryStrategy: Schema.optional(Schema.String),
     maxNumRetries: Schema.optional(Schema.Number),
@@ -2177,7 +2177,7 @@ export interface EnterpriseCrmEventbusProtoConditionalFailurePolicies {
   defaultFailurePolicy?: EnterpriseCrmEventbusProtoFailurePolicy;
 }
 
-export const EnterpriseCrmEventbusProtoConditionalFailurePolicies: Schema.Schema<EnterpriseCrmEventbusProtoConditionalFailurePolicies> =
+export const EnterpriseCrmEventbusProtoConditionalFailurePolicies: Schema.Codec<EnterpriseCrmEventbusProtoConditionalFailurePolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failurePolicies: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoFailurePolicy),
@@ -2193,7 +2193,7 @@ export interface EnterpriseCrmEventbusProtoStringArray {
   values?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmEventbusProtoStringArray: Schema.Schema<EnterpriseCrmEventbusProtoStringArray> =
+export const EnterpriseCrmEventbusProtoStringArray: Schema.Codec<EnterpriseCrmEventbusProtoStringArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringArray" });
@@ -2202,7 +2202,7 @@ export interface EnterpriseCrmEventbusProtoIntArray {
   values?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmEventbusProtoIntArray: Schema.Schema<EnterpriseCrmEventbusProtoIntArray> =
+export const EnterpriseCrmEventbusProtoIntArray: Schema.Codec<EnterpriseCrmEventbusProtoIntArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntArray" });
@@ -2211,7 +2211,7 @@ export interface EnterpriseCrmEventbusProtoDoubleArray {
   values?: ReadonlyArray<number>;
 }
 
-export const EnterpriseCrmEventbusProtoDoubleArray: Schema.Schema<EnterpriseCrmEventbusProtoDoubleArray> =
+export const EnterpriseCrmEventbusProtoDoubleArray: Schema.Codec<EnterpriseCrmEventbusProtoDoubleArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleArray" });
@@ -2227,7 +2227,7 @@ export interface EnterpriseCrmEventbusProtoValueType {
   booleanValue?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoValueType: Schema.Schema<EnterpriseCrmEventbusProtoValueType> =
+export const EnterpriseCrmEventbusProtoValueType: Schema.Codec<EnterpriseCrmEventbusProtoValueType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     intValue: Schema.optional(Schema.String),
@@ -2258,7 +2258,7 @@ export interface EnterpriseCrmEventbusProtoCondition {
   value?: EnterpriseCrmEventbusProtoValueType;
 }
 
-export const EnterpriseCrmEventbusProtoCondition: Schema.Schema<EnterpriseCrmEventbusProtoCondition> =
+export const EnterpriseCrmEventbusProtoCondition: Schema.Codec<EnterpriseCrmEventbusProtoCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventPropertyKey: Schema.optional(Schema.String),
     operator: Schema.optional(Schema.String),
@@ -2270,7 +2270,7 @@ export interface EnterpriseCrmEventbusProtoCombinedCondition {
   conditions?: ReadonlyArray<EnterpriseCrmEventbusProtoCondition>;
 }
 
-export const EnterpriseCrmEventbusProtoCombinedCondition: Schema.Schema<EnterpriseCrmEventbusProtoCombinedCondition> =
+export const EnterpriseCrmEventbusProtoCombinedCondition: Schema.Codec<EnterpriseCrmEventbusProtoCombinedCondition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conditions: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoCondition),
@@ -2292,7 +2292,7 @@ export interface EnterpriseCrmEventbusProtoNextTask {
   description?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNextTask: Schema.Schema<EnterpriseCrmEventbusProtoNextTask> =
+export const EnterpriseCrmEventbusProtoNextTask: Schema.Codec<EnterpriseCrmEventbusProtoNextTask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskConfigId: Schema.optional(Schema.String),
     taskNumber: Schema.optional(Schema.String),
@@ -2309,7 +2309,7 @@ export interface EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
   percentage?: number;
 }
 
-export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue: Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue> =
+export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue: Schema.Codec<EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     absolute: Schema.optional(Schema.String),
     percentage: Schema.optional(Schema.Number),
@@ -2322,7 +2322,7 @@ export interface EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   filterType?: "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList: Schema.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList> =
+export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList: Schema.Codec<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enumStrings: Schema.optional(Schema.Array(Schema.String)),
     filterType: Schema.optional(Schema.String),
@@ -2367,7 +2367,7 @@ export interface EnterpriseCrmEventbusProtoTaskAlertConfig {
   clientId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskAlertConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskAlertConfig> =
+export const EnterpriseCrmEventbusProtoTaskAlertConfig: Schema.Codec<EnterpriseCrmEventbusProtoTaskAlertConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertName: Schema.optional(Schema.String),
     metricType: Schema.optional(Schema.String),
@@ -2395,7 +2395,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventParameters {
   parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventParameters: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventParameters> =
+export const EnterpriseCrmFrontendsEventbusProtoEventParameters: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoEventParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterEntry),
@@ -2413,7 +2413,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   taskNumbersToRollback?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy> =
+export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoRollbackStrategy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rollbackTaskImplementationClassName: Schema.optional(Schema.String),
     parameters: Schema.optional(
@@ -2429,7 +2429,7 @@ export interface EnterpriseCrmEventbusProtoCoordinate {
   y?: number;
 }
 
-export const EnterpriseCrmEventbusProtoCoordinate: Schema.Schema<EnterpriseCrmEventbusProtoCoordinate> =
+export const EnterpriseCrmEventbusProtoCoordinate: Schema.Codec<EnterpriseCrmEventbusProtoCoordinate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -2440,7 +2440,7 @@ export interface EnterpriseCrmEventbusProtoSuccessPolicy {
   finalState?: "UNSPECIFIED" | "SUCCEEDED" | "SUSPENDED" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoSuccessPolicy: Schema.Schema<EnterpriseCrmEventbusProtoSuccessPolicy> =
+export const EnterpriseCrmEventbusProtoSuccessPolicy: Schema.Codec<EnterpriseCrmEventbusProtoSuccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finalState: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoSuccessPolicy" });
@@ -2450,7 +2450,7 @@ export interface EnterpriseCrmEventbusProtoTaskMetadataAdmin {
   googleGroupEmail?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskMetadataAdmin: Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadataAdmin> =
+export const EnterpriseCrmEventbusProtoTaskMetadataAdmin: Schema.Codec<EnterpriseCrmEventbusProtoTaskMetadataAdmin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userEmail: Schema.optional(Schema.String),
     googleGroupEmail: Schema.optional(Schema.String),
@@ -2544,7 +2544,7 @@ export interface EnterpriseCrmEventbusProtoTaskMetadata {
   externalDocLink?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskMetadata: Schema.Schema<EnterpriseCrmEventbusProtoTaskMetadata> =
+export const EnterpriseCrmEventbusProtoTaskMetadata: Schema.Codec<EnterpriseCrmEventbusProtoTaskMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     admins: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoTaskMetadataAdmin),
@@ -2592,7 +2592,7 @@ export interface EnterpriseCrmEventbusStatsDimensions {
   enumFilterType?: "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
 }
 
-export const EnterpriseCrmEventbusStatsDimensions: Schema.Schema<EnterpriseCrmEventbusStatsDimensions> =
+export const EnterpriseCrmEventbusStatsDimensions: Schema.Codec<EnterpriseCrmEventbusStatsDimensions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerId: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -2619,7 +2619,7 @@ export interface EnterpriseCrmEventbusStats {
   warningRate?: number;
 }
 
-export const EnterpriseCrmEventbusStats: Schema.Schema<EnterpriseCrmEventbusStats> =
+export const EnterpriseCrmEventbusStats: Schema.Codec<EnterpriseCrmEventbusStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(EnterpriseCrmEventbusStatsDimensions),
     qps: Schema.optional(Schema.Number),
@@ -2635,7 +2635,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
   fullName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     fullName: Schema.optional(Schema.String),
@@ -2672,7 +2672,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryConfig {
   hideDefaultValue?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryConfig: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryConfig> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryConfig: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     descriptivePhrase: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -2692,7 +2692,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange 
   max?: string;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.String),
     max: Schema.optional(Schema.String),
@@ -2708,7 +2708,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRan
   max?: number;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     min: Schema.optional(Schema.Number),
     max: Schema.optional(Schema.Number),
@@ -2724,7 +2724,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringReg
   exclusive?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regex: Schema.optional(Schema.String),
     exclusive: Schema.optional(Schema.Boolean),
@@ -2739,7 +2739,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
   stringRegex?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex;
 }
 
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule: Schema.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRule> =
+export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule: Schema.Codec<EnterpriseCrmEventbusProtoParamSpecEntryValidationRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intRange: Schema.optional(
       EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange,
@@ -2799,7 +2799,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
   validationRule?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRule;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry> =
+export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -2827,7 +2827,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
   parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage> =
+export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(EnterpriseCrmFrontendsEventbusProtoParamSpecEntry),
@@ -2862,7 +2862,7 @@ export interface EnterpriseCrmEventbusProtoTaskUiModuleConfig {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoTaskUiModuleConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskUiModuleConfig> =
+export const EnterpriseCrmEventbusProtoTaskUiModuleConfig: Schema.Codec<EnterpriseCrmEventbusProtoTaskUiModuleConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     moduleId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoTaskUiModuleConfig" });
@@ -2872,7 +2872,7 @@ export interface EnterpriseCrmEventbusProtoTaskUiConfig {
   taskUiModuleConfigs?: ReadonlyArray<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
 }
 
-export const EnterpriseCrmEventbusProtoTaskUiConfig: Schema.Schema<EnterpriseCrmEventbusProtoTaskUiConfig> =
+export const EnterpriseCrmEventbusProtoTaskUiConfig: Schema.Codec<EnterpriseCrmEventbusProtoTaskUiConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskUiModuleConfigs: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoTaskUiModuleConfig),
@@ -2894,7 +2894,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   disabledForVpcSc?: boolean;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTaskEntity: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskEntity> =
+export const EnterpriseCrmFrontendsEventbusProtoTaskEntity: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoTaskEntity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(EnterpriseCrmEventbusProtoTaskMetadata),
     stats: Schema.optional(EnterpriseCrmEventbusStats),
@@ -2987,7 +2987,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfig: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTaskConfig> =
+export const EnterpriseCrmFrontendsEventbusProtoTaskConfig: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskName: Schema.optional(Schema.String),
     taskNumber: Schema.optional(Schema.String),
@@ -3044,7 +3044,7 @@ export interface GoogleCloudIntegrationsV1alphaEventParameter {
   masked?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaEventParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaEventParameter> =
+export const GoogleCloudIntegrationsV1alphaEventParameter: Schema.Codec<GoogleCloudIntegrationsV1alphaEventParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(GoogleCloudIntegrationsV1alphaValueType),
@@ -3071,7 +3071,7 @@ export interface GoogleCloudIntegrationsV1alphaFailurePolicy {
   condition?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaFailurePolicy: Schema.Schema<GoogleCloudIntegrationsV1alphaFailurePolicy> =
+export const GoogleCloudIntegrationsV1alphaFailurePolicy: Schema.Codec<GoogleCloudIntegrationsV1alphaFailurePolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     retryStrategy: Schema.optional(Schema.String),
     maxRetries: Schema.optional(Schema.Number),
@@ -3086,7 +3086,7 @@ export interface GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
   defaultFailurePolicy?: GoogleCloudIntegrationsV1alphaFailurePolicy;
 }
 
-export const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies: Schema.Schema<GoogleCloudIntegrationsV1alphaConditionalFailurePolicies> =
+export const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies: Schema.Codec<GoogleCloudIntegrationsV1alphaConditionalFailurePolicies> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     failurePolicies: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaFailurePolicy),
@@ -3111,7 +3111,7 @@ export interface GoogleCloudIntegrationsV1alphaNextTask {
   description?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaNextTask: Schema.Schema<GoogleCloudIntegrationsV1alphaNextTask> =
+export const GoogleCloudIntegrationsV1alphaNextTask: Schema.Codec<GoogleCloudIntegrationsV1alphaNextTask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskConfigId: Schema.optional(Schema.String),
     taskId: Schema.optional(Schema.String),
@@ -3129,7 +3129,7 @@ export interface GoogleCloudIntegrationsV1alphaSuccessPolicy {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaSuccessPolicy: Schema.Schema<GoogleCloudIntegrationsV1alphaSuccessPolicy> =
+export const GoogleCloudIntegrationsV1alphaSuccessPolicy: Schema.Codec<GoogleCloudIntegrationsV1alphaSuccessPolicy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finalState: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudIntegrationsV1alphaSuccessPolicy" });
@@ -3141,7 +3141,7 @@ export interface GoogleCloudIntegrationsV1alphaCoordinate {
   y?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaCoordinate: Schema.Schema<GoogleCloudIntegrationsV1alphaCoordinate> =
+export const GoogleCloudIntegrationsV1alphaCoordinate: Schema.Codec<GoogleCloudIntegrationsV1alphaCoordinate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     x: Schema.optional(Schema.Number),
     y: Schema.optional(Schema.Number),
@@ -3203,7 +3203,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskConfig {
   position?: GoogleCloudIntegrationsV1alphaCoordinate;
 }
 
-export const GoogleCloudIntegrationsV1alphaTaskConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTaskConfig> =
+export const GoogleCloudIntegrationsV1alphaTaskConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     task: Schema.optional(Schema.String),
     taskId: Schema.optional(Schema.String),
@@ -3277,7 +3277,7 @@ export interface EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   playbookUrl?: string;
 }
 
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfig: Schema.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfig> =
+export const EnterpriseCrmEventbusProtoWorkflowAlertConfig: Schema.Codec<EnterpriseCrmEventbusProtoWorkflowAlertConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alertName: Schema.optional(Schema.String),
     metricType: Schema.optional(Schema.String),
@@ -3304,7 +3304,7 @@ export interface EnterpriseCrmEventbusProtoSerializedObjectParameter {
   objectValue?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSerializedObjectParameter: Schema.Schema<EnterpriseCrmEventbusProtoSerializedObjectParameter> =
+export const EnterpriseCrmEventbusProtoSerializedObjectParameter: Schema.Codec<EnterpriseCrmEventbusProtoSerializedObjectParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     objectValue: Schema.optional(Schema.String),
   }).annotate({
@@ -3315,7 +3315,7 @@ export interface EnterpriseCrmEventbusProtoStringParameterArray {
   stringValues?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmEventbusProtoStringParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoStringParameterArray> =
+export const EnterpriseCrmEventbusProtoStringParameterArray: Schema.Codec<EnterpriseCrmEventbusProtoStringParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringParameterArray" });
@@ -3324,7 +3324,7 @@ export interface EnterpriseCrmEventbusProtoIntParameterArray {
   intValues?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmEventbusProtoIntParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoIntParameterArray> =
+export const EnterpriseCrmEventbusProtoIntParameterArray: Schema.Codec<EnterpriseCrmEventbusProtoIntParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     intValues: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntParameterArray" });
@@ -3333,7 +3333,7 @@ export interface EnterpriseCrmEventbusProtoDoubleParameterArray {
   doubleValues?: ReadonlyArray<number>;
 }
 
-export const EnterpriseCrmEventbusProtoDoubleParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray> =
+export const EnterpriseCrmEventbusProtoDoubleParameterArray: Schema.Codec<EnterpriseCrmEventbusProtoDoubleParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     doubleValues: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleParameterArray" });
@@ -3342,7 +3342,7 @@ export interface EnterpriseCrmEventbusProtoProtoParameterArray {
   protoValues?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const EnterpriseCrmEventbusProtoProtoParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoProtoParameterArray> =
+export const EnterpriseCrmEventbusProtoProtoParameterArray: Schema.Codec<EnterpriseCrmEventbusProtoProtoParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     protoValues: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -3353,7 +3353,7 @@ export interface EnterpriseCrmEventbusProtoBooleanParameterArray {
   booleanValues?: ReadonlyArray<boolean>;
 }
 
-export const EnterpriseCrmEventbusProtoBooleanParameterArray: Schema.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray> =
+export const EnterpriseCrmEventbusProtoBooleanParameterArray: Schema.Codec<EnterpriseCrmEventbusProtoBooleanParameterArray> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     booleanValues: Schema.optional(Schema.Array(Schema.Boolean)),
   }).annotate({
@@ -3374,7 +3374,7 @@ export interface EnterpriseCrmEventbusProtoParameterValueType {
   booleanArray?: EnterpriseCrmEventbusProtoBooleanParameterArray;
 }
 
-export const EnterpriseCrmEventbusProtoParameterValueType: Schema.Schema<EnterpriseCrmEventbusProtoParameterValueType> =
+export const EnterpriseCrmEventbusProtoParameterValueType: Schema.Codec<EnterpriseCrmEventbusProtoParameterValueType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(Schema.String),
     intValue: Schema.optional(Schema.String),
@@ -3406,7 +3406,7 @@ export interface EnterpriseCrmEventbusProtoParameterEntry {
   masked?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoParameterEntry: Schema.Schema<EnterpriseCrmEventbusProtoParameterEntry> =
+export const EnterpriseCrmEventbusProtoParameterEntry: Schema.Codec<EnterpriseCrmEventbusProtoParameterEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
@@ -3418,7 +3418,7 @@ export interface EnterpriseCrmEventbusProtoEventParameters {
   parameters?: ReadonlyArray<EnterpriseCrmEventbusProtoParameterEntry>;
 }
 
-export const EnterpriseCrmEventbusProtoEventParameters: Schema.Schema<EnterpriseCrmEventbusProtoEventParameters> =
+export const EnterpriseCrmEventbusProtoEventParameters: Schema.Codec<EnterpriseCrmEventbusProtoEventParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoParameterEntry),
@@ -3434,7 +3434,7 @@ export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   condition?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTriggerCriteria: Schema.Schema<EnterpriseCrmEventbusProtoTriggerCriteria> =
+export const EnterpriseCrmEventbusProtoTriggerCriteria: Schema.Codec<EnterpriseCrmEventbusProtoTriggerCriteria> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerCriteriaTaskImplementationClassName: Schema.optional(Schema.String),
     parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
@@ -3452,7 +3452,7 @@ export interface EnterpriseCrmEventbusProtoCloudSchedulerConfig {
   errorMessage?: string;
 }
 
-export const EnterpriseCrmEventbusProtoCloudSchedulerConfig: Schema.Schema<EnterpriseCrmEventbusProtoCloudSchedulerConfig> =
+export const EnterpriseCrmEventbusProtoCloudSchedulerConfig: Schema.Codec<EnterpriseCrmEventbusProtoCloudSchedulerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountEmail: Schema.optional(Schema.String),
     cronTab: Schema.optional(Schema.String),
@@ -3465,7 +3465,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables {
   names?: ReadonlyArray<string>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables> =
+export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3530,7 +3530,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   outputVariables?: EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfig> =
+export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoTriggerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     startTasks: Schema.optional(
@@ -3571,7 +3571,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdVa
   percentage?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue> =
+export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     absolute: Schema.optional(Schema.String),
     percentage: Schema.optional(Schema.Number),
@@ -3617,7 +3617,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   onlyFinalAttempt?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig> =
+export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     metricType: Schema.optional(Schema.String),
@@ -3645,7 +3645,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   errorMessage?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig> =
+export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaCloudSchedulerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceAccountEmail: Schema.optional(Schema.String),
     cronTab: Schema.optional(Schema.String),
@@ -3660,7 +3660,7 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfigVariables {
   names?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables: Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfigVariables> =
+export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables: Schema.Codec<GoogleCloudIntegrationsV1alphaTriggerConfigVariables> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -3716,7 +3716,7 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   outputVariables?: GoogleCloudIntegrationsV1alphaTriggerConfigVariables;
 }
 
-export const GoogleCloudIntegrationsV1alphaTriggerConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTriggerConfig> =
+export const GoogleCloudIntegrationsV1alphaTriggerConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaTriggerConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     label: Schema.optional(Schema.String),
     startTasks: Schema.optional(
@@ -3762,7 +3762,7 @@ export interface EnterpriseCrmEventbusProtoLogSettings {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoLogSettings: Schema.Schema<EnterpriseCrmEventbusProtoLogSettings> =
+export const EnterpriseCrmEventbusProtoLogSettings: Schema.Codec<EnterpriseCrmEventbusProtoLogSettings> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logFieldName: Schema.optional(Schema.String),
     seedScope: Schema.optional(Schema.String),
@@ -3796,7 +3796,7 @@ export interface EnterpriseCrmEventbusProtoAttributes {
   masked?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoAttributes: Schema.Schema<EnterpriseCrmEventbusProtoAttributes> =
+export const EnterpriseCrmEventbusProtoAttributes: Schema.Codec<EnterpriseCrmEventbusProtoAttributes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     isRequired: Schema.optional(Schema.Boolean),
@@ -3820,7 +3820,7 @@ export interface EnterpriseCrmEventbusProtoNodeIdentifier {
   elementIdentifier?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNodeIdentifier: Schema.Schema<EnterpriseCrmEventbusProtoNodeIdentifier> =
+export const EnterpriseCrmEventbusProtoNodeIdentifier: Schema.Codec<EnterpriseCrmEventbusProtoNodeIdentifier> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     elementType: Schema.optional(Schema.String),
     elementIdentifier: Schema.optional(Schema.String),
@@ -3883,7 +3883,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   required?: boolean;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry> =
+export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       key: Schema.optional(Schema.String),
@@ -3909,14 +3909,14 @@ export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry: Schema.S
     }),
   ).annotate({
     identifier: "EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry",
-  }) as any as Schema.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
+  }) as any as Schema.Codec<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 
 export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
   /** Parameters are a part of Event and can be used to communiticate between different tasks that are part of the same workflow execution. */
   parameters?: ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters> =
+export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoWorkflowParameters> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry),
@@ -3976,7 +3976,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationParameter {
   description?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationParameter> =
+export const GoogleCloudIntegrationsV1alphaIntegrationParameter: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -4001,7 +4001,7 @@ export interface EnterpriseCrmEventbusProtoPropertyEntry {
   value?: EnterpriseCrmEventbusProtoValueType;
 }
 
-export const EnterpriseCrmEventbusProtoPropertyEntry: Schema.Schema<EnterpriseCrmEventbusProtoPropertyEntry> =
+export const EnterpriseCrmEventbusProtoPropertyEntry: Schema.Codec<EnterpriseCrmEventbusProtoPropertyEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(EnterpriseCrmEventbusProtoValueType),
@@ -4012,7 +4012,7 @@ export interface EnterpriseCrmEventbusProtoEventBusProperties {
   properties?: ReadonlyArray<EnterpriseCrmEventbusProtoPropertyEntry>;
 }
 
-export const EnterpriseCrmEventbusProtoEventBusProperties: Schema.Schema<EnterpriseCrmEventbusProtoEventBusProperties> =
+export const EnterpriseCrmEventbusProtoEventBusProperties: Schema.Codec<EnterpriseCrmEventbusProtoEventBusProperties> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoPropertyEntry),
@@ -4024,7 +4024,7 @@ export interface EnterpriseCrmEventbusProtoNextTeardownTask {
   name?: string;
 }
 
-export const EnterpriseCrmEventbusProtoNextTeardownTask: Schema.Schema<EnterpriseCrmEventbusProtoNextTeardownTask> =
+export const EnterpriseCrmEventbusProtoNextTeardownTask: Schema.Codec<EnterpriseCrmEventbusProtoNextTeardownTask> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoNextTeardownTask" });
@@ -4042,7 +4042,7 @@ export interface EnterpriseCrmEventbusProtoTeardownTaskConfig {
   nextTeardownTask?: EnterpriseCrmEventbusProtoNextTeardownTask;
 }
 
-export const EnterpriseCrmEventbusProtoTeardownTaskConfig: Schema.Schema<EnterpriseCrmEventbusProtoTeardownTaskConfig> =
+export const EnterpriseCrmEventbusProtoTeardownTaskConfig: Schema.Codec<EnterpriseCrmEventbusProtoTeardownTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teardownTaskImplementationClassName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -4059,7 +4059,7 @@ export interface EnterpriseCrmEventbusProtoTeardown {
   teardownTaskConfigs?: ReadonlyArray<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
 }
 
-export const EnterpriseCrmEventbusProtoTeardown: Schema.Schema<EnterpriseCrmEventbusProtoTeardown> =
+export const EnterpriseCrmEventbusProtoTeardown: Schema.Codec<EnterpriseCrmEventbusProtoTeardown> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     teardownTaskConfigs: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoTeardownTaskConfig),
@@ -4081,7 +4081,7 @@ export interface GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   position?: GoogleCloudIntegrationsV1alphaCoordinate;
 }
 
-export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> =
+export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaErrorCatcherConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCatcherId: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -4107,7 +4107,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
   enableCloudLogging?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaCloudLoggingDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaCloudLoggingDetails> =
+export const GoogleCloudIntegrationsV1alphaCloudLoggingDetails: Schema.Codec<GoogleCloudIntegrationsV1alphaCloudLoggingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cloudLoggingSeverity: Schema.optional(Schema.String),
     enableCloudLogging: Schema.optional(Schema.Boolean),
@@ -4122,7 +4122,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationConfigParameter {
   value?: GoogleCloudIntegrationsV1alphaValueType;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter> =
+export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parameter: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationParameter,
@@ -4212,7 +4212,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
   cloudKmsKey?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationVersion: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion> =
+export const GoogleCloudIntegrationsV1alphaIntegrationVersion: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationVersion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -4272,7 +4272,7 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   noPermission?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse> =
+export const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersions: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaIntegrationVersion),
@@ -4288,7 +4288,7 @@ export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest 
   configParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest> =
+export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -4300,7 +4300,7 @@ export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest: Sch
 
 export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse {}
 
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse> =
+export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse",
@@ -4313,7 +4313,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest> =
+export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     fileFormat: Schema.optional(Schema.String),
@@ -4326,7 +4326,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse 
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse> =
+export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -4347,7 +4347,7 @@ export interface GoogleCloudIntegrationsV1alphaSerializedFile {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaSerializedFile: Schema.Schema<GoogleCloudIntegrationsV1alphaSerializedFile> =
+export const GoogleCloudIntegrationsV1alphaSerializedFile: Schema.Codec<GoogleCloudIntegrationsV1alphaSerializedFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     file: Schema.optional(Schema.String),
@@ -4360,7 +4360,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionRespons
   files?: ReadonlyArray<GoogleCloudIntegrationsV1alphaSerializedFile>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse> =
+export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     files: Schema.optional(
@@ -4384,7 +4384,7 @@ export interface GoogleCloudIntegrationsV1alphaFile {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaFile: Schema.Schema<GoogleCloudIntegrationsV1alphaFile> =
+export const GoogleCloudIntegrationsV1alphaFile: Schema.Codec<GoogleCloudIntegrationsV1alphaFile> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -4400,7 +4400,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
   files?: ReadonlyArray<GoogleCloudIntegrationsV1alphaFile>;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse> =
+export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(GoogleCloudIntegrationsV1alphaFile)),
   }).annotate({
@@ -4409,7 +4409,7 @@ export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse: Schema.S
 
 export interface GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest {}
 
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest> =
+export const GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest",
   });
@@ -4419,7 +4419,7 @@ export interface GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse {
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse> =
+export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -4430,7 +4430,7 @@ export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse: Schema.Sche
 
 export interface GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest {}
 
-export const GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest> =
+export const GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest",
@@ -4453,7 +4453,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   inputParameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest> =
+export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerId: Schema.optional(Schema.String),
     parameters: Schema.optional(
@@ -4487,7 +4487,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   parameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse> =
+export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
     eventParameters: Schema.optional(
@@ -4524,7 +4524,7 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   userGeneratedExecutionId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest> =
+export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerId: Schema.optional(Schema.String),
     parameters: Schema.optional(EnterpriseCrmEventbusProtoEventParameters),
@@ -4546,7 +4546,7 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
   executionInfoIds?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse> =
+export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionInfoIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -4558,7 +4558,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteEventResponse {
   executionId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteEventResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteEventResponse> =
+export const GoogleCloudIntegrationsV1alphaExecuteEventResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteEventResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
   }).annotate({
@@ -4584,7 +4584,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionS
   integrationName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata> =
+export const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata: Schema.Codec<EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskNumber: Schema.optional(Schema.String),
     taskName: Schema.optional(Schema.String),
@@ -4606,7 +4606,7 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats 
   endTime?: string;
 }
 
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats: Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats> =
+export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats: Schema.Codec<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -4638,7 +4638,7 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
   skippedOnFailure?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoTaskExecutionDetails: Schema.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetails> =
+export const EnterpriseCrmEventbusProtoTaskExecutionDetails: Schema.Codec<EnterpriseCrmEventbusProtoTaskExecutionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskNumber: Schema.optional(Schema.String),
     taskExecutionState: Schema.optional(Schema.String),
@@ -4659,7 +4659,7 @@ export interface EnterpriseCrmEventbusProtoConditionResult {
   result?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoConditionResult: Schema.Schema<EnterpriseCrmEventbusProtoConditionResult> =
+export const EnterpriseCrmEventbusProtoConditionResult: Schema.Codec<EnterpriseCrmEventbusProtoConditionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentTaskNumber: Schema.optional(Schema.String),
     nextTaskNumber: Schema.optional(Schema.String),
@@ -4688,7 +4688,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   conditionResults?: ReadonlyArray<EnterpriseCrmEventbusProtoConditionResult>;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot> =
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionSnapshotId: Schema.optional(Schema.String),
     eventExecutionInfoId: Schema.optional(Schema.String),
@@ -4721,7 +4721,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStat
   endTime?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats> =
+export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats: Schema.Codec<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -4761,7 +4761,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   cancelReason?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails> =
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionState: Schema.optional(Schema.String),
     eventExecutionSnapshot: Schema.optional(
@@ -4850,7 +4850,7 @@ export interface CrmlogErrorCode {
     | (string & {});
 }
 
-export const CrmlogErrorCode: Schema.Schema<CrmlogErrorCode> =
+export const CrmlogErrorCode: Schema.Codec<CrmlogErrorCode> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     commonErrorCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "CrmlogErrorCode" });
@@ -4866,7 +4866,7 @@ export interface EnterpriseCrmEventbusProtoErrorDetail {
   taskNumber?: number;
 }
 
-export const EnterpriseCrmEventbusProtoErrorDetail: Schema.Schema<EnterpriseCrmEventbusProtoErrorDetail> =
+export const EnterpriseCrmEventbusProtoErrorDetail: Schema.Codec<EnterpriseCrmEventbusProtoErrorDetail> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(CrmlogErrorCode),
     errorMessage: Schema.optional(Schema.String),
@@ -4881,7 +4881,7 @@ export interface EnterpriseCrmEventbusProtoExecutionTraceInfo {
   parentEventExecutionInfoId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoExecutionTraceInfo: Schema.Schema<EnterpriseCrmEventbusProtoExecutionTraceInfo> =
+export const EnterpriseCrmEventbusProtoExecutionTraceInfo: Schema.Codec<EnterpriseCrmEventbusProtoExecutionTraceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     traceId: Schema.optional(Schema.String),
     parentEventExecutionInfoId: Schema.optional(Schema.String),
@@ -4902,7 +4902,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo> =
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalExecutionInfoId: Schema.optional(Schema.String),
     replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
@@ -4925,7 +4925,7 @@ export interface EnterpriseCrmEventbusProtoCloudLoggingDetails {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoCloudLoggingDetails: Schema.Schema<EnterpriseCrmEventbusProtoCloudLoggingDetails> =
+export const EnterpriseCrmEventbusProtoCloudLoggingDetails: Schema.Codec<EnterpriseCrmEventbusProtoCloudLoggingDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enableCloudLogging: Schema.optional(Schema.Boolean),
     cloudLoggingSeverity: Schema.optional(Schema.String),
@@ -4990,7 +4990,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   integrationVersionUserLabel?: string;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo> =
+export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionInfoId: Schema.optional(Schema.String),
     workflowName: Schema.optional(Schema.String),
@@ -5060,7 +5060,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   workflowName?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshot: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshot> =
+export const EnterpriseCrmEventbusProtoEventExecutionSnapshot: Schema.Codec<EnterpriseCrmEventbusProtoEventExecutionSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionSnapshotId: Schema.optional(Schema.String),
     eventExecutionInfoId: Schema.optional(Schema.String),
@@ -5114,7 +5114,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
   cancelReason?: string;
 }
 
-export const EnterpriseCrmEventbusProtoEventExecutionDetails: Schema.Schema<EnterpriseCrmEventbusProtoEventExecutionDetails> =
+export const EnterpriseCrmEventbusProtoEventExecutionDetails: Schema.Codec<EnterpriseCrmEventbusProtoEventExecutionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionState: Schema.optional(Schema.String),
     eventExecutionSnapshot: Schema.optional(
@@ -5155,7 +5155,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapsho
   integrationName?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata> =
+export const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata: Schema.Codec<GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskNumber: Schema.optional(Schema.String),
     task: Schema.optional(Schema.String),
@@ -5177,7 +5177,7 @@ export interface GoogleCloudIntegrationsV1alphaAttemptStats {
   endTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAttemptStats: Schema.Schema<GoogleCloudIntegrationsV1alphaAttemptStats> =
+export const GoogleCloudIntegrationsV1alphaAttemptStats: Schema.Codec<GoogleCloudIntegrationsV1alphaAttemptStats> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5206,7 +5206,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
   taskAttemptStats?: ReadonlyArray<GoogleCloudIntegrationsV1alphaAttemptStats>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaTaskExecutionDetails> =
+export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails: Schema.Codec<GoogleCloudIntegrationsV1alphaTaskExecutionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskNumber: Schema.optional(Schema.String),
     taskExecutionState: Schema.optional(Schema.String),
@@ -5228,7 +5228,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshot {
   taskExecutionDetails?: ReadonlyArray<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshot: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshot> =
+export const GoogleCloudIntegrationsV1alphaExecutionSnapshot: Schema.Codec<GoogleCloudIntegrationsV1alphaExecutionSnapshot> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     checkpointTaskNumber: Schema.optional(Schema.String),
     executionSnapshotMetadata: Schema.optional(
@@ -5264,7 +5264,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
   eventExecutionSnapshotsSize?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionDetails> =
+export const GoogleCloudIntegrationsV1alphaExecutionDetails: Schema.Codec<GoogleCloudIntegrationsV1alphaExecutionDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     executionSnapshots: Schema.optional(
@@ -5291,7 +5291,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaExecutionReplayInfo: Schema.Schema<GoogleCloudIntegrationsV1alphaExecutionReplayInfo> =
+export const GoogleCloudIntegrationsV1alphaExecutionReplayInfo: Schema.Codec<GoogleCloudIntegrationsV1alphaExecutionReplayInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     originalExecutionInfoId: Schema.optional(Schema.String),
     replayedExecutionInfoIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5348,7 +5348,7 @@ export interface GoogleCloudIntegrationsV1alphaExecution {
   cloudKmsKey?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecution: Schema.Schema<GoogleCloudIntegrationsV1alphaExecution> =
+export const GoogleCloudIntegrationsV1alphaExecution: Schema.Codec<GoogleCloudIntegrationsV1alphaExecution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -5389,7 +5389,7 @@ export const GoogleCloudIntegrationsV1alphaExecution: Schema.Schema<GoogleCloudI
     }),
   ).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecution",
-  }) as any as Schema.Schema<GoogleCloudIntegrationsV1alphaExecution>;
+  }) as any as Schema.Codec<GoogleCloudIntegrationsV1alphaExecution>;
 
 export interface GoogleCloudIntegrationsV1alphaListExecutionsResponse {
   /** Required. The detailed information of requested executions. */
@@ -5400,7 +5400,7 @@ export interface GoogleCloudIntegrationsV1alphaListExecutionsResponse {
   executions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecution>;
 }
 
-export const GoogleCloudIntegrationsV1alphaListExecutionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListExecutionsResponse> =
+export const GoogleCloudIntegrationsV1alphaListExecutionsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListExecutionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionInfos: Schema.optional(
       Schema.Array(EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo),
@@ -5418,7 +5418,7 @@ export interface GoogleCloudIntegrationsV1alphaCancelExecutionRequest {
   cancelReason?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaCancelExecutionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionRequest> =
+export const GoogleCloudIntegrationsV1alphaCancelExecutionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaCancelExecutionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancelReason: Schema.optional(Schema.String),
   }).annotate({
@@ -5430,7 +5430,7 @@ export interface GoogleCloudIntegrationsV1alphaCancelExecutionResponse {
   isCanceled?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaCancelExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionResponse> =
+export const GoogleCloudIntegrationsV1alphaCancelExecutionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaCancelExecutionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isCanceled: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -5456,7 +5456,7 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
   configParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsRequest> =
+export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaTestIntegrationsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -5491,7 +5491,7 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
   parameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse> =
+export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
     eventParameters: Schema.optional(
@@ -5513,7 +5513,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadExecutionResponse {
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse> =
+export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -5535,7 +5535,7 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaReplayExecutionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionRequest> =
+export const GoogleCloudIntegrationsV1alphaReplayExecutionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaReplayExecutionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     replayReason: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
@@ -5556,7 +5556,7 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
   outputParameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudIntegrationsV1alphaReplayExecutionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionResponse> =
+export const GoogleCloudIntegrationsV1alphaReplayExecutionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaReplayExecutionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
     replayedExecutionId: Schema.optional(Schema.String),
@@ -5584,7 +5584,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegration {
   createTime?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegration: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegration> =
+export const GoogleCloudIntegrationsV1alphaIntegration: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5602,7 +5602,7 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListIntegrationsResponse> =
+export const GoogleCloudIntegrationsV1alphaListIntegrationsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListIntegrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrations: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaIntegration),
@@ -5637,7 +5637,7 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegra
   version?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult> =
+export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult: Schema.Codec<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -5659,7 +5659,7 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse> =
+export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrations: Schema.optional(
       Schema.Array(
@@ -5692,7 +5692,7 @@ export interface GoogleCloudIntegrationsV1alphaSfdcChannel {
   lastReplayId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSfdcChannel: Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel> =
+export const GoogleCloudIntegrationsV1alphaSfdcChannel: Schema.Codec<GoogleCloudIntegrationsV1alphaSfdcChannel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5712,7 +5712,7 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse> =
+export const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sfdcChannels: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaSfdcChannel),
@@ -5743,7 +5743,7 @@ export interface GoogleCloudIntegrationsV1alphaSfdcInstance {
   serviceAuthority?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSfdcInstance: Schema.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance> =
+export const GoogleCloudIntegrationsV1alphaSfdcInstance: Schema.Codec<GoogleCloudIntegrationsV1alphaSfdcInstance> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -5763,7 +5763,7 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse> =
+export const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sfdcInstances: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaSfdcInstance),
@@ -5780,7 +5780,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionAudit {
   resolver?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionAudit: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionAudit> =
+export const GoogleCloudIntegrationsV1alphaSuspensionAudit: Schema.Codec<GoogleCloudIntegrationsV1alphaSuspensionAudit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resolveTime: Schema.optional(Schema.String),
     resolver: Schema.optional(Schema.String),
@@ -5791,7 +5791,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity
   gaiaId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity> =
+export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(Schema.String),
     gaiaId: Schema.optional(Schema.String),
@@ -5808,7 +5808,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissions {
   googleGroup?: EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissions> =
+export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionAuthPermissions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mdbGroup: Schema.optional(Schema.String),
     loasRole: Schema.optional(Schema.String),
@@ -5827,7 +5827,7 @@ export interface EnterpriseCrmEventbusProtoToken {
   value?: string;
 }
 
-export const EnterpriseCrmEventbusProtoToken: Schema.Schema<EnterpriseCrmEventbusProtoToken> =
+export const EnterpriseCrmEventbusProtoToken: Schema.Codec<EnterpriseCrmEventbusProtoToken> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -5840,7 +5840,7 @@ export interface EnterpriseCrmEventbusProtoAddress {
   tokens?: ReadonlyArray<EnterpriseCrmEventbusProtoToken>;
 }
 
-export const EnterpriseCrmEventbusProtoAddress: Schema.Schema<EnterpriseCrmEventbusProtoAddress> =
+export const EnterpriseCrmEventbusProtoAddress: Schema.Codec<EnterpriseCrmEventbusProtoAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -5858,7 +5858,7 @@ export interface EnterpriseCrmEventbusProtoBuganizerNotification {
   templateId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoBuganizerNotification: Schema.Schema<EnterpriseCrmEventbusProtoBuganizerNotification> =
+export const EnterpriseCrmEventbusProtoBuganizerNotification: Schema.Codec<EnterpriseCrmEventbusProtoBuganizerNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     componentId: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -5901,7 +5901,7 @@ export interface GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
   quotaRetryCount?: number;
 }
 
-export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest: Schema.Schema<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest> =
+export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest: Schema.Codec<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerId: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -5927,7 +5927,7 @@ export interface EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   postToQueueWithTriggerIdRequest?: GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest;
 }
 
-export const EnterpriseCrmEventbusProtoCustomSuspensionRequest: Schema.Schema<EnterpriseCrmEventbusProtoCustomSuspensionRequest> =
+export const EnterpriseCrmEventbusProtoCustomSuspensionRequest: Schema.Codec<EnterpriseCrmEventbusProtoCustomSuspensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspensionInfoEventParameterKey: Schema.optional(Schema.String),
     postToQueueWithTriggerIdRequest: Schema.optional(
@@ -5946,7 +5946,7 @@ export interface EnterpriseCrmEventbusProtoNotification {
   request?: EnterpriseCrmEventbusProtoCustomSuspensionRequest;
 }
 
-export const EnterpriseCrmEventbusProtoNotification: Schema.Schema<EnterpriseCrmEventbusProtoNotification> =
+export const EnterpriseCrmEventbusProtoNotification: Schema.Codec<EnterpriseCrmEventbusProtoNotification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     emailAddress: Schema.optional(EnterpriseCrmEventbusProtoAddress),
     pubsubTopic: Schema.optional(Schema.String),
@@ -5966,7 +5966,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionExpiration {
   liftWhenExpired?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionExpiration: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionExpiration> =
+export const EnterpriseCrmEventbusProtoSuspensionExpiration: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionExpiration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remindAfterMs: Schema.optional(Schema.Number),
     expireAfterMs: Schema.optional(Schema.Number),
@@ -5983,7 +5983,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionConfig {
   suspensionExpiration?: EnterpriseCrmEventbusProtoSuspensionExpiration;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionConfig: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionConfig> =
+export const EnterpriseCrmEventbusProtoSuspensionConfig: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     whoMayResolve: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoSuspensionAuthPermissions),
@@ -6006,7 +6006,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration {
   liftWhenExpired?: boolean;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration> =
+export const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration: Schema.Codec<GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     remindTime: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -6024,7 +6024,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
   expiration?: GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig> =
+export const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customMessage: Schema.optional(Schema.String),
     emailAddresses: Schema.optional(Schema.Array(Schema.String)),
@@ -6063,7 +6063,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspension {
   approvalConfig?: GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaSuspension: Schema.Schema<GoogleCloudIntegrationsV1alphaSuspension> =
+export const GoogleCloudIntegrationsV1alphaSuspension: Schema.Codec<GoogleCloudIntegrationsV1alphaSuspension> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     eventExecutionInfoId: Schema.optional(Schema.String),
@@ -6086,7 +6086,7 @@ export interface GoogleCloudIntegrationsV1alphaResolveSuspensionRequest {
   suspension?: GoogleCloudIntegrationsV1alphaSuspension;
 }
 
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionRequest> =
+export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaResolveSuspensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspension: Schema.optional(GoogleCloudIntegrationsV1alphaSuspension),
   }).annotate({
@@ -6095,7 +6095,7 @@ export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest: Schema.Sche
 
 export interface GoogleCloudIntegrationsV1alphaResolveSuspensionResponse {}
 
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse> =
+export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionResponse",
   });
@@ -6107,7 +6107,7 @@ export interface GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListSuspensionsResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListSuspensionsResponse> =
+export const GoogleCloudIntegrationsV1alphaListSuspensionsResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListSuspensionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspensions: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaSuspension),
@@ -6122,7 +6122,7 @@ export interface GoogleCloudIntegrationsV1alphaLiftSuspensionRequest {
   suspensionResult?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionRequest> =
+export const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaLiftSuspensionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspensionResult: Schema.optional(Schema.String),
   }).annotate({
@@ -6134,7 +6134,7 @@ export interface GoogleCloudIntegrationsV1alphaLiftSuspensionResponse {
   eventExecutionInfoId?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse> =
+export const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     eventExecutionInfoId: Schema.optional(Schema.String),
   }).annotate({
@@ -6156,7 +6156,7 @@ export interface GoogleCloudIntegrationsV1alphaMockConfig {
   failedExecutions?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaMockConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaMockConfig> =
+export const GoogleCloudIntegrationsV1alphaMockConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaMockConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mockStrategy: Schema.optional(Schema.String),
     parameters: Schema.optional(
@@ -6185,7 +6185,7 @@ export interface GoogleCloudIntegrationsV1alphaAssertion {
   retryCount?: number;
 }
 
-export const GoogleCloudIntegrationsV1alphaAssertion: Schema.Schema<GoogleCloudIntegrationsV1alphaAssertion> =
+export const GoogleCloudIntegrationsV1alphaAssertion: Schema.Codec<GoogleCloudIntegrationsV1alphaAssertion> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assertionStrategy: Schema.optional(Schema.String),
     parameter: Schema.optional(GoogleCloudIntegrationsV1alphaEventParameter),
@@ -6206,7 +6206,7 @@ export interface GoogleCloudIntegrationsV1alphaTestTaskConfig {
   taskConfig?: GoogleCloudIntegrationsV1alphaTaskConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestTaskConfig: Schema.Schema<GoogleCloudIntegrationsV1alphaTestTaskConfig> =
+export const GoogleCloudIntegrationsV1alphaTestTaskConfig: Schema.Codec<GoogleCloudIntegrationsV1alphaTestTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     taskNumber: Schema.optional(Schema.String),
     mockConfig: Schema.optional(GoogleCloudIntegrationsV1alphaMockConfig),
@@ -6250,7 +6250,7 @@ export interface GoogleCloudIntegrationsV1alphaTestCase {
   triggerConfig?: GoogleCloudIntegrationsV1alphaTriggerConfig;
 }
 
-export const GoogleCloudIntegrationsV1alphaTestCase: Schema.Schema<GoogleCloudIntegrationsV1alphaTestCase> =
+export const GoogleCloudIntegrationsV1alphaTestCase: Schema.Codec<GoogleCloudIntegrationsV1alphaTestCase> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6278,7 +6278,7 @@ export interface GoogleCloudIntegrationsV1alphaListTestCasesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListTestCasesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListTestCasesResponse> =
+export const GoogleCloudIntegrationsV1alphaListTestCasesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListTestCasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testCases: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaTestCase),
@@ -6293,7 +6293,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest {
   inputParameters?: Record<string, GoogleCloudIntegrationsV1alphaValueType>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest> =
+export const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputParameters: Schema.optional(
       Schema.Record(Schema.String, GoogleCloudIntegrationsV1alphaValueType),
@@ -6319,7 +6319,7 @@ export interface GoogleCloudIntegrationsV1alphaAssertionResult {
   failureMessage?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaAssertionResult: Schema.Schema<GoogleCloudIntegrationsV1alphaAssertionResult> =
+export const GoogleCloudIntegrationsV1alphaAssertionResult: Schema.Codec<GoogleCloudIntegrationsV1alphaAssertionResult> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assertion: Schema.optional(GoogleCloudIntegrationsV1alphaAssertion),
     taskNumber: Schema.optional(Schema.String),
@@ -6343,7 +6343,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
     | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse> =
+export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executionId: Schema.optional(Schema.String),
     outputParameters: Schema.optional(
@@ -6364,7 +6364,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseRequest> =
+export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadTestCaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     fileFormat: Schema.optional(Schema.String),
@@ -6377,7 +6377,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTestCaseResponse {
   testCase?: GoogleCloudIntegrationsV1alphaTestCase;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse> =
+export const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     testCase: Schema.optional(GoogleCloudIntegrationsV1alphaTestCase),
   }).annotate({
@@ -6389,7 +6389,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse {
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse> =
+export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -6398,14 +6398,14 @@ export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse: Schema.Sche
 
 export interface GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest {}
 
-export const GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest> =
+export const GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest",
   });
 
 export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest {}
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest> =
+export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest",
   });
@@ -6415,7 +6415,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse {
   executeTestCaseResponses?: ReadonlyArray<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
 }
 
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse> =
+export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     executeTestCaseResponses: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse),
@@ -6431,7 +6431,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate {
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
 
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate: Schema.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate> =
+export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate: Schema.Codec<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     integrationVersion: Schema.optional(
@@ -6448,7 +6448,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplateBundle {
   subIntegrationVersionTemplates?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplateBundle: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateBundle> =
+export const GoogleCloudIntegrationsV1alphaTemplateBundle: Schema.Codec<GoogleCloudIntegrationsV1alphaTemplateBundle> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersionTemplate: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate,
@@ -6465,7 +6465,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplateComponent {
   name?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplateComponent: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplateComponent> =
+export const GoogleCloudIntegrationsV1alphaTemplateComponent: Schema.Codec<GoogleCloudIntegrationsV1alphaTemplateComponent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -6532,7 +6532,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplate {
   sharedWith?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaTemplate: Schema.Schema<GoogleCloudIntegrationsV1alphaTemplate> =
+export const GoogleCloudIntegrationsV1alphaTemplate: Schema.Codec<GoogleCloudIntegrationsV1alphaTemplate> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6563,7 +6563,7 @@ export interface GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaListTemplatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaListTemplatesResponse> =
+export const GoogleCloudIntegrationsV1alphaListTemplatesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaListTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templates: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
@@ -6580,7 +6580,7 @@ export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse> =
+export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     templates: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaTemplate),
@@ -6597,7 +6597,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDeta
   integrationDescription?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails> =
+export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails: Schema.Codec<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integration: Schema.optional(Schema.String),
     integrationDescription: Schema.optional(Schema.String),
@@ -6618,7 +6618,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequest {
   integrationRegion?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequest> =
+export const GoogleCloudIntegrationsV1alphaUseTemplateRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUseTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationDetails: Schema.optional(
       GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
@@ -6641,7 +6641,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   subIntegrationVersions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
-export const GoogleCloudIntegrationsV1alphaUseTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse> =
+export const GoogleCloudIntegrationsV1alphaUseTemplateResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaUseTemplateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -6663,7 +6663,7 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateRequest {
   >;
 }
 
-export const GoogleCloudIntegrationsV1alphaImportTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateRequest> =
+export const GoogleCloudIntegrationsV1alphaImportTemplateRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaImportTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integration: Schema.optional(Schema.String),
     subIntegrations: Schema.optional(
@@ -6683,7 +6683,7 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateResponse {
   subIntegrationVersions?: ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 }
 
-export const GoogleCloudIntegrationsV1alphaImportTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaImportTemplateResponse> =
+export const GoogleCloudIntegrationsV1alphaImportTemplateResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaImportTemplateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationVersion: Schema.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -6700,7 +6700,7 @@ export interface GoogleCloudIntegrationsV1alphaShareTemplateRequest {
   resourceNames?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaShareTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaShareTemplateRequest> =
+export const GoogleCloudIntegrationsV1alphaShareTemplateRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaShareTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6712,7 +6712,7 @@ export interface GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
   resourceNames?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest> =
+export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6726,7 +6726,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateRequest> =
+export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadTemplateRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
     fileFormat: Schema.optional(Schema.String),
@@ -6739,7 +6739,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateResponse {
   template?: GoogleCloudIntegrationsV1alphaTemplate;
 }
 
-export const GoogleCloudIntegrationsV1alphaUploadTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateResponse> =
+export const GoogleCloudIntegrationsV1alphaUploadTemplateResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaUploadTemplateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(GoogleCloudIntegrationsV1alphaTemplate),
   }).annotate({
@@ -6751,7 +6751,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadTemplateResponse {
   content?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse> =
+export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -6765,7 +6765,7 @@ export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
   triggerId?: ReadonlyArray<string>;
 }
 
-export const GoogleCloudIntegrationsV1alphaApiTriggerResource: Schema.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResource> =
+export const GoogleCloudIntegrationsV1alphaApiTriggerResource: Schema.Codec<GoogleCloudIntegrationsV1alphaApiTriggerResource> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     integrationResource: Schema.optional(Schema.String),
     triggerId: Schema.optional(Schema.Array(Schema.String)),
@@ -6780,7 +6780,7 @@ export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
   fileFormat?: "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest> =
+export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest: Schema.Codec<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiTriggerResources: Schema.optional(
       Schema.Array(GoogleCloudIntegrationsV1alphaApiTriggerResource),
@@ -6795,7 +6795,7 @@ export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse {
   openApiSpec?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse> =
+export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     openApiSpec: Schema.optional(Schema.String),
   }).annotate({
@@ -6807,7 +6807,7 @@ export interface GoogleCloudIntegrationsV1alphaGenerateTokenResponse {
   message?: string;
 }
 
-export const GoogleCloudIntegrationsV1alphaGenerateTokenResponse: Schema.Schema<GoogleCloudIntegrationsV1alphaGenerateTokenResponse> =
+export const GoogleCloudIntegrationsV1alphaGenerateTokenResponse: Schema.Codec<GoogleCloudIntegrationsV1alphaGenerateTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({
@@ -6839,7 +6839,7 @@ export interface EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam {
   scope?: string;
 }
 
-export const EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam: Schema.Schema<EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam> =
+export const EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam: Schema.Codec<EnterpriseCrmEventbusAuthconfigAuthConfigTaskParam> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authConfigId: Schema.optional(Schema.String),
     allowedCredentialTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -6864,7 +6864,7 @@ export interface EnterpriseCrmEventbusProtoBaseFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBaseFunction: Schema.Schema<EnterpriseCrmEventbusProtoBaseFunction> =
+export const EnterpriseCrmEventbusProtoBaseFunction: Schema.Codec<EnterpriseCrmEventbusProtoBaseFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoBaseFunction" });
@@ -6892,7 +6892,7 @@ export interface EnterpriseCrmEventbusProtoStringFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoStringFunction: Schema.Schema<EnterpriseCrmEventbusProtoStringFunction> =
+export const EnterpriseCrmEventbusProtoStringFunction: Schema.Codec<EnterpriseCrmEventbusProtoStringFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringFunction" });
@@ -6918,7 +6918,7 @@ export interface EnterpriseCrmEventbusProtoIntFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoIntFunction: Schema.Schema<EnterpriseCrmEventbusProtoIntFunction> =
+export const EnterpriseCrmEventbusProtoIntFunction: Schema.Codec<EnterpriseCrmEventbusProtoIntFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntFunction" });
@@ -6945,7 +6945,7 @@ export interface EnterpriseCrmEventbusProtoDoubleFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoDoubleFunction: Schema.Schema<EnterpriseCrmEventbusProtoDoubleFunction> =
+export const EnterpriseCrmEventbusProtoDoubleFunction: Schema.Codec<EnterpriseCrmEventbusProtoDoubleFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleFunction" });
@@ -6966,7 +6966,7 @@ export interface EnterpriseCrmEventbusProtoBooleanFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBooleanFunction: Schema.Schema<EnterpriseCrmEventbusProtoBooleanFunction> =
+export const EnterpriseCrmEventbusProtoBooleanFunction: Schema.Codec<EnterpriseCrmEventbusProtoBooleanFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoBooleanFunction" });
@@ -6991,7 +6991,7 @@ export interface EnterpriseCrmEventbusProtoProtoFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoProtoFunction: Schema.Schema<EnterpriseCrmEventbusProtoProtoFunction> =
+export const EnterpriseCrmEventbusProtoProtoFunction: Schema.Codec<EnterpriseCrmEventbusProtoProtoFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoFunction" });
@@ -7014,7 +7014,7 @@ export interface EnterpriseCrmEventbusProtoStringArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoStringArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoStringArrayFunction> =
+export const EnterpriseCrmEventbusProtoStringArrayFunction: Schema.Codec<EnterpriseCrmEventbusProtoStringArrayFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoStringArrayFunction" });
@@ -7041,7 +7041,7 @@ export interface EnterpriseCrmEventbusProtoIntArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoIntArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoIntArrayFunction> =
+export const EnterpriseCrmEventbusProtoIntArrayFunction: Schema.Codec<EnterpriseCrmEventbusProtoIntArrayFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoIntArrayFunction" });
@@ -7068,7 +7068,7 @@ export interface EnterpriseCrmEventbusProtoDoubleArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoDoubleArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoDoubleArrayFunction> =
+export const EnterpriseCrmEventbusProtoDoubleArrayFunction: Schema.Codec<EnterpriseCrmEventbusProtoDoubleArrayFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoDoubleArrayFunction" });
@@ -7091,7 +7091,7 @@ export interface EnterpriseCrmEventbusProtoBooleanArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoBooleanArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoBooleanArrayFunction> =
+export const EnterpriseCrmEventbusProtoBooleanArrayFunction: Schema.Codec<EnterpriseCrmEventbusProtoBooleanArrayFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoBooleanArrayFunction" });
@@ -7114,7 +7114,7 @@ export interface EnterpriseCrmEventbusProtoProtoArrayFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoProtoArrayFunction: Schema.Schema<EnterpriseCrmEventbusProtoProtoArrayFunction> =
+export const EnterpriseCrmEventbusProtoProtoArrayFunction: Schema.Codec<EnterpriseCrmEventbusProtoProtoArrayFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoProtoArrayFunction" });
@@ -7148,7 +7148,7 @@ export interface EnterpriseCrmEventbusProtoJsonFunction {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoJsonFunction: Schema.Schema<EnterpriseCrmEventbusProtoJsonFunction> =
+export const EnterpriseCrmEventbusProtoJsonFunction: Schema.Codec<EnterpriseCrmEventbusProtoJsonFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     functionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnterpriseCrmEventbusProtoJsonFunction" });
@@ -7169,7 +7169,7 @@ export interface EnterpriseCrmEventbusProtoFunctionType {
   jsonFunction?: EnterpriseCrmEventbusProtoJsonFunction;
 }
 
-export const EnterpriseCrmEventbusProtoFunctionType: Schema.Schema<EnterpriseCrmEventbusProtoFunctionType> =
+export const EnterpriseCrmEventbusProtoFunctionType: Schema.Codec<EnterpriseCrmEventbusProtoFunctionType> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     baseFunction: Schema.optional(EnterpriseCrmEventbusProtoBaseFunction),
     stringFunction: Schema.optional(EnterpriseCrmEventbusProtoStringFunction),
@@ -7202,7 +7202,7 @@ export interface EnterpriseCrmEventbusProtoFunction {
   parameters?: ReadonlyArray<EnterpriseCrmEventbusProtoTransformExpression>;
 }
 
-export const EnterpriseCrmEventbusProtoFunction: Schema.Schema<EnterpriseCrmEventbusProtoFunction> =
+export const EnterpriseCrmEventbusProtoFunction: Schema.Codec<EnterpriseCrmEventbusProtoFunction> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       functionType: Schema.optional(EnterpriseCrmEventbusProtoFunctionType),
@@ -7212,7 +7212,7 @@ export const EnterpriseCrmEventbusProtoFunction: Schema.Schema<EnterpriseCrmEven
     }),
   ).annotate({
     identifier: "EnterpriseCrmEventbusProtoFunction",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoFunction>;
+  }) as any as Schema.Codec<EnterpriseCrmEventbusProtoFunction>;
 
 export interface EnterpriseCrmEventbusProtoBaseValue {
   /** Start with a literal value. */
@@ -7223,7 +7223,7 @@ export interface EnterpriseCrmEventbusProtoBaseValue {
   baseFunction?: EnterpriseCrmEventbusProtoFunction;
 }
 
-export const EnterpriseCrmEventbusProtoBaseValue: Schema.Schema<EnterpriseCrmEventbusProtoBaseValue> =
+export const EnterpriseCrmEventbusProtoBaseValue: Schema.Codec<EnterpriseCrmEventbusProtoBaseValue> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       literalValue: Schema.optional(
@@ -7234,7 +7234,7 @@ export const EnterpriseCrmEventbusProtoBaseValue: Schema.Schema<EnterpriseCrmEve
     }),
   ).annotate({
     identifier: "EnterpriseCrmEventbusProtoBaseValue",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoBaseValue>;
+  }) as any as Schema.Codec<EnterpriseCrmEventbusProtoBaseValue>;
 
 export interface EnterpriseCrmEventbusProtoTransformExpression {
   /** Initial value upon which to perform transformations. */
@@ -7243,7 +7243,7 @@ export interface EnterpriseCrmEventbusProtoTransformExpression {
   transformationFunctions?: ReadonlyArray<EnterpriseCrmEventbusProtoFunction>;
 }
 
-export const EnterpriseCrmEventbusProtoTransformExpression: Schema.Schema<EnterpriseCrmEventbusProtoTransformExpression> =
+export const EnterpriseCrmEventbusProtoTransformExpression: Schema.Codec<EnterpriseCrmEventbusProtoTransformExpression> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       initialValue: Schema.optional(EnterpriseCrmEventbusProtoBaseValue),
@@ -7253,7 +7253,7 @@ export const EnterpriseCrmEventbusProtoTransformExpression: Schema.Schema<Enterp
     }),
   ).annotate({
     identifier: "EnterpriseCrmEventbusProtoTransformExpression",
-  }) as any as Schema.Schema<EnterpriseCrmEventbusProtoTransformExpression>;
+  }) as any as Schema.Codec<EnterpriseCrmEventbusProtoTransformExpression>;
 
 export interface EnterpriseCrmEventbusProtoField {
   /** This holds the reference key of the workflow or task parameter. 1. Any workflow parameter, for e.g. $workflowParam1$. 2. Any task input or output parameter, for e.g. $task1_param1$. 3. Any workflow or task parameters with subfield references, for e.g., $task1_param1.employee.id$ */
@@ -7289,7 +7289,7 @@ export interface EnterpriseCrmEventbusProtoField {
   cardinality?: "UNSPECIFIED" | "OPTIONAL" | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoField: Schema.Schema<EnterpriseCrmEventbusProtoField> =
+export const EnterpriseCrmEventbusProtoField: Schema.Codec<EnterpriseCrmEventbusProtoField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceKey: Schema.optional(Schema.String),
     transformExpression: Schema.optional(
@@ -7308,7 +7308,7 @@ export interface EnterpriseCrmEventbusProtoMappedField {
   outputField?: EnterpriseCrmEventbusProtoField;
 }
 
-export const EnterpriseCrmEventbusProtoMappedField: Schema.Schema<EnterpriseCrmEventbusProtoMappedField> =
+export const EnterpriseCrmEventbusProtoMappedField: Schema.Codec<EnterpriseCrmEventbusProtoMappedField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     inputField: Schema.optional(EnterpriseCrmEventbusProtoField),
     outputField: Schema.optional(EnterpriseCrmEventbusProtoField),
@@ -7318,7 +7318,7 @@ export interface EnterpriseCrmEventbusProtoFieldMappingConfig {
   mappedFields?: ReadonlyArray<EnterpriseCrmEventbusProtoMappedField>;
 }
 
-export const EnterpriseCrmEventbusProtoFieldMappingConfig: Schema.Schema<EnterpriseCrmEventbusProtoFieldMappingConfig> =
+export const EnterpriseCrmEventbusProtoFieldMappingConfig: Schema.Codec<EnterpriseCrmEventbusProtoFieldMappingConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     mappedFields: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoMappedField),
@@ -7345,7 +7345,7 @@ export interface EnterpriseCrmEventbusProtoLoopMetadata {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoLoopMetadata: Schema.Schema<EnterpriseCrmEventbusProtoLoopMetadata> =
+export const EnterpriseCrmEventbusProtoLoopMetadata: Schema.Codec<EnterpriseCrmEventbusProtoLoopMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentIterationCount: Schema.optional(Schema.String),
     currentIterationDetail: Schema.optional(Schema.String),
@@ -7360,7 +7360,7 @@ export interface EnterpriseCrmEventbusProtoParameterMapField {
   literalValue?: EnterpriseCrmEventbusProtoParameterValueType;
 }
 
-export const EnterpriseCrmEventbusProtoParameterMapField: Schema.Schema<EnterpriseCrmEventbusProtoParameterMapField> =
+export const EnterpriseCrmEventbusProtoParameterMapField: Schema.Codec<EnterpriseCrmEventbusProtoParameterMapField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceKey: Schema.optional(Schema.String),
     literalValue: Schema.optional(EnterpriseCrmEventbusProtoParameterValueType),
@@ -7371,7 +7371,7 @@ export interface EnterpriseCrmEventbusProtoParameterMapEntry {
   value?: EnterpriseCrmEventbusProtoParameterMapField;
 }
 
-export const EnterpriseCrmEventbusProtoParameterMapEntry: Schema.Schema<EnterpriseCrmEventbusProtoParameterMapEntry> =
+export const EnterpriseCrmEventbusProtoParameterMapEntry: Schema.Codec<EnterpriseCrmEventbusProtoParameterMapEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
     value: Schema.optional(EnterpriseCrmEventbusProtoParameterMapField),
@@ -7422,7 +7422,7 @@ export interface EnterpriseCrmEventbusProtoParameterMap {
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoParameterMap: Schema.Schema<EnterpriseCrmEventbusProtoParameterMap> =
+export const EnterpriseCrmEventbusProtoParameterMap: Schema.Codec<EnterpriseCrmEventbusProtoParameterMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(
       Schema.Array(EnterpriseCrmEventbusProtoParameterMapEntry),
@@ -7444,7 +7444,7 @@ export interface EnterpriseCrmEventbusProtoScatterResponse {
   errorMsg?: string;
 }
 
-export const EnterpriseCrmEventbusProtoScatterResponse: Schema.Schema<EnterpriseCrmEventbusProtoScatterResponse> =
+export const EnterpriseCrmEventbusProtoScatterResponse: Schema.Codec<EnterpriseCrmEventbusProtoScatterResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scatterElement: Schema.optional(
       EnterpriseCrmEventbusProtoParameterValueType,
@@ -7463,7 +7463,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit {
   resolvedByCpi?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit> =
+export const EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionResolutionInfoAudit> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     timestamp: Schema.optional(Schema.String),
     resolvedBy: Schema.optional(Schema.String),
@@ -7486,7 +7486,7 @@ export interface EnterpriseCrmEventbusProtoExternalTraffic {
   enableInternalIp?: boolean;
 }
 
-export const EnterpriseCrmEventbusProtoExternalTraffic: Schema.Schema<EnterpriseCrmEventbusProtoExternalTraffic> =
+export const EnterpriseCrmEventbusProtoExternalTraffic: Schema.Codec<EnterpriseCrmEventbusProtoExternalTraffic> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     gcpProjectId: Schema.optional(Schema.String),
@@ -7511,7 +7511,7 @@ export interface EnterpriseCrmEventbusProtoCloudKmsConfig {
   serviceAccount?: string;
 }
 
-export const EnterpriseCrmEventbusProtoCloudKmsConfig: Schema.Schema<EnterpriseCrmEventbusProtoCloudKmsConfig> =
+export const EnterpriseCrmEventbusProtoCloudKmsConfig: Schema.Codec<EnterpriseCrmEventbusProtoCloudKmsConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locationName: Schema.optional(Schema.String),
     keyRingName: Schema.optional(Schema.String),
@@ -7561,7 +7561,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionResolutionInfo {
   clientId?: string;
 }
 
-export const EnterpriseCrmEventbusProtoSuspensionResolutionInfo: Schema.Schema<EnterpriseCrmEventbusProtoSuspensionResolutionInfo> =
+export const EnterpriseCrmEventbusProtoSuspensionResolutionInfo: Schema.Codec<EnterpriseCrmEventbusProtoSuspensionResolutionInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     suspensionId: Schema.optional(Schema.String),
     eventExecutionInfoId: Schema.optional(Schema.String),
@@ -7593,7 +7593,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterMapField {
   literalValue?: EnterpriseCrmFrontendsEventbusProtoParameterValueType;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMapField: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapField> =
+export const EnterpriseCrmFrontendsEventbusProtoParameterMapField: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParameterMapField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     referenceKey: Schema.optional(Schema.String),
     literalValue: Schema.optional(
@@ -7608,7 +7608,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterMapEntry {
   value?: EnterpriseCrmFrontendsEventbusProtoParameterMapField;
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMapEntry: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry> =
+export const EnterpriseCrmFrontendsEventbusProtoParameterMapEntry: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParameterMapEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.optional(EnterpriseCrmFrontendsEventbusProtoParameterMapField),
     value: Schema.optional(
@@ -7663,7 +7663,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterMap {
     | (string & {});
 }
 
-export const EnterpriseCrmFrontendsEventbusProtoParameterMap: Schema.Schema<EnterpriseCrmFrontendsEventbusProtoParameterMap> =
+export const EnterpriseCrmFrontendsEventbusProtoParameterMap: Schema.Codec<EnterpriseCrmFrontendsEventbusProtoParameterMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entries: Schema.optional(
       Schema.Array(EnterpriseCrmFrontendsEventbusProtoParameterMapEntry),
@@ -7685,7 +7685,7 @@ export interface EnterpriseCrmEventbusProtoConnectorsConnection {
   host?: string;
 }
 
-export const EnterpriseCrmEventbusProtoConnectorsConnection: Schema.Schema<EnterpriseCrmEventbusProtoConnectorsConnection> =
+export const EnterpriseCrmEventbusProtoConnectorsConnection: Schema.Codec<EnterpriseCrmEventbusProtoConnectorsConnection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connectionName: Schema.optional(Schema.String),
     serviceName: Schema.optional(Schema.String),
@@ -7709,7 +7709,7 @@ export interface EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig 
     | (string & {});
 }
 
-export const EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig: Schema.Schema<EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig> =
+export const EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig: Schema.Codec<EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     connection: Schema.optional(EnterpriseCrmEventbusProtoConnectorsConnection),
     operation: Schema.optional(Schema.String),
@@ -7783,7 +7783,7 @@ export const GetClientmetadataProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/clientmetadata" }),
     svc,
-  ) as unknown as Schema.Schema<GetClientmetadataProjectsRequest>;
+  ) as unknown as Schema.Codec<GetClientmetadataProjectsRequest>;
 
 export type GetClientmetadataProjectsResponse =
   GoogleCloudIntegrationsV1alphaGetClientMetadataResponse;
@@ -7818,7 +7818,7 @@ export const GetClientsProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/clients" }),
     svc,
-  ) as unknown as Schema.Schema<GetClientsProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetClientsProjectsLocationsRequest>;
 
 export type GetClientsProjectsLocationsResponse =
   GoogleCloudIntegrationsV1alphaGetClientResponse;
@@ -7862,7 +7862,7 @@ export const GenerateOpenApiSpecProjectsLocationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GenerateOpenApiSpecProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GenerateOpenApiSpecProjectsLocationsRequest>;
 
 export type GenerateOpenApiSpecProjectsLocationsResponse =
   GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse;
@@ -7908,7 +7908,7 @@ export const LinkProjectsLocationsAppsScriptProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LinkProjectsLocationsAppsScriptProjectsRequest>;
+  ) as unknown as Schema.Codec<LinkProjectsLocationsAppsScriptProjectsRequest>;
 
 export type LinkProjectsLocationsAppsScriptProjectsResponse =
   GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse;
@@ -7954,7 +7954,7 @@ export const CreateProjectsLocationsAppsScriptProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAppsScriptProjectsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAppsScriptProjectsRequest>;
 
 export type CreateProjectsLocationsAppsScriptProjectsResponse =
   GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse;
@@ -8000,7 +8000,7 @@ export const ProvisionProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<ProvisionProjectsLocationsClientsRequest>;
 
 export type ProvisionProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ProvisionProjectsLocationsClientsResponse =
@@ -8045,7 +8045,7 @@ export const ProvisionClientPostProcessorProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionClientPostProcessorProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<ProvisionClientPostProcessorProjectsLocationsClientsRequest>;
 
 export type ProvisionClientPostProcessorProjectsLocationsClientsResponse =
   GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse;
@@ -8091,7 +8091,7 @@ export const DeprovisionProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeprovisionProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<DeprovisionProjectsLocationsClientsRequest>;
 
 export type DeprovisionProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const DeprovisionProjectsLocationsClientsResponse =
@@ -8136,7 +8136,7 @@ export const ChangeConfigProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangeConfigProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<ChangeConfigProjectsLocationsClientsRequest>;
 
 export type ChangeConfigProjectsLocationsClientsResponse =
   GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse;
@@ -8182,7 +8182,7 @@ export const SwitchProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SwitchProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<SwitchProjectsLocationsClientsRequest>;
 
 export type SwitchProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const SwitchProjectsLocationsClientsResponse =
@@ -8227,7 +8227,7 @@ export const ReplaceProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ReplaceProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<ReplaceProjectsLocationsClientsRequest>;
 
 export type ReplaceProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ReplaceProjectsLocationsClientsResponse =
@@ -8272,7 +8272,7 @@ export const SwitchVariableMaskingProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SwitchVariableMaskingProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<SwitchVariableMaskingProjectsLocationsClientsRequest>;
 
 export type SwitchVariableMaskingProjectsLocationsClientsResponse =
   GoogleProtobufEmpty;
@@ -8318,7 +8318,7 @@ export const ToggleHttpProjectsLocationsClientsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ToggleHttpProjectsLocationsClientsRequest>;
+  ) as unknown as Schema.Codec<ToggleHttpProjectsLocationsClientsRequest>;
 
 export type ToggleHttpProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ToggleHttpProjectsLocationsClientsResponse =
@@ -8363,7 +8363,7 @@ export const CreateProjectsLocationsProductsCloudFunctionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsCloudFunctionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsCloudFunctionsRequest>;
 
 export type CreateProjectsLocationsProductsCloudFunctionsResponse =
   GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse;
@@ -8412,7 +8412,7 @@ export const ListProjectsLocationsProductsCertificatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/certificates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsCertificatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsCertificatesRequest>;
 
 export type ListProjectsLocationsProductsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaListCertificatesResponse;
@@ -8451,7 +8451,7 @@ export const GetProjectsLocationsProductsCertificatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsCertificatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsCertificatesRequest>;
 
 export type GetProjectsLocationsProductsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -8495,7 +8495,7 @@ export const CreateProjectsLocationsProductsCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsCertificatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsCertificatesRequest>;
 
 export type CreateProjectsLocationsProductsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -8540,7 +8540,7 @@ export const PatchProjectsLocationsProductsCertificatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProductsCertificatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProductsCertificatesRequest>;
 
 export type PatchProjectsLocationsProductsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -8577,7 +8577,7 @@ export const DeleteProjectsLocationsProductsCertificatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsCertificatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsCertificatesRequest>;
 
 export type DeleteProjectsLocationsProductsCertificatesResponse =
   GoogleProtobufEmpty;
@@ -8634,7 +8634,7 @@ export const CreateProjectsLocationsProductsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/authConfigs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsAuthConfigsRequest>;
 
 export type CreateProjectsLocationsProductsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -8694,7 +8694,7 @@ export const PatchProjectsLocationsProductsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProductsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProductsAuthConfigsRequest>;
 
 export type PatchProjectsLocationsProductsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -8731,7 +8731,7 @@ export const DeleteProjectsLocationsProductsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsAuthConfigsRequest>;
 
 export type DeleteProjectsLocationsProductsAuthConfigsResponse =
   GoogleProtobufEmpty;
@@ -8768,7 +8768,7 @@ export const GetProjectsLocationsProductsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsAuthConfigsRequest>;
 
 export type GetProjectsLocationsProductsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -8815,7 +8815,7 @@ export const ListProjectsLocationsProductsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsAuthConfigsRequest>;
 
 export type ListProjectsLocationsProductsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaListAuthConfigsResponse;
@@ -8859,7 +8859,7 @@ export const ExecuteProjectsLocationsProductsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:execute", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsLocationsProductsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ExecuteProjectsLocationsProductsIntegrationsRequest>;
 
 export type ExecuteProjectsLocationsProductsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse;
@@ -8901,7 +8901,7 @@ export const ScheduleProjectsLocationsProductsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:schedule", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ScheduleProjectsLocationsProductsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ScheduleProjectsLocationsProductsIntegrationsRequest>;
 
 export type ScheduleProjectsLocationsProductsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse;
@@ -8943,7 +8943,7 @@ export const TestProjectsLocationsProductsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:test", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TestProjectsLocationsProductsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<TestProjectsLocationsProductsIntegrationsRequest>;
 
 export type TestProjectsLocationsProductsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
@@ -8992,7 +8992,7 @@ export const ListProjectsLocationsProductsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/integrations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsIntegrationsRequest>;
 
 export type ListProjectsLocationsProductsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaListIntegrationsResponse;
@@ -9046,7 +9046,7 @@ export const ListProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type ListProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse;
@@ -9100,7 +9100,7 @@ export const CreateProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type CreateProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -9145,7 +9145,7 @@ export const PatchProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type PatchProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -9182,7 +9182,7 @@ export const GetProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type GetProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -9222,7 +9222,7 @@ export const PublishProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:publish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PublishProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<PublishProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type PublishProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse;
@@ -9259,7 +9259,7 @@ export const DeleteProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type DeleteProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleProtobufEmpty;
@@ -9305,7 +9305,7 @@ export const UploadProjectsLocationsProductsIntegrationsVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type UploadProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse;
@@ -9354,7 +9354,7 @@ export const DownloadProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse;
@@ -9398,7 +9398,7 @@ export const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsReques
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse;
@@ -9440,7 +9440,7 @@ export const UnpublishProjectsLocationsProductsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:unpublish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 export type UnpublishProjectsLocationsProductsIntegrationsVersionsResponse =
   GoogleProtobufEmpty;
@@ -9565,7 +9565,7 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/executions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
 export type ListProjectsLocationsProductsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaListExecutionsResponse;
@@ -9604,7 +9604,7 @@ export const GetProjectsLocationsProductsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
 export type GetProjectsLocationsProductsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaExecution;
@@ -9639,7 +9639,7 @@ export const DownloadProjectsLocationsProductsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
 export type DownloadProjectsLocationsProductsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaDownloadExecutionResponse;
@@ -9679,7 +9679,7 @@ export const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRe
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:resolve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
 export type ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaResolveSuspensionResponse;
@@ -9730,7 +9730,7 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsReque
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/suspensions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
 export type ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaListSuspensionsResponse;
@@ -9775,7 +9775,7 @@ export const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsReque
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:lift", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>;
 
 export type LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaLiftSuspensionResponse;
@@ -9822,7 +9822,7 @@ export const CreateProjectsLocationsProductsSfdcInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type CreateProjectsLocationsProductsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -9867,7 +9867,7 @@ export const PatchProjectsLocationsProductsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProductsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type PatchProjectsLocationsProductsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -9904,7 +9904,7 @@ export const DeleteProjectsLocationsProductsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type DeleteProjectsLocationsProductsSfdcInstancesResponse =
   GoogleProtobufEmpty;
@@ -9941,7 +9941,7 @@ export const GetProjectsLocationsProductsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type GetProjectsLocationsProductsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -9988,7 +9988,7 @@ export const ListProjectsLocationsProductsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sfdcInstances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type ListProjectsLocationsProductsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse;
@@ -10036,7 +10036,7 @@ export const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -10081,7 +10081,7 @@ export const PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -10118,7 +10118,7 @@ export const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   GoogleProtobufEmpty;
@@ -10155,7 +10155,7 @@ export const GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type GetProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -10202,7 +10202,7 @@ export const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sfdcChannels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type ListProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse;
@@ -10250,7 +10250,7 @@ export const CreateProjectsLocationsCloudFunctionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCloudFunctionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCloudFunctionsRequest>;
 
 export type CreateProjectsLocationsCloudFunctionsResponse =
   GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse;
@@ -10299,7 +10299,7 @@ export const ListProjectsLocationsCertificatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/certificates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsCertificatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsCertificatesRequest>;
 
 export type ListProjectsLocationsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaListCertificatesResponse;
@@ -10338,7 +10338,7 @@ export const GetProjectsLocationsCertificatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsCertificatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsCertificatesRequest>;
 
 export type GetProjectsLocationsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -10382,7 +10382,7 @@ export const CreateProjectsLocationsCertificatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsCertificatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsCertificatesRequest>;
 
 export type CreateProjectsLocationsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -10427,7 +10427,7 @@ export const PatchProjectsLocationsCertificatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsCertificatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsCertificatesRequest>;
 
 export type PatchProjectsLocationsCertificatesResponse =
   GoogleCloudIntegrationsV1alphaCertificate;
@@ -10464,7 +10464,7 @@ export const DeleteProjectsLocationsCertificatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsCertificatesRequest>;
 
 export type DeleteProjectsLocationsCertificatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsCertificatesResponse =
@@ -10520,7 +10520,7 @@ export const CreateProjectsLocationsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/authConfigs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAuthConfigsRequest>;
 
 export type CreateProjectsLocationsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -10580,7 +10580,7 @@ export const PatchProjectsLocationsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAuthConfigsRequest>;
 
 export type PatchProjectsLocationsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -10617,7 +10617,7 @@ export const DeleteProjectsLocationsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAuthConfigsRequest>;
 
 export type DeleteProjectsLocationsAuthConfigsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAuthConfigsResponse =
@@ -10653,7 +10653,7 @@ export const GetProjectsLocationsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAuthConfigsRequest>;
 
 export type GetProjectsLocationsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaAuthConfig;
@@ -10700,7 +10700,7 @@ export const ListProjectsLocationsAuthConfigsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/authConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAuthConfigsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAuthConfigsRequest>;
 
 export type ListProjectsLocationsAuthConfigsResponse =
   GoogleCloudIntegrationsV1alphaListAuthConfigsResponse;
@@ -10751,7 +10751,7 @@ export const ListProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
 
 export type ListProjectsLocationsConnectionsResponse =
   GoogleCloudIntegrationsV1alphaListConnectionsResponse;
@@ -10790,7 +10790,7 @@ export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
 
 export type GetConnectionSchemaMetadataProjectsLocationsConnectionsResponse =
   GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata;
@@ -10834,7 +10834,7 @@ export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runtimeEntitySchemas" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
 
 export type ListProjectsLocationsConnectionsRuntimeEntitySchemasResponse =
   GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse;
@@ -10882,7 +10882,7 @@ export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/runtimeActionSchemas" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
 
 export type ListProjectsLocationsConnectionsRuntimeActionSchemasResponse =
   GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse;
@@ -10926,7 +10926,7 @@ export const ExecuteProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:execute", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ExecuteProjectsLocationsIntegrationsRequest>;
 
 export type ExecuteProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse;
@@ -10968,7 +10968,7 @@ export const ScheduleProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:schedule", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ScheduleProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ScheduleProjectsLocationsIntegrationsRequest>;
 
 export type ScheduleProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse;
@@ -11008,7 +11008,7 @@ export const ExecuteEventProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:executeEvent", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteEventProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ExecuteEventProjectsLocationsIntegrationsRequest>;
 
 export type ExecuteEventProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaExecuteEventResponse;
@@ -11050,7 +11050,7 @@ export const TestProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:test", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TestProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<TestProjectsLocationsIntegrationsRequest>;
 
 export type TestProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
@@ -11099,7 +11099,7 @@ export const ListProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/integrations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIntegrationsRequest>;
 
 export type ListProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaListIntegrationsResponse;
@@ -11155,7 +11155,7 @@ export const SearchProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/integrations:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsIntegrationsRequest>;
 
 export type SearchProjectsLocationsIntegrationsResponse =
   GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse;
@@ -11194,7 +11194,7 @@ export const DeleteProjectsLocationsIntegrationsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIntegrationsRequest>;
 
 export type DeleteProjectsLocationsIntegrationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsIntegrationsResponse =
@@ -11245,7 +11245,7 @@ export const ListProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/versions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIntegrationsVersionsRequest>;
 
 export type ListProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse;
@@ -11299,7 +11299,7 @@ export const CreateProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/versions", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIntegrationsVersionsRequest>;
 
 export type CreateProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -11344,7 +11344,7 @@ export const PatchProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsIntegrationsVersionsRequest>;
 
 export type PatchProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -11381,7 +11381,7 @@ export const GetProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIntegrationsVersionsRequest>;
 
 export type GetProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaIntegrationVersion;
@@ -11421,7 +11421,7 @@ export const PublishProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:publish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PublishProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<PublishProjectsLocationsIntegrationsVersionsRequest>;
 
 export type PublishProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse;
@@ -11458,7 +11458,7 @@ export const DeleteProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIntegrationsVersionsRequest>;
 
 export type DeleteProjectsLocationsIntegrationsVersionsResponse =
   GoogleProtobufEmpty;
@@ -11504,7 +11504,7 @@ export const UploadProjectsLocationsIntegrationsVersionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsIntegrationsVersionsRequest>;
 
 export type UploadProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse;
@@ -11553,7 +11553,7 @@ export const DownloadProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsIntegrationsVersionsRequest>;
 
 export type DownloadProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse;
@@ -11597,7 +11597,7 @@ export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:downloadJsonPackage" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>;
 
 export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse;
@@ -11637,7 +11637,7 @@ export const UnpublishProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:unpublish", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UnpublishProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<UnpublishProjectsLocationsIntegrationsVersionsRequest>;
 
 export type UnpublishProjectsLocationsIntegrationsVersionsResponse =
   GoogleProtobufEmpty;
@@ -11679,7 +11679,7 @@ export const TestProjectsLocationsIntegrationsVersionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:test", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<TestProjectsLocationsIntegrationsVersionsRequest>;
+  ) as unknown as Schema.Codec<TestProjectsLocationsIntegrationsVersionsRequest>;
 
 export type TestProjectsLocationsIntegrationsVersionsResponse =
   GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
@@ -11724,7 +11724,7 @@ export const CreateProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/testCases", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type CreateProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaTestCase;
@@ -11761,7 +11761,7 @@ export const GetProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type GetProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaTestCase;
@@ -11804,7 +11804,7 @@ export const PatchProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type PatchProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaTestCase;
@@ -11841,7 +11841,7 @@ export const DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type DeleteProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleProtobufEmpty;
@@ -11893,7 +11893,7 @@ export const ListProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/testCases" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type ListProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaListTestCasesResponse;
@@ -11941,7 +11941,7 @@ export const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse;
@@ -11987,7 +11987,7 @@ export const UploadProjectsLocationsIntegrationsVersionsTestCasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type UploadProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaUploadTestCaseResponse;
@@ -12027,7 +12027,7 @@ export const DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type DownloadProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse;
@@ -12071,7 +12071,7 @@ export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesReque
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaTestCase;
@@ -12118,7 +12118,7 @@ export const ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  ) as unknown as Schema.Codec<ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type ExecuteProjectsLocationsIntegrationsVersionsTestCasesResponse =
   GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse;
@@ -12243,7 +12243,7 @@ export const ListProjectsLocationsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/executions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIntegrationsExecutionsRequest>;
 
 export type ListProjectsLocationsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaListExecutionsResponse;
@@ -12282,7 +12282,7 @@ export const GetProjectsLocationsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsIntegrationsExecutionsRequest>;
 
 export type GetProjectsLocationsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaExecution;
@@ -12322,7 +12322,7 @@ export const CancelProjectsLocationsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsIntegrationsExecutionsRequest>;
 
 export type CancelProjectsLocationsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaCancelExecutionResponse;
@@ -12359,7 +12359,7 @@ export const DownloadProjectsLocationsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsIntegrationsExecutionsRequest>;
 
 export type DownloadProjectsLocationsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaDownloadExecutionResponse;
@@ -12399,7 +12399,7 @@ export const ReplayProjectsLocationsIntegrationsExecutionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:replay", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ReplayProjectsLocationsIntegrationsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ReplayProjectsLocationsIntegrationsExecutionsRequest>;
 
 export type ReplayProjectsLocationsIntegrationsExecutionsResponse =
   GoogleCloudIntegrationsV1alphaReplayExecutionResponse;
@@ -12441,7 +12441,7 @@ export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:resolve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 export type ResolveProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaResolveSuspensionResponse;
@@ -12490,7 +12490,7 @@ export const ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/suspensions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 export type ListProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaListSuspensionsResponse;
@@ -12534,7 +12534,7 @@ export const LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:lift", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+  ) as unknown as Schema.Codec<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 export type LiftProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   GoogleCloudIntegrationsV1alphaLiftSuspensionResponse;
@@ -12580,7 +12580,7 @@ export const CreateProjectsLocationsSfdcInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSfdcInstancesRequest>;
 
 export type CreateProjectsLocationsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -12625,7 +12625,7 @@ export const PatchProjectsLocationsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSfdcInstancesRequest>;
 
 export type PatchProjectsLocationsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -12662,7 +12662,7 @@ export const DeleteProjectsLocationsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSfdcInstancesRequest>;
 
 export type DeleteProjectsLocationsSfdcInstancesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsSfdcInstancesResponse =
@@ -12698,7 +12698,7 @@ export const GetProjectsLocationsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSfdcInstancesRequest>;
 
 export type GetProjectsLocationsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaSfdcInstance;
@@ -12745,7 +12745,7 @@ export const ListProjectsLocationsSfdcInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sfdcInstances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSfdcInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSfdcInstancesRequest>;
 
 export type ListProjectsLocationsSfdcInstancesResponse =
   GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse;
@@ -12793,7 +12793,7 @@ export const CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
 export type CreateProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -12838,7 +12838,7 @@ export const PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
 export type PatchProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -12875,7 +12875,7 @@ export const DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
 export type DeleteProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   GoogleProtobufEmpty;
@@ -12912,7 +12912,7 @@ export const GetProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
 export type GetProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaSfdcChannel;
@@ -12959,7 +12959,7 @@ export const ListProjectsLocationsSfdcInstancesSfdcChannelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/sfdcChannels" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsSfdcInstancesSfdcChannelsRequest>;
 
 export type ListProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse;
@@ -13013,7 +13013,7 @@ export const ListProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/templates" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsTemplatesRequest>;
 
 export type ListProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaListTemplatesResponse;
@@ -13052,7 +13052,7 @@ export const GetProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsTemplatesRequest>;
 
 export type GetProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaTemplate;
@@ -13092,7 +13092,7 @@ export const CreateProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/templates", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsTemplatesRequest>;
 
 export type CreateProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaTemplate;
@@ -13137,7 +13137,7 @@ export const PatchProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsTemplatesRequest>;
 
 export type PatchProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaTemplate;
@@ -13174,7 +13174,7 @@ export const DeleteProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsTemplatesRequest>;
 
 export type DeleteProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsTemplatesResponse =
@@ -13233,7 +13233,7 @@ export const SearchProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/templates:search" }),
     svc,
-  ) as unknown as Schema.Schema<SearchProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsLocationsTemplatesRequest>;
 
 export type SearchProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaSearchTemplatesResponse;
@@ -13277,7 +13277,7 @@ export const UseProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:use", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UseProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<UseProjectsLocationsTemplatesRequest>;
 
 export type UseProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaUseTemplateResponse;
@@ -13319,7 +13319,7 @@ export const ImportProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:import", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ImportProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<ImportProjectsLocationsTemplatesRequest>;
 
 export type ImportProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaImportTemplateResponse;
@@ -13361,7 +13361,7 @@ export const ShareProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:share", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ShareProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<ShareProjectsLocationsTemplatesRequest>;
 
 export type ShareProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const ShareProjectsLocationsTemplatesResponse =
@@ -13402,7 +13402,7 @@ export const UnshareProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:unshare", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UnshareProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<UnshareProjectsLocationsTemplatesRequest>;
 
 export type UnshareProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const UnshareProjectsLocationsTemplatesResponse =
@@ -13447,7 +13447,7 @@ export const UploadProjectsLocationsTemplatesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UploadProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<UploadProjectsLocationsTemplatesRequest>;
 
 export type UploadProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaUploadTemplateResponse;
@@ -13487,7 +13487,7 @@ export const DownloadProjectsLocationsTemplatesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsLocationsTemplatesRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsLocationsTemplatesRequest>;
 
 export type DownloadProjectsLocationsTemplatesResponse =
   GoogleCloudIntegrationsV1alphaDownloadTemplateResponse;
@@ -13517,7 +13517,7 @@ export const EnumerateConnectorPlatformRegionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "v1/connectorPlatformRegions:enumerate" }),
     svc,
-  ) as unknown as Schema.Schema<EnumerateConnectorPlatformRegionsRequest>;
+  ) as unknown as Schema.Codec<EnumerateConnectorPlatformRegionsRequest>;
 
 export type EnumerateConnectorPlatformRegionsResponse =
   GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse;
@@ -13573,7 +13573,7 @@ export const GenerateTokenCallbackRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/callback:generateToken" }),
     svc,
-  ) as unknown as Schema.Schema<GenerateTokenCallbackRequest>;
+  ) as unknown as Schema.Codec<GenerateTokenCallbackRequest>;
 
 export type GenerateTokenCallbackResponse =
   GoogleCloudIntegrationsV1alphaGenerateTokenResponse;

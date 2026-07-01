@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query workflowJobsById($workflowJobId: ID!) {\n  workflowJobs {\n    byId(workflowJobId: $workflowJobId) {\n      allDeviceTestCaseResults {\n        createdAt\n        duration\n        errorMessage\n        id\n        name\n        path\n        properties\n        retryCount\n        status\n        tags\n        updatedAt\n      }\n      approvals {\n        createdAt\n        decision\n        id\n        updatedAt\n        userActor {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      createdAt\n      credentialsAppleDeviceRegistrationRequest {\n        account {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        appleTeam {\n          appleTeamIdentifier\n          appleTeamName\n          appleTeamType\n          id\n          lastDeletionAttemptTime\n        }\n        id\n      }\n      deviceTestCaseResults {\n        createdAt\n        duration\n        errorMessage\n        id\n        name\n        path\n        properties\n        retryCount\n        status\n        tags\n        updatedAt\n      }\n      environment\n      errors {\n        message\n        title\n      }\n      id\n      key\n      name\n      outputs\n      requiredJobKeys\n      status\n      turtleBuild {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        appBuildVersion\n        appIdentifier\n        appVersion\n        artifacts {\n          applicationArchiveUrl\n          buildArtifactsUrl\n          buildUrl\n          fingerprintUrl\n          xcodeBuildLogsUrl\n        }\n        buildMode\n        buildProfile\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        channel\n        cliVersion\n        completedAt\n        createdAt\n        customNodeVersion\n        customWorkflowName\n        deployment {\n          id\n        }\n        developmentClient\n        distribution\n        enqueuedAt\n        error {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        estimatedWaitTimeLeftSeconds\n        expirationDate\n        fingerprint {\n          buildCount\n          createdAt\n          debugInfoUrl\n          hash\n          id\n          updateCount\n          updatedAt\n        }\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        githubRepositoryOwnerAndName\n        id\n        initialQueuePosition\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosEnterpriseProvisioning\n        isForIosSimulator\n        isGitWorkingTreeDirty\n        isWaived\n        logFiles\n        maxBuildTimeSeconds\n        maxRetryTimeMinutes\n        message\n        metrics {\n          buildDuration\n          buildQueueTime\n          buildWaitTime\n        }\n        platform\n        priority\n        project {\n          description\n          fullName\n          iconUrl\n          id\n          name\n          published\n          slug\n          updated\n          username\n        }\n        projectMetadataFileUrl\n        projectRootDirectory\n        provisioningStartedAt\n        queuePosition\n        reactNativeVersion\n        releaseChannel\n        requiredPackageManager\n        resolvedEnvironment\n        resourceClass\n        resourceClassDisplayName\n        runFromCI\n        runtime {\n          createdAt\n          firstBuildCreatedAt\n          id\n          isFingerprint\n          updatedAt\n          version\n        }\n        runtimeVersion\n        sdkVersion\n        selectedImage\n        status\n        submissions {\n          activityTimestamp\n          archiveUrl\n          canRetry\n          completedAt\n          createdAt\n          id\n          logFiles\n          logsUrl\n          maxRetryTimeMinutes\n          platform\n          priority\n          status\n          updatedAt\n        }\n        updateChannel {\n          appId\n          branchMapping\n          createdAt\n          id\n          isPaused\n          lastDeletionAttemptTime\n          name\n          updatedAt\n        }\n        updatedAt\n        waiverType\n        workerStartedAt\n      }\n      turtleJobRun {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        artifacts {\n          contentType\n          createdAt\n          downloadUrl\n          fileSizeBytes\n          filename\n          id\n          name\n          storageType\n          updatedAt\n        }\n        createdAt\n        displayName\n        endedAt\n        errors {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        expiresAt\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        isWaived\n        logFileUrls\n        name\n        priority\n        startedAt\n        status\n        updateGroups\n      }\n      turtleSubmission {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          name\n          priority\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        submittedBuild {\n          activityTimestamp\n          appBuildVersion\n          appIdentifier\n          appVersion\n          buildMode\n          buildProfile\n          channel\n          cliVersion\n          completedAt\n          createdAt\n          customNodeVersion\n          customWorkflowName\n          developmentClient\n          distribution\n          enqueuedAt\n          estimatedWaitTimeLeftSeconds\n          expirationDate\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          githubRepositoryOwnerAndName\n          id\n          initialQueuePosition\n          iosEnterpriseProvisioning\n          isForIosSimulator\n          isGitWorkingTreeDirty\n          isWaived\n          logFiles\n          maxBuildTimeSeconds\n          maxRetryTimeMinutes\n          message\n          platform\n          priority\n          projectMetadataFileUrl\n          projectRootDirectory\n          provisioningStartedAt\n          queuePosition\n          reactNativeVersion\n          releaseChannel\n          requiredPackageManager\n          resolvedEnvironment\n          resourceClass\n          resourceClassDisplayName\n          runFromCI\n          runtimeVersion\n          sdkVersion\n          selectedImage\n          status\n          updatedAt\n          waiverType\n          workerStartedAt\n        }\n        updatedAt\n      }\n      type\n      updatedAt\n      workflowRun {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        createdAt\n        durationSeconds\n        errors {\n          message\n          title\n        }\n        finalizedAt\n        gitCommitHash\n        gitCommitMessage\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        id\n        inputs\n        name\n        pullRequestNumber\n        requestedGitRef\n        sourceExpiresAt\n        status\n        triggerEventType\n        triggeringLabelName\n        triggeringSchedule\n        updatedAt\n        workflow {\n          createdAt\n          fileName\n          id\n          name\n          updatedAt\n        }\n        workflowRevision {\n          blobSha\n          commitSha\n          createdAt\n          id\n          yamlConfig\n        }\n      }\n    }\n  }\n}";
+  "query workflowJobsById($workflowJobId: ID!) {\n  workflowJobs {\n    byId(workflowJobId: $workflowJobId) {\n      allDeviceTestCaseResults {\n        createdAt\n        duration\n        errorMessage\n        id\n        name\n        path\n        properties\n        retryCount\n        status\n        tags\n        updatedAt\n      }\n      approvals {\n        createdAt\n        decision\n        id\n        updatedAt\n        userActor {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          firstName\n          fullName\n          githubUsername\n          id\n          industry\n          isExpoAdmin\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n      }\n      createdAt\n      credentialsAppleDeviceRegistrationRequest {\n        account {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        appleTeam {\n          appleTeamIdentifier\n          appleTeamName\n          appleTeamType\n          id\n          lastDeletionAttemptTime\n        }\n        closedAt\n        id\n        resolvedAppleDevice {\n          createdAt\n          deviceClass\n          enabled\n          id\n          identifier\n          model\n          name\n          softwareVersion\n        }\n      }\n      deviceTestCaseResultAttempts {\n        createdAt\n        duration\n        errorMessage\n        id\n        name\n        path\n        properties\n        retryCount\n        status\n        tags\n        updatedAt\n      }\n      deviceTestCaseResults {\n        createdAt\n        duration\n        errorMessage\n        id\n        name\n        path\n        properties\n        retryCount\n        status\n        tags\n        updatedAt\n      }\n      environment\n      errors {\n        message\n        title\n      }\n      id\n      key\n      name\n      outputs\n      requiredJobKeys\n      status\n      turtleBuild {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        appBuildVersion\n        appIdentifier\n        appVersion\n        artifacts {\n          applicationArchiveUrl\n          buildArtifactsUrl\n          buildUrl\n          fingerprintUrl\n          xcodeBuildLogsUrl\n        }\n        buildMode\n        buildProfile\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        channel\n        cliVersion\n        completedAt\n        createdAt\n        customNodeVersion\n        customWorkflowName\n        deployment {\n          id\n        }\n        developmentClient\n        distribution\n        embeddedUpdate {\n          channel\n          createdAt\n          id\n          platform\n          runtimeVersion\n          signedAssetUrl\n        }\n        enqueuedAt\n        error {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        estimatedWaitTimeLeftSeconds\n        expirationDate\n        fingerprint {\n          buildCount\n          createdAt\n          debugInfoUrl\n          hash\n          id\n          updateCount\n          updatedAt\n        }\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        githubRepositoryOwnerAndName\n        id\n        initialQueuePosition\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosEnterpriseProvisioning\n        isForIosSimulator\n        isGitWorkingTreeDirty\n        isWaived\n        logFiles\n        maxBuildTimeSeconds\n        maxRetryTimeMinutes\n        message\n        metrics {\n          buildDuration\n          buildQueueTime\n          buildWaitTime\n        }\n        platform\n        priority\n        project {\n          description\n          fullName\n          iconUrl\n          id\n          name\n          published\n          slug\n          updated\n          username\n        }\n        projectMetadataFileUrl\n        projectRootDirectory\n        provisioningStartedAt\n        queuePosition\n        reactNativeVersion\n        releaseChannel\n        requiredPackageManager\n        resolvedEnvironment\n        resolvedImage\n        resourceClass\n        resourceClassDisplayName\n        runFromCI\n        runtime {\n          createdAt\n          firstBuildCreatedAt\n          id\n          isFingerprint\n          updatedAt\n          version\n        }\n        runtimeVersion\n        sdkVersion\n        selectedImage\n        status\n        submissions {\n          activityTimestamp\n          archiveUrl\n          canRetry\n          completedAt\n          createdAt\n          id\n          logFiles\n          logsUrl\n          maxRetryTimeMinutes\n          platform\n          priority\n          status\n          updatedAt\n        }\n        updateChannel {\n          appId\n          branchMapping\n          createdAt\n          id\n          isPaused\n          lastDeletionAttemptTime\n          name\n          updatedAt\n        }\n        updatedAt\n        waiverType\n        workerStartedAt\n      }\n      turtleJobRun {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        artifacts {\n          contentType\n          createdAt\n          downloadUrl\n          fileSizeBytes\n          filename\n          id\n          metadata\n          name\n          storageType\n          updatedAt\n        }\n        createdAt\n        displayName\n        endedAt\n        enqueuedAt\n        errors {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        expiresAt\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        isWaived\n        logFileUrls\n        maxRunTimeSeconds\n        name\n        priority\n        resourceClassDisplayName\n        startedAt\n        status\n        updateGroups\n      }\n      turtleSubmission {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          enqueuedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          maxRunTimeSeconds\n          name\n          priority\n          resourceClassDisplayName\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        submittedBuild {\n          activityTimestamp\n          appBuildVersion\n          appIdentifier\n          appVersion\n          buildMode\n          buildProfile\n          channel\n          cliVersion\n          completedAt\n          createdAt\n          customNodeVersion\n          customWorkflowName\n          developmentClient\n          distribution\n          enqueuedAt\n          estimatedWaitTimeLeftSeconds\n          expirationDate\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          githubRepositoryOwnerAndName\n          id\n          initialQueuePosition\n          iosEnterpriseProvisioning\n          isForIosSimulator\n          isGitWorkingTreeDirty\n          isWaived\n          logFiles\n          maxBuildTimeSeconds\n          maxRetryTimeMinutes\n          message\n          platform\n          priority\n          projectMetadataFileUrl\n          projectRootDirectory\n          provisioningStartedAt\n          queuePosition\n          reactNativeVersion\n          releaseChannel\n          requiredPackageManager\n          resolvedEnvironment\n          resolvedImage\n          resourceClass\n          resourceClassDisplayName\n          runFromCI\n          runtimeVersion\n          sdkVersion\n          selectedImage\n          status\n          updatedAt\n          waiverType\n          workerStartedAt\n        }\n        updatedAt\n      }\n      type\n      updatedAt\n      workflowRun {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        createdAt\n        durationSeconds\n        errors {\n          message\n          title\n        }\n        finalizedAt\n        gitCommitHash\n        gitCommitMessage\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        id\n        inputs\n        name\n        pullRequestNumber\n        requestedGitRef\n        sourceExpiresAt\n        status\n        triggerEventType\n        triggeringLabelName\n        triggeringSchedule\n        updatedAt\n        workflow {\n          createdAt\n          fileName\n          id\n          name\n          updatedAt\n        }\n        workflowRevision {\n          blobSha\n          commitSha\n          createdAt\n          id\n          yamlConfig\n        }\n      }\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const WorkflowJobsByIdInput = Schema.Struct({
@@ -58,7 +58,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
           lastDeletionAttemptTime: Schema.NullOr(Schema.String),
           lastName: Schema.NullOr(Schema.String),
           location: Schema.NullOr(Schema.String),
-          primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+          primaryAccountProfileImageUrl: Schema.String,
           profilePhoto: Schema.String,
           twitterUsername: Schema.NullOr(Schema.String),
           username: Schema.String,
@@ -119,7 +119,37 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
         id: Schema.String,
         lastDeletionAttemptTime: Schema.NullOr(Schema.String),
       }),
+      closedAt: Schema.NullOr(Schema.String),
       id: Schema.String,
+      resolvedAppleDevice: Schema.NullOr(
+        Schema.Struct({
+          createdAt: Schema.String,
+          deviceClass: Schema.NullOr(
+            Schema.Literals(["IPAD", "IPHONE", "MAC", "UNKNOWN"]),
+          ),
+          enabled: Schema.NullOr(Schema.Boolean),
+          id: Schema.String,
+          identifier: Schema.String,
+          model: Schema.NullOr(Schema.String),
+          name: Schema.NullOr(Schema.String),
+          softwareVersion: Schema.NullOr(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  deviceTestCaseResultAttempts: Schema.Array(
+    Schema.Struct({
+      createdAt: Schema.String,
+      duration: Schema.NullOr(Schema.Number),
+      errorMessage: Schema.NullOr(Schema.String),
+      id: Schema.String,
+      name: Schema.String,
+      path: Schema.String,
+      properties: Schema.NullOr(Schema.Unknown),
+      retryCount: Schema.NullOr(Schema.Number),
+      status: Schema.Literals(["FAILED", "PASSED"]),
+      tags: Schema.NullOr(Schema.Array(Schema.String)),
+      updatedAt: Schema.String,
     }),
   ),
   deviceTestCaseResults: Schema.Array(
@@ -173,6 +203,11 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
         }),
       ),
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -255,6 +290,16 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
       distribution: Schema.NullOr(
         Schema.Literals(["INTERNAL", "SIMULATOR", "STORE"]),
       ),
+      embeddedUpdate: Schema.NullOr(
+        Schema.Struct({
+          channel: Schema.String,
+          createdAt: Schema.String,
+          id: Schema.String,
+          platform: Schema.Literals(["ANDROID", "IOS"]),
+          runtimeVersion: Schema.String,
+          signedAssetUrl: Schema.String,
+        }),
+      ),
       enqueuedAt: Schema.NullOr(Schema.String),
       error: Schema.NullOr(
         Schema.Struct({
@@ -275,6 +320,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
               "EAS_BUILD_INTERNAL",
               "FAIL_BUILD",
               "FIX_GRADLEW",
+              "GRADLE_BUILD_PROFILE",
               "INSTALL_CUSTOM_TOOLS",
               "INSTALL_DEPENDENCIES",
               "INSTALL_PODS",
@@ -283,6 +329,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
               "ON_BUILD_ERROR_HOOK",
               "ON_BUILD_SUCCESS_HOOK",
               "PARSE_CUSTOM_WORKFLOW_CONFIG",
+              "PARSE_XCACTIVITYLOG",
               "POST_INSTALL_HOOK",
               "PREBUILD",
               "PREPARE_ARTIFACTS",
@@ -380,6 +427,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
       releaseChannel: Schema.NullOr(Schema.String),
       requiredPackageManager: Schema.NullOr(Schema.String),
       resolvedEnvironment: Schema.NullOr(Schema.Unknown),
+      resolvedImage: Schema.NullOr(Schema.String),
       resourceClass: Schema.Literals([
         "ANDROID_DEFAULT",
         "ANDROID_LARGE",
@@ -467,6 +515,11 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
   turtleJobRun: Schema.NullOr(
     Schema.Struct({
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -516,6 +569,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
           fileSizeBytes: Schema.NullOr(Schema.Number),
           filename: Schema.String,
           id: Schema.String,
+          metadata: Schema.NullOr(Schema.Unknown),
           name: Schema.String,
           storageType: Schema.Literals(["GCS", "R2"]),
           updatedAt: Schema.String,
@@ -524,6 +578,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
       createdAt: Schema.String,
       displayName: Schema.NullOr(Schema.String),
       endedAt: Schema.NullOr(Schema.String),
+      enqueuedAt: Schema.NullOr(Schema.String),
       errors: Schema.Array(
         Schema.Struct({
           buildPhase: Schema.NullOr(Schema.String),
@@ -549,8 +604,10 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
       ),
       isWaived: Schema.Boolean,
       logFileUrls: Schema.Array(Schema.String),
+      maxRunTimeSeconds: Schema.Number,
       name: Schema.String,
       priority: Schema.Literals(["HIGH", "NORMAL"]),
+      resourceClassDisplayName: Schema.String,
       startedAt: Schema.NullOr(Schema.String),
       status: Schema.Literals([
         "CANCELED",
@@ -589,6 +646,11 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
         }),
       ),
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -673,6 +735,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
           createdAt: Schema.String,
           displayName: Schema.NullOr(Schema.String),
           endedAt: Schema.NullOr(Schema.String),
+          enqueuedAt: Schema.NullOr(Schema.String),
           expiresAt: Schema.String,
           gitCommitHash: Schema.NullOr(Schema.String),
           gitCommitMessage: Schema.NullOr(Schema.String),
@@ -680,8 +743,10 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
           id: Schema.String,
           isWaived: Schema.Boolean,
           logFileUrls: Schema.Array(Schema.String),
+          maxRunTimeSeconds: Schema.Number,
           name: Schema.String,
           priority: Schema.Literals(["HIGH", "NORMAL"]),
+          resourceClassDisplayName: Schema.String,
           startedAt: Schema.NullOr(Schema.String),
           status: Schema.Literals([
             "CANCELED",
@@ -757,6 +822,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
           releaseChannel: Schema.NullOr(Schema.String),
           requiredPackageManager: Schema.NullOr(Schema.String),
           resolvedEnvironment: Schema.NullOr(Schema.Unknown),
+          resolvedImage: Schema.NullOr(Schema.String),
           resourceClass: Schema.Literals([
             "ANDROID_DEFAULT",
             "ANDROID_LARGE",
@@ -800,6 +866,7 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
   ),
   type: Schema.Literals([
     "APPLE_DEVICE_REGISTRATION_REQUEST",
+    "BRANCH_DELETE",
     "BUILD",
     "CUSTOM",
     "DEPLOY",
@@ -871,12 +938,15 @@ export const WorkflowJobsByIdOutput = Schema.Struct({
       "APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED",
       "EAS_SUBMIT",
       "EXPO_LAUNCH",
+      "GITHUB_PULL_REQUEST_BASE_REF_CHANGED",
+      "GITHUB_PULL_REQUEST_EDITED",
       "GITHUB_PULL_REQUEST_LABELED",
       "GITHUB_PULL_REQUEST_OPENED",
       "GITHUB_PULL_REQUEST_READY_FOR_REVIEW",
       "GITHUB_PULL_REQUEST_REOPENED",
       "GITHUB_PULL_REQUEST_SYNCHRONIZE",
       "GITHUB_PUSH",
+      "GITHUB_REF_DELETE",
       "MANUAL",
       "REPACK_EXPO_GO",
       "SCHEDULE",

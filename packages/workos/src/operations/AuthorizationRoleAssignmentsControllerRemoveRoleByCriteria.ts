@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput {
+  organization_membership_id: string;
+  role_slug: string;
+}
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,13 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
       method: "DELETE",
       path: "/authorization/organization_memberships/{organization_membership_id}/role_assignments",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
-  typeof AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput>;
 
 // Output Schema
-export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
-  typeof AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput.Type;
+  void;
+export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput>;
 
 // The operation
 /**

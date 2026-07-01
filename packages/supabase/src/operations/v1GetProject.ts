@@ -4,12 +4,47 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectInput {
+  ref: string;
+}
 export const V1GetProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}" }));
-export type V1GetProjectInput = typeof V1GetProjectInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}" }),
+) as unknown as Schema.Codec<V1GetProjectInput>;
 
 // Output Schema
+export interface V1GetProjectOutput {
+  id: string;
+  ref: string;
+  organization_id: string;
+  organization_slug: string;
+  name: string;
+  region: string;
+  created_at: string;
+  status:
+    | "INACTIVE"
+    | "ACTIVE_HEALTHY"
+    | "ACTIVE_UNHEALTHY"
+    | "COMING_UP"
+    | "UNKNOWN"
+    | "GOING_DOWN"
+    | "INIT_FAILED"
+    | "REMOVED"
+    | "RESTORING"
+    | "UPGRADING"
+    | "PAUSING"
+    | "RESTORE_FAILED"
+    | "RESTARTING"
+    | "PAUSE_FAILED"
+    | "RESIZING";
+  database: {
+    host: string;
+    version: string;
+    postgres_engine: string;
+    release_channel: string;
+  };
+}
 export const V1GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   ref: Schema.String,
@@ -41,8 +76,7 @@ export const V1GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     postgres_engine: Schema.String,
     release_channel: Schema.String,
   }),
-});
-export type V1GetProjectOutput = typeof V1GetProjectOutput.Type;
+}) as unknown as Schema.Codec<V1GetProjectOutput>;
 
 // The operation
 /**

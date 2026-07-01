@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetRadarValueListItemsInput {
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+  value?: string;
+  value_list: string;
+}
 export const GetRadarValueListItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
@@ -18,11 +27,23 @@ export const GetRadarValueListItemsInput =
       path: "/v1/radar/value_list_items",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetRadarValueListItemsInput =
-  typeof GetRadarValueListItemsInput.Type;
+  ) as unknown as Schema.Codec<GetRadarValueListItemsInput>;
 
 // Output Schema
+export interface GetRadarValueListItemsOutput {
+  data: {
+    created: number;
+    created_by: string;
+    id: string;
+    livemode: boolean;
+    object: "radar.value_list_item";
+    value: string;
+    value_list: string;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetRadarValueListItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -39,9 +60,7 @@ export const GetRadarValueListItemsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetRadarValueListItemsOutput =
-  typeof GetRadarValueListItemsOutput.Type;
+  }) as unknown as Schema.Codec<GetRadarValueListItemsOutput>;
 
 // The operation
 /**

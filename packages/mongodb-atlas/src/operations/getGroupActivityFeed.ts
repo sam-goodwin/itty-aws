@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupActivityFeedInput {
+  groupId: string;
+  pretty?: boolean;
+  eventType?: string;
+  maxDate?: string;
+  minDate?: string;
+  clusterName?: string;
+}
 export const GetGroupActivityFeedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,19 +25,18 @@ export const GetGroupActivityFeedInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/activityFeed",
     }),
-  );
-export type GetGroupActivityFeedInput = typeof GetGroupActivityFeedInput.Type;
+  ) as unknown as Schema.Codec<GetGroupActivityFeedInput>;
 
 // Output Schema
+export type GetGroupActivityFeedOutput = void;
 export const GetGroupActivityFeedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupActivityFeedOutput = typeof GetGroupActivityFeedOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupActivityFeedOutput>;
 
 // The operation
 /**
  * Return Pre-Filtered Activity Feed Link for One Project
  *
- * Returns a pre-filtered activity feed link for the specified project based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied. To use this resource, the requesting Service Account or API Key must have the Project Read Only role or higher.
+ * Returns a pre-filtered activity feed link for the specified project based on the provided date range and event types. The returned link can be shared and opened to view the activity feed with the same filters applied.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

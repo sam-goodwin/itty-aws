@@ -1,8 +1,21 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetBillingCreditGrantsInput {
+  customer?: string;
+  customer_account?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetBillingCreditGrantsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
@@ -17,17 +30,62 @@ export const GetBillingCreditGrantsInput =
       path: "/v1/billing/credit_grants",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBillingCreditGrantsInput =
-  typeof GetBillingCreditGrantsInput.Type;
+  ) as unknown as Schema.Codec<GetBillingCreditGrantsInput>;
 
 // Output Schema
+export interface GetBillingCreditGrantsOutput {
+  data: {
+    amount: {
+      monetary: { currency: string; value: number } | null;
+      type: "monetary";
+    };
+    applicability_config: {
+      scope: { price_type?: "metered"; prices?: { id: string | null }[] };
+    };
+    category: "paid" | "promotional";
+    created: number;
+    customer: unknown;
+    customer_account: string | null;
+    effective_at: number | null;
+    expires_at: number | null;
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    name: string | null;
+    object: "billing.credit_grant";
+    priority: number | null;
+    test_clock:
+      | string
+      | {
+          created: number;
+          deletes_after: number;
+          frozen_time: number;
+          id: string;
+          livemode: boolean;
+          name: string | null;
+          object: "test_helpers.test_clock";
+          status: "advancing" | "internal_failure" | "ready";
+          status_details: { advancing?: { target_frozen_time: number } };
+        }
+      | null;
+    updated: number;
+    voided_at: number | null;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetBillingCreditGrantsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Struct({
-          monetary: Schema.Unknown,
+          monetary: Schema.NullOr(
+            Schema.Struct({
+              currency: Schema.String,
+              value: Schema.Number,
+            }),
+          ),
           type: Schema.Literals(["monetary"]),
         }),
         applicability_config: Schema.Struct({
@@ -53,8 +111,33 @@ export const GetBillingCreditGrantsOutput =
         metadata: Schema.Record(Schema.String, Schema.String),
         name: Schema.NullOr(Schema.String),
         object: Schema.Literals(["billing.credit_grant"]),
-        priority: Schema.optional(Schema.NullOr(Schema.Number)),
-        test_clock: Schema.Unknown,
+        priority: Schema.NullOr(Schema.Number),
+        test_clock: Schema.NullOr(
+          Schema.Union([
+            Schema.String,
+            Schema.Struct({
+              created: Schema.Number,
+              deletes_after: Schema.Number,
+              frozen_time: Schema.Number,
+              id: Schema.String,
+              livemode: Schema.Boolean,
+              name: Schema.NullOr(Schema.String),
+              object: Schema.Literals(["test_helpers.test_clock"]),
+              status: Schema.Literals([
+                "advancing",
+                "internal_failure",
+                "ready",
+              ]),
+              status_details: Schema.Struct({
+                advancing: Schema.optional(
+                  Schema.Struct({
+                    target_frozen_time: Schema.Number,
+                  }),
+                ),
+              }),
+            }),
+          ]),
+        ),
         updated: Schema.Number,
         voided_at: Schema.NullOr(Schema.Number),
       }),
@@ -62,9 +145,7 @@ export const GetBillingCreditGrantsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetBillingCreditGrantsOutput =
-  typeof GetBillingCreditGrantsOutput.Type;
+  }) as unknown as Schema.Codec<GetBillingCreditGrantsOutput>;
 
 // The operation
 /**

@@ -1,0 +1,281 @@
+import * as Schema from "effect/Schema";
+import { API } from "../../client.ts";
+import * as T from "../../traits.ts";
+import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
+
+// Input Schema
+export interface InsightsRetrieveInput {
+  id: string;
+  project_id: string;
+  filters_override?: string;
+  format?: "csv" | "json";
+  from_dashboard?: number;
+  refresh?:
+    | "async"
+    | "async_except_on_cache_miss"
+    | "blocking"
+    | "force_async"
+    | "force_blocking"
+    | "force_cache"
+    | "lazy_async";
+  variables_override?: string;
+}
+export const InsightsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  project_id: Schema.String.pipe(T.PathParam()),
+  filters_override: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.Literals(["csv", "json"])),
+  from_dashboard: Schema.optional(Schema.Number),
+  refresh: Schema.optional(
+    Schema.Literals([
+      "async",
+      "async_except_on_cache_miss",
+      "blocking",
+      "force_async",
+      "force_blocking",
+      "force_cache",
+      "lazy_async",
+    ]),
+  ),
+  variables_override: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/insights/{id}/" }),
+) as unknown as Schema.Codec<InsightsRetrieveInput>;
+
+// Output Schema
+export interface InsightsRetrieveOutput {
+  id?: number;
+  short_id?: string;
+  name?: string | null;
+  derived_name?: string | null;
+  query?: unknown | null;
+  order?: number | null;
+  deleted?: boolean;
+  dashboards?: number[];
+  dashboard_tiles?: {
+    id?: number;
+    dashboard_id?: number;
+    deleted?: boolean | null;
+  }[];
+  last_refresh?: string | null;
+  cache_target_age?: string | null;
+  next_allowed_client_refresh?: string | null;
+  result?: unknown;
+  hasMore?: boolean | null;
+  columns?: string[] | null;
+  created_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  description?: string | null;
+  updated_at?: string;
+  tags?: unknown[];
+  favorited?: boolean;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_sample?: boolean;
+  effective_restriction_level?: 21 | 37;
+  effective_privilege_level?: 21 | 37;
+  user_access_level?: string | null;
+  timezone?: string | null;
+  is_cached?: boolean;
+  query_status?: unknown;
+  hogql?: string | null;
+  types?: unknown[] | null;
+  resolved_date_range?: { date_from?: string; date_to?: string } | null;
+  _create_in_folder?: string;
+  alerts?: unknown[];
+  last_viewed_at?: string | null;
+  search_match_type?: "exact" | "similar" | null;
+}
+export const InsightsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.Number),
+    short_id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
+    derived_name: Schema.optional(Schema.NullOr(Schema.String)),
+    query: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    order: Schema.optional(Schema.NullOr(Schema.Number)),
+    deleted: Schema.optional(Schema.Boolean),
+    dashboards: Schema.optional(Schema.Array(Schema.Number)),
+    dashboard_tiles: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          dashboard_id: Schema.optional(Schema.Number),
+          deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        }),
+      ),
+    ),
+    last_refresh: Schema.optional(Schema.NullOr(Schema.String)),
+    cache_target_age: Schema.optional(Schema.NullOr(Schema.String)),
+    next_allowed_client_refresh: Schema.optional(Schema.NullOr(Schema.String)),
+    result: Schema.optional(Schema.Unknown),
+    hasMore: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    columns: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
+    created_at: Schema.optional(Schema.NullOr(Schema.String)),
+    created_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
+        }),
+      ),
+    ),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    updated_at: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.Unknown)),
+    favorited: Schema.optional(Schema.Boolean),
+    last_modified_at: Schema.optional(Schema.String),
+    last_modified_by: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          id: Schema.optional(Schema.Number),
+          uuid: Schema.optional(Schema.String),
+          distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+          first_name: Schema.optional(Schema.String),
+          last_name: Schema.optional(Schema.String),
+          email: Schema.optional(Schema.String),
+          is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+          hedgehog_config: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
+        }),
+      ),
+    ),
+    is_sample: Schema.optional(Schema.Boolean),
+    effective_restriction_level: Schema.optional(Schema.Literals([21, 37])),
+    effective_privilege_level: Schema.optional(Schema.Literals([21, 37])),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+    timezone: Schema.optional(Schema.NullOr(Schema.String)),
+    is_cached: Schema.optional(Schema.Boolean),
+    query_status: Schema.optional(Schema.Unknown),
+    hogql: Schema.optional(Schema.NullOr(Schema.String)),
+    types: Schema.optional(Schema.NullOr(Schema.Array(Schema.Unknown))),
+    resolved_date_range: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          date_from: Schema.optional(Schema.String),
+          date_to: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    _create_in_folder: Schema.optional(Schema.String),
+    alerts: Schema.optional(Schema.Array(Schema.Unknown)),
+    last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
+    ),
+  },
+) as unknown as Schema.Codec<InsightsRetrieveOutput>;
+
+// The operation
+/**
+ * DRF ViewSet mixin that gates coalesced responses behind permission checks.
+ * The QueryCoalescingMiddleware attaches cached response data to
+ * request.META["_coalesced_response"] for followers. This mixin runs DRF's
+ * initial() (auth + permissions + throttling) before returning the
+ * cached response, ensuring the request is authorized.
+ *
+ * @param filters_override - Object (or pre-encoded JSON string) to override the insight's filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged — pass the complete value for any key you override. Accepts the same keys as the dashboard filters schema (e.g., `date_from`, `date_to`, `properties`). Ignored when accessed via a sharing token.
+ * @param from_dashboard - 
+Only if loading an insight in the context of a dashboard: The relevant dashboard's ID.
+When set, the specified dashboard's filters and date range override will be applied.
+ * @param id - Numeric primary key or 8-character `short_id` (for example `AaVQ8Ijw`) identifying the insight.
+ * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param refresh - 
+Whether to refresh the insight, how aggresively, and if sync or async:
+- `'force_cache'` - return cached data or a cache miss; always completes immediately as it never calculates
+- `'blocking'` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache
+- `'async'` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache
+- `'lazy_async'` - kick off background calculation, UNLESS there are somewhat fresh results in the cache
+- `'force_blocking'` - calculate synchronously, even if fresh results are already cached
+- `'force_async'` - kick off background calculation, even if fresh results are already cached
+Background calculation can be tracked using the `query_status` response field.
+ * @param variables_override - Object (or pre-encoded JSON string) to override the insight's HogQL variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `insight-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.
+ */
+export const insightsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: InsightsRetrieveInput,
+  outputSchema: InsightsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

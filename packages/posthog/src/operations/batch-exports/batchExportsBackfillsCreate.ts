@@ -4,6 +4,35 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsBackfillsCreateInput {
+  batch_export_id: string;
+  project_id: string;
+  id?: string;
+  progress?: {
+    total_runs?: number | null;
+    finished_runs?: number | null;
+    progress?: number | null;
+  } | null;
+  start_at?: string | null;
+  end_at?: string | null;
+  status?:
+    | "Cancelled"
+    | "Completed"
+    | "ContinuedAsNew"
+    | "Failed"
+    | "FailedRetryable"
+    | "Terminated"
+    | "TimedOut"
+    | "Running"
+    | "Starting";
+  created_at?: string;
+  finished_at?: string | null;
+  last_updated_at?: string;
+  total_records_count?: number | null;
+  adjusted_start_at?: string | null;
+  team?: number;
+  batch_export?: string;
+}
 export const BatchExportsBackfillsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
@@ -45,11 +74,36 @@ export const BatchExportsBackfillsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/backfills/",
     }),
-  );
-export type BatchExportsBackfillsCreateInput =
-  typeof BatchExportsBackfillsCreateInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsBackfillsCreateInput>;
 
 // Output Schema
+export interface BatchExportsBackfillsCreateOutput {
+  id?: string;
+  progress?: {
+    total_runs?: number | null;
+    finished_runs?: number | null;
+    progress?: number | null;
+  } | null;
+  start_at?: string | null;
+  end_at?: string | null;
+  status?:
+    | "Cancelled"
+    | "Completed"
+    | "ContinuedAsNew"
+    | "Failed"
+    | "FailedRetryable"
+    | "Terminated"
+    | "TimedOut"
+    | "Running"
+    | "Starting";
+  created_at?: string;
+  finished_at?: string | null;
+  last_updated_at?: string;
+  total_records_count?: number | null;
+  adjusted_start_at?: string | null;
+  team?: number;
+  batch_export?: string;
+}
 export const BatchExportsBackfillsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -84,9 +138,7 @@ export const BatchExportsBackfillsCreateOutput =
     adjusted_start_at: Schema.optional(Schema.NullOr(Schema.String)),
     team: Schema.optional(Schema.Number),
     batch_export: Schema.optional(Schema.String),
-  });
-export type BatchExportsBackfillsCreateOutput =
-  typeof BatchExportsBackfillsCreateOutput.Type;
+  }) as unknown as Schema.Codec<BatchExportsBackfillsCreateOutput>;
 
 // The operation
 /**

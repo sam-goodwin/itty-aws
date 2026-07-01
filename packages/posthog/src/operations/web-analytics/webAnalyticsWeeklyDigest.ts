@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WebAnalyticsWeeklyDigestInput {
+  project_id: string;
+  compare?: boolean;
+  days?: number;
+}
 export const WebAnalyticsWeeklyDigestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,103 @@ export const WebAnalyticsWeeklyDigestInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/web_analytics/weekly_digest/",
+      path: "/api/projects/{project_id}/web_analytics/weekly_digest/",
     }),
-  );
-export type WebAnalyticsWeeklyDigestInput =
-  typeof WebAnalyticsWeeklyDigestInput.Type;
+  ) as unknown as Schema.Codec<WebAnalyticsWeeklyDigestInput>;
 
 // Output Schema
+export interface WebAnalyticsWeeklyDigestOutput {
+  visitors?: {
+    current?: number;
+    previous?: number | null;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  };
+  pageviews?: {
+    current?: number;
+    previous?: number | null;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  };
+  sessions?: {
+    current?: number;
+    previous?: number | null;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  };
+  bounce_rate?: {
+    current?: number;
+    previous?: number | null;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  };
+  avg_session_duration?: {
+    current?: string;
+    previous?: string | null;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  };
+  top_pages?: {
+    host?: string;
+    path?: string;
+    visitors?: number;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  }[];
+  top_sources?: {
+    name?: string;
+    visitors?: number;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  }[];
+  goals?: {
+    name?: string;
+    conversions?: number;
+    change?: {
+      percent?: number;
+      direction?: "Up" | "Down";
+      color?: string;
+      text?: string;
+      long_text?: string;
+    } | null;
+  }[];
+  dashboard_url?: string;
+}
 export const WebAnalyticsWeeklyDigestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     visitors: Schema.optional(
@@ -165,9 +259,7 @@ export const WebAnalyticsWeeklyDigestOutput =
       ),
     ),
     dashboard_url: Schema.optional(Schema.String),
-  });
-export type WebAnalyticsWeeklyDigestOutput =
-  typeof WebAnalyticsWeeklyDigestOutput.Type;
+  }) as unknown as Schema.Codec<WebAnalyticsWeeklyDigestOutput>;
 
 // The operation
 /**
@@ -183,6 +275,5 @@ export const webAnalyticsWeeklyDigest = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: WebAnalyticsWeeklyDigestInput,
     outputSchema: WebAnalyticsWeeklyDigestOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

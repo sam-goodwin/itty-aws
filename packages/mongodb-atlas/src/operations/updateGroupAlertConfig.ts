@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupAlertConfigInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const UpdateGroupAlertConfigInput =
       method: "PUT",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
     }),
-  );
-export type UpdateGroupAlertConfigInput =
-  typeof UpdateGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupAlertConfigInput>;
 
 // Output Schema
+export type UpdateGroupAlertConfigOutput = void;
 export const UpdateGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupAlertConfigOutput =
-  typeof UpdateGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupAlertConfigOutput>;
 
 // The operation
 /**
  * Update One Alert Configuration in One Project
  *
- * Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+ * Updates one alert configuration in the specified project. Alert configurations define the triggers and notification methods for alerts.
  * **NOTE**: To enable or disable the alert configuration, see Toggle One State of One Alert Configuration in One Project.
  * This resource remains under revision and may change.
  *

@@ -1,8 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetCustomersCustomerInput {
+  customer: string;
+  expand?: string;
+}
 export const GetCustomersCustomerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -13,13 +22,12 @@ export const GetCustomersCustomerInput =
       path: "/v1/customers/{customer}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetCustomersCustomerInput = typeof GetCustomersCustomerInput.Type;
+  ) as unknown as Schema.Codec<GetCustomersCustomerInput>;
 
 // Output Schema
+export type GetCustomersCustomerOutput = unknown;
 export const GetCustomersCustomerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type GetCustomersCustomerOutput = typeof GetCustomersCustomerOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetCustomersCustomerOutput>;
 
 // The operation
 /**

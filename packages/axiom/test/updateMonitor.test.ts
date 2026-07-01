@@ -65,7 +65,7 @@ describe("updateMonitor", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -89,7 +89,7 @@ describe("updateMonitor", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   // Removed: the client-side schema requires name/type, so

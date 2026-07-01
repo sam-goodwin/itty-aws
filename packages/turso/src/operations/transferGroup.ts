@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TransferGroupInput {
+  organizationSlug: string;
+  groupName: string;
+  organization?: string;
+}
 export const TransferGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,17 @@ export const TransferGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v1/organizations/{organizationSlug}/groups/{groupName}/transfer",
   }),
-);
-export type TransferGroupInput = typeof TransferGroupInput.Type;
+) as unknown as Schema.Codec<TransferGroupInput>;
 
 // Output Schema
+export interface TransferGroupOutput {
+  name?: string;
+  version?: string;
+  uuid?: string;
+  locations?: string[];
+  primary?: string;
+  delete_protection?: boolean;
+}
 export const TransferGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   version: Schema.optional(Schema.String),
@@ -24,8 +36,7 @@ export const TransferGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   locations: Schema.optional(Schema.Array(Schema.String)),
   primary: Schema.optional(Schema.String),
   delete_protection: Schema.optional(Schema.Boolean),
-});
-export type TransferGroupOutput = typeof TransferGroupOutput.Type;
+}) as unknown as Schema.Codec<TransferGroupOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface InvalidateDatabaseTokensInput {
+  organizationSlug: string;
+  databaseName: string;
+}
 export const InvalidateDatabaseTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const InvalidateDatabaseTokensInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/rotate",
     }),
-  );
-export type InvalidateDatabaseTokensInput =
-  typeof InvalidateDatabaseTokensInput.Type;
+  ) as unknown as Schema.Codec<InvalidateDatabaseTokensInput>;
 
 // Output Schema
+export type InvalidateDatabaseTokensOutput = void;
 export const InvalidateDatabaseTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InvalidateDatabaseTokensOutput =
-  typeof InvalidateDatabaseTokensOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvalidateDatabaseTokensOutput>;
 
 // The operation
 /**

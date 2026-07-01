@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsRunsLogsRetrieveInput {
+  batch_export_id: string;
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  instance_id?: string;
+  level?: string;
+  limit?: number;
+  search?: string;
+}
 export const BatchExportsRunsLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const BatchExportsRunsLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/logs/",
     }),
-  );
-export type BatchExportsRunsLogsRetrieveInput =
-  typeof BatchExportsRunsLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsRunsLogsRetrieveInput>;
 
 // Output Schema
+export type BatchExportsRunsLogsRetrieveOutput = void;
 export const BatchExportsRunsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchExportsRunsLogsRetrieveOutput =
-  typeof BatchExportsRunsLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchExportsRunsLogsRetrieveOutput>;
 
 // The operation
 /**

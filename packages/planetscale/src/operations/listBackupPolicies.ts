@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListBackupPoliciesInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListBackupPoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,35 @@ export const ListBackupPoliciesInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/backup-policies",
     }),
-  );
-export type ListBackupPoliciesInput = typeof ListBackupPoliciesInput.Type;
+  ) as unknown as Schema.Codec<ListBackupPoliciesInput>;
 
 // Output Schema
+export interface ListBackupPoliciesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    display_name: string;
+    name: string;
+    target: "production" | "development";
+    retention_value: number;
+    retention_unit: string;
+    frequency_value: number;
+    frequency_unit: string;
+    schedule_time: string;
+    schedule_day: number | null;
+    schedule_week: number | null;
+    created_at: string;
+    updated_at: string;
+    last_ran_at: string | null;
+    next_run_at: string | null;
+    required: boolean;
+  }[];
+}
 export const ListBackupPoliciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -47,8 +78,7 @@ export const ListBackupPoliciesOutput =
         required: Schema.Boolean,
       }),
     ),
-  });
-export type ListBackupPoliciesOutput = typeof ListBackupPoliciesOutput.Type;
+  }) as unknown as Schema.Codec<ListBackupPoliciesOutput>;
 
 // The operation
 /**

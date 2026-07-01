@@ -1,9 +1,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsClusteringJobsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -19,13 +28,20 @@ export const LlmAnalyticsClusteringJobsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/clustering_jobs/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/clustering_jobs/{id}/",
     }),
-  );
-export type LlmAnalyticsClusteringJobsPartialUpdateInput =
-  typeof LlmAnalyticsClusteringJobsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsPartialUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsClusteringJobsPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  analysis_level?: "trace" | "generation" | "evaluation";
+  event_filters?: unknown;
+  enabled?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const LlmAnalyticsClusteringJobsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -37,13 +53,11 @@ export const LlmAnalyticsClusteringJobsPartialUpdateOutput =
     enabled: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type LlmAnalyticsClusteringJobsPartialUpdateOutput =
-  typeof LlmAnalyticsClusteringJobsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsClusteringJobsPartialUpdateOutput>;
 
 // The operation
 /**
- * CRUD for clustering job configurations (max 5 per team).
+ * CRUD for clustering job configurations (max 10 per team).
  *
  * @param id - A UUID string identifying this clustering job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
@@ -52,5 +66,4 @@ export const llmAnalyticsClusteringJobsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsClusteringJobsPartialUpdateInput,
     outputSchema: LlmAnalyticsClusteringJobsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

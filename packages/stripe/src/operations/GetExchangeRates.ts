@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetExchangeRatesInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetExchangeRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -14,10 +20,19 @@ export const GetExchangeRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/exchange_rates",
     contentType: "form-urlencoded",
   }),
-);
-export type GetExchangeRatesInput = typeof GetExchangeRatesInput.Type;
+) as unknown as Schema.Codec<GetExchangeRatesInput>;
 
 // Output Schema
+export interface GetExchangeRatesOutput {
+  data: {
+    id: string;
+    object: "exchange_rate";
+    rates: Record<string, number>;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetExchangeRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Array(
@@ -31,8 +46,7 @@ export const GetExchangeRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     object: Schema.Literals(["list"]),
     url: Schema.String,
   },
-);
-export type GetExchangeRatesOutput = typeof GetExchangeRatesOutput.Type;
+) as unknown as Schema.Codec<GetExchangeRatesOutput>;
 
 // The operation
 /**

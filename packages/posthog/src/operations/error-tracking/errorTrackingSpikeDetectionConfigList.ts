@@ -1,22 +1,27 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSpikeDetectionConfigListInput {
+  project_id: string;
+}
 export const ErrorTrackingSpikeDetectionConfigListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/spike_detection_config/",
+      path: "/api/projects/{project_id}/error_tracking/spike_detection_config/",
     }),
-  );
-export type ErrorTrackingSpikeDetectionConfigListInput =
-  typeof ErrorTrackingSpikeDetectionConfigListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSpikeDetectionConfigListInput>;
 
 // Output Schema
+export type ErrorTrackingSpikeDetectionConfigListOutput = {
+  snooze_duration_minutes?: number;
+  multiplier?: number;
+  threshold?: number;
+}[];
 export const ErrorTrackingSpikeDetectionConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -24,9 +29,7 @@ export const ErrorTrackingSpikeDetectionConfigListOutput =
       multiplier: Schema.optional(Schema.Number),
       threshold: Schema.optional(Schema.Number),
     }),
-  );
-export type ErrorTrackingSpikeDetectionConfigListOutput =
-  typeof ErrorTrackingSpikeDetectionConfigListOutput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSpikeDetectionConfigListOutput>;
 
 // The operation
 /**
@@ -37,5 +40,4 @@ export const errorTrackingSpikeDetectionConfigList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSpikeDetectionConfigListInput,
     outputSchema: ErrorTrackingSpikeDetectionConfigListOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

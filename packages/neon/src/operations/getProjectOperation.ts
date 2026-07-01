@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectOperationInput {
+  project_id: string;
+  operation_id: string;
+}
 export const GetProjectOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,65 @@ export const GetProjectOperationInput =
       method: "GET",
       path: "/projects/{project_id}/operations/{operation_id}",
     }),
-  );
-export type GetProjectOperationInput = typeof GetProjectOperationInput.Type;
+  ) as unknown as Schema.Codec<GetProjectOperationInput>;
 
 // Output Schema
+export interface GetProjectOperationOutput {
+  operation: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  };
+}
 export const GetProjectOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operation: Schema.Struct({
@@ -75,8 +134,7 @@ export const GetProjectOperationOutput =
       updated_at: Schema.String,
       total_duration_ms: Schema.Number,
     }),
-  });
-export type GetProjectOperationOutput = typeof GetProjectOperationOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectOperationOutput>;
 
 // The operation
 /**
@@ -84,8 +142,6 @@ export type GetProjectOperationOutput = typeof GetProjectOperationOutput.Type;
  *
  * Retrieves details for the specified operation.
  * An operation is an action performed on a Neon project resource.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain a `operation_id` by listing operations for the project.
  *
  * @param project_id - The Neon project ID
  * @param operation_id - The operation ID

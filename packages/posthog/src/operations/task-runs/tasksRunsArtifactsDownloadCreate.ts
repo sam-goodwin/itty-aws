@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsArtifactsDownloadCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  storage_path?: string;
+}
 export const TasksRunsArtifactsDownloadCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const TasksRunsArtifactsDownloadCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/download/",
     }),
-  );
-export type TasksRunsArtifactsDownloadCreateInput =
-  typeof TasksRunsArtifactsDownloadCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsArtifactsDownloadCreateInput>;
 
 // Output Schema
+export type TasksRunsArtifactsDownloadCreateOutput = void;
 export const TasksRunsArtifactsDownloadCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksRunsArtifactsDownloadCreateOutput =
-  typeof TasksRunsArtifactsDownloadCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsArtifactsDownloadCreateOutput>;
 
 // The operation
 /**
@@ -31,7 +34,6 @@ export type TasksRunsArtifactsDownloadCreateOutput =
  *
  * Streams artifact content for a task run artifact after validating that it belongs to the run.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsArtifactsDownloadCreate =

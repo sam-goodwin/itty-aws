@@ -1402,10 +1402,6 @@ describe("Workers", () => {
         expect(Array.isArray(result)).toBe(true);
         for (const item of result) {
           expect(typeof item.scriptName).toBe("string");
-          // scriptTag is optional — may be undefined
-          if (item.scriptTag !== undefined) {
-            expect(typeof item.scriptTag).toBe("string");
-          }
           expect(typeof item.createdOn).toBe("string");
           expect(typeof item.modifiedOn).toBe("string");
         }

@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ConversationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
@@ -11,14 +15,90 @@ export const ConversationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     offset: Schema.optional(Schema.Number),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "/api/environments/{project_id}/conversations/",
-  }),
-);
-export type ConversationsListInput = typeof ConversationsListInput.Type;
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/conversations/" }),
+) as unknown as Schema.Codec<ConversationsListInput>;
 
 // Output Schema
+export interface ConversationsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    status?: "idle" | "in_progress" | "canceling";
+    title?: string | null;
+    topic?:
+      | "web_analytics"
+      | "product_analytics"
+      | "session_replay"
+      | "surveys"
+      | "feature_flags"
+      | "experiments"
+      | "error_tracking"
+      | "data_warehouse"
+      | "other"
+      | null;
+    user?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+    type?: "assistant" | "tool_call" | "deep_research" | "slack";
+    is_internal?: boolean | null;
+    slack_thread_key?: string | null;
+    slack_workspace_domain?: string | null;
+    task?: {
+      id: string;
+      task_number: number | null;
+      slug: string;
+      title: string;
+      title_manually_set: boolean;
+      description: string;
+      origin_product: string;
+      repository: string | null;
+      github_integration: number | null;
+      github_user_integration: string | null;
+      signal_report: string | null;
+      json_schema: Record<string, unknown> | null;
+      internal: boolean;
+      archived: boolean;
+      archived_at: string | null;
+      latest_run: string | null;
+      created_at?: string | null;
+      updated_at?: string | null;
+      created_by?: {
+        id: number;
+        uuid: string;
+        distinct_id: string;
+        first_name: string;
+        last_name: string;
+        email: string;
+        is_email_verified?: boolean | null;
+        hedgehog_config?: Record<string, unknown> | null;
+        role_at_organization?: string | null;
+      } | null;
+      ci_prompt: string | null;
+    } | null;
+  }[];
+}
 export const ConversationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -32,6 +112,21 @@ export const ConversationsListOutput =
             Schema.Literals(["idle", "in_progress", "canceling"]),
           ),
           title: Schema.optional(Schema.NullOr(Schema.String)),
+          topic: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "web_analytics",
+                "product_analytics",
+                "session_replay",
+                "surveys",
+                "feature_flags",
+                "experiments",
+                "error_tracking",
+                "data_warehouse",
+                "other",
+              ]),
+            ),
+          ),
           user: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -47,7 +142,23 @@ export const ConversationsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -64,11 +175,60 @@ export const ConversationsListOutput =
           is_internal: Schema.optional(Schema.NullOr(Schema.Boolean)),
           slack_thread_key: Schema.optional(Schema.NullOr(Schema.String)),
           slack_workspace_domain: Schema.optional(Schema.NullOr(Schema.String)),
+          task: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                id: Schema.String,
+                task_number: Schema.NullOr(Schema.Number),
+                slug: Schema.String,
+                title: Schema.String,
+                title_manually_set: Schema.Boolean,
+                description: Schema.String,
+                origin_product: Schema.String,
+                repository: Schema.NullOr(Schema.String),
+                github_integration: Schema.NullOr(Schema.Number),
+                github_user_integration: Schema.NullOr(Schema.String),
+                signal_report: Schema.NullOr(Schema.String),
+                json_schema: Schema.NullOr(
+                  Schema.Record(Schema.String, Schema.Unknown),
+                ),
+                internal: Schema.Boolean,
+                archived: Schema.Boolean,
+                archived_at: Schema.NullOr(Schema.String),
+                latest_run: Schema.NullOr(Schema.String),
+                created_at: Schema.optional(Schema.NullOr(Schema.String)),
+                updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+                created_by: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Struct({
+                      id: Schema.Number,
+                      uuid: Schema.String,
+                      distinct_id: Schema.String,
+                      first_name: Schema.String,
+                      last_name: Schema.String,
+                      email: Schema.String,
+                      is_email_verified: Schema.optional(
+                        Schema.NullOr(Schema.Boolean),
+                      ),
+                      hedgehog_config: Schema.optional(
+                        Schema.NullOr(
+                          Schema.Record(Schema.String, Schema.Unknown),
+                        ),
+                      ),
+                      role_at_organization: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                    }),
+                  ),
+                ),
+                ci_prompt: Schema.NullOr(Schema.String),
+              }),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type ConversationsListOutput = typeof ConversationsListOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsListOutput>;
 
 // The operation
 /**
@@ -80,5 +240,4 @@ export type ConversationsListOutput = typeof ConversationsListOutput.Type;
 export const conversationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConversationsListInput,
   outputSchema: ConversationsListOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

@@ -4,16 +4,29 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretCreateInput {
+  app_name: string;
+  secret_name: string;
+  value?: string;
+}
 export const SecretCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   value: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/apps/{app_name}/secrets/{secret_name}" }),
-);
-export type SecretCreateInput = typeof SecretCreateInput.Type;
+) as unknown as Schema.Codec<SecretCreateInput>;
 
 // Output Schema
+export interface SecretCreateOutput {
+  Version?: number;
+  created_at?: string;
+  digest?: string;
+  name?: string;
+  updated_at?: string;
+  value?: string;
+  version?: number;
+}
 export const SecretCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   created_at: Schema.optional(Schema.String),
@@ -22,8 +35,7 @@ export const SecretCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_at: Schema.optional(Schema.String),
   value: Schema.optional(Schema.String),
   version: Schema.optional(Schema.Number),
-});
-export type SecretCreateOutput = typeof SecretCreateOutput.Type;
+}) as unknown as Schema.Codec<SecretCreateOutput>;
 
 // The operation
 /**

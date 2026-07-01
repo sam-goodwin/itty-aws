@@ -3,22 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RetrieveAllConversationModelsInput {}
 export const RetrieveAllConversationModelsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/conversations/models" }),
-  );
-export type RetrieveAllConversationModelsInput =
-  typeof RetrieveAllConversationModelsInput.Type;
+  ) as unknown as Schema.Codec<RetrieveAllConversationModelsInput>;
 
 // Output Schema
+export type RetrieveAllConversationModelsOutput = { id: string }[];
 export const RetrieveAllConversationModelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
     }),
-  );
-export type RetrieveAllConversationModelsOutput =
-  typeof RetrieveAllConversationModelsOutput.Type;
+  ) as unknown as Schema.Codec<RetrieveAllConversationModelsOutput>;
 
 // The operation
 /**

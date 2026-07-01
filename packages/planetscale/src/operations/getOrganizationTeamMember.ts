@@ -8,8 +8,14 @@ import {
   UnprocessableEntity,
 } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetOrganizationTeamMemberInput {
+  organization: string;
+  team: string;
+  id: string;
+}
 export const GetOrganizationTeamMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -20,11 +26,77 @@ export const GetOrganizationTeamMemberInput =
       method: "GET",
       path: "/organizations/{organization}/teams/{team}/members/{id}",
     }),
-  );
-export type GetOrganizationTeamMemberInput =
-  typeof GetOrganizationTeamMemberInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationTeamMemberInput>;
 
 // Output Schema
+export interface GetOrganizationTeamMemberOutput {
+  id: string;
+  user: {
+    id: string;
+    display_name: string;
+    name: string;
+    email: string;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    two_factor_auth_configured: boolean;
+    default_organization?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    sso?: boolean | null;
+    managed?: boolean | null;
+    directory_managed?: boolean | null;
+    email_verified?: boolean | null;
+  };
+  actor: { id: string; display_name: string; avatar_url: string };
+  created_at: string;
+  updated_at: string;
+  passwords: {
+    id: string;
+    name: string;
+    role: "reader" | "writer" | "admin" | "readwriter";
+    cidrs: string[] | null;
+    created_at: string;
+    deleted_at: string | null;
+    expires_at: string | null;
+    last_used_at: string | null;
+    expired: boolean;
+    direct_vtgate: boolean;
+    direct_vtgate_addresses: string[];
+    ttl_seconds: number | null;
+    access_host_url: string;
+    access_host_regional_url: string;
+    access_host_regional_urls: string[];
+    actor: { id: string; display_name: string; avatar_url: string } | null;
+    region: {
+      id: string;
+      provider: string;
+      enabled: boolean;
+      public_ip_addresses: string[];
+      display_name: string;
+      location: string;
+      slug: string;
+      current_default: boolean;
+      mysql_supported: boolean;
+      postgresql_supported: boolean;
+    };
+    username: string;
+    plain_text: Redacted.Redacted<string> | null;
+    replica: boolean;
+    renewable: boolean;
+    database_branch: {
+      name: string;
+      id: string;
+      production: boolean;
+      mysql_edge_address: string;
+      private_edge_connectivity: boolean;
+    };
+  }[];
+}
 export const GetOrganizationTeamMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -109,9 +181,7 @@ export const GetOrganizationTeamMemberOutput =
         }),
       }),
     ),
-  });
-export type GetOrganizationTeamMemberOutput =
-  typeof GetOrganizationTeamMemberOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationTeamMemberOutput>;
 
 // The operation
 /**

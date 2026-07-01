@@ -1,0 +1,364 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare TENANTS API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: tenants
+paths:
+  /tenants/{tenantId}/accounts:
+    get:
+      operationId: listAccounts
+      description: List of accounts for the Tenant.
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created_on:
+                    type: string
+                  name:
+                    oneOf:
+                      - type: string
+                    nullable: true
+                  settings:
+                    type: object
+                    properties:
+                      abuse_contact_email:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      access_approval_expiry:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                      api_access_enabled:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                      default_nameservers:
+                        oneOf:
+                          - type: string
+                        nullable: true
+                        description: "@deprecated Use [DNS
+                          Settings](https://developers.cloudflare.com/api/opera\
+                          tions/dns-settings-for-an-account-list-dns-settings)
+                          instead. Deprecated."
+                      enforce_twofactor:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                      use_account_custom_ns_by_default:
+                        oneOf:
+                          - type: boolean
+                        nullable: true
+                        description: "@deprecated Use [DNS
+                          Settings](https://developers.cloudflare.com/api/opera\
+                          tions/dns-settings-for-an-account-list-dns-settings)
+                          instead. Deprecated."
+                    required:
+                      - abuse_contact_email
+                      - access_approval_expiry
+                      - api_access_enabled
+                      - default_nameservers
+                      - enforce_twofactor
+                      - use_account_custom_ns_by_default
+                  type:
+                    type: string
+                    enum:
+                      - standard
+                      - enterprise
+                required:
+                  - id
+                  - created_on
+                  - name
+                  - settings
+                  - type
+      x-distilled-pagination-class: TenantAccountsSinglePage
+  /tenants/{tenantId}/account_types:
+    get:
+      operationId: listAccountTypes
+      description: List of account types available for the Tenant to provision accounts.
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+      x-distilled-pagination-class: AccountTypeListResponsesSinglePage
+  /tenants/{tenantId}/entitlements:
+    get:
+      operationId: getEntitlement
+      description: List of innate entitlements available for the Tenant.
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allow_add_subdomain:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - bool
+                      value:
+                        type: boolean
+                    required:
+                      - type
+                      - value
+                  allow_auto_accept_invites:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - bool
+                      value:
+                        type: boolean
+                    required:
+                      - type
+                      - value
+                  cname_setup_allowed:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - bool
+                      value:
+                        type: boolean
+                    required:
+                      - type
+                      - value
+                  custom_entitlements:
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            allocation:
+                              oneOf:
+                                - type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - max_count
+                                    value:
+                                      type: number
+                                  required:
+                                    - type
+                                    - value
+                                - type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - bool
+                                    value:
+                                      type: boolean
+                                  required:
+                                    - type
+                                    - value
+                                - type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ""
+                                    value: {}
+                                  required:
+                                    - type
+                            feature:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                              required:
+                                - key
+                          required:
+                            - allocation
+                            - feature
+                    nullable: true
+                  mhs_certificate_count:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - max_count
+                      value:
+                        type: number
+                    required:
+                      - type
+                      - value
+                  partial_setup_allowed:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - bool
+                      value:
+                        type: boolean
+                    required:
+                      - type
+                      - value
+                required:
+                  - allow_add_subdomain
+                  - allow_auto_accept_invites
+                  - cname_setup_allowed
+                  - custom_entitlements
+                  - mhs_certificate_count
+                  - partial_setup_allowed
+      x-distilled-response-path: result
+  /tenants/{tenantId}/memberships:
+    get:
+      operationId: listMemberships
+      description: List of active members (Cloudflare users) for the Tenant.
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_email:
+                    type: string
+                  user_name:
+                    type: string
+                  user_tag:
+                    type: string
+                required:
+                  - user_email
+                  - user_name
+                  - user_tag
+      x-distilled-pagination-class: TenantMembershipsSinglePage
+  /tenants/{tenantId}:
+    get:
+      operationId: getTenant
+      description: Retrieves a Tenant by Tenant ID.
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cdate:
+                    type: string
+                  edate:
+                    type: string
+                  tenant_contacts:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+                      website:
+                        type: string
+                  tenant_labels:
+                    type: array
+                    items:
+                      type: string
+                  tenant_metadata:
+                    type: object
+                    properties:
+                      dns:
+                        type: object
+                        properties:
+                          ns_pool:
+                            type: object
+                            properties:
+                              primary:
+                                type: string
+                              secondary:
+                                type: string
+                        required:
+                          - ns_pool
+                  tenant_name:
+                    type: string
+                  tenant_network: {}
+                  tenant_status:
+                    type: string
+                  tenant_tag:
+                    type: string
+                  tenant_type:
+                    type: string
+                  tenant_units:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        unit_memberships:
+                          type: array
+                          items: {}
+                        unit_metadata: {}
+                        unit_name:
+                          type: string
+                        unit_status:
+                          type: string
+                        unit_tag:
+                          type: string
+                      required:
+                        - unit_memberships
+                        - unit_metadata
+                        - unit_name
+                        - unit_status
+                        - unit_tag
+                  customer_id:
+                    type: string
+                required:
+                  - cdate
+                  - edate
+                  - tenant_contacts
+                  - tenant_labels
+                  - tenant_metadata
+                  - tenant_name
+                  - tenant_network
+                  - tenant_status
+                  - tenant_tag
+                  - tenant_type
+                  - tenant_units
+      x-distilled-response-path: result

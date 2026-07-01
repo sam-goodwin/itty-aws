@@ -3,20 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListStemmingDictionariesInput {}
 export const ListStemmingDictionariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/stemming/dictionaries" }),
-  );
-export type ListStemmingDictionariesInput =
-  typeof ListStemmingDictionariesInput.Type;
+  ) as unknown as Schema.Codec<ListStemmingDictionariesInput>;
 
 // Output Schema
+export interface ListStemmingDictionariesOutput {
+  dictionaries?: string[];
+}
 export const ListStemmingDictionariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dictionaries: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ListStemmingDictionariesOutput =
-  typeof ListStemmingDictionariesOutput.Type;
+  }) as unknown as Schema.Codec<ListStemmingDictionariesOutput>;
 
 // The operation
 /**

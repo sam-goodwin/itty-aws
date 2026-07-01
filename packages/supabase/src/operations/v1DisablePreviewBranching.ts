@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DisablePreviewBranchingInput {
+  ref: string;
+}
 export const V1DisablePreviewBranchingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/projects/{ref}/branches" }));
-export type V1DisablePreviewBranchingInput =
-  typeof V1DisablePreviewBranchingInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/projects/{ref}/branches" }),
+  ) as unknown as Schema.Codec<V1DisablePreviewBranchingInput>;
 
 // Output Schema
+export type V1DisablePreviewBranchingOutput = void;
 export const V1DisablePreviewBranchingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DisablePreviewBranchingOutput =
-  typeof V1DisablePreviewBranchingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisablePreviewBranchingOutput>;
 
 // The operation
 /**

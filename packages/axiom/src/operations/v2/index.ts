@@ -74,3 +74,4 @@ export * from "./createDashboard.ts";
 export * from "./getDashboard.ts";
 export * from "./updateDashboard.ts";
 export * from "./deleteDashboard.ts";
+export * from "./patchDashboardChart.ts";

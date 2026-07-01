@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetInvoiceLineItemsInput {
+  organization: string;
+  id: string;
+  page?: number;
+  per_page?: number;
+}
 export const GetInvoiceLineItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,33 @@ export const GetInvoiceLineItemsInput =
       method: "GET",
       path: "/organizations/{organization}/invoices/{id}/line-items",
     }),
-  );
-export type GetInvoiceLineItemsInput = typeof GetInvoiceLineItemsInput.Type;
+  ) as unknown as Schema.Codec<GetInvoiceLineItemsInput>;
 
 // Output Schema
+export interface GetInvoiceLineItemsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    subtotal: number;
+    description: string;
+    metric_name: string;
+    cloudflare_billed: boolean;
+    database_id: string;
+    database_name: string;
+    resource: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+  }[];
+}
 export const GetInvoiceLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -33,6 +62,7 @@ export const GetInvoiceLineItemsOutput =
         subtotal: Schema.Number,
         description: Schema.String,
         metric_name: Schema.String,
+        cloudflare_billed: Schema.Boolean,
         database_id: Schema.String,
         database_name: Schema.String,
         resource: Schema.Struct({
@@ -44,8 +74,7 @@ export const GetInvoiceLineItemsOutput =
         }),
       }),
     ),
-  });
-export type GetInvoiceLineItemsOutput = typeof GetInvoiceLineItemsOutput.Type;
+  }) as unknown as Schema.Codec<GetInvoiceLineItemsOutput>;
 
 // The operation
 /**

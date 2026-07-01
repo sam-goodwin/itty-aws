@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetProjectAdvisorSecurityIssuesInput {
+  project_id: string;
+  branch_id?: string;
+  database_name?: string;
+  category?: string;
+  min_severity?: "INFO" | "WARN" | "ERROR";
+}
 export const GetProjectAdvisorSecurityIssuesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -10,11 +17,25 @@ export const GetProjectAdvisorSecurityIssuesInput =
     database_name: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
     min_severity: Schema.optional(Schema.Literals(["INFO", "WARN", "ERROR"])),
-  }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/advisors" }));
-export type GetProjectAdvisorSecurityIssuesInput =
-  typeof GetProjectAdvisorSecurityIssuesInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/projects/{project_id}/advisors" }),
+  ) as unknown as Schema.Codec<GetProjectAdvisorSecurityIssuesInput>;
 
 // Output Schema
+export interface GetProjectAdvisorSecurityIssuesOutput {
+  issues: {
+    name: string;
+    title: string;
+    level: string;
+    facing: "EXTERNAL" | "INTERNAL";
+    categories: ("SECURITY" | "PERFORMANCE")[];
+    description: string;
+    detail: string;
+    remediation: string;
+    metadata: Record<string, unknown>;
+    cache_key: string;
+  }[];
+}
 export const GetProjectAdvisorSecurityIssuesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issues: Schema.Array(
@@ -31,9 +52,7 @@ export const GetProjectAdvisorSecurityIssuesOutput =
         cache_key: Schema.String,
       }),
     ),
-  });
-export type GetProjectAdvisorSecurityIssuesOutput =
-  typeof GetProjectAdvisorSecurityIssuesOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectAdvisorSecurityIssuesOutput>;
 
 // The operation
 /**

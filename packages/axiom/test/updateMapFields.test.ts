@@ -24,6 +24,6 @@ describe("updateMapFields", () => {
 
       expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

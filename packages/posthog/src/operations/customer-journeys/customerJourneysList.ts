@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CustomerJourneysListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const CustomerJourneysListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,25 @@ export const CustomerJourneysListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/customer_journeys/",
+      path: "/api/projects/{project_id}/customer_journeys/",
     }),
-  );
-export type CustomerJourneysListInput = typeof CustomerJourneysListInput.Type;
+  ) as unknown as Schema.Codec<CustomerJourneysListInput>;
 
 // Output Schema
+export interface CustomerJourneysListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    insight?: number;
+    name?: string;
+    description?: string | null;
+    created_at?: string;
+    created_by?: number | null;
+    updated_at?: string | null;
+  }[];
+}
 export const CustomerJourneysListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -36,8 +53,7 @@ export const CustomerJourneysListOutput =
         }),
       ),
     ),
-  });
-export type CustomerJourneysListOutput = typeof CustomerJourneysListOutput.Type;
+  }) as unknown as Schema.Codec<CustomerJourneysListOutput>;
 
 // The operation
 /**
@@ -50,6 +66,5 @@ export const customerJourneysList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerJourneysListInput,
     outputSchema: CustomerJourneysListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

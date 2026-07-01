@@ -3,6 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendEvmTransactionWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "avalanche"
+    | "polygon"
+    | "optimism"
+    | "arbitrum"
+    | "arbitrum-sepolia"
+    | "world"
+    | "world-sepolia";
+  walletSecretId?: string;
+  transaction: string;
+}
 export const SendEvmTransactionWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -28,21 +47,20 @@ export const SendEvmTransactionWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/send/transaction",
     }),
-  );
-export type SendEvmTransactionWithEndUserAccountInput =
-  typeof SendEvmTransactionWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SendEvmTransactionWithEndUserAccountInput>;
 
 // Output Schema
+export interface SendEvmTransactionWithEndUserAccountOutput {
+  transactionHash: string;
+}
 export const SendEvmTransactionWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionHash: Schema.String,
-  });
-export type SendEvmTransactionWithEndUserAccountOutput =
-  typeof SendEvmTransactionWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SendEvmTransactionWithEndUserAccountOutput>;
 
 // The operation
 /**
- * Send a transaction with end user EVM account
+ * Send transaction via end user EVM account
  *
  * Signs a transaction with the given end user EVM account and sends it to the indicated supported network. This API handles nonce management and gas estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction. The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).
  * The transaction must be an [EIP-1559 dynamic fee transaction](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md).

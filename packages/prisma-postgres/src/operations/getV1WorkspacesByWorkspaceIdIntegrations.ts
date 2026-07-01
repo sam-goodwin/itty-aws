@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1WorkspacesByWorkspaceIdIntegrationsInput {
+  workspaceId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1WorkspacesByWorkspaceIdIntegrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workspaceId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,20 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsInput =
       method: "GET",
       path: "/v1/workspaces/{workspaceId}/integrations",
     }),
-  );
-export type GetV1WorkspacesByWorkspaceIdIntegrationsInput =
-  typeof GetV1WorkspacesByWorkspaceIdIntegrationsInput.Type;
+  ) as unknown as Schema.Codec<GetV1WorkspacesByWorkspaceIdIntegrationsInput>;
 
 // Output Schema
+export interface GetV1WorkspacesByWorkspaceIdIntegrationsOutput {
+  data: {
+    id: string;
+    url: string;
+    createdAt: string;
+    scopes: string[];
+    client: { id: string; name: string; createdAt: string };
+    createdByUser: { id: string; email: string; displayName: string | null };
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1WorkspacesByWorkspaceIdIntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -43,9 +57,7 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1WorkspacesByWorkspaceIdIntegrationsOutput =
-  typeof GetV1WorkspacesByWorkspaceIdIntegrationsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1WorkspacesByWorkspaceIdIntegrationsOutput>;
 
 // The operation
 /**

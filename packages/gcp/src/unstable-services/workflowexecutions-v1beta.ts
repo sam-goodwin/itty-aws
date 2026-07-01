@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,6 +22,48 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Position {
+  /** The source code column position (of the line) the current instruction was generated from. */
+  column?: string;
+  /** The number of bytes of source code making up this stack trace element. */
+  length?: string;
+  /** The source code line number the current instruction was generated from. */
+  line?: string;
+}
+
+export const Position: Schema.Codec<Position> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    column: Schema.optional(Schema.String),
+    length: Schema.optional(Schema.String),
+    line: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Position" });
+
+export interface StackTraceElement {
+  /** The step the error occurred at. */
+  step?: string;
+  /** The routine where the error occurred. */
+  routine?: string;
+  /** The source position information of the stack trace element. */
+  position?: Position;
+}
+
+export const StackTraceElement: Schema.Codec<StackTraceElement> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    step: Schema.optional(Schema.String),
+    routine: Schema.optional(Schema.String),
+    position: Schema.optional(Position),
+  }).annotate({ identifier: "StackTraceElement" });
+
+export interface StackTrace {
+  /** An array of stack elements. */
+  elements?: ReadonlyArray<StackTraceElement>;
+}
+
+export const StackTrace: Schema.Codec<StackTrace> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elements: Schema.optional(Schema.Array(StackTraceElement)),
+  }).annotate({ identifier: "StackTrace" });
+
 export interface Step {
   /** Name of a routine within the workflow. */
   routine?: string;
@@ -29,7 +71,7 @@ export interface Step {
   step?: string;
 }
 
-export const Step: Schema.Schema<Step> =
+export const Step: Schema.Codec<Step> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     routine: Schema.optional(Schema.String),
     step: Schema.optional(Schema.String),
@@ -40,72 +82,28 @@ export interface Status {
   currentSteps?: ReadonlyArray<Step>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     currentSteps: Schema.optional(Schema.Array(Step)),
   }).annotate({ identifier: "Status" });
 
-export interface Position {
-  /** The source code line number the current instruction was generated from. */
-  line?: string;
-  /** The source code column position (of the line) the current instruction was generated from. */
-  column?: string;
-  /** The number of bytes of source code making up this stack trace element. */
-  length?: string;
-}
-
-export const Position: Schema.Schema<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    line: Schema.optional(Schema.String),
-    column: Schema.optional(Schema.String),
-    length: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Position" });
-
-export interface StackTraceElement {
-  /** The routine where the error occurred. */
-  routine?: string;
-  /** The step the error occurred at. */
-  step?: string;
-  /** The source position information of the stack trace element. */
-  position?: Position;
-}
-
-export const StackTraceElement: Schema.Schema<StackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    routine: Schema.optional(Schema.String),
-    step: Schema.optional(Schema.String),
-    position: Schema.optional(Position),
-  }).annotate({ identifier: "StackTraceElement" });
-
-export interface StackTrace {
-  /** An array of stack elements. */
-  elements?: ReadonlyArray<StackTraceElement>;
-}
-
-export const StackTrace: Schema.Schema<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    elements: Schema.optional(Schema.Array(StackTraceElement)),
-  }).annotate({ identifier: "StackTrace" });
-
 export interface Workflowexecutions_Error {
-  /** Human-readable stack trace string. */
-  context?: string;
-  /** Stack trace with detailed information of where error was generated. */
-  stackTrace?: StackTrace;
   /** Error message and data returned represented as a JSON string. */
   payload?: string;
+  /** Stack trace with detailed information of where error was generated. */
+  stackTrace?: StackTrace;
+  /** Human-readable stack trace string. */
+  context?: string;
 }
 
-export const Workflowexecutions_Error: Schema.Schema<Workflowexecutions_Error> =
+export const Workflowexecutions_Error: Schema.Codec<Workflowexecutions_Error> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    context: Schema.optional(Schema.String),
-    stackTrace: Schema.optional(StackTrace),
     payload: Schema.optional(Schema.String),
+    stackTrace: Schema.optional(StackTrace),
+    context: Schema.optional(Schema.String),
   }).annotate({ identifier: "Workflowexecutions_Error" });
 
 export interface Execution {
-  /** Output only. Status tracks the current steps and progress data of this execution. */
-  status?: Status;
   /** Output only. Marks the beginning of execution. */
   startTime?: string;
   /** Output only. Current state of the execution. */
@@ -118,56 +116,58 @@ export interface Execution {
     | "UNAVAILABLE"
     | "QUEUED"
     | (string & {});
-  /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
-  error?: Workflowexecutions_Error;
-  /** Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`. */
-  result?: string;
-  /** Output only. Revision of the workflow this execution is using. */
-  workflowRevisionId?: string;
-  /** Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
-  name?: string;
+  /** Output only. Marks the end of execution, successful or not. */
+  endTime?: string;
+  /** Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'` */
+  argument?: string;
   /** The call logging level associated to this execution. */
   callLogLevel?:
     | "CALL_LOG_LEVEL_UNSPECIFIED"
     | "LOG_ALL_CALLS"
     | "LOG_ERRORS_ONLY"
     | (string & {});
-  /** Output only. Marks the end of execution, successful or not. */
-  endTime?: string;
-  /** Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'` */
-  argument?: string;
+  /** Output only. Revision of the workflow this execution is using. */
+  workflowRevisionId?: string;
+  /** Output only. Status tracks the current steps and progress data of this execution. */
+  status?: Status;
+  /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
+  error?: Workflowexecutions_Error;
+  /** Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
+  name?: string;
+  /** Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`. */
+  result?: string;
 }
 
-export const Execution: Schema.Schema<Execution> =
+export const Execution: Schema.Codec<Execution> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    status: Schema.optional(Status),
     startTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
-    error: Schema.optional(Workflowexecutions_Error),
-    result: Schema.optional(Schema.String),
-    workflowRevisionId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    callLogLevel: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     argument: Schema.optional(Schema.String),
+    callLogLevel: Schema.optional(Schema.String),
+    workflowRevisionId: Schema.optional(Schema.String),
+    status: Schema.optional(Status),
+    error: Schema.optional(Workflowexecutions_Error),
+    name: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.String),
   }).annotate({ identifier: "Execution" });
 
 export interface ListExecutionsResponse {
-  /** The executions which match the request. */
-  executions?: ReadonlyArray<Execution>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** The executions which match the request. */
+  executions?: ReadonlyArray<Execution>;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
+export const ListExecutionsResponse: Schema.Codec<ListExecutionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    executions: Schema.optional(Schema.Array(Execution)),
     nextPageToken: Schema.optional(Schema.String),
+    executions: Schema.optional(Schema.Array(Execution)),
   }).annotate({ identifier: "ListExecutionsResponse" });
 
 export interface CancelExecutionRequest {}
 
-export const CancelExecutionRequest: Schema.Schema<CancelExecutionRequest> =
+export const CancelExecutionRequest: Schema.Codec<CancelExecutionRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelExecutionRequest",
   });
@@ -226,27 +226,64 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface GetProjectsLocationsWorkflowsExecutionsRequest {
+  /** Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
+  name: string;
+  /** Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. */
+  view?: "EXECUTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+}
+
+export const GetProjectsLocationsWorkflowsExecutionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsWorkflowsExecutionsRequest>;
+
+export type GetProjectsLocationsWorkflowsExecutionsResponse = Execution;
+export const GetProjectsLocationsWorkflowsExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Execution;
+
+export type GetProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns an execution of the given name. */
+export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
+  GetProjectsLocationsWorkflowsExecutionsRequest,
+  GetProjectsLocationsWorkflowsExecutionsResponse,
+  GetProjectsLocationsWorkflowsExecutionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsWorkflowsExecutionsRequest,
+  output: GetProjectsLocationsWorkflowsExecutionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsWorkflowsExecutionsRequest {
-  /** Required. Name of the workflow for which the executions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
-  parent: string;
   /** A page token, received from a previous `ListExecutions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListExecutions` must match the call that provided the page token. */
   pageToken?: string;
-  /** Optional. A view defining which fields should be filled in the returned executions. The API will default to the BASIC view. */
-  view?: "EXECUTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
+  /** Required. Name of the workflow for which the executions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
+  parent: string;
   /** Maximum number of executions to return per call. Max supported value depends on the selected Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if the field is not specified is 100, regardless of the selected view. Values greater than the max value will be coerced down to it. */
   pageSize?: number;
+  /** Optional. A view defining which fields should be filled in the returned executions. The API will default to the BASIC view. */
+  view?: "EXECUTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
 export const ListProjectsLocationsWorkflowsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/executions" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
 export type ListProjectsLocationsWorkflowsExecutionsResponse =
   ListExecutionsResponse;
@@ -292,7 +329,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsWorkflowsExecutionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsWorkflowsExecutionsRequest>;
 
 export type CreateProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CreateProjectsLocationsWorkflowsExecutionsResponse =
@@ -317,43 +354,6 @@ export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsWorkflowsExecutionsRequest {
-  /** Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
-  name: string;
-  /** Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. */
-  view?: "EXECUTION_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
-}
-
-export const GetProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>;
-
-export type GetProjectsLocationsWorkflowsExecutionsResponse = Execution;
-export const GetProjectsLocationsWorkflowsExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Execution;
-
-export type GetProjectsLocationsWorkflowsExecutionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns an execution of the given name. */
-export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
-  GetProjectsLocationsWorkflowsExecutionsRequest,
-  GetProjectsLocationsWorkflowsExecutionsResponse,
-  GetProjectsLocationsWorkflowsExecutionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkflowsExecutionsRequest,
-  output: GetProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution to be cancelled. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name: string;
@@ -368,7 +368,7 @@ export const CancelProjectsLocationsWorkflowsExecutionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsWorkflowsExecutionsRequest>;
 
 export type CancelProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CancelProjectsLocationsWorkflowsExecutionsResponse =

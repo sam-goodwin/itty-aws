@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListProjectTpaIntegrationsInput {
+  ref: string;
+}
 export const V1ListProjectTpaIntegrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,20 @@ export const V1ListProjectTpaIntegrationsInput =
       method: "GET",
       path: "/v1/projects/{ref}/config/auth/third-party-auth",
     }),
-  );
-export type V1ListProjectTpaIntegrationsInput =
-  typeof V1ListProjectTpaIntegrationsInput.Type;
+  ) as unknown as Schema.Codec<V1ListProjectTpaIntegrationsInput>;
 
 // Output Schema
+export type V1ListProjectTpaIntegrationsOutput = {
+  id: string;
+  type: string;
+  oidc_issuer_url?: string | null;
+  jwks_url?: string | null;
+  custom_jwks?: unknown | null;
+  resolved_jwks?: unknown | null;
+  inserted_at: string;
+  updated_at: string;
+  resolved_at?: string | null;
+}[];
 export const V1ListProjectTpaIntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -30,9 +42,7 @@ export const V1ListProjectTpaIntegrationsOutput =
       updated_at: Schema.String,
       resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
     }),
-  );
-export type V1ListProjectTpaIntegrationsOutput =
-  typeof V1ListProjectTpaIntegrationsOutput.Type;
+  ) as unknown as Schema.Codec<V1ListProjectTpaIntegrationsOutput>;
 
 // The operation
 /**

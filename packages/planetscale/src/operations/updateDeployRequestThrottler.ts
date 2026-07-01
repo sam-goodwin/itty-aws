@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDeployRequestThrottlerInput {
+  organization: string;
+  database: string;
+  number: number;
+  ratio?: number;
+  configurations?: string[];
+}
 export const UpdateDeployRequestThrottlerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,20 @@ export const UpdateDeployRequestThrottlerInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/throttler",
     }),
-  );
-export type UpdateDeployRequestThrottlerInput =
-  typeof UpdateDeployRequestThrottlerInput.Type;
+  ) as unknown as Schema.Codec<UpdateDeployRequestThrottlerInput>;
 
 // Output Schema
+export interface UpdateDeployRequestThrottlerOutput {
+  keyspaces: string[];
+  configurable: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  configurations: { keyspace_name: string; ratio: number }[];
+}
 export const UpdateDeployRequestThrottlerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
@@ -37,9 +53,7 @@ export const UpdateDeployRequestThrottlerOutput =
         ratio: Schema.Number,
       }),
     ),
-  });
-export type UpdateDeployRequestThrottlerOutput =
-  typeof UpdateDeployRequestThrottlerOutput.Type;
+  }) as unknown as Schema.Codec<UpdateDeployRequestThrottlerOutput>;
 
 // The operation
 /**

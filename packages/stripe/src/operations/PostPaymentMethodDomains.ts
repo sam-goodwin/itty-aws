@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostPaymentMethodDomainsInput {
+  domain_name: string;
+  enabled?: boolean;
+  expand?: string[];
+}
 export const PostPaymentMethodDomainsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain_name: Schema.String,
@@ -14,11 +19,41 @@ export const PostPaymentMethodDomainsInput =
       path: "/v1/payment_method_domains",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostPaymentMethodDomainsInput =
-  typeof PostPaymentMethodDomainsInput.Type;
+  ) as unknown as Schema.Codec<PostPaymentMethodDomainsInput>;
 
 // Output Schema
+export interface PostPaymentMethodDomainsOutput {
+  amazon_pay: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+  apple_pay: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+  created: number;
+  domain_name: string;
+  enabled: boolean;
+  google_pay: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+  id: string;
+  klarna: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+  link: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+  livemode: boolean;
+  object: "payment_method_domain";
+  paypal: {
+    status: "active" | "inactive";
+    status_details?: { error_message: string };
+  };
+}
 export const PostPaymentMethodDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
@@ -75,9 +110,7 @@ export const PostPaymentMethodDomainsOutput =
         }),
       ),
     }),
-  });
-export type PostPaymentMethodDomainsOutput =
-  typeof PostPaymentMethodDomainsOutput.Type;
+  }) as unknown as Schema.Codec<PostPaymentMethodDomainsOutput>;
 
 // The operation
 /**

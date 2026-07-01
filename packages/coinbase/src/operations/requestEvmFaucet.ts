@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RequestEvmFaucetInput {
+  network: "base-sepolia" | "ethereum-sepolia" | "ethereum-hoodi";
+  address: string;
+  token: "eth" | "usdc" | "eurc" | "cbbtc";
+}
 export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   network: Schema.Literals([
     "base-sepolia",
@@ -11,16 +16,19 @@ export const RequestEvmFaucetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ]),
   address: Schema.String,
   token: Schema.Literals(["eth", "usdc", "eurc", "cbbtc"]),
-}).pipe(T.Http({ method: "POST", path: "/v2/evm/faucet" }));
-export type RequestEvmFaucetInput = typeof RequestEvmFaucetInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/evm/faucet" }),
+) as unknown as Schema.Codec<RequestEvmFaucetInput>;
 
 // Output Schema
+export interface RequestEvmFaucetOutput {
+  transactionHash: string;
+}
 export const RequestEvmFaucetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     transactionHash: Schema.String,
   },
-);
-export type RequestEvmFaucetOutput = typeof RequestEvmFaucetOutput.Type;
+) as unknown as Schema.Codec<RequestEvmFaucetOutput>;
 
 // The operation
 /**

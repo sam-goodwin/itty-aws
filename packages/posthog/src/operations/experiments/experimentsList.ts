@@ -4,129 +4,445 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ExperimentsListInput {
+  project_id: string;
+  archived?: boolean;
+  created_by_id?: string;
+  event?: string;
+  feature_flag_id?: number;
+  limit?: number;
+  offset?: number;
+  order?: string;
+  prompt_name?: string;
+  search?: string;
+  status?: "all" | "complete" | "draft" | "paused" | "running" | "stopped";
+}
 export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
+  archived: Schema.optional(Schema.Boolean),
+  created_by_id: Schema.optional(Schema.String),
+  event: Schema.optional(Schema.String),
+  feature_flag_id: Schema.optional(Schema.Number),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
+  order: Schema.optional(Schema.String),
+  prompt_name: Schema.optional(Schema.String),
+  search: Schema.optional(Schema.String),
+  status: Schema.optional(
+    Schema.Literals([
+      "all",
+      "complete",
+      "draft",
+      "paused",
+      "running",
+      "stopped",
+    ]),
+  ),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/experiments/" }),
-);
-export type ExperimentsListInput = typeof ExperimentsListInput.Type;
+) as unknown as Schema.Codec<ExperimentsListInput>;
 
 // Output Schema
+export interface ExperimentsListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: number;
+    name: string;
+    description?: string | null;
+    start_date?: string | null;
+    end_date?: string | null;
+    feature_flag_key: string;
+    feature_flag: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    holdout: {
+      id?: number;
+      name?: string;
+      description?: string | null;
+      filters?: {
+        properties?: (
+          | {
+              key?: string;
+              type?: "cohort" | "person" | "group";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              value?: unknown;
+              operator?:
+                | "exact"
+                | "is_not"
+                | "icontains"
+                | "not_icontains"
+                | "regex"
+                | "not_regex"
+                | "gt"
+                | "gte"
+                | "lt"
+                | "lte";
+            }
+          | {
+              key?: string;
+              type?: "cohort" | "person" | "group";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?: "is_set" | "is_not_set";
+              value?: unknown;
+            }
+          | {
+              key?: string;
+              type?: "cohort" | "person" | "group";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?: "is_date_exact" | "is_date_before" | "is_date_after";
+              value?: string;
+            }
+          | {
+              key?: string;
+              type?: "cohort" | "person" | "group";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?:
+                | "semver_gt"
+                | "semver_gte"
+                | "semver_lt"
+                | "semver_lte"
+                | "semver_eq"
+                | "semver_neq"
+                | "semver_tilde"
+                | "semver_caret"
+                | "semver_wildcard";
+              value?: string;
+            }
+          | {
+              key?: string;
+              type?: "cohort" | "person" | "group";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?: "icontains_multi" | "not_icontains_multi";
+              value?: string[];
+            }
+          | {
+              key?: string;
+              type?: "cohort";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?: "in" | "not_in";
+              value?: unknown;
+            }
+          | {
+              key?: string;
+              type?: "flag";
+              cohort_name?: string | null;
+              group_type_index?: number | null;
+              operator?: "flag_evaluates_to";
+              value?: unknown;
+            }
+        )[];
+        rollout_percentage?: number;
+        variant?: string | null;
+        aggregation_group_type_index?: number | null;
+      }[];
+      created_by?: {
+        id?: number;
+        uuid?: string;
+        distinct_id?: string | null;
+        first_name?: string;
+        last_name?: string;
+        email?: string;
+        is_email_verified?: boolean | null;
+        hedgehog_config?: Record<string, unknown> | null;
+        role_at_organization?:
+          | "engineering"
+          | "data"
+          | "product"
+          | "founder"
+          | "leadership"
+          | "marketing"
+          | "sales"
+          | "other"
+          | ""
+          | null;
+      } | null;
+      created_at?: string;
+      updated_at?: string;
+      user_access_level?: string | null;
+    };
+    exposure_cohort: number | null;
+    parameters?: {
+      feature_flag_variants?:
+        | {
+            key?: string;
+            name?: string | null;
+            rollout_percentage?: number | null;
+            split_percent?: number | null;
+          }[]
+        | null;
+      minimum_detectable_effect?: number | null;
+      rollout_percentage?: number | null;
+      variant_notes?: Record<string, string> | null;
+    } | null;
+    running_time_calculation?: {
+      exposure_estimate_config?: {
+        conversionRateInputType: "manual" | "automatic";
+        manualBaselineValue?: number | null;
+        manualExposureRate?: number | null;
+        manualMetricType?: "funnel" | "mean_count" | "mean_sum_or_avg" | null;
+      } | null;
+      minimum_detectable_effect?: number | null;
+      recommended_running_time?: number | null;
+      recommended_sample_size?: number | null;
+    } | null;
+    excluded_variants?: string[] | null;
+    archived?: boolean;
+    deleted?: boolean | null;
+    created_by: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    };
+    created_at: string;
+    updated_at: string;
+    type?: "web" | "product" | null;
+    conclusion?:
+      | "won"
+      | "lost"
+      | "inconclusive"
+      | "stopped_early"
+      | "invalid"
+      | null;
+    conclusion_comment?: string | null;
+    status: "draft" | "running" | "paused" | "stopped";
+    is_legacy: boolean;
+    user_access_level: string | null;
+  }[];
+}
 export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.optional(Schema.Number),
+  count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.Number,
+      name: Schema.String,
+      description: Schema.optional(Schema.NullOr(Schema.String)),
+      start_date: Schema.optional(Schema.NullOr(Schema.String)),
+      end_date: Schema.optional(Schema.NullOr(Schema.String)),
+      feature_flag_key: Schema.String,
+      feature_flag: Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        team_id: Schema.optional(Schema.Number),
+        name: Schema.optional(Schema.String),
+        key: Schema.optional(Schema.String),
+        filters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        deleted: Schema.optional(Schema.Boolean),
+        active: Schema.optional(Schema.Boolean),
+        ensure_experience_continuity: Schema.optional(
+          Schema.NullOr(Schema.Boolean),
+        ),
+        version: Schema.optional(Schema.NullOr(Schema.Number)),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
+      }),
+      holdout: Schema.Struct({
         id: Schema.optional(Schema.Number),
         name: Schema.optional(Schema.String),
         description: Schema.optional(Schema.NullOr(Schema.String)),
-        start_date: Schema.optional(Schema.NullOr(Schema.String)),
-        end_date: Schema.optional(Schema.NullOr(Schema.String)),
-        feature_flag_key: Schema.optional(Schema.String),
-        feature_flag: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.Number),
-            team_id: Schema.optional(Schema.Number),
-            name: Schema.optional(Schema.String),
-            key: Schema.optional(Schema.String),
-            filters: Schema.optional(
-              Schema.Record(Schema.String, Schema.Unknown),
-            ),
-            deleted: Schema.optional(Schema.Boolean),
-            active: Schema.optional(Schema.Boolean),
-            ensure_experience_continuity: Schema.optional(
-              Schema.NullOr(Schema.Boolean),
-            ),
-            has_encrypted_payloads: Schema.optional(
-              Schema.NullOr(Schema.Boolean),
-            ),
-            version: Schema.optional(Schema.NullOr(Schema.Number)),
-            evaluation_runtime: Schema.optional(Schema.Unknown),
-            bucketing_identifier: Schema.optional(Schema.Unknown),
-            evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        holdout: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.Number),
-            name: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.NullOr(Schema.String)),
-            filters: Schema.optional(Schema.Unknown),
-            created_by: Schema.optional(
-              Schema.NullOr(
-                Schema.Struct({
-                  id: Schema.optional(Schema.Number),
-                  uuid: Schema.optional(Schema.String),
-                  distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                  first_name: Schema.optional(Schema.String),
-                  last_name: Schema.optional(Schema.String),
-                  email: Schema.optional(Schema.String),
-                  is_email_verified: Schema.optional(
-                    Schema.NullOr(Schema.Boolean),
-                  ),
-                  hedgehog_config: Schema.optional(
-                    Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                  ),
-                  role_at_organization: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            ),
-            created_at: Schema.optional(Schema.String),
-            updated_at: Schema.optional(Schema.String),
-          }),
-        ),
-        holdout_id: Schema.optional(Schema.NullOr(Schema.Number)),
-        exposure_cohort: Schema.optional(Schema.NullOr(Schema.Number)),
-        parameters: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              feature_flag_variants: Schema.optional(
-                Schema.NullOr(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.NullOr(Schema.String)),
-                      rollout_percentage: Schema.optional(
-                        Schema.NullOr(Schema.Number),
-                      ),
-                      split_percent: Schema.optional(
-                        Schema.NullOr(Schema.Number),
-                      ),
-                    }),
-                  ),
-                ),
-              ),
-              minimum_detectable_effect: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-              rollout_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
-            }),
-          ),
-        ),
-        secondary_metrics: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        saved_metrics: Schema.optional(
+        filters: Schema.optional(
           Schema.Array(
             Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              experiment: Schema.optional(Schema.Number),
-              saved_metric: Schema.optional(Schema.Number),
-              metadata: Schema.optional(Schema.Unknown),
-              created_at: Schema.optional(Schema.String),
-              query: Schema.optional(Schema.Unknown),
-              name: Schema.optional(Schema.String),
+              properties: Schema.optional(
+                Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "exact",
+                          "is_not",
+                          "icontains",
+                          "not_icontains",
+                          "regex",
+                          "not_regex",
+                          "gt",
+                          "gte",
+                          "lt",
+                          "lte",
+                        ]),
+                      ),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["is_set", "is_not_set"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "is_date_exact",
+                          "is_date_before",
+                          "is_date_after",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.String),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "semver_gt",
+                          "semver_gte",
+                          "semver_lt",
+                          "semver_lte",
+                          "semver_eq",
+                          "semver_neq",
+                          "semver_tilde",
+                          "semver_caret",
+                          "semver_wildcard",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.String),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["cohort", "person", "group"]),
+                      ),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals([
+                          "icontains_multi",
+                          "not_icontains_multi",
+                        ]),
+                      ),
+                      value: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.Literals(["cohort"])),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["in", "not_in"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.Literals(["flag"])),
+                      cohort_name: Schema.optional(
+                        Schema.NullOr(Schema.String),
+                      ),
+                      group_type_index: Schema.optional(
+                        Schema.NullOr(Schema.Number),
+                      ),
+                      operator: Schema.optional(
+                        Schema.Literals(["flag_evaluates_to"]),
+                      ),
+                      value: Schema.optional(Schema.Unknown),
+                    }),
+                  ]),
+                ),
+              ),
+              rollout_percentage: Schema.optional(Schema.Number),
+              variant: Schema.optional(Schema.NullOr(Schema.String)),
+              aggregation_group_type_index: Schema.optional(
+                Schema.NullOr(Schema.Number),
+              ),
             }),
           ),
         ),
-        saved_metrics_ids: Schema.optional(
-          Schema.NullOr(Schema.Array(Schema.Unknown)),
-        ),
-        filters: Schema.optional(Schema.Unknown),
-        archived: Schema.optional(Schema.Boolean),
-        deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
         created_by: Schema.optional(
           Schema.NullOr(
             Schema.Struct({
@@ -140,929 +456,171 @@ export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               hedgehog_config: Schema.optional(
                 Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
               ),
-              role_at_organization: Schema.optional(Schema.Unknown),
+              role_at_organization: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals([
+                      "engineering",
+                      "data",
+                      "product",
+                      "founder",
+                      "leadership",
+                      "marketing",
+                      "sales",
+                      "other",
+                    ]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
             }),
           ),
         ),
         created_at: Schema.optional(Schema.String),
         updated_at: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Unknown),
-        exposure_criteria: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              exposure_config: Schema.optional(
+        user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
+      exposure_cohort: Schema.NullOr(Schema.Number),
+      parameters: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            feature_flag_variants: Schema.optional(
+              Schema.NullOr(
+                Schema.Array(
+                  Schema.Struct({
+                    key: Schema.optional(Schema.String),
+                    name: Schema.optional(Schema.NullOr(Schema.String)),
+                    rollout_percentage: Schema.optional(
+                      Schema.NullOr(Schema.Number),
+                    ),
+                    split_percent: Schema.optional(
+                      Schema.NullOr(Schema.Number),
+                    ),
+                  }),
+                ),
+              ),
+            ),
+            minimum_detectable_effect: Schema.optional(
+              Schema.NullOr(Schema.Number),
+            ),
+            rollout_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
+            variant_notes: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+            ),
+          }),
+        ),
+      ),
+      running_time_calculation: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            exposure_estimate_config: Schema.optional(
+              Schema.NullOr(
                 Schema.Struct({
-                  event: Schema.optional(Schema.String),
-                  kind: Schema.optional(
-                    Schema.Literals(["ExperimentEventExposureConfig"]),
+                  conversionRateInputType: Schema.Literals([
+                    "manual",
+                    "automatic",
+                  ]),
+                  manualBaselineValue: Schema.optional(
+                    Schema.NullOr(Schema.Number),
                   ),
-                  properties: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.optional(Schema.String),
-                        label: Schema.optional(Schema.NullOr(Schema.String)),
-                        operator: Schema.optional(
-                          Schema.Literals([
-                            "exact",
-                            "is_not",
-                            "icontains",
-                            "not_icontains",
-                            "regex",
-                            "not_regex",
-                            "gt",
-                            "gte",
-                            "lt",
-                            "lte",
-                            "is_set",
-                            "is_not_set",
-                            "is_date_exact",
-                            "is_date_before",
-                            "is_date_after",
-                            "between",
-                            "not_between",
-                            "min",
-                            "max",
-                            "in",
-                            "not_in",
-                            "is_cleaned_path_exact",
-                            "flag_evaluates_to",
-                            "semver_eq",
-                            "semver_neq",
-                            "semver_gt",
-                            "semver_gte",
-                            "semver_lt",
-                            "semver_lte",
-                            "semver_tilde",
-                            "semver_caret",
-                            "semver_wildcard",
-                            "icontains_multi",
-                            "not_icontains_multi",
-                          ]),
-                        ),
-                        type: Schema.optional(Schema.Literals(["event"])),
-                        value: Schema.optional(Schema.Unknown),
-                      }),
+                  manualExposureRate: Schema.optional(
+                    Schema.NullOr(Schema.Number),
+                  ),
+                  manualMetricType: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Literals([
+                        "funnel",
+                        "mean_count",
+                        "mean_sum_or_avg",
+                      ]),
                     ),
                   ),
                 }),
               ),
-              filterTestAccounts: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
-            }),
-          ),
-        ),
-        metrics: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                completion_event: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                conversion_window: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                denominator: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                goal: Schema.optional(
-                  Schema.Literals(["increase", "decrease"]),
-                ),
-                kind: Schema.optional(Schema.Literals(["ExperimentMetric"])),
-                metric_type: Schema.optional(
-                  Schema.Literals(["funnel", "mean", "ratio", "retention"]),
-                ),
-                name: Schema.optional(Schema.NullOr(Schema.String)),
-                numerator: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                retention_window_end: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                retention_window_start: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                retention_window_unit: Schema.optional(
-                  Schema.Literals([
-                    "second",
-                    "minute",
-                    "hour",
-                    "day",
-                    "week",
-                    "month",
-                  ]),
-                ),
-                series: Schema.optional(
-                  Schema.NullOr(
-                    Schema.Array(
-                      Schema.Struct({
-                        event: Schema.optional(Schema.NullOr(Schema.String)),
-                        id: Schema.optional(Schema.NullOr(Schema.Number)),
-                        kind: Schema.optional(
-                          Schema.Literals(["EventsNode", "ActionsNode"]),
-                        ),
-                        properties: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.optional(Schema.String),
-                                label: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                operator: Schema.optional(
-                                  Schema.Literals([
-                                    "exact",
-                                    "is_not",
-                                    "icontains",
-                                    "not_icontains",
-                                    "regex",
-                                    "not_regex",
-                                    "gt",
-                                    "gte",
-                                    "lt",
-                                    "lte",
-                                    "is_set",
-                                    "is_not_set",
-                                    "is_date_exact",
-                                    "is_date_before",
-                                    "is_date_after",
-                                    "between",
-                                    "not_between",
-                                    "min",
-                                    "max",
-                                    "in",
-                                    "not_in",
-                                    "is_cleaned_path_exact",
-                                    "flag_evaluates_to",
-                                    "semver_eq",
-                                    "semver_neq",
-                                    "semver_gt",
-                                    "semver_gte",
-                                    "semver_lt",
-                                    "semver_lte",
-                                    "semver_tilde",
-                                    "semver_caret",
-                                    "semver_wildcard",
-                                    "icontains_multi",
-                                    "not_icontains_multi",
-                                  ]),
-                                ),
-                                type: Schema.optional(
-                                  Schema.Literals(["event"]),
-                                ),
-                                value: Schema.optional(Schema.Unknown),
-                              }),
-                            ),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                ),
-                source: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                start_event: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                start_handling: Schema.optional(
-                  Schema.Literals(["first_seen", "last_seen"]),
-                ),
-                uuid: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
             ),
-          ),
-        ),
-        metrics_secondary: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                completion_event: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                conversion_window: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                denominator: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                goal: Schema.optional(
-                  Schema.Literals(["increase", "decrease"]),
-                ),
-                kind: Schema.optional(Schema.Literals(["ExperimentMetric"])),
-                metric_type: Schema.optional(
-                  Schema.Literals(["funnel", "mean", "ratio", "retention"]),
-                ),
-                name: Schema.optional(Schema.NullOr(Schema.String)),
-                numerator: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                retention_window_end: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                retention_window_start: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-                retention_window_unit: Schema.optional(
-                  Schema.Literals([
-                    "second",
-                    "minute",
-                    "hour",
-                    "day",
-                    "week",
-                    "month",
-                  ]),
-                ),
-                series: Schema.optional(
-                  Schema.NullOr(
-                    Schema.Array(
-                      Schema.Struct({
-                        event: Schema.optional(Schema.NullOr(Schema.String)),
-                        id: Schema.optional(Schema.NullOr(Schema.Number)),
-                        kind: Schema.optional(
-                          Schema.Literals(["EventsNode", "ActionsNode"]),
-                        ),
-                        properties: Schema.optional(
-                          Schema.NullOr(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.optional(Schema.String),
-                                label: Schema.optional(
-                                  Schema.NullOr(Schema.String),
-                                ),
-                                operator: Schema.optional(
-                                  Schema.Literals([
-                                    "exact",
-                                    "is_not",
-                                    "icontains",
-                                    "not_icontains",
-                                    "regex",
-                                    "not_regex",
-                                    "gt",
-                                    "gte",
-                                    "lt",
-                                    "lte",
-                                    "is_set",
-                                    "is_not_set",
-                                    "is_date_exact",
-                                    "is_date_before",
-                                    "is_date_after",
-                                    "between",
-                                    "not_between",
-                                    "min",
-                                    "max",
-                                    "in",
-                                    "not_in",
-                                    "is_cleaned_path_exact",
-                                    "flag_evaluates_to",
-                                    "semver_eq",
-                                    "semver_neq",
-                                    "semver_gt",
-                                    "semver_gte",
-                                    "semver_lt",
-                                    "semver_lte",
-                                    "semver_tilde",
-                                    "semver_caret",
-                                    "semver_wildcard",
-                                    "icontains_multi",
-                                    "not_icontains_multi",
-                                  ]),
-                                ),
-                                type: Schema.optional(
-                                  Schema.Literals(["event"]),
-                                ),
-                                value: Schema.optional(Schema.Unknown),
-                              }),
-                            ),
-                          ),
-                        ),
-                      }),
-                    ),
-                  ),
-                ),
-                source: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                start_event: Schema.optional(
-                  Schema.Struct({
-                    event: Schema.optional(Schema.NullOr(Schema.String)),
-                    id: Schema.optional(Schema.NullOr(Schema.Number)),
-                    kind: Schema.optional(
-                      Schema.Literals(["EventsNode", "ActionsNode"]),
-                    ),
-                    properties: Schema.optional(
-                      Schema.NullOr(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.optional(Schema.String),
-                            label: Schema.optional(
-                              Schema.NullOr(Schema.String),
-                            ),
-                            operator: Schema.optional(
-                              Schema.Literals([
-                                "exact",
-                                "is_not",
-                                "icontains",
-                                "not_icontains",
-                                "regex",
-                                "not_regex",
-                                "gt",
-                                "gte",
-                                "lt",
-                                "lte",
-                                "is_set",
-                                "is_not_set",
-                                "is_date_exact",
-                                "is_date_before",
-                                "is_date_after",
-                                "between",
-                                "not_between",
-                                "min",
-                                "max",
-                                "in",
-                                "not_in",
-                                "is_cleaned_path_exact",
-                                "flag_evaluates_to",
-                                "semver_eq",
-                                "semver_neq",
-                                "semver_gt",
-                                "semver_gte",
-                                "semver_lt",
-                                "semver_lte",
-                                "semver_tilde",
-                                "semver_caret",
-                                "semver_wildcard",
-                                "icontains_multi",
-                                "not_icontains_multi",
-                              ]),
-                            ),
-                            type: Schema.optional(Schema.Literals(["event"])),
-                            value: Schema.optional(Schema.Unknown),
-                          }),
-                        ),
-                      ),
-                    ),
-                  }),
-                ),
-                start_handling: Schema.optional(
-                  Schema.Literals(["first_seen", "last_seen"]),
-                ),
-                uuid: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
+            minimum_detectable_effect: Schema.optional(
+              Schema.NullOr(Schema.Number),
             ),
+            recommended_running_time: Schema.optional(
+              Schema.NullOr(Schema.Number),
+            ),
+            recommended_sample_size: Schema.optional(
+              Schema.NullOr(Schema.Number),
+            ),
+          }),
+        ),
+      ),
+      excluded_variants: Schema.optional(
+        Schema.NullOr(Schema.Array(Schema.String)),
+      ),
+      archived: Schema.optional(Schema.Boolean),
+      deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
+      created_by: Schema.Struct({
+        id: Schema.optional(Schema.Number),
+        uuid: Schema.optional(Schema.String),
+        distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
+        first_name: Schema.optional(Schema.String),
+        last_name: Schema.optional(Schema.String),
+        email: Schema.optional(Schema.String),
+        is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+        hedgehog_config: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+        ),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
           ),
         ),
-        stats_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        scheduling_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        allow_unknown_events: Schema.optional(Schema.Boolean),
-        _create_in_folder: Schema.optional(Schema.String),
-        conclusion: Schema.optional(Schema.Unknown),
-        conclusion_comment: Schema.optional(Schema.NullOr(Schema.String)),
-        primary_metrics_ordered_uuids: Schema.optional(
-          Schema.NullOr(Schema.Unknown),
-        ),
-        secondary_metrics_ordered_uuids: Schema.optional(
-          Schema.NullOr(Schema.Unknown),
-        ),
-        only_count_matured_users: Schema.optional(Schema.Boolean),
-        update_feature_flag_params: Schema.optional(Schema.Boolean),
-        status: Schema.optional(Schema.Unknown),
-        user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
       }),
-    ),
+      created_at: Schema.String,
+      updated_at: Schema.String,
+      type: Schema.optional(Schema.NullOr(Schema.Literals(["web", "product"]))),
+      conclusion: Schema.optional(
+        Schema.NullOr(
+          Schema.Literals([
+            "won",
+            "lost",
+            "inconclusive",
+            "stopped_early",
+            "invalid",
+          ]),
+        ),
+      ),
+      conclusion_comment: Schema.optional(Schema.NullOr(Schema.String)),
+      status: Schema.Literals(["draft", "running", "paused", "stopped"]),
+      is_legacy: Schema.Boolean,
+      user_access_level: Schema.NullOr(Schema.String),
+    }),
   ),
-});
-export type ExperimentsListOutput = typeof ExperimentsListOutput.Type;
+}) as unknown as Schema.Codec<ExperimentsListOutput>;
 
 // The operation
 /**
  * List experiments for the current project. Supports filtering by status and archival state.
  *
+ * @param archived - Filter by archived state. Defaults to non-archived experiments only.
+ * @param created_by_id - Filter to experiments created by the given user(s). Accepts a single user ID, or a JSON-encoded / comma-separated list of user IDs to match any of them.
+ * @param event - Filter to experiments whose metrics reference this event name. Matches events used directly in metric queries as well as events behind any actions those metrics reference.
+ * @param feature_flag_id - Filter to experiments linked to the given feature flag ID.
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
+ * @param order - Field to order by. Prefix with '-' for descending. Allowlisted fields include name, created_at, updated_at, start_date, end_date, duration, and status.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
+ * @param prompt_name - Filter to experiments created from an LLM prompt with this name. Matches experiments whose parameters.prompt_metadata.name equals the given value.
+ * @param search - Free-text search applied to the experiment name (case-insensitive).
+ * @param status - Filter by experiment status. "running" and "paused" are mutually exclusive: "running" returns launched experiments with an active feature flag, "paused" returns launched experiments whose feature flag is deactivated. "complete" is an alias for "stopped". "all" disables status filtering.
  */
 export const experimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsListInput,

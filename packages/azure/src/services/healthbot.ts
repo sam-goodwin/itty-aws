@@ -4,11 +4,43 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface BotsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+  properties?: {
+    provisioningState?: string;
+    botManagementPortalLink?: string;
+    keyVaultProperties?: {
+      keyName: string;
+      keyVersion?: string;
+      keyVaultUri: string;
+      userIdentity?: string;
+    };
+    accessControlMethod?: string;
+  };
+  sku: { name: "F0" | "C0" | "PES" | "C1" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -62,10 +94,22 @@ export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsCreateInput = typeof BotsCreateInput.Type;
+) as unknown as Schema.Codec<BotsCreateInput>;
 
 // Output Schema
+export interface BotsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -84,8 +128,7 @@ export const BotsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BotsCreateOutput = typeof BotsCreateOutput.Type;
+}) as unknown as Schema.Codec<BotsCreateOutput>;
 
 // The operation
 /**
@@ -101,6 +144,11 @@ export const BotsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsCreateOutput,
 }));
 // Input Schema
+export interface BotsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+}
 export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -111,12 +159,12 @@ export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsDeleteInput = typeof BotsDeleteInput.Type;
+) as unknown as Schema.Codec<BotsDeleteInput>;
 
 // Output Schema
-export const BotsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BotsDeleteOutput = typeof BotsDeleteOutput.Type;
+export type BotsDeleteOutput = void;
+export const BotsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BotsDeleteOutput>;
 
 // The operation
 /**
@@ -132,6 +180,11 @@ export const BotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsDeleteOutput,
 }));
 // Input Schema
+export interface BotsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+}
 export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -142,10 +195,22 @@ export const BotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsGetInput = typeof BotsGetInput.Type;
+) as unknown as Schema.Codec<BotsGetInput>;
 
 // Output Schema
+export interface BotsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -164,8 +229,7 @@ export const BotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BotsGetOutput = typeof BotsGetOutput.Type;
+}) as unknown as Schema.Codec<BotsGetOutput>;
 
 // The operation
 /**
@@ -181,6 +245,9 @@ export const BotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsGetOutput,
 }));
 // Input Schema
+export interface BotsListInput {
+  subscriptionId: string;
+}
 export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -189,10 +256,25 @@ export const BotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthBot/healthBots",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsListInput = typeof BotsListInput.Type;
+) as unknown as Schema.Codec<BotsListInput>;
 
 // Output Schema
+export interface BotsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -216,8 +298,7 @@ export const BotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type BotsListOutput = typeof BotsListOutput.Type;
+}) as unknown as Schema.Codec<BotsListOutput>;
 
 // The operation
 /**
@@ -231,6 +312,10 @@ export const BotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsListOutput,
 }));
 // Input Schema
+export interface BotsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const BotsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -241,11 +326,25 @@ export const BotsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots",
       apiVersion: "2025-11-01",
     }),
-  );
-export type BotsListByResourceGroupInput =
-  typeof BotsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BotsListByResourceGroupInput>;
 
 // Output Schema
+export interface BotsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BotsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -280,9 +379,7 @@ export const BotsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BotsListByResourceGroupOutput =
-  typeof BotsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BotsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -299,6 +396,11 @@ export const BotsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BotsListSecretsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+}
 export const BotsListSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -309,10 +411,12 @@ export const BotsListSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}/listSecrets",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsListSecretsInput = typeof BotsListSecretsInput.Type;
+) as unknown as Schema.Codec<BotsListSecretsInput>;
 
 // Output Schema
+export interface BotsListSecretsOutput {
+  secrets?: { keyName?: string; value?: string }[];
+}
 export const BotsListSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secrets: Schema.optional(
     Schema.Array(
@@ -322,8 +426,7 @@ export const BotsListSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type BotsListSecretsOutput = typeof BotsListSecretsOutput.Type;
+}) as unknown as Schema.Codec<BotsListSecretsOutput>;
 
 // The operation
 /**
@@ -339,6 +442,11 @@ export const BotsListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsListSecretsOutput,
 }));
 // Input Schema
+export interface BotsRegenerateApiJwtSecretInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+}
 export const BotsRegenerateApiJwtSecretInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -350,18 +458,18 @@ export const BotsRegenerateApiJwtSecretInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}/regenerateApiJwtSecret",
       apiVersion: "2025-11-01",
     }),
-  );
-export type BotsRegenerateApiJwtSecretInput =
-  typeof BotsRegenerateApiJwtSecretInput.Type;
+  ) as unknown as Schema.Codec<BotsRegenerateApiJwtSecretInput>;
 
 // Output Schema
+export interface BotsRegenerateApiJwtSecretOutput {
+  keyName?: string;
+  value?: string;
+}
 export const BotsRegenerateApiJwtSecretOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  });
-export type BotsRegenerateApiJwtSecretOutput =
-  typeof BotsRegenerateApiJwtSecretOutput.Type;
+  }) as unknown as Schema.Codec<BotsRegenerateApiJwtSecretOutput>;
 
 // The operation
 /**
@@ -379,6 +487,38 @@ export const BotsRegenerateApiJwtSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BotsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  botName: string;
+  properties?: {
+    provisioningState?: string;
+    botManagementPortalLink?: string;
+    keyVaultProperties?: {
+      keyName: string;
+      keyVersion?: string;
+      keyVaultUri: string;
+      userIdentity?: string;
+    };
+    accessControlMethod?: string;
+  };
+  tags?: Record<string, string>;
+  sku?: { name: "F0" | "C0" | "PES" | "C1" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+}
 export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -434,10 +574,22 @@ export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type BotsUpdateInput = typeof BotsUpdateInput.Type;
+) as unknown as Schema.Codec<BotsUpdateInput>;
 
 // Output Schema
+export interface BotsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -456,8 +608,7 @@ export const BotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BotsUpdateOutput = typeof BotsUpdateOutput.Type;
+}) as unknown as Schema.Codec<BotsUpdateOutput>;
 
 // The operation
 /**
@@ -473,6 +624,7 @@ export const BotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BotsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -481,10 +633,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HealthBot/operations",
     apiVersion: "2025-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -503,8 +669,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

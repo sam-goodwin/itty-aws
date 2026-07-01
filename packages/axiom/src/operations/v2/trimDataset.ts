@@ -4,15 +4,21 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TrimDatasetInput {
+  dataset_id: string;
+  maxDuration: string;
+}
 export const TrimDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   maxDuration: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/trim" }));
-export type TrimDatasetInput = typeof TrimDatasetInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/datasets/{dataset_id}/trim" }),
+) as unknown as Schema.Codec<TrimDatasetInput>;
 
 // Output Schema
-export const TrimDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TrimDatasetOutput = typeof TrimDatasetOutput.Type;
+export type TrimDatasetOutput = void;
+export const TrimDatasetOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrimDatasetOutput>;
 
 // The operation
 /**

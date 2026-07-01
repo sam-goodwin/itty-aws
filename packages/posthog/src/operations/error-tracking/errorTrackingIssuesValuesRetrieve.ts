@@ -1,26 +1,25 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingIssuesValuesRetrieveInput {
+  project_id: string;
+}
 export const ErrorTrackingIssuesValuesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/issues/values/",
+      path: "/api/projects/{project_id}/error_tracking/issues/values/",
     }),
-  );
-export type ErrorTrackingIssuesValuesRetrieveInput =
-  typeof ErrorTrackingIssuesValuesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingIssuesValuesRetrieveInput>;
 
 // Output Schema
+export type ErrorTrackingIssuesValuesRetrieveOutput = void;
 export const ErrorTrackingIssuesValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingIssuesValuesRetrieveOutput =
-  typeof ErrorTrackingIssuesValuesRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesValuesRetrieveOutput>;
 
 // The operation
 /**
@@ -31,5 +30,4 @@ export const errorTrackingIssuesValuesRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingIssuesValuesRetrieveInput,
     outputSchema: ErrorTrackingIssuesValuesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

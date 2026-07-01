@@ -4,13 +4,27 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1IntegrationsByIdInput {
+  id: string;
+}
 export const GetV1IntegrationsByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/integrations/{id}" }));
-export type GetV1IntegrationsByIdInput = typeof GetV1IntegrationsByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/integrations/{id}" }),
+  ) as unknown as Schema.Codec<GetV1IntegrationsByIdInput>;
 
 // Output Schema
+export interface GetV1IntegrationsByIdOutput {
+  data: {
+    id: string;
+    url: string;
+    createdAt: string;
+    scopes: string[];
+    client: { id: string; name: string; createdAt: string };
+    createdByUser: { id: string; email: string; displayName: string | null };
+  };
+}
 export const GetV1IntegrationsByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -29,9 +43,7 @@ export const GetV1IntegrationsByIdOutput =
         displayName: Schema.NullOr(Schema.String),
       }),
     }),
-  });
-export type GetV1IntegrationsByIdOutput =
-  typeof GetV1IntegrationsByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1IntegrationsByIdOutput>;
 
 // The operation
 /**

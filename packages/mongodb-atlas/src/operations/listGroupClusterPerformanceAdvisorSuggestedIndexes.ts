@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterPerformanceAdvisorSuggestedIndexesInput {
+  groupId: string;
+  clusterName: string;
+  processIds?: string;
+  namespaces?: string;
+  since?: number;
+  until?: number;
+}
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,21 +25,18 @@ export const ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/suggestedIndexes",
     }),
-  );
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesInput =
-  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSuggestedIndexesInput>;
 
 // Output Schema
+export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput = void;
 export const ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput =
-  typeof ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorSuggestedIndexesOutput>;
 
 // The operation
 /**
  * Return All Suggested Indexes
  *
- * Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the indexes that the Performance Advisor suggests. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

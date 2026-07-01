@@ -1,8 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetTerminalConfigurationsConfigurationInput {
+  configuration: string;
+  expand?: string;
+}
 export const GetTerminalConfigurationsConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
@@ -13,15 +19,12 @@ export const GetTerminalConfigurationsConfigurationInput =
       path: "/v1/terminal/configurations/{configuration}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTerminalConfigurationsConfigurationInput =
-  typeof GetTerminalConfigurationsConfigurationInput.Type;
+  ) as unknown as Schema.Codec<GetTerminalConfigurationsConfigurationInput>;
 
 // Output Schema
+export type GetTerminalConfigurationsConfigurationOutput = unknown;
 export const GetTerminalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type GetTerminalConfigurationsConfigurationOutput =
-  typeof GetTerminalConfigurationsConfigurationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetTerminalConfigurationsConfigurationOutput>;
 
 // The operation
 /**

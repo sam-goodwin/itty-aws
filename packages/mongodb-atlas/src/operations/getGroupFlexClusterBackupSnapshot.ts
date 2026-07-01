@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupFlexClusterBackupSnapshotInput {
+  groupId: string;
+  name: string;
+  snapshotId: string;
+  envelope?: boolean;
+}
 export const GetGroupFlexClusterBackupSnapshotInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const GetGroupFlexClusterBackupSnapshotInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId}",
     }),
-  );
-export type GetGroupFlexClusterBackupSnapshotInput =
-  typeof GetGroupFlexClusterBackupSnapshotInput.Type;
+  ) as unknown as Schema.Codec<GetGroupFlexClusterBackupSnapshotInput>;
 
 // Output Schema
+export type GetGroupFlexClusterBackupSnapshotOutput = void;
 export const GetGroupFlexClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupFlexClusterBackupSnapshotOutput =
-  typeof GetGroupFlexClusterBackupSnapshotOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupFlexClusterBackupSnapshotOutput>;
 
 // The operation
 /**
  * Return One Snapshot for One Flex Cluster
  *
- * Returns one snapshot of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns one snapshot of one flex cluster from the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

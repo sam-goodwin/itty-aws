@@ -3,25 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ExportSolanaAccountInput {
+  address: string;
+  exportEncryptionKey: string;
+}
 export const ExportSolanaAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     exportEncryptionKey: Schema.String,
   }).pipe(
     T.Http({ method: "POST", path: "/v2/solana/accounts/{address}/export" }),
-  );
-export type ExportSolanaAccountInput = typeof ExportSolanaAccountInput.Type;
+  ) as unknown as Schema.Codec<ExportSolanaAccountInput>;
 
 // Output Schema
+export interface ExportSolanaAccountOutput {
+  encryptedPrivateKey: string;
+}
 export const ExportSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encryptedPrivateKey: Schema.String,
-  });
-export type ExportSolanaAccountOutput = typeof ExportSolanaAccountOutput.Type;
+  }) as unknown as Schema.Codec<ExportSolanaAccountOutput>;
 
 // The operation
 /**
- * Export an Solana account
+ * Export Solana account
  *
  * Export an existing Solana account's private key. It is important to store the private key in a secure place after it's exported.
  *

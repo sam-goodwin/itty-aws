@@ -1,0 +1,606 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare EMAIL-AUTH API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: email-auth
+paths:
+  /zones/{zone_id}/email/auth/dmarc-reports:
+    get:
+      operationId: getDmarcReport
+      description: "Retrieves the current DMARC report configuration and status for a
+        zone. Returns the RUA prefix, enabled status, approved sources, and DNS
+        records.  @example ```ts const dmarcReport = await
+        client.emailAuth.dmarcReports.get( { zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approved_sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created:
+                          type: string
+                          description: "@deprecated Deprecated, use created_at"
+                        created_at:
+                          type: string
+                          description: Creation timestamp
+                        domain:
+                          type: string
+                          description: The source domain
+                        ips:
+                          type: array
+                          items:
+                            type: string
+                          description: Resolved IP addresses from SPF
+                        modified:
+                          type: string
+                          description: "@deprecated Deprecated, use modified_at"
+                        modified_at:
+                          type: string
+                          description: Last modification timestamp
+                        name:
+                          type: string
+                          description: Source name (typically same as domain)
+                        slug:
+                          type: string
+                          description: URL-friendly identifier
+                        tag:
+                          type: string
+                          description: Source UUID
+                    description: List of approved sending sources (omitted when empty)
+                  created:
+                    type: string
+                    description: "@deprecated Deprecated, use created_at"
+                  created_at:
+                    type: string
+                    description: Creation timestamp
+                  enabled:
+                    type: boolean
+                    description: Whether DMARC reports are enabled
+                  modified:
+                    type: string
+                    description: "@deprecated Deprecated, use modified_at"
+                  modified_at:
+                    type: string
+                    description: Last modification timestamp
+                  records:
+                    type: object
+                    properties:
+                      bimi_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: BIMI TXT records
+                      cname_dkim_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records for DKIM
+                      cname_dmarc_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records at \_dmarc (problematic)
+                      cname_spf_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records for SPF
+                      dkim_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: DKIM TXT records
+                      dmarc_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: DMARC TXT records
+                      spf_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: SPF TXT records
+                    description: Live DNS records for the zone, grouped by type
+                  rua_prefix:
+                    type: string
+                    description: Prefix for DMARC RUA addresses (32-char hex string)
+                  skip_wizard:
+                    type: boolean
+                    description: Whether to skip the setup wizard
+                  status:
+                    type: string
+                    enum:
+                      - missing-dmarc-report
+                      - multiple-dmarc-reports
+                      - missing-dmarc-rua
+                      - cname-on-dmarc-record
+                    description: DMARC configuration status
+                  tag:
+                    type: string
+                    description: "@deprecated Use `zone_id` instead"
+                  zone_id:
+                    type: string
+                    description: Zone identifier
+      x-distilled-response-path: result
+    patch:
+      operationId: patchDmarcReport
+      description: "Updates the DMARC report configuration for a zone. At least one of
+        `enabled` or `skip_wizard` must be provided. When enabling, the handler
+        will ensure the DMARC RUA record exists in DNS.  @example ```ts const
+        response = await client.emailAuth.dmarcReports.edit({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  oneOf:
+                    - type: boolean
+                  nullable: true
+                  description: "Body param: Enable or disable DMARC reports for this zone"
+                skip_wizard:
+                  oneOf:
+                    - type: boolean
+                  nullable: true
+                  description: "Body param: Skip the DMARC setup wizard"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approved_sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        created:
+                          type: string
+                          description: "@deprecated Deprecated, use created_at"
+                        created_at:
+                          type: string
+                          description: Creation timestamp
+                        domain:
+                          type: string
+                          description: The source domain
+                        ips:
+                          type: array
+                          items:
+                            type: string
+                          description: Resolved IP addresses from SPF
+                        modified:
+                          type: string
+                          description: "@deprecated Deprecated, use modified_at"
+                        modified_at:
+                          type: string
+                          description: Last modification timestamp
+                        name:
+                          type: string
+                          description: Source name (typically same as domain)
+                        slug:
+                          type: string
+                          description: URL-friendly identifier
+                        tag:
+                          type: string
+                          description: Source UUID
+                    description: List of approved sending sources (omitted when empty)
+                  created:
+                    type: string
+                    description: "@deprecated Deprecated, use created_at"
+                  created_at:
+                    type: string
+                    description: Creation timestamp
+                  enabled:
+                    type: boolean
+                    description: Whether DMARC reports are enabled
+                  modified:
+                    type: string
+                    description: "@deprecated Deprecated, use modified_at"
+                  modified_at:
+                    type: string
+                    description: Last modification timestamp
+                  records:
+                    type: object
+                    properties:
+                      bimi_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: BIMI TXT records
+                      cname_dkim_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records for DKIM
+                      cname_dmarc_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records at \_dmarc (problematic)
+                      cname_spf_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: CNAME records for SPF
+                      dkim_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: DKIM TXT records
+                      dmarc_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: DMARC TXT records
+                      spf_records:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: DNS record ID
+                            content:
+                              type: string
+                              description: Record content
+                            name:
+                              type: string
+                              description: DNS record name
+                            ttl:
+                              type: number
+                              description: Time to live in seconds
+                            type:
+                              type: string
+                              description: Record type
+                        description: SPF TXT records
+                    description: Live DNS records for the zone, grouped by type
+                  rua_prefix:
+                    type: string
+                    description: Prefix for DMARC RUA addresses (32-char hex string)
+                  skip_wizard:
+                    type: boolean
+                    description: Whether to skip the setup wizard
+                  status:
+                    type: string
+                    enum:
+                      - missing-dmarc-report
+                      - multiple-dmarc-reports
+                      - missing-dmarc-rua
+                      - cname-on-dmarc-record
+                    description: DMARC configuration status
+                  tag:
+                    type: string
+                    description: "@deprecated Use `zone_id` instead"
+                  zone_id:
+                    type: string
+                    description: Zone identifier
+      x-distilled-response-path: result
+  /zones/{zone_id}/email/auth/spf/inspect:
+    get:
+      operationId: getSpfInspect
+      description: "Inspects a specific SPF TXT record and returns a parsed tree
+        structure in the spflimit-worker format.  The record ID must be provided
+        via the `id` query parameter.  Returns a recursive tree showing:  -
+        Parsed components with their qualifiers and types - Nested includes
+        recursively resolved within components - Per-component and total lookup
+        counts - Detailed error information with context  @example ```ts const
+        inspect = await client.emailAuth.spf.inspect.get({ zone_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', id: 'id', }); ```"
+      parameters:
+        - name: zone_id
+          in: path
+          required: true
+          description: "Path param: Identifier."
+          schema:
+            type: string
+        - name: id
+          in: query
+          required: true
+          description: "Query param: DNS record ID (rec_tag) to inspect"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  components:
+                    type: array
+                    items: {}
+                    description: Parsed SPF components (mechanisms)
+                  domain:
+                    type: string
+                    description: Domain being inspected
+                  record:
+                    type: string
+                    description: Raw SPF record content
+                  total_lookups:
+                    type: number
+                    description: Total number of DNS lookups performed across all includes
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: "Error code. Known values:  - `lookup_failed` — DNS TXT lookup
+                            failed - `spf_not_found` — no SPF record found -
+                            `invalid_spf` — record does not start with `v=spf1`
+                            - `invalid_domain` — PSL validation failed -
+                            `loop_detected` — include/redirect cycle detected -
+                            `invalid_mechanism` — unrecognised or malformed
+                            mechanism - `resource_limit_exceeded` — internal
+                            resource protection limits exceeded (recursion depth
+                            or query budget) - `max_lookups` — RFC 7208
+                            10-lookup limit exceeded"
+                        domain:
+                          type: string
+                          description: Domain where the error occurred
+                        message:
+                          type: string
+                          description: Human-readable error message
+                        details:
+                          type: string
+                          description: 'Additional error-specific details (optional).  - For
+                            `invalid_domain` errors: the invalid domain string -
+                            For `invalid_mechanism` errors: the invalid
+                            mechanism text (e.g., "invalidmech123") - For
+                            `loop_detected` errors: the domain that caused the
+                            loop - For other error types: not present'
+                      required:
+                        - code
+                        - domain
+                        - message
+                    description: All errors encountered during inspection, collected from the entire
+                      tree. This includes errors from nested includes at any
+                      depth, providing a quick overview of all issues without
+                      needing to traverse the nested structure. Each error
+                      includes a `domain` field to identify where it occurred.
+                      Empty array if no errors (omitted from JSON when empty).
+                required:
+                  - components
+                  - domain
+                  - record
+                  - total_lookups
+      x-distilled-response-path: result

@@ -3,6 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostCustomersCustomerFundingInstructionsInput {
+  customer: string;
+  bank_transfer: {
+    eu_bank_transfer?: { country: string };
+    requested_address_types?: ("iban" | "sort_code" | "spei" | "zengin")[];
+    type:
+      | "eu_bank_transfer"
+      | "gb_bank_transfer"
+      | "jp_bank_transfer"
+      | "mx_bank_transfer"
+      | "us_bank_transfer";
+  };
+  currency: string;
+  expand?: string[];
+  funding_type: "bank_transfer";
+}
 export const PostCustomersCustomerFundingInstructionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -32,11 +48,168 @@ export const PostCustomersCustomerFundingInstructionsInput =
       path: "/v1/customers/{customer}/funding_instructions",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostCustomersCustomerFundingInstructionsInput =
-  typeof PostCustomersCustomerFundingInstructionsInput.Type;
+  ) as unknown as Schema.Codec<PostCustomersCustomerFundingInstructionsInput>;
 
 // Output Schema
+export interface PostCustomersCustomerFundingInstructionsOutput {
+  bank_transfer: {
+    country: string;
+    financial_addresses: {
+      aba?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string;
+        account_number: string;
+        account_type: string;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        bank_name: string;
+        routing_number: string;
+      };
+      iban?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        bic: string;
+        country: string;
+        iban: string;
+      };
+      sort_code?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string;
+        account_number: string;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        sort_code: string;
+      };
+      spei?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        bank_code: string;
+        bank_name: string;
+        clabe: string;
+      };
+      supported_networks?: (
+        | "ach"
+        | "bacs"
+        | "domestic_wire_us"
+        | "fps"
+        | "sepa"
+        | "spei"
+        | "swift"
+        | "zengin"
+      )[];
+      swift?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string;
+        account_number: string;
+        account_type: string;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        bank_name: string;
+        swift_code: string;
+      };
+      type: "aba" | "iban" | "sort_code" | "spei" | "swift" | "zengin";
+      zengin?: {
+        account_holder_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        account_holder_name: string | null;
+        account_number: string | null;
+        account_type: string | null;
+        bank_address: {
+          city: string | null;
+          country: string | null;
+          line1: string | null;
+          line2: string | null;
+          postal_code: string | null;
+          state: string | null;
+        };
+        bank_code: string | null;
+        bank_name: string | null;
+        branch_code: string | null;
+        branch_name: string | null;
+      };
+    }[];
+    type: "eu_bank_transfer" | "jp_bank_transfer";
+  };
+  currency: string;
+  funding_type: "bank_transfer";
+  livemode: boolean;
+  object: "funding_instructions";
+}
 export const PostCustomersCustomerFundingInstructionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bank_transfer: Schema.Struct({
@@ -221,9 +394,7 @@ export const PostCustomersCustomerFundingInstructionsOutput =
     funding_type: Schema.Literals(["bank_transfer"]),
     livemode: Schema.Boolean,
     object: Schema.Literals(["funding_instructions"]),
-  });
-export type PostCustomersCustomerFundingInstructionsOutput =
-  typeof PostCustomersCustomerFundingInstructionsOutput.Type;
+  }) as unknown as Schema.Codec<PostCustomersCustomerFundingInstructionsOutput>;
 
 // The operation
 /**

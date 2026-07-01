@@ -4,23 +4,38 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.StandbyPool/operations",
-    apiVersion: "2025-10-01",
+    apiVersion: "2026-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -43,8 +58,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -57,6 +71,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface StandbyContainerGroupPoolRuntimeViewsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+  runtimeView: string;
+}
 export const StandbyContainerGroupPoolRuntimeViewsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -67,13 +87,24 @@ export const StandbyContainerGroupPoolRuntimeViewsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolRuntimeViewsGetInput =
-  typeof StandbyContainerGroupPoolRuntimeViewsGetInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolRuntimeViewsGetInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolRuntimeViewsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyContainerGroupPoolRuntimeViewsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -93,9 +124,7 @@ export const StandbyContainerGroupPoolRuntimeViewsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyContainerGroupPoolRuntimeViewsGetOutput =
-  typeof StandbyContainerGroupPoolRuntimeViewsGetOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolRuntimeViewsGetOutput>;
 
 // The operation
 /**
@@ -113,6 +142,11 @@ export const StandbyContainerGroupPoolRuntimeViewsGet =
     outputSchema: StandbyContainerGroupPoolRuntimeViewsGetOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+}
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -122,13 +156,27 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput =
-  typeof StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -163,9 +211,7 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput =
-  typeof StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput>;
 
 // The operation
 /**
@@ -182,6 +228,26 @@ export const StandbyContainerGroupPoolRuntimeViewsListByStandbyPool =
     outputSchema: StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+  properties?: {
+    elasticityProfile: {
+      maxReadyCapacity: number;
+      refillPolicy?: "always";
+      dynamicSizing?: { enabled?: boolean };
+    };
+    containerGroupProperties: {
+      containerGroupProfile: { id: string; revision?: number };
+      subnetIds?: { id: string }[];
+    };
+    zones?: string[];
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Deleting";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const StandbyContainerGroupPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -223,13 +289,24 @@ export const StandbyContainerGroupPoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsCreateOrUpdateInput =
-  typeof StandbyContainerGroupPoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyContainerGroupPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -249,9 +326,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyContainerGroupPoolsCreateOrUpdateOutput =
-  typeof StandbyContainerGroupPoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -268,6 +343,11 @@ export const StandbyContainerGroupPoolsCreateOrUpdate =
     outputSchema: StandbyContainerGroupPoolsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+}
 export const StandbyContainerGroupPoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -277,17 +357,14 @@ export const StandbyContainerGroupPoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsDeleteInput =
-  typeof StandbyContainerGroupPoolsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsDeleteInput>;
 
 // Output Schema
+export type StandbyContainerGroupPoolsDeleteOutput = void;
 export const StandbyContainerGroupPoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StandbyContainerGroupPoolsDeleteOutput =
-  typeof StandbyContainerGroupPoolsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyContainerGroupPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -304,6 +381,11 @@ export const StandbyContainerGroupPoolsDelete =
     outputSchema: StandbyContainerGroupPoolsDeleteOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+}
 export const StandbyContainerGroupPoolsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -313,13 +395,24 @@ export const StandbyContainerGroupPoolsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsGetInput =
-  typeof StandbyContainerGroupPoolsGetInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsGetInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyContainerGroupPoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -339,9 +432,7 @@ export const StandbyContainerGroupPoolsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyContainerGroupPoolsGetOutput =
-  typeof StandbyContainerGroupPoolsGetOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolsGetOutput>;
 
 // The operation
 /**
@@ -358,6 +449,10 @@ export const StandbyContainerGroupPoolsGet =
     outputSchema: StandbyContainerGroupPoolsGetOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const StandbyContainerGroupPoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -366,13 +461,27 @@ export const StandbyContainerGroupPoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsListByResourceGroupInput =
-  typeof StandbyContainerGroupPoolsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsListByResourceGroupInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyContainerGroupPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -407,9 +516,7 @@ export const StandbyContainerGroupPoolsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyContainerGroupPoolsListByResourceGroupOutput =
-  typeof StandbyContainerGroupPoolsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -425,6 +532,9 @@ export const StandbyContainerGroupPoolsListByResourceGroup =
     outputSchema: StandbyContainerGroupPoolsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const StandbyContainerGroupPoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -432,13 +542,27 @@ export const StandbyContainerGroupPoolsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyContainerGroupPools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsListBySubscriptionInput =
-  typeof StandbyContainerGroupPoolsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsListBySubscriptionInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyContainerGroupPoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -473,9 +597,7 @@ export const StandbyContainerGroupPoolsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyContainerGroupPoolsListBySubscriptionOutput =
-  typeof StandbyContainerGroupPoolsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -490,6 +612,24 @@ export const StandbyContainerGroupPoolsListBySubscription =
     outputSchema: StandbyContainerGroupPoolsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface StandbyContainerGroupPoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyContainerGroupPoolName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    elasticityProfile?: {
+      maxReadyCapacity: number;
+      refillPolicy?: "always";
+      dynamicSizing?: { enabled?: boolean };
+    };
+    containerGroupProperties?: {
+      containerGroupProfile: { id: string; revision?: number };
+      subnetIds?: { id: string }[];
+    };
+    zones?: string[];
+  };
+}
 export const StandbyContainerGroupPoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -531,13 +671,24 @@ export const StandbyContainerGroupPoolsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyContainerGroupPoolsUpdateInput =
-  typeof StandbyContainerGroupPoolsUpdateInput.Type;
+  ) as unknown as Schema.Codec<StandbyContainerGroupPoolsUpdateInput>;
 
 // Output Schema
+export interface StandbyContainerGroupPoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyContainerGroupPoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -557,9 +708,7 @@ export const StandbyContainerGroupPoolsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyContainerGroupPoolsUpdateOutput =
-  typeof StandbyContainerGroupPoolsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StandbyContainerGroupPoolsUpdateOutput>;
 
 // The operation
 /**
@@ -576,6 +725,12 @@ export const StandbyContainerGroupPoolsUpdate =
     outputSchema: StandbyContainerGroupPoolsUpdateOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolRuntimeViewsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+  runtimeView: string;
+}
 export const StandbyVirtualMachinePoolRuntimeViewsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -586,13 +741,24 @@ export const StandbyVirtualMachinePoolRuntimeViewsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolRuntimeViewsGetInput =
-  typeof StandbyVirtualMachinePoolRuntimeViewsGetInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolRuntimeViewsGetInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolRuntimeViewsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyVirtualMachinePoolRuntimeViewsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -612,9 +778,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyVirtualMachinePoolRuntimeViewsGetOutput =
-  typeof StandbyVirtualMachinePoolRuntimeViewsGetOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolRuntimeViewsGetOutput>;
 
 // The operation
 /**
@@ -632,6 +796,11 @@ export const StandbyVirtualMachinePoolRuntimeViewsGet =
     outputSchema: StandbyVirtualMachinePoolRuntimeViewsGetOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+}
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -641,13 +810,27 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput =
-  typeof StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -682,9 +865,7 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput =
-  typeof StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput>;
 
 // The operation
 /**
@@ -701,6 +882,29 @@ export const StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool =
     outputSchema: StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+  properties?: {
+    elasticityProfile?: {
+      maxReadyCapacity: number;
+      minReadyCapacity?: number;
+      postProvisioningDelay?: string;
+      dynamicSizing?: { enabled?: boolean };
+    };
+    virtualMachineState: "Running" | "Deallocated" | "Hibernated" | "Mix";
+    vmStateDistribution?: {
+      runningPercent?: number;
+      deallocatedPercent?: number;
+      hibernatedPercent?: number;
+    };
+    attachedVirtualMachineScaleSetId?: string;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Deleting";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -724,7 +928,15 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
           "Running",
           "Deallocated",
           "Hibernated",
+          "Mix",
         ]),
+        vmStateDistribution: Schema.optional(
+          Schema.Struct({
+            runningPercent: Schema.optional(Schema.Number),
+            deallocatedPercent: Schema.optional(Schema.Number),
+            hibernatedPercent: Schema.optional(Schema.Number),
+          }),
+        ),
         attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
         provisioningState: Schema.optional(
           Schema.Literals(["Succeeded", "Failed", "Canceled", "Deleting"]),
@@ -737,13 +949,24 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsCreateOrUpdateInput =
-  typeof StandbyVirtualMachinePoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyVirtualMachinePoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -763,9 +986,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyVirtualMachinePoolsCreateOrUpdateOutput =
-  typeof StandbyVirtualMachinePoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -782,6 +1003,11 @@ export const StandbyVirtualMachinePoolsCreateOrUpdate =
     outputSchema: StandbyVirtualMachinePoolsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+}
 export const StandbyVirtualMachinePoolsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -791,17 +1017,14 @@ export const StandbyVirtualMachinePoolsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsDeleteInput =
-  typeof StandbyVirtualMachinePoolsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsDeleteInput>;
 
 // Output Schema
+export type StandbyVirtualMachinePoolsDeleteOutput = void;
 export const StandbyVirtualMachinePoolsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StandbyVirtualMachinePoolsDeleteOutput =
-  typeof StandbyVirtualMachinePoolsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StandbyVirtualMachinePoolsDeleteOutput>;
 
 // The operation
 /**
@@ -818,6 +1041,11 @@ export const StandbyVirtualMachinePoolsDelete =
     outputSchema: StandbyVirtualMachinePoolsDeleteOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+}
 export const StandbyVirtualMachinePoolsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -827,13 +1055,24 @@ export const StandbyVirtualMachinePoolsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsGetInput =
-  typeof StandbyVirtualMachinePoolsGetInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsGetInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyVirtualMachinePoolsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -853,9 +1092,7 @@ export const StandbyVirtualMachinePoolsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyVirtualMachinePoolsGetOutput =
-  typeof StandbyVirtualMachinePoolsGetOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolsGetOutput>;
 
 // The operation
 /**
@@ -872,6 +1109,10 @@ export const StandbyVirtualMachinePoolsGet =
     outputSchema: StandbyVirtualMachinePoolsGetOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const StandbyVirtualMachinePoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -880,13 +1121,27 @@ export const StandbyVirtualMachinePoolsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsListByResourceGroupInput =
-  typeof StandbyVirtualMachinePoolsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsListByResourceGroupInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyVirtualMachinePoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -921,9 +1176,7 @@ export const StandbyVirtualMachinePoolsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyVirtualMachinePoolsListByResourceGroupOutput =
-  typeof StandbyVirtualMachinePoolsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -939,6 +1192,9 @@ export const StandbyVirtualMachinePoolsListByResourceGroup =
     outputSchema: StandbyVirtualMachinePoolsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const StandbyVirtualMachinePoolsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -946,13 +1202,27 @@ export const StandbyVirtualMachinePoolsListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsListBySubscriptionInput =
-  typeof StandbyVirtualMachinePoolsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsListBySubscriptionInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyVirtualMachinePoolsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -987,9 +1257,7 @@ export const StandbyVirtualMachinePoolsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyVirtualMachinePoolsListBySubscriptionOutput =
-  typeof StandbyVirtualMachinePoolsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1004,6 +1272,27 @@ export const StandbyVirtualMachinePoolsListBySubscription =
     outputSchema: StandbyVirtualMachinePoolsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinePoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    elasticityProfile?: {
+      maxReadyCapacity: number;
+      minReadyCapacity?: number;
+      postProvisioningDelay?: string;
+      dynamicSizing?: { enabled?: boolean };
+    };
+    virtualMachineState?: "Running" | "Deallocated" | "Hibernated" | "Mix";
+    vmStateDistribution?: {
+      runningPercent?: number;
+      deallocatedPercent?: number;
+      hibernatedPercent?: number;
+    };
+    attachedVirtualMachineScaleSetId?: string;
+  };
+}
 export const StandbyVirtualMachinePoolsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1025,7 +1314,14 @@ export const StandbyVirtualMachinePoolsUpdateInput =
           }),
         ),
         virtualMachineState: Schema.optional(
-          Schema.Literals(["Running", "Deallocated", "Hibernated"]),
+          Schema.Literals(["Running", "Deallocated", "Hibernated", "Mix"]),
+        ),
+        vmStateDistribution: Schema.optional(
+          Schema.Struct({
+            runningPercent: Schema.optional(Schema.Number),
+            deallocatedPercent: Schema.optional(Schema.Number),
+            hibernatedPercent: Schema.optional(Schema.Number),
+          }),
         ),
         attachedVirtualMachineScaleSetId: Schema.optional(Schema.String),
       }),
@@ -1034,13 +1330,24 @@ export const StandbyVirtualMachinePoolsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinePoolsUpdateInput =
-  typeof StandbyVirtualMachinePoolsUpdateInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinePoolsUpdateInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinePoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyVirtualMachinePoolsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1060,9 +1367,7 @@ export const StandbyVirtualMachinePoolsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyVirtualMachinePoolsUpdateOutput =
-  typeof StandbyVirtualMachinePoolsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinePoolsUpdateOutput>;
 
 // The operation
 /**
@@ -1079,6 +1384,12 @@ export const StandbyVirtualMachinePoolsUpdate =
     outputSchema: StandbyVirtualMachinePoolsUpdateOutput,
   }));
 // Input Schema
+export interface StandbyVirtualMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+  standbyVirtualMachineName: string;
+}
 export const StandbyVirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1089,13 +1400,24 @@ export const StandbyVirtualMachinesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinesGetInput =
-  typeof StandbyVirtualMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinesGetInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StandbyVirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1115,9 +1437,7 @@ export const StandbyVirtualMachinesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StandbyVirtualMachinesGetOutput =
-  typeof StandbyVirtualMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinesGetOutput>;
 
 // The operation
 /**
@@ -1136,6 +1456,11 @@ export const StandbyVirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  standbyVirtualMachinePoolName: string;
+}
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1145,13 +1470,27 @@ export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput 
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines",
-      apiVersion: "2025-10-01",
+      apiVersion: "2026-04-01",
     }),
-  );
-export type StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput =
-  typeof StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput.Type;
+  ) as unknown as Schema.Codec<StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceInput>;
 
 // Output Schema
+export interface StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1186,9 +1525,7 @@ export const StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput =
-  typeof StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput.Type;
+  }) as unknown as Schema.Codec<StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceOutput>;
 
 // The operation
 /**

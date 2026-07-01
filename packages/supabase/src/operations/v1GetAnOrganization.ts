@@ -4,13 +4,35 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetAnOrganizationInput {
+  slug: string;
+}
 export const V1GetAnOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/organizations/{slug}" }));
-export type V1GetAnOrganizationInput = typeof V1GetAnOrganizationInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/organizations/{slug}" }),
+  ) as unknown as Schema.Codec<V1GetAnOrganizationInput>;
 
 // Output Schema
+export interface V1GetAnOrganizationOutput {
+  id: string;
+  name: string;
+  plan?: "free" | "pro" | "team" | "enterprise" | "platform";
+  opt_in_tags: (
+    | "AI_SQL_GENERATOR_OPT_IN"
+    | "AI_DATA_GENERATOR_OPT_IN"
+    | "AI_LOG_GENERATOR_OPT_IN"
+  )[];
+  allowed_release_channels: (
+    | "internal"
+    | "alpha"
+    | "beta"
+    | "ga"
+    | "withdrawn"
+    | "preview"
+  )[];
+}
 export const V1GetAnOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -35,8 +57,7 @@ export const V1GetAnOrganizationOutput =
         "preview",
       ]),
     ),
-  });
-export type V1GetAnOrganizationOutput = typeof V1GetAnOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<V1GetAnOrganizationOutput>;
 
 // The operation
 /**

@@ -4,12 +4,83 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput {
+  namespace: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+    uid?: string;
+    user?: string;
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -129,11 +200,75 @@ export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews",
     }),
-  );
-export type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
-  typeof CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput>;
 
 // Output Schema
+export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+    uid?: string;
+    user?: string;
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -243,9 +378,7 @@ export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
         reason: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
-  typeof CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput>;
 
 // The operation
 /**
@@ -264,6 +397,72 @@ export const createAuthorizationV1NamespacedLocalSubjectAccessReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAuthorizationV1SelfSubjectAccessReviewInput {
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1SelfSubjectAccessReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -376,11 +575,71 @@ export const CreateAuthorizationV1SelfSubjectAccessReviewInput =
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
     }),
-  );
-export type CreateAuthorizationV1SelfSubjectAccessReviewInput =
-  typeof CreateAuthorizationV1SelfSubjectAccessReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthorizationV1SelfSubjectAccessReviewInput>;
 
 // Output Schema
+export interface CreateAuthorizationV1SelfSubjectAccessReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1SelfSubjectAccessReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -484,9 +743,7 @@ export const CreateAuthorizationV1SelfSubjectAccessReviewOutput =
         reason: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAuthorizationV1SelfSubjectAccessReviewOutput =
-  typeof CreateAuthorizationV1SelfSubjectAccessReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthorizationV1SelfSubjectAccessReviewOutput>;
 
 // The operation
 /**
@@ -504,6 +761,58 @@ export const createAuthorizationV1SelfSubjectAccessReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAuthorizationV1SelfSubjectRulesReviewInput {
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { namespace?: string };
+  status?: {
+    evaluationError?: string;
+    incomplete: boolean;
+    nonResourceRules: { nonResourceURLs?: string[]; verbs: string[] }[];
+    resourceRules: {
+      apiGroups?: string[];
+      resourceNames?: string[];
+      resources?: string[];
+      verbs: string[];
+    }[];
+  };
+}
 export const CreateAuthorizationV1SelfSubjectRulesReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -584,11 +893,57 @@ export const CreateAuthorizationV1SelfSubjectRulesReviewInput =
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews",
     }),
-  );
-export type CreateAuthorizationV1SelfSubjectRulesReviewInput =
-  typeof CreateAuthorizationV1SelfSubjectRulesReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthorizationV1SelfSubjectRulesReviewInput>;
 
 // Output Schema
+export interface CreateAuthorizationV1SelfSubjectRulesReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: { namespace?: string };
+  status?: {
+    evaluationError?: string;
+    incomplete: boolean;
+    nonResourceRules: { nonResourceURLs?: string[]; verbs: string[] }[];
+    resourceRules: {
+      apiGroups?: string[];
+      resourceNames?: string[];
+      resources?: string[];
+      verbs: string[];
+    }[];
+  };
+}
 export const CreateAuthorizationV1SelfSubjectRulesReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -660,9 +1015,7 @@ export const CreateAuthorizationV1SelfSubjectRulesReviewOutput =
         ),
       }),
     ),
-  });
-export type CreateAuthorizationV1SelfSubjectRulesReviewOutput =
-  typeof CreateAuthorizationV1SelfSubjectRulesReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthorizationV1SelfSubjectRulesReviewOutput>;
 
 // The operation
 /**
@@ -680,6 +1033,76 @@ export const createAuthorizationV1SelfSubjectRulesReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAuthorizationV1SubjectAccessReviewInput {
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  pretty?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+    uid?: string;
+    user?: string;
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1SubjectAccessReviewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
@@ -798,11 +1221,75 @@ export const CreateAuthorizationV1SubjectAccessReviewInput =
       method: "POST",
       path: "/apis/authorization.k8s.io/v1/subjectaccessreviews",
     }),
-  );
-export type CreateAuthorizationV1SubjectAccessReviewInput =
-  typeof CreateAuthorizationV1SubjectAccessReviewInput.Type;
+  ) as unknown as Schema.Codec<CreateAuthorizationV1SubjectAccessReviewInput>;
 
 // Output Schema
+export interface CreateAuthorizationV1SubjectAccessReviewOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    extra?: Record<string, string[]>;
+    groups?: string[];
+    nonResourceAttributes?: { path?: string; verb?: string };
+    resourceAttributes?: {
+      fieldSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      group?: string;
+      labelSelector?: {
+        rawSelector?: string;
+        requirements?: { key: string; operator: string; values?: string[] }[];
+      };
+      name?: string;
+      namespace?: string;
+      resource?: string;
+      subresource?: string;
+      verb?: string;
+      version?: string;
+    };
+    uid?: string;
+    user?: string;
+  };
+  status?: {
+    allowed: boolean;
+    denied?: boolean;
+    evaluationError?: string;
+    reason?: string;
+  };
+}
 export const CreateAuthorizationV1SubjectAccessReviewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -912,9 +1399,7 @@ export const CreateAuthorizationV1SubjectAccessReviewOutput =
         reason: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAuthorizationV1SubjectAccessReviewOutput =
-  typeof CreateAuthorizationV1SubjectAccessReviewOutput.Type;
+  }) as unknown as Schema.Codec<CreateAuthorizationV1SubjectAccessReviewOutput>;
 
 // The operation
 /**
@@ -932,14 +1417,21 @@ export const createAuthorizationV1SubjectAccessReview =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface GetAuthorizationAPIGroupInput {}
 export const GetAuthorizationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authorization.k8s.io/" }),
-  );
-export type GetAuthorizationAPIGroupInput =
-  typeof GetAuthorizationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetAuthorizationAPIGroupInput>;
 
 // Output Schema
+export interface GetAuthorizationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetAuthorizationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -965,9 +1457,7 @@ export const GetAuthorizationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetAuthorizationAPIGroupOutput =
-  typeof GetAuthorizationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetAuthorizationAPIGroupOutput>;
 
 // The operation
 /**
@@ -980,14 +1470,30 @@ export const getAuthorizationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetAuthorizationV1APIResourcesInput {}
 export const GetAuthorizationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authorization.k8s.io/v1/" }),
-  );
-export type GetAuthorizationV1APIResourcesInput =
-  typeof GetAuthorizationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAuthorizationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetAuthorizationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAuthorizationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1007,9 +1513,7 @@ export const GetAuthorizationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAuthorizationV1APIResourcesOutput =
-  typeof GetAuthorizationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAuthorizationV1APIResourcesOutput>;
 
 // The operation
 /**

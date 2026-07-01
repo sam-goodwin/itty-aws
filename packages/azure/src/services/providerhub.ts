@@ -4,11 +4,40 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AuthorizedApplicationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  applicationId: string;
+  properties?: {
+    providerAuthorization?: {
+      roleDefinitionId?: string;
+      managedByRoleDefinitionId?: string;
+    };
+    dataAuthorizations?: {
+      role: "ServiceOwner" | "LimitedOwner";
+      resourceTypes?: string[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const AuthorizedApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -55,11 +84,22 @@ export const AuthorizedApplicationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type AuthorizedApplicationsCreateOrUpdateInput =
-  typeof AuthorizedApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AuthorizedApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AuthorizedApplicationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AuthorizedApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -79,9 +119,7 @@ export const AuthorizedApplicationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AuthorizedApplicationsCreateOrUpdateOutput =
-  typeof AuthorizedApplicationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizedApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -98,6 +136,11 @@ export const AuthorizedApplicationsCreateOrUpdate =
     outputSchema: AuthorizedApplicationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AuthorizedApplicationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  applicationId: string;
+}
 export const AuthorizedApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -109,15 +152,12 @@ export const AuthorizedApplicationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type AuthorizedApplicationsDeleteInput =
-  typeof AuthorizedApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AuthorizedApplicationsDeleteInput>;
 
 // Output Schema
+export type AuthorizedApplicationsDeleteOutput = void;
 export const AuthorizedApplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AuthorizedApplicationsDeleteOutput =
-  typeof AuthorizedApplicationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizedApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -134,6 +174,11 @@ export const AuthorizedApplicationsDelete =
     outputSchema: AuthorizedApplicationsDeleteOutput,
   }));
 // Input Schema
+export interface AuthorizedApplicationsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  applicationId: string;
+}
 export const AuthorizedApplicationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -145,11 +190,22 @@ export const AuthorizedApplicationsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type AuthorizedApplicationsGetInput =
-  typeof AuthorizedApplicationsGetInput.Type;
+  ) as unknown as Schema.Codec<AuthorizedApplicationsGetInput>;
 
 // Output Schema
+export interface AuthorizedApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AuthorizedApplicationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -169,9 +225,7 @@ export const AuthorizedApplicationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AuthorizedApplicationsGetOutput =
-  typeof AuthorizedApplicationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizedApplicationsGetOutput>;
 
 // The operation
 /**
@@ -189,6 +243,10 @@ export const AuthorizedApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AuthorizedApplicationsListInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const AuthorizedApplicationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -199,11 +257,25 @@ export const AuthorizedApplicationsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
       apiVersion: "2024-09-01",
     }),
-  );
-export type AuthorizedApplicationsListInput =
-  typeof AuthorizedApplicationsListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizedApplicationsListInput>;
 
 // Output Schema
+export interface AuthorizedApplicationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AuthorizedApplicationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -238,9 +310,7 @@ export const AuthorizedApplicationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AuthorizedApplicationsListOutput =
-  typeof AuthorizedApplicationsListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizedApplicationsListOutput>;
 
 // The operation
 /**
@@ -257,6 +327,12 @@ export const AuthorizedApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CheckinManifestInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  environment: string;
+  baselineArmManifestLocation: string;
+}
 export const CheckinManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -268,17 +344,21 @@ export const CheckinManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/checkinManifest",
     apiVersion: "2024-09-01",
   }),
-);
-export type CheckinManifestInput = typeof CheckinManifestInput.Type;
+) as unknown as Schema.Codec<CheckinManifestInput>;
 
 // Output Schema
+export interface CheckinManifestOutput {
+  isCheckedIn: boolean;
+  statusMessage: string;
+  pullRequest?: string;
+  commitId?: string;
+}
 export const CheckinManifestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   isCheckedIn: Schema.Boolean,
   statusMessage: Schema.String,
   pullRequest: Schema.optional(Schema.String),
   commitId: Schema.optional(Schema.String),
-});
-export type CheckinManifestOutput = typeof CheckinManifestOutput.Type;
+}) as unknown as Schema.Codec<CheckinManifestOutput>;
 
 // The operation
 /**
@@ -293,6 +373,87 @@ export const CheckinManifest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CheckinManifestOutput,
 }));
 // Input Schema
+export interface CustomRolloutsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+  properties: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+    specification: {
+      autoProvisionConfig?: { storage?: boolean; resourceGraph?: boolean };
+      canary?: { regions?: string[] };
+      releaseScopes?: string[];
+      refreshSubscriptionRegistration?: boolean;
+      skipReleaseScopeValidation?: boolean;
+      providerRegistration?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      };
+      resourceTypeRegistrations?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      }[];
+    };
+    status?: {
+      completedRegions?: string[];
+      failedOrSkippedRegions?: Record<
+        string,
+        {
+          code?: string;
+          target?: string;
+          message?: string;
+          details?: unknown[];
+          additionalInfo?: { type: string; info?: unknown }[];
+        }
+      >;
+      manifestCheckinStatus?: {
+        isCheckedIn: boolean;
+        statusMessage: string;
+        pullRequest?: string;
+        commitId?: string;
+      };
+    };
+  };
+}
 export const CustomRolloutsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -435,11 +596,22 @@ export const CustomRolloutsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type CustomRolloutsCreateOrUpdateInput =
-  typeof CustomRolloutsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomRolloutsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CustomRolloutsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomRolloutsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -459,9 +631,7 @@ export const CustomRolloutsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomRolloutsCreateOrUpdateOutput =
-  typeof CustomRolloutsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomRolloutsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -478,6 +648,11 @@ export const CustomRolloutsCreateOrUpdate =
     outputSchema: CustomRolloutsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CustomRolloutsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const CustomRolloutsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -489,13 +664,12 @@ export const CustomRolloutsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type CustomRolloutsDeleteInput = typeof CustomRolloutsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CustomRolloutsDeleteInput>;
 
 // Output Schema
+export type CustomRolloutsDeleteOutput = void;
 export const CustomRolloutsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomRolloutsDeleteOutput = typeof CustomRolloutsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomRolloutsDeleteOutput>;
 
 // The operation
 /**
@@ -513,6 +687,11 @@ export const CustomRolloutsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomRolloutsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const CustomRolloutsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -525,10 +704,22 @@ export const CustomRolloutsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
     apiVersion: "2024-09-01",
   }),
-);
-export type CustomRolloutsGetInput = typeof CustomRolloutsGetInput.Type;
+) as unknown as Schema.Codec<CustomRolloutsGetInput>;
 
 // Output Schema
+export interface CustomRolloutsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomRolloutsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -548,8 +739,7 @@ export const CustomRolloutsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomRolloutsGetOutput = typeof CustomRolloutsGetOutput.Type;
+  }) as unknown as Schema.Codec<CustomRolloutsGetOutput>;
 
 // The operation
 /**
@@ -565,6 +755,10 @@ export const CustomRolloutsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomRolloutsGetOutput,
 }));
 // Input Schema
+export interface CustomRolloutsListByProviderRegistrationInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const CustomRolloutsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -575,11 +769,25 @@ export const CustomRolloutsListByProviderRegistrationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
       apiVersion: "2024-09-01",
     }),
-  );
-export type CustomRolloutsListByProviderRegistrationInput =
-  typeof CustomRolloutsListByProviderRegistrationInput.Type;
+  ) as unknown as Schema.Codec<CustomRolloutsListByProviderRegistrationInput>;
 
 // Output Schema
+export interface CustomRolloutsListByProviderRegistrationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CustomRolloutsListByProviderRegistrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -614,9 +822,7 @@ export const CustomRolloutsListByProviderRegistrationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CustomRolloutsListByProviderRegistrationOutput =
-  typeof CustomRolloutsListByProviderRegistrationOutput.Type;
+  }) as unknown as Schema.Codec<CustomRolloutsListByProviderRegistrationOutput>;
 
 // The operation
 /**
@@ -632,6 +838,11 @@ export const CustomRolloutsListByProviderRegistration =
     outputSchema: CustomRolloutsListByProviderRegistrationOutput,
   }));
 // Input Schema
+export interface CustomRolloutsStopInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const CustomRolloutsStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -643,12 +854,12 @@ export const CustomRolloutsStopInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type CustomRolloutsStopInput = typeof CustomRolloutsStopInput.Type;
+  ) as unknown as Schema.Codec<CustomRolloutsStopInput>;
 
 // Output Schema
-export const CustomRolloutsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomRolloutsStopOutput = typeof CustomRolloutsStopOutput.Type;
+export type CustomRolloutsStopOutput = void;
+export const CustomRolloutsStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomRolloutsStopOutput>;
 
 // The operation
 /**
@@ -664,6 +875,84 @@ export const CustomRolloutsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CustomRolloutsStopOutput,
 }));
 // Input Schema
+export interface DefaultRolloutsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+    specification?: {
+      expeditedRollout?: { enabled?: boolean };
+      canary?: { skipRegions?: string[]; regions?: string[] };
+      lowTraffic?: { regions?: string[] };
+      mediumTraffic?: { regions?: string[] };
+      highTraffic?: { regions?: string[] };
+      restOfTheWorldGroupOne?: { regions?: string[] };
+      restOfTheWorldGroupTwo?: { regions?: string[] };
+      providerRegistration?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      };
+      resourceTypeRegistrations?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      }[];
+      autoProvisionConfig?: { storage?: boolean; resourceGraph?: boolean };
+    };
+    status?: {
+      completedRegions?: string[];
+      failedOrSkippedRegions?: Record<
+        string,
+        {
+          code?: string;
+          target?: string;
+          message?: string;
+          details?: unknown[];
+          additionalInfo?: { type: string; info?: unknown }[];
+        }
+      >;
+    };
+  };
+}
 export const DefaultRolloutsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -830,11 +1119,22 @@ export const DefaultRolloutsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type DefaultRolloutsCreateOrUpdateInput =
-  typeof DefaultRolloutsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DefaultRolloutsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DefaultRolloutsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DefaultRolloutsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -854,9 +1154,7 @@ export const DefaultRolloutsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DefaultRolloutsCreateOrUpdateOutput =
-  typeof DefaultRolloutsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DefaultRolloutsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -873,6 +1171,11 @@ export const DefaultRolloutsCreateOrUpdate =
     outputSchema: DefaultRolloutsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DefaultRolloutsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const DefaultRolloutsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -884,14 +1187,12 @@ export const DefaultRolloutsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type DefaultRolloutsDeleteInput = typeof DefaultRolloutsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DefaultRolloutsDeleteInput>;
 
 // Output Schema
+export type DefaultRolloutsDeleteOutput = void;
 export const DefaultRolloutsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DefaultRolloutsDeleteOutput =
-  typeof DefaultRolloutsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DefaultRolloutsDeleteOutput>;
 
 // The operation
 /**
@@ -909,6 +1210,11 @@ export const DefaultRolloutsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DefaultRolloutsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const DefaultRolloutsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -920,10 +1226,22 @@ export const DefaultRolloutsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type DefaultRolloutsGetInput = typeof DefaultRolloutsGetInput.Type;
+  ) as unknown as Schema.Codec<DefaultRolloutsGetInput>;
 
 // Output Schema
+export interface DefaultRolloutsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DefaultRolloutsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -943,8 +1261,7 @@ export const DefaultRolloutsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DefaultRolloutsGetOutput = typeof DefaultRolloutsGetOutput.Type;
+  }) as unknown as Schema.Codec<DefaultRolloutsGetOutput>;
 
 // The operation
 /**
@@ -960,6 +1277,10 @@ export const DefaultRolloutsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DefaultRolloutsGetOutput,
 }));
 // Input Schema
+export interface DefaultRolloutsListByProviderRegistrationInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const DefaultRolloutsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -970,11 +1291,25 @@ export const DefaultRolloutsListByProviderRegistrationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
       apiVersion: "2024-09-01",
     }),
-  );
-export type DefaultRolloutsListByProviderRegistrationInput =
-  typeof DefaultRolloutsListByProviderRegistrationInput.Type;
+  ) as unknown as Schema.Codec<DefaultRolloutsListByProviderRegistrationInput>;
 
 // Output Schema
+export interface DefaultRolloutsListByProviderRegistrationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DefaultRolloutsListByProviderRegistrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1009,9 +1344,7 @@ export const DefaultRolloutsListByProviderRegistrationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DefaultRolloutsListByProviderRegistrationOutput =
-  typeof DefaultRolloutsListByProviderRegistrationOutput.Type;
+  }) as unknown as Schema.Codec<DefaultRolloutsListByProviderRegistrationOutput>;
 
 // The operation
 /**
@@ -1027,6 +1360,11 @@ export const DefaultRolloutsListByProviderRegistration =
     outputSchema: DefaultRolloutsListByProviderRegistrationOutput,
   }));
 // Input Schema
+export interface DefaultRolloutsStopInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  rolloutName: string;
+}
 export const DefaultRolloutsStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1038,13 +1376,12 @@ export const DefaultRolloutsStopInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type DefaultRolloutsStopInput = typeof DefaultRolloutsStopInput.Type;
+  ) as unknown as Schema.Codec<DefaultRolloutsStopInput>;
 
 // Output Schema
+export type DefaultRolloutsStopOutput = void;
 export const DefaultRolloutsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DefaultRolloutsStopOutput = typeof DefaultRolloutsStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DefaultRolloutsStopOutput>;
 
 // The operation
 /**
@@ -1060,6 +1397,10 @@ export const DefaultRolloutsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DefaultRolloutsStopOutput,
 }));
 // Input Schema
+export interface GenerateManifestInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const GenerateManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -1069,10 +1410,346 @@ export const GenerateManifestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateManifest",
     apiVersion: "2024-09-01",
   }),
-);
-export type GenerateManifestInput = typeof GenerateManifestInput.Type;
+) as unknown as Schema.Codec<GenerateManifestInput>;
 
 // Output Schema
+export interface GenerateManifestOutput {
+  providerAuthentication?: { allowedAudiences: string[] };
+  providerAuthorizations?: {
+    applicationId?: string;
+    roleDefinitionId?: string;
+    managedByRoleDefinitionId?: string;
+    managedByAuthorization?: {
+      additionalAuthorizations?: {
+        applicationId?: string;
+        roleDefinitionId?: string;
+      }[];
+      managedByResourceRoleDefinitionId?: string;
+      allowManagedByInheritance?: boolean;
+    };
+    allowedThirdPartyExtensions?: { name?: string }[];
+    groupingTag?: string;
+  }[];
+  namespace?: string;
+  services?: { serviceName?: string; status?: "Active" | "Inactive" }[];
+  serviceName?: string;
+  providerVersion?: string;
+  providerType?:
+    | "NotSpecified"
+    | "Internal"
+    | "External"
+    | "Hidden"
+    | "RegistrationFree"
+    | "LegacyRegistrationRequired"
+    | "TenantOnly"
+    | "AuthorizationFree";
+  requiredFeatures?: string[];
+  featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+  requestHeaderOptions?: {
+    optInHeaders?:
+      | "NotSpecified"
+      | "SignedUserToken"
+      | "ClientGroupMembership"
+      | "SignedAuxiliaryTokens"
+      | "UnboundedClientGroupMembership"
+      | "PrivateLinkId"
+      | "PrivateLinkResourceId"
+      | "ManagementGroupAncestorsEncoded"
+      | "PrivateLinkVnetTrafficTag"
+      | "ResourceGroupLocation"
+      | "ClientPrincipalNameEncoded"
+      | "MSIResourceIdEncoded";
+    optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+  };
+  resourceTypes?: {
+    name?: string;
+    routingType?:
+      | "Default"
+      | "ProxyOnly"
+      | "HostBased"
+      | "Extension"
+      | "Tenant"
+      | "Fanout"
+      | "LocationBased"
+      | "Failover"
+      | "CascadeExtension"
+      | "ChildFanout"
+      | "CascadeAuthorizedExtension"
+      | "BypassEndpointSelectionOptimization"
+      | "LocationMapping"
+      | "ServiceFanout";
+    additionalOptions?:
+      | "ProtectedAsyncOperationPolling"
+      | "ProtectedAsyncOperationPollingAuditOnly";
+    crossTenantTokenValidation?:
+      | "EnsureSecureValidation"
+      | "PassthroughInsecureToken";
+    resourceValidation?: "NotSpecified" | "ReservedWords" | "ProfaneWords";
+    allowedUnauthorizedActions?: string[];
+    allowedUnauthorizedActionsExtensions?: {
+      action?: string;
+      intent?:
+        | "NOT_SPECIFIED"
+        | "LOW_PRIVILEGE"
+        | "DEFERRED_ACCESS_CHECK"
+        | "RP_CONTRACT";
+    }[];
+    authorizationActionMappings?: { original?: string; desired?: string }[];
+    linkedAccessChecks?: {
+      actionName?: string;
+      linkedProperty?: string;
+      linkedAction?: string;
+      linkedActionVerb?: string;
+      linkedType?: string;
+    }[];
+    defaultApiVersion?: string;
+    loggingRules?: {
+      action: string;
+      direction: "None" | "Request" | "Response";
+      detailLevel: "None" | "Body";
+      hiddenPropertyPaths?: {
+        hiddenPathsOnRequest?: string[];
+        hiddenPathsOnResponse?: string[];
+      };
+    }[];
+    throttlingRules?: {
+      action: string;
+      metrics: {
+        type: "NotSpecified" | "NumberOfRequests" | "NumberOfResources";
+        limit: number;
+        interval?: string;
+      }[];
+      requiredFeatures?: string[];
+      applicationId?: string[];
+    }[];
+    endpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    marketplaceType?: "NotSpecified" | "AddOn" | "Bypass" | "Store";
+    identityManagement?: {
+      type?:
+        | "NotSpecified"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "Actor"
+        | "DelegatedResourceIdentity";
+    };
+    metadata?: unknown;
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    subscriptionStateRules?: {
+      state?:
+        | "NotDefined"
+        | "Enabled"
+        | "Warned"
+        | "PastDue"
+        | "Disabled"
+        | "Deleted";
+      allowedActions?: string[];
+    }[];
+    serviceTreeInfos?: {
+      serviceId?: string;
+      componentId?: string;
+      readiness?:
+        | "ClosingDown"
+        | "Deprecated"
+        | "GA"
+        | "InDevelopment"
+        | "InternalOnly"
+        | "PrivatePreview"
+        | "PublicPreview"
+        | "RemovedFromARM"
+        | "Retired";
+    }[];
+    requestHeaderOptions?: {
+      optInHeaders?:
+        | "NotSpecified"
+        | "SignedUserToken"
+        | "ClientGroupMembership"
+        | "SignedAuxiliaryTokens"
+        | "UnboundedClientGroupMembership"
+        | "PrivateLinkId"
+        | "PrivateLinkResourceId"
+        | "ManagementGroupAncestorsEncoded"
+        | "PrivateLinkVnetTrafficTag"
+        | "ResourceGroupLocation"
+        | "ClientPrincipalNameEncoded"
+        | "MSIResourceIdEncoded";
+      optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+    };
+    skuLink?: string;
+    disallowedActionVerbs?: string[];
+    templateDeploymentPolicy?: {
+      capabilities: "Default" | "Preflight";
+      preflightOptions:
+        | "None"
+        | "ValidationRequests"
+        | "DeploymentRequests"
+        | "TestOnly"
+        | "RegisteredOnly";
+      preflightNotifications?: "None" | "UnregisteredSubscriptions";
+    };
+    extendedLocations?: {
+      type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      supportedPolicy?: "NotSpecified" | "All";
+    }[];
+    linkedOperationRules?: {
+      linkedOperation:
+        | "None"
+        | "CrossResourceGroupResourceMove"
+        | "CrossSubscriptionResourceMove";
+      linkedAction: "NotSpecified" | "Blocked" | "Validate" | "Enabled";
+      dependsOnTypes?: string[];
+    }[];
+    resourceDeletionPolicy?: "NotSpecified" | "Cascade" | "Force";
+    quotaRule?: {
+      quotaPolicy?: "Default" | "None" | "Restricted";
+      locationRules?: {
+        policy?: "Default" | "None" | "Restricted";
+        quotaId?: string;
+        location?: string;
+      }[];
+      requiredFeatures?: string[];
+    };
+    notifications?: {
+      notificationType?: "Unspecified" | "SubscriptionNotification";
+      skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+    }[];
+    linkedNotificationRules?: {
+      actions?: string[];
+      actionsOnFailedOperation?: string[];
+      fastPathActions?: string[];
+      fastPathActionsOnFailedOperation?: string[];
+      linkedNotificationTimeout?: string;
+    }[];
+    resourceProviderAuthorizationRules?: {
+      asyncOperationPollingRules?: {
+        authorizationActions?: string[];
+        additionalOptions?:
+          | "ProtectedAsyncOperationPolling"
+          | "ProtectedAsyncOperationPollingAuditOnly";
+      };
+    };
+  }[];
+  management?: {
+    schemaOwners?: string[];
+    manifestOwners?: string[];
+    authorizationOwners?: string[];
+    incidentRoutingService?: string;
+    incidentRoutingTeam?: string;
+    incidentContactEmail?: string;
+    serviceTreeInfos?: {
+      serviceId?: string;
+      componentId?: string;
+      readiness?:
+        | "ClosingDown"
+        | "Deprecated"
+        | "GA"
+        | "InDevelopment"
+        | "InternalOnly"
+        | "PrivatePreview"
+        | "PublicPreview"
+        | "RemovedFromARM"
+        | "Retired";
+    }[];
+    resourceAccessPolicy?:
+      | "NotSpecified"
+      | "AcisReadAllowed"
+      | "AcisActionAllowed";
+    resourceAccessRoles?: {
+      allowedGroupClaims?: string[];
+      actions?: string[];
+    }[];
+    expeditedRolloutSubmitters?: string[];
+    errorResponseMessageOptions?: {
+      serverFailureResponseMessageType?: "NotSpecified" | "OutageReporting";
+    };
+    expeditedRolloutMetadata?: {
+      enabled?: boolean;
+      expeditedRolloutIntent?: "NotSpecified" | "Hotfix";
+    };
+    canaryManifestOwners?: string[];
+    pcCode?: string;
+    profitCenterProgramId?: string;
+  };
+  capabilities?: {
+    quotaId: string;
+    effect: "NotSpecified" | "Allow" | "Disallow";
+    requiredFeatures?: string[];
+  }[];
+  crossTenantTokenValidation?:
+    | "EnsureSecureValidation"
+    | "PassthroughInsecureToken";
+  metadata?: unknown;
+  globalNotificationEndpoints?: {
+    enabled?: boolean;
+    apiVersions?: string[];
+    endpointUri?: string;
+    locations?: string[];
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    timeout?: string;
+    endpointType?:
+      | "NotSpecified"
+      | "Canary"
+      | "Production"
+      | "TestInProduction";
+    skuLink?: string;
+  }[];
+  reRegisterSubscriptionMetadata?: {
+    enabled: boolean;
+    concurrencyLimit?: number;
+  };
+  enableTenantLinkedNotification?: boolean | null;
+  notifications?: {
+    notificationType?: "Unspecified" | "SubscriptionNotification";
+    skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+  }[];
+  linkedNotificationRules?: {
+    tokenAuthConfiguration?: {
+      authenticationScheme?: "PoP" | "Bearer";
+      signedRequestScope?: "ResourceUri" | "Endpoint";
+      disableCertificateAuthenticationFallback?: boolean;
+    };
+    actions?: string[];
+    endpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+  }[];
+  resourceProviderAuthorizationRules?: {
+    asyncOperationPollingRules?: {
+      authorizationActions?: string[];
+      additionalOptions?:
+        | "ProtectedAsyncOperationPolling"
+        | "ProtectedAsyncOperationPollingAuditOnly";
+    };
+  };
+}
 export const GenerateManifestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     providerAuthentication: Schema.optional(
@@ -1709,8 +2386,7 @@ export const GenerateManifestOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GenerateManifestOutput = typeof GenerateManifestOutput.Type;
+) as unknown as Schema.Codec<GenerateManifestOutput>;
 
 // The operation
 /**
@@ -1725,6 +2401,54 @@ export const GenerateManifest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GenerateManifestOutput,
 }));
 // Input Schema
+export interface NewRegionFrontloadReleaseCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  releaseName: string;
+  properties: {
+    operationType: string;
+    providerNamespace: string;
+    frontloadLocation: string;
+    copyFromLocation: string;
+    environmentType:
+      | "NotSpecified"
+      | "Canary"
+      | "Prod"
+      | "All"
+      | "Mooncake"
+      | "Fairfax";
+    serviceFeatureFlag: "DoNotCreate" | "Create";
+    includeResourceTypes: string[];
+    excludeResourceTypes: string[];
+    overrideManifestLevelFields: {
+      resourceHydrationAccounts?: {
+        maxChildResourceConsistencyJobLimit?: number;
+        encryptedKey?: string;
+        accountName?: string;
+        subscriptionId?: string;
+      }[];
+    };
+    overrideEndpointLevelFields: {
+      enabled: boolean;
+      apiVersions: string[];
+      endpointUri: string;
+      locations: string[];
+      requiredFeatures: string[];
+      featuresRule: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout: string;
+      endpointType:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      dstsConfiguration: { serviceName: string; serviceDnsName?: string };
+      skuLink: string;
+      apiVersion: string;
+      zones: string[];
+    };
+    ignoreFields: string[];
+  };
+}
 export const NewRegionFrontloadReleaseCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1792,11 +2516,22 @@ export const NewRegionFrontloadReleaseCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NewRegionFrontloadReleaseCreateOrUpdateInput =
-  typeof NewRegionFrontloadReleaseCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NewRegionFrontloadReleaseCreateOrUpdateInput>;
 
 // Output Schema
+export interface NewRegionFrontloadReleaseCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NewRegionFrontloadReleaseCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1816,9 +2551,7 @@ export const NewRegionFrontloadReleaseCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NewRegionFrontloadReleaseCreateOrUpdateOutput =
-  typeof NewRegionFrontloadReleaseCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NewRegionFrontloadReleaseCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1835,6 +2568,53 @@ export const NewRegionFrontloadReleaseCreateOrUpdate =
     outputSchema: NewRegionFrontloadReleaseCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NewRegionFrontloadReleaseGenerateManifestInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  properties: {
+    operationType: string;
+    providerNamespace: string;
+    frontloadLocation: string;
+    copyFromLocation: string;
+    environmentType:
+      | "NotSpecified"
+      | "Canary"
+      | "Prod"
+      | "All"
+      | "Mooncake"
+      | "Fairfax";
+    serviceFeatureFlag: "DoNotCreate" | "Create";
+    includeResourceTypes: string[];
+    excludeResourceTypes: string[];
+    overrideManifestLevelFields: {
+      resourceHydrationAccounts?: {
+        maxChildResourceConsistencyJobLimit?: number;
+        encryptedKey?: string;
+        accountName?: string;
+        subscriptionId?: string;
+      }[];
+    };
+    overrideEndpointLevelFields: {
+      enabled: boolean;
+      apiVersions: string[];
+      endpointUri: string;
+      locations: string[];
+      requiredFeatures: string[];
+      featuresRule: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout: string;
+      endpointType:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      dstsConfiguration: { serviceName: string; serviceDnsName?: string };
+      skuLink: string;
+      apiVersion: string;
+      zones: string[];
+    };
+    ignoreFields: string[];
+  };
+}
 export const NewRegionFrontloadReleaseGenerateManifestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1901,11 +2681,346 @@ export const NewRegionFrontloadReleaseGenerateManifestInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateNewRegionFrontloadManifest",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NewRegionFrontloadReleaseGenerateManifestInput =
-  typeof NewRegionFrontloadReleaseGenerateManifestInput.Type;
+  ) as unknown as Schema.Codec<NewRegionFrontloadReleaseGenerateManifestInput>;
 
 // Output Schema
+export interface NewRegionFrontloadReleaseGenerateManifestOutput {
+  providerAuthentication?: { allowedAudiences: string[] };
+  providerAuthorizations?: {
+    applicationId?: string;
+    roleDefinitionId?: string;
+    managedByRoleDefinitionId?: string;
+    managedByAuthorization?: {
+      additionalAuthorizations?: {
+        applicationId?: string;
+        roleDefinitionId?: string;
+      }[];
+      managedByResourceRoleDefinitionId?: string;
+      allowManagedByInheritance?: boolean;
+    };
+    allowedThirdPartyExtensions?: { name?: string }[];
+    groupingTag?: string;
+  }[];
+  namespace?: string;
+  services?: { serviceName?: string; status?: "Active" | "Inactive" }[];
+  serviceName?: string;
+  providerVersion?: string;
+  providerType?:
+    | "NotSpecified"
+    | "Internal"
+    | "External"
+    | "Hidden"
+    | "RegistrationFree"
+    | "LegacyRegistrationRequired"
+    | "TenantOnly"
+    | "AuthorizationFree";
+  requiredFeatures?: string[];
+  featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+  requestHeaderOptions?: {
+    optInHeaders?:
+      | "NotSpecified"
+      | "SignedUserToken"
+      | "ClientGroupMembership"
+      | "SignedAuxiliaryTokens"
+      | "UnboundedClientGroupMembership"
+      | "PrivateLinkId"
+      | "PrivateLinkResourceId"
+      | "ManagementGroupAncestorsEncoded"
+      | "PrivateLinkVnetTrafficTag"
+      | "ResourceGroupLocation"
+      | "ClientPrincipalNameEncoded"
+      | "MSIResourceIdEncoded";
+    optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+  };
+  resourceTypes?: {
+    name?: string;
+    routingType?:
+      | "Default"
+      | "ProxyOnly"
+      | "HostBased"
+      | "Extension"
+      | "Tenant"
+      | "Fanout"
+      | "LocationBased"
+      | "Failover"
+      | "CascadeExtension"
+      | "ChildFanout"
+      | "CascadeAuthorizedExtension"
+      | "BypassEndpointSelectionOptimization"
+      | "LocationMapping"
+      | "ServiceFanout";
+    additionalOptions?:
+      | "ProtectedAsyncOperationPolling"
+      | "ProtectedAsyncOperationPollingAuditOnly";
+    crossTenantTokenValidation?:
+      | "EnsureSecureValidation"
+      | "PassthroughInsecureToken";
+    resourceValidation?: "NotSpecified" | "ReservedWords" | "ProfaneWords";
+    allowedUnauthorizedActions?: string[];
+    allowedUnauthorizedActionsExtensions?: {
+      action?: string;
+      intent?:
+        | "NOT_SPECIFIED"
+        | "LOW_PRIVILEGE"
+        | "DEFERRED_ACCESS_CHECK"
+        | "RP_CONTRACT";
+    }[];
+    authorizationActionMappings?: { original?: string; desired?: string }[];
+    linkedAccessChecks?: {
+      actionName?: string;
+      linkedProperty?: string;
+      linkedAction?: string;
+      linkedActionVerb?: string;
+      linkedType?: string;
+    }[];
+    defaultApiVersion?: string;
+    loggingRules?: {
+      action: string;
+      direction: "None" | "Request" | "Response";
+      detailLevel: "None" | "Body";
+      hiddenPropertyPaths?: {
+        hiddenPathsOnRequest?: string[];
+        hiddenPathsOnResponse?: string[];
+      };
+    }[];
+    throttlingRules?: {
+      action: string;
+      metrics: {
+        type: "NotSpecified" | "NumberOfRequests" | "NumberOfResources";
+        limit: number;
+        interval?: string;
+      }[];
+      requiredFeatures?: string[];
+      applicationId?: string[];
+    }[];
+    endpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    marketplaceType?: "NotSpecified" | "AddOn" | "Bypass" | "Store";
+    identityManagement?: {
+      type?:
+        | "NotSpecified"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "Actor"
+        | "DelegatedResourceIdentity";
+    };
+    metadata?: unknown;
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    subscriptionStateRules?: {
+      state?:
+        | "NotDefined"
+        | "Enabled"
+        | "Warned"
+        | "PastDue"
+        | "Disabled"
+        | "Deleted";
+      allowedActions?: string[];
+    }[];
+    serviceTreeInfos?: {
+      serviceId?: string;
+      componentId?: string;
+      readiness?:
+        | "ClosingDown"
+        | "Deprecated"
+        | "GA"
+        | "InDevelopment"
+        | "InternalOnly"
+        | "PrivatePreview"
+        | "PublicPreview"
+        | "RemovedFromARM"
+        | "Retired";
+    }[];
+    requestHeaderOptions?: {
+      optInHeaders?:
+        | "NotSpecified"
+        | "SignedUserToken"
+        | "ClientGroupMembership"
+        | "SignedAuxiliaryTokens"
+        | "UnboundedClientGroupMembership"
+        | "PrivateLinkId"
+        | "PrivateLinkResourceId"
+        | "ManagementGroupAncestorsEncoded"
+        | "PrivateLinkVnetTrafficTag"
+        | "ResourceGroupLocation"
+        | "ClientPrincipalNameEncoded"
+        | "MSIResourceIdEncoded";
+      optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+    };
+    skuLink?: string;
+    disallowedActionVerbs?: string[];
+    templateDeploymentPolicy?: {
+      capabilities: "Default" | "Preflight";
+      preflightOptions:
+        | "None"
+        | "ValidationRequests"
+        | "DeploymentRequests"
+        | "TestOnly"
+        | "RegisteredOnly";
+      preflightNotifications?: "None" | "UnregisteredSubscriptions";
+    };
+    extendedLocations?: {
+      type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      supportedPolicy?: "NotSpecified" | "All";
+    }[];
+    linkedOperationRules?: {
+      linkedOperation:
+        | "None"
+        | "CrossResourceGroupResourceMove"
+        | "CrossSubscriptionResourceMove";
+      linkedAction: "NotSpecified" | "Blocked" | "Validate" | "Enabled";
+      dependsOnTypes?: string[];
+    }[];
+    resourceDeletionPolicy?: "NotSpecified" | "Cascade" | "Force";
+    quotaRule?: {
+      quotaPolicy?: "Default" | "None" | "Restricted";
+      locationRules?: {
+        policy?: "Default" | "None" | "Restricted";
+        quotaId?: string;
+        location?: string;
+      }[];
+      requiredFeatures?: string[];
+    };
+    notifications?: {
+      notificationType?: "Unspecified" | "SubscriptionNotification";
+      skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+    }[];
+    linkedNotificationRules?: {
+      actions?: string[];
+      actionsOnFailedOperation?: string[];
+      fastPathActions?: string[];
+      fastPathActionsOnFailedOperation?: string[];
+      linkedNotificationTimeout?: string;
+    }[];
+    resourceProviderAuthorizationRules?: {
+      asyncOperationPollingRules?: {
+        authorizationActions?: string[];
+        additionalOptions?:
+          | "ProtectedAsyncOperationPolling"
+          | "ProtectedAsyncOperationPollingAuditOnly";
+      };
+    };
+  }[];
+  management?: {
+    schemaOwners?: string[];
+    manifestOwners?: string[];
+    authorizationOwners?: string[];
+    incidentRoutingService?: string;
+    incidentRoutingTeam?: string;
+    incidentContactEmail?: string;
+    serviceTreeInfos?: {
+      serviceId?: string;
+      componentId?: string;
+      readiness?:
+        | "ClosingDown"
+        | "Deprecated"
+        | "GA"
+        | "InDevelopment"
+        | "InternalOnly"
+        | "PrivatePreview"
+        | "PublicPreview"
+        | "RemovedFromARM"
+        | "Retired";
+    }[];
+    resourceAccessPolicy?:
+      | "NotSpecified"
+      | "AcisReadAllowed"
+      | "AcisActionAllowed";
+    resourceAccessRoles?: {
+      allowedGroupClaims?: string[];
+      actions?: string[];
+    }[];
+    expeditedRolloutSubmitters?: string[];
+    errorResponseMessageOptions?: {
+      serverFailureResponseMessageType?: "NotSpecified" | "OutageReporting";
+    };
+    expeditedRolloutMetadata?: {
+      enabled?: boolean;
+      expeditedRolloutIntent?: "NotSpecified" | "Hotfix";
+    };
+    canaryManifestOwners?: string[];
+    pcCode?: string;
+    profitCenterProgramId?: string;
+  };
+  capabilities?: {
+    quotaId: string;
+    effect: "NotSpecified" | "Allow" | "Disallow";
+    requiredFeatures?: string[];
+  }[];
+  crossTenantTokenValidation?:
+    | "EnsureSecureValidation"
+    | "PassthroughInsecureToken";
+  metadata?: unknown;
+  globalNotificationEndpoints?: {
+    enabled?: boolean;
+    apiVersions?: string[];
+    endpointUri?: string;
+    locations?: string[];
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    timeout?: string;
+    endpointType?:
+      | "NotSpecified"
+      | "Canary"
+      | "Production"
+      | "TestInProduction";
+    skuLink?: string;
+  }[];
+  reRegisterSubscriptionMetadata?: {
+    enabled: boolean;
+    concurrencyLimit?: number;
+  };
+  enableTenantLinkedNotification?: boolean | null;
+  notifications?: {
+    notificationType?: "Unspecified" | "SubscriptionNotification";
+    skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+  }[];
+  linkedNotificationRules?: {
+    tokenAuthConfiguration?: {
+      authenticationScheme?: "PoP" | "Bearer";
+      signedRequestScope?: "ResourceUri" | "Endpoint";
+      disableCertificateAuthenticationFallback?: boolean;
+    };
+    actions?: string[];
+    endpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+  }[];
+  resourceProviderAuthorizationRules?: {
+    asyncOperationPollingRules?: {
+      authorizationActions?: string[];
+      additionalOptions?:
+        | "ProtectedAsyncOperationPolling"
+        | "ProtectedAsyncOperationPollingAuditOnly";
+    };
+  };
+}
 export const NewRegionFrontloadReleaseGenerateManifestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     providerAuthentication: Schema.optional(
@@ -2541,9 +3656,7 @@ export const NewRegionFrontloadReleaseGenerateManifestOutput =
         ),
       }),
     ),
-  });
-export type NewRegionFrontloadReleaseGenerateManifestOutput =
-  typeof NewRegionFrontloadReleaseGenerateManifestOutput.Type;
+  }) as unknown as Schema.Codec<NewRegionFrontloadReleaseGenerateManifestOutput>;
 
 // The operation
 /**
@@ -2559,6 +3672,11 @@ export const NewRegionFrontloadReleaseGenerateManifest =
     outputSchema: NewRegionFrontloadReleaseGenerateManifestOutput,
   }));
 // Input Schema
+export interface NewRegionFrontloadReleaseGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  releaseName: string;
+}
 export const NewRegionFrontloadReleaseGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2570,11 +3688,22 @@ export const NewRegionFrontloadReleaseGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NewRegionFrontloadReleaseGetInput =
-  typeof NewRegionFrontloadReleaseGetInput.Type;
+  ) as unknown as Schema.Codec<NewRegionFrontloadReleaseGetInput>;
 
 // Output Schema
+export interface NewRegionFrontloadReleaseGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NewRegionFrontloadReleaseGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2594,9 +3723,7 @@ export const NewRegionFrontloadReleaseGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NewRegionFrontloadReleaseGetOutput =
-  typeof NewRegionFrontloadReleaseGetOutput.Type;
+  }) as unknown as Schema.Codec<NewRegionFrontloadReleaseGetOutput>;
 
 // The operation
 /**
@@ -2613,6 +3740,11 @@ export const NewRegionFrontloadReleaseGet =
     outputSchema: NewRegionFrontloadReleaseGetOutput,
   }));
 // Input Schema
+export interface NewRegionFrontloadReleaseStopInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  releaseName: string;
+}
 export const NewRegionFrontloadReleaseStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2624,15 +3756,12 @@ export const NewRegionFrontloadReleaseStopInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/newRegionFrontloadRelease/{releaseName}/stop",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NewRegionFrontloadReleaseStopInput =
-  typeof NewRegionFrontloadReleaseStopInput.Type;
+  ) as unknown as Schema.Codec<NewRegionFrontloadReleaseStopInput>;
 
 // Output Schema
+export type NewRegionFrontloadReleaseStopOutput = void;
 export const NewRegionFrontloadReleaseStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NewRegionFrontloadReleaseStopOutput =
-  typeof NewRegionFrontloadReleaseStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NewRegionFrontloadReleaseStopOutput>;
 
 // The operation
 /**
@@ -2649,6 +3778,34 @@ export const NewRegionFrontloadReleaseStop =
     outputSchema: NewRegionFrontloadReleaseStopOutput,
   }));
 // Input Schema
+export interface NotificationRegistrationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  notificationRegistrationName: string;
+  properties?: {
+    notificationMode?: "NotSpecified" | "EventHub" | "WebHook";
+    messageScope?: "NotSpecified" | "RegisteredSubscriptions";
+    includedEvents?: string[];
+    notificationEndpoints?: {
+      notificationDestination?: string;
+      locations?: string[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const NotificationRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2696,11 +3853,22 @@ export const NotificationRegistrationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NotificationRegistrationsCreateOrUpdateInput =
-  typeof NotificationRegistrationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NotificationRegistrationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NotificationRegistrationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2720,9 +3888,7 @@ export const NotificationRegistrationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationRegistrationsCreateOrUpdateOutput =
-  typeof NotificationRegistrationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NotificationRegistrationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2739,6 +3905,11 @@ export const NotificationRegistrationsCreateOrUpdate =
     outputSchema: NotificationRegistrationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NotificationRegistrationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  notificationRegistrationName: string;
+}
 export const NotificationRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2750,15 +3921,12 @@ export const NotificationRegistrationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NotificationRegistrationsDeleteInput =
-  typeof NotificationRegistrationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NotificationRegistrationsDeleteInput>;
 
 // Output Schema
+export type NotificationRegistrationsDeleteOutput = void;
 export const NotificationRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotificationRegistrationsDeleteOutput =
-  typeof NotificationRegistrationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotificationRegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -2775,6 +3943,11 @@ export const NotificationRegistrationsDelete =
     outputSchema: NotificationRegistrationsDeleteOutput,
   }));
 // Input Schema
+export interface NotificationRegistrationsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  notificationRegistrationName: string;
+}
 export const NotificationRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2786,11 +3959,22 @@ export const NotificationRegistrationsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NotificationRegistrationsGetInput =
-  typeof NotificationRegistrationsGetInput.Type;
+  ) as unknown as Schema.Codec<NotificationRegistrationsGetInput>;
 
 // Output Schema
+export interface NotificationRegistrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NotificationRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2810,9 +3994,7 @@ export const NotificationRegistrationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NotificationRegistrationsGetOutput =
-  typeof NotificationRegistrationsGetOutput.Type;
+  }) as unknown as Schema.Codec<NotificationRegistrationsGetOutput>;
 
 // The operation
 /**
@@ -2829,6 +4011,10 @@ export const NotificationRegistrationsGet =
     outputSchema: NotificationRegistrationsGetOutput,
   }));
 // Input Schema
+export interface NotificationRegistrationsListByProviderRegistrationInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const NotificationRegistrationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2839,11 +4025,25 @@ export const NotificationRegistrationsListByProviderRegistrationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type NotificationRegistrationsListByProviderRegistrationInput =
-  typeof NotificationRegistrationsListByProviderRegistrationInput.Type;
+  ) as unknown as Schema.Codec<NotificationRegistrationsListByProviderRegistrationInput>;
 
 // Output Schema
+export interface NotificationRegistrationsListByProviderRegistrationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NotificationRegistrationsListByProviderRegistrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2878,9 +4078,7 @@ export const NotificationRegistrationsListByProviderRegistrationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationRegistrationsListByProviderRegistrationOutput =
-  typeof NotificationRegistrationsListByProviderRegistrationOutput.Type;
+  }) as unknown as Schema.Codec<NotificationRegistrationsListByProviderRegistrationOutput>;
 
 // The operation
 /**
@@ -2896,6 +4094,128 @@ export const NotificationRegistrationsListByProviderRegistration =
     outputSchema: NotificationRegistrationsListByProviderRegistrationOutput,
   }));
 // Input Schema
+export interface OperationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  properties?: {
+    contents?: {
+      name: string;
+      isDataAction?: boolean;
+      origin?: "NotSpecified" | "User" | "System";
+      display: {
+        default: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        en?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        cs?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        de?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        es?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        fr?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        hu?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        it?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        ja?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        ko?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        nl?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        pl?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        ptBR?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        ptPT?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        ru?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        sv?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        zhHans?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+        zhHant?: {
+          provider: string;
+          resource: string;
+          operation: string;
+          description: string;
+        };
+      };
+      actionType?: "NotSpecified" | "Internal";
+    }[];
+  };
+}
 export const OperationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3068,11 +4388,22 @@ export const OperationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
       apiVersion: "2024-09-01",
     }),
-  );
-export type OperationsCreateOrUpdateInput =
-  typeof OperationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OperationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface OperationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OperationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3092,9 +4423,7 @@ export const OperationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OperationsCreateOrUpdateOutput =
-  typeof OperationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OperationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3111,6 +4440,10 @@ export const OperationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const OperationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -3120,12 +4453,12 @@ export const OperationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
     apiVersion: "2024-09-01",
   }),
-);
-export type OperationsDeleteInput = typeof OperationsDeleteInput.Type;
+) as unknown as Schema.Codec<OperationsDeleteInput>;
 
 // Output Schema
-export const OperationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OperationsDeleteOutput = typeof OperationsDeleteOutput.Type;
+export type OperationsDeleteOutput = void;
+export const OperationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OperationsDeleteOutput>;
 
 // The operation
 /**
@@ -3140,6 +4473,7 @@ export const OperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsDeleteOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -3148,10 +4482,25 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ProviderHub/operations",
     apiVersion: "2024-09-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name: string;
+    isDataAction?: boolean;
+    origin?: "NotSpecified" | "User" | "System";
+    display: {
+      provider: string;
+      resource: string;
+      operation: string;
+      description: string;
+    };
+    actionType?: "NotSpecified" | "Internal";
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3175,8 +4524,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -3189,6 +4537,10 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationsListByProviderRegistrationInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const OperationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3199,11 +4551,22 @@ export const OperationsListByProviderRegistrationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
       apiVersion: "2024-09-01",
     }),
-  );
-export type OperationsListByProviderRegistrationInput =
-  typeof OperationsListByProviderRegistrationInput.Type;
+  ) as unknown as Schema.Codec<OperationsListByProviderRegistrationInput>;
 
 // Output Schema
+export type OperationsListByProviderRegistrationOutput = {
+  name: string;
+  isDataAction?: boolean;
+  origin?: "NotSpecified" | "User" | "System";
+  display: {
+    provider: string;
+    resource: string;
+    operation: string;
+    description: string;
+  };
+  actionType?: "NotSpecified" | "Internal";
+  properties?: unknown;
+}[];
 export const OperationsListByProviderRegistrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -3223,9 +4586,7 @@ export const OperationsListByProviderRegistrationOutput =
       ),
       properties: Schema.optional(Schema.Unknown),
     }),
-  );
-export type OperationsListByProviderRegistrationOutput =
-  typeof OperationsListByProviderRegistrationOutput.Type;
+  ) as unknown as Schema.Codec<OperationsListByProviderRegistrationOutput>;
 
 // The operation
 /**
@@ -3241,6 +4602,29 @@ export const OperationsListByProviderRegistration =
     outputSchema: OperationsListByProviderRegistrationOutput,
   }));
 // Input Schema
+export interface ProviderMonitorSettingsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerMonitorSettingName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ProviderMonitorSettingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3275,11 +4659,22 @@ export const ProviderMonitorSettingsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsCreateInput =
-  typeof ProviderMonitorSettingsCreateInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsCreateInput>;
 
 // Output Schema
+export interface ProviderMonitorSettingsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderMonitorSettingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3299,9 +4694,7 @@ export const ProviderMonitorSettingsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderMonitorSettingsCreateOutput =
-  typeof ProviderMonitorSettingsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProviderMonitorSettingsCreateOutput>;
 
 // The operation
 /**
@@ -3318,6 +4711,11 @@ export const ProviderMonitorSettingsCreate =
     outputSchema: ProviderMonitorSettingsCreateOutput,
   }));
 // Input Schema
+export interface ProviderMonitorSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerMonitorSettingName: string;
+}
 export const ProviderMonitorSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3329,15 +4727,12 @@ export const ProviderMonitorSettingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsDeleteInput =
-  typeof ProviderMonitorSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsDeleteInput>;
 
 // Output Schema
+export type ProviderMonitorSettingsDeleteOutput = void;
 export const ProviderMonitorSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProviderMonitorSettingsDeleteOutput =
-  typeof ProviderMonitorSettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProviderMonitorSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -3354,6 +4749,11 @@ export const ProviderMonitorSettingsDelete =
     outputSchema: ProviderMonitorSettingsDeleteOutput,
   }));
 // Input Schema
+export interface ProviderMonitorSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerMonitorSettingName: string;
+}
 export const ProviderMonitorSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3365,11 +4765,22 @@ export const ProviderMonitorSettingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsGetInput =
-  typeof ProviderMonitorSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsGetInput>;
 
 // Output Schema
+export interface ProviderMonitorSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderMonitorSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3389,9 +4800,7 @@ export const ProviderMonitorSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderMonitorSettingsGetOutput =
-  typeof ProviderMonitorSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<ProviderMonitorSettingsGetOutput>;
 
 // The operation
 /**
@@ -3409,6 +4818,10 @@ export const ProviderMonitorSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderMonitorSettingsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ProviderMonitorSettingsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3419,11 +4832,25 @@ export const ProviderMonitorSettingsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsListByResourceGroupInput =
-  typeof ProviderMonitorSettingsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsListByResourceGroupInput>;
 
 // Output Schema
+export interface ProviderMonitorSettingsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProviderMonitorSettingsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3458,9 +4885,7 @@ export const ProviderMonitorSettingsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderMonitorSettingsListByResourceGroupOutput =
-  typeof ProviderMonitorSettingsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ProviderMonitorSettingsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3476,6 +4901,9 @@ export const ProviderMonitorSettingsListByResourceGroup =
     outputSchema: ProviderMonitorSettingsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ProviderMonitorSettingsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ProviderMonitorSettingsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3485,11 +4913,25 @@ export const ProviderMonitorSettingsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsListBySubscriptionInput =
-  typeof ProviderMonitorSettingsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsListBySubscriptionInput>;
 
 // Output Schema
+export interface ProviderMonitorSettingsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProviderMonitorSettingsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3524,9 +4966,7 @@ export const ProviderMonitorSettingsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderMonitorSettingsListBySubscriptionOutput =
-  typeof ProviderMonitorSettingsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProviderMonitorSettingsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3541,6 +4981,11 @@ export const ProviderMonitorSettingsListBySubscription =
     outputSchema: ProviderMonitorSettingsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ProviderMonitorSettingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerMonitorSettingName: string;
+}
 export const ProviderMonitorSettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3552,11 +4997,22 @@ export const ProviderMonitorSettingsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderMonitorSettingsUpdateInput =
-  typeof ProviderMonitorSettingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProviderMonitorSettingsUpdateInput>;
 
 // Output Schema
+export interface ProviderMonitorSettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderMonitorSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3576,9 +5032,7 @@ export const ProviderMonitorSettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderMonitorSettingsUpdateOutput =
-  typeof ProviderMonitorSettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProviderMonitorSettingsUpdateOutput>;
 
 // The operation
 /**
@@ -3595,6 +5049,223 @@ export const ProviderMonitorSettingsUpdate =
     outputSchema: ProviderMonitorSettingsUpdateOutput,
   }));
 // Input Schema
+export interface ProviderRegistrationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  properties?: {
+    providerAuthentication?: { allowedAudiences: string[] };
+    providerAuthorizations?: {
+      applicationId?: string;
+      roleDefinitionId?: string;
+      managedByRoleDefinitionId?: string;
+      managedByAuthorization?: {
+        additionalAuthorizations?: {
+          applicationId?: string;
+          roleDefinitionId?: string;
+        }[];
+        managedByResourceRoleDefinitionId?: string;
+        allowManagedByInheritance?: boolean;
+      };
+      allowedThirdPartyExtensions?: { name?: string }[];
+      groupingTag?: string;
+    }[];
+    namespace?: string;
+    services?: { serviceName?: string; status?: "Active" | "Inactive" }[];
+    serviceName?: string;
+    providerVersion?: string;
+    providerType?:
+      | "NotSpecified"
+      | "Internal"
+      | "External"
+      | "Hidden"
+      | "RegistrationFree"
+      | "LegacyRegistrationRequired"
+      | "TenantOnly"
+      | "AuthorizationFree";
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    requestHeaderOptions?: {
+      optInHeaders?:
+        | "NotSpecified"
+        | "SignedUserToken"
+        | "ClientGroupMembership"
+        | "SignedAuxiliaryTokens"
+        | "UnboundedClientGroupMembership"
+        | "PrivateLinkId"
+        | "PrivateLinkResourceId"
+        | "ManagementGroupAncestorsEncoded"
+        | "PrivateLinkVnetTrafficTag"
+        | "ResourceGroupLocation"
+        | "ClientPrincipalNameEncoded"
+        | "MSIResourceIdEncoded";
+      optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+    };
+    management?: {
+      schemaOwners?: string[];
+      manifestOwners?: string[];
+      authorizationOwners?: string[];
+      incidentRoutingService?: string;
+      incidentRoutingTeam?: string;
+      incidentContactEmail?: string;
+      serviceTreeInfos?: {
+        serviceId?: string;
+        componentId?: string;
+        readiness?:
+          | "ClosingDown"
+          | "Deprecated"
+          | "GA"
+          | "InDevelopment"
+          | "InternalOnly"
+          | "PrivatePreview"
+          | "PublicPreview"
+          | "RemovedFromARM"
+          | "Retired";
+      }[];
+      resourceAccessPolicy?:
+        | "NotSpecified"
+        | "AcisReadAllowed"
+        | "AcisActionAllowed";
+      resourceAccessRoles?: {
+        allowedGroupClaims?: string[];
+        actions?: string[];
+      }[];
+      expeditedRolloutSubmitters?: string[];
+      errorResponseMessageOptions?: {
+        serverFailureResponseMessageType?: "NotSpecified" | "OutageReporting";
+      };
+      expeditedRolloutMetadata?: {
+        enabled?: boolean;
+        expeditedRolloutIntent?: "NotSpecified" | "Hotfix";
+      };
+      canaryManifestOwners?: string[];
+      pcCode?: string;
+      profitCenterProgramId?: string;
+    };
+    capabilities?: {
+      quotaId: string;
+      effect: "NotSpecified" | "Allow" | "Disallow";
+      requiredFeatures?: string[];
+    }[];
+    crossTenantTokenValidation?:
+      | "EnsureSecureValidation"
+      | "PassthroughInsecureToken";
+    metadata?: unknown;
+    templateDeploymentOptions?: {
+      preflightSupported?: boolean;
+      preflightOptions?: (
+        | "None"
+        | "ContinueDeploymentOnFailure"
+        | "DefaultValidationOnly"
+      )[];
+    };
+    globalNotificationEndpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    enableTenantLinkedNotification?: boolean | null;
+    notifications?: {
+      notificationType?: "Unspecified" | "SubscriptionNotification";
+      skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+    }[];
+    linkedNotificationRules?: {
+      tokenAuthConfiguration?: {
+        authenticationScheme?: "PoP" | "Bearer";
+        signedRequestScope?: "ResourceUri" | "Endpoint";
+        disableCertificateAuthenticationFallback?: boolean;
+      };
+      actions?: string[];
+      endpoints?: {
+        enabled?: boolean;
+        apiVersions?: string[];
+        endpointUri?: string;
+        locations?: string[];
+        requiredFeatures?: string[];
+        featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+        timeout?: string;
+        endpointType?:
+          | "NotSpecified"
+          | "Canary"
+          | "Production"
+          | "TestInProduction";
+        skuLink?: string;
+      }[];
+      dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+    }[];
+    resourceProviderAuthorizationRules?: {
+      asyncOperationPollingRules?: {
+        authorizationActions?: string[];
+        additionalOptions?:
+          | "ProtectedAsyncOperationPolling"
+          | "ProtectedAsyncOperationPollingAuditOnly";
+      };
+    };
+    dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+    notificationOptions?: "NotSpecified" | "None" | "EmitSpendingLimit";
+    resourceHydrationAccounts?: {
+      maxChildResourceConsistencyJobLimit?: number;
+      encryptedKey?: string;
+      accountName?: string;
+      subscriptionId?: string;
+    }[];
+    notificationSettings?: {
+      subscriberSettings?: {
+        filterRules?: {
+          filterQuery?: string;
+          endpointInformation?: {
+            endpoint?: string;
+            endpointType?: "Webhook" | "Eventhub";
+            schemaVersion?: string;
+          }[];
+        }[];
+      }[];
+    };
+    managementGroupGlobalNotificationEndpoints?: {
+      enabled?: boolean;
+      apiVersions?: string[];
+      endpointUri?: string;
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      skuLink?: string;
+    }[];
+    optionalFeatures?: string[];
+    resourceGroupLockOptionDuringMove?: {
+      blockActionVerb?:
+        | "NotSpecified"
+        | "Read"
+        | "Write"
+        | "Action"
+        | "Delete"
+        | "Unrecognized";
+    };
+    responseOptions?: {
+      serviceClientOptionsType?:
+        | "NotSpecified"
+        | "DisableAutomaticDecompression";
+    };
+    legacyNamespace?: string;
+    legacyRegistrations?: string[];
+    customManifestVersion?: string;
+  };
+  kind?: "Managed" | "Hybrid" | "Direct";
+}
 export const ProviderRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4017,11 +5688,22 @@ export const ProviderRegistrationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderRegistrationsCreateOrUpdateInput =
-  typeof ProviderRegistrationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProviderRegistrationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4041,9 +5723,7 @@ export const ProviderRegistrationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderRegistrationsCreateOrUpdateOutput =
-  typeof ProviderRegistrationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProviderRegistrationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4059,6 +5739,10 @@ export const ProviderRegistrationsCreateOrUpdate =
     outputSchema: ProviderRegistrationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProviderRegistrationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const ProviderRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4069,15 +5753,12 @@ export const ProviderRegistrationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderRegistrationsDeleteInput =
-  typeof ProviderRegistrationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsDeleteInput>;
 
 // Output Schema
+export type ProviderRegistrationsDeleteOutput = void;
 export const ProviderRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProviderRegistrationsDeleteOutput =
-  typeof ProviderRegistrationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProviderRegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -4094,6 +5775,10 @@ export const ProviderRegistrationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderRegistrationsGenerateOperationsInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const ProviderRegistrationsGenerateOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4104,11 +5789,22 @@ export const ProviderRegistrationsGenerateOperationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderRegistrationsGenerateOperationsInput =
-  typeof ProviderRegistrationsGenerateOperationsInput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsGenerateOperationsInput>;
 
 // Output Schema
+export type ProviderRegistrationsGenerateOperationsOutput = {
+  name: string;
+  isDataAction?: boolean;
+  origin?: "NotSpecified" | "User" | "System";
+  display: {
+    provider: string;
+    resource: string;
+    operation: string;
+    description: string;
+  };
+  actionType?: "NotSpecified" | "Internal";
+  properties?: unknown;
+}[];
 export const ProviderRegistrationsGenerateOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -4128,9 +5824,7 @@ export const ProviderRegistrationsGenerateOperationsOutput =
       ),
       properties: Schema.optional(Schema.Unknown),
     }),
-  );
-export type ProviderRegistrationsGenerateOperationsOutput =
-  typeof ProviderRegistrationsGenerateOperationsOutput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsGenerateOperationsOutput>;
 
 // The operation
 /**
@@ -4146,6 +5840,10 @@ export const ProviderRegistrationsGenerateOperations =
     outputSchema: ProviderRegistrationsGenerateOperationsOutput,
   }));
 // Input Schema
+export interface ProviderRegistrationsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const ProviderRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4156,11 +5854,22 @@ export const ProviderRegistrationsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderRegistrationsGetInput =
-  typeof ProviderRegistrationsGetInput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsGetInput>;
 
 // Output Schema
+export interface ProviderRegistrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProviderRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4180,9 +5889,7 @@ export const ProviderRegistrationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderRegistrationsGetOutput =
-  typeof ProviderRegistrationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ProviderRegistrationsGetOutput>;
 
 // The operation
 /**
@@ -4199,6 +5906,9 @@ export const ProviderRegistrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderRegistrationsListInput {
+  subscriptionId: string;
+}
 export const ProviderRegistrationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4208,11 +5918,25 @@ export const ProviderRegistrationsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ProviderRegistrationsListInput =
-  typeof ProviderRegistrationsListInput.Type;
+  ) as unknown as Schema.Codec<ProviderRegistrationsListInput>;
 
 // Output Schema
+export interface ProviderRegistrationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProviderRegistrationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4247,9 +5971,7 @@ export const ProviderRegistrationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderRegistrationsListOutput =
-  typeof ProviderRegistrationsListOutput.Type;
+  }) as unknown as Schema.Codec<ProviderRegistrationsListOutput>;
 
 // The operation
 /**
@@ -4265,6 +5987,17 @@ export const ProviderRegistrationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourceActionsDeleteResourcesInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceActionName: string;
+  resources?: {
+    resourceId: string;
+    homeTenantId?: string;
+    location?: string;
+    status?: string;
+  }[];
+}
 export const ResourceActionsDeleteResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4286,15 +6019,12 @@ export const ResourceActionsDeleteResourcesInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ResourceActionsDeleteResourcesInput =
-  typeof ResourceActionsDeleteResourcesInput.Type;
+  ) as unknown as Schema.Codec<ResourceActionsDeleteResourcesInput>;
 
 // Output Schema
+export type ResourceActionsDeleteResourcesOutput = void;
 export const ResourceActionsDeleteResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourceActionsDeleteResourcesOutput =
-  typeof ResourceActionsDeleteResourcesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceActionsDeleteResourcesOutput>;
 
 // The operation
 /**
@@ -4311,6 +6041,449 @@ export const ResourceActionsDeleteResources =
     outputSchema: ResourceActionsDeleteResourcesOutput,
   }));
 // Input Schema
+export interface ResourceTypeRegistrationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  properties?: {
+    routingType?:
+      | "Default"
+      | "ProxyOnly"
+      | "HostBased"
+      | "Extension"
+      | "Tenant"
+      | "Fanout"
+      | "LocationBased"
+      | "Failover"
+      | "CascadeExtension"
+      | "ChildFanout"
+      | "CascadeAuthorizedExtension"
+      | "BypassEndpointSelectionOptimization"
+      | "LocationMapping"
+      | "ServiceFanout";
+    additionalOptions?:
+      | "ProtectedAsyncOperationPolling"
+      | "ProtectedAsyncOperationPollingAuditOnly";
+    crossTenantTokenValidation?:
+      | "EnsureSecureValidation"
+      | "PassthroughInsecureToken";
+    regionality?: "NotSpecified" | "Global" | "Regional";
+    endpoints?: {
+      kind?: "Managed" | "Direct";
+      enabled?: boolean;
+      apiVersions?: string[];
+      locations?: string[];
+      requiredFeatures?: string[];
+      featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+      extensions?: {
+        endpointUri?: string;
+        extensionCategories?: (
+          | "NotSpecified"
+          | "ResourceCreationValidate"
+          | "ResourceCreationBegin"
+          | "ResourceCreationCompleted"
+          | "ResourceReadValidate"
+          | "ResourceReadBegin"
+          | "ResourcePatchValidate"
+          | "ResourcePatchCompleted"
+          | "ResourceDeletionValidate"
+          | "ResourceDeletionBegin"
+          | "ResourceDeletionCompleted"
+          | "ResourcePostAction"
+          | "SubscriptionLifecycleNotification"
+          | "ResourcePatchBegin"
+          | "ResourceMoveBegin"
+          | "ResourceMoveCompleted"
+          | "BestMatchOperationBegin"
+          | "SubscriptionLifecycleNotificationDeletion"
+        )[];
+        timeout?: string;
+      }[];
+      timeout?: string;
+      endpointType?:
+        | "NotSpecified"
+        | "Canary"
+        | "Production"
+        | "TestInProduction";
+      tokenAuthConfiguration?: {
+        authenticationScheme?: "PoP" | "Bearer";
+        signedRequestScope?: "ResourceUri" | "Endpoint";
+        disableCertificateAuthenticationFallback?: boolean;
+      };
+      skuLink?: string;
+      endpointUri?: string;
+      apiVersion?: string;
+      zones?: string[];
+      dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+      dataBoundary?: "NotDefined" | "Global" | "EU" | "US";
+    }[];
+    extensionOptions?: {
+      resourceCreationBegin?: {
+        request?: (
+          | "NotSpecified"
+          | "DoNotMergeExistingReadOnlyAndSecretProperties"
+          | "IncludeInternalMetadata"
+        )[];
+        response?: (
+          | "NotSpecified"
+          | "DoNotMergeExistingReadOnlyAndSecretProperties"
+          | "IncludeInternalMetadata"
+        )[];
+      };
+    };
+    marketplaceType?: "NotSpecified" | "AddOn" | "Bypass" | "Store";
+    swaggerSpecifications?: {
+      apiVersions?: string[];
+      swaggerSpecFolderUri?: string;
+    }[];
+    allowedUnauthorizedActions?: string[];
+    allowedUnauthorizedActionsExtensions?: {
+      action?: string;
+      intent?:
+        | "NOT_SPECIFIED"
+        | "LOW_PRIVILEGE"
+        | "DEFERRED_ACCESS_CHECK"
+        | "RP_CONTRACT";
+    }[];
+    authorizationActionMappings?: { original?: string; desired?: string }[];
+    linkedAccessChecks?: {
+      actionName?: string;
+      linkedProperty?: string;
+      linkedAction?: string;
+      linkedActionVerb?: string;
+      linkedType?: string;
+    }[];
+    defaultApiVersion?: string;
+    loggingRules?: {
+      action: string;
+      direction: "None" | "Request" | "Response";
+      detailLevel: "None" | "Body";
+      hiddenPropertyPaths?: {
+        hiddenPathsOnRequest?: string[];
+        hiddenPathsOnResponse?: string[];
+      };
+    }[];
+    throttlingRules?: {
+      action: string;
+      metrics: {
+        type: "NotSpecified" | "NumberOfRequests" | "NumberOfResources";
+        limit: number;
+        interval?: string;
+      }[];
+      requiredFeatures?: string[];
+      applicationId?: string[];
+    }[];
+    requiredFeatures?: string[];
+    featuresRule?: { requiredFeaturesPolicy: "Any" | "All" };
+    enableAsyncOperation?: boolean;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+    enableThirdPartyS2S?: boolean;
+    subscriptionLifecycleNotificationSpecifications?: {
+      subscriptionStateOverrideActions?: {
+        state:
+          | "Registered"
+          | "Unregistered"
+          | "Warned"
+          | "Suspended"
+          | "Deleted"
+          | "WarnedToRegistered"
+          | "WarnedToSuspended"
+          | "WarnedToDeleted"
+          | "WarnedToUnregistered"
+          | "SuspendedToRegistered"
+          | "SuspendedToWarned"
+          | "SuspendedToDeleted"
+          | "SuspendedToUnregistered";
+        action:
+          | "NotDefined"
+          | "DeleteAllResources"
+          | "SoftDeleteAllResources"
+          | "NoOp"
+          | "BillingCancellation"
+          | "UndoSoftDelete";
+      }[];
+      softDeleteTTL?: string;
+    };
+    isPureProxy?: boolean;
+    identityManagement?: {
+      type?:
+        | "NotSpecified"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "Actor"
+        | "DelegatedResourceIdentity";
+      applicationId?: string;
+      applicationIds?: string[];
+      delegationAppIds?: string[];
+    };
+    checkNameAvailabilitySpecifications?: {
+      enableDefaultValidation?: boolean;
+      resourceTypesWithCustomValidation?: string[];
+    };
+    disallowedActionVerbs?: string[];
+    serviceTreeInfos?: {
+      serviceId?: string;
+      componentId?: string;
+      readiness?:
+        | "ClosingDown"
+        | "Deprecated"
+        | "GA"
+        | "InDevelopment"
+        | "InternalOnly"
+        | "PrivatePreview"
+        | "PublicPreview"
+        | "RemovedFromARM"
+        | "Retired";
+    }[];
+    requestHeaderOptions?: {
+      optInHeaders?:
+        | "NotSpecified"
+        | "SignedUserToken"
+        | "ClientGroupMembership"
+        | "SignedAuxiliaryTokens"
+        | "UnboundedClientGroupMembership"
+        | "PrivateLinkId"
+        | "PrivateLinkResourceId"
+        | "ManagementGroupAncestorsEncoded"
+        | "PrivateLinkVnetTrafficTag"
+        | "ResourceGroupLocation"
+        | "ClientPrincipalNameEncoded"
+        | "MSIResourceIdEncoded";
+      optOutHeaders?: "NotSpecified" | "SystemDataCreatedByLastModifiedBy";
+    };
+    subscriptionStateRules?: {
+      state?:
+        | "NotDefined"
+        | "Enabled"
+        | "Warned"
+        | "PastDue"
+        | "Disabled"
+        | "Deleted";
+      allowedActions?: string[];
+    }[];
+    templateDeploymentOptions?: {
+      preflightSupported?: boolean;
+      preflightOptions?: (
+        | "None"
+        | "ContinueDeploymentOnFailure"
+        | "DefaultValidationOnly"
+      )[];
+    };
+    extendedLocations?: {
+      type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      supportedPolicy?: "NotSpecified" | "All";
+    }[];
+    resourceMovePolicy?: {
+      validationRequired?: boolean;
+      crossResourceGroupMoveEnabled?: boolean;
+      crossSubscriptionMoveEnabled?: boolean;
+    };
+    resourceDeletionPolicy?:
+      | "NotSpecified"
+      | "CascadeDeleteAll"
+      | "CascadeDeleteProxyOnlyChildren";
+    resourceConcurrencyControlOptions?: Record<
+      string,
+      { policy?: "NotSpecified" | "SynchronizeBeginExtension" }
+    >;
+    resourceGraphConfiguration?: { enabled?: boolean; apiVersion?: string };
+    management?: {
+      schemaOwners?: string[];
+      manifestOwners?: string[];
+      authorizationOwners?: string[];
+      incidentRoutingService?: string;
+      incidentRoutingTeam?: string;
+      incidentContactEmail?: string;
+      serviceTreeInfos?: {
+        serviceId?: string;
+        componentId?: string;
+        readiness?:
+          | "ClosingDown"
+          | "Deprecated"
+          | "GA"
+          | "InDevelopment"
+          | "InternalOnly"
+          | "PrivatePreview"
+          | "PublicPreview"
+          | "RemovedFromARM"
+          | "Retired";
+      }[];
+      resourceAccessPolicy?:
+        | "NotSpecified"
+        | "AcisReadAllowed"
+        | "AcisActionAllowed";
+      resourceAccessRoles?: {
+        allowedGroupClaims?: string[];
+        actions?: string[];
+      }[];
+      expeditedRolloutSubmitters?: string[];
+      errorResponseMessageOptions?: {
+        serverFailureResponseMessageType?: "NotSpecified" | "OutageReporting";
+      };
+      expeditedRolloutMetadata?: {
+        enabled?: boolean;
+        expeditedRolloutIntent?: "NotSpecified" | "Hotfix";
+      };
+      canaryManifestOwners?: string[];
+      pcCode?: string;
+      profitCenterProgramId?: string;
+    };
+    openApiConfiguration?: {
+      validation?: { allowNoncompliantCollectionResponse?: boolean };
+    };
+    onBehalfOfTokens?: { actionName?: string; lifeTime?: string };
+    category?: "None" | "FreeForm" | "Internal" | "PureProxy";
+    resourceValidation?: "NotSpecified" | "ReservedWords" | "ProfaneWords";
+    disallowedEndUserOperations?: string[];
+    metadata?: Record<string, unknown>;
+    skuLink?: string;
+    quotaRule?: {
+      quotaPolicy?: "Default" | "None" | "Restricted";
+      locationRules?: {
+        policy?: "Default" | "None" | "Restricted";
+        quotaId?: string;
+        location?: string;
+      }[];
+      requiredFeatures?: string[];
+    };
+    notifications?: {
+      notificationType?: "Unspecified" | "SubscriptionNotification";
+      skipNotifications?: "Unspecified" | "Enabled" | "Disabled";
+    }[];
+    linkedNotificationRules?: {
+      actions?: string[];
+      actionsOnFailedOperation?: string[];
+      fastPathActions?: string[];
+      fastPathActionsOnFailedOperation?: string[];
+      linkedNotificationTimeout?: string;
+    }[];
+    resourceProviderAuthorizationRules?: {
+      asyncOperationPollingRules?: {
+        authorizationActions?: string[];
+        additionalOptions?:
+          | "ProtectedAsyncOperationPolling"
+          | "ProtectedAsyncOperationPollingAuditOnly";
+      };
+    };
+    tokenAuthConfiguration?: {
+      authenticationScheme?: "PoP" | "Bearer";
+      signedRequestScope?: "ResourceUri" | "Endpoint";
+      disableCertificateAuthenticationFallback?: boolean;
+    };
+    templateDeploymentPolicy?: {
+      capabilities: "Default" | "Preflight";
+      preflightOptions:
+        | "None"
+        | "ValidationRequests"
+        | "DeploymentRequests"
+        | "TestOnly"
+        | "RegisteredOnly";
+      preflightNotifications?: "None" | "UnregisteredSubscriptions";
+    };
+    allowEmptyRoleAssignments?: boolean;
+    policyExecutionType?:
+      | "NotSpecified"
+      | "ExecutePolicies"
+      | "BypassPolicies"
+      | "ExpectPartialPutRequests";
+    availabilityZoneRule?: {
+      availabilityZonePolicy?: "NotSpecified" | "SingleZoned" | "MultiZoned";
+    };
+    dstsConfiguration?: { serviceName: string; serviceDnsName?: string };
+    asyncTimeoutRules?: { actionName?: string; timeout?: string }[];
+    commonApiVersions?: string[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    linkedOperationRules?: {
+      linkedOperation:
+        | "None"
+        | "CrossResourceGroupResourceMove"
+        | "CrossSubscriptionResourceMove";
+      linkedAction: "NotSpecified" | "Blocked" | "Validate" | "Enabled";
+      dependsOnTypes?: string[];
+    }[];
+    legacyName?: string;
+    legacyNames?: string[];
+    allowedTemplateDeploymentReferenceActions?: string[];
+    legacyPolicy?: {
+      disallowedLegacyOperations?: (
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup"
+      )[];
+      disallowedConditions?: {
+        disallowedLegacyOperations?: (
+          | "NotSpecified"
+          | "Create"
+          | "Delete"
+          | "Waiting"
+          | "AzureAsyncOperationWaiting"
+          | "ResourceCacheWaiting"
+          | "Action"
+          | "Read"
+          | "EvaluateDeploymentOutput"
+          | "DeploymentCleanup"
+        )[];
+        feature?: string;
+      }[];
+    };
+    manifestLink?: string;
+    capacityRule?: {
+      capacityPolicy?: "Default" | "Restricted";
+      skuAlias?: string;
+    };
+    marketplaceOptions?: { addOnPlanConversionAllowed?: boolean };
+    allowedResourceNames?: { name?: string; getActionVerb?: string }[];
+    resourceCache?: {
+      enableResourceCache?: boolean;
+      resourceCacheExpirationTimespan?: string;
+    };
+    resourceQueryManagement?: {
+      filterOption?: "NotSpecified" | "EnableSubscriptionFilterOnTenant";
+    };
+    supportsTags?: boolean;
+    resourceManagementOptions?: {
+      batchProvisioningSupport?: {
+        supportedOperations?: "NotSpecified" | "Get" | "Delete";
+      };
+      deleteDependencies?: {
+        requiredFeatures?: string[];
+        linkedProperty?: string;
+        linkedType?: string;
+      }[];
+      nestedProvisioningSupport?: { minimumApiVersion?: string };
+    };
+    groupingTag?: string;
+    addResourceListTargetLocations?: boolean;
+    resourceTypeCommonAttributeManagement?: {
+      commonApiVersionsMergeMode?: "Merge" | "Overwrite";
+    };
+    routingRule?: { hostResourceType?: string };
+    frontdoorRequestMode?: "NotSpecified" | "UseManifest";
+    resourceSubType?: "NotSpecified" | "AsyncOperation";
+    asyncOperationResourceTypeName?: string;
+  };
+  kind?: "Managed" | "Hybrid" | "Direct";
+}
 export const ResourceTypeRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5147,11 +7320,22 @@ export const ResourceTypeRegistrationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ResourceTypeRegistrationsCreateOrUpdateInput =
-  typeof ResourceTypeRegistrationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ResourceTypeRegistrationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ResourceTypeRegistrationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourceTypeRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5171,9 +7355,7 @@ export const ResourceTypeRegistrationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ResourceTypeRegistrationsCreateOrUpdateOutput =
-  typeof ResourceTypeRegistrationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ResourceTypeRegistrationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5190,6 +7372,11 @@ export const ResourceTypeRegistrationsCreateOrUpdate =
     outputSchema: ResourceTypeRegistrationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ResourceTypeRegistrationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+}
 export const ResourceTypeRegistrationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5201,15 +7388,12 @@ export const ResourceTypeRegistrationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ResourceTypeRegistrationsDeleteInput =
-  typeof ResourceTypeRegistrationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ResourceTypeRegistrationsDeleteInput>;
 
 // Output Schema
+export type ResourceTypeRegistrationsDeleteOutput = void;
 export const ResourceTypeRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourceTypeRegistrationsDeleteOutput =
-  typeof ResourceTypeRegistrationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceTypeRegistrationsDeleteOutput>;
 
 // The operation
 /**
@@ -5226,6 +7410,11 @@ export const ResourceTypeRegistrationsDelete =
     outputSchema: ResourceTypeRegistrationsDeleteOutput,
   }));
 // Input Schema
+export interface ResourceTypeRegistrationsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+}
 export const ResourceTypeRegistrationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5237,11 +7426,22 @@ export const ResourceTypeRegistrationsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ResourceTypeRegistrationsGetInput =
-  typeof ResourceTypeRegistrationsGetInput.Type;
+  ) as unknown as Schema.Codec<ResourceTypeRegistrationsGetInput>;
 
 // Output Schema
+export interface ResourceTypeRegistrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourceTypeRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5261,9 +7461,7 @@ export const ResourceTypeRegistrationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ResourceTypeRegistrationsGetOutput =
-  typeof ResourceTypeRegistrationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ResourceTypeRegistrationsGetOutput>;
 
 // The operation
 /**
@@ -5280,6 +7478,10 @@ export const ResourceTypeRegistrationsGet =
     outputSchema: ResourceTypeRegistrationsGetOutput,
   }));
 // Input Schema
+export interface ResourceTypeRegistrationsListByProviderRegistrationInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const ResourceTypeRegistrationsListByProviderRegistrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5290,11 +7492,25 @@ export const ResourceTypeRegistrationsListByProviderRegistrationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
       apiVersion: "2024-09-01",
     }),
-  );
-export type ResourceTypeRegistrationsListByProviderRegistrationInput =
-  typeof ResourceTypeRegistrationsListByProviderRegistrationInput.Type;
+  ) as unknown as Schema.Codec<ResourceTypeRegistrationsListByProviderRegistrationInput>;
 
 // Output Schema
+export interface ResourceTypeRegistrationsListByProviderRegistrationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ResourceTypeRegistrationsListByProviderRegistrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5329,9 +7545,7 @@ export const ResourceTypeRegistrationsListByProviderRegistrationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceTypeRegistrationsListByProviderRegistrationOutput =
-  typeof ResourceTypeRegistrationsListByProviderRegistrationOutput.Type;
+  }) as unknown as Schema.Codec<ResourceTypeRegistrationsListByProviderRegistrationOutput>;
 
 // The operation
 /**
@@ -5347,6 +7561,56 @@ export const ResourceTypeRegistrationsListByProviderRegistration =
     outputSchema: ResourceTypeRegistrationsListByProviderRegistrationOutput,
   }));
 // Input Schema
+export interface SkusCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  sku: string;
+  properties?: {
+    skuSettings: {
+      name: string;
+      tier?: string;
+      size?: string;
+      family?: string;
+      kind?: string;
+      locations?: string[];
+      locationInfo?: {
+        location: string;
+        zones?: string[];
+        zoneDetails?: {
+          name?: string[];
+          capabilities?: { name: string; value: string }[];
+        }[];
+        extendedLocations?: string[];
+        type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      }[];
+      requiredQuotaIds?: string[];
+      requiredFeatures?: string[];
+      capacity?: {
+        minimum: number;
+        maximum?: number;
+        default?: number;
+        scaleType?: "None" | "Manual" | "Automatic";
+      };
+      costs?: { meterId: string; quantity?: number; extendedUnit?: string }[];
+      capabilities?: { name: string; value: string }[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const SkusCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5453,10 +7717,22 @@ export const SkusCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusCreateOrUpdateInput = typeof SkusCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SkusCreateOrUpdateInput>;
 
 // Output Schema
+export interface SkusCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5476,8 +7752,7 @@ export const SkusCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusCreateOrUpdateOutput = typeof SkusCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SkusCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5494,6 +7769,57 @@ export const SkusCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface SkusCreateOrUpdateNestedResourceTypeFirstInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  sku: string;
+  properties?: {
+    skuSettings: {
+      name: string;
+      tier?: string;
+      size?: string;
+      family?: string;
+      kind?: string;
+      locations?: string[];
+      locationInfo?: {
+        location: string;
+        zones?: string[];
+        zoneDetails?: {
+          name?: string[];
+          capabilities?: { name: string; value: string }[];
+        }[];
+        extendedLocations?: string[];
+        type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      }[];
+      requiredQuotaIds?: string[];
+      requiredFeatures?: string[];
+      capacity?: {
+        minimum: number;
+        maximum?: number;
+        default?: number;
+        scaleType?: "None" | "Manual" | "Automatic";
+      };
+      costs?: { meterId: string; quantity?: number; extendedUnit?: string }[];
+      capabilities?: { name: string; value: string }[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeFirstInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5601,11 +7927,22 @@ export const SkusCreateOrUpdateNestedResourceTypeFirstInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusCreateOrUpdateNestedResourceTypeFirstInput =
-  typeof SkusCreateOrUpdateNestedResourceTypeFirstInput.Type;
+  ) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeFirstInput>;
 
 // Output Schema
+export interface SkusCreateOrUpdateNestedResourceTypeFirstOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeFirstOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5625,9 +7962,7 @@ export const SkusCreateOrUpdateNestedResourceTypeFirstOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusCreateOrUpdateNestedResourceTypeFirstOutput =
-  typeof SkusCreateOrUpdateNestedResourceTypeFirstOutput.Type;
+  }) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeFirstOutput>;
 
 // The operation
 /**
@@ -5646,6 +7981,58 @@ export const SkusCreateOrUpdateNestedResourceTypeFirst =
     outputSchema: SkusCreateOrUpdateNestedResourceTypeFirstOutput,
   }));
 // Input Schema
+export interface SkusCreateOrUpdateNestedResourceTypeSecondInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  sku: string;
+  properties?: {
+    skuSettings: {
+      name: string;
+      tier?: string;
+      size?: string;
+      family?: string;
+      kind?: string;
+      locations?: string[];
+      locationInfo?: {
+        location: string;
+        zones?: string[];
+        zoneDetails?: {
+          name?: string[];
+          capabilities?: { name: string; value: string }[];
+        }[];
+        extendedLocations?: string[];
+        type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      }[];
+      requiredQuotaIds?: string[];
+      requiredFeatures?: string[];
+      capacity?: {
+        minimum: number;
+        maximum?: number;
+        default?: number;
+        scaleType?: "None" | "Manual" | "Automatic";
+      };
+      costs?: { meterId: string; quantity?: number; extendedUnit?: string }[];
+      capabilities?: { name: string; value: string }[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeSecondInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5754,11 +8141,22 @@ export const SkusCreateOrUpdateNestedResourceTypeSecondInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusCreateOrUpdateNestedResourceTypeSecondInput =
-  typeof SkusCreateOrUpdateNestedResourceTypeSecondInput.Type;
+  ) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeSecondInput>;
 
 // Output Schema
+export interface SkusCreateOrUpdateNestedResourceTypeSecondOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeSecondOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5778,9 +8176,7 @@ export const SkusCreateOrUpdateNestedResourceTypeSecondOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusCreateOrUpdateNestedResourceTypeSecondOutput =
-  typeof SkusCreateOrUpdateNestedResourceTypeSecondOutput.Type;
+  }) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeSecondOutput>;
 
 // The operation
 /**
@@ -5800,6 +8196,59 @@ export const SkusCreateOrUpdateNestedResourceTypeSecond =
     outputSchema: SkusCreateOrUpdateNestedResourceTypeSecondOutput,
   }));
 // Input Schema
+export interface SkusCreateOrUpdateNestedResourceTypeThirdInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  nestedResourceTypeThird: string;
+  sku: string;
+  properties?: {
+    skuSettings: {
+      name: string;
+      tier?: string;
+      size?: string;
+      family?: string;
+      kind?: string;
+      locations?: string[];
+      locationInfo?: {
+        location: string;
+        zones?: string[];
+        zoneDetails?: {
+          name?: string[];
+          capabilities?: { name: string; value: string }[];
+        }[];
+        extendedLocations?: string[];
+        type?: "NotSpecified" | "CustomLocation" | "EdgeZone" | "ArcZone";
+      }[];
+      requiredQuotaIds?: string[];
+      requiredFeatures?: string[];
+      capacity?: {
+        minimum: number;
+        maximum?: number;
+        default?: number;
+        scaleType?: "None" | "Manual" | "Automatic";
+      };
+      costs?: { meterId: string; quantity?: number; extendedUnit?: string }[];
+      capabilities?: { name: string; value: string }[];
+    }[];
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "MovingResources"
+      | "TransientFailure"
+      | "RolloutInProgress";
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeThirdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5909,11 +8358,22 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusCreateOrUpdateNestedResourceTypeThirdInput =
-  typeof SkusCreateOrUpdateNestedResourceTypeThirdInput.Type;
+  ) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeThirdInput>;
 
 // Output Schema
+export interface SkusCreateOrUpdateNestedResourceTypeThirdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusCreateOrUpdateNestedResourceTypeThirdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5933,9 +8393,7 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusCreateOrUpdateNestedResourceTypeThirdOutput =
-  typeof SkusCreateOrUpdateNestedResourceTypeThirdOutput.Type;
+  }) as unknown as Schema.Codec<SkusCreateOrUpdateNestedResourceTypeThirdOutput>;
 
 // The operation
 /**
@@ -5956,6 +8414,12 @@ export const SkusCreateOrUpdateNestedResourceTypeThird =
     outputSchema: SkusCreateOrUpdateNestedResourceTypeThirdOutput,
   }));
 // Input Schema
+export interface SkusDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  sku: string;
+}
 export const SkusDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -5967,12 +8431,12 @@ export const SkusDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
     apiVersion: "2024-09-01",
   }),
-);
-export type SkusDeleteInput = typeof SkusDeleteInput.Type;
+) as unknown as Schema.Codec<SkusDeleteInput>;
 
 // Output Schema
-export const SkusDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SkusDeleteOutput = typeof SkusDeleteOutput.Type;
+export type SkusDeleteOutput = void;
+export const SkusDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SkusDeleteOutput>;
 
 // The operation
 /**
@@ -5989,6 +8453,13 @@ export const SkusDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusDeleteOutput,
 }));
 // Input Schema
+export interface SkusDeleteNestedResourceTypeFirstInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  sku: string;
+}
 export const SkusDeleteNestedResourceTypeFirstInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6002,15 +8473,12 @@ export const SkusDeleteNestedResourceTypeFirstInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusDeleteNestedResourceTypeFirstInput =
-  typeof SkusDeleteNestedResourceTypeFirstInput.Type;
+  ) as unknown as Schema.Codec<SkusDeleteNestedResourceTypeFirstInput>;
 
 // Output Schema
+export type SkusDeleteNestedResourceTypeFirstOutput = void;
 export const SkusDeleteNestedResourceTypeFirstOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SkusDeleteNestedResourceTypeFirstOutput =
-  typeof SkusDeleteNestedResourceTypeFirstOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SkusDeleteNestedResourceTypeFirstOutput>;
 
 // The operation
 /**
@@ -6029,6 +8497,14 @@ export const SkusDeleteNestedResourceTypeFirst =
     outputSchema: SkusDeleteNestedResourceTypeFirstOutput,
   }));
 // Input Schema
+export interface SkusDeleteNestedResourceTypeSecondInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  sku: string;
+}
 export const SkusDeleteNestedResourceTypeSecondInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6043,15 +8519,12 @@ export const SkusDeleteNestedResourceTypeSecondInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusDeleteNestedResourceTypeSecondInput =
-  typeof SkusDeleteNestedResourceTypeSecondInput.Type;
+  ) as unknown as Schema.Codec<SkusDeleteNestedResourceTypeSecondInput>;
 
 // Output Schema
+export type SkusDeleteNestedResourceTypeSecondOutput = void;
 export const SkusDeleteNestedResourceTypeSecondOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SkusDeleteNestedResourceTypeSecondOutput =
-  typeof SkusDeleteNestedResourceTypeSecondOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SkusDeleteNestedResourceTypeSecondOutput>;
 
 // The operation
 /**
@@ -6071,6 +8544,15 @@ export const SkusDeleteNestedResourceTypeSecond =
     outputSchema: SkusDeleteNestedResourceTypeSecondOutput,
   }));
 // Input Schema
+export interface SkusDeleteNestedResourceTypeThirdInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  nestedResourceTypeThird: string;
+  sku: string;
+}
 export const SkusDeleteNestedResourceTypeThirdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6086,15 +8568,12 @@ export const SkusDeleteNestedResourceTypeThirdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusDeleteNestedResourceTypeThirdInput =
-  typeof SkusDeleteNestedResourceTypeThirdInput.Type;
+  ) as unknown as Schema.Codec<SkusDeleteNestedResourceTypeThirdInput>;
 
 // Output Schema
+export type SkusDeleteNestedResourceTypeThirdOutput = void;
 export const SkusDeleteNestedResourceTypeThirdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SkusDeleteNestedResourceTypeThirdOutput =
-  typeof SkusDeleteNestedResourceTypeThirdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SkusDeleteNestedResourceTypeThirdOutput>;
 
 // The operation
 /**
@@ -6115,6 +8594,12 @@ export const SkusDeleteNestedResourceTypeThird =
     outputSchema: SkusDeleteNestedResourceTypeThirdOutput,
   }));
 // Input Schema
+export interface SkusGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  sku: string;
+}
 export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   providerNamespace: Schema.String.pipe(T.PathParam()),
@@ -6126,10 +8611,22 @@ export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
     apiVersion: "2024-09-01",
   }),
-);
-export type SkusGetInput = typeof SkusGetInput.Type;
+) as unknown as Schema.Codec<SkusGetInput>;
 
 // Output Schema
+export interface SkusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6148,8 +8645,7 @@ export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SkusGetOutput = typeof SkusGetOutput.Type;
+}) as unknown as Schema.Codec<SkusGetOutput>;
 
 // The operation
 /**
@@ -6166,6 +8662,13 @@ export const SkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusGetOutput,
 }));
 // Input Schema
+export interface SkusGetNestedResourceTypeFirstInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  sku: string;
+}
 export const SkusGetNestedResourceTypeFirstInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6179,11 +8682,22 @@ export const SkusGetNestedResourceTypeFirstInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusGetNestedResourceTypeFirstInput =
-  typeof SkusGetNestedResourceTypeFirstInput.Type;
+  ) as unknown as Schema.Codec<SkusGetNestedResourceTypeFirstInput>;
 
 // Output Schema
+export interface SkusGetNestedResourceTypeFirstOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusGetNestedResourceTypeFirstOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6203,9 +8717,7 @@ export const SkusGetNestedResourceTypeFirstOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusGetNestedResourceTypeFirstOutput =
-  typeof SkusGetNestedResourceTypeFirstOutput.Type;
+  }) as unknown as Schema.Codec<SkusGetNestedResourceTypeFirstOutput>;
 
 // The operation
 /**
@@ -6224,6 +8736,14 @@ export const SkusGetNestedResourceTypeFirst =
     outputSchema: SkusGetNestedResourceTypeFirstOutput,
   }));
 // Input Schema
+export interface SkusGetNestedResourceTypeSecondInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  sku: string;
+}
 export const SkusGetNestedResourceTypeSecondInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6238,11 +8758,22 @@ export const SkusGetNestedResourceTypeSecondInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusGetNestedResourceTypeSecondInput =
-  typeof SkusGetNestedResourceTypeSecondInput.Type;
+  ) as unknown as Schema.Codec<SkusGetNestedResourceTypeSecondInput>;
 
 // Output Schema
+export interface SkusGetNestedResourceTypeSecondOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusGetNestedResourceTypeSecondOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6262,9 +8793,7 @@ export const SkusGetNestedResourceTypeSecondOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusGetNestedResourceTypeSecondOutput =
-  typeof SkusGetNestedResourceTypeSecondOutput.Type;
+  }) as unknown as Schema.Codec<SkusGetNestedResourceTypeSecondOutput>;
 
 // The operation
 /**
@@ -6284,6 +8813,15 @@ export const SkusGetNestedResourceTypeSecond =
     outputSchema: SkusGetNestedResourceTypeSecondOutput,
   }));
 // Input Schema
+export interface SkusGetNestedResourceTypeThirdInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  nestedResourceTypeThird: string;
+  sku: string;
+}
 export const SkusGetNestedResourceTypeThirdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6299,11 +8837,22 @@ export const SkusGetNestedResourceTypeThirdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusGetNestedResourceTypeThirdInput =
-  typeof SkusGetNestedResourceTypeThirdInput.Type;
+  ) as unknown as Schema.Codec<SkusGetNestedResourceTypeThirdInput>;
 
 // Output Schema
+export interface SkusGetNestedResourceTypeThirdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusGetNestedResourceTypeThirdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6323,9 +8872,7 @@ export const SkusGetNestedResourceTypeThirdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SkusGetNestedResourceTypeThirdOutput =
-  typeof SkusGetNestedResourceTypeThirdOutput.Type;
+  }) as unknown as Schema.Codec<SkusGetNestedResourceTypeThirdOutput>;
 
 // The operation
 /**
@@ -6346,6 +8893,11 @@ export const SkusGetNestedResourceTypeThird =
     outputSchema: SkusGetNestedResourceTypeThirdOutput,
   }));
 // Input Schema
+export interface SkusListByResourceTypeRegistrationsInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+}
 export const SkusListByResourceTypeRegistrationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6357,11 +8909,25 @@ export const SkusListByResourceTypeRegistrationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusListByResourceTypeRegistrationsInput =
-  typeof SkusListByResourceTypeRegistrationsInput.Type;
+  ) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsInput>;
 
 // Output Schema
+export interface SkusListByResourceTypeRegistrationsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkusListByResourceTypeRegistrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6396,9 +8962,7 @@ export const SkusListByResourceTypeRegistrationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListByResourceTypeRegistrationsOutput =
-  typeof SkusListByResourceTypeRegistrationsOutput.Type;
+  }) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsOutput>;
 
 // The operation
 /**
@@ -6415,6 +8979,12 @@ export const SkusListByResourceTypeRegistrations =
     outputSchema: SkusListByResourceTypeRegistrationsOutput,
   }));
 // Input Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6427,11 +8997,25 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput.Type;
+  ) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeFirstInput>;
 
 // Output Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6466,9 +9050,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput.Type;
+  }) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput>;
 
 // The operation
 /**
@@ -6488,6 +9070,13 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirst =
       SkusListByResourceTypeRegistrationsNestedResourceTypeFirstOutput,
   }));
 // Input Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6501,11 +9090,25 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput.Type;
+  ) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeSecondInput>;
 
 // Output Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6540,9 +9143,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput.Type;
+  }) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput>;
 
 // The operation
 /**
@@ -6563,6 +9164,14 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecond =
       SkusListByResourceTypeRegistrationsNestedResourceTypeSecondOutput,
   }));
 // Input Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  resourceType: string;
+  nestedResourceTypeFirst: string;
+  nestedResourceTypeSecond: string;
+  nestedResourceTypeThird: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6577,11 +9186,25 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
       apiVersion: "2024-09-01",
     }),
-  );
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput.Type;
+  ) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeThirdInput>;
 
 // Output Schema
+export interface SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6616,9 +9239,7 @@ export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput =
-  typeof SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput.Type;
+  }) as unknown as Schema.Codec<SkusListByResourceTypeRegistrationsNestedResourceTypeThirdOutput>;
 
 // The operation
 /**

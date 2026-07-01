@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListProjectsInput {
+  cursor?: string;
+  limit?: number;
+  search?: string;
+  org_id?: string;
+  timeout?: number;
+  recoverable?: boolean;
+}
 export const ListProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
@@ -10,10 +18,87 @@ export const ListProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_id: Schema.optional(Schema.String),
   timeout: Schema.optional(Schema.Number),
   recoverable: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/projects" }));
-export type ListProjectsInput = typeof ListProjectsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/projects" }),
+) as unknown as Schema.Codec<ListProjectsInput>;
 
 // Output Schema
+export interface ListProjectsOutput {
+  projects: {
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    active_time: number;
+    cpu_used_sec: number;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    quota_reset_at?: string;
+    owner_id: string;
+    compute_last_active_at?: string;
+    org_id?: string;
+    org_name?: string;
+    history_retention_seconds?: number;
+    hipaa_enabled_at?: string;
+    deleted_at?: string;
+    recoverable_until?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  }[];
+  unavailable_project_ids?: string[];
+  pagination?: { cursor: string };
+  applications: Record<
+    string,
+    ("vercel" | "github" | "datadog" | "opentelemetry")[]
+  >;
+  integrations: Record<
+    string,
+    ("vercel" | "github" | "datadog" | "opentelemetry")[]
+  >;
+}
 export const ListProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   projects: Schema.Array(
     Schema.Struct({
@@ -95,6 +180,9 @@ export const ListProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       hipaa_enabled_at: Schema.optional(Schema.String),
       deleted_at: Schema.optional(Schema.String),
       recoverable_until: Schema.optional(Schema.String),
+      effective_project_permission: Schema.optional(
+        Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+      ),
     }),
   ),
   unavailable_project_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -115,16 +203,17 @@ export const ListProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literals(["vercel", "github", "datadog", "opentelemetry"]),
     ),
   ),
-});
-export type ListProjectsOutput = typeof ListProjectsOutput.Type;
+}) as unknown as Schema.Codec<ListProjectsOutput>;
 
 // The operation
 /**
  * List projects
  *
- * Retrieves a list of projects for an organization.
- * You may need to specify an org_id parameter depending on your API key type.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * Retrieves a list of projects for the specified organization.
+ * If using a personal API key, include the `org_id` parameter to specify which organization to work with.
+ * If using an org API key, `org_id` is automatically inferred from the key.
+ * For more information, see [Manage organizations using the Neon API](https://neon.com/docs/manage/orgs-api)
+ * and [Manage projects](https://neon.com/docs/manage/projects/).
  *
  * @param cursor - Specify the cursor value from the previous response to retrieve the next batch of projects.
  * @param limit - Specify a value from 1 to 400 to limit number of projects in the response.

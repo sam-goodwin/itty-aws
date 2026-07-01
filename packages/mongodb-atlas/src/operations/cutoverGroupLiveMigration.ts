@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CutoverGroupLiveMigrationInput {
+  groupId: string;
+  liveMigrationId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CutoverGroupLiveMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CutoverGroupLiveMigrationInput =
       method: "PUT",
       path: "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover",
     }),
-  );
-export type CutoverGroupLiveMigrationInput =
-  typeof CutoverGroupLiveMigrationInput.Type;
+  ) as unknown as Schema.Codec<CutoverGroupLiveMigrationInput>;
 
 // Output Schema
+export type CutoverGroupLiveMigrationOutput = void;
 export const CutoverGroupLiveMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CutoverGroupLiveMigrationOutput =
-  typeof CutoverGroupLiveMigrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CutoverGroupLiveMigrationOutput>;
 
 // The operation
 /**

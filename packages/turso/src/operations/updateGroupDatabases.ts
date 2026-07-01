@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupDatabasesInput {
+  organizationSlug: string;
+  groupName: string;
+}
 export const UpdateGroupDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const UpdateGroupDatabasesInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/update",
     }),
-  );
-export type UpdateGroupDatabasesInput = typeof UpdateGroupDatabasesInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupDatabasesInput>;
 
 // Output Schema
+export type UpdateGroupDatabasesOutput = void;
 export const UpdateGroupDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupDatabasesOutput = typeof UpdateGroupDatabasesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabasesOutput>;
 
 // The operation
 /**

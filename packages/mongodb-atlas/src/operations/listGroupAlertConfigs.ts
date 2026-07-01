@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupAlertConfigsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupAlertConfigsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,20 +25,18 @@ export const ListGroupAlertConfigsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs",
     }),
-  );
-export type ListGroupAlertConfigsInput = typeof ListGroupAlertConfigsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupAlertConfigsInput>;
 
 // Output Schema
+export type ListGroupAlertConfigsOutput = void;
 export const ListGroupAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupAlertConfigsOutput =
-  typeof ListGroupAlertConfigsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertConfigsOutput>;
 
 // The operation
 /**
  * Return All Alert Configurations in One Project
  *
- * Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns all alert configurations for one project. These alert configurations apply to any component in the project. Alert configurations define the triggers and notification methods for alerts.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

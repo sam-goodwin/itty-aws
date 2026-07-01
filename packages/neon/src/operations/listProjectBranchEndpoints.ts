@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListProjectBranchEndpointsInput {
+  project_id: string;
+  branch_id: string;
+}
 export const ListProjectBranchEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,46 @@ export const ListProjectBranchEndpointsInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/endpoints",
     }),
-  );
-export type ListProjectBranchEndpointsInput =
-  typeof ListProjectBranchEndpointsInput.Type;
+  ) as unknown as Schema.Codec<ListProjectBranchEndpointsInput>;
 
 // Output Schema
+export interface ListProjectBranchEndpointsOutput {
+  endpoints: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  }[];
+}
 export const ListProjectBranchEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
@@ -65,9 +104,7 @@ export const ListProjectBranchEndpointsOutput =
         compute_release_version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ListProjectBranchEndpointsOutput =
-  typeof ListProjectBranchEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<ListProjectBranchEndpointsOutput>;
 
 // The operation
 /**
@@ -76,8 +113,6 @@ export type ListProjectBranchEndpointsOutput =
  * Retrieves a list of compute endpoints for the specified branch.
  * Neon permits only one read-write compute endpoint per branch.
  * A branch can have multiple read-only compute endpoints.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

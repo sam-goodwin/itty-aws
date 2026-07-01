@@ -3,16 +3,75 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface CreateOrgInput {
+  edgeDeployment?: string;
+  name: string;
+}
 export const CreateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   edgeDeployment: Schema.optional(Schema.String),
   name: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v2/orgs" }));
-export type CreateOrgInput = typeof CreateOrgInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/orgs" }),
+) as unknown as Schema.Codec<CreateOrgInput>;
 
 // Output Schema
+export interface CreateOrgOutput {
+  defaultEdgeDeployment?: string;
+  firstFailedPayment?: string;
+  id: string;
+  lastUsageSync: string;
+  license: {
+    apiRateLimitPerSecond?: number;
+    billingPeriodEnd?: string;
+    billingPeriodStart?: string;
+    defaultEdgeDeployment?: string;
+    edgeDeployments?: ReadonlyArray<string>;
+    expiresAt?: string | null;
+    features?: Record<string, boolean>;
+    id: string;
+    issuedAt?: string;
+    issuedTo?: string;
+    issuer?: string;
+    maxAuditWindowSeconds?: number;
+    maxDatasets?: number;
+    maxEndpoints?: number;
+    maxFields?: number;
+    maxMonitors?: number;
+    maxQueryWindowSeconds?: number;
+    maxUsers?: number;
+    monthlyIngestGb?: number;
+    monthlyQueryGbHours?: number;
+    storageAllowanceGB?: number;
+    tier:
+      | "personal"
+      | "teamMonthlyAws"
+      | "axiomCloud"
+      | "teamPlus"
+      | "enterprise"
+      | "comped"
+      | "accelerator";
+    validFrom?: string;
+    withAuths?: ReadonlyArray<string>;
+  };
+  metaCreated?: string;
+  metaModified?: string;
+  metaVersion?: string;
+  name: string;
+  paymentStatus: "na" | "failed" | "success" | "blocked";
+  plan:
+    | "personal"
+    | "teamMonthlyAws"
+    | "axiomCloud"
+    | "teamPlus"
+    | "enterprise"
+    | "comped"
+    | "accelerator";
+  planCreated: string;
+  primaryEmail: string;
+  role?: string;
+}
 export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
-  defaultRegion: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
   id: Schema.String,
   lastUsageSync: Schema.String,
@@ -21,7 +80,6 @@ export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billingPeriodEnd: Schema.optional(Schema.String),
     billingPeriodStart: Schema.optional(Schema.String),
     defaultEdgeDeployment: Schema.optional(Schema.String),
-    defaultRegion: Schema.optional(Schema.String),
     edgeDeployments: Schema.optional(Schema.Array(Schema.String)),
     expiresAt: Schema.optional(Schema.NullOr(Schema.String)),
     features: Schema.optional(Schema.Record(Schema.String, Schema.Boolean)),
@@ -38,17 +96,15 @@ export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     maxUsers: Schema.optional(Schema.Number),
     monthlyIngestGb: Schema.optional(Schema.Number),
     monthlyQueryGbHours: Schema.optional(Schema.Number),
-    regions: Schema.optional(Schema.Array(Schema.String)),
     storageAllowanceGB: Schema.optional(Schema.Number),
     tier: Schema.Literals([
       "personal",
-      "basicDirect",
-      "teamMonthlyDirect",
       "teamMonthlyAws",
       "axiomCloud",
       "teamPlus",
       "enterprise",
       "comped",
+      "accelerator",
     ]),
     validFrom: Schema.optional(Schema.String),
     withAuths: Schema.optional(Schema.Array(Schema.String)),
@@ -60,19 +116,17 @@ export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   paymentStatus: Schema.Literals(["na", "failed", "success", "blocked"]),
   plan: Schema.Literals([
     "personal",
-    "basicDirect",
-    "teamMonthlyDirect",
     "teamMonthlyAws",
     "axiomCloud",
     "teamPlus",
     "enterprise",
     "comped",
+    "accelerator",
   ]),
   planCreated: Schema.String,
   primaryEmail: Schema.String,
   role: Schema.optional(Schema.String),
-});
-export type CreateOrgOutput = typeof CreateOrgOutput.Type;
+}) as unknown as Schema.Codec<CreateOrgOutput>;
 
 // The operation
 export const createOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

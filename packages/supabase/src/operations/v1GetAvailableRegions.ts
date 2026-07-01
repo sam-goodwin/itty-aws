@@ -4,6 +4,30 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetAvailableRegionsInput {
+  organization_slug: string;
+  continent?: "NA" | "SA" | "EU" | "AF" | "AS" | "OC" | "AN";
+  desired_instance_size?:
+    | "nano"
+    | "micro"
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "2xlarge"
+    | "4xlarge"
+    | "8xlarge"
+    | "12xlarge"
+    | "16xlarge"
+    | "24xlarge"
+    | "24xlarge_optimized_memory"
+    | "24xlarge_optimized_cpu"
+    | "24xlarge_high_memory"
+    | "48xlarge"
+    | "48xlarge_optimized_memory"
+    | "48xlarge_optimized_cpu"
+    | "48xlarge_high_memory";
+}
 export const V1GetAvailableRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_slug: Schema.String,
@@ -33,10 +57,77 @@ export const V1GetAvailableRegionsInput =
         "48xlarge_high_memory",
       ]),
     ),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/available-regions" }));
-export type V1GetAvailableRegionsInput = typeof V1GetAvailableRegionsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/available-regions" }),
+  ) as unknown as Schema.Codec<V1GetAvailableRegionsInput>;
 
 // Output Schema
+export interface V1GetAvailableRegionsOutput {
+  recommendations: {
+    smartGroup: {
+      name: string;
+      code: "americas" | "emea" | "apac";
+      type: "smartGroup";
+    };
+    specific: {
+      name: string;
+      code:
+        | "us-east-1"
+        | "us-east-2"
+        | "us-west-1"
+        | "us-west-2"
+        | "ap-southeast-1"
+        | "ap-northeast-1"
+        | "ap-northeast-2"
+        | "ap-east-1"
+        | "ap-southeast-2"
+        | "eu-west-1"
+        | "eu-west-2"
+        | "eu-west-3"
+        | "eu-north-1"
+        | "eu-central-1"
+        | "eu-central-2"
+        | "ca-central-1"
+        | "ap-south-1"
+        | "sa-east-1";
+      type: "specific";
+      provider: "AWS" | "FLY" | "AWS_K8S" | "AWS_NIMBUS";
+      status?: "capacity" | "other";
+    }[];
+  };
+  all: {
+    smartGroup: {
+      name: string;
+      code: "americas" | "emea" | "apac";
+      type: "smartGroup";
+    }[];
+    specific: {
+      name: string;
+      code:
+        | "us-east-1"
+        | "us-east-2"
+        | "us-west-1"
+        | "us-west-2"
+        | "ap-southeast-1"
+        | "ap-northeast-1"
+        | "ap-northeast-2"
+        | "ap-east-1"
+        | "ap-southeast-2"
+        | "eu-west-1"
+        | "eu-west-2"
+        | "eu-west-3"
+        | "eu-north-1"
+        | "eu-central-1"
+        | "eu-central-2"
+        | "ca-central-1"
+        | "ap-south-1"
+        | "sa-east-1";
+      type: "specific";
+      provider: "AWS" | "FLY" | "AWS_K8S" | "AWS_NIMBUS";
+      status?: "capacity" | "other";
+    }[];
+  };
+}
 export const V1GetAvailableRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     recommendations: Schema.Struct({
@@ -111,9 +202,7 @@ export const V1GetAvailableRegionsOutput =
         }),
       ),
     }),
-  });
-export type V1GetAvailableRegionsOutput =
-  typeof V1GetAvailableRegionsOutput.Type;
+  }) as unknown as Schema.Codec<V1GetAvailableRegionsOutput>;
 
 // The operation
 /**

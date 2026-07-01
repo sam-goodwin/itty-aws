@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetLegacySigningKeyInput {
+  ref: string;
+}
 export const V1GetLegacySigningKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,10 +15,17 @@ export const V1GetLegacySigningKeyInput =
       method: "GET",
       path: "/v1/projects/{ref}/config/auth/signing-keys/legacy",
     }),
-  );
-export type V1GetLegacySigningKeyInput = typeof V1GetLegacySigningKeyInput.Type;
+  ) as unknown as Schema.Codec<V1GetLegacySigningKeyInput>;
 
 // Output Schema
+export interface V1GetLegacySigningKeyOutput {
+  id: string;
+  algorithm: "EdDSA" | "ES256" | "RS256" | "HS256";
+  status: "in_use" | "previously_used" | "revoked" | "standby";
+  public_jwk?: unknown | null;
+  created_at: string;
+  updated_at: string;
+}
 export const V1GetLegacySigningKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -29,9 +39,7 @@ export const V1GetLegacySigningKeyOutput =
     public_jwk: Schema.optional(Schema.NullOr(Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type V1GetLegacySigningKeyOutput =
-  typeof V1GetLegacySigningKeyOutput.Type;
+  }) as unknown as Schema.Codec<V1GetLegacySigningKeyOutput>;
 
 // The operation
 /**

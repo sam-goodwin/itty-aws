@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsLinearTeamsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsLinearTeamsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,21 @@ export const IntegrationsLinearTeamsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/linear_teams/",
     }),
-  );
-export type IntegrationsLinearTeamsRetrieveInput =
-  typeof IntegrationsLinearTeamsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsLinearTeamsRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsLinearTeamsRetrieveOutput {
+  teams: { id: string; name: string }[];
+}
 export const IntegrationsLinearTeamsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsLinearTeamsRetrieveOutput =
-  typeof IntegrationsLinearTeamsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    teams: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        name: Schema.String,
+      }),
+    ),
+  }) as unknown as Schema.Codec<IntegrationsLinearTeamsRetrieveOutput>;
 
 // The operation
 /**

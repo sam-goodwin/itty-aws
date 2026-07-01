@@ -4,12 +4,52 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ActivityRunsQueryByPipelineRunInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  runId: string;
+  continuationToken?: string;
+  lastUpdatedAfter: string;
+  lastUpdatedBefore: string;
+  filters?: {
+    operand:
+      | "PipelineName"
+      | "Status"
+      | "RunStart"
+      | "RunEnd"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "ActivityType"
+      | "TriggerName"
+      | "TriggerRunTimestamp"
+      | "RunGroupId"
+      | "LatestOnly";
+    operator: "Equals" | "NotEquals" | "In" | "NotIn";
+    values: string[];
+  }[];
+  orderBy?: {
+    orderBy:
+      | "RunStart"
+      | "RunEnd"
+      | "PipelineName"
+      | "Status"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "TriggerName"
+      | "TriggerRunTimestamp";
+    order: "ASC" | "DESC";
+  }[];
+}
 export const ActivityRunsQueryByPipelineRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -62,14 +102,30 @@ export const ActivityRunsQueryByPipelineRunInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/queryActivityruns",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/queryActivityruns",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ActivityRunsQueryByPipelineRunInput =
-  typeof ActivityRunsQueryByPipelineRunInput.Type;
+  ) as unknown as Schema.Codec<ActivityRunsQueryByPipelineRunInput>;
 
 // Output Schema
+export interface ActivityRunsQueryByPipelineRunOutput {
+  value: {
+    pipelineName?: string;
+    pipelineRunId?: string;
+    activityName?: string;
+    activityType?: string;
+    activityRunId?: string;
+    linkedServiceName?: string;
+    status?: string;
+    activityRunStart?: string;
+    activityRunEnd?: string;
+    durationInMs?: number;
+    input?: unknown;
+    output?: unknown;
+    error?: unknown;
+  }[];
+  continuationToken?: string;
+}
 export const ActivityRunsQueryByPipelineRunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -90,9 +146,7 @@ export const ActivityRunsQueryByPipelineRunOutput =
       }),
     ),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type ActivityRunsQueryByPipelineRunOutput =
-  typeof ActivityRunsQueryByPipelineRunOutput.Type;
+  }) as unknown as Schema.Codec<ActivityRunsQueryByPipelineRunOutput>;
 
 // The operation
 /**
@@ -109,6 +163,100 @@ export const ActivityRunsQueryByPipelineRun =
     outputSchema: ActivityRunsQueryByPipelineRunOutput,
   }));
 // Input Schema
+export interface ChangeDataCaptureCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+  properties: {
+    folder?: { name?: string };
+    description?: string;
+    sourceConnectionsInfo: {
+      sourceEntities?: {
+        name?: string;
+        properties?: {
+          schema?: { name?: string; dataType?: string }[];
+          dslConnectorProperties?: { name?: string; value?: unknown }[];
+        };
+      }[];
+      connection?: {
+        linkedService?: {
+          type: "LinkedServiceReference";
+          referenceName: string;
+          parameters?: Record<string, unknown>;
+        };
+        linkedServiceType?: string;
+        type: "linkedservicetype";
+        isInlineDataset?: boolean;
+        commonDslConnectorProperties?: { name?: string; value?: unknown }[];
+      };
+    }[];
+    targetConnectionsInfo: {
+      targetEntities?: {
+        name?: string;
+        properties?: {
+          schema?: { name?: string; dataType?: string }[];
+          dslConnectorProperties?: { name?: string; value?: unknown }[];
+        };
+      }[];
+      connection?: {
+        linkedService?: {
+          type: "LinkedServiceReference";
+          referenceName: string;
+          parameters?: Record<string, unknown>;
+        };
+        linkedServiceType?: string;
+        type: "linkedservicetype";
+        isInlineDataset?: boolean;
+        commonDslConnectorProperties?: { name?: string; value?: unknown }[];
+      };
+      dataMapperMappings?: {
+        targetEntityName?: string;
+        sourceEntityName?: string;
+        sourceConnectionReference?: {
+          connectionName?: string;
+          type?: "linkedservicetype";
+        };
+        attributeMappingInfo?: {
+          attributeMappings?: {
+            name?: string;
+            type?: "Direct" | "Derived" | "Aggregate";
+            functionName?: string;
+            expression?: string;
+            attributeReference?: {
+              name?: string;
+              entity?: string;
+              entityConnectionReference?: {
+                connectionName?: string;
+                type?: "linkedservicetype";
+              };
+            };
+            attributeReferences?: {
+              name?: string;
+              entity?: string;
+              entityConnectionReference?: {
+                connectionName?: string;
+                type?: "linkedservicetype";
+              };
+            }[];
+          }[];
+        };
+        sourceDenormalizeInfo?: unknown;
+      }[];
+      relationships?: unknown[];
+    }[];
+    policy: {
+      mode?: string;
+      recurrence?: {
+        frequency?: "Hour" | "Minute" | "Second";
+        interval?: number;
+      };
+    };
+    allowVNetOverride?: boolean;
+    status?: string;
+  };
+  etag?: string;
+}
 export const ChangeDataCaptureCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -321,11 +469,22 @@ export const ChangeDataCaptureCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureCreateOrUpdateInput =
-  typeof ChangeDataCaptureCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureCreateOrUpdateInput>;
 
 // Output Schema
+export interface ChangeDataCaptureCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ChangeDataCaptureCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -345,9 +504,7 @@ export const ChangeDataCaptureCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ChangeDataCaptureCreateOrUpdateOutput =
-  typeof ChangeDataCaptureCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ChangeDataCaptureCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -366,6 +523,12 @@ export const ChangeDataCaptureCreateOrUpdate =
     outputSchema: ChangeDataCaptureCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ChangeDataCaptureDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+}
 export const ChangeDataCaptureDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -378,15 +541,12 @@ export const ChangeDataCaptureDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureDeleteInput =
-  typeof ChangeDataCaptureDeleteInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureDeleteInput>;
 
 // Output Schema
+export type ChangeDataCaptureDeleteOutput = void;
 export const ChangeDataCaptureDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ChangeDataCaptureDeleteOutput =
-  typeof ChangeDataCaptureDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureDeleteOutput>;
 
 // The operation
 /**
@@ -405,6 +565,12 @@ export const ChangeDataCaptureDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ChangeDataCaptureGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+}
 export const ChangeDataCaptureGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -417,10 +583,22 @@ export const ChangeDataCaptureGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureGetInput = typeof ChangeDataCaptureGetInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureGetInput>;
 
 // Output Schema
+export interface ChangeDataCaptureGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ChangeDataCaptureGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -440,8 +618,7 @@ export const ChangeDataCaptureGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ChangeDataCaptureGetOutput = typeof ChangeDataCaptureGetOutput.Type;
+  }) as unknown as Schema.Codec<ChangeDataCaptureGetOutput>;
 
 // The operation
 /**
@@ -461,6 +638,11 @@ export const ChangeDataCaptureGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ChangeDataCaptureListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const ChangeDataCaptureListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -472,11 +654,25 @@ export const ChangeDataCaptureListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureListByFactoryInput =
-  typeof ChangeDataCaptureListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureListByFactoryInput>;
 
 // Output Schema
+export interface ChangeDataCaptureListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ChangeDataCaptureListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -511,9 +707,7 @@ export const ChangeDataCaptureListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ChangeDataCaptureListByFactoryOutput =
-  typeof ChangeDataCaptureListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<ChangeDataCaptureListByFactoryOutput>;
 
 // The operation
 /**
@@ -530,6 +724,12 @@ export const ChangeDataCaptureListByFactory =
     outputSchema: ChangeDataCaptureListByFactoryOutput,
   }));
 // Input Schema
+export interface ChangeDataCaptureStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+}
 export const ChangeDataCaptureStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -542,15 +742,12 @@ export const ChangeDataCaptureStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/start",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureStartInput =
-  typeof ChangeDataCaptureStartInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureStartInput>;
 
 // Output Schema
+export type ChangeDataCaptureStartOutput = void;
 export const ChangeDataCaptureStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ChangeDataCaptureStartOutput =
-  typeof ChangeDataCaptureStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStartOutput>;
 
 // The operation
 /**
@@ -569,6 +766,12 @@ export const ChangeDataCaptureStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ChangeDataCaptureStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+}
 export const ChangeDataCaptureStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -581,15 +784,12 @@ export const ChangeDataCaptureStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/status",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureStatusInput =
-  typeof ChangeDataCaptureStatusInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureStatusInput>;
 
 // Output Schema
+export type ChangeDataCaptureStatusOutput = string;
 export const ChangeDataCaptureStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type ChangeDataCaptureStatusOutput =
-  typeof ChangeDataCaptureStatusOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<ChangeDataCaptureStatusOutput>;
 
 // The operation
 /**
@@ -608,6 +808,12 @@ export const ChangeDataCaptureStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ChangeDataCaptureStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  changeDataCaptureName: string;
+}
 export const ChangeDataCaptureStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -620,14 +826,12 @@ export const ChangeDataCaptureStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}/stop",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ChangeDataCaptureStopInput = typeof ChangeDataCaptureStopInput.Type;
+  ) as unknown as Schema.Codec<ChangeDataCaptureStopInput>;
 
 // Output Schema
+export type ChangeDataCaptureStopOutput = void;
 export const ChangeDataCaptureStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ChangeDataCaptureStopOutput =
-  typeof ChangeDataCaptureStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ChangeDataCaptureStopOutput>;
 
 // The operation
 /**
@@ -646,6 +850,14 @@ export const ChangeDataCaptureStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialOperationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  credentialName: string;
+  properties: { type: string; description?: string; annotations?: unknown[] };
+  etag?: string;
+}
 export const CredentialOperationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -664,11 +876,22 @@ export const CredentialOperationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type CredentialOperationsCreateOrUpdateInput =
-  typeof CredentialOperationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CredentialOperationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CredentialOperationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialOperationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -688,9 +911,7 @@ export const CredentialOperationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialOperationsCreateOrUpdateOutput =
-  typeof CredentialOperationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CredentialOperationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -709,6 +930,12 @@ export const CredentialOperationsCreateOrUpdate =
     outputSchema: CredentialOperationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CredentialOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  credentialName: string;
+}
 export const CredentialOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -721,15 +948,12 @@ export const CredentialOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type CredentialOperationsDeleteInput =
-  typeof CredentialOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CredentialOperationsDeleteInput>;
 
 // Output Schema
+export type CredentialOperationsDeleteOutput = void;
 export const CredentialOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CredentialOperationsDeleteOutput =
-  typeof CredentialOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CredentialOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -748,6 +972,12 @@ export const CredentialOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  credentialName: string;
+}
 export const CredentialOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -760,11 +990,22 @@ export const CredentialOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type CredentialOperationsGetInput =
-  typeof CredentialOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<CredentialOperationsGetInput>;
 
 // Output Schema
+export interface CredentialOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CredentialOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -784,9 +1025,7 @@ export const CredentialOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CredentialOperationsGetOutput =
-  typeof CredentialOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<CredentialOperationsGetOutput>;
 
 // The operation
 /**
@@ -806,6 +1045,11 @@ export const CredentialOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CredentialOperationsListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const CredentialOperationsListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -817,11 +1061,25 @@ export const CredentialOperationsListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials",
       apiVersion: "2018-06-01",
     }),
-  );
-export type CredentialOperationsListByFactoryInput =
-  typeof CredentialOperationsListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<CredentialOperationsListByFactoryInput>;
 
 // Output Schema
+export interface CredentialOperationsListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CredentialOperationsListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -856,9 +1114,7 @@ export const CredentialOperationsListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CredentialOperationsListByFactoryOutput =
-  typeof CredentialOperationsListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<CredentialOperationsListByFactoryOutput>;
 
 // The operation
 /**
@@ -875,6 +1131,29 @@ export const CredentialOperationsListByFactory =
     outputSchema: CredentialOperationsListByFactoryOutput,
   }));
 // Input Schema
+export interface DataFlowDebugSessionAddDataFlowInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  sessionId?: string;
+  dataFlow?: { name?: string };
+  dataFlows?: { name?: string }[];
+  datasets?: { name?: string }[];
+  linkedServices?: { name?: string }[];
+  staging?: {
+    linkedService?: {
+      type: "LinkedServiceReference";
+      referenceName: string;
+      parameters?: Record<string, unknown>;
+    };
+    folderPath?: unknown;
+  };
+  debugSettings?: {
+    sourceSettings?: { sourceName?: string; rowLimit?: number }[];
+    parameters?: Record<string, unknown>;
+    datasetParameters?: unknown;
+  };
+}
 export const DataFlowDebugSessionAddDataFlowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -943,17 +1222,16 @@ export const DataFlowDebugSessionAddDataFlowInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/addDataFlowToDebugSession",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowDebugSessionAddDataFlowInput =
-  typeof DataFlowDebugSessionAddDataFlowInput.Type;
+  ) as unknown as Schema.Codec<DataFlowDebugSessionAddDataFlowInput>;
 
 // Output Schema
+export interface DataFlowDebugSessionAddDataFlowOutput {
+  jobVersion?: string;
+}
 export const DataFlowDebugSessionAddDataFlowOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobVersion: Schema.optional(Schema.String),
-  });
-export type DataFlowDebugSessionAddDataFlowOutput =
-  typeof DataFlowDebugSessionAddDataFlowOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowDebugSessionAddDataFlowOutput>;
 
 // The operation
 /**
@@ -970,6 +1248,15 @@ export const DataFlowDebugSessionAddDataFlow =
     outputSchema: DataFlowDebugSessionAddDataFlowOutput,
   }));
 // Input Schema
+export interface DataFlowDebugSessionCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  computeType?: string;
+  coreCount?: number;
+  timeToLive?: number;
+  integrationRuntime?: { name?: string };
+}
 export const DataFlowDebugSessionCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -989,18 +1276,18 @@ export const DataFlowDebugSessionCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/createDataFlowDebugSession",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowDebugSessionCreateInput =
-  typeof DataFlowDebugSessionCreateInput.Type;
+  ) as unknown as Schema.Codec<DataFlowDebugSessionCreateInput>;
 
 // Output Schema
+export interface DataFlowDebugSessionCreateOutput {
+  status?: string;
+  sessionId?: string;
+}
 export const DataFlowDebugSessionCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     sessionId: Schema.optional(Schema.String),
-  });
-export type DataFlowDebugSessionCreateOutput =
-  typeof DataFlowDebugSessionCreateOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowDebugSessionCreateOutput>;
 
 // The operation
 /**
@@ -1018,6 +1305,12 @@ export const DataFlowDebugSessionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataFlowDebugSessionDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  sessionId?: string;
+}
 export const DataFlowDebugSessionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1030,15 +1323,12 @@ export const DataFlowDebugSessionDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/deleteDataFlowDebugSession",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowDebugSessionDeleteInput =
-  typeof DataFlowDebugSessionDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataFlowDebugSessionDeleteInput>;
 
 // Output Schema
+export type DataFlowDebugSessionDeleteOutput = void;
 export const DataFlowDebugSessionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataFlowDebugSessionDeleteOutput =
-  typeof DataFlowDebugSessionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowDebugSessionDeleteOutput>;
 
 // The operation
 /**
@@ -1056,6 +1346,22 @@ export const DataFlowDebugSessionDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataFlowDebugSessionExecuteCommandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  sessionId?: string;
+  command?:
+    | "executePreviewQuery"
+    | "executeStatisticsQuery"
+    | "executeExpressionQuery";
+  commandPayload?: {
+    streamName: string;
+    rowLimits?: number;
+    columns?: string[];
+    expression?: string;
+  };
+}
 export const DataFlowDebugSessionExecuteCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1083,18 +1389,18 @@ export const DataFlowDebugSessionExecuteCommandInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/executeDataFlowDebugCommand",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowDebugSessionExecuteCommandInput =
-  typeof DataFlowDebugSessionExecuteCommandInput.Type;
+  ) as unknown as Schema.Codec<DataFlowDebugSessionExecuteCommandInput>;
 
 // Output Schema
+export interface DataFlowDebugSessionExecuteCommandOutput {
+  status?: string;
+  data?: string;
+}
 export const DataFlowDebugSessionExecuteCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
-  });
-export type DataFlowDebugSessionExecuteCommandOutput =
-  typeof DataFlowDebugSessionExecuteCommandOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowDebugSessionExecuteCommandOutput>;
 
 // The operation
 /**
@@ -1111,6 +1417,11 @@ export const DataFlowDebugSessionExecuteCommand =
     outputSchema: DataFlowDebugSessionExecuteCommandOutput,
   }));
 // Input Schema
+export interface DataFlowDebugSessionQueryByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const DataFlowDebugSessionQueryByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1122,11 +1433,23 @@ export const DataFlowDebugSessionQueryByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowDebugSessionQueryByFactoryInput =
-  typeof DataFlowDebugSessionQueryByFactoryInput.Type;
+  ) as unknown as Schema.Codec<DataFlowDebugSessionQueryByFactoryInput>;
 
 // Output Schema
+export interface DataFlowDebugSessionQueryByFactoryOutput {
+  value: {
+    dataFlowName?: string;
+    computeType?: string;
+    coreCount?: number;
+    nodeCount?: number;
+    integrationRuntimeName?: string;
+    sessionId?: string;
+    startTime?: string;
+    timeToLiveInMinutes?: number;
+    lastActivityTime?: string;
+  }[];
+  nextLink?: string;
+}
 export const DataFlowDebugSessionQueryByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1143,9 +1466,7 @@ export const DataFlowDebugSessionQueryByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataFlowDebugSessionQueryByFactoryOutput =
-  typeof DataFlowDebugSessionQueryByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowDebugSessionQueryByFactoryOutput>;
 
 // The operation
 /**
@@ -1162,6 +1483,19 @@ export const DataFlowDebugSessionQueryByFactory =
     outputSchema: DataFlowDebugSessionQueryByFactoryOutput,
   }));
 // Input Schema
+export interface DataFlowsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  dataFlowName: string;
+  properties: {
+    type: string;
+    description?: string;
+    annotations?: unknown[];
+    folder?: { name?: string };
+  };
+  etag?: string;
+}
 export const DataFlowsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1185,11 +1519,22 @@ export const DataFlowsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowsCreateOrUpdateInput =
-  typeof DataFlowsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataFlowsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataFlowsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataFlowsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1209,9 +1554,7 @@ export const DataFlowsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataFlowsCreateOrUpdateOutput =
-  typeof DataFlowsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1231,6 +1574,12 @@ export const DataFlowsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataFlowsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  dataFlowName: string;
+}
 export const DataFlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1242,12 +1591,12 @@ export const DataFlowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type DataFlowsDeleteInput = typeof DataFlowsDeleteInput.Type;
+) as unknown as Schema.Codec<DataFlowsDeleteInput>;
 
 // Output Schema
-export const DataFlowsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataFlowsDeleteOutput = typeof DataFlowsDeleteOutput.Type;
+export type DataFlowsDeleteOutput = void;
+export const DataFlowsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataFlowsDeleteOutput>;
 
 // The operation
 /**
@@ -1264,6 +1613,12 @@ export const DataFlowsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataFlowsDeleteOutput,
 }));
 // Input Schema
+export interface DataFlowsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  dataFlowName: string;
+}
 export const DataFlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1275,10 +1630,22 @@ export const DataFlowsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows/{dataFlowName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type DataFlowsGetInput = typeof DataFlowsGetInput.Type;
+) as unknown as Schema.Codec<DataFlowsGetInput>;
 
 // Output Schema
+export interface DataFlowsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataFlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1297,8 +1664,7 @@ export const DataFlowsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataFlowsGetOutput = typeof DataFlowsGetOutput.Type;
+}) as unknown as Schema.Codec<DataFlowsGetOutput>;
 
 // The operation
 /**
@@ -1316,6 +1682,11 @@ export const DataFlowsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataFlowsGetOutput,
 }));
 // Input Schema
+export interface DataFlowsListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const DataFlowsListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1327,11 +1698,25 @@ export const DataFlowsListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DataFlowsListByFactoryInput =
-  typeof DataFlowsListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<DataFlowsListByFactoryInput>;
 
 // Output Schema
+export interface DataFlowsListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataFlowsListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1366,9 +1751,7 @@ export const DataFlowsListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataFlowsListByFactoryOutput =
-  typeof DataFlowsListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<DataFlowsListByFactoryOutput>;
 
 // The operation
 /**
@@ -1386,6 +1769,40 @@ export const DataFlowsListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatasetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  datasetName: string;
+  properties: {
+    type: string;
+    description?: string;
+    structure?: unknown;
+    schema?: unknown;
+    linkedServiceName: {
+      type: "LinkedServiceReference";
+      referenceName: string;
+      parameters?: Record<string, unknown>;
+    };
+    parameters?: Record<
+      string,
+      {
+        type:
+          | "Object"
+          | "String"
+          | "Int"
+          | "Float"
+          | "Bool"
+          | "Array"
+          | "SecureString";
+        defaultValue?: unknown;
+      }
+    >;
+    annotations?: unknown[];
+    folder?: { name?: string };
+  };
+  etag?: string;
+}
 export const DatasetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1435,11 +1852,22 @@ export const DatasetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DatasetsCreateOrUpdateInput =
-  typeof DatasetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatasetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatasetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatasetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1459,9 +1887,7 @@ export const DatasetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatasetsCreateOrUpdateOutput =
-  typeof DatasetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatasetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1481,6 +1907,12 @@ export const DatasetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatasetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  datasetName: string;
+}
 export const DatasetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1492,12 +1924,12 @@ export const DatasetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type DatasetsDeleteInput = typeof DatasetsDeleteInput.Type;
+) as unknown as Schema.Codec<DatasetsDeleteInput>;
 
 // Output Schema
-export const DatasetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatasetsDeleteOutput = typeof DatasetsDeleteOutput.Type;
+export type DatasetsDeleteOutput = void;
+export const DatasetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatasetsDeleteOutput>;
 
 // The operation
 /**
@@ -1514,6 +1946,12 @@ export const DatasetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatasetsDeleteOutput,
 }));
 // Input Schema
+export interface DatasetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  datasetName: string;
+}
 export const DatasetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1525,10 +1963,22 @@ export const DatasetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets/{datasetName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type DatasetsGetInput = typeof DatasetsGetInput.Type;
+) as unknown as Schema.Codec<DatasetsGetInput>;
 
 // Output Schema
+export interface DatasetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatasetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1547,8 +1997,7 @@ export const DatasetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DatasetsGetOutput = typeof DatasetsGetOutput.Type;
+}) as unknown as Schema.Codec<DatasetsGetOutput>;
 
 // The operation
 /**
@@ -1566,6 +2015,11 @@ export const DatasetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatasetsGetOutput,
 }));
 // Input Schema
+export interface DatasetsListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const DatasetsListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1577,10 +2031,25 @@ export const DatasetsListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets",
       apiVersion: "2018-06-01",
     }),
-  );
-export type DatasetsListByFactoryInput = typeof DatasetsListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<DatasetsListByFactoryInput>;
 
 // Output Schema
+export interface DatasetsListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatasetsListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1615,9 +2084,7 @@ export const DatasetsListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatasetsListByFactoryOutput =
-  typeof DatasetsListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<DatasetsListByFactoryOutput>;
 
 // The operation
 /**
@@ -1635,6 +2102,12 @@ export const DatasetsListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExposureControlGetFeatureValueInput {
+  subscriptionId: string;
+  locationId: string;
+  featureName?: string;
+  featureType?: string;
+}
 export const ExposureControlGetFeatureValueInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1647,18 +2120,18 @@ export const ExposureControlGetFeatureValueInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/getFeatureValue",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ExposureControlGetFeatureValueInput =
-  typeof ExposureControlGetFeatureValueInput.Type;
+  ) as unknown as Schema.Codec<ExposureControlGetFeatureValueInput>;
 
 // Output Schema
+export interface ExposureControlGetFeatureValueOutput {
+  featureName?: string;
+  value?: string;
+}
 export const ExposureControlGetFeatureValueOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     featureName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  });
-export type ExposureControlGetFeatureValueOutput =
-  typeof ExposureControlGetFeatureValueOutput.Type;
+  }) as unknown as Schema.Codec<ExposureControlGetFeatureValueOutput>;
 
 // The operation
 /**
@@ -1674,6 +2147,13 @@ export const ExposureControlGetFeatureValue =
     outputSchema: ExposureControlGetFeatureValueOutput,
   }));
 // Input Schema
+export interface ExposureControlGetFeatureValueByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  featureName?: string;
+  featureType?: string;
+}
 export const ExposureControlGetFeatureValueByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1687,18 +2167,18 @@ export const ExposureControlGetFeatureValueByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getFeatureValue",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ExposureControlGetFeatureValueByFactoryInput =
-  typeof ExposureControlGetFeatureValueByFactoryInput.Type;
+  ) as unknown as Schema.Codec<ExposureControlGetFeatureValueByFactoryInput>;
 
 // Output Schema
+export interface ExposureControlGetFeatureValueByFactoryOutput {
+  featureName?: string;
+  value?: string;
+}
 export const ExposureControlGetFeatureValueByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     featureName: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
-  });
-export type ExposureControlGetFeatureValueByFactoryOutput =
-  typeof ExposureControlGetFeatureValueByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<ExposureControlGetFeatureValueByFactoryOutput>;
 
 // The operation
 /**
@@ -1715,6 +2195,12 @@ export const ExposureControlGetFeatureValueByFactory =
     outputSchema: ExposureControlGetFeatureValueByFactoryOutput,
   }));
 // Input Schema
+export interface ExposureControlQueryFeatureValuesByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  exposureControlRequests: { featureName?: string; featureType?: string }[];
+}
 export const ExposureControlQueryFeatureValuesByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1732,11 +2218,12 @@ export const ExposureControlQueryFeatureValuesByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryFeaturesValue",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ExposureControlQueryFeatureValuesByFactoryInput =
-  typeof ExposureControlQueryFeatureValuesByFactoryInput.Type;
+  ) as unknown as Schema.Codec<ExposureControlQueryFeatureValuesByFactoryInput>;
 
 // Output Schema
+export interface ExposureControlQueryFeatureValuesByFactoryOutput {
+  exposureControlResponses: { featureName?: string; value?: string }[];
+}
 export const ExposureControlQueryFeatureValuesByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exposureControlResponses: Schema.Array(
@@ -1745,9 +2232,7 @@ export const ExposureControlQueryFeatureValuesByFactoryOutput =
         value: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExposureControlQueryFeatureValuesByFactoryOutput =
-  typeof ExposureControlQueryFeatureValuesByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<ExposureControlQueryFeatureValuesByFactoryOutput>;
 
 // The operation
 /**
@@ -1764,6 +2249,20 @@ export const ExposureControlQueryFeatureValuesByFactory =
     outputSchema: ExposureControlQueryFeatureValuesByFactoryOutput,
   }));
 // Input Schema
+export interface FactoriesConfigureFactoryRepoInput {
+  subscriptionId: string;
+  locationId: string;
+  factoryResourceId?: string;
+  repoConfiguration?: {
+    type: string;
+    accountName: string;
+    repositoryName: string;
+    collaborationBranch: string;
+    rootFolder: string;
+    lastCommitId?: string;
+    disablePublish?: boolean;
+  };
+}
 export const FactoriesConfigureFactoryRepoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1786,11 +2285,22 @@ export const FactoriesConfigureFactoryRepoInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/configureFactoryRepo",
       apiVersion: "2018-06-01",
     }),
-  );
-export type FactoriesConfigureFactoryRepoInput =
-  typeof FactoriesConfigureFactoryRepoInput.Type;
+  ) as unknown as Schema.Codec<FactoriesConfigureFactoryRepoInput>;
 
 // Output Schema
+export interface FactoriesConfigureFactoryRepoOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FactoriesConfigureFactoryRepoOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1810,9 +2320,7 @@ export const FactoriesConfigureFactoryRepoOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FactoriesConfigureFactoryRepoOutput =
-  typeof FactoriesConfigureFactoryRepoOutput.Type;
+  }) as unknown as Schema.Codec<FactoriesConfigureFactoryRepoOutput>;
 
 // The operation
 /**
@@ -1828,6 +2336,49 @@ export const FactoriesConfigureFactoryRepo =
     outputSchema: FactoriesConfigureFactoryRepoOutput,
   }));
 // Input Schema
+export interface FactoriesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  properties?: {
+    provisioningState?: string;
+    createTime?: string;
+    version?: string;
+    purviewConfiguration?: { purviewResourceId?: string };
+    repoConfiguration?: {
+      type: string;
+      accountName: string;
+      repositoryName: string;
+      collaborationBranch: string;
+      rootFolder: string;
+      lastCommitId?: string;
+      disablePublish?: boolean;
+    };
+    globalParameters?: Record<
+      string,
+      {
+        type: "Object" | "String" | "Int" | "Float" | "Bool" | "Array";
+        value: unknown;
+      }
+    >;
+    encryption?: {
+      keyName: string;
+      vaultBaseUrl: string;
+      keyVersion?: string;
+      identity?: { userAssignedIdentity?: string };
+    };
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  identity?: {
+    type: "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<string, unknown>;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+  eTag?: string;
+}
 export const FactoriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1887,9 +2438,6 @@ export const FactoriesCreateOrUpdateInput =
         ),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.optional(Schema.String),
-    eTag: Schema.optional(Schema.String),
     identity: Schema.optional(
       Schema.Struct({
         type: Schema.Literals([
@@ -1904,34 +2452,31 @@ export const FactoriesCreateOrUpdateInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    location: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    eTag: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type FactoriesCreateOrUpdateInput =
-  typeof FactoriesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FactoriesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FactoriesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FactoriesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1951,9 +2496,7 @@ export const FactoriesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FactoriesCreateOrUpdateOutput =
-  typeof FactoriesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FactoriesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1972,6 +2515,11 @@ export const FactoriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FactoriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1982,12 +2530,12 @@ export const FactoriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type FactoriesDeleteInput = typeof FactoriesDeleteInput.Type;
+) as unknown as Schema.Codec<FactoriesDeleteInput>;
 
 // Output Schema
-export const FactoriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FactoriesDeleteOutput = typeof FactoriesDeleteOutput.Type;
+export type FactoriesDeleteOutput = void;
+export const FactoriesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FactoriesDeleteOutput>;
 
 // The operation
 /**
@@ -2003,6 +2551,11 @@ export const FactoriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FactoriesDeleteOutput,
 }));
 // Input Schema
+export interface FactoriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const FactoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2013,10 +2566,22 @@ export const FactoriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type FactoriesGetInput = typeof FactoriesGetInput.Type;
+) as unknown as Schema.Codec<FactoriesGetInput>;
 
 // Output Schema
+export interface FactoriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FactoriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2035,8 +2600,7 @@ export const FactoriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FactoriesGetOutput = typeof FactoriesGetOutput.Type;
+}) as unknown as Schema.Codec<FactoriesGetOutput>;
 
 // The operation
 /**
@@ -2053,6 +2617,16 @@ export const FactoriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FactoriesGetOutput,
 }));
 // Input Schema
+export interface FactoriesGetDataPlaneAccessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  permissions?: string;
+  accessResourcePath?: string;
+  profileName?: string;
+  startTime?: string;
+  expireTime?: string;
+}
 export const FactoriesGetDataPlaneAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2069,11 +2643,20 @@ export const FactoriesGetDataPlaneAccessInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getDataPlaneAccess",
       apiVersion: "2018-06-01",
     }),
-  );
-export type FactoriesGetDataPlaneAccessInput =
-  typeof FactoriesGetDataPlaneAccessInput.Type;
+  ) as unknown as Schema.Codec<FactoriesGetDataPlaneAccessInput>;
 
 // Output Schema
+export interface FactoriesGetDataPlaneAccessOutput {
+  policy?: {
+    permissions?: string;
+    accessResourcePath?: string;
+    profileName?: string;
+    startTime?: string;
+    expireTime?: string;
+  };
+  accessToken?: Redacted.Redacted<string>;
+  dataPlaneUrl?: string;
+}
 export const FactoriesGetDataPlaneAccessOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policy: Schema.optional(
@@ -2087,9 +2670,7 @@ export const FactoriesGetDataPlaneAccessOutput =
     ),
     accessToken: Schema.optional(SensitiveOutputString),
     dataPlaneUrl: Schema.optional(Schema.String),
-  });
-export type FactoriesGetDataPlaneAccessOutput =
-  typeof FactoriesGetDataPlaneAccessOutput.Type;
+  }) as unknown as Schema.Codec<FactoriesGetDataPlaneAccessOutput>;
 
 // The operation
 /**
@@ -2107,6 +2688,15 @@ export const FactoriesGetDataPlaneAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FactoriesGetGitHubAccessTokenInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  gitHubAccessCode: string;
+  gitHubClientId?: string;
+  gitHubClientSecret?: { byoaSecretAkvUrl?: string; byoaSecretName?: string };
+  gitHubAccessTokenBaseUrl: string;
+}
 export const FactoriesGetGitHubAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2127,17 +2717,16 @@ export const FactoriesGetGitHubAccessTokenInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/getGitHubAccessToken",
       apiVersion: "2018-06-01",
     }),
-  );
-export type FactoriesGetGitHubAccessTokenInput =
-  typeof FactoriesGetGitHubAccessTokenInput.Type;
+  ) as unknown as Schema.Codec<FactoriesGetGitHubAccessTokenInput>;
 
 // Output Schema
+export interface FactoriesGetGitHubAccessTokenOutput {
+  gitHubAccessToken?: string;
+}
 export const FactoriesGetGitHubAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitHubAccessToken: Schema.optional(Schema.String),
-  });
-export type FactoriesGetGitHubAccessTokenOutput =
-  typeof FactoriesGetGitHubAccessTokenOutput.Type;
+  }) as unknown as Schema.Codec<FactoriesGetGitHubAccessTokenOutput>;
 
 // The operation
 /**
@@ -2154,6 +2743,9 @@ export const FactoriesGetGitHubAccessToken =
     outputSchema: FactoriesGetGitHubAccessTokenOutput,
   }));
 // Input Schema
+export interface FactoriesListInput {
+  subscriptionId: string;
+}
 export const FactoriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2162,10 +2754,25 @@ export const FactoriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/factories",
     apiVersion: "2018-06-01",
   }),
-);
-export type FactoriesListInput = typeof FactoriesListInput.Type;
+) as unknown as Schema.Codec<FactoriesListInput>;
 
 // Output Schema
+export interface FactoriesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FactoriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2189,8 +2796,7 @@ export const FactoriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FactoriesListOutput = typeof FactoriesListOutput.Type;
+}) as unknown as Schema.Codec<FactoriesListOutput>;
 
 // The operation
 /**
@@ -2204,6 +2810,10 @@ export const FactoriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FactoriesListOutput,
 }));
 // Input Schema
+export interface FactoriesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FactoriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2214,11 +2824,25 @@ export const FactoriesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories",
       apiVersion: "2018-06-01",
     }),
-  );
-export type FactoriesListByResourceGroupInput =
-  typeof FactoriesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FactoriesListByResourceGroupInput>;
 
 // Output Schema
+export interface FactoriesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FactoriesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2253,9 +2877,7 @@ export const FactoriesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FactoriesListByResourceGroupOutput =
-  typeof FactoriesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FactoriesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2271,6 +2893,19 @@ export const FactoriesListByResourceGroup =
     outputSchema: FactoriesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface FactoriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type: "SystemAssigned" | "UserAssigned" | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<string, unknown>;
+  };
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const FactoriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2303,10 +2938,22 @@ export const FactoriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type FactoriesUpdateInput = typeof FactoriesUpdateInput.Type;
+) as unknown as Schema.Codec<FactoriesUpdateInput>;
 
 // Output Schema
+export interface FactoriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FactoriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2325,8 +2972,7 @@ export const FactoriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FactoriesUpdateOutput = typeof FactoriesUpdateOutput.Type;
+}) as unknown as Schema.Codec<FactoriesUpdateOutput>;
 
 // The operation
 /**
@@ -2342,6 +2988,20 @@ export const FactoriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FactoriesUpdateOutput,
 }));
 // Input Schema
+export interface GlobalParametersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  globalParameterName: string;
+  properties: Record<
+    string,
+    {
+      type: "Object" | "String" | "Int" | "Float" | "Bool" | "Array";
+      value: unknown;
+    }
+  >;
+  etag?: string;
+}
 export const GlobalParametersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2369,11 +3029,22 @@ export const GlobalParametersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type GlobalParametersCreateOrUpdateInput =
-  typeof GlobalParametersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GlobalParametersCreateOrUpdateInput>;
 
 // Output Schema
+export interface GlobalParametersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GlobalParametersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2393,9 +3064,7 @@ export const GlobalParametersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GlobalParametersCreateOrUpdateOutput =
-  typeof GlobalParametersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GlobalParametersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2413,6 +3082,12 @@ export const GlobalParametersCreateOrUpdate =
     outputSchema: GlobalParametersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GlobalParametersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  globalParameterName: string;
+}
 export const GlobalParametersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2425,15 +3100,12 @@ export const GlobalParametersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type GlobalParametersDeleteInput =
-  typeof GlobalParametersDeleteInput.Type;
+  ) as unknown as Schema.Codec<GlobalParametersDeleteInput>;
 
 // Output Schema
+export type GlobalParametersDeleteOutput = void;
 export const GlobalParametersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GlobalParametersDeleteOutput =
-  typeof GlobalParametersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalParametersDeleteOutput>;
 
 // The operation
 /**
@@ -2452,6 +3124,12 @@ export const GlobalParametersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GlobalParametersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  globalParameterName: string;
+}
 export const GlobalParametersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2464,10 +3142,22 @@ export const GlobalParametersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters/{globalParameterName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type GlobalParametersGetInput = typeof GlobalParametersGetInput.Type;
+  ) as unknown as Schema.Codec<GlobalParametersGetInput>;
 
 // Output Schema
+export interface GlobalParametersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GlobalParametersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2487,8 +3177,7 @@ export const GlobalParametersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GlobalParametersGetOutput = typeof GlobalParametersGetOutput.Type;
+  }) as unknown as Schema.Codec<GlobalParametersGetOutput>;
 
 // The operation
 /**
@@ -2505,6 +3194,11 @@ export const GlobalParametersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GlobalParametersGetOutput,
 }));
 // Input Schema
+export interface GlobalParametersListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const GlobalParametersListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2516,11 +3210,25 @@ export const GlobalParametersListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters",
       apiVersion: "2018-06-01",
     }),
-  );
-export type GlobalParametersListByFactoryInput =
-  typeof GlobalParametersListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<GlobalParametersListByFactoryInput>;
 
 // Output Schema
+export interface GlobalParametersListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GlobalParametersListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2555,9 +3263,7 @@ export const GlobalParametersListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GlobalParametersListByFactoryOutput =
-  typeof GlobalParametersListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<GlobalParametersListByFactoryOutput>;
 
 // The operation
 /**
@@ -2574,6 +3280,12 @@ export const GlobalParametersListByFactory =
     outputSchema: GlobalParametersListByFactoryOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeDisableInteractiveQueryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimeDisableInteractiveQueryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2586,11 +3298,22 @@ export const IntegrationRuntimeDisableInteractiveQueryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeDisableInteractiveQueryInput =
-  typeof IntegrationRuntimeDisableInteractiveQueryInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeDisableInteractiveQueryInput>;
 
 // Output Schema
+export interface IntegrationRuntimeDisableInteractiveQueryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationRuntimeDisableInteractiveQueryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2610,9 +3333,7 @@ export const IntegrationRuntimeDisableInteractiveQueryOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationRuntimeDisableInteractiveQueryOutput =
-  typeof IntegrationRuntimeDisableInteractiveQueryOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeDisableInteractiveQueryOutput>;
 
 // The operation
 /**
@@ -2630,6 +3351,13 @@ export const IntegrationRuntimeDisableInteractiveQuery =
     outputSchema: IntegrationRuntimeDisableInteractiveQueryOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeEnableInteractiveQueryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  autoTerminationMinutes?: number;
+}
 export const IntegrationRuntimeEnableInteractiveQueryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2643,11 +3371,22 @@ export const IntegrationRuntimeEnableInteractiveQueryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeEnableInteractiveQueryInput =
-  typeof IntegrationRuntimeEnableInteractiveQueryInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeEnableInteractiveQueryInput>;
 
 // Output Schema
+export interface IntegrationRuntimeEnableInteractiveQueryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationRuntimeEnableInteractiveQueryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2667,9 +3406,7 @@ export const IntegrationRuntimeEnableInteractiveQueryOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationRuntimeEnableInteractiveQueryOutput =
-  typeof IntegrationRuntimeEnableInteractiveQueryOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeEnableInteractiveQueryOutput>;
 
 // The operation
 /**
@@ -2687,6 +3424,13 @@ export const IntegrationRuntimeEnableInteractiveQuery =
     outputSchema: IntegrationRuntimeEnableInteractiveQueryOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeNodesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  nodeName: string;
+}
 export const IntegrationRuntimeNodesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2697,18 +3441,15 @@ export const IntegrationRuntimeNodesDeleteInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeNodesDeleteInput =
-  typeof IntegrationRuntimeNodesDeleteInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeNodesDeleteInput>;
 
 // Output Schema
+export type IntegrationRuntimeNodesDeleteOutput = void;
 export const IntegrationRuntimeNodesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimeNodesDeleteOutput =
-  typeof IntegrationRuntimeNodesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimeNodesDeleteOutput>;
 
 // The operation
 /**
@@ -2725,6 +3466,13 @@ export const IntegrationRuntimeNodesDelete =
     outputSchema: IntegrationRuntimeNodesDeleteOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeNodesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  nodeName: string;
+}
 export const IntegrationRuntimeNodesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2735,14 +3483,39 @@ export const IntegrationRuntimeNodesGetInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeNodesGetInput =
-  typeof IntegrationRuntimeNodesGetInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeNodesGetInput>;
 
 // Output Schema
+export interface IntegrationRuntimeNodesGetOutput {
+  nodeName?: string;
+  machineName?: string;
+  hostServiceUri?: string;
+  status?:
+    | "NeedRegistration"
+    | "Online"
+    | "Limited"
+    | "Offline"
+    | "Upgrading"
+    | "Initializing"
+    | "InitializeFailed";
+  capabilities?: Record<string, string>;
+  versionStatus?: string;
+  version?: string;
+  registerTime?: string;
+  lastConnectTime?: string;
+  expiryTime?: string;
+  lastStartTime?: string;
+  lastStopTime?: string;
+  lastUpdateResult?: "None" | "Succeed" | "Fail";
+  lastStartUpdateTime?: string;
+  lastEndUpdateTime?: string;
+  isActiveDispatcher?: boolean;
+  concurrentJobsLimit?: number;
+  maxConcurrentJobs?: number;
+}
 export const IntegrationRuntimeNodesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
@@ -2775,9 +3548,7 @@ export const IntegrationRuntimeNodesGetOutput =
     isActiveDispatcher: Schema.optional(Schema.Boolean),
     concurrentJobsLimit: Schema.optional(Schema.Number),
     maxConcurrentJobs: Schema.optional(Schema.Number),
-  });
-export type IntegrationRuntimeNodesGetOutput =
-  typeof IntegrationRuntimeNodesGetOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeNodesGetOutput>;
 
 // The operation
 /**
@@ -2795,6 +3566,13 @@ export const IntegrationRuntimeNodesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimeNodesGetIpAddressInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  nodeName: string;
+}
 export const IntegrationRuntimeNodesGetIpAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2805,20 +3583,19 @@ export const IntegrationRuntimeNodesGetIpAddressInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeNodesGetIpAddressInput =
-  typeof IntegrationRuntimeNodesGetIpAddressInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeNodesGetIpAddressInput>;
 
 // Output Schema
+export interface IntegrationRuntimeNodesGetIpAddressOutput {
+  ipAddress?: string;
+}
 export const IntegrationRuntimeNodesGetIpAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimeNodesGetIpAddressOutput =
-  typeof IntegrationRuntimeNodesGetIpAddressOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeNodesGetIpAddressOutput>;
 
 // The operation
 /**
@@ -2835,6 +3612,14 @@ export const IntegrationRuntimeNodesGetIpAddress =
     outputSchema: IntegrationRuntimeNodesGetIpAddressOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeNodesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  nodeName: string;
+  concurrentJobsLimit?: number;
+}
 export const IntegrationRuntimeNodesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2846,14 +3631,39 @@ export const IntegrationRuntimeNodesUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeNodesUpdateInput =
-  typeof IntegrationRuntimeNodesUpdateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeNodesUpdateInput>;
 
 // Output Schema
+export interface IntegrationRuntimeNodesUpdateOutput {
+  nodeName?: string;
+  machineName?: string;
+  hostServiceUri?: string;
+  status?:
+    | "NeedRegistration"
+    | "Online"
+    | "Limited"
+    | "Offline"
+    | "Upgrading"
+    | "Initializing"
+    | "InitializeFailed";
+  capabilities?: Record<string, string>;
+  versionStatus?: string;
+  version?: string;
+  registerTime?: string;
+  lastConnectTime?: string;
+  expiryTime?: string;
+  lastStartTime?: string;
+  lastStopTime?: string;
+  lastUpdateResult?: "None" | "Succeed" | "Fail";
+  lastStartUpdateTime?: string;
+  lastEndUpdateTime?: string;
+  isActiveDispatcher?: boolean;
+  concurrentJobsLimit?: number;
+  maxConcurrentJobs?: number;
+}
 export const IntegrationRuntimeNodesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nodeName: Schema.optional(Schema.String),
@@ -2886,9 +3696,7 @@ export const IntegrationRuntimeNodesUpdateOutput =
     isActiveDispatcher: Schema.optional(Schema.Boolean),
     concurrentJobsLimit: Schema.optional(Schema.Number),
     maxConcurrentJobs: Schema.optional(Schema.Number),
-  });
-export type IntegrationRuntimeNodesUpdateOutput =
-  typeof IntegrationRuntimeNodesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeNodesUpdateOutput>;
 
 // The operation
 /**
@@ -2905,6 +3713,13 @@ export const IntegrationRuntimeNodesUpdate =
     outputSchema: IntegrationRuntimeNodesUpdateOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeObjectMetadataGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  metadataPath?: string;
+}
 export const IntegrationRuntimeObjectMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2918,11 +3733,18 @@ export const IntegrationRuntimeObjectMetadataGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeObjectMetadataGetInput =
-  typeof IntegrationRuntimeObjectMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeObjectMetadataGetInput>;
 
 // Output Schema
+export interface IntegrationRuntimeObjectMetadataGetOutput {
+  value: {
+    type: "Folder" | "Project" | "Package" | "Environment";
+    id?: number;
+    name?: string;
+    description?: string;
+  }[];
+  nextLink?: string;
+}
 export const IntegrationRuntimeObjectMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2934,9 +3756,7 @@ export const IntegrationRuntimeObjectMetadataGetOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimeObjectMetadataGetOutput =
-  typeof IntegrationRuntimeObjectMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeObjectMetadataGetOutput>;
 
 // The operation
 /**
@@ -2954,6 +3774,12 @@ export const IntegrationRuntimeObjectMetadataGet =
     outputSchema: IntegrationRuntimeObjectMetadataGetOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimeObjectMetadataRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimeObjectMetadataRefreshInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2966,20 +3792,22 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimeObjectMetadataRefreshInput =
-  typeof IntegrationRuntimeObjectMetadataRefreshInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimeObjectMetadataRefreshInput>;
 
 // Output Schema
+export interface IntegrationRuntimeObjectMetadataRefreshOutput {
+  status?: string;
+  name?: string;
+  properties?: string;
+  error?: string;
+}
 export const IntegrationRuntimeObjectMetadataRefreshOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimeObjectMetadataRefreshOutput =
-  typeof IntegrationRuntimeObjectMetadataRefreshOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimeObjectMetadataRefreshOutput>;
 
 // The operation
 /**
@@ -2997,6 +3825,15 @@ export const IntegrationRuntimeObjectMetadataRefresh =
     outputSchema: IntegrationRuntimeObjectMetadataRefreshOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesCreateLinkedIntegrationRuntimeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  name?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
 export const IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3012,11 +3849,27 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/linkedIntegrationRuntime",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesCreateLinkedIntegrationRuntimeInput =
-  typeof IntegrationRuntimesCreateLinkedIntegrationRuntimeInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesCreateLinkedIntegrationRuntimeInput>;
 
 // Output Schema
+export interface IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput {
+  name?: string;
+  properties: {
+    type: "Managed" | "SelfHosted";
+    dataFactoryName?: string;
+    state?:
+      | "Initial"
+      | "Stopped"
+      | "Started"
+      | "Starting"
+      | "Stopping"
+      | "NeedRegistration"
+      | "Online"
+      | "Limited"
+      | "Offline"
+      | "AccessDenied";
+  };
+}
 export const IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -3038,9 +3891,7 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput =
         ]),
       ),
     }),
-  });
-export type IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput =
-  typeof IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput>;
 
 // The operation
 /**
@@ -3058,6 +3909,14 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntime =
     outputSchema: IntegrationRuntimesCreateLinkedIntegrationRuntimeOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  properties: { type: "Managed" | "SelfHosted"; description?: string };
+  etag?: string;
+}
 export const IntegrationRuntimesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3075,11 +3934,22 @@ export const IntegrationRuntimesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesCreateOrUpdateInput =
-  typeof IntegrationRuntimesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesCreateOrUpdateInput>;
 
 // Output Schema
+export interface IntegrationRuntimesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationRuntimesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3099,9 +3969,7 @@ export const IntegrationRuntimesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationRuntimesCreateOrUpdateOutput =
-  typeof IntegrationRuntimesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3120,6 +3988,12 @@ export const IntegrationRuntimesCreateOrUpdate =
     outputSchema: IntegrationRuntimesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3132,15 +4006,12 @@ export const IntegrationRuntimesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesDeleteInput =
-  typeof IntegrationRuntimesDeleteInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesDeleteInput>;
 
 // Output Schema
+export type IntegrationRuntimesDeleteOutput = void;
 export const IntegrationRuntimesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimesDeleteOutput =
-  typeof IntegrationRuntimesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesDeleteOutput>;
 
 // The operation
 /**
@@ -3159,6 +4030,12 @@ export const IntegrationRuntimesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3171,11 +4048,22 @@ export const IntegrationRuntimesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesGetInput =
-  typeof IntegrationRuntimesGetInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesGetInput>;
 
 // Output Schema
+export interface IntegrationRuntimesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationRuntimesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3195,9 +4083,7 @@ export const IntegrationRuntimesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationRuntimesGetOutput =
-  typeof IntegrationRuntimesGetOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesGetOutput>;
 
 // The operation
 /**
@@ -3217,6 +4103,12 @@ export const IntegrationRuntimesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimesGetConnectionInfoInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesGetConnectionInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3229,11 +4121,17 @@ export const IntegrationRuntimesGetConnectionInfoInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesGetConnectionInfoInput =
-  typeof IntegrationRuntimesGetConnectionInfoInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesGetConnectionInfoInput>;
 
 // Output Schema
+export interface IntegrationRuntimesGetConnectionInfoOutput {
+  serviceToken?: string;
+  identityCertThumbprint?: string;
+  hostServiceUri?: string;
+  version?: string;
+  publicKey?: string;
+  isIdentityCertExprired?: boolean;
+}
 export const IntegrationRuntimesGetConnectionInfoOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceToken: Schema.optional(Schema.String),
@@ -3242,9 +4140,7 @@ export const IntegrationRuntimesGetConnectionInfoOutput =
     version: Schema.optional(Schema.String),
     publicKey: Schema.optional(Schema.String),
     isIdentityCertExprired: Schema.optional(Schema.Boolean),
-  });
-export type IntegrationRuntimesGetConnectionInfoOutput =
-  typeof IntegrationRuntimesGetConnectionInfoOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesGetConnectionInfoOutput>;
 
 // The operation
 /**
@@ -3262,6 +4158,12 @@ export const IntegrationRuntimesGetConnectionInfo =
     outputSchema: IntegrationRuntimesGetConnectionInfoOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesGetMonitoringDataInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesGetMonitoringDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3274,11 +4176,22 @@ export const IntegrationRuntimesGetMonitoringDataInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/monitoringData",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesGetMonitoringDataInput =
-  typeof IntegrationRuntimesGetMonitoringDataInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesGetMonitoringDataInput>;
 
 // Output Schema
+export interface IntegrationRuntimesGetMonitoringDataOutput {
+  name?: string;
+  nodes?: {
+    nodeName?: string;
+    availableMemoryInMB?: number;
+    cpuUtilization?: number;
+    concurrentJobsLimit?: number;
+    concurrentJobsRunning?: number;
+    maxConcurrentJobs?: number;
+    sentBytes?: number;
+    receivedBytes?: number;
+  }[];
+}
 export const IntegrationRuntimesGetMonitoringDataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -3296,9 +4209,7 @@ export const IntegrationRuntimesGetMonitoringDataOutput =
         }),
       ),
     ),
-  });
-export type IntegrationRuntimesGetMonitoringDataOutput =
-  typeof IntegrationRuntimesGetMonitoringDataOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesGetMonitoringDataOutput>;
 
 // The operation
 /**
@@ -3316,6 +4227,12 @@ export const IntegrationRuntimesGetMonitoringData =
     outputSchema: IntegrationRuntimesGetMonitoringDataOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesGetStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesGetStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3328,11 +4245,27 @@ export const IntegrationRuntimesGetStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesGetStatusInput =
-  typeof IntegrationRuntimesGetStatusInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesGetStatusInput>;
 
 // Output Schema
+export interface IntegrationRuntimesGetStatusOutput {
+  name?: string;
+  properties: {
+    type: "Managed" | "SelfHosted";
+    dataFactoryName?: string;
+    state?:
+      | "Initial"
+      | "Stopped"
+      | "Started"
+      | "Starting"
+      | "Stopping"
+      | "NeedRegistration"
+      | "Online"
+      | "Limited"
+      | "Offline"
+      | "AccessDenied";
+  };
+}
 export const IntegrationRuntimesGetStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -3354,9 +4287,7 @@ export const IntegrationRuntimesGetStatusOutput =
         ]),
       ),
     }),
-  });
-export type IntegrationRuntimesGetStatusOutput =
-  typeof IntegrationRuntimesGetStatusOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesGetStatusOutput>;
 
 // The operation
 /**
@@ -3374,6 +4305,12 @@ export const IntegrationRuntimesGetStatus =
     outputSchema: IntegrationRuntimesGetStatusOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesListAuthKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesListAuthKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3386,18 +4323,18 @@ export const IntegrationRuntimesListAuthKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesListAuthKeysInput =
-  typeof IntegrationRuntimesListAuthKeysInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesListAuthKeysInput>;
 
 // Output Schema
+export interface IntegrationRuntimesListAuthKeysOutput {
+  authKey1?: string;
+  authKey2?: string;
+}
 export const IntegrationRuntimesListAuthKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimesListAuthKeysOutput =
-  typeof IntegrationRuntimesListAuthKeysOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesListAuthKeysOutput>;
 
 // The operation
 /**
@@ -3415,6 +4352,11 @@ export const IntegrationRuntimesListAuthKeys =
     outputSchema: IntegrationRuntimesListAuthKeysOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const IntegrationRuntimesListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3426,11 +4368,25 @@ export const IntegrationRuntimesListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesListByFactoryInput =
-  typeof IntegrationRuntimesListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesListByFactoryInput>;
 
 // Output Schema
+export interface IntegrationRuntimesListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IntegrationRuntimesListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3465,9 +4421,7 @@ export const IntegrationRuntimesListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimesListByFactoryOutput =
-  typeof IntegrationRuntimesListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesListByFactoryOutput>;
 
 // The operation
 /**
@@ -3484,6 +4438,12 @@ export const IntegrationRuntimesListByFactory =
     outputSchema: IntegrationRuntimesListByFactoryOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3496,11 +4456,18 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput =
-  typeof IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput {
+  value?: {
+    category?: string;
+    endpoints?: {
+      domainName?: string;
+      endpointDetails?: { port?: number }[];
+    }[];
+  }[];
+}
 export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3524,9 +4491,7 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
         }),
       ),
     ),
-  });
-export type IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput =
-  typeof IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -3546,6 +4511,13 @@ export const IntegrationRuntimesListOutboundNetworkDependenciesEndpoints =
       IntegrationRuntimesListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesRegenerateAuthKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  keyName?: "authKey1" | "authKey2";
+}
 export const IntegrationRuntimesRegenerateAuthKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3559,18 +4531,18 @@ export const IntegrationRuntimesRegenerateAuthKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/regenerateAuthKey",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesRegenerateAuthKeyInput =
-  typeof IntegrationRuntimesRegenerateAuthKeyInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesRegenerateAuthKeyInput>;
 
 // Output Schema
+export interface IntegrationRuntimesRegenerateAuthKeyOutput {
+  authKey1?: string;
+  authKey2?: string;
+}
 export const IntegrationRuntimesRegenerateAuthKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authKey1: Schema.optional(Schema.String),
     authKey2: Schema.optional(Schema.String),
-  });
-export type IntegrationRuntimesRegenerateAuthKeyOutput =
-  typeof IntegrationRuntimesRegenerateAuthKeyOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesRegenerateAuthKeyOutput>;
 
 // The operation
 /**
@@ -3588,6 +4560,12 @@ export const IntegrationRuntimesRegenerateAuthKey =
     outputSchema: IntegrationRuntimesRegenerateAuthKeyOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesRemoveLinksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesRemoveLinksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3600,15 +4578,12 @@ export const IntegrationRuntimesRemoveLinksInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/removeLinks",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesRemoveLinksInput =
-  typeof IntegrationRuntimesRemoveLinksInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesRemoveLinksInput>;
 
 // Output Schema
+export type IntegrationRuntimesRemoveLinksOutput = void;
 export const IntegrationRuntimesRemoveLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimesRemoveLinksOutput =
-  typeof IntegrationRuntimesRemoveLinksOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesRemoveLinksOutput>;
 
 // The operation
 /**
@@ -3626,6 +4601,12 @@ export const IntegrationRuntimesRemoveLinks =
     outputSchema: IntegrationRuntimesRemoveLinksOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3638,11 +4619,27 @@ export const IntegrationRuntimesStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesStartInput =
-  typeof IntegrationRuntimesStartInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesStartInput>;
 
 // Output Schema
+export interface IntegrationRuntimesStartOutput {
+  name?: string;
+  properties: {
+    type: "Managed" | "SelfHosted";
+    dataFactoryName?: string;
+    state?:
+      | "Initial"
+      | "Stopped"
+      | "Started"
+      | "Starting"
+      | "Stopping"
+      | "NeedRegistration"
+      | "Online"
+      | "Limited"
+      | "Offline"
+      | "AccessDenied";
+  };
+}
 export const IntegrationRuntimesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -3664,9 +4661,7 @@ export const IntegrationRuntimesStartOutput =
         ]),
       ),
     }),
-  });
-export type IntegrationRuntimesStartOutput =
-  typeof IntegrationRuntimesStartOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesStartOutput>;
 
 // The operation
 /**
@@ -3685,6 +4680,12 @@ export const IntegrationRuntimesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3697,15 +4698,12 @@ export const IntegrationRuntimesStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesStopInput =
-  typeof IntegrationRuntimesStopInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesStopInput>;
 
 // Output Schema
+export type IntegrationRuntimesStopOutput = void;
 export const IntegrationRuntimesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimesStopOutput =
-  typeof IntegrationRuntimesStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesStopOutput>;
 
 // The operation
 /**
@@ -3724,6 +4722,12 @@ export const IntegrationRuntimesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimesSyncCredentialsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesSyncCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3736,15 +4740,12 @@ export const IntegrationRuntimesSyncCredentialsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/syncCredentials",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesSyncCredentialsInput =
-  typeof IntegrationRuntimesSyncCredentialsInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesSyncCredentialsInput>;
 
 // Output Schema
+export type IntegrationRuntimesSyncCredentialsOutput = void;
 export const IntegrationRuntimesSyncCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimesSyncCredentialsOutput =
-  typeof IntegrationRuntimesSyncCredentialsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesSyncCredentialsOutput>;
 
 // The operation
 /**
@@ -3762,6 +4763,14 @@ export const IntegrationRuntimesSyncCredentials =
     outputSchema: IntegrationRuntimesSyncCredentialsOutput,
   }));
 // Input Schema
+export interface IntegrationRuntimesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+  autoUpdate?: "On" | "Off";
+  updateDelayOffset?: string;
+}
 export const IntegrationRuntimesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3776,11 +4785,22 @@ export const IntegrationRuntimesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesUpdateInput =
-  typeof IntegrationRuntimesUpdateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesUpdateInput>;
 
 // Output Schema
+export interface IntegrationRuntimesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IntegrationRuntimesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3800,9 +4820,7 @@ export const IntegrationRuntimesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IntegrationRuntimesUpdateOutput =
-  typeof IntegrationRuntimesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationRuntimesUpdateOutput>;
 
 // The operation
 /**
@@ -3821,6 +4839,12 @@ export const IntegrationRuntimesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IntegrationRuntimesUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  integrationRuntimeName: string;
+}
 export const IntegrationRuntimesUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3833,15 +4857,12 @@ export const IntegrationRuntimesUpgradeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
       apiVersion: "2018-06-01",
     }),
-  );
-export type IntegrationRuntimesUpgradeInput =
-  typeof IntegrationRuntimesUpgradeInput.Type;
+  ) as unknown as Schema.Codec<IntegrationRuntimesUpgradeInput>;
 
 // Output Schema
+export type IntegrationRuntimesUpgradeOutput = void;
 export const IntegrationRuntimesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationRuntimesUpgradeOutput =
-  typeof IntegrationRuntimesUpgradeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationRuntimesUpgradeOutput>;
 
 // The operation
 /**
@@ -3860,6 +4881,38 @@ export const IntegrationRuntimesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  linkedServiceName: string;
+  properties: {
+    type: string;
+    version?: string;
+    connectVia?: {
+      type: "IntegrationRuntimeReference";
+      referenceName: string;
+      parameters?: Record<string, unknown>;
+    };
+    description?: string;
+    parameters?: Record<
+      string,
+      {
+        type:
+          | "Object"
+          | "String"
+          | "Int"
+          | "Float"
+          | "Bool"
+          | "Array"
+          | "SecureString";
+        defaultValue?: unknown;
+      }
+    >;
+    annotations?: unknown[];
+  };
+  etag?: string;
+}
 export const LinkedServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3905,11 +4958,22 @@ export const LinkedServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type LinkedServicesCreateOrUpdateInput =
-  typeof LinkedServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface LinkedServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3929,9 +4993,7 @@ export const LinkedServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedServicesCreateOrUpdateOutput =
-  typeof LinkedServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3950,6 +5012,12 @@ export const LinkedServicesCreateOrUpdate =
     outputSchema: LinkedServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface LinkedServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  linkedServiceName: string;
+}
 export const LinkedServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3962,13 +5030,12 @@ export const LinkedServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type LinkedServicesDeleteInput = typeof LinkedServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesDeleteInput>;
 
 // Output Schema
+export type LinkedServicesDeleteOutput = void;
 export const LinkedServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LinkedServicesDeleteOutput = typeof LinkedServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedServicesDeleteOutput>;
 
 // The operation
 /**
@@ -3987,6 +5054,12 @@ export const LinkedServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LinkedServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  linkedServiceName: string;
+}
 export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4000,10 +5073,22 @@ export const LinkedServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices/{linkedServiceName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type LinkedServicesGetInput = typeof LinkedServicesGetInput.Type;
+) as unknown as Schema.Codec<LinkedServicesGetInput>;
 
 // Output Schema
+export interface LinkedServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LinkedServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4023,8 +5108,7 @@ export const LinkedServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LinkedServicesGetOutput = typeof LinkedServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesGetOutput>;
 
 // The operation
 /**
@@ -4042,6 +5126,11 @@ export const LinkedServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LinkedServicesGetOutput,
 }));
 // Input Schema
+export interface LinkedServicesListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const LinkedServicesListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4053,11 +5142,25 @@ export const LinkedServicesListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices",
       apiVersion: "2018-06-01",
     }),
-  );
-export type LinkedServicesListByFactoryInput =
-  typeof LinkedServicesListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<LinkedServicesListByFactoryInput>;
 
 // Output Schema
+export interface LinkedServicesListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LinkedServicesListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4092,9 +5195,7 @@ export const LinkedServicesListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LinkedServicesListByFactoryOutput =
-  typeof LinkedServicesListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<LinkedServicesListByFactoryOutput>;
 
 // The operation
 /**
@@ -4112,6 +5213,26 @@ export const LinkedServicesListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+  managedPrivateEndpointName: string;
+  properties: {
+    connectionState?: {
+      actionsRequired?: string;
+      description?: string;
+      status?: string;
+    };
+    fqdns?: string[];
+    groupId?: string;
+    isReserved?: boolean;
+    privateLinkResourceId?: string;
+    provisioningState?: string;
+  };
+  etag?: string;
+}
 export const ManagedPrivateEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4140,11 +5261,22 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedPrivateEndpointsCreateOrUpdateInput =
-  typeof ManagedPrivateEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4164,9 +5296,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsCreateOrUpdateOutput =
-  typeof ManagedPrivateEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4186,6 +5316,13 @@ export const ManagedPrivateEndpointsCreateOrUpdate =
     outputSchema: ManagedPrivateEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4199,15 +5336,12 @@ export const ManagedPrivateEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedPrivateEndpointsDeleteInput =
-  typeof ManagedPrivateEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteInput>;
 
 // Output Schema
+export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedPrivateEndpointsDeleteOutput =
-  typeof ManagedPrivateEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -4226,6 +5360,13 @@ export const ManagedPrivateEndpointsDelete =
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4239,11 +5380,22 @@ export const ManagedPrivateEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedPrivateEndpointsGetInput =
-  typeof ManagedPrivateEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsGetInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4263,9 +5415,7 @@ export const ManagedPrivateEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsGetOutput =
-  typeof ManagedPrivateEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsGetOutput>;
 
 // The operation
 /**
@@ -4286,6 +5436,12 @@ export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+}
 export const ManagedPrivateEndpointsListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4298,11 +5454,25 @@ export const ManagedPrivateEndpointsListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedPrivateEndpointsListByFactoryInput =
-  typeof ManagedPrivateEndpointsListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsListByFactoryInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedPrivateEndpointsListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4337,9 +5507,7 @@ export const ManagedPrivateEndpointsListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedPrivateEndpointsListByFactoryOutput =
-  typeof ManagedPrivateEndpointsListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsListByFactoryOutput>;
 
 // The operation
 /**
@@ -4357,6 +5525,14 @@ export const ManagedPrivateEndpointsListByFactory =
     outputSchema: ManagedPrivateEndpointsListByFactoryOutput,
   }));
 // Input Schema
+export interface ManagedVirtualNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+  properties: { vNetId?: string; alias?: string };
+  etag?: string;
+}
 export const ManagedVirtualNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4374,11 +5550,22 @@ export const ManagedVirtualNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedVirtualNetworksCreateOrUpdateInput =
-  typeof ManagedVirtualNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedVirtualNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagedVirtualNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedVirtualNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4398,9 +5585,7 @@ export const ManagedVirtualNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedVirtualNetworksCreateOrUpdateOutput =
-  typeof ManagedVirtualNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedVirtualNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4419,6 +5604,12 @@ export const ManagedVirtualNetworksCreateOrUpdate =
     outputSchema: ManagedVirtualNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagedVirtualNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  managedVirtualNetworkName: string;
+}
 export const ManagedVirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4431,11 +5622,22 @@ export const ManagedVirtualNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedVirtualNetworksGetInput =
-  typeof ManagedVirtualNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedVirtualNetworksGetInput>;
 
 // Output Schema
+export interface ManagedVirtualNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedVirtualNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4455,9 +5657,7 @@ export const ManagedVirtualNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedVirtualNetworksGetOutput =
-  typeof ManagedVirtualNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedVirtualNetworksGetOutput>;
 
 // The operation
 /**
@@ -4477,6 +5677,11 @@ export const ManagedVirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedVirtualNetworksListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const ManagedVirtualNetworksListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4488,11 +5693,25 @@ export const ManagedVirtualNetworksListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks",
       apiVersion: "2018-06-01",
     }),
-  );
-export type ManagedVirtualNetworksListByFactoryInput =
-  typeof ManagedVirtualNetworksListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<ManagedVirtualNetworksListByFactoryInput>;
 
 // Output Schema
+export interface ManagedVirtualNetworksListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedVirtualNetworksListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4527,9 +5746,7 @@ export const ManagedVirtualNetworksListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedVirtualNetworksListByFactoryOutput =
-  typeof ManagedVirtualNetworksListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<ManagedVirtualNetworksListByFactoryOutput>;
 
 // The operation
 /**
@@ -4546,6 +5763,7 @@ export const ManagedVirtualNetworksListByFactory =
     outputSchema: ManagedVirtualNetworksListByFactoryOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4554,10 +5772,47 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataFactory/operations",
     apiVersion: "2018-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    origin?: string;
+    display?: {
+      description?: string;
+      provider?: string;
+      resource?: string;
+      operation?: string;
+    };
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          enableRegionalMdmAccount?: string;
+          sourceMdmAccount?: string;
+          sourceMdmNamespace?: string;
+          availabilities?: { timeGrain?: string; blobDuration?: string }[];
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4626,8 +5881,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4640,6 +5894,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PipelineRunsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  runId: string;
+  isRecursive?: boolean;
+}
 export const PipelineRunsCancelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4650,15 +5911,15 @@ export const PipelineRunsCancelInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/cancel",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}/cancel",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PipelineRunsCancelInput = typeof PipelineRunsCancelInput.Type;
+  ) as unknown as Schema.Codec<PipelineRunsCancelInput>;
 
 // Output Schema
-export const PipelineRunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PipelineRunsCancelOutput = typeof PipelineRunsCancelOutput.Type;
+export type PipelineRunsCancelOutput = void;
+export const PipelineRunsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineRunsCancelOutput>;
 
 // The operation
 /**
@@ -4675,6 +5936,12 @@ export const PipelineRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelineRunsCancelOutput,
 }));
 // Input Schema
+export interface PipelineRunsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  runId: string;
+}
 export const PipelineRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4683,13 +5950,33 @@ export const PipelineRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelineruns/{runId}",
     apiVersion: "2018-06-01",
   }),
-);
-export type PipelineRunsGetInput = typeof PipelineRunsGetInput.Type;
+) as unknown as Schema.Codec<PipelineRunsGetInput>;
 
 // Output Schema
+export interface PipelineRunsGetOutput {
+  runId?: string;
+  runGroupId?: string;
+  isLatest?: boolean;
+  pipelineName?: string;
+  parameters?: Record<string, string>;
+  runDimensions?: Record<string, string>;
+  invokedBy?: {
+    name?: string;
+    id?: string;
+    invokedByType?: string;
+    pipelineName?: string;
+    pipelineRunId?: string;
+  };
+  lastUpdated?: string;
+  runStart?: string;
+  runEnd?: string;
+  durationInMs?: number;
+  status?: string;
+  message?: string;
+}
 export const PipelineRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   runId: Schema.optional(Schema.String),
   runGroupId: Schema.optional(Schema.String),
@@ -4712,8 +5999,7 @@ export const PipelineRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   durationInMs: Schema.optional(Schema.Number),
   status: Schema.optional(Schema.String),
   message: Schema.optional(Schema.String),
-});
-export type PipelineRunsGetOutput = typeof PipelineRunsGetOutput.Type;
+}) as unknown as Schema.Codec<PipelineRunsGetOutput>;
 
 // The operation
 /**
@@ -4729,6 +6015,44 @@ export const PipelineRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelineRunsGetOutput,
 }));
 // Input Schema
+export interface PipelineRunsQueryByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  continuationToken?: string;
+  lastUpdatedAfter: string;
+  lastUpdatedBefore: string;
+  filters?: {
+    operand:
+      | "PipelineName"
+      | "Status"
+      | "RunStart"
+      | "RunEnd"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "ActivityType"
+      | "TriggerName"
+      | "TriggerRunTimestamp"
+      | "RunGroupId"
+      | "LatestOnly";
+    operator: "Equals" | "NotEquals" | "In" | "NotIn";
+    values: string[];
+  }[];
+  orderBy?: {
+    orderBy:
+      | "RunStart"
+      | "RunEnd"
+      | "PipelineName"
+      | "Status"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "TriggerName"
+      | "TriggerRunTimestamp";
+    order: "ASC" | "DESC";
+  }[];
+}
 export const PipelineRunsQueryByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4783,11 +6107,33 @@ export const PipelineRunsQueryByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryPipelineRuns",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PipelineRunsQueryByFactoryInput =
-  typeof PipelineRunsQueryByFactoryInput.Type;
+  ) as unknown as Schema.Codec<PipelineRunsQueryByFactoryInput>;
 
 // Output Schema
+export interface PipelineRunsQueryByFactoryOutput {
+  value: {
+    runId?: string;
+    runGroupId?: string;
+    isLatest?: boolean;
+    pipelineName?: string;
+    parameters?: Record<string, string>;
+    runDimensions?: Record<string, string>;
+    invokedBy?: {
+      name?: string;
+      id?: string;
+      invokedByType?: string;
+      pipelineName?: string;
+      pipelineRunId?: string;
+    };
+    lastUpdated?: string;
+    runStart?: string;
+    runEnd?: string;
+    durationInMs?: number;
+    status?: string;
+    message?: string;
+  }[];
+  continuationToken?: string;
+}
 export const PipelineRunsQueryByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4820,9 +6166,7 @@ export const PipelineRunsQueryByFactoryOutput =
       }),
     ),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type PipelineRunsQueryByFactoryOutput =
-  typeof PipelineRunsQueryByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<PipelineRunsQueryByFactoryOutput>;
 
 // The operation
 /**
@@ -4840,6 +6184,56 @@ export const PipelineRunsQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  pipelineName: string;
+  properties: {
+    description?: string;
+    activities?: {
+      name: string;
+      type: string;
+      description?: string;
+      state?: "Active" | "Inactive";
+      onInactiveMarkAs?: "Succeeded" | "Failed" | "Skipped";
+      dependsOn?: {
+        activity: string;
+        dependencyConditions: (
+          | "Succeeded"
+          | "Failed"
+          | "Skipped"
+          | "Completed"
+        )[];
+      }[];
+      userProperties?: { name: string; value: unknown }[];
+    }[];
+    parameters?: Record<
+      string,
+      {
+        type:
+          | "Object"
+          | "String"
+          | "Int"
+          | "Float"
+          | "Bool"
+          | "Array"
+          | "SecureString";
+        defaultValue?: unknown;
+      }
+    >;
+    variables?: Record<
+      string,
+      { type: "String" | "Bool" | "Array"; defaultValue?: unknown }
+    >;
+    concurrency?: number;
+    annotations?: unknown[];
+    runDimensions?: Record<string, unknown>;
+    folder?: { name?: string };
+    policy?: { elapsedTimeMetric?: { duration?: unknown } };
+  };
+  etag?: string;
+}
 export const PipelinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4937,11 +6331,22 @@ export const PipelinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PipelinesCreateOrUpdateInput =
-  typeof PipelinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PipelinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PipelinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4961,9 +6366,7 @@ export const PipelinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PipelinesCreateOrUpdateOutput =
-  typeof PipelinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4983,6 +6386,16 @@ export const PipelinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PipelinesCreateRunInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  pipelineName: string;
+  referencePipelineRunId?: string;
+  isRecovery?: boolean;
+  startActivityName?: string;
+  startFromFailure?: boolean;
+}
 export const PipelinesCreateRunInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4999,15 +6412,16 @@ export const PipelinesCreateRunInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}/createRun",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PipelinesCreateRunInput = typeof PipelinesCreateRunInput.Type;
+  ) as unknown as Schema.Codec<PipelinesCreateRunInput>;
 
 // Output Schema
+export interface PipelinesCreateRunOutput {
+  runId: string;
+}
 export const PipelinesCreateRunOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runId: Schema.String,
-  });
-export type PipelinesCreateRunOutput = typeof PipelinesCreateRunOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesCreateRunOutput>;
 
 // The operation
 /**
@@ -5028,6 +6442,12 @@ export const PipelinesCreateRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelinesCreateRunOutput,
 }));
 // Input Schema
+export interface PipelinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  pipelineName: string;
+}
 export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5039,12 +6459,12 @@ export const PipelinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type PipelinesDeleteInput = typeof PipelinesDeleteInput.Type;
+) as unknown as Schema.Codec<PipelinesDeleteInput>;
 
 // Output Schema
-export const PipelinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PipelinesDeleteOutput = typeof PipelinesDeleteOutput.Type;
+export type PipelinesDeleteOutput = void;
+export const PipelinesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelinesDeleteOutput>;
 
 // The operation
 /**
@@ -5061,6 +6481,12 @@ export const PipelinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelinesDeleteOutput,
 }));
 // Input Schema
+export interface PipelinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  pipelineName: string;
+}
 export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5072,10 +6498,22 @@ export const PipelinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type PipelinesGetInput = typeof PipelinesGetInput.Type;
+) as unknown as Schema.Codec<PipelinesGetInput>;
 
 // Output Schema
+export interface PipelinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5094,8 +6532,7 @@ export const PipelinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PipelinesGetOutput = typeof PipelinesGetOutput.Type;
+}) as unknown as Schema.Codec<PipelinesGetOutput>;
 
 // The operation
 /**
@@ -5113,6 +6550,11 @@ export const PipelinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PipelinesGetOutput,
 }));
 // Input Schema
+export interface PipelinesListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const PipelinesListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5124,11 +6566,25 @@ export const PipelinesListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PipelinesListByFactoryInput =
-  typeof PipelinesListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<PipelinesListByFactoryInput>;
 
 // Output Schema
+export interface PipelinesListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PipelinesListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5163,9 +6619,7 @@ export const PipelinesListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PipelinesListByFactoryOutput =
-  typeof PipelinesListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<PipelinesListByFactoryOutput>;
 
 // The operation
 /**
@@ -5183,6 +6637,24 @@ export const PipelinesListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateEndpointConnectionCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateLinkServiceConnectionState?: {
+      status?: string;
+      description?: string;
+      actionsRequired?: string;
+    };
+    privateEndpoint?: { id?: string };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+}
 export const PrivateEndpointConnectionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5215,11 +6687,22 @@ export const PrivateEndpointConnectionCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PrivateEndpointConnectionCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5239,9 +6722,7 @@ export const PrivateEndpointConnectionCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5260,6 +6741,12 @@ export const PrivateEndpointConnectionCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5272,15 +6759,12 @@ export const PrivateEndpointConnectionDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PrivateEndpointConnectionDeleteInput =
-  typeof PrivateEndpointConnectionDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionDeleteOutput = void;
 export const PrivateEndpointConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionDeleteOutput =
-  typeof PrivateEndpointConnectionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -5298,6 +6782,12 @@ export const PrivateEndpointConnectionDelete =
     outputSchema: PrivateEndpointConnectionDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5310,11 +6800,22 @@ export const PrivateEndpointConnectionGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PrivateEndpointConnectionGetInput =
-  typeof PrivateEndpointConnectionGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5334,9 +6835,7 @@ export const PrivateEndpointConnectionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionGetOutput =
-  typeof PrivateEndpointConnectionGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionGetOutput>;
 
 // The operation
 /**
@@ -5355,6 +6854,11 @@ export const PrivateEndpointConnectionGet =
     outputSchema: PrivateEndpointConnectionGetOutput,
   }));
 // Input Schema
+export interface PrivateEndPointConnectionsListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const PrivateEndPointConnectionsListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5366,11 +6870,25 @@ export const PrivateEndPointConnectionsListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PrivateEndPointConnectionsListByFactoryInput =
-  typeof PrivateEndPointConnectionsListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndPointConnectionsListByFactoryInput>;
 
 // Output Schema
+export interface PrivateEndPointConnectionsListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndPointConnectionsListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5405,9 +6923,7 @@ export const PrivateEndPointConnectionsListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndPointConnectionsListByFactoryOutput =
-  typeof PrivateEndPointConnectionsListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndPointConnectionsListByFactoryOutput>;
 
 // The operation
 /**
@@ -5424,6 +6940,11 @@ export const privateEndPointConnectionsListByFactory =
     outputSchema: PrivateEndPointConnectionsListByFactoryOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5435,11 +6956,12 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateLinkResources",
       apiVersion: "2018-06-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  value: { id?: string; name?: string; type?: string; etag?: string }[];
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5450,9 +6972,7 @@ export const PrivateLinkResourcesGetOutput =
         etag: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -5470,6 +6990,13 @@ export const privateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggerRunsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+  runId: string;
+}
 export const TriggerRunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5481,15 +7008,15 @@ export const TriggerRunsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/cancel",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/cancel",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggerRunsCancelInput = typeof TriggerRunsCancelInput.Type;
+) as unknown as Schema.Codec<TriggerRunsCancelInput>;
 
 // Output Schema
-export const TriggerRunsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggerRunsCancelOutput = typeof TriggerRunsCancelOutput.Type;
+export type TriggerRunsCancelOutput = void;
+export const TriggerRunsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsCancelOutput>;
 
 // The operation
 /**
@@ -5505,6 +7032,44 @@ export const TriggerRunsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggerRunsCancelOutput,
 }));
 // Input Schema
+export interface TriggerRunsQueryByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  continuationToken?: string;
+  lastUpdatedAfter: string;
+  lastUpdatedBefore: string;
+  filters?: {
+    operand:
+      | "PipelineName"
+      | "Status"
+      | "RunStart"
+      | "RunEnd"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "ActivityType"
+      | "TriggerName"
+      | "TriggerRunTimestamp"
+      | "RunGroupId"
+      | "LatestOnly";
+    operator: "Equals" | "NotEquals" | "In" | "NotIn";
+    values: string[];
+  }[];
+  orderBy?: {
+    orderBy:
+      | "RunStart"
+      | "RunEnd"
+      | "PipelineName"
+      | "Status"
+      | "ActivityName"
+      | "ActivityRunStart"
+      | "ActivityRunEnd"
+      | "TriggerName"
+      | "TriggerRunTimestamp";
+    order: "ASC" | "DESC";
+  }[];
+}
 export const TriggerRunsQueryByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5559,11 +7124,24 @@ export const TriggerRunsQueryByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryTriggerRuns",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggerRunsQueryByFactoryInput =
-  typeof TriggerRunsQueryByFactoryInput.Type;
+  ) as unknown as Schema.Codec<TriggerRunsQueryByFactoryInput>;
 
 // Output Schema
+export interface TriggerRunsQueryByFactoryOutput {
+  value: {
+    triggerRunId?: string;
+    triggerName?: string;
+    triggerType?: string;
+    triggerRunTimestamp?: string;
+    status?: "Succeeded" | "Failed" | "Inprogress";
+    message?: string;
+    properties?: Record<string, string>;
+    triggeredPipelines?: Record<string, string>;
+    runDimension?: Record<string, string>;
+    dependencyStatus?: Record<string, unknown>;
+  }[];
+  continuationToken?: string;
+}
 export const TriggerRunsQueryByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5591,9 +7169,7 @@ export const TriggerRunsQueryByFactoryOutput =
       }),
     ),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type TriggerRunsQueryByFactoryOutput =
-  typeof TriggerRunsQueryByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<TriggerRunsQueryByFactoryOutput>;
 
 // The operation
 /**
@@ -5611,6 +7187,13 @@ export const TriggerRunsQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggerRunsRerunInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+  runId: string;
+}
 export const TriggerRunsRerunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5620,15 +7203,15 @@ export const TriggerRunsRerunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/rerun",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/triggerRuns/{runId}/rerun",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggerRunsRerunInput = typeof TriggerRunsRerunInput.Type;
+) as unknown as Schema.Codec<TriggerRunsRerunInput>;
 
 // Output Schema
-export const TriggerRunsRerunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggerRunsRerunOutput = typeof TriggerRunsRerunOutput.Type;
+export type TriggerRunsRerunOutput = void;
+export const TriggerRunsRerunOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggerRunsRerunOutput>;
 
 // The operation
 /**
@@ -5644,6 +7227,19 @@ export const TriggerRunsRerun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggerRunsRerunOutput,
 }));
 // Input Schema
+export interface TriggersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+  properties: {
+    type: string;
+    description?: string;
+    runtimeState?: "Started" | "Stopped" | "Disabled";
+    annotations?: unknown[];
+  };
+  etag?: string;
+}
 export const TriggersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5665,11 +7261,22 @@ export const TriggersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersCreateOrUpdateInput =
-  typeof TriggersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TriggersCreateOrUpdateInput>;
 
 // Output Schema
+export interface TriggersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TriggersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5689,9 +7296,7 @@ export const TriggersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TriggersCreateOrUpdateOutput =
-  typeof TriggersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TriggersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5711,6 +7316,12 @@ export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5722,12 +7333,12 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
+) as unknown as Schema.Codec<TriggersDeleteInput>;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
+export type TriggersDeleteOutput = void;
+export const TriggersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -5744,6 +7355,12 @@ export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
+export interface TriggersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5755,10 +7372,22 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggersGetInput = typeof TriggersGetInput.Type;
+) as unknown as Schema.Codec<TriggersGetInput>;
 
 // Output Schema
+export interface TriggersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5777,8 +7406,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TriggersGetOutput = typeof TriggersGetOutput.Type;
+}) as unknown as Schema.Codec<TriggersGetOutput>;
 
 // The operation
 /**
@@ -5796,6 +7424,12 @@ export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersGetOutput,
 }));
 // Input Schema
+export interface TriggersGetEventSubscriptionStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersGetEventSubscriptionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5808,11 +7442,18 @@ export const TriggersGetEventSubscriptionStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/getEventSubscriptionStatus",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersGetEventSubscriptionStatusInput =
-  typeof TriggersGetEventSubscriptionStatusInput.Type;
+  ) as unknown as Schema.Codec<TriggersGetEventSubscriptionStatusInput>;
 
 // Output Schema
+export interface TriggersGetEventSubscriptionStatusOutput {
+  triggerName?: string;
+  status?:
+    | "Enabled"
+    | "Provisioning"
+    | "Deprovisioning"
+    | "Disabled"
+    | "Unknown";
+}
 export const TriggersGetEventSubscriptionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
@@ -5825,9 +7466,7 @@ export const TriggersGetEventSubscriptionStatusOutput =
         "Unknown",
       ]),
     ),
-  });
-export type TriggersGetEventSubscriptionStatusOutput =
-  typeof TriggersGetEventSubscriptionStatusOutput.Type;
+  }) as unknown as Schema.Codec<TriggersGetEventSubscriptionStatusOutput>;
 
 // The operation
 /**
@@ -5845,6 +7484,11 @@ export const TriggersGetEventSubscriptionStatus =
     outputSchema: TriggersGetEventSubscriptionStatusOutput,
   }));
 // Input Schema
+export interface TriggersListByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+}
 export const TriggersListByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5856,10 +7500,25 @@ export const TriggersListByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersListByFactoryInput = typeof TriggersListByFactoryInput.Type;
+  ) as unknown as Schema.Codec<TriggersListByFactoryInput>;
 
 // Output Schema
+export interface TriggersListByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TriggersListByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5894,9 +7553,7 @@ export const TriggersListByFactoryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TriggersListByFactoryOutput =
-  typeof TriggersListByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<TriggersListByFactoryOutput>;
 
 // The operation
 /**
@@ -5914,6 +7571,13 @@ export const TriggersListByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggersQueryByFactoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  continuationToken?: string;
+  parentTriggerName?: string;
+}
 export const TriggersQueryByFactoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5927,11 +7591,25 @@ export const TriggersQueryByFactoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/querytriggers",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersQueryByFactoryInput =
-  typeof TriggersQueryByFactoryInput.Type;
+  ) as unknown as Schema.Codec<TriggersQueryByFactoryInput>;
 
 // Output Schema
+export interface TriggersQueryByFactoryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  continuationToken?: string;
+}
 export const TriggersQueryByFactoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5966,9 +7644,7 @@ export const TriggersQueryByFactoryOutput =
       }),
     ),
     continuationToken: Schema.optional(Schema.String),
-  });
-export type TriggersQueryByFactoryOutput =
-  typeof TriggersQueryByFactoryOutput.Type;
+  }) as unknown as Schema.Codec<TriggersQueryByFactoryOutput>;
 
 // The operation
 /**
@@ -5986,6 +7662,12 @@ export const TriggersQueryByFactory = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5997,12 +7679,12 @@ export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/start",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggersStartInput = typeof TriggersStartInput.Type;
+) as unknown as Schema.Codec<TriggersStartInput>;
 
 // Output Schema
-export const TriggersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggersStartOutput = typeof TriggersStartOutput.Type;
+export type TriggersStartOutput = void;
+export const TriggersStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStartOutput>;
 
 // The operation
 /**
@@ -6019,6 +7701,12 @@ export const TriggersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersStartOutput,
 }));
 // Input Schema
+export interface TriggersStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6030,12 +7718,12 @@ export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/stop",
     apiVersion: "2018-06-01",
   }),
-);
-export type TriggersStopInput = typeof TriggersStopInput.Type;
+) as unknown as Schema.Codec<TriggersStopInput>;
 
 // Output Schema
-export const TriggersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggersStopOutput = typeof TriggersStopOutput.Type;
+export type TriggersStopOutput = void;
+export const TriggersStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersStopOutput>;
 
 // The operation
 /**
@@ -6052,6 +7740,12 @@ export const TriggersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersStopOutput,
 }));
 // Input Schema
+export interface TriggersSubscribeToEventsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersSubscribeToEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6064,11 +7758,18 @@ export const TriggersSubscribeToEventsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/subscribeToEvents",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersSubscribeToEventsInput =
-  typeof TriggersSubscribeToEventsInput.Type;
+  ) as unknown as Schema.Codec<TriggersSubscribeToEventsInput>;
 
 // Output Schema
+export interface TriggersSubscribeToEventsOutput {
+  triggerName?: string;
+  status?:
+    | "Enabled"
+    | "Provisioning"
+    | "Deprovisioning"
+    | "Disabled"
+    | "Unknown";
+}
 export const TriggersSubscribeToEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
@@ -6081,9 +7782,7 @@ export const TriggersSubscribeToEventsOutput =
         "Unknown",
       ]),
     ),
-  });
-export type TriggersSubscribeToEventsOutput =
-  typeof TriggersSubscribeToEventsOutput.Type;
+  }) as unknown as Schema.Codec<TriggersSubscribeToEventsOutput>;
 
 // The operation
 /**
@@ -6102,6 +7801,12 @@ export const TriggersSubscribeToEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggersUnsubscribeFromEventsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  factoryName: string;
+  triggerName: string;
+}
 export const TriggersUnsubscribeFromEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6114,11 +7819,18 @@ export const TriggersUnsubscribeFromEventsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/unsubscribeFromEvents",
       apiVersion: "2018-06-01",
     }),
-  );
-export type TriggersUnsubscribeFromEventsInput =
-  typeof TriggersUnsubscribeFromEventsInput.Type;
+  ) as unknown as Schema.Codec<TriggersUnsubscribeFromEventsInput>;
 
 // Output Schema
+export interface TriggersUnsubscribeFromEventsOutput {
+  triggerName?: string;
+  status?:
+    | "Enabled"
+    | "Provisioning"
+    | "Deprovisioning"
+    | "Disabled"
+    | "Unknown";
+}
 export const TriggersUnsubscribeFromEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     triggerName: Schema.optional(Schema.String),
@@ -6131,9 +7843,7 @@ export const TriggersUnsubscribeFromEventsOutput =
         "Unknown",
       ]),
     ),
-  });
-export type TriggersUnsubscribeFromEventsOutput =
-  typeof TriggersUnsubscribeFromEventsOutput.Type;
+  }) as unknown as Schema.Codec<TriggersUnsubscribeFromEventsOutput>;
 
 // The operation
 /**

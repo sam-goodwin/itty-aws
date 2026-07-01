@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterQueryShapeInsightSummariesInput {
+  groupId: string;
+  clusterName: string;
+  since?: number;
+  until?: number;
+  processIds?: string;
+  namespaces?: string;
+  commands?: string;
+  nSummaries?: number;
+  series?: string;
+  queryShapeHashes?: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupClusterQueryShapeInsightSummariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -23,15 +37,12 @@ export const ListGroupClusterQueryShapeInsightSummariesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries",
     }),
-  );
-export type ListGroupClusterQueryShapeInsightSummariesInput =
-  typeof ListGroupClusterQueryShapeInsightSummariesInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesInput>;
 
 // Output Schema
+export type ListGroupClusterQueryShapeInsightSummariesOutput = void;
 export const ListGroupClusterQueryShapeInsightSummariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterQueryShapeInsightSummariesOutput =
-  typeof ListGroupClusterQueryShapeInsightSummariesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapeInsightSummariesOutput>;
 
 // The operation
 /**
@@ -55,7 +66,7 @@ export type ListGroupClusterQueryShapeInsightSummariesOutput =
  * @param namespaces - Namespaces from which to retrieve query shape statistics. A namespace consists of one database and one collection resource written as `.`: `<database>.<collection>`. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (`&`) between each namespace. Omit this parameter to return results for all namespaces.
  * @param commands - Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands.
  * @param nSummaries - Maximum number of query statistic summaries to return.
- * @param series - Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
+ * @param series - Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. The `P50_EXECUTION_TIME`, `P90_EXECUTION_TIME`, and `P99_EXECUTION_TIME` series are deprecated as the values they report may be inaccurate. They will be removed in a future release.
  * @param queryShapeHashes - A list of SHA256 hashes of desired query shapes, output by MongoDB commands like `$queryStats` and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

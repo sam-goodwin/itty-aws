@@ -1,8 +1,21 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetCustomersCustomerSourcesInput {
+  customer: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  object?: string;
+  starting_after?: string;
+}
 export const GetCustomersCustomerSourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -17,20 +30,22 @@ export const GetCustomersCustomerSourcesInput =
       path: "/v1/customers/{customer}/sources",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetCustomersCustomerSourcesInput =
-  typeof GetCustomersCustomerSourcesInput.Type;
+  ) as unknown as Schema.Codec<GetCustomersCustomerSourcesInput>;
 
 // Output Schema
+export interface GetCustomersCustomerSourcesOutput {
+  data: unknown[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetCustomersCustomerSourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(Schema.Unknown),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetCustomersCustomerSourcesOutput =
-  typeof GetCustomersCustomerSourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetCustomersCustomerSourcesOutput>;
 
 // The operation
 /**

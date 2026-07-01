@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsViewsRetrieveInput {
+  project_id: string;
+  short_id: string;
+}
 export const LogsViewsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +15,41 @@ export const LogsViewsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "GET",
-    path: "/api/environments/{project_id}/logs/views/{short_id}/",
+    path: "/api/projects/{project_id}/logs/views/{short_id}/",
   }),
-);
-export type LogsViewsRetrieveInput = typeof LogsViewsRetrieveInput.Type;
+) as unknown as Schema.Codec<LogsViewsRetrieveInput>;
 
 // Output Schema
+export interface LogsViewsRetrieveOutput {
+  id?: string;
+  short_id?: string;
+  name?: string;
+  filters?: Record<string, unknown>;
+  pinned?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at?: string | null;
+}
 export const LogsViewsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,13 +71,28 @@ export const LogsViewsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type LogsViewsRetrieveOutput = typeof LogsViewsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LogsViewsRetrieveOutput>;
 
 // The operation
 /**
@@ -55,5 +102,4 @@ export type LogsViewsRetrieveOutput = typeof LogsViewsRetrieveOutput.Type;
 export const logsViewsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsRetrieveInput,
   outputSchema: LogsViewsRetrieveOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PluginConfigsLogsListInput {
+  plugin_config_id: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const PluginConfigsLogsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plugin_config_id: Schema.Number.pipe(T.PathParam()),
@@ -15,10 +21,25 @@ export const PluginConfigsLogsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/plugin_configs/{plugin_config_id}/logs/",
     }),
-  );
-export type PluginConfigsLogsListInput = typeof PluginConfigsLogsListInput.Type;
+  ) as unknown as Schema.Codec<PluginConfigsLogsListInput>;
 
 // Output Schema
+export interface PluginConfigsLogsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    team_id?: number;
+    plugin_id?: number;
+    plugin_config_id?: number;
+    timestamp?: string;
+    source?: "SYSTEM" | "PLUGIN" | "CONSOLE";
+    type?: "DEBUG" | "LOG" | "INFO" | "WARN" | "ERROR";
+    message?: string;
+    instance_id?: string;
+  }[];
+}
 export const PluginConfigsLogsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -43,9 +64,7 @@ export const PluginConfigsLogsListOutput =
         }),
       ),
     ),
-  });
-export type PluginConfigsLogsListOutput =
-  typeof PluginConfigsLogsListOutput.Type;
+  }) as unknown as Schema.Codec<PluginConfigsLogsListOutput>;
 
 // The operation
 /**

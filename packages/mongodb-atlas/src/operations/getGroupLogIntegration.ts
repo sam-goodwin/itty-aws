@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupLogIntegrationInput {
+  groupId: string;
+  id: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupLogIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const GetGroupLogIntegrationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
     }),
-  );
-export type GetGroupLogIntegrationInput =
-  typeof GetGroupLogIntegrationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupLogIntegrationInput>;
 
 // Output Schema
+export type GetGroupLogIntegrationOutput = void;
 export const GetGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLogIntegrationOutput =
-  typeof GetGroupLogIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupLogIntegrationOutput>;
 
 // The operation
 /**
  * Return One Log Integration
  *
- * Returns the configuration for one log integration identified by its unique ID. To use this resource, the requesting Service Account or API Key must have the Organization Owner or Project Owner role.
+ * Returns the configuration for one log integration identified by its unique ID.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

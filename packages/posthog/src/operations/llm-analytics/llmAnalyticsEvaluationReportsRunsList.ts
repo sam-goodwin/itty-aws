@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsEvaluationReportsRunsListInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const LlmAnalyticsEvaluationReportsRunsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,13 +18,27 @@ export const LlmAnalyticsEvaluationReportsRunsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/evaluation_reports/{id}/runs/",
+      path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/{id}/runs/",
     }),
-  );
-export type LlmAnalyticsEvaluationReportsRunsListInput =
-  typeof LlmAnalyticsEvaluationReportsRunsListInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsRunsListInput>;
 
 // Output Schema
+export interface LlmAnalyticsEvaluationReportsRunsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    report?: string;
+    content?: unknown;
+    metadata?: unknown;
+    period_start?: string;
+    period_end?: string;
+    delivery_status?: "pending" | "delivered" | "partial_failure" | "failed";
+    delivery_errors?: unknown;
+    created_at?: string;
+  }[];
+}
 export const LlmAnalyticsEvaluationReportsRunsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -47,9 +66,7 @@ export const LlmAnalyticsEvaluationReportsRunsListOutput =
         }),
       ),
     ),
-  });
-export type LlmAnalyticsEvaluationReportsRunsListOutput =
-  typeof LlmAnalyticsEvaluationReportsRunsListOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsRunsListOutput>;
 
 // The operation
 /**
@@ -64,5 +81,4 @@ export const llmAnalyticsEvaluationReportsRunsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationReportsRunsListInput,
     outputSchema: LlmAnalyticsEvaluationReportsRunsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

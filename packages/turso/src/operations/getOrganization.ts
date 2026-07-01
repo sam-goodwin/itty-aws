@@ -4,14 +4,30 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrganizationInput {
+  organizationSlug: string;
+}
 export const GetOrganizationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/organizations/{organizationSlug}" }),
-);
-export type GetOrganizationInput = typeof GetOrganizationInput.Type;
+) as unknown as Schema.Codec<GetOrganizationInput>;
 
 // Output Schema
+export interface GetOrganizationOutput {
+  organization?: {
+    name?: string;
+    slug?: string;
+    type?: "personal" | "team";
+    overages?: boolean;
+    require_mfa?: boolean;
+    blocked_reads?: boolean;
+    blocked_writes?: boolean;
+    plan_id?: string;
+    plan_timeline?: string;
+    platform?: string;
+  };
+}
 export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.optional(
     Schema.Struct({
@@ -19,6 +35,7 @@ export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       slug: Schema.optional(Schema.String),
       type: Schema.optional(Schema.Literals(["personal", "team"])),
       overages: Schema.optional(Schema.Boolean),
+      require_mfa: Schema.optional(Schema.Boolean),
       blocked_reads: Schema.optional(Schema.Boolean),
       blocked_writes: Schema.optional(Schema.Boolean),
       plan_id: Schema.optional(Schema.String),
@@ -26,8 +43,7 @@ export const GetOrganizationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       platform: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GetOrganizationOutput = typeof GetOrganizationOutput.Type;
+}) as unknown as Schema.Codec<GetOrganizationOutput>;
 
 // The operation
 /**

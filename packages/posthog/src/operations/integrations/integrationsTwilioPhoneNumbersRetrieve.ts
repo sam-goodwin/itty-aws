@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsTwilioPhoneNumbersRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsTwilioPhoneNumbersRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const IntegrationsTwilioPhoneNumbersRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/twilio_phone_numbers/",
     }),
-  );
-export type IntegrationsTwilioPhoneNumbersRetrieveInput =
-  typeof IntegrationsTwilioPhoneNumbersRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsTwilioPhoneNumbersRetrieveInput>;
 
 // Output Schema
+export type IntegrationsTwilioPhoneNumbersRetrieveOutput = void;
 export const IntegrationsTwilioPhoneNumbersRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsTwilioPhoneNumbersRetrieveOutput =
-  typeof IntegrationsTwilioPhoneNumbersRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsTwilioPhoneNumbersRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupDataFederationInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  type?: "USER" | "ONLINE_ARCHIVE";
+}
 export const ListGroupDataFederationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const ListGroupDataFederationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation",
     }),
-  );
-export type ListGroupDataFederationInput =
-  typeof ListGroupDataFederationInput.Type;
+  ) as unknown as Schema.Codec<ListGroupDataFederationInput>;
 
 // Output Schema
+export type ListGroupDataFederationOutput = void;
 export const ListGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupDataFederationOutput =
-  typeof ListGroupDataFederationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupDataFederationOutput>;
 
 // The operation
 /**
  * Return All Federated Database Instances in One Project
  *
- * Returns the details of all federated database instances in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only or higher role.
+ * Returns the details of all federated database instances in the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ReadOnlyQueryInput {
+  ref: string;
+  query: string;
+  parameters?: unknown[];
+}
 export const V1ReadOnlyQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   query: Schema.String,
@@ -13,12 +18,12 @@ export const V1ReadOnlyQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v1/projects/{ref}/database/query/read-only",
   }),
-);
-export type V1ReadOnlyQueryInput = typeof V1ReadOnlyQueryInput.Type;
+) as unknown as Schema.Codec<V1ReadOnlyQueryInput>;
 
 // Output Schema
-export const V1ReadOnlyQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1ReadOnlyQueryOutput = typeof V1ReadOnlyQueryOutput.Type;
+export type V1ReadOnlyQueryOutput = void;
+export const V1ReadOnlyQueryOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ReadOnlyQueryOutput>;
 
 // The operation
 /**

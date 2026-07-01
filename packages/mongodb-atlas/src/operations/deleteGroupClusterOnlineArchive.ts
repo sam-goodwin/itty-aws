@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterOnlineArchiveInput {
+  groupId: string;
+  archiveId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupClusterOnlineArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,21 +23,18 @@ export const DeleteGroupClusterOnlineArchiveInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
     }),
-  );
-export type DeleteGroupClusterOnlineArchiveInput =
-  typeof DeleteGroupClusterOnlineArchiveInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterOnlineArchiveInput>;
 
 // Output Schema
+export type DeleteGroupClusterOnlineArchiveOutput = void;
 export const DeleteGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterOnlineArchiveOutput =
-  typeof DeleteGroupClusterOnlineArchiveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
  * Remove One Online Archive
  *
- * Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
+ * Removes one online archive. This archive stores data from one cluster within one project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

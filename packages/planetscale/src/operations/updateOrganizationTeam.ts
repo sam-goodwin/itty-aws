@@ -9,6 +9,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrganizationTeamInput {
+  organization: string;
+  team: string;
+  name?: string;
+  description?: string;
+}
 export const UpdateOrganizationTeamInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -20,11 +26,48 @@ export const UpdateOrganizationTeamInput =
       method: "PATCH",
       path: "/organizations/{organization}/teams/{team}",
     }),
-  );
-export type UpdateOrganizationTeamInput =
-  typeof UpdateOrganizationTeamInput.Type;
+  ) as unknown as Schema.Codec<UpdateOrganizationTeamInput>;
 
 // Output Schema
+export interface UpdateOrganizationTeamOutput {
+  id: string;
+  display_name: string;
+  creator: { id: string; display_name: string; avatar_url: string };
+  members: {
+    id: string;
+    display_name: string;
+    name: string;
+    email: string;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    two_factor_auth_configured: boolean;
+    default_organization?: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    } | null;
+    sso?: boolean | null;
+    managed?: boolean | null;
+    directory_managed?: boolean | null;
+    email_verified?: boolean | null;
+  }[];
+  databases: { id: string; name: string; url: string; branches_url: string }[];
+  analyst_databases: {
+    id: string;
+    name: string;
+    url: string;
+    branches_url: string;
+  }[];
+  name: string;
+  slug: string;
+  created_at: string;
+  updated_at: string;
+  description: string | null;
+  managed: boolean;
+}
 export const UpdateOrganizationTeamOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -83,9 +126,7 @@ export const UpdateOrganizationTeamOutput =
     updated_at: Schema.String,
     description: Schema.NullOr(Schema.String),
     managed: Schema.Boolean,
-  });
-export type UpdateOrganizationTeamOutput =
-  typeof UpdateOrganizationTeamOutput.Type;
+  }) as unknown as Schema.Codec<UpdateOrganizationTeamOutput>;
 
 // The operation
 /**

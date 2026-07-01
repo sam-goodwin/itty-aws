@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SuspendProjectEndpointInput {
+  project_id: string;
+  endpoint_id: string;
+}
 export const SuspendProjectEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,100 @@ export const SuspendProjectEndpointInput =
       method: "POST",
       path: "/projects/{project_id}/endpoints/{endpoint_id}/suspend",
     }),
-  );
-export type SuspendProjectEndpointInput =
-  typeof SuspendProjectEndpointInput.Type;
+  ) as unknown as Schema.Codec<SuspendProjectEndpointInput>;
 
 // Output Schema
+export interface SuspendProjectEndpointOutput {
+  endpoint: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const SuspendProjectEndpointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
@@ -121,19 +214,15 @@ export const SuspendProjectEndpointOutput =
         total_duration_ms: Schema.Number,
       }),
     ),
-  });
-export type SuspendProjectEndpointOutput =
-  typeof SuspendProjectEndpointOutput.Type;
+  }) as unknown as Schema.Codec<SuspendProjectEndpointOutput>;
 
 // The operation
 /**
  * Suspend compute endpoint
  *
- * Suspend the specified compute endpoint
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain an `endpoint_id` by listing your project's compute endpoints.
+ * Suspends the specified compute endpoint.
  * An `endpoint_id` has an `ep-` prefix.
- * For information about compute endpoints, see [Manage computes](https://neon.tech/docs/manage/endpoints/).
+ * For information about compute endpoints, see [Manage computes](https://neon.com/docs/manage/endpoints/).
  *
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID

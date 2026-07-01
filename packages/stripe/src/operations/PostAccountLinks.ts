@@ -3,6 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostAccountLinksInput {
+  account: string;
+  collect?: "currently_due" | "eventually_due";
+  collection_options?: {
+    fields?: "currently_due" | "eventually_due";
+    future_requirements?: "include" | "omit";
+  };
+  expand?: string[];
+  refresh_url?: string;
+  return_url?: string;
+  type: "account_onboarding" | "account_update";
+}
 export const PostAccountLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.String,
   collect: Schema.optional(
@@ -28,10 +40,15 @@ export const PostAccountLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/account_links",
     contentType: "form-urlencoded",
   }),
-);
-export type PostAccountLinksInput = typeof PostAccountLinksInput.Type;
+) as unknown as Schema.Codec<PostAccountLinksInput>;
 
 // Output Schema
+export interface PostAccountLinksOutput {
+  created: number;
+  expires_at: number;
+  object: "account_link";
+  url: string;
+}
 export const PostAccountLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     created: Schema.Number,
@@ -39,8 +56,7 @@ export const PostAccountLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     object: Schema.Literals(["account_link"]),
     url: Schema.String,
   },
-);
-export type PostAccountLinksOutput = typeof PostAccountLinksOutput.Type;
+) as unknown as Schema.Codec<PostAccountLinksOutput>;
 
 // The operation
 /**

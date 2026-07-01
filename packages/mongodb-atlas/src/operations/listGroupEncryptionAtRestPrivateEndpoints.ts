@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupEncryptionAtRestPrivateEndpointsInput {
+  groupId: string;
+  cloudProvider: "AZURE" | "AWS";
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const ListGroupEncryptionAtRestPrivateEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const ListGroupEncryptionAtRestPrivateEndpointsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
     }),
-  );
-export type ListGroupEncryptionAtRestPrivateEndpointsInput =
-  typeof ListGroupEncryptionAtRestPrivateEndpointsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupEncryptionAtRestPrivateEndpointsInput>;
 
 // Output Schema
+export type ListGroupEncryptionAtRestPrivateEndpointsOutput = void;
 export const ListGroupEncryptionAtRestPrivateEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupEncryptionAtRestPrivateEndpointsOutput =
-  typeof ListGroupEncryptionAtRestPrivateEndpointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupEncryptionAtRestPrivateEndpointsOutput>;
 
 // The operation
 /**

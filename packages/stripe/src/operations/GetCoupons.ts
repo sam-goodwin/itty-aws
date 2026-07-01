@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCouponsInput {
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -15,10 +22,33 @@ export const GetCouponsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/coupons",
     contentType: "form-urlencoded",
   }),
-);
-export type GetCouponsInput = typeof GetCouponsInput.Type;
+) as unknown as Schema.Codec<GetCouponsInput>;
 
 // Output Schema
+export interface GetCouponsOutput {
+  data: {
+    amount_off: number | null;
+    applies_to?: { products: string[] };
+    created: number;
+    currency: string | null;
+    currency_options?: Record<string, { amount_off: number }>;
+    duration: "forever" | "once" | "repeating";
+    duration_in_months: number | null;
+    id: string;
+    livemode: boolean;
+    max_redemptions: number | null;
+    metadata: Record<string, string> | null;
+    name: string | null;
+    object: "coupon";
+    percent_off: number | null;
+    redeem_by: number | null;
+    times_redeemed: number;
+    valid: boolean;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -55,8 +85,7 @@ export const GetCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetCouponsOutput = typeof GetCouponsOutput.Type;
+}) as unknown as Schema.Codec<GetCouponsOutput>;
 
 // The operation
 /**

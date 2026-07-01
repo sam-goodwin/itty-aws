@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface QueryDraftSqlRetrieveInput {
+  project_id: string;
+}
 export const QueryDraftSqlRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,14 +15,15 @@ export const QueryDraftSqlRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/query/draft_sql/",
     }),
-  );
-export type QueryDraftSqlRetrieveInput = typeof QueryDraftSqlRetrieveInput.Type;
+  ) as unknown as Schema.Codec<QueryDraftSqlRetrieveInput>;
 
 // Output Schema
+export type QueryDraftSqlRetrieveOutput = Record<string, unknown>;
 export const QueryDraftSqlRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type QueryDraftSqlRetrieveOutput =
-  typeof QueryDraftSqlRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<QueryDraftSqlRetrieveOutput>;
 
 // The operation
 /**

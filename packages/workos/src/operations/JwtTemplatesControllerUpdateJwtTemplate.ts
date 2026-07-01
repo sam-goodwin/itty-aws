@@ -4,23 +4,30 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface JwtTemplatesControllerUpdateJwtTemplateInput {
+  content?: string;
+}
 export const JwtTemplatesControllerUpdateJwtTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/user_management/jwt_template" }));
-export type JwtTemplatesControllerUpdateJwtTemplateInput =
-  typeof JwtTemplatesControllerUpdateJwtTemplateInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/user_management/jwt_template" }),
+  ) as unknown as Schema.Codec<JwtTemplatesControllerUpdateJwtTemplateInput>;
 
 // Output Schema
+export interface JwtTemplatesControllerUpdateJwtTemplateOutput {
+  object: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
+}
 export const JwtTemplatesControllerUpdateJwtTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    content: Schema.optional(Schema.String),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
-export type JwtTemplatesControllerUpdateJwtTemplateOutput =
-  typeof JwtTemplatesControllerUpdateJwtTemplateOutput.Type;
+    object: Schema.String,
+    content: Schema.String,
+    created_at: Schema.String,
+    updated_at: Schema.String,
+  }) as unknown as Schema.Codec<JwtTemplatesControllerUpdateJwtTemplateOutput>;
 
 // The operation
 /**

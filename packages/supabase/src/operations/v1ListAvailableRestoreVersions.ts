@@ -4,14 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAvailableRestoreVersionsInput {
+  ref: string;
+}
 export const V1ListAvailableRestoreVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/restore" }));
-export type V1ListAvailableRestoreVersionsInput =
-  typeof V1ListAvailableRestoreVersionsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/projects/{ref}/restore" }),
+  ) as unknown as Schema.Codec<V1ListAvailableRestoreVersionsInput>;
 
 // Output Schema
+export interface V1ListAvailableRestoreVersionsOutput {
+  available_versions: {
+    version: string;
+    release_channel:
+      | "internal"
+      | "alpha"
+      | "beta"
+      | "ga"
+      | "withdrawn"
+      | "preview";
+    postgres_engine: "13" | "14" | "15" | "17" | "17-oriole";
+  }[];
+}
 export const V1ListAvailableRestoreVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available_versions: Schema.Array(
@@ -28,9 +44,7 @@ export const V1ListAvailableRestoreVersionsOutput =
         postgres_engine: Schema.Literals(["13", "14", "15", "17", "17-oriole"]),
       }),
     ),
-  });
-export type V1ListAvailableRestoreVersionsOutput =
-  typeof V1ListAvailableRestoreVersionsOutput.Type;
+  }) as unknown as Schema.Codec<V1ListAvailableRestoreVersionsOutput>;
 
 // The operation
 /**

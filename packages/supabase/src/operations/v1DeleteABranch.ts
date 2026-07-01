@@ -4,17 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteABranchInput {
+  branch_id_or_ref: string;
+  force?: boolean;
+}
 export const V1DeleteABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "DELETE", path: "/v1/branches/{branch_id_or_ref}" }));
-export type V1DeleteABranchInput = typeof V1DeleteABranchInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v1/branches/{branch_id_or_ref}" }),
+) as unknown as Schema.Codec<V1DeleteABranchInput>;
 
 // Output Schema
+export interface V1DeleteABranchOutput {
+  message: "ok";
+}
 export const V1DeleteABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   message: Schema.Literals(["ok"]),
-});
-export type V1DeleteABranchOutput = typeof V1DeleteABranchOutput.Type;
+}) as unknown as Schema.Codec<V1DeleteABranchOutput>;
 
 // The operation
 /**

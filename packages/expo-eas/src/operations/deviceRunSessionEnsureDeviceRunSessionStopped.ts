@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deviceRunSessionEnsureDeviceRunSessionStopped($deviceRunSessionId: ID!) {\n  deviceRunSession {\n    ensureDeviceRunSessionStopped(deviceRunSessionId: $deviceRunSessionId) {\n      app {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appStoreConnectApp {\n          ascAppIdentifier\n          createdAt\n          id\n          updatedAt\n          webhookEventTypes\n          webhookIdentifier\n        }\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        convexProject {\n          convexProjectIdentifier\n          convexProjectName\n          convexProjectSlug\n          createdAt\n          id\n          updatedAt\n        }\n        description\n        devDomainName {\n          id\n          name\n        }\n        environmentVariableEnvironments\n        fullName\n        githubBuildTriggers {\n          autoSubmit\n          buildProfile\n          createdAt\n          environment\n          executionBehavior\n          id\n          isActive\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          platform\n          sourcePattern\n          submitProfile\n          targetPattern\n          type\n          updatedAt\n        }\n        githubJobRunTriggers {\n          createdAt\n          id\n          isActive\n          jobType\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          sourcePattern\n          targetPattern\n          triggerType\n        }\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        githubRepositorySettings {\n          baseDirectory\n          id\n        }\n        githubUrl\n        icon {\n          colorPalette\n          originalUrl\n          primaryColor\n          url\n        }\n        iconUrl\n        id\n        insights {\n          hasEventsFromExpoInsightsClientModule\n        }\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        logRocketProject {\n          createdAt\n          id\n          logRocketOrgId\n          logRocketProjectSlug\n          updatedAt\n        }\n        name\n        observe {\n          totalEventCount\n        }\n        ownerAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        packageName\n        packageUsername\n        playStoreUrl\n        privacy\n        privacySetting\n        published\n        pushNotifications {\n          id\n        }\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        sentryProject {\n          createdAt\n          id\n          sentryInstallationId\n          sentryProjectId\n          sentryProjectSlug\n          updatedAt\n        }\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n        users {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        vexoApp {\n          domain\n          iconUrl\n          id\n          name\n          owner\n          slug\n          vexoIdentifier\n        }\n        workerCustomDomain {\n          createdAt\n          devDomainName\n          hostname\n          id\n          updatedAt\n        }\n      }\n      createdAt\n      finishedAt\n      id\n      initiatingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      packageVersion\n      platform\n      startedAt\n      status\n      turtleJobRun {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        artifacts {\n          contentType\n          createdAt\n          downloadUrl\n          fileSizeBytes\n          filename\n          id\n          name\n          storageType\n          updatedAt\n        }\n        createdAt\n        displayName\n        endedAt\n        errors {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        expiresAt\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        isWaived\n        logFileUrls\n        name\n        priority\n        startedAt\n        status\n        updateGroups\n      }\n      type\n      updatedAt\n    }\n  }\n}";
+  "mutation deviceRunSessionEnsureDeviceRunSessionStopped($deviceRunSessionId: ID!) {\n  deviceRunSession {\n    ensureDeviceRunSessionStopped(deviceRunSessionId: $deviceRunSessionId) {\n      app {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appStoreConnectApp {\n          ascAppIdentifier\n          createdAt\n          id\n          updatedAt\n          webhookEventTypes\n          webhookIdentifier\n        }\n        appStoreConnectWorkflowConnectionStatus\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        convexProject {\n          convexProjectIdentifier\n          convexProjectName\n          convexProjectSlug\n          createdAt\n          id\n          updatedAt\n        }\n        description\n        devDomainName {\n          id\n          name\n        }\n        environmentVariableEnvironments\n        fullName\n        githubBuildTriggers {\n          autoSubmit\n          buildProfile\n          createdAt\n          environment\n          executionBehavior\n          id\n          isActive\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          platform\n          sourcePattern\n          submitProfile\n          targetPattern\n          type\n          updatedAt\n        }\n        githubJobRunTriggers {\n          createdAt\n          id\n          isActive\n          jobType\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          sourcePattern\n          targetPattern\n          triggerType\n        }\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        githubRepositorySettings {\n          baseDirectory\n          id\n        }\n        githubUrl\n        icon {\n          colorPalette\n          originalUrl\n          primaryColor\n          url\n        }\n        iconUrl\n        id\n        insights {\n          hasEventsFromExpoInsightsClientModule\n        }\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        logRocketProject {\n          createdAt\n          id\n          logRocketOrgId\n          logRocketProjectSlug\n          updatedAt\n        }\n        name\n        observe {\n          totalEventCount\n        }\n        ownerAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        packageName\n        packageUsername\n        playStoreUrl\n        posthogProject {\n          createdAt\n          id\n          posthogHost\n          posthogProjectIdentifier\n          posthogProjectName\n          posthogProjectToken\n          updatedAt\n        }\n        privacy\n        privacySetting\n        published\n        pushNotifications {\n          id\n        }\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        sentryProject {\n          createdAt\n          id\n          sentryInstallationId\n          sentryProjectId\n          sentryProjectSlug\n          updatedAt\n        }\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n        users {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        vexoApp {\n          domain\n          iconUrl\n          id\n          name\n          owner\n          slug\n          vexoIdentifier\n        }\n        workerCustomDomain {\n          createdAt\n          devDomainName\n          hostname\n          id\n          updatedAt\n        }\n      }\n      artifacts {\n        createdAt\n        downloadUrl\n        fileSizeBytes\n        filename\n        id\n        metadata\n        name\n        updatedAt\n      }\n      createdAt\n      finishedAt\n      id\n      initiatingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      packageVersion\n      platform\n      startedAt\n      status\n      turtleJobRun {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        artifacts {\n          contentType\n          createdAt\n          downloadUrl\n          fileSizeBytes\n          filename\n          id\n          metadata\n          name\n          storageType\n          updatedAt\n        }\n        createdAt\n        displayName\n        endedAt\n        enqueuedAt\n        errors {\n          buildPhase\n          docsUrl\n          errorCode\n          message\n        }\n        expiresAt\n        gitCommitHash\n        gitCommitMessage\n        gitRef\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        isWaived\n        logFileUrls\n        maxRunTimeSeconds\n        name\n        priority\n        resourceClassDisplayName\n        startedAt\n        status\n        updateGroups\n        workflowJob {\n          createdAt\n          environment\n          id\n          key\n          name\n          outputs\n          requiredJobKeys\n          status\n          type\n          updatedAt\n        }\n      }\n      type\n      updatedAt\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const DeviceRunSessionEnsureDeviceRunSessionStoppedInput = Schema.Struct(
@@ -48,6 +48,11 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
           webhookIdentifier: Schema.String,
         }),
       ),
+      appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+        "HAS_WORKFLOWS_IS_CONNECTED",
+        "HAS_WORKFLOWS_MISSING_CONNECTION",
+        "NO_APP_STORE_CONNECT_WORKFLOWS",
+      ]),
       appStoreUrl: Schema.NullOr(Schema.String),
       assetLimitPerUpdateGroup: Schema.Number,
       buildProfiles: Schema.Array(Schema.String),
@@ -209,6 +214,17 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
       packageName: Schema.String,
       packageUsername: Schema.String,
       playStoreUrl: Schema.NullOr(Schema.String),
+      posthogProject: Schema.NullOr(
+        Schema.Struct({
+          createdAt: Schema.String,
+          id: Schema.String,
+          posthogHost: Schema.String,
+          posthogProjectIdentifier: Schema.String,
+          posthogProjectName: Schema.String,
+          posthogProjectToken: Schema.String,
+          updatedAt: Schema.String,
+        }),
+      ),
       privacy: Schema.String,
       privacySetting: Schema.Literals(["HIDDEN", "PUBLIC", "UNLISTED"]),
       published: Schema.Boolean,
@@ -262,7 +278,7 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
               lastName: Schema.NullOr(Schema.String),
               location: Schema.NullOr(Schema.String),
               newEmailPendingVerification: Schema.NullOr(Schema.String),
-              primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+              primaryAccountProfileImageUrl: Schema.String,
               profilePhoto: Schema.String,
               twitterUsername: Schema.NullOr(Schema.String),
               username: Schema.String,
@@ -291,6 +307,18 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
         }),
       ),
     }),
+    artifacts: Schema.Array(
+      Schema.Struct({
+        createdAt: Schema.String,
+        downloadUrl: Schema.String,
+        fileSizeBytes: Schema.NullOr(Schema.Number),
+        filename: Schema.String,
+        id: Schema.String,
+        metadata: Schema.NullOr(Schema.Unknown),
+        name: Schema.String,
+        updatedAt: Schema.String,
+      }),
+    ),
     createdAt: Schema.String,
     finishedAt: Schema.NullOr(Schema.String),
     id: Schema.String,
@@ -370,6 +398,11 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
     turtleJobRun: Schema.NullOr(
       Schema.Struct({
         app: Schema.Struct({
+          appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+            "HAS_WORKFLOWS_IS_CONNECTED",
+            "HAS_WORKFLOWS_MISSING_CONNECTION",
+            "NO_APP_STORE_CONNECT_WORKFLOWS",
+          ]),
           appStoreUrl: Schema.NullOr(Schema.String),
           assetLimitPerUpdateGroup: Schema.Number,
           buildProfiles: Schema.Array(Schema.String),
@@ -421,6 +454,7 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
             fileSizeBytes: Schema.NullOr(Schema.Number),
             filename: Schema.String,
             id: Schema.String,
+            metadata: Schema.NullOr(Schema.Unknown),
             name: Schema.String,
             storageType: Schema.Literals(["GCS", "R2"]),
             updatedAt: Schema.String,
@@ -429,6 +463,7 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
         createdAt: Schema.String,
         displayName: Schema.NullOr(Schema.String),
         endedAt: Schema.NullOr(Schema.String),
+        enqueuedAt: Schema.NullOr(Schema.String),
         errors: Schema.Array(
           Schema.Struct({
             buildPhase: Schema.NullOr(Schema.String),
@@ -454,8 +489,10 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
         ),
         isWaived: Schema.Boolean,
         logFileUrls: Schema.Array(Schema.String),
+        maxRunTimeSeconds: Schema.Number,
         name: Schema.String,
         priority: Schema.Literals(["HIGH", "NORMAL"]),
+        resourceClassDisplayName: Schema.String,
         startedAt: Schema.NullOr(Schema.String),
         status: Schema.Literals([
           "CANCELED",
@@ -467,9 +504,50 @@ export const DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =
           "PENDING_CANCEL",
         ]),
         updateGroups: Schema.Array(Schema.Array(Schema.Unknown)),
+        workflowJob: Schema.NullOr(
+          Schema.Struct({
+            createdAt: Schema.String,
+            environment: Schema.NullOr(Schema.String),
+            id: Schema.String,
+            key: Schema.String,
+            name: Schema.String,
+            outputs: Schema.Unknown,
+            requiredJobKeys: Schema.Array(Schema.String),
+            status: Schema.Literals([
+              "ACTION_REQUIRED",
+              "CANCELED",
+              "FAILURE",
+              "IN_PROGRESS",
+              "NEW",
+              "PENDING_CANCEL",
+              "SKIPPED",
+              "SUCCESS",
+            ]),
+            type: Schema.Literals([
+              "APPLE_DEVICE_REGISTRATION_REQUEST",
+              "BRANCH_DELETE",
+              "BUILD",
+              "CUSTOM",
+              "DEPLOY",
+              "DOC",
+              "FINGERPRINT",
+              "GET_BUILD",
+              "GITHUB_COMMENT",
+              "MAESTRO_CLOUD",
+              "MAESTRO_TEST",
+              "REPACK",
+              "REQUIRE_APPROVAL",
+              "SLACK",
+              "SUBMISSION",
+              "TESTFLIGHT",
+              "UPDATE",
+            ]),
+            updatedAt: Schema.String,
+          }),
+        ),
       }),
     ),
-    type: Schema.Literals(["AGENT_DEVICE"]),
+    type: Schema.Literals(["AGENT_DEVICE", "ARGENT", "SERVE_SIM"]),
     updatedAt: Schema.String,
   }).pipe(T.ResponsePath("deviceRunSession.ensureDeviceRunSessionStopped"));
 export type DeviceRunSessionEnsureDeviceRunSessionStoppedOutput =

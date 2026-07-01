@@ -4,13 +4,34 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ConnectionsByIdInput {
+  id: string;
+}
 export const GetV1ConnectionsByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/v1/connections/{id}" }));
-export type GetV1ConnectionsByIdInput = typeof GetV1ConnectionsByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/connections/{id}" }),
+  ) as unknown as Schema.Codec<GetV1ConnectionsByIdInput>;
 
 // Output Schema
+export interface GetV1ConnectionsByIdOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: { host: string; port: number };
+      pooled?: { host: string; port: number };
+      accelerate?: { host: string; port: number };
+    };
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+  };
+}
 export const GetV1ConnectionsByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -55,8 +76,7 @@ export const GetV1ConnectionsByIdOutput =
         name: Schema.String,
       }),
     }),
-  });
-export type GetV1ConnectionsByIdOutput = typeof GetV1ConnectionsByIdOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ConnectionsByIdOutput>;
 
 // The operation
 /**

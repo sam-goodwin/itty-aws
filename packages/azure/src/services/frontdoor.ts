@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface EndpointsPurgeContentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  contentPaths: string[];
+}
 export const EndpointsPurgeContentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,14 +27,12 @@ export const EndpointsPurgeContentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/purge",
       apiVersion: "2025-11-01",
     }),
-  );
-export type EndpointsPurgeContentInput = typeof EndpointsPurgeContentInput.Type;
+  ) as unknown as Schema.Codec<EndpointsPurgeContentInput>;
 
 // Output Schema
+export type EndpointsPurgeContentOutput = void;
 export const EndpointsPurgeContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndpointsPurgeContentOutput =
-  typeof EndpointsPurgeContentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsPurgeContentOutput>;
 
 // The operation
 /**
@@ -46,6 +50,32 @@ export const EndpointsPurgeContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+  properties?: {
+    description?: string;
+    endpointA?: { name?: string; endpoint?: string };
+    endpointB?: { name?: string; endpoint?: string };
+    enabledState?: "Enabled" | "Disabled";
+    resourceState?:
+      | "Creating"
+      | "Enabling"
+      | "Enabled"
+      | "Disabling"
+      | "Disabled"
+      | "Deleting";
+    status?: string;
+    scriptFileUri?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ExperimentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -93,11 +123,16 @@ export const ExperimentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ExperimentsCreateOrUpdateInput =
-  typeof ExperimentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ExperimentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ExperimentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -105,9 +140,7 @@ export const ExperimentsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ExperimentsCreateOrUpdateOutput =
-  typeof ExperimentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -126,6 +159,12 @@ export const ExperimentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+}
 export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -139,12 +178,12 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
+) as unknown as Schema.Codec<ExperimentsDeleteInput>;
 
 // Output Schema
-export const ExperimentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
+export type ExperimentsDeleteOutput = void;
+export const ExperimentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDeleteOutput>;
 
 // The operation
 /**
@@ -161,6 +200,12 @@ export const ExperimentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsDeleteOutput,
 }));
 // Input Schema
+export interface ExperimentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+}
 export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -172,18 +217,23 @@ export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ExperimentsGetInput = typeof ExperimentsGetInput.Type;
+) as unknown as Schema.Codec<ExperimentsGetInput>;
 
 // Output Schema
+export interface ExperimentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ExperimentsGetOutput = typeof ExperimentsGetOutput.Type;
+}) as unknown as Schema.Codec<ExperimentsGetOutput>;
 
 // The operation
 /**
@@ -200,6 +250,11 @@ export const ExperimentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsGetOutput,
 }));
 // Input Schema
+export interface ExperimentsListByProfileInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const ExperimentsListByProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -211,11 +266,19 @@ export const ExperimentsListByProfileInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ExperimentsListByProfileInput =
-  typeof ExperimentsListByProfileInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsListByProfileInput>;
 
 // Output Schema
+export interface ExperimentsListByProfileOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ExperimentsListByProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -228,9 +291,7 @@ export const ExperimentsListByProfileOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExperimentsListByProfileOutput =
-  typeof ExperimentsListByProfileOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsListByProfileOutput>;
 
 // The operation
 /**
@@ -248,6 +309,14 @@ export const ExperimentsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+  tags?: Record<string, string>;
+  properties?: { description?: string; enabledState?: "Enabled" | "Disabled" };
+}
 export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -268,10 +337,16 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
+) as unknown as Schema.Codec<ExperimentsUpdateInput>;
 
 // Output Schema
+export interface ExperimentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ExperimentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -279,8 +354,7 @@ export const ExperimentsUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ExperimentsUpdateOutput = typeof ExperimentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsUpdateOutput>;
 
 // The operation
 /**
@@ -299,6 +373,12 @@ export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsUpdateOutput,
 }));
 // Input Schema
+export interface FrontDoorNameAvailabilityCheckInput {
+  name: string;
+  type:
+    | "Microsoft.Network/frontDoors"
+    | "Microsoft.Network/frontDoors/frontendEndpoints";
+}
 export const FrontDoorNameAvailabilityCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -312,11 +392,14 @@ export const FrontDoorNameAvailabilityCheckInput =
       path: "/providers/Microsoft.Network/checkFrontDoorNameAvailability",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontDoorNameAvailabilityCheckInput =
-  typeof FrontDoorNameAvailabilityCheckInput.Type;
+  ) as unknown as Schema.Codec<FrontDoorNameAvailabilityCheckInput>;
 
 // Output Schema
+export interface FrontDoorNameAvailabilityCheckOutput {
+  nameAvailability?: "Available" | "Unavailable";
+  reason?: string;
+  message?: string;
+}
 export const FrontDoorNameAvailabilityCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailability: Schema.optional(
@@ -324,9 +407,7 @@ export const FrontDoorNameAvailabilityCheckOutput =
     ),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type FrontDoorNameAvailabilityCheckOutput =
-  typeof FrontDoorNameAvailabilityCheckOutput.Type;
+  }) as unknown as Schema.Codec<FrontDoorNameAvailabilityCheckOutput>;
 
 // The operation
 /**
@@ -340,6 +421,13 @@ export const FrontDoorNameAvailabilityCheck =
     outputSchema: FrontDoorNameAvailabilityCheckOutput,
   }));
 // Input Schema
+export interface FrontDoorNameAvailabilityWithSubscriptionCheckInput {
+  subscriptionId: string;
+  name: string;
+  type:
+    | "Microsoft.Network/frontDoors"
+    | "Microsoft.Network/frontDoors/frontendEndpoints";
+}
 export const FrontDoorNameAvailabilityWithSubscriptionCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -354,11 +442,14 @@ export const FrontDoorNameAvailabilityWithSubscriptionCheckInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/checkFrontDoorNameAvailability",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontDoorNameAvailabilityWithSubscriptionCheckInput =
-  typeof FrontDoorNameAvailabilityWithSubscriptionCheckInput.Type;
+  ) as unknown as Schema.Codec<FrontDoorNameAvailabilityWithSubscriptionCheckInput>;
 
 // Output Schema
+export interface FrontDoorNameAvailabilityWithSubscriptionCheckOutput {
+  nameAvailability?: "Available" | "Unavailable";
+  reason?: string;
+  message?: string;
+}
 export const FrontDoorNameAvailabilityWithSubscriptionCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailability: Schema.optional(
@@ -366,9 +457,7 @@ export const FrontDoorNameAvailabilityWithSubscriptionCheckOutput =
     ),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type FrontDoorNameAvailabilityWithSubscriptionCheckOutput =
-  typeof FrontDoorNameAvailabilityWithSubscriptionCheckOutput.Type;
+  }) as unknown as Schema.Codec<FrontDoorNameAvailabilityWithSubscriptionCheckOutput>;
 
 // The operation
 /**
@@ -383,6 +472,29 @@ export const FrontDoorNameAvailabilityWithSubscriptionCheck =
     outputSchema: FrontDoorNameAvailabilityWithSubscriptionCheckOutput,
   }));
 // Input Schema
+export interface FrontDoorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  properties?: {
+    friendlyName?: string;
+    routingRules?: { id?: string }[];
+    loadBalancingSettings?: { id?: string }[];
+    healthProbeSettings?: { id?: string }[];
+    backendPools?: { id?: string }[];
+    frontendEndpoints?: { id?: string; name?: string; type?: string }[];
+    backendPoolsSettings?: {
+      enforceCertificateNameCheck?: "Enabled" | "Disabled";
+      sendRecvTimeoutSeconds?: number;
+    };
+    enabledState?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const FrontDoorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -450,11 +562,16 @@ export const FrontDoorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontDoorsCreateOrUpdateInput =
-  typeof FrontDoorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FrontDoorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FrontDoorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const FrontDoorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -462,9 +579,7 @@ export const FrontDoorsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type FrontDoorsCreateOrUpdateOutput =
-  typeof FrontDoorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FrontDoorsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -482,6 +597,11 @@ export const FrontDoorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FrontDoorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+}
 export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -492,12 +612,12 @@ export const FrontDoorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type FrontDoorsDeleteInput = typeof FrontDoorsDeleteInput.Type;
+) as unknown as Schema.Codec<FrontDoorsDeleteInput>;
 
 // Output Schema
-export const FrontDoorsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FrontDoorsDeleteOutput = typeof FrontDoorsDeleteOutput.Type;
+export type FrontDoorsDeleteOutput = void;
+export const FrontDoorsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FrontDoorsDeleteOutput>;
 
 // The operation
 /**
@@ -513,6 +633,11 @@ export const FrontDoorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FrontDoorsDeleteOutput,
 }));
 // Input Schema
+export interface FrontDoorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+}
 export const FrontDoorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -523,18 +648,23 @@ export const FrontDoorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type FrontDoorsGetInput = typeof FrontDoorsGetInput.Type;
+) as unknown as Schema.Codec<FrontDoorsGetInput>;
 
 // Output Schema
+export interface FrontDoorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const FrontDoorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type FrontDoorsGetOutput = typeof FrontDoorsGetOutput.Type;
+}) as unknown as Schema.Codec<FrontDoorsGetOutput>;
 
 // The operation
 /**
@@ -550,6 +680,9 @@ export const FrontDoorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FrontDoorsGetOutput,
 }));
 // Input Schema
+export interface FrontDoorsListInput {
+  subscriptionId: string;
+}
 export const FrontDoorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -558,10 +691,19 @@ export const FrontDoorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoors",
     apiVersion: "2025-11-01",
   }),
-);
-export type FrontDoorsListInput = typeof FrontDoorsListInput.Type;
+) as unknown as Schema.Codec<FrontDoorsListInput>;
 
 // Output Schema
+export interface FrontDoorsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const FrontDoorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -573,8 +715,7 @@ export const FrontDoorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FrontDoorsListOutput = typeof FrontDoorsListOutput.Type;
+}) as unknown as Schema.Codec<FrontDoorsListOutput>;
 
 // The operation
 /**
@@ -588,6 +729,10 @@ export const FrontDoorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FrontDoorsListOutput,
 }));
 // Input Schema
+export interface FrontDoorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FrontDoorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -598,11 +743,19 @@ export const FrontDoorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontDoorsListByResourceGroupInput =
-  typeof FrontDoorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FrontDoorsListByResourceGroupInput>;
 
 // Output Schema
+export interface FrontDoorsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const FrontDoorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -615,9 +768,7 @@ export const FrontDoorsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FrontDoorsListByResourceGroupOutput =
-  typeof FrontDoorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FrontDoorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -633,6 +784,12 @@ export const FrontDoorsListByResourceGroup =
     outputSchema: FrontDoorsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface FrontDoorsValidateCustomDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  hostName: string;
+}
 export const FrontDoorsValidateCustomDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -645,19 +802,20 @@ export const FrontDoorsValidateCustomDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/validateCustomDomain",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontDoorsValidateCustomDomainInput =
-  typeof FrontDoorsValidateCustomDomainInput.Type;
+  ) as unknown as Schema.Codec<FrontDoorsValidateCustomDomainInput>;
 
 // Output Schema
+export interface FrontDoorsValidateCustomDomainOutput {
+  customDomainValidated?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const FrontDoorsValidateCustomDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customDomainValidated: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type FrontDoorsValidateCustomDomainOutput =
-  typeof FrontDoorsValidateCustomDomainOutput.Type;
+  }) as unknown as Schema.Codec<FrontDoorsValidateCustomDomainOutput>;
 
 // The operation
 /**
@@ -674,6 +832,12 @@ export const FrontDoorsValidateCustomDomain =
     outputSchema: FrontDoorsValidateCustomDomainOutput,
   }));
 // Input Schema
+export interface FrontendEndpointsDisableHttpsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  frontendEndpointName: string;
+}
 export const FrontendEndpointsDisableHttpsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -686,15 +850,12 @@ export const FrontendEndpointsDisableHttpsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontendEndpointsDisableHttpsInput =
-  typeof FrontendEndpointsDisableHttpsInput.Type;
+  ) as unknown as Schema.Codec<FrontendEndpointsDisableHttpsInput>;
 
 // Output Schema
+export type FrontendEndpointsDisableHttpsOutput = void;
 export const FrontendEndpointsDisableHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FrontendEndpointsDisableHttpsOutput =
-  typeof FrontendEndpointsDisableHttpsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FrontendEndpointsDisableHttpsOutput>;
 
 // The operation
 /**
@@ -712,6 +873,21 @@ export const FrontendEndpointsDisableHttps =
     outputSchema: FrontendEndpointsDisableHttpsOutput,
   }));
 // Input Schema
+export interface FrontendEndpointsEnableHttpsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  frontendEndpointName: string;
+  certificateSource: "AzureKeyVault" | "FrontDoor";
+  protocolType: "ServerNameIndication";
+  minimumTlsVersion: "1.0" | "1.2";
+  keyVaultCertificateSourceParameters?: {
+    vault?: { id?: string };
+    secretName?: string;
+    secretVersion?: string;
+  };
+  frontDoorCertificateSourceParameters?: { certificateType?: "Dedicated" };
+}
 export const FrontendEndpointsEnableHttpsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -743,15 +919,12 @@ export const FrontendEndpointsEnableHttpsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontendEndpointsEnableHttpsInput =
-  typeof FrontendEndpointsEnableHttpsInput.Type;
+  ) as unknown as Schema.Codec<FrontendEndpointsEnableHttpsInput>;
 
 // Output Schema
+export type FrontendEndpointsEnableHttpsOutput = void;
 export const FrontendEndpointsEnableHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FrontendEndpointsEnableHttpsOutput =
-  typeof FrontendEndpointsEnableHttpsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FrontendEndpointsEnableHttpsOutput>;
 
 // The operation
 /**
@@ -769,6 +942,12 @@ export const FrontendEndpointsEnableHttps =
     outputSchema: FrontendEndpointsEnableHttpsOutput,
   }));
 // Input Schema
+export interface FrontendEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  frontendEndpointName: string;
+}
 export const FrontendEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -781,17 +960,20 @@ export const FrontendEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontendEndpointsGetInput = typeof FrontendEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<FrontendEndpointsGetInput>;
 
 // Output Schema
+export interface FrontendEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FrontendEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FrontendEndpointsGetOutput = typeof FrontendEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<FrontendEndpointsGetOutput>;
 
 // The operation
 /**
@@ -810,6 +992,11 @@ export const FrontendEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FrontendEndpointsListByFrontDoorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+}
 export const FrontendEndpointsListByFrontDoorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -821,11 +1008,13 @@ export const FrontendEndpointsListByFrontDoorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints",
       apiVersion: "2025-11-01",
     }),
-  );
-export type FrontendEndpointsListByFrontDoorInput =
-  typeof FrontendEndpointsListByFrontDoorInput.Type;
+  ) as unknown as Schema.Codec<FrontendEndpointsListByFrontDoorInput>;
 
 // Output Schema
+export interface FrontendEndpointsListByFrontDoorOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FrontendEndpointsListByFrontDoorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -836,9 +1025,7 @@ export const FrontendEndpointsListByFrontDoorOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FrontendEndpointsListByFrontDoorOutput =
-  typeof FrontendEndpointsListByFrontDoorOutput.Type;
+  }) as unknown as Schema.Codec<FrontendEndpointsListByFrontDoorOutput>;
 
 // The operation
 /**
@@ -855,6 +1042,9 @@ export const FrontendEndpointsListByFrontDoor =
     outputSchema: FrontendEndpointsListByFrontDoorOutput,
   }));
 // Input Schema
+export interface ManagedRuleSetsListInput {
+  subscriptionId: string;
+}
 export const ManagedRuleSetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -864,10 +1054,19 @@ export const ManagedRuleSetsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/frontDoorWebApplicationFirewallManagedRuleSets",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ManagedRuleSetsListInput = typeof ManagedRuleSetsListInput.Type;
+  ) as unknown as Schema.Codec<ManagedRuleSetsListInput>;
 
 // Output Schema
+export interface ManagedRuleSetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ManagedRuleSetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -880,8 +1079,7 @@ export const ManagedRuleSetsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedRuleSetsListOutput = typeof ManagedRuleSetsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedRuleSetsListOutput>;
 
 // The operation
 /**
@@ -895,6 +1093,27 @@ export const ManagedRuleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagedRuleSetsListOutput,
 }));
 // Input Schema
+export interface NetworkExperimentProfilesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  properties?: {
+    resourceState?:
+      | "Creating"
+      | "Enabling"
+      | "Enabled"
+      | "Disabling"
+      | "Disabled"
+      | "Deleting";
+    enabledState?: "Enabled" | "Disabled";
+  };
+  etag?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NetworkExperimentProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -927,11 +1146,16 @@ export const NetworkExperimentProfilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesCreateOrUpdateInput =
-  typeof NetworkExperimentProfilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkExperimentProfilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NetworkExperimentProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -939,9 +1163,7 @@ export const NetworkExperimentProfilesCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type NetworkExperimentProfilesCreateOrUpdateOutput =
-  typeof NetworkExperimentProfilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkExperimentProfilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -958,6 +1180,11 @@ export const NetworkExperimentProfilesCreateOrUpdate =
     outputSchema: NetworkExperimentProfilesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkExperimentProfilesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const NetworkExperimentProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -969,15 +1196,12 @@ export const NetworkExperimentProfilesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesDeleteInput =
-  typeof NetworkExperimentProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesDeleteInput>;
 
 // Output Schema
+export type NetworkExperimentProfilesDeleteOutput = void;
 export const NetworkExperimentProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkExperimentProfilesDeleteOutput =
-  typeof NetworkExperimentProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkExperimentProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -994,6 +1218,11 @@ export const NetworkExperimentProfilesDelete =
     outputSchema: NetworkExperimentProfilesDeleteOutput,
   }));
 // Input Schema
+export interface NetworkExperimentProfilesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const NetworkExperimentProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1005,11 +1234,16 @@ export const NetworkExperimentProfilesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesGetInput =
-  typeof NetworkExperimentProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesGetInput>;
 
 // Output Schema
+export interface NetworkExperimentProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NetworkExperimentProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1017,9 +1251,7 @@ export const NetworkExperimentProfilesGetOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type NetworkExperimentProfilesGetOutput =
-  typeof NetworkExperimentProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkExperimentProfilesGetOutput>;
 
 // The operation
 /**
@@ -1036,6 +1268,9 @@ export const NetworkExperimentProfilesGet =
     outputSchema: NetworkExperimentProfilesGetOutput,
   }));
 // Input Schema
+export interface NetworkExperimentProfilesListInput {
+  subscriptionId: string;
+}
 export const NetworkExperimentProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1045,11 +1280,19 @@ export const NetworkExperimentProfilesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/NetworkExperimentProfiles",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesListInput =
-  typeof NetworkExperimentProfilesListInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesListInput>;
 
 // Output Schema
+export interface NetworkExperimentProfilesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const NetworkExperimentProfilesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1062,9 +1305,7 @@ export const NetworkExperimentProfilesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkExperimentProfilesListOutput =
-  typeof NetworkExperimentProfilesListOutput.Type;
+  }) as unknown as Schema.Codec<NetworkExperimentProfilesListOutput>;
 
 // The operation
 /**
@@ -1079,6 +1320,10 @@ export const NetworkExperimentProfilesList =
     outputSchema: NetworkExperimentProfilesListOutput,
   }));
 // Input Schema
+export interface NetworkExperimentProfilesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkExperimentProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1089,11 +1334,19 @@ export const NetworkExperimentProfilesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesListByResourceGroupInput =
-  typeof NetworkExperimentProfilesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkExperimentProfilesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const NetworkExperimentProfilesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1106,9 +1359,7 @@ export const NetworkExperimentProfilesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkExperimentProfilesListByResourceGroupOutput =
-  typeof NetworkExperimentProfilesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkExperimentProfilesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1124,6 +1375,13 @@ export const NetworkExperimentProfilesListByResourceGroup =
     outputSchema: NetworkExperimentProfilesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkExperimentProfilesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  properties?: { enabledState?: "Enabled" | "Disabled" };
+  tags?: Record<string, string>;
+}
 export const NetworkExperimentProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1141,11 +1399,16 @@ export const NetworkExperimentProfilesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type NetworkExperimentProfilesUpdateInput =
-  typeof NetworkExperimentProfilesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkExperimentProfilesUpdateInput>;
 
 // Output Schema
+export interface NetworkExperimentProfilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const NetworkExperimentProfilesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1153,9 +1416,7 @@ export const NetworkExperimentProfilesUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type NetworkExperimentProfilesUpdateOutput =
-  typeof NetworkExperimentProfilesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkExperimentProfilesUpdateOutput>;
 
 // The operation
 /**
@@ -1174,6 +1435,212 @@ export const NetworkExperimentProfilesUpdate =
     outputSchema: NetworkExperimentProfilesUpdateOutput,
   }));
 // Input Schema
+export interface PoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyName: string;
+  properties?: {
+    policySettings?: {
+      enabledState?: "Disabled" | "Enabled";
+      mode?: "Prevention" | "Detection";
+      redirectUrl?: string;
+      customBlockResponseStatusCode?: number;
+      customBlockResponseBody?: string;
+      requestBodyCheck?: "Disabled" | "Enabled";
+      javascriptChallengeExpirationInMinutes?: number;
+      captchaExpirationInMinutes?: number;
+      logScrubbing?: {
+        state?: "Enabled" | "Disabled";
+        scrubbingRules?: {
+          matchVariable:
+            | "RequestIPAddress"
+            | "RequestUri"
+            | "QueryStringArgNames"
+            | "RequestHeaderNames"
+            | "RequestCookieNames"
+            | "RequestBodyPostArgNames"
+            | "RequestBodyJsonArgNames";
+          selectorMatchOperator: "EqualsAny" | "Equals";
+          selector?: string;
+          state?: "Enabled" | "Disabled";
+        }[];
+      };
+    };
+    customRules?: {
+      rules?: {
+        name?: string;
+        priority: number;
+        enabledState?: "Disabled" | "Enabled";
+        ruleType: "MatchRule" | "RateLimitRule";
+        rateLimitDurationInMinutes?: number;
+        rateLimitThreshold?: number;
+        groupBy?: { variableName: "SocketAddr" | "GeoLocation" | "None" }[];
+        matchConditions: {
+          matchVariable:
+            | "RemoteAddr"
+            | "RequestMethod"
+            | "QueryString"
+            | "PostArgs"
+            | "RequestUri"
+            | "RequestHeader"
+            | "RequestBody"
+            | "Cookies"
+            | "SocketAddr"
+            | "JA4";
+          selector?: string;
+          operator:
+            | "Any"
+            | "IPMatch"
+            | "GeoMatch"
+            | "Equal"
+            | "Contains"
+            | "LessThan"
+            | "GreaterThan"
+            | "LessThanOrEqual"
+            | "GreaterThanOrEqual"
+            | "BeginsWith"
+            | "EndsWith"
+            | "RegEx"
+            | "ServiceTagMatch"
+            | "AsnMatch"
+            | "ClientFingerprint";
+          negateCondition?: boolean;
+          matchValue: string[];
+          transforms?: (
+            | "Lowercase"
+            | "Uppercase"
+            | "Trim"
+            | "UrlDecode"
+            | "UrlEncode"
+            | "RemoveNulls"
+          )[];
+        }[];
+        action:
+          | "Allow"
+          | "Block"
+          | "Log"
+          | "Redirect"
+          | "AnomalyScoring"
+          | "JSChallenge"
+          | "CAPTCHA";
+      }[];
+    };
+    managedRules?: {
+      managedRuleSets?: {
+        ruleSetType: string;
+        ruleSetVersion: string;
+        ruleSetAction?: "Block" | "Log" | "Redirect";
+        exclusions?: {
+          matchVariable:
+            | "RequestHeaderNames"
+            | "RequestCookieNames"
+            | "QueryStringArgNames"
+            | "RequestBodyPostArgNames"
+            | "RequestBodyJsonArgNames";
+          selectorMatchOperator:
+            | "Equals"
+            | "Contains"
+            | "StartsWith"
+            | "EndsWith"
+            | "EqualsAny";
+          selector: string;
+        }[];
+        ruleGroupOverrides?: {
+          ruleGroupName: string;
+          exclusions?: {
+            matchVariable:
+              | "RequestHeaderNames"
+              | "RequestCookieNames"
+              | "QueryStringArgNames"
+              | "RequestBodyPostArgNames"
+              | "RequestBodyJsonArgNames";
+            selectorMatchOperator:
+              | "Equals"
+              | "Contains"
+              | "StartsWith"
+              | "EndsWith"
+              | "EqualsAny";
+            selector: string;
+          }[];
+          rules?: {
+            ruleId: string;
+            enabledState?: "Disabled" | "Enabled";
+            action?:
+              | "Allow"
+              | "Block"
+              | "Log"
+              | "Redirect"
+              | "AnomalyScoring"
+              | "JSChallenge"
+              | "CAPTCHA";
+            sensitivity?: "Low" | "Medium" | "High";
+            exclusions?: {
+              matchVariable:
+                | "RequestHeaderNames"
+                | "RequestCookieNames"
+                | "QueryStringArgNames"
+                | "RequestBodyPostArgNames"
+                | "RequestBodyJsonArgNames";
+              selectorMatchOperator:
+                | "Equals"
+                | "Contains"
+                | "StartsWith"
+                | "EndsWith"
+                | "EqualsAny";
+              selector: string;
+            }[];
+          }[];
+        }[];
+      }[];
+      exceptionsList?: {
+        exceptions?: {
+          matchVariable: "RequestUri" | "SocketAddr" | "RequestHeaderNames";
+          selectorMatchOperator?: "Equals";
+          selector?: string;
+          valueMatchOperator:
+            | "Equals"
+            | "Contains"
+            | "StartsWith"
+            | "EndsWith"
+            | "EqualsAny"
+            | "IPMatch";
+          matchValues: string[];
+          scopes: {
+            ruleSetType: string;
+            ruleSetVersion: string;
+            ruleGroupScopes?: {
+              ruleGroupName: string;
+              ruleScopes?: { ruleId: string }[];
+            }[];
+          }[];
+        }[];
+      };
+    };
+    frontendEndpointLinks?: { id?: string }[];
+    routingRuleLinks?: { id?: string }[];
+    securityPolicyLinks?: { id?: string }[];
+    provisioningState?: string;
+    resourceState?:
+      | "Creating"
+      | "Enabling"
+      | "Enabled"
+      | "Disabling"
+      | "Disabled"
+      | "Deleting";
+  };
+  etag?: string;
+  sku?: {
+    name?:
+      | "Classic_AzureFrontDoor"
+      | "Standard_AzureFrontDoor"
+      | "Premium_AzureFrontDoor";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1529,11 +1996,16 @@ export const PoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PoliciesCreateOrUpdateInput =
-  typeof PoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1541,9 +2013,7 @@ export const PoliciesCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PoliciesCreateOrUpdateOutput =
-  typeof PoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1561,6 +2031,11 @@ export const PoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyName: string;
+}
 export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1571,12 +2046,12 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type PoliciesDeleteInput = typeof PoliciesDeleteInput.Type;
+) as unknown as Schema.Codec<PoliciesDeleteInput>;
 
 // Output Schema
-export const PoliciesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoliciesDeleteOutput = typeof PoliciesDeleteOutput.Type;
+export type PoliciesDeleteOutput = void;
+export const PoliciesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1592,6 +2067,11 @@ export const PoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesDeleteOutput,
 }));
 // Input Schema
+export interface PoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyName: string;
+}
 export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1602,18 +2082,23 @@ export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type PoliciesGetInput = typeof PoliciesGetInput.Type;
+) as unknown as Schema.Codec<PoliciesGetInput>;
 
 // Output Schema
+export interface PoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type PoliciesGetOutput = typeof PoliciesGetOutput.Type;
+}) as unknown as Schema.Codec<PoliciesGetOutput>;
 
 // The operation
 /**
@@ -1629,6 +2114,10 @@ export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesGetOutput,
 }));
 // Input Schema
+export interface PoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1638,10 +2127,19 @@ export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
     apiVersion: "2025-11-01",
   }),
-);
-export type PoliciesListInput = typeof PoliciesListInput.Type;
+) as unknown as Schema.Codec<PoliciesListInput>;
 
 // Output Schema
+export interface PoliciesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1653,8 +2151,7 @@ export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type PoliciesListOutput = typeof PoliciesListOutput.Type;
+}) as unknown as Schema.Codec<PoliciesListOutput>;
 
 // The operation
 /**
@@ -1669,6 +2166,9 @@ export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesListOutput,
 }));
 // Input Schema
+export interface PoliciesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1678,11 +2178,19 @@ export const PoliciesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PoliciesListBySubscriptionInput =
-  typeof PoliciesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PoliciesListBySubscriptionInput>;
 
 // Output Schema
+export interface PoliciesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const PoliciesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1695,9 +2203,7 @@ export const PoliciesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PoliciesListBySubscriptionOutput =
-  typeof PoliciesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PoliciesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1713,6 +2219,12 @@ export const PoliciesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  policyName: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1724,18 +2236,23 @@ export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type PoliciesUpdateInput = typeof PoliciesUpdateInput.Type;
+) as unknown as Schema.Codec<PoliciesUpdateInput>;
 
 // Output Schema
+export interface PoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type PoliciesUpdateOutput = typeof PoliciesUpdateOutput.Type;
+}) as unknown as Schema.Codec<PoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -1751,6 +2268,11 @@ export const PoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoliciesUpdateOutput,
 }));
 // Input Schema
+export interface PreconfiguredEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+}
 export const PreconfiguredEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1762,11 +2284,19 @@ export const PreconfiguredEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/preconfiguredEndpoints",
       apiVersion: "2025-11-01",
     }),
-  );
-export type PreconfiguredEndpointsListInput =
-  typeof PreconfiguredEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<PreconfiguredEndpointsListInput>;
 
 // Output Schema
+export interface PreconfiguredEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const PreconfiguredEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1779,9 +2309,7 @@ export const PreconfiguredEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PreconfiguredEndpointsListOutput =
-  typeof PreconfiguredEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<PreconfiguredEndpointsListOutput>;
 
 // The operation
 /**
@@ -1799,6 +2327,15 @@ export const PreconfiguredEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReportsGetLatencyScorecardsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+  endDateTimeUTC?: string;
+  country?: string;
+  aggregationInterval: "Daily" | "Weekly" | "Monthly";
+}
 export const ReportsGetLatencyScorecardsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1814,11 +2351,16 @@ export const ReportsGetLatencyScorecardsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/latencyScorecard",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ReportsGetLatencyScorecardsInput =
-  typeof ReportsGetLatencyScorecardsInput.Type;
+  ) as unknown as Schema.Codec<ReportsGetLatencyScorecardsInput>;
 
 // Output Schema
+export interface ReportsGetLatencyScorecardsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ReportsGetLatencyScorecardsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1826,9 +2368,7 @@ export const ReportsGetLatencyScorecardsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ReportsGetLatencyScorecardsOutput =
-  typeof ReportsGetLatencyScorecardsOutput.Type;
+  }) as unknown as Schema.Codec<ReportsGetLatencyScorecardsOutput>;
 
 // The operation
 /**
@@ -1850,6 +2390,22 @@ export const ReportsGetLatencyScorecards = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReportsGetTimeseriesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  profileName: string;
+  experimentName: string;
+  startDateTimeUTC: string;
+  endDateTimeUTC: string;
+  aggregationInterval: "Hourly" | "Daily";
+  timeseriesType:
+    | "MeasurementCounts"
+    | "LatencyP50"
+    | "LatencyP75"
+    | "LatencyP95";
+  endpoint?: string;
+  country?: string;
+}
 export const ReportsGetTimeseriesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1873,10 +2429,16 @@ export const ReportsGetTimeseriesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/timeseries",
       apiVersion: "2025-11-01",
     }),
-  );
-export type ReportsGetTimeseriesInput = typeof ReportsGetTimeseriesInput.Type;
+  ) as unknown as Schema.Codec<ReportsGetTimeseriesInput>;
 
 // Output Schema
+export interface ReportsGetTimeseriesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ReportsGetTimeseriesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1884,8 +2446,7 @@ export const ReportsGetTimeseriesOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ReportsGetTimeseriesOutput = typeof ReportsGetTimeseriesOutput.Type;
+  }) as unknown as Schema.Codec<ReportsGetTimeseriesOutput>;
 
 // The operation
 /**
@@ -1910,6 +2471,73 @@ export const ReportsGetTimeseries = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RulesEnginesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  rulesEngineName: string;
+  properties?: {
+    rules?: {
+      name: string;
+      priority: number;
+      action: {
+        requestHeaderActions?: {
+          headerActionType: "Append" | "Delete" | "Overwrite";
+          headerName: string;
+          value?: string;
+        }[];
+        responseHeaderActions?: {
+          headerActionType: "Append" | "Delete" | "Overwrite";
+          headerName: string;
+          value?: string;
+        }[];
+        routeConfigurationOverride?: { "@odata.type": string };
+      };
+      matchConditions?: {
+        rulesEngineMatchVariable:
+          | "IsMobile"
+          | "RemoteAddr"
+          | "RequestMethod"
+          | "QueryString"
+          | "PostArgs"
+          | "RequestUri"
+          | "RequestPath"
+          | "RequestFilename"
+          | "RequestFilenameExtension"
+          | "RequestHeader"
+          | "RequestBody"
+          | "RequestScheme";
+        selector?: string;
+        rulesEngineOperator:
+          | "Any"
+          | "IPMatch"
+          | "GeoMatch"
+          | "Equal"
+          | "Contains"
+          | "LessThan"
+          | "GreaterThan"
+          | "LessThanOrEqual"
+          | "GreaterThanOrEqual"
+          | "BeginsWith"
+          | "EndsWith";
+        negateCondition?: boolean;
+        rulesEngineMatchValue: string[];
+        transforms?: (
+          | "Lowercase"
+          | "Uppercase"
+          | "Trim"
+          | "UrlDecode"
+          | "UrlEncode"
+          | "RemoveNulls"
+        )[];
+      }[];
+      matchProcessingBehavior?: "Continue" | "Stop";
+    }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RulesEnginesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2021,19 +2649,20 @@ export const RulesEnginesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RulesEnginesCreateOrUpdateInput =
-  typeof RulesEnginesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RulesEnginesCreateOrUpdateInput>;
 
 // Output Schema
+export interface RulesEnginesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RulesEnginesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type RulesEnginesCreateOrUpdateOutput =
-  typeof RulesEnginesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RulesEnginesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2052,6 +2681,12 @@ export const RulesEnginesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RulesEnginesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  rulesEngineName: string;
+}
 export const RulesEnginesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2064,12 +2699,12 @@ export const RulesEnginesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RulesEnginesDeleteInput = typeof RulesEnginesDeleteInput.Type;
+  ) as unknown as Schema.Codec<RulesEnginesDeleteInput>;
 
 // Output Schema
-export const RulesEnginesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RulesEnginesDeleteOutput = typeof RulesEnginesDeleteOutput.Type;
+export type RulesEnginesDeleteOutput = void;
+export const RulesEnginesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RulesEnginesDeleteOutput>;
 
 // The operation
 /**
@@ -2086,6 +2721,12 @@ export const RulesEnginesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RulesEnginesDeleteOutput,
 }));
 // Input Schema
+export interface RulesEnginesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+  rulesEngineName: string;
+}
 export const RulesEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2097,16 +2738,19 @@ export const RulesEnginesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
     apiVersion: "2025-11-01",
   }),
-);
-export type RulesEnginesGetInput = typeof RulesEnginesGetInput.Type;
+) as unknown as Schema.Codec<RulesEnginesGetInput>;
 
 // Output Schema
+export interface RulesEnginesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const RulesEnginesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type RulesEnginesGetOutput = typeof RulesEnginesGetOutput.Type;
+}) as unknown as Schema.Codec<RulesEnginesGetOutput>;
 
 // The operation
 /**
@@ -2123,6 +2767,11 @@ export const RulesEnginesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RulesEnginesGetOutput,
 }));
 // Input Schema
+export interface RulesEnginesListByFrontDoorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  frontDoorName: string;
+}
 export const RulesEnginesListByFrontDoorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2134,11 +2783,13 @@ export const RulesEnginesListByFrontDoorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines",
       apiVersion: "2025-11-01",
     }),
-  );
-export type RulesEnginesListByFrontDoorInput =
-  typeof RulesEnginesListByFrontDoorInput.Type;
+  ) as unknown as Schema.Codec<RulesEnginesListByFrontDoorInput>;
 
 // Output Schema
+export interface RulesEnginesListByFrontDoorOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const RulesEnginesListByFrontDoorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2149,9 +2800,7 @@ export const RulesEnginesListByFrontDoorOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RulesEnginesListByFrontDoorOutput =
-  typeof RulesEnginesListByFrontDoorOutput.Type;
+  }) as unknown as Schema.Codec<RulesEnginesListByFrontDoorOutput>;
 
 // The operation
 /**

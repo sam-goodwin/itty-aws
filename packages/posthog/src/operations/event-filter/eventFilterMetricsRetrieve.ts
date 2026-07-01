@@ -1,22 +1,26 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventFilterMetricsRetrieveInput {
+  project_id: string;
+}
 export const EventFilterMetricsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/event_filter/metrics/",
+      path: "/api/projects/{project_id}/event_filter/metrics/",
     }),
-  );
-export type EventFilterMetricsRetrieveInput =
-  typeof EventFilterMetricsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EventFilterMetricsRetrieveInput>;
 
 // Output Schema
+export interface EventFilterMetricsRetrieveOutput {
+  labels?: string[];
+  series?: { name?: string; values?: number[] }[];
+}
 export const EventFilterMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
@@ -28,9 +32,7 @@ export const EventFilterMetricsRetrieveOutput =
         }),
       ),
     ),
-  });
-export type EventFilterMetricsRetrieveOutput =
-  typeof EventFilterMetricsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EventFilterMetricsRetrieveOutput>;
 
 // The operation
 /**
@@ -46,6 +48,5 @@ export const eventFilterMetricsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: EventFilterMetricsRetrieveInput,
     outputSchema: EventFilterMetricsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

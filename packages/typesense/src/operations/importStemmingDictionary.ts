@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface ImportStemmingDictionaryInput {
+  id: string;
+}
 export const ImportStemmingDictionaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/stemming/dictionaries/import" }));
-export type ImportStemmingDictionaryInput =
-  typeof ImportStemmingDictionaryInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/stemming/dictionaries/import" }),
+  ) as unknown as Schema.Codec<ImportStemmingDictionaryInput>;
 
 // Output Schema
+export type ImportStemmingDictionaryOutput = void;
 export const ImportStemmingDictionaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ImportStemmingDictionaryOutput =
-  typeof ImportStemmingDictionaryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportStemmingDictionaryOutput>;
 
 // The operation
 /**

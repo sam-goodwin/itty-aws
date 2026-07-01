@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgServiceAccountSecretInput {
+  orgId: string;
+  clientId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateOrgServiceAccountSecretInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateOrgServiceAccountSecretInput =
       method: "POST",
       path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets",
     }),
-  );
-export type CreateOrgServiceAccountSecretInput =
-  typeof CreateOrgServiceAccountSecretInput.Type;
+  ) as unknown as Schema.Codec<CreateOrgServiceAccountSecretInput>;
 
 // Output Schema
+export type CreateOrgServiceAccountSecretOutput = void;
 export const CreateOrgServiceAccountSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgServiceAccountSecretOutput =
-  typeof CreateOrgServiceAccountSecretOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountSecretOutput>;
 
 // The operation
 /**

@@ -1,8 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetTokensTokenInput {
+  token: string;
+  expand?: string;
+}
 export const GetTokensTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   token: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
@@ -12,10 +21,75 @@ export const GetTokensTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/tokens/{token}",
     contentType: "form-urlencoded",
   }),
-);
-export type GetTokensTokenInput = typeof GetTokensTokenInput.Type;
+) as unknown as Schema.Codec<GetTokensTokenInput>;
 
 // Output Schema
+export interface GetTokensTokenOutput {
+  bank_account?: {
+    account?: unknown;
+    account_holder_name: string | null;
+    account_holder_type: string | null;
+    account_type: string | null;
+    available_payout_methods?: ("instant" | "standard")[] | null;
+    bank_name: string | null;
+    country: string;
+    currency: string;
+    customer?: unknown;
+    default_for_currency?: boolean | null;
+    fingerprint: string | null;
+    future_requirements?: unknown;
+    id: string;
+    last4: string;
+    metadata?: Record<string, string> | null;
+    object: "bank_account";
+    requirements?: unknown;
+    routing_number: string | null;
+    status: string;
+  };
+  card?: {
+    account?: unknown;
+    address_city: string | null;
+    address_country: string | null;
+    address_line1: string | null;
+    address_line1_check: string | null;
+    address_line2: string | null;
+    address_state: string | null;
+    address_zip: string | null;
+    address_zip_check: string | null;
+    allow_redisplay?: "always" | "limited" | "unspecified" | null;
+    available_payout_methods?: ("instant" | "standard")[] | null;
+    brand: string;
+    country: string | null;
+    currency?: string | null;
+    customer?: unknown;
+    cvc_check: string | null;
+    default_for_currency?: boolean | null;
+    description?: string;
+    dynamic_last4: string | null;
+    exp_month: number;
+    exp_year: number;
+    fingerprint?: string | null;
+    funding: string;
+    id: string;
+    iin?: string;
+    issuer?: string;
+    last4: string;
+    metadata: Record<string, string> | null;
+    name: string | null;
+    networks?: { preferred: string | null };
+    object: "card";
+    regulated_status: "regulated" | "unregulated" | null;
+    status?: string | null;
+    tokenization_method: string | null;
+  };
+  client_ip: string | null;
+  created: number;
+  id: string;
+  livemode: boolean;
+  object: "token";
+  type: string;
+  used: boolean;
+}
 export const GetTokensTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bank_account: Schema.optional(
     Schema.Struct({
@@ -99,8 +173,7 @@ export const GetTokensTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   object: Schema.Literals(["token"]),
   type: Schema.String,
   used: Schema.Boolean,
-});
-export type GetTokensTokenOutput = typeof GetTokensTokenOutput.Type;
+}) as unknown as Schema.Codec<GetTokensTokenOutput>;
 
 // The operation
 /**

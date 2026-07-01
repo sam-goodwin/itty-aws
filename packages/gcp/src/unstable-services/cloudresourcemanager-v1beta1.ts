@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,75 +22,12 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Empty {}
+export interface UndeleteFolderMetadata {}
 
-export const Empty: Schema.Schema<Empty> =
+export const UndeleteFolderMetadata: Schema.Codec<UndeleteFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
+    identifier: "UndeleteFolderMetadata",
   });
-
-export interface MoveProjectMetadata {}
-
-export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "MoveProjectMetadata",
-  });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface FolderOperation {
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-}
-
-export const FolderOperation: Schema.Schema<FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationParent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FolderOperation" });
-
-export interface DeleteProjectMetadata {}
-
-export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteProjectMetadata",
-  });
-
-export interface CreateProjectMetadata {
-  /** Creation time of the project creation workflow. */
-  createTime?: string;
-  /** True if the project creation process is complete. */
-  ready?: boolean;
-  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
-  gettable?: boolean;
-}
-
-export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    ready: Schema.optional(Schema.Boolean),
-    gettable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "CreateProjectMetadata" });
 
 export interface ResourceId {
   /** Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization". */
@@ -99,7 +36,7 @@ export interface ResourceId {
   id?: string;
 }
 
-export const ResourceId: Schema.Schema<ResourceId> =
+export const ResourceId: Schema.Codec<ResourceId> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -108,18 +45,10 @@ export const ResourceId: Schema.Schema<ResourceId> =
 export interface Project {
   /** Creation time. Read-only. */
   createTime?: string;
-  /** The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write. */
-  labels?: Record<string, string>;
-  /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
-  configuredCapabilities?: ReadonlyArray<string>;
-  /** The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation. */
-  projectId?: string;
-  /** The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write. */
-  name?: string;
-  /** An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write. */
-  parent?: ResourceId;
   /** The number uniquely identifying the project. Example: `415104041262` Read-only. */
   projectNumber?: string;
+  /** The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation. */
+  projectId?: string;
   /** The Project lifecycle state. Read-only. */
   lifecycleState?:
     | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -127,348 +56,27 @@ export interface Project {
     | "DELETE_REQUESTED"
     | "DELETE_IN_PROGRESS"
     | (string & {});
+  /** The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write. */
+  name?: string;
+  /** The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write. */
+  labels?: Record<string, string>;
+  /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
+  configuredCapabilities?: ReadonlyArray<string>;
+  /** An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write. */
+  parent?: ResourceId;
 }
 
-export const Project: Schema.Schema<Project> =
+export const Project: Schema.Codec<Project> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
+    projectNumber: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    lifecycleState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
-    projectId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
     parent: Schema.optional(ResourceId),
-    projectNumber: Schema.optional(Schema.String),
-    lifecycleState: Schema.optional(Schema.String),
   }).annotate({ identifier: "Project" });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-}
-
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
-  });
-
-export interface UpdateProjectMetadata {}
-
-export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateProjectMetadata",
-  });
-
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-}
-
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
-
-export interface CreateTagKeyMetadata {}
-
-export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CreateTagKeyMetadata",
-  });
-
-export interface CreateTagBindingMetadata {}
-
-export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CreateTagBindingMetadata",
-  });
-
-export interface CreateFolderMetadata {
-  /** The resource name of the folder or organization we are creating the folder under. */
-  parent?: string;
-  /** The display name of the folder. */
-  displayName?: string;
-}
-
-export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateFolderMetadata" });
-
-export interface UpdateFolderMetadata {}
-
-export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateFolderMetadata",
-  });
-
-export interface DeleteTagBindingMetadata {}
-
-export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagBindingMetadata",
-  });
-
-export interface UndeleteFolderMetadata {}
-
-export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteFolderMetadata",
-  });
-
-export interface ListProjectsResponse {
-  /** The list of Projects that matched the list filter. This list can be paginated. */
-  projects?: ReadonlyArray<Project>;
-  /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
-  nextPageToken?: string;
-}
-
-export const ListProjectsResponse: Schema.Schema<ListProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projects: Schema.optional(Schema.Array(Project)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListProjectsResponse" });
-
-export interface DeleteFolderMetadata {}
-
-export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteFolderMetadata",
-  });
-
-export interface CreateTagValueMetadata {}
-
-export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CreateTagValueMetadata",
-  });
-
-export interface Binding {
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-}
-
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    condition: Schema.optional(Expr),
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Binding" });
-
-export interface AuditLogConfig {
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
-  /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
-}
-
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    logType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AuditLogConfig" });
-
-export interface AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
-}
-
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
-    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-  }).annotate({ identifier: "AuditConfig" });
-
-export interface Policy {
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-}
-
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bindings: Schema.optional(Schema.Array(Binding)),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    version: Schema.optional(Schema.Number),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Policy" });
-
-export interface OrganizationOwner {
-  /** The G Suite customer id used in the Directory API. */
-  directoryCustomerId?: string;
-}
-
-export const OrganizationOwner: Schema.Schema<OrganizationOwner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    directoryCustomerId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OrganizationOwner" });
-
-export interface Organization {
-  /** The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required. */
-  owner?: OrganizationOwner;
-  /** A human-readable string that refers to the Organization in the Google Cloud console. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization. */
-  displayName?: string;
-  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
-  name?: string;
-  /** An immutable id for the Organization that is assigned on creation. This should be omitted when creating a new Organization. This field is read-only. */
-  organizationId?: string;
-  /** Timestamp when the Organization was created. Assigned by the server. */
-  creationTime?: string;
-  /** The organization's current lifecycle state. Assigned by the server. */
-  lifecycleState?:
-    | "LIFECYCLE_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "DELETE_REQUESTED"
-    | (string & {});
-}
-
-export const Organization: Schema.Schema<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    owner: Schema.optional(OrganizationOwner),
-    displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    organizationId: Schema.optional(Schema.String),
-    creationTime: Schema.optional(Schema.String),
-    lifecycleState: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Organization" });
-
-export interface ListOrganizationsResponse {
-  /** The list of Organizations that matched the list query, possibly paginated. */
-  organizations?: ReadonlyArray<Organization>;
-  /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
-  nextPageToken?: string;
-}
-
-export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizations: Schema.optional(Schema.Array(Organization)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListOrganizationsResponse" });
-
-export interface DeleteTagValueMetadata {}
-
-export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagValueMetadata",
-  });
-
-export interface UpdateTagValueMetadata {}
-
-export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateTagValueMetadata",
-  });
-
-export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
-  /** The display name of the folder. */
-  displayName?: string;
-  /** The type of this operation. */
-  operationType?:
-    | "OPERATION_TYPE_UNSPECIFIED"
-    | "CREATE"
-    | "MOVE"
-    | (string & {});
-  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
-  sourceParent?: string;
-  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
-  destinationParent?: string;
-}
-
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    operationType: Schema.optional(Schema.String),
-    sourceParent: Schema.optional(Schema.String),
-    destinationParent: Schema.optional(Schema.String),
-  }).annotate({
-    identifier:
-      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
-  });
-
-export interface UndeleteOrganizationMetadata {}
-
-export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteOrganizationMetadata",
-  });
-
-export interface UpdateTagKeyMetadata {}
-
-export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateTagKeyMetadata",
-  });
-
-export interface SetIamPolicyRequest {
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-}
-
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
-    policy: Schema.optional(Policy),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface UndeleteProjectMetadata {}
-
-export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteProjectMetadata",
-  });
-
-export interface Ancestor {
-  /** Resource id of the ancestor. */
-  resourceId?: ResourceId;
-}
-
-export const Ancestor: Schema.Schema<Ancestor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resourceId: Schema.optional(ResourceId),
-  }).annotate({ identifier: "Ancestor" });
 
 export interface FolderOperationError {
   /** The type of operation error experienced. */
@@ -487,10 +95,255 @@ export interface FolderOperationError {
     | (string & {});
 }
 
-export const FolderOperationError: Schema.Schema<FolderOperationError> =
+export const FolderOperationError: Schema.Codec<FolderOperationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorMessageId: Schema.optional(Schema.String),
   }).annotate({ identifier: "FolderOperationError" });
+
+export interface AuditLogConfig {
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
+  /** The log type that this config enables. */
+  logType?:
+    | "LOG_TYPE_UNSPECIFIED"
+    | "ADMIN_READ"
+    | "DATA_WRITE"
+    | "DATA_READ"
+    | (string & {});
+}
+
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditLogConfig" });
+
+export interface AuditConfig {
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
+}
+
+export const AuditConfig: Schema.Codec<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  }).annotate({ identifier: "AuditConfig" });
+
+export interface Expr {
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+}
+
+export const Expr: Schema.Codec<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface Binding {
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+}
+
+export const Binding: Schema.Codec<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+    members: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Binding" });
+
+export interface Policy {
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+}
+
+export const Policy: Schema.Codec<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
+    version: Schema.optional(Schema.Number),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Policy" });
+
+export interface Ancestor {
+  /** Resource id of the ancestor. */
+  resourceId?: ResourceId;
+}
+
+export const Ancestor: Schema.Codec<Ancestor> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceId: Schema.optional(ResourceId),
+  }).annotate({ identifier: "Ancestor" });
+
+export interface UndeleteProjectMetadata {}
+
+export const UndeleteProjectMetadata: Schema.Codec<UndeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteProjectMetadata",
+  });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface OrganizationOwner {
+  /** The G Suite customer id used in the Directory API. */
+  directoryCustomerId?: string;
+}
+
+export const OrganizationOwner: Schema.Codec<OrganizationOwner> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directoryCustomerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OrganizationOwner" });
+
+export interface CreateProjectMetadata {
+  /** Creation time of the project creation workflow. */
+  createTime?: string;
+  /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
+  gettable?: boolean;
+  /** True if the project creation process is complete. */
+  ready?: boolean;
+}
+
+export const CreateProjectMetadata: Schema.Codec<CreateProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gettable: Schema.optional(Schema.Boolean),
+    ready: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CreateProjectMetadata" });
+
+export interface UpdateProjectMetadata {}
+
+export const UpdateProjectMetadata: Schema.Codec<UpdateProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateProjectMetadata",
+  });
+
+export interface DeleteTagKeyMetadata {}
+
+export const DeleteTagKeyMetadata: Schema.Codec<DeleteTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagKeyMetadata",
+  });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
+
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+}
+
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
+  });
+
+export interface UndeleteOrganizationMetadata {}
+
+export const UndeleteOrganizationMetadata: Schema.Codec<UndeleteOrganizationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteOrganizationMetadata",
+  });
+
+export interface ProjectCreationStatus {
+  /** True if the project creation process is complete. */
+  ready?: boolean;
+  /** Creation time of the project creation workflow. */
+  createTime?: string;
+  /** True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete. */
+  gettable?: boolean;
+}
+
+export const ProjectCreationStatus: Schema.Codec<ProjectCreationStatus> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ready: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    gettable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProjectCreationStatus" });
+
+export interface GetPolicyOptions {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  requestedPolicyVersion?: number;
+}
+
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GetPolicyOptions" });
+
+export interface DeleteProjectMetadata {}
+
+export const DeleteProjectMetadata: Schema.Codec<DeleteProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteProjectMetadata",
+  });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface DeleteTagValueMetadata {}
+
+export const DeleteTagValueMetadata: Schema.Codec<DeleteTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagValueMetadata",
+  });
 
 export interface MoveFolderMetadata {
   /** The display name of the folder. */
@@ -501,59 +354,69 @@ export interface MoveFolderMetadata {
   destinationParent?: string;
 }
 
-export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
+export const MoveFolderMetadata: Schema.Codec<MoveFolderMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceParent: Schema.optional(Schema.String),
     destinationParent: Schema.optional(Schema.String),
   }).annotate({ identifier: "MoveFolderMetadata" });
 
-export interface UndeleteProjectRequest {}
+export interface UpdateTagKeyMetadata {}
 
-export const UndeleteProjectRequest: Schema.Schema<UndeleteProjectRequest> =
+export const UpdateTagKeyMetadata: Schema.Codec<UpdateTagKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteProjectRequest",
+    identifier: "UpdateTagKeyMetadata",
   });
 
-export interface GetPolicyOptions {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  requestedPolicyVersion?: number;
+export interface ListProjectsResponse {
+  /** The list of Projects that matched the list filter. This list can be paginated. */
+  projects?: ReadonlyArray<Project>;
+  /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
+  nextPageToken?: string;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const ListProjectsResponse: Schema.Codec<ListProjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedPolicyVersion: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GetPolicyOptions" });
+    projects: Schema.optional(Schema.Array(Project)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProjectsResponse" });
+
+export interface UpdateTagValueMetadata {}
+
+export const UpdateTagValueMetadata: Schema.Codec<UpdateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateTagValueMetadata",
+  });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
-export interface DeleteTagKeyMetadata {}
-
-export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DeleteTagKeyMetadata",
-  });
-
-export interface GetAncestryRequest {}
-
-export const GetAncestryRequest: Schema.Schema<GetAncestryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GetAncestryRequest",
-  });
-
 export interface DeleteOrganizationMetadata {}
 
-export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
+export const DeleteOrganizationMetadata: Schema.Codec<DeleteOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrganizationMetadata",
+  });
+
+export interface CreateTagKeyMetadata {}
+
+export const CreateTagKeyMetadata: Schema.Codec<CreateTagKeyMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagKeyMetadata",
+  });
+
+export interface CreateTagValueMetadata {}
+
+export const CreateTagValueMetadata: Schema.Codec<CreateTagValueMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagValueMetadata",
   });
 
 export interface TestIamPermissionsResponse {
@@ -561,36 +424,173 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface FolderOperation {
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+}
+
+export const FolderOperation: Schema.Codec<FolderOperation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FolderOperation" });
+
+export interface MoveProjectMetadata {}
+
+export const MoveProjectMetadata: Schema.Codec<MoveProjectMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "MoveProjectMetadata",
+  });
+
+export interface DeleteTagBindingMetadata {}
+
+export const DeleteTagBindingMetadata: Schema.Codec<DeleteTagBindingMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteTagBindingMetadata",
+  });
+
+export interface GetAncestryRequest {}
+
+export const GetAncestryRequest: Schema.Codec<GetAncestryRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GetAncestryRequest",
+  });
+
+export interface CreateFolderMetadata {
+  /** The resource name of the folder or organization we are creating the folder under. */
+  parent?: string;
+  /** The display name of the folder. */
+  displayName?: string;
+}
+
+export const CreateFolderMetadata: Schema.Codec<CreateFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateFolderMetadata" });
+
+export interface UndeleteProjectRequest {}
+
+export const UndeleteProjectRequest: Schema.Codec<UndeleteProjectRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteProjectRequest",
+  });
 
 export interface GetAncestryResponse {
   /** Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the project itself, followed by the project's parent, etc. */
   ancestor?: ReadonlyArray<Ancestor>;
 }
 
-export const GetAncestryResponse: Schema.Schema<GetAncestryResponse> =
+export const GetAncestryResponse: Schema.Codec<GetAncestryResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ancestor: Schema.optional(Schema.Array(Ancestor)),
   }).annotate({ identifier: "GetAncestryResponse" });
 
-export interface ProjectCreationStatus {
-  /** True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete. */
-  gettable?: boolean;
-  /** Creation time of the project creation workflow. */
-  createTime?: string;
-  /** True if the project creation process is complete. */
-  ready?: boolean;
+export interface CreateTagBindingMetadata {}
+
+export const CreateTagBindingMetadata: Schema.Codec<CreateTagBindingMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CreateTagBindingMetadata",
+  });
+
+export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
+  /** The display name of the folder. */
+  displayName?: string;
+  /** The type of this operation. */
+  operationType?:
+    | "OPERATION_TYPE_UNSPECIFIED"
+    | "CREATE"
+    | "MOVE"
+    | (string & {});
+  /** The resource name of the folder's parent. Only applicable when the operation_type is MOVE. */
+  sourceParent?: string;
+  /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
+  destinationParent?: string;
 }
 
-export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Codec<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gettable: Schema.optional(Schema.Boolean),
-    createTime: Schema.optional(Schema.String),
-    ready: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ProjectCreationStatus" });
+    displayName: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+  }).annotate({
+    identifier:
+      "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
+  });
+
+export interface Organization {
+  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
+  name?: string;
+  /** Timestamp when the Organization was created. Assigned by the server. */
+  creationTime?: string;
+  /** A human-readable string that refers to the Organization in the Google Cloud console. This string is set by the server and cannot be changed. The string will be set to the primary domain (for example, "google.com") of the G Suite customer that owns the organization. */
+  displayName?: string;
+  /** The owner of this Organization. The owner should be specified on creation. Once set, it cannot be changed. This field is required. */
+  owner?: OrganizationOwner;
+  /** An immutable id for the Organization that is assigned on creation. This should be omitted when creating a new Organization. This field is read-only. */
+  organizationId?: string;
+  /** The organization's current lifecycle state. Assigned by the server. */
+  lifecycleState?:
+    | "LIFECYCLE_STATE_UNSPECIFIED"
+    | "ACTIVE"
+    | "DELETE_REQUESTED"
+    | (string & {});
+}
+
+export const Organization: Schema.Codec<Organization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    creationTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    owner: Schema.optional(OrganizationOwner),
+    organizationId: Schema.optional(Schema.String),
+    lifecycleState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Organization" });
+
+export interface ListOrganizationsResponse {
+  /** The list of Organizations that matched the list query, possibly paginated. */
+  organizations?: ReadonlyArray<Organization>;
+  /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
+  nextPageToken?: string;
+}
+
+export const ListOrganizationsResponse: Schema.Codec<ListOrganizationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(Schema.Array(Organization)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrganizationsResponse" });
+
+export interface UpdateFolderMetadata {}
+
+export const UpdateFolderMetadata: Schema.Codec<UpdateFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateFolderMetadata",
+  });
+
+export interface DeleteFolderMetadata {}
+
+export const DeleteFolderMetadata: Schema.Codec<DeleteFolderMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DeleteFolderMetadata",
+  });
 
 // ==========================================================================
 // Errors
@@ -646,86 +646,250 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetIamPolicyProjectsRequest {
+export interface ListOrganizationsRequest {
+  /** An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field is optional. */
+  filter?: string;
+  /** The maximum number of Organizations to return in the response. This field is optional. */
+  pageSize?: number;
+  /** A pagination token returned from a previous call to `ListOrganizations` that indicates from where listing should continue. This field is optional. */
+  pageToken?: string;
+}
+
+export const ListOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/organizations" }),
+    svc,
+  ) as unknown as Schema.Codec<ListOrganizationsRequest>;
+
+export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
+export const ListOrganizationsResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListOrganizationsResponse;
+
+export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the list. */
+export const listOrganizations: API.PaginatedOperationMethod<
+  ListOrganizationsRequest,
+  ListOrganizationsResponse_Op,
+  ListOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrganizationsRequest,
+  output: ListOrganizationsResponse_Op,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetOrganizationsRequest {
+  /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
+  name: string;
+  /** The id of the Organization resource to fetch. This field is deprecated and will be removed in v1. Use name instead. */
+  organizationId?: string;
+}
+
+export const GetOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    organizationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("organizationId"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetOrganizationsRequest>;
+
+export type GetOrganizationsResponse = Organization;
+export const GetOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Organization;
+
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Fetches an Organization resource identified by the specified resource name. */
+export const getOrganizations: API.OperationMethod<
+  GetOrganizationsRequest,
+  GetOrganizationsResponse,
+  GetOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOrganizationsRequest,
+  output: GetOrganizationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetIamPolicyOrganizationsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
 
-export const GetIamPolicyProjectsRequest =
+export const GetIamPolicyOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{resource}:getIamPolicy",
+      path: "v1beta1/{+resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyOrganizationsRequest>;
 
-export type GetIamPolicyProjectsResponse = Policy;
-export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type GetIamPolicyOrganizationsResponse = Policy;
+export const GetIamPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsError =
+export type GetIamPolicyOrganizationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names). */
-export const getIamPolicyProjects: API.OperationMethod<
-  GetIamPolicyProjectsRequest,
-  GetIamPolicyProjectsResponse,
-  GetIamPolicyProjectsError,
+/** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
+export const getIamPolicyOrganizations: API.OperationMethod<
+  GetIamPolicyOrganizationsRequest,
+  GetIamPolicyOrganizationsResponse,
+  GetIamPolicyOrganizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsRequest,
-  output: GetIamPolicyProjectsResponse,
+  input: GetIamPolicyOrganizationsRequest,
+  output: GetIamPolicyOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsRequest {
-  /** A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. Optional. */
-  pageToken?: string;
-  /** The maximum number of Projects to return in the response. The server can return fewer Projects than requested. If unspecified, server picks an appropriate default. Optional. */
-  pageSize?: number;
-  /** An expression for filtering the results of the request. Filter rules are case insensitive. If multiple fields are included in a filter query, the query will return results that match any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` Some examples of using labels as filters: | Filter | Description | |------------------|-----------------------------------------------------| | name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` or its label `size` has the value `big`. | If no filter is specified, the call will return projects for which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more consistent results. Optional. */
-  filter?: string;
+export interface UpdateOrganizationsRequest {
+  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
+  name: string;
+  /** Request body */
+  body?: Organization;
 }
 
-export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1beta1/projects" }),
-  svc,
-) as unknown as Schema.Schema<ListProjectsRequest>;
+export const UpdateOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Organization).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateOrganizationsRequest>;
 
-export type ListProjectsResponse_Op = ListProjectsResponse;
-export const ListProjectsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
+export type UpdateOrganizationsResponse = Organization;
+export const UpdateOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Organization;
 
-export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
+export type UpdateOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference. */
-export const listProjects: API.PaginatedOperationMethod<
-  ListProjectsRequest,
-  ListProjectsResponse_Op,
-  ListProjectsError,
+/** Updates an Organization resource identified by the specified resource name. */
+export const updateOrganizations: API.OperationMethod<
+  UpdateOrganizationsRequest,
+  UpdateOrganizationsResponse,
+  UpdateOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsRequest,
-  output: ListProjectsResponse_Op,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateOrganizationsRequest,
+  output: UpdateOrganizationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsOrganizationsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsOrganizationsRequest>;
+
+export type TestIamPermissionsOrganizationsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified Organization. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
+export const testIamPermissionsOrganizations: API.OperationMethod<
+  TestIamPermissionsOrganizationsRequest,
+  TestIamPermissionsOrganizationsResponse,
+  TestIamPermissionsOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsOrganizationsRequest,
+  output: TestIamPermissionsOrganizationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyOrganizationsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyOrganizationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyOrganizationsRequest>;
+
+export type SetIamPolicyOrganizationsResponse = Policy;
+export const SetIamPolicyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
+export const setIamPolicyOrganizations: API.OperationMethod<
+  SetIamPolicyOrganizationsRequest,
+  SetIamPolicyOrganizationsResponse,
+  SetIamPolicyOrganizationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyOrganizationsRequest,
+  output: SetIamPolicyOrganizationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsRequest {
@@ -745,7 +909,7 @@ export const UpdateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateProjectsRequest>;
+) as unknown as Schema.Codec<UpdateProjectsRequest>;
 
 export type UpdateProjectsResponse = Project;
 export const UpdateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
@@ -769,33 +933,43 @@ export const updateProjects: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsRequest {
-  /** Required. The Project ID (for example, `my-project-123`). */
-  projectId: string;
+export interface CreateProjectsRequest {
+  /** A now unused experiment opt-out option. */
+  useLegacyStack?: boolean;
+  /** Request body */
+  body?: Project;
 }
 
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  useLegacyStack: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("useLegacyStack"),
+  ),
+  body: Schema.optional(Project).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/projects/{projectId}" }),
+  T.Http({ method: "POST", path: "v1beta1/projects", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<GetProjectsRequest>;
+) as unknown as Schema.Codec<CreateProjectsRequest>;
 
-export type GetProjectsResponse = Project;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+export type CreateProjectsResponse = Project;
+export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
+export type CreateProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
-export const getProjects: API.OperationMethod<
-  GetProjectsRequest,
-  GetProjectsResponse,
-  GetProjectsError,
+/** Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
+export const createProjects: API.OperationMethod<
+  CreateProjectsRequest,
+  CreateProjectsResponse,
+  CreateProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsRequest,
-  output: GetProjectsResponse,
-  errors: [NotFound, Forbidden],
+  input: CreateProjectsRequest,
+  output: CreateProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsRequest {
@@ -816,7 +990,7 @@ export const UndeleteProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
+  ) as unknown as Schema.Codec<UndeleteProjectsRequest>;
 
 export type UndeleteProjectsResponse = Empty;
 export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -840,6 +1014,49 @@ export const undeleteProjects: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetAncestryProjectsRequest {
+  /** Required. The Project ID (for example, `my-project-123`). */
+  projectId: string;
+  /** Request body */
+  body?: GetAncestryRequest;
+}
+
+export const GetAncestryProjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.String.pipe(T.HttpPath("projectId")),
+    body: Schema.optional(GetAncestryRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/projects/{projectId}:getAncestry",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GetAncestryProjectsRequest>;
+
+export type GetAncestryProjectsResponse = GetAncestryResponse;
+export const GetAncestryProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GetAncestryResponse;
+
+export type GetAncestryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
+export const getAncestryProjects: API.OperationMethod<
+  GetAncestryProjectsRequest,
+  GetAncestryProjectsResponse,
+  GetAncestryProjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAncestryProjectsRequest,
+  output: GetAncestryProjectsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface TestIamPermissionsProjectsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -858,7 +1075,7 @@ export const TestIamPermissionsProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsRequest>;
 
 export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsResponse =
@@ -893,7 +1110,7 @@ export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1beta1/projects/{projectId}" }),
   svc,
-) as unknown as Schema.Schema<DeleteProjectsRequest>;
+) as unknown as Schema.Codec<DeleteProjectsRequest>;
 
 export type DeleteProjectsResponse = Empty;
 export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -935,7 +1152,7 @@ export const SetIamPolicyProjectsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsRequest>;
 
 export type SetIamPolicyProjectsResponse = Policy;
 export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -959,330 +1176,113 @@ export const setIamPolicyProjects: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsRequest {
-  /** A now unused experiment opt-out option. */
-  useLegacyStack?: boolean;
-  /** Request body */
-  body?: Project;
-}
-
-export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  useLegacyStack: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("useLegacyStack"),
-  ),
-  body: Schema.optional(Project).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1beta1/projects", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<CreateProjectsRequest>;
-
-export type CreateProjectsResponse = Project;
-export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
-
-export type CreateProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
-export const createProjects: API.OperationMethod<
-  CreateProjectsRequest,
-  CreateProjectsResponse,
-  CreateProjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsRequest,
-  output: CreateProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetAncestryProjectsRequest {
+export interface GetProjectsRequest {
   /** Required. The Project ID (for example, `my-project-123`). */
   projectId: string;
-  /** Request body */
-  body?: GetAncestryRequest;
 }
 
-export const GetAncestryProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.String.pipe(T.HttpPath("projectId")),
-    body: Schema.optional(GetAncestryRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectId}:getAncestry",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetAncestryProjectsRequest>;
+export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.String.pipe(T.HttpPath("projectId")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/projects/{projectId}" }),
+  svc,
+) as unknown as Schema.Codec<GetProjectsRequest>;
 
-export type GetAncestryProjectsResponse = GetAncestryResponse;
-export const GetAncestryProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GetAncestryResponse;
+export type GetProjectsResponse = Project;
+export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetAncestryProjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
-/** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
-export const getAncestryProjects: API.OperationMethod<
-  GetAncestryProjectsRequest,
-  GetAncestryProjectsResponse,
-  GetAncestryProjectsError,
+/** Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
+export const getProjects: API.OperationMethod<
+  GetProjectsRequest,
+  GetProjectsResponse,
+  GetProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAncestryProjectsRequest,
-  output: GetAncestryProjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetOrganizationsRequest {
-  /** The resource name of the Organization to fetch. This is the organization's relative path in the API, formatted as "organizations/[organizationId]". For example, "organizations/1234". */
-  name: string;
-  /** The id of the Organization resource to fetch. This field is deprecated and will be removed in v1. Use name instead. */
-  organizationId?: string;
-}
-
-export const GetOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    organizationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("organizationId"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetOrganizationsRequest>;
-
-export type GetOrganizationsResponse = Organization;
-export const GetOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Organization;
-
-export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Fetches an Organization resource identified by the specified resource name. */
-export const getOrganizations: API.OperationMethod<
-  GetOrganizationsRequest,
-  GetOrganizationsResponse,
-  GetOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOrganizationsRequest,
-  output: GetOrganizationsResponse,
+  input: GetProjectsRequest,
+  output: GetProjectsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetIamPolicyOrganizationsRequest {
+export interface GetIamPolicyProjectsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
 
-export const GetIamPolicyOrganizationsRequest =
+export const GetIamPolicyProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/{+resource}:getIamPolicy",
+      path: "v1beta1/projects/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyOrganizationsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsRequest>;
 
-export type GetIamPolicyOrganizationsResponse = Policy;
-export const GetIamPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type GetIamPolicyProjectsResponse = Policy;
+export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsError =
+export type GetIamPolicyProjectsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
-export const getIamPolicyOrganizations: API.OperationMethod<
-  GetIamPolicyOrganizationsRequest,
-  GetIamPolicyOrganizationsResponse,
-  GetIamPolicyOrganizationsError,
+/** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names). */
+export const getIamPolicyProjects: API.OperationMethod<
+  GetIamPolicyProjectsRequest,
+  GetIamPolicyProjectsResponse,
+  GetIamPolicyProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyOrganizationsRequest,
-  output: GetIamPolicyOrganizationsResponse,
+  input: GetIamPolicyProjectsRequest,
+  output: GetIamPolicyProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateOrganizationsRequest {
-  /** Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". */
-  name: string;
-  /** Request body */
-  body?: Organization;
-}
-
-export const UpdateOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Organization).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1beta1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateOrganizationsRequest>;
-
-export type UpdateOrganizationsResponse = Organization;
-export const UpdateOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Organization;
-
-export type UpdateOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an Organization resource identified by the specified resource name. */
-export const updateOrganizations: API.OperationMethod<
-  UpdateOrganizationsRequest,
-  UpdateOrganizationsResponse,
-  UpdateOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationsRequest,
-  output: UpdateOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyOrganizationsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyOrganizationsRequest>;
-
-export type SetIamPolicyOrganizationsResponse = Policy;
-export const SetIamPolicyOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
-export const setIamPolicyOrganizations: API.OperationMethod<
-  SetIamPolicyOrganizationsRequest,
-  SetIamPolicyOrganizationsResponse,
-  SetIamPolicyOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyOrganizationsRequest,
-  output: SetIamPolicyOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListOrganizationsRequest {
-  /** The maximum number of Organizations to return in the response. This field is optional. */
-  pageSize?: number;
-  /** A pagination token returned from a previous call to `ListOrganizations` that indicates from where listing should continue. This field is optional. */
+export interface ListProjectsRequest {
+  /** A pagination token returned from a previous call to ListProjects that indicates from where listing should continue. Optional. */
   pageToken?: string;
-  /** An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a verified G Suite domain, for example: * Filter `owner.directorycustomerid:123456789` returns Organization resources with `owner.directory_customer_id` equal to `123456789`. * Filter `domain:google.com` returns Organization resources corresponding to the domain `google.com`. This field is optional. */
+  /** The maximum number of Projects to return in the response. The server can return fewer Projects than requested. If unspecified, server picks an appropriate default. Optional. */
+  pageSize?: number;
+  /** An expression for filtering the results of the request. Filter rules are case insensitive. If multiple fields are included in a filter query, the query will return results that match any of the fields. Some eligible fields for filtering are: + `name` + `id` + `labels.` (where *key* is the name of a label) + `parent.type` + `parent.id` Some examples of using labels as filters: | Filter | Description | |------------------|-----------------------------------------------------| | name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` or its label `size` has the value `big`. | If no filter is specified, the call will return projects for which the user has the `resourcemanager.projects.get` permission. NOTE: To perform a by-parent query (eg., what projects are directly in a Folder), the caller must have the `resourcemanager.projects.list` permission on the parent and the filter must contain both a `parent.type` and a `parent.id` restriction (example: "parent.type:folder parent.id:123"). In this case an alternate search index is used which provides more consistent results. Optional. */
   filter?: string;
 }
 
-export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/organizations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListOrganizationsRequest>;
+export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1beta1/projects" }),
+  svc,
+) as unknown as Schema.Codec<ListProjectsRequest>;
 
-export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
-export const ListOrganizationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOrganizationsResponse;
+export type ListProjectsResponse_Op = ListProjectsResponse;
+export const ListProjectsResponse_Op =
+  /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
 
-export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the list. */
-export const listOrganizations: API.PaginatedOperationMethod<
-  ListOrganizationsRequest,
-  ListOrganizationsResponse_Op,
-  ListOrganizationsError,
+/** Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference. */
+export const listProjects: API.PaginatedOperationMethod<
+  ListProjectsRequest,
+  ListProjectsResponse_Op,
+  ListProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsRequest,
-  output: ListOrganizationsResponse_Op,
+  input: ListProjectsRequest,
+  output: ListProjectsResponse_Op,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
-}));
-
-export interface TestIamPermissionsOrganizationsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsOrganizationsRequest>;
-
-export type TestIamPermissionsOrganizationsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsOrganizationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified Organization. The `resource` field should be the organization's resource name, e.g. "organizations/123". */
-export const testIamPermissionsOrganizations: API.OperationMethod<
-  TestIamPermissionsOrganizationsRequest,
-  TestIamPermissionsOrganizationsResponse,
-  TestIamPermissionsOrganizationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsOrganizationsRequest,
-  output: TestIamPermissionsOrganizationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

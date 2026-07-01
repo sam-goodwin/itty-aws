@@ -4,12 +4,70 @@ import * as T from "../traits.ts";
 import { Forbidden, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface ConnectionsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  connection_type?:
+    | "ADFSSAML"
+    | "AdpOidc"
+    | "AppleOAuth"
+    | "Auth0SAML"
+    | "AzureSAML"
+    | "BitbucketOAuth"
+    | "CasSAML"
+    | "CloudflareSAML"
+    | "ClassLinkSAML"
+    | "CleverOIDC"
+    | "CyberArkSAML"
+    | "DiscordOAuth"
+    | "DuoSAML"
+    | "EntraIdOIDC"
+    | "GenericOIDC"
+    | "GenericSAML"
+    | "GithubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "GoogleOIDC"
+    | "GoogleSAML"
+    | "IntuitOAuth"
+    | "JumpCloudSAML"
+    | "KeycloakSAML"
+    | "LastPassSAML"
+    | "LinkedInOAuth"
+    | "LoginGovOidc"
+    | "MagicLink"
+    | "MicrosoftOAuth"
+    | "MiniOrangeSAML"
+    | "NetIqSAML"
+    | "OktaOIDC"
+    | "OktaSAML"
+    | "OneLoginSAML"
+    | "OracleSAML"
+    | "PingFederateSAML"
+    | "PingOneSAML"
+    | "RipplingSAML"
+    | "SalesforceSAML"
+    | "ShibbolethGenericSAML"
+    | "ShibbolethSAML"
+    | "SimpleSamlPhpSAML"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "VMwareSAML"
+    | "XeroOAuth";
+  domain?: string;
+  organization_id?: string;
+  search?: string;
+}
 export const ConnectionsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
     connection_type: Schema.optional(
       Schema.Literals([
         "ADFSSAML",
@@ -65,11 +123,85 @@ export const ConnectionsControllerListInput =
     domain: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/connections" }));
-export type ConnectionsControllerListInput =
-  typeof ConnectionsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/connections" }),
+  ) as unknown as Schema.Codec<ConnectionsControllerListInput>;
 
 // Output Schema
+export interface ConnectionsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    organization_id?: string;
+    connection_type?:
+      | "Pending"
+      | "ADFSSAML"
+      | "AdpOidc"
+      | "AppleOAuth"
+      | "Auth0Migration"
+      | "Auth0SAML"
+      | "AzureSAML"
+      | "BitbucketOAuth"
+      | "CasSAML"
+      | "ClassLinkSAML"
+      | "CleverOIDC"
+      | "CloudflareSAML"
+      | "CyberArkSAML"
+      | "DiscordOAuth"
+      | "DuoSAML"
+      | "EntraIdOIDC"
+      | "GenericOIDC"
+      | "GenericSAML"
+      | "GitHubOAuth"
+      | "GitLabOAuth"
+      | "GoogleOAuth"
+      | "GoogleOIDC"
+      | "GoogleSAML"
+      | "IntuitOAuth"
+      | "JumpCloudSAML"
+      | "KeycloakSAML"
+      | "LastPassSAML"
+      | "LinkedInOAuth"
+      | "LoginGovOidc"
+      | "MagicLink"
+      | "MicrosoftOAuth"
+      | "MiniOrangeSAML"
+      | "NetIqSAML"
+      | "OktaOIDC"
+      | "OktaSAML"
+      | "OneLoginSAML"
+      | "OracleSAML"
+      | "PingFederateSAML"
+      | "PingOneSAML"
+      | "RipplingSAML"
+      | "SalesforceSAML"
+      | "ShibbolethGenericSAML"
+      | "ShibbolethSAML"
+      | "SimpleSamlPhpSAML"
+      | "SalesforceOAuth"
+      | "SlackOAuth"
+      | "TestIdp"
+      | "VercelMarketplaceOAuth"
+      | "VercelOAuth"
+      | "VMwareSAML"
+      | "XeroOAuth";
+    name?: string;
+    state?:
+      | "requires_type"
+      | "draft"
+      | "active"
+      | "validating"
+      | "inactive"
+      | "deleting";
+    status?: "linked" | "unlinked";
+    domains?: { id: string; object: string; domain: string }[];
+    options?: { signing_cert: string | null };
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const ConnectionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -171,9 +303,7 @@ export const ConnectionsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ConnectionsControllerListOutput =
-  typeof ConnectionsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<ConnectionsControllerListOutput>;
 
 // The operation
 /**

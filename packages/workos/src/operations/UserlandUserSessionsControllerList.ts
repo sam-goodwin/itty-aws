@@ -4,20 +4,54 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserSessionsControllerListInput {
+  id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const UserlandUserSessionsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{id}/sessions" }),
-  );
-export type UserlandUserSessionsControllerListInput =
-  typeof UserlandUserSessionsControllerListInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserSessionsControllerListInput>;
 
 // Output Schema
+export interface UserlandUserSessionsControllerListOutput {
+  object?: string;
+  list_metadata?: { before: string | null; after: string | null };
+  data?: {
+    object: string;
+    id: string;
+    impersonator?: { email: string; reason: string | null };
+    ip_address: string | null;
+    organization_id?: string;
+    user_agent: string | null;
+    user_id: string;
+    auth_method:
+      | "cross_app_auth"
+      | "external_auth"
+      | "impersonation"
+      | "magic_code"
+      | "migrated_session"
+      | "oauth"
+      | "passkey"
+      | "password"
+      | "sso"
+      | "unknown";
+    status: "active" | "expired" | "revoked";
+    expires_at: string;
+    ended_at: string | null;
+    created_at: string;
+    updated_at: string;
+  }[];
+}
 export const UserlandUserSessionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -62,9 +96,7 @@ export const UserlandUserSessionsControllerListOutput =
         }),
       ),
     ),
-  });
-export type UserlandUserSessionsControllerListOutput =
-  typeof UserlandUserSessionsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserSessionsControllerListOutput>;
 
 // The operation
 /**
@@ -76,7 +108,7 @@ export type UserlandUserSessionsControllerListOutput =
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const UserlandUserSessionsControllerList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

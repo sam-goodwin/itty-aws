@@ -4,6 +4,43 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsSourceConfigsCreateInput {
+  project_id: string;
+  id?: string;
+  source_product?:
+    | "session_replay"
+    | "llm_analytics"
+    | "github"
+    | "linear"
+    | "zendesk"
+    | "conversations"
+    | "error_tracking"
+    | "pganalyze"
+    | "signals_scout"
+    | "logs"
+    | "health_checks"
+    | "endpoints"
+    | "replay_vision";
+  source_type?:
+    | "session_analysis_cluster"
+    | "evaluation"
+    | "issue"
+    | "ticket"
+    | "issue_created"
+    | "issue_reopened"
+    | "issue_spiking"
+    | "cross_source_issue"
+    | "alert_state_change"
+    | "health_issue"
+    | "endpoint_execution_failed"
+    | "endpoint_breakdown_limit_exceeded"
+    | "scanner_finding";
+  enabled?: boolean;
+  config?: unknown;
+  created_at?: string;
+  updated_at?: string;
+  status?: string | null;
+}
 export const SignalsSourceConfigsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,6 +54,12 @@ export const SignalsSourceConfigsCreateInput =
         "zendesk",
         "conversations",
         "error_tracking",
+        "pganalyze",
+        "signals_scout",
+        "logs",
+        "health_checks",
+        "endpoints",
+        "replay_vision",
       ]),
     ),
     source_type: Schema.optional(
@@ -28,6 +71,12 @@ export const SignalsSourceConfigsCreateInput =
         "issue_created",
         "issue_reopened",
         "issue_spiking",
+        "cross_source_issue",
+        "alert_state_change",
+        "health_issue",
+        "endpoint_execution_failed",
+        "endpoint_breakdown_limit_exceeded",
+        "scanner_finding",
       ]),
     ),
     enabled: Schema.optional(Schema.Boolean),
@@ -40,11 +89,45 @@ export const SignalsSourceConfigsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/signals/source_configs/",
     }),
-  );
-export type SignalsSourceConfigsCreateInput =
-  typeof SignalsSourceConfigsCreateInput.Type;
+  ) as unknown as Schema.Codec<SignalsSourceConfigsCreateInput>;
 
 // Output Schema
+export interface SignalsSourceConfigsCreateOutput {
+  id?: string;
+  source_product?:
+    | "session_replay"
+    | "llm_analytics"
+    | "github"
+    | "linear"
+    | "zendesk"
+    | "conversations"
+    | "error_tracking"
+    | "pganalyze"
+    | "signals_scout"
+    | "logs"
+    | "health_checks"
+    | "endpoints"
+    | "replay_vision";
+  source_type?:
+    | "session_analysis_cluster"
+    | "evaluation"
+    | "issue"
+    | "ticket"
+    | "issue_created"
+    | "issue_reopened"
+    | "issue_spiking"
+    | "cross_source_issue"
+    | "alert_state_change"
+    | "health_issue"
+    | "endpoint_execution_failed"
+    | "endpoint_breakdown_limit_exceeded"
+    | "scanner_finding";
+  enabled?: boolean;
+  config?: unknown;
+  created_at?: string;
+  updated_at?: string;
+  status?: string | null;
+}
 export const SignalsSourceConfigsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -57,6 +140,12 @@ export const SignalsSourceConfigsCreateOutput =
         "zendesk",
         "conversations",
         "error_tracking",
+        "pganalyze",
+        "signals_scout",
+        "logs",
+        "health_checks",
+        "endpoints",
+        "replay_vision",
       ]),
     ),
     source_type: Schema.optional(
@@ -68,6 +157,12 @@ export const SignalsSourceConfigsCreateOutput =
         "issue_created",
         "issue_reopened",
         "issue_spiking",
+        "cross_source_issue",
+        "alert_state_change",
+        "health_issue",
+        "endpoint_execution_failed",
+        "endpoint_breakdown_limit_exceeded",
+        "scanner_finding",
       ]),
     ),
     enabled: Schema.optional(Schema.Boolean),
@@ -75,9 +170,7 @@ export const SignalsSourceConfigsCreateOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     status: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type SignalsSourceConfigsCreateOutput =
-  typeof SignalsSourceConfigsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SignalsSourceConfigsCreateOutput>;
 
 // The operation
 /**

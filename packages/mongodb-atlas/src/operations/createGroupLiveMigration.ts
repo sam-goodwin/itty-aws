@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupLiveMigrationInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupLiveMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const CreateGroupLiveMigrationInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/liveMigrations",
     }),
-  );
-export type CreateGroupLiveMigrationInput =
-  typeof CreateGroupLiveMigrationInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupLiveMigrationInput>;
 
 // Output Schema
+export type CreateGroupLiveMigrationOutput = void;
 export const CreateGroupLiveMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupLiveMigrationOutput =
-  typeof CreateGroupLiveMigrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupLiveMigrationOutput>;
 
 // The operation
 /**

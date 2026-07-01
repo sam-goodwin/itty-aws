@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDatabaseConfigurationInput {
+  organizationSlug: string;
+  databaseName: string;
+  size_limit?: string;
+  allow_attach?: boolean;
+  block_reads?: boolean;
+  block_writes?: boolean;
+  delete_protection?: boolean;
+  allowed_ips?: string[];
+  allowed_aws_vpc_ids?: string[];
+}
 export const UpdateDatabaseConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,16 +24,25 @@ export const UpdateDatabaseConfigurationInput =
     block_reads: Schema.optional(Schema.Boolean),
     block_writes: Schema.optional(Schema.Boolean),
     delete_protection: Schema.optional(Schema.Boolean),
+    allowed_ips: Schema.optional(Schema.Array(Schema.String)),
+    allowed_aws_vpc_ids: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/configuration",
     }),
-  );
-export type UpdateDatabaseConfigurationInput =
-  typeof UpdateDatabaseConfigurationInput.Type;
+  ) as unknown as Schema.Codec<UpdateDatabaseConfigurationInput>;
 
 // Output Schema
+export interface UpdateDatabaseConfigurationOutput {
+  size_limit?: string;
+  allow_attach?: boolean;
+  block_reads?: boolean;
+  block_writes?: boolean;
+  delete_protection?: boolean;
+  allowed_ips?: string[];
+  allowed_aws_vpc_ids?: string[];
+}
 export const UpdateDatabaseConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     size_limit: Schema.optional(Schema.String),
@@ -30,9 +50,9 @@ export const UpdateDatabaseConfigurationOutput =
     block_reads: Schema.optional(Schema.Boolean),
     block_writes: Schema.optional(Schema.Boolean),
     delete_protection: Schema.optional(Schema.Boolean),
-  });
-export type UpdateDatabaseConfigurationOutput =
-  typeof UpdateDatabaseConfigurationOutput.Type;
+    allowed_ips: Schema.optional(Schema.Array(Schema.String)),
+    allowed_aws_vpc_ids: Schema.optional(Schema.Array(Schema.String)),
+  }) as unknown as Schema.Codec<UpdateDatabaseConfigurationOutput>;
 
 // The operation
 /**

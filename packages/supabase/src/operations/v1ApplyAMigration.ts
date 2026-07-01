@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ApplyAMigrationInput {
+  ref: string;
+  query: string;
+  name?: string;
+  rollback?: string;
+}
 export const V1ApplyAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,12 +19,12 @@ export const V1ApplyAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   },
 ).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/database/migrations" }),
-);
-export type V1ApplyAMigrationInput = typeof V1ApplyAMigrationInput.Type;
+) as unknown as Schema.Codec<V1ApplyAMigrationInput>;
 
 // Output Schema
-export const V1ApplyAMigrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1ApplyAMigrationOutput = typeof V1ApplyAMigrationOutput.Type;
+export type V1ApplyAMigrationOutput = void;
+export const V1ApplyAMigrationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ApplyAMigrationOutput>;
 
 // The operation
 /**

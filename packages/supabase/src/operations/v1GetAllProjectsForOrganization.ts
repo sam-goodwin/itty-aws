@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetAllProjectsForOrganizationInput {
+  slug: string;
+  offset?: number;
+  limit?: number;
+  search?: string;
+  sort?: "name_asc" | "name_desc" | "created_asc" | "created_desc";
+  statuses?: string;
+}
 export const V1GetAllProjectsForOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
@@ -14,11 +22,82 @@ export const V1GetAllProjectsForOrganizationInput =
       Schema.Literals(["name_asc", "name_desc", "created_asc", "created_desc"]),
     ),
     statuses: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v1/organizations/{slug}/projects" }));
-export type V1GetAllProjectsForOrganizationInput =
-  typeof V1GetAllProjectsForOrganizationInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/organizations/{slug}/projects" }),
+  ) as unknown as Schema.Codec<V1GetAllProjectsForOrganizationInput>;
 
 // Output Schema
+export interface V1GetAllProjectsForOrganizationOutput {
+  projects: {
+    ref: string;
+    name: string;
+    cloud_provider: string;
+    region: string;
+    is_branch: boolean;
+    status:
+      | "INACTIVE"
+      | "ACTIVE_HEALTHY"
+      | "ACTIVE_UNHEALTHY"
+      | "COMING_UP"
+      | "UNKNOWN"
+      | "GOING_DOWN"
+      | "INIT_FAILED"
+      | "REMOVED"
+      | "RESTORING"
+      | "UPGRADING"
+      | "PAUSING"
+      | "RESTORE_FAILED"
+      | "RESTARTING"
+      | "PAUSE_FAILED"
+      | "RESIZING";
+    inserted_at: string;
+    databases: {
+      infra_compute_size?:
+        | "pico"
+        | "nano"
+        | "micro"
+        | "small"
+        | "medium"
+        | "large"
+        | "xlarge"
+        | "2xlarge"
+        | "4xlarge"
+        | "8xlarge"
+        | "12xlarge"
+        | "16xlarge"
+        | "24xlarge"
+        | "24xlarge_optimized_memory"
+        | "24xlarge_optimized_cpu"
+        | "24xlarge_high_memory"
+        | "48xlarge"
+        | "48xlarge_optimized_memory"
+        | "48xlarge_optimized_cpu"
+        | "48xlarge_high_memory";
+      region: string;
+      status:
+        | "ACTIVE_HEALTHY"
+        | "ACTIVE_UNHEALTHY"
+        | "COMING_UP"
+        | "GOING_DOWN"
+        | "INIT_FAILED"
+        | "REMOVED"
+        | "RESTORING"
+        | "UNKNOWN"
+        | "INIT_READ_REPLICA"
+        | "INIT_READ_REPLICA_FAILED"
+        | "RESTARTING"
+        | "RESIZING";
+      cloud_provider: string;
+      identifier: string;
+      type: "PRIMARY" | "READ_REPLICA";
+      disk_volume_size_gb?: number;
+      disk_type?: "gp3" | "io2";
+      disk_throughput_mbps?: number;
+      disk_last_modified_at?: string;
+    }[];
+  }[];
+  pagination: { count: number; limit: number; offset: number };
+}
 export const V1GetAllProjectsForOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
@@ -103,9 +182,7 @@ export const V1GetAllProjectsForOrganizationOutput =
       limit: Schema.Number,
       offset: Schema.Number,
     }),
-  });
-export type V1GetAllProjectsForOrganizationOutput =
-  typeof V1GetAllProjectsForOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<V1GetAllProjectsForOrganizationOutput>;
 
 // The operation
 /**

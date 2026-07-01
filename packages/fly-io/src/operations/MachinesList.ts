@@ -4,16 +4,527 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesListInput {
+  app_name: string;
+  include_deleted?: boolean;
+  region?: string;
+  state?: string;
+  summary?: boolean;
+}
 export const MachinesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
   region: Schema.optional(Schema.String),
   state: Schema.optional(Schema.String),
   summary: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/machines" }));
-export type MachinesListInput = typeof MachinesListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/apps/{app_name}/machines" }),
+) as unknown as Schema.Codec<MachinesListInput>;
 
 // Output Schema
+export type MachinesListOutput = {
+  checks?: {
+    name?: string;
+    output?: string;
+    status?: string;
+    updated_at?: string;
+  }[];
+  config?: {
+    auto_destroy?: boolean;
+    cache_drive?: { size_mb?: number };
+    checks?: Record<
+      string,
+      {
+        grace_period?: string;
+        headers?: { name?: string; values?: string[] }[];
+        interval?: string;
+        kind?: "informational" | "readiness";
+        method?: string;
+        path?: string;
+        port?: number;
+        protocol?: string;
+        timeout?: string;
+        tls_server_name?: string;
+        tls_skip_verify?: boolean;
+        type?: string;
+      }
+    >;
+    containers?: {
+      cmd?: string[];
+      depends_on?: {
+        condition?: "exited_successfully" | "healthy" | "started";
+        name?: string;
+      }[];
+      entrypoint?: string[];
+      env?: Record<string, string>;
+      env_from?: {
+        env_var?: string;
+        field_ref?:
+          | "id"
+          | "version"
+          | "app_name"
+          | "private_ip"
+          | "region"
+          | "image";
+      }[];
+      exec?: string[];
+      files?: {
+        guest_path?: string;
+        image_config?: string;
+        mode?: number;
+        raw_value?: string;
+        secret_name?: string;
+      }[];
+      healthchecks?: {
+        exec?: { command?: string[] };
+        failure_threshold?: number;
+        grace_period?: number;
+        http?: {
+          headers?: { name?: string; values?: string[] }[];
+          method?: string;
+          path?: string;
+          port?: number;
+          scheme?: "http" | "https";
+          tls_server_name?: string;
+          tls_skip_verify?: boolean;
+        };
+        interval?: number;
+        kind?: "readiness" | "liveness";
+        name?: string;
+        success_threshold?: number;
+        tcp?: { port?: number };
+        timeout?: number;
+        unhealthy?: "stop";
+      }[];
+      image?: string;
+      name?: string;
+      restart?: {
+        gpu_bid_price?: number;
+        max_retries?: number;
+        policy?: "no" | "always" | "on-failure" | "spot-price";
+      };
+      secrets?: { env_var?: string; name?: string }[];
+      stop?: {
+        signal?:
+          | "SIGHUP"
+          | "SIGINT"
+          | "SIGQUIT"
+          | "SIGKILL"
+          | "SIGUSR1"
+          | "SIGUSR2"
+          | "SIGTERM";
+        timeout?: string;
+      };
+      user?: string;
+    }[];
+    disable_machine_autostart?: boolean;
+    dns?: {
+      dns_forward_rules?: { addr?: string; basename?: string }[];
+      hostname?: string;
+      hostname_fqdn?: string;
+      nameservers?: string[];
+      options?: { name?: string; value?: string }[];
+      searches?: string[];
+      skip_registration?: boolean;
+    };
+    env?: Record<string, string>;
+    files?: {
+      guest_path?: string;
+      image_config?: string;
+      mode?: number;
+      raw_value?: string;
+      secret_name?: string;
+    }[];
+    guest?: {
+      cpu_kind?: string;
+      cpus?: number;
+      gpu_kind?: string;
+      gpus?: number;
+      host_dedication_id?: string;
+      kernel_args?: string[];
+      max_memory_mb?: number;
+      memory_mb?: number;
+      persist_rootfs?: "never" | "always" | "restart";
+    };
+    image?: string;
+    init?: {
+      cmd?: string[];
+      entrypoint?: string[];
+      exec?: string[];
+      kernel_args?: string[];
+      swap_size_mb?: number;
+      tty?: boolean;
+    };
+    metadata?: Record<string, string>;
+    metrics?: { https?: boolean; path?: string; port?: number };
+    mounts?: {
+      add_size_gb?: number;
+      encrypted?: boolean;
+      extend_threshold_percent?: number;
+      name?: string;
+      path?: string;
+      size_gb?: number;
+      size_gb_limit?: number;
+      volume?: string;
+    }[];
+    processes?: {
+      cmd?: string[];
+      entrypoint?: string[];
+      env?: Record<string, string>;
+      env_from?: {
+        env_var?: string;
+        field_ref?:
+          | "id"
+          | "version"
+          | "app_name"
+          | "private_ip"
+          | "region"
+          | "image";
+      }[];
+      exec?: string[];
+      ignore_app_secrets?: boolean;
+      secrets?: { env_var?: string; name?: string }[];
+      user?: string;
+    }[];
+    restart?: {
+      gpu_bid_price?: number;
+      max_retries?: number;
+      policy?: "no" | "always" | "on-failure" | "spot-price";
+    };
+    rootfs?: { persist?: "never" | "always" | "restart"; size_gb?: number };
+    schedule?: string;
+    services?: {
+      autostart?: boolean;
+      autostop?: "off" | "stop" | "suspend";
+      checks?: {
+        grace_period?: string;
+        headers?: { name?: string; values?: string[] }[];
+        interval?: string;
+        method?: string;
+        path?: string;
+        port?: number;
+        protocol?: string;
+        timeout?: string;
+        tls_server_name?: string;
+        tls_skip_verify?: boolean;
+        type?: string;
+      }[];
+      concurrency?: { hard_limit?: number; soft_limit?: number; type?: string };
+      force_instance_description?: string;
+      force_instance_key?: string;
+      internal_port?: number;
+      min_machines_running?: number;
+      ports?: {
+        end_port?: number;
+        force_https?: boolean;
+        handlers?: string[];
+        http_options?: {
+          compress?: boolean;
+          h2_backend?: boolean;
+          headers_read_timeout?: number;
+          idle_timeout?: number;
+          replay_cache?: {
+            allow_bypass?: boolean;
+            name?: string;
+            path_prefix?: string;
+            ttl_seconds?: number;
+            type?: "cookie" | "header";
+          }[];
+          response?: { headers?: Record<string, unknown>; pristine?: boolean };
+        };
+        port?: number;
+        proxy_proto_options?: { version?: string };
+        start_port?: number;
+        tls_options?: {
+          alpn?: string[];
+          default_self_signed?: boolean;
+          versions?: string[];
+        };
+      }[];
+      protocol?: string;
+    }[];
+    size?: string;
+    spot?: { max_price_fraction?: number };
+    standbys?: string[];
+    statics?: {
+      guest_path: string;
+      index_document?: string;
+      tigris_bucket?: string;
+      url_prefix: string;
+    }[];
+    stop_config?: {
+      signal?:
+        | "SIGHUP"
+        | "SIGINT"
+        | "SIGQUIT"
+        | "SIGKILL"
+        | "SIGUSR1"
+        | "SIGUSR2"
+        | "SIGTERM";
+      timeout?: string;
+    };
+  };
+  created_at?: string;
+  events?: {
+    id?: string;
+    request?: unknown;
+    source?: string;
+    status?: string;
+    timestamp?: number;
+    type?: string;
+  }[];
+  host_status?: "ok" | "unknown" | "unreachable";
+  id?: string;
+  image_ref?: {
+    digest?: string;
+    labels?: Record<string, string>;
+    registry?: string;
+    repository?: string;
+    tag?: string;
+  };
+  incomplete_config?: {
+    auto_destroy?: boolean;
+    cache_drive?: { size_mb?: number };
+    checks?: Record<
+      string,
+      {
+        grace_period?: string;
+        headers?: { name?: string; values?: string[] }[];
+        interval?: string;
+        kind?: "informational" | "readiness";
+        method?: string;
+        path?: string;
+        port?: number;
+        protocol?: string;
+        timeout?: string;
+        tls_server_name?: string;
+        tls_skip_verify?: boolean;
+        type?: string;
+      }
+    >;
+    containers?: {
+      cmd?: string[];
+      depends_on?: {
+        condition?: "exited_successfully" | "healthy" | "started";
+        name?: string;
+      }[];
+      entrypoint?: string[];
+      env?: Record<string, string>;
+      env_from?: {
+        env_var?: string;
+        field_ref?:
+          | "id"
+          | "version"
+          | "app_name"
+          | "private_ip"
+          | "region"
+          | "image";
+      }[];
+      exec?: string[];
+      files?: {
+        guest_path?: string;
+        image_config?: string;
+        mode?: number;
+        raw_value?: string;
+        secret_name?: string;
+      }[];
+      healthchecks?: {
+        exec?: { command?: string[] };
+        failure_threshold?: number;
+        grace_period?: number;
+        http?: {
+          headers?: { name?: string; values?: string[] }[];
+          method?: string;
+          path?: string;
+          port?: number;
+          scheme?: "http" | "https";
+          tls_server_name?: string;
+          tls_skip_verify?: boolean;
+        };
+        interval?: number;
+        kind?: "readiness" | "liveness";
+        name?: string;
+        success_threshold?: number;
+        tcp?: { port?: number };
+        timeout?: number;
+        unhealthy?: "stop";
+      }[];
+      image?: string;
+      name?: string;
+      restart?: {
+        gpu_bid_price?: number;
+        max_retries?: number;
+        policy?: "no" | "always" | "on-failure" | "spot-price";
+      };
+      secrets?: { env_var?: string; name?: string }[];
+      stop?: {
+        signal?:
+          | "SIGHUP"
+          | "SIGINT"
+          | "SIGQUIT"
+          | "SIGKILL"
+          | "SIGUSR1"
+          | "SIGUSR2"
+          | "SIGTERM";
+        timeout?: string;
+      };
+      user?: string;
+    }[];
+    disable_machine_autostart?: boolean;
+    dns?: {
+      dns_forward_rules?: { addr?: string; basename?: string }[];
+      hostname?: string;
+      hostname_fqdn?: string;
+      nameservers?: string[];
+      options?: { name?: string; value?: string }[];
+      searches?: string[];
+      skip_registration?: boolean;
+    };
+    env?: Record<string, string>;
+    files?: {
+      guest_path?: string;
+      image_config?: string;
+      mode?: number;
+      raw_value?: string;
+      secret_name?: string;
+    }[];
+    guest?: {
+      cpu_kind?: string;
+      cpus?: number;
+      gpu_kind?: string;
+      gpus?: number;
+      host_dedication_id?: string;
+      kernel_args?: string[];
+      max_memory_mb?: number;
+      memory_mb?: number;
+      persist_rootfs?: "never" | "always" | "restart";
+    };
+    image?: string;
+    init?: {
+      cmd?: string[];
+      entrypoint?: string[];
+      exec?: string[];
+      kernel_args?: string[];
+      swap_size_mb?: number;
+      tty?: boolean;
+    };
+    metadata?: Record<string, string>;
+    metrics?: { https?: boolean; path?: string; port?: number };
+    mounts?: {
+      add_size_gb?: number;
+      encrypted?: boolean;
+      extend_threshold_percent?: number;
+      name?: string;
+      path?: string;
+      size_gb?: number;
+      size_gb_limit?: number;
+      volume?: string;
+    }[];
+    processes?: {
+      cmd?: string[];
+      entrypoint?: string[];
+      env?: Record<string, string>;
+      env_from?: {
+        env_var?: string;
+        field_ref?:
+          | "id"
+          | "version"
+          | "app_name"
+          | "private_ip"
+          | "region"
+          | "image";
+      }[];
+      exec?: string[];
+      ignore_app_secrets?: boolean;
+      secrets?: { env_var?: string; name?: string }[];
+      user?: string;
+    }[];
+    restart?: {
+      gpu_bid_price?: number;
+      max_retries?: number;
+      policy?: "no" | "always" | "on-failure" | "spot-price";
+    };
+    rootfs?: { persist?: "never" | "always" | "restart"; size_gb?: number };
+    schedule?: string;
+    services?: {
+      autostart?: boolean;
+      autostop?: "off" | "stop" | "suspend";
+      checks?: {
+        grace_period?: string;
+        headers?: { name?: string; values?: string[] }[];
+        interval?: string;
+        method?: string;
+        path?: string;
+        port?: number;
+        protocol?: string;
+        timeout?: string;
+        tls_server_name?: string;
+        tls_skip_verify?: boolean;
+        type?: string;
+      }[];
+      concurrency?: { hard_limit?: number; soft_limit?: number; type?: string };
+      force_instance_description?: string;
+      force_instance_key?: string;
+      internal_port?: number;
+      min_machines_running?: number;
+      ports?: {
+        end_port?: number;
+        force_https?: boolean;
+        handlers?: string[];
+        http_options?: {
+          compress?: boolean;
+          h2_backend?: boolean;
+          headers_read_timeout?: number;
+          idle_timeout?: number;
+          replay_cache?: {
+            allow_bypass?: boolean;
+            name?: string;
+            path_prefix?: string;
+            ttl_seconds?: number;
+            type?: "cookie" | "header";
+          }[];
+          response?: { headers?: Record<string, unknown>; pristine?: boolean };
+        };
+        port?: number;
+        proxy_proto_options?: { version?: string };
+        start_port?: number;
+        tls_options?: {
+          alpn?: string[];
+          default_self_signed?: boolean;
+          versions?: string[];
+        };
+      }[];
+      protocol?: string;
+    }[];
+    size?: string;
+    spot?: { max_price_fraction?: number };
+    standbys?: string[];
+    statics?: {
+      guest_path: string;
+      index_document?: string;
+      tigris_bucket?: string;
+      url_prefix: string;
+    }[];
+    stop_config?: {
+      signal?:
+        | "SIGHUP"
+        | "SIGINT"
+        | "SIGQUIT"
+        | "SIGKILL"
+        | "SIGUSR1"
+        | "SIGUSR2"
+        | "SIGTERM";
+      timeout?: string;
+    };
+  };
+  instance_id?: string;
+  name?: string;
+  nonce?: string;
+  private_ip?: string;
+  region?: string;
+  state?: string;
+  updated_at?: string;
+}[];
 export const MachinesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     checks: Schema.optional(
@@ -443,6 +954,11 @@ export const MachinesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
         ),
         size: Schema.optional(Schema.String),
+        spot: Schema.optional(
+          Schema.Struct({
+            max_price_fraction: Schema.optional(Schema.Number),
+          }),
+        ),
         standbys: Schema.optional(Schema.Array(Schema.String)),
         statics: Schema.optional(
           Schema.Array(
@@ -915,6 +1431,11 @@ export const MachinesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
           ),
         ),
         size: Schema.optional(Schema.String),
+        spot: Schema.optional(
+          Schema.Struct({
+            max_price_fraction: Schema.optional(Schema.Number),
+          }),
+        ),
         standbys: Schema.optional(Schema.Array(Schema.String)),
         statics: Schema.optional(
           Schema.Array(
@@ -952,8 +1473,7 @@ export const MachinesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     state: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
   }),
-);
-export type MachinesListOutput = typeof MachinesListOutput.Type;
+) as unknown as Schema.Codec<MachinesListOutput>;
 
 // The operation
 /**

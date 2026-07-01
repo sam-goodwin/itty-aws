@@ -1947,6 +1947,8 @@ paths:
                     type: string
                   attackerCountry:
                     type: string
+                  attackerCountryAlpha3:
+                    type: string
                   category:
                     type: string
                   datasetId:
@@ -2001,6 +2003,8 @@ paths:
                       type: string
                   targetCountry:
                     type: string
+                  targetCountryAlpha3:
+                    type: string
                   targetIndustry:
                     type: string
                   tlp:
@@ -2014,6 +2018,7 @@ paths:
                 required:
                   - attacker
                   - attackerCountry
+                  - attackerCountryAlpha3
                   - category
                   - datasetId
                   - date
@@ -2034,6 +2039,7 @@ paths:
                   - referencesIds
                   - tags
                   - targetCountry
+                  - targetCountryAlpha3
                   - targetIndustry
                   - tlp
                   - uuid
@@ -2130,6 +2136,8 @@ paths:
                     type: string
                   attackerCountry:
                     type: string
+                  attackerCountryAlpha3:
+                    type: string
                   category:
                     type: string
                   datasetId:
@@ -2184,6 +2192,8 @@ paths:
                       type: string
                   targetCountry:
                     type: string
+                  targetCountryAlpha3:
+                    type: string
                   targetIndustry:
                     type: string
                   tlp:
@@ -2197,6 +2207,7 @@ paths:
                 required:
                   - attacker
                   - attackerCountry
+                  - attackerCountryAlpha3
                   - category
                   - datasetId
                   - date
@@ -2217,6 +2228,7 @@ paths:
                   - referencesIds
                   - tags
                   - targetCountry
+                  - targetCountryAlpha3
                   - targetIndustry
                   - tlp
                   - uuid
@@ -2361,6 +2373,8 @@ paths:
                       type: string
                     attackerCountry:
                       type: string
+                    attackerCountryAlpha3:
+                      type: string
                     category:
                       type: string
                     datasetId:
@@ -2415,6 +2429,8 @@ paths:
                         type: string
                     targetCountry:
                       type: string
+                    targetCountryAlpha3:
+                      type: string
                     targetIndustry:
                       type: string
                     tlp:
@@ -2428,6 +2444,7 @@ paths:
                   required:
                     - attacker
                     - attackerCountry
+                    - attackerCountryAlpha3
                     - category
                     - datasetId
                     - date
@@ -2448,6 +2465,7 @@ paths:
                     - referencesIds
                     - tags
                     - targetCountry
+                    - targetCountryAlpha3
                     - targetIndustry
                     - tlp
                     - uuid
@@ -2569,6 +2587,8 @@ paths:
                     type: string
                   attackerCountry:
                     type: string
+                  attackerCountryAlpha3:
+                    type: string
                   category:
                     type: string
                   datasetId:
@@ -2623,6 +2643,8 @@ paths:
                       type: string
                   targetCountry:
                     type: string
+                  targetCountryAlpha3:
+                    type: string
                   targetIndustry:
                     type: string
                   tlp:
@@ -2636,6 +2658,7 @@ paths:
                 required:
                   - attacker
                   - attackerCountry
+                  - attackerCountryAlpha3
                   - category
                   - datasetId
                   - date
@@ -2656,6 +2679,7 @@ paths:
                   - referencesIds
                   - tags
                   - targetCountry
+                  - targetCountryAlpha3
                   - targetIndustry
                   - tlp
                   - uuid
@@ -3224,6 +3248,8 @@ paths:
                     type: string
                   uuid:
                     type: string
+                  deletedAt:
+                    type: string
                 required:
                   - isPublic
                   - name
@@ -3278,6 +3304,8 @@ paths:
                     type: string
                   uuid:
                     type: string
+                  deletedAt:
+                    type: string
                 required:
                   - isPublic
                   - name
@@ -3292,9 +3320,17 @@ paths:
         - name: account_id
           in: path
           required: true
-          description: Account ID.
+          description: "Path param: Account ID."
           schema:
             type: string
+        - name: includeDeleted
+          in: query
+          required: false
+          description: "Query param: When true, include soft-deleted datasets in the
+            response. Each item includes a `deletedAt` field (ISO 8601 or null).
+            Default: false."
+          schema:
+            type: boolean
       responses:
         "200":
           description: Success
@@ -3310,6 +3346,8 @@ paths:
                     name:
                       type: string
                     uuid:
+                      type: string
+                    deletedAt:
                       type: string
                   required:
                     - isPublic
@@ -3359,6 +3397,8 @@ paths:
                   name:
                     type: string
                   uuid:
+                    type: string
+                  deletedAt:
                     type: string
                 required:
                   - isPublic
@@ -3682,7 +3722,33 @@ paths:
                   description: Body param
                 actorCategory:
                   type: string
-                  description: Body param
+                  description: "Body param: Actor variety. Allowed values: Activist, Competitor,
+                    Customer, Crime Syndicate, Former Employee, Nation State,
+                    Organized Crime, Nation State Affiliated, Terrorist,
+                    Unaffiliated."
+                aliases:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      confidence:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      tlp:
+                        type: string
+                        enum:
+                          - red
+                          - amber
+                          - green
+                          - white
+                        nullable: true
+                    required:
+                      - value
+                  description: "Body param: Structured aliases ({ value, confidence 1-10, tlp }).
+                    CFONE-only: stripped from responses to non-CFONE accounts."
                 aliasGroupNames:
                   type: array
                   items:
@@ -3699,23 +3765,53 @@ paths:
                 attributionConfidence:
                   type: string
                   description: Body param
+                attributionConfidenceScore:
+                  type: number
+                  description: Body param
                 attributionOrganization:
                   type: string
                   description: Body param
                 categoryUuid:
                   type: string
                   description: Body param
+                dateOfDiscovery:
+                  type: string
+                  description: "Body param: Date the actor was discovered (ISO YYYY-MM-DD)."
                 externalReferenceLinks:
                   type: array
                   items:
                     type: string
                   description: Body param
+                internalAliases:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                      confidence:
+                        oneOf:
+                          - type: number
+                        nullable: true
+                      tlp:
+                        type: string
+                        enum:
+                          - red
+                          - amber
+                          - green
+                          - white
+                        nullable: true
+                    required:
+                      - value
+                  description: "Body param: Internal structured aliases ({ value, confidence 1-10,
+                    tlp }). CFONE-only: never returned to non-CFONE accounts."
                 internalDescription:
                   type: string
                   description: Body param
                 motive:
                   type: string
-                  description: Body param
+                  description: "Body param: Actor motive. Allowed values: Convenience, Fear, Fun,
+                    Financial, Grudge, Ideology, Espionage."
                 opsecLevel:
                   type: string
                   description: Body param
@@ -3746,6 +3842,29 @@ paths:
                     type: string
                   actorCategory:
                     type: string
+                  aliases:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                        confidence:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        tlp:
+                          type: string
+                          enum:
+                            - red
+                            - amber
+                            - green
+                            - white
+                          nullable: true
+                      required:
+                        - value
+                    description: "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only:
+                      stripped from responses to non-CFONE accounts."
                   aliasGroupNames:
                     type: array
                     items:
@@ -3758,16 +3877,43 @@ paths:
                     type: number
                   attributionConfidence:
                     type: string
+                  attributionConfidenceScore:
+                    type: number
                   attributionOrganization:
                     type: string
                   categoryName:
                     type: string
                   categoryUuid:
                     type: string
+                  dateOfDiscovery:
+                    type: string
                   externalReferenceLinks:
                     type: array
                     items:
                       type: string
+                  internalAliases:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                        confidence:
+                          oneOf:
+                            - type: number
+                          nullable: true
+                        tlp:
+                          type: string
+                          enum:
+                            - red
+                            - amber
+                            - green
+                            - white
+                          nullable: true
+                      required:
+                        - value
+                    description: "Internal structured aliases ({ value, confidence 1-10, tlp }).
+                      CFONE-only: never returned to non-CFONE accounts."
                   internalDescription:
                     type: string
                   motive:
@@ -3775,6 +3921,8 @@ paths:
                   opsecLevel:
                     type: string
                   originCountryISO:
+                    type: string
+                  originCountryISOAlpha3:
                     type: string
                   priority:
                     type: number

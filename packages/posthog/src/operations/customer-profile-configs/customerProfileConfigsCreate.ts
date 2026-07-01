@@ -1,9 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CustomerProfileConfigsCreateInput {
+  project_id: string;
+  id?: string;
+  scope?: "person" | "group_0" | "group_1" | "group_2" | "group_3" | "group_4";
+  content?: unknown;
+  sidebar?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const CustomerProfileConfigsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,20 +26,26 @@ export const CustomerProfileConfigsCreateInput =
         "group_4",
       ]),
     ),
-    content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    content: Schema.optional(Schema.Unknown),
+    sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/customer_profile_configs/",
+      path: "/api/projects/{project_id}/customer_profile_configs/",
     }),
-  );
-export type CustomerProfileConfigsCreateInput =
-  typeof CustomerProfileConfigsCreateInput.Type;
+  ) as unknown as Schema.Codec<CustomerProfileConfigsCreateInput>;
 
 // Output Schema
+export interface CustomerProfileConfigsCreateOutput {
+  id?: string;
+  scope?: "person" | "group_0" | "group_1" | "group_2" | "group_3" | "group_4";
+  content?: unknown;
+  sidebar?: unknown;
+  created_at?: string;
+  updated_at?: string | null;
+}
 export const CustomerProfileConfigsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -45,13 +59,11 @@ export const CustomerProfileConfigsCreateOutput =
         "group_4",
       ]),
     ),
-    content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-    sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    content: Schema.optional(Schema.Unknown),
+    sidebar: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerProfileConfigsCreateOutput =
-  typeof CustomerProfileConfigsCreateOutput.Type;
+  }) as unknown as Schema.Codec<CustomerProfileConfigsCreateOutput>;
 
 // The operation
 /**
@@ -62,5 +74,4 @@ export const customerProfileConfigsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: CustomerProfileConfigsCreateInput,
     outputSchema: CustomerProfileConfigsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

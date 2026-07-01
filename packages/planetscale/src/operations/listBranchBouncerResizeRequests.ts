@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListBranchBouncerResizeRequestsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListBranchBouncerResizeRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,51 @@ export const ListBranchBouncerResizeRequestsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncer-resizes",
     }),
-  );
-export type ListBranchBouncerResizeRequestsInput =
-  typeof ListBranchBouncerResizeRequestsInput.Type;
+  ) as unknown as Schema.Codec<ListBranchBouncerResizeRequestsInput>;
 
 // Output Schema
+export interface ListBranchBouncerResizeRequestsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    state: "pending" | "resizing" | "canceled" | "completed";
+    replicas_per_cell: number;
+    parameters: Record<string, unknown>;
+    previous_replicas_per_cell: number;
+    previous_parameters: Record<string, unknown>;
+    started_at: string | null;
+    completed_at: string | null;
+    created_at: string;
+    updated_at: string;
+    actor: { id: string; display_name: string; avatar_url: string };
+    bouncer: {
+      id: string;
+      name: string;
+      created_at: string;
+      updated_at: string;
+      deleted_at: string | null;
+    };
+    sku: {
+      name: string;
+      display_name: string;
+      cpu: string;
+      ram: number;
+      sort_order: number;
+    };
+    previous_sku: {
+      name: string;
+      display_name: string;
+      cpu: string;
+      ram: number;
+      sort_order: number;
+    };
+  }[];
+}
 export const ListBranchBouncerResizeRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -74,9 +121,7 @@ export const ListBranchBouncerResizeRequestsOutput =
         }),
       }),
     ),
-  });
-export type ListBranchBouncerResizeRequestsOutput =
-  typeof ListBranchBouncerResizeRequestsOutput.Type;
+  }) as unknown as Schema.Codec<ListBranchBouncerResizeRequestsOutput>;
 
 // The operation
 /**

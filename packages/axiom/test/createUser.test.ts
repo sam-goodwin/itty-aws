@@ -22,7 +22,7 @@ describe("createUser", () => {
 
       expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -42,6 +42,6 @@ describe("createUser", () => {
       const tag = (error as { _tag: string })._tag;
       expect(["BadRequest", "UnprocessableEntity"]).toContain(tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

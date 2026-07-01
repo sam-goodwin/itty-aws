@@ -4,12 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AgentVersionGetInput {
+  osType: string;
+  version: string;
+}
 export const AgentVersionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
@@ -19,16 +24,19 @@ export const AgentVersionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.HybridCompute/osType/{osType}/agentVersions/{version}",
     apiVersion: "2025-01-13",
   }),
-);
-export type AgentVersionGetInput = typeof AgentVersionGetInput.Type;
+) as unknown as Schema.Codec<AgentVersionGetInput>;
 
 // Output Schema
+export interface AgentVersionGetOutput {
+  agentVersion?: string;
+  downloadLink?: string;
+  osType?: string;
+}
 export const AgentVersionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   agentVersion: Schema.optional(Schema.String),
   downloadLink: Schema.optional(Schema.String),
   osType: Schema.optional(Schema.String),
-});
-export type AgentVersionGetOutput = typeof AgentVersionGetOutput.Type;
+}) as unknown as Schema.Codec<AgentVersionGetOutput>;
 
 // The operation
 /**
@@ -43,6 +51,9 @@ export const AgentVersionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentVersionGetOutput,
 }));
 // Input Schema
+export interface AgentVersionListInput {
+  osType: string;
+}
 export const AgentVersionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -51,10 +62,13 @@ export const AgentVersionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.HybridCompute/osType/{osType}/agentVersions",
     apiVersion: "2025-01-13",
   }),
-);
-export type AgentVersionListInput = typeof AgentVersionListInput.Type;
+) as unknown as Schema.Codec<AgentVersionListInput>;
 
 // Output Schema
+export interface AgentVersionListOutput {
+  value?: { agentVersion?: string; downloadLink?: string; osType?: string }[];
+  nextLink?: string;
+}
 export const AgentVersionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -68,8 +82,7 @@ export const AgentVersionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type AgentVersionListOutput = typeof AgentVersionListOutput.Type;
+) as unknown as Schema.Codec<AgentVersionListOutput>;
 
 // The operation
 /**
@@ -83,6 +96,13 @@ export const AgentVersionList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentVersionListOutput,
 }));
 // Input Schema
+export interface ExtensionMetadataGetInput {
+  subscriptionId: string;
+  location: string;
+  publisher: string;
+  extensionType: string;
+  version: string;
+}
 export const ExtensionMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -96,10 +116,22 @@ export const ExtensionMetadataGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions/{version}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type ExtensionMetadataGetInput = typeof ExtensionMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<ExtensionMetadataGetInput>;
 
 // Output Schema
+export interface ExtensionMetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExtensionMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -119,8 +151,7 @@ export const ExtensionMetadataGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExtensionMetadataGetOutput = typeof ExtensionMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionMetadataGetOutput>;
 
 // The operation
 /**
@@ -140,6 +171,12 @@ export const ExtensionMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionMetadataListInput {
+  subscriptionId: string;
+  location: string;
+  publisher: string;
+  extensionType: string;
+}
 export const ExtensionMetadataListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -152,10 +189,24 @@ export const ExtensionMetadataListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions",
       apiVersion: "2025-01-13",
     }),
-  );
-export type ExtensionMetadataListInput = typeof ExtensionMetadataListInput.Type;
+  ) as unknown as Schema.Codec<ExtensionMetadataListInput>;
 
 // Output Schema
+export interface ExtensionMetadataListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ExtensionMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -191,9 +242,7 @@ export const ExtensionMetadataListOutput =
         }),
       ),
     ),
-  });
-export type ExtensionMetadataListOutput =
-  typeof ExtensionMetadataListOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionMetadataListOutput>;
 
 // The operation
 /**
@@ -212,6 +261,12 @@ export const ExtensionMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionMetadataV2GetInput {
+  location: string;
+  publisher: string;
+  extensionType: string;
+  version: string;
+}
 export const ExtensionMetadataV2GetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -224,11 +279,22 @@ export const ExtensionMetadataV2GetInput =
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions/{version}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type ExtensionMetadataV2GetInput =
-  typeof ExtensionMetadataV2GetInput.Type;
+  ) as unknown as Schema.Codec<ExtensionMetadataV2GetInput>;
 
 // Output Schema
+export interface ExtensionMetadataV2GetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExtensionMetadataV2GetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -248,9 +314,7 @@ export const ExtensionMetadataV2GetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExtensionMetadataV2GetOutput =
-  typeof ExtensionMetadataV2GetOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionMetadataV2GetOutput>;
 
 // The operation
 /**
@@ -269,6 +333,11 @@ export const ExtensionMetadataV2Get = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionMetadataV2ListInput {
+  location: string;
+  publisher: string;
+  extensionType: string;
+}
 export const ExtensionMetadataV2ListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -280,11 +349,25 @@ export const ExtensionMetadataV2ListInput =
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions",
       apiVersion: "2025-01-13",
     }),
-  );
-export type ExtensionMetadataV2ListInput =
-  typeof ExtensionMetadataV2ListInput.Type;
+  ) as unknown as Schema.Codec<ExtensionMetadataV2ListInput>;
 
 // Output Schema
+export interface ExtensionMetadataV2ListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExtensionMetadataV2ListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -321,9 +404,7 @@ export const ExtensionMetadataV2ListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExtensionMetadataV2ListOutput =
-  typeof ExtensionMetadataV2ListOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionMetadataV2ListOutput>;
 
 // The operation
 /**
@@ -341,6 +422,9 @@ export const ExtensionMetadataV2List = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionPublisherListInput {
+  location: string;
+}
 export const ExtensionPublisherListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -350,11 +434,13 @@ export const ExtensionPublisherListInput =
       path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers",
       apiVersion: "2025-01-13",
     }),
-  );
-export type ExtensionPublisherListInput =
-  typeof ExtensionPublisherListInput.Type;
+  ) as unknown as Schema.Codec<ExtensionPublisherListInput>;
 
 // Output Schema
+export interface ExtensionPublisherListOutput {
+  value?: { id?: string; name?: string }[];
+  nextLink?: string;
+}
 export const ExtensionPublisherListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -366,9 +452,7 @@ export const ExtensionPublisherListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExtensionPublisherListOutput =
-  typeof ExtensionPublisherListOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionPublisherListOutput>;
 
 // The operation
 /**
@@ -384,6 +468,10 @@ export const ExtensionPublisherList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionTypeListInput {
+  location: string;
+  publisher: string;
+}
 export const ExtensionTypeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     location: Schema.String.pipe(T.PathParam()),
@@ -395,10 +483,13 @@ export const ExtensionTypeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes",
     apiVersion: "2025-01-13",
   }),
-);
-export type ExtensionTypeListInput = typeof ExtensionTypeListInput.Type;
+) as unknown as Schema.Codec<ExtensionTypeListInput>;
 
 // Output Schema
+export interface ExtensionTypeListOutput {
+  value?: { id?: string; name?: string }[];
+  nextLink?: string;
+}
 export const ExtensionTypeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -410,8 +501,7 @@ export const ExtensionTypeListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExtensionTypeListOutput = typeof ExtensionTypeListOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionTypeListOutput>;
 
 // The operation
 /**
@@ -426,10 +516,33 @@ export const ExtensionTypeList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionTypeListOutput,
 }));
 // Input Schema
+export interface GatewaysCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  gatewayName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Accepted"
+      | "Canceled"
+      | "Deleted";
+    gatewayId?: string;
+    gatewayType?: "Public";
+    gatewayEndpoint?: string;
+    allowedFeatures?: string[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const GatewaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -458,11 +571,22 @@ export const GatewaysCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type GatewaysCreateOrUpdateInput =
-  typeof GatewaysCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GatewaysCreateOrUpdateInput>;
 
 // Output Schema
+export interface GatewaysCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewaysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -482,9 +606,7 @@ export const GatewaysCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewaysCreateOrUpdateOutput =
-  typeof GatewaysCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GatewaysCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -493,6 +615,7 @@ export type GatewaysCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -501,21 +624,27 @@ export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewaysDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  gatewayName: string;
+}
 export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
+) as unknown as Schema.Codec<GatewaysDeleteInput>;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
+export type GatewaysDeleteOutput = void;
+export const GatewaysDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -524,25 +653,44 @@ export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
 // Input Schema
+export interface GatewaysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  gatewayName: string;
+}
 export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type GatewaysGetInput = typeof GatewaysGetInput.Type;
+) as unknown as Schema.Codec<GatewaysGetInput>;
 
 // Output Schema
+export interface GatewaysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -561,8 +709,7 @@ export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
+}) as unknown as Schema.Codec<GatewaysGetOutput>;
 
 // The operation
 /**
@@ -571,12 +718,17 @@ export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
   outputSchema: GatewaysGetOutput,
 }));
 // Input Schema
+export interface GatewaysListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const GatewaysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -587,11 +739,25 @@ export const GatewaysListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways",
       apiVersion: "2025-01-13",
     }),
-  );
-export type GatewaysListByResourceGroupInput =
-  typeof GatewaysListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<GatewaysListByResourceGroupInput>;
 
 // Output Schema
+export interface GatewaysListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GatewaysListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -626,9 +792,7 @@ export const GatewaysListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GatewaysListByResourceGroupOutput =
-  typeof GatewaysListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<GatewaysListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -645,6 +809,9 @@ export const GatewaysListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewaysListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const GatewaysListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -654,11 +821,25 @@ export const GatewaysListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/gateways",
       apiVersion: "2025-01-13",
     }),
-  );
-export type GatewaysListBySubscriptionInput =
-  typeof GatewaysListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<GatewaysListBySubscriptionInput>;
 
 // Output Schema
+export interface GatewaysListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GatewaysListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -693,9 +874,7 @@ export const GatewaysListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GatewaysListBySubscriptionOutput =
-  typeof GatewaysListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<GatewaysListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -711,9 +890,17 @@ export const GatewaysListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewaysUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  gatewayName: string;
+  properties?: { allowedFeatures?: string[] };
+  tags?: Record<string, string>;
+}
 export const GatewaysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       allowedFeatures: Schema.optional(Schema.Array(Schema.String)),
@@ -726,10 +913,22 @@ export const GatewaysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type GatewaysUpdateInput = typeof GatewaysUpdateInput.Type;
+) as unknown as Schema.Codec<GatewaysUpdateInput>;
 
 // Output Schema
+export interface GatewaysUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewaysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -748,8 +947,7 @@ export const GatewaysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GatewaysUpdateOutput = typeof GatewaysUpdateOutput.Type;
+}) as unknown as Schema.Codec<GatewaysUpdateOutput>;
 
 // The operation
 /**
@@ -758,12 +956,19 @@ export type GatewaysUpdateOutput = typeof GatewaysUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param gatewayName - The name of the Gateway.
  */
 export const GatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysUpdateInput,
   outputSchema: GatewaysUpdateOutput,
 }));
 // Input Schema
+export interface HybridIdentityMetadataGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  metadataName: string;
+}
 export const HybridIdentityMetadataGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -776,11 +981,22 @@ export const HybridIdentityMetadataGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/hybridIdentityMetadata/{metadataName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type HybridIdentityMetadataGetInput =
-  typeof HybridIdentityMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataGetInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridIdentityMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -800,9 +1016,7 @@ export const HybridIdentityMetadataGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridIdentityMetadataGetOutput =
-  typeof HybridIdentityMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataGetOutput>;
 
 // The operation
 /**
@@ -823,6 +1037,11 @@ export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridIdentityMetadataListByMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const HybridIdentityMetadataListByMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -834,11 +1053,25 @@ export const HybridIdentityMetadataListByMachinesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/hybridIdentityMetadata",
       apiVersion: "2025-01-13",
     }),
-  );
-export type HybridIdentityMetadataListByMachinesInput =
-  typeof HybridIdentityMetadataListByMachinesInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataListByMachinesInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataListByMachinesOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const HybridIdentityMetadataListByMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -873,9 +1106,7 @@ export const HybridIdentityMetadataListByMachinesOutput =
         ),
       }),
     ),
-  });
-export type HybridIdentityMetadataListByMachinesOutput =
-  typeof HybridIdentityMetadataListByMachinesOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataListByMachinesOutput>;
 
 // The operation
 /**
@@ -894,10 +1125,90 @@ export const HybridIdentityMetadataListByMachines =
     outputSchema: HybridIdentityMetadataListByMachinesOutput,
   }));
 // Input Schema
+export interface LicenseProfilesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  licenseProfileName: "default";
+  properties?: {
+    softwareAssurance?: { softwareAssuranceCustomer?: boolean };
+    esuProfile?: {
+      assignedLicenseImmutableId?: string;
+      esuKeys?: { sku?: string; licenseStatus?: number }[];
+    };
+    productProfile?: {
+      subscriptionStatus?:
+        | "Unknown"
+        | "Enabling"
+        | "Enabled"
+        | "Disabled"
+        | "Disabling"
+        | "Failed";
+      productType?: "WindowsServer" | "WindowsIoTEnterprise";
+      enrollmentDate?: string;
+      billingStartDate?: string;
+      disenrollmentDate?: string;
+      billingEndDate?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+      productFeatures?: {
+        name?: string;
+        subscriptionStatus?:
+          | "Unknown"
+          | "Enabling"
+          | "Enabled"
+          | "Disabled"
+          | "Disabling"
+          | "Failed";
+        enrollmentDate?: string;
+        billingStartDate?: string;
+        disenrollmentDate?: string;
+        billingEndDate?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            target?: string;
+            details?: unknown[];
+            additionalInfo?: { type?: string; info?: unknown }[];
+          }[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      }[];
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Accepted"
+      | "Canceled"
+      | "Deleted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const LicenseProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         softwareAssurance: Schema.optional(
@@ -1050,11 +1361,22 @@ export const LicenseProfilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicenseProfilesCreateOrUpdateInput =
-  typeof LicenseProfilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LicenseProfilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface LicenseProfilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicenseProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1074,9 +1396,7 @@ export const LicenseProfilesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LicenseProfilesCreateOrUpdateOutput =
-  typeof LicenseProfilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LicenseProfilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1085,6 +1405,8 @@ export type LicenseProfilesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1092,24 +1414,30 @@ export const LicenseProfilesCreateOrUpdate =
     outputSchema: LicenseProfilesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface LicenseProfilesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  licenseProfileName: "default";
+}
 export const LicenseProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicenseProfilesDeleteInput = typeof LicenseProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<LicenseProfilesDeleteInput>;
 
 // Output Schema
+export type LicenseProfilesDeleteOutput = void;
 export const LicenseProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LicenseProfilesDeleteOutput =
-  typeof LicenseProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LicenseProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -1118,6 +1446,8 @@ export type LicenseProfilesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1126,20 +1456,40 @@ export const LicenseProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LicenseProfilesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  licenseProfileName: "default";
+}
 export const LicenseProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicenseProfilesGetInput = typeof LicenseProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<LicenseProfilesGetInput>;
 
 // Output Schema
+export interface LicenseProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicenseProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1159,8 +1509,7 @@ export const LicenseProfilesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LicenseProfilesGetOutput = typeof LicenseProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<LicenseProfilesGetOutput>;
 
 // The operation
 /**
@@ -1169,12 +1518,19 @@ export type LicenseProfilesGetOutput = typeof LicenseProfilesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicenseProfilesGetInput,
   outputSchema: LicenseProfilesGetOutput,
 }));
 // Input Schema
+export interface LicenseProfilesListInput {
+  resourceGroupName: string;
+  machineName: string;
+  subscriptionId: string;
+}
 export const LicenseProfilesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1186,10 +1542,25 @@ export const LicenseProfilesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicenseProfilesListInput = typeof LicenseProfilesListInput.Type;
+  ) as unknown as Schema.Codec<LicenseProfilesListInput>;
 
 // Output Schema
+export interface LicenseProfilesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LicenseProfilesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1224,8 +1595,7 @@ export const LicenseProfilesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LicenseProfilesListOutput = typeof LicenseProfilesListOutput.Type;
+  }) as unknown as Schema.Codec<LicenseProfilesListOutput>;
 
 // The operation
 /**
@@ -1241,10 +1611,31 @@ export const LicenseProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LicenseProfilesListOutput,
 }));
 // Input Schema
+export interface LicenseProfilesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  licenseProfileName: "default";
+  properties?: {
+    softwareAssurance?: { softwareAssuranceCustomer?: boolean };
+    esuProfile?: { assignedLicense?: string };
+    productProfile?: {
+      subscriptionStatus?: "Enable" | "Disable";
+      productType?: "WindowsServer" | "WindowsIoTEnterprise";
+      productFeatures?: {
+        name?: string;
+        subscriptionStatus?: "Enable" | "Disable";
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const LicenseProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    licenseProfileName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         softwareAssurance: Schema.optional(
@@ -1286,10 +1677,22 @@ export const LicenseProfilesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicenseProfilesUpdateInput = typeof LicenseProfilesUpdateInput.Type;
+  ) as unknown as Schema.Codec<LicenseProfilesUpdateInput>;
 
 // Output Schema
+export interface LicenseProfilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicenseProfilesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1309,9 +1712,7 @@ export const LicenseProfilesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LicenseProfilesUpdateOutput =
-  typeof LicenseProfilesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LicenseProfilesUpdateOutput>;
 
 // The operation
 /**
@@ -1320,6 +1721,8 @@ export type LicenseProfilesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1328,10 +1731,44 @@ export const LicenseProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LicensesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  licenseName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Accepted"
+      | "Canceled"
+      | "Deleted";
+    tenantId?: string;
+    licenseType?: "ESU";
+    licenseDetails?: {
+      state?: "Activated" | "Deactivated";
+      target?: "Windows Server 2012" | "Windows Server 2012 R2";
+      edition?: "Standard" | "Datacenter";
+      type?: "pCore" | "vCore";
+      processors?: number;
+      assignedLicenses?: number;
+      immutableId?: string;
+      volumeLicenseDetails?: {
+        programYear?: "Year 1" | "Year 2" | "Year 3";
+        invoiceId?: string;
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const LicensesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    licenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1388,11 +1825,22 @@ export const LicensesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicensesCreateOrUpdateInput =
-  typeof LicensesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LicensesCreateOrUpdateInput>;
 
 // Output Schema
+export interface LicensesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicensesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1412,9 +1860,7 @@ export const LicensesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LicensesCreateOrUpdateOutput =
-  typeof LicensesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LicensesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1423,6 +1869,7 @@ export type LicensesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1431,21 +1878,27 @@ export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LicensesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  licenseName: string;
+}
 export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
+) as unknown as Schema.Codec<LicensesDeleteInput>;
 
 // Output Schema
-export const LicensesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
+export type LicensesDeleteOutput = void;
+export const LicensesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LicensesDeleteOutput>;
 
 // The operation
 /**
@@ -1454,25 +1907,44 @@ export type LicensesDeleteOutput = typeof LicensesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesDeleteInput,
   outputSchema: LicensesDeleteOutput,
 }));
 // Input Schema
+export interface LicensesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  licenseName: string;
+}
 export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type LicensesGetInput = typeof LicensesGetInput.Type;
+) as unknown as Schema.Codec<LicensesGetInput>;
 
 // Output Schema
+export interface LicensesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1491,8 +1963,7 @@ export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LicensesGetOutput = typeof LicensesGetOutput.Type;
+}) as unknown as Schema.Codec<LicensesGetOutput>;
 
 // The operation
 /**
@@ -1501,12 +1972,17 @@ export type LicensesGetOutput = typeof LicensesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesGetInput,
   outputSchema: LicensesGetOutput,
 }));
 // Input Schema
+export interface LicensesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const LicensesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1517,11 +1993,25 @@ export const LicensesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicensesListByResourceGroupInput =
-  typeof LicensesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<LicensesListByResourceGroupInput>;
 
 // Output Schema
+export interface LicensesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LicensesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1556,9 +2046,7 @@ export const LicensesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LicensesListByResourceGroupOutput =
-  typeof LicensesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<LicensesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1575,6 +2063,9 @@ export const LicensesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LicensesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const LicensesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1584,11 +2075,25 @@ export const LicensesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/licenses",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicensesListBySubscriptionInput =
-  typeof LicensesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<LicensesListBySubscriptionInput>;
 
 // Output Schema
+export interface LicensesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LicensesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1623,9 +2128,7 @@ export const LicensesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LicensesListBySubscriptionOutput =
-  typeof LicensesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<LicensesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1641,9 +2144,26 @@ export const LicensesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LicensesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  licenseName: string;
+  properties?: {
+    licenseType?: "ESU";
+    licenseDetails?: {
+      state?: "Activated" | "Deactivated";
+      target?: "Windows Server 2012" | "Windows Server 2012 R2";
+      edition?: "Standard" | "Datacenter";
+      type?: "pCore" | "vCore";
+      processors?: number;
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  licenseName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       licenseType: Schema.optional(Schema.Literals(["ESU"])),
@@ -1667,10 +2187,22 @@ export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type LicensesUpdateInput = typeof LicensesUpdateInput.Type;
+) as unknown as Schema.Codec<LicensesUpdateInput>;
 
 // Output Schema
+export interface LicensesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicensesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1689,8 +2221,7 @@ export const LicensesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type LicensesUpdateOutput = typeof LicensesUpdateOutput.Type;
+}) as unknown as Schema.Codec<LicensesUpdateOutput>;
 
 // The operation
 /**
@@ -1699,12 +2230,44 @@ export type LicensesUpdateOutput = typeof LicensesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param licenseName - The name of the license.
  */
 export const LicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LicensesUpdateInput,
   outputSchema: LicensesUpdateOutput,
 }));
 // Input Schema
+export interface LicensesValidateLicenseInput {
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Accepted"
+      | "Canceled"
+      | "Deleted";
+    tenantId?: string;
+    licenseType?: "ESU";
+    licenseDetails?: {
+      state?: "Activated" | "Deactivated";
+      target?: "Windows Server 2012" | "Windows Server 2012 R2";
+      edition?: "Standard" | "Datacenter";
+      type?: "pCore" | "vCore";
+      processors?: number;
+      assignedLicenses?: number;
+      immutableId?: string;
+      volumeLicenseDetails?: {
+        programYear?: "Year 1" | "Year 2" | "Year 3";
+        invoiceId?: string;
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const LicensesValidateLicenseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1764,11 +2327,22 @@ export const LicensesValidateLicenseInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/validateLicense",
       apiVersion: "2025-01-13",
     }),
-  );
-export type LicensesValidateLicenseInput =
-  typeof LicensesValidateLicenseInput.Type;
+  ) as unknown as Schema.Codec<LicensesValidateLicenseInput>;
 
 // Output Schema
+export interface LicensesValidateLicenseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LicensesValidateLicenseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1788,9 +2362,7 @@ export const LicensesValidateLicenseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LicensesValidateLicenseOutput =
-  typeof LicensesValidateLicenseOutput.Type;
+  }) as unknown as Schema.Codec<LicensesValidateLicenseOutput>;
 
 // The operation
 /**
@@ -1806,6 +2378,37 @@ export const LicensesValidateLicense = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineExtensionsCreateOrUpdateInput {
+  resourceGroupName: string;
+  machineName: string;
+  extensionName: string;
+  subscriptionId: string;
+  properties?: {
+    forceUpdateTag?: string;
+    publisher?: string;
+    type?: string;
+    typeHandlerVersion?: string;
+    enableAutomaticUpgrade?: boolean;
+    autoUpgradeMinorVersion?: boolean;
+    settings?: Record<string, unknown>;
+    protectedSettings?: Record<string, unknown>;
+    provisioningState?: string;
+    instanceView?: {
+      name?: string;
+      type?: string;
+      typeHandlerVersion?: string;
+      status?: {
+        code?: string;
+        level?: "Info" | "Warning" | "Error";
+        displayStatus?: string;
+        message?: string;
+        time?: string;
+      };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MachineExtensionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1853,11 +2456,22 @@ export const MachineExtensionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineExtensionsCreateOrUpdateInput =
-  typeof MachineExtensionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachineExtensionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface MachineExtensionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineExtensionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1877,9 +2491,7 @@ export const MachineExtensionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineExtensionsCreateOrUpdateOutput =
-  typeof MachineExtensionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachineExtensionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1897,6 +2509,12 @@ export const MachineExtensionsCreateOrUpdate =
     outputSchema: MachineExtensionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MachineExtensionsDeleteInput {
+  resourceGroupName: string;
+  machineName: string;
+  extensionName: string;
+  subscriptionId: string;
+}
 export const MachineExtensionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1909,15 +2527,12 @@ export const MachineExtensionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineExtensionsDeleteInput =
-  typeof MachineExtensionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MachineExtensionsDeleteInput>;
 
 // Output Schema
+export type MachineExtensionsDeleteOutput = void;
 export const MachineExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachineExtensionsDeleteOutput =
-  typeof MachineExtensionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -1936,6 +2551,12 @@ export const MachineExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineExtensionsGetInput {
+  resourceGroupName: string;
+  machineName: string;
+  extensionName: string;
+  subscriptionId: string;
+}
 export const MachineExtensionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1948,10 +2569,22 @@ export const MachineExtensionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineExtensionsGetInput = typeof MachineExtensionsGetInput.Type;
+  ) as unknown as Schema.Codec<MachineExtensionsGetInput>;
 
 // Output Schema
+export interface MachineExtensionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineExtensionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1971,8 +2604,7 @@ export const MachineExtensionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineExtensionsGetOutput = typeof MachineExtensionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MachineExtensionsGetOutput>;
 
 // The operation
 /**
@@ -1991,6 +2623,12 @@ export const MachineExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineExtensionsListInput {
+  resourceGroupName: string;
+  machineName: string;
+  subscriptionId: string;
+  $expand?: string;
+}
 export const MachineExtensionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2003,10 +2641,25 @@ export const MachineExtensionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineExtensionsListInput = typeof MachineExtensionsListInput.Type;
+  ) as unknown as Schema.Codec<MachineExtensionsListInput>;
 
 // Output Schema
+export interface MachineExtensionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachineExtensionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2043,9 +2696,7 @@ export const MachineExtensionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachineExtensionsListOutput =
-  typeof MachineExtensionsListOutput.Type;
+  }) as unknown as Schema.Codec<MachineExtensionsListOutput>;
 
 // The operation
 /**
@@ -2064,6 +2715,23 @@ export const MachineExtensionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineExtensionsUpdateInput {
+  resourceGroupName: string;
+  machineName: string;
+  extensionName: string;
+  subscriptionId: string;
+  properties?: {
+    forceUpdateTag?: string;
+    publisher?: string;
+    type?: string;
+    typeHandlerVersion?: string;
+    enableAutomaticUpgrade?: boolean;
+    autoUpgradeMinorVersion?: boolean;
+    settings?: Record<string, unknown>;
+    protectedSettings?: Record<string, unknown>;
+  };
+  tags?: Record<string, string>;
+}
 export const MachineExtensionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2091,11 +2759,22 @@ export const MachineExtensionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineExtensionsUpdateInput =
-  typeof MachineExtensionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachineExtensionsUpdateInput>;
 
 // Output Schema
+export interface MachineExtensionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineExtensionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2115,9 +2794,7 @@ export const MachineExtensionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineExtensionsUpdateOutput =
-  typeof MachineExtensionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachineExtensionsUpdateOutput>;
 
 // The operation
 /**
@@ -2136,9 +2813,61 @@ export const MachineExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineRunCommandsCreateOrUpdateInput {
+  resourceGroupName: string;
+  machineName: string;
+  runCommandName: string;
+  subscriptionId: string;
+  properties?: {
+    source?: {
+      script?: string;
+      scriptUri?: string;
+      commandId?: string;
+      scriptUriManagedIdentity?: { clientId?: string; objectId?: string };
+    };
+    parameters?: { name: string; value: string }[];
+    protectedParameters?: { name: string; value: string }[];
+    asyncExecution?: boolean;
+    runAsUser?: string;
+    runAsPassword?: string | Redacted.Redacted<string>;
+    timeoutInSeconds?: number;
+    outputBlobUri?: string;
+    errorBlobUri?: string;
+    outputBlobManagedIdentity?: { clientId?: string; objectId?: string };
+    errorBlobManagedIdentity?: { clientId?: string; objectId?: string };
+    provisioningState?: string;
+    instanceView?: {
+      executionState?:
+        | "Unknown"
+        | "Pending"
+        | "Running"
+        | "Failed"
+        | "Succeeded"
+        | "TimedOut"
+        | "Canceled";
+      executionMessage?: string;
+      exitCode?: number;
+      output?: string;
+      error?: string;
+      startTime?: string;
+      endTime?: string;
+      statuses?: {
+        code?: string;
+        level?: "Info" | "Warning" | "Error";
+        displayStatus?: string;
+        message?: string;
+        time?: string;
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MachineRunCommandsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2234,11 +2963,22 @@ export const MachineRunCommandsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineRunCommandsCreateOrUpdateInput =
-  typeof MachineRunCommandsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachineRunCommandsCreateOrUpdateInput>;
 
 // Output Schema
+export interface MachineRunCommandsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineRunCommandsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2258,15 +2998,15 @@ export const MachineRunCommandsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineRunCommandsCreateOrUpdateOutput =
-  typeof MachineRunCommandsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachineRunCommandsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * The operation to create or update a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2276,9 +3016,17 @@ export const MachineRunCommandsCreateOrUpdate =
     outputSchema: MachineRunCommandsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MachineRunCommandsDeleteInput {
+  resourceGroupName: string;
+  machineName: string;
+  runCommandName: string;
+  subscriptionId: string;
+}
 export const MachineRunCommandsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2286,21 +3034,20 @@ export const MachineRunCommandsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineRunCommandsDeleteInput =
-  typeof MachineRunCommandsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MachineRunCommandsDeleteInput>;
 
 // Output Schema
+export type MachineRunCommandsDeleteOutput = void;
 export const MachineRunCommandsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachineRunCommandsDeleteOutput =
-  typeof MachineRunCommandsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineRunCommandsDeleteOutput>;
 
 // The operation
 /**
  * The operation to delete a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2311,9 +3058,17 @@ export const MachineRunCommandsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineRunCommandsGetInput {
+  resourceGroupName: string;
+  machineName: string;
+  runCommandName: string;
+  subscriptionId: string;
+}
 export const MachineRunCommandsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2321,10 +3076,22 @@ export const MachineRunCommandsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineRunCommandsGetInput = typeof MachineRunCommandsGetInput.Type;
+  ) as unknown as Schema.Codec<MachineRunCommandsGetInput>;
 
 // Output Schema
+export interface MachineRunCommandsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineRunCommandsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2344,15 +3111,15 @@ export const MachineRunCommandsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineRunCommandsGetOutput =
-  typeof MachineRunCommandsGetOutput.Type;
+  }) as unknown as Schema.Codec<MachineRunCommandsGetOutput>;
 
 // The operation
 /**
  * The operation to get a run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2363,9 +3130,16 @@ export const MachineRunCommandsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineRunCommandsListInput {
+  resourceGroupName: string;
+  machineName: string;
+  subscriptionId: string;
+  $expand?: string;
+}
 export const MachineRunCommandsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2374,11 +3148,25 @@ export const MachineRunCommandsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineRunCommandsListInput =
-  typeof MachineRunCommandsListInput.Type;
+  ) as unknown as Schema.Codec<MachineRunCommandsListInput>;
 
 // Output Schema
+export interface MachineRunCommandsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachineRunCommandsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2415,15 +3203,14 @@ export const MachineRunCommandsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachineRunCommandsListOutput =
-  typeof MachineRunCommandsListOutput.Type;
+  }) as unknown as Schema.Codec<MachineRunCommandsListOutput>;
 
 // The operation
 /**
  * The operation to get all the run commands of a non-Azure machine.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
  * @param $expand - The expand expression to apply on the operation.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
@@ -2435,9 +3222,18 @@ export const MachineRunCommandsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachineRunCommandsUpdateInput {
+  resourceGroupName: string;
+  machineName: string;
+  runCommandName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const MachineRunCommandsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
+    runCommandName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
@@ -2446,11 +3242,22 @@ export const MachineRunCommandsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachineRunCommandsUpdateInput =
-  typeof MachineRunCommandsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachineRunCommandsUpdateInput>;
 
 // Output Schema
+export interface MachineRunCommandsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachineRunCommandsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2470,15 +3277,15 @@ export const MachineRunCommandsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachineRunCommandsUpdateOutput =
-  typeof MachineRunCommandsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachineRunCommandsUpdateOutput>;
 
 // The operation
 /**
  * The operation to update the run command.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the hybrid machine.
+ * @param runCommandName - The name of the run command.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
@@ -2489,6 +3296,11 @@ export const MachineRunCommandsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesAssessPatchesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const MachinesAssessPatchesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2500,10 +3312,48 @@ export const MachinesAssessPatchesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/assessPatches",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachinesAssessPatchesInput = typeof MachinesAssessPatchesInput.Type;
+  ) as unknown as Schema.Codec<MachinesAssessPatchesInput>;
 
 // Output Schema
+export interface MachinesAssessPatchesOutput {
+  status?:
+    | "Unknown"
+    | "InProgress"
+    | "Failed"
+    | "Succeeded"
+    | "CompletedWithWarnings";
+  assessmentActivityId?: string;
+  rebootPending?: boolean;
+  availablePatchCountByClassification?: {
+    security?: number;
+    critical?: number;
+    definition?: number;
+    updateRollup?: number;
+    featurePack?: number;
+    servicePack?: number;
+    tools?: number;
+    updates?: number;
+    other?: number;
+  };
+  startDateTime?: string;
+  lastModifiedDateTime?: string;
+  startedBy?: "User" | "Platform";
+  patchServiceUsed?: "Unknown" | "WU" | "WU_WSUS" | "YUM" | "APT" | "Zypper";
+  osType?: "Windows" | "Linux";
+  errorDetails?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const MachinesAssessPatchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(
@@ -2570,9 +3420,7 @@ export const MachinesAssessPatchesOutput =
         ),
       }),
     ),
-  });
-export type MachinesAssessPatchesOutput =
-  typeof MachinesAssessPatchesOutput.Type;
+  }) as unknown as Schema.Codec<MachinesAssessPatchesOutput>;
 
 // The operation
 /**
@@ -2590,6 +3438,279 @@ export const MachinesAssessPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  $expand?: string;
+  properties?: {
+    locationData?: {
+      name: string;
+      city?: string;
+      district?: string;
+      countryOrRegion?: string;
+    };
+    agentConfiguration?: {
+      proxyUrl?: string;
+      incomingConnectionsPorts?: string[];
+      extensionsAllowList?: { publisher?: string; type?: string }[];
+      extensionsBlockList?: { publisher?: string; type?: string }[];
+      proxyBypass?: string[];
+      extensionsEnabled?: string;
+      guestConfigurationEnabled?: string;
+      configMode?: "full" | "monitor";
+    };
+    serviceStatuses?: {
+      extensionService?: { status?: string; startupType?: string };
+      guestConfigurationService?: { status?: string; startupType?: string };
+    };
+    hardwareProfile?: {
+      totalPhysicalMemoryInBytes?: number;
+      numberOfCpuSockets?: number;
+      processors?: { name?: string; numberOfCores?: number }[];
+    };
+    storageProfile?: {
+      disks?: {
+        path?: string;
+        diskType?: string;
+        generatedId?: string;
+        id?: string;
+        name?: string;
+        maxSizeInBytes?: number;
+        usedSpaceInBytes?: number;
+      }[];
+    };
+    firmwareProfile?: { serialNumber?: string; type?: string };
+    cloudMetadata?: { provider?: string };
+    agentUpgrade?: {
+      desiredVersion?: string;
+      correlationId?: string;
+      enableAutomaticUpgrade?: boolean;
+      lastAttemptDesiredVersion?: string;
+      lastAttemptTimestamp?: string;
+      lastAttemptStatus?: "Success" | "Failed";
+      lastAttemptMessage?: string;
+    };
+    osProfile?: {
+      computerName?: string;
+      windowsConfiguration?: {
+        patchSettings?: {
+          assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+          patchMode?:
+            | "ImageDefault"
+            | "AutomaticByPlatform"
+            | "AutomaticByOS"
+            | "Manual";
+          enableHotpatching?: boolean;
+          status?: {
+            hotpatchEnablementStatus?:
+              | "Unknown"
+              | "PendingEvaluation"
+              | "Disabled"
+              | "ActionRequired"
+              | "Enabled";
+            error?: {
+              code?: string;
+              message?: string;
+              target?: string;
+              details?: {
+                code?: string;
+                message?: string;
+                target?: string;
+                details?: unknown[];
+                additionalInfo?: { type?: string; info?: unknown }[];
+              }[];
+              additionalInfo?: { type?: string; info?: unknown }[];
+            };
+          };
+        };
+      };
+      linuxConfiguration?: {
+        patchSettings?: {
+          assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+          patchMode?:
+            | "ImageDefault"
+            | "AutomaticByPlatform"
+            | "AutomaticByOS"
+            | "Manual";
+          enableHotpatching?: boolean;
+          status?: {
+            hotpatchEnablementStatus?:
+              | "Unknown"
+              | "PendingEvaluation"
+              | "Disabled"
+              | "ActionRequired"
+              | "Enabled";
+            error?: {
+              code?: string;
+              message?: string;
+              target?: string;
+              details?: {
+                code?: string;
+                message?: string;
+                target?: string;
+                details?: unknown[];
+                additionalInfo?: { type?: string; info?: unknown }[];
+              }[];
+              additionalInfo?: { type?: string; info?: unknown }[];
+            };
+          };
+        };
+      };
+    };
+    licenseProfile?: {
+      licenseStatus?:
+        | "Unlicensed"
+        | "Licensed"
+        | "OOBGrace"
+        | "OOTGrace"
+        | "NonGenuineGrace"
+        | "Notification"
+        | "ExtendedGrace";
+      licenseChannel?: string;
+      softwareAssurance?: { softwareAssuranceCustomer?: boolean };
+      esuProfile?: {
+        assignedLicenseImmutableId?: string;
+        esuKeys?: { sku?: string; licenseStatus?: number }[];
+      };
+      productProfile?: {
+        subscriptionStatus?:
+          | "Unknown"
+          | "Enabling"
+          | "Enabled"
+          | "Disabled"
+          | "Disabling"
+          | "Failed";
+        productType?: "WindowsServer" | "WindowsIoTEnterprise";
+        enrollmentDate?: string;
+        billingStartDate?: string;
+        disenrollmentDate?: string;
+        billingEndDate?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            target?: string;
+            details?: unknown[];
+            additionalInfo?: { type?: string; info?: unknown }[];
+          }[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+        productFeatures?: {
+          name?: string;
+          subscriptionStatus?:
+            | "Unknown"
+            | "Enabling"
+            | "Enabled"
+            | "Disabled"
+            | "Disabling"
+            | "Failed";
+          enrollmentDate?: string;
+          billingStartDate?: string;
+          disenrollmentDate?: string;
+          billingEndDate?: string;
+          error?: {
+            code?: string;
+            message?: string;
+            target?: string;
+            details?: {
+              code?: string;
+              message?: string;
+              target?: string;
+              details?: unknown[];
+              additionalInfo?: { type?: string; info?: unknown }[];
+            }[];
+            additionalInfo?: { type?: string; info?: unknown }[];
+          };
+        }[];
+      };
+    };
+    provisioningState?: string;
+    status?: "Connected" | "Disconnected" | "Error";
+    lastStatusChange?: string;
+    errorDetails?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    agentVersion?: string;
+    vmId?: string;
+    displayName?: string;
+    machineFqdn?: string;
+    clientPublicKey?: string;
+    identityKeyStore?: "TPM" | "Default";
+    tpmEkCertificate?: string;
+    osName?: string;
+    osVersion?: string;
+    osType?: string;
+    vmUuid?: string;
+    extensions?: {
+      name?: string;
+      type?: string;
+      typeHandlerVersion?: string;
+      status?: {
+        code?: string;
+        level?: "Info" | "Warning" | "Error";
+        displayStatus?: string;
+        message?: string;
+        time?: string;
+      };
+    }[];
+    osSku?: string;
+    osEdition?: string;
+    domainName?: string;
+    adFqdn?: string;
+    dnsFqdn?: string;
+    privateLinkScopeResourceId?: string;
+    parentClusterResourceId?: string;
+    mssqlDiscovered?: string;
+    detectedProperties?: Record<string, string>;
+    networkProfile?: {
+      networkInterfaces?: {
+        macAddress?: string;
+        id?: string;
+        name?: string;
+        ipAddresses?: {
+          address?: string;
+          ipAddressVersion?: string;
+          subnet?: { addressPrefix?: string };
+        }[];
+      }[];
+    };
+  };
+  resources?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+  kind?: "AVS" | "HCI" | "SCVMM" | "VMware" | "EPS" | "GCP" | "AWS";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3153,11 +4274,22 @@ export const MachinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachinesCreateOrUpdateInput =
-  typeof MachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface MachinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3177,9 +4309,7 @@ export const MachinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachinesCreateOrUpdateOutput =
-  typeof MachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3198,6 +4328,11 @@ export const MachinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3208,12 +4343,12 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
+) as unknown as Schema.Codec<MachinesDeleteInput>;
 
 // Output Schema
-export const MachinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesDeleteOutput = typeof MachinesDeleteOutput.Type;
+export type MachinesDeleteOutput = void;
+export const MachinesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
 
 // The operation
 /**
@@ -3229,6 +4364,12 @@ export const MachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MachinesDeleteOutput,
 }));
 // Input Schema
+export interface MachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  $expand?: "instanceView";
+}
 export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3240,10 +4381,22 @@ export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type MachinesGetInput = typeof MachinesGetInput.Type;
+) as unknown as Schema.Codec<MachinesGetInput>;
 
 // Output Schema
+export interface MachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3262,8 +4415,7 @@ export const MachinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MachinesGetOutput = typeof MachinesGetOutput.Type;
+}) as unknown as Schema.Codec<MachinesGetOutput>;
 
 // The operation
 /**
@@ -3280,6 +4432,34 @@ export const MachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MachinesGetOutput,
 }));
 // Input Schema
+export interface MachinesInstallPatchesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+  maximumDuration: string;
+  rebootSetting: "IfRequired" | "Never" | "Always";
+  windowsParameters?: {
+    classificationsToInclude?: (
+      | "Critical"
+      | "Security"
+      | "UpdateRollUp"
+      | "FeaturePack"
+      | "ServicePack"
+      | "Definition"
+      | "Tools"
+      | "Updates"
+    )[];
+    kbNumbersToInclude?: string[];
+    kbNumbersToExclude?: string[];
+    excludeKbsRequiringReboot?: boolean;
+    maxPatchPublishDate?: string;
+  };
+  linuxParameters?: {
+    classificationsToInclude?: ("Critical" | "Security" | "Other")[];
+    packageNameMasksToInclude?: string[];
+    packageNameMasksToExclude?: string[];
+  };
+}
 export const MachinesInstallPatchesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3324,11 +4504,49 @@ export const MachinesInstallPatchesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/installPatches",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachinesInstallPatchesInput =
-  typeof MachinesInstallPatchesInput.Type;
+  ) as unknown as Schema.Codec<MachinesInstallPatchesInput>;
 
 // Output Schema
+export interface MachinesInstallPatchesOutput {
+  status?:
+    | "Unknown"
+    | "InProgress"
+    | "Failed"
+    | "Succeeded"
+    | "CompletedWithWarnings";
+  installationActivityId?: string;
+  rebootStatus?:
+    | "Unknown"
+    | "NotNeeded"
+    | "Required"
+    | "Started"
+    | "Failed"
+    | "Completed";
+  maintenanceWindowExceeded?: boolean;
+  excludedPatchCount?: number;
+  notSelectedPatchCount?: number;
+  pendingPatchCount?: number;
+  installedPatchCount?: number;
+  failedPatchCount?: number;
+  startDateTime?: string;
+  lastModifiedDateTime?: string;
+  startedBy?: "User" | "Platform";
+  patchServiceUsed?: "Unknown" | "WU" | "WU_WSUS" | "YUM" | "APT" | "Zypper";
+  osType?: "Windows" | "Linux";
+  errorDetails?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const MachinesInstallPatchesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(
@@ -3397,9 +4615,7 @@ export const MachinesInstallPatchesOutput =
         ),
       }),
     ),
-  });
-export type MachinesInstallPatchesOutput =
-  typeof MachinesInstallPatchesOutput.Type;
+  }) as unknown as Schema.Codec<MachinesInstallPatchesOutput>;
 
 // The operation
 /**
@@ -3417,6 +4633,11 @@ export const MachinesInstallPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $expand?: string;
+}
 export const MachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3428,11 +4649,25 @@ export const MachinesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachinesListByResourceGroupInput =
-  typeof MachinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MachinesListByResourceGroupInput>;
 
 // Output Schema
+export interface MachinesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3467,9 +4702,7 @@ export const MachinesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachinesListByResourceGroupOutput =
-  typeof MachinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MachinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3487,6 +4720,9 @@ export const MachinesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const MachinesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3496,11 +4732,25 @@ export const MachinesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/machines",
       apiVersion: "2025-01-13",
     }),
-  );
-export type MachinesListBySubscriptionInput =
-  typeof MachinesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<MachinesListBySubscriptionInput>;
 
 // Output Schema
+export interface MachinesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachinesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3535,9 +4785,7 @@ export const MachinesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachinesListBySubscriptionOutput =
-  typeof MachinesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<MachinesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3553,6 +4801,107 @@ export const MachinesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+  kind?: "AVS" | "HCI" | "SCVMM" | "VMware" | "EPS" | "GCP" | "AWS";
+  properties?: {
+    locationData?: {
+      name: string;
+      city?: string;
+      district?: string;
+      countryOrRegion?: string;
+    };
+    osProfile?: {
+      computerName?: string;
+      windowsConfiguration?: {
+        patchSettings?: {
+          assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+          patchMode?:
+            | "ImageDefault"
+            | "AutomaticByPlatform"
+            | "AutomaticByOS"
+            | "Manual";
+          enableHotpatching?: boolean;
+          status?: {
+            hotpatchEnablementStatus?:
+              | "Unknown"
+              | "PendingEvaluation"
+              | "Disabled"
+              | "ActionRequired"
+              | "Enabled";
+            error?: {
+              code?: string;
+              message?: string;
+              target?: string;
+              details?: {
+                code?: string;
+                message?: string;
+                target?: string;
+                details?: unknown[];
+                additionalInfo?: { type?: string; info?: unknown }[];
+              }[];
+              additionalInfo?: { type?: string; info?: unknown }[];
+            };
+          };
+        };
+      };
+      linuxConfiguration?: {
+        patchSettings?: {
+          assessmentMode?: "ImageDefault" | "AutomaticByPlatform";
+          patchMode?:
+            | "ImageDefault"
+            | "AutomaticByPlatform"
+            | "AutomaticByOS"
+            | "Manual";
+          enableHotpatching?: boolean;
+          status?: {
+            hotpatchEnablementStatus?:
+              | "Unknown"
+              | "PendingEvaluation"
+              | "Disabled"
+              | "ActionRequired"
+              | "Enabled";
+            error?: {
+              code?: string;
+              message?: string;
+              target?: string;
+              details?: {
+                code?: string;
+                message?: string;
+                target?: string;
+                details?: unknown[];
+                additionalInfo?: { type?: string; info?: unknown }[];
+              }[];
+              additionalInfo?: { type?: string; info?: unknown }[];
+            };
+          };
+        };
+      };
+    };
+    cloudMetadata?: { provider?: string };
+    agentUpgrade?: {
+      desiredVersion?: string;
+      correlationId?: string;
+      enableAutomaticUpgrade?: boolean;
+      lastAttemptDesiredVersion?: string;
+      lastAttemptTimestamp?: string;
+      lastAttemptStatus?: "Success" | "Failed";
+      lastAttemptMessage?: string;
+    };
+    parentClusterResourceId?: string;
+    privateLinkScopeResourceId?: string;
+    identityKeyStore?: string;
+    tpmEkCertificate?: string;
+  };
+  tags?: Record<string, string>;
+}
 export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3749,10 +5098,22 @@ export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type MachinesUpdateInput = typeof MachinesUpdateInput.Type;
+) as unknown as Schema.Codec<MachinesUpdateInput>;
 
 // Output Schema
+export interface MachinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3771,8 +5132,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MachinesUpdateOutput = typeof MachinesUpdateOutput.Type;
+}) as unknown as Schema.Codec<MachinesUpdateOutput>;
 
 // The operation
 /**
@@ -3788,10 +5148,34 @@ export const MachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MachinesUpdateOutput,
 }));
 // Input Schema
+export interface NetworkConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  properties?: {
+    location?: string;
+    tenantId?: string;
+    networkConfigurationScopeId?: string;
+    networkConfigurationScopeResourceId?: string;
+    keyProperties?: {
+      clientPublicKey?: {
+        publicKey?: string;
+        notAfter?: string;
+        renewAfter?: string;
+      };
+      candidatePublicKey?: {
+        publicKey?: string;
+        notAfter?: string;
+        renewAfter?: string;
+      };
+    };
+  };
+}
 export const NetworkConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         location: Schema.optional(Schema.String),
@@ -3824,11 +5208,22 @@ export const NetworkConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkConfigurationsCreateOrUpdateInput =
-  typeof NetworkConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3848,9 +5243,7 @@ export const NetworkConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConfigurationsCreateOrUpdateOutput =
-  typeof NetworkConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3859,6 +5252,7 @@ export type NetworkConfigurationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3866,21 +5260,38 @@ export const NetworkConfigurationsCreateOrUpdate =
     outputSchema: NetworkConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const NetworkConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkConfigurationsGetInput =
-  typeof NetworkConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkConfigurationsGetInput>;
 
 // Output Schema
+export interface NetworkConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3900,9 +5311,7 @@ export const NetworkConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConfigurationsGetOutput =
-  typeof NetworkConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -3911,6 +5320,7 @@ export type NetworkConfigurationsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3919,10 +5329,34 @@ export const NetworkConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  properties?: {
+    location?: string;
+    tenantId?: string;
+    networkConfigurationScopeId?: string;
+    networkConfigurationScopeResourceId?: string;
+    keyProperties?: {
+      clientPublicKey?: {
+        publicKey?: string;
+        notAfter?: string;
+        renewAfter?: string;
+      };
+      candidatePublicKey?: {
+        publicKey?: string;
+        notAfter?: string;
+        renewAfter?: string;
+      };
+    };
+  };
+}
 export const NetworkConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         location: Schema.optional(Schema.String),
@@ -3955,11 +5389,22 @@ export const NetworkConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.HybridCompute/networkConfigurations/current",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkConfigurationsUpdateInput =
-  typeof NetworkConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkConfigurationsUpdateInput>;
 
 // Output Schema
+export interface NetworkConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3979,9 +5424,7 @@ export const NetworkConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkConfigurationsUpdateOutput =
-  typeof NetworkConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -3990,6 +5433,7 @@ export type NetworkConfigurationsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3998,6 +5442,11 @@ export const NetworkConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkProfileGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const NetworkProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4010,10 +5459,21 @@ export const NetworkProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/networkProfile",
     apiVersion: "2025-01-13",
   }),
-);
-export type NetworkProfileGetInput = typeof NetworkProfileGetInput.Type;
+) as unknown as Schema.Codec<NetworkProfileGetInput>;
 
 // Output Schema
+export interface NetworkProfileGetOutput {
+  networkInterfaces?: {
+    macAddress?: string;
+    id?: string;
+    name?: string;
+    ipAddresses?: {
+      address?: string;
+      ipAddressVersion?: string;
+      subnet?: { addressPrefix?: string };
+    }[];
+  }[];
+}
 export const NetworkProfileGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     networkInterfaces: Schema.optional(
@@ -4038,8 +5498,7 @@ export const NetworkProfileGetOutput =
         }),
       ),
     ),
-  });
-export type NetworkProfileGetOutput = typeof NetworkProfileGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkProfileGetOutput>;
 
 // The operation
 /**
@@ -4055,21 +5514,77 @@ export const NetworkProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkProfileGetOutput,
 }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  perimeterName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    perimeterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
-  typeof NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?: string;
+    provisioningIssues?: {
+      name?: string;
+      properties?: {
+        issueType?:
+          | "MissingPerimeterConfiguration"
+          | "MissingIdentityConfiguration"
+          | "ConfigurationPropagationFailure"
+          | "Other";
+        severity?: "Warning" | "Error";
+        description?: string;
+        suggestedResourceIds?: string[];
+        suggestedAccessRules?: {
+          name?: string;
+          properties?: {
+            direction?: "Inbound" | "Outbound";
+            addressPrefixes?: string[];
+          };
+        }[];
+      };
+    }[];
+    networkSecurityPerimeter?: {
+      id?: string;
+      perimeterGuid?: string;
+      location?: string;
+    };
+    resourceAssociation?: {
+      name?: string;
+      accessMode?: "enforced" | "audit" | "learning";
+    };
+    profile?: {
+      name?: string;
+      accessRulesVersion?: number;
+      accessRules?: {
+        name?: string;
+        properties?: {
+          direction?: "Inbound" | "Outbound";
+          addressPrefixes?: string[];
+        };
+      }[];
+      diagnosticSettingsVersion?: number;
+      enabledLogCategories?: string[];
+    };
+  };
+}
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4163,9 +5678,7 @@ export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
         ),
       }),
     ),
-  });
-export type NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
-  typeof NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput>;
 
 // The operation
 /**
@@ -4174,6 +5687,8 @@ export type NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4183,21 +5698,78 @@ export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScope =
       NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
-  typeof NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      provisioningState?: string;
+      provisioningIssues?: {
+        name?: string;
+        properties?: {
+          issueType?:
+            | "MissingPerimeterConfiguration"
+            | "MissingIdentityConfiguration"
+            | "ConfigurationPropagationFailure"
+            | "Other";
+          severity?: "Warning" | "Error";
+          description?: string;
+          suggestedResourceIds?: string[];
+          suggestedAccessRules?: {
+            name?: string;
+            properties?: {
+              direction?: "Inbound" | "Outbound";
+              addressPrefixes?: string[];
+            };
+          }[];
+        };
+      }[];
+      networkSecurityPerimeter?: {
+        id?: string;
+        perimeterGuid?: string;
+        location?: string;
+      };
+      resourceAssociation?: {
+        name?: string;
+        accessMode?: "enforced" | "audit" | "learning";
+      };
+      profile?: {
+        name?: string;
+        accessRulesVersion?: number;
+        accessRules?: {
+          name?: string;
+          properties?: {
+            direction?: "Inbound" | "Outbound";
+            addressPrefixes?: string[];
+          };
+        }[];
+        diagnosticSettingsVersion?: number;
+        enabledLogCategories?: string[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4300,9 +5872,7 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput 
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput =
-  typeof NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput>;
 
 // The operation
 /**
@@ -4311,6 +5881,7 @@ export type NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4320,27 +5891,34 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScope =
       NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  perimeterName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    perimeterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}/reconcile",
       apiVersion: "2025-01-13",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput {
+  location?: string;
+}
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
-  });
-export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput>;
 
 // The operation
 /**
@@ -4349,6 +5927,8 @@ export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOu
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4358,6 +5938,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope 
       NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4366,10 +5947,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HybridCompute/operations",
     apiVersion: "2025-01-13",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    origin?: string;
+    name?: string;
+    display?: {
+      operation?: string;
+      resource?: string;
+      description?: string;
+      provider?: string;
+    };
+    isDataAction?: boolean;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4388,8 +5981,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4402,10 +5994,35 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status: string;
+      description: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: string;
+    groupIds?: string[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -4445,11 +6062,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4469,9 +6097,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4480,6 +6106,7 @@ export type PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
@@ -4488,10 +6115,17 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4499,15 +6133,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -4516,6 +6147,7 @@ export type PrivateEndpointConnectionsDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
@@ -4524,10 +6156,17 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4535,11 +6174,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4559,9 +6209,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -4570,6 +6218,7 @@ export type PrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
@@ -4578,21 +6227,41 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByPrivateLinkScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+}
 export const PrivateEndpointConnectionsListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateEndpointConnectionsListByPrivateLinkScopeInput =
-  typeof PrivateEndpointConnectionsListByPrivateLinkScopeInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByPrivateLinkScopeInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByPrivateLinkScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4629,9 +6298,7 @@ export const PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
-  typeof PrivateEndpointConnectionsListByPrivateLinkScopeOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByPrivateLinkScopeOutput>;
 
 // The operation
 /**
@@ -4640,6 +6307,7 @@ export type PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateEndpointConnectionsListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4647,21 +6315,40 @@ export const PrivateEndpointConnectionsListByPrivateLinkScope =
     outputSchema: PrivateEndpointConnectionsListByPrivateLinkScopeOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
+    groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4681,9 +6368,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -4692,6 +6377,8 @@ export type PrivateLinkResourcesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
+ * @param groupName - The name of the private link resource.
  */
 export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4700,21 +6387,41 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByPrivateLinkScopeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scopeName: string;
+}
 export const PrivateLinkResourcesListByPrivateLinkScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateLinkResources",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkResourcesListByPrivateLinkScopeInput =
-  typeof PrivateLinkResourcesListByPrivateLinkScopeInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByPrivateLinkScopeInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByPrivateLinkScopeOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByPrivateLinkScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4751,9 +6458,7 @@ export const PrivateLinkResourcesListByPrivateLinkScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByPrivateLinkScopeOutput =
-  typeof PrivateLinkResourcesListByPrivateLinkScopeOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByPrivateLinkScopeOutput>;
 
 // The operation
 /**
@@ -4762,6 +6467,7 @@ export type PrivateLinkResourcesListByPrivateLinkScopeOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkResourcesListByPrivateLinkScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4769,10 +6475,49 @@ export const PrivateLinkResourcesListByPrivateLinkScope =
     outputSchema: PrivateLinkResourcesListByPrivateLinkScopeOutput,
   }));
 // Input Schema
+export interface PrivateLinkScopesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  scopeName: string;
+  properties?: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    provisioningState?: string;
+    privateLinkScopeId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      properties?: {
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status: string;
+          description: string;
+          actionsRequired?: string;
+        };
+        provisioningState?: string;
+        groupIds?: string[];
+      };
+    }[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PrivateLinkScopesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         publicNetworkAccess: Schema.optional(
@@ -4834,11 +6579,16 @@ export const PrivateLinkScopesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesCreateOrUpdateInput =
-  typeof PrivateLinkScopesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkScopesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PrivateLinkScopesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4846,9 +6596,7 @@ export const PrivateLinkScopesCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PrivateLinkScopesCreateOrUpdateOutput =
-  typeof PrivateLinkScopesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4857,6 +6605,7 @@ export type PrivateLinkScopesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4864,25 +6613,28 @@ export const PrivateLinkScopesCreateOrUpdate =
     outputSchema: PrivateLinkScopesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkScopesDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  scopeName: string;
+}
 export const PrivateLinkScopesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesDeleteInput =
-  typeof PrivateLinkScopesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesDeleteInput>;
 
 // Output Schema
+export type PrivateLinkScopesDeleteOutput = void;
 export const PrivateLinkScopesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkScopesDeleteOutput =
-  typeof PrivateLinkScopesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkScopesDeleteOutput>;
 
 // The operation
 /**
@@ -4891,6 +6643,7 @@ export type PrivateLinkScopesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4899,20 +6652,32 @@ export const PrivateLinkScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkScopesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  scopeName: string;
+}
 export const PrivateLinkScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesGetInput = typeof PrivateLinkScopesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesGetInput>;
 
 // Output Schema
+export interface PrivateLinkScopesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PrivateLinkScopesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4920,8 +6685,7 @@ export const PrivateLinkScopesGetOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PrivateLinkScopesGetOutput = typeof PrivateLinkScopesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesGetOutput>;
 
 // The operation
 /**
@@ -4930,6 +6694,7 @@ export type PrivateLinkScopesGetOutput = typeof PrivateLinkScopesGetOutput.Type;
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4938,20 +6703,36 @@ export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkScopesGetValidationDetailsInput {
+  location: string;
+  subscriptionId: string;
+  privateLinkScopeId: string;
+}
 export const PrivateLinkScopesGetValidationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    privateLinkScopeId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/privateLinkScopes/{privateLinkScopeId}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesGetValidationDetailsInput =
-  typeof PrivateLinkScopesGetValidationDetailsInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesGetValidationDetailsInput>;
 
 // Output Schema
+export interface PrivateLinkScopesGetValidationDetailsOutput {
+  id?: string;
+  publicNetworkAccess?: "Enabled" | "Disabled";
+  connectionDetails?: {
+    id?: string;
+    privateIpAddress?: string;
+    linkIdentifier?: string;
+    groupId?: string;
+    memberName?: string;
+  }[];
+}
 export const PrivateLinkScopesGetValidationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4969,16 +6750,16 @@ export const PrivateLinkScopesGetValidationDetailsOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkScopesGetValidationDetailsOutput =
-  typeof PrivateLinkScopesGetValidationDetailsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesGetValidationDetailsOutput>;
 
 // The operation
 /**
  * Returns a Azure Arc PrivateLinkScope's validation details.
  *
+ * @param location - The location of the target resource.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param privateLinkScopeId - The id (Guid) of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesGetValidationDetails =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4986,21 +6767,36 @@ export const PrivateLinkScopesGetValidationDetails =
     outputSchema: PrivateLinkScopesGetValidationDetailsOutput,
   }));
 // Input Schema
+export interface PrivateLinkScopesGetValidationDetailsForMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const PrivateLinkScopesGetValidationDetailsForMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/privateLinkScopes/current",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesGetValidationDetailsForMachineInput =
-  typeof PrivateLinkScopesGetValidationDetailsForMachineInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesGetValidationDetailsForMachineInput>;
 
 // Output Schema
+export interface PrivateLinkScopesGetValidationDetailsForMachineOutput {
+  id?: string;
+  publicNetworkAccess?: "Enabled" | "Disabled";
+  connectionDetails?: {
+    id?: string;
+    privateIpAddress?: string;
+    linkIdentifier?: string;
+    groupId?: string;
+    memberName?: string;
+  }[];
+}
 export const PrivateLinkScopesGetValidationDetailsForMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5018,9 +6814,7 @@ export const PrivateLinkScopesGetValidationDetailsForMachineOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkScopesGetValidationDetailsForMachineOutput =
-  typeof PrivateLinkScopesGetValidationDetailsForMachineOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesGetValidationDetailsForMachineOutput>;
 
 // The operation
 /**
@@ -5029,6 +6823,7 @@ export type PrivateLinkScopesGetValidationDetailsForMachineOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const PrivateLinkScopesGetValidationDetailsForMachine =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5036,6 +6831,9 @@ export const PrivateLinkScopesGetValidationDetailsForMachine =
     outputSchema: PrivateLinkScopesGetValidationDetailsForMachineOutput,
   }));
 // Input Schema
+export interface PrivateLinkScopesListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkScopesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5045,10 +6843,19 @@ export const PrivateLinkScopesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/privateLinkScopes",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesListInput = typeof PrivateLinkScopesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesListInput>;
 
 // Output Schema
+export interface PrivateLinkScopesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkScopesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5061,9 +6868,7 @@ export const PrivateLinkScopesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkScopesListOutput =
-  typeof PrivateLinkScopesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesListOutput>;
 
 // The operation
 /**
@@ -5079,6 +6884,10 @@ export const PrivateLinkScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkScopesListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const PrivateLinkScopesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5089,11 +6898,19 @@ export const PrivateLinkScopesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesListByResourceGroupInput =
-  typeof PrivateLinkScopesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkScopesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkScopesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5106,9 +6923,7 @@ export const PrivateLinkScopesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkScopesListByResourceGroupOutput =
-  typeof PrivateLinkScopesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5124,10 +6939,17 @@ export const PrivateLinkScopesListByResourceGroup =
     outputSchema: PrivateLinkScopesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkScopesUpdateTagsInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  scopeName: string;
+  tags?: Record<string, string>;
+}
 export const PrivateLinkScopesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    scopeName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -5135,11 +6957,16 @@ export const PrivateLinkScopesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       apiVersion: "2025-01-13",
     }),
-  );
-export type PrivateLinkScopesUpdateTagsInput =
-  typeof PrivateLinkScopesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkScopesUpdateTagsInput>;
 
 // Output Schema
+export interface PrivateLinkScopesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: Record<string, string>;
+}
 export const PrivateLinkScopesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5147,9 +6974,7 @@ export const PrivateLinkScopesUpdateTagsOutput =
     type: Schema.optional(Schema.String),
     location: Schema.String,
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type PrivateLinkScopesUpdateTagsOutput =
-  typeof PrivateLinkScopesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkScopesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -5158,6 +6983,7 @@ export type PrivateLinkScopesUpdateTagsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5166,19 +6992,43 @@ export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  baseProvider: string;
+  baseResourceType: string;
+  baseResourceName: string;
+  settingsResourceName: string;
+}
 export const SettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type SettingsGetInput = typeof SettingsGetInput.Type;
+) as unknown as Schema.Codec<SettingsGetInput>;
 
 // Output Schema
+export interface SettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5197,8 +7047,7 @@ export const SettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SettingsGetOutput = typeof SettingsGetOutput.Type;
+}) as unknown as Schema.Codec<SettingsGetOutput>;
 
 // The operation
 /**
@@ -5207,15 +7056,35 @@ export type SettingsGetOutput = typeof SettingsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsGetInput,
   outputSchema: SettingsGetOutput,
 }));
 // Input Schema
+export interface SettingsPatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  baseProvider: string;
+  baseResourceType: string;
+  baseResourceName: string;
+  settingsResourceName: string;
+  properties?: {
+    tenantId?: string;
+    gatewayProperties?: { gatewayResourceId?: string };
+  };
+}
 export const SettingsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       tenantId: Schema.optional(Schema.String),
@@ -5232,10 +7101,22 @@ export const SettingsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type SettingsPatchInput = typeof SettingsPatchInput.Type;
+) as unknown as Schema.Codec<SettingsPatchInput>;
 
 // Output Schema
+export interface SettingsPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SettingsPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5254,8 +7135,7 @@ export const SettingsPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SettingsPatchOutput = typeof SettingsPatchOutput.Type;
+}) as unknown as Schema.Codec<SettingsPatchOutput>;
 
 // The operation
 /**
@@ -5264,15 +7144,35 @@ export type SettingsPatchOutput = typeof SettingsPatchOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsPatchInput,
   outputSchema: SettingsPatchOutput,
 }));
 // Input Schema
+export interface SettingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  baseProvider: string;
+  baseResourceType: string;
+  baseResourceName: string;
+  settingsResourceName: string;
+  properties?: {
+    tenantId?: string;
+    gatewayProperties?: { gatewayResourceId?: string };
+  };
+}
 export const SettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  baseProvider: Schema.String.pipe(T.PathParam()),
+  baseResourceType: Schema.String.pipe(T.PathParam()),
+  baseResourceName: Schema.String.pipe(T.PathParam()),
+  settingsResourceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       tenantId: Schema.optional(Schema.String),
@@ -5289,10 +7189,22 @@ export const SettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseProvider}/{baseResourceType}/{baseResourceName}/providers/Microsoft.HybridCompute/settings/{settingsResourceName}",
     apiVersion: "2025-01-13",
   }),
-);
-export type SettingsUpdateInput = typeof SettingsUpdateInput.Type;
+) as unknown as Schema.Codec<SettingsUpdateInput>;
 
 // Output Schema
+export interface SettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SettingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5311,8 +7223,7 @@ export const SettingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SettingsUpdateOutput = typeof SettingsUpdateOutput.Type;
+}) as unknown as Schema.Codec<SettingsUpdateOutput>;
 
 // The operation
 /**
@@ -5321,12 +7232,44 @@ export type SettingsUpdateOutput = typeof SettingsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param baseProvider - The name of the base Resource Provider.
+ * @param baseResourceType - The name of the base Resource Type.
+ * @param baseResourceName - The name of the base resource.
+ * @param settingsResourceName - The name of the settings resource.
  */
 export const SettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SettingsUpdateInput,
   outputSchema: SettingsUpdateOutput,
 }));
 // Input Schema
+export interface SetupExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  extensions?: {
+    forceUpdateTag?: string;
+    publisher?: string;
+    type?: string;
+    typeHandlerVersion?: string;
+    enableAutomaticUpgrade?: boolean;
+    autoUpgradeMinorVersion?: boolean;
+    settings?: Record<string, unknown>;
+    protectedSettings?: Record<string, unknown>;
+    provisioningState?: string;
+    instanceView?: {
+      name?: string;
+      type?: string;
+      typeHandlerVersion?: string;
+      status?: {
+        code?: string;
+        level?: "Info" | "Warning" | "Error";
+        displayStatus?: string;
+        message?: string;
+        time?: string;
+      };
+    };
+  }[];
+}
 export const SetupExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5372,10 +7315,34 @@ export const SetupExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/addExtensions",
     apiVersion: "2025-01-13",
   }),
-);
-export type SetupExtensionsInput = typeof SetupExtensionsInput.Type;
+) as unknown as Schema.Codec<SetupExtensionsInput>;
 
 // Output Schema
+export interface SetupExtensionsOutput {
+  extensions?: {
+    forceUpdateTag?: string;
+    publisher?: string;
+    type?: string;
+    typeHandlerVersion?: string;
+    enableAutomaticUpgrade?: boolean;
+    autoUpgradeMinorVersion?: boolean;
+    settings?: Record<string, unknown>;
+    protectedSettings?: Record<string, unknown>;
+    provisioningState?: string;
+    instanceView?: {
+      name?: string;
+      type?: string;
+      typeHandlerVersion?: string;
+      status?: {
+        code?: string;
+        level?: "Info" | "Warning" | "Error";
+        displayStatus?: string;
+        message?: string;
+        time?: string;
+      };
+    };
+  }[];
+}
 export const SetupExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   extensions: Schema.optional(
     Schema.Array(
@@ -5412,8 +7379,7 @@ export const SetupExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type SetupExtensionsOutput = typeof SetupExtensionsOutput.Type;
+}) as unknown as Schema.Codec<SetupExtensionsOutput>;
 
 // The operation
 /**
@@ -5429,6 +7395,12 @@ export const SetupExtensions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SetupExtensionsOutput,
 }));
 // Input Schema
+export interface UpgradeExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  extensionTargets?: Record<string, { targetVersion?: string }>;
+}
 export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5449,12 +7421,12 @@ export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions",
     apiVersion: "2025-01-13",
   }),
-);
-export type UpgradeExtensionsInput = typeof UpgradeExtensionsInput.Type;
+) as unknown as Schema.Codec<UpgradeExtensionsInput>;
 
 // Output Schema
-export const UpgradeExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpgradeExtensionsOutput = typeof UpgradeExtensionsOutput.Type;
+export type UpgradeExtensionsOutput = void;
+export const UpgradeExtensionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpgradeExtensionsOutput>;
 
 // The operation
 /**

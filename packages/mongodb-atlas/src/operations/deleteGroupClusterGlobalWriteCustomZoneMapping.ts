@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterGlobalWriteCustomZoneMappingInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
     }),
-  );
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingInput>;
 
 // Output Schema
+export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = void;
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  typeof DeleteGroupClusterGlobalWriteCustomZoneMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingOutput>;
 
 // The operation
 /**
  * Remove All Custom Zone Mappings from One Global Cluster
  *
- * Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. To use this resource, the requesting Service Account or API Key must have the Project Owner role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+ * Removes all custom zone mappings for the specified global cluster. A custom zone mapping matches one ISO 3166-2 location code to a zone in your global cluster. Removing the custom zone mappings restores the default mapping. By default, MongoDB Cloud maps each location code to the closest geographical zone. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

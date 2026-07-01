@@ -4,11 +4,84 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CalculateExchangePostInput {
+  properties?: {
+    reservationsToPurchase?: {
+      sku?: { name?: string };
+      location?: string;
+      properties?: {
+        reservedResourceType?:
+          | "VirtualMachines"
+          | "SqlDatabases"
+          | "SuseLinux"
+          | "CosmosDb"
+          | "RedHat"
+          | "SqlDataWarehouse"
+          | "VMwareCloudSimple"
+          | "RedHatOsa"
+          | "Databricks"
+          | "AppService"
+          | "ManagedDisk"
+          | "BlockBlob"
+          | "RedisCache"
+          | "AzureDataExplorer"
+          | "MySql"
+          | "MariaDb"
+          | "PostgreSql"
+          | "DedicatedHost"
+          | "SapHana"
+          | "SqlAzureHybridBenefit"
+          | "AVS"
+          | "DataFactory"
+          | "NetAppStorage"
+          | "AzureFiles"
+          | "SqlEdge"
+          | "VirtualMachineSoftware";
+        billingScopeId?: string;
+        term?: "P1Y" | "P3Y" | "P5Y";
+        billingPlan?: "Upfront" | "Monthly";
+        quantity?: number;
+        displayName?: string;
+        appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+        appliedScopes?: string[];
+        appliedScopeProperties?: {
+          tenantId?: string;
+          managementGroupId?: string;
+          subscriptionId?: string;
+          resourceGroupId?: string;
+          displayName?: string;
+        };
+        renew?: boolean;
+        reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+        reviewDateTime?: string;
+      };
+    }[];
+    savingsPlansToPurchase?: {
+      sku?: { name?: string };
+      properties?: {
+        displayName?: string;
+        billingScopeId?: string;
+        term?: "P1Y" | "P3Y";
+        billingPlan?: "P1M";
+        appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+        appliedScopeProperties?: {
+          tenantId?: string;
+          managementGroupId?: string;
+          subscriptionId?: string;
+          resourceGroupId?: string;
+          displayName?: string;
+        };
+        commitment?: { currencyCode?: string; amount?: number };
+      };
+    }[];
+    reservationsToExchange?: { reservationId?: string; quantity?: number }[];
+  };
+}
 export const CalculateExchangePostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -141,10 +214,115 @@ export const CalculateExchangePostInput =
       path: "/providers/Microsoft.Capacity/calculateExchange",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CalculateExchangePostInput = typeof CalculateExchangePostInput.Type;
+  ) as unknown as Schema.Codec<CalculateExchangePostInput>;
 
 // Output Schema
+export interface CalculateExchangePostOutput {
+  id?: string;
+  name?: string;
+  status?: "Succeeded" | "Failed" | "Cancelled" | "Pending";
+  properties?: {
+    sessionId?: string;
+    netPayable?: { currencyCode?: string; amount?: number };
+    refundsTotal?: { currencyCode?: string; amount?: number };
+    purchasesTotal?: { currencyCode?: string; amount?: number };
+    reservationsToPurchase?: {
+      properties?: {
+        sku?: { name?: string };
+        location?: string;
+        properties?: {
+          reservedResourceType?:
+            | "VirtualMachines"
+            | "SqlDatabases"
+            | "SuseLinux"
+            | "CosmosDb"
+            | "RedHat"
+            | "SqlDataWarehouse"
+            | "VMwareCloudSimple"
+            | "RedHatOsa"
+            | "Databricks"
+            | "AppService"
+            | "ManagedDisk"
+            | "BlockBlob"
+            | "RedisCache"
+            | "AzureDataExplorer"
+            | "MySql"
+            | "MariaDb"
+            | "PostgreSql"
+            | "DedicatedHost"
+            | "SapHana"
+            | "SqlAzureHybridBenefit"
+            | "AVS"
+            | "DataFactory"
+            | "NetAppStorage"
+            | "AzureFiles"
+            | "SqlEdge"
+            | "VirtualMachineSoftware";
+          billingScopeId?: string;
+          term?: "P1Y" | "P3Y" | "P5Y";
+          billingPlan?: "Upfront" | "Monthly";
+          quantity?: number;
+          displayName?: string;
+          appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+          appliedScopes?: string[];
+          appliedScopeProperties?: {
+            tenantId?: string;
+            managementGroupId?: string;
+            subscriptionId?: string;
+            resourceGroupId?: string;
+            displayName?: string;
+          };
+          renew?: boolean;
+          reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+          reviewDateTime?: string;
+        };
+      };
+      billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+    }[];
+    savingsPlansToPurchase?: {
+      properties?: {
+        sku?: { name?: string };
+        properties?: {
+          displayName?: string;
+          billingScopeId?: string;
+          term?: "P1Y" | "P3Y";
+          billingPlan?: "P1M";
+          appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+          appliedScopeProperties?: {
+            tenantId?: string;
+            managementGroupId?: string;
+            subscriptionId?: string;
+            resourceGroupId?: string;
+            displayName?: string;
+          };
+          commitment?: { currencyCode?: string; amount?: number };
+        };
+      };
+      billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+    }[];
+    reservationsToExchange?: {
+      reservationId?: string;
+      quantity?: number;
+      billingRefundAmount?: { currencyCode?: string; amount?: number };
+      billingInformation?: {
+        billingCurrencyTotalPaidAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+        billingCurrencyProratedAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+        billingCurrencyRemainingCommitmentAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+      };
+    }[];
+    policyResult?: { policyErrors?: { code?: string; message?: string }[] };
+  };
+  error?: { code?: string; message?: string };
+}
 export const CalculateExchangePostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -373,9 +551,7 @@ export const CalculateExchangePostOutput =
         message: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CalculateExchangePostOutput =
-  typeof CalculateExchangePostOutput.Type;
+  }) as unknown as Schema.Codec<CalculateExchangePostOutput>;
 
 // The operation
 /**
@@ -392,6 +568,14 @@ export const CalculateExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CalculateRefundPostInput {
+  reservationOrderId: string;
+  id?: string;
+  properties?: {
+    scope?: string;
+    reservationToReturn?: { reservationId?: string; quantity?: number };
+  };
+}
 export const CalculateRefundPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -413,10 +597,103 @@ export const CalculateRefundPostInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
       apiVersion: "2022-11-01",
     }),
-  );
-export type CalculateRefundPostInput = typeof CalculateRefundPostInput.Type;
+  ) as unknown as Schema.Codec<CalculateRefundPostInput>;
 
 // Output Schema
+export interface CalculateRefundPostOutput {
+  id?: string;
+  properties?: {
+    sessionId?: string;
+    quantity?: number;
+    billingRefundAmount?: { currencyCode?: string; amount?: number };
+    pricingRefundAmount?: { currencyCode?: string; amount?: number };
+    policyResult?: {
+      properties?: {
+        consumedRefundsTotal?: { currencyCode?: string; amount?: number };
+        maxRefundLimit?: { currencyCode?: string; amount?: number };
+        policyErrors?: {
+          code?:
+            | "NotSpecified"
+            | "InternalServerError"
+            | "ServerTimeout"
+            | "AuthorizationFailed"
+            | "BadRequest"
+            | "ClientCertificateThumbprintNotSet"
+            | "InvalidRequestContent"
+            | "OperationFailed"
+            | "HttpMethodNotSupported"
+            | "InvalidRequestUri"
+            | "MissingTenantId"
+            | "InvalidTenantId"
+            | "InvalidReservationOrderId"
+            | "InvalidReservationId"
+            | "ReservationIdNotInReservationOrder"
+            | "ReservationOrderNotFound"
+            | "InvalidSubscriptionId"
+            | "InvalidAccessToken"
+            | "InvalidLocationId"
+            | "UnauthenticatedRequestsThrottled"
+            | "InvalidHealthCheckType"
+            | "Forbidden"
+            | "BillingScopeIdCannotBeChanged"
+            | "AppliedScopesNotAssociatedWithCommerceAccount"
+            | "PatchValuesSameAsExisting"
+            | "RoleAssignmentCreationFailed"
+            | "ReservationOrderCreationFailed"
+            | "ReservationOrderNotEnabled"
+            | "CapacityUpdateScopesFailed"
+            | "UnsupportedReservationTerm"
+            | "ReservationOrderIdAlreadyExists"
+            | "RiskCheckFailed"
+            | "CreateQuoteFailed"
+            | "ActivateQuoteFailed"
+            | "NonsupportedAccountId"
+            | "PaymentInstrumentNotFound"
+            | "MissingAppliedScopesForSingle"
+            | "NoValidReservationsToReRate"
+            | "ReRateOnlyAllowedForEA"
+            | "OperationCannotBePerformedInCurrentState"
+            | "InvalidSingleAppliedScopesCount"
+            | "InvalidFulfillmentRequestParameters"
+            | "NotSupportedCountry"
+            | "InvalidRefundQuantity"
+            | "PurchaseError"
+            | "BillingCustomerInputError"
+            | "BillingPaymentInstrumentSoftError"
+            | "BillingPaymentInstrumentHardError"
+            | "BillingTransientError"
+            | "BillingError"
+            | "FulfillmentConfigurationError"
+            | "FulfillmentOutOfStockError"
+            | "FulfillmentTransientError"
+            | "FulfillmentError"
+            | "CalculatePriceFailed"
+            | "AppliedScopesSameAsExisting"
+            | "SelfServiceRefundNotSupported"
+            | "RefundLimitExceeded";
+          message?: string;
+        }[];
+      };
+    };
+    billingInformation?: {
+      billingPlan?: "Upfront" | "Monthly";
+      completedTransactions?: number;
+      totalTransactions?: number;
+      billingCurrencyTotalPaidAmount?: {
+        currencyCode?: string;
+        amount?: number;
+      };
+      billingCurrencyProratedAmount?: {
+        currencyCode?: string;
+        amount?: number;
+      };
+      billingCurrencyRemainingCommitmentAmount?: {
+        currencyCode?: string;
+        amount?: number;
+      };
+    };
+  };
+}
 export const CalculateRefundPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -554,8 +831,7 @@ export const CalculateRefundPostOutput =
         ),
       }),
     ),
-  });
-export type CalculateRefundPostOutput = typeof CalculateRefundPostOutput.Type;
+  }) as unknown as Schema.Codec<CalculateRefundPostOutput>;
 
 // The operation
 /**
@@ -571,6 +847,9 @@ export const CalculateRefundPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CalculateRefundPostOutput,
 }));
 // Input Schema
+export interface ExchangePostInput {
+  properties?: { sessionId?: string };
+}
 export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
@@ -583,10 +862,127 @@ export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/exchange",
     apiVersion: "2022-11-01",
   }),
-);
-export type ExchangePostInput = typeof ExchangePostInput.Type;
+) as unknown as Schema.Codec<ExchangePostInput>;
 
 // Output Schema
+export interface ExchangePostOutput {
+  id?: string;
+  name?: string;
+  status?:
+    | "Succeeded"
+    | "Failed"
+    | "Cancelled"
+    | "PendingRefunds"
+    | "PendingPurchases";
+  properties?: {
+    sessionId?: string;
+    netPayable?: { currencyCode?: string; amount?: number };
+    refundsTotal?: { currencyCode?: string; amount?: number };
+    purchasesTotal?: { currencyCode?: string; amount?: number };
+    reservationsToPurchase?: {
+      reservationOrderId?: string;
+      reservationId?: string;
+      properties?: {
+        sku?: { name?: string };
+        location?: string;
+        properties?: {
+          reservedResourceType?:
+            | "VirtualMachines"
+            | "SqlDatabases"
+            | "SuseLinux"
+            | "CosmosDb"
+            | "RedHat"
+            | "SqlDataWarehouse"
+            | "VMwareCloudSimple"
+            | "RedHatOsa"
+            | "Databricks"
+            | "AppService"
+            | "ManagedDisk"
+            | "BlockBlob"
+            | "RedisCache"
+            | "AzureDataExplorer"
+            | "MySql"
+            | "MariaDb"
+            | "PostgreSql"
+            | "DedicatedHost"
+            | "SapHana"
+            | "SqlAzureHybridBenefit"
+            | "AVS"
+            | "DataFactory"
+            | "NetAppStorage"
+            | "AzureFiles"
+            | "SqlEdge"
+            | "VirtualMachineSoftware";
+          billingScopeId?: string;
+          term?: "P1Y" | "P3Y" | "P5Y";
+          billingPlan?: "Upfront" | "Monthly";
+          quantity?: number;
+          displayName?: string;
+          appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+          appliedScopes?: string[];
+          appliedScopeProperties?: {
+            tenantId?: string;
+            managementGroupId?: string;
+            subscriptionId?: string;
+            resourceGroupId?: string;
+            displayName?: string;
+          };
+          renew?: boolean;
+          reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+          reviewDateTime?: string;
+        };
+      };
+      billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+      status?: "Succeeded" | "Failed" | "Cancelled" | "Pending";
+    }[];
+    savingsPlansToPurchase?: {
+      savingsPlanOrderId?: string;
+      savingsPlanId?: string;
+      properties?: {
+        sku?: { name?: string };
+        properties?: {
+          displayName?: string;
+          billingScopeId?: string;
+          term?: "P1Y" | "P3Y";
+          billingPlan?: "P1M";
+          appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+          appliedScopeProperties?: {
+            tenantId?: string;
+            managementGroupId?: string;
+            subscriptionId?: string;
+            resourceGroupId?: string;
+            displayName?: string;
+          };
+          commitment?: { currencyCode?: string; amount?: number };
+        };
+      };
+      billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+      status?: "Succeeded" | "Failed" | "Cancelled" | "Pending";
+    }[];
+    reservationsToExchange?: {
+      reservationId?: string;
+      quantity?: number;
+      billingRefundAmount?: { currencyCode?: string; amount?: number };
+      billingInformation?: {
+        billingCurrencyTotalPaidAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+        billingCurrencyProratedAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+        billingCurrencyRemainingCommitmentAmount?: {
+          currencyCode?: string;
+          amount?: number;
+        };
+      };
+      status?: "Succeeded" | "Failed" | "Cancelled" | "Pending";
+    }[];
+    policyResult?: { policyErrors?: { code?: string; message?: string }[] };
+  };
+  error?: { code?: string; message?: string };
+}
 export const ExchangePostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -823,8 +1219,7 @@ export const ExchangePostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       message: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ExchangePostOutput = typeof ExchangePostOutput.Type;
+}) as unknown as Schema.Codec<ExchangePostOutput>;
 
 // The operation
 /**
@@ -839,6 +1234,9 @@ export const ExchangePost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExchangePostOutput,
 }));
 // Input Schema
+export interface GetAppliedReservationListInput {
+  subscriptionId: string;
+}
 export const GetAppliedReservationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -848,11 +1246,17 @@ export const GetAppliedReservationListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
       apiVersion: "2022-11-01",
     }),
-  );
-export type GetAppliedReservationListInput =
-  typeof GetAppliedReservationListInput.Type;
+  ) as unknown as Schema.Codec<GetAppliedReservationListInput>;
 
 // Output Schema
+export interface GetAppliedReservationListOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    reservationOrderIds?: { value?: string[]; nextLink?: string };
+  };
+}
 export const GetAppliedReservationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -868,9 +1272,7 @@ export const GetAppliedReservationListOutput =
         ),
       }),
     ),
-  });
-export type GetAppliedReservationListOutput =
-  typeof GetAppliedReservationListOutput.Type;
+  }) as unknown as Schema.Codec<GetAppliedReservationListOutput>;
 
 // The operation
 /**
@@ -888,6 +1290,17 @@ export const GetAppliedReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetCatalogInput {
+  subscriptionId: string;
+  reservedResourceType?: string;
+  location?: string;
+  publisherId?: string;
+  offerId?: string;
+  planId?: string;
+  $filter?: string;
+  $skip?: number;
+  $take?: number;
+}
 export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   reservedResourceType: Schema.optional(Schema.String),
@@ -904,10 +1317,30 @@ export const GetCatalogInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/catalogs",
     apiVersion: "2022-11-01",
   }),
-);
-export type GetCatalogInput = typeof GetCatalogInput.Type;
+) as unknown as Schema.Codec<GetCatalogInput>;
 
 // Output Schema
+export interface GetCatalogOutput {
+  value: {
+    resourceType?: string;
+    name?: string;
+    billingPlans?: Record<string, ("Upfront" | "Monthly")[]>;
+    terms?: ("P1Y" | "P3Y" | "P5Y")[];
+    locations?: string[];
+    skuProperties?: { name?: string; value?: string }[];
+    msrp?: {
+      p1Y?: { currencyCode?: string; amount?: number };
+      p3Y?: { currencyCode?: string; amount?: number };
+      p5Y?: { currencyCode?: string; amount?: number };
+    };
+    restrictions?: { type?: string; values?: string[]; reasonCode?: string }[];
+    tier?: string;
+    size?: string;
+    capabilities?: { name?: string; value?: string }[];
+  }[];
+  nextLink?: string;
+  totalItems?: number;
+}
 export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -976,8 +1409,7 @@ export const GetCatalogOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   nextLink: Schema.optional(Schema.String),
   totalItems: Schema.optional(Schema.Number),
-});
-export type GetCatalogOutput = typeof GetCatalogOutput.Type;
+}) as unknown as Schema.Codec<GetCatalogOutput>;
 
 // The operation
 /**
@@ -999,6 +1431,7 @@ export const GetCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetCatalogOutput,
 }));
 // Input Schema
+export interface OperationListInput {}
 export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1007,10 +1440,24 @@ export const OperationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Capacity/operations",
     apiVersion: "2022-11-01",
   }),
-);
-export type OperationListInput = typeof OperationListInput.Type;
+) as unknown as Schema.Codec<OperationListInput>;
 
 // Output Schema
+export interface OperationListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1031,8 +1478,7 @@ export const OperationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationListOutput = typeof OperationListOutput.Type;
+}) as unknown as Schema.Codec<OperationListOutput>;
 
 // The operation
 /**
@@ -1047,6 +1493,10 @@ export const OperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationListOutput,
 }));
 // Input Schema
+export interface ReservationArchiveInput {
+  reservationOrderId: string;
+  reservationId: string;
+}
 export const ReservationArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1057,12 +1507,12 @@ export const ReservationArchiveInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationArchiveInput = typeof ReservationArchiveInput.Type;
+  ) as unknown as Schema.Codec<ReservationArchiveInput>;
 
 // Output Schema
-export const ReservationArchiveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ReservationArchiveOutput = typeof ReservationArchiveOutput.Type;
+export type ReservationArchiveOutput = void;
+export const ReservationArchiveOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationArchiveOutput>;
 
 // The operation
 /**
@@ -1079,6 +1529,11 @@ export const ReservationArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationArchiveOutput,
 }));
 // Input Schema
+export interface ReservationAvailableScopesInput {
+  reservationOrderId: string;
+  reservationId: string;
+  properties?: { scopes?: string[] };
+}
 export const ReservationAvailableScopesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1094,11 +1549,12 @@ export const ReservationAvailableScopesInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationAvailableScopesInput =
-  typeof ReservationAvailableScopesInput.Type;
+  ) as unknown as Schema.Codec<ReservationAvailableScopesInput>;
 
 // Output Schema
+export interface ReservationAvailableScopesOutput {
+  properties?: { scopes?: { scope?: string; valid?: boolean }[] };
+}
 export const ReservationAvailableScopesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1113,9 +1569,7 @@ export const ReservationAvailableScopesOutput =
         ),
       }),
     ),
-  });
-export type ReservationAvailableScopesOutput =
-  typeof ReservationAvailableScopesOutput.Type;
+  }) as unknown as Schema.Codec<ReservationAvailableScopesOutput>;
 
 // The operation
 /**
@@ -1134,6 +1588,11 @@ export const ReservationAvailableScopes = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationGetInput {
+  reservationOrderId: string;
+  reservationId: string;
+  $expand?: string;
+}
 export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   reservationId: Schema.String.pipe(T.PathParam()),
@@ -1144,10 +1603,22 @@ export const ReservationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReservationGetInput = typeof ReservationGetInput.Type;
+) as unknown as Schema.Codec<ReservationGetInput>;
 
 // Output Schema
+export interface ReservationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReservationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1166,8 +1637,7 @@ export const ReservationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ReservationGetOutput = typeof ReservationGetOutput.Type;
+}) as unknown as Schema.Codec<ReservationGetOutput>;
 
 // The operation
 /**
@@ -1185,6 +1655,9 @@ export const ReservationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationGetOutput,
 }));
 // Input Schema
+export interface ReservationListInput {
+  reservationOrderId: string;
+}
 export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1193,10 +1666,25 @@ export const ReservationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReservationListInput = typeof ReservationListInput.Type;
+) as unknown as Schema.Codec<ReservationListInput>;
 
 // Output Schema
+export interface ReservationListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1220,8 +1708,7 @@ export const ReservationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ReservationListOutput = typeof ReservationListOutput.Type;
+}) as unknown as Schema.Codec<ReservationListOutput>;
 
 // The operation
 /**
@@ -1237,6 +1724,14 @@ export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationListOutput,
 }));
 // Input Schema
+export interface ReservationListAllInput {
+  $filter?: string;
+  $orderby?: string;
+  refreshSummary?: string;
+  $skiptoken?: number;
+  selectedState?: string;
+  take?: number;
+}
 export const ReservationListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -1251,10 +1746,36 @@ export const ReservationListAllInput =
       path: "/providers/Microsoft.Capacity/reservations",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationListAllInput = typeof ReservationListAllInput.Type;
+  ) as unknown as Schema.Codec<ReservationListAllInput>;
 
 // Output Schema
+export interface ReservationListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+  summary?: {
+    succeededCount?: number;
+    failedCount?: number;
+    expiringCount?: number;
+    expiredCount?: number;
+    pendingCount?: number;
+    cancelledCount?: number;
+    processingCount?: number;
+    warningCount?: number;
+    noBenefitCount?: number;
+  };
+}
 export const ReservationListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1304,8 +1825,7 @@ export const ReservationListAllOutput =
         noBenefitCount: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ReservationListAllOutput = typeof ReservationListAllOutput.Type;
+  }) as unknown as Schema.Codec<ReservationListAllOutput>;
 
 // The operation
 /**
@@ -1324,6 +1844,10 @@ export const ReservationListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationListAllOutput,
 }));
 // Input Schema
+export interface ReservationListRevisionsInput {
+  reservationOrderId: string;
+  reservationId: string;
+}
 export const ReservationListRevisionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1334,11 +1858,25 @@ export const ReservationListRevisionsInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationListRevisionsInput =
-  typeof ReservationListRevisionsInput.Type;
+  ) as unknown as Schema.Codec<ReservationListRevisionsInput>;
 
 // Output Schema
+export interface ReservationListRevisionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationListRevisionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1373,9 +1911,7 @@ export const ReservationListRevisionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationListRevisionsOutput =
-  typeof ReservationListRevisionsOutput.Type;
+  }) as unknown as Schema.Codec<ReservationListRevisionsOutput>;
 
 // The operation
 /**
@@ -1394,6 +1930,10 @@ export const ReservationListRevisions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationMergeInput {
+  reservationOrderId: string;
+  properties?: { sources?: string[] };
+}
 export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -1407,10 +1947,22 @@ export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/merge",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReservationMergeInput = typeof ReservationMergeInput.Type;
+) as unknown as Schema.Codec<ReservationMergeInput>;
 
 // Output Schema
+export type ReservationMergeOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}[];
 export const ReservationMergeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1431,8 +1983,7 @@ export const ReservationMergeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       }),
     ),
   }),
-);
-export type ReservationMergeOutput = typeof ReservationMergeOutput.Type;
+) as unknown as Schema.Codec<ReservationMergeOutput>;
 
 // The operation
 /**
@@ -1448,6 +1999,56 @@ export const ReservationMerge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationMergeOutput,
 }));
 // Input Schema
+export interface ReservationOrderCalculateInput {
+  sku?: { name?: string };
+  location?: string;
+  properties?: {
+    reservedResourceType?:
+      | "VirtualMachines"
+      | "SqlDatabases"
+      | "SuseLinux"
+      | "CosmosDb"
+      | "RedHat"
+      | "SqlDataWarehouse"
+      | "VMwareCloudSimple"
+      | "RedHatOsa"
+      | "Databricks"
+      | "AppService"
+      | "ManagedDisk"
+      | "BlockBlob"
+      | "RedisCache"
+      | "AzureDataExplorer"
+      | "MySql"
+      | "MariaDb"
+      | "PostgreSql"
+      | "DedicatedHost"
+      | "SapHana"
+      | "SqlAzureHybridBenefit"
+      | "AVS"
+      | "DataFactory"
+      | "NetAppStorage"
+      | "AzureFiles"
+      | "SqlEdge"
+      | "VirtualMachineSoftware";
+    billingScopeId?: string;
+    term?: "P1Y" | "P3Y" | "P5Y";
+    billingPlan?: "Upfront" | "Monthly";
+    quantity?: number;
+    displayName?: string;
+    appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+    appliedScopes?: string[];
+    appliedScopeProperties?: {
+      tenantId?: string;
+      managementGroupId?: string;
+      subscriptionId?: string;
+      resourceGroupId?: string;
+      displayName?: string;
+    };
+    renew?: boolean;
+    reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+    reviewDateTime?: string;
+  };
+}
 export const ReservationOrderCalculateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sku: Schema.optional(
@@ -1523,11 +2124,45 @@ export const ReservationOrderCalculateInput =
       path: "/providers/Microsoft.Capacity/calculatePrice",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationOrderCalculateInput =
-  typeof ReservationOrderCalculateInput.Type;
+  ) as unknown as Schema.Codec<ReservationOrderCalculateInput>;
 
 // Output Schema
+export interface ReservationOrderCalculateOutput {
+  properties?: {
+    billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+    netTotal?: number;
+    taxTotal?: number;
+    grandTotal?: number;
+    isTaxIncluded?: boolean;
+    isBillingPartnerManaged?: boolean;
+    reservationOrderId?: string;
+    skuTitle?: string;
+    skuDescription?: string;
+    pricingCurrencyTotal?: { currencyCode?: string; amount?: number };
+    paymentSchedule?: {
+      dueDate?: string;
+      paymentDate?: string;
+      pricingCurrencyTotal?: { currencyCode?: string; amount?: number };
+      billingCurrencyTotal?: { currencyCode?: string; amount?: number };
+      billingAccount?: string;
+      status?: "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+      extendedStatusInfo?: {
+        statusCode?:
+          | "None"
+          | "Pending"
+          | "Processing"
+          | "Active"
+          | "PurchaseError"
+          | "PaymentInstrumentError"
+          | "Split"
+          | "Merged"
+          | "Expired"
+          | "Succeeded";
+        message?: string;
+      };
+    }[];
+  };
+}
 export const ReservationOrderCalculateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1602,9 +2237,7 @@ export const ReservationOrderCalculateOutput =
         ),
       }),
     ),
-  });
-export type ReservationOrderCalculateOutput =
-  typeof ReservationOrderCalculateOutput.Type;
+  }) as unknown as Schema.Codec<ReservationOrderCalculateOutput>;
 
 // The operation
 /**
@@ -1621,6 +2254,10 @@ export const ReservationOrderCalculate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationOrderChangeDirectoryInput {
+  reservationOrderId: string;
+  destinationTenantId?: string;
+}
 export const ReservationOrderChangeDirectoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1631,11 +2268,23 @@ export const ReservationOrderChangeDirectoryInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationOrderChangeDirectoryInput =
-  typeof ReservationOrderChangeDirectoryInput.Type;
+  ) as unknown as Schema.Codec<ReservationOrderChangeDirectoryInput>;
 
 // Output Schema
+export interface ReservationOrderChangeDirectoryOutput {
+  reservationOrder?: {
+    id?: string;
+    name?: string;
+    isSucceeded?: boolean;
+    error?: string;
+  };
+  reservations?: {
+    id?: string;
+    name?: string;
+    isSucceeded?: boolean;
+    error?: string;
+  }[];
+}
 export const ReservationOrderChangeDirectoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrder: Schema.optional(
@@ -1656,9 +2305,7 @@ export const ReservationOrderChangeDirectoryOutput =
         }),
       ),
     ),
-  });
-export type ReservationOrderChangeDirectoryOutput =
-  typeof ReservationOrderChangeDirectoryOutput.Type;
+  }) as unknown as Schema.Codec<ReservationOrderChangeDirectoryOutput>;
 
 // The operation
 /**
@@ -1675,6 +2322,10 @@ export const ReservationOrderChangeDirectory =
     outputSchema: ReservationOrderChangeDirectoryOutput,
   }));
 // Input Schema
+export interface ReservationOrderGetInput {
+  reservationOrderId: string;
+  $expand?: string;
+}
 export const ReservationOrderGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1685,10 +2336,22 @@ export const ReservationOrderGetInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationOrderGetInput = typeof ReservationOrderGetInput.Type;
+  ) as unknown as Schema.Codec<ReservationOrderGetInput>;
 
 // Output Schema
+export interface ReservationOrderGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReservationOrderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1708,8 +2371,7 @@ export const ReservationOrderGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReservationOrderGetOutput = typeof ReservationOrderGetOutput.Type;
+  }) as unknown as Schema.Codec<ReservationOrderGetOutput>;
 
 // The operation
 /**
@@ -1726,6 +2388,7 @@ export const ReservationOrderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationOrderGetOutput,
 }));
 // Input Schema
+export interface ReservationOrderListInput {}
 export const ReservationOrderListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1733,10 +2396,25 @@ export const ReservationOrderListInput =
       path: "/providers/Microsoft.Capacity/reservationOrders",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationOrderListInput = typeof ReservationOrderListInput.Type;
+  ) as unknown as Schema.Codec<ReservationOrderListInput>;
 
 // Output Schema
+export interface ReservationOrderListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReservationOrderListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1771,8 +2449,7 @@ export const ReservationOrderListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReservationOrderListOutput = typeof ReservationOrderListOutput.Type;
+  }) as unknown as Schema.Codec<ReservationOrderListOutput>;
 
 // The operation
 /**
@@ -1789,6 +2466,57 @@ export const ReservationOrderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationOrderPurchaseInput {
+  reservationOrderId: string;
+  sku?: { name?: string };
+  location?: string;
+  properties?: {
+    reservedResourceType?:
+      | "VirtualMachines"
+      | "SqlDatabases"
+      | "SuseLinux"
+      | "CosmosDb"
+      | "RedHat"
+      | "SqlDataWarehouse"
+      | "VMwareCloudSimple"
+      | "RedHatOsa"
+      | "Databricks"
+      | "AppService"
+      | "ManagedDisk"
+      | "BlockBlob"
+      | "RedisCache"
+      | "AzureDataExplorer"
+      | "MySql"
+      | "MariaDb"
+      | "PostgreSql"
+      | "DedicatedHost"
+      | "SapHana"
+      | "SqlAzureHybridBenefit"
+      | "AVS"
+      | "DataFactory"
+      | "NetAppStorage"
+      | "AzureFiles"
+      | "SqlEdge"
+      | "VirtualMachineSoftware";
+    billingScopeId?: string;
+    term?: "P1Y" | "P3Y" | "P5Y";
+    billingPlan?: "Upfront" | "Monthly";
+    quantity?: number;
+    displayName?: string;
+    appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+    appliedScopes?: string[];
+    appliedScopeProperties?: {
+      tenantId?: string;
+      managementGroupId?: string;
+      subscriptionId?: string;
+      resourceGroupId?: string;
+      displayName?: string;
+    };
+    renew?: boolean;
+    reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+    reviewDateTime?: string;
+  };
+}
 export const ReservationOrderPurchaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1865,11 +2593,22 @@ export const ReservationOrderPurchaseInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationOrderPurchaseInput =
-  typeof ReservationOrderPurchaseInput.Type;
+  ) as unknown as Schema.Codec<ReservationOrderPurchaseInput>;
 
 // Output Schema
+export interface ReservationOrderPurchaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReservationOrderPurchaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1889,9 +2628,7 @@ export const ReservationOrderPurchaseOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReservationOrderPurchaseOutput =
-  typeof ReservationOrderPurchaseOutput.Type;
+  }) as unknown as Schema.Codec<ReservationOrderPurchaseOutput>;
 
 // The operation
 /**
@@ -1909,6 +2646,10 @@ export const ReservationOrderPurchase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationSplitInput {
+  reservationOrderId: string;
+  properties?: { quantities?: number[]; reservationId?: string };
+}
 export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -1923,10 +2664,22 @@ export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/split",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReservationSplitInput = typeof ReservationSplitInput.Type;
+) as unknown as Schema.Codec<ReservationSplitInput>;
 
 // Output Schema
+export type ReservationSplitOutput = {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}[];
 export const ReservationSplitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1947,8 +2700,7 @@ export const ReservationSplitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       }),
     ),
   }),
-);
-export type ReservationSplitOutput = typeof ReservationSplitOutput.Type;
+) as unknown as Schema.Codec<ReservationSplitOutput>;
 
 // The operation
 /**
@@ -1964,6 +2716,10 @@ export const ReservationSplit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationSplitOutput,
 }));
 // Input Schema
+export interface ReservationUnarchiveInput {
+  reservationOrderId: string;
+  reservationId: string;
+}
 export const ReservationUnarchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -1974,13 +2730,12 @@ export const ReservationUnarchiveInput =
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
       apiVersion: "2022-11-01",
     }),
-  );
-export type ReservationUnarchiveInput = typeof ReservationUnarchiveInput.Type;
+  ) as unknown as Schema.Codec<ReservationUnarchiveInput>;
 
 // Output Schema
+export type ReservationUnarchiveOutput = void;
 export const ReservationUnarchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ReservationUnarchiveOutput = typeof ReservationUnarchiveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReservationUnarchiveOutput>;
 
 // The operation
 /**
@@ -1999,6 +2754,77 @@ export const ReservationUnarchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ReservationUpdateInput {
+  reservationOrderId: string;
+  reservationId: string;
+  properties?: {
+    appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+    appliedScopes?: string[];
+    appliedScopeProperties?: {
+      tenantId?: string;
+      managementGroupId?: string;
+      subscriptionId?: string;
+      resourceGroupId?: string;
+      displayName?: string;
+    };
+    instanceFlexibility?: "On" | "Off";
+    name?: string;
+    renew?: boolean;
+    renewProperties?: {
+      purchaseProperties?: {
+        sku?: { name?: string };
+        location?: string;
+        properties?: {
+          reservedResourceType?:
+            | "VirtualMachines"
+            | "SqlDatabases"
+            | "SuseLinux"
+            | "CosmosDb"
+            | "RedHat"
+            | "SqlDataWarehouse"
+            | "VMwareCloudSimple"
+            | "RedHatOsa"
+            | "Databricks"
+            | "AppService"
+            | "ManagedDisk"
+            | "BlockBlob"
+            | "RedisCache"
+            | "AzureDataExplorer"
+            | "MySql"
+            | "MariaDb"
+            | "PostgreSql"
+            | "DedicatedHost"
+            | "SapHana"
+            | "SqlAzureHybridBenefit"
+            | "AVS"
+            | "DataFactory"
+            | "NetAppStorage"
+            | "AzureFiles"
+            | "SqlEdge"
+            | "VirtualMachineSoftware";
+          billingScopeId?: string;
+          term?: "P1Y" | "P3Y" | "P5Y";
+          billingPlan?: "Upfront" | "Monthly";
+          quantity?: number;
+          displayName?: string;
+          appliedScopeType?: "Single" | "Shared" | "ManagementGroup";
+          appliedScopes?: string[];
+          appliedScopeProperties?: {
+            tenantId?: string;
+            managementGroupId?: string;
+            subscriptionId?: string;
+            resourceGroupId?: string;
+            displayName?: string;
+          };
+          renew?: boolean;
+          reservedResourceProperties?: { instanceFlexibility?: "On" | "Off" };
+          reviewDateTime?: string;
+        };
+      };
+    };
+    reviewDateTime?: string;
+  };
+}
 export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     reservationOrderId: Schema.String.pipe(T.PathParam()),
@@ -2110,10 +2936,22 @@ export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReservationUpdateInput = typeof ReservationUpdateInput.Type;
+) as unknown as Schema.Codec<ReservationUpdateInput>;
 
 // Output Schema
+export interface ReservationUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReservationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2133,8 +2971,7 @@ export const ReservationUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReservationUpdateOutput = typeof ReservationUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ReservationUpdateOutput>;
 
 // The operation
 /**
@@ -2151,6 +2988,15 @@ export const ReservationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReservationUpdateOutput,
 }));
 // Input Schema
+export interface ReturnPostInput {
+  reservationOrderId: string;
+  properties?: {
+    sessionId?: string;
+    scope?: string;
+    reservationToReturn?: { reservationId?: string; quantity?: number };
+    returnReason?: string;
+  };
+}
 export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reservationOrderId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -2172,10 +3018,22 @@ export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return",
     apiVersion: "2022-11-01",
   }),
-);
-export type ReturnPostInput = typeof ReturnPostInput.Type;
+) as unknown as Schema.Codec<ReturnPostInput>;
 
 // Output Schema
+export interface ReturnPostOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2194,8 +3052,7 @@ export const ReturnPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ReturnPostOutput = typeof ReturnPostOutput.Type;
+}) as unknown as Schema.Codec<ReturnPostOutput>;
 
 // The operation
 /**

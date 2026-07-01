@@ -3,6 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokeSpendPermissionInput {
+  address: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "optimism"
+    | "arbitrum"
+    | "avalanche"
+    | "polygon";
+  permissionHash: string;
+  paymasterUrl?: string;
+}
 export const RevokeSpendPermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -23,10 +37,45 @@ export const RevokeSpendPermissionInput =
       method: "POST",
       path: "/v2/evm/smart-accounts/{address}/spend-permissions/revoke",
     }),
-  );
-export type RevokeSpendPermissionInput = typeof RevokeSpendPermissionInput.Type;
+  ) as unknown as Schema.Codec<RevokeSpendPermissionInput>;
 
 // Output Schema
+export interface RevokeSpendPermissionOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const RevokeSpendPermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -75,13 +124,12 @@ export const RevokeSpendPermissionOutput =
         }),
       ),
     ),
-  });
-export type RevokeSpendPermissionOutput =
-  typeof RevokeSpendPermissionOutput.Type;
+    expiresAt: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<RevokeSpendPermissionOutput>;
 
 // The operation
 /**
- * Revoke a spend permission
+ * Revoke spend permission
  *
  * Revokes an existing spend permission.
  *

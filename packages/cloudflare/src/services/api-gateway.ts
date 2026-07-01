@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service api-gateway
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -90,6 +90,1027 @@ export class ZonePurged extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ApishieldAuthIDCharacteristic {
+  /** The name of the characteristic field, i.e., the header or cookie name. */
+  name: string;
+  /** The type of characteristic. */
+  type: "header" | "cookie" | (string & {});
+}
+const ApishieldAuthIDCharacteristic =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals(["header", "cookie"]),
+        Schema.String,
+      ]),
+    }),
+  ) as unknown as Schema.Codec<ApishieldAuthIDCharacteristic>;
+
+interface ApishieldAuthIDCharacteristicJWTClaim {
+  /** Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` is the ID of the token configuration used in validating the JWT, and `json_path` is a RFC 9535 JSONPath (https:// */
+  name: string;
+  /** The type of characteristic. */
+  type: "jwt";
+}
+const ApishieldAuthIDCharacteristicJWTClaim =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literal("jwt"),
+    }),
+  ) as unknown as Schema.Codec<ApishieldAuthIDCharacteristicJWTClaim>;
+
+interface TrafficStats {
+  lastUpdated: string;
+  /** The period in seconds these statistics were computed over */
+  periodSeconds: number;
+  /** The average number of requests seen during this period */
+  requests: number;
+}
+const TrafficStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.String,
+    periodSeconds: Schema.Number,
+    requests: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      periodSeconds: "period_seconds",
+      requests: "requests",
+    }),
+  ),
+) as unknown as Schema.Codec<TrafficStats>;
+
+interface Features {
+  trafficStats?: {
+    lastUpdated: string;
+    periodSeconds: number;
+    requests: number;
+  } | null;
+}
+const Features = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    trafficStats: Schema.optional(Schema.Union([TrafficStats, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ trafficStats: "traffic_stats" })),
+) as unknown as Schema.Codec<Features>;
+
+interface DiscoveryOperation {
+  /** UUID. */
+  id: string;
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE"
+    | (string & {});
+  /** API discovery engine(s) that discovered this operation */
+  origin: ("ML" | "SessionIdentifier" | "LabelDiscovery" | (string & {}))[];
+  /** State of operation in API Discovery  - `review` - Operation is not saved into API Shield Endpoint Management - `saved` - Operation is saved into API Shield Endpoint Management - `ignored` - Operation  */
+  state: "review" | "saved" | "ignored" | (string & {});
+  features?: {
+    trafficStats?: {
+      lastUpdated: string;
+      periodSeconds: number;
+      requests: number;
+    } | null;
+  } | null;
+}
+const DiscoveryOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
+    ]),
+    origin: Schema.Array(
+      Schema.Union([
+        Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
+        Schema.String,
+      ]),
+    ),
+    state: Schema.Union([
+      Schema.Literals(["review", "saved", "ignored"]),
+      Schema.String,
+    ]),
+    features: Schema.optional(Schema.Union([Features, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      endpoint: "endpoint",
+      host: "host",
+      lastUpdated: "last_updated",
+      method: "method",
+      origin: "origin",
+      state: "state",
+      features: "features",
+    }),
+  ),
+) as unknown as Schema.Codec<DiscoveryOperation>;
+
+interface ListDiscoveryOperationsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListDiscoveryOperationsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListDiscoveryOperationsResponseResultInfo>;
+
+interface ListLabelsResponseResult {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed" | (string & {});
+  /** Provides counts of what resources are linked to this label */
+  mappedResources?: unknown | null;
+}
+const ListLabelsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      description: Schema.String,
+      lastUpdated: Schema.String,
+      metadata: Schema.Unknown,
+      name: Schema.String,
+      source: Schema.Union([
+        Schema.Literals(["user", "managed"]),
+        Schema.String,
+      ]),
+      mappedResources: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    ),
+) as unknown as Schema.Codec<ListLabelsResponseResult>;
+
+interface Include {
+  operationIds: string[];
+}
+const Include = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    operationIds: Schema.Array(Schema.String),
+  }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
+) as unknown as Schema.Codec<Include>;
+
+interface Selector {
+  include: { operationIds: string[] };
+}
+const Selector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    include: Include,
+  }),
+) as unknown as Schema.Codec<Selector>;
+
+interface Body {
+  /** The name of the label */
+  name: string;
+  /** The description of the label */
+  description?: string | null;
+  /** Metadata for the label */
+  metadata?: unknown | null;
+}
+const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Body>;
+
+interface BulkCreateLabelUsersResponseResult {
+  createdAt: string;
+  /** The description of the label */
+  description: string;
+  lastUpdated: string;
+  /** Metadata for the label */
+  metadata: unknown;
+  /** The name of the label */
+  name: string;
+  /** - `user` - label is owned by the user - `managed` - label is owned by cloudflare */
+  source: "user" | "managed" | (string & {});
+}
+const BulkCreateLabelUsersResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      description: Schema.String,
+      lastUpdated: Schema.String,
+      metadata: Schema.Unknown,
+      name: Schema.String,
+      source: Schema.Union([
+        Schema.Literals(["user", "managed"]),
+        Schema.String,
+      ]),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Codec<BulkCreateLabelUsersResponseResult>;
+
+interface Thresholds {
+  /** The total number of auth-ids seen across this calculation. */
+  authIdTokens?: number | null;
+  /** The number of data points used for the threshold suggestion calculation. */
+  dataPoints?: number | null;
+  lastUpdated?: string | null;
+  /** The p50 quantile of requests (in period_seconds). */
+  p50?: number | null;
+  /** The p90 quantile of requests (in period_seconds). */
+  p90?: number | null;
+  /** The p99 quantile of requests (in period_seconds). */
+  p99?: number | null;
+  /** The period over which this threshold is suggested. */
+  periodSeconds?: number | null;
+  /** The estimated number of requests covered by these calculations. */
+  requests?: number | null;
+  /** The suggested threshold in requests done by the same auth_id or period_seconds. */
+  suggestedThreshold?: number | null;
+}
+const Thresholds = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    authIdTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    dataPoints: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    p50: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    p90: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    p99: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    periodSeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    requests: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    suggestedThreshold: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      authIdTokens: "auth_id_tokens",
+      dataPoints: "data_points",
+      lastUpdated: "last_updated",
+      p50: "p50",
+      p90: "p90",
+      p99: "p99",
+      periodSeconds: "period_seconds",
+      requests: "requests",
+      suggestedThreshold: "suggested_threshold",
+    }),
+  ),
+) as unknown as Schema.Codec<Thresholds>;
+
+interface ApishieldOperationFeatureThresholds {
+  thresholds?: {
+    authIdTokens?: number | null;
+    dataPoints?: number | null;
+    lastUpdated?: string | null;
+    p50?: number | null;
+    p90?: number | null;
+    p99?: number | null;
+    periodSeconds?: number | null;
+    requests?: number | null;
+    suggestedThreshold?: number | null;
+  } | null;
+}
+const ApishieldOperationFeatureThresholds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      thresholds: Schema.optional(Schema.Union([Thresholds, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ApishieldOperationFeatureThresholds>;
+
+interface ParameterSchemas {
+  /** An array containing the learned parameter schemas. */
+  parameters?: unknown[] | null;
+  /** An empty response object. This field is required to yield a valid operation schema. */
+  responses?: unknown | null;
+}
+const ParameterSchemas = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    ),
+    responses: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ParameterSchemas>;
+
+interface ParameterSchemas2 {
+  lastUpdated?: string | null;
+  /** An operation schema object containing a response. */
+  parameterSchemas?: {
+    parameters?: unknown[] | null;
+    responses?: unknown | null;
+  } | null;
+}
+const ParameterSchemas2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    parameterSchemas: Schema.optional(
+      Schema.Union([ParameterSchemas, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      parameterSchemas: "parameter_schemas",
+    }),
+  ),
+) as unknown as Schema.Codec<ParameterSchemas2>;
+
+interface ApishieldOperationFeatureParameterSchemas {
+  parameterSchemas: {
+    lastUpdated?: string | null;
+    parameterSchemas?: {
+      parameters?: unknown[] | null;
+      responses?: unknown | null;
+    } | null;
+  };
+}
+const ApishieldOperationFeatureParameterSchemas =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      parameterSchemas: ParameterSchemas2,
+    }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
+  ) as unknown as Schema.Codec<ApishieldOperationFeatureParameterSchemas>;
+
+interface Apirouting {
+  lastUpdated?: string | null;
+  /** Target route. */
+  route?: string | null;
+}
+const Apirouting = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    route: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ lastUpdated: "last_updated", route: "route" })),
+) as unknown as Schema.Codec<Apirouting>;
+
+interface ApishieldOperationFeatureAPIRouting {
+  /** API Routing settings on endpoint. */
+  apiRouting?: { lastUpdated?: string | null; route?: string | null } | null;
+}
+const ApishieldOperationFeatureAPIRouting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      apiRouting: Schema.optional(Schema.Union([Apirouting, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
+  ) as unknown as Schema.Codec<ApishieldOperationFeatureAPIRouting>;
+
+interface P90 {
+  /** Lower bound for percentile estimate */
+  lower?: number | null;
+  /** Upper bound for percentile estimate */
+  upper?: number | null;
+}
+const P90 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lower: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    upper: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<P90>;
+
+interface ConfidenceIntervals {
+  /** Upper and lower bound for percentile estimate */
+  p90?: { lower?: number | null; upper?: number | null } | null;
+  /** Upper and lower bound for percentile estimate */
+  p95?: { lower?: number | null; upper?: number | null } | null;
+  /** Upper and lower bound for percentile estimate */
+  p99?: { lower?: number | null; upper?: number | null } | null;
+}
+const ConfidenceIntervals = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    p90: Schema.optional(Schema.Union([P90, Schema.Null])),
+    p95: Schema.optional(Schema.Union([P90, Schema.Null])),
+    p99: Schema.optional(Schema.Union([P90, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ConfidenceIntervals>;
+
+interface SuggestedThreshold {
+  confidenceIntervals?: {
+    p90?: { lower?: number | null; upper?: number | null } | null;
+    p95?: { lower?: number | null; upper?: number | null } | null;
+    p99?: { lower?: number | null; upper?: number | null } | null;
+  } | null;
+  /** Suggested threshold. */
+  mean?: number | null;
+}
+const SuggestedThreshold = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    confidenceIntervals: Schema.optional(
+      Schema.Union([ConfidenceIntervals, Schema.Null]),
+    ),
+    mean: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      confidenceIntervals: "confidence_intervals",
+      mean: "mean",
+    }),
+  ),
+) as unknown as Schema.Codec<SuggestedThreshold>;
+
+interface ConfidenceIntervals2 {
+  lastUpdated?: string | null;
+  suggestedThreshold?: {
+    confidenceIntervals?: {
+      p90?: { lower?: number | null; upper?: number | null } | null;
+      p95?: { lower?: number | null; upper?: number | null } | null;
+      p99?: { lower?: number | null; upper?: number | null } | null;
+    } | null;
+    mean?: number | null;
+  } | null;
+}
+const ConfidenceIntervals2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    suggestedThreshold: Schema.optional(
+      Schema.Union([SuggestedThreshold, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      lastUpdated: "last_updated",
+      suggestedThreshold: "suggested_threshold",
+    }),
+  ),
+) as unknown as Schema.Codec<ConfidenceIntervals2>;
+
+interface ApishieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: {
+    lastUpdated?: string | null;
+    suggestedThreshold?: {
+      confidenceIntervals?: {
+        p90?: { lower?: number | null; upper?: number | null } | null;
+        p95?: { lower?: number | null; upper?: number | null } | null;
+        p99?: { lower?: number | null; upper?: number | null } | null;
+      } | null;
+      mean?: number | null;
+    } | null;
+  } | null;
+}
+const ApishieldOperationFeatureConfidenceIntervals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      confidenceIntervals: Schema.optional(
+        Schema.Union([ConfidenceIntervals2, Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ confidenceIntervals: "confidence_intervals" })),
+  ) as unknown as Schema.Codec<ApishieldOperationFeatureConfidenceIntervals>;
+
+interface ActiveSchema {
+  /** UUID. */
+  id?: string | null;
+  createdAt?: string | null;
+  /** True if schema is Cloudflare-provided. */
+  isLearned?: boolean | null;
+  /** Schema file name. */
+  name?: string | null;
+}
+const ActiveSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    isLearned: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      isLearned: "is_learned",
+      name: "name",
+    }),
+  ),
+) as unknown as Schema.Codec<ActiveSchema>;
+
+interface SchemaInfo {
+  /** Schema active on endpoint. */
+  activeSchema?: {
+    id?: string | null;
+    createdAt?: string | null;
+    isLearned?: boolean | null;
+    name?: string | null;
+  } | null;
+  /** True if a Cloudflare-provided learned schema is available for this endpoint. */
+  learnedAvailable?: boolean | null;
+  /** Action taken on requests failing validation. */
+  mitigationAction?: "none" | "log" | "block" | null;
+}
+const SchemaInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    activeSchema: Schema.optional(Schema.Union([ActiveSchema, Schema.Null])),
+    learnedAvailable: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    mitigationAction: Schema.optional(
+      Schema.Union([
+        Schema.Literal("none"),
+        Schema.Literal("log"),
+        Schema.Literal("block"),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      activeSchema: "active_schema",
+      learnedAvailable: "learned_available",
+      mitigationAction: "mitigation_action",
+    }),
+  ),
+) as unknown as Schema.Codec<SchemaInfo>;
+
+interface ApishieldOperationFeatureSchemaInfo {
+  schemaInfo?: {
+    activeSchema?: {
+      id?: string | null;
+      createdAt?: string | null;
+      isLearned?: boolean | null;
+      name?: string | null;
+    } | null;
+    learnedAvailable?: boolean | null;
+    mitigationAction?: "none" | "log" | "block" | null;
+  } | null;
+}
+const ApishieldOperationFeatureSchemaInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      schemaInfo: Schema.optional(Schema.Union([SchemaInfo, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
+  ) as unknown as Schema.Codec<ApishieldOperationFeatureSchemaInfo>;
+
+interface Learned {
+  /** OpenAPI parameter objects describing path, query, header, or cookie parameters. */
+  parameters?: Record<string, unknown>[] | null;
+  /** OpenAPI request body object describing the expected request payload. */
+  requestBody?: Record<string, unknown> | null;
+}
+const Learned = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        Schema.Null,
+      ]),
+    ),
+    requestBody: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Learned>;
+
+interface Schemas {
+  /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
+  learned?: {
+    parameters?: Record<string, unknown>[] | null;
+    requestBody?: Record<string, unknown> | null;
+  } | null;
+  /** An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension. */
+  uploaded?: {
+    parameters?: Record<string, unknown>[] | null;
+    requestBody?: Record<string, unknown> | null;
+  } | null;
+}
+const Schemas = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    learned: Schema.optional(Schema.Union([Learned, Schema.Null])),
+    uploaded: Schema.optional(Schema.Union([Learned, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Schemas>;
+
+interface ListOperationsResponseResult {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE"
+    | (string & {});
+  /** UUID. */
+  operationId: string;
+  features?:
+    | {
+        thresholds?: {
+          authIdTokens?: number | null;
+          dataPoints?: number | null;
+          lastUpdated?: string | null;
+          p50?: number | null;
+          p90?: number | null;
+          p99?: number | null;
+          periodSeconds?: number | null;
+          requests?: number | null;
+          suggestedThreshold?: number | null;
+        } | null;
+      }
+    | {
+        parameterSchemas: {
+          lastUpdated?: string | null;
+          parameterSchemas?: {
+            parameters?: unknown[] | null;
+            responses?: unknown | null;
+          } | null;
+        };
+      }
+    | {
+        apiRouting?: {
+          lastUpdated?: string | null;
+          route?: string | null;
+        } | null;
+      }
+    | {
+        confidenceIntervals?: {
+          lastUpdated?: string | null;
+          suggestedThreshold?: {
+            confidenceIntervals?: {
+              p90?: { lower?: number | null; upper?: number | null } | null;
+              p95?: { lower?: number | null; upper?: number | null } | null;
+              p99?: { lower?: number | null; upper?: number | null } | null;
+            } | null;
+            mean?: number | null;
+          } | null;
+        } | null;
+      }
+    | {
+        schemaInfo?: {
+          activeSchema?: {
+            id?: string | null;
+            createdAt?: string | null;
+            isLearned?: boolean | null;
+            name?: string | null;
+          } | null;
+          learnedAvailable?: boolean | null;
+          mitigationAction?: "none" | "log" | "block" | null;
+        } | null;
+      }
+    | null;
+}
+const ListOperationsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      endpoint: Schema.String,
+      host: Schema.String,
+      lastUpdated: Schema.String,
+      method: Schema.Union([
+        Schema.Literals([
+          "GET",
+          "POST",
+          "HEAD",
+          "OPTIONS",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "PATCH",
+          "TRACE",
+        ]),
+        Schema.String,
+      ]),
+      operationId: Schema.String,
+      features: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            ApishieldOperationFeatureParameterSchemas,
+            ApishieldOperationFeatureThresholds,
+            ApishieldOperationFeatureAPIRouting,
+            ApishieldOperationFeatureConfidenceIntervals,
+            ApishieldOperationFeatureSchemaInfo,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        features: "features",
+      }),
+    ),
+) as unknown as Schema.Codec<ListOperationsResponseResult>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface MessageItem {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const MessageItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<MessageItem>;
+
+interface Body2 {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE"
+    | (string & {});
+}
+const Body2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
+      ]),
+      Schema.String,
+    ]),
+  }),
+) as unknown as Schema.Codec<Body2>;
+
+interface Managed {
+  /** List of managed label names. */
+  labels?: string[] | null;
+}
+const Managed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    labels: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Managed>;
+
+interface BulkCreateOperationLabelsResponseResult {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  lastUpdated: string;
+  /** The HTTP method used to access the endpoint. */
+  method:
+    | "GET"
+    | "POST"
+    | "HEAD"
+    | "OPTIONS"
+    | "PUT"
+    | "DELETE"
+    | "CONNECT"
+    | "PATCH"
+    | "TRACE"
+    | (string & {});
+  /** UUID. */
+  operationId: string;
+  labels?:
+    | {
+        createdAt: string;
+        description: string;
+        lastUpdated: string;
+        metadata: unknown;
+        name: string;
+        source: "user" | "managed" | (string & {});
+      }[]
+    | null;
+}
+const BulkCreateOperationLabelsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      endpoint: Schema.String,
+      host: Schema.String,
+      lastUpdated: Schema.String,
+      method: Schema.Union([
+        Schema.Literals([
+          "GET",
+          "POST",
+          "HEAD",
+          "OPTIONS",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "PATCH",
+          "TRACE",
+        ]),
+        Schema.String,
+      ]),
+      operationId: Schema.String,
+      labels: Schema.optional(
+        Schema.Union([
+          Schema.Array(BulkCreateLabelUsersResponseResult),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        labels: "labels",
+      }),
+    ),
+  ) as unknown as Schema.Codec<BulkCreateOperationLabelsResponseResult>;
+
+interface Managed2 {
+  /** List of managed label names. Providing an empty array will result in all managed labels being removed from all affected operations */
+  labels: string[];
+}
+const Managed2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    labels: Schema.Array(Schema.String),
+  }),
+) as unknown as Schema.Codec<Managed2>;
+
+interface ListUserSchemasResponseResult {
+  createdAt: string;
+  /** Kind of schema */
+  kind: "openapi_v3";
+  /** Name of the schema */
+  name: string;
+  /** UUID. */
+  schemaId: string;
+  /** Source of the schema */
+  source?: string | null;
+  /** Flag whether schema is enabled for validation. */
+  validationEnabled?: boolean | null;
+}
+const ListUserSchemasResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      kind: Schema.Literal("openapi_v3"),
+      name: Schema.String,
+      schemaId: Schema.String,
+      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      validationEnabled: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        kind: "kind",
+        name: "name",
+        schemaId: "schema_id",
+        source: "source",
+        validationEnabled: "validation_enabled",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListUserSchemasResponseResult>;
+
+interface Warning {
+  /** Code that identifies the event that occurred. */
+  code: number;
+  /** JSONPath location(s) in the schema where these events were encountered. See [https://goessner.net/articles/JsonPath/](https://goessner.net/articles/JsonPath/) for JSONPath specification. */
+  locations?: string[] | null;
+  /** Diagnostic message that describes the event. */
+  message?: string | null;
+}
+const Warning = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    locations: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Warning>;
+
+interface UploadDetails {
+  /** Diagnostic warning events that occurred during processing. These events are non-critical errors found within the schema. */
+  warnings?:
+    | { code: number; locations?: string[] | null; message?: string | null }[]
+    | null;
+}
+const UploadDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    warnings: Schema.optional(
+      Schema.Union([Schema.Array(Warning), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<UploadDetails>;
+
+interface ListUserSchemaHostsResponseResult {
+  createdAt: string;
+  /** Hosts serving the schema, e.g zone.host.com */
+  hosts: string[];
+  /** Name of the schema */
+  name: string;
+  /** UUID. */
+  schemaId: string;
+}
+const ListUserSchemaHostsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.String,
+      hosts: Schema.Array(Schema.String),
+      name: Schema.String,
+      schemaId: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        hosts: "hosts",
+        name: "name",
+        schemaId: "schema_id",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListUserSchemaHostsResponseResult>;
+
+// =============================================================================
 // Configuration
 // =============================================================================
 
@@ -111,7 +1132,7 @@ export const GetConfigurationRequest =
         path: "/zones/{zone_id}/api_gateway/configuration",
       }),
     ),
-  ) as unknown as Schema.Schema<GetConfigurationRequest>;
+  ) as unknown as Schema.Codec<GetConfigurationRequest>;
 
 export interface GetConfigurationResponse {
   authIdCharacteristics: (
@@ -125,17 +1146,8 @@ export const GetConfigurationResponse =
     Schema.Struct({
       authIdCharacteristics: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Union([
-              Schema.Literals(["header", "cookie"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("jwt"),
-          }),
+          ApishieldAuthIDCharacteristic,
+          ApishieldAuthIDCharacteristicJWTClaim,
         ]),
       ),
     })
@@ -143,7 +1155,7 @@ export const GetConfigurationResponse =
         Schema.encodeKeys({ authIdCharacteristics: "auth_id_characteristics" }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetConfigurationResponse>;
+  ) as unknown as Schema.Codec<GetConfigurationResponse>;
 
 export type GetConfigurationError =
   | DefaultErrors
@@ -181,17 +1193,8 @@ export const PutConfigurationRequest =
       normalize: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("normalize")),
       authIdCharacteristics: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Union([
-              Schema.Literals(["header", "cookie"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("jwt"),
-          }),
+          ApishieldAuthIDCharacteristic,
+          ApishieldAuthIDCharacteristicJWTClaim,
         ]),
       ),
     }).pipe(
@@ -201,7 +1204,7 @@ export const PutConfigurationRequest =
         path: "/zones/{zone_id}/api_gateway/configuration",
       }),
     ),
-  ) as unknown as Schema.Schema<PutConfigurationRequest>;
+  ) as unknown as Schema.Codec<PutConfigurationRequest>;
 
 export interface PutConfigurationResponse {
   authIdCharacteristics: (
@@ -215,17 +1218,8 @@ export const PutConfigurationResponse =
     Schema.Struct({
       authIdCharacteristics: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Union([
-              Schema.Literals(["header", "cookie"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("jwt"),
-          }),
+          ApishieldAuthIDCharacteristic,
+          ApishieldAuthIDCharacteristicJWTClaim,
         ]),
       ),
     })
@@ -233,7 +1227,7 @@ export const PutConfigurationResponse =
         Schema.encodeKeys({ authIdCharacteristics: "auth_id_characteristics" }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutConfigurationResponse>;
+  ) as unknown as Schema.Codec<PutConfigurationResponse>;
 
 export type PutConfigurationError =
   | DefaultErrors
@@ -268,7 +1262,7 @@ export const GetDiscoveryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/discovery" }),
     ),
-) as unknown as Schema.Schema<GetDiscoveryRequest>;
+) as unknown as Schema.Codec<GetDiscoveryRequest>;
 
 export interface GetDiscoveryResponse {
   schemas: unknown[];
@@ -281,7 +1275,7 @@ export const GetDiscoveryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       schemas: Schema.Array(Schema.Unknown),
       timestamp: Schema.String,
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetDiscoveryResponse>;
+) as unknown as Schema.Codec<GetDiscoveryResponse>;
 
 export type GetDiscoveryError =
   | DefaultErrors
@@ -379,7 +1373,7 @@ export const ListDiscoveryOperationsRequest =
         path: "/zones/{zone_id}/api_gateway/discovery/operations",
       }),
     ),
-  ) as unknown as Schema.Schema<ListDiscoveryOperationsRequest>;
+  ) as unknown as Schema.Codec<ListDiscoveryOperationsRequest>;
 
 export interface ListDiscoveryOperationsResponse {
   result: {
@@ -419,96 +1413,12 @@ export interface ListDiscoveryOperationsResponse {
 export const ListDiscoveryOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          origin: Schema.Array(
-            Schema.Union([
-              Schema.Literals(["ML", "SessionIdentifier", "LabelDiscovery"]),
-              Schema.String,
-            ]),
-          ),
-          state: Schema.Union([
-            Schema.Literals(["review", "saved", "ignored"]),
-            Schema.String,
-          ]),
-          features: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                trafficStats: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      lastUpdated: Schema.String,
-                      periodSeconds: Schema.Number,
-                      requests: Schema.Number,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        lastUpdated: "last_updated",
-                        periodSeconds: "period_seconds",
-                        requests: "requests",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(Schema.encodeKeys({ trafficStats: "traffic_stats" })),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            origin: "origin",
-            state: "state",
-            features: "features",
-          }),
-        ),
-      ),
+      result: Schema.Array(DiscoveryOperation),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListDiscoveryOperationsResponse>;
+  ) as unknown as Schema.Codec<ListDiscoveryOperationsResponse>;
 
 export type ListDiscoveryOperationsError = DefaultErrors;
 
@@ -548,14 +1458,14 @@ export const BulkPatchDiscoveryOperationsRequest =
         path: "/zones/{zone_id}/api_gateway/discovery/operations",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkPatchDiscoveryOperationsRequest>;
+  ) as unknown as Schema.Codec<BulkPatchDiscoveryOperationsRequest>;
 
 export type BulkPatchDiscoveryOperationsResponse = Record<string, unknown>;
 
 export const BulkPatchDiscoveryOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<BulkPatchDiscoveryOperationsResponse>;
+  ) as unknown as Schema.Codec<BulkPatchDiscoveryOperationsResponse>;
 
 export type BulkPatchDiscoveryOperationsError =
   | DefaultErrors
@@ -595,7 +1505,7 @@ export const CreateExpressionTemplateFallthroughRequest =
         path: "/zones/{zone_id}/api_gateway/expression-template/fallthrough",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateExpressionTemplateFallthroughRequest>;
+  ) as unknown as Schema.Codec<CreateExpressionTemplateFallthroughRequest>;
 
 export interface CreateExpressionTemplateFallthroughResponse {
   /** WAF Expression for fallthrough */
@@ -610,7 +1520,7 @@ export const CreateExpressionTemplateFallthroughResponse =
       expression: Schema.String,
       title: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateExpressionTemplateFallthroughResponse>;
+  ) as unknown as Schema.Codec<CreateExpressionTemplateFallthroughResponse>;
 
 export type CreateExpressionTemplateFallthroughError =
   | DefaultErrors
@@ -685,7 +1595,7 @@ export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/labels" }),
     ),
-) as unknown as Schema.Schema<ListLabelsRequest>;
+) as unknown as Schema.Codec<ListLabelsRequest>;
 
 export interface ListLabelsResponse {
   result: {
@@ -708,56 +1618,12 @@ export interface ListLabelsResponse {
 export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.String,
-          description: Schema.String,
-          lastUpdated: Schema.String,
-          metadata: Schema.Unknown,
-          name: Schema.String,
-          source: Schema.Union([
-            Schema.Literals(["user", "managed"]),
-            Schema.String,
-          ]),
-          mappedResources: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            description: "description",
-            lastUpdated: "last_updated",
-            metadata: "metadata",
-            name: "name",
-            source: "source",
-            mappedResources: "mapped_resources",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListLabelsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListLabelsResponse>;
+) as unknown as Schema.Codec<ListLabelsResponse>;
 
 export type ListLabelsError = DefaultErrors | ZonePurged | Forbidden | NotFound;
 
@@ -805,7 +1671,7 @@ export const GetLabelManagedRequest =
         path: "/zones/{zone_id}/api_gateway/labels/managed/{name}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetLabelManagedRequest>;
+  ) as unknown as Schema.Codec<GetLabelManagedRequest>;
 
 export interface GetLabelManagedResponse {
   createdAt: string;
@@ -850,7 +1716,7 @@ export const GetLabelManagedResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetLabelManagedResponse>;
+  ) as unknown as Schema.Codec<GetLabelManagedResponse>;
 
 export type GetLabelManagedError = DefaultErrors;
 
@@ -882,18 +1748,14 @@ export const PutLabelManagedResourceOperationRequest =
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      selector: Schema.Struct({
-        include: Schema.Struct({
-          operationIds: Schema.Array(Schema.String),
-        }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-      }),
+      selector: Selector,
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/zones/{zone_id}/api_gateway/labels/managed/{name}/resources/operation",
       }),
     ),
-  ) as unknown as Schema.Schema<PutLabelManagedResourceOperationRequest>;
+  ) as unknown as Schema.Codec<PutLabelManagedResourceOperationRequest>;
 
 export interface PutLabelManagedResourceOperationResponse {
   createdAt: string;
@@ -938,7 +1800,7 @@ export const PutLabelManagedResourceOperationResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutLabelManagedResourceOperationResponse>;
+  ) as unknown as Schema.Codec<PutLabelManagedResourceOperationResponse>;
 
 export type PutLabelManagedResourceOperationError = DefaultErrors;
 
@@ -979,7 +1841,7 @@ export const GetLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
       }),
     ),
-) as unknown as Schema.Schema<GetLabelUserRequest>;
+) as unknown as Schema.Codec<GetLabelUserRequest>;
 
 export interface GetLabelUserResponse {
   createdAt: string;
@@ -1024,7 +1886,7 @@ export const GetLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetLabelUserResponse>;
+) as unknown as Schema.Codec<GetLabelUserResponse>;
 
 export type GetLabelUserError = DefaultErrors | LabelNotFound | Forbidden;
 
@@ -1062,7 +1924,7 @@ export const PutLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
       }),
     ),
-) as unknown as Schema.Schema<PutLabelUserRequest>;
+) as unknown as Schema.Codec<PutLabelUserRequest>;
 
 export interface PutLabelUserResponse {
   createdAt: string;
@@ -1101,7 +1963,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutLabelUserResponse>;
+) as unknown as Schema.Codec<PutLabelUserResponse>;
 
 export type PutLabelUserError = DefaultErrors | LabelNotFound;
 
@@ -1139,7 +2001,7 @@ export const PatchLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
       }),
     ),
-) as unknown as Schema.Schema<PatchLabelUserRequest>;
+) as unknown as Schema.Codec<PatchLabelUserRequest>;
 
 export interface PatchLabelUserResponse {
   createdAt: string;
@@ -1178,7 +2040,7 @@ export const PatchLabelUserResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchLabelUserResponse>;
+  ) as unknown as Schema.Codec<PatchLabelUserResponse>;
 
 export type PatchLabelUserError = DefaultErrors | LabelNotFound;
 
@@ -1210,7 +2072,7 @@ export const DeleteLabelUserRequest =
         path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteLabelUserRequest>;
+  ) as unknown as Schema.Codec<DeleteLabelUserRequest>;
 
 export interface DeleteLabelUserResponse {
   createdAt: string;
@@ -1249,7 +2111,7 @@ export const DeleteLabelUserResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteLabelUserResponse>;
+  ) as unknown as Schema.Codec<DeleteLabelUserResponse>;
 
 export type DeleteLabelUserError = DefaultErrors | LabelNotFound | Forbidden;
 
@@ -1275,20 +2137,14 @@ export const BulkCreateLabelUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          description: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.Unknown),
-        }),
-      ).pipe(T.HttpBody()),
+      body: Schema.Array(Body).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/zones/{zone_id}/api_gateway/labels/user",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkCreateLabelUsersRequest>;
+  ) as unknown as Schema.Codec<BulkCreateLabelUsersRequest>;
 
 export interface BulkCreateLabelUsersResponse {
   result: {
@@ -1304,30 +2160,9 @@ export interface BulkCreateLabelUsersResponse {
 export const BulkCreateLabelUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.String,
-          description: Schema.String,
-          lastUpdated: Schema.String,
-          metadata: Schema.Unknown,
-          name: Schema.String,
-          source: Schema.Union([
-            Schema.Literals(["user", "managed"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            description: "description",
-            lastUpdated: "last_updated",
-            metadata: "metadata",
-            name: "name",
-            source: "source",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkCreateLabelUsersResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkCreateLabelUsersResponse>;
+  ) as unknown as Schema.Codec<BulkCreateLabelUsersResponse>;
 
 export type BulkCreateLabelUsersError =
   | DefaultErrors
@@ -1364,7 +2199,7 @@ export const BulkDeleteLabelUsersRequest =
         path: "/zones/{zone_id}/api_gateway/labels/user",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkDeleteLabelUsersRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteLabelUsersRequest>;
 
 export interface BulkDeleteLabelUsersResponse {
   result: {
@@ -1380,30 +2215,9 @@ export interface BulkDeleteLabelUsersResponse {
 export const BulkDeleteLabelUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.String,
-          description: Schema.String,
-          lastUpdated: Schema.String,
-          metadata: Schema.Unknown,
-          name: Schema.String,
-          source: Schema.Union([
-            Schema.Literals(["user", "managed"]),
-            Schema.String,
-          ]),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            description: "description",
-            lastUpdated: "last_updated",
-            metadata: "metadata",
-            name: "name",
-            source: "source",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkCreateLabelUsersResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkDeleteLabelUsersResponse>;
+  ) as unknown as Schema.Codec<BulkDeleteLabelUsersResponse>;
 
 export type BulkDeleteLabelUsersError = DefaultErrors;
 
@@ -1439,18 +2253,14 @@ export const PutLabelUserResourceOperationRequest =
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      selector: Schema.Struct({
-        include: Schema.Struct({
-          operationIds: Schema.Array(Schema.String),
-        }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-      }),
+      selector: Selector,
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/zones/{zone_id}/api_gateway/labels/user/{name}/resources/operation",
       }),
     ),
-  ) as unknown as Schema.Schema<PutLabelUserResourceOperationRequest>;
+  ) as unknown as Schema.Codec<PutLabelUserResourceOperationRequest>;
 
 export interface PutLabelUserResourceOperationResponse {
   createdAt: string;
@@ -1495,7 +2305,7 @@ export const PutLabelUserResourceOperationResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutLabelUserResourceOperationResponse>;
+  ) as unknown as Schema.Codec<PutLabelUserResourceOperationResponse>;
 
 export type PutLabelUserResourceOperationError = DefaultErrors;
 
@@ -1551,7 +2361,7 @@ export const GetOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}",
       }),
     ),
-) as unknown as Schema.Schema<GetOperationRequest>;
+) as unknown as Schema.Codec<GetOperationRequest>;
 
 export interface GetOperationResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
@@ -1665,309 +2475,16 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       features: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Struct({
-              parameterSchemas: Schema.Struct({
-                lastUpdated: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                parameterSchemas: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      parameters: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      responses: Schema.optional(
-                        Schema.Union([Schema.Unknown, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  lastUpdated: "last_updated",
-                  parameterSchemas: "parameter_schemas",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-            ),
-            Schema.Struct({
-              thresholds: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    authIdTokens: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    dataPoints: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    p50: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    p90: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    p99: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    periodSeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    requests: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    suggestedThreshold: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      authIdTokens: "auth_id_tokens",
-                      dataPoints: "data_points",
-                      lastUpdated: "last_updated",
-                      p50: "p50",
-                      p90: "p90",
-                      p99: "p99",
-                      periodSeconds: "period_seconds",
-                      requests: "requests",
-                      suggestedThreshold: "suggested_threshold",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Struct({
-              apiRouting: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    route: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      route: "route",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
-            Schema.Struct({
-              confidenceIntervals: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    suggestedThreshold: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          confidenceIntervals: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                p90: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                p95: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                p99: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          mean: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            confidenceIntervals: "confidence_intervals",
-                            mean: "mean",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      suggestedThreshold: "suggested_threshold",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                confidenceIntervals: "confidence_intervals",
-              }),
-            ),
-            Schema.Struct({
-              schemaInfo: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    activeSchema: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          id: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          createdAt: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          isLearned: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                          name: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            createdAt: "created_at",
-                            isLearned: "is_learned",
-                            name: "name",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    learnedAvailable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    mitigationAction: Schema.optional(
-                      Schema.Union([
-                        Schema.Literal("none"),
-                        Schema.Literal("log"),
-                        Schema.Literal("block"),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      activeSchema: "active_schema",
-                      learnedAvailable: "learned_available",
-                      mitigationAction: "mitigation_action",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
+            ApishieldOperationFeatureParameterSchemas,
+            ApishieldOperationFeatureThresholds,
+            ApishieldOperationFeatureAPIRouting,
+            ApishieldOperationFeatureConfidenceIntervals,
+            ApishieldOperationFeatureSchemaInfo,
           ]),
           Schema.Null,
         ]),
       ),
-      schemas: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            learned: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  requestBody: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            uploaded: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  requestBody: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      schemas: Schema.optional(Schema.Union([Schemas, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1981,7 +2498,7 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetOperationResponse>;
+) as unknown as Schema.Codec<GetOperationResponse>;
 
 export type GetOperationError =
   | DefaultErrors
@@ -2060,7 +2577,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/operations",
       }),
     ),
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export interface ListOperationsResponse {
   result: {
@@ -2146,318 +2663,12 @@ export interface ListOperationsResponse {
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          operationId: Schema.String,
-          features: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Struct({
-                  parameterSchemas: Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    parameterSchemas: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          parameters: Schema.optional(
-                            Schema.Union([
-                              Schema.Array(Schema.Unknown),
-                              Schema.Null,
-                            ]),
-                          ),
-                          responses: Schema.optional(
-                            Schema.Union([Schema.Unknown, Schema.Null]),
-                          ),
-                        }),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      parameterSchemas: "parameter_schemas",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-                ),
-                Schema.Struct({
-                  thresholds: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        authIdTokens: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        dataPoints: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        p50: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        p90: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        p99: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        periodSeconds: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        requests: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        suggestedThreshold: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          authIdTokens: "auth_id_tokens",
-                          dataPoints: "data_points",
-                          lastUpdated: "last_updated",
-                          p50: "p50",
-                          p90: "p90",
-                          p99: "p99",
-                          periodSeconds: "period_seconds",
-                          requests: "requests",
-                          suggestedThreshold: "suggested_threshold",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Struct({
-                  apiRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        route: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          lastUpdated: "last_updated",
-                          route: "route",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
-                Schema.Struct({
-                  confidenceIntervals: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        suggestedThreshold: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              confidenceIntervals: Schema.optional(
-                                Schema.Union([
-                                  Schema.Struct({
-                                    p90: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    p95: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    p99: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                  }),
-                                  Schema.Null,
-                                ]),
-                              ),
-                              mean: Schema.optional(
-                                Schema.Union([Schema.Number, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                confidenceIntervals: "confidence_intervals",
-                                mean: "mean",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          lastUpdated: "last_updated",
-                          suggestedThreshold: "suggested_threshold",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    confidenceIntervals: "confidence_intervals",
-                  }),
-                ),
-                Schema.Struct({
-                  schemaInfo: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        activeSchema: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              id: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              createdAt: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              isLearned: Schema.optional(
-                                Schema.Union([Schema.Boolean, Schema.Null]),
-                              ),
-                              name: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                createdAt: "created_at",
-                                isLearned: "is_learned",
-                                name: "name",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                        learnedAvailable: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        mitigationAction: Schema.optional(
-                          Schema.Union([
-                            Schema.Literal("none"),
-                            Schema.Literal("log"),
-                            Schema.Literal("block"),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          activeSchema: "active_schema",
-                          learnedAvailable: "learned_available",
-                          mitigationAction: "mitigation_action",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            operationId: "operation_id",
-            features: "features",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListOperationsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListOperationsResponse>;
+  ) as unknown as Schema.Codec<ListOperationsResponse>;
 
 export type ListOperationsError = DefaultErrors | Forbidden;
 
@@ -2526,7 +2737,7 @@ export const CreateOperationRequest =
         path: "/zones/{zone_id}/api_gateway/operations/item",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateOperationRequest>;
+  ) as unknown as Schema.Codec<CreateOperationRequest>;
 
 export interface CreateOperationResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
@@ -2640,309 +2851,16 @@ export const CreateOperationResponse =
       features: Schema.optional(
         Schema.Union([
           Schema.Union([
-            Schema.Struct({
-              parameterSchemas: Schema.Struct({
-                lastUpdated: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                parameterSchemas: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      parameters: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.Unknown),
-                          Schema.Null,
-                        ]),
-                      ),
-                      responses: Schema.optional(
-                        Schema.Union([Schema.Unknown, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  lastUpdated: "last_updated",
-                  parameterSchemas: "parameter_schemas",
-                }),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-            ),
-            Schema.Struct({
-              thresholds: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    authIdTokens: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    dataPoints: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    p50: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    p90: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    p99: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    periodSeconds: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    requests: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    suggestedThreshold: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      authIdTokens: "auth_id_tokens",
-                      dataPoints: "data_points",
-                      lastUpdated: "last_updated",
-                      p50: "p50",
-                      p90: "p90",
-                      p99: "p99",
-                      periodSeconds: "period_seconds",
-                      requests: "requests",
-                      suggestedThreshold: "suggested_threshold",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Struct({
-              apiRouting: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    route: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      route: "route",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
-            Schema.Struct({
-              confidenceIntervals: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    suggestedThreshold: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          confidenceIntervals: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                p90: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                p95: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                p99: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      lower: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      upper: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Number,
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          mean: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            confidenceIntervals: "confidence_intervals",
-                            mean: "mean",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      suggestedThreshold: "suggested_threshold",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                confidenceIntervals: "confidence_intervals",
-              }),
-            ),
-            Schema.Struct({
-              schemaInfo: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    activeSchema: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          id: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          createdAt: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          isLearned: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                          name: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            createdAt: "created_at",
-                            isLearned: "is_learned",
-                            name: "name",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    learnedAvailable: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    mitigationAction: Schema.optional(
-                      Schema.Union([
-                        Schema.Literal("none"),
-                        Schema.Literal("log"),
-                        Schema.Literal("block"),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      activeSchema: "active_schema",
-                      learnedAvailable: "learned_available",
-                      mitigationAction: "mitigation_action",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
+            ApishieldOperationFeatureParameterSchemas,
+            ApishieldOperationFeatureThresholds,
+            ApishieldOperationFeatureAPIRouting,
+            ApishieldOperationFeatureConfidenceIntervals,
+            ApishieldOperationFeatureSchemaInfo,
           ]),
           Schema.Null,
         ]),
       ),
-      schemas: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            learned: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  requestBody: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            uploaded: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  requestBody: Schema.optional(
-                    Schema.Union([
-                      Schema.Record(Schema.String, Schema.Unknown),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      schemas: Schema.optional(Schema.Union([Schemas, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -2956,7 +2874,7 @@ export const CreateOperationResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateOperationResponse>;
+  ) as unknown as Schema.Codec<CreateOperationResponse>;
 
 export type CreateOperationError =
   | DefaultErrors
@@ -2991,7 +2909,7 @@ export const DeleteOperationRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteOperationRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationRequest>;
 
 export interface DeleteOperationResponse {
   errors: {
@@ -3013,61 +2931,11 @@ export interface DeleteOperationResponse {
 export const DeleteOperationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(MessageItem),
+      messages: Schema.Array(MessageItem),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteOperationResponse>;
+  ) as unknown as Schema.Codec<DeleteOperationResponse>;
 
 export type DeleteOperationError =
   | DefaultErrors
@@ -3111,33 +2979,14 @@ export const BulkCreateOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-        }),
-      ).pipe(T.HttpBody()),
+      body: Schema.Array(Body2).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/zones/{zone_id}/api_gateway/operations",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkCreateOperationsRequest>;
+  ) as unknown as Schema.Codec<BulkCreateOperationsRequest>;
 
 export interface BulkCreateOperationsResponse {
   result: {
@@ -3217,296 +3066,9 @@ export interface BulkCreateOperationsResponse {
 export const BulkCreateOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          operationId: Schema.String,
-          features: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Struct({
-                  parameterSchemas: Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    parameterSchemas: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          parameters: Schema.optional(
-                            Schema.Union([
-                              Schema.Array(Schema.Unknown),
-                              Schema.Null,
-                            ]),
-                          ),
-                          responses: Schema.optional(
-                            Schema.Union([Schema.Unknown, Schema.Null]),
-                          ),
-                        }),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      parameterSchemas: "parameter_schemas",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-                ),
-                Schema.Struct({
-                  thresholds: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        authIdTokens: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        dataPoints: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        p50: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        p90: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        p99: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        periodSeconds: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        requests: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        suggestedThreshold: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          authIdTokens: "auth_id_tokens",
-                          dataPoints: "data_points",
-                          lastUpdated: "last_updated",
-                          p50: "p50",
-                          p90: "p90",
-                          p99: "p99",
-                          periodSeconds: "period_seconds",
-                          requests: "requests",
-                          suggestedThreshold: "suggested_threshold",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }),
-                Schema.Struct({
-                  apiRouting: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        route: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          lastUpdated: "last_updated",
-                          route: "route",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
-                Schema.Struct({
-                  confidenceIntervals: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        lastUpdated: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        suggestedThreshold: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              confidenceIntervals: Schema.optional(
-                                Schema.Union([
-                                  Schema.Struct({
-                                    p90: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    p95: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                    p99: Schema.optional(
-                                      Schema.Union([
-                                        Schema.Struct({
-                                          lower: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                          upper: Schema.optional(
-                                            Schema.Union([
-                                              Schema.Number,
-                                              Schema.Null,
-                                            ]),
-                                          ),
-                                        }),
-                                        Schema.Null,
-                                      ]),
-                                    ),
-                                  }),
-                                  Schema.Null,
-                                ]),
-                              ),
-                              mean: Schema.optional(
-                                Schema.Union([Schema.Number, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                confidenceIntervals: "confidence_intervals",
-                                mean: "mean",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          lastUpdated: "last_updated",
-                          suggestedThreshold: "suggested_threshold",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    confidenceIntervals: "confidence_intervals",
-                  }),
-                ),
-                Schema.Struct({
-                  schemaInfo: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        activeSchema: Schema.optional(
-                          Schema.Union([
-                            Schema.Struct({
-                              id: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              createdAt: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                              isLearned: Schema.optional(
-                                Schema.Union([Schema.Boolean, Schema.Null]),
-                              ),
-                              name: Schema.optional(
-                                Schema.Union([Schema.String, Schema.Null]),
-                              ),
-                            }).pipe(
-                              Schema.encodeKeys({
-                                id: "id",
-                                createdAt: "created_at",
-                                isLearned: "is_learned",
-                                name: "name",
-                              }),
-                            ),
-                            Schema.Null,
-                          ]),
-                        ),
-                        learnedAvailable: Schema.optional(
-                          Schema.Union([Schema.Boolean, Schema.Null]),
-                        ),
-                        mitigationAction: Schema.optional(
-                          Schema.Union([
-                            Schema.Literal("none"),
-                            Schema.Literal("log"),
-                            Schema.Literal("block"),
-                            Schema.Null,
-                          ]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          activeSchema: "active_schema",
-                          learnedAvailable: "learned_available",
-                          mitigationAction: "mitigation_action",
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            operationId: "operation_id",
-            features: "features",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListOperationsResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkCreateOperationsResponse>;
+  ) as unknown as Schema.Codec<BulkCreateOperationsResponse>;
 
 export type BulkCreateOperationsError = DefaultErrors;
 
@@ -3540,7 +3102,7 @@ export const BulkDeleteOperationsRequest =
         path: "/zones/{zone_id}/api_gateway/operations",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkDeleteOperationsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteOperationsRequest>;
 
 export interface BulkDeleteOperationsResponse {
   errors: {
@@ -3562,61 +3124,11 @@ export interface BulkDeleteOperationsResponse {
 export const BulkDeleteOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(MessageItem),
+      messages: Schema.Array(MessageItem),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<BulkDeleteOperationsResponse>;
+  ) as unknown as Schema.Codec<BulkDeleteOperationsResponse>;
 
 export type BulkDeleteOperationsError = DefaultErrors | InvalidObjectIdentifier;
 
@@ -3658,7 +3170,7 @@ export const CreateOperationLabelRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateOperationLabelRequest>;
+  ) as unknown as Schema.Codec<CreateOperationLabelRequest>;
 
 export interface CreateOperationLabelResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
@@ -3715,28 +3227,7 @@ export const CreateOperationLabelResponse =
       operationId: Schema.String,
       labels: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              createdAt: Schema.String,
-              description: Schema.String,
-              lastUpdated: Schema.String,
-              metadata: Schema.Unknown,
-              name: Schema.String,
-              source: Schema.Union([
-                Schema.Literals(["user", "managed"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                createdAt: "created_at",
-                description: "description",
-                lastUpdated: "last_updated",
-                metadata: "metadata",
-                name: "name",
-                source: "source",
-              }),
-            ),
-          ),
+          Schema.Array(BulkCreateLabelUsersResponseResult),
           Schema.Null,
         ]),
       ),
@@ -3752,7 +3243,7 @@ export const CreateOperationLabelResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateOperationLabelResponse>;
+  ) as unknown as Schema.Codec<CreateOperationLabelResponse>;
 
 export type CreateOperationLabelError = DefaultErrors;
 
@@ -3790,7 +3281,7 @@ export const UpdateOperationLabelRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateOperationLabelRequest>;
+  ) as unknown as Schema.Codec<UpdateOperationLabelRequest>;
 
 export interface UpdateOperationLabelResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
@@ -3847,28 +3338,7 @@ export const UpdateOperationLabelResponse =
       operationId: Schema.String,
       labels: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              createdAt: Schema.String,
-              description: Schema.String,
-              lastUpdated: Schema.String,
-              metadata: Schema.Unknown,
-              name: Schema.String,
-              source: Schema.Union([
-                Schema.Literals(["user", "managed"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                createdAt: "created_at",
-                description: "description",
-                lastUpdated: "last_updated",
-                metadata: "metadata",
-                name: "name",
-                source: "source",
-              }),
-            ),
-          ),
+          Schema.Array(BulkCreateLabelUsersResponseResult),
           Schema.Null,
         ]),
       ),
@@ -3884,7 +3354,7 @@ export const UpdateOperationLabelResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateOperationLabelResponse>;
+  ) as unknown as Schema.Codec<UpdateOperationLabelResponse>;
 
 export type UpdateOperationLabelError = DefaultErrors;
 
@@ -3916,7 +3386,7 @@ export const DeleteOperationLabelRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteOperationLabelRequest>;
+  ) as unknown as Schema.Codec<DeleteOperationLabelRequest>;
 
 export interface DeleteOperationLabelResponse {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-n */
@@ -3973,28 +3443,7 @@ export const DeleteOperationLabelResponse =
       operationId: Schema.String,
       labels: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              createdAt: Schema.String,
-              description: Schema.String,
-              lastUpdated: Schema.String,
-              metadata: Schema.Unknown,
-              name: Schema.String,
-              source: Schema.Union([
-                Schema.Literals(["user", "managed"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                createdAt: "created_at",
-                description: "description",
-                lastUpdated: "last_updated",
-                metadata: "metadata",
-                name: "name",
-                source: "source",
-              }),
-            ),
-          ),
+          Schema.Array(BulkCreateLabelUsersResponseResult),
           Schema.Null,
         ]),
       ),
@@ -4010,7 +3459,7 @@ export const DeleteOperationLabelResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteOperationLabelResponse>;
+  ) as unknown as Schema.Codec<DeleteOperationLabelResponse>;
 
 export type DeleteOperationLabelError = DefaultErrors;
 
@@ -4040,28 +3489,16 @@ export const BulkCreateOperationLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      selector: Schema.Struct({
-        include: Schema.Struct({
-          operationIds: Schema.Array(Schema.String),
-        }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-      }),
-      managed: Schema.optional(
-        Schema.Struct({
-          labels: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      user: Schema.optional(
-        Schema.Struct({
-          labels: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      selector: Selector,
+      managed: Schema.optional(Managed),
+      user: Schema.optional(Managed),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/zones/{zone_id}/api_gateway/operations/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkCreateOperationLabelsRequest>;
+  ) as unknown as Schema.Codec<BulkCreateOperationLabelsRequest>;
 
 export interface BulkCreateOperationLabelsResponse {
   result: {
@@ -4096,66 +3533,9 @@ export interface BulkCreateOperationLabelsResponse {
 export const BulkCreateOperationLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          operationId: Schema.String,
-          labels: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  createdAt: Schema.String,
-                  description: Schema.String,
-                  lastUpdated: Schema.String,
-                  metadata: Schema.Unknown,
-                  name: Schema.String,
-                  source: Schema.Union([
-                    Schema.Literals(["user", "managed"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    createdAt: "created_at",
-                    description: "description",
-                    lastUpdated: "last_updated",
-                    metadata: "metadata",
-                    name: "name",
-                    source: "source",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            operationId: "operation_id",
-            labels: "labels",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkCreateOperationLabelsResponse>;
+  ) as unknown as Schema.Codec<BulkCreateOperationLabelsResponse>;
 
 export type BulkCreateOperationLabelsError = DefaultErrors;
 
@@ -4189,24 +3569,16 @@ export const BulkUpdateOperationLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      managed: Schema.Struct({
-        labels: Schema.Array(Schema.String),
-      }),
-      selector: Schema.Struct({
-        include: Schema.Struct({
-          operationIds: Schema.Array(Schema.String),
-        }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
-      }),
-      user: Schema.Struct({
-        labels: Schema.Array(Schema.String),
-      }),
+      managed: Managed2,
+      selector: Selector,
+      user: Managed2,
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/zones/{zone_id}/api_gateway/operations/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkUpdateOperationLabelsRequest>;
+  ) as unknown as Schema.Codec<BulkUpdateOperationLabelsRequest>;
 
 export interface BulkUpdateOperationLabelsResponse {
   result: {
@@ -4241,66 +3613,9 @@ export interface BulkUpdateOperationLabelsResponse {
 export const BulkUpdateOperationLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          operationId: Schema.String,
-          labels: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  createdAt: Schema.String,
-                  description: Schema.String,
-                  lastUpdated: Schema.String,
-                  metadata: Schema.Unknown,
-                  name: Schema.String,
-                  source: Schema.Union([
-                    Schema.Literals(["user", "managed"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    createdAt: "created_at",
-                    description: "description",
-                    lastUpdated: "last_updated",
-                    metadata: "metadata",
-                    name: "name",
-                    source: "source",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            operationId: "operation_id",
-            labels: "labels",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkUpdateOperationLabelsResponse>;
+  ) as unknown as Schema.Codec<BulkUpdateOperationLabelsResponse>;
 
 export type BulkUpdateOperationLabelsError = DefaultErrors;
 
@@ -4334,7 +3649,7 @@ export const BulkDeleteOperationLabelsRequest =
         path: "/zones/{zone_id}/api_gateway/operations/labels",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkDeleteOperationLabelsRequest>;
+  ) as unknown as Schema.Codec<BulkDeleteOperationLabelsRequest>;
 
 export interface BulkDeleteOperationLabelsResponse {
   result: {
@@ -4369,66 +3684,9 @@ export interface BulkDeleteOperationLabelsResponse {
 export const BulkDeleteOperationLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          endpoint: Schema.String,
-          host: Schema.String,
-          lastUpdated: Schema.String,
-          method: Schema.Union([
-            Schema.Literals([
-              "GET",
-              "POST",
-              "HEAD",
-              "OPTIONS",
-              "PUT",
-              "DELETE",
-              "CONNECT",
-              "PATCH",
-              "TRACE",
-            ]),
-            Schema.String,
-          ]),
-          operationId: Schema.String,
-          labels: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  createdAt: Schema.String,
-                  description: Schema.String,
-                  lastUpdated: Schema.String,
-                  metadata: Schema.Unknown,
-                  name: Schema.String,
-                  source: Schema.Union([
-                    Schema.Literals(["user", "managed"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    createdAt: "created_at",
-                    description: "description",
-                    lastUpdated: "last_updated",
-                    metadata: "metadata",
-                    name: "name",
-                    source: "source",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            endpoint: "endpoint",
-            host: "host",
-            lastUpdated: "last_updated",
-            method: "method",
-            operationId: "operation_id",
-            labels: "labels",
-          }),
-        ),
-      ),
+      result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
-  ) as unknown as Schema.Schema<BulkDeleteOperationLabelsResponse>;
+  ) as unknown as Schema.Codec<BulkDeleteOperationLabelsResponse>;
 
 export type BulkDeleteOperationLabelsError = DefaultErrors;
 
@@ -4468,7 +3726,7 @@ export const GetOperationSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<GetOperationSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<GetOperationSchemaValidationRequest>;
 
 export interface GetOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation  - `log` log request when request does not conform to schema for this operation - `block` deny access to the site when request does not con */
@@ -4495,7 +3753,7 @@ export const GetOperationSchemaValidationResponse =
         operationId: "operation_id",
       }),
     ),
-  ) as unknown as Schema.Schema<GetOperationSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<GetOperationSchemaValidationResponse>;
 
 export type GetOperationSchemaValidationError =
   | DefaultErrors
@@ -4541,7 +3799,7 @@ export const PutOperationSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/operations/{operationId}/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<PutOperationSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<PutOperationSchemaValidationRequest>;
 
 export interface PutOperationSchemaValidationResponse {
   /** When set, this applies a mitigation action to this operation  - `log` log request when request does not conform to schema for this operation - `block` deny access to the site when request does not con */
@@ -4568,7 +3826,7 @@ export const PutOperationSchemaValidationResponse =
         operationId: "operation_id",
       }),
     ),
-  ) as unknown as Schema.Schema<PutOperationSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<PutOperationSchemaValidationResponse>;
 
 export type PutOperationSchemaValidationError =
   | DefaultErrors
@@ -4607,14 +3865,14 @@ export const PatchOperationSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/operations/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchOperationSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<PatchOperationSchemaValidationRequest>;
 
 export type PatchOperationSchemaValidationResponse = Record<string, unknown>;
 
 export const PatchOperationSchemaValidationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchOperationSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<PatchOperationSchemaValidationResponse>;
 
 export type PatchOperationSchemaValidationError =
   | DefaultErrors
@@ -4667,7 +3925,7 @@ export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/schemas" }),
     ),
-) as unknown as Schema.Schema<ListSchemasRequest>;
+) as unknown as Schema.Codec<ListSchemasRequest>;
 
 export interface ListSchemasResponse {
   schemas?: unknown[] | null;
@@ -4682,7 +3940,7 @@ export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<ListSchemasResponse>;
+) as unknown as Schema.Codec<ListSchemasResponse>;
 
 export type ListSchemasError = DefaultErrors | InvalidObjectIdentifier;
 
@@ -4716,7 +3974,7 @@ export const GetSettingSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/settings/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<GetSettingSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<GetSettingSchemaValidationRequest>;
 
 export interface GetSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
@@ -4753,7 +4011,7 @@ export const GetSettingSchemaValidationResponse =
           "validation_override_mitigation_action",
       }),
     ),
-  ) as unknown as Schema.Schema<GetSettingSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<GetSettingSchemaValidationResponse>;
 
 export type GetSettingSchemaValidationError =
   | DefaultErrors
@@ -4806,7 +4064,7 @@ export const PutSettingSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/settings/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<PutSettingSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<PutSettingSchemaValidationRequest>;
 
 export interface PutSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
@@ -4843,7 +4101,7 @@ export const PutSettingSchemaValidationResponse =
           "validation_override_mitigation_action",
       }),
     ),
-  ) as unknown as Schema.Schema<PutSettingSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<PutSettingSchemaValidationResponse>;
 
 export type PutSettingSchemaValidationError =
   | DefaultErrors
@@ -4900,7 +4158,7 @@ export const PatchSettingSchemaValidationRequest =
         path: "/zones/{zone_id}/api_gateway/settings/schema_validation",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchSettingSchemaValidationRequest>;
+  ) as unknown as Schema.Codec<PatchSettingSchemaValidationRequest>;
 
 export interface PatchSettingSchemaValidationResponse {
   /** The default mitigation action used when there is no mitigation action defined on the operation  Mitigation actions are as follows:  - `log` - log request when request does not conform to schema - `blo */
@@ -4937,7 +4195,7 @@ export const PatchSettingSchemaValidationResponse =
           "validation_override_mitigation_action",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchSettingSchemaValidationResponse>;
+  ) as unknown as Schema.Codec<PatchSettingSchemaValidationResponse>;
 
 export type PatchSettingSchemaValidationError =
   | DefaultErrors
@@ -4980,7 +4238,7 @@ export const GetUserSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}",
       }),
     ),
-) as unknown as Schema.Schema<GetUserSchemaRequest>;
+) as unknown as Schema.Codec<GetUserSchemaRequest>;
 
 export interface GetUserSchemaResponse {
   createdAt: string;
@@ -5019,7 +4277,7 @@ export const GetUserSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetUserSchemaResponse>;
+) as unknown as Schema.Codec<GetUserSchemaResponse>;
 
 export type GetUserSchemaError =
   | DefaultErrors
@@ -5067,7 +4325,7 @@ export const ListUserSchemasRequest =
         path: "/zones/{zone_id}/api_gateway/user_schemas",
       }),
     ),
-  ) as unknown as Schema.Schema<ListUserSchemasRequest>;
+  ) as unknown as Schema.Codec<ListUserSchemasRequest>;
 
 export interface ListUserSchemasResponse {
   result: {
@@ -5089,51 +4347,12 @@ export interface ListUserSchemasResponse {
 export const ListUserSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.String,
-          kind: Schema.Literal("openapi_v3"),
-          name: Schema.String,
-          schemaId: Schema.String,
-          source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          validationEnabled: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            kind: "kind",
-            name: "name",
-            schemaId: "schema_id",
-            source: "source",
-            validationEnabled: "validation_enabled",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListUserSchemasResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListUserSchemasResponse>;
+  ) as unknown as Schema.Codec<ListUserSchemasResponse>;
 
 export type ListUserSchemasError = DefaultErrors | ZonePurged | Forbidden;
 
@@ -5165,7 +4384,7 @@ export interface CreateUserSchemaRequest {
   /** Body param: Name of the schema */
   name?: string;
   /** Body param: Flag whether schema is enabled for validation. */
-  validationEnabled?: true | false;
+  validationEnabled?: boolean;
 }
 
 export const CreateUserSchemaRequest =
@@ -5175,7 +4394,7 @@ export const CreateUserSchemaRequest =
       file: UploadableSchema.pipe(T.HttpFormDataFile()),
       kind: Schema.Literal("openapi_v3"),
       name: Schema.optional(Schema.String),
-      validationEnabled: Schema.optional(Schema.Literals([true, false])),
+      validationEnabled: Schema.optional(Schema.Boolean),
     }).pipe(
       Schema.encodeKeys({
         file: "file",
@@ -5189,7 +4408,7 @@ export const CreateUserSchemaRequest =
         contentType: "multipart",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateUserSchemaRequest>;
+  ) as unknown as Schema.Codec<CreateUserSchemaRequest>;
 
 export interface CreateUserSchemaResponse {
   schema: {
@@ -5210,47 +4429,9 @@ export interface CreateUserSchemaResponse {
 export const CreateUserSchemaResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      schema: Schema.Struct({
-        createdAt: Schema.String,
-        kind: Schema.Literal("openapi_v3"),
-        name: Schema.String,
-        schemaId: Schema.String,
-        source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        validationEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          kind: "kind",
-          name: "name",
-          schemaId: "schema_id",
-          source: "source",
-          validationEnabled: "validation_enabled",
-        }),
-      ),
+      schema: ListUserSchemasResponseResult,
       uploadDetails: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            warnings: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Struct({
-                    code: Schema.Number,
-                    locations: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    message: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([UploadDetails, Schema.Null]),
       ),
     })
       .pipe(
@@ -5260,7 +4441,7 @@ export const CreateUserSchemaResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateUserSchemaResponse>;
+  ) as unknown as Schema.Codec<CreateUserSchemaResponse>;
 
 export type CreateUserSchemaError =
   | DefaultErrors
@@ -5299,7 +4480,7 @@ export const PatchUserSchemaRequest =
         path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchUserSchemaRequest>;
+  ) as unknown as Schema.Codec<PatchUserSchemaRequest>;
 
 export interface PatchUserSchemaResponse {
   createdAt: string;
@@ -5338,7 +4519,7 @@ export const PatchUserSchemaResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchUserSchemaResponse>;
+  ) as unknown as Schema.Codec<PatchUserSchemaResponse>;
 
 export type PatchUserSchemaError =
   | DefaultErrors
@@ -5374,7 +4555,7 @@ export const DeleteUserSchemaRequest =
         path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteUserSchemaRequest>;
+  ) as unknown as Schema.Codec<DeleteUserSchemaRequest>;
 
 export interface DeleteUserSchemaResponse {
   errors: {
@@ -5396,61 +4577,11 @@ export interface DeleteUserSchemaResponse {
 export const DeleteUserSchemaResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(MessageItem),
+      messages: Schema.Array(MessageItem),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<DeleteUserSchemaResponse>;
+  ) as unknown as Schema.Codec<DeleteUserSchemaResponse>;
 
 export type DeleteUserSchemaError =
   | DefaultErrors
@@ -5492,7 +4623,7 @@ export const ListUserSchemaHostsRequest =
         path: "/zones/{zone_id}/api_gateway/user_schemas/hosts",
       }),
     ),
-  ) as unknown as Schema.Schema<ListUserSchemaHostsRequest>;
+  ) as unknown as Schema.Codec<ListUserSchemaHostsRequest>;
 
 export interface ListUserSchemaHostsResponse {
   result: {
@@ -5512,45 +4643,12 @@ export interface ListUserSchemaHostsResponse {
 export const ListUserSchemaHostsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          createdAt: Schema.String,
-          hosts: Schema.Array(Schema.String),
-          name: Schema.String,
-          schemaId: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            createdAt: "created_at",
-            hosts: "hosts",
-            name: "name",
-            schemaId: "schema_id",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListUserSchemaHostsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListUserSchemaHostsResponse>;
+  ) as unknown as Schema.Codec<ListUserSchemaHostsResponse>;
 
 export type ListUserSchemaHostsError = DefaultErrors;
 
@@ -5630,7 +4728,7 @@ export const ListUserSchemaOperationsRequest =
         path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}/operations",
       }),
     ),
-  ) as unknown as Schema.Schema<ListUserSchemaOperationsRequest>;
+  ) as unknown as Schema.Codec<ListUserSchemaOperationsRequest>;
 
 export interface ListUserSchemaOperationsResponse {
   result: (
@@ -5742,340 +4840,12 @@ export interface ListUserSchemaOperationsResponse {
 export const ListUserSchemaOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            endpoint: Schema.String,
-            host: Schema.String,
-            lastUpdated: Schema.String,
-            method: Schema.Union([
-              Schema.Literals([
-                "GET",
-                "POST",
-                "HEAD",
-                "OPTIONS",
-                "PUT",
-                "DELETE",
-                "CONNECT",
-                "PATCH",
-                "TRACE",
-              ]),
-              Schema.String,
-            ]),
-            operationId: Schema.String,
-            features: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Struct({
-                    parameterSchemas: Schema.Struct({
-                      lastUpdated: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      parameterSchemas: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            parameters: Schema.optional(
-                              Schema.Union([
-                                Schema.Array(Schema.Unknown),
-                                Schema.Null,
-                              ]),
-                            ),
-                            responses: Schema.optional(
-                              Schema.Union([Schema.Unknown, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        lastUpdated: "last_updated",
-                        parameterSchemas: "parameter_schemas",
-                      }),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      parameterSchemas: "parameter_schemas",
-                    }),
-                  ),
-                  Schema.Struct({
-                    thresholds: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          authIdTokens: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          dataPoints: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          lastUpdated: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          p50: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          p90: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          p99: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          periodSeconds: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          requests: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          suggestedThreshold: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            authIdTokens: "auth_id_tokens",
-                            dataPoints: "data_points",
-                            lastUpdated: "last_updated",
-                            p50: "p50",
-                            p90: "p90",
-                            p99: "p99",
-                            periodSeconds: "period_seconds",
-                            requests: "requests",
-                            suggestedThreshold: "suggested_threshold",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Struct({
-                    apiRouting: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          lastUpdated: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          route: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            lastUpdated: "last_updated",
-                            route: "route",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
-                  Schema.Struct({
-                    confidenceIntervals: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          lastUpdated: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          suggestedThreshold: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                confidenceIntervals: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Struct({
-                                      p90: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Struct({
-                                            lower: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                            upper: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                          }),
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      p95: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Struct({
-                                            lower: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                            upper: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                          }),
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                      p99: Schema.optional(
-                                        Schema.Union([
-                                          Schema.Struct({
-                                            lower: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                            upper: Schema.optional(
-                                              Schema.Union([
-                                                Schema.Number,
-                                                Schema.Null,
-                                              ]),
-                                            ),
-                                          }),
-                                          Schema.Null,
-                                        ]),
-                                      ),
-                                    }),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                mean: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                              }).pipe(
-                                Schema.encodeKeys({
-                                  confidenceIntervals: "confidence_intervals",
-                                  mean: "mean",
-                                }),
-                              ),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            lastUpdated: "last_updated",
-                            suggestedThreshold: "suggested_threshold",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      confidenceIntervals: "confidence_intervals",
-                    }),
-                  ),
-                  Schema.Struct({
-                    schemaInfo: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          activeSchema: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                id: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                createdAt: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                isLearned: Schema.optional(
-                                  Schema.Union([Schema.Boolean, Schema.Null]),
-                                ),
-                                name: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }).pipe(
-                                Schema.encodeKeys({
-                                  id: "id",
-                                  createdAt: "created_at",
-                                  isLearned: "is_learned",
-                                  name: "name",
-                                }),
-                              ),
-                              Schema.Null,
-                            ]),
-                          ),
-                          learnedAvailable: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                          mitigationAction: Schema.optional(
-                            Schema.Union([
-                              Schema.Literal("none"),
-                              Schema.Literal("log"),
-                              Schema.Literal("block"),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            activeSchema: "active_schema",
-                            learnedAvailable: "learned_available",
-                            mitigationAction: "mitigation_action",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              endpoint: "endpoint",
-              host: "host",
-              lastUpdated: "last_updated",
-              method: "method",
-              operationId: "operation_id",
-              features: "features",
-            }),
-          ),
-          Schema.Struct({
-            endpoint: Schema.String,
-            host: Schema.String,
-            method: Schema.Union([
-              Schema.Literals([
-                "GET",
-                "POST",
-                "HEAD",
-                "OPTIONS",
-                "PUT",
-                "DELETE",
-                "CONNECT",
-                "PATCH",
-                "TRACE",
-              ]),
-              Schema.String,
-            ]),
-          }),
-        ]),
-      ),
+      result: Schema.Array(Schema.Union([ListOperationsResponseResult, Body2])),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListUserSchemaOperationsResponse>;
+  ) as unknown as Schema.Codec<ListUserSchemaOperationsResponse>;
 
 export type ListUserSchemaOperationsError = DefaultErrors;
 

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1ProjectsByProjectIdDatabasesInput {
+  projectId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1ProjectsByProjectIdDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
@@ -11,11 +16,45 @@ export const GetV1ProjectsByProjectIdDatabasesInput =
     limit: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{projectId}/databases" }),
-  );
-export type GetV1ProjectsByProjectIdDatabasesInput =
-  typeof GetV1ProjectsByProjectIdDatabasesInput.Type;
+  ) as unknown as Schema.Codec<GetV1ProjectsByProjectIdDatabasesInput>;
 
 // Output Schema
+export interface GetV1ProjectsByProjectIdDatabasesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    status: "failure" | "provisioning" | "ready" | "recovering";
+    createdAt: string;
+    isDefault: boolean;
+    defaultConnectionId: string | null;
+    connections: {
+      id: string;
+      type: string;
+      url: string;
+      name: string;
+      createdAt: string;
+      kind: "postgres" | "accelerate";
+      endpoints: {
+        direct?: { host: string; port: number };
+        pooled?: { host: string; port: number };
+        accelerate?: { host: string; port: number };
+      };
+      directConnection?: { host: string; pass: string; user: string } | null;
+      database: { id: string; url: string; name: string };
+    }[];
+    project: { id: string; url: string; name: string };
+    region: { id: string; name: string } | null;
+    source:
+      | { type: string }
+      | { type: string; databaseId: string; backupId: string }
+      | { type: string; databaseId: string }
+      | null;
+    branchId: string | null;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ProjectsByProjectIdDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -88,16 +127,30 @@ export const GetV1ProjectsByProjectIdDatabasesOutput =
             name: Schema.String,
           }),
         ),
-        source: Schema.Unknown,
+        source: Schema.NullOr(
+          Schema.Union([
+            Schema.Struct({
+              type: Schema.String,
+            }),
+            Schema.Struct({
+              type: Schema.String,
+              databaseId: Schema.String,
+              backupId: Schema.String,
+            }),
+            Schema.Struct({
+              type: Schema.String,
+              databaseId: Schema.String,
+            }),
+          ]),
+        ),
+        branchId: Schema.NullOr(Schema.String),
       }),
     ),
     pagination: Schema.Struct({
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1ProjectsByProjectIdDatabasesOutput =
-  typeof GetV1ProjectsByProjectIdDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<GetV1ProjectsByProjectIdDatabasesOutput>;
 
 // The operation
 /**

@@ -1,9 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostEphemeralKeysInput {
+  customer?: string;
+  expand?: string[];
+  issuing_card?: string;
+  nonce?: string;
+  verification_session?: string;
+}
 export const PostEphemeralKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     customer: Schema.optional(Schema.String),
@@ -18,10 +26,17 @@ export const PostEphemeralKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/v1/ephemeral_keys",
     contentType: "form-urlencoded",
   }),
-);
-export type PostEphemeralKeysInput = typeof PostEphemeralKeysInput.Type;
+) as unknown as Schema.Codec<PostEphemeralKeysInput>;
 
 // Output Schema
+export interface PostEphemeralKeysOutput {
+  created: number;
+  expires: number;
+  id: string;
+  livemode: boolean;
+  object: "ephemeral_key";
+  secret?: Redacted.Redacted<string>;
+}
 export const PostEphemeralKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -29,9 +44,8 @@ export const PostEphemeralKeysOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["ephemeral_key"]),
-    secret: Schema.optional(SensitiveString),
-  });
-export type PostEphemeralKeysOutput = typeof PostEphemeralKeysOutput.Type;
+    secret: Schema.optional(SensitiveOutputString),
+  }) as unknown as Schema.Codec<PostEphemeralKeysOutput>;
 
 // The operation
 /**

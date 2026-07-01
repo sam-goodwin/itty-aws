@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupManagedSlowMsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupManagedSlowMsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,14 +19,12 @@ export const GetGroupManagedSlowMsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/managedSlowMs",
     }),
-  );
-export type GetGroupManagedSlowMsInput = typeof GetGroupManagedSlowMsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupManagedSlowMsInput>;
 
 // Output Schema
+export type GetGroupManagedSlowMsOutput = void;
 export const GetGroupManagedSlowMsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupManagedSlowMsOutput =
-  typeof GetGroupManagedSlowMsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupManagedSlowMsOutput>;
 
 // The operation
 /**

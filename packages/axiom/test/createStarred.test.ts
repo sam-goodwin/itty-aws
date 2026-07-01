@@ -51,7 +51,7 @@ describe("createStarred", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   // Removed: the client-side schema now requires kind/name/query/who/

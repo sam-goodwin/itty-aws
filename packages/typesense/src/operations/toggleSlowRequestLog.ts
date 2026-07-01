@@ -3,18 +3,24 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ToggleSlowRequestLogInput {
+  "log-slow-requests-time-ms": number;
+}
 export const ToggleSlowRequestLogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "log-slow-requests-time-ms": Schema.Number,
-  }).pipe(T.Http({ method: "POST", path: "/config" }));
-export type ToggleSlowRequestLogInput = typeof ToggleSlowRequestLogInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/config" }),
+  ) as unknown as Schema.Codec<ToggleSlowRequestLogInput>;
 
 // Output Schema
+export interface ToggleSlowRequestLogOutput {
+  success: boolean;
+}
 export const ToggleSlowRequestLogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
-  });
-export type ToggleSlowRequestLogOutput = typeof ToggleSlowRequestLogOutput.Type;
+  }) as unknown as Schema.Codec<ToggleSlowRequestLogOutput>;
 
 // The operation
 /**

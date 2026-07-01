@@ -3,6 +3,30 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostV2CoreAccountLinksInput {
+  account: string;
+  use_case: {
+    account_onboarding?: {
+      collection_options?: {
+        fields?: "currently_due" | "eventually_due";
+        future_requirements?: "include" | "omit";
+      };
+      configurations: ("customer" | "merchant" | "recipient")[];
+      refresh_url: string;
+      return_url?: string;
+    };
+    account_update?: {
+      collection_options?: {
+        fields?: "currently_due" | "eventually_due";
+        future_requirements?: "include" | "omit";
+      };
+      configurations: ("customer" | "merchant" | "recipient")[];
+      refresh_url: string;
+      return_url?: string;
+    };
+    type: "account_onboarding" | "account_update";
+  };
+}
 export const PostV2CoreAccountLinksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
@@ -47,11 +71,40 @@ export const PostV2CoreAccountLinksInput =
       ),
       type: Schema.Literals(["account_onboarding", "account_update"]),
     }),
-  }).pipe(T.Http({ method: "POST", path: "/v2/core/account_links" }));
-export type PostV2CoreAccountLinksInput =
-  typeof PostV2CoreAccountLinksInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/core/account_links" }),
+  ) as unknown as Schema.Codec<PostV2CoreAccountLinksInput>;
 
 // Output Schema
+export interface PostV2CoreAccountLinksOutput {
+  account: string;
+  created: string;
+  expires_at: string;
+  livemode: boolean;
+  object: "v2.core.account_link";
+  url: string;
+  use_case: {
+    account_onboarding?: {
+      collection_options?: {
+        fields?: "currently_due" | "eventually_due";
+        future_requirements?: "include" | "omit";
+      };
+      configurations: ("customer" | "merchant" | "recipient")[];
+      refresh_url: string;
+      return_url?: string;
+    };
+    account_update?: {
+      collection_options?: {
+        fields?: "currently_due" | "eventually_due";
+        future_requirements?: "include" | "omit";
+      };
+      configurations: ("customer" | "merchant" | "recipient")[];
+      refresh_url: string;
+      return_url?: string;
+    };
+    type: "account_onboarding" | "account_update";
+  };
+}
 export const PostV2CoreAccountLinksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
@@ -101,9 +154,7 @@ export const PostV2CoreAccountLinksOutput =
       ),
       type: Schema.Literals(["account_onboarding", "account_update"]),
     }),
-  });
-export type PostV2CoreAccountLinksOutput =
-  typeof PostV2CoreAccountLinksOutput.Type;
+  }) as unknown as Schema.Codec<PostV2CoreAccountLinksOutput>;
 
 // The operation
 /**

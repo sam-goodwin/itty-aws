@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectBranchSchemaComparisonInput {
+  project_id: string;
+  branch_id: string;
+  base_branch_id?: string;
+  db_name: string;
+  lsn?: string;
+  timestamp?: string;
+  base_lsn?: string;
+  base_timestamp?: string;
+}
 export const GetProjectBranchSchemaComparisonInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -19,17 +29,16 @@ export const GetProjectBranchSchemaComparisonInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/compare_schema",
     }),
-  );
-export type GetProjectBranchSchemaComparisonInput =
-  typeof GetProjectBranchSchemaComparisonInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchSchemaComparisonInput>;
 
 // Output Schema
+export interface GetProjectBranchSchemaComparisonOutput {
+  diff?: string;
+}
 export const GetProjectBranchSchemaComparisonOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     diff: Schema.optional(Schema.String),
-  });
-export type GetProjectBranchSchemaComparisonOutput =
-  typeof GetProjectBranchSchemaComparisonOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchSchemaComparisonOutput>;
 
 // The operation
 /**

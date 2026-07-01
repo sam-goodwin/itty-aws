@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RemoveOrganizationMemberInput {
+  org_id: string;
+  member_id: string;
+}
 export const RemoveOrganizationMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -12,23 +16,22 @@ export const RemoveOrganizationMemberInput =
       method: "DELETE",
       path: "/organizations/{org_id}/members/{member_id}",
     }),
-  );
-export type RemoveOrganizationMemberInput =
-  typeof RemoveOrganizationMemberInput.Type;
+  ) as unknown as Schema.Codec<RemoveOrganizationMemberInput>;
 
 // Output Schema
+export interface RemoveOrganizationMemberOutput {}
 export const RemoveOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type RemoveOrganizationMemberOutput =
-  typeof RemoveOrganizationMemberOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<RemoveOrganizationMemberOutput>;
 
 // The operation
 /**
- * Remove member from the organization
+ * Remove organization member
  *
- * Remove member from the organization.
- * Only an admin of the organization can perform this action.
- * If another admin is being removed, it will not be allows in case it is the only admin left in the organization.
+ * Removes the specified member from the organization.
+ * Only organization admins can perform this action.
+ * The last admin in an organization cannot be removed.
  *
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID

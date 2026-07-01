@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsGithubBranchesRetrieveInput {
+  id: number;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  repo: string;
+  search?: string;
+}
 export const IntegrationsGithubBranchesRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -17,19 +25,20 @@ export const IntegrationsGithubBranchesRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/github_branches/",
     }),
-  );
-export type IntegrationsGithubBranchesRetrieveInput =
-  typeof IntegrationsGithubBranchesRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubBranchesRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsGithubBranchesRetrieveOutput {
+  branches?: string[];
+  default_branch?: string | null;
+  has_more?: boolean;
+}
 export const IntegrationsGithubBranchesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branches: Schema.optional(Schema.Array(Schema.String)),
     default_branch: Schema.optional(Schema.NullOr(Schema.String)),
     has_more: Schema.optional(Schema.Boolean),
-  });
-export type IntegrationsGithubBranchesRetrieveOutput =
-  typeof IntegrationsGithubBranchesRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubBranchesRetrieveOutput>;
 
 // The operation
 /**

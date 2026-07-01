@@ -1,13 +1,72 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateWebhookSubscriptionInput {
+  description?: string;
+  eventTypes: (
+    | "onchain.activity.detected"
+    | "wallet.activity.detected"
+    | "wallet.activity.multi"
+    | "wallet.transaction.created"
+    | "wallet.transaction.signed"
+    | "wallet.transaction.broadcast"
+    | "wallet.transaction.replaced"
+    | "wallet.transaction.pending"
+    | "wallet.transaction.confirmed"
+    | "wallet.transaction.failed"
+    | "wallet.delegation.created"
+    | "wallet.delegation.revoked"
+    | "wallet.typed_data.signed"
+    | "wallet.message.signed"
+    | "wallet.hash.signed"
+    | "onramp.transaction.created"
+    | "onramp.transaction.updated"
+    | "onramp.transaction.success"
+    | "onramp.transaction.failed"
+    | "offramp.transaction.created"
+    | "offramp.transaction.updated"
+    | "offramp.transaction.success"
+    | "offramp.transaction.failed"
+  )[];
+  isEnabled: boolean;
+  target: { url: string; headers?: Record<string, string> };
+  metadata?: Record<string, string>;
+  labels?: Record<string, string>;
+}
 export const CreateWebhookSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
-    eventTypes: Schema.Array(Schema.String),
+    eventTypes: Schema.Array(
+      Schema.Literals([
+        "onchain.activity.detected",
+        "wallet.activity.detected",
+        "wallet.activity.multi",
+        "wallet.transaction.created",
+        "wallet.transaction.signed",
+        "wallet.transaction.broadcast",
+        "wallet.transaction.replaced",
+        "wallet.transaction.pending",
+        "wallet.transaction.confirmed",
+        "wallet.transaction.failed",
+        "wallet.delegation.created",
+        "wallet.delegation.revoked",
+        "wallet.typed_data.signed",
+        "wallet.message.signed",
+        "wallet.hash.signed",
+        "onramp.transaction.created",
+        "onramp.transaction.updated",
+        "onramp.transaction.success",
+        "onramp.transaction.failed",
+        "offramp.transaction.created",
+        "offramp.transaction.updated",
+        "offramp.transaction.success",
+        "offramp.transaction.failed",
+      ]),
+    ),
     isEnabled: Schema.Boolean,
     target: Schema.Struct({
       url: Schema.String,
@@ -15,78 +74,114 @@ export const CreateWebhookSubscriptionInput =
     }),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/v2/data/webhooks/subscriptions" }));
-export type CreateWebhookSubscriptionInput =
-  typeof CreateWebhookSubscriptionInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/data/webhooks/subscriptions" }),
+  ) as unknown as Schema.Codec<CreateWebhookSubscriptionInput>;
 
 // Output Schema
+export interface CreateWebhookSubscriptionOutput {
+  createdAt: string;
+  updatedAt?: string;
+  description?: string;
+  eventTypes: (
+    | "onchain.activity.detected"
+    | "wallet.activity.detected"
+    | "wallet.activity.multi"
+    | "wallet.transaction.created"
+    | "wallet.transaction.signed"
+    | "wallet.transaction.broadcast"
+    | "wallet.transaction.replaced"
+    | "wallet.transaction.pending"
+    | "wallet.transaction.confirmed"
+    | "wallet.transaction.failed"
+    | "wallet.delegation.created"
+    | "wallet.delegation.revoked"
+    | "wallet.typed_data.signed"
+    | "wallet.message.signed"
+    | "wallet.hash.signed"
+    | "onramp.transaction.created"
+    | "onramp.transaction.updated"
+    | "onramp.transaction.success"
+    | "onramp.transaction.failed"
+    | "offramp.transaction.created"
+    | "offramp.transaction.updated"
+    | "offramp.transaction.success"
+    | "offramp.transaction.failed"
+  )[];
+  isEnabled: boolean;
+  metadata?: { secret?: Redacted.Redacted<string> };
+  secret: Redacted.Redacted<string>;
+  subscriptionId: string;
+  target: { url: string; headers?: Record<string, string> };
+  labels?: Record<string, string>;
+}
 export const CreateWebhookSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
     updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    eventTypes: Schema.Array(Schema.String),
+    eventTypes: Schema.Array(
+      Schema.Literals([
+        "onchain.activity.detected",
+        "wallet.activity.detected",
+        "wallet.activity.multi",
+        "wallet.transaction.created",
+        "wallet.transaction.signed",
+        "wallet.transaction.broadcast",
+        "wallet.transaction.replaced",
+        "wallet.transaction.pending",
+        "wallet.transaction.confirmed",
+        "wallet.transaction.failed",
+        "wallet.delegation.created",
+        "wallet.delegation.revoked",
+        "wallet.typed_data.signed",
+        "wallet.message.signed",
+        "wallet.hash.signed",
+        "onramp.transaction.created",
+        "onramp.transaction.updated",
+        "onramp.transaction.success",
+        "onramp.transaction.failed",
+        "offramp.transaction.created",
+        "offramp.transaction.updated",
+        "offramp.transaction.success",
+        "offramp.transaction.failed",
+      ]),
+    ),
     isEnabled: Schema.Boolean,
     metadata: Schema.optional(
       Schema.Struct({
-        secret: Schema.optional(SensitiveString),
+        secret: Schema.optional(SensitiveOutputString),
       }),
     ),
-    secret: SensitiveString,
+    secret: SensitiveOutputString,
     subscriptionId: Schema.String,
     target: Schema.Struct({
       url: Schema.String,
       headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type CreateWebhookSubscriptionOutput =
-  typeof CreateWebhookSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CreateWebhookSubscriptionOutput>;
 
 // The operation
 /**
  * Create webhook subscription
  *
- * Subscribe to real-time events across CDP products using flexible filtering.
- * ### Event Types
- * **Onchain Events** - Monitor Base mainnet with microsecond precision:
- * - `onchain.activity.detected` - Smart contract events, transfers, swaps, NFT activity
- * - **Requires** `labels` for filtering (e.g., `contract_address`, `event_name`)
- * **Onramp/Offramp Events** - Transaction lifecycle notifications:
- * - `onramp.transaction.created`, `onramp.transaction.updated`
- * - `onramp.transaction.success`, `onramp.transaction.failed`
- * - `offramp.transaction.created`, `offramp.transaction.updated`
- * - `offramp.transaction.success`, `offramp.transaction.failed`
- * - **No labels required** - maximum simplicity for transaction monitoring
- * **Payments Transfers Events** - Transfer lifecycle notifications:
- * - `payments.transfers.quoted`
- * - `payments.transfers.processing`
- * - `payments.transfers.completed`
- * - `payments.transfers.failed`
- * - `payments.transfers.travel_rule_incomplete`
- * - `payments.transfers.travel_rule_completed`
- * - **No labels required** - enable the transfers webhook to monitor status transitions
- * **Wallet Events** - Wallet activity notifications:
- * - `wallet.activity.detected`
+ * Subscribe to real-time events across CDP products.
+ * ### Filtering
+ * Onchain events can utilize multi-label filtering to only receive events that match all the specified labels.
+ * Allows labels are:
+ * - `network` (required) — Blockchain network
+ * - `contract_address` — Smart contract address
+ * - `event_name` — Event name (e.g., "Transfer", "Burn")
+ * - `event_signature` — Event signature (e.g., "Transfer(address,address,uint256)")
+ * - `transaction_from` — Transaction sender address
+ * - `transaction_to` — Transaction recipient address
+ * - `params.*` — Any event parameter from the log event (e.g., `params.from`, `params.to`, `params.sender`, `params.tokenId`)
+ * For webhook types that aren't `onchain.*`, labels are ignored.
  * ### Webhook Signature Verification
- * All webhooks include cryptographic signatures for security.
- * The signature secret is returned in `secret` field when creating a subscription.
- * **Note:** Webhooks are in beta and this interface is subject to change.
+ * All webhooks include an HMAC-SHA256 signed header for security. The signature is signed with the secret that is returned in the `secret` field when creating a subscription.
+ * Do not lose the secret, as you will not be able to recreate it. If you lose the secret, you will need to create a new subscription.
  * See the [verification guide](https://docs.cdp.coinbase.com/onramp-&-offramp/webhooks#webhook-signature-verification) for implementation details.
- * ### Onchain Label Filtering
- * For `onchain.activity.detected` events, use `labels` for precise filtering with AND logic (max 20 labels per webhook).
- * **Allowed labels** (all in snake_case format):
- * - `network` (required) - Blockchain network
- * - `contract_address` - Smart contract address
- * - `event_name` - Event name (e.g., "Transfer", "Burn")
- * - `event_signature` - Event signature hash
- * - `transaction_from` - Transaction sender address
- * - `transaction_to` - Transaction recipient address
- * - `params.*` - Any event parameter (e.g., `params.from`, `params.to`, `params.sender`, `params.tokenId`)
- * **Examples**:
- * - **Liquidity Pool Monitor**: `{"network": "base-mainnet", "contract_address": "0xcd1f9777571493aeacb7eae45cd30a226d3e612d", "event_name": "Burn"}`
- * - **Price Oracle Tracker**: `{"network": "base-mainnet", "contract_address": "0xbac4a9428ea707c51f171ed9890c3c2fa810305d", "event_name": "PriceUpdated"}`
- * - **DeFi Protocol Activity**: `{"network": "base-mainnet", "contract_address": "0x45c6e6a47a711b14d8357d5243f46704904578e3", "event_name": "Deposit"}`
  */
 export const createWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

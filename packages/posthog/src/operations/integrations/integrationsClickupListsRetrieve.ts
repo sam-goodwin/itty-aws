@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsClickupListsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsClickupListsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const IntegrationsClickupListsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/clickup_lists/",
     }),
-  );
-export type IntegrationsClickupListsRetrieveInput =
-  typeof IntegrationsClickupListsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsClickupListsRetrieveInput>;
 
 // Output Schema
+export type IntegrationsClickupListsRetrieveOutput = void;
 export const IntegrationsClickupListsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsClickupListsRetrieveOutput =
-  typeof IntegrationsClickupListsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsClickupListsRetrieveOutput>;
 
 // The operation
 /**

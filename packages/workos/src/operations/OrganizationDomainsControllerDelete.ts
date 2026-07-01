@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationDomainsControllerDeleteInput {
+  id: string;
+}
 export const OrganizationDomainsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/organization_domains/{id}" }));
-export type OrganizationDomainsControllerDeleteInput =
-  typeof OrganizationDomainsControllerDeleteInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/organization_domains/{id}" }),
+  ) as unknown as Schema.Codec<OrganizationDomainsControllerDeleteInput>;
 
 // Output Schema
+export type OrganizationDomainsControllerDeleteOutput = void;
 export const OrganizationDomainsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrganizationDomainsControllerDeleteOutput =
-  typeof OrganizationDomainsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDomainsControllerDeleteOutput>;
 
 // The operation
 /**

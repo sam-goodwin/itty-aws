@@ -4,6 +4,27 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsCreateInput {
+  project_id: string;
+  repo_id?: string;
+  run_type?: string;
+  commit_sha?: string;
+  branch?: string;
+  snapshots?: {
+    identifier?: string;
+    content_hash?: string;
+    width?: number | null;
+    height?: number | null;
+    metadata?: Record<string, unknown>;
+  }[];
+  pr_number?: number | null;
+  baseline_hashes?: Record<string, string>;
+  unchanged_count?: number;
+  removed_identifiers?: string[];
+  purpose?: string;
+  metadata?: Record<string, unknown>;
+  is_partial?: boolean;
+}
 export const VisualReviewRunsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -32,16 +53,23 @@ export const VisualReviewRunsCreateInput =
     removed_identifiers: Schema.optional(Schema.Array(Schema.String)),
     purpose: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    is_partial: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/runs/",
     }),
-  );
-export type VisualReviewRunsCreateInput =
-  typeof VisualReviewRunsCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsCreateInput>;
 
 // Output Schema
+export interface VisualReviewRunsCreateOutput {
+  run_id?: string;
+  uploads?: {
+    content_hash?: string;
+    url?: string;
+    fields?: Record<string, string>;
+  }[];
+}
 export const VisualReviewRunsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run_id: Schema.optional(Schema.String),
@@ -54,9 +82,7 @@ export const VisualReviewRunsCreateOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewRunsCreateOutput =
-  typeof VisualReviewRunsCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsCreateOutput>;
 
 // The operation
 /**

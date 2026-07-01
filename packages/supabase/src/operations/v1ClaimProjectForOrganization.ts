@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ClaimProjectForOrganizationInput {
+  slug: string;
+  token: string;
+}
 export const V1ClaimProjectForOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const V1ClaimProjectForOrganizationInput =
       method: "POST",
       path: "/v1/organizations/{slug}/project-claim/{token}",
     }),
-  );
-export type V1ClaimProjectForOrganizationInput =
-  typeof V1ClaimProjectForOrganizationInput.Type;
+  ) as unknown as Schema.Codec<V1ClaimProjectForOrganizationInput>;
 
 // Output Schema
+export type V1ClaimProjectForOrganizationOutput = void;
 export const V1ClaimProjectForOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1ClaimProjectForOrganizationOutput =
-  typeof V1ClaimProjectForOrganizationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ClaimProjectForOrganizationOutput>;
 
 // The operation
 /**

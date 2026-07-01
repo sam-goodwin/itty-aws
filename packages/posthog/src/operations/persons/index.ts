@@ -15,8 +15,6 @@ export * from "./personsCohortsRetrieve.ts";
 export * from "./personsDeletionStatusList.ts";
 export * from "./personsFunnelRetrieve.ts";
 export * from "./personsFunnelCreate.ts";
-export * from "./personsFunnelCorrelationRetrieve.ts";
-export * from "./personsFunnelCorrelationCreate.ts";
 export * from "./personsLifecycleRetrieve.ts";
 export * from "./personsPropertiesAtTimeRetrieve.ts";
 export * from "./personsResetPersonDistinctIdCreate.ts";

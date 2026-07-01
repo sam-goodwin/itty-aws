@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -47,7 +47,7 @@ export interface BucketAccessControl {
   selfLink?: string;
 }
 
-export const BucketAccessControl: Schema.Schema<BucketAccessControl> =
+export const BucketAccessControl: Schema.Codec<BucketAccessControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
@@ -96,7 +96,7 @@ export interface ObjectAccessControl {
   selfLink?: string;
 }
 
-export const ObjectAccessControl: Schema.Schema<ObjectAccessControl> =
+export const ObjectAccessControl: Schema.Codec<ObjectAccessControl> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
@@ -195,6 +195,8 @@ export interface Bucket {
         matchesSuffix?: ReadonlyArray<string>;
         matchesStorageClass?: ReadonlyArray<string>;
         noncurrentTimeBefore?: string;
+        sizeAboveBytes?: string;
+        sizeBelowBytes?: string;
         numNewerVersions?: number;
       };
     }>;
@@ -259,7 +261,7 @@ export interface Bucket {
   satisfiesPZI?: boolean;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
+export const Bucket: Schema.Codec<Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acl: Schema.optional(Schema.Array(BucketAccessControl)),
     billing: Schema.optional(
@@ -375,6 +377,8 @@ export const Bucket: Schema.Schema<Bucket> =
                     Schema.Array(Schema.String),
                   ),
                   noncurrentTimeBefore: Schema.optional(Schema.String),
+                  sizeAboveBytes: Schema.optional(Schema.String),
+                  sizeBelowBytes: Schema.optional(Schema.String),
                   numNewerVersions: Schema.optional(Schema.Number),
                 }),
               ),
@@ -452,7 +456,7 @@ export interface AdvanceRelocateBucketOperationRequest {
   expireTime?: string;
 }
 
-export const AdvanceRelocateBucketOperationRequest: Schema.Schema<AdvanceRelocateBucketOperationRequest> =
+export const AdvanceRelocateBucketOperationRequest: Schema.Codec<AdvanceRelocateBucketOperationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ttl: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -487,7 +491,7 @@ export interface AnywhereCache {
   ingestOnWrite?: boolean;
 }
 
-export const AnywhereCache: Schema.Schema<AnywhereCache> =
+export const AnywhereCache: Schema.Codec<AnywhereCache> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -513,7 +517,7 @@ export interface AnywhereCaches {
   items?: ReadonlyArray<AnywhereCache>;
 }
 
-export const AnywhereCaches: Schema.Schema<AnywhereCaches> =
+export const AnywhereCaches: Schema.Codec<AnywhereCaches> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -527,7 +531,7 @@ export interface BucketAccessControls {
   kind?: string;
 }
 
-export const BucketAccessControls: Schema.Schema<BucketAccessControls> =
+export const BucketAccessControls: Schema.Codec<BucketAccessControls> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(BucketAccessControl)),
     kind: Schema.optional(Schema.String),
@@ -548,7 +552,7 @@ export interface BucketStorageLayout {
   locationType?: string;
 }
 
-export const BucketStorageLayout: Schema.Schema<BucketStorageLayout> =
+export const BucketStorageLayout: Schema.Codec<BucketStorageLayout> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     customPlacementConfig: Schema.optional(
@@ -575,7 +579,7 @@ export interface Buckets {
   unreachable?: ReadonlyArray<string>;
 }
 
-export const Buckets: Schema.Schema<Buckets> =
+export const Buckets: Schema.Codec<Buckets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Bucket)),
     kind: Schema.optional(Schema.String),
@@ -606,7 +610,7 @@ export interface Channel {
   type?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
+export const Channel: Schema.Codec<Channel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
@@ -629,7 +633,7 @@ export interface ObjectCustomContextPayload {
   updateTime?: string;
 }
 
-export const ObjectCustomContextPayload: Schema.Schema<ObjectCustomContextPayload> =
+export const ObjectCustomContextPayload: Schema.Codec<ObjectCustomContextPayload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -715,7 +719,7 @@ export interface Storage_Object {
   updated?: string;
 }
 
-export const Storage_Object: Schema.Schema<Storage_Object> =
+export const Storage_Object: Schema.Codec<Storage_Object> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acl: Schema.optional(Schema.Array(ObjectAccessControl)),
     bucket: Schema.optional(Schema.String),
@@ -793,7 +797,7 @@ export interface ComposeRequest {
   deleteSourceObjects?: boolean;
 }
 
-export const ComposeRequest: Schema.Schema<ComposeRequest> =
+export const ComposeRequest: Schema.Codec<ComposeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Storage_Object),
     kind: Schema.optional(Schema.String),
@@ -834,7 +838,7 @@ export interface Folder {
   pendingRenameInfo?: { operationId?: string };
 }
 
-export const Folder: Schema.Schema<Folder> =
+export const Folder: Schema.Codec<Folder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -858,7 +862,7 @@ export interface Folders {
   nextPageToken?: string;
 }
 
-export const Folders: Schema.Schema<Folders> =
+export const Folders: Schema.Codec<Folders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Folder)),
     kind: Schema.optional(Schema.String),
@@ -876,7 +880,7 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -893,7 +897,7 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
+export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -919,7 +923,7 @@ export interface GoogleLongrunningOperation {
   kind?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
+export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(GoogleRpcStatus),
@@ -939,7 +943,7 @@ export interface GoogleLongrunningListOperationsResponse {
   kind?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
+export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
@@ -969,7 +973,7 @@ export interface HmacKeyMetadata {
   updated?: string;
 }
 
-export const HmacKeyMetadata: Schema.Schema<HmacKeyMetadata> =
+export const HmacKeyMetadata: Schema.Codec<HmacKeyMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessId: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -992,7 +996,7 @@ export interface HmacKey {
   secret?: string;
 }
 
-export const HmacKey: Schema.Schema<HmacKey> =
+export const HmacKey: Schema.Codec<HmacKey> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(HmacKeyMetadata),
@@ -1008,7 +1012,7 @@ export interface HmacKeysMetadata {
   nextPageToken?: string;
 }
 
-export const HmacKeysMetadata: Schema.Schema<HmacKeysMetadata> =
+export const HmacKeysMetadata: Schema.Codec<HmacKeysMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(HmacKeyMetadata)),
     kind: Schema.optional(Schema.String),
@@ -1034,7 +1038,7 @@ export interface ManagedFolder {
   updateTime?: string;
 }
 
-export const ManagedFolder: Schema.Schema<ManagedFolder> =
+export const ManagedFolder: Schema.Codec<ManagedFolder> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -1055,7 +1059,7 @@ export interface ManagedFolders {
   nextPageToken?: string;
 }
 
-export const ManagedFolders: Schema.Schema<ManagedFolders> =
+export const ManagedFolders: Schema.Codec<ManagedFolders> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ManagedFolder)),
     kind: Schema.optional(Schema.String),
@@ -1083,7 +1087,7 @@ export interface Notification {
   topic?: string;
 }
 
-export const Notification: Schema.Schema<Notification> =
+export const Notification: Schema.Codec<Notification> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     custom_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1105,7 +1109,7 @@ export interface Notifications {
   kind?: string;
 }
 
-export const Notifications: Schema.Schema<Notifications> =
+export const Notifications: Schema.Codec<Notifications> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Notification)),
     kind: Schema.optional(Schema.String),
@@ -1118,7 +1122,7 @@ export interface ObjectAccessControls {
   kind?: string;
 }
 
-export const ObjectAccessControls: Schema.Schema<ObjectAccessControls> =
+export const ObjectAccessControls: Schema.Codec<ObjectAccessControls> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(ObjectAccessControl)),
     kind: Schema.optional(Schema.String),
@@ -1135,7 +1139,7 @@ export interface Objects {
   prefixes?: ReadonlyArray<string>;
 }
 
-export const Objects: Schema.Schema<Objects> =
+export const Objects: Schema.Codec<Objects> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     items: Schema.optional(Schema.Array(Storage_Object)),
     kind: Schema.optional(Schema.String),
@@ -1160,7 +1164,7 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bindings: Schema.optional(
       Schema.Array(
@@ -1188,7 +1192,7 @@ export interface RelocateBucketRequest {
   destinationKmsKeyName?: string;
 }
 
-export const RelocateBucketRequest: Schema.Schema<RelocateBucketRequest> =
+export const RelocateBucketRequest: Schema.Codec<RelocateBucketRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destinationLocation: Schema.optional(Schema.String),
     destinationCustomPlacementConfig: Schema.optional(
@@ -1215,7 +1219,7 @@ export interface RewriteResponse {
   totalBytesRewritten?: string;
 }
 
-export const RewriteResponse: Schema.Schema<RewriteResponse> =
+export const RewriteResponse: Schema.Codec<RewriteResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     done: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -1232,7 +1236,7 @@ export interface ServiceAccount {
   kind?: string;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
+export const ServiceAccount: Schema.Codec<ServiceAccount> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email_address: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1245,7 +1249,7 @@ export interface TestIamPermissionsResponse {
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
@@ -1268,7 +1272,7 @@ export interface BulkRestoreObjectsRequest {
   createdBeforeTime?: string;
 }
 
-export const BulkRestoreObjectsRequest: Schema.Schema<BulkRestoreObjectsRequest> =
+export const BulkRestoreObjectsRequest: Schema.Codec<BulkRestoreObjectsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowOverwrite: Schema.optional(Schema.Boolean),
     softDeletedAfterTime: Schema.optional(Schema.String),
@@ -1351,7 +1355,7 @@ export const InsertAnywhereCachesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<InsertAnywhereCachesRequest>;
 
 export type InsertAnywhereCachesResponse = GoogleLongrunningOperation;
 export const InsertAnywhereCachesResponse =
@@ -1397,7 +1401,7 @@ export const UpdateAnywhereCachesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<UpdateAnywhereCachesRequest>;
 
 export type UpdateAnywhereCachesResponse = GoogleLongrunningOperation;
 export const UpdateAnywhereCachesResponse =
@@ -1439,7 +1443,7 @@ export const GetAnywhereCachesRequest =
       path: "b/{bucket}/anywhereCaches/{anywhereCacheId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<GetAnywhereCachesRequest>;
 
 export type GetAnywhereCachesResponse = AnywhereCache;
 export const GetAnywhereCachesResponse =
@@ -1476,7 +1480,7 @@ export const ListAnywhereCachesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/anywhereCaches" }),
     svc,
-  ) as unknown as Schema.Schema<ListAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<ListAnywhereCachesRequest>;
 
 export type ListAnywhereCachesResponse = AnywhereCaches;
 export const ListAnywhereCachesResponse =
@@ -1519,7 +1523,7 @@ export const PauseAnywhereCachesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PauseAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<PauseAnywhereCachesRequest>;
 
 export type PauseAnywhereCachesResponse = AnywhereCache;
 export const PauseAnywhereCachesResponse =
@@ -1562,7 +1566,7 @@ export const ResumeAnywhereCachesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ResumeAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<ResumeAnywhereCachesRequest>;
 
 export type ResumeAnywhereCachesResponse = AnywhereCache;
 export const ResumeAnywhereCachesResponse =
@@ -1605,7 +1609,7 @@ export const DisableAnywhereCachesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DisableAnywhereCachesRequest>;
+  ) as unknown as Schema.Codec<DisableAnywhereCachesRequest>;
 
 export type DisableAnywhereCachesResponse = AnywhereCache;
 export const DisableAnywhereCachesResponse =
@@ -1649,13 +1653,13 @@ export const DeleteBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "b/{bucket}/acl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteBucketAccessControlsRequest>;
 
 export interface DeleteBucketAccessControlsResponse {}
-export const DeleteBucketAccessControlsResponse: Schema.Schema<DeleteBucketAccessControlsResponse> =
+export const DeleteBucketAccessControlsResponse: Schema.Codec<DeleteBucketAccessControlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteBucketAccessControlsResponse>;
+  ) as any as Schema.Codec<DeleteBucketAccessControlsResponse>;
 
 export type DeleteBucketAccessControlsError =
   | DefaultErrors
@@ -1695,7 +1699,7 @@ export const GetBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/acl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<GetBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<GetBucketAccessControlsRequest>;
 
 export type GetBucketAccessControlsResponse = BucketAccessControl;
 export const GetBucketAccessControlsResponse =
@@ -1734,7 +1738,7 @@ export const InsertBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "b/{bucket}/acl", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<InsertBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<InsertBucketAccessControlsRequest>;
 
 export type InsertBucketAccessControlsResponse = BucketAccessControl;
 export const InsertBucketAccessControlsResponse =
@@ -1775,7 +1779,7 @@ export const ListBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/acl" }),
     svc,
-  ) as unknown as Schema.Schema<ListBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<ListBucketAccessControlsRequest>;
 
 export type ListBucketAccessControlsResponse = BucketAccessControls;
 export const ListBucketAccessControlsResponse =
@@ -1820,7 +1824,7 @@ export const PatchBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "b/{bucket}/acl/{entity}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<PatchBucketAccessControlsRequest>;
 
 export type PatchBucketAccessControlsResponse = BucketAccessControl;
 export const PatchBucketAccessControlsResponse =
@@ -1867,7 +1871,7 @@ export const UpdateBucketAccessControlsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "b/{bucket}/acl/{entity}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateBucketAccessControlsRequest>;
+  ) as unknown as Schema.Codec<UpdateBucketAccessControlsRequest>;
 
 export type UpdateBucketAccessControlsResponse = BucketAccessControl;
 export const UpdateBucketAccessControlsResponse =
@@ -1915,13 +1919,13 @@ export const DeleteBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "b/{bucket}" }),
   svc,
-) as unknown as Schema.Schema<DeleteBucketsRequest>;
+) as unknown as Schema.Codec<DeleteBucketsRequest>;
 
 export interface DeleteBucketsResponse {}
-export const DeleteBucketsResponse: Schema.Schema<DeleteBucketsResponse> =
+export const DeleteBucketsResponse: Schema.Codec<DeleteBucketsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteBucketsResponse>;
+  ) as any as Schema.Codec<DeleteBucketsResponse>;
 
 export type DeleteBucketsError =
   | DefaultErrors
@@ -1961,7 +1965,7 @@ export const RestoreBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/restore", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RestoreBucketsRequest>;
+) as unknown as Schema.Codec<RestoreBucketsRequest>;
 
 export type RestoreBucketsResponse = Bucket;
 export const RestoreBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -2000,7 +2004,7 @@ export const RelocateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/relocate", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<RelocateBucketsRequest>;
+) as unknown as Schema.Codec<RelocateBucketsRequest>;
 
 export type RelocateBucketsResponse = GoogleLongrunningOperation;
 export const RelocateBucketsResponse =
@@ -2057,7 +2061,7 @@ export const GetBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}" }),
   svc,
-) as unknown as Schema.Schema<GetBucketsRequest>;
+) as unknown as Schema.Codec<GetBucketsRequest>;
 
 export type GetBucketsResponse = Bucket;
 export const GetBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -2097,7 +2101,7 @@ export const GetIamPolicyBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/iam" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyBucketsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyBucketsRequest>;
 
 export type GetIamPolicyBucketsResponse = Policy;
 export const GetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -2130,7 +2134,7 @@ export const GetStorageLayoutBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/storageLayout" }),
     svc,
-  ) as unknown as Schema.Schema<GetStorageLayoutBucketsRequest>;
+  ) as unknown as Schema.Codec<GetStorageLayoutBucketsRequest>;
 
 export type GetStorageLayoutBucketsResponse = BucketStorageLayout;
 export const GetStorageLayoutBucketsResponse =
@@ -2197,7 +2201,7 @@ export const InsertBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "b", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertBucketsRequest>;
+) as unknown as Schema.Codec<InsertBucketsRequest>;
 
 export type InsertBucketsResponse = Bucket;
 export const InsertBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -2254,7 +2258,7 @@ export const ListBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b" }),
   svc,
-) as unknown as Schema.Schema<ListBucketsRequest>;
+) as unknown as Schema.Codec<ListBucketsRequest>;
 
 export type ListBucketsResponse = Buckets;
 export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Buckets;
@@ -2303,7 +2307,7 @@ export const LockRetentionPolicyBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LockRetentionPolicyBucketsRequest>;
+  ) as unknown as Schema.Codec<LockRetentionPolicyBucketsRequest>;
 
 export type LockRetentionPolicyBucketsResponse = Bucket;
 export const LockRetentionPolicyBucketsResponse =
@@ -2380,7 +2384,7 @@ export const PatchBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "b/{bucket}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchBucketsRequest>;
+) as unknown as Schema.Codec<PatchBucketsRequest>;
 
 export type PatchBucketsResponse = Bucket;
 export const PatchBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -2423,7 +2427,7 @@ export const SetIamPolicyBucketsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "b/{bucket}/iam", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyBucketsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyBucketsRequest>;
 
 export type SetIamPolicyBucketsResponse = Policy;
 export const SetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -2466,7 +2470,7 @@ export const TestIamPermissionsBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/iam/testPermissions" }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsBucketsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsBucketsRequest>;
 
 export type TestIamPermissionsBucketsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsBucketsResponse =
@@ -2541,7 +2545,7 @@ export const UpdateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "b/{bucket}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateBucketsRequest>;
+) as unknown as Schema.Codec<UpdateBucketsRequest>;
 
 export type UpdateBucketsResponse = Bucket;
 export const UpdateBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
@@ -2583,13 +2587,13 @@ export const CancelOperationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CancelOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export interface CancelOperationsResponse {}
-export const CancelOperationsResponse: Schema.Schema<CancelOperationsResponse> =
+export const CancelOperationsResponse: Schema.Codec<CancelOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<CancelOperationsResponse>;
+  ) as any as Schema.Codec<CancelOperationsResponse>;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -2623,7 +2627,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/operations/{operationId}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = GoogleLongrunningOperation;
 export const GetOperationsResponse =
@@ -2666,13 +2670,13 @@ export const AdvanceRelocateBucketOperationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AdvanceRelocateBucketOperationsRequest>;
+  ) as unknown as Schema.Codec<AdvanceRelocateBucketOperationsRequest>;
 
 export interface AdvanceRelocateBucketOperationsResponse {}
-export const AdvanceRelocateBucketOperationsResponse: Schema.Schema<AdvanceRelocateBucketOperationsResponse> =
+export const AdvanceRelocateBucketOperationsResponse: Schema.Codec<AdvanceRelocateBucketOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<AdvanceRelocateBucketOperationsResponse>;
+  ) as any as Schema.Codec<AdvanceRelocateBucketOperationsResponse>;
 
 export type AdvanceRelocateBucketOperationsError =
   | DefaultErrors
@@ -2712,7 +2716,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/operations" }),
   svc,
-) as unknown as Schema.Schema<ListOperationsRequest>;
+) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
@@ -2746,13 +2750,13 @@ export const StopChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "channels/stop", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<StopChannelsRequest>;
+) as unknown as Schema.Codec<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
+export const StopChannelsResponse: Schema.Codec<StopChannelsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<StopChannelsResponse>;
+  ) as any as Schema.Codec<StopChannelsResponse>;
 
 export type StopChannelsError =
   | DefaultErrors
@@ -2792,13 +2796,13 @@ export const DeleteDefaultObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "b/{bucket}/defaultObjectAcl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteDefaultObjectAccessControlsRequest>;
 
 export interface DeleteDefaultObjectAccessControlsResponse {}
-export const DeleteDefaultObjectAccessControlsResponse: Schema.Schema<DeleteDefaultObjectAccessControlsResponse> =
+export const DeleteDefaultObjectAccessControlsResponse: Schema.Codec<DeleteDefaultObjectAccessControlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteDefaultObjectAccessControlsResponse>;
+  ) as any as Schema.Codec<DeleteDefaultObjectAccessControlsResponse>;
 
 export type DeleteDefaultObjectAccessControlsError =
   | DefaultErrors
@@ -2838,7 +2842,7 @@ export const GetDefaultObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/defaultObjectAcl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<GetDefaultObjectAccessControlsRequest>;
 
 export type GetDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const GetDefaultObjectAccessControlsResponse =
@@ -2884,7 +2888,7 @@ export const InsertDefaultObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<InsertDefaultObjectAccessControlsRequest>;
 
 export type InsertDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertDefaultObjectAccessControlsResponse =
@@ -2935,7 +2939,7 @@ export const ListDefaultObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/defaultObjectAcl" }),
     svc,
-  ) as unknown as Schema.Schema<ListDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<ListDefaultObjectAccessControlsRequest>;
 
 export type ListDefaultObjectAccessControlsResponse = ObjectAccessControls;
 export const ListDefaultObjectAccessControlsResponse =
@@ -2984,7 +2988,7 @@ export const PatchDefaultObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<PatchDefaultObjectAccessControlsRequest>;
 
 export type PatchDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchDefaultObjectAccessControlsResponse =
@@ -3035,7 +3039,7 @@ export const UpdateDefaultObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateDefaultObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<UpdateDefaultObjectAccessControlsRequest>;
 
 export type UpdateDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateDefaultObjectAccessControlsResponse =
@@ -3083,13 +3087,13 @@ export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "b/{bucket}/folders/{folder}" }),
   svc,
-) as unknown as Schema.Schema<DeleteFoldersRequest>;
+) as unknown as Schema.Codec<DeleteFoldersRequest>;
 
 export interface DeleteFoldersResponse {}
-export const DeleteFoldersResponse: Schema.Schema<DeleteFoldersResponse> =
+export const DeleteFoldersResponse: Schema.Codec<DeleteFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteFoldersResponse>;
+  ) as any as Schema.Codec<DeleteFoldersResponse>;
 
 export type DeleteFoldersError =
   | DefaultErrors
@@ -3138,7 +3142,7 @@ export const DeleteRecursiveFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteRecursiveFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteRecursiveFoldersRequest>;
 
 export type DeleteRecursiveFoldersResponse = GoogleLongrunningOperation;
 export const DeleteRecursiveFoldersResponse =
@@ -3186,7 +3190,7 @@ export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/folders/{folder}" }),
   svc,
-) as unknown as Schema.Schema<GetFoldersRequest>;
+) as unknown as Schema.Codec<GetFoldersRequest>;
 
 export type GetFoldersResponse = Folder;
 export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
@@ -3221,7 +3225,7 @@ export const InsertFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/folders", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertFoldersRequest>;
+) as unknown as Schema.Codec<InsertFoldersRequest>;
 
 export type InsertFoldersResponse = Folder;
 export const InsertFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
@@ -3273,7 +3277,7 @@ export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/folders" }),
   svc,
-) as unknown as Schema.Schema<ListFoldersRequest>;
+) as unknown as Schema.Codec<ListFoldersRequest>;
 
 export type ListFoldersResponse = Folders;
 export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folders;
@@ -3327,7 +3331,7 @@ export const RenameFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RenameFoldersRequest>;
+) as unknown as Schema.Codec<RenameFoldersRequest>;
 
 export type RenameFoldersResponse = GoogleLongrunningOperation;
 export const RenameFoldersResponse =
@@ -3384,13 +3388,13 @@ export const DeleteManagedFoldersRequest =
       path: "b/{bucket}/managedFolders/{managedFolder}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<DeleteManagedFoldersRequest>;
 
 export interface DeleteManagedFoldersResponse {}
-export const DeleteManagedFoldersResponse: Schema.Schema<DeleteManagedFoldersResponse> =
+export const DeleteManagedFoldersResponse: Schema.Codec<DeleteManagedFoldersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteManagedFoldersResponse>;
+  ) as any as Schema.Codec<DeleteManagedFoldersResponse>;
 
 export type DeleteManagedFoldersError =
   | DefaultErrors
@@ -3438,7 +3442,7 @@ export const GetManagedFoldersRequest =
       path: "b/{bucket}/managedFolders/{managedFolder}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<GetManagedFoldersRequest>;
 
 export type GetManagedFoldersResponse = ManagedFolder;
 export const GetManagedFoldersResponse =
@@ -3485,7 +3489,7 @@ export const GetIamPolicyManagedFoldersRequest =
       path: "b/{bucket}/managedFolders/{managedFolder}/iam",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyManagedFoldersRequest>;
 
 export type GetIamPolicyManagedFoldersResponse = Policy;
 export const GetIamPolicyManagedFoldersResponse =
@@ -3526,7 +3530,7 @@ export const InsertManagedFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<InsertManagedFoldersRequest>;
 
 export type InsertManagedFoldersResponse = ManagedFolder;
 export const InsertManagedFoldersResponse =
@@ -3571,7 +3575,7 @@ export const ListManagedFoldersRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/managedFolders" }),
     svc,
-  ) as unknown as Schema.Schema<ListManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<ListManagedFoldersRequest>;
 
 export type ListManagedFoldersResponse = ManagedFolders;
 export const ListManagedFoldersResponse =
@@ -3622,7 +3626,7 @@ export const SetIamPolicyManagedFoldersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyManagedFoldersRequest>;
 
 export type SetIamPolicyManagedFoldersResponse = Policy;
 export const SetIamPolicyManagedFoldersResponse =
@@ -3672,7 +3676,7 @@ export const TestIamPermissionsManagedFoldersRequest =
       path: "b/{bucket}/managedFolders/{managedFolder}/iam/testPermissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsManagedFoldersRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsManagedFoldersRequest>;
 
 export type TestIamPermissionsManagedFoldersResponse =
   TestIamPermissionsResponse;
@@ -3718,13 +3722,13 @@ export const DeleteNotificationsRequest =
       path: "b/{bucket}/notificationConfigs/{notification}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNotificationsRequest>;
+  ) as unknown as Schema.Codec<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse: Schema.Schema<DeleteNotificationsResponse> =
+export const DeleteNotificationsResponse: Schema.Codec<DeleteNotificationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteNotificationsResponse>;
+  ) as any as Schema.Codec<DeleteNotificationsResponse>;
 
 export type DeleteNotificationsError =
   | DefaultErrors
@@ -3767,7 +3771,7 @@ export const GetNotificationsRequest =
       path: "b/{bucket}/notificationConfigs/{notification}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetNotificationsRequest>;
+  ) as unknown as Schema.Codec<GetNotificationsRequest>;
 
 export type GetNotificationsResponse = Notification;
 export const GetNotificationsResponse =
@@ -3810,7 +3814,7 @@ export const InsertNotificationsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertNotificationsRequest>;
+  ) as unknown as Schema.Codec<InsertNotificationsRequest>;
 
 export type InsertNotificationsResponse = Notification;
 export const InsertNotificationsResponse =
@@ -3851,7 +3855,7 @@ export const ListNotificationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/notificationConfigs" }),
     svc,
-  ) as unknown as Schema.Schema<ListNotificationsRequest>;
+  ) as unknown as Schema.Codec<ListNotificationsRequest>;
 
 export type ListNotificationsResponse = Notifications;
 export const ListNotificationsResponse =
@@ -3896,13 +3900,13 @@ export const DeleteObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "b/{bucket}/o/{object}/acl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<DeleteObjectAccessControlsRequest>;
 
 export interface DeleteObjectAccessControlsResponse {}
-export const DeleteObjectAccessControlsResponse: Schema.Schema<DeleteObjectAccessControlsResponse> =
+export const DeleteObjectAccessControlsResponse: Schema.Codec<DeleteObjectAccessControlsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteObjectAccessControlsResponse>;
+  ) as any as Schema.Codec<DeleteObjectAccessControlsResponse>;
 
 export type DeleteObjectAccessControlsError =
   | DefaultErrors
@@ -3948,7 +3952,7 @@ export const GetObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl/{entity}" }),
     svc,
-  ) as unknown as Schema.Schema<GetObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<GetObjectAccessControlsRequest>;
 
 export type GetObjectAccessControlsResponse = ObjectAccessControl;
 export const GetObjectAccessControlsResponse =
@@ -3997,7 +4001,7 @@ export const InsertObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<InsertObjectAccessControlsRequest>;
 
 export type InsertObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertObjectAccessControlsResponse =
@@ -4044,7 +4048,7 @@ export const ListObjectAccessControlsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/o/{object}/acl" }),
     svc,
-  ) as unknown as Schema.Schema<ListObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<ListObjectAccessControlsRequest>;
 
 export type ListObjectAccessControlsResponse = ObjectAccessControls;
 export const ListObjectAccessControlsResponse =
@@ -4099,7 +4103,7 @@ export const PatchObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PatchObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<PatchObjectAccessControlsRequest>;
 
 export type PatchObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchObjectAccessControlsResponse =
@@ -4156,7 +4160,7 @@ export const UpdateObjectAccessControlsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateObjectAccessControlsRequest>;
+  ) as unknown as Schema.Codec<UpdateObjectAccessControlsRequest>;
 
 export type UpdateObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateObjectAccessControlsResponse =
@@ -4234,7 +4238,7 @@ export const ComposeObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<ComposeObjectsRequest>;
+) as unknown as Schema.Codec<ComposeObjectsRequest>;
 
 export type ComposeObjectsResponse = Storage_Object;
 export const ComposeObjectsResponse =
@@ -4353,7 +4357,7 @@ export const CopyObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<CopyObjectsRequest>;
+) as unknown as Schema.Codec<CopyObjectsRequest>;
 
 export type CopyObjectsResponse = Storage_Object;
 export const CopyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -4416,13 +4420,13 @@ export const DeleteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "b/{bucket}/o/{object}" }),
   svc,
-) as unknown as Schema.Schema<DeleteObjectsRequest>;
+) as unknown as Schema.Codec<DeleteObjectsRequest>;
 
 export interface DeleteObjectsResponse {}
-export const DeleteObjectsResponse: Schema.Schema<DeleteObjectsResponse> =
+export const DeleteObjectsResponse: Schema.Codec<DeleteObjectsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteObjectsResponse>;
+  ) as any as Schema.Codec<DeleteObjectsResponse>;
 
 export type DeleteObjectsError =
   | DefaultErrors
@@ -4493,7 +4497,7 @@ export const GetObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/o/{object}" }),
   svc,
-) as unknown as Schema.Schema<GetObjectsRequest>;
+) as unknown as Schema.Codec<GetObjectsRequest>;
 
 export type GetObjectsResponse = Storage_Object;
 export const GetObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -4534,7 +4538,7 @@ export const GetIamPolicyObjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "b/{bucket}/o/{object}/iam" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyObjectsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyObjectsRequest>;
 
 export type GetIamPolicyObjectsResponse = Policy;
 export const GetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -4615,7 +4619,7 @@ export const InsertObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "b/{bucket}/o", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<InsertObjectsRequest>;
+) as unknown as Schema.Codec<InsertObjectsRequest>;
 
 export type InsertObjectsResponse = Storage_Object;
 export const InsertObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -4695,7 +4699,7 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "b/{bucket}/o" }),
   svc,
-) as unknown as Schema.Schema<ListObjectsRequest>;
+) as unknown as Schema.Codec<ListObjectsRequest>;
 
 export type ListObjectsResponse = Objects;
 export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Objects;
@@ -4781,7 +4785,7 @@ export const PatchObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PATCH", path: "b/{bucket}/o/{object}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchObjectsRequest>;
+) as unknown as Schema.Codec<PatchObjectsRequest>;
 
 export type PatchObjectsResponse = Storage_Object;
 export const PatchObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -4914,7 +4918,7 @@ export const RewriteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RewriteObjectsRequest>;
+) as unknown as Schema.Codec<RewriteObjectsRequest>;
 
 export type RewriteObjectsResponse = RewriteResponse;
 export const RewriteObjectsResponse =
@@ -5005,7 +5009,7 @@ export const MoveObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<MoveObjectsRequest>;
+) as unknown as Schema.Codec<MoveObjectsRequest>;
 
 export type MoveObjectsResponse = Storage_Object;
 export const MoveObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -5054,7 +5058,7 @@ export const SetIamPolicyObjectsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "b/{bucket}/o/{object}/iam", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyObjectsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyObjectsRequest>;
 
 export type SetIamPolicyObjectsResponse = Policy;
 export const SetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
@@ -5106,7 +5110,7 @@ export const TestIamPermissionsObjectsRequest =
       path: "b/{bucket}/o/{object}/iam/testPermissions",
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsObjectsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsObjectsRequest>;
 
 export type TestIamPermissionsObjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsObjectsResponse =
@@ -5191,7 +5195,7 @@ export const UpdateObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "PUT", path: "b/{bucket}/o/{object}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<UpdateObjectsRequest>;
+) as unknown as Schema.Codec<UpdateObjectsRequest>;
 
 export type UpdateObjectsResponse = Storage_Object;
 export const UpdateObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
@@ -5212,81 +5216,6 @@ export const updateObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateObjectsRequest,
   output: UpdateObjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface WatchAllObjectsRequest {
-  /** Name of the bucket in which to look for objects. */
-  bucket: string;
-  /** Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted. */
-  delimiter?: string;
-  /** Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). */
-  endOffset?: string;
-  /** If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes. */
-  includeTrailingDelimiter?: boolean;
-  /** Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller. */
-  maxResults?: number;
-  /** A previously-returned page token representing part of the larger set of results to view. */
-  pageToken?: string;
-  /** Filter results to objects whose names begin with this prefix. */
-  prefix?: string;
-  /** Set of properties to return. Defaults to noAcl. */
-  projection?: "full" | "noAcl" | (string & {});
-  /** Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). */
-  startOffset?: string;
-  /** The project to be billed for this request. Required for Requester Pays buckets. */
-  userProject?: string;
-  /** If true, lists all versions of an object as distinct results. The default is false. For more information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning). */
-  versions?: boolean;
-  /** Request body */
-  body?: Channel;
-}
-
-export const WatchAllObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    bucket: Schema.String.pipe(T.HttpPath("bucket")),
-    delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
-    endOffset: Schema.optional(Schema.String).pipe(T.HttpQuery("endOffset")),
-    includeTrailingDelimiter: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includeTrailingDelimiter"),
-    ),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
-    projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
-    startOffset: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("startOffset"),
-    ),
-    userProject: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("userProject"),
-    ),
-    versions: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("versions")),
-    body: Schema.optional(Channel).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "b/{bucket}/o/watch", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<WatchAllObjectsRequest>;
-
-export type WatchAllObjectsResponse = Channel;
-export const WatchAllObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
-
-export type WatchAllObjectsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Watch for changes on all objects in a bucket. */
-export const watchAllObjects: API.OperationMethod<
-  WatchAllObjectsRequest,
-  WatchAllObjectsResponse,
-  WatchAllObjectsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: WatchAllObjectsRequest,
-  output: WatchAllObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -5346,7 +5275,7 @@ export const RestoreObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<RestoreObjectsRequest>;
+) as unknown as Schema.Codec<RestoreObjectsRequest>;
 
 export type RestoreObjectsResponse = Storage_Object;
 export const RestoreObjectsResponse =
@@ -5385,7 +5314,7 @@ export const BulkRestoreObjectsRequest_Op =
   }).pipe(
     T.Http({ method: "POST", path: "b/{bucket}/o/bulkRestore", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BulkRestoreObjectsRequest_Op>;
+  ) as unknown as Schema.Codec<BulkRestoreObjectsRequest_Op>;
 
 export type BulkRestoreObjectsResponse = GoogleLongrunningOperation;
 export const BulkRestoreObjectsResponse =
@@ -5433,7 +5362,7 @@ export const CreateProjectsHmacKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsHmacKeysRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsHmacKeysRequest>;
 
 export type CreateProjectsHmacKeysResponse = HmacKey;
 export const CreateProjectsHmacKeysResponse =
@@ -5480,13 +5409,13 @@ export const DeleteProjectsHmacKeysRequest =
       path: "projects/{projectId}/hmacKeys/{accessId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsHmacKeysRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsHmacKeysRequest>;
 
 export interface DeleteProjectsHmacKeysResponse {}
-export const DeleteProjectsHmacKeysResponse: Schema.Schema<DeleteProjectsHmacKeysResponse> =
+export const DeleteProjectsHmacKeysResponse: Schema.Codec<DeleteProjectsHmacKeysResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteProjectsHmacKeysResponse>;
+  ) as any as Schema.Codec<DeleteProjectsHmacKeysResponse>;
 
 export type DeleteProjectsHmacKeysError =
   | DefaultErrors
@@ -5526,7 +5455,7 @@ export const GetProjectsHmacKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys/{accessId}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsHmacKeysRequest>;
+  ) as unknown as Schema.Codec<GetProjectsHmacKeysRequest>;
 
 export type GetProjectsHmacKeysResponse = HmacKeyMetadata;
 export const GetProjectsHmacKeysResponse =
@@ -5578,7 +5507,7 @@ export const ListProjectsHmacKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{projectId}/hmacKeys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsHmacKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsHmacKeysRequest>;
 
 export type ListProjectsHmacKeysResponse = HmacKeysMetadata;
 export const ListProjectsHmacKeysResponse =
@@ -5629,7 +5558,7 @@ export const UpdateProjectsHmacKeysRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsHmacKeysRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsHmacKeysRequest>;
 
 export type UpdateProjectsHmacKeysResponse = HmacKeyMetadata;
 export const UpdateProjectsHmacKeysResponse =
@@ -5670,7 +5599,7 @@ export const GetProjectsServiceAccountRequest =
   }).pipe(
     T.Http({ method: "GET", path: "projects/{projectId}/serviceAccount" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsServiceAccountRequest>;
+  ) as unknown as Schema.Codec<GetProjectsServiceAccountRequest>;
 
 export type GetProjectsServiceAccountResponse = ServiceAccount;
 export const GetProjectsServiceAccountResponse =

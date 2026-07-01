@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesStopInput {
+  app_name: string;
+  machine_id: string;
+  signal?:
+    | "SIGHUP"
+    | "SIGINT"
+    | "SIGQUIT"
+    | "SIGKILL"
+    | "SIGUSR1"
+    | "SIGUSR2"
+    | "SIGTERM";
+  timeout?: string;
+}
 export const MachinesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
@@ -24,12 +37,12 @@ export const MachinesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/machines/{machine_id}/stop",
   }),
-);
-export type MachinesStopInput = typeof MachinesStopInput.Type;
+) as unknown as Schema.Codec<MachinesStopInput>;
 
 // Output Schema
-export const MachinesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesStopOutput = typeof MachinesStopOutput.Type;
+export type MachinesStopOutput = void;
+export const MachinesStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStopOutput>;
 
 // The operation
 /**

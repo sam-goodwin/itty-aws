@@ -4,6 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface CreateDatasetInput {
+  referrer?: string;
+  description?: string;
+  edgeDeployment?: string;
+  kind?:
+    | "otel:metrics:v1"
+    | "otel:traces:v1"
+    | "otel:logs:v1"
+    | "axiom:events:v1";
+  name: string;
+  retentionDays?: number;
+  useRetentionPeriod?: boolean;
+}
 export const CreateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   referrer: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
@@ -19,15 +32,37 @@ export const CreateDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   retentionDays: Schema.optional(Schema.Number),
   useRetentionPeriod: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "POST", path: "/v2/datasets" }));
-export type CreateDatasetInput = typeof CreateDatasetInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/datasets" }),
+) as unknown as Schema.Codec<CreateDatasetInput>;
 
 // Output Schema
+export interface CreateDatasetOutput {
+  canWrite?: boolean;
+  created: string;
+  description: string;
+  edgeDeployment?: string;
+  edgeDeploymentUrl?: string;
+  id: string;
+  kind:
+    | "otel:metrics:v1"
+    | "otel:traces:v1"
+    | "otel:logs:v1"
+    | "axiom:events:v1";
+  mapFields?: ReadonlyArray<string>;
+  name: string;
+  retentionDays?: number;
+  sharedByOrg?: string;
+  updatedAt: string;
+  useRetentionPeriod?: boolean;
+  who: string;
+}
 export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   canWrite: Schema.optional(Schema.Boolean),
   created: Schema.String,
   description: Schema.String,
   edgeDeployment: Schema.optional(Schema.String),
+  edgeDeploymentUrl: Schema.optional(Schema.String),
   id: Schema.String,
   kind: Schema.Literals([
     "otel:metrics:v1",
@@ -39,10 +74,10 @@ export const CreateDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   retentionDays: Schema.optional(Schema.Number),
   sharedByOrg: Schema.optional(Schema.String),
+  updatedAt: Schema.String,
   useRetentionPeriod: Schema.optional(Schema.Boolean),
   who: Schema.String,
-});
-export type CreateDatasetOutput = typeof CreateDatasetOutput.Type;
+}) as unknown as Schema.Codec<CreateDatasetOutput>;
 
 // The operation
 /**

@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateNeonAuthConfigInput {
+  project_id: string;
+  branch_id: string;
+  name: string;
+}
 export const UpdateNeonAuthConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,16 @@ export const UpdateNeonAuthConfigInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/auth/config",
     }),
-  );
-export type UpdateNeonAuthConfigInput = typeof UpdateNeonAuthConfigInput.Type;
+  ) as unknown as Schema.Codec<UpdateNeonAuthConfigInput>;
 
 // Output Schema
+export interface UpdateNeonAuthConfigOutput {
+  name: string;
+}
 export const UpdateNeonAuthConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-  });
-export type UpdateNeonAuthConfigOutput = typeof UpdateNeonAuthConfigOutput.Type;
+  }) as unknown as Schema.Codec<UpdateNeonAuthConfigOutput>;
 
 // The operation
 /**

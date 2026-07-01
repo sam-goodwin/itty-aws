@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingSymbolSetsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,20 +17,16 @@ export const ErrorTrackingSymbolSetsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/{id}/",
     }),
-  );
-export type ErrorTrackingSymbolSetsDestroyInput =
-  typeof ErrorTrackingSymbolSetsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsDestroyInput>;
 
 // Output Schema
+export type ErrorTrackingSymbolSetsDestroyOutput = void;
 export const ErrorTrackingSymbolSetsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSymbolSetsDestroyOutput =
-  typeof ErrorTrackingSymbolSetsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsDestroyOutput>;
 
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking symbol set.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsDestroy =

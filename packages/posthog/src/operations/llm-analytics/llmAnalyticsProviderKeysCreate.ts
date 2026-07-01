@@ -1,10 +1,55 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface LlmAnalyticsProviderKeysCreateInput {
+  project_id: string;
+  id?: string;
+  provider?:
+    | "openai"
+    | "anthropic"
+    | "gemini"
+    | "openrouter"
+    | "fireworks"
+    | "azure_openai"
+    | "together_ai";
+  name?: string;
+  state?: "unknown" | "ok" | "invalid" | "error";
+  error_message?: string | null;
+  api_key?: string | Redacted.Redacted<string>;
+  api_key_masked?: string;
+  azure_endpoint?: string;
+  api_version?: string;
+  azure_endpoint_display?: string | null;
+  api_version_display?: string | null;
+  set_as_active?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_used_at?: string | null;
+}
 export const LlmAnalyticsProviderKeysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,6 +62,7 @@ export const LlmAnalyticsProviderKeysCreateInput =
         "openrouter",
         "fireworks",
         "azure_openai",
+        "together_ai",
       ]),
     ),
     name: Schema.optional(Schema.String),
@@ -45,7 +91,23 @@ export const LlmAnalyticsProviderKeysCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -53,13 +115,55 @@ export const LlmAnalyticsProviderKeysCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/provider_keys/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_keys/",
     }),
-  );
-export type LlmAnalyticsProviderKeysCreateInput =
-  typeof LlmAnalyticsProviderKeysCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeysCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsProviderKeysCreateOutput {
+  id?: string;
+  provider?:
+    | "openai"
+    | "anthropic"
+    | "gemini"
+    | "openrouter"
+    | "fireworks"
+    | "azure_openai"
+    | "together_ai";
+  name?: string;
+  state?: "unknown" | "ok" | "invalid" | "error";
+  error_message?: string | null;
+  api_key?: Redacted.Redacted<string>;
+  api_key_masked?: string;
+  azure_endpoint?: string;
+  api_version?: string;
+  azure_endpoint_display?: string | null;
+  api_version_display?: string | null;
+  set_as_active?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_used_at?: string | null;
+}
 export const LlmAnalyticsProviderKeysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -71,6 +175,7 @@ export const LlmAnalyticsProviderKeysCreateOutput =
         "openrouter",
         "fireworks",
         "azure_openai",
+        "together_ai",
       ]),
     ),
     name: Schema.optional(Schema.String),
@@ -78,7 +183,7 @@ export const LlmAnalyticsProviderKeysCreateOutput =
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
     ),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
-    api_key: Schema.optional(SensitiveString),
+    api_key: Schema.optional(SensitiveOutputString),
     api_key_masked: Schema.optional(Schema.String),
     azure_endpoint: Schema.optional(Schema.String),
     api_version: Schema.optional(Schema.String),
@@ -99,14 +204,28 @@ export const LlmAnalyticsProviderKeysCreateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type LlmAnalyticsProviderKeysCreateOutput =
-  typeof LlmAnalyticsProviderKeysCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsProviderKeysCreateOutput>;
 
 // The operation
 /**
@@ -117,5 +236,4 @@ export const llmAnalyticsProviderKeysCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysCreateInput,
     outputSchema: LlmAnalyticsProviderKeysCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

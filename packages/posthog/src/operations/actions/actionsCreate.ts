@@ -4,6 +4,234 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ActionsCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  id?: number;
+  name?: string | null;
+  description?: string;
+  tags?: unknown[];
+  post_to_slack?: boolean;
+  slack_message_format?: string;
+  steps?: {
+    event?: string | null;
+    properties?:
+      | (
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string;
+              operator?:
+                | "exact"
+                | "is_not"
+                | "icontains"
+                | "not_icontains"
+                | "regex"
+                | "not_regex";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: number;
+              operator?: "exact" | "is_not" | "gt" | "lt" | "gte" | "lte";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string[];
+              operator?: "exact" | "is_not" | "in" | "not_in";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string;
+              operator?: "is_date_exact" | "is_date_before" | "is_date_after";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              operator?: "is_set" | "is_not_set";
+            }
+        )[]
+      | null;
+    selector?: string | null;
+    selector_regex?: string | null;
+    tag_name?: string | null;
+    text?: string | null;
+    text_matching?: "contains" | "regex" | "exact" | null;
+    href?: string | null;
+    href_matching?: "contains" | "regex" | "exact" | null;
+    url?: string | null;
+    url_matching?: "contains" | "regex" | "exact" | null;
+  }[];
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+  is_calculating?: boolean;
+  last_calculated_at?: string;
+  team_id?: number;
+  is_action?: boolean;
+  bytecode_error?: string | null;
+  pinned_at?: string | null;
+  creation_context?: string | null;
+  _create_in_folder?: string;
+  user_access_level?: string | null;
+}
 export const ActionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -18,17 +246,235 @@ export const ActionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         event: Schema.optional(Schema.NullOr(Schema.String)),
         properties: Schema.optional(
-          Schema.NullOr(Schema.Array(Schema.Unknown)),
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.String),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "exact",
+                      "is_not",
+                      "icontains",
+                      "not_icontains",
+                      "regex",
+                      "not_regex",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.Number),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "exact",
+                      "is_not",
+                      "gt",
+                      "lt",
+                      "gte",
+                      "lte",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.Array(Schema.String)),
+                  operator: Schema.optional(
+                    Schema.Literals(["exact", "is_not", "in", "not_in"]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.String),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "is_date_exact",
+                      "is_date_before",
+                      "is_date_after",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  operator: Schema.optional(
+                    Schema.Literals(["is_set", "is_not_set"]),
+                  ),
+                }),
+              ]),
+            ),
+          ),
         ),
         selector: Schema.optional(Schema.NullOr(Schema.String)),
         selector_regex: Schema.optional(Schema.NullOr(Schema.String)),
         tag_name: Schema.optional(Schema.NullOr(Schema.String)),
         text: Schema.optional(Schema.NullOr(Schema.String)),
-        text_matching: Schema.optional(Schema.Unknown),
+        text_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
         href: Schema.optional(Schema.NullOr(Schema.String)),
-        href_matching: Schema.optional(Schema.Unknown),
+        href_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
         url: Schema.optional(Schema.NullOr(Schema.String)),
-        url_matching: Schema.optional(Schema.Unknown),
+        url_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
       }),
     ),
   ),
@@ -46,7 +492,23 @@ export const ActionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -62,10 +524,235 @@ export const ActionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/actions/" }),
-);
-export type ActionsCreateInput = typeof ActionsCreateInput.Type;
+) as unknown as Schema.Codec<ActionsCreateInput>;
 
 // Output Schema
+export interface ActionsCreateOutput {
+  id?: number;
+  name?: string | null;
+  description?: string;
+  tags?: unknown[];
+  post_to_slack?: boolean;
+  slack_message_format?: string;
+  steps?: {
+    event?: string | null;
+    properties?:
+      | (
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string;
+              operator?:
+                | "exact"
+                | "is_not"
+                | "icontains"
+                | "not_icontains"
+                | "regex"
+                | "not_regex";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: number;
+              operator?: "exact" | "is_not" | "gt" | "lt" | "gte" | "lte";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string[];
+              operator?: "exact" | "is_not" | "in" | "not_in";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              value?: string;
+              operator?: "is_date_exact" | "is_date_before" | "is_date_after";
+            }
+          | {
+              key?: string;
+              type?:
+                | "event"
+                | "event_metadata"
+                | "feature"
+                | "person"
+                | "cohort"
+                | "element"
+                | "static-cohort"
+                | "dynamic-cohort"
+                | "precalculated-cohort"
+                | "group"
+                | "recording"
+                | "log_entry"
+                | "behavioral"
+                | "session"
+                | "hogql"
+                | "data_warehouse"
+                | "data_warehouse_person_property"
+                | "error_tracking_issue"
+                | "log"
+                | "log_attribute"
+                | "log_resource_attribute"
+                | "span"
+                | "span_attribute"
+                | "span_resource_attribute"
+                | "revenue_analytics"
+                | "flag"
+                | "workflow_variable";
+              operator?: "is_set" | "is_not_set";
+            }
+        )[]
+      | null;
+    selector?: string | null;
+    selector_regex?: string | null;
+    tag_name?: string | null;
+    text?: string | null;
+    text_matching?: "contains" | "regex" | "exact" | null;
+    href?: string | null;
+    href_matching?: "contains" | "regex" | "exact" | null;
+    url?: string | null;
+    url_matching?: "contains" | "regex" | "exact" | null;
+  }[];
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+  is_calculating?: boolean;
+  last_calculated_at?: string;
+  team_id?: number;
+  is_action?: boolean;
+  bytecode_error?: string | null;
+  pinned_at?: string | null;
+  creation_context?: string | null;
+  _create_in_folder?: string;
+  user_access_level?: string | null;
+}
 export const ActionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -78,17 +765,235 @@ export const ActionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         event: Schema.optional(Schema.NullOr(Schema.String)),
         properties: Schema.optional(
-          Schema.NullOr(Schema.Array(Schema.Unknown)),
+          Schema.NullOr(
+            Schema.Array(
+              Schema.Union([
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.String),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "exact",
+                      "is_not",
+                      "icontains",
+                      "not_icontains",
+                      "regex",
+                      "not_regex",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.Number),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "exact",
+                      "is_not",
+                      "gt",
+                      "lt",
+                      "gte",
+                      "lte",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.Array(Schema.String)),
+                  operator: Schema.optional(
+                    Schema.Literals(["exact", "is_not", "in", "not_in"]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  value: Schema.optional(Schema.String),
+                  operator: Schema.optional(
+                    Schema.Literals([
+                      "is_date_exact",
+                      "is_date_before",
+                      "is_date_after",
+                    ]),
+                  ),
+                }),
+                Schema.Struct({
+                  key: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "event",
+                      "event_metadata",
+                      "feature",
+                      "person",
+                      "cohort",
+                      "element",
+                      "static-cohort",
+                      "dynamic-cohort",
+                      "precalculated-cohort",
+                      "group",
+                      "recording",
+                      "log_entry",
+                      "behavioral",
+                      "session",
+                      "hogql",
+                      "data_warehouse",
+                      "data_warehouse_person_property",
+                      "error_tracking_issue",
+                      "log",
+                      "log_attribute",
+                      "log_resource_attribute",
+                      "span",
+                      "span_attribute",
+                      "span_resource_attribute",
+                      "revenue_analytics",
+                      "flag",
+                      "workflow_variable",
+                    ]),
+                  ),
+                  operator: Schema.optional(
+                    Schema.Literals(["is_set", "is_not_set"]),
+                  ),
+                }),
+              ]),
+            ),
+          ),
         ),
         selector: Schema.optional(Schema.NullOr(Schema.String)),
         selector_regex: Schema.optional(Schema.NullOr(Schema.String)),
         tag_name: Schema.optional(Schema.NullOr(Schema.String)),
         text: Schema.optional(Schema.NullOr(Schema.String)),
-        text_matching: Schema.optional(Schema.Unknown),
+        text_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
         href: Schema.optional(Schema.NullOr(Schema.String)),
-        href_matching: Schema.optional(Schema.Unknown),
+        href_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
         url: Schema.optional(Schema.NullOr(Schema.String)),
-        url_matching: Schema.optional(Schema.Unknown),
+        url_matching: Schema.optional(
+          Schema.NullOr(Schema.Literals(["contains", "regex", "exact"])),
+        ),
       }),
     ),
   ),
@@ -106,7 +1011,23 @@ export const ActionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -120,8 +1041,7 @@ export const ActionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   creation_context: Schema.optional(Schema.NullOr(Schema.String)),
   _create_in_folder: Schema.optional(Schema.String),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
-});
-export type ActionsCreateOutput = typeof ActionsCreateOutput.Type;
+}) as unknown as Schema.Codec<ActionsCreateOutput>;
 
 // The operation
 /**

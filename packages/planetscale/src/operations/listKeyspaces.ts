@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListKeyspacesInput {
+  organization: string;
+  database: string;
+  branch: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListKeyspacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -15,10 +22,51 @@ export const ListKeyspacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces",
   }),
-);
-export type ListKeyspacesInput = typeof ListKeyspacesInput.Type;
+) as unknown as Schema.Codec<ListKeyspacesInput>;
 
 // Output Schema
+export interface ListKeyspacesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    shards: number;
+    sharded: boolean;
+    replicas: number;
+    extra_replicas: number;
+    created_at: string;
+    updated_at: string;
+    cluster_name: string;
+    cluster_display_name: string;
+    resizing: boolean;
+    resize_pending: boolean;
+    config_change_in_progress: boolean;
+    ready: boolean;
+    metal: boolean;
+    default: boolean;
+    imported: boolean;
+    vector_pool_allocation: number | null;
+    node_ttl_strategy:
+      | "node_ttl_follow_maintenance"
+      | "node_ttl_always"
+      | "node_ttl_off";
+    replication_durability_constraints: {
+      strategy?: "available" | "lag" | "always" | null;
+    };
+    vreplication_flags: {
+      optimize_inserts: boolean;
+      allow_no_blob_binlog_row_image: boolean;
+      vplayer_batching: boolean;
+    };
+    mysqld_options: Record<string, unknown>;
+    vttablet_options: Record<string, unknown>;
+  }[];
+}
 export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -53,7 +101,7 @@ export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
       replication_durability_constraints: Schema.Struct({
         strategy: Schema.optional(
-          Schema.Literals(["available", "lag", "always"]),
+          Schema.NullOr(Schema.Literals(["available", "lag", "always"])),
         ),
       }),
       vreplication_flags: Schema.Struct({
@@ -65,8 +113,7 @@ export const ListKeyspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       vttablet_options: Schema.Record(Schema.String, Schema.Unknown),
     }),
   ),
-});
-export type ListKeyspacesOutput = typeof ListKeyspacesOutput.Type;
+}) as unknown as Schema.Codec<ListKeyspacesOutput>;
 
 // The operation
 /**

@@ -4,17 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetAliasInput {
+  aliasName: string;
+}
 export const GetAliasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   aliasName: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/aliases/{aliasName}" }));
-export type GetAliasInput = typeof GetAliasInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/aliases/{aliasName}" }),
+) as unknown as Schema.Codec<GetAliasInput>;
 
 // Output Schema
+export interface GetAliasOutput {
+  name: string;
+  collection_name: string;
+}
 export const GetAliasOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   collection_name: Schema.String,
-});
-export type GetAliasOutput = typeof GetAliasOutput.Type;
+}) as unknown as Schema.Codec<GetAliasOutput>;
 
 // The operation
 /**

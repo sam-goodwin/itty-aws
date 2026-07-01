@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteTrafficRuleInput {
+  organization: string;
+  database: string;
+  branch: string;
+  budget_id: string;
+  id: string;
+}
 export const DeleteTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     organization: Schema.String.pipe(T.PathParam()),
@@ -17,12 +24,12 @@ export const DeleteTrafficRuleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules/{id}",
   }),
-);
-export type DeleteTrafficRuleInput = typeof DeleteTrafficRuleInput.Type;
+) as unknown as Schema.Codec<DeleteTrafficRuleInput>;
 
 // Output Schema
-export const DeleteTrafficRuleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteTrafficRuleOutput = typeof DeleteTrafficRuleOutput.Type;
+export type DeleteTrafficRuleOutput = void;
+export const DeleteTrafficRuleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteTrafficRuleOutput>;
 
 // The operation
 /**

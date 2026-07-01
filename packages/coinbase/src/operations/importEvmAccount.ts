@@ -3,14 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ImportEvmAccountInput {
+  encryptedPrivateKey: string;
+  name?: string;
+  accountPolicy?: string;
+}
 export const ImportEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   encryptedPrivateKey: Schema.String,
   name: Schema.optional(Schema.String),
   accountPolicy: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v2/evm/accounts/import" }));
-export type ImportEvmAccountInput = typeof ImportEvmAccountInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/evm/accounts/import" }),
+) as unknown as Schema.Codec<ImportEvmAccountInput>;
 
 // Output Schema
+export interface ImportEvmAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const ImportEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String,
@@ -19,12 +32,11 @@ export const ImportEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
   },
-);
-export type ImportEvmAccountOutput = typeof ImportEvmAccountOutput.Type;
+) as unknown as Schema.Codec<ImportEvmAccountOutput>;
 
 // The operation
 /**
- * Import an EVM account
+ * Import EVM account
  *
  * Import an existing EVM account into the developer's CDP Project. This API should be called from the [CDP SDK](https://github.com/coinbase/cdp-sdk) to ensure that the associated private key is properly encrypted.
  *

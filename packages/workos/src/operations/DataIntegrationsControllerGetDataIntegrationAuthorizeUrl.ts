@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput {
+  slug: string;
+  user_id: string;
+  organization_id?: string;
+  return_to?: string;
+}
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
@@ -12,17 +18,16 @@ export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
     return_to: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/data-integrations/{slug}/authorize" }),
-  );
-export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput =
-  typeof DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput.Type;
+  ) as unknown as Schema.Codec<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlInput>;
 
 // Output Schema
+export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput {
+  url?: string;
+}
 export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
-  });
-export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput =
-  typeof DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput.Type;
+  }) as unknown as Schema.Codec<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlOutput>;
 
 // The operation
 /**

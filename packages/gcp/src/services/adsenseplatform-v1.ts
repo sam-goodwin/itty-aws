@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,75 +22,27 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface CloseAccountRequest {}
-
-export const CloseAccountRequest: Schema.Schema<CloseAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CloseAccountRequest",
-  });
-
-export interface Address {
-  /** Name of the company. Max length 255 bytes or 34 characters. */
-  company?: string;
-  /** Country/Region code. The region is specified as a CLDR region code (e.g. "US", "FR"). */
-  regionCode?: string;
-  /** Fax number with international code (i.e. +441234567890). */
-  fax?: string;
-  /** City. Max length 60 bytes or 30 characters. */
-  city?: string;
-  /** Zip/post code. Max length 10 bytes or 10 characters. */
-  zip?: string;
-  /** Phone number with international code (i.e. +441234567890). */
-  phone?: string;
-  /** State. Max length 60 bytes or 30 characters. */
-  state?: string;
-  /** Second line of address. Max length 64 bytes or 30 characters. */
-  address2?: string;
-  /** First line of address. Max length 64 bytes or 30 characters. */
-  address1?: string;
-  /** Contact name of the company. Max length 128 bytes or 34 characters. */
-  contact?: string;
+export interface TimeZone {
+  /** IANA Time Zone Database time zone. For example "America/New_York". */
+  id?: string;
+  /** Optional. IANA Time Zone Database version number. For example "2019a". */
+  version?: string;
 }
 
-export const Address: Schema.Schema<Address> =
+export const TimeZone: Schema.Codec<TimeZone> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    company: Schema.optional(Schema.String),
-    regionCode: Schema.optional(Schema.String),
-    fax: Schema.optional(Schema.String),
-    city: Schema.optional(Schema.String),
-    zip: Schema.optional(Schema.String),
-    phone: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    address2: Schema.optional(Schema.String),
-    address1: Schema.optional(Schema.String),
-    contact: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Address" });
+    id: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimeZone" });
 
-export interface Empty {}
+export interface RequestSiteReviewResponse {}
 
-export const Empty: Schema.Schema<Empty> =
+export const RequestSiteReviewResponse: Schema.Codec<RequestSiteReviewResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
+    identifier: "RequestSiteReviewResponse",
   });
-
-export interface EventInfo {
-  /** Required. The email address that is associated with the publisher when performing the event. */
-  email?: string;
-  /** The billing address of the publisher associated with this event, if available. */
-  billingAddress?: Address;
-}
-
-export const EventInfo: Schema.Schema<EventInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    email: Schema.optional(Schema.String),
-    billingAddress: Schema.optional(Address),
-  }).annotate({ identifier: "EventInfo" });
 
 export interface Site {
-  /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
-  name?: string;
-  /** Domain/sub-domain of the site. Must be a valid domain complying with [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain contains unicode characters. */
-  domain?: string;
   /** Output only. State of a site. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -99,59 +51,39 @@ export interface Site {
     | "READY"
     | "NEEDS_ATTENTION"
     | (string & {});
+  /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
+  name?: string;
+  /** Domain/sub-domain of the site. Must be a valid domain complying with [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain contains unicode characters. */
+  domain?: string;
 }
 
-export const Site: Schema.Schema<Site> =
+export const Site: Schema.Codec<Site> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
   }).annotate({ identifier: "Site" });
 
 export interface ListSitesResponse {
-  /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
-  nextPageToken?: string;
   /** The sites returned in this list response. */
   sites?: ReadonlyArray<Site>;
+  /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
+  nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
+export const ListSitesResponse: Schema.Codec<ListSitesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     sites: Schema.optional(Schema.Array(Site)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListSitesResponse" });
 
-export interface RequestSiteReviewResponse {}
-
-export const RequestSiteReviewResponse: Schema.Schema<RequestSiteReviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RequestSiteReviewResponse",
-  });
-
-export interface TimeZone {
-  /** IANA Time Zone Database time zone. For example "America/New_York". */
-  id?: string;
-  /** Optional. IANA Time Zone Database version number. For example "2019a". */
-  version?: string;
-}
-
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TimeZone" });
-
 export interface Account {
-  /** Required. Input only. CLDR region code of the country/region of the address. Set this to country code of the child account if known, otherwise to your own country code. */
-  regionCode?: string;
-  /** Output only. Resource name of the account. Format: platforms/pub-[0-9]+/accounts/pub-[0-9]+ */
-  name?: string;
+  /** Display name of this account. */
+  displayName?: string;
   /** Required. An opaque token that uniquely identifies the account among all the platform's accounts. This string may contain at most 64 non-whitespace ASCII characters, but otherwise has no predefined structure. However, it is expected to be a platform-specific identifier for the user creating the account, so that only a single account can be created for any given user. This field must not contain any information that is recognizable as personally identifiable information. e.g. it should not be an email address or login name. Once an account has been created, a second attempt to create an account using the same creation_request_id will result in an ALREADY_EXISTS error. */
   creationRequestId?: string;
   /** Required. The IANA TZ timezone code of this account. For more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. This field is used for reporting. It is recommended to set it to the same value for all child accounts. */
   timeZone?: TimeZone;
-  /** Display name of this account. */
-  displayName?: string;
   /** Output only. Approval state of the account. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -159,18 +91,22 @@ export interface Account {
     | "APPROVED"
     | "DISAPPROVED"
     | (string & {});
+  /** Required. Input only. CLDR region code of the country/region of the address. Set this to country code of the child account if known, otherwise to your own country code. */
+  regionCode?: string;
+  /** Output only. Resource name of the account. Format: platforms/pub-[0-9]+/accounts/pub-[0-9]+ */
+  name?: string;
   /** Output only. Creation time of the account. */
   createTime?: string;
 }
 
-export const Account: Schema.Schema<Account> =
+export const Account: Schema.Codec<Account> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    regionCode: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
     creationRequestId: Schema.optional(Schema.String),
     timeZone: Schema.optional(TimeZone),
-    displayName: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Account" });
 
@@ -181,48 +117,112 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
+export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAccountsResponse" });
 
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
 export interface CloseAccountResponse {}
 
-export const CloseAccountResponse: Schema.Schema<CloseAccountResponse> =
+export const CloseAccountResponse: Schema.Codec<CloseAccountResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseAccountResponse",
   });
 
-export interface LookupAccountResponse {
-  /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
-  name?: string;
+export interface Address {
+  /** City. Max length 60 bytes or 30 characters. */
+  city?: string;
+  /** Name of the company. Max length 255 bytes or 34 characters. */
+  company?: string;
+  /** Fax number with international code (i.e. +441234567890). */
+  fax?: string;
+  /** Zip/post code. Max length 10 bytes or 10 characters. */
+  zip?: string;
+  /** Country/Region code. The region is specified as a CLDR region code (e.g. "US", "FR"). */
+  regionCode?: string;
+  /** First line of address. Max length 64 bytes or 30 characters. */
+  address1?: string;
+  /** Phone number with international code (i.e. +441234567890). */
+  phone?: string;
+  /** Contact name of the company. Max length 128 bytes or 34 characters. */
+  contact?: string;
+  /** Second line of address. Max length 64 bytes or 30 characters. */
+  address2?: string;
+  /** State. Max length 60 bytes or 30 characters. */
+  state?: string;
 }
 
-export const LookupAccountResponse: Schema.Schema<LookupAccountResponse> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LookupAccountResponse" });
+    city: Schema.optional(Schema.String),
+    company: Schema.optional(Schema.String),
+    fax: Schema.optional(Schema.String),
+    zip: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    address1: Schema.optional(Schema.String),
+    phone: Schema.optional(Schema.String),
+    contact: Schema.optional(Schema.String),
+    address2: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Address" });
+
+export interface EventInfo {
+  /** Required. The email address that is associated with the publisher when performing the event. */
+  email?: string;
+  /** The billing address of the publisher associated with this event, if available. */
+  billingAddress?: Address;
+}
+
+export const EventInfo: Schema.Codec<EventInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    billingAddress: Schema.optional(Address),
+  }).annotate({ identifier: "EventInfo" });
 
 export interface Event {
+  /** Required. Information associated with the event. */
+  eventInfo?: EventInfo;
   /** Required. Event type. */
   eventType?:
     | "EVENT_TYPE_UNSPECIFIED"
     | "LOG_IN_VIA_PLATFORM"
     | "SIGN_UP_VIA_PLATFORM"
     | (string & {});
-  /** Required. Information associated with the event. */
-  eventInfo?: EventInfo;
   /** Required. Event timestamp. */
   eventTime?: string;
 }
 
-export const Event: Schema.Schema<Event> =
+export const Event: Schema.Codec<Event> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eventType: Schema.optional(Schema.String),
     eventInfo: Schema.optional(EventInfo),
+    eventType: Schema.optional(Schema.String),
     eventTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "Event" });
+
+export interface LookupAccountResponse {
+  /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
+  name?: string;
+}
+
+export const LookupAccountResponse: Schema.Codec<LookupAccountResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LookupAccountResponse" });
+
+export interface CloseAccountRequest {}
+
+export const CloseAccountRequest: Schema.Codec<CloseAccountRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CloseAccountRequest",
+  });
 
 // ==========================================================================
 // Errors
@@ -278,75 +278,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetPlatformsAccountsRequest {
-  /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
-  name: string;
-}
-
-export const GetPlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetPlatformsAccountsRequest>;
-
-export type GetPlatformsAccountsResponse = Account;
-export const GetPlatformsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
-
-export type GetPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets information about the selected sub-account. */
-export const getPlatformsAccounts: API.OperationMethod<
-  GetPlatformsAccountsRequest,
-  GetPlatformsAccountsResponse,
-  GetPlatformsAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPlatformsAccountsRequest,
-  output: GetPlatformsAccountsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ClosePlatformsAccountsRequest {
-  /** Required. Account to close. Format: platforms/{platform}/accounts/{account_id} */
-  name: string;
-  /** Request body */
-  body?: CloseAccountRequest;
-}
-
-export const ClosePlatformsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CloseAccountRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+name}:close", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ClosePlatformsAccountsRequest>;
-
-export type ClosePlatformsAccountsResponse = CloseAccountResponse;
-export const ClosePlatformsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CloseAccountResponse;
-
-export type ClosePlatformsAccountsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Closes a sub-account. */
-export const closePlatformsAccounts: API.OperationMethod<
-  ClosePlatformsAccountsRequest,
-  ClosePlatformsAccountsResponse,
-  ClosePlatformsAccountsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ClosePlatformsAccountsRequest,
-  output: ClosePlatformsAccountsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface CreatePlatformsAccountsRequest {
   /** Required. Platform to create an account for. Format: platforms/{platform} */
   parent: string;
@@ -361,7 +292,7 @@ export const CreatePlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/accounts", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsRequest>;
 
 export type CreatePlatformsAccountsResponse = Account;
 export const CreatePlatformsAccountsResponse =
@@ -386,6 +317,45 @@ export const createPlatformsAccounts: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ClosePlatformsAccountsRequest {
+  /** Required. Account to close. Format: platforms/{platform}/accounts/{account_id} */
+  name: string;
+  /** Request body */
+  body?: CloseAccountRequest;
+}
+
+export const ClosePlatformsAccountsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CloseAccountRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+name}:close", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<ClosePlatformsAccountsRequest>;
+
+export type ClosePlatformsAccountsResponse = CloseAccountResponse;
+export const ClosePlatformsAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CloseAccountResponse;
+
+export type ClosePlatformsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Closes a sub-account. */
+export const closePlatformsAccounts: API.OperationMethod<
+  ClosePlatformsAccountsRequest,
+  ClosePlatformsAccountsResponse,
+  ClosePlatformsAccountsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ClosePlatformsAccountsRequest,
+  output: ClosePlatformsAccountsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface LookupPlatformsAccountsRequest {
   /** Required. Platform who parents the account. Format: platforms/{platform} */
   parent: string;
@@ -402,7 +372,7 @@ export const LookupPlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accounts:lookup" }),
     svc,
-  ) as unknown as Schema.Schema<LookupPlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<LookupPlatformsAccountsRequest>;
 
 export type LookupPlatformsAccountsResponse = LookupAccountResponse;
 export const LookupPlatformsAccountsResponse =
@@ -419,6 +389,36 @@ export const lookupPlatformsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupPlatformsAccountsRequest,
   output: LookupPlatformsAccountsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetPlatformsAccountsRequest {
+  /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
+  name: string;
+}
+
+export const GetPlatformsAccountsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetPlatformsAccountsRequest>;
+
+export type GetPlatformsAccountsResponse = Account;
+export const GetPlatformsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+
+export type GetPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets information about the selected sub-account. */
+export const getPlatformsAccounts: API.OperationMethod<
+  GetPlatformsAccountsRequest,
+  GetPlatformsAccountsResponse,
+  GetPlatformsAccountsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPlatformsAccountsRequest,
+  output: GetPlatformsAccountsResponse,
   errors: [NotFound, Forbidden],
 }));
 
@@ -439,7 +439,7 @@ export const ListPlatformsAccountsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/accounts" }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsAccountsRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsAccountsRequest>;
 
 export type ListPlatformsAccountsResponse = ListAccountsResponse;
 export const ListPlatformsAccountsResponse =
@@ -463,48 +463,43 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   },
 }));
 
-export interface ListPlatformsAccountsSitesRequest {
-  /** The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
-  pageSize?: number;
-  /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
-  pageToken?: string;
-  /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
+export interface CreatePlatformsAccountsEventsRequest {
+  /** Required. Account to log events about. Format: platforms/{platform}/accounts/{account} */
   parent: string;
+  /** Request body */
+  body?: Event;
 }
 
-export const ListPlatformsAccountsSitesRequest =
+export const CreatePlatformsAccountsEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Event).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/sites" }),
+    T.Http({ method: "POST", path: "v1/{+parent}/events", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ListPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsEventsRequest>;
 
-export type ListPlatformsAccountsSitesResponse = ListSitesResponse;
-export const ListPlatformsAccountsSitesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
+export type CreatePlatformsAccountsEventsResponse = Event;
+export const CreatePlatformsAccountsEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type ListPlatformsAccountsSitesError =
+export type CreatePlatformsAccountsEventsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists sites for a specific account. */
-export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
-  ListPlatformsAccountsSitesRequest,
-  ListPlatformsAccountsSitesResponse,
-  ListPlatformsAccountsSitesError,
+/** Creates an account event. */
+export const createPlatformsAccountsEvents: API.OperationMethod<
+  CreatePlatformsAccountsEventsRequest,
+  CreatePlatformsAccountsEventsResponse,
+  CreatePlatformsAccountsEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsAccountsSitesRequest,
-  output: ListPlatformsAccountsSitesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePlatformsAccountsEventsRequest,
+  output: CreatePlatformsAccountsEventsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPlatformsAccountsSitesRequest {
@@ -518,7 +513,7 @@ export const GetPlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<GetPlatformsAccountsSitesRequest>;
 
 export type GetPlatformsAccountsSitesResponse = Site;
 export const GetPlatformsAccountsSitesResponse =
@@ -555,7 +550,7 @@ export const CreatePlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/sites", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<CreatePlatformsAccountsSitesRequest>;
 
 export type CreatePlatformsAccountsSitesResponse = Site;
 export const CreatePlatformsAccountsSitesResponse =
@@ -591,7 +586,7 @@ export const RequestReviewPlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:requestReview", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<RequestReviewPlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<RequestReviewPlatformsAccountsSitesRequest>;
 
 export type RequestReviewPlatformsAccountsSitesResponse =
   RequestSiteReviewResponse;
@@ -628,7 +623,7 @@ export const DeletePlatformsAccountsSitesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeletePlatformsAccountsSitesRequest>;
+  ) as unknown as Schema.Codec<DeletePlatformsAccountsSitesRequest>;
 
 export type DeletePlatformsAccountsSitesResponse = Empty;
 export const DeletePlatformsAccountsSitesResponse =
@@ -653,41 +648,46 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreatePlatformsAccountsEventsRequest {
-  /** Required. Account to log events about. Format: platforms/{platform}/accounts/{account} */
+export interface ListPlatformsAccountsSitesRequest {
+  /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
   parent: string;
-  /** Request body */
-  body?: Event;
+  /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
+  pageToken?: string;
+  /** The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
+  pageSize?: number;
 }
 
-export const CreatePlatformsAccountsEventsRequest =
+export const ListPlatformsAccountsSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Event).pipe(T.HttpBody()),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/events", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+parent}/sites" }),
     svc,
-  ) as unknown as Schema.Schema<CreatePlatformsAccountsEventsRequest>;
+  ) as unknown as Schema.Codec<ListPlatformsAccountsSitesRequest>;
 
-export type CreatePlatformsAccountsEventsResponse = Event;
-export const CreatePlatformsAccountsEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Event;
+export type ListPlatformsAccountsSitesResponse = ListSitesResponse;
+export const ListPlatformsAccountsSitesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type CreatePlatformsAccountsEventsError =
+export type ListPlatformsAccountsSitesError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Creates an account event. */
-export const createPlatformsAccountsEvents: API.OperationMethod<
-  CreatePlatformsAccountsEventsRequest,
-  CreatePlatformsAccountsEventsResponse,
-  CreatePlatformsAccountsEventsError,
+/** Lists sites for a specific account. */
+export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
+  ListPlatformsAccountsSitesRequest,
+  ListPlatformsAccountsSitesResponse,
+  ListPlatformsAccountsSitesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsEventsRequest,
-  output: CreatePlatformsAccountsEventsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPlatformsAccountsSitesRequest,
+  output: ListPlatformsAccountsSitesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

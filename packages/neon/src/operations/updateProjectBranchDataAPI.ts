@@ -3,6 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateProjectBranchDataAPIInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+  settings?: {
+    db_aggregates_enabled?: boolean;
+    db_anon_role?: string;
+    db_extra_search_path?: string;
+    db_max_rows?: number;
+    db_schemas?: string[];
+    jwt_role_claim_key?: string;
+    jwt_cache_max_lifetime?: number;
+    openapi_mode?: string;
+    server_cors_allowed_origins?: string;
+    server_timing_enabled?: boolean;
+  };
+}
 export const UpdateProjectBranchDataAPIInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -27,15 +44,14 @@ export const UpdateProjectBranchDataAPIInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/data-api/{database_name}",
     }),
-  );
-export type UpdateProjectBranchDataAPIInput =
-  typeof UpdateProjectBranchDataAPIInput.Type;
+  ) as unknown as Schema.Codec<UpdateProjectBranchDataAPIInput>;
 
 // Output Schema
+export interface UpdateProjectBranchDataAPIOutput {}
 export const UpdateProjectBranchDataAPIOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type UpdateProjectBranchDataAPIOutput =
-  typeof UpdateProjectBranchDataAPIOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<UpdateProjectBranchDataAPIOutput>;
 
 // The operation
 /**
@@ -44,7 +60,6 @@ export type UpdateProjectBranchDataAPIOutput =
  * Updates the Neon Data API configuration for the specified branch.
  * You can optionally provide settings to update the Data API configuration.
  * The schema cache is always refreshed as part of this operation.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

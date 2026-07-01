@@ -4,6 +4,297 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AlertsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  insight?: number;
+  name?: string;
+  subscribed_users?: number[];
+  threshold?: {
+    id?: string;
+    created_at?: string;
+    name?: string;
+    configuration?: {
+      bounds?: { lower?: number | null; upper?: number | null } | null;
+      type?: "absolute" | "percentage";
+    };
+  };
+  condition?: {
+    type?: "absolute_value" | "relative_increase" | "relative_decrease";
+  } | null;
+  state?: string;
+  enabled?: boolean;
+  last_notified_at?: string | null;
+  last_checked_at?: string | null;
+  next_check_at?: string | null;
+  checks?: {
+    id?: string;
+    created_at?: string;
+    calculated_value?: number | null;
+    state?: "Firing" | "Not firing" | "Errored" | "Snoozed";
+    targets_notified?: boolean;
+    anomaly_scores?: unknown;
+    triggered_points?: unknown;
+    triggered_dates?: unknown;
+    interval?: string | null;
+    triggered_metadata?: unknown;
+    investigation_status?:
+      | "pending"
+      | "running"
+      | "done"
+      | "failed"
+      | "skipped"
+      | null;
+    investigation_verdict?:
+      | "true_positive"
+      | "false_positive"
+      | "inconclusive"
+      | null;
+    investigation_summary?: string | null;
+    investigation_notebook_short_id?: string | null;
+    notification_sent_at?: string | null;
+    notification_suppressed_by_agent?: boolean;
+  }[];
+  checks_total?: number | null;
+  config?:
+    | {
+        check_ongoing_interval?: boolean | null;
+        series_index?: number;
+        type?: string;
+      }
+    | {
+        column?: string | null;
+        evaluation: "last_row" | "first_row" | "any_row";
+        label_column?: string | null;
+        type?: string;
+      }
+    | {
+        funnel_step?: number | null;
+        metric: "conversion_from_start" | "conversion_from_previous";
+        type?: string;
+      }
+    | null;
+  detector_config?:
+    | {
+        detectors?: (
+          | {
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              multiplier?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              lower_bound?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              type?: string;
+              upper_bound?: number | null;
+            }
+          | {
+              n_estimators?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              method?: "largest" | "mean" | "median" | null;
+              n_neighbors?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              n_bins?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              n_neighbors?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              kernel?: string | null;
+              nu?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+        )[];
+        operator?: "and" | "or";
+        type?: string;
+      }
+    | {
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        multiplier?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        lower_bound?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        type?: string;
+        upper_bound?: number | null;
+      }
+    | {
+        n_estimators?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        method?: "largest" | "mean" | "median" | null;
+        n_neighbors?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        n_bins?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        n_neighbors?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        kernel?: string | null;
+        nu?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | null;
+  calculation_interval?:
+    | "every_15_minutes"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly";
+  snoozed_until?: string | null;
+  skip_weekend?: boolean | null;
+  schedule_restriction?: {
+    blocked_windows?: { start?: string; end?: string }[];
+  } | null;
+  last_value?: number | null;
+  investigation_agent_enabled?: boolean;
+  investigation_gates_notifications?: boolean;
+  investigation_inconclusive_action?: "notify" | "suppress";
+  search_match_type?: "exact" | "similar" | null;
+}
 export const AlertsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -21,7 +312,23 @@ export const AlertsPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -37,10 +344,12 @@ export const AlertsPartialUpdateInput =
         configuration: Schema.optional(
           Schema.Struct({
             bounds: Schema.optional(
-              Schema.Struct({
-                lower: Schema.optional(Schema.NullOr(Schema.Number)),
-                upper: Schema.optional(Schema.NullOr(Schema.Number)),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  lower: Schema.optional(Schema.NullOr(Schema.Number)),
+                  upper: Schema.optional(Schema.NullOr(Schema.Number)),
+                }),
+              ),
             ),
             type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
           }),
@@ -75,13 +384,31 @@ export const AlertsPartialUpdateInput =
             Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
           ),
           targets_notified: Schema.optional(Schema.Boolean),
-          anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          anomaly_scores: Schema.optional(Schema.Unknown),
+          triggered_points: Schema.optional(Schema.Unknown),
+          triggered_dates: Schema.optional(Schema.Unknown),
           interval: Schema.optional(Schema.NullOr(Schema.String)),
-          triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          investigation_status: Schema.optional(Schema.Unknown),
-          investigation_verdict: Schema.optional(Schema.Unknown),
+          triggered_metadata: Schema.optional(Schema.Unknown),
+          investigation_status: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "pending",
+                "running",
+                "done",
+                "failed",
+                "skipped",
+              ]),
+            ),
+          ),
+          investigation_verdict: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "true_positive",
+                "false_positive",
+                "inconclusive",
+              ]),
+            ),
+          ),
           investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
           investigation_notebook_short_id: Schema.optional(
             Schema.NullOr(Schema.String),
@@ -94,18 +421,40 @@ export const AlertsPartialUpdateInput =
     checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
     config: Schema.optional(
       Schema.NullOr(
-        Schema.Struct({
-          check_ongoing_interval: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          series_index: Schema.optional(Schema.Number),
-          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-        }),
+        Schema.Union([
+          Schema.Struct({
+            check_ongoing_interval: Schema.optional(
+              Schema.NullOr(Schema.Boolean),
+            ),
+            series_index: Schema.optional(Schema.Number),
+            type: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            column: Schema.optional(Schema.NullOr(Schema.String)),
+            evaluation: Schema.Literals(["last_row", "first_row", "any_row"]),
+            label_column: Schema.optional(Schema.NullOr(Schema.String)),
+            type: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            funnel_step: Schema.optional(Schema.NullOr(Schema.Number)),
+            metric: Schema.Literals([
+              "conversion_from_start",
+              "conversion_from_previous",
+            ]),
+            type: Schema.optional(Schema.String),
+          }),
+        ]),
       ),
     ),
-    detector_config: Schema.optional(Schema.Unknown),
+    detector_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
     calculation_interval: Schema.optional(
-      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+      Schema.Literals([
+        "every_15_minutes",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+      ]),
     ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -129,15 +478,307 @@ export const AlertsPartialUpdateInput =
     investigation_inconclusive_action: Schema.optional(
       Schema.Literals(["notify", "suppress"]),
     ),
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/projects/{project_id}/alerts/{id}/",
     }),
-  );
-export type AlertsPartialUpdateInput = typeof AlertsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<AlertsPartialUpdateInput>;
 
 // Output Schema
+export interface AlertsPartialUpdateOutput {
+  id?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  created_at?: string;
+  insight?: number;
+  name?: string;
+  subscribed_users?: number[];
+  threshold?: {
+    id?: string;
+    created_at?: string;
+    name?: string;
+    configuration?: {
+      bounds?: { lower?: number | null; upper?: number | null } | null;
+      type?: "absolute" | "percentage";
+    };
+  };
+  condition?: {
+    type?: "absolute_value" | "relative_increase" | "relative_decrease";
+  } | null;
+  state?: string;
+  enabled?: boolean;
+  last_notified_at?: string | null;
+  last_checked_at?: string | null;
+  next_check_at?: string | null;
+  checks?: {
+    id?: string;
+    created_at?: string;
+    calculated_value?: number | null;
+    state?: "Firing" | "Not firing" | "Errored" | "Snoozed";
+    targets_notified?: boolean;
+    anomaly_scores?: unknown;
+    triggered_points?: unknown;
+    triggered_dates?: unknown;
+    interval?: string | null;
+    triggered_metadata?: unknown;
+    investigation_status?:
+      | "pending"
+      | "running"
+      | "done"
+      | "failed"
+      | "skipped"
+      | null;
+    investigation_verdict?:
+      | "true_positive"
+      | "false_positive"
+      | "inconclusive"
+      | null;
+    investigation_summary?: string | null;
+    investigation_notebook_short_id?: string | null;
+    notification_sent_at?: string | null;
+    notification_suppressed_by_agent?: boolean;
+  }[];
+  checks_total?: number | null;
+  config?:
+    | {
+        check_ongoing_interval?: boolean | null;
+        series_index?: number;
+        type?: string;
+      }
+    | {
+        column?: string | null;
+        evaluation: "last_row" | "first_row" | "any_row";
+        label_column?: string | null;
+        type?: string;
+      }
+    | {
+        funnel_step?: number | null;
+        metric: "conversion_from_start" | "conversion_from_previous";
+        type?: string;
+      }
+    | null;
+  detector_config?:
+    | {
+        detectors?: (
+          | {
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              multiplier?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              lower_bound?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              type?: string;
+              upper_bound?: number | null;
+            }
+          | {
+              n_estimators?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              method?: "largest" | "mean" | "median" | null;
+              n_neighbors?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              n_bins?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              n_neighbors?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+          | {
+              kernel?: string | null;
+              nu?: number | null;
+              preprocessing?: {
+                diffs_n?: number | null;
+                lags_n?: number | null;
+                smooth_n?: number | null;
+              } | null;
+              threshold?: number | null;
+              type?: string;
+              window?: number | null;
+            }
+        )[];
+        operator?: "and" | "or";
+        type?: string;
+      }
+    | {
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        multiplier?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        lower_bound?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        type?: string;
+        upper_bound?: number | null;
+      }
+    | {
+        n_estimators?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        method?: "largest" | "mean" | "median" | null;
+        n_neighbors?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        n_bins?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        n_neighbors?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | {
+        kernel?: string | null;
+        nu?: number | null;
+        preprocessing?: {
+          diffs_n?: number | null;
+          lags_n?: number | null;
+          smooth_n?: number | null;
+        } | null;
+        threshold?: number | null;
+        type?: string;
+        window?: number | null;
+      }
+    | null;
+  calculation_interval?:
+    | "every_15_minutes"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly";
+  snoozed_until?: string | null;
+  skip_weekend?: boolean | null;
+  schedule_restriction?: {
+    blocked_windows?: { start?: string; end?: string }[];
+  } | null;
+  last_value?: number | null;
+  investigation_agent_enabled?: boolean;
+  investigation_gates_notifications?: boolean;
+  investigation_inconclusive_action?: "notify" | "suppress";
+  search_match_type?: "exact" | "similar" | null;
+}
 export const AlertsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -154,7 +795,23 @@ export const AlertsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -170,10 +827,12 @@ export const AlertsPartialUpdateOutput =
         configuration: Schema.optional(
           Schema.Struct({
             bounds: Schema.optional(
-              Schema.Struct({
-                lower: Schema.optional(Schema.NullOr(Schema.Number)),
-                upper: Schema.optional(Schema.NullOr(Schema.Number)),
-              }),
+              Schema.NullOr(
+                Schema.Struct({
+                  lower: Schema.optional(Schema.NullOr(Schema.Number)),
+                  upper: Schema.optional(Schema.NullOr(Schema.Number)),
+                }),
+              ),
             ),
             type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
           }),
@@ -208,13 +867,31 @@ export const AlertsPartialUpdateOutput =
             Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
           ),
           targets_notified: Schema.optional(Schema.Boolean),
-          anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          anomaly_scores: Schema.optional(Schema.Unknown),
+          triggered_points: Schema.optional(Schema.Unknown),
+          triggered_dates: Schema.optional(Schema.Unknown),
           interval: Schema.optional(Schema.NullOr(Schema.String)),
-          triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          investigation_status: Schema.optional(Schema.Unknown),
-          investigation_verdict: Schema.optional(Schema.Unknown),
+          triggered_metadata: Schema.optional(Schema.Unknown),
+          investigation_status: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "pending",
+                "running",
+                "done",
+                "failed",
+                "skipped",
+              ]),
+            ),
+          ),
+          investigation_verdict: Schema.optional(
+            Schema.NullOr(
+              Schema.Literals([
+                "true_positive",
+                "false_positive",
+                "inconclusive",
+              ]),
+            ),
+          ),
           investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
           investigation_notebook_short_id: Schema.optional(
             Schema.NullOr(Schema.String),
@@ -227,18 +904,40 @@ export const AlertsPartialUpdateOutput =
     checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
     config: Schema.optional(
       Schema.NullOr(
-        Schema.Struct({
-          check_ongoing_interval: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          series_index: Schema.optional(Schema.Number),
-          type: Schema.optional(Schema.Literals(["TrendsAlertConfig"])),
-        }),
+        Schema.Union([
+          Schema.Struct({
+            check_ongoing_interval: Schema.optional(
+              Schema.NullOr(Schema.Boolean),
+            ),
+            series_index: Schema.optional(Schema.Number),
+            type: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            column: Schema.optional(Schema.NullOr(Schema.String)),
+            evaluation: Schema.Literals(["last_row", "first_row", "any_row"]),
+            label_column: Schema.optional(Schema.NullOr(Schema.String)),
+            type: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            funnel_step: Schema.optional(Schema.NullOr(Schema.Number)),
+            metric: Schema.Literals([
+              "conversion_from_start",
+              "conversion_from_previous",
+            ]),
+            type: Schema.optional(Schema.String),
+          }),
+        ]),
       ),
     ),
-    detector_config: Schema.optional(Schema.Unknown),
+    detector_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
     calculation_interval: Schema.optional(
-      Schema.Literals(["hourly", "daily", "weekly", "monthly"]),
+      Schema.Literals([
+        "every_15_minutes",
+        "hourly",
+        "daily",
+        "weekly",
+        "monthly",
+      ]),
     ),
     snoozed_until: Schema.optional(Schema.NullOr(Schema.String)),
     skip_weekend: Schema.optional(Schema.NullOr(Schema.Boolean)),
@@ -262,8 +961,10 @@ export const AlertsPartialUpdateOutput =
     investigation_inconclusive_action: Schema.optional(
       Schema.Literals(["notify", "suppress"]),
     ),
-  });
-export type AlertsPartialUpdateOutput = typeof AlertsPartialUpdateOutput.Type;
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
+    ),
+  }) as unknown as Schema.Codec<AlertsPartialUpdateOutput>;
 
 // The operation
 /**

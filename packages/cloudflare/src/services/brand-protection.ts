@@ -5,13 +5,235 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service brand-protection
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
 import { UploadableSchema } from "../schemas.ts";
+
+// =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface LogoGetResponseItem {
+  id: number;
+  r2Path: string;
+  similarityThreshold: number;
+  tag: string;
+  uploadedAt: string | null;
+  /** MIME type of the image (only present when download=true) */
+  contentType?: string | null;
+  /** Base64-encoded image data (only present when download=true) */
+  imageData?: string | null;
+}
+const LogoGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Number,
+    r2Path: Schema.String,
+    similarityThreshold: Schema.Number,
+    tag: Schema.String,
+    uploadedAt: Schema.Union([Schema.String, Schema.Null]),
+    contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      r2Path: "r2_path",
+      similarityThreshold: "similarity_threshold",
+      tag: "tag",
+      uploadedAt: "uploaded_at",
+      contentType: "content_type",
+      imageData: "image_data",
+    }),
+  ),
+) as unknown as Schema.Codec<LogoGetResponseItem>;
+
+interface Match {
+  id: number;
+  domain: string | null;
+  matchedAt: string | null;
+  queryId: number;
+  registrar: string | null;
+  similarityScore: number;
+  urlScanId: string | null;
+  contentType?: string | null;
+  imageData?: string | null;
+}
+const Match = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Number,
+    domain: Schema.Union([Schema.String, Schema.Null]),
+    matchedAt: Schema.Union([Schema.String, Schema.Null]),
+    queryId: Schema.Number,
+    registrar: Schema.Union([Schema.String, Schema.Null]),
+    similarityScore: Schema.Number,
+    urlScanId: Schema.Union([Schema.String, Schema.Null]),
+    contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      domain: "domain",
+      matchedAt: "matched_at",
+      queryId: "query_id",
+      registrar: "registrar",
+      similarityScore: "similarity_score",
+      urlScanId: "url_scan_id",
+      contentType: "content_type",
+      imageData: "image_data",
+    }),
+  ),
+) as unknown as Schema.Codec<Match>;
+
+interface PublicScans {
+  submissionId: string;
+}
+const PublicScans = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    submissionId: Schema.String,
+  }).pipe(Schema.encodeKeys({ submissionId: "submission_id" })),
+) as unknown as Schema.Codec<PublicScans>;
+
+interface MatchDetail {
+  /** Individual dismissed state for this specific match. */
+  dismissed: boolean;
+  matchId: number;
+  queryId: number;
+  /** Tag associated with the query, if one exists. */
+  queryTag: string | null;
+}
+const MatchDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dismissed: Schema.Boolean,
+    matchId: Schema.Number,
+    queryId: Schema.Number,
+    queryTag: Schema.Union([Schema.String, Schema.Null]),
+  }).pipe(
+    Schema.encodeKeys({
+      dismissed: "dismissed",
+      matchId: "match_id",
+      queryId: "query_id",
+      queryTag: "query_tag",
+    }),
+  ),
+) as unknown as Schema.Codec<MatchDetail>;
+
+interface Match2 {
+  domain: string;
+  firstSeen: string;
+  publicScans: { submissionId: string } | null;
+  registrar: string | null;
+  scanStatus: string;
+  scanSubmissionId: number | null;
+  source: string | null;
+  /** Whether the match is dismissed. Only present for single-query requests. For multi-query requests, use the dismissed field in each match_details entry. */
+  dismissed?: boolean | null;
+  /** Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested. */
+  matchDetails?:
+    | {
+        dismissed: boolean;
+        matchId: number;
+        queryId: number;
+        queryTag: string | null;
+      }[]
+    | null;
+}
+const Match2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domain: Schema.String,
+    firstSeen: Schema.String,
+    publicScans: Schema.Union([PublicScans, Schema.Null]),
+    registrar: Schema.Union([Schema.String, Schema.Null]),
+    scanStatus: Schema.String,
+    scanSubmissionId: Schema.Union([Schema.Number, Schema.Null]),
+    source: Schema.Union([Schema.String, Schema.Null]),
+    dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    matchDetails: Schema.optional(
+      Schema.Union([Schema.Array(MatchDetail), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      domain: "domain",
+      firstSeen: "first_seen",
+      publicScans: "public_scans",
+      registrar: "registrar",
+      scanStatus: "scan_status",
+      scanSubmissionId: "scan_submission_id",
+      source: "source",
+      dismissed: "dismissed",
+      matchDetails: "match_details",
+    }),
+  ),
+) as unknown as Schema.Codec<Match2>;
+
+interface StringMatch {
+  maxEditDistance: number;
+  pattern: string;
+}
+const StringMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    maxEditDistance: Schema.Number,
+    pattern: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      maxEditDistance: "max_edit_distance",
+      pattern: "pattern",
+    }),
+  ),
+) as unknown as Schema.Codec<StringMatch>;
+
+interface Parameters {
+  stringMatches: { maxEditDistance: number; pattern: string }[];
+  maxTime?: string | null;
+  minTime?: string | null;
+}
+const Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    stringMatches: Schema.Array(StringMatch),
+    maxTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    minTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      stringMatches: "string_matches",
+      maxTime: "max_time",
+      minTime: "min_time",
+    }),
+  ),
+) as unknown as Schema.Codec<Parameters>;
+
+interface QueryGetResponseItem {
+  created: string;
+  parameters: {
+    stringMatches: { maxEditDistance: number; pattern: string }[];
+    maxTime?: string | null;
+    minTime?: string | null;
+  } | null;
+  queryId: number;
+  queryTag: string;
+  scan: boolean;
+  updated: string;
+}
+const QueryGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    created: Schema.String,
+    parameters: Schema.Union([Parameters, Schema.Null]),
+    queryId: Schema.Number,
+    queryTag: Schema.String,
+    scan: Schema.Boolean,
+    updated: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      created: "created",
+      parameters: "parameters",
+      queryId: "query_id",
+      queryTag: "query_tag",
+      scan: "scan",
+      updated: "updated",
+    }),
+  ),
+) as unknown as Schema.Codec<QueryGetResponseItem>;
 
 // =============================================================================
 // BrandProtection
@@ -31,7 +253,7 @@ export const SubmitBrandProtectionRequest =
         path: "/accounts/{account_id}/brand-protection/submit",
       }),
     ),
-  ) as unknown as Schema.Schema<SubmitBrandProtectionRequest>;
+  ) as unknown as Schema.Codec<SubmitBrandProtectionRequest>;
 
 export interface SubmitBrandProtectionResponse {
   skippedUrls?: Record<string, unknown>[] | null;
@@ -59,7 +281,7 @@ export const SubmitBrandProtectionResponse =
         submittedUrls: "submitted_urls",
       }),
     ),
-  ) as unknown as Schema.Schema<SubmitBrandProtectionResponse>;
+  ) as unknown as Schema.Codec<SubmitBrandProtectionResponse>;
 
 export type SubmitBrandProtectionError = DefaultErrors;
 
@@ -92,7 +314,7 @@ export const UrlInfoBrandProtectionRequest =
         path: "/accounts/{account_id}/brand-protection/url-info",
       }),
     ),
-  ) as unknown as Schema.Schema<UrlInfoBrandProtectionRequest>;
+  ) as unknown as Schema.Codec<UrlInfoBrandProtectionRequest>;
 
 export interface UrlInfoBrandProtectionResponse {
   result: Record<string, unknown>[];
@@ -103,7 +325,7 @@ export const UrlInfoBrandProtectionResponse =
     Schema.Struct({
       result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     }),
-  ) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
+  ) as unknown as Schema.Codec<UrlInfoBrandProtectionResponse>;
 
 export type UrlInfoBrandProtectionError = DefaultErrors;
 
@@ -154,7 +376,7 @@ export const CreateLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         contentType: "multipart",
       }),
     ),
-) as unknown as Schema.Schema<CreateLogoRequest>;
+) as unknown as Schema.Codec<CreateLogoRequest>;
 
 export interface CreateLogoResponse {
   id?: number | null;
@@ -171,7 +393,7 @@ export const CreateLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       Schema.encodeKeys({ id: "id", tag: "tag", uploadPath: "upload_path" }),
     ),
-) as unknown as Schema.Schema<CreateLogoResponse>;
+) as unknown as Schema.Codec<CreateLogoResponse>;
 
 export type CreateLogoError = DefaultErrors;
 
@@ -202,13 +424,13 @@ export const DeleteLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/brand-protection/logos/{logoId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteLogoRequest>;
+) as unknown as Schema.Codec<DeleteLogoRequest>;
 
 export type DeleteLogoResponse = unknown;
 
 export const DeleteLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<DeleteLogoResponse>;
+) as unknown as Schema.Codec<DeleteLogoResponse>;
 
 export type DeleteLogoError = DefaultErrors;
 
@@ -253,7 +475,7 @@ export const GetLogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/brand-protection/logo-matches",
       }),
     ),
-) as unknown as Schema.Schema<GetLogoMatchRequest>;
+) as unknown as Schema.Codec<GetLogoMatchRequest>;
 
 export interface GetLogoMatchResponse {
   matches?: Record<string, unknown>[] | null;
@@ -271,7 +493,7 @@ export const GetLogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
-) as unknown as Schema.Schema<GetLogoMatchResponse>;
+) as unknown as Schema.Codec<GetLogoMatchResponse>;
 
 export type GetLogoMatchError = DefaultErrors;
 
@@ -312,7 +534,7 @@ export const DownloadLogoMatchRequest =
         path: "/accounts/{account_id}/brand-protection/logo-matches/download",
       }),
     ),
-  ) as unknown as Schema.Schema<DownloadLogoMatchRequest>;
+  ) as unknown as Schema.Codec<DownloadLogoMatchRequest>;
 
 export interface DownloadLogoMatchResponse {
   matches?: Record<string, unknown>[] | null;
@@ -330,7 +552,7 @@ export const DownloadLogoMatchResponse =
       ),
       total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
+  ) as unknown as Schema.Codec<DownloadLogoMatchResponse>;
 
 export type DownloadLogoMatchError = DefaultErrors;
 
@@ -377,7 +599,7 @@ export const GetMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/brand-protection/matches",
     }),
   ),
-) as unknown as Schema.Schema<GetMatchRequest>;
+) as unknown as Schema.Codec<GetMatchRequest>;
 
 export interface GetMatchResponse {
   matches?: Record<string, unknown>[] | null;
@@ -394,7 +616,7 @@ export const GetMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     ),
     total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }),
-) as unknown as Schema.Schema<GetMatchResponse>;
+) as unknown as Schema.Codec<GetMatchResponse>;
 
 export type GetMatchError = DefaultErrors;
 
@@ -438,7 +660,7 @@ export const DownloadMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/brand-protection/matches/download",
       }),
     ),
-) as unknown as Schema.Schema<DownloadMatchRequest>;
+) as unknown as Schema.Codec<DownloadMatchRequest>;
 
 export interface DownloadMatchResponse {
   matches?: Record<string, unknown>[] | null;
@@ -456,7 +678,7 @@ export const DownloadMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
-) as unknown as Schema.Schema<DownloadMatchResponse>;
+) as unknown as Schema.Codec<DownloadMatchResponse>;
 
 export type DownloadMatchError = DefaultErrors;
 
@@ -523,13 +745,13 @@ export const CreateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/brand-protection/queries",
       }),
     ),
-) as unknown as Schema.Schema<CreateQueryRequest>;
+) as unknown as Schema.Codec<CreateQueryRequest>;
 
 export type CreateQueryResponse = unknown;
 
 export const CreateQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<CreateQueryResponse>;
+) as unknown as Schema.Codec<CreateQueryResponse>;
 
 export type CreateQueryError = DefaultErrors;
 
@@ -568,13 +790,13 @@ export const DeleteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/brand-protection/queries",
       }),
     ),
-) as unknown as Schema.Schema<DeleteQueryRequest>;
+) as unknown as Schema.Codec<DeleteQueryRequest>;
 
 export type DeleteQueryResponse = unknown;
 
 export const DeleteQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<DeleteQueryResponse>;
+) as unknown as Schema.Codec<DeleteQueryResponse>;
 
 export type DeleteQueryError = DefaultErrors;
 
@@ -608,13 +830,13 @@ export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/brand-protection/queries/bulk",
     }),
   ),
-) as unknown as Schema.Schema<BulkQueryRequest>;
+) as unknown as Schema.Codec<BulkQueryRequest>;
 
 export type BulkQueryResponse = unknown;
 
 export const BulkQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<BulkQueryResponse>;
+) as unknown as Schema.Codec<BulkQueryResponse>;
 
 export type BulkQueryError = DefaultErrors;
 
@@ -653,7 +875,7 @@ export const GetV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
     }),
   ),
-) as unknown as Schema.Schema<GetV2LogoRequest>;
+) as unknown as Schema.Codec<GetV2LogoRequest>;
 
 export type GetV2LogoResponse = {
   id: number;
@@ -666,31 +888,8 @@ export type GetV2LogoResponse = {
 }[];
 
 export const GetV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        r2Path: Schema.String,
-        similarityThreshold: Schema.Number,
-        tag: Schema.String,
-        uploadedAt: Schema.Union([Schema.String, Schema.Null]),
-        contentType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          r2Path: "r2_path",
-          similarityThreshold: "similarity_threshold",
-          tag: "tag",
-          uploadedAt: "uploaded_at",
-          contentType: "content_type",
-          imageData: "image_data",
-        }),
-      ),
-    ),
-) as unknown as Schema.Schema<GetV2LogoResponse>;
+  () => Schema.Array(LogoGetResponseItem),
+) as unknown as Schema.Codec<GetV2LogoResponse>;
 
 export type GetV2LogoError = DefaultErrors;
 
@@ -738,7 +937,7 @@ export const CreateV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
       }),
     ),
-) as unknown as Schema.Schema<CreateV2LogoRequest>;
+) as unknown as Schema.Codec<CreateV2LogoRequest>;
 
 export interface CreateV2LogoResponse {
   message: string;
@@ -759,7 +958,7 @@ export const CreateV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         queryId: "query_id",
       }),
     ),
-) as unknown as Schema.Schema<CreateV2LogoResponse>;
+) as unknown as Schema.Codec<CreateV2LogoResponse>;
 
 export type CreateV2LogoError = DefaultErrors;
 
@@ -790,7 +989,7 @@ export const DeleteV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{queryId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteV2LogoRequest>;
+) as unknown as Schema.Codec<DeleteV2LogoRequest>;
 
 export interface DeleteV2LogoResponse {
   message: string;
@@ -803,7 +1002,7 @@ export const DeleteV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       message: Schema.String,
       success: Schema.Boolean,
     }),
-) as unknown as Schema.Schema<DeleteV2LogoResponse>;
+) as unknown as Schema.Codec<DeleteV2LogoResponse>;
 
 export type DeleteV2LogoError = DefaultErrors;
 
@@ -872,7 +1071,7 @@ export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches",
       }),
     ),
-) as unknown as Schema.Schema<GetV2LogoMatchRequest>;
+) as unknown as Schema.Codec<GetV2LogoMatchRequest>;
 
 export interface GetV2LogoMatchResponse {
   matches: {
@@ -892,38 +1091,10 @@ export interface GetV2LogoMatchResponse {
 export const GetV2LogoMatchResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      matches: Schema.Array(
-        Schema.Struct({
-          id: Schema.Number,
-          domain: Schema.Union([Schema.String, Schema.Null]),
-          matchedAt: Schema.Union([Schema.String, Schema.Null]),
-          queryId: Schema.Number,
-          registrar: Schema.Union([Schema.String, Schema.Null]),
-          similarityScore: Schema.Number,
-          urlScanId: Schema.Union([Schema.String, Schema.Null]),
-          contentType: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          imageData: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            domain: "domain",
-            matchedAt: "matched_at",
-            queryId: "query_id",
-            registrar: "registrar",
-            similarityScore: "similarity_score",
-            urlScanId: "url_scan_id",
-            contentType: "content_type",
-            imageData: "image_data",
-          }),
-        ),
-      ),
+      matches: Schema.Array(Match),
       total: Schema.Number,
     }),
-  ) as unknown as Schema.Schema<GetV2LogoMatchResponse>;
+  ) as unknown as Schema.Codec<GetV2LogoMatchResponse>;
 
 export type GetV2LogoMatchError = DefaultErrors;
 
@@ -994,7 +1165,7 @@ export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches",
       }),
     ),
-) as unknown as Schema.Schema<GetV2MatchRequest>;
+) as unknown as Schema.Codec<GetV2MatchRequest>;
 
 export interface GetV2MatchResponse {
   matches: {
@@ -1021,60 +1192,10 @@ export interface GetV2MatchResponse {
 export const GetV2MatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      matches: Schema.Array(
-        Schema.Struct({
-          domain: Schema.String,
-          firstSeen: Schema.String,
-          publicScans: Schema.Union([
-            Schema.Struct({
-              submissionId: Schema.String,
-            }).pipe(Schema.encodeKeys({ submissionId: "submission_id" })),
-            Schema.Null,
-          ]),
-          registrar: Schema.Union([Schema.String, Schema.Null]),
-          scanStatus: Schema.String,
-          scanSubmissionId: Schema.Union([Schema.Number, Schema.Null]),
-          source: Schema.Union([Schema.String, Schema.Null]),
-          dismissed: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          matchDetails: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  dismissed: Schema.Boolean,
-                  matchId: Schema.Number,
-                  queryId: Schema.Number,
-                  queryTag: Schema.Union([Schema.String, Schema.Null]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    dismissed: "dismissed",
-                    matchId: "match_id",
-                    queryId: "query_id",
-                    queryTag: "query_tag",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            domain: "domain",
-            firstSeen: "first_seen",
-            publicScans: "public_scans",
-            registrar: "registrar",
-            scanStatus: "scan_status",
-            scanSubmissionId: "scan_submission_id",
-            source: "source",
-            dismissed: "dismissed",
-            matchDetails: "match_details",
-          }),
-        ),
-      ),
+      matches: Schema.Array(Match2),
       total: Schema.Number,
     }),
-) as unknown as Schema.Schema<GetV2MatchResponse>;
+) as unknown as Schema.Codec<GetV2MatchResponse>;
 
 export type GetV2MatchError = DefaultErrors;
 
@@ -1111,7 +1232,7 @@ export const GetV2QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries",
       }),
     ),
-) as unknown as Schema.Schema<GetV2QueryRequest>;
+) as unknown as Schema.Codec<GetV2QueryRequest>;
 
 export type GetV2QueryResponse = {
   created: string;
@@ -1127,54 +1248,8 @@ export type GetV2QueryResponse = {
 }[];
 
 export const GetV2QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Array(
-      Schema.Struct({
-        created: Schema.String,
-        parameters: Schema.Union([
-          Schema.Struct({
-            stringMatches: Schema.Array(
-              Schema.Struct({
-                maxEditDistance: Schema.Number,
-                pattern: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  maxEditDistance: "max_edit_distance",
-                  pattern: "pattern",
-                }),
-              ),
-            ),
-            maxTime: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            minTime: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              stringMatches: "string_matches",
-              maxTime: "max_time",
-              minTime: "min_time",
-            }),
-          ),
-          Schema.Null,
-        ]),
-        queryId: Schema.Number,
-        queryTag: Schema.String,
-        scan: Schema.Boolean,
-        updated: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          created: "created",
-          parameters: "parameters",
-          queryId: "query_id",
-          queryTag: "query_tag",
-          scan: "scan",
-          updated: "updated",
-        }),
-      ),
-    ),
-) as unknown as Schema.Schema<GetV2QueryResponse>;
+  () => Schema.Array(QueryGetResponseItem),
+) as unknown as Schema.Codec<GetV2QueryResponse>;
 
 export type GetV2QueryError = DefaultErrors;
 

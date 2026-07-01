@@ -4,12 +4,25 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RevokeApiKeyInput {
+  key_id: number;
+}
 export const RevokeApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   key_id: Schema.Number.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/api_keys/{key_id}" }));
-export type RevokeApiKeyInput = typeof RevokeApiKeyInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/api_keys/{key_id}" }),
+) as unknown as Schema.Codec<RevokeApiKeyInput>;
 
 // Output Schema
+export interface RevokeApiKeyOutput {
+  id: number;
+  name: string;
+  created_at: string;
+  created_by: string;
+  last_used_at?: string | null;
+  last_used_from_addr: string;
+  revoked: boolean;
+}
 export const RevokeApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
@@ -18,8 +31,7 @@ export const RevokeApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
   last_used_from_addr: Schema.String,
   revoked: Schema.Boolean,
-});
-export type RevokeApiKeyOutput = typeof RevokeApiKeyOutput.Type;
+}) as unknown as Schema.Codec<RevokeApiKeyOutput>;
 
 // The operation
 /**
@@ -28,9 +40,8 @@ export type RevokeApiKeyOutput = typeof RevokeApiKeyOutput.Type;
  * Revokes the specified API key.
  * An API key that is no longer needed can be revoked.
  * This action cannot be reversed.
- * You can obtain `key_id` values by listing the API keys for your Neon account.
  * API keys can also be managed in the Neon Console.
- * See [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * See [Manage API keys](https://neon.com/docs/manage/api-keys/).
  *
  * @param key_id - The API key ID
  */

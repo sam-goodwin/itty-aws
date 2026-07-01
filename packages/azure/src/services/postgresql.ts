@@ -4,12 +4,24 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AdministratorsMicrosoftEntraCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  objectId: string;
+  properties?: {
+    principalType?: "Unknown" | "User" | "Group" | "ServicePrincipal";
+    principalName?: string;
+    tenantId?: string;
+  };
+}
 export const AdministratorsMicrosoftEntraCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -31,15 +43,12 @@ export const AdministratorsMicrosoftEntraCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdministratorsMicrosoftEntraCreateOrUpdateInput =
-  typeof AdministratorsMicrosoftEntraCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AdministratorsMicrosoftEntraCreateOrUpdateInput>;
 
 // Output Schema
+export type AdministratorsMicrosoftEntraCreateOrUpdateOutput = void;
 export const AdministratorsMicrosoftEntraCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AdministratorsMicrosoftEntraCreateOrUpdateOutput =
-  typeof AdministratorsMicrosoftEntraCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AdministratorsMicrosoftEntraCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -57,6 +66,12 @@ export const AdministratorsMicrosoftEntraCreateOrUpdate =
     outputSchema: AdministratorsMicrosoftEntraCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AdministratorsMicrosoftEntraDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  objectId: string;
+}
 export const AdministratorsMicrosoftEntraDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -69,15 +84,12 @@ export const AdministratorsMicrosoftEntraDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdministratorsMicrosoftEntraDeleteInput =
-  typeof AdministratorsMicrosoftEntraDeleteInput.Type;
+  ) as unknown as Schema.Codec<AdministratorsMicrosoftEntraDeleteInput>;
 
 // Output Schema
+export type AdministratorsMicrosoftEntraDeleteOutput = void;
 export const AdministratorsMicrosoftEntraDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AdministratorsMicrosoftEntraDeleteOutput =
-  typeof AdministratorsMicrosoftEntraDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AdministratorsMicrosoftEntraDeleteOutput>;
 
 // The operation
 /**
@@ -95,6 +107,12 @@ export const AdministratorsMicrosoftEntraDelete =
     outputSchema: AdministratorsMicrosoftEntraDeleteOutput,
   }));
 // Input Schema
+export interface AdministratorsMicrosoftEntraGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  objectId: string;
+}
 export const AdministratorsMicrosoftEntraGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -107,11 +125,22 @@ export const AdministratorsMicrosoftEntraGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdministratorsMicrosoftEntraGetInput =
-  typeof AdministratorsMicrosoftEntraGetInput.Type;
+  ) as unknown as Schema.Codec<AdministratorsMicrosoftEntraGetInput>;
 
 // Output Schema
+export interface AdministratorsMicrosoftEntraGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AdministratorsMicrosoftEntraGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -131,9 +160,7 @@ export const AdministratorsMicrosoftEntraGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AdministratorsMicrosoftEntraGetOutput =
-  typeof AdministratorsMicrosoftEntraGetOutput.Type;
+  }) as unknown as Schema.Codec<AdministratorsMicrosoftEntraGetOutput>;
 
 // The operation
 /**
@@ -151,6 +178,11 @@ export const AdministratorsMicrosoftEntraGet =
     outputSchema: AdministratorsMicrosoftEntraGetOutput,
   }));
 // Input Schema
+export interface AdministratorsMicrosoftEntraListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const AdministratorsMicrosoftEntraListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -162,11 +194,25 @@ export const AdministratorsMicrosoftEntraListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdministratorsMicrosoftEntraListByServerInput =
-  typeof AdministratorsMicrosoftEntraListByServerInput.Type;
+  ) as unknown as Schema.Codec<AdministratorsMicrosoftEntraListByServerInput>;
 
 // Output Schema
+export interface AdministratorsMicrosoftEntraListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AdministratorsMicrosoftEntraListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -201,9 +247,7 @@ export const AdministratorsMicrosoftEntraListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AdministratorsMicrosoftEntraListByServerOutput =
-  typeof AdministratorsMicrosoftEntraListByServerOutput.Type;
+  }) as unknown as Schema.Codec<AdministratorsMicrosoftEntraListByServerOutput>;
 
 // The operation
 /**
@@ -220,6 +264,12 @@ export const AdministratorsMicrosoftEntraListByServer =
     outputSchema: AdministratorsMicrosoftEntraListByServerOutput,
   }));
 // Input Schema
+export interface AdvancedThreatProtectionSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  threatProtectionName: "Default";
+}
 export const AdvancedThreatProtectionSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -232,11 +282,22 @@ export const AdvancedThreatProtectionSettingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{threatProtectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdvancedThreatProtectionSettingsGetInput =
-  typeof AdvancedThreatProtectionSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<AdvancedThreatProtectionSettingsGetInput>;
 
 // Output Schema
+export interface AdvancedThreatProtectionSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AdvancedThreatProtectionSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -256,9 +317,7 @@ export const AdvancedThreatProtectionSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AdvancedThreatProtectionSettingsGetOutput =
-  typeof AdvancedThreatProtectionSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedThreatProtectionSettingsGetOutput>;
 
 // The operation
 /**
@@ -276,6 +335,11 @@ export const AdvancedThreatProtectionSettingsGet =
     outputSchema: AdvancedThreatProtectionSettingsGetOutput,
   }));
 // Input Schema
+export interface AdvancedThreatProtectionSettingsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const AdvancedThreatProtectionSettingsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -287,11 +351,25 @@ export const AdvancedThreatProtectionSettingsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/advancedThreatProtectionSettings",
       apiVersion: "2025-08-01",
     }),
-  );
-export type AdvancedThreatProtectionSettingsListByServerInput =
-  typeof AdvancedThreatProtectionSettingsListByServerInput.Type;
+  ) as unknown as Schema.Codec<AdvancedThreatProtectionSettingsListByServerInput>;
 
 // Output Schema
+export interface AdvancedThreatProtectionSettingsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AdvancedThreatProtectionSettingsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -326,9 +404,7 @@ export const AdvancedThreatProtectionSettingsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AdvancedThreatProtectionSettingsListByServerOutput =
-  typeof AdvancedThreatProtectionSettingsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<AdvancedThreatProtectionSettingsListByServerOutput>;
 
 // The operation
 /**
@@ -345,6 +421,12 @@ export const AdvancedThreatProtectionSettingsListByServer =
     outputSchema: AdvancedThreatProtectionSettingsListByServerOutput,
   }));
 // Input Schema
+export interface BackupsAutomaticAndOnDemandCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  backupName: string;
+}
 export const BackupsAutomaticAndOnDemandCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -357,15 +439,12 @@ export const BackupsAutomaticAndOnDemandCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsAutomaticAndOnDemandCreateInput =
-  typeof BackupsAutomaticAndOnDemandCreateInput.Type;
+  ) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandCreateInput>;
 
 // Output Schema
+export type BackupsAutomaticAndOnDemandCreateOutput = void;
 export const BackupsAutomaticAndOnDemandCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BackupsAutomaticAndOnDemandCreateOutput =
-  typeof BackupsAutomaticAndOnDemandCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsAutomaticAndOnDemandCreateOutput>;
 
 // The operation
 /**
@@ -383,6 +462,12 @@ export const BackupsAutomaticAndOnDemandCreate =
     outputSchema: BackupsAutomaticAndOnDemandCreateOutput,
   }));
 // Input Schema
+export interface BackupsAutomaticAndOnDemandDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  backupName: string;
+}
 export const BackupsAutomaticAndOnDemandDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -395,15 +480,12 @@ export const BackupsAutomaticAndOnDemandDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsAutomaticAndOnDemandDeleteInput =
-  typeof BackupsAutomaticAndOnDemandDeleteInput.Type;
+  ) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandDeleteInput>;
 
 // Output Schema
+export type BackupsAutomaticAndOnDemandDeleteOutput = void;
 export const BackupsAutomaticAndOnDemandDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BackupsAutomaticAndOnDemandDeleteOutput =
-  typeof BackupsAutomaticAndOnDemandDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BackupsAutomaticAndOnDemandDeleteOutput>;
 
 // The operation
 /**
@@ -421,6 +503,12 @@ export const BackupsAutomaticAndOnDemandDelete =
     outputSchema: BackupsAutomaticAndOnDemandDeleteOutput,
   }));
 // Input Schema
+export interface BackupsAutomaticAndOnDemandGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  backupName: string;
+}
 export const BackupsAutomaticAndOnDemandGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -433,11 +521,22 @@ export const BackupsAutomaticAndOnDemandGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsAutomaticAndOnDemandGetInput =
-  typeof BackupsAutomaticAndOnDemandGetInput.Type;
+  ) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandGetInput>;
 
 // Output Schema
+export interface BackupsAutomaticAndOnDemandGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BackupsAutomaticAndOnDemandGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -457,9 +556,7 @@ export const BackupsAutomaticAndOnDemandGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BackupsAutomaticAndOnDemandGetOutput =
-  typeof BackupsAutomaticAndOnDemandGetOutput.Type;
+  }) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandGetOutput>;
 
 // The operation
 /**
@@ -477,6 +574,11 @@ export const BackupsAutomaticAndOnDemandGet =
     outputSchema: BackupsAutomaticAndOnDemandGetOutput,
   }));
 // Input Schema
+export interface BackupsAutomaticAndOnDemandListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const BackupsAutomaticAndOnDemandListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -488,11 +590,25 @@ export const BackupsAutomaticAndOnDemandListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsAutomaticAndOnDemandListByServerInput =
-  typeof BackupsAutomaticAndOnDemandListByServerInput.Type;
+  ) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandListByServerInput>;
 
 // Output Schema
+export interface BackupsAutomaticAndOnDemandListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BackupsAutomaticAndOnDemandListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -527,9 +643,7 @@ export const BackupsAutomaticAndOnDemandListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BackupsAutomaticAndOnDemandListByServerOutput =
-  typeof BackupsAutomaticAndOnDemandListByServerOutput.Type;
+  }) as unknown as Schema.Codec<BackupsAutomaticAndOnDemandListByServerOutput>;
 
 // The operation
 /**
@@ -546,6 +660,12 @@ export const BackupsAutomaticAndOnDemandListByServer =
     outputSchema: BackupsAutomaticAndOnDemandListByServerOutput,
   }));
 // Input Schema
+export interface BackupsLongTermRetentionCheckPrerequisitesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  backupSettings: { backupName: string };
+}
 export const BackupsLongTermRetentionCheckPrerequisitesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -560,19 +680,18 @@ export const BackupsLongTermRetentionCheckPrerequisitesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrPreBackup",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsLongTermRetentionCheckPrerequisitesInput =
-  typeof BackupsLongTermRetentionCheckPrerequisitesInput.Type;
+  ) as unknown as Schema.Codec<BackupsLongTermRetentionCheckPrerequisitesInput>;
 
 // Output Schema
+export interface BackupsLongTermRetentionCheckPrerequisitesOutput {
+  properties: { numberOfContainers: number };
+}
 export const BackupsLongTermRetentionCheckPrerequisitesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       numberOfContainers: Schema.Number,
     }),
-  });
-export type BackupsLongTermRetentionCheckPrerequisitesOutput =
-  typeof BackupsLongTermRetentionCheckPrerequisitesOutput.Type;
+  }) as unknown as Schema.Codec<BackupsLongTermRetentionCheckPrerequisitesOutput>;
 
 // The operation
 /**
@@ -589,6 +708,12 @@ export const BackupsLongTermRetentionCheckPrerequisites =
     outputSchema: BackupsLongTermRetentionCheckPrerequisitesOutput,
   }));
 // Input Schema
+export interface BackupsLongTermRetentionGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  backupName: string;
+}
 export const BackupsLongTermRetentionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -601,11 +726,22 @@ export const BackupsLongTermRetentionGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrBackupOperations/{backupName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsLongTermRetentionGetInput =
-  typeof BackupsLongTermRetentionGetInput.Type;
+  ) as unknown as Schema.Codec<BackupsLongTermRetentionGetInput>;
 
 // Output Schema
+export interface BackupsLongTermRetentionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BackupsLongTermRetentionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -625,9 +761,7 @@ export const BackupsLongTermRetentionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BackupsLongTermRetentionGetOutput =
-  typeof BackupsLongTermRetentionGetOutput.Type;
+  }) as unknown as Schema.Codec<BackupsLongTermRetentionGetOutput>;
 
 // The operation
 /**
@@ -646,6 +780,11 @@ export const BackupsLongTermRetentionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BackupsLongTermRetentionListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const BackupsLongTermRetentionListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -657,11 +796,25 @@ export const BackupsLongTermRetentionListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrBackupOperations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsLongTermRetentionListByServerInput =
-  typeof BackupsLongTermRetentionListByServerInput.Type;
+  ) as unknown as Schema.Codec<BackupsLongTermRetentionListByServerInput>;
 
 // Output Schema
+export interface BackupsLongTermRetentionListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BackupsLongTermRetentionListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -696,9 +849,7 @@ export const BackupsLongTermRetentionListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BackupsLongTermRetentionListByServerOutput =
-  typeof BackupsLongTermRetentionListByServerOutput.Type;
+  }) as unknown as Schema.Codec<BackupsLongTermRetentionListByServerOutput>;
 
 // The operation
 /**
@@ -715,6 +866,13 @@ export const BackupsLongTermRetentionListByServer =
     outputSchema: BackupsLongTermRetentionListByServerOutput,
   }));
 // Input Schema
+export interface BackupsLongTermRetentionStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  targetDetails: { sasUriList: string[] };
+  backupSettings: { backupName: string };
+}
 export const BackupsLongTermRetentionStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -732,11 +890,23 @@ export const BackupsLongTermRetentionStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/startLtrBackup",
       apiVersion: "2025-08-01",
     }),
-  );
-export type BackupsLongTermRetentionStartInput =
-  typeof BackupsLongTermRetentionStartInput.Type;
+  ) as unknown as Schema.Codec<BackupsLongTermRetentionStartInput>;
 
 // Output Schema
+export interface BackupsLongTermRetentionStartOutput {
+  properties?: {
+    datasourceSizeInBytes?: number;
+    dataTransferredInBytes?: number;
+    backupName?: string;
+    backupMetadata?: string;
+    status: "Running" | "Cancelled" | "Failed" | "Succeeded";
+    startTime: string;
+    endTime?: string;
+    percentComplete?: number;
+    errorCode?: string;
+    errorMessage?: string;
+  };
+}
 export const BackupsLongTermRetentionStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -758,9 +928,7 @@ export const BackupsLongTermRetentionStartOutput =
         errorMessage: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BackupsLongTermRetentionStartOutput =
-  typeof BackupsLongTermRetentionStartOutput.Type;
+  }) as unknown as Schema.Codec<BackupsLongTermRetentionStartOutput>;
 
 // The operation
 /**
@@ -777,6 +945,10 @@ export const BackupsLongTermRetentionStart =
     outputSchema: BackupsLongTermRetentionStartOutput,
   }));
 // Input Schema
+export interface CapabilitiesByLocationListInput {
+  subscriptionId: string;
+  locationName: string;
+}
 export const CapabilitiesByLocationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -787,11 +959,16 @@ export const CapabilitiesByLocationListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities",
       apiVersion: "2025-08-01",
     }),
-  );
-export type CapabilitiesByLocationListInput =
-  typeof CapabilitiesByLocationListInput.Type;
+  ) as unknown as Schema.Codec<CapabilitiesByLocationListInput>;
 
 // Output Schema
+export interface CapabilitiesByLocationListOutput {
+  value: {
+    status?: "Visible" | "Available" | "Default" | "Disabled";
+    reason?: string;
+  }[];
+  nextLink?: string;
+}
 export const CapabilitiesByLocationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -803,9 +980,7 @@ export const CapabilitiesByLocationListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CapabilitiesByLocationListOutput =
-  typeof CapabilitiesByLocationListOutput.Type;
+  }) as unknown as Schema.Codec<CapabilitiesByLocationListOutput>;
 
 // The operation
 /**
@@ -822,6 +997,11 @@ export const CapabilitiesByLocationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CapabilitiesByServerListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const CapabilitiesByServerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -833,11 +1013,16 @@ export const CapabilitiesByServerListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/capabilities",
       apiVersion: "2025-08-01",
     }),
-  );
-export type CapabilitiesByServerListInput =
-  typeof CapabilitiesByServerListInput.Type;
+  ) as unknown as Schema.Codec<CapabilitiesByServerListInput>;
 
 // Output Schema
+export interface CapabilitiesByServerListOutput {
+  value: {
+    status?: "Visible" | "Available" | "Default" | "Disabled";
+    reason?: string;
+  }[];
+  nextLink?: string;
+}
 export const CapabilitiesByServerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -849,9 +1034,7 @@ export const CapabilitiesByServerListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CapabilitiesByServerListOutput =
-  typeof CapabilitiesByServerListOutput.Type;
+  }) as unknown as Schema.Codec<CapabilitiesByServerListOutput>;
 
 // The operation
 /**
@@ -869,6 +1052,11 @@ export const CapabilitiesByServerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CapturedLogsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const CapturedLogsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -880,11 +1068,25 @@ export const CapturedLogsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/logFiles",
       apiVersion: "2025-08-01",
     }),
-  );
-export type CapturedLogsListByServerInput =
-  typeof CapturedLogsListByServerInput.Type;
+  ) as unknown as Schema.Codec<CapturedLogsListByServerInput>;
 
 // Output Schema
+export interface CapturedLogsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CapturedLogsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -919,9 +1121,7 @@ export const CapturedLogsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CapturedLogsListByServerOutput =
-  typeof CapturedLogsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<CapturedLogsListByServerOutput>;
 
 // The operation
 /**
@@ -939,6 +1139,12 @@ export const CapturedLogsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  configurationName: string;
+}
 export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -952,10 +1158,22 @@ export const ConfigurationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ConfigurationsGetInput = typeof ConfigurationsGetInput.Type;
+) as unknown as Schema.Codec<ConfigurationsGetInput>;
 
 // Output Schema
+export interface ConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -975,8 +1193,7 @@ export const ConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationsGetOutput = typeof ConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -993,6 +1210,11 @@ export const ConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsGetOutput,
 }));
 // Input Schema
+export interface ConfigurationsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ConfigurationsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1004,11 +1226,25 @@ export const ConfigurationsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsListByServerInput =
-  typeof ConfigurationsListByServerInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsListByServerInput>;
 
 // Output Schema
+export interface ConfigurationsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1043,9 +1279,7 @@ export const ConfigurationsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationsListByServerOutput =
-  typeof ConfigurationsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationsListByServerOutput>;
 
 // The operation
 /**
@@ -1063,6 +1297,31 @@ export const ConfigurationsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  configurationName: string;
+  properties?: {
+    value?: string;
+    description?: string;
+    defaultValue?: string;
+    dataType?:
+      | "Boolean"
+      | "Numeric"
+      | "Integer"
+      | "Enumeration"
+      | "String"
+      | "Set";
+    allowedValues?: string;
+    source?: string;
+    isDynamicConfig?: boolean;
+    isReadOnly?: boolean;
+    isConfigPendingRestart?: boolean;
+    unit?: string;
+    documentationLink?: string;
+  };
+}
 export const ConfigurationsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1100,12 +1359,12 @@ export const ConfigurationsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ConfigurationsPutInput = typeof ConfigurationsPutInput.Type;
+) as unknown as Schema.Codec<ConfigurationsPutInput>;
 
 // Output Schema
-export const ConfigurationsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationsPutOutput = typeof ConfigurationsPutOutput.Type;
+export type ConfigurationsPutOutput = void;
+export const ConfigurationsPutOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationsPutOutput>;
 
 // The operation
 /**
@@ -1122,6 +1381,31 @@ export const ConfigurationsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConfigurationsPutOutput,
 }));
 // Input Schema
+export interface ConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  configurationName: string;
+  properties?: {
+    value?: string;
+    description?: string;
+    defaultValue?: string;
+    dataType?:
+      | "Boolean"
+      | "Numeric"
+      | "Integer"
+      | "Enumeration"
+      | "String"
+      | "Set";
+    allowedValues?: string;
+    source?: string;
+    isDynamicConfig?: boolean;
+    isReadOnly?: boolean;
+    isConfigPendingRestart?: boolean;
+    unit?: string;
+    documentationLink?: string;
+  };
+}
 export const ConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1158,13 +1442,12 @@ export const ConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationsUpdateInput>;
 
 // Output Schema
+export type ConfigurationsUpdateOutput = void;
 export const ConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationsUpdateOutput = typeof ConfigurationsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -1183,6 +1466,13 @@ export const ConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  databaseName: string;
+  properties?: { charset?: string; collation?: string };
+}
 export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1200,12 +1490,12 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
+) as unknown as Schema.Codec<DatabasesCreateInput>;
 
 // Output Schema
-export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabasesCreateOutput = typeof DatabasesCreateOutput.Type;
+export type DatabasesCreateOutput = void;
+export const DatabasesCreateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesCreateOutput>;
 
 // The operation
 /**
@@ -1222,6 +1512,12 @@ export const DatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesCreateOutput,
 }));
 // Input Schema
+export interface DatabasesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  databaseName: string;
+}
 export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1233,12 +1529,12 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
+) as unknown as Schema.Codec<DatabasesDeleteInput>;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
+export type DatabasesDeleteOutput = void;
+export const DatabasesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
 
 // The operation
 /**
@@ -1255,6 +1551,12 @@ export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesDeleteOutput,
 }));
 // Input Schema
+export interface DatabasesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  databaseName: string;
+}
 export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1266,10 +1568,22 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type DatabasesGetInput = typeof DatabasesGetInput.Type;
+) as unknown as Schema.Codec<DatabasesGetInput>;
 
 // Output Schema
+export interface DatabasesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1288,8 +1602,7 @@ export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
+}) as unknown as Schema.Codec<DatabasesGetOutput>;
 
 // The operation
 /**
@@ -1306,6 +1619,11 @@ export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesGetOutput,
 }));
 // Input Schema
+export interface DatabasesListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const DatabasesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1317,10 +1635,25 @@ export const DatabasesListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases",
       apiVersion: "2025-08-01",
     }),
-  );
-export type DatabasesListByServerInput = typeof DatabasesListByServerInput.Type;
+  ) as unknown as Schema.Codec<DatabasesListByServerInput>;
 
 // Output Schema
+export interface DatabasesListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabasesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1355,9 +1688,7 @@ export const DatabasesListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesListByServerOutput =
-  typeof DatabasesListByServerOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesListByServerOutput>;
 
 // The operation
 /**
@@ -1375,6 +1706,13 @@ export const DatabasesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirewallRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  firewallRuleName: string;
+  properties: { startIpAddress: string; endIpAddress: string };
+}
 export const FirewallRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1391,15 +1729,12 @@ export const FirewallRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type FirewallRulesCreateOrUpdateInput =
-  typeof FirewallRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesCreateOrUpdateInput>;
 
 // Output Schema
+export type FirewallRulesCreateOrUpdateOutput = void;
 export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FirewallRulesCreateOrUpdateOutput =
-  typeof FirewallRulesCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1418,6 +1753,12 @@ export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FirewallRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1430,13 +1771,12 @@ export const FirewallRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesDeleteInput>;
 
 // Output Schema
+export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FirewallRulesDeleteOutput = typeof FirewallRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -1453,6 +1793,12 @@ export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesDeleteOutput,
 }));
 // Input Schema
+export interface FirewallRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  firewallRuleName: string;
+}
 export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1464,10 +1810,22 @@ export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type FirewallRulesGetInput = typeof FirewallRulesGetInput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetInput>;
 
 // Output Schema
+export interface FirewallRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1488,8 +1846,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type FirewallRulesGetOutput = typeof FirewallRulesGetOutput.Type;
+) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -1506,6 +1863,11 @@ export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FirewallRulesGetOutput,
 }));
 // Input Schema
+export interface FirewallRulesListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const FirewallRulesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1517,11 +1879,25 @@ export const FirewallRulesListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules",
       apiVersion: "2025-08-01",
     }),
-  );
-export type FirewallRulesListByServerInput =
-  typeof FirewallRulesListByServerInput.Type;
+  ) as unknown as Schema.Codec<FirewallRulesListByServerInput>;
 
 // Output Schema
+export interface FirewallRulesListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FirewallRulesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1556,9 +1932,7 @@ export const FirewallRulesListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FirewallRulesListByServerOutput =
-  typeof FirewallRulesListByServerOutput.Type;
+  }) as unknown as Schema.Codec<FirewallRulesListByServerOutput>;
 
 // The operation
 /**
@@ -1576,6 +1950,12 @@ export const FirewallRulesListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MigrationsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  migrationName: string;
+}
 export const MigrationsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1587,10 +1967,22 @@ export const MigrationsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type MigrationsCancelInput = typeof MigrationsCancelInput.Type;
+) as unknown as Schema.Codec<MigrationsCancelInput>;
 
 // Output Schema
+export interface MigrationsCancelOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1611,8 +2003,7 @@ export const MigrationsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type MigrationsCancelOutput = typeof MigrationsCancelOutput.Type;
+) as unknown as Schema.Codec<MigrationsCancelOutput>;
 
 // The operation
 /**
@@ -1629,6 +2020,16 @@ export const MigrationsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MigrationsCancelOutput,
 }));
 // Input Schema
+export interface MigrationsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  name: string;
+  type: string;
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const MigrationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1645,11 +2046,16 @@ export const MigrationsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/checkMigrationNameAvailability",
       apiVersion: "2025-08-01",
     }),
-  );
-export type MigrationsCheckNameAvailabilityInput =
-  typeof MigrationsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<MigrationsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface MigrationsCheckNameAvailabilityOutput {
+  name: string;
+  type: string;
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const MigrationsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -1657,9 +2063,7 @@ export const MigrationsCheckNameAvailabilityOutput =
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type MigrationsCheckNameAvailabilityOutput =
-  typeof MigrationsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<MigrationsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -1678,6 +2082,166 @@ export const MigrationsCheckNameAvailability =
     outputSchema: MigrationsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface MigrationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  migrationName: string;
+  properties?: {
+    migrationId?: string;
+    currentStatus?: {
+      state?:
+        | "InProgress"
+        | "WaitingForUserAction"
+        | "Canceled"
+        | "Failed"
+        | "Succeeded"
+        | "ValidationFailed"
+        | "CleaningUp";
+      error?: string;
+      currentSubStateDetails?: {
+        currentSubState?:
+          | "PerformingPreRequisiteSteps"
+          | "WaitingForLogicalReplicationSetupRequestOnSourceDB"
+          | "WaitingForDBsToMigrateSpecification"
+          | "WaitingForTargetDBOverwriteConfirmation"
+          | "WaitingForDataMigrationScheduling"
+          | "WaitingForDataMigrationWindow"
+          | "MigratingData"
+          | "WaitingForCutoverTrigger"
+          | "CompletingMigration"
+          | "Completed"
+          | "CancelingRequestedDBMigrations"
+          | "ValidationInProgress";
+        dbDetails?: Record<
+          string,
+          {
+            databaseName?: string;
+            migrationState?:
+              | "InProgress"
+              | "WaitingForCutoverTrigger"
+              | "Failed"
+              | "Canceled"
+              | "Succeeded"
+              | "Canceling";
+            migrationOperation?: string;
+            startedOn?: string;
+            endedOn?: string;
+            fullLoadQueuedTables?: number;
+            fullLoadErroredTables?: number;
+            fullLoadLoadingTables?: number;
+            fullLoadCompletedTables?: number;
+            cdcUpdateCounter?: number;
+            cdcDeleteCounter?: number;
+            cdcInsertCounter?: number;
+            appliedChanges?: number;
+            incomingChanges?: number;
+            latency?: number;
+            message?: string;
+          }
+        >;
+        validationDetails?: {
+          status?: "Failed" | "Succeeded" | "Warning";
+          validationStartTimeInUtc?: string;
+          validationEndTimeInUtc?: string;
+          serverLevelValidationDetails?: {
+            type?: string;
+            state?: "Failed" | "Succeeded" | "Warning";
+            messages?: {
+              state?: "Failed" | "Succeeded" | "Warning";
+              message?: string;
+            }[];
+          }[];
+          dbLevelValidationDetails?: {
+            databaseName?: string;
+            startedOn?: string;
+            endedOn?: string;
+            summary?: {
+              type?: string;
+              state?: "Failed" | "Succeeded" | "Warning";
+              messages?: {
+                state?: "Failed" | "Succeeded" | "Warning";
+                message?: string;
+              }[];
+            }[];
+          }[];
+        };
+      };
+    };
+    migrationInstanceResourceId?: string;
+    migrationMode?: "Offline" | "Online";
+    migrationOption?: "Validate" | "Migrate" | "ValidateAndMigrate";
+    sourceType?:
+      | "OnPremises"
+      | "AWS"
+      | "GCP"
+      | "AzureVM"
+      | "PostgreSQLSingleServer"
+      | "AWS_RDS"
+      | "AWS_AURORA"
+      | "AWS_EC2"
+      | "GCP_CloudSQL"
+      | "GCP_AlloyDB"
+      | "GCP_Compute"
+      | "EDB"
+      | "EDB_Oracle_Server"
+      | "EDB_PostgreSQL"
+      | "PostgreSQLFlexibleServer"
+      | "PostgreSQLCosmosDB"
+      | "Huawei_RDS"
+      | "Huawei_Compute"
+      | "Heroku_PostgreSQL"
+      | "Crunchy_PostgreSQL"
+      | "ApsaraDB_RDS"
+      | "Digital_Ocean_Droplets"
+      | "Digital_Ocean_PostgreSQL"
+      | "Supabase_PostgreSQL";
+    sslMode?: "Prefer" | "Require" | "VerifyCA" | "VerifyFull";
+    sourceDbServerMetadata?: {
+      location?: string;
+      version?: string;
+      storageMb?: number;
+      sku?: {
+        name?: string;
+        tier?: "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+      };
+    };
+    targetDbServerMetadata?: {
+      location?: string;
+      version?: string;
+      storageMb?: number;
+      sku?: {
+        name?: string;
+        tier?: "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+      };
+    };
+    sourceDbServerResourceId?: string;
+    sourceDbServerFullyQualifiedDomainName?: string;
+    targetDbServerResourceId?: string;
+    targetDbServerFullyQualifiedDomainName?: string;
+    secretParameters?: {
+      adminCredentials: {
+        sourceServerPassword: string | Redacted.Redacted<string>;
+        targetServerPassword: string | Redacted.Redacted<string>;
+      };
+      sourceServerUsername?: string;
+      targetServerUsername?: string;
+    };
+    dbsToMigrate?: string[];
+    setupLogicalReplicationOnSourceDbIfNeeded?: "True" | "False";
+    overwriteDbsInTarget?: "True" | "False";
+    migrationWindowStartTimeInUtc?: string;
+    migrationWindowEndTimeInUtc?: string;
+    migrateRoles?: "True" | "False";
+    startDataMigration?: "True" | "False";
+    triggerCutover?: "True" | "False";
+    dbsToTriggerCutoverOn?: string[];
+    cancel?: "True" | "False";
+    dbsToCancelMigrationOn?: string[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MigrationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1935,10 +2499,22 @@ export const MigrationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type MigrationsCreateInput = typeof MigrationsCreateInput.Type;
+) as unknown as Schema.Codec<MigrationsCreateInput>;
 
 // Output Schema
+export interface MigrationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1959,8 +2535,7 @@ export const MigrationsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type MigrationsCreateOutput = typeof MigrationsCreateOutput.Type;
+) as unknown as Schema.Codec<MigrationsCreateOutput>;
 
 // The operation
 /**
@@ -1977,6 +2552,12 @@ export const MigrationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MigrationsCreateOutput,
 }));
 // Input Schema
+export interface MigrationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  migrationName: string;
+}
 export const MigrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1988,10 +2569,22 @@ export const MigrationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type MigrationsGetInput = typeof MigrationsGetInput.Type;
+) as unknown as Schema.Codec<MigrationsGetInput>;
 
 // Output Schema
+export interface MigrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2010,8 +2603,7 @@ export const MigrationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MigrationsGetOutput = typeof MigrationsGetOutput.Type;
+}) as unknown as Schema.Codec<MigrationsGetOutput>;
 
 // The operation
 /**
@@ -2028,6 +2620,12 @@ export const MigrationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MigrationsGetOutput,
 }));
 // Input Schema
+export interface MigrationsListByTargetServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  migrationListFilter?: "Active" | "All";
+}
 export const MigrationsListByTargetServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2040,11 +2638,25 @@ export const MigrationsListByTargetServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type MigrationsListByTargetServerInput =
-  typeof MigrationsListByTargetServerInput.Type;
+  ) as unknown as Schema.Codec<MigrationsListByTargetServerInput>;
 
 // Output Schema
+export interface MigrationsListByTargetServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MigrationsListByTargetServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2079,9 +2691,7 @@ export const MigrationsListByTargetServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MigrationsListByTargetServerOutput =
-  typeof MigrationsListByTargetServerOutput.Type;
+  }) as unknown as Schema.Codec<MigrationsListByTargetServerOutput>;
 
 // The operation
 /**
@@ -2099,6 +2709,37 @@ export const MigrationsListByTargetServer =
     outputSchema: MigrationsListByTargetServerOutput,
   }));
 // Input Schema
+export interface MigrationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  migrationName: string;
+  properties?: {
+    sourceDbServerResourceId?: string;
+    sourceDbServerFullyQualifiedDomainName?: string;
+    targetDbServerFullyQualifiedDomainName?: string;
+    secretParameters?: {
+      adminCredentials?: {
+        sourceServerPassword?: string | Redacted.Redacted<string>;
+        targetServerPassword?: string | Redacted.Redacted<string>;
+      };
+      sourceServerUsername?: string;
+      targetServerUsername?: string;
+    };
+    dbsToMigrate?: string[];
+    setupLogicalReplicationOnSourceDbIfNeeded?: "True" | "False";
+    overwriteDbsInTarget?: "True" | "False";
+    migrationWindowStartTimeInUtc?: string;
+    migrateRoles?: "True" | "False";
+    startDataMigration?: "True" | "False";
+    triggerCutover?: "True" | "False";
+    dbsToTriggerCutoverOn?: string[];
+    cancel?: "True" | "False";
+    dbsToCancelMigrationOn?: string[];
+    migrationMode?: "Offline" | "Online";
+  };
+  tags?: Record<string, string>;
+}
 export const MigrationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2143,10 +2784,22 @@ export const MigrationsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations/{migrationName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type MigrationsUpdateInput = typeof MigrationsUpdateInput.Type;
+) as unknown as Schema.Codec<MigrationsUpdateInput>;
 
 // Output Schema
+export interface MigrationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrationsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2167,8 +2820,7 @@ export const MigrationsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type MigrationsUpdateOutput = typeof MigrationsUpdateOutput.Type;
+) as unknown as Schema.Codec<MigrationsUpdateOutput>;
 
 // The operation
 /**
@@ -2185,6 +2837,11 @@ export const MigrationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MigrationsUpdateOutput,
 }));
 // Input Schema
+export interface NameAvailabilityCheckGloballyInput {
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const NameAvailabilityCheckGloballyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2196,19 +2853,20 @@ export const NameAvailabilityCheckGloballyInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability",
       apiVersion: "2025-08-01",
     }),
-  );
-export type NameAvailabilityCheckGloballyInput =
-  typeof NameAvailabilityCheckGloballyInput.Type;
+  ) as unknown as Schema.Codec<NameAvailabilityCheckGloballyInput>;
 
 // Output Schema
+export interface NameAvailabilityCheckGloballyOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const NameAvailabilityCheckGloballyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type NameAvailabilityCheckGloballyOutput =
-  typeof NameAvailabilityCheckGloballyOutput.Type;
+  }) as unknown as Schema.Codec<NameAvailabilityCheckGloballyOutput>;
 
 // The operation
 /**
@@ -2225,6 +2883,12 @@ export const NameAvailabilityCheckGlobally =
     outputSchema: NameAvailabilityCheckGloballyOutput,
   }));
 // Input Schema
+export interface NameAvailabilityCheckWithLocationInput {
+  subscriptionId: string;
+  locationName: string;
+  name?: string;
+  type?: string;
+}
 export const NameAvailabilityCheckWithLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2237,19 +2901,20 @@ export const NameAvailabilityCheckWithLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkNameAvailability",
       apiVersion: "2025-08-01",
     }),
-  );
-export type NameAvailabilityCheckWithLocationInput =
-  typeof NameAvailabilityCheckWithLocationInput.Type;
+  ) as unknown as Schema.Codec<NameAvailabilityCheckWithLocationInput>;
 
 // Output Schema
+export interface NameAvailabilityCheckWithLocationOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const NameAvailabilityCheckWithLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type NameAvailabilityCheckWithLocationOutput =
-  typeof NameAvailabilityCheckWithLocationOutput.Type;
+  }) as unknown as Schema.Codec<NameAvailabilityCheckWithLocationOutput>;
 
 // The operation
 /**
@@ -2267,6 +2932,7 @@ export const NameAvailabilityCheckWithLocation =
     outputSchema: NameAvailabilityCheckWithLocationOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2275,10 +2941,42 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DBforPostgreSQL/operations",
     apiVersion: "2025-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+    origin?: "NotSpecified" | "user" | "system";
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          category?: string;
+        }[];
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2333,8 +3031,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2347,6 +3044,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateDnsZoneSuffixGetInput {}
 export const PrivateDnsZoneSuffixGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -2354,15 +3052,12 @@ export const PrivateDnsZoneSuffixGetInput =
       path: "/providers/Microsoft.DBforPostgreSQL/getPrivateDnsZoneSuffix",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateDnsZoneSuffixGetInput =
-  typeof PrivateDnsZoneSuffixGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateDnsZoneSuffixGetInput>;
 
 // Output Schema
+export type PrivateDnsZoneSuffixGetOutput = string;
 export const PrivateDnsZoneSuffixGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type PrivateDnsZoneSuffixGetOutput =
-  typeof PrivateDnsZoneSuffixGetOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<PrivateDnsZoneSuffixGetOutput>;
 
 // The operation
 /**
@@ -2377,6 +3072,12 @@ export const PrivateDnsZoneSuffixGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2389,15 +3090,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2415,6 +3113,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2427,11 +3131,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2451,9 +3166,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2471,6 +3184,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const PrivateEndpointConnectionsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2482,11 +3200,25 @@ export const PrivateEndpointConnectionsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsListByServerInput =
-  typeof PrivateEndpointConnectionsListByServerInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByServerInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2521,9 +3253,7 @@ export const PrivateEndpointConnectionsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByServerOutput =
-  typeof PrivateEndpointConnectionsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByServerOutput>;
 
 // The operation
 /**
@@ -2540,6 +3270,33 @@ export const PrivateEndpointConnectionsListByServer =
     outputSchema: PrivateEndpointConnectionsListByServerOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2589,15 +3346,12 @@ export const PrivateEndpointConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateInput =
-  typeof PrivateEndpointConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsUpdateOutput = void;
 export const PrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsUpdateOutput =
-  typeof PrivateEndpointConnectionsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -2616,6 +3370,12 @@ export const PrivateEndpointConnectionsUpdate =
     outputSchema: PrivateEndpointConnectionsUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2628,11 +3388,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateLinkResources/{groupName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2652,9 +3423,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2673,6 +3442,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const PrivateLinkResourcesListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2684,11 +3458,25 @@ export const PrivateLinkResourcesListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateLinkResources",
       apiVersion: "2025-08-01",
     }),
-  );
-export type PrivateLinkResourcesListByServerInput =
-  typeof PrivateLinkResourcesListByServerInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByServerInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2723,9 +3511,7 @@ export const PrivateLinkResourcesListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByServerOutput =
-  typeof PrivateLinkResourcesListByServerOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByServerOutput>;
 
 // The operation
 /**
@@ -2742,6 +3528,10 @@ export const PrivateLinkResourcesListByServer =
     outputSchema: PrivateLinkResourcesListByServerOutput,
   }));
 // Input Schema
+export interface QuotaUsagesListInput {
+  subscriptionId: string;
+  locationName: string;
+}
 export const QuotaUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   locationName: Schema.String.pipe(T.PathParam()),
@@ -2751,10 +3541,19 @@ export const QuotaUsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/resourceType/flexibleServers/usages",
     apiVersion: "2025-08-01",
   }),
-);
-export type QuotaUsagesListInput = typeof QuotaUsagesListInput.Type;
+) as unknown as Schema.Codec<QuotaUsagesListInput>;
 
 // Output Schema
+export interface QuotaUsagesListOutput {
+  value: {
+    name?: { value?: string; localizedValue?: string };
+    limit?: number;
+    unit?: string;
+    currentValue?: number;
+    id?: string;
+  }[];
+  nextLink?: string;
+}
 export const QuotaUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2771,8 +3570,7 @@ export const QuotaUsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QuotaUsagesListOutput = typeof QuotaUsagesListOutput.Type;
+}) as unknown as Schema.Codec<QuotaUsagesListOutput>;
 
 // The operation
 /**
@@ -2787,6 +3585,11 @@ export const QuotaUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaUsagesListOutput,
 }));
 // Input Schema
+export interface ReplicasListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ReplicasListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2798,10 +3601,25 @@ export const ReplicasListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/replicas",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ReplicasListByServerInput = typeof ReplicasListByServerInput.Type;
+  ) as unknown as Schema.Codec<ReplicasListByServerInput>;
 
 // Output Schema
+export interface ReplicasListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ReplicasListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2836,8 +3654,7 @@ export const ReplicasListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ReplicasListByServerOutput = typeof ReplicasListByServerOutput.Type;
+  }) as unknown as Schema.Codec<ReplicasListByServerOutput>;
 
 // The operation
 /**
@@ -2855,6 +3672,153 @@ export const ReplicasListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  properties?: {
+    administratorLogin?: string;
+    administratorLoginPassword?: string | Redacted.Redacted<string>;
+    version?: "18" | "17" | "16" | "15" | "14" | "13" | "12" | "11";
+    minorVersion?: string;
+    state?:
+      | "Ready"
+      | "Dropping"
+      | "Disabled"
+      | "Starting"
+      | "Stopping"
+      | "Stopped"
+      | "Updating"
+      | "Restarting"
+      | "Inaccessible"
+      | "Provisioning";
+    fullyQualifiedDomainName?: string;
+    storage?: {
+      storageSizeGB?: number;
+      autoGrow?: "Enabled" | "Disabled";
+      tier?:
+        | "P1"
+        | "P2"
+        | "P3"
+        | "P4"
+        | "P6"
+        | "P10"
+        | "P15"
+        | "P20"
+        | "P30"
+        | "P40"
+        | "P50"
+        | "P60"
+        | "P70"
+        | "P80";
+      iops?: number;
+      throughput?: number;
+      type?: "Premium_LRS" | "PremiumV2_LRS" | "UltraSSD_LRS";
+    };
+    authConfig?: {
+      activeDirectoryAuth?: "Enabled" | "Disabled";
+      passwordAuth?: "Enabled" | "Disabled";
+      tenantId?: string;
+    };
+    dataEncryption?: {
+      primaryKeyURI?: string;
+      primaryUserAssignedIdentityId?: string;
+      geoBackupKeyURI?: string;
+      geoBackupUserAssignedIdentityId?: string;
+      type?: "SystemManaged" | "AzureKeyVault";
+      primaryEncryptionKeyStatus?: "Valid" | "Invalid";
+      geoBackupEncryptionKeyStatus?: "Valid" | "Invalid";
+    };
+    backup?: {
+      backupRetentionDays?: number;
+      geoRedundantBackup?: "Enabled" | "Disabled";
+      earliestRestoreDate?: string;
+    };
+    network?: {
+      publicNetworkAccess?: "Enabled" | "Disabled";
+      delegatedSubnetResourceId?: string;
+      privateDnsZoneArmResourceId?: string;
+    };
+    highAvailability?: {
+      mode?: "Disabled" | "ZoneRedundant" | "SameZone";
+      state?:
+        | "NotEnabled"
+        | "CreatingStandby"
+        | "ReplicatingData"
+        | "FailingOver"
+        | "Healthy"
+        | "RemovingStandby"
+        | "RecreatingStandby"
+        | "ComputeUpdatingByFailover";
+      standbyAvailabilityZone?: string;
+    };
+    maintenanceWindow?: {
+      customWindow?: string;
+      startHour?: number;
+      startMinute?: number;
+      dayOfWeek?: number;
+    };
+    sourceServerResourceId?: string;
+    pointInTimeUTC?: string;
+    availabilityZone?: string;
+    replicationRole?: "None" | "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+    replicaCapacity?: number;
+    replica?: {
+      role?: "None" | "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+      capacity?: number;
+      replicationState?:
+        | "Active"
+        | "Catchup"
+        | "Provisioning"
+        | "Updating"
+        | "Broken"
+        | "Reconfiguring";
+      promoteMode?: "Standalone" | "Switchover";
+      promoteOption?: "Planned" | "Forced";
+    };
+    createMode?:
+      | "Default"
+      | "Create"
+      | "Update"
+      | "PointInTimeRestore"
+      | "GeoRestore"
+      | "Replica"
+      | "ReviveDropped";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    cluster?: { clusterSize?: number; defaultDatabaseName?: string };
+  };
+  sku?: {
+    name: string;
+    tier: "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+  };
+  identity?: {
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    type:
+      | "None"
+      | "UserAssigned"
+      | "SystemAssigned"
+      | "SystemAssigned,UserAssigned";
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2971,6 +3935,8 @@ export const ServersCreateOrUpdateInput =
                 "FailingOver",
                 "Healthy",
                 "RemovingStandby",
+                "RecreatingStandby",
+                "ComputeUpdatingByFailover",
               ]),
             ),
             standbyAvailabilityZone: Schema.optional(Schema.String),
@@ -3116,14 +4082,12 @@ export const ServersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServersCreateOrUpdateInput>;
 
 // Output Schema
+export type ServersCreateOrUpdateOutput = void;
 export const ServersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersCreateOrUpdateOutput =
-  typeof ServersCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3141,6 +4105,11 @@ export const ServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3151,12 +4120,12 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersDeleteInput = typeof ServersDeleteInput.Type;
+) as unknown as Schema.Codec<ServersDeleteInput>;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
+export type ServersDeleteOutput = void;
+export const ServersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersDeleteOutput>;
 
 // The operation
 /**
@@ -3172,6 +4141,11 @@ export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersDeleteOutput,
 }));
 // Input Schema
+export interface ServersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3182,10 +4156,22 @@ export const ServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersGetInput = typeof ServersGetInput.Type;
+) as unknown as Schema.Codec<ServersGetInput>;
 
 // Output Schema
+export interface ServersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3204,8 +4190,7 @@ export const ServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServersGetOutput = typeof ServersGetOutput.Type;
+}) as unknown as Schema.Codec<ServersGetOutput>;
 
 // The operation
 /**
@@ -3221,6 +4206,10 @@ export const ServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersGetOutput,
 }));
 // Input Schema
+export interface ServersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ServersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3231,11 +4220,25 @@ export const ServersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ServersListByResourceGroupInput =
-  typeof ServersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServersListByResourceGroupInput>;
 
 // Output Schema
+export interface ServersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3270,9 +4273,7 @@ export const ServersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServersListByResourceGroupOutput =
-  typeof ServersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3289,6 +4290,9 @@ export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ServersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3298,11 +4302,25 @@ export const ServersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ServersListBySubscriptionInput =
-  typeof ServersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ServersListBySubscriptionInput>;
 
 // Output Schema
+export interface ServersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3337,9 +4355,7 @@ export const ServersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServersListBySubscriptionOutput =
-  typeof ServersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ServersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3355,6 +4371,17 @@ export const ServersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  restartWithFailover?: boolean;
+  failoverMode?:
+    | "PlannedFailover"
+    | "ForcedFailover"
+    | "PlannedSwitchover"
+    | "ForcedSwitchover";
+}
 export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3374,12 +4401,12 @@ export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersRestartInput = typeof ServersRestartInput.Type;
+) as unknown as Schema.Codec<ServersRestartInput>;
 
 // Output Schema
-export const ServersRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersRestartOutput = typeof ServersRestartOutput.Type;
+export type ServersRestartOutput = void;
+export const ServersRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersRestartOutput>;
 
 // The operation
 /**
@@ -3395,6 +4422,11 @@ export const ServersRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersRestartOutput,
 }));
 // Input Schema
+export interface ServersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3405,12 +4437,12 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersStartInput = typeof ServersStartInput.Type;
+) as unknown as Schema.Codec<ServersStartInput>;
 
 // Output Schema
-export const ServersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersStartOutput = typeof ServersStartOutput.Type;
+export type ServersStartOutput = void;
+export const ServersStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStartOutput>;
 
 // The operation
 /**
@@ -3426,6 +4458,11 @@ export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersStartOutput,
 }));
 // Input Schema
+export interface ServersStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3436,12 +4473,12 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/stop",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersStopInput = typeof ServersStopInput.Type;
+) as unknown as Schema.Codec<ServersStopInput>;
 
 // Output Schema
-export const ServersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersStopOutput = typeof ServersStopOutput.Type;
+export type ServersStopOutput = void;
+export const ServersStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStopOutput>;
 
 // The operation
 /**
@@ -3457,6 +4494,116 @@ export const ServersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersStopOutput,
 }));
 // Input Schema
+export interface ServersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  sku?: {
+    name?: string;
+    tier?: "Burstable" | "GeneralPurpose" | "MemoryOptimized";
+  };
+  identity?: {
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+    principalId?: string;
+    type:
+      | "None"
+      | "UserAssigned"
+      | "SystemAssigned"
+      | "SystemAssigned,UserAssigned";
+    tenantId?: string;
+  };
+  properties?: {
+    administratorLogin?: string;
+    administratorLoginPassword?: string | Redacted.Redacted<string>;
+    version?: "18" | "17" | "16" | "15" | "14" | "13" | "12" | "11";
+    storage?: {
+      storageSizeGB?: number;
+      autoGrow?: "Enabled" | "Disabled";
+      tier?:
+        | "P1"
+        | "P2"
+        | "P3"
+        | "P4"
+        | "P6"
+        | "P10"
+        | "P15"
+        | "P20"
+        | "P30"
+        | "P40"
+        | "P50"
+        | "P60"
+        | "P70"
+        | "P80";
+      iops?: number;
+      throughput?: number;
+      type?: "Premium_LRS" | "PremiumV2_LRS" | "UltraSSD_LRS";
+    };
+    backup?: {
+      backupRetentionDays?: number;
+      geoRedundantBackup?: "Enabled" | "Disabled";
+      earliestRestoreDate?: string;
+    };
+    highAvailability?: {
+      mode?: "Disabled" | "ZoneRedundant" | "SameZone";
+      state?:
+        | "NotEnabled"
+        | "CreatingStandby"
+        | "ReplicatingData"
+        | "FailingOver"
+        | "Healthy"
+        | "RemovingStandby"
+        | "RecreatingStandby"
+        | "ComputeUpdatingByFailover";
+      standbyAvailabilityZone?: string;
+    };
+    maintenanceWindow?: {
+      customWindow?: string;
+      startHour?: number;
+      startMinute?: number;
+      dayOfWeek?: number;
+    };
+    authConfig?: {
+      activeDirectoryAuth?: "Enabled" | "Disabled";
+      passwordAuth?: "Enabled" | "Disabled";
+      tenantId?: string;
+    };
+    dataEncryption?: {
+      primaryKeyURI?: string;
+      primaryUserAssignedIdentityId?: string;
+      geoBackupKeyURI?: string;
+      geoBackupUserAssignedIdentityId?: string;
+      type?: "SystemManaged" | "AzureKeyVault";
+      primaryEncryptionKeyStatus?: "Valid" | "Invalid";
+      geoBackupEncryptionKeyStatus?: "Valid" | "Invalid";
+    };
+    availabilityZone?: string;
+    createMode?: "Default" | "Update";
+    replicationRole?: "None" | "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+    replica?: {
+      role?: "None" | "Primary" | "AsyncReplica" | "GeoAsyncReplica";
+      capacity?: number;
+      replicationState?:
+        | "Active"
+        | "Catchup"
+        | "Provisioning"
+        | "Updating"
+        | "Broken"
+        | "Reconfiguring";
+      promoteMode?: "Standalone" | "Switchover";
+      promoteOption?: "Planned" | "Forced";
+    };
+    network?: {
+      publicNetworkAccess?: "Enabled" | "Disabled";
+      delegatedSubnetResourceId?: string;
+      privateDnsZoneArmResourceId?: string;
+    };
+    cluster?: { clusterSize?: number; defaultDatabaseName?: string };
+  };
+  tags?: Record<string, string>;
+}
 export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3548,6 +4695,8 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               "FailingOver",
               "Healthy",
               "RemovingStandby",
+              "RecreatingStandby",
+              "ComputeUpdatingByFailover",
             ]),
           ),
           standbyAvailabilityZone: Schema.optional(Schema.String),
@@ -3647,12 +4796,12 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
     apiVersion: "2025-08-01",
   }),
-);
-export type ServersUpdateInput = typeof ServersUpdateInput.Type;
+) as unknown as Schema.Codec<ServersUpdateInput>;
 
 // Output Schema
-export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
+export type ServersUpdateOutput = void;
+export const ServersUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersUpdateOutput>;
 
 // The operation
 /**
@@ -3668,6 +4817,13 @@ export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServersUpdateOutput,
 }));
 // Input Schema
+export interface ServerThreatProtectionSettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  threatProtectionName: "Default";
+  properties?: { state: "Enabled" | "Disabled"; creationTime?: string };
+}
 export const ServerThreatProtectionSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3686,15 +4842,12 @@ export const ServerThreatProtectionSettingsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{threatProtectionName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type ServerThreatProtectionSettingsCreateOrUpdateInput =
-  typeof ServerThreatProtectionSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServerThreatProtectionSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export type ServerThreatProtectionSettingsCreateOrUpdateOutput = void;
 export const ServerThreatProtectionSettingsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServerThreatProtectionSettingsCreateOrUpdateOutput =
-  typeof ServerThreatProtectionSettingsCreateOrUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerThreatProtectionSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3712,6 +4865,12 @@ export const ServerThreatProtectionSettingsCreateOrUpdate =
     outputSchema: ServerThreatProtectionSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TuningOptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  tuningOption: "index" | "table";
+}
 export const TuningOptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3723,10 +4882,22 @@ export const TuningOptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions/{tuningOption}",
     apiVersion: "2025-08-01",
   }),
-);
-export type TuningOptionsGetInput = typeof TuningOptionsGetInput.Type;
+) as unknown as Schema.Codec<TuningOptionsGetInput>;
 
 // Output Schema
+export interface TuningOptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TuningOptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3747,8 +4918,7 @@ export const TuningOptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type TuningOptionsGetOutput = typeof TuningOptionsGetOutput.Type;
+) as unknown as Schema.Codec<TuningOptionsGetOutput>;
 
 // The operation
 /**
@@ -3765,6 +4935,11 @@ export const TuningOptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TuningOptionsGetOutput,
 }));
 // Input Schema
+export interface TuningOptionsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const TuningOptionsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3776,11 +4951,25 @@ export const TuningOptionsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions",
       apiVersion: "2025-08-01",
     }),
-  );
-export type TuningOptionsListByServerInput =
-  typeof TuningOptionsListByServerInput.Type;
+  ) as unknown as Schema.Codec<TuningOptionsListByServerInput>;
 
 // Output Schema
+export interface TuningOptionsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TuningOptionsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3815,9 +5004,7 @@ export const TuningOptionsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TuningOptionsListByServerOutput =
-  typeof TuningOptionsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<TuningOptionsListByServerOutput>;
 
 // The operation
 /**
@@ -3835,6 +5022,13 @@ export const TuningOptionsListByServer = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TuningOptionsListRecommendationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  tuningOption: "index" | "table";
+  recommendationType?: "CreateIndex" | "DropIndex" | "ReIndex" | "AnalyzeTable";
+}
 export const TuningOptionsListRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3850,11 +5044,25 @@ export const TuningOptionsListRecommendationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions/{tuningOption}/recommendations",
       apiVersion: "2025-08-01",
     }),
-  );
-export type TuningOptionsListRecommendationsInput =
-  typeof TuningOptionsListRecommendationsInput.Type;
+  ) as unknown as Schema.Codec<TuningOptionsListRecommendationsInput>;
 
 // Output Schema
+export interface TuningOptionsListRecommendationsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TuningOptionsListRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3889,9 +5097,7 @@ export const TuningOptionsListRecommendationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TuningOptionsListRecommendationsOutput =
-  typeof TuningOptionsListRecommendationsOutput.Type;
+  }) as unknown as Schema.Codec<TuningOptionsListRecommendationsOutput>;
 
 // The operation
 /**
@@ -3910,6 +5116,17 @@ export const TuningOptionsListRecommendations =
     outputSchema: TuningOptionsListRecommendationsOutput,
   }));
 // Input Schema
+export interface VirtualEndpointsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  virtualEndpointName: string;
+  properties?: {
+    endpointType?: "ReadWrite";
+    members?: string[];
+    virtualEndpoints?: string[];
+  };
+}
 export const VirtualEndpointsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3929,15 +5146,12 @@ export const VirtualEndpointsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualEndpointsCreateInput =
-  typeof VirtualEndpointsCreateInput.Type;
+  ) as unknown as Schema.Codec<VirtualEndpointsCreateInput>;
 
 // Output Schema
+export type VirtualEndpointsCreateOutput = void;
 export const VirtualEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualEndpointsCreateOutput =
-  typeof VirtualEndpointsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualEndpointsCreateOutput>;
 
 // The operation
 /**
@@ -3956,6 +5170,12 @@ export const VirtualEndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  virtualEndpointName: string;
+}
 export const VirtualEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3968,15 +5188,12 @@ export const VirtualEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualEndpointsDeleteInput =
-  typeof VirtualEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualEndpointsDeleteInput>;
 
 // Output Schema
+export type VirtualEndpointsDeleteOutput = void;
 export const VirtualEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualEndpointsDeleteOutput =
-  typeof VirtualEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3995,6 +5212,12 @@ export const VirtualEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  virtualEndpointName: string;
+}
 export const VirtualEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4007,10 +5230,22 @@ export const VirtualEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualEndpointsGetInput = typeof VirtualEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualEndpointsGetInput>;
 
 // Output Schema
+export interface VirtualEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4030,8 +5265,7 @@ export const VirtualEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualEndpointsGetOutput = typeof VirtualEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualEndpointsGetOutput>;
 
 // The operation
 /**
@@ -4048,6 +5282,11 @@ export const VirtualEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualEndpointsGetOutput,
 }));
 // Input Schema
+export interface VirtualEndpointsListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+}
 export const VirtualEndpointsListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4059,11 +5298,25 @@ export const VirtualEndpointsListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualEndpointsListByServerInput =
-  typeof VirtualEndpointsListByServerInput.Type;
+  ) as unknown as Schema.Codec<VirtualEndpointsListByServerInput>;
 
 // Output Schema
+export interface VirtualEndpointsListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualEndpointsListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4098,9 +5351,7 @@ export const VirtualEndpointsListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualEndpointsListByServerOutput =
-  typeof VirtualEndpointsListByServerOutput.Type;
+  }) as unknown as Schema.Codec<VirtualEndpointsListByServerOutput>;
 
 // The operation
 /**
@@ -4117,6 +5368,17 @@ export const VirtualEndpointsListByServer =
     outputSchema: VirtualEndpointsListByServerOutput,
   }));
 // Input Schema
+export interface VirtualEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serverName: string;
+  virtualEndpointName: string;
+  properties?: {
+    endpointType?: "ReadWrite";
+    members?: string[];
+    virtualEndpoints?: string[];
+  };
+}
 export const VirtualEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4136,15 +5398,12 @@ export const VirtualEndpointsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualEndpointsUpdateInput =
-  typeof VirtualEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualEndpointsUpdateInput>;
 
 // Output Schema
+export type VirtualEndpointsUpdateOutput = void;
 export const VirtualEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualEndpointsUpdateOutput =
-  typeof VirtualEndpointsUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -4163,6 +5422,11 @@ export const VirtualEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkSubnetUsageListInput {
+  subscriptionId: string;
+  locationName: string;
+  virtualNetworkArmResourceId?: string;
+}
 export const VirtualNetworkSubnetUsageListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4174,11 +5438,14 @@ export const VirtualNetworkSubnetUsageListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage",
       apiVersion: "2025-08-01",
     }),
-  );
-export type VirtualNetworkSubnetUsageListInput =
-  typeof VirtualNetworkSubnetUsageListInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkSubnetUsageListInput>;
 
 // Output Schema
+export interface VirtualNetworkSubnetUsageListOutput {
+  delegatedSubnetsUsage?: { subnetName?: string; usage?: number }[];
+  location?: string;
+  subscriptionId?: string;
+}
 export const VirtualNetworkSubnetUsageListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delegatedSubnetsUsage: Schema.optional(
@@ -4191,9 +5458,7 @@ export const VirtualNetworkSubnetUsageListOutput =
     ),
     location: Schema.optional(Schema.String),
     subscriptionId: Schema.optional(Schema.String),
-  });
-export type VirtualNetworkSubnetUsageListOutput =
-  typeof VirtualNetworkSubnetUsageListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkSubnetUsageListOutput>;
 
 // The operation
 /**

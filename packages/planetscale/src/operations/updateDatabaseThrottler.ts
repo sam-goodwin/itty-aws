@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDatabaseThrottlerInput {
+  organization: string;
+  database: string;
+  ratio?: number;
+  configurations?: string[];
+}
 export const UpdateDatabaseThrottlerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,20 @@ export const UpdateDatabaseThrottlerInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/throttler",
     }),
-  );
-export type UpdateDatabaseThrottlerInput =
-  typeof UpdateDatabaseThrottlerInput.Type;
+  ) as unknown as Schema.Codec<UpdateDatabaseThrottlerInput>;
 
 // Output Schema
+export interface UpdateDatabaseThrottlerOutput {
+  keyspaces: string[];
+  configurable: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  configurations: { keyspace_name: string; ratio: number }[];
+}
 export const UpdateDatabaseThrottlerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
@@ -36,9 +51,7 @@ export const UpdateDatabaseThrottlerOutput =
         ratio: Schema.Number,
       }),
     ),
-  });
-export type UpdateDatabaseThrottlerOutput =
-  typeof UpdateDatabaseThrottlerOutput.Type;
+  }) as unknown as Schema.Codec<UpdateDatabaseThrottlerOutput>;
 
 // The operation
 /**

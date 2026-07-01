@@ -3,20 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeletePolicyInput {
+  policyId: string;
+}
 export const DeletePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/policy-engine/policies/{policyId}" }),
-);
-export type DeletePolicyInput = typeof DeletePolicyInput.Type;
+) as unknown as Schema.Codec<DeletePolicyInput>;
 
 // Output Schema
-export const DeletePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeletePolicyOutput = typeof DeletePolicyOutput.Type;
+export type DeletePolicyOutput = void;
+export const DeletePolicyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletePolicyOutput>;
 
 // The operation
 /**
- * Delete a policy
+ * Delete policy
  *
  * Delete a policy by its ID. This will have the effect of removing the policy from all accounts that are currently using it.
  *

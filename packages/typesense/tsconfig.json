@@ -5,12 +5,7 @@
   ],
   "compilerOptions": {
     "outDir": "./lib",
-    "rootDir": "./src",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    }
+    "rootDir": "./src"
   },
   "references": [
     {

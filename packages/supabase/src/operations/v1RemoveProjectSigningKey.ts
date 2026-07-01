@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1RemoveProjectSigningKeyInput {
+  id: string;
+  ref: string;
+}
 export const V1RemoveProjectSigningKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,17 @@ export const V1RemoveProjectSigningKeyInput =
       method: "DELETE",
       path: "/v1/projects/{ref}/config/auth/signing-keys/{id}",
     }),
-  );
-export type V1RemoveProjectSigningKeyInput =
-  typeof V1RemoveProjectSigningKeyInput.Type;
+  ) as unknown as Schema.Codec<V1RemoveProjectSigningKeyInput>;
 
 // Output Schema
+export interface V1RemoveProjectSigningKeyOutput {
+  id: string;
+  algorithm: "EdDSA" | "ES256" | "RS256" | "HS256";
+  status: "in_use" | "previously_used" | "revoked" | "standby";
+  public_jwk?: unknown | null;
+  created_at: string;
+  updated_at: string;
+}
 export const V1RemoveProjectSigningKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -31,9 +41,7 @@ export const V1RemoveProjectSigningKeyOutput =
     public_jwk: Schema.optional(Schema.NullOr(Schema.Unknown)),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type V1RemoveProjectSigningKeyOutput =
-  typeof V1RemoveProjectSigningKeyOutput.Type;
+  }) as unknown as Schema.Codec<V1RemoveProjectSigningKeyOutput>;
 
 // The operation
 /**

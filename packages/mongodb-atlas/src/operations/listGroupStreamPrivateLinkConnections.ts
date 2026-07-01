@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupStreamPrivateLinkConnectionsInput {
+  groupId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupStreamPrivateLinkConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,21 +23,18 @@ export const ListGroupStreamPrivateLinkConnectionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections",
     }),
-  );
-export type ListGroupStreamPrivateLinkConnectionsInput =
-  typeof ListGroupStreamPrivateLinkConnectionsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupStreamPrivateLinkConnectionsInput>;
 
 // Output Schema
+export type ListGroupStreamPrivateLinkConnectionsOutput = void;
 export const ListGroupStreamPrivateLinkConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupStreamPrivateLinkConnectionsOutput =
-  typeof ListGroupStreamPrivateLinkConnectionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamPrivateLinkConnectionsOutput>;
 
 // The operation
 /**
  * Return All Private Link Connections
  *
- * Returns all Private Link connections for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role, Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+ * Returns all Private Link connections for the specified project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CheckNameAvailabilityInput {
+  name?: string;
+  type?: "Microsoft.Management/managementGroups";
+}
 export const CheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -21,18 +25,20 @@ export const CheckNameAvailabilityInput =
       path: "/providers/Microsoft.Management/checkNameAvailability",
       apiVersion: "2023-04-01",
     }),
-  );
-export type CheckNameAvailabilityInput = typeof CheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CheckNameAvailabilityInput>;
 
 // Output Schema
+export interface CheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const CheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type CheckNameAvailabilityOutput =
-  typeof CheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<CheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -47,6 +53,21 @@ export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EntitiesListInput {
+  $skiptoken?: string;
+  $skip?: number;
+  $top?: number;
+  $select?: string;
+  $search?:
+    | "AllowedParents"
+    | "AllowedChildren"
+    | "ParentAndFirstLevelChildren"
+    | "ParentOnly"
+    | "ChildrenOnly";
+  $filter?: string;
+  $view?: "FullHierarchy" | "GroupsOnly" | "SubscriptionsOnly" | "Audit";
+  groupName?: string;
+}
 export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   $skiptoken: Schema.optional(Schema.String),
   $skip: Schema.optional(Schema.Number),
@@ -77,10 +98,30 @@ export const EntitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Management/getEntities",
     apiVersion: "2023-04-01",
   }),
-);
-export type EntitiesListInput = typeof EntitiesListInput.Type;
+) as unknown as Schema.Codec<EntitiesListInput>;
 
 // Output Schema
+export interface EntitiesListOutput {
+  value: {
+    id?: string | null;
+    type?: string | null;
+    name?: string;
+    properties?: {
+      tenantId?: string | null;
+      displayName?: string | null;
+      parent?: { id?: string };
+      permissions?: "noaccess" | "view" | "edit" | "delete";
+      inheritedPermissions?: "noaccess" | "view" | "edit" | "delete";
+      numberOfDescendants?: number | null;
+      numberOfChildren?: number | null;
+      numberOfChildGroups?: number | null;
+      parentDisplayNameChain?: string[] | null;
+      parentNameChain?: string[] | null;
+    };
+  }[];
+  nextLink?: string;
+  count?: number;
+}
 export const EntitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -117,8 +158,7 @@ export const EntitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   nextLink: Schema.optional(Schema.String),
   count: Schema.optional(Schema.Number),
-});
-export type EntitiesListOutput = typeof EntitiesListOutput.Type;
+}) as unknown as Schema.Codec<EntitiesListOutput>;
 
 // The operation
 /**
@@ -146,6 +186,13 @@ export const EntitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EntitiesListOutput,
 }));
 // Input Schema
+export interface HierarchySettingsCreateOrUpdateInput {
+  groupId: string;
+  properties?: {
+    requireAuthorizationForGroupCreation?: boolean;
+    defaultManagementGroup?: string;
+  };
+}
 export const HierarchySettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -161,11 +208,22 @@ export const HierarchySettingsCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type HierarchySettingsCreateOrUpdateInput =
-  typeof HierarchySettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<HierarchySettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface HierarchySettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HierarchySettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -185,9 +243,7 @@ export const HierarchySettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HierarchySettingsCreateOrUpdateOutput =
-  typeof HierarchySettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HierarchySettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -202,6 +258,9 @@ export const HierarchySettingsCreateOrUpdate =
     outputSchema: HierarchySettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface HierarchySettingsDeleteInput {
+  groupId: string;
+}
 export const HierarchySettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -211,15 +270,12 @@ export const HierarchySettingsDeleteInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type HierarchySettingsDeleteInput =
-  typeof HierarchySettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<HierarchySettingsDeleteInput>;
 
 // Output Schema
+export type HierarchySettingsDeleteOutput = void;
 export const HierarchySettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HierarchySettingsDeleteOutput =
-  typeof HierarchySettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HierarchySettingsDeleteOutput>;
 
 // The operation
 /**
@@ -235,6 +291,9 @@ export const HierarchySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HierarchySettingsGetInput {
+  groupId: string;
+}
 export const HierarchySettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -244,10 +303,22 @@ export const HierarchySettingsGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type HierarchySettingsGetInput = typeof HierarchySettingsGetInput.Type;
+  ) as unknown as Schema.Codec<HierarchySettingsGetInput>;
 
 // Output Schema
+export interface HierarchySettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HierarchySettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -267,8 +338,7 @@ export const HierarchySettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HierarchySettingsGetOutput = typeof HierarchySettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<HierarchySettingsGetOutput>;
 
 // The operation
 /**
@@ -284,6 +354,9 @@ export const HierarchySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HierarchySettingsListInput {
+  groupId: string;
+}
 export const HierarchySettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -293,10 +366,22 @@ export const HierarchySettingsListInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
       apiVersion: "2023-04-01",
     }),
-  );
-export type HierarchySettingsListInput = typeof HierarchySettingsListInput.Type;
+  ) as unknown as Schema.Codec<HierarchySettingsListInput>;
 
 // Output Schema
+export interface HierarchySettingsListOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    name?: string;
+    properties?: {
+      tenantId?: string;
+      requireAuthorizationForGroupCreation?: boolean;
+      defaultManagementGroup?: string;
+    };
+  }[];
+  "@nextLink"?: string;
+}
 export const HierarchySettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -318,9 +403,7 @@ export const HierarchySettingsListOutput =
       ),
     ),
     "@nextLink": Schema.optional(Schema.String),
-  });
-export type HierarchySettingsListOutput =
-  typeof HierarchySettingsListOutput.Type;
+  }) as unknown as Schema.Codec<HierarchySettingsListOutput>;
 
 // The operation
 /**
@@ -336,6 +419,13 @@ export const HierarchySettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HierarchySettingsUpdateInput {
+  groupId: string;
+  properties?: {
+    requireAuthorizationForGroupCreation?: boolean;
+    defaultManagementGroup?: string;
+  };
+}
 export const HierarchySettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -351,11 +441,22 @@ export const HierarchySettingsUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type HierarchySettingsUpdateInput =
-  typeof HierarchySettingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<HierarchySettingsUpdateInput>;
 
 // Output Schema
+export interface HierarchySettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HierarchySettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -375,9 +476,7 @@ export const HierarchySettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HierarchySettingsUpdateOutput =
-  typeof HierarchySettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HierarchySettingsUpdateOutput>;
 
 // The operation
 /**
@@ -393,6 +492,31 @@ export const HierarchySettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagementGroupsCreateOrUpdateInput {
+  groupId: string;
+  id?: string;
+  type?: string;
+  name?: string;
+  properties?: {
+    tenantId?: string;
+    displayName?: string | null;
+    details?: {
+      version?: number;
+      updatedTime?: string;
+      updatedBy?: string;
+      parent?: { id?: string; name?: string; displayName?: string };
+    };
+    children?:
+      | {
+          type?: "Microsoft.Management/managementGroups" | "/subscriptions";
+          id?: string;
+          name?: string;
+          displayName?: string;
+          children?: unknown[];
+        }[]
+      | null;
+  };
+}
 export const ManagementGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -443,11 +567,22 @@ export const ManagementGroupsCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsCreateOrUpdateInput =
-  typeof ManagementGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagementGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -467,9 +602,7 @@ export const ManagementGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementGroupsCreateOrUpdateOutput =
-  typeof ManagementGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -486,6 +619,9 @@ export const ManagementGroupsCreateOrUpdate =
     outputSchema: ManagementGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagementGroupsDeleteInput {
+  groupId: string;
+}
 export const ManagementGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -495,15 +631,12 @@ export const ManagementGroupsDeleteInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsDeleteInput =
-  typeof ManagementGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsDeleteInput>;
 
 // Output Schema
+export type ManagementGroupsDeleteOutput = void;
 export const ManagementGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementGroupsDeleteOutput =
-  typeof ManagementGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -521,6 +654,12 @@ export const ManagementGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagementGroupsGetInput {
+  groupId: string;
+  $expand?: "children" | "path" | "ancestors";
+  $recurse?: boolean;
+  $filter?: string;
+}
 export const ManagementGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -535,10 +674,22 @@ export const ManagementGroupsGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsGetInput = typeof ManagementGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsGetInput>;
 
 // Output Schema
+export interface ManagementGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -558,8 +709,7 @@ export const ManagementGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementGroupsGetOutput = typeof ManagementGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsGetOutput>;
 
 // The operation
 /**
@@ -577,6 +727,11 @@ export const ManagementGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ManagementGroupsGetOutput,
 }));
 // Input Schema
+export interface ManagementGroupsGetDescendantsInput {
+  groupId: string;
+  $skiptoken?: string;
+  $top?: number;
+}
 export const ManagementGroupsGetDescendantsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -588,11 +743,18 @@ export const ManagementGroupsGetDescendantsInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsGetDescendantsInput =
-  typeof ManagementGroupsGetDescendantsInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsGetDescendantsInput>;
 
 // Output Schema
+export interface ManagementGroupsGetDescendantsOutput {
+  value: {
+    id?: string | null;
+    type?: string | null;
+    name?: string;
+    properties?: { displayName?: string | null; parent?: { id?: string } };
+  }[];
+  nextLink?: string;
+}
 export const ManagementGroupsGetDescendantsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -613,9 +775,7 @@ export const ManagementGroupsGetDescendantsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementGroupsGetDescendantsOutput =
-  typeof ManagementGroupsGetDescendantsOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsGetDescendantsOutput>;
 
 // The operation
 /**
@@ -633,6 +793,9 @@ export const ManagementGroupsGetDescendants =
     outputSchema: ManagementGroupsGetDescendantsOutput,
   }));
 // Input Schema
+export interface ManagementGroupsListInput {
+  $skiptoken?: string;
+}
 export const ManagementGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $skiptoken: Schema.optional(Schema.String),
@@ -642,10 +805,18 @@ export const ManagementGroupsListInput =
       path: "/providers/Microsoft.Management/managementGroups",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsListInput = typeof ManagementGroupsListInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsListInput>;
 
 // Output Schema
+export interface ManagementGroupsListOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    name?: string;
+    properties?: { tenantId?: string; displayName?: string };
+  }[];
+  "@nextLink"?: string;
+}
 export const ManagementGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -664,8 +835,7 @@ export const ManagementGroupsListOutput =
       ),
     ),
     "@nextLink": Schema.optional(Schema.String),
-  });
-export type ManagementGroupsListOutput = typeof ManagementGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsListOutput>;
 
 // The operation
 /**
@@ -683,6 +853,10 @@ export const ManagementGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagementGroupSubscriptionsCreateInput {
+  groupId: string;
+  subscriptionId: string;
+}
 export const ManagementGroupSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -693,11 +867,22 @@ export const ManagementGroupSubscriptionsCreateInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupSubscriptionsCreateInput =
-  typeof ManagementGroupSubscriptionsCreateInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupSubscriptionsCreateInput>;
 
 // Output Schema
+export interface ManagementGroupSubscriptionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementGroupSubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -717,9 +902,7 @@ export const ManagementGroupSubscriptionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementGroupSubscriptionsCreateOutput =
-  typeof ManagementGroupSubscriptionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupSubscriptionsCreateOutput>;
 
 // The operation
 /**
@@ -736,6 +919,10 @@ export const ManagementGroupSubscriptionsCreate =
     outputSchema: ManagementGroupSubscriptionsCreateOutput,
   }));
 // Input Schema
+export interface ManagementGroupSubscriptionsDeleteInput {
+  groupId: string;
+  subscriptionId: string;
+}
 export const ManagementGroupSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -746,15 +933,12 @@ export const ManagementGroupSubscriptionsDeleteInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupSubscriptionsDeleteInput =
-  typeof ManagementGroupSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupSubscriptionsDeleteInput>;
 
 // Output Schema
+export type ManagementGroupSubscriptionsDeleteOutput = void;
 export const ManagementGroupSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementGroupSubscriptionsDeleteOutput =
-  typeof ManagementGroupSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementGroupSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -771,6 +955,10 @@ export const ManagementGroupSubscriptionsDelete =
     outputSchema: ManagementGroupSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface ManagementGroupSubscriptionsGetSubscriptionInput {
+  groupId: string;
+  subscriptionId: string;
+}
 export const ManagementGroupSubscriptionsGetSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -781,11 +969,22 @@ export const ManagementGroupSubscriptionsGetSubscriptionInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupSubscriptionsGetSubscriptionInput =
-  typeof ManagementGroupSubscriptionsGetSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupSubscriptionsGetSubscriptionInput>;
 
 // Output Schema
+export interface ManagementGroupSubscriptionsGetSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementGroupSubscriptionsGetSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -805,9 +1004,7 @@ export const ManagementGroupSubscriptionsGetSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementGroupSubscriptionsGetSubscriptionOutput =
-  typeof ManagementGroupSubscriptionsGetSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupSubscriptionsGetSubscriptionOutput>;
 
 // The operation
 /**
@@ -824,6 +1021,10 @@ export const ManagementGroupSubscriptionsGetSubscription =
     outputSchema: ManagementGroupSubscriptionsGetSubscriptionOutput,
   }));
 // Input Schema
+export interface ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput {
+  groupId: string;
+  $skiptoken?: string;
+}
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -834,11 +1035,25 @@ export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInp
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput =
-  typeof ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupInput>;
 
 // Output Schema
+export interface ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -873,9 +1088,7 @@ export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOut
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput =
-  typeof ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput>;
 
 // The operation
 /**
@@ -894,6 +1107,11 @@ export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup =
       ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupOutput,
   }));
 // Input Schema
+export interface ManagementGroupsUpdateInput {
+  groupId: string;
+  displayName?: string;
+  parentGroupId?: string;
+}
 export const ManagementGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -905,11 +1123,22 @@ export const ManagementGroupsUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ManagementGroupsUpdateInput =
-  typeof ManagementGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagementGroupsUpdateInput>;
 
 // Output Schema
+export interface ManagementGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -929,9 +1158,7 @@ export const ManagementGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementGroupsUpdateOutput =
-  typeof ManagementGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagementGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -948,6 +1175,7 @@ export const ManagementGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -956,10 +1184,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Management/operations",
     apiVersion: "2023-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -982,8 +1224,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -996,6 +1237,7 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface StartTenantBackfillInput {}
 export const StartTenantBackfillInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1003,10 +1245,19 @@ export const StartTenantBackfillInput =
       path: "/providers/Microsoft.Management/startTenantBackfill",
       apiVersion: "2023-04-01",
     }),
-  );
-export type StartTenantBackfillInput = typeof StartTenantBackfillInput.Type;
+  ) as unknown as Schema.Codec<StartTenantBackfillInput>;
 
 // Output Schema
+export interface StartTenantBackfillOutput {
+  tenantId?: string;
+  status?:
+    | "NotStarted"
+    | "NotStartedButGroupsExist"
+    | "Started"
+    | "Failed"
+    | "Cancelled"
+    | "Completed";
+}
 export const StartTenantBackfillOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
@@ -1020,8 +1271,7 @@ export const StartTenantBackfillOutput =
         "Completed",
       ]),
     ),
-  });
-export type StartTenantBackfillOutput = typeof StartTenantBackfillOutput.Type;
+  }) as unknown as Schema.Codec<StartTenantBackfillOutput>;
 
 // The operation
 /**
@@ -1034,6 +1284,7 @@ export const StartTenantBackfill = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StartTenantBackfillOutput,
 }));
 // Input Schema
+export interface TenantBackfillStatusInput {}
 export const TenantBackfillStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1041,10 +1292,19 @@ export const TenantBackfillStatusInput =
       path: "/providers/Microsoft.Management/tenantBackfillStatus",
       apiVersion: "2023-04-01",
     }),
-  );
-export type TenantBackfillStatusInput = typeof TenantBackfillStatusInput.Type;
+  ) as unknown as Schema.Codec<TenantBackfillStatusInput>;
 
 // Output Schema
+export interface TenantBackfillStatusOutput {
+  tenantId?: string;
+  status?:
+    | "NotStarted"
+    | "NotStartedButGroupsExist"
+    | "Started"
+    | "Failed"
+    | "Cancelled"
+    | "Completed";
+}
 export const TenantBackfillStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
@@ -1058,8 +1318,7 @@ export const TenantBackfillStatusOutput =
         "Completed",
       ]),
     ),
-  });
-export type TenantBackfillStatusOutput = typeof TenantBackfillStatusOutput.Type;
+  }) as unknown as Schema.Codec<TenantBackfillStatusOutput>;
 
 // The operation
 /**

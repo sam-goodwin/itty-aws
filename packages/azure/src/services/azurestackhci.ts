@@ -4,12 +4,19 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ArcSettingsConsentAndInstallDefaultExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsConsentAndInstallDefaultExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,13 +27,24 @@ export const ArcSettingsConsentAndInstallDefaultExtensionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/consentAndInstallDefaultExtensions",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsConsentAndInstallDefaultExtensionsInput =
-  typeof ArcSettingsConsentAndInstallDefaultExtensionsInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsConsentAndInstallDefaultExtensionsInput>;
 
 // Output Schema
+export interface ArcSettingsConsentAndInstallDefaultExtensionsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArcSettingsConsentAndInstallDefaultExtensionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -46,9 +64,7 @@ export const ArcSettingsConsentAndInstallDefaultExtensionsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArcSettingsConsentAndInstallDefaultExtensionsOutput =
-  typeof ArcSettingsConsentAndInstallDefaultExtensionsOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsConsentAndInstallDefaultExtensionsOutput>;
 
 // The operation
 /**
@@ -66,6 +82,86 @@ export const ArcSettingsConsentAndInstallDefaultExtensions =
     outputSchema: ArcSettingsConsentAndInstallDefaultExtensionsOutput,
   }));
 // Input Schema
+export interface ArcSettingsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    arcInstanceResourceGroup?: string;
+    arcApplicationClientId?: string;
+    arcApplicationTenantId?: string;
+    arcServicePrincipalObjectId?: string;
+    arcApplicationObjectId?: string;
+    aggregateState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    perNodeDetails?: {
+      name?: string;
+      arcInstance?: string;
+      arcNodeServicePrincipalObjectId?: string;
+      state?:
+        | "NotSpecified"
+        | "Error"
+        | "Succeeded"
+        | "Canceled"
+        | "Failed"
+        | "Connected"
+        | "Disconnected"
+        | "Deleted"
+        | "Creating"
+        | "Updating"
+        | "Deleting"
+        | "Moving"
+        | "PartiallySucceeded"
+        | "PartiallyConnected"
+        | "InProgress"
+        | "Accepted"
+        | "Provisioning"
+        | "DisableInProgress";
+    }[];
+    connectivityProperties?: {
+      enabled?: boolean;
+      serviceConfigurations?: { serviceName: "WAC"; port: number }[];
+    };
+    defaultExtensions?: { category?: string; consentTime?: string }[];
+  };
+}
 export const ArcSettingsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -182,12 +278,24 @@ export const ArcSettingsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ArcSettingsCreateInput = typeof ArcSettingsCreateInput.Type;
+) as unknown as Schema.Codec<ArcSettingsCreateInput>;
 
 // Output Schema
+export interface ArcSettingsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArcSettingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -207,8 +315,7 @@ export const ArcSettingsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArcSettingsCreateOutput = typeof ArcSettingsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsCreateOutput>;
 
 // The operation
 /**
@@ -225,6 +332,12 @@ export const ArcSettingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArcSettingsCreateOutput,
 }));
 // Input Schema
+export interface ArcSettingsCreateIdentityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsCreateIdentityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -235,13 +348,19 @@ export const ArcSettingsCreateIdentityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsCreateIdentityInput =
-  typeof ArcSettingsCreateIdentityInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsCreateIdentityInput>;
 
 // Output Schema
+export interface ArcSettingsCreateIdentityOutput {
+  properties?: {
+    arcApplicationClientId?: string;
+    arcApplicationTenantId?: string;
+    arcServicePrincipalObjectId?: string;
+    arcApplicationObjectId?: string;
+  };
+}
 export const ArcSettingsCreateIdentityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -252,9 +371,7 @@ export const ArcSettingsCreateIdentityOutput =
         arcApplicationObjectId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArcSettingsCreateIdentityOutput =
-  typeof ArcSettingsCreateIdentityOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsCreateIdentityOutput>;
 
 // The operation
 /**
@@ -273,6 +390,12 @@ export const ArcSettingsCreateIdentity = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArcSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -284,14 +407,14 @@ export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ArcSettingsDeleteInput = typeof ArcSettingsDeleteInput.Type;
+) as unknown as Schema.Codec<ArcSettingsDeleteInput>;
 
 // Output Schema
-export const ArcSettingsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArcSettingsDeleteOutput = typeof ArcSettingsDeleteOutput.Type;
+export type ArcSettingsDeleteOutput = void;
+export const ArcSettingsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -308,6 +431,12 @@ export const ArcSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArcSettingsDeleteOutput,
 }));
 // Input Schema
+export interface ArcSettingsGeneratePasswordInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsGeneratePasswordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -318,22 +447,24 @@ export const ArcSettingsGeneratePasswordInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/generatePassword",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsGeneratePasswordInput =
-  typeof ArcSettingsGeneratePasswordInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsGeneratePasswordInput>;
 
 // Output Schema
+export interface ArcSettingsGeneratePasswordOutput {
+  secretText?: string;
+  keyId?: string;
+  startDateTime?: string;
+  endDateTime?: string;
+}
 export const ArcSettingsGeneratePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretText: Schema.optional(Schema.String),
     keyId: Schema.optional(Schema.String),
     startDateTime: Schema.optional(Schema.String),
     endDateTime: Schema.optional(Schema.String),
-  });
-export type ArcSettingsGeneratePasswordOutput =
-  typeof ArcSettingsGeneratePasswordOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsGeneratePasswordOutput>;
 
 // The operation
 /**
@@ -352,6 +483,12 @@ export const ArcSettingsGeneratePassword = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArcSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -361,12 +498,24 @@ export const ArcSettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ArcSettingsGetInput = typeof ArcSettingsGetInput.Type;
+) as unknown as Schema.Codec<ArcSettingsGetInput>;
 
 // Output Schema
+export interface ArcSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArcSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -385,8 +534,7 @@ export const ArcSettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ArcSettingsGetOutput = typeof ArcSettingsGetOutput.Type;
+}) as unknown as Schema.Codec<ArcSettingsGetOutput>;
 
 // The operation
 /**
@@ -403,6 +551,12 @@ export const ArcSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArcSettingsGetOutput,
 }));
 // Input Schema
+export interface ArcSettingsInitializeDisableProcessInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ArcSettingsInitializeDisableProcessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -413,17 +567,14 @@ export const ArcSettingsInitializeDisableProcessInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/initializeDisableProcess",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsInitializeDisableProcessInput =
-  typeof ArcSettingsInitializeDisableProcessInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsInitializeDisableProcessInput>;
 
 // Output Schema
+export type ArcSettingsInitializeDisableProcessOutput = void;
 export const ArcSettingsInitializeDisableProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArcSettingsInitializeDisableProcessOutput =
-  typeof ArcSettingsInitializeDisableProcessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArcSettingsInitializeDisableProcessOutput>;
 
 // The operation
 /**
@@ -441,6 +592,11 @@ export const ArcSettingsInitializeDisableProcess =
     outputSchema: ArcSettingsInitializeDisableProcessOutput,
   }));
 // Input Schema
+export interface ArcSettingsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ArcSettingsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -450,13 +606,27 @@ export const ArcSettingsListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsListByClusterInput =
-  typeof ArcSettingsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsListByClusterInput>;
 
 // Output Schema
+export interface ArcSettingsListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArcSettingsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -491,9 +661,7 @@ export const ArcSettingsListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArcSettingsListByClusterOutput =
-  typeof ArcSettingsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsListByClusterOutput>;
 
 // The operation
 /**
@@ -511,6 +679,13 @@ export const ArcSettingsListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArcSettingsReconcileInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  properties?: { clusterNodes?: string[] };
+}
 export const ArcSettingsReconcileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -526,12 +701,24 @@ export const ArcSettingsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/reconcile",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ArcSettingsReconcileInput = typeof ArcSettingsReconcileInput.Type;
+  ) as unknown as Schema.Codec<ArcSettingsReconcileInput>;
 
 // Output Schema
+export interface ArcSettingsReconcileOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArcSettingsReconcileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -551,8 +738,7 @@ export const ArcSettingsReconcileOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArcSettingsReconcileOutput = typeof ArcSettingsReconcileOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsReconcileOutput>;
 
 // The operation
 /**
@@ -571,6 +757,19 @@ export const ArcSettingsReconcile = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArcSettingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    connectivityProperties?: {
+      enabled?: boolean;
+      serviceConfigurations?: { serviceName: "WAC"; port: number }[];
+    };
+  };
+}
 export const ArcSettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -600,12 +799,24 @@ export const ArcSettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ArcSettingsUpdateInput = typeof ArcSettingsUpdateInput.Type;
+) as unknown as Schema.Codec<ArcSettingsUpdateInput>;
 
 // Output Schema
+export interface ArcSettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArcSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -625,8 +836,7 @@ export const ArcSettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArcSettingsUpdateOutput = typeof ArcSettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArcSettingsUpdateOutput>;
 
 // The operation
 /**
@@ -643,6 +853,16 @@ export const ArcSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArcSettingsUpdateOutput,
 }));
 // Input Schema
+export interface ClustersConfigureRemoteSupportInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    accessLevel?: "Diagnostics" | "DiagnosticsAndRepair";
+    expirationTimeStamp?: string;
+    remoteSupportType?: "Enable" | "Revoke";
+  };
+}
 export const ClustersConfigureRemoteSupportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -663,13 +883,24 @@ export const ClustersConfigureRemoteSupportInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/configureRemoteSupport",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersConfigureRemoteSupportInput =
-  typeof ClustersConfigureRemoteSupportInput.Type;
+  ) as unknown as Schema.Codec<ClustersConfigureRemoteSupportInput>;
 
 // Output Schema
+export interface ClustersConfigureRemoteSupportOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersConfigureRemoteSupportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -689,9 +920,7 @@ export const ClustersConfigureRemoteSupportOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersConfigureRemoteSupportOutput =
-  typeof ClustersConfigureRemoteSupportOutput.Type;
+  }) as unknown as Schema.Codec<ClustersConfigureRemoteSupportOutput>;
 
 // The operation
 /**
@@ -708,6 +937,189 @@ export const ClustersConfigureRemoteSupport =
     outputSchema: ClustersConfigureRemoteSupportOutput,
   }));
 // Input Schema
+export interface ClustersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    status?:
+      | "NotYetRegistered"
+      | "ConnectedRecently"
+      | "NotConnectedRecently"
+      | "Disconnected"
+      | "Error"
+      | "NotSpecified"
+      | "ValidationInProgress"
+      | "ValidationSuccess"
+      | "ValidationFailed"
+      | "DeploymentInProgress"
+      | "DeploymentFailed"
+      | "DeploymentSuccess";
+    connectivityStatus?:
+      | "NotYetRegistered"
+      | "Connected"
+      | "NotConnectedRecently"
+      | "PartiallyConnected"
+      | "Disconnected"
+      | "NotSpecified";
+    cloudId?: string;
+    cloudManagementEndpoint?: string;
+    aadClientId?: string;
+    aadTenantId?: string;
+    aadApplicationObjectId?: string;
+    aadServicePrincipalObjectId?: string;
+    softwareAssuranceProperties?: {
+      softwareAssuranceStatus?: "Enabled" | "Disabled";
+      softwareAssuranceIntent?: "Enable" | "Disable";
+      lastUpdated?: string;
+    };
+    isManagementCluster?: boolean;
+    logCollectionProperties?: {
+      fromDate?: string;
+      toDate?: string;
+      lastLogGenerated?: string;
+      logCollectionSessionDetails?: {
+        logStartTime?: string;
+        logEndTime?: string;
+        timeCollected?: string;
+        logSize?: number;
+        logCollectionStatus?: "None" | "InProgress" | "Failed" | "Succeeded";
+        correlationId?: string;
+        logCollectionJobType?: "OnDemand" | "Scheduled";
+        endTimeCollected?: string;
+        logCollectionError?: { errorCode?: string; errorMessage?: string };
+      }[];
+    };
+    remoteSupportProperties?: {
+      accessLevel?: "Diagnostics" | "DiagnosticsAndRepair";
+      expirationTimeStamp?: string;
+      remoteSupportType?: "Enable" | "Revoke";
+      remoteSupportNodeSettings?: {
+        arcResourceId?: string;
+        state?: string;
+        createdAt?: string;
+        updatedAt?: string;
+        connectionStatus?: string;
+        connectionErrorMessage?: string;
+        transcriptLocation?: string;
+      }[];
+      remoteSupportSessionDetails?: {
+        sessionStartTime?: string;
+        sessionEndTime?: string;
+        nodeName?: string;
+        duration?: number;
+        accessLevel?: "Diagnostics" | "DiagnosticsAndRepair";
+        transcriptLocation?: string;
+      }[];
+      remoteSupportProvisioningState?:
+        | "None"
+        | "GrantInProgress"
+        | "RevokeInProgress"
+        | "Succeeded"
+        | "Failed";
+    };
+    desiredProperties?: {
+      windowsServerSubscription?: "Disabled" | "Enabled";
+      diagnosticLevel?: "Off" | "Basic" | "Enhanced";
+    };
+    reportedProperties?: {
+      clusterName?: string;
+      clusterId?: string;
+      clusterVersion?: string;
+      nodes?: {
+        name?: string;
+        id?: number;
+        windowsServerSubscription?: "Disabled" | "Enabled";
+        nodeType?: "FirstParty" | "ThirdParty";
+        ehcResourceId?: string;
+        manufacturer?: string;
+        model?: string;
+        osName?: string;
+        osVersion?: string;
+        osDisplayVersion?: string;
+        serialNumber?: string;
+        coreCount?: number;
+        memoryInGiB?: number;
+        lastLicensingTimestamp?: string;
+        oemActivation?: "Disabled" | "Enabled";
+      }[];
+      lastUpdated?: string;
+      msiExpirationTimeStamp?: string;
+      imdsAttestation?: "Disabled" | "Enabled";
+      diagnosticLevel?: "Off" | "Basic" | "Enhanced";
+      supportedCapabilities?: string[];
+      clusterType?: "FirstParty" | "ThirdParty";
+      manufacturer?: string;
+      oemActivation?: "Disabled" | "Enabled";
+      hardwareClass?: "Small" | "Medium" | "Large";
+    };
+    isolatedVmAttestationConfiguration?: {
+      attestationResourceId?: string;
+      relyingPartyServiceEndpoint?: string;
+      attestationServiceEndpoint?: string;
+    };
+    trialDaysRemaining?: number;
+    billingModel?: string;
+    billingProperties?: {
+      nextBillingModel?: {
+        billingModel?: string;
+        capabilitiesEnabled?: string[];
+        trialDaysRemaining?: number;
+      };
+    };
+    registrationTimestamp?: string;
+    lastSyncTimestamp?: string;
+    lastBillingTimestamp?: string;
+    serviceEndpoint?: string;
+    resourceProviderObjectId?: string;
+    secretsLocations?: {
+      secretsType: "BackupSecrets";
+      secretsLocation: string;
+    }[];
+    clusterPattern?: "Standard" | "RackAware";
+    localAvailabilityZones?: {
+      localAvailabilityZoneName?: string;
+      nodes?: string[];
+    }[];
+    identityProvider?: "ActiveDirectory" | "LocalIdentity";
+    storageType?: "S2D" | "SAN" | "SANS2D";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  kind?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -848,8 +1260,18 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 accessLevel: Schema.optional(
                   Schema.Literals(["Diagnostics", "DiagnosticsAndRepair"]),
                 ),
+                transcriptLocation: Schema.optional(Schema.String),
               }),
             ),
+          ),
+          remoteSupportProvisioningState: Schema.optional(
+            Schema.Literals([
+              "None",
+              "GrantInProgress",
+              "RevokeInProgress",
+              "Succeeded",
+              "Failed",
+            ]),
           ),
         }),
       ),
@@ -925,6 +1347,17 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       trialDaysRemaining: Schema.optional(Schema.Number),
       billingModel: Schema.optional(Schema.String),
+      billingProperties: Schema.optional(
+        Schema.Struct({
+          nextBillingModel: Schema.optional(
+            Schema.Struct({
+              billingModel: Schema.optional(Schema.String),
+              capabilitiesEnabled: Schema.optional(Schema.Array(Schema.String)),
+              trialDaysRemaining: Schema.optional(Schema.Number),
+            }),
+          ),
+        }),
+      ),
       registrationTimestamp: Schema.optional(Schema.String),
       lastSyncTimestamp: Schema.optional(Schema.String),
       lastBillingTimestamp: Schema.optional(Schema.String),
@@ -952,6 +1385,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       identityProvider: Schema.optional(
         Schema.Literals(["ActiveDirectory", "LocalIdentity"]),
       ),
+      storageType: Schema.optional(Schema.Literals(["S2D", "SAN", "SANS2D"])),
     }),
   ),
   identity: Schema.optional(
@@ -975,18 +1409,31 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
+  kind: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.String,
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ClustersCreateInput = typeof ClustersCreateInput.Type;
+) as unknown as Schema.Codec<ClustersCreateInput>;
 
 // Output Schema
+export interface ClustersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1005,8 +1452,7 @@ export const ClustersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersCreateOutput = typeof ClustersCreateOutput.Type;
+}) as unknown as Schema.Codec<ClustersCreateOutput>;
 
 // The operation
 /**
@@ -1022,6 +1468,11 @@ export const ClustersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersCreateOutput,
 }));
 // Input Schema
+export interface ClustersCreateIdentityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersCreateIdentityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1031,13 +1482,19 @@ export const ClustersCreateIdentityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/createClusterIdentity",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersCreateIdentityInput =
-  typeof ClustersCreateIdentityInput.Type;
+  ) as unknown as Schema.Codec<ClustersCreateIdentityInput>;
 
 // Output Schema
+export interface ClustersCreateIdentityOutput {
+  properties?: {
+    aadClientId?: string;
+    aadTenantId?: string;
+    aadServicePrincipalObjectId?: string;
+    aadApplicationObjectId?: string;
+  };
+}
 export const ClustersCreateIdentityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1048,9 +1505,7 @@ export const ClustersCreateIdentityOutput =
         aadApplicationObjectId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersCreateIdentityOutput =
-  typeof ClustersCreateIdentityOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCreateIdentityOutput>;
 
 // The operation
 /**
@@ -1068,6 +1523,11 @@ export const ClustersCreateIdentity = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1076,14 +1536,14 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1099,6 +1559,12 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersExtendSoftwareAssuranceBenefitInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: { softwareAssuranceIntent?: "Enable" | "Disable" };
+}
 export const ClustersExtendSoftwareAssuranceBenefitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1115,13 +1581,24 @@ export const ClustersExtendSoftwareAssuranceBenefitInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/extendSoftwareAssuranceBenefit",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersExtendSoftwareAssuranceBenefitInput =
-  typeof ClustersExtendSoftwareAssuranceBenefitInput.Type;
+  ) as unknown as Schema.Codec<ClustersExtendSoftwareAssuranceBenefitInput>;
 
 // Output Schema
+export interface ClustersExtendSoftwareAssuranceBenefitOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersExtendSoftwareAssuranceBenefitOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1141,9 +1618,7 @@ export const ClustersExtendSoftwareAssuranceBenefitOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersExtendSoftwareAssuranceBenefitOutput =
-  typeof ClustersExtendSoftwareAssuranceBenefitOutput.Type;
+  }) as unknown as Schema.Codec<ClustersExtendSoftwareAssuranceBenefitOutput>;
 
 // The operation
 /**
@@ -1160,6 +1635,11 @@ export const ClustersExtendSoftwareAssuranceBenefit =
     outputSchema: ClustersExtendSoftwareAssuranceBenefitOutput,
   }));
 // Input Schema
+export interface ClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1168,12 +1648,24 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1192,8 +1684,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -1209,6 +1700,10 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,13 +1712,27 @@ export const ClustersListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1258,9 +1767,7 @@ export const ClustersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1277,6 +1784,9 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ClustersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1284,13 +1794,27 @@ export const ClustersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/clusters",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersListBySubscriptionInput =
-  typeof ClustersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ClustersListBySubscriptionInput>;
 
 // Output Schema
+export interface ClustersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1325,9 +1849,7 @@ export const ClustersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListBySubscriptionOutput =
-  typeof ClustersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1343,6 +1865,12 @@ export const ClustersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersTriggerLogCollectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: { fromDate: string; toDate: string };
+}
 export const ClustersTriggerLogCollectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1358,13 +1886,24 @@ export const ClustersTriggerLogCollectionInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/triggerLogCollection",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersTriggerLogCollectionInput =
-  typeof ClustersTriggerLogCollectionInput.Type;
+  ) as unknown as Schema.Codec<ClustersTriggerLogCollectionInput>;
 
 // Output Schema
+export interface ClustersTriggerLogCollectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersTriggerLogCollectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1384,9 +1923,7 @@ export const ClustersTriggerLogCollectionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersTriggerLogCollectionOutput =
-  typeof ClustersTriggerLogCollectionOutput.Type;
+  }) as unknown as Schema.Codec<ClustersTriggerLogCollectionOutput>;
 
 // The operation
 /**
@@ -1403,6 +1940,34 @@ export const ClustersTriggerLogCollection =
     outputSchema: ClustersTriggerLogCollectionOutput,
   }));
 // Input Schema
+export interface ClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    cloudManagementEndpoint?: string;
+    aadClientId?: string;
+    aadTenantId?: string;
+    desiredProperties?: {
+      windowsServerSubscription?: "Disabled" | "Enabled";
+      diagnosticLevel?: "Off" | "Basic" | "Enhanced";
+    };
+  };
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1450,12 +2015,24 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1474,8 +2051,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -1491,6 +2067,12 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface ClustersUpdateSecretsLocationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: { secretsType: "BackupSecrets"; secretsLocation: string }[];
+}
 export const ClustersUpdateSecretsLocationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1508,13 +2090,24 @@ export const ClustersUpdateSecretsLocationsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSecretsLocations",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersUpdateSecretsLocationsInput =
-  typeof ClustersUpdateSecretsLocationsInput.Type;
+  ) as unknown as Schema.Codec<ClustersUpdateSecretsLocationsInput>;
 
 // Output Schema
+export interface ClustersUpdateSecretsLocationsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateSecretsLocationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1534,9 +2127,7 @@ export const ClustersUpdateSecretsLocationsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersUpdateSecretsLocationsOutput =
-  typeof ClustersUpdateSecretsLocationsOutput.Type;
+  }) as unknown as Schema.Codec<ClustersUpdateSecretsLocationsOutput>;
 
 // The operation
 /**
@@ -1553,6 +2144,12 @@ export const ClustersUpdateSecretsLocations =
     outputSchema: ClustersUpdateSecretsLocationsOutput,
   }));
 // Input Schema
+export interface ClustersUploadCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: { certificates?: string[] };
+}
 export const ClustersUploadCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1567,17 +2164,14 @@ export const ClustersUploadCertificateInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/uploadCertificate",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ClustersUploadCertificateInput =
-  typeof ClustersUploadCertificateInput.Type;
+  ) as unknown as Schema.Codec<ClustersUploadCertificateInput>;
 
 // Output Schema
+export type ClustersUploadCertificateOutput = void;
 export const ClustersUploadCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersUploadCertificateOutput =
-  typeof ClustersUploadCertificateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersUploadCertificateOutput>;
 
 // The operation
 /**
@@ -1595,6 +2189,219 @@ export const ClustersUploadCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentSettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  deploymentSettingsName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    arcNodeResourceIds: string[];
+    deploymentMode: "Validate" | "Deploy";
+    operationType?: "ClusterProvisioning" | "ClusterUpgrade";
+    deploymentConfiguration: {
+      version?: string;
+      scaleUnits: {
+        deploymentData: {
+          securitySettings?: {
+            hvciProtection?: boolean;
+            drtmProtection?: boolean;
+            driftControlEnforced?: boolean;
+            credentialGuardEnforced?: boolean;
+            smbSigningEnforced?: boolean;
+            smbClusterEncryption?: boolean;
+            sideChannelMitigationEnforced?: boolean;
+            bitlockerBootVolume?: boolean;
+            bitlockerDataVolumes?: boolean;
+            wdacEnforced?: boolean;
+          };
+          observability?: {
+            streamingDataClient?: boolean;
+            euLocation?: boolean;
+            episodicDataUpload?: boolean;
+          };
+          cluster?: {
+            name?: string;
+            witnessType?: string;
+            witnessPath?: string;
+            cloudAccountName?: string;
+            azureServiceEndpoint?: string;
+            hardwareClass?: "Small" | "Medium" | "Large";
+            clusterPattern?: "Standard" | "RackAware";
+          };
+          identityProvider?: "ActiveDirectory" | "LocalIdentity";
+          storage?: {
+            configurationMode?: string;
+            storageType?: "S2D" | "SAN" | "SANS2D";
+            s2d?: {
+              volumeType?: "Fixed" | "ThinProvisioned";
+              overprovisioningRatio?: "0" | "1" | "2";
+            };
+            san?: { infraVolLunId?: string; infraPerfLunId?: string };
+          };
+          namingPrefix?: string;
+          domainFqdn?: string;
+          infrastructureNetwork?: {
+            subnetMask?: string;
+            gateway?: string;
+            ipPools?: { startingAddress?: string; endingAddress?: string }[];
+            dnsServerConfig?: "UseDnsServer" | "UseForwarder";
+            dnsZones?: { dnsZoneName?: string; dnsForwarder?: string[] }[];
+            dnsServers?: string[];
+            useDhcp?: boolean;
+          }[];
+          physicalNodes?: { name?: string; ipv4Address?: string }[];
+          hostNetwork?: {
+            intents?: {
+              name?: string;
+              trafficType?: string[];
+              adapter?: string[];
+              overrideVirtualSwitchConfiguration?: boolean;
+              virtualSwitchConfigurationOverrides?: {
+                enableIov?: string;
+                loadBalancingAlgorithm?: string;
+              };
+              overrideQosPolicy?: boolean;
+              qosPolicyOverrides?: {
+                priorityValue8021Action_Cluster?: string;
+                priorityValue8021Action_SMB?: string;
+                bandwidthPercentage_SMB?: string;
+              };
+              overrideAdapterProperty?: boolean;
+              adapterPropertyOverrides?: {
+                jumboPacket?: string;
+                networkDirect?: string;
+                networkDirectTechnology?: string;
+              };
+            }[];
+            storageNetworks?: {
+              name?: string;
+              networkAdapterName?: string;
+              vlanId?: string;
+              storageAdapterIPInfo?: {
+                physicalNode?: string;
+                ipv4Address?: string;
+                subnetMask?: string;
+              }[];
+            }[];
+            sanNetworks?: {
+              clusterNetworkConfig?: {
+                adapterProperties?: {
+                  priorityValue8021ActionCluster?: number;
+                  priorityValue8021ActionSmb?: number;
+                  bandwidthPercentageSmb?: number;
+                  jumboPacket?: number;
+                };
+                adapterIPConfig?: {
+                  name?: string;
+                  networkAdapterName?: string;
+                  vlanId?: number;
+                  addressPrefix?: string;
+                }[];
+              };
+            };
+            storageConnectivitySwitchless?: boolean;
+            enableStorageAutoIp?: boolean;
+          };
+          sdnIntegration?: {
+            networkController?: {
+              macAddressPoolStart?: string;
+              macAddressPoolStop?: string;
+              networkVirtualizationEnabled?: boolean;
+            };
+          };
+          isManagementCluster?: boolean;
+          adouPath?: string;
+          secretsLocation?: string;
+          secrets?: {
+            secretName?: string;
+            eceSecretName?:
+              | "AzureStackLCMUserCredential"
+              | "DefaultARBApplication"
+              | "LocalAdminCredential"
+              | "WitnessStorageKey";
+            secretLocation?: string;
+          }[];
+          optionalServices?: { customLocation?: string };
+          localAvailabilityZones?: {
+            localAvailabilityZoneName?: string;
+            nodes?: string[];
+          }[];
+          assemblyInfo?: {
+            packageVersion?: string;
+            payload?: {
+              identifier?: string;
+              hash?: string;
+              fileName?: string;
+              url?: string;
+            }[];
+          };
+        };
+        sbePartnerInfo?: {
+          sbeDeploymentInfo?: {
+            version?: string;
+            family?: string;
+            publisher?: string;
+            sbeManifestSource?: string;
+            sbeManifestCreationDate?: string;
+          };
+          partnerProperties?: { name?: string; value?: string }[];
+          credentialList?: {
+            secretName?: string;
+            eceSecretName?: string;
+            secretLocation?: string;
+          }[];
+        };
+      }[];
+    };
+    reportedProperties?: {
+      validationStatus?: {
+        status?: string;
+        steps?: {
+          name?: string;
+          description?: string;
+          fullStepIndex?: string;
+          startTimeUtc?: string;
+          endTimeUtc?: string;
+          status?: string;
+          steps?: unknown[];
+          exception?: string[];
+        }[];
+      };
+      deploymentStatus?: {
+        status?: string;
+        steps?: {
+          name?: string;
+          description?: string;
+          fullStepIndex?: string;
+          startTimeUtc?: string;
+          endTimeUtc?: string;
+          status?: string;
+          steps?: unknown[];
+          exception?: string[];
+        }[];
+      };
+    };
+  };
+}
 export const DeploymentSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1679,6 +2486,25 @@ export const DeploymentSettingsCreateOrUpdateInput =
                 storage: Schema.optional(
                   Schema.Struct({
                     configurationMode: Schema.optional(Schema.String),
+                    storageType: Schema.optional(
+                      Schema.Literals(["S2D", "SAN", "SANS2D"]),
+                    ),
+                    s2d: Schema.optional(
+                      Schema.Struct({
+                        volumeType: Schema.optional(
+                          Schema.Literals(["Fixed", "ThinProvisioned"]),
+                        ),
+                        overprovisioningRatio: Schema.optional(
+                          Schema.Literals(["0", "1", "2"]),
+                        ),
+                      }),
+                    ),
+                    san: Schema.optional(
+                      Schema.Struct({
+                        infraVolLunId: Schema.optional(Schema.String),
+                        infraPerfLunId: Schema.optional(Schema.String),
+                      }),
+                    ),
                   }),
                 ),
                 namingPrefix: Schema.optional(Schema.String),
@@ -1789,6 +2615,40 @@ export const DeploymentSettingsCreateOrUpdateInput =
                           ),
                         }),
                       ),
+                    ),
+                    sanNetworks: Schema.optional(
+                      Schema.Struct({
+                        clusterNetworkConfig: Schema.optional(
+                          Schema.Struct({
+                            adapterProperties: Schema.optional(
+                              Schema.Struct({
+                                priorityValue8021ActionCluster: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                priorityValue8021ActionSmb: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                bandwidthPercentageSmb: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                jumboPacket: Schema.optional(Schema.Number),
+                              }),
+                            ),
+                            adapterIPConfig: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  networkAdapterName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  vlanId: Schema.optional(Schema.Number),
+                                  addressPrefix: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                      }),
                     ),
                     storageConnectivitySwitchless: Schema.optional(
                       Schema.Boolean,
@@ -1938,13 +2798,24 @@ export const DeploymentSettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type DeploymentSettingsCreateOrUpdateInput =
-  typeof DeploymentSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentSettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1964,9 +2835,7 @@ export const DeploymentSettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentSettingsCreateOrUpdateOutput =
-  typeof DeploymentSettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1984,6 +2853,12 @@ export const DeploymentSettingsCreateOrUpdate =
     outputSchema: DeploymentSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DeploymentSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  deploymentSettingsName: string;
+}
 export const DeploymentSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1994,17 +2869,14 @@ export const DeploymentSettingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type DeploymentSettingsDeleteInput =
-  typeof DeploymentSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeploymentSettingsDeleteInput>;
 
 // Output Schema
+export type DeploymentSettingsDeleteOutput = void;
 export const DeploymentSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentSettingsDeleteOutput =
-  typeof DeploymentSettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -2023,6 +2895,12 @@ export const DeploymentSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  deploymentSettingsName: string;
+}
 export const DeploymentSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2033,12 +2911,24 @@ export const DeploymentSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type DeploymentSettingsGetInput = typeof DeploymentSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentSettingsGetInput>;
 
 // Output Schema
+export interface DeploymentSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2058,9 +2948,7 @@ export const DeploymentSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentSettingsGetOutput =
-  typeof DeploymentSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentSettingsGetOutput>;
 
 // The operation
 /**
@@ -2079,6 +2967,11 @@ export const DeploymentSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentSettingsListByClustersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const DeploymentSettingsListByClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2088,13 +2981,27 @@ export const DeploymentSettingsListByClustersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type DeploymentSettingsListByClustersInput =
-  typeof DeploymentSettingsListByClustersInput.Type;
+  ) as unknown as Schema.Codec<DeploymentSettingsListByClustersInput>;
 
 // Output Schema
+export interface DeploymentSettingsListByClustersOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentSettingsListByClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2129,9 +3036,7 @@ export const DeploymentSettingsListByClustersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentSettingsListByClustersOutput =
-  typeof DeploymentSettingsListByClustersOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentSettingsListByClustersOutput>;
 
 // The operation
 /**
@@ -2148,6 +3053,12 @@ export const DeploymentSettingsListByClusters =
     outputSchema: DeploymentSettingsListByClustersOutput,
   }));
 // Input Schema
+export interface EdgeDeviceJobsCreateOrUpdateInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+  jobsName: string;
+  kind: "HCI";
+}
 export const EdgeDeviceJobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2158,13 +3069,24 @@ export const EdgeDeviceJobsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type EdgeDeviceJobsCreateOrUpdateInput =
-  typeof EdgeDeviceJobsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EdgeDeviceJobsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EdgeDeviceJobsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeDeviceJobsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2184,9 +3106,7 @@ export const EdgeDeviceJobsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EdgeDeviceJobsCreateOrUpdateOutput =
-  typeof EdgeDeviceJobsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EdgeDeviceJobsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2203,6 +3123,11 @@ export const EdgeDeviceJobsCreateOrUpdate =
     outputSchema: EdgeDeviceJobsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EdgeDeviceJobsDeleteInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+  jobsName: string;
+}
 export const EdgeDeviceJobsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2212,15 +3137,14 @@ export const EdgeDeviceJobsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type EdgeDeviceJobsDeleteInput = typeof EdgeDeviceJobsDeleteInput.Type;
+  ) as unknown as Schema.Codec<EdgeDeviceJobsDeleteInput>;
 
 // Output Schema
+export type EdgeDeviceJobsDeleteOutput = void;
 export const EdgeDeviceJobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EdgeDeviceJobsDeleteOutput = typeof EdgeDeviceJobsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDeviceJobsDeleteOutput>;
 
 // The operation
 /**
@@ -2238,6 +3162,11 @@ export const EdgeDeviceJobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EdgeDeviceJobsGetInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+  jobsName: string;
+}
 export const EdgeDeviceJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2248,12 +3177,24 @@ export const EdgeDeviceJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type EdgeDeviceJobsGetInput = typeof EdgeDeviceJobsGetInput.Type;
+) as unknown as Schema.Codec<EdgeDeviceJobsGetInput>;
 
 // Output Schema
+export interface EdgeDeviceJobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeDeviceJobsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2273,8 +3214,7 @@ export const EdgeDeviceJobsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EdgeDeviceJobsGetOutput = typeof EdgeDeviceJobsGetOutput.Type;
+  }) as unknown as Schema.Codec<EdgeDeviceJobsGetOutput>;
 
 // The operation
 /**
@@ -2290,6 +3230,10 @@ export const EdgeDeviceJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeDeviceJobsGetOutput,
 }));
 // Input Schema
+export interface EdgeDeviceJobsListByEdgeDeviceInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+}
 export const EdgeDeviceJobsListByEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2298,13 +3242,27 @@ export const EdgeDeviceJobsListByEdgeDeviceInput =
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type EdgeDeviceJobsListByEdgeDeviceInput =
-  typeof EdgeDeviceJobsListByEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<EdgeDeviceJobsListByEdgeDeviceInput>;
 
 // Output Schema
+export interface EdgeDeviceJobsListByEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EdgeDeviceJobsListByEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2339,9 +3297,7 @@ export const EdgeDeviceJobsListByEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EdgeDeviceJobsListByEdgeDeviceOutput =
-  typeof EdgeDeviceJobsListByEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<EdgeDeviceJobsListByEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -2357,6 +3313,11 @@ export const EdgeDeviceJobsListByEdgeDevice =
     outputSchema: EdgeDeviceJobsListByEdgeDeviceOutput,
   }));
 // Input Schema
+export interface EdgeDevicesCreateOrUpdateInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+  kind: "HCI";
+}
 export const EdgeDevicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2366,13 +3327,24 @@ export const EdgeDevicesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type EdgeDevicesCreateOrUpdateInput =
-  typeof EdgeDevicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EdgeDevicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EdgeDevicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeDevicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2392,9 +3364,7 @@ export const EdgeDevicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EdgeDevicesCreateOrUpdateOutput =
-  typeof EdgeDevicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EdgeDevicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2411,6 +3381,10 @@ export const EdgeDevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EdgeDevicesDeleteInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+}
 export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2420,14 +3394,14 @@ export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type EdgeDevicesDeleteInput = typeof EdgeDevicesDeleteInput.Type;
+) as unknown as Schema.Codec<EdgeDevicesDeleteInput>;
 
 // Output Schema
-export const EdgeDevicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EdgeDevicesDeleteOutput = typeof EdgeDevicesDeleteOutput.Type;
+export type EdgeDevicesDeleteOutput = void;
+export const EdgeDevicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -2442,6 +3416,10 @@ export const EdgeDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeDevicesDeleteOutput,
 }));
 // Input Schema
+export interface EdgeDevicesGetInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+}
 export const EdgeDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   edgeDeviceName: Schema.String.pipe(T.PathParam()),
@@ -2449,12 +3427,24 @@ export const EdgeDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type EdgeDevicesGetInput = typeof EdgeDevicesGetInput.Type;
+) as unknown as Schema.Codec<EdgeDevicesGetInput>;
 
 // Output Schema
+export interface EdgeDevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EdgeDevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2473,8 +3463,7 @@ export const EdgeDevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EdgeDevicesGetOutput = typeof EdgeDevicesGetOutput.Type;
+}) as unknown as Schema.Codec<EdgeDevicesGetOutput>;
 
 // The operation
 /**
@@ -2489,18 +3478,36 @@ export const EdgeDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeDevicesGetOutput,
 }));
 // Input Schema
+export interface EdgeDevicesListInput {
+  resourceUri: string;
+}
 export const EdgeDevicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type EdgeDevicesListInput = typeof EdgeDevicesListInput.Type;
+) as unknown as Schema.Codec<EdgeDevicesListInput>;
 
 // Output Schema
+export interface EdgeDevicesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EdgeDevicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2524,8 +3531,7 @@ export const EdgeDevicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type EdgeDevicesListOutput = typeof EdgeDevicesListOutput.Type;
+}) as unknown as Schema.Codec<EdgeDevicesListOutput>;
 
 // The operation
 /**
@@ -2539,6 +3545,12 @@ export const EdgeDevicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeDevicesListOutput,
 }));
 // Input Schema
+export interface EdgeDevicesValidateInput {
+  resourceUri: string;
+  edgeDeviceName: string;
+  edgeDeviceIds: string[];
+  additionalInfo?: string;
+}
 export const EdgeDevicesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
@@ -2549,17 +3561,18 @@ export const EdgeDevicesValidateInput =
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/validate",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type EdgeDevicesValidateInput = typeof EdgeDevicesValidateInput.Type;
+  ) as unknown as Schema.Codec<EdgeDevicesValidateInput>;
 
 // Output Schema
+export interface EdgeDevicesValidateOutput {
+  status?: string;
+}
 export const EdgeDevicesValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
-  });
-export type EdgeDevicesValidateOutput = typeof EdgeDevicesValidateOutput.Type;
+  }) as unknown as Schema.Codec<EdgeDevicesValidateOutput>;
 
 // The operation
 /**
@@ -2574,6 +3587,99 @@ export const EdgeDevicesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EdgeDevicesValidateOutput,
 }));
 // Input Schema
+export interface ExtensionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  extensionName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    extensionParameters?: {
+      forceUpdateTag?: string;
+      publisher?: string;
+      type?: string;
+      typeHandlerVersion?: string;
+      autoUpgradeMinorVersion?: boolean;
+      settings?: unknown;
+      protectedSettings?: unknown;
+      enableAutomaticUpgrade?: boolean;
+    };
+    aggregateState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "UpgradeFailedRollbackSucceeded";
+    perNodeExtensionDetails?: {
+      name?: string;
+      extension?: string;
+      typeHandlerVersion?: string;
+      state?:
+        | "NotSpecified"
+        | "Error"
+        | "Succeeded"
+        | "Canceled"
+        | "Failed"
+        | "Connected"
+        | "Disconnected"
+        | "Deleted"
+        | "Creating"
+        | "Updating"
+        | "Deleting"
+        | "Moving"
+        | "PartiallySucceeded"
+        | "PartiallyConnected"
+        | "InProgress"
+        | "Accepted"
+        | "Provisioning";
+      instanceView?: {
+        name?: string;
+        type?: string;
+        typeHandlerVersion?: string;
+        status?: {
+          code?: string;
+          level?: "Info" | "Warning" | "Error";
+          displayStatus?: string;
+          message?: string;
+          time?: string;
+        };
+      };
+    }[];
+    managedBy?: "User" | "Azure";
+  };
+}
 export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2693,12 +3799,24 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
+) as unknown as Schema.Codec<ExtensionsCreateInput>;
 
 // Output Schema
+export interface ExtensionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2719,8 +3837,7 @@ export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
+) as unknown as Schema.Codec<ExtensionsCreateOutput>;
 
 // The operation
 /**
@@ -2738,6 +3855,13 @@ export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsCreateOutput,
 }));
 // Input Schema
+export interface ExtensionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  extensionName: string;
+}
 export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2748,14 +3872,14 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
+) as unknown as Schema.Codec<ExtensionsDeleteInput>;
 
 // Output Schema
-export const ExtensionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
+export type ExtensionsDeleteOutput = void;
+export const ExtensionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -2773,6 +3897,13 @@ export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsDeleteOutput,
 }));
 // Input Schema
+export interface ExtensionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  extensionName: string;
+}
 export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2783,12 +3914,24 @@ export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
+) as unknown as Schema.Codec<ExtensionsGetInput>;
 
 // Output Schema
+export interface ExtensionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2807,8 +3950,7 @@ export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
+}) as unknown as Schema.Codec<ExtensionsGetOutput>;
 
 // The operation
 /**
@@ -2826,6 +3968,12 @@ export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsGetOutput,
 }));
 // Input Schema
+export interface ExtensionsListByArcSettingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+}
 export const ExtensionsListByArcSettingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2836,13 +3984,27 @@ export const ExtensionsListByArcSettingInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ExtensionsListByArcSettingInput =
-  typeof ExtensionsListByArcSettingInput.Type;
+  ) as unknown as Schema.Codec<ExtensionsListByArcSettingInput>;
 
 // Output Schema
+export interface ExtensionsListByArcSettingOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExtensionsListByArcSettingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2877,9 +4039,7 @@ export const ExtensionsListByArcSettingOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExtensionsListByArcSettingOutput =
-  typeof ExtensionsListByArcSettingOutput.Type;
+  }) as unknown as Schema.Codec<ExtensionsListByArcSettingOutput>;
 
 // The operation
 /**
@@ -2898,6 +4058,21 @@ export const ExtensionsListByArcSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExtensionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  extensionName: string;
+  properties?: {
+    extensionParameters?: {
+      typeHandlerVersion?: string;
+      enableAutomaticUpgrade?: boolean;
+      settings?: unknown;
+      protectedSettings?: unknown;
+    };
+  };
+}
 export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2920,12 +4095,24 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
+) as unknown as Schema.Codec<ExtensionsUpdateInput>;
 
 // Output Schema
+export interface ExtensionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -2946,8 +4133,7 @@ export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
+) as unknown as Schema.Codec<ExtensionsUpdateOutput>;
 
 // The operation
 /**
@@ -2965,6 +4151,14 @@ export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsUpdateOutput,
 }));
 // Input Schema
+export interface ExtensionsUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  arcSettingName: string;
+  extensionName: string;
+  targetVersion?: string;
+}
 export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2978,14 +4172,14 @@ export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}/upgrade",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type ExtensionsUpgradeInput = typeof ExtensionsUpgradeInput.Type;
+) as unknown as Schema.Codec<ExtensionsUpgradeInput>;
 
 // Output Schema
-export const ExtensionsUpgradeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExtensionsUpgradeOutput = typeof ExtensionsUpgradeOutput.Type;
+export type ExtensionsUpgradeOutput = void;
+export const ExtensionsUpgradeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsUpgradeOutput>;
 
 // The operation
 /**
@@ -3003,10 +4197,48 @@ export const ExtensionsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsUpgradeOutput,
 }));
 // Input Schema
+export interface GalleryImagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  galleryImageName: string;
+  properties?: {
+    containerId?: string;
+    imagePath?: string;
+    osType: "Windows" | "Linux";
+    cloudInitDataSource?: "NoCloud" | "Azure";
+    hyperVGeneration?: "V1" | "V2";
+    identifier?: { publisher: string; offer: string; sku: string };
+    version?: {
+      name?: string;
+      properties?: { storageProfile: { osDiskImage?: { sizeInMB?: number } } };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+      downloadStatus?: { downloadSizeInMB?: number };
+      progressPercentage?: number;
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const GalleryImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerId: Schema.optional(Schema.String),
@@ -3085,11 +4317,22 @@ export const GalleryImagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type GalleryImagesCreateOrUpdateInput =
-  typeof GalleryImagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GalleryImagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface GalleryImagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleryImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3109,9 +4352,7 @@ export const GalleryImagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GalleryImagesCreateOrUpdateOutput =
-  typeof GalleryImagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GalleryImagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3119,6 +4360,7 @@ export type GalleryImagesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3128,23 +4370,28 @@ export const GalleryImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GalleryImagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  galleryImageName: string;
+}
 export const GalleryImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type GalleryImagesDeleteInput = typeof GalleryImagesDeleteInput.Type;
+  ) as unknown as Schema.Codec<GalleryImagesDeleteInput>;
 
 // Output Schema
+export type GalleryImagesDeleteOutput = void;
 export const GalleryImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GalleryImagesDeleteOutput = typeof GalleryImagesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GalleryImagesDeleteOutput>;
 
 // The operation
 /**
@@ -3152,6 +4399,7 @@ export type GalleryImagesDeleteOutput = typeof GalleryImagesDeleteOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3159,19 +4407,37 @@ export const GalleryImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleryImagesDeleteOutput,
 }));
 // Input Schema
+export interface GalleryImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  galleryImageName: string;
+}
 export const GalleryImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  galleryImageName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type GalleryImagesGetInput = typeof GalleryImagesGetInput.Type;
+) as unknown as Schema.Codec<GalleryImagesGetInput>;
 
 // Output Schema
+export interface GalleryImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleryImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3192,8 +4458,7 @@ export const GalleryImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GalleryImagesGetOutput = typeof GalleryImagesGetOutput.Type;
+) as unknown as Schema.Codec<GalleryImagesGetOutput>;
 
 // The operation
 /**
@@ -3201,6 +4466,7 @@ export type GalleryImagesGetOutput = typeof GalleryImagesGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3208,6 +4474,10 @@ export const GalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleryImagesGetOutput,
 }));
 // Input Schema
+export interface GalleryImagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3219,10 +4489,25 @@ export const GalleryImagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages",
     apiVersion: "2024-01-01",
   }),
-);
-export type GalleryImagesListInput = typeof GalleryImagesListInput.Type;
+) as unknown as Schema.Codec<GalleryImagesListInput>;
 
 // Output Schema
+export interface GalleryImagesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GalleryImagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3259,8 +4544,7 @@ export const GalleryImagesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GalleryImagesListOutput = typeof GalleryImagesListOutput.Type;
+  }) as unknown as Schema.Codec<GalleryImagesListOutput>;
 
 // The operation
 /**
@@ -3275,6 +4559,9 @@ export const GalleryImagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleryImagesListOutput,
 }));
 // Input Schema
+export interface GalleryImagesListAllInput {
+  subscriptionId: string;
+}
 export const GalleryImagesListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3284,10 +4571,25 @@ export const GalleryImagesListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/galleryImages",
       apiVersion: "2024-01-01",
     }),
-  );
-export type GalleryImagesListAllInput = typeof GalleryImagesListAllInput.Type;
+  ) as unknown as Schema.Codec<GalleryImagesListAllInput>;
 
 // Output Schema
+export interface GalleryImagesListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GalleryImagesListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3324,8 +4626,7 @@ export const GalleryImagesListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GalleryImagesListAllOutput = typeof GalleryImagesListAllOutput.Type;
+  }) as unknown as Schema.Codec<GalleryImagesListAllOutput>;
 
 // The operation
 /**
@@ -3341,10 +4642,17 @@ export const GalleryImagesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GalleryImagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  galleryImageName: string;
+  tags?: Record<string, string>;
+}
 export const GalleryImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    galleryImageName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -3352,10 +4660,22 @@ export const GalleryImagesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type GalleryImagesUpdateInput = typeof GalleryImagesUpdateInput.Type;
+  ) as unknown as Schema.Codec<GalleryImagesUpdateInput>;
 
 // Output Schema
+export interface GalleryImagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GalleryImagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3375,8 +4695,7 @@ export const GalleryImagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GalleryImagesUpdateOutput = typeof GalleryImagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GalleryImagesUpdateOutput>;
 
 // The operation
 /**
@@ -3384,6 +4703,7 @@ export type GalleryImagesUpdateOutput = typeof GalleryImagesUpdateOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param galleryImageName - Name of the gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const GalleryImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3391,7 +4711,28 @@ export const GalleryImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GalleryImagesUpdateOutput,
 }));
 // Input Schema
+export interface GuestAgentCreateInput {
+  resourceUri: string;
+  properties: {
+    credentials?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    provisioningAction?: "install" | "uninstall" | "repair";
+    status?: string;
+    provisioningState?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   properties: Schema.Struct({
     credentials: Schema.optional(
       Schema.Struct({
@@ -3425,10 +4766,22 @@ export const GuestAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type GuestAgentCreateInput = typeof GuestAgentCreateInput.Type;
+) as unknown as Schema.Codec<GuestAgentCreateInput>;
 
 // Output Schema
+export interface GuestAgentCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestAgentCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3449,8 +4802,7 @@ export const GuestAgentCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GuestAgentCreateOutput = typeof GuestAgentCreateOutput.Type;
+) as unknown as Schema.Codec<GuestAgentCreateOutput>;
 
 // The operation
 /**
@@ -3458,6 +4810,7 @@ export type GuestAgentCreateOutput = typeof GuestAgentCreateOutput.Type;
  *
  * Create Or Update GuestAgent.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3465,20 +4818,23 @@ export const GuestAgentCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentCreateOutput,
 }));
 // Input Schema
-export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GuestAgentDeleteInput {
+  resourceUri: string;
+}
+export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type GuestAgentDeleteInput = typeof GuestAgentDeleteInput.Type;
+) as unknown as Schema.Codec<GuestAgentDeleteInput>;
 
 // Output Schema
-export const GuestAgentDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GuestAgentDeleteOutput = typeof GuestAgentDeleteOutput.Type;
+export type GuestAgentDeleteOutput = void;
+export const GuestAgentDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestAgentDeleteOutput>;
 
 // The operation
 /**
@@ -3486,6 +4842,7 @@ export type GuestAgentDeleteOutput = typeof GuestAgentDeleteOutput.Type;
  *
  * Implements GuestAgent DELETE method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3493,18 +4850,33 @@ export const GuestAgentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentDeleteOutput,
 }));
 // Input Schema
-export const GuestAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GuestAgentGetInput {
+  resourceUri: string;
+}
+export const GuestAgentGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type GuestAgentGetInput = typeof GuestAgentGetInput.Type;
+) as unknown as Schema.Codec<GuestAgentGetInput>;
 
 // Output Schema
+export interface GuestAgentGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestAgentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3523,8 +4895,7 @@ export const GuestAgentGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GuestAgentGetOutput = typeof GuestAgentGetOutput.Type;
+}) as unknown as Schema.Codec<GuestAgentGetOutput>;
 
 // The operation
 /**
@@ -3532,6 +4903,7 @@ export type GuestAgentGetOutput = typeof GuestAgentGetOutput.Type;
  *
  * Implements GuestAgent GET method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3539,18 +4911,36 @@ export const GuestAgentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentGetOutput,
 }));
 // Input Schema
-export const GuestAgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GuestAgentsListInput {
+  resourceUri: string;
+}
+export const GuestAgentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents",
     apiVersion: "2024-01-01",
   }),
-);
-export type GuestAgentsListInput = typeof GuestAgentsListInput.Type;
+) as unknown as Schema.Codec<GuestAgentsListInput>;
 
 // Output Schema
+export interface GuestAgentsListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const GuestAgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -3574,8 +4964,7 @@ export const GuestAgentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type GuestAgentsListOutput = typeof GuestAgentsListOutput.Type;
+}) as unknown as Schema.Codec<GuestAgentsListOutput>;
 
 // The operation
 /**
@@ -3583,6 +4972,7 @@ export type GuestAgentsListOutput = typeof GuestAgentsListOutput.Type;
  *
  * Returns the list of GuestAgent of the given vm.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const GuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3590,18 +4980,34 @@ export const GuestAgentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GuestAgentsListOutput,
 }));
 // Input Schema
+export interface HybridIdentityMetadataGetInput {
+  resourceUri: string;
+}
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataGetInput =
-  typeof HybridIdentityMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataGetInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridIdentityMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3621,9 +5027,7 @@ export const HybridIdentityMetadataGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridIdentityMetadataGetOutput =
-  typeof HybridIdentityMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataGetOutput>;
 
 // The operation
 /**
@@ -3631,6 +5035,7 @@ export type HybridIdentityMetadataGetOutput =
  *
  * Implements HybridIdentityMetadata GET method.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3640,18 +5045,37 @@ export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridIdentityMetadataListInput {
+  resourceUri: string;
+}
 export const HybridIdentityMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/hybridIdentityMetadata",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataListInput =
-  typeof HybridIdentityMetadataListInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataListInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataListOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const HybridIdentityMetadataListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3686,9 +5110,7 @@ export const HybridIdentityMetadataListOutput =
         ),
       }),
     ),
-  });
-export type HybridIdentityMetadataListOutput =
-  typeof HybridIdentityMetadataListOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataListOutput>;
 
 // The operation
 /**
@@ -3696,6 +5118,7 @@ export type HybridIdentityMetadataListOutput =
  *
  * Returns the list of HybridIdentityMetadata of the given vm.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3705,10 +5128,69 @@ export const HybridIdentityMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LogicalNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  logicalNetworkName: string;
+  properties?: {
+    dhcpOptions?: { dnsServers?: string[] };
+    subnets?: {
+      properties?: {
+        addressPrefix?: string;
+        addressPrefixes?: string[];
+        ipAllocationMethod?: "Dynamic" | "Static";
+        ipConfigurationReferences?: { ID?: string }[];
+        routeTable?: {
+          etag?: string;
+          name?: string;
+          type?: string;
+          properties?: {
+            routes?: {
+              properties?: {
+                addressPrefix?: string;
+                nextHopIpAddress?: string;
+              };
+              name?: string;
+            }[];
+          };
+        };
+        ipPools?: {
+          name?: string;
+          ipPoolType?: "vm" | "vippool";
+          start?: string;
+          end?: string;
+          info?: { used?: string; available?: string };
+        }[];
+        vlan?: number;
+      };
+      name?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    vmSwitchName?: string;
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const LogicalNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         dhcpOptions: Schema.optional(
@@ -3827,11 +5309,22 @@ export const LogicalNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksCreateOrUpdateInput =
-  typeof LogicalNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface LogicalNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LogicalNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3851,9 +5344,7 @@ export const LogicalNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LogicalNetworksCreateOrUpdateOutput =
-  typeof LogicalNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LogicalNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3861,6 +5352,7 @@ export type LogicalNetworksCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksCreateOrUpdate =
@@ -3869,24 +5361,28 @@ export const LogicalNetworksCreateOrUpdate =
     outputSchema: LogicalNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface LogicalNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  logicalNetworkName: string;
+}
 export const LogicalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksDeleteInput = typeof LogicalNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksDeleteInput>;
 
 // Output Schema
+export type LogicalNetworksDeleteOutput = void;
 export const LogicalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LogicalNetworksDeleteOutput =
-  typeof LogicalNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogicalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -3894,6 +5390,7 @@ export type LogicalNetworksDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3903,20 +5400,38 @@ export const LogicalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LogicalNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  logicalNetworkName: string;
+}
 export const LogicalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksGetInput = typeof LogicalNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksGetInput>;
 
 // Output Schema
+export interface LogicalNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LogicalNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3936,14 +5451,14 @@ export const LogicalNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LogicalNetworksGetOutput = typeof LogicalNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<LogicalNetworksGetOutput>;
 
 // The operation
 /**
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3951,6 +5466,10 @@ export const LogicalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LogicalNetworksGetOutput,
 }));
 // Input Schema
+export interface LogicalNetworksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const LogicalNetworksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3961,10 +5480,25 @@ export const LogicalNetworksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksListInput = typeof LogicalNetworksListInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksListInput>;
 
 // Output Schema
+export interface LogicalNetworksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LogicalNetworksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4001,8 +5535,7 @@ export const LogicalNetworksListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LogicalNetworksListOutput = typeof LogicalNetworksListOutput.Type;
+  }) as unknown as Schema.Codec<LogicalNetworksListOutput>;
 
 // The operation
 /**
@@ -4017,6 +5550,9 @@ export const LogicalNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LogicalNetworksListOutput,
 }));
 // Input Schema
+export interface LogicalNetworksListAllInput {
+  subscriptionId: string;
+}
 export const LogicalNetworksListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4026,11 +5562,25 @@ export const LogicalNetworksListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/logicalNetworks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksListAllInput =
-  typeof LogicalNetworksListAllInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksListAllInput>;
 
 // Output Schema
+export interface LogicalNetworksListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const LogicalNetworksListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4067,9 +5617,7 @@ export const LogicalNetworksListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LogicalNetworksListAllOutput =
-  typeof LogicalNetworksListAllOutput.Type;
+  }) as unknown as Schema.Codec<LogicalNetworksListAllOutput>;
 
 // The operation
 /**
@@ -4085,10 +5633,17 @@ export const LogicalNetworksListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LogicalNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  logicalNetworkName: string;
+  tags?: Record<string, string>;
+}
 export const LogicalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    logicalNetworkName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4096,10 +5651,22 @@ export const LogicalNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type LogicalNetworksUpdateInput = typeof LogicalNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<LogicalNetworksUpdateInput>;
 
 // Output Schema
+export interface LogicalNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const LogicalNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4119,9 +5686,7 @@ export const LogicalNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type LogicalNetworksUpdateOutput =
-  typeof LogicalNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LogicalNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -4129,6 +5694,7 @@ export type LogicalNetworksUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param logicalNetworkName - Name of the logical network
  * @param api-version - The API version to use for this operation.
  */
 export const LogicalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4138,10 +5704,47 @@ export const LogicalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MarketplaceGalleryImagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  marketplaceGalleryImageName: string;
+  properties?: {
+    containerId?: string;
+    osType: "Windows" | "Linux";
+    cloudInitDataSource?: "NoCloud" | "Azure";
+    hyperVGeneration?: "V1" | "V2";
+    identifier?: { publisher: string; offer: string; sku: string };
+    version?: {
+      name?: string;
+      properties?: { storageProfile: { osDiskImage?: { sizeInMB?: number } } };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+      downloadStatus?: { downloadSizeInMB?: number };
+      progressPercentage?: number;
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MarketplaceGalleryImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerId: Schema.optional(Schema.String),
@@ -4219,11 +5822,22 @@ export const MarketplaceGalleryImagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesCreateOrUpdateInput =
-  typeof MarketplaceGalleryImagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface MarketplaceGalleryImagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MarketplaceGalleryImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4243,9 +5857,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MarketplaceGalleryImagesCreateOrUpdateOutput =
-  typeof MarketplaceGalleryImagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceGalleryImagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4253,6 +5865,7 @@ export type MarketplaceGalleryImagesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesCreateOrUpdate =
@@ -4261,25 +5874,28 @@ export const MarketplaceGalleryImagesCreateOrUpdate =
     outputSchema: MarketplaceGalleryImagesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MarketplaceGalleryImagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  marketplaceGalleryImageName: string;
+}
 export const MarketplaceGalleryImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesDeleteInput =
-  typeof MarketplaceGalleryImagesDeleteInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesDeleteInput>;
 
 // Output Schema
+export type MarketplaceGalleryImagesDeleteOutput = void;
 export const MarketplaceGalleryImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MarketplaceGalleryImagesDeleteOutput =
-  typeof MarketplaceGalleryImagesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MarketplaceGalleryImagesDeleteOutput>;
 
 // The operation
 /**
@@ -4287,6 +5903,7 @@ export type MarketplaceGalleryImagesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesDelete =
@@ -4295,21 +5912,38 @@ export const MarketplaceGalleryImagesDelete =
     outputSchema: MarketplaceGalleryImagesDeleteOutput,
   }));
 // Input Schema
+export interface MarketplaceGalleryImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  marketplaceGalleryImageName: string;
+}
 export const MarketplaceGalleryImagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesGetInput =
-  typeof MarketplaceGalleryImagesGetInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesGetInput>;
 
 // Output Schema
+export interface MarketplaceGalleryImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MarketplaceGalleryImagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4329,9 +5963,7 @@ export const MarketplaceGalleryImagesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MarketplaceGalleryImagesGetOutput =
-  typeof MarketplaceGalleryImagesGetOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceGalleryImagesGetOutput>;
 
 // The operation
 /**
@@ -4339,6 +5971,7 @@ export type MarketplaceGalleryImagesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4348,6 +5981,10 @@ export const MarketplaceGalleryImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MarketplaceGalleryImagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MarketplaceGalleryImagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4358,11 +5995,25 @@ export const MarketplaceGalleryImagesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesListInput =
-  typeof MarketplaceGalleryImagesListInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesListInput>;
 
 // Output Schema
+export interface MarketplaceGalleryImagesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceGalleryImagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4399,9 +6050,7 @@ export const MarketplaceGalleryImagesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceGalleryImagesListOutput =
-  typeof MarketplaceGalleryImagesListOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceGalleryImagesListOutput>;
 
 // The operation
 /**
@@ -4417,6 +6066,9 @@ export const MarketplaceGalleryImagesList =
     outputSchema: MarketplaceGalleryImagesListOutput,
   }));
 // Input Schema
+export interface MarketplaceGalleryImagesListAllInput {
+  subscriptionId: string;
+}
 export const MarketplaceGalleryImagesListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4426,11 +6078,25 @@ export const MarketplaceGalleryImagesListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesListAllInput =
-  typeof MarketplaceGalleryImagesListAllInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesListAllInput>;
 
 // Output Schema
+export interface MarketplaceGalleryImagesListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceGalleryImagesListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4467,9 +6133,7 @@ export const MarketplaceGalleryImagesListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceGalleryImagesListAllOutput =
-  typeof MarketplaceGalleryImagesListAllOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceGalleryImagesListAllOutput>;
 
 // The operation
 /**
@@ -4484,10 +6148,17 @@ export const MarketplaceGalleryImagesListAll =
     outputSchema: MarketplaceGalleryImagesListAllOutput,
   }));
 // Input Schema
+export interface MarketplaceGalleryImagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  marketplaceGalleryImageName: string;
+  tags?: Record<string, string>;
+}
 export const MarketplaceGalleryImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    marketplaceGalleryImageName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4495,11 +6166,22 @@ export const MarketplaceGalleryImagesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type MarketplaceGalleryImagesUpdateInput =
-  typeof MarketplaceGalleryImagesUpdateInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceGalleryImagesUpdateInput>;
 
 // Output Schema
+export interface MarketplaceGalleryImagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MarketplaceGalleryImagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4519,9 +6201,7 @@ export const MarketplaceGalleryImagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MarketplaceGalleryImagesUpdateOutput =
-  typeof MarketplaceGalleryImagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceGalleryImagesUpdateOutput>;
 
 // The operation
 /**
@@ -4529,6 +6209,7 @@ export type MarketplaceGalleryImagesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param marketplaceGalleryImageName - Name of the marketplace gallery image
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceGalleryImagesUpdate =
@@ -4537,10 +6218,47 @@ export const MarketplaceGalleryImagesUpdate =
     outputSchema: MarketplaceGalleryImagesUpdateOutput,
   }));
 // Input Schema
+export interface NetworkInterfacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkInterfaceName: string;
+  properties?: {
+    ipConfigurations?: {
+      name?: string;
+      properties?: {
+        gateway?: string;
+        prefixLength?: string;
+        privateIPAddress?: string;
+        subnet?: { id?: string };
+      };
+    }[];
+    macAddress?: string;
+    dnsSettings?: { dnsServers?: string[] };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkInterfacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         ipConfigurations: Schema.optional(
@@ -4608,11 +6326,22 @@ export const NetworkInterfacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesCreateOrUpdateInput =
-  typeof NetworkInterfacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkInterfacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4632,9 +6361,7 @@ export const NetworkInterfacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesCreateOrUpdateOutput =
-  typeof NetworkInterfacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4642,6 +6369,7 @@ export type NetworkInterfacesCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesCreateOrUpdate =
@@ -4650,25 +6378,28 @@ export const NetworkInterfacesCreateOrUpdate =
     outputSchema: NetworkInterfacesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkInterfacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkInterfaceName: string;
+}
 export const NetworkInterfacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesDeleteInput =
-  typeof NetworkInterfacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesDeleteInput>;
 
 // Output Schema
+export type NetworkInterfacesDeleteOutput = void;
 export const NetworkInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkInterfacesDeleteOutput =
-  typeof NetworkInterfacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -4676,6 +6407,7 @@ export type NetworkInterfacesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4685,20 +6417,38 @@ export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkInterfaceName: string;
+}
 export const NetworkInterfacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesGetInput = typeof NetworkInterfacesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesGetInput>;
 
 // Output Schema
+export interface NetworkInterfacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4718,8 +6468,7 @@ export const NetworkInterfacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesGetOutput>;
 
 // The operation
 /**
@@ -4727,6 +6476,7 @@ export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4736,6 +6486,10 @@ export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkInterfacesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4746,10 +6500,25 @@ export const NetworkInterfacesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesListInput = typeof NetworkInterfacesListInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesListInput>;
 
 // Output Schema
+export interface NetworkInterfacesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkInterfacesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4786,9 +6555,7 @@ export const NetworkInterfacesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkInterfacesListOutput =
-  typeof NetworkInterfacesListOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesListOutput>;
 
 // The operation
 /**
@@ -4805,6 +6572,9 @@ export const NetworkInterfacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesListAllInput {
+  subscriptionId: string;
+}
 export const NetworkInterfacesListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4814,11 +6584,25 @@ export const NetworkInterfacesListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/networkInterfaces",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesListAllInput =
-  typeof NetworkInterfacesListAllInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesListAllInput>;
 
 // Output Schema
+export interface NetworkInterfacesListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkInterfacesListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4855,9 +6639,7 @@ export const NetworkInterfacesListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkInterfacesListAllOutput =
-  typeof NetworkInterfacesListAllOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesListAllOutput>;
 
 // The operation
 /**
@@ -4873,10 +6655,17 @@ export const NetworkInterfacesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkInterfaceName: string;
+  tags?: Record<string, string>;
+}
 export const NetworkInterfacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    networkInterfaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -4884,11 +6673,22 @@ export const NetworkInterfacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NetworkInterfacesUpdateInput =
-  typeof NetworkInterfacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesUpdateInput>;
 
 // Output Schema
+export interface NetworkInterfacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4908,9 +6708,7 @@ export const NetworkInterfacesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesUpdateOutput =
-  typeof NetworkInterfacesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesUpdateOutput>;
 
 // The operation
 /**
@@ -4918,6 +6716,7 @@ export type NetworkInterfacesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param networkInterfaceName - Name of the network interface
  * @param api-version - The API version to use for this operation.
  */
 export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4927,6 +6726,14 @@ export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OffersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  publisherName: string;
+  offerName: string;
+  $expand?: string;
+}
 export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4938,12 +6745,24 @@ export const OffersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type OffersGetInput = typeof OffersGetInput.Type;
+) as unknown as Schema.Codec<OffersGetInput>;
 
 // Output Schema
+export interface OffersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4962,8 +6781,7 @@ export const OffersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OffersGetOutput = typeof OffersGetOutput.Type;
+}) as unknown as Schema.Codec<OffersGetOutput>;
 
 // The operation
 /**
@@ -4982,6 +6800,12 @@ export const OffersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OffersGetOutput,
 }));
 // Input Schema
+export interface OffersListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  $expand?: string;
+}
 export const OffersListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4992,12 +6816,27 @@ export const OffersListByClusterInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/offers",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type OffersListByClusterInput = typeof OffersListByClusterInput.Type;
+  ) as unknown as Schema.Codec<OffersListByClusterInput>;
 
 // Output Schema
+export interface OffersListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OffersListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5032,8 +6871,7 @@ export const OffersListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OffersListByClusterOutput = typeof OffersListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<OffersListByClusterOutput>;
 
 // The operation
 /**
@@ -5050,6 +6888,13 @@ export const OffersListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OffersListByClusterOutput,
 }));
 // Input Schema
+export interface OffersListByPublisherInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  publisherName: string;
+  $expand?: string;
+}
 export const OffersListByPublisherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5061,12 +6906,27 @@ export const OffersListByPublisherInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type OffersListByPublisherInput = typeof OffersListByPublisherInput.Type;
+  ) as unknown as Schema.Codec<OffersListByPublisherInput>;
 
 // Output Schema
+export interface OffersListByPublisherOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OffersListByPublisherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5101,9 +6961,7 @@ export const OffersListByPublisherOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OffersListByPublisherOutput =
-  typeof OffersListByPublisherOutput.Type;
+  }) as unknown as Schema.Codec<OffersListByPublisherOutput>;
 
 // The operation
 /**
@@ -5123,6 +6981,7 @@ export const OffersListByPublisher = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -5131,10 +6990,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureStackHCI/operations",
     apiVersion: "2024-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5157,8 +7030,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -5171,6 +7043,45 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SecuritySettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  securitySettingsName: string;
+  properties?: {
+    securedCoreComplianceAssignment?: "Audit" | "ApplyAndAutoCorrect";
+    wdacComplianceAssignment?: "Audit" | "ApplyAndAutoCorrect";
+    smbEncryptionForIntraClusterTrafficComplianceAssignment?:
+      | "Audit"
+      | "ApplyAndAutoCorrect";
+    securityComplianceStatus?: {
+      securedCoreCompliance?: "Compliant" | "NonCompliant" | "Pending";
+      wdacCompliance?: "Compliant" | "NonCompliant" | "Pending";
+      dataAtRestEncrypted?: "Compliant" | "NonCompliant" | "Pending";
+      dataInTransitProtected?: "Compliant" | "NonCompliant" | "Pending";
+      lastUpdated?: string;
+    };
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+  };
+}
 export const SecuritySettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5232,13 +7143,24 @@ export const SecuritySettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type SecuritySettingsCreateOrUpdateInput =
-  typeof SecuritySettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecuritySettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SecuritySettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecuritySettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5258,9 +7180,7 @@ export const SecuritySettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecuritySettingsCreateOrUpdateOutput =
-  typeof SecuritySettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecuritySettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5278,6 +7198,12 @@ export const SecuritySettingsCreateOrUpdate =
     outputSchema: SecuritySettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SecuritySettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  securitySettingsName: string;
+}
 export const SecuritySettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5288,17 +7214,14 @@ export const SecuritySettingsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type SecuritySettingsDeleteInput =
-  typeof SecuritySettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SecuritySettingsDeleteInput>;
 
 // Output Schema
+export type SecuritySettingsDeleteOutput = void;
 export const SecuritySettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SecuritySettingsDeleteOutput =
-  typeof SecuritySettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecuritySettingsDeleteOutput>;
 
 // The operation
 /**
@@ -5317,6 +7240,12 @@ export const SecuritySettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SecuritySettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  securitySettingsName: string;
+}
 export const SecuritySettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5327,12 +7256,24 @@ export const SecuritySettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type SecuritySettingsGetInput = typeof SecuritySettingsGetInput.Type;
+  ) as unknown as Schema.Codec<SecuritySettingsGetInput>;
 
 // Output Schema
+export interface SecuritySettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecuritySettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5352,8 +7293,7 @@ export const SecuritySettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecuritySettingsGetOutput = typeof SecuritySettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<SecuritySettingsGetOutput>;
 
 // The operation
 /**
@@ -5370,6 +7310,11 @@ export const SecuritySettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SecuritySettingsGetOutput,
 }));
 // Input Schema
+export interface SecuritySettingsListByClustersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const SecuritySettingsListByClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5379,13 +7324,27 @@ export const SecuritySettingsListByClustersInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type SecuritySettingsListByClustersInput =
-  typeof SecuritySettingsListByClustersInput.Type;
+  ) as unknown as Schema.Codec<SecuritySettingsListByClustersInput>;
 
 // Output Schema
+export interface SecuritySettingsListByClustersOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecuritySettingsListByClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5420,9 +7379,7 @@ export const SecuritySettingsListByClustersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SecuritySettingsListByClustersOutput =
-  typeof SecuritySettingsListByClustersOutput.Type;
+  }) as unknown as Schema.Codec<SecuritySettingsListByClustersOutput>;
 
 // The operation
 /**
@@ -5439,6 +7396,15 @@ export const SecuritySettingsListByClusters =
     outputSchema: SecuritySettingsListByClustersOutput,
   }));
 // Input Schema
+export interface SkusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  publisherName: string;
+  offerName: string;
+  skuName: string;
+  $expand?: string;
+}
 export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5451,12 +7417,24 @@ export const SkusGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}/skus/{skuName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type SkusGetInput = typeof SkusGetInput.Type;
+) as unknown as Schema.Codec<SkusGetInput>;
 
 // Output Schema
+export interface SkusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5475,8 +7453,7 @@ export const SkusGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SkusGetOutput = typeof SkusGetOutput.Type;
+}) as unknown as Schema.Codec<SkusGetOutput>;
 
 // The operation
 /**
@@ -5496,6 +7473,14 @@ export const SkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusGetOutput,
 }));
 // Input Schema
+export interface SkusListByOfferInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  publisherName: string;
+  offerName: string;
+  $expand?: string;
+}
 export const SkusListByOfferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5507,12 +7492,27 @@ export const SkusListByOfferInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}/skus",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type SkusListByOfferInput = typeof SkusListByOfferInput.Type;
+) as unknown as Schema.Codec<SkusListByOfferInput>;
 
 // Output Schema
+export interface SkusListByOfferOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SkusListByOfferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5536,8 +7536,7 @@ export const SkusListByOfferOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SkusListByOfferOutput = typeof SkusListByOfferOutput.Type;
+}) as unknown as Schema.Codec<SkusListByOfferOutput>;
 
 // The operation
 /**
@@ -5556,10 +7555,39 @@ export const SkusListByOffer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SkusListByOfferOutput,
 }));
 // Input Schema
+export interface StorageContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageContainerName: string;
+  properties?: {
+    path: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      availableSizeMB?: number;
+      containerSizeMB?: number;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const StorageContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         path: Schema.String,
@@ -5605,11 +7633,22 @@ export const StorageContainersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersCreateOrUpdateInput =
-  typeof StorageContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5629,9 +7668,7 @@ export const StorageContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageContainersCreateOrUpdateOutput =
-  typeof StorageContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5639,6 +7676,7 @@ export type StorageContainersCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersCreateOrUpdate =
@@ -5647,25 +7685,28 @@ export const StorageContainersCreateOrUpdate =
     outputSchema: StorageContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StorageContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageContainerName: string;
+}
 export const StorageContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersDeleteInput =
-  typeof StorageContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersDeleteInput>;
 
 // Output Schema
+export type StorageContainersDeleteOutput = void;
 export const StorageContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageContainersDeleteOutput =
-  typeof StorageContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageContainersDeleteOutput>;
 
 // The operation
 /**
@@ -5673,6 +7714,7 @@ export type StorageContainersDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5682,20 +7724,38 @@ export const StorageContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageContainerName: string;
+}
 export const StorageContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersGetInput = typeof StorageContainersGetInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersGetInput>;
 
 // Output Schema
+export interface StorageContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5715,8 +7775,7 @@ export const StorageContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageContainersGetOutput = typeof StorageContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageContainersGetOutput>;
 
 // The operation
 /**
@@ -5724,6 +7783,7 @@ export type StorageContainersGetOutput = typeof StorageContainersGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5733,6 +7793,10 @@ export const StorageContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const StorageContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5743,10 +7807,25 @@ export const StorageContainersListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersListInput = typeof StorageContainersListInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersListInput>;
 
 // Output Schema
+export interface StorageContainersListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5783,9 +7862,7 @@ export const StorageContainersListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageContainersListOutput =
-  typeof StorageContainersListOutput.Type;
+  }) as unknown as Schema.Codec<StorageContainersListOutput>;
 
 // The operation
 /**
@@ -5802,6 +7879,9 @@ export const StorageContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageContainersListAllInput {
+  subscriptionId: string;
+}
 export const StorageContainersListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5811,11 +7891,25 @@ export const StorageContainersListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/storageContainers",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersListAllInput =
-  typeof StorageContainersListAllInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersListAllInput>;
 
 // Output Schema
+export interface StorageContainersListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageContainersListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5852,9 +7946,7 @@ export const StorageContainersListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageContainersListAllOutput =
-  typeof StorageContainersListAllOutput.Type;
+  }) as unknown as Schema.Codec<StorageContainersListAllOutput>;
 
 // The operation
 /**
@@ -5870,10 +7962,17 @@ export const StorageContainersListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageContainersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  storageContainerName: string;
+  tags?: Record<string, string>;
+}
 export const StorageContainersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    storageContainerName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -5881,11 +7980,22 @@ export const StorageContainersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type StorageContainersUpdateInput =
-  typeof StorageContainersUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageContainersUpdateInput>;
 
 // Output Schema
+export interface StorageContainersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageContainersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5905,9 +8015,7 @@ export const StorageContainersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageContainersUpdateOutput =
-  typeof StorageContainersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageContainersUpdateOutput>;
 
 // The operation
 /**
@@ -5915,6 +8023,7 @@ export type StorageContainersUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param storageContainerName - Name of the storage container
  * @param api-version - The API version to use for this operation.
  */
 export const StorageContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5924,6 +8033,13 @@ export const StorageContainersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UpdateRunsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+  updateRunName: string;
+}
 export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5934,14 +8050,14 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdateRunsDeleteInput = typeof UpdateRunsDeleteInput.Type;
+) as unknown as Schema.Codec<UpdateRunsDeleteInput>;
 
 // Output Schema
-export const UpdateRunsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateRunsDeleteOutput = typeof UpdateRunsDeleteOutput.Type;
+export type UpdateRunsDeleteOutput = void;
+export const UpdateRunsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateRunsDeleteOutput>;
 
 // The operation
 /**
@@ -5959,6 +8075,13 @@ export const UpdateRunsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateRunsDeleteOutput,
 }));
 // Input Schema
+export interface UpdateRunsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+  updateRunName: string;
+}
 export const UpdateRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5969,12 +8092,24 @@ export const UpdateRunsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdateRunsGetInput = typeof UpdateRunsGetInput.Type;
+) as unknown as Schema.Codec<UpdateRunsGetInput>;
 
 // Output Schema
+export interface UpdateRunsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdateRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5993,8 +8128,7 @@ export const UpdateRunsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UpdateRunsGetOutput = typeof UpdateRunsGetOutput.Type;
+}) as unknown as Schema.Codec<UpdateRunsGetOutput>;
 
 // The operation
 /**
@@ -6012,6 +8146,12 @@ export const UpdateRunsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateRunsGetOutput,
 }));
 // Input Schema
+export interface UpdateRunsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+}
 export const UpdateRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6021,12 +8161,27 @@ export const UpdateRunsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdateRunsListInput = typeof UpdateRunsListInput.Type;
+) as unknown as Schema.Codec<UpdateRunsListInput>;
 
 // Output Schema
+export interface UpdateRunsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UpdateRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -6050,8 +8205,7 @@ export const UpdateRunsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UpdateRunsListOutput = typeof UpdateRunsListOutput.Type;
+}) as unknown as Schema.Codec<UpdateRunsListOutput>;
 
 // The operation
 /**
@@ -6068,6 +8222,50 @@ export const UpdateRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateRunsListOutput,
 }));
 // Input Schema
+export interface UpdateRunsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+  updateRunName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    timeStarted?: string;
+    lastUpdatedTime?: string;
+    duration?: string;
+    state?: "Unknown" | "Succeeded" | "InProgress" | "Failed";
+    progress?: {
+      name?: string;
+      description?: string;
+      errorMessage?: string;
+      status?: string;
+      startTimeUtc?: string;
+      endTimeUtc?: string;
+      lastUpdatedTimeUtc?: string;
+      expectedExecutionTime?: string;
+      steps?: unknown[];
+    };
+  };
+  location?: string;
+}
 export const UpdateRunsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6124,12 +8322,24 @@ export const UpdateRunsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdateRunsPutInput = typeof UpdateRunsPutInput.Type;
+) as unknown as Schema.Codec<UpdateRunsPutInput>;
 
 // Output Schema
+export interface UpdateRunsPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdateRunsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6148,8 +8358,7 @@ export const UpdateRunsPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UpdateRunsPutOutput = typeof UpdateRunsPutOutput.Type;
+}) as unknown as Schema.Codec<UpdateRunsPutOutput>;
 
 // The operation
 /**
@@ -6167,6 +8376,12 @@ export const UpdateRunsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateRunsPutOutput,
 }));
 // Input Schema
+export interface UpdatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+}
 export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6176,14 +8391,14 @@ export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdatesDeleteInput = typeof UpdatesDeleteInput.Type;
+) as unknown as Schema.Codec<UpdatesDeleteInput>;
 
 // Output Schema
-export const UpdatesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdatesDeleteOutput = typeof UpdatesDeleteOutput.Type;
+export type UpdatesDeleteOutput = void;
+export const UpdatesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesDeleteOutput>;
 
 // The operation
 /**
@@ -6200,6 +8415,12 @@ export const UpdatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdatesDeleteOutput,
 }));
 // Input Schema
+export interface UpdatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+}
 export const UpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6209,12 +8430,24 @@ export const UpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdatesGetInput = typeof UpdatesGetInput.Type;
+) as unknown as Schema.Codec<UpdatesGetInput>;
 
 // Output Schema
+export interface UpdatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6233,8 +8466,7 @@ export const UpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UpdatesGetOutput = typeof UpdatesGetOutput.Type;
+}) as unknown as Schema.Codec<UpdatesGetOutput>;
 
 // The operation
 /**
@@ -6251,6 +8483,11 @@ export const UpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdatesGetOutput,
 }));
 // Input Schema
+export interface UpdatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6259,12 +8496,27 @@ export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdatesListInput = typeof UpdatesListInput.Type;
+) as unknown as Schema.Codec<UpdatesListInput>;
 
 // Output Schema
+export interface UpdatesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -6288,8 +8540,7 @@ export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UpdatesListOutput = typeof UpdatesListOutput.Type;
+}) as unknown as Schema.Codec<UpdatesListOutput>;
 
 // The operation
 /**
@@ -6305,6 +8556,12 @@ export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdatesListOutput,
 }));
 // Input Schema
+export interface UpdatesPostInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+}
 export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6314,14 +8571,14 @@ export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/apply",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdatesPostInput = typeof UpdatesPostInput.Type;
+) as unknown as Schema.Codec<UpdatesPostInput>;
 
 // Output Schema
-export const UpdatesPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdatesPostOutput = typeof UpdatesPostOutput.Type;
+export type UpdatesPostOutput = void;
+export const UpdatesPostOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPostOutput>;
 
 // The operation
 /**
@@ -6338,6 +8595,159 @@ export const UpdatesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdatesPostOutput,
 }));
 // Input Schema
+export interface UpdatesPrepareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+}
+export const UpdatesPrepareInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  updateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
+  T.Http({
+    method: "POST",
+    path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/prepare",
+    apiVersion: "2026-04-30",
+  }),
+) as unknown as Schema.Codec<UpdatesPrepareInput>;
+
+// Output Schema
+export type UpdatesPrepareOutput = void;
+export const UpdatesPrepareOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdatesPrepareOutput>;
+
+// The operation
+/**
+ * Prepare Update
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ * @param updateName - The name of the Update
+ */
+export const UpdatesPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: UpdatesPrepareInput,
+  outputSchema: UpdatesPrepareOutput,
+}));
+// Input Schema
+export interface UpdatesPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    installedDate?: string;
+    description?: string;
+    minSbeVersionRequired?: string;
+    state?:
+      | "HasPrerequisite"
+      | "Obsolete"
+      | "Ready"
+      | "NotApplicableBecauseAnotherUpdateIsInProgress"
+      | "Preparing"
+      | "Installing"
+      | "Installed"
+      | "PreparationFailed"
+      | "InstallationFailed"
+      | "Invalid"
+      | "Recalled"
+      | "Downloading"
+      | "DownloadFailed"
+      | "HealthChecking"
+      | "HealthCheckFailed"
+      | "ReadyToInstall"
+      | "ScanInProgress"
+      | "ScanFailed"
+      | "AdditionalContentRequired"
+      | "HealthCheckExpired"
+      | "PendingOEMValidation";
+    prerequisites?: {
+      updateType?: string;
+      version?: string;
+      packageName?: string;
+    }[];
+    componentVersions?: {
+      packageType?: string;
+      version?: string;
+      lastUpdated?: string;
+    }[];
+    rebootRequired?: "Unknown" | "True" | "False";
+    healthState?:
+      | "Unknown"
+      | "Success"
+      | "Failure"
+      | "Warning"
+      | "Error"
+      | "InProgress";
+    healthCheckResult?: {
+      name?: string;
+      displayName?: string;
+      tags?: { key?: string; value?: string };
+      healthCheckTags?: unknown;
+      title?: string;
+      status?:
+        | "NotYetRegistered"
+        | "ConnectedRecently"
+        | "NotConnectedRecently"
+        | "Disconnected"
+        | "Error"
+        | "NotSpecified"
+        | "ValidationInProgress"
+        | "ValidationSuccess"
+        | "ValidationFailed"
+        | "DeploymentInProgress"
+        | "DeploymentFailed"
+        | "DeploymentSuccess";
+      severity?: "Critical" | "Warning" | "Informational" | "Hidden";
+      description?: string;
+      remediation?: string;
+      targetResourceID?: string;
+      targetResourceName?: string;
+      targetResourceType?: string;
+      timestamp?: string;
+      additionalData?: string;
+      healthCheckSource?: string;
+    }[];
+    healthCheckDate?: string;
+    packagePath?: string;
+    packageSizeInMb?: number;
+    displayName?: string;
+    version?: string;
+    publisher?: string;
+    releaseLink?: string;
+    availabilityType?: "Local" | "Online" | "Notify";
+    packageType?: string;
+    additionalProperties?: string;
+    updateStateProperties?: {
+      progressPercentage?: number;
+      notifyMessage?: string;
+    };
+  };
+  location?: string;
+}
 export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6391,6 +8801,8 @@ export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           "ScanInProgress",
           "ScanFailed",
           "AdditionalContentRequired",
+          "HealthCheckExpired",
+          "PendingOEMValidation",
         ]),
       ),
       prerequisites: Schema.optional(
@@ -6497,12 +8909,24 @@ export const UpdatesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
-    apiVersion: "2026-02-01",
+    apiVersion: "2026-04-30",
   }),
-);
-export type UpdatesPutInput = typeof UpdatesPutInput.Type;
+) as unknown as Schema.Codec<UpdatesPutInput>;
 
 // Output Schema
+export interface UpdatesPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdatesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6521,8 +8945,7 @@ export const UpdatesPutOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UpdatesPutOutput = typeof UpdatesPutOutput.Type;
+}) as unknown as Schema.Codec<UpdatesPutOutput>;
 
 // The operation
 /**
@@ -6539,6 +8962,11 @@ export const UpdatesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdatesPutOutput,
 }));
 // Input Schema
+export interface UpdateSummariesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const UpdateSummariesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6548,16 +8976,14 @@ export const UpdateSummariesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type UpdateSummariesDeleteInput = typeof UpdateSummariesDeleteInput.Type;
+  ) as unknown as Schema.Codec<UpdateSummariesDeleteInput>;
 
 // Output Schema
+export type UpdateSummariesDeleteOutput = void;
 export const UpdateSummariesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateSummariesDeleteOutput =
-  typeof UpdateSummariesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesDeleteOutput>;
 
 // The operation
 /**
@@ -6575,6 +9001,11 @@ export const UpdateSummariesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UpdateSummariesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const UpdateSummariesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6584,12 +9015,24 @@ export const UpdateSummariesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type UpdateSummariesGetInput = typeof UpdateSummariesGetInput.Type;
+  ) as unknown as Schema.Codec<UpdateSummariesGetInput>;
 
 // Output Schema
+export interface UpdateSummariesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdateSummariesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6609,8 +9052,7 @@ export const UpdateSummariesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UpdateSummariesGetOutput = typeof UpdateSummariesGetOutput.Type;
+  }) as unknown as Schema.Codec<UpdateSummariesGetOutput>;
 
 // The operation
 /**
@@ -6626,6 +9068,11 @@ export const UpdateSummariesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateSummariesGetOutput,
 }));
 // Input Schema
+export interface UpdateSummariesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const UpdateSummariesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6635,12 +9082,27 @@ export const UpdateSummariesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type UpdateSummariesListInput = typeof UpdateSummariesListInput.Type;
+  ) as unknown as Schema.Codec<UpdateSummariesListInput>;
 
 // Output Schema
+export interface UpdateSummariesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UpdateSummariesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6675,8 +9137,7 @@ export const UpdateSummariesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UpdateSummariesListOutput = typeof UpdateSummariesListOutput.Type;
+  }) as unknown as Schema.Codec<UpdateSummariesListOutput>;
 
 // The operation
 /**
@@ -6692,6 +9153,169 @@ export const UpdateSummariesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateSummariesListOutput,
 }));
 // Input Schema
+export interface UpdateSummariesOperationGroupCheckHealthInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
+export const UpdateSummariesOperationGroupCheckHealthInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default/checkHealth",
+      apiVersion: "2026-04-30",
+    }),
+  ) as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckHealthInput>;
+
+// Output Schema
+export type UpdateSummariesOperationGroupCheckHealthOutput = void;
+export const UpdateSummariesOperationGroupCheckHealthOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckHealthOutput>;
+
+// The operation
+/**
+ * Check health of UpdateSummaries
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const UpdateSummariesOperationGroupCheckHealth =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateSummariesOperationGroupCheckHealthInput,
+    outputSchema: UpdateSummariesOperationGroupCheckHealthOutput,
+  }));
+// Input Schema
+export interface UpdateSummariesOperationGroupCheckUpdatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  updateName?: string;
+}
+export const UpdateSummariesOperationGroupCheckUpdatesInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
+    updateName: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default/checkUpdates",
+      apiVersion: "2026-04-30",
+    }),
+  ) as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckUpdatesInput>;
+
+// Output Schema
+export type UpdateSummariesOperationGroupCheckUpdatesOutput = void;
+export const UpdateSummariesOperationGroupCheckUpdatesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateSummariesOperationGroupCheckUpdatesOutput>;
+
+// The operation
+/**
+ * Check for updates
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the cluster.
+ */
+export const UpdateSummariesOperationGroupCheckUpdates =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: UpdateSummariesOperationGroupCheckUpdatesInput,
+    outputSchema: UpdateSummariesOperationGroupCheckUpdatesOutput,
+  }));
+// Input Schema
+export interface UpdateSummariesPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Error"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Connected"
+      | "Disconnected"
+      | "Deleted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Moving"
+      | "PartiallySucceeded"
+      | "PartiallyConnected"
+      | "InProgress"
+      | "Accepted"
+      | "Provisioning"
+      | "DisableInProgress";
+    oemFamily?: string;
+    currentOemVersion?: string;
+    hardwareModel?: string;
+    packageVersions?: {
+      packageType?: string;
+      version?: string;
+      lastUpdated?: string;
+    }[];
+    currentVersion?: string;
+    currentSbeVersion?: string;
+    lastUpdated?: string;
+    lastChecked?: string;
+    healthState?:
+      | "Unknown"
+      | "Success"
+      | "Failure"
+      | "Warning"
+      | "Error"
+      | "InProgress";
+    healthCheckResult?: {
+      name?: string;
+      displayName?: string;
+      tags?: { key?: string; value?: string };
+      healthCheckTags?: unknown;
+      title?: string;
+      status?:
+        | "NotYetRegistered"
+        | "ConnectedRecently"
+        | "NotConnectedRecently"
+        | "Disconnected"
+        | "Error"
+        | "NotSpecified"
+        | "ValidationInProgress"
+        | "ValidationSuccess"
+        | "ValidationFailed"
+        | "DeploymentInProgress"
+        | "DeploymentFailed"
+        | "DeploymentSuccess";
+      severity?: "Critical" | "Warning" | "Informational" | "Hidden";
+      description?: string;
+      remediation?: string;
+      targetResourceID?: string;
+      targetResourceName?: string;
+      targetResourceType?: string;
+      timestamp?: string;
+      additionalData?: string;
+      healthCheckSource?: string;
+    }[];
+    healthCheckDate?: string;
+    state?:
+      | "Unknown"
+      | "AppliedSuccessfully"
+      | "UpdateAvailable"
+      | "UpdateInProgress"
+      | "UpdateFailed"
+      | "NeedsAttention"
+      | "PreparationInProgress"
+      | "PreparationFailed";
+  };
+  location?: string;
+}
 export const UpdateSummariesPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6815,12 +9439,24 @@ export const UpdateSummariesPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type UpdateSummariesPutInput = typeof UpdateSummariesPutInput.Type;
+  ) as unknown as Schema.Codec<UpdateSummariesPutInput>;
 
 // Output Schema
+export interface UpdateSummariesPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UpdateSummariesPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6840,8 +9476,7 @@ export const UpdateSummariesPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UpdateSummariesPutOutput = typeof UpdateSummariesPutOutput.Type;
+  }) as unknown as Schema.Codec<UpdateSummariesPutOutput>;
 
 // The operation
 /**
@@ -6857,6 +9492,11 @@ export const UpdateSummariesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UpdateSummariesPutOutput,
 }));
 // Input Schema
+export interface ValidatedSolutionRecipesGetInput {
+  subscriptionId: string;
+  location: string;
+  validatedSolutionRecipeName: string;
+}
 export const ValidatedSolutionRecipesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6866,13 +9506,24 @@ export const ValidatedSolutionRecipesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/validatedSolutionRecipes/{validatedSolutionRecipeName}",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ValidatedSolutionRecipesGetInput =
-  typeof ValidatedSolutionRecipesGetInput.Type;
+  ) as unknown as Schema.Codec<ValidatedSolutionRecipesGetInput>;
 
 // Output Schema
+export interface ValidatedSolutionRecipesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ValidatedSolutionRecipesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6892,9 +9543,7 @@ export const ValidatedSolutionRecipesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ValidatedSolutionRecipesGetOutput =
-  typeof ValidatedSolutionRecipesGetOutput.Type;
+  }) as unknown as Schema.Codec<ValidatedSolutionRecipesGetOutput>;
 
 // The operation
 /**
@@ -6912,6 +9561,10 @@ export const ValidatedSolutionRecipesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ValidatedSolutionRecipesListBySubscriptionLocationResourceInput {
+  subscriptionId: string;
+  location: string;
+}
 export const ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6920,13 +9573,27 @@ export const ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/validatedSolutionRecipes",
-      apiVersion: "2026-02-01",
+      apiVersion: "2026-04-30",
     }),
-  );
-export type ValidatedSolutionRecipesListBySubscriptionLocationResourceInput =
-  typeof ValidatedSolutionRecipesListBySubscriptionLocationResourceInput.Type;
+  ) as unknown as Schema.Codec<ValidatedSolutionRecipesListBySubscriptionLocationResourceInput>;
 
 // Output Schema
+export interface ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6961,9 +9628,7 @@ export const ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput =
-  typeof ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput.Type;
+  }) as unknown as Schema.Codec<ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput>;
 
 // The operation
 /**
@@ -6981,10 +9646,44 @@ export const ValidatedSolutionRecipesListBySubscriptionLocationResource =
       ValidatedSolutionRecipesListBySubscriptionLocationResourceOutput,
   }));
 // Input Schema
+export interface VirtualHardDisksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualHardDiskName: string;
+  properties?: {
+    blockSizeBytes?: number;
+    diskSizeGB?: number;
+    dynamic?: boolean;
+    logicalSectorBytes?: number;
+    physicalSectorBytes?: number;
+    hyperVGeneration?: "V1" | "V2";
+    diskFileFormat?: "vhdx" | "vhd";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    containerId?: string;
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+    };
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VirtualHardDisksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         blockSizeBytes: Schema.optional(Schema.Number),
@@ -7035,11 +9734,22 @@ export const VirtualHardDisksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksCreateOrUpdateInput =
-  typeof VirtualHardDisksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualHardDisksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualHardDisksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7059,9 +9769,7 @@ export const VirtualHardDisksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualHardDisksCreateOrUpdateOutput =
-  typeof VirtualHardDisksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualHardDisksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7069,6 +9777,7 @@ export type VirtualHardDisksCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksCreateOrUpdate =
@@ -7077,25 +9786,28 @@ export const VirtualHardDisksCreateOrUpdate =
     outputSchema: VirtualHardDisksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualHardDisksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualHardDiskName: string;
+}
 export const VirtualHardDisksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksDeleteInput =
-  typeof VirtualHardDisksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksDeleteInput>;
 
 // Output Schema
+export type VirtualHardDisksDeleteOutput = void;
 export const VirtualHardDisksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualHardDisksDeleteOutput =
-  typeof VirtualHardDisksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualHardDisksDeleteOutput>;
 
 // The operation
 /**
@@ -7103,6 +9815,7 @@ export type VirtualHardDisksDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7112,20 +9825,38 @@ export const VirtualHardDisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualHardDisksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualHardDiskName: string;
+}
 export const VirtualHardDisksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksGetInput = typeof VirtualHardDisksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksGetInput>;
 
 // Output Schema
+export interface VirtualHardDisksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualHardDisksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7145,8 +9876,7 @@ export const VirtualHardDisksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualHardDisksGetOutput = typeof VirtualHardDisksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualHardDisksGetOutput>;
 
 // The operation
 /**
@@ -7154,6 +9884,7 @@ export type VirtualHardDisksGetOutput = typeof VirtualHardDisksGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7161,6 +9892,10 @@ export const VirtualHardDisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualHardDisksGetOutput,
 }));
 // Input Schema
+export interface VirtualHardDisksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const VirtualHardDisksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7171,10 +9906,25 @@ export const VirtualHardDisksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksListInput = typeof VirtualHardDisksListInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksListInput>;
 
 // Output Schema
+export interface VirtualHardDisksListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualHardDisksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7211,8 +9961,7 @@ export const VirtualHardDisksListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualHardDisksListOutput = typeof VirtualHardDisksListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualHardDisksListOutput>;
 
 // The operation
 /**
@@ -7229,6 +9978,9 @@ export const VirtualHardDisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualHardDisksListAllInput {
+  subscriptionId: string;
+}
 export const VirtualHardDisksListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7238,11 +9990,25 @@ export const VirtualHardDisksListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/virtualHardDisks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksListAllInput =
-  typeof VirtualHardDisksListAllInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksListAllInput>;
 
 // Output Schema
+export interface VirtualHardDisksListAllOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualHardDisksListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7279,9 +10045,7 @@ export const VirtualHardDisksListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualHardDisksListAllOutput =
-  typeof VirtualHardDisksListAllOutput.Type;
+  }) as unknown as Schema.Codec<VirtualHardDisksListAllOutput>;
 
 // The operation
 /**
@@ -7297,10 +10061,17 @@ export const VirtualHardDisksListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualHardDisksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualHardDiskName: string;
+  tags?: Record<string, string>;
+}
 export const VirtualHardDisksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualHardDiskName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -7308,11 +10079,22 @@ export const VirtualHardDisksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualHardDisksUpdateInput =
-  typeof VirtualHardDisksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualHardDisksUpdateInput>;
 
 // Output Schema
+export interface VirtualHardDisksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualHardDisksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7332,9 +10114,7 @@ export const VirtualHardDisksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualHardDisksUpdateOutput =
-  typeof VirtualHardDisksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualHardDisksUpdateOutput>;
 
 // The operation
 /**
@@ -7342,6 +10122,7 @@ export type VirtualHardDisksUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualHardDiskName - Name of the virtual hard disk
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualHardDisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7351,8 +10132,145 @@ export const VirtualHardDisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesCreateOrUpdateInput {
+  resourceUri: string;
+  properties?: {
+    hardwareProfile?: {
+      vmSize?:
+        | "Default"
+        | "Standard_A2_v2"
+        | "Standard_A4_v2"
+        | "Standard_D2s_v3"
+        | "Standard_D4s_v3"
+        | "Standard_D8s_v3"
+        | "Standard_D16s_v3"
+        | "Standard_D32s_v3"
+        | "Standard_DS2_v2"
+        | "Standard_DS3_v2"
+        | "Standard_DS4_v2"
+        | "Standard_DS5_v2"
+        | "Standard_DS13_v2"
+        | "Standard_K8S_v1"
+        | "Standard_K8S2_v1"
+        | "Standard_K8S3_v1"
+        | "Standard_K8S4_v1"
+        | "Standard_NK6"
+        | "Standard_NK12"
+        | "Standard_NV6"
+        | "Standard_NV12"
+        | "Standard_K8S5_v1"
+        | "Custom";
+      processors?: number;
+      memoryMB?: number;
+      dynamicMemoryConfig?: {
+        maximumMemoryMB?: number;
+        minimumMemoryMB?: number;
+        targetMemoryBuffer?: number;
+      };
+    };
+    networkProfile?: { networkInterfaces?: { id?: string }[] };
+    osProfile?: {
+      adminPassword?: string | Redacted.Redacted<string>;
+      adminUsername?: string;
+      computerName?: string;
+      linuxConfiguration?: {
+        disablePasswordAuthentication?: boolean;
+        ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+        provisionVMAgent?: boolean;
+        provisionVMConfigAgent?: boolean;
+      };
+      windowsConfiguration?: {
+        enableAutomaticUpdates?: boolean;
+        ssh?: { publicKeys?: { path?: string; keyData?: string }[] };
+        timeZone?: string;
+        provisionVMAgent?: boolean;
+        provisionVMConfigAgent?: boolean;
+      };
+    };
+    securityProfile?: {
+      enableTPM?: boolean;
+      uefiSettings?: { secureBootEnabled?: boolean };
+      securityType?: "TrustedLaunch" | "ConfidentialVM";
+    };
+    storageProfile?: {
+      dataDisks?: { id?: string }[];
+      imageReference?: { id?: string };
+      osDisk?: { id?: string; osType?: "Linux" | "Windows" };
+      vmConfigStoragePathId?: string;
+    };
+    httpProxyConfig?: {
+      httpProxy?: string;
+      httpsProxy?: string;
+      noProxy?: string[];
+      trustedCa?: string;
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "InProgress"
+      | "Accepted"
+      | "Deleting"
+      | "Canceled";
+    instanceView?: {
+      vmAgent?: {
+        vmConfigAgentVersion?: string;
+        statuses?: {
+          code?: string;
+          level?: "Info" | "Warning" | "Error";
+          displayStatus?: string;
+          message?: string;
+          time?: string;
+        }[];
+      };
+    };
+    status?: {
+      errorCode?: string;
+      errorMessage?: string;
+      powerState?:
+        | "Deallocated"
+        | "Deallocating"
+        | "Running"
+        | "Starting"
+        | "Stopped"
+        | "Stopping"
+        | "Unknown";
+      provisioningStatus?: {
+        operationId?: string;
+        status?: "Succeeded" | "Failed" | "InProgress";
+      };
+    };
+    guestAgentInstallStatus?: {
+      vmUuid?: string;
+      status?: "Succeeded" | "InProgress" | "Failed";
+      lastStatusChange?: string;
+      agentVersion?: string;
+      errorDetails?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+    };
+    vmId?: string;
+    resourceUid?: string;
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+}
 export const VirtualMachineInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         hardwareProfile: Schema.optional(
@@ -7621,11 +10539,22 @@ export const VirtualMachineInstancesCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesCreateOrUpdateInput =
-  typeof VirtualMachineInstancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7645,14 +10574,13 @@ export const VirtualMachineInstancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesCreateOrUpdateOutput =
-  typeof VirtualMachineInstancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
@@ -7661,27 +10589,30 @@ export const VirtualMachineInstancesCreateOrUpdate =
     outputSchema: VirtualMachineInstancesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesDeleteInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesDeleteInput =
-  typeof VirtualMachineInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesDeleteInput>;
 
 // Output Schema
+export type VirtualMachineInstancesDeleteOutput = void;
 export const VirtualMachineInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesDeleteOutput =
-  typeof VirtualMachineInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesDeleteOutput>;
 
 // The operation
 /**
  * The operation to delete a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesDelete =
@@ -7690,18 +10621,34 @@ export const VirtualMachineInstancesDelete =
     outputSchema: VirtualMachineInstancesDeleteOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesGetInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesGetInput =
-  typeof VirtualMachineInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesGetInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7721,14 +10668,13 @@ export const VirtualMachineInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesGetOutput =
-  typeof VirtualMachineInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesGetOutput>;
 
 // The operation
 /**
  * Gets a virtual machine instance
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7738,18 +10684,37 @@ export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesListInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesListInput =
-  typeof VirtualMachineInstancesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesListInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachineInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7786,14 +10751,13 @@ export const VirtualMachineInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachineInstancesListOutput =
-  typeof VirtualMachineInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesListOutput>;
 
 // The operation
 /**
  * Lists all of the virtual machine instances within the specified parent resource.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7803,18 +10767,34 @@ export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesRestartInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/restart",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesRestartInput =
-  typeof VirtualMachineInstancesRestartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesRestartInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesRestartOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesRestartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7834,14 +10814,13 @@ export const VirtualMachineInstancesRestartOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesRestartOutput =
-  typeof VirtualMachineInstancesRestartOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesRestartOutput>;
 
 // The operation
 /**
  * The operation to restart a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesRestart =
@@ -7850,18 +10829,34 @@ export const VirtualMachineInstancesRestart =
     outputSchema: VirtualMachineInstancesRestartOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesStartInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesStartInput =
-  typeof VirtualMachineInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesStartInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesStartOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesStartOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7881,14 +10876,13 @@ export const VirtualMachineInstancesStartOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesStartOutput =
-  typeof VirtualMachineInstancesStartOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesStartOutput>;
 
 // The operation
 /**
  * The operation to start a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesStart =
@@ -7897,18 +10891,34 @@ export const VirtualMachineInstancesStart =
     outputSchema: VirtualMachineInstancesStartOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesStopInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/stop",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesStopInput =
-  typeof VirtualMachineInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesStopInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesStopOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesStopOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7928,14 +10938,13 @@ export const VirtualMachineInstancesStopOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesStopOutput =
-  typeof VirtualMachineInstancesStopOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesStopOutput>;
 
 // The operation
 /**
  * The operation to stop a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -7945,8 +10954,60 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesUpdateInput {
+  resourceUri: string;
+  properties?: {
+    hardwareProfile?: {
+      vmSize?:
+        | "Default"
+        | "Standard_A2_v2"
+        | "Standard_A4_v2"
+        | "Standard_D2s_v3"
+        | "Standard_D4s_v3"
+        | "Standard_D8s_v3"
+        | "Standard_D16s_v3"
+        | "Standard_D32s_v3"
+        | "Standard_DS2_v2"
+        | "Standard_DS3_v2"
+        | "Standard_DS4_v2"
+        | "Standard_DS5_v2"
+        | "Standard_DS13_v2"
+        | "Standard_K8S_v1"
+        | "Standard_K8S2_v1"
+        | "Standard_K8S3_v1"
+        | "Standard_K8S4_v1"
+        | "Standard_NK6"
+        | "Standard_NK12"
+        | "Standard_NV6"
+        | "Standard_NV12"
+        | "Standard_K8S5_v1"
+        | "Custom";
+      processors?: number;
+      memoryMB?: number;
+    };
+    storageProfile?: { dataDisks?: { id?: string }[] };
+    networkProfile?: { networkInterfaces?: { id?: string }[] };
+    osProfile?: {
+      computerName?: string;
+      linuxConfiguration?: {
+        provisionVMAgent?: boolean;
+        provisionVMConfigAgent?: boolean;
+      };
+      windowsConfiguration?: {
+        provisionVMAgent?: boolean;
+        provisionVMConfigAgent?: boolean;
+      };
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+}
 export const VirtualMachineInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         hardwareProfile: Schema.optional(
@@ -8036,11 +11097,22 @@ export const VirtualMachineInstancesUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualMachineInstancesUpdateInput =
-  typeof VirtualMachineInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8060,14 +11132,13 @@ export const VirtualMachineInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesUpdateOutput =
-  typeof VirtualMachineInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesUpdateOutput>;
 
 // The operation
 /**
  * The operation to update a virtual machine instance.
  *
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualMachineInstancesUpdate =

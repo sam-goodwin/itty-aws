@@ -4,14 +4,28 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ApiPortalCustomDomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+  domainName: string;
+  properties?: { thumbprint?: string };
+}
 export const ApiPortalCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -23,11 +37,22 @@ export const ApiPortalCustomDomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalCustomDomainsCreateOrUpdateInput =
-  typeof ApiPortalCustomDomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalCustomDomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApiPortalCustomDomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiPortalCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -47,13 +72,18 @@ export const ApiPortalCustomDomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiPortalCustomDomainsCreateOrUpdateOutput =
-  typeof ApiPortalCustomDomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApiPortalCustomDomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -61,26 +91,43 @@ export const ApiPortalCustomDomainsCreateOrUpdate =
     outputSchema: ApiPortalCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApiPortalCustomDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+  domainName: string;
+}
 export const ApiPortalCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalCustomDomainsDeleteInput =
-  typeof ApiPortalCustomDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalCustomDomainsDeleteInput>;
 
 // Output Schema
+export type ApiPortalCustomDomainsDeleteOutput = void;
 export const ApiPortalCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiPortalCustomDomainsDeleteOutput =
-  typeof ApiPortalCustomDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiPortalCustomDomainsDeleteOutput>;
 
 // The operation
 /**
  * Delete the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -88,18 +135,42 @@ export const ApiPortalCustomDomainsDelete =
     outputSchema: ApiPortalCustomDomainsDeleteOutput,
   }));
 // Input Schema
+export interface ApiPortalCustomDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+  domainName: string;
+}
 export const ApiPortalCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalCustomDomainsGetInput =
-  typeof ApiPortalCustomDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalCustomDomainsGetInput>;
 
 // Output Schema
+export interface ApiPortalCustomDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiPortalCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -119,13 +190,18 @@ export const ApiPortalCustomDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiPortalCustomDomainsGetOutput =
-  typeof ApiPortalCustomDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApiPortalCustomDomainsGetOutput>;
 
 // The operation
 /**
  * Get the API portal custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
+ * @param domainName - The name of the API portal custom domain.
  */
 export const ApiPortalCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -134,18 +210,43 @@ export const ApiPortalCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApiPortalCustomDomainsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+}
 export const ApiPortalCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalCustomDomainsListInput =
-  typeof ApiPortalCustomDomainsListInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalCustomDomainsListInput>;
 
 // Output Schema
+export interface ApiPortalCustomDomainsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApiPortalCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -182,13 +283,17 @@ export const ApiPortalCustomDomainsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApiPortalCustomDomainsListOutput =
-  typeof ApiPortalCustomDomainsListOutput.Type;
+  }) as unknown as Schema.Codec<ApiPortalCustomDomainsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all API portal custom domains.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -197,8 +302,41 @@ export const ApiPortalCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApiPortalsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    public?: boolean;
+    url?: string;
+    httpsOnly?: boolean;
+    gatewayIds?: string[];
+    sourceUrls?: string[];
+    ssoProperties?: {
+      scope?: string[];
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+      issuerUri?: string;
+    };
+    resourceRequests?: { cpu?: string; memory?: string };
+    instances?: { name?: string; status?: string }[];
+    apiTryOutEnabledState?: "Enabled" | "Disabled";
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const ApiPortalsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -255,11 +393,22 @@ export const ApiPortalsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalsCreateOrUpdateInput =
-  typeof ApiPortalsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApiPortalsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiPortalsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -279,13 +428,17 @@ export const ApiPortalsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApiPortalsCreateOrUpdateOutput =
-  typeof ApiPortalsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApiPortalsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default API portal or update the existing API portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -294,42 +447,78 @@ export const ApiPortalsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ApiPortalsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+}
+export const ApiPortalsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiPortalName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApiPortalsDeleteInput = typeof ApiPortalsDeleteInput.Type;
+) as unknown as Schema.Codec<ApiPortalsDeleteInput>;
 
 // Output Schema
-export const ApiPortalsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApiPortalsDeleteOutput = typeof ApiPortalsDeleteOutput.Type;
+export type ApiPortalsDeleteOutput = void;
+export const ApiPortalsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApiPortalsDeleteOutput>;
 
 // The operation
 /**
  * Delete the default API portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsDeleteInput,
   outputSchema: ApiPortalsDeleteOutput,
 }));
 // Input Schema
-export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ApiPortalsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+}
+export const ApiPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apiPortalName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApiPortalsGetInput = typeof ApiPortalsGetInput.Type;
+) as unknown as Schema.Codec<ApiPortalsGetInput>;
 
 // Output Schema
+export interface ApiPortalsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApiPortalsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -348,30 +537,57 @@ export const ApiPortalsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApiPortalsGetOutput = typeof ApiPortalsGetOutput.Type;
+}) as unknown as Schema.Codec<ApiPortalsGetOutput>;
 
 // The operation
 /**
  * Get the API portal and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsGetInput,
   outputSchema: ApiPortalsGetOutput,
 }));
 // Input Schema
-export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ApiPortalsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ApiPortalsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApiPortalsListInput = typeof ApiPortalsListInput.Type;
+) as unknown as Schema.Codec<ApiPortalsListInput>;
 
 // Output Schema
+export interface ApiPortalsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApiPortalsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -407,20 +623,35 @@ export const ApiPortalsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ApiPortalsListOutput = typeof ApiPortalsListOutput.Type;
+}) as unknown as Schema.Codec<ApiPortalsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApiPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApiPortalsListInput,
   outputSchema: ApiPortalsListOutput,
 }));
 // Input Schema
+export interface ApiPortalsValidateDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apiPortalName: string;
+  name: string;
+}
 export const ApiPortalsValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apiPortalName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -428,22 +659,28 @@ export const ApiPortalsValidateDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/validateDomain",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApiPortalsValidateDomainInput =
-  typeof ApiPortalsValidateDomainInput.Type;
+  ) as unknown as Schema.Codec<ApiPortalsValidateDomainInput>;
 
 // Output Schema
+export interface ApiPortalsValidateDomainOutput {
+  isValid?: boolean;
+  message?: string;
+}
 export const ApiPortalsValidateDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
-  });
-export type ApiPortalsValidateDomainOutput =
-  typeof ApiPortalsValidateDomainOutput.Type;
+  }) as unknown as Schema.Codec<ApiPortalsValidateDomainOutput>;
 
 // The operation
 /**
  * Check the domains are valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apiPortalName - The name of API portal.
  */
 export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -452,8 +689,30 @@ export const ApiPortalsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApmsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apmName: string;
+  properties?: {
+    type: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    properties?: Record<string, string>;
+    secrets?: Record<string, string>;
+  };
+}
 export const ApmsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apmName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -479,10 +738,22 @@ export const ApmsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApmsCreateOrUpdateInput = typeof ApmsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApmsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApmsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApmsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -502,52 +773,95 @@ export const ApmsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApmsCreateOrUpdateOutput = typeof ApmsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApmsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update an APM.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsCreateOrUpdateInput,
   outputSchema: ApmsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ApmsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apmName: string;
+}
+export const ApmsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apmName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApmsDeleteInput = typeof ApmsDeleteInput.Type;
+) as unknown as Schema.Codec<ApmsDeleteInput>;
 
 // Output Schema
-export const ApmsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApmsDeleteOutput = typeof ApmsDeleteOutput.Type;
+export type ApmsDeleteOutput = void;
+export const ApmsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApmsDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete an APM
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsDeleteInput,
   outputSchema: ApmsDeleteOutput,
 }));
 // Input Schema
-export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface ApmsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apmName: string;
+}
+export const ApmsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  apmName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApmsGetInput = typeof ApmsGetInput.Type;
+) as unknown as Schema.Codec<ApmsGetInput>;
 
 // Output Schema
+export interface ApmsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -566,28 +880,57 @@ export const ApmsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApmsGetOutput = typeof ApmsGetOutput.Type;
+}) as unknown as Schema.Codec<ApmsGetOutput>;
 
 // The operation
 /**
  * Get the APM by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsGetInput,
   outputSchema: ApmsGetOutput,
 }));
 // Input Schema
-export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface ApmsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ApmsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms",
     apiVersion: "2023-12-01",
   }),
-);
-export type ApmsListInput = typeof ApmsListInput.Type;
+) as unknown as Schema.Codec<ApmsListInput>;
 
 // Output Schema
+export interface ApmsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApmsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -623,46 +966,97 @@ export const ApmsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ApmsListOutput = typeof ApmsListOutput.Type;
+}) as unknown as Schema.Codec<ApmsListOutput>;
 
 // The operation
 /**
  * Get collection of APMs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApmsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsListInput,
   outputSchema: ApmsListOutput,
 }));
 // Input Schema
+export interface ApmsListSecretKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  apmName: string;
+}
 export const ApmsListSecretKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    apmName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}/listSecretKeys",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApmsListSecretKeysInput = typeof ApmsListSecretKeysInput.Type;
+  ) as unknown as Schema.Codec<ApmsListSecretKeysInput>;
 
 // Output Schema
+export interface ApmsListSecretKeysOutput {
+  value?: string[];
+}
 export const ApmsListSecretKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ApmsListSecretKeysOutput = typeof ApmsListSecretKeysOutput.Type;
+  }) as unknown as Schema.Codec<ApmsListSecretKeysOutput>;
 
 // The operation
 /**
  * List keys of APM sensitive properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param apmName - The name of the APM
  */
 export const ApmsListSecretKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApmsListSecretKeysInput,
   outputSchema: ApmsListSecretKeysOutput,
 }));
 // Input Schema
+export interface ApplicationAcceleratorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    components?: {
+      name?: string;
+      resourceRequests?: {
+        cpu?: string;
+        memory?: string;
+        instanceCount?: number;
+      };
+      instances?: { name?: string; status?: string }[];
+    }[];
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const ApplicationAcceleratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -712,11 +1106,22 @@ export const ApplicationAcceleratorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationAcceleratorsCreateOrUpdateInput =
-  typeof ApplicationAcceleratorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationAcceleratorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationAcceleratorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationAcceleratorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -736,13 +1141,17 @@ export const ApplicationAcceleratorsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationAcceleratorsCreateOrUpdateOutput =
-  typeof ApplicationAcceleratorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationAcceleratorsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -750,26 +1159,40 @@ export const ApplicationAcceleratorsCreateOrUpdate =
     outputSchema: ApplicationAcceleratorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationAcceleratorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+}
 export const ApplicationAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationAcceleratorsDeleteInput =
-  typeof ApplicationAcceleratorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationAcceleratorsDeleteInput>;
 
 // Output Schema
+export type ApplicationAcceleratorsDeleteOutput = void;
 export const ApplicationAcceleratorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationAcceleratorsDeleteOutput =
-  typeof ApplicationAcceleratorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationAcceleratorsDeleteOutput>;
 
 // The operation
 /**
  * Delete the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -777,18 +1200,40 @@ export const ApplicationAcceleratorsDelete =
     outputSchema: ApplicationAcceleratorsDeleteOutput,
   }));
 // Input Schema
+export interface ApplicationAcceleratorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+}
 export const ApplicationAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationAcceleratorsGetInput =
-  typeof ApplicationAcceleratorsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationAcceleratorsGetInput>;
 
 // Output Schema
+export interface ApplicationAcceleratorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationAcceleratorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -808,13 +1253,17 @@ export const ApplicationAcceleratorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationAcceleratorsGetOutput =
-  typeof ApplicationAcceleratorsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationAcceleratorsGetOutput>;
 
 // The operation
 /**
  * Get the application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const ApplicationAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -823,18 +1272,41 @@ export const ApplicationAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationAcceleratorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ApplicationAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationAcceleratorsListInput =
-  typeof ApplicationAcceleratorsListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationAcceleratorsListInput>;
 
 // Output Schema
+export interface ApplicationAcceleratorsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationAcceleratorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -871,13 +1343,16 @@ export const ApplicationAcceleratorsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationAcceleratorsListOutput =
-  typeof ApplicationAcceleratorsListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationAcceleratorsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all application accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -886,8 +1361,36 @@ export const ApplicationAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationLiveViewsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationLiveViewName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    components?: {
+      name?: unknown;
+      resourceRequests?: {
+        cpu?: string;
+        memory?: string;
+        instanceCount?: number;
+      };
+      instances?: { name?: string; status?: string }[];
+    }[];
+  };
+}
 export const ApplicationLiveViewsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -930,11 +1433,22 @@ export const ApplicationLiveViewsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationLiveViewsCreateOrUpdateInput =
-  typeof ApplicationLiveViewsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationLiveViewsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationLiveViewsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationLiveViewsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -954,13 +1468,17 @@ export const ApplicationLiveViewsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationLiveViewsCreateOrUpdateOutput =
-  typeof ApplicationLiveViewsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationLiveViewsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Application Live View or update the existing Application Live View.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -968,26 +1486,40 @@ export const ApplicationLiveViewsCreateOrUpdate =
     outputSchema: ApplicationLiveViewsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationLiveViewsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationLiveViewName: string;
+}
 export const ApplicationLiveViewsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationLiveViewsDeleteInput =
-  typeof ApplicationLiveViewsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationLiveViewsDeleteInput>;
 
 // Output Schema
+export type ApplicationLiveViewsDeleteOutput = void;
 export const ApplicationLiveViewsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationLiveViewsDeleteOutput =
-  typeof ApplicationLiveViewsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationLiveViewsDeleteOutput>;
 
 // The operation
 /**
  * Disable the default Application Live View.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -996,18 +1528,40 @@ export const ApplicationLiveViewsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationLiveViewsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationLiveViewName: string;
+}
 export const ApplicationLiveViewsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationLiveViewName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationLiveViewsGetInput =
-  typeof ApplicationLiveViewsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationLiveViewsGetInput>;
 
 // Output Schema
+export interface ApplicationLiveViewsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationLiveViewsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1027,13 +1581,17 @@ export const ApplicationLiveViewsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationLiveViewsGetOutput =
-  typeof ApplicationLiveViewsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationLiveViewsGetOutput>;
 
 // The operation
 /**
  * Get the Application Live  and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationLiveViewName - The name of Application Live View.
  */
 export const ApplicationLiveViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1042,18 +1600,41 @@ export const ApplicationLiveViewsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationLiveViewsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ApplicationLiveViewsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ApplicationLiveViewsListInput =
-  typeof ApplicationLiveViewsListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationLiveViewsListInput>;
 
 // Output Schema
+export interface ApplicationLiveViewsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationLiveViewsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1090,13 +1671,16 @@ export const ApplicationLiveViewsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationLiveViewsListOutput =
-  typeof ApplicationLiveViewsListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationLiveViewsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1105,8 +1689,72 @@ export const ApplicationLiveViewsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  properties?: {
+    public?: boolean;
+    url?: string;
+    addonConfigs?: Record<string, unknown>;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+    fqdn?: string;
+    httpsOnly?: boolean;
+    temporaryDisk?: { sizeInGB?: number; mountPath?: string };
+    persistentDisk?: {
+      sizeInGB?: number;
+      usedInGB?: number;
+      mountPath?: string;
+    };
+    customPersistentDisks?: {
+      customPersistentDiskProperties?: {
+        type: "AzureFileVolume";
+        mountPath: string;
+        readOnly?: boolean;
+        enableSubPath?: boolean;
+        mountOptions?: string[];
+      };
+      storageId: string;
+    }[];
+    enableEndToEndTLS?: boolean;
+    loadedCertificates?: { resourceId: string; loadTrustStore?: boolean }[];
+    vnetAddons?: { publicEndpoint?: boolean; publicEndpointUrl?: string };
+    ingressSettings?: {
+      readTimeoutInSeconds?: number;
+      sendTimeoutInSeconds?: number;
+      sessionAffinity?: "Cookie" | "None";
+      sessionCookieMaxAge?: number;
+      backendProtocol?: "GRPC" | "Default";
+      clientAuth?: { certificates?: string[] };
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+}
 export const AppsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         public: Schema.optional(Schema.Boolean),
@@ -1219,10 +1867,22 @@ export const AppsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AppsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1242,43 +1902,74 @@ export const AppsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppsCreateOrUpdateOutput = typeof AppsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a new App or update an exiting App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsCreateOrUpdateInput,
   outputSchema: AppsCreateOrUpdateOutput,
 }));
 // Input Schema
-export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AppsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+}
+export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AppsDeleteInput = typeof AppsDeleteInput.Type;
+) as unknown as Schema.Codec<AppsDeleteInput>;
 
 // Output Schema
-export const AppsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppsDeleteOutput = typeof AppsDeleteOutput.Type;
+export type AppsDeleteOutput = void;
+export const AppsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppsDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete an App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsDeleteInput,
   outputSchema: AppsDeleteOutput,
 }));
 // Input Schema
+export interface AppsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  syncStatus?: string;
+}
 export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   syncStatus: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -1286,10 +1977,22 @@ export const AppsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AppsGetInput = typeof AppsGetInput.Type;
+) as unknown as Schema.Codec<AppsGetInput>;
 
 // Output Schema
+export interface AppsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1308,13 +2011,17 @@ export const AppsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AppsGetOutput = typeof AppsGetOutput.Type;
+}) as unknown as Schema.Codec<AppsGetOutput>;
 
 // The operation
 /**
  * Get an App and its properties.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  * @param syncStatus - Indicates whether sync status
  */
 export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1322,29 +2029,46 @@ export const AppsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AppsGetOutput,
 }));
 // Input Schema
+export interface AppsGetResourceUploadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+}
 export const AppsGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AppsGetResourceUploadUrlInput =
-  typeof AppsGetResourceUploadUrlInput.Type;
+  ) as unknown as Schema.Codec<AppsGetResourceUploadUrlInput>;
 
 // Output Schema
+export interface AppsGetResourceUploadUrlOutput {
+  relativePath?: string;
+  uploadUrl?: string;
+}
 export const AppsGetResourceUploadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativePath: Schema.optional(Schema.String),
     uploadUrl: Schema.optional(Schema.String),
-  });
-export type AppsGetResourceUploadUrlOutput =
-  typeof AppsGetResourceUploadUrlOutput.Type;
+  }) as unknown as Schema.Codec<AppsGetResourceUploadUrlOutput>;
 
 // The operation
 /**
  * Get an resource upload URL for an App, which may be artifacts or source archive.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsGetResourceUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1353,16 +2077,40 @@ export const AppsGetResourceUploadUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface AppsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps",
     apiVersion: "2023-12-01",
   }),
-);
-export type AppsListInput = typeof AppsListInput.Type;
+) as unknown as Schema.Codec<AppsListInput>;
 
 // Output Schema
+export interface AppsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1398,20 +2146,35 @@ export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type AppsListOutput = typeof AppsListOutput.Type;
+}) as unknown as Schema.Codec<AppsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const AppsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsListInput,
   outputSchema: AppsListOutput,
 }));
 // Input Schema
+export interface AppsSetActiveDeploymentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  activeDeploymentNames?: string[];
+}
 export const AppsSetActiveDeploymentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     activeDeploymentNames: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -1419,11 +2182,22 @@ export const AppsSetActiveDeploymentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/setActiveDeployments",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AppsSetActiveDeploymentsInput =
-  typeof AppsSetActiveDeploymentsInput.Type;
+  ) as unknown as Schema.Codec<AppsSetActiveDeploymentsInput>;
 
 // Output Schema
+export interface AppsSetActiveDeploymentsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppsSetActiveDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1443,13 +2217,17 @@ export const AppsSetActiveDeploymentsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppsSetActiveDeploymentsOutput =
-  typeof AppsSetActiveDeploymentsOutput.Type;
+  }) as unknown as Schema.Codec<AppsSetActiveDeploymentsOutput>;
 
 // The operation
 /**
  * Set existing Deployment under the app as active
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1458,7 +2236,71 @@ export const AppsSetActiveDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  properties?: {
+    public?: boolean;
+    url?: string;
+    addonConfigs?: Record<string, unknown>;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+    fqdn?: string;
+    httpsOnly?: boolean;
+    temporaryDisk?: { sizeInGB?: number; mountPath?: string };
+    persistentDisk?: {
+      sizeInGB?: number;
+      usedInGB?: number;
+      mountPath?: string;
+    };
+    customPersistentDisks?: {
+      customPersistentDiskProperties?: {
+        type: "AzureFileVolume";
+        mountPath: string;
+        readOnly?: boolean;
+        enableSubPath?: boolean;
+        mountOptions?: string[];
+      };
+      storageId: string;
+    }[];
+    enableEndToEndTLS?: boolean;
+    loadedCertificates?: { resourceId: string; loadTrustStore?: boolean }[];
+    vnetAddons?: { publicEndpoint?: boolean; publicEndpointUrl?: string };
+    ingressSettings?: {
+      readTimeoutInSeconds?: number;
+      sendTimeoutInSeconds?: number;
+      sessionAffinity?: "Cookie" | "None";
+      sessionCookieMaxAge?: number;
+      backendProtocol?: "GRPC" | "Default";
+      clientAuth?: { certificates?: string[] };
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+}
 export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       public: Schema.optional(Schema.Boolean),
@@ -1569,10 +2411,22 @@ export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AppsUpdateInput = typeof AppsUpdateInput.Type;
+) as unknown as Schema.Codec<AppsUpdateInput>;
 
 // Output Schema
+export interface AppsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1591,20 +2445,36 @@ export const AppsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AppsUpdateOutput = typeof AppsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AppsUpdateOutput>;
 
 // The operation
 /**
  * Operation to update an exiting App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsUpdateInput,
   outputSchema: AppsUpdateOutput,
 }));
 // Input Schema
+export interface AppsValidateDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  name: string;
+}
 export const AppsValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -1612,28 +2482,58 @@ export const AppsValidateDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AppsValidateDomainInput = typeof AppsValidateDomainInput.Type;
+  ) as unknown as Schema.Codec<AppsValidateDomainInput>;
 
 // Output Schema
+export interface AppsValidateDomainOutput {
+  isValid?: boolean;
+  message?: string;
+}
 export const AppsValidateDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
-  });
-export type AppsValidateDomainOutput = typeof AppsValidateDomainOutput.Type;
+  }) as unknown as Schema.Codec<AppsValidateDomainOutput>;
 
 // The operation
 /**
  * Check the resource name is valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const AppsValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppsValidateDomainInput,
   outputSchema: AppsValidateDomainOutput,
 }));
 // Input Schema
+export interface BindingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  bindingName: string;
+  properties?: {
+    resourceName?: string;
+    resourceType?: string;
+    resourceId?: string;
+    key?: string;
+    bindingParameters?: Record<string, string>;
+    generatedProperties?: string;
+    createdAt?: string;
+    updatedAt?: string;
+  };
+}
 export const BindingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    bindingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         resourceName: Schema.optional(Schema.String),
@@ -1654,11 +2554,22 @@ export const BindingsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BindingsCreateOrUpdateInput =
-  typeof BindingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BindingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BindingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BindingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1678,13 +2589,18 @@ export const BindingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BindingsCreateOrUpdateOutput =
-  typeof BindingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BindingsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a new Binding or update an exiting Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1693,42 +2609,83 @@ export const BindingsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface BindingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  bindingName: string;
+}
+export const BindingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type BindingsDeleteInput = typeof BindingsDeleteInput.Type;
+) as unknown as Schema.Codec<BindingsDeleteInput>;
 
 // Output Schema
-export const BindingsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BindingsDeleteOutput = typeof BindingsDeleteOutput.Type;
+export type BindingsDeleteOutput = void;
+export const BindingsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BindingsDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete a Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsDeleteInput,
   outputSchema: BindingsDeleteOutput,
 }));
 // Input Schema
-export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface BindingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  bindingName: string;
+}
+export const BindingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type BindingsGetInput = typeof BindingsGetInput.Type;
+) as unknown as Schema.Codec<BindingsGetInput>;
 
 // Output Schema
+export interface BindingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BindingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1747,30 +2704,60 @@ export const BindingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BindingsGetOutput = typeof BindingsGetOutput.Type;
+}) as unknown as Schema.Codec<BindingsGetOutput>;
 
 // The operation
 /**
  * Get a Binding and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsGetInput,
   outputSchema: BindingsGetOutput,
 }));
 // Input Schema
-export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface BindingsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+}
+export const BindingsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings",
     apiVersion: "2023-12-01",
   }),
-);
-export type BindingsListInput = typeof BindingsListInput.Type;
+) as unknown as Schema.Codec<BindingsListInput>;
 
 // Output Schema
+export interface BindingsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BindingsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1806,19 +2793,46 @@ export const BindingsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type BindingsListOutput = typeof BindingsListOutput.Type;
+}) as unknown as Schema.Codec<BindingsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in an App.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const BindingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsListInput,
   outputSchema: BindingsListOutput,
 }));
 // Input Schema
+export interface BindingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  bindingName: string;
+  properties?: {
+    resourceName?: string;
+    resourceType?: string;
+    resourceId?: string;
+    key?: string;
+    bindingParameters?: Record<string, string>;
+    generatedProperties?: string;
+    createdAt?: string;
+    updatedAt?: string;
+  };
+}
 export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  bindingName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       resourceName: Schema.optional(Schema.String),
@@ -1839,10 +2853,22 @@ export const BindingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings/{bindingName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type BindingsUpdateInput = typeof BindingsUpdateInput.Type;
+) as unknown as Schema.Codec<BindingsUpdateInput>;
 
 // Output Schema
+export interface BindingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BindingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1861,20 +2887,59 @@ export const BindingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BindingsUpdateOutput = typeof BindingsUpdateOutput.Type;
+}) as unknown as Schema.Codec<BindingsUpdateOutput>;
 
 // The operation
 /**
  * Operation to update an exiting Binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param bindingName - The name of the Binding resource.
  */
 export const BindingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BindingsUpdateInput,
   outputSchema: BindingsUpdateOutput,
 }));
 // Input Schema
+export interface BuildpackBindingCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+  buildpackBindingName: string;
+  properties?: {
+    bindingType?:
+      | "ApplicationInsights"
+      | "ApacheSkyWalking"
+      | "AppDynamics"
+      | "Dynatrace"
+      | "NewRelic"
+      | "ElasticAPM";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    launchProperties?: {
+      properties?: Record<string, string>;
+      secrets?: Record<string, string>;
+    };
+  };
+}
 export const BuildpackBindingCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         bindingType: Schema.optional(
@@ -1914,11 +2979,22 @@ export const BuildpackBindingCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildpackBindingCreateOrUpdateInput =
-  typeof BuildpackBindingCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BuildpackBindingCreateOrUpdateInput>;
 
 // Output Schema
+export interface BuildpackBindingCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildpackBindingCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1938,13 +3014,19 @@ export const BuildpackBindingCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildpackBindingCreateOrUpdateOutput =
-  typeof BuildpackBindingCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BuildpackBindingCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update a buildpack binding.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1952,26 +3034,46 @@ export const BuildpackBindingCreateOrUpdate =
     outputSchema: BuildpackBindingCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BuildpackBindingDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+  buildpackBindingName: string;
+}
 export const BuildpackBindingDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildpackBindingDeleteInput =
-  typeof BuildpackBindingDeleteInput.Type;
+  ) as unknown as Schema.Codec<BuildpackBindingDeleteInput>;
 
 // Output Schema
+export type BuildpackBindingDeleteOutput = void;
 export const BuildpackBindingDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BuildpackBindingDeleteOutput =
-  typeof BuildpackBindingDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BuildpackBindingDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete a Buildpack Binding
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1980,17 +3082,44 @@ export const BuildpackBindingDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildpackBindingGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+  buildpackBindingName: string;
+}
 export const BuildpackBindingGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+    buildpackBindingName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildpackBindingGetInput = typeof BuildpackBindingGetInput.Type;
+  ) as unknown as Schema.Codec<BuildpackBindingGetInput>;
 
 // Output Schema
+export interface BuildpackBindingGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildpackBindingGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2010,29 +3139,64 @@ export const BuildpackBindingGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildpackBindingGetOutput = typeof BuildpackBindingGetOutput.Type;
+  }) as unknown as Schema.Codec<BuildpackBindingGetOutput>;
 
 // The operation
 /**
  * Get a buildpack binding by name.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
+ * @param buildpackBindingName - The name of the Buildpack Binding Name
  */
 export const BuildpackBindingGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: BuildpackBindingGetInput,
   outputSchema: BuildpackBindingGetOutput,
 }));
 // Input Schema
+export interface BuildpackBindingListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+}
 export const BuildpackBindingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildpackBindingListInput = typeof BuildpackBindingListInput.Type;
+  ) as unknown as Schema.Codec<BuildpackBindingListInput>;
 
 // Output Schema
+export interface BuildpackBindingListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildpackBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2069,12 +3233,18 @@ export const BuildpackBindingListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildpackBindingListOutput = typeof BuildpackBindingListOutput.Type;
+  }) as unknown as Schema.Codec<BuildpackBindingListOutput>;
 
 // The operation
 /**
  * Handles requests to list all buildpack bindings in a builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildpackBindingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2083,18 +3253,41 @@ export const BuildpackBindingList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildpackBindingListForClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const BuildpackBindingListForClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildpackBindingListForClusterInput =
-  typeof BuildpackBindingListForClusterInput.Type;
+  ) as unknown as Schema.Codec<BuildpackBindingListForClusterInput>;
 
 // Output Schema
+export interface BuildpackBindingListForClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildpackBindingListForClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2131,13 +3324,16 @@ export const BuildpackBindingListForClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildpackBindingListForClusterOutput =
-  typeof BuildpackBindingListForClusterOutput.Type;
+  }) as unknown as Schema.Codec<BuildpackBindingListForClusterOutput>;
 
 // The operation
 /**
  * Get collection of buildpack bindings under all builders.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const BuildpackBindingListForCluster =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2145,18 +3341,42 @@ export const BuildpackBindingListForCluster =
     outputSchema: BuildpackBindingListForClusterOutput,
   }));
 // Input Schema
+export interface BuildServiceAgentPoolGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  agentPoolName: string;
+}
 export const BuildServiceAgentPoolGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    agentPoolName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceAgentPoolGetInput =
-  typeof BuildServiceAgentPoolGetInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceAgentPoolGetInput>;
 
 // Output Schema
+export interface BuildServiceAgentPoolGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceAgentPoolGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2176,13 +3396,18 @@ export const BuildServiceAgentPoolGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceAgentPoolGetOutput =
-  typeof BuildServiceAgentPoolGetOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceAgentPoolGetOutput>;
 
 // The operation
 /**
  * Get build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param agentPoolName - The name of the build service agent pool resource.
  */
 export const BuildServiceAgentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2191,18 +3416,43 @@ export const BuildServiceAgentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceAgentPoolListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceAgentPoolListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceAgentPoolListInput =
-  typeof BuildServiceAgentPoolListInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceAgentPoolListInput>;
 
 // Output Schema
+export interface BuildServiceAgentPoolListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceAgentPoolListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2239,13 +3489,17 @@ export const BuildServiceAgentPoolListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceAgentPoolListOutput =
-  typeof BuildServiceAgentPoolListOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceAgentPoolListOutput>;
 
 // The operation
 /**
  * List build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2254,8 +3508,24 @@ export const BuildServiceAgentPoolList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceAgentPoolUpdatePutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  agentPoolName: string;
+  properties?: {
+    provisioningState?: string;
+    poolSize?: { name?: string; cpu?: string; memory?: string };
+  };
+}
 export const BuildServiceAgentPoolUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    agentPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
@@ -2274,11 +3544,22 @@ export const BuildServiceAgentPoolUpdatePutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceAgentPoolUpdatePutInput =
-  typeof BuildServiceAgentPoolUpdatePutInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceAgentPoolUpdatePutInput>;
 
 // Output Schema
+export interface BuildServiceAgentPoolUpdatePutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceAgentPoolUpdatePutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2298,13 +3579,18 @@ export const BuildServiceAgentPoolUpdatePutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceAgentPoolUpdatePutOutput =
-  typeof BuildServiceAgentPoolUpdatePutOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceAgentPoolUpdatePutOutput>;
 
 // The operation
 /**
  * Create or update build service agent pool.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param agentPoolName - The name of the build service agent pool resource.
  */
 export const BuildServiceAgentPoolUpdatePut =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2312,8 +3598,30 @@ export const BuildServiceAgentPoolUpdatePut =
     outputSchema: BuildServiceAgentPoolUpdatePutOutput,
   }));
 // Input Schema
+export interface BuildServiceBuilderCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    stack?: { id?: string; version?: string };
+    buildpackGroups?: { name?: string; buildpacks?: { id?: string }[] }[];
+  };
+}
 export const BuildServiceBuilderCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2353,11 +3661,22 @@ export const BuildServiceBuilderCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceBuilderCreateOrUpdateInput =
-  typeof BuildServiceBuilderCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceBuilderCreateOrUpdateInput>;
 
 // Output Schema
+export interface BuildServiceBuilderCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceBuilderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2377,13 +3696,18 @@ export const BuildServiceBuilderCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceBuilderCreateOrUpdateOutput =
-  typeof BuildServiceBuilderCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceBuilderCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2391,26 +3715,43 @@ export const BuildServiceBuilderCreateOrUpdate =
     outputSchema: BuildServiceBuilderCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BuildServiceBuilderDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+}
 export const BuildServiceBuilderDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceBuilderDeleteInput =
-  typeof BuildServiceBuilderDeleteInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceBuilderDeleteInput>;
 
 // Output Schema
+export type BuildServiceBuilderDeleteOutput = void;
 export const BuildServiceBuilderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BuildServiceBuilderDeleteOutput =
-  typeof BuildServiceBuilderDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BuildServiceBuilderDeleteOutput>;
 
 // The operation
 /**
  * Delete a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2419,18 +3760,42 @@ export const BuildServiceBuilderDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceBuilderGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+}
 export const BuildServiceBuilderGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceBuilderGetInput =
-  typeof BuildServiceBuilderGetInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceBuilderGetInput>;
 
 // Output Schema
+export interface BuildServiceBuilderGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceBuilderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2450,13 +3815,18 @@ export const BuildServiceBuilderGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceBuilderGetOutput =
-  typeof BuildServiceBuilderGetOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceBuilderGetOutput>;
 
 // The operation
 /**
  * Get a KPack builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2465,18 +3835,43 @@ export const BuildServiceBuilderGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceBuilderListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceBuilderListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceBuilderListInput =
-  typeof BuildServiceBuilderListInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceBuilderListInput>;
 
 // Output Schema
+export interface BuildServiceBuilderListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceBuilderListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2513,13 +3908,17 @@ export const BuildServiceBuilderListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceBuilderListOutput =
-  typeof BuildServiceBuilderListOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceBuilderListOutput>;
 
 // The operation
 /**
  * List KPack builders result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceBuilderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2528,28 +3927,47 @@ export const BuildServiceBuilderList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceBuilderListDeploymentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  builderName: string;
+}
 export const BuildServiceBuilderListDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    builderName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/listUsingDeployments",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceBuilderListDeploymentsInput =
-  typeof BuildServiceBuilderListDeploymentsInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceBuilderListDeploymentsInput>;
 
 // Output Schema
+export interface BuildServiceBuilderListDeploymentsOutput {
+  deployments?: string[];
+}
 export const BuildServiceBuilderListDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deployments: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type BuildServiceBuilderListDeploymentsOutput =
-  typeof BuildServiceBuilderListDeploymentsOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceBuilderListDeploymentsOutput>;
 
 // The operation
 /**
  * List deployments that are using the builder.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param builderName - The name of the builder resource.
  */
 export const BuildServiceBuilderListDeployments =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2557,8 +3975,29 @@ export const BuildServiceBuilderListDeployments =
     outputSchema: BuildServiceBuilderListDeploymentsOutput,
   }));
 // Input Schema
+export interface BuildServiceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  properties?: {
+    containerRegistry?: string;
+    kPackVersion?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    resourceRequests?: { cpu?: string; memory?: string };
+  };
+}
 export const BuildServiceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         containerRegistry: Schema.optional(Schema.String),
@@ -2586,11 +4025,22 @@ export const BuildServiceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceCreateOrUpdateInput =
-  typeof BuildServiceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceCreateOrUpdateInput>;
 
 // Output Schema
+export interface BuildServiceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2610,13 +4060,17 @@ export const BuildServiceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceCreateOrUpdateOutput =
-  typeof BuildServiceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a build service resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2625,8 +4079,49 @@ export const BuildServiceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceCreateOrUpdateBuildInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+  properties?: {
+    relativePath?: string;
+    builder?: string;
+    agentPool?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    env?: Record<string, string>;
+    apms?: { resourceId: string }[];
+    certificates?: { resourceId: string }[];
+    triggeredBuildResult?: {
+      id?: string;
+      provisioningState?:
+        | "Queuing"
+        | "Building"
+        | "Succeeded"
+        | "Failed"
+        | "Deleting"
+        | "Canceled";
+      image?: string;
+      lastTransitionTime?: string;
+      lastTransitionReason?: string;
+      lastTransitionStatus?: string;
+    };
+    resourceRequests?: { cpu?: string; memory?: string };
+  };
+}
 export const BuildServiceCreateOrUpdateBuildInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         relativePath: Schema.optional(Schema.String),
@@ -2689,11 +4184,22 @@ export const BuildServiceCreateOrUpdateBuildInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceCreateOrUpdateBuildInput =
-  typeof BuildServiceCreateOrUpdateBuildInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceCreateOrUpdateBuildInput>;
 
 // Output Schema
+export interface BuildServiceCreateOrUpdateBuildOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceCreateOrUpdateBuildOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2713,13 +4219,18 @@ export const BuildServiceCreateOrUpdateBuildOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceCreateOrUpdateBuildOutput =
-  typeof BuildServiceCreateOrUpdateBuildOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceCreateOrUpdateBuildOutput>;
 
 // The operation
 /**
  * Create or update a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceCreateOrUpdateBuild =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2727,26 +4238,43 @@ export const BuildServiceCreateOrUpdateBuild =
     outputSchema: BuildServiceCreateOrUpdateBuildOutput,
   }));
 // Input Schema
+export interface BuildServiceDeleteBuildInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+}
 export const BuildServiceDeleteBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceDeleteBuildInput =
-  typeof BuildServiceDeleteBuildInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceDeleteBuildInput>;
 
 // Output Schema
+export type BuildServiceDeleteBuildOutput = void;
 export const BuildServiceDeleteBuildOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BuildServiceDeleteBuildOutput =
-  typeof BuildServiceDeleteBuildOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BuildServiceDeleteBuildOutput>;
 
 // The operation
 /**
  * delete a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceDeleteBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2755,17 +4283,42 @@ export const BuildServiceDeleteBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceGetBuildInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+}
 export const BuildServiceGetBuildInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetBuildInput = typeof BuildServiceGetBuildInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetBuildInput>;
 
 // Output Schema
+export interface BuildServiceGetBuildOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceGetBuildOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2785,12 +4338,18 @@ export const BuildServiceGetBuildOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceGetBuildOutput = typeof BuildServiceGetBuildOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetBuildOutput>;
 
 // The operation
 /**
  * Get a KPack build.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceGetBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2799,18 +4358,44 @@ export const BuildServiceGetBuild = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceGetBuildResultInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+  buildResultName: string;
+}
 export const BuildServiceGetBuildResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+    buildResultName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetBuildResultInput =
-  typeof BuildServiceGetBuildResultInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetBuildResultInput>;
 
 // Output Schema
+export interface BuildServiceGetBuildResultOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceGetBuildResultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2830,13 +4415,19 @@ export const BuildServiceGetBuildResultOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceGetBuildResultOutput =
-  typeof BuildServiceGetBuildResultOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetBuildResultOutput>;
 
 // The operation
 /**
  * Get a KPack build result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
+ * @param buildResultName - The name of the build result resource.
  */
 export const BuildServiceGetBuildResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2845,28 +4436,50 @@ export const BuildServiceGetBuildResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceGetBuildResultLogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+  buildResultName: string;
+}
 export const BuildServiceGetBuildResultLogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+    buildResultName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results/{buildResultName}/getLogFileUrl",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetBuildResultLogInput =
-  typeof BuildServiceGetBuildResultLogInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetBuildResultLogInput>;
 
 // Output Schema
+export interface BuildServiceGetBuildResultLogOutput {
+  blobUrl?: string;
+}
 export const BuildServiceGetBuildResultLogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobUrl: Schema.optional(Schema.String),
-  });
-export type BuildServiceGetBuildResultLogOutput =
-  typeof BuildServiceGetBuildResultLogOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetBuildResultLogOutput>;
 
 // The operation
 /**
  * Get a KPack build result log download URL.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
+ * @param buildResultName - The name of the build result resource.
  */
 export const BuildServiceGetBuildResultLog =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2874,18 +4487,40 @@ export const BuildServiceGetBuildResultLog =
     outputSchema: BuildServiceGetBuildResultLogOutput,
   }));
 // Input Schema
+export interface BuildServiceGetBuildServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceGetBuildServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetBuildServiceInput =
-  typeof BuildServiceGetBuildServiceInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetBuildServiceInput>;
 
 // Output Schema
+export interface BuildServiceGetBuildServiceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceGetBuildServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2905,13 +4540,17 @@ export const BuildServiceGetBuildServiceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceGetBuildServiceOutput =
-  typeof BuildServiceGetBuildServiceOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetBuildServiceOutput>;
 
 // The operation
 /**
  * Get a build service resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceGetBuildService = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2920,29 +4559,46 @@ export const BuildServiceGetBuildService = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceGetResourceUploadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceGetResourceUploadUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/getResourceUploadUrl",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetResourceUploadUrlInput =
-  typeof BuildServiceGetResourceUploadUrlInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetResourceUploadUrlInput>;
 
 // Output Schema
+export interface BuildServiceGetResourceUploadUrlOutput {
+  relativePath?: string;
+  uploadUrl?: string;
+}
 export const BuildServiceGetResourceUploadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relativePath: Schema.optional(Schema.String),
     uploadUrl: Schema.optional(Schema.String),
-  });
-export type BuildServiceGetResourceUploadUrlOutput =
-  typeof BuildServiceGetResourceUploadUrlOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetResourceUploadUrlOutput>;
 
 // The operation
 /**
  * Get an resource upload URL for build service, which may be artifacts or source archive.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceGetResourceUploadUrl =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2950,18 +4606,42 @@ export const BuildServiceGetResourceUploadUrl =
     outputSchema: BuildServiceGetResourceUploadUrlOutput,
   }));
 // Input Schema
+export interface BuildServiceGetSupportedBuildpackInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildpackName: string;
+}
 export const BuildServiceGetSupportedBuildpackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildpackName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks/{buildpackName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetSupportedBuildpackInput =
-  typeof BuildServiceGetSupportedBuildpackInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetSupportedBuildpackInput>;
 
 // Output Schema
+export interface BuildServiceGetSupportedBuildpackOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceGetSupportedBuildpackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2981,13 +4661,18 @@ export const BuildServiceGetSupportedBuildpackOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceGetSupportedBuildpackOutput =
-  typeof BuildServiceGetSupportedBuildpackOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetSupportedBuildpackOutput>;
 
 // The operation
 /**
  * Get the supported buildpack resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildpackName - The name of the buildpack resource.
  */
 export const BuildServiceGetSupportedBuildpack =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2995,18 +4680,42 @@ export const BuildServiceGetSupportedBuildpack =
     outputSchema: BuildServiceGetSupportedBuildpackOutput,
   }));
 // Input Schema
+export interface BuildServiceGetSupportedStackInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  stackName: string;
+}
 export const BuildServiceGetSupportedStackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    stackName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks/{stackName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceGetSupportedStackInput =
-  typeof BuildServiceGetSupportedStackInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceGetSupportedStackInput>;
 
 // Output Schema
+export interface BuildServiceGetSupportedStackOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BuildServiceGetSupportedStackOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3026,13 +4735,18 @@ export const BuildServiceGetSupportedStackOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BuildServiceGetSupportedStackOutput =
-  typeof BuildServiceGetSupportedStackOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceGetSupportedStackOutput>;
 
 // The operation
 /**
  * Get the supported stack resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param stackName - The name of the stack resource.
  */
 export const BuildServiceGetSupportedStack =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3040,18 +4754,45 @@ export const BuildServiceGetSupportedStack =
     outputSchema: BuildServiceGetSupportedStackOutput,
   }));
 // Input Schema
+export interface BuildServiceListBuildResultsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+  buildName: string;
+}
 export const BuildServiceListBuildResultsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+    buildName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceListBuildResultsInput =
-  typeof BuildServiceListBuildResultsInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceListBuildResultsInput>;
 
 // Output Schema
+export interface BuildServiceListBuildResultsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceListBuildResultsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3088,13 +4829,18 @@ export const BuildServiceListBuildResultsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceListBuildResultsOutput =
-  typeof BuildServiceListBuildResultsOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceListBuildResultsOutput>;
 
 // The operation
 /**
  * List KPack build results.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
+ * @param buildName - The name of the build resource.
  */
 export const BuildServiceListBuildResults =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3102,18 +4848,43 @@ export const BuildServiceListBuildResults =
     outputSchema: BuildServiceListBuildResultsOutput,
   }));
 // Input Schema
+export interface BuildServiceListBuildsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceListBuildsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceListBuildsInput =
-  typeof BuildServiceListBuildsInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceListBuildsInput>;
 
 // Output Schema
+export interface BuildServiceListBuildsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceListBuildsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3150,13 +4921,17 @@ export const BuildServiceListBuildsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceListBuildsOutput =
-  typeof BuildServiceListBuildsOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceListBuildsOutput>;
 
 // The operation
 /**
  * List KPack builds.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListBuilds = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3165,18 +4940,41 @@ export const BuildServiceListBuilds = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BuildServiceListBuildServicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const BuildServiceListBuildServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceListBuildServicesInput =
-  typeof BuildServiceListBuildServicesInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceListBuildServicesInput>;
 
 // Output Schema
+export interface BuildServiceListBuildServicesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceListBuildServicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3213,13 +5011,16 @@ export const BuildServiceListBuildServicesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceListBuildServicesOutput =
-  typeof BuildServiceListBuildServicesOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceListBuildServicesOutput>;
 
 // The operation
 /**
  * List build services resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const BuildServiceListBuildServices =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3227,18 +5028,43 @@ export const BuildServiceListBuildServices =
     outputSchema: BuildServiceListBuildServicesOutput,
   }));
 // Input Schema
+export interface BuildServiceListSupportedBuildpacksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceListSupportedBuildpacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedBuildpacks",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceListSupportedBuildpacksInput =
-  typeof BuildServiceListSupportedBuildpacksInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceListSupportedBuildpacksInput>;
 
 // Output Schema
+export interface BuildServiceListSupportedBuildpacksOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceListSupportedBuildpacksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3275,13 +5101,17 @@ export const BuildServiceListSupportedBuildpacksOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceListSupportedBuildpacksOutput =
-  typeof BuildServiceListSupportedBuildpacksOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceListSupportedBuildpacksOutput>;
 
 // The operation
 /**
  * Get all supported buildpacks.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListSupportedBuildpacks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3289,18 +5119,43 @@ export const BuildServiceListSupportedBuildpacks =
     outputSchema: BuildServiceListSupportedBuildpacksOutput,
   }));
 // Input Schema
+export interface BuildServiceListSupportedStacksInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  buildServiceName: string;
+}
 export const BuildServiceListSupportedStacksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    buildServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/supportedStacks",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BuildServiceListSupportedStacksInput =
-  typeof BuildServiceListSupportedStacksInput.Type;
+  ) as unknown as Schema.Codec<BuildServiceListSupportedStacksInput>;
 
 // Output Schema
+export interface BuildServiceListSupportedStacksOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BuildServiceListSupportedStacksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3337,13 +5192,17 @@ export const BuildServiceListSupportedStacksOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BuildServiceListSupportedStacksOutput =
-  typeof BuildServiceListSupportedStacksOutput.Type;
+  }) as unknown as Schema.Codec<BuildServiceListSupportedStacksOutput>;
 
 // The operation
 /**
  * Get all supported stacks.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param buildServiceName - The name of the build service resource.
  */
 export const BuildServiceListSupportedStacks =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3351,8 +5210,34 @@ export const BuildServiceListSupportedStacks =
     outputSchema: BuildServiceListSupportedStacksOutput,
   }));
 // Input Schema
+export interface CertificatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  certificateName: string;
+  properties?: {
+    type: string;
+    thumbprint?: string;
+    issuer?: string;
+    issuedDate?: string;
+    expirationDate?: string;
+    activateDate?: string;
+    subjectName?: string;
+    dnsNames?: string[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+  };
+}
 export const CertificatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         type: Schema.String,
@@ -3380,11 +5265,22 @@ export const CertificatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CertificatesCreateOrUpdateInput =
-  typeof CertificatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CertificatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CertificatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3404,13 +5300,17 @@ export const CertificatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificatesCreateOrUpdateOutput =
-  typeof CertificatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3419,41 +5319,79 @@ export const CertificatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  certificateName: string;
+}
 export const CertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    certificateName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CertificatesDeleteInput = typeof CertificatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CertificatesDeleteInput>;
 
 // Output Schema
-export const CertificatesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CertificatesDeleteOutput = typeof CertificatesDeleteOutput.Type;
+export type CertificatesDeleteOutput = void;
+export const CertificatesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CertificatesDeleteOutput>;
 
 // The operation
 /**
  * Delete the certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesDeleteInput,
   outputSchema: CertificatesDeleteOutput,
 }));
 // Input Schema
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface CertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  certificateName: string;
+}
+export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  certificateName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates/{certificateName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type CertificatesGetInput = typeof CertificatesGetInput.Type;
+) as unknown as Schema.Codec<CertificatesGetInput>;
 
 // Output Schema
+export interface CertificatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3472,30 +5410,57 @@ export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
+}) as unknown as Schema.Codec<CertificatesGetOutput>;
 
 // The operation
 /**
  * Get the certificate resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param certificateName - The name of the certificate resource.
  */
 export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
-export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface CertificatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const CertificatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates",
     apiVersion: "2023-12-01",
   }),
-);
-export type CertificatesListInput = typeof CertificatesListInput.Type;
+) as unknown as Schema.Codec<CertificatesListInput>;
 
 // Output Schema
+export interface CertificatesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -3533,30 +5498,53 @@ export const CertificatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type CertificatesListOutput = typeof CertificatesListOutput.Type;
+) as unknown as Schema.Codec<CertificatesListOutput>;
 
 // The operation
 /**
  * List all the certificates of one user.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const CertificatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CertificatesListInput,
   outputSchema: CertificatesListOutput,
 }));
 // Input Schema
-export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ConfigServersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ConfigServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
     apiVersion: "2023-12-01",
   }),
-);
-export type ConfigServersGetInput = typeof ConfigServersGetInput.Type;
+) as unknown as Schema.Codec<ConfigServersGetInput>;
 
 // Output Schema
+export interface ConfigServersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3577,20 +5565,67 @@ export const ConfigServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ConfigServersGetOutput = typeof ConfigServersGetOutput.Type;
+) as unknown as Schema.Codec<ConfigServersGetOutput>;
 
 // The operation
 /**
  * Get the config server and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ConfigServersGetInput,
   outputSchema: ConfigServersGetOutput,
 }));
 // Input Schema
+export interface ConfigServersUpdatePatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?:
+      | "NotAvailable"
+      | "Deleted"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    error?: { code?: string; message?: string };
+    configServer?: {
+      gitProperty?: {
+        repositories?: {
+          name: string;
+          pattern?: string[];
+          uri: string;
+          label?: string;
+          searchPaths?: string[];
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          hostKey?: string;
+          hostKeyAlgorithm?: string;
+          privateKey?: string | Redacted.Redacted<string>;
+          strictHostKeyChecking?: boolean;
+        }[];
+        uri: string;
+        label?: string;
+        searchPaths?: string[];
+        username?: string;
+        password?: string | Redacted.Redacted<string>;
+        hostKey?: string;
+        hostKeyAlgorithm?: string;
+        privateKey?: string | Redacted.Redacted<string>;
+        strictHostKeyChecking?: boolean;
+      };
+    };
+  };
+}
 export const ConfigServersUpdatePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3650,11 +5685,22 @@ export const ConfigServersUpdatePatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigServersUpdatePatchInput =
-  typeof ConfigServersUpdatePatchInput.Type;
+  ) as unknown as Schema.Codec<ConfigServersUpdatePatchInput>;
 
 // Output Schema
+export interface ConfigServersUpdatePatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigServersUpdatePatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3674,13 +5720,16 @@ export const ConfigServersUpdatePatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigServersUpdatePatchOutput =
-  typeof ConfigServersUpdatePatchOutput.Type;
+  }) as unknown as Schema.Codec<ConfigServersUpdatePatchOutput>;
 
 // The operation
 /**
  * Update the config server.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3689,8 +5738,51 @@ export const ConfigServersUpdatePatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigServersUpdatePutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?:
+      | "NotAvailable"
+      | "Deleted"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    error?: { code?: string; message?: string };
+    configServer?: {
+      gitProperty?: {
+        repositories?: {
+          name: string;
+          pattern?: string[];
+          uri: string;
+          label?: string;
+          searchPaths?: string[];
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          hostKey?: string;
+          hostKeyAlgorithm?: string;
+          privateKey?: string | Redacted.Redacted<string>;
+          strictHostKeyChecking?: boolean;
+        }[];
+        uri: string;
+        label?: string;
+        searchPaths?: string[];
+        username?: string;
+        password?: string | Redacted.Redacted<string>;
+        hostKey?: string;
+        hostKeyAlgorithm?: string;
+        privateKey?: string | Redacted.Redacted<string>;
+        strictHostKeyChecking?: boolean;
+      };
+    };
+  };
+}
 export const ConfigServersUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3750,11 +5842,22 @@ export const ConfigServersUpdatePutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigServersUpdatePutInput =
-  typeof ConfigServersUpdatePutInput.Type;
+  ) as unknown as Schema.Codec<ConfigServersUpdatePutInput>;
 
 // Output Schema
+export interface ConfigServersUpdatePutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigServersUpdatePutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3774,13 +5877,16 @@ export const ConfigServersUpdatePutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigServersUpdatePutOutput =
-  typeof ConfigServersUpdatePutOutput.Type;
+  }) as unknown as Schema.Codec<ConfigServersUpdatePutOutput>;
 
 // The operation
 /**
  * Update the config server.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3789,8 +5895,40 @@ export const ConfigServersUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigServersValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gitProperty?: {
+    repositories?: {
+      name: string;
+      pattern?: string[];
+      uri: string;
+      label?: string;
+      searchPaths?: string[];
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+      hostKey?: string;
+      hostKeyAlgorithm?: string;
+      privateKey?: string | Redacted.Redacted<string>;
+      strictHostKeyChecking?: boolean;
+    }[];
+    uri: string;
+    label?: string;
+    searchPaths?: string[];
+    username?: string;
+    password?: string | Redacted.Redacted<string>;
+    hostKey?: string;
+    hostKeyAlgorithm?: string;
+    privateKey?: string | Redacted.Redacted<string>;
+    strictHostKeyChecking?: boolean;
+  };
+}
 export const ConfigServersValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     gitProperty: Schema.optional(
       Schema.Struct({
         repositories: Schema.optional(
@@ -3827,10 +5965,13 @@ export const ConfigServersValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/validate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigServersValidateInput = typeof ConfigServersValidateInput.Type;
+  ) as unknown as Schema.Codec<ConfigServersValidateInput>;
 
 // Output Schema
+export interface ConfigServersValidateOutput {
+  isValid?: boolean;
+  details?: { name?: string; uri?: string; messages?: string[] }[];
+}
 export const ConfigServersValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
@@ -3843,13 +5984,16 @@ export const ConfigServersValidateOutput =
         }),
       ),
     ),
-  });
-export type ConfigServersValidateOutput =
-  typeof ConfigServersValidateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigServersValidateOutput>;
 
 // The operation
 /**
  * Check if the config server settings are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3858,8 +6002,52 @@ export const ConfigServersValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  configurationServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    generation?: "Gen1" | "Gen2";
+    resourceRequests?: {
+      cpu?: string;
+      memory?: string;
+      instanceCount?: number;
+    };
+    instances?: { name?: string; status?: string }[];
+    settings?: {
+      gitProperty?: {
+        repositories?: {
+          name: string;
+          patterns: string[];
+          uri: string;
+          label: string;
+          searchPaths?: string[];
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          hostKey?: string;
+          hostKeyAlgorithm?: string;
+          privateKey?: string | Redacted.Redacted<string>;
+          strictHostKeyChecking?: boolean;
+          gitImplementation?: "go-git" | "libgit2";
+          caCertResourceId?: string;
+        }[];
+      };
+    };
+  };
+}
 export const ConfigurationServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -3924,11 +6112,22 @@ export const ConfigurationServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesCreateOrUpdateInput =
-  typeof ConfigurationServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3948,13 +6147,17 @@ export const ConfigurationServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationServicesCreateOrUpdateOutput =
-  typeof ConfigurationServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Application Configuration Service or update the existing Application Configuration Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3962,26 +6165,40 @@ export const ConfigurationServicesCreateOrUpdate =
     outputSchema: ConfigurationServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  configurationServiceName: string;
+}
 export const ConfigurationServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesDeleteInput =
-  typeof ConfigurationServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesDeleteInput>;
 
 // Output Schema
+export type ConfigurationServicesDeleteOutput = void;
 export const ConfigurationServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationServicesDeleteOutput =
-  typeof ConfigurationServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationServicesDeleteOutput>;
 
 // The operation
 /**
  * Disable the default Application Configuration Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3990,18 +6207,40 @@ export const ConfigurationServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  configurationServiceName: string;
+}
 export const ConfigurationServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesGetInput =
-  typeof ConfigurationServicesGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesGetInput>;
 
 // Output Schema
+export interface ConfigurationServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4021,13 +6260,17 @@ export const ConfigurationServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationServicesGetOutput =
-  typeof ConfigurationServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationServicesGetOutput>;
 
 // The operation
 /**
  * Get the Application Configuration Service and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4036,18 +6279,41 @@ export const ConfigurationServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ConfigurationServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesListInput =
-  typeof ConfigurationServicesListInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesListInput>;
 
 // Output Schema
+export interface ConfigurationServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationServicesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4084,13 +6350,16 @@ export const ConfigurationServicesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationServicesListOutput =
-  typeof ConfigurationServicesListOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationServicesListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4099,8 +6368,35 @@ export const ConfigurationServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationServicesValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  configurationServiceName: string;
+  gitProperty?: {
+    repositories?: {
+      name: string;
+      patterns: string[];
+      uri: string;
+      label: string;
+      searchPaths?: string[];
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+      hostKey?: string;
+      hostKeyAlgorithm?: string;
+      privateKey?: string | Redacted.Redacted<string>;
+      strictHostKeyChecking?: boolean;
+      gitImplementation?: "go-git" | "libgit2";
+      caCertResourceId?: string;
+    }[];
+  };
+}
 export const ConfigurationServicesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     gitProperty: Schema.optional(
       Schema.Struct({
         repositories: Schema.optional(
@@ -4132,11 +6428,15 @@ export const ConfigurationServicesValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesValidateInput =
-  typeof ConfigurationServicesValidateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesValidateInput>;
 
 // Output Schema
+export interface ConfigurationServicesValidateOutput {
+  gitPropertyValidationResult?: {
+    isValid?: boolean;
+    gitReposValidationResult?: { name?: string; messages?: string[] }[];
+  };
+}
 export const ConfigurationServicesValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitPropertyValidationResult: Schema.optional(
@@ -4152,13 +6452,17 @@ export const ConfigurationServicesValidateOutput =
         ),
       }),
     ),
-  });
-export type ConfigurationServicesValidateOutput =
-  typeof ConfigurationServicesValidateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationServicesValidateOutput>;
 
 // The operation
 /**
  * Check if the Application Configuration Service settings are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesValidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4166,8 +6470,52 @@ export const ConfigurationServicesValidate =
     outputSchema: ConfigurationServicesValidateOutput,
   }));
 // Input Schema
+export interface ConfigurationServicesValidateResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  configurationServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    generation?: "Gen1" | "Gen2";
+    resourceRequests?: {
+      cpu?: string;
+      memory?: string;
+      instanceCount?: number;
+    };
+    instances?: { name?: string; status?: string }[];
+    settings?: {
+      gitProperty?: {
+        repositories?: {
+          name: string;
+          patterns: string[];
+          uri: string;
+          label: string;
+          searchPaths?: string[];
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          hostKey?: string;
+          hostKeyAlgorithm?: string;
+          privateKey?: string | Redacted.Redacted<string>;
+          strictHostKeyChecking?: boolean;
+          gitImplementation?: "go-git" | "libgit2";
+          caCertResourceId?: string;
+        }[];
+      };
+    };
+  };
+}
 export const ConfigurationServicesValidateResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    configurationServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -4232,11 +6580,15 @@ export const ConfigurationServicesValidateResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validateResource",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ConfigurationServicesValidateResourceInput =
-  typeof ConfigurationServicesValidateResourceInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationServicesValidateResourceInput>;
 
 // Output Schema
+export interface ConfigurationServicesValidateResourceOutput {
+  gitPropertyValidationResult?: {
+    isValid?: boolean;
+    gitReposValidationResult?: { name?: string; messages?: string[] }[];
+  };
+}
 export const ConfigurationServicesValidateResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     gitPropertyValidationResult: Schema.optional(
@@ -4252,13 +6604,17 @@ export const ConfigurationServicesValidateResourceOutput =
         ),
       }),
     ),
-  });
-export type ConfigurationServicesValidateResourceOutput =
-  typeof ConfigurationServicesValidateResourceOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationServicesValidateResourceOutput>;
 
 // The operation
 /**
  * Check if the Application Configuration Service resource is valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param configurationServiceName - The name of Application Configuration Service.
  */
 export const ConfigurationServicesValidateResource =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4266,8 +6622,28 @@ export const ConfigurationServicesValidateResource =
     outputSchema: ConfigurationServicesValidateResourceOutput,
   }));
 // Input Schema
+export interface ContainerRegistriesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  containerRegistryName: string;
+  properties?: {
+    credentials: { type: string };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+  };
+}
 export const ContainerRegistriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         credentials: Schema.Struct({
@@ -4291,11 +6667,22 @@ export const ContainerRegistriesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainerRegistriesCreateOrUpdateInput =
-  typeof ContainerRegistriesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ContainerRegistriesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ContainerRegistriesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContainerRegistriesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4315,13 +6702,17 @@ export const ContainerRegistriesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContainerRegistriesCreateOrUpdateOutput =
-  typeof ContainerRegistriesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ContainerRegistriesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update container registry resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4329,26 +6720,40 @@ export const ContainerRegistriesCreateOrUpdate =
     outputSchema: ContainerRegistriesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ContainerRegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  containerRegistryName: string;
+}
 export const ContainerRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainerRegistriesDeleteInput =
-  typeof ContainerRegistriesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ContainerRegistriesDeleteInput>;
 
 // Output Schema
+export type ContainerRegistriesDeleteOutput = void;
 export const ContainerRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContainerRegistriesDeleteOutput =
-  typeof ContainerRegistriesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainerRegistriesDeleteOutput>;
 
 // The operation
 /**
  * Delete a container registry resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4357,18 +6762,40 @@ export const ContainerRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerRegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  containerRegistryName: string;
+}
 export const ContainerRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainerRegistriesGetInput =
-  typeof ContainerRegistriesGetInput.Type;
+  ) as unknown as Schema.Codec<ContainerRegistriesGetInput>;
 
 // Output Schema
+export interface ContainerRegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContainerRegistriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4388,13 +6815,17 @@ export const ContainerRegistriesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContainerRegistriesGetOutput =
-  typeof ContainerRegistriesGetOutput.Type;
+  }) as unknown as Schema.Codec<ContainerRegistriesGetOutput>;
 
 // The operation
 /**
  * Get the container registries resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4403,18 +6834,41 @@ export const ContainerRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerRegistriesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ContainerRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainerRegistriesListInput =
-  typeof ContainerRegistriesListInput.Type;
+  ) as unknown as Schema.Codec<ContainerRegistriesListInput>;
 
 // Output Schema
+export interface ContainerRegistriesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContainerRegistriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4451,13 +6905,16 @@ export const ContainerRegistriesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContainerRegistriesListOutput =
-  typeof ContainerRegistriesListOutput.Type;
+  }) as unknown as Schema.Codec<ContainerRegistriesListOutput>;
 
 // The operation
 /**
  * List container registries resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4466,8 +6923,26 @@ export const ContainerRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainerRegistriesValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  containerRegistryName: string;
+  credentials: { type: string };
+  provisioningState?:
+    | "Creating"
+    | "Updating"
+    | "Succeeded"
+    | "Failed"
+    | "Deleting"
+    | "Canceled";
+}
 export const ContainerRegistriesValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    containerRegistryName: Schema.String.pipe(T.PathParam()),
     credentials: Schema.Struct({
       type: Schema.String,
     }),
@@ -4487,22 +6962,28 @@ export const ContainerRegistriesValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}/validate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainerRegistriesValidateInput =
-  typeof ContainerRegistriesValidateInput.Type;
+  ) as unknown as Schema.Codec<ContainerRegistriesValidateInput>;
 
 // Output Schema
+export interface ContainerRegistriesValidateOutput {
+  isValid?: boolean;
+  message?: string;
+}
 export const ContainerRegistriesValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
-  });
-export type ContainerRegistriesValidateOutput =
-  typeof ContainerRegistriesValidateOutput.Type;
+  }) as unknown as Schema.Codec<ContainerRegistriesValidateOutput>;
 
 // The operation
 /**
  * Check if the container registry properties are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param containerRegistryName - The name of the container registry.
  */
 export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4511,8 +6992,31 @@ export const ContainerRegistriesValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomDomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  domainName: string;
+  properties?: {
+    thumbprint?: string;
+    appName?: string;
+    certName?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+  };
+}
 export const CustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -4535,11 +7039,22 @@ export const CustomDomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomDomainsCreateOrUpdateInput =
-  typeof CustomDomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomDomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CustomDomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4559,13 +7074,18 @@ export const CustomDomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomDomainsCreateOrUpdateOutput =
-  typeof CustomDomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomDomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4574,42 +7094,84 @@ export const CustomDomainsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  domainName: string;
+}
 export const CustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomDomainsDeleteInput = typeof CustomDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CustomDomainsDeleteInput>;
 
 // Output Schema
+export type CustomDomainsDeleteOutput = void;
 export const CustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomDomainsDeleteOutput = typeof CustomDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomDomainsDeleteOutput>;
 
 // The operation
 /**
  * Delete the custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsDeleteInput,
   outputSchema: CustomDomainsDeleteOutput,
 }));
 // Input Schema
-export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface CustomDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  domainName: string;
+}
+export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  domainName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type CustomDomainsGetInput = typeof CustomDomainsGetInput.Type;
+) as unknown as Schema.Codec<CustomDomainsGetInput>;
 
 // Output Schema
+export interface CustomDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomDomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4630,30 +7192,62 @@ export const CustomDomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type CustomDomainsGetOutput = typeof CustomDomainsGetOutput.Type;
+) as unknown as Schema.Codec<CustomDomainsGetOutput>;
 
 // The operation
 /**
  * Get the custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsGetInput,
   outputSchema: CustomDomainsGetOutput,
 }));
 // Input Schema
+export interface CustomDomainsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+}
 export const CustomDomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains",
     apiVersion: "2023-12-01",
   }),
-);
-export type CustomDomainsListInput = typeof CustomDomainsListInput.Type;
+) as unknown as Schema.Codec<CustomDomainsListInput>;
 
 // Output Schema
+export interface CustomDomainsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4690,20 +7284,48 @@ export const CustomDomainsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CustomDomainsListOutput = typeof CustomDomainsListOutput.Type;
+  }) as unknown as Schema.Codec<CustomDomainsListOutput>;
 
 // The operation
 /**
  * List the custom domains of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  */
 export const CustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsListInput,
   outputSchema: CustomDomainsListOutput,
 }));
 // Input Schema
+export interface CustomDomainsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  domainName: string;
+  properties?: {
+    thumbprint?: string;
+    appName?: string;
+    certName?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+  };
+}
 export const CustomDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -4726,10 +7348,22 @@ export const CustomDomainsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomDomainsUpdateInput = typeof CustomDomainsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomDomainsUpdateInput>;
 
 // Output Schema
+export interface CustomDomainsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomDomainsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4749,20 +7383,63 @@ export const CustomDomainsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomDomainsUpdateOutput = typeof CustomDomainsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomDomainsUpdateOutput>;
 
 // The operation
 /**
  * Update custom domain of one lifecycle application.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param domainName - The name of the custom domain resource.
  */
 export const CustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsUpdateInput,
   outputSchema: CustomDomainsUpdateOutput,
 }));
 // Input Schema
+export interface CustomizedAcceleratorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  customizedAcceleratorName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    acceleratorType?: "Accelerator" | "Fragment";
+    displayName?: string;
+    description?: string;
+    iconUrl?: string;
+    acceleratorTags?: string[];
+    imports?: string[];
+    gitRepository: {
+      url: string;
+      intervalInSeconds?: number;
+      branch?: string;
+      commit?: string;
+      gitTag?: string;
+      authSetting: { authType: string };
+      subPath?: string;
+    };
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const CustomizedAcceleratorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -4809,11 +7486,22 @@ export const CustomizedAcceleratorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomizedAcceleratorsCreateOrUpdateInput =
-  typeof CustomizedAcceleratorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomizedAcceleratorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CustomizedAcceleratorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomizedAcceleratorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4833,13 +7521,18 @@ export const CustomizedAcceleratorsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomizedAcceleratorsCreateOrUpdateOutput =
-  typeof CustomizedAcceleratorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomizedAcceleratorsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4847,26 +7540,43 @@ export const CustomizedAcceleratorsCreateOrUpdate =
     outputSchema: CustomizedAcceleratorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CustomizedAcceleratorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  customizedAcceleratorName: string;
+}
 export const CustomizedAcceleratorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomizedAcceleratorsDeleteInput =
-  typeof CustomizedAcceleratorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CustomizedAcceleratorsDeleteInput>;
 
 // Output Schema
+export type CustomizedAcceleratorsDeleteOutput = void;
 export const CustomizedAcceleratorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomizedAcceleratorsDeleteOutput =
-  typeof CustomizedAcceleratorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomizedAcceleratorsDeleteOutput>;
 
 // The operation
 /**
  * Delete the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4874,18 +7584,42 @@ export const CustomizedAcceleratorsDelete =
     outputSchema: CustomizedAcceleratorsDeleteOutput,
   }));
 // Input Schema
+export interface CustomizedAcceleratorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  customizedAcceleratorName: string;
+}
 export const CustomizedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomizedAcceleratorsGetInput =
-  typeof CustomizedAcceleratorsGetInput.Type;
+  ) as unknown as Schema.Codec<CustomizedAcceleratorsGetInput>;
 
 // Output Schema
+export interface CustomizedAcceleratorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CustomizedAcceleratorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4905,13 +7639,18 @@ export const CustomizedAcceleratorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomizedAcceleratorsGetOutput =
-  typeof CustomizedAcceleratorsGetOutput.Type;
+  }) as unknown as Schema.Codec<CustomizedAcceleratorsGetOutput>;
 
 // The operation
 /**
  * Get the customized accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4920,18 +7659,43 @@ export const CustomizedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomizedAcceleratorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+}
 export const CustomizedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomizedAcceleratorsListInput =
-  typeof CustomizedAcceleratorsListInput.Type;
+  ) as unknown as Schema.Codec<CustomizedAcceleratorsListInput>;
 
 // Output Schema
+export interface CustomizedAcceleratorsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CustomizedAcceleratorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4968,13 +7732,17 @@ export const CustomizedAcceleratorsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CustomizedAcceleratorsListOutput =
-  typeof CustomizedAcceleratorsListOutput.Type;
+  }) as unknown as Schema.Codec<CustomizedAcceleratorsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all customized accelerators.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4983,8 +7751,42 @@ export const CustomizedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomizedAcceleratorsValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  customizedAcceleratorName: string;
+  provisioningState?:
+    | "Creating"
+    | "Updating"
+    | "Succeeded"
+    | "Failed"
+    | "Deleting"
+    | "Canceled";
+  acceleratorType?: "Accelerator" | "Fragment";
+  displayName?: string;
+  description?: string;
+  iconUrl?: string;
+  acceleratorTags?: string[];
+  imports?: string[];
+  gitRepository: {
+    url: string;
+    intervalInSeconds?: number;
+    branch?: string;
+    commit?: string;
+    gitTag?: string;
+    authSetting: { authType: string };
+    subPath?: string;
+  };
+}
 export const CustomizedAcceleratorsValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    customizedAcceleratorName: Schema.String.pipe(T.PathParam()),
     provisioningState: Schema.optional(
       Schema.Literals([
         "Creating",
@@ -5020,22 +7822,29 @@ export const CustomizedAcceleratorsValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}/validate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type CustomizedAcceleratorsValidateInput =
-  typeof CustomizedAcceleratorsValidateInput.Type;
+  ) as unknown as Schema.Codec<CustomizedAcceleratorsValidateInput>;
 
 // Output Schema
+export interface CustomizedAcceleratorsValidateOutput {
+  state?: "Valid" | "Invalid";
+  errorMessage?: string;
+}
 export const CustomizedAcceleratorsValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.Literals(["Valid", "Invalid"])),
     errorMessage: Schema.optional(Schema.String),
-  });
-export type CustomizedAcceleratorsValidateOutput =
-  typeof CustomizedAcceleratorsValidateOutput.Type;
+  }) as unknown as Schema.Codec<CustomizedAcceleratorsValidateOutput>;
 
 // The operation
 /**
  * Check the customized accelerator are valid.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param customizedAcceleratorName - The name of the customized accelerator.
  */
 export const CustomizedAcceleratorsValidate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5043,8 +7852,76 @@ export const CustomizedAcceleratorsValidate =
     outputSchema: CustomizedAcceleratorsValidateOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  properties?: {
+    source?: { type: string; version?: string };
+    deploymentSettings?: {
+      resourceRequests?: { cpu?: string; memory?: string };
+      environmentVariables?: Record<string, string>;
+      apms?: { resourceId: string }[];
+      addonConfigs?: Record<string, unknown>;
+      livenessProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      readinessProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      startupProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      terminationGracePeriodSeconds?: number;
+      containerProbeSettings?: { disableProbe?: boolean };
+    };
+    provisioningState?: "Creating" | "Updating" | "Succeeded" | "Failed";
+    status?: "Stopped" | "Running";
+    active?: boolean;
+    instances?: {
+      name?: string;
+      status?: string;
+      reason?: string;
+      discoveryStatus?: string;
+      startTime?: string;
+      zone?: string;
+    }[];
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         source: Schema.optional(
@@ -5171,11 +8048,22 @@ export const DeploymentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateInput =
-  typeof DeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5195,13 +8083,18 @@ export const DeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateOutput =
-  typeof DeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a new Deployment or update an exiting Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5210,53 +8103,93 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
+) as unknown as Schema.Codec<DeploymentsDeleteInput>;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
+export type DeploymentsDeleteOutput = void;
+export const DeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete a Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
+export interface DeploymentsDisableRemoteDebuggingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const DeploymentsDisableRemoteDebuggingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/disableRemoteDebugging",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsDisableRemoteDebuggingInput =
-  typeof DeploymentsDisableRemoteDebuggingInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsDisableRemoteDebuggingInput>;
 
 // Output Schema
+export interface DeploymentsDisableRemoteDebuggingOutput {
+  port?: number;
+  enabled?: boolean;
+}
 export const DeploymentsDisableRemoteDebuggingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type DeploymentsDisableRemoteDebuggingOutput =
-  typeof DeploymentsDisableRemoteDebuggingOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsDisableRemoteDebuggingOutput>;
 
 // The operation
 /**
  * Disable remote debugging.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsDisableRemoteDebugging =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5264,8 +8197,21 @@ export const DeploymentsDisableRemoteDebugging =
     outputSchema: DeploymentsDisableRemoteDebuggingOutput,
   }));
 // Input Schema
+export interface DeploymentsEnableRemoteDebuggingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  port?: number;
+}
 export const DeploymentsEnableRemoteDebuggingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     port: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
@@ -5273,22 +8219,29 @@ export const DeploymentsEnableRemoteDebuggingInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/enableRemoteDebugging",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsEnableRemoteDebuggingInput =
-  typeof DeploymentsEnableRemoteDebuggingInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsEnableRemoteDebuggingInput>;
 
 // Output Schema
+export interface DeploymentsEnableRemoteDebuggingOutput {
+  port?: number;
+  enabled?: boolean;
+}
 export const DeploymentsEnableRemoteDebuggingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type DeploymentsEnableRemoteDebuggingOutput =
-  typeof DeploymentsEnableRemoteDebuggingOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsEnableRemoteDebuggingOutput>;
 
 // The operation
 /**
  * Enable remote debugging.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsEnableRemoteDebugging =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5296,8 +8249,23 @@ export const DeploymentsEnableRemoteDebugging =
     outputSchema: DeploymentsEnableRemoteDebuggingOutput,
   }));
 // Input Schema
+export interface DeploymentsGenerateHeapDumpInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  appInstance?: string;
+  filePath?: string;
+  duration?: string;
+}
 export const DeploymentsGenerateHeapDumpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5307,19 +8275,23 @@ export const DeploymentsGenerateHeapDumpInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateHeapDump",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsGenerateHeapDumpInput =
-  typeof DeploymentsGenerateHeapDumpInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGenerateHeapDumpInput>;
 
 // Output Schema
+export type DeploymentsGenerateHeapDumpOutput = void;
 export const DeploymentsGenerateHeapDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsGenerateHeapDumpOutput =
-  typeof DeploymentsGenerateHeapDumpOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsGenerateHeapDumpOutput>;
 
 // The operation
 /**
  * Generate Heap Dump
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5328,8 +8300,23 @@ export const DeploymentsGenerateHeapDump = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsGenerateThreadDumpInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  appInstance?: string;
+  filePath?: string;
+  duration?: string;
+}
 export const DeploymentsGenerateThreadDumpInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5339,19 +8326,23 @@ export const DeploymentsGenerateThreadDumpInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/generateThreadDump",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsGenerateThreadDumpInput =
-  typeof DeploymentsGenerateThreadDumpInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGenerateThreadDumpInput>;
 
 // Output Schema
+export type DeploymentsGenerateThreadDumpOutput = void;
 export const DeploymentsGenerateThreadDumpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsGenerateThreadDumpOutput =
-  typeof DeploymentsGenerateThreadDumpOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsGenerateThreadDumpOutput>;
 
 // The operation
 /**
  * Generate Thread Dump
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGenerateThreadDump =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5359,18 +8350,41 @@ export const DeploymentsGenerateThreadDump =
     outputSchema: DeploymentsGenerateThreadDumpOutput,
   }));
 // Input Schema
-export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface DeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
+export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
+) as unknown as Schema.Codec<DeploymentsGetInput>;
 
 // Output Schema
+export interface DeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5389,40 +8403,65 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsGetOutput>;
 
 // The operation
 /**
  * Get a Deployment and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
+export interface DeploymentsGetLogFileUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetLogFileUrlInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getLogFileUrl",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsGetLogFileUrlInput =
-  typeof DeploymentsGetLogFileUrlInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetLogFileUrlInput>;
 
 // Output Schema
+export interface DeploymentsGetLogFileUrlOutput {
+  url: string;
+}
 export const DeploymentsGetLogFileUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.String,
-  });
-export type DeploymentsGetLogFileUrlOutput =
-  typeof DeploymentsGetLogFileUrlOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetLogFileUrlOutput>;
 
 // The operation
 /**
  * Get deployment log file URL
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGetLogFileUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5431,29 +8470,49 @@ export const DeploymentsGetLogFileUrl = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsGetRemoteDebuggingConfigInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetRemoteDebuggingConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/getRemoteDebuggingConfig",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsGetRemoteDebuggingConfigInput =
-  typeof DeploymentsGetRemoteDebuggingConfigInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetRemoteDebuggingConfigInput>;
 
 // Output Schema
+export interface DeploymentsGetRemoteDebuggingConfigOutput {
+  port?: number;
+  enabled?: boolean;
+}
 export const DeploymentsGetRemoteDebuggingConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     port: Schema.optional(Schema.Number),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type DeploymentsGetRemoteDebuggingConfigOutput =
-  typeof DeploymentsGetRemoteDebuggingConfigOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetRemoteDebuggingConfigOutput>;
 
 // The operation
 /**
  * Get remote debugging config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsGetRemoteDebuggingConfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5461,7 +8520,18 @@ export const DeploymentsGetRemoteDebuggingConfig =
     outputSchema: DeploymentsGetRemoteDebuggingConfigOutput,
   }));
 // Input Schema
+export interface DeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  version?: string;
+}
 export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
   version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -5469,10 +8539,25 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsListInput = typeof DeploymentsListInput.Type;
+) as unknown as Schema.Codec<DeploymentsListInput>;
 
 // Output Schema
+export interface DeploymentsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5508,13 +8593,17 @@ export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in an App.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
  * @param version - Version of the deployments to be listed
  */
 export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5522,8 +8611,18 @@ export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListOutput,
 }));
 // Input Schema
+export interface DeploymentsListForClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  version?: string;
+  $expand?: string;
+}
 export const DeploymentsListForClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     version: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -5532,11 +8631,25 @@ export const DeploymentsListForClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsListForClusterInput =
-  typeof DeploymentsListForClusterInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListForClusterInput>;
 
 // Output Schema
+export interface DeploymentsListForClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListForClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5573,14 +8686,16 @@ export const DeploymentsListForClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListForClusterOutput =
-  typeof DeploymentsListForClusterOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListForClusterOutput>;
 
 // The operation
 /**
  * List deployments for a certain service
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  * @param version - Version of the deployments to be listed
  * @param $expand - The expand expression to apply on the operation.
  */
@@ -5591,55 +8706,108 @@ export const DeploymentsListForCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const DeploymentsRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/restart",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsRestartInput = typeof DeploymentsRestartInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsRestartInput>;
 
 // Output Schema
-export const DeploymentsRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsRestartOutput = typeof DeploymentsRestartOutput.Type;
+export type DeploymentsRestartOutput = void;
+export const DeploymentsRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsRestartOutput>;
 
 // The operation
 /**
  * Restart the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsRestartInput,
   outputSchema: DeploymentsRestartOutput,
 }));
 // Input Schema
-export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface DeploymentsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
+export const DeploymentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/start",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsStartInput = typeof DeploymentsStartInput.Type;
+) as unknown as Schema.Codec<DeploymentsStartInput>;
 
 // Output Schema
-export const DeploymentsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsStartOutput = typeof DeploymentsStartOutput.Type;
+export type DeploymentsStartOutput = void;
+export const DeploymentsStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsStartOutput>;
 
 // The operation
 /**
  * Start the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartInput,
   outputSchema: DeploymentsStartOutput,
 }));
 // Input Schema
+export interface DeploymentsStartJFRInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  appInstance?: string;
+  filePath?: string;
+  duration?: string;
+}
 export const DeploymentsStartJFRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     appInstance: Schema.optional(Schema.String),
     filePath: Schema.optional(Schema.String),
     duration: Schema.optional(Schema.String),
@@ -5649,49 +8817,141 @@ export const DeploymentsStartJFRInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/startJFR",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeploymentsStartJFRInput = typeof DeploymentsStartJFRInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsStartJFRInput>;
 
 // Output Schema
+export type DeploymentsStartJFROutput = void;
 export const DeploymentsStartJFROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsStartJFROutput = typeof DeploymentsStartJFROutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsStartJFROutput>;
 
 // The operation
 /**
  * Start JFR
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStartJFR = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStartJFRInput,
   outputSchema: DeploymentsStartJFROutput,
 }));
 // Input Schema
-export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface DeploymentsStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+}
+export const DeploymentsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  appName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}/stop",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsStopInput = typeof DeploymentsStopInput.Type;
+) as unknown as Schema.Codec<DeploymentsStopInput>;
 
 // Output Schema
-export const DeploymentsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsStopOutput = typeof DeploymentsStopOutput.Type;
+export type DeploymentsStopOutput = void;
+export const DeploymentsStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsStopOutput>;
 
 // The operation
 /**
  * Stop the deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsStopInput,
   outputSchema: DeploymentsStopOutput,
 }));
 // Input Schema
+export interface DeploymentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  appName: string;
+  deploymentName: string;
+  properties?: {
+    source?: { type: string; version?: string };
+    deploymentSettings?: {
+      resourceRequests?: { cpu?: string; memory?: string };
+      environmentVariables?: Record<string, string>;
+      apms?: { resourceId: string }[];
+      addonConfigs?: Record<string, unknown>;
+      livenessProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      readinessProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      startupProbe?: {
+        probeAction?: {
+          type: "HTTPGetAction" | "TCPSocketAction" | "ExecAction";
+        };
+        disableProbe: boolean;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        timeoutSeconds?: number;
+        failureThreshold?: number;
+        successThreshold?: number;
+      };
+      terminationGracePeriodSeconds?: number;
+      containerProbeSettings?: { disableProbe?: boolean };
+    };
+    provisioningState?: "Creating" | "Updating" | "Succeeded" | "Failed";
+    status?: "Stopped" | "Running";
+    active?: boolean;
+    instances?: {
+      name?: string;
+      status?: string;
+      reason?: string;
+      discoveryStatus?: string;
+      startTime?: string;
+      zone?: string;
+    }[];
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    appName: Schema.String.pipe(T.PathParam()),
+    deploymentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         source: Schema.optional(
@@ -5819,10 +9079,22 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
+) as unknown as Schema.Codec<DeploymentsUpdateInput>;
 
 // Output Schema
+export interface DeploymentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5842,20 +9114,69 @@ export const DeploymentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsUpdateOutput>;
 
 // The operation
 /**
  * Operation to update an exiting Deployment.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param appName - The name of the App resource.
+ * @param deploymentName - The name of the Deployment resource.
  */
 export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsUpdateInput,
   outputSchema: DeploymentsUpdateOutput,
 }));
 // Input Schema
+export interface DevToolPortalsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  devToolPortalName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Canceled";
+    components?: {
+      name?: string;
+      resourceRequests?: {
+        cpu?: string;
+        memory?: string;
+        instanceCount?: number;
+      };
+      instances?: { name?: string; status?: string }[];
+    }[];
+    public?: boolean;
+    url?: string;
+    ssoProperties?: {
+      scopes?: string[];
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+      metadataUrl?: string;
+    };
+    features?: {
+      applicationAccelerator?: {
+        state?: "Enabled" | "Disabled";
+        route?: string;
+      };
+      applicationLiveView?: { state?: "Enabled" | "Disabled"; route?: string };
+    };
+  };
+}
 export const DevToolPortalsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -5928,11 +9249,22 @@ export const DevToolPortalsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevToolPortalsCreateOrUpdateInput =
-  typeof DevToolPortalsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevToolPortalsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DevToolPortalsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevToolPortalsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5952,13 +9284,17 @@ export const DevToolPortalsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevToolPortalsCreateOrUpdateOutput =
-  typeof DevToolPortalsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevToolPortalsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Dev Tool Portal or update the existing Dev Tool Portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5966,24 +9302,40 @@ export const DevToolPortalsCreateOrUpdate =
     outputSchema: DevToolPortalsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DevToolPortalsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  devToolPortalName: string;
+}
 export const DevToolPortalsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevToolPortalsDeleteInput = typeof DevToolPortalsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DevToolPortalsDeleteInput>;
 
 // Output Schema
+export type DevToolPortalsDeleteOutput = void;
 export const DevToolPortalsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevToolPortalsDeleteOutput = typeof DevToolPortalsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevToolPortalsDeleteOutput>;
 
 // The operation
 /**
  * Disable the default Dev Tool Portal.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5992,18 +9344,41 @@ export const DevToolPortalsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevToolPortalsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  devToolPortalName: string;
+}
 export const DevToolPortalsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    devToolPortalName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DevToolPortalsGetInput = typeof DevToolPortalsGetInput.Type;
+) as unknown as Schema.Codec<DevToolPortalsGetInput>;
 
 // Output Schema
+export interface DevToolPortalsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevToolPortalsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6023,29 +9398,58 @@ export const DevToolPortalsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevToolPortalsGetOutput = typeof DevToolPortalsGetOutput.Type;
+  }) as unknown as Schema.Codec<DevToolPortalsGetOutput>;
 
 // The operation
 /**
  * Get the Application Live  and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param devToolPortalName - The name of Dev Tool Portal.
  */
 export const DevToolPortalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsGetInput,
   outputSchema: DevToolPortalsGetOutput,
 }));
 // Input Schema
+export interface DevToolPortalsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const DevToolPortalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevToolPortalsListInput = typeof DevToolPortalsListInput.Type;
+  ) as unknown as Schema.Codec<DevToolPortalsListInput>;
 
 // Output Schema
+export interface DevToolPortalsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevToolPortalsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6082,20 +9486,37 @@ export const DevToolPortalsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevToolPortalsListOutput = typeof DevToolPortalsListOutput.Type;
+  }) as unknown as Schema.Codec<DevToolPortalsListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const DevToolPortalsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DevToolPortalsListInput,
   outputSchema: DevToolPortalsListOutput,
 }));
 // Input Schema
+export interface GatewayCustomDomainsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  domainName: string;
+  properties?: { thumbprint?: string };
+}
 export const GatewayCustomDomainsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         thumbprint: Schema.optional(Schema.String),
@@ -6107,11 +9528,22 @@ export const GatewayCustomDomainsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayCustomDomainsCreateOrUpdateInput =
-  typeof GatewayCustomDomainsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GatewayCustomDomainsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GatewayCustomDomainsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewayCustomDomainsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6131,13 +9563,18 @@ export const GatewayCustomDomainsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewayCustomDomainsCreateOrUpdateOutput =
-  typeof GatewayCustomDomainsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GatewayCustomDomainsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6145,26 +9582,43 @@ export const GatewayCustomDomainsCreateOrUpdate =
     outputSchema: GatewayCustomDomainsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GatewayCustomDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  domainName: string;
+}
 export const GatewayCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayCustomDomainsDeleteInput =
-  typeof GatewayCustomDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GatewayCustomDomainsDeleteInput>;
 
 // Output Schema
+export type GatewayCustomDomainsDeleteOutput = void;
 export const GatewayCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewayCustomDomainsDeleteOutput =
-  typeof GatewayCustomDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewayCustomDomainsDeleteOutput>;
 
 // The operation
 /**
  * Delete the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6173,18 +9627,42 @@ export const GatewayCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewayCustomDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  domainName: string;
+}
 export const GatewayCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    domainName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayCustomDomainsGetInput =
-  typeof GatewayCustomDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<GatewayCustomDomainsGetInput>;
 
 // Output Schema
+export interface GatewayCustomDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewayCustomDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6204,13 +9682,18 @@ export const GatewayCustomDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewayCustomDomainsGetOutput =
-  typeof GatewayCustomDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<GatewayCustomDomainsGetOutput>;
 
 // The operation
 /**
  * Get the Spring Cloud Gateway custom domain.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param domainName - The name of the Spring Cloud Gateway custom domain.
  */
 export const GatewayCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6219,18 +9702,43 @@ export const GatewayCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewayCustomDomainsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
 export const GatewayCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayCustomDomainsListInput =
-  typeof GatewayCustomDomainsListInput.Type;
+  ) as unknown as Schema.Codec<GatewayCustomDomainsListInput>;
 
 // Output Schema
+export interface GatewayCustomDomainsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GatewayCustomDomainsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6267,13 +9775,17 @@ export const GatewayCustomDomainsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GatewayCustomDomainsListOutput =
-  typeof GatewayCustomDomainsListOutput.Type;
+  }) as unknown as Schema.Codec<GatewayCustomDomainsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all Spring Cloud Gateway custom domains.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6282,8 +9794,45 @@ export const GatewayCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewayRouteConfigsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  routeConfigName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    appResourceId?: string;
+    openApi?: { uri?: string };
+    protocol?: "HTTP" | "HTTPS";
+    routes?: {
+      title?: string;
+      description?: string;
+      uri?: string;
+      ssoEnabled?: boolean;
+      tokenRelay?: boolean;
+      predicates?: string[];
+      filters?: string[];
+      order?: number;
+      tags?: string[];
+    }[];
+    ssoEnabled?: boolean;
+    predicates?: string[];
+    filters?: string[];
+  };
+}
 export const GatewayRouteConfigsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6328,11 +9877,22 @@ export const GatewayRouteConfigsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayRouteConfigsCreateOrUpdateInput =
-  typeof GatewayRouteConfigsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GatewayRouteConfigsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GatewayRouteConfigsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewayRouteConfigsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6352,13 +9912,18 @@ export const GatewayRouteConfigsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewayRouteConfigsCreateOrUpdateOutput =
-  typeof GatewayRouteConfigsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GatewayRouteConfigsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Spring Cloud Gateway route configs or update the existing Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6366,26 +9931,43 @@ export const GatewayRouteConfigsCreateOrUpdate =
     outputSchema: GatewayRouteConfigsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GatewayRouteConfigsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  routeConfigName: string;
+}
 export const GatewayRouteConfigsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayRouteConfigsDeleteInput =
-  typeof GatewayRouteConfigsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GatewayRouteConfigsDeleteInput>;
 
 // Output Schema
+export type GatewayRouteConfigsDeleteOutput = void;
 export const GatewayRouteConfigsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewayRouteConfigsDeleteOutput =
-  typeof GatewayRouteConfigsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewayRouteConfigsDeleteOutput>;
 
 // The operation
 /**
  * Delete the Spring Cloud Gateway route config.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6394,18 +9976,42 @@ export const GatewayRouteConfigsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewayRouteConfigsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  routeConfigName: string;
+}
 export const GatewayRouteConfigsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+    routeConfigName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayRouteConfigsGetInput =
-  typeof GatewayRouteConfigsGetInput.Type;
+  ) as unknown as Schema.Codec<GatewayRouteConfigsGetInput>;
 
 // Output Schema
+export interface GatewayRouteConfigsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewayRouteConfigsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6425,13 +10031,18 @@ export const GatewayRouteConfigsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewayRouteConfigsGetOutput =
-  typeof GatewayRouteConfigsGetOutput.Type;
+  }) as unknown as Schema.Codec<GatewayRouteConfigsGetOutput>;
 
 // The operation
 /**
  * Get the Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
+ * @param routeConfigName - The name of the Spring Cloud Gateway route config.
  */
 export const GatewayRouteConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6440,18 +10051,43 @@ export const GatewayRouteConfigsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewayRouteConfigsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
 export const GatewayRouteConfigsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewayRouteConfigsListInput =
-  typeof GatewayRouteConfigsListInput.Type;
+  ) as unknown as Schema.Codec<GatewayRouteConfigsListInput>;
 
 // Output Schema
+export interface GatewayRouteConfigsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GatewayRouteConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6488,13 +10124,17 @@ export const GatewayRouteConfigsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GatewayRouteConfigsListOutput =
-  typeof GatewayRouteConfigsListOutput.Type;
+  }) as unknown as Schema.Codec<GatewayRouteConfigsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all Spring Cloud Gateway route configs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6503,8 +10143,71 @@ export const GatewayRouteConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GatewaysCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting";
+    public?: boolean;
+    url?: string;
+    httpsOnly?: boolean;
+    ssoProperties?: {
+      scope?: string[];
+      clientId?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+      issuerUri?: string;
+    };
+    apiMetadataProperties?: {
+      title?: string;
+      description?: string;
+      documentation?: string;
+      version?: string;
+      serverUrl?: string;
+    };
+    corsProperties?: {
+      allowedOrigins?: string[];
+      allowedOriginPatterns?: string[];
+      allowedMethods?: string[];
+      allowedHeaders?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+      exposedHeaders?: string[];
+    };
+    clientAuth?: {
+      certificates?: string[];
+      certificateVerification?: "Enabled" | "Disabled";
+    };
+    apms?: { resourceId: string }[];
+    environmentVariables?: {
+      properties?: Record<string, string>;
+      secrets?: Record<string, string>;
+    };
+    resourceRequests?: { cpu?: string; memory?: string };
+    instances?: { name?: string; status?: string }[];
+    operatorProperties?: {
+      resourceRequests?: {
+        cpu?: string;
+        memory?: string;
+        instanceCount?: number;
+      };
+      instances?: { name?: string; status?: string }[];
+    };
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+}
 export const GatewaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6620,11 +10323,22 @@ export const GatewaysCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewaysCreateOrUpdateInput =
-  typeof GatewaysCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GatewaysCreateOrUpdateInput>;
 
 // Output Schema
+export interface GatewaysCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewaysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6644,13 +10358,17 @@ export const GatewaysCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GatewaysCreateOrUpdateOutput =
-  typeof GatewaysCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GatewaysCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6659,42 +10377,78 @@ export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GatewaysDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
+export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
+) as unknown as Schema.Codec<GatewaysDeleteInput>;
 
 // Output Schema
-export const GatewaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewaysDeleteOutput = typeof GatewaysDeleteOutput.Type;
+export type GatewaysDeleteOutput = void;
+export const GatewaysDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
 
 // The operation
 /**
  * Disable the default Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
 // Input Schema
-export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GatewaysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
+export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type GatewaysGetInput = typeof GatewaysGetInput.Type;
+) as unknown as Schema.Codec<GatewaysGetInput>;
 
 // Output Schema
+export interface GatewaysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6713,30 +10467,57 @@ export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GatewaysGetOutput = typeof GatewaysGetOutput.Type;
+}) as unknown as Schema.Codec<GatewaysGetOutput>;
 
 // The operation
 /**
  * Get the Spring Cloud Gateway and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
   outputSchema: GatewaysGetOutput,
 }));
 // Input Schema
-export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GatewaysListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const GatewaysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways",
     apiVersion: "2023-12-01",
   }),
-);
-export type GatewaysListInput = typeof GatewaysListInput.Type;
+) as unknown as Schema.Codec<GatewaysListInput>;
 
 // Output Schema
+export interface GatewaysListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GatewaysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -6772,38 +10553,59 @@ export const GatewaysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type GatewaysListOutput = typeof GatewaysListOutput.Type;
+}) as unknown as Schema.Codec<GatewaysListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const GatewaysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysListInput,
   outputSchema: GatewaysListOutput,
 }));
 // Input Schema
+export interface GatewaysListEnvSecretsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
 export const GatewaysListEnvSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/listEnvSecrets",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewaysListEnvSecretsInput =
-  typeof GatewaysListEnvSecretsInput.Type;
+  ) as unknown as Schema.Codec<GatewaysListEnvSecretsInput>;
 
 // Output Schema
+export type GatewaysListEnvSecretsOutput = Record<string, string>;
 export const GatewaysListEnvSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.String);
-export type GatewaysListEnvSecretsOutput =
-  typeof GatewaysListEnvSecretsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.String,
+  ) as unknown as Schema.Codec<GatewaysListEnvSecretsOutput>;
 
 // The operation
 /**
  * List sensitive environment variables of Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysListEnvSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6812,32 +10614,58 @@ export const GatewaysListEnvSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GatewaysRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+}
+export const GatewaysRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  gatewayName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/restart",
     apiVersion: "2023-12-01",
   }),
-);
-export type GatewaysRestartInput = typeof GatewaysRestartInput.Type;
+) as unknown as Schema.Codec<GatewaysRestartInput>;
 
 // Output Schema
-export const GatewaysRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GatewaysRestartOutput = typeof GatewaysRestartOutput.Type;
+export type GatewaysRestartOutput = void;
+export const GatewaysRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysRestartOutput>;
 
 // The operation
 /**
  * Restart the Spring Cloud Gateway.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GatewaysRestartInput,
   outputSchema: GatewaysRestartOutput,
 }));
 // Input Schema
+export interface GatewaysValidateDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  gatewayName: string;
+  name: string;
+}
 export const GatewaysValidateDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    gatewayName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
   }).pipe(
     T.Http({
@@ -6845,22 +10673,28 @@ export const GatewaysValidateDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/validateDomain",
       apiVersion: "2023-12-01",
     }),
-  );
-export type GatewaysValidateDomainInput =
-  typeof GatewaysValidateDomainInput.Type;
+  ) as unknown as Schema.Codec<GatewaysValidateDomainInput>;
 
 // Output Schema
+export interface GatewaysValidateDomainOutput {
+  isValid?: boolean;
+  message?: string;
+}
 export const GatewaysValidateDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.String),
-  });
-export type GatewaysValidateDomainOutput =
-  typeof GatewaysValidateDomainOutput.Type;
+  }) as unknown as Schema.Codec<GatewaysValidateDomainOutput>;
 
 // The operation
 /**
  * Check the domains are valid as well as not in use.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param gatewayName - The name of Spring Cloud Gateway.
  */
 export const GatewaysValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6869,17 +10703,38 @@ export const GatewaysValidateDomain = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoringSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const MonitoringSettingsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringSettingsGetInput = typeof MonitoringSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<MonitoringSettingsGetInput>;
 
 // Output Schema
+export interface MonitoringSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoringSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6899,13 +10754,16 @@ export const MonitoringSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoringSettingsGetOutput =
-  typeof MonitoringSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringSettingsGetOutput>;
 
 // The operation
 /**
  * Get the Monitoring Setting and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6914,8 +10772,24 @@ export const MonitoringSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoringSettingsUpdatePatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?: "NotAvailable" | "Failed" | "Succeeded" | "Updating";
+    error?: { code?: string; message?: string };
+    traceEnabled?: boolean;
+    appInsightsInstrumentationKey?: string;
+    appInsightsSamplingRate?: number;
+    appInsightsAgentVersions?: { java?: string };
+  };
+}
 export const MonitoringSettingsUpdatePatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -6943,11 +10817,22 @@ export const MonitoringSettingsUpdatePatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringSettingsUpdatePatchInput =
-  typeof MonitoringSettingsUpdatePatchInput.Type;
+  ) as unknown as Schema.Codec<MonitoringSettingsUpdatePatchInput>;
 
 // Output Schema
+export interface MonitoringSettingsUpdatePatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoringSettingsUpdatePatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6967,13 +10852,16 @@ export const MonitoringSettingsUpdatePatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoringSettingsUpdatePatchOutput =
-  typeof MonitoringSettingsUpdatePatchOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringSettingsUpdatePatchOutput>;
 
 // The operation
 /**
  * Update the Monitoring Setting.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsUpdatePatch =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6981,8 +10869,24 @@ export const MonitoringSettingsUpdatePatch =
     outputSchema: MonitoringSettingsUpdatePatchOutput,
   }));
 // Input Schema
+export interface MonitoringSettingsUpdatePutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?: "NotAvailable" | "Failed" | "Succeeded" | "Updating";
+    error?: { code?: string; message?: string };
+    traceEnabled?: boolean;
+    appInsightsInstrumentationKey?: string;
+    appInsightsSamplingRate?: number;
+    appInsightsAgentVersions?: { java?: string };
+  };
+}
 export const MonitoringSettingsUpdatePutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -7010,11 +10914,22 @@ export const MonitoringSettingsUpdatePutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/monitoringSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringSettingsUpdatePutInput =
-  typeof MonitoringSettingsUpdatePutInput.Type;
+  ) as unknown as Schema.Codec<MonitoringSettingsUpdatePutInput>;
 
 // Output Schema
+export interface MonitoringSettingsUpdatePutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoringSettingsUpdatePutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7034,13 +10949,16 @@ export const MonitoringSettingsUpdatePutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoringSettingsUpdatePutOutput =
-  typeof MonitoringSettingsUpdatePutOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringSettingsUpdatePutOutput>;
 
 // The operation
 /**
  * Update the Monitoring Setting.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const MonitoringSettingsUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7049,6 +10967,7 @@ export const MonitoringSettingsUpdatePut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -7057,10 +10976,50 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AppPlatform/operations",
     apiVersion: "2023-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    actionType?: "Internal";
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          category?: string;
+          aggregationType?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          fillGapWithZero?: boolean;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+          sourceMdmNamespace?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -7129,38 +11088,56 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists all of the available REST API operations of the Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PredefinedAcceleratorsDisableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  predefinedAcceleratorName: string;
+}
 export const PredefinedAcceleratorsDisableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
       apiVersion: "2023-12-01",
     }),
-  );
-export type PredefinedAcceleratorsDisableInput =
-  typeof PredefinedAcceleratorsDisableInput.Type;
+  ) as unknown as Schema.Codec<PredefinedAcceleratorsDisableInput>;
 
 // Output Schema
+export type PredefinedAcceleratorsDisableOutput = void;
 export const PredefinedAcceleratorsDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PredefinedAcceleratorsDisableOutput =
-  typeof PredefinedAcceleratorsDisableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PredefinedAcceleratorsDisableOutput>;
 
 // The operation
 /**
  * Disable predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsDisable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7168,26 +11145,43 @@ export const PredefinedAcceleratorsDisable =
     outputSchema: PredefinedAcceleratorsDisableOutput,
   }));
 // Input Schema
+export interface PredefinedAcceleratorsEnableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  predefinedAcceleratorName: string;
+}
 export const PredefinedAcceleratorsEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
       apiVersion: "2023-12-01",
     }),
-  );
-export type PredefinedAcceleratorsEnableInput =
-  typeof PredefinedAcceleratorsEnableInput.Type;
+  ) as unknown as Schema.Codec<PredefinedAcceleratorsEnableInput>;
 
 // Output Schema
+export type PredefinedAcceleratorsEnableOutput = void;
 export const PredefinedAcceleratorsEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PredefinedAcceleratorsEnableOutput =
-  typeof PredefinedAcceleratorsEnableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PredefinedAcceleratorsEnableOutput>;
 
 // The operation
 /**
  * Enable predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsEnable =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7195,18 +11189,42 @@ export const PredefinedAcceleratorsEnable =
     outputSchema: PredefinedAcceleratorsEnableOutput,
   }));
 // Input Schema
+export interface PredefinedAcceleratorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+  predefinedAcceleratorName: string;
+}
 export const PredefinedAcceleratorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+    predefinedAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type PredefinedAcceleratorsGetInput =
-  typeof PredefinedAcceleratorsGetInput.Type;
+  ) as unknown as Schema.Codec<PredefinedAcceleratorsGetInput>;
 
 // Output Schema
+export interface PredefinedAcceleratorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PredefinedAcceleratorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7226,13 +11244,18 @@ export const PredefinedAcceleratorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PredefinedAcceleratorsGetOutput =
-  typeof PredefinedAcceleratorsGetOutput.Type;
+  }) as unknown as Schema.Codec<PredefinedAcceleratorsGetOutput>;
 
 // The operation
 /**
  * Get the predefined accelerator.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
+ * @param predefinedAcceleratorName - The name of the predefined accelerator.
  */
 export const PredefinedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7241,18 +11264,43 @@ export const PredefinedAcceleratorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PredefinedAcceleratorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  applicationAcceleratorName: string;
+}
 export const PredefinedAcceleratorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    applicationAcceleratorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
       apiVersion: "2023-12-01",
     }),
-  );
-export type PredefinedAcceleratorsListInput =
-  typeof PredefinedAcceleratorsListInput.Type;
+  ) as unknown as Schema.Codec<PredefinedAcceleratorsListInput>;
 
 // Output Schema
+export interface PredefinedAcceleratorsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PredefinedAcceleratorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7289,13 +11337,17 @@ export const PredefinedAcceleratorsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PredefinedAcceleratorsListOutput =
-  typeof PredefinedAcceleratorsListOutput.Type;
+  }) as unknown as Schema.Codec<PredefinedAcceleratorsListOutput>;
 
 // The operation
 /**
  * Handle requests to list all predefined accelerators.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param applicationAcceleratorName - The name of the application accelerator.
  */
 export const PredefinedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7304,6 +11356,7 @@ export const PredefinedAcceleratorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RuntimeVersionsListRuntimeVersionsInput {}
 export const RuntimeVersionsListRuntimeVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -7311,11 +11364,16 @@ export const RuntimeVersionsListRuntimeVersionsInput =
       path: "/providers/Microsoft.AppPlatform/runtimeVersions",
       apiVersion: "2023-12-01",
     }),
-  );
-export type RuntimeVersionsListRuntimeVersionsInput =
-  typeof RuntimeVersionsListRuntimeVersionsInput.Type;
+  ) as unknown as Schema.Codec<RuntimeVersionsListRuntimeVersionsInput>;
 
 // Output Schema
+export interface RuntimeVersionsListRuntimeVersionsOutput {
+  value?: {
+    value?: "Java_8" | "Java_11" | "Java_17" | "NetCore_31";
+    platform?: "Java" | ".NET Core";
+    version?: string;
+  }[];
+}
 export const RuntimeVersionsListRuntimeVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7329,13 +11387,13 @@ export const RuntimeVersionsListRuntimeVersionsOutput =
         }),
       ),
     ),
-  });
-export type RuntimeVersionsListRuntimeVersionsOutput =
-  typeof RuntimeVersionsListRuntimeVersionsOutput.Type;
+  }) as unknown as Schema.Codec<RuntimeVersionsListRuntimeVersionsOutput>;
 
 // The operation
 /**
  * Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const RuntimeVersionsListRuntimeVersions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7343,18 +11401,40 @@ export const RuntimeVersionsListRuntimeVersions =
     outputSchema: RuntimeVersionsListRuntimeVersionsOutput,
   }));
 // Input Schema
+export interface ServiceRegistriesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  serviceRegistryName: string;
+}
 export const ServiceRegistriesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServiceRegistriesCreateOrUpdateInput =
-  typeof ServiceRegistriesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegistriesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServiceRegistriesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceRegistriesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7374,13 +11454,17 @@ export const ServiceRegistriesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceRegistriesCreateOrUpdateOutput =
-  typeof ServiceRegistriesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRegistriesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create the default Service Registry or update the existing Service Registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7388,26 +11472,40 @@ export const ServiceRegistriesCreateOrUpdate =
     outputSchema: ServiceRegistriesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ServiceRegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  serviceRegistryName: string;
+}
 export const ServiceRegistriesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServiceRegistriesDeleteInput =
-  typeof ServiceRegistriesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegistriesDeleteInput>;
 
 // Output Schema
+export type ServiceRegistriesDeleteOutput = void;
 export const ServiceRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceRegistriesDeleteOutput =
-  typeof ServiceRegistriesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceRegistriesDeleteOutput>;
 
 // The operation
 /**
  * Disable the default Service Registry.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7416,17 +11514,40 @@ export const ServiceRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceRegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  serviceRegistryName: string;
+}
 export const ServiceRegistriesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    serviceRegistryName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServiceRegistriesGetInput = typeof ServiceRegistriesGetInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegistriesGetInput>;
 
 // Output Schema
+export interface ServiceRegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceRegistriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7446,12 +11567,17 @@ export const ServiceRegistriesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceRegistriesGetOutput = typeof ServiceRegistriesGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRegistriesGetOutput>;
 
 // The operation
 /**
  * Get the Service Registry and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param serviceRegistryName - The name of Service Registry.
  */
 export const ServiceRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7460,17 +11586,41 @@ export const ServiceRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceRegistriesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServiceRegistriesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServiceRegistriesListInput = typeof ServiceRegistriesListInput.Type;
+  ) as unknown as Schema.Codec<ServiceRegistriesListInput>;
 
 // Output Schema
+export interface ServiceRegistriesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceRegistriesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7507,13 +11657,16 @@ export const ServiceRegistriesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServiceRegistriesListOutput =
-  typeof ServiceRegistriesListOutput.Type;
+  }) as unknown as Schema.Codec<ServiceRegistriesListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7522,8 +11675,15 @@ export const ServiceRegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  type: string;
+  name: string;
+}
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
     name: Schema.String,
@@ -7533,24 +11693,27 @@ export const ServicesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesCheckNameAvailabilityInput =
-  typeof ServicesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ServicesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const ServicesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type ServicesCheckNameAvailabilityOutput =
-  typeof ServicesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
  * Checks that the resource name is valid and is not already in use.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - the region
  */
 export const ServicesCheckNameAvailability =
@@ -7559,8 +11722,64 @@ export const ServicesCheckNameAvailability =
     outputSchema: ServicesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Starting"
+      | "Stopping"
+      | "Deleting"
+      | "Deleted"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Moved"
+      | "MoveFailed";
+    networkProfile?: {
+      serviceRuntimeSubnetId?: string;
+      appSubnetId?: string;
+      serviceCidr?: string;
+      serviceRuntimeNetworkResourceGroup?: string;
+      appNetworkResourceGroup?: string;
+      outboundIPs?: { publicIPs?: string[] };
+      requiredTraffics?: {
+        protocol?: string;
+        port?: number;
+        ips?: string[];
+        fqdns?: string[];
+        direction?: "Inbound" | "Outbound";
+      }[];
+      ingressConfig?: { readTimeoutInSeconds?: number };
+      outboundType?: string;
+    };
+    vnetAddons?: {
+      logStreamPublicEndpoint?: boolean;
+      dataPlanePublicEndpoint?: boolean;
+    };
+    version?: number;
+    serviceId?: string;
+    powerState?: "Running" | "Stopped";
+    zoneRedundant?: boolean;
+    fqdn?: string;
+    marketplaceResource?: {
+      plan?: string;
+      publisher?: string;
+      product?: string;
+    };
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -7646,11 +11865,22 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7670,13 +11900,16 @@ export const ServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a new Service or update an exiting Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7685,32 +11918,53 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
  * Operation to delete a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesDisableApmGloballyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  resourceId: string;
+}
 export const ServicesDisableApmGloballyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     resourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -7718,19 +11972,21 @@ export const ServicesDisableApmGloballyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableApmGlobally",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesDisableApmGloballyInput =
-  typeof ServicesDisableApmGloballyInput.Type;
+  ) as unknown as Schema.Codec<ServicesDisableApmGloballyInput>;
 
 // Output Schema
+export type ServicesDisableApmGloballyOutput = void;
 export const ServicesDisableApmGloballyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDisableApmGloballyOutput =
-  typeof ServicesDisableApmGloballyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDisableApmGloballyOutput>;
 
 // The operation
 /**
  * Disable an APM globally.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDisableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7739,26 +11995,37 @@ export const ServicesDisableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDisableTestEndpointInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesDisableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/disableTestEndpoint",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesDisableTestEndpointInput =
-  typeof ServicesDisableTestEndpointInput.Type;
+  ) as unknown as Schema.Codec<ServicesDisableTestEndpointInput>;
 
 // Output Schema
+export type ServicesDisableTestEndpointOutput = void;
 export const ServicesDisableTestEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDisableTestEndpointOutput =
-  typeof ServicesDisableTestEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDisableTestEndpointOutput>;
 
 // The operation
 /**
  * Disable test endpoint functionality for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7767,8 +12034,17 @@ export const ServicesDisableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesEnableApmGloballyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  resourceId: string;
+}
 export const ServicesEnableApmGloballyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     resourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -7776,19 +12052,21 @@ export const ServicesEnableApmGloballyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableApmGlobally",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesEnableApmGloballyInput =
-  typeof ServicesEnableApmGloballyInput.Type;
+  ) as unknown as Schema.Codec<ServicesEnableApmGloballyInput>;
 
 // Output Schema
+export type ServicesEnableApmGloballyOutput = void;
 export const ServicesEnableApmGloballyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesEnableApmGloballyOutput =
-  typeof ServicesEnableApmGloballyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesEnableApmGloballyOutput>;
 
 // The operation
 /**
  * Enable an APM globally.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesEnableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7797,18 +12075,32 @@ export const ServicesEnableApmGlobally = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesEnableTestEndpointInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesEnableTestEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/enableTestEndpoint",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesEnableTestEndpointInput =
-  typeof ServicesEnableTestEndpointInput.Type;
+  ) as unknown as Schema.Codec<ServicesEnableTestEndpointInput>;
 
 // Output Schema
+export interface ServicesEnableTestEndpointOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryTestEndpoint?: string;
+  secondaryTestEndpoint?: string;
+  enabled?: boolean;
+}
 export const ServicesEnableTestEndpointOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
@@ -7816,13 +12108,16 @@ export const ServicesEnableTestEndpointOutput =
     primaryTestEndpoint: Schema.optional(Schema.String),
     secondaryTestEndpoint: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type ServicesEnableTestEndpointOutput =
-  typeof ServicesEnableTestEndpointOutput.Type;
+  }) as unknown as Schema.Codec<ServicesEnableTestEndpointOutput>;
 
 // The operation
 /**
  * Enable test endpoint functionality for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesEnableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7831,26 +12126,37 @@ export const ServicesEnableTestEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesFlushVnetDnsSettingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesFlushVnetDnsSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/flushVirtualNetworkDnsSettings",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesFlushVnetDnsSettingInput =
-  typeof ServicesFlushVnetDnsSettingInput.Type;
+  ) as unknown as Schema.Codec<ServicesFlushVnetDnsSettingInput>;
 
 // Output Schema
+export type ServicesFlushVnetDnsSettingOutput = void;
 export const ServicesFlushVnetDnsSettingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesFlushVnetDnsSettingOutput =
-  typeof ServicesFlushVnetDnsSettingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesFlushVnetDnsSettingOutput>;
 
 // The operation
 /**
  * Flush Virtual Network DNS settings for a VNET injected Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7859,18 +12165,37 @@ export const ServicesFlushVnetDnsSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -7889,30 +12214,54 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
  * Get a Service and its properties.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServicesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
+export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -7948,30 +12297,52 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a resource group.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
  */
 export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ServicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesListBySubscriptionInput =
-  typeof ServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface ServicesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8008,13 +12379,14 @@ export const ServicesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListBySubscriptionOutput =
-  typeof ServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListBySubscriptionOutput>;
 
 // The operation
 /**
  * Handles requests to list all resources in a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8023,28 +12395,41 @@ export const ServicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesListGloballyEnabledApmsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesListGloballyEnabledApmsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listGloballyEnabledApms",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesListGloballyEnabledApmsInput =
-  typeof ServicesListGloballyEnabledApmsInput.Type;
+  ) as unknown as Schema.Codec<ServicesListGloballyEnabledApmsInput>;
 
 // Output Schema
+export interface ServicesListGloballyEnabledApmsOutput {
+  value?: string[];
+}
 export const ServicesListGloballyEnabledApmsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ServicesListGloballyEnabledApmsOutput =
-  typeof ServicesListGloballyEnabledApmsOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListGloballyEnabledApmsOutput>;
 
 // The operation
 /**
  * List globally enabled APMs for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListGloballyEnabledApms =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8052,18 +12437,29 @@ export const ServicesListGloballyEnabledApms =
     outputSchema: ServicesListGloballyEnabledApmsOutput,
   }));
 // Input Schema
+export interface ServicesListSupportedApmTypesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesListSupportedApmTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesListSupportedApmTypesInput =
-  typeof ServicesListSupportedApmTypesInput.Type;
+  ) as unknown as Schema.Codec<ServicesListSupportedApmTypesInput>;
 
 // Output Schema
+export interface ServicesListSupportedApmTypesOutput {
+  value?: { name?: string }[];
+  nextLink?: string;
+}
 export const ServicesListSupportedApmTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8074,13 +12470,16 @@ export const ServicesListSupportedApmTypesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListSupportedApmTypesOutput =
-  typeof ServicesListSupportedApmTypesOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListSupportedApmTypesOutput>;
 
 // The operation
 /**
  * List supported APM types for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListSupportedApmTypes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8088,18 +12487,29 @@ export const ServicesListSupportedApmTypes =
     outputSchema: ServicesListSupportedApmTypesOutput,
   }));
 // Input Schema
+export interface ServicesListSupportedServerVersionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesListSupportedServerVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedServerVersions",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesListSupportedServerVersionsInput =
-  typeof ServicesListSupportedServerVersionsInput.Type;
+  ) as unknown as Schema.Codec<ServicesListSupportedServerVersionsInput>;
 
 // Output Schema
+export interface ServicesListSupportedServerVersionsOutput {
+  value?: { value?: string; server?: string; version?: string }[];
+  nextLink?: string;
+}
 export const ServicesListSupportedServerVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8112,13 +12522,16 @@ export const ServicesListSupportedServerVersionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServicesListSupportedServerVersionsOutput =
-  typeof ServicesListSupportedServerVersionsOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListSupportedServerVersionsOutput>;
 
 // The operation
 /**
  * Lists all of the available server versions supported by Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListSupportedServerVersions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8126,17 +12539,32 @@ export const ServicesListSupportedServerVersions =
     outputSchema: ServicesListSupportedServerVersionsOutput,
   }));
 // Input Schema
+export interface ServicesListTestKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
 export const ServicesListTestKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/listTestKeys",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesListTestKeysInput = typeof ServicesListTestKeysInput.Type;
+  ) as unknown as Schema.Codec<ServicesListTestKeysInput>;
 
 // Output Schema
+export interface ServicesListTestKeysOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryTestEndpoint?: string;
+  secondaryTestEndpoint?: string;
+  enabled?: boolean;
+}
 export const ServicesListTestKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
@@ -8144,12 +12572,16 @@ export const ServicesListTestKeysOutput =
     primaryTestEndpoint: Schema.optional(Schema.String),
     secondaryTestEndpoint: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type ServicesListTestKeysOutput = typeof ServicesListTestKeysOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListTestKeysOutput>;
 
 // The operation
 /**
  * List test keys for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8158,8 +12590,17 @@ export const ServicesListTestKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesRegenerateTestKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  keyType: "Primary" | "Secondary";
+}
 export const ServicesRegenerateTestKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
     keyType: Schema.Literals(["Primary", "Secondary"]),
   }).pipe(
     T.Http({
@@ -8167,11 +12608,16 @@ export const ServicesRegenerateTestKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/regenerateTestKey",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ServicesRegenerateTestKeyInput =
-  typeof ServicesRegenerateTestKeyInput.Type;
+  ) as unknown as Schema.Codec<ServicesRegenerateTestKeyInput>;
 
 // Output Schema
+export interface ServicesRegenerateTestKeyOutput {
+  primaryKey?: string;
+  secondaryKey?: string;
+  primaryTestEndpoint?: string;
+  secondaryTestEndpoint?: string;
+  enabled?: boolean;
+}
 export const ServicesRegenerateTestKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
@@ -8179,13 +12625,16 @@ export const ServicesRegenerateTestKeyOutput =
     primaryTestEndpoint: Schema.optional(Schema.String),
     secondaryTestEndpoint: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
-  });
-export type ServicesRegenerateTestKeyOutput =
-  typeof ServicesRegenerateTestKeyOutput.Type;
+  }) as unknown as Schema.Codec<ServicesRegenerateTestKeyOutput>;
 
 // The operation
 /**
  * Regenerate a test key for a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesRegenerateTestKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8194,55 +12643,135 @@ export const ServicesRegenerateTestKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServicesStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesStartInput = typeof ServicesStartInput.Type;
+) as unknown as Schema.Codec<ServicesStartInput>;
 
 // Output Schema
-export const ServicesStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesStartOutput = typeof ServicesStartOutput.Type;
+export type ServicesStartOutput = void;
+export const ServicesStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStartOutput>;
 
 // The operation
 /**
  * Start a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesStartInput,
   outputSchema: ServicesStartOutput,
 }));
 // Input Schema
-export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServicesStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesStopInput = typeof ServicesStopInput.Type;
+) as unknown as Schema.Codec<ServicesStopInput>;
 
 // Output Schema
-export const ServicesStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesStopOutput = typeof ServicesStopOutput.Type;
+export type ServicesStopOutput = void;
+export const ServicesStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesStopOutput>;
 
 // The operation
 /**
  * Stop a Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesStopInput,
   outputSchema: ServicesStopOutput,
 }));
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Starting"
+      | "Stopping"
+      | "Deleting"
+      | "Deleted"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Moved"
+      | "MoveFailed";
+    networkProfile?: {
+      serviceRuntimeSubnetId?: string;
+      appSubnetId?: string;
+      serviceCidr?: string;
+      serviceRuntimeNetworkResourceGroup?: string;
+      appNetworkResourceGroup?: string;
+      outboundIPs?: { publicIPs?: string[] };
+      requiredTraffics?: {
+        protocol?: string;
+        port?: number;
+        ips?: string[];
+        fqdns?: string[];
+        direction?: "Inbound" | "Outbound";
+      }[];
+      ingressConfig?: { readTimeoutInSeconds?: number };
+      outboundType?: string;
+    };
+    vnetAddons?: {
+      logStreamPublicEndpoint?: boolean;
+      dataPlanePublicEndpoint?: boolean;
+    };
+    version?: number;
+    serviceId?: string;
+    powerState?: "Running" | "Stopped";
+    zoneRedundant?: boolean;
+    fqdn?: string;
+    marketplaceResource?: {
+      plan?: string;
+      publisher?: string;
+      product?: string;
+    };
+  };
+  sku?: { name?: string; tier?: string; capacity?: number };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       provisioningState: Schema.optional(
@@ -8328,10 +12857,22 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8350,28 +12891,65 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
  * Operation to update an exiting Service.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface SkusListInput {
+  subscriptionId: string;
+}
+export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus",
     apiVersion: "2023-12-01",
   }),
-);
-export type SkusListInput = typeof SkusListInput.Type;
+) as unknown as Schema.Codec<SkusListInput>;
 
 // Output Schema
+export interface SkusListOutput {
+  value?: {
+    resourceType?: string;
+    name?: string;
+    tier?: string;
+    capacity?: {
+      minimum: number;
+      maximum?: number;
+      default?: number;
+      scaleType?: "None" | "Manual" | "Automatic";
+    };
+    locations?: string[];
+    locationInfo?: {
+      location?: string;
+      zones?: string[];
+      zoneDetails?: {
+        name?: string[];
+        capabilities?: { name?: string; value?: string }[];
+      }[];
+    }[];
+    restrictions?: {
+      type?: "Location" | "Zone";
+      values?: string[];
+      restrictionInfo?: { locations?: string[]; zones?: string[] };
+      reasonCode?: "QuotaId" | "NotAvailableForSubscription";
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -8434,20 +13012,33 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SkusListOutput = typeof SkusListOutput.Type;
+}) as unknown as Schema.Codec<SkusListOutput>;
 
 // The operation
 /**
  * Lists all of the available skus of the Microsoft.AppPlatform provider.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
 // Input Schema
+export interface StoragesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  storageName: string;
+  properties?: { storageType: "StorageAccount" };
+}
 export const StoragesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    serviceName: Schema.String.pipe(T.PathParam()),
+    storageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         storageType: Schema.Literals(["StorageAccount"]),
@@ -8459,11 +13050,22 @@ export const StoragesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StoragesCreateOrUpdateInput =
-  typeof StoragesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StoragesCreateOrUpdateInput>;
 
 // Output Schema
+export interface StoragesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StoragesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8483,13 +13085,17 @@ export const StoragesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StoragesCreateOrUpdateOutput =
-  typeof StoragesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StoragesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -8498,42 +13104,78 @@ export const StoragesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface StoragesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  storageName: string;
+}
+export const StoragesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  storageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type StoragesDeleteInput = typeof StoragesDeleteInput.Type;
+) as unknown as Schema.Codec<StoragesDeleteInput>;
 
 // Output Schema
-export const StoragesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StoragesDeleteOutput = typeof StoragesDeleteOutput.Type;
+export type StoragesDeleteOutput = void;
+export const StoragesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StoragesDeleteOutput>;
 
 // The operation
 /**
  * Delete the storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesDeleteInput,
   outputSchema: StoragesDeleteOutput,
 }));
 // Input Schema
-export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface StoragesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+  storageName: string;
+}
+export const StoragesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+  storageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages/{storageName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type StoragesGetInput = typeof StoragesGetInput.Type;
+) as unknown as Schema.Codec<StoragesGetInput>;
 
 // Output Schema
+export interface StoragesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StoragesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8552,30 +13194,57 @@ export const StoragesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type StoragesGetOutput = typeof StoragesGetOutput.Type;
+}) as unknown as Schema.Codec<StoragesGetOutput>;
 
 // The operation
 /**
  * Get the storage resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
+ * @param storageName - The name of the storage resource.
  */
 export const StoragesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesGetInput,
   outputSchema: StoragesGetOutput,
 }));
 // Input Schema
-export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface StoragesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  serviceName: string;
+}
+export const StoragesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  serviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages",
     apiVersion: "2023-12-01",
   }),
-);
-export type StoragesListInput = typeof StoragesListInput.Type;
+) as unknown as Schema.Codec<StoragesListInput>;
 
 // Output Schema
+export interface StoragesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StoragesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -8611,12 +13280,16 @@ export const StoragesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type StoragesListOutput = typeof StoragesListOutput.Type;
+}) as unknown as Schema.Codec<StoragesListOutput>;
 
 // The operation
 /**
  * List all the storages of one Azure Spring Apps resource.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+ * @param serviceName - The name of the Service resource.
  */
 export const StoragesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: StoragesListInput,

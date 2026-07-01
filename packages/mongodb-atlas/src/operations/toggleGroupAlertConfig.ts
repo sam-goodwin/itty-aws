@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ToggleGroupAlertConfigInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ToggleGroupAlertConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const ToggleGroupAlertConfigInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
     }),
-  );
-export type ToggleGroupAlertConfigInput =
-  typeof ToggleGroupAlertConfigInput.Type;
+  ) as unknown as Schema.Codec<ToggleGroupAlertConfigInput>;
 
 // Output Schema
+export type ToggleGroupAlertConfigOutput = void;
 export const ToggleGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ToggleGroupAlertConfigOutput =
-  typeof ToggleGroupAlertConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupAlertConfigOutput>;
 
 // The operation
 /**
  * Toggle State of One Alert Configuration in One Project
  *
- * Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled. To use this resource, the requesting Service Account or API Key must have the Project Alerts Manager, Project Monitoring Admin, Organization Owner, or Project Owner role.
+ * Enables or disables the specified alert configuration in the specified project. The resource enables the specified alert configuration if currently enabled. The resource disables the specified alert configuration if currently disabled.
  * **NOTE**: This endpoint updates only the enabled/disabled state for the alert configuration. To update more than just this configuration, see Update One Alert Configuration.
  * This resource remains under revision and may change.
  *

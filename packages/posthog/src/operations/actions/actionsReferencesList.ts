@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ActionsReferencesListInput {
+  id: number;
+  project_id: string;
+  format?: "csv" | "json";
+}
 export const ActionsReferencesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -14,10 +19,37 @@ export const ActionsReferencesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/actions/{id}/references/",
     }),
-  );
-export type ActionsReferencesListInput = typeof ActionsReferencesListInput.Type;
+  ) as unknown as Schema.Codec<ActionsReferencesListInput>;
 
 // Output Schema
+export type ActionsReferencesListOutput = {
+  type?: string;
+  id?: string;
+  name?: string;
+  url?: string;
+  created_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}[];
 export const ActionsReferencesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -39,14 +71,28 @@ export const ActionsReferencesListOutput =
             hedgehog_config: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            role_at_organization: Schema.optional(Schema.Unknown),
+            role_at_organization: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals([
+                    "engineering",
+                    "data",
+                    "product",
+                    "founder",
+                    "leadership",
+                    "marketing",
+                    "sales",
+                    "other",
+                  ]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
           }),
         ),
       ),
     }),
-  );
-export type ActionsReferencesListOutput =
-  typeof ActionsReferencesListOutput.Type;
+  ) as unknown as Schema.Codec<ActionsReferencesListOutput>;
 
 // The operation
 /**

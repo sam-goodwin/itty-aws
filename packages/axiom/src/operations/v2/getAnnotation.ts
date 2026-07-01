@@ -4,12 +4,26 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetAnnotationInput {
+  id: string;
+}
 export const GetAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/annotations/{id}" }));
-export type GetAnnotationInput = typeof GetAnnotationInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/annotations/{id}" }),
+) as unknown as Schema.Codec<GetAnnotationInput>;
 
 // Output Schema
+export interface GetAnnotationOutput {
+  datasets: ReadonlyArray<string>;
+  description?: string;
+  endTime?: string | null;
+  id: string;
+  time: string;
+  title?: string;
+  type: string;
+  url?: string;
+}
 export const GetAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
@@ -19,8 +33,7 @@ export const GetAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   title: Schema.optional(Schema.String),
   type: Schema.String,
   url: Schema.optional(Schema.String),
-});
-export type GetAnnotationOutput = typeof GetAnnotationOutput.Type;
+}) as unknown as Schema.Codec<GetAnnotationOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokePermissionFromProjectInput {
+  project_id: string;
+  permission_id: string;
+}
 export const RevokePermissionFromProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,22 @@ export const RevokePermissionFromProjectInput =
       method: "DELETE",
       path: "/projects/{project_id}/permissions/{permission_id}",
     }),
-  );
-export type RevokePermissionFromProjectInput =
-  typeof RevokePermissionFromProjectInput.Type;
+  ) as unknown as Schema.Codec<RevokePermissionFromProjectInput>;
 
 // Output Schema
+export interface RevokePermissionFromProjectOutput {
+  id: string;
+  granted_to_email: string;
+  granted_at: string;
+  revoked_at?: string;
+}
 export const RevokePermissionFromProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     granted_to_email: Schema.String,
     granted_at: Schema.String,
     revoked_at: Schema.optional(Schema.String),
-  });
-export type RevokePermissionFromProjectOutput =
-  typeof RevokePermissionFromProjectOutput.Type;
+  }) as unknown as Schema.Codec<RevokePermissionFromProjectOutput>;
 
 // The operation
 /**

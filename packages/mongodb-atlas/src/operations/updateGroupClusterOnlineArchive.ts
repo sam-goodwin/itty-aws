@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupClusterOnlineArchiveInput {
+  groupId: string;
+  archiveId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupClusterOnlineArchiveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,21 +23,18 @@ export const UpdateGroupClusterOnlineArchiveInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
     }),
-  );
-export type UpdateGroupClusterOnlineArchiveInput =
-  typeof UpdateGroupClusterOnlineArchiveInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveInput>;
 
 // Output Schema
+export type UpdateGroupClusterOnlineArchiveOutput = void;
 export const UpdateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterOnlineArchiveOutput =
-  typeof UpdateGroupClusterOnlineArchiveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
  * Update One Online Archive
  *
- * Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role.
+ * Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

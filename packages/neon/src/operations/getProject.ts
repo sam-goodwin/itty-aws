@@ -4,12 +4,104 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetProjectInput {
+  project_id: string;
+}
 export const GetProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/projects/{project_id}" }));
-export type GetProjectInput = typeof GetProjectInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/projects/{project_id}" }),
+) as unknown as Schema.Codec<GetProjectInput>;
 
 // Output Schema
+export interface GetProjectOutput {
+  project: {
+    data_storage_bytes_hour: number;
+    data_transfer_bytes: number;
+    written_data_bytes: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    cpu_used_sec: number;
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    history_retention_seconds: number;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    consumption_period_start: string;
+    consumption_period_end: string;
+    quota_reset_at?: string;
+    owner_id: string;
+    owner?: {
+      email: string;
+      name: string;
+      branches_limit: number;
+      subscription_type:
+        | "UNKNOWN"
+        | "direct_sales"
+        | "direct_sales_v3"
+        | "aws_marketplace"
+        | "free_v2"
+        | "free_v3"
+        | "launch"
+        | "launch_v3"
+        | "scale"
+        | "scale_v3"
+        | "business"
+        | "vercel_pg_legacy";
+    };
+    compute_last_active_at?: string;
+    org_id?: string;
+    maintenance_scheduled_for?: string;
+    hipaa_enabled_at?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  };
+}
 export const GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
@@ -115,16 +207,18 @@ export const GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
-});
-export type GetProjectOutput = typeof GetProjectOutput.Type;
+}) as unknown as Schema.Codec<GetProjectOutput>;
 
 // The operation
 /**
  * Retrieve project details
  *
  * Retrieves information about the specified project.
- * You can obtain a `project_id` by listing the projects for an organization.
+ * Returned details include the project settings, compute configuration, history retention, owner information, and current usage metrics.
  *
  * @param project_id - The Neon project ID
  */

@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupProcessCollStatNamespacesInput {
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+  start?: string;
+  end?: string;
+  period?: string;
+}
 export const GetGroupProcessCollStatNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const GetGroupProcessCollStatNamespacesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces",
     }),
-  );
-export type GetGroupProcessCollStatNamespacesInput =
-  typeof GetGroupProcessCollStatNamespacesInput.Type;
+  ) as unknown as Schema.Codec<GetGroupProcessCollStatNamespacesInput>;
 
 // Output Schema
+export type GetGroupProcessCollStatNamespacesOutput = void;
 export const GetGroupProcessCollStatNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessCollStatNamespacesOutput =
-  typeof GetGroupProcessCollStatNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessCollStatNamespacesOutput>;
 
 // The operation
 /**

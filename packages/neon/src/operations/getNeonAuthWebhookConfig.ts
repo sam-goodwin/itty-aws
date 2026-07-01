@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetNeonAuthWebhookConfigInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthWebhookConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,23 @@ export const GetNeonAuthWebhookConfigInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/auth/webhooks",
     }),
-  );
-export type GetNeonAuthWebhookConfigInput =
-  typeof GetNeonAuthWebhookConfigInput.Type;
+  ) as unknown as Schema.Codec<GetNeonAuthWebhookConfigInput>;
 
 // Output Schema
+export interface GetNeonAuthWebhookConfigOutput {
+  enabled: boolean;
+  webhook_url?: string;
+  enabled_events?: (
+    | "user.before_create"
+    | "user.created"
+    | "send.otp"
+    | "send.magic_link"
+    | "organization.invitation.created"
+    | "organization.invitation.accepted"
+    | "phone_number.verified"
+  )[];
+  timeout_seconds?: number;
+}
 export const GetNeonAuthWebhookConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
@@ -35,15 +51,14 @@ export const GetNeonAuthWebhookConfigOutput =
       ),
     ),
     timeout_seconds: Schema.optional(Schema.Number),
-  });
-export type GetNeonAuthWebhookConfigOutput =
-  typeof GetNeonAuthWebhookConfigOutput.Type;
+  }) as unknown as Schema.Codec<GetNeonAuthWebhookConfigOutput>;
 
 // The operation
 /**
- * Get webhook configuration for Neon Auth
+ * Retrieve Neon Auth webhook configuration
  *
- * Returns the webhook configuration for Neon Auth.
+ * Returns the webhook configuration for the specified branch's Neon Auth integration,
+ * including the endpoint URL and the events that trigger it.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

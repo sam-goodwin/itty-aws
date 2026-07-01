@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingPlaylistsRecordingsDestroyInput {
+  project_id: string;
+  session_recording_id: string;
+  short_id: string;
+}
 export const SessionRecordingPlaylistsRecordingsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const SessionRecordingPlaylistsRecordingsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/{session_recording_id}/",
     }),
-  );
-export type SessionRecordingPlaylistsRecordingsDestroyInput =
-  typeof SessionRecordingPlaylistsRecordingsDestroyInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsDestroyInput>;
 
 // Output Schema
+export type SessionRecordingPlaylistsRecordingsDestroyOutput = void;
 export const SessionRecordingPlaylistsRecordingsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionRecordingPlaylistsRecordingsDestroyOutput =
-  typeof SessionRecordingPlaylistsRecordingsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsDestroyOutput>;
 
 // The operation
 /**

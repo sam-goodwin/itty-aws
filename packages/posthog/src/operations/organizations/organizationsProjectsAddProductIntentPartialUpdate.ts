@@ -1,0 +1,4575 @@
+import * as Schema from "effect/Schema";
+import { API } from "../../client.ts";
+import * as T from "../../traits.ts";
+import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
+
+// Input Schema
+export interface OrganizationsProjectsAddProductIntentPartialUpdateInput {
+  id: number;
+  organization_id: string;
+  organization?: string;
+  name?: string;
+  product_description?: string | null;
+  created_at?: string;
+  effective_membership_level?: 1 | 8 | 15;
+  has_group_types?: boolean;
+  group_types?: Record<string, unknown>[];
+  live_events_token?: string | null;
+  updated_at?: string | null;
+  uuid?: string;
+  api_token?: string | Redacted.Redacted<string>;
+  app_urls?: (string | null)[];
+  anonymize_ips?: boolean;
+  completed_snippet_onboarding?: boolean;
+  ingested_event?: boolean;
+  test_account_filters?: unknown;
+  test_account_filters_default_checked?: boolean | null;
+  path_cleaning_filters?: unknown;
+  is_demo?: boolean;
+  timezone?:
+    | "Africa/Abidjan"
+    | "Africa/Accra"
+    | "Africa/Addis_Ababa"
+    | "Africa/Algiers"
+    | "Africa/Asmara"
+    | "Africa/Asmera"
+    | "Africa/Bamako"
+    | "Africa/Bangui"
+    | "Africa/Banjul"
+    | "Africa/Bissau"
+    | "Africa/Blantyre"
+    | "Africa/Brazzaville"
+    | "Africa/Bujumbura"
+    | "Africa/Cairo"
+    | "Africa/Casablanca"
+    | "Africa/Ceuta"
+    | "Africa/Conakry"
+    | "Africa/Dakar"
+    | "Africa/Dar_es_Salaam"
+    | "Africa/Djibouti"
+    | "Africa/Douala"
+    | "Africa/El_Aaiun"
+    | "Africa/Freetown"
+    | "Africa/Gaborone"
+    | "Africa/Harare"
+    | "Africa/Johannesburg"
+    | "Africa/Juba"
+    | "Africa/Kampala"
+    | "Africa/Khartoum"
+    | "Africa/Kigali"
+    | "Africa/Kinshasa"
+    | "Africa/Lagos"
+    | "Africa/Libreville"
+    | "Africa/Lome"
+    | "Africa/Luanda"
+    | "Africa/Lubumbashi"
+    | "Africa/Lusaka"
+    | "Africa/Malabo"
+    | "Africa/Maputo"
+    | "Africa/Maseru"
+    | "Africa/Mbabane"
+    | "Africa/Mogadishu"
+    | "Africa/Monrovia"
+    | "Africa/Nairobi"
+    | "Africa/Ndjamena"
+    | "Africa/Niamey"
+    | "Africa/Nouakchott"
+    | "Africa/Ouagadougou"
+    | "Africa/Porto-Novo"
+    | "Africa/Sao_Tome"
+    | "Africa/Timbuktu"
+    | "Africa/Tripoli"
+    | "Africa/Tunis"
+    | "Africa/Windhoek"
+    | "America/Adak"
+    | "America/Anchorage"
+    | "America/Anguilla"
+    | "America/Antigua"
+    | "America/Araguaina"
+    | "America/Argentina/Buenos_Aires"
+    | "America/Argentina/Catamarca"
+    | "America/Argentina/ComodRivadavia"
+    | "America/Argentina/Cordoba"
+    | "America/Argentina/Jujuy"
+    | "America/Argentina/La_Rioja"
+    | "America/Argentina/Mendoza"
+    | "America/Argentina/Rio_Gallegos"
+    | "America/Argentina/Salta"
+    | "America/Argentina/San_Juan"
+    | "America/Argentina/San_Luis"
+    | "America/Argentina/Tucuman"
+    | "America/Argentina/Ushuaia"
+    | "America/Aruba"
+    | "America/Asuncion"
+    | "America/Atikokan"
+    | "America/Atka"
+    | "America/Bahia"
+    | "America/Bahia_Banderas"
+    | "America/Barbados"
+    | "America/Belem"
+    | "America/Belize"
+    | "America/Blanc-Sablon"
+    | "America/Boa_Vista"
+    | "America/Bogota"
+    | "America/Boise"
+    | "America/Buenos_Aires"
+    | "America/Cambridge_Bay"
+    | "America/Campo_Grande"
+    | "America/Cancun"
+    | "America/Caracas"
+    | "America/Catamarca"
+    | "America/Cayenne"
+    | "America/Cayman"
+    | "America/Chicago"
+    | "America/Chihuahua"
+    | "America/Ciudad_Juarez"
+    | "America/Coral_Harbour"
+    | "America/Cordoba"
+    | "America/Costa_Rica"
+    | "America/Creston"
+    | "America/Cuiaba"
+    | "America/Curacao"
+    | "America/Danmarkshavn"
+    | "America/Dawson"
+    | "America/Dawson_Creek"
+    | "America/Denver"
+    | "America/Detroit"
+    | "America/Dominica"
+    | "America/Edmonton"
+    | "America/Eirunepe"
+    | "America/El_Salvador"
+    | "America/Ensenada"
+    | "America/Fort_Nelson"
+    | "America/Fort_Wayne"
+    | "America/Fortaleza"
+    | "America/Glace_Bay"
+    | "America/Godthab"
+    | "America/Goose_Bay"
+    | "America/Grand_Turk"
+    | "America/Grenada"
+    | "America/Guadeloupe"
+    | "America/Guatemala"
+    | "America/Guayaquil"
+    | "America/Guyana"
+    | "America/Halifax"
+    | "America/Havana"
+    | "America/Hermosillo"
+    | "America/Indiana/Indianapolis"
+    | "America/Indiana/Knox"
+    | "America/Indiana/Marengo"
+    | "America/Indiana/Petersburg"
+    | "America/Indiana/Tell_City"
+    | "America/Indiana/Vevay"
+    | "America/Indiana/Vincennes"
+    | "America/Indiana/Winamac"
+    | "America/Indianapolis"
+    | "America/Inuvik"
+    | "America/Iqaluit"
+    | "America/Jamaica"
+    | "America/Jujuy"
+    | "America/Juneau"
+    | "America/Kentucky/Louisville"
+    | "America/Kentucky/Monticello"
+    | "America/Knox_IN"
+    | "America/Kralendijk"
+    | "America/La_Paz"
+    | "America/Lima"
+    | "America/Los_Angeles"
+    | "America/Louisville"
+    | "America/Lower_Princes"
+    | "America/Maceio"
+    | "America/Managua"
+    | "America/Manaus"
+    | "America/Marigot"
+    | "America/Martinique"
+    | "America/Matamoros"
+    | "America/Mazatlan"
+    | "America/Mendoza"
+    | "America/Menominee"
+    | "America/Merida"
+    | "America/Metlakatla"
+    | "America/Mexico_City"
+    | "America/Miquelon"
+    | "America/Moncton"
+    | "America/Monterrey"
+    | "America/Montevideo"
+    | "America/Montreal"
+    | "America/Montserrat"
+    | "America/Nassau"
+    | "America/New_York"
+    | "America/Nipigon"
+    | "America/Nome"
+    | "America/Noronha"
+    | "America/North_Dakota/Beulah"
+    | "America/North_Dakota/Center"
+    | "America/North_Dakota/New_Salem"
+    | "America/Nuuk"
+    | "America/Ojinaga"
+    | "America/Panama"
+    | "America/Pangnirtung"
+    | "America/Paramaribo"
+    | "America/Phoenix"
+    | "America/Port-au-Prince"
+    | "America/Port_of_Spain"
+    | "America/Porto_Acre"
+    | "America/Porto_Velho"
+    | "America/Puerto_Rico"
+    | "America/Punta_Arenas"
+    | "America/Rainy_River"
+    | "America/Rankin_Inlet"
+    | "America/Recife"
+    | "America/Regina"
+    | "America/Resolute"
+    | "America/Rio_Branco"
+    | "America/Rosario"
+    | "America/Santa_Isabel"
+    | "America/Santarem"
+    | "America/Santiago"
+    | "America/Santo_Domingo"
+    | "America/Sao_Paulo"
+    | "America/Scoresbysund"
+    | "America/Shiprock"
+    | "America/Sitka"
+    | "America/St_Barthelemy"
+    | "America/St_Johns"
+    | "America/St_Kitts"
+    | "America/St_Lucia"
+    | "America/St_Thomas"
+    | "America/St_Vincent"
+    | "America/Swift_Current"
+    | "America/Tegucigalpa"
+    | "America/Thule"
+    | "America/Thunder_Bay"
+    | "America/Tijuana"
+    | "America/Toronto"
+    | "America/Tortola"
+    | "America/Vancouver"
+    | "America/Virgin"
+    | "America/Whitehorse"
+    | "America/Winnipeg"
+    | "America/Yakutat"
+    | "America/Yellowknife"
+    | "Antarctica/Casey"
+    | "Antarctica/Davis"
+    | "Antarctica/DumontDUrville"
+    | "Antarctica/Macquarie"
+    | "Antarctica/Mawson"
+    | "Antarctica/McMurdo"
+    | "Antarctica/Palmer"
+    | "Antarctica/Rothera"
+    | "Antarctica/South_Pole"
+    | "Antarctica/Syowa"
+    | "Antarctica/Troll"
+    | "Antarctica/Vostok"
+    | "Arctic/Longyearbyen"
+    | "Asia/Aden"
+    | "Asia/Almaty"
+    | "Asia/Amman"
+    | "Asia/Anadyr"
+    | "Asia/Aqtau"
+    | "Asia/Aqtobe"
+    | "Asia/Ashgabat"
+    | "Asia/Ashkhabad"
+    | "Asia/Atyrau"
+    | "Asia/Baghdad"
+    | "Asia/Bahrain"
+    | "Asia/Baku"
+    | "Asia/Bangkok"
+    | "Asia/Barnaul"
+    | "Asia/Beirut"
+    | "Asia/Bishkek"
+    | "Asia/Brunei"
+    | "Asia/Calcutta"
+    | "Asia/Chita"
+    | "Asia/Choibalsan"
+    | "Asia/Chongqing"
+    | "Asia/Chungking"
+    | "Asia/Colombo"
+    | "Asia/Dacca"
+    | "Asia/Damascus"
+    | "Asia/Dhaka"
+    | "Asia/Dili"
+    | "Asia/Dubai"
+    | "Asia/Dushanbe"
+    | "Asia/Famagusta"
+    | "Asia/Gaza"
+    | "Asia/Harbin"
+    | "Asia/Hebron"
+    | "Asia/Ho_Chi_Minh"
+    | "Asia/Hong_Kong"
+    | "Asia/Hovd"
+    | "Asia/Irkutsk"
+    | "Asia/Istanbul"
+    | "Asia/Jakarta"
+    | "Asia/Jayapura"
+    | "Asia/Jerusalem"
+    | "Asia/Kabul"
+    | "Asia/Kamchatka"
+    | "Asia/Karachi"
+    | "Asia/Kashgar"
+    | "Asia/Kathmandu"
+    | "Asia/Katmandu"
+    | "Asia/Khandyga"
+    | "Asia/Kolkata"
+    | "Asia/Krasnoyarsk"
+    | "Asia/Kuala_Lumpur"
+    | "Asia/Kuching"
+    | "Asia/Kuwait"
+    | "Asia/Macao"
+    | "Asia/Macau"
+    | "Asia/Magadan"
+    | "Asia/Makassar"
+    | "Asia/Manila"
+    | "Asia/Muscat"
+    | "Asia/Nicosia"
+    | "Asia/Novokuznetsk"
+    | "Asia/Novosibirsk"
+    | "Asia/Omsk"
+    | "Asia/Oral"
+    | "Asia/Phnom_Penh"
+    | "Asia/Pontianak"
+    | "Asia/Pyongyang"
+    | "Asia/Qatar"
+    | "Asia/Qostanay"
+    | "Asia/Qyzylorda"
+    | "Asia/Rangoon"
+    | "Asia/Riyadh"
+    | "Asia/Saigon"
+    | "Asia/Sakhalin"
+    | "Asia/Samarkand"
+    | "Asia/Seoul"
+    | "Asia/Shanghai"
+    | "Asia/Singapore"
+    | "Asia/Srednekolymsk"
+    | "Asia/Taipei"
+    | "Asia/Tashkent"
+    | "Asia/Tbilisi"
+    | "Asia/Tehran"
+    | "Asia/Tel_Aviv"
+    | "Asia/Thimbu"
+    | "Asia/Thimphu"
+    | "Asia/Tokyo"
+    | "Asia/Tomsk"
+    | "Asia/Ujung_Pandang"
+    | "Asia/Ulaanbaatar"
+    | "Asia/Ulan_Bator"
+    | "Asia/Urumqi"
+    | "Asia/Ust-Nera"
+    | "Asia/Vientiane"
+    | "Asia/Vladivostok"
+    | "Asia/Yakutsk"
+    | "Asia/Yangon"
+    | "Asia/Yekaterinburg"
+    | "Asia/Yerevan"
+    | "Atlantic/Azores"
+    | "Atlantic/Bermuda"
+    | "Atlantic/Canary"
+    | "Atlantic/Cape_Verde"
+    | "Atlantic/Faeroe"
+    | "Atlantic/Faroe"
+    | "Atlantic/Jan_Mayen"
+    | "Atlantic/Madeira"
+    | "Atlantic/Reykjavik"
+    | "Atlantic/South_Georgia"
+    | "Atlantic/St_Helena"
+    | "Atlantic/Stanley"
+    | "Australia/ACT"
+    | "Australia/Adelaide"
+    | "Australia/Brisbane"
+    | "Australia/Broken_Hill"
+    | "Australia/Canberra"
+    | "Australia/Currie"
+    | "Australia/Darwin"
+    | "Australia/Eucla"
+    | "Australia/Hobart"
+    | "Australia/LHI"
+    | "Australia/Lindeman"
+    | "Australia/Lord_Howe"
+    | "Australia/Melbourne"
+    | "Australia/NSW"
+    | "Australia/North"
+    | "Australia/Perth"
+    | "Australia/Queensland"
+    | "Australia/South"
+    | "Australia/Sydney"
+    | "Australia/Tasmania"
+    | "Australia/Victoria"
+    | "Australia/West"
+    | "Australia/Yancowinna"
+    | "Brazil/Acre"
+    | "Brazil/DeNoronha"
+    | "Brazil/East"
+    | "Brazil/West"
+    | "CET"
+    | "CST6CDT"
+    | "Canada/Atlantic"
+    | "Canada/Central"
+    | "Canada/Eastern"
+    | "Canada/Mountain"
+    | "Canada/Newfoundland"
+    | "Canada/Pacific"
+    | "Canada/Saskatchewan"
+    | "Canada/Yukon"
+    | "Chile/Continental"
+    | "Chile/EasterIsland"
+    | "Cuba"
+    | "EET"
+    | "EST"
+    | "EST5EDT"
+    | "Egypt"
+    | "Eire"
+    | "Etc/GMT"
+    | "Etc/GMT+0"
+    | "Etc/GMT+1"
+    | "Etc/GMT+10"
+    | "Etc/GMT+11"
+    | "Etc/GMT+12"
+    | "Etc/GMT+2"
+    | "Etc/GMT+3"
+    | "Etc/GMT+4"
+    | "Etc/GMT+5"
+    | "Etc/GMT+6"
+    | "Etc/GMT+7"
+    | "Etc/GMT+8"
+    | "Etc/GMT+9"
+    | "Etc/GMT-0"
+    | "Etc/GMT-1"
+    | "Etc/GMT-10"
+    | "Etc/GMT-11"
+    | "Etc/GMT-12"
+    | "Etc/GMT-13"
+    | "Etc/GMT-14"
+    | "Etc/GMT-2"
+    | "Etc/GMT-3"
+    | "Etc/GMT-4"
+    | "Etc/GMT-5"
+    | "Etc/GMT-6"
+    | "Etc/GMT-7"
+    | "Etc/GMT-8"
+    | "Etc/GMT-9"
+    | "Etc/GMT0"
+    | "Etc/Greenwich"
+    | "Etc/UCT"
+    | "Etc/UTC"
+    | "Etc/Universal"
+    | "Etc/Zulu"
+    | "Europe/Amsterdam"
+    | "Europe/Andorra"
+    | "Europe/Astrakhan"
+    | "Europe/Athens"
+    | "Europe/Belfast"
+    | "Europe/Belgrade"
+    | "Europe/Berlin"
+    | "Europe/Bratislava"
+    | "Europe/Brussels"
+    | "Europe/Bucharest"
+    | "Europe/Budapest"
+    | "Europe/Busingen"
+    | "Europe/Chisinau"
+    | "Europe/Copenhagen"
+    | "Europe/Dublin"
+    | "Europe/Gibraltar"
+    | "Europe/Guernsey"
+    | "Europe/Helsinki"
+    | "Europe/Isle_of_Man"
+    | "Europe/Istanbul"
+    | "Europe/Jersey"
+    | "Europe/Kaliningrad"
+    | "Europe/Kiev"
+    | "Europe/Kirov"
+    | "Europe/Kyiv"
+    | "Europe/Lisbon"
+    | "Europe/Ljubljana"
+    | "Europe/London"
+    | "Europe/Luxembourg"
+    | "Europe/Madrid"
+    | "Europe/Malta"
+    | "Europe/Mariehamn"
+    | "Europe/Minsk"
+    | "Europe/Monaco"
+    | "Europe/Moscow"
+    | "Europe/Nicosia"
+    | "Europe/Oslo"
+    | "Europe/Paris"
+    | "Europe/Podgorica"
+    | "Europe/Prague"
+    | "Europe/Riga"
+    | "Europe/Rome"
+    | "Europe/Samara"
+    | "Europe/San_Marino"
+    | "Europe/Sarajevo"
+    | "Europe/Saratov"
+    | "Europe/Simferopol"
+    | "Europe/Skopje"
+    | "Europe/Sofia"
+    | "Europe/Stockholm"
+    | "Europe/Tallinn"
+    | "Europe/Tirane"
+    | "Europe/Tiraspol"
+    | "Europe/Ulyanovsk"
+    | "Europe/Uzhgorod"
+    | "Europe/Vaduz"
+    | "Europe/Vatican"
+    | "Europe/Vienna"
+    | "Europe/Vilnius"
+    | "Europe/Volgograd"
+    | "Europe/Warsaw"
+    | "Europe/Zagreb"
+    | "Europe/Zaporozhye"
+    | "Europe/Zurich"
+    | "GB"
+    | "GB-Eire"
+    | "GMT"
+    | "GMT+0"
+    | "GMT-0"
+    | "GMT0"
+    | "Greenwich"
+    | "HST"
+    | "Hongkong"
+    | "Iceland"
+    | "Indian/Antananarivo"
+    | "Indian/Chagos"
+    | "Indian/Christmas"
+    | "Indian/Cocos"
+    | "Indian/Comoro"
+    | "Indian/Kerguelen"
+    | "Indian/Mahe"
+    | "Indian/Maldives"
+    | "Indian/Mauritius"
+    | "Indian/Mayotte"
+    | "Indian/Reunion"
+    | "Iran"
+    | "Israel"
+    | "Jamaica"
+    | "Japan"
+    | "Kwajalein"
+    | "Libya"
+    | "MET"
+    | "MST"
+    | "MST7MDT"
+    | "Mexico/BajaNorte"
+    | "Mexico/BajaSur"
+    | "Mexico/General"
+    | "NZ"
+    | "NZ-CHAT"
+    | "Navajo"
+    | "PRC"
+    | "PST8PDT"
+    | "Pacific/Apia"
+    | "Pacific/Auckland"
+    | "Pacific/Bougainville"
+    | "Pacific/Chatham"
+    | "Pacific/Chuuk"
+    | "Pacific/Easter"
+    | "Pacific/Efate"
+    | "Pacific/Enderbury"
+    | "Pacific/Fakaofo"
+    | "Pacific/Fiji"
+    | "Pacific/Funafuti"
+    | "Pacific/Galapagos"
+    | "Pacific/Gambier"
+    | "Pacific/Guadalcanal"
+    | "Pacific/Guam"
+    | "Pacific/Honolulu"
+    | "Pacific/Johnston"
+    | "Pacific/Kanton"
+    | "Pacific/Kiritimati"
+    | "Pacific/Kosrae"
+    | "Pacific/Kwajalein"
+    | "Pacific/Majuro"
+    | "Pacific/Marquesas"
+    | "Pacific/Midway"
+    | "Pacific/Nauru"
+    | "Pacific/Niue"
+    | "Pacific/Norfolk"
+    | "Pacific/Noumea"
+    | "Pacific/Pago_Pago"
+    | "Pacific/Palau"
+    | "Pacific/Pitcairn"
+    | "Pacific/Pohnpei"
+    | "Pacific/Ponape"
+    | "Pacific/Port_Moresby"
+    | "Pacific/Rarotonga"
+    | "Pacific/Saipan"
+    | "Pacific/Samoa"
+    | "Pacific/Tahiti"
+    | "Pacific/Tarawa"
+    | "Pacific/Tongatapu"
+    | "Pacific/Truk"
+    | "Pacific/Wake"
+    | "Pacific/Wallis"
+    | "Pacific/Yap"
+    | "Poland"
+    | "Portugal"
+    | "ROC"
+    | "ROK"
+    | "Singapore"
+    | "Turkey"
+    | "UCT"
+    | "US/Alaska"
+    | "US/Aleutian"
+    | "US/Arizona"
+    | "US/Central"
+    | "US/East-Indiana"
+    | "US/Eastern"
+    | "US/Hawaii"
+    | "US/Indiana-Starke"
+    | "US/Michigan"
+    | "US/Mountain"
+    | "US/Pacific"
+    | "US/Samoa"
+    | "UTC"
+    | "Universal"
+    | "W-SU"
+    | "WET"
+    | "Zulu";
+  data_attributes?: unknown;
+  person_display_name_properties?: string[] | null;
+  correlation_config?: unknown;
+  autocapture_opt_out?: boolean | null;
+  autocapture_exceptions_opt_in?: boolean | null;
+  autocapture_web_vitals_opt_in?: boolean | null;
+  autocapture_web_vitals_allowed_metrics?: unknown;
+  autocapture_exceptions_errors_to_ignore?: unknown;
+  capture_console_log_opt_in?: boolean | null;
+  capture_performance_opt_in?: boolean | null;
+  session_recording_opt_in?: boolean;
+  session_recording_sample_rate?: string | null;
+  session_recording_minimum_duration_milliseconds?: number | null;
+  session_recording_linked_flag?: unknown;
+  session_recording_network_payload_capture_config?: unknown;
+  session_recording_masking_config?: unknown;
+  session_recording_url_trigger_config?: unknown[] | null;
+  session_recording_url_blocklist_config?: unknown[] | null;
+  session_recording_event_trigger_config?: (string | null)[] | null;
+  session_recording_trigger_match_type_config?: string | null;
+  session_recording_trigger_groups?: unknown;
+  session_recording_retention_period?: "30d" | "90d" | "1y" | "5y";
+  session_replay_config?: unknown;
+  survey_config?: unknown;
+  access_control?: boolean;
+  week_start_day?: 0 | 1 | null;
+  primary_dashboard?: number | null;
+  live_events_columns?: string[] | null;
+  recording_domains?: (string | null)[] | null;
+  person_on_events_querying_enabled?: boolean;
+  inject_web_apps?: boolean | null;
+  extra_settings?: unknown;
+  modifiers?: unknown;
+  default_modifiers?: Record<string, unknown>;
+  has_completed_onboarding_for?: unknown;
+  surveys_opt_in?: boolean | null;
+  heatmaps_opt_in?: boolean | null;
+  product_intents?: {
+    product_type?: string;
+    created_at?: string;
+    onboarding_completed_at?: string | null;
+    updated_at?: string;
+  }[];
+  flags_persistence_default?: boolean | null;
+  secret_api_token?: string | null;
+  secret_api_token_backup?: string | null;
+  receive_org_level_activity_logs?: boolean | null;
+  business_model?: "b2b" | "b2c" | "other" | "" | null;
+  conversations_enabled?: boolean | null;
+  conversations_settings?: unknown;
+  logs_settings?: unknown;
+  proactive_tasks_enabled?: boolean | null;
+  available_setup_task_ids?: (
+    | "ingest_first_event"
+    | "set_up_reverse_proxy"
+    | "create_first_insight"
+    | "create_first_dashboard"
+    | "track_custom_events"
+    | "define_actions"
+    | "set_up_cohorts"
+    | "explore_trends_insight"
+    | "create_funnel"
+    | "explore_retention_insight"
+    | "explore_paths_insight"
+    | "explore_stickiness_insight"
+    | "explore_lifecycle_insight"
+    | "add_authorized_domain"
+    | "set_up_web_vitals"
+    | "review_web_analytics_dashboard"
+    | "filter_web_analytics"
+    | "set_up_web_analytics_conversion_goals"
+    | "visit_web_vitals_dashboard"
+    | "setup_session_recordings"
+    | "watch_session_recording"
+    | "configure_recording_settings"
+    | "create_recording_playlist"
+    | "enable_console_logs"
+    | "create_feature_flag"
+    | "implement_flag_in_code"
+    | "update_feature_flag_release_conditions"
+    | "create_multivariate_flag"
+    | "set_up_flag_payloads"
+    | "set_up_flag_evaluation_runtimes"
+    | "create_experiment"
+    | "implement_experiment_variants"
+    | "launch_experiment"
+    | "review_experiment_results"
+    | "create_survey"
+    | "launch_survey"
+    | "collect_survey_responses"
+    | "connect_source"
+    | "run_first_query"
+    | "join_external_data"
+    | "create_saved_view"
+    | "enable_error_tracking"
+    | "upload_source_maps"
+    | "view_first_error"
+    | "resolve_first_error"
+    | "ingest_first_llm_event"
+    | "view_first_trace"
+    | "track_costs"
+    | "set_up_llm_evaluation"
+    | "run_ai_playground"
+    | "enable_revenue_analytics_viewset"
+    | "connect_revenue_source"
+    | "set_up_revenue_goal"
+    | "enable_log_capture"
+    | "view_first_logs"
+    | "create_first_workflow"
+    | "set_up_first_workflow_channel"
+    | "configure_workflow_trigger"
+    | "add_workflow_action"
+    | "launch_workflow"
+    | "create_first_endpoint"
+    | "configure_endpoint"
+    | "test_endpoint"
+    | "create_early_access_feature"
+    | "update_feature_stage"
+    | "use_posthog_ai"
+    | "use_posthog_code"
+    | "use_posthog_mcp"
+    | "use_posthog_in_slack"
+  )[];
+  is_pending_deletion?: boolean | null;
+  project_id?: number;
+  user_access_level?: string | null;
+  managed_viewsets?: Record<string, boolean>;
+  revenue_analytics_config?: {
+    base_currency?:
+      | "AED"
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BRL"
+      | "BSD"
+      | "BTC"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "CRC"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LTL"
+      | "LVL"
+      | "LSL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRU"
+      | "MTL"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SRD"
+      | "SSP"
+      | "STN"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "UYU"
+      | "UZS"
+      | "VES"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XCD"
+      | "XOF"
+      | "XPF"
+      | "YER"
+      | "ZAR"
+      | "ZMW";
+    events?: unknown;
+    goals?: unknown;
+    filter_test_accounts?: boolean;
+  };
+  marketing_analytics_config?: {
+    sources_map?: unknown;
+    conversion_goals?: unknown;
+    attribution_window_days?: number;
+    attribution_mode?:
+      | "first_touch"
+      | "last_touch"
+      | "linear"
+      | "time_decay"
+      | "position_based";
+    campaign_name_mappings?: unknown;
+    custom_source_mappings?: unknown;
+    campaign_field_preferences?: unknown;
+  };
+  customer_analytics_config?: {
+    activity_event?: unknown;
+    signup_pageview_event?: unknown;
+    signup_event?: unknown;
+    subscription_event?: unknown;
+    payment_event?: unknown;
+    account_group_type_index?: number | null;
+  };
+  workflows_config?: { capture_workflows_engagement_events?: boolean };
+  base_currency?:
+    | "AED"
+    | "AFN"
+    | "ALL"
+    | "AMD"
+    | "ANG"
+    | "AOA"
+    | "ARS"
+    | "AUD"
+    | "AWG"
+    | "AZN"
+    | "BAM"
+    | "BBD"
+    | "BDT"
+    | "BGN"
+    | "BHD"
+    | "BIF"
+    | "BMD"
+    | "BND"
+    | "BOB"
+    | "BRL"
+    | "BSD"
+    | "BTC"
+    | "BTN"
+    | "BWP"
+    | "BYN"
+    | "BZD"
+    | "CAD"
+    | "CDF"
+    | "CHF"
+    | "CLP"
+    | "CNY"
+    | "COP"
+    | "CRC"
+    | "CVE"
+    | "CZK"
+    | "DJF"
+    | "DKK"
+    | "DOP"
+    | "DZD"
+    | "EGP"
+    | "ERN"
+    | "ETB"
+    | "EUR"
+    | "FJD"
+    | "GBP"
+    | "GEL"
+    | "GHS"
+    | "GIP"
+    | "GMD"
+    | "GNF"
+    | "GTQ"
+    | "GYD"
+    | "HKD"
+    | "HNL"
+    | "HRK"
+    | "HTG"
+    | "HUF"
+    | "IDR"
+    | "ILS"
+    | "INR"
+    | "IQD"
+    | "IRR"
+    | "ISK"
+    | "JMD"
+    | "JOD"
+    | "JPY"
+    | "KES"
+    | "KGS"
+    | "KHR"
+    | "KMF"
+    | "KRW"
+    | "KWD"
+    | "KYD"
+    | "KZT"
+    | "LAK"
+    | "LBP"
+    | "LKR"
+    | "LRD"
+    | "LTL"
+    | "LVL"
+    | "LSL"
+    | "LYD"
+    | "MAD"
+    | "MDL"
+    | "MGA"
+    | "MKD"
+    | "MMK"
+    | "MNT"
+    | "MOP"
+    | "MRU"
+    | "MTL"
+    | "MUR"
+    | "MVR"
+    | "MWK"
+    | "MXN"
+    | "MYR"
+    | "MZN"
+    | "NAD"
+    | "NGN"
+    | "NIO"
+    | "NOK"
+    | "NPR"
+    | "NZD"
+    | "OMR"
+    | "PAB"
+    | "PEN"
+    | "PGK"
+    | "PHP"
+    | "PKR"
+    | "PLN"
+    | "PYG"
+    | "QAR"
+    | "RON"
+    | "RSD"
+    | "RUB"
+    | "RWF"
+    | "SAR"
+    | "SBD"
+    | "SCR"
+    | "SDG"
+    | "SEK"
+    | "SGD"
+    | "SRD"
+    | "SSP"
+    | "STN"
+    | "SYP"
+    | "SZL"
+    | "THB"
+    | "TJS"
+    | "TMT"
+    | "TND"
+    | "TOP"
+    | "TRY"
+    | "TTD"
+    | "TWD"
+    | "TZS"
+    | "UAH"
+    | "UGX"
+    | "USD"
+    | "UYU"
+    | "UZS"
+    | "VES"
+    | "VND"
+    | "VUV"
+    | "WST"
+    | "XAF"
+    | "XCD"
+    | "XOF"
+    | "XPF"
+    | "YER"
+    | "ZAR"
+    | "ZMW";
+  capture_dead_clicks?: boolean | null;
+  cookieless_server_hash_mode?: 0 | 1 | 2 | null;
+  human_friendly_comparison_periods?: boolean | null;
+  feature_flag_confirmation_enabled?: boolean | null;
+  feature_flag_confirmation_message?: string | null;
+  default_evaluation_contexts_enabled?: boolean | null;
+  require_evaluation_contexts?: boolean | null;
+  default_data_theme?: number | null;
+  onboarding_tasks?: unknown;
+  web_analytics_pre_aggregated_tables_enabled?: boolean | null;
+  event_retention_months?: number;
+  events_retention_enforced?: boolean;
+}
+export const OrganizationsProjectsAddProductIntentPartialUpdateInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.Number.pipe(T.PathParam()),
+    organization_id: Schema.String.pipe(T.PathParam()),
+    organization: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    product_description: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    effective_membership_level: Schema.optional(Schema.Literals([1, 8, 15])),
+    has_group_types: Schema.optional(Schema.Boolean),
+    group_types: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    live_events_token: Schema.optional(Schema.NullOr(Schema.String)),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    uuid: Schema.optional(Schema.String),
+    api_token: Schema.optional(SensitiveString),
+    app_urls: Schema.optional(Schema.Array(Schema.NullOr(Schema.String))),
+    anonymize_ips: Schema.optional(Schema.Boolean),
+    completed_snippet_onboarding: Schema.optional(Schema.Boolean),
+    ingested_event: Schema.optional(Schema.Boolean),
+    test_account_filters: Schema.optional(Schema.Unknown),
+    test_account_filters_default_checked: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    path_cleaning_filters: Schema.optional(Schema.Unknown),
+    is_demo: Schema.optional(Schema.Boolean),
+    timezone: Schema.optional(
+      Schema.Literals([
+        "Africa/Abidjan",
+        "Africa/Accra",
+        "Africa/Addis_Ababa",
+        "Africa/Algiers",
+        "Africa/Asmara",
+        "Africa/Asmera",
+        "Africa/Bamako",
+        "Africa/Bangui",
+        "Africa/Banjul",
+        "Africa/Bissau",
+        "Africa/Blantyre",
+        "Africa/Brazzaville",
+        "Africa/Bujumbura",
+        "Africa/Cairo",
+        "Africa/Casablanca",
+        "Africa/Ceuta",
+        "Africa/Conakry",
+        "Africa/Dakar",
+        "Africa/Dar_es_Salaam",
+        "Africa/Djibouti",
+        "Africa/Douala",
+        "Africa/El_Aaiun",
+        "Africa/Freetown",
+        "Africa/Gaborone",
+        "Africa/Harare",
+        "Africa/Johannesburg",
+        "Africa/Juba",
+        "Africa/Kampala",
+        "Africa/Khartoum",
+        "Africa/Kigali",
+        "Africa/Kinshasa",
+        "Africa/Lagos",
+        "Africa/Libreville",
+        "Africa/Lome",
+        "Africa/Luanda",
+        "Africa/Lubumbashi",
+        "Africa/Lusaka",
+        "Africa/Malabo",
+        "Africa/Maputo",
+        "Africa/Maseru",
+        "Africa/Mbabane",
+        "Africa/Mogadishu",
+        "Africa/Monrovia",
+        "Africa/Nairobi",
+        "Africa/Ndjamena",
+        "Africa/Niamey",
+        "Africa/Nouakchott",
+        "Africa/Ouagadougou",
+        "Africa/Porto-Novo",
+        "Africa/Sao_Tome",
+        "Africa/Timbuktu",
+        "Africa/Tripoli",
+        "Africa/Tunis",
+        "Africa/Windhoek",
+        "America/Adak",
+        "America/Anchorage",
+        "America/Anguilla",
+        "America/Antigua",
+        "America/Araguaina",
+        "America/Argentina/Buenos_Aires",
+        "America/Argentina/Catamarca",
+        "America/Argentina/ComodRivadavia",
+        "America/Argentina/Cordoba",
+        "America/Argentina/Jujuy",
+        "America/Argentina/La_Rioja",
+        "America/Argentina/Mendoza",
+        "America/Argentina/Rio_Gallegos",
+        "America/Argentina/Salta",
+        "America/Argentina/San_Juan",
+        "America/Argentina/San_Luis",
+        "America/Argentina/Tucuman",
+        "America/Argentina/Ushuaia",
+        "America/Aruba",
+        "America/Asuncion",
+        "America/Atikokan",
+        "America/Atka",
+        "America/Bahia",
+        "America/Bahia_Banderas",
+        "America/Barbados",
+        "America/Belem",
+        "America/Belize",
+        "America/Blanc-Sablon",
+        "America/Boa_Vista",
+        "America/Bogota",
+        "America/Boise",
+        "America/Buenos_Aires",
+        "America/Cambridge_Bay",
+        "America/Campo_Grande",
+        "America/Cancun",
+        "America/Caracas",
+        "America/Catamarca",
+        "America/Cayenne",
+        "America/Cayman",
+        "America/Chicago",
+        "America/Chihuahua",
+        "America/Ciudad_Juarez",
+        "America/Coral_Harbour",
+        "America/Cordoba",
+        "America/Costa_Rica",
+        "America/Creston",
+        "America/Cuiaba",
+        "America/Curacao",
+        "America/Danmarkshavn",
+        "America/Dawson",
+        "America/Dawson_Creek",
+        "America/Denver",
+        "America/Detroit",
+        "America/Dominica",
+        "America/Edmonton",
+        "America/Eirunepe",
+        "America/El_Salvador",
+        "America/Ensenada",
+        "America/Fort_Nelson",
+        "America/Fort_Wayne",
+        "America/Fortaleza",
+        "America/Glace_Bay",
+        "America/Godthab",
+        "America/Goose_Bay",
+        "America/Grand_Turk",
+        "America/Grenada",
+        "America/Guadeloupe",
+        "America/Guatemala",
+        "America/Guayaquil",
+        "America/Guyana",
+        "America/Halifax",
+        "America/Havana",
+        "America/Hermosillo",
+        "America/Indiana/Indianapolis",
+        "America/Indiana/Knox",
+        "America/Indiana/Marengo",
+        "America/Indiana/Petersburg",
+        "America/Indiana/Tell_City",
+        "America/Indiana/Vevay",
+        "America/Indiana/Vincennes",
+        "America/Indiana/Winamac",
+        "America/Indianapolis",
+        "America/Inuvik",
+        "America/Iqaluit",
+        "America/Jamaica",
+        "America/Jujuy",
+        "America/Juneau",
+        "America/Kentucky/Louisville",
+        "America/Kentucky/Monticello",
+        "America/Knox_IN",
+        "America/Kralendijk",
+        "America/La_Paz",
+        "America/Lima",
+        "America/Los_Angeles",
+        "America/Louisville",
+        "America/Lower_Princes",
+        "America/Maceio",
+        "America/Managua",
+        "America/Manaus",
+        "America/Marigot",
+        "America/Martinique",
+        "America/Matamoros",
+        "America/Mazatlan",
+        "America/Mendoza",
+        "America/Menominee",
+        "America/Merida",
+        "America/Metlakatla",
+        "America/Mexico_City",
+        "America/Miquelon",
+        "America/Moncton",
+        "America/Monterrey",
+        "America/Montevideo",
+        "America/Montreal",
+        "America/Montserrat",
+        "America/Nassau",
+        "America/New_York",
+        "America/Nipigon",
+        "America/Nome",
+        "America/Noronha",
+        "America/North_Dakota/Beulah",
+        "America/North_Dakota/Center",
+        "America/North_Dakota/New_Salem",
+        "America/Nuuk",
+        "America/Ojinaga",
+        "America/Panama",
+        "America/Pangnirtung",
+        "America/Paramaribo",
+        "America/Phoenix",
+        "America/Port-au-Prince",
+        "America/Port_of_Spain",
+        "America/Porto_Acre",
+        "America/Porto_Velho",
+        "America/Puerto_Rico",
+        "America/Punta_Arenas",
+        "America/Rainy_River",
+        "America/Rankin_Inlet",
+        "America/Recife",
+        "America/Regina",
+        "America/Resolute",
+        "America/Rio_Branco",
+        "America/Rosario",
+        "America/Santa_Isabel",
+        "America/Santarem",
+        "America/Santiago",
+        "America/Santo_Domingo",
+        "America/Sao_Paulo",
+        "America/Scoresbysund",
+        "America/Shiprock",
+        "America/Sitka",
+        "America/St_Barthelemy",
+        "America/St_Johns",
+        "America/St_Kitts",
+        "America/St_Lucia",
+        "America/St_Thomas",
+        "America/St_Vincent",
+        "America/Swift_Current",
+        "America/Tegucigalpa",
+        "America/Thule",
+        "America/Thunder_Bay",
+        "America/Tijuana",
+        "America/Toronto",
+        "America/Tortola",
+        "America/Vancouver",
+        "America/Virgin",
+        "America/Whitehorse",
+        "America/Winnipeg",
+        "America/Yakutat",
+        "America/Yellowknife",
+        "Antarctica/Casey",
+        "Antarctica/Davis",
+        "Antarctica/DumontDUrville",
+        "Antarctica/Macquarie",
+        "Antarctica/Mawson",
+        "Antarctica/McMurdo",
+        "Antarctica/Palmer",
+        "Antarctica/Rothera",
+        "Antarctica/South_Pole",
+        "Antarctica/Syowa",
+        "Antarctica/Troll",
+        "Antarctica/Vostok",
+        "Arctic/Longyearbyen",
+        "Asia/Aden",
+        "Asia/Almaty",
+        "Asia/Amman",
+        "Asia/Anadyr",
+        "Asia/Aqtau",
+        "Asia/Aqtobe",
+        "Asia/Ashgabat",
+        "Asia/Ashkhabad",
+        "Asia/Atyrau",
+        "Asia/Baghdad",
+        "Asia/Bahrain",
+        "Asia/Baku",
+        "Asia/Bangkok",
+        "Asia/Barnaul",
+        "Asia/Beirut",
+        "Asia/Bishkek",
+        "Asia/Brunei",
+        "Asia/Calcutta",
+        "Asia/Chita",
+        "Asia/Choibalsan",
+        "Asia/Chongqing",
+        "Asia/Chungking",
+        "Asia/Colombo",
+        "Asia/Dacca",
+        "Asia/Damascus",
+        "Asia/Dhaka",
+        "Asia/Dili",
+        "Asia/Dubai",
+        "Asia/Dushanbe",
+        "Asia/Famagusta",
+        "Asia/Gaza",
+        "Asia/Harbin",
+        "Asia/Hebron",
+        "Asia/Ho_Chi_Minh",
+        "Asia/Hong_Kong",
+        "Asia/Hovd",
+        "Asia/Irkutsk",
+        "Asia/Istanbul",
+        "Asia/Jakarta",
+        "Asia/Jayapura",
+        "Asia/Jerusalem",
+        "Asia/Kabul",
+        "Asia/Kamchatka",
+        "Asia/Karachi",
+        "Asia/Kashgar",
+        "Asia/Kathmandu",
+        "Asia/Katmandu",
+        "Asia/Khandyga",
+        "Asia/Kolkata",
+        "Asia/Krasnoyarsk",
+        "Asia/Kuala_Lumpur",
+        "Asia/Kuching",
+        "Asia/Kuwait",
+        "Asia/Macao",
+        "Asia/Macau",
+        "Asia/Magadan",
+        "Asia/Makassar",
+        "Asia/Manila",
+        "Asia/Muscat",
+        "Asia/Nicosia",
+        "Asia/Novokuznetsk",
+        "Asia/Novosibirsk",
+        "Asia/Omsk",
+        "Asia/Oral",
+        "Asia/Phnom_Penh",
+        "Asia/Pontianak",
+        "Asia/Pyongyang",
+        "Asia/Qatar",
+        "Asia/Qostanay",
+        "Asia/Qyzylorda",
+        "Asia/Rangoon",
+        "Asia/Riyadh",
+        "Asia/Saigon",
+        "Asia/Sakhalin",
+        "Asia/Samarkand",
+        "Asia/Seoul",
+        "Asia/Shanghai",
+        "Asia/Singapore",
+        "Asia/Srednekolymsk",
+        "Asia/Taipei",
+        "Asia/Tashkent",
+        "Asia/Tbilisi",
+        "Asia/Tehran",
+        "Asia/Tel_Aviv",
+        "Asia/Thimbu",
+        "Asia/Thimphu",
+        "Asia/Tokyo",
+        "Asia/Tomsk",
+        "Asia/Ujung_Pandang",
+        "Asia/Ulaanbaatar",
+        "Asia/Ulan_Bator",
+        "Asia/Urumqi",
+        "Asia/Ust-Nera",
+        "Asia/Vientiane",
+        "Asia/Vladivostok",
+        "Asia/Yakutsk",
+        "Asia/Yangon",
+        "Asia/Yekaterinburg",
+        "Asia/Yerevan",
+        "Atlantic/Azores",
+        "Atlantic/Bermuda",
+        "Atlantic/Canary",
+        "Atlantic/Cape_Verde",
+        "Atlantic/Faeroe",
+        "Atlantic/Faroe",
+        "Atlantic/Jan_Mayen",
+        "Atlantic/Madeira",
+        "Atlantic/Reykjavik",
+        "Atlantic/South_Georgia",
+        "Atlantic/St_Helena",
+        "Atlantic/Stanley",
+        "Australia/ACT",
+        "Australia/Adelaide",
+        "Australia/Brisbane",
+        "Australia/Broken_Hill",
+        "Australia/Canberra",
+        "Australia/Currie",
+        "Australia/Darwin",
+        "Australia/Eucla",
+        "Australia/Hobart",
+        "Australia/LHI",
+        "Australia/Lindeman",
+        "Australia/Lord_Howe",
+        "Australia/Melbourne",
+        "Australia/NSW",
+        "Australia/North",
+        "Australia/Perth",
+        "Australia/Queensland",
+        "Australia/South",
+        "Australia/Sydney",
+        "Australia/Tasmania",
+        "Australia/Victoria",
+        "Australia/West",
+        "Australia/Yancowinna",
+        "Brazil/Acre",
+        "Brazil/DeNoronha",
+        "Brazil/East",
+        "Brazil/West",
+        "CET",
+        "CST6CDT",
+        "Canada/Atlantic",
+        "Canada/Central",
+        "Canada/Eastern",
+        "Canada/Mountain",
+        "Canada/Newfoundland",
+        "Canada/Pacific",
+        "Canada/Saskatchewan",
+        "Canada/Yukon",
+        "Chile/Continental",
+        "Chile/EasterIsland",
+        "Cuba",
+        "EET",
+        "EST",
+        "EST5EDT",
+        "Egypt",
+        "Eire",
+        "Etc/GMT",
+        "Etc/GMT+0",
+        "Etc/GMT+1",
+        "Etc/GMT+10",
+        "Etc/GMT+11",
+        "Etc/GMT+12",
+        "Etc/GMT+2",
+        "Etc/GMT+3",
+        "Etc/GMT+4",
+        "Etc/GMT+5",
+        "Etc/GMT+6",
+        "Etc/GMT+7",
+        "Etc/GMT+8",
+        "Etc/GMT+9",
+        "Etc/GMT-0",
+        "Etc/GMT-1",
+        "Etc/GMT-10",
+        "Etc/GMT-11",
+        "Etc/GMT-12",
+        "Etc/GMT-13",
+        "Etc/GMT-14",
+        "Etc/GMT-2",
+        "Etc/GMT-3",
+        "Etc/GMT-4",
+        "Etc/GMT-5",
+        "Etc/GMT-6",
+        "Etc/GMT-7",
+        "Etc/GMT-8",
+        "Etc/GMT-9",
+        "Etc/GMT0",
+        "Etc/Greenwich",
+        "Etc/UCT",
+        "Etc/UTC",
+        "Etc/Universal",
+        "Etc/Zulu",
+        "Europe/Amsterdam",
+        "Europe/Andorra",
+        "Europe/Astrakhan",
+        "Europe/Athens",
+        "Europe/Belfast",
+        "Europe/Belgrade",
+        "Europe/Berlin",
+        "Europe/Bratislava",
+        "Europe/Brussels",
+        "Europe/Bucharest",
+        "Europe/Budapest",
+        "Europe/Busingen",
+        "Europe/Chisinau",
+        "Europe/Copenhagen",
+        "Europe/Dublin",
+        "Europe/Gibraltar",
+        "Europe/Guernsey",
+        "Europe/Helsinki",
+        "Europe/Isle_of_Man",
+        "Europe/Istanbul",
+        "Europe/Jersey",
+        "Europe/Kaliningrad",
+        "Europe/Kiev",
+        "Europe/Kirov",
+        "Europe/Kyiv",
+        "Europe/Lisbon",
+        "Europe/Ljubljana",
+        "Europe/London",
+        "Europe/Luxembourg",
+        "Europe/Madrid",
+        "Europe/Malta",
+        "Europe/Mariehamn",
+        "Europe/Minsk",
+        "Europe/Monaco",
+        "Europe/Moscow",
+        "Europe/Nicosia",
+        "Europe/Oslo",
+        "Europe/Paris",
+        "Europe/Podgorica",
+        "Europe/Prague",
+        "Europe/Riga",
+        "Europe/Rome",
+        "Europe/Samara",
+        "Europe/San_Marino",
+        "Europe/Sarajevo",
+        "Europe/Saratov",
+        "Europe/Simferopol",
+        "Europe/Skopje",
+        "Europe/Sofia",
+        "Europe/Stockholm",
+        "Europe/Tallinn",
+        "Europe/Tirane",
+        "Europe/Tiraspol",
+        "Europe/Ulyanovsk",
+        "Europe/Uzhgorod",
+        "Europe/Vaduz",
+        "Europe/Vatican",
+        "Europe/Vienna",
+        "Europe/Vilnius",
+        "Europe/Volgograd",
+        "Europe/Warsaw",
+        "Europe/Zagreb",
+        "Europe/Zaporozhye",
+        "Europe/Zurich",
+        "GB",
+        "GB-Eire",
+        "GMT",
+        "GMT+0",
+        "GMT-0",
+        "GMT0",
+        "Greenwich",
+        "HST",
+        "Hongkong",
+        "Iceland",
+        "Indian/Antananarivo",
+        "Indian/Chagos",
+        "Indian/Christmas",
+        "Indian/Cocos",
+        "Indian/Comoro",
+        "Indian/Kerguelen",
+        "Indian/Mahe",
+        "Indian/Maldives",
+        "Indian/Mauritius",
+        "Indian/Mayotte",
+        "Indian/Reunion",
+        "Iran",
+        "Israel",
+        "Jamaica",
+        "Japan",
+        "Kwajalein",
+        "Libya",
+        "MET",
+        "MST",
+        "MST7MDT",
+        "Mexico/BajaNorte",
+        "Mexico/BajaSur",
+        "Mexico/General",
+        "NZ",
+        "NZ-CHAT",
+        "Navajo",
+        "PRC",
+        "PST8PDT",
+        "Pacific/Apia",
+        "Pacific/Auckland",
+        "Pacific/Bougainville",
+        "Pacific/Chatham",
+        "Pacific/Chuuk",
+        "Pacific/Easter",
+        "Pacific/Efate",
+        "Pacific/Enderbury",
+        "Pacific/Fakaofo",
+        "Pacific/Fiji",
+        "Pacific/Funafuti",
+        "Pacific/Galapagos",
+        "Pacific/Gambier",
+        "Pacific/Guadalcanal",
+        "Pacific/Guam",
+        "Pacific/Honolulu",
+        "Pacific/Johnston",
+        "Pacific/Kanton",
+        "Pacific/Kiritimati",
+        "Pacific/Kosrae",
+        "Pacific/Kwajalein",
+        "Pacific/Majuro",
+        "Pacific/Marquesas",
+        "Pacific/Midway",
+        "Pacific/Nauru",
+        "Pacific/Niue",
+        "Pacific/Norfolk",
+        "Pacific/Noumea",
+        "Pacific/Pago_Pago",
+        "Pacific/Palau",
+        "Pacific/Pitcairn",
+        "Pacific/Pohnpei",
+        "Pacific/Ponape",
+        "Pacific/Port_Moresby",
+        "Pacific/Rarotonga",
+        "Pacific/Saipan",
+        "Pacific/Samoa",
+        "Pacific/Tahiti",
+        "Pacific/Tarawa",
+        "Pacific/Tongatapu",
+        "Pacific/Truk",
+        "Pacific/Wake",
+        "Pacific/Wallis",
+        "Pacific/Yap",
+        "Poland",
+        "Portugal",
+        "ROC",
+        "ROK",
+        "Singapore",
+        "Turkey",
+        "UCT",
+        "US/Alaska",
+        "US/Aleutian",
+        "US/Arizona",
+        "US/Central",
+        "US/East-Indiana",
+        "US/Eastern",
+        "US/Hawaii",
+        "US/Indiana-Starke",
+        "US/Michigan",
+        "US/Mountain",
+        "US/Pacific",
+        "US/Samoa",
+        "UTC",
+        "Universal",
+        "W-SU",
+        "WET",
+        "Zulu",
+      ]),
+    ),
+    data_attributes: Schema.optional(Schema.Unknown),
+    person_display_name_properties: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.String)),
+    ),
+    correlation_config: Schema.optional(Schema.Unknown),
+    autocapture_opt_out: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    autocapture_exceptions_opt_in: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    autocapture_web_vitals_opt_in: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    autocapture_web_vitals_allowed_metrics: Schema.optional(Schema.Unknown),
+    autocapture_exceptions_errors_to_ignore: Schema.optional(Schema.Unknown),
+    capture_console_log_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    capture_performance_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    session_recording_opt_in: Schema.optional(Schema.Boolean),
+    session_recording_sample_rate: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    session_recording_minimum_duration_milliseconds: Schema.optional(
+      Schema.NullOr(Schema.Number),
+    ),
+    session_recording_linked_flag: Schema.optional(Schema.Unknown),
+    session_recording_network_payload_capture_config: Schema.optional(
+      Schema.Unknown,
+    ),
+    session_recording_masking_config: Schema.optional(Schema.Unknown),
+    session_recording_url_trigger_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
+    ),
+    session_recording_url_blocklist_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
+    ),
+    session_recording_event_trigger_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.String))),
+    ),
+    session_recording_trigger_match_type_config: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    session_recording_trigger_groups: Schema.optional(Schema.Unknown),
+    session_recording_retention_period: Schema.optional(
+      Schema.Literals(["30d", "90d", "1y", "5y"]),
+    ),
+    session_replay_config: Schema.optional(Schema.Unknown),
+    survey_config: Schema.optional(Schema.Unknown),
+    access_control: Schema.optional(Schema.Boolean),
+    week_start_day: Schema.optional(Schema.NullOr(Schema.Literals([0, 1]))),
+    primary_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
+    live_events_columns: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.String)),
+    ),
+    recording_domains: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.String))),
+    ),
+    person_on_events_querying_enabled: Schema.optional(Schema.Boolean),
+    inject_web_apps: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    extra_settings: Schema.optional(Schema.Unknown),
+    modifiers: Schema.optional(Schema.Unknown),
+    default_modifiers: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    has_completed_onboarding_for: Schema.optional(Schema.Unknown),
+    surveys_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    heatmaps_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    product_intents: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          product_type: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          onboarding_completed_at: Schema.optional(
+            Schema.NullOr(Schema.String),
+          ),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    flags_persistence_default: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    secret_api_token: Schema.optional(Schema.NullOr(Schema.String)),
+    secret_api_token_backup: Schema.optional(Schema.NullOr(Schema.String)),
+    receive_org_level_activity_logs: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    business_model: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["b2b", "b2c", "other"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    conversations_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    conversations_settings: Schema.optional(Schema.Unknown),
+    logs_settings: Schema.optional(Schema.Unknown),
+    proactive_tasks_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    available_setup_task_ids: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "ingest_first_event",
+          "set_up_reverse_proxy",
+          "create_first_insight",
+          "create_first_dashboard",
+          "track_custom_events",
+          "define_actions",
+          "set_up_cohorts",
+          "explore_trends_insight",
+          "create_funnel",
+          "explore_retention_insight",
+          "explore_paths_insight",
+          "explore_stickiness_insight",
+          "explore_lifecycle_insight",
+          "add_authorized_domain",
+          "set_up_web_vitals",
+          "review_web_analytics_dashboard",
+          "filter_web_analytics",
+          "set_up_web_analytics_conversion_goals",
+          "visit_web_vitals_dashboard",
+          "setup_session_recordings",
+          "watch_session_recording",
+          "configure_recording_settings",
+          "create_recording_playlist",
+          "enable_console_logs",
+          "create_feature_flag",
+          "implement_flag_in_code",
+          "update_feature_flag_release_conditions",
+          "create_multivariate_flag",
+          "set_up_flag_payloads",
+          "set_up_flag_evaluation_runtimes",
+          "create_experiment",
+          "implement_experiment_variants",
+          "launch_experiment",
+          "review_experiment_results",
+          "create_survey",
+          "launch_survey",
+          "collect_survey_responses",
+          "connect_source",
+          "run_first_query",
+          "join_external_data",
+          "create_saved_view",
+          "enable_error_tracking",
+          "upload_source_maps",
+          "view_first_error",
+          "resolve_first_error",
+          "ingest_first_llm_event",
+          "view_first_trace",
+          "track_costs",
+          "set_up_llm_evaluation",
+          "run_ai_playground",
+          "enable_revenue_analytics_viewset",
+          "connect_revenue_source",
+          "set_up_revenue_goal",
+          "enable_log_capture",
+          "view_first_logs",
+          "create_first_workflow",
+          "set_up_first_workflow_channel",
+          "configure_workflow_trigger",
+          "add_workflow_action",
+          "launch_workflow",
+          "create_first_endpoint",
+          "configure_endpoint",
+          "test_endpoint",
+          "create_early_access_feature",
+          "update_feature_stage",
+          "use_posthog_ai",
+          "use_posthog_code",
+          "use_posthog_mcp",
+          "use_posthog_in_slack",
+        ]),
+      ),
+    ),
+    is_pending_deletion: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    project_id: Schema.optional(Schema.Number),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+    managed_viewsets: Schema.optional(
+      Schema.Record(Schema.String, Schema.Boolean),
+    ),
+    revenue_analytics_config: Schema.optional(
+      Schema.Struct({
+        base_currency: Schema.optional(
+          Schema.Literals([
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BRL",
+            "BSD",
+            "BTC",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHF",
+            "CLP",
+            "CNY",
+            "COP",
+            "CRC",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LTL",
+            "LVL",
+            "LSL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MTL",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SRD",
+            "SSP",
+            "STN",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "UYU",
+            "UZS",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XCD",
+            "XOF",
+            "XPF",
+            "YER",
+            "ZAR",
+            "ZMW",
+          ]),
+        ),
+        events: Schema.optional(Schema.Unknown),
+        goals: Schema.optional(Schema.Unknown),
+        filter_test_accounts: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    marketing_analytics_config: Schema.optional(
+      Schema.Struct({
+        sources_map: Schema.optional(Schema.Unknown),
+        conversion_goals: Schema.optional(Schema.Unknown),
+        attribution_window_days: Schema.optional(Schema.Number),
+        attribution_mode: Schema.optional(
+          Schema.Literals([
+            "first_touch",
+            "last_touch",
+            "linear",
+            "time_decay",
+            "position_based",
+          ]),
+        ),
+        campaign_name_mappings: Schema.optional(Schema.Unknown),
+        custom_source_mappings: Schema.optional(Schema.Unknown),
+        campaign_field_preferences: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    customer_analytics_config: Schema.optional(
+      Schema.Struct({
+        activity_event: Schema.optional(Schema.Unknown),
+        signup_pageview_event: Schema.optional(Schema.Unknown),
+        signup_event: Schema.optional(Schema.Unknown),
+        subscription_event: Schema.optional(Schema.Unknown),
+        payment_event: Schema.optional(Schema.Unknown),
+        account_group_type_index: Schema.optional(Schema.NullOr(Schema.Number)),
+      }),
+    ),
+    workflows_config: Schema.optional(
+      Schema.Struct({
+        capture_workflows_engagement_events: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    base_currency: Schema.optional(
+      Schema.Literals([
+        "AED",
+        "AFN",
+        "ALL",
+        "AMD",
+        "ANG",
+        "AOA",
+        "ARS",
+        "AUD",
+        "AWG",
+        "AZN",
+        "BAM",
+        "BBD",
+        "BDT",
+        "BGN",
+        "BHD",
+        "BIF",
+        "BMD",
+        "BND",
+        "BOB",
+        "BRL",
+        "BSD",
+        "BTC",
+        "BTN",
+        "BWP",
+        "BYN",
+        "BZD",
+        "CAD",
+        "CDF",
+        "CHF",
+        "CLP",
+        "CNY",
+        "COP",
+        "CRC",
+        "CVE",
+        "CZK",
+        "DJF",
+        "DKK",
+        "DOP",
+        "DZD",
+        "EGP",
+        "ERN",
+        "ETB",
+        "EUR",
+        "FJD",
+        "GBP",
+        "GEL",
+        "GHS",
+        "GIP",
+        "GMD",
+        "GNF",
+        "GTQ",
+        "GYD",
+        "HKD",
+        "HNL",
+        "HRK",
+        "HTG",
+        "HUF",
+        "IDR",
+        "ILS",
+        "INR",
+        "IQD",
+        "IRR",
+        "ISK",
+        "JMD",
+        "JOD",
+        "JPY",
+        "KES",
+        "KGS",
+        "KHR",
+        "KMF",
+        "KRW",
+        "KWD",
+        "KYD",
+        "KZT",
+        "LAK",
+        "LBP",
+        "LKR",
+        "LRD",
+        "LTL",
+        "LVL",
+        "LSL",
+        "LYD",
+        "MAD",
+        "MDL",
+        "MGA",
+        "MKD",
+        "MMK",
+        "MNT",
+        "MOP",
+        "MRU",
+        "MTL",
+        "MUR",
+        "MVR",
+        "MWK",
+        "MXN",
+        "MYR",
+        "MZN",
+        "NAD",
+        "NGN",
+        "NIO",
+        "NOK",
+        "NPR",
+        "NZD",
+        "OMR",
+        "PAB",
+        "PEN",
+        "PGK",
+        "PHP",
+        "PKR",
+        "PLN",
+        "PYG",
+        "QAR",
+        "RON",
+        "RSD",
+        "RUB",
+        "RWF",
+        "SAR",
+        "SBD",
+        "SCR",
+        "SDG",
+        "SEK",
+        "SGD",
+        "SRD",
+        "SSP",
+        "STN",
+        "SYP",
+        "SZL",
+        "THB",
+        "TJS",
+        "TMT",
+        "TND",
+        "TOP",
+        "TRY",
+        "TTD",
+        "TWD",
+        "TZS",
+        "UAH",
+        "UGX",
+        "USD",
+        "UYU",
+        "UZS",
+        "VES",
+        "VND",
+        "VUV",
+        "WST",
+        "XAF",
+        "XCD",
+        "XOF",
+        "XPF",
+        "YER",
+        "ZAR",
+        "ZMW",
+      ]),
+    ),
+    capture_dead_clicks: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    cookieless_server_hash_mode: Schema.optional(
+      Schema.NullOr(Schema.Literals([0, 1, 2])),
+    ),
+    human_friendly_comparison_periods: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    feature_flag_confirmation_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    feature_flag_confirmation_message: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    default_evaluation_contexts_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    require_evaluation_contexts: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    default_data_theme: Schema.optional(Schema.NullOr(Schema.Number)),
+    onboarding_tasks: Schema.optional(Schema.Unknown),
+    web_analytics_pre_aggregated_tables_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    event_retention_months: Schema.optional(Schema.Number),
+    events_retention_enforced: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/api/organizations/{organization_id}/projects/{id}/add_product_intent/",
+    }),
+  ) as unknown as Schema.Codec<OrganizationsProjectsAddProductIntentPartialUpdateInput>;
+
+// Output Schema
+export interface OrganizationsProjectsAddProductIntentPartialUpdateOutput {
+  id?: number;
+  organization?: string;
+  name?: string;
+  product_description?: string | null;
+  created_at?: string;
+  effective_membership_level?: 1 | 8 | 15;
+  has_group_types?: boolean;
+  group_types?: Record<string, unknown>[];
+  live_events_token?: string | null;
+  updated_at?: string | null;
+  uuid?: string;
+  api_token?: Redacted.Redacted<string>;
+  app_urls?: (string | null)[];
+  anonymize_ips?: boolean;
+  completed_snippet_onboarding?: boolean;
+  ingested_event?: boolean;
+  test_account_filters?: unknown;
+  test_account_filters_default_checked?: boolean | null;
+  path_cleaning_filters?: unknown;
+  is_demo?: boolean;
+  timezone?:
+    | "Africa/Abidjan"
+    | "Africa/Accra"
+    | "Africa/Addis_Ababa"
+    | "Africa/Algiers"
+    | "Africa/Asmara"
+    | "Africa/Asmera"
+    | "Africa/Bamako"
+    | "Africa/Bangui"
+    | "Africa/Banjul"
+    | "Africa/Bissau"
+    | "Africa/Blantyre"
+    | "Africa/Brazzaville"
+    | "Africa/Bujumbura"
+    | "Africa/Cairo"
+    | "Africa/Casablanca"
+    | "Africa/Ceuta"
+    | "Africa/Conakry"
+    | "Africa/Dakar"
+    | "Africa/Dar_es_Salaam"
+    | "Africa/Djibouti"
+    | "Africa/Douala"
+    | "Africa/El_Aaiun"
+    | "Africa/Freetown"
+    | "Africa/Gaborone"
+    | "Africa/Harare"
+    | "Africa/Johannesburg"
+    | "Africa/Juba"
+    | "Africa/Kampala"
+    | "Africa/Khartoum"
+    | "Africa/Kigali"
+    | "Africa/Kinshasa"
+    | "Africa/Lagos"
+    | "Africa/Libreville"
+    | "Africa/Lome"
+    | "Africa/Luanda"
+    | "Africa/Lubumbashi"
+    | "Africa/Lusaka"
+    | "Africa/Malabo"
+    | "Africa/Maputo"
+    | "Africa/Maseru"
+    | "Africa/Mbabane"
+    | "Africa/Mogadishu"
+    | "Africa/Monrovia"
+    | "Africa/Nairobi"
+    | "Africa/Ndjamena"
+    | "Africa/Niamey"
+    | "Africa/Nouakchott"
+    | "Africa/Ouagadougou"
+    | "Africa/Porto-Novo"
+    | "Africa/Sao_Tome"
+    | "Africa/Timbuktu"
+    | "Africa/Tripoli"
+    | "Africa/Tunis"
+    | "Africa/Windhoek"
+    | "America/Adak"
+    | "America/Anchorage"
+    | "America/Anguilla"
+    | "America/Antigua"
+    | "America/Araguaina"
+    | "America/Argentina/Buenos_Aires"
+    | "America/Argentina/Catamarca"
+    | "America/Argentina/ComodRivadavia"
+    | "America/Argentina/Cordoba"
+    | "America/Argentina/Jujuy"
+    | "America/Argentina/La_Rioja"
+    | "America/Argentina/Mendoza"
+    | "America/Argentina/Rio_Gallegos"
+    | "America/Argentina/Salta"
+    | "America/Argentina/San_Juan"
+    | "America/Argentina/San_Luis"
+    | "America/Argentina/Tucuman"
+    | "America/Argentina/Ushuaia"
+    | "America/Aruba"
+    | "America/Asuncion"
+    | "America/Atikokan"
+    | "America/Atka"
+    | "America/Bahia"
+    | "America/Bahia_Banderas"
+    | "America/Barbados"
+    | "America/Belem"
+    | "America/Belize"
+    | "America/Blanc-Sablon"
+    | "America/Boa_Vista"
+    | "America/Bogota"
+    | "America/Boise"
+    | "America/Buenos_Aires"
+    | "America/Cambridge_Bay"
+    | "America/Campo_Grande"
+    | "America/Cancun"
+    | "America/Caracas"
+    | "America/Catamarca"
+    | "America/Cayenne"
+    | "America/Cayman"
+    | "America/Chicago"
+    | "America/Chihuahua"
+    | "America/Ciudad_Juarez"
+    | "America/Coral_Harbour"
+    | "America/Cordoba"
+    | "America/Costa_Rica"
+    | "America/Creston"
+    | "America/Cuiaba"
+    | "America/Curacao"
+    | "America/Danmarkshavn"
+    | "America/Dawson"
+    | "America/Dawson_Creek"
+    | "America/Denver"
+    | "America/Detroit"
+    | "America/Dominica"
+    | "America/Edmonton"
+    | "America/Eirunepe"
+    | "America/El_Salvador"
+    | "America/Ensenada"
+    | "America/Fort_Nelson"
+    | "America/Fort_Wayne"
+    | "America/Fortaleza"
+    | "America/Glace_Bay"
+    | "America/Godthab"
+    | "America/Goose_Bay"
+    | "America/Grand_Turk"
+    | "America/Grenada"
+    | "America/Guadeloupe"
+    | "America/Guatemala"
+    | "America/Guayaquil"
+    | "America/Guyana"
+    | "America/Halifax"
+    | "America/Havana"
+    | "America/Hermosillo"
+    | "America/Indiana/Indianapolis"
+    | "America/Indiana/Knox"
+    | "America/Indiana/Marengo"
+    | "America/Indiana/Petersburg"
+    | "America/Indiana/Tell_City"
+    | "America/Indiana/Vevay"
+    | "America/Indiana/Vincennes"
+    | "America/Indiana/Winamac"
+    | "America/Indianapolis"
+    | "America/Inuvik"
+    | "America/Iqaluit"
+    | "America/Jamaica"
+    | "America/Jujuy"
+    | "America/Juneau"
+    | "America/Kentucky/Louisville"
+    | "America/Kentucky/Monticello"
+    | "America/Knox_IN"
+    | "America/Kralendijk"
+    | "America/La_Paz"
+    | "America/Lima"
+    | "America/Los_Angeles"
+    | "America/Louisville"
+    | "America/Lower_Princes"
+    | "America/Maceio"
+    | "America/Managua"
+    | "America/Manaus"
+    | "America/Marigot"
+    | "America/Martinique"
+    | "America/Matamoros"
+    | "America/Mazatlan"
+    | "America/Mendoza"
+    | "America/Menominee"
+    | "America/Merida"
+    | "America/Metlakatla"
+    | "America/Mexico_City"
+    | "America/Miquelon"
+    | "America/Moncton"
+    | "America/Monterrey"
+    | "America/Montevideo"
+    | "America/Montreal"
+    | "America/Montserrat"
+    | "America/Nassau"
+    | "America/New_York"
+    | "America/Nipigon"
+    | "America/Nome"
+    | "America/Noronha"
+    | "America/North_Dakota/Beulah"
+    | "America/North_Dakota/Center"
+    | "America/North_Dakota/New_Salem"
+    | "America/Nuuk"
+    | "America/Ojinaga"
+    | "America/Panama"
+    | "America/Pangnirtung"
+    | "America/Paramaribo"
+    | "America/Phoenix"
+    | "America/Port-au-Prince"
+    | "America/Port_of_Spain"
+    | "America/Porto_Acre"
+    | "America/Porto_Velho"
+    | "America/Puerto_Rico"
+    | "America/Punta_Arenas"
+    | "America/Rainy_River"
+    | "America/Rankin_Inlet"
+    | "America/Recife"
+    | "America/Regina"
+    | "America/Resolute"
+    | "America/Rio_Branco"
+    | "America/Rosario"
+    | "America/Santa_Isabel"
+    | "America/Santarem"
+    | "America/Santiago"
+    | "America/Santo_Domingo"
+    | "America/Sao_Paulo"
+    | "America/Scoresbysund"
+    | "America/Shiprock"
+    | "America/Sitka"
+    | "America/St_Barthelemy"
+    | "America/St_Johns"
+    | "America/St_Kitts"
+    | "America/St_Lucia"
+    | "America/St_Thomas"
+    | "America/St_Vincent"
+    | "America/Swift_Current"
+    | "America/Tegucigalpa"
+    | "America/Thule"
+    | "America/Thunder_Bay"
+    | "America/Tijuana"
+    | "America/Toronto"
+    | "America/Tortola"
+    | "America/Vancouver"
+    | "America/Virgin"
+    | "America/Whitehorse"
+    | "America/Winnipeg"
+    | "America/Yakutat"
+    | "America/Yellowknife"
+    | "Antarctica/Casey"
+    | "Antarctica/Davis"
+    | "Antarctica/DumontDUrville"
+    | "Antarctica/Macquarie"
+    | "Antarctica/Mawson"
+    | "Antarctica/McMurdo"
+    | "Antarctica/Palmer"
+    | "Antarctica/Rothera"
+    | "Antarctica/South_Pole"
+    | "Antarctica/Syowa"
+    | "Antarctica/Troll"
+    | "Antarctica/Vostok"
+    | "Arctic/Longyearbyen"
+    | "Asia/Aden"
+    | "Asia/Almaty"
+    | "Asia/Amman"
+    | "Asia/Anadyr"
+    | "Asia/Aqtau"
+    | "Asia/Aqtobe"
+    | "Asia/Ashgabat"
+    | "Asia/Ashkhabad"
+    | "Asia/Atyrau"
+    | "Asia/Baghdad"
+    | "Asia/Bahrain"
+    | "Asia/Baku"
+    | "Asia/Bangkok"
+    | "Asia/Barnaul"
+    | "Asia/Beirut"
+    | "Asia/Bishkek"
+    | "Asia/Brunei"
+    | "Asia/Calcutta"
+    | "Asia/Chita"
+    | "Asia/Choibalsan"
+    | "Asia/Chongqing"
+    | "Asia/Chungking"
+    | "Asia/Colombo"
+    | "Asia/Dacca"
+    | "Asia/Damascus"
+    | "Asia/Dhaka"
+    | "Asia/Dili"
+    | "Asia/Dubai"
+    | "Asia/Dushanbe"
+    | "Asia/Famagusta"
+    | "Asia/Gaza"
+    | "Asia/Harbin"
+    | "Asia/Hebron"
+    | "Asia/Ho_Chi_Minh"
+    | "Asia/Hong_Kong"
+    | "Asia/Hovd"
+    | "Asia/Irkutsk"
+    | "Asia/Istanbul"
+    | "Asia/Jakarta"
+    | "Asia/Jayapura"
+    | "Asia/Jerusalem"
+    | "Asia/Kabul"
+    | "Asia/Kamchatka"
+    | "Asia/Karachi"
+    | "Asia/Kashgar"
+    | "Asia/Kathmandu"
+    | "Asia/Katmandu"
+    | "Asia/Khandyga"
+    | "Asia/Kolkata"
+    | "Asia/Krasnoyarsk"
+    | "Asia/Kuala_Lumpur"
+    | "Asia/Kuching"
+    | "Asia/Kuwait"
+    | "Asia/Macao"
+    | "Asia/Macau"
+    | "Asia/Magadan"
+    | "Asia/Makassar"
+    | "Asia/Manila"
+    | "Asia/Muscat"
+    | "Asia/Nicosia"
+    | "Asia/Novokuznetsk"
+    | "Asia/Novosibirsk"
+    | "Asia/Omsk"
+    | "Asia/Oral"
+    | "Asia/Phnom_Penh"
+    | "Asia/Pontianak"
+    | "Asia/Pyongyang"
+    | "Asia/Qatar"
+    | "Asia/Qostanay"
+    | "Asia/Qyzylorda"
+    | "Asia/Rangoon"
+    | "Asia/Riyadh"
+    | "Asia/Saigon"
+    | "Asia/Sakhalin"
+    | "Asia/Samarkand"
+    | "Asia/Seoul"
+    | "Asia/Shanghai"
+    | "Asia/Singapore"
+    | "Asia/Srednekolymsk"
+    | "Asia/Taipei"
+    | "Asia/Tashkent"
+    | "Asia/Tbilisi"
+    | "Asia/Tehran"
+    | "Asia/Tel_Aviv"
+    | "Asia/Thimbu"
+    | "Asia/Thimphu"
+    | "Asia/Tokyo"
+    | "Asia/Tomsk"
+    | "Asia/Ujung_Pandang"
+    | "Asia/Ulaanbaatar"
+    | "Asia/Ulan_Bator"
+    | "Asia/Urumqi"
+    | "Asia/Ust-Nera"
+    | "Asia/Vientiane"
+    | "Asia/Vladivostok"
+    | "Asia/Yakutsk"
+    | "Asia/Yangon"
+    | "Asia/Yekaterinburg"
+    | "Asia/Yerevan"
+    | "Atlantic/Azores"
+    | "Atlantic/Bermuda"
+    | "Atlantic/Canary"
+    | "Atlantic/Cape_Verde"
+    | "Atlantic/Faeroe"
+    | "Atlantic/Faroe"
+    | "Atlantic/Jan_Mayen"
+    | "Atlantic/Madeira"
+    | "Atlantic/Reykjavik"
+    | "Atlantic/South_Georgia"
+    | "Atlantic/St_Helena"
+    | "Atlantic/Stanley"
+    | "Australia/ACT"
+    | "Australia/Adelaide"
+    | "Australia/Brisbane"
+    | "Australia/Broken_Hill"
+    | "Australia/Canberra"
+    | "Australia/Currie"
+    | "Australia/Darwin"
+    | "Australia/Eucla"
+    | "Australia/Hobart"
+    | "Australia/LHI"
+    | "Australia/Lindeman"
+    | "Australia/Lord_Howe"
+    | "Australia/Melbourne"
+    | "Australia/NSW"
+    | "Australia/North"
+    | "Australia/Perth"
+    | "Australia/Queensland"
+    | "Australia/South"
+    | "Australia/Sydney"
+    | "Australia/Tasmania"
+    | "Australia/Victoria"
+    | "Australia/West"
+    | "Australia/Yancowinna"
+    | "Brazil/Acre"
+    | "Brazil/DeNoronha"
+    | "Brazil/East"
+    | "Brazil/West"
+    | "CET"
+    | "CST6CDT"
+    | "Canada/Atlantic"
+    | "Canada/Central"
+    | "Canada/Eastern"
+    | "Canada/Mountain"
+    | "Canada/Newfoundland"
+    | "Canada/Pacific"
+    | "Canada/Saskatchewan"
+    | "Canada/Yukon"
+    | "Chile/Continental"
+    | "Chile/EasterIsland"
+    | "Cuba"
+    | "EET"
+    | "EST"
+    | "EST5EDT"
+    | "Egypt"
+    | "Eire"
+    | "Etc/GMT"
+    | "Etc/GMT+0"
+    | "Etc/GMT+1"
+    | "Etc/GMT+10"
+    | "Etc/GMT+11"
+    | "Etc/GMT+12"
+    | "Etc/GMT+2"
+    | "Etc/GMT+3"
+    | "Etc/GMT+4"
+    | "Etc/GMT+5"
+    | "Etc/GMT+6"
+    | "Etc/GMT+7"
+    | "Etc/GMT+8"
+    | "Etc/GMT+9"
+    | "Etc/GMT-0"
+    | "Etc/GMT-1"
+    | "Etc/GMT-10"
+    | "Etc/GMT-11"
+    | "Etc/GMT-12"
+    | "Etc/GMT-13"
+    | "Etc/GMT-14"
+    | "Etc/GMT-2"
+    | "Etc/GMT-3"
+    | "Etc/GMT-4"
+    | "Etc/GMT-5"
+    | "Etc/GMT-6"
+    | "Etc/GMT-7"
+    | "Etc/GMT-8"
+    | "Etc/GMT-9"
+    | "Etc/GMT0"
+    | "Etc/Greenwich"
+    | "Etc/UCT"
+    | "Etc/UTC"
+    | "Etc/Universal"
+    | "Etc/Zulu"
+    | "Europe/Amsterdam"
+    | "Europe/Andorra"
+    | "Europe/Astrakhan"
+    | "Europe/Athens"
+    | "Europe/Belfast"
+    | "Europe/Belgrade"
+    | "Europe/Berlin"
+    | "Europe/Bratislava"
+    | "Europe/Brussels"
+    | "Europe/Bucharest"
+    | "Europe/Budapest"
+    | "Europe/Busingen"
+    | "Europe/Chisinau"
+    | "Europe/Copenhagen"
+    | "Europe/Dublin"
+    | "Europe/Gibraltar"
+    | "Europe/Guernsey"
+    | "Europe/Helsinki"
+    | "Europe/Isle_of_Man"
+    | "Europe/Istanbul"
+    | "Europe/Jersey"
+    | "Europe/Kaliningrad"
+    | "Europe/Kiev"
+    | "Europe/Kirov"
+    | "Europe/Kyiv"
+    | "Europe/Lisbon"
+    | "Europe/Ljubljana"
+    | "Europe/London"
+    | "Europe/Luxembourg"
+    | "Europe/Madrid"
+    | "Europe/Malta"
+    | "Europe/Mariehamn"
+    | "Europe/Minsk"
+    | "Europe/Monaco"
+    | "Europe/Moscow"
+    | "Europe/Nicosia"
+    | "Europe/Oslo"
+    | "Europe/Paris"
+    | "Europe/Podgorica"
+    | "Europe/Prague"
+    | "Europe/Riga"
+    | "Europe/Rome"
+    | "Europe/Samara"
+    | "Europe/San_Marino"
+    | "Europe/Sarajevo"
+    | "Europe/Saratov"
+    | "Europe/Simferopol"
+    | "Europe/Skopje"
+    | "Europe/Sofia"
+    | "Europe/Stockholm"
+    | "Europe/Tallinn"
+    | "Europe/Tirane"
+    | "Europe/Tiraspol"
+    | "Europe/Ulyanovsk"
+    | "Europe/Uzhgorod"
+    | "Europe/Vaduz"
+    | "Europe/Vatican"
+    | "Europe/Vienna"
+    | "Europe/Vilnius"
+    | "Europe/Volgograd"
+    | "Europe/Warsaw"
+    | "Europe/Zagreb"
+    | "Europe/Zaporozhye"
+    | "Europe/Zurich"
+    | "GB"
+    | "GB-Eire"
+    | "GMT"
+    | "GMT+0"
+    | "GMT-0"
+    | "GMT0"
+    | "Greenwich"
+    | "HST"
+    | "Hongkong"
+    | "Iceland"
+    | "Indian/Antananarivo"
+    | "Indian/Chagos"
+    | "Indian/Christmas"
+    | "Indian/Cocos"
+    | "Indian/Comoro"
+    | "Indian/Kerguelen"
+    | "Indian/Mahe"
+    | "Indian/Maldives"
+    | "Indian/Mauritius"
+    | "Indian/Mayotte"
+    | "Indian/Reunion"
+    | "Iran"
+    | "Israel"
+    | "Jamaica"
+    | "Japan"
+    | "Kwajalein"
+    | "Libya"
+    | "MET"
+    | "MST"
+    | "MST7MDT"
+    | "Mexico/BajaNorte"
+    | "Mexico/BajaSur"
+    | "Mexico/General"
+    | "NZ"
+    | "NZ-CHAT"
+    | "Navajo"
+    | "PRC"
+    | "PST8PDT"
+    | "Pacific/Apia"
+    | "Pacific/Auckland"
+    | "Pacific/Bougainville"
+    | "Pacific/Chatham"
+    | "Pacific/Chuuk"
+    | "Pacific/Easter"
+    | "Pacific/Efate"
+    | "Pacific/Enderbury"
+    | "Pacific/Fakaofo"
+    | "Pacific/Fiji"
+    | "Pacific/Funafuti"
+    | "Pacific/Galapagos"
+    | "Pacific/Gambier"
+    | "Pacific/Guadalcanal"
+    | "Pacific/Guam"
+    | "Pacific/Honolulu"
+    | "Pacific/Johnston"
+    | "Pacific/Kanton"
+    | "Pacific/Kiritimati"
+    | "Pacific/Kosrae"
+    | "Pacific/Kwajalein"
+    | "Pacific/Majuro"
+    | "Pacific/Marquesas"
+    | "Pacific/Midway"
+    | "Pacific/Nauru"
+    | "Pacific/Niue"
+    | "Pacific/Norfolk"
+    | "Pacific/Noumea"
+    | "Pacific/Pago_Pago"
+    | "Pacific/Palau"
+    | "Pacific/Pitcairn"
+    | "Pacific/Pohnpei"
+    | "Pacific/Ponape"
+    | "Pacific/Port_Moresby"
+    | "Pacific/Rarotonga"
+    | "Pacific/Saipan"
+    | "Pacific/Samoa"
+    | "Pacific/Tahiti"
+    | "Pacific/Tarawa"
+    | "Pacific/Tongatapu"
+    | "Pacific/Truk"
+    | "Pacific/Wake"
+    | "Pacific/Wallis"
+    | "Pacific/Yap"
+    | "Poland"
+    | "Portugal"
+    | "ROC"
+    | "ROK"
+    | "Singapore"
+    | "Turkey"
+    | "UCT"
+    | "US/Alaska"
+    | "US/Aleutian"
+    | "US/Arizona"
+    | "US/Central"
+    | "US/East-Indiana"
+    | "US/Eastern"
+    | "US/Hawaii"
+    | "US/Indiana-Starke"
+    | "US/Michigan"
+    | "US/Mountain"
+    | "US/Pacific"
+    | "US/Samoa"
+    | "UTC"
+    | "Universal"
+    | "W-SU"
+    | "WET"
+    | "Zulu";
+  data_attributes?: unknown;
+  person_display_name_properties?: string[] | null;
+  correlation_config?: unknown;
+  autocapture_opt_out?: boolean | null;
+  autocapture_exceptions_opt_in?: boolean | null;
+  autocapture_web_vitals_opt_in?: boolean | null;
+  autocapture_web_vitals_allowed_metrics?: unknown;
+  autocapture_exceptions_errors_to_ignore?: unknown;
+  capture_console_log_opt_in?: boolean | null;
+  capture_performance_opt_in?: boolean | null;
+  session_recording_opt_in?: boolean;
+  session_recording_sample_rate?: string | null;
+  session_recording_minimum_duration_milliseconds?: number | null;
+  session_recording_linked_flag?: unknown;
+  session_recording_network_payload_capture_config?: unknown;
+  session_recording_masking_config?: unknown;
+  session_recording_url_trigger_config?: unknown[] | null;
+  session_recording_url_blocklist_config?: unknown[] | null;
+  session_recording_event_trigger_config?: (string | null)[] | null;
+  session_recording_trigger_match_type_config?: string | null;
+  session_recording_trigger_groups?: unknown;
+  session_recording_retention_period?: "30d" | "90d" | "1y" | "5y";
+  session_replay_config?: unknown;
+  survey_config?: unknown;
+  access_control?: boolean;
+  week_start_day?: 0 | 1 | null;
+  primary_dashboard?: number | null;
+  live_events_columns?: string[] | null;
+  recording_domains?: (string | null)[] | null;
+  person_on_events_querying_enabled?: boolean;
+  inject_web_apps?: boolean | null;
+  extra_settings?: unknown;
+  modifiers?: unknown;
+  default_modifiers?: Record<string, unknown>;
+  has_completed_onboarding_for?: unknown;
+  surveys_opt_in?: boolean | null;
+  heatmaps_opt_in?: boolean | null;
+  product_intents?: {
+    product_type?: string;
+    created_at?: string;
+    onboarding_completed_at?: string | null;
+    updated_at?: string;
+  }[];
+  flags_persistence_default?: boolean | null;
+  secret_api_token?: string | null;
+  secret_api_token_backup?: string | null;
+  receive_org_level_activity_logs?: boolean | null;
+  business_model?: "b2b" | "b2c" | "other" | "" | null;
+  conversations_enabled?: boolean | null;
+  conversations_settings?: unknown;
+  logs_settings?: unknown;
+  proactive_tasks_enabled?: boolean | null;
+  available_setup_task_ids?: (
+    | "ingest_first_event"
+    | "set_up_reverse_proxy"
+    | "create_first_insight"
+    | "create_first_dashboard"
+    | "track_custom_events"
+    | "define_actions"
+    | "set_up_cohorts"
+    | "explore_trends_insight"
+    | "create_funnel"
+    | "explore_retention_insight"
+    | "explore_paths_insight"
+    | "explore_stickiness_insight"
+    | "explore_lifecycle_insight"
+    | "add_authorized_domain"
+    | "set_up_web_vitals"
+    | "review_web_analytics_dashboard"
+    | "filter_web_analytics"
+    | "set_up_web_analytics_conversion_goals"
+    | "visit_web_vitals_dashboard"
+    | "setup_session_recordings"
+    | "watch_session_recording"
+    | "configure_recording_settings"
+    | "create_recording_playlist"
+    | "enable_console_logs"
+    | "create_feature_flag"
+    | "implement_flag_in_code"
+    | "update_feature_flag_release_conditions"
+    | "create_multivariate_flag"
+    | "set_up_flag_payloads"
+    | "set_up_flag_evaluation_runtimes"
+    | "create_experiment"
+    | "implement_experiment_variants"
+    | "launch_experiment"
+    | "review_experiment_results"
+    | "create_survey"
+    | "launch_survey"
+    | "collect_survey_responses"
+    | "connect_source"
+    | "run_first_query"
+    | "join_external_data"
+    | "create_saved_view"
+    | "enable_error_tracking"
+    | "upload_source_maps"
+    | "view_first_error"
+    | "resolve_first_error"
+    | "ingest_first_llm_event"
+    | "view_first_trace"
+    | "track_costs"
+    | "set_up_llm_evaluation"
+    | "run_ai_playground"
+    | "enable_revenue_analytics_viewset"
+    | "connect_revenue_source"
+    | "set_up_revenue_goal"
+    | "enable_log_capture"
+    | "view_first_logs"
+    | "create_first_workflow"
+    | "set_up_first_workflow_channel"
+    | "configure_workflow_trigger"
+    | "add_workflow_action"
+    | "launch_workflow"
+    | "create_first_endpoint"
+    | "configure_endpoint"
+    | "test_endpoint"
+    | "create_early_access_feature"
+    | "update_feature_stage"
+    | "use_posthog_ai"
+    | "use_posthog_code"
+    | "use_posthog_mcp"
+    | "use_posthog_in_slack"
+  )[];
+  is_pending_deletion?: boolean | null;
+  project_id?: number;
+  user_access_level?: string | null;
+  managed_viewsets?: Record<string, boolean>;
+  revenue_analytics_config?: {
+    base_currency?:
+      | "AED"
+      | "AFN"
+      | "ALL"
+      | "AMD"
+      | "ANG"
+      | "AOA"
+      | "ARS"
+      | "AUD"
+      | "AWG"
+      | "AZN"
+      | "BAM"
+      | "BBD"
+      | "BDT"
+      | "BGN"
+      | "BHD"
+      | "BIF"
+      | "BMD"
+      | "BND"
+      | "BOB"
+      | "BRL"
+      | "BSD"
+      | "BTC"
+      | "BTN"
+      | "BWP"
+      | "BYN"
+      | "BZD"
+      | "CAD"
+      | "CDF"
+      | "CHF"
+      | "CLP"
+      | "CNY"
+      | "COP"
+      | "CRC"
+      | "CVE"
+      | "CZK"
+      | "DJF"
+      | "DKK"
+      | "DOP"
+      | "DZD"
+      | "EGP"
+      | "ERN"
+      | "ETB"
+      | "EUR"
+      | "FJD"
+      | "GBP"
+      | "GEL"
+      | "GHS"
+      | "GIP"
+      | "GMD"
+      | "GNF"
+      | "GTQ"
+      | "GYD"
+      | "HKD"
+      | "HNL"
+      | "HRK"
+      | "HTG"
+      | "HUF"
+      | "IDR"
+      | "ILS"
+      | "INR"
+      | "IQD"
+      | "IRR"
+      | "ISK"
+      | "JMD"
+      | "JOD"
+      | "JPY"
+      | "KES"
+      | "KGS"
+      | "KHR"
+      | "KMF"
+      | "KRW"
+      | "KWD"
+      | "KYD"
+      | "KZT"
+      | "LAK"
+      | "LBP"
+      | "LKR"
+      | "LRD"
+      | "LTL"
+      | "LVL"
+      | "LSL"
+      | "LYD"
+      | "MAD"
+      | "MDL"
+      | "MGA"
+      | "MKD"
+      | "MMK"
+      | "MNT"
+      | "MOP"
+      | "MRU"
+      | "MTL"
+      | "MUR"
+      | "MVR"
+      | "MWK"
+      | "MXN"
+      | "MYR"
+      | "MZN"
+      | "NAD"
+      | "NGN"
+      | "NIO"
+      | "NOK"
+      | "NPR"
+      | "NZD"
+      | "OMR"
+      | "PAB"
+      | "PEN"
+      | "PGK"
+      | "PHP"
+      | "PKR"
+      | "PLN"
+      | "PYG"
+      | "QAR"
+      | "RON"
+      | "RSD"
+      | "RUB"
+      | "RWF"
+      | "SAR"
+      | "SBD"
+      | "SCR"
+      | "SDG"
+      | "SEK"
+      | "SGD"
+      | "SRD"
+      | "SSP"
+      | "STN"
+      | "SYP"
+      | "SZL"
+      | "THB"
+      | "TJS"
+      | "TMT"
+      | "TND"
+      | "TOP"
+      | "TRY"
+      | "TTD"
+      | "TWD"
+      | "TZS"
+      | "UAH"
+      | "UGX"
+      | "USD"
+      | "UYU"
+      | "UZS"
+      | "VES"
+      | "VND"
+      | "VUV"
+      | "WST"
+      | "XAF"
+      | "XCD"
+      | "XOF"
+      | "XPF"
+      | "YER"
+      | "ZAR"
+      | "ZMW";
+    events?: unknown;
+    goals?: unknown;
+    filter_test_accounts?: boolean;
+  };
+  marketing_analytics_config?: {
+    sources_map?: unknown;
+    conversion_goals?: unknown;
+    attribution_window_days?: number;
+    attribution_mode?:
+      | "first_touch"
+      | "last_touch"
+      | "linear"
+      | "time_decay"
+      | "position_based";
+    campaign_name_mappings?: unknown;
+    custom_source_mappings?: unknown;
+    campaign_field_preferences?: unknown;
+  };
+  customer_analytics_config?: {
+    activity_event?: unknown;
+    signup_pageview_event?: unknown;
+    signup_event?: unknown;
+    subscription_event?: unknown;
+    payment_event?: unknown;
+    account_group_type_index?: number | null;
+  };
+  workflows_config?: { capture_workflows_engagement_events?: boolean };
+  base_currency?:
+    | "AED"
+    | "AFN"
+    | "ALL"
+    | "AMD"
+    | "ANG"
+    | "AOA"
+    | "ARS"
+    | "AUD"
+    | "AWG"
+    | "AZN"
+    | "BAM"
+    | "BBD"
+    | "BDT"
+    | "BGN"
+    | "BHD"
+    | "BIF"
+    | "BMD"
+    | "BND"
+    | "BOB"
+    | "BRL"
+    | "BSD"
+    | "BTC"
+    | "BTN"
+    | "BWP"
+    | "BYN"
+    | "BZD"
+    | "CAD"
+    | "CDF"
+    | "CHF"
+    | "CLP"
+    | "CNY"
+    | "COP"
+    | "CRC"
+    | "CVE"
+    | "CZK"
+    | "DJF"
+    | "DKK"
+    | "DOP"
+    | "DZD"
+    | "EGP"
+    | "ERN"
+    | "ETB"
+    | "EUR"
+    | "FJD"
+    | "GBP"
+    | "GEL"
+    | "GHS"
+    | "GIP"
+    | "GMD"
+    | "GNF"
+    | "GTQ"
+    | "GYD"
+    | "HKD"
+    | "HNL"
+    | "HRK"
+    | "HTG"
+    | "HUF"
+    | "IDR"
+    | "ILS"
+    | "INR"
+    | "IQD"
+    | "IRR"
+    | "ISK"
+    | "JMD"
+    | "JOD"
+    | "JPY"
+    | "KES"
+    | "KGS"
+    | "KHR"
+    | "KMF"
+    | "KRW"
+    | "KWD"
+    | "KYD"
+    | "KZT"
+    | "LAK"
+    | "LBP"
+    | "LKR"
+    | "LRD"
+    | "LTL"
+    | "LVL"
+    | "LSL"
+    | "LYD"
+    | "MAD"
+    | "MDL"
+    | "MGA"
+    | "MKD"
+    | "MMK"
+    | "MNT"
+    | "MOP"
+    | "MRU"
+    | "MTL"
+    | "MUR"
+    | "MVR"
+    | "MWK"
+    | "MXN"
+    | "MYR"
+    | "MZN"
+    | "NAD"
+    | "NGN"
+    | "NIO"
+    | "NOK"
+    | "NPR"
+    | "NZD"
+    | "OMR"
+    | "PAB"
+    | "PEN"
+    | "PGK"
+    | "PHP"
+    | "PKR"
+    | "PLN"
+    | "PYG"
+    | "QAR"
+    | "RON"
+    | "RSD"
+    | "RUB"
+    | "RWF"
+    | "SAR"
+    | "SBD"
+    | "SCR"
+    | "SDG"
+    | "SEK"
+    | "SGD"
+    | "SRD"
+    | "SSP"
+    | "STN"
+    | "SYP"
+    | "SZL"
+    | "THB"
+    | "TJS"
+    | "TMT"
+    | "TND"
+    | "TOP"
+    | "TRY"
+    | "TTD"
+    | "TWD"
+    | "TZS"
+    | "UAH"
+    | "UGX"
+    | "USD"
+    | "UYU"
+    | "UZS"
+    | "VES"
+    | "VND"
+    | "VUV"
+    | "WST"
+    | "XAF"
+    | "XCD"
+    | "XOF"
+    | "XPF"
+    | "YER"
+    | "ZAR"
+    | "ZMW";
+  capture_dead_clicks?: boolean | null;
+  cookieless_server_hash_mode?: 0 | 1 | 2 | null;
+  human_friendly_comparison_periods?: boolean | null;
+  feature_flag_confirmation_enabled?: boolean | null;
+  feature_flag_confirmation_message?: string | null;
+  default_evaluation_contexts_enabled?: boolean | null;
+  require_evaluation_contexts?: boolean | null;
+  default_data_theme?: number | null;
+  onboarding_tasks?: unknown;
+  web_analytics_pre_aggregated_tables_enabled?: boolean | null;
+  event_retention_months?: number;
+  events_retention_enforced?: boolean;
+}
+export const OrganizationsProjectsAddProductIntentPartialUpdateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.Number),
+    organization: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    product_description: Schema.optional(Schema.NullOr(Schema.String)),
+    created_at: Schema.optional(Schema.String),
+    effective_membership_level: Schema.optional(Schema.Literals([1, 8, 15])),
+    has_group_types: Schema.optional(Schema.Boolean),
+    group_types: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    live_events_token: Schema.optional(Schema.NullOr(Schema.String)),
+    updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    uuid: Schema.optional(Schema.String),
+    api_token: Schema.optional(SensitiveOutputString),
+    app_urls: Schema.optional(Schema.Array(Schema.NullOr(Schema.String))),
+    anonymize_ips: Schema.optional(Schema.Boolean),
+    completed_snippet_onboarding: Schema.optional(Schema.Boolean),
+    ingested_event: Schema.optional(Schema.Boolean),
+    test_account_filters: Schema.optional(Schema.Unknown),
+    test_account_filters_default_checked: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    path_cleaning_filters: Schema.optional(Schema.Unknown),
+    is_demo: Schema.optional(Schema.Boolean),
+    timezone: Schema.optional(
+      Schema.Literals([
+        "Africa/Abidjan",
+        "Africa/Accra",
+        "Africa/Addis_Ababa",
+        "Africa/Algiers",
+        "Africa/Asmara",
+        "Africa/Asmera",
+        "Africa/Bamako",
+        "Africa/Bangui",
+        "Africa/Banjul",
+        "Africa/Bissau",
+        "Africa/Blantyre",
+        "Africa/Brazzaville",
+        "Africa/Bujumbura",
+        "Africa/Cairo",
+        "Africa/Casablanca",
+        "Africa/Ceuta",
+        "Africa/Conakry",
+        "Africa/Dakar",
+        "Africa/Dar_es_Salaam",
+        "Africa/Djibouti",
+        "Africa/Douala",
+        "Africa/El_Aaiun",
+        "Africa/Freetown",
+        "Africa/Gaborone",
+        "Africa/Harare",
+        "Africa/Johannesburg",
+        "Africa/Juba",
+        "Africa/Kampala",
+        "Africa/Khartoum",
+        "Africa/Kigali",
+        "Africa/Kinshasa",
+        "Africa/Lagos",
+        "Africa/Libreville",
+        "Africa/Lome",
+        "Africa/Luanda",
+        "Africa/Lubumbashi",
+        "Africa/Lusaka",
+        "Africa/Malabo",
+        "Africa/Maputo",
+        "Africa/Maseru",
+        "Africa/Mbabane",
+        "Africa/Mogadishu",
+        "Africa/Monrovia",
+        "Africa/Nairobi",
+        "Africa/Ndjamena",
+        "Africa/Niamey",
+        "Africa/Nouakchott",
+        "Africa/Ouagadougou",
+        "Africa/Porto-Novo",
+        "Africa/Sao_Tome",
+        "Africa/Timbuktu",
+        "Africa/Tripoli",
+        "Africa/Tunis",
+        "Africa/Windhoek",
+        "America/Adak",
+        "America/Anchorage",
+        "America/Anguilla",
+        "America/Antigua",
+        "America/Araguaina",
+        "America/Argentina/Buenos_Aires",
+        "America/Argentina/Catamarca",
+        "America/Argentina/ComodRivadavia",
+        "America/Argentina/Cordoba",
+        "America/Argentina/Jujuy",
+        "America/Argentina/La_Rioja",
+        "America/Argentina/Mendoza",
+        "America/Argentina/Rio_Gallegos",
+        "America/Argentina/Salta",
+        "America/Argentina/San_Juan",
+        "America/Argentina/San_Luis",
+        "America/Argentina/Tucuman",
+        "America/Argentina/Ushuaia",
+        "America/Aruba",
+        "America/Asuncion",
+        "America/Atikokan",
+        "America/Atka",
+        "America/Bahia",
+        "America/Bahia_Banderas",
+        "America/Barbados",
+        "America/Belem",
+        "America/Belize",
+        "America/Blanc-Sablon",
+        "America/Boa_Vista",
+        "America/Bogota",
+        "America/Boise",
+        "America/Buenos_Aires",
+        "America/Cambridge_Bay",
+        "America/Campo_Grande",
+        "America/Cancun",
+        "America/Caracas",
+        "America/Catamarca",
+        "America/Cayenne",
+        "America/Cayman",
+        "America/Chicago",
+        "America/Chihuahua",
+        "America/Ciudad_Juarez",
+        "America/Coral_Harbour",
+        "America/Cordoba",
+        "America/Costa_Rica",
+        "America/Creston",
+        "America/Cuiaba",
+        "America/Curacao",
+        "America/Danmarkshavn",
+        "America/Dawson",
+        "America/Dawson_Creek",
+        "America/Denver",
+        "America/Detroit",
+        "America/Dominica",
+        "America/Edmonton",
+        "America/Eirunepe",
+        "America/El_Salvador",
+        "America/Ensenada",
+        "America/Fort_Nelson",
+        "America/Fort_Wayne",
+        "America/Fortaleza",
+        "America/Glace_Bay",
+        "America/Godthab",
+        "America/Goose_Bay",
+        "America/Grand_Turk",
+        "America/Grenada",
+        "America/Guadeloupe",
+        "America/Guatemala",
+        "America/Guayaquil",
+        "America/Guyana",
+        "America/Halifax",
+        "America/Havana",
+        "America/Hermosillo",
+        "America/Indiana/Indianapolis",
+        "America/Indiana/Knox",
+        "America/Indiana/Marengo",
+        "America/Indiana/Petersburg",
+        "America/Indiana/Tell_City",
+        "America/Indiana/Vevay",
+        "America/Indiana/Vincennes",
+        "America/Indiana/Winamac",
+        "America/Indianapolis",
+        "America/Inuvik",
+        "America/Iqaluit",
+        "America/Jamaica",
+        "America/Jujuy",
+        "America/Juneau",
+        "America/Kentucky/Louisville",
+        "America/Kentucky/Monticello",
+        "America/Knox_IN",
+        "America/Kralendijk",
+        "America/La_Paz",
+        "America/Lima",
+        "America/Los_Angeles",
+        "America/Louisville",
+        "America/Lower_Princes",
+        "America/Maceio",
+        "America/Managua",
+        "America/Manaus",
+        "America/Marigot",
+        "America/Martinique",
+        "America/Matamoros",
+        "America/Mazatlan",
+        "America/Mendoza",
+        "America/Menominee",
+        "America/Merida",
+        "America/Metlakatla",
+        "America/Mexico_City",
+        "America/Miquelon",
+        "America/Moncton",
+        "America/Monterrey",
+        "America/Montevideo",
+        "America/Montreal",
+        "America/Montserrat",
+        "America/Nassau",
+        "America/New_York",
+        "America/Nipigon",
+        "America/Nome",
+        "America/Noronha",
+        "America/North_Dakota/Beulah",
+        "America/North_Dakota/Center",
+        "America/North_Dakota/New_Salem",
+        "America/Nuuk",
+        "America/Ojinaga",
+        "America/Panama",
+        "America/Pangnirtung",
+        "America/Paramaribo",
+        "America/Phoenix",
+        "America/Port-au-Prince",
+        "America/Port_of_Spain",
+        "America/Porto_Acre",
+        "America/Porto_Velho",
+        "America/Puerto_Rico",
+        "America/Punta_Arenas",
+        "America/Rainy_River",
+        "America/Rankin_Inlet",
+        "America/Recife",
+        "America/Regina",
+        "America/Resolute",
+        "America/Rio_Branco",
+        "America/Rosario",
+        "America/Santa_Isabel",
+        "America/Santarem",
+        "America/Santiago",
+        "America/Santo_Domingo",
+        "America/Sao_Paulo",
+        "America/Scoresbysund",
+        "America/Shiprock",
+        "America/Sitka",
+        "America/St_Barthelemy",
+        "America/St_Johns",
+        "America/St_Kitts",
+        "America/St_Lucia",
+        "America/St_Thomas",
+        "America/St_Vincent",
+        "America/Swift_Current",
+        "America/Tegucigalpa",
+        "America/Thule",
+        "America/Thunder_Bay",
+        "America/Tijuana",
+        "America/Toronto",
+        "America/Tortola",
+        "America/Vancouver",
+        "America/Virgin",
+        "America/Whitehorse",
+        "America/Winnipeg",
+        "America/Yakutat",
+        "America/Yellowknife",
+        "Antarctica/Casey",
+        "Antarctica/Davis",
+        "Antarctica/DumontDUrville",
+        "Antarctica/Macquarie",
+        "Antarctica/Mawson",
+        "Antarctica/McMurdo",
+        "Antarctica/Palmer",
+        "Antarctica/Rothera",
+        "Antarctica/South_Pole",
+        "Antarctica/Syowa",
+        "Antarctica/Troll",
+        "Antarctica/Vostok",
+        "Arctic/Longyearbyen",
+        "Asia/Aden",
+        "Asia/Almaty",
+        "Asia/Amman",
+        "Asia/Anadyr",
+        "Asia/Aqtau",
+        "Asia/Aqtobe",
+        "Asia/Ashgabat",
+        "Asia/Ashkhabad",
+        "Asia/Atyrau",
+        "Asia/Baghdad",
+        "Asia/Bahrain",
+        "Asia/Baku",
+        "Asia/Bangkok",
+        "Asia/Barnaul",
+        "Asia/Beirut",
+        "Asia/Bishkek",
+        "Asia/Brunei",
+        "Asia/Calcutta",
+        "Asia/Chita",
+        "Asia/Choibalsan",
+        "Asia/Chongqing",
+        "Asia/Chungking",
+        "Asia/Colombo",
+        "Asia/Dacca",
+        "Asia/Damascus",
+        "Asia/Dhaka",
+        "Asia/Dili",
+        "Asia/Dubai",
+        "Asia/Dushanbe",
+        "Asia/Famagusta",
+        "Asia/Gaza",
+        "Asia/Harbin",
+        "Asia/Hebron",
+        "Asia/Ho_Chi_Minh",
+        "Asia/Hong_Kong",
+        "Asia/Hovd",
+        "Asia/Irkutsk",
+        "Asia/Istanbul",
+        "Asia/Jakarta",
+        "Asia/Jayapura",
+        "Asia/Jerusalem",
+        "Asia/Kabul",
+        "Asia/Kamchatka",
+        "Asia/Karachi",
+        "Asia/Kashgar",
+        "Asia/Kathmandu",
+        "Asia/Katmandu",
+        "Asia/Khandyga",
+        "Asia/Kolkata",
+        "Asia/Krasnoyarsk",
+        "Asia/Kuala_Lumpur",
+        "Asia/Kuching",
+        "Asia/Kuwait",
+        "Asia/Macao",
+        "Asia/Macau",
+        "Asia/Magadan",
+        "Asia/Makassar",
+        "Asia/Manila",
+        "Asia/Muscat",
+        "Asia/Nicosia",
+        "Asia/Novokuznetsk",
+        "Asia/Novosibirsk",
+        "Asia/Omsk",
+        "Asia/Oral",
+        "Asia/Phnom_Penh",
+        "Asia/Pontianak",
+        "Asia/Pyongyang",
+        "Asia/Qatar",
+        "Asia/Qostanay",
+        "Asia/Qyzylorda",
+        "Asia/Rangoon",
+        "Asia/Riyadh",
+        "Asia/Saigon",
+        "Asia/Sakhalin",
+        "Asia/Samarkand",
+        "Asia/Seoul",
+        "Asia/Shanghai",
+        "Asia/Singapore",
+        "Asia/Srednekolymsk",
+        "Asia/Taipei",
+        "Asia/Tashkent",
+        "Asia/Tbilisi",
+        "Asia/Tehran",
+        "Asia/Tel_Aviv",
+        "Asia/Thimbu",
+        "Asia/Thimphu",
+        "Asia/Tokyo",
+        "Asia/Tomsk",
+        "Asia/Ujung_Pandang",
+        "Asia/Ulaanbaatar",
+        "Asia/Ulan_Bator",
+        "Asia/Urumqi",
+        "Asia/Ust-Nera",
+        "Asia/Vientiane",
+        "Asia/Vladivostok",
+        "Asia/Yakutsk",
+        "Asia/Yangon",
+        "Asia/Yekaterinburg",
+        "Asia/Yerevan",
+        "Atlantic/Azores",
+        "Atlantic/Bermuda",
+        "Atlantic/Canary",
+        "Atlantic/Cape_Verde",
+        "Atlantic/Faeroe",
+        "Atlantic/Faroe",
+        "Atlantic/Jan_Mayen",
+        "Atlantic/Madeira",
+        "Atlantic/Reykjavik",
+        "Atlantic/South_Georgia",
+        "Atlantic/St_Helena",
+        "Atlantic/Stanley",
+        "Australia/ACT",
+        "Australia/Adelaide",
+        "Australia/Brisbane",
+        "Australia/Broken_Hill",
+        "Australia/Canberra",
+        "Australia/Currie",
+        "Australia/Darwin",
+        "Australia/Eucla",
+        "Australia/Hobart",
+        "Australia/LHI",
+        "Australia/Lindeman",
+        "Australia/Lord_Howe",
+        "Australia/Melbourne",
+        "Australia/NSW",
+        "Australia/North",
+        "Australia/Perth",
+        "Australia/Queensland",
+        "Australia/South",
+        "Australia/Sydney",
+        "Australia/Tasmania",
+        "Australia/Victoria",
+        "Australia/West",
+        "Australia/Yancowinna",
+        "Brazil/Acre",
+        "Brazil/DeNoronha",
+        "Brazil/East",
+        "Brazil/West",
+        "CET",
+        "CST6CDT",
+        "Canada/Atlantic",
+        "Canada/Central",
+        "Canada/Eastern",
+        "Canada/Mountain",
+        "Canada/Newfoundland",
+        "Canada/Pacific",
+        "Canada/Saskatchewan",
+        "Canada/Yukon",
+        "Chile/Continental",
+        "Chile/EasterIsland",
+        "Cuba",
+        "EET",
+        "EST",
+        "EST5EDT",
+        "Egypt",
+        "Eire",
+        "Etc/GMT",
+        "Etc/GMT+0",
+        "Etc/GMT+1",
+        "Etc/GMT+10",
+        "Etc/GMT+11",
+        "Etc/GMT+12",
+        "Etc/GMT+2",
+        "Etc/GMT+3",
+        "Etc/GMT+4",
+        "Etc/GMT+5",
+        "Etc/GMT+6",
+        "Etc/GMT+7",
+        "Etc/GMT+8",
+        "Etc/GMT+9",
+        "Etc/GMT-0",
+        "Etc/GMT-1",
+        "Etc/GMT-10",
+        "Etc/GMT-11",
+        "Etc/GMT-12",
+        "Etc/GMT-13",
+        "Etc/GMT-14",
+        "Etc/GMT-2",
+        "Etc/GMT-3",
+        "Etc/GMT-4",
+        "Etc/GMT-5",
+        "Etc/GMT-6",
+        "Etc/GMT-7",
+        "Etc/GMT-8",
+        "Etc/GMT-9",
+        "Etc/GMT0",
+        "Etc/Greenwich",
+        "Etc/UCT",
+        "Etc/UTC",
+        "Etc/Universal",
+        "Etc/Zulu",
+        "Europe/Amsterdam",
+        "Europe/Andorra",
+        "Europe/Astrakhan",
+        "Europe/Athens",
+        "Europe/Belfast",
+        "Europe/Belgrade",
+        "Europe/Berlin",
+        "Europe/Bratislava",
+        "Europe/Brussels",
+        "Europe/Bucharest",
+        "Europe/Budapest",
+        "Europe/Busingen",
+        "Europe/Chisinau",
+        "Europe/Copenhagen",
+        "Europe/Dublin",
+        "Europe/Gibraltar",
+        "Europe/Guernsey",
+        "Europe/Helsinki",
+        "Europe/Isle_of_Man",
+        "Europe/Istanbul",
+        "Europe/Jersey",
+        "Europe/Kaliningrad",
+        "Europe/Kiev",
+        "Europe/Kirov",
+        "Europe/Kyiv",
+        "Europe/Lisbon",
+        "Europe/Ljubljana",
+        "Europe/London",
+        "Europe/Luxembourg",
+        "Europe/Madrid",
+        "Europe/Malta",
+        "Europe/Mariehamn",
+        "Europe/Minsk",
+        "Europe/Monaco",
+        "Europe/Moscow",
+        "Europe/Nicosia",
+        "Europe/Oslo",
+        "Europe/Paris",
+        "Europe/Podgorica",
+        "Europe/Prague",
+        "Europe/Riga",
+        "Europe/Rome",
+        "Europe/Samara",
+        "Europe/San_Marino",
+        "Europe/Sarajevo",
+        "Europe/Saratov",
+        "Europe/Simferopol",
+        "Europe/Skopje",
+        "Europe/Sofia",
+        "Europe/Stockholm",
+        "Europe/Tallinn",
+        "Europe/Tirane",
+        "Europe/Tiraspol",
+        "Europe/Ulyanovsk",
+        "Europe/Uzhgorod",
+        "Europe/Vaduz",
+        "Europe/Vatican",
+        "Europe/Vienna",
+        "Europe/Vilnius",
+        "Europe/Volgograd",
+        "Europe/Warsaw",
+        "Europe/Zagreb",
+        "Europe/Zaporozhye",
+        "Europe/Zurich",
+        "GB",
+        "GB-Eire",
+        "GMT",
+        "GMT+0",
+        "GMT-0",
+        "GMT0",
+        "Greenwich",
+        "HST",
+        "Hongkong",
+        "Iceland",
+        "Indian/Antananarivo",
+        "Indian/Chagos",
+        "Indian/Christmas",
+        "Indian/Cocos",
+        "Indian/Comoro",
+        "Indian/Kerguelen",
+        "Indian/Mahe",
+        "Indian/Maldives",
+        "Indian/Mauritius",
+        "Indian/Mayotte",
+        "Indian/Reunion",
+        "Iran",
+        "Israel",
+        "Jamaica",
+        "Japan",
+        "Kwajalein",
+        "Libya",
+        "MET",
+        "MST",
+        "MST7MDT",
+        "Mexico/BajaNorte",
+        "Mexico/BajaSur",
+        "Mexico/General",
+        "NZ",
+        "NZ-CHAT",
+        "Navajo",
+        "PRC",
+        "PST8PDT",
+        "Pacific/Apia",
+        "Pacific/Auckland",
+        "Pacific/Bougainville",
+        "Pacific/Chatham",
+        "Pacific/Chuuk",
+        "Pacific/Easter",
+        "Pacific/Efate",
+        "Pacific/Enderbury",
+        "Pacific/Fakaofo",
+        "Pacific/Fiji",
+        "Pacific/Funafuti",
+        "Pacific/Galapagos",
+        "Pacific/Gambier",
+        "Pacific/Guadalcanal",
+        "Pacific/Guam",
+        "Pacific/Honolulu",
+        "Pacific/Johnston",
+        "Pacific/Kanton",
+        "Pacific/Kiritimati",
+        "Pacific/Kosrae",
+        "Pacific/Kwajalein",
+        "Pacific/Majuro",
+        "Pacific/Marquesas",
+        "Pacific/Midway",
+        "Pacific/Nauru",
+        "Pacific/Niue",
+        "Pacific/Norfolk",
+        "Pacific/Noumea",
+        "Pacific/Pago_Pago",
+        "Pacific/Palau",
+        "Pacific/Pitcairn",
+        "Pacific/Pohnpei",
+        "Pacific/Ponape",
+        "Pacific/Port_Moresby",
+        "Pacific/Rarotonga",
+        "Pacific/Saipan",
+        "Pacific/Samoa",
+        "Pacific/Tahiti",
+        "Pacific/Tarawa",
+        "Pacific/Tongatapu",
+        "Pacific/Truk",
+        "Pacific/Wake",
+        "Pacific/Wallis",
+        "Pacific/Yap",
+        "Poland",
+        "Portugal",
+        "ROC",
+        "ROK",
+        "Singapore",
+        "Turkey",
+        "UCT",
+        "US/Alaska",
+        "US/Aleutian",
+        "US/Arizona",
+        "US/Central",
+        "US/East-Indiana",
+        "US/Eastern",
+        "US/Hawaii",
+        "US/Indiana-Starke",
+        "US/Michigan",
+        "US/Mountain",
+        "US/Pacific",
+        "US/Samoa",
+        "UTC",
+        "Universal",
+        "W-SU",
+        "WET",
+        "Zulu",
+      ]),
+    ),
+    data_attributes: Schema.optional(Schema.Unknown),
+    person_display_name_properties: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.String)),
+    ),
+    correlation_config: Schema.optional(Schema.Unknown),
+    autocapture_opt_out: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    autocapture_exceptions_opt_in: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    autocapture_web_vitals_opt_in: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    autocapture_web_vitals_allowed_metrics: Schema.optional(Schema.Unknown),
+    autocapture_exceptions_errors_to_ignore: Schema.optional(Schema.Unknown),
+    capture_console_log_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    capture_performance_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    session_recording_opt_in: Schema.optional(Schema.Boolean),
+    session_recording_sample_rate: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    session_recording_minimum_duration_milliseconds: Schema.optional(
+      Schema.NullOr(Schema.Number),
+    ),
+    session_recording_linked_flag: Schema.optional(Schema.Unknown),
+    session_recording_network_payload_capture_config: Schema.optional(
+      Schema.Unknown,
+    ),
+    session_recording_masking_config: Schema.optional(Schema.Unknown),
+    session_recording_url_trigger_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
+    ),
+    session_recording_url_blocklist_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.Unknown)),
+    ),
+    session_recording_event_trigger_config: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.String))),
+    ),
+    session_recording_trigger_match_type_config: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    session_recording_trigger_groups: Schema.optional(Schema.Unknown),
+    session_recording_retention_period: Schema.optional(
+      Schema.Literals(["30d", "90d", "1y", "5y"]),
+    ),
+    session_replay_config: Schema.optional(Schema.Unknown),
+    survey_config: Schema.optional(Schema.Unknown),
+    access_control: Schema.optional(Schema.Boolean),
+    week_start_day: Schema.optional(Schema.NullOr(Schema.Literals([0, 1]))),
+    primary_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
+    live_events_columns: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.String)),
+    ),
+    recording_domains: Schema.optional(
+      Schema.NullOr(Schema.Array(Schema.NullOr(Schema.String))),
+    ),
+    person_on_events_querying_enabled: Schema.optional(Schema.Boolean),
+    inject_web_apps: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    extra_settings: Schema.optional(Schema.Unknown),
+    modifiers: Schema.optional(Schema.Unknown),
+    default_modifiers: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    has_completed_onboarding_for: Schema.optional(Schema.Unknown),
+    surveys_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    heatmaps_opt_in: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    product_intents: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          product_type: Schema.optional(Schema.String),
+          created_at: Schema.optional(Schema.String),
+          onboarding_completed_at: Schema.optional(
+            Schema.NullOr(Schema.String),
+          ),
+          updated_at: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    flags_persistence_default: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    secret_api_token: Schema.optional(Schema.NullOr(Schema.String)),
+    secret_api_token_backup: Schema.optional(Schema.NullOr(Schema.String)),
+    receive_org_level_activity_logs: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    business_model: Schema.optional(
+      Schema.NullOr(
+        Schema.Union([
+          Schema.Literals(["b2b", "b2c", "other"]),
+          Schema.Literals([""]),
+        ]),
+      ),
+    ),
+    conversations_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    conversations_settings: Schema.optional(Schema.Unknown),
+    logs_settings: Schema.optional(Schema.Unknown),
+    proactive_tasks_enabled: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    available_setup_task_ids: Schema.optional(
+      Schema.Array(
+        Schema.Literals([
+          "ingest_first_event",
+          "set_up_reverse_proxy",
+          "create_first_insight",
+          "create_first_dashboard",
+          "track_custom_events",
+          "define_actions",
+          "set_up_cohorts",
+          "explore_trends_insight",
+          "create_funnel",
+          "explore_retention_insight",
+          "explore_paths_insight",
+          "explore_stickiness_insight",
+          "explore_lifecycle_insight",
+          "add_authorized_domain",
+          "set_up_web_vitals",
+          "review_web_analytics_dashboard",
+          "filter_web_analytics",
+          "set_up_web_analytics_conversion_goals",
+          "visit_web_vitals_dashboard",
+          "setup_session_recordings",
+          "watch_session_recording",
+          "configure_recording_settings",
+          "create_recording_playlist",
+          "enable_console_logs",
+          "create_feature_flag",
+          "implement_flag_in_code",
+          "update_feature_flag_release_conditions",
+          "create_multivariate_flag",
+          "set_up_flag_payloads",
+          "set_up_flag_evaluation_runtimes",
+          "create_experiment",
+          "implement_experiment_variants",
+          "launch_experiment",
+          "review_experiment_results",
+          "create_survey",
+          "launch_survey",
+          "collect_survey_responses",
+          "connect_source",
+          "run_first_query",
+          "join_external_data",
+          "create_saved_view",
+          "enable_error_tracking",
+          "upload_source_maps",
+          "view_first_error",
+          "resolve_first_error",
+          "ingest_first_llm_event",
+          "view_first_trace",
+          "track_costs",
+          "set_up_llm_evaluation",
+          "run_ai_playground",
+          "enable_revenue_analytics_viewset",
+          "connect_revenue_source",
+          "set_up_revenue_goal",
+          "enable_log_capture",
+          "view_first_logs",
+          "create_first_workflow",
+          "set_up_first_workflow_channel",
+          "configure_workflow_trigger",
+          "add_workflow_action",
+          "launch_workflow",
+          "create_first_endpoint",
+          "configure_endpoint",
+          "test_endpoint",
+          "create_early_access_feature",
+          "update_feature_stage",
+          "use_posthog_ai",
+          "use_posthog_code",
+          "use_posthog_mcp",
+          "use_posthog_in_slack",
+        ]),
+      ),
+    ),
+    is_pending_deletion: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    project_id: Schema.optional(Schema.Number),
+    user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+    managed_viewsets: Schema.optional(
+      Schema.Record(Schema.String, Schema.Boolean),
+    ),
+    revenue_analytics_config: Schema.optional(
+      Schema.Struct({
+        base_currency: Schema.optional(
+          Schema.Literals([
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BRL",
+            "BSD",
+            "BTC",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHF",
+            "CLP",
+            "CNY",
+            "COP",
+            "CRC",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LTL",
+            "LVL",
+            "LSL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MTL",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SRD",
+            "SSP",
+            "STN",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "UYU",
+            "UZS",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XCD",
+            "XOF",
+            "XPF",
+            "YER",
+            "ZAR",
+            "ZMW",
+          ]),
+        ),
+        events: Schema.optional(Schema.Unknown),
+        goals: Schema.optional(Schema.Unknown),
+        filter_test_accounts: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    marketing_analytics_config: Schema.optional(
+      Schema.Struct({
+        sources_map: Schema.optional(Schema.Unknown),
+        conversion_goals: Schema.optional(Schema.Unknown),
+        attribution_window_days: Schema.optional(Schema.Number),
+        attribution_mode: Schema.optional(
+          Schema.Literals([
+            "first_touch",
+            "last_touch",
+            "linear",
+            "time_decay",
+            "position_based",
+          ]),
+        ),
+        campaign_name_mappings: Schema.optional(Schema.Unknown),
+        custom_source_mappings: Schema.optional(Schema.Unknown),
+        campaign_field_preferences: Schema.optional(Schema.Unknown),
+      }),
+    ),
+    customer_analytics_config: Schema.optional(
+      Schema.Struct({
+        activity_event: Schema.optional(Schema.Unknown),
+        signup_pageview_event: Schema.optional(Schema.Unknown),
+        signup_event: Schema.optional(Schema.Unknown),
+        subscription_event: Schema.optional(Schema.Unknown),
+        payment_event: Schema.optional(Schema.Unknown),
+        account_group_type_index: Schema.optional(Schema.NullOr(Schema.Number)),
+      }),
+    ),
+    workflows_config: Schema.optional(
+      Schema.Struct({
+        capture_workflows_engagement_events: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    base_currency: Schema.optional(
+      Schema.Literals([
+        "AED",
+        "AFN",
+        "ALL",
+        "AMD",
+        "ANG",
+        "AOA",
+        "ARS",
+        "AUD",
+        "AWG",
+        "AZN",
+        "BAM",
+        "BBD",
+        "BDT",
+        "BGN",
+        "BHD",
+        "BIF",
+        "BMD",
+        "BND",
+        "BOB",
+        "BRL",
+        "BSD",
+        "BTC",
+        "BTN",
+        "BWP",
+        "BYN",
+        "BZD",
+        "CAD",
+        "CDF",
+        "CHF",
+        "CLP",
+        "CNY",
+        "COP",
+        "CRC",
+        "CVE",
+        "CZK",
+        "DJF",
+        "DKK",
+        "DOP",
+        "DZD",
+        "EGP",
+        "ERN",
+        "ETB",
+        "EUR",
+        "FJD",
+        "GBP",
+        "GEL",
+        "GHS",
+        "GIP",
+        "GMD",
+        "GNF",
+        "GTQ",
+        "GYD",
+        "HKD",
+        "HNL",
+        "HRK",
+        "HTG",
+        "HUF",
+        "IDR",
+        "ILS",
+        "INR",
+        "IQD",
+        "IRR",
+        "ISK",
+        "JMD",
+        "JOD",
+        "JPY",
+        "KES",
+        "KGS",
+        "KHR",
+        "KMF",
+        "KRW",
+        "KWD",
+        "KYD",
+        "KZT",
+        "LAK",
+        "LBP",
+        "LKR",
+        "LRD",
+        "LTL",
+        "LVL",
+        "LSL",
+        "LYD",
+        "MAD",
+        "MDL",
+        "MGA",
+        "MKD",
+        "MMK",
+        "MNT",
+        "MOP",
+        "MRU",
+        "MTL",
+        "MUR",
+        "MVR",
+        "MWK",
+        "MXN",
+        "MYR",
+        "MZN",
+        "NAD",
+        "NGN",
+        "NIO",
+        "NOK",
+        "NPR",
+        "NZD",
+        "OMR",
+        "PAB",
+        "PEN",
+        "PGK",
+        "PHP",
+        "PKR",
+        "PLN",
+        "PYG",
+        "QAR",
+        "RON",
+        "RSD",
+        "RUB",
+        "RWF",
+        "SAR",
+        "SBD",
+        "SCR",
+        "SDG",
+        "SEK",
+        "SGD",
+        "SRD",
+        "SSP",
+        "STN",
+        "SYP",
+        "SZL",
+        "THB",
+        "TJS",
+        "TMT",
+        "TND",
+        "TOP",
+        "TRY",
+        "TTD",
+        "TWD",
+        "TZS",
+        "UAH",
+        "UGX",
+        "USD",
+        "UYU",
+        "UZS",
+        "VES",
+        "VND",
+        "VUV",
+        "WST",
+        "XAF",
+        "XCD",
+        "XOF",
+        "XPF",
+        "YER",
+        "ZAR",
+        "ZMW",
+      ]),
+    ),
+    capture_dead_clicks: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    cookieless_server_hash_mode: Schema.optional(
+      Schema.NullOr(Schema.Literals([0, 1, 2])),
+    ),
+    human_friendly_comparison_periods: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    feature_flag_confirmation_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    feature_flag_confirmation_message: Schema.optional(
+      Schema.NullOr(Schema.String),
+    ),
+    default_evaluation_contexts_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    require_evaluation_contexts: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    default_data_theme: Schema.optional(Schema.NullOr(Schema.Number)),
+    onboarding_tasks: Schema.optional(Schema.Unknown),
+    web_analytics_pre_aggregated_tables_enabled: Schema.optional(
+      Schema.NullOr(Schema.Boolean),
+    ),
+    event_retention_months: Schema.optional(Schema.Number),
+    events_retention_enforced: Schema.optional(Schema.Boolean),
+  }) as unknown as Schema.Codec<OrganizationsProjectsAddProductIntentPartialUpdateOutput>;
+
+// The operation
+/**
+ * Projects for the current organization.
+ *
+ * @param id - A unique value identifying this project.
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
+ */
+export const organizationsProjectsAddProductIntentPartialUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: OrganizationsProjectsAddProductIntentPartialUpdateInput,
+    outputSchema: OrganizationsProjectsAddProductIntentPartialUpdateOutput,
+    errors: [BadRequest, Forbidden, NotFound] as const,
+  }));

@@ -4,16 +4,58 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppCertificatesShowInput {
+  app_name: string;
+  hostname: string;
+}
 export const AppCertificatesShowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/apps/{app_name}/certificates/{hostname}" }),
-  );
-export type AppCertificatesShowInput = typeof AppCertificatesShowInput.Type;
+  ) as unknown as Schema.Codec<AppCertificatesShowInput>;
 
 // Output Schema
+export interface AppCertificatesShowOutput {
+  acme_requested?: boolean;
+  certificates?: {
+    created_at?: string;
+    expires_at?: string;
+    issued?: {
+      certificate_authority?: string;
+      expires_at?: string;
+      type?: "rsa" | "ecdsa";
+    }[];
+    issuer?: string;
+    source?: "custom" | "fly";
+    status?: "active" | "pending_ownership" | "pending_validation";
+  }[];
+  configured?: boolean;
+  dns_provider?: string;
+  dns_requirements?: {
+    a?: string[];
+    aaaa?: string[];
+    acme_challenge?: { name?: string; target?: string };
+    cname?: string;
+    ownership?: { app_value?: string; name?: string; org_value?: string };
+  };
+  hostname?: string;
+  rate_limited_until?: string;
+  status?: string;
+  validation?: {
+    alpn_configured?: boolean;
+    dns_configured?: boolean;
+    http_configured?: boolean;
+    ownership_txt_configured?: boolean;
+  };
+  validation_errors?: {
+    code?: string;
+    message?: string;
+    remediation?: string;
+    timestamp?: string;
+  }[];
+}
 export const AppCertificatesShowOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
@@ -86,8 +128,7 @@ export const AppCertificatesShowOutput =
         }),
       ),
     ),
-  });
-export type AppCertificatesShowOutput = typeof AppCertificatesShowOutput.Type;
+  }) as unknown as Schema.Codec<AppCertificatesShowOutput>;
 
 // The operation
 /**

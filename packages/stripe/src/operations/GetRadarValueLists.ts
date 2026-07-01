@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetRadarValueListsInput {
+  alias?: string;
+  contains?: string;
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetRadarValueListsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
@@ -18,10 +27,51 @@ export const GetRadarValueListsInput =
       path: "/v1/radar/value_lists",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetRadarValueListsInput = typeof GetRadarValueListsInput.Type;
+  ) as unknown as Schema.Codec<GetRadarValueListsInput>;
 
 // Output Schema
+export interface GetRadarValueListsOutput {
+  data: {
+    alias: string;
+    created: number;
+    created_by: string;
+    id: string;
+    item_type:
+      | "account"
+      | "card_bin"
+      | "card_fingerprint"
+      | "case_sensitive_string"
+      | "country"
+      | "crypto_fingerprint"
+      | "customer_id"
+      | "email"
+      | "ip_address"
+      | "sepa_debit_fingerprint"
+      | "string"
+      | "us_bank_account_fingerprint";
+    list_items: {
+      data: {
+        created: number;
+        created_by: string;
+        id: string;
+        livemode: boolean;
+        object: "radar.value_list_item";
+        value: string;
+        value_list: string;
+      }[];
+      has_more: boolean;
+      object: "list";
+      url: string;
+    };
+    livemode: boolean;
+    metadata: Record<string, string>;
+    name: string;
+    object: "radar.value_list";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetRadarValueListsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -31,6 +81,7 @@ export const GetRadarValueListsOutput =
         created_by: Schema.String,
         id: Schema.String,
         item_type: Schema.Literals([
+          "account",
           "card_bin",
           "card_fingerprint",
           "case_sensitive_string",
@@ -68,8 +119,7 @@ export const GetRadarValueListsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetRadarValueListsOutput = typeof GetRadarValueListsOutput.Type;
+  }) as unknown as Schema.Codec<GetRadarValueListsOutput>;
 
 // The operation
 /**

@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service mtls-certificates
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -44,6 +44,83 @@ export class CertificateNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface GetAssociationResponseResult {
+  /** The service using the certificate. */
+  service?: string | null;
+  /** Certificate deployment status for the given service. */
+  status?: string | null;
+}
+const GetAssociationResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      service: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<GetAssociationResponseResult>;
+
+interface ListMtlsCertificatesResponseResult {
+  /** Identifier. */
+  id?: string | null;
+  /** Indicates whether the certificate is a CA or leaf certificate. */
+  ca?: boolean | null;
+  /** The uploaded root CA certificate. */
+  certificates?: string | null;
+  /** When the certificate expires. */
+  expiresOn?: string | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
+  /** Optional unique name for the certificate. Only used for human readability. */
+  name?: string | null;
+  /** The certificate serial number. */
+  serialNumber?: string | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** The type of the certificate, indicating how it was created and who manages it. */
+  type?: "custom" | "gateway_managed" | "access_managed" | (string & {}) | null;
+  /** This is the time the certificate was uploaded. */
+  uploadedOn?: string | null;
+}
+const ListMtlsCertificatesResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      certificates: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["custom", "gateway_managed", "access_managed"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        ca: "ca",
+        certificates: "certificates",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        name: "name",
+        serialNumber: "serial_number",
+        signature: "signature",
+        type: "type",
+        uploadedOn: "uploaded_on",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListMtlsCertificatesResponseResult>;
+
+// =============================================================================
 // Association
 // =============================================================================
 
@@ -64,7 +141,7 @@ export const GetAssociationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/mtls_certificates/{mtlsCertificateId}/associations",
       }),
     ),
-) as unknown as Schema.Schema<GetAssociationRequest>;
+) as unknown as Schema.Codec<GetAssociationRequest>;
 
 export interface GetAssociationResponse {
   result: { service?: string | null; status?: string | null }[];
@@ -73,14 +150,9 @@ export interface GetAssociationResponse {
 export const GetAssociationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          service: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(GetAssociationResponseResult),
     }),
-  ) as unknown as Schema.Schema<GetAssociationResponse>;
+  ) as unknown as Schema.Codec<GetAssociationResponse>;
 
 export type GetAssociationError = DefaultErrors;
 
@@ -120,7 +192,7 @@ export const GetMtlsCertificateRequest =
         path: "/accounts/{account_id}/mtls_certificates/{mtlsCertificateId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetMtlsCertificateRequest>;
+  ) as unknown as Schema.Codec<GetMtlsCertificateRequest>;
 
 export interface GetMtlsCertificateResponse {
   /** Identifier. */
@@ -182,7 +254,7 @@ export const GetMtlsCertificateResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetMtlsCertificateResponse>;
+  ) as unknown as Schema.Codec<GetMtlsCertificateResponse>;
 
 export type GetMtlsCertificateError = DefaultErrors | CertificateNotFound;
 
@@ -222,7 +294,7 @@ export const ListMtlsCertificatesRequest =
         path: "/accounts/{account_id}/mtls_certificates",
       }),
     ),
-  ) as unknown as Schema.Schema<ListMtlsCertificatesRequest>;
+  ) as unknown as Schema.Codec<ListMtlsCertificatesRequest>;
 
 export interface ListMtlsCertificatesResponse {
   result: {
@@ -247,57 +319,9 @@ export interface ListMtlsCertificatesResponse {
 export const ListMtlsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          certificates: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expiresOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          serialNumber: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          signature: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "custom",
-                  "gateway_managed",
-                  "access_managed",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          uploadedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            ca: "ca",
-            certificates: "certificates",
-            expiresOn: "expires_on",
-            issuer: "issuer",
-            name: "name",
-            serialNumber: "serial_number",
-            signature: "signature",
-            type: "type",
-            uploadedOn: "uploaded_on",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListMtlsCertificatesResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListMtlsCertificatesResponse>;
+  ) as unknown as Schema.Codec<ListMtlsCertificatesResponse>;
 
 export type ListMtlsCertificatesError = DefaultErrors;
 
@@ -349,7 +373,7 @@ export const CreateMtlsCertificateRequest =
         path: "/accounts/{account_id}/mtls_certificates",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateMtlsCertificateRequest>;
+  ) as unknown as Schema.Codec<CreateMtlsCertificateRequest>;
 
 export interface CreateMtlsCertificateResponse {
   /** Identifier. */
@@ -415,7 +439,7 @@ export const CreateMtlsCertificateResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateMtlsCertificateResponse>;
+  ) as unknown as Schema.Codec<CreateMtlsCertificateResponse>;
 
 export type CreateMtlsCertificateError =
   | DefaultErrors
@@ -449,7 +473,7 @@ export const DeleteMtlsCertificateRequest =
         path: "/accounts/{account_id}/mtls_certificates/{mtlsCertificateId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteMtlsCertificateRequest>;
+  ) as unknown as Schema.Codec<DeleteMtlsCertificateRequest>;
 
 export interface DeleteMtlsCertificateResponse {
   /** Identifier. */
@@ -511,7 +535,7 @@ export const DeleteMtlsCertificateResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteMtlsCertificateResponse>;
+  ) as unknown as Schema.Codec<DeleteMtlsCertificateResponse>;
 
 export type DeleteMtlsCertificateError =
   | DefaultErrors

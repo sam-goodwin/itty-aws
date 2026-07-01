@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DisableReadonlyModeTemporarilyInput {
+  ref: string;
+}
 export const V1DisableReadonlyModeTemporarilyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const V1DisableReadonlyModeTemporarilyInput =
       method: "POST",
       path: "/v1/projects/{ref}/readonly/temporary-disable",
     }),
-  );
-export type V1DisableReadonlyModeTemporarilyInput =
-  typeof V1DisableReadonlyModeTemporarilyInput.Type;
+  ) as unknown as Schema.Codec<V1DisableReadonlyModeTemporarilyInput>;
 
 // Output Schema
+export type V1DisableReadonlyModeTemporarilyOutput = void;
 export const V1DisableReadonlyModeTemporarilyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DisableReadonlyModeTemporarilyOutput =
-  typeof V1DisableReadonlyModeTemporarilyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisableReadonlyModeTemporarilyOutput>;
 
 // The operation
 /**

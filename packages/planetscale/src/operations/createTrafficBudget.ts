@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateTrafficBudgetInput {
+  organization: string;
+  database: string;
+  branch: string;
+  name?: string;
+  mode?: "enforce" | "warn" | "off";
+  capacity?: number;
+  rate?: number;
+  burst?: number;
+  concurrency?: number;
+  warning_threshold?: number;
+  rules?: string[];
+}
 export const CreateTrafficBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -22,10 +35,38 @@ export const CreateTrafficBudgetInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets",
     }),
-  );
-export type CreateTrafficBudgetInput = typeof CreateTrafficBudgetInput.Type;
+  ) as unknown as Schema.Codec<CreateTrafficBudgetInput>;
 
 // Output Schema
+export interface CreateTrafficBudgetOutput {
+  id: string;
+  name: string;
+  mode: "enforce" | "warn" | "off";
+  capacity?: number | null;
+  rate?: number | null;
+  burst?: number | null;
+  concurrency?: number | null;
+  warning_threshold?: number | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  rules: {
+    id: string;
+    kind: "match" | "each";
+    tags: {
+      key_id: string;
+      key: string;
+      value: string;
+      source: "sql" | "system";
+    }[];
+    fingerprint?: string | null;
+    keyspace?: string | null;
+    actor: { id: string; display_name: string; avatar_url: string };
+    syntax_highlighted_sql: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  created_at: string;
+  updated_at: string;
+}
 export const CreateTrafficBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -44,7 +85,7 @@ export const CreateTrafficBudgetOutput =
     rules: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        kind: Schema.Literals(["match"]),
+        kind: Schema.Literals(["match", "each"]),
         tags: Schema.Array(
           Schema.Struct({
             key_id: Schema.String,
@@ -67,8 +108,7 @@ export const CreateTrafficBudgetOutput =
     ),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type CreateTrafficBudgetOutput = typeof CreateTrafficBudgetOutput.Type;
+  }) as unknown as Schema.Codec<CreateTrafficBudgetOutput>;
 
 // The operation
 /**

@@ -4,11 +4,27 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CapabilitiesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+  capabilityName: string;
+  properties?: {
+    publisher?: string;
+    targetType?: string;
+    description?: string;
+    parametersSchema?: string;
+    urn?: string;
+  };
+}
 export const CapabilitiesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -33,11 +49,22 @@ export const CapabilitiesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type CapabilitiesCreateOrUpdateInput =
-  typeof CapabilitiesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CapabilitiesCreateOrUpdateInput>;
 
 // Output Schema
+export interface CapabilitiesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CapabilitiesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -57,9 +84,7 @@ export const CapabilitiesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CapabilitiesCreateOrUpdateOutput =
-  typeof CapabilitiesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CapabilitiesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -81,6 +106,15 @@ export const CapabilitiesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CapabilitiesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+  capabilityName: string;
+}
 export const CapabilitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -96,12 +130,12 @@ export const CapabilitiesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type CapabilitiesDeleteInput = typeof CapabilitiesDeleteInput.Type;
+  ) as unknown as Schema.Codec<CapabilitiesDeleteInput>;
 
 // Output Schema
-export const CapabilitiesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CapabilitiesDeleteOutput = typeof CapabilitiesDeleteOutput.Type;
+export type CapabilitiesDeleteOutput = void;
+export const CapabilitiesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapabilitiesDeleteOutput>;
 
 // The operation
 /**
@@ -121,6 +155,15 @@ export const CapabilitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilitiesDeleteOutput,
 }));
 // Input Schema
+export interface CapabilitiesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+  capabilityName: string;
+}
 export const CapabilitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -135,10 +178,22 @@ export const CapabilitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type CapabilitiesGetInput = typeof CapabilitiesGetInput.Type;
+) as unknown as Schema.Codec<CapabilitiesGetInput>;
 
 // Output Schema
+export interface CapabilitiesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CapabilitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -157,8 +212,7 @@ export const CapabilitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CapabilitiesGetOutput = typeof CapabilitiesGetOutput.Type;
+}) as unknown as Schema.Codec<CapabilitiesGetOutput>;
 
 // The operation
 /**
@@ -178,6 +232,15 @@ export const CapabilitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilitiesGetOutput,
 }));
 // Input Schema
+export interface CapabilitiesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+  continuationToken?: string;
+}
 export const CapabilitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -192,10 +255,25 @@ export const CapabilitiesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities",
     apiVersion: "2025-01-01",
   }),
-);
-export type CapabilitiesListInput = typeof CapabilitiesListInput.Type;
+) as unknown as Schema.Codec<CapabilitiesListInput>;
 
 // Output Schema
+export interface CapabilitiesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CapabilitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -231,8 +309,7 @@ export const CapabilitiesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type CapabilitiesListOutput = typeof CapabilitiesListOutput.Type;
+) as unknown as Schema.Codec<CapabilitiesListOutput>;
 
 // The operation
 /**
@@ -252,6 +329,12 @@ export const CapabilitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilitiesListOutput,
 }));
 // Input Schema
+export interface CapabilityTypesGetInput {
+  subscriptionId: string;
+  location: string;
+  targetTypeName: string;
+  capabilityTypeName: string;
+}
 export const CapabilityTypesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -264,10 +347,22 @@ export const CapabilityTypesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type CapabilityTypesGetInput = typeof CapabilityTypesGetInput.Type;
+  ) as unknown as Schema.Codec<CapabilityTypesGetInput>;
 
 // Output Schema
+export interface CapabilityTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CapabilityTypesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -287,8 +382,7 @@ export const CapabilityTypesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CapabilityTypesGetOutput = typeof CapabilityTypesGetOutput.Type;
+  }) as unknown as Schema.Codec<CapabilityTypesGetOutput>;
 
 // The operation
 /**
@@ -305,6 +399,12 @@ export const CapabilityTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilityTypesGetOutput,
 }));
 // Input Schema
+export interface CapabilityTypesListInput {
+  subscriptionId: string;
+  location: string;
+  targetTypeName: string;
+  continuationToken?: string;
+}
 export const CapabilityTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -317,10 +417,25 @@ export const CapabilityTypesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes",
       apiVersion: "2025-01-01",
     }),
-  );
-export type CapabilityTypesListInput = typeof CapabilityTypesListInput.Type;
+  ) as unknown as Schema.Codec<CapabilityTypesListInput>;
 
 // Output Schema
+export interface CapabilityTypesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CapabilityTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -355,8 +470,7 @@ export const CapabilityTypesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CapabilityTypesListOutput = typeof CapabilityTypesListOutput.Type;
+  }) as unknown as Schema.Codec<CapabilityTypesListOutput>;
 
 // The operation
 /**
@@ -373,6 +487,11 @@ export const CapabilityTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilityTypesListOutput,
 }));
 // Input Schema
+export interface ExperimentsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+}
 export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -385,12 +504,12 @@ export const ExperimentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsCancelInput = typeof ExperimentsCancelInput.Type;
+) as unknown as Schema.Codec<ExperimentsCancelInput>;
 
 // Output Schema
-export const ExperimentsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsCancelOutput = typeof ExperimentsCancelOutput.Type;
+export type ExperimentsCancelOutput = void;
+export const ExperimentsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsCancelOutput>;
 
 // The operation
 /**
@@ -406,6 +525,47 @@ export const ExperimentsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsCancelOutput,
 }));
 // Input Schema
+export interface ExperimentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+    steps: {
+      name: string;
+      branches: {
+        name: string;
+        actions: { name: string; type: "delay" | "discrete" | "continuous" }[];
+      }[];
+    }[];
+    selectors: {
+      id: string;
+      type: "List" | "Query";
+      filter?: { type: "Simple" };
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ExperimentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -479,11 +639,22 @@ export const ExperimentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type ExperimentsCreateOrUpdateInput =
-  typeof ExperimentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ExperimentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExperimentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -503,9 +674,7 @@ export const ExperimentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExperimentsCreateOrUpdateOutput =
-  typeof ExperimentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -523,6 +692,11 @@ export const ExperimentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+}
 export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -535,12 +709,12 @@ export const ExperimentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsDeleteInput = typeof ExperimentsDeleteInput.Type;
+) as unknown as Schema.Codec<ExperimentsDeleteInput>;
 
 // Output Schema
-export const ExperimentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsDeleteOutput = typeof ExperimentsDeleteOutput.Type;
+export type ExperimentsDeleteOutput = void;
+export const ExperimentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDeleteOutput>;
 
 // The operation
 /**
@@ -556,6 +730,12 @@ export const ExperimentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsDeleteOutput,
 }));
 // Input Schema
+export interface ExperimentsExecutionDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+  executionId: string;
+}
 export const ExperimentsExecutionDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -568,11 +748,47 @@ export const ExperimentsExecutionDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}/getExecutionDetails",
       apiVersion: "2025-01-01",
     }),
-  );
-export type ExperimentsExecutionDetailsInput =
-  typeof ExperimentsExecutionDetailsInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsExecutionDetailsInput>;
 
 // Output Schema
+export interface ExperimentsExecutionDetailsOutput {
+  type?: string;
+  id?: string;
+  name?: string;
+  properties?: {
+    status?: string;
+    startedAt?: string;
+    stoppedAt?: string;
+    failureReason?: string;
+    lastActionAt?: string;
+    runInformation?: {
+      steps?: {
+        stepName?: string;
+        stepId?: string;
+        status?: string;
+        branches?: {
+          branchName?: string;
+          branchId?: string;
+          status?: string;
+          actions?: {
+            actionName?: string;
+            actionId?: string;
+            status?: string;
+            startTime?: string;
+            endTime?: string;
+            targets?: {
+              status?: string;
+              target?: string;
+              targetFailedTime?: string;
+              targetCompletedTime?: string;
+              error?: { code?: string; message?: string };
+            }[];
+          }[];
+        }[];
+      }[];
+    };
+  };
+}
 export const ExperimentsExecutionDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
@@ -640,9 +856,7 @@ export const ExperimentsExecutionDetailsOutput =
         ),
       }),
     ),
-  });
-export type ExperimentsExecutionDetailsOutput =
-  typeof ExperimentsExecutionDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsExecutionDetailsOutput>;
 
 // The operation
 /**
@@ -661,6 +875,11 @@ export const ExperimentsExecutionDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+}
 export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -671,10 +890,22 @@ export const ExperimentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsGetInput = typeof ExperimentsGetInput.Type;
+) as unknown as Schema.Codec<ExperimentsGetInput>;
 
 // Output Schema
+export interface ExperimentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -693,8 +924,7 @@ export const ExperimentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ExperimentsGetOutput = typeof ExperimentsGetOutput.Type;
+}) as unknown as Schema.Codec<ExperimentsGetOutput>;
 
 // The operation
 /**
@@ -710,6 +940,12 @@ export const ExperimentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsGetOutput,
 }));
 // Input Schema
+export interface ExperimentsGetExecutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+  executionId: string;
+}
 export const ExperimentsGetExecutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -722,11 +958,22 @@ export const ExperimentsGetExecutionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions/{executionId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type ExperimentsGetExecutionInput =
-  typeof ExperimentsGetExecutionInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsGetExecutionInput>;
 
 // Output Schema
+export interface ExperimentsGetExecutionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExperimentsGetExecutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -746,9 +993,7 @@ export const ExperimentsGetExecutionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExperimentsGetExecutionOutput =
-  typeof ExperimentsGetExecutionOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsGetExecutionOutput>;
 
 // The operation
 /**
@@ -767,6 +1012,12 @@ export const ExperimentsGetExecution = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExperimentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  running?: boolean;
+  continuationToken?: string;
+}
 export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -778,10 +1029,25 @@ export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsListInput = typeof ExperimentsListInput.Type;
+) as unknown as Schema.Codec<ExperimentsListInput>;
 
 // Output Schema
+export interface ExperimentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -805,8 +1071,7 @@ export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ExperimentsListOutput = typeof ExperimentsListOutput.Type;
+}) as unknown as Schema.Codec<ExperimentsListOutput>;
 
 // The operation
 /**
@@ -823,6 +1088,11 @@ export const ExperimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsListOutput,
 }));
 // Input Schema
+export interface ExperimentsListAllInput {
+  subscriptionId: string;
+  running?: boolean;
+  continuationToken?: string;
+}
 export const ExperimentsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -834,10 +1104,25 @@ export const ExperimentsListAllInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/experiments",
       apiVersion: "2025-01-01",
     }),
-  );
-export type ExperimentsListAllInput = typeof ExperimentsListAllInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsListAllInput>;
 
 // Output Schema
+export interface ExperimentsListAllOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExperimentsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -872,8 +1157,7 @@ export const ExperimentsListAllOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExperimentsListAllOutput = typeof ExperimentsListAllOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsListAllOutput>;
 
 // The operation
 /**
@@ -889,6 +1173,11 @@ export const ExperimentsListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsListAllOutput,
 }));
 // Input Schema
+export interface ExperimentsListAllExecutionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+}
 export const ExperimentsListAllExecutionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -900,11 +1189,25 @@ export const ExperimentsListAllExecutionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions",
       apiVersion: "2025-01-01",
     }),
-  );
-export type ExperimentsListAllExecutionsInput =
-  typeof ExperimentsListAllExecutionsInput.Type;
+  ) as unknown as Schema.Codec<ExperimentsListAllExecutionsInput>;
 
 // Output Schema
+export interface ExperimentsListAllExecutionsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExperimentsListAllExecutionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -939,9 +1242,7 @@ export const ExperimentsListAllExecutionsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExperimentsListAllExecutionsOutput =
-  typeof ExperimentsListAllExecutionsOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsListAllExecutionsOutput>;
 
 // The operation
 /**
@@ -958,6 +1259,11 @@ export const ExperimentsListAllExecutions =
     outputSchema: ExperimentsListAllExecutionsOutput,
   }));
 // Input Schema
+export interface ExperimentsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+}
 export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -968,12 +1274,12 @@ export const ExperimentsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/start",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsStartInput = typeof ExperimentsStartInput.Type;
+) as unknown as Schema.Codec<ExperimentsStartInput>;
 
 // Output Schema
-export const ExperimentsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExperimentsStartOutput = typeof ExperimentsStartOutput.Type;
+export type ExperimentsStartOutput = void;
+export const ExperimentsStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsStartOutput>;
 
 // The operation
 /**
@@ -989,6 +1295,25 @@ export const ExperimentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsStartOutput,
 }));
 // Input Schema
+export interface ExperimentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  experimentName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1023,10 +1348,22 @@ export const ExperimentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type ExperimentsUpdateInput = typeof ExperimentsUpdateInput.Type;
+) as unknown as Schema.Codec<ExperimentsUpdateInput>;
 
 // Output Schema
+export interface ExperimentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExperimentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1046,8 +1383,7 @@ export const ExperimentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExperimentsUpdateOutput = typeof ExperimentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExperimentsUpdateOutput>;
 
 // The operation
 /**
@@ -1063,6 +1399,7 @@ export const ExperimentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExperimentsUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListAllInput {}
 export const OperationsListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1071,10 +1408,24 @@ export const OperationsListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Chaos/operations",
     apiVersion: "2025-01-01",
   }),
-);
-export type OperationsListAllInput = typeof OperationsListAllInput.Type;
+) as unknown as Schema.Codec<OperationsListAllInput>;
 
 // Output Schema
+export interface OperationsListAllOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1098,8 +1449,7 @@ export const OperationsListAllOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OperationsListAllOutput = typeof OperationsListAllOutput.Type;
+  }) as unknown as Schema.Codec<OperationsListAllOutput>;
 
 // The operation
 /**
@@ -1112,6 +1462,11 @@ export const OperationsListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListAllOutput,
 }));
 // Input Schema
+export interface OperationStatusesGetInput {
+  subscriptionId: string;
+  location: string;
+  operationId: string;
+}
 export const OperationStatusesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1123,10 +1478,42 @@ export const OperationStatusesGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/operationStatuses/{operationId}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type OperationStatusesGetInput = typeof OperationStatusesGetInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusesGetInput>;
 
 // Output Schema
+export interface OperationStatusesGetOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const OperationStatusesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1182,8 +1569,7 @@ export const OperationStatusesGetOutput =
         ),
       }),
     ),
-  });
-export type OperationStatusesGetOutput = typeof OperationStatusesGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusesGetOutput>;
 
 // The operation
 /**
@@ -1201,6 +1587,16 @@ export const OperationStatusesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+  properties: Record<string, unknown>;
+  location?: string;
+}
 export const TargetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,10 +1613,22 @@ export const TargetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TargetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TargetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1240,9 +1648,7 @@ export const TargetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TargetsCreateOrUpdateOutput =
-  typeof TargetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TargetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1263,6 +1669,14 @@ export const TargetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TargetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+}
 export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1276,12 +1690,12 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
+) as unknown as Schema.Codec<TargetsDeleteInput>;
 
 // Output Schema
-export const TargetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TargetsDeleteOutput = typeof TargetsDeleteOutput.Type;
+export type TargetsDeleteOutput = void;
+export const TargetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TargetsDeleteOutput>;
 
 // The operation
 /**
@@ -1300,6 +1714,14 @@ export const TargetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsDeleteOutput,
 }));
 // Input Schema
+export interface TargetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  targetName: string;
+}
 export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1313,10 +1735,22 @@ export const TargetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type TargetsGetInput = typeof TargetsGetInput.Type;
+) as unknown as Schema.Codec<TargetsGetInput>;
 
 // Output Schema
+export interface TargetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1335,8 +1769,7 @@ export const TargetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TargetsGetOutput = typeof TargetsGetOutput.Type;
+}) as unknown as Schema.Codec<TargetsGetOutput>;
 
 // The operation
 /**
@@ -1355,6 +1788,14 @@ export const TargetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsGetOutput,
 }));
 // Input Schema
+export interface TargetsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  parentProviderNamespace: string;
+  parentResourceType: string;
+  parentResourceName: string;
+  continuationToken?: string;
+}
 export const TargetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1368,10 +1809,25 @@ export const TargetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets",
     apiVersion: "2025-01-01",
   }),
-);
-export type TargetsListInput = typeof TargetsListInput.Type;
+) as unknown as Schema.Codec<TargetsListInput>;
 
 // Output Schema
+export interface TargetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TargetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1395,8 +1851,7 @@ export const TargetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TargetsListOutput = typeof TargetsListOutput.Type;
+}) as unknown as Schema.Codec<TargetsListOutput>;
 
 // The operation
 /**
@@ -1415,6 +1870,11 @@ export const TargetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetsListOutput,
 }));
 // Input Schema
+export interface TargetTypesGetInput {
+  subscriptionId: string;
+  location: string;
+  targetTypeName: string;
+}
 export const TargetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1425,10 +1885,22 @@ export const TargetTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}",
     apiVersion: "2025-01-01",
   }),
-);
-export type TargetTypesGetInput = typeof TargetTypesGetInput.Type;
+) as unknown as Schema.Codec<TargetTypesGetInput>;
 
 // Output Schema
+export interface TargetTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TargetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1447,8 +1919,7 @@ export const TargetTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TargetTypesGetOutput = typeof TargetTypesGetOutput.Type;
+}) as unknown as Schema.Codec<TargetTypesGetOutput>;
 
 // The operation
 /**
@@ -1464,6 +1935,11 @@ export const TargetTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TargetTypesGetOutput,
 }));
 // Input Schema
+export interface TargetTypesListInput {
+  subscriptionId: string;
+  location: string;
+  continuationToken?: string;
+}
 export const TargetTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -1474,10 +1950,25 @@ export const TargetTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes",
     apiVersion: "2025-01-01",
   }),
-);
-export type TargetTypesListInput = typeof TargetTypesListInput.Type;
+) as unknown as Schema.Codec<TargetTypesListInput>;
 
 // Output Schema
+export interface TargetTypesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TargetTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1501,8 +1992,7 @@ export const TargetTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TargetTypesListOutput = typeof TargetTypesListOutput.Type;
+}) as unknown as Schema.Codec<TargetTypesListOutput>;
 
 // The operation
 /**

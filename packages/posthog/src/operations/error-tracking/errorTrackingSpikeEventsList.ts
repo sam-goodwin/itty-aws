@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSpikeEventsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingSpikeEventsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,23 @@ export const ErrorTrackingSpikeEventsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/spike_events/",
+      path: "/api/projects/{project_id}/error_tracking/spike_events/",
     }),
-  );
-export type ErrorTrackingSpikeEventsListInput =
-  typeof ErrorTrackingSpikeEventsListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSpikeEventsListInput>;
 
 // Output Schema
+export interface ErrorTrackingSpikeEventsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    issue?: { id?: string; name?: string | null; description?: string | null };
+    detected_at?: string;
+    computed_baseline?: number;
+    current_bucket_value?: number;
+  }[];
+}
 export const ErrorTrackingSpikeEventsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -41,9 +55,7 @@ export const ErrorTrackingSpikeEventsListOutput =
         }),
       ),
     ),
-  });
-export type ErrorTrackingSpikeEventsListOutput =
-  typeof ErrorTrackingSpikeEventsListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSpikeEventsListOutput>;
 
 // The operation
 /**
@@ -56,5 +68,4 @@ export const errorTrackingSpikeEventsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSpikeEventsListInput,
     outputSchema: ErrorTrackingSpikeEventsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

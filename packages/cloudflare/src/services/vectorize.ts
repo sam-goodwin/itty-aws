@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service vectorize
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -82,6 +82,154 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface IndexDimensionConfiguration {
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: "cosine" | "euclidean" | "dot-product" | (string & {});
+}
+const IndexDimensionConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      dimensions: Schema.Number,
+      metric: Schema.Union([
+        Schema.Literals(["cosine", "euclidean", "dot-product"]),
+        Schema.String,
+      ]),
+    }),
+) as unknown as Schema.Codec<IndexDimensionConfiguration>;
+
+interface ListIndexesResponseResult {
+  config?: {
+    dimensions: number;
+    metric: "cosine" | "euclidean" | "dot-product" | (string & {});
+  } | null;
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdOn?: string | null;
+  /** Specifies the description of the index. */
+  description?: string | null;
+  /** Specifies the timestamp the resource was modified as an ISO8601 string. */
+  modifiedOn?: string | null;
+  name?: string | null;
+}
+const ListIndexesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      config: Schema.optional(
+        Schema.Union([IndexDimensionConfiguration, Schema.Null]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        config: "config",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        name: "name",
+      }),
+    ),
+) as unknown as Schema.Codec<ListIndexesResponseResult>;
+
+interface VectorizeIndexPresetConfiguration {
+  /** Specifies the preset to use for the index. */
+  preset:
+    | "@cf/baai/bge-small-en-v1.5"
+    | "@cf/baai/bge-base-en-v1.5"
+    | "@cf/baai/bge-large-en-v1.5"
+    | "openai/text-embedding-ada-002"
+    | "cohere/embed-multilingual-v2.0"
+    | (string & {});
+}
+const VectorizeIndexPresetConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      preset: Schema.Union([
+        Schema.Literals([
+          "@cf/baai/bge-small-en-v1.5",
+          "@cf/baai/bge-base-en-v1.5",
+          "@cf/baai/bge-large-en-v1.5",
+          "openai/text-embedding-ada-002",
+          "cohere/embed-multilingual-v2.0",
+        ]),
+        Schema.String,
+      ]),
+    }),
+  ) as unknown as Schema.Codec<VectorizeIndexPresetConfiguration>;
+
+interface Match {
+  /** Identifier for a Vector */
+  id?: string | null;
+  metadata?: unknown | null;
+  namespace?: string | null;
+  /** The score of the vector according to the index's distance metric */
+  score?: number | null;
+  values?: number[] | null;
+}
+const Match = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    namespace: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    values: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<Match>;
+
+interface MetadataIndex {
+  /** Specifies the type of indexed metadata property. */
+  indexType?:
+    | "string"
+    | "number"
+    | "boolean"
+    | "String"
+    | "Number"
+    | "Boolean"
+    | (string & {})
+    | null;
+  /** Specifies the indexed metadata property. */
+  propertyName?: string | null;
+}
+const MetadataIndex = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    indexType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "string",
+            "number",
+            "boolean",
+            "String",
+            "Number",
+            "Boolean",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    propertyName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<MetadataIndex>;
+
+interface Vector {
+  /** Identifier for a Vector */
+  id: string;
+}
+const Vector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }),
+) as unknown as Schema.Codec<Vector>;
+
+// =============================================================================
 // ByIdsIndex
 // =============================================================================
 
@@ -105,13 +253,13 @@ export const GetByIdsIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/get_by_ids",
       }),
     ),
-) as unknown as Schema.Schema<GetByIdsIndexRequest>;
+) as unknown as Schema.Codec<GetByIdsIndexRequest>;
 
 export type GetByIdsIndexResponse = unknown;
 
 export const GetByIdsIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetByIdsIndexResponse>;
+) as unknown as Schema.Codec<GetByIdsIndexResponse>;
 
 export type GetByIdsIndexError = DefaultErrors;
 
@@ -146,7 +294,7 @@ export const DeleteByIdsIndexRequest =
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/delete_by_ids",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteByIdsIndexRequest>;
+  ) as unknown as Schema.Codec<DeleteByIdsIndexRequest>;
 
 export interface DeleteByIdsIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
@@ -158,7 +306,7 @@ export const DeleteByIdsIndexResponse =
     Schema.Struct({
       mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteByIdsIndexResponse>;
+  ) as unknown as Schema.Codec<DeleteByIdsIndexResponse>;
 
 export type DeleteByIdsIndexError = DefaultErrors;
 
@@ -193,7 +341,7 @@ export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}",
     }),
   ),
-) as unknown as Schema.Schema<GetIndexRequest>;
+) as unknown as Schema.Codec<GetIndexRequest>;
 
 export interface GetIndexResponse {
   config?: {
@@ -212,16 +360,7 @@ export interface GetIndexResponse {
 export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          dimensions: Schema.Number,
-          metric: Schema.Union([
-            Schema.Literals(["cosine", "euclidean", "dot-product"]),
-            Schema.String,
-          ]),
-        }),
-        Schema.Null,
-      ]),
+      Schema.Union([IndexDimensionConfiguration, Schema.Null]),
     ),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -238,7 +377,7 @@ export const GetIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetIndexResponse>;
+) as unknown as Schema.Codec<GetIndexResponse>;
 
 export type GetIndexError = DefaultErrors | NotFound | Gone;
 
@@ -268,7 +407,7 @@ export const ListIndexesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/vectorize/v2/indexes",
       }),
     ),
-) as unknown as Schema.Schema<ListIndexesRequest>;
+) as unknown as Schema.Codec<ListIndexesRequest>;
 
 export interface ListIndexesResponse {
   result: {
@@ -286,42 +425,9 @@ export interface ListIndexesResponse {
 export const ListIndexesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          config: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                dimensions: Schema.Number,
-                metric: Schema.Union([
-                  Schema.Literals(["cosine", "euclidean", "dot-product"]),
-                  Schema.String,
-                ]),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            config: "config",
-            createdOn: "created_on",
-            description: "description",
-            modifiedOn: "modified_on",
-            name: "name",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListIndexesResponseResult),
     }),
-) as unknown as Schema.Schema<ListIndexesResponse>;
+) as unknown as Schema.Codec<ListIndexesResponse>;
 
 export type ListIndexesError = DefaultErrors | NotFound | Gone;
 
@@ -369,25 +475,8 @@ export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       config: Schema.Union([
-        Schema.Struct({
-          dimensions: Schema.Number,
-          metric: Schema.Union([
-            Schema.Literals(["cosine", "euclidean", "dot-product"]),
-            Schema.String,
-          ]),
-        }),
-        Schema.Struct({
-          preset: Schema.Union([
-            Schema.Literals([
-              "@cf/baai/bge-small-en-v1.5",
-              "@cf/baai/bge-base-en-v1.5",
-              "@cf/baai/bge-large-en-v1.5",
-              "openai/text-embedding-ada-002",
-              "cohere/embed-multilingual-v2.0",
-            ]),
-            Schema.String,
-          ]),
-        }),
+        IndexDimensionConfiguration,
+        VectorizeIndexPresetConfiguration,
       ]),
       name: Schema.String,
       description: Schema.optional(Schema.String),
@@ -397,7 +486,7 @@ export const CreateIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/vectorize/v2/indexes",
       }),
     ),
-) as unknown as Schema.Schema<CreateIndexRequest>;
+) as unknown as Schema.Codec<CreateIndexRequest>;
 
 export interface CreateIndexResponse {
   config?: {
@@ -417,16 +506,7 @@ export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       config: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dimensions: Schema.Number,
-            metric: Schema.Union([
-              Schema.Literals(["cosine", "euclidean", "dot-product"]),
-              Schema.String,
-            ]),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([IndexDimensionConfiguration, Schema.Null]),
       ),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -443,7 +523,7 @@ export const CreateIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateIndexResponse>;
+) as unknown as Schema.Codec<CreateIndexResponse>;
 
 export type CreateIndexError =
   | DefaultErrors
@@ -479,13 +559,13 @@ export const DeleteIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteIndexRequest>;
+) as unknown as Schema.Codec<DeleteIndexRequest>;
 
 export type DeleteIndexResponse = unknown;
 
 export const DeleteIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteIndexResponse>;
+) as unknown as Schema.Codec<DeleteIndexResponse>;
 
 export type DeleteIndexError = DefaultErrors | NotFound | Gone;
 
@@ -516,7 +596,7 @@ export const InfoIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/info",
     }),
   ),
-) as unknown as Schema.Schema<InfoIndexRequest>;
+) as unknown as Schema.Codec<InfoIndexRequest>;
 
 export interface InfoIndexResponse {
   /** Specifies the number of dimensions for the index */
@@ -541,7 +621,7 @@ export const InfoIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       vectorCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<InfoIndexResponse>;
+) as unknown as Schema.Codec<InfoIndexResponse>;
 
 export type InfoIndexError = DefaultErrors;
 
@@ -582,7 +662,7 @@ export const InsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         contentType: "multipart",
       }),
     ),
-) as unknown as Schema.Schema<InsertIndexRequest>;
+) as unknown as Schema.Codec<InsertIndexRequest>;
 
 export interface InsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
@@ -594,7 +674,7 @@ export const InsertIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<InsertIndexResponse>;
+) as unknown as Schema.Codec<InsertIndexResponse>;
 
 export type InsertIndexError = DefaultErrors;
 
@@ -646,7 +726,7 @@ export const QueryIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/query",
       }),
     ),
-) as unknown as Schema.Schema<QueryIndexRequest>;
+) as unknown as Schema.Codec<QueryIndexRequest>;
 
 export interface QueryIndexResponse {
   /** Specifies the count of vectors returned by the search */
@@ -668,29 +748,10 @@ export const QueryIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       matches: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              metadata: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              namespace: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              score: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              values: Schema.optional(
-                Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Match), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<QueryIndexResponse>;
+) as unknown as Schema.Codec<QueryIndexResponse>;
 
 export type QueryIndexError = DefaultErrors;
 
@@ -731,7 +792,7 @@ export const UpsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         contentType: "multipart",
       }),
     ),
-) as unknown as Schema.Schema<UpsertIndexRequest>;
+) as unknown as Schema.Codec<UpsertIndexRequest>;
 
 export interface UpsertIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
@@ -743,7 +804,7 @@ export const UpsertIndexResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpsertIndexResponse>;
+) as unknown as Schema.Codec<UpsertIndexResponse>;
 
 export type UpsertIndexError = DefaultErrors;
 
@@ -779,7 +840,7 @@ export const ListIndexMetadataIndexesRequest =
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/list",
       }),
     ),
-  ) as unknown as Schema.Schema<ListIndexMetadataIndexesRequest>;
+  ) as unknown as Schema.Codec<ListIndexMetadataIndexesRequest>;
 
 export interface ListIndexMetadataIndexesResponse {
   /** Array of indexed metadata properties. */
@@ -803,35 +864,10 @@ export const ListIndexMetadataIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       metadataIndexes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              indexType: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "string",
-                      "number",
-                      "boolean",
-                      "String",
-                      "Number",
-                      "Boolean",
-                    ]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              propertyName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(MetadataIndex), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListIndexMetadataIndexesResponse>;
+  ) as unknown as Schema.Codec<ListIndexMetadataIndexesResponse>;
 
 export type ListIndexMetadataIndexesError = DefaultErrors | NotFound | Gone;
 
@@ -872,7 +908,7 @@ export const CreateIndexMetadataIndexRequest =
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/create",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateIndexMetadataIndexRequest>;
+  ) as unknown as Schema.Codec<CreateIndexMetadataIndexRequest>;
 
 export interface CreateIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
@@ -884,7 +920,7 @@ export const CreateIndexMetadataIndexResponse =
     Schema.Struct({
       mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateIndexMetadataIndexResponse>;
+  ) as unknown as Schema.Codec<CreateIndexMetadataIndexResponse>;
 
 export type CreateIndexMetadataIndexError =
   | DefaultErrors
@@ -923,7 +959,7 @@ export const DeleteIndexMetadataIndexRequest =
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/metadata_index/delete",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteIndexMetadataIndexRequest>;
+  ) as unknown as Schema.Codec<DeleteIndexMetadataIndexRequest>;
 
 export interface DeleteIndexMetadataIndexResponse {
   /** The unique identifier for the async mutation operation containing the changeset. */
@@ -935,7 +971,7 @@ export const DeleteIndexMetadataIndexResponse =
     Schema.Struct({
       mutationId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteIndexMetadataIndexResponse>;
+  ) as unknown as Schema.Codec<DeleteIndexMetadataIndexResponse>;
 
 export type DeleteIndexMetadataIndexError =
   | DefaultErrors
@@ -981,7 +1017,7 @@ export const ListVectorsIndexRequest =
         path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/list",
       }),
     ),
-  ) as unknown as Schema.Schema<ListVectorsIndexRequest>;
+  ) as unknown as Schema.Codec<ListVectorsIndexRequest>;
 
 export interface ListVectorsIndexResponse {
   /** Number of vectors returned in this response */
@@ -1004,17 +1040,13 @@ export const ListVectorsIndexResponse =
       count: Schema.Number,
       isTruncated: Schema.Boolean,
       totalCount: Schema.Number,
-      vectors: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
+      vectors: Schema.Array(Vector),
       cursorExpirationTimestamp: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       nextCursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListVectorsIndexResponse>;
+  ) as unknown as Schema.Codec<ListVectorsIndexResponse>;
 
 export type ListVectorsIndexError = DefaultErrors;
 

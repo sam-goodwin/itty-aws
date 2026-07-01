@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RevokeFederationSettingIdentityProviderJwksInput {
+  federationSettingsId: string;
+  identityProviderId: string;
+  envelope?: boolean;
+}
 export const RevokeFederationSettingIdentityProviderJwksInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const RevokeFederationSettingIdentityProviderJwksInput =
       method: "DELETE",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks",
     }),
-  );
-export type RevokeFederationSettingIdentityProviderJwksInput =
-  typeof RevokeFederationSettingIdentityProviderJwksInput.Type;
+  ) as unknown as Schema.Codec<RevokeFederationSettingIdentityProviderJwksInput>;
 
 // Output Schema
+export type RevokeFederationSettingIdentityProviderJwksOutput = void;
 export const RevokeFederationSettingIdentityProviderJwksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeFederationSettingIdentityProviderJwksOutput =
-  typeof RevokeFederationSettingIdentityProviderJwksOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeFederationSettingIdentityProviderJwksOutput>;
 
 // The operation
 /**

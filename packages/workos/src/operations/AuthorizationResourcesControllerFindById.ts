@@ -4,16 +4,29 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesControllerFindByIdInput {
+  resource_id: string;
+}
 export const AuthorizationResourcesControllerFindByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/authorization/resources/{resource_id}" }),
-  );
-export type AuthorizationResourcesControllerFindByIdInput =
-  typeof AuthorizationResourcesControllerFindByIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesControllerFindByIdInput>;
 
 // Output Schema
+export interface AuthorizationResourcesControllerFindByIdOutput {
+  object?: string;
+  name?: string;
+  description?: string | null;
+  organization_id?: string;
+  parent_resource_id?: string | null;
+  id?: string;
+  external_id?: string;
+  resource_type_slug?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthorizationResourcesControllerFindByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -26,9 +39,7 @@ export const AuthorizationResourcesControllerFindByIdOutput =
     resource_type_slug: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationResourcesControllerFindByIdOutput =
-  typeof AuthorizationResourcesControllerFindByIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesControllerFindByIdOutput>;
 
 // The operation
 /**

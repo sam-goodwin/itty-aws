@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query buildsById($buildId: ID!) {\n  builds {\n    byId(buildId: $buildId) {\n      activityTimestamp\n      actor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      app {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appStoreConnectApp {\n          ascAppIdentifier\n          createdAt\n          id\n          updatedAt\n          webhookEventTypes\n          webhookIdentifier\n        }\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        convexProject {\n          convexProjectIdentifier\n          convexProjectName\n          convexProjectSlug\n          createdAt\n          id\n          updatedAt\n        }\n        description\n        devDomainName {\n          id\n          name\n        }\n        environmentVariableEnvironments\n        fullName\n        githubBuildTriggers {\n          autoSubmit\n          buildProfile\n          createdAt\n          environment\n          executionBehavior\n          id\n          isActive\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          platform\n          sourcePattern\n          submitProfile\n          targetPattern\n          type\n          updatedAt\n        }\n        githubJobRunTriggers {\n          createdAt\n          id\n          isActive\n          jobType\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          sourcePattern\n          targetPattern\n          triggerType\n        }\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        githubRepositorySettings {\n          baseDirectory\n          id\n        }\n        githubUrl\n        icon {\n          colorPalette\n          originalUrl\n          primaryColor\n          url\n        }\n        iconUrl\n        id\n        insights {\n          hasEventsFromExpoInsightsClientModule\n        }\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        logRocketProject {\n          createdAt\n          id\n          logRocketOrgId\n          logRocketProjectSlug\n          updatedAt\n        }\n        name\n        observe {\n          totalEventCount\n        }\n        ownerAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        packageName\n        packageUsername\n        playStoreUrl\n        privacy\n        privacySetting\n        published\n        pushNotifications {\n          id\n        }\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        sentryProject {\n          createdAt\n          id\n          sentryInstallationId\n          sentryProjectId\n          sentryProjectSlug\n          updatedAt\n        }\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n        users {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        vexoApp {\n          domain\n          iconUrl\n          id\n          name\n          owner\n          slug\n          vexoIdentifier\n        }\n        workerCustomDomain {\n          createdAt\n          devDomainName\n          hostname\n          id\n          updatedAt\n        }\n      }\n      appBuildVersion\n      appIdentifier\n      appVersion\n      artifacts {\n        applicationArchiveUrl\n        buildArtifactsUrl\n        buildUrl\n        fingerprintUrl\n        xcodeBuildLogsUrl\n      }\n      buildMode\n      buildProfile\n      cancelingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      channel\n      cliVersion\n      completedAt\n      createdAt\n      customNodeVersion\n      customWorkflowName\n      deployment {\n        channel {\n          appId\n          branchMapping\n          createdAt\n          id\n          isPaused\n          lastDeletionAttemptTime\n          name\n          updatedAt\n        }\n        id\n        runtime {\n          createdAt\n          firstBuildCreatedAt\n          id\n          isFingerprint\n          updatedAt\n          version\n        }\n      }\n      developmentClient\n      distribution\n      enqueuedAt\n      error {\n        buildPhase\n        docsUrl\n        errorCode\n        message\n      }\n      estimatedWaitTimeLeftSeconds\n      expirationDate\n      fingerprint {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        buildCount\n        createdAt\n        debugInfoUrl\n        hash\n        id\n        source {\n          bucketKey\n          isDebugFingerprint\n          type\n        }\n        updateCount\n        updatedAt\n      }\n      gitCommitHash\n      gitCommitMessage\n      gitRef\n      githubRepositoryOwnerAndName\n      id\n      initialQueuePosition\n      initiatingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      iosEnterpriseProvisioning\n      isForIosSimulator\n      isGitWorkingTreeDirty\n      isWaived\n      logFiles\n      maxBuildTimeSeconds\n      maxRetryTimeMinutes\n      message\n      metrics {\n        buildDuration\n        buildQueueTime\n        buildWaitTime\n      }\n      platform\n      priority\n      project {\n        description\n        fullName\n        iconUrl\n        id\n        name\n        published\n        slug\n        updated\n        username\n      }\n      projectMetadataFileUrl\n      projectRootDirectory\n      provisioningStartedAt\n      queuePosition\n      reactNativeVersion\n      releaseChannel\n      requiredPackageManager\n      resolvedEnvironment\n      resourceClass\n      resourceClassDisplayName\n      runFromCI\n      runtime {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        createdAt\n        fingerprint {\n          buildCount\n          createdAt\n          debugInfoUrl\n          hash\n          id\n          updateCount\n          updatedAt\n        }\n        firstBuildCreatedAt\n        id\n        isFingerprint\n        updatedAt\n        version\n      }\n      runtimeVersion\n      sdkVersion\n      selectedImage\n      status\n      submissions {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          name\n          priority\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        updatedAt\n        workflowJob {\n          createdAt\n          environment\n          id\n          key\n          name\n          outputs\n          requiredJobKeys\n          status\n          type\n          updatedAt\n        }\n      }\n      updateChannel {\n        app {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        appId\n        branchMapping\n        createdAt\n        id\n        isPaused\n        lastDeletionAttemptTime\n        name\n        runtimeInsights {\n          id\n        }\n        updatedAt\n      }\n      updatedAt\n      waiverType\n      workerStartedAt\n      workflowJob {\n        allDeviceTestCaseResults {\n          createdAt\n          duration\n          errorMessage\n          id\n          name\n          path\n          properties\n          retryCount\n          status\n          tags\n          updatedAt\n        }\n        approvals {\n          createdAt\n          decision\n          id\n          updatedAt\n        }\n        createdAt\n        credentialsAppleDeviceRegistrationRequest {\n          id\n        }\n        deviceTestCaseResults {\n          createdAt\n          duration\n          errorMessage\n          id\n          name\n          path\n          properties\n          retryCount\n          status\n          tags\n          updatedAt\n        }\n        environment\n        errors {\n          message\n          title\n        }\n        id\n        key\n        name\n        outputs\n        requiredJobKeys\n        status\n        turtleJobRun {\n          createdAt\n          displayName\n          endedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          name\n          priority\n          startedAt\n          status\n          updateGroups\n        }\n        turtleSubmission {\n          activityTimestamp\n          archiveUrl\n          canRetry\n          completedAt\n          createdAt\n          id\n          logFiles\n          logsUrl\n          maxRetryTimeMinutes\n          platform\n          priority\n          status\n          updatedAt\n        }\n        type\n        updatedAt\n        workflowRun {\n          activityTimestamp\n          createdAt\n          durationSeconds\n          finalizedAt\n          gitCommitHash\n          gitCommitMessage\n          id\n          inputs\n          name\n          pullRequestNumber\n          requestedGitRef\n          sourceExpiresAt\n          status\n          triggerEventType\n          triggeringLabelName\n          triggeringSchedule\n          updatedAt\n        }\n      }\n    }\n  }\n}";
+  "query buildsById($buildId: ID!) {\n  builds {\n    byId(buildId: $buildId) {\n      activityTimestamp\n      actor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      app {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        appStoreConnectApp {\n          ascAppIdentifier\n          createdAt\n          id\n          updatedAt\n          webhookEventTypes\n          webhookIdentifier\n        }\n        appStoreConnectWorkflowConnectionStatus\n        appStoreUrl\n        assetLimitPerUpdateGroup\n        buildProfiles\n        buildsReleaseChannels\n        convexProject {\n          convexProjectIdentifier\n          convexProjectName\n          convexProjectSlug\n          createdAt\n          id\n          updatedAt\n        }\n        description\n        devDomainName {\n          id\n          name\n        }\n        environmentVariableEnvironments\n        fullName\n        githubBuildTriggers {\n          autoSubmit\n          buildProfile\n          createdAt\n          environment\n          executionBehavior\n          id\n          isActive\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          platform\n          sourcePattern\n          submitProfile\n          targetPattern\n          type\n          updatedAt\n        }\n        githubJobRunTriggers {\n          createdAt\n          id\n          isActive\n          jobType\n          lastRunAt\n          lastRunErrorCode\n          lastRunErrorMessage\n          lastRunStatus\n          sourcePattern\n          targetPattern\n          triggerType\n        }\n        githubRepository {\n          createdAt\n          githubRepositoryIdentifier\n          githubRepositoryUrl\n          id\n          lastDeletionAttemptTime\n          nodeIdentifier\n        }\n        githubRepositorySettings {\n          baseDirectory\n          id\n        }\n        githubUrl\n        icon {\n          colorPalette\n          originalUrl\n          primaryColor\n          url\n        }\n        iconUrl\n        id\n        insights {\n          hasEventsFromExpoInsightsClientModule\n        }\n        internalDistributionBuildPrivacy\n        isDeleting\n        isDeprecated\n        isLikedByMe\n        lastDeletionAttemptTime\n        lastPublishedTime\n        latestActivity\n        latestReleaseId\n        likeCount\n        logRocketProject {\n          createdAt\n          id\n          logRocketOrgId\n          logRocketProjectSlug\n          updatedAt\n        }\n        name\n        observe {\n          totalEventCount\n        }\n        ownerAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        packageName\n        packageUsername\n        playStoreUrl\n        posthogProject {\n          createdAt\n          id\n          posthogHost\n          posthogProjectIdentifier\n          posthogProjectName\n          posthogProjectToken\n          updatedAt\n        }\n        privacy\n        privacySetting\n        published\n        pushNotifications {\n          id\n        }\n        pushSecurityEnabled\n        releaseChannels\n        requiresAccessTokenForPushSecurity\n        resourceClassExperiment\n        scopeKey\n        sdkVersion\n        sentryProject {\n          createdAt\n          id\n          sentryInstallationId\n          sentryProjectId\n          sentryProjectSlug\n          updatedAt\n        }\n        slug\n        suggestedDevDomainName\n        trendScore\n        updated\n        username\n        users {\n          appCount\n          appetizeCode\n          bestContactEmail\n          created\n          displayName\n          email\n          emailVerified\n          firstName\n          fullName\n          githubUsername\n          hasPassword\n          hasPendingUserInvitations\n          id\n          industry\n          isExpoAdmin\n          isLegacy\n          isSecondFactorAuthenticationEnabled\n          isStaffModeEnabled\n          lastDeletionAttemptTime\n          lastName\n          location\n          newEmailPendingVerification\n          primaryAccountProfileImageUrl\n          profilePhoto\n          twitterUsername\n          username\n        }\n        vexoApp {\n          domain\n          iconUrl\n          id\n          name\n          owner\n          slug\n          vexoIdentifier\n        }\n        workerCustomDomain {\n          createdAt\n          devDomainName\n          hostname\n          id\n          updatedAt\n        }\n      }\n      appBuildVersion\n      appIdentifier\n      appVersion\n      artifacts {\n        applicationArchiveUrl\n        buildArtifactsUrl\n        buildUrl\n        fingerprintUrl\n        xcodeBuildLogsUrl\n      }\n      buildMode\n      buildProfile\n      cancelingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      channel\n      cliVersion\n      completedAt\n      createdAt\n      customNodeVersion\n      customWorkflowName\n      deployment {\n        channel {\n          appId\n          branchMapping\n          createdAt\n          id\n          isPaused\n          lastDeletionAttemptTime\n          name\n          updatedAt\n        }\n        id\n        runtime {\n          createdAt\n          firstBuildCreatedAt\n          id\n          isFingerprint\n          updatedAt\n          version\n        }\n      }\n      developmentClient\n      distribution\n      embeddedUpdate {\n        channel\n        createdAt\n        id\n        launchAsset {\n          contentType\n          fileSHA256\n          fileSize\n          finalFileSize\n          id\n          storageKey\n        }\n        platform\n        runtime {\n          createdAt\n          firstBuildCreatedAt\n          id\n          isFingerprint\n          updatedAt\n          version\n        }\n        runtimeVersion\n        signedAssetUrl\n      }\n      enqueuedAt\n      error {\n        buildPhase\n        docsUrl\n        errorCode\n        message\n      }\n      estimatedWaitTimeLeftSeconds\n      expirationDate\n      fingerprint {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        buildCount\n        createdAt\n        debugInfoUrl\n        hash\n        id\n        source {\n          bucketKey\n          isDebugFingerprint\n          type\n        }\n        updateCount\n        updatedAt\n      }\n      gitCommitHash\n      gitCommitMessage\n      gitRef\n      githubRepositoryOwnerAndName\n      id\n      initialQueuePosition\n      initiatingActor {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        created\n        displayName\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        id\n        isExpoAdmin\n        lastDeletionAttemptTime\n      }\n      iosEnterpriseProvisioning\n      isForIosSimulator\n      isGitWorkingTreeDirty\n      isWaived\n      logFiles\n      maxBuildTimeSeconds\n      maxRetryTimeMinutes\n      message\n      metrics {\n        buildDuration\n        buildQueueTime\n        buildWaitTime\n      }\n      platform\n      priority\n      project {\n        description\n        fullName\n        iconUrl\n        id\n        name\n        published\n        slug\n        updated\n        username\n      }\n      projectMetadataFileUrl\n      projectRootDirectory\n      provisioningStartedAt\n      queuePosition\n      reactNativeVersion\n      releaseChannel\n      requiredPackageManager\n      resolvedEnvironment\n      resolvedImage\n      resourceClass\n      resourceClassDisplayName\n      runFromCI\n      runtime {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        createdAt\n        fingerprint {\n          buildCount\n          createdAt\n          debugInfoUrl\n          hash\n          id\n          updateCount\n          updatedAt\n        }\n        firstBuildCreatedAt\n        id\n        isFingerprint\n        updatedAt\n        version\n      }\n      runtimeVersion\n      sdkVersion\n      selectedImage\n      status\n      submissions {\n        activityTimestamp\n        actor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        androidConfig {\n          applicationIdentifier\n          archiveType\n          releaseStatus\n          rollout\n          track\n        }\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        archiveUrl\n        canRetry\n        cancelingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        completedAt\n        createdAt\n        error {\n          errorCode\n          message\n        }\n        id\n        initiatingActor {\n          created\n          displayName\n          firstName\n          id\n          isExpoAdmin\n          lastDeletionAttemptTime\n        }\n        iosConfig {\n          appleIdUsername\n          ascApiKeyId\n          ascAppIdentifier\n        }\n        jobRun {\n          createdAt\n          displayName\n          endedAt\n          enqueuedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          maxRunTimeSeconds\n          name\n          priority\n          resourceClassDisplayName\n          startedAt\n          status\n          updateGroups\n        }\n        logFiles\n        logsUrl\n        maxRetryTimeMinutes\n        platform\n        priority\n        status\n        updatedAt\n        workflowJob {\n          createdAt\n          environment\n          id\n          key\n          name\n          outputs\n          requiredJobKeys\n          status\n          type\n          updatedAt\n        }\n      }\n      updateChannel {\n        app {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        appId\n        branchMapping\n        createdAt\n        id\n        isPaused\n        lastDeletionAttemptTime\n        name\n        runtimeInsights {\n          id\n        }\n        updatedAt\n      }\n      updatedAt\n      waiverType\n      workerStartedAt\n      workflowJob {\n        allDeviceTestCaseResults {\n          createdAt\n          duration\n          errorMessage\n          id\n          name\n          path\n          properties\n          retryCount\n          status\n          tags\n          updatedAt\n        }\n        approvals {\n          createdAt\n          decision\n          id\n          updatedAt\n        }\n        createdAt\n        credentialsAppleDeviceRegistrationRequest {\n          closedAt\n          id\n        }\n        deviceTestCaseResultAttempts {\n          createdAt\n          duration\n          errorMessage\n          id\n          name\n          path\n          properties\n          retryCount\n          status\n          tags\n          updatedAt\n        }\n        deviceTestCaseResults {\n          createdAt\n          duration\n          errorMessage\n          id\n          name\n          path\n          properties\n          retryCount\n          status\n          tags\n          updatedAt\n        }\n        environment\n        errors {\n          message\n          title\n        }\n        id\n        key\n        name\n        outputs\n        requiredJobKeys\n        status\n        turtleJobRun {\n          createdAt\n          displayName\n          endedAt\n          enqueuedAt\n          expiresAt\n          gitCommitHash\n          gitCommitMessage\n          gitRef\n          id\n          isWaived\n          logFileUrls\n          maxRunTimeSeconds\n          name\n          priority\n          resourceClassDisplayName\n          startedAt\n          status\n          updateGroups\n        }\n        turtleSubmission {\n          activityTimestamp\n          archiveUrl\n          canRetry\n          completedAt\n          createdAt\n          id\n          logFiles\n          logsUrl\n          maxRetryTimeMinutes\n          platform\n          priority\n          status\n          updatedAt\n        }\n        type\n        updatedAt\n        workflowRun {\n          activityTimestamp\n          createdAt\n          durationSeconds\n          finalizedAt\n          gitCommitHash\n          gitCommitMessage\n          id\n          inputs\n          name\n          pullRequestNumber\n          requestedGitRef\n          sourceExpiresAt\n          status\n          triggerEventType\n          triggeringLabelName\n          triggeringSchedule\n          updatedAt\n        }\n      }\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const BuildsByIdInput = Schema.Struct({
@@ -114,6 +114,11 @@ export const BuildsByIdOutput = Schema.Struct({
         webhookIdentifier: Schema.String,
       }),
     ),
+    appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+      "HAS_WORKFLOWS_IS_CONNECTED",
+      "HAS_WORKFLOWS_MISSING_CONNECTION",
+      "NO_APP_STORE_CONNECT_WORKFLOWS",
+    ]),
     appStoreUrl: Schema.NullOr(Schema.String),
     assetLimitPerUpdateGroup: Schema.Number,
     buildProfiles: Schema.Array(Schema.String),
@@ -275,6 +280,17 @@ export const BuildsByIdOutput = Schema.Struct({
     packageName: Schema.String,
     packageUsername: Schema.String,
     playStoreUrl: Schema.NullOr(Schema.String),
+    posthogProject: Schema.NullOr(
+      Schema.Struct({
+        createdAt: Schema.String,
+        id: Schema.String,
+        posthogHost: Schema.String,
+        posthogProjectIdentifier: Schema.String,
+        posthogProjectName: Schema.String,
+        posthogProjectToken: Schema.String,
+        updatedAt: Schema.String,
+      }),
+    ),
     privacy: Schema.String,
     privacySetting: Schema.Literals(["HIDDEN", "PUBLIC", "UNLISTED"]),
     published: Schema.Boolean,
@@ -328,7 +344,7 @@ export const BuildsByIdOutput = Schema.Struct({
             lastName: Schema.NullOr(Schema.String),
             location: Schema.NullOr(Schema.String),
             newEmailPendingVerification: Schema.NullOr(Schema.String),
-            primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+            primaryAccountProfileImageUrl: Schema.String,
             profilePhoto: Schema.String,
             twitterUsername: Schema.NullOr(Schema.String),
             username: Schema.String,
@@ -475,6 +491,34 @@ export const BuildsByIdOutput = Schema.Struct({
   distribution: Schema.NullOr(
     Schema.Literals(["INTERNAL", "SIMULATOR", "STORE"]),
   ),
+  embeddedUpdate: Schema.NullOr(
+    Schema.Struct({
+      channel: Schema.String,
+      createdAt: Schema.String,
+      id: Schema.String,
+      launchAsset: Schema.Struct({
+        contentType: Schema.String,
+        fileSHA256: Schema.String,
+        fileSize: Schema.Number,
+        finalFileSize: Schema.NullOr(Schema.Number),
+        id: Schema.String,
+        storageKey: Schema.String,
+      }),
+      platform: Schema.Literals(["ANDROID", "IOS"]),
+      runtime: Schema.NullOr(
+        Schema.Struct({
+          createdAt: Schema.String,
+          firstBuildCreatedAt: Schema.NullOr(Schema.String),
+          id: Schema.String,
+          isFingerprint: Schema.Boolean,
+          updatedAt: Schema.String,
+          version: Schema.String,
+        }),
+      ),
+      runtimeVersion: Schema.String,
+      signedAssetUrl: Schema.String,
+    }),
+  ),
   enqueuedAt: Schema.NullOr(Schema.String),
   error: Schema.NullOr(
     Schema.Struct({
@@ -495,6 +539,7 @@ export const BuildsByIdOutput = Schema.Struct({
           "EAS_BUILD_INTERNAL",
           "FAIL_BUILD",
           "FIX_GRADLEW",
+          "GRADLE_BUILD_PROFILE",
           "INSTALL_CUSTOM_TOOLS",
           "INSTALL_DEPENDENCIES",
           "INSTALL_PODS",
@@ -503,6 +548,7 @@ export const BuildsByIdOutput = Schema.Struct({
           "ON_BUILD_ERROR_HOOK",
           "ON_BUILD_SUCCESS_HOOK",
           "PARSE_CUSTOM_WORKFLOW_CONFIG",
+          "PARSE_XCACTIVITYLOG",
           "POST_INSTALL_HOOK",
           "PREBUILD",
           "PREPARE_ARTIFACTS",
@@ -538,6 +584,11 @@ export const BuildsByIdOutput = Schema.Struct({
   fingerprint: Schema.NullOr(
     Schema.Struct({
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -708,6 +759,7 @@ export const BuildsByIdOutput = Schema.Struct({
   releaseChannel: Schema.NullOr(Schema.String),
   requiredPackageManager: Schema.NullOr(Schema.String),
   resolvedEnvironment: Schema.NullOr(Schema.Unknown),
+  resolvedImage: Schema.NullOr(Schema.String),
   resourceClass: Schema.Literals([
     "ANDROID_DEFAULT",
     "ANDROID_LARGE",
@@ -730,6 +782,11 @@ export const BuildsByIdOutput = Schema.Struct({
   runtime: Schema.NullOr(
     Schema.Struct({
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -827,6 +884,11 @@ export const BuildsByIdOutput = Schema.Struct({
         }),
       ),
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -911,6 +973,7 @@ export const BuildsByIdOutput = Schema.Struct({
           createdAt: Schema.String,
           displayName: Schema.NullOr(Schema.String),
           endedAt: Schema.NullOr(Schema.String),
+          enqueuedAt: Schema.NullOr(Schema.String),
           expiresAt: Schema.String,
           gitCommitHash: Schema.NullOr(Schema.String),
           gitCommitMessage: Schema.NullOr(Schema.String),
@@ -918,8 +981,10 @@ export const BuildsByIdOutput = Schema.Struct({
           id: Schema.String,
           isWaived: Schema.Boolean,
           logFileUrls: Schema.Array(Schema.String),
+          maxRunTimeSeconds: Schema.Number,
           name: Schema.String,
           priority: Schema.Literals(["HIGH", "NORMAL"]),
+          resourceClassDisplayName: Schema.String,
           startedAt: Schema.NullOr(Schema.String),
           status: Schema.Literals([
             "CANCELED",
@@ -968,6 +1033,7 @@ export const BuildsByIdOutput = Schema.Struct({
           ]),
           type: Schema.Literals([
             "APPLE_DEVICE_REGISTRATION_REQUEST",
+            "BRANCH_DELETE",
             "BUILD",
             "CUSTOM",
             "DEPLOY",
@@ -992,6 +1058,11 @@ export const BuildsByIdOutput = Schema.Struct({
   updateChannel: Schema.NullOr(
     Schema.Struct({
       app: Schema.Struct({
+        appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+          "HAS_WORKFLOWS_IS_CONNECTED",
+          "HAS_WORKFLOWS_MISSING_CONNECTION",
+          "NO_APP_STORE_CONNECT_WORKFLOWS",
+        ]),
         appStoreUrl: Schema.NullOr(Schema.String),
         assetLimitPerUpdateGroup: Schema.Number,
         buildProfiles: Schema.Array(Schema.String),
@@ -1079,7 +1150,23 @@ export const BuildsByIdOutput = Schema.Struct({
       createdAt: Schema.String,
       credentialsAppleDeviceRegistrationRequest: Schema.NullOr(
         Schema.Struct({
+          closedAt: Schema.NullOr(Schema.String),
           id: Schema.String,
+        }),
+      ),
+      deviceTestCaseResultAttempts: Schema.Array(
+        Schema.Struct({
+          createdAt: Schema.String,
+          duration: Schema.NullOr(Schema.Number),
+          errorMessage: Schema.NullOr(Schema.String),
+          id: Schema.String,
+          name: Schema.String,
+          path: Schema.String,
+          properties: Schema.NullOr(Schema.Unknown),
+          retryCount: Schema.NullOr(Schema.Number),
+          status: Schema.Literals(["FAILED", "PASSED"]),
+          tags: Schema.NullOr(Schema.Array(Schema.String)),
+          updatedAt: Schema.String,
         }),
       ),
       deviceTestCaseResults: Schema.Array(
@@ -1124,6 +1211,7 @@ export const BuildsByIdOutput = Schema.Struct({
           createdAt: Schema.String,
           displayName: Schema.NullOr(Schema.String),
           endedAt: Schema.NullOr(Schema.String),
+          enqueuedAt: Schema.NullOr(Schema.String),
           expiresAt: Schema.String,
           gitCommitHash: Schema.NullOr(Schema.String),
           gitCommitMessage: Schema.NullOr(Schema.String),
@@ -1131,8 +1219,10 @@ export const BuildsByIdOutput = Schema.Struct({
           id: Schema.String,
           isWaived: Schema.Boolean,
           logFileUrls: Schema.Array(Schema.String),
+          maxRunTimeSeconds: Schema.Number,
           name: Schema.String,
           priority: Schema.Literals(["HIGH", "NORMAL"]),
+          resourceClassDisplayName: Schema.String,
           startedAt: Schema.NullOr(Schema.String),
           status: Schema.Literals([
             "CANCELED",
@@ -1172,6 +1262,7 @@ export const BuildsByIdOutput = Schema.Struct({
       ),
       type: Schema.Literals([
         "APPLE_DEVICE_REGISTRATION_REQUEST",
+        "BRANCH_DELETE",
         "BUILD",
         "CUSTOM",
         "DEPLOY",
@@ -1217,12 +1308,15 @@ export const BuildsByIdOutput = Schema.Struct({
           "APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED",
           "EAS_SUBMIT",
           "EXPO_LAUNCH",
+          "GITHUB_PULL_REQUEST_BASE_REF_CHANGED",
+          "GITHUB_PULL_REQUEST_EDITED",
           "GITHUB_PULL_REQUEST_LABELED",
           "GITHUB_PULL_REQUEST_OPENED",
           "GITHUB_PULL_REQUEST_READY_FOR_REVIEW",
           "GITHUB_PULL_REQUEST_REOPENED",
           "GITHUB_PULL_REQUEST_SYNCHRONIZE",
           "GITHUB_PUSH",
+          "GITHUB_REF_DELETE",
           "MANUAL",
           "REPACK_EXPO_GO",
           "SCHEDULE",

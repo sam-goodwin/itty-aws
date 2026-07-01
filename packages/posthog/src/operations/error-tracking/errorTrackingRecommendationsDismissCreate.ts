@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingRecommendationsDismissCreateInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingRecommendationsDismissCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,36 +14,42 @@ export const ErrorTrackingRecommendationsDismissCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/error_tracking/recommendations/{id}/dismiss/",
+      path: "/api/projects/{project_id}/error_tracking/recommendations/{id}/dismiss/",
     }),
-  );
-export type ErrorTrackingRecommendationsDismissCreateInput =
-  typeof ErrorTrackingRecommendationsDismissCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingRecommendationsDismissCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingRecommendationsDismissCreateOutput {
+  id?: string;
+  type?: string;
+  meta?: unknown;
+  completed?: boolean;
+  status?: string;
+  computed_at?: string | null;
+  dismissed_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingRecommendationsDismissCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     meta: Schema.optional(Schema.Unknown),
+    completed: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.String),
     computed_at: Schema.optional(Schema.NullOr(Schema.String)),
     dismissed_at: Schema.optional(Schema.NullOr(Schema.String)),
-    next_refresh_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingRecommendationsDismissCreateOutput =
-  typeof ErrorTrackingRecommendationsDismissCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingRecommendationsDismissCreateOutput>;
 
 // The operation
 /**
  *
- * @param id - A UUID string identifying this error tracking recommendation.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingRecommendationsDismissCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingRecommendationsDismissCreateInput,
     outputSchema: ErrorTrackingRecommendationsDismissCreateOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

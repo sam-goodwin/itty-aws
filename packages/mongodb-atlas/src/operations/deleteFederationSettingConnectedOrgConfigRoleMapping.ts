@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteFederationSettingConnectedOrgConfigRoleMappingInput {
+  federationSettingsId: string;
+  id: string;
+  orgId: string;
+  envelope?: boolean;
+}
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
       method: "DELETE",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
     }),
-  );
-export type DeleteFederationSettingConnectedOrgConfigRoleMappingInput =
-  typeof DeleteFederationSettingConnectedOrgConfigRoleMappingInput.Type;
+  ) as unknown as Schema.Codec<DeleteFederationSettingConnectedOrgConfigRoleMappingInput>;
 
 // Output Schema
+export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput = void;
 export const DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteFederationSettingConnectedOrgConfigRoleMappingOutput =
-  typeof DeleteFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteFederationSettingConnectedOrgConfigRoleMappingOutput>;
 
 // The operation
 /**
  * Remove One Role Mapping from One Organization
  *
- * Removes one role mapping in the specified organization from the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Removes one role mapping in the specified organization from the specified federation.
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  * @param id - Unique 24-hexadecimal digit string that identifies the role mapping that you want to remove.

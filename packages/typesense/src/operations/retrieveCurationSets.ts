@@ -3,13 +3,37 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RetrieveCurationSetsInput {}
 export const RetrieveCurationSetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/curation_sets" }),
-  );
-export type RetrieveCurationSetsInput = typeof RetrieveCurationSetsInput.Type;
+  ) as unknown as Schema.Codec<RetrieveCurationSetsInput>;
 
 // Output Schema
+export type RetrieveCurationSetsOutput = {
+  items: {
+    rule: {
+      tags?: string[];
+      query?: string;
+      match?: "exact" | "contains";
+      filter_by?: string;
+    };
+    includes?: { id: string; position: number }[];
+    excludes?: { id: string }[];
+    filter_by?: string;
+    remove_matched_tokens?: boolean;
+    metadata?: unknown;
+    sort_by?: string;
+    replace_query?: string;
+    filter_curated_hits?: boolean;
+    effective_from_ts?: number;
+    effective_to_ts?: number;
+    stop_processing?: boolean;
+    id?: string;
+  }[];
+  description?: string;
+  name: string;
+}[];
 export const RetrieveCurationSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -51,8 +75,7 @@ export const RetrieveCurationSetsOutput =
       description: Schema.optional(Schema.String),
       name: Schema.String,
     }),
-  );
-export type RetrieveCurationSetsOutput = typeof RetrieveCurationSetsOutput.Type;
+  ) as unknown as Schema.Codec<RetrieveCurationSetsOutput>;
 
 // The operation
 /**

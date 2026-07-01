@@ -4,13 +4,62 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AgentPoolCreateOrUpdateInput {
+  connectedClusterResourceUri: string;
+  agentPoolName: string;
+  properties?: {
+    osType?: "Linux" | "Windows";
+    osSKU?: "CBLMariner" | "Windows2019" | "Windows2022";
+    nodeLabels?: Record<string, string>;
+    nodeTaints?: string[];
+    maxCount?: number;
+    minCount?: number;
+    enableAutoScaling?: boolean;
+    maxPods?: number;
+    count?: number;
+    vmSize?: string;
+    kubernetesVersion?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Upgrading"
+      | "Accepted";
+    status?: {
+      currentState?:
+        | "Succeeded"
+        | "Failed"
+        | "Canceled"
+        | "Pending"
+        | "Creating"
+        | "Deleting"
+        | "Updating"
+        | "Upgrading"
+        | "Accepted";
+      errorMessage?: string;
+      readyReplicas?: {
+        count?: number;
+        vmSize?: string;
+        kubernetesVersion?: string;
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+  extendedLocation?: { type?: "CustomLocation"; name?: string };
+}
 export const AgentPoolCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+    agentPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         osType: Schema.optional(Schema.Literals(["Linux", "Windows"])),
@@ -83,11 +132,22 @@ export const AgentPoolCreateOrUpdateInput =
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type AgentPoolCreateOrUpdateInput =
-  typeof AgentPoolCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentPoolCreateOrUpdateInput>;
 
 // Output Schema
+export interface AgentPoolCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentPoolCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -107,14 +167,14 @@ export const AgentPoolCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentPoolCreateOrUpdateOutput =
-  typeof AgentPoolCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentPoolCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates the agent pool in the provisioned cluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
+ * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const agentPoolCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -124,25 +184,32 @@ export const agentPoolCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AgentPoolDeleteInput {
+  connectedClusterResourceUri: string;
+  agentPoolName: string;
+}
+export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type AgentPoolDeleteInput = typeof AgentPoolDeleteInput.Type;
+) as unknown as Schema.Codec<AgentPoolDeleteInput>;
 
 // Output Schema
-export const AgentPoolDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentPoolDeleteOutput = typeof AgentPoolDeleteOutput.Type;
+export type AgentPoolDeleteOutput = void;
+export const AgentPoolDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolDeleteOutput>;
 
 // The operation
 /**
  * Deletes the specified agent pool in the provisioned cluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
+ * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const agentPoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -150,18 +217,35 @@ export const agentPoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentPoolDeleteOutput,
 }));
 // Input Schema
-export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AgentPoolGetInput {
+  connectedClusterResourceUri: string;
+  agentPoolName: string;
+}
+export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  agentPoolName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type AgentPoolGetInput = typeof AgentPoolGetInput.Type;
+) as unknown as Schema.Codec<AgentPoolGetInput>;
 
 // Output Schema
+export interface AgentPoolGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -180,13 +264,14 @@ export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AgentPoolGetOutput = typeof AgentPoolGetOutput.Type;
+}) as unknown as Schema.Codec<AgentPoolGetOutput>;
 
 // The operation
 /**
  * Gets the specified agent pool in the provisioned cluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
+ * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
 export const agentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -194,18 +279,37 @@ export const agentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentPoolGetOutput,
 }));
 // Input Schema
+export interface AgentPoolListByProvisionedClusterInput {
+  connectedClusterResourceUri: string;
+}
 export const AgentPoolListByProvisionedClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools",
       apiVersion: "2024-01-01",
     }),
-  );
-export type AgentPoolListByProvisionedClusterInput =
-  typeof AgentPoolListByProvisionedClusterInput.Type;
+  ) as unknown as Schema.Codec<AgentPoolListByProvisionedClusterInput>;
 
 // Output Schema
+export interface AgentPoolListByProvisionedClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AgentPoolListByProvisionedClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -242,14 +346,13 @@ export const AgentPoolListByProvisionedClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AgentPoolListByProvisionedClusterOutput =
-  typeof AgentPoolListByProvisionedClusterOutput.Type;
+  }) as unknown as Schema.Codec<AgentPoolListByProvisionedClusterOutput>;
 
 // The operation
 /**
  * Gets the list of agent pools in the specified provisioned cluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const agentPoolListByProvisionedCluster =
@@ -258,22 +361,24 @@ export const agentPoolListByProvisionedCluster =
     outputSchema: AgentPoolListByProvisionedClusterOutput,
   }));
 // Input Schema
+export interface DeleteKubernetesVersionsInput {
+  customLocationResourceUri: string;
+}
 export const DeleteKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type DeleteKubernetesVersionsInput =
-  typeof DeleteKubernetesVersionsInput.Type;
+  ) as unknown as Schema.Codec<DeleteKubernetesVersionsInput>;
 
 // Output Schema
+export type DeleteKubernetesVersionsOutput = void;
 export const DeleteKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteKubernetesVersionsOutput =
-  typeof DeleteKubernetesVersionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKubernetesVersionsOutput>;
 
 // The operation
 /**
@@ -281,6 +386,7 @@ export type DeleteKubernetesVersionsOutput =
  *
  * Delete the default kubernetes versions resource type
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const DeleteKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -290,25 +396,29 @@ export const DeleteKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface DeleteVMSkusInput {
+  customLocationResourceUri: string;
+}
+export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type DeleteVMSkusInput = typeof DeleteVMSkusInput.Type;
+) as unknown as Schema.Codec<DeleteVMSkusInput>;
 
 // Output Schema
-export const DeleteVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteVMSkusOutput = typeof DeleteVMSkusOutput.Type;
+export type DeleteVMSkusOutput = void;
+export const DeleteVMSkusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteVMSkusOutput>;
 
 // The operation
 /**
  * Deletes the default VM skus resource type
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const DeleteVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -316,17 +426,34 @@ export const DeleteVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeleteVMSkusOutput,
 }));
 // Input Schema
+export interface GetKubernetesVersionsInput {
+  customLocationResourceUri: string;
+}
 export const GetKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type GetKubernetesVersionsInput = typeof GetKubernetesVersionsInput.Type;
+  ) as unknown as Schema.Codec<GetKubernetesVersionsInput>;
 
 // Output Schema
+export interface GetKubernetesVersionsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GetKubernetesVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -346,9 +473,7 @@ export const GetKubernetesVersionsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetKubernetesVersionsOutput =
-  typeof GetKubernetesVersionsOutput.Type;
+  }) as unknown as Schema.Codec<GetKubernetesVersionsOutput>;
 
 // The operation
 /**
@@ -356,6 +481,7 @@ export type GetKubernetesVersionsOutput =
  *
  * Lists the supported kubernetes versions for the specified custom location
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const GetKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -365,18 +491,33 @@ export const GetKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GetVMSkusInput {
+  customLocationResourceUri: string;
+}
+export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type GetVMSkusInput = typeof GetVMSkusInput.Type;
+) as unknown as Schema.Codec<GetVMSkusInput>;
 
 // Output Schema
+export interface GetVMSkusOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -395,8 +536,7 @@ export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GetVMSkusOutput = typeof GetVMSkusOutput.Type;
+}) as unknown as Schema.Codec<GetVMSkusOutput>;
 
 // The operation
 /**
@@ -404,6 +544,7 @@ export type GetVMSkusOutput = typeof GetVMSkusOutput.Type;
  *
  * Lists the supported VM skus for the specified custom location
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const GetVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -411,22 +552,24 @@ export const GetVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetVMSkusOutput,
 }));
 // Input Schema
+export interface HybridIdentityMetadataDeleteInput {
+  connectedClusterResourceUri: string;
+}
 export const HybridIdentityMetadataDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataDeleteInput =
-  typeof HybridIdentityMetadataDeleteInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataDeleteInput>;
 
 // Output Schema
+export type HybridIdentityMetadataDeleteOutput = void;
 export const HybridIdentityMetadataDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridIdentityMetadataDeleteOutput =
-  typeof HybridIdentityMetadataDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridIdentityMetadataDeleteOutput>;
 
 // The operation
 /**
@@ -434,6 +577,7 @@ export type HybridIdentityMetadataDeleteOutput =
  *
  * Deletes the hybrid identity metadata proxy resource.
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataDelete =
@@ -442,18 +586,34 @@ export const HybridIdentityMetadataDelete =
     outputSchema: HybridIdentityMetadataDeleteOutput,
   }));
 // Input Schema
+export interface HybridIdentityMetadataGetInput {
+  connectedClusterResourceUri: string;
+}
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataGetInput =
-  typeof HybridIdentityMetadataGetInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataGetInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridIdentityMetadataGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -473,9 +633,7 @@ export const HybridIdentityMetadataGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridIdentityMetadataGetOutput =
-  typeof HybridIdentityMetadataGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataGetOutput>;
 
 // The operation
 /**
@@ -483,6 +641,7 @@ export type HybridIdentityMetadataGetOutput =
  *
  * Get the hybrid identity metadata proxy resource.
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -492,18 +651,37 @@ export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridIdentityMetadataListByClusterInput {
+  connectedClusterResourceUri: string;
+}
 export const HybridIdentityMetadataListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataListByClusterInput =
-  typeof HybridIdentityMetadataListByClusterInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataListByClusterInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataListByClusterOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const HybridIdentityMetadataListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -538,9 +716,7 @@ export const HybridIdentityMetadataListByClusterOutput =
         ),
       }),
     ),
-  });
-export type HybridIdentityMetadataListByClusterOutput =
-  typeof HybridIdentityMetadataListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataListByClusterOutput>;
 
 // The operation
 /**
@@ -548,6 +724,7 @@ export type HybridIdentityMetadataListByClusterOutput =
  *
  * Lists the hybrid identity metadata proxy resource in a provisioned cluster instance.
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataListByCluster =
@@ -556,8 +733,34 @@ export const HybridIdentityMetadataListByCluster =
     outputSchema: HybridIdentityMetadataListByClusterOutput,
   }));
 // Input Schema
+export interface HybridIdentityMetadataPutInput {
+  connectedClusterResourceUri: string;
+  properties: {
+    resourceUid?: string;
+    publicKey?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Upgrading"
+      | "Accepted";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridIdentityMetadataPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resourceUid: Schema.optional(Schema.String),
       publicKey: Schema.optional(Schema.String),
@@ -595,11 +798,22 @@ export const HybridIdentityMetadataPutInput =
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridIdentityMetadataPutInput =
-  typeof HybridIdentityMetadataPutInput.Type;
+  ) as unknown as Schema.Codec<HybridIdentityMetadataPutInput>;
 
 // Output Schema
+export interface HybridIdentityMetadataPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridIdentityMetadataPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -619,9 +833,7 @@ export const HybridIdentityMetadataPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridIdentityMetadataPutOutput =
-  typeof HybridIdentityMetadataPutOutput.Type;
+  }) as unknown as Schema.Codec<HybridIdentityMetadataPutOutput>;
 
 // The operation
 /**
@@ -629,6 +841,7 @@ export type HybridIdentityMetadataPutOutput =
  *
  * Creates the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -638,18 +851,37 @@ export const HybridIdentityMetadataPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface KubernetesVersionsListInput {
+  customLocationResourceUri: string;
+}
 export const KubernetesVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions",
       apiVersion: "2024-01-01",
     }),
-  );
-export type KubernetesVersionsListInput =
-  typeof KubernetesVersionsListInput.Type;
+  ) as unknown as Schema.Codec<KubernetesVersionsListInput>;
 
 // Output Schema
+export interface KubernetesVersionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const KubernetesVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -686,9 +918,7 @@ export const KubernetesVersionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type KubernetesVersionsListOutput =
-  typeof KubernetesVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<KubernetesVersionsListOutput>;
 
 // The operation
 /**
@@ -696,6 +926,7 @@ export type KubernetesVersionsListOutput =
  *
  * Lists the supported kubernetes versions for the specified custom location
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const KubernetesVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -705,6 +936,7 @@ export const KubernetesVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -713,10 +945,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HybridContainerService/operations",
     apiVersion: "2024-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -739,8 +985,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -753,8 +998,108 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProvisionedClusterInstancesCreateOrUpdateInput {
+  connectedClusterResourceUri: string;
+  properties?: {
+    linuxProfile?: { ssh?: { publicKeys?: { keyData?: string }[] } };
+    controlPlane?: {
+      count?: number;
+      vmSize?: string;
+      controlPlaneEndpoint?: { hostIP?: string };
+    };
+    kubernetesVersion?: string;
+    networkProfile?: {
+      loadBalancerProfile?: { count?: number };
+      networkPolicy?: "calico";
+      podCidr?: string;
+    };
+    storageProfile?: {
+      smbCsiDriver?: { enabled?: boolean };
+      nfsCsiDriver?: { enabled?: boolean };
+    };
+    clusterVMAccessProfile?: { authorizedIPRanges?: string };
+    agentPoolProfiles?: {
+      osType?: "Linux" | "Windows";
+      osSKU?: "CBLMariner" | "Windows2019" | "Windows2022";
+      nodeLabels?: Record<string, string>;
+      nodeTaints?: string[];
+      maxCount?: number;
+      minCount?: number;
+      enableAutoScaling?: boolean;
+      maxPods?: number;
+      count?: number;
+      vmSize?: string;
+      kubernetesVersion?: string;
+      name?: string;
+    }[];
+    cloudProviderProfile?: {
+      infraNetworkProfile?: { vnetSubnetIds?: string[] };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Upgrading"
+      | "Accepted";
+    status?: {
+      controlPlaneStatus?: {
+        name?: string;
+        phase?:
+          | "pending"
+          | "provisioning"
+          | "provisioning {HelmChartInstalled}"
+          | "provisioning {MSICertificateDownloaded}"
+          | "provisioned"
+          | "deleting"
+          | "failed"
+          | "upgrading";
+        ready?: boolean;
+        errorMessage?: string;
+      }[];
+      currentState?:
+        | "Succeeded"
+        | "Failed"
+        | "Canceled"
+        | "Pending"
+        | "Creating"
+        | "Deleting"
+        | "Updating"
+        | "Upgrading"
+        | "Accepted";
+      errorMessage?: string;
+    };
+    licenseProfile?: {
+      azureHybridBenefit?: "True" | "False" | "NotApplicable";
+    };
+    autoScalerProfile?: {
+      "balance-similar-node-groups"?: string;
+      expander?: "least-waste" | "most-pods" | "priority" | "random";
+      "max-empty-bulk-delete"?: string;
+      "max-graceful-termination-sec"?: string;
+      "max-node-provision-time"?: string;
+      "max-total-unready-percentage"?: string;
+      "new-pod-scale-up-delay"?: string;
+      "ok-total-unready-count"?: string;
+      "scan-interval"?: string;
+      "scale-down-delay-after-add"?: string;
+      "scale-down-delay-after-delete"?: string;
+      "scale-down-delay-after-failure"?: string;
+      "scale-down-unneeded-time"?: string;
+      "scale-down-unready-time"?: string;
+      "scale-down-utilization-threshold"?: string;
+      "skip-nodes-with-local-storage"?: string;
+      "skip-nodes-with-system-pods"?: string;
+    };
+  };
+  extendedLocation?: { type?: "CustomLocation"; name?: string };
+}
 export const ProvisionedClusterInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         linuxProfile: Schema.optional(
@@ -946,11 +1291,22 @@ export const ProvisionedClusterInstancesCreateOrUpdateInput =
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesCreateOrUpdateInput =
-  typeof ProvisionedClusterInstancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProvisionedClusterInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -970,14 +1326,13 @@ export const ProvisionedClusterInstancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProvisionedClusterInstancesCreateOrUpdateOutput =
-  typeof ProvisionedClusterInstancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates the provisioned cluster instance
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesCreateOrUpdate =
@@ -986,27 +1341,30 @@ export const provisionedClusterInstancesCreateOrUpdate =
     outputSchema: ProvisionedClusterInstancesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesDeleteInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesDeleteInput =
-  typeof ProvisionedClusterInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesDeleteInput>;
 
 // Output Schema
+export type ProvisionedClusterInstancesDeleteOutput = void;
 export const ProvisionedClusterInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProvisionedClusterInstancesDeleteOutput =
-  typeof ProvisionedClusterInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProvisionedClusterInstancesDeleteOutput>;
 
 // The operation
 /**
  * Deletes the provisioned cluster instance
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesDelete =
@@ -1015,18 +1373,34 @@ export const provisionedClusterInstancesDelete =
     outputSchema: ProvisionedClusterInstancesDeleteOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesGetInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesGetInput =
-  typeof ProvisionedClusterInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesGetInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProvisionedClusterInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1046,14 +1420,13 @@ export const ProvisionedClusterInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProvisionedClusterInstancesGetOutput =
-  typeof ProvisionedClusterInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesGetOutput>;
 
 // The operation
 /**
  * Gets the provisioned cluster instance
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesGet =
@@ -1062,18 +1435,34 @@ export const provisionedClusterInstancesGet =
     outputSchema: ProvisionedClusterInstancesGetOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesGetUpgradeProfileInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesGetUpgradeProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/upgradeProfiles/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesGetUpgradeProfileInput =
-  typeof ProvisionedClusterInstancesGetUpgradeProfileInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesGetUpgradeProfileInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesGetUpgradeProfileOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1093,14 +1482,13 @@ export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProvisionedClusterInstancesGetUpgradeProfileOutput =
-  typeof ProvisionedClusterInstancesGetUpgradeProfileOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesGetUpgradeProfileOutput>;
 
 // The operation
 /**
  * Gets the upgrade profile of a provisioned cluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesGetUpgradeProfile =
@@ -1109,18 +1497,37 @@ export const provisionedClusterInstancesGetUpgradeProfile =
     outputSchema: ProvisionedClusterInstancesGetUpgradeProfileOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesListInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesListInput =
-  typeof ProvisionedClusterInstancesListInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesListInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProvisionedClusterInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1157,14 +1564,13 @@ export const ProvisionedClusterInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProvisionedClusterInstancesListOutput =
-  typeof ProvisionedClusterInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesListOutput>;
 
 // The operation
 /**
  * Lists the ProvisionedClusterInstance resource associated with the ConnectedCluster
  *
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesList =
@@ -1173,18 +1579,38 @@ export const provisionedClusterInstancesList =
     outputSchema: ProvisionedClusterInstancesListOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesListAdminKubeconfigInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesListAdminKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listAdminKubeconfig",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesListAdminKubeconfigInput =
-  typeof ProvisionedClusterInstancesListAdminKubeconfigInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesListAdminKubeconfigInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesListAdminKubeconfigOutput {
+  id?: string;
+  name?: string;
+  resourceId?: string;
+  status?:
+    | "Succeeded"
+    | "Failed"
+    | "Canceled"
+    | "Pending"
+    | "Creating"
+    | "Deleting"
+    | "Updating"
+    | "Upgrading"
+    | "Accepted";
+  error?: { code?: string; message?: string };
+  properties?: { kubeconfigs?: { name?: string; value?: string }[] };
+}
 export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1221,15 +1647,14 @@ export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
         ),
       }),
     ),
-  });
-export type ProvisionedClusterInstancesListAdminKubeconfigOutput =
-  typeof ProvisionedClusterInstancesListAdminKubeconfigOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesListAdminKubeconfigOutput>;
 
 // The operation
 /**
  * Lists the admin credentials of the provisioned cluster (can only be used within private network)
  *
  * @param api-version - The API version to use for this operation.
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  */
 export const provisionedClusterInstancesListAdminKubeconfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1237,18 +1662,38 @@ export const provisionedClusterInstancesListAdminKubeconfig =
     outputSchema: ProvisionedClusterInstancesListAdminKubeconfigOutput,
   }));
 // Input Schema
+export interface ProvisionedClusterInstancesListUserKubeconfigInput {
+  connectedClusterResourceUri: string;
+}
 export const ProvisionedClusterInstancesListUserKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listUserKubeconfig",
       apiVersion: "2024-01-01",
     }),
-  );
-export type ProvisionedClusterInstancesListUserKubeconfigInput =
-  typeof ProvisionedClusterInstancesListUserKubeconfigInput.Type;
+  ) as unknown as Schema.Codec<ProvisionedClusterInstancesListUserKubeconfigInput>;
 
 // Output Schema
+export interface ProvisionedClusterInstancesListUserKubeconfigOutput {
+  id?: string;
+  name?: string;
+  resourceId?: string;
+  status?:
+    | "Succeeded"
+    | "Failed"
+    | "Canceled"
+    | "Pending"
+    | "Creating"
+    | "Deleting"
+    | "Updating"
+    | "Upgrading"
+    | "Accepted";
+  error?: { code?: string; message?: string };
+  properties?: { kubeconfigs?: { name?: string; value?: string }[] };
+}
 export const ProvisionedClusterInstancesListUserKubeconfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1285,15 +1730,14 @@ export const ProvisionedClusterInstancesListUserKubeconfigOutput =
         ),
       }),
     ),
-  });
-export type ProvisionedClusterInstancesListUserKubeconfigOutput =
-  typeof ProvisionedClusterInstancesListUserKubeconfigOutput.Type;
+  }) as unknown as Schema.Codec<ProvisionedClusterInstancesListUserKubeconfigOutput>;
 
 // The operation
 /**
  * Lists the user credentials of the provisioned cluster (can only be used within private network)
  *
  * @param api-version - The API version to use for this operation.
+ * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  */
 export const provisionedClusterInstancesListUserKubeconfig =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1301,8 +1745,41 @@ export const provisionedClusterInstancesListUserKubeconfig =
     outputSchema: ProvisionedClusterInstancesListUserKubeconfigOutput,
   }));
 // Input Schema
+export interface PutKubernetesVersionsInput {
+  customLocationResourceUri: string;
+  extendedLocation?: { type?: "CustomLocation"; name?: string };
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Upgrading"
+      | "Accepted";
+    values?: {
+      version?: string;
+      isPreview?: boolean;
+      patchVersions?: Record<
+        string,
+        {
+          readiness?: {
+            osType?: "Windows" | "Linux";
+            osSku?: "CBLMariner" | "Windows2019" | "Windows2022";
+            ready?: boolean;
+            errorMessage?: string;
+          }[];
+          upgrades?: string[];
+        }
+      >;
+    }[];
+  };
+}
 export const PutKubernetesVersionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLocationResourceUri: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
         type: Schema.optional(Schema.Literals(["CustomLocation"])),
@@ -1366,10 +1843,22 @@ export const PutKubernetesVersionsInput =
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PutKubernetesVersionsInput = typeof PutKubernetesVersionsInput.Type;
+  ) as unknown as Schema.Codec<PutKubernetesVersionsInput>;
 
 // Output Schema
+export interface PutKubernetesVersionsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PutKubernetesVersionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1389,14 +1878,13 @@ export const PutKubernetesVersionsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PutKubernetesVersionsOutput =
-  typeof PutKubernetesVersionsOutput.Type;
+  }) as unknown as Schema.Codec<PutKubernetesVersionsOutput>;
 
 // The operation
 /**
  * Puts the default kubernetes version resource type (one time operation, before listing the kubernetes versions)
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1406,7 +1894,31 @@ export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PutVMSkusInput {
+  customLocationResourceUri: string;
+  extendedLocation?: { type?: "CustomLocation"; name?: string };
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Upgrading"
+      | "Accepted";
+    values?: {
+      resourceType?: string;
+      capabilities?: { name?: string; value?: string }[];
+      name?: string;
+      tier?: string;
+      size?: string;
+    }[];
+  };
+}
 export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLocationResourceUri: Schema.String.pipe(T.PathParam()),
   extendedLocation: Schema.optional(
     Schema.Struct({
       type: Schema.optional(Schema.Literals(["CustomLocation"])),
@@ -1454,10 +1966,22 @@ export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
     apiVersion: "2024-01-01",
   }),
-);
-export type PutVMSkusInput = typeof PutVMSkusInput.Type;
+) as unknown as Schema.Codec<PutVMSkusInput>;
 
 // Output Schema
+export interface PutVMSkusOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1476,13 +2000,13 @@ export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PutVMSkusOutput = typeof PutVMSkusOutput.Type;
+}) as unknown as Schema.Codec<PutVMSkusOutput>;
 
 // The operation
 /**
  * Puts the default VM skus resource type (one time operation, before listing the VM skus)
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const PutVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1490,10 +2014,46 @@ export const PutVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PutVMSkusOutput,
 }));
 // Input Schema
+export interface VirtualNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  properties?: {
+    infraVnetProfile?: {
+      hci?: { mocGroup?: string; mocLocation?: string; mocVnetName?: string };
+    };
+    vipPool?: { endIP?: string; startIP?: string }[];
+    vmipPool?: { endIP?: string; startIP?: string }[];
+    dnsServers?: string[];
+    gateway?: string;
+    ipAddressPrefix?: string;
+    vlanID?: number;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Pending"
+      | "Creating"
+      | "Deleting"
+      | "Updating"
+      | "Accepted";
+    status?: {
+      operationStatus?: {
+        error?: { code?: string; message?: string };
+        operationId?: string;
+        status?: string;
+      };
+    };
+  };
+  extendedLocation?: { type?: "CustomLocation"; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VirtualNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         infraVnetProfile: Schema.optional(
@@ -1571,11 +2131,22 @@ export const VirtualNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksCreateOrUpdateInput =
-  typeof VirtualNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1595,9 +2166,7 @@ export const VirtualNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksCreateOrUpdateOutput =
-  typeof VirtualNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1605,6 +2174,7 @@ export type VirtualNetworksCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksCreateOrUpdate =
@@ -1613,24 +2183,28 @@ export const virtualNetworksCreateOrUpdate =
     outputSchema: VirtualNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+}
 export const VirtualNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksDeleteInput>;
 
 // Output Schema
+export type VirtualNetworksDeleteOutput = void;
 export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualNetworksDeleteOutput =
-  typeof VirtualNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -1638,6 +2212,7 @@ export type VirtualNetworksDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1647,6 +2222,10 @@ export const virtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const VirtualNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1657,11 +2236,25 @@ export const VirtualNetworksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksListByResourceGroupInput =
-  typeof VirtualNetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface VirtualNetworksListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1698,9 +2291,7 @@ export const VirtualNetworksListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksListByResourceGroupOutput =
-  typeof VirtualNetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1716,6 +2307,9 @@ export const virtualNetworksListByResourceGroup =
     outputSchema: VirtualNetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VirtualNetworksListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const VirtualNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1725,11 +2319,25 @@ export const VirtualNetworksListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridContainerService/virtualNetworks",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksListBySubscriptionInput =
-  typeof VirtualNetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface VirtualNetworksListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1766,9 +2374,7 @@ export const VirtualNetworksListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksListBySubscriptionOutput =
-  typeof VirtualNetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1783,21 +2389,38 @@ export const virtualNetworksListBySubscription =
     outputSchema: VirtualNetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VirtualNetworksRetrieveInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+}
 export const VirtualNetworksRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksRetrieveInput =
-  typeof VirtualNetworksRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksRetrieveInput>;
 
 // Output Schema
+export interface VirtualNetworksRetrieveOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1817,9 +2440,7 @@ export const VirtualNetworksRetrieveOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksRetrieveOutput =
-  typeof VirtualNetworksRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksRetrieveOutput>;
 
 // The operation
 /**
@@ -1827,6 +2448,7 @@ export type VirtualNetworksRetrieveOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1836,10 +2458,17 @@ export const virtualNetworksRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  tags?: Record<string, string>;
+}
 export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    virtualNetworkName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1847,10 +2476,22 @@ export const VirtualNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1870,9 +2511,7 @@ export const VirtualNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksUpdateOutput =
-  typeof VirtualNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -1880,6 +2519,7 @@ export type VirtualNetworksUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1889,18 +2529,36 @@ export const virtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface VMSkusListInput {
+  customLocationResourceUri: string;
+}
+export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLocationResourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus",
     apiVersion: "2024-01-01",
   }),
-);
-export type VMSkusListInput = typeof VMSkusListInput.Type;
+) as unknown as Schema.Codec<VMSkusListInput>;
 
 // Output Schema
+export interface VMSkusListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1936,8 +2594,7 @@ export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type VMSkusListOutput = typeof VMSkusListOutput.Type;
+}) as unknown as Schema.Codec<VMSkusListOutput>;
 
 // The operation
 /**
@@ -1945,6 +2602,7 @@ export type VMSkusListOutput = typeof VMSkusListOutput.Type;
  *
  * Lists the supported VM skus for the specified custom location
  *
+ * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
 export const VMSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

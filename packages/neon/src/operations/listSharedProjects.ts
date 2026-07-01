@@ -3,16 +3,91 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListSharedProjectsInput {
+  cursor?: string;
+  limit?: number;
+  search?: string;
+  timeout?: number;
+}
 export const ListSharedProjectsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     search: Schema.optional(Schema.String),
     timeout: Schema.optional(Schema.Number),
-  }).pipe(T.Http({ method: "GET", path: "/projects/shared" }));
-export type ListSharedProjectsInput = typeof ListSharedProjectsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/projects/shared" }),
+  ) as unknown as Schema.Codec<ListSharedProjectsInput>;
 
 // Output Schema
+export interface ListSharedProjectsOutput {
+  projects: {
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    active_time: number;
+    cpu_used_sec: number;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    quota_reset_at?: string;
+    owner_id: string;
+    compute_last_active_at?: string;
+    org_id?: string;
+    org_name?: string;
+    history_retention_seconds?: number;
+    hipaa_enabled_at?: string;
+    deleted_at?: string;
+    recoverable_until?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  }[];
+  unavailable_project_ids?: string[];
+  pagination?: { cursor: string };
+}
 export const ListSharedProjectsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projects: Schema.Array(
@@ -95,6 +170,11 @@ export const ListSharedProjectsOutput =
         hipaa_enabled_at: Schema.optional(Schema.String),
         deleted_at: Schema.optional(Schema.String),
         recoverable_until: Schema.optional(Schema.String),
+        effective_project_permission: Schema.optional(
+          Schema.NullOr(
+            Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"]),
+          ),
+        ),
       }),
     ),
     unavailable_project_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -103,15 +183,14 @@ export const ListSharedProjectsOutput =
         cursor: Schema.String,
       }),
     ),
-  });
-export type ListSharedProjectsOutput = typeof ListSharedProjectsOutput.Type;
+  }) as unknown as Schema.Codec<ListSharedProjectsOutput>;
 
 // The operation
 /**
  * List shared projects
  *
  * Retrieves a list of projects shared with your Neon account.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
  *
  * @param cursor - Specify the cursor value from the previous response to get the next batch of projects.
  * @param limit - Specify a value from 1 to 400 to limit number of projects in the response.

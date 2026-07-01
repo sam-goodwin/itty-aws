@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrgLiveMigrationLinkTokensInput {
+  orgId: string;
+  envelope?: boolean;
+}
 export const DeleteOrgLiveMigrationLinkTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const DeleteOrgLiveMigrationLinkTokensInput =
       method: "DELETE",
       path: "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens",
     }),
-  );
-export type DeleteOrgLiveMigrationLinkTokensInput =
-  typeof DeleteOrgLiveMigrationLinkTokensInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrgLiveMigrationLinkTokensInput>;
 
 // Output Schema
+export type DeleteOrgLiveMigrationLinkTokensOutput = void;
 export const DeleteOrgLiveMigrationLinkTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgLiveMigrationLinkTokensOutput =
-  typeof DeleteOrgLiveMigrationLinkTokensOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgLiveMigrationLinkTokensOutput>;
 
 // The operation
 /**

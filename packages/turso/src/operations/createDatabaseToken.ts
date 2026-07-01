@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateDatabaseTokenInput {
+  organizationSlug: string;
+  databaseName: string;
+  expiration?: string;
+  authorization?: "full-access" | "read-only";
+  permissions?: { read_attach?: { databases?: string[] } };
+}
 export const CreateDatabaseTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -26,15 +33,16 @@ export const CreateDatabaseTokenInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens",
     }),
-  );
-export type CreateDatabaseTokenInput = typeof CreateDatabaseTokenInput.Type;
+  ) as unknown as Schema.Codec<CreateDatabaseTokenInput>;
 
 // Output Schema
+export interface CreateDatabaseTokenOutput {
+  jwt?: string;
+}
 export const CreateDatabaseTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jwt: Schema.optional(Schema.String),
-  });
-export type CreateDatabaseTokenOutput = typeof CreateDatabaseTokenOutput.Type;
+  }) as unknown as Schema.Codec<CreateDatabaseTokenOutput>;
 
 // The operation
 /**

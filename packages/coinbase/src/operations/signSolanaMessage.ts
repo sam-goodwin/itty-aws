@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignSolanaMessageInput {
+  address: string;
+  message: string;
+}
 export const SignSolanaMessageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String.pipe(T.PathParam()),
@@ -13,19 +17,20 @@ export const SignSolanaMessageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/v2/solana/accounts/{address}/sign/message",
   }),
-);
-export type SignSolanaMessageInput = typeof SignSolanaMessageInput.Type;
+) as unknown as Schema.Codec<SignSolanaMessageInput>;
 
 // Output Schema
+export interface SignSolanaMessageOutput {
+  signature: string;
+}
 export const SignSolanaMessageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signature: Schema.String,
-  });
-export type SignSolanaMessageOutput = typeof SignSolanaMessageOutput.Type;
+  }) as unknown as Schema.Codec<SignSolanaMessageOutput>;
 
 // The operation
 /**
- * Sign a message
+ * Sign message
  *
  * Signs an arbitrary message with the given Solana account.
  * **WARNING:** Never sign a message that you didn't generate, as it can be an arbitrary transaction. For example, it might send all of your funds to an attacker.

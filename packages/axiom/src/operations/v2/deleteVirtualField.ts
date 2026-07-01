@@ -4,15 +4,20 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteVirtualFieldInput {
+  id: string;
+}
 export const DeleteVirtualFieldInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v2/vfields/{id}" }));
-export type DeleteVirtualFieldInput = typeof DeleteVirtualFieldInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v2/vfields/{id}" }),
+  ) as unknown as Schema.Codec<DeleteVirtualFieldInput>;
 
 // Output Schema
-export const DeleteVirtualFieldOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteVirtualFieldOutput = typeof DeleteVirtualFieldOutput.Type;
+export type DeleteVirtualFieldOutput = void;
+export const DeleteVirtualFieldOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteVirtualFieldOutput>;
 
 // The operation
 export const deleteVirtualField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

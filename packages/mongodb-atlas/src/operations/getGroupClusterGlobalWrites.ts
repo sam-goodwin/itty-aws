@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupClusterGlobalWritesInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupClusterGlobalWritesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const GetGroupClusterGlobalWritesInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites",
     }),
-  );
-export type GetGroupClusterGlobalWritesInput =
-  typeof GetGroupClusterGlobalWritesInput.Type;
+  ) as unknown as Schema.Codec<GetGroupClusterGlobalWritesInput>;
 
 // Output Schema
+export type GetGroupClusterGlobalWritesOutput = void;
 export const GetGroupClusterGlobalWritesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupClusterGlobalWritesOutput =
-  typeof GetGroupClusterGlobalWritesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterGlobalWritesOutput>;
 
 // The operation
 /**
  * Return One Managed Namespace in One Global Cluster
  *
- * Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+ * Returns one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

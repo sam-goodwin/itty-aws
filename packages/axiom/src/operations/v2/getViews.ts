@@ -3,12 +3,20 @@ import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
 // Input Schema
+export interface GetViewsInput {}
 export const GetViewsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/views" }),
-);
-export type GetViewsInput = typeof GetViewsInput.Type;
+) as unknown as Schema.Codec<GetViewsInput>;
 
 // Output Schema
+export type GetViewsOutput = ReadonlyArray<{
+  aplQuery: string;
+  datasets?: ReadonlyArray<string>;
+  description?: string;
+  name: string;
+  sharedByOrg?: string;
+  sharedByOrgName?: string;
+}>;
 export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     aplQuery: Schema.String,
@@ -18,8 +26,7 @@ export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     sharedByOrg: Schema.optional(Schema.String),
     sharedByOrgName: Schema.optional(Schema.String),
   }),
-);
-export type GetViewsOutput = typeof GetViewsOutput.Type;
+) as unknown as Schema.Codec<GetViewsOutput>;
 
 // The operation
 export const getViews = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

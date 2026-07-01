@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetOrganizationUsageInput {
+  organizationSlug: string;
+}
 export const GetOrganizationUsageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -11,10 +14,41 @@ export const GetOrganizationUsageInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/usage",
     }),
-  );
-export type GetOrganizationUsageInput = typeof GetOrganizationUsageInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationUsageInput>;
 
 // Output Schema
+export interface GetOrganizationUsageOutput {
+  organization?: {
+    uuid?: string;
+    usage?: {
+      rows_read?: number;
+      rows_written?: number;
+      databases?: number;
+      locations?: number;
+      storage_bytes?: number;
+      groups?: number;
+      bytes_synced?: number;
+    };
+    databases?: {
+      uuid?: string;
+      instances?: {
+        uuid?: string;
+        usage?: {
+          rows_read?: number;
+          rows_written?: number;
+          storage_bytes?: number;
+          bytes_synced?: number;
+        };
+      }[];
+      total?: {
+        rows_read?: number;
+        rows_written?: number;
+        storage_bytes?: number;
+        bytes_synced?: number;
+      };
+    }[];
+  };
+}
 export const GetOrganizationUsageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.optional(
@@ -63,8 +97,7 @@ export const GetOrganizationUsageOutput =
         ),
       }),
     ),
-  });
-export type GetOrganizationUsageOutput = typeof GetOrganizationUsageOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationUsageOutput>;
 
 // The operation
 /**

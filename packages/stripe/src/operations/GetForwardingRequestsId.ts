@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetForwardingRequestsIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetForwardingRequestsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,39 @@ export const GetForwardingRequestsIdInput =
       path: "/v1/forwarding/requests/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetForwardingRequestsIdInput =
-  typeof GetForwardingRequestsIdInput.Type;
+  ) as unknown as Schema.Codec<GetForwardingRequestsIdInput>;
 
 // Output Schema
+export interface GetForwardingRequestsIdOutput {
+  created: number;
+  id: string;
+  livemode: boolean;
+  metadata?: Record<string, string> | null;
+  object: "forwarding.request";
+  payment_method: string;
+  replacements: (
+    | "card_cvc"
+    | "card_expiry"
+    | "card_number"
+    | "cardholder_name"
+    | "request_signature"
+  )[];
+  request_context: {
+    destination_duration: number;
+    destination_ip_address: string;
+  } | null;
+  request_details: {
+    body: string;
+    headers: { name: string; value: string }[];
+    http_method: "POST";
+  } | null;
+  response_details: {
+    body: string;
+    headers: { name: string; value: string }[];
+    status: number;
+  } | null;
+  url: string | null;
+}
 export const GetForwardingRequestsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -37,13 +69,38 @@ export const GetForwardingRequestsIdOutput =
         "request_signature",
       ]),
     ),
-    request_context: Schema.Unknown,
-    request_details: Schema.Unknown,
-    response_details: Schema.Unknown,
+    request_context: Schema.NullOr(
+      Schema.Struct({
+        destination_duration: Schema.Number,
+        destination_ip_address: Schema.String,
+      }),
+    ),
+    request_details: Schema.NullOr(
+      Schema.Struct({
+        body: Schema.String,
+        headers: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        http_method: Schema.Literals(["POST"]),
+      }),
+    ),
+    response_details: Schema.NullOr(
+      Schema.Struct({
+        body: Schema.String,
+        headers: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        status: Schema.Number,
+      }),
+    ),
     url: Schema.NullOr(Schema.String),
-  });
-export type GetForwardingRequestsIdOutput =
-  typeof GetForwardingRequestsIdOutput.Type;
+  }) as unknown as Schema.Codec<GetForwardingRequestsIdOutput>;
 
 // The operation
 /**

@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ApprovalPoliciesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ApprovalPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,50 @@ export const ApprovalPoliciesListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/approval_policies/",
+      path: "/api/projects/{project_id}/approval_policies/",
     }),
-  );
-export type ApprovalPoliciesListInput = typeof ApprovalPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<ApprovalPoliciesListInput>;
 
 // Output Schema
+export interface ApprovalPoliciesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    action_key?: string;
+    conditions?: unknown;
+    approver_config?: unknown;
+    allow_self_approve?: boolean;
+    bypass_org_membership_levels?: unknown;
+    bypass_roles?: string[];
+    expires_after?: string;
+    enabled?: boolean;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string | null;
+  }[];
+}
 export const ApprovalPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -50,7 +92,23 @@ export const ApprovalPoliciesListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -59,8 +117,7 @@ export const ApprovalPoliciesListOutput =
         }),
       ),
     ),
-  });
-export type ApprovalPoliciesListOutput = typeof ApprovalPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<ApprovalPoliciesListOutput>;
 
 // The operation
 /**
@@ -73,6 +130,5 @@ export const approvalPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ApprovalPoliciesListInput,
     outputSchema: ApprovalPoliciesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

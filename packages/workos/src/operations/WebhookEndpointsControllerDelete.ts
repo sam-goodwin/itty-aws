@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface WebhookEndpointsControllerDeleteInput {
+  id: string;
+}
 export const WebhookEndpointsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/webhook_endpoints/{id}" }));
-export type WebhookEndpointsControllerDeleteInput =
-  typeof WebhookEndpointsControllerDeleteInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/webhook_endpoints/{id}" }),
+  ) as unknown as Schema.Codec<WebhookEndpointsControllerDeleteInput>;
 
 // Output Schema
+export type WebhookEndpointsControllerDeleteOutput = void;
 export const WebhookEndpointsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebhookEndpointsControllerDeleteOutput =
-  typeof WebhookEndpointsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookEndpointsControllerDeleteOutput>;
 
 // The operation
 /**

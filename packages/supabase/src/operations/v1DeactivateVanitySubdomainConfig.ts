@@ -4,20 +4,20 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeactivateVanitySubdomainConfigInput {
+  ref: string;
+}
 export const V1DeactivateVanitySubdomainConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/vanity-subdomain" }),
-  );
-export type V1DeactivateVanitySubdomainConfigInput =
-  typeof V1DeactivateVanitySubdomainConfigInput.Type;
+  ) as unknown as Schema.Codec<V1DeactivateVanitySubdomainConfigInput>;
 
 // Output Schema
+export type V1DeactivateVanitySubdomainConfigOutput = void;
 export const V1DeactivateVanitySubdomainConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeactivateVanitySubdomainConfigOutput =
-  typeof V1DeactivateVanitySubdomainConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeactivateVanitySubdomainConfigOutput>;
 
 // The operation
 /**

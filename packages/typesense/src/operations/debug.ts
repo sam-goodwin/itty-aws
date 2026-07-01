@@ -3,16 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DebugInput {}
 export const DebugInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/debug" }),
-);
-export type DebugInput = typeof DebugInput.Type;
+) as unknown as Schema.Codec<DebugInput>;
 
 // Output Schema
+export interface DebugOutput {
+  version?: string;
+}
 export const DebugOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   version: Schema.optional(Schema.String),
-});
-export type DebugOutput = typeof DebugOutput.Type;
+}) as unknown as Schema.Codec<DebugOutput>;
 
 // The operation
 /**

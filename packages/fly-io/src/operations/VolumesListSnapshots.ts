@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface VolumesListSnapshotsInput {
+  app_name: string;
+  volume_id: string;
+}
 export const VolumesListSnapshotsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,18 @@ export const VolumesListSnapshotsInput =
       method: "GET",
       path: "/apps/{app_name}/volumes/{volume_id}/snapshots",
     }),
-  );
-export type VolumesListSnapshotsInput = typeof VolumesListSnapshotsInput.Type;
+  ) as unknown as Schema.Codec<VolumesListSnapshotsInput>;
 
 // Output Schema
+export type VolumesListSnapshotsOutput = {
+  created_at?: string;
+  digest?: string;
+  id?: string;
+  retention_days?: number;
+  size?: number;
+  status?: string;
+  volume_size?: number;
+}[];
 export const VolumesListSnapshotsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -28,8 +40,7 @@ export const VolumesListSnapshotsOutput =
       status: Schema.optional(Schema.String),
       volume_size: Schema.optional(Schema.Number),
     }),
-  );
-export type VolumesListSnapshotsOutput = typeof VolumesListSnapshotsOutput.Type;
+  ) as unknown as Schema.Codec<VolumesListSnapshotsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CancelBouncerResizeRequestInput {
+  organization: string;
+  database: string;
+  branch: string;
+  bouncer: string;
+}
 export const CancelBouncerResizeRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CancelBouncerResizeRequestInput =
       method: "DELETE",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
     }),
-  );
-export type CancelBouncerResizeRequestInput =
-  typeof CancelBouncerResizeRequestInput.Type;
+  ) as unknown as Schema.Codec<CancelBouncerResizeRequestInput>;
 
 // Output Schema
+export type CancelBouncerResizeRequestOutput = void;
 export const CancelBouncerResizeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CancelBouncerResizeRequestOutput =
-  typeof CancelBouncerResizeRequestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBouncerResizeRequestOutput>;
 
 // The operation
 /**

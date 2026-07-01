@@ -3,24 +3,27 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RevokeDelegationForEndUserInput {
+  userId: string;
+  projectID?: string;
+  walletSecretId?: string;
+}
 export const RevokeDelegationForEndUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
+    projectID: Schema.optional(Schema.String),
     walletSecretId: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/v2/embedded-wallet-api/end-users/{userId}/delegation",
     }),
-  );
-export type RevokeDelegationForEndUserInput =
-  typeof RevokeDelegationForEndUserInput.Type;
+  ) as unknown as Schema.Codec<RevokeDelegationForEndUserInput>;
 
 // Output Schema
+export type RevokeDelegationForEndUserOutput = void;
 export const RevokeDelegationForEndUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeDelegationForEndUserOutput =
-  typeof RevokeDelegationForEndUserOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeDelegationForEndUserOutput>;
 
 // The operation
 /**
@@ -41,6 +44,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  * @param userId - The ID of the end user.
+ * @param projectID - The ID of the CDP Project. Required for end users authenticated using custom auth (i.e. a non-CDP JWT provider).
  */
 export const revokeDelegationForEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

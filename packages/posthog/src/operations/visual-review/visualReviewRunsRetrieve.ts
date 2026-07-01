@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const VisualReviewRunsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,37 @@ export const VisualReviewRunsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/",
     }),
-  );
-export type VisualReviewRunsRetrieveInput =
-  typeof VisualReviewRunsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsRetrieveInput>;
 
 // Output Schema
+export interface VisualReviewRunsRetrieveOutput {
+  approved_by?: { id?: number; first_name?: string; email?: string } | null;
+  search_match_type?: "exact" | "similar" | null;
+  id?: string;
+  repo_id?: string;
+  status?: string;
+  run_type?: string;
+  commit_sha?: string;
+  branch?: string;
+  pr_number?: number | null;
+  approved?: boolean;
+  approved_at?: string | null;
+  summary?: {
+    total?: number;
+    changed?: number;
+    new?: number;
+    removed?: number;
+    unchanged?: number;
+    unresolved?: number;
+    tolerated_matched?: number;
+  };
+  error_message?: string | null;
+  created_at?: string;
+  completed_at?: string | null;
+  is_stale?: boolean;
+  superseded_by_id?: string | null;
+  metadata?: Record<string, unknown>;
+}
 export const VisualReviewRunsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     approved_by: Schema.optional(
@@ -28,6 +58,9 @@ export const VisualReviewRunsRetrieveOutput =
           email: Schema.optional(Schema.String),
         }),
       ),
+    ),
+    search_match_type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["exact", "similar"])),
     ),
     id: Schema.optional(Schema.String),
     repo_id: Schema.optional(Schema.String),
@@ -55,9 +88,7 @@ export const VisualReviewRunsRetrieveOutput =
     is_stale: Schema.optional(Schema.Boolean),
     superseded_by_id: Schema.optional(Schema.NullOr(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  });
-export type VisualReviewRunsRetrieveOutput =
-  typeof VisualReviewRunsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsRetrieveOutput>;
 
 // The operation
 /**

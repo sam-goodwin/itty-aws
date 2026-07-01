@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListSchemaRecommendationsInput {
+  organization: string;
+  database: string;
+  state?: "open" | "closed";
+  page?: number;
+  per_page?: number;
+}
 export const ListSchemaRecommendationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,51 @@ export const ListSchemaRecommendationsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/schema-recommendations",
     }),
-  );
-export type ListSchemaRecommendationsInput =
-  typeof ListSchemaRecommendationsInput.Type;
+  ) as unknown as Schema.Codec<ListSchemaRecommendationsInput>;
 
 // Output Schema
+export interface ListSchemaRecommendationsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    html_url: string;
+    title: string;
+    table_name: string;
+    keyspace: string;
+    ddl_statement: string;
+    number: number;
+    state: "open" | "applied" | "dismissed" | "stale";
+    recommendation_type:
+      | "unused_table"
+      | "unused_index"
+      | "duplicate_index"
+      | "sequence_overflow"
+      | "sequence_overflow_foreign_key"
+      | "new_index"
+      | "encoding_upgrade"
+      | "bloated_table"
+      | "bloated_index";
+    created_at: string;
+    updated_at: string;
+    applied_at: string | null;
+    dismissed_at: string | null;
+    closed_by_deploy_request: {
+      id: string;
+      branch_id: string;
+      number: number;
+    } | null;
+    dismissed_by: {
+      id: string;
+      display_name: string;
+      avatar_url: string;
+    } | null;
+  }[];
+}
 export const ListSchemaRecommendationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -70,9 +117,7 @@ export const ListSchemaRecommendationsOutput =
         ),
       }),
     ),
-  });
-export type ListSchemaRecommendationsOutput =
-  typeof ListSchemaRecommendationsOutput.Type;
+  }) as unknown as Schema.Codec<ListSchemaRecommendationsOutput>;
 
 // The operation
 /**

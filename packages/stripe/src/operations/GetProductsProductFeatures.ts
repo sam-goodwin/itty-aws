@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetProductsProductFeaturesInput {
+  product: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetProductsProductFeaturesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     product: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,28 @@ export const GetProductsProductFeaturesInput =
       path: "/v1/products/{product}/features",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetProductsProductFeaturesInput =
-  typeof GetProductsProductFeaturesInput.Type;
+  ) as unknown as Schema.Codec<GetProductsProductFeaturesInput>;
 
 // Output Schema
+export interface GetProductsProductFeaturesOutput {
+  data: {
+    entitlement_feature: {
+      active: boolean;
+      id: string;
+      livemode: boolean;
+      lookup_key: string;
+      metadata: Record<string, string>;
+      name: string;
+      object: "entitlements.feature";
+    };
+    id: string;
+    livemode: boolean;
+    object: "product_feature";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetProductsProductFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -42,9 +66,7 @@ export const GetProductsProductFeaturesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetProductsProductFeaturesOutput =
-  typeof GetProductsProductFeaturesOutput.Type;
+  }) as unknown as Schema.Codec<GetProductsProductFeaturesOutput>;
 
 // The operation
 /**

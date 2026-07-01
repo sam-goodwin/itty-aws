@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RunSQLQueryInput {
+  sql: string;
+  cache?: { maxAgeMs?: number };
+}
 export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sql: Schema.String,
   cache: Schema.optional(
@@ -10,10 +14,46 @@ export const RunSQLQueryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       maxAgeMs: Schema.optional(Schema.Number),
     }),
   ),
-}).pipe(T.Http({ method: "POST", path: "/v2/data/query/run" }));
-export type RunSQLQueryInput = typeof RunSQLQueryInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/data/query/run" }),
+) as unknown as Schema.Codec<RunSQLQueryInput>;
 
 // Output Schema
+export interface RunSQLQueryOutput {
+  result?: Record<string, unknown>[];
+  schema?: {
+    columns?: {
+      name?: string;
+      type?:
+        | "String"
+        | "UInt8"
+        | "UInt16"
+        | "UInt32"
+        | "UInt64"
+        | "UInt128"
+        | "UInt256"
+        | "Int8"
+        | "Int16"
+        | "Int32"
+        | "Int64"
+        | "Int128"
+        | "Int256"
+        | "Float32"
+        | "Float64"
+        | "Bool"
+        | "Date"
+        | "DateTime"
+        | "DateTime64"
+        | "UUID";
+    }[];
+  };
+  metadata?: {
+    cached?: boolean;
+    executionTimestamp?: string;
+    executionTimeMs?: number;
+    rowCount?: number;
+  };
+}
 export const RunSQLQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.optional(
     Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -61,8 +101,7 @@ export const RunSQLQueryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       rowCount: Schema.optional(Schema.Number),
     }),
   ),
-});
-export type RunSQLQueryOutput = typeof RunSQLQueryOutput.Type;
+}) as unknown as Schema.Codec<RunSQLQueryOutput>;
 
 // The operation
 /**
@@ -76,17 +115,15 @@ export type RunSQLQueryOutput = typeof RunSQLQueryOutput.Type;
  * - Read-only queries (SELECT statements)
  * - No DDL or DML operations
  * - Query that follow limits (defined below)
- * ### Supported Tables
- * - `<network>.events` - Base mainnet decoded event logs with parameters, event signature, topics, and more.
- * - `<network>.transactions` - Base mainnet transaction data including hash, block number, gas usage.
- * - `<network>.blocks` - Base mainnet block information.
- * - `<network>.encoded_logs` - Encoded log data of event logs that aren't able to be decoded by our event decoder (ex: log0 opcode).
- * - `<network>.decoded_user_operations` - Decoded user operations data including hash, block number, gas usage, builder codes, entrypoint version, and more.
- * - `<network>.transaction_attributions` - Information about the attributions of a transaction to a builder and associated builder codes.
  * ### Supported Networks
  * - Base Mainnet: `base`
  * - Base Sepolia: `base_sepolia`
- * So for example, valid tables are: `base.events`, `base_sepolia.events`, `base.transactions`, etc.
+ * - Solana Mainnet: `solana`
+ * - Hyperevm Mainnet: `hyperevm`
+ * ### Supported Tables
+ * The below tables are supported for `base` and `base_sepolia` networks.
+ * Following the above, the valid tables on Base Mainnet are `base.events`, `base.transactions`, `base.blocks`, `base.encoded_logs`, `base.decoded_user_operations`, and `base.transaction_attributions`.
+ * Separately, there is a limited set of tables supported for `solana` and `hyperevm` networks:
  * ### Query Limits
  * - Maximum result set: 50,000 rows
  * - Maximum query length: 10,000 characters

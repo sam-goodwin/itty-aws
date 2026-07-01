@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveLocationFromGroupInput {
+  organizationSlug: string;
+  groupName: string;
+  location: string;
+}
 export const RemoveLocationFromGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,19 @@ export const RemoveLocationFromGroupInput =
       method: "DELETE",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/locations/{location}",
     }),
-  );
-export type RemoveLocationFromGroupInput =
-  typeof RemoveLocationFromGroupInput.Type;
+  ) as unknown as Schema.Codec<RemoveLocationFromGroupInput>;
 
 // Output Schema
+export interface RemoveLocationFromGroupOutput {
+  group?: {
+    name?: string;
+    version?: string;
+    uuid?: string;
+    locations?: string[];
+    primary?: string;
+    delete_protection?: boolean;
+  };
+}
 export const RemoveLocationFromGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     group: Schema.optional(
@@ -31,9 +44,7 @@ export const RemoveLocationFromGroupOutput =
         delete_protection: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type RemoveLocationFromGroupOutput =
-  typeof RemoveLocationFromGroupOutput.Type;
+  }) as unknown as Schema.Codec<RemoveLocationFromGroupOutput>;
 
 // The operation
 /**

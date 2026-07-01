@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationPlansInput {
+  organizationSlug: string;
+}
 export const ListOrganizationPlansInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -11,10 +14,25 @@ export const ListOrganizationPlansInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/plans",
     }),
-  );
-export type ListOrganizationPlansInput = typeof ListOrganizationPlansInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationPlansInput>;
 
 // Output Schema
+export interface ListOrganizationPlansOutput {
+  plans?: {
+    name?: string;
+    price?: string;
+    prices?: { value?: string; timeline?: string }[];
+    quotas?: {
+      rowsRead?: number;
+      rowsWritten?: number;
+      databases?: number | null;
+      locations?: number;
+      storage?: number;
+      groups?: number;
+      bytesSynced?: number;
+    };
+  }[];
+}
 export const ListOrganizationPlansOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     plans: Schema.optional(
@@ -44,9 +62,7 @@ export const ListOrganizationPlansOutput =
         }),
       ),
     ),
-  });
-export type ListOrganizationPlansOutput =
-  typeof ListOrganizationPlansOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationPlansOutput>;
 
 // The operation
 /**

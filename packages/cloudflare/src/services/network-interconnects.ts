@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service network-interconnects
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -25,6 +25,257 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Magic {
+  conduitName: string;
+  description: string;
+  mtu: number;
+}
+const Magic = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    conduitName: Schema.String,
+    description: Schema.String,
+    mtu: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      conduitName: "conduit_name",
+      description: "description",
+      mtu: "mtu",
+    }),
+  ),
+) as unknown as Schema.Codec<Magic>;
+
+interface Bgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  extraPrefixes: string[];
+  /** MD5 key to use for session authentication.  Note that _this is not a security measure_. MD5 is not a valid security mechanism, and the key is not treated as a secret value. This is _only_ supported fo */
+  md5Key?: string | null;
+}
+const Bgp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    customerAsn: Schema.Number,
+    extraPrefixes: Schema.Array(Schema.String),
+    md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      customerAsn: "customer_asn",
+      extraPrefixes: "extra_prefixes",
+      md5Key: "md5_key",
+    }),
+  ),
+) as unknown as Schema.Codec<Bgp>;
+
+interface Item {
+  id: string;
+  /** Customer account tag */
+  account: string;
+  /** Customer end of the point-to-point link  This should always be inside the same prefix as `p2p_ip`. */
+  custIp: string;
+  /** Interconnect identifier hosting this CNI */
+  interconnect: string;
+  magic: { conduitName: string; description: string; mtu: number };
+  /** Cloudflare end of the point-to-point link */
+  p2pIp: string;
+  bgp?: {
+    customerAsn: number;
+    extraPrefixes: string[];
+    md5Key?: string | null;
+  } | null;
+}
+const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    account: Schema.String,
+    custIp: Schema.String,
+    interconnect: Schema.String,
+    magic: Magic,
+    p2pIp: Schema.String,
+    bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      account: "account",
+      custIp: "cust_ip",
+      interconnect: "interconnect",
+      magic: "magic",
+      p2pIp: "p2p_ip",
+      bgp: "bgp",
+    }),
+  ),
+) as unknown as Schema.Codec<Item>;
+
+interface Facility {
+  address: string[];
+  name: string;
+}
+const Facility = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    address: Schema.Array(Schema.String),
+    name: Schema.String,
+  }),
+) as unknown as Schema.Codec<Facility>;
+
+interface NscInterconnectPhysicalBody {
+  account: string;
+  facility: { address: string[]; name: string };
+  name: string;
+  /** A Cloudflare site name. */
+  site: string;
+  slotId: string;
+  speed: string;
+  type: string;
+  owner?: string | null;
+}
+const NscInterconnectPhysicalBody = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      account: Schema.String,
+      facility: Facility,
+      name: Schema.String,
+      site: Schema.String,
+      slotId: Schema.String,
+      speed: Schema.String,
+      type: Schema.String,
+      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        account: "account",
+        facility: "facility",
+        name: "name",
+        site: "site",
+        slotId: "slot_id",
+        speed: "speed",
+        type: "type",
+        owner: "owner",
+      }),
+    ),
+) as unknown as Schema.Codec<NscInterconnectPhysicalBody>;
+
+interface NscInterconnectGcpPartnerBody {
+  account: string;
+  name: string;
+  region: string;
+  type: string;
+  owner?: string | null;
+  /** Bandwidth structure as visible through the customer-facing API. */
+  speed?:
+    | "50M"
+    | "100M"
+    | "200M"
+    | "300M"
+    | "400M"
+    | "500M"
+    | "1G"
+    | "2G"
+    | "5G"
+    | "10G"
+    | "20G"
+    | "50G"
+    | (string & {})
+    | null;
+}
+const NscInterconnectGcpPartnerBody =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      account: Schema.String,
+      name: Schema.String,
+      region: Schema.String,
+      type: Schema.String,
+      owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      speed: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "50M",
+              "100M",
+              "200M",
+              "300M",
+              "400M",
+              "500M",
+              "1G",
+              "2G",
+              "5G",
+              "10G",
+              "20G",
+              "50G",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<NscInterconnectGcpPartnerBody>;
+
+interface Pending {
+  state: "Pending";
+}
+const Pending = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.Literal("Pending"),
+  }),
+) as unknown as Schema.Codec<Pending>;
+
+interface Down {
+  state: "Down";
+  /** Diagnostic information, if available */
+  reason?: string | null;
+}
+const Down = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.Literal("Down"),
+    reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Down>;
+
+interface Unhealthy {
+  state: "Unhealthy";
+  /** Diagnostic information, if available */
+  reason?: string | null;
+}
+const Unhealthy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.Literal("Unhealthy"),
+    reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Unhealthy>;
+
+interface Healthy {
+  state: "Healthy";
+}
+const Healthy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.Literal("Healthy"),
+  }),
+) as unknown as Schema.Codec<Healthy>;
+
+interface Item2 {
+  /** Slot ID */
+  id: string;
+  facility: { address: string[]; name: string };
+  /** Whether the slot is occupied or not */
+  occupied: boolean;
+  site: string;
+  speed: string;
+  /** Customer account tag */
+  account?: string | null;
+}
+const Item2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    facility: Facility,
+    occupied: Schema.Boolean,
+    site: Schema.String,
+    speed: Schema.String,
+    account: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Item2>;
+
+// =============================================================================
 // Cni
 // =============================================================================
 
@@ -41,7 +292,7 @@ export const GetCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/cni/cnis/{cni}" }),
   ),
-) as unknown as Schema.Schema<GetCniRequest>;
+) as unknown as Schema.Codec<GetCniRequest>;
 
 export interface GetCniResponse {
   id: string;
@@ -67,34 +318,9 @@ export const GetCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     account: Schema.String,
     custIp: Schema.String,
     interconnect: Schema.String,
-    magic: Schema.Struct({
-      conduitName: Schema.String,
-      description: Schema.String,
-      mtu: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        conduitName: "conduit_name",
-        description: "description",
-        mtu: "mtu",
-      }),
-    ),
+    magic: Magic,
     p2pIp: Schema.String,
-    bgp: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          customerAsn: Schema.Number,
-          extraPrefixes: Schema.Array(Schema.String),
-          md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            customerAsn: "customer_asn",
-            extraPrefixes: "extra_prefixes",
-            md5Key: "md5_key",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
       id: "id",
@@ -106,7 +332,7 @@ export const GetCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       bgp: "bgp",
     }),
   ),
-) as unknown as Schema.Schema<GetCniResponse>;
+) as unknown as Schema.Codec<GetCniResponse>;
 
 export type GetCniError = DefaultErrors;
 
@@ -150,7 +376,7 @@ export const ListCnisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       T.HttpQuery("tunnel_id"),
     ),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/cni/cnis" })),
-) as unknown as Schema.Schema<ListCnisRequest>;
+) as unknown as Schema.Codec<ListCnisRequest>;
 
 export interface ListCnisResponse {
   items: {
@@ -171,57 +397,10 @@ export interface ListCnisResponse {
 
 export const ListCnisResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    items: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        account: Schema.String,
-        custIp: Schema.String,
-        interconnect: Schema.String,
-        magic: Schema.Struct({
-          conduitName: Schema.String,
-          description: Schema.String,
-          mtu: Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            conduitName: "conduit_name",
-            description: "description",
-            mtu: "mtu",
-          }),
-        ),
-        p2pIp: Schema.String,
-        bgp: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              customerAsn: Schema.Number,
-              extraPrefixes: Schema.Array(Schema.String),
-              md5Key: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                customerAsn: "customer_asn",
-                extraPrefixes: "extra_prefixes",
-                md5Key: "md5_key",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          custIp: "cust_ip",
-          interconnect: "interconnect",
-          magic: "magic",
-          p2pIp: "p2p_ip",
-          bgp: "bgp",
-        }),
-      ),
-    ),
+    items: Schema.Array(Item),
     next: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }),
-) as unknown as Schema.Schema<ListCnisResponse>;
+) as unknown as Schema.Codec<ListCnisResponse>;
 
 export type ListCnisError = DefaultErrors;
 
@@ -258,32 +437,10 @@ export const CreateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     account: Schema.String,
     interconnect: Schema.String,
-    magic: Schema.Struct({
-      conduitName: Schema.String,
-      description: Schema.String,
-      mtu: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        conduitName: "conduit_name",
-        description: "description",
-        mtu: "mtu",
-      }),
-    ),
-    bgp: Schema.optional(
-      Schema.Struct({
-        customerAsn: Schema.Number,
-        extraPrefixes: Schema.Array(Schema.String),
-        md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          customerAsn: "customer_asn",
-          extraPrefixes: "extra_prefixes",
-          md5Key: "md5_key",
-        }),
-      ),
-    ),
+    magic: Magic,
+    bgp: Schema.optional(Bgp),
   }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/cni/cnis" })),
-) as unknown as Schema.Schema<CreateCniRequest>;
+) as unknown as Schema.Codec<CreateCniRequest>;
 
 export interface CreateCniResponse {
   id: string;
@@ -310,34 +467,9 @@ export const CreateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       account: Schema.String,
       custIp: Schema.String,
       interconnect: Schema.String,
-      magic: Schema.Struct({
-        conduitName: Schema.String,
-        description: Schema.String,
-        mtu: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          conduitName: "conduit_name",
-          description: "description",
-          mtu: "mtu",
-        }),
-      ),
+      magic: Magic,
       p2pIp: Schema.String,
-      bgp: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            customerAsn: Schema.Number,
-            extraPrefixes: Schema.Array(Schema.String),
-            md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              customerAsn: "customer_asn",
-              extraPrefixes: "extra_prefixes",
-              md5Key: "md5_key",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
@@ -349,7 +481,7 @@ export const CreateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         bgp: "bgp",
       }),
     ),
-) as unknown as Schema.Schema<CreateCniResponse>;
+) as unknown as Schema.Codec<CreateCniResponse>;
 
 export type CreateCniError = DefaultErrors;
 
@@ -396,31 +528,9 @@ export const UpdateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     account: Schema.String,
     custIp: Schema.String,
     interconnect: Schema.String,
-    magic: Schema.Struct({
-      conduitName: Schema.String,
-      description: Schema.String,
-      mtu: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        conduitName: "conduit_name",
-        description: "description",
-        mtu: "mtu",
-      }),
-    ),
+    magic: Magic,
     p2pIp: Schema.String,
-    bgp: Schema.optional(
-      Schema.Struct({
-        customerAsn: Schema.Number,
-        extraPrefixes: Schema.Array(Schema.String),
-        md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          customerAsn: "customer_asn",
-          extraPrefixes: "extra_prefixes",
-          md5Key: "md5_key",
-        }),
-      ),
-    ),
+    bgp: Schema.optional(Bgp),
   }).pipe(
     Schema.encodeKeys({
       id: "id",
@@ -433,7 +543,7 @@ export const UpdateCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     }),
     T.Http({ method: "PUT", path: "/accounts/{account_id}/cni/cnis/{cni}" }),
   ),
-) as unknown as Schema.Schema<UpdateCniRequest>;
+) as unknown as Schema.Codec<UpdateCniRequest>;
 
 export interface UpdateCniResponse {
   id: string;
@@ -460,34 +570,9 @@ export const UpdateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       account: Schema.String,
       custIp: Schema.String,
       interconnect: Schema.String,
-      magic: Schema.Struct({
-        conduitName: Schema.String,
-        description: Schema.String,
-        mtu: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          conduitName: "conduit_name",
-          description: "description",
-          mtu: "mtu",
-        }),
-      ),
+      magic: Magic,
       p2pIp: Schema.String,
-      bgp: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            customerAsn: Schema.Number,
-            extraPrefixes: Schema.Array(Schema.String),
-            md5Key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              customerAsn: "customer_asn",
-              extraPrefixes: "extra_prefixes",
-              md5Key: "md5_key",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      bgp: Schema.optional(Schema.Union([Bgp, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
         id: "id",
@@ -499,7 +584,7 @@ export const UpdateCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         bgp: "bgp",
       }),
     ),
-) as unknown as Schema.Schema<UpdateCniResponse>;
+) as unknown as Schema.Codec<UpdateCniResponse>;
 
 export type UpdateCniError = DefaultErrors;
 
@@ -527,13 +612,13 @@ export const DeleteCniRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "DELETE", path: "/accounts/{account_id}/cni/cnis/{cni}" }),
   ),
-) as unknown as Schema.Schema<DeleteCniRequest>;
+) as unknown as Schema.Codec<DeleteCniRequest>;
 
 export type DeleteCniResponse = unknown;
 
 export const DeleteCniResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<DeleteCniResponse>;
+) as unknown as Schema.Codec<DeleteCniResponse>;
 
 export type DeleteCniError = DefaultErrors;
 
@@ -569,7 +654,7 @@ export const GetInterconnectRequest =
         path: "/accounts/{account_id}/cni/interconnects/{icon}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetInterconnectRequest>;
+  ) as unknown as Schema.Codec<GetInterconnectRequest>;
 
 export type GetInterconnectResponse =
   | {
@@ -607,62 +692,8 @@ export type GetInterconnectResponse =
 
 export const GetInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        account: Schema.String,
-        facility: Schema.Struct({
-          address: Schema.Array(Schema.String),
-          name: Schema.String,
-        }),
-        name: Schema.String,
-        site: Schema.String,
-        slotId: Schema.String,
-        speed: Schema.String,
-        type: Schema.String,
-        owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          account: "account",
-          facility: "facility",
-          name: "name",
-          site: "site",
-          slotId: "slot_id",
-          speed: "speed",
-          type: "type",
-          owner: "owner",
-        }),
-      ),
-      Schema.Struct({
-        account: Schema.String,
-        name: Schema.String,
-        region: Schema.String,
-        type: Schema.String,
-        owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        speed: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "50M",
-                "100M",
-                "200M",
-                "300M",
-                "400M",
-                "500M",
-                "1G",
-                "2G",
-                "5G",
-                "10G",
-                "20G",
-                "50G",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ]),
-  ) as unknown as Schema.Schema<GetInterconnectResponse>;
+    Schema.Union([NscInterconnectPhysicalBody, NscInterconnectGcpPartnerBody]),
+  ) as unknown as Schema.Codec<GetInterconnectResponse>;
 
 export type GetInterconnectError = DefaultErrors;
 
@@ -712,7 +743,7 @@ export const ListInterconnectsRequest =
         path: "/accounts/{account_id}/cni/interconnects",
       }),
     ),
-  ) as unknown as Schema.Schema<ListInterconnectsRequest>;
+  ) as unknown as Schema.Codec<ListInterconnectsRequest>;
 
 export interface ListInterconnectsResponse {
   items: (
@@ -757,64 +788,13 @@ export const ListInterconnectsResponse =
     Schema.Struct({
       items: Schema.Array(
         Schema.Union([
-          Schema.Struct({
-            account: Schema.String,
-            facility: Schema.Struct({
-              address: Schema.Array(Schema.String),
-              name: Schema.String,
-            }),
-            name: Schema.String,
-            site: Schema.String,
-            slotId: Schema.String,
-            speed: Schema.String,
-            type: Schema.String,
-            owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              account: "account",
-              facility: "facility",
-              name: "name",
-              site: "site",
-              slotId: "slot_id",
-              speed: "speed",
-              type: "type",
-              owner: "owner",
-            }),
-          ),
-          Schema.Struct({
-            account: Schema.String,
-            name: Schema.String,
-            region: Schema.String,
-            type: Schema.String,
-            owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            speed: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "50M",
-                    "100M",
-                    "200M",
-                    "300M",
-                    "400M",
-                    "500M",
-                    "1G",
-                    "2G",
-                    "5G",
-                    "10G",
-                    "20G",
-                    "50G",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
+          NscInterconnectPhysicalBody,
+          NscInterconnectGcpPartnerBody,
         ]),
       ),
       next: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
-  ) as unknown as Schema.Schema<ListInterconnectsResponse>;
+  ) as unknown as Schema.Codec<ListInterconnectsResponse>;
 
 export type ListInterconnectsError = DefaultErrors;
 
@@ -901,7 +881,7 @@ export const CreateInterconnectRequest =
         path: "/accounts/{account_id}/cni/interconnects",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateInterconnectRequest>;
+  ) as unknown as Schema.Codec<CreateInterconnectRequest>;
 
 export type CreateInterconnectResponse =
   | {
@@ -939,62 +919,8 @@ export type CreateInterconnectResponse =
 
 export const CreateInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        account: Schema.String,
-        facility: Schema.Struct({
-          address: Schema.Array(Schema.String),
-          name: Schema.String,
-        }),
-        name: Schema.String,
-        site: Schema.String,
-        slotId: Schema.String,
-        speed: Schema.String,
-        type: Schema.String,
-        owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          account: "account",
-          facility: "facility",
-          name: "name",
-          site: "site",
-          slotId: "slot_id",
-          speed: "speed",
-          type: "type",
-          owner: "owner",
-        }),
-      ),
-      Schema.Struct({
-        account: Schema.String,
-        name: Schema.String,
-        region: Schema.String,
-        type: Schema.String,
-        owner: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        speed: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "50M",
-                "100M",
-                "200M",
-                "300M",
-                "400M",
-                "500M",
-                "1G",
-                "2G",
-                "5G",
-                "10G",
-                "20G",
-                "50G",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ]),
-  ) as unknown as Schema.Schema<CreateInterconnectResponse>;
+    Schema.Union([NscInterconnectPhysicalBody, NscInterconnectGcpPartnerBody]),
+  ) as unknown as Schema.Codec<CreateInterconnectResponse>;
 
 export type CreateInterconnectError = DefaultErrors;
 
@@ -1026,14 +952,14 @@ export const DeleteInterconnectRequest =
         path: "/accounts/{account_id}/cni/interconnects/{icon}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteInterconnectRequest>;
+  ) as unknown as Schema.Codec<DeleteInterconnectRequest>;
 
 export type DeleteInterconnectResponse = unknown;
 
 export const DeleteInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<DeleteInterconnectResponse>;
+  ) as unknown as Schema.Codec<DeleteInterconnectResponse>;
 
 export type DeleteInterconnectError = DefaultErrors;
 
@@ -1065,7 +991,7 @@ export const StatusInterconnectRequest =
         path: "/accounts/{account_id}/cni/interconnects/{icon}/status",
       }),
     ),
-  ) as unknown as Schema.Schema<StatusInterconnectRequest>;
+  ) as unknown as Schema.Codec<StatusInterconnectRequest>;
 
 export type StatusInterconnectResponse =
   | { state: "Pending" }
@@ -1075,23 +1001,8 @@ export type StatusInterconnectResponse =
 
 export const StatusInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        state: Schema.Literal("Pending"),
-      }),
-      Schema.Struct({
-        state: Schema.Literal("Down"),
-        reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        state: Schema.Literal("Unhealthy"),
-        reason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        state: Schema.Literal("Healthy"),
-      }),
-    ]),
-  ) as unknown as Schema.Schema<StatusInterconnectResponse>;
+    Schema.Union([Pending, Down, Unhealthy, Healthy]),
+  ) as unknown as Schema.Codec<StatusInterconnectResponse>;
 
 export type StatusInterconnectError = DefaultErrors;
 
@@ -1123,14 +1034,14 @@ export const LoaInterconnectRequest =
         path: "/accounts/{account_id}/cni/interconnects/{icon}/loa",
       }),
     ),
-  ) as unknown as Schema.Schema<LoaInterconnectRequest>;
+  ) as unknown as Schema.Codec<LoaInterconnectRequest>;
 
 export type LoaInterconnectResponse = unknown;
 
 export const LoaInterconnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<LoaInterconnectResponse>;
+  ) as unknown as Schema.Codec<LoaInterconnectResponse>;
 
 export type LoaInterconnectError = DefaultErrors;
 
@@ -1161,7 +1072,7 @@ export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/cni/settings" }),
     ),
-) as unknown as Schema.Schema<GetSettingRequest>;
+) as unknown as Schema.Codec<GetSettingRequest>;
 
 export interface GetSettingResponse {
   defaultAsn: number;
@@ -1172,7 +1083,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       defaultAsn: Schema.Number,
     }).pipe(Schema.encodeKeys({ defaultAsn: "default_asn" })),
-) as unknown as Schema.Schema<GetSettingResponse>;
+) as unknown as Schema.Codec<GetSettingResponse>;
 
 export type GetSettingError = DefaultErrors | Forbidden;
 
@@ -1203,7 +1114,7 @@ export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       Schema.encodeKeys({ defaultAsn: "default_asn" }),
       T.Http({ method: "PUT", path: "/accounts/{account_id}/cni/settings" }),
     ),
-) as unknown as Schema.Schema<PutSettingRequest>;
+) as unknown as Schema.Codec<PutSettingRequest>;
 
 export interface PutSettingResponse {
   defaultAsn: number;
@@ -1214,7 +1125,7 @@ export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       defaultAsn: Schema.Number,
     }).pipe(Schema.encodeKeys({ defaultAsn: "default_asn" })),
-) as unknown as Schema.Schema<PutSettingResponse>;
+) as unknown as Schema.Codec<PutSettingResponse>;
 
 export type PutSettingError = DefaultErrors | Forbidden;
 
@@ -1246,7 +1157,7 @@ export const GetSlotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/cni/slots/{slot}" }),
   ),
-) as unknown as Schema.Schema<GetSlotRequest>;
+) as unknown as Schema.Codec<GetSlotRequest>;
 
 export interface GetSlotResponse {
   /** Slot ID */
@@ -1263,16 +1174,13 @@ export interface GetSlotResponse {
 export const GetSlotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
-    facility: Schema.Struct({
-      address: Schema.Array(Schema.String),
-      name: Schema.String,
-    }),
+    facility: Facility,
     occupied: Schema.Boolean,
     site: Schema.String,
     speed: Schema.String,
     account: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
-) as unknown as Schema.Schema<GetSlotResponse>;
+) as unknown as Schema.Codec<GetSlotResponse>;
 
 export type GetSlotError = DefaultErrors;
 
@@ -1326,7 +1234,7 @@ export const ListSlotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       T.HttpQuery("speed"),
     ),
   }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/cni/slots" })),
-) as unknown as Schema.Schema<ListSlotsRequest>;
+) as unknown as Schema.Codec<ListSlotsRequest>;
 
 export interface ListSlotsResponse {
   items: {
@@ -1343,22 +1251,10 @@ export interface ListSlotsResponse {
 export const ListSlotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      items: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          facility: Schema.Struct({
-            address: Schema.Array(Schema.String),
-            name: Schema.String,
-          }),
-          occupied: Schema.Boolean,
-          site: Schema.String,
-          speed: Schema.String,
-          account: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      items: Schema.Array(Item2),
       next: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
-) as unknown as Schema.Schema<ListSlotsResponse>;
+) as unknown as Schema.Codec<ListSlotsResponse>;
 
 export type ListSlotsError = DefaultErrors;
 

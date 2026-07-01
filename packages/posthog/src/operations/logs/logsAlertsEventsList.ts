@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAlertsEventsListInput {
+  id: string;
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const LogsAlertsEventsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,33 @@ export const LogsAlertsEventsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/logs/alerts/{id}/events/",
     }),
-  );
-export type LogsAlertsEventsListInput = typeof LogsAlertsEventsListInput.Type;
+  ) as unknown as Schema.Codec<LogsAlertsEventsListInput>;
 
 // Output Schema
+export interface LogsAlertsEventsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    created_at?: string;
+    kind?:
+      | "check"
+      | "reset"
+      | "enable"
+      | "disable"
+      | "snooze"
+      | "unsnooze"
+      | "threshold_change"
+      | "broken_config";
+    state_before?: string;
+    state_after?: string;
+    threshold_breached?: boolean;
+    result_count?: number | null;
+    error_message?: string | null;
+    query_duration_ms?: number | null;
+  }[];
+}
 export const LogsAlertsEventsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -38,6 +67,7 @@ export const LogsAlertsEventsListOutput =
               "snooze",
               "unsnooze",
               "threshold_change",
+              "broken_config",
             ]),
           ),
           state_before: Schema.optional(Schema.String),
@@ -49,8 +79,7 @@ export const LogsAlertsEventsListOutput =
         }),
       ),
     ),
-  });
-export type LogsAlertsEventsListOutput = typeof LogsAlertsEventsListOutput.Type;
+  }) as unknown as Schema.Codec<LogsAlertsEventsListOutput>;
 
 // The operation
 /**

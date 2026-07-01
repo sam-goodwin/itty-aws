@@ -3,8 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ListServiceTokensInput {
+  organization: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListServiceTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,10 +22,78 @@ export const ListServiceTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/organizations/{organization}/service-tokens",
   }),
-);
-export type ListServiceTokensInput = typeof ListServiceTokensInput.Type;
+) as unknown as Schema.Codec<ListServiceTokensInput>;
 
 // Output Schema
+export interface ListServiceTokensOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name?: string | null;
+    display_name: string;
+    token?: string | null;
+    plain_text_refresh_token?: Redacted.Redacted<string> | null;
+    avatar_url: string;
+    created_at: string;
+    updated_at: string;
+    expires_at?: string | null;
+    last_used_at?: string | null;
+    actor_id: string | null;
+    actor_display_name: string | null;
+    actor_type: string | null;
+    service_token_accesses?:
+      | {
+          id: string;
+          access: string;
+          description: string;
+          resource_name: string;
+          resource_id: string;
+          resource_type: string;
+          resource: {
+            id: string;
+            name: string;
+            created_at: string;
+            updated_at: string;
+            deleted_at: string | null;
+          };
+        }[]
+      | null;
+    oauth_accesses_by_resource?: {
+      database: {
+        databases: {
+          name: string;
+          id: string;
+          organization: string;
+          url: string;
+        }[];
+        accesses: { name: string; description: string }[];
+      };
+      organization: {
+        organizations: { name: string; id: string; url: string }[];
+        accesses: { name: string; description: string }[];
+      };
+      branch: {
+        branches: {
+          name: string;
+          id: string;
+          database: string;
+          organization: string;
+          url: string;
+        }[];
+        accesses: { name: string; description: string }[];
+      };
+      user: {
+        users: { name: string; id: string }[];
+        accesses: { name: string; description: string }[];
+      };
+    } | null;
+  }[];
+}
 export const ListServiceTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -136,8 +210,7 @@ export const ListServiceTokensOutput =
         ),
       }),
     ),
-  });
-export type ListServiceTokensOutput = typeof ListServiceTokensOutput.Type;
+  }) as unknown as Schema.Codec<ListServiceTokensOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListParametersInput {
+  organization: string;
+  database: string;
+  branch: string;
+}
 export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,41 @@ export const ListParametersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/parameters",
   }),
-);
-export type ListParametersInput = typeof ListParametersInput.Type;
+) as unknown as Schema.Codec<ListParametersInput>;
 
 // Output Schema
+export type ListParametersOutput = {
+  id: string;
+  name: string;
+  display_name: string;
+  namespace: "patroni" | "pgconf" | "pgbouncer";
+  category: string;
+  description: string;
+  extension: boolean;
+  immutable: boolean;
+  parameter_type:
+    | "array"
+    | "boolean"
+    | "bytes"
+    | "float"
+    | "integer"
+    | "seconds"
+    | "select"
+    | "string"
+    | "time";
+  default_value: string;
+  value: string;
+  required: boolean;
+  created_at: string;
+  updated_at: string;
+  restart: boolean;
+  max: number;
+  min: number;
+  step: number;
+  url: string;
+  options: string[];
+  actor: { id: string; display_name: string; avatar_url: string };
+}[];
 export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
@@ -55,8 +91,7 @@ export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       avatar_url: Schema.String,
     }),
   }),
-);
-export type ListParametersOutput = typeof ListParametersOutput.Type;
+) as unknown as Schema.Codec<ListParametersOutput>;
 
 // The operation
 /**

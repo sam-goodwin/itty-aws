@@ -1,9 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetWebhookEndpointsInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetWebhookEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -16,10 +23,28 @@ export const GetWebhookEndpointsInput =
       path: "/v1/webhook_endpoints",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetWebhookEndpointsInput = typeof GetWebhookEndpointsInput.Type;
+  ) as unknown as Schema.Codec<GetWebhookEndpointsInput>;
 
 // Output Schema
+export interface GetWebhookEndpointsOutput {
+  data: {
+    api_version: string | null;
+    application: string | null;
+    created: number;
+    description: string | null;
+    enabled_events: string[];
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    object: "webhook_endpoint";
+    secret?: Redacted.Redacted<string>;
+    status: string;
+    url: string;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetWebhookEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -33,7 +58,7 @@ export const GetWebhookEndpointsOutput =
         livemode: Schema.Boolean,
         metadata: Schema.Record(Schema.String, Schema.String),
         object: Schema.Literals(["webhook_endpoint"]),
-        secret: Schema.optional(SensitiveString),
+        secret: Schema.optional(SensitiveOutputString),
         status: Schema.String,
         url: Schema.String,
       }),
@@ -41,8 +66,7 @@ export const GetWebhookEndpointsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetWebhookEndpointsOutput = typeof GetWebhookEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<GetWebhookEndpointsOutput>;
 
 // The operation
 /**

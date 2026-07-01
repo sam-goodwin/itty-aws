@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsExplainLogWithAICreateInput {
+  project_id: string;
+  uuid?: string;
+  timestamp?: string;
+  force_refresh?: boolean;
+}
 export const LogsExplainLogWithAICreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,21 +18,22 @@ export const LogsExplainLogWithAICreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/logs/explainLogWithAI/",
+      path: "/api/projects/{project_id}/logs/explainLogWithAI/",
     }),
-  );
-export type LogsExplainLogWithAICreateInput =
-  typeof LogsExplainLogWithAICreateInput.Type;
+  ) as unknown as Schema.Codec<LogsExplainLogWithAICreateInput>;
 
 // Output Schema
+export interface LogsExplainLogWithAICreateOutput {
+  uuid?: string;
+  timestamp?: string;
+  force_refresh?: boolean;
+}
 export const LogsExplainLogWithAICreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     force_refresh: Schema.optional(Schema.Boolean),
-  });
-export type LogsExplainLogWithAICreateOutput =
-  typeof LogsExplainLogWithAICreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsExplainLogWithAICreateOutput>;
 
 // The operation
 /**
@@ -40,6 +46,5 @@ export const logsExplainLogWithAICreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: LogsExplainLogWithAICreateInput,
     outputSchema: LogsExplainLogWithAICreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

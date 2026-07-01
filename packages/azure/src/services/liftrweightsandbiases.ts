@@ -4,11 +4,74 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface InstancesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instancename: string;
+  properties?: {
+    marketplace: {
+      subscriptionId?: string;
+      subscriptionStatus?:
+        | "PendingFulfillmentStart"
+        | "Subscribed"
+        | "Suspended"
+        | "Unsubscribed";
+      offerDetails: {
+        publisherId: string;
+        offerId: string;
+        planId: string;
+        planName?: string;
+        termUnit?: string;
+        termId?: string;
+      };
+    };
+    user: {
+      firstName?: string;
+      lastName?: string;
+      emailAddress?: string;
+      upn?: string;
+      phoneNumber?: string;
+    };
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    partnerProperties: {
+      region:
+        | "eastus"
+        | "centralus"
+        | "westus"
+        | "westeurope"
+        | "japaneast"
+        | "koreacentral";
+      subdomain: string;
+    };
+    singleSignOnProperties?: {
+      type: "Saml" | "OpenId";
+      state?: "Initial" | "Enable" | "Disable";
+      enterpriseAppId?: string;
+      url?: string;
+      aadDomains?: string[];
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const InstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -98,11 +161,22 @@ export const InstancesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
       apiVersion: "2024-09-18",
     }),
-  );
-export type InstancesCreateOrUpdateInput =
-  typeof InstancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<InstancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface InstancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -122,9 +196,7 @@ export const InstancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InstancesCreateOrUpdateOutput =
-  typeof InstancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InstancesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -142,6 +214,11 @@ export const InstancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instancename: string;
+}
 export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -152,12 +229,12 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
     apiVersion: "2024-09-18",
   }),
-);
-export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
+) as unknown as Schema.Codec<InstancesDeleteInput>;
 
 // Output Schema
-export const InstancesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InstancesDeleteOutput = typeof InstancesDeleteOutput.Type;
+export type InstancesDeleteOutput = void;
+export const InstancesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
 
 // The operation
 /**
@@ -173,6 +250,11 @@ export const InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesDeleteOutput,
 }));
 // Input Schema
+export interface InstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instancename: string;
+}
 export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -183,10 +265,22 @@ export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
     apiVersion: "2024-09-18",
   }),
-);
-export type InstancesGetInput = typeof InstancesGetInput.Type;
+) as unknown as Schema.Codec<InstancesGetInput>;
 
 // Output Schema
+export interface InstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -205,8 +299,7 @@ export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstancesGetOutput = typeof InstancesGetOutput.Type;
+}) as unknown as Schema.Codec<InstancesGetOutput>;
 
 // The operation
 /**
@@ -222,6 +315,10 @@ export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesGetOutput,
 }));
 // Input Schema
+export interface InstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const InstancesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -232,11 +329,25 @@ export const InstancesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances",
       apiVersion: "2024-09-18",
     }),
-  );
-export type InstancesListByResourceGroupInput =
-  typeof InstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<InstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface InstancesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -271,9 +382,7 @@ export const InstancesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstancesListByResourceGroupOutput =
-  typeof InstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<InstancesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -289,6 +398,9 @@ export const InstancesListByResourceGroup =
     outputSchema: InstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface InstancesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const InstancesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -298,11 +410,25 @@ export const InstancesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.WeightsAndBiases/instances",
       apiVersion: "2024-09-18",
     }),
-  );
-export type InstancesListBySubscriptionInput =
-  typeof InstancesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<InstancesListBySubscriptionInput>;
 
 // Output Schema
+export interface InstancesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InstancesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -337,9 +463,7 @@ export const InstancesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InstancesListBySubscriptionOutput =
-  typeof InstancesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<InstancesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -355,6 +479,23 @@ export const InstancesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  instancename: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -387,10 +528,22 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WeightsAndBiases/instances/{instancename}",
     apiVersion: "2024-09-18",
   }),
-);
-export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
+) as unknown as Schema.Codec<InstancesUpdateInput>;
 
 // Output Schema
+export interface InstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -409,8 +562,7 @@ export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InstancesUpdateOutput = typeof InstancesUpdateOutput.Type;
+}) as unknown as Schema.Codec<InstancesUpdateOutput>;
 
 // The operation
 /**
@@ -426,6 +578,7 @@ export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -434,10 +587,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.WeightsAndBiases/operations",
     apiVersion: "2024-09-18",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -460,8 +627,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

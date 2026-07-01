@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesListProcessesInput {
+  app_name: string;
+  machine_id: string;
+  sort_by?: string;
+  order?: string;
+}
 export const MachinesListProcessesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,19 @@ export const MachinesListProcessesInput =
       method: "GET",
       path: "/apps/{app_name}/machines/{machine_id}/ps",
     }),
-  );
-export type MachinesListProcessesInput = typeof MachinesListProcessesInput.Type;
+  ) as unknown as Schema.Codec<MachinesListProcessesInput>;
 
 // Output Schema
+export type MachinesListProcessesOutput = {
+  command?: string;
+  cpu?: number;
+  directory?: string;
+  listen_sockets?: { address?: string; proto?: string }[];
+  pid?: number;
+  rss?: number;
+  rtime?: number;
+  stime?: number;
+}[];
 export const MachinesListProcessesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -38,9 +53,7 @@ export const MachinesListProcessesOutput =
       rtime: Schema.optional(Schema.Number),
       stime: Schema.optional(Schema.Number),
     }),
-  );
-export type MachinesListProcessesOutput =
-  typeof MachinesListProcessesOutput.Type;
+  ) as unknown as Schema.Codec<MachinesListProcessesOutput>;
 
 // The operation
 /**

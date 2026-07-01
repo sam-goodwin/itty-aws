@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupInput {
+  organizationSlug: string;
+  groupName: string;
+}
 export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,19 @@ export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/v1/organizations/{organizationSlug}/groups/{groupName}",
   }),
-);
-export type DeleteGroupInput = typeof DeleteGroupInput.Type;
+) as unknown as Schema.Codec<DeleteGroupInput>;
 
 // Output Schema
+export interface DeleteGroupOutput {
+  group?: {
+    name?: string;
+    version?: string;
+    uuid?: string;
+    locations?: string[];
+    primary?: string;
+    delete_protection?: boolean;
+  };
+}
 export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
@@ -27,8 +40,7 @@ export const DeleteGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       delete_protection: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type DeleteGroupOutput = typeof DeleteGroupOutput.Type;
+}) as unknown as Schema.Codec<DeleteGroupOutput>;
 
 // The operation
 /**

@@ -4,13 +4,22 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface MoveCollectionsBulkRemoveInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  validateOnly?: boolean;
+  moveResources?: string[];
+  moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
+}
 export const MoveCollectionsBulkRemoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -24,11 +33,32 @@ export const MoveCollectionsBulkRemoveInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsBulkRemoveInput =
-  typeof MoveCollectionsBulkRemoveInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsBulkRemoveInput>;
 
 // Output Schema
+export interface MoveCollectionsBulkRemoveOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsBulkRemoveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -66,13 +96,14 @@ export const MoveCollectionsBulkRemoveOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsBulkRemoveOutput =
-  typeof MoveCollectionsBulkRemoveOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsBulkRemoveOutput>;
 
 // The operation
 /**
  * Removes the set of move resources included in the request body from move collection. The orchestration is done by service. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -81,8 +112,19 @@ export const MoveCollectionsBulkRemove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsCommitInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  validateOnly?: boolean;
+  moveResources: string[];
+  moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
+}
 export const MoveCollectionsCommitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -94,10 +136,32 @@ export const MoveCollectionsCommitInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsCommitInput = typeof MoveCollectionsCommitInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsCommitInput>;
 
 // Output Schema
+export interface MoveCollectionsCommitOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsCommitOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -135,13 +199,16 @@ export const MoveCollectionsCommitOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsCommitOutput =
-  typeof MoveCollectionsCommitOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsCommitOutput>;
 
 // The operation
 /**
  * Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -150,8 +217,51 @@ export const MoveCollectionsCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  properties?: {
+    sourceRegion?: string;
+    targetRegion?: string;
+    moveRegion?: string;
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    version?: string;
+    moveType?: "RegionToRegion" | "RegionToZone";
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveCollectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -213,10 +323,46 @@ export const MoveCollectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsCreateInput = typeof MoveCollectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsCreateInput>;
 
 // Output Schema
+export interface MoveCollectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  properties?: {
+    sourceRegion?: string;
+    targetRegion?: string;
+    moveRegion?: string;
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    version?: string;
+    moveType?: "RegionToRegion" | "RegionToZone";
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveCollectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -274,13 +420,16 @@ export const MoveCollectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MoveCollectionsCreateOutput =
-  typeof MoveCollectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsCreateOutput>;
 
 // The operation
 /**
  * Creates or updates a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -289,17 +438,48 @@ export const MoveCollectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+}
 export const MoveCollectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsDeleteInput = typeof MoveCollectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsDeleteInput>;
 
 // Output Schema
+export interface MoveCollectionsDeleteOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -337,13 +517,16 @@ export const MoveCollectionsDeleteOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsDeleteOutput =
-  typeof MoveCollectionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -352,8 +535,19 @@ export const MoveCollectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsDiscardInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  validateOnly?: boolean;
+  moveResources: string[];
+  moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
+}
 export const MoveCollectionsDiscardInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -365,11 +559,32 @@ export const MoveCollectionsDiscardInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsDiscardInput =
-  typeof MoveCollectionsDiscardInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsDiscardInput>;
 
 // Output Schema
+export interface MoveCollectionsDiscardOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsDiscardOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -407,13 +622,16 @@ export const MoveCollectionsDiscardOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsDiscardOutput =
-  typeof MoveCollectionsDiscardOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsDiscardOutput>;
 
 // The operation
 /**
  * Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsDiscard = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -422,17 +640,62 @@ export const MoveCollectionsDiscard = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+}
 export const MoveCollectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsGetInput = typeof MoveCollectionsGetInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsGetInput>;
 
 // Output Schema
+export interface MoveCollectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  properties?: {
+    sourceRegion?: string;
+    targetRegion?: string;
+    moveRegion?: string;
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    version?: string;
+    moveType?: "RegionToRegion" | "RegionToZone";
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveCollectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -490,20 +753,35 @@ export const MoveCollectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MoveCollectionsGetOutput = typeof MoveCollectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsGetOutput>;
 
 // The operation
 /**
  * Gets the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveCollectionsGetInput,
   outputSchema: MoveCollectionsGetOutput,
 }));
 // Input Schema
+export interface MoveCollectionsInitiateMoveInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  validateOnly?: boolean;
+  moveResources: string[];
+  moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
+}
 export const MoveCollectionsInitiateMoveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -515,11 +793,32 @@ export const MoveCollectionsInitiateMoveInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsInitiateMoveInput =
-  typeof MoveCollectionsInitiateMoveInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsInitiateMoveInput>;
 
 // Output Schema
+export interface MoveCollectionsInitiateMoveOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsInitiateMoveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -557,13 +856,16 @@ export const MoveCollectionsInitiateMoveOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsInitiateMoveOutput =
-  typeof MoveCollectionsInitiateMoveOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsInitiateMoveOutput>;
 
 // The operation
 /**
  * Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsInitiateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -572,18 +874,63 @@ export const MoveCollectionsInitiateMove = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsListMoveCollectionsByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MoveCollectionsListMoveCollectionsByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsListMoveCollectionsByResourceGroupInput =
-  typeof MoveCollectionsListMoveCollectionsByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsListMoveCollectionsByResourceGroupInput>;
 
 // Output Schema
+export interface MoveCollectionsListMoveCollectionsByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    tags?: Record<string, string>;
+    location?: string;
+    identity?: {
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+    };
+    properties?: {
+      sourceRegion?: string;
+      targetRegion?: string;
+      moveRegion?: string;
+      provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+      version?: string;
+      moveType?: "RegionToRegion" | "RegionToZone";
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MoveCollectionsListMoveCollectionsByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -663,15 +1010,17 @@ export const MoveCollectionsListMoveCollectionsByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MoveCollectionsListMoveCollectionsByResourceGroupOutput =
-  typeof MoveCollectionsListMoveCollectionsByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsListMoveCollectionsByResourceGroupOutput>;
 
 // The operation
 /**
  * Get all Move Collections.
  *
  * Get all the Move Collections in the resource group.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -679,18 +1028,61 @@ export const MoveCollectionsListMoveCollectionsByResourceGroup =
     outputSchema: MoveCollectionsListMoveCollectionsByResourceGroupOutput,
   }));
 // Input Schema
+export interface MoveCollectionsListMoveCollectionsBySubscriptionInput {
+  subscriptionId: string;
+}
 export const MoveCollectionsListMoveCollectionsBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsListMoveCollectionsBySubscriptionInput =
-  typeof MoveCollectionsListMoveCollectionsBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsListMoveCollectionsBySubscriptionInput>;
 
 // Output Schema
+export interface MoveCollectionsListMoveCollectionsBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    tags?: Record<string, string>;
+    location?: string;
+    identity?: {
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+    };
+    properties?: {
+      sourceRegion?: string;
+      targetRegion?: string;
+      moveRegion?: string;
+      provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+      version?: string;
+      moveType?: "RegionToRegion" | "RegionToZone";
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MoveCollectionsListMoveCollectionsBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -770,15 +1162,16 @@ export const MoveCollectionsListMoveCollectionsBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MoveCollectionsListMoveCollectionsBySubscriptionOutput =
-  typeof MoveCollectionsListMoveCollectionsBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsListMoveCollectionsBySubscriptionOutput>;
 
 // The operation
 /**
  * Get all Move Collections.
  *
  * Get all the Move Collections in the subscription.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListMoveCollectionsBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -786,8 +1179,17 @@ export const MoveCollectionsListMoveCollectionsBySubscription =
     outputSchema: MoveCollectionsListMoveCollectionsBySubscriptionOutput,
   }));
 // Input Schema
+export interface MoveCollectionsListRequiredForInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  sourceId: string;
+}
 export const MoveCollectionsListRequiredForInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     sourceId: Schema.String,
   }).pipe(
     T.Http({
@@ -795,23 +1197,26 @@ export const MoveCollectionsListRequiredForInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsListRequiredForInput =
-  typeof MoveCollectionsListRequiredForInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsListRequiredForInput>;
 
 // Output Schema
+export interface MoveCollectionsListRequiredForOutput {
+  sourceIds?: string[];
+}
 export const MoveCollectionsListRequiredForOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sourceIds: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type MoveCollectionsListRequiredForOutput =
-  typeof MoveCollectionsListRequiredForOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsListRequiredForOutput>;
 
 // The operation
 /**
  * List of the move resources for which an arm resource is required for.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
  * @param sourceId - The sourceId for which the api is invoked.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsListRequiredFor =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -819,8 +1224,19 @@ export const MoveCollectionsListRequiredFor =
     outputSchema: MoveCollectionsListRequiredForOutput,
   }));
 // Input Schema
+export interface MoveCollectionsPrepareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  validateOnly?: boolean;
+  moveResources: string[];
+  moveResourceInputType?: "MoveResourceId" | "MoveResourceSourceId";
+}
 export const MoveCollectionsPrepareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     validateOnly: Schema.optional(Schema.Boolean),
     moveResources: Schema.Array(Schema.String),
     moveResourceInputType: Schema.optional(
@@ -832,11 +1248,32 @@ export const MoveCollectionsPrepareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsPrepareInput =
-  typeof MoveCollectionsPrepareInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsPrepareInput>;
 
 // Output Schema
+export interface MoveCollectionsPrepareOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsPrepareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -874,13 +1311,16 @@ export const MoveCollectionsPrepareOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsPrepareOutput =
-  typeof MoveCollectionsPrepareOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsPrepareOutput>;
 
 // The operation
 /**
  * Initiates prepare for the set of resources included in the request body. The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -889,18 +1329,48 @@ export const MoveCollectionsPrepare = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveCollectionsResolveDependenciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+}
 export const MoveCollectionsResolveDependenciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsResolveDependenciesInput =
-  typeof MoveCollectionsResolveDependenciesInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsResolveDependenciesInput>;
 
 // Output Schema
+export interface MoveCollectionsResolveDependenciesOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveCollectionsResolveDependenciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -938,13 +1408,16 @@ export const MoveCollectionsResolveDependenciesOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveCollectionsResolveDependenciesOutput =
-  typeof MoveCollectionsResolveDependenciesOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsResolveDependenciesOutput>;
 
 // The operation
 /**
  * Computes, resolves and validate the dependencies of the moveResources in the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsResolveDependencies =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -952,8 +1425,22 @@ export const MoveCollectionsResolveDependencies =
     outputSchema: MoveCollectionsResolveDependenciesOutput,
   }));
 // Input Schema
+export interface MoveCollectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+}
 export const MoveCollectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -970,10 +1457,46 @@ export const MoveCollectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveCollectionsUpdateInput = typeof MoveCollectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MoveCollectionsUpdateInput>;
 
 // Output Schema
+export interface MoveCollectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  tags?: Record<string, string>;
+  location?: string;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  properties?: {
+    sourceRegion?: string;
+    targetRegion?: string;
+    moveRegion?: string;
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    version?: string;
+    moveType?: "RegionToRegion" | "RegionToZone";
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveCollectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1031,13 +1554,16 @@ export const MoveCollectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MoveCollectionsUpdateOutput =
-  typeof MoveCollectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MoveCollectionsUpdateOutput>;
 
 // The operation
 /**
  * Updates a move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1046,8 +1572,91 @@ export const MoveCollectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MoveResourcesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  moveResourceName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    sourceId: string;
+    targetId?: string;
+    existingTargetId?: string;
+    resourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    sourceResourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    moveStatus?: {
+      moveState?:
+        | "AssignmentPending"
+        | "PreparePending"
+        | "PrepareInProgress"
+        | "PrepareFailed"
+        | "MovePending"
+        | "MoveInProgress"
+        | "MoveFailed"
+        | "DiscardInProgress"
+        | "DiscardFailed"
+        | "CommitPending"
+        | "CommitInProgress"
+        | "CommitFailed"
+        | "Committed"
+        | "DeleteSourcePending"
+        | "ResourceMoveCompleted";
+      jobStatus?: { jobName?: "InitialSync"; jobProgress?: string };
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    dependsOn?: {
+      id?: string;
+      resolutionStatus?: string;
+      resolutionType?: "Manual" | "Automatic";
+      dependencyType?: "RequiredForPrepare" | "RequiredForMove";
+      manualResolution?: { targetId?: string };
+      automaticResolution?: { moveResourceId?: string };
+      isOptional?: string;
+    }[];
+    dependsOnOverrides?: { id?: string; targetId?: string }[];
+    isResolveRequired?: boolean;
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveResourcesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+    moveResourceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1182,10 +1791,84 @@ export const MoveResourcesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveResourcesCreateInput = typeof MoveResourcesCreateInput.Type;
+  ) as unknown as Schema.Codec<MoveResourcesCreateInput>;
 
 // Output Schema
+export interface MoveResourcesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    sourceId: string;
+    targetId?: string;
+    existingTargetId?: string;
+    resourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    sourceResourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    moveStatus?: {
+      moveState?:
+        | "AssignmentPending"
+        | "PreparePending"
+        | "PrepareInProgress"
+        | "PrepareFailed"
+        | "MovePending"
+        | "MoveInProgress"
+        | "MoveFailed"
+        | "DiscardInProgress"
+        | "DiscardFailed"
+        | "CommitPending"
+        | "CommitInProgress"
+        | "CommitFailed"
+        | "Committed"
+        | "DeleteSourcePending"
+        | "ResourceMoveCompleted";
+      jobStatus?: { jobName?: "InitialSync"; jobProgress?: string };
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    dependsOn?: {
+      id?: string;
+      resolutionStatus?: string;
+      resolutionType?: "Manual" | "Automatic";
+      dependencyType?: "RequiredForPrepare" | "RequiredForMove";
+      manualResolution?: { targetId?: string };
+      automaticResolution?: { moveResourceId?: string };
+      isOptional?: string;
+    }[];
+    dependsOnOverrides?: { id?: string; targetId?: string }[];
+    isResolveRequired?: boolean;
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveResourcesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1316,29 +1999,67 @@ export const MoveResourcesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MoveResourcesCreateOutput = typeof MoveResourcesCreateOutput.Type;
+  }) as unknown as Schema.Codec<MoveResourcesCreateOutput>;
 
 // The operation
 /**
  * Creates or updates a Move Resource in the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesCreateInput,
   outputSchema: MoveResourcesCreateOutput,
 }));
 // Input Schema
+export interface MoveResourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  moveResourceName: string;
+}
 export const MoveResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
+    moveResourceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type MoveResourcesDeleteInput = typeof MoveResourcesDeleteInput.Type;
+  ) as unknown as Schema.Codec<MoveResourcesDeleteInput>;
 
 // Output Schema
+export interface MoveResourcesDeleteOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: unknown[];
+    additionalInfo?: {
+      type?: string;
+      info?: {
+        moveResources?: {
+          id?: string;
+          sourceId?: string;
+          moveResources?: unknown[];
+        }[];
+      };
+    }[];
+  };
+  properties?: {};
+}
 export const MoveResourcesDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1376,30 +2097,118 @@ export const MoveResourcesDeleteOutput =
       }),
     ),
     properties: Schema.optional(Schema.Struct({})),
-  });
-export type MoveResourcesDeleteOutput = typeof MoveResourcesDeleteOutput.Type;
+  }) as unknown as Schema.Codec<MoveResourcesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a Move Resource from the move collection.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesDeleteInput,
   outputSchema: MoveResourcesDeleteOutput,
 }));
 // Input Schema
-export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface MoveResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  moveResourceName: string;
+}
+export const MoveResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  moveCollectionName: Schema.String.pipe(T.PathParam()),
+  moveResourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
     apiVersion: "2023-08-01",
   }),
-);
-export type MoveResourcesGetInput = typeof MoveResourcesGetInput.Type;
+) as unknown as Schema.Codec<MoveResourcesGetInput>;
 
 // Output Schema
+export interface MoveResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+    sourceId: string;
+    targetId?: string;
+    existingTargetId?: string;
+    resourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    sourceResourceSettings?: {
+      resourceType: string;
+      targetResourceName?: string;
+      targetResourceGroupName?: string;
+    };
+    moveStatus?: {
+      moveState?:
+        | "AssignmentPending"
+        | "PreparePending"
+        | "PrepareInProgress"
+        | "PrepareFailed"
+        | "MovePending"
+        | "MoveInProgress"
+        | "MoveFailed"
+        | "DiscardInProgress"
+        | "DiscardFailed"
+        | "CommitPending"
+        | "CommitInProgress"
+        | "CommitFailed"
+        | "Committed"
+        | "DeleteSourcePending"
+        | "ResourceMoveCompleted";
+      jobStatus?: { jobName?: "InitialSync"; jobProgress?: string };
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    dependsOn?: {
+      id?: string;
+      resolutionStatus?: string;
+      resolutionType?: "Manual" | "Automatic";
+      dependencyType?: "RequiredForPrepare" | "RequiredForMove";
+      manualResolution?: { targetId?: string };
+      automaticResolution?: { moveResourceId?: string };
+      isOptional?: string;
+    }[];
+    dependsOnOverrides?: { id?: string; targetId?: string }[];
+    isResolveRequired?: boolean;
+    errors?: {
+      properties?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+      };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MoveResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1531,20 +2340,34 @@ export const MoveResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type MoveResourcesGetOutput = typeof MoveResourcesGetOutput.Type;
+) as unknown as Schema.Codec<MoveResourcesGetOutput>;
 
 // The operation
 /**
  * Gets the Move Resource.
+ *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param moveResourceName - The Move Resource Name.
+ * @param api-version - Client Api Version.
  */
 export const MoveResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MoveResourcesGetInput,
   outputSchema: MoveResourcesGetOutput,
 }));
 // Input Schema
+export interface MoveResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  $filter?: string;
+}
 export const MoveResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   },
 ).pipe(
@@ -1553,10 +2376,92 @@ export const MoveResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
     apiVersion: "2023-08-01",
   }),
-);
-export type MoveResourcesListInput = typeof MoveResourcesListInput.Type;
+) as unknown as Schema.Codec<MoveResourcesListInput>;
 
 // Output Schema
+export interface MoveResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      provisioningState?: "Succeeded" | "Updating" | "Creating" | "Failed";
+      sourceId: string;
+      targetId?: string;
+      existingTargetId?: string;
+      resourceSettings?: {
+        resourceType: string;
+        targetResourceName?: string;
+        targetResourceGroupName?: string;
+      };
+      sourceResourceSettings?: {
+        resourceType: string;
+        targetResourceName?: string;
+        targetResourceGroupName?: string;
+      };
+      moveStatus?: {
+        moveState?:
+          | "AssignmentPending"
+          | "PreparePending"
+          | "PrepareInProgress"
+          | "PrepareFailed"
+          | "MovePending"
+          | "MoveInProgress"
+          | "MoveFailed"
+          | "DiscardInProgress"
+          | "DiscardFailed"
+          | "CommitPending"
+          | "CommitInProgress"
+          | "CommitFailed"
+          | "Committed"
+          | "DeleteSourcePending"
+          | "ResourceMoveCompleted";
+        jobStatus?: { jobName?: "InitialSync"; jobProgress?: string };
+        errors?: {
+          properties?: {
+            code?: string;
+            message?: string;
+            target?: string;
+            details?: unknown[];
+          };
+        };
+      };
+      dependsOn?: {
+        id?: string;
+        resolutionStatus?: string;
+        resolutionType?: "Manual" | "Automatic";
+        dependencyType?: "RequiredForPrepare" | "RequiredForMove";
+        manualResolution?: { targetId?: string };
+        automaticResolution?: { moveResourceId?: string };
+        isOptional?: string;
+      }[];
+      dependsOnOverrides?: { id?: string; targetId?: string }[];
+      isResolveRequired?: boolean;
+      errors?: {
+        properties?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+        };
+      };
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+  summaryCollection?: {
+    fieldName?: string;
+    summary?: { count?: number; item?: string }[];
+  };
+  totalCount?: number;
+}
 export const MoveResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1730,13 +2635,16 @@ export const MoveResourcesListOutput =
       }),
     ),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type MoveResourcesListOutput = typeof MoveResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<MoveResourcesListOutput>;
 
 // The operation
 /**
  * Lists the Move Resources in the move collection.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
+ * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'.
  */
 export const MoveResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1744,6 +2652,7 @@ export const MoveResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MoveResourcesListOutput,
 }));
 // Input Schema
+export interface OperationsDiscoveryGetInput {}
 export const OperationsDiscoveryGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1751,11 +2660,24 @@ export const OperationsDiscoveryGetInput =
       path: "/providers/Microsoft.Migrate/operations",
       apiVersion: "2023-08-01",
     }),
-  );
-export type OperationsDiscoveryGetInput =
-  typeof OperationsDiscoveryGetInput.Type;
+  ) as unknown as Schema.Codec<OperationsDiscoveryGetInput>;
 
 // Output Schema
+export interface OperationsDiscoveryGetOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsDiscoveryGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1777,11 +2699,13 @@ export const OperationsDiscoveryGetOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OperationsDiscoveryGetOutput =
-  typeof OperationsDiscoveryGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationsDiscoveryGetOutput>;
 
 // The operation
+/**
+ *
+ * @param api-version - Client Api Version.
+ */
 export const OperationsDiscoveryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: OperationsDiscoveryGetInput,
@@ -1789,8 +2713,19 @@ export const OperationsDiscoveryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UnresolvedDependenciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  dependencyLevel?: "Direct" | "Descendant";
+  $orderby?: string;
+  $filter?: string;
+}
 export const UnresolvedDependenciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    moveCollectionName: Schema.String.pipe(T.PathParam()),
     dependencyLevel: Schema.optional(Schema.Literals(["Direct", "Descendant"])),
     $orderby: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1800,11 +2735,18 @@ export const UnresolvedDependenciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies",
       apiVersion: "2023-08-01",
     }),
-  );
-export type UnresolvedDependenciesGetInput =
-  typeof UnresolvedDependenciesGetInput.Type;
+  ) as unknown as Schema.Codec<UnresolvedDependenciesGetInput>;
 
 // Output Schema
+export interface UnresolvedDependenciesGetOutput {
+  value?: { count?: number; id?: string }[];
+  nextLink?: string;
+  summaryCollection?: {
+    fieldName?: string;
+    summary?: { count?: number; item?: string }[];
+  };
+  totalCount?: number;
+}
 export const UnresolvedDependenciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1830,16 +2772,18 @@ export const UnresolvedDependenciesGetOutput =
       }),
     ),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type UnresolvedDependenciesGetOutput =
-  typeof UnresolvedDependenciesGetOutput.Type;
+  }) as unknown as Schema.Codec<UnresolvedDependenciesGetOutput>;
 
 // The operation
 /**
  * Gets a list of unresolved dependencies.
  *
+ * @param subscriptionId - The Subscription ID.
+ * @param resourceGroupName - The Resource Group Name.
+ * @param moveCollectionName - The Move Collection Name.
  * @param dependencyLevel - Defines the dependency level.
  * @param $orderby - OData order by query option. For example, you can use $orderby=Count desc.
+ * @param api-version - Client Api Version.
  * @param $filter - The filter to apply on the operation. For example, $apply=filter(count eq 2).
  */
 export const UnresolvedDependenciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(

@@ -3,16 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1IntegrationsInput {
+  cursor?: string;
+  limit?: number;
+  workspaceId: string;
+}
 export const GetV1IntegrationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     workspaceId: Schema.String,
   },
-).pipe(T.Http({ method: "GET", path: "/v1/integrations" }));
-export type GetV1IntegrationsInput = typeof GetV1IntegrationsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/integrations" }),
+) as unknown as Schema.Codec<GetV1IntegrationsInput>;
 
 // Output Schema
+export interface GetV1IntegrationsOutput {
+  data: {
+    id: string;
+    url: string;
+    createdAt: string;
+    scopes: string[];
+    client: { id: string; name: string; createdAt: string };
+    createdByUser: { id: string; email: string; displayName: string | null };
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1IntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -37,8 +54,7 @@ export const GetV1IntegrationsOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1IntegrationsOutput = typeof GetV1IntegrationsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1IntegrationsOutput>;
 
 // The operation
 /**

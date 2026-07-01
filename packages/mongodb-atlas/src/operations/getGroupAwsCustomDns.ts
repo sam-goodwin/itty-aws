@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAwsCustomDnsInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupAwsCustomDnsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,19 +19,18 @@ export const GetGroupAwsCustomDnsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/awsCustomDNS",
     }),
-  );
-export type GetGroupAwsCustomDnsInput = typeof GetGroupAwsCustomDnsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupAwsCustomDnsInput>;
 
 // Output Schema
+export type GetGroupAwsCustomDnsOutput = void;
 export const GetGroupAwsCustomDnsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAwsCustomDnsOutput = typeof GetGroupAwsCustomDnsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAwsCustomDnsOutput>;
 
 // The operation
 /**
  * Return One Custom DNS Configuration for Atlas Clusters on AWS
  *
- * Returns the custom DNS configuration for AWS clusters in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the custom DNS configuration for AWS clusters in the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

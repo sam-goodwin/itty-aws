@@ -4,11 +4,115 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AppServiceCertificateOrdersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  properties?: {
+    certificates?: Record<
+      string,
+      {
+        keyVaultId?: string;
+        keyVaultSecretName?: string;
+        provisioningState?:
+          | "Initialized"
+          | "WaitingOnCertificateOrder"
+          | "Succeeded"
+          | "CertificateOrderFailed"
+          | "OperationNotPermittedOnKeyVault"
+          | "AzureServiceUnauthorizedToAccessKeyVault"
+          | "KeyVaultDoesNotExist"
+          | "KeyVaultSecretDoesNotExist"
+          | "UnknownError"
+          | "ExternalPrivateKey"
+          | "Unknown";
+      }
+    >;
+    distinguishedName?: string;
+    domainVerificationToken?: string;
+    validityInYears?: number;
+    keySize?: number;
+    productType:
+      | "StandardDomainValidatedSsl"
+      | "StandardDomainValidatedWildCardSsl";
+    autoRenew?: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Deleting";
+    status?:
+      | "Pendingissuance"
+      | "Issued"
+      | "Revoked"
+      | "Canceled"
+      | "Denied"
+      | "Pendingrevocation"
+      | "PendingRekey"
+      | "Unused"
+      | "Expired"
+      | "NotSubmitted";
+    signedCertificate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    csr?: string;
+    intermediate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    root?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    serialNumber?: string;
+    lastCertificateIssuanceTime?: string;
+    expirationTime?: string;
+    isPrivateKeyExternal?: boolean;
+    appServiceCertificateNotRenewableReasons?: (
+      | "RegistrationStatusNotSupportedForRenewal"
+      | "ExpirationNotInRenewalTimeRange"
+      | "SubscriptionNotActive"
+    )[];
+    nextAutoRenewalTimeStamp?: string;
+    contact?: {
+      email?: string;
+      nameFirst?: string;
+      nameLast?: string;
+      phone?: string;
+    };
+  };
+  kind?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AppServiceCertificateOrdersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -145,11 +249,22 @@ export const AppServiceCertificateOrdersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersCreateOrUpdateInput =
-  typeof AppServiceCertificateOrdersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersCreateOrUpdateInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -169,9 +284,7 @@ export const AppServiceCertificateOrdersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersCreateOrUpdateOutput =
-  typeof AppServiceCertificateOrdersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -190,6 +303,31 @@ export const AppServiceCertificateOrdersCreateOrUpdate =
     outputSchema: AppServiceCertificateOrdersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersCreateOrUpdateCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  name: string;
+  properties?: {
+    keyVaultId?: string;
+    keyVaultSecretName?: string;
+    provisioningState?:
+      | "Initialized"
+      | "WaitingOnCertificateOrder"
+      | "Succeeded"
+      | "CertificateOrderFailed"
+      | "OperationNotPermittedOnKeyVault"
+      | "AzureServiceUnauthorizedToAccessKeyVault"
+      | "KeyVaultDoesNotExist"
+      | "KeyVaultSecretDoesNotExist"
+      | "UnknownError"
+      | "ExternalPrivateKey"
+      | "Unknown";
+  };
+  kind?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -226,11 +364,22 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
-  typeof AppServiceCertificateOrdersCreateOrUpdateCertificateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersCreateOrUpdateCertificateInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersCreateOrUpdateCertificateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersCreateOrUpdateCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -250,9 +399,7 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersCreateOrUpdateCertificateOutput =
-  typeof AppServiceCertificateOrdersCreateOrUpdateCertificateOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersCreateOrUpdateCertificateOutput>;
 
 // The operation
 /**
@@ -272,6 +419,11 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificate =
     outputSchema: AppServiceCertificateOrdersCreateOrUpdateCertificateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const AppServiceCertificateOrdersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -283,15 +435,12 @@ export const AppServiceCertificateOrdersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersDeleteInput =
-  typeof AppServiceCertificateOrdersDeleteInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersDeleteInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersDeleteOutput = void;
 export const AppServiceCertificateOrdersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersDeleteOutput =
-  typeof AppServiceCertificateOrdersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersDeleteOutput>;
 
 // The operation
 /**
@@ -310,6 +459,12 @@ export const AppServiceCertificateOrdersDelete =
     outputSchema: AppServiceCertificateOrdersDeleteOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersDeleteCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  name: string;
+}
 export const AppServiceCertificateOrdersDeleteCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -322,15 +477,12 @@ export const AppServiceCertificateOrdersDeleteCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersDeleteCertificateInput =
-  typeof AppServiceCertificateOrdersDeleteCertificateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersDeleteCertificateInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersDeleteCertificateOutput = void;
 export const AppServiceCertificateOrdersDeleteCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersDeleteCertificateOutput =
-  typeof AppServiceCertificateOrdersDeleteCertificateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersDeleteCertificateOutput>;
 
 // The operation
 /**
@@ -350,6 +502,11 @@ export const AppServiceCertificateOrdersDeleteCertificate =
     outputSchema: AppServiceCertificateOrdersDeleteCertificateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const AppServiceCertificateOrdersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -361,11 +518,22 @@ export const AppServiceCertificateOrdersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersGetInput =
-  typeof AppServiceCertificateOrdersGetInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersGetInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -385,9 +553,7 @@ export const AppServiceCertificateOrdersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersGetOutput =
-  typeof AppServiceCertificateOrdersGetOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersGetOutput>;
 
 // The operation
 /**
@@ -406,6 +572,12 @@ export const AppServiceCertificateOrdersGet =
     outputSchema: AppServiceCertificateOrdersGetOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersGetCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  name: string;
+}
 export const AppServiceCertificateOrdersGetCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -418,11 +590,22 @@ export const AppServiceCertificateOrdersGetCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersGetCertificateInput =
-  typeof AppServiceCertificateOrdersGetCertificateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersGetCertificateInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersGetCertificateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersGetCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -442,9 +625,7 @@ export const AppServiceCertificateOrdersGetCertificateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersGetCertificateOutput =
-  typeof AppServiceCertificateOrdersGetCertificateOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersGetCertificateOutput>;
 
 // The operation
 /**
@@ -464,6 +645,9 @@ export const AppServiceCertificateOrdersGetCertificate =
     outputSchema: AppServiceCertificateOrdersGetCertificateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersListInput {
+  subscriptionId: string;
+}
 export const AppServiceCertificateOrdersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -473,11 +657,25 @@ export const AppServiceCertificateOrdersListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersListInput =
-  typeof AppServiceCertificateOrdersListInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersListInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppServiceCertificateOrdersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -512,9 +710,7 @@ export const AppServiceCertificateOrdersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppServiceCertificateOrdersListOutput =
-  typeof AppServiceCertificateOrdersListOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersListOutput>;
 
 // The operation
 /**
@@ -531,6 +727,10 @@ export const AppServiceCertificateOrdersList =
     outputSchema: AppServiceCertificateOrdersListOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AppServiceCertificateOrdersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -541,11 +741,25 @@ export const AppServiceCertificateOrdersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersListByResourceGroupInput =
-  typeof AppServiceCertificateOrdersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersListByResourceGroupInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppServiceCertificateOrdersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -580,9 +794,7 @@ export const AppServiceCertificateOrdersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppServiceCertificateOrdersListByResourceGroupOutput =
-  typeof AppServiceCertificateOrdersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -600,6 +812,11 @@ export const AppServiceCertificateOrdersListByResourceGroup =
     outputSchema: AppServiceCertificateOrdersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersListCertificatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const AppServiceCertificateOrdersListCertificatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -611,11 +828,25 @@ export const AppServiceCertificateOrdersListCertificatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersListCertificatesInput =
-  typeof AppServiceCertificateOrdersListCertificatesInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersListCertificatesInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersListCertificatesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppServiceCertificateOrdersListCertificatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -650,9 +881,7 @@ export const AppServiceCertificateOrdersListCertificatesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppServiceCertificateOrdersListCertificatesOutput =
-  typeof AppServiceCertificateOrdersListCertificatesOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersListCertificatesOutput>;
 
 // The operation
 /**
@@ -671,6 +900,21 @@ export const AppServiceCertificateOrdersListCertificates =
     outputSchema: AppServiceCertificateOrdersListCertificatesOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersReissueInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  properties?: {
+    keySize?: number;
+    delayExistingRevokeInHours?: number;
+    csr?: string;
+    isPrivateKeyExternal?: boolean;
+  };
+  id?: string;
+  name?: string;
+  kind?: string;
+  type?: string;
+}
 export const AppServiceCertificateOrdersReissueInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -694,15 +938,12 @@ export const AppServiceCertificateOrdersReissueInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/reissue",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersReissueInput =
-  typeof AppServiceCertificateOrdersReissueInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersReissueInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersReissueOutput = void;
 export const AppServiceCertificateOrdersReissueOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersReissueOutput =
-  typeof AppServiceCertificateOrdersReissueOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersReissueOutput>;
 
 // The operation
 /**
@@ -721,6 +962,20 @@ export const AppServiceCertificateOrdersReissue =
     outputSchema: AppServiceCertificateOrdersReissueOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersRenewInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  properties?: {
+    keySize?: number;
+    csr?: string;
+    isPrivateKeyExternal?: boolean;
+  };
+  id?: string;
+  name?: string;
+  kind?: string;
+  type?: string;
+}
 export const AppServiceCertificateOrdersRenewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -743,15 +998,12 @@ export const AppServiceCertificateOrdersRenewInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/renew",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersRenewInput =
-  typeof AppServiceCertificateOrdersRenewInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRenewInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersRenewOutput = void;
 export const AppServiceCertificateOrdersRenewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersRenewOutput =
-  typeof AppServiceCertificateOrdersRenewOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersRenewOutput>;
 
 // The operation
 /**
@@ -770,6 +1022,11 @@ export const AppServiceCertificateOrdersRenew =
     outputSchema: AppServiceCertificateOrdersRenewOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersResendEmailInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const AppServiceCertificateOrdersResendEmailInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -781,15 +1038,12 @@ export const AppServiceCertificateOrdersResendEmailInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendEmail",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersResendEmailInput =
-  typeof AppServiceCertificateOrdersResendEmailInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersResendEmailInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersResendEmailOutput = void;
 export const AppServiceCertificateOrdersResendEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersResendEmailOutput =
-  typeof AppServiceCertificateOrdersResendEmailOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersResendEmailOutput>;
 
 // The operation
 /**
@@ -808,6 +1062,12 @@ export const AppServiceCertificateOrdersResendEmail =
     outputSchema: AppServiceCertificateOrdersResendEmailOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersResendRequestEmailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  name?: string;
+}
 export const AppServiceCertificateOrdersResendRequestEmailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -820,15 +1080,12 @@ export const AppServiceCertificateOrdersResendRequestEmailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/resendRequestEmails",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersResendRequestEmailsInput =
-  typeof AppServiceCertificateOrdersResendRequestEmailsInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersResendRequestEmailsInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersResendRequestEmailsOutput = void;
 export const AppServiceCertificateOrdersResendRequestEmailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersResendRequestEmailsOutput =
-  typeof AppServiceCertificateOrdersResendRequestEmailsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersResendRequestEmailsOutput>;
 
 // The operation
 /**
@@ -847,6 +1104,11 @@ export const AppServiceCertificateOrdersResendRequestEmails =
     outputSchema: AppServiceCertificateOrdersResendRequestEmailsOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersRetrieveCertificateActionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const AppServiceCertificateOrdersRetrieveCertificateActionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -858,11 +1120,27 @@ export const AppServiceCertificateOrdersRetrieveCertificateActionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveCertificateActions",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersRetrieveCertificateActionsInput =
-  typeof AppServiceCertificateOrdersRetrieveCertificateActionsInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveCertificateActionsInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersRetrieveCertificateActionsOutput = {
+  actionType?:
+    | "CertificateIssued"
+    | "CertificateOrderCanceled"
+    | "CertificateOrderCreated"
+    | "CertificateRevoked"
+    | "DomainValidationComplete"
+    | "FraudDetected"
+    | "OrgNameChange"
+    | "OrgValidationComplete"
+    | "SanDrop"
+    | "FraudCleared"
+    | "CertificateExpired"
+    | "CertificateExpirationWarning"
+    | "FraudDocumentationRequired"
+    | "Unknown";
+  createdAt?: string;
+}[];
 export const AppServiceCertificateOrdersRetrieveCertificateActionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -886,9 +1164,7 @@ export const AppServiceCertificateOrdersRetrieveCertificateActionsOutput =
       ),
       createdAt: Schema.optional(Schema.String),
     }),
-  );
-export type AppServiceCertificateOrdersRetrieveCertificateActionsOutput =
-  typeof AppServiceCertificateOrdersRetrieveCertificateActionsOutput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveCertificateActionsOutput>;
 
 // The operation
 /**
@@ -907,6 +1183,11 @@ export const AppServiceCertificateOrdersRetrieveCertificateActions =
     outputSchema: AppServiceCertificateOrdersRetrieveCertificateActionsOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name: string;
+}
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -918,20 +1199,20 @@ export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{name}/retrieveEmailHistory",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput =
-  typeof AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveCertificateEmailHistoryInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput = {
+  emailId?: string;
+  timeStamp?: string;
+}[];
 export const AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
       emailId: Schema.optional(Schema.String),
       timeStamp: Schema.optional(Schema.String),
     }),
-  );
-export type AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput =
-  typeof AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput>;
 
 // The operation
 /**
@@ -952,6 +1233,13 @@ export const AppServiceCertificateOrdersRetrieveCertificateEmailHistory =
       AppServiceCertificateOrdersRetrieveCertificateEmailHistoryOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersRetrieveSiteSealInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  lightTheme?: boolean;
+  locale?: string;
+}
 export const AppServiceCertificateOrdersRetrieveSiteSealInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -965,17 +1253,16 @@ export const AppServiceCertificateOrdersRetrieveSiteSealInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/retrieveSiteSeal",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersRetrieveSiteSealInput =
-  typeof AppServiceCertificateOrdersRetrieveSiteSealInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveSiteSealInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersRetrieveSiteSealOutput {
+  html: string;
+}
 export const AppServiceCertificateOrdersRetrieveSiteSealOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     html: Schema.String,
-  });
-export type AppServiceCertificateOrdersRetrieveSiteSealOutput =
-  typeof AppServiceCertificateOrdersRetrieveSiteSealOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersRetrieveSiteSealOutput>;
 
 // The operation
 /**
@@ -994,6 +1281,111 @@ export const AppServiceCertificateOrdersRetrieveSiteSeal =
     outputSchema: AppServiceCertificateOrdersRetrieveSiteSealOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  properties?: {
+    certificates?: Record<
+      string,
+      {
+        keyVaultId?: string;
+        keyVaultSecretName?: string;
+        provisioningState?:
+          | "Initialized"
+          | "WaitingOnCertificateOrder"
+          | "Succeeded"
+          | "CertificateOrderFailed"
+          | "OperationNotPermittedOnKeyVault"
+          | "AzureServiceUnauthorizedToAccessKeyVault"
+          | "KeyVaultDoesNotExist"
+          | "KeyVaultSecretDoesNotExist"
+          | "UnknownError"
+          | "ExternalPrivateKey"
+          | "Unknown";
+      }
+    >;
+    distinguishedName?: string;
+    domainVerificationToken?: string;
+    validityInYears?: number;
+    keySize?: number;
+    productType:
+      | "StandardDomainValidatedSsl"
+      | "StandardDomainValidatedWildCardSsl";
+    autoRenew?: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Deleting";
+    status?:
+      | "Pendingissuance"
+      | "Issued"
+      | "Revoked"
+      | "Canceled"
+      | "Denied"
+      | "Pendingrevocation"
+      | "PendingRekey"
+      | "Unused"
+      | "Expired"
+      | "NotSubmitted";
+    signedCertificate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    csr?: string;
+    intermediate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    root?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    serialNumber?: string;
+    lastCertificateIssuanceTime?: string;
+    expirationTime?: string;
+    isPrivateKeyExternal?: boolean;
+    appServiceCertificateNotRenewableReasons?: (
+      | "RegistrationStatusNotSupportedForRenewal"
+      | "ExpirationNotInRenewalTimeRange"
+      | "SubscriptionNotActive"
+    )[];
+    nextAutoRenewalTimeStamp?: string;
+    contact?: {
+      email?: string;
+      nameFirst?: string;
+      nameLast?: string;
+      phone?: string;
+    };
+  };
+  id?: string;
+  name?: string;
+  kind?: string;
+  type?: string;
+}
 export const AppServiceCertificateOrdersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1131,11 +1523,22 @@ export const AppServiceCertificateOrdersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersUpdateInput =
-  typeof AppServiceCertificateOrdersUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersUpdateInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1155,9 +1558,7 @@ export const AppServiceCertificateOrdersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersUpdateOutput =
-  typeof AppServiceCertificateOrdersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersUpdateOutput>;
 
 // The operation
 /**
@@ -1176,6 +1577,31 @@ export const AppServiceCertificateOrdersUpdate =
     outputSchema: AppServiceCertificateOrdersUpdateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersUpdateCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  name: string;
+  properties?: {
+    keyVaultId?: string;
+    keyVaultSecretName?: string;
+    provisioningState?:
+      | "Initialized"
+      | "WaitingOnCertificateOrder"
+      | "Succeeded"
+      | "CertificateOrderFailed"
+      | "OperationNotPermittedOnKeyVault"
+      | "AzureServiceUnauthorizedToAccessKeyVault"
+      | "KeyVaultDoesNotExist"
+      | "KeyVaultSecretDoesNotExist"
+      | "UnknownError"
+      | "ExternalPrivateKey"
+      | "Unknown";
+  };
+  id?: string;
+  kind?: string;
+  type?: string;
+}
 export const AppServiceCertificateOrdersUpdateCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1212,11 +1638,22 @@ export const AppServiceCertificateOrdersUpdateCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersUpdateCertificateInput =
-  typeof AppServiceCertificateOrdersUpdateCertificateInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersUpdateCertificateInput>;
 
 // Output Schema
+export interface AppServiceCertificateOrdersUpdateCertificateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppServiceCertificateOrdersUpdateCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1236,9 +1673,7 @@ export const AppServiceCertificateOrdersUpdateCertificateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppServiceCertificateOrdersUpdateCertificateOutput =
-  typeof AppServiceCertificateOrdersUpdateCertificateOutput.Type;
+  }) as unknown as Schema.Codec<AppServiceCertificateOrdersUpdateCertificateOutput>;
 
 // The operation
 /**
@@ -1258,6 +1693,108 @@ export const AppServiceCertificateOrdersUpdateCertificate =
     outputSchema: AppServiceCertificateOrdersUpdateCertificateOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersValidatePurchaseInformationInput {
+  subscriptionId: string;
+  properties?: {
+    certificates?: Record<
+      string,
+      {
+        keyVaultId?: string;
+        keyVaultSecretName?: string;
+        provisioningState?:
+          | "Initialized"
+          | "WaitingOnCertificateOrder"
+          | "Succeeded"
+          | "CertificateOrderFailed"
+          | "OperationNotPermittedOnKeyVault"
+          | "AzureServiceUnauthorizedToAccessKeyVault"
+          | "KeyVaultDoesNotExist"
+          | "KeyVaultSecretDoesNotExist"
+          | "UnknownError"
+          | "ExternalPrivateKey"
+          | "Unknown";
+      }
+    >;
+    distinguishedName?: string;
+    domainVerificationToken?: string;
+    validityInYears?: number;
+    keySize?: number;
+    productType:
+      | "StandardDomainValidatedSsl"
+      | "StandardDomainValidatedWildCardSsl";
+    autoRenew?: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress"
+      | "Deleting";
+    status?:
+      | "Pendingissuance"
+      | "Issued"
+      | "Revoked"
+      | "Canceled"
+      | "Denied"
+      | "Pendingrevocation"
+      | "PendingRekey"
+      | "Unused"
+      | "Expired"
+      | "NotSubmitted";
+    signedCertificate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    csr?: string;
+    intermediate?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    root?: {
+      version?: number;
+      serialNumber?: string;
+      thumbprint?: string;
+      subject?: string;
+      notBefore?: string;
+      notAfter?: string;
+      signatureAlgorithm?: string;
+      issuer?: string;
+      rawData?: string;
+    };
+    serialNumber?: string;
+    lastCertificateIssuanceTime?: string;
+    expirationTime?: string;
+    isPrivateKeyExternal?: boolean;
+    appServiceCertificateNotRenewableReasons?: (
+      | "RegistrationStatusNotSupportedForRenewal"
+      | "ExpirationNotInRenewalTimeRange"
+      | "SubscriptionNotActive"
+    )[];
+    nextAutoRenewalTimeStamp?: string;
+    contact?: {
+      email?: string;
+      nameFirst?: string;
+      nameLast?: string;
+      phone?: string;
+    };
+  };
+  kind?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AppServiceCertificateOrdersValidatePurchaseInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1392,15 +1929,12 @@ export const AppServiceCertificateOrdersValidatePurchaseInformationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/validateCertificateRegistrationInformation",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersValidatePurchaseInformationInput =
-  typeof AppServiceCertificateOrdersValidatePurchaseInformationInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersValidatePurchaseInformationInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersValidatePurchaseInformationOutput = void;
 export const AppServiceCertificateOrdersValidatePurchaseInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersValidatePurchaseInformationOutput =
-  typeof AppServiceCertificateOrdersValidatePurchaseInformationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersValidatePurchaseInformationOutput>;
 
 // The operation
 /**
@@ -1417,6 +1951,11 @@ export const AppServiceCertificateOrdersValidatePurchaseInformation =
     outputSchema: AppServiceCertificateOrdersValidatePurchaseInformationOutput,
   }));
 // Input Schema
+export interface AppServiceCertificateOrdersVerifyDomainOwnershipInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const AppServiceCertificateOrdersVerifyDomainOwnershipInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1428,15 +1967,12 @@ export const AppServiceCertificateOrdersVerifyDomainOwnershipInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/verifyDomainOwnership",
       apiVersion: "2024-11-01",
     }),
-  );
-export type AppServiceCertificateOrdersVerifyDomainOwnershipInput =
-  typeof AppServiceCertificateOrdersVerifyDomainOwnershipInput.Type;
+  ) as unknown as Schema.Codec<AppServiceCertificateOrdersVerifyDomainOwnershipInput>;
 
 // Output Schema
+export type AppServiceCertificateOrdersVerifyDomainOwnershipOutput = void;
 export const AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppServiceCertificateOrdersVerifyDomainOwnershipOutput =
-  typeof AppServiceCertificateOrdersVerifyDomainOwnershipOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppServiceCertificateOrdersVerifyDomainOwnershipOutput>;
 
 // The operation
 /**
@@ -1455,6 +1991,15 @@ export const AppServiceCertificateOrdersVerifyDomainOwnership =
     outputSchema: AppServiceCertificateOrdersVerifyDomainOwnershipOutput,
   }));
 // Input Schema
+export interface CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+  detectorName: string;
+  startTime?: string;
+  endTime?: string;
+  timeGrain?: string;
+}
 export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1470,11 +2015,22 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors/{detectorName}",
       apiVersion: "2024-11-01",
     }),
-  );
-export type CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput =
-  typeof CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput.Type;
+  ) as unknown as Schema.Codec<CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseInput>;
 
 // Output Schema
+export interface CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1494,9 +2050,7 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput =
-  typeof CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput.Type;
+  }) as unknown as Schema.Codec<CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput>;
 
 // The operation
 /**
@@ -1521,6 +2075,11 @@ export const CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorRe
       CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponseOutput,
   }));
 // Input Schema
+export interface CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  certificateOrderName: string;
+}
 export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1532,11 +2091,25 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors",
       apiVersion: "2024-11-01",
     }),
-  );
-export type CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput =
-  typeof CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput.Type;
+  ) as unknown as Schema.Codec<CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseInput>;
 
 // Output Schema
+export interface CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1571,9 +2144,7 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput =
-  typeof CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput.Type;
+  }) as unknown as Schema.Codec<CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput>;
 
 // The operation
 /**
@@ -1594,6 +2165,7 @@ export const CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorR
       CertificateOrdersDiagnosticsListAppServiceCertificateOrderDetectorResponseOutput,
   }));
 // Input Schema
+export interface CertificateRegistrationProviderListOperationsInput {}
 export const CertificateRegistrationProviderListOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1601,11 +2173,57 @@ export const CertificateRegistrationProviderListOperationsInput =
       path: "/providers/Microsoft.CertificateRegistration/operations",
       apiVersion: "2024-11-01",
     }),
-  );
-export type CertificateRegistrationProviderListOperationsInput =
-  typeof CertificateRegistrationProviderListOperationsInput.Type;
+  ) as unknown as Schema.Codec<CertificateRegistrationProviderListOperationsInput>;
 
 // Output Schema
+export interface CertificateRegistrationProviderListOperationsOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          supportsInstanceLevelAggregation?: boolean;
+          enableRegionalMdmAccount?: boolean;
+          sourceMdmAccount?: string;
+          sourceMdmNamespace?: string;
+          metricFilterPattern?: string;
+          fillGapWithZero?: boolean;
+          isInternal?: boolean;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            internalName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+          category?: string;
+          availabilities?: { timeGrain?: string; blobDuration?: string }[];
+          supportedTimeGrainTypes?: string[];
+          supportedAggregationTypes?: string[];
+        }[];
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+          logFilterPattern?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificateRegistrationProviderListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1689,9 +2307,7 @@ export const CertificateRegistrationProviderListOperationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CertificateRegistrationProviderListOperationsOutput =
-  typeof CertificateRegistrationProviderListOperationsOutput.Type;
+  }) as unknown as Schema.Codec<CertificateRegistrationProviderListOperationsOutput>;
 
 // The operation
 /**

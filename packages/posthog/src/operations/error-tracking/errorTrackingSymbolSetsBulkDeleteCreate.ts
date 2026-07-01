@@ -4,33 +4,25 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSymbolSetsBulkDeleteCreateInput {
+  project_id: string;
+  ids: string[];
+}
 export const ErrorTrackingSymbolSetsBulkDeleteCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    ref: Schema.optional(Schema.String),
-    team_id: Schema.optional(Schema.Number),
-    created_at: Schema.optional(Schema.String),
-    last_used: Schema.optional(Schema.NullOr(Schema.String)),
-    storage_ptr: Schema.optional(Schema.NullOr(Schema.String)),
-    failure_reason: Schema.optional(Schema.NullOr(Schema.String)),
-    release: Schema.optional(
-      Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
+    ids: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/api/projects/{project_id}/error_tracking/symbol_sets/bulk_delete/",
     }),
-  );
-export type ErrorTrackingSymbolSetsBulkDeleteCreateInput =
-  typeof ErrorTrackingSymbolSetsBulkDeleteCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateInput>;
 
 // Output Schema
+export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput = void;
 export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  typeof ErrorTrackingSymbolSetsBulkDeleteCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateOutput>;
 
 // The operation
 /**

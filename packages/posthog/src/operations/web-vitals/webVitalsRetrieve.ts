@@ -1,23 +1,28 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WebVitalsRetrieveInput {
+  project_id: string;
+  pathname: string;
+}
 export const WebVitalsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
     pathname: Schema.String,
   },
 ).pipe(
-  T.Http({ method: "GET", path: "/api/environments/{project_id}/web_vitals/" }),
-);
-export type WebVitalsRetrieveInput = typeof WebVitalsRetrieveInput.Type;
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/web_vitals/" }),
+) as unknown as Schema.Codec<WebVitalsRetrieveInput>;
 
 // Output Schema
+export type WebVitalsRetrieveOutput = Record<string, unknown>;
 export const WebVitalsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type WebVitalsRetrieveOutput = typeof WebVitalsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<WebVitalsRetrieveOutput>;
 
 // The operation
 /**
@@ -30,5 +35,4 @@ export type WebVitalsRetrieveOutput = typeof WebVitalsRetrieveOutput.Type;
 export const webVitalsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WebVitalsRetrieveInput,
   outputSchema: WebVitalsRetrieveOutput,
-  errors: [BadRequest, Forbidden, NotFound] as const,
 }));

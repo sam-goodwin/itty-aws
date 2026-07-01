@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service iam
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -73,6 +73,625 @@ export class UserGroupNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ClientURIVerification {
+  /** Current verification status for the client URI host. */
+  status?:
+    | "pending"
+    | "in_progress"
+    | "verified"
+    | "failed"
+    | (string & {})
+    | null;
+  /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
+  text?: string | null;
+}
+const ClientURIVerification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["pending", "in_progress", "verified", "failed"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ClientURIVerification>;
+
+interface ListOauthClientsResponseResult {
+  /** The unique identifier for an OAuth client. */
+  clientId: string;
+  /** Visibility of the OAuth client. */
+  visibility: "public" | "private" | (string & {});
+  /** Array of allowed CORS origins. */
+  allowedCorsOrigins?: string[] | null;
+  /** Human-readable name of the OAuth client. */
+  clientName?: string | null;
+  /** URL of the home page of the client. */
+  clientUri?: string | null;
+  /** Client URI domain control verification state. */
+  clientUriVerification?: {
+    status?:
+      | "pending"
+      | "in_progress"
+      | "verified"
+      | "failed"
+      | (string & {})
+      | null;
+    text?: string | null;
+  } | null;
+  /** Timestamp when the OAuth client was created. */
+  createdAt?: string | null;
+  /** Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally. */
+  grantTypes?:
+    | ("authorization_code" | "refresh_token" | (string & {}))[]
+    | null;
+  /** Indicates whether the client has a rotated secret that has not yet been deleted. */
+  hasRotatedSecret?: boolean | null;
+  /** URL of the client's logo. */
+  logoUri?: string | null;
+  /** URL that points to a privacy policy document. */
+  policyUri?: string | null;
+  /** Array of allowed post-logout redirect URIs. */
+  postLogoutRedirectUris?: string[] | null;
+  /** Timestamp when the OAuth client was promoted to public visibility. */
+  promotedAt?: string | null;
+  /** Array of allowed redirect URIs for the client. */
+  redirectUris?: string[] | null;
+  /** Array of OAuth response types the client is allowed to use. */
+  responseTypes?: ("token" | "id_token" | "code" | (string & {}))[] | null;
+  /** Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allow */
+  scopes?: string[] | null;
+  /** The authentication method the client uses at the token endpoint. */
+  tokenEndpointAuthMethod?:
+    | "none"
+    | "client_secret_basic"
+    | "client_secret_post"
+    | (string & {})
+    | null;
+  /** URL that points to a terms of service document. */
+  tosUri?: string | null;
+  /** Timestamp when the OAuth client was last updated. */
+  updatedAt?: string | null;
+}
+const ListOauthClientsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      clientId: Schema.String,
+      visibility: Schema.Union([
+        Schema.Literals(["public", "private"]),
+        Schema.String,
+      ]),
+      allowedCorsOrigins: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      clientName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      clientUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      clientUriVerification: Schema.optional(
+        Schema.Union([ClientURIVerification, Schema.Null]),
+      ),
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      grantTypes: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["authorization_code", "refresh_token"]),
+              Schema.String,
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      hasRotatedSecret: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      logoUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      policyUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      postLogoutRedirectUris: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      promotedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      redirectUris: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      responseTypes: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["token", "id_token", "code"]),
+              Schema.String,
+            ]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      scopes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      tokenEndpointAuthMethod: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals([
+              "none",
+              "client_secret_basic",
+              "client_secret_post",
+            ]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      tosUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        clientId: "client_id",
+        visibility: "visibility",
+        allowedCorsOrigins: "allowed_cors_origins",
+        clientName: "client_name",
+        clientUri: "client_uri",
+        clientUriVerification: "client_uri_verification",
+        createdAt: "created_at",
+        grantTypes: "grant_types",
+        hasRotatedSecret: "has_rotated_secret",
+        logoUri: "logo_uri",
+        policyUri: "policy_uri",
+        postLogoutRedirectUris: "post_logout_redirect_uris",
+        promotedAt: "promoted_at",
+        redirectUris: "redirect_uris",
+        responseTypes: "response_types",
+        scopes: "scopes",
+        tokenEndpointAuthMethod: "token_endpoint_auth_method",
+        tosUri: "tos_uri",
+        updatedAt: "updated_at",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListOauthClientsResponseResult>;
+
+interface ListOauthScopesResponseResult {
+  /** The scope label to use in the scopes array when creating or updating an OAuth client. */
+  id: string;
+  /** Human-readable name of the OAuth scope. */
+  name: string;
+  /** Category for grouping scopes in the UI. */
+  category?: string | null;
+  /** The underlying resource scopes (Bach scopes) that define which resources this OAuth scope can act upon. */
+  scopes?: string[] | null;
+}
+const ListOauthScopesResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+      category: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scopes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListOauthScopesResponseResult>;
+
+interface Meta {
+  key?: string | null;
+  value?: string | null;
+}
+const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Meta>;
+
+interface ListPermissionGroupsResponseResult {
+  /** Identifier of the permission group. */
+  id: string;
+  /** Attributes associated to the permission group. */
+  meta?: { key?: string | null; value?: string | null } | null;
+  /** Name of the permission group. */
+  name?: string | null;
+}
+const ListPermissionGroupsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListPermissionGroupsResponseResult>;
+
+interface ListPermissionGroupsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListPermissionGroupsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListPermissionGroupsResponseResultInfo>;
+
+interface ListResourceGroupsResponseResult {
+  /** Identifier of the resource group. */
+  id: string;
+  /** The scope associated to the resource group */
+  scope: unknown;
+  /** Attributes associated to the resource group. */
+  meta?: { key?: string | null; value?: string | null } | null;
+  /** Name of the resource group. */
+  name?: string | null;
+}
+const ListResourceGroupsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      scope: Schema.Unknown,
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListResourceGroupsResponseResult>;
+
+interface Object2 {
+  /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
+  key: string;
+}
+const Object2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    key: Schema.String,
+  }),
+) as unknown as Schema.Codec<Object2>;
+
+interface Scope {
+  /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
+  key: string;
+  /** A list of scope objects for additional context. The number of Scope objects should not be zero. */
+  objects: { key: string }[];
+}
+const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    key: Schema.String,
+    objects: Schema.Array(Object2),
+  }),
+) as unknown as Schema.Codec<Scope>;
+
+interface Verification {
+  /** DNS verification code. Add this entire string to the DNS TXT record of the email domain to validate ownership. */
+  code?: string | null;
+  /** The status of the verification code from the verification process. */
+  status?:
+    | "awaiting"
+    | "pending"
+    | "failed"
+    | "verified"
+    | (string & {})
+    | null;
+}
+const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["awaiting", "pending", "failed", "verified"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Verification>;
+
+interface ListSsosResponseResult {
+  /** SSO Connector identifier tag. */
+  id?: string | null;
+  /** Timestamp for the creation of the SSO connector */
+  createdOn?: string | null;
+  emailDomain?: string | null;
+  enabled?: boolean | null;
+  /** Timestamp for the last update of the SSO connector */
+  updatedOn?: string | null;
+  /** Controls the display of FedRAMP language to the user during SSO login */
+  useFedrampLanguage?: boolean | null;
+  verification?: {
+    code?: string | null;
+    status?:
+      | "awaiting"
+      | "pending"
+      | "failed"
+      | "verified"
+      | (string & {})
+      | null;
+  } | null;
+}
+const ListSsosResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    emailDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    updatedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    useFedrampLanguage: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      emailDomain: "email_domain",
+      enabled: "enabled",
+      updatedOn: "updated_on",
+      useFedrampLanguage: "use_fedramp_language",
+      verification: "verification",
+    }),
+  ),
+) as unknown as Schema.Codec<ListSsosResponseResult>;
+
+interface Policy {
+  /** Policy identifier. */
+  id?: string | null;
+  /** Allow or deny operations against the resources. */
+  access?: "allow" | "deny" | (string & {}) | null;
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups?:
+    | {
+        id: string;
+        meta?: { key?: string | null; value?: string | null } | null;
+        name?: string | null;
+      }[]
+    | null;
+  /** A list of resource groups that the policy applies to. */
+  resourceGroups?:
+    | {
+        id: string;
+        scope: unknown;
+        meta?: { key?: string | null; value?: string | null } | null;
+        name?: string | null;
+      }[]
+    | null;
+}
+const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    access: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    permissionGroups: Schema.optional(
+      Schema.Union([
+        Schema.Array(ListPermissionGroupsResponseResult),
+        Schema.Null,
+      ]),
+    ),
+    resourceGroups: Schema.optional(
+      Schema.Union([
+        Schema.Array(ListResourceGroupsResponseResult),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      access: "access",
+      permissionGroups: "permission_groups",
+      resourceGroups: "resource_groups",
+    }),
+  ),
+) as unknown as Schema.Codec<Policy>;
+
+interface ListUserGroupsResponseResult {
+  /** User Group identifier tag. */
+  id: string;
+  /** Timestamp for the creation of the user group */
+  createdOn: string;
+  /** Last time the user group was modified. */
+  modifiedOn: string;
+  /** Name of the user group. */
+  name: string;
+  /** Policies attached to the User group */
+  policies?:
+    | {
+        id?: string | null;
+        access?: "allow" | "deny" | (string & {}) | null;
+        permissionGroups?:
+          | {
+              id: string;
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
+        resourceGroups?:
+          | {
+              id: string;
+              scope: unknown;
+              meta?: { key?: string | null; value?: string | null } | null;
+              name?: string | null;
+            }[]
+          | null;
+      }[]
+    | null;
+}
+const ListUserGroupsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      policies: Schema.optional(
+        Schema.Union([Schema.Array(Policy), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        policies: "policies",
+      }),
+    ),
+) as unknown as Schema.Codec<ListUserGroupsResponseResult>;
+
+interface PermissionGroup {
+  /** Permission Group identifier tag. */
+  id: string;
+}
+const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }),
+) as unknown as Schema.Codec<PermissionGroup>;
+
+interface Policy2 {
+  /** Allow or deny operations against the resources. */
+  access: "allow" | "deny" | (string & {});
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: { id: string }[];
+  /** A set of resource groups that are specified to the policy. */
+  resourceGroups: { id: string }[];
+}
+const Policy2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    access: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+    permissionGroups: Schema.Array(PermissionGroup),
+    resourceGroups: Schema.Array(PermissionGroup),
+  }).pipe(
+    Schema.encodeKeys({
+      access: "access",
+      permissionGroups: "permission_groups",
+      resourceGroups: "resource_groups",
+    }),
+  ),
+) as unknown as Schema.Codec<Policy2>;
+
+interface Policy3 {
+  /** Policy identifier. */
+  id?: string | null;
+  /** Allow or deny operations against the resources. */
+  access: "allow" | "deny" | (string & {});
+  /** A set of permission groups that are specified to the policy. */
+  permissionGroups: { id: string }[];
+  /** A set of resource groups that are specified to the policy. */
+  resourceGroups: { id: string }[];
+}
+const Policy3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    access: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
+    permissionGroups: Schema.Array(PermissionGroup),
+    resourceGroups: Schema.Array(PermissionGroup),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      access: "access",
+      permissionGroups: "permission_groups",
+      resourceGroups: "resource_groups",
+    }),
+  ),
+) as unknown as Schema.Codec<Policy3>;
+
+interface User {
+  /** User identifier tag. */
+  id?: string | null;
+  /** The contact email address of the user. */
+  email?: string | null;
+  /** User's first name. */
+  firstName?: string | null;
+  /** User's last name. */
+  lastName?: string | null;
+}
+const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    firstName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      email: "email",
+      firstName: "first_name",
+      lastName: "last_name",
+    }),
+  ),
+) as unknown as Schema.Codec<User>;
+
+interface ListUserGroupMembersResponseResult {
+  /** Account member identifier. */
+  id: string;
+  /** The contact email address of the user. */
+  email?: string | null;
+  /** The member's status in the account. */
+  status?: "accepted" | "pending" | (string & {}) | null;
+}
+const ListUserGroupMembersResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["accepted", "pending"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListUserGroupMembersResponseResult>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface Error2 {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<Error2>;
+
+// =============================================================================
 // OauthClient
 // =============================================================================
 
@@ -93,7 +712,7 @@ export const GetOauthClientRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/oauth_clients/{oauthClientId}",
       }),
     ),
-) as unknown as Schema.Schema<GetOauthClientRequest>;
+) as unknown as Schema.Codec<GetOauthClientRequest>;
 
 export interface GetOauthClientResponse {
   /** The unique identifier for an OAuth client. */
@@ -166,26 +785,7 @@ export const GetOauthClientResponse =
       clientName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUriVerification: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pending",
-                    "in_progress",
-                    "verified",
-                    "failed",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ClientURIVerification, Schema.Null]),
       ),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       grantTypes: Schema.optional(
@@ -265,7 +865,7 @@ export const GetOauthClientResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetOauthClientResponse>;
+  ) as unknown as Schema.Codec<GetOauthClientResponse>;
 
 export type GetOauthClientError = DefaultErrors;
 
@@ -292,7 +892,7 @@ export const ListOauthClientsRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/oauth_clients" }),
     ),
-  ) as unknown as Schema.Schema<ListOauthClientsRequest>;
+  ) as unknown as Schema.Codec<ListOauthClientsRequest>;
 
 export interface ListOauthClientsResponse {
   result: {
@@ -337,133 +937,9 @@ export interface ListOauthClientsResponse {
 export const ListOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          clientId: Schema.String,
-          visibility: Schema.Union([
-            Schema.Literals(["public", "private"]),
-            Schema.String,
-          ]),
-          allowedCorsOrigins: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          clientName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          clientUri: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          clientUriVerification: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                status: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "pending",
-                        "in_progress",
-                        "verified",
-                        "failed",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                text: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          createdAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          grantTypes: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Union([
-                  Schema.Literals(["authorization_code", "refresh_token"]),
-                  Schema.String,
-                ]),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          hasRotatedSecret: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          logoUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          policyUri: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          postLogoutRedirectUris: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          promotedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          redirectUris: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          responseTypes: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Union([
-                  Schema.Literals(["token", "id_token", "code"]),
-                  Schema.String,
-                ]),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          scopes: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          tokenEndpointAuthMethod: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "none",
-                  "client_secret_basic",
-                  "client_secret_post",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          tosUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          updatedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            clientId: "client_id",
-            visibility: "visibility",
-            allowedCorsOrigins: "allowed_cors_origins",
-            clientName: "client_name",
-            clientUri: "client_uri",
-            clientUriVerification: "client_uri_verification",
-            createdAt: "created_at",
-            grantTypes: "grant_types",
-            hasRotatedSecret: "has_rotated_secret",
-            logoUri: "logo_uri",
-            policyUri: "policy_uri",
-            postLogoutRedirectUris: "post_logout_redirect_uris",
-            promotedAt: "promoted_at",
-            redirectUris: "redirect_uris",
-            responseTypes: "response_types",
-            scopes: "scopes",
-            tokenEndpointAuthMethod: "token_endpoint_auth_method",
-            tosUri: "tos_uri",
-            updatedAt: "updated_at",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListOauthClientsResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListOauthClientsResponse>;
+  ) as unknown as Schema.Codec<ListOauthClientsResponse>;
 
 export type ListOauthClientsError = DefaultErrors;
 
@@ -561,7 +1037,7 @@ export const CreateOauthClientRequest =
       }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/oauth_clients" }),
     ),
-  ) as unknown as Schema.Schema<CreateOauthClientRequest>;
+  ) as unknown as Schema.Codec<CreateOauthClientRequest>;
 
 export interface CreateOauthClientResponse {
   /** The unique identifier for an OAuth client. */
@@ -637,26 +1113,7 @@ export const CreateOauthClientResponse =
       clientSecret: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUriVerification: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pending",
-                    "in_progress",
-                    "verified",
-                    "failed",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ClientURIVerification, Schema.Null]),
       ),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       grantTypes: Schema.optional(
@@ -737,7 +1194,7 @@ export const CreateOauthClientResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateOauthClientResponse>;
+  ) as unknown as Schema.Codec<CreateOauthClientResponse>;
 
 export type CreateOauthClientError = DefaultErrors;
 
@@ -850,7 +1307,7 @@ export const PatchOauthClientRequest =
         path: "/accounts/{account_id}/oauth_clients/{oauthClientId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchOauthClientRequest>;
+  ) as unknown as Schema.Codec<PatchOauthClientRequest>;
 
 export interface PatchOauthClientResponse {
   /** The unique identifier for an OAuth client. */
@@ -923,26 +1380,7 @@ export const PatchOauthClientResponse =
       clientName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientUriVerification: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pending",
-                    "in_progress",
-                    "verified",
-                    "failed",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
+        Schema.Union([ClientURIVerification, Schema.Null]),
       ),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       grantTypes: Schema.optional(
@@ -1022,7 +1460,7 @@ export const PatchOauthClientResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchOauthClientResponse>;
+  ) as unknown as Schema.Codec<PatchOauthClientResponse>;
 
 export type PatchOauthClientError = DefaultErrors;
 
@@ -1054,7 +1492,7 @@ export const DeleteOauthClientRequest =
         path: "/accounts/{account_id}/oauth_clients/{oauthClientId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteOauthClientRequest>;
+  ) as unknown as Schema.Codec<DeleteOauthClientRequest>;
 
 export interface DeleteOauthClientResponse {
   /** Identifier */
@@ -1066,7 +1504,7 @@ export const DeleteOauthClientResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteOauthClientResponse>;
+  ) as unknown as Schema.Codec<DeleteOauthClientResponse>;
 
 export type DeleteOauthClientError = DefaultErrors;
 
@@ -1090,7 +1528,7 @@ export interface ListOauthScopesRequest {}
 export const ListOauthScopesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({}).pipe(T.Http({ method: "GET", path: "/oauth/scopes" })),
-  ) as unknown as Schema.Schema<ListOauthScopesRequest>;
+  ) as unknown as Schema.Codec<ListOauthScopesRequest>;
 
 export interface ListOauthScopesResponse {
   result: {
@@ -1104,18 +1542,9 @@ export interface ListOauthScopesResponse {
 export const ListOauthScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          name: Schema.String,
-          category: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          scopes: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListOauthScopesResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListOauthScopesResponse>;
+  ) as unknown as Schema.Codec<ListOauthScopesResponse>;
 
 export type ListOauthScopesError = DefaultErrors;
 
@@ -1155,7 +1584,7 @@ export const GetPermissionGroupRequest =
         path: "/accounts/{account_id}/iam/permission_groups/{permissionGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetPermissionGroupRequest>;
+  ) as unknown as Schema.Codec<GetPermissionGroupRequest>;
 
 export interface GetPermissionGroupResponse {
   /** Identifier of the permission group. */
@@ -1170,18 +1599,10 @@ export const GetPermissionGroupResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetPermissionGroupResponse>;
+  ) as unknown as Schema.Codec<GetPermissionGroupResponse>;
 
 export type GetPermissionGroupError = DefaultErrors;
 
@@ -1224,7 +1645,7 @@ export const ListPermissionGroupsRequest =
         path: "/accounts/{account_id}/iam/permission_groups",
       }),
     ),
-  ) as unknown as Schema.Schema<ListPermissionGroupsRequest>;
+  ) as unknown as Schema.Codec<ListPermissionGroupsRequest>;
 
 export interface ListPermissionGroupsResponse {
   result:
@@ -1246,51 +1667,14 @@ export const ListPermissionGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            meta: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  key: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
+        Schema.Array(ListPermissionGroupsResponseResult),
         Schema.Null,
       ]),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListPermissionGroupsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListPermissionGroupsResponse>;
+  ) as unknown as Schema.Codec<ListPermissionGroupsResponse>;
 
 export type ListPermissionGroupsError = DefaultErrors;
 
@@ -1333,7 +1717,7 @@ export const GetResourceGroupRequest =
         path: "/accounts/{account_id}/iam/resource_groups/{resourceGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetResourceGroupRequest>;
+  ) as unknown as Schema.Codec<GetResourceGroupRequest>;
 
 export interface GetResourceGroupResponse {
   /** Identifier of the resource group. */
@@ -1351,18 +1735,10 @@ export const GetResourceGroupResponse =
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetResourceGroupResponse>;
+  ) as unknown as Schema.Codec<GetResourceGroupResponse>;
 
 export type GetResourceGroupError =
   | DefaultErrors
@@ -1401,7 +1777,7 @@ export const ListResourceGroupsRequest =
         path: "/accounts/{account_id}/iam/resource_groups",
       }),
     ),
-  ) as unknown as Schema.Schema<ListResourceGroupsRequest>;
+  ) as unknown as Schema.Codec<ListResourceGroupsRequest>;
 
 export interface ListResourceGroupsResponse {
   result:
@@ -1418,30 +1794,11 @@ export const ListResourceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            scope: Schema.Unknown,
-            meta: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  key: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  value: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                Schema.Null,
-              ]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
+        Schema.Array(ListResourceGroupsResponseResult),
         Schema.Null,
       ]),
     }),
-  ) as unknown as Schema.Schema<ListResourceGroupsResponse>;
+  ) as unknown as Schema.Codec<ListResourceGroupsResponse>;
 
 export type ListResourceGroupsError = DefaultErrors;
 
@@ -1474,21 +1831,14 @@ export const CreateResourceGroupRequest =
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
-      scope: Schema.Struct({
-        key: Schema.String,
-        objects: Schema.Array(
-          Schema.Struct({
-            key: Schema.String,
-          }),
-        ),
-      }),
+      scope: Scope,
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/iam/resource_groups",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateResourceGroupRequest>;
+  ) as unknown as Schema.Codec<CreateResourceGroupRequest>;
 
 export interface CreateResourceGroupResponse {
   /** Identifier of the resource group. */
@@ -1506,18 +1856,10 @@ export const CreateResourceGroupResponse =
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateResourceGroupResponse>;
+  ) as unknown as Schema.Codec<CreateResourceGroupResponse>;
 
 export type CreateResourceGroupError = DefaultErrors;
 
@@ -1548,23 +1890,14 @@ export const UpdateResourceGroupRequest =
       resourceGroupId: Schema.String.pipe(T.HttpPath("resourceGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String),
-      scope: Schema.optional(
-        Schema.Struct({
-          key: Schema.String,
-          objects: Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-            }),
-          ),
-        }),
-      ),
+      scope: Schema.optional(Scope),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/accounts/{account_id}/iam/resource_groups/{resourceGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateResourceGroupRequest>;
+  ) as unknown as Schema.Codec<UpdateResourceGroupRequest>;
 
 export interface UpdateResourceGroupResponse {
   /** Identifier of the resource group. */
@@ -1582,18 +1915,10 @@ export const UpdateResourceGroupResponse =
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateResourceGroupResponse>;
+  ) as unknown as Schema.Codec<UpdateResourceGroupResponse>;
 
 export type UpdateResourceGroupError = DefaultErrors | ResourceGroupNotFound;
 
@@ -1625,7 +1950,7 @@ export const DeleteResourceGroupRequest =
         path: "/accounts/{account_id}/iam/resource_groups/{resourceGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteResourceGroupRequest>;
+  ) as unknown as Schema.Codec<DeleteResourceGroupRequest>;
 
 export interface DeleteResourceGroupResponse {
   /** Identifier */
@@ -1637,7 +1962,7 @@ export const DeleteResourceGroupResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteResourceGroupResponse>;
+  ) as unknown as Schema.Codec<DeleteResourceGroupResponse>;
 
 export type DeleteResourceGroupError = DefaultErrors | ResourceGroupNotFound;
 
@@ -1673,7 +1998,7 @@ export const DeleteRotatedSecretOauthClientRequest =
         path: "/accounts/{account_id}/oauth_clients/{oauthClientId}/rotate_secret",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteRotatedSecretOauthClientRequest>;
+  ) as unknown as Schema.Codec<DeleteRotatedSecretOauthClientRequest>;
 
 export interface DeleteRotatedSecretOauthClientResponse {
   /** Identifier */
@@ -1685,7 +2010,7 @@ export const DeleteRotatedSecretOauthClientResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteRotatedSecretOauthClientResponse>;
+  ) as unknown as Schema.Codec<DeleteRotatedSecretOauthClientResponse>;
 
 export type DeleteRotatedSecretOauthClientError = DefaultErrors;
 
@@ -1721,7 +2046,7 @@ export const RotateSecretOauthClientRequest =
         path: "/accounts/{account_id}/oauth_clients/{oauthClientId}/rotate_secret",
       }),
     ),
-  ) as unknown as Schema.Schema<RotateSecretOauthClientRequest>;
+  ) as unknown as Schema.Codec<RotateSecretOauthClientRequest>;
 
 export interface RotateSecretOauthClientResponse {
   /** The new client secret. */
@@ -1735,7 +2060,7 @@ export const RotateSecretOauthClientResponse =
     })
       .pipe(Schema.encodeKeys({ clientSecret: "client_secret" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<RotateSecretOauthClientResponse>;
+  ) as unknown as Schema.Codec<RotateSecretOauthClientResponse>;
 
 export type RotateSecretOauthClientError = DefaultErrors;
 
@@ -1770,7 +2095,7 @@ export const GetSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/sso_connectors/{ssoConnectorId}",
     }),
   ),
-) as unknown as Schema.Schema<GetSsoRequest>;
+) as unknown as Schema.Codec<GetSsoRequest>;
 
 export interface GetSsoResponse {
   /** SSO Connector identifier tag. */
@@ -1805,23 +2130,7 @@ export const GetSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     useFedrampLanguage: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    verification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["awaiting", "pending", "failed", "verified"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -1835,7 +2144,7 @@ export const GetSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetSsoResponse>;
+) as unknown as Schema.Codec<GetSsoResponse>;
 
 export type GetSsoError = DefaultErrors;
 
@@ -1861,7 +2170,7 @@ export const ListSsosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/sso_connectors" }),
   ),
-) as unknown as Schema.Schema<ListSsosRequest>;
+) as unknown as Schema.Codec<ListSsosRequest>;
 
 export interface ListSsosResponse {
   result: {
@@ -1886,54 +2195,9 @@ export interface ListSsosResponse {
 
 export const ListSsosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        emailDomain: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        updatedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        useFedrampLanguage: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        verification: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              status: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals([
-                      "awaiting",
-                      "pending",
-                      "failed",
-                      "verified",
-                    ]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          emailDomain: "email_domain",
-          enabled: "enabled",
-          updatedOn: "updated_on",
-          useFedrampLanguage: "use_fedramp_language",
-          verification: "verification",
-        }),
-      ),
-    ),
+    result: Schema.Array(ListSsosResponseResult),
   }),
-) as unknown as Schema.Schema<ListSsosResponse>;
+) as unknown as Schema.Codec<ListSsosResponse>;
 
 export type ListSsosError = DefaultErrors;
 
@@ -1977,7 +2241,7 @@ export const CreateSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     }),
     T.Http({ method: "POST", path: "/accounts/{account_id}/sso_connectors" }),
   ),
-) as unknown as Schema.Schema<CreateSsoRequest>;
+) as unknown as Schema.Codec<CreateSsoRequest>;
 
 export interface CreateSsoResponse {
   /** SSO Connector identifier tag. */
@@ -2013,28 +2277,7 @@ export const CreateSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       useFedrampLanguage: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
       ),
-      verification: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "awaiting",
-                    "pending",
-                    "failed",
-                    "verified",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -2048,7 +2291,7 @@ export const CreateSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateSsoResponse>;
+) as unknown as Schema.Codec<CreateSsoResponse>;
 
 export type CreateSsoError = DefaultErrors;
 
@@ -2089,7 +2332,7 @@ export const PatchSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/sso_connectors/{ssoConnectorId}",
     }),
   ),
-) as unknown as Schema.Schema<PatchSsoRequest>;
+) as unknown as Schema.Codec<PatchSsoRequest>;
 
 export interface PatchSsoResponse {
   /** SSO Connector identifier tag. */
@@ -2124,23 +2367,7 @@ export const PatchSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     useFedrampLanguage: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-    verification: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["awaiting", "pending", "failed", "verified"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
+    verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -2154,7 +2381,7 @@ export const PatchSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PatchSsoResponse>;
+) as unknown as Schema.Codec<PatchSsoResponse>;
 
 export type PatchSsoError = DefaultErrors;
 
@@ -2185,7 +2412,7 @@ export const DeleteSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/sso_connectors/{ssoConnectorId}",
     }),
   ),
-) as unknown as Schema.Schema<DeleteSsoRequest>;
+) as unknown as Schema.Codec<DeleteSsoRequest>;
 
 export interface DeleteSsoResponse {
   /** Identifier */
@@ -2197,7 +2424,7 @@ export const DeleteSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteSsoResponse>;
+) as unknown as Schema.Codec<DeleteSsoResponse>;
 
 export type DeleteSsoError = DefaultErrors;
 
@@ -2233,7 +2460,7 @@ export const GetUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}",
       }),
     ),
-) as unknown as Schema.Schema<GetUserGroupRequest>;
+) as unknown as Schema.Codec<GetUserGroupRequest>;
 
 export interface GetUserGroupResponse {
   /** User Group identifier tag. */
@@ -2276,83 +2503,7 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modifiedOn: Schema.String,
       name: Schema.String,
       policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              access: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["allow", "deny"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              permissionGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              resourceGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      scope: Schema.Unknown,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                access: "access",
-                permissionGroups: "permission_groups",
-                resourceGroups: "resource_groups",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Policy), Schema.Null]),
       ),
     })
       .pipe(
@@ -2365,7 +2516,7 @@ export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetUserGroupResponse>;
+) as unknown as Schema.Codec<GetUserGroupResponse>;
 
 export type GetUserGroupError = DefaultErrors | UserGroupNotFound | Forbidden;
 
@@ -2410,7 +2561,7 @@ export const ListUserGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/iam/user_groups" }),
     ),
-) as unknown as Schema.Schema<ListUserGroupsRequest>;
+) as unknown as Schema.Codec<ListUserGroupsRequest>;
 
 export interface ListUserGroupsResponse {
   result:
@@ -2460,129 +2611,14 @@ export const ListUserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            createdOn: Schema.String,
-            modifiedOn: Schema.String,
-            name: Schema.String,
-            policies: Schema.optional(
-              Schema.Union([
-                Schema.Array(
-                  Schema.Struct({
-                    id: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    access: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literals(["allow", "deny"]),
-                          Schema.String,
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    permissionGroups: Schema.optional(
-                      Schema.Union([
-                        Schema.Array(
-                          Schema.Struct({
-                            id: Schema.String,
-                            meta: Schema.optional(
-                              Schema.Union([
-                                Schema.Struct({
-                                  key: Schema.optional(
-                                    Schema.Union([Schema.String, Schema.Null]),
-                                  ),
-                                  value: Schema.optional(
-                                    Schema.Union([Schema.String, Schema.Null]),
-                                  ),
-                                }),
-                                Schema.Null,
-                              ]),
-                            ),
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    resourceGroups: Schema.optional(
-                      Schema.Union([
-                        Schema.Array(
-                          Schema.Struct({
-                            id: Schema.String,
-                            scope: Schema.Unknown,
-                            meta: Schema.optional(
-                              Schema.Union([
-                                Schema.Struct({
-                                  key: Schema.optional(
-                                    Schema.Union([Schema.String, Schema.Null]),
-                                  ),
-                                  value: Schema.optional(
-                                    Schema.Union([Schema.String, Schema.Null]),
-                                  ),
-                                }),
-                                Schema.Null,
-                              ]),
-                            ),
-                            name: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      access: "access",
-                      permissionGroups: "permission_groups",
-                      resourceGroups: "resource_groups",
-                    }),
-                  ),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              createdOn: "created_on",
-              modifiedOn: "modified_on",
-              name: "name",
-              policies: "policies",
-            }),
-          ),
-        ),
+        Schema.Array(ListUserGroupsResponseResult),
         Schema.Null,
       ]),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListPermissionGroupsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListUserGroupsResponse>;
+  ) as unknown as Schema.Codec<ListUserGroupsResponse>;
 
 export type ListUserGroupsError = DefaultErrors;
 
@@ -2622,39 +2658,14 @@ export const CreateUserGroupRequest =
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
-      policies: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            access: Schema.Union([
-              Schema.Literals(["allow", "deny"]),
-              Schema.String,
-            ]),
-            permissionGroups: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-            resourceGroups: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              access: "access",
-              permissionGroups: "permission_groups",
-              resourceGroups: "resource_groups",
-            }),
-          ),
-        ),
-      ),
+      policies: Schema.optional(Schema.Array(Policy2)),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/iam/user_groups",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateUserGroupRequest>;
+  ) as unknown as Schema.Codec<CreateUserGroupRequest>;
 
 export interface CreateUserGroupResponse {
   /** User Group identifier tag. */
@@ -2697,83 +2708,7 @@ export const CreateUserGroupResponse =
       modifiedOn: Schema.String,
       name: Schema.String,
       policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              access: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["allow", "deny"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              permissionGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              resourceGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      scope: Schema.Unknown,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                access: "access",
-                permissionGroups: "permission_groups",
-                resourceGroups: "resource_groups",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Policy), Schema.Null]),
       ),
     })
       .pipe(
@@ -2786,7 +2721,7 @@ export const CreateUserGroupResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateUserGroupResponse>;
+  ) as unknown as Schema.Codec<CreateUserGroupResponse>;
 
 export type CreateUserGroupError = DefaultErrors | UserGroupNameInUse;
 
@@ -2822,41 +2757,14 @@ export const UpdateUserGroupRequest =
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String),
-      policies: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            access: Schema.Union([
-              Schema.Literals(["allow", "deny"]),
-              Schema.String,
-            ]),
-            permissionGroups: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-            resourceGroups: Schema.Array(
-              Schema.Struct({
-                id: Schema.String,
-              }),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              access: "access",
-              permissionGroups: "permission_groups",
-              resourceGroups: "resource_groups",
-            }),
-          ),
-        ),
-      ),
+      policies: Schema.optional(Schema.Array(Policy3)),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateUserGroupRequest>;
+  ) as unknown as Schema.Codec<UpdateUserGroupRequest>;
 
 export interface UpdateUserGroupResponse {
   /** User Group identifier tag. */
@@ -2899,83 +2807,7 @@ export const UpdateUserGroupResponse =
       modifiedOn: Schema.String,
       name: Schema.String,
       policies: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              access: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["allow", "deny"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              permissionGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              resourceGroups: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      scope: Schema.Unknown,
-                      meta: Schema.optional(
-                        Schema.Union([
-                          Schema.Struct({
-                            key: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                            value: Schema.optional(
-                              Schema.Union([Schema.String, Schema.Null]),
-                            ),
-                          }),
-                          Schema.Null,
-                        ]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                access: "access",
-                permissionGroups: "permission_groups",
-                resourceGroups: "resource_groups",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Policy), Schema.Null]),
       ),
     })
       .pipe(
@@ -2988,7 +2820,7 @@ export const UpdateUserGroupResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateUserGroupResponse>;
+  ) as unknown as Schema.Codec<UpdateUserGroupResponse>;
 
 export type UpdateUserGroupError =
   | DefaultErrors
@@ -3023,7 +2855,7 @@ export const DeleteUserGroupRequest =
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteUserGroupRequest>;
+  ) as unknown as Schema.Codec<DeleteUserGroupRequest>;
 
 export interface DeleteUserGroupResponse {
   /** Identifier */
@@ -3035,7 +2867,7 @@ export const DeleteUserGroupResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteUserGroupResponse>;
+  ) as unknown as Schema.Codec<DeleteUserGroupResponse>;
 
 export type DeleteUserGroupError = DefaultErrors | UserGroupNotFound;
 
@@ -3073,7 +2905,7 @@ export const GetUserGroupMemberRequest =
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetUserGroupMemberRequest>;
+  ) as unknown as Schema.Codec<GetUserGroupMemberRequest>;
 
 export interface GetUserGroupMemberResponse {
   /** Account member identifier. */
@@ -3108,28 +2940,7 @@ export const GetUserGroupMemberResponse =
           Schema.Null,
         ]),
       ),
-      user: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            firstName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            lastName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              email: "email",
-              firstName: "first_name",
-              lastName: "last_name",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      user: Schema.optional(Schema.Union([User, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -3141,7 +2952,7 @@ export const GetUserGroupMemberResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetUserGroupMemberResponse>;
+  ) as unknown as Schema.Codec<GetUserGroupMemberResponse>;
 
 export type GetUserGroupMemberError =
   | DefaultErrors
@@ -3191,7 +3002,7 @@ export const ListUserGroupMembersRequest =
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members",
       }),
     ),
-  ) as unknown as Schema.Schema<ListUserGroupMembersRequest>;
+  ) as unknown as Schema.Codec<ListUserGroupMembersRequest>;
 
 export interface ListUserGroupMembersResponse {
   result:
@@ -3213,47 +3024,14 @@ export const ListUserGroupMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            status: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["accepted", "pending"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-        ),
+        Schema.Array(ListUserGroupMembersResponseResult),
         Schema.Null,
       ]),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListPermissionGroupsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListUserGroupMembersResponse>;
+  ) as unknown as Schema.Codec<ListUserGroupMembersResponse>;
 
 export type ListUserGroupMembersError =
   | DefaultErrors
@@ -3291,18 +3069,14 @@ export const CreateUserGroupMemberRequest =
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      members: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ).pipe(T.HttpBody()),
+      members: Schema.Array(PermissionGroup).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateUserGroupMemberRequest>;
+  ) as unknown as Schema.Codec<CreateUserGroupMemberRequest>;
 
 export interface CreateUserGroupMemberResponse {
   result: {
@@ -3315,23 +3089,9 @@ export interface CreateUserGroupMemberResponse {
 export const CreateUserGroupMemberResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["accepted", "pending"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListUserGroupMembersResponseResult),
     }),
-  ) as unknown as Schema.Schema<CreateUserGroupMemberResponse>;
+  ) as unknown as Schema.Codec<CreateUserGroupMemberResponse>;
 
 export type CreateUserGroupMemberError =
   | DefaultErrors
@@ -3366,18 +3126,14 @@ export const UpdateUserGroupMemberRequest =
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      members: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ).pipe(T.HttpBody()),
+      members: Schema.Array(PermissionGroup).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateUserGroupMemberRequest>;
+  ) as unknown as Schema.Codec<UpdateUserGroupMemberRequest>;
 
 export interface UpdateUserGroupMemberResponse {
   result: {
@@ -3390,23 +3146,9 @@ export interface UpdateUserGroupMemberResponse {
 export const UpdateUserGroupMemberResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["accepted", "pending"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListUserGroupMembersResponseResult),
     }),
-  ) as unknown as Schema.Schema<UpdateUserGroupMemberResponse>;
+  ) as unknown as Schema.Codec<UpdateUserGroupMemberResponse>;
 
 export type UpdateUserGroupMemberError =
   | DefaultErrors
@@ -3447,7 +3189,7 @@ export const DeleteUserGroupMemberRequest =
         path: "/accounts/{account_id}/iam/user_groups/{userGroupId}/members/{memberId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteUserGroupMemberRequest>;
+  ) as unknown as Schema.Codec<DeleteUserGroupMemberRequest>;
 
 export interface DeleteUserGroupMemberResponse {
   /** Account member identifier. */
@@ -3473,7 +3215,7 @@ export const DeleteUserGroupMemberResponse =
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteUserGroupMemberResponse>;
+  ) as unknown as Schema.Codec<DeleteUserGroupMemberResponse>;
 
 export type DeleteUserGroupMemberError =
   | DefaultErrors
@@ -3513,7 +3255,7 @@ export const BeginVerificationSsoRequest =
         path: "/accounts/{account_id}/sso_connectors/{ssoConnectorId}/begin_verification",
       }),
     ),
-  ) as unknown as Schema.Schema<BeginVerificationSsoRequest>;
+  ) as unknown as Schema.Codec<BeginVerificationSsoRequest>;
 
 export interface BeginVerificationSsoResponse {
   errors: {
@@ -3535,61 +3277,11 @@ export interface BeginVerificationSsoResponse {
 export const BeginVerificationSsoResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
-        ),
-      ),
+      errors: Schema.Array(Error2),
+      messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Schema<BeginVerificationSsoResponse>;
+  ) as unknown as Schema.Codec<BeginVerificationSsoResponse>;
 
 export type BeginVerificationSsoError = DefaultErrors;
 

@@ -4,15 +4,33 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface GetAnalyticsEventsInput {
+  user_id: string;
+  name: string;
+  n: number;
+}
 export const GetAnalyticsEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     user_id: Schema.String,
     name: Schema.String,
     n: Schema.Number,
-  }).pipe(T.Http({ method: "GET", path: "/analytics/events" }));
-export type GetAnalyticsEventsInput = typeof GetAnalyticsEventsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/analytics/events" }),
+  ) as unknown as Schema.Codec<GetAnalyticsEventsInput>;
 
 // Output Schema
+export interface GetAnalyticsEventsOutput {
+  events: {
+    name?: string;
+    event_type?: string;
+    collection?: string;
+    timestamp?: number;
+    user_id?: string;
+    doc_id?: string;
+    doc_ids?: string[];
+    query?: string;
+  }[];
+}
 export const GetAnalyticsEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     events: Schema.Array(
@@ -27,8 +45,7 @@ export const GetAnalyticsEventsOutput =
         query: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAnalyticsEventsOutput = typeof GetAnalyticsEventsOutput.Type;
+  }) as unknown as Schema.Codec<GetAnalyticsEventsOutput>;
 
 // The operation
 /**

@@ -1,8 +1,326 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostTokensInput {
+  account?: {
+    business_type?:
+      | "company"
+      | "government_entity"
+      | "individual"
+      | "non_profit";
+    company?: {
+      address?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+      };
+      address_kana?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+        town?: string;
+      };
+      address_kanji?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+        town?: string;
+      };
+      directors_provided?: boolean;
+      directorship_declaration?: {
+        date?: number;
+        ip?: string;
+        user_agent?: string;
+      };
+      executives_provided?: boolean;
+      export_license_id?: string;
+      export_purpose_code?: string;
+      name?: string;
+      name_kana?: string;
+      name_kanji?: string;
+      owners_provided?: boolean;
+      ownership_declaration?: {
+        date?: number;
+        ip?: string;
+        user_agent?: string;
+      };
+      ownership_declaration_shown_and_signed?: boolean;
+      ownership_exemption_reason?:
+        | ""
+        | "qualified_entity_exceeds_ownership_threshold"
+        | "qualifies_as_financial_institution";
+      phone?: string;
+      registration_date?: { day: number; month: number; year: number } | "";
+      registration_number?: string;
+      representative_declaration?: {
+        date?: number;
+        ip?: string;
+        user_agent?: string;
+      };
+      structure?:
+        | ""
+        | "free_zone_establishment"
+        | "free_zone_llc"
+        | "government_instrumentality"
+        | "governmental_unit"
+        | "incorporated_non_profit"
+        | "incorporated_partnership"
+        | "limited_liability_partnership"
+        | "llc"
+        | "multi_member_llc"
+        | "private_company"
+        | "private_corporation"
+        | "private_partnership"
+        | "public_company"
+        | "public_corporation"
+        | "public_partnership"
+        | "registered_charity"
+        | "single_member_llc"
+        | "sole_establishment"
+        | "sole_proprietorship"
+        | "tax_exempt_government_instrumentality"
+        | "unincorporated_association"
+        | "unincorporated_non_profit"
+        | "unincorporated_partnership";
+      tax_id?: string;
+      tax_id_registrar?: string;
+      vat_id?: string;
+      verification?: { document?: { back?: string; front?: string } };
+    };
+    individual?: {
+      address?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+      };
+      address_kana?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+        town?: string;
+      };
+      address_kanji?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+        town?: string;
+      };
+      dob?: { day: number; month: number; year: number } | "";
+      email?: string;
+      first_name?: string;
+      first_name_kana?: string;
+      first_name_kanji?: string;
+      full_name_aliases?: string[] | "";
+      gender?: string;
+      id_number?: string;
+      id_number_secondary?: string;
+      last_name?: string;
+      last_name_kana?: string;
+      last_name_kanji?: string;
+      maiden_name?: string;
+      metadata?: Record<string, string> | "";
+      phone?: string;
+      political_exposure?: "existing" | "none";
+      registered_address?: {
+        city?: string;
+        country?: string;
+        line1?: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+      };
+      relationship?: {
+        director?: boolean;
+        executive?: boolean;
+        owner?: boolean;
+        percent_ownership?: number | "";
+        title?: string;
+      };
+      ssn_last_4?: string;
+      verification?: {
+        additional_document?: { back?: string; front?: string };
+        document?: { back?: string; front?: string };
+      };
+    };
+    tos_shown_and_accepted?: boolean;
+  };
+  bank_account?: {
+    account_holder_name?: string;
+    account_holder_type?: "company" | "individual";
+    account_number: string;
+    account_type?: "checking" | "futsu" | "savings" | "toza";
+    country: string;
+    currency?: string;
+    payment_method?: string;
+    routing_number?: string;
+  };
+  card?:
+    | {
+        address_city?: string;
+        address_country?: string;
+        address_line1?: string;
+        address_line2?: string;
+        address_state?: string;
+        address_zip?: string;
+        currency?: string;
+        cvc?: string;
+        exp_month: string;
+        exp_year: string;
+        name?: string;
+        networks?: { preferred?: "cartes_bancaires" | "mastercard" | "visa" };
+        number: string;
+      }
+    | string;
+  customer?: string;
+  cvc_update?: { cvc: string };
+  expand?: string[];
+  person?: {
+    additional_tos_acceptances?: {
+      account?: { date?: number; ip?: string; user_agent?: string | "" };
+    };
+    address?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+    };
+    address_kana?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+      town?: string;
+    };
+    address_kanji?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+      town?: string;
+    };
+    dob?: { day: number; month: number; year: number } | "";
+    documents?: {
+      company_authorization?: { files?: (string | "")[] };
+      passport?: { files?: (string | "")[] };
+      visa?: { files?: (string | "")[] };
+    };
+    email?: string;
+    first_name?: string;
+    first_name_kana?: string;
+    first_name_kanji?: string;
+    full_name_aliases?: string[] | "";
+    gender?: string;
+    id_number?: string;
+    id_number_secondary?: string;
+    last_name?: string;
+    last_name_kana?: string;
+    last_name_kanji?: string;
+    maiden_name?: string;
+    metadata?: Record<string, string> | "";
+    nationality?: string;
+    phone?: string;
+    political_exposure?: "existing" | "none";
+    registered_address?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+    };
+    relationship?: {
+      authorizer?: boolean;
+      director?: boolean;
+      executive?: boolean;
+      legal_guardian?: boolean;
+      owner?: boolean;
+      percent_ownership?: number | "";
+      representative?: boolean;
+      title?: string;
+    };
+    ssn_last_4?: string;
+    us_cfpb_data?: {
+      ethnicity_details?: {
+        ethnicity?: (
+          | "cuban"
+          | "hispanic_or_latino"
+          | "mexican"
+          | "not_hispanic_or_latino"
+          | "other_hispanic_or_latino"
+          | "prefer_not_to_answer"
+          | "puerto_rican"
+        )[];
+        ethnicity_other?: string;
+      };
+      race_details?: {
+        race?: (
+          | "african_american"
+          | "american_indian_or_alaska_native"
+          | "asian"
+          | "asian_indian"
+          | "black_or_african_american"
+          | "chinese"
+          | "ethiopian"
+          | "filipino"
+          | "guamanian_or_chamorro"
+          | "haitian"
+          | "jamaican"
+          | "japanese"
+          | "korean"
+          | "native_hawaiian"
+          | "native_hawaiian_or_other_pacific_islander"
+          | "nigerian"
+          | "other_asian"
+          | "other_black_or_african_american"
+          | "other_pacific_islander"
+          | "prefer_not_to_answer"
+          | "samoan"
+          | "somali"
+          | "vietnamese"
+          | "white"
+        )[];
+        race_other?: string;
+      };
+      self_identified_gender?: string;
+    };
+    verification?: {
+      additional_document?: { back?: string; front?: string };
+      document?: { back?: string; front?: string };
+    };
+  };
+  pii?: { id_number?: string };
+}
 export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   account: Schema.optional(
     Schema.Struct({
@@ -81,7 +399,16 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
           phone: Schema.optional(Schema.String),
-          registration_date: Schema.optional(Schema.Unknown),
+          registration_date: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                day: Schema.Number,
+                month: Schema.Number,
+                year: Schema.Number,
+              }),
+              Schema.Literals([""]),
+            ]),
+          ),
           registration_number: Schema.optional(Schema.String),
           representative_declaration: Schema.optional(
             Schema.Struct({
@@ -167,12 +494,23 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               town: Schema.optional(Schema.String),
             }),
           ),
-          dob: Schema.optional(Schema.Unknown),
+          dob: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                day: Schema.Number,
+                month: Schema.Number,
+                year: Schema.Number,
+              }),
+              Schema.Literals([""]),
+            ]),
+          ),
           email: Schema.optional(Schema.String),
           first_name: Schema.optional(Schema.String),
           first_name_kana: Schema.optional(Schema.String),
           first_name_kanji: Schema.optional(Schema.String),
-          full_name_aliases: Schema.optional(Schema.Unknown),
+          full_name_aliases: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
+          ),
           gender: Schema.optional(Schema.String),
           id_number: Schema.optional(Schema.String),
           id_number_secondary: Schema.optional(Schema.String),
@@ -180,7 +518,12 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           last_name_kana: Schema.optional(Schema.String),
           last_name_kanji: Schema.optional(Schema.String),
           maiden_name: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.Unknown),
+          metadata: Schema.optional(
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.String),
+              Schema.Literals([""]),
+            ]),
+          ),
           phone: Schema.optional(Schema.String),
           political_exposure: Schema.optional(
             Schema.Literals(["existing", "none"]),
@@ -200,7 +543,9 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               director: Schema.optional(Schema.Boolean),
               executive: Schema.optional(Schema.Boolean),
               owner: Schema.optional(Schema.Boolean),
-              percent_ownership: Schema.optional(Schema.Unknown),
+              percent_ownership: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Literals([""])]),
+              ),
               title: Schema.optional(Schema.String),
             }),
           ),
@@ -242,7 +587,32 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       routing_number: Schema.optional(Schema.String),
     }),
   ),
-  card: Schema.optional(Schema.Unknown),
+  card: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        address_city: Schema.optional(Schema.String),
+        address_country: Schema.optional(Schema.String),
+        address_line1: Schema.optional(Schema.String),
+        address_line2: Schema.optional(Schema.String),
+        address_state: Schema.optional(Schema.String),
+        address_zip: Schema.optional(Schema.String),
+        currency: Schema.optional(Schema.String),
+        cvc: Schema.optional(Schema.String),
+        exp_month: Schema.String,
+        exp_year: Schema.String,
+        name: Schema.optional(Schema.String),
+        networks: Schema.optional(
+          Schema.Struct({
+            preferred: Schema.optional(
+              Schema.Literals(["cartes_bancaires", "mastercard", "visa"]),
+            ),
+          }),
+        ),
+        number: Schema.String,
+      }),
+      Schema.String,
+    ]),
+  ),
   customer: Schema.optional(Schema.String),
   cvc_update: Schema.optional(
     Schema.Struct({
@@ -258,7 +628,9 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               date: Schema.optional(Schema.Number),
               ip: Schema.optional(Schema.String),
-              user_agent: Schema.optional(Schema.Unknown),
+              user_agent: Schema.optional(
+                Schema.Union([Schema.String, Schema.Literals([""])]),
+              ),
             }),
           ),
         }),
@@ -295,22 +667,43 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           town: Schema.optional(Schema.String),
         }),
       ),
-      dob: Schema.optional(Schema.Unknown),
+      dob: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            day: Schema.Number,
+            month: Schema.Number,
+            year: Schema.Number,
+          }),
+          Schema.Literals([""]),
+        ]),
+      ),
       documents: Schema.optional(
         Schema.Struct({
           company_authorization: Schema.optional(
             Schema.Struct({
-              files: Schema.optional(Schema.Array(Schema.Unknown)),
+              files: Schema.optional(
+                Schema.Array(
+                  Schema.Union([Schema.String, Schema.Literals([""])]),
+                ),
+              ),
             }),
           ),
           passport: Schema.optional(
             Schema.Struct({
-              files: Schema.optional(Schema.Array(Schema.Unknown)),
+              files: Schema.optional(
+                Schema.Array(
+                  Schema.Union([Schema.String, Schema.Literals([""])]),
+                ),
+              ),
             }),
           ),
           visa: Schema.optional(
             Schema.Struct({
-              files: Schema.optional(Schema.Array(Schema.Unknown)),
+              files: Schema.optional(
+                Schema.Array(
+                  Schema.Union([Schema.String, Schema.Literals([""])]),
+                ),
+              ),
             }),
           ),
         }),
@@ -319,7 +712,9 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       first_name: Schema.optional(Schema.String),
       first_name_kana: Schema.optional(Schema.String),
       first_name_kanji: Schema.optional(Schema.String),
-      full_name_aliases: Schema.optional(Schema.Unknown),
+      full_name_aliases: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
+      ),
       gender: Schema.optional(Schema.String),
       id_number: Schema.optional(Schema.String),
       id_number_secondary: Schema.optional(Schema.String),
@@ -327,7 +722,12 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       last_name_kana: Schema.optional(Schema.String),
       last_name_kanji: Schema.optional(Schema.String),
       maiden_name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
+      metadata: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.String),
+          Schema.Literals([""]),
+        ]),
+      ),
       nationality: Schema.optional(Schema.String),
       phone: Schema.optional(Schema.String),
       political_exposure: Schema.optional(
@@ -350,7 +750,9 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           executive: Schema.optional(Schema.Boolean),
           legal_guardian: Schema.optional(Schema.Boolean),
           owner: Schema.optional(Schema.Boolean),
-          percent_ownership: Schema.optional(Schema.Unknown),
+          percent_ownership: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Literals([""])]),
+          ),
           representative: Schema.optional(Schema.Boolean),
           title: Schema.optional(Schema.String),
         }),
@@ -443,10 +845,75 @@ export const PostTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/tokens",
     contentType: "form-urlencoded",
   }),
-);
-export type PostTokensInput = typeof PostTokensInput.Type;
+) as unknown as Schema.Codec<PostTokensInput>;
 
 // Output Schema
+export interface PostTokensOutput {
+  bank_account?: {
+    account?: unknown;
+    account_holder_name: string | null;
+    account_holder_type: string | null;
+    account_type: string | null;
+    available_payout_methods?: ("instant" | "standard")[] | null;
+    bank_name: string | null;
+    country: string;
+    currency: string;
+    customer?: unknown;
+    default_for_currency?: boolean | null;
+    fingerprint: string | null;
+    future_requirements?: unknown;
+    id: string;
+    last4: string;
+    metadata?: Record<string, string> | null;
+    object: "bank_account";
+    requirements?: unknown;
+    routing_number: string | null;
+    status: string;
+  };
+  card?: {
+    account?: unknown;
+    address_city: string | null;
+    address_country: string | null;
+    address_line1: string | null;
+    address_line1_check: string | null;
+    address_line2: string | null;
+    address_state: string | null;
+    address_zip: string | null;
+    address_zip_check: string | null;
+    allow_redisplay?: "always" | "limited" | "unspecified" | null;
+    available_payout_methods?: ("instant" | "standard")[] | null;
+    brand: string;
+    country: string | null;
+    currency?: string | null;
+    customer?: unknown;
+    cvc_check: string | null;
+    default_for_currency?: boolean | null;
+    description?: string;
+    dynamic_last4: string | null;
+    exp_month: number;
+    exp_year: number;
+    fingerprint?: string | null;
+    funding: string;
+    id: string;
+    iin?: string;
+    issuer?: string;
+    last4: string;
+    metadata: Record<string, string> | null;
+    name: string | null;
+    networks?: { preferred: string | null };
+    object: "card";
+    regulated_status: "regulated" | "unregulated" | null;
+    status?: string | null;
+    tokenization_method: string | null;
+  };
+  client_ip: string | null;
+  created: number;
+  id: string;
+  livemode: boolean;
+  object: "token";
+  type: string;
+  used: boolean;
+}
 export const PostTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bank_account: Schema.optional(
     Schema.Struct({
@@ -530,8 +997,7 @@ export const PostTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   object: Schema.Literals(["token"]),
   type: Schema.String,
   used: Schema.Boolean,
-});
-export type PostTokensOutput = typeof PostTokensOutput.Type;
+}) as unknown as Schema.Codec<PostTokensOutput>;
 
 // The operation
 /**

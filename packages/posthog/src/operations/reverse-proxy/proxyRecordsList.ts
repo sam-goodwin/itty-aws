@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProxyRecordsListInput {
+  organization_id: string;
+}
 export const ProxyRecordsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -11,10 +14,29 @@ export const ProxyRecordsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/organizations/{organization_id}/proxy_records/",
   }),
-);
-export type ProxyRecordsListInput = typeof ProxyRecordsListInput.Type;
+) as unknown as Schema.Codec<ProxyRecordsListInput>;
 
 // Output Schema
+export type ProxyRecordsListOutput = {
+  results?: {
+    id?: string;
+    domain?: string;
+    target_cname?: string;
+    status?:
+      | "waiting"
+      | "issuing"
+      | "valid"
+      | "warning"
+      | "erroring"
+      | "deleting"
+      | "timed_out";
+    message?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    created_by?: number;
+  }[];
+  max_proxy_records?: number;
+}[];
 export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.optional(
@@ -43,12 +65,13 @@ export const ProxyRecordsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     ),
     max_proxy_records: Schema.optional(Schema.Number),
   }),
-);
-export type ProxyRecordsListOutput = typeof ProxyRecordsListOutput.Type;
+) as unknown as Schema.Codec<ProxyRecordsListOutput>;
 
 // The operation
 /**
  * List all reverse proxies configured for the organization. Returns proxy records along with the maximum number allowed by the current plan.
+ *
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const proxyRecordsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsListInput,

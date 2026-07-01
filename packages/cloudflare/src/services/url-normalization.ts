@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service url-normalization
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -40,7 +40,7 @@ export const GetUrlNormalizationRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/url_normalization" }),
     ),
-  ) as unknown as Schema.Schema<GetUrlNormalizationRequest>;
+  ) as unknown as Schema.Codec<GetUrlNormalizationRequest>;
 
 export interface GetUrlNormalizationResponse {
   /** The scope of the URL normalization. */
@@ -61,7 +61,7 @@ export const GetUrlNormalizationResponse =
         Schema.String,
       ]),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetUrlNormalizationResponse>;
+  ) as unknown as Schema.Codec<GetUrlNormalizationResponse>;
 
 export type GetUrlNormalizationError = DefaultErrors | Forbidden;
 
@@ -100,7 +100,7 @@ export const PutUrlNormalizationRequest =
     }).pipe(
       T.Http({ method: "PUT", path: "/zones/{zone_id}/url_normalization" }),
     ),
-  ) as unknown as Schema.Schema<PutUrlNormalizationRequest>;
+  ) as unknown as Schema.Codec<PutUrlNormalizationRequest>;
 
 export interface PutUrlNormalizationResponse {
   /** The scope of the URL normalization. */
@@ -121,7 +121,7 @@ export const PutUrlNormalizationResponse =
         Schema.String,
       ]),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutUrlNormalizationResponse>;
+  ) as unknown as Schema.Codec<PutUrlNormalizationResponse>;
 
 export type PutUrlNormalizationError = DefaultErrors | Forbidden;
 
@@ -148,14 +148,14 @@ export const DeleteUrlNormalizationRequest =
     }).pipe(
       T.Http({ method: "DELETE", path: "/zones/{zone_id}/url_normalization" }),
     ),
-  ) as unknown as Schema.Schema<DeleteUrlNormalizationRequest>;
+  ) as unknown as Schema.Codec<DeleteUrlNormalizationRequest>;
 
 export type DeleteUrlNormalizationResponse = unknown;
 
 export const DeleteUrlNormalizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<DeleteUrlNormalizationResponse>;
+  ) as unknown as Schema.Codec<DeleteUrlNormalizationResponse>;
 
 export type DeleteUrlNormalizationError = DefaultErrors | Forbidden;
 

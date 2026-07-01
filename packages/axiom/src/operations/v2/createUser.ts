@@ -4,14 +4,26 @@ import * as T from "../../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface CreateUserInput {
+  email: string;
+  name: string;
+  role: string;
+}
 export const CreateUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   name: Schema.String,
   role: Schema.String,
-}).pipe(T.Http({ method: "POST", path: "/v2/users" }));
-export type CreateUserInput = typeof CreateUserInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/users" }),
+) as unknown as Schema.Codec<CreateUserInput>;
 
 // Output Schema
+export interface CreateUserOutput {
+  email: string;
+  id: string;
+  name: string;
+  role?: { id: string; name: string };
+}
 export const CreateUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
@@ -22,8 +34,7 @@ export const CreateUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       name: Schema.String,
     }),
   ),
-});
-export type CreateUserOutput = typeof CreateUserOutput.Type;
+}) as unknown as Schema.Codec<CreateUserOutput>;
 
 // The operation
 /**

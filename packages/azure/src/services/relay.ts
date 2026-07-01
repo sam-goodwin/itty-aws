@@ -4,11 +4,25 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface HybridConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  properties?: {
+    createdAt?: string;
+    updatedAt?: string;
+    listenerCount?: number;
+    requiresClientAuthorization?: boolean;
+    userMetadata?: string;
+  };
+  location?: string;
+}
 export const HybridConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -31,11 +45,22 @@ export const HybridConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsCreateOrUpdateInput =
-  typeof HybridConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface HybridConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -55,9 +80,7 @@ export const HybridConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridConnectionsCreateOrUpdateOutput =
-  typeof HybridConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -75,6 +98,15 @@ export const HybridConnectionsCreateOrUpdate =
     outputSchema: HybridConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface HybridConnectionsCreateOrUpdateAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  authorizationRuleName: string;
+  properties?: { rights: ("Manage" | "Send" | "Listen")[] };
+  location?: string;
+}
 export const HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -94,11 +126,22 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsCreateOrUpdateAuthorizationRuleInput =
-  typeof HybridConnectionsCreateOrUpdateAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsCreateOrUpdateAuthorizationRuleInput>;
 
 // Output Schema
+export interface HybridConnectionsCreateOrUpdateAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -118,9 +161,7 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridConnectionsCreateOrUpdateAuthorizationRuleOutput =
-  typeof HybridConnectionsCreateOrUpdateAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsCreateOrUpdateAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -139,6 +180,12 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRule =
     outputSchema: HybridConnectionsCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface HybridConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+}
 export const HybridConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -151,15 +198,12 @@ export const HybridConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsDeleteInput =
-  typeof HybridConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsDeleteInput>;
 
 // Output Schema
+export type HybridConnectionsDeleteOutput = void;
 export const HybridConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridConnectionsDeleteOutput =
-  typeof HybridConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -178,6 +222,13 @@ export const HybridConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridConnectionsDeleteAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  authorizationRuleName: string;
+}
 export const HybridConnectionsDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -191,15 +242,12 @@ export const HybridConnectionsDeleteAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsDeleteAuthorizationRuleInput =
-  typeof HybridConnectionsDeleteAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsDeleteAuthorizationRuleInput>;
 
 // Output Schema
+export type HybridConnectionsDeleteAuthorizationRuleOutput = void;
 export const HybridConnectionsDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HybridConnectionsDeleteAuthorizationRuleOutput =
-  typeof HybridConnectionsDeleteAuthorizationRuleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridConnectionsDeleteAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -218,6 +266,12 @@ export const HybridConnectionsDeleteAuthorizationRule =
     outputSchema: HybridConnectionsDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface HybridConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+}
 export const HybridConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,10 +284,22 @@ export const HybridConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsGetInput = typeof HybridConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsGetInput>;
 
 // Output Schema
+export interface HybridConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -253,8 +319,7 @@ export const HybridConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridConnectionsGetOutput = typeof HybridConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsGetOutput>;
 
 // The operation
 /**
@@ -273,6 +338,13 @@ export const HybridConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridConnectionsGetAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  authorizationRuleName: string;
+}
 export const HybridConnectionsGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -286,11 +358,22 @@ export const HybridConnectionsGetAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsGetAuthorizationRuleInput =
-  typeof HybridConnectionsGetAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsGetAuthorizationRuleInput>;
 
 // Output Schema
+export interface HybridConnectionsGetAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HybridConnectionsGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -310,9 +393,7 @@ export const HybridConnectionsGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HybridConnectionsGetAuthorizationRuleOutput =
-  typeof HybridConnectionsGetAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsGetAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -331,6 +412,12 @@ export const HybridConnectionsGetAuthorizationRule =
     outputSchema: HybridConnectionsGetAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface HybridConnectionsListAuthorizationRulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+}
 export const HybridConnectionsListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -343,11 +430,25 @@ export const HybridConnectionsListAuthorizationRulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsListAuthorizationRulesInput =
-  typeof HybridConnectionsListAuthorizationRulesInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsListAuthorizationRulesInput>;
 
 // Output Schema
+export interface HybridConnectionsListAuthorizationRulesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HybridConnectionsListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -382,9 +483,7 @@ export const HybridConnectionsListAuthorizationRulesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HybridConnectionsListAuthorizationRulesOutput =
-  typeof HybridConnectionsListAuthorizationRulesOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsListAuthorizationRulesOutput>;
 
 // The operation
 /**
@@ -402,6 +501,11 @@ export const HybridConnectionsListAuthorizationRules =
     outputSchema: HybridConnectionsListAuthorizationRulesOutput,
   }));
 // Input Schema
+export interface HybridConnectionsListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const HybridConnectionsListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -413,11 +517,25 @@ export const HybridConnectionsListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsListByNamespaceInput =
-  typeof HybridConnectionsListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsListByNamespaceInput>;
 
 // Output Schema
+export interface HybridConnectionsListByNamespaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HybridConnectionsListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -452,9 +570,7 @@ export const HybridConnectionsListByNamespaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HybridConnectionsListByNamespaceOutput =
-  typeof HybridConnectionsListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsListByNamespaceOutput>;
 
 // The operation
 /**
@@ -471,6 +587,13 @@ export const HybridConnectionsListByNamespace =
     outputSchema: HybridConnectionsListByNamespaceOutput,
   }));
 // Input Schema
+export interface HybridConnectionsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  authorizationRuleName: string;
+}
 export const HybridConnectionsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -484,11 +607,16 @@ export const HybridConnectionsListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsListKeysInput =
-  typeof HybridConnectionsListKeysInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsListKeysInput>;
 
 // Output Schema
+export interface HybridConnectionsListKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const HybridConnectionsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -496,9 +624,7 @@ export const HybridConnectionsListKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type HybridConnectionsListKeysOutput =
-  typeof HybridConnectionsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsListKeysOutput>;
 
 // The operation
 /**
@@ -518,6 +644,15 @@ export const HybridConnectionsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HybridConnectionsRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  hybridConnectionName: string;
+  authorizationRuleName: string;
+  keyType: "PrimaryKey" | "SecondaryKey";
+  key?: string;
+}
 export const HybridConnectionsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -533,11 +668,16 @@ export const HybridConnectionsRegenerateKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       apiVersion: "2024-01-01",
     }),
-  );
-export type HybridConnectionsRegenerateKeysInput =
-  typeof HybridConnectionsRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<HybridConnectionsRegenerateKeysInput>;
 
 // Output Schema
+export interface HybridConnectionsRegenerateKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const HybridConnectionsRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -545,9 +685,7 @@ export const HybridConnectionsRegenerateKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type HybridConnectionsRegenerateKeysOutput =
-  typeof HybridConnectionsRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<HybridConnectionsRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -566,6 +704,10 @@ export const HybridConnectionsRegenerateKeys =
     outputSchema: HybridConnectionsRegenerateKeysOutput,
   }));
 // Input Schema
+export interface NamespacesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+}
 export const NamespacesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -576,11 +718,20 @@ export const NamespacesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/checkNameAvailability",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesCheckNameAvailabilityInput =
-  typeof NamespacesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface NamespacesCheckNameAvailabilityOutput {
+  message?: string;
+  nameAvailable?: boolean;
+  reason?:
+    | "None"
+    | "InvalidName"
+    | "SubscriptionIsDisabled"
+    | "NameInUse"
+    | "NameInLockdown"
+    | "TooManyNamespaceInCurrentSubscription";
+}
 export const NamespacesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
@@ -595,9 +746,7 @@ export const NamespacesCheckNameAvailabilityOutput =
         "TooManyNamespaceInCurrentSubscription",
       ]),
     ),
-  });
-export type NamespacesCheckNameAvailabilityOutput =
-  typeof NamespacesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -612,6 +761,36 @@ export const NamespacesCheckNameAvailability =
     outputSchema: NamespacesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface NamespacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  properties?: {
+    provisioningState?: string;
+    status?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    serviceBusEndpoint?: string;
+    metricId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+  };
+  sku?: { name: "Standard"; tier?: "Standard" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -677,11 +856,22 @@ export const NamespacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesCreateOrUpdateInput =
-  typeof NamespacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -701,9 +891,7 @@ export const NamespacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrUpdateOutput =
-  typeof NamespacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -721,6 +909,14 @@ export const NamespacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesCreateOrUpdateAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+  properties?: { rights: ("Manage" | "Send" | "Listen")[] };
+  location?: string;
+}
 export const NamespacesCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -739,11 +935,22 @@ export const NamespacesCreateOrUpdateAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesCreateOrUpdateAuthorizationRuleInput =
-  typeof NamespacesCreateOrUpdateAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateAuthorizationRuleInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -763,9 +970,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrUpdateAuthorizationRuleOutput =
-  typeof NamespacesCreateOrUpdateAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -783,6 +988,17 @@ export const NamespacesCreateOrUpdateAuthorizationRule =
     outputSchema: NamespacesCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesCreateOrUpdateNetworkRuleSetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  properties?: {
+    trustedServiceAccessEnabled?: boolean;
+    defaultAction?: "Allow" | "Deny";
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    ipRules?: { ipMask?: string; action?: "Allow" }[];
+  };
+}
 export const NamespacesCreateOrUpdateNetworkRuleSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -811,11 +1027,22 @@ export const NamespacesCreateOrUpdateNetworkRuleSetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesCreateOrUpdateNetworkRuleSetInput =
-  typeof NamespacesCreateOrUpdateNetworkRuleSetInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrUpdateNetworkRuleSetInput>;
 
 // Output Schema
+export interface NamespacesCreateOrUpdateNetworkRuleSetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -835,9 +1062,7 @@ export const NamespacesCreateOrUpdateNetworkRuleSetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrUpdateNetworkRuleSetOutput =
-  typeof NamespacesCreateOrUpdateNetworkRuleSetOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrUpdateNetworkRuleSetOutput>;
 
 // The operation
 /**
@@ -854,6 +1079,11 @@ export const NamespacesCreateOrUpdateNetworkRuleSet =
     outputSchema: NamespacesCreateOrUpdateNetworkRuleSetOutput,
   }));
 // Input Schema
+export interface NamespacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -864,12 +1094,12 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
+) as unknown as Schema.Codec<NamespacesDeleteInput>;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
+export type NamespacesDeleteOutput = void;
+export const NamespacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -885,6 +1115,12 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
+export interface NamespacesDeleteAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -897,15 +1133,12 @@ export const NamespacesDeleteAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesDeleteAuthorizationRuleInput =
-  typeof NamespacesDeleteAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesDeleteAuthorizationRuleInput>;
 
 // Output Schema
+export type NamespacesDeleteAuthorizationRuleOutput = void;
 export const NamespacesDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteAuthorizationRuleOutput =
-  typeof NamespacesDeleteAuthorizationRuleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -923,6 +1156,11 @@ export const NamespacesDeleteAuthorizationRule =
     outputSchema: NamespacesDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -933,10 +1171,22 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type NamespacesGetInput = typeof NamespacesGetInput.Type;
+) as unknown as Schema.Codec<NamespacesGetInput>;
 
 // Output Schema
+export interface NamespacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -955,8 +1205,7 @@ export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
+}) as unknown as Schema.Codec<NamespacesGetOutput>;
 
 // The operation
 /**
@@ -972,6 +1221,12 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
+export interface NamespacesGetAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -984,11 +1239,22 @@ export const NamespacesGetAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesGetAuthorizationRuleInput =
-  typeof NamespacesGetAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<NamespacesGetAuthorizationRuleInput>;
 
 // Output Schema
+export interface NamespacesGetAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1008,9 +1274,7 @@ export const NamespacesGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesGetAuthorizationRuleOutput =
-  typeof NamespacesGetAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesGetAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -1028,6 +1292,11 @@ export const NamespacesGetAuthorizationRule =
     outputSchema: NamespacesGetAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface NamespacesGetNetworkRuleSetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetNetworkRuleSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1039,11 +1308,22 @@ export const NamespacesGetNetworkRuleSetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesGetNetworkRuleSetInput =
-  typeof NamespacesGetNetworkRuleSetInput.Type;
+  ) as unknown as Schema.Codec<NamespacesGetNetworkRuleSetInput>;
 
 // Output Schema
+export interface NamespacesGetNetworkRuleSetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetNetworkRuleSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1063,9 +1343,7 @@ export const NamespacesGetNetworkRuleSetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesGetNetworkRuleSetOutput =
-  typeof NamespacesGetNetworkRuleSetOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesGetNetworkRuleSetOutput>;
 
 // The operation
 /**
@@ -1083,6 +1361,9 @@ export const NamespacesGetNetworkRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesListInput {
+  subscriptionId: string;
+}
 export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1091,10 +1372,25 @@ export const NamespacesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces",
     apiVersion: "2024-01-01",
   }),
-);
-export type NamespacesListInput = typeof NamespacesListInput.Type;
+) as unknown as Schema.Codec<NamespacesListInput>;
 
 // Output Schema
+export interface NamespacesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1118,8 +1414,7 @@ export const NamespacesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type NamespacesListOutput = typeof NamespacesListOutput.Type;
+}) as unknown as Schema.Codec<NamespacesListOutput>;
 
 // The operation
 /**
@@ -1133,6 +1428,11 @@ export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesListOutput,
 }));
 // Input Schema
+export interface NamespacesListAuthorizationRulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1144,11 +1444,25 @@ export const NamespacesListAuthorizationRulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesListAuthorizationRulesInput =
-  typeof NamespacesListAuthorizationRulesInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListAuthorizationRulesInput>;
 
 // Output Schema
+export interface NamespacesListAuthorizationRulesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1183,9 +1497,7 @@ export const NamespacesListAuthorizationRulesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListAuthorizationRulesOutput =
-  typeof NamespacesListAuthorizationRulesOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListAuthorizationRulesOutput>;
 
 // The operation
 /**
@@ -1202,6 +1514,10 @@ export const NamespacesListAuthorizationRules =
     outputSchema: NamespacesListAuthorizationRulesOutput,
   }));
 // Input Schema
+export interface NamespacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1212,11 +1528,25 @@ export const NamespacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesListByResourceGroupInput =
-  typeof NamespacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1251,9 +1581,7 @@ export const NamespacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListByResourceGroupOutput =
-  typeof NamespacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1269,6 +1597,12 @@ export const NamespacesListByResourceGroup =
     outputSchema: NamespacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespacesListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+}
 export const NamespacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1281,10 +1615,16 @@ export const NamespacesListKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesListKeysInput = typeof NamespacesListKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListKeysInput>;
 
 // Output Schema
+export interface NamespacesListKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NamespacesListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -1292,8 +1632,7 @@ export const NamespacesListKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NamespacesListKeysOutput = typeof NamespacesListKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListKeysOutput>;
 
 // The operation
 /**
@@ -1310,6 +1649,14 @@ export const NamespacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesListKeysOutput,
 }));
 // Input Schema
+export interface NamespacesRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  authorizationRuleName: string;
+  keyType: "PrimaryKey" | "SecondaryKey";
+  key?: string;
+}
 export const NamespacesRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1324,11 +1671,16 @@ export const NamespacesRegenerateKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       apiVersion: "2024-01-01",
     }),
-  );
-export type NamespacesRegenerateKeysInput =
-  typeof NamespacesRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<NamespacesRegenerateKeysInput>;
 
 // Output Schema
+export interface NamespacesRegenerateKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const NamespacesRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -1336,9 +1688,7 @@ export const NamespacesRegenerateKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type NamespacesRegenerateKeysOutput =
-  typeof NamespacesRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -1357,6 +1707,35 @@ export const NamespacesRegenerateKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  sku?: { name: "Standard"; tier?: "Standard" };
+  properties?: {
+    provisioningState?: string;
+    status?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    serviceBusEndpoint?: string;
+    metricId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+  };
+  tags?: Record<string, string>;
+}
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1420,10 +1799,22 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateInput>;
 
 // Output Schema
+export interface NamespacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1444,8 +1835,7 @@ export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -1461,6 +1851,7 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1469,10 +1860,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Relay/operations",
     apiVersion: "2024-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1495,8 +1900,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1509,6 +1913,27 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+    };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Canceled"
+      | "Failed";
+  };
+  location?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1554,11 +1979,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1578,9 +2014,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1598,6 +2032,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1610,15 +2050,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1636,6 +2073,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1648,11 +2091,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1672,9 +2126,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -1692,6 +2144,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1703,11 +2160,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1742,9 +2213,7 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -1761,6 +2230,12 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1773,11 +2248,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1797,9 +2283,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1818,6 +2302,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1829,11 +2318,25 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateLinkResources",
       apiVersion: "2024-01-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1868,9 +2371,7 @@ export const PrivateLinkResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -1888,6 +2389,23 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WCFRelaysCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  properties?: {
+    isDynamic?: boolean;
+    createdAt?: string;
+    updatedAt?: string;
+    listenerCount?: number;
+    relayType?: "NetTcp" | "Http";
+    requiresClientAuthorization?: boolean;
+    requiresTransportSecurity?: boolean;
+    userMetadata?: string;
+  };
+  location?: string;
+}
 export const WCFRelaysCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1913,11 +2431,22 @@ export const WCFRelaysCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysCreateOrUpdateInput =
-  typeof WCFRelaysCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysCreateOrUpdateInput>;
 
 // Output Schema
+export interface WCFRelaysCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WCFRelaysCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1937,9 +2466,7 @@ export const WCFRelaysCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WCFRelaysCreateOrUpdateOutput =
-  typeof WCFRelaysCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1958,6 +2485,15 @@ export const WCFRelaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WCFRelaysCreateOrUpdateAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  authorizationRuleName: string;
+  properties?: { rights: ("Manage" | "Send" | "Listen")[] };
+  location?: string;
+}
 export const WCFRelaysCreateOrUpdateAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1977,11 +2513,22 @@ export const WCFRelaysCreateOrUpdateAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysCreateOrUpdateAuthorizationRuleInput =
-  typeof WCFRelaysCreateOrUpdateAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysCreateOrUpdateAuthorizationRuleInput>;
 
 // Output Schema
+export interface WCFRelaysCreateOrUpdateAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2001,9 +2548,7 @@ export const WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WCFRelaysCreateOrUpdateAuthorizationRuleOutput =
-  typeof WCFRelaysCreateOrUpdateAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysCreateOrUpdateAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -2022,6 +2567,12 @@ export const WCFRelaysCreateOrUpdateAuthorizationRule =
     outputSchema: WCFRelaysCreateOrUpdateAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface WCFRelaysDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+}
 export const WCFRelaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2033,12 +2584,12 @@ export const WCFRelaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type WCFRelaysDeleteInput = typeof WCFRelaysDeleteInput.Type;
+) as unknown as Schema.Codec<WCFRelaysDeleteInput>;
 
 // Output Schema
-export const WCFRelaysDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WCFRelaysDeleteOutput = typeof WCFRelaysDeleteOutput.Type;
+export type WCFRelaysDeleteOutput = void;
+export const WCFRelaysDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WCFRelaysDeleteOutput>;
 
 // The operation
 /**
@@ -2055,6 +2606,13 @@ export const WCFRelaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WCFRelaysDeleteOutput,
 }));
 // Input Schema
+export interface WCFRelaysDeleteAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  authorizationRuleName: string;
+}
 export const WCFRelaysDeleteAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2068,15 +2626,12 @@ export const WCFRelaysDeleteAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysDeleteAuthorizationRuleInput =
-  typeof WCFRelaysDeleteAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysDeleteAuthorizationRuleInput>;
 
 // Output Schema
+export type WCFRelaysDeleteAuthorizationRuleOutput = void;
 export const WCFRelaysDeleteAuthorizationRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WCFRelaysDeleteAuthorizationRuleOutput =
-  typeof WCFRelaysDeleteAuthorizationRuleOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WCFRelaysDeleteAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -2095,6 +2650,12 @@ export const WCFRelaysDeleteAuthorizationRule =
     outputSchema: WCFRelaysDeleteAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface WCFRelaysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+}
 export const WCFRelaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2106,10 +2667,22 @@ export const WCFRelaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}",
     apiVersion: "2024-01-01",
   }),
-);
-export type WCFRelaysGetInput = typeof WCFRelaysGetInput.Type;
+) as unknown as Schema.Codec<WCFRelaysGetInput>;
 
 // Output Schema
+export interface WCFRelaysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WCFRelaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2128,8 +2701,7 @@ export const WCFRelaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WCFRelaysGetOutput = typeof WCFRelaysGetOutput.Type;
+}) as unknown as Schema.Codec<WCFRelaysGetOutput>;
 
 // The operation
 /**
@@ -2146,6 +2718,13 @@ export const WCFRelaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WCFRelaysGetOutput,
 }));
 // Input Schema
+export interface WCFRelaysGetAuthorizationRuleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  authorizationRuleName: string;
+}
 export const WCFRelaysGetAuthorizationRuleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2159,11 +2738,22 @@ export const WCFRelaysGetAuthorizationRuleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysGetAuthorizationRuleInput =
-  typeof WCFRelaysGetAuthorizationRuleInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysGetAuthorizationRuleInput>;
 
 // Output Schema
+export interface WCFRelaysGetAuthorizationRuleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WCFRelaysGetAuthorizationRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2183,9 +2773,7 @@ export const WCFRelaysGetAuthorizationRuleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WCFRelaysGetAuthorizationRuleOutput =
-  typeof WCFRelaysGetAuthorizationRuleOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysGetAuthorizationRuleOutput>;
 
 // The operation
 /**
@@ -2204,6 +2792,12 @@ export const WCFRelaysGetAuthorizationRule =
     outputSchema: WCFRelaysGetAuthorizationRuleOutput,
   }));
 // Input Schema
+export interface WCFRelaysListAuthorizationRulesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+}
 export const WCFRelaysListAuthorizationRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2216,11 +2810,25 @@ export const WCFRelaysListAuthorizationRulesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysListAuthorizationRulesInput =
-  typeof WCFRelaysListAuthorizationRulesInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysListAuthorizationRulesInput>;
 
 // Output Schema
+export interface WCFRelaysListAuthorizationRulesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WCFRelaysListAuthorizationRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2255,9 +2863,7 @@ export const WCFRelaysListAuthorizationRulesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WCFRelaysListAuthorizationRulesOutput =
-  typeof WCFRelaysListAuthorizationRulesOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysListAuthorizationRulesOutput>;
 
 // The operation
 /**
@@ -2275,6 +2881,11 @@ export const WCFRelaysListAuthorizationRules =
     outputSchema: WCFRelaysListAuthorizationRulesOutput,
   }));
 // Input Schema
+export interface WCFRelaysListByNamespaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const WCFRelaysListByNamespaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2286,11 +2897,25 @@ export const WCFRelaysListByNamespaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysListByNamespaceInput =
-  typeof WCFRelaysListByNamespaceInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysListByNamespaceInput>;
 
 // Output Schema
+export interface WCFRelaysListByNamespaceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WCFRelaysListByNamespaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2325,9 +2950,7 @@ export const WCFRelaysListByNamespaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WCFRelaysListByNamespaceOutput =
-  typeof WCFRelaysListByNamespaceOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysListByNamespaceOutput>;
 
 // The operation
 /**
@@ -2345,6 +2968,13 @@ export const WCFRelaysListByNamespace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WCFRelaysListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  authorizationRuleName: string;
+}
 export const WCFRelaysListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2359,10 +2989,16 @@ export const WCFRelaysListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/listKeys",
     apiVersion: "2024-01-01",
   }),
-);
-export type WCFRelaysListKeysInput = typeof WCFRelaysListKeysInput.Type;
+) as unknown as Schema.Codec<WCFRelaysListKeysInput>;
 
 // Output Schema
+export interface WCFRelaysListKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const WCFRelaysListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -2370,8 +3006,7 @@ export const WCFRelaysListKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type WCFRelaysListKeysOutput = typeof WCFRelaysListKeysOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysListKeysOutput>;
 
 // The operation
 /**
@@ -2389,6 +3024,15 @@ export const WCFRelaysListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WCFRelaysListKeysOutput,
 }));
 // Input Schema
+export interface WCFRelaysRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  relayName: string;
+  authorizationRuleName: string;
+  keyType: "PrimaryKey" | "SecondaryKey";
+  key?: string;
+}
 export const WCFRelaysRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2404,11 +3048,16 @@ export const WCFRelaysRegenerateKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys",
       apiVersion: "2024-01-01",
     }),
-  );
-export type WCFRelaysRegenerateKeysInput =
-  typeof WCFRelaysRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<WCFRelaysRegenerateKeysInput>;
 
 // Output Schema
+export interface WCFRelaysRegenerateKeysOutput {
+  primaryConnectionString?: string;
+  secondaryConnectionString?: string;
+  primaryKey?: string;
+  secondaryKey?: string;
+  keyName?: string;
+}
 export const WCFRelaysRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryConnectionString: Schema.optional(Schema.String),
@@ -2416,9 +3065,7 @@ export const WCFRelaysRegenerateKeysOutput =
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     keyName: Schema.optional(Schema.String),
-  });
-export type WCFRelaysRegenerateKeysOutput =
-  typeof WCFRelaysRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<WCFRelaysRegenerateKeysOutput>;
 
 // The operation
 /**

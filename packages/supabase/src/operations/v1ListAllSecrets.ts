@@ -4,20 +4,28 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllSecretsInput {
+  ref: string;
+}
 export const V1ListAllSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v1/projects/{ref}/secrets" }));
-export type V1ListAllSecretsInput = typeof V1ListAllSecretsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/projects/{ref}/secrets" }),
+) as unknown as Schema.Codec<V1ListAllSecretsInput>;
 
 // Output Schema
+export type V1ListAllSecretsOutput = {
+  name: string;
+  value: string;
+  updated_at?: string;
+}[];
 export const V1ListAllSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.String,
     value: Schema.String,
     updated_at: Schema.optional(Schema.String),
   }),
-);
-export type V1ListAllSecretsOutput = typeof V1ListAllSecretsOutput.Type;
+) as unknown as Schema.Codec<V1ListAllSecretsOutput>;
 
 // The operation
 /**

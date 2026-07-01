@@ -1,8 +1,133 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostSubscriptionSchedulesInput {
+  billing_mode?: {
+    flexible?: { proration_discounts?: "included" | "itemized" };
+    type: "classic" | "flexible";
+  };
+  customer?: string;
+  customer_account?: string;
+  default_settings?: {
+    application_fee_percent?: number;
+    automatic_tax?: {
+      enabled: boolean;
+      liability?: { account?: string; type: "account" | "self" };
+    };
+    billing_cycle_anchor?: "automatic" | "phase_start";
+    billing_thresholds?:
+      | { amount_gte?: number; reset_billing_cycle_anchor?: boolean }
+      | "";
+    collection_method?: "charge_automatically" | "send_invoice";
+    default_payment_method?: string;
+    description?: string | "";
+    invoice_settings?: {
+      account_tax_ids?: string[] | "";
+      days_until_due?: number;
+      issuer?: { account?: string; type: "account" | "self" };
+    };
+    on_behalf_of?: string | "";
+    transfer_data?: { amount_percent?: number; destination: string } | "";
+  };
+  end_behavior?: "cancel" | "none" | "release" | "renew";
+  expand?: string[];
+  from_subscription?: string;
+  metadata?: Record<string, string> | "";
+  phases?: {
+    add_invoice_items?: {
+      discountable?: boolean;
+      discounts?: {
+        coupon?: string;
+        discount?: string;
+        promotion_code?: string;
+      }[];
+      metadata?: Record<string, string>;
+      period?: {
+        end: {
+          timestamp?: number;
+          type: "min_item_period_end" | "phase_end" | "timestamp";
+        };
+        start: {
+          timestamp?: number;
+          type: "max_item_period_start" | "phase_start" | "timestamp";
+        };
+      };
+      price?: string;
+      price_data?: {
+        currency: string;
+        product: string;
+        tax_behavior?: "exclusive" | "inclusive" | "unspecified";
+        unit_amount?: number;
+        unit_amount_decimal?: string;
+      };
+      quantity?: number;
+      tax_rates?: string[] | "";
+    }[];
+    application_fee_percent?: number;
+    automatic_tax?: {
+      enabled: boolean;
+      liability?: { account?: string; type: "account" | "self" };
+    };
+    billing_cycle_anchor?: "automatic" | "phase_start";
+    billing_thresholds?:
+      | { amount_gte?: number; reset_billing_cycle_anchor?: boolean }
+      | "";
+    collection_method?: "charge_automatically" | "send_invoice";
+    currency?: string;
+    default_payment_method?: string;
+    default_tax_rates?: string[] | "";
+    description?: string | "";
+    discounts?:
+      | { coupon?: string; discount?: string; promotion_code?: string }[]
+      | "";
+    duration?: {
+      interval: "day" | "month" | "week" | "year";
+      interval_count?: number;
+    };
+    end_date?: number;
+    invoice_settings?: {
+      account_tax_ids?: string[] | "";
+      days_until_due?: number;
+      issuer?: { account?: string; type: "account" | "self" };
+    };
+    items: {
+      billing_thresholds?: { usage_gte: number } | "";
+      discounts?:
+        | { coupon?: string; discount?: string; promotion_code?: string }[]
+        | "";
+      metadata?: Record<string, string>;
+      plan?: string;
+      price?: string;
+      price_data?: {
+        currency: string;
+        product: string;
+        recurring: {
+          interval: "day" | "month" | "week" | "year";
+          interval_count?: number;
+        };
+        tax_behavior?: "exclusive" | "inclusive" | "unspecified";
+        unit_amount?: number;
+        unit_amount_decimal?: string;
+      };
+      quantity?: number;
+      tax_rates?: string[] | "";
+    }[];
+    metadata?: Record<string, string>;
+    on_behalf_of?: string;
+    proration_behavior?: "always_invoice" | "create_prorations" | "none";
+    transfer_data?: { amount_percent?: number; destination: string };
+    trial?: boolean;
+    trial_end?: number;
+  }[];
+  start_date?: number | "now";
+}
 export const PostSubscriptionSchedulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     billing_mode: Schema.optional(
@@ -36,15 +161,30 @@ export const PostSubscriptionSchedulesInput =
         billing_cycle_anchor: Schema.optional(
           Schema.Literals(["automatic", "phase_start"]),
         ),
-        billing_thresholds: Schema.optional(Schema.Unknown),
+        billing_thresholds: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              amount_gte: Schema.optional(Schema.Number),
+              reset_billing_cycle_anchor: Schema.optional(Schema.Boolean),
+            }),
+            Schema.Literals([""]),
+          ]),
+        ),
         collection_method: Schema.optional(
           Schema.Literals(["charge_automatically", "send_invoice"]),
         ),
         default_payment_method: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.Unknown),
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Literals([""])]),
+        ),
         invoice_settings: Schema.optional(
           Schema.Struct({
-            account_tax_ids: Schema.optional(Schema.Unknown),
+            account_tax_ids: Schema.optional(
+              Schema.Union([
+                Schema.Array(Schema.String),
+                Schema.Literals([""]),
+              ]),
+            ),
             days_until_due: Schema.optional(Schema.Number),
             issuer: Schema.optional(
               Schema.Struct({
@@ -54,8 +194,18 @@ export const PostSubscriptionSchedulesInput =
             ),
           }),
         ),
-        on_behalf_of: Schema.optional(Schema.Unknown),
-        transfer_data: Schema.optional(Schema.Unknown),
+        on_behalf_of: Schema.optional(
+          Schema.Union([Schema.String, Schema.Literals([""])]),
+        ),
+        transfer_data: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              amount_percent: Schema.optional(Schema.Number),
+              destination: Schema.String,
+            }),
+            Schema.Literals([""]),
+          ]),
+        ),
       }),
     ),
     end_behavior: Schema.optional(
@@ -63,13 +213,19 @@ export const PostSubscriptionSchedulesInput =
     ),
     expand: Schema.optional(Schema.Array(Schema.String)),
     from_subscription: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Unknown),
+    metadata: Schema.optional(
+      Schema.Union([
+        Schema.Record(Schema.String, Schema.String),
+        Schema.Literals([""]),
+      ]),
+    ),
     phases: Schema.optional(
       Schema.Array(
         Schema.Struct({
           add_invoice_items: Schema.optional(
             Schema.Array(
               Schema.Struct({
+                discountable: Schema.optional(Schema.Boolean),
                 discounts: Schema.optional(
                   Schema.Array(
                     Schema.Struct({
@@ -119,7 +275,12 @@ export const PostSubscriptionSchedulesInput =
                   }),
                 ),
                 quantity: Schema.optional(Schema.Number),
-                tax_rates: Schema.optional(Schema.Unknown),
+                tax_rates: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(Schema.String),
+                    Schema.Literals([""]),
+                  ]),
+                ),
               }),
             ),
           ),
@@ -138,15 +299,38 @@ export const PostSubscriptionSchedulesInput =
           billing_cycle_anchor: Schema.optional(
             Schema.Literals(["automatic", "phase_start"]),
           ),
-          billing_thresholds: Schema.optional(Schema.Unknown),
+          billing_thresholds: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                amount_gte: Schema.optional(Schema.Number),
+                reset_billing_cycle_anchor: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Literals([""]),
+            ]),
+          ),
           collection_method: Schema.optional(
             Schema.Literals(["charge_automatically", "send_invoice"]),
           ),
           currency: Schema.optional(Schema.String),
           default_payment_method: Schema.optional(Schema.String),
-          default_tax_rates: Schema.optional(Schema.Unknown),
-          description: Schema.optional(Schema.Unknown),
-          discounts: Schema.optional(Schema.Unknown),
+          default_tax_rates: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Literals([""])]),
+          ),
+          discounts: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  coupon: Schema.optional(Schema.String),
+                  discount: Schema.optional(Schema.String),
+                  promotion_code: Schema.optional(Schema.String),
+                }),
+              ),
+              Schema.Literals([""]),
+            ]),
+          ),
           duration: Schema.optional(
             Schema.Struct({
               interval: Schema.Literals(["day", "month", "week", "year"]),
@@ -156,7 +340,12 @@ export const PostSubscriptionSchedulesInput =
           end_date: Schema.optional(Schema.Number),
           invoice_settings: Schema.optional(
             Schema.Struct({
-              account_tax_ids: Schema.optional(Schema.Unknown),
+              account_tax_ids: Schema.optional(
+                Schema.Union([
+                  Schema.Array(Schema.String),
+                  Schema.Literals([""]),
+                ]),
+              ),
               days_until_due: Schema.optional(Schema.Number),
               issuer: Schema.optional(
                 Schema.Struct({
@@ -168,8 +357,26 @@ export const PostSubscriptionSchedulesInput =
           ),
           items: Schema.Array(
             Schema.Struct({
-              billing_thresholds: Schema.optional(Schema.Unknown),
-              discounts: Schema.optional(Schema.Unknown),
+              billing_thresholds: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    usage_gte: Schema.Number,
+                  }),
+                  Schema.Literals([""]),
+                ]),
+              ),
+              discounts: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      coupon: Schema.optional(Schema.String),
+                      discount: Schema.optional(Schema.String),
+                      promotion_code: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  Schema.Literals([""]),
+                ]),
+              ),
               metadata: Schema.optional(
                 Schema.Record(Schema.String, Schema.String),
               ),
@@ -191,7 +398,12 @@ export const PostSubscriptionSchedulesInput =
                 }),
               ),
               quantity: Schema.optional(Schema.Number),
-              tax_rates: Schema.optional(Schema.Unknown),
+              tax_rates: Schema.optional(
+                Schema.Union([
+                  Schema.Array(Schema.String),
+                  Schema.Literals([""]),
+                ]),
+              ),
             }),
           ),
           metadata: Schema.optional(
@@ -212,30 +424,1255 @@ export const PostSubscriptionSchedulesInput =
         }),
       ),
     ),
-    start_date: Schema.optional(Schema.Unknown),
+    start_date: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Literals(["now"])]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/v1/subscription_schedules",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostSubscriptionSchedulesInput =
-  typeof PostSubscriptionSchedulesInput.Type;
+  ) as unknown as Schema.Codec<PostSubscriptionSchedulesInput>;
 
 // Output Schema
+export interface PostSubscriptionSchedulesOutput {
+  application:
+    | string
+    | { id: string; name: string | null; object: "application" }
+    | { deleted: true; id: string; name: string | null; object: "application" }
+    | null;
+  billing_mode: {
+    flexible: { proration_discounts?: "included" | "itemized" } | null;
+    type: "classic" | "flexible";
+    updated_at?: number;
+  };
+  canceled_at: number | null;
+  completed_at: number | null;
+  created: number;
+  current_phase: { end_date: number; start_date: number } | null;
+  customer: unknown;
+  customer_account: string | null;
+  default_settings: {
+    application_fee_percent: number | null;
+    automatic_tax?: {
+      disabled_reason: "requires_location_inputs" | null;
+      enabled: boolean;
+      liability: { account?: unknown; type: "account" | "self" } | null;
+    };
+    billing_cycle_anchor: "automatic" | "phase_start";
+    billing_thresholds: {
+      amount_gte: number | null;
+      reset_billing_cycle_anchor: boolean | null;
+    } | null;
+    collection_method: "charge_automatically" | "send_invoice" | null;
+    default_payment_method: unknown;
+    description: string | null;
+    invoice_settings: {
+      account_tax_ids:
+        | (
+            | string
+            | {
+                country: string | null;
+                created: number;
+                customer: unknown;
+                customer_account: string | null;
+                id: string;
+                livemode: boolean;
+                object: "tax_id";
+                owner: {
+                  account?: unknown;
+                  application?:
+                    | string
+                    | {
+                        id: string;
+                        name: string | null;
+                        object: "application";
+                      };
+                  customer?: unknown;
+                  customer_account: string | null;
+                  type: "account" | "application" | "customer" | "self";
+                } | null;
+                type:
+                  | "ad_nrt"
+                  | "ae_trn"
+                  | "al_tin"
+                  | "am_tin"
+                  | "ao_tin"
+                  | "ar_cuit"
+                  | "au_abn"
+                  | "au_arn"
+                  | "aw_tin"
+                  | "az_tin"
+                  | "ba_tin"
+                  | "bb_tin"
+                  | "bd_bin"
+                  | "bf_ifu"
+                  | "bg_uic"
+                  | "bh_vat"
+                  | "bj_ifu"
+                  | "bo_tin"
+                  | "br_cnpj"
+                  | "br_cpf"
+                  | "bs_tin"
+                  | "by_tin"
+                  | "ca_bn"
+                  | "ca_gst_hst"
+                  | "ca_pst_bc"
+                  | "ca_pst_mb"
+                  | "ca_pst_sk"
+                  | "ca_qst"
+                  | "cd_nif"
+                  | "ch_uid"
+                  | "ch_vat"
+                  | "cl_tin"
+                  | "cm_niu"
+                  | "cn_tin"
+                  | "co_nit"
+                  | "cr_tin"
+                  | "cv_nif"
+                  | "de_stn"
+                  | "do_rcn"
+                  | "ec_ruc"
+                  | "eg_tin"
+                  | "es_cif"
+                  | "et_tin"
+                  | "eu_oss_vat"
+                  | "eu_vat"
+                  | "fo_vat"
+                  | "gb_vat"
+                  | "ge_vat"
+                  | "gi_tin"
+                  | "gn_nif"
+                  | "hk_br"
+                  | "hr_oib"
+                  | "hu_tin"
+                  | "id_npwp"
+                  | "il_vat"
+                  | "in_gst"
+                  | "is_vat"
+                  | "it_cf"
+                  | "jp_cn"
+                  | "jp_rn"
+                  | "jp_trn"
+                  | "ke_pin"
+                  | "kg_tin"
+                  | "kh_tin"
+                  | "kr_brn"
+                  | "kz_bin"
+                  | "la_tin"
+                  | "li_uid"
+                  | "li_vat"
+                  | "lk_vat"
+                  | "ma_vat"
+                  | "md_vat"
+                  | "me_pib"
+                  | "mk_vat"
+                  | "mr_nif"
+                  | "mx_rfc"
+                  | "my_frp"
+                  | "my_itn"
+                  | "my_sst"
+                  | "ng_tin"
+                  | "no_vat"
+                  | "no_voec"
+                  | "np_pan"
+                  | "nz_gst"
+                  | "om_vat"
+                  | "pe_ruc"
+                  | "ph_tin"
+                  | "pl_nip"
+                  | "py_ruc"
+                  | "ro_tin"
+                  | "rs_pib"
+                  | "ru_inn"
+                  | "ru_kpp"
+                  | "sa_vat"
+                  | "sg_gst"
+                  | "sg_uen"
+                  | "si_tin"
+                  | "sn_ninea"
+                  | "sr_fin"
+                  | "sv_nit"
+                  | "th_vat"
+                  | "tj_tin"
+                  | "tr_tin"
+                  | "tw_vat"
+                  | "tz_vat"
+                  | "ua_vat"
+                  | "ug_tin"
+                  | "unknown"
+                  | "us_ein"
+                  | "uy_ruc"
+                  | "uz_tin"
+                  | "uz_vat"
+                  | "ve_rif"
+                  | "vn_tin"
+                  | "za_vat"
+                  | "zm_tin"
+                  | "zw_tin";
+                value: string;
+                verification: {
+                  status: "pending" | "unavailable" | "unverified" | "verified";
+                  verified_address: string | null;
+                  verified_name: string | null;
+                } | null;
+              }
+            | { deleted: true; id: string; object: "tax_id" }
+          )[]
+        | null;
+      days_until_due: number | null;
+      issuer: { account?: unknown; type: "account" | "self" };
+    };
+    on_behalf_of: unknown;
+    transfer_data: {
+      amount_percent: number | null;
+      destination: unknown;
+    } | null;
+  };
+  end_behavior: "cancel" | "none" | "release" | "renew";
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  object: "subscription_schedule";
+  phases: {
+    add_invoice_items: {
+      discountable: boolean | null;
+      discounts: {
+        coupon:
+          | string
+          | {
+              amount_off: number | null;
+              applies_to?: { products: string[] };
+              created: number;
+              currency: string | null;
+              currency_options?: Record<string, { amount_off: number }>;
+              duration: "forever" | "once" | "repeating";
+              duration_in_months: number | null;
+              id: string;
+              livemode: boolean;
+              max_redemptions: number | null;
+              metadata: Record<string, string> | null;
+              name: string | null;
+              object: "coupon";
+              percent_off: number | null;
+              redeem_by: number | null;
+              times_redeemed: number;
+              valid: boolean;
+            }
+          | null;
+        discount:
+          | string
+          | {
+              checkout_session: string | null;
+              customer: unknown;
+              customer_account: string | null;
+              end: number | null;
+              id: string;
+              invoice: string | null;
+              invoice_item: string | null;
+              object: "discount";
+              promotion_code:
+                | string
+                | {
+                    active: boolean;
+                    code: string;
+                    created: number;
+                    customer: unknown;
+                    customer_account: string | null;
+                    expires_at: number | null;
+                    id: string;
+                    livemode: boolean;
+                    max_redemptions: number | null;
+                    metadata: Record<string, string> | null;
+                    object: "promotion_code";
+                    promotion: { coupon: unknown; type: "coupon" };
+                    restrictions: {
+                      currency_options?: Record<
+                        string,
+                        { minimum_amount: number }
+                      >;
+                      first_time_transaction: boolean;
+                      minimum_amount: number | null;
+                      minimum_amount_currency: string | null;
+                    };
+                    times_redeemed: number;
+                  }
+                | null;
+              source: { coupon: unknown; type: "coupon" };
+              start: number;
+              subscription: string | null;
+              subscription_item: string | null;
+            }
+          | null;
+        promotion_code:
+          | string
+          | {
+              active: boolean;
+              code: string;
+              created: number;
+              customer: unknown;
+              customer_account: string | null;
+              expires_at: number | null;
+              id: string;
+              livemode: boolean;
+              max_redemptions: number | null;
+              metadata: Record<string, string> | null;
+              object: "promotion_code";
+              promotion: { coupon: unknown; type: "coupon" };
+              restrictions: {
+                currency_options?: Record<string, { minimum_amount: number }>;
+                first_time_transaction: boolean;
+                minimum_amount: number | null;
+                minimum_amount_currency: string | null;
+              };
+              times_redeemed: number;
+            }
+          | null;
+      }[];
+      metadata: Record<string, string> | null;
+      period: {
+        end: {
+          timestamp?: number;
+          type: "min_item_period_end" | "phase_end" | "timestamp";
+        };
+        start: {
+          timestamp?: number;
+          type: "max_item_period_start" | "phase_start" | "timestamp";
+        };
+      };
+      price:
+        | string
+        | {
+            active: boolean;
+            billing_scheme: "per_unit" | "tiered";
+            created: number;
+            currency: string;
+            currency_options?: Record<
+              string,
+              {
+                custom_unit_amount: {
+                  maximum: number | null;
+                  minimum: number | null;
+                  preset: number | null;
+                } | null;
+                tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+                tiers?: {
+                  flat_amount: number | null;
+                  flat_amount_decimal: string | null;
+                  unit_amount: number | null;
+                  unit_amount_decimal: string | null;
+                  up_to: number | null;
+                }[];
+                unit_amount: number | null;
+                unit_amount_decimal: string | null;
+              }
+            >;
+            custom_unit_amount: {
+              maximum: number | null;
+              minimum: number | null;
+              preset: number | null;
+            } | null;
+            id: string;
+            livemode: boolean;
+            lookup_key: string | null;
+            metadata: Record<string, string>;
+            nickname: string | null;
+            object: "price";
+            product:
+              | string
+              | {
+                  active: boolean;
+                  created: number;
+                  default_price?: string | unknown | null;
+                  description: string | null;
+                  id: string;
+                  images: string[];
+                  livemode: boolean;
+                  marketing_features: { name?: string }[];
+                  metadata: Record<string, string>;
+                  name: string;
+                  object: "product";
+                  package_dimensions: {
+                    height: number;
+                    length: number;
+                    weight: number;
+                    width: number;
+                  } | null;
+                  shippable: boolean | null;
+                  statement_descriptor?: string | null;
+                  tax_code?:
+                    | string
+                    | {
+                        description: string;
+                        id: string;
+                        name: string;
+                        object: "tax_code";
+                      }
+                    | null;
+                  type: "good" | "service";
+                  unit_label?: string | null;
+                  updated: number;
+                  url: string | null;
+                }
+              | { deleted: true; id: string; object: "product" };
+            recurring: {
+              interval: "day" | "month" | "week" | "year";
+              interval_count: number;
+              meter: string | null;
+              trial_period_days: number | null;
+              usage_type: "licensed" | "metered";
+            } | null;
+            tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+            tiers?: {
+              flat_amount: number | null;
+              flat_amount_decimal: string | null;
+              unit_amount: number | null;
+              unit_amount_decimal: string | null;
+              up_to: number | null;
+            }[];
+            tiers_mode: "graduated" | "volume" | null;
+            transform_quantity: {
+              divide_by: number;
+              round: "down" | "up";
+            } | null;
+            type: "one_time" | "recurring";
+            unit_amount: number | null;
+            unit_amount_decimal: string | null;
+          }
+        | { deleted: true; id: string; object: "price" };
+      quantity: number | null;
+      tax_rates?:
+        | {
+            active: boolean;
+            country: string | null;
+            created: number;
+            description: string | null;
+            display_name: string;
+            effective_percentage: number | null;
+            flat_amount: { amount: number; currency: string } | null;
+            id: string;
+            inclusive: boolean;
+            jurisdiction: string | null;
+            jurisdiction_level:
+              | "city"
+              | "country"
+              | "county"
+              | "district"
+              | "multiple"
+              | "state"
+              | null;
+            livemode: boolean;
+            metadata: Record<string, string> | null;
+            object: "tax_rate";
+            percentage: number;
+            rate_type: "flat_amount" | "percentage" | null;
+            state: string | null;
+            tax_type:
+              | "amusement_tax"
+              | "communications_tax"
+              | "gst"
+              | "hst"
+              | "igst"
+              | "jct"
+              | "lease_tax"
+              | "pst"
+              | "qst"
+              | "retail_delivery_fee"
+              | "rst"
+              | "sales_tax"
+              | "service_tax"
+              | "vat"
+              | null;
+          }[]
+        | null;
+    }[];
+    application_fee_percent: number | null;
+    automatic_tax?: {
+      disabled_reason: "requires_location_inputs" | null;
+      enabled: boolean;
+      liability: { account?: unknown; type: "account" | "self" } | null;
+    };
+    billing_cycle_anchor: "automatic" | "phase_start" | null;
+    billing_thresholds: {
+      amount_gte: number | null;
+      reset_billing_cycle_anchor: boolean | null;
+    } | null;
+    collection_method: "charge_automatically" | "send_invoice" | null;
+    currency: string;
+    default_payment_method: unknown;
+    default_tax_rates?:
+      | {
+          active: boolean;
+          country: string | null;
+          created: number;
+          description: string | null;
+          display_name: string;
+          effective_percentage: number | null;
+          flat_amount: { amount: number; currency: string } | null;
+          id: string;
+          inclusive: boolean;
+          jurisdiction: string | null;
+          jurisdiction_level:
+            | "city"
+            | "country"
+            | "county"
+            | "district"
+            | "multiple"
+            | "state"
+            | null;
+          livemode: boolean;
+          metadata: Record<string, string> | null;
+          object: "tax_rate";
+          percentage: number;
+          rate_type: "flat_amount" | "percentage" | null;
+          state: string | null;
+          tax_type:
+            | "amusement_tax"
+            | "communications_tax"
+            | "gst"
+            | "hst"
+            | "igst"
+            | "jct"
+            | "lease_tax"
+            | "pst"
+            | "qst"
+            | "retail_delivery_fee"
+            | "rst"
+            | "sales_tax"
+            | "service_tax"
+            | "vat"
+            | null;
+        }[]
+      | null;
+    description: string | null;
+    discounts: {
+      coupon:
+        | string
+        | {
+            amount_off: number | null;
+            applies_to?: { products: string[] };
+            created: number;
+            currency: string | null;
+            currency_options?: Record<string, { amount_off: number }>;
+            duration: "forever" | "once" | "repeating";
+            duration_in_months: number | null;
+            id: string;
+            livemode: boolean;
+            max_redemptions: number | null;
+            metadata: Record<string, string> | null;
+            name: string | null;
+            object: "coupon";
+            percent_off: number | null;
+            redeem_by: number | null;
+            times_redeemed: number;
+            valid: boolean;
+          }
+        | null;
+      discount:
+        | string
+        | {
+            checkout_session: string | null;
+            customer: unknown;
+            customer_account: string | null;
+            end: number | null;
+            id: string;
+            invoice: string | null;
+            invoice_item: string | null;
+            object: "discount";
+            promotion_code:
+              | string
+              | {
+                  active: boolean;
+                  code: string;
+                  created: number;
+                  customer: unknown;
+                  customer_account: string | null;
+                  expires_at: number | null;
+                  id: string;
+                  livemode: boolean;
+                  max_redemptions: number | null;
+                  metadata: Record<string, string> | null;
+                  object: "promotion_code";
+                  promotion: { coupon: unknown; type: "coupon" };
+                  restrictions: {
+                    currency_options?: Record<
+                      string,
+                      { minimum_amount: number }
+                    >;
+                    first_time_transaction: boolean;
+                    minimum_amount: number | null;
+                    minimum_amount_currency: string | null;
+                  };
+                  times_redeemed: number;
+                }
+              | null;
+            source: {
+              coupon:
+                | string
+                | {
+                    amount_off: number | null;
+                    applies_to?: { products: string[] };
+                    created: number;
+                    currency: string | null;
+                    currency_options?: Record<string, { amount_off: number }>;
+                    duration: "forever" | "once" | "repeating";
+                    duration_in_months: number | null;
+                    id: string;
+                    livemode: boolean;
+                    max_redemptions: number | null;
+                    metadata: Record<string, string> | null;
+                    name: string | null;
+                    object: "coupon";
+                    percent_off: number | null;
+                    redeem_by: number | null;
+                    times_redeemed: number;
+                    valid: boolean;
+                  }
+                | null;
+              type: "coupon";
+            };
+            start: number;
+            subscription: string | null;
+            subscription_item: string | null;
+          }
+        | null;
+      promotion_code:
+        | string
+        | {
+            active: boolean;
+            code: string;
+            created: number;
+            customer: unknown;
+            customer_account: string | null;
+            expires_at: number | null;
+            id: string;
+            livemode: boolean;
+            max_redemptions: number | null;
+            metadata: Record<string, string> | null;
+            object: "promotion_code";
+            promotion: {
+              coupon:
+                | string
+                | {
+                    amount_off: number | null;
+                    applies_to?: { products: string[] };
+                    created: number;
+                    currency: string | null;
+                    currency_options?: Record<string, { amount_off: number }>;
+                    duration: "forever" | "once" | "repeating";
+                    duration_in_months: number | null;
+                    id: string;
+                    livemode: boolean;
+                    max_redemptions: number | null;
+                    metadata: Record<string, string> | null;
+                    name: string | null;
+                    object: "coupon";
+                    percent_off: number | null;
+                    redeem_by: number | null;
+                    times_redeemed: number;
+                    valid: boolean;
+                  }
+                | null;
+              type: "coupon";
+            };
+            restrictions: {
+              currency_options?: Record<string, { minimum_amount: number }>;
+              first_time_transaction: boolean;
+              minimum_amount: number | null;
+              minimum_amount_currency: string | null;
+            };
+            times_redeemed: number;
+          }
+        | null;
+    }[];
+    end_date: number;
+    invoice_settings: {
+      account_tax_ids:
+        | (
+            | string
+            | {
+                country: string | null;
+                created: number;
+                customer: unknown;
+                customer_account: string | null;
+                id: string;
+                livemode: boolean;
+                object: "tax_id";
+                owner: {
+                  account?: unknown;
+                  application?:
+                    | string
+                    | {
+                        id: string;
+                        name: string | null;
+                        object: "application";
+                      };
+                  customer?: unknown;
+                  customer_account: string | null;
+                  type: "account" | "application" | "customer" | "self";
+                } | null;
+                type:
+                  | "ad_nrt"
+                  | "ae_trn"
+                  | "al_tin"
+                  | "am_tin"
+                  | "ao_tin"
+                  | "ar_cuit"
+                  | "au_abn"
+                  | "au_arn"
+                  | "aw_tin"
+                  | "az_tin"
+                  | "ba_tin"
+                  | "bb_tin"
+                  | "bd_bin"
+                  | "bf_ifu"
+                  | "bg_uic"
+                  | "bh_vat"
+                  | "bj_ifu"
+                  | "bo_tin"
+                  | "br_cnpj"
+                  | "br_cpf"
+                  | "bs_tin"
+                  | "by_tin"
+                  | "ca_bn"
+                  | "ca_gst_hst"
+                  | "ca_pst_bc"
+                  | "ca_pst_mb"
+                  | "ca_pst_sk"
+                  | "ca_qst"
+                  | "cd_nif"
+                  | "ch_uid"
+                  | "ch_vat"
+                  | "cl_tin"
+                  | "cm_niu"
+                  | "cn_tin"
+                  | "co_nit"
+                  | "cr_tin"
+                  | "cv_nif"
+                  | "de_stn"
+                  | "do_rcn"
+                  | "ec_ruc"
+                  | "eg_tin"
+                  | "es_cif"
+                  | "et_tin"
+                  | "eu_oss_vat"
+                  | "eu_vat"
+                  | "fo_vat"
+                  | "gb_vat"
+                  | "ge_vat"
+                  | "gi_tin"
+                  | "gn_nif"
+                  | "hk_br"
+                  | "hr_oib"
+                  | "hu_tin"
+                  | "id_npwp"
+                  | "il_vat"
+                  | "in_gst"
+                  | "is_vat"
+                  | "it_cf"
+                  | "jp_cn"
+                  | "jp_rn"
+                  | "jp_trn"
+                  | "ke_pin"
+                  | "kg_tin"
+                  | "kh_tin"
+                  | "kr_brn"
+                  | "kz_bin"
+                  | "la_tin"
+                  | "li_uid"
+                  | "li_vat"
+                  | "lk_vat"
+                  | "ma_vat"
+                  | "md_vat"
+                  | "me_pib"
+                  | "mk_vat"
+                  | "mr_nif"
+                  | "mx_rfc"
+                  | "my_frp"
+                  | "my_itn"
+                  | "my_sst"
+                  | "ng_tin"
+                  | "no_vat"
+                  | "no_voec"
+                  | "np_pan"
+                  | "nz_gst"
+                  | "om_vat"
+                  | "pe_ruc"
+                  | "ph_tin"
+                  | "pl_nip"
+                  | "py_ruc"
+                  | "ro_tin"
+                  | "rs_pib"
+                  | "ru_inn"
+                  | "ru_kpp"
+                  | "sa_vat"
+                  | "sg_gst"
+                  | "sg_uen"
+                  | "si_tin"
+                  | "sn_ninea"
+                  | "sr_fin"
+                  | "sv_nit"
+                  | "th_vat"
+                  | "tj_tin"
+                  | "tr_tin"
+                  | "tw_vat"
+                  | "tz_vat"
+                  | "ua_vat"
+                  | "ug_tin"
+                  | "unknown"
+                  | "us_ein"
+                  | "uy_ruc"
+                  | "uz_tin"
+                  | "uz_vat"
+                  | "ve_rif"
+                  | "vn_tin"
+                  | "za_vat"
+                  | "zm_tin"
+                  | "zw_tin";
+                value: string;
+                verification: {
+                  status: "pending" | "unavailable" | "unverified" | "verified";
+                  verified_address: string | null;
+                  verified_name: string | null;
+                } | null;
+              }
+            | { deleted: true; id: string; object: "tax_id" }
+          )[]
+        | null;
+      days_until_due: number | null;
+      issuer: { account?: unknown; type: "account" | "self" } | null;
+    } | null;
+    items: {
+      billing_thresholds: { usage_gte: number | null } | null;
+      discounts: {
+        coupon:
+          | string
+          | {
+              amount_off: number | null;
+              applies_to?: { products: string[] };
+              created: number;
+              currency: string | null;
+              currency_options?: Record<string, { amount_off: number }>;
+              duration: "forever" | "once" | "repeating";
+              duration_in_months: number | null;
+              id: string;
+              livemode: boolean;
+              max_redemptions: number | null;
+              metadata: Record<string, string> | null;
+              name: string | null;
+              object: "coupon";
+              percent_off: number | null;
+              redeem_by: number | null;
+              times_redeemed: number;
+              valid: boolean;
+            }
+          | null;
+        discount:
+          | string
+          | {
+              checkout_session: string | null;
+              customer: unknown;
+              customer_account: string | null;
+              end: number | null;
+              id: string;
+              invoice: string | null;
+              invoice_item: string | null;
+              object: "discount";
+              promotion_code:
+                | string
+                | {
+                    active: boolean;
+                    code: string;
+                    created: number;
+                    customer: unknown;
+                    customer_account: string | null;
+                    expires_at: number | null;
+                    id: string;
+                    livemode: boolean;
+                    max_redemptions: number | null;
+                    metadata: Record<string, string> | null;
+                    object: "promotion_code";
+                    promotion: { coupon: unknown; type: "coupon" };
+                    restrictions: {
+                      currency_options?: Record<
+                        string,
+                        { minimum_amount: number }
+                      >;
+                      first_time_transaction: boolean;
+                      minimum_amount: number | null;
+                      minimum_amount_currency: string | null;
+                    };
+                    times_redeemed: number;
+                  }
+                | null;
+              source: { coupon: unknown; type: "coupon" };
+              start: number;
+              subscription: string | null;
+              subscription_item: string | null;
+            }
+          | null;
+        promotion_code:
+          | string
+          | {
+              active: boolean;
+              code: string;
+              created: number;
+              customer: unknown;
+              customer_account: string | null;
+              expires_at: number | null;
+              id: string;
+              livemode: boolean;
+              max_redemptions: number | null;
+              metadata: Record<string, string> | null;
+              object: "promotion_code";
+              promotion: { coupon: unknown; type: "coupon" };
+              restrictions: {
+                currency_options?: Record<string, { minimum_amount: number }>;
+                first_time_transaction: boolean;
+                minimum_amount: number | null;
+                minimum_amount_currency: string | null;
+              };
+              times_redeemed: number;
+            }
+          | null;
+      }[];
+      metadata: Record<string, string> | null;
+      plan:
+        | string
+        | {
+            active: boolean;
+            amount: number | null;
+            amount_decimal: string | null;
+            billing_scheme: "per_unit" | "tiered";
+            created: number;
+            currency: string;
+            id: string;
+            interval: "day" | "month" | "week" | "year";
+            interval_count: number;
+            livemode: boolean;
+            metadata: Record<string, string> | null;
+            meter: string | null;
+            nickname: string | null;
+            object: "plan";
+            product:
+              | string
+              | {
+                  active: boolean;
+                  created: number;
+                  default_price?:
+                    | string
+                    | {
+                        active: boolean;
+                        billing_scheme: "per_unit" | "tiered";
+                        created: number;
+                        currency: string;
+                        currency_options?: Record<
+                          string,
+                          {
+                            custom_unit_amount: unknown;
+                            tax_behavior:
+                              | "exclusive"
+                              | "inclusive"
+                              | "unspecified"
+                              | null;
+                            tiers?: {
+                              flat_amount: number | null;
+                              flat_amount_decimal: string | null;
+                              unit_amount: number | null;
+                              unit_amount_decimal: string | null;
+                              up_to: number | null;
+                            }[];
+                            unit_amount: number | null;
+                            unit_amount_decimal: string | null;
+                          }
+                        >;
+                        custom_unit_amount: unknown;
+                        id: string;
+                        livemode: boolean;
+                        lookup_key: string | null;
+                        metadata: Record<string, string>;
+                        nickname: string | null;
+                        object: "price";
+                        product: unknown;
+                        recurring: unknown;
+                        tax_behavior:
+                          | "exclusive"
+                          | "inclusive"
+                          | "unspecified"
+                          | null;
+                        tiers?: {
+                          flat_amount: number | null;
+                          flat_amount_decimal: string | null;
+                          unit_amount: number | null;
+                          unit_amount_decimal: string | null;
+                          up_to: number | null;
+                        }[];
+                        tiers_mode: "graduated" | "volume" | null;
+                        transform_quantity: unknown;
+                        type: "one_time" | "recurring";
+                        unit_amount: number | null;
+                        unit_amount_decimal: string | null;
+                      }
+                    | null;
+                  description: string | null;
+                  id: string;
+                  images: string[];
+                  livemode: boolean;
+                  marketing_features: { name?: string }[];
+                  metadata: Record<string, string>;
+                  name: string;
+                  object: "product";
+                  package_dimensions: {
+                    height: number;
+                    length: number;
+                    weight: number;
+                    width: number;
+                  } | null;
+                  shippable: boolean | null;
+                  statement_descriptor?: string | null;
+                  tax_code?:
+                    | string
+                    | {
+                        description: string;
+                        id: string;
+                        name: string;
+                        object: "tax_code";
+                      }
+                    | null;
+                  type: "good" | "service";
+                  unit_label?: string | null;
+                  updated: number;
+                  url: string | null;
+                }
+              | { deleted: true; id: string; object: "product" }
+              | null;
+            tiers?: {
+              flat_amount: number | null;
+              flat_amount_decimal: string | null;
+              unit_amount: number | null;
+              unit_amount_decimal: string | null;
+              up_to: number | null;
+            }[];
+            tiers_mode: "graduated" | "volume" | null;
+            transform_usage: { divide_by: number; round: "down" | "up" } | null;
+            trial_period_days: number | null;
+            usage_type: "licensed" | "metered";
+          }
+        | { deleted: true; id: string; object: "plan" };
+      price:
+        | string
+        | {
+            active: boolean;
+            billing_scheme: "per_unit" | "tiered";
+            created: number;
+            currency: string;
+            currency_options?: Record<
+              string,
+              {
+                custom_unit_amount: {
+                  maximum: number | null;
+                  minimum: number | null;
+                  preset: number | null;
+                } | null;
+                tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+                tiers?: {
+                  flat_amount: number | null;
+                  flat_amount_decimal: string | null;
+                  unit_amount: number | null;
+                  unit_amount_decimal: string | null;
+                  up_to: number | null;
+                }[];
+                unit_amount: number | null;
+                unit_amount_decimal: string | null;
+              }
+            >;
+            custom_unit_amount: {
+              maximum: number | null;
+              minimum: number | null;
+              preset: number | null;
+            } | null;
+            id: string;
+            livemode: boolean;
+            lookup_key: string | null;
+            metadata: Record<string, string>;
+            nickname: string | null;
+            object: "price";
+            product:
+              | string
+              | {
+                  active: boolean;
+                  created: number;
+                  default_price?: string | unknown | null;
+                  description: string | null;
+                  id: string;
+                  images: string[];
+                  livemode: boolean;
+                  marketing_features: { name?: string }[];
+                  metadata: Record<string, string>;
+                  name: string;
+                  object: "product";
+                  package_dimensions: {
+                    height: number;
+                    length: number;
+                    weight: number;
+                    width: number;
+                  } | null;
+                  shippable: boolean | null;
+                  statement_descriptor?: string | null;
+                  tax_code?:
+                    | string
+                    | {
+                        description: string;
+                        id: string;
+                        name: string;
+                        object: "tax_code";
+                      }
+                    | null;
+                  type: "good" | "service";
+                  unit_label?: string | null;
+                  updated: number;
+                  url: string | null;
+                }
+              | { deleted: true; id: string; object: "product" };
+            recurring: {
+              interval: "day" | "month" | "week" | "year";
+              interval_count: number;
+              meter: string | null;
+              trial_period_days: number | null;
+              usage_type: "licensed" | "metered";
+            } | null;
+            tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+            tiers?: {
+              flat_amount: number | null;
+              flat_amount_decimal: string | null;
+              unit_amount: number | null;
+              unit_amount_decimal: string | null;
+              up_to: number | null;
+            }[];
+            tiers_mode: "graduated" | "volume" | null;
+            transform_quantity: {
+              divide_by: number;
+              round: "down" | "up";
+            } | null;
+            type: "one_time" | "recurring";
+            unit_amount: number | null;
+            unit_amount_decimal: string | null;
+          }
+        | { deleted: true; id: string; object: "price" };
+      quantity?: number;
+      tax_rates?:
+        | {
+            active: boolean;
+            country: string | null;
+            created: number;
+            description: string | null;
+            display_name: string;
+            effective_percentage: number | null;
+            flat_amount: { amount: number; currency: string } | null;
+            id: string;
+            inclusive: boolean;
+            jurisdiction: string | null;
+            jurisdiction_level:
+              | "city"
+              | "country"
+              | "county"
+              | "district"
+              | "multiple"
+              | "state"
+              | null;
+            livemode: boolean;
+            metadata: Record<string, string> | null;
+            object: "tax_rate";
+            percentage: number;
+            rate_type: "flat_amount" | "percentage" | null;
+            state: string | null;
+            tax_type:
+              | "amusement_tax"
+              | "communications_tax"
+              | "gst"
+              | "hst"
+              | "igst"
+              | "jct"
+              | "lease_tax"
+              | "pst"
+              | "qst"
+              | "retail_delivery_fee"
+              | "rst"
+              | "sales_tax"
+              | "service_tax"
+              | "vat"
+              | null;
+          }[]
+        | null;
+    }[];
+    metadata: Record<string, string> | null;
+    on_behalf_of: unknown;
+    proration_behavior: "always_invoice" | "create_prorations" | "none";
+    start_date: number;
+    transfer_data: {
+      amount_percent: number | null;
+      destination: unknown;
+    } | null;
+    trial_end: number | null;
+  }[];
+  released_at: number | null;
+  released_subscription: string | null;
+  status: "active" | "canceled" | "completed" | "not_started" | "released";
+  subscription: unknown;
+  test_clock:
+    | string
+    | {
+        created: number;
+        deletes_after: number;
+        frozen_time: number;
+        id: string;
+        livemode: boolean;
+        name: string | null;
+        object: "test_helpers.test_clock";
+        status: "advancing" | "internal_failure" | "ready";
+        status_details: { advancing?: { target_frozen_time: number } };
+      }
+    | null;
+}
 export const PostSubscriptionSchedulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    application: Schema.Unknown,
+    application: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          id: Schema.String,
+          name: Schema.NullOr(Schema.String),
+          object: Schema.Literals(["application"]),
+        }),
+        Schema.Struct({
+          deleted: Schema.Literals([true]),
+          id: Schema.String,
+          name: Schema.NullOr(Schema.String),
+          object: Schema.Literals(["application"]),
+        }),
+      ]),
+    ),
     billing_mode: Schema.Struct({
-      flexible: Schema.Unknown,
+      flexible: Schema.NullOr(
+        Schema.Struct({
+          proration_discounts: Schema.optional(
+            Schema.Literals(["included", "itemized"]),
+          ),
+        }),
+      ),
       type: Schema.Literals(["classic", "flexible"]),
       updated_at: Schema.optional(Schema.Number),
     }),
     canceled_at: Schema.NullOr(Schema.Number),
     completed_at: Schema.NullOr(Schema.Number),
     created: Schema.Number,
-    current_phase: Schema.Unknown,
+    current_phase: Schema.NullOr(
+      Schema.Struct({
+        end_date: Schema.Number,
+        start_date: Schema.Number,
+      }),
+    ),
     customer: Schema.Unknown,
     customer_account: Schema.NullOr(Schema.String),
     default_settings: Schema.Struct({
@@ -246,18 +1683,203 @@ export const PostSubscriptionSchedulesOutput =
             Schema.Literals(["requires_location_inputs"]),
           ),
           enabled: Schema.Boolean,
-          liability: Schema.Unknown,
+          liability: Schema.NullOr(
+            Schema.Struct({
+              account: Schema.optional(Schema.Unknown),
+              type: Schema.Literals(["account", "self"]),
+            }),
+          ),
         }),
       ),
       billing_cycle_anchor: Schema.Literals(["automatic", "phase_start"]),
-      billing_thresholds: Schema.Unknown,
+      billing_thresholds: Schema.NullOr(
+        Schema.Struct({
+          amount_gte: Schema.NullOr(Schema.Number),
+          reset_billing_cycle_anchor: Schema.NullOr(Schema.Boolean),
+        }),
+      ),
       collection_method: Schema.NullOr(
         Schema.Literals(["charge_automatically", "send_invoice"]),
       ),
       default_payment_method: Schema.Unknown,
       description: Schema.NullOr(Schema.String),
       invoice_settings: Schema.Struct({
-        account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
+        account_tax_ids: Schema.NullOr(
+          Schema.Array(
+            Schema.Union([
+              Schema.String,
+              Schema.Struct({
+                country: Schema.NullOr(Schema.String),
+                created: Schema.Number,
+                customer: Schema.Unknown,
+                customer_account: Schema.NullOr(Schema.String),
+                id: Schema.String,
+                livemode: Schema.Boolean,
+                object: Schema.Literals(["tax_id"]),
+                owner: Schema.NullOr(
+                  Schema.Struct({
+                    account: Schema.optional(Schema.Unknown),
+                    application: Schema.optional(
+                      Schema.Union([
+                        Schema.String,
+                        Schema.Struct({
+                          id: Schema.String,
+                          name: Schema.NullOr(Schema.String),
+                          object: Schema.Literals(["application"]),
+                        }),
+                      ]),
+                    ),
+                    customer: Schema.optional(Schema.Unknown),
+                    customer_account: Schema.NullOr(Schema.String),
+                    type: Schema.Literals([
+                      "account",
+                      "application",
+                      "customer",
+                      "self",
+                    ]),
+                  }),
+                ),
+                type: Schema.Literals([
+                  "ad_nrt",
+                  "ae_trn",
+                  "al_tin",
+                  "am_tin",
+                  "ao_tin",
+                  "ar_cuit",
+                  "au_abn",
+                  "au_arn",
+                  "aw_tin",
+                  "az_tin",
+                  "ba_tin",
+                  "bb_tin",
+                  "bd_bin",
+                  "bf_ifu",
+                  "bg_uic",
+                  "bh_vat",
+                  "bj_ifu",
+                  "bo_tin",
+                  "br_cnpj",
+                  "br_cpf",
+                  "bs_tin",
+                  "by_tin",
+                  "ca_bn",
+                  "ca_gst_hst",
+                  "ca_pst_bc",
+                  "ca_pst_mb",
+                  "ca_pst_sk",
+                  "ca_qst",
+                  "cd_nif",
+                  "ch_uid",
+                  "ch_vat",
+                  "cl_tin",
+                  "cm_niu",
+                  "cn_tin",
+                  "co_nit",
+                  "cr_tin",
+                  "cv_nif",
+                  "de_stn",
+                  "do_rcn",
+                  "ec_ruc",
+                  "eg_tin",
+                  "es_cif",
+                  "et_tin",
+                  "eu_oss_vat",
+                  "eu_vat",
+                  "fo_vat",
+                  "gb_vat",
+                  "ge_vat",
+                  "gi_tin",
+                  "gn_nif",
+                  "hk_br",
+                  "hr_oib",
+                  "hu_tin",
+                  "id_npwp",
+                  "il_vat",
+                  "in_gst",
+                  "is_vat",
+                  "it_cf",
+                  "jp_cn",
+                  "jp_rn",
+                  "jp_trn",
+                  "ke_pin",
+                  "kg_tin",
+                  "kh_tin",
+                  "kr_brn",
+                  "kz_bin",
+                  "la_tin",
+                  "li_uid",
+                  "li_vat",
+                  "lk_vat",
+                  "ma_vat",
+                  "md_vat",
+                  "me_pib",
+                  "mk_vat",
+                  "mr_nif",
+                  "mx_rfc",
+                  "my_frp",
+                  "my_itn",
+                  "my_sst",
+                  "ng_tin",
+                  "no_vat",
+                  "no_voec",
+                  "np_pan",
+                  "nz_gst",
+                  "om_vat",
+                  "pe_ruc",
+                  "ph_tin",
+                  "pl_nip",
+                  "py_ruc",
+                  "ro_tin",
+                  "rs_pib",
+                  "ru_inn",
+                  "ru_kpp",
+                  "sa_vat",
+                  "sg_gst",
+                  "sg_uen",
+                  "si_tin",
+                  "sn_ninea",
+                  "sr_fin",
+                  "sv_nit",
+                  "th_vat",
+                  "tj_tin",
+                  "tr_tin",
+                  "tw_vat",
+                  "tz_vat",
+                  "ua_vat",
+                  "ug_tin",
+                  "unknown",
+                  "us_ein",
+                  "uy_ruc",
+                  "uz_tin",
+                  "uz_vat",
+                  "ve_rif",
+                  "vn_tin",
+                  "za_vat",
+                  "zm_tin",
+                  "zw_tin",
+                ]),
+                value: Schema.String,
+                verification: Schema.NullOr(
+                  Schema.Struct({
+                    status: Schema.Literals([
+                      "pending",
+                      "unavailable",
+                      "unverified",
+                      "verified",
+                    ]),
+                    verified_address: Schema.NullOr(Schema.String),
+                    verified_name: Schema.NullOr(Schema.String),
+                  }),
+                ),
+              }),
+              Schema.Struct({
+                deleted: Schema.Literals([true]),
+                id: Schema.String,
+                object: Schema.Literals(["tax_id"]),
+              }),
+            ]),
+          ),
+        ),
         days_until_due: Schema.NullOr(Schema.Number),
         issuer: Schema.Struct({
           account: Schema.optional(Schema.Unknown),
@@ -265,7 +1887,12 @@ export const PostSubscriptionSchedulesOutput =
         }),
       }),
       on_behalf_of: Schema.Unknown,
-      transfer_data: Schema.Unknown,
+      transfer_data: Schema.NullOr(
+        Schema.Struct({
+          amount_percent: Schema.NullOr(Schema.Number),
+          destination: Schema.Unknown,
+        }),
+      ),
     }),
     end_behavior: Schema.Literals(["cancel", "none", "release", "renew"]),
     id: Schema.String,
@@ -276,11 +1903,150 @@ export const PostSubscriptionSchedulesOutput =
       Schema.Struct({
         add_invoice_items: Schema.Array(
           Schema.Struct({
+            discountable: Schema.NullOr(Schema.Boolean),
             discounts: Schema.Array(
               Schema.Struct({
-                coupon: Schema.Unknown,
-                discount: Schema.Unknown,
-                promotion_code: Schema.Unknown,
+                coupon: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      amount_off: Schema.NullOr(Schema.Number),
+                      applies_to: Schema.optional(
+                        Schema.Struct({
+                          products: Schema.Array(Schema.String),
+                        }),
+                      ),
+                      created: Schema.Number,
+                      currency: Schema.NullOr(Schema.String),
+                      currency_options: Schema.optional(
+                        Schema.Record(
+                          Schema.String,
+                          Schema.Struct({
+                            amount_off: Schema.Number,
+                          }),
+                        ),
+                      ),
+                      duration: Schema.Literals([
+                        "forever",
+                        "once",
+                        "repeating",
+                      ]),
+                      duration_in_months: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      livemode: Schema.Boolean,
+                      max_redemptions: Schema.NullOr(Schema.Number),
+                      metadata: Schema.NullOr(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      name: Schema.NullOr(Schema.String),
+                      object: Schema.Literals(["coupon"]),
+                      percent_off: Schema.NullOr(Schema.Number),
+                      redeem_by: Schema.NullOr(Schema.Number),
+                      times_redeemed: Schema.Number,
+                      valid: Schema.Boolean,
+                    }),
+                  ]),
+                ),
+                discount: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      checkout_session: Schema.NullOr(Schema.String),
+                      customer: Schema.Unknown,
+                      customer_account: Schema.NullOr(Schema.String),
+                      end: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      invoice: Schema.NullOr(Schema.String),
+                      invoice_item: Schema.NullOr(Schema.String),
+                      object: Schema.Literals(["discount"]),
+                      promotion_code: Schema.NullOr(
+                        Schema.Union([
+                          Schema.String,
+                          Schema.Struct({
+                            active: Schema.Boolean,
+                            code: Schema.String,
+                            created: Schema.Number,
+                            customer: Schema.Unknown,
+                            customer_account: Schema.NullOr(Schema.String),
+                            expires_at: Schema.NullOr(Schema.Number),
+                            id: Schema.String,
+                            livemode: Schema.Boolean,
+                            max_redemptions: Schema.NullOr(Schema.Number),
+                            metadata: Schema.NullOr(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            object: Schema.Literals(["promotion_code"]),
+                            promotion: Schema.Struct({
+                              coupon: Schema.Unknown,
+                              type: Schema.Literals(["coupon"]),
+                            }),
+                            restrictions: Schema.Struct({
+                              currency_options: Schema.optional(
+                                Schema.Record(
+                                  Schema.String,
+                                  Schema.Struct({
+                                    minimum_amount: Schema.Number,
+                                  }),
+                                ),
+                              ),
+                              first_time_transaction: Schema.Boolean,
+                              minimum_amount: Schema.NullOr(Schema.Number),
+                              minimum_amount_currency: Schema.NullOr(
+                                Schema.String,
+                              ),
+                            }),
+                            times_redeemed: Schema.Number,
+                          }),
+                        ]),
+                      ),
+                      source: Schema.Struct({
+                        coupon: Schema.Unknown,
+                        type: Schema.Literals(["coupon"]),
+                      }),
+                      start: Schema.Number,
+                      subscription: Schema.NullOr(Schema.String),
+                      subscription_item: Schema.NullOr(Schema.String),
+                    }),
+                  ]),
+                ),
+                promotion_code: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      active: Schema.Boolean,
+                      code: Schema.String,
+                      created: Schema.Number,
+                      customer: Schema.Unknown,
+                      customer_account: Schema.NullOr(Schema.String),
+                      expires_at: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      livemode: Schema.Boolean,
+                      max_redemptions: Schema.NullOr(Schema.Number),
+                      metadata: Schema.NullOr(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      object: Schema.Literals(["promotion_code"]),
+                      promotion: Schema.Struct({
+                        coupon: Schema.Unknown,
+                        type: Schema.Literals(["coupon"]),
+                      }),
+                      restrictions: Schema.Struct({
+                        currency_options: Schema.optional(
+                          Schema.Record(
+                            Schema.String,
+                            Schema.Struct({
+                              minimum_amount: Schema.Number,
+                            }),
+                          ),
+                        ),
+                        first_time_transaction: Schema.Boolean,
+                        minimum_amount: Schema.NullOr(Schema.Number),
+                        minimum_amount_currency: Schema.NullOr(Schema.String),
+                      }),
+                      times_redeemed: Schema.Number,
+                    }),
+                  ]),
+                ),
               }),
             ),
             metadata: Schema.NullOr(
@@ -316,7 +2082,12 @@ export const PostSubscriptionSchedulesOutput =
                     description: Schema.NullOr(Schema.String),
                     display_name: Schema.String,
                     effective_percentage: Schema.NullOr(Schema.Number),
-                    flat_amount: Schema.Unknown,
+                    flat_amount: Schema.NullOr(
+                      Schema.Struct({
+                        amount: Schema.Number,
+                        currency: Schema.String,
+                      }),
+                    ),
                     id: Schema.String,
                     inclusive: Schema.Boolean,
                     jurisdiction: Schema.NullOr(Schema.String),
@@ -371,13 +2142,23 @@ export const PostSubscriptionSchedulesOutput =
               Schema.Literals(["requires_location_inputs"]),
             ),
             enabled: Schema.Boolean,
-            liability: Schema.Unknown,
+            liability: Schema.NullOr(
+              Schema.Struct({
+                account: Schema.optional(Schema.Unknown),
+                type: Schema.Literals(["account", "self"]),
+              }),
+            ),
           }),
         ),
         billing_cycle_anchor: Schema.NullOr(
           Schema.Literals(["automatic", "phase_start"]),
         ),
-        billing_thresholds: Schema.Unknown,
+        billing_thresholds: Schema.NullOr(
+          Schema.Struct({
+            amount_gte: Schema.NullOr(Schema.Number),
+            reset_billing_cycle_anchor: Schema.NullOr(Schema.Boolean),
+          }),
+        ),
         collection_method: Schema.NullOr(
           Schema.Literals(["charge_automatically", "send_invoice"]),
         ),
@@ -393,7 +2174,12 @@ export const PostSubscriptionSchedulesOutput =
                 description: Schema.NullOr(Schema.String),
                 display_name: Schema.String,
                 effective_percentage: Schema.NullOr(Schema.Number),
-                flat_amount: Schema.Unknown,
+                flat_amount: Schema.NullOr(
+                  Schema.Struct({
+                    amount: Schema.Number,
+                    currency: Schema.String,
+                  }),
+                ),
                 id: Schema.String,
                 inclusive: Schema.Boolean,
                 jurisdiction: Schema.NullOr(Schema.String),
@@ -442,21 +2228,561 @@ export const PostSubscriptionSchedulesOutput =
         description: Schema.NullOr(Schema.String),
         discounts: Schema.Array(
           Schema.Struct({
-            coupon: Schema.Unknown,
-            discount: Schema.Unknown,
-            promotion_code: Schema.Unknown,
+            coupon: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  amount_off: Schema.NullOr(Schema.Number),
+                  applies_to: Schema.optional(
+                    Schema.Struct({
+                      products: Schema.Array(Schema.String),
+                    }),
+                  ),
+                  created: Schema.Number,
+                  currency: Schema.NullOr(Schema.String),
+                  currency_options: Schema.optional(
+                    Schema.Record(
+                      Schema.String,
+                      Schema.Struct({
+                        amount_off: Schema.Number,
+                      }),
+                    ),
+                  ),
+                  duration: Schema.Literals(["forever", "once", "repeating"]),
+                  duration_in_months: Schema.NullOr(Schema.Number),
+                  id: Schema.String,
+                  livemode: Schema.Boolean,
+                  max_redemptions: Schema.NullOr(Schema.Number),
+                  metadata: Schema.NullOr(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  name: Schema.NullOr(Schema.String),
+                  object: Schema.Literals(["coupon"]),
+                  percent_off: Schema.NullOr(Schema.Number),
+                  redeem_by: Schema.NullOr(Schema.Number),
+                  times_redeemed: Schema.Number,
+                  valid: Schema.Boolean,
+                }),
+              ]),
+            ),
+            discount: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  checkout_session: Schema.NullOr(Schema.String),
+                  customer: Schema.Unknown,
+                  customer_account: Schema.NullOr(Schema.String),
+                  end: Schema.NullOr(Schema.Number),
+                  id: Schema.String,
+                  invoice: Schema.NullOr(Schema.String),
+                  invoice_item: Schema.NullOr(Schema.String),
+                  object: Schema.Literals(["discount"]),
+                  promotion_code: Schema.NullOr(
+                    Schema.Union([
+                      Schema.String,
+                      Schema.Struct({
+                        active: Schema.Boolean,
+                        code: Schema.String,
+                        created: Schema.Number,
+                        customer: Schema.Unknown,
+                        customer_account: Schema.NullOr(Schema.String),
+                        expires_at: Schema.NullOr(Schema.Number),
+                        id: Schema.String,
+                        livemode: Schema.Boolean,
+                        max_redemptions: Schema.NullOr(Schema.Number),
+                        metadata: Schema.NullOr(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        object: Schema.Literals(["promotion_code"]),
+                        promotion: Schema.Struct({
+                          coupon: Schema.Unknown,
+                          type: Schema.Literals(["coupon"]),
+                        }),
+                        restrictions: Schema.Struct({
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                minimum_amount: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          first_time_transaction: Schema.Boolean,
+                          minimum_amount: Schema.NullOr(Schema.Number),
+                          minimum_amount_currency: Schema.NullOr(Schema.String),
+                        }),
+                        times_redeemed: Schema.Number,
+                      }),
+                    ]),
+                  ),
+                  source: Schema.Struct({
+                    coupon: Schema.NullOr(
+                      Schema.Union([
+                        Schema.String,
+                        Schema.Struct({
+                          amount_off: Schema.NullOr(Schema.Number),
+                          applies_to: Schema.optional(
+                            Schema.Struct({
+                              products: Schema.Array(Schema.String),
+                            }),
+                          ),
+                          created: Schema.Number,
+                          currency: Schema.NullOr(Schema.String),
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                amount_off: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          duration: Schema.Literals([
+                            "forever",
+                            "once",
+                            "repeating",
+                          ]),
+                          duration_in_months: Schema.NullOr(Schema.Number),
+                          id: Schema.String,
+                          livemode: Schema.Boolean,
+                          max_redemptions: Schema.NullOr(Schema.Number),
+                          metadata: Schema.NullOr(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          name: Schema.NullOr(Schema.String),
+                          object: Schema.Literals(["coupon"]),
+                          percent_off: Schema.NullOr(Schema.Number),
+                          redeem_by: Schema.NullOr(Schema.Number),
+                          times_redeemed: Schema.Number,
+                          valid: Schema.Boolean,
+                        }),
+                      ]),
+                    ),
+                    type: Schema.Literals(["coupon"]),
+                  }),
+                  start: Schema.Number,
+                  subscription: Schema.NullOr(Schema.String),
+                  subscription_item: Schema.NullOr(Schema.String),
+                }),
+              ]),
+            ),
+            promotion_code: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  active: Schema.Boolean,
+                  code: Schema.String,
+                  created: Schema.Number,
+                  customer: Schema.Unknown,
+                  customer_account: Schema.NullOr(Schema.String),
+                  expires_at: Schema.NullOr(Schema.Number),
+                  id: Schema.String,
+                  livemode: Schema.Boolean,
+                  max_redemptions: Schema.NullOr(Schema.Number),
+                  metadata: Schema.NullOr(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  object: Schema.Literals(["promotion_code"]),
+                  promotion: Schema.Struct({
+                    coupon: Schema.NullOr(
+                      Schema.Union([
+                        Schema.String,
+                        Schema.Struct({
+                          amount_off: Schema.NullOr(Schema.Number),
+                          applies_to: Schema.optional(
+                            Schema.Struct({
+                              products: Schema.Array(Schema.String),
+                            }),
+                          ),
+                          created: Schema.Number,
+                          currency: Schema.NullOr(Schema.String),
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                amount_off: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          duration: Schema.Literals([
+                            "forever",
+                            "once",
+                            "repeating",
+                          ]),
+                          duration_in_months: Schema.NullOr(Schema.Number),
+                          id: Schema.String,
+                          livemode: Schema.Boolean,
+                          max_redemptions: Schema.NullOr(Schema.Number),
+                          metadata: Schema.NullOr(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          name: Schema.NullOr(Schema.String),
+                          object: Schema.Literals(["coupon"]),
+                          percent_off: Schema.NullOr(Schema.Number),
+                          redeem_by: Schema.NullOr(Schema.Number),
+                          times_redeemed: Schema.Number,
+                          valid: Schema.Boolean,
+                        }),
+                      ]),
+                    ),
+                    type: Schema.Literals(["coupon"]),
+                  }),
+                  restrictions: Schema.Struct({
+                    currency_options: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          minimum_amount: Schema.Number,
+                        }),
+                      ),
+                    ),
+                    first_time_transaction: Schema.Boolean,
+                    minimum_amount: Schema.NullOr(Schema.Number),
+                    minimum_amount_currency: Schema.NullOr(Schema.String),
+                  }),
+                  times_redeemed: Schema.Number,
+                }),
+              ]),
+            ),
           }),
         ),
         end_date: Schema.Number,
-        invoice_settings: Schema.Unknown,
+        invoice_settings: Schema.NullOr(
+          Schema.Struct({
+            account_tax_ids: Schema.NullOr(
+              Schema.Array(
+                Schema.Union([
+                  Schema.String,
+                  Schema.Struct({
+                    country: Schema.NullOr(Schema.String),
+                    created: Schema.Number,
+                    customer: Schema.Unknown,
+                    customer_account: Schema.NullOr(Schema.String),
+                    id: Schema.String,
+                    livemode: Schema.Boolean,
+                    object: Schema.Literals(["tax_id"]),
+                    owner: Schema.NullOr(
+                      Schema.Struct({
+                        account: Schema.optional(Schema.Unknown),
+                        application: Schema.optional(
+                          Schema.Union([
+                            Schema.String,
+                            Schema.Struct({
+                              id: Schema.String,
+                              name: Schema.NullOr(Schema.String),
+                              object: Schema.Literals(["application"]),
+                            }),
+                          ]),
+                        ),
+                        customer: Schema.optional(Schema.Unknown),
+                        customer_account: Schema.NullOr(Schema.String),
+                        type: Schema.Literals([
+                          "account",
+                          "application",
+                          "customer",
+                          "self",
+                        ]),
+                      }),
+                    ),
+                    type: Schema.Literals([
+                      "ad_nrt",
+                      "ae_trn",
+                      "al_tin",
+                      "am_tin",
+                      "ao_tin",
+                      "ar_cuit",
+                      "au_abn",
+                      "au_arn",
+                      "aw_tin",
+                      "az_tin",
+                      "ba_tin",
+                      "bb_tin",
+                      "bd_bin",
+                      "bf_ifu",
+                      "bg_uic",
+                      "bh_vat",
+                      "bj_ifu",
+                      "bo_tin",
+                      "br_cnpj",
+                      "br_cpf",
+                      "bs_tin",
+                      "by_tin",
+                      "ca_bn",
+                      "ca_gst_hst",
+                      "ca_pst_bc",
+                      "ca_pst_mb",
+                      "ca_pst_sk",
+                      "ca_qst",
+                      "cd_nif",
+                      "ch_uid",
+                      "ch_vat",
+                      "cl_tin",
+                      "cm_niu",
+                      "cn_tin",
+                      "co_nit",
+                      "cr_tin",
+                      "cv_nif",
+                      "de_stn",
+                      "do_rcn",
+                      "ec_ruc",
+                      "eg_tin",
+                      "es_cif",
+                      "et_tin",
+                      "eu_oss_vat",
+                      "eu_vat",
+                      "fo_vat",
+                      "gb_vat",
+                      "ge_vat",
+                      "gi_tin",
+                      "gn_nif",
+                      "hk_br",
+                      "hr_oib",
+                      "hu_tin",
+                      "id_npwp",
+                      "il_vat",
+                      "in_gst",
+                      "is_vat",
+                      "it_cf",
+                      "jp_cn",
+                      "jp_rn",
+                      "jp_trn",
+                      "ke_pin",
+                      "kg_tin",
+                      "kh_tin",
+                      "kr_brn",
+                      "kz_bin",
+                      "la_tin",
+                      "li_uid",
+                      "li_vat",
+                      "lk_vat",
+                      "ma_vat",
+                      "md_vat",
+                      "me_pib",
+                      "mk_vat",
+                      "mr_nif",
+                      "mx_rfc",
+                      "my_frp",
+                      "my_itn",
+                      "my_sst",
+                      "ng_tin",
+                      "no_vat",
+                      "no_voec",
+                      "np_pan",
+                      "nz_gst",
+                      "om_vat",
+                      "pe_ruc",
+                      "ph_tin",
+                      "pl_nip",
+                      "py_ruc",
+                      "ro_tin",
+                      "rs_pib",
+                      "ru_inn",
+                      "ru_kpp",
+                      "sa_vat",
+                      "sg_gst",
+                      "sg_uen",
+                      "si_tin",
+                      "sn_ninea",
+                      "sr_fin",
+                      "sv_nit",
+                      "th_vat",
+                      "tj_tin",
+                      "tr_tin",
+                      "tw_vat",
+                      "tz_vat",
+                      "ua_vat",
+                      "ug_tin",
+                      "unknown",
+                      "us_ein",
+                      "uy_ruc",
+                      "uz_tin",
+                      "uz_vat",
+                      "ve_rif",
+                      "vn_tin",
+                      "za_vat",
+                      "zm_tin",
+                      "zw_tin",
+                    ]),
+                    value: Schema.String,
+                    verification: Schema.NullOr(
+                      Schema.Struct({
+                        status: Schema.Literals([
+                          "pending",
+                          "unavailable",
+                          "unverified",
+                          "verified",
+                        ]),
+                        verified_address: Schema.NullOr(Schema.String),
+                        verified_name: Schema.NullOr(Schema.String),
+                      }),
+                    ),
+                  }),
+                  Schema.Struct({
+                    deleted: Schema.Literals([true]),
+                    id: Schema.String,
+                    object: Schema.Literals(["tax_id"]),
+                  }),
+                ]),
+              ),
+            ),
+            days_until_due: Schema.NullOr(Schema.Number),
+            issuer: Schema.NullOr(
+              Schema.Struct({
+                account: Schema.optional(Schema.Unknown),
+                type: Schema.Literals(["account", "self"]),
+              }),
+            ),
+          }),
+        ),
         items: Schema.Array(
           Schema.Struct({
-            billing_thresholds: Schema.Unknown,
+            billing_thresholds: Schema.NullOr(
+              Schema.Struct({
+                usage_gte: Schema.NullOr(Schema.Number),
+              }),
+            ),
             discounts: Schema.Array(
               Schema.Struct({
-                coupon: Schema.Unknown,
-                discount: Schema.Unknown,
-                promotion_code: Schema.Unknown,
+                coupon: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      amount_off: Schema.NullOr(Schema.Number),
+                      applies_to: Schema.optional(
+                        Schema.Struct({
+                          products: Schema.Array(Schema.String),
+                        }),
+                      ),
+                      created: Schema.Number,
+                      currency: Schema.NullOr(Schema.String),
+                      currency_options: Schema.optional(
+                        Schema.Record(
+                          Schema.String,
+                          Schema.Struct({
+                            amount_off: Schema.Number,
+                          }),
+                        ),
+                      ),
+                      duration: Schema.Literals([
+                        "forever",
+                        "once",
+                        "repeating",
+                      ]),
+                      duration_in_months: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      livemode: Schema.Boolean,
+                      max_redemptions: Schema.NullOr(Schema.Number),
+                      metadata: Schema.NullOr(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      name: Schema.NullOr(Schema.String),
+                      object: Schema.Literals(["coupon"]),
+                      percent_off: Schema.NullOr(Schema.Number),
+                      redeem_by: Schema.NullOr(Schema.Number),
+                      times_redeemed: Schema.Number,
+                      valid: Schema.Boolean,
+                    }),
+                  ]),
+                ),
+                discount: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      checkout_session: Schema.NullOr(Schema.String),
+                      customer: Schema.Unknown,
+                      customer_account: Schema.NullOr(Schema.String),
+                      end: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      invoice: Schema.NullOr(Schema.String),
+                      invoice_item: Schema.NullOr(Schema.String),
+                      object: Schema.Literals(["discount"]),
+                      promotion_code: Schema.NullOr(
+                        Schema.Union([
+                          Schema.String,
+                          Schema.Struct({
+                            active: Schema.Boolean,
+                            code: Schema.String,
+                            created: Schema.Number,
+                            customer: Schema.Unknown,
+                            customer_account: Schema.NullOr(Schema.String),
+                            expires_at: Schema.NullOr(Schema.Number),
+                            id: Schema.String,
+                            livemode: Schema.Boolean,
+                            max_redemptions: Schema.NullOr(Schema.Number),
+                            metadata: Schema.NullOr(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            object: Schema.Literals(["promotion_code"]),
+                            promotion: Schema.Struct({
+                              coupon: Schema.Unknown,
+                              type: Schema.Literals(["coupon"]),
+                            }),
+                            restrictions: Schema.Struct({
+                              currency_options: Schema.optional(
+                                Schema.Record(
+                                  Schema.String,
+                                  Schema.Struct({
+                                    minimum_amount: Schema.Number,
+                                  }),
+                                ),
+                              ),
+                              first_time_transaction: Schema.Boolean,
+                              minimum_amount: Schema.NullOr(Schema.Number),
+                              minimum_amount_currency: Schema.NullOr(
+                                Schema.String,
+                              ),
+                            }),
+                            times_redeemed: Schema.Number,
+                          }),
+                        ]),
+                      ),
+                      source: Schema.Struct({
+                        coupon: Schema.Unknown,
+                        type: Schema.Literals(["coupon"]),
+                      }),
+                      start: Schema.Number,
+                      subscription: Schema.NullOr(Schema.String),
+                      subscription_item: Schema.NullOr(Schema.String),
+                    }),
+                  ]),
+                ),
+                promotion_code: Schema.NullOr(
+                  Schema.Union([
+                    Schema.String,
+                    Schema.Struct({
+                      active: Schema.Boolean,
+                      code: Schema.String,
+                      created: Schema.Number,
+                      customer: Schema.Unknown,
+                      customer_account: Schema.NullOr(Schema.String),
+                      expires_at: Schema.NullOr(Schema.Number),
+                      id: Schema.String,
+                      livemode: Schema.Boolean,
+                      max_redemptions: Schema.NullOr(Schema.Number),
+                      metadata: Schema.NullOr(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      object: Schema.Literals(["promotion_code"]),
+                      promotion: Schema.Struct({
+                        coupon: Schema.Unknown,
+                        type: Schema.Literals(["coupon"]),
+                      }),
+                      restrictions: Schema.Struct({
+                        currency_options: Schema.optional(
+                          Schema.Record(
+                            Schema.String,
+                            Schema.Struct({
+                              minimum_amount: Schema.Number,
+                            }),
+                          ),
+                        ),
+                        first_time_transaction: Schema.Boolean,
+                        minimum_amount: Schema.NullOr(Schema.Number),
+                        minimum_amount_currency: Schema.NullOr(Schema.String),
+                      }),
+                      times_redeemed: Schema.Number,
+                    }),
+                  ]),
+                ),
               }),
             ),
             metadata: Schema.NullOr(
@@ -475,7 +2801,12 @@ export const PostSubscriptionSchedulesOutput =
                     description: Schema.NullOr(Schema.String),
                     display_name: Schema.String,
                     effective_percentage: Schema.NullOr(Schema.Number),
-                    flat_amount: Schema.Unknown,
+                    flat_amount: Schema.NullOr(
+                      Schema.Struct({
+                        amount: Schema.Number,
+                        currency: Schema.String,
+                      }),
+                    ),
                     id: Schema.String,
                     inclusive: Schema.Boolean,
                     jurisdiction: Schema.NullOr(Schema.String),
@@ -531,7 +2862,12 @@ export const PostSubscriptionSchedulesOutput =
           "none",
         ]),
         start_date: Schema.Number,
-        transfer_data: Schema.Unknown,
+        transfer_data: Schema.NullOr(
+          Schema.Struct({
+            amount_percent: Schema.NullOr(Schema.Number),
+            destination: Schema.Unknown,
+          }),
+        ),
         trial_end: Schema.NullOr(Schema.Number),
       }),
     ),
@@ -545,10 +2881,29 @@ export const PostSubscriptionSchedulesOutput =
       "released",
     ]),
     subscription: Schema.Unknown,
-    test_clock: Schema.Unknown,
-  });
-export type PostSubscriptionSchedulesOutput =
-  typeof PostSubscriptionSchedulesOutput.Type;
+    test_clock: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          created: Schema.Number,
+          deletes_after: Schema.Number,
+          frozen_time: Schema.Number,
+          id: Schema.String,
+          livemode: Schema.Boolean,
+          name: Schema.NullOr(Schema.String),
+          object: Schema.Literals(["test_helpers.test_clock"]),
+          status: Schema.Literals(["advancing", "internal_failure", "ready"]),
+          status_details: Schema.Struct({
+            advancing: Schema.optional(
+              Schema.Struct({
+                target_frozen_time: Schema.Number,
+              }),
+            ),
+          }),
+        }),
+      ]),
+    ),
+  }) as unknown as Schema.Codec<PostSubscriptionSchedulesOutput>;
 
 // The operation
 /**

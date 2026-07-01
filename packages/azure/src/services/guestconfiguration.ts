@@ -4,11 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GuestConfigurationAssignmentReportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+  reportId: string;
+}
 export const GuestConfigurationAssignmentReportsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22,11 +29,38 @@ export const GuestConfigurationAssignmentReportsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentReportsGetInput =
-  typeof GuestConfigurationAssignmentReportsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentReportsGetOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    reportId?: string;
+    assignment?: {
+      name?: string;
+      configuration?: { name?: string; version?: string };
+    };
+    vm?: { id?: string; uuid?: string };
+    startTime?: string;
+    endTime?: string;
+    details?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      startTime?: string;
+      endTime?: string;
+      jobId?: string;
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    vmssResourceId?: string;
+  };
+}
 export const GuestConfigurationAssignmentReportsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -91,9 +125,7 @@ export const GuestConfigurationAssignmentReportsGetOutput =
         vmssResourceId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestConfigurationAssignmentReportsGetOutput =
-  typeof GuestConfigurationAssignmentReportsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsGetOutput>;
 
 // The operation
 /**
@@ -112,6 +144,12 @@ export const GuestConfigurationAssignmentReportsGet =
     outputSchema: GuestConfigurationAssignmentReportsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentReportsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationAssignmentReportsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -124,11 +162,41 @@ export const GuestConfigurationAssignmentReportsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentReportsListInput =
-  typeof GuestConfigurationAssignmentReportsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentReportsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    properties?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      details?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        startTime?: string;
+        endTime?: string;
+        jobId?: string;
+        operationType?: "Consistency" | "Initial";
+        resources?: {
+          complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+          resourceId?: string;
+          reasons?: { phrase?: string; code?: string }[];
+          properties?: unknown;
+        }[];
+      };
+      vmssResourceId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -204,9 +272,7 @@ export const GuestConfigurationAssignmentReportsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentReportsListOutput =
-  typeof GuestConfigurationAssignmentReportsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsListOutput>;
 
 // The operation
 /**
@@ -224,6 +290,13 @@ export const GuestConfigurationAssignmentReportsList =
     outputSchema: GuestConfigurationAssignmentReportsListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentReportsVMSSGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+  name: string;
+  id: string;
+}
 export const GuestConfigurationAssignmentReportsVMSSGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -237,11 +310,38 @@ export const GuestConfigurationAssignmentReportsVMSSGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports/{id}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentReportsVMSSGetInput =
-  typeof GuestConfigurationAssignmentReportsVMSSGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsVMSSGetInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentReportsVMSSGetOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    reportId?: string;
+    assignment?: {
+      name?: string;
+      configuration?: { name?: string; version?: string };
+    };
+    vm?: { id?: string; uuid?: string };
+    startTime?: string;
+    endTime?: string;
+    details?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      startTime?: string;
+      endTime?: string;
+      jobId?: string;
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    vmssResourceId?: string;
+  };
+}
 export const GuestConfigurationAssignmentReportsVMSSGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -306,9 +406,7 @@ export const GuestConfigurationAssignmentReportsVMSSGetOutput =
         vmssResourceId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestConfigurationAssignmentReportsVMSSGetOutput =
-  typeof GuestConfigurationAssignmentReportsVMSSGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsVMSSGetOutput>;
 
 // The operation
 /**
@@ -327,6 +425,12 @@ export const GuestConfigurationAssignmentReportsVMSSGet =
     outputSchema: GuestConfigurationAssignmentReportsVMSSGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentReportsVMSSListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+  name: string;
+}
 export const GuestConfigurationAssignmentReportsVMSSListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -339,11 +443,41 @@ export const GuestConfigurationAssignmentReportsVMSSListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentReportsVMSSListInput =
-  typeof GuestConfigurationAssignmentReportsVMSSListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsVMSSListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentReportsVMSSListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    properties?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      details?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        startTime?: string;
+        endTime?: string;
+        jobId?: string;
+        operationType?: "Consistency" | "Initial";
+        resources?: {
+          complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+          resourceId?: string;
+          reasons?: { phrase?: string; code?: string }[];
+          properties?: unknown;
+        }[];
+      };
+      vmssResourceId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentReportsVMSSListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -419,9 +553,7 @@ export const GuestConfigurationAssignmentReportsVMSSListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentReportsVMSSListOutput =
-  typeof GuestConfigurationAssignmentReportsVMSSListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentReportsVMSSListOutput>;
 
 // The operation
 /**
@@ -439,6 +571,89 @@ export const GuestConfigurationAssignmentReportsVMSSList =
     outputSchema: GuestConfigurationAssignmentReportsVMSSListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+  properties?: {
+    targetResourceId?: string | null;
+    guestConfiguration?: {
+      kind?: "DSC";
+      name?: string;
+      version?: string;
+      contentUri?: string;
+      contentHash?: string;
+      contentManagedIdentity?: string;
+      assignmentType?:
+        | "Audit"
+        | "DeployAndAutoCorrect"
+        | "ApplyAndAutoCorrect"
+        | "ApplyAndMonitor";
+      assignmentSource?: string | null;
+      contentType?: string | null;
+      configurationParameter?: { name?: string; value?: string }[];
+      configurationProtectedParameter?: { name?: string; value?: string }[];
+      configurationSetting?: {
+        configurationMode?:
+          | "ApplyOnly"
+          | "ApplyAndMonitor"
+          | "ApplyAndAutoCorrect";
+        allowModuleOverwrite?: boolean;
+        actionAfterReboot?: "ContinueConfiguration" | "StopConfiguration";
+        refreshFrequencyMins?: number;
+        rebootIfNeeded?: boolean;
+        configurationModeFrequencyMins?: number;
+      };
+    };
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    lastComplianceStatusChecked?: string | null;
+    latestReportId?: string | null;
+    parameterHash?: string | null;
+    latestAssignmentReport?: {
+      id?: string;
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    context?: string;
+    assignmentHash?: string | null;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Created";
+    resourceType?: string | null;
+    vmssVMList?: {
+      vmId?: string;
+      vmResourceId?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      latestReportId?: string | null;
+      lastComplianceChecked?: string | null;
+    }[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -610,20 +825,22 @@ export const GuestConfigurationAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsCreateOrUpdateInput =
-  typeof GuestConfigurationAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsCreateOrUpdateOutput =
-  typeof GuestConfigurationAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -641,6 +858,12 @@ export const GuestConfigurationAssignmentsCreateOrUpdate =
     outputSchema: GuestConfigurationAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -653,15 +876,12 @@ export const GuestConfigurationAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsDeleteInput =
-  typeof GuestConfigurationAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsDeleteInput>;
 
 // Output Schema
+export type GuestConfigurationAssignmentsDeleteOutput = void;
 export const GuestConfigurationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GuestConfigurationAssignmentsDeleteOutput =
-  typeof GuestConfigurationAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -679,6 +899,12 @@ export const GuestConfigurationAssignmentsDelete =
     outputSchema: GuestConfigurationAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -691,20 +917,22 @@ export const GuestConfigurationAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsGetInput =
-  typeof GuestConfigurationAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsGetOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsGetOutput =
-  typeof GuestConfigurationAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -722,6 +950,11 @@ export const GuestConfigurationAssignmentsGet =
     outputSchema: GuestConfigurationAssignmentsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+}
 export const GuestConfigurationAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -733,11 +966,13 @@ export const GuestConfigurationAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsListInput =
-  typeof GuestConfigurationAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -751,9 +986,7 @@ export const GuestConfigurationAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsListOutput =
-  typeof GuestConfigurationAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsListOutput>;
 
 // The operation
 /**
@@ -770,6 +1003,10 @@ export const GuestConfigurationAssignmentsList =
     outputSchema: GuestConfigurationAssignmentsListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsRGListInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const GuestConfigurationAssignmentsRGListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -780,11 +1017,13 @@ export const GuestConfigurationAssignmentsRGListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsRGListInput =
-  typeof GuestConfigurationAssignmentsRGListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsRGListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsRGListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentsRGListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -798,9 +1037,7 @@ export const GuestConfigurationAssignmentsRGListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsRGListOutput =
-  typeof GuestConfigurationAssignmentsRGListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsRGListOutput>;
 
 // The operation
 /**
@@ -816,6 +1053,9 @@ export const GuestConfigurationAssignmentsRGList =
     outputSchema: GuestConfigurationAssignmentsRGListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsSubscriptionListInput {
+  subscriptionId: string;
+}
 export const GuestConfigurationAssignmentsSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -825,11 +1065,13 @@ export const GuestConfigurationAssignmentsSubscriptionListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsSubscriptionListInput =
-  typeof GuestConfigurationAssignmentsSubscriptionListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsSubscriptionListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsSubscriptionListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentsSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -843,9 +1085,7 @@ export const GuestConfigurationAssignmentsSubscriptionListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsSubscriptionListOutput =
-  typeof GuestConfigurationAssignmentsSubscriptionListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsSubscriptionListOutput>;
 
 // The operation
 /**
@@ -860,6 +1100,88 @@ export const GuestConfigurationAssignmentsSubscriptionList =
     outputSchema: GuestConfigurationAssignmentsSubscriptionListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+  name: string;
+  properties?: {
+    targetResourceId?: string | null;
+    guestConfiguration?: {
+      kind?: "DSC";
+      name?: string;
+      version?: string;
+      contentUri?: string;
+      contentHash?: string;
+      contentManagedIdentity?: string;
+      assignmentType?:
+        | "Audit"
+        | "DeployAndAutoCorrect"
+        | "ApplyAndAutoCorrect"
+        | "ApplyAndMonitor";
+      assignmentSource?: string | null;
+      contentType?: string | null;
+      configurationParameter?: { name?: string; value?: string }[];
+      configurationProtectedParameter?: { name?: string; value?: string }[];
+      configurationSetting?: {
+        configurationMode?:
+          | "ApplyOnly"
+          | "ApplyAndMonitor"
+          | "ApplyAndAutoCorrect";
+        allowModuleOverwrite?: boolean;
+        actionAfterReboot?: "ContinueConfiguration" | "StopConfiguration";
+        refreshFrequencyMins?: number;
+        rebootIfNeeded?: boolean;
+        configurationModeFrequencyMins?: number;
+      };
+    };
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    lastComplianceStatusChecked?: string | null;
+    latestReportId?: string | null;
+    parameterHash?: string | null;
+    latestAssignmentReport?: {
+      id?: string;
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    context?: string;
+    assignmentHash?: string | null;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Created";
+    resourceType?: string | null;
+    vmssVMList?: {
+      vmId?: string;
+      vmResourceId?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      latestReportId?: string | null;
+      lastComplianceChecked?: string | null;
+    }[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1030,20 +1352,22 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
-  typeof GuestConfigurationAssignmentsVMSSCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSCreateOrUpdateInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
-  typeof GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1061,6 +1385,12 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdate =
     outputSchema: GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsVMSSDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+  name: string;
+}
 export const GuestConfigurationAssignmentsVMSSDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1073,20 +1403,22 @@ export const GuestConfigurationAssignmentsVMSSDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsVMSSDeleteInput =
-  typeof GuestConfigurationAssignmentsVMSSDeleteInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSDeleteInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsVMSSDeleteOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsVMSSDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsVMSSDeleteOutput =
-  typeof GuestConfigurationAssignmentsVMSSDeleteOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSDeleteOutput>;
 
 // The operation
 /**
@@ -1104,6 +1436,12 @@ export const GuestConfigurationAssignmentsVMSSDelete =
     outputSchema: GuestConfigurationAssignmentsVMSSDeleteOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsVMSSGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+  name: string;
+}
 export const GuestConfigurationAssignmentsVMSSGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1116,20 +1454,22 @@ export const GuestConfigurationAssignmentsVMSSGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsVMSSGetInput =
-  typeof GuestConfigurationAssignmentsVMSSGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSGetInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsVMSSGetOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationAssignmentsVMSSGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsVMSSGetOutput =
-  typeof GuestConfigurationAssignmentsVMSSGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSGetOutput>;
 
 // The operation
 /**
@@ -1147,6 +1487,11 @@ export const GuestConfigurationAssignmentsVMSSGet =
     outputSchema: GuestConfigurationAssignmentsVMSSGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationAssignmentsVMSSListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmssName: string;
+}
 export const GuestConfigurationAssignmentsVMSSListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1158,11 +1503,13 @@ export const GuestConfigurationAssignmentsVMSSListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationAssignmentsVMSSListInput =
-  typeof GuestConfigurationAssignmentsVMSSListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSListInput>;
 
 // Output Schema
+export interface GuestConfigurationAssignmentsVMSSListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationAssignmentsVMSSListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1176,9 +1523,7 @@ export const GuestConfigurationAssignmentsVMSSListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationAssignmentsVMSSListOutput =
-  typeof GuestConfigurationAssignmentsVMSSListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationAssignmentsVMSSListOutput>;
 
 // The operation
 /**
@@ -1195,6 +1540,89 @@ export const GuestConfigurationAssignmentsVMSSList =
     outputSchema: GuestConfigurationAssignmentsVMSSListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+  properties?: {
+    targetResourceId?: string | null;
+    guestConfiguration?: {
+      kind?: "DSC";
+      name?: string;
+      version?: string;
+      contentUri?: string;
+      contentHash?: string;
+      contentManagedIdentity?: string;
+      assignmentType?:
+        | "Audit"
+        | "DeployAndAutoCorrect"
+        | "ApplyAndAutoCorrect"
+        | "ApplyAndMonitor";
+      assignmentSource?: string | null;
+      contentType?: string | null;
+      configurationParameter?: { name?: string; value?: string }[];
+      configurationProtectedParameter?: { name?: string; value?: string }[];
+      configurationSetting?: {
+        configurationMode?:
+          | "ApplyOnly"
+          | "ApplyAndMonitor"
+          | "ApplyAndAutoCorrect";
+        allowModuleOverwrite?: boolean;
+        actionAfterReboot?: "ContinueConfiguration" | "StopConfiguration";
+        refreshFrequencyMins?: number;
+        rebootIfNeeded?: boolean;
+        configurationModeFrequencyMins?: number;
+      };
+    };
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    lastComplianceStatusChecked?: string | null;
+    latestReportId?: string | null;
+    parameterHash?: string | null;
+    latestAssignmentReport?: {
+      id?: string;
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    context?: string;
+    assignmentHash?: string | null;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Created";
+    resourceType?: string | null;
+    vmssVMList?: {
+      vmId?: string;
+      vmResourceId?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      latestReportId?: string | null;
+      lastComplianceChecked?: string | null;
+    }[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1366,20 +1794,22 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateIn
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1399,6 +1829,12 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdate =
       GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1411,15 +1847,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput>;
 
 // Output Schema
-export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput.Type;
+  void;
+export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -1438,6 +1872,12 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsDelete =
       GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1450,20 +1890,22 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -1481,6 +1923,11 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsGet =
     outputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1492,11 +1939,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsListInput>;
 
 // Output Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1510,9 +1959,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput>;
 
 // The operation
 /**
@@ -1529,6 +1976,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsList =
     outputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+  reportId: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1542,11 +1996,38 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    reportId?: string;
+    assignment?: {
+      name?: string;
+      configuration?: { name?: string; version?: string };
+    };
+    vm?: { id?: string; uuid?: string };
+    startTime?: string;
+    endTime?: string;
+    details?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      startTime?: string;
+      endTime?: string;
+      jobId?: string;
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    vmssResourceId?: string;
+  };
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1611,9 +2092,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput
         vmssResourceId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput>;
 
 // The operation
 /**
@@ -1634,6 +2113,12 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet =
       GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1646,11 +2131,41 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput>;
 
 // Output Schema
+export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    properties?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      details?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        startTime?: string;
+        endTime?: string;
+        jobId?: string;
+        operationType?: "Consistency" | "Initial";
+        resources?: {
+          complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+          resourceId?: string;
+          reasons?: { phrase?: string; code?: string }[];
+          properties?: unknown;
+        }[];
+      };
+      vmssResourceId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1726,9 +2241,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutpu
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput =
-  typeof GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput>;
 
 // The operation
 /**
@@ -1748,6 +2261,13 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList =
       GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentReportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  guestConfigurationAssignmentName: string;
+  reportId: string;
+}
 export const GuestConfigurationHCRPAssignmentReportsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1761,11 +2281,38 @@ export const GuestConfigurationHCRPAssignmentReportsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentReportsGetInput =
-  typeof GuestConfigurationHCRPAssignmentReportsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentReportsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationHCRPAssignmentReportsGetOutput {
+  id?: string;
+  name?: string;
+  properties?: {
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    reportId?: string;
+    assignment?: {
+      name?: string;
+      configuration?: { name?: string; version?: string };
+    };
+    vm?: { id?: string; uuid?: string };
+    startTime?: string;
+    endTime?: string;
+    details?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      startTime?: string;
+      endTime?: string;
+      jobId?: string;
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    vmssResourceId?: string;
+  };
+}
 export const GuestConfigurationHCRPAssignmentReportsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1830,9 +2377,7 @@ export const GuestConfigurationHCRPAssignmentReportsGetOutput =
         vmssResourceId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestConfigurationHCRPAssignmentReportsGetOutput =
-  typeof GuestConfigurationHCRPAssignmentReportsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentReportsGetOutput>;
 
 // The operation
 /**
@@ -1851,6 +2396,12 @@ export const GuestConfigurationHCRPAssignmentReportsGet =
     outputSchema: GuestConfigurationHCRPAssignmentReportsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentReportsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationHCRPAssignmentReportsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1863,11 +2414,41 @@ export const GuestConfigurationHCRPAssignmentReportsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentReportsListInput =
-  typeof GuestConfigurationHCRPAssignmentReportsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentReportsListInput>;
 
 // Output Schema
+export interface GuestConfigurationHCRPAssignmentReportsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    properties?: {
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      details?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        startTime?: string;
+        endTime?: string;
+        jobId?: string;
+        operationType?: "Consistency" | "Initial";
+        resources?: {
+          complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+          resourceId?: string;
+          reasons?: { phrase?: string; code?: string }[];
+          properties?: unknown;
+        }[];
+      };
+      vmssResourceId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GuestConfigurationHCRPAssignmentReportsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1943,9 +2524,7 @@ export const GuestConfigurationHCRPAssignmentReportsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationHCRPAssignmentReportsListOutput =
-  typeof GuestConfigurationHCRPAssignmentReportsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentReportsListOutput>;
 
 // The operation
 /**
@@ -1963,6 +2542,89 @@ export const GuestConfigurationHCRPAssignmentReportsList =
     outputSchema: GuestConfigurationHCRPAssignmentReportsListOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  guestConfigurationAssignmentName: string;
+  properties?: {
+    targetResourceId?: string | null;
+    guestConfiguration?: {
+      kind?: "DSC";
+      name?: string;
+      version?: string;
+      contentUri?: string;
+      contentHash?: string;
+      contentManagedIdentity?: string;
+      assignmentType?:
+        | "Audit"
+        | "DeployAndAutoCorrect"
+        | "ApplyAndAutoCorrect"
+        | "ApplyAndMonitor";
+      assignmentSource?: string | null;
+      contentType?: string | null;
+      configurationParameter?: { name?: string; value?: string }[];
+      configurationProtectedParameter?: { name?: string; value?: string }[];
+      configurationSetting?: {
+        configurationMode?:
+          | "ApplyOnly"
+          | "ApplyAndMonitor"
+          | "ApplyAndAutoCorrect";
+        allowModuleOverwrite?: boolean;
+        actionAfterReboot?: "ContinueConfiguration" | "StopConfiguration";
+        refreshFrequencyMins?: number;
+        rebootIfNeeded?: boolean;
+        configurationModeFrequencyMins?: number;
+      };
+    };
+    complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+    lastComplianceStatusChecked?: string | null;
+    latestReportId?: string | null;
+    parameterHash?: string | null;
+    latestAssignmentReport?: {
+      id?: string;
+      reportId?: string;
+      assignment?: {
+        name?: string;
+        configuration?: { name?: string; version?: string };
+      };
+      vm?: { id?: string; uuid?: string };
+      startTime?: string;
+      endTime?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      operationType?: "Consistency" | "Initial";
+      resources?: {
+        complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+        resourceId?: string;
+        reasons?: { phrase?: string; code?: string }[];
+        properties?: unknown;
+      }[];
+    };
+    context?: string;
+    assignmentHash?: string | null;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Created";
+    resourceType?: string | null;
+    vmssVMList?: {
+      vmId?: string;
+      vmResourceId?: string;
+      complianceStatus?: "Compliant" | "NonCompliant" | "Pending";
+      latestReportId?: string | null;
+      lastComplianceChecked?: string | null;
+    }[];
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2134,20 +2796,22 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
-  typeof GuestConfigurationHCRPAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
-  typeof GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2165,6 +2829,12 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdate =
     outputSchema: GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationHCRPAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2177,15 +2847,12 @@ export const GuestConfigurationHCRPAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentsDeleteInput =
-  typeof GuestConfigurationHCRPAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsDeleteInput>;
 
 // Output Schema
+export type GuestConfigurationHCRPAssignmentsDeleteOutput = void;
 export const GuestConfigurationHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GuestConfigurationHCRPAssignmentsDeleteOutput =
-  typeof GuestConfigurationHCRPAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -2203,6 +2870,12 @@ export const GuestConfigurationHCRPAssignmentsDelete =
     outputSchema: GuestConfigurationHCRPAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  guestConfigurationAssignmentName: string;
+}
 export const GuestConfigurationHCRPAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2215,20 +2888,22 @@ export const GuestConfigurationHCRPAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentsGetInput =
-  typeof GuestConfigurationHCRPAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsGetInput>;
 
 // Output Schema
+export interface GuestConfigurationHCRPAssignmentsGetOutput {
+  id?: string;
+  name: string;
+  location?: string;
+  type?: string;
+}
 export const GuestConfigurationHCRPAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationHCRPAssignmentsGetOutput =
-  typeof GuestConfigurationHCRPAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -2246,6 +2921,11 @@ export const GuestConfigurationHCRPAssignmentsGet =
     outputSchema: GuestConfigurationHCRPAssignmentsGetOutput,
   }));
 // Input Schema
+export interface GuestConfigurationHCRPAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const GuestConfigurationHCRPAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2257,11 +2937,13 @@ export const GuestConfigurationHCRPAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
       apiVersion: "2024-04-05",
     }),
-  );
-export type GuestConfigurationHCRPAssignmentsListInput =
-  typeof GuestConfigurationHCRPAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsListInput>;
 
 // Output Schema
+export interface GuestConfigurationHCRPAssignmentsListOutput {
+  value?: { id?: string; name: string; location?: string; type?: string }[];
+  nextLink?: string;
+}
 export const GuestConfigurationHCRPAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2275,9 +2957,7 @@ export const GuestConfigurationHCRPAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestConfigurationHCRPAssignmentsListOutput =
-  typeof GuestConfigurationHCRPAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsListOutput>;
 
 // The operation
 /**
@@ -2294,6 +2974,7 @@ export const GuestConfigurationHCRPAssignmentsList =
     outputSchema: GuestConfigurationHCRPAssignmentsListOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2302,10 +2983,22 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.GuestConfiguration/operations",
     apiVersion: "2024-04-05",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    properties?: { statusCode?: string };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2326,8 +3019,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

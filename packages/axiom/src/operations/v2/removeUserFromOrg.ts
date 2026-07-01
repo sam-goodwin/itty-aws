@@ -4,16 +4,21 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface RemoveUserFromOrgInput {
+  id: string;
+}
 export const RemoveUserFromOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String.pipe(T.PathParam()),
   },
-).pipe(T.Http({ method: "DELETE", path: "/v2/users/{id}" }));
-export type RemoveUserFromOrgInput = typeof RemoveUserFromOrgInput.Type;
+).pipe(
+  T.Http({ method: "DELETE", path: "/v2/users/{id}" }),
+) as unknown as Schema.Codec<RemoveUserFromOrgInput>;
 
 // Output Schema
-export const RemoveUserFromOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveUserFromOrgOutput = typeof RemoveUserFromOrgOutput.Type;
+export type RemoveUserFromOrgOutput = void;
+export const RemoveUserFromOrgOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveUserFromOrgOutput>;
 
 // The operation
 /**

@@ -554,7 +554,17 @@ by the test, and cleaned up by the test. There is NO production data at risk.
 ## Rules
 - Match the EXACT test style used in existing test files for this package
 - Use the same imports, layer provision, and helpers as existing tests
-- Include timeouts on all tests that hit real APIs: \`{ timeout: 30_000 }\` or the second arg
+- Include timeouts on all tests that hit real APIs. **This project uses vitest 4**,
+  whose \`it\`/\`test\` signature is \`it(name, fn, timeoutMs)\` or \`it(name, options, fn)\`.
+  Pass the timeout as a bare number 3rd arg — \`it("...", async () => { ... }, 30_000)\` —
+  NOT as an options object in the 3rd slot. \`it(name, fn, { timeout: 30_000 })\` is a
+  TYPE ERROR in vitest 4 ("No overload matches this call"). If you want the object form,
+  it must be the 2nd arg: \`it("...", { timeout: 30_000 }, async () => { ... })\`.
+- When an error test must provide its OWN layer (e.g. bad credentials) you cannot use the
+  shared \`runEffect\` helper. Use \`Effect.runPromise(op(...).pipe(Effect.flip, Effect.provide(layer)))\`.
+  If you must cast for \`runPromise\`, cast to \`Effect.Effect<unknown, unknown, never>\` —
+  after \`Effect.flip\` the error channel holds the operation's success type, so
+  \`Effect.Effect<unknown, never, never>\` is wrong and won't typecheck.
 - Always clean up resources you create
 - Always include testRunId in resource names
 - If tests fail, read the error output, fix the tests, and re-run

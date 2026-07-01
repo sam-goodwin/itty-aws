@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1DeployAFunctionInput {
+  ref: string;
+  slug?: string;
+  bundleOnly?: boolean;
+  file?: string[];
+  metadata: {
+    entrypoint_path: string;
+    import_map_path?: string;
+    static_patterns?: string[];
+    verify_jwt?: boolean;
+    name?: string;
+  };
+}
 export const V1DeployAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -24,10 +37,23 @@ export const V1DeployAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/v1/projects/{ref}/functions/deploy",
     contentType: "multipart",
   }),
-);
-export type V1DeployAFunctionInput = typeof V1DeployAFunctionInput.Type;
+) as unknown as Schema.Codec<V1DeployAFunctionInput>;
 
 // Output Schema
+export interface V1DeployAFunctionOutput {
+  id: string;
+  slug: string;
+  name: string;
+  status: "ACTIVE" | "REMOVED" | "THROTTLED";
+  version: number;
+  created_at?: number;
+  updated_at?: number;
+  verify_jwt?: boolean;
+  import_map?: boolean;
+  entrypoint_path?: string;
+  import_map_path?: string;
+  ezbr_sha256?: string;
+}
 export const V1DeployAFunctionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -42,8 +68,7 @@ export const V1DeployAFunctionOutput =
     entrypoint_path: Schema.optional(Schema.String),
     import_map_path: Schema.optional(Schema.String),
     ezbr_sha256: Schema.optional(Schema.String),
-  });
-export type V1DeployAFunctionOutput = typeof V1DeployAFunctionOutput.Type;
+  }) as unknown as Schema.Codec<V1DeployAFunctionOutput>;
 
 // The operation
 /**

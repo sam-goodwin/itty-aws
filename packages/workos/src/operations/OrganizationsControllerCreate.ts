@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerCreateInput {
+  name?: string;
+  allow_profiles_outside_organization?: boolean;
+  domains?: string[];
+  domain_data?: { domain?: string; state?: "pending" | "verified" }[];
+  metadata?: Record<string, string> | null;
+  external_id?: string | null;
+}
 export const OrganizationsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -21,11 +29,39 @@ export const OrganizationsControllerCreateInput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
     external_id: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/organizations" }));
-export type OrganizationsControllerCreateInput =
-  typeof OrganizationsControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/organizations" }),
+  ) as unknown as Schema.Codec<OrganizationsControllerCreateInput>;
 
 // Output Schema
+export interface OrganizationsControllerCreateOutput {
+  object?: string;
+  id?: string;
+  name?: string;
+  domains?: {
+    object: string;
+    id: string;
+    organization_id: string;
+    domain: string;
+    state?:
+      | "failed"
+      | "legacy_verified"
+      | "pending"
+      | "unverified"
+      | "verified";
+    verification_prefix?: string;
+    verification_token?: string;
+    verification_strategy?: "dns" | "manual";
+    created_at: string;
+    updated_at: string;
+  }[];
+  metadata?: Record<string, string>;
+  external_id?: string | null;
+  stripe_customer_id?: string;
+  created_at?: string;
+  updated_at?: string;
+  allow_profiles_outside_organization?: boolean;
+}
 export const OrganizationsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -63,9 +99,7 @@ export const OrganizationsControllerCreateOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
-  });
-export type OrganizationsControllerCreateOutput =
-  typeof OrganizationsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerCreateOutput>;
 
 // The operation
 /**

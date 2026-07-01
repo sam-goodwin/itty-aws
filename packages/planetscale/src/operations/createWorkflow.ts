@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateWorkflowInput {
+  organization: string;
+  database: string;
+  name: string;
+  source_keyspace: string;
+  target_keyspace: string;
+  global_keyspace?: string;
+  defer_secondary_keys?: boolean;
+  on_ddl?: "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
+  tables: string[];
+}
 export const CreateWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -21,10 +32,95 @@ export const CreateWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/workflows",
   }),
-);
-export type CreateWorkflowInput = typeof CreateWorkflowInput.Type;
+) as unknown as Schema.Codec<CreateWorkflowInput>;
 
 // Output Schema
+export interface CreateWorkflowOutput {
+  id: string;
+  name: string;
+  number: number;
+  state:
+    | "pending"
+    | "copying"
+    | "running"
+    | "stopped"
+    | "verifying_data"
+    | "verified_data"
+    | "switching_replicas"
+    | "switched_replicas"
+    | "switching_primaries"
+    | "switched_primaries"
+    | "reversing_traffic"
+    | "reversing_traffic_for_cancel"
+    | "cutting_over"
+    | "cutover"
+    | "reversed_cutover"
+    | "completed"
+    | "cancelling"
+    | "cancelled"
+    | "error";
+  created_at: string;
+  updated_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+  cancelled_at: string | null;
+  reversed_at: string | null;
+  retried_at: string | null;
+  data_copy_completed_at: string | null;
+  cutover_at: string | null;
+  replicas_switched: boolean;
+  primaries_switched: boolean;
+  switch_replicas_at: string | null;
+  switch_primaries_at: string | null;
+  verify_data_at: string | null;
+  workflow_type: "move_tables";
+  workflow_subtype: string;
+  defer_secondary_keys: boolean;
+  on_ddl: "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
+  workflow_errors: string;
+  may_retry: boolean;
+  may_restart: boolean;
+  verified_data_stale: boolean;
+  sequence_tables_applied: boolean;
+  actor: { id: string; display_name: string; avatar_url: string };
+  verify_data_by: { id: string; display_name: string; avatar_url: string };
+  reversed_by: { id: string; display_name: string; avatar_url: string };
+  switch_replicas_by: { id: string; display_name: string; avatar_url: string };
+  switch_primaries_by: { id: string; display_name: string; avatar_url: string };
+  cancelled_by: { id: string; display_name: string; avatar_url: string };
+  completed_by: { id: string; display_name: string; avatar_url: string };
+  retried_by: { id: string; display_name: string; avatar_url: string };
+  cutover_by: { id: string; display_name: string; avatar_url: string };
+  reversed_cutover_by: { id: string; display_name: string; avatar_url: string };
+  branch: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  source_keyspace: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  target_keyspace: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  global_keyspace: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+}
 export const CreateWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -151,8 +247,7 @@ export const CreateWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated_at: Schema.String,
     deleted_at: Schema.NullOr(Schema.String),
   }),
-});
-export type CreateWorkflowOutput = typeof CreateWorkflowOutput.Type;
+}) as unknown as Schema.Codec<CreateWorkflowOutput>;
 
 // The operation
 /**

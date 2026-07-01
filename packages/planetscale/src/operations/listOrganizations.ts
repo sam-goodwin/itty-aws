@@ -4,15 +4,50 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrganizationsInput {
+  page?: number;
+  per_page?: number;
+}
 export const ListOrganizationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     page: Schema.optional(Schema.Number),
     per_page: Schema.optional(Schema.Number),
   },
-).pipe(T.Http({ method: "GET", path: "/organizations" }));
-export type ListOrganizationsInput = typeof ListOrganizationsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/organizations" }),
+) as unknown as Schema.Codec<ListOrganizationsInput>;
 
 // Output Schema
+export interface ListOrganizationsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    billing_email: string;
+    created_at: string;
+    updated_at: string;
+    plan: string;
+    valid_billing_info: boolean;
+    sso: boolean;
+    sso_directory: boolean;
+    single_tenancy: boolean;
+    managed_tenancy: boolean;
+    has_past_due_invoices?: boolean | null;
+    database_count: number;
+    sso_portal_url?: string | null;
+    features: Record<string, unknown>;
+    idp_managed_roles: boolean;
+    invoice_budget_amount: string;
+    keyspace_shard_limit: number;
+    has_card: boolean;
+    payment_info_required: boolean;
+  }[];
+}
 export const ListOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -45,8 +80,7 @@ export const ListOrganizationsOutput =
         payment_info_required: Schema.Boolean,
       }),
     ),
-  });
-export type ListOrganizationsOutput = typeof ListOrganizationsOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationsOutput>;
 
 // The operation
 /**

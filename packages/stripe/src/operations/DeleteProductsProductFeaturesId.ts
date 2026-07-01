@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteProductsProductFeaturesIdInput {
+  id: string;
+  product: string;
+}
 export const DeleteProductsProductFeaturesIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,19 +17,20 @@ export const DeleteProductsProductFeaturesIdInput =
       path: "/v1/products/{product}/features/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteProductsProductFeaturesIdInput =
-  typeof DeleteProductsProductFeaturesIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteProductsProductFeaturesIdInput>;
 
 // Output Schema
+export interface DeleteProductsProductFeaturesIdOutput {
+  deleted: true;
+  id: string;
+  object: "product_feature";
+}
 export const DeleteProductsProductFeaturesIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["product_feature"]),
-  });
-export type DeleteProductsProductFeaturesIdOutput =
-  typeof DeleteProductsProductFeaturesIdOutput.Type;
+  }) as unknown as Schema.Codec<DeleteProductsProductFeaturesIdOutput>;
 
 // The operation
 /**

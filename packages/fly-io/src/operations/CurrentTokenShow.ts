@@ -1,15 +1,27 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface CurrentTokenShowInput {}
 export const CurrentTokenShowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v1/tokens/current" }));
-export type CurrentTokenShowInput = typeof CurrentTokenShowInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/tokens/current" }),
+) as unknown as Schema.Codec<CurrentTokenShowInput>;
 
 // Output Schema
+export interface CurrentTokenShowOutput {
+  tokens?: {
+    apps?: string[];
+    org_slug?: string;
+    organization?: string;
+    restricted_to_machine?: string;
+    source_machine_id?: string;
+    token_id?: string;
+    user?: string;
+  }[];
+}
 export const CurrentTokenShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tokens: Schema.optional(
@@ -26,17 +38,15 @@ export const CurrentTokenShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type CurrentTokenShowOutput = typeof CurrentTokenShowOutput.Type;
+) as unknown as Schema.Codec<CurrentTokenShowOutput>;
 
 // The operation
 /**
  * Get Current Token Information
  *
- * Get information about the current macaroon token(s), including organizations, apps, and whether each token is from a user or machine
+ * Get information about the current macaroon token(s), including organizations, apps, user identity hashes, and machine restrictions
  */
 export const CurrentTokenShow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CurrentTokenShowInput,
   outputSchema: CurrentTokenShowOutput,
-  errors: [Forbidden] as const,
 }));

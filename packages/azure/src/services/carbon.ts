@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput {}
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -16,18 +17,18 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
       path: "/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange",
       apiVersion: "2025-04-01",
     }),
-  );
-export type CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput =
-  typeof CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput.Type;
+  ) as unknown as Schema.Codec<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeInput>;
 
 // Output Schema
+export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput {
+  startDate: string;
+  endDate: string;
+}
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startDate: Schema.String,
     endDate: Schema.String,
-  });
-export type CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput =
-  typeof CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput.Type;
+  }) as unknown as Schema.Codec<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput>;
 
 // The operation
 /**
@@ -41,6 +42,20 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange =
     outputSchema: CarbonServiceQueryCarbonEmissionDataAvailableDateRangeOutput,
   }));
 // Input Schema
+export interface CarbonServiceQueryCarbonEmissionReportsInput {
+  reportType:
+    | "OverallSummaryReport"
+    | "MonthlySummaryReport"
+    | "TopItemsSummaryReport"
+    | "TopItemsMonthlySummaryReport"
+    | "ItemDetailsReport";
+  dateRange: { start: string; end: string };
+  subscriptionList: string[];
+  resourceGroupUrlList?: string[];
+  resourceTypeList?: string[];
+  locationList?: string[];
+  carbonScopeList: ("Scope1" | "Scope2" | "Scope3")[];
+}
 export const CarbonServiceQueryCarbonEmissionReportsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     reportType: Schema.Literals([
@@ -67,11 +82,35 @@ export const CarbonServiceQueryCarbonEmissionReportsInput =
       path: "/providers/Microsoft.Carbon/carbonEmissionReports",
       apiVersion: "2025-04-01",
     }),
-  );
-export type CarbonServiceQueryCarbonEmissionReportsInput =
-  typeof CarbonServiceQueryCarbonEmissionReportsInput.Type;
+  ) as unknown as Schema.Codec<CarbonServiceQueryCarbonEmissionReportsInput>;
 
 // Output Schema
+export interface CarbonServiceQueryCarbonEmissionReportsOutput {
+  value: {
+    dataType:
+      | "OverallSummaryData"
+      | "MonthlySummaryData"
+      | "TopItemsSummaryData"
+      | "ResourceTopItemsSummaryData"
+      | "ResourceGroupTopItemsSummaryData"
+      | "TopItemsMonthlySummaryData"
+      | "ResourceTopItemsMonthlySummaryData"
+      | "ResourceGroupTopItemsMonthlySummaryData"
+      | "ItemDetailsData"
+      | "ResourceItemDetailsData"
+      | "ResourceGroupItemDetailsData";
+    latestMonthEmissions: number;
+    previousMonthEmissions: number;
+    monthOverMonthEmissionsChangeRatio?: number;
+    monthlyEmissionsChangeValue?: number;
+  }[];
+  skipToken?: string;
+  subscriptionAccessDecisionList?: {
+    subscriptionId: string;
+    decision: "Allowed" | "Denied";
+    denialReason?: string;
+  }[];
+}
 export const CarbonServiceQueryCarbonEmissionReportsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -105,9 +144,7 @@ export const CarbonServiceQueryCarbonEmissionReportsOutput =
         }),
       ),
     ),
-  });
-export type CarbonServiceQueryCarbonEmissionReportsOutput =
-  typeof CarbonServiceQueryCarbonEmissionReportsOutput.Type;
+  }) as unknown as Schema.Codec<CarbonServiceQueryCarbonEmissionReportsOutput>;
 
 // The operation
 /**
@@ -121,6 +158,7 @@ export const CarbonServiceQueryCarbonEmissionReports =
     outputSchema: CarbonServiceQueryCarbonEmissionReportsOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -129,10 +167,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Carbon/operations",
     apiVersion: "2025-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -155,8 +207,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

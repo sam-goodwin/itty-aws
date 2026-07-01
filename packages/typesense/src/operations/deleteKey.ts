@@ -4,16 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteKeyInput {
+  keyId: number;
+}
 export const DeleteKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   keyId: Schema.Number.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/keys/{keyId}" }));
-export type DeleteKeyInput = typeof DeleteKeyInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/keys/{keyId}" }),
+) as unknown as Schema.Codec<DeleteKeyInput>;
 
 // Output Schema
+export interface DeleteKeyOutput {
+  id: number;
+}
 export const DeleteKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number,
-});
-export type DeleteKeyOutput = typeof DeleteKeyOutput.Type;
+}) as unknown as Schema.Codec<DeleteKeyOutput>;
 
 // The operation
 /**

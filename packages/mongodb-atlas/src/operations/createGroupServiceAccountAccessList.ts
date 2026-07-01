@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupServiceAccountAccessListInput {
+  groupId: string;
+  clientId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const CreateGroupServiceAccountAccessListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const CreateGroupServiceAccountAccessListInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList",
     }),
-  );
-export type CreateGroupServiceAccountAccessListInput =
-  typeof CreateGroupServiceAccountAccessListInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupServiceAccountAccessListInput>;
 
 // Output Schema
+export type CreateGroupServiceAccountAccessListOutput = void;
 export const CreateGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupServiceAccountAccessListOutput =
-  typeof CreateGroupServiceAccountAccessListOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupServiceAccountAccessListOutput>;
 
 // The operation
 /**
  * Add Access List Entries for One Project Service Account
  *
- * Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+ * Add Access List Entries for the specified Service Account for the project. Resources require all API requests to originate from IP addresses on the API access list.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param includeCount - Flag that indicates whether the response returns the total number of items (`totalCount`) in the response.

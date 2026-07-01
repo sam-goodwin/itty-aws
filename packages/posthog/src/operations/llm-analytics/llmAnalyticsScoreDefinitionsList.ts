@@ -1,9 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsScoreDefinitionsListInput {
+  project_id: string;
+  archived?: boolean;
+  kind?: string;
+  limit?: number;
+  offset?: number;
+  order_by?: string;
+  search?: string;
+}
 export const LlmAnalyticsScoreDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -16,13 +24,58 @@ export const LlmAnalyticsScoreDefinitionsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/score_definitions/",
+      path: "/api/projects/{project_id}/llm_analytics/score_definitions/",
     }),
-  );
-export type LlmAnalyticsScoreDefinitionsListInput =
-  typeof LlmAnalyticsScoreDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsScoreDefinitionsListInput>;
 
 // Output Schema
+export interface LlmAnalyticsScoreDefinitionsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    kind?: "categorical" | "numeric" | "boolean";
+    archived?: boolean;
+    current_version?: number;
+    current_version_id?: string | null;
+    config?:
+      | {
+          options?: { key?: string; label?: string }[];
+          selection_mode?: "single" | "multiple";
+          min_selections?: number | null;
+          max_selections?: number | null;
+        }
+      | { min?: number | null; max?: number | null; step?: number | null }
+      | { true_label?: string; false_label?: string };
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    created_at?: string;
+    updated_at?: string | null;
+    team?: number;
+  }[];
+}
 export const LlmAnalyticsScoreDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -39,7 +92,35 @@ export const LlmAnalyticsScoreDefinitionsListOutput =
           ),
           archived: Schema.optional(Schema.Boolean),
           current_version: Schema.optional(Schema.Number),
-          config: Schema.optional(Schema.Unknown),
+          current_version_id: Schema.optional(Schema.NullOr(Schema.String)),
+          config: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                options: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.optional(Schema.String),
+                      label: Schema.optional(Schema.String),
+                    }),
+                  ),
+                ),
+                selection_mode: Schema.optional(
+                  Schema.Literals(["single", "multiple"]),
+                ),
+                min_selections: Schema.optional(Schema.NullOr(Schema.Number)),
+                max_selections: Schema.optional(Schema.NullOr(Schema.Number)),
+              }),
+              Schema.Struct({
+                min: Schema.optional(Schema.NullOr(Schema.Number)),
+                max: Schema.optional(Schema.NullOr(Schema.Number)),
+                step: Schema.optional(Schema.NullOr(Schema.Number)),
+              }),
+              Schema.Struct({
+                true_label: Schema.optional(Schema.String),
+                false_label: Schema.optional(Schema.String),
+              }),
+            ]),
+          ),
           created_by: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -55,7 +136,23 @@ export const LlmAnalyticsScoreDefinitionsListOutput =
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
@@ -65,9 +162,7 @@ export const LlmAnalyticsScoreDefinitionsListOutput =
         }),
       ),
     ),
-  });
-export type LlmAnalyticsScoreDefinitionsListOutput =
-  typeof LlmAnalyticsScoreDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsScoreDefinitionsListOutput>;
 
 // The operation
 /**
@@ -84,5 +179,4 @@ export const llmAnalyticsScoreDefinitionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsScoreDefinitionsListInput,
     outputSchema: LlmAnalyticsScoreDefinitionsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

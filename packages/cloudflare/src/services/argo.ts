@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service argo
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -64,7 +64,7 @@ export const GetSmartRoutingRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/argo/smart_routing" }),
     ),
-  ) as unknown as Schema.Schema<GetSmartRoutingRequest>;
+  ) as unknown as Schema.Codec<GetSmartRoutingRequest>;
 
 export interface GetSmartRoutingResponse {
   /** Specifies the identifier of the Argo Smart Routing setting. */
@@ -94,7 +94,7 @@ export const GetSmartRoutingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetSmartRoutingResponse>;
+  ) as unknown as Schema.Codec<GetSmartRoutingResponse>;
 
 export type GetSmartRoutingError =
   | DefaultErrors
@@ -128,7 +128,7 @@ export const PatchSmartRoutingRequest =
     }).pipe(
       T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/smart_routing" }),
     ),
-  ) as unknown as Schema.Schema<PatchSmartRoutingRequest>;
+  ) as unknown as Schema.Codec<PatchSmartRoutingRequest>;
 
 export interface PatchSmartRoutingResponse {
   /** Specifies the identifier of the Argo Smart Routing setting. */
@@ -158,7 +158,7 @@ export const PatchSmartRoutingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchSmartRoutingResponse>;
+  ) as unknown as Schema.Codec<PatchSmartRoutingResponse>;
 
 export type PatchSmartRoutingError =
   | DefaultErrors
@@ -193,7 +193,7 @@ export const GetTieredCachingRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/argo/tiered_caching" }),
     ),
-  ) as unknown as Schema.Schema<GetTieredCachingRequest>;
+  ) as unknown as Schema.Codec<GetTieredCachingRequest>;
 
 export interface GetTieredCachingResponse {
   /** The identifier of the caching setting. */
@@ -223,7 +223,7 @@ export const GetTieredCachingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetTieredCachingResponse>;
+  ) as unknown as Schema.Codec<GetTieredCachingResponse>;
 
 export type GetTieredCachingError =
   | DefaultErrors
@@ -257,7 +257,7 @@ export const PatchTieredCachingRequest =
     }).pipe(
       T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/tiered_caching" }),
     ),
-  ) as unknown as Schema.Schema<PatchTieredCachingRequest>;
+  ) as unknown as Schema.Codec<PatchTieredCachingRequest>;
 
 export interface PatchTieredCachingResponse {
   /** The identifier of the caching setting. */
@@ -287,7 +287,7 @@ export const PatchTieredCachingResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchTieredCachingResponse>;
+  ) as unknown as Schema.Codec<PatchTieredCachingResponse>;
 
 export type PatchTieredCachingError =
   | DefaultErrors

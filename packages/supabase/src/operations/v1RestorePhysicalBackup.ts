@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1RestorePhysicalBackupInput {
+  ref: string;
+  id: number;
+}
 export const V1RestorePhysicalBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const V1RestorePhysicalBackupInput =
       method: "POST",
       path: "/v1/projects/{ref}/database/backups/restore",
     }),
-  );
-export type V1RestorePhysicalBackupInput =
-  typeof V1RestorePhysicalBackupInput.Type;
+  ) as unknown as Schema.Codec<V1RestorePhysicalBackupInput>;
 
 // Output Schema
+export type V1RestorePhysicalBackupOutput = void;
 export const V1RestorePhysicalBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RestorePhysicalBackupOutput =
-  typeof V1RestorePhysicalBackupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePhysicalBackupOutput>;
 
 // The operation
 /**

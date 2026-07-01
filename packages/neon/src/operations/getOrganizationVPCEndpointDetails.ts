@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetOrganizationVPCEndpointDetailsInput {
+  org_id: string;
+  region_id: string;
+  vpc_endpoint_id: string;
+}
 export const GetOrganizationVPCEndpointDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,16 @@ export const GetOrganizationVPCEndpointDetailsInput =
       method: "GET",
       path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
     }),
-  );
-export type GetOrganizationVPCEndpointDetailsInput =
-  typeof GetOrganizationVPCEndpointDetailsInput.Type;
+  ) as unknown as Schema.Codec<GetOrganizationVPCEndpointDetailsInput>;
 
 // Output Schema
+export interface GetOrganizationVPCEndpointDetailsOutput {
+  vpc_endpoint_id: string;
+  label: string;
+  state: string;
+  num_restricted_projects: number;
+  example_restricted_projects: string[];
+}
 export const GetOrganizationVPCEndpointDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     vpc_endpoint_id: Schema.String,
@@ -25,9 +35,7 @@ export const GetOrganizationVPCEndpointDetailsOutput =
     state: Schema.String,
     num_restricted_projects: Schema.Number,
     example_restricted_projects: Schema.Array(Schema.String),
-  });
-export type GetOrganizationVPCEndpointDetailsOutput =
-  typeof GetOrganizationVPCEndpointDetailsOutput.Type;
+  }) as unknown as Schema.Codec<GetOrganizationVPCEndpointDetailsOutput>;
 
 // The operation
 /**

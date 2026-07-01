@@ -4,12 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString, SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AddonsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+  addonName: string;
+  kind: "IotEdge" | "ArcForKubernetes";
+}
 export const AddonsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24,10 +33,22 @@ export const AddonsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AddonsCreateOrUpdateInput = typeof AddonsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AddonsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AddonsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AddonsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -47,8 +68,7 @@ export const AddonsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AddonsCreateOrUpdateOutput = typeof AddonsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AddonsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -68,6 +88,13 @@ export const AddonsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddonsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+  addonName: string;
+}
 export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -80,12 +107,12 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AddonsDeleteInput = typeof AddonsDeleteInput.Type;
+) as unknown as Schema.Codec<AddonsDeleteInput>;
 
 // Output Schema
-export const AddonsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddonsDeleteOutput = typeof AddonsDeleteOutput.Type;
+export type AddonsDeleteOutput = void;
+export const AddonsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddonsDeleteOutput>;
 
 // The operation
 /**
@@ -103,6 +130,13 @@ export const AddonsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddonsDeleteOutput,
 }));
 // Input Schema
+export interface AddonsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+  addonName: string;
+}
 export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -115,10 +149,22 @@ export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons/{addonName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AddonsGetInput = typeof AddonsGetInput.Type;
+) as unknown as Schema.Codec<AddonsGetInput>;
 
 // Output Schema
+export interface AddonsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -137,8 +183,7 @@ export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AddonsGetOutput = typeof AddonsGetOutput.Type;
+}) as unknown as Schema.Codec<AddonsGetOutput>;
 
 // The operation
 /**
@@ -156,6 +201,12 @@ export const AddonsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddonsGetOutput,
 }));
 // Input Schema
+export interface AddonsListByRoleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+}
 export const AddonsListByRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -167,10 +218,25 @@ export const AddonsListByRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons",
     apiVersion: "2023-12-01",
   }),
-);
-export type AddonsListByRoleInput = typeof AddonsListByRoleInput.Type;
+) as unknown as Schema.Codec<AddonsListByRoleInput>;
 
 // Output Schema
+export interface AddonsListByRoleOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AddonsListByRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -206,8 +272,7 @@ export const AddonsListByRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type AddonsListByRoleOutput = typeof AddonsListByRoleOutput.Type;
+) as unknown as Schema.Codec<AddonsListByRoleOutput>;
 
 // The operation
 /**
@@ -224,6 +289,12 @@ export const AddonsListByRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddonsListByRoleOutput,
 }));
 // Input Schema
+export interface AlertsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -235,10 +306,22 @@ export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type AlertsGetInput = typeof AlertsGetInput.Type;
+) as unknown as Schema.Codec<AlertsGetInput>;
 
 // Output Schema
+export interface AlertsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -257,8 +340,7 @@ export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AlertsGetOutput = typeof AlertsGetOutput.Type;
+}) as unknown as Schema.Codec<AlertsGetOutput>;
 
 // The operation
 /**
@@ -275,6 +357,11 @@ export const AlertsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AlertsGetOutput,
 }));
 // Input Schema
+export interface AlertsListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const AlertsListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -286,11 +373,25 @@ export const AlertsListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts",
       apiVersion: "2023-12-01",
     }),
-  );
-export type AlertsListByDataBoxEdgeDeviceInput =
-  typeof AlertsListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<AlertsListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface AlertsListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AlertsListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -325,9 +426,7 @@ export const AlertsListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AlertsListByDataBoxEdgeDeviceOutput =
-  typeof AlertsListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<AlertsListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -344,6 +443,9 @@ export const AlertsListByDataBoxEdgeDevice =
     outputSchema: AlertsListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface AvailableSkusListInput {
+  subscriptionId: string;
+}
 export const AvailableSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -354,10 +456,58 @@ export const AvailableSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/availableSkus",
     apiVersion: "2023-12-01",
   }),
-);
-export type AvailableSkusListInput = typeof AvailableSkusListInput.Type;
+) as unknown as Schema.Codec<AvailableSkusListInput>;
 
 // Output Schema
+export interface AvailableSkusListOutput {
+  value: {
+    resourceType?: string;
+    name?:
+      | "Gateway"
+      | "Edge"
+      | "TEA_1Node"
+      | "TEA_1Node_UPS"
+      | "TEA_1Node_Heater"
+      | "TEA_1Node_UPS_Heater"
+      | "TEA_4Node_Heater"
+      | "TEA_4Node_UPS_Heater"
+      | "TMA"
+      | "TDC"
+      | "TCA_Small"
+      | "GPU"
+      | "TCA_Large"
+      | "EdgeP_Base"
+      | "EdgeP_High"
+      | "EdgePR_Base"
+      | "EdgePR_Base_UPS"
+      | "EP2_64_1VPU_W"
+      | "EP2_128_1T4_Mx1_W"
+      | "EP2_256_2T4_W"
+      | "EdgeMR_Mini"
+      | "RCA_Small"
+      | "RCA_Large"
+      | "RDC"
+      | "Management"
+      | "EP2_64_Mx1_W"
+      | "EP2_128_GPU1_Mx1_W"
+      | "EP2_256_GPU2_Mx1"
+      | "EdgeMR_TCP";
+    kind?: string;
+    tier?: "Standard";
+    size?: string;
+    family?: string;
+    locations?: string[];
+    apiVersions?: string[];
+    locationInfo?: { location?: string; zones?: string[]; sites?: string[] }[];
+    costs?: { meterId?: string; quantity?: number; extendedUnit?: string }[];
+    signupOption?: "None" | "Available";
+    version?: "Stable" | "Preview";
+    availability?: "Available" | "Unavailable";
+    shipmentTypes?: ("NotApplicable" | "ShippedToCustomer" | "SelfPickup")[];
+    capabilities?: { name?: string; value?: string }[];
+  }[];
+  nextLink?: string;
+}
 export const AvailableSkusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -445,8 +595,7 @@ export const AvailableSkusListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailableSkusListOutput = typeof AvailableSkusListOutput.Type;
+  }) as unknown as Schema.Codec<AvailableSkusListOutput>;
 
 // The operation
 /**
@@ -460,6 +609,26 @@ export const AvailableSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AvailableSkusListOutput,
 }));
 // Input Schema
+export interface BandwidthSchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  properties: {
+    start: string;
+    stop: string;
+    rateInMbps: number;
+    days: (
+      | "Sunday"
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+    )[];
+  };
+}
 export const BandwidthSchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -488,11 +657,22 @@ export const BandwidthSchedulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BandwidthSchedulesCreateOrUpdateInput =
-  typeof BandwidthSchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BandwidthSchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface BandwidthSchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BandwidthSchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -512,9 +692,7 @@ export const BandwidthSchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BandwidthSchedulesCreateOrUpdateOutput =
-  typeof BandwidthSchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BandwidthSchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -532,6 +710,12 @@ export const BandwidthSchedulesCreateOrUpdate =
     outputSchema: BandwidthSchedulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BandwidthSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const BandwidthSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -544,15 +728,12 @@ export const BandwidthSchedulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BandwidthSchedulesDeleteInput =
-  typeof BandwidthSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<BandwidthSchedulesDeleteInput>;
 
 // Output Schema
+export type BandwidthSchedulesDeleteOutput = void;
 export const BandwidthSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BandwidthSchedulesDeleteOutput =
-  typeof BandwidthSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BandwidthSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -571,6 +752,12 @@ export const BandwidthSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BandwidthSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const BandwidthSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -583,10 +770,22 @@ export const BandwidthSchedulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BandwidthSchedulesGetInput = typeof BandwidthSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<BandwidthSchedulesGetInput>;
 
 // Output Schema
+export interface BandwidthSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BandwidthSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -606,9 +805,7 @@ export const BandwidthSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BandwidthSchedulesGetOutput =
-  typeof BandwidthSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<BandwidthSchedulesGetOutput>;
 
 // The operation
 /**
@@ -627,6 +824,11 @@ export const BandwidthSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BandwidthSchedulesListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const BandwidthSchedulesListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -638,11 +840,25 @@ export const BandwidthSchedulesListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules",
       apiVersion: "2023-12-01",
     }),
-  );
-export type BandwidthSchedulesListByDataBoxEdgeDeviceInput =
-  typeof BandwidthSchedulesListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<BandwidthSchedulesListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface BandwidthSchedulesListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BandwidthSchedulesListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -677,9 +893,7 @@ export const BandwidthSchedulesListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BandwidthSchedulesListByDataBoxEdgeDeviceOutput =
-  typeof BandwidthSchedulesListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<BandwidthSchedulesListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -696,6 +910,29 @@ export const BandwidthSchedulesListByDataBoxEdgeDevice =
     outputSchema: BandwidthSchedulesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface ContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+  containerName: string;
+  properties: {
+    containerStatus?:
+      | "OK"
+      | "Offline"
+      | "Unknown"
+      | "Updating"
+      | "NeedsAttention";
+    dataFormat: "BlockBlob" | "PageBlob" | "AzureFile";
+    refreshDetails?: {
+      inProgressRefreshJobId?: string;
+      lastCompletedRefreshJobTimeInUTC?: string;
+      errorManifestFile?: string;
+      lastJob?: string;
+    };
+    createdDateTime?: string;
+  };
+}
 export const ContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -730,11 +967,22 @@ export const ContainersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainersCreateOrUpdateInput =
-  typeof ContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -754,9 +1002,7 @@ export const ContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ContainersCreateOrUpdateOutput =
-  typeof ContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -776,6 +1022,13 @@ export const ContainersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+  containerName: string;
+}
 export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -788,12 +1041,12 @@ export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ContainersDeleteInput = typeof ContainersDeleteInput.Type;
+) as unknown as Schema.Codec<ContainersDeleteInput>;
 
 // Output Schema
-export const ContainersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContainersDeleteOutput = typeof ContainersDeleteOutput.Type;
+export type ContainersDeleteOutput = void;
+export const ContainersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersDeleteOutput>;
 
 // The operation
 /**
@@ -811,6 +1064,13 @@ export const ContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContainersDeleteOutput,
 }));
 // Input Schema
+export interface ContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+  containerName: string;
+}
 export const ContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -823,10 +1083,22 @@ export const ContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type ContainersGetInput = typeof ContainersGetInput.Type;
+) as unknown as Schema.Codec<ContainersGetInput>;
 
 // Output Schema
+export interface ContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ContainersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -845,8 +1117,7 @@ export const ContainersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ContainersGetOutput = typeof ContainersGetOutput.Type;
+}) as unknown as Schema.Codec<ContainersGetOutput>;
 
 // The operation
 /**
@@ -864,6 +1135,12 @@ export const ContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContainersGetOutput,
 }));
 // Input Schema
+export interface ContainersListByStorageAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+}
 export const ContainersListByStorageAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -876,11 +1153,25 @@ export const ContainersListByStorageAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers",
       apiVersion: "2023-12-01",
     }),
-  );
-export type ContainersListByStorageAccountInput =
-  typeof ContainersListByStorageAccountInput.Type;
+  ) as unknown as Schema.Codec<ContainersListByStorageAccountInput>;
 
 // Output Schema
+export interface ContainersListByStorageAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ContainersListByStorageAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -915,9 +1206,7 @@ export const ContainersListByStorageAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ContainersListByStorageAccountOutput =
-  typeof ContainersListByStorageAccountOutput.Type;
+  }) as unknown as Schema.Codec<ContainersListByStorageAccountOutput>;
 
 // The operation
 /**
@@ -935,6 +1224,13 @@ export const ContainersListByStorageAccount =
     outputSchema: ContainersListByStorageAccountOutput,
   }));
 // Input Schema
+export interface ContainersRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+  containerName: string;
+}
 export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -949,12 +1245,12 @@ export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}/refresh",
     apiVersion: "2023-12-01",
   }),
-);
-export type ContainersRefreshInput = typeof ContainersRefreshInput.Type;
+) as unknown as Schema.Codec<ContainersRefreshInput>;
 
 // Output Schema
-export const ContainersRefreshOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ContainersRefreshOutput = typeof ContainersRefreshOutput.Type;
+export type ContainersRefreshOutput = void;
+export const ContainersRefreshOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersRefreshOutput>;
 
 // The operation
 /**
@@ -972,6 +1268,21 @@ export const ContainersRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ContainersRefreshOutput,
 }));
 // Input Schema
+export interface DeviceCapacityCheckCheckResourceCreationFeasibilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  capacityName?: string;
+  properties: {
+    vmPlacementQuery: string[][];
+    vmPlacementResults?: {
+      vmSize?: string[];
+      isFeasible?: boolean;
+      messageCode?: string;
+      message?: string;
+    }[];
+  };
+}
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -997,15 +1308,12 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
-  typeof DeviceCapacityCheckCheckResourceCreationFeasibilityInput.Type;
+  ) as unknown as Schema.Codec<DeviceCapacityCheckCheckResourceCreationFeasibilityInput>;
 
 // Output Schema
+export type DeviceCapacityCheckCheckResourceCreationFeasibilityOutput = void;
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
-  typeof DeviceCapacityCheckCheckResourceCreationFeasibilityOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceCapacityCheckCheckResourceCreationFeasibilityOutput>;
 
 // The operation
 /**
@@ -1023,6 +1331,11 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibility =
     outputSchema: DeviceCapacityCheckCheckResourceCreationFeasibilityOutput,
   }));
 // Input Schema
+export interface DeviceCapacityInfoGetDeviceCapacityInfoInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DeviceCapacityInfoGetDeviceCapacityInfoInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1034,11 +1347,22 @@ export const DeviceCapacityInfoGetDeviceCapacityInfoInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityInfo/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DeviceCapacityInfoGetDeviceCapacityInfoInput =
-  typeof DeviceCapacityInfoGetDeviceCapacityInfoInput.Type;
+  ) as unknown as Schema.Codec<DeviceCapacityInfoGetDeviceCapacityInfoInput>;
 
 // Output Schema
+export interface DeviceCapacityInfoGetDeviceCapacityInfoOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeviceCapacityInfoGetDeviceCapacityInfoOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1058,9 +1382,7 @@ export const DeviceCapacityInfoGetDeviceCapacityInfoOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeviceCapacityInfoGetDeviceCapacityInfoOutput =
-  typeof DeviceCapacityInfoGetDeviceCapacityInfoOutput.Type;
+  }) as unknown as Schema.Codec<DeviceCapacityInfoGetDeviceCapacityInfoOutput>;
 
 // The operation
 /**
@@ -1077,6 +1399,126 @@ export const DeviceCapacityInfoGetDeviceCapacityInfo =
     outputSchema: DeviceCapacityInfoGetDeviceCapacityInfoOutput,
   }));
 // Input Schema
+export interface DevicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties?: {
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    dataBoxEdgeDeviceStatus?:
+      | "ReadyToSetup"
+      | "Online"
+      | "Offline"
+      | "NeedsAttention"
+      | "Disconnected"
+      | "PartiallyDisconnected"
+      | "Maintenance";
+    serialNumber?: string;
+    description?: string;
+    modelDescription?: string;
+    deviceType?: "DataBoxEdgeDevice";
+    friendlyName?: string;
+    culture?: string;
+    deviceModel?: string;
+    deviceSoftwareVersion?: string;
+    deviceLocalCapacity?: number;
+    timeZone?: string;
+    deviceHcsVersion?: string;
+    configuredRoleTypes?: (
+      | "IOT"
+      | "ASA"
+      | "Functions"
+      | "Cognitive"
+      | "MEC"
+      | "CloudEdgeManagement"
+      | "Kubernetes"
+    )[];
+    nodeCount?: number;
+    resourceMoveDetails?: {
+      operationInProgress?:
+        | "None"
+        | "ResourceMoveInProgress"
+        | "ResourceMoveFailed";
+      operationInProgressLockTimeoutInUTC?: string;
+    };
+    edgeProfile?: {
+      subscription?: {
+        registrationId?: string;
+        id?: string;
+        state?:
+          | "Registered"
+          | "Warned"
+          | "Suspended"
+          | "Deleted"
+          | "Unregistered";
+        registrationDate?: string;
+        subscriptionId?: string;
+        properties?: {
+          tenantId?: string;
+          locationPlacementId?: string;
+          quotaId?: string;
+          serializedDetails?: string;
+          registeredFeatures?: { name?: string; state?: string }[];
+        };
+      };
+    };
+    dataResidency?: { type?: "GeoZoneReplication" | "ZoneReplication" };
+    kubernetesWorkloadProfile?: string;
+  };
+  sku?: {
+    name?:
+      | "Gateway"
+      | "Edge"
+      | "TEA_1Node"
+      | "TEA_1Node_UPS"
+      | "TEA_1Node_Heater"
+      | "TEA_1Node_UPS_Heater"
+      | "TEA_4Node_Heater"
+      | "TEA_4Node_UPS_Heater"
+      | "TMA"
+      | "TDC"
+      | "TCA_Small"
+      | "GPU"
+      | "TCA_Large"
+      | "EdgeP_Base"
+      | "EdgeP_High"
+      | "EdgePR_Base"
+      | "EdgePR_Base_UPS"
+      | "EP2_64_1VPU_W"
+      | "EP2_128_1T4_Mx1_W"
+      | "EP2_256_2T4_W"
+      | "EdgeMR_Mini"
+      | "RCA_Small"
+      | "RCA_Large"
+      | "RDC"
+      | "Management"
+      | "EP2_64_Mx1_W"
+      | "EP2_128_GPU1_Mx1_W"
+      | "EP2_256_GPU2_Mx1"
+      | "EdgeMR_TCP";
+    tier?: "Standard";
+  };
+  etag?: string;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  kind?:
+    | "AzureDataBoxGateway"
+    | "AzureStackEdge"
+    | "AzureStackHub"
+    | "AzureModularDataCentre";
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DevicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1267,10 +1709,22 @@ export const DevicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DevicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1290,9 +1744,7 @@ export const DevicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevicesCreateOrUpdateOutput =
-  typeof DevicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1310,6 +1762,21 @@ export const DevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesCreateOrUpdateSecuritySettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties: {
+    deviceAdminPassword: {
+      value: string;
+      encryptionCertThumbprint?: string;
+      encryptionAlgorithm: "None" | "AES256" | "RSAES_PKCS1_v_1_5";
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DevicesCreateOrUpdateSecuritySettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1335,15 +1802,12 @@ export const DevicesCreateOrUpdateSecuritySettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/securitySettings/default/update",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesCreateOrUpdateSecuritySettingsInput =
-  typeof DevicesCreateOrUpdateSecuritySettingsInput.Type;
+  ) as unknown as Schema.Codec<DevicesCreateOrUpdateSecuritySettingsInput>;
 
 // Output Schema
+export type DevicesCreateOrUpdateSecuritySettingsOutput = void;
 export const DevicesCreateOrUpdateSecuritySettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesCreateOrUpdateSecuritySettingsOutput =
-  typeof DevicesCreateOrUpdateSecuritySettingsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesCreateOrUpdateSecuritySettingsOutput>;
 
 // The operation
 /**
@@ -1360,6 +1824,11 @@ export const DevicesCreateOrUpdateSecuritySettings =
     outputSchema: DevicesCreateOrUpdateSecuritySettingsOutput,
   }));
 // Input Schema
+export interface DevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1370,12 +1839,12 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
+) as unknown as Schema.Codec<DevicesDeleteInput>;
 
 // Output Schema
-export const DevicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesDeleteOutput = typeof DevicesDeleteOutput.Type;
+export type DevicesDeleteOutput = void;
+export const DevicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
 
 // The operation
 /**
@@ -1391,6 +1860,11 @@ export const DevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesDeleteOutput,
 }));
 // Input Schema
+export interface DevicesDownloadUpdatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesDownloadUpdatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1402,15 +1876,12 @@ export const DevicesDownloadUpdatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/downloadUpdates",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesDownloadUpdatesInput =
-  typeof DevicesDownloadUpdatesInput.Type;
+  ) as unknown as Schema.Codec<DevicesDownloadUpdatesInput>;
 
 // Output Schema
+export type DevicesDownloadUpdatesOutput = void;
 export const DevicesDownloadUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesDownloadUpdatesOutput =
-  typeof DevicesDownloadUpdatesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDownloadUpdatesOutput>;
 
 // The operation
 /**
@@ -1428,6 +1899,11 @@ export const DevicesDownloadUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesGenerateCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGenerateCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1439,19 +1915,20 @@ export const DevicesGenerateCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/generateCertificate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesGenerateCertificateInput =
-  typeof DevicesGenerateCertificateInput.Type;
+  ) as unknown as Schema.Codec<DevicesGenerateCertificateInput>;
 
 // Output Schema
+export interface DevicesGenerateCertificateOutput {
+  publicKey?: string;
+  privateKey?: Redacted.Redacted<string>;
+  expiryTimeInUTC?: string;
+}
 export const DevicesGenerateCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publicKey: Schema.optional(Schema.String),
     privateKey: Schema.optional(SensitiveOutputString),
     expiryTimeInUTC: Schema.optional(Schema.String),
-  });
-export type DevicesGenerateCertificateOutput =
-  typeof DevicesGenerateCertificateOutput.Type;
+  }) as unknown as Schema.Codec<DevicesGenerateCertificateOutput>;
 
 // The operation
 /**
@@ -1469,6 +1946,11 @@ export const DevicesGenerateCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1479,10 +1961,22 @@ export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DevicesGetInput = typeof DevicesGetInput.Type;
+) as unknown as Schema.Codec<DevicesGetInput>;
 
 // Output Schema
+export interface DevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1501,8 +1995,7 @@ export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DevicesGetOutput = typeof DevicesGetOutput.Type;
+}) as unknown as Schema.Codec<DevicesGetOutput>;
 
 // The operation
 /**
@@ -1518,6 +2011,11 @@ export const DevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesGetOutput,
 }));
 // Input Schema
+export interface DevicesGetExtendedInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGetExtendedInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1529,19 +2027,20 @@ export const DevicesGetExtendedInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/getExtendedInformation",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesGetExtendedInformationInput =
-  typeof DevicesGetExtendedInformationInput.Type;
+  ) as unknown as Schema.Codec<DevicesGetExtendedInformationInput>;
 
 // Output Schema
+export interface DevicesGetExtendedInformationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DevicesGetExtendedInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DevicesGetExtendedInformationOutput =
-  typeof DevicesGetExtendedInformationOutput.Type;
+  }) as unknown as Schema.Codec<DevicesGetExtendedInformationOutput>;
 
 // The operation
 /**
@@ -1558,6 +2057,11 @@ export const DevicesGetExtendedInformation =
     outputSchema: DevicesGetExtendedInformationOutput,
   }));
 // Input Schema
+export interface DevicesGetNetworkSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGetNetworkSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1569,11 +2073,22 @@ export const DevicesGetNetworkSettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/networkSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesGetNetworkSettingsInput =
-  typeof DevicesGetNetworkSettingsInput.Type;
+  ) as unknown as Schema.Codec<DevicesGetNetworkSettingsInput>;
 
 // Output Schema
+export interface DevicesGetNetworkSettingsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesGetNetworkSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1593,9 +2108,7 @@ export const DevicesGetNetworkSettingsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevicesGetNetworkSettingsOutput =
-  typeof DevicesGetNetworkSettingsOutput.Type;
+  }) as unknown as Schema.Codec<DevicesGetNetworkSettingsOutput>;
 
 // The operation
 /**
@@ -1613,6 +2126,11 @@ export const DevicesGetNetworkSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesGetUpdateSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGetUpdateSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1624,11 +2142,22 @@ export const DevicesGetUpdateSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/updateSummary/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesGetUpdateSummaryInput =
-  typeof DevicesGetUpdateSummaryInput.Type;
+  ) as unknown as Schema.Codec<DevicesGetUpdateSummaryInput>;
 
 // Output Schema
+export interface DevicesGetUpdateSummaryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesGetUpdateSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1648,9 +2177,7 @@ export const DevicesGetUpdateSummaryOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevicesGetUpdateSummaryOutput =
-  typeof DevicesGetUpdateSummaryOutput.Type;
+  }) as unknown as Schema.Codec<DevicesGetUpdateSummaryOutput>;
 
 // The operation
 /**
@@ -1668,6 +2195,11 @@ export const DevicesGetUpdateSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesInstallUpdatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesInstallUpdatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1679,14 +2211,12 @@ export const DevicesInstallUpdatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/installUpdates",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesInstallUpdatesInput = typeof DevicesInstallUpdatesInput.Type;
+  ) as unknown as Schema.Codec<DevicesInstallUpdatesInput>;
 
 // Output Schema
+export type DevicesInstallUpdatesOutput = void;
 export const DevicesInstallUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesInstallUpdatesOutput =
-  typeof DevicesInstallUpdatesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesInstallUpdatesOutput>;
 
 // The operation
 /**
@@ -1704,6 +2234,11 @@ export const DevicesInstallUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $expand?: string;
+}
 export const DevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1715,11 +2250,25 @@ export const DevicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesListByResourceGroupInput =
-  typeof DevicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DevicesListByResourceGroupInput>;
 
 // Output Schema
+export interface DevicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1754,9 +2303,7 @@ export const DevicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevicesListByResourceGroupOutput =
-  typeof DevicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DevicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1774,6 +2321,10 @@ export const DevicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesListBySubscriptionInput {
+  subscriptionId: string;
+  $expand?: string;
+}
 export const DevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1784,11 +2335,25 @@ export const DevicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesListBySubscriptionInput =
-  typeof DevicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DevicesListBySubscriptionInput>;
 
 // Output Schema
+export interface DevicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1823,9 +2388,7 @@ export const DevicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevicesListBySubscriptionOutput =
-  typeof DevicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DevicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1842,6 +2405,11 @@ export const DevicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesScanForUpdatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DevicesScanForUpdatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1853,14 +2421,12 @@ export const DevicesScanForUpdatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/scanForUpdates",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesScanForUpdatesInput = typeof DevicesScanForUpdatesInput.Type;
+  ) as unknown as Schema.Codec<DevicesScanForUpdatesInput>;
 
 // Output Schema
+export type DevicesScanForUpdatesOutput = void;
 export const DevicesScanForUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesScanForUpdatesOutput =
-  typeof DevicesScanForUpdatesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesScanForUpdatesOutput>;
 
 // The operation
 /**
@@ -1878,6 +2444,18 @@ export const DevicesScanForUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type?: "None" | "SystemAssigned" | "UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+  };
+  properties?: { edgeProfile?: { subscription?: { id?: string } } };
+}
 export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1911,10 +2489,22 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}",
     apiVersion: "2023-12-01",
   }),
-);
-export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
+) as unknown as Schema.Codec<DevicesUpdateInput>;
 
 // Output Schema
+export interface DevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1933,8 +2523,7 @@ export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DevicesUpdateOutput = typeof DevicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<DevicesUpdateOutput>;
 
 // The operation
 /**
@@ -1950,6 +2539,22 @@ export const DevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesUpdateOutput,
 }));
 // Input Schema
+export interface DevicesUpdateExtendedInformationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  clientSecretStoreId?: string;
+  clientSecretStoreUrl?: string;
+  channelIntegrityKeyName?: string;
+  channelIntegrityKeyVersion?: string;
+  syncStatus?:
+    | "KeyVaultSynced"
+    | "KeyVaultSyncFailed"
+    | "KeyVaultNotConfigured"
+    | "KeyVaultSyncPending"
+    | "KeyVaultSyncing"
+    | "KeyVaultNotSynced";
+}
 export const DevicesUpdateExtendedInformationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1975,19 +2580,20 @@ export const DevicesUpdateExtendedInformationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/updateExtendedInformation",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesUpdateExtendedInformationInput =
-  typeof DevicesUpdateExtendedInformationInput.Type;
+  ) as unknown as Schema.Codec<DevicesUpdateExtendedInformationInput>;
 
 // Output Schema
+export interface DevicesUpdateExtendedInformationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DevicesUpdateExtendedInformationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type DevicesUpdateExtendedInformationOutput =
-  typeof DevicesUpdateExtendedInformationOutput.Type;
+  }) as unknown as Schema.Codec<DevicesUpdateExtendedInformationOutput>;
 
 // The operation
 /**
@@ -2004,6 +2610,15 @@ export const DevicesUpdateExtendedInformation =
     outputSchema: DevicesUpdateExtendedInformationOutput,
   }));
 // Input Schema
+export interface DevicesUploadCertificateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties: {
+    authenticationType?: "Invalid" | "AzureActiveDirectory";
+    certificate: string;
+  };
+}
 export const DevicesUploadCertificateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2021,11 +2636,19 @@ export const DevicesUploadCertificateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/uploadCertificate",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DevicesUploadCertificateInput =
-  typeof DevicesUploadCertificateInput.Type;
+  ) as unknown as Schema.Codec<DevicesUploadCertificateInput>;
 
 // Output Schema
+export interface DevicesUploadCertificateOutput {
+  authType?: "Invalid" | "AzureActiveDirectory";
+  resourceId?: string;
+  aadAuthority?: string;
+  aadTenantId?: string;
+  servicePrincipalClientId?: string;
+  servicePrincipalObjectId?: string;
+  azureManagementEndpointAudience?: string;
+  aadAudience?: string;
+}
 export const DevicesUploadCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authType: Schema.optional(
@@ -2038,9 +2661,7 @@ export const DevicesUploadCertificateOutput =
     servicePrincipalObjectId: Schema.optional(Schema.String),
     azureManagementEndpointAudience: Schema.optional(Schema.String),
     aadAudience: Schema.optional(Schema.String),
-  });
-export type DevicesUploadCertificateOutput =
-  typeof DevicesUploadCertificateOutput.Type;
+  }) as unknown as Schema.Codec<DevicesUploadCertificateOutput>;
 
 // The operation
 /**
@@ -2058,6 +2679,11 @@ export const DevicesUploadCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2069,11 +2695,22 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput =
-  typeof DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput>;
 
 // Output Schema
+export interface DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2093,9 +2730,7 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput =
-  typeof DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput>;
 
 // The operation
 /**
@@ -2114,6 +2749,11 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettings =
       DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput,
   }));
 // Input Schema
+export interface DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2125,11 +2765,22 @@ export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
-  typeof DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput>;
 
 // Output Schema
+export interface DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2149,9 +2800,7 @@ export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput =
-  typeof DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput>;
 
 // The operation
 /**
@@ -2168,6 +2817,12 @@ export const DiagnosticSettingsGetDiagnosticRemoteSupportSettings =
     outputSchema: DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput,
   }));
 // Input Schema
+export interface DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties: { userConsent: "Enabled" | "Disabled" };
+}
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2182,11 +2837,22 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInp
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticProactiveLogCollectionSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput =
-  typeof DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput>;
 
 // Output Schema
+export interface DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2206,9 +2872,7 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOut
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput =
-  typeof DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput>;
 
 // The operation
 /**
@@ -2227,6 +2891,22 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettings =
       DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput,
   }));
 // Input Schema
+export interface DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties: {
+    remoteSupportSettingsList?: {
+      remoteApplicationType?:
+        | "Powershell"
+        | "WAC"
+        | "LocalUI"
+        | "AllApplications";
+      accessLevel?: "None" | "ReadOnly" | "ReadWrite" | "FullAccess";
+      expirationTimeStampInUTC?: string;
+    }[];
+  };
+}
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2258,11 +2938,22 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
-  typeof DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput.Type;
+  ) as unknown as Schema.Codec<DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput>;
 
 // Output Schema
+export interface DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2282,9 +2973,7 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput =
-  typeof DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput.Type;
+  }) as unknown as Schema.Codec<DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput>;
 
 // The operation
 /**
@@ -2301,6 +2990,12 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettings =
     outputSchema: DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput,
   }));
 // Input Schema
+export interface JobsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2312,10 +3007,22 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/jobs/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type JobsGetInput = typeof JobsGetInput.Type;
+) as unknown as Schema.Codec<JobsGetInput>;
 
 // Output Schema
+export interface JobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2334,8 +3041,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsGetOutput = typeof JobsGetOutput.Type;
+}) as unknown as Schema.Codec<JobsGetOutput>;
 
 // The operation
 /**
@@ -2352,6 +3058,27 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
+export interface MonitoringConfigCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+  properties: {
+    metricConfigurations: {
+      resourceId: string;
+      mdmAccount?: string;
+      metricNameSpace?: string;
+      counterSets: {
+        counters: {
+          name: string;
+          instance?: string;
+          dimensionFilter?: { sourceType: string; sourceName: string }[];
+          additionalDimensions?: { sourceType: string; sourceName: string }[];
+        }[];
+      }[];
+    }[];
+  };
+}
 export const MonitoringConfigCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2399,11 +3126,22 @@ export const MonitoringConfigCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringConfigCreateOrUpdateInput =
-  typeof MonitoringConfigCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MonitoringConfigCreateOrUpdateInput>;
 
 // Output Schema
+export interface MonitoringConfigCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoringConfigCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2423,9 +3161,7 @@ export const MonitoringConfigCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoringConfigCreateOrUpdateOutput =
-  typeof MonitoringConfigCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringConfigCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2443,6 +3179,12 @@ export const MonitoringConfigCreateOrUpdate =
     outputSchema: MonitoringConfigCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MonitoringConfigDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+}
 export const MonitoringConfigDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2455,15 +3197,12 @@ export const MonitoringConfigDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringConfigDeleteInput =
-  typeof MonitoringConfigDeleteInput.Type;
+  ) as unknown as Schema.Codec<MonitoringConfigDeleteInput>;
 
 // Output Schema
+export type MonitoringConfigDeleteOutput = void;
 export const MonitoringConfigDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MonitoringConfigDeleteOutput =
-  typeof MonitoringConfigDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoringConfigDeleteOutput>;
 
 // The operation
 /**
@@ -2482,6 +3221,12 @@ export const MonitoringConfigDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MonitoringConfigGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+}
 export const MonitoringConfigGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2494,10 +3239,22 @@ export const MonitoringConfigGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringConfigGetInput = typeof MonitoringConfigGetInput.Type;
+  ) as unknown as Schema.Codec<MonitoringConfigGetInput>;
 
 // Output Schema
+export interface MonitoringConfigGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MonitoringConfigGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2517,8 +3274,7 @@ export const MonitoringConfigGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MonitoringConfigGetOutput = typeof MonitoringConfigGetOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringConfigGetOutput>;
 
 // The operation
 /**
@@ -2535,6 +3291,12 @@ export const MonitoringConfigGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MonitoringConfigGetOutput,
 }));
 // Input Schema
+export interface MonitoringConfigListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  roleName: string;
+}
 export const MonitoringConfigListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2547,10 +3309,25 @@ export const MonitoringConfigListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig",
       apiVersion: "2023-12-01",
     }),
-  );
-export type MonitoringConfigListInput = typeof MonitoringConfigListInput.Type;
+  ) as unknown as Schema.Codec<MonitoringConfigListInput>;
 
 // Output Schema
+export interface MonitoringConfigListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MonitoringConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2585,8 +3362,7 @@ export const MonitoringConfigListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MonitoringConfigListOutput = typeof MonitoringConfigListOutput.Type;
+  }) as unknown as Schema.Codec<MonitoringConfigListOutput>;
 
 // The operation
 /**
@@ -2605,6 +3381,11 @@ export const MonitoringConfigList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NodesListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const NodesListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2616,11 +3397,13 @@ export const NodesListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/nodes",
       apiVersion: "2023-12-01",
     }),
-  );
-export type NodesListByDataBoxEdgeDeviceInput =
-  typeof NodesListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<NodesListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface NodesListByDataBoxEdgeDeviceOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NodesListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2631,9 +3414,7 @@ export const NodesListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NodesListByDataBoxEdgeDeviceOutput =
-  typeof NodesListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<NodesListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -2650,6 +3431,7 @@ export const NodesListByDataBoxEdgeDevice =
     outputSchema: NodesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2658,10 +3440,76 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataBoxEdge/operations",
     apiVersion: "2023-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?:
+            | "NotSpecified"
+            | "Percent"
+            | "Count"
+            | "Seconds"
+            | "Milliseconds"
+            | "Bytes"
+            | "BytesPerSecond"
+            | "CountPerSecond";
+          aggregationType?:
+            | "NotSpecified"
+            | "None"
+            | "Average"
+            | "Minimum"
+            | "Maximum"
+            | "Total"
+            | "Count";
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+          fillGapWithZero?: boolean;
+          category?: "Capacity" | "Transaction";
+          resourceIdDimensionNameOverride?: string;
+          supportedTimeGrainTypes?: (
+            | "PT1M"
+            | "PT5M"
+            | "PT15M"
+            | "PT30M"
+            | "PT1H"
+            | "PT6H"
+            | "PT12H"
+            | "PT1D"
+          )[];
+          supportedAggregationTypes?: (
+            | "NotSpecified"
+            | "None"
+            | "Average"
+            | "Minimum"
+            | "Maximum"
+            | "Total"
+            | "Count"
+          )[];
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2764,8 +3612,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2780,6 +3627,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationsStatusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const OperationsStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2792,10 +3645,22 @@ export const OperationsStatusGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/operationsStatus/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type OperationsStatusGetInput = typeof OperationsStatusGetInput.Type;
+  ) as unknown as Schema.Codec<OperationsStatusGetInput>;
 
 // Output Schema
+export interface OperationsStatusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OperationsStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2815,8 +3680,7 @@ export const OperationsStatusGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OperationsStatusGetOutput = typeof OperationsStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationsStatusGetOutput>;
 
 // The operation
 /**
@@ -2833,6 +3697,102 @@ export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsStatusGetOutput,
 }));
 // Input Schema
+export interface OrdersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties?: {
+    orderId?: string;
+    contactInformation: {
+      contactPerson: string;
+      companyName: string;
+      phone: string;
+      emailList: string[];
+    };
+    shippingAddress?: {
+      addressLine1?: string;
+      addressLine2?: string;
+      addressLine3?: string;
+      postalCode?: string;
+      city?: string;
+      state?: string;
+      country: string;
+    };
+    currentStatus?: {
+      status:
+        | "Untracked"
+        | "AwaitingFulfillment"
+        | "AwaitingPreparation"
+        | "AwaitingShipment"
+        | "Shipped"
+        | "Arriving"
+        | "Delivered"
+        | "ReplacementRequested"
+        | "LostDevice"
+        | "Declined"
+        | "ReturnInitiated"
+        | "AwaitingReturnShipment"
+        | "ShippedBack"
+        | "CollectedAtMicrosoft"
+        | "AwaitingPickup"
+        | "PickupCompleted"
+        | "AwaitingDrop";
+      updateDateTime?: string;
+      comments?: string;
+      trackingInformation?: {
+        serialNumber?: string;
+        carrierName?: string;
+        trackingId?: string;
+        trackingUrl?: string;
+      };
+      additionalOrderDetails?: Record<string, string>;
+    };
+    orderHistory?: {
+      status:
+        | "Untracked"
+        | "AwaitingFulfillment"
+        | "AwaitingPreparation"
+        | "AwaitingShipment"
+        | "Shipped"
+        | "Arriving"
+        | "Delivered"
+        | "ReplacementRequested"
+        | "LostDevice"
+        | "Declined"
+        | "ReturnInitiated"
+        | "AwaitingReturnShipment"
+        | "ShippedBack"
+        | "CollectedAtMicrosoft"
+        | "AwaitingPickup"
+        | "PickupCompleted"
+        | "AwaitingDrop";
+      updateDateTime?: string;
+      comments?: string;
+      trackingInformation?: {
+        serialNumber?: string;
+        carrierName?: string;
+        trackingId?: string;
+        trackingUrl?: string;
+      };
+      additionalOrderDetails?: Record<string, string>;
+    }[];
+    serialNumber?: string;
+    deliveryTrackingInfo?: {
+      serialNumber?: string;
+      carrierName?: string;
+      trackingId?: string;
+      trackingUrl?: string;
+    }[];
+    returnTrackingInfo?: {
+      serialNumber?: string;
+      carrierName?: string;
+      trackingId?: string;
+      trackingUrl?: string;
+    }[];
+    shipmentType?: "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
+  };
+  kind?: string;
+}
 export const OrdersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2965,10 +3925,22 @@ export const OrdersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
       apiVersion: "2023-12-01",
     }),
-  );
-export type OrdersCreateOrUpdateInput = typeof OrdersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OrdersCreateOrUpdateInput>;
 
 // Output Schema
+export interface OrdersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrdersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2988,8 +3960,7 @@ export const OrdersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrdersCreateOrUpdateOutput = typeof OrdersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OrdersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3007,6 +3978,11 @@ export const OrdersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrdersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3017,12 +3993,12 @@ export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
     apiVersion: "2023-12-01",
   }),
-);
-export type OrdersDeleteInput = typeof OrdersDeleteInput.Type;
+) as unknown as Schema.Codec<OrdersDeleteInput>;
 
 // Output Schema
-export const OrdersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrdersDeleteOutput = typeof OrdersDeleteOutput.Type;
+export type OrdersDeleteOutput = void;
+export const OrdersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrdersDeleteOutput>;
 
 // The operation
 /**
@@ -3038,6 +4014,11 @@ export const OrdersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrdersDeleteOutput,
 }));
 // Input Schema
+export interface OrdersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3048,10 +4029,22 @@ export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
     apiVersion: "2023-12-01",
   }),
-);
-export type OrdersGetInput = typeof OrdersGetInput.Type;
+) as unknown as Schema.Codec<OrdersGetInput>;
 
 // Output Schema
+export interface OrdersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3070,8 +4063,7 @@ export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OrdersGetOutput = typeof OrdersGetOutput.Type;
+}) as unknown as Schema.Codec<OrdersGetOutput>;
 
 // The operation
 /**
@@ -3087,6 +4079,11 @@ export const OrdersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrdersGetOutput,
 }));
 // Input Schema
+export interface OrdersListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const OrdersListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3098,11 +4095,25 @@ export const OrdersListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders",
       apiVersion: "2023-12-01",
     }),
-  );
-export type OrdersListByDataBoxEdgeDeviceInput =
-  typeof OrdersListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<OrdersListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface OrdersListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrdersListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3137,9 +4148,7 @@ export const OrdersListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrdersListByDataBoxEdgeDeviceOutput =
-  typeof OrdersListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<OrdersListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -3156,6 +4165,11 @@ export const OrdersListByDataBoxEdgeDevice =
     outputSchema: OrdersListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface OrdersListDCAccessCodeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const OrdersListDCAccessCodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3167,11 +4181,12 @@ export const OrdersListDCAccessCodeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default/listDCAccessCode",
       apiVersion: "2023-12-01",
     }),
-  );
-export type OrdersListDCAccessCodeInput =
-  typeof OrdersListDCAccessCodeInput.Type;
+  ) as unknown as Schema.Codec<OrdersListDCAccessCodeInput>;
 
 // Output Schema
+export interface OrdersListDCAccessCodeOutput {
+  properties?: { authCode?: string };
+}
 export const OrdersListDCAccessCodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -3179,9 +4194,7 @@ export const OrdersListDCAccessCodeOutput =
         authCode: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrdersListDCAccessCodeOutput =
-  typeof OrdersListDCAccessCodeOutput.Type;
+  }) as unknown as Schema.Codec<OrdersListDCAccessCodeOutput>;
 
 // The operation
 /**
@@ -3199,6 +4212,20 @@ export const OrdersListDCAccessCode = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RolesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  kind:
+    | "IOT"
+    | "ASA"
+    | "Functions"
+    | "Cognitive"
+    | "MEC"
+    | "CloudEdgeManagement"
+    | "Kubernetes";
+}
 export const RolesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3220,10 +4247,22 @@ export const RolesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type RolesCreateOrUpdateInput = typeof RolesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RolesCreateOrUpdateInput>;
 
 // Output Schema
+export interface RolesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RolesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3243,8 +4282,7 @@ export const RolesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RolesCreateOrUpdateOutput = typeof RolesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RolesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3261,6 +4299,12 @@ export const RolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface RolesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3272,12 +4316,12 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type RolesDeleteInput = typeof RolesDeleteInput.Type;
+) as unknown as Schema.Codec<RolesDeleteInput>;
 
 // Output Schema
-export const RolesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RolesDeleteOutput = typeof RolesDeleteOutput.Type;
+export type RolesDeleteOutput = void;
+export const RolesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesDeleteOutput>;
 
 // The operation
 /**
@@ -3294,6 +4338,12 @@ export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesDeleteOutput,
 }));
 // Input Schema
+export interface RolesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3305,10 +4355,22 @@ export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type RolesGetInput = typeof RolesGetInput.Type;
+) as unknown as Schema.Codec<RolesGetInput>;
 
 // Output Schema
+export interface RolesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3327,8 +4389,7 @@ export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RolesGetOutput = typeof RolesGetOutput.Type;
+}) as unknown as Schema.Codec<RolesGetOutput>;
 
 // The operation
 /**
@@ -3345,6 +4406,11 @@ export const RolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RolesGetOutput,
 }));
 // Input Schema
+export interface RolesListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const RolesListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3356,11 +4422,25 @@ export const RolesListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles",
       apiVersion: "2023-12-01",
     }),
-  );
-export type RolesListByDataBoxEdgeDeviceInput =
-  typeof RolesListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<RolesListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface RolesListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RolesListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3395,9 +4475,7 @@ export const RolesListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RolesListByDataBoxEdgeDeviceOutput =
-  typeof RolesListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<RolesListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -3414,6 +4492,52 @@ export const RolesListByDataBoxEdgeDevice =
     outputSchema: RolesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface SharesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  properties: {
+    description?: string;
+    shareStatus: "Offline" | "Unknown" | "OK" | "Updating" | "NeedsAttention";
+    monitoringStatus: "Enabled" | "Disabled";
+    azureContainerInfo?: {
+      storageAccountCredentialId: string;
+      containerName: string;
+      dataFormat: "BlockBlob" | "PageBlob" | "AzureFile";
+    };
+    accessProtocol: "SMB" | "NFS";
+    userAccessRights?: {
+      userId: string;
+      accessType: "Change" | "Read" | "Custom";
+    }[];
+    clientAccessRights?: {
+      client: string;
+      accessPermission: "NoAccess" | "ReadOnly" | "ReadWrite";
+    }[];
+    refreshDetails?: {
+      inProgressRefreshJobId?: string;
+      lastCompletedRefreshJobTimeInUTC?: string;
+      errorManifestFile?: string;
+      lastJob?: string;
+    };
+    shareMappings?: {
+      shareId: string;
+      roleId?: string;
+      mountPoint?: string;
+      mountType?: "Volume" | "HostPath";
+      roleType?:
+        | "IOT"
+        | "ASA"
+        | "Functions"
+        | "Cognitive"
+        | "MEC"
+        | "CloudEdgeManagement"
+        | "Kubernetes";
+    }[];
+    dataPolicy?: "Cloud" | "Local";
+  };
+}
 export const SharesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3495,10 +4619,22 @@ export const SharesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type SharesCreateOrUpdateInput = typeof SharesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SharesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SharesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SharesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3518,8 +4654,7 @@ export const SharesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SharesCreateOrUpdateOutput = typeof SharesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SharesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3538,6 +4673,12 @@ export const SharesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SharesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3549,12 +4690,12 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type SharesDeleteInput = typeof SharesDeleteInput.Type;
+) as unknown as Schema.Codec<SharesDeleteInput>;
 
 // Output Schema
-export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
+export type SharesDeleteOutput = void;
+export const SharesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesDeleteOutput>;
 
 // The operation
 /**
@@ -3571,6 +4712,12 @@ export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SharesDeleteOutput,
 }));
 // Input Schema
+export interface SharesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3582,10 +4729,22 @@ export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type SharesGetInput = typeof SharesGetInput.Type;
+) as unknown as Schema.Codec<SharesGetInput>;
 
 // Output Schema
+export interface SharesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3604,8 +4763,7 @@ export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SharesGetOutput = typeof SharesGetOutput.Type;
+}) as unknown as Schema.Codec<SharesGetOutput>;
 
 // The operation
 /**
@@ -3622,6 +4780,11 @@ export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SharesGetOutput,
 }));
 // Input Schema
+export interface SharesListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const SharesListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3633,11 +4796,25 @@ export const SharesListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares",
       apiVersion: "2023-12-01",
     }),
-  );
-export type SharesListByDataBoxEdgeDeviceInput =
-  typeof SharesListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<SharesListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface SharesListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SharesListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3672,9 +4849,7 @@ export const SharesListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SharesListByDataBoxEdgeDeviceOutput =
-  typeof SharesListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<SharesListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -3691,6 +4866,12 @@ export const SharesListByDataBoxEdgeDevice =
     outputSchema: SharesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface SharesRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3702,12 +4883,12 @@ export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}/refresh",
     apiVersion: "2023-12-01",
   }),
-);
-export type SharesRefreshInput = typeof SharesRefreshInput.Type;
+) as unknown as Schema.Codec<SharesRefreshInput>;
 
 // Output Schema
-export const SharesRefreshOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SharesRefreshOutput = typeof SharesRefreshOutput.Type;
+export type SharesRefreshOutput = void;
+export const SharesRefreshOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesRefreshOutput>;
 
 // The operation
 /**
@@ -3724,6 +4905,26 @@ export const SharesRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SharesRefreshOutput,
 }));
 // Input Schema
+export interface StorageAccountCredentialsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  properties: {
+    alias: string;
+    userName?: string;
+    accountKey?: {
+      value: string;
+      encryptionCertThumbprint?: string;
+      encryptionAlgorithm: "None" | "AES256" | "RSAES_PKCS1_v_1_5";
+    };
+    connectionString?: string | Redacted.Redacted<string>;
+    sslStatus: "Enabled" | "Disabled";
+    blobDomainName?: string;
+    accountType: "GeneralPurposeStorage" | "BlobStorage";
+    storageAccountId?: string;
+  };
+}
 export const StorageAccountCredentialsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3756,11 +4957,22 @@ export const StorageAccountCredentialsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountCredentialsCreateOrUpdateInput =
-  typeof StorageAccountCredentialsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountCredentialsCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageAccountCredentialsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountCredentialsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3780,9 +4992,7 @@ export const StorageAccountCredentialsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountCredentialsCreateOrUpdateOutput =
-  typeof StorageAccountCredentialsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountCredentialsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3800,6 +5010,12 @@ export const StorageAccountCredentialsCreateOrUpdate =
     outputSchema: StorageAccountCredentialsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StorageAccountCredentialsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const StorageAccountCredentialsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3812,15 +5028,12 @@ export const StorageAccountCredentialsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountCredentialsDeleteInput =
-  typeof StorageAccountCredentialsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountCredentialsDeleteInput>;
 
 // Output Schema
+export type StorageAccountCredentialsDeleteOutput = void;
 export const StorageAccountCredentialsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountCredentialsDeleteOutput =
-  typeof StorageAccountCredentialsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountCredentialsDeleteOutput>;
 
 // The operation
 /**
@@ -3838,6 +5051,12 @@ export const StorageAccountCredentialsDelete =
     outputSchema: StorageAccountCredentialsDeleteOutput,
   }));
 // Input Schema
+export interface StorageAccountCredentialsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const StorageAccountCredentialsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3850,11 +5069,22 @@ export const StorageAccountCredentialsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountCredentialsGetInput =
-  typeof StorageAccountCredentialsGetInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountCredentialsGetInput>;
 
 // Output Schema
+export interface StorageAccountCredentialsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountCredentialsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3874,9 +5104,7 @@ export const StorageAccountCredentialsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountCredentialsGetOutput =
-  typeof StorageAccountCredentialsGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountCredentialsGetOutput>;
 
 // The operation
 /**
@@ -3894,6 +5122,11 @@ export const StorageAccountCredentialsGet =
     outputSchema: StorageAccountCredentialsGetOutput,
   }));
 // Input Schema
+export interface StorageAccountCredentialsListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3905,11 +5138,25 @@ export const StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
-  typeof StorageAccountCredentialsListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountCredentialsListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface StorageAccountCredentialsListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAccountCredentialsListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3944,9 +5191,7 @@ export const StorageAccountCredentialsListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAccountCredentialsListByDataBoxEdgeDeviceOutput =
-  typeof StorageAccountCredentialsListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountCredentialsListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -3963,6 +5208,25 @@ export const StorageAccountCredentialsListByDataBoxEdgeDevice =
     outputSchema: StorageAccountCredentialsListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface StorageAccountsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+  properties: {
+    description?: string;
+    storageAccountStatus?:
+      | "OK"
+      | "Offline"
+      | "Unknown"
+      | "Updating"
+      | "NeedsAttention";
+    dataPolicy: "Cloud" | "Local";
+    storageAccountCredentialId?: string;
+    blobEndpoint?: string;
+    containerCount?: number;
+  };
+}
 export const StorageAccountsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3991,11 +5255,22 @@ export const StorageAccountsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountsCreateOrUpdateInput =
-  typeof StorageAccountsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsCreateOrUpdateInput>;
 
 // Output Schema
+export interface StorageAccountsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4015,9 +5290,7 @@ export const StorageAccountsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsCreateOrUpdateOutput =
-  typeof StorageAccountsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4035,6 +5308,12 @@ export const StorageAccountsCreateOrUpdate =
     outputSchema: StorageAccountsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface StorageAccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+}
 export const StorageAccountsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4047,14 +5326,12 @@ export const StorageAccountsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountsDeleteInput = typeof StorageAccountsDeleteInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsDeleteInput>;
 
 // Output Schema
+export type StorageAccountsDeleteOutput = void;
 export const StorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StorageAccountsDeleteOutput =
-  typeof StorageAccountsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -4073,6 +5350,12 @@ export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface StorageAccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  storageAccountName: string;
+}
 export const StorageAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4085,10 +5368,22 @@ export const StorageAccountsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountsGetInput = typeof StorageAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsGetInput>;
 
 // Output Schema
+export interface StorageAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const StorageAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4108,8 +5403,7 @@ export const StorageAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type StorageAccountsGetOutput = typeof StorageAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsGetOutput>;
 
 // The operation
 /**
@@ -4126,6 +5420,11 @@ export const StorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StorageAccountsGetOutput,
 }));
 // Input Schema
+export interface StorageAccountsListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+}
 export const StorageAccountsListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4137,11 +5436,25 @@ export const StorageAccountsListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts",
       apiVersion: "2023-12-01",
     }),
-  );
-export type StorageAccountsListByDataBoxEdgeDeviceInput =
-  typeof StorageAccountsListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<StorageAccountsListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface StorageAccountsListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StorageAccountsListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4176,9 +5489,7 @@ export const StorageAccountsListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StorageAccountsListByDataBoxEdgeDeviceOutput =
-  typeof StorageAccountsListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<StorageAccountsListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -4195,6 +5506,19 @@ export const StorageAccountsListByDataBoxEdgeDevice =
     outputSchema: StorageAccountsListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface SupportPackagesTriggerSupportPackageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  properties: {
+    minimumTimeStamp?: string;
+    maximumTimeStamp?: string;
+    include?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SupportPackagesTriggerSupportPackageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4214,15 +5538,12 @@ export const SupportPackagesTriggerSupportPackageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggerSupportPackage",
       apiVersion: "2023-12-01",
     }),
-  );
-export type SupportPackagesTriggerSupportPackageInput =
-  typeof SupportPackagesTriggerSupportPackageInput.Type;
+  ) as unknown as Schema.Codec<SupportPackagesTriggerSupportPackageInput>;
 
 // Output Schema
+export type SupportPackagesTriggerSupportPackageOutput = void;
 export const SupportPackagesTriggerSupportPackageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SupportPackagesTriggerSupportPackageOutput =
-  typeof SupportPackagesTriggerSupportPackageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SupportPackagesTriggerSupportPackageOutput>;
 
 // The operation
 /**
@@ -4239,6 +5560,13 @@ export const SupportPackagesTriggerSupportPackage =
     outputSchema: SupportPackagesTriggerSupportPackageOutput,
   }));
 // Input Schema
+export interface TriggersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  kind: "FileEvent" | "PeriodicTimerEvent";
+}
 export const TriggersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4252,11 +5580,22 @@ export const TriggersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type TriggersCreateOrUpdateInput =
-  typeof TriggersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TriggersCreateOrUpdateInput>;
 
 // Output Schema
+export interface TriggersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TriggersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4276,9 +5615,7 @@ export const TriggersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TriggersCreateOrUpdateOutput =
-  typeof TriggersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TriggersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4297,6 +5634,12 @@ export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TriggersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4308,12 +5651,12 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
+) as unknown as Schema.Codec<TriggersDeleteInput>;
 
 // Output Schema
-export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
+export type TriggersDeleteOutput = void;
+export const TriggersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -4330,6 +5673,12 @@ export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
+export interface TriggersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4341,10 +5690,22 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type TriggersGetInput = typeof TriggersGetInput.Type;
+) as unknown as Schema.Codec<TriggersGetInput>;
 
 // Output Schema
+export interface TriggersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4363,8 +5724,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TriggersGetOutput = typeof TriggersGetOutput.Type;
+}) as unknown as Schema.Codec<TriggersGetOutput>;
 
 // The operation
 /**
@@ -4381,6 +5741,12 @@ export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TriggersGetOutput,
 }));
 // Input Schema
+export interface TriggersListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  $filter?: string;
+}
 export const TriggersListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4393,11 +5759,25 @@ export const TriggersListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers",
       apiVersion: "2023-12-01",
     }),
-  );
-export type TriggersListByDataBoxEdgeDeviceInput =
-  typeof TriggersListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<TriggersListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface TriggersListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TriggersListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4432,9 +5812,7 @@ export const TriggersListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TriggersListByDataBoxEdgeDeviceOutput =
-  typeof TriggersListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<TriggersListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**
@@ -4452,6 +5830,24 @@ export const TriggersListByDataBoxEdgeDevice =
     outputSchema: TriggersListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
+export interface UsersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+  properties: {
+    encryptedPassword?: {
+      value: string;
+      encryptionCertThumbprint?: string;
+      encryptionAlgorithm: "None" | "AES256" | "RSAES_PKCS1_v_1_5";
+    };
+    shareAccessRights?: {
+      shareId: string;
+      accessType: "Change" | "Read" | "Custom";
+    }[];
+    userType: "Share" | "LocalManagement" | "ARM";
+  };
+}
 export const UsersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4486,10 +5882,22 @@ export const UsersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
       apiVersion: "2023-12-01",
     }),
-  );
-export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<UsersCreateOrUpdateInput>;
 
 // Output Schema
+export interface UsersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4509,8 +5917,7 @@ export const UsersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UsersCreateOrUpdateOutput = typeof UsersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<UsersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4527,6 +5934,12 @@ export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface UsersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4538,12 +5951,12 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type UsersDeleteInput = typeof UsersDeleteInput.Type;
+) as unknown as Schema.Codec<UsersDeleteInput>;
 
 // Output Schema
-export const UsersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UsersDeleteOutput = typeof UsersDeleteOutput.Type;
+export type UsersDeleteOutput = void;
+export const UsersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -4560,6 +5973,12 @@ export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersDeleteOutput,
 }));
 // Input Schema
+export interface UsersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  name: string;
+}
 export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4571,10 +5990,22 @@ export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
     apiVersion: "2023-12-01",
   }),
-);
-export type UsersGetInput = typeof UsersGetInput.Type;
+) as unknown as Schema.Codec<UsersGetInput>;
 
 // Output Schema
+export interface UsersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4593,8 +6024,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsersGetOutput = typeof UsersGetOutput.Type;
+}) as unknown as Schema.Codec<UsersGetOutput>;
 
 // The operation
 /**
@@ -4611,6 +6041,12 @@ export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsersGetOutput,
 }));
 // Input Schema
+export interface UsersListByDataBoxEdgeDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deviceName: string;
+  $filter?: string;
+}
 export const UsersListByDataBoxEdgeDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4623,11 +6059,25 @@ export const UsersListByDataBoxEdgeDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users",
       apiVersion: "2023-12-01",
     }),
-  );
-export type UsersListByDataBoxEdgeDeviceInput =
-  typeof UsersListByDataBoxEdgeDeviceInput.Type;
+  ) as unknown as Schema.Codec<UsersListByDataBoxEdgeDeviceInput>;
 
 // Output Schema
+export interface UsersListByDataBoxEdgeDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsersListByDataBoxEdgeDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4662,9 +6112,7 @@ export const UsersListByDataBoxEdgeDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UsersListByDataBoxEdgeDeviceOutput =
-  typeof UsersListByDataBoxEdgeDeviceOutput.Type;
+  }) as unknown as Schema.Codec<UsersListByDataBoxEdgeDeviceOutput>;
 
 // The operation
 /**

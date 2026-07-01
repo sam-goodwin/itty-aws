@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsDestroyInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const IntegrationsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/integrations/{id}/",
     }),
-  );
-export type IntegrationsDestroyInput = typeof IntegrationsDestroyInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsDestroyInput>;
 
 // Output Schema
+export type IntegrationsDestroyOutput = void;
 export const IntegrationsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsDestroyOutput = typeof IntegrationsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsDestroyOutput>;
 
 // The operation
 /**

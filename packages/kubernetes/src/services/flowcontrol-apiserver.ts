@@ -4,12 +4,82 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateFlowcontrolApiserverV1FlowSchemaInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const CreateFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -141,11 +211,75 @@ export const CreateFlowcontrolApiserverV1FlowSchemaInput =
       method: "POST",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
     }),
-  );
-export type CreateFlowcontrolApiserverV1FlowSchemaInput =
-  typeof CreateFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<CreateFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface CreateFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const CreateFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -268,9 +402,7 @@ export const CreateFlowcontrolApiserverV1FlowSchemaOutput =
         ),
       }),
     ),
-  });
-export type CreateFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof CreateFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<CreateFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -288,6 +420,72 @@ export const createFlowcontrolApiserverV1FlowSchema =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -390,11 +588,71 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "POST",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
     }),
-  );
-export type CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -488,9 +746,7 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
         ),
       }),
     ),
-  });
-export type CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -508,6 +764,26 @@ export const createFlowcontrolApiserverV1PriorityLevelConfiguration =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -540,11 +816,32 @@ export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput =
       method: "DELETE",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
     }),
-  );
-export type DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput =
-  typeof DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1CollectionFlowSchemaInput>;
 
 // Output Schema
+export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -584,9 +881,7 @@ export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput =
-  typeof DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput>;
 
 // The operation
 /**
@@ -655,6 +950,26 @@ export const deleteFlowcontrolApiserverV1CollectionFlowSchema =
     outputSchema: DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput,
   }));
 // Input Schema
+export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -687,11 +1002,32 @@ export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInp
       method: "DELETE",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
     }),
-  );
-export type DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput =
-  typeof DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -731,9 +1067,7 @@ export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOut
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput =
-  typeof DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -804,6 +1138,18 @@ export const deleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguration =
       DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOutput,
   }));
 // Input Schema
+export interface DeleteFlowcontrolApiserverV1FlowSchemaInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -828,11 +1174,32 @@ export const DeleteFlowcontrolApiserverV1FlowSchemaInput =
       method: "DELETE",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
     }),
-  );
-export type DeleteFlowcontrolApiserverV1FlowSchemaInput =
-  typeof DeleteFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface DeleteFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -872,9 +1239,7 @@ export const DeleteFlowcontrolApiserverV1FlowSchemaOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof DeleteFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -895,6 +1260,18 @@ export const deleteFlowcontrolApiserverV1FlowSchema =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -919,11 +1296,32 @@ export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "DELETE",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
     }),
-  );
-export type DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -963,9 +1361,7 @@ export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -986,14 +1382,21 @@ export const deleteFlowcontrolApiserverV1PriorityLevelConfiguration =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetFlowcontrolApiserverAPIGroupInput {}
 export const GetFlowcontrolApiserverAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/flowcontrol.apiserver.k8s.io/" }),
-  );
-export type GetFlowcontrolApiserverAPIGroupInput =
-  typeof GetFlowcontrolApiserverAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetFlowcontrolApiserverAPIGroupInput>;
 
 // Output Schema
+export interface GetFlowcontrolApiserverAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetFlowcontrolApiserverAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1019,9 +1422,7 @@ export const GetFlowcontrolApiserverAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetFlowcontrolApiserverAPIGroupOutput =
-  typeof GetFlowcontrolApiserverAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetFlowcontrolApiserverAPIGroupOutput>;
 
 // The operation
 /**
@@ -1033,14 +1434,30 @@ export const getFlowcontrolApiserverAPIGroup =
     outputSchema: GetFlowcontrolApiserverAPIGroupOutput,
   }));
 // Input Schema
+export interface GetFlowcontrolApiserverV1APIResourcesInput {}
 export const GetFlowcontrolApiserverV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/flowcontrol.apiserver.k8s.io/v1/" }),
-  );
-export type GetFlowcontrolApiserverV1APIResourcesInput =
-  typeof GetFlowcontrolApiserverV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetFlowcontrolApiserverV1APIResourcesInput>;
 
 // Output Schema
+export interface GetFlowcontrolApiserverV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetFlowcontrolApiserverV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1060,9 +1477,7 @@ export const GetFlowcontrolApiserverV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetFlowcontrolApiserverV1APIResourcesOutput =
-  typeof GetFlowcontrolApiserverV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetFlowcontrolApiserverV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1074,6 +1489,20 @@ export const getFlowcontrolApiserverV1APIResources =
     outputSchema: GetFlowcontrolApiserverV1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListFlowcontrolApiserverV1FlowSchemaInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1093,11 +1522,86 @@ export const ListFlowcontrolApiserverV1FlowSchemaInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
     }),
-  );
-export type ListFlowcontrolApiserverV1FlowSchemaInput =
-  typeof ListFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<ListFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface ListFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      distinguisherMethod?: { type: string };
+      matchingPrecedence?: number;
+      priorityLevelConfiguration: { name: string };
+      rules?: {
+        nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+        resourceRules?: {
+          apiGroups: string[];
+          clusterScope?: boolean;
+          namespaces?: string[];
+          resources: string[];
+          verbs: string[];
+        }[];
+        subjects: {
+          group?: { name: string };
+          kind: string;
+          serviceAccount?: { name: string; namespace: string };
+          user?: { name: string };
+        }[];
+      }[];
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        reason?: string;
+        status?: string;
+        type?: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1243,9 +1747,7 @@ export const ListFlowcontrolApiserverV1FlowSchemaOutput =
         ),
       }),
     ),
-  });
-export type ListFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof ListFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<ListFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -1311,6 +1813,20 @@ export const listFlowcontrolApiserverV1FlowSchema =
     outputSchema: ListFlowcontrolApiserverV1FlowSchemaOutput,
   }));
 // Input Schema
+export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1330,11 +1846,82 @@ export const ListFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
     }),
-  );
-export type ListFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof ListFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ListFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+      limited?: {
+        borrowingLimitPercent?: number;
+        lendablePercent?: number;
+        limitResponse?: {
+          queuing?: {
+            handSize?: number;
+            queueLengthLimit?: number;
+            queues?: number;
+          };
+          type: string;
+        };
+        nominalConcurrencyShares?: number;
+      };
+      type: string;
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        reason?: string;
+        status?: string;
+        type?: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1449,9 +2036,7 @@ export const ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -1517,6 +2102,14 @@ export const listFlowcontrolApiserverV1PriorityLevelConfiguration =
     outputSchema: ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
   }));
 // Input Schema
+export interface PatchFlowcontrolApiserverV1FlowSchemaInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1530,11 +2123,75 @@ export const PatchFlowcontrolApiserverV1FlowSchemaInput =
       method: "PATCH",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
     }),
-  );
-export type PatchFlowcontrolApiserverV1FlowSchemaInput =
-  typeof PatchFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface PatchFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const PatchFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1657,9 +2314,7 @@ export const PatchFlowcontrolApiserverV1FlowSchemaOutput =
         ),
       }),
     ),
-  });
-export type PatchFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof PatchFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -1679,6 +2334,14 @@ export const patchFlowcontrolApiserverV1FlowSchema =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchFlowcontrolApiserverV1FlowSchemaStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchFlowcontrolApiserverV1FlowSchemaStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1692,11 +2355,75 @@ export const PatchFlowcontrolApiserverV1FlowSchemaStatusInput =
       method: "PATCH",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
     }),
-  );
-export type PatchFlowcontrolApiserverV1FlowSchemaStatusInput =
-  typeof PatchFlowcontrolApiserverV1FlowSchemaStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1FlowSchemaStatusInput>;
 
 // Output Schema
+export interface PatchFlowcontrolApiserverV1FlowSchemaStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1819,9 +2546,7 @@ export const PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  typeof PatchFlowcontrolApiserverV1FlowSchemaStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1FlowSchemaStatusOutput>;
 
 // The operation
 /**
@@ -1841,6 +2566,14 @@ export const patchFlowcontrolApiserverV1FlowSchemaStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1854,11 +2587,71 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "PATCH",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
     }),
-  );
-export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1952,9 +2745,7 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
         ),
       }),
     ),
-  });
-export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -1974,6 +2765,14 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1987,11 +2786,71 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
       method: "PATCH",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
     }),
-  );
-export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  typeof PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput>;
 
 // Output Schema
+export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2085,9 +2944,7 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  typeof PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput>;
 
 // The operation
 /**
@@ -2109,6 +2966,10 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadFlowcontrolApiserverV1FlowSchemaInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2118,11 +2979,75 @@ export const ReadFlowcontrolApiserverV1FlowSchemaInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
     }),
-  );
-export type ReadFlowcontrolApiserverV1FlowSchemaInput =
-  typeof ReadFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface ReadFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReadFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2245,9 +3170,7 @@ export const ReadFlowcontrolApiserverV1FlowSchemaOutput =
         ),
       }),
     ),
-  });
-export type ReadFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof ReadFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -2263,6 +3186,10 @@ export const readFlowcontrolApiserverV1FlowSchema =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadFlowcontrolApiserverV1FlowSchemaStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadFlowcontrolApiserverV1FlowSchemaStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2272,11 +3199,75 @@ export const ReadFlowcontrolApiserverV1FlowSchemaStatusInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
     }),
-  );
-export type ReadFlowcontrolApiserverV1FlowSchemaStatusInput =
-  typeof ReadFlowcontrolApiserverV1FlowSchemaStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1FlowSchemaStatusInput>;
 
 // Output Schema
+export interface ReadFlowcontrolApiserverV1FlowSchemaStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2399,9 +3390,7 @@ export const ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  typeof ReadFlowcontrolApiserverV1FlowSchemaStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1FlowSchemaStatusOutput>;
 
 // The operation
 /**
@@ -2417,6 +3406,10 @@ export const readFlowcontrolApiserverV1FlowSchemaStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2426,11 +3419,71 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
     }),
-  );
-export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2524,9 +3577,7 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -2542,6 +3593,10 @@ export const readFlowcontrolApiserverV1PriorityLevelConfiguration =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2551,11 +3606,71 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
     }),
-  );
-export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  typeof ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput>;
 
 // Output Schema
+export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2649,9 +3764,7 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  typeof ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput>;
 
 // The operation
 /**
@@ -2669,6 +3782,77 @@ export const readFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceFlowcontrolApiserverV1FlowSchemaInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2801,11 +3985,75 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaInput =
       method: "PUT",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
     }),
-  );
-export type ReplaceFlowcontrolApiserverV1FlowSchemaInput =
-  typeof ReplaceFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface ReplaceFlowcontrolApiserverV1FlowSchemaOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2928,9 +4176,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
         ),
       }),
     ),
-  });
-export type ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof ReplaceFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -2949,6 +4195,77 @@ export const replaceFlowcontrolApiserverV1FlowSchema =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3081,11 +4398,75 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
       method: "PUT",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
     }),
-  );
-export type ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
-  typeof ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput>;
 
 // Output Schema
+export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    distinguisherMethod?: { type: string };
+    matchingPrecedence?: number;
+    priorityLevelConfiguration: { name: string };
+    rules?: {
+      nonResourceRules?: { nonResourceURLs: string[]; verbs: string[] }[];
+      resourceRules?: {
+        apiGroups: string[];
+        clusterScope?: boolean;
+        namespaces?: string[];
+        resources: string[];
+        verbs: string[];
+      }[];
+      subjects: {
+        group?: { name: string };
+        kind: string;
+        serviceAccount?: { name: string; namespace: string };
+        user?: { name: string };
+      }[];
+    }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3208,9 +4589,7 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
-  typeof ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput>;
 
 // The operation
 /**
@@ -3229,6 +4608,73 @@ export const replaceFlowcontrolApiserverV1FlowSchemaStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3332,11 +4778,71 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "PUT",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
     }),
-  );
-export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3430,9 +4936,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -3451,6 +4955,73 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3554,11 +5125,71 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput 
       method: "PUT",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
     }),
-  );
-export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput =
-  typeof ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput>;
 
 // Output Schema
+export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    exempt?: { lendablePercent?: number; nominalConcurrencyShares?: number };
+    limited?: {
+      borrowingLimitPercent?: number;
+      lendablePercent?: number;
+      limitResponse?: {
+        queuing?: {
+          handSize?: number;
+          queueLengthLimit?: number;
+          queues?: number;
+        };
+        type: string;
+      };
+      nominalConcurrencyShares?: number;
+    };
+    type: string;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status?: string;
+      type?: string;
+    }[];
+  };
+}
 export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3652,9 +5283,7 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput
         ),
       }),
     ),
-  });
-export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
-  typeof ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput>;
 
 // The operation
 /**
@@ -3675,6 +5304,21 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchFlowcontrolApiserverV1FlowSchemaInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3695,18 +5339,18 @@ export const WatchFlowcontrolApiserverV1FlowSchemaInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/flowschemas/{name}",
     }),
-  );
-export type WatchFlowcontrolApiserverV1FlowSchemaInput =
-  typeof WatchFlowcontrolApiserverV1FlowSchemaInput.Type;
+  ) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaInput>;
 
 // Output Schema
+export interface WatchFlowcontrolApiserverV1FlowSchemaOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchFlowcontrolApiserverV1FlowSchemaOutput =
-  typeof WatchFlowcontrolApiserverV1FlowSchemaOutput.Type;
+  }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaOutput>;
 
 // The operation
 /**
@@ -3773,6 +5417,20 @@ export const watchFlowcontrolApiserverV1FlowSchema =
     outputSchema: WatchFlowcontrolApiserverV1FlowSchemaOutput,
   }));
 // Input Schema
+export interface WatchFlowcontrolApiserverV1FlowSchemaListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchFlowcontrolApiserverV1FlowSchemaListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3792,18 +5450,18 @@ export const WatchFlowcontrolApiserverV1FlowSchemaListInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/flowschemas",
     }),
-  );
-export type WatchFlowcontrolApiserverV1FlowSchemaListInput =
-  typeof WatchFlowcontrolApiserverV1FlowSchemaListInput.Type;
+  ) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaListInput>;
 
 // Output Schema
+export interface WatchFlowcontrolApiserverV1FlowSchemaListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchFlowcontrolApiserverV1FlowSchemaListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchFlowcontrolApiserverV1FlowSchemaListOutput =
-  typeof WatchFlowcontrolApiserverV1FlowSchemaListOutput.Type;
+  }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1FlowSchemaListOutput>;
 
 // The operation
 /**
@@ -3869,6 +5527,21 @@ export const watchFlowcontrolApiserverV1FlowSchemaList =
     outputSchema: WatchFlowcontrolApiserverV1FlowSchemaListOutput,
   }));
 // Input Schema
+export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3889,18 +5562,18 @@ export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations/{name}",
     }),
-  );
-export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
-  typeof WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput.Type;
+  ) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput>;
 
 // Output Schema
+export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
-  typeof WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput>;
 
 // The operation
 /**
@@ -3967,6 +5640,20 @@ export const watchFlowcontrolApiserverV1PriorityLevelConfiguration =
     outputSchema: WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput,
   }));
 // Input Schema
+export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -3986,18 +5673,18 @@ export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput =
       method: "GET",
       path: "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations",
     }),
-  );
-export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput =
-  typeof WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput.Type;
+  ) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput>;
 
 // Output Schema
+export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput =
-  typeof WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput.Type;
+  }) as unknown as Schema.Codec<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput>;
 
 // The operation
 /**

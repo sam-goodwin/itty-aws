@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CustomerProfileConfigsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const CustomerProfileConfigsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,30 @@ export const CustomerProfileConfigsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/customer_profile_configs/",
+      path: "/api/projects/{project_id}/customer_profile_configs/",
     }),
-  );
-export type CustomerProfileConfigsListInput =
-  typeof CustomerProfileConfigsListInput.Type;
+  ) as unknown as Schema.Codec<CustomerProfileConfigsListInput>;
 
 // Output Schema
+export interface CustomerProfileConfigsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    scope?:
+      | "person"
+      | "group_0"
+      | "group_1"
+      | "group_2"
+      | "group_3"
+      | "group_4";
+    content?: unknown;
+    sidebar?: unknown;
+    created_at?: string;
+    updated_at?: string | null;
+  }[];
+}
 export const CustomerProfileConfigsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -38,16 +59,14 @@ export const CustomerProfileConfigsListOutput =
               "group_4",
             ]),
           ),
-          content: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          content: Schema.optional(Schema.Unknown),
+          sidebar: Schema.optional(Schema.Unknown),
           created_at: Schema.optional(Schema.String),
           updated_at: Schema.optional(Schema.NullOr(Schema.String)),
         }),
       ),
     ),
-  });
-export type CustomerProfileConfigsListOutput =
-  typeof CustomerProfileConfigsListOutput.Type;
+  }) as unknown as Schema.Codec<CustomerProfileConfigsListOutput>;
 
 // The operation
 /**
@@ -60,6 +79,5 @@ export const customerProfileConfigsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerProfileConfigsListInput,
     outputSchema: CustomerProfileConfigsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

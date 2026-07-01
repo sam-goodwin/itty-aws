@@ -4,12 +4,60 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetAPITokenInput {
+  id: string;
+}
 export const GetAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/tokens/{id}" }));
-export type GetAPITokenInput = typeof GetAPITokenInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/tokens/{id}" }),
+) as unknown as Schema.Codec<GetAPITokenInput>;
 
 // Output Schema
+export interface GetAPITokenOutput {
+  datasetCapabilities: Record<
+    string,
+    {
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    }
+  >;
+  description?: string;
+  expiresAt?: string | null;
+  id: string;
+  name: string;
+  orgCapabilities: {
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+  };
+  samlAuthenticated?: boolean;
+  viewCapabilities?: Record<
+    string,
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
+  >;
+}
 export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
@@ -89,8 +137,7 @@ export const GetAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type GetAPITokenOutput = typeof GetAPITokenOutput.Type;
+}) as unknown as Schema.Codec<GetAPITokenOutput>;
 
 // The operation
 /**

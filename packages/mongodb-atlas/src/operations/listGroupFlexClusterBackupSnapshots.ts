@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupFlexClusterBackupSnapshotsInput {
+  groupId: string;
+  name: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const ListGroupFlexClusterBackupSnapshotsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const ListGroupFlexClusterBackupSnapshotsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots",
     }),
-  );
-export type ListGroupFlexClusterBackupSnapshotsInput =
-  typeof ListGroupFlexClusterBackupSnapshotsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupFlexClusterBackupSnapshotsInput>;
 
 // Output Schema
+export type ListGroupFlexClusterBackupSnapshotsOutput = void;
 export const ListGroupFlexClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupFlexClusterBackupSnapshotsOutput =
-  typeof ListGroupFlexClusterBackupSnapshotsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClusterBackupSnapshotsOutput>;
 
 // The operation
 /**
  * Return All Snapshots for One Flex Cluster
  *
- * Returns all snapshots of one flex cluster from the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns all snapshots of one flex cluster from the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

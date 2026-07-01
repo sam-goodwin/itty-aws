@@ -3,14 +3,38 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1ConnectionsInput {
+  cursor?: string;
+  limit?: number;
+  databaseId?: string;
+}
 export const GetV1ConnectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   databaseId: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v1/connections" }));
-export type GetV1ConnectionsInput = typeof GetV1ConnectionsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/connections" }),
+) as unknown as Schema.Codec<GetV1ConnectionsInput>;
 
 // Output Schema
+export interface GetV1ConnectionsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: { host: string; port: number };
+      pooled?: { host: string; port: number };
+      accelerate?: { host: string; port: number };
+    };
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1ConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Array(
@@ -62,8 +86,7 @@ export const GetV1ConnectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       hasMore: Schema.Boolean,
     }),
   },
-);
-export type GetV1ConnectionsOutput = typeof GetV1ConnectionsOutput.Type;
+) as unknown as Schema.Codec<GetV1ConnectionsOutput>;
 
 // The operation
 /**

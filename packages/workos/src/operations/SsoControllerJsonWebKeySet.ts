@@ -4,14 +4,29 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SsoControllerJsonWebKeySetInput {
+  clientId: string;
+}
 export const SsoControllerJsonWebKeySetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/sso/jwks/{clientId}" }));
-export type SsoControllerJsonWebKeySetInput =
-  typeof SsoControllerJsonWebKeySetInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/sso/jwks/{clientId}" }),
+  ) as unknown as Schema.Codec<SsoControllerJsonWebKeySetInput>;
 
 // Output Schema
+export interface SsoControllerJsonWebKeySetOutput {
+  keys?: {
+    alg: string;
+    kty: string;
+    use: string;
+    x5c: string[];
+    n: string;
+    e: string;
+    kid: string;
+    "x5t#S256": string;
+  }[];
+}
 export const SsoControllerJsonWebKeySetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keys: Schema.optional(
@@ -28,9 +43,7 @@ export const SsoControllerJsonWebKeySetOutput =
         }),
       ),
     ),
-  });
-export type SsoControllerJsonWebKeySetOutput =
-  typeof SsoControllerJsonWebKeySetOutput.Type;
+  }) as unknown as Schema.Codec<SsoControllerJsonWebKeySetOutput>;
 
 // The operation
 /**

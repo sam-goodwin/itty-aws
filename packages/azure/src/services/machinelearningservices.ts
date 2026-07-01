@@ -4,15 +4,53 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import {
   SensitiveOutputNullableString,
   SensitiveOutputString,
 } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface BatchDeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  properties: {
+    codeConfiguration?: { codeId?: string | null; scoringScript: string };
+    description?: string | null;
+    environmentId?: string | null;
+    environmentVariables?: Record<string, string | null> | null;
+    properties?: Record<string, string | null> | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BatchDeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -81,13 +119,24 @@ export const BatchDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchDeploymentsCreateOrUpdateInput =
-  typeof BatchDeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BatchDeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BatchDeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchDeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -107,9 +156,7 @@ export const BatchDeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchDeploymentsCreateOrUpdateOutput =
-  typeof BatchDeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BatchDeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -128,6 +175,13 @@ export const BatchDeploymentsCreateOrUpdate =
     outputSchema: BatchDeploymentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BatchDeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+}
 export const BatchDeploymentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -139,17 +193,14 @@ export const BatchDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchDeploymentsDeleteInput =
-  typeof BatchDeploymentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<BatchDeploymentsDeleteInput>;
 
 // Output Schema
+export type BatchDeploymentsDeleteOutput = void;
 export const BatchDeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchDeploymentsDeleteOutput =
-  typeof BatchDeploymentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchDeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -169,6 +220,13 @@ export const BatchDeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchDeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+}
 export const BatchDeploymentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -180,12 +238,24 @@ export const BatchDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchDeploymentsGetInput = typeof BatchDeploymentsGetInput.Type;
+  ) as unknown as Schema.Codec<BatchDeploymentsGetInput>;
 
 // Output Schema
+export interface BatchDeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchDeploymentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -205,8 +275,7 @@ export const BatchDeploymentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchDeploymentsGetOutput = typeof BatchDeploymentsGetOutput.Type;
+  }) as unknown as Schema.Codec<BatchDeploymentsGetOutput>;
 
 // The operation
 /**
@@ -226,6 +295,15 @@ export const BatchDeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchDeploymentsGetOutput,
 }));
 // Input Schema
+export interface BatchDeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+}
 export const BatchDeploymentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -239,12 +317,27 @@ export const BatchDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchDeploymentsListInput = typeof BatchDeploymentsListInput.Type;
+  ) as unknown as Schema.Codec<BatchDeploymentsListInput>;
 
 // Output Schema
+export interface BatchDeploymentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BatchDeploymentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -279,8 +372,7 @@ export const BatchDeploymentsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BatchDeploymentsListOutput = typeof BatchDeploymentsListOutput.Type;
+  }) as unknown as Schema.Codec<BatchDeploymentsListOutput>;
 
 // The operation
 /**
@@ -302,6 +394,15 @@ export const BatchDeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchDeploymentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  properties?: { description?: string | null };
+  tags?: Record<string, string | null>;
+}
 export const BatchDeploymentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -321,13 +422,24 @@ export const BatchDeploymentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchDeploymentsUpdateInput =
-  typeof BatchDeploymentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<BatchDeploymentsUpdateInput>;
 
 // Output Schema
+export interface BatchDeploymentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchDeploymentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -347,9 +459,7 @@ export const BatchDeploymentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchDeploymentsUpdateOutput =
-  typeof BatchDeploymentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BatchDeploymentsUpdateOutput>;
 
 // The operation
 /**
@@ -369,6 +479,43 @@ export const BatchDeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  properties: {
+    authMode: "AMLToken" | "Key" | "AADToken";
+    description?: string | null;
+    keys?: { primaryKey?: string | null; secondaryKey?: string | null };
+    properties?: Record<string, string | null> | null;
+    scoringUri?: string | null;
+    swaggerUri?: string | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const BatchEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -433,13 +580,24 @@ export const BatchEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchEndpointsCreateOrUpdateInput =
-  typeof BatchEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<BatchEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface BatchEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -459,9 +617,7 @@ export const BatchEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchEndpointsCreateOrUpdateOutput =
-  typeof BatchEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BatchEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -481,6 +637,12 @@ export const BatchEndpointsCreateOrUpdate =
     outputSchema: BatchEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface BatchEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const BatchEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -491,15 +653,14 @@ export const BatchEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchEndpointsDeleteInput = typeof BatchEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<BatchEndpointsDeleteInput>;
 
 // Output Schema
+export type BatchEndpointsDeleteOutput = void;
 export const BatchEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchEndpointsDeleteOutput = typeof BatchEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -518,6 +679,12 @@ export const BatchEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const BatchEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -529,12 +696,24 @@ export const BatchEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type BatchEndpointsGetInput = typeof BatchEndpointsGetInput.Type;
+) as unknown as Schema.Codec<BatchEndpointsGetInput>;
 
 // Output Schema
+export interface BatchEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -554,8 +733,7 @@ export const BatchEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchEndpointsGetOutput = typeof BatchEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<BatchEndpointsGetOutput>;
 
 // The operation
 /**
@@ -574,6 +752,13 @@ export const BatchEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchEndpointsGetOutput,
 }));
 // Input Schema
+export interface BatchEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  count?: number;
+  $skip?: string;
+}
 export const BatchEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -585,12 +770,27 @@ export const BatchEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchEndpointsListInput = typeof BatchEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<BatchEndpointsListInput>;
 
 // Output Schema
+export interface BatchEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BatchEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -625,8 +825,7 @@ export const BatchEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BatchEndpointsListOutput = typeof BatchEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<BatchEndpointsListOutput>;
 
 // The operation
 /**
@@ -644,6 +843,12 @@ export const BatchEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchEndpointsListOutput,
 }));
 // Input Schema
+export interface BatchEndpointsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const BatchEndpointsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -654,20 +859,20 @@ export const BatchEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/listkeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchEndpointsListKeysInput =
-  typeof BatchEndpointsListKeysInput.Type;
+  ) as unknown as Schema.Codec<BatchEndpointsListKeysInput>;
 
 // Output Schema
+export interface BatchEndpointsListKeysOutput {
+  primaryKey?: string | null;
+  secondaryKey?: string | null;
+}
 export const BatchEndpointsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.NullOr(Schema.String)),
     secondaryKey: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type BatchEndpointsListKeysOutput =
-  typeof BatchEndpointsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<BatchEndpointsListKeysOutput>;
 
 // The operation
 /**
@@ -686,6 +891,21 @@ export const BatchEndpointsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<string, unknown>;
+  };
+  tags?: Record<string, string | null>;
+}
 export const BatchEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -714,12 +934,24 @@ export const BatchEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type BatchEndpointsUpdateInput = typeof BatchEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<BatchEndpointsUpdateInput>;
 
 // Output Schema
+export interface BatchEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -739,8 +971,7 @@ export const BatchEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchEndpointsUpdateOutput = typeof BatchEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BatchEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -759,6 +990,17 @@ export const BatchEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CapabilityHostsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const CapabilityHostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -782,13 +1024,24 @@ export const CapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CapabilityHostsCreateOrUpdateInput =
-  typeof CapabilityHostsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CapabilityHostsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CapabilityHostsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CapabilityHostsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -808,9 +1061,7 @@ export const CapabilityHostsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CapabilityHostsCreateOrUpdateOutput =
-  typeof CapabilityHostsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CapabilityHostsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -828,6 +1079,12 @@ export const CapabilityHostsCreateOrUpdate =
     outputSchema: CapabilityHostsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CapabilityHostsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const CapabilityHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -838,16 +1095,14 @@ export const CapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CapabilityHostsDeleteInput = typeof CapabilityHostsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CapabilityHostsDeleteInput>;
 
 // Output Schema
+export type CapabilityHostsDeleteOutput = void;
 export const CapabilityHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CapabilityHostsDeleteOutput =
-  typeof CapabilityHostsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CapabilityHostsDeleteOutput>;
 
 // The operation
 /**
@@ -866,6 +1121,12 @@ export const CapabilityHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CapabilityHostsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const CapabilityHostsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -876,12 +1137,24 @@ export const CapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CapabilityHostsGetInput = typeof CapabilityHostsGetInput.Type;
+  ) as unknown as Schema.Codec<CapabilityHostsGetInput>;
 
 // Output Schema
+export interface CapabilityHostsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CapabilityHostsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -901,8 +1174,7 @@ export const CapabilityHostsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CapabilityHostsGetOutput = typeof CapabilityHostsGetOutput.Type;
+  }) as unknown as Schema.Codec<CapabilityHostsGetOutput>;
 
 // The operation
 /**
@@ -919,6 +1191,17 @@ export const CapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CapabilityHostsGetOutput,
 }));
 // Input Schema
+export interface CodeContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const CodeContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -942,13 +1225,24 @@ export const CodeContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeContainersCreateOrUpdateInput =
-  typeof CodeContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CodeContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface CodeContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -968,9 +1262,7 @@ export const CodeContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeContainersCreateOrUpdateOutput =
-  typeof CodeContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CodeContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -988,6 +1280,12 @@ export const CodeContainersCreateOrUpdate =
     outputSchema: CodeContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CodeContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const CodeContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -998,15 +1296,14 @@ export const CodeContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeContainersDeleteInput = typeof CodeContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<CodeContainersDeleteInput>;
 
 // Output Schema
+export type CodeContainersDeleteOutput = void;
 export const CodeContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CodeContainersDeleteOutput = typeof CodeContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeContainersDeleteOutput>;
 
 // The operation
 /**
@@ -1025,6 +1322,12 @@ export const CodeContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CodeContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const CodeContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1036,12 +1339,24 @@ export const CodeContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type CodeContainersGetInput = typeof CodeContainersGetInput.Type;
+) as unknown as Schema.Codec<CodeContainersGetInput>;
 
 // Output Schema
+export interface CodeContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1061,8 +1376,7 @@ export const CodeContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeContainersGetOutput = typeof CodeContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<CodeContainersGetOutput>;
 
 // The operation
 /**
@@ -1081,6 +1395,12 @@ export const CodeContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeContainersGetOutput,
 }));
 // Input Schema
+export interface CodeContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+}
 export const CodeContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1091,12 +1411,27 @@ export const CodeContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeContainersListInput = typeof CodeContainersListInput.Type;
+  ) as unknown as Schema.Codec<CodeContainersListInput>;
 
 // Output Schema
+export interface CodeContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CodeContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1131,8 +1466,7 @@ export const CodeContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CodeContainersListOutput = typeof CodeContainersListOutput.Type;
+  }) as unknown as Schema.Codec<CodeContainersListOutput>;
 
 // The operation
 /**
@@ -1149,6 +1483,15 @@ export const CodeContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeContainersListOutput,
 }));
 // Input Schema
+export interface CodeVersionsCreateOrGetStartPendingUploadInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const CodeVersionsCreateOrGetStartPendingUploadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1164,13 +1507,20 @@ export const CodeVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeVersionsCreateOrGetStartPendingUploadInput =
-  typeof CodeVersionsCreateOrGetStartPendingUploadInput.Type;
+  ) as unknown as Schema.Codec<CodeVersionsCreateOrGetStartPendingUploadInput>;
 
 // Output Schema
+export interface CodeVersionsCreateOrGetStartPendingUploadOutput {
+  blobReferenceForConsumption?: {
+    blobUri?: string | null;
+    credential?: { credentialType: "SAS" };
+    storageAccountArmId?: string | null;
+  };
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const CodeVersionsCreateOrGetStartPendingUploadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobReferenceForConsumption: Schema.optional(
@@ -1188,9 +1538,7 @@ export const CodeVersionsCreateOrGetStartPendingUploadOutput =
     pendingUploadType: Schema.optional(
       Schema.Literals(["None", "TemporaryBlobReference"]),
     ),
-  });
-export type CodeVersionsCreateOrGetStartPendingUploadOutput =
-  typeof CodeVersionsCreateOrGetStartPendingUploadOutput.Type;
+  }) as unknown as Schema.Codec<CodeVersionsCreateOrGetStartPendingUploadOutput>;
 
 // The operation
 /**
@@ -1209,6 +1557,18 @@ export const CodeVersionsCreateOrGetStartPendingUpload =
     outputSchema: CodeVersionsCreateOrGetStartPendingUploadOutput,
   }));
 // Input Schema
+export interface CodeVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const CodeVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1233,13 +1593,24 @@ export const CodeVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeVersionsCreateOrUpdateInput =
-  typeof CodeVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CodeVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CodeVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1259,9 +1630,7 @@ export const CodeVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CodeVersionsCreateOrUpdateOutput =
-  typeof CodeVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CodeVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1281,6 +1650,13 @@ export const CodeVersionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CodeVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const CodeVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1292,14 +1668,14 @@ export const CodeVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeVersionsDeleteInput = typeof CodeVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CodeVersionsDeleteInput>;
 
 // Output Schema
-export const CodeVersionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CodeVersionsDeleteOutput = typeof CodeVersionsDeleteOutput.Type;
+export type CodeVersionsDeleteOutput = void;
+export const CodeVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -1317,6 +1693,13 @@ export const CodeVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeVersionsDeleteOutput,
 }));
 // Input Schema
+export interface CodeVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const CodeVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1327,12 +1710,24 @@ export const CodeVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type CodeVersionsGetInput = typeof CodeVersionsGetInput.Type;
+) as unknown as Schema.Codec<CodeVersionsGetInput>;
 
 // Output Schema
+export interface CodeVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CodeVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1351,8 +1746,7 @@ export const CodeVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CodeVersionsGetOutput = typeof CodeVersionsGetOutput.Type;
+}) as unknown as Schema.Codec<CodeVersionsGetOutput>;
 
 // The operation
 /**
@@ -1370,6 +1764,17 @@ export const CodeVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeVersionsGetOutput,
 }));
 // Input Schema
+export interface CodeVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  hash?: string;
+  hashVersion?: string;
+}
 export const CodeVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1384,12 +1789,27 @@ export const CodeVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type CodeVersionsListInput = typeof CodeVersionsListInput.Type;
+) as unknown as Schema.Codec<CodeVersionsListInput>;
 
 // Output Schema
+export interface CodeVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CodeVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1425,8 +1845,7 @@ export const CodeVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type CodeVersionsListOutput = typeof CodeVersionsListOutput.Type;
+) as unknown as Schema.Codec<CodeVersionsListOutput>;
 
 // The operation
 /**
@@ -1448,6 +1867,16 @@ export const CodeVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeVersionsListOutput,
 }));
 // Input Schema
+export interface CodeVersionsPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  destinationName?: string | null;
+  destinationVersion?: string | null;
+  registryName?: string | null;
+}
 export const CodeVersionsPublishInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1462,15 +1891,14 @@ export const CodeVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type CodeVersionsPublishInput = typeof CodeVersionsPublishInput.Type;
+  ) as unknown as Schema.Codec<CodeVersionsPublishInput>;
 
 // Output Schema
+export type CodeVersionsPublishOutput = void;
 export const CodeVersionsPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CodeVersionsPublishOutput = typeof CodeVersionsPublishOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeVersionsPublishOutput>;
 
 // The operation
 /**
@@ -1488,6 +1916,17 @@ export const CodeVersionsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CodeVersionsPublishOutput,
 }));
 // Input Schema
+export interface ComponentContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const ComponentContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1511,13 +1950,24 @@ export const ComponentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentContainersCreateOrUpdateInput =
-  typeof ComponentContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ComponentContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ComponentContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComponentContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1537,9 +1987,7 @@ export const ComponentContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ComponentContainersCreateOrUpdateOutput =
-  typeof ComponentContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ComponentContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1557,6 +2005,12 @@ export const ComponentContainersCreateOrUpdate =
     outputSchema: ComponentContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ComponentContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ComponentContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1567,17 +2021,14 @@ export const ComponentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentContainersDeleteInput =
-  typeof ComponentContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<ComponentContainersDeleteInput>;
 
 // Output Schema
+export type ComponentContainersDeleteOutput = void;
 export const ComponentContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComponentContainersDeleteOutput =
-  typeof ComponentContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComponentContainersDeleteOutput>;
 
 // The operation
 /**
@@ -1596,6 +2047,12 @@ export const ComponentContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ComponentContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1606,13 +2063,24 @@ export const ComponentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentContainersGetInput =
-  typeof ComponentContainersGetInput.Type;
+  ) as unknown as Schema.Codec<ComponentContainersGetInput>;
 
 // Output Schema
+export interface ComponentContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComponentContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1632,9 +2100,7 @@ export const ComponentContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ComponentContainersGetOutput =
-  typeof ComponentContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<ComponentContainersGetOutput>;
 
 // The operation
 /**
@@ -1653,6 +2119,13 @@ export const ComponentContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const ComponentContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1666,13 +2139,27 @@ export const ComponentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentContainersListInput =
-  typeof ComponentContainersListInput.Type;
+  ) as unknown as Schema.Codec<ComponentContainersListInput>;
 
 // Output Schema
+export interface ComponentContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ComponentContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1707,9 +2194,7 @@ export const ComponentContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ComponentContainersListOutput =
-  typeof ComponentContainersListOutput.Type;
+  }) as unknown as Schema.Codec<ComponentContainersListOutput>;
 
 // The operation
 /**
@@ -1729,6 +2214,18 @@ export const ComponentContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const ComponentVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1753,13 +2250,24 @@ export const ComponentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentVersionsCreateOrUpdateInput =
-  typeof ComponentVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ComponentVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ComponentVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComponentVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1779,9 +2287,7 @@ export const ComponentVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ComponentVersionsCreateOrUpdateOutput =
-  typeof ComponentVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ComponentVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1800,6 +2306,13 @@ export const ComponentVersionsCreateOrUpdate =
     outputSchema: ComponentVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ComponentVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const ComponentVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1811,17 +2324,14 @@ export const ComponentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentVersionsDeleteInput =
-  typeof ComponentVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ComponentVersionsDeleteInput>;
 
 // Output Schema
+export type ComponentVersionsDeleteOutput = void;
 export const ComponentVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComponentVersionsDeleteOutput =
-  typeof ComponentVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComponentVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -1841,6 +2351,13 @@ export const ComponentVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const ComponentVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1852,12 +2369,24 @@ export const ComponentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentVersionsGetInput = typeof ComponentVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<ComponentVersionsGetInput>;
 
 // Output Schema
+export interface ComponentVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComponentVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1877,8 +2406,7 @@ export const ComponentVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ComponentVersionsGetOutput = typeof ComponentVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ComponentVersionsGetOutput>;
 
 // The operation
 /**
@@ -1898,6 +2426,16 @@ export const ComponentVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const ComponentVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1914,12 +2452,27 @@ export const ComponentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentVersionsListInput = typeof ComponentVersionsListInput.Type;
+  ) as unknown as Schema.Codec<ComponentVersionsListInput>;
 
 // Output Schema
+export interface ComponentVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ComponentVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1954,9 +2507,7 @@ export const ComponentVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ComponentVersionsListOutput =
-  typeof ComponentVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<ComponentVersionsListOutput>;
 
 // The operation
 /**
@@ -1979,6 +2530,16 @@ export const ComponentVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentVersionsPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  destinationName?: string | null;
+  destinationVersion?: string | null;
+  registryName?: string | null;
+}
 export const ComponentVersionsPublishInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1993,17 +2554,14 @@ export const ComponentVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComponentVersionsPublishInput =
-  typeof ComponentVersionsPublishInput.Type;
+  ) as unknown as Schema.Codec<ComponentVersionsPublishInput>;
 
 // Output Schema
+export type ComponentVersionsPublishOutput = void;
 export const ComponentVersionsPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComponentVersionsPublishOutput =
-  typeof ComponentVersionsPublishOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComponentVersionsPublishOutput>;
 
 // The operation
 /**
@@ -2023,6 +2581,73 @@ export const ComponentVersionsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComputeCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+  properties?: {
+    computeType:
+      | "AKS"
+      | "Kubernetes"
+      | "AmlCompute"
+      | "ComputeInstance"
+      | "DataFactory"
+      | "VirtualMachine"
+      | "HDInsight"
+      | "Databricks"
+      | "DataLakeAnalytics"
+      | "SynapseSpark";
+    computeLocation?: string;
+    provisioningState?:
+      | "Unknown"
+      | "Updating"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    description?: string | null;
+    createdOn?: string;
+    modifiedOn?: string;
+    resourceId?: string | null;
+    provisioningErrors?:
+      | {
+          error?: {
+            code?: string;
+            message?: string;
+            target?: string;
+            details?: unknown[];
+            additionalInfo?: { type?: string; info?: unknown }[];
+          };
+        }[]
+      | null;
+    isAttachedCompute?: boolean;
+    disableLocalAuth?: boolean;
+  };
+  location?: string;
+  tags?: Record<string, string> | null;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+}
 export const ComputeCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2129,12 +2754,24 @@ export const ComputeCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ComputeCreateOrUpdateInput = typeof ComputeCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ComputeCreateOrUpdateInput>;
 
 // Output Schema
+export interface ComputeCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComputeCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2154,9 +2791,7 @@ export const ComputeCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ComputeCreateOrUpdateOutput =
-  typeof ComputeCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ComputeCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2175,6 +2810,13 @@ export const ComputeCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComputeDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+  underlyingResourceAction: "Delete" | "Detach";
+}
 export const ComputeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2185,14 +2827,14 @@ export const ComputeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeDeleteInput = typeof ComputeDeleteInput.Type;
+) as unknown as Schema.Codec<ComputeDeleteInput>;
 
 // Output Schema
-export const ComputeDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComputeDeleteOutput = typeof ComputeDeleteOutput.Type;
+export type ComputeDeleteOutput = void;
+export const ComputeDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComputeDeleteOutput>;
 
 // The operation
 /**
@@ -2210,6 +2852,12 @@ export const ComputeDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeDeleteOutput,
 }));
 // Input Schema
+export interface ComputeGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2219,12 +2867,24 @@ export const ComputeGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeGetInput = typeof ComputeGetInput.Type;
+) as unknown as Schema.Codec<ComputeGetInput>;
 
 // Output Schema
+export interface ComputeGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComputeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2243,8 +2903,7 @@ export const ComputeGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ComputeGetOutput = typeof ComputeGetOutput.Type;
+}) as unknown as Schema.Codec<ComputeGetOutput>;
 
 // The operation
 /**
@@ -2261,6 +2920,12 @@ export const ComputeGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeGetOutput,
 }));
 // Input Schema
+export interface ComputeListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+}
 export const ComputeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2270,12 +2935,27 @@ export const ComputeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeListInput = typeof ComputeListInput.Type;
+) as unknown as Schema.Codec<ComputeListInput>;
 
 // Output Schema
+export interface ComputeListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ComputeListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2299,8 +2979,7 @@ export const ComputeListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ComputeListOutput = typeof ComputeListOutput.Type;
+}) as unknown as Schema.Codec<ComputeListOutput>;
 
 // The operation
 /**
@@ -2317,6 +2996,12 @@ export const ComputeList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeListOutput,
 }));
 // Input Schema
+export interface ComputeListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2326,12 +3011,24 @@ export const ComputeListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listKeys",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeListKeysInput = typeof ComputeListKeysInput.Type;
+) as unknown as Schema.Codec<ComputeListKeysInput>;
 
 // Output Schema
+export interface ComputeListKeysOutput {
+  computeType:
+    | "AKS"
+    | "Kubernetes"
+    | "AmlCompute"
+    | "ComputeInstance"
+    | "DataFactory"
+    | "VirtualMachine"
+    | "HDInsight"
+    | "Databricks"
+    | "DataLakeAnalytics"
+    | "SynapseSpark";
+}
 export const ComputeListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   computeType: Schema.Literals([
     "AKS",
@@ -2345,8 +3042,7 @@ export const ComputeListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "DataLakeAnalytics",
     "SynapseSpark",
   ]),
-});
-export type ComputeListKeysOutput = typeof ComputeListKeysOutput.Type;
+}) as unknown as Schema.Codec<ComputeListKeysOutput>;
 
 // The operation
 /**
@@ -2363,6 +3059,12 @@ export const ComputeListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeListKeysOutput,
 }));
 // Input Schema
+export interface ComputeListNodesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeListNodesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2372,12 +3074,28 @@ export const ComputeListNodesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/listNodes",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeListNodesInput = typeof ComputeListNodesInput.Type;
+) as unknown as Schema.Codec<ComputeListNodesInput>;
 
 // Output Schema
+export interface ComputeListNodesOutput {
+  nodes?: {
+    nodeId?: string;
+    privateIpAddress?: string | null;
+    publicIpAddress?: string | null;
+    port?: number;
+    nodeState?:
+      | "idle"
+      | "running"
+      | "preparing"
+      | "unusable"
+      | "leaving"
+      | "preempted";
+    runId?: string | null;
+  }[];
+  nextLink?: string;
+}
 export const ComputeListNodesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nodes: Schema.optional(
@@ -2403,8 +3121,7 @@ export const ComputeListNodesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ComputeListNodesOutput = typeof ComputeListNodesOutput.Type;
+) as unknown as Schema.Codec<ComputeListNodesOutput>;
 
 // The operation
 /**
@@ -2421,6 +3138,12 @@ export const ComputeListNodes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeListNodesOutput,
 }));
 // Input Schema
+export interface ComputeRestartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2430,14 +3153,14 @@ export const ComputeRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeRestartInput = typeof ComputeRestartInput.Type;
+) as unknown as Schema.Codec<ComputeRestartInput>;
 
 // Output Schema
-export const ComputeRestartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComputeRestartOutput = typeof ComputeRestartOutput.Type;
+export type ComputeRestartOutput = void;
+export const ComputeRestartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComputeRestartOutput>;
 
 // The operation
 /**
@@ -2454,6 +3177,12 @@ export const ComputeRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeRestartOutput,
 }));
 // Input Schema
+export interface ComputeStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2463,14 +3192,14 @@ export const ComputeStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeStartInput = typeof ComputeStartInput.Type;
+) as unknown as Schema.Codec<ComputeStartInput>;
 
 // Output Schema
-export const ComputeStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComputeStartOutput = typeof ComputeStartOutput.Type;
+export type ComputeStartOutput = void;
+export const ComputeStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComputeStartOutput>;
 
 // The operation
 /**
@@ -2487,6 +3216,12 @@ export const ComputeStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeStartOutput,
 }));
 // Input Schema
+export interface ComputeStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+}
 export const ComputeStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2496,14 +3231,14 @@ export const ComputeStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeStopInput = typeof ComputeStopInput.Type;
+) as unknown as Schema.Codec<ComputeStopInput>;
 
 // Output Schema
-export const ComputeStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ComputeStopOutput = typeof ComputeStopOutput.Type;
+export type ComputeStopOutput = void;
+export const ComputeStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ComputeStopOutput>;
 
 // The operation
 /**
@@ -2520,6 +3255,21 @@ export const ComputeStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeStopOutput,
 }));
 // Input Schema
+export interface ComputeUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  computeName: string;
+  properties?: {
+    properties?: {
+      scaleSettings?: {
+        maxNodeCount: number;
+        minNodeCount?: number;
+        nodeIdleTimeBeforeScaleDown?: string;
+      };
+    };
+  };
+}
 export const ComputeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2544,12 +3294,24 @@ export const ComputeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ComputeUpdateInput = typeof ComputeUpdateInput.Type;
+) as unknown as Schema.Codec<ComputeUpdateInput>;
 
 // Output Schema
+export interface ComputeUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComputeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2568,8 +3330,7 @@ export const ComputeUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ComputeUpdateOutput = typeof ComputeUpdateOutput.Type;
+}) as unknown as Schema.Codec<ComputeUpdateOutput>;
 
 // The operation
 /**
@@ -2586,6 +3347,17 @@ export const ComputeUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComputeUpdateOutput,
 }));
 // Input Schema
+export interface DataContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const DataContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2609,13 +3381,24 @@ export const DataContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataContainersCreateOrUpdateInput =
-  typeof DataContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2635,9 +3418,7 @@ export const DataContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataContainersCreateOrUpdateOutput =
-  typeof DataContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2655,6 +3436,12 @@ export const DataContainersCreateOrUpdate =
     outputSchema: DataContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const DataContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2665,15 +3452,14 @@ export const DataContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataContainersDeleteInput = typeof DataContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataContainersDeleteInput>;
 
 // Output Schema
+export type DataContainersDeleteOutput = void;
 export const DataContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataContainersDeleteOutput = typeof DataContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataContainersDeleteOutput>;
 
 // The operation
 /**
@@ -2692,6 +3478,12 @@ export const DataContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const DataContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2703,12 +3495,24 @@ export const DataContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DataContainersGetInput = typeof DataContainersGetInput.Type;
+) as unknown as Schema.Codec<DataContainersGetInput>;
 
 // Output Schema
+export interface DataContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2728,8 +3532,7 @@ export const DataContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataContainersGetOutput = typeof DataContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<DataContainersGetOutput>;
 
 // The operation
 /**
@@ -2746,6 +3549,13 @@ export const DataContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataContainersGetOutput,
 }));
 // Input Schema
+export interface DataContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const DataContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2759,12 +3569,27 @@ export const DataContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataContainersListInput = typeof DataContainersListInput.Type;
+  ) as unknown as Schema.Codec<DataContainersListInput>;
 
 // Output Schema
+export interface DataContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2799,8 +3624,7 @@ export const DataContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataContainersListOutput = typeof DataContainersListOutput.Type;
+  }) as unknown as Schema.Codec<DataContainersListOutput>;
 
 // The operation
 /**
@@ -2818,6 +3642,18 @@ export const DataContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataContainersListOutput,
 }));
 // Input Schema
+export interface DatastoresCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  skipValidation?: boolean;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const DatastoresCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2842,13 +3678,24 @@ export const DatastoresCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DatastoresCreateOrUpdateInput =
-  typeof DatastoresCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatastoresCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatastoresCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatastoresCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2868,9 +3715,7 @@ export const DatastoresCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatastoresCreateOrUpdateOutput =
-  typeof DatastoresCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatastoresCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2890,6 +3735,12 @@ export const DatastoresCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatastoresDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2899,14 +3750,14 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
+) as unknown as Schema.Codec<DatastoresDeleteInput>;
 
 // Output Schema
-export const DatastoresDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatastoresDeleteOutput = typeof DatastoresDeleteOutput.Type;
+export type DatastoresDeleteOutput = void;
+export const DatastoresDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatastoresDeleteOutput>;
 
 // The operation
 /**
@@ -2923,6 +3774,12 @@ export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatastoresDeleteOutput,
 }));
 // Input Schema
+export interface DatastoresGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2932,12 +3789,24 @@ export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DatastoresGetInput = typeof DatastoresGetInput.Type;
+) as unknown as Schema.Codec<DatastoresGetInput>;
 
 // Output Schema
+export interface DatastoresGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2956,8 +3825,7 @@ export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DatastoresGetOutput = typeof DatastoresGetOutput.Type;
+}) as unknown as Schema.Codec<DatastoresGetOutput>;
 
 // The operation
 /**
@@ -2974,6 +3842,18 @@ export const DatastoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatastoresGetOutput,
 }));
 // Input Schema
+export interface DatastoresListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  count?: number;
+  isDefault?: boolean;
+  names?: string;
+  searchText?: string;
+  orderBy?: string;
+  orderByAsc?: boolean;
+}
 export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2989,12 +3869,27 @@ export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DatastoresListInput = typeof DatastoresListInput.Type;
+) as unknown as Schema.Codec<DatastoresListInput>;
 
 // Output Schema
+export interface DatastoresListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -3018,8 +3913,7 @@ export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DatastoresListOutput = typeof DatastoresListOutput.Type;
+}) as unknown as Schema.Codec<DatastoresListOutput>;
 
 // The operation
 /**
@@ -3042,6 +3936,14 @@ export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatastoresListOutput,
 }));
 // Input Schema
+export interface DatastoresListSecretsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  expirableSecret?: boolean;
+  expireAfterHours?: number;
+}
 export const DatastoresListSecretsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3054,12 +3956,14 @@ export const DatastoresListSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}/listSecrets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DatastoresListSecretsInput = typeof DatastoresListSecretsInput.Type;
+  ) as unknown as Schema.Codec<DatastoresListSecretsInput>;
 
 // Output Schema
+export interface DatastoresListSecretsOutput {
+  secretsType: "AccountKey" | "Certificate" | "Sas" | "ServicePrincipal";
+}
 export const DatastoresListSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     secretsType: Schema.Literals([
@@ -3068,9 +3972,7 @@ export const DatastoresListSecretsOutput =
       "Sas",
       "ServicePrincipal",
     ]),
-  });
-export type DatastoresListSecretsOutput =
-  typeof DatastoresListSecretsOutput.Type;
+  }) as unknown as Schema.Codec<DatastoresListSecretsOutput>;
 
 // The operation
 /**
@@ -3089,6 +3991,18 @@ export const DatastoresListSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const DataVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3113,13 +4027,24 @@ export const DataVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataVersionsCreateOrUpdateInput =
-  typeof DataVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3139,9 +4064,7 @@ export const DataVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataVersionsCreateOrUpdateOutput =
-  typeof DataVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3161,6 +4084,13 @@ export const DataVersionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const DataVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3172,14 +4102,14 @@ export const DataVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataVersionsDeleteInput = typeof DataVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataVersionsDeleteInput>;
 
 // Output Schema
-export const DataVersionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataVersionsDeleteOutput = typeof DataVersionsDeleteOutput.Type;
+export type DataVersionsDeleteOutput = void;
+export const DataVersionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -3197,6 +4127,13 @@ export const DataVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataVersionsDeleteOutput,
 }));
 // Input Schema
+export interface DataVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const DataVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3207,12 +4144,24 @@ export const DataVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DataVersionsGetInput = typeof DataVersionsGetInput.Type;
+) as unknown as Schema.Codec<DataVersionsGetInput>;
 
 // Output Schema
+export interface DataVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3231,8 +4180,7 @@ export const DataVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DataVersionsGetOutput = typeof DataVersionsGetOutput.Type;
+}) as unknown as Schema.Codec<DataVersionsGetOutput>;
 
 // The operation
 /**
@@ -3250,6 +4198,17 @@ export const DataVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataVersionsGetOutput,
 }));
 // Input Schema
+export interface DataVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  $tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const DataVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3266,12 +4225,27 @@ export const DataVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type DataVersionsListInput = typeof DataVersionsListInput.Type;
+) as unknown as Schema.Codec<DataVersionsListInput>;
 
 // Output Schema
+export interface DataVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -3307,8 +4281,7 @@ export const DataVersionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type DataVersionsListOutput = typeof DataVersionsListOutput.Type;
+) as unknown as Schema.Codec<DataVersionsListOutput>;
 
 // The operation
 /**
@@ -3331,6 +4304,16 @@ export const DataVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataVersionsListOutput,
 }));
 // Input Schema
+export interface DataVersionsPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  destinationName?: string | null;
+  destinationVersion?: string | null;
+  registryName?: string | null;
+}
 export const DataVersionsPublishInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3345,15 +4328,14 @@ export const DataVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type DataVersionsPublishInput = typeof DataVersionsPublishInput.Type;
+  ) as unknown as Schema.Codec<DataVersionsPublishInput>;
 
 // Output Schema
+export type DataVersionsPublishOutput = void;
 export const DataVersionsPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataVersionsPublishOutput = typeof DataVersionsPublishOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataVersionsPublishOutput>;
 
 // The operation
 /**
@@ -3371,6 +4353,17 @@ export const DataVersionsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataVersionsPublishOutput,
 }));
 // Input Schema
+export interface EnvironmentContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const EnvironmentContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3394,13 +4387,24 @@ export const EnvironmentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentContainersCreateOrUpdateInput =
-  typeof EnvironmentContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3420,9 +4424,7 @@ export const EnvironmentContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentContainersCreateOrUpdateOutput =
-  typeof EnvironmentContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3440,6 +4442,12 @@ export const EnvironmentContainersCreateOrUpdate =
     outputSchema: EnvironmentContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EnvironmentContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const EnvironmentContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3450,17 +4458,14 @@ export const EnvironmentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentContainersDeleteInput =
-  typeof EnvironmentContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentContainersDeleteInput>;
 
 // Output Schema
+export type EnvironmentContainersDeleteOutput = void;
 export const EnvironmentContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentContainersDeleteOutput =
-  typeof EnvironmentContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentContainersDeleteOutput>;
 
 // The operation
 /**
@@ -3479,6 +4484,12 @@ export const EnvironmentContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const EnvironmentContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3489,13 +4500,24 @@ export const EnvironmentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentContainersGetInput =
-  typeof EnvironmentContainersGetInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentContainersGetInput>;
 
 // Output Schema
+export interface EnvironmentContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3515,9 +4537,7 @@ export const EnvironmentContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentContainersGetOutput =
-  typeof EnvironmentContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentContainersGetOutput>;
 
 // The operation
 /**
@@ -3536,6 +4556,13 @@ export const EnvironmentContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const EnvironmentContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3549,13 +4576,27 @@ export const EnvironmentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentContainersListInput =
-  typeof EnvironmentContainersListInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentContainersListInput>;
 
 // Output Schema
+export interface EnvironmentContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3590,9 +4631,7 @@ export const EnvironmentContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EnvironmentContainersListOutput =
-  typeof EnvironmentContainersListOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentContainersListOutput>;
 
 // The operation
 /**
@@ -3612,6 +4651,18 @@ export const EnvironmentContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const EnvironmentVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3636,13 +4687,24 @@ export const EnvironmentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentVersionsCreateOrUpdateInput =
-  typeof EnvironmentVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3662,9 +4724,7 @@ export const EnvironmentVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentVersionsCreateOrUpdateOutput =
-  typeof EnvironmentVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3683,6 +4743,13 @@ export const EnvironmentVersionsCreateOrUpdate =
     outputSchema: EnvironmentVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EnvironmentVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const EnvironmentVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3694,17 +4761,14 @@ export const EnvironmentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentVersionsDeleteInput =
-  typeof EnvironmentVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentVersionsDeleteInput>;
 
 // Output Schema
+export type EnvironmentVersionsDeleteOutput = void;
 export const EnvironmentVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentVersionsDeleteOutput =
-  typeof EnvironmentVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -3724,6 +4788,13 @@ export const EnvironmentVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const EnvironmentVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3735,13 +4806,24 @@ export const EnvironmentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentVersionsGetInput =
-  typeof EnvironmentVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentVersionsGetInput>;
 
 // Output Schema
+export interface EnvironmentVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3761,9 +4843,7 @@ export const EnvironmentVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentVersionsGetOutput =
-  typeof EnvironmentVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentVersionsGetOutput>;
 
 // The operation
 /**
@@ -3783,6 +4863,16 @@ export const EnvironmentVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const EnvironmentVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3799,13 +4889,27 @@ export const EnvironmentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentVersionsListInput =
-  typeof EnvironmentVersionsListInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentVersionsListInput>;
 
 // Output Schema
+export interface EnvironmentVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EnvironmentVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3840,9 +4944,7 @@ export const EnvironmentVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EnvironmentVersionsListOutput =
-  typeof EnvironmentVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentVersionsListOutput>;
 
 // The operation
 /**
@@ -3865,6 +4967,16 @@ export const EnvironmentVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentVersionsPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  destinationName?: string | null;
+  destinationVersion?: string | null;
+  registryName?: string | null;
+}
 export const EnvironmentVersionsPublishInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3879,17 +4991,14 @@ export const EnvironmentVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type EnvironmentVersionsPublishInput =
-  typeof EnvironmentVersionsPublishInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentVersionsPublishInput>;
 
 // Output Schema
+export type EnvironmentVersionsPublishOutput = void;
 export const EnvironmentVersionsPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentVersionsPublishOutput =
-  typeof EnvironmentVersionsPublishOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentVersionsPublishOutput>;
 
 // The operation
 /**
@@ -3909,6 +5018,17 @@ export const EnvironmentVersionsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const FeaturesetContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3932,13 +5052,24 @@ export const FeaturesetContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetContainersCreateOrUpdateInput =
-  typeof FeaturesetContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface FeaturesetContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturesetContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3958,9 +5089,7 @@ export const FeaturesetContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturesetContainersCreateOrUpdateOutput =
-  typeof FeaturesetContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3978,6 +5107,12 @@ export const FeaturesetContainersCreateOrUpdate =
     outputSchema: FeaturesetContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FeaturesetContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const FeaturesetContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3988,17 +5123,14 @@ export const FeaturesetContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetContainersDeleteInput =
-  typeof FeaturesetContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetContainersDeleteInput>;
 
 // Output Schema
+export type FeaturesetContainersDeleteOutput = void;
 export const FeaturesetContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeaturesetContainersDeleteOutput =
-  typeof FeaturesetContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeaturesetContainersDeleteOutput>;
 
 // The operation
 /**
@@ -4017,6 +5149,12 @@ export const FeaturesetContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetContainersGetEntityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const FeaturesetContainersGetEntityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4027,13 +5165,24 @@ export const FeaturesetContainersGetEntityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetContainersGetEntityInput =
-  typeof FeaturesetContainersGetEntityInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetContainersGetEntityInput>;
 
 // Output Schema
+export interface FeaturesetContainersGetEntityOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturesetContainersGetEntityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4053,9 +5202,7 @@ export const FeaturesetContainersGetEntityOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturesetContainersGetEntityOutput =
-  typeof FeaturesetContainersGetEntityOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetContainersGetEntityOutput>;
 
 // The operation
 /**
@@ -4073,6 +5220,18 @@ export const FeaturesetContainersGetEntity =
     outputSchema: FeaturesetContainersGetEntityOutput,
   }));
 // Input Schema
+export interface FeaturesetContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  pageSize?: number;
+  name?: string;
+  description?: string;
+  createdBy?: string;
+}
 export const FeaturesetContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4091,13 +5250,27 @@ export const FeaturesetContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetContainersListInput =
-  typeof FeaturesetContainersListInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetContainersListInput>;
 
 // Output Schema
+export interface FeaturesetContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FeaturesetContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4132,9 +5305,7 @@ export const FeaturesetContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FeaturesetContainersListOutput =
-  typeof FeaturesetContainersListOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetContainersListOutput>;
 
 // The operation
 /**
@@ -4159,6 +5330,25 @@ export const FeaturesetContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetVersionsBackfillInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  dataAvailabilityStatus?: ("None" | "Pending" | "Incomplete" | "Complete")[];
+  description?: string;
+  displayName?: string;
+  featureWindow?: {
+    featureWindowEnd?: string | null;
+    featureWindowStart?: string | null;
+  };
+  jobId?: string;
+  properties?: Record<string, string | null>;
+  resource?: { instanceType?: string | null };
+  sparkConfiguration?: Record<string, string | null>;
+  tags?: Record<string, string | null>;
+}
 export const FeaturesetVersionsBackfillInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4198,19 +5388,18 @@ export const FeaturesetVersionsBackfillInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}/backfill",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetVersionsBackfillInput =
-  typeof FeaturesetVersionsBackfillInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetVersionsBackfillInput>;
 
 // Output Schema
+export interface FeaturesetVersionsBackfillOutput {
+  jobIds?: string[] | null;
+}
 export const FeaturesetVersionsBackfillOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobIds: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
-  });
-export type FeaturesetVersionsBackfillOutput =
-  typeof FeaturesetVersionsBackfillOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetVersionsBackfillOutput>;
 
 // The operation
 /**
@@ -4230,6 +5419,18 @@ export const FeaturesetVersionsBackfill = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const FeaturesetVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4254,13 +5455,24 @@ export const FeaturesetVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetVersionsCreateOrUpdateInput =
-  typeof FeaturesetVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FeaturesetVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturesetVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4280,9 +5492,7 @@ export const FeaturesetVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturesetVersionsCreateOrUpdateOutput =
-  typeof FeaturesetVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4301,6 +5511,13 @@ export const FeaturesetVersionsCreateOrUpdate =
     outputSchema: FeaturesetVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FeaturesetVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const FeaturesetVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4312,17 +5529,14 @@ export const FeaturesetVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetVersionsDeleteInput =
-  typeof FeaturesetVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetVersionsDeleteInput>;
 
 // Output Schema
+export type FeaturesetVersionsDeleteOutput = void;
 export const FeaturesetVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeaturesetVersionsDeleteOutput =
-  typeof FeaturesetVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeaturesetVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -4342,6 +5556,13 @@ export const FeaturesetVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const FeaturesetVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4353,12 +5574,24 @@ export const FeaturesetVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetVersionsGetInput = typeof FeaturesetVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetVersionsGetInput>;
 
 // Output Schema
+export interface FeaturesetVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturesetVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4378,9 +5611,7 @@ export const FeaturesetVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturesetVersionsGetOutput =
-  typeof FeaturesetVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetVersionsGetOutput>;
 
 // The operation
 /**
@@ -4400,6 +5631,21 @@ export const FeaturesetVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesetVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $skip?: string;
+  tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  pageSize?: number;
+  versionName?: string;
+  version?: string;
+  description?: string;
+  createdBy?: string;
+  stage?: string;
+}
 export const FeaturesetVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4421,13 +5667,27 @@ export const FeaturesetVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturesetVersionsListInput =
-  typeof FeaturesetVersionsListInput.Type;
+  ) as unknown as Schema.Codec<FeaturesetVersionsListInput>;
 
 // Output Schema
+export interface FeaturesetVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FeaturesetVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4462,9 +5722,7 @@ export const FeaturesetVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FeaturesetVersionsListOutput =
-  typeof FeaturesetVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesetVersionsListOutput>;
 
 // The operation
 /**
@@ -4492,6 +5750,14 @@ export const FeaturesetVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FeaturesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  featuresetName: string;
+  featuresetVersion: string;
+  featureName: string;
+}
 export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4503,12 +5769,24 @@ export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features/{featureName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type FeaturesGetInput = typeof FeaturesGetInput.Type;
+) as unknown as Schema.Codec<FeaturesGetInput>;
 
 // Output Schema
+export interface FeaturesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4527,8 +5805,7 @@ export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
+}) as unknown as Schema.Codec<FeaturesGetOutput>;
 
 // The operation
 /**
@@ -4547,6 +5824,19 @@ export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FeaturesGetOutput,
 }));
 // Input Schema
+export interface FeaturesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  featuresetName: string;
+  featuresetVersion: string;
+  $skip?: string;
+  tags?: string;
+  featureName?: string;
+  description?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  pageSize?: number;
+}
 export const FeaturesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4565,12 +5855,27 @@ export const FeaturesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{featuresetName}/versions/{featuresetVersion}/features",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type FeaturesListInput = typeof FeaturesListInput.Type;
+) as unknown as Schema.Codec<FeaturesListInput>;
 
 // Output Schema
+export interface FeaturesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FeaturesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -4594,8 +5899,7 @@ export const FeaturesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FeaturesListOutput = typeof FeaturesListOutput.Type;
+}) as unknown as Schema.Codec<FeaturesListOutput>;
 
 // The operation
 /**
@@ -4619,6 +5923,17 @@ export const FeaturesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FeaturesListOutput,
 }));
 // Input Schema
+export interface FeaturestoreEntityContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const FeaturestoreEntityContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4642,13 +5957,24 @@ export const FeaturestoreEntityContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityContainersCreateOrUpdateInput =
-  typeof FeaturestoreEntityContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface FeaturestoreEntityContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturestoreEntityContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4668,9 +5994,7 @@ export const FeaturestoreEntityContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturestoreEntityContainersCreateOrUpdateOutput =
-  typeof FeaturestoreEntityContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4688,6 +6012,12 @@ export const FeaturestoreEntityContainersCreateOrUpdate =
     outputSchema: FeaturestoreEntityContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const FeaturestoreEntityContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4698,17 +6028,14 @@ export const FeaturestoreEntityContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityContainersDeleteInput =
-  typeof FeaturestoreEntityContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityContainersDeleteInput>;
 
 // Output Schema
+export type FeaturestoreEntityContainersDeleteOutput = void;
 export const FeaturestoreEntityContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeaturestoreEntityContainersDeleteOutput =
-  typeof FeaturestoreEntityContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeaturestoreEntityContainersDeleteOutput>;
 
 // The operation
 /**
@@ -4726,6 +6053,12 @@ export const FeaturestoreEntityContainersDelete =
     outputSchema: FeaturestoreEntityContainersDeleteOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityContainersGetEntityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const FeaturestoreEntityContainersGetEntityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4736,13 +6069,24 @@ export const FeaturestoreEntityContainersGetEntityInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityContainersGetEntityInput =
-  typeof FeaturestoreEntityContainersGetEntityInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityContainersGetEntityInput>;
 
 // Output Schema
+export interface FeaturestoreEntityContainersGetEntityOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturestoreEntityContainersGetEntityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4762,9 +6106,7 @@ export const FeaturestoreEntityContainersGetEntityOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturestoreEntityContainersGetEntityOutput =
-  typeof FeaturestoreEntityContainersGetEntityOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityContainersGetEntityOutput>;
 
 // The operation
 /**
@@ -4782,6 +6124,18 @@ export const FeaturestoreEntityContainersGetEntity =
     outputSchema: FeaturestoreEntityContainersGetEntityOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  pageSize?: number;
+  name?: string;
+  description?: string;
+  createdBy?: string;
+}
 export const FeaturestoreEntityContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4800,13 +6154,27 @@ export const FeaturestoreEntityContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityContainersListInput =
-  typeof FeaturestoreEntityContainersListInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityContainersListInput>;
 
 // Output Schema
+export interface FeaturestoreEntityContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FeaturestoreEntityContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4841,9 +6209,7 @@ export const FeaturestoreEntityContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FeaturestoreEntityContainersListOutput =
-  typeof FeaturestoreEntityContainersListOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityContainersListOutput>;
 
 // The operation
 /**
@@ -4867,6 +6233,18 @@ export const FeaturestoreEntityContainersList =
     outputSchema: FeaturestoreEntityContainersListOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const FeaturestoreEntityVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4891,13 +6269,24 @@ export const FeaturestoreEntityVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityVersionsCreateOrUpdateInput =
-  typeof FeaturestoreEntityVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FeaturestoreEntityVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturestoreEntityVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4917,9 +6306,7 @@ export const FeaturestoreEntityVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturestoreEntityVersionsCreateOrUpdateOutput =
-  typeof FeaturestoreEntityVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4938,6 +6325,13 @@ export const FeaturestoreEntityVersionsCreateOrUpdate =
     outputSchema: FeaturestoreEntityVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const FeaturestoreEntityVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4949,17 +6343,14 @@ export const FeaturestoreEntityVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityVersionsDeleteInput =
-  typeof FeaturestoreEntityVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityVersionsDeleteInput>;
 
 // Output Schema
+export type FeaturestoreEntityVersionsDeleteOutput = void;
 export const FeaturestoreEntityVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FeaturestoreEntityVersionsDeleteOutput =
-  typeof FeaturestoreEntityVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeaturestoreEntityVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -4978,6 +6369,13 @@ export const FeaturestoreEntityVersionsDelete =
     outputSchema: FeaturestoreEntityVersionsDeleteOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const FeaturestoreEntityVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4989,13 +6387,24 @@ export const FeaturestoreEntityVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityVersionsGetInput =
-  typeof FeaturestoreEntityVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityVersionsGetInput>;
 
 // Output Schema
+export interface FeaturestoreEntityVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FeaturestoreEntityVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5015,9 +6424,7 @@ export const FeaturestoreEntityVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FeaturestoreEntityVersionsGetOutput =
-  typeof FeaturestoreEntityVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityVersionsGetOutput>;
 
 // The operation
 /**
@@ -5036,6 +6443,21 @@ export const FeaturestoreEntityVersionsGet =
     outputSchema: FeaturestoreEntityVersionsGetOutput,
   }));
 // Input Schema
+export interface FeaturestoreEntityVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $skip?: string;
+  tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  pageSize?: number;
+  versionName?: string;
+  version?: string;
+  description?: string;
+  createdBy?: string;
+  stage?: string;
+}
 export const FeaturestoreEntityVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5057,13 +6479,27 @@ export const FeaturestoreEntityVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type FeaturestoreEntityVersionsListInput =
-  typeof FeaturestoreEntityVersionsListInput.Type;
+  ) as unknown as Schema.Codec<FeaturestoreEntityVersionsListInput>;
 
 // Output Schema
+export interface FeaturestoreEntityVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FeaturestoreEntityVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5098,9 +6534,7 @@ export const FeaturestoreEntityVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FeaturestoreEntityVersionsListOutput =
-  typeof FeaturestoreEntityVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<FeaturestoreEntityVersionsListOutput>;
 
 // The operation
 /**
@@ -5127,6 +6561,12 @@ export const FeaturestoreEntityVersionsList =
     outputSchema: FeaturestoreEntityVersionsListOutput,
   }));
 // Input Schema
+export interface JobsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  id: string;
+}
 export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5136,14 +6576,14 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}/cancel",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type JobsCancelInput = typeof JobsCancelInput.Type;
+) as unknown as Schema.Codec<JobsCancelInput>;
 
 // Output Schema
-export const JobsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsCancelOutput = typeof JobsCancelOutput.Type;
+export type JobsCancelOutput = void;
+export const JobsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsCancelOutput>;
 
 // The operation
 /**
@@ -5160,6 +6600,17 @@ export const JobsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsCancelOutput,
 }));
 // Input Schema
+export interface JobsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  id: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const JobsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5183,12 +6634,24 @@ export const JobsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type JobsCreateOrUpdateInput = typeof JobsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<JobsCreateOrUpdateInput>;
 
 // Output Schema
+export interface JobsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5208,8 +6671,7 @@ export const JobsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type JobsCreateOrUpdateOutput = typeof JobsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JobsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5230,6 +6692,12 @@ export const JobsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface JobsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  id: string;
+}
 export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5239,14 +6707,14 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type JobsDeleteInput = typeof JobsDeleteInput.Type;
+) as unknown as Schema.Codec<JobsDeleteInput>;
 
 // Output Schema
-export const JobsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JobsDeleteOutput = typeof JobsDeleteOutput.Type;
+export type JobsDeleteOutput = void;
+export const JobsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
 
 // The operation
 /**
@@ -5263,6 +6731,12 @@ export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsDeleteOutput,
 }));
 // Input Schema
+export interface JobsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  id: string;
+}
 export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5272,12 +6746,24 @@ export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type JobsGetInput = typeof JobsGetInput.Type;
+) as unknown as Schema.Codec<JobsGetInput>;
 
 // Output Schema
+export interface JobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5296,8 +6782,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type JobsGetOutput = typeof JobsGetOutput.Type;
+}) as unknown as Schema.Codec<JobsGetOutput>;
 
 // The operation
 /**
@@ -5314,6 +6799,16 @@ export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsGetOutput,
 }));
 // Input Schema
+export interface JobsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  jobType?: string;
+  tag?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+  properties?: string;
+}
 export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5329,12 +6824,27 @@ export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type JobsListInput = typeof JobsListInput.Type;
+) as unknown as Schema.Codec<JobsListInput>;
 
 // Output Schema
+export interface JobsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -5358,8 +6868,7 @@ export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type JobsListOutput = typeof JobsListOutput.Type;
+}) as unknown as Schema.Codec<JobsListOutput>;
 
 // The operation
 /**
@@ -5380,6 +6889,12 @@ export const JobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: JobsListOutput,
 }));
 // Input Schema
+export interface ManagedNetworkProvisionsProvisionManagedNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  includeSpark?: boolean;
+}
 export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5390,20 +6905,20 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/provisionManagedNetwork",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
-  typeof ManagedNetworkProvisionsProvisionManagedNetworkInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkProvisionsProvisionManagedNetworkInput>;
 
 // Output Schema
+export interface ManagedNetworkProvisionsProvisionManagedNetworkOutput {
+  sparkReady?: boolean;
+  status?: "Inactive" | "Active";
+}
 export const ManagedNetworkProvisionsProvisionManagedNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sparkReady: Schema.optional(Schema.Boolean),
     status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
-  });
-export type ManagedNetworkProvisionsProvisionManagedNetworkOutput =
-  typeof ManagedNetworkProvisionsProvisionManagedNetworkOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkProvisionsProvisionManagedNetworkOutput>;
 
 // The operation
 /**
@@ -5420,6 +6935,19 @@ export const ManagedNetworkProvisionsProvisionManagedNetwork =
     outputSchema: ManagedNetworkProvisionsProvisionManagedNetworkOutput,
   }));
 // Input Schema
+export interface ManagedNetworkSettingsRuleCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleName: string;
+  properties: {
+    category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+    status?: "Inactive" | "Active" | "Provisioning" | "Deleting" | "Failed";
+    type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+    errorInformation?: string;
+    parentRuleNames?: string[];
+  };
+}
 export const ManagedNetworkSettingsRuleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5452,13 +6980,24 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ManagedNetworkSettingsRuleCreateOrUpdateInput =
-  typeof ManagedNetworkSettingsRuleCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsRuleCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsRuleCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedNetworkSettingsRuleCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5478,9 +7017,7 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedNetworkSettingsRuleCreateOrUpdateOutput =
-  typeof ManagedNetworkSettingsRuleCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsRuleCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5498,6 +7035,12 @@ export const ManagedNetworkSettingsRuleCreateOrUpdate =
     outputSchema: ManagedNetworkSettingsRuleCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagedNetworkSettingsRuleDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleName: string;
+}
 export const ManagedNetworkSettingsRuleDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5508,17 +7051,14 @@ export const ManagedNetworkSettingsRuleDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ManagedNetworkSettingsRuleDeleteInput =
-  typeof ManagedNetworkSettingsRuleDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsRuleDeleteInput>;
 
 // Output Schema
+export type ManagedNetworkSettingsRuleDeleteOutput = void;
 export const ManagedNetworkSettingsRuleDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedNetworkSettingsRuleDeleteOutput =
-  typeof ManagedNetworkSettingsRuleDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedNetworkSettingsRuleDeleteOutput>;
 
 // The operation
 /**
@@ -5536,6 +7076,12 @@ export const ManagedNetworkSettingsRuleDelete =
     outputSchema: ManagedNetworkSettingsRuleDeleteOutput,
   }));
 // Input Schema
+export interface ManagedNetworkSettingsRuleGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  ruleName: string;
+}
 export const ManagedNetworkSettingsRuleGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5546,13 +7092,24 @@ export const ManagedNetworkSettingsRuleGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ManagedNetworkSettingsRuleGetInput =
-  typeof ManagedNetworkSettingsRuleGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsRuleGetInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsRuleGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedNetworkSettingsRuleGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5572,9 +7129,7 @@ export const ManagedNetworkSettingsRuleGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedNetworkSettingsRuleGetOutput =
-  typeof ManagedNetworkSettingsRuleGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsRuleGetOutput>;
 
 // The operation
 /**
@@ -5592,6 +7147,11 @@ export const ManagedNetworkSettingsRuleGet =
     outputSchema: ManagedNetworkSettingsRuleGetOutput,
   }));
 // Input Schema
+export interface ManagedNetworkSettingsRuleListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const ManagedNetworkSettingsRuleListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5601,13 +7161,27 @@ export const ManagedNetworkSettingsRuleListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ManagedNetworkSettingsRuleListInput =
-  typeof ManagedNetworkSettingsRuleListInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsRuleListInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsRuleListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedNetworkSettingsRuleListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5642,9 +7216,7 @@ export const ManagedNetworkSettingsRuleListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedNetworkSettingsRuleListOutput =
-  typeof ManagedNetworkSettingsRuleListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsRuleListOutput>;
 
 // The operation
 /**
@@ -5661,6 +7233,28 @@ export const ManagedNetworkSettingsRuleList =
     outputSchema: ManagedNetworkSettingsRuleListOutput,
   }));
 // Input Schema
+export interface MarketplaceSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    marketplacePlan?: {
+      offerId?: string | null;
+      planId?: string | null;
+      publisherId?: string | null;
+    };
+    marketplaceSubscriptionStatus?: "Subscribed" | "Suspended" | "Unsubscribed";
+    modelId: string;
+    provisioningState?:
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Updating"
+      | "Canceled";
+  };
+}
 export const MarketplaceSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5694,13 +7288,24 @@ export const MarketplaceSubscriptionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type MarketplaceSubscriptionsCreateOrUpdateInput =
-  typeof MarketplaceSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface MarketplaceSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MarketplaceSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5720,9 +7325,7 @@ export const MarketplaceSubscriptionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MarketplaceSubscriptionsCreateOrUpdateOutput =
-  typeof MarketplaceSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5740,6 +7343,12 @@ export const MarketplaceSubscriptionsCreateOrUpdate =
     outputSchema: MarketplaceSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MarketplaceSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const MarketplaceSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5750,17 +7359,14 @@ export const MarketplaceSubscriptionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type MarketplaceSubscriptionsDeleteInput =
-  typeof MarketplaceSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceSubscriptionsDeleteInput>;
 
 // Output Schema
+export type MarketplaceSubscriptionsDeleteOutput = void;
 export const MarketplaceSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MarketplaceSubscriptionsDeleteOutput =
-  typeof MarketplaceSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MarketplaceSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -5778,6 +7384,12 @@ export const MarketplaceSubscriptionsDelete =
     outputSchema: MarketplaceSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface MarketplaceSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const MarketplaceSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5788,13 +7400,24 @@ export const MarketplaceSubscriptionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type MarketplaceSubscriptionsGetInput =
-  typeof MarketplaceSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceSubscriptionsGetInput>;
 
 // Output Schema
+export interface MarketplaceSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MarketplaceSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5814,9 +7437,7 @@ export const MarketplaceSubscriptionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MarketplaceSubscriptionsGetOutput =
-  typeof MarketplaceSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -5835,6 +7456,12 @@ export const MarketplaceSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MarketplaceSubscriptionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+}
 export const MarketplaceSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5845,13 +7472,27 @@ export const MarketplaceSubscriptionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type MarketplaceSubscriptionsListInput =
-  typeof MarketplaceSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceSubscriptionsListInput>;
 
 // Output Schema
+export interface MarketplaceSubscriptionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5886,9 +7527,7 @@ export const MarketplaceSubscriptionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceSubscriptionsListOutput =
-  typeof MarketplaceSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -5906,6 +7545,17 @@ export const MarketplaceSubscriptionsList =
     outputSchema: MarketplaceSubscriptionsListOutput,
   }));
 // Input Schema
+export interface ModelContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const ModelContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5929,13 +7579,24 @@ export const ModelContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelContainersCreateOrUpdateInput =
-  typeof ModelContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ModelContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ModelContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModelContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5955,9 +7616,7 @@ export const ModelContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ModelContainersCreateOrUpdateOutput =
-  typeof ModelContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ModelContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5975,6 +7634,12 @@ export const ModelContainersCreateOrUpdate =
     outputSchema: ModelContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ModelContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ModelContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5985,16 +7650,14 @@ export const ModelContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelContainersDeleteInput = typeof ModelContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<ModelContainersDeleteInput>;
 
 // Output Schema
+export type ModelContainersDeleteOutput = void;
 export const ModelContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ModelContainersDeleteOutput =
-  typeof ModelContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModelContainersDeleteOutput>;
 
 // The operation
 /**
@@ -6013,6 +7676,12 @@ export const ModelContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ModelContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ModelContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6023,12 +7692,24 @@ export const ModelContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelContainersGetInput = typeof ModelContainersGetInput.Type;
+  ) as unknown as Schema.Codec<ModelContainersGetInput>;
 
 // Output Schema
+export interface ModelContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModelContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6048,8 +7729,7 @@ export const ModelContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ModelContainersGetOutput = typeof ModelContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<ModelContainersGetOutput>;
 
 // The operation
 /**
@@ -6066,6 +7746,14 @@ export const ModelContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelContainersGetOutput,
 }));
 // Input Schema
+export interface ModelContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  count?: number;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const ModelContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6080,12 +7768,27 @@ export const ModelContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelContainersListInput = typeof ModelContainersListInput.Type;
+  ) as unknown as Schema.Codec<ModelContainersListInput>;
 
 // Output Schema
+export interface ModelContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ModelContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6120,8 +7823,7 @@ export const ModelContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ModelContainersListOutput = typeof ModelContainersListOutput.Type;
+  }) as unknown as Schema.Codec<ModelContainersListOutput>;
 
 // The operation
 /**
@@ -6140,6 +7842,18 @@ export const ModelContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelContainersListOutput,
 }));
 // Input Schema
+export interface ModelVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const ModelVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6164,13 +7878,24 @@ export const ModelVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelVersionsCreateOrUpdateInput =
-  typeof ModelVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ModelVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ModelVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModelVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6190,9 +7915,7 @@ export const ModelVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ModelVersionsCreateOrUpdateOutput =
-  typeof ModelVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ModelVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6212,6 +7935,13 @@ export const ModelVersionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ModelVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const ModelVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6223,15 +7953,14 @@ export const ModelVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelVersionsDeleteInput = typeof ModelVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ModelVersionsDeleteInput>;
 
 // Output Schema
+export type ModelVersionsDeleteOutput = void;
 export const ModelVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ModelVersionsDeleteOutput = typeof ModelVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModelVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -6249,6 +7978,13 @@ export const ModelVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelVersionsDeleteOutput,
 }));
 // Input Schema
+export interface ModelVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+}
 export const ModelVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6259,12 +7995,24 @@ export const ModelVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ModelVersionsGetInput = typeof ModelVersionsGetInput.Type;
+) as unknown as Schema.Codec<ModelVersionsGetInput>;
 
 // Output Schema
+export interface ModelVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ModelVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -6285,8 +8033,7 @@ export const ModelVersionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ModelVersionsGetOutput = typeof ModelVersionsGetOutput.Type;
+) as unknown as Schema.Codec<ModelVersionsGetOutput>;
 
 // The operation
 /**
@@ -6304,6 +8051,22 @@ export const ModelVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelVersionsGetOutput,
 }));
 // Input Schema
+export interface ModelVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  $skip?: string;
+  $orderBy?: string;
+  $top?: number;
+  version?: string;
+  description?: string;
+  offset?: number;
+  tags?: string;
+  properties?: string;
+  feed?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const ModelVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6327,12 +8090,27 @@ export const ModelVersionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type ModelVersionsListInput = typeof ModelVersionsListInput.Type;
+) as unknown as Schema.Codec<ModelVersionsListInput>;
 
 // Output Schema
+export interface ModelVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ModelVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6367,8 +8145,7 @@ export const ModelVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ModelVersionsListOutput = typeof ModelVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<ModelVersionsListOutput>;
 
 // The operation
 /**
@@ -6395,6 +8172,16 @@ export const ModelVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelVersionsListOutput,
 }));
 // Input Schema
+export interface ModelVersionsPublishInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  version: string;
+  destinationName?: string | null;
+  destinationVersion?: string | null;
+  registryName?: string | null;
+}
 export const ModelVersionsPublishInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6409,15 +8196,14 @@ export const ModelVersionsPublishInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}/publish",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ModelVersionsPublishInput = typeof ModelVersionsPublishInput.Type;
+  ) as unknown as Schema.Codec<ModelVersionsPublishInput>;
 
 // Output Schema
+export type ModelVersionsPublishOutput = void;
 export const ModelVersionsPublishOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ModelVersionsPublishOutput = typeof ModelVersionsPublishOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ModelVersionsPublishOutput>;
 
 // The operation
 /**
@@ -6437,6 +8223,43 @@ export const ModelVersionsPublish = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  properties: {
+    codeConfiguration?: { codeId?: string | null; scoringScript: string };
+    description?: string | null;
+    environmentId?: string | null;
+    environmentVariables?: Record<string, string | null> | null;
+    properties?: Record<string, string | null> | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OnlineDeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6505,13 +8328,24 @@ export const OnlineDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsCreateOrUpdateInput =
-  typeof OnlineDeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface OnlineDeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineDeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6531,9 +8365,7 @@ export const OnlineDeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineDeploymentsCreateOrUpdateOutput =
-  typeof OnlineDeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6552,6 +8384,13 @@ export const OnlineDeploymentsCreateOrUpdate =
     outputSchema: OnlineDeploymentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface OnlineDeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+}
 export const OnlineDeploymentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6563,17 +8402,14 @@ export const OnlineDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsDeleteInput =
-  typeof OnlineDeploymentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsDeleteInput>;
 
 // Output Schema
+export type OnlineDeploymentsDeleteOutput = void;
 export const OnlineDeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OnlineDeploymentsDeleteOutput =
-  typeof OnlineDeploymentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OnlineDeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -6593,6 +8429,13 @@ export const OnlineDeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+}
 export const OnlineDeploymentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6604,12 +8447,24 @@ export const OnlineDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsGetInput = typeof OnlineDeploymentsGetInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsGetInput>;
 
 // Output Schema
+export interface OnlineDeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineDeploymentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6629,8 +8484,7 @@ export const OnlineDeploymentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineDeploymentsGetOutput = typeof OnlineDeploymentsGetOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsGetOutput>;
 
 // The operation
 /**
@@ -6650,6 +8504,15 @@ export const OnlineDeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsGetLogsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  containerType?: "StorageInitializer" | "InferenceServer";
+  tail?: number | null;
+}
 export const OnlineDeploymentsGetLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6665,19 +8528,18 @@ export const OnlineDeploymentsGetLogsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/getLogs",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsGetLogsInput =
-  typeof OnlineDeploymentsGetLogsInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsGetLogsInput>;
 
 // Output Schema
+export interface OnlineDeploymentsGetLogsOutput {
+  content?: string | null;
+}
 export const OnlineDeploymentsGetLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type OnlineDeploymentsGetLogsOutput =
-  typeof OnlineDeploymentsGetLogsOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsGetLogsOutput>;
 
 // The operation
 /**
@@ -6697,6 +8559,15 @@ export const OnlineDeploymentsGetLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+}
 export const OnlineDeploymentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6710,12 +8581,27 @@ export const OnlineDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsListInput = typeof OnlineDeploymentsListInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsListInput>;
 
 // Output Schema
+export interface OnlineDeploymentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OnlineDeploymentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6750,9 +8636,7 @@ export const OnlineDeploymentsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OnlineDeploymentsListOutput =
-  typeof OnlineDeploymentsListOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsListOutput>;
 
 // The operation
 /**
@@ -6774,6 +8658,15 @@ export const OnlineDeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsListSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  count?: number;
+  $skip?: string;
+}
 export const OnlineDeploymentsListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6787,13 +8680,24 @@ export const OnlineDeploymentsListSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}/skus",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsListSkusInput =
-  typeof OnlineDeploymentsListSkusInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsListSkusInput>;
 
 // Output Schema
+export interface OnlineDeploymentsListSkusOutput {
+  value: {
+    capacity?: {
+      default?: number;
+      maximum?: number;
+      minimum?: number;
+      scaleType?: "Automatic" | "Manual" | "None";
+    };
+    resourceType?: string | null;
+    sku?: { name: string; tier?: "Free" | "Basic" | "Standard" | "Premium" };
+  }[];
+  nextLink?: string;
+}
 export const OnlineDeploymentsListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6820,9 +8724,7 @@ export const OnlineDeploymentsListSkusOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OnlineDeploymentsListSkusOutput =
-  typeof OnlineDeploymentsListSkusOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsListSkusOutput>;
 
 // The operation
 /**
@@ -6844,6 +8746,21 @@ export const OnlineDeploymentsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineDeploymentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  deploymentName: string;
+  sku?: {
+    capacity?: number;
+    family?: string;
+    name?: string;
+    size?: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+  };
+  tags?: Record<string, string | null>;
+}
 export const OnlineDeploymentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6869,13 +8786,24 @@ export const OnlineDeploymentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineDeploymentsUpdateInput =
-  typeof OnlineDeploymentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<OnlineDeploymentsUpdateInput>;
 
 // Output Schema
+export interface OnlineDeploymentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineDeploymentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6895,9 +8823,7 @@ export const OnlineDeploymentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineDeploymentsUpdateOutput =
-  typeof OnlineDeploymentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OnlineDeploymentsUpdateOutput>;
 
 // The operation
 /**
@@ -6917,6 +8843,43 @@ export const OnlineDeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  properties: {
+    authMode: "AMLToken" | "Key" | "AADToken";
+    description?: string | null;
+    keys?: { primaryKey?: string | null; secondaryKey?: string | null };
+    properties?: Record<string, string | null> | null;
+    scoringUri?: string | null;
+    swaggerUri?: string | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OnlineEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6981,13 +8944,24 @@ export const OnlineEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsCreateOrUpdateInput =
-  typeof OnlineEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface OnlineEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7007,9 +8981,7 @@ export const OnlineEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineEndpointsCreateOrUpdateOutput =
-  typeof OnlineEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7027,6 +8999,12 @@ export const OnlineEndpointsCreateOrUpdate =
     outputSchema: OnlineEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface OnlineEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const OnlineEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7037,16 +9015,14 @@ export const OnlineEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsDeleteInput = typeof OnlineEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsDeleteInput>;
 
 // Output Schema
+export type OnlineEndpointsDeleteOutput = void;
 export const OnlineEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OnlineEndpointsDeleteOutput =
-  typeof OnlineEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OnlineEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -7065,6 +9041,12 @@ export const OnlineEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const OnlineEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7075,12 +9057,24 @@ export const OnlineEndpointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsGetInput = typeof OnlineEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsGetInput>;
 
 // Output Schema
+export interface OnlineEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7100,8 +9094,7 @@ export const OnlineEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineEndpointsGetOutput = typeof OnlineEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsGetOutput>;
 
 // The operation
 /**
@@ -7118,6 +9111,12 @@ export const OnlineEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OnlineEndpointsGetOutput,
 }));
 // Input Schema
+export interface OnlineEndpointsGetTokenInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const OnlineEndpointsGetTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7128,22 +9127,24 @@ export const OnlineEndpointsGetTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/token",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsGetTokenInput =
-  typeof OnlineEndpointsGetTokenInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsGetTokenInput>;
 
 // Output Schema
+export interface OnlineEndpointsGetTokenOutput {
+  accessToken?: Redacted.Redacted<string> | null;
+  expiryTimeUtc?: number;
+  refreshAfterTimeUtc?: number;
+  tokenType?: string | null;
+}
 export const OnlineEndpointsGetTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(SensitiveOutputNullableString),
     expiryTimeUtc: Schema.optional(Schema.Number),
     refreshAfterTimeUtc: Schema.optional(Schema.Number),
     tokenType: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type OnlineEndpointsGetTokenOutput =
-  typeof OnlineEndpointsGetTokenOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsGetTokenOutput>;
 
 // The operation
 /**
@@ -7162,6 +9163,18 @@ export const OnlineEndpointsGetToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name?: string;
+  count?: number;
+  computeType?: "Managed" | "Kubernetes" | "AzureMLCompute";
+  $skip?: string;
+  tags?: string;
+  properties?: string;
+  orderBy?: "CreatedAtDesc" | "CreatedAtAsc" | "UpdatedAtDesc" | "UpdatedAtAsc";
+}
 export const OnlineEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7187,12 +9200,27 @@ export const OnlineEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsListInput = typeof OnlineEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsListInput>;
 
 // Output Schema
+export interface OnlineEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OnlineEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7227,8 +9255,7 @@ export const OnlineEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OnlineEndpointsListOutput = typeof OnlineEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsListOutput>;
 
 // The operation
 /**
@@ -7251,6 +9278,12 @@ export const OnlineEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OnlineEndpointsListOutput,
 }));
 // Input Schema
+export interface OnlineEndpointsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+}
 export const OnlineEndpointsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7261,20 +9294,20 @@ export const OnlineEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsListKeysInput =
-  typeof OnlineEndpointsListKeysInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsListKeysInput>;
 
 // Output Schema
+export interface OnlineEndpointsListKeysOutput {
+  primaryKey?: string | null;
+  secondaryKey?: string | null;
+}
 export const OnlineEndpointsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.NullOr(Schema.String)),
     secondaryKey: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type OnlineEndpointsListKeysOutput =
-  typeof OnlineEndpointsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsListKeysOutput>;
 
 // The operation
 /**
@@ -7293,6 +9326,14 @@ export const OnlineEndpointsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OnlineEndpointsRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  keyType: "Primary" | "Secondary";
+  keyValue?: string | null;
+}
 export const OnlineEndpointsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7305,17 +9346,14 @@ export const OnlineEndpointsRegenerateKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/regenerateKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsRegenerateKeysInput =
-  typeof OnlineEndpointsRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsRegenerateKeysInput>;
 
 // Output Schema
+export type OnlineEndpointsRegenerateKeysOutput = void;
 export const OnlineEndpointsRegenerateKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OnlineEndpointsRegenerateKeysOutput =
-  typeof OnlineEndpointsRegenerateKeysOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OnlineEndpointsRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -7333,6 +9371,21 @@ export const OnlineEndpointsRegenerateKeys =
     outputSchema: OnlineEndpointsRegenerateKeysOutput,
   }));
 // Input Schema
+export interface OnlineEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  endpointName: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<string, unknown>;
+  };
+  tags?: Record<string, string | null>;
+}
 export const OnlineEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7361,12 +9414,24 @@ export const OnlineEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type OnlineEndpointsUpdateInput = typeof OnlineEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<OnlineEndpointsUpdateInput>;
 
 // Output Schema
+export interface OnlineEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OnlineEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7386,9 +9451,7 @@ export const OnlineEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OnlineEndpointsUpdateOutput =
-  typeof OnlineEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OnlineEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -7407,18 +9470,33 @@ export const OnlineEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.MachineLearningServices/operations",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -7441,8 +9519,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -7457,6 +9534,43 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string; subnetArmId?: string };
+    privateLinkServiceConnectionState?: {
+      actionsRequired?: string;
+      description?: string;
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected" | "Timeout";
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7531,13 +9645,24 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7557,9 +9682,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7581,6 +9704,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7591,17 +9720,14 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -7619,6 +9745,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7629,13 +9761,24 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7655,9 +9798,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -7675,6 +9816,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7684,13 +9830,27 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateEndpointConnections",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7727,9 +9887,7 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -7746,6 +9904,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7755,13 +9918,27 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/privateLinkResources",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7798,9 +9975,7 @@ export const PrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -7828,18 +10003,33 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotasListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const QuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/quotas",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type QuotasListInput = typeof QuotasListInput.Type;
+) as unknown as Schema.Codec<QuotasListInput>;
 
 // Output Schema
+export interface QuotasListOutput {
+  value: {
+    id?: string;
+    amlWorkspaceLocation?: string;
+    type?: string;
+    name?: { value?: string; localizedValue?: string };
+    limit?: number;
+    unit?: "Count";
+  }[];
+  nextLink?: string;
+}
 export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -7857,8 +10047,7 @@ export const QuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QuotasListOutput = typeof QuotasListOutput.Type;
+}) as unknown as Schema.Codec<QuotasListOutput>;
 
 // The operation
 /**
@@ -7866,14 +10055,21 @@ export type QuotasListOutput = typeof QuotasListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const QuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotasListInput,
   outputSchema: QuotasListOutput,
 }));
 // Input Schema
+export interface QuotasUpdateInput {
+  subscriptionId: string;
+  location: string;
+  value?: { id?: string; type?: string; limit?: number; unit?: "Count" }[];
+}
 export const QuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7884,17 +10080,33 @@ export const QuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  location: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/updateQuotas",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type QuotasUpdateInput = typeof QuotasUpdateInput.Type;
+) as unknown as Schema.Codec<QuotasUpdateInput>;
 
 // Output Schema
+export interface QuotasUpdateOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    limit?: number;
+    unit?: "Count";
+    status?:
+      | "Undefined"
+      | "Success"
+      | "Failure"
+      | "InvalidQuotaBelowClusterMinimum"
+      | "InvalidQuotaExceedsSubscriptionLimit"
+      | "InvalidVMFamilyName"
+      | "OperationNotSupportedForSku"
+      | "OperationNotEnabledForRegion";
+  }[];
+  nextLink?: string;
+}
 export const QuotasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -7919,8 +10131,7 @@ export const QuotasUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QuotasUpdateOutput = typeof QuotasUpdateOutput.Type;
+}) as unknown as Schema.Codec<QuotasUpdateOutput>;
 
 // The operation
 /**
@@ -7928,12 +10139,97 @@ export type QuotasUpdateOutput = typeof QuotasUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const QuotasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: QuotasUpdateInput,
   outputSchema: QuotasUpdateOutput,
 }));
 // Input Schema
+export interface RegistriesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  properties: {
+    discoveryUrl?: string | null;
+    intellectualPropertyPublisher?: string | null;
+    managedResourceGroup?: { resourceId?: string | null };
+    managedResourceGroupSettings?: {
+      assignedIdentities?: { principalId?: string }[] | null;
+    };
+    mlFlowRegistryUri?: string | null;
+    registryPrivateEndpointConnections?:
+      | {
+          id?: string | null;
+          location?: string | null;
+          properties?: {
+            groupIds?: string[] | null;
+            privateEndpoint?: { id?: string };
+            registryPrivateLinkServiceConnectionState?: {
+              actionsRequired?: string | null;
+              description?: string | null;
+              status?:
+                | "Approved"
+                | "Pending"
+                | "Rejected"
+                | "Disconnected"
+                | "Timeout";
+            };
+            provisioningState?: string | null;
+          };
+        }[]
+      | null;
+    publicNetworkAccess?: string | null;
+    regionDetails?:
+      | {
+          acrDetails?:
+            | {
+                systemCreatedAcrAccount?: {
+                  acrAccountName?: string | null;
+                  acrAccountSku?: string | null;
+                  armResourceId?: { resourceId?: string | null };
+                };
+              }[]
+            | null;
+          location?: string | null;
+          storageAccountDetails?:
+            | {
+                systemCreatedStorageAccount?: {
+                  allowBlobPublicAccess?: boolean;
+                  armResourceId?: { resourceId?: string | null };
+                  storageAccountHnsEnabled?: boolean;
+                  storageAccountName?: string | null;
+                  storageAccountType?: string | null;
+                };
+              }[]
+            | null;
+        }[]
+      | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RegistriesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8115,13 +10411,24 @@ export const RegistriesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistriesCreateOrUpdateInput =
-  typeof RegistriesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistriesCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistriesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8141,9 +10448,7 @@ export const RegistriesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistriesCreateOrUpdateOutput =
-  typeof RegistriesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8161,6 +10466,11 @@ export const RegistriesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8169,14 +10479,14 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
+) as unknown as Schema.Codec<RegistriesDeleteInput>;
 
 // Output Schema
-export const RegistriesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistriesDeleteOutput = typeof RegistriesDeleteOutput.Type;
+export type RegistriesDeleteOutput = void;
+export const RegistriesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -8192,6 +10502,11 @@ export const RegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesDeleteOutput,
 }));
 // Input Schema
+export interface RegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+}
 export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8200,12 +10515,24 @@ export const RegistriesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type RegistriesGetInput = typeof RegistriesGetInput.Type;
+) as unknown as Schema.Codec<RegistriesGetInput>;
 
 // Output Schema
+export interface RegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8224,8 +10551,7 @@ export const RegistriesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RegistriesGetOutput = typeof RegistriesGetOutput.Type;
+}) as unknown as Schema.Codec<RegistriesGetOutput>;
 
 // The operation
 /**
@@ -8241,6 +10567,10 @@ export const RegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesGetOutput,
 }));
 // Input Schema
+export interface RegistriesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8248,12 +10578,27 @@ export const RegistriesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type RegistriesListInput = typeof RegistriesListInput.Type;
+) as unknown as Schema.Codec<RegistriesListInput>;
 
 // Output Schema
+export interface RegistriesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -8277,8 +10622,7 @@ export const RegistriesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type RegistriesListOutput = typeof RegistriesListOutput.Type;
+}) as unknown as Schema.Codec<RegistriesListOutput>;
 
 // The operation
 /**
@@ -8293,6 +10637,9 @@ export const RegistriesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesListOutput,
 }));
 // Input Schema
+export interface RegistriesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const RegistriesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8300,13 +10647,27 @@ export const RegistriesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/registries",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistriesListBySubscriptionInput =
-  typeof RegistriesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RegistriesListBySubscriptionInput>;
 
 // Output Schema
+export interface RegistriesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistriesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8341,9 +10702,7 @@ export const RegistriesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistriesListBySubscriptionOutput =
-  typeof RegistriesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -8358,6 +10717,90 @@ export const RegistriesListBySubscription =
     outputSchema: RegistriesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface RegistriesRemoveRegionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  properties: {
+    discoveryUrl?: string | null;
+    intellectualPropertyPublisher?: string | null;
+    managedResourceGroup?: { resourceId?: string | null };
+    managedResourceGroupSettings?: {
+      assignedIdentities?: { principalId?: string }[] | null;
+    };
+    mlFlowRegistryUri?: string | null;
+    registryPrivateEndpointConnections?:
+      | {
+          id?: string | null;
+          location?: string | null;
+          properties?: {
+            groupIds?: string[] | null;
+            privateEndpoint?: { id?: string };
+            registryPrivateLinkServiceConnectionState?: {
+              actionsRequired?: string | null;
+              description?: string | null;
+              status?:
+                | "Approved"
+                | "Pending"
+                | "Rejected"
+                | "Disconnected"
+                | "Timeout";
+            };
+            provisioningState?: string | null;
+          };
+        }[]
+      | null;
+    publicNetworkAccess?: string | null;
+    regionDetails?:
+      | {
+          acrDetails?:
+            | {
+                systemCreatedAcrAccount?: {
+                  acrAccountName?: string | null;
+                  acrAccountSku?: string | null;
+                  armResourceId?: { resourceId?: string | null };
+                };
+              }[]
+            | null;
+          location?: string | null;
+          storageAccountDetails?:
+            | {
+                systemCreatedStorageAccount?: {
+                  allowBlobPublicAccess?: boolean;
+                  armResourceId?: { resourceId?: string | null };
+                  storageAccountHnsEnabled?: boolean;
+                  storageAccountName?: string | null;
+                  storageAccountType?: string | null;
+                };
+              }[]
+            | null;
+        }[]
+      | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RegistriesRemoveRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8539,13 +10982,24 @@ export const RegistriesRemoveRegionsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/removeRegions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistriesRemoveRegionsInput =
-  typeof RegistriesRemoveRegionsInput.Type;
+  ) as unknown as Schema.Codec<RegistriesRemoveRegionsInput>;
 
 // Output Schema
+export interface RegistriesRemoveRegionsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesRemoveRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8565,9 +11019,7 @@ export const RegistriesRemoveRegionsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistriesRemoveRegionsOutput =
-  typeof RegistriesRemoveRegionsOutput.Type;
+  }) as unknown as Schema.Codec<RegistriesRemoveRegionsOutput>;
 
 // The operation
 /**
@@ -8585,6 +11037,32 @@ export const RegistriesRemoveRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  sku?: {
+    capacity?: number;
+    family?: string;
+    name?: string;
+    size?: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+  };
+  tags?: Record<string, string | null>;
+}
 export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8630,12 +11108,24 @@ export const RegistriesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type RegistriesUpdateInput = typeof RegistriesUpdateInput.Type;
+) as unknown as Schema.Codec<RegistriesUpdateInput>;
 
 // Output Schema
+export interface RegistriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -8656,8 +11146,7 @@ export const RegistriesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RegistriesUpdateOutput = typeof RegistriesUpdateOutput.Type;
+) as unknown as Schema.Codec<RegistriesUpdateOutput>;
 
 // The operation
 /**
@@ -8673,6 +11162,17 @@ export const RegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RegistriesUpdateOutput,
 }));
 // Input Schema
+export interface RegistryCodeContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryCodeContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8696,13 +11196,24 @@ export const RegistryCodeContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeContainersCreateOrUpdateInput =
-  typeof RegistryCodeContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryCodeContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryCodeContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8722,9 +11233,7 @@ export const RegistryCodeContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryCodeContainersCreateOrUpdateOutput =
-  typeof RegistryCodeContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8742,6 +11251,12 @@ export const RegistryCodeContainersCreateOrUpdate =
     outputSchema: RegistryCodeContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryCodeContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+}
 export const RegistryCodeContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8752,17 +11267,14 @@ export const RegistryCodeContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeContainersDeleteInput =
-  typeof RegistryCodeContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeContainersDeleteInput>;
 
 // Output Schema
+export type RegistryCodeContainersDeleteOutput = void;
 export const RegistryCodeContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryCodeContainersDeleteOutput =
-  typeof RegistryCodeContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryCodeContainersDeleteOutput>;
 
 // The operation
 /**
@@ -8780,6 +11292,12 @@ export const RegistryCodeContainersDelete =
     outputSchema: RegistryCodeContainersDeleteOutput,
   }));
 // Input Schema
+export interface RegistryCodeContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+}
 export const RegistryCodeContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8790,13 +11308,24 @@ export const RegistryCodeContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeContainersGetInput =
-  typeof RegistryCodeContainersGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeContainersGetInput>;
 
 // Output Schema
+export interface RegistryCodeContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryCodeContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8816,9 +11345,7 @@ export const RegistryCodeContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryCodeContainersGetOutput =
-  typeof RegistryCodeContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeContainersGetOutput>;
 
 // The operation
 /**
@@ -8837,6 +11364,12 @@ export const RegistryCodeContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryCodeContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $skip?: string;
+}
 export const RegistryCodeContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8847,13 +11380,27 @@ export const RegistryCodeContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeContainersListInput =
-  typeof RegistryCodeContainersListInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeContainersListInput>;
 
 // Output Schema
+export interface RegistryCodeContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryCodeContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8888,9 +11435,7 @@ export const RegistryCodeContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryCodeContainersListOutput =
-  typeof RegistryCodeContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeContainersListOutput>;
 
 // The operation
 /**
@@ -8909,6 +11454,15 @@ export const RegistryCodeContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryCodeVersionsCreateOrGetStartPendingUploadInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  version: string;
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryCodeVersionsCreateOrGetStartPendingUploadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8924,13 +11478,20 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeVersionsCreateOrGetStartPendingUploadInput =
-  typeof RegistryCodeVersionsCreateOrGetStartPendingUploadInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeVersionsCreateOrGetStartPendingUploadInput>;
 
 // Output Schema
+export interface RegistryCodeVersionsCreateOrGetStartPendingUploadOutput {
+  blobReferenceForConsumption?: {
+    blobUri?: string | null;
+    credential?: { credentialType: "SAS" };
+    storageAccountArmId?: string | null;
+  };
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryCodeVersionsCreateOrGetStartPendingUploadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobReferenceForConsumption: Schema.optional(
@@ -8948,9 +11509,7 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUploadOutput =
     pendingUploadType: Schema.optional(
       Schema.Literals(["None", "TemporaryBlobReference"]),
     ),
-  });
-export type RegistryCodeVersionsCreateOrGetStartPendingUploadOutput =
-  typeof RegistryCodeVersionsCreateOrGetStartPendingUploadOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeVersionsCreateOrGetStartPendingUploadOutput>;
 
 // The operation
 /**
@@ -8969,6 +11528,18 @@ export const RegistryCodeVersionsCreateOrGetStartPendingUpload =
     outputSchema: RegistryCodeVersionsCreateOrGetStartPendingUploadOutput,
   }));
 // Input Schema
+export interface RegistryCodeVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryCodeVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8993,13 +11564,24 @@ export const RegistryCodeVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeVersionsCreateOrUpdateInput =
-  typeof RegistryCodeVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryCodeVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryCodeVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9019,9 +11601,7 @@ export const RegistryCodeVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryCodeVersionsCreateOrUpdateOutput =
-  typeof RegistryCodeVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9040,6 +11620,13 @@ export const RegistryCodeVersionsCreateOrUpdate =
     outputSchema: RegistryCodeVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryCodeVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  version: string;
+}
 export const RegistryCodeVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9051,17 +11638,14 @@ export const RegistryCodeVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeVersionsDeleteInput =
-  typeof RegistryCodeVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeVersionsDeleteInput>;
 
 // Output Schema
+export type RegistryCodeVersionsDeleteOutput = void;
 export const RegistryCodeVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryCodeVersionsDeleteOutput =
-  typeof RegistryCodeVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryCodeVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -9081,6 +11665,13 @@ export const RegistryCodeVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryCodeVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  version: string;
+}
 export const RegistryCodeVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9092,13 +11683,24 @@ export const RegistryCodeVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeVersionsGetInput =
-  typeof RegistryCodeVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeVersionsGetInput>;
 
 // Output Schema
+export interface RegistryCodeVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryCodeVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9118,9 +11720,7 @@ export const RegistryCodeVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryCodeVersionsGetOutput =
-  typeof RegistryCodeVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeVersionsGetOutput>;
 
 // The operation
 /**
@@ -9140,6 +11740,15 @@ export const RegistryCodeVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryCodeVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  codeName: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+}
 export const RegistryCodeVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9153,13 +11762,27 @@ export const RegistryCodeVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryCodeVersionsListInput =
-  typeof RegistryCodeVersionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistryCodeVersionsListInput>;
 
 // Output Schema
+export interface RegistryCodeVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryCodeVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9194,9 +11817,7 @@ export const RegistryCodeVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryCodeVersionsListOutput =
-  typeof RegistryCodeVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryCodeVersionsListOutput>;
 
 // The operation
 /**
@@ -9218,6 +11839,17 @@ export const RegistryCodeVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryComponentContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryComponentContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9241,13 +11873,24 @@ export const RegistryComponentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentContainersCreateOrUpdateInput =
-  typeof RegistryComponentContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryComponentContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryComponentContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9267,9 +11910,7 @@ export const RegistryComponentContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryComponentContainersCreateOrUpdateOutput =
-  typeof RegistryComponentContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9287,6 +11928,12 @@ export const RegistryComponentContainersCreateOrUpdate =
     outputSchema: RegistryComponentContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryComponentContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+}
 export const RegistryComponentContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9297,17 +11944,14 @@ export const RegistryComponentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentContainersDeleteInput =
-  typeof RegistryComponentContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentContainersDeleteInput>;
 
 // Output Schema
+export type RegistryComponentContainersDeleteOutput = void;
 export const RegistryComponentContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryComponentContainersDeleteOutput =
-  typeof RegistryComponentContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryComponentContainersDeleteOutput>;
 
 // The operation
 /**
@@ -9325,6 +11969,12 @@ export const RegistryComponentContainersDelete =
     outputSchema: RegistryComponentContainersDeleteOutput,
   }));
 // Input Schema
+export interface RegistryComponentContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+}
 export const RegistryComponentContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9335,13 +11985,24 @@ export const RegistryComponentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentContainersGetInput =
-  typeof RegistryComponentContainersGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentContainersGetInput>;
 
 // Output Schema
+export interface RegistryComponentContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryComponentContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9361,9 +12022,7 @@ export const RegistryComponentContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryComponentContainersGetOutput =
-  typeof RegistryComponentContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentContainersGetOutput>;
 
 // The operation
 /**
@@ -9381,6 +12040,12 @@ export const RegistryComponentContainersGet =
     outputSchema: RegistryComponentContainersGetOutput,
   }));
 // Input Schema
+export interface RegistryComponentContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $skip?: string;
+}
 export const RegistryComponentContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9391,13 +12056,27 @@ export const RegistryComponentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentContainersListInput =
-  typeof RegistryComponentContainersListInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentContainersListInput>;
 
 // Output Schema
+export interface RegistryComponentContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryComponentContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9432,9 +12111,7 @@ export const RegistryComponentContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryComponentContainersListOutput =
-  typeof RegistryComponentContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentContainersListOutput>;
 
 // The operation
 /**
@@ -9452,6 +12129,18 @@ export const RegistryComponentContainersList =
     outputSchema: RegistryComponentContainersListOutput,
   }));
 // Input Schema
+export interface RegistryComponentVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryComponentVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9476,13 +12165,24 @@ export const RegistryComponentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentVersionsCreateOrUpdateInput =
-  typeof RegistryComponentVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryComponentVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryComponentVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9502,9 +12202,7 @@ export const RegistryComponentVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryComponentVersionsCreateOrUpdateOutput =
-  typeof RegistryComponentVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9523,6 +12221,13 @@ export const RegistryComponentVersionsCreateOrUpdate =
     outputSchema: RegistryComponentVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryComponentVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+  version: string;
+}
 export const RegistryComponentVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9534,17 +12239,14 @@ export const RegistryComponentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentVersionsDeleteInput =
-  typeof RegistryComponentVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentVersionsDeleteInput>;
 
 // Output Schema
+export type RegistryComponentVersionsDeleteOutput = void;
 export const RegistryComponentVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryComponentVersionsDeleteOutput =
-  typeof RegistryComponentVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryComponentVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -9563,6 +12265,13 @@ export const RegistryComponentVersionsDelete =
     outputSchema: RegistryComponentVersionsDeleteOutput,
   }));
 // Input Schema
+export interface RegistryComponentVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+  version: string;
+}
 export const RegistryComponentVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9574,13 +12283,24 @@ export const RegistryComponentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentVersionsGetInput =
-  typeof RegistryComponentVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentVersionsGetInput>;
 
 // Output Schema
+export interface RegistryComponentVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryComponentVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9600,9 +12320,7 @@ export const RegistryComponentVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryComponentVersionsGetOutput =
-  typeof RegistryComponentVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentVersionsGetOutput>;
 
 // The operation
 /**
@@ -9621,6 +12339,15 @@ export const RegistryComponentVersionsGet =
     outputSchema: RegistryComponentVersionsGetOutput,
   }));
 // Input Schema
+export interface RegistryComponentVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  componentName: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+}
 export const RegistryComponentVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9634,13 +12361,27 @@ export const RegistryComponentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryComponentVersionsListInput =
-  typeof RegistryComponentVersionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistryComponentVersionsListInput>;
 
 // Output Schema
+export interface RegistryComponentVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryComponentVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9675,9 +12416,7 @@ export const RegistryComponentVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryComponentVersionsListOutput =
-  typeof RegistryComponentVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryComponentVersionsListOutput>;
 
 // The operation
 /**
@@ -9698,6 +12437,17 @@ export const RegistryComponentVersionsList =
     outputSchema: RegistryComponentVersionsListOutput,
   }));
 // Input Schema
+export interface RegistryDataContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryDataContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9721,13 +12471,24 @@ export const RegistryDataContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataContainersCreateOrUpdateInput =
-  typeof RegistryDataContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryDataContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryDataContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9747,9 +12508,7 @@ export const RegistryDataContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryDataContainersCreateOrUpdateOutput =
-  typeof RegistryDataContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9767,6 +12526,12 @@ export const RegistryDataContainersCreateOrUpdate =
     outputSchema: RegistryDataContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryDataContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+}
 export const RegistryDataContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9777,17 +12542,14 @@ export const RegistryDataContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataContainersDeleteInput =
-  typeof RegistryDataContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataContainersDeleteInput>;
 
 // Output Schema
+export type RegistryDataContainersDeleteOutput = void;
 export const RegistryDataContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryDataContainersDeleteOutput =
-  typeof RegistryDataContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryDataContainersDeleteOutput>;
 
 // The operation
 /**
@@ -9805,6 +12567,12 @@ export const RegistryDataContainersDelete =
     outputSchema: RegistryDataContainersDeleteOutput,
   }));
 // Input Schema
+export interface RegistryDataContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+}
 export const RegistryDataContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9815,13 +12583,24 @@ export const RegistryDataContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataContainersGetInput =
-  typeof RegistryDataContainersGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataContainersGetInput>;
 
 // Output Schema
+export interface RegistryDataContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryDataContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9841,9 +12620,7 @@ export const RegistryDataContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryDataContainersGetOutput =
-  typeof RegistryDataContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataContainersGetOutput>;
 
 // The operation
 /**
@@ -9862,6 +12639,13 @@ export const RegistryDataContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryDataContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryDataContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9875,13 +12659,27 @@ export const RegistryDataContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataContainersListInput =
-  typeof RegistryDataContainersListInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataContainersListInput>;
 
 // Output Schema
+export interface RegistryDataContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryDataContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9916,9 +12714,7 @@ export const RegistryDataContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryDataContainersListOutput =
-  typeof RegistryDataContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataContainersListOutput>;
 
 // The operation
 /**
@@ -9938,6 +12734,15 @@ export const RegistryDataContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryDataReferencesGetBlobReferenceSASInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  version: string;
+  assetId?: string | null;
+  blobUri?: string | null;
+}
 export const RegistryDataReferencesGetBlobReferenceSASInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9951,13 +12756,24 @@ export const RegistryDataReferencesGetBlobReferenceSASInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/datareferences/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataReferencesGetBlobReferenceSASInput =
-  typeof RegistryDataReferencesGetBlobReferenceSASInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataReferencesGetBlobReferenceSASInput>;
 
 // Output Schema
+export interface RegistryDataReferencesGetBlobReferenceSASOutput {
+  blobReferenceForConsumption?: {
+    blobUri?: string | null;
+    credential?: {
+      credentialType:
+        | "SAS"
+        | "DockerCredentials"
+        | "ManagedIdentity"
+        | "NoCredentials";
+    };
+    storageAccountArmId?: string | null;
+  };
+}
 export const RegistryDataReferencesGetBlobReferenceSASOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobReferenceForConsumption: Schema.optional(
@@ -9976,9 +12792,7 @@ export const RegistryDataReferencesGetBlobReferenceSASOutput =
         storageAccountArmId: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
-  });
-export type RegistryDataReferencesGetBlobReferenceSASOutput =
-  typeof RegistryDataReferencesGetBlobReferenceSASOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataReferencesGetBlobReferenceSASOutput>;
 
 // The operation
 /**
@@ -9997,6 +12811,15 @@ export const RegistryDataReferencesGetBlobReferenceSAS =
     outputSchema: RegistryDataReferencesGetBlobReferenceSASOutput,
   }));
 // Input Schema
+export interface RegistryDataVersionsCreateOrGetStartPendingUploadInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  version: string;
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryDataVersionsCreateOrGetStartPendingUploadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10012,13 +12835,20 @@ export const RegistryDataVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataVersionsCreateOrGetStartPendingUploadInput =
-  typeof RegistryDataVersionsCreateOrGetStartPendingUploadInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataVersionsCreateOrGetStartPendingUploadInput>;
 
 // Output Schema
+export interface RegistryDataVersionsCreateOrGetStartPendingUploadOutput {
+  blobReferenceForConsumption?: {
+    blobUri?: string | null;
+    credential?: { credentialType: "SAS" };
+    storageAccountArmId?: string | null;
+  };
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryDataVersionsCreateOrGetStartPendingUploadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobReferenceForConsumption: Schema.optional(
@@ -10036,9 +12866,7 @@ export const RegistryDataVersionsCreateOrGetStartPendingUploadOutput =
     pendingUploadType: Schema.optional(
       Schema.Literals(["None", "TemporaryBlobReference"]),
     ),
-  });
-export type RegistryDataVersionsCreateOrGetStartPendingUploadOutput =
-  typeof RegistryDataVersionsCreateOrGetStartPendingUploadOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataVersionsCreateOrGetStartPendingUploadOutput>;
 
 // The operation
 /**
@@ -10057,6 +12885,18 @@ export const RegistryDataVersionsCreateOrGetStartPendingUpload =
     outputSchema: RegistryDataVersionsCreateOrGetStartPendingUploadOutput,
   }));
 // Input Schema
+export interface RegistryDataVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryDataVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10081,13 +12921,24 @@ export const RegistryDataVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataVersionsCreateOrUpdateInput =
-  typeof RegistryDataVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryDataVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryDataVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10107,9 +12958,7 @@ export const RegistryDataVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryDataVersionsCreateOrUpdateOutput =
-  typeof RegistryDataVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10128,6 +12977,13 @@ export const RegistryDataVersionsCreateOrUpdate =
     outputSchema: RegistryDataVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryDataVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  version: string;
+}
 export const RegistryDataVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10139,17 +12995,14 @@ export const RegistryDataVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataVersionsDeleteInput =
-  typeof RegistryDataVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataVersionsDeleteInput>;
 
 // Output Schema
+export type RegistryDataVersionsDeleteOutput = void;
 export const RegistryDataVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryDataVersionsDeleteOutput =
-  typeof RegistryDataVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryDataVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -10169,6 +13022,13 @@ export const RegistryDataVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryDataVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  version: string;
+}
 export const RegistryDataVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10180,13 +13040,24 @@ export const RegistryDataVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataVersionsGetInput =
-  typeof RegistryDataVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataVersionsGetInput>;
 
 // Output Schema
+export interface RegistryDataVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryDataVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10206,9 +13077,7 @@ export const RegistryDataVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryDataVersionsGetOutput =
-  typeof RegistryDataVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataVersionsGetOutput>;
 
 // The operation
 /**
@@ -10228,6 +13097,17 @@ export const RegistryDataVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryDataVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  name: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  $tags?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryDataVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10245,13 +13125,27 @@ export const RegistryDataVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryDataVersionsListInput =
-  typeof RegistryDataVersionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistryDataVersionsListInput>;
 
 // Output Schema
+export interface RegistryDataVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryDataVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10286,9 +13180,7 @@ export const RegistryDataVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryDataVersionsListOutput =
-  typeof RegistryDataVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryDataVersionsListOutput>;
 
 // The operation
 /**
@@ -10313,6 +13205,17 @@ export const RegistryDataVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryEnvironmentContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryEnvironmentContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10336,13 +13239,24 @@ export const RegistryEnvironmentContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentContainersCreateOrUpdateInput =
-  typeof RegistryEnvironmentContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryEnvironmentContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEnvironmentContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10362,9 +13276,7 @@ export const RegistryEnvironmentContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEnvironmentContainersCreateOrUpdateOutput =
-  typeof RegistryEnvironmentContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10382,6 +13294,12 @@ export const RegistryEnvironmentContainersCreateOrUpdate =
     outputSchema: RegistryEnvironmentContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+}
 export const RegistryEnvironmentContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10392,17 +13310,14 @@ export const RegistryEnvironmentContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentContainersDeleteInput =
-  typeof RegistryEnvironmentContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentContainersDeleteInput>;
 
 // Output Schema
+export type RegistryEnvironmentContainersDeleteOutput = void;
 export const RegistryEnvironmentContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryEnvironmentContainersDeleteOutput =
-  typeof RegistryEnvironmentContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryEnvironmentContainersDeleteOutput>;
 
 // The operation
 /**
@@ -10420,6 +13335,12 @@ export const RegistryEnvironmentContainersDelete =
     outputSchema: RegistryEnvironmentContainersDeleteOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+}
 export const RegistryEnvironmentContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10430,13 +13351,24 @@ export const RegistryEnvironmentContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentContainersGetInput =
-  typeof RegistryEnvironmentContainersGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentContainersGetInput>;
 
 // Output Schema
+export interface RegistryEnvironmentContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEnvironmentContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10456,9 +13388,7 @@ export const RegistryEnvironmentContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEnvironmentContainersGetOutput =
-  typeof RegistryEnvironmentContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentContainersGetOutput>;
 
 // The operation
 /**
@@ -10476,6 +13406,13 @@ export const RegistryEnvironmentContainersGet =
     outputSchema: RegistryEnvironmentContainersGetOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryEnvironmentContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10489,13 +13426,27 @@ export const RegistryEnvironmentContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentContainersListInput =
-  typeof RegistryEnvironmentContainersListInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentContainersListInput>;
 
 // Output Schema
+export interface RegistryEnvironmentContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryEnvironmentContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10530,9 +13481,7 @@ export const RegistryEnvironmentContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryEnvironmentContainersListOutput =
-  typeof RegistryEnvironmentContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentContainersListOutput>;
 
 // The operation
 /**
@@ -10551,6 +13500,18 @@ export const RegistryEnvironmentContainersList =
     outputSchema: RegistryEnvironmentContainersListOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryEnvironmentVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10575,13 +13536,24 @@ export const RegistryEnvironmentVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentVersionsCreateOrUpdateInput =
-  typeof RegistryEnvironmentVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryEnvironmentVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEnvironmentVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10601,9 +13573,7 @@ export const RegistryEnvironmentVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEnvironmentVersionsCreateOrUpdateOutput =
-  typeof RegistryEnvironmentVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10622,6 +13592,13 @@ export const RegistryEnvironmentVersionsCreateOrUpdate =
     outputSchema: RegistryEnvironmentVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+  version: string;
+}
 export const RegistryEnvironmentVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10633,17 +13610,14 @@ export const RegistryEnvironmentVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentVersionsDeleteInput =
-  typeof RegistryEnvironmentVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentVersionsDeleteInput>;
 
 // Output Schema
+export type RegistryEnvironmentVersionsDeleteOutput = void;
 export const RegistryEnvironmentVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryEnvironmentVersionsDeleteOutput =
-  typeof RegistryEnvironmentVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryEnvironmentVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -10662,6 +13636,13 @@ export const RegistryEnvironmentVersionsDelete =
     outputSchema: RegistryEnvironmentVersionsDeleteOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+  version: string;
+}
 export const RegistryEnvironmentVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10673,13 +13654,24 @@ export const RegistryEnvironmentVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentVersionsGetInput =
-  typeof RegistryEnvironmentVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentVersionsGetInput>;
 
 // Output Schema
+export interface RegistryEnvironmentVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryEnvironmentVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10699,9 +13691,7 @@ export const RegistryEnvironmentVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryEnvironmentVersionsGetOutput =
-  typeof RegistryEnvironmentVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentVersionsGetOutput>;
 
 // The operation
 /**
@@ -10720,6 +13710,16 @@ export const RegistryEnvironmentVersionsGet =
     outputSchema: RegistryEnvironmentVersionsGetOutput,
   }));
 // Input Schema
+export interface RegistryEnvironmentVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  environmentName: string;
+  $orderBy?: string;
+  $top?: number;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryEnvironmentVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10736,13 +13736,27 @@ export const RegistryEnvironmentVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryEnvironmentVersionsListInput =
-  typeof RegistryEnvironmentVersionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistryEnvironmentVersionsListInput>;
 
 // Output Schema
+export interface RegistryEnvironmentVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryEnvironmentVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10777,9 +13791,7 @@ export const RegistryEnvironmentVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryEnvironmentVersionsListOutput =
-  typeof RegistryEnvironmentVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryEnvironmentVersionsListOutput>;
 
 // The operation
 /**
@@ -10801,6 +13813,17 @@ export const RegistryEnvironmentVersionsList =
     outputSchema: RegistryEnvironmentVersionsListOutput,
   }));
 // Input Schema
+export interface RegistryModelContainersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryModelContainersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10824,13 +13847,24 @@ export const RegistryModelContainersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelContainersCreateOrUpdateInput =
-  typeof RegistryModelContainersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelContainersCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryModelContainersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryModelContainersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10850,9 +13884,7 @@ export const RegistryModelContainersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryModelContainersCreateOrUpdateOutput =
-  typeof RegistryModelContainersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelContainersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10870,6 +13902,12 @@ export const RegistryModelContainersCreateOrUpdate =
     outputSchema: RegistryModelContainersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryModelContainersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+}
 export const RegistryModelContainersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10880,17 +13918,14 @@ export const RegistryModelContainersDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelContainersDeleteInput =
-  typeof RegistryModelContainersDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelContainersDeleteInput>;
 
 // Output Schema
+export type RegistryModelContainersDeleteOutput = void;
 export const RegistryModelContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryModelContainersDeleteOutput =
-  typeof RegistryModelContainersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryModelContainersDeleteOutput>;
 
 // The operation
 /**
@@ -10908,6 +13943,12 @@ export const RegistryModelContainersDelete =
     outputSchema: RegistryModelContainersDeleteOutput,
   }));
 // Input Schema
+export interface RegistryModelContainersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+}
 export const RegistryModelContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10918,13 +13959,24 @@ export const RegistryModelContainersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelContainersGetInput =
-  typeof RegistryModelContainersGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelContainersGetInput>;
 
 // Output Schema
+export interface RegistryModelContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryModelContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10944,9 +13996,7 @@ export const RegistryModelContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryModelContainersGetOutput =
-  typeof RegistryModelContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelContainersGetOutput>;
 
 // The operation
 /**
@@ -10965,6 +14015,13 @@ export const RegistryModelContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryModelContainersListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  $skip?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryModelContainersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10978,13 +14035,27 @@ export const RegistryModelContainersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelContainersListInput =
-  typeof RegistryModelContainersListInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelContainersListInput>;
 
 // Output Schema
+export interface RegistryModelContainersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryModelContainersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11019,9 +14090,7 @@ export const RegistryModelContainersListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryModelContainersListOutput =
-  typeof RegistryModelContainersListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelContainersListOutput>;
 
 // The operation
 /**
@@ -11041,6 +14110,15 @@ export const RegistryModelContainersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryModelVersionsCreateOrGetStartPendingUploadInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  version: string;
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryModelVersionsCreateOrGetStartPendingUploadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11056,13 +14134,20 @@ export const RegistryModelVersionsCreateOrGetStartPendingUploadInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}/startPendingUpload",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelVersionsCreateOrGetStartPendingUploadInput =
-  typeof RegistryModelVersionsCreateOrGetStartPendingUploadInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelVersionsCreateOrGetStartPendingUploadInput>;
 
 // Output Schema
+export interface RegistryModelVersionsCreateOrGetStartPendingUploadOutput {
+  blobReferenceForConsumption?: {
+    blobUri?: string | null;
+    credential?: { credentialType: "SAS" };
+    storageAccountArmId?: string | null;
+  };
+  pendingUploadId?: string | null;
+  pendingUploadType?: "None" | "TemporaryBlobReference";
+}
 export const RegistryModelVersionsCreateOrGetStartPendingUploadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     blobReferenceForConsumption: Schema.optional(
@@ -11080,9 +14165,7 @@ export const RegistryModelVersionsCreateOrGetStartPendingUploadOutput =
     pendingUploadType: Schema.optional(
       Schema.Literals(["None", "TemporaryBlobReference"]),
     ),
-  });
-export type RegistryModelVersionsCreateOrGetStartPendingUploadOutput =
-  typeof RegistryModelVersionsCreateOrGetStartPendingUploadOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelVersionsCreateOrGetStartPendingUploadOutput>;
 
 // The operation
 /**
@@ -11101,6 +14184,18 @@ export const RegistryModelVersionsCreateOrGetStartPendingUpload =
     outputSchema: RegistryModelVersionsCreateOrGetStartPendingUploadOutput,
   }));
 // Input Schema
+export interface RegistryModelVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  version: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const RegistryModelVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11125,13 +14220,24 @@ export const RegistryModelVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelVersionsCreateOrUpdateInput =
-  typeof RegistryModelVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistryModelVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryModelVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11151,9 +14257,7 @@ export const RegistryModelVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryModelVersionsCreateOrUpdateOutput =
-  typeof RegistryModelVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -11172,6 +14276,13 @@ export const RegistryModelVersionsCreateOrUpdate =
     outputSchema: RegistryModelVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistryModelVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  version: string;
+}
 export const RegistryModelVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11183,17 +14294,14 @@ export const RegistryModelVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelVersionsDeleteInput =
-  typeof RegistryModelVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelVersionsDeleteInput>;
 
 // Output Schema
+export type RegistryModelVersionsDeleteOutput = void;
 export const RegistryModelVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistryModelVersionsDeleteOutput =
-  typeof RegistryModelVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistryModelVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -11213,6 +14321,13 @@ export const RegistryModelVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryModelVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  version: string;
+}
 export const RegistryModelVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11224,13 +14339,24 @@ export const RegistryModelVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelVersionsGetInput =
-  typeof RegistryModelVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelVersionsGetInput>;
 
 // Output Schema
+export interface RegistryModelVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistryModelVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11250,9 +14376,7 @@ export const RegistryModelVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistryModelVersionsGetOutput =
-  typeof RegistryModelVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelVersionsGetOutput>;
 
 // The operation
 /**
@@ -11272,6 +14396,20 @@ export const RegistryModelVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistryModelVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  registryName: string;
+  modelName: string;
+  $skip?: string;
+  $orderBy?: string;
+  $top?: number;
+  version?: string;
+  description?: string;
+  tags?: string;
+  properties?: string;
+  listViewType?: "ActiveOnly" | "ArchivedOnly" | "All";
+}
 export const RegistryModelVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11292,13 +14430,27 @@ export const RegistryModelVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type RegistryModelVersionsListInput =
-  typeof RegistryModelVersionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistryModelVersionsListInput>;
 
 // Output Schema
+export interface RegistryModelVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistryModelVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11333,9 +14485,7 @@ export const RegistryModelVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistryModelVersionsListOutput =
-  typeof RegistryModelVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistryModelVersionsListOutput>;
 
 // The operation
 /**
@@ -11362,6 +14512,17 @@ export const RegistryModelVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    properties?: Record<string, string | null> | null;
+    tags?: Record<string, string | null> | null;
+  };
+}
 export const SchedulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11385,13 +14546,24 @@ export const SchedulesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type SchedulesCreateOrUpdateInput =
-  typeof SchedulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchedulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SchedulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11411,9 +14583,7 @@ export const SchedulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchedulesCreateOrUpdateOutput =
-  typeof SchedulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchedulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -11432,6 +14602,12 @@ export const SchedulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11441,14 +14617,14 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
+) as unknown as Schema.Codec<SchedulesDeleteInput>;
 
 // Output Schema
-export const SchedulesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchedulesDeleteOutput = typeof SchedulesDeleteOutput.Type;
+export type SchedulesDeleteOutput = void;
+export const SchedulesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -11465,6 +14641,12 @@ export const SchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesDeleteOutput,
 }));
 // Input Schema
+export interface SchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11474,12 +14656,24 @@ export const SchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type SchedulesGetInput = typeof SchedulesGetInput.Type;
+) as unknown as Schema.Codec<SchedulesGetInput>;
 
 // Output Schema
+export interface SchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -11498,8 +14692,7 @@ export const SchedulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchedulesGetOutput = typeof SchedulesGetOutput.Type;
+}) as unknown as Schema.Codec<SchedulesGetOutput>;
 
 // The operation
 /**
@@ -11516,6 +14709,13 @@ export const SchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesGetOutput,
 }));
 // Input Schema
+export interface SchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+  listViewType?: "EnabledOnly" | "DisabledOnly" | "All";
+}
 export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -11528,12 +14728,27 @@ export const SchedulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type SchedulesListInput = typeof SchedulesListInput.Type;
+) as unknown as Schema.Codec<SchedulesListInput>;
 
 // Output Schema
+export interface SchedulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -11557,8 +14772,7 @@ export const SchedulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SchedulesListOutput = typeof SchedulesListOutput.Type;
+}) as unknown as Schema.Codec<SchedulesListOutput>;
 
 // The operation
 /**
@@ -11576,6 +14790,62 @@ export const SchedulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchedulesListOutput,
 }));
 // Input Schema
+export interface ServerlessEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  properties: {
+    authMode: "Key" | "AAD" | "KeyAndAAD";
+    contentSafety?: { contentSafetyStatus: "Enabled" | "Disabled" };
+    endpointState?:
+      | "Unknown"
+      | "Creating"
+      | "Deleting"
+      | "Suspending"
+      | "Reinstating"
+      | "Online"
+      | "Suspended"
+      | "CreationFailed"
+      | "DeletionFailed";
+    inferenceEndpoint?: {
+      headers?: Record<string, string | null> | null;
+      uri: string;
+    };
+    marketplaceSubscriptionId?: string | null;
+    modelSettings?: { modelId?: string | null };
+    provisioningState?:
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Updating"
+      | "Canceled";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServerlessEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11670,13 +14940,24 @@ export const ServerlessEndpointsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsCreateOrUpdateInput =
-  typeof ServerlessEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServerlessEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerlessEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11696,9 +14977,7 @@ export const ServerlessEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerlessEndpointsCreateOrUpdateOutput =
-  typeof ServerlessEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -11716,6 +14995,12 @@ export const ServerlessEndpointsCreateOrUpdate =
     outputSchema: ServerlessEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ServerlessEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ServerlessEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11726,17 +15011,14 @@ export const ServerlessEndpointsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsDeleteInput =
-  typeof ServerlessEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsDeleteInput>;
 
 // Output Schema
+export type ServerlessEndpointsDeleteOutput = void;
 export const ServerlessEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServerlessEndpointsDeleteOutput =
-  typeof ServerlessEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerlessEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -11755,6 +15037,12 @@ export const ServerlessEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerlessEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ServerlessEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11765,13 +15053,24 @@ export const ServerlessEndpointsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsGetInput =
-  typeof ServerlessEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsGetInput>;
 
 // Output Schema
+export interface ServerlessEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerlessEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11791,9 +15090,7 @@ export const ServerlessEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerlessEndpointsGetOutput =
-  typeof ServerlessEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsGetOutput>;
 
 // The operation
 /**
@@ -11812,6 +15109,12 @@ export const ServerlessEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerlessEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  $skip?: string;
+}
 export const ServerlessEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11822,13 +15125,27 @@ export const ServerlessEndpointsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsListInput =
-  typeof ServerlessEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsListInput>;
 
 // Output Schema
+export interface ServerlessEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerlessEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11863,9 +15180,7 @@ export const ServerlessEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerlessEndpointsListOutput =
-  typeof ServerlessEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsListOutput>;
 
 // The operation
 /**
@@ -11884,6 +15199,12 @@ export const ServerlessEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerlessEndpointsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+}
 export const ServerlessEndpointsListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11894,20 +15215,20 @@ export const ServerlessEndpointsListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsListKeysInput =
-  typeof ServerlessEndpointsListKeysInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsListKeysInput>;
 
 // Output Schema
+export interface ServerlessEndpointsListKeysOutput {
+  primaryKey?: string | null;
+  secondaryKey?: string | null;
+}
 export const ServerlessEndpointsListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.NullOr(Schema.String)),
     secondaryKey: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ServerlessEndpointsListKeysOutput =
-  typeof ServerlessEndpointsListKeysOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsListKeysOutput>;
 
 // The operation
 /**
@@ -11926,6 +15247,14 @@ export const ServerlessEndpointsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerlessEndpointsRegenerateKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  keyType: "Primary" | "Secondary";
+  keyValue?: string | null;
+}
 export const ServerlessEndpointsRegenerateKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11938,20 +15267,20 @@ export const ServerlessEndpointsRegenerateKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/regenerateKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsRegenerateKeysInput =
-  typeof ServerlessEndpointsRegenerateKeysInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsRegenerateKeysInput>;
 
 // Output Schema
+export interface ServerlessEndpointsRegenerateKeysOutput {
+  primaryKey?: string | null;
+  secondaryKey?: string | null;
+}
 export const ServerlessEndpointsRegenerateKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.NullOr(Schema.String)),
     secondaryKey: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ServerlessEndpointsRegenerateKeysOutput =
-  typeof ServerlessEndpointsRegenerateKeysOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsRegenerateKeysOutput>;
 
 // The operation
 /**
@@ -11969,6 +15298,28 @@ export const ServerlessEndpointsRegenerateKeys =
     outputSchema: ServerlessEndpointsRegenerateKeysOutput,
   }));
 // Input Schema
+export interface ServerlessEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  name: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<string, unknown>;
+  };
+  sku?: {
+    capacity?: number;
+    family?: string;
+    name?: string;
+    size?: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+  };
+  tags?: Record<string, string | null>;
+}
 export const ServerlessEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12008,13 +15359,24 @@ export const ServerlessEndpointsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type ServerlessEndpointsUpdateInput =
-  typeof ServerlessEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServerlessEndpointsUpdateInput>;
 
 // Output Schema
+export interface ServerlessEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerlessEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12034,9 +15396,7 @@ export const ServerlessEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerlessEndpointsUpdateOutput =
-  typeof ServerlessEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServerlessEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -12055,18 +15415,34 @@ export const ServerlessEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UsagesListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/usages",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value: {
+    id?: string;
+    amlWorkspaceLocation?: string;
+    type?: string;
+    unit?: "Count";
+    currentValue?: number;
+    limit?: number;
+    name?: { value?: string; localizedValue?: string };
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -12085,8 +15461,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**
@@ -12094,26 +15469,53 @@ export type UsagesListOutput = typeof UsagesListOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));
 // Input Schema
+export interface VirtualMachineSizesListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const VirtualMachineSizesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/locations/{location}/vmSizes",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type VirtualMachineSizesListInput =
-  typeof VirtualMachineSizesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineSizesListInput>;
 
 // Output Schema
+export interface VirtualMachineSizesListOutput {
+  value?: {
+    name?: string;
+    family?: string;
+    vCPUs?: number;
+    gpus?: number;
+    osVhdSizeMB?: number;
+    maxResourceVolumeMB?: number;
+    memoryGB?: number;
+    lowPriorityCapable?: boolean;
+    premiumIO?: boolean;
+    estimatedVMPrices?: {
+      billingCurrency: "USD";
+      unitOfMeasure: "OneHour";
+      values: {
+        retailPrice: number;
+        osType: "Linux" | "Windows";
+        vmTier: "Standard" | "LowPriority" | "Spot";
+      }[];
+    };
+    supportedComputeTypes?: string[];
+  }[];
+}
 export const VirtualMachineSizesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12145,9 +15547,7 @@ export const VirtualMachineSizesListOutput =
         }),
       ),
     ),
-  });
-export type VirtualMachineSizesListOutput =
-  typeof VirtualMachineSizesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineSizesListOutput>;
 
 // The operation
 /**
@@ -12155,6 +15555,7 @@ export type VirtualMachineSizesListOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param location - The location name.
  */
 export const VirtualMachineSizesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -12163,6 +15564,173 @@ export const VirtualMachineSizesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  connectionName: string;
+  properties: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const WorkspaceConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12345,13 +15913,24 @@ export const WorkspaceConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsCreateInput =
-  typeof WorkspaceConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsCreateInput>;
 
 // Output Schema
+export interface WorkspaceConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspaceConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12371,9 +15950,7 @@ export const WorkspaceConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspaceConnectionsCreateOutput =
-  typeof WorkspaceConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -12392,6 +15969,12 @@ export const WorkspaceConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  connectionName: string;
+}
 export const WorkspaceConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12402,17 +15985,14 @@ export const WorkspaceConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsDeleteInput =
-  typeof WorkspaceConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsDeleteInput>;
 
 // Output Schema
+export type WorkspaceConnectionsDeleteOutput = void;
 export const WorkspaceConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspaceConnectionsDeleteOutput =
-  typeof WorkspaceConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspaceConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -12431,6 +16011,12 @@ export const WorkspaceConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  connectionName: string;
+}
 export const WorkspaceConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12441,13 +16027,24 @@ export const WorkspaceConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsGetInput =
-  typeof WorkspaceConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsGetInput>;
 
 // Output Schema
+export interface WorkspaceConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspaceConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12467,9 +16064,7 @@ export const WorkspaceConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspaceConnectionsGetOutput =
-  typeof WorkspaceConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceConnectionsGetOutput>;
 
 // The operation
 /**
@@ -12488,6 +16083,14 @@ export const WorkspaceConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  target?: string;
+  category?: string;
+  includeAll?: boolean;
+}
 export const WorkspaceConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12500,13 +16103,27 @@ export const WorkspaceConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsListInput =
-  typeof WorkspaceConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsListInput>;
 
 // Output Schema
+export interface WorkspaceConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspaceConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -12541,9 +16158,7 @@ export const WorkspaceConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspaceConnectionsListOutput =
-  typeof WorkspaceConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceConnectionsListOutput>;
 
 // The operation
 /**
@@ -12566,6 +16181,12 @@ export const WorkspaceConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceConnectionsListSecretsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  connectionName: string;
+}
 export const WorkspaceConnectionsListSecretsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12576,13 +16197,24 @@ export const WorkspaceConnectionsListSecretsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}/listsecrets",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsListSecretsInput =
-  typeof WorkspaceConnectionsListSecretsInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsListSecretsInput>;
 
 // Output Schema
+export interface WorkspaceConnectionsListSecretsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspaceConnectionsListSecretsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12602,9 +16234,7 @@ export const WorkspaceConnectionsListSecretsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspaceConnectionsListSecretsOutput =
-  typeof WorkspaceConnectionsListSecretsOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceConnectionsListSecretsOutput>;
 
 // The operation
 /**
@@ -12622,6 +16252,173 @@ export const WorkspaceConnectionsListSecrets =
     outputSchema: WorkspaceConnectionsListSecretsOutput,
   }));
 // Input Schema
+export interface WorkspaceConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  connectionName: string;
+  properties?: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const WorkspaceConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12806,13 +16603,24 @@ export const WorkspaceConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/connections/{connectionName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceConnectionsUpdateInput =
-  typeof WorkspaceConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceConnectionsUpdateInput>;
 
 // Output Schema
+export interface WorkspaceConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspaceConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12832,9 +16640,7 @@ export const WorkspaceConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspaceConnectionsUpdateOutput =
-  typeof WorkspaceConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -12853,6 +16659,11 @@ export const WorkspaceConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspaceFeaturesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspaceFeaturesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12862,12 +16673,15 @@ export const WorkspaceFeaturesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/features",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspaceFeaturesListInput = typeof WorkspaceFeaturesListInput.Type;
+  ) as unknown as Schema.Codec<WorkspaceFeaturesListInput>;
 
 // Output Schema
+export interface WorkspaceFeaturesListOutput {
+  value: { id?: string; displayName?: string; description?: string }[];
+  nextLink?: string;
+}
 export const WorkspaceFeaturesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -12878,9 +16692,7 @@ export const WorkspaceFeaturesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspaceFeaturesListOutput =
-  typeof WorkspaceFeaturesListOutput.Type;
+  }) as unknown as Schema.Codec<WorkspaceFeaturesListOutput>;
 
 // The operation
 /**
@@ -12898,6 +16710,157 @@ export const WorkspaceFeaturesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties: {
+    allowPublicAccessWhenBehindVnet?: boolean;
+    applicationInsights?: string;
+    associatedWorkspaces?: string[];
+    containerRegistry?: string;
+    description?: string;
+    discoveryUrl?: string;
+    enableDataIsolation?: boolean;
+    enableServiceSideCMKEncryption?: boolean;
+    encryption?: {
+      cosmosDbResourceId?: string;
+      identity?: { userAssignedIdentity?: string };
+      keyVaultProperties: {
+        identityClientId?: string;
+        keyIdentifier: string;
+        keyVaultArmId: string;
+      };
+      searchAccountResourceId?: string;
+      status: "Enabled" | "Disabled";
+      storageAccountResourceId?: string;
+    };
+    featureStoreSettings?: {
+      computeRuntime?: { sparkRuntimeVersion?: string };
+      offlineStoreConnectionName?: string;
+      onlineStoreConnectionName?: string;
+    };
+    friendlyName?: string;
+    hbiWorkspace?: boolean;
+    hubResourceId?: string;
+    imageBuildCompute?: string;
+    keyVault?: string;
+    managedNetwork?: {
+      enableNetworkMonitor?: boolean;
+      isolationMode?:
+        | "Disabled"
+        | "AllowInternetOutbound"
+        | "AllowOnlyApprovedOutbound";
+      networkId?: string;
+      outboundRules?: Record<
+        string,
+        {
+          category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+          status?:
+            | "Inactive"
+            | "Active"
+            | "Provisioning"
+            | "Deleting"
+            | "Failed";
+          type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+          errorInformation?: string;
+          parentRuleNames?: string[];
+        }
+      > | null;
+      status?: { sparkReady?: boolean; status?: "Inactive" | "Active" };
+      firewallSku?: "Standard" | "Basic";
+      managedNetworkKind?: "V1" | "V2";
+      firewallPublicIpAddress?: string | null;
+    };
+    mlFlowTrackingUri?: string;
+    notebookInfo?: {
+      fqdn?: string;
+      isPrivateLinkEnabled?: boolean;
+      notebookPreparationError?: { errorMessage?: string; statusCode?: number };
+      resourceId?: string;
+    };
+    primaryUserAssignedIdentity?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    privateLinkCount?: number;
+    provisionNetworkNow?: boolean;
+    provisioningState?:
+      | "Unknown"
+      | "Updating"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    serverlessComputeSettings?: {
+      serverlessComputeCustomSubnet?: string;
+      serverlessComputeNoPublicIP?: boolean;
+    };
+    serviceManagedResourcesSettings?: {
+      cosmosDb?: { collectionsThroughput?: number };
+    };
+    serviceProvisionedResourceGroup?: string;
+    sharedPrivateLinkResources?: {
+      name?: string;
+      properties?: {
+        groupId?: string;
+        privateLinkResourceId?: string;
+        requestMessage?: string;
+        status?:
+          | "Approved"
+          | "Pending"
+          | "Rejected"
+          | "Disconnected"
+          | "Timeout";
+      };
+    }[];
+    storageAccount?: string;
+    storageHnsEnabled?: boolean;
+    systemDatastoresAuthMode?: "AccessKey" | "Identity" | "UserDelegationSAS";
+    tenantId?: string;
+    v1LegacyMode?: boolean;
+    workspaceHubConfig?: {
+      additionalWorkspaceStorageAccounts?: string[];
+      defaultWorkspaceResourceGroup?: string;
+    };
+    workspaceId?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: string;
+  location?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13164,13 +17127,24 @@ export const WorkspacesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13190,9 +17164,7 @@ export const WorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -13210,6 +17182,12 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  forceToPurge?: boolean;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -13219,14 +17197,14 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -13243,6 +17221,23 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesDiagnoseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  value?: {
+    applicationInsights?: Record<string, unknown>;
+    containerRegistry?: Record<string, unknown>;
+    dnsResolution?: Record<string, unknown>;
+    keyVault?: Record<string, unknown>;
+    nsg?: Record<string, unknown>;
+    others?: Record<string, unknown>;
+    requiredResourceProviders?: Record<string, unknown>;
+    resourceLock?: Record<string, unknown>;
+    storageAccount?: Record<string, unknown>;
+    udr?: Record<string, unknown>;
+  };
+}
 export const WorkspacesDiagnoseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13278,12 +17273,60 @@ export const WorkspacesDiagnoseInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/diagnose",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesDiagnoseInput = typeof WorkspacesDiagnoseInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesDiagnoseInput>;
 
 // Output Schema
+export interface WorkspacesDiagnoseOutput {
+  value?: {
+    userDefinedRouteResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    networkSecurityRuleResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    resourceLockResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    dnsResolutionResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    storageAccountResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    keyVaultResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    containerRegistryResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    applicationInsightsResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+    otherResults?: {
+      code?: string;
+      level?: "Warning" | "Error" | "Information";
+      message?: string;
+    }[];
+  };
+}
 export const WorkspacesDiagnoseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -13389,8 +17432,7 @@ export const WorkspacesDiagnoseOutput =
         ),
       }),
     ),
-  });
-export type WorkspacesDiagnoseOutput = typeof WorkspacesDiagnoseOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesDiagnoseOutput>;
 
 // The operation
 /**
@@ -13406,6 +17448,11 @@ export const WorkspacesDiagnose = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDiagnoseOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -13414,12 +17461,24 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -13438,8 +17497,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -13455,6 +17513,13 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  kind?: string;
+  $skip?: string;
+  aiCapabilities?: string;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13466,13 +17531,27 @@ export const WorkspacesListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -13507,9 +17586,7 @@ export const WorkspacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -13527,6 +17604,12 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+  kind?: string;
+  $skip?: string;
+  aiCapabilities?: string;
+}
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13537,13 +17620,27 @@ export const WorkspacesListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/workspaces",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListBySubscriptionInput =
-  typeof WorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkspacesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -13578,9 +17675,7 @@ export const WorkspacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListBySubscriptionOutput =
-  typeof WorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -13597,6 +17692,11 @@ export const WorkspacesListBySubscription =
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface WorkspacesListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13606,12 +17706,25 @@ export const WorkspacesListKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListKeysInput = typeof WorkspacesListKeysInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListKeysInput>;
 
 // Output Schema
+export interface WorkspacesListKeysOutput {
+  appInsightsInstrumentationKey?: string;
+  containerRegistryCredentials?: {
+    location?: string;
+    passwords?: { name?: string; value?: string }[];
+    username?: string;
+  };
+  notebookAccessKeys?: {
+    primaryAccessKey?: string;
+    secondaryAccessKey?: string;
+  };
+  userStorageArmId?: string;
+  userStorageKey?: string;
+}
 export const WorkspacesListKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appInsightsInstrumentationKey: Schema.optional(Schema.String),
@@ -13637,8 +17750,7 @@ export const WorkspacesListKeysOutput =
     ),
     userStorageArmId: Schema.optional(Schema.String),
     userStorageKey: Schema.optional(Schema.String),
-  });
-export type WorkspacesListKeysOutput = typeof WorkspacesListKeysOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListKeysOutput>;
 
 // The operation
 /**
@@ -13654,6 +17766,11 @@ export const WorkspacesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesListKeysOutput,
 }));
 // Input Schema
+export interface WorkspacesListNotebookAccessTokenInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListNotebookAccessTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13663,13 +17780,21 @@ export const WorkspacesListNotebookAccessTokenInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookAccessToken",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListNotebookAccessTokenInput =
-  typeof WorkspacesListNotebookAccessTokenInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListNotebookAccessTokenInput>;
 
 // Output Schema
+export interface WorkspacesListNotebookAccessTokenOutput {
+  accessToken?: Redacted.Redacted<string>;
+  expiresIn?: number;
+  hostName?: string;
+  notebookResourceId?: string;
+  publicDns?: string;
+  refreshToken?: Redacted.Redacted<string>;
+  scope?: string;
+  tokenType?: string;
+}
 export const WorkspacesListNotebookAccessTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(SensitiveOutputString),
@@ -13680,9 +17805,7 @@ export const WorkspacesListNotebookAccessTokenOutput =
     refreshToken: Schema.optional(SensitiveOutputString),
     scope: Schema.optional(Schema.String),
     tokenType: Schema.optional(Schema.String),
-  });
-export type WorkspacesListNotebookAccessTokenOutput =
-  typeof WorkspacesListNotebookAccessTokenOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListNotebookAccessTokenOutput>;
 
 // The operation
 /**
@@ -13699,6 +17822,11 @@ export const WorkspacesListNotebookAccessToken =
     outputSchema: WorkspacesListNotebookAccessTokenOutput,
   }));
 // Input Schema
+export interface WorkspacesListNotebookKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListNotebookKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13708,20 +17836,20 @@ export const WorkspacesListNotebookKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listNotebookKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListNotebookKeysInput =
-  typeof WorkspacesListNotebookKeysInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListNotebookKeysInput>;
 
 // Output Schema
+export interface WorkspacesListNotebookKeysOutput {
+  primaryAccessKey?: string;
+  secondaryAccessKey?: string;
+}
 export const WorkspacesListNotebookKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryAccessKey: Schema.optional(Schema.String),
     secondaryAccessKey: Schema.optional(Schema.String),
-  });
-export type WorkspacesListNotebookKeysOutput =
-  typeof WorkspacesListNotebookKeysOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListNotebookKeysOutput>;
 
 // The operation
 /**
@@ -13739,6 +17867,11 @@ export const WorkspacesListNotebookKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13748,13 +17881,22 @@ export const WorkspacesListOutboundNetworkDependenciesEndpointsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListOutboundNetworkDependenciesEndpointsInput =
-  typeof WorkspacesListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface WorkspacesListOutboundNetworkDependenciesEndpointsOutput {
+  value?: {
+    properties?: {
+      category?: string;
+      endpoints?: {
+        domainName?: string;
+        endpointDetails?: { port?: number }[];
+      }[];
+    };
+  }[];
+}
 export const WorkspacesListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -13782,9 +17924,7 @@ export const WorkspacesListOutboundNetworkDependenciesEndpointsOutput =
         }),
       ),
     ),
-  });
-export type WorkspacesListOutboundNetworkDependenciesEndpointsOutput =
-  typeof WorkspacesListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -13801,6 +17941,11 @@ export const WorkspacesListOutboundNetworkDependenciesEndpoints =
     outputSchema: WorkspacesListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface WorkspacesListStorageAccountKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesListStorageAccountKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13810,19 +17955,18 @@ export const WorkspacesListStorageAccountKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/listStorageAccountKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesListStorageAccountKeysInput =
-  typeof WorkspacesListStorageAccountKeysInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListStorageAccountKeysInput>;
 
 // Output Schema
+export interface WorkspacesListStorageAccountKeysOutput {
+  userStorageKey?: string;
+}
 export const WorkspacesListStorageAccountKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userStorageKey: Schema.optional(Schema.String),
-  });
-export type WorkspacesListStorageAccountKeysOutput =
-  typeof WorkspacesListStorageAccountKeysOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListStorageAccountKeysOutput>;
 
 // The operation
 /**
@@ -13839,6 +17983,11 @@ export const WorkspacesListStorageAccountKeys =
     outputSchema: WorkspacesListStorageAccountKeysOutput,
   }));
 // Input Schema
+export interface WorkspacesPrepareNotebookInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesPrepareNotebookInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13848,13 +17997,17 @@ export const WorkspacesPrepareNotebookInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/prepareNotebook",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesPrepareNotebookInput =
-  typeof WorkspacesPrepareNotebookInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesPrepareNotebookInput>;
 
 // Output Schema
+export interface WorkspacesPrepareNotebookOutput {
+  fqdn?: string;
+  isPrivateLinkEnabled?: boolean;
+  notebookPreparationError?: { errorMessage?: string; statusCode?: number };
+  resourceId?: string;
+}
 export const WorkspacesPrepareNotebookOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     fqdn: Schema.optional(Schema.String),
@@ -13866,9 +18019,7 @@ export const WorkspacesPrepareNotebookOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type WorkspacesPrepareNotebookOutput =
-  typeof WorkspacesPrepareNotebookOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesPrepareNotebookOutput>;
 
 // The operation
 /**
@@ -13886,6 +18037,11 @@ export const WorkspacesPrepareNotebook = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesResyncKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesResyncKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13895,15 +18051,14 @@ export const WorkspacesResyncKeysInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/resyncKeys",
-      apiVersion: "2025-12-01",
+      apiVersion: "2026-03-01",
     }),
-  );
-export type WorkspacesResyncKeysInput = typeof WorkspacesResyncKeysInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesResyncKeysInput>;
 
 // Output Schema
+export type WorkspacesResyncKeysOutput = void;
 export const WorkspacesResyncKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesResyncKeysOutput = typeof WorkspacesResyncKeysOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesResyncKeysOutput>;
 
 // The operation
 /**
@@ -13921,6 +18076,84 @@ export const WorkspacesResyncKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  properties?: {
+    applicationInsights?: string;
+    containerRegistry?: string;
+    description?: string;
+    enableDataIsolation?: boolean;
+    encryption?: { keyVaultProperties: { keyIdentifier: string } };
+    featureStoreSettings?: {
+      computeRuntime?: { sparkRuntimeVersion?: string };
+      offlineStoreConnectionName?: string;
+      onlineStoreConnectionName?: string;
+    };
+    friendlyName?: string;
+    imageBuildCompute?: string;
+    managedNetwork?: {
+      enableNetworkMonitor?: boolean;
+      isolationMode?:
+        | "Disabled"
+        | "AllowInternetOutbound"
+        | "AllowOnlyApprovedOutbound";
+      networkId?: string;
+      outboundRules?: Record<
+        string,
+        {
+          category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+          status?:
+            | "Inactive"
+            | "Active"
+            | "Provisioning"
+            | "Deleting"
+            | "Failed";
+          type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+          errorInformation?: string;
+          parentRuleNames?: string[];
+        }
+      > | null;
+      status?: { sparkReady?: boolean; status?: "Inactive" | "Active" };
+      firewallSku?: "Standard" | "Basic";
+      managedNetworkKind?: "V1" | "V2";
+      firewallPublicIpAddress?: string | null;
+    };
+    primaryUserAssignedIdentity?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    serverlessComputeSettings?: {
+      serverlessComputeCustomSubnet?: string;
+      serverlessComputeNoPublicIP?: boolean;
+    };
+    serviceManagedResourcesSettings?: {
+      cosmosDb?: { collectionsThroughput?: number };
+    };
+    systemDatastoresAuthMode?: "AccessKey" | "Identity" | "UserDelegationSAS";
+    v1LegacyMode?: boolean;
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -14072,12 +18305,24 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
-    apiVersion: "2025-12-01",
+    apiVersion: "2026-03-01",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -14098,8 +18343,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**

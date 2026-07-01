@@ -4,6 +4,39 @@ import * as T from "../../traits.ts";
 import { UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface CreateMonitorInput {
+  alertOnNoData?: boolean;
+  aplQuery?: string;
+  columnName?: string;
+  compareDays?: number;
+  createdAt?: string;
+  createdBy?: string;
+  description?: string;
+  disabled?: boolean;
+  disabledUntil?: string | null;
+  intervalMinutes?: number;
+  mplQuery?: string;
+  name: string;
+  notifierIds?: ReadonlyArray<string>;
+  notifyByGroup?: boolean;
+  notifyEveryRun?: boolean;
+  operator?:
+    | "Below"
+    | "BelowOrEqual"
+    | "Above"
+    | "AboveOrEqual"
+    | "AboveOrBelow";
+  rangeMinutes?: number;
+  resolvable?: boolean;
+  secondDelay?: number;
+  skipResolved?: boolean;
+  threshold?: number;
+  tolerance?: number;
+  triggerAfterNPositiveResults?: number;
+  triggerFromNRuns?: number;
+  type: "Threshold" | "MatchEvent" | "AnomalyDetection";
+  updatedAt?: string;
+}
 export const CreateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
@@ -38,10 +71,46 @@ export const CreateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
-}).pipe(T.Http({ method: "POST", path: "/v2/monitors" }));
-export type CreateMonitorInput = typeof CreateMonitorInput.Type;
+  updatedAt: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/monitors" }),
+) as unknown as Schema.Codec<CreateMonitorInput>;
 
 // Output Schema
+export interface CreateMonitorOutput {
+  alertOnNoData?: boolean;
+  aplQuery?: string;
+  columnName?: string;
+  compareDays?: number;
+  createdAt?: string;
+  createdBy?: string;
+  description?: string;
+  disabled?: boolean;
+  disabledUntil?: string | null;
+  intervalMinutes?: number;
+  mplQuery?: string;
+  name: string;
+  notifierIds?: ReadonlyArray<string>;
+  notifyByGroup?: boolean;
+  notifyEveryRun?: boolean;
+  operator?:
+    | "Below"
+    | "BelowOrEqual"
+    | "Above"
+    | "AboveOrEqual"
+    | "AboveOrBelow";
+  rangeMinutes?: number;
+  resolvable?: boolean;
+  secondDelay?: number;
+  skipResolved?: boolean;
+  threshold?: number;
+  tolerance?: number;
+  triggerAfterNPositiveResults?: number;
+  triggerFromNRuns?: number;
+  type: "Threshold" | "MatchEvent" | "AnomalyDetection";
+  updatedAt?: string;
+  id: string;
+}
 export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   alertOnNoData: Schema.optional(Schema.Boolean),
   aplQuery: Schema.optional(Schema.String),
@@ -76,9 +145,9 @@ export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   triggerAfterNPositiveResults: Schema.optional(Schema.Number),
   triggerFromNRuns: Schema.optional(Schema.Number),
   type: Schema.Literals(["Threshold", "MatchEvent", "AnomalyDetection"]),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.String,
-});
-export type CreateMonitorOutput = typeof CreateMonitorOutput.Type;
+}) as unknown as Schema.Codec<CreateMonitorOutput>;
 
 // The operation
 /**

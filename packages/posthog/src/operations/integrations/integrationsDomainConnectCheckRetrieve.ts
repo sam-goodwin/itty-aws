@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsDomainConnectCheckRetrieveInput {
+  project_id: string;
+}
 export const IntegrationsDomainConnectCheckRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const IntegrationsDomainConnectCheckRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/domain-connect/check/",
     }),
-  );
-export type IntegrationsDomainConnectCheckRetrieveInput =
-  typeof IntegrationsDomainConnectCheckRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsDomainConnectCheckRetrieveInput>;
 
 // Output Schema
+export type IntegrationsDomainConnectCheckRetrieveOutput = void;
 export const IntegrationsDomainConnectCheckRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsDomainConnectCheckRetrieveOutput =
-  typeof IntegrationsDomainConnectCheckRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsDomainConnectCheckRetrieveOutput>;
 
 // The operation
 /**

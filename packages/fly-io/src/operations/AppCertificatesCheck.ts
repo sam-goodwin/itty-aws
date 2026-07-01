@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppCertificatesCheckInput {
+  app_name: string;
+  hostname: string;
+}
 export const AppCertificatesCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -13,10 +17,57 @@ export const AppCertificatesCheckInput =
       method: "POST",
       path: "/apps/{app_name}/certificates/{hostname}/check",
     }),
-  );
-export type AppCertificatesCheckInput = typeof AppCertificatesCheckInput.Type;
+  ) as unknown as Schema.Codec<AppCertificatesCheckInput>;
 
 // Output Schema
+export interface AppCertificatesCheckOutput {
+  acme_requested?: boolean;
+  certificates?: {
+    created_at?: string;
+    expires_at?: string;
+    issued?: {
+      certificate_authority?: string;
+      expires_at?: string;
+      type?: "rsa" | "ecdsa";
+    }[];
+    issuer?: string;
+    source?: "custom" | "fly";
+    status?: "active" | "pending_ownership" | "pending_validation";
+  }[];
+  configured?: boolean;
+  dns_provider?: string;
+  dns_records?: {
+    a?: string[];
+    aaaa?: string[];
+    acme_challenge_cname?: string;
+    cname?: string[];
+    ownership_txt?: string;
+    resolved_addresses?: string[];
+    soa?: string;
+  };
+  dns_requirements?: {
+    a?: string[];
+    aaaa?: string[];
+    acme_challenge?: { name?: string; target?: string };
+    cname?: string;
+    ownership?: { app_value?: string; name?: string; org_value?: string };
+  };
+  hostname?: string;
+  rate_limited_until?: string;
+  status?: string;
+  validation?: {
+    alpn_configured?: boolean;
+    dns_configured?: boolean;
+    http_configured?: boolean;
+    ownership_txt_configured?: boolean;
+  };
+  validation_errors?: {
+    code?: string;
+    message?: string;
+    remediation?: string;
+    timestamp?: string;
+  }[];
+}
 export const AppCertificatesCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
@@ -100,8 +151,7 @@ export const AppCertificatesCheckOutput =
         }),
       ),
     ),
-  });
-export type AppCertificatesCheckOutput = typeof AppCertificatesCheckOutput.Type;
+  }) as unknown as Schema.Codec<AppCertificatesCheckOutput>;
 
 // The operation
 /**

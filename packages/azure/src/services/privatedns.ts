@@ -4,11 +4,35 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PrivateZonesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  properties?: {
+    maxNumberOfRecordSets?: number;
+    numberOfRecordSets?: number;
+    maxNumberOfVirtualNetworkLinks?: number;
+    numberOfVirtualNetworkLinks?: number;
+    maxNumberOfVirtualNetworkLinksWithRegistration?: number;
+    numberOfVirtualNetworkLinksWithRegistration?: number;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    internalId?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+}
 export const PrivateZonesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -48,11 +72,22 @@ export const PrivateZonesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type PrivateZonesCreateOrUpdateInput =
-  typeof PrivateZonesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateZonesCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateZonesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateZonesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -72,9 +107,7 @@ export const PrivateZonesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateZonesCreateOrUpdateOutput =
-  typeof PrivateZonesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateZonesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -94,6 +127,11 @@ export const PrivateZonesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateZonesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+}
 export const PrivateZonesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -105,12 +143,12 @@ export const PrivateZonesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type PrivateZonesDeleteInput = typeof PrivateZonesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateZonesDeleteInput>;
 
 // Output Schema
-export const PrivateZonesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateZonesDeleteOutput = typeof PrivateZonesDeleteOutput.Type;
+export type PrivateZonesDeleteOutput = void;
+export const PrivateZonesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateZonesDeleteOutput>;
 
 // The operation
 /**
@@ -127,6 +165,11 @@ export const PrivateZonesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateZonesDeleteOutput,
 }));
 // Input Schema
+export interface PrivateZonesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+}
 export const PrivateZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -137,10 +180,22 @@ export const PrivateZonesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
     apiVersion: "2024-06-01",
   }),
-);
-export type PrivateZonesGetInput = typeof PrivateZonesGetInput.Type;
+) as unknown as Schema.Codec<PrivateZonesGetInput>;
 
 // Output Schema
+export interface PrivateZonesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -159,8 +214,7 @@ export const PrivateZonesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PrivateZonesGetOutput = typeof PrivateZonesGetOutput.Type;
+}) as unknown as Schema.Codec<PrivateZonesGetOutput>;
 
 // The operation
 /**
@@ -176,6 +230,10 @@ export const PrivateZonesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateZonesGetOutput,
 }));
 // Input Schema
+export interface PrivateZonesListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const PrivateZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -185,10 +243,25 @@ export const PrivateZonesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateDnsZones",
     apiVersion: "2024-06-01",
   }),
-);
-export type PrivateZonesListInput = typeof PrivateZonesListInput.Type;
+) as unknown as Schema.Codec<PrivateZonesListInput>;
 
 // Output Schema
+export interface PrivateZonesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -224,8 +297,7 @@ export const PrivateZonesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type PrivateZonesListOutput = typeof PrivateZonesListOutput.Type;
+) as unknown as Schema.Codec<PrivateZonesListOutput>;
 
 // The operation
 /**
@@ -240,6 +312,11 @@ export const PrivateZonesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateZonesListOutput,
 }));
 // Input Schema
+export interface PrivateZonesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const PrivateZonesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -251,11 +328,25 @@ export const PrivateZonesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones",
       apiVersion: "2024-06-01",
     }),
-  );
-export type PrivateZonesListByResourceGroupInput =
-  typeof PrivateZonesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateZonesListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateZonesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateZonesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -290,9 +381,7 @@ export const PrivateZonesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateZonesListByResourceGroupOutput =
-  typeof PrivateZonesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateZonesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -309,6 +398,30 @@ export const PrivateZonesListByResourceGroup =
     outputSchema: PrivateZonesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateZonesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  properties?: {
+    maxNumberOfRecordSets?: number;
+    numberOfRecordSets?: number;
+    maxNumberOfVirtualNetworkLinks?: number;
+    numberOfVirtualNetworkLinks?: number;
+    maxNumberOfVirtualNetworkLinksWithRegistration?: number;
+    numberOfVirtualNetworkLinksWithRegistration?: number;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    internalId?: string;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+}
 export const PrivateZonesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -348,10 +461,22 @@ export const PrivateZonesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type PrivateZonesUpdateInput = typeof PrivateZonesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateZonesUpdateInput>;
 
 // Output Schema
+export interface PrivateZonesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateZonesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -371,8 +496,7 @@ export const PrivateZonesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateZonesUpdateOutput = typeof PrivateZonesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateZonesUpdateOutput>;
 
 // The operation
 /**
@@ -389,6 +513,41 @@ export const PrivateZonesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PrivateZonesUpdateOutput,
 }));
 // Input Schema
+export interface RecordSetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
+  relativeRecordSetName: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    ttl?: number;
+    fqdn?: string;
+    isAutoRegistered?: boolean;
+    aRecords?: { ipv4Address?: string }[];
+    aaaaRecords?: { ipv6Address?: string }[];
+    cnameRecord?: { cname?: string };
+    mxRecords?: { preference?: number; exchange?: string }[];
+    ptrRecords?: { ptrdname?: string }[];
+    soaRecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTtl?: number;
+    };
+    srvRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    txtRecords?: { value?: string[] }[];
+  };
+  etag?: string;
+}
 export const RecordSetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -482,11 +641,22 @@ export const RecordSetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type RecordSetsCreateOrUpdateInput =
-  typeof RecordSetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RecordSetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RecordSetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -506,9 +676,7 @@ export const RecordSetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RecordSetsCreateOrUpdateOutput =
-  typeof RecordSetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -530,6 +698,13 @@ export const RecordSetsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
+  relativeRecordSetName: string;
+}
 export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -551,12 +726,12 @@ export const RecordSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2024-06-01",
   }),
-);
-export type RecordSetsDeleteInput = typeof RecordSetsDeleteInput.Type;
+) as unknown as Schema.Codec<RecordSetsDeleteInput>;
 
 // Output Schema
-export const RecordSetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RecordSetsDeleteOutput = typeof RecordSetsDeleteOutput.Type;
+export type RecordSetsDeleteOutput = void;
+export const RecordSetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecordSetsDeleteOutput>;
 
 // The operation
 /**
@@ -575,6 +750,13 @@ export const RecordSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsDeleteOutput,
 }));
 // Input Schema
+export interface RecordSetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
+  relativeRecordSetName: string;
+}
 export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -596,10 +778,22 @@ export const RecordSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2024-06-01",
   }),
-);
-export type RecordSetsGetInput = typeof RecordSetsGetInput.Type;
+) as unknown as Schema.Codec<RecordSetsGetInput>;
 
 // Output Schema
+export interface RecordSetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -618,8 +812,7 @@ export const RecordSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RecordSetsGetOutput = typeof RecordSetsGetOutput.Type;
+}) as unknown as Schema.Codec<RecordSetsGetOutput>;
 
 // The operation
 /**
@@ -637,6 +830,13 @@ export const RecordSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsGetOutput,
 }));
 // Input Schema
+export interface RecordSetsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  $top?: number;
+  $recordsetnamesuffix?: string;
+}
 export const RecordSetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -649,10 +849,25 @@ export const RecordSetsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/aLL",
     apiVersion: "2024-06-01",
   }),
-);
-export type RecordSetsListInput = typeof RecordSetsListInput.Type;
+) as unknown as Schema.Codec<RecordSetsListInput>;
 
 // Output Schema
+export interface RecordSetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RecordSetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -676,8 +891,7 @@ export const RecordSetsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type RecordSetsListOutput = typeof RecordSetsListOutput.Type;
+}) as unknown as Schema.Codec<RecordSetsListOutput>;
 
 // The operation
 /**
@@ -695,6 +909,14 @@ export const RecordSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsListOutput,
 }));
 // Input Schema
+export interface RecordSetsListByTypeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
+  $top?: number;
+  $recordsetnamesuffix?: string;
+}
 export const RecordSetsListByTypeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -718,10 +940,25 @@ export const RecordSetsListByTypeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type RecordSetsListByTypeInput = typeof RecordSetsListByTypeInput.Type;
+  ) as unknown as Schema.Codec<RecordSetsListByTypeInput>;
 
 // Output Schema
+export interface RecordSetsListByTypeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RecordSetsListByTypeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -756,8 +993,7 @@ export const RecordSetsListByTypeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RecordSetsListByTypeOutput = typeof RecordSetsListByTypeOutput.Type;
+  }) as unknown as Schema.Codec<RecordSetsListByTypeOutput>;
 
 // The operation
 /**
@@ -778,6 +1014,41 @@ export const RecordSetsListByType = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RecordSetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  recordType: "A" | "AAAA" | "CNAME" | "MX" | "PTR" | "SOA" | "SRV" | "TXT";
+  relativeRecordSetName: string;
+  properties?: {
+    metadata?: Record<string, string>;
+    ttl?: number;
+    fqdn?: string;
+    isAutoRegistered?: boolean;
+    aRecords?: { ipv4Address?: string }[];
+    aaaaRecords?: { ipv6Address?: string }[];
+    cnameRecord?: { cname?: string };
+    mxRecords?: { preference?: number; exchange?: string }[];
+    ptrRecords?: { ptrdname?: string }[];
+    soaRecord?: {
+      host?: string;
+      email?: string;
+      serialNumber?: number;
+      refreshTime?: number;
+      retryTime?: number;
+      expireTime?: number;
+      minimumTtl?: number;
+    };
+    srvRecords?: {
+      priority?: number;
+      weight?: number;
+      port?: number;
+      target?: string;
+    }[];
+    txtRecords?: { value?: string[] }[];
+  };
+  etag?: string;
+}
 export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -870,10 +1141,22 @@ export const RecordSetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
     apiVersion: "2024-06-01",
   }),
-);
-export type RecordSetsUpdateInput = typeof RecordSetsUpdateInput.Type;
+) as unknown as Schema.Codec<RecordSetsUpdateInput>;
 
 // Output Schema
+export interface RecordSetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -894,8 +1177,7 @@ export const RecordSetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RecordSetsUpdateOutput = typeof RecordSetsUpdateOutput.Type;
+) as unknown as Schema.Codec<RecordSetsUpdateOutput>;
 
 // The operation
 /**
@@ -914,6 +1196,28 @@ export const RecordSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RecordSetsUpdateOutput,
 }));
 // Input Schema
+export interface VirtualNetworkLinksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  virtualNetworkLinkName: string;
+  properties?: {
+    virtualNetwork?: { id?: string };
+    registrationEnabled?: boolean;
+    resolutionPolicy?: "Default" | "NxDomainRedirect";
+    virtualNetworkLinkState?: "InProgress" | "Completed";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+}
 export const VirtualNetworkLinksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -955,11 +1259,22 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type VirtualNetworkLinksCreateOrUpdateInput =
-  typeof VirtualNetworkLinksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -979,9 +1294,7 @@ export const VirtualNetworkLinksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksCreateOrUpdateOutput =
-  typeof VirtualNetworkLinksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1001,6 +1314,12 @@ export const VirtualNetworkLinksCreateOrUpdate =
     outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworkLinksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  virtualNetworkLinkName: string;
+}
 export const VirtualNetworkLinksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1013,15 +1332,12 @@ export const VirtualNetworkLinksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type VirtualNetworkLinksDeleteInput =
-  typeof VirtualNetworkLinksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksDeleteInput>;
 
 // Output Schema
+export type VirtualNetworkLinksDeleteOutput = void;
 export const VirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualNetworkLinksDeleteOutput =
-  typeof VirtualNetworkLinksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -1041,6 +1357,12 @@ export const VirtualNetworkLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  virtualNetworkLinkName: string;
+}
 export const VirtualNetworkLinksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1053,11 +1375,22 @@ export const VirtualNetworkLinksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type VirtualNetworkLinksGetInput =
-  typeof VirtualNetworkLinksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksGetInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1077,9 +1410,7 @@ export const VirtualNetworkLinksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksGetOutput =
-  typeof VirtualNetworkLinksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksGetOutput>;
 
 // The operation
 /**
@@ -1098,6 +1429,12 @@ export const VirtualNetworkLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  $top?: number;
+}
 export const VirtualNetworkLinksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1110,11 +1447,25 @@ export const VirtualNetworkLinksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks",
       apiVersion: "2024-06-01",
     }),
-  );
-export type VirtualNetworkLinksListInput =
-  typeof VirtualNetworkLinksListInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksListInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1149,9 +1500,7 @@ export const VirtualNetworkLinksListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworkLinksListOutput =
-  typeof VirtualNetworkLinksListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksListOutput>;
 
 // The operation
 /**
@@ -1170,6 +1519,28 @@ export const VirtualNetworkLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  privateZoneName: string;
+  virtualNetworkLinkName: string;
+  properties?: {
+    virtualNetwork?: { id?: string };
+    registrationEnabled?: boolean;
+    resolutionPolicy?: "Default" | "NxDomainRedirect";
+    virtualNetworkLinkState?: "InProgress" | "Completed";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+}
 export const VirtualNetworkLinksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1211,11 +1582,22 @@ export const VirtualNetworkLinksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
     }),
-  );
-export type VirtualNetworkLinksUpdateInput =
-  typeof VirtualNetworkLinksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1235,9 +1617,7 @@ export const VirtualNetworkLinksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksUpdateOutput =
-  typeof VirtualNetworkLinksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksUpdateOutput>;
 
 // The operation
 /**

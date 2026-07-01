@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface PinGroupClusterCollStatPinnedNamespacesInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+}
 export const PinGroupClusterCollStatPinnedNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,15 +19,12 @@ export const PinGroupClusterCollStatPinnedNamespacesInput =
       method: "PUT",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned",
     }),
-  );
-export type PinGroupClusterCollStatPinnedNamespacesInput =
-  typeof PinGroupClusterCollStatPinnedNamespacesInput.Type;
+  ) as unknown as Schema.Codec<PinGroupClusterCollStatPinnedNamespacesInput>;
 
 // Output Schema
+export type PinGroupClusterCollStatPinnedNamespacesOutput = void;
 export const PinGroupClusterCollStatPinnedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PinGroupClusterCollStatPinnedNamespacesOutput =
-  typeof PinGroupClusterCollStatPinnedNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterCollStatPinnedNamespacesOutput>;
 
 // The operation
 /**

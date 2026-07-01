@@ -1,15 +1,68 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetCollectionsInput {
+  getCollectionsParameters?: string;
+}
 export const GetCollectionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   getCollectionsParameters: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/collections" }));
-export type GetCollectionsInput = typeof GetCollectionsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/collections" }),
+) as unknown as Schema.Codec<GetCollectionsInput>;
 
 // Output Schema
+export type GetCollectionsOutput = {
+  name: string;
+  fields: {
+    name: string;
+    type: string;
+    optional?: boolean;
+    facet?: boolean;
+    index?: boolean;
+    locale?: string;
+    sort?: boolean;
+    infix?: boolean;
+    reference?: string;
+    async_reference?: boolean;
+    num_dim?: number;
+    drop?: boolean;
+    store?: boolean;
+    vec_dist?: string;
+    range_index?: boolean;
+    stem?: boolean;
+    stem_dictionary?: string;
+    token_separators?: string[];
+    symbols_to_index?: string[];
+    embed?: {
+      from: string[];
+      model_config: {
+        model_name: string;
+        api_key?: Redacted.Redacted<string>;
+        url?: string;
+        access_token?: Redacted.Redacted<string>;
+        refresh_token?: Redacted.Redacted<string>;
+        client_id?: string;
+        client_secret?: Redacted.Redacted<string>;
+        project_id?: string;
+        indexing_prefix?: string;
+        query_prefix?: string;
+      };
+    };
+  }[];
+  default_sorting_field?: string;
+  token_separators?: string[];
+  synonym_sets?: string[];
+  enable_nested_fields?: boolean;
+  symbols_to_index?: string[];
+  voice_query_model?: { model_name?: string };
+  metadata?: unknown;
+  num_documents: number;
+  created_at: number;
+}[];
 export const GetCollectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.String,
@@ -39,12 +92,12 @@ export const GetCollectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
             from: Schema.Array(Schema.String),
             model_config: Schema.Struct({
               model_name: Schema.String,
-              api_key: Schema.optional(SensitiveString),
+              api_key: Schema.optional(SensitiveOutputString),
               url: Schema.optional(Schema.String),
-              access_token: Schema.optional(SensitiveString),
-              refresh_token: Schema.optional(SensitiveString),
+              access_token: Schema.optional(SensitiveOutputString),
+              refresh_token: Schema.optional(SensitiveOutputString),
               client_id: Schema.optional(Schema.String),
-              client_secret: Schema.optional(SensitiveString),
+              client_secret: Schema.optional(SensitiveOutputString),
               project_id: Schema.optional(Schema.String),
               indexing_prefix: Schema.optional(Schema.String),
               query_prefix: Schema.optional(Schema.String),
@@ -67,8 +120,7 @@ export const GetCollectionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     num_documents: Schema.Number,
     created_at: Schema.Number,
   }),
-);
-export type GetCollectionsOutput = typeof GetCollectionsOutput.Type;
+) as unknown as Schema.Codec<GetCollectionsOutput>;
 
 // The operation
 /**

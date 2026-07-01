@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AddOrganizationMemberInput {
+  organizationSlug: string;
+  username?: string;
+  role?: "admin" | "member" | "viewer";
+}
 export const AddOrganizationMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -14,19 +19,20 @@ export const AddOrganizationMemberInput =
       method: "POST",
       path: "/v1/organizations/{organizationSlug}/members",
     }),
-  );
-export type AddOrganizationMemberInput = typeof AddOrganizationMemberInput.Type;
+  ) as unknown as Schema.Codec<AddOrganizationMemberInput>;
 
 // Output Schema
+export interface AddOrganizationMemberOutput {
+  member?: string;
+  role?: "owner" | "admin" | "member" | "viewer";
+}
 export const AddOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     member: Schema.optional(Schema.String),
     role: Schema.optional(
       Schema.Literals(["owner", "admin", "member", "viewer"]),
     ),
-  });
-export type AddOrganizationMemberOutput =
-  typeof AddOrganizationMemberOutput.Type;
+  }) as unknown as Schema.Codec<AddOrganizationMemberOutput>;
 
 // The operation
 /**

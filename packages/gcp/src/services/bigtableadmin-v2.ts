@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,75 +22,112 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface ColumnFamilyStats {
-  /** How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field. */
-  averageColumnsPerRow?: number;
-  /** How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field. */
-  averageCellsPerColumn?: number;
-  /** How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out). */
-  logicalDataBytes?: string;
+export interface LogicalView {
+  /** Required. The logical view's select query. */
+  query?: string;
+  /** Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` */
+  name?: string;
+  /** Optional. The etag for this logical view. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
+  etag?: string;
+  /** Optional. Set to true to make the LogicalView protected against deletion. */
+  deletionProtection?: boolean;
 }
 
-export const ColumnFamilyStats: Schema.Schema<ColumnFamilyStats> =
+export const LogicalView: Schema.Codec<LogicalView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    averageColumnsPerRow: Schema.optional(Schema.Number),
-    averageCellsPerColumn: Schema.optional(Schema.Number),
-    logicalDataBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ColumnFamilyStats" });
+    query: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    deletionProtection: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "LogicalView" });
 
-export interface Union {
-  /** Delete cells which would be deleted by any element of `rules`. */
-  rules?: ReadonlyArray<GcRule>;
+export interface CreateLogicalViewRequest {
+  /** Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. */
+  parent?: string;
+  /** Required. The logical view to create. */
+  logicalView?: LogicalView;
+  /** Required. The ID to use for the logical view, which will become the final component of the logical view's resource name. */
+  logicalViewId?: string;
 }
 
-export const Union: Schema.Schema<Union> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(Schema.Array(GcRule)),
-    }),
-  ).annotate({ identifier: "Union" }) as any as Schema.Schema<Union>;
+export const CreateLogicalViewRequest: Schema.Codec<CreateLogicalViewRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    logicalView: Schema.optional(LogicalView),
+    logicalViewId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateLogicalViewRequest" });
 
-export interface Intersection {
-  /** Only delete cells which would be deleted by every element of `rules`. */
-  rules?: ReadonlyArray<GcRule>;
+export interface Instance {
+  /** Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion. */
+  displayName?: string;
+  /** Optional. The edition of the instance. See Edition for details. */
+  edition?:
+    | "EDITION_UNSPECIFIED"
+    | "ENTERPRISE"
+    | "ENTERPRISE_PLUS"
+    | (string & {});
+  /** Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes. */
+  labels?: Record<string, string>;
+  /** Output only. A commit timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`. */
+  createTime?: string;
+  /** The type of the instance. Defaults to `PRODUCTION`. */
+  type?: "TYPE_UNSPECIFIED" | "PRODUCTION" | "DEVELOPMENT" | (string & {});
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: - "123/environment": "production", - "123/costCenter": "marketing" Tags and Labels (above) are both used to bind metadata to resources, with different use-cases. See https://cloud.google.com/resource-manager/docs/tags/tags-overview for an in-depth overview on the difference between tags and labels. */
+  tags?: Record<string, string>;
+  /** Output only. The current state of the instance. */
+  state?: "STATE_NOT_KNOWN" | "READY" | "CREATING" | (string & {});
+  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
+  name?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Output only. The region where Knowledge Catalog data is synced to and stored, including user-created aspects. */
+  knowledgeCatalogRegion?: string;
 }
 
-export const Intersection: Schema.Schema<Intersection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(Schema.Array(GcRule)),
-    }),
-  ).annotate({
-    identifier: "Intersection",
-  }) as any as Schema.Schema<Intersection>;
+export const Instance: Schema.Codec<Instance> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    edition: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    knowledgeCatalogRegion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Instance" });
 
-export interface GcRule {
-  /** Delete all cells in a column except the most recent N. */
-  maxNumVersions?: number;
-  /** Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity. */
-  maxAge?: string;
-  /** Delete cells that would be deleted by any nested rule. */
-  union?: Union;
-  /** Delete cells that would be deleted by every nested rule. */
-  intersection?: Intersection;
+export interface PartialUpdateInstanceRequest {
+  /** Required. The Instance which will (partially) replace the current value. */
+  instance?: Instance;
+  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
+  updateMask?: string;
 }
 
-export const GcRule: Schema.Schema<GcRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxNumVersions: Schema.optional(Schema.Number),
-      maxAge: Schema.optional(Schema.String),
-      union: Schema.optional(Union),
-      intersection: Schema.optional(Intersection),
-    }),
-  ).annotate({ identifier: "GcRule" }) as any as Schema.Schema<GcRule>;
+export const PartialUpdateInstanceRequest: Schema.Codec<PartialUpdateInstanceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instance: Schema.optional(Instance),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialUpdateInstanceRequest" });
+
+export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
+
+export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Codec<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier:
+      "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
+  });
 
 export interface GoogleBigtableAdminV2TypeBytesEncodingRaw {
   /** If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value which only contains the null byte `0x00`, has one more null byte appended. */
   escapeNulls?: boolean;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
+export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     escapeNulls: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw" });
@@ -100,7 +137,7 @@ export interface GoogleBigtableAdminV2TypeBytesEncoding {
   raw?: GoogleBigtableAdminV2TypeBytesEncodingRaw;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncoding> =
+export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBytesEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     raw: Schema.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncoding" });
@@ -110,27 +147,721 @@ export interface GoogleBigtableAdminV2TypeBytes {
   encoding?: GoogleBigtableAdminV2TypeBytesEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeBytes: Schema.Schema<GoogleBigtableAdminV2TypeBytes> =
+export const GoogleBigtableAdminV2TypeBytes: Schema.Codec<GoogleBigtableAdminV2TypeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeBytesEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytes" });
 
-export interface GoogleBigtableAdminV2TypeProto {
-  /** The fully qualified name of the protobuf message, including package. In the format of "foo.bar.Message". */
-  messageName?: string;
-  /** The ID of the schema bundle that this proto is defined in. */
-  schemaBundleId?: string;
+export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
+  /** Deprecated: ignored if set. */
+  bytesType?: GoogleBigtableAdminV2TypeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeProto: Schema.Schema<GoogleBigtableAdminV2TypeProto> =
+export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    messageName: Schema.optional(Schema.String),
+    bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
+  }).annotate({
+    identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes",
+  });
+
+export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
+
+export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
+  });
+
+export interface GoogleBigtableAdminV2TypeInt64Encoding {
+  /** Use `BigEndianBytes` encoding. */
+  bigEndianBytes?: GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes;
+  /** Use `OrderedCodeBytes` encoding. */
+  orderedCodeBytes?: GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes;
+}
+
+export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt64Encoding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigEndianBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
+    ),
+    orderedCodeBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes,
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64Encoding" });
+
+export interface GoogleBigtableAdminV2TypeInt64 {
+  /** The encoding to use when converting to or from lower level types. */
+  encoding?: GoogleBigtableAdminV2TypeInt64Encoding;
+}
+
+export const GoogleBigtableAdminV2TypeInt64: Schema.Codec<GoogleBigtableAdminV2TypeInt64> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" });
+
+export interface ListInstancesResponse {
+  /** The list of requested instances. */
+  instances?: ReadonlyArray<Instance>;
+  /** Locations from which Instance information could not be retrieved, due to an outage or some other transient condition. Instances whose Clusters are all in one of the failed locations may be missing from `instances`, and Instances with at least one Cluster in a failed location may only have partial information returned. Values are of the form `projects//locations/` */
+  failedLocations?: ReadonlyArray<string>;
+  /** DEPRECATED: This field is unused and ignored. */
+  nextPageToken?: string;
+}
+
+export const ListInstancesResponse: Schema.Codec<ListInstancesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(Instance)),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInstancesResponse" });
+
+export interface EncryptionConfig {
+  /** Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` */
+  kmsKeyName?: string;
+}
+
+export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EncryptionConfig" });
+
+export interface AutoscalingLimits {
+  /** Required. Minimum number of nodes to scale down to. */
+  minServeNodes?: number;
+  /** Required. Maximum number of nodes to scale up to. */
+  maxServeNodes?: number;
+}
+
+export const AutoscalingLimits: Schema.Codec<AutoscalingLimits> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minServeNodes: Schema.optional(Schema.Number),
+    maxServeNodes: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AutoscalingLimits" });
+
+export interface AutoscalingTargets {
+  /** The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD. */
+  storageUtilizationGibPerNode?: number;
+  /** The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error. */
+  cpuUtilizationPercent?: number;
+}
+
+export const AutoscalingTargets: Schema.Codec<AutoscalingTargets> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageUtilizationGibPerNode: Schema.optional(Schema.Number),
+    cpuUtilizationPercent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AutoscalingTargets" });
+
+export interface ClusterAutoscalingConfig {
+  /** Required. Autoscaling limits for this cluster. */
+  autoscalingLimits?: AutoscalingLimits;
+  /** Required. Autoscaling targets for this cluster. */
+  autoscalingTargets?: AutoscalingTargets;
+}
+
+export const ClusterAutoscalingConfig: Schema.Codec<ClusterAutoscalingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoscalingLimits: Schema.optional(AutoscalingLimits),
+    autoscalingTargets: Schema.optional(AutoscalingTargets),
+  }).annotate({ identifier: "ClusterAutoscalingConfig" });
+
+export interface ClusterConfig {
+  /** Autoscaling configuration for this cluster. */
+  clusterAutoscalingConfig?: ClusterAutoscalingConfig;
+}
+
+export const ClusterConfig: Schema.Codec<ClusterConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
+  }).annotate({ identifier: "ClusterConfig" });
+
+export interface Cluster {
+  /** Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`. */
+  location?: string;
+  /** Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden. */
+  defaultStorageType?:
+    | "STORAGE_TYPE_UNSPECIFIED"
+    | "SSD"
+    | "HDD"
+    | (string & {});
+  /** Immutable. The encryption configuration for CMEK-protected clusters. */
+  encryptionConfig?: EncryptionConfig;
+  /** Immutable. The node scaling factor of this cluster. */
+  nodeScalingFactor?:
+    | "NODE_SCALING_FACTOR_UNSPECIFIED"
+    | "NODE_SCALING_FACTOR_1X"
+    | "NODE_SCALING_FACTOR_2X"
+    | (string & {});
+  /** The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization. */
+  serveNodes?: number;
+  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
+  name?: string;
+  /** Output only. The current state of the cluster. */
+  state?:
+    | "STATE_NOT_KNOWN"
+    | "READY"
+    | "CREATING"
+    | "RESIZING"
+    | "DISABLED"
+    | (string & {});
+  /** Configuration for this cluster. */
+  clusterConfig?: ClusterConfig;
+}
+
+export const Cluster: Schema.Codec<Cluster> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    defaultStorageType: Schema.optional(Schema.String),
+    encryptionConfig: Schema.optional(EncryptionConfig),
+    nodeScalingFactor: Schema.optional(Schema.String),
+    serveNodes: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    clusterConfig: Schema.optional(ClusterConfig),
+  }).annotate({ identifier: "Cluster" });
+
+export interface PartialUpdateClusterRequest {
+  /** Required. The Cluster which contains the partial updates to be applied, subject to the update_mask. */
+  cluster?: Cluster;
+  /** Required. The subset of Cluster fields which should be replaced. */
+  updateMask?: string;
+}
+
+export const PartialUpdateClusterRequest: Schema.Codec<PartialUpdateClusterRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Cluster),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialUpdateClusterRequest" });
+
+export interface GoogleBigtableAdminV2MaterializedViewClusterState {
+  /** Output only. The state of the materialized view in this cluster. */
+  replicationState?:
+    | "STATE_NOT_KNOWN"
+    | "INITIALIZING"
+    | "READY"
+    | (string & {});
+}
+
+export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Codec<GoogleBigtableAdminV2MaterializedViewClusterState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicationState: Schema.optional(Schema.String),
+  }).annotate({
+    identifier: "GoogleBigtableAdminV2MaterializedViewClusterState",
+  });
+
+export interface MaterializedView {
+  /** Output only. Map from cluster ID to per-cluster materialized view state. If it could not be determined whether or not the materialized view has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with `STATE_NOT_KNOWN` state. Views: `REPLICATION_VIEW`, `FULL`. */
+  clusterStates?: Record<
+    string,
+    GoogleBigtableAdminV2MaterializedViewClusterState
+  >;
+  /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
+  name?: string;
+  /** Optional. The etag for this materialized view. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
+  etag?: string;
+  /** Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`, `FULL`. */
+  query?: string;
+  /** Set to true to make the MaterializedView protected against deletion. Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
+  deletionProtection?: boolean;
+}
+
+export const MaterializedView: Schema.Codec<MaterializedView> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterStates: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleBigtableAdminV2MaterializedViewClusterState,
+      ),
+    ),
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    deletionProtection: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "MaterializedView" });
+
+export interface CreateMaterializedViewRequest {
+  /** Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. */
+  materializedViewId?: string;
+  /** Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. */
+  parent?: string;
+  /** Required. The materialized view to create. */
+  materializedView?: MaterializedView;
+}
+
+export const CreateMaterializedViewRequest: Schema.Codec<CreateMaterializedViewRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    materializedViewId: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    materializedView: Schema.optional(MaterializedView),
+  }).annotate({ identifier: "CreateMaterializedViewRequest" });
+
+export interface UpdateLogicalViewRequest {
+  /** Required. The logical view to update. The logical view's `name` field is used to identify the view to update. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
+  logicalView?: LogicalView;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+}
+
+export const UpdateLogicalViewRequest: Schema.Codec<UpdateLogicalViewRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalView: Schema.optional(LogicalView),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateLogicalViewRequest" });
+
+export interface RowAffinity {}
+
+export const RowAffinity: Schema.Codec<RowAffinity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RowAffinity",
+  });
+
+export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
+
+export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
+  });
+
+export interface DropRowRangeRequest {
+  /** Delete all rows that start with this row key prefix. Prefix cannot be zero length. */
+  rowKeyPrefix?: string;
+  /** Delete all rows in the table. Setting this to false is a no-op. */
+  deleteAllDataFromTable?: boolean;
+}
+
+export const DropRowRangeRequest: Schema.Codec<DropRowRangeRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowKeyPrefix: Schema.optional(Schema.String),
+    deleteAllDataFromTable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DropRowRangeRequest" });
+
+export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
+  /** Output only. Reporting the current size of the memory layer in GiB. */
+  storageSizeGib?: number;
+}
+
+export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Codec<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageSizeGib: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" });
+
+export interface OperationProgress {
+  /** Percent completion of the operation. Values are between 0 and 100 inclusive. */
+  progressPercent?: number;
+  /** Time the request was received. */
+  startTime?: string;
+  /** If set, the time at which this operation failed or was completed successfully. */
+  endTime?: string;
+}
+
+export const OperationProgress: Schema.Codec<OperationProgress> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressPercent: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationProgress" });
+
+export interface GoogleBigtableAdminV2TypeEnum {
+  /** The ID of the schema bundle that this enum is defined in. */
+  schemaBundleId?: string;
+  /** The fully qualified name of the protobuf enum message, including package. In the format of "foo.bar.EnumMessage". */
+  enumName?: string;
+}
+
+export const GoogleBigtableAdminV2TypeEnum: Schema.Codec<GoogleBigtableAdminV2TypeEnum> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaBundleId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeProto" });
+    enumName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeEnum" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
+
+export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
+  });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+}
+
+export const Location: Schema.Codec<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "Location" });
+
+export interface GoogleBigtableAdminV2TypeAggregateMax {}
+
+export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMax> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeAggregateMax",
+  });
+
+export interface ProtoSchema {
+  /** Required. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto), which could include multiple proto files. To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with `--include_imports` and `--descriptor_set_out`. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.pb \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
+  protoDescriptors?: string;
+}
+
+export const ProtoSchema: Schema.Codec<ProtoSchema> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protoDescriptors: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProtoSchema" });
+
+export interface OptimizeRestoredTableMetadata {
+  /** Name of the restored table being optimized. */
+  name?: string;
+  /** The progress of the post-restore optimizations. */
+  progress?: OperationProgress;
+}
+
+export const OptimizeRestoredTableMetadata: Schema.Codec<OptimizeRestoredTableMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    progress: Schema.optional(OperationProgress),
+  }).annotate({ identifier: "OptimizeRestoredTableMetadata" });
+
+export interface PartialUpdateClusterMetadata {
+  /** The original request for PartialUpdateCluster. */
+  originalRequest?: PartialUpdateClusterRequest;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+}
+
+export const PartialUpdateClusterMetadata: Schema.Codec<PartialUpdateClusterMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(PartialUpdateClusterRequest),
+    finishTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialUpdateClusterMetadata" });
+
+export interface UpdateTableMetadata {
+  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
+  startTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** If set, the time at which this operation finished or was canceled. DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The name of the table being updated. */
+  name?: string;
+}
+
+export const UpdateTableMetadata: Schema.Codec<UpdateTableMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateTableMetadata" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface GoogleBigtableAdminV2TypeFloat64 {}
+
+export const GoogleBigtableAdminV2TypeFloat64: Schema.Codec<GoogleBigtableAdminV2TypeFloat64> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeFloat64",
+  });
+
+export interface GoogleBigtableAdminV2TypeDate {}
+
+export const GoogleBigtableAdminV2TypeDate: Schema.Codec<GoogleBigtableAdminV2TypeDate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeDate",
+  });
+
+export interface SingleClusterRouting {
+  /** The cluster to which read/write requests should be routed. */
+  clusterId?: string;
+  /** Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters. */
+  allowTransactionalWrites?: boolean;
+}
+
+export const SingleClusterRouting: Schema.Codec<SingleClusterRouting> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterId: Schema.optional(Schema.String),
+    allowTransactionalWrites: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SingleClusterRouting" });
+
+export interface DataBoostIsolationReadOnly {
+  /** The Compute Billing Owner for this Data Boost App Profile. */
+  computeBillingOwner?:
+    | "COMPUTE_BILLING_OWNER_UNSPECIFIED"
+    | "HOST_PAYS"
+    | (string & {});
+}
+
+export const DataBoostIsolationReadOnly: Schema.Codec<DataBoostIsolationReadOnly> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computeBillingOwner: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataBoostIsolationReadOnly" });
+
+export interface MemoryConfig {}
+
+export const MemoryConfig: Schema.Codec<MemoryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "MemoryConfig",
+  });
+
+export interface StandardIsolation {
+  /** The priority of requests sent using this app profile. */
+  priority?:
+    | "PRIORITY_UNSPECIFIED"
+    | "PRIORITY_LOW"
+    | "PRIORITY_MEDIUM"
+    | "PRIORITY_HIGH"
+    | (string & {});
+  /** Optional. The memory config to use for requests sent using this app profile. */
+  memoryConfig?: MemoryConfig;
+}
+
+export const StandardIsolation: Schema.Codec<StandardIsolation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priority: Schema.optional(Schema.String),
+    memoryConfig: Schema.optional(MemoryConfig),
+  }).annotate({ identifier: "StandardIsolation" });
+
+export interface MultiClusterRoutingUseAny {
+  /** The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible. */
+  clusterIds?: ReadonlyArray<string>;
+  /** Row affinity sticky routing based on the row key of the request. Requests that span multiple rows are routed non-deterministically. */
+  rowAffinity?: RowAffinity;
+}
+
+export const MultiClusterRoutingUseAny: Schema.Codec<MultiClusterRoutingUseAny> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterIds: Schema.optional(Schema.Array(Schema.String)),
+    rowAffinity: Schema.optional(RowAffinity),
+  }).annotate({ identifier: "MultiClusterRoutingUseAny" });
+
+export interface AppProfile {
+  /** Use a single-cluster routing policy. */
+  singleClusterRouting?: SingleClusterRouting;
+  /** Specifies that this app profile is intended for read-only usage via the Data Boost feature. */
+  dataBoostIsolationReadOnly?: DataBoostIsolationReadOnly;
+  /** This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile. */
+  priority?:
+    | "PRIORITY_UNSPECIFIED"
+    | "PRIORITY_LOW"
+    | "PRIORITY_MEDIUM"
+    | "PRIORITY_HIGH"
+    | (string & {});
+  /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
+  name?: string;
+  /** Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the meantime. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details. */
+  etag?: string;
+  /** The standard options used for isolating this app profile's traffic from other use cases. */
+  standardIsolation?: StandardIsolation;
+  /** Long form description of the use case for this AppProfile. */
+  description?: string;
+  /** Use a multi-cluster routing policy. */
+  multiClusterRoutingUseAny?: MultiClusterRoutingUseAny;
+}
+
+export const AppProfile: Schema.Codec<AppProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    singleClusterRouting: Schema.optional(SingleClusterRouting),
+    dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
+    priority: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    standardIsolation: Schema.optional(StandardIsolation),
+    description: Schema.optional(Schema.String),
+    multiClusterRoutingUseAny: Schema.optional(MultiClusterRoutingUseAny),
+  }).annotate({ identifier: "AppProfile" });
+
+export interface CreateBackupMetadata {
+  /** The name of the backup being created. */
+  name?: string;
+  /** If set, the time at which this operation finished or was cancelled. DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The name of the table the backup is created from. */
+  sourceTable?: string;
+  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
+  startTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+}
+
+export const CreateBackupMetadata: Schema.Codec<CreateBackupMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    sourceTable: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateBackupMetadata" });
+
+export interface CreateMaterializedViewMetadata {
+  /** If set, the time at which this operation finished or was canceled. DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
+  startTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The request that prompted the initiation of this CreateMaterializedView operation. */
+  originalRequest?: CreateMaterializedViewRequest;
+}
+
+export const CreateMaterializedViewMetadata: Schema.Codec<CreateMaterializedViewMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(CreateMaterializedViewRequest),
+  }).annotate({ identifier: "CreateMaterializedViewMetadata" });
+
+export interface GetPolicyOptions {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  requestedPolicyVersion?: number;
+}
+
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GetPolicyOptions" });
+
+export interface GetIamPolicyRequest {
+  /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
+  options?: GetPolicyOptions;
+}
+
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(GetPolicyOptions),
+  }).annotate({ identifier: "GetIamPolicyRequest" });
+
+export interface UndeleteTableRequest {}
+
+export const UndeleteTableRequest: Schema.Codec<UndeleteTableRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UndeleteTableRequest",
+  });
+
+export interface GoogleBigtableAdminV2TypeAggregateSum {}
+
+export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Codec<GoogleBigtableAdminV2TypeAggregateSum> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeAggregateSum",
+  });
+
+export interface GoogleBigtableAdminV2TypeAggregateMin {}
+
+export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Codec<GoogleBigtableAdminV2TypeAggregateMin> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeAggregateMin",
+  });
+
+export interface GoogleBigtableAdminV2TypeAggregate {
+  /** Type of the inputs that are accumulated by this `Aggregate`. Use `AddInput` mutations to accumulate new inputs. */
+  inputType?: Type;
+  /** Sum aggregator. */
+  sum?: GoogleBigtableAdminV2TypeAggregateSum;
+  /** Max aggregator. */
+  max?: GoogleBigtableAdminV2TypeAggregateMax;
+  /** HyperLogLogPlusPlusUniqueCount aggregator. */
+  hllppUniqueCount?: GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount;
+  /** Output only. Type that holds the internal accumulator state for the `Aggregate`. This is a function of the `input_type` and `aggregator` chosen. */
+  stateType?: Type;
+  /** Min aggregator. */
+  min?: GoogleBigtableAdminV2TypeAggregateMin;
+}
+
+export const GoogleBigtableAdminV2TypeAggregate: Schema.Codec<GoogleBigtableAdminV2TypeAggregate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      inputType: Schema.optional(Type),
+      sum: Schema.optional(GoogleBigtableAdminV2TypeAggregateSum),
+      max: Schema.optional(GoogleBigtableAdminV2TypeAggregateMax),
+      hllppUniqueCount: Schema.optional(
+        GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount,
+      ),
+      stateType: Schema.optional(Type),
+      min: Schema.optional(GoogleBigtableAdminV2TypeAggregateMin),
+    }),
+  ).annotate({
+    identifier: "GoogleBigtableAdminV2TypeAggregate",
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeAggregate>;
+
+export interface GoogleBigtableAdminV2TypeGeography {}
+
+export const GoogleBigtableAdminV2TypeGeography: Schema.Codec<GoogleBigtableAdminV2TypeGeography> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeGeography",
+  });
+
+export interface GoogleBigtableAdminV2TypeTimestampEncoding {
+  /** Encodes the number of microseconds since the Unix epoch using the given `Int64` encoding. Values must be microsecond-aligned. Compatible with: - Java `Instant.truncatedTo()` with `ChronoUnit.MICROS` */
+  unixMicrosInt64?: GoogleBigtableAdminV2TypeInt64Encoding;
+}
+
+export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Codec<GoogleBigtableAdminV2TypeTimestampEncoding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" });
+
+export interface GoogleBigtableAdminV2TypeTimestamp {
+  /** The encoding to use when converting to or from lower level types. */
+  encoding?: GoogleBigtableAdminV2TypeTimestampEncoding;
+}
+
+export const GoogleBigtableAdminV2TypeTimestamp: Schema.Codec<GoogleBigtableAdminV2TypeTimestamp> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" });
+
+export interface GoogleBigtableAdminV2TypeFloat32 {}
+
+export const GoogleBigtableAdminV2TypeFloat32: Schema.Codec<GoogleBigtableAdminV2TypeFloat32> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeFloat32",
+  });
 
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Raw {}
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw",
   });
@@ -140,7 +871,7 @@ export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   nullEscapeChar?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Codec<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nullEscapeChar: Schema.optional(Schema.String),
   }).annotate({
@@ -154,7 +885,7 @@ export interface GoogleBigtableAdminV2TypeStringEncoding {
   utf8Bytes?: GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStringEncoding> =
+export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStringEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     utf8Raw: Schema.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
     utf8Bytes: Schema.optional(
@@ -167,185 +898,40 @@ export interface GoogleBigtableAdminV2TypeString {
   encoding?: GoogleBigtableAdminV2TypeStringEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeString: Schema.Schema<GoogleBigtableAdminV2TypeString> =
+export const GoogleBigtableAdminV2TypeString: Schema.Codec<GoogleBigtableAdminV2TypeString> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeStringEncoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeString" });
 
-export interface GoogleBigtableAdminV2TypeArray {
-  /** The type of the elements in the array. This must not be `Array`. */
-  elementType?: Type;
+export interface GoogleBigtableAdminV2TypeMap {
+  /** The type of the values in a map. */
+  valueType?: Type;
+  /** The type of a map key. Only `Bytes`, `String`, and `Int64` are allowed as key types. */
+  keyType?: Type;
 }
 
-export const GoogleBigtableAdminV2TypeArray: Schema.Schema<GoogleBigtableAdminV2TypeArray> =
+export const GoogleBigtableAdminV2TypeMap: Schema.Codec<GoogleBigtableAdminV2TypeMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      elementType: Schema.optional(Type),
+      valueType: Schema.optional(Type),
+      keyType: Schema.optional(Type),
     }),
   ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeArray",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeArray>;
+    identifier: "GoogleBigtableAdminV2TypeMap",
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeMap>;
 
-export interface GoogleBigtableAdminV2TypeGeography {}
-
-export const GoogleBigtableAdminV2TypeGeography: Schema.Schema<GoogleBigtableAdminV2TypeGeography> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeGeography",
-  });
-
-export interface GoogleBigtableAdminV2TypeBoolEncoding {}
-
-export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBoolEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
-  });
-
-export interface GoogleBigtableAdminV2TypeBool {
-  /** Specifies the encoding to use when converting to or from lower level types. */
-  encoding?: GoogleBigtableAdminV2TypeBoolEncoding;
+export interface GoogleBigtableAdminV2TypeProto {
+  /** The ID of the schema bundle that this proto is defined in. */
+  schemaBundleId?: string;
+  /** The fully qualified name of the protobuf message, including package. In the format of "foo.bar.Message". */
+  messageName?: string;
 }
 
-export const GoogleBigtableAdminV2TypeBool: Schema.Schema<GoogleBigtableAdminV2TypeBool> =
+export const GoogleBigtableAdminV2TypeProto: Schema.Codec<GoogleBigtableAdminV2TypeProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" });
-
-export interface GoogleBigtableAdminV2TypeDate {}
-
-export const GoogleBigtableAdminV2TypeDate: Schema.Schema<GoogleBigtableAdminV2TypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeDate",
-  });
-
-export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
-  /** Deprecated: ignored if set. */
-  bytesType?: GoogleBigtableAdminV2TypeBytes;
-}
-
-export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
-  }).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes",
-  });
-
-export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
-
-export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
-  });
-
-export interface GoogleBigtableAdminV2TypeInt64Encoding {
-  /** Use `BigEndianBytes` encoding. */
-  bigEndianBytes?: GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes;
-  /** Use `OrderedCodeBytes` encoding. */
-  orderedCodeBytes?: GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes;
-}
-
-export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt64Encoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bigEndianBytes: Schema.optional(
-      GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
-    ),
-    orderedCodeBytes: Schema.optional(
-      GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes,
-    ),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64Encoding" });
-
-export interface GoogleBigtableAdminV2TypeTimestampEncoding {
-  /** Encodes the number of microseconds since the Unix epoch using the given `Int64` encoding. Values must be microsecond-aligned. Compatible with: - Java `Instant.truncatedTo()` with `ChronoUnit.MICROS` */
-  unixMicrosInt64?: GoogleBigtableAdminV2TypeInt64Encoding;
-}
-
-export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Schema<GoogleBigtableAdminV2TypeTimestampEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" });
-
-export interface GoogleBigtableAdminV2TypeTimestamp {
-  /** The encoding to use when converting to or from lower level types. */
-  encoding?: GoogleBigtableAdminV2TypeTimestampEncoding;
-}
-
-export const GoogleBigtableAdminV2TypeTimestamp: Schema.Schema<GoogleBigtableAdminV2TypeTimestamp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" });
-
-export interface GoogleBigtableAdminV2TypeAggregateSum {}
-
-export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Schema<GoogleBigtableAdminV2TypeAggregateSum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeAggregateSum",
-  });
-
-export interface GoogleBigtableAdminV2TypeAggregateMin {}
-
-export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeAggregateMin",
-  });
-
-export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
-
-export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier:
-      "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
-  });
-
-export interface GoogleBigtableAdminV2TypeAggregateMax {}
-
-export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeAggregateMax",
-  });
-
-export interface GoogleBigtableAdminV2TypeAggregate {
-  /** Output only. Type that holds the internal accumulator state for the `Aggregate`. This is a function of the `input_type` and `aggregator` chosen. */
-  stateType?: Type;
-  /** Sum aggregator. */
-  sum?: GoogleBigtableAdminV2TypeAggregateSum;
-  /** Min aggregator. */
-  min?: GoogleBigtableAdminV2TypeAggregateMin;
-  /** Type of the inputs that are accumulated by this `Aggregate`. Use `AddInput` mutations to accumulate new inputs. */
-  inputType?: Type;
-  /** HyperLogLogPlusPlusUniqueCount aggregator. */
-  hllppUniqueCount?: GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount;
-  /** Max aggregator. */
-  max?: GoogleBigtableAdminV2TypeAggregateMax;
-}
-
-export const GoogleBigtableAdminV2TypeAggregate: Schema.Schema<GoogleBigtableAdminV2TypeAggregate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateType: Schema.optional(Type),
-      sum: Schema.optional(GoogleBigtableAdminV2TypeAggregateSum),
-      min: Schema.optional(GoogleBigtableAdminV2TypeAggregateMin),
-      inputType: Schema.optional(Type),
-      hllppUniqueCount: Schema.optional(
-        GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount,
-      ),
-      max: Schema.optional(GoogleBigtableAdminV2TypeAggregateMax),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeAggregate",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregate>;
-
-export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
-
-export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
-  });
-
-export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
-
-export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
-  });
+    schemaBundleId: Schema.optional(Schema.String),
+    messageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeProto" });
 
 export interface GoogleBigtableAdminV2TypeInt32Encoding {
   /** Use `BigEndianBytes` encoding. */
@@ -354,7 +940,7 @@ export interface GoogleBigtableAdminV2TypeInt32Encoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt32Encoding> =
+export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Codec<GoogleBigtableAdminV2TypeInt32Encoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bigEndianBytes: Schema.optional(
       GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
@@ -369,10 +955,98 @@ export interface GoogleBigtableAdminV2TypeInt32 {
   encoding?: GoogleBigtableAdminV2TypeInt32Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeInt32: Schema.Schema<GoogleBigtableAdminV2TypeInt32> =
+export const GoogleBigtableAdminV2TypeInt32: Schema.Codec<GoogleBigtableAdminV2TypeInt32> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encoding: Schema.optional(GoogleBigtableAdminV2TypeInt32Encoding),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32" });
+
+export interface GoogleBigtableAdminV2TypeArray {
+  /** The type of the elements in the array. This must not be `Array`. */
+  elementType?: Type;
+}
+
+export const GoogleBigtableAdminV2TypeArray: Schema.Codec<GoogleBigtableAdminV2TypeArray> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      elementType: Schema.optional(Type),
+    }),
+  ).annotate({
+    identifier: "GoogleBigtableAdminV2TypeArray",
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeArray>;
+
+export interface GoogleBigtableAdminV2TypeBoolEncoding {}
+
+export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Codec<GoogleBigtableAdminV2TypeBoolEncoding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
+  });
+
+export interface GoogleBigtableAdminV2TypeBool {
+  /** Specifies the encoding to use when converting to or from lower level types. */
+  encoding?: GoogleBigtableAdminV2TypeBoolEncoding;
+}
+
+export const GoogleBigtableAdminV2TypeBool: Schema.Codec<GoogleBigtableAdminV2TypeBool> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" });
+
+export interface Type {
+  /** Aggregate */
+  aggregateType?: GoogleBigtableAdminV2TypeAggregate;
+  /** Geography */
+  geographyType?: GoogleBigtableAdminV2TypeGeography;
+  /** Int64 */
+  int64Type?: GoogleBigtableAdminV2TypeInt64;
+  /** Timestamp */
+  timestampType?: GoogleBigtableAdminV2TypeTimestamp;
+  /** Float32 */
+  float32Type?: GoogleBigtableAdminV2TypeFloat32;
+  /** Date */
+  dateType?: GoogleBigtableAdminV2TypeDate;
+  /** String */
+  stringType?: GoogleBigtableAdminV2TypeString;
+  /** Map */
+  mapType?: GoogleBigtableAdminV2TypeMap;
+  /** Proto */
+  protoType?: GoogleBigtableAdminV2TypeProto;
+  /** Struct */
+  structType?: GoogleBigtableAdminV2TypeStruct;
+  /** Int32 */
+  int32Type?: GoogleBigtableAdminV2TypeInt32;
+  /** Array */
+  arrayType?: GoogleBigtableAdminV2TypeArray;
+  /** Float64 */
+  float64Type?: GoogleBigtableAdminV2TypeFloat64;
+  /** Enum */
+  enumType?: GoogleBigtableAdminV2TypeEnum;
+  /** Bool */
+  boolType?: GoogleBigtableAdminV2TypeBool;
+  /** Bytes */
+  bytesType?: GoogleBigtableAdminV2TypeBytes;
+}
+
+export const Type: Schema.Codec<Type> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      aggregateType: Schema.optional(GoogleBigtableAdminV2TypeAggregate),
+      geographyType: Schema.optional(GoogleBigtableAdminV2TypeGeography),
+      int64Type: Schema.optional(GoogleBigtableAdminV2TypeInt64),
+      timestampType: Schema.optional(GoogleBigtableAdminV2TypeTimestamp),
+      float32Type: Schema.optional(GoogleBigtableAdminV2TypeFloat32),
+      dateType: Schema.optional(GoogleBigtableAdminV2TypeDate),
+      stringType: Schema.optional(GoogleBigtableAdminV2TypeString),
+      mapType: Schema.optional(GoogleBigtableAdminV2TypeMap),
+      protoType: Schema.optional(GoogleBigtableAdminV2TypeProto),
+      structType: Schema.optional(GoogleBigtableAdminV2TypeStruct),
+      int32Type: Schema.optional(GoogleBigtableAdminV2TypeInt32),
+      arrayType: Schema.optional(GoogleBigtableAdminV2TypeArray),
+      float64Type: Schema.optional(GoogleBigtableAdminV2TypeFloat64),
+      enumType: Schema.optional(GoogleBigtableAdminV2TypeEnum),
+      boolType: Schema.optional(GoogleBigtableAdminV2TypeBool),
+      bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
+    }),
+  ).annotate({ identifier: "Type" }) as any as Schema.Codec<Type>;
 
 export interface GoogleBigtableAdminV2TypeStructField {
   /** The field name (optional). Fields without a `field_name` are considered anonymous and cannot be referenced by name. */
@@ -381,7 +1055,7 @@ export interface GoogleBigtableAdminV2TypeStructField {
   type?: Type;
 }
 
-export const GoogleBigtableAdminV2TypeStructField: Schema.Schema<GoogleBigtableAdminV2TypeStructField> =
+export const GoogleBigtableAdminV2TypeStructField: Schema.Codec<GoogleBigtableAdminV2TypeStructField> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fieldName: Schema.optional(Schema.String),
@@ -389,21 +1063,14 @@ export const GoogleBigtableAdminV2TypeStructField: Schema.Schema<GoogleBigtableA
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructField",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructField>;
-
-export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
-
-export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
-  });
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeStructField>;
 
 export interface GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   /** Byte sequence used to delimit concatenated fields. The delimiter must contain at least 1 character and at most 50 characters. */
   delimiter?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
+export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delimiter: Schema.optional(Schema.String),
   }).annotate({
@@ -412,30 +1079,37 @@ export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Schem
 
 export interface GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
+export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes",
   });
 
+export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
+
+export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Codec<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
+  });
+
 export interface GoogleBigtableAdminV2TypeStructEncoding {
-  /** Use `Singleton` encoding. */
-  singleton?: GoogleBigtableAdminV2TypeStructEncodingSingleton;
   /** Use `DelimitedBytes` encoding. */
   delimitedBytes?: GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes;
   /** User `OrderedCodeBytes` encoding. */
   orderedCodeBytes?: GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes;
+  /** Use `Singleton` encoding. */
+  singleton?: GoogleBigtableAdminV2TypeStructEncodingSingleton;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStructEncoding> =
+export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Codec<GoogleBigtableAdminV2TypeStructEncoding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    singleton: Schema.optional(
-      GoogleBigtableAdminV2TypeStructEncodingSingleton,
-    ),
     delimitedBytes: Schema.optional(
       GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
     ),
     orderedCodeBytes: Schema.optional(
       GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes,
+    ),
+    singleton: Schema.optional(
+      GoogleBigtableAdminV2TypeStructEncodingSingleton,
     ),
   }).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncoding" });
 
@@ -446,7 +1120,7 @@ export interface GoogleBigtableAdminV2TypeStruct {
   encoding?: GoogleBigtableAdminV2TypeStructEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeStruct: Schema.Schema<GoogleBigtableAdminV2TypeStruct> =
+export const GoogleBigtableAdminV2TypeStruct: Schema.Codec<GoogleBigtableAdminV2TypeStruct> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.optional(
@@ -456,156 +1130,335 @@ export const GoogleBigtableAdminV2TypeStruct: Schema.Schema<GoogleBigtableAdminV
     }),
   ).annotate({
     identifier: "GoogleBigtableAdminV2TypeStruct",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStruct>;
+  }) as any as Schema.Codec<GoogleBigtableAdminV2TypeStruct>;
 
-export interface GoogleBigtableAdminV2TypeFloat32 {}
-
-export const GoogleBigtableAdminV2TypeFloat32: Schema.Schema<GoogleBigtableAdminV2TypeFloat32> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeFloat32",
-  });
-
-export interface GoogleBigtableAdminV2TypeMap {
-  /** The type of a map key. Only `Bytes`, `String`, and `Int64` are allowed as key types. */
-  keyType?: Type;
-  /** The type of the values in a map. */
-  valueType?: Type;
+export interface CheckConsistencyResponse {
+  /** True only if the token is consistent. A token is consistent if replication has caught up with the restrictions specified in the request. */
+  consistent?: boolean;
 }
 
-export const GoogleBigtableAdminV2TypeMap: Schema.Schema<GoogleBigtableAdminV2TypeMap> =
+export const CheckConsistencyResponse: Schema.Codec<CheckConsistencyResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistent: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CheckConsistencyResponse" });
+
+export interface HotTablet {
+  /** Tablet End Key (inclusive). */
+  endKey?: string;
+  /** The unique name of the hot tablet. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/hotTablets/[a-zA-Z0-9_-]*`. */
+  name?: string;
+  /** Tablet Start Key (inclusive). */
+  startKey?: string;
+  /** Name of the table that contains the tablet. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. */
+  tableName?: string;
+  /** Output only. The start time of the hot tablet. */
+  startTime?: string;
+  /** Output only. The average CPU usage spent by a node on this tablet over the start_time to end_time time range. The percentage is the amount of CPU used by the node to serve the tablet, from 0% (tablet was not interacted with) to 100% (the node spent all cycles serving the hot tablet). */
+  nodeCpuUsagePercent?: number;
+  /** Output only. The end time of the hot tablet. */
+  endTime?: string;
+}
+
+export const HotTablet: Schema.Codec<HotTablet> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endKey: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startKey: Schema.optional(Schema.String),
+    tableName: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    nodeCpuUsagePercent: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HotTablet" });
+
+export interface TieredStorageRule {
+  /** Include cells older than the given age. For the infrequent access tier, this value must be at least 30 days. */
+  includeIfOlderThan?: string;
+}
+
+export const TieredStorageRule: Schema.Codec<TieredStorageRule> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeIfOlderThan: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TieredStorageRule" });
+
+export interface TieredStorageConfig {
+  /** Rule to specify what data is stored in the infrequent access(IA) tier. The IA tier allows storing more data per node with reduced performance. */
+  infrequentAccess?: TieredStorageRule;
+}
+
+export const TieredStorageConfig: Schema.Codec<TieredStorageConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infrequentAccess: Schema.optional(TieredStorageRule),
+  }).annotate({ identifier: "TieredStorageConfig" });
+
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const Status: Schema.Codec<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
+
+export interface EncryptionInfo {
+  /** Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table. */
+  kmsKeyVersion?: string;
+  /** Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest. */
+  encryptionStatus?: Status;
+  /** Output only. The type of encryption used to protect this resource. */
+  encryptionType?:
+    | "ENCRYPTION_TYPE_UNSPECIFIED"
+    | "GOOGLE_DEFAULT_ENCRYPTION"
+    | "CUSTOMER_MANAGED_ENCRYPTION"
+    | (string & {});
+}
+
+export const EncryptionInfo: Schema.Codec<EncryptionInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyVersion: Schema.optional(Schema.String),
+    encryptionStatus: Schema.optional(Status),
+    encryptionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EncryptionInfo" });
+
+export interface ClusterState {
+  /** Output only. The state of replication for the table in this cluster. */
+  replicationState?:
+    | "STATE_NOT_KNOWN"
+    | "INITIALIZING"
+    | "PLANNED_MAINTENANCE"
+    | "UNPLANNED_MAINTENANCE"
+    | "READY"
+    | "READY_OPTIMIZING"
+    | (string & {});
+  /** Output only. The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS. */
+  encryptionInfo?: ReadonlyArray<EncryptionInfo>;
+}
+
+export const ClusterState: Schema.Codec<ClusterState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicationState: Schema.optional(Schema.String),
+    encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
+  }).annotate({ identifier: "ClusterState" });
+
+export interface TableStats {
+  /** How many rows are in the table. */
+  rowCount?: string;
+  /** How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field. */
+  averageCellsPerColumn?: number;
+  /** How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field. */
+  averageColumnsPerRow?: number;
+  /** This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out). */
+  logicalDataBytes?: string;
+}
+
+export const TableStats: Schema.Codec<TableStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowCount: Schema.optional(Schema.String),
+    averageCellsPerColumn: Schema.optional(Schema.Number),
+    averageColumnsPerRow: Schema.optional(Schema.Number),
+    logicalDataBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TableStats" });
+
+export interface ChangeStreamConfig {
+  /** How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity. */
+  retentionPeriod?: string;
+}
+
+export const ChangeStreamConfig: Schema.Codec<ChangeStreamConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionPeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChangeStreamConfig" });
+
+export interface AutomatedBackupPolicy {
+  /** Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90 days. */
+  retentionPeriod?: string;
+  /** How frequently automated backups should occur. The only supported value at this time is 24 hours. An undefined frequency is treated as 24 hours. */
+  frequency?: string;
+  /** Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format `projects/{project}/locations/{zone}`. You can set this field only for tables in Enterprise Plus instances. */
+  locations?: ReadonlyArray<string>;
+}
+
+export const AutomatedBackupPolicy: Schema.Codec<AutomatedBackupPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionPeriod: Schema.optional(Schema.String),
+    frequency: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AutomatedBackupPolicy" });
+
+export interface BackupInfo {
+  /** Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp. */
+  startTime?: string;
+  /** Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/ */
+  sourceBackup?: string;
+  /** Output only. Name of the backup. */
+  backup?: string;
+  /** Output only. Name of the table the backup was created from. */
+  sourceTable?: string;
+  /** Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp. */
+  endTime?: string;
+}
+
+export const BackupInfo: Schema.Codec<BackupInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    sourceBackup: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+    sourceTable: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupInfo" });
+
+export interface RestoreInfo {
+  /** The type of the restore source. */
+  sourceType?: "RESTORE_SOURCE_TYPE_UNSPECIFIED" | "BACKUP" | (string & {});
+  /** Information about the backup used to restore the table. The backup may no longer exist. */
+  backupInfo?: BackupInfo;
+}
+
+export const RestoreInfo: Schema.Codec<RestoreInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.String),
+    backupInfo: Schema.optional(BackupInfo),
+  }).annotate({ identifier: "RestoreInfo" });
+
+export interface Union {
+  /** Delete cells which would be deleted by any element of `rules`. */
+  rules?: ReadonlyArray<GcRule>;
+}
+
+export const Union: Schema.Codec<Union> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      keyType: Schema.optional(Type),
-      valueType: Schema.optional(Type),
+      rules: Schema.optional(Schema.Array(GcRule)),
+    }),
+  ).annotate({ identifier: "Union" }) as any as Schema.Codec<Union>;
+
+export interface Intersection {
+  /** Only delete cells which would be deleted by every element of `rules`. */
+  rules?: ReadonlyArray<GcRule>;
+}
+
+export const Intersection: Schema.Codec<Intersection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      rules: Schema.optional(Schema.Array(GcRule)),
     }),
   ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeMap",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeMap>;
+    identifier: "Intersection",
+  }) as any as Schema.Codec<Intersection>;
 
-export interface GoogleBigtableAdminV2TypeFloat64 {}
-
-export const GoogleBigtableAdminV2TypeFloat64: Schema.Schema<GoogleBigtableAdminV2TypeFloat64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GoogleBigtableAdminV2TypeFloat64",
-  });
-
-export interface GoogleBigtableAdminV2TypeInt64 {
-  /** The encoding to use when converting to or from lower level types. */
-  encoding?: GoogleBigtableAdminV2TypeInt64Encoding;
+export interface GcRule {
+  /** Delete all cells in a column except the most recent N. */
+  maxNumVersions?: number;
+  /** Delete cells that would be deleted by any nested rule. */
+  union?: Union;
+  /** Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity. */
+  maxAge?: string;
+  /** Delete cells that would be deleted by every nested rule. */
+  intersection?: Intersection;
 }
 
-export const GoogleBigtableAdminV2TypeInt64: Schema.Schema<GoogleBigtableAdminV2TypeInt64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" });
-
-export interface GoogleBigtableAdminV2TypeEnum {
-  /** The ID of the schema bundle that this enum is defined in. */
-  schemaBundleId?: string;
-  /** The fully qualified name of the protobuf enum message, including package. In the format of "foo.bar.EnumMessage". */
-  enumName?: string;
-}
-
-export const GoogleBigtableAdminV2TypeEnum: Schema.Schema<GoogleBigtableAdminV2TypeEnum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schemaBundleId: Schema.optional(Schema.String),
-    enumName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleBigtableAdminV2TypeEnum" });
-
-export interface Type {
-  /** Bytes */
-  bytesType?: GoogleBigtableAdminV2TypeBytes;
-  /** Proto */
-  protoType?: GoogleBigtableAdminV2TypeProto;
-  /** String */
-  stringType?: GoogleBigtableAdminV2TypeString;
-  /** Array */
-  arrayType?: GoogleBigtableAdminV2TypeArray;
-  /** Geography */
-  geographyType?: GoogleBigtableAdminV2TypeGeography;
-  /** Bool */
-  boolType?: GoogleBigtableAdminV2TypeBool;
-  /** Date */
-  dateType?: GoogleBigtableAdminV2TypeDate;
-  /** Timestamp */
-  timestampType?: GoogleBigtableAdminV2TypeTimestamp;
-  /** Aggregate */
-  aggregateType?: GoogleBigtableAdminV2TypeAggregate;
-  /** Int32 */
-  int32Type?: GoogleBigtableAdminV2TypeInt32;
-  /** Struct */
-  structType?: GoogleBigtableAdminV2TypeStruct;
-  /** Float32 */
-  float32Type?: GoogleBigtableAdminV2TypeFloat32;
-  /** Map */
-  mapType?: GoogleBigtableAdminV2TypeMap;
-  /** Float64 */
-  float64Type?: GoogleBigtableAdminV2TypeFloat64;
-  /** Int64 */
-  int64Type?: GoogleBigtableAdminV2TypeInt64;
-  /** Enum */
-  enumType?: GoogleBigtableAdminV2TypeEnum;
-}
-
-export const Type: Schema.Schema<Type> =
+export const GcRule: Schema.Codec<GcRule> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
-      protoType: Schema.optional(GoogleBigtableAdminV2TypeProto),
-      stringType: Schema.optional(GoogleBigtableAdminV2TypeString),
-      arrayType: Schema.optional(GoogleBigtableAdminV2TypeArray),
-      geographyType: Schema.optional(GoogleBigtableAdminV2TypeGeography),
-      boolType: Schema.optional(GoogleBigtableAdminV2TypeBool),
-      dateType: Schema.optional(GoogleBigtableAdminV2TypeDate),
-      timestampType: Schema.optional(GoogleBigtableAdminV2TypeTimestamp),
-      aggregateType: Schema.optional(GoogleBigtableAdminV2TypeAggregate),
-      int32Type: Schema.optional(GoogleBigtableAdminV2TypeInt32),
-      structType: Schema.optional(GoogleBigtableAdminV2TypeStruct),
-      float32Type: Schema.optional(GoogleBigtableAdminV2TypeFloat32),
-      mapType: Schema.optional(GoogleBigtableAdminV2TypeMap),
-      float64Type: Schema.optional(GoogleBigtableAdminV2TypeFloat64),
-      int64Type: Schema.optional(GoogleBigtableAdminV2TypeInt64),
-      enumType: Schema.optional(GoogleBigtableAdminV2TypeEnum),
+      maxNumVersions: Schema.optional(Schema.Number),
+      union: Schema.optional(Union),
+      maxAge: Schema.optional(Schema.String),
+      intersection: Schema.optional(Intersection),
     }),
-  ).annotate({ identifier: "Type" }) as any as Schema.Schema<Type>;
+  ).annotate({ identifier: "GcRule" }) as any as Schema.Codec<GcRule>;
+
+export interface ColumnFamilyStats {
+  /** How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field. */
+  averageCellsPerColumn?: number;
+  /** How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field. */
+  averageColumnsPerRow?: number;
+  /** How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out). */
+  logicalDataBytes?: string;
+}
+
+export const ColumnFamilyStats: Schema.Codec<ColumnFamilyStats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    averageCellsPerColumn: Schema.optional(Schema.Number),
+    averageColumnsPerRow: Schema.optional(Schema.Number),
+    logicalDataBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ColumnFamilyStats" });
 
 export interface ColumnFamily {
-  /** Output only. Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above. */
-  stats?: ColumnFamilyStats;
   /** Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family. */
   gcRule?: GcRule;
   /** The type of data stored in each of this family's cell values, including its full encoding. If omitted, the family only serves raw untyped bytes. For now, only the `Aggregate` type is supported. `Aggregate` can only be set at family creation and is immutable afterwards. This field is mutually exclusive with `sql_type`. If `value_type` is `Aggregate`, written data must be compatible with: * `value_type.input_type` for `AddInput` mutations */
   valueType?: Type;
+  /** Output only. Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above. */
+  stats?: ColumnFamilyStats;
 }
 
-export const ColumnFamily: Schema.Schema<ColumnFamily> =
+export const ColumnFamily: Schema.Codec<ColumnFamily> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stats: Schema.optional(ColumnFamilyStats),
     gcRule: Schema.optional(GcRule),
     valueType: Schema.optional(Type),
+    stats: Schema.optional(ColumnFamilyStats),
   }).annotate({ identifier: "ColumnFamily" });
 
-export interface Modification {
-  /** Update an existing column family to the specified schema, or fail if no column family exists with the given ID. */
-  update?: ColumnFamily;
-  /** Optional. A mask specifying which fields (e.g. `gc_rule`) in the `update` mod should be updated, ignored for other modification types. If unset or empty, we treat it as updating `gc_rule` to be backward compatible. */
-  updateMask?: string;
-  /** Drop (delete) the column family with the given ID, or fail if no such family exists. */
-  drop?: boolean;
-  /** Create a new column family with the specified schema, or fail if one already exists with the given ID. */
-  create?: ColumnFamily;
-  /** The ID of the column family to be modified. */
-  id?: string;
+export interface Table {
+  /** Rules to specify what data is stored in each storage tier. Different tiers store data differently, providing different trade-offs between cost and performance. Different parts of a table can be stored separately on different tiers. If a config is specified, tiered storage is enabled for this table. Otherwise, tiered storage is disabled. Only SSD instances can configure tiered storage. */
+  tieredStorageConfig?: TieredStorageConfig;
+  /** The row key schema for this table. The schema is used to decode the raw row key bytes into a structured format. The order of field declarations in this schema is important, as it reflects how the raw row key bytes are structured. Currently, this only affects how the key is read via a GoogleSQL query from the ExecuteQuery API. For a SQL query, the _key column is still read as raw bytes. But queries can reference the key fields by name, which will be decoded from _key using provided type and encoding. Queries that reference key fields will fail if they encounter an invalid row key. For example, if _key = "some_id#2024-04-30#\x00\x13\x00\xf3" with the following schema: { fields { field_name: "id" type { string { encoding: utf8_bytes {} } } } fields { field_name: "date" type { string { encoding: utf8_bytes {} } } } fields { field_name: "product_code" type { int64 { encoding: big_endian_bytes {} } } } encoding { delimited_bytes { delimiter: "#" } } } The decoded key parts would be: id = "some_id", date = "2024-04-30", product_code = 1245427 The query "SELECT _key, product_code FROM table" will return two columns: /------------------------------------------------------\ | _key | product_code | | --------------------------------------|--------------| | "some_id#2024-04-30#\x00\x13\x00\xf3" | 1245427 | \------------------------------------------------------/ The schema has the following invariants: (1) The decoded field values are order-preserved. For read, the field values will be decoded in sorted mode from the raw bytes. (2) Every field in the schema must specify a non-empty name. (3) Every field must specify a type with an associated encoding. The type is limited to scalar types only: Array, Map, Aggregate, and Struct are not allowed. (4) The field names must not collide with existing column family names and reserved keywords "_key" and "_timestamp". The following update operations are allowed for row_key_schema: - Update from an empty schema to a new schema. - Remove the existing schema. This operation requires setting the `ignore_warnings` flag to `true`, since it might be a backward incompatible change. Without the flag, the update request will fail with an INVALID_ARGUMENT error. Any other row key schema update operation (e.g. update existing schema columns names or types) is currently unsupported. */
+  rowKeySchema?: GoogleBigtableAdminV2TypeStruct;
+  /** Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL` */
+  clusterStates?: Record<string, ClusterState>;
+  /** Output only. Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above. */
+  stats?: TableStats;
+  /** The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` */
+  name?: string;
+  /** If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained. */
+  changeStreamConfig?: ChangeStreamConfig;
+  /** Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs. */
+  deletionProtection?: boolean;
+  /** If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled. */
+  automatedBackupPolicy?: AutomatedBackupPolicy;
+  /** Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore. */
+  restoreInfo?: RestoreInfo;
+  /** The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL` */
+  columnFamilies?: Record<string, ColumnFamily>;
+  /** Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`. */
+  granularity?: "TIMESTAMP_GRANULARITY_UNSPECIFIED" | "MILLIS" | (string & {});
 }
 
-export const Modification: Schema.Schema<Modification> =
+export const Table: Schema.Codec<Table> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    update: Schema.optional(ColumnFamily),
-    updateMask: Schema.optional(Schema.String),
-    drop: Schema.optional(Schema.Boolean),
-    create: Schema.optional(ColumnFamily),
-    id: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Modification" });
+    tieredStorageConfig: Schema.optional(TieredStorageConfig),
+    rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
+    clusterStates: Schema.optional(Schema.Record(Schema.String, ClusterState)),
+    stats: Schema.optional(TableStats),
+    name: Schema.optional(Schema.String),
+    changeStreamConfig: Schema.optional(ChangeStreamConfig),
+    deletionProtection: Schema.optional(Schema.Boolean),
+    automatedBackupPolicy: Schema.optional(AutomatedBackupPolicy),
+    restoreInfo: Schema.optional(RestoreInfo),
+    columnFamilies: Schema.optional(Schema.Record(Schema.String, ColumnFamily)),
+    granularity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Table" });
+
+export interface ListTablesResponse {
+  /** The tables present in the requested instance. */
+  tables?: ReadonlyArray<Table>;
+  /** Set if not all tables could be returned in a single response. Pass this value to `page_token` in another request to get the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListTablesResponse: Schema.Codec<ListTablesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tables: Schema.optional(Schema.Array(Table)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTablesResponse" });
 
 export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   /** Prefixes for qualifiers to be included in the AuthorizedView. Every qualifier starting with one of these prefixes is included in the AuthorizedView. To provide access to all qualifiers, include the empty string as a prefix (""). */
@@ -614,7 +1467,7 @@ export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   qualifiers?: ReadonlyArray<string>;
 }
 
-export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
+export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     qualifierPrefixes: Schema.optional(Schema.Array(Schema.String)),
     qualifiers: Schema.optional(Schema.Array(Schema.String)),
@@ -622,205 +1475,183 @@ export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Schema<Goo
     identifier: "GoogleBigtableAdminV2AuthorizedViewFamilySubsets",
   });
 
-export interface Instance {
-  /** Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes. */
-  labels?: Record<string, string>;
-  /** Output only. The current state of the instance. */
-  state?: "STATE_NOT_KNOWN" | "READY" | "CREATING" | (string & {});
-  /** Output only. A commit timestamp representing when this Instance was created. For instances created before this field was added (August 2021), this value is `seconds: 0, nanos: 1`. */
-  createTime?: string;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** The type of the instance. Defaults to `PRODUCTION`. */
-  type?: "TYPE_UNSPECIFIED" | "PRODUCTION" | "DEVELOPMENT" | (string & {});
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: - "123/environment": "production", - "123/costCenter": "marketing" Tags and Labels (above) are both used to bind metadata to resources, with different use-cases. See https://cloud.google.com/resource-manager/docs/tags/tags-overview for an in-depth overview on the difference between tags and labels. */
-  tags?: Record<string, string>;
-  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
-  name?: string;
-  /** Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion. */
-  displayName?: string;
-  /** Optional. The edition of the instance. See Edition for details. */
-  edition?:
-    | "EDITION_UNSPECIFIED"
-    | "ENTERPRISE"
-    | "ENTERPRISE_PLUS"
-    | (string & {});
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
+export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
+  /** Map from column family name to the columns in this family to be included in the AuthorizedView. */
+  familySubsets?: Record<
+    string,
+    GoogleBigtableAdminV2AuthorizedViewFamilySubsets
+  >;
+  /** Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix (""). */
+  rowPrefixes?: ReadonlyArray<string>;
 }
 
-export const Instance: Schema.Schema<Instance> =
+export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Codec<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    state: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-    type: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    edition: Schema.optional(Schema.String),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Instance" });
+    familySubsets: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleBigtableAdminV2AuthorizedViewFamilySubsets,
+      ),
+    ),
+    rowPrefixes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView" });
 
-export interface PartialUpdateInstanceRequest {
-  /** Required. The Instance which will (partially) replace the current value. */
-  instance?: Instance;
-  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
-  updateMask?: string;
+export interface AuthorizedView {
+  /** Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` */
+  name?: string;
+  /** The etag for this AuthorizedView. If this is provided on update, it must match the server's etag. The server returns ABORTED error on a mismatched etag. */
+  etag?: string;
+  /** Set to true to make the AuthorizedView protected against deletion. The parent Table and containing Instance cannot be deleted if an AuthorizedView has this bit set. */
+  deletionProtection?: boolean;
+  /** An AuthorizedView permitting access to an explicit subset of a Table. */
+  subsetView?: GoogleBigtableAdminV2AuthorizedViewSubsetView;
 }
 
-export const PartialUpdateInstanceRequest: Schema.Schema<PartialUpdateInstanceRequest> =
+export const AuthorizedView: Schema.Codec<AuthorizedView> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    deletionProtection: Schema.optional(Schema.Boolean),
+    subsetView: Schema.optional(GoogleBigtableAdminV2AuthorizedViewSubsetView),
+  }).annotate({ identifier: "AuthorizedView" });
+
+export interface UpdateAuthorizedViewRequest {
+  /** Required. The AuthorizedView to update. The `name` in `authorized_view` is used to identify the AuthorizedView. AuthorizedView name must in this format: `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
+  authorizedView?: AuthorizedView;
+  /** Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special value `*` means to overwrite all fields (including fields not set in the request). */
+  updateMask?: string;
+  /** Optional. If true, ignore the safety checks when updating the AuthorizedView. */
+  ignoreWarnings?: boolean;
+}
+
+export const UpdateAuthorizedViewRequest: Schema.Codec<UpdateAuthorizedViewRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedView: Schema.optional(AuthorizedView),
+    updateMask: Schema.optional(Schema.String),
+    ignoreWarnings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UpdateAuthorizedViewRequest" });
+
+export interface CreateInstanceRequest {
+  /** Required. The instance to create. Fields marked `OutputOnly` must be left blank. */
+  instance?: Instance;
+  /** Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`. */
+  parent?: string;
+  /** Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`. */
+  instanceId?: string;
+  /** Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. */
+  clusters?: Record<string, Cluster>;
+}
+
+export const CreateInstanceRequest: Schema.Codec<CreateInstanceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Instance),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PartialUpdateInstanceRequest" });
+    parent: Schema.optional(Schema.String),
+    instanceId: Schema.optional(Schema.String),
+    clusters: Schema.optional(Schema.Record(Schema.String, Cluster)),
+  }).annotate({ identifier: "CreateInstanceRequest" });
 
-export interface BackupInfo {
-  /** Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/ */
-  sourceBackup?: string;
-  /** Output only. Name of the table the backup was created from. */
-  sourceTable?: string;
-  /** Output only. Name of the backup. */
-  backup?: string;
-  /** Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp. */
-  startTime?: string;
-  /** Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp. */
-  endTime?: string;
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
 }
 
-export const BackupInfo: Schema.Schema<BackupInfo> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sourceBackup: Schema.optional(Schema.String),
-    sourceTable: Schema.optional(Schema.String),
-    backup: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BackupInfo" });
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
-export interface ChangeStreamConfig {
-  /** How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity. */
-  retentionPeriod?: string;
-}
-
-export const ChangeStreamConfig: Schema.Schema<ChangeStreamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    retentionPeriod: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ChangeStreamConfig" });
-
-export interface UpdateTableMetadata {
+export interface CreateSchemaBundleMetadata {
   /** The time at which the operation failed or was completed successfully. */
   finishTime?: string;
-  /** The name of the table being updated. */
+  /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
   name?: string;
   /** The time at which the original request was received. */
   requestTime?: string;
-  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** If set, the time at which this operation finished or was canceled. DEPRECATED: Use finish_time instead. */
-  endTime?: string;
 }
 
-export const UpdateTableMetadata: Schema.Schema<UpdateTableMetadata> =
+export const CreateSchemaBundleMetadata: Schema.Codec<CreateSchemaBundleMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     requestTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateTableMetadata" });
+  }).annotate({ identifier: "CreateSchemaBundleMetadata" });
 
-export interface GetPolicyOptions {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  requestedPolicyVersion?: number;
-}
-
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestedPolicyVersion: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GetPolicyOptions" });
-
-export interface ProtoSchema {
-  /** Required. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto), which could include multiple proto files. To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with `--include_imports` and `--descriptor_set_out`. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.pb \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
-  protoDescriptors?: string;
-}
-
-export const ProtoSchema: Schema.Schema<ProtoSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    protoDescriptors: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ProtoSchema" });
-
-export interface SchemaBundle {
-  /** Schema for Protobufs. */
-  protoSchema?: ProtoSchema;
-  /** Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
-  name?: string;
-  /** Optional. The etag for this schema bundle. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
-  etag?: string;
-}
-
-export const SchemaBundle: Schema.Schema<SchemaBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    protoSchema: Schema.optional(ProtoSchema),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SchemaBundle" });
-
-export interface ListSchemaBundlesResponse {
-  /** The schema bundles from the specified table. */
-  schemaBundles?: ReadonlyArray<SchemaBundle>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+export interface ListClustersResponse {
+  /** Locations from which Cluster information could not be retrieved, due to an outage or some other transient condition. Clusters from these locations may be missing from `clusters`, or may only have partial information returned. Values are of the form `projects//locations/` */
+  failedLocations?: ReadonlyArray<string>;
+  /** DEPRECATED: This field is unused and ignored. */
   nextPageToken?: string;
+  /** The list of requested clusters. */
+  clusters?: ReadonlyArray<Cluster>;
 }
 
-export const ListSchemaBundlesResponse: Schema.Schema<ListSchemaBundlesResponse> =
+export const ListClustersResponse: Schema.Codec<ListClustersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListSchemaBundlesResponse" });
+    clusters: Schema.optional(Schema.Array(Cluster)),
+  }).annotate({ identifier: "ListClustersResponse" });
 
-export interface AutoscalingTargets {
-  /** The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error. */
-  cpuUtilizationPercent?: number;
-  /** The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD. */
-  storageUtilizationGibPerNode?: number;
-}
+export interface GenerateConsistencyTokenRequest {}
 
-export const AutoscalingTargets: Schema.Schema<AutoscalingTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cpuUtilizationPercent: Schema.optional(Schema.Number),
-    storageUtilizationGibPerNode: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "AutoscalingTargets" });
-
-export interface RestoreTableRequest {
-  /** Required. The id of the table to create and restore to. This table must not already exist. The `table_id` appended to `parent` forms the full table name of the form `projects//instances//tables/`. */
-  tableId?: string;
-  /** Name of the backup from which to restore. Values are of the form `projects//instances//clusters//backups/`. */
-  backup?: string;
-}
-
-export const RestoreTableRequest: Schema.Schema<RestoreTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tableId: Schema.optional(Schema.String),
-    backup: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RestoreTableRequest" });
-
-export interface MemoryConfig {}
-
-export const MemoryConfig: Schema.Schema<MemoryConfig> =
+export const GenerateConsistencyTokenRequest: Schema.Codec<GenerateConsistencyTokenRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "MemoryConfig",
+    identifier: "GenerateConsistencyTokenRequest",
   });
 
-export interface TieredStorageRule {
-  /** Include cells older than the given age. For the infrequent access tier, this value must be at least 30 days. */
-  includeIfOlderThan?: string;
+export interface CopyBackupMetadata {
+  /** The progress of the CopyBackup operation. */
+  progress?: OperationProgress;
+  /** Information about the source backup that is being copied from. */
+  sourceBackupInfo?: BackupInfo;
+  /** The name of the backup being created through the copy operation. Values are of the form `projects//instances//clusters//backups/`. */
+  name?: string;
 }
 
-export const TieredStorageRule: Schema.Schema<TieredStorageRule> =
+export const CopyBackupMetadata: Schema.Codec<CopyBackupMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    includeIfOlderThan: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TieredStorageRule" });
+    progress: Schema.optional(OperationProgress),
+    sourceBackupInfo: Schema.optional(BackupInfo),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CopyBackupMetadata" });
+
+export interface Modification {
+  /** Create a new column family with the specified schema, or fail if one already exists with the given ID. */
+  create?: ColumnFamily;
+  /** Update an existing column family to the specified schema, or fail if no column family exists with the given ID. */
+  update?: ColumnFamily;
+  /** Optional. A mask specifying which fields (e.g. `gc_rule`) in the `update` mod should be updated, ignored for other modification types. If unset or empty, we treat it as updating `gc_rule` to be backward compatible. */
+  updateMask?: string;
+  /** The ID of the column family to be modified. */
+  id?: string;
+  /** Drop (delete) the column family with the given ID, or fail if no such family exists. */
+  drop?: boolean;
+}
+
+export const Modification: Schema.Codec<Modification> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    create: Schema.optional(ColumnFamily),
+    update: Schema.optional(ColumnFamily),
+    updateMask: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    drop: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Modification" });
+
+export interface CreateInstanceMetadata {
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The request that prompted the initiation of this CreateInstance operation. */
+  originalRequest?: CreateInstanceRequest;
+}
+
+export const CreateInstanceMetadata: Schema.Codec<CreateInstanceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(CreateInstanceRequest),
+  }).annotate({ identifier: "CreateInstanceMetadata" });
 
 export interface TableProgress {
   /** Estimate of the size of the table to be copied. */
@@ -836,12 +1667,223 @@ export interface TableProgress {
     | (string & {});
 }
 
-export const TableProgress: Schema.Schema<TableProgress> =
+export const TableProgress: Schema.Codec<TableProgress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     estimatedSizeBytes: Schema.optional(Schema.String),
     estimatedCopiedBytes: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "TableProgress" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface Expr {
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+}
+
+export const Expr: Schema.Codec<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface GenerateConsistencyTokenResponse {
+  /** The generated consistency token. */
+  consistencyToken?: string;
+}
+
+export const GenerateConsistencyTokenResponse: Schema.Codec<GenerateConsistencyTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistencyToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateConsistencyTokenResponse" });
+
+export interface UpdateClusterMetadata {
+  /** The request that prompted the initiation of this UpdateCluster operation. */
+  originalRequest?: Cluster;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+}
+
+export const UpdateClusterMetadata: Schema.Codec<UpdateClusterMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(Cluster),
+    finishTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateClusterMetadata" });
+
+export interface CreateClusterRequest {
+  /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
+  parent?: string;
+  /** Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. */
+  clusterId?: string;
+  /** Required. The cluster to be created. Fields marked `OutputOnly` must be left blank. */
+  cluster?: Cluster;
+}
+
+export const CreateClusterRequest: Schema.Codec<CreateClusterRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    cluster: Schema.optional(Cluster),
+  }).annotate({ identifier: "CreateClusterRequest" });
+
+export interface CreateClusterMetadata {
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** Keys: the full `name` of each table that existed in the instance when CreateCluster was first called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be created in the new cluster by that API call, not this one. Values: information on how much of a table's data has been copied to the newly-created cluster so far. */
+  tables?: Record<string, TableProgress>;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The request that prompted the initiation of this CreateCluster operation. */
+  originalRequest?: CreateClusterRequest;
+}
+
+export const CreateClusterMetadata: Schema.Codec<CreateClusterMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(CreateClusterRequest),
+  }).annotate({ identifier: "CreateClusterMetadata" });
+
+export interface ListMaterializedViewsResponse {
+  /** The list of requested materialized views. */
+  materializedViews?: ReadonlyArray<MaterializedView>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListMaterializedViewsResponse: Schema.Codec<ListMaterializedViewsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    materializedViews: Schema.optional(Schema.Array(MaterializedView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMaterializedViewsResponse" });
+
+export interface RestoreTableRequest {
+  /** Required. The id of the table to create and restore to. This table must not already exist. The `table_id` appended to `parent` forms the full table name of the form `projects//instances//tables/`. */
+  tableId?: string;
+  /** Name of the backup from which to restore. Values are of the form `projects//instances//clusters//backups/`. */
+  backup?: string;
+}
+
+export const RestoreTableRequest: Schema.Codec<RestoreTableRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableId: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestoreTableRequest" });
+
+export interface ListAuthorizedViewsResponse {
+  /** Set if not all tables could be returned in a single response. Pass this value to `page_token` in another request to get the next page of results. */
+  nextPageToken?: string;
+  /** The AuthorizedViews present in the requested table. */
+  authorizedViews?: ReadonlyArray<AuthorizedView>;
+}
+
+export const ListAuthorizedViewsResponse: Schema.Codec<ListAuthorizedViewsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
+  }).annotate({ identifier: "ListAuthorizedViewsResponse" });
+
+export interface ModifyColumnFamiliesRequest {
+  /** Required. Modifications to be atomically applied to the specified table's families. Entries are applied in order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to the same family, for example). */
+  modifications?: ReadonlyArray<Modification>;
+  /** Optional. If true, ignore safety checks when modifying the column families. */
+  ignoreWarnings?: boolean;
+}
+
+export const ModifyColumnFamiliesRequest: Schema.Codec<ModifyColumnFamiliesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modifications: Schema.optional(Schema.Array(Modification)),
+    ignoreWarnings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ModifyColumnFamiliesRequest" });
+
+export interface UpdateLogicalViewMetadata {
+  /** DEPRECATED: Use request_time instead. */
+  startTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The request that prompted the initiation of this UpdateLogicalView operation. */
+  originalRequest?: UpdateLogicalViewRequest;
+}
+
+export const UpdateLogicalViewMetadata: Schema.Codec<UpdateLogicalViewMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(UpdateLogicalViewRequest),
+  }).annotate({ identifier: "UpdateLogicalViewMetadata" });
+
+export interface RestoreTableMetadata {
+  /** The progress of the RestoreTable operation. */
+  progress?: OperationProgress;
+  /** If exists, the name of the long-running operation that will be used to track the post-restore optimization process to optimize the performance of the restored table. The metadata type of the long-running operation is OptimizeRestoredTableMetadata. The response type is Empty. This long-running operation may be automatically created by the system if applicable after the RestoreTable long-running operation completes successfully. This operation may not be created if the table is already optimized or the restore was not successful. */
+  optimizeTableOperationName?: string;
+  /** Name of the table being created and restored to. */
+  name?: string;
+  /** The type of the restore source. */
+  sourceType?: "RESTORE_SOURCE_TYPE_UNSPECIFIED" | "BACKUP" | (string & {});
+  backupInfo?: BackupInfo;
+}
+
+export const RestoreTableMetadata: Schema.Codec<RestoreTableMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progress: Schema.optional(OperationProgress),
+    optimizeTableOperationName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    sourceType: Schema.optional(Schema.String),
+    backupInfo: Schema.optional(BackupInfo),
+  }).annotate({ identifier: "RestoreTableMetadata" });
+
+export interface SchemaBundle {
+  /** Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
+  name?: string;
+  /** Schema for Protobufs. */
+  protoSchema?: ProtoSchema;
+  /** Optional. The etag for this schema bundle. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
+  etag?: string;
+}
+
+export const SchemaBundle: Schema.Codec<SchemaBundle> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    protoSchema: Schema.optional(ProtoSchema),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SchemaBundle" });
+
+export interface ListSchemaBundlesResponse {
+  /** The schema bundles from the specified table. */
+  schemaBundles?: ReadonlyArray<SchemaBundle>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListSchemaBundlesResponse: Schema.Codec<ListSchemaBundlesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSchemaBundlesResponse" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -855,43 +1897,24 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
     service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
-
-export interface Expr {
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-}
-
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expression: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -902,7 +1925,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -920,7 +1943,7 @@ export interface Policy {
   bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     version: Schema.optional(Schema.Number),
@@ -928,541 +1951,122 @@ export const Policy: Schema.Schema<Policy> =
     bindings: Schema.optional(Schema.Array(Binding)),
   }).annotate({ identifier: "Policy" });
 
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
-}
-
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface EncryptionConfig {
-  /** Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` */
-  kmsKeyName?: string;
-}
-
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kmsKeyName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "EncryptionConfig" });
-
-export interface AutoscalingLimits {
-  /** Required. Minimum number of nodes to scale down to. */
-  minServeNodes?: number;
-  /** Required. Maximum number of nodes to scale up to. */
-  maxServeNodes?: number;
-}
-
-export const AutoscalingLimits: Schema.Schema<AutoscalingLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    minServeNodes: Schema.optional(Schema.Number),
-    maxServeNodes: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "AutoscalingLimits" });
-
-export interface ClusterAutoscalingConfig {
-  /** Required. Autoscaling limits for this cluster. */
-  autoscalingLimits?: AutoscalingLimits;
-  /** Required. Autoscaling targets for this cluster. */
-  autoscalingTargets?: AutoscalingTargets;
-}
-
-export const ClusterAutoscalingConfig: Schema.Schema<ClusterAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    autoscalingLimits: Schema.optional(AutoscalingLimits),
-    autoscalingTargets: Schema.optional(AutoscalingTargets),
-  }).annotate({ identifier: "ClusterAutoscalingConfig" });
-
-export interface ClusterConfig {
-  /** Autoscaling configuration for this cluster. */
-  clusterAutoscalingConfig?: ClusterAutoscalingConfig;
-}
-
-export const ClusterConfig: Schema.Schema<ClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
-  }).annotate({ identifier: "ClusterConfig" });
-
-export interface Cluster {
-  /** Immutable. The encryption configuration for CMEK-protected clusters. */
-  encryptionConfig?: EncryptionConfig;
-  /** Output only. The current state of the cluster. */
-  state?:
-    | "STATE_NOT_KNOWN"
-    | "READY"
-    | "CREATING"
-    | "RESIZING"
-    | "DISABLED"
-    | (string & {});
-  /** Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden. */
-  defaultStorageType?:
-    | "STORAGE_TYPE_UNSPECIFIED"
-    | "SSD"
-    | "HDD"
-    | (string & {});
-  /** Immutable. The node scaling factor of this cluster. */
-  nodeScalingFactor?:
-    | "NODE_SCALING_FACTOR_UNSPECIFIED"
-    | "NODE_SCALING_FACTOR_1X"
-    | "NODE_SCALING_FACTOR_2X"
-    | (string & {});
-  /** Configuration for this cluster. */
-  clusterConfig?: ClusterConfig;
-  /** Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`. */
-  location?: string;
-  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
-  name?: string;
-  /** The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization. */
-  serveNodes?: number;
-}
-
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptionConfig: Schema.optional(EncryptionConfig),
-    state: Schema.optional(Schema.String),
-    defaultStorageType: Schema.optional(Schema.String),
-    nodeScalingFactor: Schema.optional(Schema.String),
-    clusterConfig: Schema.optional(ClusterConfig),
-    location: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    serveNodes: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Cluster" });
-
-export interface CreateClusterRequest {
-  /** Required. The cluster to be created. Fields marked `OutputOnly` must be left blank. */
-  cluster?: Cluster;
-  /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
-  parent?: string;
-  /** Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. */
-  clusterId?: string;
-}
-
-export const CreateClusterRequest: Schema.Schema<CreateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cluster: Schema.optional(Cluster),
-    parent: Schema.optional(Schema.String),
-    clusterId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateClusterRequest" });
-
-export interface CreateClusterMetadata {
-  /** The request that prompted the initiation of this CreateCluster operation. */
-  originalRequest?: CreateClusterRequest;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** Keys: the full `name` of each table that existed in the instance when CreateCluster was first called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be created in the new cluster by that API call, not this one. Values: information on how much of a table's data has been copied to the newly-created cluster so far. */
-  tables?: Record<string, TableProgress>;
-}
-
-export const CreateClusterMetadata: Schema.Schema<CreateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(CreateClusterRequest),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-    tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
-  }).annotate({ identifier: "CreateClusterMetadata" });
-
-export interface PartialUpdateClusterRequest {
-  /** Required. The subset of Cluster fields which should be replaced. */
-  updateMask?: string;
-  /** Required. The Cluster which contains the partial updates to be applied, subject to the update_mask. */
-  cluster?: Cluster;
-}
-
-export const PartialUpdateClusterRequest: Schema.Schema<PartialUpdateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
-    cluster: Schema.optional(Cluster),
-  }).annotate({ identifier: "PartialUpdateClusterRequest" });
-
-export interface PartialUpdateClusterMetadata {
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The original request for PartialUpdateCluster. */
-  originalRequest?: PartialUpdateClusterRequest;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const PartialUpdateClusterMetadata: Schema.Schema<PartialUpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    finishTime: Schema.optional(Schema.String),
-    originalRequest: Schema.optional(PartialUpdateClusterRequest),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PartialUpdateClusterMetadata" });
-
-export interface RestoreInfo {
-  /** The type of the restore source. */
-  sourceType?: "RESTORE_SOURCE_TYPE_UNSPECIFIED" | "BACKUP" | (string & {});
-  /** Information about the backup used to restore the table. The backup may no longer exist. */
-  backupInfo?: BackupInfo;
-}
-
-export const RestoreInfo: Schema.Schema<RestoreInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sourceType: Schema.optional(Schema.String),
-    backupInfo: Schema.optional(BackupInfo),
-  }).annotate({ identifier: "RestoreInfo" });
-
-export interface GenerateConsistencyTokenRequest {}
-
-export const GenerateConsistencyTokenRequest: Schema.Schema<GenerateConsistencyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "GenerateConsistencyTokenRequest",
-  });
-
-export interface TieredStorageConfig {
-  /** Rule to specify what data is stored in the infrequent access(IA) tier. The IA tier allows storing more data per node with reduced performance. */
-  infrequentAccess?: TieredStorageRule;
-}
-
-export const TieredStorageConfig: Schema.Schema<TieredStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    infrequentAccess: Schema.optional(TieredStorageRule),
-  }).annotate({ identifier: "TieredStorageConfig" });
-
-export interface GetIamPolicyRequest {
-  /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
-  options?: GetPolicyOptions;
-}
-
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    options: Schema.optional(GetPolicyOptions),
-  }).annotate({ identifier: "GetIamPolicyRequest" });
-
-export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
-  /** Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix (""). */
-  rowPrefixes?: ReadonlyArray<string>;
-  /** Map from column family name to the columns in this family to be included in the AuthorizedView. */
-  familySubsets?: Record<
-    string,
-    GoogleBigtableAdminV2AuthorizedViewFamilySubsets
-  >;
-}
-
-export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rowPrefixes: Schema.optional(Schema.Array(Schema.String)),
-    familySubsets: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        GoogleBigtableAdminV2AuthorizedViewFamilySubsets,
-      ),
-    ),
-  }).annotate({ identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView" });
-
-export interface AuthorizedView {
-  /** Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` */
-  name?: string;
-  /** The etag for this AuthorizedView. If this is provided on update, it must match the server's etag. The server returns ABORTED error on a mismatched etag. */
-  etag?: string;
-  /** An AuthorizedView permitting access to an explicit subset of a Table. */
-  subsetView?: GoogleBigtableAdminV2AuthorizedViewSubsetView;
-  /** Set to true to make the AuthorizedView protected against deletion. The parent Table and containing Instance cannot be deleted if an AuthorizedView has this bit set. */
-  deletionProtection?: boolean;
-}
-
-export const AuthorizedView: Schema.Schema<AuthorizedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    subsetView: Schema.optional(GoogleBigtableAdminV2AuthorizedViewSubsetView),
-    deletionProtection: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "AuthorizedView" });
-
-export interface CreateAuthorizedViewRequest {
-  /** Required. The AuthorizedView to create. */
-  authorizedView?: AuthorizedView;
-  /** Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  parent?: string;
-  /** Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`. */
-  authorizedViewId?: string;
-}
-
-export const CreateAuthorizedViewRequest: Schema.Schema<CreateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorizedView: Schema.optional(AuthorizedView),
-    parent: Schema.optional(Schema.String),
-    authorizedViewId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateAuthorizedViewRequest" });
-
-export interface CreateAuthorizedViewMetadata {
-  /** The request that prompted the initiation of this CreateAuthorizedView operation. */
-  originalRequest?: CreateAuthorizedViewRequest;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const CreateAuthorizedViewMetadata: Schema.Schema<CreateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(CreateAuthorizedViewRequest),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateAuthorizedViewMetadata" });
-
-export interface RowAffinity {}
-
-export const RowAffinity: Schema.Schema<RowAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RowAffinity",
-  });
-
-export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    locationId: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Location" });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Location)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
-  /** Output only. Reporting the current size of the memory layer in GiB. */
-  storageSizeGib?: number;
-}
-
-export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storageSizeGib: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" });
-
-export interface MemoryLayer {
-  /** Output only. The current state of the memory layer. */
-  state?:
-    | "STATE_NOT_KNOWN"
-    | "READY"
-    | "ENABLING"
-    | "RESIZING"
-    | "DISABLED"
-    | (string & {});
-  /** Identifier. Name of the memory layer. This is always: "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer". */
-  name?: string;
-  /** The configuration of this memory layer. Set an empty `memory_config` to enable the memory layer. Unset this to disable the memory layer. */
-  memoryConfig?: GoogleBigtableAdminV2MemoryLayerMemoryConfig;
-  /** Optional. The etag for this memory layer. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
-  etag?: string;
-}
-
-export const MemoryLayer: Schema.Schema<MemoryLayer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    memoryConfig: Schema.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MemoryLayer" });
-
-export interface UpdateMemoryLayerRequest {
-  /** Required. The memory layer to update. The memory layer's `name` format is as follows: `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
-  memoryLayer?: MemoryLayer;
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-}
-
-export const UpdateMemoryLayerRequest: Schema.Schema<UpdateMemoryLayerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    memoryLayer: Schema.optional(MemoryLayer),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateMemoryLayerRequest" });
-
-export interface ListClustersResponse {
-  /** The list of requested clusters. */
-  clusters?: ReadonlyArray<Cluster>;
-  /** Locations from which Cluster information could not be retrieved, due to an outage or some other transient condition. Clusters from these locations may be missing from `clusters`, or may only have partial information returned. Values are of the form `projects//locations/` */
-  failedLocations?: ReadonlyArray<string>;
-  /** DEPRECATED: This field is unused and ignored. */
-  nextPageToken?: string;
-}
-
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clusters: Schema.optional(Schema.Array(Cluster)),
-    failedLocations: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListClustersResponse" });
-
-export interface StandardIsolation {
-  /** The priority of requests sent using this app profile. */
-  priority?:
-    | "PRIORITY_UNSPECIFIED"
-    | "PRIORITY_LOW"
-    | "PRIORITY_MEDIUM"
-    | "PRIORITY_HIGH"
-    | (string & {});
-  /** Optional. The memory config to use for requests sent using this app profile. */
-  memoryConfig?: MemoryConfig;
-}
-
-export const StandardIsolation: Schema.Schema<StandardIsolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    priority: Schema.optional(Schema.String),
-    memoryConfig: Schema.optional(MemoryConfig),
-  }).annotate({ identifier: "StandardIsolation" });
-
-export interface DataBoostIsolationReadOnly {
-  /** The Compute Billing Owner for this Data Boost App Profile. */
-  computeBillingOwner?:
-    | "COMPUTE_BILLING_OWNER_UNSPECIFIED"
-    | "HOST_PAYS"
-    | (string & {});
-}
-
-export const DataBoostIsolationReadOnly: Schema.Schema<DataBoostIsolationReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    computeBillingOwner: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DataBoostIsolationReadOnly" });
-
-export interface MultiClusterRoutingUseAny {
-  /** Row affinity sticky routing based on the row key of the request. Requests that span multiple rows are routed non-deterministically. */
-  rowAffinity?: RowAffinity;
-  /** The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible. */
-  clusterIds?: ReadonlyArray<string>;
-}
-
-export const MultiClusterRoutingUseAny: Schema.Schema<MultiClusterRoutingUseAny> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rowAffinity: Schema.optional(RowAffinity),
-    clusterIds: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "MultiClusterRoutingUseAny" });
-
-export interface SingleClusterRouting {
-  /** The cluster to which read/write requests should be routed. */
-  clusterId?: string;
-  /** Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters. */
-  allowTransactionalWrites?: boolean;
-}
-
-export const SingleClusterRouting: Schema.Schema<SingleClusterRouting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clusterId: Schema.optional(Schema.String),
-    allowTransactionalWrites: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "SingleClusterRouting" });
-
-export interface AppProfile {
-  /** The standard options used for isolating this app profile's traffic from other use cases. */
-  standardIsolation?: StandardIsolation;
-  /** Specifies that this app profile is intended for read-only usage via the Data Boost feature. */
-  dataBoostIsolationReadOnly?: DataBoostIsolationReadOnly;
-  /** Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the meantime. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details. */
-  etag?: string;
-  /** Long form description of the use case for this AppProfile. */
-  description?: string;
-  /** Use a multi-cluster routing policy. */
-  multiClusterRoutingUseAny?: MultiClusterRoutingUseAny;
-  /** This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile. */
-  priority?:
-    | "PRIORITY_UNSPECIFIED"
-    | "PRIORITY_LOW"
-    | "PRIORITY_MEDIUM"
-    | "PRIORITY_HIGH"
-    | (string & {});
-  /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
-  name?: string;
-  /** Use a single-cluster routing policy. */
-  singleClusterRouting?: SingleClusterRouting;
-}
-
-export const AppProfile: Schema.Schema<AppProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    standardIsolation: Schema.optional(StandardIsolation),
-    dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
-    etag: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    multiClusterRoutingUseAny: Schema.optional(MultiClusterRoutingUseAny),
-    priority: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    singleClusterRouting: Schema.optional(SingleClusterRouting),
-  }).annotate({ identifier: "AppProfile" });
-
 export interface ListAppProfilesResponse {
-  /** Locations from which AppProfile information could not be retrieved, due to an outage or some other transient condition. AppProfiles from these locations may be missing from `app_profiles`. Values are of the form `projects//locations/` */
-  failedLocations?: ReadonlyArray<string>;
   /** The list of requested app profiles. */
   appProfiles?: ReadonlyArray<AppProfile>;
   /** Set if not all app profiles could be returned in a single response. Pass this value to `page_token` in another request to get the next page of results. */
   nextPageToken?: string;
+  /** Locations from which AppProfile information could not be retrieved, due to an outage or some other transient condition. AppProfiles from these locations may be missing from `app_profiles`. Values are of the form `projects//locations/` */
+  failedLocations?: ReadonlyArray<string>;
 }
 
-export const ListAppProfilesResponse: Schema.Schema<ListAppProfilesResponse> =
+export const ListAppProfilesResponse: Schema.Codec<ListAppProfilesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    failedLocations: Schema.optional(Schema.Array(Schema.String)),
     appProfiles: Schema.optional(Schema.Array(AppProfile)),
     nextPageToken: Schema.optional(Schema.String),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ListAppProfilesResponse" });
 
-export interface UpdateInstanceMetadata {
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The request that prompted the initiation of this UpdateInstance operation. */
-  originalRequest?: PartialUpdateInstanceRequest;
+export interface UndeleteTableMetadata {
+  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
+  startTime?: string;
   /** The time at which the operation failed or was completed successfully. */
   finishTime?: string;
+  /** If set, the time at which this operation finished or was cancelled. DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The name of the table being restored. */
+  name?: string;
 }
 
-export const UpdateInstanceMetadata: Schema.Schema<UpdateInstanceMetadata> =
+export const UndeleteTableMetadata: Schema.Codec<UndeleteTableMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestTime: Schema.optional(Schema.String),
-    originalRequest: Schema.optional(PartialUpdateInstanceRequest),
+    startTime: Schema.optional(Schema.String),
     finishTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateInstanceMetadata" });
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UndeleteTableMetadata" });
 
-export interface UndeleteTableRequest {}
-
-export const UndeleteTableRequest: Schema.Schema<UndeleteTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UndeleteTableRequest",
-  });
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
+export interface Backup {
+  /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  name?: string;
+  /** Output only. The encryption information for the backup. */
+  encryptionInfo?: EncryptionInfo;
+  /** The time at which the hot backup will be converted to a standard backup. Once the `hot_to_standard_time` has passed, Cloud Bigtable will convert the hot backup to a standard backup. This value must be greater than the backup creation time by: - At least 24 hours This field only applies for hot backups. When creating or updating a standard backup, attempting to set this field will fail the request. */
+  hotToStandardTime?: string;
+  /** Output only. The current state of the backup. */
+  state?: "STATE_UNSPECIFIED" | "CREATING" | "READY" | (string & {});
+  /** Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp. */
+  startTime?: string;
+  /** Output only. Size of the backup in bytes. */
+  sizeBytes?: string;
+  /** Required. The expiration time of the backup. When creating a backup or updating its `expire_time`, the value must be greater than the backup creation time by: - At least 6 hours - At most 90 days Once the `expire_time` has passed, Cloud Bigtable will delete the backup. */
+  expireTime?: string;
+  /** Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`. */
+  sourceTable?: string;
+  /** Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp. */
+  endTime?: string;
+  /** Indicates the backup type of the backup. */
+  backupType?: "BACKUP_TYPE_UNSPECIFIED" | "STANDARD" | "HOT" | (string & {});
+  /** Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/ */
+  sourceBackup?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Backup: Schema.Codec<Backup> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Status" });
+    name: Schema.optional(Schema.String),
+    encryptionInfo: Schema.optional(EncryptionInfo),
+    hotToStandardTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    sourceTable: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    backupType: Schema.optional(Schema.String),
+    sourceBackup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Backup" });
+
+export interface Split {
+  /** Row key to use as an initial tablet boundary. */
+  key?: string;
+}
+
+export const Split: Schema.Codec<Split> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Split" });
+
+export interface ListBackupsResponse {
+  /** `next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching backups. */
+  nextPageToken?: string;
+  /** The list of matching backups. */
+  backups?: ReadonlyArray<Backup>;
+}
+
+export const ListBackupsResponse: Schema.Codec<ListBackupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    backups: Schema.optional(Schema.Array(Backup)),
+  }).annotate({ identifier: "ListBackupsResponse" });
+
+export interface CopyBackupRequest {
+  /** Required. Required. The expiration time of the copied backup with microsecond granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup. */
+  expireTime?: string;
+  /** Required. The id of the new backup. The `backup_id` along with `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. */
+  backupId?: string;
+  /** Required. The source backup to be copied from. The source backup needs to be in READY state for it to be copied. Copying a copied backup is not allowed. Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until CopyBackup is finished. Values are of the form: `projects//instances//clusters//backups/`. */
+  sourceBackup?: string;
+}
+
+export const CopyBackupRequest: Schema.Codec<CopyBackupRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    backupId: Schema.optional(Schema.String),
+    sourceBackup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CopyBackupRequest" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -1471,20 +2075,36 @@ export interface Operation {
   response?: Record<string, unknown>;
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
-    error: Schema.optional(Status),
     done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
   }).annotate({ identifier: "Operation" });
+
+export interface UpdateInstanceMetadata {
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The request that prompted the initiation of this UpdateInstance operation. */
+  originalRequest?: PartialUpdateInstanceRequest;
+}
+
+export const UpdateInstanceMetadata: Schema.Codec<UpdateInstanceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(PartialUpdateInstanceRequest),
+  }).annotate({ identifier: "UpdateInstanceMetadata" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -1495,553 +2115,23 @@ export interface ListOperationsResponse {
   operations?: ReadonlyArray<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
   }).annotate({ identifier: "ListOperationsResponse" });
 
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
 export interface StandardReadRemoteWrites {}
 
-export const StandardReadRemoteWrites: Schema.Schema<StandardReadRemoteWrites> =
+export const StandardReadRemoteWrites: Schema.Codec<StandardReadRemoteWrites> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StandardReadRemoteWrites",
   });
 
-export interface CopyBackupRequest {
-  /** Required. The id of the new backup. The `backup_id` along with `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. */
-  backupId?: string;
-  /** Required. Required. The expiration time of the copied backup with microsecond granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup. */
-  expireTime?: string;
-  /** Required. The source backup to be copied from. The source backup needs to be in READY state for it to be copied. Copying a copied backup is not allowed. Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until CopyBackup is finished. Values are of the form: `projects//instances//clusters//backups/`. */
-  sourceBackup?: string;
-}
-
-export const CopyBackupRequest: Schema.Schema<CopyBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupId: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
-    sourceBackup: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CopyBackupRequest" });
-
-export interface ListInstancesResponse {
-  /** DEPRECATED: This field is unused and ignored. */
-  nextPageToken?: string;
-  /** The list of requested instances. */
-  instances?: ReadonlyArray<Instance>;
-  /** Locations from which Instance information could not be retrieved, due to an outage or some other transient condition. Instances whose Clusters are all in one of the failed locations may be missing from `instances`, and Instances with at least one Cluster in a failed location may only have partial information returned. Values are of the form `projects//locations/` */
-  failedLocations?: ReadonlyArray<string>;
-}
-
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    instances: Schema.optional(Schema.Array(Instance)),
-    failedLocations: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListInstancesResponse" });
-
-export interface UpdateSchemaBundleMetadata {
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
-  name?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const UpdateSchemaBundleMetadata: Schema.Schema<UpdateSchemaBundleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    finishTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateSchemaBundleMetadata" });
-
-export interface ListMemoryLayersResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations from which MemoryLayer information could not be retrieved, due to an outage or some other transient condition. MemoryLayers from these locations may be missing from `memory_layers`, or may only have partial information returned. Values are of the form `projects//locations/` */
-  failedLocations?: ReadonlyArray<string>;
-  /** The list of requested memory layers. */
-  memoryLayers?: ReadonlyArray<MemoryLayer>;
-}
-
-export const ListMemoryLayersResponse: Schema.Schema<ListMemoryLayersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    failedLocations: Schema.optional(Schema.Array(Schema.String)),
-    memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
-  }).annotate({ identifier: "ListMemoryLayersResponse" });
-
-export interface ListAuthorizedViewsResponse {
-  /** The AuthorizedViews present in the requested table. */
-  authorizedViews?: ReadonlyArray<AuthorizedView>;
-  /** Set if not all tables could be returned in a single response. Pass this value to `page_token` in another request to get the next page of results. */
-  nextPageToken?: string;
-}
-
-export const ListAuthorizedViewsResponse: Schema.Schema<ListAuthorizedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListAuthorizedViewsResponse" });
-
-export interface Split {
-  /** Row key to use as an initial tablet boundary. */
-  key?: string;
-}
-
-export const Split: Schema.Schema<Split> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    key: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Split" });
-
-export interface LogicalView {
-  /** Required. The logical view's select query. */
-  query?: string;
-  /** Optional. Set to true to make the LogicalView protected against deletion. */
-  deletionProtection?: boolean;
-  /** Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` */
-  name?: string;
-  /** Optional. The etag for this logical view. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
-  etag?: string;
-}
-
-export const LogicalView: Schema.Schema<LogicalView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    query: Schema.optional(Schema.String),
-    deletionProtection: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LogicalView" });
-
-export interface CreateLogicalViewRequest {
-  /** Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. */
-  parent?: string;
-  /** Required. The ID to use for the logical view, which will become the final component of the logical view's resource name. */
-  logicalViewId?: string;
-  /** Required. The logical view to create. */
-  logicalView?: LogicalView;
-}
-
-export const CreateLogicalViewRequest: Schema.Schema<CreateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String),
-    logicalViewId: Schema.optional(Schema.String),
-    logicalView: Schema.optional(LogicalView),
-  }).annotate({ identifier: "CreateLogicalViewRequest" });
-
-export interface CreateLogicalViewMetadata {
-  /** The request that prompted the initiation of this CreateLogicalView operation. */
-  originalRequest?: CreateLogicalViewRequest;
-  /** DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** DEPRECATED: Use finish_time instead. */
-  endTime?: string;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const CreateLogicalViewMetadata: Schema.Schema<CreateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(CreateLogicalViewRequest),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateLogicalViewMetadata" });
-
-export interface UpdateLogicalViewRequest {
-  /** Required. The logical view to update. The logical view's `name` field is used to identify the view to update. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
-  logicalView?: LogicalView;
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-}
-
-export const UpdateLogicalViewRequest: Schema.Schema<UpdateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logicalView: Schema.optional(LogicalView),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateLogicalViewRequest" });
-
-export interface UpdateLogicalViewMetadata {
-  /** The request that prompted the initiation of this UpdateLogicalView operation. */
-  originalRequest?: UpdateLogicalViewRequest;
-  /** DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** DEPRECATED: Use finish_time instead. */
-  endTime?: string;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const UpdateLogicalViewMetadata: Schema.Schema<UpdateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(UpdateLogicalViewRequest),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateLogicalViewMetadata" });
-
-export interface CheckConsistencyResponse {
-  /** True only if the token is consistent. A token is consistent if replication has caught up with the restrictions specified in the request. */
-  consistent?: boolean;
-}
-
-export const CheckConsistencyResponse: Schema.Schema<CheckConsistencyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    consistent: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "CheckConsistencyResponse" });
-
-export interface UpdateAppProfileMetadata {}
-
-export const UpdateAppProfileMetadata: Schema.Schema<UpdateAppProfileMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "UpdateAppProfileMetadata",
-  });
-
-export interface GoogleBigtableAdminV2MaterializedViewClusterState {
-  /** Output only. The state of the materialized view in this cluster. */
-  replicationState?:
-    | "STATE_NOT_KNOWN"
-    | "INITIALIZING"
-    | "READY"
-    | (string & {});
-}
-
-export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Schema<GoogleBigtableAdminV2MaterializedViewClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    replicationState: Schema.optional(Schema.String),
-  }).annotate({
-    identifier: "GoogleBigtableAdminV2MaterializedViewClusterState",
-  });
-
-export interface MaterializedView {
-  /** Set to true to make the MaterializedView protected against deletion. Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
-  deletionProtection?: boolean;
-  /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
-  name?: string;
-  /** Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`, `FULL`. */
-  query?: string;
-  /** Optional. The etag for this materialized view. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
-  etag?: string;
-  /** Output only. Map from cluster ID to per-cluster materialized view state. If it could not be determined whether or not the materialized view has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with `STATE_NOT_KNOWN` state. Views: `REPLICATION_VIEW`, `FULL`. */
-  clusterStates?: Record<
-    string,
-    GoogleBigtableAdminV2MaterializedViewClusterState
-  >;
-}
-
-export const MaterializedView: Schema.Schema<MaterializedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deletionProtection: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    query: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    clusterStates: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        GoogleBigtableAdminV2MaterializedViewClusterState,
-      ),
-    ),
-  }).annotate({ identifier: "MaterializedView" });
-
-export interface ListMaterializedViewsResponse {
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** The list of requested materialized views. */
-  materializedViews?: ReadonlyArray<MaterializedView>;
-}
-
-export const ListMaterializedViewsResponse: Schema.Schema<ListMaterializedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    materializedViews: Schema.optional(Schema.Array(MaterializedView)),
-  }).annotate({ identifier: "ListMaterializedViewsResponse" });
-
-export interface HotTablet {
-  /** Tablet End Key (inclusive). */
-  endKey?: string;
-  /** Output only. The average CPU usage spent by a node on this tablet over the start_time to end_time time range. The percentage is the amount of CPU used by the node to serve the tablet, from 0% (tablet was not interacted with) to 100% (the node spent all cycles serving the hot tablet). */
-  nodeCpuUsagePercent?: number;
-  /** Output only. The start time of the hot tablet. */
-  startTime?: string;
-  /** Output only. The end time of the hot tablet. */
-  endTime?: string;
-  /** Tablet Start Key (inclusive). */
-  startKey?: string;
-  /** Name of the table that contains the tablet. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. */
-  tableName?: string;
-  /** The unique name of the hot tablet. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/hotTablets/[a-zA-Z0-9_-]*`. */
-  name?: string;
-}
-
-export const HotTablet: Schema.Schema<HotTablet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endKey: Schema.optional(Schema.String),
-    nodeCpuUsagePercent: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    startKey: Schema.optional(Schema.String),
-    tableName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HotTablet" });
-
-export interface EncryptionInfo {
-  /** Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest. */
-  encryptionStatus?: Status;
-  /** Output only. The type of encryption used to protect this resource. */
-  encryptionType?:
-    | "ENCRYPTION_TYPE_UNSPECIFIED"
-    | "GOOGLE_DEFAULT_ENCRYPTION"
-    | "CUSTOMER_MANAGED_ENCRYPTION"
-    | (string & {});
-  /** Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table. */
-  kmsKeyVersion?: string;
-}
-
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encryptionStatus: Schema.optional(Status),
-    encryptionType: Schema.optional(Schema.String),
-    kmsKeyVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "EncryptionInfo" });
-
-export interface ClusterState {
-  /** Output only. The state of replication for the table in this cluster. */
-  replicationState?:
-    | "STATE_NOT_KNOWN"
-    | "INITIALIZING"
-    | "PLANNED_MAINTENANCE"
-    | "UNPLANNED_MAINTENANCE"
-    | "READY"
-    | "READY_OPTIMIZING"
-    | (string & {});
-  /** Output only. The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS. */
-  encryptionInfo?: ReadonlyArray<EncryptionInfo>;
-}
-
-export const ClusterState: Schema.Schema<ClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    replicationState: Schema.optional(Schema.String),
-    encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
-  }).annotate({ identifier: "ClusterState" });
-
-export interface TableStats {
-  /** How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field. */
-  averageColumnsPerRow?: number;
-  /** How many rows are in the table. */
-  rowCount?: string;
-  /** How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field. */
-  averageCellsPerColumn?: number;
-  /** This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out). */
-  logicalDataBytes?: string;
-}
-
-export const TableStats: Schema.Schema<TableStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    averageColumnsPerRow: Schema.optional(Schema.Number),
-    rowCount: Schema.optional(Schema.String),
-    averageCellsPerColumn: Schema.optional(Schema.Number),
-    logicalDataBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TableStats" });
-
-export interface AutomatedBackupPolicy {
-  /** Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format `projects/{project}/locations/{zone}`. This field can only set for tables in Enterprise Plus instances. */
-  locations?: ReadonlyArray<string>;
-  /** How frequently automated backups should occur. The only supported value at this time is 24 hours. An undefined frequency is treated as 24 hours. */
-  frequency?: string;
-  /** Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90 days. */
-  retentionPeriod?: string;
-}
-
-export const AutomatedBackupPolicy: Schema.Schema<AutomatedBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Schema.String)),
-    frequency: Schema.optional(Schema.String),
-    retentionPeriod: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AutomatedBackupPolicy" });
-
-export interface Table {
-  /** The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` */
-  name?: string;
-  /** Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL` */
-  clusterStates?: Record<string, ClusterState>;
-  /** The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL` */
-  columnFamilies?: Record<string, ColumnFamily>;
-  /** Rules to specify what data is stored in each storage tier. Different tiers store data differently, providing different trade-offs between cost and performance. Different parts of a table can be stored separately on different tiers. If a config is specified, tiered storage is enabled for this table. Otherwise, tiered storage is disabled. Only SSD instances can configure tiered storage. */
-  tieredStorageConfig?: TieredStorageConfig;
-  /** The row key schema for this table. The schema is used to decode the raw row key bytes into a structured format. The order of field declarations in this schema is important, as it reflects how the raw row key bytes are structured. Currently, this only affects how the key is read via a GoogleSQL query from the ExecuteQuery API. For a SQL query, the _key column is still read as raw bytes. But queries can reference the key fields by name, which will be decoded from _key using provided type and encoding. Queries that reference key fields will fail if they encounter an invalid row key. For example, if _key = "some_id#2024-04-30#\x00\x13\x00\xf3" with the following schema: { fields { field_name: "id" type { string { encoding: utf8_bytes {} } } } fields { field_name: "date" type { string { encoding: utf8_bytes {} } } } fields { field_name: "product_code" type { int64 { encoding: big_endian_bytes {} } } } encoding { delimited_bytes { delimiter: "#" } } } The decoded key parts would be: id = "some_id", date = "2024-04-30", product_code = 1245427 The query "SELECT _key, product_code FROM table" will return two columns: /------------------------------------------------------\ | _key | product_code | | --------------------------------------|--------------| | "some_id#2024-04-30#\x00\x13\x00\xf3" | 1245427 | \------------------------------------------------------/ The schema has the following invariants: (1) The decoded field values are order-preserved. For read, the field values will be decoded in sorted mode from the raw bytes. (2) Every field in the schema must specify a non-empty name. (3) Every field must specify a type with an associated encoding. The type is limited to scalar types only: Array, Map, Aggregate, and Struct are not allowed. (4) The field names must not collide with existing column family names and reserved keywords "_key" and "_timestamp". The following update operations are allowed for row_key_schema: - Update from an empty schema to a new schema. - Remove the existing schema. This operation requires setting the `ignore_warnings` flag to `true`, since it might be a backward incompatible change. Without the flag, the update request will fail with an INVALID_ARGUMENT error. Any other row key schema update operation (e.g. update existing schema columns names or types) is currently unsupported. */
-  rowKeySchema?: GoogleBigtableAdminV2TypeStruct;
-  /** Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore. */
-  restoreInfo?: RestoreInfo;
-  /** Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs. */
-  deletionProtection?: boolean;
-  /** Output only. Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above. */
-  stats?: TableStats;
-  /** If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled. */
-  automatedBackupPolicy?: AutomatedBackupPolicy;
-  /** If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained. */
-  changeStreamConfig?: ChangeStreamConfig;
-  /** Immutable. The granularity at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`. */
-  granularity?: "TIMESTAMP_GRANULARITY_UNSPECIFIED" | "MILLIS" | (string & {});
-}
-
-export const Table: Schema.Schema<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    clusterStates: Schema.optional(Schema.Record(Schema.String, ClusterState)),
-    columnFamilies: Schema.optional(Schema.Record(Schema.String, ColumnFamily)),
-    tieredStorageConfig: Schema.optional(TieredStorageConfig),
-    rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
-    restoreInfo: Schema.optional(RestoreInfo),
-    deletionProtection: Schema.optional(Schema.Boolean),
-    stats: Schema.optional(TableStats),
-    automatedBackupPolicy: Schema.optional(AutomatedBackupPolicy),
-    changeStreamConfig: Schema.optional(ChangeStreamConfig),
-    granularity: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Table" });
-
-export interface OperationProgress {
-  /** Percent completion of the operation. Values are between 0 and 100 inclusive. */
-  progressPercent?: number;
-  /** Time the request was received. */
-  startTime?: string;
-  /** If set, the time at which this operation failed or was completed successfully. */
-  endTime?: string;
-}
-
-export const OperationProgress: Schema.Schema<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    progressPercent: Schema.optional(Schema.Number),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OperationProgress" });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface UpdateAuthorizedViewRequest {
-  /** Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special value `*` means to overwrite all fields (including fields not set in the request). */
-  updateMask?: string;
-  /** Optional. If true, ignore the safety checks when updating the AuthorizedView. */
-  ignoreWarnings?: boolean;
-  /** Required. The AuthorizedView to update. The `name` in `authorized_view` is used to identify the AuthorizedView. AuthorizedView name must in this format: `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
-  authorizedView?: AuthorizedView;
-}
-
-export const UpdateAuthorizedViewRequest: Schema.Schema<UpdateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
-    ignoreWarnings: Schema.optional(Schema.Boolean),
-    authorizedView: Schema.optional(AuthorizedView),
-  }).annotate({ identifier: "UpdateAuthorizedViewRequest" });
-
-export interface UpdateAuthorizedViewMetadata {
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The request that prompted the initiation of this UpdateAuthorizedView operation. */
-  originalRequest?: UpdateAuthorizedViewRequest;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-}
-
-export const UpdateAuthorizedViewMetadata: Schema.Schema<UpdateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestTime: Schema.optional(Schema.String),
-    originalRequest: Schema.optional(UpdateAuthorizedViewRequest),
-    finishTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateAuthorizedViewMetadata" });
-
-export interface ListTablesResponse {
-  /** Set if not all tables could be returned in a single response. Pass this value to `page_token` in another request to get the next page of results. */
-  nextPageToken?: string;
-  /** The tables present in the requested instance. */
-  tables?: ReadonlyArray<Table>;
-}
-
-export const ListTablesResponse: Schema.Schema<ListTablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    tables: Schema.optional(Schema.Array(Table)),
-  }).annotate({ identifier: "ListTablesResponse" });
-
-export interface ModifyColumnFamiliesRequest {
-  /** Required. Modifications to be atomically applied to the specified table's families. Entries are applied in order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to the same family, for example). */
-  modifications?: ReadonlyArray<Modification>;
-  /** Optional. If true, ignore safety checks when modifying the column families. */
-  ignoreWarnings?: boolean;
-}
-
-export const ModifyColumnFamiliesRequest: Schema.Schema<ModifyColumnFamiliesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    modifications: Schema.optional(Schema.Array(Modification)),
-    ignoreWarnings: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ModifyColumnFamiliesRequest" });
-
-export interface UpdateMemoryLayerMetadata {
-  /** The request that prompted the initiation of this UpdateMemoryLayer operation. */
-  originalRequest?: UpdateMemoryLayerRequest;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const UpdateMemoryLayerMetadata: Schema.Schema<UpdateMemoryLayerMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(UpdateMemoryLayerRequest),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateMemoryLayerMetadata" });
-
-export interface CreateBackupMetadata {
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The name of the backup being created. */
-  name?: string;
-  /** The name of the table the backup is created from. */
-  sourceTable?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** If set, the time at which this operation finished or was cancelled. DEPRECATED: Use finish_time instead. */
-  endTime?: string;
-}
-
-export const CreateBackupMetadata: Schema.Schema<CreateBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    finishTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    sourceTable: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateBackupMetadata" });
-
 export interface DataBoostReadLocalWrites {}
 
-export const DataBoostReadLocalWrites: Schema.Schema<DataBoostReadLocalWrites> =
+export const DataBoostReadLocalWrites: Schema.Codec<DataBoostReadLocalWrites> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DataBoostReadLocalWrites",
   });
@@ -2055,288 +2145,108 @@ export interface CheckConsistencyRequest {
   consistencyToken?: string;
 }
 
-export const CheckConsistencyRequest: Schema.Schema<CheckConsistencyRequest> =
+export const CheckConsistencyRequest: Schema.Codec<CheckConsistencyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     standardReadRemoteWrites: Schema.optional(StandardReadRemoteWrites),
     dataBoostReadLocalWrites: Schema.optional(DataBoostReadLocalWrites),
     consistencyToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "CheckConsistencyRequest" });
 
-export interface CreateMaterializedViewRequest {
-  /** Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. */
-  materializedViewId?: string;
-  /** Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. */
-  parent?: string;
-  /** Required. The materialized view to create. */
-  materializedView?: MaterializedView;
+export interface CreateTableRequest {
+  /** The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.` */
+  initialSplits?: ReadonlyArray<Split>;
+  /** Required. The Table to create. */
+  table?: Table;
+  /** Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters. */
+  tableId?: string;
 }
 
-export const CreateMaterializedViewRequest: Schema.Schema<CreateMaterializedViewRequest> =
+export const CreateTableRequest: Schema.Codec<CreateTableRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    materializedViewId: Schema.optional(Schema.String),
-    parent: Schema.optional(Schema.String),
-    materializedView: Schema.optional(MaterializedView),
-  }).annotate({ identifier: "CreateMaterializedViewRequest" });
+    initialSplits: Schema.optional(Schema.Array(Split)),
+    table: Schema.optional(Table),
+    tableId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateTableRequest" });
 
-export interface CreateMaterializedViewMetadata {
-  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** If set, the time at which this operation finished or was canceled. DEPRECATED: Use finish_time instead. */
-  endTime?: string;
-  /** The request that prompted the initiation of this CreateMaterializedView operation. */
-  originalRequest?: CreateMaterializedViewRequest;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-}
+export interface UpdateAppProfileMetadata {}
 
-export const CreateMaterializedViewMetadata: Schema.Schema<CreateMaterializedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    originalRequest: Schema.optional(CreateMaterializedViewRequest),
-    requestTime: Schema.optional(Schema.String),
-    finishTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateMaterializedViewMetadata" });
+export const UpdateAppProfileMetadata: Schema.Codec<UpdateAppProfileMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "UpdateAppProfileMetadata",
+  });
 
-export interface Backup {
-  /** Output only. The current state of the backup. */
-  state?: "STATE_UNSPECIFIED" | "CREATING" | "READY" | (string & {});
-  /** Output only. Size of the backup in bytes. */
-  sizeBytes?: string;
-  /** Output only. The encryption information for the backup. */
-  encryptionInfo?: EncryptionInfo;
-  /** Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/ */
-  sourceBackup?: string;
-  /** Required. The expiration time of the backup. When creating a backup or updating its `expire_time`, the value must be greater than the backup creation time by: - At least 6 hours - At most 90 days Once the `expire_time` has passed, Cloud Bigtable will delete the backup. */
-  expireTime?: string;
-  /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+export interface MemoryLayer {
+  /** Identifier. Name of the memory layer. This is always: "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer". */
   name?: string;
-  /** Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp. */
-  startTime?: string;
-  /** Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp. */
-  endTime?: string;
-  /** Indicates the backup type of the backup. */
-  backupType?: "BACKUP_TYPE_UNSPECIFIED" | "STANDARD" | "HOT" | (string & {});
-  /** The time at which the hot backup will be converted to a standard backup. Once the `hot_to_standard_time` has passed, Cloud Bigtable will convert the hot backup to a standard backup. This value must be greater than the backup creation time by: - At least 24 hours This field only applies for hot backups. When creating or updating a standard backup, attempting to set this field will fail the request. */
-  hotToStandardTime?: string;
-  /** Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`. */
-  sourceTable?: string;
+  /** Optional. The etag for this memory layer. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag. */
+  etag?: string;
+  /** The configuration of this memory layer. Set an empty `memory_config` to enable the memory layer. Unset this to disable the memory layer. */
+  memoryConfig?: GoogleBigtableAdminV2MemoryLayerMemoryConfig;
+  /** Output only. The current state of the memory layer. */
+  state?:
+    | "STATE_NOT_KNOWN"
+    | "READY"
+    | "ENABLING"
+    | "RESIZING"
+    | "DISABLED"
+    | (string & {});
 }
 
-export const Backup: Schema.Schema<Backup> =
+export const MemoryLayer: Schema.Codec<MemoryLayer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    sizeBytes: Schema.optional(Schema.String),
-    encryptionInfo: Schema.optional(EncryptionInfo),
-    sourceBackup: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    backupType: Schema.optional(Schema.String),
-    hotToStandardTime: Schema.optional(Schema.String),
-    sourceTable: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Backup" });
+    etag: Schema.optional(Schema.String),
+    memoryConfig: Schema.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MemoryLayer" });
 
-export interface ListBackupsResponse {
-  /** The list of matching backups. */
-  backups?: ReadonlyArray<Backup>;
-  /** `next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching backups. */
-  nextPageToken?: string;
-}
-
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backups: Schema.optional(Schema.Array(Backup)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListBackupsResponse" });
-
-export interface GenerateConsistencyTokenResponse {
-  /** The generated consistency token. */
-  consistencyToken?: string;
-}
-
-export const GenerateConsistencyTokenResponse: Schema.Schema<GenerateConsistencyTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    consistencyToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GenerateConsistencyTokenResponse" });
-
-export interface ListLogicalViewsResponse {
-  /** The list of requested logical views. */
-  logicalViews?: ReadonlyArray<LogicalView>;
+export interface ListMemoryLayersResponse {
+  /** The list of requested memory layers. */
+  memoryLayers?: ReadonlyArray<MemoryLayer>;
+  /** Locations from which MemoryLayer information could not be retrieved, due to an outage or some other transient condition. MemoryLayers from these locations may be missing from `memory_layers`, or may only have partial information returned. Values are of the form `projects//locations/` */
+  failedLocations?: ReadonlyArray<string>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
 
-export const ListLogicalViewsResponse: Schema.Schema<ListLogicalViewsResponse> =
+export const ListMemoryLayersResponse: Schema.Codec<ListMemoryLayersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logicalViews: Schema.optional(Schema.Array(LogicalView)),
+    memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLogicalViewsResponse" });
+  }).annotate({ identifier: "ListMemoryLayersResponse" });
 
-export interface UpdateClusterMetadata {
-  /** The request that prompted the initiation of this UpdateCluster operation. */
-  originalRequest?: Cluster;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-}
-
-export const UpdateClusterMetadata: Schema.Schema<UpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originalRequest: Schema.optional(Cluster),
-    finishTime: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UpdateClusterMetadata" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface RestoreTableMetadata {
-  /** Name of the table being created and restored to. */
-  name?: string;
-  backupInfo?: BackupInfo;
-  /** If exists, the name of the long-running operation that will be used to track the post-restore optimization process to optimize the performance of the restored table. The metadata type of the long-running operation is OptimizeRestoredTableMetadata. The response type is Empty. This long-running operation may be automatically created by the system if applicable after the RestoreTable long-running operation completes successfully. This operation may not be created if the table is already optimized or the restore was not successful. */
-  optimizeTableOperationName?: string;
-  /** The progress of the RestoreTable operation. */
-  progress?: OperationProgress;
-  /** The type of the restore source. */
-  sourceType?: "RESTORE_SOURCE_TYPE_UNSPECIFIED" | "BACKUP" | (string & {});
-}
-
-export const RestoreTableMetadata: Schema.Schema<RestoreTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    backupInfo: Schema.optional(BackupInfo),
-    optimizeTableOperationName: Schema.optional(Schema.String),
-    progress: Schema.optional(OperationProgress),
-    sourceType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RestoreTableMetadata" });
-
-export interface UndeleteTableMetadata {
-  /** The name of the table being restored. */
-  name?: string;
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The time at which the operation failed or was completed successfully. */
-  finishTime?: string;
-  /** The time at which this operation started. DEPRECATED: Use request_time instead. */
-  startTime?: string;
-  /** If set, the time at which this operation finished or was cancelled. DEPRECATED: Use finish_time instead. */
-  endTime?: string;
-}
-
-export const UndeleteTableMetadata: Schema.Schema<UndeleteTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    requestTime: Schema.optional(Schema.String),
-    finishTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UndeleteTableMetadata" });
-
-export interface CopyBackupMetadata {
-  /** Information about the source backup that is being copied from. */
-  sourceBackupInfo?: BackupInfo;
-  /** The progress of the CopyBackup operation. */
-  progress?: OperationProgress;
-  /** The name of the backup being created through the copy operation. Values are of the form `projects//instances//clusters//backups/`. */
-  name?: string;
-}
-
-export const CopyBackupMetadata: Schema.Schema<CopyBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sourceBackupInfo: Schema.optional(BackupInfo),
-    progress: Schema.optional(OperationProgress),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CopyBackupMetadata" });
-
-export interface CreateTableRequest {
-  /** The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.` */
-  initialSplits?: ReadonlyArray<Split>;
-  /** Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters. */
-  tableId?: string;
-  /** Required. The Table to create. */
-  table?: Table;
-}
-
-export const CreateTableRequest: Schema.Schema<CreateTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    initialSplits: Schema.optional(Schema.Array(Split)),
-    tableId: Schema.optional(Schema.String),
-    table: Schema.optional(Table),
-  }).annotate({ identifier: "CreateTableRequest" });
-
-export interface OptimizeRestoredTableMetadata {
-  /** Name of the restored table being optimized. */
-  name?: string;
-  /** The progress of the post-restore optimizations. */
-  progress?: OperationProgress;
-}
-
-export const OptimizeRestoredTableMetadata: Schema.Schema<OptimizeRestoredTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    progress: Schema.optional(OperationProgress),
-  }).annotate({ identifier: "OptimizeRestoredTableMetadata" });
-
-export interface CreateInstanceRequest {
-  /** Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`. */
+export interface CreateAuthorizedViewRequest {
+  /** Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   parent?: string;
-  /** Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`. */
-  instanceId?: string;
-  /** Required. The instance to create. Fields marked `OutputOnly` must be left blank. */
-  instance?: Instance;
-  /** Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. */
-  clusters?: Record<string, Cluster>;
+  /** Required. The AuthorizedView to create. */
+  authorizedView?: AuthorizedView;
+  /** Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`. */
+  authorizedViewId?: string;
 }
 
-export const CreateInstanceRequest: Schema.Schema<CreateInstanceRequest> =
+export const CreateAuthorizedViewRequest: Schema.Codec<CreateAuthorizedViewRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
-    instanceId: Schema.optional(Schema.String),
-    instance: Schema.optional(Instance),
-    clusters: Schema.optional(Schema.Record(Schema.String, Cluster)),
-  }).annotate({ identifier: "CreateInstanceRequest" });
+    authorizedView: Schema.optional(AuthorizedView),
+    authorizedViewId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateAuthorizedViewRequest" });
 
-export interface CreateInstanceMetadata {
-  /** The time at which the original request was received. */
-  requestTime?: string;
-  /** The request that prompted the initiation of this CreateInstance operation. */
-  originalRequest?: CreateInstanceRequest;
+export interface CreateAuthorizedViewMetadata {
+  /** The request that prompted the initiation of this CreateAuthorizedView operation. */
+  originalRequest?: CreateAuthorizedViewRequest;
   /** The time at which the operation failed or was completed successfully. */
   finishTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
 }
 
-export const CreateInstanceMetadata: Schema.Schema<CreateInstanceMetadata> =
+export const CreateAuthorizedViewMetadata: Schema.Codec<CreateAuthorizedViewMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestTime: Schema.optional(Schema.String),
-    originalRequest: Schema.optional(CreateInstanceRequest),
+    originalRequest: Schema.optional(CreateAuthorizedViewRequest),
     finishTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateInstanceMetadata" });
-
-export interface DropRowRangeRequest {
-  /** Delete all rows that start with this row key prefix. Prefix cannot be zero length. */
-  rowKeyPrefix?: string;
-  /** Delete all rows in the table. Setting this to false is a no-op. */
-  deleteAllDataFromTable?: boolean;
-}
-
-export const DropRowRangeRequest: Schema.Schema<DropRowRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rowKeyPrefix: Schema.optional(Schema.String),
-    deleteAllDataFromTable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "DropRowRangeRequest" });
+    requestTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateAuthorizedViewMetadata" });
 
 export interface ListHotTabletsResponse {
   /** List of hot tablets in the tables of the requested cluster that fall within the requested time range. Hot tablets are ordered by node cpu usage percent. If there are multiple hot tablets that correspond to the same tablet within a 15-minute interval, only the hot tablet with the highest node cpu usage will be included in the response. */
@@ -2345,27 +2255,120 @@ export interface ListHotTabletsResponse {
   nextPageToken?: string;
 }
 
-export const ListHotTabletsResponse: Schema.Schema<ListHotTabletsResponse> =
+export const ListHotTabletsResponse: Schema.Codec<ListHotTabletsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hotTablets: Schema.optional(Schema.Array(HotTablet)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListHotTabletsResponse" });
 
-export interface CreateSchemaBundleMetadata {
+export interface UpdateMemoryLayerRequest {
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Required. The memory layer to update. The memory layer's `name` format is as follows: `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
+  memoryLayer?: MemoryLayer;
+}
+
+export const UpdateMemoryLayerRequest: Schema.Codec<UpdateMemoryLayerRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    memoryLayer: Schema.optional(MemoryLayer),
+  }).annotate({ identifier: "UpdateMemoryLayerRequest" });
+
+export interface UpdateMemoryLayerMetadata {
   /** The time at which the operation failed or was completed successfully. */
   finishTime?: string;
-  /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
-  name?: string;
+  /** The request that prompted the initiation of this UpdateMemoryLayer operation. */
+  originalRequest?: UpdateMemoryLayerRequest;
   /** The time at which the original request was received. */
   requestTime?: string;
 }
 
-export const CreateSchemaBundleMetadata: Schema.Schema<CreateSchemaBundleMetadata> =
+export const UpdateMemoryLayerMetadata: Schema.Codec<UpdateMemoryLayerMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(UpdateMemoryLayerRequest),
     requestTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CreateSchemaBundleMetadata" });
+  }).annotate({ identifier: "UpdateMemoryLayerMetadata" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
+
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface UpdateSchemaBundleMetadata {
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
+  name?: string;
+}
+
+export const UpdateSchemaBundleMetadata: Schema.Codec<UpdateSchemaBundleMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    finishTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSchemaBundleMetadata" });
+
+export interface UpdateAuthorizedViewMetadata {
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+  /** The request that prompted the initiation of this UpdateAuthorizedView operation. */
+  originalRequest?: UpdateAuthorizedViewRequest;
+}
+
+export const UpdateAuthorizedViewMetadata: Schema.Codec<UpdateAuthorizedViewMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(UpdateAuthorizedViewRequest),
+  }).annotate({ identifier: "UpdateAuthorizedViewMetadata" });
+
+export interface CreateLogicalViewMetadata {
+  /** The request that prompted the initiation of this CreateLogicalView operation. */
+  originalRequest?: CreateLogicalViewRequest;
+  /** DEPRECATED: Use finish_time instead. */
+  endTime?: string;
+  /** The time at which the original request was received. */
+  requestTime?: string;
+  /** DEPRECATED: Use request_time instead. */
+  startTime?: string;
+  /** The time at which the operation failed or was completed successfully. */
+  finishTime?: string;
+}
+
+export const CreateLogicalViewMetadata: Schema.Codec<CreateLogicalViewMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(CreateLogicalViewRequest),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateLogicalViewMetadata" });
+
+export interface ListLogicalViewsResponse {
+  /** The list of requested logical views. */
+  logicalViews?: ReadonlyArray<LogicalView>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListLogicalViewsResponse: Schema.Codec<ListLogicalViewsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalViews: Schema.optional(Schema.Array(LogicalView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLogicalViewsResponse" });
 
 // ==========================================================================
 // Errors
@@ -2421,85 +2424,82 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetOperationsRequest {
-  /** The name of the operation resource. */
+export interface PartialUpdateInstanceProjectsInstancesRequest {
+  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
   name: string;
+  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
+  updateMask?: string;
+  /** Request body */
+  body?: Instance;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v2/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
-
-export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getOperations: API.OperationMethod<
-  GetOperationsRequest,
-  GetOperationsResponse,
-  GetOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: GetOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListOperationsProjectsOperationsRequest {
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The standard list page token. */
-  pageToken?: string;
-}
-
-export const ListOperationsProjectsOperationsRequest =
+export const PartialUpdateInstanceProjectsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}/operations" }),
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ListOperationsProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<PartialUpdateInstanceProjectsInstancesRequest>;
 
-export type ListOperationsProjectsOperationsResponse = ListOperationsResponse;
-export const ListOperationsProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export type PartialUpdateInstanceProjectsInstancesResponse = Operation;
+export const PartialUpdateInstanceProjectsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ListOperationsProjectsOperationsError =
+export type PartialUpdateInstanceProjectsInstancesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
-  ListOperationsProjectsOperationsRequest,
-  ListOperationsProjectsOperationsResponse,
-  ListOperationsProjectsOperationsError,
+/** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
+export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
+  PartialUpdateInstanceProjectsInstancesRequest,
+  PartialUpdateInstanceProjectsInstancesResponse,
+  PartialUpdateInstanceProjectsInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListOperationsProjectsOperationsRequest,
-  output: ListOperationsProjectsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PartialUpdateInstanceProjectsInstancesRequest,
+  output: PartialUpdateInstanceProjectsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsInstancesRequest {
+  /** Required. The unique name of the instance to be deleted. Values are of the form `projects/{project}/instances/{instance}`. */
+  name: string;
+}
+
+export const DeleteProjectsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesRequest>;
+
+export type DeleteProjectsInstancesResponse = Empty;
+export const DeleteProjectsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete an instance from a project. */
+export const deleteProjectsInstances: API.OperationMethod<
+  DeleteProjectsInstancesRequest,
+  DeleteProjectsInstancesResponse,
+  DeleteProjectsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesRequest,
+  output: DeleteProjectsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesRequest {
@@ -2513,7 +2513,7 @@ export const GetProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesRequest>;
 
 export type GetProjectsInstancesResponse = Instance;
 export const GetProjectsInstancesResponse =
@@ -2531,6 +2531,49 @@ export const getProjectsInstances: API.OperationMethod<
   input: GetProjectsInstancesRequest,
   output: GetProjectsInstancesResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsInstancesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsInstancesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesRequest>;
+
+export type SetIamPolicyProjectsInstancesResponse = Policy;
+export const SetIamPolicyProjectsInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on an instance resource. Replaces any existing policy. */
+export const setIamPolicyProjectsInstances: API.OperationMethod<
+  SetIamPolicyProjectsInstancesRequest,
+  SetIamPolicyProjectsInstancesResponse,
+  SetIamPolicyProjectsInstancesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsInstancesRequest,
+  output: SetIamPolicyProjectsInstancesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesRequest {
@@ -2551,7 +2594,7 @@ export const GetIamPolicyProjectsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesRequest>;
 
 export type GetIamPolicyProjectsInstancesResponse = Policy;
 export const GetIamPolicyProjectsInstancesResponse =
@@ -2590,7 +2633,7 @@ export const CreateProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v2/{+parent}/instances", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesRequest>;
 
 export type CreateProjectsInstancesResponse = Operation;
 export const CreateProjectsInstancesResponse =
@@ -2615,42 +2658,6 @@ export const createProjectsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsInstancesRequest {
-  /** Required. The unique name of the instance to be deleted. Values are of the form `projects/{project}/instances/{instance}`. */
-  name: string;
-}
-
-export const DeleteProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesRequest>;
-
-export type DeleteProjectsInstancesResponse = Empty;
-export const DeleteProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete an instance from a project. */
-export const deleteProjectsInstances: API.OperationMethod<
-  DeleteProjectsInstancesRequest,
-  DeleteProjectsInstancesResponse,
-  DeleteProjectsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesRequest,
-  output: DeleteProjectsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListProjectsInstancesRequest {
   /** Required. The unique name of the project for which a list of instances is requested. Values are of the form `projects/{project}`. */
   parent: string;
@@ -2665,7 +2672,7 @@ export const ListProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/instances" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesRequest>;
 
 export type ListProjectsInstancesResponse = ListInstancesResponse;
 export const ListProjectsInstancesResponse =
@@ -2689,48 +2696,6 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PartialUpdateInstanceProjectsInstancesRequest {
-  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
-  name: string;
-  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
-  updateMask?: string;
-  /** Request body */
-  body?: Instance;
-}
-
-export const PartialUpdateInstanceProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Instance).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PartialUpdateInstanceProjectsInstancesRequest>;
-
-export type PartialUpdateInstanceProjectsInstancesResponse = Operation;
-export const PartialUpdateInstanceProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PartialUpdateInstanceProjectsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
-export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
-  PartialUpdateInstanceProjectsInstancesRequest,
-  PartialUpdateInstanceProjectsInstancesResponse,
-  PartialUpdateInstanceProjectsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PartialUpdateInstanceProjectsInstancesRequest,
-  output: PartialUpdateInstanceProjectsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface UpdateProjectsInstancesRequest {
   /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
   name: string;
@@ -2745,7 +2710,7 @@ export const UpdateProjectsInstancesRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsInstancesRequest>;
 
 export type UpdateProjectsInstancesResponse = Instance;
 export const UpdateProjectsInstancesResponse =
@@ -2770,49 +2735,6 @@ export const updateProjectsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetIamPolicyProjectsInstancesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsInstancesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesRequest>;
-
-export type SetIamPolicyProjectsInstancesResponse = Policy;
-export const SetIamPolicyProjectsInstancesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsInstancesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on an instance resource. Replaces any existing policy. */
-export const setIamPolicyProjectsInstances: API.OperationMethod<
-  SetIamPolicyProjectsInstancesRequest,
-  SetIamPolicyProjectsInstancesResponse,
-  SetIamPolicyProjectsInstancesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesRequest,
-  output: SetIamPolicyProjectsInstancesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface TestIamPermissionsProjectsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2831,7 +2753,7 @@ export const TestIamPermissionsProjectsInstancesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesRequest>;
 
 export type TestIamPermissionsProjectsInstancesResponse =
   TestIamPermissionsResponse;
@@ -2857,214 +2779,82 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsInstancesAppProfilesRequest {
-  /** Required. The unique name of the requested app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
-  name: string;
-}
-
-export const GetProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesAppProfilesRequest>;
-
-export type GetProjectsInstancesAppProfilesResponse = AppProfile;
-export const GetProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
-
-export type GetProjectsInstancesAppProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information about an app profile. */
-export const getProjectsInstancesAppProfiles: API.OperationMethod<
-  GetProjectsInstancesAppProfilesRequest,
-  GetProjectsInstancesAppProfilesResponse,
-  GetProjectsInstancesAppProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesAppProfilesRequest,
-  output: GetProjectsInstancesAppProfilesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsInstancesAppProfilesRequest {
-  /** Required. The unique name of the instance in which to create the new app profile. Values are of the form `projects/{project}/instances/{instance}`. */
+export interface CreateProjectsInstancesClustersRequest {
+  /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
-  /** If true, ignore safety checks when creating the app profile. */
-  ignoreWarnings?: boolean;
-  /** Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`. */
-  appProfileId?: string;
+  /** Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. */
+  clusterId?: string;
   /** Request body */
-  body?: AppProfile;
+  body?: Cluster;
 }
 
-export const CreateProjectsInstancesAppProfilesRequest =
+export const CreateProjectsInstancesClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-    appProfileId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("appProfileId"),
-    ),
-    body: Schema.optional(AppProfile).pipe(T.HttpBody()),
+    clusterId: Schema.optional(Schema.String).pipe(T.HttpQuery("clusterId")),
+    body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/appProfiles", hasBody: true }),
+    T.Http({ method: "POST", path: "v2/{+parent}/clusters", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesClustersRequest>;
 
-export type CreateProjectsInstancesAppProfilesResponse = AppProfile;
-export const CreateProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
-
-export type CreateProjectsInstancesAppProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates an app profile within an instance. */
-export const createProjectsInstancesAppProfiles: API.OperationMethod<
-  CreateProjectsInstancesAppProfilesRequest,
-  CreateProjectsInstancesAppProfilesResponse,
-  CreateProjectsInstancesAppProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesAppProfilesRequest,
-  output: CreateProjectsInstancesAppProfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsInstancesAppProfilesRequest {
-  /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
-  name: string;
-  /** Required. The subset of app profile fields which should be replaced. If unset, all fields will be replaced. */
-  updateMask?: string;
-  /** If true, ignore safety checks when updating the app profile. */
-  ignoreWarnings?: boolean;
-  /** Request body */
-  body?: AppProfile;
-}
-
-export const PatchProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-    body: Schema.optional(AppProfile).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesAppProfilesRequest>;
-
-export type PatchProjectsInstancesAppProfilesResponse = Operation;
-export const PatchProjectsInstancesAppProfilesResponse =
+export type CreateProjectsInstancesClustersResponse = Operation;
+export const CreateProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesAppProfilesError =
+export type CreateProjectsInstancesClustersError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates an app profile within an instance. */
-export const patchProjectsInstancesAppProfiles: API.OperationMethod<
-  PatchProjectsInstancesAppProfilesRequest,
-  PatchProjectsInstancesAppProfilesResponse,
-  PatchProjectsInstancesAppProfilesError,
+/** Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
+export const createProjectsInstancesClusters: API.OperationMethod<
+  CreateProjectsInstancesClustersRequest,
+  CreateProjectsInstancesClustersResponse,
+  CreateProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesAppProfilesRequest,
-  output: PatchProjectsInstancesAppProfilesResponse,
+  input: CreateProjectsInstancesClustersRequest,
+  output: CreateProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteProjectsInstancesAppProfilesRequest {
-  /** Required. The unique name of the app profile to be deleted. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
-  name: string;
-  /** Required. If true, ignore safety checks when deleting the app profile. */
-  ignoreWarnings?: boolean;
-}
-
-export const DeleteProjectsInstancesAppProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesAppProfilesRequest>;
-
-export type DeleteProjectsInstancesAppProfilesResponse = Empty;
-export const DeleteProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesAppProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an app profile from an instance. */
-export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
-  DeleteProjectsInstancesAppProfilesRequest,
-  DeleteProjectsInstancesAppProfilesResponse,
-  DeleteProjectsInstancesAppProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesAppProfilesRequest,
-  output: DeleteProjectsInstancesAppProfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsInstancesAppProfilesRequest {
-  /** Required. The unique name of the instance for which a list of app profiles is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list AppProfiles for all Instances in a project, e.g., `projects/myproject/instances/-`. */
+export interface ListProjectsInstancesClustersRequest {
+  /** Required. The unique name of the instance for which a list of clusters is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list Clusters for all Instances in a project, e.g., `projects/myproject/instances/-`. */
   parent: string;
-  /** Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
-  pageSize?: number;
-  /** The value of `next_page_token` returned by a previous call. */
+  /** DEPRECATED: This field is unused and ignored. */
   pageToken?: string;
 }
 
-export const ListProjectsInstancesAppProfilesRequest =
+export const ListProjectsInstancesClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/appProfiles" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/clusters" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesAppProfilesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersRequest>;
 
-export type ListProjectsInstancesAppProfilesResponse = ListAppProfilesResponse;
-export const ListProjectsInstancesAppProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAppProfilesResponse;
+export type ListProjectsInstancesClustersResponse = ListClustersResponse;
+export const ListProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsInstancesAppProfilesError =
+export type ListProjectsInstancesClustersError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists information about app profiles in an instance. */
-export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
-  ListProjectsInstancesAppProfilesRequest,
-  ListProjectsInstancesAppProfilesResponse,
-  ListProjectsInstancesAppProfilesError,
+/** Lists information about clusters in an instance. */
+export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
+  ListProjectsInstancesClustersRequest,
+  ListProjectsInstancesClustersResponse,
+  ListProjectsInstancesClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesAppProfilesRequest,
-  output: ListProjectsInstancesAppProfilesResponse,
+  input: ListProjectsInstancesClustersRequest,
+  output: ListProjectsInstancesClustersResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -3072,14 +2862,450 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
+export interface UpdateProjectsInstancesClustersRequest {
+  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
+  name: string;
+  /** Request body */
+  body?: Cluster;
+}
+
+export const UpdateProjectsInstancesClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Cluster).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateProjectsInstancesClustersRequest>;
+
+export type UpdateProjectsInstancesClustersResponse = Operation;
+export const UpdateProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UpdateProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a cluster within an instance. Note that UpdateCluster does not support updating cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster. */
+export const updateProjectsInstancesClusters: API.OperationMethod<
+  UpdateProjectsInstancesClustersRequest,
+  UpdateProjectsInstancesClustersResponse,
+  UpdateProjectsInstancesClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsInstancesClustersRequest,
+  output: UpdateProjectsInstancesClustersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetMemoryLayerProjectsInstancesClustersRequest {
+  /** Required. The unique name of the requested cluster's memory layer. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
+  name: string;
+}
+
+export const GetMemoryLayerProjectsInstancesClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetMemoryLayerProjectsInstancesClustersRequest>;
+
+export type GetMemoryLayerProjectsInstancesClustersResponse = MemoryLayer;
+export const GetMemoryLayerProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ MemoryLayer;
+
+export type GetMemoryLayerProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets information about the memory layer of a cluster. */
+export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
+  GetMemoryLayerProjectsInstancesClustersRequest,
+  GetMemoryLayerProjectsInstancesClustersResponse,
+  GetMemoryLayerProjectsInstancesClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMemoryLayerProjectsInstancesClustersRequest,
+  output: GetMemoryLayerProjectsInstancesClustersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetProjectsInstancesClustersRequest {
+  /** Required. The unique name of the requested cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  name: string;
+}
+
+export const GetProjectsInstancesClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsInstancesClustersRequest>;
+
+export type GetProjectsInstancesClustersResponse = Cluster;
+export const GetProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Cluster;
+
+export type GetProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets information about a cluster. */
+export const getProjectsInstancesClusters: API.OperationMethod<
+  GetProjectsInstancesClustersRequest,
+  GetProjectsInstancesClustersResponse,
+  GetProjectsInstancesClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsInstancesClustersRequest,
+  output: GetProjectsInstancesClustersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PartialUpdateClusterProjectsInstancesClustersRequest {
+  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
+  name: string;
+  /** Required. The subset of Cluster fields which should be replaced. */
+  updateMask?: string;
+  /** Request body */
+  body?: Cluster;
+}
+
+export const PartialUpdateClusterProjectsInstancesClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Cluster).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PartialUpdateClusterProjectsInstancesClustersRequest>;
+
+export type PartialUpdateClusterProjectsInstancesClustersResponse = Operation;
+export const PartialUpdateClusterProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PartialUpdateClusterProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
+export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
+  PartialUpdateClusterProjectsInstancesClustersRequest,
+  PartialUpdateClusterProjectsInstancesClustersResponse,
+  PartialUpdateClusterProjectsInstancesClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PartialUpdateClusterProjectsInstancesClustersRequest,
+  output: PartialUpdateClusterProjectsInstancesClustersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsInstancesClustersRequest {
+  /** Required. The unique name of the cluster to be deleted. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  name: string;
+}
+
+export const DeleteProjectsInstancesClustersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesClustersRequest>;
+
+export type DeleteProjectsInstancesClustersResponse = Empty;
+export const DeleteProjectsInstancesClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a cluster from an instance. */
+export const deleteProjectsInstancesClusters: API.OperationMethod<
+  DeleteProjectsInstancesClustersRequest,
+  DeleteProjectsInstancesClustersResponse,
+  DeleteProjectsInstancesClustersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesClustersRequest,
+  output: DeleteProjectsInstancesClustersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsInstancesClustersHotTabletsRequest {
+  /** The value of `next_page_token` returned by a previous call. */
+  pageToken?: string;
+  /** Required. The cluster name to list hot tablets. Value is in the following form: `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  parent: string;
+  /** The start time to list hot tablets. The hot tablets in the response will have start times between the requested start time and end time. Start time defaults to Now if it is unset, and end time defaults to Now - 24 hours if it is unset. The start time should be less than the end time, and the maximum allowed time range between start time and end time is 48 hours. Start time and end time should have values between Now and Now - 14 days. */
+  startTime?: string;
+  /** The end time to list hot tablets. */
+  endTime?: string;
+  /** Maximum number of results per page. A page_size that is empty or zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls do not need a page_size field. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
+  pageSize?: number;
+}
+
+export const ListProjectsInstancesClustersHotTabletsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
+    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/hotTablets" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersHotTabletsRequest>;
+
+export type ListProjectsInstancesClustersHotTabletsResponse =
+  ListHotTabletsResponse;
+export const ListProjectsInstancesClustersHotTabletsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListHotTabletsResponse;
+
+export type ListProjectsInstancesClustersHotTabletsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on CPU usage. */
+export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMethod<
+  ListProjectsInstancesClustersHotTabletsRequest,
+  ListProjectsInstancesClustersHotTabletsResponse,
+  ListProjectsInstancesClustersHotTabletsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsInstancesClustersHotTabletsRequest,
+  output: ListProjectsInstancesClustersHotTabletsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ListProjectsInstancesClustersMemoryLayersRequest {
+  /** Optional. A page token, received from a previous `ListMemoryLayers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMemoryLayers` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. The maximum number of memory layers to return. The service may return fewer than this value. */
+  pageSize?: number;
+  /** Required. The unique name of the cluster for which a list of memory layers is requested. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance, e.g., `projects/myproject/instances/myinstance/clusters/-`. */
+  parent: string;
+}
+
+export const ListProjectsInstancesClustersMemoryLayersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/memoryLayers" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersMemoryLayersRequest>;
+
+export type ListProjectsInstancesClustersMemoryLayersResponse =
+  ListMemoryLayersResponse;
+export const ListProjectsInstancesClustersMemoryLayersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListMemoryLayersResponse;
+
+export type ListProjectsInstancesClustersMemoryLayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists information about memory layers. */
+export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMethod<
+  ListProjectsInstancesClustersMemoryLayersRequest,
+  ListProjectsInstancesClustersMemoryLayersResponse,
+  ListProjectsInstancesClustersMemoryLayersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsInstancesClustersMemoryLayersRequest,
+  output: ListProjectsInstancesClustersMemoryLayersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface PatchProjectsInstancesClustersBackupsRequest {
+  /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  name: string;
+  /** Required. A mask specifying which fields (e.g. `expire_time`) in the Backup resource should be updated. This mask is relative to the Backup resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally by clients that do not know about them. */
+  updateMask?: string;
+  /** Request body */
+  body?: Backup;
+}
+
+export const PatchProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Backup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesClustersBackupsRequest>;
+
+export type PatchProjectsInstancesClustersBackupsResponse = Backup;
+export const PatchProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Backup;
+
+export type PatchProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a pending or completed Cloud Bigtable Backup. */
+export const patchProjectsInstancesClustersBackups: API.OperationMethod<
+  PatchProjectsInstancesClustersBackupsRequest,
+  PatchProjectsInstancesClustersBackupsResponse,
+  PatchProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesClustersBackupsRequest,
+  output: PatchProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsInstancesClustersBackupsRequest {
+  /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
+  name: string;
+}
+
+export const GetProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsInstancesClustersBackupsRequest>;
+
+export type GetProjectsInstancesClustersBackupsResponse = Backup;
+export const GetProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Backup;
+
+export type GetProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets metadata on a pending or completed Cloud Bigtable Backup. */
+export const getProjectsInstancesClustersBackups: API.OperationMethod<
+  GetProjectsInstancesClustersBackupsRequest,
+  GetProjectsInstancesClustersBackupsResponse,
+  GetProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsInstancesClustersBackupsRequest,
+  output: GetProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
+
+export type SetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
+export const SetIamPolicyProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
+export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
+  SetIamPolicyProjectsInstancesClustersBackupsRequest,
+  SetIamPolicyProjectsInstancesClustersBackupsResponse,
+  SetIamPolicyProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsInstancesClustersBackupsRequest,
+  output: SetIamPolicyProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsInstancesClustersBackupsRequest {
+  /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
+  name: string;
+}
+
+export const DeleteProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesClustersBackupsRequest>;
+
+export type DeleteProjectsInstancesClustersBackupsResponse = Empty;
+export const DeleteProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a pending or completed Cloud Bigtable backup. */
+export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
+  DeleteProjectsInstancesClustersBackupsRequest,
+  DeleteProjectsInstancesClustersBackupsResponse,
+  DeleteProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesClustersBackupsRequest,
+  output: DeleteProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
 
-export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
+export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
@@ -3090,28 +3316,249 @@ export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
 
-export type GetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
-export const GetIamPolicyProjectsInstancesMaterializedViewsResponse =
+export type GetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
+export const GetIamPolicyProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesMaterializedViewsError =
+export type GetIamPolicyProjectsInstancesClustersBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
-export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
-  GetIamPolicyProjectsInstancesMaterializedViewsRequest,
-  GetIamPolicyProjectsInstancesMaterializedViewsResponse,
-  GetIamPolicyProjectsInstancesMaterializedViewsError,
+/** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
+export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
+  GetIamPolicyProjectsInstancesClustersBackupsRequest,
+  GetIamPolicyProjectsInstancesClustersBackupsResponse,
+  GetIamPolicyProjectsInstancesClustersBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesMaterializedViewsRequest,
-  output: GetIamPolicyProjectsInstancesMaterializedViewsResponse,
+  input: GetIamPolicyProjectsInstancesClustersBackupsRequest,
+  output: GetIamPolicyProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsInstancesClustersBackupsRequest {
+  /** Required. This must be one of the clusters in the instance in which this table is located. The backup will be stored in this cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  parent: string;
+  /** Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. */
+  backupId?: string;
+  /** Request body */
+  body?: Backup;
+}
+
+export const CreateProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
+    body: Schema.optional(Backup).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}/backups", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesClustersBackupsRequest>;
+
+export type CreateProjectsInstancesClustersBackupsResponse = Operation;
+export const CreateProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. */
+export const createProjectsInstancesClustersBackups: API.OperationMethod<
+  CreateProjectsInstancesClustersBackupsRequest,
+  CreateProjectsInstancesClustersBackupsResponse,
+  CreateProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesClustersBackupsRequest,
+  output: CreateProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsInstancesClustersBackupsRequest {
+  /** Number of backups to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
+  pageSize?: number;
+  /** Required. The cluster to list backups from. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list backups for all clusters in an instance, e.g., `projects/{project}/instances/{instance}/clusters/-`. */
+  parent: string;
+  /** A filter expression that filters backups listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be <, >, <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly synonymous with equality. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` To filter on multiple expressions, provide each separate expression within parentheses. By default, each expression is an AND expression. However, you can include AND, OR, and NOT expressions explicitly. Some examples of using filters are: * `name:"exact"` --> The backup's name is the string "exact". * `name:howl` --> The backup's name contains the string "howl". * `source_table:prod` --> The source_table's name contains the string "prod". * `state:CREATING` --> The backup is pending creation. * `state:READY` --> The backup is fully created and ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and start_time of the backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's size is greater than 10GB */
+  filter?: string;
+  /** An expression for specifying the sort order of the results of the request. The string value should specify one or more fields in Backup. The full syntax is described at https://aip.dev/132#ordering. Fields supported are: * name * source_table * expire_time * start_time * end_time * size_bytes * state For example, "start_time". The default sorting order is ascending. To specify descending order for the field, a suffix " desc" should be appended to the field name. For example, "start_time desc". Redundant space characters in the syntax are insigificant. If order_by is empty, results will be sorted by `start_time` in descending order starting from the most recently created backup. */
+  orderBy?: string;
+  /** If non-empty, `page_token` should contain a next_page_token from a previous ListBackupsResponse to the same `parent` and with the same `filter`. */
+  pageToken?: string;
+}
+
+export const ListProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+parent}/backups" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsInstancesClustersBackupsRequest>;
+
+export type ListProjectsInstancesClustersBackupsResponse = ListBackupsResponse;
+export const ListProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
+
+export type ListProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists Cloud Bigtable backups. Returns both completed and pending backups. */
+export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
+  ListProjectsInstancesClustersBackupsRequest,
+  ListProjectsInstancesClustersBackupsResponse,
+  ListProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsInstancesClustersBackupsRequest,
+  output: ListProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CopyProjectsInstancesClustersBackupsRequest {
+  /** Required. The name of the destination cluster that will contain the backup copy. The cluster must already exist. Values are of the form: `projects/{project}/instances/{instance}/clusters/{cluster}`. */
+  parent: string;
+  /** Request body */
+  body?: CopyBackupRequest;
+}
+
+export const CopyProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(CopyBackupRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/backups:copy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CopyProjectsInstancesClustersBackupsRequest>;
+
+export type CopyProjectsInstancesClustersBackupsResponse = Operation;
+export const CopyProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CopyProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the destination instance and project. */
+export const copyProjectsInstancesClustersBackups: API.OperationMethod<
+  CopyProjectsInstancesClustersBackupsRequest,
+  CopyProjectsInstancesClustersBackupsResponse,
+  CopyProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CopyProjectsInstancesClustersBackupsRequest,
+  output: CopyProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
+
+export type TestIamPermissionsProjectsInstancesClustersBackupsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsInstancesClustersBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that the caller has on the specified Bigtable resource. */
+export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMethod<
+  TestIamPermissionsProjectsInstancesClustersBackupsRequest,
+  TestIamPermissionsProjectsInstancesClustersBackupsResponse,
+  TestIamPermissionsProjectsInstancesClustersBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsInstancesClustersBackupsRequest,
+  output: TestIamPermissionsProjectsInstancesClustersBackupsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsInstancesMaterializedViewsRequest {
+  /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
+  name: string;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: MaterializedView;
+}
+
+export const PatchProjectsInstancesMaterializedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(MaterializedView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesMaterializedViewsRequest>;
+
+export type PatchProjectsInstancesMaterializedViewsResponse = Operation;
+export const PatchProjectsInstancesMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a materialized view within an instance. */
+export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
+  PatchProjectsInstancesMaterializedViewsRequest,
+  PatchProjectsInstancesMaterializedViewsResponse,
+  PatchProjectsInstancesMaterializedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesMaterializedViewsRequest,
+  output: PatchProjectsInstancesMaterializedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3133,7 +3580,7 @@ export const SetIamPolicyProjectsInstancesMaterializedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesMaterializedViewsRequest>;
 
 export type SetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesMaterializedViewsResponse =
@@ -3177,7 +3624,7 @@ export const GetProjectsInstancesMaterializedViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesMaterializedViewsRequest>;
 
 export type GetProjectsInstancesMaterializedViewsResponse = MaterializedView;
 export const GetProjectsInstancesMaterializedViewsResponse =
@@ -3200,11 +3647,181 @@ export const getProjectsInstancesMaterializedViews: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GetIamPolicyRequest;
+}
+
+export const GetIamPolicyProjectsInstancesMaterializedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesMaterializedViewsRequest>;
+
+export type GetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
+export const GetIamPolicyProjectsInstancesMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
+export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
+  GetIamPolicyProjectsInstancesMaterializedViewsRequest,
+  GetIamPolicyProjectsInstancesMaterializedViewsResponse,
+  GetIamPolicyProjectsInstancesMaterializedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsInstancesMaterializedViewsRequest,
+  output: GetIamPolicyProjectsInstancesMaterializedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsInstancesMaterializedViewsRequest {
+  /** Required. The unique name of the materialized view to be deleted. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`. */
+  name: string;
+  /** Optional. The current etag of the materialized view. If an etag is provided and does not match the current etag of the materialized view, deletion will be blocked and an ABORTED error will be returned. */
+  etag?: string;
+}
+
+export const DeleteProjectsInstancesMaterializedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesMaterializedViewsRequest>;
+
+export type DeleteProjectsInstancesMaterializedViewsResponse = Empty;
+export const DeleteProjectsInstancesMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a materialized view from an instance. */
+export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
+  DeleteProjectsInstancesMaterializedViewsRequest,
+  DeleteProjectsInstancesMaterializedViewsResponse,
+  DeleteProjectsInstancesMaterializedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesMaterializedViewsRequest,
+  output: DeleteProjectsInstancesMaterializedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
+
+export type TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that the caller has on the specified instance resource. */
+export const testIamPermissionsProjectsInstancesMaterializedViews: API.OperationMethod<
+  TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
+  TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
+  TestIamPermissionsProjectsInstancesMaterializedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
+  output: TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsInstancesMaterializedViewsRequest {
+  /** Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. */
+  parent: string;
+  /** Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. */
+  materializedViewId?: string;
+  /** Request body */
+  body?: MaterializedView;
+}
+
+export const CreateProjectsInstancesMaterializedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    materializedViewId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("materializedViewId"),
+    ),
+    body: Schema.optional(MaterializedView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/materializedViews",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesMaterializedViewsRequest>;
+
+export type CreateProjectsInstancesMaterializedViewsResponse = Operation;
+export const CreateProjectsInstancesMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a materialized view within an instance. */
+export const createProjectsInstancesMaterializedViews: API.OperationMethod<
+  CreateProjectsInstancesMaterializedViewsRequest,
+  CreateProjectsInstancesMaterializedViewsResponse,
+  CreateProjectsInstancesMaterializedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesMaterializedViewsRequest,
+  output: CreateProjectsInstancesMaterializedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsInstancesMaterializedViewsRequest {
-  /** Optional. The maximum number of materialized views to return. The service may return fewer than this value */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListMaterializedViews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMaterializedViews` must match the call that provided the page token. */
-  pageToken?: string;
   /** Required. The unique name of the instance for which the list of materialized views is requested. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
   /** Optional. Describes which of the materialized view's fields should be populated in the response. For now, only the default value SCHEMA_VIEW is supported. */
@@ -3214,18 +3831,22 @@ export interface ListProjectsInstancesMaterializedViewsRequest {
     | "REPLICATION_VIEW"
     | "FULL"
     | (string & {});
+  /** Optional. The maximum number of materialized views to return. The service may return fewer than this value */
+  pageSize?: number;
+  /** Optional. A page token, received from a previous `ListMaterializedViews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMaterializedViews` must match the call that provided the page token. */
+  pageToken?: string;
 }
 
 export const ListProjectsInstancesMaterializedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/materializedViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesMaterializedViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesMaterializedViewsRequest>;
 
 export type ListProjectsInstancesMaterializedViewsResponse =
   ListMaterializedViewsResponse;
@@ -3253,179 +3874,6 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
   },
 }));
 
-export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesMaterializedViewsRequest>;
-
-export type TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsInstancesMaterializedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that the caller has on the specified instance resource. */
-export const testIamPermissionsProjectsInstancesMaterializedViews: API.OperationMethod<
-  TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
-  TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
-  TestIamPermissionsProjectsInstancesMaterializedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
-  output: TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsInstancesMaterializedViewsRequest {
-  /** Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. */
-  materializedViewId?: string;
-  /** Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. */
-  parent: string;
-  /** Request body */
-  body?: MaterializedView;
-}
-
-export const CreateProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    materializedViewId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("materializedViewId"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(MaterializedView).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/materializedViews",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesMaterializedViewsRequest>;
-
-export type CreateProjectsInstancesMaterializedViewsResponse = Operation;
-export const CreateProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsInstancesMaterializedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a materialized view within an instance. */
-export const createProjectsInstancesMaterializedViews: API.OperationMethod<
-  CreateProjectsInstancesMaterializedViewsRequest,
-  CreateProjectsInstancesMaterializedViewsResponse,
-  CreateProjectsInstancesMaterializedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesMaterializedViewsRequest,
-  output: CreateProjectsInstancesMaterializedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsInstancesMaterializedViewsRequest {
-  /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
-  name: string;
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-  /** Request body */
-  body?: MaterializedView;
-}
-
-export const PatchProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(MaterializedView).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesMaterializedViewsRequest>;
-
-export type PatchProjectsInstancesMaterializedViewsResponse = Operation;
-export const PatchProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsInstancesMaterializedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a materialized view within an instance. */
-export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
-  PatchProjectsInstancesMaterializedViewsRequest,
-  PatchProjectsInstancesMaterializedViewsResponse,
-  PatchProjectsInstancesMaterializedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesMaterializedViewsRequest,
-  output: PatchProjectsInstancesMaterializedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesMaterializedViewsRequest {
-  /** Required. The unique name of the materialized view to be deleted. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`. */
-  name: string;
-  /** Optional. The current etag of the materialized view. If an etag is provided and does not match the current etag of the materialized view, deletion will be blocked and an ABORTED error will be returned. */
-  etag?: string;
-}
-
-export const DeleteProjectsInstancesMaterializedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesMaterializedViewsRequest>;
-
-export type DeleteProjectsInstancesMaterializedViewsResponse = Empty;
-export const DeleteProjectsInstancesMaterializedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesMaterializedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a materialized view from an instance. */
-export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
-  DeleteProjectsInstancesMaterializedViewsRequest,
-  DeleteProjectsInstancesMaterializedViewsResponse,
-  DeleteProjectsInstancesMaterializedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesMaterializedViewsRequest,
-  output: DeleteProjectsInstancesMaterializedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -3444,7 +3892,7 @@ export const GetIamPolicyProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export type GetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesLogicalViewsResponse =
@@ -3469,6 +3917,87 @@ export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface DeleteProjectsInstancesLogicalViewsRequest {
+  /** Required. The unique name of the logical view to be deleted. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
+  name: string;
+  /** Optional. The current etag of the logical view. If an etag is provided and does not match the current etag of the logical view, deletion will be blocked and an ABORTED error will be returned. */
+  etag?: string;
+}
+
+export const DeleteProjectsInstancesLogicalViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesLogicalViewsRequest>;
+
+export type DeleteProjectsInstancesLogicalViewsResponse = Empty;
+export const DeleteProjectsInstancesLogicalViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a logical view from an instance. */
+export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
+  DeleteProjectsInstancesLogicalViewsRequest,
+  DeleteProjectsInstancesLogicalViewsResponse,
+  DeleteProjectsInstancesLogicalViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesLogicalViewsRequest,
+  output: DeleteProjectsInstancesLogicalViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsInstancesLogicalViewsRequest {
+  /** Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` */
+  name: string;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Request body */
+  body?: LogicalView;
+}
+
+export const PatchProjectsInstancesLogicalViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(LogicalView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesLogicalViewsRequest>;
+
+export type PatchProjectsInstancesLogicalViewsResponse = Operation;
+export const PatchProjectsInstancesLogicalViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a logical view within an instance. */
+export const patchProjectsInstancesLogicalViews: API.OperationMethod<
+  PatchProjectsInstancesLogicalViewsRequest,
+  PatchProjectsInstancesLogicalViewsResponse,
+  PatchProjectsInstancesLogicalViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesLogicalViewsRequest,
+  output: PatchProjectsInstancesLogicalViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface SetIamPolicyProjectsInstancesLogicalViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -3487,7 +4016,7 @@ export const SetIamPolicyProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesLogicalViewsRequest>;
 
 export type SetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesLogicalViewsResponse =
@@ -3523,7 +4052,7 @@ export const GetProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesLogicalViewsRequest>;
 
 export type GetProjectsInstancesLogicalViewsResponse = LogicalView;
 export const GetProjectsInstancesLogicalViewsResponse =
@@ -3564,7 +4093,7 @@ export const TestIamPermissionsProjectsInstancesLogicalViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesLogicalViewsRequest>;
 
 export type TestIamPermissionsProjectsInstancesLogicalViewsResponse =
   TestIamPermissionsResponse;
@@ -3590,6 +4119,54 @@ export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMetho
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateProjectsInstancesLogicalViewsRequest {
+  /** Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. */
+  parent: string;
+  /** Required. The ID to use for the logical view, which will become the final component of the logical view's resource name. */
+  logicalViewId?: string;
+  /** Request body */
+  body?: LogicalView;
+}
+
+export const CreateProjectsInstancesLogicalViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    logicalViewId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("logicalViewId"),
+    ),
+    body: Schema.optional(LogicalView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/logicalViews",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesLogicalViewsRequest>;
+
+export type CreateProjectsInstancesLogicalViewsResponse = Operation;
+export const CreateProjectsInstancesLogicalViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a logical view within an instance. */
+export const createProjectsInstancesLogicalViews: API.OperationMethod<
+  CreateProjectsInstancesLogicalViewsRequest,
+  CreateProjectsInstancesLogicalViewsResponse,
+  CreateProjectsInstancesLogicalViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesLogicalViewsRequest,
+  output: CreateProjectsInstancesLogicalViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsInstancesLogicalViewsRequest {
   /** Required. The unique name of the instance for which the list of logical views is requested. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
@@ -3607,7 +4184,7 @@ export const ListProjectsInstancesLogicalViewsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/logicalViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesLogicalViewsRequest>;
 
 export type ListProjectsInstancesLogicalViewsResponse =
   ListLogicalViewsResponse;
@@ -3635,492 +4212,92 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
   },
 }));
 
-export interface PatchProjectsInstancesLogicalViewsRequest {
-  /** Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` */
-  name: string;
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-  /** Request body */
-  body?: LogicalView;
-}
-
-export const PatchProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(LogicalView).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesLogicalViewsRequest>;
-
-export type PatchProjectsInstancesLogicalViewsResponse = Operation;
-export const PatchProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsInstancesLogicalViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a logical view within an instance. */
-export const patchProjectsInstancesLogicalViews: API.OperationMethod<
-  PatchProjectsInstancesLogicalViewsRequest,
-  PatchProjectsInstancesLogicalViewsResponse,
-  PatchProjectsInstancesLogicalViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesLogicalViewsRequest,
-  output: PatchProjectsInstancesLogicalViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesLogicalViewsRequest {
-  /** Required. The unique name of the logical view to be deleted. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
-  name: string;
-  /** Optional. The current etag of the logical view. If an etag is provided and does not match the current etag of the logical view, deletion will be blocked and an ABORTED error will be returned. */
-  etag?: string;
-}
-
-export const DeleteProjectsInstancesLogicalViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesLogicalViewsRequest>;
-
-export type DeleteProjectsInstancesLogicalViewsResponse = Empty;
-export const DeleteProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesLogicalViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a logical view from an instance. */
-export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
-  DeleteProjectsInstancesLogicalViewsRequest,
-  DeleteProjectsInstancesLogicalViewsResponse,
-  DeleteProjectsInstancesLogicalViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesLogicalViewsRequest,
-  output: DeleteProjectsInstancesLogicalViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsInstancesLogicalViewsRequest {
-  /** Required. The ID to use for the logical view, which will become the final component of the logical view's resource name. */
-  logicalViewId?: string;
-  /** Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. */
+export interface CreateProjectsInstancesAppProfilesRequest {
+  /** Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`. */
+  appProfileId?: string;
+  /** Required. The unique name of the instance in which to create the new app profile. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
+  /** If true, ignore safety checks when creating the app profile. */
+  ignoreWarnings?: boolean;
   /** Request body */
-  body?: LogicalView;
+  body?: AppProfile;
 }
 
-export const CreateProjectsInstancesLogicalViewsRequest =
+export const CreateProjectsInstancesAppProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logicalViewId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("logicalViewId"),
+    appProfileId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("appProfileId"),
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(LogicalView).pipe(T.HttpBody()),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
+    body: Schema.optional(AppProfile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/logicalViews",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{+parent}/appProfiles", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesLogicalViewsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsInstancesAppProfilesRequest>;
 
-export type CreateProjectsInstancesLogicalViewsResponse = Operation;
-export const CreateProjectsInstancesLogicalViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type CreateProjectsInstancesAppProfilesResponse = AppProfile;
+export const CreateProjectsInstancesAppProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
 
-export type CreateProjectsInstancesLogicalViewsError =
+export type CreateProjectsInstancesAppProfilesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a logical view within an instance. */
-export const createProjectsInstancesLogicalViews: API.OperationMethod<
-  CreateProjectsInstancesLogicalViewsRequest,
-  CreateProjectsInstancesLogicalViewsResponse,
-  CreateProjectsInstancesLogicalViewsError,
+/** Creates an app profile within an instance. */
+export const createProjectsInstancesAppProfiles: API.OperationMethod<
+  CreateProjectsInstancesAppProfilesRequest,
+  CreateProjectsInstancesAppProfilesResponse,
+  CreateProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesLogicalViewsRequest,
-  output: CreateProjectsInstancesLogicalViewsResponse,
+  input: CreateProjectsInstancesAppProfilesRequest,
+  output: CreateProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateProjectsInstancesClustersRequest {
-  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
-  name: string;
-  /** Request body */
-  body?: Cluster;
-}
-
-export const UpdateProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Cluster).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsInstancesClustersRequest>;
-
-export type UpdateProjectsInstancesClustersResponse = Operation;
-export const UpdateProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type UpdateProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a cluster within an instance. Note that UpdateCluster does not support updating cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster. */
-export const updateProjectsInstancesClusters: API.OperationMethod<
-  UpdateProjectsInstancesClustersRequest,
-  UpdateProjectsInstancesClustersResponse,
-  UpdateProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsInstancesClustersRequest,
-  output: UpdateProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsInstancesClustersRequest {
-  /** Required. The unique name of the requested cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  name: string;
-}
-
-export const GetProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesClustersRequest>;
-
-export type GetProjectsInstancesClustersResponse = Cluster;
-export const GetProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Cluster;
-
-export type GetProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information about a cluster. */
-export const getProjectsInstancesClusters: API.OperationMethod<
-  GetProjectsInstancesClustersRequest,
-  GetProjectsInstancesClustersResponse,
-  GetProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesClustersRequest,
-  output: GetProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PartialUpdateClusterProjectsInstancesClustersRequest {
-  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
-  name: string;
-  /** Required. The subset of Cluster fields which should be replaced. */
-  updateMask?: string;
-  /** Request body */
-  body?: Cluster;
-}
-
-export const PartialUpdateClusterProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Cluster).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PartialUpdateClusterProjectsInstancesClustersRequest>;
-
-export type PartialUpdateClusterProjectsInstancesClustersResponse = Operation;
-export const PartialUpdateClusterProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PartialUpdateClusterProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
-export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
-  PartialUpdateClusterProjectsInstancesClustersRequest,
-  PartialUpdateClusterProjectsInstancesClustersResponse,
-  PartialUpdateClusterProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PartialUpdateClusterProjectsInstancesClustersRequest,
-  output: PartialUpdateClusterProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsInstancesClustersRequest {
-  /** Required. The unique name of the instance for which a list of clusters is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list Clusters for all Instances in a project, e.g., `projects/myproject/instances/-`. */
-  parent: string;
-  /** DEPRECATED: This field is unused and ignored. */
-  pageToken?: string;
-}
-
-export const ListProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/clusters" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersRequest>;
-
-export type ListProjectsInstancesClustersResponse = ListClustersResponse;
-export const ListProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
-
-export type ListProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists information about clusters in an instance. */
-export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
-  ListProjectsInstancesClustersRequest,
-  ListProjectsInstancesClustersResponse,
-  ListProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesClustersRequest,
-  output: ListProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsInstancesClustersRequest {
-  /** Required. The unique name of the cluster to be deleted. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  name: string;
-}
-
-export const DeleteProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesClustersRequest>;
-
-export type DeleteProjectsInstancesClustersResponse = Empty;
-export const DeleteProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a cluster from an instance. */
-export const deleteProjectsInstancesClusters: API.OperationMethod<
-  DeleteProjectsInstancesClustersRequest,
-  DeleteProjectsInstancesClustersResponse,
-  DeleteProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesClustersRequest,
-  output: DeleteProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetMemoryLayerProjectsInstancesClustersRequest {
-  /** Required. The unique name of the requested cluster's memory layer. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
-  name: string;
-}
-
-export const GetMemoryLayerProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetMemoryLayerProjectsInstancesClustersRequest>;
-
-export type GetMemoryLayerProjectsInstancesClustersResponse = MemoryLayer;
-export const GetMemoryLayerProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MemoryLayer;
-
-export type GetMemoryLayerProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information about the memory layer of a cluster. */
-export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
-  GetMemoryLayerProjectsInstancesClustersRequest,
-  GetMemoryLayerProjectsInstancesClustersResponse,
-  GetMemoryLayerProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetMemoryLayerProjectsInstancesClustersRequest,
-  output: GetMemoryLayerProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsInstancesClustersRequest {
-  /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
-  parent: string;
-  /** Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. */
-  clusterId?: string;
-  /** Request body */
-  body?: Cluster;
-}
-
-export const CreateProjectsInstancesClustersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    clusterId: Schema.optional(Schema.String).pipe(T.HttpQuery("clusterId")),
-    body: Schema.optional(Cluster).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/clusters", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesClustersRequest>;
-
-export type CreateProjectsInstancesClustersResponse = Operation;
-export const CreateProjectsInstancesClustersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsInstancesClustersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
-export const createProjectsInstancesClusters: API.OperationMethod<
-  CreateProjectsInstancesClustersRequest,
-  CreateProjectsInstancesClustersResponse,
-  CreateProjectsInstancesClustersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesClustersRequest,
-  output: CreateProjectsInstancesClustersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsInstancesClustersMemoryLayersRequest {
-  /** Required. The unique name of the cluster for which a list of memory layers is requested. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list MemoryLayers for all Clusters in an instance, e.g., `projects/myproject/instances/myinstance/clusters/-`. */
-  parent: string;
-  /** Optional. The maximum number of memory layers to return. The service may return fewer than this value. */
-  pageSize?: number;
-  /** Optional. A page token, received from a previous `ListMemoryLayers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMemoryLayers` must match the call that provided the page token. */
-  pageToken?: string;
-}
-
-export const ListProjectsInstancesClustersMemoryLayersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/memoryLayers" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersMemoryLayersRequest>;
-
-export type ListProjectsInstancesClustersMemoryLayersResponse =
-  ListMemoryLayersResponse;
-export const ListProjectsInstancesClustersMemoryLayersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMemoryLayersResponse;
-
-export type ListProjectsInstancesClustersMemoryLayersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists information about memory layers. */
-export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMethod<
-  ListProjectsInstancesClustersMemoryLayersRequest,
-  ListProjectsInstancesClustersMemoryLayersResponse,
-  ListProjectsInstancesClustersMemoryLayersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesClustersMemoryLayersRequest,
-  output: ListProjectsInstancesClustersMemoryLayersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProjectsInstancesClustersHotTabletsRequest {
-  /** The start time to list hot tablets. The hot tablets in the response will have start times between the requested start time and end time. Start time defaults to Now if it is unset, and end time defaults to Now - 24 hours if it is unset. The start time should be less than the end time, and the maximum allowed time range between start time and end time is 48 hours. Start time and end time should have values between Now and Now - 14 days. */
-  startTime?: string;
-  /** The end time to list hot tablets. */
-  endTime?: string;
-  /** Maximum number of results per page. A page_size that is empty or zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls do not need a page_size field. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
-  pageSize?: number;
-  /** Required. The cluster name to list hot tablets. Value is in the following form: `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  parent: string;
+export interface ListProjectsInstancesAppProfilesRequest {
   /** The value of `next_page_token` returned by a previous call. */
   pageToken?: string;
+  /** Required. The unique name of the instance for which a list of app profiles is requested. Values are of the form `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list AppProfiles for all Instances in a project, e.g., `projects/myproject/instances/-`. */
+  parent: string;
+  /** Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
+  pageSize?: number;
 }
 
-export const ListProjectsInstancesClustersHotTabletsRequest =
+export const ListProjectsInstancesAppProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
-    endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/hotTablets" }),
+    T.Http({ method: "GET", path: "v2/{+parent}/appProfiles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersHotTabletsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesAppProfilesRequest>;
 
-export type ListProjectsInstancesClustersHotTabletsResponse =
-  ListHotTabletsResponse;
-export const ListProjectsInstancesClustersHotTabletsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListHotTabletsResponse;
+export type ListProjectsInstancesAppProfilesResponse = ListAppProfilesResponse;
+export const ListProjectsInstancesAppProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAppProfilesResponse;
 
-export type ListProjectsInstancesClustersHotTabletsError =
+export type ListProjectsInstancesAppProfilesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on CPU usage. */
-export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMethod<
-  ListProjectsInstancesClustersHotTabletsRequest,
-  ListProjectsInstancesClustersHotTabletsResponse,
-  ListProjectsInstancesClustersHotTabletsError,
+/** Lists information about app profiles in an instance. */
+export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
+  ListProjectsInstancesAppProfilesRequest,
+  ListProjectsInstancesAppProfilesResponse,
+  ListProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesClustersHotTabletsRequest,
-  output: ListProjectsInstancesClustersHotTabletsResponse,
+  input: ListProjectsInstancesAppProfilesRequest,
+  output: ListProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -4128,463 +4305,169 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
   },
 }));
 
-export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesClustersBackupsRequest>;
-
-export type SetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
-export const SetIamPolicyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
-export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
-  SetIamPolicyProjectsInstancesClustersBackupsRequest,
-  SetIamPolicyProjectsInstancesClustersBackupsResponse,
-  SetIamPolicyProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesClustersBackupsRequest,
-  output: SetIamPolicyProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsInstancesClustersBackupsRequest {
-  /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  name: string;
-  /** Required. A mask specifying which fields (e.g. `expire_time`) in the Backup resource should be updated. This mask is relative to the Backup resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally by clients that do not know about them. */
-  updateMask?: string;
-  /** Request body */
-  body?: Backup;
-}
-
-export const PatchProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Backup).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesClustersBackupsRequest>;
-
-export type PatchProjectsInstancesClustersBackupsResponse = Backup;
-export const PatchProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
-
-export type PatchProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a pending or completed Cloud Bigtable Backup. */
-export const patchProjectsInstancesClustersBackups: API.OperationMethod<
-  PatchProjectsInstancesClustersBackupsRequest,
-  PatchProjectsInstancesClustersBackupsResponse,
-  PatchProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesClustersBackupsRequest,
-  output: PatchProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesClustersBackupsRequest>;
-
-export type TestIamPermissionsProjectsInstancesClustersBackupsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that the caller has on the specified Bigtable resource. */
-export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMethod<
-  TestIamPermissionsProjectsInstancesClustersBackupsRequest,
-  TestIamPermissionsProjectsInstancesClustersBackupsResponse,
-  TestIamPermissionsProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesClustersBackupsRequest,
-  output: TestIamPermissionsProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CopyProjectsInstancesClustersBackupsRequest {
-  /** Required. The name of the destination cluster that will contain the backup copy. The cluster must already exist. Values are of the form: `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  parent: string;
-  /** Request body */
-  body?: CopyBackupRequest;
-}
-
-export const CopyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(CopyBackupRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/backups:copy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CopyProjectsInstancesClustersBackupsRequest>;
-
-export type CopyProjectsInstancesClustersBackupsResponse = Operation;
-export const CopyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CopyProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the destination instance and project. */
-export const copyProjectsInstancesClustersBackups: API.OperationMethod<
-  CopyProjectsInstancesClustersBackupsRequest,
-  CopyProjectsInstancesClustersBackupsResponse,
-  CopyProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CopyProjectsInstancesClustersBackupsRequest,
-  output: CopyProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsInstancesClustersBackupsRequest {
-  /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
+export interface GetProjectsInstancesAppProfilesRequest {
+  /** Required. The unique name of the requested app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
   name: string;
 }
 
-export const GetProjectsInstancesClustersBackupsRequest =
+export const GetProjectsInstancesAppProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesAppProfilesRequest>;
 
-export type GetProjectsInstancesClustersBackupsResponse = Backup;
-export const GetProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
+export type GetProjectsInstancesAppProfilesResponse = AppProfile;
+export const GetProjectsInstancesAppProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AppProfile;
 
-export type GetProjectsInstancesClustersBackupsError =
+export type GetProjectsInstancesAppProfilesError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets metadata on a pending or completed Cloud Bigtable Backup. */
-export const getProjectsInstancesClustersBackups: API.OperationMethod<
-  GetProjectsInstancesClustersBackupsRequest,
-  GetProjectsInstancesClustersBackupsResponse,
-  GetProjectsInstancesClustersBackupsError,
+/** Gets information about an app profile. */
+export const getProjectsInstancesAppProfiles: API.OperationMethod<
+  GetProjectsInstancesAppProfilesRequest,
+  GetProjectsInstancesAppProfilesResponse,
+  GetProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesClustersBackupsRequest,
-  output: GetProjectsInstancesClustersBackupsResponse,
+  input: GetProjectsInstancesAppProfilesRequest,
+  output: GetProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GetIamPolicyRequest;
-}
-
-export const GetIamPolicyProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:getIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesClustersBackupsRequest>;
-
-export type GetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
-export const GetIamPolicyProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
-export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
-  GetIamPolicyProjectsInstancesClustersBackupsRequest,
-  GetIamPolicyProjectsInstancesClustersBackupsResponse,
-  GetIamPolicyProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesClustersBackupsRequest,
-  output: GetIamPolicyProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsInstancesClustersBackupsRequest {
-  /** Required. This must be one of the clusters in the instance in which this table is located. The backup will be stored in this cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
-  parent: string;
-  /** Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. */
-  backupId?: string;
-  /** Request body */
-  body?: Backup;
-}
-
-export const CreateProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
-    body: Schema.optional(Backup).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/backups", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesClustersBackupsRequest>;
-
-export type CreateProjectsInstancesClustersBackupsResponse = Operation;
-export const CreateProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. */
-export const createProjectsInstancesClustersBackups: API.OperationMethod<
-  CreateProjectsInstancesClustersBackupsRequest,
-  CreateProjectsInstancesClustersBackupsResponse,
-  CreateProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesClustersBackupsRequest,
-  output: CreateProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesClustersBackupsRequest {
-  /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`. */
+export interface PatchProjectsInstancesAppProfilesRequest {
+  /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
   name: string;
+  /** Required. The subset of app profile fields which should be replaced. If unset, all fields will be replaced. */
+  updateMask?: string;
+  /** If true, ignore safety checks when updating the app profile. */
+  ignoreWarnings?: boolean;
+  /** Request body */
+  body?: AppProfile;
 }
 
-export const DeleteProjectsInstancesClustersBackupsRequest =
+export const PatchProjectsInstancesAppProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
+    body: Schema.optional(AppProfile).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesAppProfilesRequest>;
+
+export type PatchProjectsInstancesAppProfilesResponse = Operation;
+export const PatchProjectsInstancesAppProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an app profile within an instance. */
+export const patchProjectsInstancesAppProfiles: API.OperationMethod<
+  PatchProjectsInstancesAppProfilesRequest,
+  PatchProjectsInstancesAppProfilesResponse,
+  PatchProjectsInstancesAppProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesAppProfilesRequest,
+  output: PatchProjectsInstancesAppProfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsInstancesAppProfilesRequest {
+  /** Required. The unique name of the app profile to be deleted. Values are of the form `projects/{project}/instances/{instance}/appProfiles/{app_profile}`. */
+  name: string;
+  /** Required. If true, ignore safety checks when deleting the app profile. */
+  ignoreWarnings?: boolean;
+}
+
+export const DeleteProjectsInstancesAppProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesClustersBackupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesAppProfilesRequest>;
 
-export type DeleteProjectsInstancesClustersBackupsResponse = Empty;
-export const DeleteProjectsInstancesClustersBackupsResponse =
+export type DeleteProjectsInstancesAppProfilesResponse = Empty;
+export const DeleteProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesClustersBackupsError =
+export type DeleteProjectsInstancesAppProfilesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a pending or completed Cloud Bigtable backup. */
-export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
-  DeleteProjectsInstancesClustersBackupsRequest,
-  DeleteProjectsInstancesClustersBackupsResponse,
-  DeleteProjectsInstancesClustersBackupsError,
+/** Deletes an app profile from an instance. */
+export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
+  DeleteProjectsInstancesAppProfilesRequest,
+  DeleteProjectsInstancesAppProfilesResponse,
+  DeleteProjectsInstancesAppProfilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesClustersBackupsRequest,
-  output: DeleteProjectsInstancesClustersBackupsResponse,
+  input: DeleteProjectsInstancesAppProfilesRequest,
+  output: DeleteProjectsInstancesAppProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsInstancesClustersBackupsRequest {
-  /** Number of backups to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
-  pageSize?: number;
-  /** If non-empty, `page_token` should contain a next_page_token from a previous ListBackupsResponse to the same `parent` and with the same `filter`. */
-  pageToken?: string;
-  /** Required. The cluster to list backups from. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use `{cluster} = '-'` to list backups for all clusters in an instance, e.g., `projects/{project}/instances/{instance}/clusters/-`. */
-  parent: string;
-  /** An expression for specifying the sort order of the results of the request. The string value should specify one or more fields in Backup. The full syntax is described at https://aip.dev/132#ordering. Fields supported are: * name * source_table * expire_time * start_time * end_time * size_bytes * state For example, "start_time". The default sorting order is ascending. To specify descending order for the field, a suffix " desc" should be appended to the field name. For example, "start_time desc". Redundant space characters in the syntax are insigificant. If order_by is empty, results will be sorted by `start_time` in descending order starting from the most recently created backup. */
-  orderBy?: string;
-  /** A filter expression that filters backups listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be <, >, <=, >=, !=, =, or :. Colon ':' represents a HAS operator which is roughly synonymous with equality. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `source_table` * `state` * `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` To filter on multiple expressions, provide each separate expression within parentheses. By default, each expression is an AND expression. However, you can include AND, OR, and NOT expressions explicitly. Some examples of using filters are: * `name:"exact"` --> The backup's name is the string "exact". * `name:howl` --> The backup's name contains the string "howl". * `source_table:prod` --> The source_table's name contains the string "prod". * `state:CREATING` --> The backup is pending creation. * `state:READY` --> The backup is fully created and ready for use. * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")` --> The backup name contains the string "howl" and start_time of the backup is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` --> The backup's size is greater than 10GB */
-  filter?: string;
-}
-
-export const ListProjectsInstancesClustersBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+parent}/backups" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesClustersBackupsRequest>;
-
-export type ListProjectsInstancesClustersBackupsResponse = ListBackupsResponse;
-export const ListProjectsInstancesClustersBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
-
-export type ListProjectsInstancesClustersBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists Cloud Bigtable backups. Returns both completed and pending backups. */
-export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
-  ListProjectsInstancesClustersBackupsRequest,
-  ListProjectsInstancesClustersBackupsResponse,
-  ListProjectsInstancesClustersBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesClustersBackupsRequest,
-  output: ListProjectsInstancesClustersBackupsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface TestIamPermissionsProjectsInstancesTablesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
+export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
+  /** Required. The unique name of the Table for which to create a consistency token. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
   /** Request body */
-  body?: TestIamPermissionsRequest;
+  body?: GenerateConsistencyTokenRequest;
 }
 
-export const TestIamPermissionsProjectsInstancesTablesRequest =
+export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(GenerateConsistencyTokenRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/{+resource}:testIamPermissions",
+      path: "v2/{+name}:generateConsistencyToken",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
 
-export type TestIamPermissionsProjectsInstancesTablesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+export type GenerateConsistencyTokenProjectsInstancesTablesResponse =
+  GenerateConsistencyTokenResponse;
+export const GenerateConsistencyTokenProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GenerateConsistencyTokenResponse;
 
-export type TestIamPermissionsProjectsInstancesTablesError =
+export type GenerateConsistencyTokenProjectsInstancesTablesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Returns permissions that the caller has on the specified Bigtable resource. */
-export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
-  TestIamPermissionsProjectsInstancesTablesRequest,
-  TestIamPermissionsProjectsInstancesTablesResponse,
-  TestIamPermissionsProjectsInstancesTablesError,
+/** Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days. */
+export const generateConsistencyTokenProjectsInstancesTables: API.OperationMethod<
+  GenerateConsistencyTokenProjectsInstancesTablesRequest,
+  GenerateConsistencyTokenProjectsInstancesTablesResponse,
+  GenerateConsistencyTokenProjectsInstancesTablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesTablesRequest,
-  output: TestIamPermissionsProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsInstancesTablesRequest {
-  /** Required. The unique name of the instance in which to create the table. Values are of the form `projects/{project}/instances/{instance}`. */
-  parent: string;
-  /** Request body */
-  body?: CreateTableRequest;
-}
-
-export const CreateProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(CreateTableRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/tables", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesRequest>;
-
-export type CreateProjectsInstancesTablesResponse = Table;
-export const CreateProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
-
-export type CreateProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request. */
-export const createProjectsInstancesTables: API.OperationMethod<
-  CreateProjectsInstancesTablesRequest,
-  CreateProjectsInstancesTablesResponse,
-  CreateProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesTablesRequest,
-  output: CreateProjectsInstancesTablesResponse,
+  input: GenerateConsistencyTokenProjectsInstancesTablesRequest,
+  output: GenerateConsistencyTokenProjectsInstancesTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -4606,7 +4489,7 @@ export const CheckConsistencyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CheckConsistencyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<CheckConsistencyProjectsInstancesTablesRequest>;
 
 export type CheckConsistencyProjectsInstancesTablesResponse =
   CheckConsistencyResponse;
@@ -4632,174 +4515,6 @@ export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchProjectsInstancesTablesRequest {
-  /** The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` */
-  name: string;
-  /** Required. The list of fields to update. A mask specifying which fields (e.g. `change_stream_config`) in the `table` field should be updated. This mask is relative to the `table` field, not to the request message. The wildcard (*) path is currently not supported. Currently UpdateTable is only supported for the following fields: * `change_stream_config` * `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` * `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` * `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error. */
-  updateMask?: string;
-  /** Optional. If true, ignore safety checks when updating the table. */
-  ignoreWarnings?: boolean;
-  /** Request body */
-  body?: Table;
-}
-
-export const PatchProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-    body: Schema.optional(Table).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesRequest>;
-
-export type PatchProjectsInstancesTablesResponse = Operation;
-export const PatchProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a specified table. */
-export const patchProjectsInstancesTables: API.OperationMethod<
-  PatchProjectsInstancesTablesRequest,
-  PatchProjectsInstancesTablesResponse,
-  PatchProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesTablesRequest,
-  output: PatchProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
-  /** Required. The unique name of the table whose families should be modified. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  name: string;
-  /** Request body */
-  body?: ModifyColumnFamiliesRequest;
-}
-
-export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ModifyColumnFamiliesRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+name}:modifyColumnFamilies",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
-
-export type ModifyColumnFamiliesProjectsInstancesTablesResponse = Table;
-export const ModifyColumnFamiliesProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
-
-export type ModifyColumnFamiliesProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect. */
-export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
-  ModifyColumnFamiliesProjectsInstancesTablesRequest,
-  ModifyColumnFamiliesProjectsInstancesTablesResponse,
-  ModifyColumnFamiliesProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ModifyColumnFamiliesProjectsInstancesTablesRequest,
-  output: ModifyColumnFamiliesProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UndeleteProjectsInstancesTablesRequest {
-  /** Required. The unique name of the table to be restored. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  name: string;
-  /** Request body */
-  body?: UndeleteTableRequest;
-}
-
-export const UndeleteProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UndeleteTableRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsInstancesTablesRequest>;
-
-export type UndeleteProjectsInstancesTablesResponse = Operation;
-export const UndeleteProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type UndeleteProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Restores a specified table which was accidentally deleted. */
-export const undeleteProjectsInstancesTables: API.OperationMethod<
-  UndeleteProjectsInstancesTablesRequest,
-  UndeleteProjectsInstancesTablesResponse,
-  UndeleteProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsInstancesTablesRequest,
-  output: UndeleteProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DropRowRangeProjectsInstancesTablesRequest {
-  /** Required. The unique name of the table on which to drop a range of rows. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  name: string;
-  /** Request body */
-  body?: DropRowRangeRequest;
-}
-
-export const DropRowRangeProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(DropRowRangeRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:dropRowRange", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<DropRowRangeProjectsInstancesTablesRequest>;
-
-export type DropRowRangeProjectsInstancesTablesResponse = Empty;
-export const DropRowRangeProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DropRowRangeProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes used here are treated as service data. For more information about how service data is handled, see the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
-export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
-  DropRowRangeProjectsInstancesTablesRequest,
-  DropRowRangeProjectsInstancesTablesResponse,
-  DropRowRangeProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DropRowRangeProjectsInstancesTablesRequest,
-  output: DropRowRangeProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface SetIamPolicyProjectsInstancesTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -4818,7 +4533,7 @@ export const SetIamPolicyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesResponse =
@@ -4843,11 +4558,429 @@ export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface DeleteProjectsInstancesTablesRequest {
+  /** Required. The unique name of the table to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
+}
+
+export const DeleteProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesRequest>;
+
+export type DeleteProjectsInstancesTablesResponse = Empty;
+export const DeleteProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Permanently deletes a specified table and all of its data. */
+export const deleteProjectsInstancesTables: API.OperationMethod<
+  DeleteProjectsInstancesTablesRequest,
+  DeleteProjectsInstancesTablesResponse,
+  DeleteProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesTablesRequest,
+  output: DeleteProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsInstancesTablesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesRequest>;
+
+export type TestIamPermissionsProjectsInstancesTablesResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that the caller has on the specified Bigtable resource. */
+export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
+  TestIamPermissionsProjectsInstancesTablesRequest,
+  TestIamPermissionsProjectsInstancesTablesResponse,
+  TestIamPermissionsProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsInstancesTablesRequest,
+  output: TestIamPermissionsProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UndeleteProjectsInstancesTablesRequest {
+  /** Required. The unique name of the table to be restored. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
+  /** Request body */
+  body?: UndeleteTableRequest;
+}
+
+export const UndeleteProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(UndeleteTableRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UndeleteProjectsInstancesTablesRequest>;
+
+export type UndeleteProjectsInstancesTablesResponse = Operation;
+export const UndeleteProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UndeleteProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Restores a specified table which was accidentally deleted. */
+export const undeleteProjectsInstancesTables: API.OperationMethod<
+  UndeleteProjectsInstancesTablesRequest,
+  UndeleteProjectsInstancesTablesResponse,
+  UndeleteProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UndeleteProjectsInstancesTablesRequest,
+  output: UndeleteProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsInstancesTablesRequest {
+  /** The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` */
+  name: string;
+  /** Required. The list of fields to update. A mask specifying which fields (e.g. `change_stream_config`) in the `table` field should be updated. This mask is relative to the `table` field, not to the request message. The wildcard (*) path is currently not supported. Currently UpdateTable is only supported for the following fields: * `change_stream_config` * `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` * `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` * `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error. */
+  updateMask?: string;
+  /** Optional. If true, ignore safety checks when updating the table. */
+  ignoreWarnings?: boolean;
+  /** Request body */
+  body?: Table;
+}
+
+export const PatchProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
+    body: Schema.optional(Table).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesRequest>;
+
+export type PatchProjectsInstancesTablesResponse = Operation;
+export const PatchProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a specified table. */
+export const patchProjectsInstancesTables: API.OperationMethod<
+  PatchProjectsInstancesTablesRequest,
+  PatchProjectsInstancesTablesResponse,
+  PatchProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesTablesRequest,
+  output: PatchProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsInstancesTablesRequest {
+  /** Required. The unique name of the requested table. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
+  /** The view to be applied to the returned table's fields. Defaults to `SCHEMA_VIEW` if unspecified. */
+  view?:
+    | "VIEW_UNSPECIFIED"
+    | "NAME_ONLY"
+    | "SCHEMA_VIEW"
+    | "REPLICATION_VIEW"
+    | "ENCRYPTION_VIEW"
+    | "STATS_VIEW"
+    | "FULL"
+    | (string & {});
+}
+
+export const GetProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesRequest>;
+
+export type GetProjectsInstancesTablesResponse = Table;
+export const GetProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Table;
+
+export type GetProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets metadata information about the specified table. */
+export const getProjectsInstancesTables: API.OperationMethod<
+  GetProjectsInstancesTablesRequest,
+  GetProjectsInstancesTablesResponse,
+  GetProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsInstancesTablesRequest,
+  output: GetProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DropRowRangeProjectsInstancesTablesRequest {
+  /** Required. The unique name of the table on which to drop a range of rows. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
+  /** Request body */
+  body?: DropRowRangeRequest;
+}
+
+export const DropRowRangeProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(DropRowRangeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:dropRowRange", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<DropRowRangeProjectsInstancesTablesRequest>;
+
+export type DropRowRangeProjectsInstancesTablesResponse = Empty;
+export const DropRowRangeProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DropRowRangeProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes used here are treated as service data. For more information about how service data is handled, see the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
+export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
+  DropRowRangeProjectsInstancesTablesRequest,
+  DropRowRangeProjectsInstancesTablesResponse,
+  DropRowRangeProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DropRowRangeProjectsInstancesTablesRequest,
+  output: DropRowRangeProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RestoreProjectsInstancesTablesRequest {
+  /** Required. The name of the instance in which to create the restored table. Values are of the form `projects//instances/`. */
+  parent: string;
+  /** Request body */
+  body?: RestoreTableRequest;
+}
+
+export const RestoreProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(RestoreTableRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/tables:restore",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<RestoreProjectsInstancesTablesRequest>;
+
+export type RestoreProjectsInstancesTablesResponse = Operation;
+export const RestoreProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type RestoreProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Create a new table by restoring from a completed backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful. */
+export const restoreProjectsInstancesTables: API.OperationMethod<
+  RestoreProjectsInstancesTablesRequest,
+  RestoreProjectsInstancesTablesResponse,
+  RestoreProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RestoreProjectsInstancesTablesRequest,
+  output: RestoreProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
+  /** Required. The unique name of the table whose families should be modified. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  name: string;
+  /** Request body */
+  body?: ModifyColumnFamiliesRequest;
+}
+
+export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ModifyColumnFamiliesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+name}:modifyColumnFamilies",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
+
+export type ModifyColumnFamiliesProjectsInstancesTablesResponse = Table;
+export const ModifyColumnFamiliesProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Table;
+
+export type ModifyColumnFamiliesProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect. */
+export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
+  ModifyColumnFamiliesProjectsInstancesTablesRequest,
+  ModifyColumnFamiliesProjectsInstancesTablesResponse,
+  ModifyColumnFamiliesProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ModifyColumnFamiliesProjectsInstancesTablesRequest,
+  output: ModifyColumnFamiliesProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsInstancesTablesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GetIamPolicyRequest;
+}
+
+export const GetIamPolicyProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesRequest>;
+
+export type GetIamPolicyProjectsInstancesTablesResponse = Policy;
+export const GetIamPolicyProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
+export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
+  GetIamPolicyProjectsInstancesTablesRequest,
+  GetIamPolicyProjectsInstancesTablesResponse,
+  GetIamPolicyProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsInstancesTablesRequest,
+  output: GetIamPolicyProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsInstancesTablesRequest {
+  /** Required. The unique name of the instance in which to create the table. Values are of the form `projects/{project}/instances/{instance}`. */
+  parent: string;
+  /** Request body */
+  body?: CreateTableRequest;
+}
+
+export const CreateProjectsInstancesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(CreateTableRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}/tables", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesRequest>;
+
+export type CreateProjectsInstancesTablesResponse = Table;
+export const CreateProjectsInstancesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Table;
+
+export type CreateProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request. */
+export const createProjectsInstancesTables: API.OperationMethod<
+  CreateProjectsInstancesTablesRequest,
+  CreateProjectsInstancesTablesResponse,
+  CreateProjectsInstancesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesTablesRequest,
+  output: CreateProjectsInstancesTablesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsInstancesTablesRequest {
-  /** Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
-  pageSize?: number;
   /** The value of `next_page_token` returned by a previous call. */
   pageToken?: string;
+  /** Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
+  pageSize?: number;
   /** Required. The unique name of the instance for which tables should be listed. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
   /** The view to be applied to the returned tables' fields. Only NAME_ONLY view (default), REPLICATION_VIEW and ENCRYPTION_VIEW are supported. */
@@ -4864,14 +4997,14 @@ export interface ListProjectsInstancesTablesRequest {
 
 export const ListProjectsInstancesTablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/tables" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesRequest>;
 
 export type ListProjectsInstancesTablesResponse = ListTablesResponse;
 export const ListProjectsInstancesTablesResponse =
@@ -4898,137 +5031,14 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
-  /** Required. The unique name of the Table for which to create a consistency token. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  name: string;
-  /** Request body */
-  body?: GenerateConsistencyTokenRequest;
-}
-
-export const GenerateConsistencyTokenProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(GenerateConsistencyTokenRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+name}:generateConsistencyToken",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GenerateConsistencyTokenProjectsInstancesTablesRequest>;
-
-export type GenerateConsistencyTokenProjectsInstancesTablesResponse =
-  GenerateConsistencyTokenResponse;
-export const GenerateConsistencyTokenProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateConsistencyTokenResponse;
-
-export type GenerateConsistencyTokenProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days. */
-export const generateConsistencyTokenProjectsInstancesTables: API.OperationMethod<
-  GenerateConsistencyTokenProjectsInstancesTablesRequest,
-  GenerateConsistencyTokenProjectsInstancesTablesResponse,
-  GenerateConsistencyTokenProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GenerateConsistencyTokenProjectsInstancesTablesRequest,
-  output: GenerateConsistencyTokenProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface RestoreProjectsInstancesTablesRequest {
-  /** Required. The name of the instance in which to create the restored table. Values are of the form `projects//instances/`. */
-  parent: string;
-  /** Request body */
-  body?: RestoreTableRequest;
-}
-
-export const RestoreProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(RestoreTableRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/tables:restore",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RestoreProjectsInstancesTablesRequest>;
-
-export type RestoreProjectsInstancesTablesResponse = Operation;
-export const RestoreProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RestoreProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Create a new table by restoring from a completed backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful. */
-export const restoreProjectsInstancesTables: API.OperationMethod<
-  RestoreProjectsInstancesTablesRequest,
-  RestoreProjectsInstancesTablesResponse,
-  RestoreProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RestoreProjectsInstancesTablesRequest,
-  output: RestoreProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesTablesRequest {
-  /** Required. The unique name of the table to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  name: string;
-}
-
-export const DeleteProjectsInstancesTablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesRequest>;
-
-export type DeleteProjectsInstancesTablesResponse = Empty;
-export const DeleteProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesTablesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Permanently deletes a specified table and all of its data. */
-export const deleteProjectsInstancesTables: API.OperationMethod<
-  DeleteProjectsInstancesTablesRequest,
-  DeleteProjectsInstancesTablesResponse,
-  DeleteProjectsInstancesTablesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesTablesRequest,
-  output: DeleteProjectsInstancesTablesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsInstancesTablesRequest {
+export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
 
-export const GetIamPolicyProjectsInstancesTablesRequest =
+export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
@@ -5039,13 +5049,13 @@ export const GetIamPolicyProjectsInstancesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
 
-export type GetIamPolicyProjectsInstancesTablesResponse = Policy;
-export const GetIamPolicyProjectsInstancesTablesResponse =
+export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
+export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesTablesError =
+export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -5053,67 +5063,239 @@ export type GetIamPolicyProjectsInstancesTablesError =
   | Conflict;
 
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
-export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
-  GetIamPolicyProjectsInstancesTablesRequest,
-  GetIamPolicyProjectsInstancesTablesResponse,
-  GetIamPolicyProjectsInstancesTablesError,
+export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
+  GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
+  GetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesTablesRequest,
-  output: GetIamPolicyProjectsInstancesTablesResponse,
+  input: GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
+  output: GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsInstancesTablesRequest {
-  /** Required. The unique name of the requested table. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
+  /** Required. The unique name of the AuthorizedView to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
   name: string;
-  /** The view to be applied to the returned table's fields. Defaults to `SCHEMA_VIEW` if unspecified. */
+  /** Optional. The current etag of the AuthorizedView. If an etag is provided and does not match the current etag of the AuthorizedView, deletion will be blocked and an ABORTED error will be returned. */
+  etag?: string;
+}
+
+export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
+
+export type DeleteProjectsInstancesTablesAuthorizedViewsResponse = Empty;
+export const DeleteProjectsInstancesTablesAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Permanently deletes a specified AuthorizedView. */
+export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  DeleteProjectsInstancesTablesAuthorizedViewsRequest,
+  DeleteProjectsInstancesTablesAuthorizedViewsResponse,
+  DeleteProjectsInstancesTablesAuthorizedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsInstancesTablesAuthorizedViewsRequest,
+  output: DeleteProjectsInstancesTablesAuthorizedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
+  /** Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` */
+  name: string;
+  /** Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special value `*` means to overwrite all fields (including fields not set in the request). */
+  updateMask?: string;
+  /** Optional. If true, ignore the safety checks when updating the AuthorizedView. */
+  ignoreWarnings?: boolean;
+  /** Request body */
+  body?: AuthorizedView;
+}
+
+export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
+    body: Schema.optional(AuthorizedView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
+
+export type PatchProjectsInstancesTablesAuthorizedViewsResponse = Operation;
+export const PatchProjectsInstancesTablesAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an AuthorizedView in a table. */
+export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  PatchProjectsInstancesTablesAuthorizedViewsRequest,
+  PatchProjectsInstancesTablesAuthorizedViewsResponse,
+  PatchProjectsInstancesTablesAuthorizedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesTablesAuthorizedViewsRequest,
+  output: PatchProjectsInstancesTablesAuthorizedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsInstancesTablesAuthorizedViewsRequest {
+  /** Required. The unique name of the requested AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
+  name: string;
+  /** Optional. The resource_view to be applied to the returned AuthorizedView's fields. Default to BASIC. */
   view?:
-    | "VIEW_UNSPECIFIED"
+    | "RESPONSE_VIEW_UNSPECIFIED"
     | "NAME_ONLY"
-    | "SCHEMA_VIEW"
-    | "REPLICATION_VIEW"
-    | "ENCRYPTION_VIEW"
-    | "STATS_VIEW"
+    | "BASIC"
     | "FULL"
     | (string & {});
 }
 
-export const GetProjectsInstancesTablesRequest =
+export const GetProjectsInstancesTablesAuthorizedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesAuthorizedViewsRequest>;
 
-export type GetProjectsInstancesTablesResponse = Table;
-export const GetProjectsInstancesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Table;
+export type GetProjectsInstancesTablesAuthorizedViewsResponse = AuthorizedView;
+export const GetProjectsInstancesTablesAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AuthorizedView;
 
-export type GetProjectsInstancesTablesError =
+export type GetProjectsInstancesTablesAuthorizedViewsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets metadata information about the specified table. */
-export const getProjectsInstancesTables: API.OperationMethod<
-  GetProjectsInstancesTablesRequest,
-  GetProjectsInstancesTablesResponse,
-  GetProjectsInstancesTablesError,
+/** Gets information from a specified AuthorizedView. */
+export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  GetProjectsInstancesTablesAuthorizedViewsRequest,
+  GetProjectsInstancesTablesAuthorizedViewsResponse,
+  GetProjectsInstancesTablesAuthorizedViewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesTablesRequest,
-  output: GetProjectsInstancesTablesResponse,
+  input: GetProjectsInstancesTablesAuthorizedViewsRequest,
+  output: GetProjectsInstancesTablesAuthorizedViewsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
+
+export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
+export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
+export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
+  SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
+  SetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
+  output: SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
+  /** Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  parent: string;
+  /** Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`. */
+  authorizedViewId?: string;
+  /** Request body */
+  body?: AuthorizedView;
+}
+
+export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    authorizedViewId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("authorizedViewId"),
+    ),
+    body: Schema.optional(AuthorizedView).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/authorizedViews",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
+
+export type CreateProjectsInstancesTablesAuthorizedViewsResponse = Operation;
+export const CreateProjectsInstancesTablesAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new AuthorizedView in a table. */
+export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
+  CreateProjectsInstancesTablesAuthorizedViewsRequest,
+  CreateProjectsInstancesTablesAuthorizedViewsResponse,
+  CreateProjectsInstancesTablesAuthorizedViewsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesTablesAuthorizedViewsRequest,
+  output: CreateProjectsInstancesTablesAuthorizedViewsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
   /** Optional. Maximum number of results per page. A page_size of zero lets the server choose the number of items to return. A page_size which is strictly positive will return at most that many items. A negative page_size will cause an error. Following the first request, subsequent paginated calls are not required to pass a page_size. If a page_size is set in subsequent calls, it must match the page_size given in the first request. */
   pageSize?: number;
-  /** Optional. The value of `next_page_token` returned by a previous call. */
-  pageToken?: string;
   /** Required. The unique name of the table for which AuthorizedViews should be listed. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   parent: string;
   /** Optional. The resource_view to be applied to the returned AuthorizedViews' fields. Default to NAME_ONLY. */
@@ -5123,18 +5305,20 @@ export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
     | "BASIC"
     | "FULL"
     | (string & {});
+  /** Optional. The value of `next_page_token` returned by a previous call. */
+  pageToken?: string;
 }
 
 export const ListProjectsInstancesTablesAuthorizedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/authorizedViews" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type ListProjectsInstancesTablesAuthorizedViewsResponse =
   ListAuthorizedViewsResponse;
@@ -5180,7 +5364,7 @@ export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest>;
 
 export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse =
   TestIamPermissionsResponse;
@@ -5206,266 +5390,43 @@ export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.Opera
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
-  /** Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  parent: string;
-  /** Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`. */
-  authorizedViewId?: string;
-  /** Request body */
-  body?: AuthorizedView;
-}
-
-export const CreateProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    authorizedViewId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("authorizedViewId"),
-    ),
-    body: Schema.optional(AuthorizedView).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/authorizedViews",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesAuthorizedViewsRequest>;
-
-export type CreateProjectsInstancesTablesAuthorizedViewsResponse = Operation;
-export const CreateProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsInstancesTablesAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new AuthorizedView in a table. */
-export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  CreateProjectsInstancesTablesAuthorizedViewsRequest,
-  CreateProjectsInstancesTablesAuthorizedViewsResponse,
-  CreateProjectsInstancesTablesAuthorizedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesTablesAuthorizedViewsRequest,
-  output: CreateProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
-  /** Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` */
+export interface DeleteProjectsInstancesTablesSchemaBundlesRequest {
+  /** Required. The unique name of the schema bundle to delete. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
   name: string;
-  /** Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special value `*` means to overwrite all fields (including fields not set in the request). */
-  updateMask?: string;
-  /** Optional. If true, ignore the safety checks when updating the AuthorizedView. */
-  ignoreWarnings?: boolean;
-  /** Request body */
-  body?: AuthorizedView;
-}
-
-export const PatchProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-    body: Schema.optional(AuthorizedView).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesAuthorizedViewsRequest>;
-
-export type PatchProjectsInstancesTablesAuthorizedViewsResponse = Operation;
-export const PatchProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsInstancesTablesAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an AuthorizedView in a table. */
-export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  PatchProjectsInstancesTablesAuthorizedViewsRequest,
-  PatchProjectsInstancesTablesAuthorizedViewsResponse,
-  PatchProjectsInstancesTablesAuthorizedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesTablesAuthorizedViewsRequest,
-  output: PatchProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
-  /** Required. The unique name of the AuthorizedView to be deleted. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
-  name: string;
-  /** Optional. The current etag of the AuthorizedView. If an etag is provided and does not match the current etag of the AuthorizedView, deletion will be blocked and an ABORTED error will be returned. */
+  /** Optional. The etag of the schema bundle. If this is provided, it must match the server's etag. The server returns an ABORTED error on a mismatched etag. */
   etag?: string;
 }
 
-export const DeleteProjectsInstancesTablesAuthorizedViewsRequest =
+export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesAuthorizedViewsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
 
-export type DeleteProjectsInstancesTablesAuthorizedViewsResponse = Empty;
-export const DeleteProjectsInstancesTablesAuthorizedViewsResponse =
+export type DeleteProjectsInstancesTablesSchemaBundlesResponse = Empty;
+export const DeleteProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesTablesAuthorizedViewsError =
+export type DeleteProjectsInstancesTablesSchemaBundlesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Permanently deletes a specified AuthorizedView. */
-export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  DeleteProjectsInstancesTablesAuthorizedViewsRequest,
-  DeleteProjectsInstancesTablesAuthorizedViewsResponse,
-  DeleteProjectsInstancesTablesAuthorizedViewsError,
+/** Deletes a schema bundle in the specified table. */
+export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
+  DeleteProjectsInstancesTablesSchemaBundlesRequest,
+  DeleteProjectsInstancesTablesSchemaBundlesResponse,
+  DeleteProjectsInstancesTablesSchemaBundlesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesTablesAuthorizedViewsRequest,
-  output: DeleteProjectsInstancesTablesAuthorizedViewsResponse,
+  input: DeleteProjectsInstancesTablesSchemaBundlesRequest,
+  output: DeleteProjectsInstancesTablesSchemaBundlesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GetIamPolicyRequest;
-}
-
-export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:getIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
-
-export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
-export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
-export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
-  GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  GetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
-  output: GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest>;
-
-export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse = Policy;
-export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
-export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
-  SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  SetIamPolicyProjectsInstancesTablesAuthorizedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
-  output: SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsInstancesTablesAuthorizedViewsRequest {
-  /** Optional. The resource_view to be applied to the returned AuthorizedView's fields. Default to BASIC. */
-  view?:
-    | "RESPONSE_VIEW_UNSPECIFIED"
-    | "NAME_ONLY"
-    | "BASIC"
-    | "FULL"
-    | (string & {});
-  /** Required. The unique name of the requested AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
-  name: string;
-}
-
-export const GetProjectsInstancesTablesAuthorizedViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesAuthorizedViewsRequest>;
-
-export type GetProjectsInstancesTablesAuthorizedViewsResponse = AuthorizedView;
-export const GetProjectsInstancesTablesAuthorizedViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AuthorizedView;
-
-export type GetProjectsInstancesTablesAuthorizedViewsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets information from a specified AuthorizedView. */
-export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
-  GetProjectsInstancesTablesAuthorizedViewsRequest,
-  GetProjectsInstancesTablesAuthorizedViewsResponse,
-  GetProjectsInstancesTablesAuthorizedViewsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesTablesAuthorizedViewsRequest,
-  output: GetProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
@@ -5486,7 +5447,7 @@ export const GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
@@ -5529,7 +5490,7 @@ export const SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
@@ -5565,7 +5526,7 @@ export const GetProjectsInstancesTablesSchemaBundlesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type GetProjectsInstancesTablesSchemaBundlesResponse = SchemaBundle;
 export const GetProjectsInstancesTablesSchemaBundlesResponse =
@@ -5588,6 +5549,53 @@ export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
+  /** Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
+  name: string;
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Optional. If set, ignore the safety checks when updating the Schema Bundle. The safety checks are: - The new Schema Bundle is backwards compatible with the existing Schema Bundle. */
+  ignoreWarnings?: boolean;
+  /** Request body */
+  body?: SchemaBundle;
+}
+
+export const PatchProjectsInstancesTablesSchemaBundlesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("ignoreWarnings"),
+    ),
+    body: Schema.optional(SchemaBundle).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsInstancesTablesSchemaBundlesRequest>;
+
+export type PatchProjectsInstancesTablesSchemaBundlesResponse = Operation;
+export const PatchProjectsInstancesTablesSchemaBundlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a schema bundle in the specified table. */
+export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
+  PatchProjectsInstancesTablesSchemaBundlesRequest,
+  PatchProjectsInstancesTablesSchemaBundlesResponse,
+  PatchProjectsInstancesTablesSchemaBundlesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsInstancesTablesSchemaBundlesRequest,
+  output: PatchProjectsInstancesTablesSchemaBundlesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -5606,7 +5614,7 @@ export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse =
   TestIamPermissionsResponse;
@@ -5632,7 +5640,57 @@ export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.Operati
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
+  /** Required. The parent resource where this schema bundle will be created. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
+  parent: string;
+  /** Required. The unique ID to use for the schema bundle, which will become the final component of the schema bundle's resource name. */
+  schemaBundleId?: string;
+  /** Request body */
+  body?: SchemaBundle;
+}
+
+export const CreateProjectsInstancesTablesSchemaBundlesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    schemaBundleId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("schemaBundleId"),
+    ),
+    body: Schema.optional(SchemaBundle).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v2/{+parent}/schemaBundles",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsInstancesTablesSchemaBundlesRequest>;
+
+export type CreateProjectsInstancesTablesSchemaBundlesResponse = Operation;
+export const CreateProjectsInstancesTablesSchemaBundlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new schema bundle in the specified table. */
+export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
+  CreateProjectsInstancesTablesSchemaBundlesRequest,
+  CreateProjectsInstancesTablesSchemaBundlesResponse,
+  CreateProjectsInstancesTablesSchemaBundlesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsInstancesTablesSchemaBundlesRequest,
+  output: CreateProjectsInstancesTablesSchemaBundlesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsInstancesTablesSchemaBundlesRequest {
+  /** A page token, received from a previous `ListSchemaBundles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemaBundles` must match the call that provided the page token. */
+  pageToken?: string;
   /** Required. The parent, which owns this collection of schema bundles. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
   parent: string;
   /** Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to NAME_ONLY. */
@@ -5644,20 +5702,18 @@ export interface ListProjectsInstancesTablesSchemaBundlesRequest {
     | (string & {});
   /** The maximum number of schema bundles to return. If the value is positive, the server may return at most this value. If unspecified, the server will return the maximum allowed page size. */
   pageSize?: number;
-  /** A page token, received from a previous `ListSchemaBundles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemaBundles` must match the call that provided the page token. */
-  pageToken?: string;
 }
 
 export const ListProjectsInstancesTablesSchemaBundlesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/schemaBundles" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsInstancesTablesSchemaBundlesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsInstancesTablesSchemaBundlesRequest>;
 
 export type ListProjectsInstancesTablesSchemaBundlesResponse =
   ListSchemaBundlesResponse;
@@ -5685,166 +5741,32 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
   },
 }));
 
-export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
-  /** Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
-  name: string;
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-  /** Optional. If set, ignore the safety checks when updating the Schema Bundle. The safety checks are: - The new Schema Bundle is backwards compatible with the existing Schema Bundle. */
-  ignoreWarnings?: boolean;
-  /** Request body */
-  body?: SchemaBundle;
-}
-
-export const PatchProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    ignoreWarnings: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("ignoreWarnings"),
-    ),
-    body: Schema.optional(SchemaBundle).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsInstancesTablesSchemaBundlesRequest>;
-
-export type PatchProjectsInstancesTablesSchemaBundlesResponse = Operation;
-export const PatchProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsInstancesTablesSchemaBundlesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a schema bundle in the specified table. */
-export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
-  PatchProjectsInstancesTablesSchemaBundlesRequest,
-  PatchProjectsInstancesTablesSchemaBundlesResponse,
-  PatchProjectsInstancesTablesSchemaBundlesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesTablesSchemaBundlesRequest,
-  output: PatchProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsInstancesTablesSchemaBundlesRequest {
-  /** Required. The unique name of the schema bundle to delete. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
-  name: string;
-  /** Optional. The etag of the schema bundle. If this is provided, it must match the server's etag. The server returns an ABORTED error on a mismatched etag. */
-  etag?: string;
-}
-
-export const DeleteProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsInstancesTablesSchemaBundlesRequest>;
-
-export type DeleteProjectsInstancesTablesSchemaBundlesResponse = Empty;
-export const DeleteProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsInstancesTablesSchemaBundlesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a schema bundle in the specified table. */
-export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
-  DeleteProjectsInstancesTablesSchemaBundlesRequest,
-  DeleteProjectsInstancesTablesSchemaBundlesResponse,
-  DeleteProjectsInstancesTablesSchemaBundlesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesTablesSchemaBundlesRequest,
-  output: DeleteProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
-  /** Required. The parent resource where this schema bundle will be created. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
-  parent: string;
-  /** Required. The unique ID to use for the schema bundle, which will become the final component of the schema bundle's resource name. */
-  schemaBundleId?: string;
-  /** Request body */
-  body?: SchemaBundle;
-}
-
-export const CreateProjectsInstancesTablesSchemaBundlesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    schemaBundleId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("schemaBundleId"),
-    ),
-    body: Schema.optional(SchemaBundle).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/{+parent}/schemaBundles",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsInstancesTablesSchemaBundlesRequest>;
-
-export type CreateProjectsInstancesTablesSchemaBundlesResponse = Operation;
-export const CreateProjectsInstancesTablesSchemaBundlesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsInstancesTablesSchemaBundlesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new schema bundle in the specified table. */
-export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
-  CreateProjectsInstancesTablesSchemaBundlesRequest,
-  CreateProjectsInstancesTablesSchemaBundlesResponse,
-  CreateProjectsInstancesTablesSchemaBundlesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesTablesSchemaBundlesRequest,
-  output: CreateProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListProjectsLocationsRequest {
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -5861,6 +5783,87 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v2/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetOperationsRequest>;
+
+export type GetOperationsResponse = Operation;
+export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getOperations: API.OperationMethod<
+  GetOperationsRequest,
+  GetOperationsResponse,
+  GetOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOperationsRequest,
+  output: GetOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListOperationsProjectsOperationsRequest {
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The standard list page size. */
+  pageSize?: number;
+}
+
+export const ListOperationsProjectsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Codec<ListOperationsProjectsOperationsRequest>;
+
+export type ListOperationsProjectsOperationsResponse = ListOperationsResponse;
+export const ListOperationsProjectsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListOperationsProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
+  ListOperationsProjectsOperationsRequest,
+  ListOperationsProjectsOperationsResponse,
+  ListOperationsProjectsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOperationsProjectsOperationsRequest,
+  output: ListOperationsProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",

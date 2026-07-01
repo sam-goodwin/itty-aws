@@ -4,6 +4,21 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventsListInput {
+  project_id: string;
+  after?: string;
+  before?: string;
+  distinct_id?: number;
+  event?: string;
+  format?: "csv" | "json";
+  include_person?: boolean;
+  limit?: number;
+  offset?: number;
+  person_id?: number;
+  properties?: string;
+  select?: string;
+  where?: string;
+}
 export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   after: Schema.optional(Schema.String),
@@ -11,16 +26,42 @@ export const EventsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   distinct_id: Schema.optional(Schema.Number),
   event: Schema.optional(Schema.String),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
+  include_person: Schema.optional(Schema.Boolean),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
   person_id: Schema.optional(Schema.Number),
   properties: Schema.optional(Schema.String),
   select: Schema.optional(Schema.String),
   where: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/events/" }));
-export type EventsListInput = typeof EventsListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/events/" }),
+) as unknown as Schema.Codec<EventsListInput>;
 
 // Output Schema
+export interface EventsListOutput {
+  next?: string | null;
+  results?: {
+    id?: string;
+    distinct_id?: string;
+    properties?: Record<string, unknown>;
+    event?: string;
+    timestamp?: string;
+    person?: Record<string, unknown> | null;
+    elements?: {
+      event?: string;
+      text?: string | null;
+      tag_name?: string | null;
+      attr_class?: string[] | null;
+      href?: string | null;
+      attr_id?: string | null;
+      nth_child?: number | null;
+      nth_of_type?: number | null;
+      attributes?: unknown;
+      order?: number | null;
+    }[];
+    elements_chain?: string;
+  }[];
+}
 export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
@@ -58,8 +99,7 @@ export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type EventsListOutput = typeof EventsListOutput.Type;
+}) as unknown as Schema.Codec<EventsListOutput>;
 
 // The operation
 /**
@@ -73,6 +113,7 @@ export type EventsListOutput = typeof EventsListOutput.Type;
  * @param before - Only return events with a timestamp before this time. Default: now() + 5 seconds.
  * @param distinct_id - Filter list by distinct id.
  * @param event - Filter list by event. For example `user sign up` or `$pageview`.
+ * @param include_person - Include person details for each event. Default: false.
  * @param limit - The maximum number of results to return
  * @param offset - Allows to skip first offset rows. Will fail for value larger than 100000. Read about proper way of paginating: https://posthog.com/docs/api/queries#5-use-timestamp-based-pagination-instead-of-offset
  * @param person_id - Filter list by person id.

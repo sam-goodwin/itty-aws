@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrgServiceAccountInput {
+  clientId: string;
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteOrgServiceAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteOrgServiceAccountInput =
       method: "DELETE",
       path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}",
     }),
-  );
-export type DeleteOrgServiceAccountInput =
-  typeof DeleteOrgServiceAccountInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrgServiceAccountInput>;
 
 // Output Schema
+export type DeleteOrgServiceAccountOutput = void;
 export const DeleteOrgServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgServiceAccountOutput =
-  typeof DeleteOrgServiceAccountOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgServiceAccountOutput>;
 
 // The operation
 /**

@@ -3,23 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteV2CoreEventDestinationsIdInput {
+  id: string;
+}
 export const DeleteV2CoreEventDestinationsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v2/core/event_destinations/{id}" }),
-  );
-export type DeleteV2CoreEventDestinationsIdInput =
-  typeof DeleteV2CoreEventDestinationsIdInput.Type;
+  ) as unknown as Schema.Codec<DeleteV2CoreEventDestinationsIdInput>;
 
 // Output Schema
+export interface DeleteV2CoreEventDestinationsIdOutput {
+  id: string;
+  object?: string;
+}
 export const DeleteV2CoreEventDestinationsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.optional(Schema.String),
-  });
-export type DeleteV2CoreEventDestinationsIdOutput =
-  typeof DeleteV2CoreEventDestinationsIdOutput.Type;
+  }) as unknown as Schema.Codec<DeleteV2CoreEventDestinationsIdOutput>;
 
 // The operation
 /**

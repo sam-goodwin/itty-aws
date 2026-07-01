@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation echoMessageCompleteMessage($id: ID!, $metadata: JSONObject) {\n  echoMessage {\n    completeMessage(id: $id, metadata: $metadata) {\n      completedAt\n      echoChat {\n        agentMetadata\n        agentType\n        echoProject {\n          description\n          displayName\n          id\n          initFromGitHubUrl\n          lastMessageAt\n          slug\n          updatedAt\n          visibility\n        }\n        id\n        state\n        stats\n        title\n      }\n      echoMessageParts {\n        data\n        id\n        index\n        type\n      }\n      echoTurn {\n        completedAt\n        createdAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        id\n      }\n      id\n      metadata\n      role\n      turnId\n      user {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        appCount\n        appetizeCode\n        bestContactEmail\n        created\n        discordUser {\n          discordIdentifier\n          id\n        }\n        displayName\n        email\n        emailVerified\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        fullName\n        githubUser {\n          githubUserIdentifier\n          id\n        }\n        githubUsername\n        hasPassword\n        hasPendingUserInvitations\n        id\n        industry\n        isExpoAdmin\n        isLegacy\n        isSecondFactorAuthenticationEnabled\n        isStaffModeEnabled\n        lastDeletionAttemptTime\n        lastName\n        location\n        newEmailPendingVerification\n        oAuthIdentities {\n          email\n          id\n          login\n          provider\n        }\n        pendingUserInvitations {\n          accountName\n          accountProfileImageUrl\n          accountProfilePhoto\n          accountRequiresTwoFactor\n          created\n          email\n          expires\n          id\n          isForOrganization\n          permissions\n          role\n        }\n        pinnedApps {\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        pinnedDashboardViews {\n          view\n        }\n        preferences {\n          selectedAccountName\n        }\n        primaryAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        primaryAccountProfileImageUrl\n        profilePhoto\n        secondFactorDevices {\n          createdAt\n          id\n          isCertified\n          isPrimary\n          method\n          name\n          smsPhoneNumber\n          updatedAt\n        }\n        twitterUsername\n        username\n      }\n    }\n  }\n}";
+  "mutation echoMessageCompleteMessage($id: ID!, $metadata: JSONObject) {\n  echoMessage {\n    completeMessage(id: $id, metadata: $metadata) {\n      completedAt\n      echoChat {\n        agentMetadata\n        agentType\n        echoProject {\n          description\n          displayName\n          id\n          initFromGitHubUrl\n          lastMessageAt\n          slug\n          updatedAt\n          visibility\n        }\n        id\n        state\n        stats\n        title\n      }\n      echoMessageParts {\n        data\n        id\n        index\n        type\n      }\n      echoTurn {\n        completedAt\n        completionStatus\n        createdAt\n        echoChat {\n          agentMetadata\n          agentType\n          id\n          state\n          stats\n          title\n        }\n        error\n        id\n      }\n      id\n      metadata\n      role\n      turnId\n      user {\n        accessTokens {\n          createdAt\n          id\n          lastUsedAt\n          note\n          revokedAt\n          updatedAt\n          visibleTokenPrefix\n        }\n        accounts {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        appCount\n        appetizeCode\n        bestContactEmail\n        created\n        discordUser {\n          discordIdentifier\n          id\n        }\n        displayName\n        email\n        emailVerified\n        experiments {\n          createdAt\n          enabled\n          experiment\n          id\n          updatedAt\n        }\n        firstName\n        fullName\n        githubUser {\n          githubUserIdentifier\n          id\n        }\n        githubUsername\n        hasPassword\n        hasPendingUserInvitations\n        id\n        industry\n        isExpoAdmin\n        isLegacy\n        isSecondFactorAuthenticationEnabled\n        isStaffModeEnabled\n        lastDeletionAttemptTime\n        lastName\n        location\n        newEmailPendingVerification\n        oAuthIdentities {\n          email\n          id\n          login\n          provider\n        }\n        passkeyCredentials {\n          aaguid\n          createdAt\n          credentialDeviceType\n          id\n          lastUsedAt\n          name\n        }\n        pendingUserInvitations {\n          accountName\n          accountProfileImageUrl\n          accountProfilePhoto\n          accountRequiresTwoFactor\n          created\n          email\n          expires\n          id\n          isForOrganization\n          permissions\n          role\n        }\n        pinnedApps {\n          appStoreConnectWorkflowConnectionStatus\n          appStoreUrl\n          assetLimitPerUpdateGroup\n          buildProfiles\n          buildsReleaseChannels\n          description\n          environmentVariableEnvironments\n          fullName\n          githubUrl\n          iconUrl\n          id\n          internalDistributionBuildPrivacy\n          isDeleting\n          isDeprecated\n          isLikedByMe\n          lastDeletionAttemptTime\n          lastPublishedTime\n          latestActivity\n          latestReleaseId\n          likeCount\n          name\n          packageName\n          packageUsername\n          playStoreUrl\n          privacy\n          privacySetting\n          published\n          pushSecurityEnabled\n          releaseChannels\n          requiresAccessTokenForPushSecurity\n          resourceClassExperiment\n          scopeKey\n          sdkVersion\n          slug\n          suggestedDevDomainName\n          trendScore\n          updated\n          username\n        }\n        pinnedDashboardViews {\n          view\n        }\n        preferences {\n          selectedAccountName\n        }\n        primaryAccount {\n          appCount\n          availableBuilds\n          createdAt\n          displayName\n          environmentVariableEnvironments\n          hasBuilds\n          id\n          isCurrent\n          isDisabled\n          isFreeAppDevDomainTier\n          isSSOEnabled\n          lastDeletionAttemptTime\n          name\n          profileImageUrl\n          pushSecurityEnabled\n          requireTwoFactor\n          requiresAccessTokenForPushSecurity\n          ssoAllowedAuthProviders\n          subscriptionChangesPending\n          unlimitedBuilds\n          updatedAt\n          userSpecifiedAccountUsage\n          willAutoRenewBuilds\n        }\n        primaryAccountProfileImageUrl\n        profilePhoto\n        secondFactorDevices {\n          createdAt\n          id\n          isCertified\n          isPrimary\n          method\n          name\n          smsPhoneNumber\n          updatedAt\n        }\n        twitterUsername\n        username\n      }\n    }\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const EchoMessageCompleteMessageInput = Schema.Struct({
@@ -64,6 +64,9 @@ export const EchoMessageCompleteMessageOutput = Schema.Struct({
   echoTurn: Schema.NullOr(
     Schema.Struct({
       completedAt: Schema.NullOr(Schema.String),
+      completionStatus: Schema.NullOr(
+        Schema.Literals(["CANCELLED", "COMPLETED", "ERROR"]),
+      ),
       createdAt: Schema.String,
       echoChat: Schema.Struct({
         agentMetadata: Schema.NullOr(Schema.Unknown),
@@ -75,6 +78,7 @@ export const EchoMessageCompleteMessageOutput = Schema.Struct({
         stats: Schema.NullOr(Schema.Unknown),
         title: Schema.NullOr(Schema.String),
       }),
+      error: Schema.NullOr(Schema.String),
       id: Schema.String,
     }),
   ),
@@ -185,6 +189,16 @@ export const EchoMessageCompleteMessageOutput = Schema.Struct({
           provider: Schema.Literals(["apple", "github", "google"]),
         }),
       ),
+      passkeyCredentials: Schema.Array(
+        Schema.Struct({
+          aaguid: Schema.NullOr(Schema.String),
+          createdAt: Schema.String,
+          credentialDeviceType: Schema.String,
+          id: Schema.String,
+          lastUsedAt: Schema.NullOr(Schema.String),
+          name: Schema.String,
+        }),
+      ),
       pendingUserInvitations: Schema.Array(
         Schema.Struct({
           accountName: Schema.String,
@@ -212,6 +226,11 @@ export const EchoMessageCompleteMessageOutput = Schema.Struct({
       ),
       pinnedApps: Schema.Array(
         Schema.Struct({
+          appStoreConnectWorkflowConnectionStatus: Schema.Literals([
+            "HAS_WORKFLOWS_IS_CONNECTED",
+            "HAS_WORKFLOWS_MISSING_CONNECTION",
+            "NO_APP_STORE_CONNECT_WORKFLOWS",
+          ]),
           appStoreUrl: Schema.NullOr(Schema.String),
           assetLimitPerUpdateGroup: Schema.Number,
           buildProfiles: Schema.Array(Schema.String),
@@ -301,7 +320,7 @@ export const EchoMessageCompleteMessageOutput = Schema.Struct({
         ),
         willAutoRenewBuilds: Schema.NullOr(Schema.Boolean),
       }),
-      primaryAccountProfileImageUrl: Schema.NullOr(Schema.String),
+      primaryAccountProfileImageUrl: Schema.String,
       profilePhoto: Schema.String,
       secondFactorDevices: Schema.Array(
         Schema.Struct({

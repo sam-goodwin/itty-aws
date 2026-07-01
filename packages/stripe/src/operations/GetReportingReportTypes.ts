@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetReportingReportTypesInput {
+  expand?: string;
+}
 export const GetReportingReportTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
@@ -12,11 +15,25 @@ export const GetReportingReportTypesInput =
       path: "/v1/reporting/report_types",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetReportingReportTypesInput =
-  typeof GetReportingReportTypesInput.Type;
+  ) as unknown as Schema.Codec<GetReportingReportTypesInput>;
 
 // Output Schema
+export interface GetReportingReportTypesOutput {
+  data: {
+    data_available_end: number;
+    data_available_start: number;
+    default_columns: string[] | null;
+    id: string;
+    livemode: boolean;
+    name: string;
+    object: "reporting.report_type";
+    updated: number;
+    version: number;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetReportingReportTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -35,9 +52,7 @@ export const GetReportingReportTypesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetReportingReportTypesOutput =
-  typeof GetReportingReportTypesOutput.Type;
+  }) as unknown as Schema.Codec<GetReportingReportTypesOutput>;
 
 // The operation
 /**

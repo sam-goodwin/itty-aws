@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateOrgUserInput {
+  orgId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const UpdateOrgUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/api/atlas/v2/orgs/{orgId}/users/{userId}",
   }),
-);
-export type UpdateOrgUserInput = typeof UpdateOrgUserInput.Type;
+) as unknown as Schema.Codec<UpdateOrgUserInput>;
 
 // Output Schema
-export const UpdateOrgUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateOrgUserOutput = typeof UpdateOrgUserOutput.Type;
+export type UpdateOrgUserOutput = void;
+export const UpdateOrgUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateOrgUserOutput>;
 
 // The operation
 /**
  * Update One MongoDB Cloud User in One Organization
  *
- * Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Updates one MongoDB Cloud user in the specified organization. You can update an active user or a user that has not yet accepted the invitation to join the organization.
  * **Note**: Only include the fields you wish to update in the request body. Supplying a field with an empty value will reset that field on the user.
  * **Note**: This resource cannot be used to update pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *

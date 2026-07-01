@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetAFunctionBodyInput {
+  ref: string;
+  function_slug: string;
+}
 export const V1GetAFunctionBodyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,14 @@ export const V1GetAFunctionBodyInput =
       method: "GET",
       path: "/v1/projects/{ref}/functions/{function_slug}/body",
     }),
-  );
-export type V1GetAFunctionBodyInput = typeof V1GetAFunctionBodyInput.Type;
+  ) as unknown as Schema.Codec<V1GetAFunctionBodyInput>;
 
 // Output Schema
+export interface V1GetAFunctionBodyOutput {}
 export const V1GetAFunctionBodyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type V1GetAFunctionBodyOutput = typeof V1GetAFunctionBodyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<V1GetAFunctionBodyOutput>;
 
 // The operation
 /**

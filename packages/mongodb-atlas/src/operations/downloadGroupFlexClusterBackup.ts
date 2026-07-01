@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupFlexClusterBackupInput {
+  name: string;
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DownloadGroupFlexClusterBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DownloadGroupFlexClusterBackupInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download",
     }),
-  );
-export type DownloadGroupFlexClusterBackupInput =
-  typeof DownloadGroupFlexClusterBackupInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupFlexClusterBackupInput>;
 
 // Output Schema
+export type DownloadGroupFlexClusterBackupOutput = void;
 export const DownloadGroupFlexClusterBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupFlexClusterBackupOutput =
-  typeof DownloadGroupFlexClusterBackupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupFlexClusterBackupOutput>;
 
 // The operation
 /**
  * Download One Flex Cluster Snapshot
  *
- * Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Backup Export Operator role.
+ * Requests one snapshot for the specified flex cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request.
  *
  * @param name - Human-readable label that identifies the flex cluster.
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

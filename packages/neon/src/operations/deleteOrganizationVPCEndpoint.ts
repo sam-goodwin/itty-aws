@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteOrganizationVPCEndpointInput {
+  org_id: string;
+  region_id: string;
+  vpc_endpoint_id: string;
+}
 export const DeleteOrganizationVPCEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +18,12 @@ export const DeleteOrganizationVPCEndpointInput =
       method: "DELETE",
       path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints/{vpc_endpoint_id}",
     }),
-  );
-export type DeleteOrganizationVPCEndpointInput =
-  typeof DeleteOrganizationVPCEndpointInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrganizationVPCEndpointInput>;
 
 // Output Schema
+export type DeleteOrganizationVPCEndpointOutput = void;
 export const DeleteOrganizationVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrganizationVPCEndpointOutput =
-  typeof DeleteOrganizationVPCEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrganizationVPCEndpointOutput>;
 
 // The operation
 /**

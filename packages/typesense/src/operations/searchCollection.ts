@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SearchCollectionInput {
+  collectionName: string;
+  searchParameters: string;
+}
 export const SearchCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   searchParameters: Schema.String,
@@ -12,10 +16,113 @@ export const SearchCollectionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/collections/{collectionName}/documents/search",
   }),
-);
-export type SearchCollectionInput = typeof SearchCollectionInput.Type;
+) as unknown as Schema.Codec<SearchCollectionInput>;
 
 // Output Schema
+export interface SearchCollectionOutput {
+  facet_counts?: {
+    counts?: {
+      count?: number;
+      highlighted?: string;
+      value?: string;
+      parent?: unknown;
+    }[];
+    field_name?: string;
+    sampled?: boolean;
+    stats?: {
+      max?: number;
+      min?: number;
+      sum?: number;
+      total_values?: number;
+      avg?: number;
+    };
+  }[];
+  found?: number;
+  found_docs?: number;
+  search_time_ms?: number;
+  out_of?: number;
+  search_cutoff?: boolean;
+  page?: number;
+  grouped_hits?: {
+    found?: number;
+    group_key: unknown[];
+    hits: {
+      highlights?: {
+        field?: string;
+        snippet?: string;
+        snippets?: string[];
+        value?: string;
+        values?: string[];
+        indices?: number[];
+        matched_tokens?: unknown[];
+      }[];
+      highlight?: Record<string, unknown>;
+      document?: Record<string, unknown>;
+      text_match?: number;
+      text_match_info?: {
+        best_field_score?: string;
+        best_field_weight?: number;
+        fields_matched?: number;
+        num_tokens_dropped?: number;
+        score?: string;
+        tokens_matched?: number;
+        typo_prefix_score?: number;
+      };
+      geo_distance_meters?: Record<string, number>;
+      vector_distance?: number;
+      hybrid_search_info?: { rank_fusion_score?: number };
+      search_index?: number;
+    }[];
+  }[];
+  hits?: {
+    highlights?: {
+      field?: string;
+      snippet?: string;
+      snippets?: string[];
+      value?: string;
+      values?: string[];
+      indices?: number[];
+      matched_tokens?: unknown[];
+    }[];
+    highlight?: Record<string, unknown>;
+    document?: Record<string, unknown>;
+    text_match?: number;
+    text_match_info?: {
+      best_field_score?: string;
+      best_field_weight?: number;
+      fields_matched?: number;
+      num_tokens_dropped?: number;
+      score?: string;
+      tokens_matched?: number;
+      typo_prefix_score?: number;
+    };
+    geo_distance_meters?: Record<string, number>;
+    vector_distance?: number;
+    hybrid_search_info?: { rank_fusion_score?: number };
+    search_index?: number;
+  }[];
+  request_params?: {
+    collection_name: string;
+    first_q?: string;
+    q: string;
+    per_page: number;
+    voice_query?: { transcribed_query?: string };
+  };
+  conversation?: {
+    answer: string;
+    conversation_history: unknown[];
+    conversation_id: string;
+    query: string;
+  };
+  union_request_params?: {
+    collection_name: string;
+    first_q?: string;
+    q: string;
+    per_page: number;
+    voice_query?: { transcribed_query?: string };
+  }[];
+  metadata?: Record<string, unknown>;
+}
 export const SearchCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     facet_counts: Schema.optional(
@@ -191,8 +298,7 @@ export const SearchCollectionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   },
-);
-export type SearchCollectionOutput = typeof SearchCollectionOutput.Type;
+) as unknown as Schema.Codec<SearchCollectionOutput>;
 
 // The operation
 /**

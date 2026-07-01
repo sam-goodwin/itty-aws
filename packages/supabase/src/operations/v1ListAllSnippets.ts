@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllSnippetsInput {
+  project_ref?: string;
+  cursor?: string;
+  limit?: string;
+  sort_by?: "name" | "inserted_at";
+  sort_order?: "asc" | "desc";
+}
 export const V1ListAllSnippetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_ref: Schema.optional(Schema.String),
@@ -12,10 +19,27 @@ export const V1ListAllSnippetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     sort_by: Schema.optional(Schema.Literals(["name", "inserted_at"])),
     sort_order: Schema.optional(Schema.Literals(["asc", "desc"])),
   },
-).pipe(T.Http({ method: "GET", path: "/v1/snippets" }));
-export type V1ListAllSnippetsInput = typeof V1ListAllSnippetsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/snippets" }),
+) as unknown as Schema.Codec<V1ListAllSnippetsInput>;
 
 // Output Schema
+export interface V1ListAllSnippetsOutput {
+  data: {
+    id: string;
+    inserted_at: string;
+    updated_at: string;
+    type: "sql";
+    visibility: "user" | "project" | "org" | "public";
+    name: string;
+    description: string | null;
+    project: { id: number; name: string };
+    owner: { id: number; username: string };
+    updated_by: { id: number; username: string };
+    favorite: boolean;
+  }[];
+  cursor?: string;
+}
 export const V1ListAllSnippetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -43,8 +67,7 @@ export const V1ListAllSnippetsOutput =
       }),
     ),
     cursor: Schema.optional(Schema.String),
-  });
-export type V1ListAllSnippetsOutput = typeof V1ListAllSnippetsOutput.Type;
+  }) as unknown as Schema.Codec<V1ListAllSnippetsOutput>;
 
 // The operation
 /**

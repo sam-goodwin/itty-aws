@@ -3,14 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateSolanaAccountInput {
+  name?: string;
+  accountPolicy?: string;
+}
 export const CreateSolanaAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     accountPolicy: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/solana/accounts" }));
-export type CreateSolanaAccountInput = typeof CreateSolanaAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/solana/accounts" }),
+  ) as unknown as Schema.Codec<CreateSolanaAccountInput>;
 
 // Output Schema
+export interface CreateSolanaAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const CreateSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String,
@@ -18,12 +30,11 @@ export const CreateSolanaAccountOutput =
     policies: Schema.optional(Schema.Array(Schema.String)),
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
-  });
-export type CreateSolanaAccountOutput = typeof CreateSolanaAccountOutput.Type;
+  }) as unknown as Schema.Codec<CreateSolanaAccountOutput>;
 
 // The operation
 /**
- * Create a Solana account
+ * Create Solana account
  *
  * Creates a new Solana account.
  *

@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1ListAllNetworkBansEnrichedInput {
+  ref: string;
+}
 export const V1ListAllNetworkBansEnrichedInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,16 @@ export const V1ListAllNetworkBansEnrichedInput =
       method: "POST",
       path: "/v1/projects/{ref}/network-bans/retrieve/enriched",
     }),
-  );
-export type V1ListAllNetworkBansEnrichedInput =
-  typeof V1ListAllNetworkBansEnrichedInput.Type;
+  ) as unknown as Schema.Codec<V1ListAllNetworkBansEnrichedInput>;
 
 // Output Schema
+export interface V1ListAllNetworkBansEnrichedOutput {
+  banned_ipv4_addresses: {
+    banned_address: string;
+    identifier: string;
+    type: string;
+  }[];
+}
 export const V1ListAllNetworkBansEnrichedOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     banned_ipv4_addresses: Schema.Array(
@@ -26,9 +34,7 @@ export const V1ListAllNetworkBansEnrichedOutput =
         type: Schema.String,
       }),
     ),
-  });
-export type V1ListAllNetworkBansEnrichedOutput =
-  typeof V1ListAllNetworkBansEnrichedOutput.Type;
+  }) as unknown as Schema.Codec<V1ListAllNetworkBansEnrichedOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewReposListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const VisualReviewReposListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,23 @@ export const VisualReviewReposListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/repos/",
     }),
-  );
-export type VisualReviewReposListInput = typeof VisualReviewReposListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewReposListInput>;
 
 // Output Schema
+export interface VisualReviewReposListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    team_id?: number;
+    repo_external_id?: number;
+    repo_full_name?: string;
+    baseline_file_paths?: Record<string, string>;
+    enable_pr_comments?: boolean;
+    created_at?: string;
+  }[];
+}
 export const VisualReviewReposListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -38,9 +56,7 @@ export const VisualReviewReposListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewReposListOutput =
-  typeof VisualReviewReposListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewReposListOutput>;
 
 // The operation
 /**

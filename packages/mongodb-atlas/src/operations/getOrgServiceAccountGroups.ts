@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgServiceAccountGroupsInput {
+  orgId: string;
+  clientId: string;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  envelope?: boolean;
+}
 export const GetOrgServiceAccountGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -17,15 +25,12 @@ export const GetOrgServiceAccountGroupsInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups",
     }),
-  );
-export type GetOrgServiceAccountGroupsInput =
-  typeof GetOrgServiceAccountGroupsInput.Type;
+  ) as unknown as Schema.Codec<GetOrgServiceAccountGroupsInput>;
 
 // Output Schema
+export type GetOrgServiceAccountGroupsOutput = void;
 export const GetOrgServiceAccountGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgServiceAccountGroupsOutput =
-  typeof GetOrgServiceAccountGroupsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgServiceAccountGroupsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsPreferredForEventRetrieveInput {
+  project_id: string;
+}
 export const ObjectMediaPreviewsPreferredForEventRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,20 @@ export const ObjectMediaPreviewsPreferredForEventRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/object_media_previews/preferred_for_event/",
     }),
-  );
-export type ObjectMediaPreviewsPreferredForEventRetrieveInput =
-  typeof ObjectMediaPreviewsPreferredForEventRetrieveInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsPreferredForEventRetrieveInput>;
 
 // Output Schema
+export interface ObjectMediaPreviewsPreferredForEventRetrieveOutput {
+  id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsPreferredForEventRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -28,9 +40,7 @@ export const ObjectMediaPreviewsPreferredForEventRetrieveOutput =
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
     event_definition_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ObjectMediaPreviewsPreferredForEventRetrieveOutput =
-  typeof ObjectMediaPreviewsPreferredForEventRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<ObjectMediaPreviewsPreferredForEventRetrieveOutput>;
 
 // The operation
 /**

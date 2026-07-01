@@ -4,12 +4,38 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AccountsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  identity: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+  properties?: {
+    createdAt?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed";
+    userEmail?: string;
+    userName?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   identity: Schema.Struct({
     principalId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -39,10 +65,22 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type AccountsCreateInput = typeof AccountsCreateInput.Type;
+) as unknown as Schema.Codec<AccountsCreateInput>;
 
 // Output Schema
+export interface AccountsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -61,32 +99,59 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
+}) as unknown as Schema.Codec<AccountsCreateOutput>;
 
 // The operation
 /**
  * Create an account in the given resource group
  *
  * Create an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
+export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
+) as unknown as Schema.Codec<AccountsDeleteInput>;
 
 // Output Schema
+export interface AccountsDeleteOutput {
+  endTime?: string;
+  error?: {
+    code: string;
+    details?: unknown[];
+    message: string;
+    target?: string;
+  };
+  startTime?: string;
+  status:
+    | "Accepted"
+    | "InProgress"
+    | "TransientFailure"
+    | "Succeeded"
+    | "Failed"
+    | "Canceled";
+}
 export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
@@ -106,32 +171,55 @@ export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "Failed",
     "Canceled",
   ]),
-});
-export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
+}) as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
  * Delete an account
  *
  * DeleteAccount
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface AccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
+export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type AccountsGetInput = typeof AccountsGetInput.Type;
+) as unknown as Schema.Codec<AccountsGetInput>;
 
 // Output Schema
+export interface AccountsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -150,22 +238,33 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type AccountsGetOutput = typeof AccountsGetOutput.Type;
+}) as unknown as Schema.Codec<AccountsGetOutput>;
 
 // The operation
 /**
  * Get an account under a resource group
  *
  * Get an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
+export interface AccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skipToken?: string;
+}
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -173,11 +272,25 @@ export const AccountsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts",
       apiVersion: "2021-08-01",
     }),
-  );
-export type AccountsListByResourceGroupInput =
-  typeof AccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccountsListByResourceGroupOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -212,9 +325,7 @@ export const AccountsListByResourceGroupOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountsListByResourceGroupOutput =
-  typeof AccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -222,6 +333,9 @@ export type AccountsListByResourceGroupOutput =
  *
  * List Accounts in ResourceGroup
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -231,8 +345,13 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsListBySubscriptionInput {
+  subscriptionId: string;
+  $skipToken?: string;
+}
 export const AccountsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -240,11 +359,25 @@ export const AccountsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataShare/accounts",
       apiVersion: "2021-08-01",
     }),
-  );
-export type AccountsListBySubscriptionInput =
-  typeof AccountsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AccountsListBySubscriptionInput>;
 
 // Output Schema
+export interface AccountsListBySubscriptionOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const AccountsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -279,9 +412,7 @@ export const AccountsListBySubscriptionOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountsListBySubscriptionOutput =
-  typeof AccountsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -289,6 +420,8 @@ export type AccountsListBySubscriptionOutput =
  *
  * List Accounts in Subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -298,7 +431,16 @@ export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tags?: Record<string, string>;
+}
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -306,10 +448,22 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
+) as unknown as Schema.Codec<AccountsUpdateInput>;
 
 // Output Schema
+export interface AccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -328,20 +482,28 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AccountsUpdateOutput>;
 
 // The operation
 /**
  * Patch a given account
  *
  * Patch an account
+ *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  */
 export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
+export interface ConsumerInvitationsGetInput {
+  location: string;
+  invitationId: string;
+}
 export const ConsumerInvitationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -352,11 +514,22 @@ export const ConsumerInvitationsGetInput =
       path: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ConsumerInvitationsGetInput =
-  typeof ConsumerInvitationsGetInput.Type;
+  ) as unknown as Schema.Codec<ConsumerInvitationsGetInput>;
 
 // Output Schema
+export interface ConsumerInvitationsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ConsumerInvitationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -376,9 +549,7 @@ export const ConsumerInvitationsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ConsumerInvitationsGetOutput =
-  typeof ConsumerInvitationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConsumerInvitationsGetOutput>;
 
 // The operation
 /**
@@ -388,6 +559,7 @@ export type ConsumerInvitationsGetOutput =
  *
  * @param location - Location of the invitation
  * @param invitationId - An invitation id
+ * @param api-version - The api version to use.
  */
 export const ConsumerInvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -396,6 +568,9 @@ export const ConsumerInvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConsumerInvitationsListInvitationsInput {
+  $skipToken?: string;
+}
 export const ConsumerInvitationsListInvitationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $skipToken: Schema.optional(Schema.String),
@@ -405,11 +580,25 @@ export const ConsumerInvitationsListInvitationsInput =
       path: "/providers/Microsoft.DataShare/listInvitations",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ConsumerInvitationsListInvitationsInput =
-  typeof ConsumerInvitationsListInvitationsInput.Type;
+  ) as unknown as Schema.Codec<ConsumerInvitationsListInvitationsInput>;
 
 // Output Schema
+export interface ConsumerInvitationsListInvitationsOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const ConsumerInvitationsListInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -444,9 +633,7 @@ export const ConsumerInvitationsListInvitationsOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConsumerInvitationsListInvitationsOutput =
-  typeof ConsumerInvitationsListInvitationsOutput.Type;
+  }) as unknown as Schema.Codec<ConsumerInvitationsListInvitationsOutput>;
 
 // The operation
 /**
@@ -454,6 +641,7 @@ export type ConsumerInvitationsListInvitationsOutput =
  *
  * Lists invitations
  *
+ * @param api-version - The api version to use.
  * @param $skipToken - The continuation token
  */
 export const ConsumerInvitationsListInvitations =
@@ -462,6 +650,37 @@ export const ConsumerInvitationsListInvitations =
     outputSchema: ConsumerInvitationsListInvitationsOutput,
   }));
 // Input Schema
+export interface ConsumerInvitationsRejectInvitationInput {
+  location: string;
+  properties: {
+    dataSetCount?: number;
+    description?: string;
+    expirationDate?: string;
+    invitationId: string;
+    invitationStatus?: "Pending" | "Accepted" | "Rejected" | "Withdrawn";
+    location?: string;
+    providerEmail?: string;
+    providerName?: string;
+    providerTenantName?: string;
+    respondedAt?: string;
+    sentAt?: string;
+    shareName?: string;
+    termsOfUse?: string;
+    userEmail?: string;
+    userName?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ConsumerInvitationsRejectInvitationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -507,11 +726,22 @@ export const ConsumerInvitationsRejectInvitationInput =
       path: "/providers/Microsoft.DataShare/locations/{location}/rejectInvitation",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ConsumerInvitationsRejectInvitationInput =
-  typeof ConsumerInvitationsRejectInvitationInput.Type;
+  ) as unknown as Schema.Codec<ConsumerInvitationsRejectInvitationInput>;
 
 // Output Schema
+export interface ConsumerInvitationsRejectInvitationOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ConsumerInvitationsRejectInvitationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -531,9 +761,7 @@ export const ConsumerInvitationsRejectInvitationOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ConsumerInvitationsRejectInvitationOutput =
-  typeof ConsumerInvitationsRejectInvitationOutput.Type;
+  }) as unknown as Schema.Codec<ConsumerInvitationsRejectInvitationOutput>;
 
 // The operation
 /**
@@ -542,6 +770,7 @@ export type ConsumerInvitationsRejectInvitationOutput =
  * Reject an invitation
  *
  * @param location - Location of the invitation
+ * @param api-version - The api version to use.
  */
 export const ConsumerInvitationsRejectInvitation =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -549,8 +778,18 @@ export const ConsumerInvitationsRejectInvitation =
     outputSchema: ConsumerInvitationsRejectInvitationOutput,
   }));
 // Input Schema
+export interface ConsumerSourceDataSetsListByShareSubscriptionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+}
 export const ConsumerSourceDataSetsListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -559,11 +798,25 @@ export const ConsumerSourceDataSetsListByShareSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/consumerSourceDataSets",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ConsumerSourceDataSetsListByShareSubscriptionInput =
-  typeof ConsumerSourceDataSetsListByShareSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConsumerSourceDataSetsListByShareSubscriptionInput>;
 
 // Output Schema
+export interface ConsumerSourceDataSetsListByShareSubscriptionOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -598,9 +851,7 @@ export const ConsumerSourceDataSetsListByShareSubscriptionOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConsumerSourceDataSetsListByShareSubscriptionOutput =
-  typeof ConsumerSourceDataSetsListByShareSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConsumerSourceDataSetsListByShareSubscriptionOutput>;
 
 // The operation
 /**
@@ -608,7 +859,11 @@ export type ConsumerSourceDataSetsListByShareSubscriptionOutput =
  *
  * Get source dataSets of a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const ConsumerSourceDataSetsListByShareSubscription =
@@ -617,8 +872,42 @@ export const ConsumerSourceDataSetsListByShareSubscription =
     outputSchema: ConsumerSourceDataSetsListByShareSubscriptionOutput,
   }));
 // Input Schema
+export interface DataSetMappingsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  dataSetMappingName: string;
+  kind:
+    | "Blob"
+    | "Container"
+    | "BlobFolder"
+    | "AdlsGen2FileSystem"
+    | "AdlsGen2Folder"
+    | "AdlsGen2File"
+    | "KustoCluster"
+    | "KustoDatabase"
+    | "KustoTable"
+    | "SqlDBTable"
+    | "SqlDWTable"
+    | "SynapseWorkspaceSqlPoolTable";
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetMappingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals([
@@ -658,10 +947,22 @@ export const DataSetMappingsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DataSetMappingsCreateInput = typeof DataSetMappingsCreateInput.Type;
+  ) as unknown as Schema.Codec<DataSetMappingsCreateInput>;
 
 // Output Schema
+export interface DataSetMappingsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetMappingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -681,9 +982,7 @@ export const DataSetMappingsCreateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type DataSetMappingsCreateOutput =
-  typeof DataSetMappingsCreateOutput.Type;
+  }) as unknown as Schema.Codec<DataSetMappingsCreateOutput>;
 
 // The operation
 /**
@@ -692,8 +991,12 @@ Enables copying the data set from source to destination.
  *
  * Create a DataSetMapping
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param dataSetMappingName - The name of the data set mapping to be created.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -702,8 +1005,18 @@ export const DataSetMappingsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataSetMappingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  dataSetMappingName: string;
+}
 export const DataSetMappingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -712,14 +1025,12 @@ export const DataSetMappingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DataSetMappingsDeleteInput = typeof DataSetMappingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataSetMappingsDeleteInput>;
 
 // Output Schema
+export type DataSetMappingsDeleteOutput = void;
 export const DataSetMappingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataSetMappingsDeleteOutput =
-  typeof DataSetMappingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetMappingsDeleteOutput>;
 
 // The operation
 /**
@@ -727,8 +1038,12 @@ export type DataSetMappingsDeleteOutput =
  *
  * Delete a DataSetMapping in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -737,8 +1052,18 @@ export const DataSetMappingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataSetMappingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  dataSetMappingName: string;
+}
 export const DataSetMappingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     dataSetMappingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -747,10 +1072,22 @@ export const DataSetMappingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DataSetMappingsGetInput = typeof DataSetMappingsGetInput.Type;
+  ) as unknown as Schema.Codec<DataSetMappingsGetInput>;
 
 // Output Schema
+export interface DataSetMappingsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetMappingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -770,8 +1107,7 @@ export const DataSetMappingsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
+  }) as unknown as Schema.Codec<DataSetMappingsGetOutput>;
 
 // The operation
 /**
@@ -779,16 +1115,32 @@ export type DataSetMappingsGetOutput = typeof DataSetMappingsGetOutput.Type;
  *
  * Get a DataSetMapping in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param dataSetMappingName - The name of the dataSetMapping.
+ * @param api-version - The api version to use.
  */
 export const DataSetMappingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetMappingsGetInput,
   outputSchema: DataSetMappingsGetOutput,
 }));
 // Input Schema
+export interface DataSetMappingsListByShareSubscriptionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const DataSetMappingsListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -799,11 +1151,25 @@ export const DataSetMappingsListByShareSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DataSetMappingsListByShareSubscriptionInput =
-  typeof DataSetMappingsListByShareSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DataSetMappingsListByShareSubscriptionInput>;
 
 // Output Schema
+export interface DataSetMappingsListByShareSubscriptionOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const DataSetMappingsListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -838,9 +1204,7 @@ export const DataSetMappingsListByShareSubscriptionOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataSetMappingsListByShareSubscriptionOutput =
-  typeof DataSetMappingsListByShareSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DataSetMappingsListByShareSubscriptionOutput>;
 
 // The operation
 /**
@@ -848,7 +1212,11 @@ export type DataSetMappingsListByShareSubscriptionOutput =
  *
  * List DataSetMappings in a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -859,7 +1227,43 @@ export const DataSetMappingsListByShareSubscription =
     outputSchema: DataSetMappingsListByShareSubscriptionOutput,
   }));
 // Input Schema
+export interface DataSetsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  dataSetName: string;
+  kind:
+    | "Blob"
+    | "Container"
+    | "BlobFolder"
+    | "AdlsGen2FileSystem"
+    | "AdlsGen2Folder"
+    | "AdlsGen2File"
+    | "AdlsGen1Folder"
+    | "AdlsGen1File"
+    | "KustoCluster"
+    | "KustoDatabase"
+    | "KustoTable"
+    | "SqlDBTable"
+    | "SqlDWTable"
+    | "SynapseWorkspaceSqlPoolTable";
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
   kind: Schema.Literals([
@@ -901,10 +1305,22 @@ export const DataSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DataSetsCreateInput = typeof DataSetsCreateInput.Type;
+) as unknown as Schema.Codec<DataSetsCreateInput>;
 
 // Output Schema
+export interface DataSetsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -923,8 +1339,7 @@ export const DataSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type DataSetsCreateOutput = typeof DataSetsCreateOutput.Type;
+}) as unknown as Schema.Codec<DataSetsCreateOutput>;
 
 // The operation
 /**
@@ -932,15 +1347,29 @@ export type DataSetsCreateOutput = typeof DataSetsCreateOutput.Type;
  *
  * Create a DataSet
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to add the data set to.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsCreateInput,
   outputSchema: DataSetsCreateOutput,
 }));
 // Input Schema
+export interface DataSetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  dataSetName: string;
+}
 export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -949,12 +1378,12 @@ export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DataSetsDeleteInput = typeof DataSetsDeleteInput.Type;
+) as unknown as Schema.Codec<DataSetsDeleteInput>;
 
 // Output Schema
-export const DataSetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
+export type DataSetsDeleteOutput = void;
+export const DataSetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataSetsDeleteOutput>;
 
 // The operation
 /**
@@ -962,15 +1391,29 @@ export type DataSetsDeleteOutput = typeof DataSetsDeleteOutput.Type;
  *
  * Delete a DataSet in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsDeleteInput,
   outputSchema: DataSetsDeleteOutput,
 }));
 // Input Schema
+export interface DataSetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  dataSetName: string;
+}
 export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   dataSetName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -979,10 +1422,22 @@ export const DataSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type DataSetsGetInput = typeof DataSetsGetInput.Type;
+) as unknown as Schema.Codec<DataSetsGetInput>;
 
 // Output Schema
+export interface DataSetsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1001,8 +1456,7 @@ export const DataSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type DataSetsGetOutput = typeof DataSetsGetOutput.Type;
+}) as unknown as Schema.Codec<DataSetsGetOutput>;
 
 // The operation
 /**
@@ -1010,16 +1464,32 @@ export type DataSetsGetOutput = typeof DataSetsGetOutput.Type;
  *
  * Get a DataSet in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param dataSetName - The name of the dataSet.
+ * @param api-version - The api version to use.
  */
 export const DataSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DataSetsGetInput,
   outputSchema: DataSetsGetOutput,
 }));
 // Input Schema
+export interface DataSetsListByShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const DataSetsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1030,10 +1500,25 @@ export const DataSetsListByShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets",
       apiVersion: "2021-08-01",
     }),
-  );
-export type DataSetsListByShareInput = typeof DataSetsListByShareInput.Type;
+  ) as unknown as Schema.Codec<DataSetsListByShareInput>;
 
 // Output Schema
+export interface DataSetsListByShareOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const DataSetsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1068,8 +1553,7 @@ export const DataSetsListByShareOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
+  }) as unknown as Schema.Codec<DataSetsListByShareOutput>;
 
 // The operation
 /**
@@ -1077,7 +1561,11 @@ export type DataSetsListByShareOutput = typeof DataSetsListByShareOutput.Type;
  *
  * List DataSets in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -1087,6 +1575,17 @@ export const DataSetsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataSetsListByShareOutput,
 }));
 // Input Schema
+export interface EmailRegistrationsActivateEmailInput {
+  location: string;
+  activationCode?: string;
+  activationExpirationDate?: string;
+  email?: string;
+  registrationStatus?:
+    | "ActivationPending"
+    | "Activated"
+    | "ActivationAttemptsExhausted";
+  tenantId?: string;
+}
 export const EmailRegistrationsActivateEmailInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1107,11 +1606,19 @@ export const EmailRegistrationsActivateEmailInput =
       path: "/providers/Microsoft.DataShare/locations/{location}/activateEmail",
       apiVersion: "2021-08-01",
     }),
-  );
-export type EmailRegistrationsActivateEmailInput =
-  typeof EmailRegistrationsActivateEmailInput.Type;
+  ) as unknown as Schema.Codec<EmailRegistrationsActivateEmailInput>;
 
 // Output Schema
+export interface EmailRegistrationsActivateEmailOutput {
+  activationCode?: string;
+  activationExpirationDate?: string;
+  email?: string;
+  registrationStatus?:
+    | "ActivationPending"
+    | "Activated"
+    | "ActivationAttemptsExhausted";
+  tenantId?: string;
+}
 export const EmailRegistrationsActivateEmailOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
@@ -1125,9 +1632,7 @@ export const EmailRegistrationsActivateEmailOutput =
       ]),
     ),
     tenantId: Schema.optional(Schema.String),
-  });
-export type EmailRegistrationsActivateEmailOutput =
-  typeof EmailRegistrationsActivateEmailOutput.Type;
+  }) as unknown as Schema.Codec<EmailRegistrationsActivateEmailOutput>;
 
 // The operation
 /**
@@ -1136,6 +1641,7 @@ export type EmailRegistrationsActivateEmailOutput =
  * Activate the email registration for the current tenant
  *
  * @param location - Location of the activation.
+ * @param api-version - The api version to use.
  */
 export const EmailRegistrationsActivateEmail =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1143,6 +1649,9 @@ export const EmailRegistrationsActivateEmail =
     outputSchema: EmailRegistrationsActivateEmailOutput,
   }));
 // Input Schema
+export interface EmailRegistrationsRegisterEmailInput {
+  location: string;
+}
 export const EmailRegistrationsRegisterEmailInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
@@ -1152,11 +1661,19 @@ export const EmailRegistrationsRegisterEmailInput =
       path: "/providers/Microsoft.DataShare/locations/{location}/registerEmail",
       apiVersion: "2021-08-01",
     }),
-  );
-export type EmailRegistrationsRegisterEmailInput =
-  typeof EmailRegistrationsRegisterEmailInput.Type;
+  ) as unknown as Schema.Codec<EmailRegistrationsRegisterEmailInput>;
 
 // Output Schema
+export interface EmailRegistrationsRegisterEmailOutput {
+  activationCode?: string;
+  activationExpirationDate?: string;
+  email?: string;
+  registrationStatus?:
+    | "ActivationPending"
+    | "Activated"
+    | "ActivationAttemptsExhausted";
+  tenantId?: string;
+}
 export const EmailRegistrationsRegisterEmailOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     activationCode: Schema.optional(Schema.String),
@@ -1170,9 +1687,7 @@ export const EmailRegistrationsRegisterEmailOutput =
       ]),
     ),
     tenantId: Schema.optional(Schema.String),
-  });
-export type EmailRegistrationsRegisterEmailOutput =
-  typeof EmailRegistrationsRegisterEmailOutput.Type;
+  }) as unknown as Schema.Codec<EmailRegistrationsRegisterEmailOutput>;
 
 // The operation
 /**
@@ -1181,6 +1696,7 @@ export type EmailRegistrationsRegisterEmailOutput =
  * Register an email for the current tenant
  *
  * @param location - Location of the registration
+ * @param api-version - The api version to use.
  */
 export const EmailRegistrationsRegisterEmail =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1188,8 +1704,41 @@ export const EmailRegistrationsRegisterEmail =
     outputSchema: EmailRegistrationsRegisterEmailOutput,
   }));
 // Input Schema
+export interface InvitationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  invitationName: string;
+  properties?: {
+    expirationDate?: string;
+    invitationId?: string;
+    invitationStatus?: "Pending" | "Accepted" | "Rejected" | "Withdrawn";
+    respondedAt?: string;
+    sentAt?: string;
+    targetActiveDirectoryId?: string;
+    targetEmail?: string;
+    targetObjectId?: string;
+    userEmail?: string;
+    userName?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1232,10 +1781,22 @@ export const InvitationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type InvitationsCreateInput = typeof InvitationsCreateInput.Type;
+) as unknown as Schema.Codec<InvitationsCreateInput>;
 
 // Output Schema
+export interface InvitationsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const InvitationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1255,8 +1816,7 @@ export const InvitationsCreateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<InvitationsCreateOutput>;
 
 // The operation
 /**
@@ -1264,16 +1824,30 @@ export type InvitationsCreateOutput = typeof InvitationsCreateOutput.Type;
  *
  * Create an invitation
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to send the invitation for.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsCreateInput,
   outputSchema: InvitationsCreateOutput,
 }));
 // Input Schema
+export interface InvitationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  invitationName: string;
+}
 export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     invitationName: Schema.String.pipe(T.PathParam()),
   },
@@ -1283,12 +1857,12 @@ export const InvitationsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type InvitationsDeleteInput = typeof InvitationsDeleteInput.Type;
+) as unknown as Schema.Codec<InvitationsDeleteInput>;
 
 // Output Schema
-export const InvitationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
+export type InvitationsDeleteOutput = void;
+export const InvitationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InvitationsDeleteOutput>;
 
 // The operation
 /**
@@ -1296,15 +1870,29 @@ export type InvitationsDeleteOutput = typeof InvitationsDeleteOutput.Type;
  *
  * Delete an invitation in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsDeleteInput,
   outputSchema: InvitationsDeleteOutput,
 }));
 // Input Schema
+export interface InvitationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  invitationName: string;
+}
 export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   invitationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1313,10 +1901,22 @@ export const InvitationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type InvitationsGetInput = typeof InvitationsGetInput.Type;
+) as unknown as Schema.Codec<InvitationsGetInput>;
 
 // Output Schema
+export interface InvitationsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1335,8 +1935,7 @@ export const InvitationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type InvitationsGetOutput = typeof InvitationsGetOutput.Type;
+}) as unknown as Schema.Codec<InvitationsGetOutput>;
 
 // The operation
 /**
@@ -1344,16 +1943,32 @@ export type InvitationsGetOutput = typeof InvitationsGetOutput.Type;
  *
  * Get an invitation in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param invitationName - The name of the invitation.
+ * @param api-version - The api version to use.
  */
 export const InvitationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: InvitationsGetInput,
   outputSchema: InvitationsGetOutput,
 }));
 // Input Schema
+export interface InvitationsListByShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const InvitationsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -1364,11 +1979,25 @@ export const InvitationsListByShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations",
       apiVersion: "2021-08-01",
     }),
-  );
-export type InvitationsListByShareInput =
-  typeof InvitationsListByShareInput.Type;
+  ) as unknown as Schema.Codec<InvitationsListByShareInput>;
 
 // Output Schema
+export interface InvitationsListByShareOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const InvitationsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1403,9 +2032,7 @@ export const InvitationsListByShareOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InvitationsListByShareOutput =
-  typeof InvitationsListByShareOutput.Type;
+  }) as unknown as Schema.Codec<InvitationsListByShareOutput>;
 
 // The operation
 /**
@@ -1413,7 +2040,11 @@ export type InvitationsListByShareOutput =
  *
  * List invitations in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - The continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -1425,6 +2056,7 @@ export const InvitationsListByShare = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1433,10 +2065,45 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DataShare/operations",
     apiVersion: "2021-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    name?: string;
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          blobDuration?: string;
+          displayName?: string;
+          name?: string;
+        }[];
+        metricSpecifications?: {
+          aggregationType?: string;
+          dimensions?: { displayName?: string; name?: string }[];
+          displayDescription?: string;
+          displayName?: string;
+          enableRegionalMdmAccount?: string;
+          fillGapWithZero?: boolean;
+          internalMetricName?: string;
+          name?: string;
+          resourceIdDimensionNameOverride?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          unit?: string;
+        }[];
+      };
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.Array(
@@ -1501,22 +2168,60 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists the available operations
  *
  * List of available operations
+ *
+ * @param api-version - The api version to use.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProviderShareSubscriptionsAdjustInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  providerShareSubscriptionId: string;
+  properties?: {
+    consumerEmail?: string;
+    consumerName?: string;
+    consumerTenantName?: string;
+    createdAt?: string;
+    expirationDate?: string;
+    providerEmail?: string;
+    providerName?: string;
+    sharedAt?: string;
+    shareSubscriptionObjectId?: string;
+    shareSubscriptionStatus?:
+      | "Active"
+      | "Revoked"
+      | "SourceDeleted"
+      | "Revoking";
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsAdjustInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1558,11 +2263,22 @@ export const ProviderShareSubscriptionsAdjustInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/adjust",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ProviderShareSubscriptionsAdjustInput =
-  typeof ProviderShareSubscriptionsAdjustInput.Type;
+  ) as unknown as Schema.Codec<ProviderShareSubscriptionsAdjustInput>;
 
 // Output Schema
+export interface ProviderShareSubscriptionsAdjustOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsAdjustOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1582,9 +2298,7 @@ export const ProviderShareSubscriptionsAdjustOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ProviderShareSubscriptionsAdjustOutput =
-  typeof ProviderShareSubscriptionsAdjustOutput.Type;
+  }) as unknown as Schema.Codec<ProviderShareSubscriptionsAdjustOutput>;
 
 // The operation
 /**
@@ -1592,8 +2306,12 @@ export type ProviderShareSubscriptionsAdjustOutput =
  *
  * Adjust a share subscription's expiration date in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsAdjust =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1601,8 +2319,18 @@ export const ProviderShareSubscriptionsAdjust =
     outputSchema: ProviderShareSubscriptionsAdjustOutput,
   }));
 // Input Schema
+export interface ProviderShareSubscriptionsGetByShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  providerShareSubscriptionId: string;
+}
 export const ProviderShareSubscriptionsGetByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1611,11 +2339,22 @@ export const ProviderShareSubscriptionsGetByShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ProviderShareSubscriptionsGetByShareInput =
-  typeof ProviderShareSubscriptionsGetByShareInput.Type;
+  ) as unknown as Schema.Codec<ProviderShareSubscriptionsGetByShareInput>;
 
 // Output Schema
+export interface ProviderShareSubscriptionsGetByShareOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsGetByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1635,9 +2374,7 @@ export const ProviderShareSubscriptionsGetByShareOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ProviderShareSubscriptionsGetByShareOutput =
-  typeof ProviderShareSubscriptionsGetByShareOutput.Type;
+  }) as unknown as Schema.Codec<ProviderShareSubscriptionsGetByShareOutput>;
 
 // The operation
 /**
@@ -1645,8 +2382,12 @@ export type ProviderShareSubscriptionsGetByShareOutput =
  *
  * Get share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsGetByShare =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1654,8 +2395,18 @@ export const ProviderShareSubscriptionsGetByShare =
     outputSchema: ProviderShareSubscriptionsGetByShareOutput,
   }));
 // Input Schema
+export interface ProviderShareSubscriptionsListByShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+}
 export const ProviderShareSubscriptionsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -1664,11 +2415,25 @@ export const ProviderShareSubscriptionsListByShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ProviderShareSubscriptionsListByShareInput =
-  typeof ProviderShareSubscriptionsListByShareInput.Type;
+  ) as unknown as Schema.Codec<ProviderShareSubscriptionsListByShareInput>;
 
 // Output Schema
+export interface ProviderShareSubscriptionsListByShareOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const ProviderShareSubscriptionsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1703,9 +2468,7 @@ export const ProviderShareSubscriptionsListByShareOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProviderShareSubscriptionsListByShareOutput =
-  typeof ProviderShareSubscriptionsListByShareOutput.Type;
+  }) as unknown as Schema.Codec<ProviderShareSubscriptionsListByShareOutput>;
 
 // The operation
 /**
@@ -1713,7 +2476,11 @@ export type ProviderShareSubscriptionsListByShareOutput =
  *
  * List share subscriptions in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  */
 export const ProviderShareSubscriptionsListByShare =
@@ -1722,8 +2489,45 @@ export const ProviderShareSubscriptionsListByShare =
     outputSchema: ProviderShareSubscriptionsListByShareOutput,
   }));
 // Input Schema
+export interface ProviderShareSubscriptionsReinstateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  providerShareSubscriptionId: string;
+  properties?: {
+    consumerEmail?: string;
+    consumerName?: string;
+    consumerTenantName?: string;
+    createdAt?: string;
+    expirationDate?: string;
+    providerEmail?: string;
+    providerName?: string;
+    sharedAt?: string;
+    shareSubscriptionObjectId?: string;
+    shareSubscriptionStatus?:
+      | "Active"
+      | "Revoked"
+      | "SourceDeleted"
+      | "Revoking";
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsReinstateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1765,11 +2569,22 @@ export const ProviderShareSubscriptionsReinstateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/reinstate",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ProviderShareSubscriptionsReinstateInput =
-  typeof ProviderShareSubscriptionsReinstateInput.Type;
+  ) as unknown as Schema.Codec<ProviderShareSubscriptionsReinstateInput>;
 
 // Output Schema
+export interface ProviderShareSubscriptionsReinstateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsReinstateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1789,9 +2604,7 @@ export const ProviderShareSubscriptionsReinstateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ProviderShareSubscriptionsReinstateOutput =
-  typeof ProviderShareSubscriptionsReinstateOutput.Type;
+  }) as unknown as Schema.Codec<ProviderShareSubscriptionsReinstateOutput>;
 
 // The operation
 /**
@@ -1799,8 +2612,12 @@ export type ProviderShareSubscriptionsReinstateOutput =
  *
  * Reinstate share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsReinstate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1808,8 +2625,18 @@ export const ProviderShareSubscriptionsReinstate =
     outputSchema: ProviderShareSubscriptionsReinstateOutput,
   }));
 // Input Schema
+export interface ProviderShareSubscriptionsRevokeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  providerShareSubscriptionId: string;
+}
 export const ProviderShareSubscriptionsRevokeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     providerShareSubscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1818,11 +2645,22 @@ export const ProviderShareSubscriptionsRevokeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/revoke",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ProviderShareSubscriptionsRevokeInput =
-  typeof ProviderShareSubscriptionsRevokeInput.Type;
+  ) as unknown as Schema.Codec<ProviderShareSubscriptionsRevokeInput>;
 
 // Output Schema
+export interface ProviderShareSubscriptionsRevokeOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ProviderShareSubscriptionsRevokeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1842,9 +2680,7 @@ export const ProviderShareSubscriptionsRevokeOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ProviderShareSubscriptionsRevokeOutput =
-  typeof ProviderShareSubscriptionsRevokeOutput.Type;
+  }) as unknown as Schema.Codec<ProviderShareSubscriptionsRevokeOutput>;
 
 // The operation
 /**
@@ -1852,8 +2688,12 @@ export type ProviderShareSubscriptionsRevokeOutput =
  *
  * Revoke share subscription in a provider share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param providerShareSubscriptionId - To locate shareSubscription
+ * @param api-version - The api version to use.
  */
 export const ProviderShareSubscriptionsRevoke =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1861,7 +2701,41 @@ export const ProviderShareSubscriptionsRevoke =
     outputSchema: ProviderShareSubscriptionsRevokeOutput,
   }));
 // Input Schema
+export interface SharesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  properties?: {
+    createdAt?: string;
+    description?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed";
+    shareKind?: "CopyBased" | "InPlace";
+    terms?: string;
+    userEmail?: string;
+    userName?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -1905,10 +2779,22 @@ export const SharesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type SharesCreateInput = typeof SharesCreateInput.Type;
+) as unknown as Schema.Codec<SharesCreateInput>;
 
 // Output Schema
+export interface SharesCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1927,8 +2813,7 @@ export const SharesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type SharesCreateOutput = typeof SharesCreateOutput.Type;
+}) as unknown as Schema.Codec<SharesCreateOutput>;
 
 // The operation
 /**
@@ -1936,14 +2821,27 @@ export type SharesCreateOutput = typeof SharesCreateOutput.Type;
  *
  * Create a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  */
 export const SharesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesCreateInput,
   outputSchema: SharesCreateOutput,
 }));
 // Input Schema
+export interface SharesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+}
 export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1951,10 +2849,26 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type SharesDeleteInput = typeof SharesDeleteInput.Type;
+) as unknown as Schema.Codec<SharesDeleteInput>;
 
 // Output Schema
+export interface SharesDeleteOutput {
+  endTime?: string;
+  error?: {
+    code: string;
+    details?: unknown[];
+    message: string;
+    target?: string;
+  };
+  startTime?: string;
+  status:
+    | "Accepted"
+    | "InProgress"
+    | "TransientFailure"
+    | "Succeeded"
+    | "Failed"
+    | "Canceled";
+}
 export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
@@ -1974,8 +2888,7 @@ export const SharesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "Failed",
     "Canceled",
   ]),
-});
-export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
+}) as unknown as Schema.Codec<SharesDeleteOutput>;
 
 // The operation
 /**
@@ -1983,14 +2896,27 @@ export type SharesDeleteOutput = typeof SharesDeleteOutput.Type;
  *
  * Delete a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  */
 export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesDeleteInput,
   outputSchema: SharesDeleteOutput,
 }));
 // Input Schema
+export interface SharesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+}
 export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1998,10 +2924,22 @@ export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type SharesGetInput = typeof SharesGetInput.Type;
+) as unknown as Schema.Codec<SharesGetInput>;
 
 // Output Schema
+export interface SharesGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2020,8 +2958,7 @@ export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type SharesGetOutput = typeof SharesGetOutput.Type;
+}) as unknown as Schema.Codec<SharesGetOutput>;
 
 // The operation
 /**
@@ -2029,15 +2966,30 @@ export type SharesGetOutput = typeof SharesGetOutput.Type;
  *
  * Get a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to retrieve.
+ * @param api-version - The api version to use.
  */
 export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SharesGetInput,
   outputSchema: SharesGetOutput,
 }));
 // Input Schema
+export interface SharesListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const SharesListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
@@ -2047,10 +2999,25 @@ export const SharesListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SharesListByAccountInput = typeof SharesListByAccountInput.Type;
+  ) as unknown as Schema.Codec<SharesListByAccountInput>;
 
 // Output Schema
+export interface SharesListByAccountOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const SharesListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2085,8 +3052,7 @@ export const SharesListByAccountOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<SharesListByAccountOutput>;
 
 // The operation
 /**
@@ -2094,6 +3060,10 @@ export type SharesListByAccountOutput = typeof SharesListByAccountOutput.Type;
  *
  * List shares in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2103,8 +3073,30 @@ export const SharesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SharesListByAccountOutput,
 }));
 // Input Schema
+export interface SharesListSynchronizationDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+  consumerEmail?: string;
+  consumerName?: string;
+  consumerTenantName?: string;
+  durationMs?: number;
+  endTime?: string;
+  message?: string;
+  startTime?: string;
+  status?: string;
+  synchronizationId?: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const SharesListSynchronizationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2127,11 +3119,43 @@ export const SharesListSynchronizationDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizationDetails",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SharesListSynchronizationDetailsInput =
-  typeof SharesListSynchronizationDetailsInput.Type;
+  ) as unknown as Schema.Codec<SharesListSynchronizationDetailsInput>;
 
 // Output Schema
+export interface SharesListSynchronizationDetailsOutput {
+  nextLink?: string;
+  value: {
+    dataSetId?: string;
+    dataSetType?:
+      | "Blob"
+      | "Container"
+      | "BlobFolder"
+      | "AdlsGen2FileSystem"
+      | "AdlsGen2Folder"
+      | "AdlsGen2File"
+      | "AdlsGen1Folder"
+      | "AdlsGen1File"
+      | "KustoCluster"
+      | "KustoDatabase"
+      | "KustoTable"
+      | "SqlDBTable"
+      | "SqlDWTable"
+      | "SynapseWorkspaceSqlPoolTable";
+    durationMs?: number;
+    endTime?: string;
+    filesRead?: number;
+    filesWritten?: number;
+    message?: string;
+    name?: string;
+    rowsCopied?: number;
+    rowsRead?: number;
+    sizeRead?: number;
+    sizeWritten?: number;
+    startTime?: string;
+    status?: string;
+    vCore?: number;
+  }[];
+}
 export const SharesListSynchronizationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2171,9 +3195,7 @@ export const SharesListSynchronizationDetailsOutput =
         vCore: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type SharesListSynchronizationDetailsOutput =
-  typeof SharesListSynchronizationDetailsOutput.Type;
+  }) as unknown as Schema.Codec<SharesListSynchronizationDetailsOutput>;
 
 // The operation
 /**
@@ -2181,7 +3203,11 @@ export type SharesListSynchronizationDetailsOutput =
  *
  * List synchronization details
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2192,8 +3218,20 @@ export const SharesListSynchronizationDetails =
     outputSchema: SharesListSynchronizationDetailsOutput,
   }));
 // Input Schema
+export interface SharesListSynchronizationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const SharesListSynchronizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2204,11 +3242,24 @@ export const SharesListSynchronizationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizations",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SharesListSynchronizationsInput =
-  typeof SharesListSynchronizationsInput.Type;
+  ) as unknown as Schema.Codec<SharesListSynchronizationsInput>;
 
 // Output Schema
+export interface SharesListSynchronizationsOutput {
+  nextLink?: string;
+  value: {
+    consumerEmail?: string;
+    consumerName?: string;
+    consumerTenantName?: string;
+    durationMs?: number;
+    endTime?: string;
+    message?: string;
+    startTime?: string;
+    status?: string;
+    synchronizationId?: string;
+    synchronizationMode?: "Incremental" | "FullSync";
+  }[];
+}
 export const SharesListSynchronizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2228,9 +3279,7 @@ export const SharesListSynchronizationsOutput =
         ),
       }),
     ),
-  });
-export type SharesListSynchronizationsOutput =
-  typeof SharesListSynchronizationsOutput.Type;
+  }) as unknown as Schema.Codec<SharesListSynchronizationsOutput>;
 
 // The operation
 /**
@@ -2238,7 +3287,11 @@ export type SharesListSynchronizationsOutput =
  *
  * List synchronizations of a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2250,8 +3303,24 @@ export const SharesListSynchronizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ShareSubscriptionsCancelSynchronizationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  durationMs?: number;
+  endTime?: string;
+  message?: string;
+  startTime?: string;
+  status?: string;
+  synchronizationId: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const ShareSubscriptionsCancelSynchronizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     durationMs: Schema.optional(Schema.Number),
     endTime: Schema.optional(Schema.String),
@@ -2268,11 +3337,18 @@ export const ShareSubscriptionsCancelSynchronizationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/cancelSynchronization",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsCancelSynchronizationInput =
-  typeof ShareSubscriptionsCancelSynchronizationInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsCancelSynchronizationInput>;
 
 // Output Schema
+export interface ShareSubscriptionsCancelSynchronizationOutput {
+  durationMs?: number;
+  endTime?: string;
+  message?: string;
+  startTime?: string;
+  status?: string;
+  synchronizationId: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const ShareSubscriptionsCancelSynchronizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.Number),
@@ -2284,9 +3360,7 @@ export const ShareSubscriptionsCancelSynchronizationOutput =
     synchronizationMode: Schema.optional(
       Schema.Literals(["Incremental", "FullSync"]),
     ),
-  });
-export type ShareSubscriptionsCancelSynchronizationOutput =
-  typeof ShareSubscriptionsCancelSynchronizationOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsCancelSynchronizationOutput>;
 
 // The operation
 /**
@@ -2294,7 +3368,11 @@ export type ShareSubscriptionsCancelSynchronizationOutput =
  *
  * Request to cancel a synchronization.
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsCancelSynchronization =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2302,8 +3380,54 @@ export const ShareSubscriptionsCancelSynchronization =
     outputSchema: ShareSubscriptionsCancelSynchronizationOutput,
   }));
 // Input Schema
+export interface ShareSubscriptionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  properties: {
+    createdAt?: string;
+    expirationDate?: string;
+    invitationId: string;
+    providerEmail?: string;
+    providerName?: string;
+    providerTenantName?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed";
+    shareDescription?: string;
+    shareKind?: "CopyBased" | "InPlace";
+    shareName?: string;
+    shareSubscriptionStatus?:
+      | "Active"
+      | "Revoked"
+      | "SourceDeleted"
+      | "Revoking";
+    shareTerms?: string;
+    sourceShareLocation: string;
+    userEmail?: string;
+    userName?: string;
+  };
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ShareSubscriptionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       createdAt: Schema.optional(Schema.String),
@@ -2355,11 +3479,22 @@ export const ShareSubscriptionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsCreateInput =
-  typeof ShareSubscriptionsCreateInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsCreateInput>;
 
 // Output Schema
+export interface ShareSubscriptionsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ShareSubscriptionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2379,9 +3514,7 @@ export const ShareSubscriptionsCreateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ShareSubscriptionsCreateOutput =
-  typeof ShareSubscriptionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsCreateOutput>;
 
 // The operation
 /**
@@ -2389,7 +3522,11 @@ export type ShareSubscriptionsCreateOutput =
  *
  * Create a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2398,8 +3535,17 @@ export const ShareSubscriptionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ShareSubscriptionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+}
 export const ShareSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2407,11 +3553,26 @@ export const ShareSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsDeleteInput =
-  typeof ShareSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsDeleteInput>;
 
 // Output Schema
+export interface ShareSubscriptionsDeleteOutput {
+  endTime?: string;
+  error?: {
+    code: string;
+    details?: unknown[];
+    message: string;
+    target?: string;
+  };
+  startTime?: string;
+  status:
+    | "Accepted"
+    | "InProgress"
+    | "TransientFailure"
+    | "Succeeded"
+    | "Failed"
+    | "Canceled";
+}
 export const ShareSubscriptionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
@@ -2432,9 +3593,7 @@ export const ShareSubscriptionsDeleteOutput =
       "Failed",
       "Canceled",
     ]),
-  });
-export type ShareSubscriptionsDeleteOutput =
-  typeof ShareSubscriptionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -2442,7 +3601,11 @@ export type ShareSubscriptionsDeleteOutput =
  *
  * Delete a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2451,8 +3614,17 @@ export const ShareSubscriptionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ShareSubscriptionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+}
 export const ShareSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2460,10 +3632,22 @@ export const ShareSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsGetInput = typeof ShareSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsGetInput>;
 
 // Output Schema
+export interface ShareSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const ShareSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2483,9 +3667,7 @@ export const ShareSubscriptionsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type ShareSubscriptionsGetOutput =
-  typeof ShareSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -2493,7 +3675,11 @@ export type ShareSubscriptionsGetOutput =
  *
  * Get a shareSubscription in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2502,8 +3688,19 @@ export const ShareSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ShareSubscriptionsListByAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const ShareSubscriptionsListByAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
     $orderby: Schema.optional(Schema.String),
@@ -2513,11 +3710,25 @@ export const ShareSubscriptionsListByAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsListByAccountInput =
-  typeof ShareSubscriptionsListByAccountInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsListByAccountInput>;
 
 // Output Schema
+export interface ShareSubscriptionsListByAccountOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const ShareSubscriptionsListByAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2552,9 +3763,7 @@ export const ShareSubscriptionsListByAccountOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ShareSubscriptionsListByAccountOutput =
-  typeof ShareSubscriptionsListByAccountOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsListByAccountOutput>;
 
 // The operation
 /**
@@ -2562,6 +3771,10 @@ export type ShareSubscriptionsListByAccountOutput =
  *
  * List share subscriptions in an account
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation Token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2572,8 +3785,18 @@ export const ShareSubscriptionsListByAccount =
     outputSchema: ShareSubscriptionsListByAccountOutput,
   }));
 // Input Schema
+export interface ShareSubscriptionsListSourceShareSynchronizationSettingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+}
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -2582,11 +3805,13 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSourceShareSynchronizationSettings",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsListSourceShareSynchronizationSettingsInput =
-  typeof ShareSubscriptionsListSourceShareSynchronizationSettingsInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsListSourceShareSynchronizationSettingsInput>;
 
 // Output Schema
+export interface ShareSubscriptionsListSourceShareSynchronizationSettingsOutput {
+  nextLink?: string;
+  value: { kind: "ScheduleBased" }[];
+}
 export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2595,9 +3820,7 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
         kind: Schema.Literals(["ScheduleBased"]),
       }),
     ),
-  });
-export type ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
-  typeof ShareSubscriptionsListSourceShareSynchronizationSettingsOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsListSourceShareSynchronizationSettingsOutput>;
 
 // The operation
 /**
@@ -2605,7 +3828,11 @@ export type ShareSubscriptionsListSourceShareSynchronizationSettingsOutput =
  *
  * Get synchronization settings set on a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const ShareSubscriptionsListSourceShareSynchronizationSettings =
@@ -2615,8 +3842,27 @@ export const ShareSubscriptionsListSourceShareSynchronizationSettings =
       ShareSubscriptionsListSourceShareSynchronizationSettingsOutput,
   }));
 // Input Schema
+export interface ShareSubscriptionsListSynchronizationDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+  durationMs?: number;
+  endTime?: string;
+  message?: string;
+  startTime?: string;
+  status?: string;
+  synchronizationId: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const ShareSubscriptionsListSynchronizationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2636,11 +3882,43 @@ export const ShareSubscriptionsListSynchronizationDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizationDetails",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsListSynchronizationDetailsInput =
-  typeof ShareSubscriptionsListSynchronizationDetailsInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsListSynchronizationDetailsInput>;
 
 // Output Schema
+export interface ShareSubscriptionsListSynchronizationDetailsOutput {
+  nextLink?: string;
+  value: {
+    dataSetId?: string;
+    dataSetType?:
+      | "Blob"
+      | "Container"
+      | "BlobFolder"
+      | "AdlsGen2FileSystem"
+      | "AdlsGen2Folder"
+      | "AdlsGen2File"
+      | "AdlsGen1Folder"
+      | "AdlsGen1File"
+      | "KustoCluster"
+      | "KustoDatabase"
+      | "KustoTable"
+      | "SqlDBTable"
+      | "SqlDWTable"
+      | "SynapseWorkspaceSqlPoolTable";
+    durationMs?: number;
+    endTime?: string;
+    filesRead?: number;
+    filesWritten?: number;
+    message?: string;
+    name?: string;
+    rowsCopied?: number;
+    rowsRead?: number;
+    sizeRead?: number;
+    sizeWritten?: number;
+    startTime?: string;
+    status?: string;
+    vCore?: number;
+  }[];
+}
 export const ShareSubscriptionsListSynchronizationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2680,9 +3958,7 @@ export const ShareSubscriptionsListSynchronizationDetailsOutput =
         vCore: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type ShareSubscriptionsListSynchronizationDetailsOutput =
-  typeof ShareSubscriptionsListSynchronizationDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsListSynchronizationDetailsOutput>;
 
 // The operation
 /**
@@ -2690,7 +3966,11 @@ export type ShareSubscriptionsListSynchronizationDetailsOutput =
  *
  * List synchronization details
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2701,8 +3981,20 @@ export const ShareSubscriptionsListSynchronizationDetails =
     outputSchema: ShareSubscriptionsListSynchronizationDetailsOutput,
   }));
 // Input Schema
+export interface ShareSubscriptionsListSynchronizationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+  $filter?: string;
+  $orderby?: string;
+}
 export const ShareSubscriptionsListSynchronizationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $filter: Schema.optional(Schema.String),
@@ -2713,11 +4005,21 @@ export const ShareSubscriptionsListSynchronizationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizations",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsListSynchronizationsInput =
-  typeof ShareSubscriptionsListSynchronizationsInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsListSynchronizationsInput>;
 
 // Output Schema
+export interface ShareSubscriptionsListSynchronizationsOutput {
+  nextLink?: string;
+  value: {
+    durationMs?: number;
+    endTime?: string;
+    message?: string;
+    startTime?: string;
+    status?: string;
+    synchronizationId: string;
+    synchronizationMode?: "Incremental" | "FullSync";
+  }[];
+}
 export const ShareSubscriptionsListSynchronizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2734,9 +4036,7 @@ export const ShareSubscriptionsListSynchronizationsOutput =
         ),
       }),
     ),
-  });
-export type ShareSubscriptionsListSynchronizationsOutput =
-  typeof ShareSubscriptionsListSynchronizationsOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsListSynchronizationsOutput>;
 
 // The operation
 /**
@@ -2744,7 +4044,11 @@ export type ShareSubscriptionsListSynchronizationsOutput =
  *
  * List synchronizations of a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  * @param $filter - Filters the results using OData syntax.
  * @param $orderby - Sorts the results using OData syntax.
@@ -2755,8 +4059,18 @@ export const ShareSubscriptionsListSynchronizations =
     outputSchema: ShareSubscriptionsListSynchronizationsOutput,
   }));
 // Input Schema
+export interface ShareSubscriptionsSynchronizeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const ShareSubscriptionsSynchronizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     synchronizationMode: Schema.optional(
       Schema.Literals(["Incremental", "FullSync"]),
@@ -2767,11 +4081,18 @@ export const ShareSubscriptionsSynchronizeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/synchronize",
       apiVersion: "2021-08-01",
     }),
-  );
-export type ShareSubscriptionsSynchronizeInput =
-  typeof ShareSubscriptionsSynchronizeInput.Type;
+  ) as unknown as Schema.Codec<ShareSubscriptionsSynchronizeInput>;
 
 // Output Schema
+export interface ShareSubscriptionsSynchronizeOutput {
+  durationMs?: number;
+  endTime?: string;
+  message?: string;
+  startTime?: string;
+  status?: string;
+  synchronizationId: string;
+  synchronizationMode?: "Incremental" | "FullSync";
+}
 export const ShareSubscriptionsSynchronizeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     durationMs: Schema.optional(Schema.Number),
@@ -2783,9 +4104,7 @@ export const ShareSubscriptionsSynchronizeOutput =
     synchronizationMode: Schema.optional(
       Schema.Literals(["Incremental", "FullSync"]),
     ),
-  });
-export type ShareSubscriptionsSynchronizeOutput =
-  typeof ShareSubscriptionsSynchronizeOutput.Type;
+  }) as unknown as Schema.Codec<ShareSubscriptionsSynchronizeOutput>;
 
 // The operation
 /**
@@ -2793,7 +4112,11 @@ export type ShareSubscriptionsSynchronizeOutput =
  *
  * Initiate a copy
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of share subscription
+ * @param api-version - The api version to use.
  */
 export const ShareSubscriptionsSynchronize =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2801,8 +4124,30 @@ export const ShareSubscriptionsSynchronize =
     outputSchema: ShareSubscriptionsSynchronizeOutput,
   }));
 // Input Schema
+export interface SynchronizationSettingsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  synchronizationSettingName: string;
+  kind: "ScheduleBased";
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SynchronizationSettingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["ScheduleBased"]),
@@ -2829,11 +4174,22 @@ export const SynchronizationSettingsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SynchronizationSettingsCreateInput =
-  typeof SynchronizationSettingsCreateInput.Type;
+  ) as unknown as Schema.Codec<SynchronizationSettingsCreateInput>;
 
 // Output Schema
+export interface SynchronizationSettingsCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SynchronizationSettingsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2853,9 +4209,7 @@ export const SynchronizationSettingsCreateOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type SynchronizationSettingsCreateOutput =
-  typeof SynchronizationSettingsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SynchronizationSettingsCreateOutput>;
 
 // The operation
 /**
@@ -2863,8 +4217,12 @@ export type SynchronizationSettingsCreateOutput =
  *
  * Create a synchronizationSetting
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share to add the synchronization setting to.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2872,8 +4230,18 @@ export const SynchronizationSettingsCreate =
     outputSchema: SynchronizationSettingsCreateOutput,
   }));
 // Input Schema
+export interface SynchronizationSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  synchronizationSettingName: string;
+}
 export const SynchronizationSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2882,11 +4250,26 @@ export const SynchronizationSettingsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SynchronizationSettingsDeleteInput =
-  typeof SynchronizationSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SynchronizationSettingsDeleteInput>;
 
 // Output Schema
+export interface SynchronizationSettingsDeleteOutput {
+  endTime?: string;
+  error?: {
+    code: string;
+    details?: unknown[];
+    message: string;
+    target?: string;
+  };
+  startTime?: string;
+  status:
+    | "Accepted"
+    | "InProgress"
+    | "TransientFailure"
+    | "Succeeded"
+    | "Failed"
+    | "Canceled";
+}
 export const SynchronizationSettingsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
@@ -2907,9 +4290,7 @@ export const SynchronizationSettingsDeleteOutput =
       "Failed",
       "Canceled",
     ]),
-  });
-export type SynchronizationSettingsDeleteOutput =
-  typeof SynchronizationSettingsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<SynchronizationSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -2917,8 +4298,12 @@ export type SynchronizationSettingsDeleteOutput =
  *
  * Delete a synchronizationSetting in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting .
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2926,8 +4311,18 @@ export const SynchronizationSettingsDelete =
     outputSchema: SynchronizationSettingsDeleteOutput,
   }));
 // Input Schema
+export interface SynchronizationSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  synchronizationSettingName: string;
+}
 export const SynchronizationSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     synchronizationSettingName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2936,11 +4331,22 @@ export const SynchronizationSettingsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SynchronizationSettingsGetInput =
-  typeof SynchronizationSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<SynchronizationSettingsGetInput>;
 
 // Output Schema
+export interface SynchronizationSettingsGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const SynchronizationSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2960,9 +4366,7 @@ export const SynchronizationSettingsGetOutput =
       }),
     ),
     type: Schema.optional(Schema.String),
-  });
-export type SynchronizationSettingsGetOutput =
-  typeof SynchronizationSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<SynchronizationSettingsGetOutput>;
 
 // The operation
 /**
@@ -2970,8 +4374,12 @@ export type SynchronizationSettingsGetOutput =
  *
  * Get a synchronizationSetting in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
  * @param synchronizationSettingName - The name of the synchronizationSetting.
+ * @param api-version - The api version to use.
  */
 export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2980,8 +4388,18 @@ export const SynchronizationSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SynchronizationSettingsListByShareInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareName: string;
+  $skipToken?: string;
+}
 export const SynchronizationSettingsListByShareInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -2990,11 +4408,25 @@ export const SynchronizationSettingsListByShareInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings",
       apiVersion: "2021-08-01",
     }),
-  );
-export type SynchronizationSettingsListByShareInput =
-  typeof SynchronizationSettingsListByShareInput.Type;
+  ) as unknown as Schema.Codec<SynchronizationSettingsListByShareInput>;
 
 // Output Schema
+export interface SynchronizationSettingsListByShareOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const SynchronizationSettingsListByShareOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3029,9 +4461,7 @@ export const SynchronizationSettingsListByShareOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SynchronizationSettingsListByShareOutput =
-  typeof SynchronizationSettingsListByShareOutput.Type;
+  }) as unknown as Schema.Codec<SynchronizationSettingsListByShareOutput>;
 
 // The operation
 /**
@@ -3039,7 +4469,11 @@ export type SynchronizationSettingsListByShareOutput =
  *
  * List synchronizationSettings in a share
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareName - The name of the share.
+ * @param api-version - The api version to use.
  * @param $skipToken - continuation token
  */
 export const SynchronizationSettingsListByShare =
@@ -3048,7 +4482,29 @@ export const SynchronizationSettingsListByShare =
     outputSchema: SynchronizationSettingsListByShareOutput,
   }));
 // Input Schema
+export interface TriggersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  triggerName: string;
+  kind: "ScheduleBased";
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
   kind: Schema.Literals(["ScheduleBased"]),
@@ -3075,10 +4531,22 @@ export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type TriggersCreateInput = typeof TriggersCreateInput.Type;
+) as unknown as Schema.Codec<TriggersCreateInput>;
 
 // Output Schema
+export interface TriggersCreateOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3097,8 +4565,7 @@ export const TriggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type TriggersCreateOutput = typeof TriggersCreateOutput.Type;
+}) as unknown as Schema.Codec<TriggersCreateOutput>;
 
 // The operation
 /**
@@ -3106,15 +4573,29 @@ export type TriggersCreateOutput = typeof TriggersCreateOutput.Type;
  *
  * Create a Trigger
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription which will hold the data set sink.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersCreateInput,
   outputSchema: TriggersCreateOutput,
 }));
 // Input Schema
+export interface TriggersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  triggerName: string;
+}
 export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3123,10 +4604,26 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;
+) as unknown as Schema.Codec<TriggersDeleteInput>;
 
 // Output Schema
+export interface TriggersDeleteOutput {
+  endTime?: string;
+  error?: {
+    code: string;
+    details?: unknown[];
+    message: string;
+    target?: string;
+  };
+  startTime?: string;
+  status:
+    | "Accepted"
+    | "InProgress"
+    | "TransientFailure"
+    | "Succeeded"
+    | "Failed"
+    | "Canceled";
+}
 export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   endTime: Schema.optional(Schema.String),
   error: Schema.optional(
@@ -3146,8 +4643,7 @@ export const TriggersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "Failed",
     "Canceled",
   ]),
-});
-export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
+}) as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -3155,15 +4651,29 @@ export type TriggersDeleteOutput = typeof TriggersDeleteOutput.Type;
  *
  * Delete a Trigger in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
 // Input Schema
+export interface TriggersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  triggerName: string;
+}
 export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  accountName: Schema.String.pipe(T.PathParam()),
   shareSubscriptionName: Schema.String.pipe(T.PathParam()),
   triggerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3172,10 +4682,22 @@ export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
     apiVersion: "2021-08-01",
   }),
-);
-export type TriggersGetInput = typeof TriggersGetInput.Type;
+) as unknown as Schema.Codec<TriggersGetInput>;
 
 // Output Schema
+export interface TriggersGetOutput {
+  id?: string;
+  name?: string;
+  systemData?: {
+    createdAt?: string;
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+  };
+  type?: string;
+}
 export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3194,8 +4716,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   type: Schema.optional(Schema.String),
-});
-export type TriggersGetOutput = typeof TriggersGetOutput.Type;
+}) as unknown as Schema.Codec<TriggersGetOutput>;
 
 // The operation
 /**
@@ -3203,16 +4724,30 @@ export type TriggersGetOutput = typeof TriggersGetOutput.Type;
  *
  * Get a Trigger in a shareSubscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the shareSubscription.
  * @param triggerName - The name of the trigger.
+ * @param api-version - The api version to use.
  */
 export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
 // Input Schema
+export interface TriggersListByShareSubscriptionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  shareSubscriptionName: string;
+  $skipToken?: string;
+}
 export const TriggersListByShareSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
     shareSubscriptionName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
   }).pipe(
@@ -3221,11 +4756,25 @@ export const TriggersListByShareSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers",
       apiVersion: "2021-08-01",
     }),
-  );
-export type TriggersListByShareSubscriptionInput =
-  typeof TriggersListByShareSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TriggersListByShareSubscriptionInput>;
 
 // Output Schema
+export interface TriggersListByShareSubscriptionOutput {
+  nextLink?: string;
+  value: {
+    id?: string;
+    name?: string;
+    systemData?: {
+      createdAt?: string;
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    };
+    type?: string;
+  }[];
+}
 export const TriggersListByShareSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3260,9 +4809,7 @@ export const TriggersListByShareSubscriptionOutput =
         type: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TriggersListByShareSubscriptionOutput =
-  typeof TriggersListByShareSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TriggersListByShareSubscriptionOutput>;
 
 // The operation
 /**
@@ -3270,7 +4817,11 @@ export type TriggersListByShareSubscriptionOutput =
  *
  * List Triggers in a share subscription
  *
+ * @param subscriptionId - The subscription identifier
+ * @param resourceGroupName - The resource group name.
+ * @param accountName - The name of the share account.
  * @param shareSubscriptionName - The name of the share subscription.
+ * @param api-version - The api version to use.
  * @param $skipToken - Continuation token
  */
 export const TriggersListByShareSubscription =

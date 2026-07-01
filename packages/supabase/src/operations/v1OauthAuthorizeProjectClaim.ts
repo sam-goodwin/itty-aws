@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1OauthAuthorizeProjectClaimInput {
+  project_ref: string;
+  client_id: string;
+  response_type: "code" | "token" | "id_token token";
+  redirect_uri: string;
+  state?: string;
+  response_mode?: string;
+  code_challenge?: string;
+  code_challenge_method?: "plain" | "sha256" | "S256";
+}
 export const V1OauthAuthorizeProjectClaimInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_ref: Schema.String,
@@ -16,15 +26,14 @@ export const V1OauthAuthorizeProjectClaimInput =
     code_challenge_method: Schema.optional(
       Schema.Literals(["plain", "sha256", "S256"]),
     ),
-  }).pipe(T.Http({ method: "GET", path: "/v1/oauth/authorize/project-claim" }));
-export type V1OauthAuthorizeProjectClaimInput =
-  typeof V1OauthAuthorizeProjectClaimInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v1/oauth/authorize/project-claim" }),
+  ) as unknown as Schema.Codec<V1OauthAuthorizeProjectClaimInput>;
 
 // Output Schema
+export type V1OauthAuthorizeProjectClaimOutput = void;
 export const V1OauthAuthorizeProjectClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1OauthAuthorizeProjectClaimOutput =
-  typeof V1OauthAuthorizeProjectClaimOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1OauthAuthorizeProjectClaimOutput>;
 
 // The operation
 /**

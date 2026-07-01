@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListMaintenanceSchedulesInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListMaintenanceSchedulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,39 @@ export const ListMaintenanceSchedulesInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/maintenance-schedules",
     }),
-  );
-export type ListMaintenanceSchedulesInput =
-  typeof ListMaintenanceSchedulesInput.Type;
+  ) as unknown as Schema.Codec<ListMaintenanceSchedulesInput>;
 
 // Output Schema
+export interface ListMaintenanceSchedulesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    last_window_datetime: string;
+    next_window_datetime: string;
+    duration: number;
+    day: number;
+    hour: number;
+    week: number;
+    frequency_value: number;
+    frequency_unit: "day" | "week" | "month" | "once";
+    enabled: boolean;
+    expires_at: string | null;
+    deadline_at: string | null;
+    required: boolean;
+    pending_vitess_version_update: boolean;
+    pending_vitess_version: string | null;
+    pending_mysql_version_update: boolean;
+    pending_mysql_version: string | null;
+  }[];
+}
 export const ListMaintenanceSchedulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -52,9 +86,7 @@ export const ListMaintenanceSchedulesOutput =
         pending_mysql_version: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type ListMaintenanceSchedulesOutput =
-  typeof ListMaintenanceSchedulesOutput.Type;
+  }) as unknown as Schema.Codec<ListMaintenanceSchedulesOutput>;
 
 // The operation
 /**

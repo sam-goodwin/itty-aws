@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface NotebooksCollabStreamRetrieveInput {
+  project_id: string;
+  short_id: string;
+}
 export const NotebooksCollabStreamRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const NotebooksCollabStreamRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/notebooks/{short_id}/collab/stream/",
     }),
-  );
-export type NotebooksCollabStreamRetrieveInput =
-  typeof NotebooksCollabStreamRetrieveInput.Type;
+  ) as unknown as Schema.Codec<NotebooksCollabStreamRetrieveInput>;
 
 // Output Schema
+export type NotebooksCollabStreamRetrieveOutput = void;
 export const NotebooksCollabStreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksCollabStreamRetrieveOutput =
-  typeof NotebooksCollabStreamRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabStreamRetrieveOutput>;
 
 // The operation
 /**

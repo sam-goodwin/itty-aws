@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DatabasesByDatabaseIdConnectionsInput {
+  databaseId: string;
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1DatabasesByDatabaseIdConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
@@ -11,11 +16,27 @@ export const GetV1DatabasesByDatabaseIdConnectionsInput =
     limit: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/databases/{databaseId}/connections" }),
-  );
-export type GetV1DatabasesByDatabaseIdConnectionsInput =
-  typeof GetV1DatabasesByDatabaseIdConnectionsInput.Type;
+  ) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdConnectionsInput>;
 
 // Output Schema
+export interface GetV1DatabasesByDatabaseIdConnectionsOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: { host: string; port: number };
+      pooled?: { host: string; port: number };
+      accelerate?: { host: string; port: number };
+    };
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1DatabasesByDatabaseIdConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -66,9 +87,7 @@ export const GetV1DatabasesByDatabaseIdConnectionsOutput =
       nextCursor: Schema.NullOr(Schema.String),
       hasMore: Schema.Boolean,
     }),
-  });
-export type GetV1DatabasesByDatabaseIdConnectionsOutput =
-  typeof GetV1DatabasesByDatabaseIdConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdConnectionsOutput>;
 
 // The operation
 /**

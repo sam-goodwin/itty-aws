@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteWebhookInput {
+  organization: string;
+  database: string;
+  id: string;
+}
 export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -13,12 +18,12 @@ export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/webhooks/{id}",
   }),
-);
-export type DeleteWebhookInput = typeof DeleteWebhookInput.Type;
+) as unknown as Schema.Codec<DeleteWebhookInput>;
 
 // Output Schema
-export const DeleteWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteWebhookOutput = typeof DeleteWebhookOutput.Type;
+export type DeleteWebhookOutput = void;
+export const DeleteWebhookOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteWebhookOutput>;
 
 // The operation
 /**

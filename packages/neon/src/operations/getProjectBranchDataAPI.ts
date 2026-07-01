@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetProjectBranchDataAPIInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+}
 export const GetProjectBranchDataAPIInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +18,26 @@ export const GetProjectBranchDataAPIInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/data-api/{database_name}",
     }),
-  );
-export type GetProjectBranchDataAPIInput =
-  typeof GetProjectBranchDataAPIInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchDataAPIInput>;
 
 // Output Schema
+export interface GetProjectBranchDataAPIOutput {
+  url: string;
+  status: string;
+  settings?: {
+    db_aggregates_enabled?: boolean;
+    db_anon_role?: string;
+    db_extra_search_path?: string;
+    db_max_rows?: number;
+    db_schemas?: string[];
+    jwt_role_claim_key?: string;
+    jwt_cache_max_lifetime?: number;
+    openapi_mode?: string;
+    server_cors_allowed_origins?: string;
+    server_timing_enabled?: boolean;
+  } | null;
+  available_schemas?: string[] | null;
+}
 export const GetProjectBranchDataAPIOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.String,
@@ -41,15 +61,14 @@ export const GetProjectBranchDataAPIOutput =
     available_schemas: Schema.optional(
       Schema.NullOr(Schema.Array(Schema.String)),
     ),
-  });
-export type GetProjectBranchDataAPIOutput =
-  typeof GetProjectBranchDataAPIOutput.Type;
+  }) as unknown as Schema.Codec<GetProjectBranchDataAPIOutput>;
 
 // The operation
 /**
- * Get Neon Data API
+ * Retrieve Neon Data API configuration
  *
- * Retrieves the Neon Data API for the specified branch.
+ * Retrieves the Neon Data API configuration for the specified branch,
+ * including endpoint URL, enabled state, and database settings.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

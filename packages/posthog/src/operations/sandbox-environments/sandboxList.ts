@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SandboxListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const SandboxListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -13,50 +18,71 @@ export const SandboxListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/projects/{project_id}/sandbox_environments/",
   }),
-);
-export type SandboxListInput = typeof SandboxListInput.Type;
+) as unknown as Schema.Codec<SandboxListInput>;
 
 // Output Schema
+export interface SandboxListOutput {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: {
+    id: string;
+    name: string;
+    network_access_level: string;
+    allowed_domains?: string[];
+    repositories?: string[];
+    private: boolean;
+    internal: boolean;
+    created_by?: {
+      id: number;
+      uuid: string;
+      distinct_id: string;
+      first_name: string;
+      last_name: string;
+      email: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?: string | null;
+    } | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }[];
+}
 export const SandboxListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  count: Schema.optional(Schema.Number),
+  count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        network_access_level: Schema.optional(
-          Schema.Literals(["trusted", "full", "custom"]),
+  results: Schema.Array(
+    Schema.Struct({
+      id: Schema.String,
+      name: Schema.String,
+      network_access_level: Schema.String,
+      allowed_domains: Schema.optional(Schema.Array(Schema.String)),
+      repositories: Schema.optional(Schema.Array(Schema.String)),
+      private: Schema.Boolean,
+      internal: Schema.Boolean,
+      created_by: Schema.optional(
+        Schema.NullOr(
+          Schema.Struct({
+            id: Schema.Number,
+            uuid: Schema.String,
+            distinct_id: Schema.String,
+            first_name: Schema.String,
+            last_name: Schema.String,
+            email: Schema.String,
+            is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+            hedgehog_config: Schema.optional(
+              Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+            ),
+            role_at_organization: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
         ),
-        allowed_domains: Schema.optional(Schema.Array(Schema.String)),
-        repositories: Schema.optional(Schema.Array(Schema.String)),
-        private: Schema.optional(Schema.Boolean),
-        internal: Schema.optional(Schema.Boolean),
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              uuid: Schema.optional(Schema.String),
-              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-              first_name: Schema.optional(Schema.String),
-              last_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              hedgehog_config: Schema.optional(
-                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              role_at_organization: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
-    ),
+      ),
+      created_at: Schema.optional(Schema.NullOr(Schema.String)),
+      updated_at: Schema.optional(Schema.NullOr(Schema.String)),
+    }),
   ),
-});
-export type SandboxListOutput = typeof SandboxListOutput.Type;
+}) as unknown as Schema.Codec<SandboxListOutput>;
 
 // The operation
 /**

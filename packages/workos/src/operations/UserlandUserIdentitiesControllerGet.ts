@@ -4,16 +4,36 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserIdentitiesControllerGetInput {
+  id: string;
+}
 export const UserlandUserIdentitiesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{id}/identities" }),
-  );
-export type UserlandUserIdentitiesControllerGetInput =
-  typeof UserlandUserIdentitiesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserIdentitiesControllerGetInput>;
 
 // Output Schema
+export type UserlandUserIdentitiesControllerGetOutput = {
+  idp_id: string;
+  type: string;
+  provider:
+    | "AppleOAuth"
+    | "BitbucketOAuth"
+    | "DiscordOAuth"
+    | "GithubOAuth"
+    | "GitLabOAuth"
+    | "GoogleOAuth"
+    | "IntuitOAuth"
+    | "LinkedInOAuth"
+    | "MicrosoftOAuth"
+    | "SalesforceOAuth"
+    | "SlackOAuth"
+    | "VercelMarketplaceOAuth"
+    | "VercelOAuth"
+    | "XeroOAuth";
+}[];
 export const UserlandUserIdentitiesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -36,9 +56,7 @@ export const UserlandUserIdentitiesControllerGetOutput =
         "XeroOAuth",
       ]),
     }),
-  );
-export type UserlandUserIdentitiesControllerGetOutput =
-  typeof UserlandUserIdentitiesControllerGetOutput.Type;
+  ) as unknown as Schema.Codec<UserlandUserIdentitiesControllerGetOutput>;
 
 // The operation
 /**

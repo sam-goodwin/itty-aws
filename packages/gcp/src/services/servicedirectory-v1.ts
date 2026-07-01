@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,98 +22,88 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Location {
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    locationId: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "Location" });
-
 export interface Endpoint {
+  /** Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters. */
+  address?: string;
+  /** Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified. */
+  network?: string;
+  /** Output only. The globally unique identifier of the endpoint in the UUID4 format. */
+  uid?: string;
+  /** Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory. */
+  annotations?: Record<string, string>;
   /** Immutable. The resource name for the endpoint in the format `projects/* /locations/* /namespaces/* /services/* /endpoints/*`. */
   name?: string;
   /** Optional. Service Directory rejects values outside of `[0, 65535]`. */
   port?: number;
-  /** Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified. */
-  network?: string;
-  /** Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters. */
-  address?: string;
-  /** Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/) Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory. */
+}
+
+export const Endpoint: Schema.Codec<Endpoint> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Endpoint" });
+
+export interface Service {
+  /** Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory. */
   annotations?: Record<string, string>;
-  /** Output only. The globally unique identifier of the endpoint in the UUID4 format. */
+  /** Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints. */
+  endpoints?: ReadonlyArray<Endpoint>;
+  /** Immutable. The resource name for the service in the format `projects/* /locations/* /namespaces/* /services/*`. */
+  name?: string;
+  /** Output only. The globally unique identifier of the service in the UUID4 format. */
   uid?: string;
 }
 
-export const Endpoint: Schema.Schema<Endpoint> =
+export const Service: Schema.Codec<Service> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-    network: Schema.optional(Schema.String),
-    address: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    endpoints: Schema.optional(Schema.Array(Endpoint)),
+    name: Schema.optional(Schema.String),
     uid: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Endpoint" });
+  }).annotate({ identifier: "Service" });
 
-export interface ListEndpointsResponse {
-  /** The list of endpoints. */
-  endpoints?: ReadonlyArray<Endpoint>;
+export interface ResolveServiceResponse {
+  service?: Service;
+}
+
+export const ResolveServiceResponse: Schema.Codec<ResolveServiceResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Service),
+  }).annotate({ identifier: "ResolveServiceResponse" });
+
+export interface ListServicesResponse {
+  /** The list of services. */
+  services?: ReadonlyArray<Service>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
 
-export const ListEndpointsResponse: Schema.Schema<ListEndpointsResponse> =
+export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoints: Schema.optional(Schema.Array(Endpoint)),
+    services: Schema.optional(Schema.Array(Service)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListEndpointsResponse" });
-
-export interface Namespace {
-  /** Immutable. The resource name for the namespace in the format `projects/* /locations/* /namespaces/*`. */
-  name?: string;
-  /** Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters. */
-  labels?: Record<string, string>;
-  /** Output only. The globally unique identifier of the namespace in the UUID4 format. */
-  uid?: string;
-}
-
-export const Namespace: Schema.Schema<Namespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    uid: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Namespace" });
+  }).annotate({ identifier: "ListServicesResponse" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "Expr" });
 
@@ -126,7 +116,7 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
@@ -134,43 +124,81 @@ export const Binding: Schema.Schema<Binding> =
   }).annotate({ identifier: "Binding" });
 
 export interface Policy {
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
-    bindings: Schema.optional(Schema.Array(Binding)),
   }).annotate({ identifier: "Policy" });
 
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
+export interface Namespace {
+  /** Immutable. The resource name for the namespace in the format `projects/* /locations/* /namespaces/*`. */
+  name?: string;
+  /** Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters. */
+  labels?: Record<string, string>;
+  /** Output only. The globally unique identifier of the namespace in the UUID4 format. */
+  uid?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const Namespace: Schema.Codec<Namespace> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Namespace" });
 
 export interface ListNamespacesResponse {
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
   /** The list of namespaces. */
   namespaces?: ReadonlyArray<Namespace>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
 }
 
-export const ListNamespacesResponse: Schema.Schema<ListNamespacesResponse> =
+export const ListNamespacesResponse: Schema.Codec<ListNamespacesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     namespaces: Schema.optional(Schema.Array(Namespace)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListNamespacesResponse" });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface Location {
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+}
+
+export const Location: Schema.Codec<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -179,79 +207,18 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface Service {
-  /** Immutable. The resource name for the service in the format `projects/* /locations/* /namespaces/* /services/*`. */
-  name?: string;
-  /** Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints. */
-  endpoints?: ReadonlyArray<Endpoint>;
-  /** Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory. */
-  annotations?: Record<string, string>;
-  /** Output only. The globally unique identifier of the service in the UUID4 format. */
-  uid?: string;
-}
-
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    endpoints: Schema.optional(Schema.Array(Endpoint)),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    uid: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Service" });
-
-export interface ResolveServiceResponse {
-  service?: Service;
-}
-
-export const ResolveServiceResponse: Schema.Schema<ResolveServiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Service),
-  }).annotate({ identifier: "ResolveServiceResponse" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface ResolveServiceRequest {
-  /** Optional. The maximum number of endpoints to return. Defaults to 25. Maximum is 100. If a value less than one is specified, the Default is used. If a value greater than the Maximum is specified, the Maximum is used. */
-  maxEndpoints?: number;
-  /** Optional. The filter applied to the endpoints of the resolved service. General `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns endpoints that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address * `port>8080` returns endpoints that have port number larger than 8080 * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c` returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned but "endpoint-a" is not * `name=projects/my-project/locations/us-central1/namespaces/my-namespace/services/my-service/endpoints/ep-1` returns the endpoint that has an endpoint_id equal to `ep-1` * `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any endpoint, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
-  endpointFilter?: string;
-}
-
-export const ResolveServiceRequest: Schema.Schema<ResolveServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maxEndpoints: Schema.optional(Schema.Number),
-    endpointFilter: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResolveServiceRequest" });
-
-export interface ListServicesResponse {
-  /** The list of services. */
-  services?: ReadonlyArray<Service>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    services: Schema.optional(Schema.Array(Service)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListServicesResponse" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
+export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
@@ -261,30 +228,63 @@ export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
+export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface ListEndpointsResponse {
+  /** The list of endpoints. */
+  endpoints?: ReadonlyArray<Endpoint>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+}
+
+export const ListEndpointsResponse: Schema.Codec<ListEndpointsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(Schema.Array(Endpoint)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEndpointsResponse" });
+
+export interface ResolveServiceRequest {
+  /** Optional. The filter applied to the endpoints of the resolved service. General `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns endpoints that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address * `port>8080` returns endpoints that have port number larger than 8080 * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c` returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned but "endpoint-a" is not * `name=projects/my-project/locations/us-central1/namespaces/my-namespace/services/my-service/endpoints/ep-1` returns the endpoint that has an endpoint_id equal to `ep-1` * `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any endpoint, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
+  endpointFilter?: string;
+  /** Optional. The maximum number of endpoints to return. Defaults to 25. Maximum is 100. If a value less than one is specified, the Default is used. If a value greater than the Maximum is specified, the Maximum is used. */
+  maxEndpoints?: number;
+}
+
+export const ResolveServiceRequest: Schema.Codec<ResolveServiceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointFilter: Schema.optional(Schema.String),
+    maxEndpoints: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ResolveServiceRequest" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+}
+
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: ReadonlyArray<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 // ==========================================================================
 // Errors
@@ -340,55 +340,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListProjectsLocationsRequest {
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** The resource that owns the locations collection, if applicable. */
-  name: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extraLocationTypes"),
-    ),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
-
-export type ListProjectsLocationsResponse = ListLocationsResponse;
-export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
-
-export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
-export const listProjectsLocations: API.PaginatedOperationMethod<
-  ListProjectsLocationsRequest,
-  ListProjectsLocationsResponse,
-  ListProjectsLocationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListProjectsLocationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
@@ -400,7 +351,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -420,125 +371,129 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsNamespacesRequest {
-  /** Required. The resource name of the project and location the namespace will be created in. */
-  parent: string;
-  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
-  namespaceId?: string;
-  /** Request body */
-  body?: Namespace;
+export interface ListProjectsLocationsRequest {
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** The resource that owns the locations collection, if applicable. */
+  name: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 
-export const CreateProjectsLocationsNamespacesRequest =
+export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    namespaceId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("namespaceId"),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("extraLocationTypes"),
     ),
-    body: Schema.optional(Namespace).pipe(T.HttpBody()),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/namespaces", hasBody: true }),
+    T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
-export type CreateProjectsLocationsNamespacesResponse = Namespace;
-export const CreateProjectsLocationsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Namespace;
+export type ListProjectsLocationsResponse = ListLocationsResponse;
+export const ListProjectsLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type CreateProjectsLocationsNamespacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Creates a namespace, and returns the new namespace. */
-export const createProjectsLocationsNamespaces: API.OperationMethod<
-  CreateProjectsLocationsNamespacesRequest,
-  CreateProjectsLocationsNamespacesResponse,
-  CreateProjectsLocationsNamespacesError,
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+export const listProjectsLocations: API.PaginatedOperationMethod<
+  ListProjectsLocationsRequest,
+  ListProjectsLocationsResponse,
+  ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNamespacesRequest,
-  output: CreateProjectsLocationsNamespacesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsRequest,
+  output: ListProjectsLocationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface PatchProjectsLocationsNamespacesRequest {
-  /** Immutable. The resource name for the namespace in the format `projects/* /locations/* /namespaces/*`. */
+export interface GetProjectsLocationsNamespacesRequest {
+  /** Required. The name of the namespace to retrieve. */
   name: string;
-  /** Required. List of fields to be updated in this request. */
-  updateMask?: string;
+}
+
+export const GetProjectsLocationsNamespacesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsNamespacesRequest>;
+
+export type GetProjectsLocationsNamespacesResponse = Namespace;
+export const GetProjectsLocationsNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Namespace;
+
+export type GetProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a namespace. */
+export const getProjectsLocationsNamespaces: API.OperationMethod<
+  GetProjectsLocationsNamespacesRequest,
+  GetProjectsLocationsNamespacesResponse,
+  GetProjectsLocationsNamespacesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNamespacesRequest,
+  output: GetProjectsLocationsNamespacesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetIamPolicyProjectsLocationsNamespacesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
   /** Request body */
-  body?: Namespace;
+  body?: GetIamPolicyRequest;
 }
 
-export const PatchProjectsLocationsNamespacesRequest =
+export const GetIamPolicyProjectsLocationsNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Namespace).pipe(T.HttpBody()),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsNamespacesRequest>;
 
-export type PatchProjectsLocationsNamespacesResponse = Namespace;
-export const PatchProjectsLocationsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Namespace;
+export type GetIamPolicyProjectsLocationsNamespacesResponse = Policy;
+export const GetIamPolicyProjectsLocationsNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type PatchProjectsLocationsNamespacesError =
+export type GetIamPolicyProjectsLocationsNamespacesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a namespace. */
-export const patchProjectsLocationsNamespaces: API.OperationMethod<
-  PatchProjectsLocationsNamespacesRequest,
-  PatchProjectsLocationsNamespacesResponse,
-  PatchProjectsLocationsNamespacesError,
+/** Gets the IAM Policy for a resource (namespace or service only). */
+export const getIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
+  GetIamPolicyProjectsLocationsNamespacesRequest,
+  GetIamPolicyProjectsLocationsNamespacesResponse,
+  GetIamPolicyProjectsLocationsNamespacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNamespacesRequest,
-  output: PatchProjectsLocationsNamespacesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsNamespacesRequest {
-  /** Required. The name of the namespace to delete. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNamespacesRequest>;
-
-export type DeleteProjectsLocationsNamespacesResponse = Empty;
-export const DeleteProjectsLocationsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsNamespacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a namespace. This also deletes all services and endpoints in the namespace. */
-export const deleteProjectsLocationsNamespaces: API.OperationMethod<
-  DeleteProjectsLocationsNamespacesRequest,
-  DeleteProjectsLocationsNamespacesResponse,
-  DeleteProjectsLocationsNamespacesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsNamespacesRequest,
-  output: DeleteProjectsLocationsNamespacesResponse,
+  input: GetIamPolicyProjectsLocationsNamespacesRequest,
+  output: GetIamPolicyProjectsLocationsNamespacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -560,7 +515,7 @@ export const TestIamPermissionsProjectsLocationsNamespacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsNamespacesRequest>;
 
 export type TestIamPermissionsProjectsLocationsNamespacesResponse =
   TestIamPermissionsResponse;
@@ -587,29 +542,29 @@ export const testIamPermissionsProjectsLocationsNamespaces: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsNamespacesRequest {
-  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
-  orderBy?: string;
   /** Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be `name` or `labels.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `labels.owner` returns namespaces that have a label with the key `owner`, this is the same as `labels:owner` * `labels.owner=sd` returns namespaces that have key/value `owner=sd` * `name>projects/my-project/locations/us-east1/namespaces/namespace-c` returns namespaces that have name that is alphabetically later than the string, so "namespace-e" is returned but "namespace-a" is not * `labels.owner!=sd AND labels.foo=bar` returns namespaces that have `owner` in label key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that namespace doesn't have a field called "doesnotexist". Since the filter does not match any namespaces, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
   filter?: string;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
   /** Required. The resource name of the project and location whose namespaces you'd like to list. */
   parent: string;
   /** Optional. The maximum number of items to return. */
   pageSize?: number;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
+  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
+  orderBy?: string;
 }
 
 export const ListProjectsLocationsNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/namespaces" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsNamespacesRequest>;
 
 export type ListProjectsLocationsNamespacesResponse = ListNamespacesResponse;
 export const ListProjectsLocationsNamespacesResponse =
@@ -636,81 +591,90 @@ export const listProjectsLocationsNamespaces: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetIamPolicyProjectsLocationsNamespacesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
+export interface CreateProjectsLocationsNamespacesRequest {
+  /** Required. The resource name of the project and location the namespace will be created in. */
+  parent: string;
+  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
+  namespaceId?: string;
   /** Request body */
-  body?: GetIamPolicyRequest;
+  body?: Namespace;
 }
 
-export const GetIamPolicyProjectsLocationsNamespacesRequest =
+export const CreateProjectsLocationsNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    namespaceId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("namespaceId"),
+    ),
+    body: Schema.optional(Namespace).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{+parent}/namespaces", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNamespacesRequest>;
 
-export type GetIamPolicyProjectsLocationsNamespacesResponse = Policy;
-export const GetIamPolicyProjectsLocationsNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type CreateProjectsLocationsNamespacesResponse = Namespace;
+export const CreateProjectsLocationsNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Namespace;
 
-export type GetIamPolicyProjectsLocationsNamespacesError =
+export type CreateProjectsLocationsNamespacesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the IAM Policy for a resource (namespace or service only). */
-export const getIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
-  GetIamPolicyProjectsLocationsNamespacesRequest,
-  GetIamPolicyProjectsLocationsNamespacesResponse,
-  GetIamPolicyProjectsLocationsNamespacesError,
+/** Creates a namespace, and returns the new namespace. */
+export const createProjectsLocationsNamespaces: API.OperationMethod<
+  CreateProjectsLocationsNamespacesRequest,
+  CreateProjectsLocationsNamespacesResponse,
+  CreateProjectsLocationsNamespacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsNamespacesRequest,
-  output: GetIamPolicyProjectsLocationsNamespacesResponse,
+  input: CreateProjectsLocationsNamespacesRequest,
+  output: CreateProjectsLocationsNamespacesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsNamespacesRequest {
-  /** Required. The name of the namespace to retrieve. */
+export interface PatchProjectsLocationsNamespacesRequest {
+  /** Required. List of fields to be updated in this request. */
+  updateMask?: string;
+  /** Immutable. The resource name for the namespace in the format `projects/* /locations/* /namespaces/*`. */
   name: string;
+  /** Request body */
+  body?: Namespace;
 }
 
-export const GetProjectsLocationsNamespacesRequest =
+export const PatchProjectsLocationsNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Namespace).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsNamespacesRequest>;
 
-export type GetProjectsLocationsNamespacesResponse = Namespace;
-export const GetProjectsLocationsNamespacesResponse =
+export type PatchProjectsLocationsNamespacesResponse = Namespace;
+export const PatchProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Namespace;
 
-export type GetProjectsLocationsNamespacesError =
+export type PatchProjectsLocationsNamespacesError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets a namespace. */
-export const getProjectsLocationsNamespaces: API.OperationMethod<
-  GetProjectsLocationsNamespacesRequest,
-  GetProjectsLocationsNamespacesResponse,
-  GetProjectsLocationsNamespacesError,
+/** Updates a namespace. */
+export const patchProjectsLocationsNamespaces: API.OperationMethod<
+  PatchProjectsLocationsNamespacesRequest,
+  PatchProjectsLocationsNamespacesResponse,
+  PatchProjectsLocationsNamespacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNamespacesRequest,
-  output: GetProjectsLocationsNamespacesResponse,
-  errors: [NotFound, Forbidden],
+  input: PatchProjectsLocationsNamespacesRequest,
+  output: PatchProjectsLocationsNamespacesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsNamespacesRequest {
@@ -731,7 +695,7 @@ export const SetIamPolicyProjectsLocationsNamespacesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsNamespacesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsNamespacesRequest>;
 
 export type SetIamPolicyProjectsLocationsNamespacesResponse = Policy;
 export const SetIamPolicyProjectsLocationsNamespacesResponse =
@@ -756,73 +720,195 @@ export const setIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsLocationsNamespacesServicesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: GetIamPolicyRequest;
+export interface DeleteProjectsLocationsNamespacesRequest {
+  /** Required. The name of the namespace to delete. */
+  name: string;
 }
 
-export const GetIamPolicyProjectsLocationsNamespacesServicesRequest =
+export const DeleteProjectsLocationsNamespacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:getIamPolicy",
-      hasBody: true,
-    }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsNamespacesServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsNamespacesRequest>;
 
-export type GetIamPolicyProjectsLocationsNamespacesServicesResponse = Policy;
-export const GetIamPolicyProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type DeleteProjectsLocationsNamespacesResponse = Empty;
+export const DeleteProjectsLocationsNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type GetIamPolicyProjectsLocationsNamespacesServicesError =
+export type DeleteProjectsLocationsNamespacesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Gets the IAM Policy for a resource (namespace or service only). */
-export const getIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
-  GetIamPolicyProjectsLocationsNamespacesServicesRequest,
-  GetIamPolicyProjectsLocationsNamespacesServicesResponse,
-  GetIamPolicyProjectsLocationsNamespacesServicesError,
+/** Deletes a namespace. This also deletes all services and endpoints in the namespace. */
+export const deleteProjectsLocationsNamespaces: API.OperationMethod<
+  DeleteProjectsLocationsNamespacesRequest,
+  DeleteProjectsLocationsNamespacesResponse,
+  DeleteProjectsLocationsNamespacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsNamespacesServicesRequest,
-  output: GetIamPolicyProjectsLocationsNamespacesServicesResponse,
+  input: DeleteProjectsLocationsNamespacesRequest,
+  output: DeleteProjectsLocationsNamespacesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsNamespacesServicesRequest {
+  /** Required. The resource name of the namespace this service will belong to. */
+  parent: string;
+  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
+  serviceId?: string;
+  /** Request body */
+  body?: Service;
+}
+
+export const CreateProjectsLocationsNamespacesServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    serviceId: Schema.optional(Schema.String).pipe(T.HttpQuery("serviceId")),
+    body: Schema.optional(Service).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1/{+parent}/services", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNamespacesServicesRequest>;
+
+export type CreateProjectsLocationsNamespacesServicesResponse = Service;
+export const CreateProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Service;
+
+export type CreateProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a service, and returns the new service. */
+export const createProjectsLocationsNamespacesServices: API.OperationMethod<
+  CreateProjectsLocationsNamespacesServicesRequest,
+  CreateProjectsLocationsNamespacesServicesResponse,
+  CreateProjectsLocationsNamespacesServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsNamespacesServicesRequest,
+  output: CreateProjectsLocationsNamespacesServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsLocationsNamespacesServicesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsNamespacesServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsNamespacesServicesRequest>;
+
+export type SetIamPolicyProjectsLocationsNamespacesServicesResponse = Policy;
+export const SetIamPolicyProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the IAM Policy for a resource (namespace or service only). */
+export const setIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
+  SetIamPolicyProjectsLocationsNamespacesServicesRequest,
+  SetIamPolicyProjectsLocationsNamespacesServicesResponse,
+  SetIamPolicyProjectsLocationsNamespacesServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsNamespacesServicesRequest,
+  output: SetIamPolicyProjectsLocationsNamespacesServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsNamespacesServicesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsNamespacesServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsNamespacesServicesRequest>;
+
+export type TestIamPermissionsProjectsLocationsNamespacesServicesResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Tests IAM permissions for a resource (namespace or service only). */
+export const testIamPermissionsProjectsLocationsNamespacesServices: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsNamespacesServicesRequest,
+  TestIamPermissionsProjectsLocationsNamespacesServicesResponse,
+  TestIamPermissionsProjectsLocationsNamespacesServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsNamespacesServicesRequest,
+  output: TestIamPermissionsProjectsLocationsNamespacesServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNamespacesServicesRequest {
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
-  orderBy?: string;
   /** Required. The resource name of the namespace whose services you'd like to list. */
   parent: string;
+  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
+  orderBy?: string;
   /** Optional. The maximum number of items to return. */
   pageSize?: number;
   /** Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be `name` or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns services that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns services that have key/value `protocol=gRPC` * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/service-c` returns services that have name that is alphabetically later than the string, so "service-e" is returned but "service-a" is not * `annotations.owner!=sd AND annotations.foo=bar` returns services that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that service doesn't have a field called "doesnotexist". Since the filter does not match any services, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
   filter?: string;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsNamespacesServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/services" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNamespacesServicesRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsNamespacesServicesRequest>;
 
 export type ListProjectsLocationsNamespacesServicesResponse =
   ListServicesResponse;
@@ -850,169 +936,6 @@ export const listProjectsLocationsNamespacesServices: API.PaginatedOperationMeth
   },
 }));
 
-export interface PatchProjectsLocationsNamespacesServicesRequest {
-  /** Required. List of fields to be updated in this request. */
-  updateMask?: string;
-  /** Immutable. The resource name for the service in the format `projects/* /locations/* /namespaces/* /services/*`. */
-  name: string;
-  /** Request body */
-  body?: Service;
-}
-
-export const PatchProjectsLocationsNamespacesServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Service).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsNamespacesServicesRequest>;
-
-export type PatchProjectsLocationsNamespacesServicesResponse = Service;
-export const PatchProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Service;
-
-export type PatchProjectsLocationsNamespacesServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a service. */
-export const patchProjectsLocationsNamespacesServices: API.OperationMethod<
-  PatchProjectsLocationsNamespacesServicesRequest,
-  PatchProjectsLocationsNamespacesServicesResponse,
-  PatchProjectsLocationsNamespacesServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNamespacesServicesRequest,
-  output: PatchProjectsLocationsNamespacesServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsNamespacesServicesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsNamespacesServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsNamespacesServicesRequest>;
-
-export type TestIamPermissionsProjectsLocationsNamespacesServicesResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsNamespacesServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Tests IAM permissions for a resource (namespace or service only). */
-export const testIamPermissionsProjectsLocationsNamespacesServices: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsNamespacesServicesRequest,
-  TestIamPermissionsProjectsLocationsNamespacesServicesResponse,
-  TestIamPermissionsProjectsLocationsNamespacesServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsNamespacesServicesRequest,
-  output: TestIamPermissionsProjectsLocationsNamespacesServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsNamespacesServicesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsNamespacesServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsNamespacesServicesRequest>;
-
-export type SetIamPolicyProjectsLocationsNamespacesServicesResponse = Policy;
-export const SetIamPolicyProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsNamespacesServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the IAM Policy for a resource (namespace or service only). */
-export const setIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
-  SetIamPolicyProjectsLocationsNamespacesServicesRequest,
-  SetIamPolicyProjectsLocationsNamespacesServicesResponse,
-  SetIamPolicyProjectsLocationsNamespacesServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsNamespacesServicesRequest,
-  output: SetIamPolicyProjectsLocationsNamespacesServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsNamespacesServicesRequest {
-  /** Required. The name of the service to get. */
-  name: string;
-}
-
-export const GetProjectsLocationsNamespacesServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNamespacesServicesRequest>;
-
-export type GetProjectsLocationsNamespacesServicesResponse = Service;
-export const GetProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Service;
-
-export type GetProjectsLocationsNamespacesServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets a service. */
-export const getProjectsLocationsNamespacesServices: API.OperationMethod<
-  GetProjectsLocationsNamespacesServicesRequest,
-  GetProjectsLocationsNamespacesServicesResponse,
-  GetProjectsLocationsNamespacesServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNamespacesServicesRequest,
-  output: GetProjectsLocationsNamespacesServicesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface ResolveProjectsLocationsNamespacesServicesRequest {
   /** Required. The name of the service to resolve. */
   name: string;
@@ -1027,7 +950,7 @@ export const ResolveProjectsLocationsNamespacesServicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:resolve", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<ResolveProjectsLocationsNamespacesServicesRequest>;
+  ) as unknown as Schema.Codec<ResolveProjectsLocationsNamespacesServicesRequest>;
 
 export type ResolveProjectsLocationsNamespacesServicesResponse =
   ResolveServiceResponse;
@@ -1053,48 +976,6 @@ export const resolveProjectsLocationsNamespacesServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsLocationsNamespacesServicesRequest {
-  /** Required. The resource name of the namespace this service will belong to. */
-  parent: string;
-  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
-  serviceId?: string;
-  /** Request body */
-  body?: Service;
-}
-
-export const CreateProjectsLocationsNamespacesServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    serviceId: Schema.optional(Schema.String).pipe(T.HttpQuery("serviceId")),
-    body: Schema.optional(Service).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/services", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNamespacesServicesRequest>;
-
-export type CreateProjectsLocationsNamespacesServicesResponse = Service;
-export const CreateProjectsLocationsNamespacesServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Service;
-
-export type CreateProjectsLocationsNamespacesServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a service, and returns the new service. */
-export const createProjectsLocationsNamespacesServices: API.OperationMethod<
-  CreateProjectsLocationsNamespacesServicesRequest,
-  CreateProjectsLocationsNamespacesServicesResponse,
-  CreateProjectsLocationsNamespacesServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNamespacesServicesRequest,
-  output: CreateProjectsLocationsNamespacesServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface DeleteProjectsLocationsNamespacesServicesRequest {
   /** Required. The name of the service to delete. */
   name: string;
@@ -1106,7 +987,7 @@ export const DeleteProjectsLocationsNamespacesServicesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNamespacesServicesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsNamespacesServicesRequest>;
 
 export type DeleteProjectsLocationsNamespacesServicesResponse = Empty;
 export const DeleteProjectsLocationsNamespacesServicesResponse =
@@ -1131,89 +1012,122 @@ export const deleteProjectsLocationsNamespacesServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsLocationsNamespacesServicesEndpointsRequest {
-  /** Required. The resource name of the service that this endpoint provides. */
-  parent: string;
-  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
-  endpointId?: string;
-  /** Request body */
-  body?: Endpoint;
-}
-
-export const CreateProjectsLocationsNamespacesServicesEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    endpointId: Schema.optional(Schema.String).pipe(T.HttpQuery("endpointId")),
-    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1/{+parent}/endpoints", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsNamespacesServicesEndpointsRequest>;
-
-export type CreateProjectsLocationsNamespacesServicesEndpointsResponse =
-  Endpoint;
-export const CreateProjectsLocationsNamespacesServicesEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
-
-export type CreateProjectsLocationsNamespacesServicesEndpointsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates an endpoint, and returns the new endpoint. */
-export const createProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
-  CreateProjectsLocationsNamespacesServicesEndpointsRequest,
-  CreateProjectsLocationsNamespacesServicesEndpointsResponse,
-  CreateProjectsLocationsNamespacesServicesEndpointsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNamespacesServicesEndpointsRequest,
-  output: CreateProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsNamespacesServicesEndpointsRequest {
+export interface PatchProjectsLocationsNamespacesServicesRequest {
   /** Required. List of fields to be updated in this request. */
   updateMask?: string;
-  /** Immutable. The resource name for the endpoint in the format `projects/* /locations/* /namespaces/* /services/* /endpoints/*`. */
+  /** Immutable. The resource name for the service in the format `projects/* /locations/* /namespaces/* /services/*`. */
   name: string;
   /** Request body */
-  body?: Endpoint;
+  body?: Service;
 }
 
-export const PatchProjectsLocationsNamespacesServicesEndpointsRequest =
+export const PatchProjectsLocationsNamespacesServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
+    body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsNamespacesServicesEndpointsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsNamespacesServicesRequest>;
 
-export type PatchProjectsLocationsNamespacesServicesEndpointsResponse =
-  Endpoint;
-export const PatchProjectsLocationsNamespacesServicesEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
+export type PatchProjectsLocationsNamespacesServicesResponse = Service;
+export const PatchProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type PatchProjectsLocationsNamespacesServicesEndpointsError =
+export type PatchProjectsLocationsNamespacesServicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates an endpoint. */
-export const patchProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
-  PatchProjectsLocationsNamespacesServicesEndpointsRequest,
-  PatchProjectsLocationsNamespacesServicesEndpointsResponse,
-  PatchProjectsLocationsNamespacesServicesEndpointsError,
+/** Updates a service. */
+export const patchProjectsLocationsNamespacesServices: API.OperationMethod<
+  PatchProjectsLocationsNamespacesServicesRequest,
+  PatchProjectsLocationsNamespacesServicesResponse,
+  PatchProjectsLocationsNamespacesServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNamespacesServicesEndpointsRequest,
-  output: PatchProjectsLocationsNamespacesServicesEndpointsResponse,
+  input: PatchProjectsLocationsNamespacesServicesRequest,
+  output: PatchProjectsLocationsNamespacesServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsNamespacesServicesRequest {
+  /** Required. The name of the service to get. */
+  name: string;
+}
+
+export const GetProjectsLocationsNamespacesServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsNamespacesServicesRequest>;
+
+export type GetProjectsLocationsNamespacesServicesResponse = Service;
+export const GetProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Service;
+
+export type GetProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets a service. */
+export const getProjectsLocationsNamespacesServices: API.OperationMethod<
+  GetProjectsLocationsNamespacesServicesRequest,
+  GetProjectsLocationsNamespacesServicesResponse,
+  GetProjectsLocationsNamespacesServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNamespacesServicesRequest,
+  output: GetProjectsLocationsNamespacesServicesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetIamPolicyProjectsLocationsNamespacesServicesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: GetIamPolicyRequest;
+}
+
+export const GetIamPolicyProjectsLocationsNamespacesServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+resource}:getIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsNamespacesServicesRequest>;
+
+export type GetIamPolicyProjectsLocationsNamespacesServicesResponse = Policy;
+export const GetIamPolicyProjectsLocationsNamespacesServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Gets the IAM Policy for a resource (namespace or service only). */
+export const getIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
+  GetIamPolicyProjectsLocationsNamespacesServicesRequest,
+  GetIamPolicyProjectsLocationsNamespacesServicesResponse,
+  GetIamPolicyProjectsLocationsNamespacesServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsNamespacesServicesRequest,
+  output: GetIamPolicyProjectsLocationsNamespacesServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -1228,7 +1142,7 @@ export const DeleteProjectsLocationsNamespacesServicesEndpointsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsNamespacesServicesEndpointsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsNamespacesServicesEndpointsRequest>;
 
 export type DeleteProjectsLocationsNamespacesServicesEndpointsResponse = Empty;
 export const DeleteProjectsLocationsNamespacesServicesEndpointsResponse =
@@ -1253,30 +1167,64 @@ export const deleteProjectsLocationsNamespacesServicesEndpoints: API.OperationMe
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsLocationsNamespacesServicesEndpointsRequest {
+  /** Required. The name of the endpoint to get. */
+  name: string;
+}
+
+export const GetProjectsLocationsNamespacesServicesEndpointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsNamespacesServicesEndpointsRequest>;
+
+export type GetProjectsLocationsNamespacesServicesEndpointsResponse = Endpoint;
+export const GetProjectsLocationsNamespacesServicesEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
+
+export type GetProjectsLocationsNamespacesServicesEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets an endpoint. */
+export const getProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
+  GetProjectsLocationsNamespacesServicesEndpointsRequest,
+  GetProjectsLocationsNamespacesServicesEndpointsResponse,
+  GetProjectsLocationsNamespacesServicesEndpointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsNamespacesServicesEndpointsRequest,
+  output: GetProjectsLocationsNamespacesServicesEndpointsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsNamespacesServicesEndpointsRequest {
-  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows values: `name`, `address`, `port` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
-  orderBy?: string;
-  /** Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns endpoints that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address * `port>8080` returns endpoints that have port number larger than 8080 * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c` returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned but "endpoint-a" is not * `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any endpoints, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
-  filter?: string;
-  /** Required. The resource name of the service whose endpoints you'd like to list. */
-  parent: string;
-  /** Optional. The maximum number of items to return. */
-  pageSize?: number;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
+  /** Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns endpoints that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address * `port>8080` returns endpoints that have port number larger than 8080 * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c` returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned but "endpoint-a" is not * `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any endpoints, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
+  filter?: string;
+  /** Optional. The maximum number of items to return. */
+  pageSize?: number;
+  /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows values: `name`, `address`, `port` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
+  orderBy?: string;
+  /** Required. The resource name of the service whose endpoints you'd like to list. */
+  parent: string;
 }
 
 export const ListProjectsLocationsNamespacesServicesEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/endpoints" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsNamespacesServicesEndpointsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsNamespacesServicesEndpointsRequest>;
 
 export type ListProjectsLocationsNamespacesServicesEndpointsResponse =
   ListEndpointsResponse;
@@ -1304,36 +1252,88 @@ export const listProjectsLocationsNamespacesServicesEndpoints: API.PaginatedOper
   },
 }));
 
-export interface GetProjectsLocationsNamespacesServicesEndpointsRequest {
-  /** Required. The name of the endpoint to get. */
-  name: string;
+export interface CreateProjectsLocationsNamespacesServicesEndpointsRequest {
+  /** Required. The resource name of the service that this endpoint provides. */
+  parent: string;
+  /** Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
+  endpointId?: string;
+  /** Request body */
+  body?: Endpoint;
 }
 
-export const GetProjectsLocationsNamespacesServicesEndpointsRequest =
+export const CreateProjectsLocationsNamespacesServicesEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    endpointId: Schema.optional(Schema.String).pipe(T.HttpQuery("endpointId")),
+    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({ method: "POST", path: "v1/{+parent}/endpoints", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsNamespacesServicesEndpointsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsNamespacesServicesEndpointsRequest>;
 
-export type GetProjectsLocationsNamespacesServicesEndpointsResponse = Endpoint;
-export const GetProjectsLocationsNamespacesServicesEndpointsResponse =
+export type CreateProjectsLocationsNamespacesServicesEndpointsResponse =
+  Endpoint;
+export const CreateProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
-export type GetProjectsLocationsNamespacesServicesEndpointsError =
+export type CreateProjectsLocationsNamespacesServicesEndpointsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets an endpoint. */
-export const getProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
-  GetProjectsLocationsNamespacesServicesEndpointsRequest,
-  GetProjectsLocationsNamespacesServicesEndpointsResponse,
-  GetProjectsLocationsNamespacesServicesEndpointsError,
+/** Creates an endpoint, and returns the new endpoint. */
+export const createProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
+  CreateProjectsLocationsNamespacesServicesEndpointsRequest,
+  CreateProjectsLocationsNamespacesServicesEndpointsResponse,
+  CreateProjectsLocationsNamespacesServicesEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNamespacesServicesEndpointsRequest,
-  output: GetProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [NotFound, Forbidden],
+  input: CreateProjectsLocationsNamespacesServicesEndpointsRequest,
+  output: CreateProjectsLocationsNamespacesServicesEndpointsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsNamespacesServicesEndpointsRequest {
+  /** Immutable. The resource name for the endpoint in the format `projects/* /locations/* /namespaces/* /services/* /endpoints/*`. */
+  name: string;
+  /** Required. List of fields to be updated in this request. */
+  updateMask?: string;
+  /** Request body */
+  body?: Endpoint;
+}
+
+export const PatchProjectsLocationsNamespacesServicesEndpointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Endpoint).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsNamespacesServicesEndpointsRequest>;
+
+export type PatchProjectsLocationsNamespacesServicesEndpointsResponse =
+  Endpoint;
+export const PatchProjectsLocationsNamespacesServicesEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Endpoint;
+
+export type PatchProjectsLocationsNamespacesServicesEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an endpoint. */
+export const patchProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
+  PatchProjectsLocationsNamespacesServicesEndpointsRequest,
+  PatchProjectsLocationsNamespacesServicesEndpointsResponse,
+  PatchProjectsLocationsNamespacesServicesEndpointsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsNamespacesServicesEndpointsRequest,
+  output: PatchProjectsLocationsNamespacesServicesEndpointsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

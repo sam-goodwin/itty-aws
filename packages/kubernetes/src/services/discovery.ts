@@ -4,12 +4,78 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateDiscoveryV1NamespacedEndpointSliceInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const CreateDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -128,11 +194,70 @@ export const CreateDiscoveryV1NamespacedEndpointSliceInput =
       method: "POST",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
     }),
-  );
-export type CreateDiscoveryV1NamespacedEndpointSliceInput =
-  typeof CreateDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<CreateDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface CreateDiscoveryV1NamespacedEndpointSliceOutput {
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const CreateDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addressType: Schema.String,
@@ -241,9 +366,7 @@ export const CreateDiscoveryV1NamespacedEndpointSliceOutput =
         }),
       ),
     ),
-  });
-export type CreateDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof CreateDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<CreateDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -262,6 +385,27 @@ export const createDiscoveryV1NamespacedEndpointSlice =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -295,11 +439,32 @@ export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
       method: "DELETE",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
     }),
-  );
-export type DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput =
-  typeof DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteDiscoveryV1CollectionNamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -339,9 +504,7 @@ export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
-  typeof DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -411,6 +574,19 @@ export const deleteDiscoveryV1CollectionNamespacedEndpointSlice =
     outputSchema: DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput,
   }));
 // Input Schema
+export interface DeleteDiscoveryV1NamespacedEndpointSliceInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -436,11 +612,32 @@ export const DeleteDiscoveryV1NamespacedEndpointSliceInput =
       method: "DELETE",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
     }),
-  );
-export type DeleteDiscoveryV1NamespacedEndpointSliceInput =
-  typeof DeleteDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<DeleteDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface DeleteDiscoveryV1NamespacedEndpointSliceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -480,9 +677,7 @@ export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof DeleteDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -504,13 +699,21 @@ export const deleteDiscoveryV1NamespacedEndpointSlice =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetDiscoveryAPIGroupInput {}
 export const GetDiscoveryAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/discovery.k8s.io/" }),
-  );
-export type GetDiscoveryAPIGroupInput = typeof GetDiscoveryAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetDiscoveryAPIGroupInput>;
 
 // Output Schema
+export interface GetDiscoveryAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetDiscoveryAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -536,8 +739,7 @@ export const GetDiscoveryAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetDiscoveryAPIGroupOutput = typeof GetDiscoveryAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetDiscoveryAPIGroupOutput>;
 
 // The operation
 /**
@@ -550,14 +752,30 @@ export const getDiscoveryAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetDiscoveryV1APIResourcesInput {}
 export const GetDiscoveryV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/discovery.k8s.io/v1/" }),
-  );
-export type GetDiscoveryV1APIResourcesInput =
-  typeof GetDiscoveryV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetDiscoveryV1APIResourcesInput>;
 
 // Output Schema
+export interface GetDiscoveryV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetDiscoveryV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -577,9 +795,7 @@ export const GetDiscoveryV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetDiscoveryV1APIResourcesOutput =
-  typeof GetDiscoveryV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetDiscoveryV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -592,6 +808,20 @@ export const getDiscoveryV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ListDiscoveryV1EndpointSliceForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListDiscoveryV1EndpointSliceForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -608,11 +838,85 @@ export const ListDiscoveryV1EndpointSliceForAllNamespacesInput =
     watch: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "GET", path: "/apis/discovery.k8s.io/v1/endpointslices" }),
-  );
-export type ListDiscoveryV1EndpointSliceForAllNamespacesInput =
-  typeof ListDiscoveryV1EndpointSliceForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListDiscoveryV1EndpointSliceForAllNamespacesInput>;
 
 // Output Schema
+export interface ListDiscoveryV1EndpointSliceForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    addressType: string;
+    apiVersion?: string;
+    endpoints?: {
+      addresses: string[];
+      conditions?: {
+        ready?: boolean;
+        serving?: boolean;
+        terminating?: boolean;
+      };
+      deprecatedTopology?: Record<string, string>;
+      hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+      hostname?: string;
+      nodeName?: string;
+      targetRef?: {
+        apiVersion?: string;
+        fieldPath?: string;
+        kind?: string;
+        name?: string;
+        namespace?: string;
+        resourceVersion?: string;
+        uid?: string;
+      };
+      zone?: string;
+    }[];
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    ports?: {
+      appProtocol?: string;
+      name?: string;
+      port?: number;
+      protocol?: string;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -742,9 +1046,7 @@ export const ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
-  typeof ListDiscoveryV1EndpointSliceForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListDiscoveryV1EndpointSliceForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -810,6 +1112,21 @@ export const listDiscoveryV1EndpointSliceForAllNamespaces =
     outputSchema: ListDiscoveryV1EndpointSliceForAllNamespacesOutput,
   }));
 // Input Schema
+export interface ListDiscoveryV1NamespacedEndpointSliceInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -830,11 +1147,85 @@ export const ListDiscoveryV1NamespacedEndpointSliceInput =
       method: "GET",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
     }),
-  );
-export type ListDiscoveryV1NamespacedEndpointSliceInput =
-  typeof ListDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<ListDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface ListDiscoveryV1NamespacedEndpointSliceOutput {
+  apiVersion?: string;
+  items: {
+    addressType: string;
+    apiVersion?: string;
+    endpoints?: {
+      addresses: string[];
+      conditions?: {
+        ready?: boolean;
+        serving?: boolean;
+        terminating?: boolean;
+      };
+      deprecatedTopology?: Record<string, string>;
+      hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+      hostname?: string;
+      nodeName?: string;
+      targetRef?: {
+        apiVersion?: string;
+        fieldPath?: string;
+        kind?: string;
+        name?: string;
+        namespace?: string;
+        resourceVersion?: string;
+        uid?: string;
+      };
+      zone?: string;
+    }[];
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    ports?: {
+      appProtocol?: string;
+      name?: string;
+      port?: number;
+      protocol?: string;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -964,9 +1355,7 @@ export const ListDiscoveryV1NamespacedEndpointSliceOutput =
         ),
       }),
     ),
-  });
-export type ListDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof ListDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<ListDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -1033,6 +1422,15 @@ export const listDiscoveryV1NamespacedEndpointSlice =
     outputSchema: ListDiscoveryV1NamespacedEndpointSliceOutput,
   }));
 // Input Schema
+export interface PatchDiscoveryV1NamespacedEndpointSliceInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1047,11 +1445,70 @@ export const PatchDiscoveryV1NamespacedEndpointSliceInput =
       method: "PATCH",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
     }),
-  );
-export type PatchDiscoveryV1NamespacedEndpointSliceInput =
-  typeof PatchDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<PatchDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface PatchDiscoveryV1NamespacedEndpointSliceOutput {
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const PatchDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addressType: Schema.String,
@@ -1160,9 +1617,7 @@ export const PatchDiscoveryV1NamespacedEndpointSliceOutput =
         }),
       ),
     ),
-  });
-export type PatchDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof PatchDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<PatchDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -1183,6 +1638,11 @@ export const patchDiscoveryV1NamespacedEndpointSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadDiscoveryV1NamespacedEndpointSliceInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
 export const ReadDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1193,11 +1653,70 @@ export const ReadDiscoveryV1NamespacedEndpointSliceInput =
       method: "GET",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
     }),
-  );
-export type ReadDiscoveryV1NamespacedEndpointSliceInput =
-  typeof ReadDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<ReadDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface ReadDiscoveryV1NamespacedEndpointSliceOutput {
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const ReadDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addressType: Schema.String,
@@ -1306,9 +1825,7 @@ export const ReadDiscoveryV1NamespacedEndpointSliceOutput =
         }),
       ),
     ),
-  });
-export type ReadDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof ReadDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReadDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -1325,6 +1842,73 @@ export const readDiscoveryV1NamespacedEndpointSlice =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceDiscoveryV1NamespacedEndpointSliceInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1444,11 +2028,70 @@ export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
       method: "PUT",
       path: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
     }),
-  );
-export type ReplaceDiscoveryV1NamespacedEndpointSliceInput =
-  typeof ReplaceDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<ReplaceDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface ReplaceDiscoveryV1NamespacedEndpointSliceOutput {
+  addressType: string;
+  apiVersion?: string;
+  endpoints?: {
+    addresses: string[];
+    conditions?: { ready?: boolean; serving?: boolean; terminating?: boolean };
+    deprecatedTopology?: Record<string, string>;
+    hints?: { forNodes?: { name: string }[]; forZones?: { name: string }[] };
+    hostname?: string;
+    nodeName?: string;
+    targetRef?: {
+      apiVersion?: string;
+      fieldPath?: string;
+      kind?: string;
+      name?: string;
+      namespace?: string;
+      resourceVersion?: string;
+      uid?: string;
+    };
+    zone?: string;
+  }[];
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  ports?: {
+    appProtocol?: string;
+    name?: string;
+    port?: number;
+    protocol?: string;
+  }[];
+}
 export const ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     addressType: Schema.String,
@@ -1557,9 +2200,7 @@ export const ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
         }),
       ),
     ),
-  });
-export type ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof ReplaceDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -1579,6 +2220,20 @@ export const replaceDiscoveryV1NamespacedEndpointSlice =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchDiscoveryV1EndpointSliceListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1598,18 +2253,18 @@ export const WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
       method: "GET",
       path: "/apis/discovery.k8s.io/v1/watch/endpointslices",
     }),
-  );
-export type WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
-  typeof WatchDiscoveryV1EndpointSliceListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchDiscoveryV1EndpointSliceListForAllNamespacesInput>;
 
 // Output Schema
+export interface WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput =
-  typeof WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -1675,6 +2330,22 @@ export const watchDiscoveryV1EndpointSliceListForAllNamespaces =
     outputSchema: WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput,
   }));
 // Input Schema
+export interface WatchDiscoveryV1NamespacedEndpointSliceInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1696,18 +2367,18 @@ export const WatchDiscoveryV1NamespacedEndpointSliceInput =
       method: "GET",
       path: "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}",
     }),
-  );
-export type WatchDiscoveryV1NamespacedEndpointSliceInput =
-  typeof WatchDiscoveryV1NamespacedEndpointSliceInput.Type;
+  ) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceInput>;
 
 // Output Schema
+export interface WatchDiscoveryV1NamespacedEndpointSliceOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchDiscoveryV1NamespacedEndpointSliceOutput =
-  typeof WatchDiscoveryV1NamespacedEndpointSliceOutput.Type;
+  }) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceOutput>;
 
 // The operation
 /**
@@ -1775,6 +2446,21 @@ export const watchDiscoveryV1NamespacedEndpointSlice =
     outputSchema: WatchDiscoveryV1NamespacedEndpointSliceOutput,
   }));
 // Input Schema
+export interface WatchDiscoveryV1NamespacedEndpointSliceListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchDiscoveryV1NamespacedEndpointSliceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1795,18 +2481,18 @@ export const WatchDiscoveryV1NamespacedEndpointSliceListInput =
       method: "GET",
       path: "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices",
     }),
-  );
-export type WatchDiscoveryV1NamespacedEndpointSliceListInput =
-  typeof WatchDiscoveryV1NamespacedEndpointSliceListInput.Type;
+  ) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceListInput>;
 
 // Output Schema
+export interface WatchDiscoveryV1NamespacedEndpointSliceListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchDiscoveryV1NamespacedEndpointSliceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchDiscoveryV1NamespacedEndpointSliceListOutput =
-  typeof WatchDiscoveryV1NamespacedEndpointSliceListOutput.Type;
+  }) as unknown as Schema.Codec<WatchDiscoveryV1NamespacedEndpointSliceListOutput>;
 
 // The operation
 /**

@@ -4,13 +4,41 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface VolumesListInput {
+  app_name: string;
+  summary?: boolean;
+}
 export const VolumesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   summary: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/volumes" }));
-export type VolumesListInput = typeof VolumesListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/apps/{app_name}/volumes" }),
+) as unknown as Schema.Codec<VolumesListInput>;
 
 // Output Schema
+export type VolumesListOutput = {
+  attached_alloc_id?: string;
+  attached_machine_id?: string;
+  auto_backup_enabled?: boolean;
+  block_size?: number;
+  blocks?: number;
+  blocks_avail?: number;
+  blocks_free?: number;
+  bytes_total?: number;
+  bytes_used?: number;
+  created_at?: string;
+  encrypted?: boolean;
+  fstype?: string;
+  host_status?: "ok" | "unknown" | "unreachable";
+  id?: string;
+  name?: string;
+  region?: string;
+  size_gb?: number;
+  snapshot_retention?: number;
+  state?: string;
+  type?: "local" | "cache";
+  zone?: string;
+}[];
 export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     attached_alloc_id: Schema.optional(Schema.String),
@@ -37,8 +65,7 @@ export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     type: Schema.optional(Schema.Literals(["local", "cache"])),
     zone: Schema.optional(Schema.String),
   }),
-);
-export type VolumesListOutput = typeof VolumesListOutput.Type;
+) as unknown as Schema.Codec<VolumesListOutput>;
 
 // The operation
 /**

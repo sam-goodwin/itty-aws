@@ -2,9 +2,34 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UpdateNotifierInput {
+  id: string;
+  createdAt?: string;
+  createdBy?: string;
+  disabledUntil?: string;
+  name: string;
+  properties: {
+    customWebhook?: {
+      body: string;
+      headers?: Record<string, string>;
+      secretHeaders?: Record<string, string>;
+      url: string;
+    };
+    discord?: { discordChannel?: string; discordToken?: string };
+    discordWebhook?: { discordWebhookUrl?: string };
+    email?: { emails?: ReadonlyArray<string> };
+    microsoftTeams?: { microsoftTeamsUrl?: string };
+    opsgenie?: { apiKey?: string | Redacted.Redacted<string>; isEU?: boolean };
+    pagerduty?: { routingKey?: string; token?: string };
+    slack?: { slackUrl?: string };
+    webhook?: { url?: string };
+  };
+  updatedAt?: string;
+}
 export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   createdAt: Schema.optional(Schema.String),
@@ -66,10 +91,36 @@ export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
-}).pipe(T.Http({ method: "PUT", path: "/v2/notifiers/{id}" }));
-export type UpdateNotifierInput = typeof UpdateNotifierInput.Type;
+  updatedAt: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/notifiers/{id}" }),
+) as unknown as Schema.Codec<UpdateNotifierInput>;
 
 // Output Schema
+export interface UpdateNotifierOutput {
+  createdAt?: string;
+  createdBy?: string;
+  disabledUntil?: string;
+  name: string;
+  properties: {
+    customWebhook?: {
+      body: string;
+      headers?: Record<string, string>;
+      secretHeaders?: Record<string, string>;
+      url: string;
+    };
+    discord?: { discordChannel?: string; discordToken?: string };
+    discordWebhook?: { discordWebhookUrl?: string };
+    email?: { emails?: ReadonlyArray<string> };
+    microsoftTeams?: { microsoftTeamsUrl?: string };
+    opsgenie?: { apiKey?: Redacted.Redacted<string>; isEU?: boolean };
+    pagerduty?: { routingKey?: string; token?: string };
+    slack?: { slackUrl?: string };
+    webhook?: { url?: string };
+  };
+  updatedAt?: string;
+  id?: string;
+}
 export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
@@ -109,7 +160,7 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
     opsgenie: Schema.optional(
       Schema.Struct({
-        apiKey: Schema.optional(SensitiveString),
+        apiKey: Schema.optional(SensitiveOutputString),
         isEU: Schema.optional(Schema.Boolean),
       }),
     ),
@@ -130,9 +181,9 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   }),
+  updatedAt: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
-});
-export type UpdateNotifierOutput = typeof UpdateNotifierOutput.Type;
+}) as unknown as Schema.Codec<UpdateNotifierOutput>;
 
 // The operation
 /**

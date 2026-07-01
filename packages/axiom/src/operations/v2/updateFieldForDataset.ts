@@ -4,6 +4,15 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateFieldForDatasetInput {
+  dataset_id: string;
+  field_id: string;
+  description?: string;
+  hidden?: boolean;
+  name: string;
+  type: string;
+  unit?: string;
+}
 export const UpdateFieldForDatasetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataset_id: Schema.String.pipe(T.PathParam()),
@@ -18,10 +27,16 @@ export const UpdateFieldForDatasetInput =
       method: "PUT",
       path: "/v2/datasets/{dataset_id}/fields/{field_id}",
     }),
-  );
-export type UpdateFieldForDatasetInput = typeof UpdateFieldForDatasetInput.Type;
+  ) as unknown as Schema.Codec<UpdateFieldForDatasetInput>;
 
 // Output Schema
+export interface UpdateFieldForDatasetOutput {
+  description?: string;
+  hidden?: boolean;
+  name: string;
+  type: string;
+  unit?: string;
+}
 export const UpdateFieldForDatasetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
@@ -29,9 +44,7 @@ export const UpdateFieldForDatasetOutput =
     name: Schema.String,
     type: Schema.String,
     unit: Schema.optional(Schema.String),
-  });
-export type UpdateFieldForDatasetOutput =
-  typeof UpdateFieldForDatasetOutput.Type;
+  }) as unknown as Schema.Codec<UpdateFieldForDatasetOutput>;
 
 // The operation
 export const updateFieldForDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(

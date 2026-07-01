@@ -4,23 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GenerateTypescriptTypesInput {
+  ref: string;
+  included_schemas?: string;
+}
 export const V1GenerateTypescriptTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     included_schemas: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/types/typescript" }),
-  );
-export type V1GenerateTypescriptTypesInput =
-  typeof V1GenerateTypescriptTypesInput.Type;
+  ) as unknown as Schema.Codec<V1GenerateTypescriptTypesInput>;
 
 // Output Schema
+export interface V1GenerateTypescriptTypesOutput {
+  types: string;
+}
 export const V1GenerateTypescriptTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     types: Schema.String,
-  });
-export type V1GenerateTypescriptTypesOutput =
-  typeof V1GenerateTypescriptTypesOutput.Type;
+  }) as unknown as Schema.Codec<V1GenerateTypescriptTypesOutput>;
 
 // The operation
 /**

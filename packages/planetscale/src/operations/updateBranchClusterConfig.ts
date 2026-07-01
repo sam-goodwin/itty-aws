@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateBranchClusterConfigInput {
+  organization: string;
+  database: string;
+  branch: string;
+  cluster_size: string;
+}
 export const UpdateBranchClusterConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const UpdateBranchClusterConfigInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/cluster",
     }),
-  );
-export type UpdateBranchClusterConfigInput =
-  typeof UpdateBranchClusterConfigInput.Type;
+  ) as unknown as Schema.Codec<UpdateBranchClusterConfigInput>;
 
 // Output Schema
+export type UpdateBranchClusterConfigOutput = void;
 export const UpdateBranchClusterConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateBranchClusterConfigOutput =
-  typeof UpdateBranchClusterConfigOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateBranchClusterConfigOutput>;
 
 // The operation
 /**

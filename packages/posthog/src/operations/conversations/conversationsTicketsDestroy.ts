@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsTicketsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ConversationsTicketsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,20 +17,17 @@ export const ConversationsTicketsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/conversations/tickets/{id}/",
     }),
-  );
-export type ConversationsTicketsDestroyInput =
-  typeof ConversationsTicketsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ConversationsTicketsDestroyInput>;
 
 // Output Schema
+export type ConversationsTicketsDestroyOutput = void;
 export const ConversationsTicketsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConversationsTicketsDestroyOutput =
-  typeof ConversationsTicketsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConversationsTicketsDestroyOutput>;
 
 // The operation
 /**
  *
- * @param id - A UUID string identifying this ticket.
+ * @param id - The ticket's UUID or its numeric ticket number.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsTicketsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(

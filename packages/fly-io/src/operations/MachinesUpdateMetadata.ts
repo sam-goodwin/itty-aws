@@ -1,9 +1,16 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../errors.ts";
+import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface MachinesUpdateMetadataInput {
+  app_name: string;
+  machine_id: string;
+  machine_version?: string;
+  metadata?: Record<string, string>;
+  updated_at?: string;
+}
 export const MachinesUpdateMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -13,18 +20,15 @@ export const MachinesUpdateMetadataInput =
     updated_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "PATCH",
       path: "/apps/{app_name}/machines/{machine_id}/metadata",
     }),
-  );
-export type MachinesUpdateMetadataInput =
-  typeof MachinesUpdateMetadataInput.Type;
+  ) as unknown as Schema.Codec<MachinesUpdateMetadataInput>;
 
 // Output Schema
+export type MachinesUpdateMetadataOutput = void;
 export const MachinesUpdateMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesUpdateMetadataOutput =
-  typeof MachinesUpdateMetadataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesUpdateMetadataOutput>;
 
 // The operation
 /**
@@ -40,6 +44,6 @@ export const MachinesUpdateMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: MachinesUpdateMetadataInput,
     outputSchema: MachinesUpdateMetadataOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
+    errors: [BadRequest] as const,
   }),
 );

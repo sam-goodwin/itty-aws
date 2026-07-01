@@ -1,7 +1,21 @@
 import { describe, expect } from "vitest";
 import * as Effect from "effect/Effect";
 import { test, getProjectId, testRunId } from "./test.ts";
-import * as Core from "~/operations/core";
+import * as Annotations from "~/operations/annotations";
+import * as Cohorts from "~/operations/cohorts";
+import * as Comments from "~/operations/comments";
+import * as Dashboards from "~/operations/dashboards";
+import * as EventDefinitions from "~/operations/event-definitions";
+
+// The PostHog "core" surface is split across several operation modules.
+// Aggregate them so the historical `Core.*` references resolve.
+const Core = {
+  ...Annotations,
+  ...Cohorts,
+  ...Comments,
+  ...Dashboards,
+  ...EventDefinitions,
+};
 
 describe("Core", () => {
   // --------------------------------------------------------------------------
@@ -56,9 +70,9 @@ describe("Core", () => {
         expect(result.content).toBe(content);
         expect(typeof result.updated_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -159,7 +173,7 @@ describe("Core", () => {
         // surfaces as UnknownPosthogError — accept that.
         yield* Core.annotationsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -177,7 +191,7 @@ describe("Core", () => {
         // UnknownPosthogError (PostHog returns empty body for some 4xx).
         const err = yield* Core.annotationsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(Effect.flip);
         expect(["NotFound", "UnknownPosthogError"]).toContain(err._tag);
       }).pipe(
@@ -271,17 +285,17 @@ describe("Core", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(1);
-        expect(Array.isArray(result.results)).toBe(true);
-        const found = result.results.find((a) => a.id === created.id);
+        expect(Array.isArray(result.results!)).toBe(true);
+        const found = result.results!.find((a) => a.id === created.id);
         expect(found).toBeDefined();
         expect(found?.content).toBe(content);
-        for (const a of result.results) {
+        for (const a of result.results!) {
           expect(typeof a.id).toBe("number");
           expect(typeof a.updated_at).toBe("string");
           expect(a.created_by).toBeDefined();
-          expect(typeof a.created_by.id).toBe("number");
-          expect(typeof a.created_by.uuid).toBe("string");
-          expect(typeof a.created_by.email).toBe("string");
+          expect(typeof a.created_by!.id).toBe("number");
+          expect(typeof a.created_by!.uuid).toBe("string");
+          expect(typeof a.created_by!.email).toBe("string");
         }
       }).pipe(
         Effect.ensuring(
@@ -373,7 +387,7 @@ describe("Core", () => {
         // Act: PATCH only the content field.
         const result = yield* Core.annotationsPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           content: updatedContent,
         });
 
@@ -383,7 +397,7 @@ describe("Core", () => {
         expect(result.content).toBe(updatedContent);
         expect(typeof result.updated_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -478,7 +492,7 @@ describe("Core", () => {
         // Act: retrieve it.
         const result = yield* Core.annotationsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
 
         // Assert: identity and shape.
@@ -487,9 +501,9 @@ describe("Core", () => {
         expect(result.content).toBe(content);
         expect(typeof result.updated_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -598,7 +612,7 @@ describe("Core", () => {
 
         // Act: PUT a replacement body with updated content.
         const result = yield* Core.annotationsUpdate(
-          putStub(getProjectId(), created.id, updatedContent),
+          putStub(getProjectId(), created.id!, updatedContent),
         );
 
         // Assert: server returns the updated representation.
@@ -607,9 +621,9 @@ describe("Core", () => {
         expect(result.content).toBe(updatedContent);
         expect(typeof result.updated_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -717,7 +731,7 @@ describe("Core", () => {
         // Act: retrieve activity. Output is Void; success means no error.
         const result = yield* Core.cohortsActivityRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
 
         // Assert: schema-decoded Void is undefined.
@@ -813,7 +827,7 @@ describe("Core", () => {
         // accept either the historical no-op success OR the BadRequest reject.
         yield* Core.cohortsAddPersonsToStaticCohortPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           person_ids: [],
         }).pipe(
           Effect.matchEffect({
@@ -966,7 +980,7 @@ describe("Core", () => {
         // Act: retrieve calculation history. Output is Void.
         const result = yield* Core.cohortsCalculationHistoryRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
 
         // Assert: schema-decoded Void is undefined.
@@ -1063,9 +1077,9 @@ describe("Core", () => {
         expect(typeof result.errors_calculating).toBe("number");
         expect(Array.isArray(result.experiment_set)).toBe(true);
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
-        expect(typeof result.created_by.uuid).toBe("string");
-        expect(typeof result.created_by.email).toBe("string");
+        expect(typeof result.created_by!.id).toBe("number");
+        expect(typeof result.created_by!.uuid).toBe("string");
+        expect(typeof result.created_by!.email).toBe("string");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -1170,7 +1184,7 @@ describe("Core", () => {
         // (UnknownPosthogError) on this endpoint.
         yield* Core.cohortsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -1189,7 +1203,7 @@ describe("Core", () => {
         // current behavior depending on workspace).
         yield* Core.cohortsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -1291,19 +1305,19 @@ describe("Core", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(1);
-        expect(Array.isArray(result.results)).toBe(true);
-        const found = result.results.find((c) => c.id === created.id);
+        expect(Array.isArray(result.results!)).toBe(true);
+        const found = result.results!.find((c) => c.id === created.id);
         expect(found).toBeDefined();
         expect(found?.name).toBe(name);
-        for (const c of result.results) {
+        for (const c of result.results!) {
           expect(typeof c.id).toBe("number");
           expect(typeof c.is_calculating).toBe("boolean");
           expect(typeof c.errors_calculating).toBe("number");
           expect(Array.isArray(c.experiment_set)).toBe(true);
           expect(c.created_by).toBeDefined();
-          expect(typeof c.created_by.id).toBe("number");
-          expect(typeof c.created_by.uuid).toBe("string");
-          expect(typeof c.created_by.email).toBe("string");
+          expect(typeof c.created_by!.id).toBe("number");
+          expect(typeof c.created_by!.uuid).toBe("string");
+          expect(typeof c.created_by!.email).toBe("string");
         }
       }).pipe(
         Effect.ensuring(
@@ -1399,7 +1413,7 @@ describe("Core", () => {
         // Act: PATCH only the name field.
         const result = yield* Core.cohortsPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           name: updatedName,
         });
 
@@ -1410,7 +1424,7 @@ describe("Core", () => {
         expect(typeof result.is_calculating).toBe("boolean");
         expect(typeof result.errors_calculating).toBe("number");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -1497,7 +1511,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.cohortsPersonsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
         expect(result).toBeUndefined();
       }).pipe(
@@ -1585,7 +1599,7 @@ describe("Core", () => {
         // accept either the historical no-op success OR the BadRequest reject.
         yield* Core.cohortsRemovePersonFromStaticCohortPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -1678,14 +1692,14 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.cohortsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
         expect(result.id).toBe(created.id);
         expect(result.name).toBe(`distilled-cohort-retrieve-${testRunId}`);
         expect(typeof result.is_calculating).toBe("boolean");
         expect(typeof result.errors_calculating).toBe("number");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
         expect(Array.isArray(result.experiment_set)).toBe(true);
       }).pipe(
         Effect.ensuring(
@@ -1761,7 +1775,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.cohortsUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           name: `distilled-cohort-put-renamed-${testRunId}`,
           version: null,
           pending_version: null,
@@ -1785,7 +1799,7 @@ describe("Core", () => {
         expect(typeof result.is_calculating).toBe("boolean");
         expect(typeof result.errors_calculating).toBe("number");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -1944,13 +1958,13 @@ describe("Core", () => {
         );
         createdId = result.id;
         expect(typeof result.id).toBe("string");
-        expect(result.id.length).toBeGreaterThan(0);
+        expect(result.id!.length).toBeGreaterThan(0);
         expect(result.content).toBe(`distilled-comment-create-${testRunId}`);
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(typeof result.created_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2031,7 +2045,7 @@ describe("Core", () => {
         createdId = created.id;
         yield* Core.commentsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -2088,15 +2102,15 @@ describe("Core", () => {
         const result = yield* Core.commentsList({
           project_id: getProjectId(),
         });
-        expect(Array.isArray(result.results)).toBe(true);
-        for (const item of result.results) {
+        expect(Array.isArray(result.results!)).toBe(true);
+        for (const item of result.results!) {
           expect(typeof item.id).toBe("string");
           expect(typeof item.scope).toBe("string");
           expect(typeof item.version).toBe("number");
           expect(typeof item.created_at).toBe("string");
           // PostHog may return null for created_by on legacy/system items.
           if (item.created_by !== null && item.created_by !== undefined) {
-            expect(typeof item.created_by.id).toBe("number");
+            expect(typeof item.created_by!.id).toBe("number");
           }
         }
       }));
@@ -2107,7 +2121,7 @@ describe("Core", () => {
           project_id: getProjectId(),
           search: `distilled-comment-search-${testRunId}`,
         });
-        expect(Array.isArray(result.results)).toBe(true);
+        expect(Array.isArray(result.results!)).toBe(true);
       }));
 
     test("error - NotFound for non-existent project_id", () =>
@@ -2167,7 +2181,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.commentsPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           content: `distilled-comment-patched-${testRunId}`,
         });
         expect(result.id).toBe(created.id);
@@ -2175,7 +2189,7 @@ describe("Core", () => {
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2199,7 +2213,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.commentsPartialUpdate({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
           deleted: true,
         });
         expect(result.id).toBe(created.id);
@@ -2284,7 +2298,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.commentsRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
         expect(result.id).toBe(created.id);
         expect(result.content).toBe(`distilled-comment-retrieve-${testRunId}`);
@@ -2292,7 +2306,7 @@ describe("Core", () => {
         expect(typeof result.version).toBe("number");
         expect(typeof result.created_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2358,7 +2372,7 @@ describe("Core", () => {
         createdId = created.id;
         const result = yield* Core.commentsThreadRetrieve({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
         expect(result).toBeUndefined();
       }).pipe(
@@ -2448,7 +2462,7 @@ describe("Core", () => {
         const result = yield* Core.commentsUpdate(
           updateBody(
             getProjectId(),
-            created.id,
+            created.id!,
             `distilled-comment-put-renamed-${testRunId}`,
           ),
         );
@@ -2459,7 +2473,7 @@ describe("Core", () => {
         expect(typeof result.scope).toBe("string");
         expect(typeof result.version).toBe("number");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2518,7 +2532,10 @@ describe("Core", () => {
     );
   });
   describe("dashboardsCopyTileCreate", () => {
-    const dashboardCreateInput = (project_id: string, name: string) => ({
+    const dashboardCreateInput = (
+      project_id: string,
+      name: string,
+    ): Dashboards.DashboardsCreateInput => ({
       project_id,
       id: 0,
       name,
@@ -2554,17 +2571,17 @@ describe("Core", () => {
           ),
           use_template: "DEFAULT_APP",
         });
-        sourceIds.push(source.id);
+        sourceIds.push(source.id!);
         const target = yield* Core.dashboardsCreate(
           dashboardCreateInput(
             getProjectId(),
             `distilled-dash-copytile-tgt-${testRunId}`,
           ),
         );
-        sourceIds.push(target.id);
+        sourceIds.push(target.id!);
         const sourceFull = yield* Core.dashboardsRetrieve({
           project_id: getProjectId(),
-          id: source.id,
+          id: source.id!,
         });
         const tileId =
           sourceFull.tiles && sourceFull.tiles.length > 0
@@ -2572,14 +2589,14 @@ describe("Core", () => {
             : 0;
         const result = yield* Core.dashboardsCopyTileCreate({
           project_id: getProjectId(),
-          id: target.id,
-          fromDashboardId: source.id,
+          id: target.id!,
+          fromDashboardId: source.id!,
           tileId,
         });
         expect(typeof result.id).toBe("number");
         expect(typeof result.created_at).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2636,7 +2653,10 @@ describe("Core", () => {
   });
 
   describe("dashboardsCreate", () => {
-    const dashboardCreateInput = (project_id: string, name: string) => ({
+    const dashboardCreateInput = (
+      project_id: string,
+      name: string,
+    ): Dashboards.DashboardsCreateInput => ({
       project_id,
       id: 0,
       name,
@@ -2678,7 +2698,7 @@ describe("Core", () => {
         expect(typeof result.is_shared).toBe("boolean");
         expect(typeof result.access_control_version).toBe("string");
         expect(result.created_by).toBeDefined();
-        expect(typeof result.created_by.id).toBe("number");
+        expect(typeof result.created_by!.id).toBe("number");
       }).pipe(
         Effect.ensuring(
           Effect.suspend(() =>
@@ -2731,7 +2751,10 @@ describe("Core", () => {
     );
   });
   describe("dashboardsDestroy", () => {
-    const dashboardCreateInput = (project_id: string, name: string) => ({
+    const dashboardCreateInput = (
+      project_id: string,
+      name: string,
+    ): Dashboards.DashboardsCreateInput => ({
       project_id,
       id: 0,
       name,
@@ -2769,7 +2792,7 @@ describe("Core", () => {
         createdId = created.id;
         yield* Core.dashboardsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(
           Effect.matchEffect({
             onFailure: (e) =>
@@ -2836,8 +2859,8 @@ describe("Core", () => {
           project_id: getProjectId(),
         });
         expect(typeof result.count).toBe("number");
-        expect(Array.isArray(result.results)).toBe(true);
-        for (const item of result.results) {
+        expect(Array.isArray(result.results!)).toBe(true);
+        for (const item of result.results!) {
           expect(typeof item.id).toBe("number");
           expect(typeof item.created_at).toBe("string");
           expect(typeof item.is_shared).toBe("boolean");
@@ -2845,7 +2868,7 @@ describe("Core", () => {
           expect(typeof item.team_id).toBe("number");
           // PostHog may return null for created_by on legacy/system items.
           if (item.created_by !== null && item.created_by !== undefined) {
-            expect(typeof item.created_by.id).toBe("number");
+            expect(typeof item.created_by!.id).toBe("number");
           }
         }
       }));
@@ -2858,8 +2881,8 @@ describe("Core", () => {
           offset: 0,
         });
         expect(typeof result.count).toBe("number");
-        expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(1);
+        expect(Array.isArray(result.results!)).toBe(true);
+        expect(result.results!.length).toBeLessThanOrEqual(1);
       }));
 
     test("error - NotFound for non-existent project_id", () =>
@@ -2907,15 +2930,15 @@ describe("Core", () => {
           project_id: getProjectId(),
           limit: 1,
         });
-        if (list.results.length === 0) {
+        if (list.results!.length === 0) {
           // Nothing to look up; assert the list shape and exit.
           expect(list.count).toBe(0);
           return;
         }
-        const target = list.results[0]!;
+        const target = list.results![0]!;
         const result = yield* Core.eventDefinitionsByNameRetrieve({
           project_id: getProjectId(),
-          name: target.name,
+          name: target.name!,
         });
 
         expect(result).toBeDefined();
@@ -2933,8 +2956,8 @@ describe("Core", () => {
           expect(typeof result.action_id).toBe("number");
         }
         if (result.created_by !== null && result.created_by !== undefined) {
-          expect(typeof result.created_by.id).toBe("number");
-          expect(typeof result.created_by.email).toBe("string");
+          expect(typeof result.created_by!.id).toBe("number");
+          expect(typeof result.created_by!.email).toBe("string");
         }
       }));
 
@@ -3023,7 +3046,7 @@ describe("Core", () => {
 
         expect(result).toBeDefined();
         expect(typeof result.id).toBe("string");
-        expect(result.id.length).toBeGreaterThan(0);
+        expect(result.id!.length).toBeGreaterThan(0);
         expect(result.name).toBe(eventName);
         // last_updated_at / last_calculated_at / action_id / created_by are
         // optional on freshly-created event definitions.
@@ -3037,8 +3060,8 @@ describe("Core", () => {
           expect(typeof result.action_id).toBe("number");
         }
         if (result.created_by !== null && result.created_by !== undefined) {
-          expect(typeof result.created_by.id).toBe("number");
-          expect(typeof result.created_by.email).toBe("string");
+          expect(typeof result.created_by!.id).toBe("number");
+          expect(typeof result.created_by!.email).toBe("string");
         }
         expect(Array.isArray(result.media_preview_urls)).toBe(true);
 
@@ -3143,12 +3166,12 @@ describe("Core", () => {
           ),
         );
         expect(typeof created.id).toBe("string");
-        expect(created.id.length).toBeGreaterThan(0);
+        expect(created.id!.length).toBeGreaterThan(0);
 
         // Act: destroy it. Output schema is Schema.Void → undefined.
         const result = yield* Core.eventDefinitionsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         });
         expect(result).toBeUndefined();
 
@@ -3156,7 +3179,7 @@ describe("Core", () => {
         // NotFound or InternalServerError for already-deleted definitions.
         const followUp = yield* Core.eventDefinitionsDestroy({
           project_id: getProjectId(),
-          id: created.id,
+          id: created.id!,
         }).pipe(Effect.flip);
         expect(["NotFound", "InternalServerError"]).toContain(followUp._tag);
       }));
@@ -3230,15 +3253,15 @@ describe("Core", () => {
         expect(result).toBeDefined();
         expect(typeof result.count).toBe("number");
         expect(result.count).toBeGreaterThanOrEqual(0);
-        expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results.length).toBeLessThanOrEqual(5);
+        expect(Array.isArray(result.results!)).toBe(true);
+        expect(result.results!.length).toBeLessThanOrEqual(5);
 
-        for (const def of result.results) {
+        for (const def of result.results!) {
           expect(typeof def.id).toBe("string");
           expect(typeof def.name).toBe("string");
           expect(typeof def.updated_at).toBe("string");
-          expect(typeof def.updated_by.id).toBe("number");
-          expect(typeof def.updated_by.email).toBe("string");
+          expect(typeof def.updated_by!.id).toBe("number");
+          expect(typeof def.updated_by!.email).toBe("string");
         }
       }));
 
@@ -3256,8 +3279,8 @@ describe("Core", () => {
         });
 
         expect(page1.count).toBe(page2.count);
-        if (page1.count >= 2) {
-          expect(page1.results[0]?.id).not.toBe(page2.results[0]?.id);
+        if ((page1.count ?? 0) >= 2) {
+          expect(page1.results![0]?.id).not.toBe(page2.results![0]?.id);
         }
       }));
 

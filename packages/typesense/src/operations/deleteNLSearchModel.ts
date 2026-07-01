@@ -4,18 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteNLSearchModelInput {
+  modelId: string;
+}
 export const DeleteNLSearchModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/nl_search_models/{modelId}" }));
-export type DeleteNLSearchModelInput = typeof DeleteNLSearchModelInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/nl_search_models/{modelId}" }),
+  ) as unknown as Schema.Codec<DeleteNLSearchModelInput>;
 
 // Output Schema
+export interface DeleteNLSearchModelOutput {
+  id: string;
+}
 export const DeleteNLSearchModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type DeleteNLSearchModelOutput = typeof DeleteNLSearchModelOutput.Type;
+  }) as unknown as Schema.Codec<DeleteNLSearchModelOutput>;
 
 // The operation
 /**

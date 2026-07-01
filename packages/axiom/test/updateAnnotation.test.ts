@@ -50,7 +50,7 @@ describe("updateAnnotation", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -67,7 +67,7 @@ describe("updateAnnotation", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -84,7 +84,7 @@ describe("updateAnnotation", () => {
 
       expect((error as { _tag: string })._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   // Removed: "returns UnprocessableEntity when updating with invalid

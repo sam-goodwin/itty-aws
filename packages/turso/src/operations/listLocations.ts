@@ -3,16 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListLocationsInput {}
 export const ListLocationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v1/locations" }));
-export type ListLocationsInput = typeof ListLocationsInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v1/locations" }),
+) as unknown as Schema.Codec<ListLocationsInput>;
 
 // Output Schema
+export interface ListLocationsOutput {
+  locations?: Record<string, string>;
+}
 export const ListLocationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   locations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ListLocationsOutput = typeof ListLocationsOutput.Type;
+}) as unknown as Schema.Codec<ListLocationsOutput>;
 
 // The operation
 /**

@@ -10,6 +10,13 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput {
+  organization_id: string;
+  resource_type_slug: string;
+  external_id: string;
+  name?: string;
+  description?: string | null;
+}
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
@@ -22,11 +29,21 @@ export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput
       method: "PATCH",
       path: "/authorization/organizations/{organization_id}/resources/{resource_type_slug}/{external_id}",
     }),
-  );
-export type AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput =
-  typeof AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput>;
 
 // Output Schema
+export interface AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput {
+  object: string;
+  name: string;
+  description: string | null;
+  organization_id: string;
+  parent_resource_id: string | null;
+  id: string;
+  external_id: string;
+  resource_type_slug: string;
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -39,9 +56,7 @@ export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutpu
     resource_type_slug: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput =
-  typeof AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationResourcesByExternalIdControllerUpdateByExternalIdOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListTokensForAccountInput {
+  network: "base" | "base-sepolia";
+  address: string;
+}
 export const ListTokensForAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals(["base", "base-sepolia"]).pipe(T.PathParam()),
@@ -12,17 +16,20 @@ export const ListTokensForAccountInput =
       method: "GET",
       path: "/v2/data/evm/token-ownership/{network}/{address}",
     }),
-  );
-export type ListTokensForAccountInput = typeof ListTokensForAccountInput.Type;
+  ) as unknown as Schema.Codec<ListTokensForAccountInput>;
 
 // Output Schema
+export interface ListTokensForAccountOutput {
+  accountAddress?: string;
+  tokenAddresses?: string[];
+  totalCount?: number;
+}
 export const ListTokensForAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountAddress: Schema.optional(Schema.String),
     tokenAddresses: Schema.optional(Schema.Array(Schema.String)),
     totalCount: Schema.optional(Schema.Number),
-  });
-export type ListTokensForAccountOutput = typeof ListTokensForAccountOutput.Type;
+  }) as unknown as Schema.Codec<ListTokensForAccountOutput>;
 
 // The operation
 /**

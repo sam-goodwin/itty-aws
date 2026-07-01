@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateBouncerResizeRequestInput {
+  organization: string;
+  database: string;
+  branch: string;
+  bouncer: string;
+  bouncer_size?: string;
+  replicas_per_cell?: number;
+  parameters?: Record<string, unknown>;
+}
 export const UpdateBouncerResizeRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -18,11 +27,43 @@ export const UpdateBouncerResizeRequestInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
     }),
-  );
-export type UpdateBouncerResizeRequestInput =
-  typeof UpdateBouncerResizeRequestInput.Type;
+  ) as unknown as Schema.Codec<UpdateBouncerResizeRequestInput>;
 
 // Output Schema
+export interface UpdateBouncerResizeRequestOutput {
+  id: string;
+  state: "pending" | "resizing" | "canceled" | "completed";
+  replicas_per_cell: number;
+  parameters: Record<string, unknown>;
+  previous_replicas_per_cell: number;
+  previous_parameters: Record<string, unknown>;
+  started_at: string | null;
+  completed_at: string | null;
+  created_at: string;
+  updated_at: string;
+  actor: { id: string; display_name: string; avatar_url: string };
+  bouncer: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  sku: {
+    name: string;
+    display_name: string;
+    cpu: string;
+    ram: number;
+    sort_order: number;
+  };
+  previous_sku: {
+    name: string;
+    display_name: string;
+    cpu: string;
+    ram: number;
+    sort_order: number;
+  };
+}
 export const UpdateBouncerResizeRequestOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -61,9 +102,7 @@ export const UpdateBouncerResizeRequestOutput =
       ram: Schema.Number,
       sort_order: Schema.Number,
     }),
-  });
-export type UpdateBouncerResizeRequestOutput =
-  typeof UpdateBouncerResizeRequestOutput.Type;
+  }) as unknown as Schema.Codec<UpdateBouncerResizeRequestOutput>;
 
 // The operation
 /**

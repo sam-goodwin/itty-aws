@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveGroupUserInput {
+  groupId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const RemoveGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/atlas/v2/groups/{groupId}/users/{userId}",
   }),
-);
-export type RemoveGroupUserInput = typeof RemoveGroupUserInput.Type;
+) as unknown as Schema.Codec<RemoveGroupUserInput>;
 
 // Output Schema
-export const RemoveGroupUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveGroupUserOutput = typeof RemoveGroupUserOutput.Type;
+export type RemoveGroupUserOutput = void;
+export const RemoveGroupUserOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupUserOutput>;
 
 // The operation
 /**
  * Remove One MongoDB Cloud User from One Project
  *
- * Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Access Manager role.
+ * Removes one MongoDB Cloud user from the specified project. You can remove an active user or a user that has not yet accepted the invitation to join the organization.
  * **Note**: This resource cannot be used to remove pending users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  * **Note**: To remove pending or active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users can be removed. Deprecated versions: v2-{2023-01-01}
  *

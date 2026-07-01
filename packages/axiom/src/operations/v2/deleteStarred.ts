@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteStarredInput {
+  id: string;
+}
 export const DeleteStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/apl-starred-queries/{id}" }));
-export type DeleteStarredInput = typeof DeleteStarredInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/apl-starred-queries/{id}" }),
+) as unknown as Schema.Codec<DeleteStarredInput>;
 
 // Output Schema
-export const DeleteStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteStarredOutput = typeof DeleteStarredOutput.Type;
+export type DeleteStarredOutput = void;
+export const DeleteStarredOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteStarredOutput>;
 
 // The operation
 export const deleteStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

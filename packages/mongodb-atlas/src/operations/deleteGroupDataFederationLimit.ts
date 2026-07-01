@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupDataFederationLimitInput {
+  groupId: string;
+  tenantName: string;
+  limitName:
+    | "bytesProcessed.query"
+    | "bytesProcessed.daily"
+    | "bytesProcessed.weekly"
+    | "bytesProcessed.monthly";
+  envelope?: boolean;
+}
 export const DeleteGroupDataFederationLimitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,21 +30,18 @@ export const DeleteGroupDataFederationLimitInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
     }),
-  );
-export type DeleteGroupDataFederationLimitInput =
-  typeof DeleteGroupDataFederationLimitInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupDataFederationLimitInput>;
 
 // Output Schema
+export type DeleteGroupDataFederationLimitOutput = void;
 export const DeleteGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupDataFederationLimitOutput =
-  typeof DeleteGroupDataFederationLimitOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationLimitOutput>;
 
 // The operation
 /**
  * Delete One Query Limit for One Federated Database Instance
  *
- * Deletes one query limit for one federated database instance. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Deletes one query limit for one federated database instance.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

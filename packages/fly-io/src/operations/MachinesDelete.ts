@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesDeleteInput {
+  app_name: string;
+  machine_id: string;
+  force?: boolean;
+}
 export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "DELETE", path: "/apps/{app_name}/machines/{machine_id}" }),
-);
-export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
+) as unknown as Schema.Codec<MachinesDeleteInput>;
 
 // Output Schema
-export const MachinesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesDeleteOutput = typeof MachinesDeleteOutput.Type;
+export type MachinesDeleteOutput = void;
+export const MachinesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
 
 // The operation
 /**

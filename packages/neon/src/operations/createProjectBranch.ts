@@ -1,9 +1,39 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateProjectBranchInput {
+  project_id: string;
+  endpoints?: {
+    type: "read_only" | "read_write";
+    settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    autoscaling_limit_min_cu?: number;
+    autoscaling_limit_max_cu?: number;
+    provisioner?: string;
+    suspend_timeout_seconds?: number;
+  }[];
+  branch?: {
+    parent_id?: string;
+    name?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    protected?: boolean;
+    archived?: boolean;
+    init_source?: string;
+    expires_at?: string;
+  };
+  annotation_value?: Record<string, string>;
+}
 export const CreateProjectBranchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -51,10 +81,166 @@ export const CreateProjectBranchInput =
     annotation_value: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
-  }).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/branches" }));
-export type CreateProjectBranchInput = typeof CreateProjectBranchInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/projects/{project_id}/branches" }),
+  ) as unknown as Schema.Codec<CreateProjectBranchInput>;
 
 // Output Schema
+export interface CreateProjectBranchOutput {
+  branch: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  };
+  endpoints: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  }[];
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+  roles: {
+    branch_id: string;
+    name: string;
+    password?: Redacted.Redacted<string>;
+    protected?: boolean;
+    authentication_method?: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  databases: {
+    id: number;
+    branch_id: string;
+    name: string;
+    owner_name: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  connection_uris?: {
+    connection_uri: Redacted.Redacted<string>;
+    connection_parameters: {
+      database: string;
+      password: Redacted.Redacted<string>;
+      role: string;
+      host: string;
+      pooler_host: string;
+    };
+  }[];
+}
 export const CreateProjectBranchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
@@ -215,7 +401,7 @@ export const CreateProjectBranchOutput =
       Schema.Struct({
         branch_id: Schema.String,
         name: Schema.String,
-        password: Schema.optional(SensitiveString),
+        password: Schema.optional(SensitiveOutputString),
         protected: Schema.optional(Schema.Boolean),
         authentication_method: Schema.optional(Schema.String),
         created_at: Schema.String,
@@ -235,10 +421,10 @@ export const CreateProjectBranchOutput =
     connection_uris: Schema.optional(
       Schema.Array(
         Schema.Struct({
-          connection_uri: SensitiveString,
+          connection_uri: SensitiveOutputString,
           connection_parameters: Schema.Struct({
             database: Schema.String,
-            password: SensitiveString,
+            password: SensitiveOutputString,
             role: Schema.String,
             host: Schema.String,
             pooler_host: Schema.String,
@@ -246,20 +432,18 @@ export const CreateProjectBranchOutput =
         }),
       ),
     ),
-  });
-export type CreateProjectBranchOutput = typeof CreateProjectBranchOutput.Type;
+  }) as unknown as Schema.Codec<CreateProjectBranchOutput>;
 
 // The operation
 /**
  * Create branch
  *
  * Creates a branch in the specified project.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * This method does not require a request body, but you can specify one to create a compute endpoint for the branch or to select a non-default parent branch.
+ * No request body is required, but you can specify one to create a compute endpoint or select a non-default parent branch.
  * By default, the branch is created from the project's default branch with no compute endpoint, and the branch name is auto-generated.
- * To access the branch, you must add an endpoint object. A `read_write` endpoint allows you to perform read and write operations on the branch.
+ * To access the branch, add a `read_write` endpoint.
  * Each branch supports one read-write endpoint and multiple read-only endpoints.
- * For related information, see [Manage branches](https://neon.tech/docs/manage/branches/).
+ * For related information, see [Manage branches](https://neon.com/docs/manage/branches/).
  *
  * @param project_id - The Neon project ID
  */

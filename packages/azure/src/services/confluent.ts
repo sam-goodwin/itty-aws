@@ -4,12 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AccessCreateRoleBindingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  principal?: string;
+  role_name?: string;
+  crn_pattern?: string;
+}
 export const AccessCreateRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24,11 +33,23 @@ export const AccessCreateRoleBindingInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createRoleBinding",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessCreateRoleBindingInput =
-  typeof AccessCreateRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<AccessCreateRoleBindingInput>;
 
 // Output Schema
+export interface AccessCreateRoleBindingOutput {
+  kind?: string;
+  id?: string;
+  metadata?: {
+    self?: string;
+    resource_name?: string;
+    created_at?: string;
+    updated_at?: string;
+    deleted_at?: string;
+  };
+  principal?: string;
+  role_name?: string;
+  crn_pattern?: string;
+}
 export const AccessCreateRoleBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -45,9 +66,7 @@ export const AccessCreateRoleBindingOutput =
     principal: Schema.optional(Schema.String),
     role_name: Schema.optional(Schema.String),
     crn_pattern: Schema.optional(Schema.String),
-  });
-export type AccessCreateRoleBindingOutput =
-  typeof AccessCreateRoleBindingOutput.Type;
+  }) as unknown as Schema.Codec<AccessCreateRoleBindingOutput>;
 
 // The operation
 /**
@@ -65,6 +84,12 @@ export const AccessCreateRoleBinding = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessDeleteRoleBindingInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  roleBindingId: string;
+}
 export const AccessDeleteRoleBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -77,15 +102,12 @@ export const AccessDeleteRoleBindingInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/deleteRoleBinding/{roleBindingId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessDeleteRoleBindingInput =
-  typeof AccessDeleteRoleBindingInput.Type;
+  ) as unknown as Schema.Codec<AccessDeleteRoleBindingInput>;
 
 // Output Schema
+export type AccessDeleteRoleBindingOutput = void;
 export const AccessDeleteRoleBindingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccessDeleteRoleBindingOutput =
-  typeof AccessDeleteRoleBindingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessDeleteRoleBindingOutput>;
 
 // The operation
 /**
@@ -104,6 +126,15 @@ export const AccessDeleteRoleBinding = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessInviteUserInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  organizationId?: string;
+  email?: string;
+  upn?: string;
+  invitedUserDetails?: { invitedEmail?: string; auth_type?: string };
+}
 export const AccessInviteUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -123,10 +154,25 @@ export const AccessInviteUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createInvitation",
     apiVersion: "2024-07-01",
   }),
-);
-export type AccessInviteUserInput = typeof AccessInviteUserInput.Type;
+) as unknown as Schema.Codec<AccessInviteUserInput>;
 
 // Output Schema
+export interface AccessInviteUserOutput {
+  kind?: string;
+  id?: string;
+  metadata?: {
+    self?: string;
+    resource_name?: string;
+    created_at?: string;
+    updated_at?: string;
+    deleted_at?: string;
+  };
+  email?: string;
+  auth_type?: string;
+  status?: string;
+  accepted_at?: string;
+  expires_at?: string;
+}
 export const AccessInviteUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     kind: Schema.optional(Schema.String),
@@ -146,8 +192,7 @@ export const AccessInviteUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     accepted_at: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
   },
-);
-export type AccessInviteUserOutput = typeof AccessInviteUserOutput.Type;
+) as unknown as Schema.Codec<AccessInviteUserOutput>;
 
 // The operation
 /**
@@ -163,6 +208,12 @@ export const AccessInviteUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccessInviteUserOutput,
 }));
 // Input Schema
+export interface AccessListClustersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -175,10 +226,56 @@ export const AccessListClustersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listClusters",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListClustersInput = typeof AccessListClustersInput.Type;
+  ) as unknown as Schema.Codec<AccessListClustersInput>;
 
 // Output Schema
+export interface AccessListClustersOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    display_name?: string;
+    spec?: {
+      display_name?: string;
+      availability?: string;
+      cloud?: string;
+      zone?: string;
+      region?: string;
+      kafka_bootstrap_endpoint?: string;
+      http_endpoint?: string;
+      api_endpoint?: string;
+      config?: { kind?: string };
+      environment?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resource_name?: string;
+      };
+      network?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resource_name?: string;
+      };
+      byok?: { id?: string; related?: string; resource_name?: string };
+    };
+    status?: { phase?: string; cku?: number };
+  }[];
+}
 export const AccessListClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -255,8 +352,7 @@ export const AccessListClustersOutput =
         }),
       ),
     ),
-  });
-export type AccessListClustersOutput = typeof AccessListClustersOutput.Type;
+  }) as unknown as Schema.Codec<AccessListClustersOutput>;
 
 // The operation
 /**
@@ -272,6 +368,12 @@ export const AccessListClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccessListClustersOutput,
 }));
 // Input Schema
+export interface AccessListEnvironmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListEnvironmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -284,11 +386,31 @@ export const AccessListEnvironmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listEnvironments",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListEnvironmentsInput =
-  typeof AccessListEnvironmentsInput.Type;
+  ) as unknown as Schema.Codec<AccessListEnvironmentsInput>;
 
 // Output Schema
+export interface AccessListEnvironmentsOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    display_name?: string;
+  }[];
+}
 export const AccessListEnvironmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -319,9 +441,7 @@ export const AccessListEnvironmentsOutput =
         }),
       ),
     ),
-  });
-export type AccessListEnvironmentsOutput =
-  typeof AccessListEnvironmentsOutput.Type;
+  }) as unknown as Schema.Codec<AccessListEnvironmentsOutput>;
 
 // The operation
 /**
@@ -339,6 +459,12 @@ export const AccessListEnvironments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessListInvitationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListInvitationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -351,10 +477,35 @@ export const AccessListInvitationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listInvitations",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListInvitationsInput = typeof AccessListInvitationsInput.Type;
+  ) as unknown as Schema.Codec<AccessListInvitationsInput>;
 
 // Output Schema
+export interface AccessListInvitationsOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    email?: string;
+    auth_type?: string;
+    status?: string;
+    accepted_at?: string;
+    expires_at?: string;
+  }[];
+}
 export const AccessListInvitationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -389,9 +540,7 @@ export const AccessListInvitationsOutput =
         }),
       ),
     ),
-  });
-export type AccessListInvitationsOutput =
-  typeof AccessListInvitationsOutput.Type;
+  }) as unknown as Schema.Codec<AccessListInvitationsOutput>;
 
 // The operation
 /**
@@ -409,6 +558,12 @@ export const AccessListInvitations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessListRoleBindingNameListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListRoleBindingNameListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -421,11 +576,20 @@ export const AccessListRoleBindingNameListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listRoleBindingNameList",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListRoleBindingNameListInput =
-  typeof AccessListRoleBindingNameListInput.Type;
+  ) as unknown as Schema.Codec<AccessListRoleBindingNameListInput>;
 
 // Output Schema
+export interface AccessListRoleBindingNameListOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: string[];
+}
 export const AccessListRoleBindingNameListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -439,9 +603,7 @@ export const AccessListRoleBindingNameListOutput =
       }),
     ),
     data: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type AccessListRoleBindingNameListOutput =
-  typeof AccessListRoleBindingNameListOutput.Type;
+  }) as unknown as Schema.Codec<AccessListRoleBindingNameListOutput>;
 
 // The operation
 /**
@@ -458,6 +620,12 @@ export const AccessListRoleBindingNameList =
     outputSchema: AccessListRoleBindingNameListOutput,
   }));
 // Input Schema
+export interface AccessListRoleBindingsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListRoleBindingsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -470,11 +638,33 @@ export const AccessListRoleBindingsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listRoleBindings",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListRoleBindingsInput =
-  typeof AccessListRoleBindingsInput.Type;
+  ) as unknown as Schema.Codec<AccessListRoleBindingsInput>;
 
 // Output Schema
+export interface AccessListRoleBindingsOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    principal?: string;
+    role_name?: string;
+    crn_pattern?: string;
+  }[];
+}
 export const AccessListRoleBindingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -507,9 +697,7 @@ export const AccessListRoleBindingsOutput =
         }),
       ),
     ),
-  });
-export type AccessListRoleBindingsOutput =
-  typeof AccessListRoleBindingsOutput.Type;
+  }) as unknown as Schema.Codec<AccessListRoleBindingsOutput>;
 
 // The operation
 /**
@@ -527,6 +715,12 @@ export const AccessListRoleBindings = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessListServiceAccountsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListServiceAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -539,11 +733,32 @@ export const AccessListServiceAccountsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listServiceAccounts",
       apiVersion: "2024-07-01",
     }),
-  );
-export type AccessListServiceAccountsInput =
-  typeof AccessListServiceAccountsInput.Type;
+  ) as unknown as Schema.Codec<AccessListServiceAccountsInput>;
 
 // Output Schema
+export interface AccessListServiceAccountsOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    display_name?: string;
+    description?: string;
+  }[];
+}
 export const AccessListServiceAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -575,9 +790,7 @@ export const AccessListServiceAccountsOutput =
         }),
       ),
     ),
-  });
-export type AccessListServiceAccountsOutput =
-  typeof AccessListServiceAccountsOutput.Type;
+  }) as unknown as Schema.Codec<AccessListServiceAccountsOutput>;
 
 // The operation
 /**
@@ -595,6 +808,12 @@ export const AccessListServiceAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessListUsersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const AccessListUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -606,10 +825,33 @@ export const AccessListUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/listUsers",
     apiVersion: "2024-07-01",
   }),
-);
-export type AccessListUsersInput = typeof AccessListUsersInput.Type;
+) as unknown as Schema.Codec<AccessListUsersInput>;
 
 // Output Schema
+export interface AccessListUsersOutput {
+  kind?: string;
+  metadata?: {
+    first?: string;
+    last?: string;
+    prev?: string;
+    next?: string;
+    total_size?: number;
+  };
+  data?: {
+    kind?: string;
+    id?: string;
+    metadata?: {
+      self?: string;
+      resource_name?: string;
+      created_at?: string;
+      updated_at?: string;
+      deleted_at?: string;
+    };
+    email?: string;
+    full_name?: string;
+    auth_type?: string;
+  }[];
+}
 export const AccessListUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   kind: Schema.optional(Schema.String),
   metadata: Schema.optional(
@@ -641,8 +883,7 @@ export const AccessListUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type AccessListUsersOutput = typeof AccessListUsersOutput.Type;
+}) as unknown as Schema.Codec<AccessListUsersOutput>;
 
 // The operation
 /**
@@ -658,6 +899,49 @@ export const AccessListUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccessListUsersOutput,
 }));
 // Input Schema
+export interface ClusterCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  kind?: string;
+  properties?: {
+    metadata?: {
+      self?: string;
+      resourceName?: string;
+      createdTimestamp?: string;
+      updatedTimestamp?: string;
+      deletedTimestamp?: string;
+    };
+    spec?: {
+      name?: string;
+      availability?: string;
+      cloud?: string;
+      zone?: string;
+      package?: "ESSENTIALS" | "ADVANCED";
+      region?: string;
+      kafkaBootstrapEndpoint?: string;
+      httpEndpoint?: string;
+      apiEndpoint?: string;
+      config?: { kind?: string };
+      environment?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resourceName?: string;
+      };
+      network?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resourceName?: string;
+      };
+      byok?: { id?: string; related?: string; resourceName?: string };
+    };
+    status?: { phase?: string; cku?: number };
+  };
+}
 export const ClusterCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -734,10 +1018,22 @@ export const ClusterCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type ClusterCreateOrUpdateInput = typeof ClusterCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClusterCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClusterCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -757,9 +1053,7 @@ export const ClusterCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterCreateOrUpdateOutput =
-  typeof ClusterCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClusterCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -779,6 +1073,13 @@ export const ClusterCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClusterDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+}
 export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -791,12 +1092,12 @@ export const ClusterDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
     apiVersion: "2024-07-01",
   }),
-);
-export type ClusterDeleteInput = typeof ClusterDeleteInput.Type;
+) as unknown as Schema.Codec<ClusterDeleteInput>;
 
 // Output Schema
-export const ClusterDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClusterDeleteOutput = typeof ClusterDeleteOutput.Type;
+export type ClusterDeleteOutput = void;
+export const ClusterDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterDeleteOutput>;
 
 // The operation
 /**
@@ -814,6 +1115,39 @@ export const ClusterDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClusterDeleteOutput,
 }));
 // Input Schema
+export interface ConnectorCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  connectorName: string;
+  properties: {
+    connectorBasicInfo?: {
+      connectorType?: "SINK" | "SOURCE";
+      connectorClass?: "AZUREBLOBSOURCE" | "AZUREBLOBSINK";
+      connectorName?: string;
+      connectorId?: string;
+      connectorState?: "PROVISIONING" | "RUNNING" | "PAUSED" | "FAILED";
+    };
+    connectorServiceTypeInfo?: {
+      connectorServiceType:
+        | "AzureBlobStorageSinkConnector"
+        | "AzureBlobStorageSourceConnector"
+        | "AzureCosmosDBSinkConnector"
+        | "AzureCosmosDBSourceConnector"
+        | "AzureSynapseAnalyticsSinkConnector";
+    };
+    partnerConnectorInfo?: {
+      partnerConnectorType:
+        | "KafkaAzureBlobStorageSource"
+        | "KafkaAzureBlobStorageSink"
+        | "KafkaAzureCosmosDBSource"
+        | "KafkaAzureCosmosDBSink"
+        | "KafkaAzureSynapseAnalyticsSink";
+    };
+  };
+}
 export const ConnectorCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -865,11 +1199,22 @@ export const ConnectorCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type ConnectorCreateOrUpdateInput =
-  typeof ConnectorCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConnectorCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConnectorCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectorCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -889,9 +1234,7 @@ export const ConnectorCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConnectorCreateOrUpdateOutput =
-  typeof ConnectorCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConnectorCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -912,6 +1255,14 @@ export const ConnectorCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConnectorDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  connectorName: string;
+}
 export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -925,12 +1276,12 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
+) as unknown as Schema.Codec<ConnectorDeleteInput>;
 
 // Output Schema
-export const ConnectorDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConnectorDeleteOutput = typeof ConnectorDeleteOutput.Type;
+export type ConnectorDeleteOutput = void;
+export const ConnectorDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConnectorDeleteOutput>;
 
 // The operation
 /**
@@ -949,6 +1300,14 @@ export const ConnectorDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorDeleteOutput,
 }));
 // Input Schema
+export interface ConnectorGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  connectorName: string;
+}
 export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -962,10 +1321,22 @@ export const ConnectorGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type ConnectorGetInput = typeof ConnectorGetInput.Type;
+) as unknown as Schema.Codec<ConnectorGetInput>;
 
 // Output Schema
+export interface ConnectorGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -984,8 +1355,7 @@ export const ConnectorGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ConnectorGetOutput = typeof ConnectorGetOutput.Type;
+}) as unknown as Schema.Codec<ConnectorGetOutput>;
 
 // The operation
 /**
@@ -1004,6 +1374,15 @@ export const ConnectorGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorGetOutput,
 }));
 // Input Schema
+export interface ConnectorListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1018,10 +1397,25 @@ export const ConnectorListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors",
     apiVersion: "2024-07-01",
   }),
-);
-export type ConnectorListInput = typeof ConnectorListInput.Type;
+) as unknown as Schema.Codec<ConnectorListInput>;
 
 // Output Schema
+export interface ConnectorListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1045,8 +1439,7 @@ export const ConnectorListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ConnectorListOutput = typeof ConnectorListOutput.Type;
+}) as unknown as Schema.Codec<ConnectorListOutput>;
 
 // The operation
 /**
@@ -1066,6 +1459,23 @@ export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ConnectorListOutput,
 }));
 // Input Schema
+export interface EnvironmentCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  kind?: string;
+  properties?: {
+    streamGovernanceConfig?: { package?: "ESSENTIALS" | "ADVANCED" };
+    metadata?: {
+      self?: string;
+      resourceName?: string;
+      createdTimestamp?: string;
+      updatedTimestamp?: string;
+      deletedTimestamp?: string;
+    };
+  };
+}
 export const EnvironmentCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1099,11 +1509,22 @@ export const EnvironmentCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type EnvironmentCreateOrUpdateInput =
-  typeof EnvironmentCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentCreateOrUpdateInput>;
 
 // Output Schema
+export interface EnvironmentCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EnvironmentCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1123,9 +1544,7 @@ export const EnvironmentCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EnvironmentCreateOrUpdateOutput =
-  typeof EnvironmentCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EnvironmentCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1144,6 +1563,12 @@ export const EnvironmentCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EnvironmentDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+}
 export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1157,12 +1582,12 @@ export const EnvironmentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
     apiVersion: "2024-07-01",
   }),
-);
-export type EnvironmentDeleteInput = typeof EnvironmentDeleteInput.Type;
+) as unknown as Schema.Codec<EnvironmentDeleteInput>;
 
 // Output Schema
-export const EnvironmentDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentDeleteOutput = typeof EnvironmentDeleteOutput.Type;
+export type EnvironmentDeleteOutput = void;
+export const EnvironmentDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentDeleteOutput>;
 
 // The operation
 /**
@@ -1179,6 +1604,30 @@ export const EnvironmentDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EnvironmentDeleteOutput,
 }));
 // Input Schema
+export interface MarketplaceAgreementsCreateInput {
+  subscriptionId: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    publisher?: string;
+    product?: string;
+    plan?: string;
+    licenseTextLink?: string;
+    privacyPolicyLink?: string;
+    retrieveDatetime?: string;
+    signature?: string;
+    accepted?: boolean;
+  };
+}
 export const MarketplaceAgreementsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,11 +1666,32 @@ export const MarketplaceAgreementsCreateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements/default",
       apiVersion: "2024-07-01",
     }),
-  );
-export type MarketplaceAgreementsCreateInput =
-  typeof MarketplaceAgreementsCreateInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceAgreementsCreateInput>;
 
 // Output Schema
+export interface MarketplaceAgreementsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    publisher?: string;
+    product?: string;
+    plan?: string;
+    licenseTextLink?: string;
+    privacyPolicyLink?: string;
+    retrieveDatetime?: string;
+    signature?: string;
+    accepted?: boolean;
+  };
+}
 export const MarketplaceAgreementsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1253,9 +1723,7 @@ export const MarketplaceAgreementsCreateOutput =
         accepted: Schema.optional(Schema.Boolean),
       }),
     ),
-  });
-export type MarketplaceAgreementsCreateOutput =
-  typeof MarketplaceAgreementsCreateOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceAgreementsCreateOutput>;
 
 // The operation
 /**
@@ -1271,6 +1739,9 @@ export const MarketplaceAgreementsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MarketplaceAgreementsListInput {
+  subscriptionId: string;
+}
 export const MarketplaceAgreementsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1280,11 +1751,35 @@ export const MarketplaceAgreementsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements",
       apiVersion: "2024-07-01",
     }),
-  );
-export type MarketplaceAgreementsListInput =
-  typeof MarketplaceAgreementsListInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceAgreementsListInput>;
 
 // Output Schema
+export interface MarketplaceAgreementsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    properties?: {
+      publisher?: string;
+      product?: string;
+      plan?: string;
+      licenseTextLink?: string;
+      privacyPolicyLink?: string;
+      retrieveDatetime?: string;
+      signature?: string;
+      accepted?: boolean;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceAgreementsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1331,9 +1826,7 @@ export const MarketplaceAgreementsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceAgreementsListOutput =
-  typeof MarketplaceAgreementsListOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceAgreementsListOutput>;
 
 // The operation
 /**
@@ -1349,6 +1842,57 @@ export const MarketplaceAgreementsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  properties: {
+    createdTime?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    organizationId?: string;
+    ssoUrl?: string;
+    offerDetail: {
+      publisherId: string;
+      id: string;
+      planId: string;
+      planName: string;
+      termUnit: string;
+      termId?: string;
+      privateOfferId?: string;
+      privateOfferIds?: string[];
+      status?:
+        | "Started"
+        | "PendingFulfillmentStart"
+        | "InProgress"
+        | "Subscribed"
+        | "Suspended"
+        | "Reinstated"
+        | "Succeeded"
+        | "Failed"
+        | "Unsubscribed"
+        | "Updating";
+    };
+    userDetail: {
+      firstName?: string;
+      lastName?: string;
+      emailAddress: string;
+      userPrincipalName?: string;
+      aadEmail?: string;
+    };
+    linkOrganization?: { token: string };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OrganizationCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1416,10 +1960,22 @@ export const OrganizationCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationCreateInput = typeof OrganizationCreateInput.Type;
+  ) as unknown as Schema.Codec<OrganizationCreateInput>;
 
 // Output Schema
+export interface OrganizationCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1439,8 +1995,7 @@ export const OrganizationCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationCreateOutput = typeof OrganizationCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationCreateOutput>;
 
 // The operation
 /**
@@ -1456,6 +2011,15 @@ export const OrganizationCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrganizationCreateOutput,
 }));
 // Input Schema
+export interface OrganizationCreateAPIKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  name?: string;
+  description?: string;
+}
 export const OrganizationCreateAPIKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1471,11 +2035,40 @@ export const OrganizationCreateAPIKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/createAPIKey",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationCreateAPIKeyInput =
-  typeof OrganizationCreateAPIKeyInput.Type;
+  ) as unknown as Schema.Codec<OrganizationCreateAPIKeyInput>;
 
 // Output Schema
+export interface OrganizationCreateAPIKeyOutput {
+  kind?: string;
+  id?: string;
+  properties?: {
+    metadata?: {
+      self?: string;
+      resourceName?: string;
+      createdTimestamp?: string;
+      updatedTimestamp?: string;
+      deletedTimestamp?: string;
+    };
+    spec?: {
+      description?: string;
+      name?: string;
+      secret?: Redacted.Redacted<string>;
+      resource?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resourceName?: string;
+        kind?: string;
+      };
+      owner?: {
+        id?: string;
+        related?: string;
+        resourceName?: string;
+        kind?: string;
+      };
+    };
+  };
+}
 export const OrganizationCreateAPIKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -1517,9 +2110,7 @@ export const OrganizationCreateAPIKeyOutput =
         ),
       }),
     ),
-  });
-export type OrganizationCreateAPIKeyOutput =
-  typeof OrganizationCreateAPIKeyOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationCreateAPIKeyOutput>;
 
 // The operation
 /**
@@ -1539,6 +2130,11 @@ export const OrganizationCreateAPIKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+}
 export const OrganizationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1550,12 +2146,12 @@ export const OrganizationDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationDeleteInput = typeof OrganizationDeleteInput.Type;
+  ) as unknown as Schema.Codec<OrganizationDeleteInput>;
 
 // Output Schema
-export const OrganizationDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrganizationDeleteOutput = typeof OrganizationDeleteOutput.Type;
+export type OrganizationDeleteOutput = void;
+export const OrganizationDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteOutput>;
 
 // The operation
 /**
@@ -1571,6 +2167,12 @@ export const OrganizationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrganizationDeleteOutput,
 }));
 // Input Schema
+export interface OrganizationDeleteClusterAPIKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  apiKeyId: string;
+}
 export const OrganizationDeleteClusterAPIKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1583,15 +2185,12 @@ export const OrganizationDeleteClusterAPIKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationDeleteClusterAPIKeyInput =
-  typeof OrganizationDeleteClusterAPIKeyInput.Type;
+  ) as unknown as Schema.Codec<OrganizationDeleteClusterAPIKeyInput>;
 
 // Output Schema
+export type OrganizationDeleteClusterAPIKeyOutput = void;
 export const OrganizationDeleteClusterAPIKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrganizationDeleteClusterAPIKeyOutput =
-  typeof OrganizationDeleteClusterAPIKeyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDeleteClusterAPIKeyOutput>;
 
 // The operation
 /**
@@ -1609,6 +2208,11 @@ export const OrganizationDeleteClusterAPIKey =
     outputSchema: OrganizationDeleteClusterAPIKeyOutput,
   }));
 // Input Schema
+export interface OrganizationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+}
 export const OrganizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1619,10 +2223,22 @@ export const OrganizationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type OrganizationGetInput = typeof OrganizationGetInput.Type;
+) as unknown as Schema.Codec<OrganizationGetInput>;
 
 // Output Schema
+export interface OrganizationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1641,8 +2257,7 @@ export const OrganizationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OrganizationGetOutput = typeof OrganizationGetOutput.Type;
+}) as unknown as Schema.Codec<OrganizationGetOutput>;
 
 // The operation
 /**
@@ -1658,6 +2273,12 @@ export const OrganizationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrganizationGetOutput,
 }));
 // Input Schema
+export interface OrganizationGetClusterAPIKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  apiKeyId: string;
+}
 export const OrganizationGetClusterAPIKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1670,11 +2291,40 @@ export const OrganizationGetClusterAPIKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationGetClusterAPIKeyInput =
-  typeof OrganizationGetClusterAPIKeyInput.Type;
+  ) as unknown as Schema.Codec<OrganizationGetClusterAPIKeyInput>;
 
 // Output Schema
+export interface OrganizationGetClusterAPIKeyOutput {
+  kind?: string;
+  id?: string;
+  properties?: {
+    metadata?: {
+      self?: string;
+      resourceName?: string;
+      createdTimestamp?: string;
+      updatedTimestamp?: string;
+      deletedTimestamp?: string;
+    };
+    spec?: {
+      description?: string;
+      name?: string;
+      secret?: Redacted.Redacted<string>;
+      resource?: {
+        id?: string;
+        environment?: string;
+        related?: string;
+        resourceName?: string;
+        kind?: string;
+      };
+      owner?: {
+        id?: string;
+        related?: string;
+        resourceName?: string;
+        kind?: string;
+      };
+    };
+  };
+}
 export const OrganizationGetClusterAPIKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -1716,9 +2366,7 @@ export const OrganizationGetClusterAPIKeyOutput =
         ),
       }),
     ),
-  });
-export type OrganizationGetClusterAPIKeyOutput =
-  typeof OrganizationGetClusterAPIKeyOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationGetClusterAPIKeyOutput>;
 
 // The operation
 /**
@@ -1736,6 +2384,13 @@ export const OrganizationGetClusterAPIKey =
     outputSchema: OrganizationGetClusterAPIKeyOutput,
   }));
 // Input Schema
+export interface OrganizationGetClusterByIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+}
 export const OrganizationGetClusterByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1749,11 +2404,22 @@ export const OrganizationGetClusterByIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationGetClusterByIdInput =
-  typeof OrganizationGetClusterByIdInput.Type;
+  ) as unknown as Schema.Codec<OrganizationGetClusterByIdInput>;
 
 // Output Schema
+export interface OrganizationGetClusterByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationGetClusterByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1773,9 +2439,7 @@ export const OrganizationGetClusterByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationGetClusterByIdOutput =
-  typeof OrganizationGetClusterByIdOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationGetClusterByIdOutput>;
 
 // The operation
 /**
@@ -1795,6 +2459,12 @@ export const OrganizationGetClusterById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationGetEnvironmentByIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+}
 export const OrganizationGetEnvironmentByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1807,11 +2477,22 @@ export const OrganizationGetEnvironmentByIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationGetEnvironmentByIdInput =
-  typeof OrganizationGetEnvironmentByIdInput.Type;
+  ) as unknown as Schema.Codec<OrganizationGetEnvironmentByIdInput>;
 
 // Output Schema
+export interface OrganizationGetEnvironmentByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationGetEnvironmentByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1831,9 +2512,7 @@ export const OrganizationGetEnvironmentByIdOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationGetEnvironmentByIdOutput =
-  typeof OrganizationGetEnvironmentByIdOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationGetEnvironmentByIdOutput>;
 
 // The operation
 /**
@@ -1851,6 +2530,13 @@ export const OrganizationGetEnvironmentById =
     outputSchema: OrganizationGetEnvironmentByIdOutput,
   }));
 // Input Schema
+export interface OrganizationGetSchemaRegistryClusterByIdInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+}
 export const OrganizationGetSchemaRegistryClusterByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1864,11 +2550,31 @@ export const OrganizationGetSchemaRegistryClusterByIdInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters/{clusterId}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationGetSchemaRegistryClusterByIdInput =
-  typeof OrganizationGetSchemaRegistryClusterByIdInput.Type;
+  ) as unknown as Schema.Codec<OrganizationGetSchemaRegistryClusterByIdInput>;
 
 // Output Schema
+export interface OrganizationGetSchemaRegistryClusterByIdOutput {
+  kind?: string;
+  id?: string;
+  properties?: {
+    metadata?: {
+      self?: string;
+      resourceName?: string;
+      createdTimestamp?: string;
+      updatedTimestamp?: string;
+      deletedTimestamp?: string;
+    };
+    spec?: {
+      name?: string;
+      httpEndpoint?: string;
+      package?: string;
+      region?: { id?: string; related?: string; resourceName?: string };
+      environment?: { id?: string; related?: string; resourceName?: string };
+      cloud?: string;
+    };
+    status?: { phase?: string };
+  };
+}
 export const OrganizationGetSchemaRegistryClusterByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
@@ -1913,9 +2619,7 @@ export const OrganizationGetSchemaRegistryClusterByIdOutput =
         ),
       }),
     ),
-  });
-export type OrganizationGetSchemaRegistryClusterByIdOutput =
-  typeof OrganizationGetSchemaRegistryClusterByIdOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationGetSchemaRegistryClusterByIdOutput>;
 
 // The operation
 /**
@@ -1934,6 +2638,10 @@ export const OrganizationGetSchemaRegistryClusterById =
     outputSchema: OrganizationGetSchemaRegistryClusterByIdOutput,
   }));
 // Input Schema
+export interface OrganizationListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const OrganizationListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1944,11 +2652,25 @@ export const OrganizationListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListByResourceGroupInput =
-  typeof OrganizationListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListByResourceGroupInput>;
 
 // Output Schema
+export interface OrganizationListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrganizationListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1983,9 +2705,7 @@ export const OrganizationListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationListByResourceGroupOutput =
-  typeof OrganizationListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2001,6 +2721,9 @@ export const OrganizationListByResourceGroup =
     outputSchema: OrganizationListByResourceGroupOutput,
   }));
 // Input Schema
+export interface OrganizationListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const OrganizationListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2010,11 +2733,25 @@ export const OrganizationListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/organizations",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListBySubscriptionInput =
-  typeof OrganizationListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListBySubscriptionInput>;
 
 // Output Schema
+export interface OrganizationListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrganizationListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2049,9 +2786,7 @@ export const OrganizationListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationListBySubscriptionOutput =
-  typeof OrganizationListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2066,6 +2801,14 @@ export const OrganizationListBySubscription =
     outputSchema: OrganizationListBySubscriptionOutput,
   }));
 // Input Schema
+export interface OrganizationListClustersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const OrganizationListClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2080,11 +2823,25 @@ export const OrganizationListClustersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListClustersInput =
-  typeof OrganizationListClustersInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListClustersInput>;
 
 // Output Schema
+export interface OrganizationListClustersOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrganizationListClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2119,9 +2876,7 @@ export const OrganizationListClustersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationListClustersOutput =
-  typeof OrganizationListClustersOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListClustersOutput>;
 
 // The operation
 /**
@@ -2142,6 +2897,13 @@ export const OrganizationListClusters = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationListEnvironmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const OrganizationListEnvironmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2155,11 +2917,25 @@ export const OrganizationListEnvironmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListEnvironmentsInput =
-  typeof OrganizationListEnvironmentsInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListEnvironmentsInput>;
 
 // Output Schema
+export interface OrganizationListEnvironmentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrganizationListEnvironmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2194,9 +2970,7 @@ export const OrganizationListEnvironmentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationListEnvironmentsOutput =
-  typeof OrganizationListEnvironmentsOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListEnvironmentsOutput>;
 
 // The operation
 /**
@@ -2215,6 +2989,12 @@ export const OrganizationListEnvironments =
     outputSchema: OrganizationListEnvironmentsOutput,
   }));
 // Input Schema
+export interface OrganizationListRegionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  searchFilters?: Record<string, string>;
+}
 export const OrganizationListRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2227,11 +3007,30 @@ export const OrganizationListRegionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/listRegions",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListRegionsInput =
-  typeof OrganizationListRegionsInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListRegionsInput>;
 
 // Output Schema
+export interface OrganizationListRegionsOutput {
+  data?: {
+    kind?: string;
+    id?: string;
+    properties?: {
+      metadata?: {
+        self?: string;
+        resourceName?: string;
+        createdTimestamp?: string;
+        updatedTimestamp?: string;
+        deletedTimestamp?: string;
+      };
+      spec?: {
+        name?: string;
+        cloud?: string;
+        regionName?: string;
+        packages?: string[];
+      };
+    };
+  }[];
+}
 export const OrganizationListRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.optional(
@@ -2263,9 +3062,7 @@ export const OrganizationListRegionsOutput =
         }),
       ),
     ),
-  });
-export type OrganizationListRegionsOutput =
-  typeof OrganizationListRegionsOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListRegionsOutput>;
 
 // The operation
 /**
@@ -2283,6 +3080,14 @@ export const OrganizationListRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationListSchemaRegistryClustersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const OrganizationListSchemaRegistryClustersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2297,11 +3102,34 @@ export const OrganizationListSchemaRegistryClustersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationListSchemaRegistryClustersInput =
-  typeof OrganizationListSchemaRegistryClustersInput.Type;
+  ) as unknown as Schema.Codec<OrganizationListSchemaRegistryClustersInput>;
 
 // Output Schema
+export interface OrganizationListSchemaRegistryClustersOutput {
+  value: {
+    kind?: string;
+    id?: string;
+    properties?: {
+      metadata?: {
+        self?: string;
+        resourceName?: string;
+        createdTimestamp?: string;
+        updatedTimestamp?: string;
+        deletedTimestamp?: string;
+      };
+      spec?: {
+        name?: string;
+        httpEndpoint?: string;
+        package?: string;
+        region?: { id?: string; related?: string; resourceName?: string };
+        environment?: { id?: string; related?: string; resourceName?: string };
+        cloud?: string;
+      };
+      status?: { phase?: string };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrganizationListSchemaRegistryClustersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2351,9 +3179,7 @@ export const OrganizationListSchemaRegistryClustersOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationListSchemaRegistryClustersOutput =
-  typeof OrganizationListSchemaRegistryClustersOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationListSchemaRegistryClustersOutput>;
 
 // The operation
 /**
@@ -2373,6 +3199,7 @@ export const OrganizationListSchemaRegistryClusters =
     outputSchema: OrganizationListSchemaRegistryClustersOutput,
   }));
 // Input Schema
+export interface OrganizationOperationsListInput {}
 export const OrganizationOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -2380,11 +3207,22 @@ export const OrganizationOperationsListInput =
       path: "/providers/Microsoft.Confluent/operations",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationOperationsListInput =
-  typeof OrganizationOperationsListInput.Type;
+  ) as unknown as Schema.Codec<OrganizationOperationsListInput>;
 
 // Output Schema
+export interface OrganizationOperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+  }[];
+  nextLink?: string;
+}
 export const OrganizationOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2402,9 +3240,7 @@ export const OrganizationOperationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrganizationOperationsListOutput =
-  typeof OrganizationOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationOperationsListOutput>;
 
 // The operation
 /**
@@ -2419,6 +3255,12 @@ export const OrganizationOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrganizationUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  tags?: Record<string, string>;
+}
 export const OrganizationUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2431,10 +3273,22 @@ export const OrganizationUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
       apiVersion: "2024-07-01",
     }),
-  );
-export type OrganizationUpdateInput = typeof OrganizationUpdateInput.Type;
+  ) as unknown as Schema.Codec<OrganizationUpdateInput>;
 
 // Output Schema
+export interface OrganizationUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrganizationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2454,8 +3308,7 @@ export const OrganizationUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OrganizationUpdateOutput = typeof OrganizationUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationUpdateOutput>;
 
 // The operation
 /**
@@ -2471,6 +3324,25 @@ export const OrganizationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrganizationUpdateOutput,
 }));
 // Input Schema
+export interface TopicsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  topicName: string;
+  properties?: {
+    kind?: string;
+    topicId?: string;
+    metadata?: { self?: string; resourceName?: string };
+    partitions?: { related?: string };
+    configs?: { related?: string };
+    inputConfigs?: { name?: string; value?: string }[];
+    partitionsReassignments?: { related?: string };
+    partitionsCount?: string;
+    replicationFactor?: string;
+  };
+}
 export const TopicsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2521,10 +3393,22 @@ export const TopicsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type TopicsCreateInput = typeof TopicsCreateInput.Type;
+) as unknown as Schema.Codec<TopicsCreateInput>;
 
 // Output Schema
+export interface TopicsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TopicsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2543,8 +3427,7 @@ export const TopicsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TopicsCreateOutput = typeof TopicsCreateOutput.Type;
+}) as unknown as Schema.Codec<TopicsCreateOutput>;
 
 // The operation
 /**
@@ -2563,6 +3446,14 @@ export const TopicsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsCreateOutput,
 }));
 // Input Schema
+export interface TopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  topicName: string;
+}
 export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2576,12 +3467,12 @@ export const TopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type TopicsDeleteInput = typeof TopicsDeleteInput.Type;
+) as unknown as Schema.Codec<TopicsDeleteInput>;
 
 // Output Schema
-export const TopicsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TopicsDeleteOutput = typeof TopicsDeleteOutput.Type;
+export type TopicsDeleteOutput = void;
+export const TopicsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TopicsDeleteOutput>;
 
 // The operation
 /**
@@ -2600,6 +3491,14 @@ export const TopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsDeleteOutput,
 }));
 // Input Schema
+export interface TopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  topicName: string;
+}
 export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2613,10 +3512,22 @@ export const TopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
     apiVersion: "2024-07-01",
   }),
-);
-export type TopicsGetInput = typeof TopicsGetInput.Type;
+) as unknown as Schema.Codec<TopicsGetInput>;
 
 // Output Schema
+export interface TopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2635,8 +3546,7 @@ export const TopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type TopicsGetOutput = typeof TopicsGetOutput.Type;
+}) as unknown as Schema.Codec<TopicsGetOutput>;
 
 // The operation
 /**
@@ -2655,6 +3565,15 @@ export const TopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsGetOutput,
 }));
 // Input Schema
+export interface TopicsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  environmentId: string;
+  clusterId: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const TopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2669,10 +3588,25 @@ export const TopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics",
     apiVersion: "2024-07-01",
   }),
-);
-export type TopicsListInput = typeof TopicsListInput.Type;
+) as unknown as Schema.Codec<TopicsListInput>;
 
 // Output Schema
+export interface TopicsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2696,8 +3630,7 @@ export const TopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TopicsListOutput = typeof TopicsListOutput.Type;
+}) as unknown as Schema.Codec<TopicsListOutput>;
 
 // The operation
 /**
@@ -2717,6 +3650,57 @@ export const TopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: TopicsListOutput,
 }));
 // Input Schema
+export interface ValidationsValidateOrganizationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  properties: {
+    createdTime?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    organizationId?: string;
+    ssoUrl?: string;
+    offerDetail: {
+      publisherId: string;
+      id: string;
+      planId: string;
+      planName: string;
+      termUnit: string;
+      termId?: string;
+      privateOfferId?: string;
+      privateOfferIds?: string[];
+      status?:
+        | "Started"
+        | "PendingFulfillmentStart"
+        | "InProgress"
+        | "Subscribed"
+        | "Suspended"
+        | "Reinstated"
+        | "Succeeded"
+        | "Failed"
+        | "Unsubscribed"
+        | "Updating";
+    };
+    userDetail: {
+      firstName?: string;
+      lastName?: string;
+      emailAddress: string;
+      userPrincipalName?: string;
+      aadEmail?: string;
+    };
+    linkOrganization?: { token: string };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ValidationsValidateOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2784,11 +3768,22 @@ export const ValidationsValidateOrganizationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidate",
       apiVersion: "2024-07-01",
     }),
-  );
-export type ValidationsValidateOrganizationInput =
-  typeof ValidationsValidateOrganizationInput.Type;
+  ) as unknown as Schema.Codec<ValidationsValidateOrganizationInput>;
 
 // Output Schema
+export interface ValidationsValidateOrganizationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ValidationsValidateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2808,9 +3803,7 @@ export const ValidationsValidateOrganizationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ValidationsValidateOrganizationOutput =
-  typeof ValidationsValidateOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<ValidationsValidateOrganizationOutput>;
 
 // The operation
 /**
@@ -2827,6 +3820,57 @@ export const ValidationsValidateOrganization =
     outputSchema: ValidationsValidateOrganizationOutput,
   }));
 // Input Schema
+export interface ValidationsValidateOrganizationV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  organizationName: string;
+  properties: {
+    createdTime?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "NotSpecified";
+    organizationId?: string;
+    ssoUrl?: string;
+    offerDetail: {
+      publisherId: string;
+      id: string;
+      planId: string;
+      planName: string;
+      termUnit: string;
+      termId?: string;
+      privateOfferId?: string;
+      privateOfferIds?: string[];
+      status?:
+        | "Started"
+        | "PendingFulfillmentStart"
+        | "InProgress"
+        | "Subscribed"
+        | "Suspended"
+        | "Reinstated"
+        | "Succeeded"
+        | "Failed"
+        | "Unsubscribed"
+        | "Updating";
+    };
+    userDetail: {
+      firstName?: string;
+      lastName?: string;
+      emailAddress: string;
+      userPrincipalName?: string;
+      aadEmail?: string;
+    };
+    linkOrganization?: { token: string };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ValidationsValidateOrganizationV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2894,17 +3938,16 @@ export const ValidationsValidateOrganizationV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/validations/{organizationName}/orgvalidateV2",
       apiVersion: "2024-07-01",
     }),
-  );
-export type ValidationsValidateOrganizationV2Input =
-  typeof ValidationsValidateOrganizationV2Input.Type;
+  ) as unknown as Schema.Codec<ValidationsValidateOrganizationV2Input>;
 
 // Output Schema
+export interface ValidationsValidateOrganizationV2Output {
+  info?: Record<string, string>;
+}
 export const ValidationsValidateOrganizationV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     info: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ValidationsValidateOrganizationV2Output =
-  typeof ValidationsValidateOrganizationV2Output.Type;
+  }) as unknown as Schema.Codec<ValidationsValidateOrganizationV2Output>;
 
 // The operation
 /**

@@ -4,6 +4,13 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsToleratedHashesListInput {
+  id: string;
+  project_id: string;
+  identifier: string;
+  limit?: number;
+  offset?: number;
+}
 export const VisualReviewRunsToleratedHashesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,23 @@ export const VisualReviewRunsToleratedHashesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/tolerated-hashes/",
     }),
-  );
-export type VisualReviewRunsToleratedHashesListInput =
-  typeof VisualReviewRunsToleratedHashesListInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsToleratedHashesListInput>;
 
 // Output Schema
+export interface VisualReviewRunsToleratedHashesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    alternate_hash?: string;
+    baseline_hash?: string;
+    reason?: string;
+    diff_percentage?: number | null;
+    created_at?: string;
+    source_run_id?: string | null;
+  }[];
+}
 export const VisualReviewRunsToleratedHashesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -39,9 +58,7 @@ export const VisualReviewRunsToleratedHashesListOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewRunsToleratedHashesListOutput =
-  typeof VisualReviewRunsToleratedHashesListOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsToleratedHashesListOutput>;
 
 // The operation
 /**

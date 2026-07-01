@@ -4,6 +4,22 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupIntegrationInput {
+  groupId: string;
+  integrationType:
+    | "PAGER_DUTY"
+    | "SLACK"
+    | "DATADOG"
+    | "NEW_RELIC"
+    | "OPS_GENIE"
+    | "VICTOR_OPS"
+    | "WEBHOOK"
+    | "HIP_CHAT"
+    | "PROMETHEUS"
+    | "MICROSOFT_TEAMS";
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -26,19 +42,18 @@ export const GetGroupIntegrationInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
     }),
-  );
-export type GetGroupIntegrationInput = typeof GetGroupIntegrationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupIntegrationInput>;
 
 // Output Schema
+export type GetGroupIntegrationOutput = void;
 export const GetGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupIntegrationOutput = typeof GetGroupIntegrationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIntegrationOutput>;
 
 // The operation
 /**
  * Return One Third-Party Service Integration
  *
- * Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the settings for configuring integration with one third-party service. These settings apply to all databases managed in one MongoDB Cloud project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

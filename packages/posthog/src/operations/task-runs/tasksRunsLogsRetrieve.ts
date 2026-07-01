@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsLogsRetrieveInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+}
 export const TasksRunsLogsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,22 +19,19 @@ export const TasksRunsLogsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/logs/",
     }),
-  );
-export type TasksRunsLogsRetrieveInput = typeof TasksRunsLogsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsLogsRetrieveInput>;
 
 // Output Schema
+export type TasksRunsLogsRetrieveOutput = void;
 export const TasksRunsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TasksRunsLogsRetrieveOutput =
-  typeof TasksRunsLogsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TasksRunsLogsRetrieveOutput>;
 
 // The operation
 /**
  * Get task run logs
  *
- * Fetch the logs for a task run. Returns JSONL formatted log entries.
+ * Fetch the logs for a task run as JSONL. If the run resumes from another (state.resume_from_run_id), each ancestor's log is concatenated first (oldest ancestor → ... → this run) so resume consumers see a single continuous history and can find the most recent git_checkpoint event regardless of which run emitted it.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(

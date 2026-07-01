@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UpdateKeyspaceVschemaInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace: string;
+  vschema: string;
+}
 export const UpdateKeyspaceVschemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,16 +23,16 @@ export const UpdateKeyspaceVschemaInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/vschema",
     }),
-  );
-export type UpdateKeyspaceVschemaInput = typeof UpdateKeyspaceVschemaInput.Type;
+  ) as unknown as Schema.Codec<UpdateKeyspaceVschemaInput>;
 
 // Output Schema
+export interface UpdateKeyspaceVschemaOutput {
+  raw: string;
+}
 export const UpdateKeyspaceVschemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     raw: Schema.String,
-  });
-export type UpdateKeyspaceVschemaOutput =
-  typeof UpdateKeyspaceVschemaOutput.Type;
+  }) as unknown as Schema.Codec<UpdateKeyspaceVschemaOutput>;
 
 // The operation
 /**

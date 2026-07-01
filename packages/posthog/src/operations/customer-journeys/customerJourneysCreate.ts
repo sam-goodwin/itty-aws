@@ -1,9 +1,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CustomerJourneysCreateInput {
+  project_id: string;
+  id?: string;
+  insight?: number;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomerJourneysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,13 +26,20 @@ export const CustomerJourneysCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/customer_journeys/",
+      path: "/api/projects/{project_id}/customer_journeys/",
     }),
-  );
-export type CustomerJourneysCreateInput =
-  typeof CustomerJourneysCreateInput.Type;
+  ) as unknown as Schema.Codec<CustomerJourneysCreateInput>;
 
 // Output Schema
+export interface CustomerJourneysCreateOutput {
+  id?: string;
+  insight?: number;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  created_by?: number | null;
+  updated_at?: string | null;
+}
 export const CustomerJourneysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -33,9 +49,7 @@ export const CustomerJourneysCreateOutput =
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type CustomerJourneysCreateOutput =
-  typeof CustomerJourneysCreateOutput.Type;
+  }) as unknown as Schema.Codec<CustomerJourneysCreateOutput>;
 
 // The operation
 /**
@@ -46,6 +60,5 @@ export const customerJourneysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CustomerJourneysCreateInput,
     outputSchema: CustomerJourneysCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

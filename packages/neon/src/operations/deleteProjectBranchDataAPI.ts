@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteProjectBranchDataAPIInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+}
 export const DeleteProjectBranchDataAPIInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,22 +18,21 @@ export const DeleteProjectBranchDataAPIInput =
       method: "DELETE",
       path: "/projects/{project_id}/branches/{branch_id}/data-api/{database_name}",
     }),
-  );
-export type DeleteProjectBranchDataAPIInput =
-  typeof DeleteProjectBranchDataAPIInput.Type;
+  ) as unknown as Schema.Codec<DeleteProjectBranchDataAPIInput>;
 
 // Output Schema
+export interface DeleteProjectBranchDataAPIOutput {}
 export const DeleteProjectBranchDataAPIOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type DeleteProjectBranchDataAPIOutput =
-  typeof DeleteProjectBranchDataAPIOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<DeleteProjectBranchDataAPIOutput>;
 
 // The operation
 /**
  * Delete Neon Data API
  *
  * Deletes the Neon Data API for the specified branch.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * Existing connections using the Data API endpoint will fail after deletion.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSourcesSourceSourceTransactionsInput {
+  source: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetSourcesSourceSourceTransactionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     source: Schema.String.pipe(T.PathParam()),
@@ -16,11 +23,69 @@ export const GetSourcesSourceSourceTransactionsInput =
       path: "/v1/sources/{source}/source_transactions",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetSourcesSourceSourceTransactionsInput =
-  typeof GetSourcesSourceSourceTransactionsInput.Type;
+  ) as unknown as Schema.Codec<GetSourcesSourceSourceTransactionsInput>;
 
 // Output Schema
+export interface GetSourcesSourceSourceTransactionsOutput {
+  data: {
+    ach_credit_transfer?: {
+      customer_data?: string;
+      fingerprint?: string;
+      last4?: string;
+      routing_number?: string;
+    };
+    amount: number;
+    chf_credit_transfer?: {
+      reference?: string;
+      sender_address_country?: string;
+      sender_address_line1?: string;
+      sender_iban?: string;
+      sender_name?: string;
+    };
+    created: number;
+    currency: string;
+    gbp_credit_transfer?: {
+      fingerprint?: string;
+      funding_method?: string;
+      last4?: string;
+      reference?: string;
+      sender_account_number?: string;
+      sender_name?: string;
+      sender_sort_code?: string;
+    };
+    id: string;
+    livemode: boolean;
+    object: "source_transaction";
+    paper_check?: { available_at?: string; invoices?: string };
+    sepa_credit_transfer?: {
+      reference?: string;
+      sender_iban?: string;
+      sender_name?: string;
+    };
+    source: string;
+    status: string;
+    type:
+      | "ach_credit_transfer"
+      | "ach_debit"
+      | "alipay"
+      | "bancontact"
+      | "card"
+      | "card_present"
+      | "eps"
+      | "giropay"
+      | "ideal"
+      | "klarna"
+      | "multibanco"
+      | "p24"
+      | "sepa_debit"
+      | "sofort"
+      | "three_d_secure"
+      | "wechat";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetSourcesSourceSourceTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -97,9 +162,7 @@ export const GetSourcesSourceSourceTransactionsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetSourcesSourceSourceTransactionsOutput =
-  typeof GetSourcesSourceSourceTransactionsOutput.Type;
+  }) as unknown as Schema.Codec<GetSourcesSourceSourceTransactionsOutput>;
 
 // The operation
 /**

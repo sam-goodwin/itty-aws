@@ -4,12 +4,141 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AccessControlListsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+  properties: {
+    annotation?: string;
+    configurationType: "File" | "Inline";
+    aclsUrl?: string;
+    defaultAction?: "Permit" | "Deny";
+    matchConfigurations?: {
+      matchConfigurationName?: string;
+      sequenceNumber?: number;
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConditions?: {
+        protocolTypes?: string[];
+        vlanMatchCondition?: {
+          vlans?: string[];
+          innerVlans?: string[];
+          vlanGroupNames?: string[];
+        };
+        ipCondition?: {
+          type?: "SourceIP" | "DestinationIP" | "Bidirectional";
+          prefixType?: "Prefix" | "LongestPrefix";
+          ipPrefixValues?: string[];
+          ipGroupNames?: string[];
+        };
+      }[];
+      actions?: {
+        type?: "Drop" | "Count" | "Log" | "Remark" | "PoliceRate";
+        counterName?: string;
+        remarkComment?: string;
+        policeRateConfiguration?: {
+          bitRate?: {
+            rate?: number;
+            unit?: "bps" | "Kbps" | "Mbps" | "Gbps" | "Pps";
+          };
+          burstSize?: {
+            size?: number;
+            unit?: "Bytes" | "KBytes" | "MBytes" | "GBytes" | "Packets";
+          };
+        };
+      }[];
+    }[];
+    dynamicMatchConfigurations?: {
+      ipGroups?: {
+        name?: string;
+        ipAddressType?: "IPv4" | "IPv6";
+        ipPrefixes?: string[];
+      }[];
+      vlanGroups?: { name?: string; vlans?: string[] }[];
+      portGroups?: { name?: string; ports?: string[] }[];
+    }[];
+    lastSyncedTime?: string;
+    aclType?:
+      | "ControlPlaneTrafficPolicy"
+      | "Tenant"
+      | "Management"
+      | "ControlPlaneAcl";
+    deviceRole?: "CE" | "ToR" | "NPB" | "ManagementSwitch";
+    globalAccessControlListActions?: { enableCount?: "True" | "False" };
+    lastOperation?: { details?: string };
+    networkFabricIds?: string[];
+    controlPlaneAclConfiguration?: {
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConfigurations?: {
+        matchConfigurationName?: string;
+        sequenceNumber?: number;
+        matchCondition?: {
+          protocolTypes?: string;
+          ipCondition?: {
+            sourceIpPrefix?: string;
+            destinationIpPrefix?: string;
+          };
+          ttlMatchCondition?: {
+            ttlValue?: string;
+            ttlMatchType?: "eq" | "neq" | "gt" | "lt";
+          };
+          portCondition?: {
+            sourcePorts?: {
+              ports?: string[];
+              portMatchType?: "eq" | "neq" | "gt" | "lt" | "range";
+            };
+            destinationPorts?: {
+              ports?: string[];
+              portMatchType?: "eq" | "neq" | "gt" | "lt" | "range";
+            };
+          };
+          flags?: string[];
+          icmpConfiguration?: { icmpTypes?: string[] };
+        };
+        action?: {
+          type?: "Permit" | "Deny" | "Remark";
+          remarkComment?: string;
+        };
+      }[];
+    }[];
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AccessControlListsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -302,11 +431,22 @@ export const AccessControlListsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsCreateInput =
-  typeof AccessControlListsCreateInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsCreateInput>;
 
 // Output Schema
+export interface AccessControlListsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccessControlListsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -326,9 +466,7 @@ export const AccessControlListsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccessControlListsCreateOutput =
-  typeof AccessControlListsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsCreateOutput>;
 
 // The operation
 /**
@@ -346,6 +484,11 @@ export const AccessControlListsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessControlListsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+}
 export const AccessControlListsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -357,15 +500,12 @@ export const AccessControlListsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsDeleteInput =
-  typeof AccessControlListsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsDeleteInput>;
 
 // Output Schema
+export type AccessControlListsDeleteOutput = void;
 export const AccessControlListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccessControlListsDeleteOutput =
-  typeof AccessControlListsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessControlListsDeleteOutput>;
 
 // The operation
 /**
@@ -383,6 +523,11 @@ export const AccessControlListsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessControlListsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+}
 export const AccessControlListsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -394,10 +539,22 @@ export const AccessControlListsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsGetInput = typeof AccessControlListsGetInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsGetInput>;
 
 // Output Schema
+export interface AccessControlListsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccessControlListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -417,9 +574,7 @@ export const AccessControlListsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccessControlListsGetOutput =
-  typeof AccessControlListsGetOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsGetOutput>;
 
 // The operation
 /**
@@ -437,6 +592,10 @@ export const AccessControlListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessControlListsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AccessControlListsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -447,11 +606,25 @@ export const AccessControlListsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsListByResourceGroupInput =
-  typeof AccessControlListsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccessControlListsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AccessControlListsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -486,9 +659,7 @@ export const AccessControlListsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccessControlListsListByResourceGroupOutput =
-  typeof AccessControlListsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -504,6 +675,9 @@ export const AccessControlListsListByResourceGroup =
     outputSchema: AccessControlListsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AccessControlListsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AccessControlListsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -513,11 +687,25 @@ export const AccessControlListsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/accessControlLists",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsListBySubscriptionInput =
-  typeof AccessControlListsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsListBySubscriptionInput>;
 
 // Output Schema
+export interface AccessControlListsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AccessControlListsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -552,9 +740,7 @@ export const AccessControlListsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccessControlListsListBySubscriptionOutput =
-  typeof AccessControlListsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -569,6 +755,11 @@ export const AccessControlListsListBySubscription =
     outputSchema: AccessControlListsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AccessControlListsResyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+}
 export const AccessControlListsResyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -580,11 +771,18 @@ export const AccessControlListsResyncInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/resync",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsResyncInput =
-  typeof AccessControlListsResyncInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsResyncInput>;
 
 // Output Schema
+export interface AccessControlListsResyncOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const AccessControlListsResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -603,9 +801,7 @@ export const AccessControlListsResyncOutput =
         ),
       }),
     ),
-  });
-export type AccessControlListsResyncOutput =
-  typeof AccessControlListsResyncOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsResyncOutput>;
 
 // The operation
 /**
@@ -623,6 +819,102 @@ export const AccessControlListsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessControlListsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+  properties?: {
+    configurationType?: "File" | "Inline";
+    aclsUrl?: string;
+    defaultAction?: "Permit" | "Deny";
+    matchConfigurations?: {
+      matchConfigurationName?: string;
+      sequenceNumber?: number;
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConditions?: {
+        protocolTypes?: string[];
+        vlanMatchCondition?: {
+          vlans?: string[];
+          innerVlans?: string[];
+          vlanGroupNames?: string[];
+        };
+        ipCondition?: {
+          type?: "SourceIP" | "DestinationIP" | "Bidirectional";
+          prefixType?: "Prefix" | "LongestPrefix";
+          ipPrefixValues?: string[];
+          ipGroupNames?: string[];
+        };
+      }[];
+      actions?: {
+        type?: "Drop" | "Count" | "Log" | "Remark" | "PoliceRate";
+        counterName?: string;
+        remarkComment?: string;
+        policeRateConfiguration?: {
+          bitRate?: {
+            rate?: number;
+            unit?: "bps" | "Kbps" | "Mbps" | "Gbps" | "Pps";
+          };
+          burstSize?: {
+            size?: number;
+            unit?: "Bytes" | "KBytes" | "MBytes" | "GBytes" | "Packets";
+          };
+        };
+      }[];
+    }[];
+    dynamicMatchConfigurations?: {
+      ipGroups?: {
+        name?: string;
+        ipAddressType?: "IPv4" | "IPv6";
+        ipPrefixes?: string[];
+      }[];
+      vlanGroups?: { name?: string; vlans?: string[] }[];
+      portGroups?: { name?: string; ports?: string[] }[];
+    }[];
+    controlPlaneAclConfiguration?: {
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConfigurations?: {
+        matchConfigurationName?: string;
+        sequenceNumber?: number;
+        matchCondition?: {
+          protocolTypes?: string;
+          ipCondition?: {
+            sourceIpPrefix?: string;
+            destinationIpPrefix?: string;
+          };
+          ttlMatchCondition?: {
+            ttlValue?: string;
+            ttlMatchType?: "eq" | "neq" | "gt" | "lt";
+          };
+          portCondition?: {
+            sourcePorts?: {
+              ports?: string[];
+              portMatchType?: "eq" | "neq" | "gt" | "lt" | "range";
+            };
+            destinationPorts?: {
+              ports?: string[];
+              portMatchType?: "eq" | "neq" | "gt" | "lt" | "range";
+            };
+          };
+          flags?: string[];
+          icmpConfiguration?: { icmpTypes?: string[] };
+        };
+        action?: {
+          type?: "Permit" | "Deny" | "Remark";
+          remarkComment?: string;
+        };
+      }[];
+    }[];
+    aclType?:
+      | "ControlPlaneTrafficPolicy"
+      | "Tenant"
+      | "Management"
+      | "ControlPlaneAcl";
+    deviceRole?: "CE" | "ToR" | "NPB" | "ManagementSwitch";
+    globalAccessControlListActions?: { enableCount?: "True" | "False" };
+    annotation?: string;
+  };
+  tags?: Record<string, string>;
+}
 export const AccessControlListsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -874,11 +1166,22 @@ export const AccessControlListsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsUpdateInput =
-  typeof AccessControlListsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsUpdateInput>;
 
 // Output Schema
+export interface AccessControlListsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccessControlListsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -898,9 +1201,7 @@ export const AccessControlListsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccessControlListsUpdateOutput =
-  typeof AccessControlListsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsUpdateOutput>;
 
 // The operation
 /**
@@ -918,6 +1219,13 @@ export const AccessControlListsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessControlListsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const AccessControlListsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -933,11 +1241,65 @@ export const AccessControlListsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsUpdateAdministrativeStateInput =
-  typeof AccessControlListsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface AccessControlListsUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const AccessControlListsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1045,9 +1407,7 @@ export const AccessControlListsUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type AccessControlListsUpdateAdministrativeStateOutput =
-  typeof AccessControlListsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -1064,6 +1424,11 @@ export const AccessControlListsUpdateAdministrativeState =
     outputSchema: AccessControlListsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface AccessControlListsValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accessControlListName: string;
+}
 export const AccessControlListsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1075,11 +1440,18 @@ export const AccessControlListsValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type AccessControlListsValidateConfigurationInput =
-  typeof AccessControlListsValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<AccessControlListsValidateConfigurationInput>;
 
 // Output Schema
+export interface AccessControlListsValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const AccessControlListsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -1098,9 +1470,7 @@ export const AccessControlListsValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type AccessControlListsValidateConfigurationOutput =
-  typeof AccessControlListsValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<AccessControlListsValidateConfigurationOutput>;
 
 // The operation
 /**
@@ -1117,6 +1487,108 @@ export const AccessControlListsValidateConfiguration =
     outputSchema: AccessControlListsValidateConfigurationOutput,
   }));
 // Input Schema
+export interface ExternalNetworksCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+  properties: {
+    annotation?: string;
+    networkToNetworkInterconnectId?: string;
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    peeringOption: "OptionA" | "OptionB";
+    optionBProperties?: {
+      importRouteTargets?: string[];
+      exportRouteTargets?: string[];
+      routeTargets?: {
+        importIpv4RouteTargets?: string[];
+        importIpv6RouteTargets?: string[];
+        exportIpv4RouteTargets?: string[];
+        exportIpv6RouteTargets?: string[];
+      };
+    };
+    optionAProperties?: {
+      primaryIpv4Prefix?: string;
+      primaryIpv6Prefix?: string;
+      secondaryIpv4Prefix?: string;
+      secondaryIpv6Prefix?: string;
+      mtu?: number;
+      vlanId: number;
+      fabricASN?: number;
+      peerASN: number;
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ingressAclId?: string;
+      bmpConfiguration?: { configurationState?: "Enabled" | "Disabled" };
+      egressAclId?: string;
+      v4OverV6BgpSession?: "Enabled" | "Disabled";
+      v6OverV4BgpSession?: "Enabled" | "Disabled";
+      nativeIpv4PrefixLimit?: {
+        prefixLimits?: {
+          maximumRoutes?: number;
+          threshold?: number;
+          idleTimeExpiry?: number;
+        }[];
+      };
+      nativeIpv6PrefixLimit?: {
+        prefixLimits?: {
+          maximumRoutes?: number;
+          threshold?: number;
+          idleTimeExpiry?: number;
+        }[];
+      };
+    };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    lastOperation?: { details?: string };
+    networkFabricId?: string;
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+}
 export const ExternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1302,11 +1774,22 @@ export const ExternalNetworksCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksCreateInput =
-  typeof ExternalNetworksCreateInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksCreateInput>;
 
 // Output Schema
+export interface ExternalNetworksCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExternalNetworksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1326,9 +1809,7 @@ export const ExternalNetworksCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExternalNetworksCreateOutput =
-  typeof ExternalNetworksCreateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksCreateOutput>;
 
 // The operation
 /**
@@ -1347,6 +1828,12 @@ export const ExternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExternalNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+}
 export const ExternalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1359,15 +1846,12 @@ export const ExternalNetworksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksDeleteInput =
-  typeof ExternalNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksDeleteInput>;
 
 // Output Schema
+export type ExternalNetworksDeleteOutput = void;
 export const ExternalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExternalNetworksDeleteOutput =
-  typeof ExternalNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -1386,6 +1870,12 @@ export const ExternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExternalNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+}
 export const ExternalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1398,10 +1888,22 @@ export const ExternalNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksGetInput = typeof ExternalNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksGetInput>;
 
 // Output Schema
+export interface ExternalNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExternalNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1421,8 +1923,7 @@ export const ExternalNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExternalNetworksGetOutput = typeof ExternalNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksGetOutput>;
 
 // The operation
 /**
@@ -1439,6 +1940,11 @@ export const ExternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExternalNetworksGetOutput,
 }));
 // Input Schema
+export interface ExternalNetworksListByL3IsolationDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const ExternalNetworksListByL3IsolationDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1450,11 +1956,25 @@ export const ExternalNetworksListByL3IsolationDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksListByL3IsolationDomainInput =
-  typeof ExternalNetworksListByL3IsolationDomainInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksListByL3IsolationDomainInput>;
 
 // Output Schema
+export interface ExternalNetworksListByL3IsolationDomainOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ExternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1489,9 +2009,7 @@ export const ExternalNetworksListByL3IsolationDomainOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ExternalNetworksListByL3IsolationDomainOutput =
-  typeof ExternalNetworksListByL3IsolationDomainOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksListByL3IsolationDomainOutput>;
 
 // The operation
 /**
@@ -1508,6 +2026,78 @@ export const ExternalNetworksListByL3IsolationDomain =
     outputSchema: ExternalNetworksListByL3IsolationDomainOutput,
   }));
 // Input Schema
+export interface ExternalNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+  properties?: {
+    annotation?: string;
+    networkToNetworkInterconnectId?: string;
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    peeringOption?: "OptionA" | "OptionB";
+    optionBProperties?: {
+      importRouteTargets?: string[];
+      exportRouteTargets?: string[];
+      routeTargets?: {
+        importIpv4RouteTargets?: string[];
+        importIpv6RouteTargets?: string[];
+        exportIpv4RouteTargets?: string[];
+        exportIpv6RouteTargets?: string[];
+      };
+    };
+    optionAProperties?: {
+      primaryIpv4Prefix?: string;
+      primaryIpv6Prefix?: string;
+      secondaryIpv4Prefix?: string;
+      secondaryIpv6Prefix?: string;
+      mtu?: number;
+      vlanId?: number;
+      fabricASN?: number;
+      peerASN?: number;
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ingressAclId?: string;
+      egressAclId?: string;
+      bmpConfiguration?: { configurationState?: "Enabled" | "Disabled" };
+      v4OverV6BgpSession?: "Enabled" | "Disabled";
+      v6OverV4BgpSession?: "Enabled" | "Disabled";
+      nativeIpv4PrefixLimit?: {
+        prefixLimits?: {
+          maximumRoutes?: number;
+          threshold?: number;
+          idleTimeExpiry?: number;
+        }[];
+      };
+      nativeIpv6PrefixLimit?: {
+        prefixLimits?: {
+          maximumRoutes?: number;
+          threshold?: number;
+          idleTimeExpiry?: number;
+        }[];
+      };
+    };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+  };
+}
 export const ExternalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1652,11 +2242,22 @@ export const ExternalNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksUpdateInput =
-  typeof ExternalNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksUpdateInput>;
 
 // Output Schema
+export interface ExternalNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ExternalNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1676,9 +2277,7 @@ export const ExternalNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ExternalNetworksUpdateOutput =
-  typeof ExternalNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -1697,6 +2296,14 @@ export const ExternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ExternalNetworksUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const ExternalNetworksUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1713,11 +2320,65 @@ export const ExternalNetworksUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksUpdateAdministrativeStateInput =
-  typeof ExternalNetworksUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface ExternalNetworksUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const ExternalNetworksUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1825,9 +2486,7 @@ export const ExternalNetworksUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ExternalNetworksUpdateAdministrativeStateOutput =
-  typeof ExternalNetworksUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -1845,6 +2504,14 @@ export const ExternalNetworksUpdateAdministrativeState =
     outputSchema: ExternalNetworksUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface ExternalNetworksUpdateBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+  routeType?: "Static" | "OptionA";
+  administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+}
 export const ExternalNetworksUpdateBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1861,11 +2528,68 @@ export const ExternalNetworksUpdateBfdAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksUpdateBfdAdministrativeStateInput =
-  typeof ExternalNetworksUpdateBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksUpdateBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface ExternalNetworksUpdateBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    routeType?: "Static" | "OptionA";
+    administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+  };
+}
 export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1975,9 +2699,7 @@ export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type ExternalNetworksUpdateBfdAdministrativeStateOutput =
-  typeof ExternalNetworksUpdateBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksUpdateBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -1995,6 +2717,14 @@ export const ExternalNetworksUpdateBfdAdministrativeState =
     outputSchema: ExternalNetworksUpdateBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  externalNetworkName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2011,11 +2741,65 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
-  typeof ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2123,9 +2907,7 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
-  typeof ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -2143,6 +2925,86 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeState =
     outputSchema: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface InternalNetworksCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  properties: {
+    annotation?: string;
+    extension?: "NoExtension" | "NPB";
+    mtu?: number;
+    connectedIPv4Subnets?: { annotation?: string }[];
+    connectedIPv6Subnets?: { annotation?: string }[];
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    ingressAclId?: string;
+    egressAclId?: string;
+    isMonitoringEnabled?: "True" | "False";
+    vlanId: number;
+    bgpConfiguration?: { annotation?: string };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+      extension?: "NoExtension" | "NPB";
+    };
+    nativeIpv4PrefixLimit?: {
+      prefixLimits?: {
+        maximumRoutes?: number;
+        threshold?: number;
+        idleTimeExpiry?: number;
+      }[];
+    };
+    nativeIpv6PrefixLimit?: {
+      prefixLimits?: {
+        maximumRoutes?: number;
+        threshold?: number;
+        idleTimeExpiry?: number;
+      }[];
+    };
+    lastOperation?: { details?: string };
+    networkFabricId?: string;
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+}
 export const InternalNetworksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2294,11 +3156,22 @@ export const InternalNetworksCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksCreateInput =
-  typeof InternalNetworksCreateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksCreateInput>;
 
 // Output Schema
+export interface InternalNetworksCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternalNetworksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2318,9 +3191,7 @@ export const InternalNetworksCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternalNetworksCreateOutput =
-  typeof InternalNetworksCreateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksCreateOutput>;
 
 // The operation
 /**
@@ -2339,6 +3210,12 @@ export const InternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternalNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+}
 export const InternalNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2351,15 +3228,12 @@ export const InternalNetworksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksDeleteInput =
-  typeof InternalNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksDeleteInput>;
 
 // Output Schema
+export type InternalNetworksDeleteOutput = void;
 export const InternalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InternalNetworksDeleteOutput =
-  typeof InternalNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -2378,6 +3252,12 @@ export const InternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternalNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+}
 export const InternalNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2390,10 +3270,22 @@ export const InternalNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksGetInput = typeof InternalNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksGetInput>;
 
 // Output Schema
+export interface InternalNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternalNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2413,8 +3305,7 @@ export const InternalNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternalNetworksGetOutput = typeof InternalNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksGetOutput>;
 
 // The operation
 /**
@@ -2431,6 +3322,11 @@ export const InternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InternalNetworksGetOutput,
 }));
 // Input Schema
+export interface InternalNetworksListByL3IsolationDomainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const InternalNetworksListByL3IsolationDomainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2442,11 +3338,25 @@ export const InternalNetworksListByL3IsolationDomainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksListByL3IsolationDomainInput =
-  typeof InternalNetworksListByL3IsolationDomainInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksListByL3IsolationDomainInput>;
 
 // Output Schema
+export interface InternalNetworksListByL3IsolationDomainOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InternalNetworksListByL3IsolationDomainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2481,9 +3391,7 @@ export const InternalNetworksListByL3IsolationDomainOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InternalNetworksListByL3IsolationDomainOutput =
-  typeof InternalNetworksListByL3IsolationDomainOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksListByL3IsolationDomainOutput>;
 
 // The operation
 /**
@@ -2500,6 +3408,53 @@ export const InternalNetworksListByL3IsolationDomain =
     outputSchema: InternalNetworksListByL3IsolationDomainOutput,
   }));
 // Input Schema
+export interface InternalNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  properties?: {
+    annotation?: string;
+    mtu?: number;
+    connectedIPv4Subnets?: { annotation?: string }[];
+    connectedIPv6Subnets?: { annotation?: string }[];
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    ingressAclId?: string;
+    egressAclId?: string;
+    isMonitoringEnabled?: "True" | "False";
+    bgpConfiguration?: { annotation?: string };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    nativeIpv4PrefixLimit?: {
+      prefixLimits?: {
+        maximumRoutes?: number;
+        threshold?: number;
+        idleTimeExpiry?: number;
+      }[];
+    };
+    nativeIpv6PrefixLimit?: {
+      prefixLimits?: {
+        maximumRoutes?: number;
+        threshold?: number;
+        idleTimeExpiry?: number;
+      }[];
+    };
+  };
+}
 export const InternalNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2609,11 +3564,22 @@ export const InternalNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksUpdateInput =
-  typeof InternalNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksUpdateInput>;
 
 // Output Schema
+export interface InternalNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternalNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2633,9 +3599,7 @@ export const InternalNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternalNetworksUpdateOutput =
-  typeof InternalNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -2654,6 +3618,14 @@ export const InternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternalNetworksUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const InternalNetworksUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2670,11 +3642,65 @@ export const InternalNetworksUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksUpdateAdministrativeStateInput =
-  typeof InternalNetworksUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface InternalNetworksUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const InternalNetworksUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2782,9 +3808,7 @@ export const InternalNetworksUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type InternalNetworksUpdateAdministrativeStateOutput =
-  typeof InternalNetworksUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -2802,6 +3826,15 @@ export const InternalNetworksUpdateAdministrativeState =
     outputSchema: InternalNetworksUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface InternalNetworksUpdateBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  routeType?: "Static" | "Bgp";
+  neighborAddress?: string;
+  administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+}
 export const InternalNetworksUpdateBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2819,11 +3852,71 @@ export const InternalNetworksUpdateBfdAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksUpdateBfdAdministrativeStateInput =
-  typeof InternalNetworksUpdateBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksUpdateBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface InternalNetworksUpdateBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    neighborAddressAdministrativeStatus?: {
+      neighborAddress?: string;
+      administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+      error?: string;
+    }[];
+  };
+}
 export const InternalNetworksUpdateBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2940,9 +4033,7 @@ export const InternalNetworksUpdateBfdAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type InternalNetworksUpdateBfdAdministrativeStateOutput =
-  typeof InternalNetworksUpdateBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksUpdateBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -2960,6 +4051,14 @@ export const InternalNetworksUpdateBfdAdministrativeState =
     outputSchema: InternalNetworksUpdateBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface InternalNetworksUpdateBgpAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  neighborAddress?: string;
+  administrativeState?: "Enabled" | "Disabled";
+}
 export const InternalNetworksUpdateBgpAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2976,11 +4075,71 @@ export const InternalNetworksUpdateBgpAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBgpAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksUpdateBgpAdministrativeStateInput =
-  typeof InternalNetworksUpdateBgpAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksUpdateBgpAdministrativeStateInput>;
 
 // Output Schema
+export interface InternalNetworksUpdateBgpAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    neighborAddressAdministrativeStatus?: {
+      neighborAddress?: string;
+      administrativeState?: "Enabled" | "Disabled";
+      error?: string;
+    }[];
+  };
+}
 export const InternalNetworksUpdateBgpAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3097,9 +4256,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type InternalNetworksUpdateBgpAdministrativeStateOutput =
-  typeof InternalNetworksUpdateBgpAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksUpdateBgpAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -3117,6 +4274,14 @@ export const InternalNetworksUpdateBgpAdministrativeState =
     outputSchema: InternalNetworksUpdateBgpAdministrativeStateOutput,
   }));
 // Input Schema
+export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  internalNetworkName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3133,11 +4298,65 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
-  typeof InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3245,9 +4464,7 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
-  typeof InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -3265,6 +4482,14 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeState =
     outputSchema: InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface InternetGatewayRulesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayRuleName: string;
+  properties: { annotation?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const InternetGatewayRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3281,11 +4506,22 @@ export const InternetGatewayRulesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesCreateInput =
-  typeof InternetGatewayRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesCreateInput>;
 
 // Output Schema
+export interface InternetGatewayRulesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewayRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3305,9 +4541,7 @@ export const InternetGatewayRulesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewayRulesCreateOutput =
-  typeof InternetGatewayRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewayRulesCreateOutput>;
 
 // The operation
 /**
@@ -3325,6 +4559,11 @@ export const InternetGatewayRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewayRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayRuleName: string;
+}
 export const InternetGatewayRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3336,15 +4575,12 @@ export const InternetGatewayRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesDeleteInput =
-  typeof InternetGatewayRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesDeleteInput>;
 
 // Output Schema
+export type InternetGatewayRulesDeleteOutput = void;
 export const InternetGatewayRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InternetGatewayRulesDeleteOutput =
-  typeof InternetGatewayRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewayRulesDeleteOutput>;
 
 // The operation
 /**
@@ -3362,6 +4598,11 @@ export const InternetGatewayRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewayRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayRuleName: string;
+}
 export const InternetGatewayRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3373,11 +4614,22 @@ export const InternetGatewayRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesGetInput =
-  typeof InternetGatewayRulesGetInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesGetInput>;
 
 // Output Schema
+export interface InternetGatewayRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewayRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3397,9 +4649,7 @@ export const InternetGatewayRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewayRulesGetOutput =
-  typeof InternetGatewayRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewayRulesGetOutput>;
 
 // The operation
 /**
@@ -3417,6 +4667,10 @@ export const InternetGatewayRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewayRulesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const InternetGatewayRulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3427,11 +4681,25 @@ export const InternetGatewayRulesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesListByResourceGroupInput =
-  typeof InternetGatewayRulesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesListByResourceGroupInput>;
 
 // Output Schema
+export interface InternetGatewayRulesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InternetGatewayRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3466,9 +4734,7 @@ export const InternetGatewayRulesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InternetGatewayRulesListByResourceGroupOutput =
-  typeof InternetGatewayRulesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewayRulesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3484,6 +4750,9 @@ export const InternetGatewayRulesListByResourceGroup =
     outputSchema: InternetGatewayRulesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface InternetGatewayRulesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const InternetGatewayRulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3493,11 +4762,25 @@ export const InternetGatewayRulesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesListBySubscriptionInput =
-  typeof InternetGatewayRulesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesListBySubscriptionInput>;
 
 // Output Schema
+export interface InternetGatewayRulesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InternetGatewayRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3532,9 +4815,7 @@ export const InternetGatewayRulesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InternetGatewayRulesListBySubscriptionOutput =
-  typeof InternetGatewayRulesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewayRulesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3549,6 +4830,12 @@ export const InternetGatewayRulesListBySubscription =
     outputSchema: InternetGatewayRulesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface InternetGatewayRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayRuleName: string;
+  tags?: Record<string, string>;
+}
 export const InternetGatewayRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3561,11 +4848,22 @@ export const InternetGatewayRulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewayRulesUpdateInput =
-  typeof InternetGatewayRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewayRulesUpdateInput>;
 
 // Output Schema
+export interface InternetGatewayRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewayRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3585,9 +4883,7 @@ export const InternetGatewayRulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewayRulesUpdateOutput =
-  typeof InternetGatewayRulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewayRulesUpdateOutput>;
 
 // The operation
 /**
@@ -3605,6 +4901,30 @@ export const InternetGatewayRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewaysCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayName: string;
+  properties: {
+    annotation?: string;
+    internetGatewayRuleId?: string;
+    ipv4Address?: string;
+    port?: number;
+    type?: "Infrastructure" | "Workload";
+    internetGatewayType?: "Infrastructure" | "Workload";
+    networkFabricControllerId: string;
+    lastOperation?: { details?: string };
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const InternetGatewaysCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3644,11 +4964,22 @@ export const InternetGatewaysCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysCreateInput =
-  typeof InternetGatewaysCreateInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysCreateInput>;
 
 // Output Schema
+export interface InternetGatewaysCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewaysCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3668,9 +4999,7 @@ export const InternetGatewaysCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewaysCreateOutput =
-  typeof InternetGatewaysCreateOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewaysCreateOutput>;
 
 // The operation
 /**
@@ -3688,6 +5017,11 @@ export const InternetGatewaysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewaysDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayName: string;
+}
 export const InternetGatewaysDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3699,15 +5033,12 @@ export const InternetGatewaysDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysDeleteInput =
-  typeof InternetGatewaysDeleteInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysDeleteInput>;
 
 // Output Schema
+export type InternetGatewaysDeleteOutput = void;
 export const InternetGatewaysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InternetGatewaysDeleteOutput =
-  typeof InternetGatewaysDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -3725,6 +5056,11 @@ export const InternetGatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InternetGatewaysGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayName: string;
+}
 export const InternetGatewaysGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3736,10 +5072,22 @@ export const InternetGatewaysGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysGetInput = typeof InternetGatewaysGetInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysGetInput>;
 
 // Output Schema
+export interface InternetGatewaysGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewaysGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3759,8 +5107,7 @@ export const InternetGatewaysGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewaysGetOutput = typeof InternetGatewaysGetOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewaysGetOutput>;
 
 // The operation
 /**
@@ -3776,6 +5123,10 @@ export const InternetGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InternetGatewaysGetOutput,
 }));
 // Input Schema
+export interface InternetGatewaysListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const InternetGatewaysListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3786,11 +5137,25 @@ export const InternetGatewaysListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysListByResourceGroupInput =
-  typeof InternetGatewaysListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysListByResourceGroupInput>;
 
 // Output Schema
+export interface InternetGatewaysListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InternetGatewaysListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3825,9 +5190,7 @@ export const InternetGatewaysListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InternetGatewaysListByResourceGroupOutput =
-  typeof InternetGatewaysListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewaysListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3843,6 +5206,9 @@ export const InternetGatewaysListByResourceGroup =
     outputSchema: InternetGatewaysListByResourceGroupOutput,
   }));
 // Input Schema
+export interface InternetGatewaysListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const InternetGatewaysListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3852,11 +5218,25 @@ export const InternetGatewaysListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/internetGateways",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysListBySubscriptionInput =
-  typeof InternetGatewaysListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysListBySubscriptionInput>;
 
 // Output Schema
+export interface InternetGatewaysListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InternetGatewaysListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3891,9 +5271,7 @@ export const InternetGatewaysListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InternetGatewaysListBySubscriptionOutput =
-  typeof InternetGatewaysListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewaysListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3908,6 +5286,13 @@ export const InternetGatewaysListBySubscription =
     outputSchema: InternetGatewaysListBySubscriptionOutput,
   }));
 // Input Schema
+export interface InternetGatewaysUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  internetGatewayName: string;
+  properties?: { internetGatewayRuleId?: string };
+  tags?: Record<string, string>;
+}
 export const InternetGatewaysUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3925,11 +5310,22 @@ export const InternetGatewaysUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type InternetGatewaysUpdateInput =
-  typeof InternetGatewaysUpdateInput.Type;
+  ) as unknown as Schema.Codec<InternetGatewaysUpdateInput>;
 
 // Output Schema
+export interface InternetGatewaysUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InternetGatewaysUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3949,9 +5345,7 @@ export const InternetGatewaysUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InternetGatewaysUpdateOutput =
-  typeof InternetGatewaysUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InternetGatewaysUpdateOutput>;
 
 // The operation
 /**
@@ -3969,6 +5363,58 @@ export const InternetGatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IpCommunitiesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipCommunityName: string;
+  properties: {
+    annotation?: string;
+    networkFabricId?: string;
+    ipCommunityRules: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      wellKnownCommunities?: (
+        | "Internet"
+        | "LocalAS"
+        | "NoAdvertise"
+        | "NoExport"
+        | "GShut"
+      )[];
+      communityMembers: string[];
+    }[];
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const IpCommunitiesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4046,10 +5492,22 @@ export const IpCommunitiesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpCommunitiesCreateInput = typeof IpCommunitiesCreateInput.Type;
+  ) as unknown as Schema.Codec<IpCommunitiesCreateInput>;
 
 // Output Schema
+export interface IpCommunitiesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpCommunitiesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4069,8 +5527,7 @@ export const IpCommunitiesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IpCommunitiesCreateOutput = typeof IpCommunitiesCreateOutput.Type;
+  }) as unknown as Schema.Codec<IpCommunitiesCreateOutput>;
 
 // The operation
 /**
@@ -4086,6 +5543,11 @@ export const IpCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpCommunitiesCreateOutput,
 }));
 // Input Schema
+export interface IpCommunitiesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipCommunityName: string;
+}
 export const IpCommunitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4097,13 +5559,12 @@ export const IpCommunitiesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpCommunitiesDeleteInput = typeof IpCommunitiesDeleteInput.Type;
+  ) as unknown as Schema.Codec<IpCommunitiesDeleteInput>;
 
 // Output Schema
+export type IpCommunitiesDeleteOutput = void;
 export const IpCommunitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IpCommunitiesDeleteOutput = typeof IpCommunitiesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpCommunitiesDeleteOutput>;
 
 // The operation
 /**
@@ -4119,6 +5580,11 @@ export const IpCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpCommunitiesDeleteOutput,
 }));
 // Input Schema
+export interface IpCommunitiesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipCommunityName: string;
+}
 export const IpCommunitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4129,10 +5595,22 @@ export const IpCommunitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type IpCommunitiesGetInput = typeof IpCommunitiesGetInput.Type;
+) as unknown as Schema.Codec<IpCommunitiesGetInput>;
 
 // Output Schema
+export interface IpCommunitiesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpCommunitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4153,8 +5631,7 @@ export const IpCommunitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type IpCommunitiesGetOutput = typeof IpCommunitiesGetOutput.Type;
+) as unknown as Schema.Codec<IpCommunitiesGetOutput>;
 
 // The operation
 /**
@@ -4170,6 +5647,10 @@ export const IpCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpCommunitiesGetOutput,
 }));
 // Input Schema
+export interface IpCommunitiesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const IpCommunitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4180,11 +5661,25 @@ export const IpCommunitiesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpCommunitiesListByResourceGroupInput =
-  typeof IpCommunitiesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<IpCommunitiesListByResourceGroupInput>;
 
 // Output Schema
+export interface IpCommunitiesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4219,9 +5714,7 @@ export const IpCommunitiesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpCommunitiesListByResourceGroupOutput =
-  typeof IpCommunitiesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<IpCommunitiesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4237,6 +5730,9 @@ export const IpCommunitiesListByResourceGroup =
     outputSchema: IpCommunitiesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface IpCommunitiesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const IpCommunitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4246,11 +5742,25 @@ export const IpCommunitiesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/ipCommunities",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpCommunitiesListBySubscriptionInput =
-  typeof IpCommunitiesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<IpCommunitiesListBySubscriptionInput>;
 
 // Output Schema
+export interface IpCommunitiesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4285,9 +5795,7 @@ export const IpCommunitiesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpCommunitiesListBySubscriptionOutput =
-  typeof IpCommunitiesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<IpCommunitiesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4302,6 +5810,26 @@ export const IpCommunitiesListBySubscription =
     outputSchema: IpCommunitiesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface IpCommunitiesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipCommunityName: string;
+  properties?: {
+    ipCommunityRules?: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      wellKnownCommunities?: (
+        | "Internet"
+        | "LocalAS"
+        | "NoAdvertise"
+        | "NoExport"
+        | "GShut"
+      )[];
+      communityMembers: string[];
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const IpCommunitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4338,10 +5866,22 @@ export const IpCommunitiesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpCommunitiesUpdateInput = typeof IpCommunitiesUpdateInput.Type;
+  ) as unknown as Schema.Codec<IpCommunitiesUpdateInput>;
 
 // Output Schema
+export interface IpCommunitiesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpCommunitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4361,8 +5901,7 @@ export const IpCommunitiesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IpCommunitiesUpdateOutput = typeof IpCommunitiesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IpCommunitiesUpdateOutput>;
 
 // The operation
 /**
@@ -4378,6 +5917,51 @@ export const IpCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpCommunitiesUpdateOutput,
 }));
 // Input Schema
+export interface IpExtendedCommunitiesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipExtendedCommunityName: string;
+  properties: {
+    annotation?: string;
+    ipExtendedCommunityRules: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      routeTargets: string[];
+    }[];
+    networkFabricId?: string;
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const IpExtendedCommunitiesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4444,11 +6028,22 @@ export const IpExtendedCommunitiesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesCreateInput =
-  typeof IpExtendedCommunitiesCreateInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesCreateInput>;
 
 // Output Schema
+export interface IpExtendedCommunitiesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpExtendedCommunitiesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4468,9 +6063,7 @@ export const IpExtendedCommunitiesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IpExtendedCommunitiesCreateOutput =
-  typeof IpExtendedCommunitiesCreateOutput.Type;
+  }) as unknown as Schema.Codec<IpExtendedCommunitiesCreateOutput>;
 
 // The operation
 /**
@@ -4488,6 +6081,11 @@ export const IpExtendedCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IpExtendedCommunitiesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipExtendedCommunityName: string;
+}
 export const IpExtendedCommunitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4499,15 +6097,12 @@ export const IpExtendedCommunitiesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesDeleteInput =
-  typeof IpExtendedCommunitiesDeleteInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesDeleteInput>;
 
 // Output Schema
+export type IpExtendedCommunitiesDeleteOutput = void;
 export const IpExtendedCommunitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IpExtendedCommunitiesDeleteOutput =
-  typeof IpExtendedCommunitiesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpExtendedCommunitiesDeleteOutput>;
 
 // The operation
 /**
@@ -4525,6 +6120,11 @@ export const IpExtendedCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IpExtendedCommunitiesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipExtendedCommunityName: string;
+}
 export const IpExtendedCommunitiesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4536,11 +6136,22 @@ export const IpExtendedCommunitiesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesGetInput =
-  typeof IpExtendedCommunitiesGetInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesGetInput>;
 
 // Output Schema
+export interface IpExtendedCommunitiesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpExtendedCommunitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4560,9 +6171,7 @@ export const IpExtendedCommunitiesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IpExtendedCommunitiesGetOutput =
-  typeof IpExtendedCommunitiesGetOutput.Type;
+  }) as unknown as Schema.Codec<IpExtendedCommunitiesGetOutput>;
 
 // The operation
 /**
@@ -4580,6 +6189,10 @@ export const IpExtendedCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IpExtendedCommunitiesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const IpExtendedCommunitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4590,11 +6203,25 @@ export const IpExtendedCommunitiesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesListByResourceGroupInput =
-  typeof IpExtendedCommunitiesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesListByResourceGroupInput>;
 
 // Output Schema
+export interface IpExtendedCommunitiesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpExtendedCommunitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4629,9 +6256,7 @@ export const IpExtendedCommunitiesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpExtendedCommunitiesListByResourceGroupOutput =
-  typeof IpExtendedCommunitiesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<IpExtendedCommunitiesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4647,6 +6272,9 @@ export const IpExtendedCommunitiesListByResourceGroup =
     outputSchema: IpExtendedCommunitiesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface IpExtendedCommunitiesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const IpExtendedCommunitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4656,11 +6284,25 @@ export const IpExtendedCommunitiesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesListBySubscriptionInput =
-  typeof IpExtendedCommunitiesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesListBySubscriptionInput>;
 
 // Output Schema
+export interface IpExtendedCommunitiesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpExtendedCommunitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4695,9 +6337,7 @@ export const IpExtendedCommunitiesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpExtendedCommunitiesListBySubscriptionOutput =
-  typeof IpExtendedCommunitiesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<IpExtendedCommunitiesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4712,6 +6352,20 @@ export const IpExtendedCommunitiesListBySubscription =
     outputSchema: IpExtendedCommunitiesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface IpExtendedCommunitiesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipExtendedCommunityName: string;
+  properties?: {
+    annotation?: string;
+    ipExtendedCommunityRules?: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      routeTargets: string[];
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const IpExtendedCommunitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4738,11 +6392,22 @@ export const IpExtendedCommunitiesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpExtendedCommunitiesUpdateInput =
-  typeof IpExtendedCommunitiesUpdateInput.Type;
+  ) as unknown as Schema.Codec<IpExtendedCommunitiesUpdateInput>;
 
 // Output Schema
+export interface IpExtendedCommunitiesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpExtendedCommunitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4762,9 +6427,7 @@ export const IpExtendedCommunitiesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IpExtendedCommunitiesUpdateOutput =
-  typeof IpExtendedCommunitiesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IpExtendedCommunitiesUpdateOutput>;
 
 // The operation
 /**
@@ -4782,6 +6445,57 @@ export const IpExtendedCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IpPrefixesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipPrefixName: string;
+  properties: {
+    annotation?: string;
+    networkFabricId?: string;
+    ipPrefixRules: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      networkPrefix: string;
+      condition?:
+        | "EqualTo"
+        | "GreaterThanOrEqualTo"
+        | "LesserThanOrEqualTo"
+        | "Range";
+      subnetMaskLength?: string;
+    }[];
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4856,10 +6570,22 @@ export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type IpPrefixesCreateInput = typeof IpPrefixesCreateInput.Type;
+) as unknown as Schema.Codec<IpPrefixesCreateInput>;
 
 // Output Schema
+export interface IpPrefixesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpPrefixesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4880,8 +6606,7 @@ export const IpPrefixesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type IpPrefixesCreateOutput = typeof IpPrefixesCreateOutput.Type;
+) as unknown as Schema.Codec<IpPrefixesCreateOutput>;
 
 // The operation
 /**
@@ -4897,6 +6622,11 @@ export const IpPrefixesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpPrefixesCreateOutput,
 }));
 // Input Schema
+export interface IpPrefixesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipPrefixName: string;
+}
 export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4907,12 +6637,12 @@ export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type IpPrefixesDeleteInput = typeof IpPrefixesDeleteInput.Type;
+) as unknown as Schema.Codec<IpPrefixesDeleteInput>;
 
 // Output Schema
-export const IpPrefixesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IpPrefixesDeleteOutput = typeof IpPrefixesDeleteOutput.Type;
+export type IpPrefixesDeleteOutput = void;
+export const IpPrefixesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpPrefixesDeleteOutput>;
 
 // The operation
 /**
@@ -4928,6 +6658,11 @@ export const IpPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpPrefixesDeleteOutput,
 }));
 // Input Schema
+export interface IpPrefixesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipPrefixName: string;
+}
 export const IpPrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4938,10 +6673,22 @@ export const IpPrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type IpPrefixesGetInput = typeof IpPrefixesGetInput.Type;
+) as unknown as Schema.Codec<IpPrefixesGetInput>;
 
 // Output Schema
+export interface IpPrefixesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpPrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4960,8 +6707,7 @@ export const IpPrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type IpPrefixesGetOutput = typeof IpPrefixesGetOutput.Type;
+}) as unknown as Schema.Codec<IpPrefixesGetOutput>;
 
 // The operation
 /**
@@ -4977,6 +6723,10 @@ export const IpPrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpPrefixesGetOutput,
 }));
 // Input Schema
+export interface IpPrefixesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const IpPrefixesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4987,11 +6737,25 @@ export const IpPrefixesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpPrefixesListByResourceGroupInput =
-  typeof IpPrefixesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<IpPrefixesListByResourceGroupInput>;
 
 // Output Schema
+export interface IpPrefixesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpPrefixesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5026,9 +6790,7 @@ export const IpPrefixesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpPrefixesListByResourceGroupOutput =
-  typeof IpPrefixesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<IpPrefixesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5044,6 +6806,9 @@ export const IpPrefixesListByResourceGroup =
     outputSchema: IpPrefixesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface IpPrefixesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const IpPrefixesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5053,11 +6818,25 @@ export const IpPrefixesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes",
       apiVersion: "2025-07-15",
     }),
-  );
-export type IpPrefixesListBySubscriptionInput =
-  typeof IpPrefixesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<IpPrefixesListBySubscriptionInput>;
 
 // Output Schema
+export interface IpPrefixesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IpPrefixesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5092,9 +6871,7 @@ export const IpPrefixesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IpPrefixesListBySubscriptionOutput =
-  typeof IpPrefixesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<IpPrefixesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5109,6 +6886,26 @@ export const IpPrefixesListBySubscription =
     outputSchema: IpPrefixesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface IpPrefixesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  ipPrefixName: string;
+  properties?: {
+    annotation?: string;
+    ipPrefixRules?: {
+      action: "Permit" | "Deny";
+      sequenceNumber: number;
+      networkPrefix: string;
+      condition?:
+        | "EqualTo"
+        | "GreaterThanOrEqualTo"
+        | "LesserThanOrEqualTo"
+        | "Range";
+      subnetMaskLength?: string;
+    }[];
+  };
+  tags?: Record<string, string>;
+}
 export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5143,10 +6940,22 @@ export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type IpPrefixesUpdateInput = typeof IpPrefixesUpdateInput.Type;
+) as unknown as Schema.Codec<IpPrefixesUpdateInput>;
 
 // Output Schema
+export interface IpPrefixesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IpPrefixesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5167,8 +6976,7 @@ export const IpPrefixesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type IpPrefixesUpdateOutput = typeof IpPrefixesUpdateOutput.Type;
+) as unknown as Schema.Codec<IpPrefixesUpdateOutput>;
 
 // The operation
 /**
@@ -5184,6 +6992,11 @@ export const IpPrefixesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: IpPrefixesUpdateOutput,
 }));
 // Input Schema
+export interface L2IsolationDomainsCommitConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+}
 export const L2IsolationDomainsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5195,11 +7008,18 @@ export const L2IsolationDomainsCommitConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/commitConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsCommitConfigurationInput =
-  typeof L2IsolationDomainsCommitConfigurationInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsCommitConfigurationInput>;
 
 // Output Schema
+export interface L2IsolationDomainsCommitConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const L2IsolationDomainsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -5218,9 +7038,7 @@ export const L2IsolationDomainsCommitConfigurationOutput =
         ),
       }),
     ),
-  });
-export type L2IsolationDomainsCommitConfigurationOutput =
-  typeof L2IsolationDomainsCommitConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsCommitConfigurationOutput>;
 
 // The operation
 /**
@@ -5237,6 +7055,27 @@ export const L2IsolationDomainsCommitConfiguration =
     outputSchema: L2IsolationDomainsCommitConfigurationOutput,
   }));
 // Input Schema
+export interface L2IsolationDomainsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+  properties: { annotation?: string };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const L2IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5274,11 +7113,22 @@ export const L2IsolationDomainsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsCreateInput =
-  typeof L2IsolationDomainsCreateInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsCreateInput>;
 
 // Output Schema
+export interface L2IsolationDomainsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2IsolationDomainsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5298,9 +7148,7 @@ export const L2IsolationDomainsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2IsolationDomainsCreateOutput =
-  typeof L2IsolationDomainsCreateOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsCreateOutput>;
 
 // The operation
 /**
@@ -5318,6 +7166,11 @@ export const L2IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2IsolationDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+}
 export const L2IsolationDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5329,15 +7182,12 @@ export const L2IsolationDomainsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsDeleteInput =
-  typeof L2IsolationDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsDeleteInput>;
 
 // Output Schema
+export type L2IsolationDomainsDeleteOutput = void;
 export const L2IsolationDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type L2IsolationDomainsDeleteOutput =
-  typeof L2IsolationDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2IsolationDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -5355,6 +7205,11 @@ export const L2IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2IsolationDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+}
 export const L2IsolationDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5366,10 +7221,22 @@ export const L2IsolationDomainsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsGetInput = typeof L2IsolationDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsGetInput>;
 
 // Output Schema
+export interface L2IsolationDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2IsolationDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5389,9 +7256,7 @@ export const L2IsolationDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2IsolationDomainsGetOutput =
-  typeof L2IsolationDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsGetOutput>;
 
 // The operation
 /**
@@ -5409,6 +7274,10 @@ export const L2IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2IsolationDomainsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const L2IsolationDomainsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5419,11 +7288,25 @@ export const L2IsolationDomainsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsListByResourceGroupInput =
-  typeof L2IsolationDomainsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsListByResourceGroupInput>;
 
 // Output Schema
+export interface L2IsolationDomainsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5458,9 +7341,7 @@ export const L2IsolationDomainsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2IsolationDomainsListByResourceGroupOutput =
-  typeof L2IsolationDomainsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5476,6 +7357,9 @@ export const L2IsolationDomainsListByResourceGroup =
     outputSchema: L2IsolationDomainsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface L2IsolationDomainsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const L2IsolationDomainsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5485,11 +7369,25 @@ export const L2IsolationDomainsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsListBySubscriptionInput =
-  typeof L2IsolationDomainsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsListBySubscriptionInput>;
 
 // Output Schema
+export interface L2IsolationDomainsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L2IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5524,9 +7422,7 @@ export const L2IsolationDomainsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L2IsolationDomainsListBySubscriptionOutput =
-  typeof L2IsolationDomainsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5541,6 +7437,24 @@ export const L2IsolationDomainsListBySubscription =
     outputSchema: L2IsolationDomainsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface L2IsolationDomainsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+  properties?: { annotation?: string };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const L2IsolationDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5579,11 +7493,22 @@ export const L2IsolationDomainsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsUpdateInput =
-  typeof L2IsolationDomainsUpdateInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsUpdateInput>;
 
 // Output Schema
+export interface L2IsolationDomainsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L2IsolationDomainsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5603,9 +7528,7 @@ export const L2IsolationDomainsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L2IsolationDomainsUpdateOutput =
-  typeof L2IsolationDomainsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsUpdateOutput>;
 
 // The operation
 /**
@@ -5623,6 +7546,13 @@ export const L2IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L2IsolationDomainsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const L2IsolationDomainsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5638,11 +7568,65 @@ export const L2IsolationDomainsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsUpdateAdministrativeStateInput =
-  typeof L2IsolationDomainsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface L2IsolationDomainsUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const L2IsolationDomainsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5750,9 +7734,7 @@ export const L2IsolationDomainsUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type L2IsolationDomainsUpdateAdministrativeStateOutput =
-  typeof L2IsolationDomainsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -5769,6 +7751,11 @@ export const L2IsolationDomainsUpdateAdministrativeState =
     outputSchema: L2IsolationDomainsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface L2IsolationDomainsValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l2IsolationDomainName: string;
+}
 export const L2IsolationDomainsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5780,11 +7767,18 @@ export const L2IsolationDomainsValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L2IsolationDomainsValidateConfigurationInput =
-  typeof L2IsolationDomainsValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<L2IsolationDomainsValidateConfigurationInput>;
 
 // Output Schema
+export interface L2IsolationDomainsValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const L2IsolationDomainsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -5803,9 +7797,7 @@ export const L2IsolationDomainsValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type L2IsolationDomainsValidateConfigurationOutput =
-  typeof L2IsolationDomainsValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<L2IsolationDomainsValidateConfigurationOutput>;
 
 // The operation
 /**
@@ -5822,6 +7814,11 @@ export const L2IsolationDomainsValidateConfiguration =
     outputSchema: L2IsolationDomainsValidateConfigurationOutput,
   }));
 // Input Schema
+export interface L3IsolationDomainsCommitConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const L3IsolationDomainsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5833,11 +7830,18 @@ export const L3IsolationDomainsCommitConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/commitConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsCommitConfigurationInput =
-  typeof L3IsolationDomainsCommitConfigurationInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsCommitConfigurationInput>;
 
 // Output Schema
+export interface L3IsolationDomainsCommitConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const L3IsolationDomainsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -5856,9 +7860,7 @@ export const L3IsolationDomainsCommitConfigurationOutput =
         ),
       }),
     ),
-  });
-export type L3IsolationDomainsCommitConfigurationOutput =
-  typeof L3IsolationDomainsCommitConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsCommitConfigurationOutput>;
 
 // The operation
 /**
@@ -5875,6 +7877,83 @@ export const L3IsolationDomainsCommitConfiguration =
     outputSchema: L3IsolationDomainsCommitConfigurationOutput,
   }));
 // Input Schema
+export interface L3IsolationDomainsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  properties: {
+    annotation?: string;
+    redistributeConnectedSubnets?: "True" | "False";
+    redistributeStaticRoutes?: "True" | "False";
+    aggregateRouteConfiguration?: {
+      ipv4Routes?: { prefix: string }[];
+      ipv6Routes?: { prefix: string }[];
+    };
+    connectedSubnetRoutePolicy?: {
+      exportRoutePolicy?: {
+        exportIpv4RoutePolicyId?: string;
+        exportIpv6RoutePolicyId?: string;
+      };
+    };
+    networkFabricId: string;
+    staticRouteRoutePolicy?: {
+      exportRoutePolicy?: {
+        exportIpv4RoutePolicyId?: string;
+        exportIpv6RoutePolicyId?: string;
+      };
+    };
+    uniqueRdConfiguration?: { uniqueRds?: string[] };
+    v4routePrefixLimit?: { hardLimit?: number; threshold?: number };
+    v6routePrefixLimit?: { hardLimit?: number; threshold?: number };
+    lastOperation?: { details?: string };
+    exportPolicyConfiguration?: {
+      exportPolicies?: ("Pre-Policy" | "Post-Policy" | "All" | "LocalRib")[];
+    };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const L3IsolationDomainsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6025,11 +8104,22 @@ export const L3IsolationDomainsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsCreateInput =
-  typeof L3IsolationDomainsCreateInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsCreateInput>;
 
 // Output Schema
+export interface L3IsolationDomainsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3IsolationDomainsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6049,9 +8139,7 @@ export const L3IsolationDomainsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L3IsolationDomainsCreateOutput =
-  typeof L3IsolationDomainsCreateOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsCreateOutput>;
 
 // The operation
 /**
@@ -6069,6 +8157,11 @@ export const L3IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L3IsolationDomainsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const L3IsolationDomainsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6080,15 +8173,12 @@ export const L3IsolationDomainsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsDeleteInput =
-  typeof L3IsolationDomainsDeleteInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsDeleteInput>;
 
 // Output Schema
+export type L3IsolationDomainsDeleteOutput = void;
 export const L3IsolationDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type L3IsolationDomainsDeleteOutput =
-  typeof L3IsolationDomainsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L3IsolationDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -6106,6 +8196,11 @@ export const L3IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L3IsolationDomainsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const L3IsolationDomainsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6117,10 +8212,22 @@ export const L3IsolationDomainsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsGetInput = typeof L3IsolationDomainsGetInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsGetInput>;
 
 // Output Schema
+export interface L3IsolationDomainsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3IsolationDomainsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6140,9 +8247,7 @@ export const L3IsolationDomainsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L3IsolationDomainsGetOutput =
-  typeof L3IsolationDomainsGetOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsGetOutput>;
 
 // The operation
 /**
@@ -6160,6 +8265,10 @@ export const L3IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L3IsolationDomainsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const L3IsolationDomainsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6170,11 +8279,25 @@ export const L3IsolationDomainsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsListByResourceGroupInput =
-  typeof L3IsolationDomainsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsListByResourceGroupInput>;
 
 // Output Schema
+export interface L3IsolationDomainsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L3IsolationDomainsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6209,9 +8332,7 @@ export const L3IsolationDomainsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L3IsolationDomainsListByResourceGroupOutput =
-  typeof L3IsolationDomainsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6227,6 +8348,9 @@ export const L3IsolationDomainsListByResourceGroup =
     outputSchema: L3IsolationDomainsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface L3IsolationDomainsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const L3IsolationDomainsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6236,11 +8360,25 @@ export const L3IsolationDomainsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsListBySubscriptionInput =
-  typeof L3IsolationDomainsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsListBySubscriptionInput>;
 
 // Output Schema
+export interface L3IsolationDomainsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const L3IsolationDomainsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6275,9 +8413,7 @@ export const L3IsolationDomainsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type L3IsolationDomainsListBySubscriptionOutput =
-  typeof L3IsolationDomainsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6292,6 +8428,49 @@ export const L3IsolationDomainsListBySubscription =
     outputSchema: L3IsolationDomainsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface L3IsolationDomainsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  properties?: {
+    annotation?: string;
+    redistributeConnectedSubnets?: "True" | "False";
+    redistributeStaticRoutes?: "True" | "False";
+    aggregateRouteConfiguration?: {
+      ipv4Routes?: { prefix: string }[];
+      ipv6Routes?: { prefix: string }[];
+    };
+    connectedSubnetRoutePolicy?: {
+      exportRoutePolicy?: {
+        exportIpv4RoutePolicyId?: string;
+        exportIpv6RoutePolicyId?: string;
+      };
+    };
+    staticRouteRoutePolicy?: {
+      exportRoutePolicy?: {
+        exportIpv4RoutePolicyId?: string;
+        exportIpv6RoutePolicyId?: string;
+      };
+    };
+    v4routePrefixLimit?: { hardLimit?: number; threshold?: number };
+    v6routePrefixLimit?: { hardLimit?: number; threshold?: number };
+    exportPolicyConfiguration?: {
+      exportPolicies?: ("Pre-Policy" | "Post-Policy" | "All" | "LocalRib")[];
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const L3IsolationDomainsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6400,11 +8579,22 @@ export const L3IsolationDomainsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsUpdateInput =
-  typeof L3IsolationDomainsUpdateInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsUpdateInput>;
 
 // Output Schema
+export interface L3IsolationDomainsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const L3IsolationDomainsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6424,9 +8614,7 @@ export const L3IsolationDomainsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type L3IsolationDomainsUpdateOutput =
-  typeof L3IsolationDomainsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsUpdateOutput>;
 
 // The operation
 /**
@@ -6444,6 +8632,13 @@ export const L3IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface L3IsolationDomainsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const L3IsolationDomainsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6459,11 +8654,65 @@ export const L3IsolationDomainsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsUpdateAdministrativeStateInput =
-  typeof L3IsolationDomainsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface L3IsolationDomainsUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const L3IsolationDomainsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6571,9 +8820,7 @@ export const L3IsolationDomainsUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type L3IsolationDomainsUpdateAdministrativeStateOutput =
-  typeof L3IsolationDomainsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -6590,6 +8837,11 @@ export const L3IsolationDomainsUpdateAdministrativeState =
     outputSchema: L3IsolationDomainsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface L3IsolationDomainsValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  l3IsolationDomainName: string;
+}
 export const L3IsolationDomainsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6601,11 +8853,18 @@ export const L3IsolationDomainsValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type L3IsolationDomainsValidateConfigurationInput =
-  typeof L3IsolationDomainsValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<L3IsolationDomainsValidateConfigurationInput>;
 
 // Output Schema
+export interface L3IsolationDomainsValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const L3IsolationDomainsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -6624,9 +8883,7 @@ export const L3IsolationDomainsValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type L3IsolationDomainsValidateConfigurationOutput =
-  typeof L3IsolationDomainsValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<L3IsolationDomainsValidateConfigurationOutput>;
 
 // The operation
 /**
@@ -6643,6 +8900,55 @@ export const L3IsolationDomainsValidateConfiguration =
     outputSchema: L3IsolationDomainsValidateConfigurationOutput,
   }));
 // Input Schema
+export interface NeighborGroupsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  neighborGroupName: string;
+  properties: {
+    annotation?: string;
+    destination: { ipv4Addresses?: string[]; ipv6Addresses?: string[] };
+    networkTapIds?: string[];
+    networkTapRuleIds?: string[];
+    networkFabricIds?: string[];
+    lastOperation?: { details?: string };
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NeighborGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6719,10 +9025,22 @@ export const NeighborGroupsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsCreateInput = typeof NeighborGroupsCreateInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsCreateInput>;
 
 // Output Schema
+export interface NeighborGroupsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NeighborGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6742,8 +9060,7 @@ export const NeighborGroupsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NeighborGroupsCreateOutput = typeof NeighborGroupsCreateOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsCreateOutput>;
 
 // The operation
 /**
@@ -6761,6 +9078,11 @@ export const NeighborGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NeighborGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  neighborGroupName: string;
+}
 export const NeighborGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6772,13 +9094,12 @@ export const NeighborGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsDeleteInput = typeof NeighborGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsDeleteInput>;
 
 // Output Schema
+export type NeighborGroupsDeleteOutput = void;
 export const NeighborGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NeighborGroupsDeleteOutput = typeof NeighborGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NeighborGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -6796,6 +9117,11 @@ export const NeighborGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NeighborGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  neighborGroupName: string;
+}
 export const NeighborGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6808,10 +9134,22 @@ export const NeighborGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NeighborGroupsGetInput = typeof NeighborGroupsGetInput.Type;
+) as unknown as Schema.Codec<NeighborGroupsGetInput>;
 
 // Output Schema
+export interface NeighborGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NeighborGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6831,8 +9169,7 @@ export const NeighborGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NeighborGroupsGetOutput = typeof NeighborGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsGetOutput>;
 
 // The operation
 /**
@@ -6848,6 +9185,10 @@ export const NeighborGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NeighborGroupsGetOutput,
 }));
 // Input Schema
+export interface NeighborGroupsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NeighborGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6858,11 +9199,25 @@ export const NeighborGroupsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsListByResourceGroupInput =
-  typeof NeighborGroupsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsListByResourceGroupInput>;
 
 // Output Schema
+export interface NeighborGroupsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NeighborGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6897,9 +9252,7 @@ export const NeighborGroupsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NeighborGroupsListByResourceGroupOutput =
-  typeof NeighborGroupsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6915,6 +9268,9 @@ export const NeighborGroupsListByResourceGroup =
     outputSchema: NeighborGroupsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NeighborGroupsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NeighborGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6924,11 +9280,25 @@ export const NeighborGroupsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/neighborGroups",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsListBySubscriptionInput =
-  typeof NeighborGroupsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsListBySubscriptionInput>;
 
 // Output Schema
+export interface NeighborGroupsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NeighborGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6963,9 +9333,7 @@ export const NeighborGroupsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NeighborGroupsListBySubscriptionOutput =
-  typeof NeighborGroupsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6980,6 +9348,11 @@ export const NeighborGroupsListBySubscription =
     outputSchema: NeighborGroupsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NeighborGroupsResyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  neighborGroupName: string;
+}
 export const NeighborGroupsResyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6991,10 +9364,64 @@ export const NeighborGroupsResyncInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsResyncInput = typeof NeighborGroupsResyncInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsResyncInput>;
 
 // Output Schema
+export interface NeighborGroupsResyncOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NeighborGroupsResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7096,8 +9523,7 @@ export const NeighborGroupsResyncOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NeighborGroupsResyncOutput = typeof NeighborGroupsResyncOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsResyncOutput>;
 
 // The operation
 /**
@@ -7115,6 +9541,27 @@ export const NeighborGroupsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NeighborGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  neighborGroupName: string;
+  properties?: {
+    annotation?: string;
+    destination?: { ipv4Addresses?: string[]; ipv6Addresses?: string[] };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NeighborGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7159,10 +9606,22 @@ export const NeighborGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NeighborGroupsUpdateInput = typeof NeighborGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NeighborGroupsUpdateInput>;
 
 // Output Schema
+export interface NeighborGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NeighborGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7182,8 +9641,7 @@ export const NeighborGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NeighborGroupsUpdateOutput = typeof NeighborGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NeighborGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -7201,6 +9659,67 @@ export const NeighborGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkBootstrapDevicesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  properties: {
+    annotation?: string;
+    hostName?: string;
+    serialNumber?: string;
+    version?: string;
+    networkDeviceSku?: string;
+    networkFabricId?: string;
+    secondaryManagementIpv4Address?: string;
+    dhcpV4ServerIpAddress?: string;
+    primaryManagementIpv6Address?: string;
+    secondaryManagementIpv6Address?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    primaryManagementIpv4Address?: string;
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkBootstrapDevicesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7285,11 +9804,22 @@ export const NetworkBootstrapDevicesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesCreateInput =
-  typeof NetworkBootstrapDevicesCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesCreateInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapDevicesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7309,9 +9839,7 @@ export const NetworkBootstrapDevicesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapDevicesCreateOutput =
-  typeof NetworkBootstrapDevicesCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesCreateOutput>;
 
 // The operation
 /**
@@ -7328,6 +9856,11 @@ export const NetworkBootstrapDevicesCreate =
     outputSchema: NetworkBootstrapDevicesCreateOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapDevicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7339,15 +9872,12 @@ export const NetworkBootstrapDevicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesDeleteInput =
-  typeof NetworkBootstrapDevicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesDeleteInput>;
 
 // Output Schema
+export type NetworkBootstrapDevicesDeleteOutput = void;
 export const NetworkBootstrapDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkBootstrapDevicesDeleteOutput =
-  typeof NetworkBootstrapDevicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -7364,6 +9894,11 @@ export const NetworkBootstrapDevicesDelete =
     outputSchema: NetworkBootstrapDevicesDeleteOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapDevicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7375,11 +9910,22 @@ export const NetworkBootstrapDevicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesGetInput =
-  typeof NetworkBootstrapDevicesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesGetInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7399,9 +9945,7 @@ export const NetworkBootstrapDevicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapDevicesGetOutput =
-  typeof NetworkBootstrapDevicesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesGetOutput>;
 
 // The operation
 /**
@@ -7419,6 +9963,10 @@ export const NetworkBootstrapDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkBootstrapDevicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkBootstrapDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7429,11 +9977,25 @@ export const NetworkBootstrapDevicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesListByResourceGroupInput =
-  typeof NetworkBootstrapDevicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkBootstrapDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7468,9 +10030,7 @@ export const NetworkBootstrapDevicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesListByResourceGroupOutput =
-  typeof NetworkBootstrapDevicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -7486,6 +10046,9 @@ export const NetworkBootstrapDevicesListByResourceGroup =
     outputSchema: NetworkBootstrapDevicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkBootstrapDevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7495,11 +10058,25 @@ export const NetworkBootstrapDevicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesListBySubscriptionInput =
-  typeof NetworkBootstrapDevicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkBootstrapDevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7534,9 +10111,7 @@ export const NetworkBootstrapDevicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesListBySubscriptionOutput =
-  typeof NetworkBootstrapDevicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -7551,6 +10126,11 @@ export const NetworkBootstrapDevicesListBySubscription =
     outputSchema: NetworkBootstrapDevicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesRebootInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapDevicesRebootInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7562,11 +10142,64 @@ export const NetworkBootstrapDevicesRebootInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesRebootInput =
-  typeof NetworkBootstrapDevicesRebootInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesRebootInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesRebootOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkBootstrapDevicesRebootOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7668,9 +10301,7 @@ export const NetworkBootstrapDevicesRebootOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesRebootOutput =
-  typeof NetworkBootstrapDevicesRebootOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesRebootOutput>;
 
 // The operation
 /**
@@ -7687,6 +10318,11 @@ export const NetworkBootstrapDevicesReboot =
     outputSchema: NetworkBootstrapDevicesRebootOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesRefreshConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapDevicesRefreshConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7698,11 +10334,64 @@ export const NetworkBootstrapDevicesRefreshConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesRefreshConfigurationInput =
-  typeof NetworkBootstrapDevicesRefreshConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesRefreshConfigurationInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesRefreshConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkBootstrapDevicesRefreshConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7804,9 +10493,7 @@ export const NetworkBootstrapDevicesRefreshConfigurationOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesRefreshConfigurationOutput =
-  typeof NetworkBootstrapDevicesRefreshConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesRefreshConfigurationOutput>;
 
 // The operation
 /**
@@ -7823,6 +10510,11 @@ export const NetworkBootstrapDevicesRefreshConfiguration =
     outputSchema: NetworkBootstrapDevicesRefreshConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesResyncPasswordsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapDevicesResyncPasswordsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7834,11 +10526,64 @@ export const NetworkBootstrapDevicesResyncPasswordsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesResyncPasswordsInput =
-  typeof NetworkBootstrapDevicesResyncPasswordsInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesResyncPasswordsInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesResyncPasswordsOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkBootstrapDevicesResyncPasswordsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7940,9 +10685,7 @@ export const NetworkBootstrapDevicesResyncPasswordsOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesResyncPasswordsOutput =
-  typeof NetworkBootstrapDevicesResyncPasswordsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesResyncPasswordsOutput>;
 
 // The operation
 /**
@@ -7961,6 +10704,28 @@ export const NetworkBootstrapDevicesResyncPasswords =
     outputSchema: NetworkBootstrapDevicesResyncPasswordsOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  properties?: {
+    annotation?: string;
+    hostName?: string;
+    serialNumber?: string;
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkBootstrapDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8001,11 +10766,22 @@ export const NetworkBootstrapDevicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesUpdateInput =
-  typeof NetworkBootstrapDevicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesUpdateInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8025,9 +10801,7 @@ export const NetworkBootstrapDevicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapDevicesUpdateOutput =
-  typeof NetworkBootstrapDevicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesUpdateOutput>;
 
 // The operation
 /**
@@ -8044,6 +10818,22 @@ export const NetworkBootstrapDevicesUpdate =
     outputSchema: NetworkBootstrapDevicesUpdateOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  state?:
+    | "RMA"
+    | "UngracefulRMA"
+    | "Resync"
+    | "GracefulQuarantine"
+    | "UngracefulQuarantine"
+    | "Quarantine"
+    | "UnderMaintenance"
+    | "Enable"
+    | "Disable";
+  resourceIds?: string[];
+}
 export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8069,11 +10859,64 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesUpdateAdministrativeStateInput =
-  typeof NetworkBootstrapDevicesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8175,9 +11018,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
-  typeof NetworkBootstrapDevicesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -8194,6 +11035,12 @@ export const NetworkBootstrapDevicesUpdateAdministrativeState =
     outputSchema: NetworkBootstrapDevicesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapDevicesUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  version?: string;
+}
 export const NetworkBootstrapDevicesUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8206,11 +11053,64 @@ export const NetworkBootstrapDevicesUpgradeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/upgrade",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapDevicesUpgradeInput =
-  typeof NetworkBootstrapDevicesUpgradeInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapDevicesUpgradeInput>;
 
 // Output Schema
+export interface NetworkBootstrapDevicesUpgradeOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkBootstrapDevicesUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8312,9 +11212,7 @@ export const NetworkBootstrapDevicesUpgradeOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapDevicesUpgradeOutput =
-  typeof NetworkBootstrapDevicesUpgradeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapDevicesUpgradeOutput>;
 
 // The operation
 /**
@@ -8331,6 +11229,13 @@ export const NetworkBootstrapDevicesUpgrade =
     outputSchema: NetworkBootstrapDevicesUpgradeOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  networkBootstrapInterfaceName: string;
+  properties: { annotation?: string };
+}
 export const NetworkBootstrapInterfacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8346,11 +11251,22 @@ export const NetworkBootstrapInterfacesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesCreateInput =
-  typeof NetworkBootstrapInterfacesCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesCreateInput>;
 
 // Output Schema
+export interface NetworkBootstrapInterfacesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapInterfacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8370,9 +11286,7 @@ export const NetworkBootstrapInterfacesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapInterfacesCreateOutput =
-  typeof NetworkBootstrapInterfacesCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapInterfacesCreateOutput>;
 
 // The operation
 /**
@@ -8390,6 +11304,12 @@ export const NetworkBootstrapInterfacesCreate =
     outputSchema: NetworkBootstrapInterfacesCreateOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  networkBootstrapInterfaceName: string;
+}
 export const NetworkBootstrapInterfacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8402,15 +11322,12 @@ export const NetworkBootstrapInterfacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesDeleteInput =
-  typeof NetworkBootstrapInterfacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesDeleteInput>;
 
 // Output Schema
+export type NetworkBootstrapInterfacesDeleteOutput = void;
 export const NetworkBootstrapInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkBootstrapInterfacesDeleteOutput =
-  typeof NetworkBootstrapInterfacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -8428,6 +11345,12 @@ export const NetworkBootstrapInterfacesDelete =
     outputSchema: NetworkBootstrapInterfacesDeleteOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  networkBootstrapInterfaceName: string;
+}
 export const NetworkBootstrapInterfacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8440,11 +11363,22 @@ export const NetworkBootstrapInterfacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesGetInput =
-  typeof NetworkBootstrapInterfacesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesGetInput>;
 
 // Output Schema
+export interface NetworkBootstrapInterfacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapInterfacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8464,9 +11398,7 @@ export const NetworkBootstrapInterfacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapInterfacesGetOutput =
-  typeof NetworkBootstrapInterfacesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapInterfacesGetOutput>;
 
 // The operation
 /**
@@ -8484,6 +11416,11 @@ export const NetworkBootstrapInterfacesGet =
     outputSchema: NetworkBootstrapInterfacesGetOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+}
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8495,11 +11432,25 @@ export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
-  typeof NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput>;
 
 // Output Schema
+export interface NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8534,9 +11485,7 @@ export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
-  typeof NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput>;
 
 // The operation
 /**
@@ -8553,6 +11502,13 @@ export const NetworkBootstrapInterfacesListByNetworkBootstrapDevice =
     outputSchema: NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  networkBootstrapInterfaceName: string;
+  properties?: { annotation?: string };
+}
 export const NetworkBootstrapInterfacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8570,11 +11526,22 @@ export const NetworkBootstrapInterfacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesUpdateInput =
-  typeof NetworkBootstrapInterfacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesUpdateInput>;
 
 // Output Schema
+export interface NetworkBootstrapInterfacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkBootstrapInterfacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8594,9 +11561,7 @@ export const NetworkBootstrapInterfacesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkBootstrapInterfacesUpdateOutput =
-  typeof NetworkBootstrapInterfacesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapInterfacesUpdateOutput>;
 
 // The operation
 /**
@@ -8614,6 +11579,14 @@ export const NetworkBootstrapInterfacesUpdate =
     outputSchema: NetworkBootstrapInterfacesUpdateOutput,
   }));
 // Input Schema
+export interface NetworkBootstrapInterfacesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkBootstrapDeviceName: string;
+  networkBootstrapInterfaceName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8630,11 +11603,18 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
-  typeof NetworkBootstrapInterfacesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkBootstrapInterfacesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkBootstrapInterfacesUpdateAdministrativeStateOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -8653,9 +11633,7 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
-  typeof NetworkBootstrapInterfacesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkBootstrapInterfacesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -8673,6 +11651,95 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeState =
     outputSchema: NetworkBootstrapInterfacesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkDevicesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  properties: {
+    annotation?: string;
+    hostName?: string;
+    serialNumber: string;
+    identitySelector?: {
+      identityType: "SystemAssignedIdentity" | "UserAssignedIdentity";
+      userAssignedIdentityResourceId?: string;
+    };
+    version?: string;
+    networkDeviceSku?: string;
+    networkDeviceRole?: "CE" | "ToR" | "NPB" | "TS" | "Management";
+    networkRackId?: string;
+    managementIpv4Address?: string;
+    managementIpv6Address?: string;
+    rwDeviceConfig?: string;
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+    secretRotationStatus?: {
+      lastRotationTime?: string;
+      synchronizationStatus?: "InSync" | "Synchronizing" | "OutOfSync";
+      secretArchiveReference?: {
+        keyVaultUri?: string;
+        keyVaultId?: string;
+        secretName?: string;
+        secretVersion?: string;
+      };
+      secretType?: string;
+    }[];
+    certificateRotationStatus?: {
+      expireTime?: string;
+      lastRotationTime?: string;
+      synchronizationStatus?: "InSync" | "Synchronizing" | "OutOfSync";
+      certificateArchiveReference?: {
+        keyVaultUri?: string;
+        keyVaultId?: string;
+        certificateName?: string;
+        certificateVersion?: string;
+      };
+      certificateType?: string;
+    }[];
+    networkFabricId?: string;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkDevicesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8812,10 +11879,22 @@ export const NetworkDevicesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesCreateInput = typeof NetworkDevicesCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesCreateInput>;
 
 // Output Schema
+export interface NetworkDevicesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkDevicesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8835,8 +11914,7 @@ export const NetworkDevicesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkDevicesCreateOutput = typeof NetworkDevicesCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesCreateOutput>;
 
 // The operation
 /**
@@ -8854,6 +11932,11 @@ export const NetworkDevicesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkDevicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8865,13 +11948,12 @@ export const NetworkDevicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesDeleteInput = typeof NetworkDevicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesDeleteInput>;
 
 // Output Schema
+export type NetworkDevicesDeleteOutput = void;
 export const NetworkDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkDevicesDeleteOutput = typeof NetworkDevicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -8889,6 +11971,11 @@ export const NetworkDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8901,10 +11988,22 @@ export const NetworkDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkDevicesGetInput = typeof NetworkDevicesGetInput.Type;
+) as unknown as Schema.Codec<NetworkDevicesGetInput>;
 
 // Output Schema
+export interface NetworkDevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8924,8 +12023,7 @@ export const NetworkDevicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkDevicesGetOutput = typeof NetworkDevicesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesGetOutput>;
 
 // The operation
 /**
@@ -8941,6 +12039,10 @@ export const NetworkDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkDevicesGetOutput,
 }));
 // Input Schema
+export interface NetworkDeviceSkusGetInput {
+  subscriptionId: string;
+  networkDeviceSkuName: string;
+}
 export const NetworkDeviceSkusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8951,10 +12053,22 @@ export const NetworkDeviceSkusGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDeviceSkus/{networkDeviceSkuName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDeviceSkusGetInput = typeof NetworkDeviceSkusGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkDeviceSkusGetInput>;
 
 // Output Schema
+export interface NetworkDeviceSkusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkDeviceSkusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8974,8 +12088,7 @@ export const NetworkDeviceSkusGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkDeviceSkusGetOutput = typeof NetworkDeviceSkusGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDeviceSkusGetOutput>;
 
 // The operation
 /**
@@ -8992,6 +12105,9 @@ export const NetworkDeviceSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDeviceSkusListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkDeviceSkusListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9001,11 +12117,25 @@ export const NetworkDeviceSkusListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDeviceSkus",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDeviceSkusListBySubscriptionInput =
-  typeof NetworkDeviceSkusListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkDeviceSkusListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkDeviceSkusListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkDeviceSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9040,9 +12170,7 @@ export const NetworkDeviceSkusListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkDeviceSkusListBySubscriptionOutput =
-  typeof NetworkDeviceSkusListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDeviceSkusListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -9057,6 +12185,10 @@ export const NetworkDeviceSkusListBySubscription =
     outputSchema: NetworkDeviceSkusListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkDevicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9067,11 +12199,25 @@ export const NetworkDevicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesListByResourceGroupInput =
-  typeof NetworkDevicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkDevicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9106,9 +12252,7 @@ export const NetworkDevicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesListByResourceGroupOutput =
-  typeof NetworkDevicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -9124,6 +12268,9 @@ export const NetworkDevicesListByResourceGroup =
     outputSchema: NetworkDevicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkDevicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkDevicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9133,11 +12280,25 @@ export const NetworkDevicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesListBySubscriptionInput =
-  typeof NetworkDevicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkDevicesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkDevicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9172,9 +12333,7 @@ export const NetworkDevicesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesListBySubscriptionOutput =
-  typeof NetworkDevicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -9189,6 +12348,16 @@ export const NetworkDevicesListBySubscription =
     outputSchema: NetworkDevicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkDevicesRebootInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  rebootType?:
+    | "GracefulRebootWithZTP"
+    | "GracefulRebootWithoutZTP"
+    | "UngracefulRebootWithZTP"
+    | "UngracefulRebootWithoutZTP";
+}
 export const NetworkDevicesRebootInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9208,10 +12377,42 @@ export const NetworkDevicesRebootInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/reboot",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesRebootInput = typeof NetworkDevicesRebootInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesRebootInput>;
 
 // Output Schema
+export interface NetworkDevicesRebootOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkDevicesRebootOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9267,8 +12468,7 @@ export const NetworkDevicesRebootOutput =
         ),
       }),
     ),
-  });
-export type NetworkDevicesRebootOutput = typeof NetworkDevicesRebootOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesRebootOutput>;
 
 // The operation
 /**
@@ -9286,6 +12486,11 @@ export const NetworkDevicesReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesRefreshConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkDevicesRefreshConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9297,11 +12502,64 @@ export const NetworkDevicesRefreshConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/refreshConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesRefreshConfigurationInput =
-  typeof NetworkDevicesRefreshConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesRefreshConfigurationInput>;
 
 // Output Schema
+export interface NetworkDevicesRefreshConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkDevicesRefreshConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9403,9 +12661,7 @@ export const NetworkDevicesRefreshConfigurationOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesRefreshConfigurationOutput =
-  typeof NetworkDevicesRefreshConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesRefreshConfigurationOutput>;
 
 // The operation
 /**
@@ -9422,6 +12678,11 @@ export const NetworkDevicesRefreshConfiguration =
     outputSchema: NetworkDevicesRefreshConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkDevicesResyncCertificatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkDevicesResyncCertificatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9433,11 +12694,64 @@ export const NetworkDevicesResyncCertificatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncCertificates",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesResyncCertificatesInput =
-  typeof NetworkDevicesResyncCertificatesInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesResyncCertificatesInput>;
 
 // Output Schema
+export interface NetworkDevicesResyncCertificatesOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkDevicesResyncCertificatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9539,9 +12853,7 @@ export const NetworkDevicesResyncCertificatesOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesResyncCertificatesOutput =
-  typeof NetworkDevicesResyncCertificatesOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesResyncCertificatesOutput>;
 
 // The operation
 /**
@@ -9560,6 +12872,11 @@ export const NetworkDevicesResyncCertificates =
     outputSchema: NetworkDevicesResyncCertificatesOutput,
   }));
 // Input Schema
+export interface NetworkDevicesResyncPasswordsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkDevicesResyncPasswordsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9571,11 +12888,64 @@ export const NetworkDevicesResyncPasswordsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncPasswords",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesResyncPasswordsInput =
-  typeof NetworkDevicesResyncPasswordsInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesResyncPasswordsInput>;
 
 // Output Schema
+export interface NetworkDevicesResyncPasswordsOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkDevicesResyncPasswordsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9677,9 +13047,7 @@ export const NetworkDevicesResyncPasswordsOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesResyncPasswordsOutput =
-  typeof NetworkDevicesResyncPasswordsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesResyncPasswordsOutput>;
 
 // The operation
 /**
@@ -9698,6 +13066,12 @@ export const NetworkDevicesResyncPasswords =
     outputSchema: NetworkDevicesResyncPasswordsOutput,
   }));
 // Input Schema
+export interface NetworkDevicesRunRoCommandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  command?: string;
+}
 export const NetworkDevicesRunRoCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9710,11 +13084,18 @@ export const NetworkDevicesRunRoCommandInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRoCommand",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesRunRoCommandInput =
-  typeof NetworkDevicesRunRoCommandInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesRunRoCommandInput>;
 
 // Output Schema
+export interface NetworkDevicesRunRoCommandOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkDevicesRunRoCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -9733,9 +13114,7 @@ export const NetworkDevicesRunRoCommandOutput =
         ),
       }),
     ),
-  });
-export type NetworkDevicesRunRoCommandOutput =
-  typeof NetworkDevicesRunRoCommandOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesRunRoCommandOutput>;
 
 // The operation
 /**
@@ -9753,6 +13132,13 @@ export const NetworkDevicesRunRoCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesRunRwCommandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  command?: string;
+  commandUrl?: string;
+}
 export const NetworkDevicesRunRwCommandInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9766,11 +13152,81 @@ export const NetworkDevicesRunRwCommandInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRwCommand",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesRunRwCommandInput =
-  typeof NetworkDevicesRunRwCommandInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesRunRwCommandInput>;
 
 // Output Schema
+export interface NetworkDevicesRunRwCommandOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    outputUrl?: string;
+  };
+}
 export const NetworkDevicesRunRwCommandOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9894,9 +13350,7 @@ export const NetworkDevicesRunRwCommandOutput =
         outputUrl: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkDevicesRunRwCommandOutput =
-  typeof NetworkDevicesRunRwCommandOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesRunRwCommandOutput>;
 
 // The operation
 /**
@@ -9914,6 +13368,32 @@ export const NetworkDevicesRunRwCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  properties?: {
+    annotation?: string;
+    hostName?: string;
+    serialNumber?: string;
+    identitySelector?: {
+      identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+      userAssignedIdentityResourceId?: string;
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9965,10 +13445,22 @@ export const NetworkDevicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesUpdateInput = typeof NetworkDevicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesUpdateInput>;
 
 // Output Schema
+export interface NetworkDevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9988,8 +13480,7 @@ export const NetworkDevicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkDevicesUpdateOutput = typeof NetworkDevicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesUpdateOutput>;
 
 // The operation
 /**
@@ -10007,6 +13498,22 @@ export const NetworkDevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkDevicesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  state?:
+    | "RMA"
+    | "UngracefulRMA"
+    | "Resync"
+    | "GracefulQuarantine"
+    | "UngracefulQuarantine"
+    | "Quarantine"
+    | "UnderMaintenance"
+    | "Enable"
+    | "Disable";
+  resourceIds?: string[];
+}
 export const NetworkDevicesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10032,11 +13539,64 @@ export const NetworkDevicesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesUpdateAdministrativeStateInput =
-  typeof NetworkDevicesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkDevicesUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkDevicesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10138,9 +13698,7 @@ export const NetworkDevicesUpdateAdministrativeStateOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesUpdateAdministrativeStateOutput =
-  typeof NetworkDevicesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -10157,6 +13715,13 @@ export const NetworkDevicesUpdateAdministrativeState =
     outputSchema: NetworkDevicesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkDevicesUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  version: string;
+  rwDeviceConfigUrl?: string;
+}
 export const NetworkDevicesUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10170,10 +13735,64 @@ export const NetworkDevicesUpgradeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/upgrade",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkDevicesUpgradeInput = typeof NetworkDevicesUpgradeInput.Type;
+  ) as unknown as Schema.Codec<NetworkDevicesUpgradeInput>;
 
 // Output Schema
+export interface NetworkDevicesUpgradeOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkDevicesUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10275,9 +13894,7 @@ export const NetworkDevicesUpgradeOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkDevicesUpgradeOutput =
-  typeof NetworkDevicesUpgradeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkDevicesUpgradeOutput>;
 
 // The operation
 /**
@@ -10295,6 +13912,60 @@ export const NetworkDevicesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricControllersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricControllerName: string;
+  properties: {
+    annotation?: string;
+    infrastructureExpressRouteConnections?: {
+      expressRouteCircuitId: string;
+      expressRouteAuthorizationKey: string;
+    }[];
+    workloadExpressRouteConnections?: {
+      expressRouteCircuitId: string;
+      expressRouteAuthorizationKey: string;
+    }[];
+    infrastructureServices?: {
+      ipv4AddressSpaces?: string[];
+      ipv6AddressSpaces?: string[];
+    };
+    workloadServices?: {
+      ipv4AddressSpaces?: string[];
+      ipv6AddressSpaces?: string[];
+    };
+    managedResourceGroupConfiguration?: { name?: string; location?: string };
+    networkFabricIds?: string[];
+    isWorkloadManagementNetworkEnabled?: "True" | "False";
+    tenantInternetGatewayIds?: string[];
+    ipv4AddressSpace?: string;
+    ipv6AddressSpace?: string;
+    nfcSku?: "Basic" | "Standard" | "HighPerformance";
+    lastOperation?: { details?: string };
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkFabricControllersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10391,11 +14062,22 @@ export const NetworkFabricControllersCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersCreateInput =
-  typeof NetworkFabricControllersCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersCreateInput>;
 
 // Output Schema
+export interface NetworkFabricControllersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricControllersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10415,9 +14097,7 @@ export const NetworkFabricControllersCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricControllersCreateOutput =
-  typeof NetworkFabricControllersCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricControllersCreateOutput>;
 
 // The operation
 /**
@@ -10434,6 +14114,11 @@ export const NetworkFabricControllersCreate =
     outputSchema: NetworkFabricControllersCreateOutput,
   }));
 // Input Schema
+export interface NetworkFabricControllersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricControllerName: string;
+}
 export const NetworkFabricControllersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10445,15 +14130,12 @@ export const NetworkFabricControllersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersDeleteInput =
-  typeof NetworkFabricControllersDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersDeleteInput>;
 
 // Output Schema
+export type NetworkFabricControllersDeleteOutput = void;
 export const NetworkFabricControllersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFabricControllersDeleteOutput =
-  typeof NetworkFabricControllersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricControllersDeleteOutput>;
 
 // The operation
 /**
@@ -10470,6 +14152,11 @@ export const NetworkFabricControllersDelete =
     outputSchema: NetworkFabricControllersDeleteOutput,
   }));
 // Input Schema
+export interface NetworkFabricControllersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricControllerName: string;
+}
 export const NetworkFabricControllersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10481,11 +14168,22 @@ export const NetworkFabricControllersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersGetInput =
-  typeof NetworkFabricControllersGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersGetInput>;
 
 // Output Schema
+export interface NetworkFabricControllersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricControllersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10505,9 +14203,7 @@ export const NetworkFabricControllersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricControllersGetOutput =
-  typeof NetworkFabricControllersGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricControllersGetOutput>;
 
 // The operation
 /**
@@ -10525,6 +14221,10 @@ export const NetworkFabricControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricControllersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkFabricControllersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10535,11 +14235,25 @@ export const NetworkFabricControllersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersListByResourceGroupInput =
-  typeof NetworkFabricControllersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkFabricControllersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFabricControllersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10574,9 +14288,7 @@ export const NetworkFabricControllersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFabricControllersListByResourceGroupOutput =
-  typeof NetworkFabricControllersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricControllersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -10592,6 +14304,9 @@ export const NetworkFabricControllersListByResourceGroup =
     outputSchema: NetworkFabricControllersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkFabricControllersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkFabricControllersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10601,11 +14316,25 @@ export const NetworkFabricControllersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersListBySubscriptionInput =
-  typeof NetworkFabricControllersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkFabricControllersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFabricControllersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10640,9 +14369,7 @@ export const NetworkFabricControllersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFabricControllersListBySubscriptionOutput =
-  typeof NetworkFabricControllersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricControllersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -10657,6 +14384,33 @@ export const NetworkFabricControllersListBySubscription =
     outputSchema: NetworkFabricControllersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkFabricControllersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricControllerName: string;
+  properties?: {
+    infrastructureExpressRouteConnections?: {
+      expressRouteCircuitId: string;
+      expressRouteAuthorizationKey: string;
+    }[];
+    workloadExpressRouteConnections?: {
+      expressRouteCircuitId: string;
+      expressRouteAuthorizationKey: string;
+    }[];
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkFabricControllersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10710,11 +14464,22 @@ export const NetworkFabricControllersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricControllersUpdateInput =
-  typeof NetworkFabricControllersUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricControllersUpdateInput>;
 
 // Output Schema
+export interface NetworkFabricControllersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricControllersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10734,9 +14499,7 @@ export const NetworkFabricControllersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricControllersUpdateOutput =
-  typeof NetworkFabricControllersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricControllersUpdateOutput>;
 
 // The operation
 /**
@@ -10753,6 +14516,11 @@ export const NetworkFabricControllersUpdate =
     outputSchema: NetworkFabricControllersUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFabricsArmConfigurationDiffInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsArmConfigurationDiffInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10764,11 +14532,65 @@ export const NetworkFabricsArmConfigurationDiffInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsArmConfigurationDiffInput =
-  typeof NetworkFabricsArmConfigurationDiffInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsArmConfigurationDiffInput>;
 
 // Output Schema
+export interface NetworkFabricsArmConfigurationDiffOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { configurationDiffUrl?: string };
+}
 export const NetworkFabricsArmConfigurationDiffOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10875,9 +14697,7 @@ export const NetworkFabricsArmConfigurationDiffOutput =
         configurationDiffUrl: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsArmConfigurationDiffOutput =
-  typeof NetworkFabricsArmConfigurationDiffOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsArmConfigurationDiffOutput>;
 
 // The operation
 /**
@@ -10894,6 +14714,12 @@ export const NetworkFabricsArmConfigurationDiff =
     outputSchema: NetworkFabricsArmConfigurationDiffOutput,
   }));
 // Input Schema
+export interface NetworkFabricsCommitBatchStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  commitBatchId?: string;
+}
 export const NetworkFabricsCommitBatchStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10906,11 +14732,69 @@ export const NetworkFabricsCommitBatchStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitBatchStatus",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsCommitBatchStatusInput =
-  typeof NetworkFabricsCommitBatchStatusInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsCommitBatchStatusInput>;
 
 // Output Schema
+export interface NetworkFabricsCommitBatchStatusOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    commitBatchId?: string;
+    commitBatchState?: "Processing" | "Succeeded" | "Failed";
+    commitBatchDetails?: { failedDevices?: string[] };
+  };
+}
 export const NetworkFabricsCommitBatchStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11025,9 +14909,7 @@ export const NetworkFabricsCommitBatchStatusOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsCommitBatchStatusOutput =
-  typeof NetworkFabricsCommitBatchStatusOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsCommitBatchStatusOutput>;
 
 // The operation
 /**
@@ -11044,6 +14926,14 @@ export const NetworkFabricsCommitBatchStatus =
     outputSchema: NetworkFabricsCommitBatchStatusOutput,
   }));
 // Input Schema
+export interface NetworkFabricsCommitConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  commitStage?: "Start" | "Continue" | "Rollback";
+  commitPolicy?: "StageCEConfiguration";
+  devices?: string[];
+}
 export const NetworkFabricsCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11060,11 +14950,64 @@ export const NetworkFabricsCommitConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsCommitConfigurationInput =
-  typeof NetworkFabricsCommitConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsCommitConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsCommitConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkFabricsCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11166,9 +15109,7 @@ export const NetworkFabricsCommitConfigurationOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsCommitConfigurationOutput =
-  typeof NetworkFabricsCommitConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsCommitConfigurationOutput>;
 
 // The operation
 /**
@@ -11185,6 +15126,27 @@ export const NetworkFabricsCommitConfiguration =
     outputSchema: NetworkFabricsCommitConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkFabricsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  properties: { annotation?: string };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkFabricsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11222,10 +15184,22 @@ export const NetworkFabricsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsCreateInput = typeof NetworkFabricsCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsCreateInput>;
 
 // Output Schema
+export interface NetworkFabricsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11245,8 +15219,7 @@ export const NetworkFabricsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsCreateOutput = typeof NetworkFabricsCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsCreateOutput>;
 
 // The operation
 /**
@@ -11264,6 +15237,11 @@ export const NetworkFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11275,13 +15253,12 @@ export const NetworkFabricsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsDeleteInput = typeof NetworkFabricsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsDeleteInput>;
 
 // Output Schema
+export type NetworkFabricsDeleteOutput = void;
 export const NetworkFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFabricsDeleteOutput = typeof NetworkFabricsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -11299,6 +15276,11 @@ export const NetworkFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsDeprovisionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsDeprovisionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11310,11 +15292,42 @@ export const NetworkFabricsDeprovisionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsDeprovisionInput =
-  typeof NetworkFabricsDeprovisionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsDeprovisionInput>;
 
 // Output Schema
+export interface NetworkFabricsDeprovisionOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsDeprovisionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11370,9 +15383,7 @@ export const NetworkFabricsDeprovisionOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsDeprovisionOutput =
-  typeof NetworkFabricsDeprovisionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsDeprovisionOutput>;
 
 // The operation
 /**
@@ -11390,6 +15401,12 @@ export const NetworkFabricsDeprovision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsDiscardCommitBatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  commitBatchId?: string;
+}
 export const NetworkFabricsDiscardCommitBatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11402,11 +15419,65 @@ export const NetworkFabricsDiscardCommitBatchInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/discardCommitBatch",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsDiscardCommitBatchInput =
-  typeof NetworkFabricsDiscardCommitBatchInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsDiscardCommitBatchInput>;
 
 // Output Schema
+export interface NetworkFabricsDiscardCommitBatchOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { commitBatchId?: string };
+}
 export const NetworkFabricsDiscardCommitBatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11513,9 +15584,7 @@ export const NetworkFabricsDiscardCommitBatchOutput =
         commitBatchId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsDiscardCommitBatchOutput =
-  typeof NetworkFabricsDiscardCommitBatchOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsDiscardCommitBatchOutput>;
 
 // The operation
 /**
@@ -11532,6 +15601,11 @@ export const NetworkFabricsDiscardCommitBatch =
     outputSchema: NetworkFabricsDiscardCommitBatchOutput,
   }));
 // Input Schema
+export interface NetworkFabricsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11544,10 +15618,22 @@ export const NetworkFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkFabricsGetInput = typeof NetworkFabricsGetInput.Type;
+) as unknown as Schema.Codec<NetworkFabricsGetInput>;
 
 // Output Schema
+export interface NetworkFabricsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11567,8 +15653,7 @@ export const NetworkFabricsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsGetOutput = typeof NetworkFabricsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsGetOutput>;
 
 // The operation
 /**
@@ -11584,6 +15669,11 @@ export const NetworkFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkFabricsGetOutput,
 }));
 // Input Schema
+export interface NetworkFabricsGetTopologyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsGetTopologyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11595,11 +15685,65 @@ export const NetworkFabricsGetTopologyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/getTopology",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsGetTopologyInput =
-  typeof NetworkFabricsGetTopologyInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsGetTopologyInput>;
 
 // Output Schema
+export interface NetworkFabricsGetTopologyOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { url?: string };
+}
 export const NetworkFabricsGetTopologyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11706,9 +15850,7 @@ export const NetworkFabricsGetTopologyOutput =
         url: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsGetTopologyOutput =
-  typeof NetworkFabricsGetTopologyOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsGetTopologyOutput>;
 
 // The operation
 /**
@@ -11726,6 +15868,10 @@ export const NetworkFabricsGetTopology = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricSkusGetInput {
+  subscriptionId: string;
+  networkFabricSkuName: string;
+}
 export const NetworkFabricSkusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11736,10 +15882,22 @@ export const NetworkFabricSkusGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricSkus/{networkFabricSkuName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricSkusGetInput = typeof NetworkFabricSkusGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricSkusGetInput>;
 
 // Output Schema
+export interface NetworkFabricSkusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricSkusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11759,8 +15917,7 @@ export const NetworkFabricSkusGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricSkusGetOutput = typeof NetworkFabricSkusGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricSkusGetOutput>;
 
 // The operation
 /**
@@ -11777,6 +15934,9 @@ export const NetworkFabricSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricSkusListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkFabricSkusListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11786,11 +15946,25 @@ export const NetworkFabricSkusListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricSkus",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricSkusListBySubscriptionInput =
-  typeof NetworkFabricSkusListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricSkusListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkFabricSkusListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFabricSkusListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11825,9 +15999,7 @@ export const NetworkFabricSkusListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFabricSkusListBySubscriptionOutput =
-  typeof NetworkFabricSkusListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricSkusListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -11842,6 +16014,10 @@ export const NetworkFabricSkusListBySubscription =
     outputSchema: NetworkFabricSkusListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkFabricsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkFabricsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11852,11 +16028,25 @@ export const NetworkFabricsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsListByResourceGroupInput =
-  typeof NetworkFabricsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkFabricsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFabricsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11891,9 +16081,7 @@ export const NetworkFabricsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsListByResourceGroupOutput =
-  typeof NetworkFabricsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -11909,6 +16097,9 @@ export const NetworkFabricsListByResourceGroup =
     outputSchema: NetworkFabricsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkFabricsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkFabricsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11918,11 +16109,25 @@ export const NetworkFabricsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsListBySubscriptionInput =
-  typeof NetworkFabricsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkFabricsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFabricsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11957,9 +16162,7 @@ export const NetworkFabricsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsListBySubscriptionOutput =
-  typeof NetworkFabricsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -11974,6 +16177,13 @@ export const NetworkFabricsListBySubscription =
     outputSchema: NetworkFabricsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkFabricsLockFabricInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  lockType?: "Administrative" | "Configuration";
+  action?: "Lock" | "Unlock";
+}
 export const NetworkFabricsLockFabricInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11989,11 +16199,42 @@ export const NetworkFabricsLockFabricInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/lockFabric",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsLockFabricInput =
-  typeof NetworkFabricsLockFabricInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsLockFabricInput>;
 
 // Output Schema
+export interface NetworkFabricsLockFabricOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsLockFabricOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12049,9 +16290,7 @@ export const NetworkFabricsLockFabricOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsLockFabricOutput =
-  typeof NetworkFabricsLockFabricOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsLockFabricOutput>;
 
 // The operation
 /**
@@ -12069,6 +16308,11 @@ export const NetworkFabricsLockFabric = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsProvisionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsProvisionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12080,11 +16324,42 @@ export const NetworkFabricsProvisionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsProvisionInput =
-  typeof NetworkFabricsProvisionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsProvisionInput>;
 
 // Output Schema
+export interface NetworkFabricsProvisionOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsProvisionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12140,9 +16415,7 @@ export const NetworkFabricsProvisionOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsProvisionOutput =
-  typeof NetworkFabricsProvisionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsProvisionOutput>;
 
 // The operation
 /**
@@ -12160,6 +16433,11 @@ export const NetworkFabricsProvision = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsRefreshConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsRefreshConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12171,11 +16449,42 @@ export const NetworkFabricsRefreshConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/refreshConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsRefreshConfigurationInput =
-  typeof NetworkFabricsRefreshConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsRefreshConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsRefreshConfigurationOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsRefreshConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12231,9 +16540,7 @@ export const NetworkFabricsRefreshConfigurationOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsRefreshConfigurationOutput =
-  typeof NetworkFabricsRefreshConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsRefreshConfigurationOutput>;
 
 // The operation
 /**
@@ -12250,6 +16557,11 @@ export const NetworkFabricsRefreshConfiguration =
     outputSchema: NetworkFabricsRefreshConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkFabricsResyncCertificatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsResyncCertificatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12261,11 +16573,64 @@ export const NetworkFabricsResyncCertificatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsResyncCertificatesInput =
-  typeof NetworkFabricsResyncCertificatesInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsResyncCertificatesInput>;
 
 // Output Schema
+export interface NetworkFabricsResyncCertificatesOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkFabricsResyncCertificatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12367,9 +16732,7 @@ export const NetworkFabricsResyncCertificatesOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsResyncCertificatesOutput =
-  typeof NetworkFabricsResyncCertificatesOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsResyncCertificatesOutput>;
 
 // The operation
 /**
@@ -12388,6 +16751,11 @@ export const NetworkFabricsResyncCertificates =
     outputSchema: NetworkFabricsResyncCertificatesOutput,
   }));
 // Input Schema
+export interface NetworkFabricsResyncPasswordsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsResyncPasswordsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12399,11 +16767,64 @@ export const NetworkFabricsResyncPasswordsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsResyncPasswordsInput =
-  typeof NetworkFabricsResyncPasswordsInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsResyncPasswordsInput>;
 
 // Output Schema
+export interface NetworkFabricsResyncPasswordsOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkFabricsResyncPasswordsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12505,9 +16926,7 @@ export const NetworkFabricsResyncPasswordsOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsResyncPasswordsOutput =
-  typeof NetworkFabricsResyncPasswordsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsResyncPasswordsOutput>;
 
 // The operation
 /**
@@ -12527,6 +16946,11 @@ export const NetworkFabricsResyncPasswords =
     outputSchema: NetworkFabricsResyncPasswordsOutput,
   }));
 // Input Schema
+export interface NetworkFabricsRotateCertificatesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsRotateCertificatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12538,11 +16962,64 @@ export const NetworkFabricsRotateCertificatesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsRotateCertificatesInput =
-  typeof NetworkFabricsRotateCertificatesInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsRotateCertificatesInput>;
 
 // Output Schema
+export interface NetworkFabricsRotateCertificatesOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkFabricsRotateCertificatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12644,9 +17121,7 @@ export const NetworkFabricsRotateCertificatesOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsRotateCertificatesOutput =
-  typeof NetworkFabricsRotateCertificatesOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsRotateCertificatesOutput>;
 
 // The operation
 /**
@@ -12665,6 +17140,11 @@ export const NetworkFabricsRotateCertificates =
     outputSchema: NetworkFabricsRotateCertificatesOutput,
   }));
 // Input Schema
+export interface NetworkFabricsRotatePasswordsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsRotatePasswordsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12676,11 +17156,64 @@ export const NetworkFabricsRotatePasswordsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsRotatePasswordsInput =
-  typeof NetworkFabricsRotatePasswordsInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsRotatePasswordsInput>;
 
 // Output Schema
+export interface NetworkFabricsRotatePasswordsOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkFabricsRotatePasswordsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12782,9 +17315,7 @@ export const NetworkFabricsRotatePasswordsOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkFabricsRotatePasswordsOutput =
-  typeof NetworkFabricsRotatePasswordsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsRotatePasswordsOutput>;
 
 // The operation
 /**
@@ -12806,6 +17337,99 @@ export const NetworkFabricsRotatePasswords =
     outputSchema: NetworkFabricsRotatePasswordsOutput,
   }));
 // Input Schema
+export interface NetworkFabricsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  properties?: {
+    annotation?: string;
+    rackCount?: number;
+    serverCountPerRack?: number;
+    ipv4Prefix?: string;
+    ipv6Prefix?: string;
+    fabricASN?: number;
+    terminalServerConfiguration?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+      serialNumber?: string;
+      primaryIpv4Prefix?: string;
+      primaryIpv6Prefix?: string;
+      secondaryIpv4Prefix?: string;
+      secondaryIpv6Prefix?: string;
+    };
+    managementNetworkConfiguration?: {
+      infrastructureVpnConfiguration?: {
+        networkToNetworkInterconnectId?: string;
+        peeringOption?: "OptionA" | "OptionB";
+        optionBProperties?: {
+          importRouteTargets?: string[];
+          exportRouteTargets?: string[];
+          routeTargets?: {
+            importIpv4RouteTargets?: string[];
+            importIpv6RouteTargets?: string[];
+            exportIpv4RouteTargets?: string[];
+            exportIpv6RouteTargets?: string[];
+          };
+        };
+        optionAProperties?: {
+          primaryIpv4Prefix?: string;
+          primaryIpv6Prefix?: string;
+          secondaryIpv4Prefix?: string;
+          secondaryIpv6Prefix?: string;
+        };
+      };
+      workloadVpnConfiguration?: {
+        networkToNetworkInterconnectId?: string;
+        peeringOption?: "OptionA" | "OptionB";
+        optionBProperties?: {
+          importRouteTargets?: string[];
+          exportRouteTargets?: string[];
+          routeTargets?: {
+            importIpv4RouteTargets?: string[];
+            importIpv6RouteTargets?: string[];
+            exportIpv4RouteTargets?: string[];
+            exportIpv6RouteTargets?: string[];
+          };
+        };
+        optionAProperties?: {
+          primaryIpv4Prefix?: string;
+          primaryIpv6Prefix?: string;
+          secondaryIpv4Prefix?: string;
+          secondaryIpv6Prefix?: string;
+        };
+      };
+    };
+    storageAccountConfiguration?: {
+      storageAccountId?: string;
+      storageAccountIdentity?: {
+        identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+        userAssignedIdentityResourceId?: string;
+      };
+    };
+    hardwareAlertThreshold?: number;
+    controlPlaneAcls?: string[];
+    trustedIpPrefixes?: string[];
+    uniqueRdConfiguration?: {
+      uniqueRdConfigurationState?: "Enabled" | "Disabled";
+      nniDerivedUniqueRdConfigurationState?: "Enabled" | "Disabled";
+    };
+    qosConfiguration?: { qosConfigurationState?: "Disabled" | "Enabled" };
+    featureFlags?: { featureFlagName?: string; featureFlagValue?: string }[];
+    authorizedTransceiver?: { vendor?: string; key?: string };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkFabricsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12998,10 +17622,22 @@ export const NetworkFabricsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsUpdateInput = typeof NetworkFabricsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsUpdateInput>;
 
 // Output Schema
+export interface NetworkFabricsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFabricsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13021,8 +17657,7 @@ export const NetworkFabricsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsUpdateOutput = typeof NetworkFabricsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsUpdateOutput>;
 
 // The operation
 /**
@@ -13040,6 +17675,13 @@ export const NetworkFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsUpdateInfraManagementBfdConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13055,11 +17697,65 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateInfraManagementBfdConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
-  typeof NetworkFabricsUpdateInfraManagementBfdConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsUpdateInfraManagementBfdConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsUpdateInfraManagementBfdConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13167,9 +17863,7 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
-  typeof NetworkFabricsUpdateInfraManagementBfdConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsUpdateInfraManagementBfdConfigurationOutput>;
 
 // The operation
 /**
@@ -13186,6 +17880,13 @@ export const NetworkFabricsUpdateInfraManagementBfdConfiguration =
     outputSchema: NetworkFabricsUpdateInfraManagementBfdConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13201,11 +17902,65 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateWorkloadManagementBfdConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
-  typeof NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13313,9 +18068,7 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
-  typeof NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput>;
 
 // The operation
 /**
@@ -13332,6 +18085,13 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfiguration =
     outputSchema: NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkFabricsUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  action?: "Start" | "Complete";
+  version?: string;
+}
 export const NetworkFabricsUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13345,10 +18105,42 @@ export const NetworkFabricsUpgradeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/upgrade",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsUpgradeInput = typeof NetworkFabricsUpgradeInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsUpgradeInput>;
 
 // Output Schema
+export interface NetworkFabricsUpgradeOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13404,9 +18196,7 @@ export const NetworkFabricsUpgradeOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsUpgradeOutput =
-  typeof NetworkFabricsUpgradeOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsUpgradeOutput>;
 
 // The operation
 /**
@@ -13424,6 +18214,12 @@ export const NetworkFabricsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFabricsValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  validateAction?: "Cabling" | "Configuration" | "Connectivity";
+}
 export const NetworkFabricsValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13438,11 +18234,18 @@ export const NetworkFabricsValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsValidateConfigurationInput =
-  typeof NetworkFabricsValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsValidateConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkFabricsValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -13461,9 +18264,7 @@ export const NetworkFabricsValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type NetworkFabricsValidateConfigurationOutput =
-  typeof NetworkFabricsValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsValidateConfigurationOutput>;
 
 // The operation
 /**
@@ -13480,6 +18281,11 @@ export const NetworkFabricsValidateConfiguration =
     outputSchema: NetworkFabricsValidateConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkFabricsViewDeviceConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkFabricsViewDeviceConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13491,11 +18297,65 @@ export const NetworkFabricsViewDeviceConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkFabricsViewDeviceConfigurationInput =
-  typeof NetworkFabricsViewDeviceConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkFabricsViewDeviceConfigurationInput>;
 
 // Output Schema
+export interface NetworkFabricsViewDeviceConfigurationOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { deviceConfigurationUrl?: string };
+}
 export const NetworkFabricsViewDeviceConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13602,9 +18462,7 @@ export const NetworkFabricsViewDeviceConfigurationOutput =
         deviceConfigurationUrl: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFabricsViewDeviceConfigurationOutput =
-  typeof NetworkFabricsViewDeviceConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFabricsViewDeviceConfigurationOutput>;
 
 // The operation
 /**
@@ -13621,6 +18479,26 @@ export const NetworkFabricsViewDeviceConfiguration =
     outputSchema: NetworkFabricsViewDeviceConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkInterfacesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  networkInterfaceName: string;
+  properties: { annotation?: string };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const NetworkInterfacesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13657,11 +18535,22 @@ export const NetworkInterfacesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesCreateInput =
-  typeof NetworkInterfacesCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesCreateInput>;
 
 // Output Schema
+export interface NetworkInterfacesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13681,9 +18570,7 @@ export const NetworkInterfacesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesCreateOutput =
-  typeof NetworkInterfacesCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesCreateOutput>;
 
 // The operation
 /**
@@ -13702,6 +18589,12 @@ export const NetworkInterfacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  networkInterfaceName: string;
+}
 export const NetworkInterfacesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13714,15 +18607,12 @@ export const NetworkInterfacesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesDeleteInput =
-  typeof NetworkInterfacesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesDeleteInput>;
 
 // Output Schema
+export type NetworkInterfacesDeleteOutput = void;
 export const NetworkInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkInterfacesDeleteOutput =
-  typeof NetworkInterfacesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -13741,6 +18631,12 @@ export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  networkInterfaceName: string;
+}
 export const NetworkInterfacesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13753,10 +18649,22 @@ export const NetworkInterfacesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesGetInput = typeof NetworkInterfacesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesGetInput>;
 
 // Output Schema
+export interface NetworkInterfacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13776,8 +18684,7 @@ export const NetworkInterfacesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesGetOutput = typeof NetworkInterfacesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesGetOutput>;
 
 // The operation
 /**
@@ -13796,6 +18703,11 @@ export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesListByNetworkDeviceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+}
 export const NetworkInterfacesListByNetworkDeviceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13807,11 +18719,25 @@ export const NetworkInterfacesListByNetworkDeviceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesListByNetworkDeviceInput =
-  typeof NetworkInterfacesListByNetworkDeviceInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesListByNetworkDeviceInput>;
 
 // Output Schema
+export interface NetworkInterfacesListByNetworkDeviceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkInterfacesListByNetworkDeviceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -13846,9 +18772,7 @@ export const NetworkInterfacesListByNetworkDeviceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkInterfacesListByNetworkDeviceOutput =
-  typeof NetworkInterfacesListByNetworkDeviceOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesListByNetworkDeviceOutput>;
 
 // The operation
 /**
@@ -13865,6 +18789,24 @@ export const NetworkInterfacesListByNetworkDevice =
     outputSchema: NetworkInterfacesListByNetworkDeviceOutput,
   }));
 // Input Schema
+export interface NetworkInterfacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  networkInterfaceName: string;
+  properties?: { annotation?: string };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const NetworkInterfacesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13903,11 +18845,22 @@ export const NetworkInterfacesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesUpdateInput =
-  typeof NetworkInterfacesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesUpdateInput>;
 
 // Output Schema
+export interface NetworkInterfacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkInterfacesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13927,9 +18880,7 @@ export const NetworkInterfacesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkInterfacesUpdateOutput =
-  typeof NetworkInterfacesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesUpdateOutput>;
 
 // The operation
 /**
@@ -13948,6 +18899,14 @@ export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkInterfacesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkDeviceName: string;
+  networkInterfaceName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkInterfacesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13964,11 +18923,65 @@ export const NetworkInterfacesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkInterfacesUpdateAdministrativeStateInput =
-  typeof NetworkInterfacesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkInterfacesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkInterfacesUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkInterfacesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14076,9 +19089,7 @@ export const NetworkInterfacesUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkInterfacesUpdateAdministrativeStateOutput =
-  typeof NetworkInterfacesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkInterfacesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -14096,6 +19107,14 @@ export const NetworkInterfacesUpdateAdministrativeState =
     outputSchema: NetworkInterfacesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkMonitorsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkMonitorName: string;
+  properties: { annotation?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkMonitorsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14112,10 +19131,22 @@ export const NetworkMonitorsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsCreateInput = typeof NetworkMonitorsCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsCreateInput>;
 
 // Output Schema
+export interface NetworkMonitorsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkMonitorsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14135,9 +19166,7 @@ export const NetworkMonitorsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkMonitorsCreateOutput =
-  typeof NetworkMonitorsCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsCreateOutput>;
 
 // The operation
 /**
@@ -14155,6 +19184,11 @@ export const NetworkMonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkMonitorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkMonitorName: string;
+}
 export const NetworkMonitorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14166,14 +19200,12 @@ export const NetworkMonitorsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsDeleteInput = typeof NetworkMonitorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsDeleteInput>;
 
 // Output Schema
+export type NetworkMonitorsDeleteOutput = void;
 export const NetworkMonitorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkMonitorsDeleteOutput =
-  typeof NetworkMonitorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkMonitorsDeleteOutput>;
 
 // The operation
 /**
@@ -14191,6 +19223,11 @@ export const NetworkMonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkMonitorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkMonitorName: string;
+}
 export const NetworkMonitorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14202,10 +19239,22 @@ export const NetworkMonitorsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsGetInput = typeof NetworkMonitorsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsGetInput>;
 
 // Output Schema
+export interface NetworkMonitorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkMonitorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14225,8 +19274,7 @@ export const NetworkMonitorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkMonitorsGetOutput = typeof NetworkMonitorsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsGetOutput>;
 
 // The operation
 /**
@@ -14242,6 +19290,10 @@ export const NetworkMonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkMonitorsGetOutput,
 }));
 // Input Schema
+export interface NetworkMonitorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkMonitorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14252,11 +19304,25 @@ export const NetworkMonitorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsListByResourceGroupInput =
-  typeof NetworkMonitorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkMonitorsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkMonitorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14291,9 +19357,7 @@ export const NetworkMonitorsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkMonitorsListByResourceGroupOutput =
-  typeof NetworkMonitorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -14309,6 +19373,9 @@ export const NetworkMonitorsListByResourceGroup =
     outputSchema: NetworkMonitorsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkMonitorsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkMonitorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14318,11 +19385,25 @@ export const NetworkMonitorsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsListBySubscriptionInput =
-  typeof NetworkMonitorsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkMonitorsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkMonitorsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14357,9 +19438,7 @@ export const NetworkMonitorsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkMonitorsListBySubscriptionOutput =
-  typeof NetworkMonitorsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -14374,6 +19453,40 @@ export const NetworkMonitorsListBySubscription =
     outputSchema: NetworkMonitorsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkMonitorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkMonitorName: string;
+  properties?: {
+    bmpConfiguration?: {
+      stationConfigurationState?: "Enabled" | "Disabled";
+      scopeResourceId?: string;
+      stationName?: string;
+      stationIp?: string;
+      stationPort?: number;
+      stationConnectionMode?: "Active" | "Passive";
+      stationConnectionProperties?: {
+        keepaliveIdleTime?: number;
+        probeInterval?: number;
+        probeCount?: number;
+      };
+      stationNetwork?: string;
+      monitoredNetworks?: string[];
+      exportPolicy?: "Pre-Policy" | "Post-Policy" | "All" | "LocalRib";
+      exportPolicyConfiguration?: {
+        exportPolicies?: ("Pre-Policy" | "Post-Policy" | "All" | "LocalRib")[];
+      };
+      monitoredAddressFamilies?: (
+        | "ipv4Unicast"
+        | "ipv6Unicast"
+        | "vpnIpv4"
+        | "vpnIpv6"
+        | "All"
+      )[];
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkMonitorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14441,10 +19554,22 @@ export const NetworkMonitorsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsUpdateInput = typeof NetworkMonitorsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsUpdateInput>;
 
 // Output Schema
+export interface NetworkMonitorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkMonitorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14464,9 +19589,7 @@ export const NetworkMonitorsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkMonitorsUpdateOutput =
-  typeof NetworkMonitorsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsUpdateOutput>;
 
 // The operation
 /**
@@ -14484,6 +19607,13 @@ export const NetworkMonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkMonitorsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkMonitorName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkMonitorsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14499,11 +19629,18 @@ export const NetworkMonitorsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkMonitorsUpdateAdministrativeStateInput =
-  typeof NetworkMonitorsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkMonitorsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkMonitorsUpdateAdministrativeStateOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkMonitorsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -14522,9 +19659,7 @@ export const NetworkMonitorsUpdateAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type NetworkMonitorsUpdateAdministrativeStateOutput =
-  typeof NetworkMonitorsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkMonitorsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -14541,6 +19676,55 @@ export const NetworkMonitorsUpdateAdministrativeState =
     outputSchema: NetworkMonitorsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkPacketBrokersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkPacketBrokerName: string;
+  properties: {
+    networkFabricId: string;
+    networkDeviceIds?: string[];
+    sourceInterfaceIds?: string[];
+    networkTapIds?: string[];
+    neighborGroupIds?: string[];
+    lastOperation?: { details?: string };
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkPacketBrokersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14614,11 +19798,22 @@ export const NetworkPacketBrokersCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersCreateInput =
-  typeof NetworkPacketBrokersCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersCreateInput>;
 
 // Output Schema
+export interface NetworkPacketBrokersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkPacketBrokersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14638,9 +19833,7 @@ export const NetworkPacketBrokersCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkPacketBrokersCreateOutput =
-  typeof NetworkPacketBrokersCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkPacketBrokersCreateOutput>;
 
 // The operation
 /**
@@ -14658,6 +19851,11 @@ export const NetworkPacketBrokersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkPacketBrokersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkPacketBrokerName: string;
+}
 export const NetworkPacketBrokersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14669,15 +19867,12 @@ export const NetworkPacketBrokersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersDeleteInput =
-  typeof NetworkPacketBrokersDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersDeleteInput>;
 
 // Output Schema
+export type NetworkPacketBrokersDeleteOutput = void;
 export const NetworkPacketBrokersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkPacketBrokersDeleteOutput =
-  typeof NetworkPacketBrokersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkPacketBrokersDeleteOutput>;
 
 // The operation
 /**
@@ -14695,6 +19890,11 @@ export const NetworkPacketBrokersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkPacketBrokersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkPacketBrokerName: string;
+}
 export const NetworkPacketBrokersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14706,11 +19906,22 @@ export const NetworkPacketBrokersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersGetInput =
-  typeof NetworkPacketBrokersGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersGetInput>;
 
 // Output Schema
+export interface NetworkPacketBrokersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkPacketBrokersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14730,9 +19941,7 @@ export const NetworkPacketBrokersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkPacketBrokersGetOutput =
-  typeof NetworkPacketBrokersGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkPacketBrokersGetOutput>;
 
 // The operation
 /**
@@ -14750,6 +19959,10 @@ export const NetworkPacketBrokersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkPacketBrokersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkPacketBrokersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14760,11 +19973,25 @@ export const NetworkPacketBrokersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersListByResourceGroupInput =
-  typeof NetworkPacketBrokersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkPacketBrokersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkPacketBrokersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14799,9 +20026,7 @@ export const NetworkPacketBrokersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkPacketBrokersListByResourceGroupOutput =
-  typeof NetworkPacketBrokersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkPacketBrokersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -14817,6 +20042,9 @@ export const NetworkPacketBrokersListByResourceGroup =
     outputSchema: NetworkPacketBrokersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkPacketBrokersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkPacketBrokersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14826,11 +20054,25 @@ export const NetworkPacketBrokersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersListBySubscriptionInput =
-  typeof NetworkPacketBrokersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkPacketBrokersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkPacketBrokersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14865,9 +20107,7 @@ export const NetworkPacketBrokersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkPacketBrokersListBySubscriptionOutput =
-  typeof NetworkPacketBrokersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkPacketBrokersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -14882,6 +20122,23 @@ export const NetworkPacketBrokersListBySubscription =
     outputSchema: NetworkPacketBrokersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkPacketBrokersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkPacketBrokerName: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkPacketBrokersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14915,11 +20172,22 @@ export const NetworkPacketBrokersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkPacketBrokersUpdateInput =
-  typeof NetworkPacketBrokersUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkPacketBrokersUpdateInput>;
 
 // Output Schema
+export interface NetworkPacketBrokersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkPacketBrokersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14939,9 +20207,7 @@ export const NetworkPacketBrokersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkPacketBrokersUpdateOutput =
-  typeof NetworkPacketBrokersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkPacketBrokersUpdateOutput>;
 
 // The operation
 /**
@@ -14959,6 +20225,14 @@ export const NetworkPacketBrokersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkRacksCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkRackName: string;
+  properties: { annotation?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkRacksCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14975,10 +20249,22 @@ export const NetworkRacksCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkRacksCreateInput = typeof NetworkRacksCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkRacksCreateInput>;
 
 // Output Schema
+export interface NetworkRacksCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkRacksCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14998,8 +20284,7 @@ export const NetworkRacksCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkRacksCreateOutput = typeof NetworkRacksCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkRacksCreateOutput>;
 
 // The operation
 /**
@@ -15015,6 +20300,11 @@ export const NetworkRacksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkRacksCreateOutput,
 }));
 // Input Schema
+export interface NetworkRacksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkRackName: string;
+}
 export const NetworkRacksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15026,12 +20316,12 @@ export const NetworkRacksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkRacksDeleteInput = typeof NetworkRacksDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkRacksDeleteInput>;
 
 // Output Schema
-export const NetworkRacksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkRacksDeleteOutput = typeof NetworkRacksDeleteOutput.Type;
+export type NetworkRacksDeleteOutput = void;
+export const NetworkRacksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkRacksDeleteOutput>;
 
 // The operation
 /**
@@ -15047,6 +20337,11 @@ export const NetworkRacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkRacksDeleteOutput,
 }));
 // Input Schema
+export interface NetworkRacksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkRackName: string;
+}
 export const NetworkRacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -15057,10 +20352,22 @@ export const NetworkRacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkRacksGetInput = typeof NetworkRacksGetInput.Type;
+) as unknown as Schema.Codec<NetworkRacksGetInput>;
 
 // Output Schema
+export interface NetworkRacksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkRacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -15079,8 +20386,7 @@ export const NetworkRacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type NetworkRacksGetOutput = typeof NetworkRacksGetOutput.Type;
+}) as unknown as Schema.Codec<NetworkRacksGetOutput>;
 
 // The operation
 /**
@@ -15096,6 +20402,10 @@ export const NetworkRacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkRacksGetOutput,
 }));
 // Input Schema
+export interface NetworkRacksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkRacksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15106,11 +20416,25 @@ export const NetworkRacksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkRacksListByResourceGroupInput =
-  typeof NetworkRacksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkRacksListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkRacksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkRacksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15145,9 +20469,7 @@ export const NetworkRacksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkRacksListByResourceGroupOutput =
-  typeof NetworkRacksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkRacksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -15163,6 +20485,9 @@ export const NetworkRacksListByResourceGroup =
     outputSchema: NetworkRacksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkRacksListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkRacksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15172,11 +20497,25 @@ export const NetworkRacksListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkRacksListBySubscriptionInput =
-  typeof NetworkRacksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkRacksListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkRacksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkRacksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15211,9 +20550,7 @@ export const NetworkRacksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkRacksListBySubscriptionOutput =
-  typeof NetworkRacksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkRacksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -15228,6 +20565,12 @@ export const NetworkRacksListBySubscription =
     outputSchema: NetworkRacksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkRacksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkRackName: string;
+  tags?: Record<string, string>;
+}
 export const NetworkRacksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15240,10 +20583,22 @@ export const NetworkRacksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkRacksUpdateInput = typeof NetworkRacksUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkRacksUpdateInput>;
 
 // Output Schema
+export interface NetworkRacksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkRacksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15263,8 +20618,7 @@ export const NetworkRacksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkRacksUpdateOutput = typeof NetworkRacksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkRacksUpdateOutput>;
 
 // The operation
 /**
@@ -15280,6 +20634,115 @@ export const NetworkRacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkRacksUpdateOutput,
 }));
 // Input Schema
+export interface NetworkTapRulesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+  properties: {
+    annotation?: string;
+    configurationType: "File" | "Inline";
+    tapRulesUrl?: string;
+    identitySelector?: {
+      identityType: "SystemAssignedIdentity" | "UserAssignedIdentity";
+      userAssignedIdentityResourceId?: string;
+    };
+    matchConfigurations?: {
+      matchConfigurationName?: string;
+      sequenceNumber?: number;
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConditions?: {
+        protocolTypes?: string[];
+        vlanMatchCondition?: {
+          vlans?: string[];
+          innerVlans?: string[];
+          vlanGroupNames?: string[];
+        };
+        ipCondition?: {
+          type?: "SourceIP" | "DestinationIP" | "Bidirectional";
+          prefixType?: "Prefix" | "LongestPrefix";
+          ipPrefixValues?: string[];
+          ipGroupNames?: string[];
+        };
+      }[];
+      actions?: {
+        type?:
+          | "Drop"
+          | "Count"
+          | "Log"
+          | "Replicate"
+          | "Goto"
+          | "Redirect"
+          | "Mirror";
+        truncate?: string;
+        isTimestampEnabled?: "True" | "False";
+        destinationId?: string;
+        matchConfigurationName?: string;
+      }[];
+    }[];
+    dynamicMatchConfigurations?: {
+      ipGroups?: {
+        name?: string;
+        ipAddressType?: "IPv4" | "IPv6";
+        ipPrefixes?: string[];
+      }[];
+      vlanGroups?: { name?: string; vlans?: string[] }[];
+      portGroups?: { name?: string; ports?: string[] }[];
+    }[];
+    networkTapId?: string;
+    networkTapIds?: string[];
+    pollingIntervalInSeconds?: number;
+    lastSyncedTime?: string;
+    globalNetworkTapRuleActions?: {
+      enableCount?: "True" | "False";
+      truncate?: string;
+    };
+    lastOperation?: { details?: string };
+    networkFabricIds?: string[];
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkTapRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15482,10 +20945,22 @@ export const NetworkTapRulesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesCreateInput = typeof NetworkTapRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesCreateInput>;
 
 // Output Schema
+export interface NetworkTapRulesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15505,9 +20980,7 @@ export const NetworkTapRulesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkTapRulesCreateOutput =
-  typeof NetworkTapRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesCreateOutput>;
 
 // The operation
 /**
@@ -15525,6 +20998,11 @@ export const NetworkTapRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkTapRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+}
 export const NetworkTapRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15536,14 +21014,12 @@ export const NetworkTapRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesDeleteInput = typeof NetworkTapRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesDeleteInput>;
 
 // Output Schema
+export type NetworkTapRulesDeleteOutput = void;
 export const NetworkTapRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkTapRulesDeleteOutput =
-  typeof NetworkTapRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapRulesDeleteOutput>;
 
 // The operation
 /**
@@ -15561,6 +21037,11 @@ export const NetworkTapRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkTapRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+}
 export const NetworkTapRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15572,10 +21053,22 @@ export const NetworkTapRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesGetInput = typeof NetworkTapRulesGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesGetInput>;
 
 // Output Schema
+export interface NetworkTapRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15595,8 +21088,7 @@ export const NetworkTapRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkTapRulesGetOutput = typeof NetworkTapRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesGetOutput>;
 
 // The operation
 /**
@@ -15612,6 +21104,10 @@ export const NetworkTapRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapRulesGetOutput,
 }));
 // Input Schema
+export interface NetworkTapRulesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkTapRulesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15622,11 +21118,25 @@ export const NetworkTapRulesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesListByResourceGroupInput =
-  typeof NetworkTapRulesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkTapRulesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkTapRulesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15661,9 +21171,7 @@ export const NetworkTapRulesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkTapRulesListByResourceGroupOutput =
-  typeof NetworkTapRulesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -15679,6 +21187,9 @@ export const NetworkTapRulesListByResourceGroup =
     outputSchema: NetworkTapRulesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkTapRulesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkTapRulesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15688,11 +21199,25 @@ export const NetworkTapRulesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesListBySubscriptionInput =
-  typeof NetworkTapRulesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkTapRulesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkTapRulesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15727,9 +21252,7 @@ export const NetworkTapRulesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkTapRulesListBySubscriptionOutput =
-  typeof NetworkTapRulesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -15744,6 +21267,11 @@ export const NetworkTapRulesListBySubscription =
     outputSchema: NetworkTapRulesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkTapRulesResyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+}
 export const NetworkTapRulesResyncInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15755,10 +21283,64 @@ export const NetworkTapRulesResyncInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/resync",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesResyncInput = typeof NetworkTapRulesResyncInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesResyncInput>;
 
 // Output Schema
+export interface NetworkTapRulesResyncOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkTapRulesResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15860,9 +21442,7 @@ export const NetworkTapRulesResyncOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkTapRulesResyncOutput =
-  typeof NetworkTapRulesResyncOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesResyncOutput>;
 
 // The operation
 /**
@@ -15880,6 +21460,78 @@ export const NetworkTapRulesResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkTapRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+  properties?: {
+    annotation?: string;
+    configurationType?: "File" | "Inline";
+    tapRulesUrl?: string;
+    matchConfigurations?: {
+      matchConfigurationName?: string;
+      sequenceNumber?: number;
+      ipAddressType?: "IPv4" | "IPv6";
+      matchConditions?: {
+        protocolTypes?: string[];
+        vlanMatchCondition?: {
+          vlans?: string[];
+          innerVlans?: string[];
+          vlanGroupNames?: string[];
+        };
+        ipCondition?: {
+          type?: "SourceIP" | "DestinationIP" | "Bidirectional";
+          prefixType?: "Prefix" | "LongestPrefix";
+          ipPrefixValues?: string[];
+          ipGroupNames?: string[];
+        };
+      }[];
+      actions?: {
+        type?:
+          | "Drop"
+          | "Count"
+          | "Log"
+          | "Replicate"
+          | "Goto"
+          | "Redirect"
+          | "Mirror";
+        truncate?: string;
+        isTimestampEnabled?: "True" | "False";
+        destinationId?: string;
+        matchConfigurationName?: string;
+      }[];
+    }[];
+    dynamicMatchConfigurations?: {
+      ipGroups?: {
+        name?: string;
+        ipAddressType?: "IPv4" | "IPv6";
+        ipPrefixes?: string[];
+      }[];
+      vlanGroups?: { name?: string; vlans?: string[] }[];
+      portGroups?: { name?: string; ports?: string[] }[];
+    }[];
+    identitySelector?: {
+      identityType?: "SystemAssignedIdentity" | "UserAssignedIdentity";
+      userAssignedIdentityResourceId?: string;
+    };
+    globalNetworkTapRuleActions?: {
+      enableCount?: "True" | "False";
+      truncate?: string;
+    };
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkTapRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16040,10 +21692,22 @@ export const NetworkTapRulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesUpdateInput = typeof NetworkTapRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesUpdateInput>;
 
 // Output Schema
+export interface NetworkTapRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16063,9 +21727,7 @@ export const NetworkTapRulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkTapRulesUpdateOutput =
-  typeof NetworkTapRulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesUpdateOutput>;
 
 // The operation
 /**
@@ -16083,6 +21745,13 @@ export const NetworkTapRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkTapRulesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkTapRulesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16098,11 +21767,18 @@ export const NetworkTapRulesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesUpdateAdministrativeStateInput =
-  typeof NetworkTapRulesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkTapRulesUpdateAdministrativeStateOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkTapRulesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -16121,9 +21797,7 @@ export const NetworkTapRulesUpdateAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type NetworkTapRulesUpdateAdministrativeStateOutput =
-  typeof NetworkTapRulesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -16140,6 +21814,11 @@ export const NetworkTapRulesUpdateAdministrativeState =
     outputSchema: NetworkTapRulesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkTapRulesValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapRuleName: string;
+}
 export const NetworkTapRulesValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16151,11 +21830,18 @@ export const NetworkTapRulesValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapRulesValidateConfigurationInput =
-  typeof NetworkTapRulesValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapRulesValidateConfigurationInput>;
 
 // Output Schema
+export interface NetworkTapRulesValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const NetworkTapRulesValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -16174,9 +21860,7 @@ export const NetworkTapRulesValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type NetworkTapRulesValidateConfigurationOutput =
-  typeof NetworkTapRulesValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapRulesValidateConfigurationOutput>;
 
 // The operation
 /**
@@ -16193,6 +21877,27 @@ export const NetworkTapRulesValidateConfiguration =
     outputSchema: NetworkTapRulesValidateConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkTapsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+  properties: { annotation?: string };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16231,10 +21936,22 @@ export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkTapsCreateInput = typeof NetworkTapsCreateInput.Type;
+) as unknown as Schema.Codec<NetworkTapsCreateInput>;
 
 // Output Schema
+export interface NetworkTapsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16254,8 +21971,7 @@ export const NetworkTapsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkTapsCreateOutput = typeof NetworkTapsCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsCreateOutput>;
 
 // The operation
 /**
@@ -16271,6 +21987,11 @@ export const NetworkTapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapsCreateOutput,
 }));
 // Input Schema
+export interface NetworkTapsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+}
 export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16283,12 +22004,12 @@ export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkTapsDeleteInput = typeof NetworkTapsDeleteInput.Type;
+) as unknown as Schema.Codec<NetworkTapsDeleteInput>;
 
 // Output Schema
-export const NetworkTapsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkTapsDeleteOutput = typeof NetworkTapsDeleteOutput.Type;
+export type NetworkTapsDeleteOutput = void;
+export const NetworkTapsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapsDeleteOutput>;
 
 // The operation
 /**
@@ -16304,6 +22025,11 @@ export const NetworkTapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapsDeleteOutput,
 }));
 // Input Schema
+export interface NetworkTapsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+}
 export const NetworkTapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -16314,10 +22040,22 @@ export const NetworkTapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkTapsGetInput = typeof NetworkTapsGetInput.Type;
+) as unknown as Schema.Codec<NetworkTapsGetInput>;
 
 // Output Schema
+export interface NetworkTapsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -16336,8 +22074,7 @@ export const NetworkTapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type NetworkTapsGetOutput = typeof NetworkTapsGetOutput.Type;
+}) as unknown as Schema.Codec<NetworkTapsGetOutput>;
 
 // The operation
 /**
@@ -16353,6 +22090,10 @@ export const NetworkTapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapsGetOutput,
 }));
 // Input Schema
+export interface NetworkTapsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NetworkTapsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16363,11 +22104,25 @@ export const NetworkTapsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapsListByResourceGroupInput =
-  typeof NetworkTapsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapsListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkTapsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkTapsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -16402,9 +22157,7 @@ export const NetworkTapsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkTapsListByResourceGroupOutput =
-  typeof NetworkTapsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -16420,6 +22173,9 @@ export const NetworkTapsListByResourceGroup =
     outputSchema: NetworkTapsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkTapsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkTapsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16429,11 +22185,25 @@ export const NetworkTapsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapsListBySubscriptionInput =
-  typeof NetworkTapsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapsListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkTapsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkTapsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -16468,9 +22238,7 @@ export const NetworkTapsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkTapsListBySubscriptionOutput =
-  typeof NetworkTapsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -16485,6 +22253,11 @@ export const NetworkTapsListBySubscription =
     outputSchema: NetworkTapsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkTapsResyncInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+}
 export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16497,10 +22270,64 @@ export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkTapsResyncInput = typeof NetworkTapsResyncInput.Type;
+) as unknown as Schema.Codec<NetworkTapsResyncInput>;
 
 // Output Schema
+export interface NetworkTapsResyncOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+}
 export const NetworkTapsResyncOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16602,8 +22429,7 @@ export const NetworkTapsResyncOutput =
       }),
     ),
     resourceId: Schema.optional(Schema.String),
-  });
-export type NetworkTapsResyncOutput = typeof NetworkTapsResyncOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsResyncOutput>;
 
 // The operation
 /**
@@ -16619,6 +22445,24 @@ export const NetworkTapsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapsResyncOutput,
 }));
 // Input Schema
+export interface NetworkTapsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+  properties?: { annotation?: string };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+}
 export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16658,10 +22502,22 @@ export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type NetworkTapsUpdateInput = typeof NetworkTapsUpdateInput.Type;
+) as unknown as Schema.Codec<NetworkTapsUpdateInput>;
 
 // Output Schema
+export interface NetworkTapsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkTapsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16681,8 +22537,7 @@ export const NetworkTapsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkTapsUpdateOutput = typeof NetworkTapsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsUpdateOutput>;
 
 // The operation
 /**
@@ -16698,6 +22553,13 @@ export const NetworkTapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkTapsUpdateOutput,
 }));
 // Input Schema
+export interface NetworkTapsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkTapName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkTapsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16713,11 +22575,65 @@ export const NetworkTapsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkTapsUpdateAdministrativeStateInput =
-  typeof NetworkTapsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkTapsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkTapsUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkTapsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16825,9 +22741,7 @@ export const NetworkTapsUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkTapsUpdateAdministrativeStateOutput =
-  typeof NetworkTapsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkTapsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -16844,6 +22758,86 @@ export const NetworkTapsUpdateAdministrativeState =
     outputSchema: NetworkTapsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+  properties: {
+    nniType?: "CE" | "NPB";
+    isManagementType?: "True" | "False";
+    useOptionB: "True" | "False";
+    layer2Configuration?: { mtu?: number; interfaces?: string[] };
+    optionBLayer3Configuration?: {
+      primaryIpv4Prefix?: string;
+      primaryIpv6Prefix?: string;
+      secondaryIpv4Prefix?: string;
+      secondaryIpv6Prefix?: string;
+    };
+    npbStaticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    egressAclId?: string;
+    ingressAclId?: string;
+    microBfdState?: "Enabled" | "Disabled";
+    conditionalDefaultRouteConfiguration?: {
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+}
 export const NetworkToNetworkInterconnectsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17010,11 +23004,22 @@ export const NetworkToNetworkInterconnectsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsCreateInput =
-  typeof NetworkToNetworkInterconnectsCreateInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsCreateInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkToNetworkInterconnectsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17034,9 +23039,7 @@ export const NetworkToNetworkInterconnectsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsCreateOutput =
-  typeof NetworkToNetworkInterconnectsCreateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsCreateOutput>;
 
 // The operation
 /**
@@ -17054,6 +23057,12 @@ export const NetworkToNetworkInterconnectsCreate =
     outputSchema: NetworkToNetworkInterconnectsCreateOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+}
 export const NetworkToNetworkInterconnectsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17066,15 +23075,12 @@ export const NetworkToNetworkInterconnectsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsDeleteInput =
-  typeof NetworkToNetworkInterconnectsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsDeleteInput>;
 
 // Output Schema
+export type NetworkToNetworkInterconnectsDeleteOutput = void;
 export const NetworkToNetworkInterconnectsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkToNetworkInterconnectsDeleteOutput =
-  typeof NetworkToNetworkInterconnectsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkToNetworkInterconnectsDeleteOutput>;
 
 // The operation
 /**
@@ -17092,6 +23098,12 @@ export const NetworkToNetworkInterconnectsDelete =
     outputSchema: NetworkToNetworkInterconnectsDeleteOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+}
 export const NetworkToNetworkInterconnectsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17104,11 +23116,22 @@ export const NetworkToNetworkInterconnectsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsGetInput =
-  typeof NetworkToNetworkInterconnectsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsGetInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkToNetworkInterconnectsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17128,9 +23151,7 @@ export const NetworkToNetworkInterconnectsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsGetOutput =
-  typeof NetworkToNetworkInterconnectsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsGetOutput>;
 
 // The operation
 /**
@@ -17148,6 +23169,11 @@ export const NetworkToNetworkInterconnectsGet =
     outputSchema: NetworkToNetworkInterconnectsGetOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsListByNetworkFabricInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+}
 export const NetworkToNetworkInterconnectsListByNetworkFabricInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17159,11 +23185,25 @@ export const NetworkToNetworkInterconnectsListByNetworkFabricInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsListByNetworkFabricInput =
-  typeof NetworkToNetworkInterconnectsListByNetworkFabricInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsListByNetworkFabricInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsListByNetworkFabricOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17198,9 +23238,7 @@ export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkToNetworkInterconnectsListByNetworkFabricOutput =
-  typeof NetworkToNetworkInterconnectsListByNetworkFabricOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsListByNetworkFabricOutput>;
 
 // The operation
 /**
@@ -17217,6 +23255,60 @@ export const NetworkToNetworkInterconnectsListByNetworkFabric =
     outputSchema: NetworkToNetworkInterconnectsListByNetworkFabricOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+  properties?: {
+    layer2Configuration?: { mtu?: number; interfaces?: string[] };
+    optionBLayer3Configuration?: {
+      primaryIpv4Prefix?: string;
+      primaryIpv6Prefix?: string;
+      secondaryIpv4Prefix?: string;
+      secondaryIpv6Prefix?: string;
+    };
+    npbStaticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    staticRouteConfiguration?: {
+      bfdConfiguration?: {
+        administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+        intervalInMilliSeconds?: number;
+        multiplier?: number;
+      };
+      ipv4Routes?: { prefix: string; nextHop: string[] }[];
+      ipv6Routes?: { prefix: string; nextHop: string[] }[];
+    };
+    importRoutePolicy?: {
+      importIpv4RoutePolicyId?: string;
+      importIpv6RoutePolicyId?: string;
+    };
+    exportRoutePolicy?: {
+      exportIpv4RoutePolicyId?: string;
+      exportIpv6RoutePolicyId?: string;
+    };
+    egressAclId?: string;
+    ingressAclId?: string;
+    microBfdState?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkToNetworkInterconnectsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17338,11 +23430,22 @@ export const NetworkToNetworkInterconnectsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsUpdateInput =
-  typeof NetworkToNetworkInterconnectsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkToNetworkInterconnectsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17362,9 +23465,7 @@ export const NetworkToNetworkInterconnectsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsUpdateOutput =
-  typeof NetworkToNetworkInterconnectsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateOutput>;
 
 // The operation
 /**
@@ -17382,6 +23483,14 @@ export const NetworkToNetworkInterconnectsUpdate =
     outputSchema: NetworkToNetworkInterconnectsUpdateOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17398,11 +23507,65 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
-  typeof NetworkToNetworkInterconnectsUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17510,9 +23673,7 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
-  typeof NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -17530,6 +23691,14 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeState =
     outputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+  routeType?: "Static" | "OptionA";
+  administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+}
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17546,11 +23715,68 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
-  typeof NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: {
+    routeType?: "Static" | "OptionA";
+    administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
+  };
+}
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17660,9 +23886,7 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
         ),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
-  typeof NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -17681,6 +23905,14 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeState =
       NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  networkFabricName: string;
+  networkToNetworkInterconnectName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17697,11 +23929,65 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateNpbStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
-  typeof NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput>;
 
 // Output Schema
+export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17809,9 +24095,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
-  typeof NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -17831,6 +24115,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
       NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17839,10 +24124,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ManagedNetworkFabric/operations",
     apiVersion: "2025-07-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -17865,8 +24164,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -17879,6 +24177,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface RoutePoliciesCommitConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+}
 export const RoutePoliciesCommitConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17890,11 +24193,18 @@ export const RoutePoliciesCommitConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/commitConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesCommitConfigurationInput =
-  typeof RoutePoliciesCommitConfigurationInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesCommitConfigurationInput>;
 
 // Output Schema
+export interface RoutePoliciesCommitConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const RoutePoliciesCommitConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -17913,9 +24223,7 @@ export const RoutePoliciesCommitConfigurationOutput =
         ),
       }),
     ),
-  });
-export type RoutePoliciesCommitConfigurationOutput =
-  typeof RoutePoliciesCommitConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesCommitConfigurationOutput>;
 
 // The operation
 /**
@@ -17932,6 +24240,49 @@ export const RoutePoliciesCommitConfiguration =
     outputSchema: RoutePoliciesCommitConfigurationOutput,
   }));
 // Input Schema
+export interface RoutePoliciesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+  properties: {
+    annotation?: string;
+    defaultAction?: "Permit" | "Deny";
+    statements: { annotation?: string }[];
+    networkFabricId: string;
+    addressFamilyType?: "IPv4" | "IPv6";
+    lastOperation?: { details?: string };
+    configurationState?:
+      | "Succeeded"
+      | "Failed"
+      | "Rejected"
+      | "Accepted"
+      | "Provisioned"
+      | "ErrorProvisioning"
+      | "Deprovisioning"
+      | "Deprovisioned"
+      | "ErrorDeprovisioning"
+      | "DeferredControl"
+      | "Provisioning"
+      | "PendingCommit"
+      | "PendingAdministrativeUpdate";
+    provisioningState?:
+      | "Accepted"
+      | "Succeeded"
+      | "Updating"
+      | "Deleting"
+      | "Failed"
+      | "Canceled";
+    administrativeState?:
+      | "Enabled"
+      | "Disabled"
+      | "MAT"
+      | "RMA"
+      | "UnderMaintenance"
+      | "EnabledDegraded";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const RoutePoliciesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17998,10 +24349,22 @@ export const RoutePoliciesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesCreateInput = typeof RoutePoliciesCreateInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesCreateInput>;
 
 // Output Schema
+export interface RoutePoliciesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoutePoliciesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18021,8 +24384,7 @@ export const RoutePoliciesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoutePoliciesCreateOutput = typeof RoutePoliciesCreateOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesCreateOutput>;
 
 // The operation
 /**
@@ -18038,6 +24400,11 @@ export const RoutePoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoutePoliciesCreateOutput,
 }));
 // Input Schema
+export interface RoutePoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+}
 export const RoutePoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18049,13 +24416,12 @@ export const RoutePoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesDeleteInput = typeof RoutePoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesDeleteInput>;
 
 // Output Schema
+export type RoutePoliciesDeleteOutput = void;
 export const RoutePoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RoutePoliciesDeleteOutput = typeof RoutePoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RoutePoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -18071,6 +24437,11 @@ export const RoutePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoutePoliciesDeleteOutput,
 }));
 // Input Schema
+export interface RoutePoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+}
 export const RoutePoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -18081,10 +24452,22 @@ export const RoutePoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
     apiVersion: "2025-07-15",
   }),
-);
-export type RoutePoliciesGetInput = typeof RoutePoliciesGetInput.Type;
+) as unknown as Schema.Codec<RoutePoliciesGetInput>;
 
 // Output Schema
+export interface RoutePoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoutePoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -18105,8 +24488,7 @@ export const RoutePoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RoutePoliciesGetOutput = typeof RoutePoliciesGetOutput.Type;
+) as unknown as Schema.Codec<RoutePoliciesGetOutput>;
 
 // The operation
 /**
@@ -18122,6 +24504,10 @@ export const RoutePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoutePoliciesGetOutput,
 }));
 // Input Schema
+export interface RoutePoliciesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const RoutePoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18132,11 +24518,25 @@ export const RoutePoliciesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesListByResourceGroupInput =
-  typeof RoutePoliciesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesListByResourceGroupInput>;
 
 // Output Schema
+export interface RoutePoliciesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoutePoliciesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18171,9 +24571,7 @@ export const RoutePoliciesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoutePoliciesListByResourceGroupOutput =
-  typeof RoutePoliciesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -18189,6 +24587,9 @@ export const RoutePoliciesListByResourceGroup =
     outputSchema: RoutePoliciesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface RoutePoliciesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const RoutePoliciesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18198,11 +24599,25 @@ export const RoutePoliciesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesListBySubscriptionInput =
-  typeof RoutePoliciesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesListBySubscriptionInput>;
 
 // Output Schema
+export interface RoutePoliciesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RoutePoliciesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18237,9 +24652,7 @@ export const RoutePoliciesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RoutePoliciesListBySubscriptionOutput =
-  typeof RoutePoliciesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -18254,6 +24667,16 @@ export const RoutePoliciesListBySubscription =
     outputSchema: RoutePoliciesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface RoutePoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+  properties?: {
+    defaultAction?: "Permit" | "Deny";
+    statements?: { annotation?: string }[];
+  };
+  tags?: Record<string, string>;
+}
 export const RoutePoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18278,10 +24701,22 @@ export const RoutePoliciesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesUpdateInput = typeof RoutePoliciesUpdateInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesUpdateInput>;
 
 // Output Schema
+export interface RoutePoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RoutePoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18301,8 +24736,7 @@ export const RoutePoliciesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RoutePoliciesUpdateOutput = typeof RoutePoliciesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -18318,6 +24752,13 @@ export const RoutePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RoutePoliciesUpdateOutput,
 }));
 // Input Schema
+export interface RoutePoliciesUpdateAdministrativeStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+  state?: "Enable" | "Disable" | "UnderMaintenance";
+  resourceIds?: string[];
+}
 export const RoutePoliciesUpdateAdministrativeStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18333,11 +24774,65 @@ export const RoutePoliciesUpdateAdministrativeStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesUpdateAdministrativeStateInput =
-  typeof RoutePoliciesUpdateAdministrativeStateInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesUpdateAdministrativeStateInput>;
 
 // Output Schema
+export interface RoutePoliciesUpdateAdministrativeStateOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: {
+      id?: string;
+      resourceId?: string;
+      name?: string;
+      status: string;
+      percentComplete?: number;
+      startTime?: string;
+      endTime?: string;
+      operations?: unknown[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  resourceId?: string;
+  properties?: { successfulResources?: string[]; failedResources?: string[] };
+}
 export const RoutePoliciesUpdateAdministrativeStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18445,9 +24940,7 @@ export const RoutePoliciesUpdateAdministrativeStateOutput =
         failedResources: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
-  });
-export type RoutePoliciesUpdateAdministrativeStateOutput =
-  typeof RoutePoliciesUpdateAdministrativeStateOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesUpdateAdministrativeStateOutput>;
 
 // The operation
 /**
@@ -18464,6 +24957,11 @@ export const RoutePoliciesUpdateAdministrativeState =
     outputSchema: RoutePoliciesUpdateAdministrativeStateOutput,
   }));
 // Input Schema
+export interface RoutePoliciesValidateConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  routePolicyName: string;
+}
 export const RoutePoliciesValidateConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18475,11 +24973,18 @@ export const RoutePoliciesValidateConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/validateConfiguration",
       apiVersion: "2025-07-15",
     }),
-  );
-export type RoutePoliciesValidateConfigurationInput =
-  typeof RoutePoliciesValidateConfigurationInput.Type;
+  ) as unknown as Schema.Codec<RoutePoliciesValidateConfigurationInput>;
 
 // Output Schema
+export interface RoutePoliciesValidateConfigurationOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const RoutePoliciesValidateConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -18498,9 +25003,7 @@ export const RoutePoliciesValidateConfigurationOutput =
         ),
       }),
     ),
-  });
-export type RoutePoliciesValidateConfigurationOutput =
-  typeof RoutePoliciesValidateConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<RoutePoliciesValidateConfigurationOutput>;
 
 // The operation
 /**

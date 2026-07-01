@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupProcessDiskMeasurementsInput {
+  groupId: string;
+  partitionName: string;
+  processId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  m?: string;
+  granularity: string;
+  period?: string;
+  start?: string;
+  end?: string;
+}
 export const GetGroupProcessDiskMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -21,15 +33,12 @@ export const GetGroupProcessDiskMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements",
     }),
-  );
-export type GetGroupProcessDiskMeasurementsInput =
-  typeof GetGroupProcessDiskMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsInput>;
 
 // Output Schema
+export type GetGroupProcessDiskMeasurementsOutput = void;
 export const GetGroupProcessDiskMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessDiskMeasurementsOutput =
-  typeof GetGroupProcessDiskMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDiskMeasurementsOutput>;
 
 // The operation
 /**
@@ -39,8 +48,7 @@ export type GetGroupProcessDiskMeasurementsOutput =
  * - Throughput of I/O operations for the disk partition used for the MongoDB process
  * - Percentage of time during which requests the partition issued and serviced
  * - Latency per operation type of the disk partition used for the MongoDB process
- * - Amount of free and used disk space on the disk partition used for the MongoDB process
- * To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * - Amount of free and used disk space on the disk partition used for the MongoDB process.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

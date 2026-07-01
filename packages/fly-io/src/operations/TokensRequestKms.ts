@@ -4,14 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TokensRequestKmsInput {}
 export const TokensRequestKmsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "POST", path: "/tokens/kms" }));
-export type TokensRequestKmsInput = typeof TokensRequestKmsInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/tokens/kms" }),
+) as unknown as Schema.Codec<TokensRequestKmsInput>;
 
 // Output Schema
-export const TokensRequestKmsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type TokensRequestKmsOutput = typeof TokensRequestKmsOutput.Type;
+export type TokensRequestKmsOutput = void;
+export const TokensRequestKmsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TokensRequestKmsOutput>;
 
 // The operation
 /**

@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAlertConfigAlertsInput {
+  groupId: string;
+  alertConfigId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const GetGroupAlertConfigAlertsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const GetGroupAlertConfigAlertsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts",
     }),
-  );
-export type GetGroupAlertConfigAlertsInput =
-  typeof GetGroupAlertConfigAlertsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupAlertConfigAlertsInput>;
 
 // Output Schema
+export type GetGroupAlertConfigAlertsOutput = void;
 export const GetGroupAlertConfigAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAlertConfigAlertsOutput =
-  typeof GetGroupAlertConfigAlertsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertConfigAlertsOutput>;
 
 // The operation
 /**
  * Return All Open Alerts for One Alert Configuration
  *
- * Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
+ * Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. Use the Return All Alert Configurations for One Project endpoint to retrieve all alert configurations to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

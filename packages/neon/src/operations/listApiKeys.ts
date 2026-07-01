@@ -3,12 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListApiKeysInput {}
 export const ListApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/api_keys" }));
-export type ListApiKeysInput = typeof ListApiKeysInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/api_keys" }),
+) as unknown as Schema.Codec<ListApiKeysInput>;
 
 // Output Schema
+export type ListApiKeysOutput = {
+  id: number;
+  name: string;
+  created_at: string;
+  created_by: { id: string; name: string; image: string };
+  last_used_at?: string | null;
+  last_used_from_addr: string;
+}[];
 export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
@@ -22,8 +32,7 @@ export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
     last_used_from_addr: Schema.String,
   }),
-);
-export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
+) as unknown as Schema.Codec<ListApiKeysOutput>;
 
 // The operation
 /**
@@ -32,7 +41,7 @@ export type ListApiKeysOutput = typeof ListApiKeysOutput.Type;
  * Retrieves the API keys for your Neon account.
  * The response does not include API key tokens. A token is only provided when creating an API key.
  * API keys can also be managed in the Neon Console.
- * For more information, see [Manage API keys](https://neon.tech/docs/manage/api-keys/).
+ * For more information, see [Manage API keys](https://neon.com/docs/manage/api-keys/).
  */
 export const listApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListApiKeysInput,

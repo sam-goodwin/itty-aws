@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupEventInput {
+  groupId: string;
+  eventId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeRaw?: boolean;
+}
 export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
@@ -15,18 +22,18 @@ export const GetGroupEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/events/{eventId}",
   }),
-);
-export type GetGroupEventInput = typeof GetGroupEventInput.Type;
+) as unknown as Schema.Codec<GetGroupEventInput>;
 
 // Output Schema
-export const GetGroupEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupEventOutput = typeof GetGroupEventOutput.Type;
+export type GetGroupEventOutput = void;
+export const GetGroupEventOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupEventOutput>;
 
 // The operation
 /**
  * Return One Event from One Project
  *
- * Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return Events from One Project endpoint to retrieve all events to which the authenticated user has access.
+ * Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. Use the Return Events from One Project endpoint to retrieve all events to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

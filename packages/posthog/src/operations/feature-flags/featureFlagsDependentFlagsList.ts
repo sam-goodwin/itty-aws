@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsDependentFlagsListInput {
+  id: number;
+  project_id: string;
+}
 export const FeatureFlagsDependentFlagsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,14 @@ export const FeatureFlagsDependentFlagsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/feature_flags/{id}/dependent_flags/",
     }),
-  );
-export type FeatureFlagsDependentFlagsListInput =
-  typeof FeatureFlagsDependentFlagsListInput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsDependentFlagsListInput>;
 
 // Output Schema
+export type FeatureFlagsDependentFlagsListOutput = {
+  id?: number;
+  key?: string;
+  name?: string;
+}[];
 export const FeatureFlagsDependentFlagsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -25,9 +32,7 @@ export const FeatureFlagsDependentFlagsListOutput =
       key: Schema.optional(Schema.String),
       name: Schema.optional(Schema.String),
     }),
-  );
-export type FeatureFlagsDependentFlagsListOutput =
-  typeof FeatureFlagsDependentFlagsListOutput.Type;
+  ) as unknown as Schema.Codec<FeatureFlagsDependentFlagsListOutput>;
 
 // The operation
 /**

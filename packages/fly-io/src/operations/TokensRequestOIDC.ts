@@ -4,18 +4,23 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TokensRequestOIDCInput {
+  aud?: string;
+  aws_principal_tags?: boolean;
+}
 export const TokensRequestOIDCInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     aud: Schema.optional(Schema.String),
     aws_principal_tags: Schema.optional(Schema.Boolean),
   },
-).pipe(T.Http({ method: "POST", path: "/tokens/oidc" }));
-export type TokensRequestOIDCInput = typeof TokensRequestOIDCInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/tokens/oidc" }),
+) as unknown as Schema.Codec<TokensRequestOIDCInput>;
 
 // Output Schema
+export type TokensRequestOIDCOutput = void;
 export const TokensRequestOIDCOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type TokensRequestOIDCOutput = typeof TokensRequestOIDCOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TokensRequestOIDCOutput>;
 
 // The operation
 /**

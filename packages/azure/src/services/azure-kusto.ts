@@ -4,11 +4,18 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AttachedDatabaseConfigurationsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+}
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24,20 +31,22 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type AttachedDatabaseConfigurationsCheckNameAvailabilityInput =
-  typeof AttachedDatabaseConfigurationsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<AttachedDatabaseConfigurationsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface AttachedDatabaseConfigurationsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type AttachedDatabaseConfigurationsCheckNameAvailabilityOutput =
-  typeof AttachedDatabaseConfigurationsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<AttachedDatabaseConfigurationsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -54,6 +63,39 @@ export const AttachedDatabaseConfigurationsCheckNameAvailability =
     outputSchema: AttachedDatabaseConfigurationsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface AttachedDatabaseConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  attachedDatabaseConfigurationName: string;
+  properties?: {
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    databaseName: string;
+    clusterResourceId: string;
+    attachedDatabaseNames?: string[];
+    defaultPrincipalsModificationKind: "Union" | "Replace" | "None";
+    tableLevelSharingProperties?: {
+      tablesToInclude?: string[];
+      tablesToExclude?: string[];
+      externalTablesToInclude?: string[];
+      externalTablesToExclude?: string[];
+      materializedViewsToInclude?: string[];
+      materializedViewsToExclude?: string[];
+      functionsToInclude?: string[];
+      functionsToExclude?: string[];
+    };
+    databaseNameOverride?: string;
+    databaseNamePrefix?: string;
+  };
+  location?: string;
+}
 export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -112,11 +154,22 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type AttachedDatabaseConfigurationsCreateOrUpdateInput =
-  typeof AttachedDatabaseConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AttachedDatabaseConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AttachedDatabaseConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedDatabaseConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -136,9 +189,7 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttachedDatabaseConfigurationsCreateOrUpdateOutput =
-  typeof AttachedDatabaseConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AttachedDatabaseConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -156,6 +207,12 @@ export const AttachedDatabaseConfigurationsCreateOrUpdate =
     outputSchema: AttachedDatabaseConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AttachedDatabaseConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  attachedDatabaseConfigurationName: string;
+}
 export const AttachedDatabaseConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -168,15 +225,12 @@ export const AttachedDatabaseConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type AttachedDatabaseConfigurationsDeleteInput =
-  typeof AttachedDatabaseConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AttachedDatabaseConfigurationsDeleteInput>;
 
 // Output Schema
+export type AttachedDatabaseConfigurationsDeleteOutput = void;
 export const AttachedDatabaseConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttachedDatabaseConfigurationsDeleteOutput =
-  typeof AttachedDatabaseConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttachedDatabaseConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -194,6 +248,12 @@ export const AttachedDatabaseConfigurationsDelete =
     outputSchema: AttachedDatabaseConfigurationsDeleteOutput,
   }));
 // Input Schema
+export interface AttachedDatabaseConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  attachedDatabaseConfigurationName: string;
+}
 export const AttachedDatabaseConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -206,11 +266,22 @@ export const AttachedDatabaseConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type AttachedDatabaseConfigurationsGetInput =
-  typeof AttachedDatabaseConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<AttachedDatabaseConfigurationsGetInput>;
 
 // Output Schema
+export interface AttachedDatabaseConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttachedDatabaseConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -230,9 +301,7 @@ export const AttachedDatabaseConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttachedDatabaseConfigurationsGetOutput =
-  typeof AttachedDatabaseConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AttachedDatabaseConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -250,6 +319,11 @@ export const AttachedDatabaseConfigurationsGet =
     outputSchema: AttachedDatabaseConfigurationsGetOutput,
   }));
 // Input Schema
+export interface AttachedDatabaseConfigurationsListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const AttachedDatabaseConfigurationsListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -261,11 +335,25 @@ export const AttachedDatabaseConfigurationsListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations",
       apiVersion: "2025-02-14",
     }),
-  );
-export type AttachedDatabaseConfigurationsListByClusterInput =
-  typeof AttachedDatabaseConfigurationsListByClusterInput.Type;
+  ) as unknown as Schema.Codec<AttachedDatabaseConfigurationsListByClusterInput>;
 
 // Output Schema
+export interface AttachedDatabaseConfigurationsListByClusterOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AttachedDatabaseConfigurationsListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -302,9 +390,7 @@ export const AttachedDatabaseConfigurationsListByClusterOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AttachedDatabaseConfigurationsListByClusterOutput =
-  typeof AttachedDatabaseConfigurationsListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<AttachedDatabaseConfigurationsListByClusterOutput>;
 
 // The operation
 /**
@@ -321,6 +407,13 @@ export const AttachedDatabaseConfigurationsListByCluster =
     outputSchema: AttachedDatabaseConfigurationsListByClusterOutput,
   }));
 // Input Schema
+export interface ClusterPrincipalAssignmentsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/principalAssignments";
+}
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -334,20 +427,22 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkPrincipalAssignmentNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClusterPrincipalAssignmentsCheckNameAvailabilityInput =
-  typeof ClusterPrincipalAssignmentsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ClusterPrincipalAssignmentsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ClusterPrincipalAssignmentsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type ClusterPrincipalAssignmentsCheckNameAvailabilityOutput =
-  typeof ClusterPrincipalAssignmentsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ClusterPrincipalAssignmentsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -364,6 +459,29 @@ export const ClusterPrincipalAssignmentsCheckNameAvailability =
     outputSchema: ClusterPrincipalAssignmentsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ClusterPrincipalAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  principalAssignmentName: string;
+  properties?: {
+    principalId: string;
+    role: "AllDatabasesAdmin" | "AllDatabasesViewer" | "AllDatabasesMonitor";
+    tenantId?: string;
+    principalType: "App" | "Group" | "User";
+    tenantName?: string;
+    principalName?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    aadObjectId?: string;
+  };
+}
 export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -402,11 +520,22 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClusterPrincipalAssignmentsCreateOrUpdateInput =
-  typeof ClusterPrincipalAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClusterPrincipalAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClusterPrincipalAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterPrincipalAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -426,9 +555,7 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterPrincipalAssignmentsCreateOrUpdateOutput =
-  typeof ClusterPrincipalAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClusterPrincipalAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -446,6 +573,12 @@ export const ClusterPrincipalAssignmentsCreateOrUpdate =
     outputSchema: ClusterPrincipalAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ClusterPrincipalAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  principalAssignmentName: string;
+}
 export const ClusterPrincipalAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -458,15 +591,12 @@ export const ClusterPrincipalAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClusterPrincipalAssignmentsDeleteInput =
-  typeof ClusterPrincipalAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ClusterPrincipalAssignmentsDeleteInput>;
 
 // Output Schema
+export type ClusterPrincipalAssignmentsDeleteOutput = void;
 export const ClusterPrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClusterPrincipalAssignmentsDeleteOutput =
-  typeof ClusterPrincipalAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClusterPrincipalAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -484,6 +614,12 @@ export const ClusterPrincipalAssignmentsDelete =
     outputSchema: ClusterPrincipalAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface ClusterPrincipalAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  principalAssignmentName: string;
+}
 export const ClusterPrincipalAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -496,11 +632,22 @@ export const ClusterPrincipalAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClusterPrincipalAssignmentsGetInput =
-  typeof ClusterPrincipalAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<ClusterPrincipalAssignmentsGetInput>;
 
 // Output Schema
+export interface ClusterPrincipalAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClusterPrincipalAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -520,9 +667,7 @@ export const ClusterPrincipalAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClusterPrincipalAssignmentsGetOutput =
-  typeof ClusterPrincipalAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<ClusterPrincipalAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -540,6 +685,11 @@ export const ClusterPrincipalAssignmentsGet =
     outputSchema: ClusterPrincipalAssignmentsGetOutput,
   }));
 // Input Schema
+export interface ClusterPrincipalAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClusterPrincipalAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -551,11 +701,25 @@ export const ClusterPrincipalAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClusterPrincipalAssignmentsListInput =
-  typeof ClusterPrincipalAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<ClusterPrincipalAssignmentsListInput>;
 
 // Output Schema
+export interface ClusterPrincipalAssignmentsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClusterPrincipalAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -592,9 +756,7 @@ export const ClusterPrincipalAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClusterPrincipalAssignmentsListOutput =
-  typeof ClusterPrincipalAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<ClusterPrincipalAssignmentsListOutput>;
 
 // The operation
 /**
@@ -611,6 +773,29 @@ export const ClusterPrincipalAssignmentsList =
     outputSchema: ClusterPrincipalAssignmentsListOutput,
   }));
 // Input Schema
+export interface ClustersAddCalloutPoliciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  value: {
+    calloutUriRegex?: string;
+    calloutType?:
+      | "kusto"
+      | "sql"
+      | "cosmosdb"
+      | "external_data"
+      | "azure_digital_twins"
+      | "sandbox_artifacts"
+      | "webapi"
+      | "mysql"
+      | "postgresql"
+      | "genevametrics"
+      | "azure_openai";
+    outboundAccess?: "Allow" | "Deny";
+    calloutId?: string;
+  }[];
+  nextLink?: string;
+}
 export const ClustersAddCalloutPoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -645,15 +830,12 @@ export const ClustersAddCalloutPoliciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addCalloutPolicies",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersAddCalloutPoliciesInput =
-  typeof ClustersAddCalloutPoliciesInput.Type;
+  ) as unknown as Schema.Codec<ClustersAddCalloutPoliciesInput>;
 
 // Output Schema
+export type ClustersAddCalloutPoliciesOutput = void;
 export const ClustersAddCalloutPoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersAddCalloutPoliciesOutput =
-  typeof ClustersAddCalloutPoliciesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddCalloutPoliciesOutput>;
 
 // The operation
 /**
@@ -671,6 +853,24 @@ export const ClustersAddCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersAddLanguageExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  value?: {
+    languageExtensionName?: "PYTHON" | "R";
+    languageExtensionImageName?:
+      | "R"
+      | "Python3_6_5"
+      | "Python3_10_8"
+      | "Python3_10_8_DL"
+      | "PythonCustomImage"
+      | "Python3_11_7"
+      | "Python3_11_7_DL";
+    languageExtensionCustomImageName?: string;
+  }[];
+  nextLink?: string;
+}
 export const ClustersAddLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -704,15 +904,12 @@ export const ClustersAddLanguageExtensionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addLanguageExtensions",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersAddLanguageExtensionsInput =
-  typeof ClustersAddLanguageExtensionsInput.Type;
+  ) as unknown as Schema.Codec<ClustersAddLanguageExtensionsInput>;
 
 // Output Schema
+export type ClustersAddLanguageExtensionsOutput = void;
 export const ClustersAddLanguageExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersAddLanguageExtensionsOutput =
-  typeof ClustersAddLanguageExtensionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersAddLanguageExtensionsOutput>;
 
 // The operation
 /**
@@ -729,6 +926,12 @@ export const ClustersAddLanguageExtensions =
     outputSchema: ClustersAddLanguageExtensionsOutput,
   }));
 // Input Schema
+export interface ClustersCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters";
+}
 export const ClustersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -741,20 +944,22 @@ export const ClustersCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/checkNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersCheckNameAvailabilityInput =
-  typeof ClustersCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ClustersCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ClustersCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const ClustersCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type ClustersCheckNameAvailabilityOutput =
-  typeof ClustersCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -770,6 +975,206 @@ export const ClustersCheckNameAvailability =
     outputSchema: ClustersCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ClustersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  properties?: {
+    state?:
+      | "Creating"
+      | "Unavailable"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Stopping"
+      | "Stopped"
+      | "Starting"
+      | "Updating"
+      | "Migrated";
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    uri?: string;
+    dataIngestionUri?: string;
+    stateReason?: string;
+    trustedExternalTenants?: { value?: string }[];
+    optimizedAutoscale?: {
+      version: number;
+      isEnabled: boolean;
+      minimum: number;
+      maximum: number;
+    };
+    enableDiskEncryption?: boolean;
+    enableStreamingIngest?: boolean;
+    virtualNetworkConfiguration?: {
+      subnetId: string;
+      enginePublicIpId: string;
+      dataManagementPublicIpId: string;
+      state?: "Enabled" | "Disabled";
+    };
+    keyVaultProperties?: {
+      keyName?: string;
+      keyVersion?: string;
+      keyVaultUri?: string;
+      userIdentity?: string;
+      federatedIdentityClientId?: string;
+    };
+    enablePurge?: boolean;
+    languageExtensions?: {
+      value?: {
+        languageExtensionName?: "PYTHON" | "R";
+        languageExtensionImageName?:
+          | "R"
+          | "Python3_6_5"
+          | "Python3_10_8"
+          | "Python3_10_8_DL"
+          | "PythonCustomImage"
+          | "Python3_11_7"
+          | "Python3_11_7_DL";
+        languageExtensionCustomImageName?: string;
+      }[];
+      nextLink?: string;
+    };
+    enableDoubleEncryption?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    allowedIpRangeList?: string[];
+    engineType?: "V2" | "V3";
+    acceptedAudiences?: { value?: string }[];
+    enableAutoStop?: boolean;
+    restrictOutboundNetworkAccess?: "Enabled" | "Disabled";
+    allowedFqdnList?: string[];
+    calloutPolicies?: {
+      calloutUriRegex?: string;
+      calloutType?:
+        | "kusto"
+        | "sql"
+        | "cosmosdb"
+        | "external_data"
+        | "azure_digital_twins"
+        | "sandbox_artifacts"
+        | "webapi"
+        | "mysql"
+        | "postgresql"
+        | "genevametrics"
+        | "azure_openai";
+      outboundAccess?: "Allow" | "Deny";
+      calloutId?: string;
+    }[];
+    publicIPType?: "IPv4" | "DualStack";
+    virtualClusterGraduationProperties?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    migrationCluster?: {
+      id?: string;
+      uri?: string;
+      dataIngestionUri?: string;
+      role?: "Source" | "Destination";
+    };
+    zoneStatus?: "NonZonal" | "ZonalInconsistency" | "Zonal";
+  };
+  sku: {
+    name:
+      | "Dev(No SLA)_Standard_D11_v2"
+      | "Dev(No SLA)_Standard_E2a_v4"
+      | "Standard_D11_v2"
+      | "Standard_D12_v2"
+      | "Standard_D13_v2"
+      | "Standard_D14_v2"
+      | "Standard_D32d_v4"
+      | "Standard_D16d_v5"
+      | "Standard_D32d_v5"
+      | "Standard_DS13_v2+1TB_PS"
+      | "Standard_DS13_v2+2TB_PS"
+      | "Standard_DS14_v2+3TB_PS"
+      | "Standard_DS14_v2+4TB_PS"
+      | "Standard_L4s"
+      | "Standard_L8s"
+      | "Standard_L16s"
+      | "Standard_L8s_v2"
+      | "Standard_L16s_v2"
+      | "Standard_L8s_v3"
+      | "Standard_L16s_v3"
+      | "Standard_L32s_v3"
+      | "Standard_L8as_v3"
+      | "Standard_L16as_v3"
+      | "Standard_L32as_v3"
+      | "Standard_E64i_v3"
+      | "Standard_E80ids_v4"
+      | "Standard_E2a_v4"
+      | "Standard_E4a_v4"
+      | "Standard_E8a_v4"
+      | "Standard_E16a_v4"
+      | "Standard_E8as_v4+1TB_PS"
+      | "Standard_E8as_v4+2TB_PS"
+      | "Standard_E16as_v4+3TB_PS"
+      | "Standard_E16as_v4+4TB_PS"
+      | "Standard_E8as_v5+1TB_PS"
+      | "Standard_E8as_v5+2TB_PS"
+      | "Standard_E16as_v5+3TB_PS"
+      | "Standard_E16as_v5+4TB_PS"
+      | "Standard_E2ads_v5"
+      | "Standard_E4ads_v5"
+      | "Standard_E8ads_v5"
+      | "Standard_E16ads_v5"
+      | "Standard_EC8as_v5+1TB_PS"
+      | "Standard_EC8as_v5+2TB_PS"
+      | "Standard_EC16as_v5+3TB_PS"
+      | "Standard_EC16as_v5+4TB_PS"
+      | "Standard_EC8ads_v5"
+      | "Standard_EC16ads_v5"
+      | "Standard_E8s_v4+1TB_PS"
+      | "Standard_E8s_v4+2TB_PS"
+      | "Standard_E16s_v4+3TB_PS"
+      | "Standard_E16s_v4+4TB_PS"
+      | "Standard_E8s_v5+1TB_PS"
+      | "Standard_E8s_v5+2TB_PS"
+      | "Standard_E16s_v5+3TB_PS"
+      | "Standard_E16s_v5+4TB_PS"
+      | "Standard_E2d_v4"
+      | "Standard_E4d_v4"
+      | "Standard_E8d_v4"
+      | "Standard_E16d_v4"
+      | "Standard_E2d_v5"
+      | "Standard_E4d_v5"
+      | "Standard_E8d_v5"
+      | "Standard_E16d_v5";
+    capacity?: number;
+    tier: "Basic" | "Standard";
+  };
+  zones?: string[];
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ClustersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1061,11 +1466,22 @@ export const ClustersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersCreateOrUpdateInput =
-  typeof ClustersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ClustersCreateOrUpdateInput>;
 
 // Output Schema
+export interface ClustersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1085,9 +1501,7 @@ export const ClustersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ClustersCreateOrUpdateOutput =
-  typeof ClustersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ClustersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1107,6 +1521,11 @@ export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1117,12 +1536,12 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
+) as unknown as Schema.Codec<ClustersDeleteInput>;
 
 // Output Schema
-export const ClustersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDeleteOutput = typeof ClustersDeleteOutput.Type;
+export type ClustersDeleteOutput = void;
+export const ClustersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1138,6 +1557,25 @@ export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersDeleteOutput,
 }));
 // Input Schema
+export interface ClustersDetachFollowerDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  clusterResourceId: string;
+  attachedDatabaseConfigurationName: string;
+  databaseName?: string;
+  tableLevelSharingProperties?: {
+    tablesToInclude?: string[];
+    tablesToExclude?: string[];
+    externalTablesToInclude?: string[];
+    externalTablesToExclude?: string[];
+    materializedViewsToInclude?: string[];
+    materializedViewsToExclude?: string[];
+    functionsToInclude?: string[];
+    functionsToExclude?: string[];
+  };
+  databaseShareOrigin?: "Direct" | "DataShare" | "Other";
+}
 export const ClustersDetachFollowerDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1171,15 +1609,12 @@ export const ClustersDetachFollowerDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/detachFollowerDatabases",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersDetachFollowerDatabasesInput =
-  typeof ClustersDetachFollowerDatabasesInput.Type;
+  ) as unknown as Schema.Codec<ClustersDetachFollowerDatabasesInput>;
 
 // Output Schema
+export type ClustersDetachFollowerDatabasesOutput = void;
 export const ClustersDetachFollowerDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersDetachFollowerDatabasesOutput =
-  typeof ClustersDetachFollowerDatabasesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDetachFollowerDatabasesOutput>;
 
 // The operation
 /**
@@ -1196,6 +1631,11 @@ export const ClustersDetachFollowerDatabases =
     outputSchema: ClustersDetachFollowerDatabasesOutput,
   }));
 // Input Schema
+export interface ClustersDiagnoseVirtualNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersDiagnoseVirtualNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1207,17 +1647,16 @@ export const ClustersDiagnoseVirtualNetworkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/diagnoseVirtualNetwork",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersDiagnoseVirtualNetworkInput =
-  typeof ClustersDiagnoseVirtualNetworkInput.Type;
+  ) as unknown as Schema.Codec<ClustersDiagnoseVirtualNetworkInput>;
 
 // Output Schema
+export interface ClustersDiagnoseVirtualNetworkOutput {
+  findings?: string[];
+}
 export const ClustersDiagnoseVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type ClustersDiagnoseVirtualNetworkOutput =
-  typeof ClustersDiagnoseVirtualNetworkOutput.Type;
+  }) as unknown as Schema.Codec<ClustersDiagnoseVirtualNetworkOutput>;
 
 // The operation
 /**
@@ -1234,6 +1673,11 @@ export const ClustersDiagnoseVirtualNetwork =
     outputSchema: ClustersDiagnoseVirtualNetworkOutput,
   }));
 // Input Schema
+export interface ClustersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1244,10 +1688,22 @@ export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersGetInput = typeof ClustersGetInput.Type;
+) as unknown as Schema.Codec<ClustersGetInput>;
 
 // Output Schema
+export interface ClustersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1266,8 +1722,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersGetOutput = typeof ClustersGetOutput.Type;
+}) as unknown as Schema.Codec<ClustersGetOutput>;
 
 // The operation
 /**
@@ -1283,6 +1738,9 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersGetOutput,
 }));
 // Input Schema
+export interface ClustersListInput {
+  subscriptionId: string;
+}
 export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1291,10 +1749,25 @@ export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/clusters",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersListInput = typeof ClustersListInput.Type;
+) as unknown as Schema.Codec<ClustersListInput>;
 
 // Output Schema
+export interface ClustersListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1330,8 +1803,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ClustersListOutput = typeof ClustersListOutput.Type;
+}) as unknown as Schema.Codec<ClustersListOutput>;
 
 // The operation
 /**
@@ -1345,6 +1817,10 @@ export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersListOutput,
 }));
 // Input Schema
+export interface ClustersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ClustersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1355,11 +1831,25 @@ export const ClustersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListByResourceGroupInput =
-  typeof ClustersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ClustersListByResourceGroupInput>;
 
 // Output Schema
+export interface ClustersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1396,9 +1886,7 @@ export const ClustersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListByResourceGroupOutput =
-  typeof ClustersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1415,6 +1903,11 @@ export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersListCalloutPoliciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListCalloutPoliciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1426,11 +1919,29 @@ export const ClustersListCalloutPoliciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listCalloutPolicies",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListCalloutPoliciesInput =
-  typeof ClustersListCalloutPoliciesInput.Type;
+  ) as unknown as Schema.Codec<ClustersListCalloutPoliciesInput>;
 
 // Output Schema
+export interface ClustersListCalloutPoliciesOutput {
+  value: {
+    calloutUriRegex?: string;
+    calloutType?:
+      | "kusto"
+      | "sql"
+      | "cosmosdb"
+      | "external_data"
+      | "azure_digital_twins"
+      | "sandbox_artifacts"
+      | "webapi"
+      | "mysql"
+      | "postgresql"
+      | "genevametrics"
+      | "azure_openai";
+    outboundAccess?: "Allow" | "Deny";
+    calloutId?: string;
+  }[];
+  nextLink?: string;
+}
 export const ClustersListCalloutPoliciesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1456,9 +1967,7 @@ export const ClustersListCalloutPoliciesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListCalloutPoliciesOutput =
-  typeof ClustersListCalloutPoliciesOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListCalloutPoliciesOutput>;
 
 // The operation
 /**
@@ -1476,6 +1985,11 @@ export const ClustersListCalloutPolicies = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersListFollowerDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListFollowerDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1487,11 +2001,28 @@ export const ClustersListFollowerDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListFollowerDatabasesInput =
-  typeof ClustersListFollowerDatabasesInput.Type;
+  ) as unknown as Schema.Codec<ClustersListFollowerDatabasesInput>;
 
 // Output Schema
+export interface ClustersListFollowerDatabasesOutput {
+  value?: {
+    clusterResourceId: string;
+    attachedDatabaseConfigurationName: string;
+    databaseName?: string;
+    tableLevelSharingProperties?: {
+      tablesToInclude?: string[];
+      tablesToExclude?: string[];
+      externalTablesToInclude?: string[];
+      externalTablesToExclude?: string[];
+      materializedViewsToInclude?: string[];
+      materializedViewsToExclude?: string[];
+      functionsToInclude?: string[];
+      functionsToExclude?: string[];
+    };
+    databaseShareOrigin?: "Direct" | "DataShare" | "Other";
+  }[];
+  nextLink?: string;
+}
 export const ClustersListFollowerDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1527,9 +2058,7 @@ export const ClustersListFollowerDatabasesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListFollowerDatabasesOutput =
-  typeof ClustersListFollowerDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListFollowerDatabasesOutput>;
 
 // The operation
 /**
@@ -1546,6 +2075,11 @@ export const ClustersListFollowerDatabases =
     outputSchema: ClustersListFollowerDatabasesOutput,
   }));
 // Input Schema
+export interface ClustersListFollowerDatabasesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListFollowerDatabasesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1557,11 +2091,30 @@ export const ClustersListFollowerDatabasesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListFollowerDatabasesGetInput =
-  typeof ClustersListFollowerDatabasesGetInput.Type;
+  ) as unknown as Schema.Codec<ClustersListFollowerDatabasesGetInput>;
 
 // Output Schema
+export interface ClustersListFollowerDatabasesGetOutput {
+  value: {
+    properties?: {
+      clusterResourceId: string;
+      attachedDatabaseConfigurationName: string;
+      databaseName?: string;
+      tableLevelSharingProperties?: {
+        tablesToInclude?: string[];
+        tablesToExclude?: string[];
+        externalTablesToInclude?: string[];
+        externalTablesToExclude?: string[];
+        materializedViewsToInclude?: string[];
+        materializedViewsToExclude?: string[];
+        functionsToInclude?: string[];
+        functionsToExclude?: string[];
+      };
+      databaseShareOrigin?: "Direct" | "DataShare" | "Other";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListFollowerDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1603,9 +2156,7 @@ export const ClustersListFollowerDatabasesGetOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListFollowerDatabasesGetOutput =
-  typeof ClustersListFollowerDatabasesGetOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListFollowerDatabasesGetOutput>;
 
 // The operation
 /**
@@ -1622,6 +2173,11 @@ export const ClustersListFollowerDatabasesGet =
     outputSchema: ClustersListFollowerDatabasesGetOutput,
   }));
 // Input Schema
+export interface ClustersListLanguageExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1633,11 +2189,24 @@ export const ClustersListLanguageExtensionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listLanguageExtensions",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListLanguageExtensionsInput =
-  typeof ClustersListLanguageExtensionsInput.Type;
+  ) as unknown as Schema.Codec<ClustersListLanguageExtensionsInput>;
 
 // Output Schema
+export interface ClustersListLanguageExtensionsOutput {
+  value?: {
+    languageExtensionName?: "PYTHON" | "R";
+    languageExtensionImageName?:
+      | "R"
+      | "Python3_6_5"
+      | "Python3_10_8"
+      | "Python3_10_8_DL"
+      | "PythonCustomImage"
+      | "Python3_11_7"
+      | "Python3_11_7_DL";
+    languageExtensionCustomImageName?: string;
+  }[];
+  nextLink?: string;
+}
 export const ClustersListLanguageExtensionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1662,9 +2231,7 @@ export const ClustersListLanguageExtensionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListLanguageExtensionsOutput =
-  typeof ClustersListLanguageExtensionsOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListLanguageExtensionsOutput>;
 
 // The operation
 /**
@@ -1681,6 +2248,11 @@ export const ClustersListLanguageExtensions =
     outputSchema: ClustersListLanguageExtensionsOutput,
   }));
 // Input Schema
+export interface ClustersListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1692,11 +2264,25 @@ export const ClustersListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListOutboundNetworkDependenciesEndpointsInput =
-  typeof ClustersListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<ClustersListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface ClustersListOutboundNetworkDependenciesEndpointsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1731,9 +2317,7 @@ export const ClustersListOutboundNetworkDependenciesEndpointsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListOutboundNetworkDependenciesEndpointsOutput =
-  typeof ClustersListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -1750,6 +2334,9 @@ export const ClustersListOutboundNetworkDependenciesEndpoints =
     outputSchema: ClustersListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface ClustersListSkusInput {
+  subscriptionId: string;
+}
 export const ClustersListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1758,10 +2345,27 @@ export const ClustersListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/skus",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersListSkusInput = typeof ClustersListSkusInput.Type;
+) as unknown as Schema.Codec<ClustersListSkusInput>;
 
 // Output Schema
+export interface ClustersListSkusOutput {
+  value?: {
+    resourceType?: string;
+    name?: string;
+    tier?: string;
+    locations?: string[];
+    locationInfo?: {
+      location: string;
+      zones?: string[];
+      zoneDetails?: {
+        name?: string[];
+        capabilities?: { name?: string; value?: string }[];
+      }[];
+    }[];
+    restrictions?: unknown[];
+  }[];
+  nextLink?: string;
+}
 export const ClustersListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -1800,8 +2404,7 @@ export const ClustersListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ClustersListSkusOutput = typeof ClustersListSkusOutput.Type;
+) as unknown as Schema.Codec<ClustersListSkusOutput>;
 
 // The operation
 /**
@@ -1815,6 +2418,11 @@ export const ClustersListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersListSkusOutput,
 }));
 // Input Schema
+export interface ClustersListSkusByResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersListSkusByResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1826,11 +2434,90 @@ export const ClustersListSkusByResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/skus",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersListSkusByResourceInput =
-  typeof ClustersListSkusByResourceInput.Type;
+  ) as unknown as Schema.Codec<ClustersListSkusByResourceInput>;
 
 // Output Schema
+export interface ClustersListSkusByResourceOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name:
+        | "Dev(No SLA)_Standard_D11_v2"
+        | "Dev(No SLA)_Standard_E2a_v4"
+        | "Standard_D11_v2"
+        | "Standard_D12_v2"
+        | "Standard_D13_v2"
+        | "Standard_D14_v2"
+        | "Standard_D32d_v4"
+        | "Standard_D16d_v5"
+        | "Standard_D32d_v5"
+        | "Standard_DS13_v2+1TB_PS"
+        | "Standard_DS13_v2+2TB_PS"
+        | "Standard_DS14_v2+3TB_PS"
+        | "Standard_DS14_v2+4TB_PS"
+        | "Standard_L4s"
+        | "Standard_L8s"
+        | "Standard_L16s"
+        | "Standard_L8s_v2"
+        | "Standard_L16s_v2"
+        | "Standard_L8s_v3"
+        | "Standard_L16s_v3"
+        | "Standard_L32s_v3"
+        | "Standard_L8as_v3"
+        | "Standard_L16as_v3"
+        | "Standard_L32as_v3"
+        | "Standard_E64i_v3"
+        | "Standard_E80ids_v4"
+        | "Standard_E2a_v4"
+        | "Standard_E4a_v4"
+        | "Standard_E8a_v4"
+        | "Standard_E16a_v4"
+        | "Standard_E8as_v4+1TB_PS"
+        | "Standard_E8as_v4+2TB_PS"
+        | "Standard_E16as_v4+3TB_PS"
+        | "Standard_E16as_v4+4TB_PS"
+        | "Standard_E8as_v5+1TB_PS"
+        | "Standard_E8as_v5+2TB_PS"
+        | "Standard_E16as_v5+3TB_PS"
+        | "Standard_E16as_v5+4TB_PS"
+        | "Standard_E2ads_v5"
+        | "Standard_E4ads_v5"
+        | "Standard_E8ads_v5"
+        | "Standard_E16ads_v5"
+        | "Standard_EC8as_v5+1TB_PS"
+        | "Standard_EC8as_v5+2TB_PS"
+        | "Standard_EC16as_v5+3TB_PS"
+        | "Standard_EC16as_v5+4TB_PS"
+        | "Standard_EC8ads_v5"
+        | "Standard_EC16ads_v5"
+        | "Standard_E8s_v4+1TB_PS"
+        | "Standard_E8s_v4+2TB_PS"
+        | "Standard_E16s_v4+3TB_PS"
+        | "Standard_E16s_v4+4TB_PS"
+        | "Standard_E8s_v5+1TB_PS"
+        | "Standard_E8s_v5+2TB_PS"
+        | "Standard_E16s_v5+3TB_PS"
+        | "Standard_E16s_v5+4TB_PS"
+        | "Standard_E2d_v4"
+        | "Standard_E4d_v4"
+        | "Standard_E8d_v4"
+        | "Standard_E16d_v4"
+        | "Standard_E2d_v5"
+        | "Standard_E4d_v5"
+        | "Standard_E8d_v5"
+        | "Standard_E16d_v5";
+      capacity?: number;
+      tier: "Basic" | "Standard";
+    };
+    capacity?: {
+      scaleType: "automatic" | "manual" | "none";
+      minimum: number;
+      maximum: number;
+      default: number;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ClustersListSkusByResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1921,9 +2608,7 @@ export const ClustersListSkusByResourceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ClustersListSkusByResourceOutput =
-  typeof ClustersListSkusByResourceOutput.Type;
+  }) as unknown as Schema.Codec<ClustersListSkusByResourceOutput>;
 
 // The operation
 /**
@@ -1941,6 +2626,12 @@ export const ClustersListSkusByResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersMigrateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  clusterResourceId: string;
+}
 export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1952,12 +2643,12 @@ export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/migrate",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersMigrateInput = typeof ClustersMigrateInput.Type;
+) as unknown as Schema.Codec<ClustersMigrateInput>;
 
 // Output Schema
-export const ClustersMigrateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersMigrateOutput = typeof ClustersMigrateOutput.Type;
+export type ClustersMigrateOutput = void;
+export const ClustersMigrateOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersMigrateOutput>;
 
 // The operation
 /**
@@ -1973,6 +2664,12 @@ export const ClustersMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersMigrateOutput,
 }));
 // Input Schema
+export interface ClustersRemoveCalloutPolicyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  calloutId?: string;
+}
 export const ClustersRemoveCalloutPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1985,15 +2682,12 @@ export const ClustersRemoveCalloutPolicyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeCalloutPolicy",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersRemoveCalloutPolicyInput =
-  typeof ClustersRemoveCalloutPolicyInput.Type;
+  ) as unknown as Schema.Codec<ClustersRemoveCalloutPolicyInput>;
 
 // Output Schema
+export type ClustersRemoveCalloutPolicyOutput = void;
 export const ClustersRemoveCalloutPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersRemoveCalloutPolicyOutput =
-  typeof ClustersRemoveCalloutPolicyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveCalloutPolicyOutput>;
 
 // The operation
 /**
@@ -2011,6 +2705,24 @@ export const ClustersRemoveCalloutPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ClustersRemoveLanguageExtensionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  value?: {
+    languageExtensionName?: "PYTHON" | "R";
+    languageExtensionImageName?:
+      | "R"
+      | "Python3_6_5"
+      | "Python3_10_8"
+      | "Python3_10_8_DL"
+      | "PythonCustomImage"
+      | "Python3_11_7"
+      | "Python3_11_7_DL";
+    languageExtensionCustomImageName?: string;
+  }[];
+  nextLink?: string;
+}
 export const ClustersRemoveLanguageExtensionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2044,15 +2756,12 @@ export const ClustersRemoveLanguageExtensionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeLanguageExtensions",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ClustersRemoveLanguageExtensionsInput =
-  typeof ClustersRemoveLanguageExtensionsInput.Type;
+  ) as unknown as Schema.Codec<ClustersRemoveLanguageExtensionsInput>;
 
 // Output Schema
+export type ClustersRemoveLanguageExtensionsOutput = void;
 export const ClustersRemoveLanguageExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersRemoveLanguageExtensionsOutput =
-  typeof ClustersRemoveLanguageExtensionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersRemoveLanguageExtensionsOutput>;
 
 // The operation
 /**
@@ -2069,6 +2778,11 @@ export const ClustersRemoveLanguageExtensions =
     outputSchema: ClustersRemoveLanguageExtensionsOutput,
   }));
 // Input Schema
+export interface ClustersStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2079,12 +2793,12 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/start",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersStartInput = typeof ClustersStartInput.Type;
+) as unknown as Schema.Codec<ClustersStartInput>;
 
 // Output Schema
-export const ClustersStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersStartOutput = typeof ClustersStartOutput.Type;
+export type ClustersStartOutput = void;
+export const ClustersStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStartOutput>;
 
 // The operation
 /**
@@ -2100,6 +2814,11 @@ export const ClustersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersStartOutput,
 }));
 // Input Schema
+export interface ClustersStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2110,12 +2829,12 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/stop",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersStopInput = typeof ClustersStopInput.Type;
+) as unknown as Schema.Codec<ClustersStopInput>;
 
 // Output Schema
-export const ClustersStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ClustersStopOutput = typeof ClustersStopOutput.Type;
+export type ClustersStopOutput = void;
+export const ClustersStopOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersStopOutput>;
 
 // The operation
 /**
@@ -2131,6 +2850,216 @@ export const ClustersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersStopOutput,
 }));
 // Input Schema
+export interface ClustersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  tags?: Record<string, string>;
+  location?: string;
+  sku?: {
+    name:
+      | "Dev(No SLA)_Standard_D11_v2"
+      | "Dev(No SLA)_Standard_E2a_v4"
+      | "Standard_D11_v2"
+      | "Standard_D12_v2"
+      | "Standard_D13_v2"
+      | "Standard_D14_v2"
+      | "Standard_D32d_v4"
+      | "Standard_D16d_v5"
+      | "Standard_D32d_v5"
+      | "Standard_DS13_v2+1TB_PS"
+      | "Standard_DS13_v2+2TB_PS"
+      | "Standard_DS14_v2+3TB_PS"
+      | "Standard_DS14_v2+4TB_PS"
+      | "Standard_L4s"
+      | "Standard_L8s"
+      | "Standard_L16s"
+      | "Standard_L8s_v2"
+      | "Standard_L16s_v2"
+      | "Standard_L8s_v3"
+      | "Standard_L16s_v3"
+      | "Standard_L32s_v3"
+      | "Standard_L8as_v3"
+      | "Standard_L16as_v3"
+      | "Standard_L32as_v3"
+      | "Standard_E64i_v3"
+      | "Standard_E80ids_v4"
+      | "Standard_E2a_v4"
+      | "Standard_E4a_v4"
+      | "Standard_E8a_v4"
+      | "Standard_E16a_v4"
+      | "Standard_E8as_v4+1TB_PS"
+      | "Standard_E8as_v4+2TB_PS"
+      | "Standard_E16as_v4+3TB_PS"
+      | "Standard_E16as_v4+4TB_PS"
+      | "Standard_E8as_v5+1TB_PS"
+      | "Standard_E8as_v5+2TB_PS"
+      | "Standard_E16as_v5+3TB_PS"
+      | "Standard_E16as_v5+4TB_PS"
+      | "Standard_E2ads_v5"
+      | "Standard_E4ads_v5"
+      | "Standard_E8ads_v5"
+      | "Standard_E16ads_v5"
+      | "Standard_EC8as_v5+1TB_PS"
+      | "Standard_EC8as_v5+2TB_PS"
+      | "Standard_EC16as_v5+3TB_PS"
+      | "Standard_EC16as_v5+4TB_PS"
+      | "Standard_EC8ads_v5"
+      | "Standard_EC16ads_v5"
+      | "Standard_E8s_v4+1TB_PS"
+      | "Standard_E8s_v4+2TB_PS"
+      | "Standard_E16s_v4+3TB_PS"
+      | "Standard_E16s_v4+4TB_PS"
+      | "Standard_E8s_v5+1TB_PS"
+      | "Standard_E8s_v5+2TB_PS"
+      | "Standard_E16s_v5+3TB_PS"
+      | "Standard_E16s_v5+4TB_PS"
+      | "Standard_E2d_v4"
+      | "Standard_E4d_v4"
+      | "Standard_E8d_v4"
+      | "Standard_E16d_v4"
+      | "Standard_E2d_v5"
+      | "Standard_E4d_v5"
+      | "Standard_E8d_v5"
+      | "Standard_E16d_v5";
+    capacity?: number;
+    tier: "Basic" | "Standard";
+  };
+  zones?: string[];
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  properties?: {
+    state?:
+      | "Creating"
+      | "Unavailable"
+      | "Running"
+      | "Deleting"
+      | "Deleted"
+      | "Stopping"
+      | "Stopped"
+      | "Starting"
+      | "Updating"
+      | "Migrated";
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    uri?: string;
+    dataIngestionUri?: string;
+    stateReason?: string;
+    trustedExternalTenants?: { value?: string }[];
+    optimizedAutoscale?: {
+      version: number;
+      isEnabled: boolean;
+      minimum: number;
+      maximum: number;
+    };
+    enableDiskEncryption?: boolean;
+    enableStreamingIngest?: boolean;
+    virtualNetworkConfiguration?: {
+      subnetId: string;
+      enginePublicIpId: string;
+      dataManagementPublicIpId: string;
+      state?: "Enabled" | "Disabled";
+    };
+    keyVaultProperties?: {
+      keyName?: string;
+      keyVersion?: string;
+      keyVaultUri?: string;
+      userIdentity?: string;
+      federatedIdentityClientId?: string;
+    };
+    enablePurge?: boolean;
+    languageExtensions?: {
+      value?: {
+        languageExtensionName?: "PYTHON" | "R";
+        languageExtensionImageName?:
+          | "R"
+          | "Python3_6_5"
+          | "Python3_10_8"
+          | "Python3_10_8_DL"
+          | "PythonCustomImage"
+          | "Python3_11_7"
+          | "Python3_11_7_DL";
+        languageExtensionCustomImageName?: string;
+      }[];
+      nextLink?: string;
+    };
+    enableDoubleEncryption?: boolean;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    allowedIpRangeList?: string[];
+    engineType?: "V2" | "V3";
+    acceptedAudiences?: { value?: string }[];
+    enableAutoStop?: boolean;
+    restrictOutboundNetworkAccess?: "Enabled" | "Disabled";
+    allowedFqdnList?: string[];
+    calloutPolicies?: {
+      calloutUriRegex?: string;
+      calloutType?:
+        | "kusto"
+        | "sql"
+        | "cosmosdb"
+        | "external_data"
+        | "azure_digital_twins"
+        | "sandbox_artifacts"
+        | "webapi"
+        | "mysql"
+        | "postgresql"
+        | "genevametrics"
+        | "azure_openai";
+      outboundAccess?: "Allow" | "Deny";
+      calloutId?: string;
+    }[];
+    publicIPType?: "IPv4" | "DualStack";
+    virtualClusterGraduationProperties?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    migrationCluster?: {
+      id?: string;
+      uri?: string;
+      dataIngestionUri?: string;
+      role?: "Source" | "Destination";
+    };
+    zoneStatus?: "NonZonal" | "ZonalInconsistency" | "Zonal";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2437,10 +3366,22 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
+) as unknown as Schema.Codec<ClustersUpdateInput>;
 
 // Output Schema
+export interface ClustersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2459,8 +3400,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ClustersUpdateOutput = typeof ClustersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ClustersUpdateOutput>;
 
 // The operation
 /**
@@ -2477,6 +3417,23 @@ export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ClustersUpdateOutput,
 }));
 // Input Schema
+export interface DatabaseInviteFollowerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  inviteeEmail: string;
+  tableLevelSharingProperties?: {
+    tablesToInclude?: string[];
+    tablesToExclude?: string[];
+    externalTablesToInclude?: string[];
+    externalTablesToExclude?: string[];
+    materializedViewsToInclude?: string[];
+    materializedViewsToExclude?: string[];
+    functionsToInclude?: string[];
+    functionsToExclude?: string[];
+  };
+}
 export const DatabaseInviteFollowerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2506,17 +3463,16 @@ export const DatabaseInviteFollowerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/inviteFollower",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabaseInviteFollowerInput =
-  typeof DatabaseInviteFollowerInput.Type;
+  ) as unknown as Schema.Codec<DatabaseInviteFollowerInput>;
 
 // Output Schema
+export interface DatabaseInviteFollowerOutput {
+  generatedInvitation?: string;
+}
 export const DatabaseInviteFollowerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     generatedInvitation: Schema.optional(Schema.String),
-  });
-export type DatabaseInviteFollowerOutput =
-  typeof DatabaseInviteFollowerOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseInviteFollowerOutput>;
 
 // The operation
 /**
@@ -2535,6 +3491,14 @@ export const DatabaseInviteFollower = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasePrincipalAssignmentsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/databases/principalAssignments";
+}
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2551,20 +3515,22 @@ export const DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkPrincipalAssignmentNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasePrincipalAssignmentsCheckNameAvailabilityInput =
-  typeof DatabasePrincipalAssignmentsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<DatabasePrincipalAssignmentsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface DatabasePrincipalAssignmentsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type DatabasePrincipalAssignmentsCheckNameAvailabilityOutput =
-  typeof DatabasePrincipalAssignmentsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<DatabasePrincipalAssignmentsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2582,6 +3548,36 @@ export const DatabasePrincipalAssignmentsCheckNameAvailability =
     outputSchema: DatabasePrincipalAssignmentsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface DatabasePrincipalAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  principalAssignmentName: string;
+  properties?: {
+    principalId: string;
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    tenantId?: string;
+    principalType: "App" | "Group" | "User";
+    tenantName?: string;
+    principalName?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    aadObjectId?: string;
+  };
+}
 export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2624,11 +3620,22 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasePrincipalAssignmentsCreateOrUpdateInput =
-  typeof DatabasePrincipalAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabasePrincipalAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabasePrincipalAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasePrincipalAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2648,9 +3655,7 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabasePrincipalAssignmentsCreateOrUpdateOutput =
-  typeof DatabasePrincipalAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabasePrincipalAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2669,6 +3674,13 @@ export const DatabasePrincipalAssignmentsCreateOrUpdate =
     outputSchema: DatabasePrincipalAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DatabasePrincipalAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  principalAssignmentName: string;
+}
 export const DatabasePrincipalAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2682,15 +3694,12 @@ export const DatabasePrincipalAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasePrincipalAssignmentsDeleteInput =
-  typeof DatabasePrincipalAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DatabasePrincipalAssignmentsDeleteInput>;
 
 // Output Schema
+export type DatabasePrincipalAssignmentsDeleteOutput = void;
 export const DatabasePrincipalAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabasePrincipalAssignmentsDeleteOutput =
-  typeof DatabasePrincipalAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasePrincipalAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -2709,6 +3718,13 @@ export const DatabasePrincipalAssignmentsDelete =
     outputSchema: DatabasePrincipalAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface DatabasePrincipalAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  principalAssignmentName: string;
+}
 export const DatabasePrincipalAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2722,11 +3738,22 @@ export const DatabasePrincipalAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasePrincipalAssignmentsGetInput =
-  typeof DatabasePrincipalAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<DatabasePrincipalAssignmentsGetInput>;
 
 // Output Schema
+export interface DatabasePrincipalAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasePrincipalAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2746,9 +3773,7 @@ export const DatabasePrincipalAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabasePrincipalAssignmentsGetOutput =
-  typeof DatabasePrincipalAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<DatabasePrincipalAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -2767,6 +3792,12 @@ export const DatabasePrincipalAssignmentsGet =
     outputSchema: DatabasePrincipalAssignmentsGetOutput,
   }));
 // Input Schema
+export interface DatabasePrincipalAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const DatabasePrincipalAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2779,11 +3810,25 @@ export const DatabasePrincipalAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasePrincipalAssignmentsListInput =
-  typeof DatabasePrincipalAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<DatabasePrincipalAssignmentsListInput>;
 
 // Output Schema
+export interface DatabasePrincipalAssignmentsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabasePrincipalAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2820,9 +3865,7 @@ export const DatabasePrincipalAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasePrincipalAssignmentsListOutput =
-  typeof DatabasePrincipalAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<DatabasePrincipalAssignmentsListOutput>;
 
 // The operation
 /**
@@ -2840,6 +3883,27 @@ export const DatabasePrincipalAssignmentsList =
     outputSchema: DatabasePrincipalAssignmentsListOutput,
   }));
 // Input Schema
+export interface DatabasesAddPrincipalsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  value?: {
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    name: string;
+    type: "App" | "Group" | "User";
+    fqn?: string;
+    email?: string;
+    appId?: string;
+    tenantName?: string;
+  }[];
+}
 export const DatabasesAddPrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2872,11 +3936,27 @@ export const DatabasesAddPrincipalsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/addPrincipals",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesAddPrincipalsInput =
-  typeof DatabasesAddPrincipalsInput.Type;
+  ) as unknown as Schema.Codec<DatabasesAddPrincipalsInput>;
 
 // Output Schema
+export interface DatabasesAddPrincipalsOutput {
+  value?: {
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    name: string;
+    type: "App" | "Group" | "User";
+    fqn?: string;
+    email?: string;
+    appId?: string;
+    tenantName?: string;
+  }[];
+  nextLink?: string;
+}
 export const DatabasesAddPrincipalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2900,9 +3980,7 @@ export const DatabasesAddPrincipalsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesAddPrincipalsOutput =
-  typeof DatabasesAddPrincipalsOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesAddPrincipalsOutput>;
 
 // The operation
 /**
@@ -2921,6 +3999,15 @@ export const DatabasesAddPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  name: string;
+  type:
+    | "Microsoft.Kusto/clusters/databases"
+    | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+}
 export const DatabasesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2937,20 +4024,22 @@ export const DatabasesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/checkNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesCheckNameAvailabilityInput =
-  typeof DatabasesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<DatabasesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface DatabasesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const DatabasesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type DatabasesCheckNameAvailabilityOutput =
-  typeof DatabasesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2967,6 +4056,15 @@ export const DatabasesCheckNameAvailability =
     outputSchema: DatabasesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface DatabasesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  callerRole?: "Admin" | "None";
+  location?: string;
+  kind: "ReadWrite" | "ReadOnlyFollowing";
+}
 export const DatabasesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2982,11 +4080,22 @@ export const DatabasesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesCreateOrUpdateInput =
-  typeof DatabasesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DatabasesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DatabasesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3006,9 +4115,7 @@ export const DatabasesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabasesCreateOrUpdateOutput =
-  typeof DatabasesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3028,6 +4135,12 @@ export const DatabasesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3039,12 +4152,12 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
+) as unknown as Schema.Codec<DatabasesDeleteInput>;
 
 // Output Schema
-export const DatabasesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DatabasesDeleteOutput = typeof DatabasesDeleteOutput.Type;
+export type DatabasesDeleteOutput = void;
+export const DatabasesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
 
 // The operation
 /**
@@ -3061,6 +4174,12 @@ export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesDeleteOutput,
 }));
 // Input Schema
+export interface DatabasesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3072,10 +4191,22 @@ export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type DatabasesGetInput = typeof DatabasesGetInput.Type;
+) as unknown as Schema.Codec<DatabasesGetInput>;
 
 // Output Schema
+export interface DatabasesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3094,8 +4225,7 @@ export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DatabasesGetOutput = typeof DatabasesGetOutput.Type;
+}) as unknown as Schema.Codec<DatabasesGetOutput>;
 
 // The operation
 /**
@@ -3112,6 +4242,13 @@ export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesGetOutput,
 }));
 // Input Schema
+export interface DatabasesListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  $top?: number;
+  $skiptoken?: string;
+}
 export const DatabasesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3125,11 +4262,25 @@ export const DatabasesListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesListByClusterInput =
-  typeof DatabasesListByClusterInput.Type;
+  ) as unknown as Schema.Codec<DatabasesListByClusterInput>;
 
 // Output Schema
+export interface DatabasesListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabasesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3164,9 +4315,7 @@ export const DatabasesListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesListByClusterOutput =
-  typeof DatabasesListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesListByClusterOutput>;
 
 // The operation
 /**
@@ -3186,6 +4335,12 @@ export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesListPrincipalsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const DatabasesListPrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3198,11 +4353,27 @@ export const DatabasesListPrincipalsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/listPrincipals",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesListPrincipalsInput =
-  typeof DatabasesListPrincipalsInput.Type;
+  ) as unknown as Schema.Codec<DatabasesListPrincipalsInput>;
 
 // Output Schema
+export interface DatabasesListPrincipalsOutput {
+  value?: {
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    name: string;
+    type: "App" | "Group" | "User";
+    fqn?: string;
+    email?: string;
+    appId?: string;
+    tenantName?: string;
+  }[];
+  nextLink?: string;
+}
 export const DatabasesListPrincipalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3226,9 +4397,7 @@ export const DatabasesListPrincipalsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesListPrincipalsOutput =
-  typeof DatabasesListPrincipalsOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesListPrincipalsOutput>;
 
 // The operation
 /**
@@ -3247,6 +4416,27 @@ export const DatabasesListPrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesRemovePrincipalsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  value?: {
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    name: string;
+    type: "App" | "Group" | "User";
+    fqn?: string;
+    email?: string;
+    appId?: string;
+    tenantName?: string;
+  }[];
+}
 export const DatabasesRemovePrincipalsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3279,11 +4469,27 @@ export const DatabasesRemovePrincipalsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/removePrincipals",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DatabasesRemovePrincipalsInput =
-  typeof DatabasesRemovePrincipalsInput.Type;
+  ) as unknown as Schema.Codec<DatabasesRemovePrincipalsInput>;
 
 // Output Schema
+export interface DatabasesRemovePrincipalsOutput {
+  value?: {
+    role:
+      | "Admin"
+      | "Ingestor"
+      | "Monitor"
+      | "User"
+      | "UnrestrictedViewer"
+      | "Viewer";
+    name: string;
+    type: "App" | "Group" | "User";
+    fqn?: string;
+    email?: string;
+    appId?: string;
+    tenantName?: string;
+  }[];
+  nextLink?: string;
+}
 export const DatabasesRemovePrincipalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3307,9 +4513,7 @@ export const DatabasesRemovePrincipalsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesRemovePrincipalsOutput =
-  typeof DatabasesRemovePrincipalsOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesRemovePrincipalsOutput>;
 
 // The operation
 /**
@@ -3328,6 +4532,15 @@ export const DatabasesRemovePrincipals = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DatabasesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  callerRole?: "Admin" | "None";
+  location?: string;
+  kind: "ReadWrite" | "ReadOnlyFollowing";
+}
 export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3342,10 +4555,22 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
+) as unknown as Schema.Codec<DatabasesUpdateInput>;
 
 // Output Schema
+export interface DatabasesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3364,8 +4589,7 @@ export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DatabasesUpdateOutput = typeof DatabasesUpdateOutput.Type;
+}) as unknown as Schema.Codec<DatabasesUpdateOutput>;
 
 // The operation
 /**
@@ -3383,6 +4607,14 @@ export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DatabasesUpdateOutput,
 }));
 // Input Schema
+export interface DataConnectionsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/databases/dataConnections";
+}
 export const DataConnectionsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3399,20 +4631,22 @@ export const DataConnectionsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/checkNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsCheckNameAvailabilityInput =
-  typeof DataConnectionsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface DataConnectionsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const DataConnectionsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type DataConnectionsCheckNameAvailabilityOutput =
-  typeof DataConnectionsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -3430,6 +4664,21 @@ export const DataConnectionsCheckNameAvailability =
     outputSchema: DataConnectionsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface DataConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  dataConnectionName: string;
+  location?: string;
+  kind:
+    | "EventHub"
+    | "EventGrid"
+    | "IotHub"
+    | "CosmosDb"
+    | "EventHubWithManagedIdentity"
+    | "EventGridWithManagedIdentity";
+}
 export const DataConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3452,11 +4701,22 @@ export const DataConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsCreateOrUpdateInput =
-  typeof DataConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DataConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3476,9 +4736,7 @@ export const DataConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectionsCreateOrUpdateOutput =
-  typeof DataConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3497,6 +4755,26 @@ export const DataConnectionsCreateOrUpdate =
     outputSchema: DataConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DataConnectionsDataConnectionValidationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  dataConnectionName?: string;
+  properties?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  };
+}
 export const DataConnectionsDataConnectionValidationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3541,11 +4819,12 @@ export const DataConnectionsDataConnectionValidationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnectionValidation",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsDataConnectionValidationInput =
-  typeof DataConnectionsDataConnectionValidationInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsDataConnectionValidationInput>;
 
 // Output Schema
+export interface DataConnectionsDataConnectionValidationOutput {
+  value?: { errorMessage?: string }[];
+}
 export const DataConnectionsDataConnectionValidationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3555,9 +4834,7 @@ export const DataConnectionsDataConnectionValidationOutput =
         }),
       ),
     ),
-  });
-export type DataConnectionsDataConnectionValidationOutput =
-  typeof DataConnectionsDataConnectionValidationOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsDataConnectionValidationOutput>;
 
 // The operation
 /**
@@ -3575,6 +4852,13 @@ export const DataConnectionsDataConnectionValidation =
     outputSchema: DataConnectionsDataConnectionValidationOutput,
   }));
 // Input Schema
+export interface DataConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  dataConnectionName: string;
+}
 export const DataConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3588,14 +4872,12 @@ export const DataConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsDeleteInput = typeof DataConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsDeleteInput>;
 
 // Output Schema
+export type DataConnectionsDeleteOutput = void;
 export const DataConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataConnectionsDeleteOutput =
-  typeof DataConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -3615,6 +4897,13 @@ export const DataConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  dataConnectionName: string;
+}
 export const DataConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3628,10 +4917,22 @@ export const DataConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsGetInput = typeof DataConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsGetInput>;
 
 // Output Schema
+export interface DataConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3651,8 +4952,7 @@ export const DataConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectionsGetOutput = typeof DataConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsGetOutput>;
 
 // The operation
 /**
@@ -3670,6 +4970,12 @@ export const DataConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataConnectionsGetOutput,
 }));
 // Input Schema
+export interface DataConnectionsListByDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const DataConnectionsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3682,11 +4988,25 @@ export const DataConnectionsListByDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsListByDatabaseInput =
-  typeof DataConnectionsListByDatabaseInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsListByDatabaseInput>;
 
 // Output Schema
+export interface DataConnectionsListByDatabaseOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataConnectionsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3723,9 +5043,7 @@ export const DataConnectionsListByDatabaseOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataConnectionsListByDatabaseOutput =
-  typeof DataConnectionsListByDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsListByDatabaseOutput>;
 
 // The operation
 /**
@@ -3743,6 +5061,21 @@ export const DataConnectionsListByDatabase =
     outputSchema: DataConnectionsListByDatabaseOutput,
   }));
 // Input Schema
+export interface DataConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  dataConnectionName: string;
+  location?: string;
+  kind:
+    | "EventHub"
+    | "EventGrid"
+    | "IotHub"
+    | "CosmosDb"
+    | "EventHubWithManagedIdentity"
+    | "EventGridWithManagedIdentity";
+}
 export const DataConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3765,10 +5098,22 @@ export const DataConnectionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type DataConnectionsUpdateInput = typeof DataConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DataConnectionsUpdateInput>;
 
 // Output Schema
+export interface DataConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3788,9 +5133,7 @@ export const DataConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataConnectionsUpdateOutput =
-  typeof DataConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DataConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -3810,6 +5153,13 @@ export const DataConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/managedPrivateEndpoints";
+}
 export const ManagedPrivateEndpointsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3823,20 +5173,22 @@ export const ManagedPrivateEndpointsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpointsCheckNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsCheckNameAvailabilityInput =
-  typeof ManagedPrivateEndpointsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const ManagedPrivateEndpointsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type ManagedPrivateEndpointsCheckNameAvailabilityOutput =
-  typeof ManagedPrivateEndpointsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -3853,6 +5205,26 @@ export const ManagedPrivateEndpointsCheckNameAvailability =
     outputSchema: ManagedPrivateEndpointsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  managedPrivateEndpointName: string;
+  properties?: {
+    privateLinkResourceId: string;
+    privateLinkResourceRegion?: string;
+    groupId: string;
+    requestMessage?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+  };
+}
 export const ManagedPrivateEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3884,11 +5256,22 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsCreateOrUpdateInput =
-  typeof ManagedPrivateEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3908,9 +5291,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsCreateOrUpdateOutput =
-  typeof ManagedPrivateEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3928,6 +5309,12 @@ export const ManagedPrivateEndpointsCreateOrUpdate =
     outputSchema: ManagedPrivateEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3940,15 +5327,12 @@ export const ManagedPrivateEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsDeleteInput =
-  typeof ManagedPrivateEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteInput>;
 
 // Output Schema
+export type ManagedPrivateEndpointsDeleteOutput = void;
 export const ManagedPrivateEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagedPrivateEndpointsDeleteOutput =
-  typeof ManagedPrivateEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedPrivateEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3966,6 +5350,12 @@ export const ManagedPrivateEndpointsDelete =
     outputSchema: ManagedPrivateEndpointsDeleteOutput,
   }));
 // Input Schema
+export interface ManagedPrivateEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  managedPrivateEndpointName: string;
+}
 export const ManagedPrivateEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3978,11 +5368,22 @@ export const ManagedPrivateEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsGetInput =
-  typeof ManagedPrivateEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsGetInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4002,9 +5403,7 @@ export const ManagedPrivateEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsGetOutput =
-  typeof ManagedPrivateEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsGetOutput>;
 
 // The operation
 /**
@@ -4023,6 +5422,11 @@ export const ManagedPrivateEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ManagedPrivateEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4034,11 +5438,25 @@ export const ManagedPrivateEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsListInput =
-  typeof ManagedPrivateEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsListInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagedPrivateEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4075,9 +5493,7 @@ export const ManagedPrivateEndpointsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagedPrivateEndpointsListOutput =
-  typeof ManagedPrivateEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsListOutput>;
 
 // The operation
 /**
@@ -4095,6 +5511,26 @@ export const ManagedPrivateEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedPrivateEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  managedPrivateEndpointName: string;
+  properties?: {
+    privateLinkResourceId: string;
+    privateLinkResourceRegion?: string;
+    groupId: string;
+    requestMessage?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+  };
+}
 export const ManagedPrivateEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4126,11 +5562,22 @@ export const ManagedPrivateEndpointsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ManagedPrivateEndpointsUpdateInput =
-  typeof ManagedPrivateEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ManagedPrivateEndpointsUpdateInput>;
 
 // Output Schema
+export interface ManagedPrivateEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedPrivateEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4150,9 +5597,7 @@ export const ManagedPrivateEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedPrivateEndpointsUpdateOutput =
-  typeof ManagedPrivateEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ManagedPrivateEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -4170,6 +5615,7 @@ export const ManagedPrivateEndpointsUpdate =
     outputSchema: ManagedPrivateEndpointsUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -4178,10 +5624,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Kusto/operations",
     apiVersion: "2025-02-14",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      operation?: string;
+      resource?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -4201,8 +5660,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -4215,6 +5673,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationsResultsGetInput {
+  subscriptionId: string;
+  location: string;
+  operationId: string;
+}
 export const OperationsResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4226,10 +5689,30 @@ export const OperationsResultsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operationId}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type OperationsResultsGetInput = typeof OperationsResultsGetInput.Type;
+  ) as unknown as Schema.Codec<OperationsResultsGetInput>;
 
 // Output Schema
+export interface OperationsResultsGetOutput {
+  id?: string;
+  name?: string;
+  status?: "Succeeded" | "Canceled" | "Failed" | "Running";
+  startTime?: string;
+  endTime?: string;
+  percentComplete?: number;
+  properties?: {
+    operationKind?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    operationState?: string;
+  };
+  error?: { code?: string; message?: string };
+}
 export const OperationsResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4263,8 +5746,7 @@ export const OperationsResultsGetOutput =
         message: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OperationsResultsGetOutput = typeof OperationsResultsGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationsResultsGetOutput>;
 
 // The operation
 /**
@@ -4282,6 +5764,22 @@ export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: string;
+      description?: string;
+      actionsRequired?: string;
+    };
+    groupId?: string;
+    provisioningState?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4310,11 +5808,22 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4334,9 +5843,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4354,6 +5861,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4366,15 +5879,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -4392,6 +5902,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4404,11 +5920,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4428,9 +5955,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -4448,6 +5973,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4459,11 +5989,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4500,9 +6044,7 @@ export const PrivateEndpointConnectionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -4519,6 +6061,12 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4531,11 +6079,22 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4555,9 +6114,7 @@ export const PrivateLinkResourcesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -4576,6 +6133,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4587,11 +6149,25 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources",
       apiVersion: "2025-02-14",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4628,9 +6204,7 @@ export const PrivateLinkResourcesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -4648,6 +6222,13 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SandboxCustomImagesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/sandboxCustomImages";
+}
 export const SandboxCustomImagesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4661,20 +6242,22 @@ export const SandboxCustomImagesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImagesCheckNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesCheckNameAvailabilityInput =
-  typeof SandboxCustomImagesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface SandboxCustomImagesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const SandboxCustomImagesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type SandboxCustomImagesCheckNameAvailabilityOutput =
-  typeof SandboxCustomImagesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<SandboxCustomImagesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -4691,6 +6274,26 @@ export const SandboxCustomImagesCheckNameAvailability =
     outputSchema: SandboxCustomImagesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface SandboxCustomImagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  sandboxCustomImageName: string;
+  properties?: {
+    language: "Python";
+    languageVersion?: string;
+    baseImageName?: string;
+    requirementsFileContent?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+  };
+}
 export const SandboxCustomImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4722,11 +6325,22 @@ export const SandboxCustomImagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesCreateOrUpdateInput =
-  typeof SandboxCustomImagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SandboxCustomImagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SandboxCustomImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4746,9 +6360,7 @@ export const SandboxCustomImagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SandboxCustomImagesCreateOrUpdateOutput =
-  typeof SandboxCustomImagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SandboxCustomImagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4766,6 +6378,12 @@ export const SandboxCustomImagesCreateOrUpdate =
     outputSchema: SandboxCustomImagesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SandboxCustomImagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  sandboxCustomImageName: string;
+}
 export const SandboxCustomImagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4778,15 +6396,12 @@ export const SandboxCustomImagesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesDeleteInput =
-  typeof SandboxCustomImagesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesDeleteInput>;
 
 // Output Schema
+export type SandboxCustomImagesDeleteOutput = void;
 export const SandboxCustomImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SandboxCustomImagesDeleteOutput =
-  typeof SandboxCustomImagesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SandboxCustomImagesDeleteOutput>;
 
 // The operation
 /**
@@ -4805,6 +6420,12 @@ export const SandboxCustomImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SandboxCustomImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  sandboxCustomImageName: string;
+}
 export const SandboxCustomImagesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4817,11 +6438,22 @@ export const SandboxCustomImagesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesGetInput =
-  typeof SandboxCustomImagesGetInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesGetInput>;
 
 // Output Schema
+export interface SandboxCustomImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SandboxCustomImagesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4841,9 +6473,7 @@ export const SandboxCustomImagesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SandboxCustomImagesGetOutput =
-  typeof SandboxCustomImagesGetOutput.Type;
+  }) as unknown as Schema.Codec<SandboxCustomImagesGetOutput>;
 
 // The operation
 /**
@@ -4862,6 +6492,11 @@ export const SandboxCustomImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SandboxCustomImagesListByClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const SandboxCustomImagesListByClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4873,11 +6508,25 @@ export const SandboxCustomImagesListByClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesListByClusterInput =
-  typeof SandboxCustomImagesListByClusterInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesListByClusterInput>;
 
 // Output Schema
+export interface SandboxCustomImagesListByClusterOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SandboxCustomImagesListByClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4912,9 +6561,7 @@ export const SandboxCustomImagesListByClusterOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SandboxCustomImagesListByClusterOutput =
-  typeof SandboxCustomImagesListByClusterOutput.Type;
+  }) as unknown as Schema.Codec<SandboxCustomImagesListByClusterOutput>;
 
 // The operation
 /**
@@ -4931,6 +6578,26 @@ export const SandboxCustomImagesListByCluster =
     outputSchema: SandboxCustomImagesListByClusterOutput,
   }));
 // Input Schema
+export interface SandboxCustomImagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  sandboxCustomImageName: string;
+  properties?: {
+    language: "Python";
+    languageVersion?: string;
+    baseImageName?: string;
+    requirementsFileContent?: string;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+  };
+}
 export const SandboxCustomImagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4962,11 +6629,22 @@ export const SandboxCustomImagesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type SandboxCustomImagesUpdateInput =
-  typeof SandboxCustomImagesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SandboxCustomImagesUpdateInput>;
 
 // Output Schema
+export interface SandboxCustomImagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SandboxCustomImagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4986,9 +6664,7 @@ export const SandboxCustomImagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SandboxCustomImagesUpdateOutput =
-  typeof SandboxCustomImagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SandboxCustomImagesUpdateOutput>;
 
 // The operation
 /**
@@ -5007,6 +6683,14 @@ export const SandboxCustomImagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScriptsCheckNameAvailabilityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  name: string;
+  type: "Microsoft.Kusto/clusters/databases/scripts";
+}
 export const ScriptsCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5021,20 +6705,22 @@ export const ScriptsCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scriptsCheckNameAvailability",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ScriptsCheckNameAvailabilityInput =
-  typeof ScriptsCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ScriptsCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ScriptsCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  name?: string;
+  message?: string;
+  reason?: "Invalid" | "AlreadyExists";
+}
 export const ScriptsCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
-  });
-export type ScriptsCheckNameAvailabilityOutput =
-  typeof ScriptsCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ScriptsCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -5052,6 +6738,33 @@ export const ScriptsCheckNameAvailability =
     outputSchema: ScriptsCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ScriptsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  scriptName: string;
+  properties?: {
+    scriptUrl?: string;
+    scriptUrlSasToken?: string;
+    scriptContent?: string;
+    forceUpdateTag?: string;
+    continueOnErrors?: boolean;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    scriptLevel?: "Database" | "Cluster";
+    principalPermissionsAction?:
+      | "RetainPermissionOnScriptCompletion"
+      | "RemovePermissionOnScriptCompletion";
+    managedIdentityResourceId?: string;
+  };
+}
 export const ScriptsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5093,10 +6806,22 @@ export const ScriptsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ScriptsCreateOrUpdateInput = typeof ScriptsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScriptsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ScriptsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScriptsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5116,9 +6841,7 @@ export const ScriptsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScriptsCreateOrUpdateOutput =
-  typeof ScriptsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScriptsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5138,6 +6861,13 @@ export const ScriptsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScriptsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  scriptName: string;
+}
 export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5150,12 +6880,12 @@ export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ScriptsDeleteInput = typeof ScriptsDeleteInput.Type;
+) as unknown as Schema.Codec<ScriptsDeleteInput>;
 
 // Output Schema
-export const ScriptsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScriptsDeleteOutput = typeof ScriptsDeleteOutput.Type;
+export type ScriptsDeleteOutput = void;
+export const ScriptsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptsDeleteOutput>;
 
 // The operation
 /**
@@ -5173,6 +6903,13 @@ export const ScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScriptsDeleteOutput,
 }));
 // Input Schema
+export interface ScriptsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  scriptName: string;
+}
 export const ScriptsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5185,10 +6922,22 @@ export const ScriptsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ScriptsGetInput = typeof ScriptsGetInput.Type;
+) as unknown as Schema.Codec<ScriptsGetInput>;
 
 // Output Schema
+export interface ScriptsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScriptsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5207,8 +6956,7 @@ export const ScriptsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScriptsGetOutput = typeof ScriptsGetOutput.Type;
+}) as unknown as Schema.Codec<ScriptsGetOutput>;
 
 // The operation
 /**
@@ -5226,6 +6974,12 @@ export const ScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScriptsGetOutput,
 }));
 // Input Schema
+export interface ScriptsListByDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+}
 export const ScriptsListByDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5238,10 +6992,25 @@ export const ScriptsListByDatabaseInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts",
       apiVersion: "2025-02-14",
     }),
-  );
-export type ScriptsListByDatabaseInput = typeof ScriptsListByDatabaseInput.Type;
+  ) as unknown as Schema.Codec<ScriptsListByDatabaseInput>;
 
 // Output Schema
+export interface ScriptsListByDatabaseOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScriptsListByDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5278,9 +7047,7 @@ export const ScriptsListByDatabaseOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScriptsListByDatabaseOutput =
-  typeof ScriptsListByDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<ScriptsListByDatabaseOutput>;
 
 // The operation
 /**
@@ -5299,6 +7066,33 @@ export const ScriptsListByDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScriptsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  databaseName: string;
+  scriptName: string;
+  properties?: {
+    scriptUrl?: string;
+    scriptUrlSasToken?: string;
+    scriptContent?: string;
+    forceUpdateTag?: string;
+    continueOnErrors?: boolean;
+    provisioningState?:
+      | "Running"
+      | "Creating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Moving"
+      | "Canceled";
+    scriptLevel?: "Database" | "Cluster";
+    principalPermissionsAction?:
+      | "RetainPermissionOnScriptCompletion"
+      | "RemovePermissionOnScriptCompletion";
+    managedIdentityResourceId?: string;
+  };
+}
 export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5339,10 +7133,22 @@ export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
     apiVersion: "2025-02-14",
   }),
-);
-export type ScriptsUpdateInput = typeof ScriptsUpdateInput.Type;
+) as unknown as Schema.Codec<ScriptsUpdateInput>;
 
 // Output Schema
+export interface ScriptsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScriptsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5361,8 +7167,7 @@ export const ScriptsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScriptsUpdateOutput = typeof ScriptsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ScriptsUpdateOutput>;
 
 // The operation
 /**
@@ -5380,6 +7185,10 @@ export const ScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ScriptsUpdateOutput,
 }));
 // Input Schema
+export interface SkusListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -5389,10 +7198,27 @@ export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/skus",
     apiVersion: "2025-02-14",
   }),
-);
-export type SkusListInput = typeof SkusListInput.Type;
+) as unknown as Schema.Codec<SkusListInput>;
 
 // Output Schema
+export interface SkusListOutput {
+  value?: {
+    resourceType?: string;
+    name?: string;
+    tier?: string;
+    locations?: string[];
+    locationInfo?: {
+      location: string;
+      zones?: string[];
+      zoneDetails?: {
+        name?: string[];
+        capabilities?: { name?: string; value?: string }[];
+      }[];
+    }[];
+    restrictions?: unknown[];
+  }[];
+  nextLink?: string;
+}
 export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -5429,8 +7255,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type SkusListOutput = typeof SkusListOutput.Type;
+}) as unknown as Schema.Codec<SkusListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1CreateProjectTpaIntegrationInput {
+  ref: string;
+  oidc_issuer_url?: string;
+  jwks_url?: string;
+  custom_jwks?: unknown;
+}
 export const V1CreateProjectTpaIntegrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,20 @@ export const V1CreateProjectTpaIntegrationInput =
       method: "POST",
       path: "/v1/projects/{ref}/config/auth/third-party-auth",
     }),
-  );
-export type V1CreateProjectTpaIntegrationInput =
-  typeof V1CreateProjectTpaIntegrationInput.Type;
+  ) as unknown as Schema.Codec<V1CreateProjectTpaIntegrationInput>;
 
 // Output Schema
+export interface V1CreateProjectTpaIntegrationOutput {
+  id: string;
+  type: string;
+  oidc_issuer_url?: string | null;
+  jwks_url?: string | null;
+  custom_jwks?: unknown | null;
+  resolved_jwks?: unknown | null;
+  inserted_at: string;
+  updated_at: string;
+  resolved_at?: string | null;
+}
 export const V1CreateProjectTpaIntegrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -31,9 +46,7 @@ export const V1CreateProjectTpaIntegrationOutput =
     inserted_at: Schema.String,
     updated_at: Schema.String,
     resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type V1CreateProjectTpaIntegrationOutput =
-  typeof V1CreateProjectTpaIntegrationOutput.Type;
+  }) as unknown as Schema.Codec<V1CreateProjectTpaIntegrationOutput>;
 
 // The operation
 /**

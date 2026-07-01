@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsReviewQueueItemsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const LlmAnalyticsReviewQueueItemsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,13 +14,41 @@ export const LlmAnalyticsReviewQueueItemsRetrieveInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/llm_analytics/review_queue_items/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/review_queue_items/{id}/",
     }),
-  );
-export type LlmAnalyticsReviewQueueItemsRetrieveInput =
-  typeof LlmAnalyticsReviewQueueItemsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsRetrieveInput>;
 
 // Output Schema
+export interface LlmAnalyticsReviewQueueItemsRetrieveOutput {
+  id?: string;
+  queue_id?: string;
+  queue_name?: string;
+  trace_id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const LlmAnalyticsReviewQueueItemsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -39,14 +70,28 @@ export const LlmAnalyticsReviewQueueItemsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type LlmAnalyticsReviewQueueItemsRetrieveOutput =
-  typeof LlmAnalyticsReviewQueueItemsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsRetrieveOutput>;
 
 // The operation
 /**
@@ -58,5 +103,4 @@ export const llmAnalyticsReviewQueueItemsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueueItemsRetrieveInput,
     outputSchema: LlmAnalyticsReviewQueueItemsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

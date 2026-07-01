@@ -4,12 +4,70 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateApiregistrationV1APIServiceInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -99,11 +157,63 @@ export const CreateApiregistrationV1APIServiceInput =
       method: "POST",
       path: "/apis/apiregistration.k8s.io/v1/apiservices",
     }),
-  );
-export type CreateApiregistrationV1APIServiceInput =
-  typeof CreateApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<CreateApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface CreateApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const CreateApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -184,9 +294,7 @@ export const CreateApiregistrationV1APIServiceOutput =
         ),
       }),
     ),
-  });
-export type CreateApiregistrationV1APIServiceOutput =
-  typeof CreateApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<CreateApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -204,6 +312,18 @@ export const createApiregistrationV1APIService =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteApiregistrationV1APIServiceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -228,11 +348,32 @@ export const DeleteApiregistrationV1APIServiceInput =
       method: "DELETE",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
     }),
-  );
-export type DeleteApiregistrationV1APIServiceInput =
-  typeof DeleteApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<DeleteApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface DeleteApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -272,9 +413,7 @@ export const DeleteApiregistrationV1APIServiceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteApiregistrationV1APIServiceOutput =
-  typeof DeleteApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -295,6 +434,26 @@ export const deleteApiregistrationV1APIService =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteApiregistrationV1CollectionAPIServiceInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteApiregistrationV1CollectionAPIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -327,11 +486,32 @@ export const DeleteApiregistrationV1CollectionAPIServiceInput =
       method: "DELETE",
       path: "/apis/apiregistration.k8s.io/v1/apiservices",
     }),
-  );
-export type DeleteApiregistrationV1CollectionAPIServiceInput =
-  typeof DeleteApiregistrationV1CollectionAPIServiceInput.Type;
+  ) as unknown as Schema.Codec<DeleteApiregistrationV1CollectionAPIServiceInput>;
 
 // Output Schema
+export interface DeleteApiregistrationV1CollectionAPIServiceOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteApiregistrationV1CollectionAPIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -371,9 +551,7 @@ export const DeleteApiregistrationV1CollectionAPIServiceOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteApiregistrationV1CollectionAPIServiceOutput =
-  typeof DeleteApiregistrationV1CollectionAPIServiceOutput.Type;
+  }) as unknown as Schema.Codec<DeleteApiregistrationV1CollectionAPIServiceOutput>;
 
 // The operation
 /**
@@ -442,14 +620,21 @@ export const deleteApiregistrationV1CollectionAPIService =
     outputSchema: DeleteApiregistrationV1CollectionAPIServiceOutput,
   }));
 // Input Schema
+export interface GetApiregistrationAPIGroupInput {}
 export const GetApiregistrationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/" }),
-  );
-export type GetApiregistrationAPIGroupInput =
-  typeof GetApiregistrationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetApiregistrationAPIGroupInput>;
 
 // Output Schema
+export interface GetApiregistrationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetApiregistrationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -475,9 +660,7 @@ export const GetApiregistrationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetApiregistrationAPIGroupOutput =
-  typeof GetApiregistrationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetApiregistrationAPIGroupOutput>;
 
 // The operation
 /**
@@ -490,14 +673,30 @@ export const getApiregistrationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetApiregistrationV1APIResourcesInput {}
 export const GetApiregistrationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiregistration.k8s.io/v1/" }),
-  );
-export type GetApiregistrationV1APIResourcesInput =
-  typeof GetApiregistrationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetApiregistrationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetApiregistrationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetApiregistrationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -517,9 +716,7 @@ export const GetApiregistrationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetApiregistrationV1APIResourcesOutput =
-  typeof GetApiregistrationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetApiregistrationV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -531,6 +728,20 @@ export const getApiregistrationV1APIResources =
     outputSchema: GetApiregistrationV1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListApiregistrationV1APIServiceInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -550,11 +761,74 @@ export const ListApiregistrationV1APIServiceInput =
       method: "GET",
       path: "/apis/apiregistration.k8s.io/v1/apiservices",
     }),
-  );
-export type ListApiregistrationV1APIServiceInput =
-  typeof ListApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<ListApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface ListApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      caBundle?: string;
+      group?: string;
+      groupPriorityMinimum: number;
+      insecureSkipTLSVerify?: boolean;
+      service?: { name?: string; namespace?: string; port?: number };
+      version?: string;
+      versionPriority: number;
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime?: string;
+        message?: string;
+        reason?: string;
+        status: string;
+        type: string;
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -656,9 +930,7 @@ export const ListApiregistrationV1APIServiceOutput =
         ),
       }),
     ),
-  });
-export type ListApiregistrationV1APIServiceOutput =
-  typeof ListApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<ListApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -724,6 +996,14 @@ export const listApiregistrationV1APIService =
     outputSchema: ListApiregistrationV1APIServiceOutput,
   }));
 // Input Schema
+export interface PatchApiregistrationV1APIServiceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -737,11 +1017,63 @@ export const PatchApiregistrationV1APIServiceInput =
       method: "PATCH",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
     }),
-  );
-export type PatchApiregistrationV1APIServiceInput =
-  typeof PatchApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<PatchApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface PatchApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -822,9 +1154,7 @@ export const PatchApiregistrationV1APIServiceOutput =
         ),
       }),
     ),
-  });
-export type PatchApiregistrationV1APIServiceOutput =
-  typeof PatchApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<PatchApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -844,6 +1174,14 @@ export const patchApiregistrationV1APIService =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchApiregistrationV1APIServiceStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -857,11 +1195,63 @@ export const PatchApiregistrationV1APIServiceStatusInput =
       method: "PATCH",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status",
     }),
-  );
-export type PatchApiregistrationV1APIServiceStatusInput =
-  typeof PatchApiregistrationV1APIServiceStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchApiregistrationV1APIServiceStatusInput>;
 
 // Output Schema
+export interface PatchApiregistrationV1APIServiceStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const PatchApiregistrationV1APIServiceStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -942,9 +1332,7 @@ export const PatchApiregistrationV1APIServiceStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchApiregistrationV1APIServiceStatusOutput =
-  typeof PatchApiregistrationV1APIServiceStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchApiregistrationV1APIServiceStatusOutput>;
 
 // The operation
 /**
@@ -964,6 +1352,10 @@ export const patchApiregistrationV1APIServiceStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadApiregistrationV1APIServiceInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -973,11 +1365,63 @@ export const ReadApiregistrationV1APIServiceInput =
       method: "GET",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
     }),
-  );
-export type ReadApiregistrationV1APIServiceInput =
-  typeof ReadApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<ReadApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface ReadApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1058,9 +1502,7 @@ export const ReadApiregistrationV1APIServiceOutput =
         ),
       }),
     ),
-  });
-export type ReadApiregistrationV1APIServiceOutput =
-  typeof ReadApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<ReadApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -1076,6 +1518,10 @@ export const readApiregistrationV1APIService =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadApiregistrationV1APIServiceStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1085,11 +1531,63 @@ export const ReadApiregistrationV1APIServiceStatusInput =
       method: "GET",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status",
     }),
-  );
-export type ReadApiregistrationV1APIServiceStatusInput =
-  typeof ReadApiregistrationV1APIServiceStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadApiregistrationV1APIServiceStatusInput>;
 
 // Output Schema
+export interface ReadApiregistrationV1APIServiceStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReadApiregistrationV1APIServiceStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1170,9 +1668,7 @@ export const ReadApiregistrationV1APIServiceStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadApiregistrationV1APIServiceStatusOutput =
-  typeof ReadApiregistrationV1APIServiceStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadApiregistrationV1APIServiceStatusOutput>;
 
 // The operation
 /**
@@ -1188,6 +1684,65 @@ export const readApiregistrationV1APIServiceStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceApiregistrationV1APIServiceInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1278,11 +1833,63 @@ export const ReplaceApiregistrationV1APIServiceInput =
       method: "PUT",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
     }),
-  );
-export type ReplaceApiregistrationV1APIServiceInput =
-  typeof ReplaceApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<ReplaceApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface ReplaceApiregistrationV1APIServiceOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1363,9 +1970,7 @@ export const ReplaceApiregistrationV1APIServiceOutput =
         ),
       }),
     ),
-  });
-export type ReplaceApiregistrationV1APIServiceOutput =
-  typeof ReplaceApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -1384,6 +1989,65 @@ export const replaceApiregistrationV1APIService =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceApiregistrationV1APIServiceStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceApiregistrationV1APIServiceStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1474,11 +2138,63 @@ export const ReplaceApiregistrationV1APIServiceStatusInput =
       method: "PUT",
       path: "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status",
     }),
-  );
-export type ReplaceApiregistrationV1APIServiceStatusInput =
-  typeof ReplaceApiregistrationV1APIServiceStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceApiregistrationV1APIServiceStatusInput>;
 
 // Output Schema
+export interface ReplaceApiregistrationV1APIServiceStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    caBundle?: string;
+    group?: string;
+    groupPriorityMinimum: number;
+    insecureSkipTLSVerify?: boolean;
+    service?: { name?: string; namespace?: string; port?: number };
+    version?: string;
+    versionPriority: number;
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime?: string;
+      message?: string;
+      reason?: string;
+      status: string;
+      type: string;
+    }[];
+  };
+}
 export const ReplaceApiregistrationV1APIServiceStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1559,9 +2275,7 @@ export const ReplaceApiregistrationV1APIServiceStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceApiregistrationV1APIServiceStatusOutput =
-  typeof ReplaceApiregistrationV1APIServiceStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceApiregistrationV1APIServiceStatusOutput>;
 
 // The operation
 /**
@@ -1580,6 +2294,21 @@ export const replaceApiregistrationV1APIServiceStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchApiregistrationV1APIServiceInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchApiregistrationV1APIServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -1600,18 +2329,18 @@ export const WatchApiregistrationV1APIServiceInput =
       method: "GET",
       path: "/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}",
     }),
-  );
-export type WatchApiregistrationV1APIServiceInput =
-  typeof WatchApiregistrationV1APIServiceInput.Type;
+  ) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceInput>;
 
 // Output Schema
+export interface WatchApiregistrationV1APIServiceOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchApiregistrationV1APIServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchApiregistrationV1APIServiceOutput =
-  typeof WatchApiregistrationV1APIServiceOutput.Type;
+  }) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceOutput>;
 
 // The operation
 /**
@@ -1678,6 +2407,20 @@ export const watchApiregistrationV1APIService =
     outputSchema: WatchApiregistrationV1APIServiceOutput,
   }));
 // Input Schema
+export interface WatchApiregistrationV1APIServiceListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchApiregistrationV1APIServiceListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -1697,18 +2440,18 @@ export const WatchApiregistrationV1APIServiceListInput =
       method: "GET",
       path: "/apis/apiregistration.k8s.io/v1/watch/apiservices",
     }),
-  );
-export type WatchApiregistrationV1APIServiceListInput =
-  typeof WatchApiregistrationV1APIServiceListInput.Type;
+  ) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceListInput>;
 
 // Output Schema
+export interface WatchApiregistrationV1APIServiceListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchApiregistrationV1APIServiceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchApiregistrationV1APIServiceListOutput =
-  typeof WatchApiregistrationV1APIServiceListOutput.Type;
+  }) as unknown as Schema.Codec<WatchApiregistrationV1APIServiceListOutput>;
 
 // The operation
 /**

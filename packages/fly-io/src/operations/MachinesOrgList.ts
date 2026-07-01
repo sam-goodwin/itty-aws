@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesOrgListInput {
+  org_slug: string;
+  include_deleted?: boolean;
+  region?: string;
+  state?: string;
+  summary?: boolean;
+  updated_after?: string;
+  cursor?: string;
+  limit?: number;
+}
 export const MachinesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_slug: Schema.String.pipe(T.PathParam()),
   include_deleted: Schema.optional(Schema.Boolean),
@@ -13,11 +23,45 @@ export const MachinesOrgListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updated_after: Schema.optional(Schema.String),
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/orgs/{org_slug}/machines" }));
-export type MachinesOrgListInput = typeof MachinesOrgListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/orgs/{org_slug}/machines" }),
+) as unknown as Schema.Codec<MachinesOrgListInput>;
 
 // Output Schema
+export interface MachinesOrgListOutput {
+  error_regions?: string[];
+  last_machine_id?: string;
+  last_updated_at?: string;
+  machines?: {
+    app_name?: string;
+    config?: {
+      guest?: {
+        cpu_kind?: string;
+        cpus?: number;
+        gpu_kind?: string;
+        gpus?: number;
+        host_dedication_id?: string;
+        kernel_args?: string[];
+        max_memory_mb?: number;
+        memory_mb?: number;
+        persist_rootfs?: "never" | "always" | "restart";
+      };
+      image?: string;
+      metadata?: Record<string, string>;
+    };
+    created_at?: string;
+    id?: string;
+    name?: string;
+    private_ip?: string;
+    region?: string;
+    state?: string;
+    updated_at?: string;
+    version?: string;
+  }[];
+  next_cursor?: string;
+}
 export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error_regions: Schema.optional(Schema.Array(Schema.String)),
   last_machine_id: Schema.optional(Schema.String),
   last_updated_at: Schema.optional(Schema.String),
   machines: Schema.optional(
@@ -49,7 +93,6 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
         created_at: Schema.optional(Schema.String),
         id: Schema.optional(Schema.String),
-        instance_id: Schema.optional(Schema.String),
         name: Schema.optional(Schema.String),
         private_ip: Schema.optional(Schema.String),
         region: Schema.optional(Schema.String),
@@ -60,8 +103,7 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   next_cursor: Schema.optional(Schema.String),
-});
-export type MachinesOrgListOutput = typeof MachinesOrgListOutput.Type;
+}) as unknown as Schema.Codec<MachinesOrgListOutput>;
 
 // The operation
 /**
@@ -76,8 +118,8 @@ export type MachinesOrgListOutput = typeof MachinesOrgListOutput.Type;
  * @param state - Comma separated list of states to filter (created, started, stopped, suspended)
  * @param summary - Omit config from responses
  * @param updated_after - Only return machines updated after this time. Timestamp must be in the RFC 3339 format
- * @param cursor - Pagination cursor from previous response (takes precedence over updated_after)
- * @param limit - The number of machines to fetch (max of 2000). This limit is advisory. Responses may be shorter, even when more machines remain. If omitted, the maximum is used
+ * @param cursor - Pagination cursor from previous response (takes precedence over updated_after). Note that there is no guarantee that all machines returned by this endpoint are sorted by their updated_at fields. Pagination may reveal machines older than the last updated_at.
+ * @param limit - The number of machines to fetch (max of 1000). This limit is advisory. Responses may be shorter, or even empty, even when more machines remain. If omitted, the maximum is used
  */
 export const MachinesOrgList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MachinesOrgListInput,

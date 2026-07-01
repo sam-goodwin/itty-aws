@@ -4,19 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RetrieveNLSearchModelInput {
+  modelId: string;
+}
 export const RetrieveNLSearchModelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/nl_search_models/{modelId}" }));
-export type RetrieveNLSearchModelInput = typeof RetrieveNLSearchModelInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/nl_search_models/{modelId}" }),
+  ) as unknown as Schema.Codec<RetrieveNLSearchModelInput>;
 
 // Output Schema
+export interface RetrieveNLSearchModelOutput {
+  id: string;
+}
 export const RetrieveNLSearchModelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-  });
-export type RetrieveNLSearchModelOutput =
-  typeof RetrieveNLSearchModelOutput.Type;
+  }) as unknown as Schema.Codec<RetrieveNLSearchModelOutput>;
 
 // The operation
 /**

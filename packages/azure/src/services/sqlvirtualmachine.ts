@@ -4,12 +4,45 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AvailabilityGroupListenersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+  availabilityGroupListenerName: string;
+  properties?: {
+    provisioningState?: string;
+    availabilityGroupName?: string;
+    loadBalancerConfigurations?: {
+      privateIpAddress?: { ipAddress?: string; subnetResourceId?: string };
+      publicIpAddressResourceId?: string;
+      loadBalancerResourceId?: string;
+      probePort?: number;
+      sqlVirtualMachineInstances?: string[];
+    }[];
+    multiSubnetIpConfigurations?: {
+      privateIpAddress: { ipAddress?: string; subnetResourceId?: string };
+      sqlVirtualMachineInstance: string;
+    }[];
+    createDefaultAvailabilityGroupIfNotExist?: boolean;
+    port?: number;
+    availabilityGroupConfiguration?: {
+      replicas?: {
+        sqlVirtualMachineInstanceId?: string;
+        role?: "Primary" | "Secondary";
+        commit?: "Synchronous_Commit" | "Asynchronous_Commit";
+        failover?: "Automatic" | "Manual";
+        readableSecondary?: "No" | "All" | "Read_Only";
+      }[];
+    };
+  };
+}
 export const AvailabilityGroupListenersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -87,11 +120,22 @@ export const AvailabilityGroupListenersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type AvailabilityGroupListenersCreateOrUpdateInput =
-  typeof AvailabilityGroupListenersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityGroupListenersCreateOrUpdateInput>;
 
 // Output Schema
+export interface AvailabilityGroupListenersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvailabilityGroupListenersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -111,9 +155,7 @@ export const AvailabilityGroupListenersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvailabilityGroupListenersCreateOrUpdateOutput =
-  typeof AvailabilityGroupListenersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityGroupListenersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -131,6 +173,12 @@ export const AvailabilityGroupListenersCreateOrUpdate =
     outputSchema: AvailabilityGroupListenersCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AvailabilityGroupListenersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+  availabilityGroupListenerName: string;
+}
 export const AvailabilityGroupListenersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -143,15 +191,12 @@ export const AvailabilityGroupListenersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type AvailabilityGroupListenersDeleteInput =
-  typeof AvailabilityGroupListenersDeleteInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityGroupListenersDeleteInput>;
 
 // Output Schema
+export type AvailabilityGroupListenersDeleteOutput = void;
 export const AvailabilityGroupListenersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AvailabilityGroupListenersDeleteOutput =
-  typeof AvailabilityGroupListenersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AvailabilityGroupListenersDeleteOutput>;
 
 // The operation
 /**
@@ -169,6 +214,13 @@ export const AvailabilityGroupListenersDelete =
     outputSchema: AvailabilityGroupListenersDeleteOutput,
   }));
 // Input Schema
+export interface AvailabilityGroupListenersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+  availabilityGroupListenerName: string;
+  $expand?: string;
+}
 export const AvailabilityGroupListenersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -182,11 +234,22 @@ export const AvailabilityGroupListenersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners/{availabilityGroupListenerName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type AvailabilityGroupListenersGetInput =
-  typeof AvailabilityGroupListenersGetInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityGroupListenersGetInput>;
 
 // Output Schema
+export interface AvailabilityGroupListenersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvailabilityGroupListenersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -206,9 +269,7 @@ export const AvailabilityGroupListenersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvailabilityGroupListenersGetOutput =
-  typeof AvailabilityGroupListenersGetOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityGroupListenersGetOutput>;
 
 // The operation
 /**
@@ -227,6 +288,11 @@ export const AvailabilityGroupListenersGet =
     outputSchema: AvailabilityGroupListenersGetOutput,
   }));
 // Input Schema
+export interface AvailabilityGroupListenersListByGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+}
 export const AvailabilityGroupListenersListByGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -238,11 +304,25 @@ export const AvailabilityGroupListenersListByGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners",
       apiVersion: "2023-10-01",
     }),
-  );
-export type AvailabilityGroupListenersListByGroupInput =
-  typeof AvailabilityGroupListenersListByGroupInput.Type;
+  ) as unknown as Schema.Codec<AvailabilityGroupListenersListByGroupInput>;
 
 // Output Schema
+export interface AvailabilityGroupListenersListByGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvailabilityGroupListenersListByGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -277,9 +357,7 @@ export const AvailabilityGroupListenersListByGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilityGroupListenersListByGroupOutput =
-  typeof AvailabilityGroupListenersListByGroupOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilityGroupListenersListByGroupOutput>;
 
 // The operation
 /**
@@ -296,6 +374,7 @@ export const AvailabilityGroupListenersListByGroup =
     outputSchema: AvailabilityGroupListenersListByGroupOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -304,10 +383,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SqlVirtualMachine/operations",
     apiVersion: "2023-10-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system";
+    properties?: Record<string, unknown>;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -325,8 +417,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -339,6 +430,33 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SqlVirtualMachineGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+  properties?: {
+    provisioningState?: string;
+    sqlImageOffer?: string;
+    sqlImageSku?: "Developer" | "Enterprise";
+    scaleType?: "HA";
+    clusterManagerType?: "WSFC";
+    clusterConfiguration?: "Domainful";
+    wsfcDomainProfile?: {
+      domainFqdn?: string;
+      ouPath?: string;
+      clusterBootstrapAccount?: string;
+      clusterOperatorAccount?: string;
+      sqlServiceAccount?: string;
+      isSqlServiceAccountGmsa?: boolean;
+      fileShareWitnessPath?: string;
+      storageAccountUrl?: string;
+      storageAccountPrimaryKey?: string;
+      clusterSubnetType?: "SingleSubnet" | "MultiSubnet";
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlVirtualMachineGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -380,11 +498,22 @@ export const SqlVirtualMachineGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsCreateOrUpdateInput =
-  typeof SqlVirtualMachineGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SqlVirtualMachineGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachineGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -404,9 +533,7 @@ export const SqlVirtualMachineGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachineGroupsCreateOrUpdateOutput =
-  typeof SqlVirtualMachineGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -423,6 +550,11 @@ export const SqlVirtualMachineGroupsCreateOrUpdate =
     outputSchema: SqlVirtualMachineGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachineGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+}
 export const SqlVirtualMachineGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -434,15 +566,12 @@ export const SqlVirtualMachineGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsDeleteInput =
-  typeof SqlVirtualMachineGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsDeleteInput>;
 
 // Output Schema
+export type SqlVirtualMachineGroupsDeleteOutput = void;
 export const SqlVirtualMachineGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlVirtualMachineGroupsDeleteOutput =
-  typeof SqlVirtualMachineGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachineGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -459,6 +588,11 @@ export const SqlVirtualMachineGroupsDelete =
     outputSchema: SqlVirtualMachineGroupsDeleteOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachineGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+}
 export const SqlVirtualMachineGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -470,11 +604,22 @@ export const SqlVirtualMachineGroupsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsGetInput =
-  typeof SqlVirtualMachineGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsGetInput>;
 
 // Output Schema
+export interface SqlVirtualMachineGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachineGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -494,9 +639,7 @@ export const SqlVirtualMachineGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachineGroupsGetOutput =
-  typeof SqlVirtualMachineGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineGroupsGetOutput>;
 
 // The operation
 /**
@@ -514,6 +657,9 @@ export const SqlVirtualMachineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachineGroupsListInput {
+  subscriptionId: string;
+}
 export const SqlVirtualMachineGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -523,11 +669,25 @@ export const SqlVirtualMachineGroupsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsListInput =
-  typeof SqlVirtualMachineGroupsListInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsListInput>;
 
 // Output Schema
+export interface SqlVirtualMachineGroupsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlVirtualMachineGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -562,9 +722,7 @@ export const SqlVirtualMachineGroupsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachineGroupsListOutput =
-  typeof SqlVirtualMachineGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineGroupsListOutput>;
 
 // The operation
 /**
@@ -580,6 +738,10 @@ export const SqlVirtualMachineGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachineGroupsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlVirtualMachineGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -590,11 +752,25 @@ export const SqlVirtualMachineGroupsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsListByResourceGroupInput =
-  typeof SqlVirtualMachineGroupsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlVirtualMachineGroupsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlVirtualMachineGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -629,9 +805,7 @@ export const SqlVirtualMachineGroupsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachineGroupsListByResourceGroupOutput =
-  typeof SqlVirtualMachineGroupsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineGroupsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -647,6 +821,12 @@ export const SqlVirtualMachineGroupsListByResourceGroup =
     outputSchema: SqlVirtualMachineGroupsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachineGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+  tags?: Record<string, string>;
+}
 export const SqlVirtualMachineGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -659,11 +839,22 @@ export const SqlVirtualMachineGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineGroupsUpdateInput =
-  typeof SqlVirtualMachineGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineGroupsUpdateInput>;
 
 // Output Schema
+export interface SqlVirtualMachineGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachineGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -683,9 +874,7 @@ export const SqlVirtualMachineGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachineGroupsUpdateOutput =
-  typeof SqlVirtualMachineGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -702,6 +891,174 @@ export const SqlVirtualMachineGroupsUpdate =
     outputSchema: SqlVirtualMachineGroupsUpdateOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  properties?: {
+    virtualMachineResourceId?: string;
+    provisioningState?: string;
+    sqlImageOffer?: string;
+    sqlServerLicenseType?: "PAYG" | "AHUB" | "DR";
+    sqlManagement?: "Full" | "LightWeight" | "NoAgent";
+    leastPrivilegeMode?: "Enabled" | "NotSet";
+    sqlImageSku?: "Developer" | "Express" | "Standard" | "Enterprise" | "Web";
+    sqlVirtualMachineGroupResourceId?: string;
+    wsfcDomainCredentials?: {
+      clusterBootstrapAccountPassword?: string | Redacted.Redacted<string>;
+      clusterOperatorAccountPassword?: string | Redacted.Redacted<string>;
+      sqlServiceAccountPassword?: string | Redacted.Redacted<string>;
+    };
+    wsfcStaticIp?: string;
+    autoPatchingSettings?: {
+      enable?: boolean;
+      dayOfWeek?:
+        | "Everyday"
+        | "Monday"
+        | "Tuesday"
+        | "Wednesday"
+        | "Thursday"
+        | "Friday"
+        | "Saturday"
+        | "Sunday";
+      maintenanceWindowStartingHour?: number;
+      maintenanceWindowDuration?: number;
+      additionalVmPatch?: "NotSet" | "MicrosoftUpdate";
+    };
+    autoBackupSettings?: {
+      enable?: boolean;
+      enableEncryption?: boolean;
+      retentionPeriod?: number;
+      storageAccountUrl?: string;
+      storageContainerName?: string;
+      storageAccessKey?: string;
+      password?: string | Redacted.Redacted<string>;
+      backupSystemDbs?: boolean;
+      backupScheduleType?: "Manual" | "Automated";
+      fullBackupFrequency?: "Daily" | "Weekly";
+      daysOfWeek?: (
+        | "Monday"
+        | "Tuesday"
+        | "Wednesday"
+        | "Thursday"
+        | "Friday"
+        | "Saturday"
+        | "Sunday"
+      )[];
+      fullBackupStartTime?: number;
+      fullBackupWindowHours?: number;
+      logBackupFrequency?: number;
+    };
+    keyVaultCredentialSettings?: {
+      enable?: boolean;
+      credentialName?: string;
+      azureKeyVaultUrl?: string;
+      servicePrincipalName?: string;
+      servicePrincipalSecret?: string;
+    };
+    serverConfigurationsManagementSettings?: {
+      sqlConnectivityUpdateSettings?: {
+        connectivityType?: "LOCAL" | "PRIVATE" | "PUBLIC";
+        port?: number;
+        sqlAuthUpdateUserName?: string;
+        sqlAuthUpdatePassword?: string | Redacted.Redacted<string>;
+      };
+      sqlWorkloadTypeUpdateSettings?: {
+        sqlWorkloadType?: "GENERAL" | "OLTP" | "DW";
+      };
+      sqlStorageUpdateSettings?: {
+        diskCount?: number;
+        startingDeviceId?: number;
+        diskConfigurationType?: "NEW" | "EXTEND" | "ADD";
+      };
+      additionalFeaturesServerConfigurations?: { isRServicesEnabled?: boolean };
+      sqlInstanceSettings?: {
+        collation?: string;
+        maxDop?: number;
+        isOptimizeForAdHocWorkloadsEnabled?: boolean;
+        minServerMemoryMB?: number;
+        maxServerMemoryMB?: number;
+        isLpimEnabled?: boolean;
+        isIfiEnabled?: boolean;
+      };
+      azureAdAuthenticationSettings?: { clientId?: string };
+    };
+    storageConfigurationSettings?: {
+      sqlDataSettings?: {
+        luns?: number[];
+        defaultFilePath?: string;
+        useStoragePool?: boolean;
+      };
+      sqlLogSettings?: {
+        luns?: number[];
+        defaultFilePath?: string;
+        useStoragePool?: boolean;
+      };
+      sqlTempDbSettings?: {
+        dataFileSize?: number;
+        dataGrowth?: number;
+        logFileSize?: number;
+        logGrowth?: number;
+        dataFileCount?: number;
+        persistFolder?: boolean;
+        persistFolderPath?: string;
+        luns?: number[];
+        defaultFilePath?: string;
+        useStoragePool?: boolean;
+      };
+      sqlSystemDbOnDataDisk?: boolean;
+      diskConfigurationType?: "NEW" | "EXTEND" | "ADD";
+      storageWorkloadType?: "GENERAL" | "OLTP" | "DW";
+      enableStorageConfigBlade?: boolean;
+    };
+    troubleshootingStatus?: {
+      rootCause?: string;
+      lastTriggerTimeUtc?: string;
+      startTimeUtc?: string;
+      endTimeUtc?: string;
+      troubleshootingScenario?: "UnhealthyReplica";
+      properties?: {
+        unhealthyReplicaInfo?: { availabilityGroupName?: string };
+      };
+    };
+    assessmentSettings?: {
+      enable?: boolean;
+      runImmediately?: boolean;
+      schedule?: {
+        enable?: boolean;
+        weeklyInterval?: number;
+        monthlyOccurrence?: number;
+        dayOfWeek?:
+          | "Monday"
+          | "Tuesday"
+          | "Wednesday"
+          | "Thursday"
+          | "Friday"
+          | "Saturday"
+          | "Sunday";
+        startTime?: string;
+      };
+    };
+    enableAutomaticUpgrade?: boolean;
+    additionalVmPatch?: "WU" | "WUMU" | "WSUS";
+    virtualMachineIdentitySettings?: {
+      type?: "None" | "SystemAssigned" | "UserAssigned";
+      resourceId?: string;
+    };
+    osType?: "Windows" | "Linux";
+  };
+  identity?: {
+    principalId?: string;
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlVirtualMachinesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -979,11 +1336,22 @@ export const SqlVirtualMachinesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesCreateOrUpdateInput =
-  typeof SqlVirtualMachinesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachinesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1003,9 +1371,7 @@ export const SqlVirtualMachinesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachinesCreateOrUpdateOutput =
-  typeof SqlVirtualMachinesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1022,6 +1388,11 @@ export const SqlVirtualMachinesCreateOrUpdate =
     outputSchema: SqlVirtualMachinesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+}
 export const SqlVirtualMachinesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1033,15 +1404,12 @@ export const SqlVirtualMachinesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesDeleteInput =
-  typeof SqlVirtualMachinesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesDeleteInput>;
 
 // Output Schema
+export type SqlVirtualMachinesDeleteOutput = void;
 export const SqlVirtualMachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlVirtualMachinesDeleteOutput =
-  typeof SqlVirtualMachinesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesDeleteOutput>;
 
 // The operation
 /**
@@ -1059,6 +1427,12 @@ export const SqlVirtualMachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachinesFetchDCAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  runDiskConfigRules?: boolean;
+}
 export const SqlVirtualMachinesFetchDCAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1071,15 +1445,12 @@ export const SqlVirtualMachinesFetchDCAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/fetchDCAssessment",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesFetchDCAssessmentInput =
-  typeof SqlVirtualMachinesFetchDCAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesFetchDCAssessmentInput>;
 
 // Output Schema
+export type SqlVirtualMachinesFetchDCAssessmentOutput = void;
 export const SqlVirtualMachinesFetchDCAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlVirtualMachinesFetchDCAssessmentOutput =
-  typeof SqlVirtualMachinesFetchDCAssessmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesFetchDCAssessmentOutput>;
 
 // The operation
 /**
@@ -1096,6 +1467,12 @@ export const SqlVirtualMachinesFetchDCAssessment =
     outputSchema: SqlVirtualMachinesFetchDCAssessmentOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  $expand?: string;
+}
 export const SqlVirtualMachinesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1108,10 +1485,22 @@ export const SqlVirtualMachinesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesGetInput = typeof SqlVirtualMachinesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesGetInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachinesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1131,9 +1520,7 @@ export const SqlVirtualMachinesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachinesGetOutput =
-  typeof SqlVirtualMachinesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesGetOutput>;
 
 // The operation
 /**
@@ -1152,6 +1539,9 @@ export const SqlVirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachinesListInput {
+  subscriptionId: string;
+}
 export const SqlVirtualMachinesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1161,11 +1551,25 @@ export const SqlVirtualMachinesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesListInput =
-  typeof SqlVirtualMachinesListInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesListInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlVirtualMachinesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1200,9 +1604,7 @@ export const SqlVirtualMachinesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachinesListOutput =
-  typeof SqlVirtualMachinesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesListOutput>;
 
 // The operation
 /**
@@ -1218,6 +1620,10 @@ export const SqlVirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachinesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlVirtualMachinesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1228,11 +1634,25 @@ export const SqlVirtualMachinesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesListByResourceGroupInput =
-  typeof SqlVirtualMachinesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlVirtualMachinesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1267,9 +1687,7 @@ export const SqlVirtualMachinesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachinesListByResourceGroupOutput =
-  typeof SqlVirtualMachinesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1285,6 +1703,11 @@ export const SqlVirtualMachinesListByResourceGroup =
     outputSchema: SqlVirtualMachinesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesListBySqlVmGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineGroupName: string;
+}
 export const SqlVirtualMachinesListBySqlVmGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1296,11 +1719,25 @@ export const SqlVirtualMachinesListBySqlVmGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesListBySqlVmGroupInput =
-  typeof SqlVirtualMachinesListBySqlVmGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesListBySqlVmGroupInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesListBySqlVmGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlVirtualMachinesListBySqlVmGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1335,9 +1772,7 @@ export const SqlVirtualMachinesListBySqlVmGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachinesListBySqlVmGroupOutput =
-  typeof SqlVirtualMachinesListBySqlVmGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesListBySqlVmGroupOutput>;
 
 // The operation
 /**
@@ -1354,6 +1789,11 @@ export const SqlVirtualMachinesListBySqlVmGroup =
     outputSchema: SqlVirtualMachinesListBySqlVmGroupOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesRedeployInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+}
 export const SqlVirtualMachinesRedeployInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1365,15 +1805,12 @@ export const SqlVirtualMachinesRedeployInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/redeploy",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesRedeployInput =
-  typeof SqlVirtualMachinesRedeployInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesRedeployInput>;
 
 // Output Schema
+export type SqlVirtualMachinesRedeployOutput = void;
 export const SqlVirtualMachinesRedeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlVirtualMachinesRedeployOutput =
-  typeof SqlVirtualMachinesRedeployOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesRedeployOutput>;
 
 // The operation
 /**
@@ -1391,6 +1828,11 @@ export const SqlVirtualMachinesRedeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachinesStartAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+}
 export const SqlVirtualMachinesStartAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1402,15 +1844,12 @@ export const SqlVirtualMachinesStartAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesStartAssessmentInput =
-  typeof SqlVirtualMachinesStartAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesStartAssessmentInput>;
 
 // Output Schema
+export type SqlVirtualMachinesStartAssessmentOutput = void;
 export const SqlVirtualMachinesStartAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlVirtualMachinesStartAssessmentOutput =
-  typeof SqlVirtualMachinesStartAssessmentOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlVirtualMachinesStartAssessmentOutput>;
 
 // The operation
 /**
@@ -1427,6 +1866,12 @@ export const SqlVirtualMachinesStartAssessment =
     outputSchema: SqlVirtualMachinesStartAssessmentOutput,
   }));
 // Input Schema
+export interface SqlVirtualMachinesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  tags?: Record<string, string>;
+}
 export const SqlVirtualMachinesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1439,11 +1884,22 @@ export const SqlVirtualMachinesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachinesUpdateInput =
-  typeof SqlVirtualMachinesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachinesUpdateInput>;
 
 // Output Schema
+export interface SqlVirtualMachinesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlVirtualMachinesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1463,9 +1919,7 @@ export const SqlVirtualMachinesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlVirtualMachinesUpdateOutput =
-  typeof SqlVirtualMachinesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachinesUpdateOutput>;
 
 // The operation
 /**
@@ -1483,6 +1937,16 @@ export const SqlVirtualMachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlVirtualMachineTroubleshootTroubleshootInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  startTimeUtc?: string;
+  endTimeUtc?: string;
+  troubleshootingScenario?: "UnhealthyReplica";
+  properties?: { unhealthyReplicaInfo?: { availabilityGroupName?: string } };
+  virtualMachineResourceId?: string;
+}
 export const SqlVirtualMachineTroubleshootTroubleshootInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1509,11 +1973,16 @@ export const SqlVirtualMachineTroubleshootTroubleshootInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/troubleshoot",
       apiVersion: "2023-10-01",
     }),
-  );
-export type SqlVirtualMachineTroubleshootTroubleshootInput =
-  typeof SqlVirtualMachineTroubleshootTroubleshootInput.Type;
+  ) as unknown as Schema.Codec<SqlVirtualMachineTroubleshootTroubleshootInput>;
 
 // Output Schema
+export interface SqlVirtualMachineTroubleshootTroubleshootOutput {
+  startTimeUtc?: string;
+  endTimeUtc?: string;
+  troubleshootingScenario?: "UnhealthyReplica";
+  properties?: { unhealthyReplicaInfo?: { availabilityGroupName?: string } };
+  virtualMachineResourceId?: string;
+}
 export const SqlVirtualMachineTroubleshootTroubleshootOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     startTimeUtc: Schema.optional(Schema.String),
@@ -1531,9 +2000,7 @@ export const SqlVirtualMachineTroubleshootTroubleshootOutput =
       }),
     ),
     virtualMachineResourceId: Schema.optional(Schema.String),
-  });
-export type SqlVirtualMachineTroubleshootTroubleshootOutput =
-  typeof SqlVirtualMachineTroubleshootTroubleshootOutput.Type;
+  }) as unknown as Schema.Codec<SqlVirtualMachineTroubleshootTroubleshootOutput>;
 
 // The operation
 /**

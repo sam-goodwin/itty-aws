@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CheckDeployRequestStorageInput {
+  organization: string;
+  database: string;
+  number: number;
+}
 export const CheckDeployRequestStorageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,28 @@ export const CheckDeployRequestStorageInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/storage-check",
     }),
-  );
-export type CheckDeployRequestStorageInput =
-  typeof CheckDeployRequestStorageInput.Type;
+  ) as unknown as Schema.Codec<CheckDeployRequestStorageInput>;
 
 // Output Schema
+export interface CheckDeployRequestStorageOutput {
+  enough_storage: boolean;
+  upgradeable: boolean;
+  storage_bytes_needed: number;
+  storage_report: Record<
+    string,
+    Record<
+      string,
+      {
+        used?: number;
+        capacity?: number;
+        remaining?: number;
+        percentage_used?: number;
+        storage_needed?: number;
+        has_enough?: boolean;
+      }
+    >
+  >;
+}
 export const CheckDeployRequestStorageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enough_storage: Schema.Boolean,
@@ -38,9 +60,7 @@ export const CheckDeployRequestStorageOutput =
         }),
       ),
     ),
-  });
-export type CheckDeployRequestStorageOutput =
-  typeof CheckDeployRequestStorageOutput.Type;
+  }) as unknown as Schema.Codec<CheckDeployRequestStorageOutput>;
 
 // The operation
 /**

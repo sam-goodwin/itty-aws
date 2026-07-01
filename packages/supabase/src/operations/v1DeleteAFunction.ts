@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1DeleteAFunctionInput {
+  ref: string;
+  function_slug: string;
+}
 export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     ref: Schema.String.pipe(T.PathParam()),
@@ -14,12 +18,12 @@ export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/v1/projects/{ref}/functions/{function_slug}",
   }),
-);
-export type V1DeleteAFunctionInput = typeof V1DeleteAFunctionInput.Type;
+) as unknown as Schema.Codec<V1DeleteAFunctionInput>;
 
 // Output Schema
-export const V1DeleteAFunctionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1DeleteAFunctionOutput = typeof V1DeleteAFunctionOutput.Type;
+export type V1DeleteAFunctionOutput = void;
+export const V1DeleteAFunctionOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteAFunctionOutput>;
 
 // The operation
 /**

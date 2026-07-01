@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsCountsRetrieveInput {
+  project_id: string;
+}
 export const VisualReviewRunsCountsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +15,22 @@ export const VisualReviewRunsCountsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/visual_review/runs/counts/",
     }),
-  );
-export type VisualReviewRunsCountsRetrieveInput =
-  typeof VisualReviewRunsCountsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsCountsRetrieveInput>;
 
 // Output Schema
+export interface VisualReviewRunsCountsRetrieveOutput {
+  needs_review?: number;
+  clean?: number;
+  processing?: number;
+  stale?: number;
+}
 export const VisualReviewRunsCountsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     needs_review: Schema.optional(Schema.Number),
     clean: Schema.optional(Schema.Number),
     processing: Schema.optional(Schema.Number),
     stale: Schema.optional(Schema.Number),
-  });
-export type VisualReviewRunsCountsRetrieveOutput =
-  typeof VisualReviewRunsCountsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsCountsRetrieveOutput>;
 
 // The operation
 /**

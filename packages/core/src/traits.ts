@@ -479,6 +479,15 @@ export const getAnnotation = <T>(
     return getAnnotation<T>(ast.encoding[0].to, symbol);
   }
 
+  // Follow `Schema.suspend` thunks. Generated SDKs defer schema construction
+  // by wrapping structs in `Schema.suspend(() => ...)`; a trait applied to an
+  // already-suspended schema (e.g. `T.ResponsePath` on a shared, suspended
+  // response struct) lands on the Suspend node itself, so we must force the
+  // thunk to discover annotations attached beneath it.
+  if (ast._tag === "Suspend") {
+    return getAnnotation<T>(ast.thunk(), symbol);
+  }
+
   return undefined;
 };
 

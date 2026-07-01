@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface BatchExportsRunsRetrieveInput {
+  batch_export_id: string;
+  id: string;
+  project_id: string;
+}
 export const BatchExportsRunsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     batch_export_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,37 @@ export const BatchExportsRunsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/batch_exports/{batch_export_id}/runs/{id}/",
     }),
-  );
-export type BatchExportsRunsRetrieveInput =
-  typeof BatchExportsRunsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<BatchExportsRunsRetrieveInput>;
 
 // Output Schema
+export interface BatchExportsRunsRetrieveOutput {
+  id?: string;
+  status?:
+    | "Cancelled"
+    | "Completed"
+    | "ContinuedAsNew"
+    | "Failed"
+    | "FailedRetryable"
+    | "FailedBilling"
+    | "Terminated"
+    | "TimedOut"
+    | "Running"
+    | "Starting";
+  records_completed?: number | null;
+  records_failed?: number | null;
+  latest_error?: string | null;
+  data_interval_start?: string | null;
+  data_interval_end?: string;
+  cursor?: string | null;
+  created_at?: string;
+  finished_at?: string | null;
+  last_updated_at?: string;
+  records_total_count?: number | null;
+  bytes_exported?: number | null;
+  batch_export?: string | null;
+  batch_export_on_demand?: string | null;
+  backfill?: string | null;
+}
 export const BatchExportsRunsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -47,11 +78,10 @@ export const BatchExportsRunsRetrieveOutput =
     last_updated_at: Schema.optional(Schema.String),
     records_total_count: Schema.optional(Schema.NullOr(Schema.Number)),
     bytes_exported: Schema.optional(Schema.NullOr(Schema.Number)),
-    batch_export: Schema.optional(Schema.String),
+    batch_export: Schema.optional(Schema.NullOr(Schema.String)),
+    batch_export_on_demand: Schema.optional(Schema.NullOr(Schema.String)),
     backfill: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type BatchExportsRunsRetrieveOutput =
-  typeof BatchExportsRunsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<BatchExportsRunsRetrieveOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListDatabasesInput {
+  organization: string;
+  q?: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   q: Schema.optional(Schema.String),
@@ -11,10 +17,84 @@ export const ListDatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   per_page: Schema.optional(Schema.Number),
 }).pipe(
   T.Http({ method: "GET", path: "/organizations/{organization}/databases" }),
-);
-export type ListDatabasesInput = typeof ListDatabasesInput.Type;
+) as unknown as Schema.Codec<ListDatabasesInput>;
 
 // Output Schema
+export interface ListDatabasesOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    url: string;
+    branches_url: string;
+    branches_count?: number;
+    open_schema_recommendations_count?: number;
+    development_branches_count?: number;
+    production_branches_count?: number;
+    issues_count?: number | null;
+    multiple_admins_required_for_deletion?: boolean;
+    ready: boolean;
+    at_backup_restore_branches_limit?: boolean;
+    at_development_branch_usage_limit?: boolean;
+    data_import?: {
+      state: string;
+      import_check_errors: string;
+      started_at: string | null;
+      finished_at: string | null;
+      data_source: { hostname: string; port: number; database: string };
+    } | null;
+    region: {
+      id: string;
+      provider: string;
+      enabled: boolean;
+      public_ip_addresses: string[];
+      display_name: string;
+      location: string;
+      slug: string;
+      current_default: boolean;
+      mysql_supported: boolean;
+      postgresql_supported: boolean;
+    };
+    html_url: string;
+    name: string;
+    state:
+      | "pending"
+      | "importing"
+      | "sleep_in_progress"
+      | "sleeping"
+      | "awakening"
+      | "import_ready"
+      | "ready";
+    sharded?: boolean;
+    default_branch_shard_count?: number;
+    default_branch_read_only_regions_count?: number;
+    default_branch_table_count?: number;
+    default_branch?: string;
+    require_approval_for_deploy?: boolean;
+    resizing?: boolean;
+    resize_queued?: boolean;
+    config_changing?: boolean;
+    config_change_queued?: boolean;
+    allow_data_branching?: boolean;
+    foreign_keys_enabled?: boolean;
+    automatic_migrations?: boolean | null;
+    restrict_branch_region?: boolean;
+    insights_raw_queries?: boolean;
+    plan?: string;
+    insights_enabled?: boolean;
+    production_branch_web_console?: boolean;
+    migration_table_name?: string | null;
+    migration_framework?: string | null;
+    created_at: string;
+    updated_at: string;
+    schema_last_updated_at?: string | null;
+    kind: "mysql" | "postgresql";
+  }[];
+}
 export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
@@ -100,8 +180,7 @@ export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       kind: Schema.Literals(["mysql", "postgresql"]),
     }),
   ),
-});
-export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
+}) as unknown as Schema.Codec<ListDatabasesOutput>;
 
 // The operation
 /**

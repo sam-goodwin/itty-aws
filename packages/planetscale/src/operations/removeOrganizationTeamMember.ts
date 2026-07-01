@@ -9,6 +9,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface RemoveOrganizationTeamMemberInput {
+  organization: string;
+  team: string;
+  id: string;
+  delete_passwords?: boolean;
+}
 export const RemoveOrganizationTeamMemberInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -20,15 +26,12 @@ export const RemoveOrganizationTeamMemberInput =
       method: "DELETE",
       path: "/organizations/{organization}/teams/{team}/members/{id}",
     }),
-  );
-export type RemoveOrganizationTeamMemberInput =
-  typeof RemoveOrganizationTeamMemberInput.Type;
+  ) as unknown as Schema.Codec<RemoveOrganizationTeamMemberInput>;
 
 // Output Schema
+export type RemoveOrganizationTeamMemberOutput = void;
 export const RemoveOrganizationTeamMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveOrganizationTeamMemberOutput =
-  typeof RemoveOrganizationTeamMemberOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrganizationTeamMemberOutput>;
 
 // The operation
 /**

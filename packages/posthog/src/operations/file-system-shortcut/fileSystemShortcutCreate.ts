@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemShortcutCreateInput {
+  project_id: string;
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +22,25 @@ export const FileSystemShortcutCreateInput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/api/projects/{project_id}/file_system_shortcut/",
     }),
-  );
-export type FileSystemShortcutCreateInput =
-  typeof FileSystemShortcutCreateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutCreateInput>;
 
 // Output Schema
+export interface FileSystemShortcutCreateOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -30,10 +48,9 @@ export const FileSystemShortcutCreateOutput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type FileSystemShortcutCreateOutput =
-  typeof FileSystemShortcutCreateOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemShortcutCreateOutput>;
 
 // The operation
 /**

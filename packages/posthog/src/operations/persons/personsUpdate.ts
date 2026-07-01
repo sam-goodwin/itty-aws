@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsUpdateInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -16,10 +27,18 @@ export const PersonsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
 }).pipe(
   T.Http({ method: "PUT", path: "/api/projects/{project_id}/persons/{id}/" }),
-);
-export type PersonsUpdateInput = typeof PersonsUpdateInput.Type;
+) as unknown as Schema.Codec<PersonsUpdateInput>;
 
 // Output Schema
+export interface PersonsUpdateOutput {
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.String),
@@ -28,8 +47,7 @@ export const PersonsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   uuid: Schema.optional(Schema.String),
   last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
-});
-export type PersonsUpdateOutput = typeof PersonsUpdateOutput.Type;
+}) as unknown as Schema.Codec<PersonsUpdateOutput>;
 
 // The operation
 /**

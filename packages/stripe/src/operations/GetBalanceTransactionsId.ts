@@ -1,8 +1,17 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetBalanceTransactionsIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetBalanceTransactionsIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +22,87 @@ export const GetBalanceTransactionsIdInput =
       path: "/v1/balance_transactions/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBalanceTransactionsIdInput =
-  typeof GetBalanceTransactionsIdInput.Type;
+  ) as unknown as Schema.Codec<GetBalanceTransactionsIdInput>;
 
 // Output Schema
+export interface GetBalanceTransactionsIdOutput {
+  amount: number;
+  available_on: number;
+  balance_type:
+    | "issuing"
+    | "payments"
+    | "refund_and_dispute_prefunding"
+    | "risk_reserved";
+  created: number;
+  currency: string;
+  description: string | null;
+  exchange_rate: number | null;
+  fee: number;
+  fee_details: {
+    amount: number;
+    application: string | null;
+    currency: string;
+    description: string | null;
+    type: string;
+  }[];
+  id: string;
+  net: number;
+  object: "balance_transaction";
+  reporting_category: string;
+  source: string | unknown | null;
+  status: string;
+  type:
+    | "adjustment"
+    | "advance"
+    | "advance_funding"
+    | "anticipation_repayment"
+    | "application_fee"
+    | "application_fee_refund"
+    | "charge"
+    | "climate_order_purchase"
+    | "climate_order_refund"
+    | "connect_collection_transfer"
+    | "contribution"
+    | "fee_credit_funding"
+    | "inbound_transfer"
+    | "inbound_transfer_reversal"
+    | "issuing_authorization_hold"
+    | "issuing_authorization_release"
+    | "issuing_dispute"
+    | "issuing_transaction"
+    | "obligation_outbound"
+    | "obligation_reversal_inbound"
+    | "payment"
+    | "payment_failure_refund"
+    | "payment_network_reserve_hold"
+    | "payment_network_reserve_release"
+    | "payment_refund"
+    | "payment_reversal"
+    | "payment_unreconciled"
+    | "payout"
+    | "payout_cancel"
+    | "payout_failure"
+    | "payout_minimum_balance_hold"
+    | "payout_minimum_balance_release"
+    | "refund"
+    | "refund_failure"
+    | "reserve_hold"
+    | "reserve_release"
+    | "reserve_transaction"
+    | "reserved_funds"
+    | "stripe_balance_payment_debit"
+    | "stripe_balance_payment_debit_reversal"
+    | "stripe_fee"
+    | "stripe_fx_fee"
+    | "tax_fee"
+    | "tax_fund"
+    | "topup"
+    | "topup_reversal"
+    | "transfer"
+    | "transfer_cancel"
+    | "transfer_failure"
+    | "transfer_refund";
+}
 export const GetBalanceTransactionsIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Number,
@@ -46,7 +131,7 @@ export const GetBalanceTransactionsIdOutput =
     net: Schema.Number,
     object: Schema.Literals(["balance_transaction"]),
     reporting_category: Schema.String,
-    source: Schema.Unknown,
+    source: Schema.NullOr(Schema.Union([Schema.String, Schema.Unknown])),
     status: Schema.String,
     type: Schema.Literals([
       "adjustment",
@@ -60,6 +145,9 @@ export const GetBalanceTransactionsIdOutput =
       "climate_order_refund",
       "connect_collection_transfer",
       "contribution",
+      "fee_credit_funding",
+      "inbound_transfer",
+      "inbound_transfer_reversal",
       "issuing_authorization_hold",
       "issuing_authorization_release",
       "issuing_dispute",
@@ -89,6 +177,7 @@ export const GetBalanceTransactionsIdOutput =
       "stripe_fee",
       "stripe_fx_fee",
       "tax_fee",
+      "tax_fund",
       "topup",
       "topup_reversal",
       "transfer",
@@ -96,9 +185,7 @@ export const GetBalanceTransactionsIdOutput =
       "transfer_failure",
       "transfer_refund",
     ]),
-  });
-export type GetBalanceTransactionsIdOutput =
-  typeof GetBalanceTransactionsIdOutput.Type;
+  }) as unknown as Schema.Codec<GetBalanceTransactionsIdOutput>;
 
 // The operation
 /**

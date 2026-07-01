@@ -1,9 +1,82 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostSourcesInput {
+  amount?: number;
+  currency?: string;
+  customer?: string;
+  expand?: string[];
+  flow?: "code_verification" | "none" | "receiver" | "redirect";
+  mandate?: {
+    acceptance?: {
+      date?: number;
+      ip?: string;
+      offline?: { contact_email: string };
+      online?: { date?: number; ip?: string; user_agent?: string };
+      status: "accepted" | "pending" | "refused" | "revoked";
+      type?: "offline" | "online";
+      user_agent?: string;
+    };
+    amount?: number | "";
+    currency?: string;
+    interval?: "one_time" | "scheduled" | "variable";
+    notification_method?:
+      | "deprecated_none"
+      | "email"
+      | "manual"
+      | "none"
+      | "stripe_email";
+  };
+  metadata?: Record<string, string>;
+  original_source?: string;
+  owner?: {
+    address?: {
+      city?: string;
+      country?: string;
+      line1?: string;
+      line2?: string;
+      postal_code?: string;
+      state?: string;
+    };
+    email?: string;
+    name?: string;
+    phone?: string;
+  };
+  receiver?: { refund_attributes_method?: "email" | "manual" | "none" };
+  redirect?: { return_url: string };
+  source_order?: {
+    items?: {
+      amount?: number;
+      currency?: string;
+      description?: string;
+      parent?: string;
+      quantity?: number;
+      type?: "discount" | "shipping" | "sku" | "tax";
+    }[];
+    shipping?: {
+      address: {
+        city?: string;
+        country?: string;
+        line1: string;
+        line2?: string;
+        postal_code?: string;
+        state?: string;
+      };
+      carrier?: string;
+      name?: string;
+      phone?: string;
+      tracking_number?: string;
+    };
+  };
+  statement_descriptor?: string;
+  token?: string;
+  type?: string;
+  usage?: "reusable" | "single_use";
+}
 export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   currency: Schema.optional(Schema.String),
@@ -40,7 +113,9 @@ export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           user_agent: Schema.optional(Schema.String),
         }),
       ),
-      amount: Schema.optional(Schema.Unknown),
+      amount: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Literals([""])]),
+      ),
       currency: Schema.optional(Schema.String),
       interval: Schema.optional(
         Schema.Literals(["one_time", "scheduled", "variable"]),
@@ -131,10 +206,320 @@ export const PostSourcesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/sources",
     contentType: "form-urlencoded",
   }),
-);
-export type PostSourcesInput = typeof PostSourcesInput.Type;
+) as unknown as Schema.Codec<PostSourcesInput>;
 
 // Output Schema
+export interface PostSourcesOutput {
+  ach_credit_transfer?: {
+    account_number?: string | null;
+    bank_name?: string | null;
+    fingerprint?: string | null;
+    refund_account_holder_name?: string | null;
+    refund_account_holder_type?: string | null;
+    refund_routing_number?: string | null;
+    routing_number?: string | null;
+    swift_code?: string | null;
+  };
+  ach_debit?: {
+    bank_name?: string | null;
+    country?: string | null;
+    fingerprint?: string | null;
+    last4?: string | null;
+    routing_number?: string | null;
+    type?: string | null;
+  };
+  acss_debit?: {
+    bank_address_city?: string | null;
+    bank_address_line_1?: string | null;
+    bank_address_line_2?: string | null;
+    bank_address_postal_code?: string | null;
+    bank_name?: string | null;
+    category?: string | null;
+    country?: string | null;
+    fingerprint?: string | null;
+    last4?: string | null;
+    routing_number?: string | null;
+  };
+  alipay?: {
+    data_string?: string | null;
+    native_url?: string | null;
+    statement_descriptor?: string | null;
+  };
+  allow_redisplay: "always" | "limited" | "unspecified" | null;
+  amount: number | null;
+  au_becs_debit?: {
+    bsb_number?: string | null;
+    fingerprint?: string | null;
+    last4?: string | null;
+  };
+  bancontact?: {
+    bank_code?: string | null;
+    bank_name?: string | null;
+    bic?: string | null;
+    iban_last4?: string | null;
+    preferred_language?: string | null;
+    statement_descriptor?: string | null;
+  };
+  card?: {
+    address_line1_check?: string | null;
+    address_zip_check?: string | null;
+    brand?: string | null;
+    country?: string | null;
+    cvc_check?: string | null;
+    description?: string;
+    dynamic_last4?: string | null;
+    exp_month?: number | null;
+    exp_year?: number | null;
+    fingerprint?: string;
+    funding?: string | null;
+    iin?: string;
+    issuer?: string;
+    last4?: string | null;
+    name?: string | null;
+    three_d_secure?: string;
+    tokenization_method?: string | null;
+  };
+  card_present?: {
+    application_cryptogram?: string;
+    application_preferred_name?: string;
+    authorization_code?: string | null;
+    authorization_response_code?: string;
+    brand?: string | null;
+    country?: string | null;
+    cvm_type?: string;
+    data_type?: string | null;
+    dedicated_file_name?: string;
+    description?: string;
+    emv_auth_data?: string;
+    evidence_customer_signature?: string | null;
+    evidence_transaction_certificate?: string | null;
+    exp_month?: number | null;
+    exp_year?: number | null;
+    fingerprint?: string;
+    funding?: string | null;
+    iin?: string;
+    issuer?: string;
+    last4?: string | null;
+    pos_device_id?: string | null;
+    pos_entry_mode?: string;
+    read_method?: string | null;
+    reader?: string | null;
+    terminal_verification_results?: string;
+    transaction_status_information?: string;
+  };
+  client_secret: Redacted.Redacted<string>;
+  code_verification?: { attempts_remaining: number; status: string };
+  created: number;
+  currency: string | null;
+  customer?: string;
+  eps?: { reference?: string | null; statement_descriptor?: string | null };
+  flow: string;
+  giropay?: {
+    bank_code?: string | null;
+    bank_name?: string | null;
+    bic?: string | null;
+    statement_descriptor?: string | null;
+  };
+  id: string;
+  ideal?: {
+    bank?: string | null;
+    bic?: string | null;
+    iban_last4?: string | null;
+    statement_descriptor?: string | null;
+  };
+  klarna?: {
+    background_image_url?: string;
+    client_token?: string | null;
+    first_name?: string;
+    last_name?: string;
+    locale?: string;
+    logo_url?: string;
+    page_title?: string;
+    pay_later_asset_urls_descriptive?: string;
+    pay_later_asset_urls_standard?: string;
+    pay_later_name?: string;
+    pay_later_redirect_url?: string;
+    pay_now_asset_urls_descriptive?: string;
+    pay_now_asset_urls_standard?: string;
+    pay_now_name?: string;
+    pay_now_redirect_url?: string;
+    pay_over_time_asset_urls_descriptive?: string;
+    pay_over_time_asset_urls_standard?: string;
+    pay_over_time_name?: string;
+    pay_over_time_redirect_url?: string;
+    payment_method_categories?: string;
+    purchase_country?: string;
+    purchase_type?: string;
+    redirect_url?: string;
+    shipping_delay?: number;
+    shipping_first_name?: string;
+    shipping_last_name?: string;
+  };
+  livemode: boolean;
+  metadata: Record<string, string> | null;
+  multibanco?: {
+    entity?: string | null;
+    reference?: string | null;
+    refund_account_holder_address_city?: string | null;
+    refund_account_holder_address_country?: string | null;
+    refund_account_holder_address_line1?: string | null;
+    refund_account_holder_address_line2?: string | null;
+    refund_account_holder_address_postal_code?: string | null;
+    refund_account_holder_address_state?: string | null;
+    refund_account_holder_name?: string | null;
+    refund_iban?: string | null;
+  };
+  object: "source";
+  owner: {
+    address: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    } | null;
+    email: string | null;
+    name: string | null;
+    phone: string | null;
+    verified_address: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    } | null;
+    verified_email: string | null;
+    verified_name: string | null;
+    verified_phone: string | null;
+  } | null;
+  p24?: { reference?: string | null };
+  receiver?: {
+    address: string | null;
+    amount_charged: number;
+    amount_received: number;
+    amount_returned: number;
+    refund_attributes_method: string;
+    refund_attributes_status: string;
+  };
+  redirect?: {
+    failure_reason: string | null;
+    return_url: string;
+    status: string;
+    url: string;
+  };
+  sepa_credit_transfer?: {
+    bank_name?: string | null;
+    bic?: string | null;
+    iban?: string | null;
+    refund_account_holder_address_city?: string | null;
+    refund_account_holder_address_country?: string | null;
+    refund_account_holder_address_line1?: string | null;
+    refund_account_holder_address_line2?: string | null;
+    refund_account_holder_address_postal_code?: string | null;
+    refund_account_holder_address_state?: string | null;
+    refund_account_holder_name?: string | null;
+    refund_iban?: string | null;
+  };
+  sepa_debit?: {
+    bank_code?: string | null;
+    branch_code?: string | null;
+    country?: string | null;
+    fingerprint?: string | null;
+    last4?: string | null;
+    mandate_reference?: string | null;
+    mandate_url?: string | null;
+  };
+  sofort?: {
+    bank_code?: string | null;
+    bank_name?: string | null;
+    bic?: string | null;
+    country?: string | null;
+    iban_last4?: string | null;
+    preferred_language?: string | null;
+    statement_descriptor?: string | null;
+  };
+  source_order?: {
+    amount: number;
+    currency: string;
+    email?: string;
+    items:
+      | {
+          amount: number | null;
+          currency: string | null;
+          description: string | null;
+          parent: string | null;
+          quantity?: number;
+          type: string | null;
+        }[]
+      | null;
+    shipping?: {
+      address?: {
+        city: string | null;
+        country: string | null;
+        line1: string | null;
+        line2: string | null;
+        postal_code: string | null;
+        state: string | null;
+      };
+      carrier?: string | null;
+      name?: string;
+      phone?: string | null;
+      tracking_number?: string | null;
+    };
+  };
+  statement_descriptor: string | null;
+  status: string;
+  three_d_secure?: {
+    address_line1_check?: string | null;
+    address_zip_check?: string | null;
+    authenticated?: boolean | null;
+    brand?: string | null;
+    card?: string | null;
+    country?: string | null;
+    customer?: string | null;
+    cvc_check?: string | null;
+    description?: string;
+    dynamic_last4?: string | null;
+    exp_month?: number | null;
+    exp_year?: number | null;
+    fingerprint?: string;
+    funding?: string | null;
+    iin?: string;
+    issuer?: string;
+    last4?: string | null;
+    name?: string | null;
+    three_d_secure?: string;
+    tokenization_method?: string | null;
+  };
+  type:
+    | "ach_credit_transfer"
+    | "ach_debit"
+    | "acss_debit"
+    | "alipay"
+    | "au_becs_debit"
+    | "bancontact"
+    | "card"
+    | "card_present"
+    | "eps"
+    | "giropay"
+    | "ideal"
+    | "klarna"
+    | "multibanco"
+    | "p24"
+    | "sepa_credit_transfer"
+    | "sepa_debit"
+    | "sofort"
+    | "three_d_secure"
+    | "wechat";
+  usage: string | null;
+  wechat?: {
+    prepay_id?: string;
+    qr_code_url?: string | null;
+    statement_descriptor?: string;
+  };
+}
 export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ach_credit_transfer: Schema.optional(
     Schema.Struct({
@@ -255,7 +640,7 @@ export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       transaction_status_information: Schema.optional(Schema.String),
     }),
   ),
-  client_secret: SensitiveString,
+  client_secret: SensitiveOutputString,
   code_verification: Schema.optional(
     Schema.Struct({
       attempts_remaining: Schema.Number,
@@ -348,7 +733,36 @@ export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   object: Schema.Literals(["source"]),
-  owner: Schema.Unknown,
+  owner: Schema.NullOr(
+    Schema.Struct({
+      address: Schema.NullOr(
+        Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+        }),
+      ),
+      email: Schema.NullOr(Schema.String),
+      name: Schema.NullOr(Schema.String),
+      phone: Schema.NullOr(Schema.String),
+      verified_address: Schema.NullOr(
+        Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+        }),
+      ),
+      verified_email: Schema.NullOr(Schema.String),
+      verified_name: Schema.NullOr(Schema.String),
+      verified_phone: Schema.NullOr(Schema.String),
+    }),
+  ),
   p24: Schema.optional(
     Schema.Struct({
       reference: Schema.optional(Schema.NullOr(Schema.String)),
@@ -513,8 +927,7 @@ export const PostSourcesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       statement_descriptor: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PostSourcesOutput = typeof PostSourcesOutput.Type;
+}) as unknown as Schema.Codec<PostSourcesOutput>;
 
 // The operation
 /**

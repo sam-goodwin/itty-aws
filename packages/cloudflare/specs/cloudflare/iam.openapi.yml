@@ -1292,8 +1292,9 @@ paths:
   /accounts/{account_id}/sso_connectors/{ssoConnectorId}:
     get:
       operationId: getSso
-      description: "Get single SSO connector  @example ```ts const sso = await
-        client.iam.sso.get( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+      description: "Retrieves details for a specific SSO connector.  @example ```ts
+        const sso = await client.iam.sso.get(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: ssoConnectorId
@@ -1350,8 +1351,9 @@ paths:
       x-distilled-response-path: result
     patch:
       operationId: patchSso
-      description: "Update SSO connector state  @example ```ts const sso = await
-        client.iam.sso.update( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
+      description: "Updates the state or configuration of an SSO connector.  @example
+        ```ts const sso = await client.iam.sso.update(
+        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: ssoConnectorId
@@ -1422,9 +1424,9 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteSso
-      description: "Delete SSO connector  @example ```ts const sso = await
-        client.iam.sso.delete( '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Deletes an SSO connector from the account.  @example ```ts const
+        sso = await client.iam.sso.delete( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: ssoConnectorId
           in: path
@@ -1454,10 +1456,10 @@ paths:
   /accounts/{account_id}/sso_connectors:
     get:
       operationId: listSsos
-      description: "Get all SSO connectors  @example ```ts // Automatically fetches
-        more pages as needed. for await (const ssoListResponse of
-        client.iam.sso.list({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
-        })) { // ... } ```"
+      description: "Lists all SSO connectors configured for the account.  @example
+        ```ts // Automatically fetches more pages as needed. for await (const
+        ssoListResponse of client.iam.sso.list({ account_id:
+        '023e105f4ecef8ad9ca31a8372d0c353', })) { // ... } ```"
       parameters:
         - name: account_id
           in: path
@@ -1508,7 +1510,8 @@ paths:
       x-distilled-pagination-class: SSOListResponsesSinglePage
     post:
       operationId: createSso
-      description: "Initialize new SSO connector  @example ```ts const sso = await
+      description: "Creates a new SSO connector for logging into Cloudflare through an
+        identity provider.  @example ```ts const sso = await
         client.iam.sso.create({ account_id: '023e105f4ecef8ad9ca31a8372d0c353',
         email_domain: 'example.com', }); ```"
       parameters:
@@ -2557,10 +2560,11 @@ paths:
   /accounts/{account_id}/sso_connectors/{ssoConnectorId}/begin_verification:
     post:
       operationId: beginVerificationSso
-      description: "Begin SSO connector verification  @example ```ts const response =
-        await client.iam.sso.beginVerification(
-        '023e105f4ecef8ad9ca31a8372d0c353', { account_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
+      description: "Validates the user has added the DNS TXT record required for
+        validating ownership of the domain they are trying to set up a connector
+        for.  @example ```ts const response = await
+        client.iam.sso.beginVerification( '023e105f4ecef8ad9ca31a8372d0c353', {
+        account_id: '023e105f4ecef8ad9ca31a8372d0c353' }, ); ```"
       parameters:
         - name: ssoConnectorId
           in: path

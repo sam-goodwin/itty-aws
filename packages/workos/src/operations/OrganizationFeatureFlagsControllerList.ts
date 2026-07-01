@@ -4,23 +4,49 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationFeatureFlagsControllerListInput {
+  organizationId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const OrganizationFeatureFlagsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/organizations/{organizationId}/feature-flags",
     }),
-  );
-export type OrganizationFeatureFlagsControllerListInput =
-  typeof OrganizationFeatureFlagsControllerListInput.Type;
+  ) as unknown as Schema.Codec<OrganizationFeatureFlagsControllerListInput>;
 
 // Output Schema
+export interface OrganizationFeatureFlagsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    owner?: {
+      email: string;
+      first_name: string | null;
+      last_name: string | null;
+    } | null;
+    tags?: string[];
+    enabled?: boolean;
+    default_value?: boolean;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const OrganizationFeatureFlagsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -32,7 +58,15 @@ export const OrganizationFeatureFlagsControllerListOutput =
           slug: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           description: Schema.optional(Schema.NullOr(Schema.String)),
-          owner: Schema.optional(Schema.Unknown),
+          owner: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                email: Schema.String,
+                first_name: Schema.NullOr(Schema.String),
+                last_name: Schema.NullOr(Schema.String),
+              }),
+            ),
+          ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           enabled: Schema.optional(Schema.Boolean),
           default_value: Schema.optional(Schema.Boolean),
@@ -47,9 +81,7 @@ export const OrganizationFeatureFlagsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type OrganizationFeatureFlagsControllerListOutput =
-  typeof OrganizationFeatureFlagsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationFeatureFlagsControllerListOutput>;
 
 // The operation
 /**

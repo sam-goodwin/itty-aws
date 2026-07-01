@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostTerminalConnectionTokensInput {
+  expand?: string[];
+  location?: string;
+}
 export const PostTerminalConnectionTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -14,19 +19,20 @@ export const PostTerminalConnectionTokensInput =
       path: "/v1/terminal/connection_tokens",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostTerminalConnectionTokensInput =
-  typeof PostTerminalConnectionTokensInput.Type;
+  ) as unknown as Schema.Codec<PostTerminalConnectionTokensInput>;
 
 // Output Schema
+export interface PostTerminalConnectionTokensOutput {
+  location?: string;
+  object: "terminal.connection_token";
+  secret: Redacted.Redacted<string>;
+}
 export const PostTerminalConnectionTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     object: Schema.Literals(["terminal.connection_token"]),
-    secret: SensitiveString,
-  });
-export type PostTerminalConnectionTokensOutput =
-  typeof PostTerminalConnectionTokensOutput.Type;
+    secret: SensitiveOutputString,
+  }) as unknown as Schema.Codec<PostTerminalConnectionTokensOutput>;
 
 // The operation
 /**

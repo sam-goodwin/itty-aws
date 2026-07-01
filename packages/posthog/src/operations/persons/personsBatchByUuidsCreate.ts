@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsBatchByUuidsCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsBatchByUuidsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const PersonsBatchByUuidsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/batch_by_uuids/",
     }),
-  );
-export type PersonsBatchByUuidsCreateInput =
-  typeof PersonsBatchByUuidsCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsBatchByUuidsCreateInput>;
 
 // Output Schema
+export type PersonsBatchByUuidsCreateOutput = void;
 export const PersonsBatchByUuidsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsBatchByUuidsCreateOutput =
-  typeof PersonsBatchByUuidsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsBatchByUuidsCreateOutput>;
 
 // The operation
 /**

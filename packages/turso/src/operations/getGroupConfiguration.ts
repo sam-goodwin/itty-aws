@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupConfigurationInput {
+  organizationSlug: string;
+  groupName: string;
+}
 export const GetGroupConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
@@ -13,16 +17,16 @@ export const GetGroupConfigurationInput =
       method: "GET",
       path: "/v1/organizations/{organizationSlug}/groups/{groupName}/configuration",
     }),
-  );
-export type GetGroupConfigurationInput = typeof GetGroupConfigurationInput.Type;
+  ) as unknown as Schema.Codec<GetGroupConfigurationInput>;
 
 // Output Schema
+export interface GetGroupConfigurationOutput {
+  delete_protection?: boolean;
+}
 export const GetGroupConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     delete_protection: Schema.optional(Schema.Boolean),
-  });
-export type GetGroupConfigurationOutput =
-  typeof GetGroupConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<GetGroupConfigurationOutput>;
 
 // The operation
 /**

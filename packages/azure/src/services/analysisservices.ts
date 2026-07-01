@@ -4,11 +4,12 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -17,10 +18,39 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AnalysisServices/operations",
     apiVersion: "2017-08-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: {
+      serviceSpecification?: {
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          aggregationType?: string;
+          dimensions?: { name?: string; displayName?: string }[];
+        }[];
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -75,21 +105,29 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists all of the available consumption REST API operations.
+ *
+ * @param api-version - The client API version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ServersCheckNameAvailabilityInput {
+  location: string;
+  subscriptionId: string;
+  name?: string;
+  type?: string;
+}
 export const ServersCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -98,25 +136,28 @@ export const ServersCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/checkNameAvailability",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersCheckNameAvailabilityInput =
-  typeof ServersCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServersCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ServersCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
 export const ServersCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
-  });
-export type ServersCheckNameAvailabilityOutput =
-  typeof ServersCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServersCheckNameAvailabilityOutput>;
 
 // The operation
 /**
  * Check the name availability in the target location.
  *
  * @param location - The region name which the operation will lookup into.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersCheckNameAvailability =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -124,8 +165,45 @@ export const ServersCheckNameAvailability =
     outputSchema: ServersCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServersCreateInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+  properties?: {
+    asAdministrators?: { members?: string[] };
+    backupBlobContainerUri?: string;
+    gatewayDetails?: {
+      gatewayResourceId?: string;
+      gatewayObjectId?: string;
+      dmtsClusterUri?: string;
+    };
+    ipV4FirewallSettings?: {
+      firewallRules?: {
+        firewallRuleName?: string;
+        rangeStart?: string;
+        rangeEnd?: string;
+      }[];
+      enablePowerBIService?: boolean;
+    };
+    querypoolConnectionMode?: "All" | "ReadOnly";
+    managedMode?: 0 | 1;
+    serverMonitorMode?: 0 | 1;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  sku: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       asAdministrators: Schema.optional(
@@ -180,10 +258,21 @@ export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersCreateInput = typeof ServersCreateInput.Type;
+) as unknown as Schema.Codec<ServersCreateInput>;
 
 // Output Schema
+export interface ServersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  sku: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const ServersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -197,70 +286,89 @@ export const ServersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     capacity: Schema.optional(Schema.Number),
   }),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ServersCreateOutput = typeof ServersCreateOutput.Type;
+}) as unknown as Schema.Codec<ServersCreateOutput>;
 
 // The operation
 /**
  * Provisions the specified Analysis Services server based on the configuration specified in the request.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersCreateInput,
   outputSchema: ServersCreateOutput,
 }));
 // Input Schema
+export interface ServersDeleteInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersDeleteInput = typeof ServersDeleteInput.Type;
+) as unknown as Schema.Codec<ServersDeleteInput>;
 
 // Output Schema
-export const ServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersDeleteOutput = typeof ServersDeleteOutput.Type;
+export type ServersDeleteOutput = void;
+export const ServersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersDeleteOutput>;
 
 // The operation
 /**
  * Deletes the specified Analysis Services server.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersDeleteInput,
   outputSchema: ServersDeleteOutput,
 }));
 // Input Schema
+export interface ServersDissociateGatewayInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersDissociateGatewayInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/dissociateGateway",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersDissociateGatewayInput =
-  typeof ServersDissociateGatewayInput.Type;
+  ) as unknown as Schema.Codec<ServersDissociateGatewayInput>;
 
 // Output Schema
+export type ServersDissociateGatewayOutput = void;
 export const ServersDissociateGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersDissociateGatewayOutput =
-  typeof ServersDissociateGatewayOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersDissociateGatewayOutput>;
 
 // The operation
 /**
  * Dissociates a Unified Gateway associated with the server.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersDissociateGateway = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -269,9 +377,16 @@ export const ServersDissociateGateway = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersGetDetailsInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -279,10 +394,21 @@ export const ServersGetDetailsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersGetDetailsInput = typeof ServersGetDetailsInput.Type;
+) as unknown as Schema.Codec<ServersGetDetailsInput>;
 
 // Output Schema
+export interface ServersGetDetailsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  sku: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const ServersGetDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -297,32 +423,50 @@ export const ServersGetDetailsOutput =
       capacity: Schema.optional(Schema.Number),
     }),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ServersGetDetailsOutput = typeof ServersGetDetailsOutput.Type;
+  }) as unknown as Schema.Codec<ServersGetDetailsOutput>;
 
 // The operation
 /**
  * Gets details about the specified Analysis Services server.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersGetDetailsInput,
   outputSchema: ServersGetDetailsOutput,
 }));
 // Input Schema
-export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ServersListInput {
+  subscriptionId: string;
+}
+export const ServersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/servers",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersListInput = typeof ServersListInput.Type;
+) as unknown as Schema.Codec<ServersListInput>;
 
 // Output Schema
+export interface ServersListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    sku: {
+      name: string;
+      tier?: "Development" | "Basic" | "Standard";
+      capacity?: number;
+    };
+    tags?: Record<string, string>;
+  }[];
+}
 export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -340,30 +484,51 @@ export const ServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
   ),
-});
-export type ServersListOutput = typeof ServersListOutput.Type;
+}) as unknown as Schema.Codec<ServersListOutput>;
 
 // The operation
 /**
  * Lists all the Analysis Services servers for the given subscription.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersListInput,
   outputSchema: ServersListOutput,
 }));
 // Input Schema
+export interface ServersListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListByResourceGroupInput =
-  typeof ServersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServersListByResourceGroupInput>;
 
 // Output Schema
+export interface ServersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    sku: {
+      name: string;
+      tier?: "Development" | "Basic" | "Standard";
+      capacity?: number;
+    };
+    tags?: Record<string, string>;
+  }[];
+}
 export const ServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -382,13 +547,15 @@ export const ServersListByResourceGroupOutput =
         tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
       }),
     ),
-  });
-export type ServersListByResourceGroupOutput =
-  typeof ServersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServersListByResourceGroupOutput>;
 
 // The operation
 /**
  * Gets all the Analysis Services servers for the given resource group.
+ *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -397,32 +564,41 @@ export const ServersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersListGatewayStatusInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersListGatewayStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/listGatewayStatus",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListGatewayStatusInput =
-  typeof ServersListGatewayStatusInput.Type;
+  ) as unknown as Schema.Codec<ServersListGatewayStatusInput>;
 
 // Output Schema
+export interface ServersListGatewayStatusOutput {
+  status?: 0;
+}
 export const ServersListGatewayStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals([0])),
-  });
-export type ServersListGatewayStatusOutput =
-  typeof ServersListGatewayStatusOutput.Type;
+  }) as unknown as Schema.Codec<ServersListGatewayStatusOutput>;
 
 // The operation
 /**
  * Return the gateway status of the specified Analysis Services server instance.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListGatewayStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -431,25 +607,28 @@ export const ServersListGatewayStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersListOperationResultsInput {
+  location: string;
+  operationId: string;
+  subscriptionId: string;
+}
 export const ServersListOperationResultsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationresults/{operationId}",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListOperationResultsInput =
-  typeof ServersListOperationResultsInput.Type;
+  ) as unknown as Schema.Codec<ServersListOperationResultsInput>;
 
 // Output Schema
+export type ServersListOperationResultsOutput = void;
 export const ServersListOperationResultsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersListOperationResultsOutput =
-  typeof ServersListOperationResultsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersListOperationResultsOutput>;
 
 // The operation
 /**
@@ -457,6 +636,8 @@ export type ServersListOperationResultsOutput =
  *
  * @param location - The region name which the operation will lookup into.
  * @param operationId - The target operation Id.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListOperationResults = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -465,21 +646,42 @@ export const ServersListOperationResults = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersListOperationStatusesInput {
+  location: string;
+  operationId: string;
+  subscriptionId: string;
+}
 export const ServersListOperationStatusesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/locations/{location}/operationstatuses/{operationId}",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListOperationStatusesInput =
-  typeof ServersListOperationStatusesInput.Type;
+  ) as unknown as Schema.Codec<ServersListOperationStatusesInput>;
 
 // Output Schema
+export interface ServersListOperationStatusesOutput {
+  id?: string;
+  name?: string;
+  startTime?: string;
+  endTime?: string;
+  status?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    subCode?: number;
+    httpStatusCode?: number;
+    timeStamp?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const ServersListOperationStatusesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -506,9 +708,7 @@ export const ServersListOperationStatusesOutput =
         ),
       }),
     ),
-  });
-export type ServersListOperationStatusesOutput =
-  typeof ServersListOperationStatusesOutput.Type;
+  }) as unknown as Schema.Codec<ServersListOperationStatusesOutput>;
 
 // The operation
 /**
@@ -516,6 +716,8 @@ export type ServersListOperationStatusesOutput =
  *
  * @param location - The region name which the operation will lookup into.
  * @param operationId - The target operation Id.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListOperationStatuses =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -523,20 +725,35 @@ export const ServersListOperationStatuses =
     outputSchema: ServersListOperationStatusesOutput,
   }));
 // Input Schema
+export interface ServersListSkusForExistingInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersListSkusForExistingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     serverName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/skus",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListSkusForExistingInput =
-  typeof ServersListSkusForExistingInput.Type;
+  ) as unknown as Schema.Codec<ServersListSkusForExistingInput>;
 
 // Output Schema
+export interface ServersListSkusForExistingOutput {
+  value?: {
+    sku?: {
+      name: string;
+      tier?: "Development" | "Basic" | "Standard";
+      capacity?: number;
+    };
+    resourceType?: string;
+  }[];
+}
 export const ServersListSkusForExistingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -555,15 +772,16 @@ export const ServersListSkusForExistingOutput =
         }),
       ),
     ),
-  });
-export type ServersListSkusForExistingOutput =
-  typeof ServersListSkusForExistingOutput.Type;
+  }) as unknown as Schema.Codec<ServersListSkusForExistingOutput>;
 
 // The operation
 /**
  * Lists eligible SKUs for an Analysis Services resource.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListSkusForExisting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -572,17 +790,28 @@ export const ServersListSkusForExisting = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersListSkusForNewInput {
+  subscriptionId: string;
+}
 export const ServersListSkusForNewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AnalysisServices/skus",
       apiVersion: "2017-08-01",
     }),
-  );
-export type ServersListSkusForNewInput = typeof ServersListSkusForNewInput.Type;
+  ) as unknown as Schema.Codec<ServersListSkusForNewInput>;
 
 // Output Schema
+export interface ServersListSkusForNewOutput {
+  value?: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  }[];
+}
 export const ServersListSkusForNewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -596,13 +825,14 @@ export const ServersListSkusForNewOutput =
         }),
       ),
     ),
-  });
-export type ServersListSkusForNewOutput =
-  typeof ServersListSkusForNewOutput.Type;
+  }) as unknown as Schema.Codec<ServersListSkusForNewOutput>;
 
 // The operation
 /**
  * Lists eligible SKUs for Analysis Services resource provider.
+ *
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersListSkusForNew = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -611,60 +841,113 @@ export const ServersListSkusForNew = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersResumeInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersResumeInput = typeof ServersResumeInput.Type;
+) as unknown as Schema.Codec<ServersResumeInput>;
 
 // Output Schema
-export const ServersResumeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersResumeOutput = typeof ServersResumeOutput.Type;
+export type ServersResumeOutput = void;
+export const ServersResumeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersResumeOutput>;
 
 // The operation
 /**
  * Resumes operation of the specified Analysis Services server instance.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersResumeInput,
   outputSchema: ServersResumeOutput,
 }));
 // Input Schema
+export interface ServersSuspendInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+}
 export const ServersSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersSuspendInput = typeof ServersSuspendInput.Type;
+) as unknown as Schema.Codec<ServersSuspendInput>;
 
 // Output Schema
-export const ServersSuspendOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersSuspendOutput = typeof ServersSuspendOutput.Type;
+export type ServersSuspendOutput = void;
+export const ServersSuspendOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersSuspendOutput>;
 
 // The operation
 /**
  * Suspends operation of the specified Analysis Services server instance.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersSuspendInput,
   outputSchema: ServersSuspendOutput,
 }));
 // Input Schema
+export interface ServersUpdateInput {
+  resourceGroupName: string;
+  serverName: string;
+  subscriptionId: string;
+  sku?: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    asAdministrators?: { members?: string[] };
+    backupBlobContainerUri?: string;
+    gatewayDetails?: {
+      gatewayResourceId?: string;
+      gatewayObjectId?: string;
+      dmtsClusterUri?: string;
+    };
+    ipV4FirewallSettings?: {
+      firewallRules?: {
+        firewallRuleName?: string;
+        rangeStart?: string;
+        rangeEnd?: string;
+      }[];
+      enablePowerBIService?: boolean;
+    };
+    querypoolConnectionMode?: "All" | "ReadOnly";
+    managedMode?: 0 | 1;
+    serverMonitorMode?: 0 | 1;
+  };
+}
 export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   sku: Schema.optional(
     Schema.Struct({
       name: Schema.String,
@@ -717,10 +1000,21 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
   }),
-);
-export type ServersUpdateInput = typeof ServersUpdateInput.Type;
+) as unknown as Schema.Codec<ServersUpdateInput>;
 
 // Output Schema
+export interface ServersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  sku: {
+    name: string;
+    tier?: "Development" | "Basic" | "Standard";
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -734,14 +1028,16 @@ export const ServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     capacity: Schema.optional(Schema.Number),
   }),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ServersUpdateOutput = typeof ServersUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServersUpdateOutput>;
 
 // The operation
 /**
  * Updates the current state of the specified Analysis Services server.
  *
+ * @param resourceGroupName - The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
  * @param serverName - The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63.
+ * @param api-version - The client API version.
+ * @param subscriptionId - A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServersUpdateInput,

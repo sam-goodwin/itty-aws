@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateKeyspaceInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace: string;
+}
 export const UpdateKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,43 @@ export const UpdateKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}",
   }),
-);
-export type UpdateKeyspaceInput = typeof UpdateKeyspaceInput.Type;
+) as unknown as Schema.Codec<UpdateKeyspaceInput>;
 
 // Output Schema
+export interface UpdateKeyspaceOutput {
+  id: string;
+  name: string;
+  shards: number;
+  sharded: boolean;
+  replicas: number;
+  extra_replicas: number;
+  created_at: string;
+  updated_at: string;
+  cluster_name: string;
+  cluster_display_name: string;
+  resizing: boolean;
+  resize_pending: boolean;
+  config_change_in_progress: boolean;
+  ready: boolean;
+  metal: boolean;
+  default: boolean;
+  imported: boolean;
+  vector_pool_allocation: number | null;
+  node_ttl_strategy:
+    | "node_ttl_follow_maintenance"
+    | "node_ttl_always"
+    | "node_ttl_off";
+  replication_durability_constraints: {
+    strategy?: "available" | "lag" | "always" | null;
+  };
+  vreplication_flags: {
+    optimize_inserts: boolean;
+    allow_no_blob_binlog_row_image: boolean;
+    vplayer_batching: boolean;
+  };
+  mysqld_options: Record<string, unknown>;
+  vttablet_options: Record<string, unknown>;
+}
 export const UpdateKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -43,7 +82,9 @@ export const UpdateKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "node_ttl_off",
   ]),
   replication_durability_constraints: Schema.Struct({
-    strategy: Schema.optional(Schema.Literals(["available", "lag", "always"])),
+    strategy: Schema.optional(
+      Schema.NullOr(Schema.Literals(["available", "lag", "always"])),
+    ),
   }),
   vreplication_flags: Schema.Struct({
     optimize_inserts: Schema.Boolean,
@@ -52,8 +93,7 @@ export const UpdateKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
   mysqld_options: Schema.Record(Schema.String, Schema.Unknown),
   vttablet_options: Schema.Record(Schema.String, Schema.Unknown),
-});
-export type UpdateKeyspaceOutput = typeof UpdateKeyspaceOutput.Type;
+}) as unknown as Schema.Codec<UpdateKeyspaceOutput>;
 
 // The operation
 /**

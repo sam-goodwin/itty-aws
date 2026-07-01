@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SearchOrgInvoiceLineItemsInput {
+  orgId: string;
+  invoiceId: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const SearchOrgInvoiceLineItemsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const SearchOrgInvoiceLineItemsInput =
       method: "GET",
       path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search",
     }),
-  );
-export type SearchOrgInvoiceLineItemsInput =
-  typeof SearchOrgInvoiceLineItemsInput.Type;
+  ) as unknown as Schema.Codec<SearchOrgInvoiceLineItemsInput>;
 
 // Output Schema
+export type SearchOrgInvoiceLineItemsOutput = void;
 export const SearchOrgInvoiceLineItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SearchOrgInvoiceLineItemsOutput =
-  typeof SearchOrgInvoiceLineItemsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SearchOrgInvoiceLineItemsOutput>;
 
 // The operation
 /**

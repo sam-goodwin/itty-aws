@@ -4,11 +4,47 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface WorkbooksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sourceId?: string;
+  properties?: {
+    displayName: string;
+    serializedData: string | null;
+    version?: string;
+    timeModified?: string;
+    category: string;
+    tags?: string[];
+    userId?: string;
+    sourceId?: string;
+    storageUri?: string | null;
+    description?: string | null;
+    revision?: string | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  kind?: "shared";
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WorkbooksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -63,11 +99,22 @@ export const WorkbooksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
       apiVersion: "2023-06-01",
     }),
-  );
-export type WorkbooksCreateOrUpdateInput =
-  typeof WorkbooksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkbooksCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkbooksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkbooksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -87,9 +134,7 @@ export const WorkbooksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkbooksCreateOrUpdateOutput =
-  typeof WorkbooksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkbooksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -108,6 +153,11 @@ export const WorkbooksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkbooksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -118,12 +168,12 @@ export const WorkbooksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
     apiVersion: "2023-06-01",
   }),
-);
-export type WorkbooksDeleteInput = typeof WorkbooksDeleteInput.Type;
+) as unknown as Schema.Codec<WorkbooksDeleteInput>;
 
 // Output Schema
-export const WorkbooksDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkbooksDeleteOutput = typeof WorkbooksDeleteOutput.Type;
+export type WorkbooksDeleteOutput = void;
+export const WorkbooksDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkbooksDeleteOutput>;
 
 // The operation
 /**
@@ -139,6 +189,12 @@ export const WorkbooksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkbooksDeleteOutput,
 }));
 // Input Schema
+export interface WorkbooksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  canFetchContent?: boolean;
+}
 export const WorkbooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -150,10 +206,22 @@ export const WorkbooksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
     apiVersion: "2023-06-01",
   }),
-);
-export type WorkbooksGetInput = typeof WorkbooksGetInput.Type;
+) as unknown as Schema.Codec<WorkbooksGetInput>;
 
 // Output Schema
+export interface WorkbooksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -172,8 +240,7 @@ export const WorkbooksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkbooksGetOutput = typeof WorkbooksGetOutput.Type;
+}) as unknown as Schema.Codec<WorkbooksGetOutput>;
 
 // The operation
 /**
@@ -190,6 +257,14 @@ export const WorkbooksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkbooksGetOutput,
 }));
 // Input Schema
+export interface WorkbooksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  category: "workbook" | "TSG" | "performance" | "retention";
+  tags?: string;
+  sourceId?: string;
+  canFetchContent?: boolean;
+}
 export const WorkbooksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -204,11 +279,25 @@ export const WorkbooksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks",
       apiVersion: "2023-06-01",
     }),
-  );
-export type WorkbooksListByResourceGroupInput =
-  typeof WorkbooksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkbooksListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkbooksListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkbooksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -245,9 +334,7 @@ export const WorkbooksListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkbooksListByResourceGroupOutput =
-  typeof WorkbooksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkbooksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -267,6 +354,12 @@ export const WorkbooksListByResourceGroup =
     outputSchema: WorkbooksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkbooksListBySubscriptionInput {
+  subscriptionId: string;
+  category: "workbook" | "TSG" | "performance" | "retention";
+  tags?: string;
+  canFetchContent?: boolean;
+}
 export const WorkbooksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -279,11 +372,25 @@ export const WorkbooksListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/workbooks",
       apiVersion: "2023-06-01",
     }),
-  );
-export type WorkbooksListBySubscriptionInput =
-  typeof WorkbooksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkbooksListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkbooksListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkbooksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -320,9 +427,7 @@ export const WorkbooksListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkbooksListBySubscriptionOutput =
-  typeof WorkbooksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkbooksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -341,6 +446,12 @@ export const WorkbooksListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkbooksRevisionGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  revisionId: string;
+}
 export const WorkbooksRevisionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -353,10 +464,22 @@ export const WorkbooksRevisionGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions/{revisionId}",
       apiVersion: "2023-06-01",
     }),
-  );
-export type WorkbooksRevisionGetInput = typeof WorkbooksRevisionGetInput.Type;
+  ) as unknown as Schema.Codec<WorkbooksRevisionGetInput>;
 
 // Output Schema
+export interface WorkbooksRevisionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkbooksRevisionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -376,8 +499,7 @@ export const WorkbooksRevisionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkbooksRevisionGetOutput = typeof WorkbooksRevisionGetOutput.Type;
+  }) as unknown as Schema.Codec<WorkbooksRevisionGetOutput>;
 
 // The operation
 /**
@@ -396,6 +518,11 @@ export const WorkbooksRevisionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkbooksRevisionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const WorkbooksRevisionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -407,11 +534,25 @@ export const WorkbooksRevisionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions",
       apiVersion: "2023-06-01",
     }),
-  );
-export type WorkbooksRevisionsListInput =
-  typeof WorkbooksRevisionsListInput.Type;
+  ) as unknown as Schema.Codec<WorkbooksRevisionsListInput>;
 
 // Output Schema
+export interface WorkbooksRevisionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkbooksRevisionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -448,9 +589,7 @@ export const WorkbooksRevisionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkbooksRevisionsListOutput =
-  typeof WorkbooksRevisionsListOutput.Type;
+  }) as unknown as Schema.Codec<WorkbooksRevisionsListOutput>;
 
 // The operation
 /**
@@ -468,6 +607,22 @@ export const WorkbooksRevisionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkbooksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  sourceId?: string;
+  kind?: "shared";
+  tags?: Record<string, string>;
+  properties?: {
+    displayName?: string;
+    serializedData?: string;
+    category?: string;
+    tags?: string[];
+    description?: string | null;
+    revision?: string | null;
+  };
+}
 export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -491,10 +646,22 @@ export const WorkbooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
     apiVersion: "2023-06-01",
   }),
-);
-export type WorkbooksUpdateInput = typeof WorkbooksUpdateInput.Type;
+) as unknown as Schema.Codec<WorkbooksUpdateInput>;
 
 // Output Schema
+export interface WorkbooksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -513,8 +680,7 @@ export const WorkbooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkbooksUpdateOutput = typeof WorkbooksUpdateOutput.Type;
+}) as unknown as Schema.Codec<WorkbooksUpdateOutput>;
 
 // The operation
 /**

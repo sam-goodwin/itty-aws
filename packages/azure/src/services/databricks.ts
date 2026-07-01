@@ -4,11 +4,46 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AccessConnectorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    referedBy?: string[];
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AccessConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -63,19 +98,20 @@ export const AccessConnectorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsCreateOrUpdateInput =
-  typeof AccessConnectorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AccessConnectorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AccessConnectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AccessConnectorsCreateOrUpdateOutput =
-  typeof AccessConnectorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccessConnectorsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -92,6 +128,11 @@ export const AccessConnectorsCreateOrUpdate =
     outputSchema: AccessConnectorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AccessConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectorName: string;
+}
 export const AccessConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -103,15 +144,12 @@ export const AccessConnectorsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsDeleteInput =
-  typeof AccessConnectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsDeleteInput>;
 
 // Output Schema
+export type AccessConnectorsDeleteOutput = void;
 export const AccessConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccessConnectorsDeleteOutput =
-  typeof AccessConnectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -129,6 +167,11 @@ export const AccessConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccessConnectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectorName: string;
+}
 export const AccessConnectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -140,17 +183,20 @@ export const AccessConnectorsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsGetInput = typeof AccessConnectorsGetInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsGetInput>;
 
 // Output Schema
+export interface AccessConnectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AccessConnectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AccessConnectorsGetOutput = typeof AccessConnectorsGetOutput.Type;
+  }) as unknown as Schema.Codec<AccessConnectorsGetOutput>;
 
 // The operation
 /**
@@ -166,6 +212,10 @@ export const AccessConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccessConnectorsGetOutput,
 }));
 // Input Schema
+export interface AccessConnectorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AccessConnectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -176,11 +226,13 @@ export const AccessConnectorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsListByResourceGroupInput =
-  typeof AccessConnectorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccessConnectorsListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AccessConnectorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -191,9 +243,7 @@ export const AccessConnectorsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccessConnectorsListByResourceGroupOutput =
-  typeof AccessConnectorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccessConnectorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -209,6 +259,9 @@ export const AccessConnectorsListByResourceGroup =
     outputSchema: AccessConnectorsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AccessConnectorsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AccessConnectorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -218,11 +271,13 @@ export const AccessConnectorsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsListBySubscriptionInput =
-  typeof AccessConnectorsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsListBySubscriptionInput>;
 
 // Output Schema
+export interface AccessConnectorsListBySubscriptionOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const AccessConnectorsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -233,9 +288,7 @@ export const AccessConnectorsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AccessConnectorsListBySubscriptionOutput =
-  typeof AccessConnectorsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AccessConnectorsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -250,6 +303,25 @@ export const AccessConnectorsListBySubscription =
     outputSchema: AccessConnectorsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AccessConnectorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  connectorName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const AccessConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -283,19 +355,20 @@ export const AccessConnectorsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type AccessConnectorsUpdateInput =
-  typeof AccessConnectorsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccessConnectorsUpdateInput>;
 
 // Output Schema
+export interface AccessConnectorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const AccessConnectorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type AccessConnectorsUpdateOutput =
-  typeof AccessConnectorsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccessConnectorsUpdateOutput>;
 
 // The operation
 /**
@@ -313,6 +386,7 @@ export const AccessConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -321,10 +395,21 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Databricks/operations",
     apiVersion: "2026-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -342,8 +427,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -356,6 +440,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OutboundNetworkDependenciesEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const OutboundNetworkDependenciesEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -367,11 +456,21 @@ export const OutboundNetworkDependenciesEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2026-01-01",
     }),
-  );
-export type OutboundNetworkDependenciesEndpointsListInput =
-  typeof OutboundNetworkDependenciesEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<OutboundNetworkDependenciesEndpointsListInput>;
 
 // Output Schema
+export type OutboundNetworkDependenciesEndpointsListOutput = {
+  category?: string;
+  endpoints?: {
+    domainName?: string;
+    endpointDetails?: {
+      ipAddress?: string;
+      port?: number;
+      latency?: number;
+      isAccessible?: boolean;
+    }[];
+  }[];
+}[];
 export const OutboundNetworkDependenciesEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -394,9 +493,7 @@ export const OutboundNetworkDependenciesEndpointsListOutput =
         ),
       ),
     }),
-  );
-export type OutboundNetworkDependenciesEndpointsListOutput =
-  typeof OutboundNetworkDependenciesEndpointsListOutput.Type;
+  ) as unknown as Schema.Codec<OutboundNetworkDependenciesEndpointsListOutput>;
 
 // The operation
 /**
@@ -415,6 +512,27 @@ export const OutboundNetworkDependenciesEndpointsList =
     outputSchema: OutboundNetworkDependenciesEndpointsListOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+  properties: {
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState: {
+      status: "Pending" | "Approved" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -454,19 +572,20 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -486,6 +605,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -498,15 +623,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -526,6 +648,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -538,19 +666,20 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -570,6 +699,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -581,11 +715,13 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -596,9 +732,7 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -617,6 +751,12 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  groupId: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -629,19 +769,20 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources/{groupId}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -662,6 +803,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -673,11 +819,13 @@ export const PrivateLinkResourcesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -688,9 +836,7 @@ export const PrivateLinkResourcesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -710,6 +856,24 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VNetPeeringCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  peeringName: string;
+  properties: {
+    allowVirtualNetworkAccess?: boolean;
+    allowForwardedTraffic?: boolean;
+    allowGatewayTransit?: boolean;
+    useRemoteGateways?: boolean;
+    databricksVirtualNetwork?: { id?: string };
+    databricksAddressSpace?: { addressPrefixes?: string[] };
+    remoteVirtualNetwork: { id?: string };
+    remoteAddressSpace?: { addressPrefixes?: string[] };
+    peeringState?: "Initiated" | "Connected" | "Disconnected";
+    provisioningState?: "Succeeded" | "Updating" | "Deleting" | "Failed";
+  };
+}
 export const VNetPeeringCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -752,19 +916,20 @@ export const VNetPeeringCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type VNetPeeringCreateOrUpdateInput =
-  typeof VNetPeeringCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VNetPeeringCreateOrUpdateInput>;
 
 // Output Schema
+export interface VNetPeeringCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const VNetPeeringCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type VNetPeeringCreateOrUpdateOutput =
-  typeof VNetPeeringCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VNetPeeringCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -783,6 +948,12 @@ export const vNetPeeringCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VNetPeeringDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  peeringName: string;
+}
 export const VNetPeeringDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -796,12 +967,12 @@ export const VNetPeeringDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type VNetPeeringDeleteInput = typeof VNetPeeringDeleteInput.Type;
+) as unknown as Schema.Codec<VNetPeeringDeleteInput>;
 
 // Output Schema
-export const VNetPeeringDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VNetPeeringDeleteOutput = typeof VNetPeeringDeleteOutput.Type;
+export type VNetPeeringDeleteOutput = void;
+export const VNetPeeringDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VNetPeeringDeleteOutput>;
 
 // The operation
 /**
@@ -818,6 +989,12 @@ export const vNetPeeringDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VNetPeeringDeleteOutput,
 }));
 // Input Schema
+export interface VNetPeeringGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  peeringName: string;
+}
 export const VNetPeeringGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -829,16 +1006,19 @@ export const VNetPeeringGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type VNetPeeringGetInput = typeof VNetPeeringGetInput.Type;
+) as unknown as Schema.Codec<VNetPeeringGetInput>;
 
 // Output Schema
+export interface VNetPeeringGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const VNetPeeringGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type VNetPeeringGetOutput = typeof VNetPeeringGetOutput.Type;
+}) as unknown as Schema.Codec<VNetPeeringGetOutput>;
 
 // The operation
 /**
@@ -855,6 +1035,11 @@ export const vNetPeeringGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VNetPeeringGetOutput,
 }));
 // Input Schema
+export interface VNetPeeringListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const VNetPeeringListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -866,11 +1051,13 @@ export const VNetPeeringListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings",
       apiVersion: "2026-01-01",
     }),
-  );
-export type VNetPeeringListByWorkspaceInput =
-  typeof VNetPeeringListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<VNetPeeringListByWorkspaceInput>;
 
 // Output Schema
+export interface VNetPeeringListByWorkspaceOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const VNetPeeringListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -881,9 +1068,7 @@ export const VNetPeeringListByWorkspaceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VNetPeeringListByWorkspaceOutput =
-  typeof VNetPeeringListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<VNetPeeringListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -901,6 +1086,154 @@ export const vNetPeeringListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  properties: {
+    computeMode: "Serverless" | "Hybrid";
+    managedResourceGroupId?: string;
+    parameters?: {
+      amlWorkspaceId?: { type?: "Bool" | "Object" | "String"; value: string };
+      customVirtualNetworkId?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      customPublicSubnetName?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      customPrivateSubnetName?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      enableNoPublicIp?: {
+        type?: "Bool" | "Object" | "String";
+        value: boolean;
+      };
+      loadBalancerBackendPoolName?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      loadBalancerId?: { type?: "Bool" | "Object" | "String"; value: string };
+      natGatewayName?: { type?: "Bool" | "Object" | "String"; value: string };
+      publicIpName?: { type?: "Bool" | "Object" | "String"; value: string };
+      prepareEncryption?: {
+        type?: "Bool" | "Object" | "String";
+        value: boolean;
+      };
+      encryption?: {
+        type?: "Bool" | "Object" | "String";
+        value?: {
+          keySource?: "Default" | "Microsoft.Keyvault";
+          KeyName?: string;
+          keyversion?: string;
+          keyvaulturi?: string;
+        };
+      };
+      requireInfrastructureEncryption?: {
+        type?: "Bool" | "Object" | "String";
+        value: boolean;
+      };
+      storageAccountName?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      storageAccountSkuName?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      vnetAddressPrefix?: {
+        type?: "Bool" | "Object" | "String";
+        value: string;
+      };
+      resourceTags?: { type?: "Bool" | "Object" | "String"; value: unknown };
+    };
+    provisioningState?:
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    uiDefinitionUri?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+    createdDateTime?: string;
+    workspaceId?: string;
+    workspaceUrl?: string;
+    storageAccountIdentity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: string;
+    };
+    managedDiskIdentity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: string;
+    };
+    diskEncryptionSetId?: string;
+    encryption?: {
+      entities: {
+        managedServices?: {
+          keySource: "Microsoft.Keyvault";
+          keyVaultProperties?: {
+            keyVaultUri: string;
+            keyName: string;
+            keyVersion: string;
+          };
+        };
+        managedDisk?: {
+          keySource: "Microsoft.Keyvault";
+          keyVaultProperties: {
+            keyVaultUri: string;
+            keyName: string;
+            keyVersion: string;
+          };
+          rotationToLatestKeyVersionEnabled?: boolean;
+        };
+      };
+    };
+    enhancedSecurityCompliance?: {
+      automaticClusterUpdate?: { value?: "Enabled" | "Disabled" };
+      complianceSecurityProfile?: {
+        complianceStandards?: string[];
+        value?: "Enabled" | "Disabled";
+      };
+      enhancedSecurityMonitoring?: { value?: "Enabled" | "Disabled" };
+    };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    requiredNsgRules?:
+      | "AllRules"
+      | "NoAzureDatabricksRules"
+      | "NoAzureServiceRules";
+    defaultCatalog?: {
+      initialType?: "HiveMetastore" | "UnityCatalog";
+      initialName?: string;
+    };
+    isUcEnabled?: boolean;
+    accessConnector?: {
+      id: string;
+      identityType: "SystemAssigned" | "UserAssigned";
+      userAssignedIdentityId?: string;
+    };
+    defaultStorageFirewall?: "Disabled" | "Enabled";
+  };
+  sku?: { name: string; tier?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1210,19 +1543,20 @@ export const WorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1240,6 +1574,12 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  forceDeletion?: boolean;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1251,12 +1591,12 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -1273,6 +1613,11 @@ export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1283,16 +1628,19 @@ export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -1308,6 +1656,10 @@ export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1318,11 +1670,13 @@ export const WorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces",
       apiVersion: "2026-01-01",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1333,9 +1687,7 @@ export const WorkspacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1351,6 +1703,9 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1360,11 +1715,13 @@ export const WorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces",
       apiVersion: "2026-01-01",
     }),
-  );
-export type WorkspacesListBySubscriptionInput =
-  typeof WorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkspacesListBySubscriptionOutput {
+  value: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1375,9 +1732,7 @@ export const WorkspacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListBySubscriptionOutput =
-  typeof WorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1392,6 +1747,12 @@ export const WorkspacesListBySubscription =
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface WorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tags?: Record<string, string>;
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1403,18 +1764,21 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**

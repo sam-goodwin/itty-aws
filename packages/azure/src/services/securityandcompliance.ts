@@ -4,22 +4,37 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface OperationResultsGetInput {
+  subscriptionId: string;
+  locationName: string;
+  operationResultId: string;
+}
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/locations/{locationName}/operationresults/{operationResultId}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
+  ) as unknown as Schema.Codec<OperationResultsGetInput>;
 
 // Output Schema
+export interface OperationResultsGetOutput {
+  id?: string;
+  name?: string;
+  status?: "Canceled" | "Succeeded" | "Failed" | "Requested" | "Running";
+  startTime?: string;
+  properties?: unknown;
+}
 export const OperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -35,18 +50,23 @@ export const OperationResultsGetOutput =
     ),
     startTime: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Unknown),
-  });
-export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationResultsGetOutput>;
 
 // The operation
 /**
  * Get the operation result for a long running operation.
+ *
+ * @param api-version - Client Api Version.
+ * @param subscriptionId - The subscription identifier.
+ * @param locationName - The location of the operation.
+ * @param operationResultId - The ID of the operation result to get.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -55,10 +75,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.SecurityAndCompliance/operations",
     apiVersion: "2021-03-08",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  nextLink?: string;
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    origin?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -78,18 +111,45 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists all of the available SecurityAndCompliance REST API operations.
+ *
+ * @param api-version - Client Api Version.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -138,19 +198,20 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsAdtAPICreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPICreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -170,6 +231,12 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsAdtAPIDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsAdtAPIDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -182,15 +249,12 @@ export const PrivateEndpointConnectionsAdtAPIDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsAdtAPIDeleteInput =
-  typeof PrivateEndpointConnectionsAdtAPIDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsAdtAPIDeleteOutput = void;
 export const PrivateEndpointConnectionsAdtAPIDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsAdtAPIDeleteOutput =
-  typeof PrivateEndpointConnectionsAdtAPIDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIDeleteOutput>;
 
 // The operation
 /**
@@ -208,6 +272,12 @@ export const PrivateEndpointConnectionsAdtAPIDelete =
     outputSchema: PrivateEndpointConnectionsAdtAPIDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsAdtAPIGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsAdtAPIGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -220,19 +290,20 @@ export const PrivateEndpointConnectionsAdtAPIGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsAdtAPIGetInput =
-  typeof PrivateEndpointConnectionsAdtAPIGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsAdtAPIGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsAdtAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsAdtAPIGetOutput =
-  typeof PrivateEndpointConnectionsAdtAPIGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIGetOutput>;
 
 // The operation
 /**
@@ -250,6 +321,11 @@ export const PrivateEndpointConnectionsAdtAPIGet =
     outputSchema: PrivateEndpointConnectionsAdtAPIGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsAdtAPIListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsAdtAPIListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -261,11 +337,13 @@ export const PrivateEndpointConnectionsAdtAPIListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsAdtAPIListByServiceInput =
-  typeof PrivateEndpointConnectionsAdtAPIListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsAdtAPIListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsAdtAPIListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -278,9 +356,7 @@ export const PrivateEndpointConnectionsAdtAPIListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsAdtAPIListByServiceOutput =
-  typeof PrivateEndpointConnectionsAdtAPIListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIListByServiceOutput>;
 
 // The operation
 /**
@@ -297,6 +373,32 @@ export const PrivateEndpointConnectionsAdtAPIListByService =
     outputSchema: PrivateEndpointConnectionsAdtAPIListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsCompCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCompCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -345,19 +447,20 @@ export const PrivateEndpointConnectionsCompCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsCompCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCompCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCompCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCompCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCompCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCompCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCompCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCompCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -377,6 +480,12 @@ export const PrivateEndpointConnectionsCompCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCompCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsCompDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsCompDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -389,15 +498,12 @@ export const PrivateEndpointConnectionsCompDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsCompDeleteInput =
-  typeof PrivateEndpointConnectionsCompDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCompDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsCompDeleteOutput = void;
 export const PrivateEndpointConnectionsCompDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsCompDeleteOutput =
-  typeof PrivateEndpointConnectionsCompDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsCompDeleteOutput>;
 
 // The operation
 /**
@@ -415,6 +521,12 @@ export const PrivateEndpointConnectionsCompDelete =
     outputSchema: PrivateEndpointConnectionsCompDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsCompGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsCompGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -427,19 +539,20 @@ export const PrivateEndpointConnectionsCompGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsCompGetInput =
-  typeof PrivateEndpointConnectionsCompGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCompGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCompGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCompGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCompGetOutput =
-  typeof PrivateEndpointConnectionsCompGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCompGetOutput>;
 
 // The operation
 /**
@@ -457,6 +570,11 @@ export const PrivateEndpointConnectionsCompGet =
     outputSchema: PrivateEndpointConnectionsCompGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsCompListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsCompListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -468,11 +586,13 @@ export const PrivateEndpointConnectionsCompListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsCompListByServiceInput =
-  typeof PrivateEndpointConnectionsCompListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCompListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCompListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsCompListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -485,9 +605,7 @@ export const PrivateEndpointConnectionsCompListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCompListByServiceOutput =
-  typeof PrivateEndpointConnectionsCompListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCompListByServiceOutput>;
 
 // The operation
 /**
@@ -504,6 +622,32 @@ export const PrivateEndpointConnectionsCompListByService =
     outputSchema: PrivateEndpointConnectionsCompListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForEDMCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -552,19 +696,20 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsForEDMCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForEDMCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForEDMCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsForEDMCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -584,6 +729,12 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsForEDMCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForEDMDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForEDMDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -596,15 +747,12 @@ export const PrivateEndpointConnectionsForEDMDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForEDMDeleteInput =
-  typeof PrivateEndpointConnectionsForEDMDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsForEDMDeleteOutput = void;
 export const PrivateEndpointConnectionsForEDMDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsForEDMDeleteOutput =
-  typeof PrivateEndpointConnectionsForEDMDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMDeleteOutput>;
 
 // The operation
 /**
@@ -622,6 +770,12 @@ export const PrivateEndpointConnectionsForEDMDelete =
     outputSchema: PrivateEndpointConnectionsForEDMDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForEDMGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForEDMGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -634,19 +788,20 @@ export const PrivateEndpointConnectionsForEDMGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForEDMGetInput =
-  typeof PrivateEndpointConnectionsForEDMGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForEDMGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForEDMGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForEDMGetOutput =
-  typeof PrivateEndpointConnectionsForEDMGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMGetOutput>;
 
 // The operation
 /**
@@ -664,6 +819,11 @@ export const PrivateEndpointConnectionsForEDMGet =
     outputSchema: PrivateEndpointConnectionsForEDMGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForEDMListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsForEDMListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -675,11 +835,13 @@ export const PrivateEndpointConnectionsForEDMListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForEDMListByServiceInput =
-  typeof PrivateEndpointConnectionsForEDMListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForEDMListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsForEDMListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -692,9 +854,7 @@ export const PrivateEndpointConnectionsForEDMListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForEDMListByServiceOutput =
-  typeof PrivateEndpointConnectionsForEDMListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMListByServiceOutput>;
 
 // The operation
 /**
@@ -711,6 +871,32 @@ export const PrivateEndpointConnectionsForEDMListByService =
     outputSchema: PrivateEndpointConnectionsForEDMListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -759,19 +945,20 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -792,6 +979,12 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdate =
       PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -804,15 +997,12 @@ export const PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput = void;
 export const PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput>;
 
 // The operation
 /**
@@ -830,6 +1020,12 @@ export const PrivateEndpointConnectionsForMIPPolicySyncDelete =
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -842,19 +1038,20 @@ export const PrivateEndpointConnectionsForMIPPolicySyncGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForMIPPolicySyncGetInput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForMIPPolicySyncGetOutput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncGetOutput>;
 
 // The operation
 /**
@@ -872,6 +1069,11 @@ export const PrivateEndpointConnectionsForMIPPolicySyncGet =
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -883,11 +1085,13 @@ export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -900,9 +1104,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
-  typeof PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput>;
 
 // The operation
 /**
@@ -919,6 +1121,32 @@ export const PrivateEndpointConnectionsForMIPPolicySyncListByService =
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -967,19 +1195,20 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1000,6 +1229,12 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdate =
       PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForSCCPowershellDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1012,15 +1247,12 @@ export const PrivateEndpointConnectionsForSCCPowershellDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForSCCPowershellDeleteInput =
-  typeof PrivateEndpointConnectionsForSCCPowershellDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsForSCCPowershellDeleteOutput = void;
 export const PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
-  typeof PrivateEndpointConnectionsForSCCPowershellDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellDeleteOutput>;
 
 // The operation
 /**
@@ -1038,6 +1270,12 @@ export const PrivateEndpointConnectionsForSCCPowershellDelete =
     outputSchema: PrivateEndpointConnectionsForSCCPowershellDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForSCCPowershellGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1050,19 +1288,20 @@ export const PrivateEndpointConnectionsForSCCPowershellGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForSCCPowershellGetInput =
-  typeof PrivateEndpointConnectionsForSCCPowershellGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForSCCPowershellGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForSCCPowershellGetOutput =
-  typeof PrivateEndpointConnectionsForSCCPowershellGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellGetOutput>;
 
 // The operation
 /**
@@ -1080,6 +1319,11 @@ export const PrivateEndpointConnectionsForSCCPowershellGet =
     outputSchema: PrivateEndpointConnectionsForSCCPowershellGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsForSCCPowershellListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1091,11 +1335,13 @@ export const PrivateEndpointConnectionsForSCCPowershellListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsForSCCPowershellListByServiceInput =
-  typeof PrivateEndpointConnectionsForSCCPowershellListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsForSCCPowershellListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1108,9 +1354,7 @@ export const PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
-  typeof PrivateEndpointConnectionsForSCCPowershellListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellListByServiceOutput>;
 
 // The operation
 /**
@@ -1127,6 +1371,32 @@ export const PrivateEndpointConnectionsForSCCPowershellListByService =
     outputSchema: PrivateEndpointConnectionsForSCCPowershellListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsSecCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsSecCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1175,19 +1445,20 @@ export const PrivateEndpointConnectionsSecCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsSecCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsSecCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsSecCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsSecCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsSecCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsSecCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsSecCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsSecCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1207,6 +1478,12 @@ export const PrivateEndpointConnectionsSecCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsSecCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsSecDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsSecDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1219,15 +1496,12 @@ export const PrivateEndpointConnectionsSecDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsSecDeleteInput =
-  typeof PrivateEndpointConnectionsSecDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsSecDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsSecDeleteOutput = void;
 export const PrivateEndpointConnectionsSecDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsSecDeleteOutput =
-  typeof PrivateEndpointConnectionsSecDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsSecDeleteOutput>;
 
 // The operation
 /**
@@ -1245,6 +1519,12 @@ export const PrivateEndpointConnectionsSecDelete =
     outputSchema: PrivateEndpointConnectionsSecDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsSecGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsSecGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1257,19 +1537,20 @@ export const PrivateEndpointConnectionsSecGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsSecGetInput =
-  typeof PrivateEndpointConnectionsSecGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsSecGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsSecGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsSecGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsSecGetOutput =
-  typeof PrivateEndpointConnectionsSecGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsSecGetOutput>;
 
 // The operation
 /**
@@ -1287,6 +1568,11 @@ export const PrivateEndpointConnectionsSecGet =
     outputSchema: PrivateEndpointConnectionsSecGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsSecListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsSecListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1298,11 +1584,13 @@ export const PrivateEndpointConnectionsSecListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateEndpointConnectionsSecListByServiceInput =
-  typeof PrivateEndpointConnectionsSecListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsSecListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsSecListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsSecListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1315,9 +1603,7 @@ export const PrivateEndpointConnectionsSecListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsSecListByServiceOutput =
-  typeof PrivateEndpointConnectionsSecListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsSecListByServiceOutput>;
 
 // The operation
 /**
@@ -1334,6 +1620,12 @@ export const PrivateEndpointConnectionsSecListByService =
     outputSchema: PrivateEndpointConnectionsSecListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesAdtAPIGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesAdtAPIGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1346,19 +1638,20 @@ export const PrivateLinkResourcesAdtAPIGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesAdtAPIGetInput =
-  typeof PrivateLinkResourcesAdtAPIGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesAdtAPIGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesAdtAPIGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesAdtAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesAdtAPIGetOutput =
-  typeof PrivateLinkResourcesAdtAPIGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesAdtAPIGetOutput>;
 
 // The operation
 /**
@@ -1376,6 +1669,11 @@ export const PrivateLinkResourcesAdtAPIGet =
     outputSchema: PrivateLinkResourcesAdtAPIGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesAdtAPIListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesAdtAPIListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1387,11 +1685,13 @@ export const PrivateLinkResourcesAdtAPIListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesAdtAPIListByServiceInput =
-  typeof PrivateLinkResourcesAdtAPIListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesAdtAPIListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesAdtAPIListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesAdtAPIListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1404,9 +1704,7 @@ export const PrivateLinkResourcesAdtAPIListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesAdtAPIListByServiceOutput =
-  typeof PrivateLinkResourcesAdtAPIListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesAdtAPIListByServiceOutput>;
 
 // The operation
 /**
@@ -1423,6 +1721,12 @@ export const PrivateLinkResourcesAdtAPIListByService =
     outputSchema: PrivateLinkResourcesAdtAPIListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesCompGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesCompGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1435,19 +1739,20 @@ export const PrivateLinkResourcesCompGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesCompGetInput =
-  typeof PrivateLinkResourcesCompGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesCompGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesCompGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesCompGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesCompGetOutput =
-  typeof PrivateLinkResourcesCompGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesCompGetOutput>;
 
 // The operation
 /**
@@ -1466,6 +1771,11 @@ export const PrivateLinkResourcesCompGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesCompListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesCompListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1477,11 +1787,13 @@ export const PrivateLinkResourcesCompListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesCompListByServiceInput =
-  typeof PrivateLinkResourcesCompListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesCompListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesCompListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesCompListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1494,9 +1806,7 @@ export const PrivateLinkResourcesCompListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesCompListByServiceOutput =
-  typeof PrivateLinkResourcesCompListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesCompListByServiceOutput>;
 
 // The operation
 /**
@@ -1513,6 +1823,12 @@ export const PrivateLinkResourcesCompListByService =
     outputSchema: PrivateLinkResourcesCompListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesForMIPPolicySyncGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesForMIPPolicySyncGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1525,19 +1841,20 @@ export const PrivateLinkResourcesForMIPPolicySyncGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesForMIPPolicySyncGetInput =
-  typeof PrivateLinkResourcesForMIPPolicySyncGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesForMIPPolicySyncGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesForMIPPolicySyncGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesForMIPPolicySyncGetOutput =
-  typeof PrivateLinkResourcesForMIPPolicySyncGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesForMIPPolicySyncGetOutput>;
 
 // The operation
 /**
@@ -1555,6 +1872,11 @@ export const PrivateLinkResourcesForMIPPolicySyncGet =
     outputSchema: PrivateLinkResourcesForMIPPolicySyncGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesForMIPPolicySyncListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1566,11 +1888,13 @@ export const PrivateLinkResourcesForMIPPolicySyncListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesForMIPPolicySyncListByServiceInput =
-  typeof PrivateLinkResourcesForMIPPolicySyncListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesForMIPPolicySyncListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesForMIPPolicySyncListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1583,9 +1907,7 @@ export const PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
-  typeof PrivateLinkResourcesForMIPPolicySyncListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesForMIPPolicySyncListByServiceOutput>;
 
 // The operation
 /**
@@ -1602,6 +1924,12 @@ export const PrivateLinkResourcesForMIPPolicySyncListByService =
     outputSchema: PrivateLinkResourcesForMIPPolicySyncListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesForSCCPowershellGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesForSCCPowershellGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1614,19 +1942,20 @@ export const PrivateLinkResourcesForSCCPowershellGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesForSCCPowershellGetInput =
-  typeof PrivateLinkResourcesForSCCPowershellGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesForSCCPowershellGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesForSCCPowershellGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesForSCCPowershellGetOutput =
-  typeof PrivateLinkResourcesForSCCPowershellGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesForSCCPowershellGetOutput>;
 
 // The operation
 /**
@@ -1644,6 +1973,11 @@ export const PrivateLinkResourcesForSCCPowershellGet =
     outputSchema: PrivateLinkResourcesForSCCPowershellGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesForSCCPowershellListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesForSCCPowershellListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1655,11 +1989,13 @@ export const PrivateLinkResourcesForSCCPowershellListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesForSCCPowershellListByServiceInput =
-  typeof PrivateLinkResourcesForSCCPowershellListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesForSCCPowershellListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesForSCCPowershellListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesForSCCPowershellListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1672,9 +2008,7 @@ export const PrivateLinkResourcesForSCCPowershellListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesForSCCPowershellListByServiceOutput =
-  typeof PrivateLinkResourcesForSCCPowershellListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesForSCCPowershellListByServiceOutput>;
 
 // The operation
 /**
@@ -1691,6 +2025,12 @@ export const PrivateLinkResourcesForSCCPowershellListByService =
     outputSchema: PrivateLinkResourcesForSCCPowershellListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1703,19 +2043,20 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -1734,6 +2075,11 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1745,11 +2091,13 @@ export const PrivateLinkResourcesListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesListByServiceInput =
-  typeof PrivateLinkResourcesListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1762,9 +2110,7 @@ export const PrivateLinkResourcesListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByServiceOutput =
-  typeof PrivateLinkResourcesListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByServiceOutput>;
 
 // The operation
 /**
@@ -1781,6 +2127,12 @@ export const PrivateLinkResourcesListByService =
     outputSchema: PrivateLinkResourcesListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesSecGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesSecGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1793,19 +2145,20 @@ export const PrivateLinkResourcesSecGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesSecGetInput =
-  typeof PrivateLinkResourcesSecGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesSecGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesSecGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesSecGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesSecGetOutput =
-  typeof PrivateLinkResourcesSecGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesSecGetOutput>;
 
 // The operation
 /**
@@ -1824,6 +2177,11 @@ export const PrivateLinkResourcesSecGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesSecListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesSecListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1835,11 +2193,13 @@ export const PrivateLinkResourcesSecListByServiceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateLinkResources",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkResourcesSecListByServiceInput =
-  typeof PrivateLinkResourcesSecListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesSecListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesSecListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesSecListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1852,9 +2212,7 @@ export const PrivateLinkResourcesSecListByServiceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesSecListByServiceOutput =
-  typeof PrivateLinkResourcesSecListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesSecListByServiceOutput>;
 
 // The operation
 /**
@@ -1871,6 +2229,67 @@ export const PrivateLinkResourcesSecListByService =
     outputSchema: PrivateLinkResourcesSecListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForEDMUploadCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1973,11 +2392,31 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
-  typeof PrivateLinkServicesForEDMUploadCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForEDMUploadCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2008,9 +2447,7 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
-  typeof PrivateLinkServicesForEDMUploadCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2027,6 +2464,11 @@ export const privateLinkServicesForEDMUploadCreateOrUpdate =
     outputSchema: PrivateLinkServicesForEDMUploadCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForEDMUploadGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForEDMUploadGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2038,11 +2480,31 @@ export const PrivateLinkServicesForEDMUploadGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForEDMUploadGetInput =
-  typeof PrivateLinkServicesForEDMUploadGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForEDMUploadGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForEDMUploadGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2073,9 +2535,7 @@ export const PrivateLinkServicesForEDMUploadGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForEDMUploadGetOutput =
-  typeof PrivateLinkServicesForEDMUploadGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadGetOutput>;
 
 // The operation
 /**
@@ -2092,6 +2552,9 @@ export const privateLinkServicesForEDMUploadGet =
     outputSchema: PrivateLinkServicesForEDMUploadGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForEDMUploadListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForEDMUploadListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2101,11 +2564,34 @@ export const PrivateLinkServicesForEDMUploadListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForEDMUploadListInput =
-  typeof PrivateLinkServicesForEDMUploadListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForEDMUploadListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForEDMUploadListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2155,9 +2641,7 @@ export const PrivateLinkServicesForEDMUploadListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForEDMUploadListOutput =
-  typeof PrivateLinkServicesForEDMUploadListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadListOutput>;
 
 // The operation
 /**
@@ -2172,6 +2656,10 @@ export const privateLinkServicesForEDMUploadList =
     outputSchema: PrivateLinkServicesForEDMUploadListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForEDMUploadListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForEDMUploadListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2182,11 +2670,34 @@ export const PrivateLinkServicesForEDMUploadListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForEDMUploadListByResourceGroupInput =
-  typeof PrivateLinkServicesForEDMUploadListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForEDMUploadListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2236,9 +2747,7 @@ export const PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
-  typeof PrivateLinkServicesForEDMUploadListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2254,6 +2763,13 @@ export const privateLinkServicesForEDMUploadListByResourceGroup =
     outputSchema: PrivateLinkServicesForEDMUploadListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForEDMUploadUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForEDMUploadUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2273,11 +2789,31 @@ export const PrivateLinkServicesForEDMUploadUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForEDMUploadUpdateInput =
-  typeof PrivateLinkServicesForEDMUploadUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForEDMUploadUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForEDMUploadUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2308,9 +2844,7 @@ export const PrivateLinkServicesForEDMUploadUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForEDMUploadUpdateOutput =
-  typeof PrivateLinkServicesForEDMUploadUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForEDMUploadUpdateOutput>;
 
 // The operation
 /**
@@ -2329,6 +2863,67 @@ export const privateLinkServicesForEDMUploadUpdate =
     outputSchema: PrivateLinkServicesForEDMUploadUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2431,11 +3026,31 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2466,9 +3081,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2486,6 +3099,11 @@ export const privateLinkServicesForM365ComplianceCenterCreateOrUpdate =
       PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForM365ComplianceCenterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2497,15 +3115,12 @@ export const PrivateLinkServicesForM365ComplianceCenterDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterDeleteInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterDeleteInput>;
 
 // Output Schema
+export type PrivateLinkServicesForM365ComplianceCenterDeleteOutput = void;
 export const PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterDeleteOutput>;
 
 // The operation
 /**
@@ -2522,6 +3137,11 @@ export const privateLinkServicesForM365ComplianceCenterDelete =
     outputSchema: PrivateLinkServicesForM365ComplianceCenterDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForM365ComplianceCenterGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2533,11 +3153,31 @@ export const PrivateLinkServicesForM365ComplianceCenterGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterGetInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365ComplianceCenterGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365ComplianceCenterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2568,9 +3208,7 @@ export const PrivateLinkServicesForM365ComplianceCenterGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365ComplianceCenterGetOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterGetOutput>;
 
 // The operation
 /**
@@ -2587,6 +3225,9 @@ export const privateLinkServicesForM365ComplianceCenterGet =
     outputSchema: PrivateLinkServicesForM365ComplianceCenterGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForM365ComplianceCenterListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2596,11 +3237,34 @@ export const PrivateLinkServicesForM365ComplianceCenterListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterListInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365ComplianceCenterListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForM365ComplianceCenterListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2650,9 +3314,7 @@ export const PrivateLinkServicesForM365ComplianceCenterListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForM365ComplianceCenterListOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterListOutput>;
 
 // The operation
 /**
@@ -2667,6 +3329,10 @@ export const privateLinkServicesForM365ComplianceCenterList =
     outputSchema: PrivateLinkServicesForM365ComplianceCenterListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2677,11 +3343,34 @@ export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2731,9 +3420,7 @@ export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2751,6 +3438,13 @@ export const privateLinkServicesForM365ComplianceCenterListByResourceGroup =
       PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365ComplianceCenterUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForM365ComplianceCenterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2770,11 +3464,31 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365ComplianceCenterUpdateInput =
-  typeof PrivateLinkServicesForM365ComplianceCenterUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365ComplianceCenterUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2805,9 +3519,7 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
-  typeof PrivateLinkServicesForM365ComplianceCenterUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterUpdateOutput>;
 
 // The operation
 /**
@@ -2826,6 +3538,67 @@ export const privateLinkServicesForM365ComplianceCenterUpdate =
     outputSchema: PrivateLinkServicesForM365ComplianceCenterUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2928,11 +3701,31 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
-  typeof PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2963,9 +3756,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2982,6 +3773,11 @@ export const privateLinkServicesForM365SecurityCenterCreateOrUpdate =
     outputSchema: PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForM365SecurityCenterDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2993,15 +3789,12 @@ export const PrivateLinkServicesForM365SecurityCenterDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterDeleteInput =
-  typeof PrivateLinkServicesForM365SecurityCenterDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterDeleteInput>;
 
 // Output Schema
+export type PrivateLinkServicesForM365SecurityCenterDeleteOutput = void;
 export const PrivateLinkServicesForM365SecurityCenterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkServicesForM365SecurityCenterDeleteOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterDeleteOutput>;
 
 // The operation
 /**
@@ -3018,6 +3811,11 @@ export const privateLinkServicesForM365SecurityCenterDelete =
     outputSchema: PrivateLinkServicesForM365SecurityCenterDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForM365SecurityCenterGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3029,11 +3827,31 @@ export const PrivateLinkServicesForM365SecurityCenterGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterGetInput =
-  typeof PrivateLinkServicesForM365SecurityCenterGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365SecurityCenterGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365SecurityCenterGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3064,9 +3882,7 @@ export const PrivateLinkServicesForM365SecurityCenterGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365SecurityCenterGetOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterGetOutput>;
 
 // The operation
 /**
@@ -3083,6 +3899,9 @@ export const privateLinkServicesForM365SecurityCenterGet =
     outputSchema: PrivateLinkServicesForM365SecurityCenterGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForM365SecurityCenterListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3092,11 +3911,34 @@ export const PrivateLinkServicesForM365SecurityCenterListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterListInput =
-  typeof PrivateLinkServicesForM365SecurityCenterListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365SecurityCenterListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForM365SecurityCenterListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3146,9 +3988,7 @@ export const PrivateLinkServicesForM365SecurityCenterListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForM365SecurityCenterListOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterListOutput>;
 
 // The operation
 /**
@@ -3163,6 +4003,10 @@ export const privateLinkServicesForM365SecurityCenterList =
     outputSchema: PrivateLinkServicesForM365SecurityCenterListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3173,11 +4017,34 @@ export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput =
-  typeof PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3227,9 +4094,7 @@ export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3247,6 +4112,13 @@ export const privateLinkServicesForM365SecurityCenterListByResourceGroup =
       PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForM365SecurityCenterUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForM365SecurityCenterUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3266,11 +4138,31 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForM365SecurityCenterUpdateInput =
-  typeof PrivateLinkServicesForM365SecurityCenterUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForM365SecurityCenterUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForM365SecurityCenterUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3301,9 +4193,7 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForM365SecurityCenterUpdateOutput =
-  typeof PrivateLinkServicesForM365SecurityCenterUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterUpdateOutput>;
 
 // The operation
 /**
@@ -3322,6 +4212,67 @@ export const privateLinkServicesForM365SecurityCenterUpdate =
     outputSchema: PrivateLinkServicesForM365SecurityCenterUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3424,11 +4375,31 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
-  typeof PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3459,9 +4430,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3478,6 +4447,11 @@ export const privateLinkServicesForMIPPolicySyncCreateOrUpdate =
     outputSchema: PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForMIPPolicySyncDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3489,15 +4463,12 @@ export const PrivateLinkServicesForMIPPolicySyncDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncDeleteInput =
-  typeof PrivateLinkServicesForMIPPolicySyncDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncDeleteInput>;
 
 // Output Schema
+export type PrivateLinkServicesForMIPPolicySyncDeleteOutput = void;
 export const PrivateLinkServicesForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkServicesForMIPPolicySyncDeleteOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncDeleteOutput>;
 
 // The operation
 /**
@@ -3514,6 +4485,11 @@ export const privateLinkServicesForMIPPolicySyncDelete =
     outputSchema: PrivateLinkServicesForMIPPolicySyncDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForMIPPolicySyncGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3525,11 +4501,31 @@ export const PrivateLinkServicesForMIPPolicySyncGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncGetInput =
-  typeof PrivateLinkServicesForMIPPolicySyncGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForMIPPolicySyncGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForMIPPolicySyncGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3560,9 +4556,7 @@ export const PrivateLinkServicesForMIPPolicySyncGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForMIPPolicySyncGetOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncGetOutput>;
 
 // The operation
 /**
@@ -3579,6 +4573,9 @@ export const privateLinkServicesForMIPPolicySyncGet =
     outputSchema: PrivateLinkServicesForMIPPolicySyncGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForMIPPolicySyncListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3588,11 +4585,34 @@ export const PrivateLinkServicesForMIPPolicySyncListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncListInput =
-  typeof PrivateLinkServicesForMIPPolicySyncListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForMIPPolicySyncListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForMIPPolicySyncListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3642,9 +4662,7 @@ export const PrivateLinkServicesForMIPPolicySyncListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForMIPPolicySyncListOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncListOutput>;
 
 // The operation
 /**
@@ -3659,6 +4677,10 @@ export const privateLinkServicesForMIPPolicySyncList =
     outputSchema: PrivateLinkServicesForMIPPolicySyncListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3669,11 +4691,34 @@ export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput =
-  typeof PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3723,9 +4768,7 @@ export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3741,6 +4784,13 @@ export const privateLinkServicesForMIPPolicySyncListByResourceGroup =
     outputSchema: PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForMIPPolicySyncUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForMIPPolicySyncUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3760,11 +4810,31 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForMIPPolicySyncUpdateInput =
-  typeof PrivateLinkServicesForMIPPolicySyncUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForMIPPolicySyncUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForMIPPolicySyncUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3795,9 +4865,7 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForMIPPolicySyncUpdateOutput =
-  typeof PrivateLinkServicesForMIPPolicySyncUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncUpdateOutput>;
 
 // The operation
 /**
@@ -3816,6 +4884,67 @@ export const privateLinkServicesForMIPPolicySyncUpdate =
     outputSchema: PrivateLinkServicesForMIPPolicySyncUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3918,11 +5047,31 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3953,9 +5102,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3974,6 +5121,11 @@ export const privateLinkServicesForO365ManagementActivityAPICreateOrUpdate =
       PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3985,15 +5137,12 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIDeleteInput>;
 
 // Output Schema
+export type PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput = void;
 export const PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput>;
 
 // The operation
 /**
@@ -4010,6 +5159,11 @@ export const privateLinkServicesForO365ManagementActivityAPIDelete =
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4021,11 +5175,31 @@ export const PrivateLinkServicesForO365ManagementActivityAPIGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPIGetInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4056,9 +5230,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIGetOutput>;
 
 // The operation
 /**
@@ -4075,6 +5247,9 @@ export const privateLinkServicesForO365ManagementActivityAPIGet =
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4084,11 +5259,34 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPIListInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4138,9 +5336,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForO365ManagementActivityAPIListOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIListOutput>;
 
 // The operation
 /**
@@ -4155,6 +5351,10 @@ export const privateLinkServicesForO365ManagementActivityAPIList =
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4165,11 +5365,34 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupI
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4219,9 +5442,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupO
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4239,6 +5460,13 @@ export const privateLinkServicesForO365ManagementActivityAPIListByResourceGroup 
       PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4258,11 +5486,31 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4293,9 +5541,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
-  typeof PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput>;
 
 // The operation
 /**
@@ -4314,6 +5560,67 @@ export const privateLinkServicesForO365ManagementActivityAPIUpdate =
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4416,11 +5723,31 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
-  typeof PrivateLinkServicesForSCCPowershellCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4451,9 +5778,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
-  typeof PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4470,6 +5795,11 @@ export const privateLinkServicesForSCCPowershellCreateOrUpdate =
     outputSchema: PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForSCCPowershellDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4481,15 +5811,12 @@ export const PrivateLinkServicesForSCCPowershellDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellDeleteInput =
-  typeof PrivateLinkServicesForSCCPowershellDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellDeleteInput>;
 
 // Output Schema
+export type PrivateLinkServicesForSCCPowershellDeleteOutput = void;
 export const PrivateLinkServicesForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkServicesForSCCPowershellDeleteOutput =
-  typeof PrivateLinkServicesForSCCPowershellDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellDeleteOutput>;
 
 // The operation
 /**
@@ -4506,6 +5833,11 @@ export const privateLinkServicesForSCCPowershellDelete =
     outputSchema: PrivateLinkServicesForSCCPowershellDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkServicesForSCCPowershellGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4517,11 +5849,31 @@ export const PrivateLinkServicesForSCCPowershellGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellGetInput =
-  typeof PrivateLinkServicesForSCCPowershellGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellGetInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForSCCPowershellGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForSCCPowershellGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4552,9 +5904,7 @@ export const PrivateLinkServicesForSCCPowershellGetOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForSCCPowershellGetOutput =
-  typeof PrivateLinkServicesForSCCPowershellGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellGetOutput>;
 
 // The operation
 /**
@@ -4571,6 +5921,9 @@ export const privateLinkServicesForSCCPowershellGet =
     outputSchema: PrivateLinkServicesForSCCPowershellGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellListInput {
+  subscriptionId: string;
+}
 export const PrivateLinkServicesForSCCPowershellListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4580,11 +5933,34 @@ export const PrivateLinkServicesForSCCPowershellListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellListInput =
-  typeof PrivateLinkServicesForSCCPowershellListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellListInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForSCCPowershellListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForSCCPowershellListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4634,9 +6010,7 @@ export const PrivateLinkServicesForSCCPowershellListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForSCCPowershellListOutput =
-  typeof PrivateLinkServicesForSCCPowershellListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellListOutput>;
 
 // The operation
 /**
@@ -4651,6 +6025,10 @@ export const privateLinkServicesForSCCPowershellList =
     outputSchema: PrivateLinkServicesForSCCPowershellListOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PrivateLinkServicesForSCCPowershellListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4661,11 +6039,34 @@ export const PrivateLinkServicesForSCCPowershellListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellListByResourceGroupInput =
-  typeof PrivateLinkServicesForSCCPowershellListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellListByResourceGroupInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForSCCPowershellListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4715,9 +6116,7 @@ export const PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
-  typeof PrivateLinkServicesForSCCPowershellListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4733,6 +6132,13 @@ export const privateLinkServicesForSCCPowershellListByResourceGroup =
     outputSchema: PrivateLinkServicesForSCCPowershellListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkServicesForSCCPowershellUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const PrivateLinkServicesForSCCPowershellUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4752,11 +6158,31 @@ export const PrivateLinkServicesForSCCPowershellUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
     }),
-  );
-export type PrivateLinkServicesForSCCPowershellUpdateInput =
-  typeof PrivateLinkServicesForSCCPowershellUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellUpdateInput>;
 
 // Output Schema
+export interface PrivateLinkServicesForSCCPowershellUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const PrivateLinkServicesForSCCPowershellUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4787,9 +6213,7 @@ export const PrivateLinkServicesForSCCPowershellUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type PrivateLinkServicesForSCCPowershellUpdateOutput =
-  typeof PrivateLinkServicesForSCCPowershellUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellUpdateOutput>;
 
 // The operation
 /**
@@ -4808,6 +6232,11 @@ export const privateLinkServicesForSCCPowershellUpdate =
     outputSchema: PrivateLinkServicesForSCCPowershellUpdateOutput,
   }));
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4818,12 +6247,12 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
     apiVersion: "2021-03-08",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**

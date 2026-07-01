@@ -4,12 +4,56 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateSchedulingV1PriorityClassInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const CreateSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -71,11 +115,49 @@ export const CreateSchedulingV1PriorityClassInput =
       method: "POST",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type CreateSchedulingV1PriorityClassInput =
-  typeof CreateSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface CreateSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const CreateSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -128,9 +210,7 @@ export const CreateSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type CreateSchedulingV1PriorityClassOutput =
-  typeof CreateSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -148,7 +228,74 @@ export const createSchedulingV1PriorityClass =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const CreateSchedulingV1alpha2NamespacedPodGroupInput =
+export interface CreateSchedulingV1alpha3NamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const CreateSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -202,7 +349,12 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupInput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -271,14 +423,74 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type CreateSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof CreateSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface CreateSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const CreateSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -327,7 +539,12 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -393,9 +610,7 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type CreateSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof CreateSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -407,14 +622,70 @@ export type CreateSchedulingV1alpha2NamespacedPodGroupOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createSchedulingV1alpha2NamespacedPodGroup =
+export const createSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: CreateSchedulingV1alpha2NamespacedPodGroupOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
+    inputSchema: CreateSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: CreateSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const CreateSchedulingV1alpha2NamespacedWorkloadInput =
+export interface CreateSchedulingV1alpha3NamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const CreateSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -477,7 +748,12 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadInput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -515,14 +791,64 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type CreateSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof CreateSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const CreateSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface CreateSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const CreateSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -580,7 +906,12 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -615,9 +946,7 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type CreateSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof CreateSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<CreateSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -629,13 +958,32 @@ export type CreateSchedulingV1alpha2NamespacedWorkloadOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createSchedulingV1alpha2NamespacedWorkload =
+export const createSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: CreateSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: CreateSchedulingV1alpha2NamespacedWorkloadOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
+    inputSchema: CreateSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: CreateSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1CollectionPriorityClassInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1CollectionPriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -668,11 +1016,32 @@ export const DeleteSchedulingV1CollectionPriorityClassInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type DeleteSchedulingV1CollectionPriorityClassInput =
-  typeof DeleteSchedulingV1CollectionPriorityClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1CollectionPriorityClassInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1CollectionPriorityClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1CollectionPriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -712,9 +1081,7 @@ export const DeleteSchedulingV1CollectionPriorityClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1CollectionPriorityClassOutput =
-  typeof DeleteSchedulingV1CollectionPriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1CollectionPriorityClassOutput>;
 
 // The operation
 /**
@@ -783,6 +1150,18 @@ export const deleteSchedulingV1CollectionPriorityClass =
     outputSchema: DeleteSchedulingV1CollectionPriorityClassOutput,
   }));
 // Input Schema
+export interface DeleteSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -807,11 +1186,32 @@ export const DeleteSchedulingV1PriorityClassInput =
       method: "DELETE",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type DeleteSchedulingV1PriorityClassInput =
-  typeof DeleteSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface DeleteSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -851,9 +1251,7 @@ export const DeleteSchedulingV1PriorityClassOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1PriorityClassOutput =
-  typeof DeleteSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -874,7 +1272,28 @@ export const deleteSchedulingV1PriorityClass =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
-export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput =
+export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
+export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -905,14 +1324,35 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput =
-  typeof DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput>;
 
 // Output Schema
-export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput =
+export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
+export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -951,9 +1391,7 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput =
-  typeof DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1017,13 +1455,34 @@ Examples:
 This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
-export const deleteSchedulingV1alpha2CollectionNamespacedPodGroup =
+export const deleteSchedulingV1alpha3CollectionNamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteSchedulingV1alpha2CollectionNamespacedPodGroupInput,
-    outputSchema: DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput,
+    inputSchema: DeleteSchedulingV1alpha3CollectionNamespacedPodGroupInput,
+    outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedPodGroupOutput,
   }));
 // Input Schema
-export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadInput =
+export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
+export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1054,14 +1513,35 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type DeleteSchedulingV1alpha2CollectionNamespacedWorkloadInput =
-  typeof DeleteSchedulingV1alpha2CollectionNamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput>;
 
 // Output Schema
-export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput =
+export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
+export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -1100,9 +1580,7 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput =
-  typeof DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -1166,13 +1644,26 @@ Examples:
 This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
-export const deleteSchedulingV1alpha2CollectionNamespacedWorkload =
+export const deleteSchedulingV1alpha3CollectionNamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteSchedulingV1alpha2CollectionNamespacedWorkloadInput,
-    outputSchema: DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput,
+    inputSchema: DeleteSchedulingV1alpha3CollectionNamespacedWorkloadInput,
+    outputSchema: DeleteSchedulingV1alpha3CollectionNamespacedWorkloadOutput,
   }));
 // Input Schema
-export const DeleteSchedulingV1alpha2NamespacedPodGroupInput =
+export interface DeleteSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
+export const DeleteSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1195,14 +1686,35 @@ export const DeleteSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type DeleteSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof DeleteSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface DeleteSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
+export const DeleteSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -1241,9 +1753,7 @@ export const DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof DeleteSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1258,14 +1768,26 @@ export type DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteSchedulingV1alpha2NamespacedPodGroup =
+export const deleteSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: DeleteSchedulingV1alpha2NamespacedPodGroupOutput,
-    errors: [NotFound, Conflict] as const,
+    inputSchema: DeleteSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: DeleteSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const DeleteSchedulingV1alpha2NamespacedWorkloadInput =
+export interface DeleteSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
+export const DeleteSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -1288,14 +1810,35 @@ export const DeleteSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type DeleteSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof DeleteSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface DeleteSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
+export const DeleteSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
@@ -1334,9 +1877,7 @@ export const DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof DeleteSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<DeleteSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -1351,20 +1892,27 @@ export type DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteSchedulingV1alpha2NamespacedWorkload =
+export const deleteSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: DeleteSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: DeleteSchedulingV1alpha2NamespacedWorkloadOutput,
-    errors: [NotFound, Conflict] as const,
+    inputSchema: DeleteSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: DeleteSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface GetSchedulingAPIGroupInput {}
 export const GetSchedulingAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/" }),
-  );
-export type GetSchedulingAPIGroupInput = typeof GetSchedulingAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetSchedulingAPIGroupInput>;
 
 // Output Schema
+export interface GetSchedulingAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetSchedulingAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1390,9 +1938,7 @@ export const GetSchedulingAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetSchedulingAPIGroupOutput =
-  typeof GetSchedulingAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingAPIGroupOutput>;
 
 // The operation
 /**
@@ -1405,14 +1951,30 @@ export const getSchedulingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetSchedulingV1APIResourcesInput {}
 export const GetSchedulingV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1/" }),
-  );
-export type GetSchedulingV1APIResourcesInput =
-  typeof GetSchedulingV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetSchedulingV1APIResourcesInput>;
 
 // Output Schema
+export interface GetSchedulingV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetSchedulingV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1432,9 +1994,7 @@ export const GetSchedulingV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetSchedulingV1APIResourcesOutput =
-  typeof GetSchedulingV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -1447,15 +2007,31 @@ export const getSchedulingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const GetSchedulingV1alpha2APIResourcesInput =
+export interface GetSchedulingV1alpha3APIResourcesInput {}
+export const GetSchedulingV1alpha3APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1alpha2/" }),
-  );
-export type GetSchedulingV1alpha2APIResourcesInput =
-  typeof GetSchedulingV1alpha2APIResourcesInput.Type;
+    T.Http({ method: "GET", path: "/apis/scheduling.k8s.io/v1alpha3/" }),
+  ) as unknown as Schema.Codec<GetSchedulingV1alpha3APIResourcesInput>;
 
 // Output Schema
-export const GetSchedulingV1alpha2APIResourcesOutput =
+export interface GetSchedulingV1alpha3APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
+export const GetSchedulingV1alpha3APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
@@ -1474,20 +2050,32 @@ export const GetSchedulingV1alpha2APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetSchedulingV1alpha2APIResourcesOutput =
-  typeof GetSchedulingV1alpha2APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetSchedulingV1alpha3APIResourcesOutput>;
 
 // The operation
 /**
  * get available resources
  */
-export const getSchedulingV1alpha2APIResources =
+export const getSchedulingV1alpha3APIResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: GetSchedulingV1alpha2APIResourcesInput,
-    outputSchema: GetSchedulingV1alpha2APIResourcesOutput,
+    inputSchema: GetSchedulingV1alpha3APIResourcesInput,
+    outputSchema: GetSchedulingV1alpha3APIResourcesOutput,
   }));
 // Input Schema
+export interface ListSchedulingV1PriorityClassInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1507,11 +2095,60 @@ export const ListSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses",
     }),
-  );
-export type ListSchedulingV1PriorityClassInput =
-  typeof ListSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ListSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    description?: string;
+    globalDefault?: boolean;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    preemptionPolicy?: string;
+    value?: number;
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1585,9 +2222,7 @@ export const ListSchedulingV1PriorityClassOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1PriorityClassOutput =
-  typeof ListSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -1653,7 +2288,22 @@ export const listSchedulingV1PriorityClass =
     outputSchema: ListSchedulingV1PriorityClassOutput,
   }));
 // Input Schema
-export const ListSchedulingV1alpha2NamespacedPodGroupInput =
+export interface ListSchedulingV1alpha3NamespacedPodGroupInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const ListSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1671,14 +2321,85 @@ export const ListSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
     }),
-  );
-export type ListSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof ListSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface ListSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      podGroupTemplateRef?: {
+        workload?: { podGroupTemplateName: string; workloadName: string };
+      };
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
+export const ListSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
@@ -1732,7 +2453,12 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
           }),
         ),
         spec: Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           podGroupTemplateRef: Schema.optional(
             Schema.Struct({
               workload: Schema.optional(
@@ -1814,9 +2540,7 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof ListSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -1877,13 +2601,28 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listSchedulingV1alpha2NamespacedPodGroup =
+export const listSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: ListSchedulingV1alpha2NamespacedPodGroupOutput,
+    inputSchema: ListSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: ListSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const ListSchedulingV1alpha2NamespacedWorkloadInput =
+export interface ListSchedulingV1alpha3NamespacedWorkloadInput {
+  namespace: string;
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const ListSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1901,14 +2640,75 @@ export const ListSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
     }),
-  );
-export type ListSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof ListSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface ListSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      controllerRef?: { apiGroup?: string; kind: string; name: string };
+      podGroupTemplates: {
+        disruptionMode?: { all?: unknown; single?: unknown };
+        name: string;
+        priority?: number;
+        priorityClassName?: string;
+        resourceClaims?: {
+          name: string;
+          resourceClaimName?: string;
+          resourceClaimTemplateName?: string;
+        }[];
+        schedulingConstraints?: { topology?: { key: string }[] };
+        schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
+export const ListSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
@@ -1971,7 +2771,12 @@ export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
           ),
           podGroupTemplates: Schema.Array(
             Schema.Struct({
-              disruptionMode: Schema.optional(Schema.String),
+              disruptionMode: Schema.optional(
+                Schema.Struct({
+                  all: Schema.optional(Schema.Unknown),
+                  single: Schema.optional(Schema.Unknown),
+                }),
+              ),
               name: Schema.String,
               priority: Schema.optional(Schema.Number),
               priorityClassName: Schema.optional(Schema.String),
@@ -2022,9 +2827,7 @@ export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof ListSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -2085,13 +2888,27 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listSchedulingV1alpha2NamespacedWorkload =
+export const listSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: ListSchedulingV1alpha2NamespacedWorkloadOutput,
+    inputSchema: ListSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: ListSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
-export const ListSchedulingV1alpha2PodGroupForAllNamespacesInput =
+export interface ListSchedulingV1alpha3PodGroupForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const ListSchedulingV1alpha3PodGroupForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2108,14 +2925,85 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/podgroups",
     }),
-  );
-export type ListSchedulingV1alpha2PodGroupForAllNamespacesInput =
-  typeof ListSchedulingV1alpha2PodGroupForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3PodGroupForAllNamespacesInput>;
 
 // Output Schema
-export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
+export interface ListSchedulingV1alpha3PodGroupForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      podGroupTemplateRef?: {
+        workload?: { podGroupTemplateName: string; workloadName: string };
+      };
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
+export const ListSchedulingV1alpha3PodGroupForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
@@ -2169,7 +3057,12 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
           }),
         ),
         spec: Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           podGroupTemplateRef: Schema.optional(
             Schema.Struct({
               workload: Schema.optional(
@@ -2251,9 +3144,7 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
-  typeof ListSchedulingV1alpha2PodGroupForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3PodGroupForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2313,13 +3204,27 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listSchedulingV1alpha2PodGroupForAllNamespaces =
+export const listSchedulingV1alpha3PodGroupForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListSchedulingV1alpha2PodGroupForAllNamespacesInput,
-    outputSchema: ListSchedulingV1alpha2PodGroupForAllNamespacesOutput,
+    inputSchema: ListSchedulingV1alpha3PodGroupForAllNamespacesInput,
+    outputSchema: ListSchedulingV1alpha3PodGroupForAllNamespacesOutput,
   }));
 // Input Schema
-export const ListSchedulingV1alpha2WorkloadForAllNamespacesInput =
+export interface ListSchedulingV1alpha3WorkloadForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const ListSchedulingV1alpha3WorkloadForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2336,14 +3241,75 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/workloads",
     }),
-  );
-export type ListSchedulingV1alpha2WorkloadForAllNamespacesInput =
-  typeof ListSchedulingV1alpha2WorkloadForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<ListSchedulingV1alpha3WorkloadForAllNamespacesInput>;
 
 // Output Schema
-export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
+export interface ListSchedulingV1alpha3WorkloadForAllNamespacesOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      controllerRef?: { apiGroup?: string; kind: string; name: string };
+      podGroupTemplates: {
+        disruptionMode?: { all?: unknown; single?: unknown };
+        name: string;
+        priority?: number;
+        priorityClassName?: string;
+        resourceClaims?: {
+          name: string;
+          resourceClaimName?: string;
+          resourceClaimTemplateName?: string;
+        }[];
+        schedulingConstraints?: { topology?: { key: string }[] };
+        schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+      }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
+export const ListSchedulingV1alpha3WorkloadForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
@@ -2406,7 +3372,12 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
           ),
           podGroupTemplates: Schema.Array(
             Schema.Struct({
-              disruptionMode: Schema.optional(Schema.String),
+              disruptionMode: Schema.optional(
+                Schema.Struct({
+                  all: Schema.optional(Schema.Unknown),
+                  single: Schema.optional(Schema.Unknown),
+                }),
+              ),
               name: Schema.String,
               priority: Schema.optional(Schema.Number),
               priorityClassName: Schema.optional(Schema.String),
@@ -2457,9 +3428,7 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
         ),
       }),
     ),
-  });
-export type ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
-  typeof ListSchedulingV1alpha2WorkloadForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<ListSchedulingV1alpha3WorkloadForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -2519,12 +3488,20 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listSchedulingV1alpha2WorkloadForAllNamespaces =
+export const listSchedulingV1alpha3WorkloadForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ListSchedulingV1alpha2WorkloadForAllNamespacesInput,
-    outputSchema: ListSchedulingV1alpha2WorkloadForAllNamespacesOutput,
+    inputSchema: ListSchedulingV1alpha3WorkloadForAllNamespacesInput,
+    outputSchema: ListSchedulingV1alpha3WorkloadForAllNamespacesOutput,
   }));
 // Input Schema
+export interface PatchSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -2538,11 +3515,49 @@ export const PatchSchedulingV1PriorityClassInput =
       method: "PATCH",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type PatchSchedulingV1PriorityClassInput =
-  typeof PatchSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface PatchSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const PatchSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2595,9 +3610,7 @@ export const PatchSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type PatchSchedulingV1PriorityClassOutput =
-  typeof PatchSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -2617,7 +3630,16 @@ export const patchSchedulingV1PriorityClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const PatchSchedulingV1alpha2NamespacedPodGroupInput =
+export interface PatchSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
+export const PatchSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2629,14 +3651,74 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type PatchSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof PatchSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface PatchSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const PatchSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2685,7 +3767,12 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -2751,9 +3838,7 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type PatchSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof PatchSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -2767,14 +3852,22 @@ export type PatchSchedulingV1alpha2NamespacedPodGroupOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchSchedulingV1alpha2NamespacedPodGroup =
+export const patchSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: PatchSchedulingV1alpha2NamespacedPodGroupOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: PatchSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const PatchSchedulingV1alpha2NamespacedPodGroupStatusInput =
+export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
+export const PatchSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2786,14 +3879,74 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}/status",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type PatchSchedulingV1alpha2NamespacedPodGroupStatusInput =
-  typeof PatchSchedulingV1alpha2NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
-export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
+export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -2842,7 +3995,12 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -2908,9 +4066,7 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
-  typeof PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -2924,14 +4080,22 @@ export type PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchSchedulingV1alpha2NamespacedPodGroupStatus =
+export const patchSchedulingV1alpha3NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchSchedulingV1alpha2NamespacedPodGroupStatusInput,
-    outputSchema: PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: PatchSchedulingV1alpha3NamespacedPodGroupStatusInput,
+    outputSchema: PatchSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
-export const PatchSchedulingV1alpha2NamespacedWorkloadInput =
+export interface PatchSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
+export const PatchSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -2943,14 +4107,64 @@ export const PatchSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type PatchSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof PatchSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const PatchSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface PatchSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const PatchSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3008,7 +4222,12 @@ export const PatchSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -3043,9 +4262,7 @@ export const PatchSchedulingV1alpha2NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type PatchSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof PatchSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<PatchSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -3059,13 +4276,16 @@ export type PatchSchedulingV1alpha2NamespacedWorkloadOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchSchedulingV1alpha2NamespacedWorkload =
+export const patchSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: PatchSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: PatchSchedulingV1alpha2NamespacedWorkloadOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: PatchSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: PatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface ReadSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3075,11 +4295,49 @@ export const ReadSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type ReadSchedulingV1PriorityClassInput =
-  typeof ReadSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ReadSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReadSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3132,9 +4390,7 @@ export const ReadSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type ReadSchedulingV1PriorityClassOutput =
-  typeof ReadSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -3150,7 +4406,12 @@ export const readSchedulingV1PriorityClass =
     errors: [NotFound] as const,
   }));
 // Input Schema
-export const ReadSchedulingV1alpha2NamespacedPodGroupInput =
+export interface ReadSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
+export const ReadSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3158,14 +4419,74 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type ReadSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof ReadSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface ReadSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReadSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3214,7 +4535,12 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -3280,9 +4606,7 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ReadSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof ReadSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -3292,14 +4616,18 @@ export type ReadSchedulingV1alpha2NamespacedPodGroupOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readSchedulingV1alpha2NamespacedPodGroup =
+export const readSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: ReadSchedulingV1alpha2NamespacedPodGroupOutput,
-    errors: [NotFound] as const,
+    inputSchema: ReadSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const ReadSchedulingV1alpha2NamespacedPodGroupStatusInput =
+export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
+export const ReadSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3307,14 +4635,74 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}/status",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type ReadSchedulingV1alpha2NamespacedPodGroupStatusInput =
-  typeof ReadSchedulingV1alpha2NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
-export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
+export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3363,7 +4751,12 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -3429,9 +4822,7 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
-  typeof ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -3441,14 +4832,18 @@ export type ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readSchedulingV1alpha2NamespacedPodGroupStatus =
+export const readSchedulingV1alpha3NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadSchedulingV1alpha2NamespacedPodGroupStatusInput,
-    outputSchema: ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput,
-    errors: [NotFound] as const,
+    inputSchema: ReadSchedulingV1alpha3NamespacedPodGroupStatusInput,
+    outputSchema: ReadSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
-export const ReadSchedulingV1alpha2NamespacedWorkloadInput =
+export interface ReadSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+}
+export const ReadSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3456,14 +4851,64 @@ export const ReadSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type ReadSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof ReadSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const ReadSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface ReadSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const ReadSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3521,7 +4966,12 @@ export const ReadSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -3556,9 +5006,7 @@ export const ReadSchedulingV1alpha2NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type ReadSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof ReadSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ReadSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -3568,13 +5016,57 @@ export type ReadSchedulingV1alpha2NamespacedWorkloadOutput =
  * @param namespace - object name and auth scope, such as for teams and projects
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readSchedulingV1alpha2NamespacedWorkload =
+export const readSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReadSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: ReadSchedulingV1alpha2NamespacedWorkloadOutput,
-    errors: [NotFound] as const,
+    inputSchema: ReadSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: ReadSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface ReplaceSchedulingV1PriorityClassInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReplaceSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -3637,11 +5129,49 @@ export const ReplaceSchedulingV1PriorityClassInput =
       method: "PUT",
       path: "/apis/scheduling.k8s.io/v1/priorityclasses/{name}",
     }),
-  );
-export type ReplaceSchedulingV1PriorityClassInput =
-  typeof ReplaceSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface ReplaceSchedulingV1PriorityClassOutput {
+  apiVersion?: string;
+  description?: string;
+  globalDefault?: boolean;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  preemptionPolicy?: string;
+  value?: number;
+}
 export const ReplaceSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3694,9 +5224,7 @@ export const ReplaceSchedulingV1PriorityClassOutput =
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
-  });
-export type ReplaceSchedulingV1PriorityClassOutput =
-  typeof ReplaceSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -3715,7 +5243,75 @@ export const replaceSchedulingV1PriorityClass =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
-export const ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -3770,7 +5366,12 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -3839,14 +5440,74 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof ReplaceSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -3895,7 +5556,12 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -3961,9 +5627,7 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
         ),
       }),
     ),
-  });
-export type ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof ReplaceSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -3976,14 +5640,81 @@ export type ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceSchedulingV1alpha2NamespacedPodGroup =
+export const replaceSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4038,7 +5769,12 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -4107,14 +5843,74 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/podgroups/{name}/status",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
     }),
-  );
-export type ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
-  typeof ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput>;
 
 // Output Schema
-export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
+export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    disruptionMode?: { all?: unknown; single?: unknown };
+    podGroupTemplateRef?: {
+      workload?: { podGroupTemplateName: string; workloadName: string };
+    };
+    priority?: number;
+    priorityClassName?: string;
+    resourceClaims?: {
+      name: string;
+      resourceClaimName?: string;
+      resourceClaimTemplateName?: string;
+    }[];
+    schedulingConstraints?: { topology?: { key: string }[] };
+    schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    resourceClaimStatuses?: { name: string; resourceClaimName?: string }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4163,7 +5959,12 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
       }),
     ),
     spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
+      disruptionMode: Schema.optional(
+        Schema.Struct({
+          all: Schema.optional(Schema.Unknown),
+          single: Schema.optional(Schema.Unknown),
+        }),
+      ),
       podGroupTemplateRef: Schema.optional(
         Schema.Struct({
           workload: Schema.optional(
@@ -4229,9 +6030,7 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
         ),
       }),
     ),
-  });
-export type ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
-  typeof ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput>;
 
 // The operation
 /**
@@ -4244,14 +6043,71 @@ export type ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceSchedulingV1alpha2NamespacedPodGroupStatus =
+export const replaceSchedulingV1alpha3NamespacedPodGroupStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput,
-    outputSchema: ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupStatusInput,
+    outputSchema: ReplaceSchedulingV1alpha3NamespacedPodGroupStatusOutput,
   }));
 // Input Schema
-export const ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
+export interface ReplaceSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4315,7 +6171,12 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -4353,14 +6214,64 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "/apis/scheduling.k8s.io/v1alpha2/namespaces/{namespace}/workloads/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof ReplaceSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface ReplaceSchedulingV1alpha3NamespacedWorkloadOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    controllerRef?: { apiGroup?: string; kind: string; name: string };
+    podGroupTemplates: {
+      disruptionMode?: { all?: unknown; single?: unknown };
+      name: string;
+      priority?: number;
+      priorityClassName?: string;
+      resourceClaims?: {
+        name: string;
+        resourceClaimName?: string;
+        resourceClaimTemplateName?: string;
+      }[];
+      schedulingConstraints?: { topology?: { key: string }[] };
+      schedulingPolicy: { basic?: unknown; gang?: { minCount: number } };
+    }[];
+  };
+}
+export const ReplaceSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -4418,7 +6329,12 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
       ),
       podGroupTemplates: Schema.Array(
         Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
+          disruptionMode: Schema.optional(
+            Schema.Struct({
+              all: Schema.optional(Schema.Unknown),
+              single: Schema.optional(Schema.Unknown),
+            }),
+          ),
           name: Schema.String,
           priority: Schema.optional(Schema.Number),
           priorityClassName: Schema.optional(Schema.String),
@@ -4453,9 +6369,7 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
         }),
       ),
     }),
-  });
-export type ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof ReplaceSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -4468,13 +6382,27 @@ export type ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const replaceSchedulingV1alpha2NamespacedWorkload =
+export const replaceSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: ReplaceSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: ReplaceSchedulingV1alpha2NamespacedWorkloadOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
+    inputSchema: ReplaceSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: ReplaceSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1PriorityClassInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4495,18 +6423,18 @@ export const WatchSchedulingV1PriorityClassInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}",
     }),
-  );
-export type WatchSchedulingV1PriorityClassInput =
-  typeof WatchSchedulingV1PriorityClassInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassInput>;
 
 // Output Schema
+export interface WatchSchedulingV1PriorityClassOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1PriorityClassOutput =
-  typeof WatchSchedulingV1PriorityClassOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassOutput>;
 
 // The operation
 /**
@@ -4573,6 +6501,20 @@ export const watchSchedulingV1PriorityClass =
     outputSchema: WatchSchedulingV1PriorityClassOutput,
   }));
 // Input Schema
+export interface WatchSchedulingV1PriorityClassListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchSchedulingV1PriorityClassListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4592,18 +6534,18 @@ export const WatchSchedulingV1PriorityClassListInput =
       method: "GET",
       path: "/apis/scheduling.k8s.io/v1/watch/priorityclasses",
     }),
-  );
-export type WatchSchedulingV1PriorityClassListInput =
-  typeof WatchSchedulingV1PriorityClassListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassListInput>;
 
 // Output Schema
+export interface WatchSchedulingV1PriorityClassListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchSchedulingV1PriorityClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1PriorityClassListOutput =
-  typeof WatchSchedulingV1PriorityClassListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1PriorityClassListOutput>;
 
 // The operation
 /**
@@ -4669,7 +6611,23 @@ export const watchSchedulingV1PriorityClassList =
     outputSchema: WatchSchedulingV1PriorityClassListOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2NamespacedPodGroupInput =
+export interface WatchSchedulingV1alpha3NamespacedPodGroupInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4688,20 +6646,20 @@ export const WatchSchedulingV1alpha2NamespacedPodGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/namespaces/{namespace}/podgroups/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/podgroups/{name}",
     }),
-  );
-export type WatchSchedulingV1alpha2NamespacedPodGroupInput =
-  typeof WatchSchedulingV1alpha2NamespacedPodGroupInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2NamespacedPodGroupOutput =
+export interface WatchSchedulingV1alpha3NamespacedPodGroupOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2NamespacedPodGroupOutput =
-  typeof WatchSchedulingV1alpha2NamespacedPodGroupOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupOutput>;
 
 // The operation
 /**
@@ -4763,13 +6721,28 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2NamespacedPodGroup =
+export const watchSchedulingV1alpha3NamespacedPodGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2NamespacedPodGroupInput,
-    outputSchema: WatchSchedulingV1alpha2NamespacedPodGroupOutput,
+    inputSchema: WatchSchedulingV1alpha3NamespacedPodGroupInput,
+    outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2NamespacedPodGroupListInput =
+export interface WatchSchedulingV1alpha3NamespacedPodGroupListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3NamespacedPodGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4787,20 +6760,20 @@ export const WatchSchedulingV1alpha2NamespacedPodGroupListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/namespaces/{namespace}/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/podgroups",
     }),
-  );
-export type WatchSchedulingV1alpha2NamespacedPodGroupListInput =
-  typeof WatchSchedulingV1alpha2NamespacedPodGroupListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupListInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2NamespacedPodGroupListOutput =
+export interface WatchSchedulingV1alpha3NamespacedPodGroupListOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3NamespacedPodGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2NamespacedPodGroupListOutput =
-  typeof WatchSchedulingV1alpha2NamespacedPodGroupListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedPodGroupListOutput>;
 
 // The operation
 /**
@@ -4861,13 +6834,29 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2NamespacedPodGroupList =
+export const watchSchedulingV1alpha3NamespacedPodGroupList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2NamespacedPodGroupListInput,
-    outputSchema: WatchSchedulingV1alpha2NamespacedPodGroupListOutput,
+    inputSchema: WatchSchedulingV1alpha3NamespacedPodGroupListInput,
+    outputSchema: WatchSchedulingV1alpha3NamespacedPodGroupListOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2NamespacedWorkloadInput =
+export interface WatchSchedulingV1alpha3NamespacedWorkloadInput {
+  name: string;
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
@@ -4886,20 +6875,20 @@ export const WatchSchedulingV1alpha2NamespacedWorkloadInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/namespaces/{namespace}/workloads/{name}",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/workloads/{name}",
     }),
-  );
-export type WatchSchedulingV1alpha2NamespacedWorkloadInput =
-  typeof WatchSchedulingV1alpha2NamespacedWorkloadInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2NamespacedWorkloadOutput =
+export interface WatchSchedulingV1alpha3NamespacedWorkloadOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2NamespacedWorkloadOutput =
-  typeof WatchSchedulingV1alpha2NamespacedWorkloadOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadOutput>;
 
 // The operation
 /**
@@ -4961,13 +6950,28 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2NamespacedWorkload =
+export const watchSchedulingV1alpha3NamespacedWorkload =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2NamespacedWorkloadInput,
-    outputSchema: WatchSchedulingV1alpha2NamespacedWorkloadOutput,
+    inputSchema: WatchSchedulingV1alpha3NamespacedWorkloadInput,
+    outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2NamespacedWorkloadListInput =
+export interface WatchSchedulingV1alpha3NamespacedWorkloadListInput {
+  namespace: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3NamespacedWorkloadListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4985,20 +6989,20 @@ export const WatchSchedulingV1alpha2NamespacedWorkloadListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/namespaces/{namespace}/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/workloads",
     }),
-  );
-export type WatchSchedulingV1alpha2NamespacedWorkloadListInput =
-  typeof WatchSchedulingV1alpha2NamespacedWorkloadListInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadListInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2NamespacedWorkloadListOutput =
+export interface WatchSchedulingV1alpha3NamespacedWorkloadListOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3NamespacedWorkloadListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2NamespacedWorkloadListOutput =
-  typeof WatchSchedulingV1alpha2NamespacedWorkloadListOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3NamespacedWorkloadListOutput>;
 
 // The operation
 /**
@@ -5059,13 +7063,27 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2NamespacedWorkloadList =
+export const watchSchedulingV1alpha3NamespacedWorkloadList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2NamespacedWorkloadListInput,
-    outputSchema: WatchSchedulingV1alpha2NamespacedWorkloadListOutput,
+    inputSchema: WatchSchedulingV1alpha3NamespacedWorkloadListInput,
+    outputSchema: WatchSchedulingV1alpha3NamespacedWorkloadListOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput =
+export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5082,20 +7100,20 @@ export const WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/podgroups",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/podgroups",
     }),
-  );
-export type WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput =
-  typeof WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput =
+export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput =
-  typeof WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -5155,13 +7173,27 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2PodGroupListForAllNamespaces =
+export const watchSchedulingV1alpha3PodGroupListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput,
-    outputSchema: WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput,
+    inputSchema: WatchSchedulingV1alpha3PodGroupListForAllNamespacesInput,
+    outputSchema: WatchSchedulingV1alpha3PodGroupListForAllNamespacesOutput,
   }));
 // Input Schema
-export const WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput =
+export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
+export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5178,20 +7210,20 @@ export const WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/apis/scheduling.k8s.io/v1alpha2/watch/workloads",
+      path: "/apis/scheduling.k8s.io/v1alpha3/watch/workloads",
     }),
-  );
-export type WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput =
-  typeof WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput.Type;
+  ) as unknown as Schema.Codec<WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput>;
 
 // Output Schema
-export const WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput =
+export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput {
+  object: unknown;
+  type: string;
+}
+export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput =
-  typeof WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput.Type;
+  }) as unknown as Schema.Codec<WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput>;
 
 // The operation
 /**
@@ -5251,8 +7283,8 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchSchedulingV1alpha2WorkloadListForAllNamespaces =
+export const watchSchedulingV1alpha3WorkloadListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-    inputSchema: WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput,
-    outputSchema: WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput,
+    inputSchema: WatchSchedulingV1alpha3WorkloadListForAllNamespacesInput,
+    outputSchema: WatchSchedulingV1alpha3WorkloadListForAllNamespacesOutput,
   }));

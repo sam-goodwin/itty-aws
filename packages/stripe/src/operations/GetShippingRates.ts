@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetShippingRatesInput {
+  active?: boolean;
+  created?: string;
+  currency?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetShippingRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
@@ -17,17 +26,84 @@ export const GetShippingRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/shipping_rates",
     contentType: "form-urlencoded",
   }),
-);
-export type GetShippingRatesInput = typeof GetShippingRatesInput.Type;
+) as unknown as Schema.Codec<GetShippingRatesInput>;
 
 // Output Schema
+export interface GetShippingRatesOutput {
+  data: {
+    active: boolean;
+    created: number;
+    delivery_estimate: {
+      maximum: {
+        unit: "business_day" | "day" | "hour" | "month" | "week";
+        value: number;
+      } | null;
+      minimum: {
+        unit: "business_day" | "day" | "hour" | "month" | "week";
+        value: number;
+      } | null;
+    } | null;
+    display_name: string | null;
+    fixed_amount?: {
+      amount: number;
+      currency: string;
+      currency_options?: Record<
+        string,
+        {
+          amount: number;
+          tax_behavior: "exclusive" | "inclusive" | "unspecified";
+        }
+      >;
+    };
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    object: "shipping_rate";
+    tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
+    tax_code:
+      | string
+      | { description: string; id: string; name: string; object: "tax_code" }
+      | null;
+    type: "fixed_amount";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Array(
       Schema.Struct({
         active: Schema.Boolean,
         created: Schema.Number,
-        delivery_estimate: Schema.Unknown,
+        delivery_estimate: Schema.NullOr(
+          Schema.Struct({
+            maximum: Schema.NullOr(
+              Schema.Struct({
+                unit: Schema.Literals([
+                  "business_day",
+                  "day",
+                  "hour",
+                  "month",
+                  "week",
+                ]),
+                value: Schema.Number,
+              }),
+            ),
+            minimum: Schema.NullOr(
+              Schema.Struct({
+                unit: Schema.Literals([
+                  "business_day",
+                  "day",
+                  "hour",
+                  "month",
+                  "week",
+                ]),
+                value: Schema.Number,
+              }),
+            ),
+          }),
+        ),
         display_name: Schema.NullOr(Schema.String),
         fixed_amount: Schema.optional(
           Schema.Struct({
@@ -55,7 +131,17 @@ export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         tax_behavior: Schema.NullOr(
           Schema.Literals(["exclusive", "inclusive", "unspecified"]),
         ),
-        tax_code: Schema.Unknown,
+        tax_code: Schema.NullOr(
+          Schema.Union([
+            Schema.String,
+            Schema.Struct({
+              description: Schema.String,
+              id: Schema.String,
+              name: Schema.String,
+              object: Schema.Literals(["tax_code"]),
+            }),
+          ]),
+        ),
         type: Schema.Literals(["fixed_amount"]),
       }),
     ),
@@ -63,8 +149,7 @@ export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     object: Schema.Literals(["list"]),
     url: Schema.String,
   },
-);
-export type GetShippingRatesOutput = typeof GetShippingRatesOutput.Type;
+) as unknown as Schema.Codec<GetShippingRatesOutput>;
 
 // The operation
 /**

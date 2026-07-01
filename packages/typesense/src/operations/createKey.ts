@@ -4,16 +4,33 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateKeyInput {
+  value?: string;
+  description: string;
+  actions: string[];
+  collections: string[];
+  expires_at?: number;
+}
 export const CreateKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
   actions: Schema.Array(Schema.String),
   collections: Schema.Array(Schema.String),
   expires_at: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "POST", path: "/keys" }));
-export type CreateKeyInput = typeof CreateKeyInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/keys" }),
+) as unknown as Schema.Codec<CreateKeyInput>;
 
 // Output Schema
+export interface CreateKeyOutput {
+  value?: string;
+  description: string;
+  actions: string[];
+  collections: string[];
+  expires_at?: number;
+  id?: number;
+  value_prefix?: string;
+}
 export const CreateKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
@@ -22,8 +39,7 @@ export const CreateKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expires_at: Schema.optional(Schema.Number),
   id: Schema.optional(Schema.Number),
   value_prefix: Schema.optional(Schema.String),
-});
-export type CreateKeyOutput = typeof CreateKeyOutput.Type;
+}) as unknown as Schema.Codec<CreateKeyOutput>;
 
 // The operation
 /**

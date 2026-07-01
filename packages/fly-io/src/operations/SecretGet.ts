@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretGetInput {
+  app_name: string;
+  secret_name: string;
+  min_version?: string;
+  show_secrets?: boolean;
+}
 export const SecretGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
@@ -11,18 +17,23 @@ export const SecretGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   show_secrets: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/apps/{app_name}/secrets/{secret_name}" }),
-);
-export type SecretGetInput = typeof SecretGetInput.Type;
+) as unknown as Schema.Codec<SecretGetInput>;
 
 // Output Schema
+export interface SecretGetOutput {
+  created_at?: string;
+  digest?: string;
+  name?: string;
+  updated_at?: string;
+  value?: string;
+}
 export const SecretGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   digest: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   updated_at: Schema.optional(Schema.String),
   value: Schema.optional(Schema.String),
-});
-export type SecretGetOutput = typeof SecretGetOutput.Type;
+}) as unknown as Schema.Codec<SecretGetOutput>;
 
 // The operation
 /**

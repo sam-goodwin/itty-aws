@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsResetPersonDistinctIdCreateInput {
+  project_id: string;
+  format?: "csv" | "json";
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsResetPersonDistinctIdCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -20,15 +31,12 @@ export const PersonsResetPersonDistinctIdCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/persons/reset_person_distinct_id/",
     }),
-  );
-export type PersonsResetPersonDistinctIdCreateInput =
-  typeof PersonsResetPersonDistinctIdCreateInput.Type;
+  ) as unknown as Schema.Codec<PersonsResetPersonDistinctIdCreateInput>;
 
 // Output Schema
+export type PersonsResetPersonDistinctIdCreateOutput = void;
 export const PersonsResetPersonDistinctIdCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PersonsResetPersonDistinctIdCreateOutput =
-  typeof PersonsResetPersonDistinctIdCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsResetPersonDistinctIdCreateOutput>;
 
 // The operation
 /**

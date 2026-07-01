@@ -2,9 +2,15 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, Conflict } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateProjectBranchRoleInput {
+  project_id: string;
+  branch_id: string;
+  role: { name: string; no_login?: boolean };
+}
 export const CreateProjectBranchRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -18,17 +24,80 @@ export const CreateProjectBranchRoleInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/roles",
     }),
-  );
-export type CreateProjectBranchRoleInput =
-  typeof CreateProjectBranchRoleInput.Type;
+  ) as unknown as Schema.Codec<CreateProjectBranchRoleInput>;
 
 // Output Schema
+export interface CreateProjectBranchRoleOutput {
+  role: {
+    branch_id: string;
+    name: string;
+    password?: Redacted.Redacted<string>;
+    protected?: boolean;
+    authentication_method?: string;
+    created_at: string;
+    updated_at: string;
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const CreateProjectBranchRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -92,18 +161,14 @@ export const CreateProjectBranchRoleOutput =
         total_duration_ms: Schema.Number,
       }),
     ),
-  });
-export type CreateProjectBranchRoleOutput =
-  typeof CreateProjectBranchRoleOutput.Type;
+  }) as unknown as Schema.Codec<CreateProjectBranchRoleOutput>;
 
 // The operation
 /**
  * Create role
  *
  * Creates a Postgres role in the specified branch.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * For related information, see [Manage roles](https://neon.tech/docs/manage/roles/).
+ * For related information, see [Manage roles](https://neon.com/docs/manage/roles/).
  * Connections established to the active compute endpoint will be dropped.
  * If the compute endpoint is idle, the endpoint becomes active for a short period of time and is suspended afterward.
  *

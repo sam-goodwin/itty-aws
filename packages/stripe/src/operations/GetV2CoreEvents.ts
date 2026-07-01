@@ -3,15 +3,39 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV2CoreEventsInput {
+  created?: string;
+  limit?: number;
+  object_id?: string;
+  types?: string;
+}
 export const GetV2CoreEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
   object_id: Schema.optional(Schema.String),
   types: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/core/events" }));
-export type GetV2CoreEventsInput = typeof GetV2CoreEventsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/core/events" }),
+) as unknown as Schema.Codec<GetV2CoreEventsInput>;
 
 // Output Schema
+export interface GetV2CoreEventsOutput {
+  data: {
+    changes?: unknown;
+    context?: string;
+    created: string;
+    id: string;
+    livemode: boolean;
+    object: "v2.core.event";
+    reason?: {
+      request?: { id: string; idempotency_key: string };
+      type: "request";
+    };
+    type: string;
+  }[];
+  next_page_url: string | null;
+  previous_page_url: string | null;
+}
 export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -37,8 +61,7 @@ export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   next_page_url: Schema.NullOr(Schema.String),
   previous_page_url: Schema.NullOr(Schema.String),
-});
-export type GetV2CoreEventsOutput = typeof GetV2CoreEventsOutput.Type;
+}) as unknown as Schema.Codec<GetV2CoreEventsOutput>;
 
 // The operation
 /**

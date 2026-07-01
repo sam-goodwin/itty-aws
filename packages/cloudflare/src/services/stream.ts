@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service stream
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -73,6 +73,554 @@ export class WebhookNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Audio {
+  /** Denotes whether the audio track will be played by default in a player. */
+  default?: boolean | null;
+  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
+  label?: string | null;
+  /** Specifies the processing status of the video. */
+  status?: "queued" | "ready" | "error" | (string & {}) | null;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  uid?: string | null;
+}
+const Audio = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    default: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["queued", "ready", "error"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Audio>;
+
+interface GetCaptionResponseResult {
+  /** Whether the caption was generated via AI. */
+  generated?: boolean | null;
+  /** The language label displayed in the native language to users. */
+  label?: string | null;
+  /** The language tag in BCP 47 format. */
+  language?: string | null;
+  /** The status of a generated caption. */
+  status?: "ready" | "inprogress" | "error" | (string & {}) | null;
+}
+const GetCaptionResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      generated: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["ready", "inprogress", "error"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }),
+) as unknown as Schema.Codec<GetCaptionResponseResult>;
+
+interface Watermark {
+  /** The unique identifier for the watermark profile. */
+  uid?: string | null;
+}
+const Watermark = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Watermark>;
+
+interface Input {
+  /** The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready. */
+  height?: number | null;
+  /** The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready. */
+  width?: number | null;
+}
+const Input = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Input>;
+
+interface Playback {
+  /** DASH Media Presentation Description for the video. */
+  dash?: string | null;
+  /** The HLS manifest for the video. */
+  hls?: string | null;
+}
+const Playback = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Playback>;
+
+interface PublicDetails {
+  channelLink?: string | null;
+  logo?: string | null;
+  mediaId?: number | null;
+  shareLink?: string | null;
+  title?: string | null;
+}
+const PublicDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    channelLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mediaId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    shareLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      channelLink: "channel_link",
+      logo: "logo",
+      mediaId: "media_id",
+      shareLink: "share_link",
+      title: "title",
+    }),
+  ),
+) as unknown as Schema.Codec<PublicDetails>;
+
+interface Status {
+  /** Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use. */
+  errorReasonCode?: string | null;
+  /** Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state. */
+  errorReasonText?: string | null;
+  /** Indicates the progress as a percentage between 0 and 100. */
+  pctComplete?: string | null;
+  /** Specifies the processing status for all quality levels for a video. */
+  state?:
+    | "pendingupload"
+    | "downloading"
+    | "queued"
+    | "inprogress"
+    | "ready"
+    | "error"
+    | "live-inprogress"
+    | (string & {})
+    | null;
+}
+const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errorReasonCode: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    errorReasonText: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    pctComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    state: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "pendingupload",
+            "downloading",
+            "queued",
+            "inprogress",
+            "ready",
+            "error",
+            "live-inprogress",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Status>;
+
+interface Watermark2 {
+  /** The date and a time a watermark profile was created. */
+  created?: string | null;
+  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
+  downloadedFrom?: string | null;
+  /** The height of the image in pixels. */
+  height?: number | null;
+  /** A short description of the watermark profile. */
+  name?: string | null;
+  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to */
+  opacity?: number | null;
+  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by th */
+  padding?: number | null;
+  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
+  position?: string | null;
+  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is) */
+  scale?: number | null;
+  /** The size of the image in bytes. */
+  size?: number | null;
+  /** The unique identifier for a watermark profile. */
+  uid?: string | null;
+  /** The width of the image in pixels. */
+  width?: number | null;
+}
+const Watermark2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    downloadedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Watermark2>;
+
+interface Audio2 {
+  /** Indicates the progress as a percentage between 0 and 100. */
+  percentComplete: number;
+  /** The status of a generated download. */
+  status: "ready" | "inprogress" | "error" | (string & {});
+  /** The URL to access the generated download. */
+  url?: string | null;
+}
+const Audio2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    percentComplete: Schema.Number,
+    status: Schema.Union([
+      Schema.Literals(["ready", "inprogress", "error"]),
+      Schema.String,
+    ]),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Audio2>;
+
+interface GetKeyResponseResult {
+  /** Identifier. */
+  id?: string | null;
+  /** The date and time a signing key was created. */
+  created?: string | null;
+  /** The unique identifier for the signing key. */
+  keyId?: string | null;
+}
+const GetKeyResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    keyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ id: "id", created: "created", keyId: "key_id" })),
+) as unknown as Schema.Codec<GetKeyResponseResult>;
+
+interface LiveInput {
+  /** The date and time the live input was created. */
+  created?: string | null;
+  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for th */
+  deleteRecordingAfterDays?: number | null;
+  /** Indicates whether the live input is enabled and can accept streams. */
+  enabled?: boolean | null;
+  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
+  meta?: unknown | null;
+  /** The date and time the live input was last modified. */
+  modified?: string | null;
+  /** A unique identifier for a live input. */
+  uid?: string | null;
+}
+const LiveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deleteRecordingAfterDays: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<LiveInput>;
+
+interface ListLiveInputsResponse2 {
+  liveInputs?:
+    | {
+        created?: string | null;
+        deleteRecordingAfterDays?: number | null;
+        enabled?: boolean | null;
+        meta?: unknown | null;
+        modified?: string | null;
+        uid?: string | null;
+      }[]
+    | null;
+  /** The total number of remaining live inputs based on cursor position. */
+  range?: number | null;
+  /** The total number of live inputs that match the provided filters. */
+  total?: number | null;
+}
+const ListLiveInputsResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    liveInputs: Schema.optional(
+      Schema.Union([Schema.Array(LiveInput), Schema.Null]),
+    ),
+    range: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListLiveInputsResponse2>;
+
+interface Recording {
+  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. An empty array allows videos to be viewed on any orig */
+  allowedOrigins?: string[] | null;
+  /** Disables reporting the number of live viewers when this property is set to `true`. */
+  hideLiveViewerCount?: boolean | null;
+  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live sto */
+  mode?: "off" | "automatic" | (string & {}) | null;
+  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
+  requireSignedURLs?: boolean | null;
+  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the pla */
+  timeoutSeconds?: number | null;
+}
+const Recording = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    allowedOrigins: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    hideLiveViewerCount: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    mode: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["off", "automatic"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    requireSignedURLs: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    timeoutSeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Recording>;
+
+interface ListLiveInputOutputsResponseResult {
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live  */
+  enabled?: boolean | null;
+  /** The streamKey used to authenticate against an output's target. */
+  streamKey?: string | null;
+  /** A unique identifier for the output. */
+  uid?: string | null;
+  /** The URL an output uses to restream. */
+  url?: string | null;
+}
+const ListLiveInputOutputsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      streamKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListLiveInputOutputsResponseResult>;
+
+interface ListStreamsResponseResult {
+  /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
+  allowedOrigins?: string[] | null;
+  /** The unique identifier of the source video this video was clipped from. */
+  clippedFrom?: string | null;
+  /** The date and time the media item was created. */
+  created?: string | null;
+  /** A user-defined identifier for the media creator. */
+  creator?: string | null;
+  /** The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready. */
+  duration?: number | null;
+  input?: { height?: number | null; width?: number | null } | null;
+  /** The live input ID used to upload a video with Stream Live. */
+  liveInput?: string | null;
+  /** The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A val */
+  maxDurationSeconds?: number | null;
+  /** The maximum size in bytes for the video upload. */
+  maxSizeBytes?: number | null;
+  /** A user modifiable key-value store used to reference other systems of record for managing videos. */
+  meta?: unknown | null;
+  /** The date and time the media item was last modified. */
+  modified?: string | null;
+  playback?: { dash?: string | null; hls?: string | null } | null;
+  /** The video's preview page URI. This field is omitted until encoding is complete. */
+  preview?: string | null;
+  /** Public details for the video including title, share link, channel link, and logo. */
+  publicDetails?: {
+    channelLink?: string | null;
+    logo?: string | null;
+    mediaId?: number | null;
+    shareLink?: string | null;
+    title?: string | null;
+  } | null;
+  /** Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
+  readyToStream?: boolean | null;
+  /** Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress. */
+  readyToStreamAt?: string | null;
+  /** Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video. */
+  requireSignedURLs?: boolean | null;
+  /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at  */
+  scheduledDeletion?: string | null;
+  /** The size of the media item in bytes. */
+  size?: number | null;
+  /** Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number be */
+  status?: {
+    errorReasonCode?: string | null;
+    errorReasonText?: string | null;
+    pctComplete?: string | null;
+    state?:
+      | "pendingupload"
+      | "downloading"
+      | "queued"
+      | "inprogress"
+      | "ready"
+      | "error"
+      | "live-inprogress"
+      | (string & {})
+      | null;
+  } | null;
+  /** The media item's thumbnail URI. This field is omitted until encoding is complete. */
+  thumbnail?: string | null;
+  /** The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duratio */
+  thumbnailTimestampPct?: number | null;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  uid?: string | null;
+  /** The date and time the media item was uploaded. */
+  uploaded?: string | null;
+  /** The date and time when the video upload URL is no longer valid for direct user uploads. */
+  uploadExpiry?: string | null;
+  watermark?: {
+    created?: string | null;
+    downloadedFrom?: string | null;
+    height?: number | null;
+    name?: string | null;
+    opacity?: number | null;
+    padding?: number | null;
+    position?: string | null;
+    scale?: number | null;
+    size?: number | null;
+    uid?: string | null;
+    width?: number | null;
+  } | null;
+}
+const ListStreamsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      allowedOrigins: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      clippedFrom: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
+      liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      maxDurationSeconds: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      maxSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
+      preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      publicDetails: Schema.optional(
+        Schema.Union([PublicDetails, Schema.Null]),
+      ),
+      readyToStream: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      readyToStreamAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      requireSignedURLs: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      scheduledDeletion: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
+      thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      thumbnailTimestampPct: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<ListStreamsResponseResult>;
+
+interface PublicDetails2 {
+  channelLink?: string | null;
+  logo?: string | null;
+  shareLink?: string | null;
+  title?: string | null;
+}
+const PublicDetails2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    channelLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    shareLink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      channelLink: "channel_link",
+      logo: "logo",
+      shareLink: "share_link",
+      title: "title",
+    }),
+  ),
+) as unknown as Schema.Codec<PublicDetails2>;
+
+interface AccessRule {
+  /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
+  action?: "allow" | "block" | (string & {}) | null;
+  /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
+  country?: string[] | null;
+  /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
+  ip?: string[] | null;
+  /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
+  type?: "any" | "ip.src" | "ip.geoip.country" | (string & {}) | null;
+}
+const AccessRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    action: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["allow", "block"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    country: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    ip: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["any", "ip.src", "ip.geoip.country"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<AccessRule>;
+
+interface Flags {
+  /** Whether to return the original video without transformations. */
+  original?: boolean | null;
+}
+const Flags = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    original: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Flags>;
+
+// =============================================================================
 // AudioTrack
 // =============================================================================
 
@@ -93,7 +641,7 @@ export const GetAudioTrackRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/audio",
       }),
     ),
-) as unknown as Schema.Schema<GetAudioTrackRequest>;
+) as unknown as Schema.Codec<GetAudioTrackRequest>;
 
 export interface GetAudioTrackResponse {
   /** Array of audio tracks for the video. */
@@ -110,33 +658,9 @@ export interface GetAudioTrackResponse {
 export const GetAudioTrackResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      audio: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              default: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              label: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              status: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["queued", "ready", "error"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      audio: Schema.optional(Schema.Union([Schema.Array(Audio), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetAudioTrackResponse>;
+) as unknown as Schema.Codec<GetAudioTrackResponse>;
 
 export type GetAudioTrackError = DefaultErrors;
 
@@ -176,7 +700,7 @@ export const PatchAudioTrackRequest =
         path: "/accounts/{account_id}/stream/{identifier}/audio/{audioIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchAudioTrackRequest>;
+  ) as unknown as Schema.Codec<PatchAudioTrackRequest>;
 
 export interface PatchAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
@@ -205,7 +729,7 @@ export const PatchAudioTrackResponse =
       ),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchAudioTrackResponse>;
+  ) as unknown as Schema.Codec<PatchAudioTrackResponse>;
 
 export type PatchAudioTrackError = DefaultErrors;
 
@@ -239,14 +763,14 @@ export const DeleteAudioTrackRequest =
         path: "/accounts/{account_id}/stream/{identifier}/audio/{audioIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteAudioTrackRequest>;
+  ) as unknown as Schema.Codec<DeleteAudioTrackRequest>;
 
 export type DeleteAudioTrackResponse = string;
 
 export const DeleteAudioTrackResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteAudioTrackResponse>;
+  ) as unknown as Schema.Codec<DeleteAudioTrackResponse>;
 
 export type DeleteAudioTrackError = DefaultErrors;
 
@@ -284,7 +808,7 @@ export const CopyAudioTrackRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/audio/copy",
       }),
     ),
-) as unknown as Schema.Schema<CopyAudioTrackRequest>;
+) as unknown as Schema.Codec<CopyAudioTrackRequest>;
 
 export interface CopyAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
@@ -313,7 +837,7 @@ export const CopyAudioTrackResponse =
       ),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CopyAudioTrackResponse>;
+  ) as unknown as Schema.Codec<CopyAudioTrackResponse>;
 
 export type CopyAudioTrackError = DefaultErrors;
 
@@ -349,7 +873,7 @@ export const GetCaptionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/captions",
       }),
     ),
-) as unknown as Schema.Schema<GetCaptionRequest>;
+) as unknown as Schema.Codec<GetCaptionRequest>;
 
 export interface GetCaptionResponse {
   result: {
@@ -363,26 +887,9 @@ export interface GetCaptionResponse {
 export const GetCaptionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          generated: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          language: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["ready", "inprogress", "error"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(GetCaptionResponseResult),
     }),
-) as unknown as Schema.Schema<GetCaptionResponse>;
+) as unknown as Schema.Codec<GetCaptionResponse>;
 
 export type GetCaptionError = DefaultErrors;
 
@@ -424,7 +931,7 @@ export const GetCaptionLanguageRequest =
         path: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCaptionLanguageRequest>;
+  ) as unknown as Schema.Codec<GetCaptionLanguageRequest>;
 
 export interface GetCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
@@ -453,7 +960,7 @@ export const GetCaptionLanguageResponse =
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetCaptionLanguageResponse>;
+  ) as unknown as Schema.Codec<GetCaptionLanguageResponse>;
 
 export type GetCaptionLanguageError = DefaultErrors;
 
@@ -487,7 +994,7 @@ export const CreateCaptionLanguageRequest =
         path: "/accounts/{account_id}/stream/{identifier}/captions/{language}/generate",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateCaptionLanguageRequest>;
+  ) as unknown as Schema.Codec<CreateCaptionLanguageRequest>;
 
 export interface CreateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
@@ -516,7 +1023,7 @@ export const CreateCaptionLanguageResponse =
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateCaptionLanguageResponse>;
+  ) as unknown as Schema.Codec<CreateCaptionLanguageResponse>;
 
 export type CreateCaptionLanguageError = DefaultErrors;
 
@@ -554,7 +1061,7 @@ export const UpdateCaptionLanguageRequest =
         contentType: "multipart",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateCaptionLanguageRequest>;
+  ) as unknown as Schema.Codec<UpdateCaptionLanguageRequest>;
 
 export interface UpdateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
@@ -583,7 +1090,7 @@ export const UpdateCaptionLanguageResponse =
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateCaptionLanguageResponse>;
+  ) as unknown as Schema.Codec<UpdateCaptionLanguageResponse>;
 
 export type UpdateCaptionLanguageError = DefaultErrors;
 
@@ -617,14 +1124,14 @@ export const DeleteCaptionLanguageRequest =
         path: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteCaptionLanguageRequest>;
+  ) as unknown as Schema.Codec<DeleteCaptionLanguageRequest>;
 
 export type DeleteCaptionLanguageResponse = string;
 
 export const DeleteCaptionLanguageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteCaptionLanguageResponse>;
+  ) as unknown as Schema.Codec<DeleteCaptionLanguageResponse>;
 
 export type DeleteCaptionLanguageError = DefaultErrors;
 
@@ -662,14 +1169,14 @@ export const GetCaptionLanguageVttRequest =
         path: "/accounts/{account_id}/stream/{identifier}/captions/{language}/vtt",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCaptionLanguageVttRequest>;
+  ) as unknown as Schema.Codec<GetCaptionLanguageVttRequest>;
 
 export type GetCaptionLanguageVttResponse = string;
 
 export const GetCaptionLanguageVttResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.String,
-  ) as unknown as Schema.Schema<GetCaptionLanguageVttResponse>;
+  ) as unknown as Schema.Codec<GetCaptionLanguageVttResponse>;
 
 export type GetCaptionLanguageVttError = DefaultErrors;
 
@@ -735,15 +1242,11 @@ export const CreateClipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       scheduledDeletion: Schema.optional(Schema.String),
       thumbnailTimestampPct: Schema.optional(Schema.Number),
       url: Schema.optional(Schema.String),
-      watermark: Schema.optional(
-        Schema.Struct({
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
+      watermark: Schema.optional(Watermark),
     }).pipe(
       T.Http({ method: "POST", path: "/accounts/{account_id}/stream/clip" }),
     ),
-) as unknown as Schema.Schema<CreateClipRequest>;
+) as unknown as Schema.Codec<CreateClipRequest>;
 
 export interface CreateClipResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -839,15 +1342,7 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      input: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
       liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       maxDurationSeconds: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -855,41 +1350,10 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       maxSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      playback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
       preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicDetails: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            channelLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            mediaId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            shareLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              channelLink: "channel_link",
-              logo: "logo",
-              mediaId: "media_id",
-              shareLink: "share_link",
-              title: "title",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([PublicDetails, Schema.Null]),
       ),
       readyToStream: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -904,39 +1368,7 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            errorReasonCode: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            errorReasonText: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pctComplete: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            state: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pendingupload",
-                    "downloading",
-                    "queued",
-                    "inprogress",
-                    "ready",
-                    "error",
-                    "live-inprogress",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
       thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       thumbnailTimestampPct: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -944,36 +1376,9 @@ export const CreateClipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateClipResponse>;
+) as unknown as Schema.Codec<CreateClipResponse>;
 
 export type CreateClipError = DefaultErrors;
 
@@ -1035,15 +1440,11 @@ export const CreateCopyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       scheduledDeletion: Schema.optional(Schema.String),
       thumbnailTimestampPct: Schema.optional(Schema.Number),
       url: Schema.optional(Schema.String),
-      watermark: Schema.optional(
-        Schema.Struct({
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
+      watermark: Schema.optional(Watermark),
     }).pipe(
       T.Http({ method: "POST", path: "/accounts/{account_id}/stream/copy" }),
     ),
-) as unknown as Schema.Schema<CreateCopyRequest>;
+) as unknown as Schema.Codec<CreateCopyRequest>;
 
 export interface CreateCopyResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -1139,15 +1540,7 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      input: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
       liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       maxDurationSeconds: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -1155,41 +1548,10 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       maxSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      playback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
       preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicDetails: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            channelLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            mediaId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            shareLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              channelLink: "channel_link",
-              logo: "logo",
-              mediaId: "media_id",
-              shareLink: "share_link",
-              title: "title",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([PublicDetails, Schema.Null]),
       ),
       readyToStream: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -1204,39 +1566,7 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            errorReasonCode: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            errorReasonText: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pctComplete: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            state: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pendingupload",
-                    "downloading",
-                    "queued",
-                    "inprogress",
-                    "ready",
-                    "error",
-                    "live-inprogress",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
       thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       thumbnailTimestampPct: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -1244,36 +1574,9 @@ export const CreateCopyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateCopyResponse>;
+) as unknown as Schema.Codec<CreateCopyResponse>;
 
 export type CreateCopyError = DefaultErrors;
 
@@ -1332,18 +1635,14 @@ export const CreateDirectUploadRequest =
       requireSignedURLs: Schema.optional(Schema.Boolean),
       scheduledDeletion: Schema.optional(Schema.String),
       thumbnailTimestampPct: Schema.optional(Schema.Number),
-      watermark: Schema.optional(
-        Schema.Struct({
-          uid: Schema.optional(Schema.String),
-        }),
-      ),
+      watermark: Schema.optional(Watermark),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/stream/direct_upload",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateDirectUploadRequest>;
+  ) as unknown as Schema.Codec<CreateDirectUploadRequest>;
 
 export interface CreateDirectUploadResponse {
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at  */
@@ -1375,36 +1674,9 @@ export const CreateDirectUploadResponse =
       ),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadURL: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateDirectUploadResponse>;
+  ) as unknown as Schema.Codec<CreateDirectUploadResponse>;
 
 export type CreateDirectUploadError = DefaultErrors;
 
@@ -1440,7 +1712,7 @@ export const GetDownloadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/downloads",
       }),
     ),
-) as unknown as Schema.Schema<GetDownloadRequest>;
+) as unknown as Schema.Codec<GetDownloadRequest>;
 
 export interface GetDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
@@ -1460,34 +1732,10 @@ export interface GetDownloadResponse {
 export const GetDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      audio: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentComplete: Schema.Number,
-            status: Schema.Union([
-              Schema.Literals(["ready", "inprogress", "error"]),
-              Schema.String,
-            ]),
-            url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      default: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentComplete: Schema.Number,
-            status: Schema.Union([
-              Schema.Literals(["ready", "inprogress", "error"]),
-              Schema.String,
-            ]),
-            url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      audio: Schema.optional(Schema.Union([Audio2, Schema.Null])),
+      default: Schema.optional(Schema.Union([Audio2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetDownloadResponse>;
+) as unknown as Schema.Codec<GetDownloadResponse>;
 
 export type GetDownloadError = DefaultErrors;
 
@@ -1519,7 +1767,7 @@ export const CreateDownloadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/downloads",
       }),
     ),
-) as unknown as Schema.Schema<CreateDownloadRequest>;
+) as unknown as Schema.Codec<CreateDownloadRequest>;
 
 export interface CreateDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
@@ -1539,34 +1787,10 @@ export interface CreateDownloadResponse {
 export const CreateDownloadResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      audio: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentComplete: Schema.Number,
-            status: Schema.Union([
-              Schema.Literals(["ready", "inprogress", "error"]),
-              Schema.String,
-            ]),
-            url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      default: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentComplete: Schema.Number,
-            status: Schema.Union([
-              Schema.Literals(["ready", "inprogress", "error"]),
-              Schema.String,
-            ]),
-            url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      audio: Schema.optional(Schema.Union([Audio2, Schema.Null])),
+      default: Schema.optional(Schema.Union([Audio2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateDownloadResponse>;
+  ) as unknown as Schema.Codec<CreateDownloadResponse>;
 
 export type CreateDownloadError = DefaultErrors;
 
@@ -1598,14 +1822,14 @@ export const DeleteDownloadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/downloads",
       }),
     ),
-) as unknown as Schema.Schema<DeleteDownloadRequest>;
+) as unknown as Schema.Codec<DeleteDownloadRequest>;
 
 export type DeleteDownloadResponse = string;
 
 export const DeleteDownloadResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteDownloadResponse>;
+  ) as unknown as Schema.Codec<DeleteDownloadResponse>;
 
 export type DeleteDownloadError = DefaultErrors;
 
@@ -1640,13 +1864,13 @@ export const GetEmbedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/stream/{identifier}/embed",
     }),
   ),
-) as unknown as Schema.Schema<GetEmbedRequest>;
+) as unknown as Schema.Codec<GetEmbedRequest>;
 
 export type GetEmbedResponse = string;
 
 export const GetEmbedResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.String,
-) as unknown as Schema.Schema<GetEmbedResponse>;
+) as unknown as Schema.Codec<GetEmbedResponse>;
 
 export type GetEmbedError = DefaultErrors;
 
@@ -1676,7 +1900,7 @@ export const GetKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/stream/keys" }),
   ),
-) as unknown as Schema.Schema<GetKeyRequest>;
+) as unknown as Schema.Codec<GetKeyRequest>;
 
 export interface GetKeyResponse {
   result:
@@ -1686,20 +1910,9 @@ export interface GetKeyResponse {
 
 export const GetKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
-    result: Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          keyId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({ id: "id", created: "created", keyId: "key_id" }),
-        ),
-      ),
-      Schema.Null,
-    ]),
+    result: Schema.Union([Schema.Array(GetKeyResponseResult), Schema.Null]),
   }),
-) as unknown as Schema.Schema<GetKeyResponse>;
+) as unknown as Schema.Codec<GetKeyResponse>;
 
 export type GetKeyError = DefaultErrors | Forbidden;
 
@@ -1732,7 +1945,7 @@ export const CreateKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "POST", path: "/accounts/{account_id}/stream/keys" }),
   ),
-) as unknown as Schema.Schema<CreateKeyRequest>;
+) as unknown as Schema.Codec<CreateKeyRequest>;
 
 export interface CreateKeyResponse {
   /** Identifier. */
@@ -1753,7 +1966,7 @@ export const CreateKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       jwk: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       pem: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateKeyResponse>;
+) as unknown as Schema.Codec<CreateKeyResponse>;
 
 export type CreateKeyError = DefaultErrors;
 
@@ -1784,13 +1997,13 @@ export const DeleteKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/stream/keys/{identifier}",
     }),
   ),
-) as unknown as Schema.Schema<DeleteKeyRequest>;
+) as unknown as Schema.Codec<DeleteKeyRequest>;
 
 export type DeleteKeyResponse = string;
 
 export const DeleteKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.String.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteKeyResponse>;
+) as unknown as Schema.Codec<DeleteKeyResponse>;
 
 export type DeleteKeyError = DefaultErrors | SigningKeyNotFound | Forbidden;
 
@@ -1828,7 +2041,7 @@ export const GetLiveInputRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}",
       }),
     ),
-) as unknown as Schema.Schema<GetLiveInputRequest>;
+) as unknown as Schema.Codec<GetLiveInputRequest>;
 
 export interface GetLiveInputResponse {
   /** The date and time the live input was created. */
@@ -1857,7 +2070,7 @@ export const GetLiveInputResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetLiveInputResponse>;
+) as unknown as Schema.Codec<GetLiveInputResponse>;
 
 export type GetLiveInputError = DefaultErrors | LiveInputNotFound | Forbidden;
 
@@ -1892,7 +2105,7 @@ export const ListLiveInputsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/live_inputs",
       }),
     ),
-) as unknown as Schema.Schema<ListLiveInputsRequest>;
+) as unknown as Schema.Codec<ListLiveInputsRequest>;
 
 export type ListLiveInputsResponse =
   | {
@@ -1920,52 +2133,10 @@ export type ListLiveInputsResponse =
 
 export const ListLiveInputsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        liveInputs: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                created: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deleteRecordingAfterDays: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                meta: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-                modified: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                uid: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        range: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Array(
-        Schema.Struct({
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          deleteRecordingAfterDays: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-        }),
-      ),
-    ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListLiveInputsResponse>;
+    Schema.Union([ListLiveInputsResponse2, Schema.Array(LiveInput)]).pipe(
+      T.ResponsePath("result"),
+    ),
+  ) as unknown as Schema.Codec<ListLiveInputsResponse>;
 
 export type ListLiveInputsError = DefaultErrors;
 
@@ -2009,27 +2180,14 @@ export const CreateLiveInputRequest =
       deleteRecordingAfterDays: Schema.optional(Schema.Number),
       enabled: Schema.optional(Schema.Boolean),
       meta: Schema.optional(Schema.Unknown),
-      recording: Schema.optional(
-        Schema.Struct({
-          allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-          hideLiveViewerCount: Schema.optional(Schema.Boolean),
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["off", "automatic"]),
-              Schema.String,
-            ]),
-          ),
-          requireSignedURLs: Schema.optional(Schema.Boolean),
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
-      ),
+      recording: Schema.optional(Recording),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/stream/live_inputs",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateLiveInputRequest>;
+  ) as unknown as Schema.Codec<CreateLiveInputRequest>;
 
 export interface CreateLiveInputResponse {
   /** The date and time the live input was created. */
@@ -2058,7 +2216,7 @@ export const CreateLiveInputResponse =
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateLiveInputResponse>;
+  ) as unknown as Schema.Codec<CreateLiveInputResponse>;
 
 export type CreateLiveInputError = DefaultErrors;
 
@@ -2106,27 +2264,14 @@ export const UpdateLiveInputRequest =
       deleteRecordingAfterDays: Schema.optional(Schema.Number),
       enabled: Schema.optional(Schema.Boolean),
       meta: Schema.optional(Schema.Unknown),
-      recording: Schema.optional(
-        Schema.Struct({
-          allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-          hideLiveViewerCount: Schema.optional(Schema.Boolean),
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["off", "automatic"]),
-              Schema.String,
-            ]),
-          ),
-          requireSignedURLs: Schema.optional(Schema.Boolean),
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
-      ),
+      recording: Schema.optional(Recording),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateLiveInputRequest>;
+  ) as unknown as Schema.Codec<UpdateLiveInputRequest>;
 
 export interface UpdateLiveInputResponse {
   /** The date and time the live input was created. */
@@ -2155,7 +2300,7 @@ export const UpdateLiveInputResponse =
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateLiveInputResponse>;
+  ) as unknown as Schema.Codec<UpdateLiveInputResponse>;
 
 export type UpdateLiveInputError = DefaultErrors;
 
@@ -2189,14 +2334,14 @@ export const DeleteLiveInputRequest =
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteLiveInputRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveInputRequest>;
 
 export type DeleteLiveInputResponse = unknown;
 
 export const DeleteLiveInputResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<DeleteLiveInputResponse>;
+  ) as unknown as Schema.Codec<DeleteLiveInputResponse>;
 
 export type DeleteLiveInputError =
   | DefaultErrors
@@ -2237,7 +2382,7 @@ export const ListLiveInputOutputsRequest =
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}/outputs",
       }),
     ),
-  ) as unknown as Schema.Schema<ListLiveInputOutputsRequest>;
+  ) as unknown as Schema.Codec<ListLiveInputOutputsRequest>;
 
 export interface ListLiveInputOutputsResponse {
   result: {
@@ -2251,18 +2396,9 @@ export interface ListLiveInputOutputsResponse {
 export const ListLiveInputOutputsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          streamKey: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListLiveInputOutputsResponseResult),
     }),
-  ) as unknown as Schema.Schema<ListLiveInputOutputsResponse>;
+  ) as unknown as Schema.Codec<ListLiveInputOutputsResponse>;
 
 export type ListLiveInputOutputsError =
   | DefaultErrors
@@ -2312,7 +2448,7 @@ export const CreateLiveInputOutputRequest =
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}/outputs",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateLiveInputOutputRequest>;
+  ) as unknown as Schema.Codec<CreateLiveInputOutputRequest>;
 
 export interface CreateLiveInputOutputResponse {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live  */
@@ -2333,7 +2469,7 @@ export const CreateLiveInputOutputResponse =
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateLiveInputOutputResponse>;
+  ) as unknown as Schema.Codec<CreateLiveInputOutputResponse>;
 
 export type CreateLiveInputOutputError =
   | DefaultErrors
@@ -2375,7 +2511,7 @@ export const UpdateLiveInputOutputRequest =
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}/outputs/{outputIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateLiveInputOutputRequest>;
+  ) as unknown as Schema.Codec<UpdateLiveInputOutputRequest>;
 
 export interface UpdateLiveInputOutputResponse {
   /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live  */
@@ -2396,7 +2532,7 @@ export const UpdateLiveInputOutputResponse =
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateLiveInputOutputResponse>;
+  ) as unknown as Schema.Codec<UpdateLiveInputOutputResponse>;
 
 export type UpdateLiveInputOutputError =
   | DefaultErrors
@@ -2435,14 +2571,14 @@ export const DeleteLiveInputOutputRequest =
         path: "/accounts/{account_id}/stream/live_inputs/{liveInputIdentifier}/outputs/{outputIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteLiveInputOutputRequest>;
+  ) as unknown as Schema.Codec<DeleteLiveInputOutputRequest>;
 
 export type DeleteLiveInputOutputResponse = unknown;
 
 export const DeleteLiveInputOutputResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<DeleteLiveInputOutputResponse>;
+  ) as unknown as Schema.Codec<DeleteLiveInputOutputResponse>;
 
 export type DeleteLiveInputOutputError =
   | DefaultErrors
@@ -2480,7 +2616,7 @@ export const GetStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/stream/{identifier}",
     }),
   ),
-) as unknown as Schema.Schema<GetStreamRequest>;
+) as unknown as Schema.Codec<GetStreamRequest>;
 
 export interface GetStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -2576,15 +2712,7 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      input: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
       liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       maxDurationSeconds: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -2592,41 +2720,10 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       maxSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      playback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
       preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicDetails: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            channelLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            mediaId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            shareLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              channelLink: "channel_link",
-              logo: "logo",
-              mediaId: "media_id",
-              shareLink: "share_link",
-              title: "title",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([PublicDetails, Schema.Null]),
       ),
       readyToStream: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -2641,39 +2738,7 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            errorReasonCode: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            errorReasonText: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pctComplete: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            state: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pendingupload",
-                    "downloading",
-                    "queued",
-                    "inprogress",
-                    "ready",
-                    "error",
-                    "live-inprogress",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
       thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       thumbnailTimestampPct: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -2681,36 +2746,9 @@ export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetStreamResponse>;
+) as unknown as Schema.Codec<GetStreamResponse>;
 
 export type GetStreamError = DefaultErrors;
 
@@ -2805,7 +2843,7 @@ export const ListStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
       videoName: Schema.optional(Schema.String).pipe(T.HttpQuery("video_name")),
     }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/stream" })),
-) as unknown as Schema.Schema<ListStreamsRequest>;
+) as unknown as Schema.Codec<ListStreamsRequest>;
 
 export interface ListStreamsResponse {
   result: {
@@ -2873,186 +2911,9 @@ export interface ListStreamsResponse {
 export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          allowedOrigins: Schema.optional(
-            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-          ),
-          clippedFrom: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          input: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                height: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                width: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          liveInput: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          maxDurationSeconds: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          maxSizeBytes: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-          modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          playback: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                dash: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                hls: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          publicDetails: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                channelLink: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                logo: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                mediaId: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                shareLink: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                title: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  channelLink: "channel_link",
-                  logo: "logo",
-                  mediaId: "media_id",
-                  shareLink: "share_link",
-                  title: "title",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          readyToStream: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          readyToStreamAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          requireSignedURLs: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          scheduledDeletion: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                errorReasonCode: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                errorReasonText: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                pctComplete: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                state: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals([
-                        "pendingupload",
-                        "downloading",
-                        "queued",
-                        "inprogress",
-                        "ready",
-                        "error",
-                        "live-inprogress",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-          thumbnail: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          thumbnailTimestampPct: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          uploadExpiry: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          watermark: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                created: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                downloadedFrom: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                height: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                name: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                opacity: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                padding: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                position: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scale: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                size: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                uid: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                width: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ),
+      result: Schema.Array(ListStreamsResponseResult),
     }),
-) as unknown as Schema.Schema<ListStreamsResponse>;
+) as unknown as Schema.Codec<ListStreamsResponse>;
 
 export type ListStreamsError = DefaultErrors;
 
@@ -3102,13 +2963,13 @@ export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         T.HttpHeader("Upload-Metadata"),
       ),
     }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/stream" })),
-) as unknown as Schema.Schema<CreateStreamRequest>;
+) as unknown as Schema.Codec<CreateStreamRequest>;
 
 export type CreateStreamResponse = unknown;
 
 export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<CreateStreamResponse>;
+) as unknown as Schema.Codec<CreateStreamResponse>;
 
 export type CreateStreamError = DefaultErrors;
 
@@ -3140,13 +3001,13 @@ export const DeleteStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteStreamRequest>;
+) as unknown as Schema.Codec<DeleteStreamRequest>;
 
 export type DeleteStreamResponse = unknown;
 
 export const DeleteStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
-) as unknown as Schema.Schema<DeleteStreamResponse>;
+) as unknown as Schema.Codec<DeleteStreamResponse>;
 
 export type DeleteStreamError = DefaultErrors;
 
@@ -3201,25 +3062,7 @@ export const EditStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       creator: Schema.optional(Schema.String),
       maxDurationSeconds: Schema.optional(Schema.Number),
       meta: Schema.optional(Schema.Unknown),
-      publicDetails: Schema.optional(
-        Schema.Struct({
-          channelLink: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          shareLink: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            channelLink: "channel_link",
-            logo: "logo",
-            shareLink: "share_link",
-            title: "title",
-          }),
-        ),
-      ),
+      publicDetails: Schema.optional(PublicDetails2),
       requireSignedURLs: Schema.optional(Schema.Boolean),
       scheduledDeletion: Schema.optional(Schema.String),
       thumbnailTimestampPct: Schema.optional(Schema.Number),
@@ -3231,7 +3074,7 @@ export const EditStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<EditStreamRequest>;
+) as unknown as Schema.Codec<EditStreamRequest>;
 
 export interface EditStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use ` ` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
@@ -3327,15 +3170,7 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       creator: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      input: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      input: Schema.optional(Schema.Union([Input, Schema.Null])),
       liveInput: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       maxDurationSeconds: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -3343,41 +3178,10 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       maxSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       meta: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      playback: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            dash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            hls: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      playback: Schema.optional(Schema.Union([Playback, Schema.Null])),
       preview: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicDetails: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            channelLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            logo: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            mediaId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            shareLink: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            title: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              channelLink: "channel_link",
-              logo: "logo",
-              mediaId: "media_id",
-              shareLink: "share_link",
-              title: "title",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([PublicDetails, Schema.Null]),
       ),
       readyToStream: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -3392,39 +3196,7 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.String, Schema.Null]),
       ),
       size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            errorReasonCode: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            errorReasonText: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            pctComplete: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            state: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "pendingupload",
-                    "downloading",
-                    "queued",
-                    "inprogress",
-                    "ready",
-                    "error",
-                    "live-inprogress",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      status: Schema.optional(Schema.Union([Status, Schema.Null])),
       thumbnail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       thumbnailTimestampPct: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -3432,36 +3204,9 @@ export const EditStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploaded: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       uploadExpiry: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      watermark: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            created: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            downloadedFrom: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            opacity: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            padding: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            position: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      watermark: Schema.optional(Schema.Union([Watermark2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<EditStreamResponse>;
+) as unknown as Schema.Codec<EditStreamResponse>;
 
 export type EditStreamError = DefaultErrors;
 
@@ -3511,33 +3256,10 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       identifier: Schema.String.pipe(T.HttpPath("identifier")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.optional(Schema.String),
-      accessRules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            action: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["allow", "block"]),
-                Schema.String,
-              ]),
-            ),
-            country: Schema.optional(Schema.Array(Schema.String)),
-            ip: Schema.optional(Schema.Array(Schema.String)),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Literals(["any", "ip.src", "ip.geoip.country"]),
-                Schema.String,
-              ]),
-            ),
-          }),
-        ),
-      ),
+      accessRules: Schema.optional(Schema.Array(AccessRule)),
       downloadable: Schema.optional(Schema.Boolean),
       exp: Schema.optional(Schema.Number),
-      flags: Schema.optional(
-        Schema.Struct({
-          original: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      flags: Schema.optional(Flags),
       nbf: Schema.optional(Schema.Number),
       pem: Schema.optional(Schema.String),
     }).pipe(
@@ -3546,7 +3268,7 @@ export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/{identifier}/token",
       }),
     ),
-) as unknown as Schema.Schema<CreateTokenRequest>;
+) as unknown as Schema.Codec<CreateTokenRequest>;
 
 export interface CreateTokenResponse {
   /** The signed token used with the signed URLs feature. */
@@ -3558,7 +3280,7 @@ export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       token: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateTokenResponse>;
+) as unknown as Schema.Codec<CreateTokenResponse>;
 
 export type CreateTokenError = DefaultErrors;
 
@@ -3595,7 +3317,7 @@ export const StorageUsageVideoRequest =
         path: "/accounts/{account_id}/stream/storage-usage",
       }),
     ),
-  ) as unknown as Schema.Schema<StorageUsageVideoRequest>;
+  ) as unknown as Schema.Codec<StorageUsageVideoRequest>;
 
 export interface StorageUsageVideoResponse {
   /** A user-defined identifier for the media creator. */
@@ -3620,7 +3342,7 @@ export const StorageUsageVideoResponse =
       ),
       videoCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<StorageUsageVideoResponse>;
+  ) as unknown as Schema.Codec<StorageUsageVideoResponse>;
 
 export type StorageUsageVideoError = DefaultErrors;
 
@@ -3656,7 +3378,7 @@ export const GetWatermarkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/watermarks/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<GetWatermarkRequest>;
+) as unknown as Schema.Codec<GetWatermarkRequest>;
 
 export interface GetWatermarkResponse {
   /** The date and a time a watermark profile was created. */
@@ -3700,7 +3422,7 @@ export const GetWatermarkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetWatermarkResponse>;
+) as unknown as Schema.Codec<GetWatermarkResponse>;
 
 export type GetWatermarkError = DefaultErrors | WatermarkNotFound | Forbidden;
 
@@ -3730,7 +3452,7 @@ export const ListWatermarksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/watermarks",
       }),
     ),
-) as unknown as Schema.Schema<ListWatermarksRequest>;
+) as unknown as Schema.Codec<ListWatermarksRequest>;
 
 export interface ListWatermarksResponse {
   result: {
@@ -3751,25 +3473,9 @@ export interface ListWatermarksResponse {
 export const ListWatermarksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          downloadedFrom: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          height: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          opacity: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          padding: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          position: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          scale: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(Watermark2),
     }),
-  ) as unknown as Schema.Schema<ListWatermarksResponse>;
+  ) as unknown as Schema.Codec<ListWatermarksResponse>;
 
 export type ListWatermarksError = DefaultErrors;
 
@@ -3821,7 +3527,7 @@ export const CreateWatermarkRequest =
         path: "/accounts/{account_id}/stream/watermarks",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateWatermarkRequest>;
+  ) as unknown as Schema.Codec<CreateWatermarkRequest>;
 
 export interface CreateWatermarkResponse {
   /** The date and a time a watermark profile was created. */
@@ -3865,7 +3571,7 @@ export const CreateWatermarkResponse =
       uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       width: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateWatermarkResponse>;
+  ) as unknown as Schema.Codec<CreateWatermarkResponse>;
 
 export type CreateWatermarkError =
   | DefaultErrors
@@ -3900,14 +3606,14 @@ export const DeleteWatermarkRequest =
         path: "/accounts/{account_id}/stream/watermarks/{identifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteWatermarkRequest>;
+  ) as unknown as Schema.Codec<DeleteWatermarkRequest>;
 
 export type DeleteWatermarkResponse = string;
 
 export const DeleteWatermarkResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteWatermarkResponse>;
+  ) as unknown as Schema.Codec<DeleteWatermarkResponse>;
 
 export type DeleteWatermarkError =
   | DefaultErrors
@@ -3941,7 +3647,7 @@ export const GetWebhookRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/stream/webhook" }),
     ),
-) as unknown as Schema.Schema<GetWebhookRequest>;
+) as unknown as Schema.Codec<GetWebhookRequest>;
 
 export interface GetWebhookResponse {
   /** The date and time the webhook was last modified. */
@@ -3961,7 +3667,7 @@ export const GetWebhookResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       secret: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetWebhookResponse>;
+) as unknown as Schema.Codec<GetWebhookResponse>;
 
 export type GetWebhookError = DefaultErrors | WebhookNotFound | Forbidden;
 
@@ -3991,7 +3697,7 @@ export const PutWebhookRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "PUT", path: "/accounts/{account_id}/stream/webhook" }),
     ),
-) as unknown as Schema.Schema<PutWebhookRequest>;
+) as unknown as Schema.Codec<PutWebhookRequest>;
 
 export interface PutWebhookResponse {
   /** The date and time the webhook was last modified. */
@@ -4011,7 +3717,7 @@ export const PutWebhookResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       secret: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutWebhookResponse>;
+) as unknown as Schema.Codec<PutWebhookResponse>;
 
 export type PutWebhookError = DefaultErrors;
 
@@ -4041,13 +3747,13 @@ export const DeleteWebhookRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/stream/webhook",
       }),
     ),
-) as unknown as Schema.Schema<DeleteWebhookRequest>;
+) as unknown as Schema.Codec<DeleteWebhookRequest>;
 
 export type DeleteWebhookResponse = string;
 
 export const DeleteWebhookResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () => Schema.String.pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteWebhookResponse>;
+) as unknown as Schema.Codec<DeleteWebhookResponse>;
 
 export type DeleteWebhookError = DefaultErrors | WebhookNotFound | Forbidden;
 

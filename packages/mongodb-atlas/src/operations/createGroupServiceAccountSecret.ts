@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupServiceAccountSecretInput {
+  groupId: string;
+  clientId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupServiceAccountSecretInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupServiceAccountSecretInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets",
     }),
-  );
-export type CreateGroupServiceAccountSecretInput =
-  typeof CreateGroupServiceAccountSecretInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupServiceAccountSecretInput>;
 
 // Output Schema
+export type CreateGroupServiceAccountSecretOutput = void;
 export const CreateGroupServiceAccountSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupServiceAccountSecretOutput =
-  typeof CreateGroupServiceAccountSecretOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupServiceAccountSecretOutput>;
 
 // The operation
 /**

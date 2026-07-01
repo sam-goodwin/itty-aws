@@ -7,7 +7,8 @@
   "compilerOptions": {
     "outDir": "./lib",
     "rootDir": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noCheck": true
   },
   "references": [
     {

@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingFingerprintsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingFingerprintsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,22 @@ export const ErrorTrackingFingerprintsListInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/error_tracking/fingerprints/",
+      path: "/api/projects/{project_id}/error_tracking/fingerprints/",
     }),
-  );
-export type ErrorTrackingFingerprintsListInput =
-  typeof ErrorTrackingFingerprintsListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingFingerprintsListInput>;
 
 // Output Schema
+export interface ErrorTrackingFingerprintsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    fingerprint?: string;
+    issue_id?: string;
+    created_at?: string;
+  }[];
+}
 export const ErrorTrackingFingerprintsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -34,9 +47,7 @@ export const ErrorTrackingFingerprintsListOutput =
         }),
       ),
     ),
-  });
-export type ErrorTrackingFingerprintsListOutput =
-  typeof ErrorTrackingFingerprintsListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingFingerprintsListOutput>;
 
 // The operation
 /**
@@ -49,5 +60,4 @@ export const errorTrackingFingerprintsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingFingerprintsListInput,
     outputSchema: ErrorTrackingFingerprintsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

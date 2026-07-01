@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface DeleteEphemeralKeysKeyInput {
+  key: string;
+  expand?: string[];
+}
 export const DeleteEphemeralKeysKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,17 @@ export const DeleteEphemeralKeysKeyInput =
       path: "/v1/ephemeral_keys/{key}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteEphemeralKeysKeyInput =
-  typeof DeleteEphemeralKeysKeyInput.Type;
+  ) as unknown as Schema.Codec<DeleteEphemeralKeysKeyInput>;
 
 // Output Schema
+export interface DeleteEphemeralKeysKeyOutput {
+  created: number;
+  expires: number;
+  id: string;
+  livemode: boolean;
+  object: "ephemeral_key";
+  secret?: Redacted.Redacted<string>;
+}
 export const DeleteEphemeralKeysKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -26,10 +37,8 @@ export const DeleteEphemeralKeysKeyOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["ephemeral_key"]),
-    secret: Schema.optional(SensitiveString),
-  });
-export type DeleteEphemeralKeysKeyOutput =
-  typeof DeleteEphemeralKeysKeyOutput.Type;
+    secret: Schema.optional(SensitiveOutputString),
+  }) as unknown as Schema.Codec<DeleteEphemeralKeysKeyOutput>;
 
 // The operation
 /**

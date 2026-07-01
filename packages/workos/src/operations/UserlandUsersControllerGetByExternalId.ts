@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUsersControllerGetByExternalIdInput {
+  external_id: string;
+}
 export const UserlandUsersControllerGetByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +15,32 @@ export const UserlandUsersControllerGetByExternalIdInput =
       method: "GET",
       path: "/user_management/users/external_id/{external_id}",
     }),
-  );
-export type UserlandUsersControllerGetByExternalIdInput =
-  typeof UserlandUsersControllerGetByExternalIdInput.Type;
+  ) as unknown as Schema.Codec<UserlandUsersControllerGetByExternalIdInput>;
 
 // Output Schema
+export interface UserlandUsersControllerGetByExternalIdOutput {
+  object?: string;
+  id?: string;
+  first_name?: string | null;
+  last_name?: string | null;
+  name?: string | null;
+  profile_picture_url?: string | null;
+  email?: string;
+  email_verified?: boolean;
+  external_id?: string | null;
+  metadata?: Record<string, string>;
+  last_sign_in_at?: string | null;
+  locale?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const UserlandUsersControllerGetByExternalIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    name: Schema.optional(Schema.NullOr(Schema.String)),
     profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
     email: Schema.optional(Schema.String),
     email_verified: Schema.optional(Schema.Boolean),
@@ -32,9 +50,7 @@ export const UserlandUsersControllerGetByExternalIdOutput =
     locale: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type UserlandUsersControllerGetByExternalIdOutput =
-  typeof UserlandUsersControllerGetByExternalIdOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUsersControllerGetByExternalIdOutput>;
 
 // The operation
 /**

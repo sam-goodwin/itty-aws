@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,25 +22,53 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface V2LookupKeyResponse {
-  /** The project that owns the key with the value specified in the request. */
-  parent?: string;
-  /** The resource name of the API key. If the API key has been purged, resource name is empty. */
-  name?: string;
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const V2LookupKeyResponse: Schema.Schema<V2LookupKeyResponse> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "V2LookupKeyResponse" });
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
 
 export interface V2UndeleteKeyRequest {}
 
-export const V2UndeleteKeyRequest: Schema.Schema<V2UndeleteKeyRequest> =
+export const V2UndeleteKeyRequest: Schema.Codec<V2UndeleteKeyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V2UndeleteKeyRequest",
   });
+
+export interface V2ApiTarget {
+  /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
+  methods?: ReadonlyArray<string>;
+  /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
+  service?: string;
+}
+
+export const V2ApiTarget: Schema.Codec<V2ApiTarget> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    methods: Schema.optional(Schema.Array(Schema.String)),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "V2ApiTarget" });
+
+export interface V2BrowserKeyRestrictions {
+  /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
+  allowedReferrers?: ReadonlyArray<string>;
+}
+
+export const V2BrowserKeyRestrictions: Schema.Codec<V2BrowserKeyRestrictions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "V2BrowserKeyRestrictions" });
 
 export interface V2AndroidApplication {
   /** The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter. */
@@ -49,7 +77,7 @@ export interface V2AndroidApplication {
   packageName?: string;
 }
 
-export const V2AndroidApplication: Schema.Schema<V2AndroidApplication> =
+export const V2AndroidApplication: Schema.Codec<V2AndroidApplication> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha1Fingerprint: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -60,7 +88,7 @@ export interface V2AndroidKeyRestrictions {
   allowedApplications?: ReadonlyArray<V2AndroidApplication>;
 }
 
-export const V2AndroidKeyRestrictions: Schema.Schema<V2AndroidKeyRestrictions> =
+export const V2AndroidKeyRestrictions: Schema.Codec<V2AndroidKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedApplications: Schema.optional(Schema.Array(V2AndroidApplication)),
   }).annotate({ identifier: "V2AndroidKeyRestrictions" });
@@ -70,168 +98,140 @@ export interface V2ServerKeyRestrictions {
   allowedIps?: ReadonlyArray<string>;
 }
 
-export const V2ServerKeyRestrictions: Schema.Schema<V2ServerKeyRestrictions> =
+export const V2ServerKeyRestrictions: Schema.Codec<V2ServerKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedIps: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2ServerKeyRestrictions" });
-
-export interface V2BrowserKeyRestrictions {
-  /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
-  allowedReferrers?: ReadonlyArray<string>;
-}
-
-export const V2BrowserKeyRestrictions: Schema.Schema<V2BrowserKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "V2BrowserKeyRestrictions" });
-
-export interface V2ApiTarget {
-  /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
-  service?: string;
-  /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
-  methods?: ReadonlyArray<string>;
-}
-
-export const V2ApiTarget: Schema.Schema<V2ApiTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
-    methods: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "V2ApiTarget" });
 
 export interface V2IosKeyRestrictions {
   /** A list of bundle IDs that are allowed when making API calls with this key. */
   allowedBundleIds?: ReadonlyArray<string>;
 }
 
-export const V2IosKeyRestrictions: Schema.Schema<V2IosKeyRestrictions> =
+export const V2IosKeyRestrictions: Schema.Codec<V2IosKeyRestrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2IosKeyRestrictions" });
 
 export interface V2Restrictions {
-  /** The IP addresses of callers that are allowed to use the key. */
-  serverKeyRestrictions?: V2ServerKeyRestrictions;
+  /** A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed. */
+  apiTargets?: ReadonlyArray<V2ApiTarget>;
   /** The HTTP referrers (websites) that are allowed to use the key. */
   browserKeyRestrictions?: V2BrowserKeyRestrictions;
   /** The Android apps that are allowed to use the key. */
   androidKeyRestrictions?: V2AndroidKeyRestrictions;
-  /** A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed. */
-  apiTargets?: ReadonlyArray<V2ApiTarget>;
+  /** The IP addresses of callers that are allowed to use the key. */
+  serverKeyRestrictions?: V2ServerKeyRestrictions;
   /** The iOS apps that are allowed to use the key. */
   iosKeyRestrictions?: V2IosKeyRestrictions;
 }
 
-export const V2Restrictions: Schema.Schema<V2Restrictions> =
+export const V2Restrictions: Schema.Codec<V2Restrictions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serverKeyRestrictions: Schema.optional(V2ServerKeyRestrictions),
+    apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
     browserKeyRestrictions: Schema.optional(V2BrowserKeyRestrictions),
     androidKeyRestrictions: Schema.optional(V2AndroidKeyRestrictions),
-    apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
+    serverKeyRestrictions: Schema.optional(V2ServerKeyRestrictions),
     iosKeyRestrictions: Schema.optional(V2IosKeyRestrictions),
   }).annotate({ identifier: "V2Restrictions" });
 
 export interface V2Key {
+  /** Output only. Unique id in UUID4 format. */
+  uid?: string;
+  /** Output only. A timestamp when this key was deleted. If the resource is not deleted, this must be empty. */
+  deleteTime?: string;
+  /** Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
+  annotations?: Record<string, string>;
+  /** A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154. */
+  etag?: string;
+  /** Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+  name?: string;
+  /** Optional. The email address of [the service account](https://cloud.google.com/iam/docs/service-accounts) the key is bound to. */
+  serviceAccountEmail?: string;
   /** Human-readable display name of this key that you can modify. The maximum length is 63 characters. */
   displayName?: string;
   /** Key restrictions. */
   restrictions?: V2Restrictions;
-  /** Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-  name?: string;
-  /** Output only. A timestamp when this key was deleted. If the resource is not deleted, this must be empty. */
-  deleteTime?: string;
-  /** A checksum computed by the server based on the current value of the Key resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. See https://google.aip.dev/154. */
-  etag?: string;
-  /** Output only. A timestamp identifying the time this key was originally created. */
-  createTime?: string;
-  /** Optional. The email address of [the service account](https://cloud.google.com/iam/docs/service-accounts) the key is bound to. */
-  serviceAccountEmail?: string;
   /** Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method. */
   keyString?: string;
-  /** Output only. Unique id in UUID4 format. */
-  uid?: string;
-  /** Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
-  annotations?: Record<string, string>;
+  /** Output only. A timestamp identifying the time this key was originally created. */
+  createTime?: string;
   /** Output only. A timestamp identifying the time this key was last updated. */
   updateTime?: string;
 }
 
-export const V2Key: Schema.Schema<V2Key> =
+export const V2Key: Schema.Codec<V2Key> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uid: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceAccountEmail: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     restrictions: Schema.optional(V2Restrictions),
-    name: Schema.optional(Schema.String),
-    deleteTime: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    serviceAccountEmail: Schema.optional(Schema.String),
     keyString: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2Key" });
 
-export interface V2ListKeysResponse {
-  /** The pagination token for the next page of results. */
-  nextPageToken?: string;
-  /** A list of API keys. */
-  keys?: ReadonlyArray<V2Key>;
-}
-
-export const V2ListKeysResponse: Schema.Schema<V2ListKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    keys: Schema.optional(Schema.Array(V2Key)),
-  }).annotate({ identifier: "V2ListKeysResponse" });
-
-export interface Status {
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Status" });
-
-export interface Operation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+export interface V2LookupKeyResponse {
+  /** The resource name of the API key. If the API key has been purged, resource name is empty. */
   name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
+  /** The project that owns the key with the value specified in the request. */
+  parent?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const V2LookupKeyResponse: Schema.Codec<V2LookupKeyResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
-    error: Schema.optional(Status),
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
+    parent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "V2LookupKeyResponse" });
 
 export interface V2GetKeyStringResponse {
   /** An encrypted and signed value of the key. */
   keyString?: string;
 }
 
-export const V2GetKeyStringResponse: Schema.Schema<V2GetKeyStringResponse> =
+export const V2GetKeyStringResponse: Schema.Codec<V2GetKeyStringResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     keyString: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2GetKeyStringResponse" });
+
+export interface V2ListKeysResponse {
+  /** A list of API keys. */
+  keys?: ReadonlyArray<V2Key>;
+  /** The pagination token for the next page of results. */
+  nextPageToken?: string;
+}
+
+export const V2ListKeysResponse: Schema.Codec<V2ListKeysResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keys: Schema.optional(Schema.Array(V2Key)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "V2ListKeysResponse" });
+
+export interface Operation {
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+}
+
+export const Operation: Schema.Codec<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "Operation" });
 
 // ==========================================================================
 // Errors
@@ -297,7 +297,7 @@ export const LookupKeyKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/keys:lookupKey" }),
   svc,
-) as unknown as Schema.Schema<LookupKeyKeysRequest>;
+) as unknown as Schema.Codec<LookupKeyKeysRequest>;
 
 export type LookupKeyKeysResponse = V2LookupKeyResponse;
 export const LookupKeyKeysResponse =
@@ -327,7 +327,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetOperationsRequest>;
+) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
@@ -344,6 +344,87 @@ export const getOperations: API.OperationMethod<
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface CreateProjectsLocationsKeysRequest {
+  /** Required. The project in which the API key is created. The parent field must be in format of "projects//locations/global". */
+  parent: string;
+  /** User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string. */
+  keyId?: string;
+  /** Request body */
+  body?: V2Key;
+}
+
+export const CreateProjectsLocationsKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    keyId: Schema.optional(Schema.String).pipe(T.HttpQuery("keyId")),
+    body: Schema.optional(V2Key).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+parent}/keys", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsLocationsKeysRequest>;
+
+export type CreateProjectsLocationsKeysResponse = Operation;
+export const CreateProjectsLocationsKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+export const createProjectsLocationsKeys: API.OperationMethod<
+  CreateProjectsLocationsKeysRequest,
+  CreateProjectsLocationsKeysResponse,
+  CreateProjectsLocationsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsKeysRequest,
+  output: CreateProjectsLocationsKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsKeysRequest {
+  /** Required. The resource name of the API key to be deleted. */
+  name: string;
+  /** Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency. */
+  etag?: string;
+}
+
+export const DeleteProjectsLocationsKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsKeysRequest>;
+
+export type DeleteProjectsLocationsKeysResponse = Operation;
+export const DeleteProjectsLocationsKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+export const deleteProjectsLocationsKeys: API.OperationMethod<
+  DeleteProjectsLocationsKeysRequest,
+  DeleteProjectsLocationsKeysResponse,
+  DeleteProjectsLocationsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsKeysRequest,
+  output: DeleteProjectsLocationsKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsKeysRequest {
@@ -363,7 +444,7 @@ export const PatchProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsKeysRequest>;
 
 export type PatchProjectsLocationsKeysResponse = Operation;
 export const PatchProjectsLocationsKeysResponse =
@@ -388,29 +469,102 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface UndeleteProjectsLocationsKeysRequest {
+  /** Required. The resource name of the API key to be undeleted. */
+  name: string;
+  /** Request body */
+  body?: V2UndeleteKeyRequest;
+}
+
+export const UndeleteProjectsLocationsKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(V2UndeleteKeyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UndeleteProjectsLocationsKeysRequest>;
+
+export type UndeleteProjectsLocationsKeysResponse = Operation;
+export const UndeleteProjectsLocationsKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type UndeleteProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+export const undeleteProjectsLocationsKeys: API.OperationMethod<
+  UndeleteProjectsLocationsKeysRequest,
+  UndeleteProjectsLocationsKeysResponse,
+  UndeleteProjectsLocationsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UndeleteProjectsLocationsKeysRequest,
+  output: UndeleteProjectsLocationsKeysResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsKeysRequest {
+  /** Required. The resource name of the API key to get. */
+  name: string;
+}
+
+export const GetProjectsLocationsKeysRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsKeysRequest>;
+
+export type GetProjectsLocationsKeysResponse = V2Key;
+export const GetProjectsLocationsKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ V2Key;
+
+export type GetProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
+export const getProjectsLocationsKeys: API.OperationMethod<
+  GetProjectsLocationsKeysRequest,
+  GetProjectsLocationsKeysResponse,
+  GetProjectsLocationsKeysError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsKeysRequest,
+  output: GetProjectsLocationsKeysResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsKeysRequest {
-  /** Optional. Specifies the maximum number of results to be returned at a time. */
-  pageSize?: number;
-  /** Optional. Requests a specific page of results. */
-  pageToken?: string;
-  /** Optional. Indicate that keys deleted in the past 30 days should also be returned. */
-  showDeleted?: boolean;
   /** Required. Lists all API keys associated with this project. The parent field must be in format of "projects//locations/global". */
   parent: string;
+  /** Optional. Specifies the maximum number of results to be returned at a time. */
+  pageSize?: number;
+  /** Optional. Indicate that keys deleted in the past 30 days should also be returned. */
+  showDeleted?: boolean;
+  /** Optional. Requests a specific page of results. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     showDeleted: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showDeleted"),
     ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+parent}/keys" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsKeysRequest>;
 
 export type ListProjectsLocationsKeysResponse = V2ListKeysResponse;
 export const ListProjectsLocationsKeysResponse =
@@ -437,160 +591,6 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CreateProjectsLocationsKeysRequest {
-  /** Required. The project in which the API key is created. The parent field must be in format of "projects//locations/global". */
-  parent: string;
-  /** User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string. */
-  keyId?: string;
-  /** Request body */
-  body?: V2Key;
-}
-
-export const CreateProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    keyId: Schema.optional(Schema.String).pipe(T.HttpQuery("keyId")),
-    body: Schema.optional(V2Key).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+parent}/keys", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsKeysRequest>;
-
-export type CreateProjectsLocationsKeysResponse = Operation;
-export const CreateProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-export const createProjectsLocationsKeys: API.OperationMethod<
-  CreateProjectsLocationsKeysRequest,
-  CreateProjectsLocationsKeysResponse,
-  CreateProjectsLocationsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsKeysRequest,
-  output: CreateProjectsLocationsKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsKeysRequest {
-  /** Required. The resource name of the API key to get. */
-  name: string;
-}
-
-export const GetProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsKeysRequest>;
-
-export type GetProjectsLocationsKeysResponse = V2Key;
-export const GetProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V2Key;
-
-export type GetProjectsLocationsKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-export const getProjectsLocationsKeys: API.OperationMethod<
-  GetProjectsLocationsKeysRequest,
-  GetProjectsLocationsKeysResponse,
-  GetProjectsLocationsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsKeysRequest,
-  output: GetProjectsLocationsKeysResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsKeysRequest {
-  /** Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency. */
-  etag?: string;
-  /** Required. The resource name of the API key to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v2/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsKeysRequest>;
-
-export type DeleteProjectsLocationsKeysResponse = Operation;
-export const DeleteProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-export const deleteProjectsLocationsKeys: API.OperationMethod<
-  DeleteProjectsLocationsKeysRequest,
-  DeleteProjectsLocationsKeysResponse,
-  DeleteProjectsLocationsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsKeysRequest,
-  output: DeleteProjectsLocationsKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UndeleteProjectsLocationsKeysRequest {
-  /** Required. The resource name of the API key to be undeleted. */
-  name: string;
-  /** Request body */
-  body?: V2UndeleteKeyRequest;
-}
-
-export const UndeleteProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(V2UndeleteKeyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v2/{+name}:undelete", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UndeleteProjectsLocationsKeysRequest>;
-
-export type UndeleteProjectsLocationsKeysResponse = Operation;
-export const UndeleteProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type UndeleteProjectsLocationsKeysError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
-export const undeleteProjectsLocationsKeys: API.OperationMethod<
-  UndeleteProjectsLocationsKeysRequest,
-  UndeleteProjectsLocationsKeysResponse,
-  UndeleteProjectsLocationsKeysError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsLocationsKeysRequest,
-  output: UndeleteProjectsLocationsKeysResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetKeyStringProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to be retrieved. */
   name: string;
@@ -602,7 +602,7 @@ export const GetKeyStringProjectsLocationsKeysRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/keyString" }),
     svc,
-  ) as unknown as Schema.Schema<GetKeyStringProjectsLocationsKeysRequest>;
+  ) as unknown as Schema.Codec<GetKeyStringProjectsLocationsKeysRequest>;
 
 export type GetKeyStringProjectsLocationsKeysResponse = V2GetKeyStringResponse;
 export const GetKeyStringProjectsLocationsKeysResponse =

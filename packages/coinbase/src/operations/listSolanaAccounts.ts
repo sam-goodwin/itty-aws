@@ -3,14 +3,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListSolanaAccountsInput {
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListSolanaAccountsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/v2/solana/accounts" }));
-export type ListSolanaAccountsInput = typeof ListSolanaAccountsInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/v2/solana/accounts" }),
+  ) as unknown as Schema.Codec<ListSolanaAccountsInput>;
 
 // Output Schema
+export interface ListSolanaAccountsOutput {
+  accounts: {
+    address: string;
+    name?: string;
+    policies?: string[];
+    createdAt?: string;
+    updatedAt?: string;
+  }[];
+  nextPageToken?: string;
+}
 export const ListSolanaAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accounts: Schema.Array(
@@ -23,12 +38,11 @@ export const ListSolanaAccountsOutput =
       }),
     ),
     nextPageToken: Schema.optional(Schema.String),
-  });
-export type ListSolanaAccountsOutput = typeof ListSolanaAccountsOutput.Type;
+  }) as unknown as Schema.Codec<ListSolanaAccountsOutput>;
 
 // The operation
 /**
- * List Solana accounts or get account by name
+ * List Solana accounts
  *
  * Lists the Solana accounts belonging to the developer.
  * The response is paginated, and by default, returns 20 accounts per page.

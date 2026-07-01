@@ -4,6 +4,16 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupHostFtsMetricMeasurementsInput {
+  processId: string;
+  groupId: string;
+  granularity: string;
+  period?: string;
+  start?: string;
+  end?: string;
+  envelope?: boolean;
+  metrics: string;
+}
 export const ListGroupHostFtsMetricMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
@@ -19,15 +29,12 @@ export const ListGroupHostFtsMetricMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements",
     }),
-  );
-export type ListGroupHostFtsMetricMeasurementsInput =
-  typeof ListGroupHostFtsMetricMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupHostFtsMetricMeasurementsInput>;
 
 // Output Schema
+export type ListGroupHostFtsMetricMeasurementsOutput = void;
 export const ListGroupHostFtsMetricMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupHostFtsMetricMeasurementsOutput =
-  typeof ListGroupHostFtsMetricMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupHostFtsMetricMeasurementsOutput>;
 
 // The operation
 /**

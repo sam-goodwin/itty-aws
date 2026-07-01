@@ -4,6 +4,36 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsEnvironmentMappingPartialUpdateInput {
+  id: string;
+  organization_id: string;
+  kind?: "vercel";
+  integration_id?: string | null;
+  config?: unknown;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const IntegrationsEnvironmentMappingPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -26,7 +56,23 @@ export const IntegrationsEnvironmentMappingPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -35,11 +81,38 @@ export const IntegrationsEnvironmentMappingPartialUpdateInput =
       method: "PATCH",
       path: "/api/organizations/{organization_id}/integrations/{id}/environment-mapping/",
     }),
-  );
-export type IntegrationsEnvironmentMappingPartialUpdateInput =
-  typeof IntegrationsEnvironmentMappingPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsEnvironmentMappingPartialUpdateInput>;
 
 // Output Schema
+export interface IntegrationsEnvironmentMappingPartialUpdateOutput {
+  id?: string;
+  kind?: "vercel";
+  integration_id?: string | null;
+  config?: unknown;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const IntegrationsEnvironmentMappingPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -61,13 +134,27 @@ export const IntegrationsEnvironmentMappingPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type IntegrationsEnvironmentMappingPartialUpdateOutput =
-  typeof IntegrationsEnvironmentMappingPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsEnvironmentMappingPartialUpdateOutput>;
 
 // The operation
 /**
@@ -79,6 +166,7 @@ export type IntegrationsEnvironmentMappingPartialUpdateOutput =
  * via the DELETE endpoint.
  *
  * @param id - A UUID string identifying this organization integration.
+ * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const integrationsEnvironmentMappingPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

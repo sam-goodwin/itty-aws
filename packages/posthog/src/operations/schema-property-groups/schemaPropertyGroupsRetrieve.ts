@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SchemaPropertyGroupsRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const SchemaPropertyGroupsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,48 @@ export const SchemaPropertyGroupsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/schema_property_groups/{id}/",
     }),
-  );
-export type SchemaPropertyGroupsRetrieveInput =
-  typeof SchemaPropertyGroupsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SchemaPropertyGroupsRetrieveInput>;
 
 // Output Schema
+export interface SchemaPropertyGroupsRetrieveOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  properties?: {
+    id?: string;
+    name?: string;
+    property_type?: "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
+    is_required?: boolean;
+    is_optional_in_types?: boolean;
+    description?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  events?: { id?: string; name?: string }[];
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const SchemaPropertyGroupsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -68,13 +109,27 @@ export const SchemaPropertyGroupsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type SchemaPropertyGroupsRetrieveOutput =
-  typeof SchemaPropertyGroupsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<SchemaPropertyGroupsRetrieveOutput>;
 
 // The operation
 /**

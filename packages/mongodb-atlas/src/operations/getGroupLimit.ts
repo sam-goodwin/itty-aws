@@ -4,6 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupLimitInput {
+  limitName:
+    | "atlas.project.security.databaseAccess.users"
+    | "atlas.project.deployment.clusters"
+    | "atlas.project.deployment.serverlessMTMs"
+    | "atlas.project.security.databaseAccess.customRoles"
+    | "atlas.project.security.networkAccess.entries"
+    | "atlas.project.security.networkAccess.crossRegionEntries"
+    | "atlas.project.deployment.nodesPerPrivateLinkRegion"
+    | "dataFederation.bytesProcessed.query"
+    | "dataFederation.bytesProcessed.daily"
+    | "dataFederation.bytesProcessed.weekly"
+    | "dataFederation.bytesProcessed.monthly"
+    | "atlas.project.deployment.privateServiceConnectionsPerRegionGroup"
+    | "atlas.project.deployment.privateServiceConnectionsSubnetMask";
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   limitName: Schema.Literals([
     "atlas.project.security.databaseAccess.users",
@@ -28,25 +47,25 @@ export const GetGroupLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/groups/{groupId}/limits/{limitName}",
   }),
-);
-export type GetGroupLimitInput = typeof GetGroupLimitInput.Type;
+) as unknown as Schema.Codec<GetGroupLimitInput>;
 
 // Output Schema
-export const GetGroupLimitOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupLimitOutput = typeof GetGroupLimitOutput.Type;
+export type GetGroupLimitOutput = void;
+export const GetGroupLimitOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupLimitOutput>;
 
 // The operation
 /**
  * Return One Limit for One Project
  *
- * Returns the specified limit for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the specified limit for the specified project.
  *
  * @param limitName - Human-readable label that identifies this project limit.
 
 | Limit Name | Description | Default | API Override Limit |
 | --- | --- | --- | --- |
 | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 |
-| `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on the number of nodes per Private Link region in this project | 50 | 90 |
+| `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 |
 | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 |
 | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 |
 | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 |

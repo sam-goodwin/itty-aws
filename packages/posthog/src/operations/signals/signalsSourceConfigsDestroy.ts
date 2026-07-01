@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SignalsSourceConfigsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const SignalsSourceConfigsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const SignalsSourceConfigsDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/signals/source_configs/{id}/",
     }),
-  );
-export type SignalsSourceConfigsDestroyInput =
-  typeof SignalsSourceConfigsDestroyInput.Type;
+  ) as unknown as Schema.Codec<SignalsSourceConfigsDestroyInput>;
 
 // Output Schema
+export type SignalsSourceConfigsDestroyOutput = void;
 export const SignalsSourceConfigsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SignalsSourceConfigsDestroyOutput =
-  typeof SignalsSourceConfigsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalsSourceConfigsDestroyOutput>;
 
 // The operation
 /**

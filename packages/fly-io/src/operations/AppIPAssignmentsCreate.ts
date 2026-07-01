@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AppIPAssignmentsCreateInput {
+  app_name: string;
+  network?: string;
+  org_slug?: string;
+  region?: string;
+  service_name?: string;
+  type?: string;
+}
 export const AppIPAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -12,11 +20,18 @@ export const AppIPAssignmentsCreateInput =
     region: Schema.optional(Schema.String),
     service_name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/apps/{app_name}/ip_assignments" }));
-export type AppIPAssignmentsCreateInput =
-  typeof AppIPAssignmentsCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/apps/{app_name}/ip_assignments" }),
+  ) as unknown as Schema.Codec<AppIPAssignmentsCreateInput>;
 
 // Output Schema
+export interface AppIPAssignmentsCreateOutput {
+  created_at?: string;
+  ip?: string;
+  region?: string;
+  service_name?: string;
+  shared?: boolean;
+}
 export const AppIPAssignmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
@@ -24,9 +39,7 @@ export const AppIPAssignmentsCreateOutput =
     region: Schema.optional(Schema.String),
     service_name: Schema.optional(Schema.String),
     shared: Schema.optional(Schema.Boolean),
-  });
-export type AppIPAssignmentsCreateOutput =
-  typeof AppIPAssignmentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AppIPAssignmentsCreateOutput>;
 
 // The operation
 /**

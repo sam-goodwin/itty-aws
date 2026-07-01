@@ -3,12 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetKeysInput {}
 export const GetKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/keys" }),
-);
-export type GetKeysInput = typeof GetKeysInput.Type;
+) as unknown as Schema.Codec<GetKeysInput>;
 
 // Output Schema
+export interface GetKeysOutput {
+  keys: {
+    value?: string;
+    description: string;
+    actions: string[];
+    collections: string[];
+    expires_at?: number;
+    id?: number;
+    value_prefix?: string;
+  }[];
+}
 export const GetKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   keys: Schema.Array(
     Schema.Struct({
@@ -21,8 +32,7 @@ export const GetKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       value_prefix: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GetKeysOutput = typeof GetKeysOutput.Type;
+}) as unknown as Schema.Codec<GetKeysOutput>;
 
 // The operation
 /**

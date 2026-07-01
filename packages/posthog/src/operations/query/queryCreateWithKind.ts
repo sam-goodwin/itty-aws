@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface QueryCreateWithKindInput {
+  project_id: string;
+  query_kind: string;
+}
 export const QueryCreateWithKindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const QueryCreateWithKindInput =
       method: "POST",
       path: "/api/projects/{project_id}/query/{query_kind}/",
     }),
-  );
-export type QueryCreateWithKindInput = typeof QueryCreateWithKindInput.Type;
+  ) as unknown as Schema.Codec<QueryCreateWithKindInput>;
 
 // Output Schema
+export type QueryCreateWithKindOutput = void;
 export const QueryCreateWithKindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type QueryCreateWithKindOutput = typeof QueryCreateWithKindOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<QueryCreateWithKindOutput>;
 
 // The operation
 /**

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WarehouseTablesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const WarehouseTablesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const WarehouseTablesDestroyInput =
       method: "DELETE",
       path: "/api/projects/{project_id}/warehouse_tables/{id}/",
     }),
-  );
-export type WarehouseTablesDestroyInput =
-  typeof WarehouseTablesDestroyInput.Type;
+  ) as unknown as Schema.Codec<WarehouseTablesDestroyInput>;
 
 // Output Schema
+export type WarehouseTablesDestroyOutput = void;
 export const WarehouseTablesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WarehouseTablesDestroyOutput =
-  typeof WarehouseTablesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WarehouseTablesDestroyOutput>;
 
 // The operation
 /**

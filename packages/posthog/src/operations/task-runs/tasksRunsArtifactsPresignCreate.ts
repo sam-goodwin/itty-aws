@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsArtifactsPresignCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  storage_path?: string;
+}
 export const TasksRunsArtifactsPresignCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,18 +21,18 @@ export const TasksRunsArtifactsPresignCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/presign/",
     }),
-  );
-export type TasksRunsArtifactsPresignCreateInput =
-  typeof TasksRunsArtifactsPresignCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsArtifactsPresignCreateInput>;
 
 // Output Schema
+export interface TasksRunsArtifactsPresignCreateOutput {
+  url?: string;
+  expires_in?: number;
+}
 export const TasksRunsArtifactsPresignCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     expires_in: Schema.optional(Schema.Number),
-  });
-export type TasksRunsArtifactsPresignCreateOutput =
-  typeof TasksRunsArtifactsPresignCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsArtifactsPresignCreateOutput>;
 
 // The operation
 /**
@@ -34,7 +40,6 @@ export type TasksRunsArtifactsPresignCreateOutput =
  *
  * Returns a temporary, signed URL that can be used to download a specific artifact.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsArtifactsPresignCreate =

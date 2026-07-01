@@ -4,18 +4,27 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface ListEventTypesInput {
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListEventTypesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
   itemsPerPage: Schema.optional(Schema.Number),
   pageNum: Schema.optional(Schema.Number),
   pretty: Schema.optional(Schema.Boolean),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/eventTypes" }));
-export type ListEventTypesInput = typeof ListEventTypesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/eventTypes" }),
+) as unknown as Schema.Codec<ListEventTypesInput>;
 
 // Output Schema
-export const ListEventTypesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListEventTypesOutput = typeof ListEventTypesOutput.Type;
+export type ListEventTypesOutput = void;
+export const ListEventTypesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListEventTypesOutput>;
 
 // The operation
 /**

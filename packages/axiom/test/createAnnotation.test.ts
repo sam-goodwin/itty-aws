@@ -47,7 +47,7 @@ describe("createAnnotation", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -77,7 +77,7 @@ describe("createAnnotation", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -96,6 +96,6 @@ describe("createAnnotation", () => {
 
       expect((error as { _tag: string })._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

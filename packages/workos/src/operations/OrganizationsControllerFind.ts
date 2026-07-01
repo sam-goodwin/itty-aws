@@ -4,14 +4,45 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerFindInput {
+  id: string;
+}
 export const OrganizationsControllerFindInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/organizations/{id}" }));
-export type OrganizationsControllerFindInput =
-  typeof OrganizationsControllerFindInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/organizations/{id}" }),
+  ) as unknown as Schema.Codec<OrganizationsControllerFindInput>;
 
 // Output Schema
+export interface OrganizationsControllerFindOutput {
+  object?: string;
+  id?: string;
+  name?: string;
+  domains?: {
+    object: string;
+    id: string;
+    organization_id: string;
+    domain: string;
+    state?:
+      | "failed"
+      | "legacy_verified"
+      | "pending"
+      | "unverified"
+      | "verified";
+    verification_prefix?: string;
+    verification_token?: string;
+    verification_strategy?: "dns" | "manual";
+    created_at: string;
+    updated_at: string;
+  }[];
+  metadata?: Record<string, string>;
+  external_id?: string | null;
+  stripe_customer_id?: string;
+  created_at?: string;
+  updated_at?: string;
+  allow_profiles_outside_organization?: boolean;
+}
 export const OrganizationsControllerFindOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -49,9 +80,7 @@ export const OrganizationsControllerFindOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
-  });
-export type OrganizationsControllerFindOutput =
-  typeof OrganizationsControllerFindOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerFindOutput>;
 
 // The operation
 /**

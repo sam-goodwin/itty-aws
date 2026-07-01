@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDatabasePostgresCidrInput {
+  organization: string;
+  database: string;
+  id: string;
+  schema?: string;
+  role?: string;
+  cidrs?: string[];
+}
 export const UpdateDatabasePostgresCidrInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,14 +22,22 @@ export const UpdateDatabasePostgresCidrInput =
     cidrs: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/cidrs/{id}",
     }),
-  );
-export type UpdateDatabasePostgresCidrInput =
-  typeof UpdateDatabasePostgresCidrInput.Type;
+  ) as unknown as Schema.Codec<UpdateDatabasePostgresCidrInput>;
 
 // Output Schema
+export interface UpdateDatabasePostgresCidrOutput {
+  id: string;
+  schema: string;
+  role: string;
+  cidrs: string[];
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+}
 export const UpdateDatabasePostgresCidrOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -36,9 +52,7 @@ export const UpdateDatabasePostgresCidrOutput =
       display_name: Schema.String,
       avatar_url: Schema.String,
     }),
-  });
-export type UpdateDatabasePostgresCidrOutput =
-  typeof UpdateDatabasePostgresCidrOutput.Type;
+  }) as unknown as Schema.Codec<UpdateDatabasePostgresCidrOutput>;
 
 // The operation
 /**

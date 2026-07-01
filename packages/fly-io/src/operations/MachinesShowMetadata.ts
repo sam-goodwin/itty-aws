@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesShowMetadataInput {
+  app_name: string;
+  machine_id: string;
+}
 export const MachinesShowMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,15 @@ export const MachinesShowMetadataInput =
       method: "GET",
       path: "/apps/{app_name}/machines/{machine_id}/metadata",
     }),
-  );
-export type MachinesShowMetadataInput = typeof MachinesShowMetadataInput.Type;
+  ) as unknown as Schema.Codec<MachinesShowMetadataInput>;
 
 // Output Schema
+export type MachinesShowMetadataOutput = Record<string, string>;
 export const MachinesShowMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.String);
-export type MachinesShowMetadataOutput = typeof MachinesShowMetadataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.String,
+  ) as unknown as Schema.Codec<MachinesShowMetadataOutput>;
 
 // The operation
 /**

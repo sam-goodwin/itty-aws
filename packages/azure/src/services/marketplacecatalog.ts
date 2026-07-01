@@ -4,11 +4,15 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateApiKeyPostInput {
+  apiKeyAlias: string;
+  subscriptionId: string;
+}
 export const CreateApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18,17 +22,19 @@ export const CreateApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys/{apiKeyAlias}/create",
     apiVersion: "2023-01-01-preview",
   }),
-);
-export type CreateApiKeyPostInput = typeof CreateApiKeyPostInput.Type;
+) as unknown as Schema.Codec<CreateApiKeyPostInput>;
 
 // Output Schema
+export interface CreateApiKeyPostOutput {
+  keyAlias?: string;
+  key?: string;
+}
 export const CreateApiKeyPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     keyAlias: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
   },
-);
-export type CreateApiKeyPostOutput = typeof CreateApiKeyPostOutput.Type;
+) as unknown as Schema.Codec<CreateApiKeyPostOutput>;
 
 // The operation
 /**
@@ -44,17 +50,629 @@ export const CreateApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CreateApiKeyPostOutput,
 }));
 // Input Schema
+export interface EdgeZonesProductsListInput {
+  subscriptionId: string;
+  location: string;
+  edgeZone: string;
+  language?: string;
+  market?: string;
+  $select?: string;
+  $skipToken?: string;
+}
 export const EdgeZonesProductsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    location: Schema.String.pipe(T.PathParam()),
+    edgeZone: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    market: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $skipToken: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/locations/{location}/edgeZones/{edgeZone}/products",
       apiVersion: "2022-07-31",
     }),
-  );
-export type EdgeZonesProductsListInput = typeof EdgeZonesProductsListInput.Type;
+  ) as unknown as Schema.Codec<EdgeZonesProductsListInput>;
 
 // Output Schema
+export interface EdgeZonesProductsListOutput {
+  nextPageLink?: string | null;
+  count?: number | null;
+  items?:
+    | {
+        language: string;
+        displayName?: string | null;
+        hasStandardContractAmendments?: boolean;
+        publisherMpnId?: string | null;
+        sellerId?: string | null;
+        publisherId?: string | null;
+        partnerCenterId?: string | null;
+        publisherDisplayName?: string | null;
+        offerId: string;
+        legacyId: string;
+        determinedStorefronts?:
+          | ("Appsource" | "AMP" | "Ibiza" | "Cosell" | "DakotaDownstream")[]
+          | null;
+        standardContractAmendmentsRevisionId?: string;
+        universalAmendmentUrl?: string | null;
+        summary?: string | null;
+        longSummary?: string | null;
+        description?: string | null;
+        offerType?:
+          | "None"
+          | "DevService"
+          | "ManagedApplication"
+          | "VirtualMachine"
+          | "AzureApplication"
+          | "Container"
+          | "SaaS"
+          | "SolutionTemplate"
+          | "IotEdgeModules"
+          | "ManagedServices"
+          | "ContainerApps"
+          | "VisualStudioExtension"
+          | "DynamicsOps"
+          | "DynamicsCE"
+          | "DynamicsBC"
+          | "PowerBI"
+          | "ConsultingServices"
+          | "CosellOnly"
+          | "CoreVirtualMachine"
+          | "PowerBIVisuals"
+          | "Office365"
+          | "AADApps";
+        isPrivate?: boolean;
+        isPreview?: boolean;
+        isStopSell?: boolean;
+        stopSellInfo?: {
+          startDate?: string | null;
+          reason?: "EndOfSupport" | "SecurityIssue" | "Other" | null;
+          alternativeOfferId?: string | null;
+          alternativePlanId?: string | null;
+        } | null;
+        fulfillBeforeChargeEligible?: boolean;
+        marketingMaterial?: {
+          path?: string | null;
+          learnUri?: string | null;
+        } | null;
+        markets?: string[] | null;
+        isvContactDetails?: Record<string, string> | null;
+        bigId: string;
+        ocpSolutionId?: string | null;
+        legalTermsUri?: string | null;
+        cspLegalTermsUri?: string | null;
+        legalTermsType?: "None" | "EA";
+        privacyPolicyUri?: string | null;
+        helpLink?: string | null;
+        supportUri?: string | null;
+        version?: string | null;
+        uiDefinitionUri?: string | null;
+        categoryIds?: string[] | null;
+        operatingSystems?: string[] | null;
+        marketCode?: string | null;
+        marketStates?: string[] | null;
+        industryIds?: string[] | null;
+        primaryIndustry?: string[] | null;
+        primaryCategories?: string[] | null;
+        cloudIndustryCategories?: string[] | null;
+        primaryProduct?: string | null;
+        supportedProducts?: string[] | null;
+        applicableProducts?: string[] | null;
+        serviceType?: string | null;
+        competencies?:
+          | {
+              competencyName?: string | null;
+              competencyLevel?: string | null;
+            }[]
+          | null;
+        hasPrices?: boolean | null;
+        duration?: {
+          durationValue?: number;
+          durationUnit?: "Days" | "Hours" | "Weeks" | "Months";
+        } | null;
+        marketPricingDetails?:
+          | {
+              pricing?: {
+                currencyCode?: string | null;
+                planPrices?:
+                  | {
+                      planId?: string | null;
+                      currencyDecorator?: 0 | 1;
+                      price?: number;
+                    }[]
+                  | null;
+              } | null;
+              marketCode?: string | null;
+              marketStates?: string[] | null;
+            }[]
+          | null;
+        startingPrice?: {
+          market: string;
+          termUnits?: string | null;
+          meterUnits?: string | null;
+          minTermPrice?: number | null;
+          minMeterPrice?: number | null;
+          currency: string;
+        } | null;
+        pricing?: {
+          currencyCode?: string | null;
+          planPrices?:
+            | {
+                planId?: string | null;
+                currencyDecorator?: 0 | 1;
+                price?: number;
+              }[]
+            | null;
+        } | null;
+        solutionAreas?: string[] | null;
+        screenshotUris?: string[] | null;
+        links?:
+          | {
+              id?: string | null;
+              displayName?: string | null;
+              uri?: string | null;
+            }[]
+          | null;
+        filters?: { type?: string | null; value?: string | null }[] | null;
+        iconFileUris?: Record<string, string> | null;
+        artifacts?:
+          | {
+              name?: string | null;
+              uri?: string | null;
+              type?: "Template" | "Fragment" | "Custom" | "Metadata";
+            }[]
+          | null;
+        metadata?: {
+          leadGeneration?: {
+            productId?: string | null;
+            leadGenEnabled?: boolean | null;
+          } | null;
+          testDrive?: {
+            description?: string | null;
+            userManual?: string | null;
+            testDriveDuration?: string | null;
+            accessInformation?: string | null;
+            orchestrationType?: string | null;
+            labId?: string | null;
+            demoId?: string | null;
+            video?: {
+              caption?: string | null;
+              uri?: string | null;
+              videoPurpose?: string | null;
+              previewImage?: {
+                caption?: string | null;
+                uri?: string | null;
+                imagePurpose?: string | null;
+              } | null;
+            } | null;
+            powerBiDashboardLink?: string | null;
+          } | null;
+        } | null;
+        properties?: Record<string, string> | null;
+        images?:
+          | {
+              context?: string | null;
+              items?:
+                | {
+                    id?: string | null;
+                    uri?: string | null;
+                    type?: string | null;
+                  }[]
+                | null;
+            }[]
+          | null;
+        videos?:
+          | {
+              caption?: string | null;
+              uri?: string | null;
+              videoPurpose?: string | null;
+              previewImage?: {
+                caption?: string | null;
+                uri?: string | null;
+                imagePurpose?: string | null;
+              } | null;
+            }[]
+          | null;
+        plans?:
+          | {
+              id?: string | null;
+              displayName?: string | null;
+              summary?: string | null;
+              description?: string | null;
+              restrictedAudience?: {
+                subscriptions?: string[] | null;
+                tenants?: string[] | null;
+                users?: string[] | null;
+                groups?: string[] | null;
+              } | null;
+              skuId?: string | null;
+              planId?: string | null;
+              legacyPlanId?: string | null;
+              keywords?: string[] | null;
+              type?:
+                | "None"
+                | "DevService"
+                | "ManagedApplication"
+                | "VirtualMachine"
+                | "AzureApplication"
+                | "Container"
+                | "SaaS"
+                | "SolutionTemplate"
+                | "IotEdgeModules"
+                | "ManagedServices"
+                | "ContainerApps"
+                | "VisualStudioExtension"
+                | "DynamicsOps"
+                | "DynamicsCE"
+                | "DynamicsBC"
+                | "PowerBI"
+                | "ConsultingServices"
+                | "CosellOnly"
+                | "CoreVirtualMachine"
+                | "PowerBIVisuals"
+                | "Office365"
+                | "AADApps";
+              leadGeneration?: {
+                productId?: string | null;
+                leadGenEnabled?: boolean | null;
+              } | null;
+              testDrive?: {
+                description?: string | null;
+                userManual?: string | null;
+                testDriveDuration?: string | null;
+                accessInformation?: string | null;
+                orchestrationType?: string | null;
+                labId?: string | null;
+                demoId?: string | null;
+                video?: {
+                  caption?: string | null;
+                  uri?: string | null;
+                  videoPurpose?: string | null;
+                  previewImage?: {
+                    caption?: string | null;
+                    uri?: string | null;
+                    imagePurpose?: string | null;
+                  } | null;
+                } | null;
+                powerBiDashboardLink?: string | null;
+              } | null;
+              availabilities?:
+                | {
+                    id?: string | null;
+                    partitionKey?: string | null;
+                    ts?: number;
+                    actions?: string[] | null;
+                    market?: string | null;
+                    isPIRequired?: boolean;
+                    appId?: string | null;
+                    planID?: string | null;
+                    meterId?: string | null;
+                    meter?: {
+                      meterId?: string | null;
+                      partNumber?: string | null;
+                      consumptionResourceId?: string | null;
+                      price?: {
+                        currencyCode?: string | null;
+                        isPIRequired?: boolean;
+                        listPrice?: number;
+                        msrp?: number;
+                      } | null;
+                      type?: string | null;
+                      includedQuantityProperties?:
+                        | { termId?: string | null; quantity?: string | null }[]
+                        | null;
+                    } | null;
+                    pricingAudience?:
+                      | "None"
+                      | "DirectCommercial"
+                      | "PartnerCommercial"
+                      | "Custom"
+                      | "IndirectCommercial"
+                      | "IndirectGov"
+                      | "DirectChk"
+                      | "DirectBlue"
+                      | "DirectRock";
+                    terms?:
+                      | {
+                          termDescriptionParameters?:
+                            | {
+                                parameter?: string | null;
+                                value?: string | null;
+                              }[]
+                            | null;
+                          termId?: string | null;
+                          termUnits?: string | null;
+                          prorationPolicy?: {
+                            minimumProratedUnits?: string | null;
+                          } | null;
+                          termDescription?: string | null;
+                          price?: {
+                            currencyCode?: string | null;
+                            isPIRequired?: boolean;
+                            listPrice?: number;
+                            msrp?: number;
+                          } | null;
+                          renewTermId?: string | null;
+                          renewTermUnits?: string | null;
+                          billingPlan?: {
+                            billingPeriod?: string | null;
+                            title?: string | null;
+                            description?: string | null;
+                            price?: {
+                              currencyCode?: string | null;
+                              isPIRequired?: boolean;
+                              listPrice?: number;
+                              msrp?: number;
+                            } | null;
+                          } | null;
+                          renewToTermBillingPlan?: string | null;
+                        }[]
+                      | null;
+                    piFilter?: {
+                      exclusionProperties?: string[] | null;
+                      inclusionProperties?: string[] | null;
+                    } | null;
+                    isStopSell?: boolean;
+                    hasFreeTrials?: boolean;
+                    assetBehaviors?: string[] | null;
+                    consumptionUnitType?: string | null;
+                    displayRank?: number;
+                    remediationRequired?: boolean;
+                    remediations?:
+                      | {
+                          remediationId?: string | null;
+                          type?: string | null;
+                        }[]
+                      | null;
+                    startDate?: number | null;
+                    endDate?: number | null;
+                    planAvailabilities?: unknown[] | null;
+                  }[]
+                | null;
+              categoryIds?: string[] | null;
+              conversionPaths?: string[] | null;
+              metadata?: { properties?: Record<string, unknown> | null } | null;
+              operatingSystem?: {
+                family?: string | null;
+                type?: string | null;
+                name?: string | null;
+              } | null;
+              uiDefinitionUri?: string | null;
+              artifacts?:
+                | {
+                    name?: string | null;
+                    uri?: string | null;
+                    type?: "Template" | "Fragment" | "Custom" | "Metadata";
+                  }[]
+                | null;
+              version?: string | null;
+              itemName?: string | null;
+              isPrivate?: boolean;
+              isHidden?: boolean;
+              hasFreeTrials?: boolean;
+              isByol?: boolean;
+              isFree?: boolean;
+              isPayg?: boolean;
+              isStopSell?: boolean;
+              stopSellInfo?: {
+                startDate?: string | null;
+                reason?: "EndOfSupport" | "SecurityIssue" | "Other" | null;
+                alternativeOfferId?: string | null;
+                alternativePlanId?: string | null;
+              } | null;
+              altStackReference?: string | null;
+              stackType?: string | null;
+              altArchitectureReference?: string | null;
+              architectureType?: string | null;
+              cspState?:
+                | "OptIn"
+                | "OptOut"
+                | "Terminated"
+                | "SelectiveOptIn"
+                | null;
+              resourceProviderNamespace?: string | null;
+              resourceType?: string | null;
+              minQuantity?: number | null;
+              maxQuantity?: number | null;
+              isQuantifiable?: boolean;
+              callToAction?: string | null;
+              redirectUrl?: string | null;
+              serviceIdentifier?: string | null;
+              vmSecurityType?: "None" | "Trusted" | "Confidential" | null;
+              displayRank?: string | null;
+              billingComponents?:
+                | {
+                    billingTag?: string | null;
+                    customMeterIds?: Record<string, number[]> | null;
+                  }[]
+                | null;
+              purchaseDurationDiscounts?:
+                | { duration?: string | null; discountPercentage?: number }[]
+                | null;
+              upns?: { termId?: string | null; upn?: string | null }[] | null;
+              hasRI?: boolean;
+              isHiddenPrivateOffer?: boolean | null;
+              certifications?:
+                | {
+                    id?: string | null;
+                    displayName?: string | null;
+                    uri?: string | null;
+                  }[]
+                | null;
+              pricingTypes?:
+                | ("Free" | "FreeTrial" | "Byol" | "Payg" | "Ri")[]
+                | null;
+            }[]
+          | null;
+        resourceGroupName?: string | null;
+        definitionTemplates?: {
+          uiDefinitionFileUri?: string | null;
+          defaultDeploymentTemplateId?: string | null;
+          deploymentTemplateFileUris?: Record<string, string> | null;
+          deploymentFragmentFileUris?: Record<string, string> | null;
+        } | null;
+        additionalProperties?: Record<string, string> | null;
+        restrictedAudience?: {
+          subscriptions?: string[] | null;
+          tenants?: string[] | null;
+          users?: string[] | null;
+          groups?: string[] | null;
+        } | null;
+        isDeleted?: boolean;
+        isThirdParty?: boolean;
+        groupId?: string | null;
+        hideKeys?: string[] | null;
+        keywords?: string[] | null;
+        popularity?: number;
+        pricingDetailsUri?: string | null;
+        hasFreeTrials?: boolean;
+        isByol?: boolean;
+        isMacc?: boolean;
+        hasFreePlans?: boolean;
+        isQuantifiable?: boolean;
+        altStackReference?: string | null;
+        hasPaygPlans?: boolean;
+        isReseller?: boolean;
+        ttl?: number | null;
+        isExcludedFromSearch?: boolean;
+        applicableStoreFronts?: 0 | 1 | 2 | 4 | 8 | null;
+        offerVersion?: string | null;
+        isMicrosoftProduct?: boolean | null;
+        productOwnershipSellingMotion?: string | null;
+        documentLinks?:
+          | {
+              id?: string | null;
+              displayName?: string | null;
+              uri?: string | null;
+            }[]
+          | null;
+        offerEnvironment?: 1 | 2 | 3 | 4 | 5;
+        linkedAddIns?: string[] | null;
+        linkedAddInsTypes?: Record<string, string> | null;
+        excludeFromBootstrap?: boolean;
+        hydrationNotificationReceivedAt?: string | null;
+        bigCatLastModifiedDate?: string | null;
+        disableSendEmailOnPurchase?: boolean;
+        hideFromSaasBlade?: boolean;
+        integratedWithMicrosoftGraphApi?: boolean;
+        multiTenantAadAppId?: string | null;
+        licenseManagementType?: string | null;
+        licenseModel?: string | null;
+        pbiServicePrincipalIds?: string[] | null;
+        isCoreVm?: boolean | null;
+        m365CertificationInfo?: {
+          m365CertificationType?: 0 | 1 | 2 | 3;
+          m365CertificationDetailsUrl?: string | null;
+          m365CertificationId?: string | null;
+        } | null;
+        downloadLink?: string | null;
+        downloadSampleLink?: string | null;
+        omexAssetId?: string | null;
+        mixProductId?: string | null;
+        appFreeType?: string | null;
+        storeFrontPricings?: Record<
+          string,
+          { pricingOptions?: 0 | 1 | 2 | 4 | 8; hasPrices?: boolean | null }
+        > | null;
+        hasRIPlans?: boolean;
+        enrichedData?: {
+          tags?: string[] | null;
+          popularity?: {
+            appSourceCs?: number;
+            appSourceApps?: number;
+            ampCs?: number;
+            ampApps?: number;
+            azurePortalApps?: number;
+          } | null;
+          rating?: {
+            appSource?: {
+              totalRatings?: number;
+              source?:
+                | "None"
+                | "AppSource"
+                | "Amp"
+                | "Ibiza"
+                | "G2"
+                | "Internal"
+                | "All";
+              averageRating?: number;
+              createdAt?: string;
+              externalOfferReference?: string | null;
+              starsDistribution?: Record<string, number> | null;
+              buckets?: string[] | null;
+            } | null;
+            amp?: {
+              totalRatings?: number;
+              source?:
+                | "None"
+                | "AppSource"
+                | "Amp"
+                | "Ibiza"
+                | "G2"
+                | "Internal"
+                | "All";
+              averageRating?: number;
+              createdAt?: string;
+              externalOfferReference?: string | null;
+              starsDistribution?: Record<string, number> | null;
+              buckets?: string[] | null;
+            } | null;
+            azurePortal?: {
+              totalRatings?: number;
+              source?:
+                | "None"
+                | "AppSource"
+                | "Amp"
+                | "Ibiza"
+                | "G2"
+                | "Internal"
+                | "All";
+              averageRating?: number;
+              createdAt?: string;
+              externalOfferReference?: string | null;
+              starsDistribution?: Record<string, number> | null;
+              buckets?: string[] | null;
+            } | null;
+            g2?: {
+              totalRatings?: number;
+              source?:
+                | "None"
+                | "AppSource"
+                | "Amp"
+                | "Ibiza"
+                | "G2"
+                | "Internal"
+                | "All";
+              averageRating?: number;
+              createdAt?: string;
+              externalOfferReference?: string | null;
+              starsDistribution?: Record<string, number> | null;
+              buckets?: string[] | null;
+            } | null;
+          } | null;
+          isAzureBenefitEligible?: boolean;
+          isSolutionMap?: boolean;
+        } | null;
+        capabilities?: (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11)[] | null;
+        releaseDate?: string | null;
+        hideFromAdminPortal?: boolean;
+        awards?: string[] | null;
+        powerBIVisualId?: string | null;
+        pricingTypes?: ("Free" | "FreeTrial" | "Byol" | "Payg" | "Ri")[] | null;
+        autoRunLaunchEvents?: string[] | null;
+        service?: string | null;
+        serviceId?: string | null;
+        productType?: string | null;
+        productFamily?: string | null;
+        id?: string | null;
+        partitionKey?: string | null;
+        ts?: number;
+        searchScore?: number | null;
+      }[]
+    | null;
+}
 export const EdgeZonesProductsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1344,13 +1962,20 @@ export const EdgeZonesProductsListOutput =
         ),
       ),
     ),
-  });
-export type EdgeZonesProductsListOutput =
-  typeof EdgeZonesProductsListOutput.Type;
+  }) as unknown as Schema.Codec<EdgeZonesProductsListOutput>;
 
 // The operation
 /**
  * Get a list of edge zone products
+ *
+ * @param subscriptionId - Subscription id of the caller
+ * @param location - Location of the edge zones
+ * @param edgeZone - Required edge zone
+ * @param language - The language of the free texts
+ * @param market - The required market
+ * @param $select - Properties to be returned in the response.
+ * @param $skipToken - The optional page continuation token that is used in the event of paginated result.
+ * @param api-version - The API version to use for the request.
  */
 export const EdgeZonesProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1359,6 +1984,9 @@ export const EdgeZonesProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GetApiKeysListInput {
+  subscriptionId: string;
+}
 export const GetApiKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1367,10 +1995,13 @@ export const GetApiKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
     apiVersion: "2023-01-01-preview",
   }),
-);
-export type GetApiKeysListInput = typeof GetApiKeysListInput.Type;
+) as unknown as Schema.Codec<GetApiKeysListInput>;
 
 // Output Schema
+export interface GetApiKeysListOutput {
+  value?: { keyAlias?: string; key?: string }[];
+  nextLink?: string;
+}
 export const GetApiKeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1381,8 +2012,7 @@ export const GetApiKeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type GetApiKeysListOutput = typeof GetApiKeysListOutput.Type;
+}) as unknown as Schema.Codec<GetApiKeysListOutput>;
 
 // The operation
 /**
@@ -1397,6 +2027,7 @@ export const GetApiKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GetApiKeysListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1405,10 +2036,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Marketplace/operations",
     apiVersion: "2025-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1431,8 +2076,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1445,8 +2089,20 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProductGetGetByBillingAccountInput {
+  billingAccountId: string;
+  productId: string;
+  includeStopSoldPlans?: boolean;
+  language?: string;
+  includeHiddenPlans?: boolean;
+  includeServiceInstructionTemplates?: boolean;
+  planId?: string;
+  skuId?: string;
+}
 export const ProductGetGetByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -1459,11 +2115,270 @@ export const ProductGetGetByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products/{productId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductGetGetByBillingAccountInput =
-  typeof ProductGetGetByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<ProductGetGetByBillingAccountInput>;
 
 // Output Schema
+export interface ProductGetGetByBillingAccountOutput {
+  displayName?: string;
+  popularity?: number;
+  categoryIds?: string[];
+  industryIds?: string[];
+  publisherId?: string;
+  azureBenefit?: string;
+  badges?: string[];
+  publisherType?: string;
+  publishingStage?: string;
+  uniqueProductId: string;
+  productType: string;
+  productSubType?: string;
+  productFamily?: string;
+  operatingSystems?: string[];
+  pricingTypes?: string[];
+  publisherDisplayName?: string;
+  longSummary?: string;
+  summary?: string;
+  smallIconUri?: string;
+  description?: string;
+  cspLegalTermsUri?: string;
+  privacyPolicyUri?: string;
+  ratingBuckets?: string[];
+  ratingAverage?: number;
+  ratingCount?: number;
+  supportedProducts?: string[];
+  applicableProducts?: string[];
+  lastModifiedDateTime?: string;
+  locations?: string[];
+  serviceFamily?: string;
+  service?: string;
+  productId?: string;
+  hasRiPlans?: boolean;
+  hasMarketplaceFootprint?: boolean;
+  attributes?: { key?: string; value?: string }[];
+  videos?: {
+    caption?: string;
+    uri?: string;
+    videoPurpose?: string;
+    previewImage?: { caption?: string; uri?: string; imagePurpose?: string };
+  }[];
+  images?: {
+    context?: string;
+    items?: { id?: string; uri?: string; type?: string }[];
+  }[];
+  linkedAddIns?: string[];
+  links?: { id?: string; displayName?: string; uri?: string }[];
+  language?: string;
+  hasStandardContractAmendments?: boolean;
+  offerId?: string;
+  standardContractAmendmentsRevisionId?: string;
+  universalAmendmentUrl?: string;
+  isPrivate: boolean;
+  isStopSell: boolean;
+  legalTermsUri?: string;
+  legalTermsType?: string;
+  supportUri?: string;
+  uiDefinitionUri?: string;
+  screenshotUris?: string[];
+  mediumIconUri?: string;
+  largeIconUri?: string;
+  wideIconUri?: string;
+  pricingDetailsUri?: string;
+  isReseller?: boolean;
+  productOwnershipSellingMotion?: string;
+  disableSendEmailOnPurchase?: boolean;
+  isCoreVm?: boolean;
+  stopSellInfo?: {
+    startDate?: string;
+    reason?: string;
+    alternativeOfferId?: string;
+    alternativePlanId?: string;
+  };
+  marketingMaterial?: { path?: string; learnUri?: string };
+  artifacts?: { name?: string; uri?: string; artifactType: string }[];
+  plans?: {
+    planId?: string;
+    uniquePlanId?: string;
+    displayName?: string;
+    vmArchitectureType?: string;
+    cspState?: string;
+    metadata?: { generation?: string; altStackReference?: string };
+    altStackReference?: string;
+    stackType?: string;
+    altArchitectureReference?: string;
+    categoryIds?: string[];
+    hasProtectedArtifacts?: boolean;
+    pricingTypes?: string[];
+    vmSecuritytypes?: string[];
+    summary?: string;
+    description?: string;
+    skuId?: string;
+    planType: string;
+    displayRank?: string;
+    isPrivate?: boolean;
+    hasRi?: boolean;
+    id?: string;
+    availabilities?: {
+      id?: string;
+      actions?: string[];
+      meter?: {
+        meterId?: string;
+        partNumber?: string;
+        consumptionResourceId?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        type?: string;
+        includedQuantityProperties?: { termId?: string; quantity?: string }[];
+      };
+      pricingAudience: string;
+      terms?: {
+        termDescriptionParameters?: { parameter?: string; value?: string }[];
+        termId?: string;
+        termUnit?: string;
+        prorationPolicy?: { minimumProratedUnits?: string };
+        termDescription?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        renewTermId?: string;
+        renewTermUnits?: string;
+        billingPlan?: {
+          billingPeriod?: string;
+          title?: string;
+          description?: string;
+          price?: {
+            currencyCode?: string;
+            isPiRequired: boolean;
+            listPrice: number;
+            msrp: number;
+          };
+        };
+        renewToTermBillingPlan?: string;
+        isAutorenewable?: boolean;
+        lifecyclePolicy?: {
+          graceDuration?: string;
+          inactiveDuration?: string;
+          lockoutDuration?: string;
+        };
+        productCode?: string;
+        state?: string;
+        actions?: string[];
+      }[];
+      hasFreeTrials: boolean;
+      consumptionUnitType?: string;
+      displayRank: number;
+    }[];
+    uiDefinitionUri?: string;
+    artifacts?: { name?: string; uri?: string; artifactType: string }[];
+    version?: string;
+    isHidden: boolean;
+    isStopSell: boolean;
+    stopSellInfo?: {
+      startDate?: string;
+      reason?: string;
+      alternativeOfferId?: string;
+      alternativePlanId?: string;
+    };
+    minQuantity?: number;
+    maxQuantity?: number;
+    isQuantifiable: boolean;
+    billingComponents?: { billingTag?: string }[];
+    purchaseDurationDiscounts?: {
+      duration?: string;
+      discountPercentage: number;
+    }[];
+    isHiddenPrivateOffer?: boolean;
+    certifications?: { id?: string; displayName?: string; uri?: string }[];
+    customerInstruction?: string;
+    planLabels?: string[];
+    skuType?: string;
+    skuTitle?: string;
+    location?: string;
+    armRegionName?: string;
+    cloud?: string;
+    locationType?: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      productCode?: string;
+      termId?: string;
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      type?: string;
+    }[];
+    hasConsumptionComponents?: boolean;
+    isEndUserEligible?: boolean;
+    isAdminEligible?: boolean;
+    entraIdVersion?: string;
+    technicalRequirements?: string;
+    faqUri?: string;
+    fulfillmentData?: {
+      fulfillmentType?: string;
+      attributes?: {
+        fulfillmentTiming?: string;
+        fulfillmentDelayMitigation?: string;
+      };
+      additionalProducts?: {
+        productSkuId?: string;
+        defaultKeyActivationCount?: number;
+      }[];
+    };
+    benefits?: {
+      benefitType?: string;
+      basePlanId?: string;
+      billingPlan?: string;
+      termDuration?: string;
+    }[];
+    constraintsData?: {
+      seatConstraints?: {
+        type?: string;
+        minSeats?: number;
+        maxSeats?: number;
+      }[];
+      assetOwnershipLimits?: {
+        type?: string;
+        minAssets?: number;
+        maxAssets?: number;
+      }[];
+      prerequisiteSkus?: {
+        mustHaveAll?: { productId?: string; skuIds?: string[] }[];
+        mustHaveAny?: { productId?: string; skuIds?: string[] }[];
+        seatConstraints?: {
+          type?: string;
+          minPercentSeats?: number;
+          maxPercentSeats?: number;
+        }[];
+      };
+    };
+    meterTypeDescriptions?: {
+      key?: string;
+      value?: { meterType?: string; unitOfMeasure?: string };
+    }[];
+    usageUnit?: string;
+    skuName?: string;
+  }[];
+  hasAddOns?: boolean;
+}
 export const ProductGetGetByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
@@ -1916,15 +2831,15 @@ export const ProductGetGetByBillingAccountOutput =
       ),
     ),
     hasAddOns: Schema.optional(Schema.Boolean),
-  });
-export type ProductGetGetByBillingAccountOutput =
-  typeof ProductGetGetByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<ProductGetGetByBillingAccountOutput>;
 
 // The operation
 /**
  * Gets a single product by billing account.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -1938,8 +2853,22 @@ export const ProductGetGetByBillingAccount =
     outputSchema: ProductGetGetByBillingAccountOutput,
   }));
 // Input Schema
+export interface ProductGetGetByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  productId: string;
+  includeStopSoldPlans?: boolean;
+  language?: string;
+  includeHiddenPlans?: boolean;
+  includeServiceInstructionTemplates?: boolean;
+  planId?: string;
+  skuId?: string;
+}
 export const ProductGetGetByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -1952,11 +2881,270 @@ export const ProductGetGetByBillingProfileInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/products/{productId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductGetGetByBillingProfileInput =
-  typeof ProductGetGetByBillingProfileInput.Type;
+  ) as unknown as Schema.Codec<ProductGetGetByBillingProfileInput>;
 
 // Output Schema
+export interface ProductGetGetByBillingProfileOutput {
+  displayName?: string;
+  popularity?: number;
+  categoryIds?: string[];
+  industryIds?: string[];
+  publisherId?: string;
+  azureBenefit?: string;
+  badges?: string[];
+  publisherType?: string;
+  publishingStage?: string;
+  uniqueProductId: string;
+  productType: string;
+  productSubType?: string;
+  productFamily?: string;
+  operatingSystems?: string[];
+  pricingTypes?: string[];
+  publisherDisplayName?: string;
+  longSummary?: string;
+  summary?: string;
+  smallIconUri?: string;
+  description?: string;
+  cspLegalTermsUri?: string;
+  privacyPolicyUri?: string;
+  ratingBuckets?: string[];
+  ratingAverage?: number;
+  ratingCount?: number;
+  supportedProducts?: string[];
+  applicableProducts?: string[];
+  lastModifiedDateTime?: string;
+  locations?: string[];
+  serviceFamily?: string;
+  service?: string;
+  productId?: string;
+  hasRiPlans?: boolean;
+  hasMarketplaceFootprint?: boolean;
+  attributes?: { key?: string; value?: string }[];
+  videos?: {
+    caption?: string;
+    uri?: string;
+    videoPurpose?: string;
+    previewImage?: { caption?: string; uri?: string; imagePurpose?: string };
+  }[];
+  images?: {
+    context?: string;
+    items?: { id?: string; uri?: string; type?: string }[];
+  }[];
+  linkedAddIns?: string[];
+  links?: { id?: string; displayName?: string; uri?: string }[];
+  language?: string;
+  hasStandardContractAmendments?: boolean;
+  offerId?: string;
+  standardContractAmendmentsRevisionId?: string;
+  universalAmendmentUrl?: string;
+  isPrivate: boolean;
+  isStopSell: boolean;
+  legalTermsUri?: string;
+  legalTermsType?: string;
+  supportUri?: string;
+  uiDefinitionUri?: string;
+  screenshotUris?: string[];
+  mediumIconUri?: string;
+  largeIconUri?: string;
+  wideIconUri?: string;
+  pricingDetailsUri?: string;
+  isReseller?: boolean;
+  productOwnershipSellingMotion?: string;
+  disableSendEmailOnPurchase?: boolean;
+  isCoreVm?: boolean;
+  stopSellInfo?: {
+    startDate?: string;
+    reason?: string;
+    alternativeOfferId?: string;
+    alternativePlanId?: string;
+  };
+  marketingMaterial?: { path?: string; learnUri?: string };
+  artifacts?: { name?: string; uri?: string; artifactType: string }[];
+  plans?: {
+    planId?: string;
+    uniquePlanId?: string;
+    displayName?: string;
+    vmArchitectureType?: string;
+    cspState?: string;
+    metadata?: { generation?: string; altStackReference?: string };
+    altStackReference?: string;
+    stackType?: string;
+    altArchitectureReference?: string;
+    categoryIds?: string[];
+    hasProtectedArtifacts?: boolean;
+    pricingTypes?: string[];
+    vmSecuritytypes?: string[];
+    summary?: string;
+    description?: string;
+    skuId?: string;
+    planType: string;
+    displayRank?: string;
+    isPrivate?: boolean;
+    hasRi?: boolean;
+    id?: string;
+    availabilities?: {
+      id?: string;
+      actions?: string[];
+      meter?: {
+        meterId?: string;
+        partNumber?: string;
+        consumptionResourceId?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        type?: string;
+        includedQuantityProperties?: { termId?: string; quantity?: string }[];
+      };
+      pricingAudience: string;
+      terms?: {
+        termDescriptionParameters?: { parameter?: string; value?: string }[];
+        termId?: string;
+        termUnit?: string;
+        prorationPolicy?: { minimumProratedUnits?: string };
+        termDescription?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        renewTermId?: string;
+        renewTermUnits?: string;
+        billingPlan?: {
+          billingPeriod?: string;
+          title?: string;
+          description?: string;
+          price?: {
+            currencyCode?: string;
+            isPiRequired: boolean;
+            listPrice: number;
+            msrp: number;
+          };
+        };
+        renewToTermBillingPlan?: string;
+        isAutorenewable?: boolean;
+        lifecyclePolicy?: {
+          graceDuration?: string;
+          inactiveDuration?: string;
+          lockoutDuration?: string;
+        };
+        productCode?: string;
+        state?: string;
+        actions?: string[];
+      }[];
+      hasFreeTrials: boolean;
+      consumptionUnitType?: string;
+      displayRank: number;
+    }[];
+    uiDefinitionUri?: string;
+    artifacts?: { name?: string; uri?: string; artifactType: string }[];
+    version?: string;
+    isHidden: boolean;
+    isStopSell: boolean;
+    stopSellInfo?: {
+      startDate?: string;
+      reason?: string;
+      alternativeOfferId?: string;
+      alternativePlanId?: string;
+    };
+    minQuantity?: number;
+    maxQuantity?: number;
+    isQuantifiable: boolean;
+    billingComponents?: { billingTag?: string }[];
+    purchaseDurationDiscounts?: {
+      duration?: string;
+      discountPercentage: number;
+    }[];
+    isHiddenPrivateOffer?: boolean;
+    certifications?: { id?: string; displayName?: string; uri?: string }[];
+    customerInstruction?: string;
+    planLabels?: string[];
+    skuType?: string;
+    skuTitle?: string;
+    location?: string;
+    armRegionName?: string;
+    cloud?: string;
+    locationType?: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      productCode?: string;
+      termId?: string;
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      type?: string;
+    }[];
+    hasConsumptionComponents?: boolean;
+    isEndUserEligible?: boolean;
+    isAdminEligible?: boolean;
+    entraIdVersion?: string;
+    technicalRequirements?: string;
+    faqUri?: string;
+    fulfillmentData?: {
+      fulfillmentType?: string;
+      attributes?: {
+        fulfillmentTiming?: string;
+        fulfillmentDelayMitigation?: string;
+      };
+      additionalProducts?: {
+        productSkuId?: string;
+        defaultKeyActivationCount?: number;
+      }[];
+    };
+    benefits?: {
+      benefitType?: string;
+      basePlanId?: string;
+      billingPlan?: string;
+      termDuration?: string;
+    }[];
+    constraintsData?: {
+      seatConstraints?: {
+        type?: string;
+        minSeats?: number;
+        maxSeats?: number;
+      }[];
+      assetOwnershipLimits?: {
+        type?: string;
+        minAssets?: number;
+        maxAssets?: number;
+      }[];
+      prerequisiteSkus?: {
+        mustHaveAll?: { productId?: string; skuIds?: string[] }[];
+        mustHaveAny?: { productId?: string; skuIds?: string[] }[];
+        seatConstraints?: {
+          type?: string;
+          minPercentSeats?: number;
+          maxPercentSeats?: number;
+        }[];
+      };
+    };
+    meterTypeDescriptions?: {
+      key?: string;
+      value?: { meterType?: string; unitOfMeasure?: string };
+    }[];
+    usageUnit?: string;
+    skuName?: string;
+  }[];
+  hasAddOns?: boolean;
+}
 export const ProductGetGetByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
@@ -2409,15 +3597,16 @@ export const ProductGetGetByBillingProfileOutput =
       ),
     ),
     hasAddOns: Schema.optional(Schema.Boolean),
-  });
-export type ProductGetGetByBillingProfileOutput =
-  typeof ProductGetGetByBillingProfileOutput.Type;
+  }) as unknown as Schema.Codec<ProductGetGetByBillingProfileOutput>;
 
 // The operation
 /**
  * Gets a single product by billing profile.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing account.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -2431,9 +3620,21 @@ export const ProductGetGetByBillingProfile =
     outputSchema: ProductGetGetByBillingProfileOutput,
   }));
 // Input Schema
+export interface ProductGetGetBySubscriptionInput {
+  subscriptionId: string;
+  productId: string;
+  includeStopSoldPlans?: boolean;
+  language?: string;
+  includeHiddenPlans?: boolean;
+  includeServiceInstructionTemplates?: boolean;
+  planId?: string;
+  skuId?: string;
+  lookUpOfferInTenantLevel?: boolean;
+}
 export const ProductGetGetBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
     includeHiddenPlans: Schema.optional(Schema.Boolean),
@@ -2447,11 +3648,270 @@ export const ProductGetGetBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products/{productId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductGetGetBySubscriptionInput =
-  typeof ProductGetGetBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProductGetGetBySubscriptionInput>;
 
 // Output Schema
+export interface ProductGetGetBySubscriptionOutput {
+  displayName?: string;
+  popularity?: number;
+  categoryIds?: string[];
+  industryIds?: string[];
+  publisherId?: string;
+  azureBenefit?: string;
+  badges?: string[];
+  publisherType?: string;
+  publishingStage?: string;
+  uniqueProductId: string;
+  productType: string;
+  productSubType?: string;
+  productFamily?: string;
+  operatingSystems?: string[];
+  pricingTypes?: string[];
+  publisherDisplayName?: string;
+  longSummary?: string;
+  summary?: string;
+  smallIconUri?: string;
+  description?: string;
+  cspLegalTermsUri?: string;
+  privacyPolicyUri?: string;
+  ratingBuckets?: string[];
+  ratingAverage?: number;
+  ratingCount?: number;
+  supportedProducts?: string[];
+  applicableProducts?: string[];
+  lastModifiedDateTime?: string;
+  locations?: string[];
+  serviceFamily?: string;
+  service?: string;
+  productId?: string;
+  hasRiPlans?: boolean;
+  hasMarketplaceFootprint?: boolean;
+  attributes?: { key?: string; value?: string }[];
+  videos?: {
+    caption?: string;
+    uri?: string;
+    videoPurpose?: string;
+    previewImage?: { caption?: string; uri?: string; imagePurpose?: string };
+  }[];
+  images?: {
+    context?: string;
+    items?: { id?: string; uri?: string; type?: string }[];
+  }[];
+  linkedAddIns?: string[];
+  links?: { id?: string; displayName?: string; uri?: string }[];
+  language?: string;
+  hasStandardContractAmendments?: boolean;
+  offerId?: string;
+  standardContractAmendmentsRevisionId?: string;
+  universalAmendmentUrl?: string;
+  isPrivate: boolean;
+  isStopSell: boolean;
+  legalTermsUri?: string;
+  legalTermsType?: string;
+  supportUri?: string;
+  uiDefinitionUri?: string;
+  screenshotUris?: string[];
+  mediumIconUri?: string;
+  largeIconUri?: string;
+  wideIconUri?: string;
+  pricingDetailsUri?: string;
+  isReseller?: boolean;
+  productOwnershipSellingMotion?: string;
+  disableSendEmailOnPurchase?: boolean;
+  isCoreVm?: boolean;
+  stopSellInfo?: {
+    startDate?: string;
+    reason?: string;
+    alternativeOfferId?: string;
+    alternativePlanId?: string;
+  };
+  marketingMaterial?: { path?: string; learnUri?: string };
+  artifacts?: { name?: string; uri?: string; artifactType: string }[];
+  plans?: {
+    planId?: string;
+    uniquePlanId?: string;
+    displayName?: string;
+    vmArchitectureType?: string;
+    cspState?: string;
+    metadata?: { generation?: string; altStackReference?: string };
+    altStackReference?: string;
+    stackType?: string;
+    altArchitectureReference?: string;
+    categoryIds?: string[];
+    hasProtectedArtifacts?: boolean;
+    pricingTypes?: string[];
+    vmSecuritytypes?: string[];
+    summary?: string;
+    description?: string;
+    skuId?: string;
+    planType: string;
+    displayRank?: string;
+    isPrivate?: boolean;
+    hasRi?: boolean;
+    id?: string;
+    availabilities?: {
+      id?: string;
+      actions?: string[];
+      meter?: {
+        meterId?: string;
+        partNumber?: string;
+        consumptionResourceId?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        type?: string;
+        includedQuantityProperties?: { termId?: string; quantity?: string }[];
+      };
+      pricingAudience: string;
+      terms?: {
+        termDescriptionParameters?: { parameter?: string; value?: string }[];
+        termId?: string;
+        termUnit?: string;
+        prorationPolicy?: { minimumProratedUnits?: string };
+        termDescription?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        renewTermId?: string;
+        renewTermUnits?: string;
+        billingPlan?: {
+          billingPeriod?: string;
+          title?: string;
+          description?: string;
+          price?: {
+            currencyCode?: string;
+            isPiRequired: boolean;
+            listPrice: number;
+            msrp: number;
+          };
+        };
+        renewToTermBillingPlan?: string;
+        isAutorenewable?: boolean;
+        lifecyclePolicy?: {
+          graceDuration?: string;
+          inactiveDuration?: string;
+          lockoutDuration?: string;
+        };
+        productCode?: string;
+        state?: string;
+        actions?: string[];
+      }[];
+      hasFreeTrials: boolean;
+      consumptionUnitType?: string;
+      displayRank: number;
+    }[];
+    uiDefinitionUri?: string;
+    artifacts?: { name?: string; uri?: string; artifactType: string }[];
+    version?: string;
+    isHidden: boolean;
+    isStopSell: boolean;
+    stopSellInfo?: {
+      startDate?: string;
+      reason?: string;
+      alternativeOfferId?: string;
+      alternativePlanId?: string;
+    };
+    minQuantity?: number;
+    maxQuantity?: number;
+    isQuantifiable: boolean;
+    billingComponents?: { billingTag?: string }[];
+    purchaseDurationDiscounts?: {
+      duration?: string;
+      discountPercentage: number;
+    }[];
+    isHiddenPrivateOffer?: boolean;
+    certifications?: { id?: string; displayName?: string; uri?: string }[];
+    customerInstruction?: string;
+    planLabels?: string[];
+    skuType?: string;
+    skuTitle?: string;
+    location?: string;
+    armRegionName?: string;
+    cloud?: string;
+    locationType?: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      productCode?: string;
+      termId?: string;
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      type?: string;
+    }[];
+    hasConsumptionComponents?: boolean;
+    isEndUserEligible?: boolean;
+    isAdminEligible?: boolean;
+    entraIdVersion?: string;
+    technicalRequirements?: string;
+    faqUri?: string;
+    fulfillmentData?: {
+      fulfillmentType?: string;
+      attributes?: {
+        fulfillmentTiming?: string;
+        fulfillmentDelayMitigation?: string;
+      };
+      additionalProducts?: {
+        productSkuId?: string;
+        defaultKeyActivationCount?: number;
+      }[];
+    };
+    benefits?: {
+      benefitType?: string;
+      basePlanId?: string;
+      billingPlan?: string;
+      termDuration?: string;
+    }[];
+    constraintsData?: {
+      seatConstraints?: {
+        type?: string;
+        minSeats?: number;
+        maxSeats?: number;
+      }[];
+      assetOwnershipLimits?: {
+        type?: string;
+        minAssets?: number;
+        maxAssets?: number;
+      }[];
+      prerequisiteSkus?: {
+        mustHaveAll?: { productId?: string; skuIds?: string[] }[];
+        mustHaveAny?: { productId?: string; skuIds?: string[] }[];
+        seatConstraints?: {
+          type?: string;
+          minPercentSeats?: number;
+          maxPercentSeats?: number;
+        }[];
+      };
+    };
+    meterTypeDescriptions?: {
+      key?: string;
+      value?: { meterType?: string; unitOfMeasure?: string };
+    }[];
+    usageUnit?: string;
+    skuName?: string;
+  }[];
+  hasAddOns?: boolean;
+}
 export const ProductGetGetBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
@@ -2904,9 +4364,7 @@ export const ProductGetGetBySubscriptionOutput =
       ),
     ),
     hasAddOns: Schema.optional(Schema.Boolean),
-  });
-export type ProductGetGetBySubscriptionOutput =
-  typeof ProductGetGetBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProductGetGetBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2914,6 +4372,7 @@ export type ProductGetGetBySubscriptionOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param productId - The ID of the product
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param includeHiddenPlans - Indicates whether to include hidden plans in the response. By default, includeHiddenPlans is set to FALSE.
@@ -2929,8 +4388,20 @@ export const ProductGetGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductGetGetByTenantInput {
+  productId: string;
+  market: string;
+  includeStopSoldPlans?: boolean;
+  language?: string;
+  pricingAudience?: string;
+  includeHiddenPlans?: boolean;
+  includeServiceInstructionTemplates?: boolean;
+  planId?: string;
+  skuId?: string;
+}
 export const ProductGetGetByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String.pipe(T.PathParam()),
     market: Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
     language: Schema.optional(Schema.String),
@@ -2945,10 +4416,270 @@ export const ProductGetGetByTenantInput =
       path: "/providers/Microsoft.Marketplace/products/{productId}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductGetGetByTenantInput = typeof ProductGetGetByTenantInput.Type;
+  ) as unknown as Schema.Codec<ProductGetGetByTenantInput>;
 
 // Output Schema
+export interface ProductGetGetByTenantOutput {
+  displayName?: string;
+  popularity?: number;
+  categoryIds?: string[];
+  industryIds?: string[];
+  publisherId?: string;
+  azureBenefit?: string;
+  badges?: string[];
+  publisherType?: string;
+  publishingStage?: string;
+  uniqueProductId: string;
+  productType: string;
+  productSubType?: string;
+  productFamily?: string;
+  operatingSystems?: string[];
+  pricingTypes?: string[];
+  publisherDisplayName?: string;
+  longSummary?: string;
+  summary?: string;
+  smallIconUri?: string;
+  description?: string;
+  cspLegalTermsUri?: string;
+  privacyPolicyUri?: string;
+  ratingBuckets?: string[];
+  ratingAverage?: number;
+  ratingCount?: number;
+  supportedProducts?: string[];
+  applicableProducts?: string[];
+  lastModifiedDateTime?: string;
+  locations?: string[];
+  serviceFamily?: string;
+  service?: string;
+  productId?: string;
+  hasRiPlans?: boolean;
+  hasMarketplaceFootprint?: boolean;
+  attributes?: { key?: string; value?: string }[];
+  videos?: {
+    caption?: string;
+    uri?: string;
+    videoPurpose?: string;
+    previewImage?: { caption?: string; uri?: string; imagePurpose?: string };
+  }[];
+  images?: {
+    context?: string;
+    items?: { id?: string; uri?: string; type?: string }[];
+  }[];
+  linkedAddIns?: string[];
+  links?: { id?: string; displayName?: string; uri?: string }[];
+  language?: string;
+  hasStandardContractAmendments?: boolean;
+  offerId?: string;
+  standardContractAmendmentsRevisionId?: string;
+  universalAmendmentUrl?: string;
+  isPrivate: boolean;
+  isStopSell: boolean;
+  legalTermsUri?: string;
+  legalTermsType?: string;
+  supportUri?: string;
+  uiDefinitionUri?: string;
+  screenshotUris?: string[];
+  mediumIconUri?: string;
+  largeIconUri?: string;
+  wideIconUri?: string;
+  pricingDetailsUri?: string;
+  isReseller?: boolean;
+  productOwnershipSellingMotion?: string;
+  disableSendEmailOnPurchase?: boolean;
+  isCoreVm?: boolean;
+  stopSellInfo?: {
+    startDate?: string;
+    reason?: string;
+    alternativeOfferId?: string;
+    alternativePlanId?: string;
+  };
+  marketingMaterial?: { path?: string; learnUri?: string };
+  artifacts?: { name?: string; uri?: string; artifactType: string }[];
+  plans?: {
+    planId?: string;
+    uniquePlanId?: string;
+    displayName?: string;
+    vmArchitectureType?: string;
+    cspState?: string;
+    metadata?: { generation?: string; altStackReference?: string };
+    altStackReference?: string;
+    stackType?: string;
+    altArchitectureReference?: string;
+    categoryIds?: string[];
+    hasProtectedArtifacts?: boolean;
+    pricingTypes?: string[];
+    vmSecuritytypes?: string[];
+    summary?: string;
+    description?: string;
+    skuId?: string;
+    planType: string;
+    displayRank?: string;
+    isPrivate?: boolean;
+    hasRi?: boolean;
+    id?: string;
+    availabilities?: {
+      id?: string;
+      actions?: string[];
+      meter?: {
+        meterId?: string;
+        partNumber?: string;
+        consumptionResourceId?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        type?: string;
+        includedQuantityProperties?: { termId?: string; quantity?: string }[];
+      };
+      pricingAudience: string;
+      terms?: {
+        termDescriptionParameters?: { parameter?: string; value?: string }[];
+        termId?: string;
+        termUnit?: string;
+        prorationPolicy?: { minimumProratedUnits?: string };
+        termDescription?: string;
+        price?: {
+          currencyCode?: string;
+          isPiRequired: boolean;
+          listPrice: number;
+          msrp: number;
+        };
+        renewTermId?: string;
+        renewTermUnits?: string;
+        billingPlan?: {
+          billingPeriod?: string;
+          title?: string;
+          description?: string;
+          price?: {
+            currencyCode?: string;
+            isPiRequired: boolean;
+            listPrice: number;
+            msrp: number;
+          };
+        };
+        renewToTermBillingPlan?: string;
+        isAutorenewable?: boolean;
+        lifecyclePolicy?: {
+          graceDuration?: string;
+          inactiveDuration?: string;
+          lockoutDuration?: string;
+        };
+        productCode?: string;
+        state?: string;
+        actions?: string[];
+      }[];
+      hasFreeTrials: boolean;
+      consumptionUnitType?: string;
+      displayRank: number;
+    }[];
+    uiDefinitionUri?: string;
+    artifacts?: { name?: string; uri?: string; artifactType: string }[];
+    version?: string;
+    isHidden: boolean;
+    isStopSell: boolean;
+    stopSellInfo?: {
+      startDate?: string;
+      reason?: string;
+      alternativeOfferId?: string;
+      alternativePlanId?: string;
+    };
+    minQuantity?: number;
+    maxQuantity?: number;
+    isQuantifiable: boolean;
+    billingComponents?: { billingTag?: string }[];
+    purchaseDurationDiscounts?: {
+      duration?: string;
+      discountPercentage: number;
+    }[];
+    isHiddenPrivateOffer?: boolean;
+    certifications?: { id?: string; displayName?: string; uri?: string }[];
+    customerInstruction?: string;
+    planLabels?: string[];
+    skuType?: string;
+    skuTitle?: string;
+    location?: string;
+    armRegionName?: string;
+    cloud?: string;
+    locationType?: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      productCode?: string;
+      termId?: string;
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      type?: string;
+    }[];
+    hasConsumptionComponents?: boolean;
+    isEndUserEligible?: boolean;
+    isAdminEligible?: boolean;
+    entraIdVersion?: string;
+    technicalRequirements?: string;
+    faqUri?: string;
+    fulfillmentData?: {
+      fulfillmentType?: string;
+      attributes?: {
+        fulfillmentTiming?: string;
+        fulfillmentDelayMitigation?: string;
+      };
+      additionalProducts?: {
+        productSkuId?: string;
+        defaultKeyActivationCount?: number;
+      }[];
+    };
+    benefits?: {
+      benefitType?: string;
+      basePlanId?: string;
+      billingPlan?: string;
+      termDuration?: string;
+    }[];
+    constraintsData?: {
+      seatConstraints?: {
+        type?: string;
+        minSeats?: number;
+        maxSeats?: number;
+      }[];
+      assetOwnershipLimits?: {
+        type?: string;
+        minAssets?: number;
+        maxAssets?: number;
+      }[];
+      prerequisiteSkus?: {
+        mustHaveAll?: { productId?: string; skuIds?: string[] }[];
+        mustHaveAny?: { productId?: string; skuIds?: string[] }[];
+        seatConstraints?: {
+          type?: string;
+          minPercentSeats?: number;
+          maxPercentSeats?: number;
+        }[];
+      };
+    };
+    meterTypeDescriptions?: {
+      key?: string;
+      value?: { meterType?: string; unitOfMeasure?: string };
+    }[];
+    usageUnit?: string;
+    skuName?: string;
+  }[];
+  hasAddOns?: boolean;
+}
 export const ProductGetGetByTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
@@ -3401,15 +5132,14 @@ export const ProductGetGetByTenantOutput =
       ),
     ),
     hasAddOns: Schema.optional(Schema.Boolean),
-  });
-export type ProductGetGetByTenantOutput =
-  typeof ProductGetGetByTenantOutput.Type;
+  }) as unknown as Schema.Codec<ProductGetGetByTenantOutput>;
 
 // The operation
 /**
  * Gets a single product by tenant.
  *
  * @param api-version - The API version to use for this operation.
+ * @param productId - The ID of the product
  * @param market - Product market value that will be used to fetch the product and affect the returning result.Possible values can be found at https://docs.microsoft.com/en-us/azure/marketplace/marketplace-geo-availability-currencies. Example: 'US'
  * @param includeStopSoldPlans - Indicates whether to include plans that are no longer available for purchase in the response. By default, includeStopSoldPlans is set to FALSE.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
@@ -3426,8 +5156,20 @@ export const ProductGetGetByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductListListByBillingAccountInput {
+  billingAccountId: string;
+  language?: string;
+  excludePublicOffersAndPublicPlans?: boolean;
+  locations?: string;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+  $search?: string;
+}
 export const ProductListListByBillingAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3442,11 +5184,71 @@ export const ProductListListByBillingAccountInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductListListByBillingAccountInput =
-  typeof ProductListListByBillingAccountInput.Type;
+  ) as unknown as Schema.Codec<ProductListListByBillingAccountInput>;
 
 // Output Schema
+export interface ProductListListByBillingAccountOutput {
+  value: {
+    displayName?: string;
+    popularity?: number;
+    categoryIds?: string[];
+    industryIds?: string[];
+    publisherId?: string;
+    azureBenefit?: string;
+    badges?: string[];
+    publisherType?: string;
+    publishingStage?: string;
+    uniqueProductId: string;
+    productType: string;
+    productSubType?: string;
+    productFamily?: string;
+    operatingSystems?: string[];
+    pricingTypes?: string[];
+    publisherDisplayName?: string;
+    longSummary?: string;
+    summary?: string;
+    smallIconUri?: string;
+    description?: string;
+    cspLegalTermsUri?: string;
+    privacyPolicyUri?: string;
+    ratingBuckets?: string[];
+    ratingAverage?: number;
+    ratingCount?: number;
+    supportedProducts?: string[];
+    applicableProducts?: string[];
+    lastModifiedDateTime?: string;
+    locations?: string[];
+    serviceFamily?: string;
+    service?: string;
+    productId?: string;
+    hasRiPlans?: boolean;
+    hasMarketplaceFootprint?: boolean;
+    attributes?: { key?: string; value?: string }[];
+    plans?: {
+      planId?: string;
+      uniquePlanId?: string;
+      displayName?: string;
+      vmArchitectureType?: string;
+      cspState?: string;
+      metadata?: { generation?: string; altStackReference?: string };
+      altStackReference?: string;
+      stackType?: string;
+      altArchitectureReference?: string;
+      categoryIds?: string[];
+      hasProtectedArtifacts?: boolean;
+      pricingTypes?: string[];
+      vmSecuritytypes?: string[];
+      summary?: string;
+      description?: string;
+      skuId?: string;
+      planType: string;
+      displayRank?: string;
+      isPrivate?: boolean;
+      hasRi?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ProductListListByBillingAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3527,15 +5329,14 @@ export const ProductListListByBillingAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductListListByBillingAccountOutput =
-  typeof ProductListListByBillingAccountOutput.Type;
+  }) as unknown as Schema.Codec<ProductListListByBillingAccountOutput>;
 
 // The operation
 /**
  * Lists products for billing account.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param excludePublicOffersAndPublicPlans - Whether to exclude public offers and public plans from the response. Default is false, which means that public offers and public plans are included in the response. If set to true, only private plans will be returned.
  * @param locations - Return products available in selected location. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
@@ -3587,8 +5388,22 @@ export const ProductListListByBillingAccount =
     outputSchema: ProductListListByBillingAccountOutput,
   }));
 // Input Schema
+export interface ProductListListByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  language?: string;
+  excludePublicOffersAndPublicPlans?: boolean;
+  locations?: string;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+  $search?: string;
+}
 export const ProductListListByBillingProfileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
     locations: Schema.optional(Schema.String),
@@ -3603,11 +5418,71 @@ export const ProductListListByBillingProfileInput =
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/products",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductListListByBillingProfileInput =
-  typeof ProductListListByBillingProfileInput.Type;
+  ) as unknown as Schema.Codec<ProductListListByBillingProfileInput>;
 
 // Output Schema
+export interface ProductListListByBillingProfileOutput {
+  value: {
+    displayName?: string;
+    popularity?: number;
+    categoryIds?: string[];
+    industryIds?: string[];
+    publisherId?: string;
+    azureBenefit?: string;
+    badges?: string[];
+    publisherType?: string;
+    publishingStage?: string;
+    uniqueProductId: string;
+    productType: string;
+    productSubType?: string;
+    productFamily?: string;
+    operatingSystems?: string[];
+    pricingTypes?: string[];
+    publisherDisplayName?: string;
+    longSummary?: string;
+    summary?: string;
+    smallIconUri?: string;
+    description?: string;
+    cspLegalTermsUri?: string;
+    privacyPolicyUri?: string;
+    ratingBuckets?: string[];
+    ratingAverage?: number;
+    ratingCount?: number;
+    supportedProducts?: string[];
+    applicableProducts?: string[];
+    lastModifiedDateTime?: string;
+    locations?: string[];
+    serviceFamily?: string;
+    service?: string;
+    productId?: string;
+    hasRiPlans?: boolean;
+    hasMarketplaceFootprint?: boolean;
+    attributes?: { key?: string; value?: string }[];
+    plans?: {
+      planId?: string;
+      uniquePlanId?: string;
+      displayName?: string;
+      vmArchitectureType?: string;
+      cspState?: string;
+      metadata?: { generation?: string; altStackReference?: string };
+      altStackReference?: string;
+      stackType?: string;
+      altArchitectureReference?: string;
+      categoryIds?: string[];
+      hasProtectedArtifacts?: boolean;
+      pricingTypes?: string[];
+      vmSecuritytypes?: string[];
+      summary?: string;
+      description?: string;
+      skuId?: string;
+      planType: string;
+      displayRank?: string;
+      isPrivate?: boolean;
+      hasRi?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ProductListListByBillingProfileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3688,15 +5563,15 @@ export const ProductListListByBillingProfileOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductListListByBillingProfileOutput =
-  typeof ProductListListByBillingProfileOutput.Type;
+  }) as unknown as Schema.Codec<ProductListListByBillingProfileOutput>;
 
 // The operation
 /**
  * Lists products for billing profile.
  *
  * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing account.
  * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is "en"
  * @param excludePublicOffersAndPublicPlans - Whether to exclude public offers and public plans from the response. Default is false, which means that public offers and public plans are included in the response. If set to true, only private plans will be returned.
  * @param locations - Return products available in selected location. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/
@@ -3748,6 +5623,16 @@ export const ProductListListByBillingProfile =
     outputSchema: ProductListListByBillingProfileOutput,
   }));
 // Input Schema
+export interface ProductListListBySubscriptionInput {
+  subscriptionId: string;
+  language?: string;
+  excludePublicOffersAndPublicPlans?: boolean;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+  $search?: string;
+}
 export const ProductListListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3764,11 +5649,71 @@ export const ProductListListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductListListBySubscriptionInput =
-  typeof ProductListListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProductListListBySubscriptionInput>;
 
 // Output Schema
+export interface ProductListListBySubscriptionOutput {
+  value: {
+    displayName?: string;
+    popularity?: number;
+    categoryIds?: string[];
+    industryIds?: string[];
+    publisherId?: string;
+    azureBenefit?: string;
+    badges?: string[];
+    publisherType?: string;
+    publishingStage?: string;
+    uniqueProductId: string;
+    productType: string;
+    productSubType?: string;
+    productFamily?: string;
+    operatingSystems?: string[];
+    pricingTypes?: string[];
+    publisherDisplayName?: string;
+    longSummary?: string;
+    summary?: string;
+    smallIconUri?: string;
+    description?: string;
+    cspLegalTermsUri?: string;
+    privacyPolicyUri?: string;
+    ratingBuckets?: string[];
+    ratingAverage?: number;
+    ratingCount?: number;
+    supportedProducts?: string[];
+    applicableProducts?: string[];
+    lastModifiedDateTime?: string;
+    locations?: string[];
+    serviceFamily?: string;
+    service?: string;
+    productId?: string;
+    hasRiPlans?: boolean;
+    hasMarketplaceFootprint?: boolean;
+    attributes?: { key?: string; value?: string }[];
+    plans?: {
+      planId?: string;
+      uniquePlanId?: string;
+      displayName?: string;
+      vmArchitectureType?: string;
+      cspState?: string;
+      metadata?: { generation?: string; altStackReference?: string };
+      altStackReference?: string;
+      stackType?: string;
+      altArchitectureReference?: string;
+      categoryIds?: string[];
+      hasProtectedArtifacts?: boolean;
+      pricingTypes?: string[];
+      vmSecuritytypes?: string[];
+      summary?: string;
+      description?: string;
+      skuId?: string;
+      planType: string;
+      displayRank?: string;
+      isPrivate?: boolean;
+      hasRi?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ProductListListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3849,9 +5794,7 @@ export const ProductListListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductListListBySubscriptionOutput =
-  typeof ProductListListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProductListListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3909,6 +5852,16 @@ export const ProductListListBySubscription =
     outputSchema: ProductListListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ProductListListByTenantInput {
+  market?: string;
+  language?: string;
+  excludePublicOffersAndPublicPlans?: boolean;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+  $search?: string;
+}
 export const ProductListListByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     market: Schema.optional(Schema.String),
@@ -3925,11 +5878,71 @@ export const ProductListListByTenantInput =
       path: "/providers/Microsoft.Marketplace/products",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ProductListListByTenantInput =
-  typeof ProductListListByTenantInput.Type;
+  ) as unknown as Schema.Codec<ProductListListByTenantInput>;
 
 // Output Schema
+export interface ProductListListByTenantOutput {
+  value: {
+    displayName?: string;
+    popularity?: number;
+    categoryIds?: string[];
+    industryIds?: string[];
+    publisherId?: string;
+    azureBenefit?: string;
+    badges?: string[];
+    publisherType?: string;
+    publishingStage?: string;
+    uniqueProductId: string;
+    productType: string;
+    productSubType?: string;
+    productFamily?: string;
+    operatingSystems?: string[];
+    pricingTypes?: string[];
+    publisherDisplayName?: string;
+    longSummary?: string;
+    summary?: string;
+    smallIconUri?: string;
+    description?: string;
+    cspLegalTermsUri?: string;
+    privacyPolicyUri?: string;
+    ratingBuckets?: string[];
+    ratingAverage?: number;
+    ratingCount?: number;
+    supportedProducts?: string[];
+    applicableProducts?: string[];
+    lastModifiedDateTime?: string;
+    locations?: string[];
+    serviceFamily?: string;
+    service?: string;
+    productId?: string;
+    hasRiPlans?: boolean;
+    hasMarketplaceFootprint?: boolean;
+    attributes?: { key?: string; value?: string }[];
+    plans?: {
+      planId?: string;
+      uniquePlanId?: string;
+      displayName?: string;
+      vmArchitectureType?: string;
+      cspState?: string;
+      metadata?: { generation?: string; altStackReference?: string };
+      altStackReference?: string;
+      stackType?: string;
+      altArchitectureReference?: string;
+      categoryIds?: string[];
+      hasProtectedArtifacts?: boolean;
+      pricingTypes?: string[];
+      vmSecuritytypes?: string[];
+      summary?: string;
+      description?: string;
+      skuId?: string;
+      planType: string;
+      displayRank?: string;
+      isPrivate?: boolean;
+      hasRi?: boolean;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ProductListListByTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4010,9 +6023,7 @@ export const ProductListListByTenantOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductListListByTenantOutput =
-  typeof ProductListListByTenantOutput.Type;
+  }) as unknown as Schema.Codec<ProductListListByTenantOutput>;
 
 // The operation
 /**
@@ -4072,6 +6083,10 @@ export const ProductListListByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RevokeApiKeyPostInput {
+  apiKeyAlias: string;
+  subscriptionId: string;
+}
 export const RevokeApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4081,12 +6096,12 @@ export const RevokeApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys/{apiKeyAlias}/revoke",
     apiVersion: "2023-01-01-preview",
   }),
-);
-export type RevokeApiKeyPostInput = typeof RevokeApiKeyPostInput.Type;
+) as unknown as Schema.Codec<RevokeApiKeyPostInput>;
 
 // Output Schema
-export const RevokeApiKeyPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RevokeApiKeyPostOutput = typeof RevokeApiKeyPostOutput.Type;
+export type RevokeApiKeyPostOutput = void;
+export const RevokeApiKeyPostOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeApiKeyPostOutput>;
 
 // The operation
 /**
@@ -4102,6 +6117,38 @@ export const RevokeApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RevokeApiKeyPostOutput,
 }));
 // Input Schema
+export interface SearchPostArmInput {
+  searchQuery?: string;
+  publisherName?: string;
+  skip?: number;
+  take?: number;
+  isAzureBenefitEligible?: boolean;
+  isMicrosoftProduct?: boolean;
+  isThirdParty?: boolean;
+  isCoreVm?: boolean;
+  isPreferredSolution?: boolean;
+  isAdditionalPurchaseRequired?: boolean;
+  isPowerBICertified?: boolean;
+  isIndustryCloud?: boolean;
+  languages: string[];
+  stores: ("Appsource" | "AMP" | "Ibiza" | "Cosell" | "DakotaDownstream")[];
+  select?: string[];
+  sortBy?: string[];
+  offerTypes?: string[];
+  pricingTypes?: ("Free" | "FreeTrial" | "Byol" | "Payg" | "Ri")[];
+  privateStoreAllowances?: (
+    | "AllowedByAdmin"
+    | "AllowedByDefault"
+    | "NonAllowed"
+  )[];
+  appSourceIndustries?: string[];
+  operatingSystems?: string[];
+  appSourceCategories?: string[];
+  azureIndustries?: string[];
+  azureCategories?: string[];
+  azurePortalCategories?: string[];
+  facets?: string[];
+}
 export const SearchPostArmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   searchQuery: Schema.optional(Schema.String),
   publisherName: Schema.optional(Schema.String),
@@ -4149,10 +6196,63 @@ export const SearchPostArmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Marketplace/search",
     apiVersion: "2022-02-02",
   }),
-);
-export type SearchPostArmInput = typeof SearchPostArmInput.Type;
+) as unknown as Schema.Codec<SearchPostArmInput>;
 
 // Output Schema
+export interface SearchPostArmOutput {
+  facets?: {
+    facetName?: string;
+    facetValues?: { value?: string; count?: number }[];
+  }[];
+  results?: {
+    ampAppsPopularity?: number;
+    ampCsPopularity?: number;
+    applicableProducts?: string[];
+    appSourceAppsPopularity?: number;
+    appSourceCategories?: string[];
+    appSourceCsPopularity?: number;
+    appSourceIndustries?: string[];
+    azureCategories?: string[];
+    azurePortalCategories?: string[];
+    azureIndustries?: string[];
+    bigId?: string;
+    cspStates?: string[];
+    determinedStorefronts?: string[];
+    displayName?: string;
+    isAzureBenefitEligible?: boolean;
+    isCoreVm?: boolean;
+    isPreferredSolution?: boolean;
+    isAdditionalPurchaseRequired?: boolean;
+    isPowerBICertified?: boolean;
+    isIndustryCloud?: boolean;
+    isMicrosoftProduct?: boolean;
+    isPreview?: boolean;
+    language?: string;
+    legacyId?: string;
+    offerType?: string;
+    operatingSystems?: string[];
+    plans?: {
+      cspState?: string;
+      legacyPlanId?: string;
+      displayName?: string;
+      architectureType?: string;
+      metadata?: { generation?: string };
+      operatingSystem?: { family?: string; type?: string; name?: string };
+    }[];
+    pricingTypes?: string[];
+    publisherDisplayName?: string;
+    summary?: string;
+    vmGenerations?: string[];
+    vmImageTypes?: string[];
+    vmSecurityTypes?: string[];
+    smallIconUri?: string;
+    mediumIconUri?: string;
+    largeIconUri?: string;
+    wideIconUri?: string;
+    heroIconUri?: string;
+  }[];
+  totalCount?: number;
+}
 export const SearchPostArmOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   facets: Schema.optional(
     Schema.Array(
@@ -4235,8 +6335,7 @@ export const SearchPostArmOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   totalCount: Schema.optional(Schema.Number),
-});
-export type SearchPostArmOutput = typeof SearchPostArmOutput.Type;
+}) as unknown as Schema.Codec<SearchPostArmOutput>;
 
 // The operation
 /**
@@ -4248,3 +6347,952 @@ export const SearchPostArm = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SearchPostArmInput,
   outputSchema: SearchPostArmOutput,
 }));
+// Input Schema
+export interface SkusGetByBillingAccountInput {
+  billingAccountId: string;
+  skuId: string;
+  language?: string;
+  includeStopSold?: boolean;
+  includeFutureAvailabilities?: boolean;
+}
+export const SkusGetByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    skuId: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    includeStopSold: Schema.optional(Schema.Boolean),
+    includeFutureAvailabilities: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      apiVersion: "2025-05-01",
+    }),
+  ) as unknown as Schema.Codec<SkusGetByBillingAccountInput>;
+
+// Output Schema
+export interface SkusGetByBillingAccountOutput {
+  productId: string;
+  productDisplayName?: string;
+  productDescription?: string;
+  serviceFamily?: string;
+  service?: string;
+  publisherId?: string;
+  publisherType?: string;
+  productType?: string;
+  productSubType?: string;
+  summary?: string;
+  productAttributes?: { key?: string; value?: string }[];
+  skuName: string;
+  skuId: string;
+  skuType: string;
+  language: string;
+  skuDescription: string;
+  skuTitle: string;
+  lastModifiedDateTime?: string;
+  location: string;
+  armRegionName?: string;
+  cloud: string;
+  locationType: string;
+  region?: string;
+  skuGroupId?: string;
+  zone?: string;
+  feature?: string;
+  serviceType?: string;
+  minQuantity?: number;
+  maxQuantity?: number;
+  cspState?: string;
+  hasRi?: boolean;
+  skuAttributes?: { key?: string; value?: string }[];
+  skuProperties?: {
+    category?: string;
+    dataDiskType?: string;
+    diskType?: string;
+    numberOfCores?: string;
+    ram?: string;
+    vCpu?: string;
+    armSkuName?: string;
+    accessTier?: string;
+  };
+  offeringProperties?: {
+    meterType?: string;
+    billingMeterId?: string;
+    offeringId?: string;
+    productCode?: string;
+    termId?: string;
+    type?: string;
+  }[];
+  alternateIds?: {
+    aadSkuId?: string[];
+    legacyOfferGuid?: string[];
+    applicablePromotion?: string[];
+    addOnParent?: string[];
+    applicableFuturePriceConcession?: string[];
+    benefitSku?: string[];
+    includedInBundle?: string[];
+    associatedSku?: string[];
+    products?: {
+      applicablePromotion?: string[];
+      addOnParent?: string[];
+      applicableFuturePriceConcession?: string[];
+      benefitSku?: string[];
+      includedInBundle?: string[];
+      associatedSku?: string[];
+    };
+  };
+  offeringType?: string;
+  categoryIds?: string[];
+}
+export const SkusGetByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String,
+    productDisplayName: Schema.optional(Schema.String),
+    productDescription: Schema.optional(Schema.String),
+    serviceFamily: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    publisherType: Schema.optional(Schema.String),
+    productType: Schema.optional(Schema.String),
+    productSubType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    productAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuName: Schema.String,
+    skuId: Schema.String,
+    skuType: Schema.String,
+    language: Schema.String,
+    skuDescription: Schema.String,
+    skuTitle: Schema.String,
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    location: Schema.String,
+    armRegionName: Schema.optional(Schema.String),
+    cloud: Schema.String,
+    locationType: Schema.String,
+    region: Schema.optional(Schema.String),
+    skuGroupId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    feature: Schema.optional(Schema.String),
+    serviceType: Schema.optional(Schema.String),
+    minQuantity: Schema.optional(Schema.Number),
+    maxQuantity: Schema.optional(Schema.Number),
+    cspState: Schema.optional(Schema.String),
+    hasRi: Schema.optional(Schema.Boolean),
+    skuAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuProperties: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        dataDiskType: Schema.optional(Schema.String),
+        diskType: Schema.optional(Schema.String),
+        numberOfCores: Schema.optional(Schema.String),
+        ram: Schema.optional(Schema.String),
+        vCpu: Schema.optional(Schema.String),
+        armSkuName: Schema.optional(Schema.String),
+        accessTier: Schema.optional(Schema.String),
+      }),
+    ),
+    offeringProperties: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          meterType: Schema.optional(Schema.String),
+          billingMeterId: Schema.optional(Schema.String),
+          offeringId: Schema.optional(Schema.String),
+          productCode: Schema.optional(Schema.String),
+          termId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    alternateIds: Schema.optional(
+      Schema.Struct({
+        aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+        legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+        applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+        addOnParent: Schema.optional(Schema.Array(Schema.String)),
+        applicableFuturePriceConcession: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        benefitSku: Schema.optional(Schema.Array(Schema.String)),
+        includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+        associatedSku: Schema.optional(Schema.Array(Schema.String)),
+        products: Schema.optional(
+          Schema.Struct({
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    offeringType: Schema.optional(Schema.String),
+    categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  }) as unknown as Schema.Codec<SkusGetByBillingAccountOutput>;
+
+// The operation
+/**
+ * Gets a single SKU with availabilities for the given billing account.
+ * Returns full SKU details (including availabilities) for the SKU identified by
+ * the composite `productId/skuId`, scoped to the given billing account. The caller
+ * must have billing account permissions. Supports both EA (legacy) and Modern (MCA)
+ * billing account ID formats.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param skuId - The ID of the SKU
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
+ * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
+ */
+export const SkusGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusGetByBillingAccountInput,
+    outputSchema: SkusGetByBillingAccountOutput,
+  }),
+);
+// Input Schema
+export interface SkusGetByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  skuId: string;
+  language?: string;
+  includeStopSold?: boolean;
+  includeFutureAvailabilities?: boolean;
+}
+export const SkusGetByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    skuId: Schema.String.pipe(T.PathParam()),
+    language: Schema.optional(Schema.String),
+    includeStopSold: Schema.optional(Schema.Boolean),
+    includeFutureAvailabilities: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
+      apiVersion: "2025-05-01",
+    }),
+  ) as unknown as Schema.Codec<SkusGetByBillingProfileInput>;
+
+// Output Schema
+export interface SkusGetByBillingProfileOutput {
+  productId: string;
+  productDisplayName?: string;
+  productDescription?: string;
+  serviceFamily?: string;
+  service?: string;
+  publisherId?: string;
+  publisherType?: string;
+  productType?: string;
+  productSubType?: string;
+  summary?: string;
+  productAttributes?: { key?: string; value?: string }[];
+  skuName: string;
+  skuId: string;
+  skuType: string;
+  language: string;
+  skuDescription: string;
+  skuTitle: string;
+  lastModifiedDateTime?: string;
+  location: string;
+  armRegionName?: string;
+  cloud: string;
+  locationType: string;
+  region?: string;
+  skuGroupId?: string;
+  zone?: string;
+  feature?: string;
+  serviceType?: string;
+  minQuantity?: number;
+  maxQuantity?: number;
+  cspState?: string;
+  hasRi?: boolean;
+  skuAttributes?: { key?: string; value?: string }[];
+  skuProperties?: {
+    category?: string;
+    dataDiskType?: string;
+    diskType?: string;
+    numberOfCores?: string;
+    ram?: string;
+    vCpu?: string;
+    armSkuName?: string;
+    accessTier?: string;
+  };
+  offeringProperties?: {
+    meterType?: string;
+    billingMeterId?: string;
+    offeringId?: string;
+    productCode?: string;
+    termId?: string;
+    type?: string;
+  }[];
+  alternateIds?: {
+    aadSkuId?: string[];
+    legacyOfferGuid?: string[];
+    applicablePromotion?: string[];
+    addOnParent?: string[];
+    applicableFuturePriceConcession?: string[];
+    benefitSku?: string[];
+    includedInBundle?: string[];
+    associatedSku?: string[];
+    products?: {
+      applicablePromotion?: string[];
+      addOnParent?: string[];
+      applicableFuturePriceConcession?: string[];
+      benefitSku?: string[];
+      includedInBundle?: string[];
+      associatedSku?: string[];
+    };
+  };
+  offeringType?: string;
+  categoryIds?: string[];
+}
+export const SkusGetByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.String,
+    productDisplayName: Schema.optional(Schema.String),
+    productDescription: Schema.optional(Schema.String),
+    serviceFamily: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+    publisherId: Schema.optional(Schema.String),
+    publisherType: Schema.optional(Schema.String),
+    productType: Schema.optional(Schema.String),
+    productSubType: Schema.optional(Schema.String),
+    summary: Schema.optional(Schema.String),
+    productAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuName: Schema.String,
+    skuId: Schema.String,
+    skuType: Schema.String,
+    language: Schema.String,
+    skuDescription: Schema.String,
+    skuTitle: Schema.String,
+    lastModifiedDateTime: Schema.optional(Schema.String),
+    location: Schema.String,
+    armRegionName: Schema.optional(Schema.String),
+    cloud: Schema.String,
+    locationType: Schema.String,
+    region: Schema.optional(Schema.String),
+    skuGroupId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    feature: Schema.optional(Schema.String),
+    serviceType: Schema.optional(Schema.String),
+    minQuantity: Schema.optional(Schema.Number),
+    maxQuantity: Schema.optional(Schema.Number),
+    cspState: Schema.optional(Schema.String),
+    hasRi: Schema.optional(Schema.Boolean),
+    skuAttributes: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          key: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    skuProperties: Schema.optional(
+      Schema.Struct({
+        category: Schema.optional(Schema.String),
+        dataDiskType: Schema.optional(Schema.String),
+        diskType: Schema.optional(Schema.String),
+        numberOfCores: Schema.optional(Schema.String),
+        ram: Schema.optional(Schema.String),
+        vCpu: Schema.optional(Schema.String),
+        armSkuName: Schema.optional(Schema.String),
+        accessTier: Schema.optional(Schema.String),
+      }),
+    ),
+    offeringProperties: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          meterType: Schema.optional(Schema.String),
+          billingMeterId: Schema.optional(Schema.String),
+          offeringId: Schema.optional(Schema.String),
+          productCode: Schema.optional(Schema.String),
+          termId: Schema.optional(Schema.String),
+          type: Schema.optional(Schema.String),
+        }),
+      ),
+    ),
+    alternateIds: Schema.optional(
+      Schema.Struct({
+        aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+        legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+        applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+        addOnParent: Schema.optional(Schema.Array(Schema.String)),
+        applicableFuturePriceConcession: Schema.optional(
+          Schema.Array(Schema.String),
+        ),
+        benefitSku: Schema.optional(Schema.Array(Schema.String)),
+        includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+        associatedSku: Schema.optional(Schema.Array(Schema.String)),
+        products: Schema.optional(
+          Schema.Struct({
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
+    offeringType: Schema.optional(Schema.String),
+    categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  }) as unknown as Schema.Codec<SkusGetByBillingProfileOutput>;
+
+// The operation
+/**
+ * Gets a single SKU with availabilities for the given billing account and billing profile.
+ * Same as the billing-account-only variant, but additionally scopes the hydration
+ * claims to a specific billing profile. Only meaningful for Modern (MCA) billing
+ * accounts; for EA billing accounts the billing profile is ignored.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing profile.
+ * @param skuId - The ID of the SKU
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
+ * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
+ */
+export const SkusGetByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusGetByBillingProfileInput,
+    outputSchema: SkusGetByBillingProfileOutput,
+  }),
+);
+// Input Schema
+export interface SkusListByBillingAccountInput {
+  billingAccountId: string;
+  serviceFamily: string;
+  service: string;
+  language?: string;
+  locations?: string;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+}
+export const SkusListByBillingAccountInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    serviceFamily: Schema.String,
+    service: Schema.String,
+    language: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $orderBy: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus",
+      apiVersion: "2025-05-01",
+    }),
+  ) as unknown as Schema.Codec<SkusListByBillingAccountInput>;
+
+// Output Schema
+export interface SkusListByBillingAccountOutput {
+  value: {
+    productId: string;
+    productDisplayName?: string;
+    productDescription?: string;
+    serviceFamily?: string;
+    service?: string;
+    publisherId?: string;
+    publisherType?: string;
+    productType?: string;
+    productSubType?: string;
+    summary?: string;
+    productAttributes?: { key?: string; value?: string }[];
+    skuName: string;
+    skuId: string;
+    skuType: string;
+    language: string;
+    skuDescription: string;
+    skuTitle: string;
+    lastModifiedDateTime?: string;
+    location: string;
+    armRegionName?: string;
+    cloud: string;
+    locationType: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    minQuantity?: number;
+    maxQuantity?: number;
+    cspState?: string;
+    hasRi?: boolean;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      productCode?: string;
+      termId?: string;
+      type?: string;
+    }[];
+    alternateIds?: {
+      aadSkuId?: string[];
+      legacyOfferGuid?: string[];
+      applicablePromotion?: string[];
+      addOnParent?: string[];
+      applicableFuturePriceConcession?: string[];
+      benefitSku?: string[];
+      includedInBundle?: string[];
+      associatedSku?: string[];
+      products?: {
+        applicablePromotion?: string[];
+        addOnParent?: string[];
+        applicableFuturePriceConcession?: string[];
+        benefitSku?: string[];
+        includedInBundle?: string[];
+        associatedSku?: string[];
+      };
+    };
+    offeringType?: string;
+    categoryIds?: string[];
+  }[];
+  nextLink?: string;
+}
+export const SkusListByBillingAccountOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        productId: Schema.String,
+        productDisplayName: Schema.optional(Schema.String),
+        productDescription: Schema.optional(Schema.String),
+        serviceFamily: Schema.optional(Schema.String),
+        service: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        publisherType: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productSubType: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        productAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuName: Schema.String,
+        skuId: Schema.String,
+        skuType: Schema.String,
+        language: Schema.String,
+        skuDescription: Schema.String,
+        skuTitle: Schema.String,
+        lastModifiedDateTime: Schema.optional(Schema.String),
+        location: Schema.String,
+        armRegionName: Schema.optional(Schema.String),
+        cloud: Schema.String,
+        locationType: Schema.String,
+        region: Schema.optional(Schema.String),
+        skuGroupId: Schema.optional(Schema.String),
+        zone: Schema.optional(Schema.String),
+        feature: Schema.optional(Schema.String),
+        serviceType: Schema.optional(Schema.String),
+        minQuantity: Schema.optional(Schema.Number),
+        maxQuantity: Schema.optional(Schema.Number),
+        cspState: Schema.optional(Schema.String),
+        hasRi: Schema.optional(Schema.Boolean),
+        skuAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuProperties: Schema.optional(
+          Schema.Struct({
+            category: Schema.optional(Schema.String),
+            dataDiskType: Schema.optional(Schema.String),
+            diskType: Schema.optional(Schema.String),
+            numberOfCores: Schema.optional(Schema.String),
+            ram: Schema.optional(Schema.String),
+            vCpu: Schema.optional(Schema.String),
+            armSkuName: Schema.optional(Schema.String),
+            accessTier: Schema.optional(Schema.String),
+          }),
+        ),
+        offeringProperties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              meterType: Schema.optional(Schema.String),
+              billingMeterId: Schema.optional(Schema.String),
+              offeringId: Schema.optional(Schema.String),
+              productCode: Schema.optional(Schema.String),
+              termId: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        alternateIds: Schema.optional(
+          Schema.Struct({
+            aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+            legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+            products: Schema.optional(
+              Schema.Struct({
+                applicablePromotion: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                addOnParent: Schema.optional(Schema.Array(Schema.String)),
+                applicableFuturePriceConcession: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                benefitSku: Schema.optional(Schema.Array(Schema.String)),
+                includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+                associatedSku: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        offeringType: Schema.optional(Schema.String),
+        categoryIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<SkusListByBillingAccountOutput>;
+
+// The operation
+/**
+ * Lists SKUs for billing account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param serviceFamily - The service family to filter by, such as 'Compute'.
+ * @param service - The service to filter by, such as 'Virtual Machines'.
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param locations - Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/.
+ * @param $filter - Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are:
+- `productId`
+- `serviceFamily`
+- `service`
+- `skuId`
+- `skuName`
+- `skuType`
+- `armRegionName`
+- `location`
+- `publisherId`
+- `productType`
+ * @param $select - Selects which properties to include in the results. Example: $select=skuName,skuId
+ * @param $expand - Expands related entities inline.
+ * @param $orderBy - Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:
+- `lastModifiedDateTime`
+- `skuName`
+- `skuId`
+- `productId`
+- `serviceFamily`
+- `service`
+ */
+export const SkusListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusListByBillingAccountInput,
+    outputSchema: SkusListByBillingAccountOutput,
+  }),
+);
+// Input Schema
+export interface SkusListByBillingProfileInput {
+  billingAccountId: string;
+  billingProfileId: string;
+  serviceFamily: string;
+  service: string;
+  language?: string;
+  locations?: string;
+  $filter?: string;
+  $select?: string;
+  $expand?: string;
+  $orderBy?: string;
+}
+export const SkusListByBillingProfileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccountId: Schema.String.pipe(T.PathParam()),
+    billingProfileId: Schema.String.pipe(T.PathParam()),
+    serviceFamily: Schema.String,
+    service: Schema.String,
+    language: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.String),
+    $filter: Schema.optional(Schema.String),
+    $select: Schema.optional(Schema.String),
+    $expand: Schema.optional(Schema.String),
+    $orderBy: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus",
+      apiVersion: "2025-05-01",
+    }),
+  ) as unknown as Schema.Codec<SkusListByBillingProfileInput>;
+
+// Output Schema
+export interface SkusListByBillingProfileOutput {
+  value: {
+    productId: string;
+    productDisplayName?: string;
+    productDescription?: string;
+    serviceFamily?: string;
+    service?: string;
+    publisherId?: string;
+    publisherType?: string;
+    productType?: string;
+    productSubType?: string;
+    summary?: string;
+    productAttributes?: { key?: string; value?: string }[];
+    skuName: string;
+    skuId: string;
+    skuType: string;
+    language: string;
+    skuDescription: string;
+    skuTitle: string;
+    lastModifiedDateTime?: string;
+    location: string;
+    armRegionName?: string;
+    cloud: string;
+    locationType: string;
+    region?: string;
+    skuGroupId?: string;
+    zone?: string;
+    feature?: string;
+    serviceType?: string;
+    minQuantity?: number;
+    maxQuantity?: number;
+    cspState?: string;
+    hasRi?: boolean;
+    skuAttributes?: { key?: string; value?: string }[];
+    skuProperties?: {
+      category?: string;
+      dataDiskType?: string;
+      diskType?: string;
+      numberOfCores?: string;
+      ram?: string;
+      vCpu?: string;
+      armSkuName?: string;
+      accessTier?: string;
+    };
+    offeringProperties?: {
+      meterType?: string;
+      billingMeterId?: string;
+      offeringId?: string;
+      productCode?: string;
+      termId?: string;
+      type?: string;
+    }[];
+    alternateIds?: {
+      aadSkuId?: string[];
+      legacyOfferGuid?: string[];
+      applicablePromotion?: string[];
+      addOnParent?: string[];
+      applicableFuturePriceConcession?: string[];
+      benefitSku?: string[];
+      includedInBundle?: string[];
+      associatedSku?: string[];
+      products?: {
+        applicablePromotion?: string[];
+        addOnParent?: string[];
+        applicableFuturePriceConcession?: string[];
+        benefitSku?: string[];
+        includedInBundle?: string[];
+        associatedSku?: string[];
+      };
+    };
+    offeringType?: string;
+    categoryIds?: string[];
+  }[];
+  nextLink?: string;
+}
+export const SkusListByBillingProfileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
+      Schema.Struct({
+        productId: Schema.String,
+        productDisplayName: Schema.optional(Schema.String),
+        productDescription: Schema.optional(Schema.String),
+        serviceFamily: Schema.optional(Schema.String),
+        service: Schema.optional(Schema.String),
+        publisherId: Schema.optional(Schema.String),
+        publisherType: Schema.optional(Schema.String),
+        productType: Schema.optional(Schema.String),
+        productSubType: Schema.optional(Schema.String),
+        summary: Schema.optional(Schema.String),
+        productAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuName: Schema.String,
+        skuId: Schema.String,
+        skuType: Schema.String,
+        language: Schema.String,
+        skuDescription: Schema.String,
+        skuTitle: Schema.String,
+        lastModifiedDateTime: Schema.optional(Schema.String),
+        location: Schema.String,
+        armRegionName: Schema.optional(Schema.String),
+        cloud: Schema.String,
+        locationType: Schema.String,
+        region: Schema.optional(Schema.String),
+        skuGroupId: Schema.optional(Schema.String),
+        zone: Schema.optional(Schema.String),
+        feature: Schema.optional(Schema.String),
+        serviceType: Schema.optional(Schema.String),
+        minQuantity: Schema.optional(Schema.Number),
+        maxQuantity: Schema.optional(Schema.Number),
+        cspState: Schema.optional(Schema.String),
+        hasRi: Schema.optional(Schema.Boolean),
+        skuAttributes: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              key: Schema.optional(Schema.String),
+              value: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        skuProperties: Schema.optional(
+          Schema.Struct({
+            category: Schema.optional(Schema.String),
+            dataDiskType: Schema.optional(Schema.String),
+            diskType: Schema.optional(Schema.String),
+            numberOfCores: Schema.optional(Schema.String),
+            ram: Schema.optional(Schema.String),
+            vCpu: Schema.optional(Schema.String),
+            armSkuName: Schema.optional(Schema.String),
+            accessTier: Schema.optional(Schema.String),
+          }),
+        ),
+        offeringProperties: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              meterType: Schema.optional(Schema.String),
+              billingMeterId: Schema.optional(Schema.String),
+              offeringId: Schema.optional(Schema.String),
+              productCode: Schema.optional(Schema.String),
+              termId: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        alternateIds: Schema.optional(
+          Schema.Struct({
+            aadSkuId: Schema.optional(Schema.Array(Schema.String)),
+            legacyOfferGuid: Schema.optional(Schema.Array(Schema.String)),
+            applicablePromotion: Schema.optional(Schema.Array(Schema.String)),
+            addOnParent: Schema.optional(Schema.Array(Schema.String)),
+            applicableFuturePriceConcession: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            benefitSku: Schema.optional(Schema.Array(Schema.String)),
+            includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+            associatedSku: Schema.optional(Schema.Array(Schema.String)),
+            products: Schema.optional(
+              Schema.Struct({
+                applicablePromotion: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                addOnParent: Schema.optional(Schema.Array(Schema.String)),
+                applicableFuturePriceConcession: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                benefitSku: Schema.optional(Schema.Array(Schema.String)),
+                includedInBundle: Schema.optional(Schema.Array(Schema.String)),
+                associatedSku: Schema.optional(Schema.Array(Schema.String)),
+              }),
+            ),
+          }),
+        ),
+        offeringType: Schema.optional(Schema.String),
+        categoryIds: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    nextLink: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<SkusListByBillingProfileOutput>;
+
+// The operation
+/**
+ * Lists SKUs for billing profile.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param billingAccountId - The ID of the target billing account.
+ * @param billingProfileId - The ID of the target billing profile.
+ * @param serviceFamily - The service family to filter by, such as 'Compute'.
+ * @param service - The service to filter by, such as 'Virtual Machines'.
+ * @param language - Language to search, ISO 639-1 two-letter code, possible values - 'en,cs,de,es,fr,hu,it,ja,ko,nl,pl,pt-br,pt-pt,ru,sv,tr,id,zh-hans,zh-hant'. Default is 'en'.
+ * @param locations - Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/.
+ * @param $filter - Filters the results, based on a Boolean condition. Example: $filter=serviceFamily eq 'Compute'. Fields that can be filtered by are:
+- `productId`
+- `serviceFamily`
+- `service`
+- `skuId`
+- `skuName`
+- `skuType`
+- `armRegionName`
+- `location`
+- `publisherId`
+- `productType`
+ * @param $select - Selects which properties to include in the results. Example: $select=skuName,skuId
+ * @param $expand - Expands related entities inline.
+ * @param $orderBy - Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:
+- `lastModifiedDateTime`
+- `skuName`
+- `skuId`
+- `productId`
+- `serviceFamily`
+- `service`
+ */
+export const SkusListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: SkusListByBillingProfileInput,
+    outputSchema: SkusListByBillingProfileOutput,
+  }),
+);

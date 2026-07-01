@@ -4,18 +4,20 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteV1ConnectionsByIdInput {
+  id: string;
+}
 export const DeleteV1ConnectionsByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "DELETE", path: "/v1/connections/{id}" }));
-export type DeleteV1ConnectionsByIdInput =
-  typeof DeleteV1ConnectionsByIdInput.Type;
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/v1/connections/{id}" }),
+  ) as unknown as Schema.Codec<DeleteV1ConnectionsByIdInput>;
 
 // Output Schema
+export type DeleteV1ConnectionsByIdOutput = void;
 export const DeleteV1ConnectionsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteV1ConnectionsByIdOutput =
-  typeof DeleteV1ConnectionsByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1ConnectionsByIdOutput>;
 
 // The operation
 /**

@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1EnableDatabaseWebhookInput {
+  ref: string;
+}
 export const V1EnableDatabaseWebhookInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const V1EnableDatabaseWebhookInput =
       method: "POST",
       path: "/v1/projects/{ref}/database/webhooks/enable",
     }),
-  );
-export type V1EnableDatabaseWebhookInput =
-  typeof V1EnableDatabaseWebhookInput.Type;
+  ) as unknown as Schema.Codec<V1EnableDatabaseWebhookInput>;
 
 // Output Schema
+export type V1EnableDatabaseWebhookOutput = void;
 export const V1EnableDatabaseWebhookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1EnableDatabaseWebhookOutput =
-  typeof V1EnableDatabaseWebhookOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1EnableDatabaseWebhookOutput>;
 
 // The operation
 /**

@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service queues
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -157,6 +157,747 @@ export class WorkerNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Settings {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number | null;
+  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
+  maxConcurrency?: number | null;
+  /** The maximum number of retries */
+  maxRetries?: number | null;
+  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
+  maxWaitTimeMs?: number | null;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number | null;
+}
+const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxConcurrency: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxRetries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxWaitTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      batchSize: "batch_size",
+      maxConcurrency: "max_concurrency",
+      maxRetries: "max_retries",
+      maxWaitTimeMs: "max_wait_time_ms",
+      retryDelay: "retry_delay",
+    }),
+  ),
+) as unknown as Schema.Codec<Settings>;
+
+interface MqWorkerConsumerResponse {
+  /** A Resource identifier. */
+  consumerId?: string | null;
+  createdOn?: string | null;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  /** Name of a Worker */
+  scriptName?: string | null;
+  settings?: {
+    batchSize?: number | null;
+    maxConcurrency?: number | null;
+    maxRetries?: number | null;
+    maxWaitTimeMs?: number | null;
+    retryDelay?: number | null;
+  } | null;
+  type?: "worker" | null;
+}
+const MqWorkerConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      deadLetterQueue: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("worker"), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        consumerId: "consumer_id",
+        createdOn: "created_on",
+        deadLetterQueue: "dead_letter_queue",
+        queueName: "queue_name",
+        scriptName: "script",
+        settings: "settings",
+        type: "type",
+      }),
+    ),
+) as unknown as Schema.Codec<MqWorkerConsumerResponse>;
+
+interface Settings2 {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number | null;
+  /** The maximum number of retries */
+  maxRetries?: number | null;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number | null;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number | null;
+}
+const Settings2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxRetries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    visibilityTimeoutMs: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      batchSize: "batch_size",
+      maxRetries: "max_retries",
+      retryDelay: "retry_delay",
+      visibilityTimeoutMs: "visibility_timeout_ms",
+    }),
+  ),
+) as unknown as Schema.Codec<Settings2>;
+
+interface MqHTTPConsumerResponse {
+  /** A Resource identifier. */
+  consumerId?: string | null;
+  createdOn?: string | null;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  settings?: {
+    batchSize?: number | null;
+    maxRetries?: number | null;
+    retryDelay?: number | null;
+    visibilityTimeoutMs?: number | null;
+  } | null;
+  type?: "http_pull" | null;
+}
+const MqHTTPConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings2, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      consumerId: "consumer_id",
+      createdOn: "created_on",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      settings: "settings",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<MqHTTPConsumerResponse>;
+
+interface Settings3 {
+  /** The maximum number of messages to include in a batch. */
+  batchSize?: number | null;
+  /** Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended). */
+  maxConcurrency?: number | null;
+  /** The maximum number of retries */
+  maxRetries?: number | null;
+  /** The number of milliseconds to wait for a batch to fill up before attempting to deliver it */
+  maxWaitTimeMs?: number | null;
+  /** The number of seconds to delay before making the message available for another attempt. */
+  retryDelay?: number | null;
+  /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
+  visibilityTimeoutMs?: number | null;
+}
+const Settings3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxConcurrency: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxRetries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    maxWaitTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    retryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    visibilityTimeoutMs: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      batchSize: "batch_size",
+      maxConcurrency: "max_concurrency",
+      maxRetries: "max_retries",
+      maxWaitTimeMs: "max_wait_time_ms",
+      retryDelay: "retry_delay",
+      visibilityTimeoutMs: "visibility_timeout_ms",
+    }),
+  ),
+) as unknown as Schema.Codec<Settings3>;
+
+interface MqWorkerConsumerResponse2 {
+  /** A Resource identifier. */
+  consumerId?: string | null;
+  createdOn?: string | null;
+  /** Name of the dead letter queue, or empty string if not configured */
+  deadLetterQueue?: string | null;
+  queueName?: string | null;
+  /** Name of a Worker */
+  scriptName?: string | null;
+  settings?: {
+    batchSize?: number | null;
+    maxConcurrency?: number | null;
+    maxRetries?: number | null;
+    maxWaitTimeMs?: number | null;
+    retryDelay?: number | null;
+  } | null;
+  type?: "worker" | null;
+}
+const MqWorkerConsumerResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      deadLetterQueue: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("worker"), Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        consumerId: "consumer_id",
+        createdOn: "created_on",
+        deadLetterQueue: "dead_letter_queue",
+        queueName: "queue_name",
+        scriptName: "script_name",
+        settings: "settings",
+        type: "type",
+      }),
+    ),
+) as unknown as Schema.Codec<MqWorkerConsumerResponse2>;
+
+interface Source {
+  pointer?: string | null;
+}
+const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Source>;
+
+interface ResponseInfo {
+  code: number;
+  message: string;
+  documentationUrl?: string | null;
+  source?: { pointer?: string | null } | null;
+}
+const ResponseInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    code: Schema.Number,
+    message: Schema.String,
+    documentationUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    source: Schema.optional(Schema.Union([Source, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      code: "code",
+      message: "message",
+      documentationUrl: "documentation_url",
+      source: "source",
+    }),
+  ),
+) as unknown as Schema.Codec<ResponseInfo>;
+
+interface MqQueueMessageText {
+  body?: string | null;
+  contentType?: "text" | null;
+  /** The number of seconds to wait for attempting to deliver this message to consumers */
+  delaySeconds?: number | null;
+}
+const MqQueueMessageText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    contentType: Schema.optional(
+      Schema.Union([Schema.Literal("text"), Schema.Null]),
+    ),
+    delaySeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      body: "body",
+      contentType: "content_type",
+      delaySeconds: "delay_seconds",
+    }),
+  ),
+) as unknown as Schema.Codec<MqQueueMessageText>;
+
+interface MqQueueMessageJson {
+  body?: unknown | null;
+  contentType?: "json" | null;
+  /** The number of seconds to wait for attempting to deliver this message to consumers */
+  delaySeconds?: number | null;
+}
+const MqQueueMessageJson = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    body: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    contentType: Schema.optional(
+      Schema.Union([Schema.Literal("json"), Schema.Null]),
+    ),
+    delaySeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      body: "body",
+      contentType: "content_type",
+      delaySeconds: "delay_seconds",
+    }),
+  ),
+) as unknown as Schema.Codec<MqQueueMessageJson>;
+
+interface Metrics {
+  /** The size in bytes of unacknowledged messages in the queue. */
+  backlogBytes: number;
+  /** The number of unacknowledged messages in the queue. */
+  backlogCount: number;
+  /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
+  oldestMessageTimestampMs: number;
+}
+const Metrics = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    backlogBytes: Schema.Number,
+    backlogCount: Schema.Number,
+    oldestMessageTimestampMs: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      backlogBytes: "backlog_bytes",
+      backlogCount: "backlog_count",
+      oldestMessageTimestampMs: "oldest_message_timestamp_ms",
+    }),
+  ),
+) as unknown as Schema.Codec<Metrics>;
+
+interface Metadata {
+  /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
+  metrics?: {
+    backlogBytes: number;
+    backlogCount: number;
+    oldestMessageTimestampMs: number;
+  } | null;
+}
+const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    metrics: Schema.optional(Schema.Union([Metrics, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<Metadata>;
+
+interface Message {
+  id?: string | null;
+  attempts?: number | null;
+  body?: string | null;
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string | null;
+  metadata?: unknown | null;
+  timestampMs?: number | null;
+}
+const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    attempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    leaseId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    timestampMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      attempts: "attempts",
+      body: "body",
+      leaseId: "lease_id",
+      metadata: "metadata",
+      timestampMs: "timestamp_ms",
+    }),
+  ),
+) as unknown as Schema.Codec<Message>;
+
+interface Ack {
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string | null;
+}
+const Ack = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    leaseId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(Schema.encodeKeys({ leaseId: "lease_id" })),
+) as unknown as Schema.Codec<Ack>;
+
+interface Retry {
+  /** The number of seconds to delay before making the message available for another attempt. */
+  delaySeconds?: number | null;
+  /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
+  leaseId?: string | null;
+}
+const Retry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    delaySeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    leaseId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ delaySeconds: "delay_seconds", leaseId: "lease_id" }),
+  ),
+) as unknown as Schema.Codec<Retry>;
+
+interface MqWorkerProducer {
+  script?: string | null;
+  type?: "worker" | null;
+}
+const MqWorkerProducer = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("worker"), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<MqWorkerProducer>;
+
+interface MqR2Producer {
+  bucketName?: string | null;
+  type?: "r2_bucket" | null;
+}
+const MqR2Producer = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    bucketName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ bucketName: "bucket_name", type: "type" })),
+) as unknown as Schema.Codec<MqR2Producer>;
+
+interface Settings4 {
+  /** Number of seconds to delay delivery of all messages to consumers. */
+  deliveryDelay?: number | null;
+  /** Indicates if message delivery to consumers is currently paused. */
+  deliveryPaused?: boolean | null;
+  /** Number of seconds after which an unconsumed message will be delayed. */
+  messageRetentionPeriod?: number | null;
+}
+const Settings4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deliveryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    deliveryPaused: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    messageRetentionPeriod: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      deliveryDelay: "delivery_delay",
+      deliveryPaused: "delivery_paused",
+      messageRetentionPeriod: "message_retention_period",
+    }),
+  ),
+) as unknown as Schema.Codec<Settings4>;
+
+interface ListQueuesResponseResult {
+  consumers?:
+    | (
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            scriptName?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxConcurrency?: number | null;
+              maxRetries?: number | null;
+              maxWaitTimeMs?: number | null;
+              retryDelay?: number | null;
+            } | null;
+            type?: "worker" | null;
+          }
+        | {
+            consumerId?: string | null;
+            createdOn?: string | null;
+            deadLetterQueue?: string | null;
+            queueName?: string | null;
+            settings?: {
+              batchSize?: number | null;
+              maxRetries?: number | null;
+              retryDelay?: number | null;
+              visibilityTimeoutMs?: number | null;
+            } | null;
+            type?: "http_pull" | null;
+          }
+      )[]
+    | null;
+  consumersTotalCount?: number | null;
+  createdOn?: string | null;
+  modifiedOn?: string | null;
+  producers?:
+    | (
+        | { script?: string | null; type?: "worker" | null }
+        | { bucketName?: string | null; type?: "r2_bucket" | null }
+      )[]
+    | null;
+  producersTotalCount?: number | null;
+  queueId?: string | null;
+  queueName?: string | null;
+  settings?: {
+    deliveryDelay?: number | null;
+    deliveryPaused?: boolean | null;
+    messageRetentionPeriod?: number | null;
+  } | null;
+}
+const ListQueuesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      consumers: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      consumersTotalCount: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      producers: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+          Schema.Null,
+        ]),
+      ),
+      producersTotalCount: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        consumers: "consumers",
+        consumersTotalCount: "consumers_total_count",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        producers: "producers",
+        producersTotalCount: "producers_total_count",
+        queueId: "queue_id",
+        queueName: "queue_name",
+        settings: "settings",
+      }),
+    ),
+) as unknown as Schema.Codec<ListQueuesResponseResult>;
+
+interface Destination {
+  /** ID of the target queue */
+  queueId: string;
+  /** Type of destination */
+  type: "queues.queue";
+}
+const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String,
+    type: Schema.Literal("queues.queue"),
+  }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+) as unknown as Schema.Codec<Destination>;
+
+interface MqEventSourceImages {
+  /** Type of source */
+  type?: "images" | null;
+}
+const MqEventSourceImages = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("images"), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<MqEventSourceImages>;
+
+interface MqEventSourceKV {
+  /** Type of source */
+  type?: "kv" | null;
+}
+const MqEventSourceKV = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
+  }),
+) as unknown as Schema.Codec<MqEventSourceKV>;
+
+interface MqEventSourceR2 {
+  /** Type of source */
+  type?: "r2" | null;
+}
+const MqEventSourceR2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
+  }),
+) as unknown as Schema.Codec<MqEventSourceR2>;
+
+interface MqEventSourceSuperSlurper {
+  /** Type of source */
+  type?: "superSlurper" | null;
+}
+const MqEventSourceSuperSlurper = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+      ),
+    }),
+) as unknown as Schema.Codec<MqEventSourceSuperSlurper>;
+
+interface MqEventSourceVectorize {
+  /** Type of source */
+  type?: "vectorize" | null;
+}
+const MqEventSourceVectorize = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
+    ),
+  }),
+) as unknown as Schema.Codec<MqEventSourceVectorize>;
+
+interface MqEventSourceWorkersAIModel {
+  /** Name of the Workers AI model */
+  modelName?: string | null;
+  /** Type of source */
+  type?: "workersAi.model" | null;
+}
+const MqEventSourceWorkersAIModel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+) as unknown as Schema.Codec<MqEventSourceWorkersAIModel>;
+
+interface MqEventSourceWorkersBuildsWorker {
+  /** Type of source */
+  type?: "workersBuilds.worker" | null;
+  /** Name of the worker */
+  workerName?: string | null;
+}
+const MqEventSourceWorkersBuildsWorker =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
+      ),
+      workerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
+  ) as unknown as Schema.Codec<MqEventSourceWorkersBuildsWorker>;
+
+interface MqEventSourceWorkflowsWorkflow {
+  /** Type of source */
+  type?: "workflows.workflow" | null;
+  /** Name of the workflow */
+  workflowName?: string | null;
+}
+const MqEventSourceWorkflowsWorkflow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
+      ),
+      workflowName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(Schema.encodeKeys({ type: "type", workflowName: "workflow_name" })),
+  ) as unknown as Schema.Codec<MqEventSourceWorkflowsWorkflow>;
+
+interface ListSubscriptionsResponseResult {
+  /** Unique identifier for the subscription */
+  id: string;
+  /** When the subscription was created */
+  createdAt: string;
+  /** Destination configuration for the subscription */
+  destination: { queueId: string; type: "queues.queue" };
+  /** Whether the subscription is active */
+  enabled: boolean;
+  /** List of event types this subscription handles */
+  events: string[];
+  /** When the subscription was last modified */
+  modifiedAt: string;
+  /** Name of the subscription */
+  name: string;
+  /** Source configuration for the subscription */
+  source:
+    | { type?: "images" | null }
+    | { type?: "kv" | null }
+    | { type?: "r2" | null }
+    | { type?: "superSlurper" | null }
+    | { type?: "vectorize" | null }
+    | { modelName?: string | null; type?: "workersAi.model" | null }
+    | { type?: "workersBuilds.worker" | null; workerName?: string | null }
+    | { type?: "workflows.workflow" | null; workflowName?: string | null };
+}
+const ListSubscriptionsResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      destination: Destination,
+      enabled: Schema.Boolean,
+      events: Schema.Array(Schema.String),
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      source: Schema.Union([
+        MqEventSourceImages,
+        MqEventSourceKV,
+        MqEventSourceR2,
+        MqEventSourceSuperSlurper,
+        MqEventSourceVectorize,
+        MqEventSourceWorkersAIModel,
+        MqEventSourceWorkersBuildsWorker,
+        MqEventSourceWorkflowsWorkflow,
+      ]),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        destination: "destination",
+        enabled: "enabled",
+        events: "events",
+        modifiedAt: "modified_at",
+        name: "name",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListSubscriptionsResponseResult>;
+
+interface ListSubscriptionsResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListSubscriptionsResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListSubscriptionsResponseResultInfo>;
+
+// =============================================================================
 // Consumer
 // =============================================================================
 
@@ -179,7 +920,7 @@ export const GetConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
       }),
     ),
-) as unknown as Schema.Schema<GetConsumerRequest>;
+) as unknown as Schema.Codec<GetConsumerRequest>;
 
 export type GetConsumerResponse =
   | {
@@ -213,107 +954,10 @@ export type GetConsumerResponse =
 
 export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
-    Schema.Union([
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxConcurrency: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxWaitTimeMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxConcurrency: "max_concurrency",
-                maxRetries: "max_retries",
-                maxWaitTimeMs: "max_wait_time_ms",
-                retryDelay: "retry_delay",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("worker"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          scriptName: "script",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              visibilityTimeoutMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxRetries: "max_retries",
-                retryDelay: "retry_delay",
-                visibilityTimeoutMs: "visibility_timeout_ms",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-    ]).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetConsumerResponse>;
+    Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]).pipe(
+      T.ResponsePath("result"),
+    ),
+) as unknown as Schema.Codec<GetConsumerResponse>;
 
 export type GetConsumerError =
   | DefaultErrors
@@ -350,7 +994,7 @@ export const ListConsumersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/consumers",
       }),
     ),
-) as unknown as Schema.Schema<ListConsumersRequest>;
+) as unknown as Schema.Codec<ListConsumersRequest>;
 
 export interface ListConsumersResponse {
   result: (
@@ -389,123 +1033,10 @@ export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       result: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            consumerId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            createdOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            deadLetterQueue: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            queueName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            scriptName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            settings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  batchSize: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  maxConcurrency: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  maxRetries: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  maxWaitTimeMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  retryDelay: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    batchSize: "batch_size",
-                    maxConcurrency: "max_concurrency",
-                    maxRetries: "max_retries",
-                    maxWaitTimeMs: "max_wait_time_ms",
-                    retryDelay: "retry_delay",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("worker"), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              consumerId: "consumer_id",
-              createdOn: "created_on",
-              deadLetterQueue: "dead_letter_queue",
-              queueName: "queue_name",
-              scriptName: "script",
-              settings: "settings",
-              type: "type",
-            }),
-          ),
-          Schema.Struct({
-            consumerId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            createdOn: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            deadLetterQueue: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            queueName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            settings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  batchSize: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  maxRetries: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  retryDelay: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  visibilityTimeoutMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    batchSize: "batch_size",
-                    maxRetries: "max_retries",
-                    retryDelay: "retry_delay",
-                    visibilityTimeoutMs: "visibility_timeout_ms",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            type: Schema.optional(
-              Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              consumerId: "consumer_id",
-              createdOn: "created_on",
-              deadLetterQueue: "dead_letter_queue",
-              queueName: "queue_name",
-              settings: "settings",
-              type: "type",
-            }),
-          ),
-        ]),
+        Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
       ),
     }),
-) as unknown as Schema.Schema<ListConsumersResponse>;
+) as unknown as Schema.Codec<ListConsumersResponse>;
 
 export type ListConsumersError =
   | DefaultErrors
@@ -560,25 +1091,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.String,
       ]),
       deadLetterQueue: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Struct({
-          batchSize: Schema.optional(Schema.Number),
-          maxConcurrency: Schema.optional(Schema.Number),
-          maxRetries: Schema.optional(Schema.Number),
-          maxWaitTimeMs: Schema.optional(Schema.Number),
-          retryDelay: Schema.optional(Schema.Number),
-          visibilityTimeoutMs: Schema.optional(Schema.Number),
-        }).pipe(
-          Schema.encodeKeys({
-            batchSize: "batch_size",
-            maxConcurrency: "max_concurrency",
-            maxRetries: "max_retries",
-            maxWaitTimeMs: "max_wait_time_ms",
-            retryDelay: "retry_delay",
-            visibilityTimeoutMs: "visibility_timeout_ms",
-          }),
-        ),
-      ),
+      settings: Schema.optional(Settings3),
     }).pipe(
       Schema.encodeKeys({
         scriptName: "script_name",
@@ -591,7 +1104,7 @@ export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/consumers",
       }),
     ),
-) as unknown as Schema.Schema<CreateConsumerRequest>;
+) as unknown as Schema.Codec<CreateConsumerRequest>;
 
 export type CreateConsumerResponse =
   | {
@@ -625,107 +1138,10 @@ export type CreateConsumerResponse =
 
 export const CreateConsumerResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxConcurrency: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxWaitTimeMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxConcurrency: "max_concurrency",
-                maxRetries: "max_retries",
-                maxWaitTimeMs: "max_wait_time_ms",
-                retryDelay: "retry_delay",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("worker"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          scriptName: "script_name",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              visibilityTimeoutMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxRetries: "max_retries",
-                retryDelay: "retry_delay",
-                visibilityTimeoutMs: "visibility_timeout_ms",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-    ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateConsumerResponse>;
+    Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]).pipe(
+      T.ResponsePath("result"),
+    ),
+  ) as unknown as Schema.Codec<CreateConsumerResponse>;
 
 export type CreateConsumerError =
   | DefaultErrors
@@ -788,25 +1204,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.String,
       ]),
       deadLetterQueue: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Struct({
-          batchSize: Schema.optional(Schema.Number),
-          maxConcurrency: Schema.optional(Schema.Number),
-          maxRetries: Schema.optional(Schema.Number),
-          maxWaitTimeMs: Schema.optional(Schema.Number),
-          retryDelay: Schema.optional(Schema.Number),
-          visibilityTimeoutMs: Schema.optional(Schema.Number),
-        }).pipe(
-          Schema.encodeKeys({
-            batchSize: "batch_size",
-            maxConcurrency: "max_concurrency",
-            maxRetries: "max_retries",
-            maxWaitTimeMs: "max_wait_time_ms",
-            retryDelay: "retry_delay",
-            visibilityTimeoutMs: "visibility_timeout_ms",
-          }),
-        ),
-      ),
+      settings: Schema.optional(Settings3),
     }).pipe(
       Schema.encodeKeys({
         scriptName: "script_name",
@@ -819,7 +1217,7 @@ export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateConsumerRequest>;
+) as unknown as Schema.Codec<UpdateConsumerRequest>;
 
 export type UpdateConsumerResponse =
   | {
@@ -853,107 +1251,10 @@ export type UpdateConsumerResponse =
 
 export const UpdateConsumerResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxConcurrency: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxWaitTimeMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxConcurrency: "max_concurrency",
-                maxRetries: "max_retries",
-                maxWaitTimeMs: "max_wait_time_ms",
-                retryDelay: "retry_delay",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("worker"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          scriptName: "script_name",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-      Schema.Struct({
-        consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        deadLetterQueue: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              batchSize: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              maxRetries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              retryDelay: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              visibilityTimeoutMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                batchSize: "batch_size",
-                maxRetries: "max_retries",
-                retryDelay: "retry_delay",
-                visibilityTimeoutMs: "visibility_timeout_ms",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        type: Schema.optional(
-          Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          consumerId: "consumer_id",
-          createdOn: "created_on",
-          deadLetterQueue: "dead_letter_queue",
-          queueName: "queue_name",
-          settings: "settings",
-          type: "type",
-        }),
-      ),
-    ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateConsumerResponse>;
+    Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]).pipe(
+      T.ResponsePath("result"),
+    ),
+  ) as unknown as Schema.Codec<UpdateConsumerResponse>;
 
 export type UpdateConsumerError =
   | DefaultErrors
@@ -1001,7 +1302,7 @@ export const DeleteConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteConsumerRequest>;
+) as unknown as Schema.Codec<DeleteConsumerRequest>;
 
 export interface DeleteConsumerResponse {
   errors?:
@@ -1021,35 +1322,7 @@ export const DeleteConsumerResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.Number,
-              message: Schema.String,
-              documentationUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              source: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    pointer: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                code: "code",
-                message: "message",
-                documentationUrl: "documentation_url",
-                source: "source",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ResponseInfo), Schema.Null]),
       ),
       messages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1058,7 +1331,7 @@ export const DeleteConsumerResponse =
         Schema.Union([Schema.Literal(true), Schema.Null]),
       ),
     }),
-  ) as unknown as Schema.Schema<DeleteConsumerResponse>;
+  ) as unknown as Schema.Codec<DeleteConsumerResponse>;
 
 export type DeleteConsumerError =
   | DefaultErrors
@@ -1102,32 +1375,7 @@ export const BulkPushMessagesRequest =
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       delaySeconds: Schema.optional(Schema.Number),
       messages: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              body: Schema.optional(Schema.String),
-              contentType: Schema.optional(Schema.Literal("text")),
-              delaySeconds: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                body: "body",
-                contentType: "content_type",
-                delaySeconds: "delay_seconds",
-              }),
-            ),
-            Schema.Struct({
-              body: Schema.optional(Schema.Unknown),
-              contentType: Schema.optional(Schema.Literal("json")),
-              delaySeconds: Schema.optional(Schema.Number),
-            }).pipe(
-              Schema.encodeKeys({
-                body: "body",
-                contentType: "content_type",
-                delaySeconds: "delay_seconds",
-              }),
-            ),
-          ]),
-        ),
+        Schema.Array(Schema.Union([MqQueueMessageText, MqQueueMessageJson])),
       ),
     }).pipe(
       Schema.encodeKeys({
@@ -1139,7 +1387,7 @@ export const BulkPushMessagesRequest =
         path: "/accounts/{account_id}/queues/{queueId}/messages/batch",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkPushMessagesRequest>;
+  ) as unknown as Schema.Codec<BulkPushMessagesRequest>;
 
 export interface BulkPushMessagesResponse {
   metadata?: {
@@ -1154,31 +1402,9 @@ export interface BulkPushMessagesResponse {
 export const BulkPushMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            metrics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  backlogBytes: Schema.Number,
-                  backlogCount: Schema.Number,
-                  oldestMessageTimestampMs: Schema.Number,
-                }).pipe(
-                  Schema.encodeKeys({
-                    backlogBytes: "backlog_bytes",
-                    backlogCount: "backlog_count",
-                    oldestMessageTimestampMs: "oldest_message_timestamp_ms",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<BulkPushMessagesResponse>;
+  ) as unknown as Schema.Codec<BulkPushMessagesResponse>;
 
 export type BulkPushMessagesError =
   | DefaultErrors
@@ -1224,7 +1450,7 @@ export const PullMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/messages/pull",
       }),
     ),
-) as unknown as Schema.Schema<PullMessageRequest>;
+) as unknown as Schema.Codec<PullMessageRequest>;
 
 export interface PullMessageResponse {
   /** The number of unacknowledged messages in the queue. */
@@ -1255,60 +1481,9 @@ export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       messages: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              attempts: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              leaseId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              metadata: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              timestampMs: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                attempts: "attempts",
-                body: "body",
-                leaseId: "lease_id",
-                metadata: "metadata",
-                timestampMs: "timestamp_ms",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Message), Schema.Null]),
       ),
-      metadata: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            metrics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  backlogBytes: Schema.Number,
-                  backlogCount: Schema.Number,
-                  oldestMessageTimestampMs: Schema.Number,
-                }).pipe(
-                  Schema.encodeKeys({
-                    backlogBytes: "backlog_bytes",
-                    backlogCount: "backlog_count",
-                    oldestMessageTimestampMs: "oldest_message_timestamp_ms",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1318,7 +1493,7 @@ export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PullMessageResponse>;
+) as unknown as Schema.Codec<PullMessageResponse>;
 
 export type PullMessageError =
   | DefaultErrors
@@ -1371,7 +1546,7 @@ export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/messages",
       }),
     ),
-) as unknown as Schema.Schema<PushMessageRequest>;
+) as unknown as Schema.Codec<PushMessageRequest>;
 
 export interface PushMessageResponse {
   metadata?: {
@@ -1386,31 +1561,9 @@ export interface PushMessageResponse {
 export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      metadata: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            metrics: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  backlogBytes: Schema.Number,
-                  backlogCount: Schema.Number,
-                  oldestMessageTimestampMs: Schema.Number,
-                }).pipe(
-                  Schema.encodeKeys({
-                    backlogBytes: "backlog_bytes",
-                    backlogCount: "backlog_count",
-                    oldestMessageTimestampMs: "oldest_message_timestamp_ms",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
+      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PushMessageResponse>;
+) as unknown as Schema.Codec<PushMessageResponse>;
 
 export type PushMessageError =
   | DefaultErrors
@@ -1444,33 +1597,15 @@ export const AckMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       queueId: Schema.String.pipe(T.HttpPath("queueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      acks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            leaseId: Schema.optional(Schema.String),
-          }).pipe(Schema.encodeKeys({ leaseId: "lease_id" })),
-        ),
-      ),
-      retries: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            delaySeconds: Schema.optional(Schema.Number),
-            leaseId: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              delaySeconds: "delay_seconds",
-              leaseId: "lease_id",
-            }),
-          ),
-        ),
-      ),
+      acks: Schema.optional(Schema.Array(Ack)),
+      retries: Schema.optional(Schema.Array(Retry)),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/accounts/{account_id}/queues/{queueId}/messages/ack",
       }),
     ),
-) as unknown as Schema.Schema<AckMessageRequest>;
+) as unknown as Schema.Codec<AckMessageRequest>;
 
 export interface AckMessageResponse {
   /** The number of messages that were succesfully acknowledged. */
@@ -1493,7 +1628,7 @@ export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         ]),
       ),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<AckMessageResponse>;
+) as unknown as Schema.Codec<AckMessageResponse>;
 
 export type AckMessageError =
   | DefaultErrors
@@ -1534,7 +1669,7 @@ export const GetMetricsQueueRequest =
         path: "/accounts/{account_id}/queues/{queueId}/metrics",
       }),
     ),
-  ) as unknown as Schema.Schema<GetMetricsQueueRequest>;
+  ) as unknown as Schema.Codec<GetMetricsQueueRequest>;
 
 export interface GetMetricsQueueResponse {
   /** The size in bytes of unacknowledged messages in the queue. */
@@ -1560,7 +1695,7 @@ export const GetMetricsQueueResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetMetricsQueueResponse>;
+  ) as unknown as Schema.Codec<GetMetricsQueueResponse>;
 
 export type GetMetricsQueueError = DefaultErrors;
 
@@ -1602,7 +1737,7 @@ export const StartPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/purge",
       }),
     ),
-) as unknown as Schema.Schema<StartPurgeRequest>;
+) as unknown as Schema.Codec<StartPurgeRequest>;
 
 export interface StartPurgeResponse {
   consumers?:
@@ -1662,120 +1797,7 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       consumers: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxConcurrency: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxWaitTimeMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxConcurrency: "max_concurrency",
-                        maxRetries: "max_retries",
-                        maxWaitTimeMs: "max_wait_time_ms",
-                        retryDelay: "retry_delay",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  scriptName: "script_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      visibilityTimeoutMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxRetries: "max_retries",
-                        retryDelay: "retry_delay",
-                        visibilityTimeoutMs: "visibility_timeout_ms",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-            ]),
+            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
           ),
           Schema.Null,
         ]),
@@ -1787,28 +1809,7 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       producers: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                script: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                bucketName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
-              ),
-            ]),
-          ),
+          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
           Schema.Null,
         ]),
       ),
@@ -1817,28 +1818,7 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            deliveryDelay: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            deliveryPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            messageRetentionPeriod: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              deliveryDelay: "delivery_delay",
-              deliveryPaused: "delivery_paused",
-              messageRetentionPeriod: "message_retention_period",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -1854,7 +1834,7 @@ export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<StartPurgeResponse>;
+) as unknown as Schema.Codec<StartPurgeResponse>;
 
 export type StartPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
 
@@ -1886,7 +1866,7 @@ export const StatusPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}/purge",
       }),
     ),
-) as unknown as Schema.Schema<StatusPurgeRequest>;
+) as unknown as Schema.Codec<StatusPurgeRequest>;
 
 export interface StatusPurgeResponse {
   /** Indicates if the last purge operation completed successfully. */
@@ -1905,7 +1885,7 @@ export const StatusPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.encodeKeys({ completed: "completed", startedAt: "started_at" }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<StatusPurgeResponse>;
+) as unknown as Schema.Codec<StatusPurgeResponse>;
 
 export type StatusPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
 
@@ -1937,7 +1917,7 @@ export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", path: "/accounts/{account_id}/queues/{queueId}" }),
   ),
-) as unknown as Schema.Schema<GetQueueRequest>;
+) as unknown as Schema.Codec<GetQueueRequest>;
 
 export interface GetQueueResponse {
   consumers?:
@@ -1996,120 +1976,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     consumers: Schema.optional(
       Schema.Union([
         Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              consumerId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              createdOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              deadLetterQueue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              queueName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scriptName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              settings: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    batchSize: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    maxConcurrency: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    maxRetries: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    maxWaitTimeMs: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    retryDelay: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      batchSize: "batch_size",
-                      maxConcurrency: "max_concurrency",
-                      maxRetries: "max_retries",
-                      maxWaitTimeMs: "max_wait_time_ms",
-                      retryDelay: "retry_delay",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("worker"), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                consumerId: "consumer_id",
-                createdOn: "created_on",
-                deadLetterQueue: "dead_letter_queue",
-                queueName: "queue_name",
-                scriptName: "script",
-                settings: "settings",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              consumerId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              createdOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              deadLetterQueue: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              queueName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              settings: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    batchSize: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    maxRetries: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    retryDelay: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                    visibilityTimeoutMs: Schema.optional(
-                      Schema.Union([Schema.Number, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      batchSize: "batch_size",
-                      maxRetries: "max_retries",
-                      retryDelay: "retry_delay",
-                      visibilityTimeoutMs: "visibility_timeout_ms",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                consumerId: "consumer_id",
-                createdOn: "created_on",
-                deadLetterQueue: "dead_letter_queue",
-                queueName: "queue_name",
-                settings: "settings",
-                type: "type",
-              }),
-            ),
-          ]),
+          Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
         ),
         Schema.Null,
       ]),
@@ -2121,28 +1988,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     producers: Schema.optional(
       Schema.Union([
-        Schema.Array(
-          Schema.Union([
-            Schema.Struct({
-              script: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("worker"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              bucketName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
-            ),
-          ]),
-        ),
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
         Schema.Null,
       ]),
     ),
@@ -2151,28 +1997,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     ),
     queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    settings: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          deliveryDelay: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          deliveryPaused: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          messageRetentionPeriod: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            deliveryDelay: "delivery_delay",
-            deliveryPaused: "delivery_paused",
-            messageRetentionPeriod: "message_retention_period",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
   })
     .pipe(
       Schema.encodeKeys({
@@ -2188,7 +2013,7 @@ export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       }),
     )
     .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetQueueResponse>;
+) as unknown as Schema.Codec<GetQueueResponse>;
 
 export type GetQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
 
@@ -2213,7 +2038,7 @@ export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/queues" })),
-) as unknown as Schema.Schema<ListQueuesRequest>;
+) as unknown as Schema.Codec<ListQueuesRequest>;
 
 export interface ListQueuesResponse {
   result: {
@@ -2272,213 +2097,9 @@ export interface ListQueuesResponse {
 export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          consumers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Union([
-                  Schema.Struct({
-                    consumerId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    createdOn: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    deadLetterQueue: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    queueName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    scriptName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    settings: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          batchSize: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          maxConcurrency: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          maxRetries: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          maxWaitTimeMs: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          retryDelay: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            batchSize: "batch_size",
-                            maxConcurrency: "max_concurrency",
-                            maxRetries: "max_retries",
-                            maxWaitTimeMs: "max_wait_time_ms",
-                            retryDelay: "retry_delay",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      consumerId: "consumer_id",
-                      createdOn: "created_on",
-                      deadLetterQueue: "dead_letter_queue",
-                      queueName: "queue_name",
-                      scriptName: "script",
-                      settings: "settings",
-                      type: "type",
-                    }),
-                  ),
-                  Schema.Struct({
-                    consumerId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    createdOn: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    deadLetterQueue: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    queueName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    settings: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          batchSize: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          maxRetries: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          retryDelay: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                          visibilityTimeoutMs: Schema.optional(
-                            Schema.Union([Schema.Number, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            batchSize: "batch_size",
-                            maxRetries: "max_retries",
-                            retryDelay: "retry_delay",
-                            visibilityTimeoutMs: "visibility_timeout_ms",
-                          }),
-                        ),
-                        Schema.Null,
-                      ]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      consumerId: "consumer_id",
-                      createdOn: "created_on",
-                      deadLetterQueue: "dead_letter_queue",
-                      queueName: "queue_name",
-                      settings: "settings",
-                      type: "type",
-                    }),
-                  ),
-                ]),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          consumersTotalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          producers: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Union([
-                  Schema.Struct({
-                    script: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                    ),
-                  }),
-                  Schema.Struct({
-                    bucketName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    type: Schema.optional(
-                      Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      bucketName: "bucket_name",
-                      type: "type",
-                    }),
-                  ),
-                ]),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          producersTotalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          queueName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          settings: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                deliveryDelay: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-                deliveryPaused: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                messageRetentionPeriod: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  deliveryDelay: "delivery_delay",
-                  deliveryPaused: "delivery_paused",
-                  messageRetentionPeriod: "message_retention_period",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            consumers: "consumers",
-            consumersTotalCount: "consumers_total_count",
-            createdOn: "created_on",
-            modifiedOn: "modified_on",
-            producers: "producers",
-            producersTotalCount: "producers_total_count",
-            queueId: "queue_id",
-            queueName: "queue_name",
-            settings: "settings",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListQueuesResponseResult),
     }),
-) as unknown as Schema.Schema<ListQueuesResponse>;
+) as unknown as Schema.Codec<ListQueuesResponse>;
 
 export type ListQueuesError = DefaultErrors | InvalidRoute;
 
@@ -2513,7 +2134,7 @@ export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       Schema.encodeKeys({ queueName: "queue_name" }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/queues" }),
     ),
-) as unknown as Schema.Schema<CreateQueueRequest>;
+) as unknown as Schema.Codec<CreateQueueRequest>;
 
 export interface CreateQueueResponse {
   consumers?:
@@ -2573,120 +2194,7 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       consumers: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxConcurrency: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxWaitTimeMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxConcurrency: "max_concurrency",
-                        maxRetries: "max_retries",
-                        maxWaitTimeMs: "max_wait_time_ms",
-                        retryDelay: "retry_delay",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  scriptName: "script_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      visibilityTimeoutMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxRetries: "max_retries",
-                        retryDelay: "retry_delay",
-                        visibilityTimeoutMs: "visibility_timeout_ms",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-            ]),
+            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
           ),
           Schema.Null,
         ]),
@@ -2698,28 +2206,7 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       producers: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                script: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                bucketName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
-              ),
-            ]),
-          ),
+          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
           Schema.Null,
         ]),
       ),
@@ -2728,28 +2215,7 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            deliveryDelay: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            deliveryPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            messageRetentionPeriod: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              deliveryDelay: "delivery_delay",
-              deliveryPaused: "delivery_paused",
-              messageRetentionPeriod: "message_retention_period",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -2765,7 +2231,7 @@ export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateQueueResponse>;
+) as unknown as Schema.Codec<CreateQueueResponse>;
 
 export type CreateQueueError =
   | DefaultErrors
@@ -2804,19 +2270,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       queueId: Schema.String.pipe(T.HttpPath("queueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       queueName: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Struct({
-          deliveryDelay: Schema.optional(Schema.Number),
-          deliveryPaused: Schema.optional(Schema.Boolean),
-          messageRetentionPeriod: Schema.optional(Schema.Number),
-        }).pipe(
-          Schema.encodeKeys({
-            deliveryDelay: "delivery_delay",
-            deliveryPaused: "delivery_paused",
-            messageRetentionPeriod: "message_retention_period",
-          }),
-        ),
-      ),
+      settings: Schema.optional(Settings4),
     }).pipe(
       Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
       T.Http({
@@ -2824,7 +2278,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateQueueRequest>;
+) as unknown as Schema.Codec<UpdateQueueRequest>;
 
 export interface UpdateQueueResponse {
   consumers?:
@@ -2884,120 +2338,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       consumers: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxConcurrency: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxWaitTimeMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxConcurrency: "max_concurrency",
-                        maxRetries: "max_retries",
-                        maxWaitTimeMs: "max_wait_time_ms",
-                        retryDelay: "retry_delay",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  scriptName: "script_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      visibilityTimeoutMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxRetries: "max_retries",
-                        retryDelay: "retry_delay",
-                        visibilityTimeoutMs: "visibility_timeout_ms",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-            ]),
+            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
           ),
           Schema.Null,
         ]),
@@ -3009,28 +2350,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       producers: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                script: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                bucketName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
-              ),
-            ]),
-          ),
+          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
           Schema.Null,
         ]),
       ),
@@ -3039,28 +2359,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            deliveryDelay: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            deliveryPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            messageRetentionPeriod: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              deliveryDelay: "delivery_delay",
-              deliveryPaused: "delivery_paused",
-              messageRetentionPeriod: "message_retention_period",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -3076,7 +2375,7 @@ export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateQueueResponse>;
+) as unknown as Schema.Codec<UpdateQueueResponse>;
 
 export type UpdateQueueError =
   | DefaultErrors
@@ -3115,19 +2414,7 @@ export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       queueId: Schema.String.pipe(T.HttpPath("queueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       queueName: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Struct({
-          deliveryDelay: Schema.optional(Schema.Number),
-          deliveryPaused: Schema.optional(Schema.Boolean),
-          messageRetentionPeriod: Schema.optional(Schema.Number),
-        }).pipe(
-          Schema.encodeKeys({
-            deliveryDelay: "delivery_delay",
-            deliveryPaused: "delivery_paused",
-            messageRetentionPeriod: "message_retention_period",
-          }),
-        ),
-      ),
+      settings: Schema.optional(Settings4),
     }).pipe(
       Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
       T.Http({
@@ -3135,7 +2422,7 @@ export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}",
       }),
     ),
-) as unknown as Schema.Schema<PatchQueueRequest>;
+) as unknown as Schema.Codec<PatchQueueRequest>;
 
 export interface PatchQueueResponse {
   consumers?:
@@ -3195,120 +2482,7 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       consumers: Schema.optional(
         Schema.Union([
           Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxConcurrency: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxWaitTimeMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxConcurrency: "max_concurrency",
-                        maxRetries: "max_retries",
-                        maxWaitTimeMs: "max_wait_time_ms",
-                        retryDelay: "retry_delay",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  scriptName: "script_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                consumerId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                createdOn: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                deadLetterQueue: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                queueName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                settings: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      batchSize: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      maxRetries: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      retryDelay: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                      visibilityTimeoutMs: Schema.optional(
-                        Schema.Union([Schema.Number, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        batchSize: "batch_size",
-                        maxRetries: "max_retries",
-                        retryDelay: "retry_delay",
-                        visibilityTimeoutMs: "visibility_timeout_ms",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("http_pull"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  consumerId: "consumer_id",
-                  createdOn: "created_on",
-                  deadLetterQueue: "dead_letter_queue",
-                  queueName: "queue_name",
-                  settings: "settings",
-                  type: "type",
-                }),
-              ),
-            ]),
+            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
           ),
           Schema.Null,
         ]),
@@ -3320,28 +2494,7 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       producers: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Struct({
-                script: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("worker"), Schema.Null]),
-                ),
-              }),
-              Schema.Struct({
-                bucketName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                type: Schema.optional(
-                  Schema.Union([Schema.Literal("r2_bucket"), Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ bucketName: "bucket_name", type: "type" }),
-              ),
-            ]),
-          ),
+          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
           Schema.Null,
         ]),
       ),
@@ -3350,28 +2503,7 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       ),
       queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            deliveryDelay: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            deliveryPaused: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            messageRetentionPeriod: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              deliveryDelay: "delivery_delay",
-              deliveryPaused: "delivery_paused",
-              messageRetentionPeriod: "message_retention_period",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
     })
       .pipe(
         Schema.encodeKeys({
@@ -3387,7 +2519,7 @@ export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PatchQueueResponse>;
+) as unknown as Schema.Codec<PatchQueueResponse>;
 
 export type PatchQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
 
@@ -3419,7 +2551,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/queues/{queueId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteQueueRequest>;
+) as unknown as Schema.Codec<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {
   errors?:
@@ -3439,35 +2571,7 @@ export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       errors: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              code: Schema.Number,
-              message: Schema.String,
-              documentationUrl: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              source: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    pointer: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                code: "code",
-                message: "message",
-                documentationUrl: "documentation_url",
-                source: "source",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(ResponseInfo), Schema.Null]),
       ),
       messages: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -3476,7 +2580,7 @@ export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.Literal(true), Schema.Null]),
       ),
     }),
-) as unknown as Schema.Schema<DeleteQueueResponse>;
+) as unknown as Schema.Codec<DeleteQueueResponse>;
 
 export type DeleteQueueError =
   | DefaultErrors
@@ -3516,7 +2620,7 @@ export const GetSubscriptionRequest =
         path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetSubscriptionRequest>;
+  ) as unknown as Schema.Codec<GetSubscriptionRequest>;
 
 export interface GetSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -3550,66 +2654,20 @@ export const GetSubscriptionResponse =
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
-      destination: Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+      destination: Destination,
       enabled: Schema.Boolean,
       events: Schema.Array(Schema.String),
       modifiedAt: Schema.String,
       name: Schema.String,
       source: Schema.Union([
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("images"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("kv"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("r2"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          modelName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-          ),
-          workerName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-          ),
-          workflowName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-        ),
+        MqEventSourceImages,
+        MqEventSourceKV,
+        MqEventSourceR2,
+        MqEventSourceSuperSlurper,
+        MqEventSourceVectorize,
+        MqEventSourceWorkersAIModel,
+        MqEventSourceWorkersBuildsWorker,
+        MqEventSourceWorkflowsWorkflow,
       ]),
     })
       .pipe(
@@ -3625,7 +2683,7 @@ export const GetSubscriptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetSubscriptionResponse>;
+  ) as unknown as Schema.Codec<GetSubscriptionResponse>;
 
 export type GetSubscriptionError =
   | DefaultErrors
@@ -3676,7 +2734,7 @@ export const ListSubscriptionsRequest =
         path: "/accounts/{account_id}/event_subscriptions/subscriptions",
       }),
     ),
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
 
 export interface ListSubscriptionsResponse {
   result: {
@@ -3708,121 +2766,12 @@ export interface ListSubscriptionsResponse {
 export const ListSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          createdAt: Schema.String,
-          destination: Schema.Struct({
-            queueId: Schema.String,
-            type: Schema.Literal("queues.queue"),
-          }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-          enabled: Schema.Boolean,
-          events: Schema.Array(Schema.String),
-          modifiedAt: Schema.String,
-          name: Schema.String,
-          source: Schema.Union([
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("images"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("kv"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("r2"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-              ),
-            }),
-            Schema.Struct({
-              modelName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              type: Schema.optional(
-                Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ modelName: "model_name", type: "type" }),
-            ),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("workersBuilds.worker"),
-                  Schema.Null,
-                ]),
-              ),
-              workerName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({ type: "type", workerName: "worker_name" }),
-            ),
-            Schema.Struct({
-              type: Schema.optional(
-                Schema.Union([
-                  Schema.Literal("workflows.workflow"),
-                  Schema.Null,
-                ]),
-              ),
-              workflowName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                type: "type",
-                workflowName: "workflow_name",
-              }),
-            ),
-          ]),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdAt: "created_at",
-            destination: "destination",
-            enabled: "enabled",
-            events: "events",
-            modifiedAt: "modified_at",
-            name: "name",
-            source: "source",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListSubscriptionsResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListSubscriptionsResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListSubscriptionsResponse>;
+  ) as unknown as Schema.Codec<ListSubscriptionsResponse>;
 
 export type ListSubscriptionsError = DefaultErrors | Forbidden;
 
@@ -3871,48 +2820,20 @@ export const CreateSubscriptionRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      destination: Schema.optional(
-        Schema.Struct({
-          queueId: Schema.String,
-          type: Schema.Literal("queues.queue"),
-        }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-      ),
+      destination: Schema.optional(Destination),
       enabled: Schema.optional(Schema.Boolean),
       events: Schema.optional(Schema.Array(Schema.String)),
       name: Schema.optional(Schema.String),
       source: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("images")),
-          }),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("kv")),
-          }),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("r2")),
-          }),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("superSlurper")),
-          }),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("vectorize")),
-          }),
-          Schema.Struct({
-            modelName: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literal("workersAi.model")),
-          }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("workersBuilds.worker")),
-            workerName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({ type: "type", workerName: "worker_name" }),
-          ),
-          Schema.Struct({
-            type: Schema.optional(Schema.Literal("workflows.workflow")),
-            workflowName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-          ),
+          MqEventSourceImages,
+          MqEventSourceKV,
+          MqEventSourceR2,
+          MqEventSourceSuperSlurper,
+          MqEventSourceVectorize,
+          MqEventSourceWorkersAIModel,
+          MqEventSourceWorkersBuildsWorker,
+          MqEventSourceWorkflowsWorkflow,
         ]),
       ),
     }).pipe(
@@ -3921,7 +2842,7 @@ export const CreateSubscriptionRequest =
         path: "/accounts/{account_id}/event_subscriptions/subscriptions",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateSubscriptionRequest>;
+  ) as unknown as Schema.Codec<CreateSubscriptionRequest>;
 
 export interface CreateSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -3955,66 +2876,20 @@ export const CreateSubscriptionResponse =
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
-      destination: Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+      destination: Destination,
       enabled: Schema.Boolean,
       events: Schema.Array(Schema.String),
       modifiedAt: Schema.String,
       name: Schema.String,
       source: Schema.Union([
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("images"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("kv"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("r2"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          modelName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-          ),
-          workerName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-          ),
-          workflowName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-        ),
+        MqEventSourceImages,
+        MqEventSourceKV,
+        MqEventSourceR2,
+        MqEventSourceSuperSlurper,
+        MqEventSourceVectorize,
+        MqEventSourceWorkersAIModel,
+        MqEventSourceWorkersBuildsWorker,
+        MqEventSourceWorkflowsWorkflow,
       ]),
     })
       .pipe(
@@ -4030,7 +2905,7 @@ export const CreateSubscriptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateSubscriptionResponse>;
+  ) as unknown as Schema.Codec<CreateSubscriptionResponse>;
 
 export type CreateSubscriptionError =
   | DefaultErrors
@@ -4068,12 +2943,7 @@ export const PatchSubscriptionRequest =
     Schema.Struct({
       subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      destination: Schema.optional(
-        Schema.Struct({
-          queueId: Schema.String,
-          type: Schema.Literal("queues.queue"),
-        }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
-      ),
+      destination: Schema.optional(Destination),
       enabled: Schema.optional(Schema.Boolean),
       events: Schema.optional(Schema.Array(Schema.String)),
       name: Schema.optional(Schema.String),
@@ -4083,7 +2953,7 @@ export const PatchSubscriptionRequest =
         path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
       }),
     ),
-  ) as unknown as Schema.Schema<PatchSubscriptionRequest>;
+  ) as unknown as Schema.Codec<PatchSubscriptionRequest>;
 
 export interface PatchSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -4117,66 +2987,20 @@ export const PatchSubscriptionResponse =
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
-      destination: Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+      destination: Destination,
       enabled: Schema.Boolean,
       events: Schema.Array(Schema.String),
       modifiedAt: Schema.String,
       name: Schema.String,
       source: Schema.Union([
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("images"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("kv"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("r2"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          modelName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-          ),
-          workerName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-          ),
-          workflowName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-        ),
+        MqEventSourceImages,
+        MqEventSourceKV,
+        MqEventSourceR2,
+        MqEventSourceSuperSlurper,
+        MqEventSourceVectorize,
+        MqEventSourceWorkersAIModel,
+        MqEventSourceWorkersBuildsWorker,
+        MqEventSourceWorkflowsWorkflow,
       ]),
     })
       .pipe(
@@ -4192,7 +3016,7 @@ export const PatchSubscriptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PatchSubscriptionResponse>;
+  ) as unknown as Schema.Codec<PatchSubscriptionResponse>;
 
 export type PatchSubscriptionError =
   | DefaultErrors
@@ -4228,7 +3052,7 @@ export const DeleteSubscriptionRequest =
         path: "/accounts/{account_id}/event_subscriptions/subscriptions/{subscriptionId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteSubscriptionRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -4262,66 +3086,20 @@ export const DeleteSubscriptionResponse =
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
-      destination: Schema.Struct({
-        queueId: Schema.String,
-        type: Schema.Literal("queues.queue"),
-      }).pipe(Schema.encodeKeys({ queueId: "queue_id", type: "type" })),
+      destination: Destination,
       enabled: Schema.Boolean,
       events: Schema.Array(Schema.String),
       modifiedAt: Schema.String,
       name: Schema.String,
       source: Schema.Union([
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("images"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("kv"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("r2"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          modelName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
-          ),
-          workerName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(Schema.encodeKeys({ type: "type", workerName: "worker_name" })),
-        Schema.Struct({
-          type: Schema.optional(
-            Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
-          ),
-          workflowName: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ type: "type", workflowName: "workflow_name" }),
-        ),
+        MqEventSourceImages,
+        MqEventSourceKV,
+        MqEventSourceR2,
+        MqEventSourceSuperSlurper,
+        MqEventSourceVectorize,
+        MqEventSourceWorkersAIModel,
+        MqEventSourceWorkersBuildsWorker,
+        MqEventSourceWorkflowsWorkflow,
       ]),
     })
       .pipe(
@@ -4337,7 +3115,7 @@ export const DeleteSubscriptionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteSubscriptionResponse>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionResponse>;
 
 export type DeleteSubscriptionError =
   | DefaultErrors

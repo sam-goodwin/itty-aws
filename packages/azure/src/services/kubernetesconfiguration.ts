@@ -4,18 +4,98 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ExtensionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  extensionName: string;
+  properties?: {
+    extensionType?: string;
+    autoUpgradeMinorVersion?: boolean;
+    releaseTrain?: string;
+    version?: string | null;
+    scope?: {
+      cluster?: { releaseNamespace?: string };
+      namespace?: { targetNamespace?: string };
+    };
+    configurationSettings?: Record<string, string> | null;
+    configurationProtectedSettings?: Record<string, string> | null;
+    currentVersion?: string | null;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+    statuses?:
+      | {
+          code?: string;
+          displayStatus?: string;
+          level?: "Error" | "Warning" | "Information";
+          message?: string;
+          time?: string;
+        }[]
+      | null;
+    errorInfo?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    customLocationSettings?: Record<string, string> | null;
+    packageUri?: string | null;
+    aksAssignedIdentity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "UserAssigned";
+    } | null;
+    isSystemExtension?: boolean;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+}
 export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       extensionType: Schema.optional(Schema.String),
@@ -155,18 +235,21 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
   }),
-);
-export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
+) as unknown as Schema.Codec<ExtensionsCreateInput>;
 
 // Output Schema
+export interface ExtensionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ExtensionsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
+) as unknown as Schema.Codec<ExtensionsCreateOutput>;
 
 // The operation
 /**
@@ -177,6 +260,7 @@ export type ExtensionsCreateOutput = typeof ExtensionsCreateOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -184,12 +268,22 @@ export const ExtensionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsCreateOutput,
 }));
 // Input Schema
+export interface ExtensionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  extensionName: string;
+  forceDelete?: boolean;
+}
 export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   forceDelete: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
@@ -197,12 +291,12 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
   }),
-);
-export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
+) as unknown as Schema.Codec<ExtensionsDeleteInput>;
 
 // Output Schema
-export const ExtensionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
+export type ExtensionsDeleteOutput = void;
+export const ExtensionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -213,6 +307,7 @@ export type ExtensionsDeleteOutput = typeof ExtensionsDeleteOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
@@ -221,28 +316,40 @@ export const ExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsDeleteOutput,
 }));
 // Input Schema
+export interface ExtensionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  extensionName: string;
+}
 export const ExtensionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
   }),
-);
-export type ExtensionsGetInput = typeof ExtensionsGetInput.Type;
+) as unknown as Schema.Codec<ExtensionsGetInput>;
 
 // Output Schema
+export interface ExtensionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ExtensionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
+}) as unknown as Schema.Codec<ExtensionsGetOutput>;
 
 // The operation
 /**
@@ -253,6 +360,7 @@ export type ExtensionsGetOutput = typeof ExtensionsGetOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -260,6 +368,13 @@ export const ExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsGetOutput,
 }));
 // Input Schema
+export interface ExtensionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+}
 export const ExtensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -272,10 +387,13 @@ export const ExtensionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions",
     apiVersion: "2023-05-01",
   }),
-);
-export type ExtensionsListInput = typeof ExtensionsListInput.Type;
+) as unknown as Schema.Codec<ExtensionsListInput>;
 
 // Output Schema
+export interface ExtensionsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const ExtensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -287,8 +405,7 @@ export const ExtensionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ExtensionsListOutput = typeof ExtensionsListOutput.Type;
+}) as unknown as Schema.Codec<ExtensionsListOutput>;
 
 // The operation
 /**
@@ -306,12 +423,28 @@ export const ExtensionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsListOutput,
 }));
 // Input Schema
+export interface ExtensionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  extensionName: string;
+  properties?: {
+    autoUpgradeMinorVersion?: boolean;
+    releaseTrain?: string;
+    version?: string | null;
+    configurationSettings?: Record<string, string> | null;
+    configurationProtectedSettings?: Record<string, string> | null;
+  };
+}
 export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterRp: Schema.String.pipe(T.PathParam()),
   clusterResourceName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
+  extensionName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       autoUpgradeMinorVersion: Schema.optional(Schema.Boolean),
@@ -331,18 +464,21 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}",
     apiVersion: "2023-05-01",
   }),
-);
-export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
+) as unknown as Schema.Codec<ExtensionsUpdateInput>;
 
 // Output Schema
+export interface ExtensionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ExtensionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
+) as unknown as Schema.Codec<ExtensionsUpdateOutput>;
 
 // The operation
 /**
@@ -353,6 +489,7 @@ export type ExtensionsUpdateOutput = typeof ExtensionsUpdateOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  */
 export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -360,6 +497,15 @@ export const ExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ExtensionsUpdateOutput,
 }));
 // Input Schema
+export interface FluxConfigOperationStatusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  fluxConfigurationName: string;
+  operationId: string;
+}
 export const FluxConfigOperationStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -367,6 +513,7 @@ export const FluxConfigOperationStatusGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -374,11 +521,28 @@ export const FluxConfigOperationStatusGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}/operations/{operationId}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigOperationStatusGetInput =
-  typeof FluxConfigOperationStatusGetInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigOperationStatusGetInput>;
 
 // Output Schema
+export interface FluxConfigOperationStatusGetOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  properties?: Record<string, string> | null;
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const FluxConfigOperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -420,9 +584,7 @@ export const FluxConfigOperationStatusGetOutput =
         ),
       }),
     ),
-  });
-export type FluxConfigOperationStatusGetOutput =
-  typeof FluxConfigOperationStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<FluxConfigOperationStatusGetOutput>;
 
 // The operation
 /**
@@ -433,6 +595,7 @@ export type FluxConfigOperationStatusGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
@@ -442,6 +605,141 @@ export const FluxConfigOperationStatusGet =
     outputSchema: FluxConfigOperationStatusGetOutput,
   }));
 // Input Schema
+export interface FluxConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  fluxConfigurationName: string;
+  properties?: {
+    scope?: "cluster" | "namespace";
+    namespace?: string;
+    sourceKind?: "GitRepository" | "Bucket" | "AzureBlob";
+    suspend?: boolean;
+    gitRepository?: {
+      url?: string | null;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      repositoryRef?: {
+        branch?: string | null;
+        tag?: string | null;
+        semver?: string | null;
+        commit?: string | null;
+      } | null;
+      sshKnownHosts?: string | null;
+      httpsUser?: string | null;
+      httpsCACert?: string | null;
+      localAuthRef?: string | null;
+    } | null;
+    bucket?: {
+      url?: string;
+      bucketName?: string;
+      insecure?: boolean;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      accessKey?: string | null;
+      localAuthRef?: string | null;
+    } | null;
+    azureBlob?: {
+      url?: string | null;
+      containerName?: string | null;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      servicePrincipal?: {
+        clientId?: string | null;
+        tenantId?: string | null;
+        clientSecret?: string | Redacted.Redacted<string> | null;
+        clientCertificate?: string | null;
+        clientCertificatePassword?: string | Redacted.Redacted<string> | null;
+        clientCertificateSendChain?: boolean;
+      } | null;
+      accountKey?: string | null;
+      sasToken?: string | null;
+      managedIdentity?: { clientId?: string | null } | null;
+      localAuthRef?: string | null;
+    } | null;
+    kustomizations?: Record<
+      string,
+      {
+        name?: string;
+        path?: string;
+        dependsOn?: string[] | null;
+        timeoutInSeconds?: number | null;
+        syncIntervalInSeconds?: number | null;
+        retryIntervalInSeconds?: number | null;
+        prune?: boolean;
+        force?: boolean;
+        wait?: boolean;
+        postBuild?: {
+          substitute?: Record<string, string> | null;
+          substituteFrom?:
+            | ({ kind?: string; name?: string; optional?: boolean } | null)[]
+            | null;
+        } | null;
+      } | null
+    > | null;
+    configurationProtectedSettings?: Record<string, string> | null;
+    statuses?:
+      | ({
+          name?: string;
+          namespace?: string;
+          kind?: string;
+          complianceState?:
+            | "Compliant"
+            | "Non-Compliant"
+            | "Pending"
+            | "Suspended"
+            | "Unknown";
+          appliedBy?: { name?: string; namespace?: string } | null;
+          statusConditions?:
+            | {
+                lastTransitionTime?: string;
+                message?: string;
+                reason?: string;
+                status?: string;
+                type?: string;
+              }[]
+            | null;
+          helmReleaseProperties?: {
+            lastRevisionApplied?: number | null;
+            helmChartRef?: { name?: string; namespace?: string } | null;
+            failureCount?: number | null;
+            installFailureCount?: number | null;
+            upgradeFailureCount?: number | null;
+          } | null;
+        } | null)[]
+      | null;
+    repositoryPublicKey?: string | null;
+    sourceSyncedCommitId?: string | null;
+    sourceUpdatedAt?: string | null;
+    statusUpdatedAt?: string | null;
+    waitForReconciliation?: boolean | null;
+    reconciliationWaitDuration?: string | null;
+    complianceState?:
+      | "Compliant"
+      | "Non-Compliant"
+      | "Pending"
+      | "Suspended"
+      | "Unknown";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+    errorMessage?: string | null;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FluxConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -449,6 +747,7 @@ export const FluxConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         scope: Schema.optional(Schema.Literals(["cluster", "namespace"])),
@@ -709,19 +1008,20 @@ export const FluxConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigurationsCreateOrUpdateInput =
-  typeof FluxConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface FluxConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluxConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluxConfigurationsCreateOrUpdateOutput =
-  typeof FluxConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FluxConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -732,6 +1032,7 @@ export type FluxConfigurationsCreateOrUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsCreateOrUpdate =
@@ -740,6 +1041,15 @@ export const FluxConfigurationsCreateOrUpdate =
     outputSchema: FluxConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FluxConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  fluxConfigurationName: string;
+  forceDelete?: boolean;
+}
 export const FluxConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -747,6 +1057,7 @@ export const FluxConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     forceDelete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -754,15 +1065,12 @@ export const FluxConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigurationsDeleteInput =
-  typeof FluxConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigurationsDeleteInput>;
 
 // Output Schema
+export type FluxConfigurationsDeleteOutput = void;
 export const FluxConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FluxConfigurationsDeleteOutput =
-  typeof FluxConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FluxConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -773,6 +1081,7 @@ export type FluxConfigurationsDeleteOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  * @param forceDelete - Delete the extension resource in Azure - not the normal asynchronous delete.
  */
@@ -783,6 +1092,14 @@ export const FluxConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluxConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  fluxConfigurationName: string;
+}
 export const FluxConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -790,24 +1107,27 @@ export const FluxConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigurationsGetInput = typeof FluxConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigurationsGetInput>;
 
 // Output Schema
+export interface FluxConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluxConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluxConfigurationsGetOutput =
-  typeof FluxConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<FluxConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -818,6 +1138,7 @@ export type FluxConfigurationsGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -827,6 +1148,13 @@ export const FluxConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluxConfigurationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+}
 export const FluxConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -840,11 +1168,13 @@ export const FluxConfigurationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigurationsListInput =
-  typeof FluxConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigurationsListInput>;
 
 // Output Schema
+export interface FluxConfigurationsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const FluxConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -857,9 +1187,7 @@ export const FluxConfigurationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FluxConfigurationsListOutput =
-  typeof FluxConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<FluxConfigurationsListOutput>;
 
 // The operation
 /**
@@ -879,6 +1207,80 @@ export const FluxConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FluxConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  fluxConfigurationName: string;
+  properties?: {
+    sourceKind?: "GitRepository" | "Bucket" | "AzureBlob";
+    suspend?: boolean | null;
+    gitRepository?: {
+      url?: string | null;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      repositoryRef?: {
+        branch?: string | null;
+        tag?: string | null;
+        semver?: string | null;
+        commit?: string | null;
+      } | null;
+      sshKnownHosts?: string | null;
+      httpsUser?: string | null;
+      httpsCACert?: string | null;
+      localAuthRef?: string | null;
+    } | null;
+    bucket?: {
+      url?: string | null;
+      bucketName?: string | null;
+      insecure?: boolean | null;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      accessKey?: string | null;
+      localAuthRef?: string | null;
+    } | null;
+    azureBlob?: {
+      url?: string | null;
+      containerName?: string | null;
+      timeoutInSeconds?: number | null;
+      syncIntervalInSeconds?: number | null;
+      servicePrincipal?: {
+        clientId?: string | null;
+        tenantId?: string | null;
+        clientSecret?: string | Redacted.Redacted<string> | null;
+        clientCertificate?: string | null;
+        clientCertificatePassword?: string | Redacted.Redacted<string> | null;
+        clientCertificateSendChain?: boolean;
+      } | null;
+      accountKey?: string | null;
+      sasToken?: string | null;
+      managedIdentity?: { clientId?: string | null } | null;
+      localAuthRef?: string | null;
+    } | null;
+    kustomizations?: Record<
+      string,
+      {
+        path?: string | null;
+        dependsOn?: string[] | null;
+        timeoutInSeconds?: number | null;
+        syncIntervalInSeconds?: number | null;
+        retryIntervalInSeconds?: number | null;
+        prune?: boolean | null;
+        force?: boolean | null;
+        wait?: boolean | null;
+        postBuild?: {
+          substitute?: Record<string, string> | null;
+          substituteFrom?:
+            | ({ kind?: string; name?: string; optional?: boolean } | null)[]
+            | null;
+        } | null;
+      } | null
+    > | null;
+    configurationProtectedSettings?: Record<string, string> | null;
+  };
+}
 export const FluxConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -886,6 +1288,7 @@ export const FluxConfigurationsUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    fluxConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         sourceKind: Schema.optional(
@@ -1032,19 +1435,20 @@ export const FluxConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations/{fluxConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type FluxConfigurationsUpdateInput =
-  typeof FluxConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<FluxConfigurationsUpdateInput>;
 
 // Output Schema
+export interface FluxConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const FluxConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FluxConfigurationsUpdateOutput =
-  typeof FluxConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FluxConfigurationsUpdateOutput>;
 
 // The operation
 /**
@@ -1055,6 +1459,7 @@ export type FluxConfigurationsUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param fluxConfigurationName - Name of the Flux Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const FluxConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1064,6 +1469,7 @@ export const FluxConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1072,10 +1478,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.KubernetesConfiguration/operations",
     apiVersion: "2023-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1095,8 +1514,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1109,6 +1527,15 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationStatusGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  extensionName: string;
+  operationId: string;
+}
 export const OperationStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1116,6 +1543,7 @@ export const OperationStatusGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    extensionName: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1123,10 +1551,28 @@ export const OperationStatusGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}/operations/{operationId}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusGetInput>;
 
 // Output Schema
+export interface OperationStatusGetOutput {
+  id?: string;
+  name?: string;
+  status: string;
+  properties?: Record<string, string> | null;
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const OperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1168,8 +1614,7 @@ export const OperationStatusGetOutput =
         ),
       }),
     ),
-  });
-export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusGetOutput>;
 
 // The operation
 /**
@@ -1180,6 +1625,7 @@ export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param extensionName - Name of the Extension.
  * @param api-version - The API version to use for this operation.
  * @param operationId - operation Id
  */
@@ -1188,6 +1634,13 @@ export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationStatusGetOutput,
 }));
 // Input Schema
+export interface OperationStatusListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+}
 export const OperationStatusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1201,10 +1654,31 @@ export const OperationStatusListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
       apiVersion: "2023-05-01",
     }),
-  );
-export type OperationStatusListInput = typeof OperationStatusListInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusListInput>;
 
 // Output Schema
+export interface OperationStatusListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    status: string;
+    properties?: Record<string, string> | null;
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationStatusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1253,8 +1727,7 @@ export const OperationStatusListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OperationStatusListOutput = typeof OperationStatusListOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusListOutput>;
 
 // The operation
 /**
@@ -1272,6 +1745,52 @@ export const OperationStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationStatusListOutput,
 }));
 // Input Schema
+export interface SourceControlConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  sourceControlConfigurationName: string;
+  properties?: {
+    repositoryUrl?: string;
+    operatorNamespace?: string;
+    operatorInstanceName?: string;
+    operatorType?: "Flux";
+    operatorParams?: string;
+    configurationProtectedSettings?: Record<string, string>;
+    operatorScope?: "cluster" | "namespace";
+    repositoryPublicKey?: string;
+    sshKnownHostsContents?: string;
+    enableHelmOperator?: boolean;
+    helmOperatorProperties?: { chartVersion?: string; chartValues?: string };
+    provisioningState?:
+      | "Accepted"
+      | "Deleting"
+      | "Running"
+      | "Succeeded"
+      | "Failed";
+    complianceStatus?: {
+      complianceState?:
+        | "Pending"
+        | "Compliant"
+        | "Noncompliant"
+        | "Installed"
+        | "Failed";
+      lastConfigApplied?: string;
+      message?: string;
+      messageLevel?: "Error" | "Warning" | "Information";
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SourceControlConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1279,6 +1798,7 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         repositoryUrl: Schema.optional(Schema.String),
@@ -1350,19 +1870,20 @@ export const SourceControlConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type SourceControlConfigurationsCreateOrUpdateInput =
-  typeof SourceControlConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SourceControlConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SourceControlConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SourceControlConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SourceControlConfigurationsCreateOrUpdateOutput =
-  typeof SourceControlConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1373,6 +1894,7 @@ export type SourceControlConfigurationsCreateOrUpdateOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsCreateOrUpdate =
@@ -1381,6 +1903,14 @@ export const SourceControlConfigurationsCreateOrUpdate =
     outputSchema: SourceControlConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SourceControlConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  sourceControlConfigurationName: string;
+}
 export const SourceControlConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1388,21 +1918,19 @@ export const SourceControlConfigurationsDeleteInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type SourceControlConfigurationsDeleteInput =
-  typeof SourceControlConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SourceControlConfigurationsDeleteInput>;
 
 // Output Schema
+export type SourceControlConfigurationsDeleteOutput = void;
 export const SourceControlConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SourceControlConfigurationsDeleteOutput =
-  typeof SourceControlConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SourceControlConfigurationsDeleteOutput>;
 
 // The operation
 /**
@@ -1413,6 +1941,7 @@ export type SourceControlConfigurationsDeleteOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsDelete =
@@ -1421,6 +1950,14 @@ export const SourceControlConfigurationsDelete =
     outputSchema: SourceControlConfigurationsDeleteOutput,
   }));
 // Input Schema
+export interface SourceControlConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+  sourceControlConfigurationName: string;
+}
 export const SourceControlConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1428,25 +1965,27 @@ export const SourceControlConfigurationsGetInput =
     clusterRp: Schema.String.pipe(T.PathParam()),
     clusterResourceName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
+    sourceControlConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}",
       apiVersion: "2023-05-01",
     }),
-  );
-export type SourceControlConfigurationsGetInput =
-  typeof SourceControlConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<SourceControlConfigurationsGetInput>;
 
 // Output Schema
+export interface SourceControlConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SourceControlConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SourceControlConfigurationsGetOutput =
-  typeof SourceControlConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -1457,6 +1996,7 @@ export type SourceControlConfigurationsGetOutput =
  * @param clusterRp - The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
  * @param clusterResourceName - The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
  * @param clusterName - The name of the kubernetes cluster.
+ * @param sourceControlConfigurationName - Name of the Source Control Configuration.
  * @param api-version - The API version to use for this operation.
  */
 export const SourceControlConfigurationsGet =
@@ -1465,6 +2005,13 @@ export const SourceControlConfigurationsGet =
     outputSchema: SourceControlConfigurationsGetOutput,
   }));
 // Input Schema
+export interface SourceControlConfigurationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterRp: string;
+  clusterResourceName: string;
+  clusterName: string;
+}
 export const SourceControlConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1478,11 +2025,13 @@ export const SourceControlConfigurationsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
       apiVersion: "2023-05-01",
     }),
-  );
-export type SourceControlConfigurationsListInput =
-  typeof SourceControlConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<SourceControlConfigurationsListInput>;
 
 // Output Schema
+export interface SourceControlConfigurationsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const SourceControlConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1495,9 +2044,7 @@ export const SourceControlConfigurationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SourceControlConfigurationsListOutput =
-  typeof SourceControlConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<SourceControlConfigurationsListOutput>;
 
 // The operation
 /**

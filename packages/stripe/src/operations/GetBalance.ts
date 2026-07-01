@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetBalanceInput {
+  expand?: string;
+}
 export const GetBalanceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -11,10 +14,57 @@ export const GetBalanceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/balance",
     contentType: "form-urlencoded",
   }),
-);
-export type GetBalanceInput = typeof GetBalanceInput.Type;
+) as unknown as Schema.Codec<GetBalanceInput>;
 
 // Output Schema
+export interface GetBalanceOutput {
+  available: {
+    amount: number;
+    currency: string;
+    source_types?: { bank_account?: number; card?: number; fpx?: number };
+  }[];
+  connect_reserved?: {
+    amount: number;
+    currency: string;
+    source_types?: { bank_account?: number; card?: number; fpx?: number };
+  }[];
+  instant_available?: {
+    amount: number;
+    currency: string;
+    net_available?: {
+      amount: number;
+      destination: string;
+      source_types?: { bank_account?: number; card?: number; fpx?: number };
+    }[];
+    source_types?: { bank_account?: number; card?: number; fpx?: number };
+  }[];
+  issuing?: {
+    available: {
+      amount: number;
+      currency: string;
+      source_types?: { bank_account?: number; card?: number; fpx?: number };
+    }[];
+  };
+  livemode: boolean;
+  object: "balance";
+  pending: {
+    amount: number;
+    currency: string;
+    source_types?: { bank_account?: number; card?: number; fpx?: number };
+  }[];
+  refund_and_dispute_prefunding?: {
+    available: {
+      amount: number;
+      currency: string;
+      source_types?: { bank_account?: number; card?: number; fpx?: number };
+    }[];
+    pending: {
+      amount: number;
+      currency: string;
+      source_types?: { bank_account?: number; card?: number; fpx?: number };
+    }[];
+  };
+}
 export const GetBalanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   available: Schema.Array(
     Schema.Struct({
@@ -136,8 +186,7 @@ export const GetBalanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type GetBalanceOutput = typeof GetBalanceOutput.Type;
+}) as unknown as Schema.Codec<GetBalanceOutput>;
 
 // The operation
 /**

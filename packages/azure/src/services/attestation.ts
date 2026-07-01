@@ -4,11 +4,43 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AttestationProvidersCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  location: string;
+  tags?: Record<string, string>;
+  properties: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    policySigningCertificates?: {
+      keys?: {
+        alg?: string;
+        crv?: string;
+        d?: string;
+        dp?: string;
+        dq?: string;
+        e?: string;
+        k?: string;
+        kid?: string;
+        kty: string;
+        n?: string;
+        p?: string;
+        q?: string;
+        qi?: string;
+        use?: string;
+        x?: string;
+        x5c?: string[];
+        y?: string;
+      }[];
+    };
+    tpmAttestationAuthentication?: "Enabled" | "Disabled";
+  };
+}
 export const AttestationProvidersCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -57,11 +89,22 @@ export const AttestationProvidersCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersCreateInput =
-  typeof AttestationProvidersCreateInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersCreateInput>;
 
 // Output Schema
+export interface AttestationProvidersCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationProvidersCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -81,9 +124,7 @@ export const AttestationProvidersCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationProvidersCreateOutput =
-  typeof AttestationProvidersCreateOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersCreateOutput>;
 
 // The operation
 /**
@@ -101,6 +142,11 @@ export const AttestationProvidersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationProvidersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+}
 export const AttestationProvidersDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -112,15 +158,12 @@ export const AttestationProvidersDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersDeleteInput =
-  typeof AttestationProvidersDeleteInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersDeleteInput>;
 
 // Output Schema
+export type AttestationProvidersDeleteOutput = void;
 export const AttestationProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AttestationProvidersDeleteOutput =
-  typeof AttestationProvidersDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AttestationProvidersDeleteOutput>;
 
 // The operation
 /**
@@ -138,6 +181,11 @@ export const AttestationProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationProvidersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+}
 export const AttestationProvidersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -149,11 +197,22 @@ export const AttestationProvidersGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersGetInput =
-  typeof AttestationProvidersGetInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersGetInput>;
 
 // Output Schema
+export interface AttestationProvidersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationProvidersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -173,9 +232,7 @@ export const AttestationProvidersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationProvidersGetOutput =
-  typeof AttestationProvidersGetOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersGetOutput>;
 
 // The operation
 /**
@@ -193,6 +250,10 @@ export const AttestationProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationProvidersGetDefaultByLocationInput {
+  subscriptionId: string;
+  location: string;
+}
 export const AttestationProvidersGetDefaultByLocationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -203,11 +264,22 @@ export const AttestationProvidersGetDefaultByLocationInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/locations/{location}/defaultProvider",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersGetDefaultByLocationInput =
-  typeof AttestationProvidersGetDefaultByLocationInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersGetDefaultByLocationInput>;
 
 // Output Schema
+export interface AttestationProvidersGetDefaultByLocationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationProvidersGetDefaultByLocationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -227,9 +299,7 @@ export const AttestationProvidersGetDefaultByLocationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationProvidersGetDefaultByLocationOutput =
-  typeof AttestationProvidersGetDefaultByLocationOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersGetDefaultByLocationOutput>;
 
 // The operation
 /**
@@ -245,6 +315,9 @@ export const AttestationProvidersGetDefaultByLocation =
     outputSchema: AttestationProvidersGetDefaultByLocationOutput,
   }));
 // Input Schema
+export interface AttestationProvidersListInput {
+  subscriptionId: string;
+}
 export const AttestationProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -254,11 +327,32 @@ export const AttestationProvidersListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/attestationProviders",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersListInput =
-  typeof AttestationProvidersListInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersListInput>;
 
 // Output Schema
+export interface AttestationProvidersListOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AttestationProvidersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
@@ -308,9 +402,7 @@ export const AttestationProvidersListOutput =
         }),
       ),
     ),
-  });
-export type AttestationProvidersListOutput =
-  typeof AttestationProvidersListOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersListOutput>;
 
 // The operation
 /**
@@ -326,6 +418,10 @@ export const AttestationProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AttestationProvidersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AttestationProvidersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -336,11 +432,32 @@ export const AttestationProvidersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersListByResourceGroupInput =
-  typeof AttestationProvidersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersListByResourceGroupInput>;
 
 // Output Schema
+export interface AttestationProvidersListByResourceGroupOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AttestationProvidersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
@@ -390,9 +507,7 @@ export const AttestationProvidersListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type AttestationProvidersListByResourceGroupOutput =
-  typeof AttestationProvidersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -408,6 +523,9 @@ export const AttestationProvidersListByResourceGroup =
     outputSchema: AttestationProvidersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AttestationProvidersListDefaultInput {
+  subscriptionId: string;
+}
 export const AttestationProvidersListDefaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -417,11 +535,32 @@ export const AttestationProvidersListDefaultInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/defaultProviders",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersListDefaultInput =
-  typeof AttestationProvidersListDefaultInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersListDefaultInput>;
 
 // Output Schema
+export interface AttestationProvidersListDefaultOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AttestationProvidersListDefaultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     systemData: Schema.optional(
@@ -471,9 +610,7 @@ export const AttestationProvidersListDefaultOutput =
         }),
       ),
     ),
-  });
-export type AttestationProvidersListDefaultOutput =
-  typeof AttestationProvidersListDefaultOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersListDefaultOutput>;
 
 // The operation
 /**
@@ -488,6 +625,16 @@ export const AttestationProvidersListDefault =
     outputSchema: AttestationProvidersListDefaultOutput,
   }));
 // Input Schema
+export interface AttestationProvidersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    tpmAttestationAuthentication?: "Enabled" | "Disabled";
+  };
+}
 export const AttestationProvidersUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -510,11 +657,22 @@ export const AttestationProvidersUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type AttestationProvidersUpdateInput =
-  typeof AttestationProvidersUpdateInput.Type;
+  ) as unknown as Schema.Codec<AttestationProvidersUpdateInput>;
 
 // Output Schema
+export interface AttestationProvidersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AttestationProvidersUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -534,9 +692,7 @@ export const AttestationProvidersUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AttestationProvidersUpdateOutput =
-  typeof AttestationProvidersUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AttestationProvidersUpdateOutput>;
 
 // The operation
 /**
@@ -554,6 +710,7 @@ export const AttestationProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -562,10 +719,33 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Attestation/operations",
     apiVersion: "2021-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: { name?: string; displayName?: string }[];
+      };
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   systemData: Schema.optional(
     Schema.Struct({
@@ -612,8 +792,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -626,6 +805,32 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -674,11 +879,22 @@ export const PrivateEndpointConnectionsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateInput =
-  typeof PrivateEndpointConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -698,9 +914,7 @@ export const PrivateEndpointConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOutput =
-  typeof PrivateEndpointConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -719,6 +933,12 @@ export const PrivateEndpointConnectionsCreate =
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -731,15 +951,12 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -757,6 +974,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -769,11 +992,22 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -793,9 +1027,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -813,6 +1045,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -824,11 +1061,25 @@ export const PrivateEndpointConnectionsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
       apiVersion: "2021-06-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -863,9 +1114,7 @@ export const PrivateEndpointConnectionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -882,6 +1131,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByProviderInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+}
 export const PrivateLinkResourcesListByProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -893,11 +1147,25 @@ export const PrivateLinkResourcesListByProviderInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateLinkResources",
       apiVersion: "2021-06-01",
     }),
-  );
-export type PrivateLinkResourcesListByProviderInput =
-  typeof PrivateLinkResourcesListByProviderInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByProviderInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByProviderOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -932,9 +1200,7 @@ export const PrivateLinkResourcesListByProviderOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByProviderOutput =
-  typeof PrivateLinkResourcesListByProviderOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByProviderOutput>;
 
 // The operation
 /**

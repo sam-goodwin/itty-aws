@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetInvoiceRenderingTemplatesInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+  status?: "active" | "archived";
+}
 export const GetInvoiceRenderingTemplatesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -16,11 +23,24 @@ export const GetInvoiceRenderingTemplatesInput =
       path: "/v1/invoice_rendering_templates",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetInvoiceRenderingTemplatesInput =
-  typeof GetInvoiceRenderingTemplatesInput.Type;
+  ) as unknown as Schema.Codec<GetInvoiceRenderingTemplatesInput>;
 
 // Output Schema
+export interface GetInvoiceRenderingTemplatesOutput {
+  data: {
+    created: number;
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string> | null;
+    nickname: string | null;
+    object: "invoice_rendering_template";
+    status: "active" | "archived";
+    version: number;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetInvoiceRenderingTemplatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -38,9 +58,7 @@ export const GetInvoiceRenderingTemplatesOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetInvoiceRenderingTemplatesOutput =
-  typeof GetInvoiceRenderingTemplatesOutput.Type;
+  }) as unknown as Schema.Codec<GetInvoiceRenderingTemplatesOutput>;
 
 // The operation
 /**

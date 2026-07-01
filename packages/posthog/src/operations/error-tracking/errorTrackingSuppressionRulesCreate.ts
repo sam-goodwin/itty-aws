@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingSuppressionRulesCreateInput {
+  project_id: string;
+  filters?: { type?: "AND" | "OR"; values?: unknown[] };
+  sampling_rate?: number;
+}
 export const ErrorTrackingSuppressionRulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,25 +21,30 @@ export const ErrorTrackingSuppressionRulesCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/error_tracking/suppression_rules/",
+      path: "/api/projects/{project_id}/error_tracking/suppression_rules/",
     }),
-  );
-export type ErrorTrackingSuppressionRulesCreateInput =
-  typeof ErrorTrackingSuppressionRulesCreateInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesCreateInput>;
 
 // Output Schema
+export interface ErrorTrackingSuppressionRulesCreateOutput {
+  id?: string;
+  filters?: unknown;
+  order_key?: number;
+  disabled_data?: unknown;
+  sampling_rate?: number;
+  created_at?: string;
+  updated_at?: string;
+}
 export const ErrorTrackingSuppressionRulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     filters: Schema.optional(Schema.Unknown),
     order_key: Schema.optional(Schema.Number),
-    disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    disabled_data: Schema.optional(Schema.Unknown),
     sampling_rate: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type ErrorTrackingSuppressionRulesCreateOutput =
-  typeof ErrorTrackingSuppressionRulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingSuppressionRulesCreateOutput>;
 
 // The operation
 /**
@@ -46,5 +55,4 @@ export const errorTrackingSuppressionRulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSuppressionRulesCreateInput,
     outputSchema: ErrorTrackingSuppressionRulesCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

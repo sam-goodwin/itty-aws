@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteBackupPolicyInput {
+  id: string;
+  organization: string;
+  database: string;
+}
 export const DeleteBackupPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -14,12 +19,12 @@ export const DeleteBackupPolicyInput =
       method: "DELETE",
       path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
     }),
-  );
-export type DeleteBackupPolicyInput = typeof DeleteBackupPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteBackupPolicyInput>;
 
 // Output Schema
-export const DeleteBackupPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteBackupPolicyOutput = typeof DeleteBackupPolicyOutput.Type;
+export type DeleteBackupPolicyOutput = void;
+export const DeleteBackupPolicyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBackupPolicyOutput>;
 
 // The operation
 /**

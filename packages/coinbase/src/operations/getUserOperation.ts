@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetUserOperationInput {
+  address: string;
+  userOpHash: string;
+}
 export const GetUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   userOpHash: Schema.String.pipe(T.PathParam()),
@@ -11,10 +15,45 @@ export const GetUserOperationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v2/evm/smart-accounts/{address}/user-operations/{userOpHash}",
   }),
-);
-export type GetUserOperationInput = typeof GetUserOperationInput.Type;
+) as unknown as Schema.Codec<GetUserOperationInput>;
 
 // Output Schema
+export interface GetUserOperationOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const GetUserOperationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     network: Schema.Literals([
@@ -63,13 +102,13 @@ export const GetUserOperationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
+    expiresAt: Schema.optional(Schema.String),
   },
-);
-export type GetUserOperationOutput = typeof GetUserOperationOutput.Type;
+) as unknown as Schema.Codec<GetUserOperationOutput>;
 
 // The operation
 /**
- * Get a user operation
+ * Get user operation
  *
  * Gets a user operation by its hash.
  *

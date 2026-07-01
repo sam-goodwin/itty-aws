@@ -4,49 +4,45 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdateJitAccessConfigInput {
+  ref: string;
+  state: "enabled" | "disabled";
+}
 export const V1UpdateJitAccessConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
-    state: Schema.Literals(["enabled", "disabled", "unavailable"]),
-  }).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/jit-access" }));
-export type V1UpdateJitAccessConfigInput =
-  typeof V1UpdateJitAccessConfigInput.Type;
+    state: Schema.Literals(["enabled", "disabled"]),
+  }).pipe(
+    T.Http({ method: "PUT", path: "/v1/projects/{ref}/jit-access" }),
+  ) as unknown as Schema.Codec<V1UpdateJitAccessConfigInput>;
 
 // Output Schema
-export const V1UpdateJitAccessConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user_id: Schema.String,
-    user_roles: Schema.Array(
-      Schema.Struct({
-        role: Schema.String,
-        expires_at: Schema.optional(Schema.Number),
-        allowed_networks: Schema.optional(
-          Schema.Struct({
-            allowed_cidrs: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-            allowed_cidrs_v6: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  cidr: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
-    ),
-  });
 export type V1UpdateJitAccessConfigOutput =
-  typeof V1UpdateJitAccessConfigOutput.Type;
+  | { state: "enabled" | "disabled"; appliedSuccessfully?: boolean }
+  | {
+      state: "unavailable";
+      unavailableReason:
+        | "postgres_upgrade_required"
+        | "temporarily_unavailable";
+    };
+export const V1UpdateJitAccessConfigOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+    Schema.Struct({
+      state: Schema.Literals(["enabled", "disabled"]),
+      appliedSuccessfully: Schema.optional(Schema.Boolean),
+    }),
+    Schema.Struct({
+      state: Schema.Literals(["unavailable"]),
+      unavailableReason: Schema.Literals([
+        "postgres_upgrade_required",
+        "temporarily_unavailable",
+      ]),
+    }),
+  ]) as unknown as Schema.Codec<V1UpdateJitAccessConfigOutput>;
 
 // The operation
 /**
- * [Beta] Update project's just-in-time access configuration.
+ * [Beta] Update project's temporary access configuration.
  *
  * @param ref - Project ref
  */

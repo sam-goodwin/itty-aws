@@ -10,6 +10,16 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerUpdateOrganizationInput {
+  id: string;
+  name?: string;
+  allow_profiles_outside_organization?: boolean;
+  domains?: string[];
+  domain_data?: { domain?: string; state?: "pending" | "verified" }[];
+  stripe_customer_id?: string;
+  metadata?: Record<string, string> | null;
+  external_id?: string | null;
+}
 export const OrganizationsControllerUpdateOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -29,11 +39,39 @@ export const OrganizationsControllerUpdateOrganizationInput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
     external_id: Schema.optional(Schema.NullOr(Schema.String)),
-  }).pipe(T.Http({ method: "PUT", path: "/organizations/{id}" }));
-export type OrganizationsControllerUpdateOrganizationInput =
-  typeof OrganizationsControllerUpdateOrganizationInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/organizations/{id}" }),
+  ) as unknown as Schema.Codec<OrganizationsControllerUpdateOrganizationInput>;
 
 // Output Schema
+export interface OrganizationsControllerUpdateOrganizationOutput {
+  object?: string;
+  id?: string;
+  name?: string;
+  domains?: {
+    object: string;
+    id: string;
+    organization_id: string;
+    domain: string;
+    state?:
+      | "failed"
+      | "legacy_verified"
+      | "pending"
+      | "unverified"
+      | "verified";
+    verification_prefix?: string;
+    verification_token?: string;
+    verification_strategy?: "dns" | "manual";
+    created_at: string;
+    updated_at: string;
+  }[];
+  metadata?: Record<string, string>;
+  external_id?: string | null;
+  stripe_customer_id?: string;
+  created_at?: string;
+  updated_at?: string;
+  allow_profiles_outside_organization?: boolean;
+}
 export const OrganizationsControllerUpdateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -71,9 +109,7 @@ export const OrganizationsControllerUpdateOrganizationOutput =
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
-  });
-export type OrganizationsControllerUpdateOrganizationOutput =
-  typeof OrganizationsControllerUpdateOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerUpdateOrganizationOutput>;
 
 // The operation
 /**

@@ -60,7 +60,7 @@ describe("getFieldForDataset", () => {
 
       await runEffect(effect);
     },
-    { timeout: 120_000 },
+    120_000,
   );
 
   it(
@@ -105,7 +105,7 @@ describe("getFieldForDataset", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -120,6 +120,6 @@ describe("getFieldForDataset", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

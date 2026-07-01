@@ -20,6 +20,6 @@ describe("removeUserFromOrg", () => {
 
       expect((error as { _tag: string })._tag).toBe("InternalServerError");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

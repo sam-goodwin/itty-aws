@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DownloadGroupClusterOnlineArchiveQueryLogsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  startDate?: number;
+  endDate?: number;
+  archiveOnly?: boolean;
+}
 export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,21 +25,18 @@ export const DownloadGroupClusterOnlineArchiveQueryLogsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz",
     }),
-  );
-export type DownloadGroupClusterOnlineArchiveQueryLogsInput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsInput.Type;
+  ) as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsInput>;
 
 // Output Schema
+export type DownloadGroupClusterOnlineArchiveQueryLogsOutput = void;
 export const DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DownloadGroupClusterOnlineArchiveQueryLogsOutput =
-  typeof DownloadGroupClusterOnlineArchiveQueryLogsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupClusterOnlineArchiveQueryLogsOutput>;
 
 // The operation
 /**
  * Download Online Archive Query Logs
  *
- * Downloads query logs for the specified online archive. To use this resource, the requesting Service Account or API Key must have the Project Data Access Read Only or higher role. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
+ * Downloads query logs for the specified online archive. The API does not support direct calls with the json response schema. You must request a gzip response schema using an accept header of the format: `Accept: application/vnd.atlas.YYYY-MM-DD+gzip`.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

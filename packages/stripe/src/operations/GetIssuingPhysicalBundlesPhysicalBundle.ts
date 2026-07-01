@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetIssuingPhysicalBundlesPhysicalBundleInput {
+  physical_bundle: string;
+  expand?: string;
+}
 export const GetIssuingPhysicalBundlesPhysicalBundleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     physical_bundle: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,22 @@ export const GetIssuingPhysicalBundlesPhysicalBundleInput =
       path: "/v1/issuing/physical_bundles/{physical_bundle}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetIssuingPhysicalBundlesPhysicalBundleInput =
-  typeof GetIssuingPhysicalBundlesPhysicalBundleInput.Type;
+  ) as unknown as Schema.Codec<GetIssuingPhysicalBundlesPhysicalBundleInput>;
 
 // Output Schema
+export interface GetIssuingPhysicalBundlesPhysicalBundleOutput {
+  features: {
+    card_logo: "optional" | "required" | "unsupported";
+    carrier_text: "optional" | "required" | "unsupported";
+    second_line: "optional" | "required" | "unsupported";
+  };
+  id: string;
+  livemode: boolean;
+  name: string;
+  object: "issuing.physical_bundle";
+  status: "active" | "inactive" | "review";
+  type: "custom" | "standard";
+}
 export const GetIssuingPhysicalBundlesPhysicalBundleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     features: Schema.Struct({
@@ -31,9 +46,7 @@ export const GetIssuingPhysicalBundlesPhysicalBundleOutput =
     object: Schema.Literals(["issuing.physical_bundle"]),
     status: Schema.Literals(["active", "inactive", "review"]),
     type: Schema.Literals(["custom", "standard"]),
-  });
-export type GetIssuingPhysicalBundlesPhysicalBundleOutput =
-  typeof GetIssuingPhysicalBundlesPhysicalBundleOutput.Type;
+  }) as unknown as Schema.Codec<GetIssuingPhysicalBundlesPhysicalBundleOutput>;
 
 // The operation
 /**

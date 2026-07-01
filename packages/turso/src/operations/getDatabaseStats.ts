@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDatabaseStatsInput {
+  organizationSlug: string;
+  databaseName: string;
+}
 export const GetDatabaseStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,14 @@ export const GetDatabaseStatsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/organizations/{organizationSlug}/databases/{databaseName}/stats",
   }),
-);
-export type GetDatabaseStatsInput = typeof GetDatabaseStatsInput.Type;
+) as unknown as Schema.Codec<GetDatabaseStatsInput>;
 
 // Output Schema
+export interface GetDatabaseStatsOutput {
+  top_queries?:
+    | { query?: string; rows_read?: number; rows_written?: number }[]
+    | null;
+}
 export const GetDatabaseStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     top_queries: Schema.optional(
@@ -30,8 +38,7 @@ export const GetDatabaseStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type GetDatabaseStatsOutput = typeof GetDatabaseStatsOutput.Type;
+) as unknown as Schema.Codec<GetDatabaseStatsOutput>;
 
 // The operation
 /**

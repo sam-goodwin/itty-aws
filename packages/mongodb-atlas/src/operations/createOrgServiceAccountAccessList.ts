@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgServiceAccountAccessListInput {
+  orgId: string;
+  clientId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const CreateOrgServiceAccountAccessListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -18,15 +27,12 @@ export const CreateOrgServiceAccountAccessListInput =
       method: "POST",
       path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
     }),
-  );
-export type CreateOrgServiceAccountAccessListInput =
-  typeof CreateOrgServiceAccountAccessListInput.Type;
+  ) as unknown as Schema.Codec<CreateOrgServiceAccountAccessListInput>;
 
 // Output Schema
+export type CreateOrgServiceAccountAccessListOutput = void;
 export const CreateOrgServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgServiceAccountAccessListOutput =
-  typeof CreateOrgServiceAccountAccessListOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgServiceAccountAccessListOutput>;
 
 // The operation
 /**

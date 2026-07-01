@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteRoleInput {
+  id: string;
+}
 export const DeleteRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/rbac/roles/{id}" }));
-export type DeleteRoleInput = typeof DeleteRoleInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/rbac/roles/{id}" }),
+) as unknown as Schema.Codec<DeleteRoleInput>;
 
 // Output Schema
-export const DeleteRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteRoleOutput = typeof DeleteRoleOutput.Type;
+export type DeleteRoleOutput = void;
+export const DeleteRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteRoleOutput>;
 
 // The operation
 /**

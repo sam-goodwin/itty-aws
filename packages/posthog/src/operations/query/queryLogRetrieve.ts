@@ -4,20 +4,23 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface QueryLogRetrieveInput {
+  id: string;
+  project_id: string;
+}
 export const QueryLogRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/query/{id}/log/" }),
-);
-export type QueryLogRetrieveInput = typeof QueryLogRetrieveInput.Type;
+) as unknown as Schema.Codec<QueryLogRetrieveInput>;
 
 // Output Schema
+export type QueryLogRetrieveOutput = Record<string, unknown>;
 export const QueryLogRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
   Schema.String,
   Schema.Unknown,
-);
-export type QueryLogRetrieveOutput = typeof QueryLogRetrieveOutput.Type;
+) as unknown as Schema.Codec<QueryLogRetrieveOutput>;
 
 // The operation
 /**

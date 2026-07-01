@@ -19,10 +19,10 @@ describe("getUser", () => {
       expect(user.id).toBe(target.id);
       expect(user.email).toBe(target.email);
       expect(user.name).toBe(target.name);
-      expect(user.role.id).toBe(target.role.id);
-      expect(user.role.name).toBe(target.role.name);
+      expect(user.role?.id).toBe(target.role?.id);
+      expect(user.role?.name).toBe(target.role?.name);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -34,6 +34,6 @@ describe("getUser", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

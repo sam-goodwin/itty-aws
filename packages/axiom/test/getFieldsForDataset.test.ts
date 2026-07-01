@@ -37,7 +37,7 @@ describe("getFieldsForDataset", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -51,7 +51,7 @@ describe("getFieldsForDataset", () => {
 
       expect((error as { _tag: string })._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -73,11 +73,11 @@ describe("getFieldsForDataset", () => {
         }).pipe(
           Effect.flip,
           Effect.provide(Layer.merge(BadCredentials, FetchHttpClient.layer)),
-        ) as Effect.Effect<unknown, never, never>,
+        ) as Effect.Effect<unknown, unknown, never>,
       );
 
       expect((error as { _tag: string })._tag).toBe("Unauthorized");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

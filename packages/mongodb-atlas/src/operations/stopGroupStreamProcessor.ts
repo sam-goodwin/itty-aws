@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface StopGroupStreamProcessorInput {
+  groupId: string;
+  tenantName: string;
+  processorName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const StopGroupStreamProcessorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,21 +23,18 @@ export const StopGroupStreamProcessorInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop",
     }),
-  );
-export type StopGroupStreamProcessorInput =
-  typeof StopGroupStreamProcessorInput.Type;
+  ) as unknown as Schema.Codec<StopGroupStreamProcessorInput>;
 
 // Output Schema
+export type StopGroupStreamProcessorOutput = void;
 export const StopGroupStreamProcessorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type StopGroupStreamProcessorOutput =
-  typeof StopGroupStreamProcessorOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StopGroupStreamProcessorOutput>;
 
 // The operation
 /**
  * Stop One Stream Processor
  *
- * Stop a Stream Processor within the specified stream workspace. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Stream Processing Owner role.
+ * Stop a Stream Processor within the specified stream workspace.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

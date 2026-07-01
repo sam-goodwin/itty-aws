@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemShortcutUpdateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +22,25 @@ export const FileSystemShortcutUpdateInput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/api/projects/{project_id}/file_system_shortcut/{id}/",
     }),
-  );
-export type FileSystemShortcutUpdateInput =
-  typeof FileSystemShortcutUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutUpdateInput>;
 
 // Output Schema
+export interface FileSystemShortcutUpdateOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -30,10 +48,9 @@ export const FileSystemShortcutUpdateOutput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type FileSystemShortcutUpdateOutput =
-  typeof FileSystemShortcutUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemShortcutUpdateOutput>;
 
 // The operation
 /**

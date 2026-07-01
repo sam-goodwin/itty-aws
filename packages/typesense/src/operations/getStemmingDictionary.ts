@@ -4,15 +4,21 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetStemmingDictionaryInput {
+  dictionaryId: string;
+}
 export const GetStemmingDictionaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dictionaryId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/stemming/dictionaries/{dictionaryId}" }),
-  );
-export type GetStemmingDictionaryInput = typeof GetStemmingDictionaryInput.Type;
+  ) as unknown as Schema.Codec<GetStemmingDictionaryInput>;
 
 // Output Schema
+export interface GetStemmingDictionaryOutput {
+  id: string;
+  words: { word: string; root: string }[];
+}
 export const GetStemmingDictionaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -22,9 +28,7 @@ export const GetStemmingDictionaryOutput =
         root: Schema.String,
       }),
     ),
-  });
-export type GetStemmingDictionaryOutput =
-  typeof GetStemmingDictionaryOutput.Type;
+  }) as unknown as Schema.Codec<GetStemmingDictionaryOutput>;
 
 // The operation
 /**

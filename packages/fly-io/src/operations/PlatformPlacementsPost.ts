@@ -4,6 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface PlatformPlacementsPostInput {
+  compute?: {
+    cpu_kind?: string;
+    cpus?: number;
+    gpu_kind?: string;
+    gpus?: number;
+    host_dedication_id?: string;
+    kernel_args?: string[];
+    max_memory_mb?: number;
+    memory_mb?: number;
+    persist_rootfs?: "never" | "always" | "restart";
+  };
+  count?: number;
+  org_slug: string;
+  region?: string;
+  volume_name?: string;
+  volume_size_bytes?: number;
+  weights?: Record<string, number>;
+}
 export const PlatformPlacementsPostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     compute: Schema.optional(
@@ -27,11 +46,14 @@ export const PlatformPlacementsPostInput =
     volume_name: Schema.optional(Schema.String),
     volume_size_bytes: Schema.optional(Schema.Number),
     weights: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-  }).pipe(T.Http({ method: "POST", path: "/platform/placements" }));
-export type PlatformPlacementsPostInput =
-  typeof PlatformPlacementsPostInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/platform/placements" }),
+  ) as unknown as Schema.Codec<PlatformPlacementsPostInput>;
 
 // Output Schema
+export interface PlatformPlacementsPostOutput {
+  regions?: { concurrency?: number; count?: number; region?: string }[];
+}
 export const PlatformPlacementsPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(
@@ -43,9 +65,7 @@ export const PlatformPlacementsPostOutput =
         }),
       ),
     ),
-  });
-export type PlatformPlacementsPostOutput =
-  typeof PlatformPlacementsPostOutput.Type;
+  }) as unknown as Schema.Codec<PlatformPlacementsPostOutput>;
 
 // The operation
 /**

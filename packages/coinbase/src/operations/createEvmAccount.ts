@@ -3,13 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateEvmAccountInput {
+  name?: string;
+  accountPolicy?: string;
+}
 export const CreateEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   accountPolicy: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "POST", path: "/v2/evm/accounts" }));
-export type CreateEvmAccountInput = typeof CreateEvmAccountInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/v2/evm/accounts" }),
+) as unknown as Schema.Codec<CreateEvmAccountInput>;
 
 // Output Schema
+export interface CreateEvmAccountOutput {
+  address: string;
+  name?: string;
+  policies?: string[];
+  createdAt?: string;
+  updatedAt?: string;
+}
 export const CreateEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     address: Schema.String,
@@ -18,12 +30,11 @@ export const CreateEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     createdAt: Schema.optional(Schema.String),
     updatedAt: Schema.optional(Schema.String),
   },
-);
-export type CreateEvmAccountOutput = typeof CreateEvmAccountOutput.Type;
+) as unknown as Schema.Codec<CreateEvmAccountOutput>;
 
 // The operation
 /**
- * Create an EVM account
+ * Create EVM account
  *
  * Creates a new EVM account.
  *

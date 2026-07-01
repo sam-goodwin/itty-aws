@@ -4,12 +4,69 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface NotebooksUpdateInput {
+  project_id: string;
+  short_id: string;
+  id?: string;
+  title?: string | null;
+  content?: unknown;
+  text_content?: string | null;
+  version?: number;
+  deleted?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  user_access_level?: string | null;
+  parent_resource?: { type: "account"; id: string } | null;
+  _create_in_folder?: string;
+}
 export const NotebooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   short_id: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   title: Schema.optional(Schema.NullOr(Schema.String)),
-  content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  content: Schema.optional(Schema.Unknown),
   text_content: Schema.optional(Schema.NullOr(Schema.String)),
   version: Schema.optional(Schema.Number),
   deleted: Schema.optional(Schema.Boolean),
@@ -27,7 +84,23 @@ export const NotebooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -45,26 +118,105 @@ export const NotebooksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+  parent_resource: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        type: Schema.Literals(["account"]),
+        id: Schema.String,
+      }),
+    ),
+  ),
   _create_in_folder: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/api/projects/{project_id}/notebooks/{short_id}/",
   }),
-);
-export type NotebooksUpdateInput = typeof NotebooksUpdateInput.Type;
+) as unknown as Schema.Codec<NotebooksUpdateInput>;
 
 // Output Schema
+export interface NotebooksUpdateOutput {
+  id?: string;
+  short_id?: string;
+  title?: string | null;
+  content?: unknown;
+  text_content?: string | null;
+  version?: number;
+  deleted?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  user_access_level?: string | null;
+  parent_resource?: { type: "account"; id: string } | null;
+  _create_in_folder?: string;
+}
 export const NotebooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   short_id: Schema.optional(Schema.String),
   title: Schema.optional(Schema.NullOr(Schema.String)),
-  content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+  content: Schema.optional(Schema.Unknown),
   text_content: Schema.optional(Schema.NullOr(Schema.String)),
   version: Schema.optional(Schema.Number),
   deleted: Schema.optional(Schema.Boolean),
@@ -82,7 +234,23 @@ export const NotebooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
@@ -100,14 +268,37 @@ export const NotebooksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         hedgehog_config: Schema.optional(
           Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
         ),
-        role_at_organization: Schema.optional(Schema.Unknown),
+        role_at_organization: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals([
+                "engineering",
+                "data",
+                "product",
+                "founder",
+                "leadership",
+                "marketing",
+                "sales",
+                "other",
+              ]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
       }),
     ),
   ),
   user_access_level: Schema.optional(Schema.NullOr(Schema.String)),
+  parent_resource: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        type: Schema.Literals(["account"]),
+        id: Schema.String,
+      }),
+    ),
+  ),
   _create_in_folder: Schema.optional(Schema.String),
-});
-export type NotebooksUpdateOutput = typeof NotebooksUpdateOutput.Type;
+}) as unknown as Schema.Codec<NotebooksUpdateOutput>;
 
 // The operation
 /**

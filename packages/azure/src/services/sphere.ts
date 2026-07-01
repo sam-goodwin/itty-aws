@@ -4,11 +4,16 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CatalogsCountDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const CatalogsCountDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20,15 +25,16 @@ export const CatalogsCountDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/countDevices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsCountDevicesInput = typeof CatalogsCountDevicesInput.Type;
+  ) as unknown as Schema.Codec<CatalogsCountDevicesInput>;
 
 // Output Schema
+export interface CatalogsCountDevicesOutput {
+  value: number;
+}
 export const CatalogsCountDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Number,
-  });
-export type CatalogsCountDevicesOutput = typeof CatalogsCountDevicesOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsCountDevicesOutput>;
 
 // The operation
 /**
@@ -46,6 +52,24 @@ export const CatalogsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  properties?: {
+    tenantId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CatalogsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -75,11 +99,22 @@ export const CatalogsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsCreateOrUpdateInput =
-  typeof CatalogsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CatalogsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CatalogsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -99,9 +134,7 @@ export const CatalogsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CatalogsCreateOrUpdateOutput =
-  typeof CatalogsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -119,6 +152,11 @@ export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -129,12 +167,12 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
+) as unknown as Schema.Codec<CatalogsDeleteInput>;
 
 // Output Schema
-export const CatalogsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CatalogsDeleteOutput = typeof CatalogsDeleteOutput.Type;
+export type CatalogsDeleteOutput = void;
+export const CatalogsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -150,6 +188,11 @@ export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsDeleteOutput,
 }));
 // Input Schema
+export interface CatalogsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -160,10 +203,22 @@ export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type CatalogsGetInput = typeof CatalogsGetInput.Type;
+) as unknown as Schema.Codec<CatalogsGetInput>;
 
 // Output Schema
+export interface CatalogsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -182,8 +237,7 @@ export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CatalogsGetOutput = typeof CatalogsGetOutput.Type;
+}) as unknown as Schema.Codec<CatalogsGetOutput>;
 
 // The operation
 /**
@@ -199,6 +253,10 @@ export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsGetOutput,
 }));
 // Input Schema
+export interface CatalogsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CatalogsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -209,11 +267,25 @@ export const CatalogsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListByResourceGroupInput =
-  typeof CatalogsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListByResourceGroupInput>;
 
 // Output Schema
+export interface CatalogsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -248,9 +320,7 @@ export const CatalogsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListByResourceGroupOutput =
-  typeof CatalogsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -267,6 +337,9 @@ export const CatalogsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CatalogsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -276,11 +349,25 @@ export const CatalogsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureSphere/catalogs",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListBySubscriptionInput =
-  typeof CatalogsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListBySubscriptionInput>;
 
 // Output Schema
+export interface CatalogsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -315,9 +402,7 @@ export const CatalogsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListBySubscriptionOutput =
-  typeof CatalogsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -333,22 +418,49 @@ export const CatalogsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListDeploymentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const CatalogsListDeploymentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeployments",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListDeploymentsInput =
-  typeof CatalogsListDeploymentsInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListDeploymentsInput>;
 
 // Output Schema
+export interface CatalogsListDeploymentsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListDeploymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -383,9 +495,7 @@ export const CatalogsListDeploymentsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListDeploymentsOutput =
-  typeof CatalogsListDeploymentsOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListDeploymentsOutput>;
 
 // The operation
 /**
@@ -394,6 +504,10 @@ export type CatalogsListDeploymentsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -403,11 +517,25 @@ export const CatalogsListDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListDeviceGroupsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+  deviceGroupName?: string;
+}
 export const CatalogsListDeviceGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
     deviceGroupName: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -415,11 +543,25 @@ export const CatalogsListDeviceGroupsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceGroups",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListDeviceGroupsInput =
-  typeof CatalogsListDeviceGroupsInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListDeviceGroupsInput>;
 
 // Output Schema
+export interface CatalogsListDeviceGroupsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListDeviceGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -454,9 +596,7 @@ export const CatalogsListDeviceGroupsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListDeviceGroupsOutput =
-  typeof CatalogsListDeviceGroupsOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListDeviceGroupsOutput>;
 
 // The operation
 /**
@@ -465,6 +605,10 @@ export type CatalogsListDeviceGroupsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeviceGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -474,22 +618,46 @@ export const CatalogsListDeviceGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListDeviceInsightsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const CatalogsListDeviceInsightsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceInsights",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListDeviceInsightsInput =
-  typeof CatalogsListDeviceInsightsInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListDeviceInsightsInput>;
 
 // Output Schema
+export interface CatalogsListDeviceInsightsOutput {
+  value: {
+    deviceId: string;
+    description: string;
+    startTimestampUtc: string;
+    endTimestampUtc: string;
+    eventCategory: string;
+    eventClass: string;
+    eventType: string;
+    eventCount: number;
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListDeviceInsightsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -505,9 +673,7 @@ export const CatalogsListDeviceInsightsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListDeviceInsightsOutput =
-  typeof CatalogsListDeviceInsightsOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListDeviceInsightsOutput>;
 
 // The operation
 /**
@@ -516,6 +682,10 @@ export type CatalogsListDeviceInsightsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDeviceInsights = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -525,21 +695,49 @@ export const CatalogsListDeviceInsights = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CatalogsListDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const CatalogsListDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDevices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsListDevicesInput = typeof CatalogsListDevicesInput.Type;
+  ) as unknown as Schema.Codec<CatalogsListDevicesInput>;
 
 // Output Schema
+export interface CatalogsListDevicesOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CatalogsListDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -574,8 +772,7 @@ export const CatalogsListDevicesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CatalogsListDevicesOutput = typeof CatalogsListDevicesOutput.Type;
+  }) as unknown as Schema.Codec<CatalogsListDevicesOutput>;
 
 // The operation
 /**
@@ -584,6 +781,10 @@ export type CatalogsListDevicesOutput = typeof CatalogsListDevicesOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CatalogsListDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -591,6 +792,12 @@ export const CatalogsListDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsListDevicesOutput,
 }));
 // Input Schema
+export interface CatalogsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  tags?: Record<string, string>;
+}
 export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -602,10 +809,22 @@ export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
+) as unknown as Schema.Codec<CatalogsUpdateInput>;
 
 // Output Schema
+export interface CatalogsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -624,8 +843,7 @@ export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CatalogsUpdateOutput = typeof CatalogsUpdateOutput.Type;
+}) as unknown as Schema.Codec<CatalogsUpdateOutput>;
 
 // The operation
 /**
@@ -641,6 +859,53 @@ export const CatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsUpdateOutput,
 }));
 // Input Schema
+export interface CatalogsUploadImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  properties?: {
+    image?: string;
+    imageId?: string;
+    imageName?: string;
+    regionalDataBoundary?: "None" | "EU";
+    uri?: string;
+    description?: string;
+    componentId?: string;
+    imageType?:
+      | "InvalidImageType"
+      | "OneBl"
+      | "PlutonRuntime"
+      | "WifiFirmware"
+      | "SecurityMonitor"
+      | "NormalWorldLoader"
+      | "NormalWorldDtb"
+      | "NormalWorldKernel"
+      | "RootFs"
+      | "Services"
+      | "Applications"
+      | "FwConfig"
+      | "BootManifest"
+      | "Nwfs"
+      | "TrustedKeystore"
+      | "Policy"
+      | "CustomerBoardConfig"
+      | "UpdateCertStore"
+      | "BaseSystemUpdateManifest"
+      | "FirmwareUpdateManifest"
+      | "CustomerUpdateManifest"
+      | "RecoveryManifest"
+      | "ManifestSet"
+      | "Other";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const CatalogsUploadImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -702,13 +967,12 @@ export const CatalogsUploadImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/uploadImage",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CatalogsUploadImageInput = typeof CatalogsUploadImageInput.Type;
+  ) as unknown as Schema.Codec<CatalogsUploadImageInput>;
 
 // Output Schema
+export type CatalogsUploadImageOutput = void;
 export const CatalogsUploadImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CatalogsUploadImageOutput = typeof CatalogsUploadImageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsUploadImageOutput>;
 
 // The operation
 /**
@@ -724,6 +988,12 @@ export const CatalogsUploadImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CatalogsUploadImageOutput,
 }));
 // Input Schema
+export interface CertificatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  serialNumber: string;
+}
 export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -735,10 +1005,22 @@ export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}",
     apiVersion: "2024-04-01",
   }),
-);
-export type CertificatesGetInput = typeof CertificatesGetInput.Type;
+) as unknown as Schema.Codec<CertificatesGetInput>;
 
 // Output Schema
+export interface CertificatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -757,8 +1039,7 @@ export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CertificatesGetOutput = typeof CertificatesGetOutput.Type;
+}) as unknown as Schema.Codec<CertificatesGetOutput>;
 
 // The operation
 /**
@@ -775,22 +1056,49 @@ export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CertificatesGetOutput,
 }));
 // Input Schema
+export interface CertificatesListByCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const CertificatesListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CertificatesListByCatalogInput =
-  typeof CertificatesListByCatalogInput.Type;
+  ) as unknown as Schema.Codec<CertificatesListByCatalogInput>;
 
 // Output Schema
+export interface CertificatesListByCatalogOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CertificatesListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -825,9 +1133,7 @@ export const CertificatesListByCatalogOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CertificatesListByCatalogOutput =
-  typeof CertificatesListByCatalogOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesListByCatalogOutput>;
 
 // The operation
 /**
@@ -836,6 +1142,10 @@ export type CertificatesListByCatalogOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const CertificatesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -845,6 +1155,12 @@ export const CertificatesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CertificatesRetrieveCertChainInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  serialNumber: string;
+}
 export const CertificatesRetrieveCertChainInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -857,17 +1173,16 @@ export const CertificatesRetrieveCertChainInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}/retrieveCertChain",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CertificatesRetrieveCertChainInput =
-  typeof CertificatesRetrieveCertChainInput.Type;
+  ) as unknown as Schema.Codec<CertificatesRetrieveCertChainInput>;
 
 // Output Schema
+export interface CertificatesRetrieveCertChainOutput {
+  certificateChain?: string;
+}
 export const CertificatesRetrieveCertChainOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificateChain: Schema.optional(Schema.String),
-  });
-export type CertificatesRetrieveCertChainOutput =
-  typeof CertificatesRetrieveCertChainOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesRetrieveCertChainOutput>;
 
 // The operation
 /**
@@ -885,6 +1200,13 @@ export const CertificatesRetrieveCertChain =
     outputSchema: CertificatesRetrieveCertChainOutput,
   }));
 // Input Schema
+export interface CertificatesRetrieveProofOfPossessionNonceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  serialNumber: string;
+  proofOfPossessionNonce: string;
+}
 export const CertificatesRetrieveProofOfPossessionNonceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -898,11 +1220,25 @@ export const CertificatesRetrieveProofOfPossessionNonceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates/{serialNumber}/retrieveProofOfPossessionNonce",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CertificatesRetrieveProofOfPossessionNonceInput =
-  typeof CertificatesRetrieveProofOfPossessionNonceInput.Type;
+  ) as unknown as Schema.Codec<CertificatesRetrieveProofOfPossessionNonceInput>;
 
 // Output Schema
+export interface CertificatesRetrieveProofOfPossessionNonceOutput {
+  certificate?: string;
+  status?: "Active" | "Inactive" | "Expired" | "Revoked";
+  subject?: string;
+  thumbprint?: string;
+  expiryUtc?: string;
+  notBeforeUtc?: string;
+  provisioningState?:
+    | "Succeeded"
+    | "Failed"
+    | "Canceled"
+    | "Provisioning"
+    | "Updating"
+    | "Deleting"
+    | "Accepted";
+}
 export const CertificatesRetrieveProofOfPossessionNonceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificate: Schema.optional(Schema.String),
@@ -924,9 +1260,7 @@ export const CertificatesRetrieveProofOfPossessionNonceOutput =
         "Accepted",
       ]),
     ),
-  });
-export type CertificatesRetrieveProofOfPossessionNonceOutput =
-  typeof CertificatesRetrieveProofOfPossessionNonceOutput.Type;
+  }) as unknown as Schema.Codec<CertificatesRetrieveProofOfPossessionNonceOutput>;
 
 // The operation
 /**
@@ -944,6 +1278,39 @@ export const CertificatesRetrieveProofOfPossessionNonce =
     outputSchema: CertificatesRetrieveProofOfPossessionNonceOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deploymentName: string;
+  properties?: {
+    deploymentId?: string;
+    deployedImages?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    deploymentDateUtc?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1008,11 +1375,22 @@ export const DeploymentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateInput =
-  typeof DeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1032,9 +1410,7 @@ export const DeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateOutput =
-  typeof DeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1055,6 +1431,14 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1070,12 +1454,12 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
+) as unknown as Schema.Codec<DeploymentsDeleteInput>;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
+export type DeploymentsDeleteOutput = void;
+export const DeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -1094,6 +1478,14 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
+export interface DeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1107,10 +1499,22 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
+) as unknown as Schema.Codec<DeploymentsGetInput>;
 
 // Output Schema
+export interface DeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1129,8 +1533,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsGetOutput>;
 
 // The operation
 /**
@@ -1149,6 +1552,17 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
+export interface DeploymentsListByDeviceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const DeploymentsListByDeviceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1156,17 +1570,35 @@ export const DeploymentsListByDeviceGroupInput =
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
     deviceGroupName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeploymentsListByDeviceGroupInput =
-  typeof DeploymentsListByDeviceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListByDeviceGroupInput>;
 
 // Output Schema
+export interface DeploymentsListByDeviceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListByDeviceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1201,9 +1633,7 @@ export const DeploymentsListByDeviceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListByDeviceGroupOutput =
-  typeof DeploymentsListByDeviceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListByDeviceGroupOutput>;
 
 // The operation
 /**
@@ -1212,6 +1642,10 @@ export type DeploymentsListByDeviceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
@@ -1222,6 +1656,14 @@ export const DeploymentsListByDeviceGroup =
     outputSchema: DeploymentsListByDeviceGroupOutput,
   }));
 // Input Schema
+export interface DeviceGroupsClaimDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceIdentifiers: string[];
+}
 export const DeviceGroupsClaimDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1236,15 +1678,12 @@ export const DeviceGroupsClaimDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/claimDevices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsClaimDevicesInput =
-  typeof DeviceGroupsClaimDevicesInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsClaimDevicesInput>;
 
 // Output Schema
+export type DeviceGroupsClaimDevicesOutput = void;
 export const DeviceGroupsClaimDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeviceGroupsClaimDevicesOutput =
-  typeof DeviceGroupsClaimDevicesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsClaimDevicesOutput>;
 
 // The operation
 /**
@@ -1264,6 +1703,13 @@ export const DeviceGroupsClaimDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeviceGroupsCountDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+}
 export const DeviceGroupsCountDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1277,17 +1723,16 @@ export const DeviceGroupsCountDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/countDevices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsCountDevicesInput =
-  typeof DeviceGroupsCountDevicesInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsCountDevicesInput>;
 
 // Output Schema
+export interface DeviceGroupsCountDevicesOutput {
+  value: number;
+}
 export const DeviceGroupsCountDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Number,
-  });
-export type DeviceGroupsCountDevicesOutput =
-  typeof DeviceGroupsCountDevicesOutput.Type;
+  }) as unknown as Schema.Codec<DeviceGroupsCountDevicesOutput>;
 
 // The operation
 /**
@@ -1307,6 +1752,29 @@ export const DeviceGroupsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeviceGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  properties?: {
+    description?: string;
+    osFeedType?: "Retail" | "RetailEval";
+    updatePolicy?: "UpdateAll" | "No3rdPartyAppUpdates";
+    allowCrashDumpsCollection?: "Enabled" | "Disabled";
+    regionalDataBoundary?: "None" | "EU";
+    hasDeployment?: boolean;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const DeviceGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1345,11 +1813,22 @@ export const DeviceGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsCreateOrUpdateInput =
-  typeof DeviceGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeviceGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeviceGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1369,9 +1848,7 @@ export const DeviceGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeviceGroupsCreateOrUpdateOutput =
-  typeof DeviceGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeviceGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1391,6 +1868,13 @@ export const DeviceGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeviceGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+}
 export const DeviceGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1404,12 +1888,12 @@ export const DeviceGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsDeleteInput = typeof DeviceGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsDeleteInput>;
 
 // Output Schema
-export const DeviceGroupsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeviceGroupsDeleteOutput = typeof DeviceGroupsDeleteOutput.Type;
+export type DeviceGroupsDeleteOutput = void;
+export const DeviceGroupsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1427,6 +1911,13 @@ export const DeviceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeviceGroupsDeleteOutput,
 }));
 // Input Schema
+export interface DeviceGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+}
 export const DeviceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1439,10 +1930,22 @@ export const DeviceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DeviceGroupsGetInput = typeof DeviceGroupsGetInput.Type;
+) as unknown as Schema.Codec<DeviceGroupsGetInput>;
 
 // Output Schema
+export interface DeviceGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeviceGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1461,8 +1964,7 @@ export const DeviceGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeviceGroupsGetOutput = typeof DeviceGroupsGetOutput.Type;
+}) as unknown as Schema.Codec<DeviceGroupsGetOutput>;
 
 // The operation
 /**
@@ -1480,23 +1982,51 @@ export const DeviceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeviceGroupsGetOutput,
 }));
 // Input Schema
+export interface DeviceGroupsListByProductInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const DeviceGroupsListByProductInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
     productName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsListByProductInput =
-  typeof DeviceGroupsListByProductInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsListByProductInput>;
 
 // Output Schema
+export interface DeviceGroupsListByProductOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeviceGroupsListByProductOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1531,9 +2061,7 @@ export const DeviceGroupsListByProductOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeviceGroupsListByProductOutput =
-  typeof DeviceGroupsListByProductOutput.Type;
+  }) as unknown as Schema.Codec<DeviceGroupsListByProductOutput>;
 
 // The operation
 /**
@@ -1542,6 +2070,10 @@ export type DeviceGroupsListByProductOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
@@ -1552,6 +2084,20 @@ export const DeviceGroupsListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeviceGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  properties?: {
+    description?: string;
+    osFeedType?: "Retail" | "RetailEval";
+    updatePolicy?: "UpdateAll" | "No3rdPartyAppUpdates";
+    allowCrashDumpsCollection?: "Enabled" | "Disabled";
+    regionalDataBoundary?: "None" | "EU";
+  };
+}
 export const DeviceGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1578,10 +2124,22 @@ export const DeviceGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DeviceGroupsUpdateInput = typeof DeviceGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeviceGroupsUpdateInput>;
 
 // Output Schema
+export interface DeviceGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeviceGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1601,8 +2159,7 @@ export const DeviceGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeviceGroupsUpdateOutput = typeof DeviceGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeviceGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -1620,6 +2177,30 @@ export const DeviceGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeviceGroupsUpdateOutput,
 }));
 // Input Schema
+export interface DevicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceName: string;
+  properties?: {
+    deviceId?: string;
+    chipSku?: string;
+    lastAvailableOsVersion?: string;
+    lastInstalledOsVersion?: string;
+    lastOsUpdateUtc?: string;
+    lastUpdateRequestUtc?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const DevicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1655,10 +2236,22 @@ export const DevicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DevicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DevicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1678,9 +2271,7 @@ export const DevicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DevicesCreateOrUpdateOutput =
-  typeof DevicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DevicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1701,6 +2292,14 @@ export const DevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceName: string;
+}
 export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1714,12 +2313,12 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
+) as unknown as Schema.Codec<DevicesDeleteInput>;
 
 // Output Schema
-export const DevicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DevicesDeleteOutput = typeof DevicesDeleteOutput.Type;
+export type DevicesDeleteOutput = void;
+export const DevicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
 
 // The operation
 /**
@@ -1738,6 +2337,15 @@ export const DevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesDeleteOutput,
 }));
 // Input Schema
+export interface DevicesGenerateCapabilityImageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceName: string;
+  capabilities: ("ApplicationDevelopment" | "FieldServicing")[];
+}
 export const DevicesGenerateCapabilityImageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1755,17 +2363,16 @@ export const DevicesGenerateCapabilityImageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}/generateCapabilityImage",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DevicesGenerateCapabilityImageInput =
-  typeof DevicesGenerateCapabilityImageInput.Type;
+  ) as unknown as Schema.Codec<DevicesGenerateCapabilityImageInput>;
 
 // Output Schema
+export interface DevicesGenerateCapabilityImageOutput {
+  image?: string;
+}
 export const DevicesGenerateCapabilityImageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
-  });
-export type DevicesGenerateCapabilityImageOutput =
-  typeof DevicesGenerateCapabilityImageOutput.Type;
+  }) as unknown as Schema.Codec<DevicesGenerateCapabilityImageOutput>;
 
 // The operation
 /**
@@ -1785,6 +2392,14 @@ export const DevicesGenerateCapabilityImage =
     outputSchema: DevicesGenerateCapabilityImageOutput,
   }));
 // Input Schema
+export interface DevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceName: string;
+}
 export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1798,10 +2413,22 @@ export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DevicesGetInput = typeof DevicesGetInput.Type;
+) as unknown as Schema.Codec<DevicesGetInput>;
 
 // Output Schema
+export interface DevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1820,8 +2447,7 @@ export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DevicesGetOutput = typeof DevicesGetOutput.Type;
+}) as unknown as Schema.Codec<DevicesGetOutput>;
 
 // The operation
 /**
@@ -1840,6 +2466,13 @@ export const DevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesGetOutput,
 }));
 // Input Schema
+export interface DevicesListByDeviceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+}
 export const DevicesListByDeviceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1853,11 +2486,25 @@ export const DevicesListByDeviceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type DevicesListByDeviceGroupInput =
-  typeof DevicesListByDeviceGroupInput.Type;
+  ) as unknown as Schema.Codec<DevicesListByDeviceGroupInput>;
 
 // Output Schema
+export interface DevicesListByDeviceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DevicesListByDeviceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1892,9 +2539,7 @@ export const DevicesListByDeviceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DevicesListByDeviceGroupOutput =
-  typeof DevicesListByDeviceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DevicesListByDeviceGroupOutput>;
 
 // The operation
 /**
@@ -1914,6 +2559,15 @@ export const DevicesListByDeviceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  deviceGroupName: string;
+  deviceName: string;
+  properties?: { deviceGroupId?: string };
+}
 export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1932,10 +2586,22 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
+) as unknown as Schema.Codec<DevicesUpdateInput>;
 
 // Output Schema
+export interface DevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1954,8 +2620,7 @@ export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DevicesUpdateOutput = typeof DevicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<DevicesUpdateOutput>;
 
 // The operation
 /**
@@ -1974,6 +2639,54 @@ export const DevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DevicesUpdateOutput,
 }));
 // Input Schema
+export interface ImagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  imageName: string;
+  properties?: {
+    image?: string;
+    imageId?: string;
+    imageName?: string;
+    regionalDataBoundary?: "None" | "EU";
+    uri?: string;
+    description?: string;
+    componentId?: string;
+    imageType?:
+      | "InvalidImageType"
+      | "OneBl"
+      | "PlutonRuntime"
+      | "WifiFirmware"
+      | "SecurityMonitor"
+      | "NormalWorldLoader"
+      | "NormalWorldDtb"
+      | "NormalWorldKernel"
+      | "RootFs"
+      | "Services"
+      | "Applications"
+      | "FwConfig"
+      | "BootManifest"
+      | "Nwfs"
+      | "TrustedKeystore"
+      | "Policy"
+      | "CustomerBoardConfig"
+      | "UpdateCertStore"
+      | "BaseSystemUpdateManifest"
+      | "FirmwareUpdateManifest"
+      | "CustomerUpdateManifest"
+      | "RecoveryManifest"
+      | "ManifestSet"
+      | "Other";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const ImagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2036,10 +2749,22 @@ export const ImagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ImagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ImagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2059,8 +2784,7 @@ export const ImagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImagesCreateOrUpdateOutput = typeof ImagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ImagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2079,6 +2803,12 @@ export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  imageName: string;
+}
 export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2090,12 +2820,12 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
+) as unknown as Schema.Codec<ImagesDeleteInput>;
 
 // Output Schema
-export const ImagesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ImagesDeleteOutput = typeof ImagesDeleteOutput.Type;
+export type ImagesDeleteOutput = void;
+export const ImagesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImagesDeleteOutput>;
 
 // The operation
 /**
@@ -2112,6 +2842,12 @@ export const ImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesDeleteOutput,
 }));
 // Input Schema
+export interface ImagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  imageName: string;
+}
 export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2123,10 +2859,22 @@ export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type ImagesGetInput = typeof ImagesGetInput.Type;
+) as unknown as Schema.Codec<ImagesGetInput>;
 
 // Output Schema
+export interface ImagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2145,8 +2893,7 @@ export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ImagesGetOutput = typeof ImagesGetOutput.Type;
+}) as unknown as Schema.Codec<ImagesGetOutput>;
 
 // The operation
 /**
@@ -2163,21 +2910,49 @@ export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesGetOutput,
 }));
 // Input Schema
+export interface ImagesListByCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  $filter?: string;
+  $top?: number;
+  $skip?: number;
+  $maxpagesize?: number;
+}
 export const ImagesListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+    $top: Schema.optional(Schema.Number),
+    $skip: Schema.optional(Schema.Number),
+    $maxpagesize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ImagesListByCatalogInput = typeof ImagesListByCatalogInput.Type;
+  ) as unknown as Schema.Codec<ImagesListByCatalogInput>;
 
 // Output Schema
+export interface ImagesListByCatalogOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImagesListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2212,8 +2987,7 @@ export const ImagesListByCatalogOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImagesListByCatalogOutput = typeof ImagesListByCatalogOutput.Type;
+  }) as unknown as Schema.Codec<ImagesListByCatalogOutput>;
 
 // The operation
 /**
@@ -2222,6 +2996,10 @@ export type ImagesListByCatalogOutput = typeof ImagesListByCatalogOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $filter - Filter the result list using the given expression
+ * @param $top - The number of result items to return.
+ * @param $skip - The number of result items to skip.
+ * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
 export const ImagesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2229,6 +3007,7 @@ export const ImagesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ImagesListByCatalogOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2237,10 +3016,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureSphere/operations",
     apiVersion: "2024-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2263,8 +3056,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2277,6 +3069,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProductsCountDevicesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+}
 export const ProductsCountDevicesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2289,15 +3087,16 @@ export const ProductsCountDevicesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/countDevices",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ProductsCountDevicesInput = typeof ProductsCountDevicesInput.Type;
+  ) as unknown as Schema.Codec<ProductsCountDevicesInput>;
 
 // Output Schema
+export interface ProductsCountDevicesOutput {
+  value: number;
+}
 export const ProductsCountDevicesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Number,
-  });
-export type ProductsCountDevicesOutput = typeof ProductsCountDevicesOutput.Type;
+  }) as unknown as Schema.Codec<ProductsCountDevicesOutput>;
 
 // The operation
 /**
@@ -2316,6 +3115,23 @@ export const ProductsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  properties?: {
+    description?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const ProductsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2344,11 +3160,22 @@ export const ProductsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ProductsCreateOrUpdateInput =
-  typeof ProductsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProductsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProductsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProductsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2368,9 +3195,7 @@ export const ProductsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProductsCreateOrUpdateOutput =
-  typeof ProductsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProductsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2389,6 +3214,12 @@ export const ProductsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+}
 export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2400,12 +3231,12 @@ export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type ProductsDeleteInput = typeof ProductsDeleteInput.Type;
+) as unknown as Schema.Codec<ProductsDeleteInput>;
 
 // Output Schema
-export const ProductsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProductsDeleteOutput = typeof ProductsDeleteOutput.Type;
+export type ProductsDeleteOutput = void;
+export const ProductsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProductsDeleteOutput>;
 
 // The operation
 /**
@@ -2422,6 +3253,12 @@ export const ProductsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProductsDeleteOutput,
 }));
 // Input Schema
+export interface ProductsGenerateDefaultDeviceGroupsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+}
 export const ProductsGenerateDefaultDeviceGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2434,11 +3271,25 @@ export const ProductsGenerateDefaultDeviceGroupsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/generateDefaultDeviceGroups",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ProductsGenerateDefaultDeviceGroupsInput =
-  typeof ProductsGenerateDefaultDeviceGroupsInput.Type;
+  ) as unknown as Schema.Codec<ProductsGenerateDefaultDeviceGroupsInput>;
 
 // Output Schema
+export interface ProductsGenerateDefaultDeviceGroupsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductsGenerateDefaultDeviceGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2473,9 +3324,7 @@ export const ProductsGenerateDefaultDeviceGroupsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductsGenerateDefaultDeviceGroupsOutput =
-  typeof ProductsGenerateDefaultDeviceGroupsOutput.Type;
+  }) as unknown as Schema.Codec<ProductsGenerateDefaultDeviceGroupsOutput>;
 
 // The operation
 /**
@@ -2493,6 +3342,12 @@ export const ProductsGenerateDefaultDeviceGroups =
     outputSchema: ProductsGenerateDefaultDeviceGroupsOutput,
   }));
 // Input Schema
+export interface ProductsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+}
 export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2504,10 +3359,22 @@ export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type ProductsGetInput = typeof ProductsGetInput.Type;
+) as unknown as Schema.Codec<ProductsGetInput>;
 
 // Output Schema
+export interface ProductsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2526,8 +3393,7 @@ export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProductsGetOutput = typeof ProductsGetOutput.Type;
+}) as unknown as Schema.Codec<ProductsGetOutput>;
 
 // The operation
 /**
@@ -2544,6 +3410,11 @@ export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProductsGetOutput,
 }));
 // Input Schema
+export interface ProductsListByCatalogInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+}
 export const ProductsListByCatalogInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2555,10 +3426,25 @@ export const ProductsListByCatalogInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products",
       apiVersion: "2024-04-01",
     }),
-  );
-export type ProductsListByCatalogInput = typeof ProductsListByCatalogInput.Type;
+  ) as unknown as Schema.Codec<ProductsListByCatalogInput>;
 
 // Output Schema
+export interface ProductsListByCatalogOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductsListByCatalogOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2593,9 +3479,7 @@ export const ProductsListByCatalogOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductsListByCatalogOutput =
-  typeof ProductsListByCatalogOutput.Type;
+  }) as unknown as Schema.Codec<ProductsListByCatalogOutput>;
 
 // The operation
 /**
@@ -2613,6 +3497,13 @@ export const ProductsListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  catalogName: string;
+  productName: string;
+  properties?: { description?: string };
+}
 export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2629,10 +3520,22 @@ export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
     apiVersion: "2024-04-01",
   }),
-);
-export type ProductsUpdateInput = typeof ProductsUpdateInput.Type;
+) as unknown as Schema.Codec<ProductsUpdateInput>;
 
 // Output Schema
+export interface ProductsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2651,8 +3554,7 @@ export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProductsUpdateOutput = typeof ProductsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProductsUpdateOutput>;
 
 // The operation
 /**

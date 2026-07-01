@@ -6,8 +6,19 @@ import {
   SensitiveString,
   SensitiveOutputNullableString,
 } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateOauthTokenInput {
+  organization: string;
+  id: string;
+  client_id: string;
+  client_secret: string | Redacted.Redacted<string>;
+  grant_type: "authorization_code" | "refresh_token";
+  code?: string;
+  redirect_uri?: string;
+  refresh_token?: string | Redacted.Redacted<string>;
+}
 export const CreateOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -22,10 +33,70 @@ export const CreateOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/oauth-applications/{id}/token",
   }),
-);
-export type CreateOauthTokenInput = typeof CreateOauthTokenInput.Type;
+) as unknown as Schema.Codec<CreateOauthTokenInput>;
 
 // Output Schema
+export interface CreateOauthTokenOutput {
+  id: string;
+  name?: string | null;
+  display_name: string;
+  token?: Redacted.Redacted<string> | null;
+  plain_text_refresh_token?: Redacted.Redacted<string> | null;
+  avatar_url: string;
+  created_at: string;
+  updated_at: string;
+  expires_at?: string | null;
+  last_used_at?: string | null;
+  actor_id: string | null;
+  actor_display_name: string | null;
+  actor_type: string | null;
+  service_token_accesses?:
+    | {
+        id: string;
+        access: string;
+        description: string;
+        resource_name: string;
+        resource_id: string;
+        resource_type: string;
+        resource: {
+          id: string;
+          name: string;
+          created_at: string;
+          updated_at: string;
+          deleted_at: string | null;
+        };
+      }[]
+    | null;
+  oauth_accesses_by_resource?: {
+    database: {
+      databases: {
+        name: string;
+        id: string;
+        organization: string;
+        url: string;
+      }[];
+      accesses: { name: string; description: string }[];
+    };
+    organization: {
+      organizations: { name: string; id: string; url: string }[];
+      accesses: { name: string; description: string }[];
+    };
+    branch: {
+      branches: {
+        name: string;
+        id: string;
+        database: string;
+        organization: string;
+        url: string;
+      }[];
+      accesses: { name: string; description: string }[];
+    };
+    user: {
+      users: { name: string; id: string }[];
+      accesses: { name: string; description: string }[];
+    };
+  } | null;
+}
 export const CreateOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.String,
@@ -131,8 +202,7 @@ export const CreateOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type CreateOauthTokenOutput = typeof CreateOauthTokenOutput.Type;
+) as unknown as Schema.Codec<CreateOauthTokenOutput>;
 
 // The operation
 /**

@@ -3,14 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSQLGrammarInput {}
 export const GetSQLGrammarInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/v2/data/query/grammar" }));
-export type GetSQLGrammarInput = typeof GetSQLGrammarInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/v2/data/query/grammar" }),
+) as unknown as Schema.Codec<GetSQLGrammarInput>;
 
 // Output Schema
-export const GetSQLGrammarOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.String;
-export type GetSQLGrammarOutput = typeof GetSQLGrammarOutput.Type;
+export type GetSQLGrammarOutput = string;
+export const GetSQLGrammarOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Codec<GetSQLGrammarOutput>;
 
 // The operation
 /**

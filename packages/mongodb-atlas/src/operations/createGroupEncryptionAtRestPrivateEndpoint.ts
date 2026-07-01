@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupEncryptionAtRestPrivateEndpointInput {
+  groupId: string;
+  cloudProvider: "AZURE" | "AWS";
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupEncryptionAtRestPrivateEndpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const CreateGroupEncryptionAtRestPrivateEndpointInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
     }),
-  );
-export type CreateGroupEncryptionAtRestPrivateEndpointInput =
-  typeof CreateGroupEncryptionAtRestPrivateEndpointInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupEncryptionAtRestPrivateEndpointInput>;
 
 // Output Schema
+export type CreateGroupEncryptionAtRestPrivateEndpointOutput = void;
 export const CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  typeof CreateGroupEncryptionAtRestPrivateEndpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupEncryptionAtRestPrivateEndpointOutput>;
 
 // The operation
 /**

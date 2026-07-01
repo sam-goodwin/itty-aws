@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesShowLeaseInput {
+  app_name: string;
+  machine_id: string;
+}
 export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,10 +18,16 @@ export const MachinesShowLeaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/apps/{app_name}/machines/{machine_id}/lease",
   }),
-);
-export type MachinesShowLeaseInput = typeof MachinesShowLeaseInput.Type;
+) as unknown as Schema.Codec<MachinesShowLeaseInput>;
 
 // Output Schema
+export interface MachinesShowLeaseOutput {
+  description?: string;
+  expires_at?: number;
+  nonce?: string;
+  owner?: string;
+  version?: string;
+}
 export const MachinesShowLeaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
@@ -25,8 +35,7 @@ export const MachinesShowLeaseOutput =
     nonce: Schema.optional(Schema.String),
     owner: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
-  });
-export type MachinesShowLeaseOutput = typeof MachinesShowLeaseOutput.Type;
+  }) as unknown as Schema.Codec<MachinesShowLeaseOutput>;
 
 // The operation
 /**

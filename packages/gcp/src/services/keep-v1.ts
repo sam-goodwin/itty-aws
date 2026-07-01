@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,25 +22,83 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface User {
-  /** The user's email. */
+export interface Group {
+  /** The group email. */
   email?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const Group: Schema.Codec<Group> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
-  }).annotate({ identifier: "User" });
+  }).annotate({ identifier: "Group" });
 
 export interface TextContent {
   /** The text of the note. The limits on this vary with the specific field using this type. */
   text?: string;
 }
 
-export const TextContent: Schema.Schema<TextContent> =
+export const TextContent: Schema.Codec<TextContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextContent" });
+
+export interface User {
+  /** The user's email. */
+  email?: string;
+}
+
+export const User: Schema.Codec<User> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "User" });
+
+export interface Family {}
+
+export const Family: Schema.Codec<Family> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Family",
+  });
+
+export interface Permission {
+  /** Output only. The user to whom this role applies. */
+  user?: User;
+  /** Output only. The group to which this role applies. */
+  group?: Group;
+  /** Output only. Whether this member has been deleted. If the member is recovered, this value is set to false and the recovered member retains the role on the note. */
+  deleted?: boolean;
+  /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
+  role?: "ROLE_UNSPECIFIED" | "OWNER" | "WRITER" | (string & {});
+  /** Output only. The resource name. */
+  name?: string;
+  /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
+  email?: string;
+  /** Output only. The Google Family to which this role applies. */
+  family?: Family;
+}
+
+export const Permission: Schema.Codec<Permission> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(User),
+    group: Schema.optional(Group),
+    deleted: Schema.optional(Schema.Boolean),
+    role: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    family: Schema.optional(Family),
+  }).annotate({ identifier: "Permission" });
+
+export interface CreatePermissionRequest {
+  /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
+  parent?: string;
+  /** Required. The permission to create. One of Permission.email, User.email or Group.email must be supplied. */
+  permission?: Permission;
+}
+
+export const CreatePermissionRequest: Schema.Codec<CreatePermissionRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    permission: Schema.optional(Permission),
+  }).annotate({ identifier: "CreatePermissionRequest" });
 
 export interface ListItem {
   /** If set, list of list items nested under this list item. Only one level of nesting is allowed. */
@@ -51,115 +109,24 @@ export interface ListItem {
   checked?: boolean;
 }
 
-export const ListItem: Schema.Schema<ListItem> =
+export const ListItem: Schema.Codec<ListItem> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       childListItems: Schema.optional(Schema.Array(ListItem)),
       text: Schema.optional(TextContent),
       checked: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "ListItem" }) as any as Schema.Schema<ListItem>;
+  ).annotate({ identifier: "ListItem" }) as any as Schema.Codec<ListItem>;
 
 export interface ListContent {
   /** The items in the list. The number of items must be less than 1,000. */
   listItems?: ReadonlyArray<ListItem>;
 }
 
-export const ListContent: Schema.Schema<ListContent> =
+export const ListContent: Schema.Codec<ListContent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     listItems: Schema.optional(Schema.Array(ListItem)),
   }).annotate({ identifier: "ListContent" });
-
-export interface Section {
-  /** Used if this section's content is a block of text. The length of the text content must be less than 20,000 characters. */
-  text?: TextContent;
-  /** Used if this section's content is a list. */
-  list?: ListContent;
-}
-
-export const Section: Schema.Schema<Section> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    text: Schema.optional(TextContent),
-    list: Schema.optional(ListContent),
-  }).annotate({ identifier: "Section" });
-
-export interface Group {
-  /** The group email. */
-  email?: string;
-}
-
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    email: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Group" });
-
-export interface Family {}
-
-export const Family: Schema.Schema<Family> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Family",
-  });
-
-export interface Permission {
-  /** Output only. The user to whom this role applies. */
-  user?: User;
-  /** Output only. Whether this member has been deleted. If the member is recovered, this value is set to false and the recovered member retains the role on the note. */
-  deleted?: boolean;
-  /** The email associated with the member. If set on create, the `email` field in the `User` or `Group` message must either be empty or match this field. On read, may be unset if the member does not have an associated email. */
-  email?: string;
-  /** Output only. The Google Family to which this role applies. */
-  family?: Family;
-  /** Output only. The resource name. */
-  name?: string;
-  /** Output only. The group to which this role applies. */
-  group?: Group;
-  /** The role granted by this permission. The role determines the entity’s ability to read, write, and share notes. */
-  role?: "ROLE_UNSPECIFIED" | "OWNER" | "WRITER" | (string & {});
-}
-
-export const Permission: Schema.Schema<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user: Schema.optional(User),
-    deleted: Schema.optional(Schema.Boolean),
-    email: Schema.optional(Schema.String),
-    family: Schema.optional(Family),
-    name: Schema.optional(Schema.String),
-    group: Schema.optional(Group),
-    role: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Permission" });
-
-export interface CreatePermissionRequest {
-  /** Required. The parent note where this permission will be created. Format: `notes/{note}` */
-  parent?: string;
-  /** Required. The permission to create. One of Permission.email, User.email or Group.email must be supplied. */
-  permission?: Permission;
-}
-
-export const CreatePermissionRequest: Schema.Schema<CreatePermissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.optional(Schema.String),
-    permission: Schema.optional(Permission),
-  }).annotate({ identifier: "CreatePermissionRequest" });
-
-export interface BatchDeletePermissionsRequest {
-  /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
-  names?: ReadonlyArray<string>;
-}
-
-export const BatchDeletePermissionsRequest: Schema.Schema<BatchDeletePermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    names: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "BatchDeletePermissionsRequest" });
-
-export interface BatchCreatePermissionsResponse {
-  /** Permissions created. */
-  permissions?: ReadonlyArray<Permission>;
-}
-
-export const BatchCreatePermissionsResponse: Schema.Schema<BatchCreatePermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Permission)),
-  }).annotate({ identifier: "BatchCreatePermissionsResponse" });
 
 export interface Attachment {
   /** The resource name; */
@@ -168,75 +135,108 @@ export interface Attachment {
   mimeType?: ReadonlyArray<string>;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
+export const Attachment: Schema.Codec<Attachment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     mimeType: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Attachment" });
+
+export interface Section {
+  /** Used if this section's content is a block of text. The length of the text content must be less than 20,000 characters. */
+  text?: TextContent;
+  /** Used if this section's content is a list. */
+  list?: ListContent;
+}
+
+export const Section: Schema.Codec<Section> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(TextContent),
+    list: Schema.optional(ListContent),
+  }).annotate({ identifier: "Section" });
+
+export interface Note {
+  /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
+  permissions?: ReadonlyArray<Permission>;
+  /** Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted. */
+  trashed?: boolean;
+  /** Output only. When this note was created. */
+  createTime?: string;
+  /** Output only. The attachments attached to this note. */
+  attachments?: ReadonlyArray<Attachment>;
+  /** The title of the note. Length must be less than 1,000 characters. */
+  title?: string;
+  /** Output only. The resource name of this note. See general note on identifiers in KeepService. */
+  name?: string;
+  /** Output only. When this note was last modified. */
+  updateTime?: string;
+  /** Output only. When this note was trashed. If `trashed`, the note is eventually deleted. If the note is not trashed, this field is not set (and the trashed field is `false`). */
+  trashTime?: string;
+  /** The body of the note. */
+  body?: Section;
+}
+
+export const Note: Schema.Codec<Note> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Permission)),
+    trashed: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    attachments: Schema.optional(Schema.Array(Attachment)),
+    title: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    trashTime: Schema.optional(Schema.String),
+    body: Schema.optional(Section),
+  }).annotate({ identifier: "Note" });
 
 export interface BatchCreatePermissionsRequest {
   /** The request message specifying the resources to create. */
   requests?: ReadonlyArray<CreatePermissionRequest>;
 }
 
-export const BatchCreatePermissionsRequest: Schema.Schema<BatchCreatePermissionsRequest> =
+export const BatchCreatePermissionsRequest: Schema.Codec<BatchCreatePermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(CreatePermissionRequest)),
   }).annotate({ identifier: "BatchCreatePermissionsRequest" });
 
-export interface Note {
-  /** Output only. When this note was created. */
-  createTime?: string;
-  /** The title of the note. Length must be less than 1,000 characters. */
-  title?: string;
-  /** The body of the note. */
-  body?: Section;
-  /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
-  permissions?: ReadonlyArray<Permission>;
-  /** Output only. When this note was last modified. */
-  updateTime?: string;
-  /** Output only. The resource name of this note. See general note on identifiers in KeepService. */
-  name?: string;
-  /** Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted. */
-  trashed?: boolean;
-  /** Output only. When this note was trashed. If `trashed`, the note is eventually deleted. If the note is not trashed, this field is not set (and the trashed field is `false`). */
-  trashTime?: string;
-  /** Output only. The attachments attached to this note. */
-  attachments?: ReadonlyArray<Attachment>;
+export interface BatchDeletePermissionsRequest {
+  /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
+  names?: ReadonlyArray<string>;
 }
 
-export const Note: Schema.Schema<Note> =
+export const BatchDeletePermissionsRequest: Schema.Codec<BatchDeletePermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    body: Schema.optional(Section),
-    permissions: Schema.optional(Schema.Array(Permission)),
-    updateTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    trashed: Schema.optional(Schema.Boolean),
-    trashTime: Schema.optional(Schema.String),
-    attachments: Schema.optional(Schema.Array(Attachment)),
-  }).annotate({ identifier: "Note" });
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeletePermissionsRequest" });
 
 export interface ListNotesResponse {
-  /** A page of notes. */
-  notes?: ReadonlyArray<Note>;
   /** Next page's `page_token` field. */
   nextPageToken?: string;
+  /** A page of notes. */
+  notes?: ReadonlyArray<Note>;
 }
 
-export const ListNotesResponse: Schema.Schema<ListNotesResponse> =
+export const ListNotesResponse: Schema.Codec<ListNotesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    notes: Schema.optional(Schema.Array(Note)),
     nextPageToken: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.Array(Note)),
   }).annotate({ identifier: "ListNotesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
+
+export interface BatchCreatePermissionsResponse {
+  /** Permissions created. */
+  permissions?: ReadonlyArray<Permission>;
+}
+
+export const BatchCreatePermissionsResponse: Schema.Codec<BatchCreatePermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Permission)),
+  }).annotate({ identifier: "BatchCreatePermissionsResponse" });
 
 // ==========================================================================
 // Errors
@@ -302,7 +302,7 @@ export const CreateNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "v1/notes", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<CreateNotesRequest>;
+) as unknown as Schema.Codec<CreateNotesRequest>;
 
 export type CreateNotesResponse = Note;
 export const CreateNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
@@ -327,22 +327,22 @@ export const createNotes: API.OperationMethod<
 }));
 
 export interface ListNotesRequest {
-  /** Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering spec](https://aip.dev/160). */
-  filter?: string;
   /** The maximum number of results to return. */
   pageSize?: number;
   /** The previous page's `next_page_token` field. */
   pageToken?: string;
+  /** Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering spec](https://aip.dev/160). */
+  filter?: string;
 }
 
 export const ListNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/notes" }),
   svc,
-) as unknown as Schema.Schema<ListNotesRequest>;
+) as unknown as Schema.Codec<ListNotesRequest>;
 
 export type ListNotesResponse_Op = ListNotesResponse;
 export const ListNotesResponse_Op =
@@ -376,7 +376,7 @@ export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNotesRequest>;
+) as unknown as Schema.Codec<GetNotesRequest>;
 
 export type GetNotesResponse = Note;
 export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
@@ -405,7 +405,7 @@ export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DeleteNotesRequest>;
+) as unknown as Schema.Codec<DeleteNotesRequest>;
 
 export type DeleteNotesResponse = Empty;
 export const DeleteNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
@@ -429,49 +429,6 @@ export const deleteNotes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchDeleteNotesPermissionsRequest {
-  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeletePermissionsRequest;
-}
-
-export const BatchDeleteNotesPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchDeletePermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/permissions:batchDelete",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchDeleteNotesPermissionsRequest>;
-
-export type BatchDeleteNotesPermissionsResponse = Empty;
-export const BatchDeleteNotesPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type BatchDeleteNotesPermissionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
-export const batchDeleteNotesPermissions: API.OperationMethod<
-  BatchDeleteNotesPermissionsRequest,
-  BatchDeleteNotesPermissionsResponse,
-  BatchDeleteNotesPermissionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchDeleteNotesPermissionsRequest,
-  output: BatchDeleteNotesPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface BatchCreateNotesPermissionsRequest {
   /** The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. */
   parent: string;
@@ -490,7 +447,7 @@ export const BatchCreateNotesPermissionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateNotesPermissionsRequest>;
+  ) as unknown as Schema.Codec<BatchCreateNotesPermissionsRequest>;
 
 export type BatchCreateNotesPermissionsResponse =
   BatchCreatePermissionsResponse;
@@ -516,6 +473,49 @@ export const batchCreateNotesPermissions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface BatchDeleteNotesPermissionsRequest {
+  /** The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeletePermissionsRequest;
+}
+
+export const BatchDeleteNotesPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchDeletePermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/permissions:batchDelete",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<BatchDeleteNotesPermissionsRequest>;
+
+export type BatchDeleteNotesPermissionsResponse = Empty;
+export const BatchDeleteNotesPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type BatchDeleteNotesPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
+export const batchDeleteNotesPermissions: API.OperationMethod<
+  BatchDeleteNotesPermissionsRequest,
+  BatchDeleteNotesPermissionsResponse,
+  BatchDeleteNotesPermissionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteNotesPermissionsRequest,
+  output: BatchDeleteNotesPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface DownloadMediaRequest {
   /** Required. The name of the attachment. */
   name: string;
@@ -529,7 +529,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<DownloadMediaRequest>;
+) as unknown as Schema.Codec<DownloadMediaRequest>;
 
 export type DownloadMediaResponse = Attachment;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;

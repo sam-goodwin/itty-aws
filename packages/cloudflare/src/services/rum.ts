@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service rum
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -57,6 +57,181 @@ export class SiteNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Rumrule {
+  /** The Web Analytics rule identifier. */
+  id?: string | null;
+  created?: string | null;
+  /** The hostname the rule will be applied to. */
+  host?: string | null;
+  /** Whether the rule includes or excludes traffic from being measured. */
+  inclusive?: boolean | null;
+  /** Whether the rule is paused or not. */
+  isPaused?: boolean | null;
+  /** The paths the rule will be applied to. */
+  paths?: string[] | null;
+  priority?: number | null;
+}
+const Rumrule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    paths: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      created: "created",
+      host: "host",
+      inclusive: "inclusive",
+      isPaused: "is_paused",
+      paths: "paths",
+      priority: "priority",
+    }),
+  ),
+) as unknown as Schema.Codec<Rumrule>;
+
+interface Ruleset {
+  /** The Web Analytics ruleset identifier. */
+  id?: string | null;
+  /** Whether the ruleset is enabled. */
+  enabled?: boolean | null;
+  zoneName?: string | null;
+  /** The zone identifier. */
+  zoneTag?: string | null;
+}
+const Ruleset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    zoneName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    zoneTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      enabled: "enabled",
+      zoneName: "zone_name",
+      zoneTag: "zone_tag",
+    }),
+  ),
+) as unknown as Schema.Codec<Ruleset>;
+
+interface Rule {
+  /** The Web Analytics rule identifier. */
+  id?: string | null;
+  host?: string | null;
+  inclusive?: boolean | null;
+  isPaused?: boolean | null;
+  paths?: string[] | null;
+}
+const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    paths: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      host: "host",
+      inclusive: "inclusive",
+      isPaused: "is_paused",
+      paths: "paths",
+    }),
+  ),
+) as unknown as Schema.Codec<Rule>;
+
+interface ListSiteInfosResponseResult {
+  /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
+  autoInstall?: boolean | null;
+  created?: string | null;
+  /** A list of rules. */
+  rules?:
+    | {
+        id?: string | null;
+        created?: string | null;
+        host?: string | null;
+        inclusive?: boolean | null;
+        isPaused?: boolean | null;
+        paths?: string[] | null;
+        priority?: number | null;
+      }[]
+    | null;
+  ruleset?: {
+    id?: string | null;
+    enabled?: boolean | null;
+    zoneName?: string | null;
+    zoneTag?: string | null;
+  } | null;
+  /** The Web Analytics site identifier. */
+  siteTag?: string | null;
+  /** The Web Analytics site token. */
+  siteToken?: string | null;
+  /** Encoded JavaScript snippet. */
+  snippet?: string | null;
+  host?: string | null;
+}
+const ListSiteInfosResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      rules: Schema.optional(
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
+      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
+      siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        autoInstall: "auto_install",
+        created: "created",
+        rules: "rules",
+        ruleset: "ruleset",
+        siteTag: "site_tag",
+        siteToken: "site_token",
+        snippet: "snippet",
+        host: "host",
+      }),
+    ),
+) as unknown as Schema.Codec<ListSiteInfosResponseResult>;
+
+interface ListSiteInfosResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListSiteInfosResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListSiteInfosResponseResultInfo>;
+
+// =============================================================================
 // Rule
 // =============================================================================
 
@@ -76,7 +251,7 @@ export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       path: "/accounts/{account_id}/rum/v2/{rulesetId}/rules",
     }),
   ),
-) as unknown as Schema.Schema<ListRulesRequest>;
+) as unknown as Schema.Codec<ListRulesRequest>;
 
 export interface ListRulesResponse {
   /** A list of rules. */
@@ -103,67 +278,11 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              created: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              inclusive: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isPaused: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              paths: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              priority: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                created: "created",
-                host: "host",
-                inclusive: "inclusive",
-                isPaused: "is_paused",
-                paths: "paths",
-                priority: "priority",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
       ),
-      ruleset: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            zoneName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneTag: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              enabled: "enabled",
-              zoneName: "zone_name",
-              zoneTag: "zone_tag",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<ListRulesResponse>;
+) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors | Forbidden | RulesetNotFound;
 
@@ -213,7 +332,7 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule",
       }),
     ),
-) as unknown as Schema.Schema<CreateRuleRequest>;
+) as unknown as Schema.Codec<CreateRuleRequest>;
 
 export interface CreateRuleResponse {
   /** The Web Analytics rule identifier. */
@@ -255,7 +374,7 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<CreateRuleResponse>;
+) as unknown as Schema.Codec<CreateRuleResponse>;
 
 export type CreateRuleError =
   | DefaultErrors
@@ -311,7 +430,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateRuleRequest>;
+) as unknown as Schema.Codec<UpdateRuleRequest>;
 
 export interface UpdateRuleResponse {
   /** The Web Analytics rule identifier. */
@@ -353,7 +472,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateRuleResponse>;
+) as unknown as Schema.Codec<UpdateRuleResponse>;
 
 export type UpdateRuleError = DefaultErrors | Forbidden | RulesetNotFound;
 
@@ -387,7 +506,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteRuleRequest>;
+) as unknown as Schema.Codec<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {
   /** The Web Analytics rule identifier. */
@@ -399,7 +518,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<DeleteRuleResponse>;
+) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError =
   | DefaultErrors
@@ -440,25 +559,7 @@ export const BulkCreateRulesRequest =
       rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       deleteRules: Schema.optional(Schema.Array(Schema.String)),
-      rules: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            host: Schema.optional(Schema.String),
-            inclusive: Schema.optional(Schema.Boolean),
-            isPaused: Schema.optional(Schema.Boolean),
-            paths: Schema.optional(Schema.Array(Schema.String)),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              host: "host",
-              inclusive: "inclusive",
-              isPaused: "is_paused",
-              paths: "paths",
-            }),
-          ),
-        ),
-      ),
+      rules: Schema.optional(Schema.Array(Rule)),
     }).pipe(
       Schema.encodeKeys({ deleteRules: "delete_rules", rules: "rules" }),
       T.Http({
@@ -466,7 +567,7 @@ export const BulkCreateRulesRequest =
         path: "/accounts/{account_id}/rum/v2/{rulesetId}/rules",
       }),
     ),
-  ) as unknown as Schema.Schema<BulkCreateRulesRequest>;
+  ) as unknown as Schema.Codec<BulkCreateRulesRequest>;
 
 export interface BulkCreateRulesResponse {
   /** A list of rules. */
@@ -493,67 +594,11 @@ export const BulkCreateRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              created: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              inclusive: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isPaused: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              paths: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              priority: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                created: "created",
-                host: "host",
-                inclusive: "inclusive",
-                isPaused: "is_paused",
-                paths: "paths",
-                priority: "priority",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
       ),
-      ruleset: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            zoneName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneTag: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              enabled: "enabled",
-              zoneName: "zone_name",
-              zoneTag: "zone_tag",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<BulkCreateRulesResponse>;
+  ) as unknown as Schema.Codec<BulkCreateRulesResponse>;
 
 export type BulkCreateRulesError = DefaultErrors;
 
@@ -589,7 +634,7 @@ export const GetSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/site_info/{siteId}",
       }),
     ),
-) as unknown as Schema.Schema<GetSiteInfoRequest>;
+) as unknown as Schema.Codec<GetSiteInfoRequest>;
 
 export interface GetSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -628,65 +673,9 @@ export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              created: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              inclusive: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isPaused: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              paths: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              priority: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                created: "created",
-                host: "host",
-                inclusive: "inclusive",
-                isPaused: "is_paused",
-                paths: "paths",
-                priority: "priority",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
       ),
-      ruleset: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            zoneName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneTag: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              enabled: "enabled",
-              zoneName: "zone_name",
-              zoneTag: "zone_tag",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
       siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -705,7 +694,7 @@ export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetSiteInfoResponse>;
+) as unknown as Schema.Codec<GetSiteInfoResponse>;
 
 export type GetSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 
@@ -744,7 +733,7 @@ export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/site_info/list",
       }),
     ),
-) as unknown as Schema.Schema<ListSiteInfosRequest>;
+) as unknown as Schema.Codec<ListSiteInfosRequest>;
 
 export interface ListSiteInfosResponse {
   result: {
@@ -783,119 +772,12 @@ export interface ListSiteInfosResponse {
 export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          autoInstall: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          rules: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  created: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  host: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  inclusive: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  isPaused: Schema.optional(
-                    Schema.Union([Schema.Boolean, Schema.Null]),
-                  ),
-                  paths: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  priority: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    created: "created",
-                    host: "host",
-                    inclusive: "inclusive",
-                    isPaused: "is_paused",
-                    paths: "paths",
-                    priority: "priority",
-                  }),
-                ),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          ruleset: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-                enabled: Schema.optional(
-                  Schema.Union([Schema.Boolean, Schema.Null]),
-                ),
-                zoneName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                zoneTag: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  id: "id",
-                  enabled: "enabled",
-                  zoneName: "zone_name",
-                  zoneTag: "zone_tag",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          siteToken: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            autoInstall: "auto_install",
-            created: "created",
-            rules: "rules",
-            ruleset: "ruleset",
-            siteTag: "site_tag",
-            siteToken: "site_token",
-            snippet: "snippet",
-            host: "host",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListSiteInfosResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListSiteInfosResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-) as unknown as Schema.Schema<ListSiteInfosResponse>;
+) as unknown as Schema.Codec<ListSiteInfosResponse>;
 
 export type ListSiteInfosError = DefaultErrors | Forbidden;
 
@@ -943,7 +825,7 @@ export const CreateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       }),
       T.Http({ method: "POST", path: "/accounts/{account_id}/rum/site_info" }),
     ),
-) as unknown as Schema.Schema<CreateSiteInfoRequest>;
+) as unknown as Schema.Codec<CreateSiteInfoRequest>;
 
 export interface CreateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -982,65 +864,9 @@ export const CreateSiteInfoResponse =
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              created: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              inclusive: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isPaused: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              paths: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              priority: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                created: "created",
-                host: "host",
-                inclusive: "inclusive",
-                isPaused: "is_paused",
-                paths: "paths",
-                priority: "priority",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
       ),
-      ruleset: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            zoneName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneTag: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              enabled: "enabled",
-              zoneName: "zone_name",
-              zoneTag: "zone_tag",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
       siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1059,7 +885,7 @@ export const CreateSiteInfoResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateSiteInfoResponse>;
+  ) as unknown as Schema.Codec<CreateSiteInfoResponse>;
 
 export type CreateSiteInfoError = DefaultErrors | Forbidden;
 
@@ -1113,7 +939,7 @@ export const UpdateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/site_info/{siteId}",
       }),
     ),
-) as unknown as Schema.Schema<UpdateSiteInfoRequest>;
+) as unknown as Schema.Codec<UpdateSiteInfoRequest>;
 
 export interface UpdateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -1152,65 +978,9 @@ export const UpdateSiteInfoResponse =
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       rules: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              created: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              inclusive: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              isPaused: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              paths: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              priority: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                created: "created",
-                host: "host",
-                inclusive: "inclusive",
-                isPaused: "is_paused",
-                paths: "paths",
-                priority: "priority",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
       ),
-      ruleset: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            enabled: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            zoneName: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            zoneTag: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              enabled: "enabled",
-              zoneName: "zone_name",
-              zoneTag: "zone_tag",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
       siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1229,7 +999,7 @@ export const UpdateSiteInfoResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateSiteInfoResponse>;
+  ) as unknown as Schema.Codec<UpdateSiteInfoResponse>;
 
 export type UpdateSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 
@@ -1261,7 +1031,7 @@ export const DeleteSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/rum/site_info/{siteId}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteSiteInfoRequest>;
+) as unknown as Schema.Codec<DeleteSiteInfoRequest>;
 
 export interface DeleteSiteInfoResponse {
   /** The Web Analytics site identifier. */
@@ -1275,7 +1045,7 @@ export const DeleteSiteInfoResponse =
     })
       .pipe(Schema.encodeKeys({ siteTag: "site_tag" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteSiteInfoResponse>;
+  ) as unknown as Schema.Codec<DeleteSiteInfoResponse>;
 
 export type DeleteSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
 

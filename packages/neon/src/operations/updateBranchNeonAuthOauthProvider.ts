@@ -1,9 +1,18 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface UpdateBranchNeonAuthOauthProviderInput {
+  project_id: string;
+  branch_id: string;
+  oauth_provider_id: string;
+  client_id?: string;
+  client_secret?: string | Redacted.Redacted<string>;
+  microsoft_tenant_id?: string;
+}
 export const UpdateBranchNeonAuthOauthProviderInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,20 +26,22 @@ export const UpdateBranchNeonAuthOauthProviderInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/auth/oauth_providers/{oauth_provider_id}",
     }),
-  );
-export type UpdateBranchNeonAuthOauthProviderInput =
-  typeof UpdateBranchNeonAuthOauthProviderInput.Type;
+  ) as unknown as Schema.Codec<UpdateBranchNeonAuthOauthProviderInput>;
 
 // Output Schema
+export interface UpdateBranchNeonAuthOauthProviderOutput {
+  id: "google" | "github" | "microsoft" | "vercel";
+  type: "standard" | "shared";
+  client_id?: string;
+  client_secret?: Redacted.Redacted<string>;
+}
 export const UpdateBranchNeonAuthOauthProviderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
-  });
-export type UpdateBranchNeonAuthOauthProviderOutput =
-  typeof UpdateBranchNeonAuthOauthProviderOutput.Type;
+    client_secret: Schema.optional(SensitiveOutputString),
+  }) as unknown as Schema.Codec<UpdateBranchNeonAuthOauthProviderOutput>;
 
 // The operation
 /**

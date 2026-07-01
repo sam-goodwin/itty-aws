@@ -3,13 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetV1WorkspacesInput {
+  cursor?: string;
+  limit?: number;
+}
 export const GetV1WorkspacesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cursor: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
-}).pipe(T.Http({ method: "GET", path: "/v1/workspaces" }));
-export type GetV1WorkspacesInput = typeof GetV1WorkspacesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v1/workspaces" }),
+) as unknown as Schema.Codec<GetV1WorkspacesInput>;
 
 // Output Schema
+export interface GetV1WorkspacesOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+  }[];
+  pagination: { nextCursor: string | null; hasMore: boolean };
+}
 export const GetV1WorkspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -24,8 +39,7 @@ export const GetV1WorkspacesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextCursor: Schema.NullOr(Schema.String),
     hasMore: Schema.Boolean,
   }),
-});
-export type GetV1WorkspacesOutput = typeof GetV1WorkspacesOutput.Type;
+}) as unknown as Schema.Codec<GetV1WorkspacesOutput>;
 
 // The operation
 /**

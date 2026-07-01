@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsProviderKeysDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const LlmAnalyticsProviderKeysDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,14 @@ export const LlmAnalyticsProviderKeysDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/llm_analytics/provider_keys/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_keys/{id}/",
     }),
-  );
-export type LlmAnalyticsProviderKeysDestroyInput =
-  typeof LlmAnalyticsProviderKeysDestroyInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeysDestroyInput>;
 
 // Output Schema
+export type LlmAnalyticsProviderKeysDestroyOutput = void;
 export const LlmAnalyticsProviderKeysDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LlmAnalyticsProviderKeysDestroyOutput =
-  typeof LlmAnalyticsProviderKeysDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LlmAnalyticsProviderKeysDestroyOutput>;
 
 // The operation
 /**
@@ -33,5 +33,4 @@ export const llmAnalyticsProviderKeysDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysDestroyInput,
     outputSchema: LlmAnalyticsProviderKeysDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

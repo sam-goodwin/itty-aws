@@ -1,9 +1,60 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateProjectInput {
+  project: {
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    name?: string;
+    branch?: {
+      name?: string;
+      role_name?: string;
+      database_name?: string;
+      annotations?: Record<string, string>;
+    };
+    autoscaling_limit_min_cu?: number;
+    autoscaling_limit_max_cu?: number;
+    provisioner?: string;
+    region_id?: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    pg_version?: number;
+    store_passwords?: boolean;
+    history_retention_seconds?: number;
+    org_id?: string;
+  };
+}
 export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     settings: Schema.optional(
@@ -78,10 +129,252 @@ export const CreateProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     history_retention_seconds: Schema.optional(Schema.Number),
     org_id: Schema.optional(Schema.String),
   }),
-}).pipe(T.Http({ method: "POST", path: "/projects" }));
-export type CreateProjectInput = typeof CreateProjectInput.Type;
+}).pipe(
+  T.Http({ method: "POST", path: "/projects" }),
+) as unknown as Schema.Codec<CreateProjectInput>;
 
 // Output Schema
+export interface CreateProjectOutput {
+  project: {
+    data_storage_bytes_hour: number;
+    data_transfer_bytes: number;
+    written_data_bytes: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    cpu_used_sec: number;
+    id: string;
+    platform_id: string;
+    region_id: string;
+    name: string;
+    provisioner: string;
+    default_endpoint_settings?: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      autoscaling_limit_min_cu?: number;
+      autoscaling_limit_max_cu?: number;
+      suspend_timeout_seconds?: number;
+    };
+    settings?: {
+      quota?: {
+        active_time_seconds?: number;
+        compute_time_seconds?: number;
+        written_data_bytes?: number;
+        data_transfer_bytes?: number;
+        logical_size_bytes?: number;
+      };
+      allowed_ips?: { ips?: string[]; protected_branches_only?: boolean };
+      enable_logical_replication?: boolean;
+      maintenance_window?: {
+        weekdays: number[];
+        start_time: string;
+        end_time: string;
+      };
+      block_public_connections?: boolean;
+      block_vpc_connections?: boolean;
+      audit_log_level?: "base" | "extended" | "full";
+      hipaa?: boolean;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pg_version: number;
+    proxy_host: string;
+    branch_logical_size_limit: number;
+    branch_logical_size_limit_bytes: number;
+    store_passwords: boolean;
+    maintenance_starts_at?: string;
+    creation_source: string;
+    history_retention_seconds: number;
+    created_at: string;
+    updated_at: string;
+    synthetic_storage_size?: number;
+    consumption_period_start: string;
+    consumption_period_end: string;
+    quota_reset_at?: string;
+    owner_id: string;
+    owner?: {
+      email: string;
+      name: string;
+      branches_limit: number;
+      subscription_type:
+        | "UNKNOWN"
+        | "direct_sales"
+        | "direct_sales_v3"
+        | "aws_marketplace"
+        | "free_v2"
+        | "free_v3"
+        | "launch"
+        | "launch_v3"
+        | "scale"
+        | "scale_v3"
+        | "business"
+        | "vercel_pg_legacy";
+    };
+    compute_last_active_at?: string;
+    org_id?: string;
+    maintenance_scheduled_for?: string;
+    hipaa_enabled_at?: string;
+    effective_project_permission?:
+      | "CAN_VIEW"
+      | "CAN_EDIT"
+      | "CAN_MANAGE"
+      | null;
+  };
+  connection_uris: {
+    connection_uri: Redacted.Redacted<string>;
+    connection_parameters: {
+      database: string;
+      password: Redacted.Redacted<string>;
+      role: string;
+      host: string;
+      pooler_host: string;
+    };
+  }[];
+  roles: {
+    branch_id: string;
+    name: string;
+    password?: Redacted.Redacted<string>;
+    protected?: boolean;
+    authentication_method?: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  databases: {
+    id: number;
+    branch_id: string;
+    name: string;
+    owner_name: string;
+    created_at: string;
+    updated_at: string;
+  }[];
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+  branch: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  };
+  endpoints: {
+    host: string;
+    id: string;
+    name?: string;
+    project_id: string;
+    branch_id: string;
+    autoscaling_limit_min_cu: number;
+    autoscaling_limit_max_cu: number;
+    region_id: string;
+    type: "read_only" | "read_write";
+    current_state: "init" | "active" | "idle";
+    pending_state?: "init" | "active" | "idle";
+    settings: {
+      pg_settings?: Record<string, string>;
+      pgbouncer_settings?: Record<string, string>;
+      preload_libraries?: {
+        use_defaults?: boolean;
+        enabled_libraries?: string[];
+      };
+    };
+    pooler_enabled: boolean;
+    pooler_mode: "transaction";
+    disabled: boolean;
+    passwordless_access: boolean;
+    last_active?: string;
+    creation_source: string;
+    created_at: string;
+    updated_at: string;
+    started_at?: string;
+    suspended_at?: string;
+    proxy_host: string;
+    suspend_timeout_seconds: number;
+    provisioner: string;
+    compute_release_version?: string;
+  }[];
+}
 export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
@@ -187,13 +480,16 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.optional(Schema.String),
     maintenance_scheduled_for: Schema.optional(Schema.String),
     hipaa_enabled_at: Schema.optional(Schema.String),
+    effective_project_permission: Schema.optional(
+      Schema.NullOr(Schema.Literals(["CAN_VIEW", "CAN_EDIT", "CAN_MANAGE"])),
+    ),
   }),
   connection_uris: Schema.Array(
     Schema.Struct({
-      connection_uri: SensitiveString,
+      connection_uri: SensitiveOutputString,
       connection_parameters: Schema.Struct({
         database: Schema.String,
-        password: SensitiveString,
+        password: SensitiveOutputString,
         role: Schema.String,
         host: Schema.String,
         pooler_host: Schema.String,
@@ -204,7 +500,7 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
-      password: Schema.optional(SensitiveString),
+      password: Schema.optional(SensitiveOutputString),
       protected: Schema.optional(Schema.Boolean),
       authentication_method: Schema.optional(Schema.String),
       created_at: Schema.String,
@@ -375,20 +671,20 @@ export const CreateProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       compute_release_version: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CreateProjectOutput = typeof CreateProjectOutput.Type;
+}) as unknown as Schema.Codec<CreateProjectOutput>;
 
 // The operation
 /**
  * Create project
  *
  * Creates a Neon project within an organization.
- * You may need to specify an org_id parameter depending on your API key type.
+ * If using a personal API key, include the `org_id` parameter to specify which organization to create the project in.
+ * If using an org API key, `org_id` is automatically inferred from the key.
  * Plan limits define how many projects you can create.
- * For more information, see [Manage projects](https://neon.tech/docs/manage/projects/).
+ * For more information, see [Manage projects](https://neon.com/docs/manage/projects/).
  * You can specify a region and Postgres version in the request body.
- * Neon currently supports PostgreSQL 14, 15, 16, and 17.
- * For supported regions and `region_id` values, see [Regions](https://neon.tech/docs/introduction/regions/).
+ * Neon currently supports PostgreSQL 14, 15, 16, 17, and 18.
+ * For supported regions and `region_id` values, see [Regions](https://neon.com/docs/introduction/regions/).
  */
 export const createProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CreateProjectInput,

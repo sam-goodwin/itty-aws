@@ -4,6 +4,28 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertCurationSetItemInput {
+  curationSetName: string;
+  itemId: string;
+  rule: {
+    tags?: string[];
+    query?: string;
+    match?: "exact" | "contains";
+    filter_by?: string;
+  };
+  includes?: { id: string; position: number }[];
+  excludes?: { id: string }[];
+  filter_by?: string;
+  remove_matched_tokens?: boolean;
+  metadata?: unknown;
+  sort_by?: string;
+  replace_query?: string;
+  filter_curated_hits?: boolean;
+  effective_from_ts?: number;
+  effective_to_ts?: number;
+  stop_processing?: boolean;
+  id?: string;
+}
 export const UpsertCurationSetItemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
@@ -44,10 +66,29 @@ export const UpsertCurationSetItemInput =
       method: "PUT",
       path: "/curation_sets/{curationSetName}/items/{itemId}",
     }),
-  );
-export type UpsertCurationSetItemInput = typeof UpsertCurationSetItemInput.Type;
+  ) as unknown as Schema.Codec<UpsertCurationSetItemInput>;
 
 // Output Schema
+export interface UpsertCurationSetItemOutput {
+  rule: {
+    tags?: string[];
+    query?: string;
+    match?: "exact" | "contains";
+    filter_by?: string;
+  };
+  includes?: { id: string; position: number }[];
+  excludes?: { id: string }[];
+  filter_by?: string;
+  remove_matched_tokens?: boolean;
+  metadata?: unknown;
+  sort_by?: string;
+  replace_query?: string;
+  filter_curated_hits?: boolean;
+  effective_from_ts?: number;
+  effective_to_ts?: number;
+  stop_processing?: boolean;
+  id: string;
+}
 export const UpsertCurationSetItemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rule: Schema.Struct({
@@ -81,9 +122,7 @@ export const UpsertCurationSetItemOutput =
     effective_to_ts: Schema.optional(Schema.Number),
     stop_processing: Schema.optional(Schema.Boolean),
     id: Schema.String,
-  });
-export type UpsertCurationSetItemOutput =
-  typeof UpsertCurationSetItemOutput.Type;
+  }) as unknown as Schema.Codec<UpsertCurationSetItemOutput>;
 
 // The operation
 /**

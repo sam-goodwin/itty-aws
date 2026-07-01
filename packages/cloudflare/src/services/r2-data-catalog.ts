@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service r2-data-catalog
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -73,6 +73,270 @@ export class WarehouseNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Compaction {
+  /** Specifies the state of maintenance operations. */
+  state: "enabled" | "disabled" | (string & {});
+  /** Sets the target file size for compaction in megabytes. Defaults to "128". */
+  targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
+}
+const Compaction = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.Union([
+      Schema.Literals(["enabled", "disabled"]),
+      Schema.String,
+    ]),
+    targetSizeMb: Schema.Union([
+      Schema.Literals(["64", "128", "256", "512"]),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
+  ),
+) as unknown as Schema.Codec<Compaction>;
+
+interface SnapshotExpiration {
+  /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days */
+  maxSnapshotAge: string;
+  /** Specifies the minimum number of snapshots to retain. Defaults to 100. */
+  minSnapshotsToKeep: number;
+  /** Specifies the state of maintenance operations. */
+  state: "enabled" | "disabled" | (string & {});
+}
+const SnapshotExpiration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    maxSnapshotAge: Schema.String,
+    minSnapshotsToKeep: Schema.Number,
+    state: Schema.Union([
+      Schema.Literals(["enabled", "disabled"]),
+      Schema.String,
+    ]),
+  }).pipe(
+    Schema.encodeKeys({
+      maxSnapshotAge: "max_snapshot_age",
+      minSnapshotsToKeep: "min_snapshots_to_keep",
+      state: "state",
+    }),
+  ),
+) as unknown as Schema.Codec<SnapshotExpiration>;
+
+interface MaintenanceConfig {
+  /** Configures compaction for catalog maintenance. */
+  compaction?: {
+    state: "enabled" | "disabled" | (string & {});
+    targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
+  } | null;
+  /** Configures snapshot expiration settings. */
+  snapshotExpiration?: {
+    maxSnapshotAge: string;
+    minSnapshotsToKeep: number;
+    state: "enabled" | "disabled" | (string & {});
+  } | null;
+}
+const MaintenanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    compaction: Schema.optional(Schema.Union([Compaction, Schema.Null])),
+    snapshotExpiration: Schema.optional(
+      Schema.Union([SnapshotExpiration, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      compaction: "compaction",
+      snapshotExpiration: "snapshot_expiration",
+    }),
+  ),
+) as unknown as Schema.Codec<MaintenanceConfig>;
+
+interface Compaction2 {
+  /** Updates the state optionally. */
+  state?: "enabled" | "disabled" | (string & {}) | null;
+  /** Updates the target file size optionally. */
+  targetSizeMb?: "64" | "128" | "256" | "512" | (string & {}) | null;
+}
+const Compaction2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    state: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    targetSizeMb: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["64", "128", "256", "512"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
+  ),
+) as unknown as Schema.Codec<Compaction2>;
+
+interface SnapshotExpiration2 {
+  /** Updates the maximum age for snapshots optionally. */
+  maxSnapshotAge?: string | null;
+  /** Updates the minimum number of snapshots to retain optionally. */
+  minSnapshotsToKeep?: number | null;
+  /** Updates the state optionally. */
+  state?: "enabled" | "disabled" | (string & {}) | null;
+}
+const SnapshotExpiration2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    maxSnapshotAge: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    minSnapshotsToKeep: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    state: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["enabled", "disabled"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      maxSnapshotAge: "max_snapshot_age",
+      minSnapshotsToKeep: "min_snapshots_to_keep",
+      state: "state",
+    }),
+  ),
+) as unknown as Schema.Codec<SnapshotExpiration2>;
+
+interface Detail {
+  /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
+  namespace: string[];
+  /** Contains the UUID that persists across renames. */
+  namespaceUuid: string;
+  /** Indicates the creation timestamp in ISO 8601 format. */
+  createdAt?: string | null;
+  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
+  updatedAt?: string | null;
+}
+const Detail = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    namespace: Schema.Array(Schema.String),
+    namespaceUuid: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      namespace: "namespace",
+      namespaceUuid: "namespace_uuid",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    }),
+  ),
+) as unknown as Schema.Codec<Detail>;
+
+interface Identifier {
+  /** Specifies the table name. */
+  name: string;
+  /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
+  namespace: string[];
+}
+const Identifier = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    namespace: Schema.Array(Schema.String),
+  }),
+) as unknown as Schema.Codec<Identifier>;
+
+interface Detail2 {
+  /** Specifies a unique table identifier within a catalog. */
+  identifier: { name: string; namespace: string[] };
+  /** Contains the UUID that persists across renames. */
+  tableUuid: string;
+  /** Indicates the creation timestamp in ISO 8601 format. */
+  createdAt?: string | null;
+  /** Specifies the base S3 URI for table storage location. */
+  location?: string | null;
+  /** Contains the S3 URI to table metadata file. Null for staged tables. */
+  metadataLocation?: string | null;
+  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
+  updatedAt?: string | null;
+}
+const Detail2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    identifier: Identifier,
+    tableUuid: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    location: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadataLocation: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      identifier: "identifier",
+      tableUuid: "table_uuid",
+      createdAt: "created_at",
+      location: "location",
+      metadataLocation: "metadata_location",
+      updatedAt: "updated_at",
+    }),
+  ),
+) as unknown as Schema.Codec<Detail2>;
+
+interface Warehouse {
+  /** Use this to uniquely identify the catalog. */
+  id: string;
+  /** Specifies the associated R2 bucket name. */
+  bucket: string;
+  /** Specifies the catalog name (generated from account and bucket name). */
+  name: string;
+  /** Indicates the status of the catalog. */
+  status: "active" | "inactive" | (string & {});
+  /** Shows the credential configuration status. */
+  credentialStatus?: "present" | "absent" | null;
+  /** Configures maintenance for the catalog. */
+  maintenanceConfig?: {
+    compaction?: {
+      state: "enabled" | "disabled" | (string & {});
+      targetSizeMb: "64" | "128" | "256" | "512" | (string & {});
+    } | null;
+    snapshotExpiration?: {
+      maxSnapshotAge: string;
+      minSnapshotsToKeep: number;
+      state: "enabled" | "disabled" | (string & {});
+    } | null;
+  } | null;
+}
+const Warehouse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    bucket: Schema.String,
+    name: Schema.String,
+    status: Schema.Union([
+      Schema.Literals(["active", "inactive"]),
+      Schema.String,
+    ]),
+    credentialStatus: Schema.optional(
+      Schema.Union([
+        Schema.Literal("present"),
+        Schema.Literal("absent"),
+        Schema.Null,
+      ]),
+    ),
+    maintenanceConfig: Schema.optional(
+      Schema.Union([MaintenanceConfig, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      bucket: "bucket",
+      name: "name",
+      status: "status",
+      credentialStatus: "credential_status",
+      maintenanceConfig: "maintenance_config",
+    }),
+  ),
+) as unknown as Schema.Codec<Warehouse>;
+
+// =============================================================================
 // Credential
 // =============================================================================
 
@@ -96,14 +360,14 @@ export const CreateCredentialRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/credential",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateCredentialRequest>;
+  ) as unknown as Schema.Codec<CreateCredentialRequest>;
 
 export type CreateCredentialResponse = unknown;
 
 export const CreateCredentialResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateCredentialResponse>;
+  ) as unknown as Schema.Codec<CreateCredentialResponse>;
 
 export type CreateCredentialError =
   | DefaultErrors
@@ -142,7 +406,7 @@ export const GetMaintenanceConfigRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/maintenance-configs",
       }),
     ),
-  ) as unknown as Schema.Schema<GetMaintenanceConfigRequest>;
+  ) as unknown as Schema.Codec<GetMaintenanceConfigRequest>;
 
 export interface GetMaintenanceConfigResponse {
   /** Shows the credential configuration status. */
@@ -168,52 +432,7 @@ export const GetMaintenanceConfigResponse =
         Schema.Literals(["present", "absent"]),
         Schema.String,
       ]),
-      maintenanceConfig: Schema.Struct({
-        compaction: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              state: Schema.Union([
-                Schema.Literals(["enabled", "disabled"]),
-                Schema.String,
-              ]),
-              targetSizeMb: Schema.Union([
-                Schema.Literals(["64", "128", "256", "512"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                state: "state",
-                targetSizeMb: "target_size_mb",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        snapshotExpiration: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              maxSnapshotAge: Schema.String,
-              minSnapshotsToKeep: Schema.Number,
-              state: Schema.Union([
-                Schema.Literals(["enabled", "disabled"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                maxSnapshotAge: "max_snapshot_age",
-                minSnapshotsToKeep: "min_snapshots_to_keep",
-                state: "state",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          compaction: "compaction",
-          snapshotExpiration: "snapshot_expiration",
-        }),
-      ),
+      maintenanceConfig: MaintenanceConfig,
     })
       .pipe(
         Schema.encodeKeys({
@@ -222,7 +441,7 @@ export const GetMaintenanceConfigResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetMaintenanceConfigResponse>;
+  ) as unknown as Schema.Codec<GetMaintenanceConfigResponse>;
 
 export type GetMaintenanceConfigError =
   | DefaultErrors
@@ -263,42 +482,8 @@ export const UpdateMaintenanceConfigRequest =
     Schema.Struct({
       bucketName: Schema.String.pipe(T.HttpPath("bucketName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      compaction: Schema.optional(
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          ),
-          targetSizeMb: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["64", "128", "256", "512"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
-        ),
-      ),
-      snapshotExpiration: Schema.optional(
-        Schema.Struct({
-          maxSnapshotAge: Schema.optional(Schema.String),
-          minSnapshotsToKeep: Schema.optional(Schema.Number),
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            maxSnapshotAge: "max_snapshot_age",
-            minSnapshotsToKeep: "min_snapshots_to_keep",
-            state: "state",
-          }),
-        ),
-      ),
+      compaction: Schema.optional(Compaction2),
+      snapshotExpiration: Schema.optional(SnapshotExpiration2),
     }).pipe(
       Schema.encodeKeys({
         compaction: "compaction",
@@ -309,7 +494,7 @@ export const UpdateMaintenanceConfigRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/maintenance-configs",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateMaintenanceConfigRequest>;
+  ) as unknown as Schema.Codec<UpdateMaintenanceConfigRequest>;
 
 export interface UpdateMaintenanceConfigResponse {
   /** Configures compaction for catalog maintenance. */
@@ -328,44 +513,9 @@ export interface UpdateMaintenanceConfigResponse {
 export const UpdateMaintenanceConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      compaction: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            state: Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-            targetSizeMb: Schema.Union([
-              Schema.Literals(["64", "128", "256", "512"]),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              state: "state",
-              targetSizeMb: "target_size_mb",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      compaction: Schema.optional(Schema.Union([Compaction, Schema.Null])),
       snapshotExpiration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            maxSnapshotAge: Schema.String,
-            minSnapshotsToKeep: Schema.Number,
-            state: Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              maxSnapshotAge: "max_snapshot_age",
-              minSnapshotsToKeep: "min_snapshots_to_keep",
-              state: "state",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([SnapshotExpiration, Schema.Null]),
       ),
     })
       .pipe(
@@ -375,7 +525,7 @@ export const UpdateMaintenanceConfigResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateMaintenanceConfigResponse>;
+  ) as unknown as Schema.Codec<UpdateMaintenanceConfigResponse>;
 
 export type UpdateMaintenanceConfigError =
   | DefaultErrors
@@ -433,7 +583,7 @@ export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/namespaces",
       }),
     ),
-) as unknown as Schema.Schema<ListNamespacesRequest>;
+) as unknown as Schema.Codec<ListNamespacesRequest>;
 
 export interface ListNamespacesResponse {
   /** Lists namespaces in the catalog. */
@@ -458,28 +608,7 @@ export const ListNamespacesResponse =
     Schema.Struct({
       namespaces: Schema.Array(Schema.Array(Schema.String)),
       details: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              namespace: Schema.Array(Schema.String),
-              namespaceUuid: Schema.String,
-              createdAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              updatedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                namespace: "namespace",
-                namespaceUuid: "namespace_uuid",
-                createdAt: "created_at",
-                updatedAt: "updated_at",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Detail), Schema.Null]),
       ),
       namespaceUuids: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -497,7 +626,7 @@ export const ListNamespacesResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListNamespacesResponse>;
+  ) as unknown as Schema.Codec<ListNamespacesResponse>;
 
 export type ListNamespacesError =
   | DefaultErrors
@@ -555,7 +684,7 @@ export const ListNamespaceTablesRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/namespaces/{namespace}/tables",
       }),
     ),
-  ) as unknown as Schema.Schema<ListNamespaceTablesRequest>;
+  ) as unknown as Schema.Codec<ListNamespaceTablesRequest>;
 
 export interface ListNamespaceTablesResponse {
   /** Lists tables in the namespace. */
@@ -580,46 +709,9 @@ export interface ListNamespaceTablesResponse {
 export const ListNamespaceTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      identifiers: Schema.Array(
-        Schema.Struct({
-          name: Schema.String,
-          namespace: Schema.Array(Schema.String),
-        }),
-      ),
+      identifiers: Schema.Array(Identifier),
       details: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              identifier: Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.Array(Schema.String),
-              }),
-              tableUuid: Schema.String,
-              createdAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              location: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              metadataLocation: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              updatedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                identifier: "identifier",
-                tableUuid: "table_uuid",
-                createdAt: "created_at",
-                location: "location",
-                metadataLocation: "metadata_location",
-                updatedAt: "updated_at",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Detail2), Schema.Null]),
       ),
       nextPageToken: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -637,7 +729,7 @@ export const ListNamespaceTablesResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListNamespaceTablesResponse>;
+  ) as unknown as Schema.Codec<ListNamespaceTablesResponse>;
 
 export type ListNamespaceTablesError =
   | DefaultErrors
@@ -680,7 +772,7 @@ export const GetNamespaceTableMaintenanceConfigRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/namespaces/{namespace}/tables/{tableName}/maintenance-configs",
       }),
     ),
-  ) as unknown as Schema.Schema<GetNamespaceTableMaintenanceConfigRequest>;
+  ) as unknown as Schema.Codec<GetNamespaceTableMaintenanceConfigRequest>;
 
 export interface GetNamespaceTableMaintenanceConfigResponse {
   /** Configures maintenance for the table. */
@@ -700,56 +792,11 @@ export interface GetNamespaceTableMaintenanceConfigResponse {
 export const GetNamespaceTableMaintenanceConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      maintenanceConfig: Schema.Struct({
-        compaction: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              state: Schema.Union([
-                Schema.Literals(["enabled", "disabled"]),
-                Schema.String,
-              ]),
-              targetSizeMb: Schema.Union([
-                Schema.Literals(["64", "128", "256", "512"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                state: "state",
-                targetSizeMb: "target_size_mb",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        snapshotExpiration: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              maxSnapshotAge: Schema.String,
-              minSnapshotsToKeep: Schema.Number,
-              state: Schema.Union([
-                Schema.Literals(["enabled", "disabled"]),
-                Schema.String,
-              ]),
-            }).pipe(
-              Schema.encodeKeys({
-                maxSnapshotAge: "max_snapshot_age",
-                minSnapshotsToKeep: "min_snapshots_to_keep",
-                state: "state",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          compaction: "compaction",
-          snapshotExpiration: "snapshot_expiration",
-        }),
-      ),
+      maintenanceConfig: MaintenanceConfig,
     })
       .pipe(Schema.encodeKeys({ maintenanceConfig: "maintenance_config" }))
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetNamespaceTableMaintenanceConfigResponse>;
+  ) as unknown as Schema.Codec<GetNamespaceTableMaintenanceConfigResponse>;
 
 export type GetNamespaceTableMaintenanceConfigError =
   | DefaultErrors
@@ -794,42 +841,8 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
       namespace: Schema.String.pipe(T.HttpPath("namespace")),
       tableName: Schema.String.pipe(T.HttpPath("tableName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      compaction: Schema.optional(
-        Schema.Struct({
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          ),
-          targetSizeMb: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["64", "128", "256", "512"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ state: "state", targetSizeMb: "target_size_mb" }),
-        ),
-      ),
-      snapshotExpiration: Schema.optional(
-        Schema.Struct({
-          maxSnapshotAge: Schema.optional(Schema.String),
-          minSnapshotsToKeep: Schema.optional(Schema.Number),
-          state: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            maxSnapshotAge: "max_snapshot_age",
-            minSnapshotsToKeep: "min_snapshots_to_keep",
-            state: "state",
-          }),
-        ),
-      ),
+      compaction: Schema.optional(Compaction2),
+      snapshotExpiration: Schema.optional(SnapshotExpiration2),
     }).pipe(
       Schema.encodeKeys({
         compaction: "compaction",
@@ -840,7 +853,7 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/namespaces/{namespace}/tables/{tableName}/maintenance-configs",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateNamespaceTableMaintenanceConfigRequest>;
+  ) as unknown as Schema.Codec<UpdateNamespaceTableMaintenanceConfigRequest>;
 
 export interface UpdateNamespaceTableMaintenanceConfigResponse {
   /** Configures compaction settings for table optimization. */
@@ -859,44 +872,9 @@ export interface UpdateNamespaceTableMaintenanceConfigResponse {
 export const UpdateNamespaceTableMaintenanceConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      compaction: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            state: Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-            targetSizeMb: Schema.Union([
-              Schema.Literals(["64", "128", "256", "512"]),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              state: "state",
-              targetSizeMb: "target_size_mb",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      compaction: Schema.optional(Schema.Union([Compaction, Schema.Null])),
       snapshotExpiration: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            maxSnapshotAge: Schema.String,
-            minSnapshotsToKeep: Schema.Number,
-            state: Schema.Union([
-              Schema.Literals(["enabled", "disabled"]),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              maxSnapshotAge: "max_snapshot_age",
-              minSnapshotsToKeep: "min_snapshots_to_keep",
-              state: "state",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([SnapshotExpiration, Schema.Null]),
       ),
     })
       .pipe(
@@ -906,7 +884,7 @@ export const UpdateNamespaceTableMaintenanceConfigResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateNamespaceTableMaintenanceConfigResponse>;
+  ) as unknown as Schema.Codec<UpdateNamespaceTableMaintenanceConfigResponse>;
 
 export type UpdateNamespaceTableMaintenanceConfigError =
   | DefaultErrors
@@ -946,7 +924,7 @@ export const GetR2DataCatalogRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetR2DataCatalogRequest>;
+  ) as unknown as Schema.Codec<GetR2DataCatalogRequest>;
 
 export interface GetR2DataCatalogResponse {
   /** Use this to uniquely identify the catalog. */
@@ -991,55 +969,7 @@ export const GetR2DataCatalogResponse =
         ]),
       ),
       maintenanceConfig: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            compaction: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  state: Schema.Union([
-                    Schema.Literals(["enabled", "disabled"]),
-                    Schema.String,
-                  ]),
-                  targetSizeMb: Schema.Union([
-                    Schema.Literals(["64", "128", "256", "512"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    state: "state",
-                    targetSizeMb: "target_size_mb",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-            snapshotExpiration: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  maxSnapshotAge: Schema.String,
-                  minSnapshotsToKeep: Schema.Number,
-                  state: Schema.Union([
-                    Schema.Literals(["enabled", "disabled"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    maxSnapshotAge: "max_snapshot_age",
-                    minSnapshotsToKeep: "min_snapshots_to_keep",
-                    state: "state",
-                  }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              compaction: "compaction",
-              snapshotExpiration: "snapshot_expiration",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([MaintenanceConfig, Schema.Null]),
       ),
     })
       .pipe(
@@ -1053,7 +983,7 @@ export const GetR2DataCatalogResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetR2DataCatalogResponse>;
+  ) as unknown as Schema.Codec<GetR2DataCatalogResponse>;
 
 export type GetR2DataCatalogError =
   | DefaultErrors
@@ -1085,7 +1015,7 @@ export const ListR2DataCatalogsRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/accounts/{account_id}/r2-catalog" }),
     ),
-  ) as unknown as Schema.Schema<ListR2DataCatalogsRequest>;
+  ) as unknown as Schema.Codec<ListR2DataCatalogsRequest>;
 
 export interface ListR2DataCatalogsResponse {
   /** Lists catalogs in the account. */
@@ -1112,86 +1042,9 @@ export interface ListR2DataCatalogsResponse {
 export const ListR2DataCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      warehouses: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          bucket: Schema.String,
-          name: Schema.String,
-          status: Schema.Union([
-            Schema.Literals(["active", "inactive"]),
-            Schema.String,
-          ]),
-          credentialStatus: Schema.optional(
-            Schema.Union([
-              Schema.Literal("present"),
-              Schema.Literal("absent"),
-              Schema.Null,
-            ]),
-          ),
-          maintenanceConfig: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                compaction: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      state: Schema.Union([
-                        Schema.Literals(["enabled", "disabled"]),
-                        Schema.String,
-                      ]),
-                      targetSizeMb: Schema.Union([
-                        Schema.Literals(["64", "128", "256", "512"]),
-                        Schema.String,
-                      ]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        state: "state",
-                        targetSizeMb: "target_size_mb",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                snapshotExpiration: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      maxSnapshotAge: Schema.String,
-                      minSnapshotsToKeep: Schema.Number,
-                      state: Schema.Union([
-                        Schema.Literals(["enabled", "disabled"]),
-                        Schema.String,
-                      ]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        maxSnapshotAge: "max_snapshot_age",
-                        minSnapshotsToKeep: "min_snapshots_to_keep",
-                        state: "state",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  compaction: "compaction",
-                  snapshotExpiration: "snapshot_expiration",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            bucket: "bucket",
-            name: "name",
-            status: "status",
-            credentialStatus: "credential_status",
-            maintenanceConfig: "maintenance_config",
-          }),
-        ),
-      ),
+      warehouses: Schema.Array(Warehouse),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListR2DataCatalogsResponse>;
+  ) as unknown as Schema.Codec<ListR2DataCatalogsResponse>;
 
 export type ListR2DataCatalogsError = DefaultErrors | InvalidRoute;
 
@@ -1223,7 +1076,7 @@ export const EnableR2DataCatalogRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/enable",
       }),
     ),
-  ) as unknown as Schema.Schema<EnableR2DataCatalogRequest>;
+  ) as unknown as Schema.Codec<EnableR2DataCatalogRequest>;
 
 export interface EnableR2DataCatalogResponse {
   /** Use this to uniquely identify the activated catalog. */
@@ -1238,7 +1091,7 @@ export const EnableR2DataCatalogResponse =
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       name: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<EnableR2DataCatalogResponse>;
+  ) as unknown as Schema.Codec<EnableR2DataCatalogResponse>;
 
 export type EnableR2DataCatalogError =
   | DefaultErrors
@@ -1273,14 +1126,14 @@ export const DisableR2DataCatalogRequest =
         path: "/accounts/{account_id}/r2-catalog/{bucketName}/disable",
       }),
     ),
-  ) as unknown as Schema.Schema<DisableR2DataCatalogRequest>;
+  ) as unknown as Schema.Codec<DisableR2DataCatalogRequest>;
 
 export type DisableR2DataCatalogResponse = unknown;
 
 export const DisableR2DataCatalogResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
-  ) as unknown as Schema.Schema<DisableR2DataCatalogResponse>;
+  ) as unknown as Schema.Codec<DisableR2DataCatalogResponse>;
 
 export type DisableR2DataCatalogError =
   | DefaultErrors

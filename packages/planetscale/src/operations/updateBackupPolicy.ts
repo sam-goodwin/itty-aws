@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateBackupPolicyInput {
+  id: string;
+  organization: string;
+  database: string;
+  name?: string;
+  target?: "production" | "development";
+  retention_value?: number;
+  retention_unit?: "hour" | "day" | "week" | "month" | "year";
+  frequency_value?: number;
+  frequency_unit?: "hour" | "day" | "week" | "month";
+  schedule_time?: string;
+  schedule_day?: number;
+  schedule_week?: number;
+}
 export const UpdateBackupPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -27,10 +41,27 @@ export const UpdateBackupPolicyInput =
       method: "PATCH",
       path: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
     }),
-  );
-export type UpdateBackupPolicyInput = typeof UpdateBackupPolicyInput.Type;
+  ) as unknown as Schema.Codec<UpdateBackupPolicyInput>;
 
 // Output Schema
+export interface UpdateBackupPolicyOutput {
+  id: string;
+  display_name: string;
+  name: string;
+  target: "production" | "development";
+  retention_value: number;
+  retention_unit: string;
+  frequency_value: number;
+  frequency_unit: string;
+  schedule_time: string;
+  schedule_day: number | null;
+  schedule_week: number | null;
+  created_at: string;
+  updated_at: string;
+  last_ran_at: string | null;
+  next_run_at: string | null;
+  required: boolean;
+}
 export const UpdateBackupPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -49,8 +80,7 @@ export const UpdateBackupPolicyOutput =
     last_ran_at: Schema.NullOr(Schema.String),
     next_run_at: Schema.NullOr(Schema.String),
     required: Schema.Boolean,
-  });
-export type UpdateBackupPolicyOutput = typeof UpdateBackupPolicyOutput.Type;
+  }) as unknown as Schema.Codec<UpdateBackupPolicyOutput>;
 
 // The operation
 /**

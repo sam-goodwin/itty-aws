@@ -1,23 +1,26 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsViewsDestroyInput {
+  project_id: string;
+  short_id: string;
+}
 export const LogsViewsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   short_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "/api/environments/{project_id}/logs/views/{short_id}/",
+    path: "/api/projects/{project_id}/logs/views/{short_id}/",
   }),
-);
-export type LogsViewsDestroyInput = typeof LogsViewsDestroyInput.Type;
+) as unknown as Schema.Codec<LogsViewsDestroyInput>;
 
 // Output Schema
-export const LogsViewsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type LogsViewsDestroyOutput = typeof LogsViewsDestroyOutput.Type;
+export type LogsViewsDestroyOutput = void;
+export const LogsViewsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LogsViewsDestroyOutput>;
 
 // The operation
 /**
@@ -27,5 +30,4 @@ export type LogsViewsDestroyOutput = typeof LogsViewsDestroyOutput.Type;
 export const logsViewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: LogsViewsDestroyInput,
   outputSchema: LogsViewsDestroyOutput,
-  errors: [Forbidden, NotFound] as const,
 }));

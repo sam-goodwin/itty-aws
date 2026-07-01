@@ -4,11 +4,30 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DnsForwardingRulesetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  properties: {
+    dnsResolverOutboundEndpoints: { id: string }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsForwardingRulesetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -41,11 +60,22 @@ export const DnsForwardingRulesetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsCreateOrUpdateInput =
-  typeof DnsForwardingRulesetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsForwardingRulesetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -65,9 +95,7 @@ export const DnsForwardingRulesetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsForwardingRulesetsCreateOrUpdateOutput =
-  typeof DnsForwardingRulesetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -86,6 +114,11 @@ export const DnsForwardingRulesetsCreateOrUpdate =
     outputSchema: DnsForwardingRulesetsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DnsForwardingRulesetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+}
 export const DnsForwardingRulesetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -97,15 +130,12 @@ export const DnsForwardingRulesetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsDeleteInput =
-  typeof DnsForwardingRulesetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsDeleteInput>;
 
 // Output Schema
+export type DnsForwardingRulesetsDeleteOutput = void;
 export const DnsForwardingRulesetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsForwardingRulesetsDeleteOutput =
-  typeof DnsForwardingRulesetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsForwardingRulesetsDeleteOutput>;
 
 // The operation
 /**
@@ -124,6 +154,11 @@ export const DnsForwardingRulesetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsForwardingRulesetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+}
 export const DnsForwardingRulesetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -135,11 +170,22 @@ export const DnsForwardingRulesetsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsGetInput =
-  typeof DnsForwardingRulesetsGetInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsGetInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsForwardingRulesetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -159,9 +205,7 @@ export const DnsForwardingRulesetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsForwardingRulesetsGetOutput =
-  typeof DnsForwardingRulesetsGetOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsGetOutput>;
 
 // The operation
 /**
@@ -179,6 +223,10 @@ export const DnsForwardingRulesetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsForwardingRulesetsListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DnsForwardingRulesetsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -189,11 +237,25 @@ export const DnsForwardingRulesetsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsListInput =
-  typeof DnsForwardingRulesetsListInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsListInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsForwardingRulesetsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -228,9 +290,7 @@ export const DnsForwardingRulesetsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsForwardingRulesetsListOutput =
-  typeof DnsForwardingRulesetsListOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsListOutput>;
 
 // The operation
 /**
@@ -247,6 +307,11 @@ export const DnsForwardingRulesetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsForwardingRulesetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DnsForwardingRulesetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -258,11 +323,25 @@ export const DnsForwardingRulesetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsListByResourceGroupInput =
-  typeof DnsForwardingRulesetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsListByResourceGroupInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsForwardingRulesetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -297,9 +376,7 @@ export const DnsForwardingRulesetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsForwardingRulesetsListByResourceGroupOutput =
-  typeof DnsForwardingRulesetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -316,6 +393,12 @@ export const DnsForwardingRulesetsListByResourceGroup =
     outputSchema: DnsForwardingRulesetsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DnsForwardingRulesetsListByVirtualNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  $top?: number;
+}
 export const DnsForwardingRulesetsListByVirtualNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -328,11 +411,16 @@ export const DnsForwardingRulesetsListByVirtualNetworkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsForwardingRulesets",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsListByVirtualNetworkInput =
-  typeof DnsForwardingRulesetsListByVirtualNetworkInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsListByVirtualNetworkInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsListByVirtualNetworkOutput {
+  value: {
+    id?: string;
+    properties?: { virtualNetworkLink?: { id: string } };
+  }[];
+  nextLink?: string;
+}
 export const DnsForwardingRulesetsListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -350,9 +438,7 @@ export const DnsForwardingRulesetsListByVirtualNetworkOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsForwardingRulesetsListByVirtualNetworkOutput =
-  typeof DnsForwardingRulesetsListByVirtualNetworkOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsListByVirtualNetworkOutput>;
 
 // The operation
 /**
@@ -370,6 +456,13 @@ export const DnsForwardingRulesetsListByVirtualNetwork =
     outputSchema: DnsForwardingRulesetsListByVirtualNetworkOutput,
   }));
 // Input Schema
+export interface DnsForwardingRulesetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  dnsResolverOutboundEndpoints?: { id: string }[];
+  tags?: Record<string, string>;
+}
 export const DnsForwardingRulesetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -389,11 +482,22 @@ export const DnsForwardingRulesetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsForwardingRulesetsUpdateInput =
-  typeof DnsForwardingRulesetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsForwardingRulesetsUpdateInput>;
 
 // Output Schema
+export interface DnsForwardingRulesetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsForwardingRulesetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -413,9 +517,7 @@ export const DnsForwardingRulesetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsForwardingRulesetsUpdateOutput =
-  typeof DnsForwardingRulesetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsForwardingRulesetsUpdateOutput>;
 
 // The operation
 /**
@@ -434,6 +536,12 @@ export const DnsForwardingRulesetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverDomainListsBulkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverDomainListName: string;
+  properties: { storageUrl: string; action: "Upload" | "Download" };
+}
 export const DnsResolverDomainListsBulkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -449,11 +557,22 @@ export const DnsResolverDomainListsBulkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsBulkInput =
-  typeof DnsResolverDomainListsBulkInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsBulkInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsBulkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverDomainListsBulkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -473,9 +592,7 @@ export const DnsResolverDomainListsBulkOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverDomainListsBulkOutput =
-  typeof DnsResolverDomainListsBulkOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsBulkOutput>;
 
 // The operation
 /**
@@ -495,6 +612,26 @@ export const DnsResolverDomainListsBulk = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverDomainListsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverDomainListName: string;
+  properties?: {
+    domains?: string[];
+    domainsUrl?: string;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsResolverDomainListsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -526,11 +663,22 @@ export const DnsResolverDomainListsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsCreateOrUpdateInput =
-  typeof DnsResolverDomainListsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverDomainListsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -550,9 +698,7 @@ export const DnsResolverDomainListsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverDomainListsCreateOrUpdateOutput =
-  typeof DnsResolverDomainListsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -571,6 +717,11 @@ export const DnsResolverDomainListsCreateOrUpdate =
     outputSchema: DnsResolverDomainListsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DnsResolverDomainListsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverDomainListName: string;
+}
 export const DnsResolverDomainListsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -582,15 +733,12 @@ export const DnsResolverDomainListsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsDeleteInput =
-  typeof DnsResolverDomainListsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsDeleteInput>;
 
 // Output Schema
+export type DnsResolverDomainListsDeleteOutput = void;
 export const DnsResolverDomainListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsResolverDomainListsDeleteOutput =
-  typeof DnsResolverDomainListsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverDomainListsDeleteOutput>;
 
 // The operation
 /**
@@ -608,6 +756,11 @@ export const DnsResolverDomainListsDelete =
     outputSchema: DnsResolverDomainListsDeleteOutput,
   }));
 // Input Schema
+export interface DnsResolverDomainListsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverDomainListName: string;
+}
 export const DnsResolverDomainListsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -619,11 +772,22 @@ export const DnsResolverDomainListsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsGetInput =
-  typeof DnsResolverDomainListsGetInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsGetInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverDomainListsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -643,9 +807,7 @@ export const DnsResolverDomainListsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverDomainListsGetOutput =
-  typeof DnsResolverDomainListsGetOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsGetOutput>;
 
 // The operation
 /**
@@ -663,6 +825,10 @@ export const DnsResolverDomainListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverDomainListsListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DnsResolverDomainListsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -673,11 +839,25 @@ export const DnsResolverDomainListsListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsListInput =
-  typeof DnsResolverDomainListsListInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsListInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolverDomainListsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -712,9 +892,7 @@ export const DnsResolverDomainListsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverDomainListsListOutput =
-  typeof DnsResolverDomainListsListOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsListOutput>;
 
 // The operation
 /**
@@ -731,6 +909,11 @@ export const DnsResolverDomainListsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverDomainListsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DnsResolverDomainListsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -742,11 +925,25 @@ export const DnsResolverDomainListsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsListByResourceGroupInput =
-  typeof DnsResolverDomainListsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsListByResourceGroupInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolverDomainListsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -781,9 +978,7 @@ export const DnsResolverDomainListsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverDomainListsListByResourceGroupOutput =
-  typeof DnsResolverDomainListsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -800,6 +995,13 @@ export const DnsResolverDomainListsListByResourceGroup =
     outputSchema: DnsResolverDomainListsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DnsResolverDomainListsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverDomainListName: string;
+  properties?: { domains?: string[] };
+  tags?: Record<string, string>;
+}
 export const DnsResolverDomainListsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -817,11 +1019,22 @@ export const DnsResolverDomainListsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverDomainListsUpdateInput =
-  typeof DnsResolverDomainListsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverDomainListsUpdateInput>;
 
 // Output Schema
+export interface DnsResolverDomainListsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverDomainListsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -841,9 +1054,7 @@ export const DnsResolverDomainListsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverDomainListsUpdateOutput =
-  typeof DnsResolverDomainListsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverDomainListsUpdateOutput>;
 
 // The operation
 /**
@@ -861,6 +1072,24 @@ export const DnsResolverDomainListsUpdate =
     outputSchema: DnsResolverDomainListsUpdateOutput,
   }));
 // Input Schema
+export interface DnsResolverPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsResolverPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -890,11 +1119,22 @@ export const DnsResolverPoliciesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesCreateOrUpdateInput =
-  typeof DnsResolverPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -914,9 +1154,7 @@ export const DnsResolverPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPoliciesCreateOrUpdateOutput =
-  typeof DnsResolverPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -935,6 +1173,11 @@ export const DnsResolverPoliciesCreateOrUpdate =
     outputSchema: DnsResolverPoliciesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DnsResolverPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+}
 export const DnsResolverPoliciesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -946,15 +1189,12 @@ export const DnsResolverPoliciesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesDeleteInput =
-  typeof DnsResolverPoliciesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesDeleteInput>;
 
 // Output Schema
+export type DnsResolverPoliciesDeleteOutput = void;
 export const DnsResolverPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsResolverPoliciesDeleteOutput =
-  typeof DnsResolverPoliciesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -973,6 +1213,11 @@ export const DnsResolverPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+}
 export const DnsResolverPoliciesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -984,11 +1229,22 @@ export const DnsResolverPoliciesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesGetInput =
-  typeof DnsResolverPoliciesGetInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesGetInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPoliciesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1008,9 +1264,7 @@ export const DnsResolverPoliciesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPoliciesGetOutput =
-  typeof DnsResolverPoliciesGetOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesGetOutput>;
 
 // The operation
 /**
@@ -1028,6 +1282,10 @@ export const DnsResolverPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverPoliciesListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DnsResolverPoliciesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1038,11 +1296,25 @@ export const DnsResolverPoliciesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverPolicies",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesListInput =
-  typeof DnsResolverPoliciesListInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesListInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolverPoliciesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1077,9 +1349,7 @@ export const DnsResolverPoliciesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverPoliciesListOutput =
-  typeof DnsResolverPoliciesListOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesListOutput>;
 
 // The operation
 /**
@@ -1096,6 +1366,11 @@ export const DnsResolverPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverPoliciesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DnsResolverPoliciesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1107,11 +1382,25 @@ export const DnsResolverPoliciesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesListByResourceGroupInput =
-  typeof DnsResolverPoliciesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesListByResourceGroupInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolverPoliciesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1146,9 +1435,7 @@ export const DnsResolverPoliciesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverPoliciesListByResourceGroupOutput =
-  typeof DnsResolverPoliciesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1165,6 +1452,11 @@ export const DnsResolverPoliciesListByResourceGroup =
     outputSchema: DnsResolverPoliciesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DnsResolverPoliciesListByVirtualNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+}
 export const DnsResolverPoliciesListByVirtualNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1176,11 +1468,13 @@ export const DnsResolverPoliciesListByVirtualNetworkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesListByVirtualNetworkInput =
-  typeof DnsResolverPoliciesListByVirtualNetworkInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesListByVirtualNetworkInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesListByVirtualNetworkOutput {
+  value: { id: string }[];
+  nextLink?: string;
+}
 export const DnsResolverPoliciesListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1189,9 +1483,7 @@ export const DnsResolverPoliciesListByVirtualNetworkOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverPoliciesListByVirtualNetworkOutput =
-  typeof DnsResolverPoliciesListByVirtualNetworkOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesListByVirtualNetworkOutput>;
 
 // The operation
 /**
@@ -1208,6 +1500,12 @@ export const DnsResolverPoliciesListByVirtualNetwork =
     outputSchema: DnsResolverPoliciesListByVirtualNetworkOutput,
   }));
 // Input Schema
+export interface DnsResolverPoliciesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  tags?: Record<string, string>;
+}
 export const DnsResolverPoliciesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1220,11 +1518,22 @@ export const DnsResolverPoliciesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPoliciesUpdateInput =
-  typeof DnsResolverPoliciesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPoliciesUpdateInput>;
 
 // Output Schema
+export interface DnsResolverPoliciesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPoliciesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1244,9 +1553,7 @@ export const DnsResolverPoliciesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPoliciesUpdateOutput =
-  typeof DnsResolverPoliciesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPoliciesUpdateOutput>;
 
 // The operation
 /**
@@ -1265,6 +1572,25 @@ export const DnsResolverPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsResolverPolicyVirtualNetworkLinkName: string;
+  properties: {
+    virtualNetwork: { id: string };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1295,11 +1621,22 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
-  typeof DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1319,9 +1656,7 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
-  typeof DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1341,6 +1676,12 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate =
     outputSchema: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DnsResolverPolicyVirtualNetworkLinksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsResolverPolicyVirtualNetworkLinkName: string;
+}
 export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1353,15 +1694,12 @@ export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPolicyVirtualNetworkLinksDeleteInput =
-  typeof DnsResolverPolicyVirtualNetworkLinksDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksDeleteInput>;
 
 // Output Schema
+export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput = void;
 export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
-  typeof DnsResolverPolicyVirtualNetworkLinksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -1380,6 +1718,12 @@ export const DnsResolverPolicyVirtualNetworkLinksDelete =
     outputSchema: DnsResolverPolicyVirtualNetworkLinksDeleteOutput,
   }));
 // Input Schema
+export interface DnsResolverPolicyVirtualNetworkLinksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsResolverPolicyVirtualNetworkLinkName: string;
+}
 export const DnsResolverPolicyVirtualNetworkLinksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1392,11 +1736,22 @@ export const DnsResolverPolicyVirtualNetworkLinksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPolicyVirtualNetworkLinksGetInput =
-  typeof DnsResolverPolicyVirtualNetworkLinksGetInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksGetInput>;
 
 // Output Schema
+export interface DnsResolverPolicyVirtualNetworkLinksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1416,9 +1771,7 @@ export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPolicyVirtualNetworkLinksGetOutput =
-  typeof DnsResolverPolicyVirtualNetworkLinksGetOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksGetOutput>;
 
 // The operation
 /**
@@ -1436,6 +1789,12 @@ export const DnsResolverPolicyVirtualNetworkLinksGet =
     outputSchema: DnsResolverPolicyVirtualNetworkLinksGetOutput,
   }));
 // Input Schema
+export interface DnsResolverPolicyVirtualNetworkLinksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  $top?: number;
+}
 export const DnsResolverPolicyVirtualNetworkLinksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1448,11 +1807,25 @@ export const DnsResolverPolicyVirtualNetworkLinksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPolicyVirtualNetworkLinksListInput =
-  typeof DnsResolverPolicyVirtualNetworkLinksListInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksListInput>;
 
 // Output Schema
+export interface DnsResolverPolicyVirtualNetworkLinksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolverPolicyVirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1487,9 +1860,7 @@ export const DnsResolverPolicyVirtualNetworkLinksListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolverPolicyVirtualNetworkLinksListOutput =
-  typeof DnsResolverPolicyVirtualNetworkLinksListOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksListOutput>;
 
 // The operation
 /**
@@ -1507,6 +1878,13 @@ export const DnsResolverPolicyVirtualNetworkLinksList =
     outputSchema: DnsResolverPolicyVirtualNetworkLinksListOutput,
   }));
 // Input Schema
+export interface DnsResolverPolicyVirtualNetworkLinksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsResolverPolicyVirtualNetworkLinkName: string;
+  tags?: Record<string, string>;
+}
 export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1520,11 +1898,22 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolverPolicyVirtualNetworkLinksUpdateInput =
-  typeof DnsResolverPolicyVirtualNetworkLinksUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksUpdateInput>;
 
 // Output Schema
+export interface DnsResolverPolicyVirtualNetworkLinksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1544,9 +1933,7 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
-  typeof DnsResolverPolicyVirtualNetworkLinksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksUpdateOutput>;
 
 // The operation
 /**
@@ -1565,6 +1952,26 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdate =
     outputSchema: DnsResolverPolicyVirtualNetworkLinksUpdateOutput,
   }));
 // Input Schema
+export interface DnsResolversCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  properties: {
+    virtualNetwork: { id: string };
+    dnsResolverState?: "Connected" | "Disconnected";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsResolversCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1598,11 +2005,22 @@ export const DnsResolversCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolversCreateOrUpdateInput =
-  typeof DnsResolversCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolversCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsResolversCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolversCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1622,9 +2040,7 @@ export const DnsResolversCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolversCreateOrUpdateOutput =
-  typeof DnsResolversCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolversCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1644,6 +2060,11 @@ export const DnsResolversCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsResolversDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+}
 export const DnsResolversDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1655,12 +2076,12 @@ export const DnsResolversDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolversDeleteInput = typeof DnsResolversDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsResolversDeleteInput>;
 
 // Output Schema
-export const DnsResolversDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsResolversDeleteOutput = typeof DnsResolversDeleteOutput.Type;
+export type DnsResolversDeleteOutput = void;
+export const DnsResolversDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolversDeleteOutput>;
 
 // The operation
 /**
@@ -1677,6 +2098,11 @@ export const DnsResolversDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DnsResolversDeleteOutput,
 }));
 // Input Schema
+export interface DnsResolversGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+}
 export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1687,10 +2113,22 @@ export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
     apiVersion: "2025-05-01",
   }),
-);
-export type DnsResolversGetInput = typeof DnsResolversGetInput.Type;
+) as unknown as Schema.Codec<DnsResolversGetInput>;
 
 // Output Schema
+export interface DnsResolversGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1709,8 +2147,7 @@ export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DnsResolversGetOutput = typeof DnsResolversGetOutput.Type;
+}) as unknown as Schema.Codec<DnsResolversGetOutput>;
 
 // The operation
 /**
@@ -1726,6 +2163,10 @@ export const DnsResolversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DnsResolversGetOutput,
 }));
 // Input Schema
+export interface DnsResolversListInput {
+  subscriptionId: string;
+  $top?: number;
+}
 export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
@@ -1735,10 +2176,25 @@ export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolvers",
     apiVersion: "2025-05-01",
   }),
-);
-export type DnsResolversListInput = typeof DnsResolversListInput.Type;
+) as unknown as Schema.Codec<DnsResolversListInput>;
 
 // Output Schema
+export interface DnsResolversListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -1774,8 +2230,7 @@ export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type DnsResolversListOutput = typeof DnsResolversListOutput.Type;
+) as unknown as Schema.Codec<DnsResolversListOutput>;
 
 // The operation
 /**
@@ -1790,6 +2245,11 @@ export const DnsResolversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DnsResolversListOutput,
 }));
 // Input Schema
+export interface DnsResolversListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $top?: number;
+}
 export const DnsResolversListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1801,11 +2261,25 @@ export const DnsResolversListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolversListByResourceGroupInput =
-  typeof DnsResolversListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DnsResolversListByResourceGroupInput>;
 
 // Output Schema
+export interface DnsResolversListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsResolversListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1840,9 +2314,7 @@ export const DnsResolversListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolversListByResourceGroupOutput =
-  typeof DnsResolversListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolversListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1859,6 +2331,12 @@ export const DnsResolversListByResourceGroup =
     outputSchema: DnsResolversListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DnsResolversListByVirtualNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  $top?: number;
+}
 export const DnsResolversListByVirtualNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1871,11 +2349,13 @@ export const DnsResolversListByVirtualNetworkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolversListByVirtualNetworkInput =
-  typeof DnsResolversListByVirtualNetworkInput.Type;
+  ) as unknown as Schema.Codec<DnsResolversListByVirtualNetworkInput>;
 
 // Output Schema
+export interface DnsResolversListByVirtualNetworkOutput {
+  value: { id: string }[];
+  nextLink?: string;
+}
 export const DnsResolversListByVirtualNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1884,9 +2364,7 @@ export const DnsResolversListByVirtualNetworkOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsResolversListByVirtualNetworkOutput =
-  typeof DnsResolversListByVirtualNetworkOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolversListByVirtualNetworkOutput>;
 
 // The operation
 /**
@@ -1904,6 +2382,12 @@ export const DnsResolversListByVirtualNetwork =
     outputSchema: DnsResolversListByVirtualNetworkOutput,
   }));
 // Input Schema
+export interface DnsResolversUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  tags?: Record<string, string>;
+}
 export const DnsResolversUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1916,10 +2400,22 @@ export const DnsResolversUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsResolversUpdateInput = typeof DnsResolversUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsResolversUpdateInput>;
 
 // Output Schema
+export interface DnsResolversUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsResolversUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1939,8 +2435,7 @@ export const DnsResolversUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsResolversUpdateOutput = typeof DnsResolversUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsResolversUpdateOutput>;
 
 // The operation
 /**
@@ -1957,6 +2452,28 @@ export const DnsResolversUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DnsResolversUpdateOutput,
 }));
 // Input Schema
+export interface DnsSecurityRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsSecurityRuleName: string;
+  properties: {
+    priority: number;
+    action: { actionType?: "Allow" | "Alert" | "Block" };
+    dnsResolverDomainLists: { id: string }[];
+    dnsSecurityRuleState?: "Enabled" | "Disabled";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DnsSecurityRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1998,11 +2515,22 @@ export const DnsSecurityRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsSecurityRulesCreateOrUpdateInput =
-  typeof DnsSecurityRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsSecurityRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DnsSecurityRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsSecurityRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2022,9 +2550,7 @@ export const DnsSecurityRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsSecurityRulesCreateOrUpdateOutput =
-  typeof DnsSecurityRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsSecurityRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2044,6 +2570,12 @@ export const DnsSecurityRulesCreateOrUpdate =
     outputSchema: DnsSecurityRulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DnsSecurityRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsSecurityRuleName: string;
+}
 export const DnsSecurityRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2056,15 +2588,12 @@ export const DnsSecurityRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsSecurityRulesDeleteInput =
-  typeof DnsSecurityRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DnsSecurityRulesDeleteInput>;
 
 // Output Schema
+export type DnsSecurityRulesDeleteOutput = void;
 export const DnsSecurityRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DnsSecurityRulesDeleteOutput =
-  typeof DnsSecurityRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsSecurityRulesDeleteOutput>;
 
 // The operation
 /**
@@ -2084,6 +2613,12 @@ export const DnsSecurityRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsSecurityRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsSecurityRuleName: string;
+}
 export const DnsSecurityRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2096,10 +2631,22 @@ export const DnsSecurityRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsSecurityRulesGetInput = typeof DnsSecurityRulesGetInput.Type;
+  ) as unknown as Schema.Codec<DnsSecurityRulesGetInput>;
 
 // Output Schema
+export interface DnsSecurityRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsSecurityRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2119,8 +2666,7 @@ export const DnsSecurityRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsSecurityRulesGetOutput = typeof DnsSecurityRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<DnsSecurityRulesGetOutput>;
 
 // The operation
 /**
@@ -2137,6 +2683,12 @@ export const DnsSecurityRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DnsSecurityRulesGetOutput,
 }));
 // Input Schema
+export interface DnsSecurityRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  $top?: number;
+}
 export const DnsSecurityRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2149,10 +2701,25 @@ export const DnsSecurityRulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsSecurityRulesListInput = typeof DnsSecurityRulesListInput.Type;
+  ) as unknown as Schema.Codec<DnsSecurityRulesListInput>;
 
 // Output Schema
+export interface DnsSecurityRulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DnsSecurityRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2187,8 +2754,7 @@ export const DnsSecurityRulesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DnsSecurityRulesListOutput = typeof DnsSecurityRulesListOutput.Type;
+  }) as unknown as Schema.Codec<DnsSecurityRulesListOutput>;
 
 // The operation
 /**
@@ -2207,6 +2773,19 @@ export const DnsSecurityRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DnsSecurityRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverPolicyName: string;
+  dnsSecurityRuleName: string;
+  properties?: {
+    action?: { actionType?: "Allow" | "Alert" | "Block" };
+    dnsResolverDomainLists?: { id: string }[];
+    dnsSecurityRuleState?: "Enabled" | "Disabled";
+    priority?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const DnsSecurityRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2242,11 +2821,22 @@ export const DnsSecurityRulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type DnsSecurityRulesUpdateInput =
-  typeof DnsSecurityRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DnsSecurityRulesUpdateInput>;
 
 // Output Schema
+export interface DnsSecurityRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DnsSecurityRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2266,9 +2856,7 @@ export const DnsSecurityRulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DnsSecurityRulesUpdateOutput =
-  typeof DnsSecurityRulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DnsSecurityRulesUpdateOutput>;
 
 // The operation
 /**
@@ -2288,6 +2876,26 @@ export const DnsSecurityRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ForwardingRulesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  forwardingRuleName: string;
+  properties: {
+    domainName: string;
+    targetDnsServers: { ipAddress: string; port?: number }[];
+    metadata?: Record<string, string>;
+    forwardingRuleState?: "Enabled" | "Disabled";
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  etag?: string;
+}
 export const ForwardingRulesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2324,11 +2932,22 @@ export const ForwardingRulesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ForwardingRulesCreateOrUpdateInput =
-  typeof ForwardingRulesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ForwardingRulesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ForwardingRulesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ForwardingRulesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2348,9 +2967,7 @@ export const ForwardingRulesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ForwardingRulesCreateOrUpdateOutput =
-  typeof ForwardingRulesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ForwardingRulesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2370,6 +2987,12 @@ export const ForwardingRulesCreateOrUpdate =
     outputSchema: ForwardingRulesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ForwardingRulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  forwardingRuleName: string;
+}
 export const ForwardingRulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2382,14 +3005,12 @@ export const ForwardingRulesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ForwardingRulesDeleteInput = typeof ForwardingRulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ForwardingRulesDeleteInput>;
 
 // Output Schema
+export type ForwardingRulesDeleteOutput = void;
 export const ForwardingRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ForwardingRulesDeleteOutput =
-  typeof ForwardingRulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ForwardingRulesDeleteOutput>;
 
 // The operation
 /**
@@ -2409,6 +3030,12 @@ export const ForwardingRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ForwardingRulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  forwardingRuleName: string;
+}
 export const ForwardingRulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2421,10 +3048,22 @@ export const ForwardingRulesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ForwardingRulesGetInput = typeof ForwardingRulesGetInput.Type;
+  ) as unknown as Schema.Codec<ForwardingRulesGetInput>;
 
 // Output Schema
+export interface ForwardingRulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ForwardingRulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2444,8 +3083,7 @@ export const ForwardingRulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ForwardingRulesGetOutput = typeof ForwardingRulesGetOutput.Type;
+  }) as unknown as Schema.Codec<ForwardingRulesGetOutput>;
 
 // The operation
 /**
@@ -2462,6 +3100,12 @@ export const ForwardingRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ForwardingRulesGetOutput,
 }));
 // Input Schema
+export interface ForwardingRulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  $top?: number;
+}
 export const ForwardingRulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2474,10 +3118,25 @@ export const ForwardingRulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ForwardingRulesListInput = typeof ForwardingRulesListInput.Type;
+  ) as unknown as Schema.Codec<ForwardingRulesListInput>;
 
 // Output Schema
+export interface ForwardingRulesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ForwardingRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2512,8 +3171,7 @@ export const ForwardingRulesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ForwardingRulesListOutput = typeof ForwardingRulesListOutput.Type;
+  }) as unknown as Schema.Codec<ForwardingRulesListOutput>;
 
 // The operation
 /**
@@ -2530,6 +3188,17 @@ export const ForwardingRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ForwardingRulesListOutput,
 }));
 // Input Schema
+export interface ForwardingRulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  forwardingRuleName: string;
+  properties?: {
+    targetDnsServers?: { ipAddress: string; port?: number }[];
+    metadata?: Record<string, string>;
+    forwardingRuleState?: "Enabled" | "Disabled";
+  };
+}
 export const ForwardingRulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2558,10 +3227,22 @@ export const ForwardingRulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type ForwardingRulesUpdateInput = typeof ForwardingRulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ForwardingRulesUpdateInput>;
 
 // Output Schema
+export interface ForwardingRulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ForwardingRulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2581,9 +3262,7 @@ export const ForwardingRulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ForwardingRulesUpdateOutput =
-  typeof ForwardingRulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ForwardingRulesUpdateOutput>;
 
 // The operation
 /**
@@ -2603,6 +3282,30 @@ export const ForwardingRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InboundEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  inboundEndpointName: string;
+  properties: {
+    ipConfigurations: {
+      subnet: { id: string };
+      privateIpAddress?: string;
+      privateIpAllocationMethod?: "Static" | "Dynamic";
+    }[];
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const InboundEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2642,11 +3345,22 @@ export const InboundEndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type InboundEndpointsCreateOrUpdateInput =
-  typeof InboundEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<InboundEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface InboundEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InboundEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2666,9 +3380,7 @@ export const InboundEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InboundEndpointsCreateOrUpdateOutput =
-  typeof InboundEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InboundEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2688,6 +3400,12 @@ export const InboundEndpointsCreateOrUpdate =
     outputSchema: InboundEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface InboundEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  inboundEndpointName: string;
+}
 export const InboundEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2700,15 +3418,12 @@ export const InboundEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type InboundEndpointsDeleteInput =
-  typeof InboundEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<InboundEndpointsDeleteInput>;
 
 // Output Schema
+export type InboundEndpointsDeleteOutput = void;
 export const InboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InboundEndpointsDeleteOutput =
-  typeof InboundEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InboundEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -2728,6 +3443,12 @@ export const InboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InboundEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  inboundEndpointName: string;
+}
 export const InboundEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2740,10 +3461,22 @@ export const InboundEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type InboundEndpointsGetInput = typeof InboundEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<InboundEndpointsGetInput>;
 
 // Output Schema
+export interface InboundEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InboundEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2763,8 +3496,7 @@ export const InboundEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InboundEndpointsGetOutput = typeof InboundEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<InboundEndpointsGetOutput>;
 
 // The operation
 /**
@@ -2781,6 +3513,12 @@ export const InboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InboundEndpointsGetOutput,
 }));
 // Input Schema
+export interface InboundEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  $top?: number;
+}
 export const InboundEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2793,10 +3531,25 @@ export const InboundEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
       apiVersion: "2025-05-01",
     }),
-  );
-export type InboundEndpointsListInput = typeof InboundEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<InboundEndpointsListInput>;
 
 // Output Schema
+export interface InboundEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InboundEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2831,8 +3584,7 @@ export const InboundEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InboundEndpointsListOutput = typeof InboundEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<InboundEndpointsListOutput>;
 
 // The operation
 /**
@@ -2851,6 +3603,13 @@ export const InboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InboundEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  inboundEndpointName: string;
+  tags?: Record<string, string>;
+}
 export const InboundEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2864,11 +3623,22 @@ export const InboundEndpointsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type InboundEndpointsUpdateInput =
-  typeof InboundEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<InboundEndpointsUpdateInput>;
 
 // Output Schema
+export interface InboundEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InboundEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2888,9 +3658,7 @@ export const InboundEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InboundEndpointsUpdateOutput =
-  typeof InboundEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<InboundEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -2910,6 +3678,26 @@ export const InboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OutboundEndpointsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  outboundEndpointName: string;
+  properties: {
+    subnet: { id: string };
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    resourceGuid?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OutboundEndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2941,11 +3729,22 @@ export const OutboundEndpointsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type OutboundEndpointsCreateOrUpdateInput =
-  typeof OutboundEndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OutboundEndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface OutboundEndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundEndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2965,9 +3764,7 @@ export const OutboundEndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OutboundEndpointsCreateOrUpdateOutput =
-  typeof OutboundEndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OutboundEndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2987,6 +3784,12 @@ export const OutboundEndpointsCreateOrUpdate =
     outputSchema: OutboundEndpointsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface OutboundEndpointsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  outboundEndpointName: string;
+}
 export const OutboundEndpointsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2999,15 +3802,12 @@ export const OutboundEndpointsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type OutboundEndpointsDeleteInput =
-  typeof OutboundEndpointsDeleteInput.Type;
+  ) as unknown as Schema.Codec<OutboundEndpointsDeleteInput>;
 
 // Output Schema
+export type OutboundEndpointsDeleteOutput = void;
 export const OutboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OutboundEndpointsDeleteOutput =
-  typeof OutboundEndpointsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3027,6 +3827,12 @@ export const OutboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OutboundEndpointsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  outboundEndpointName: string;
+}
 export const OutboundEndpointsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3039,10 +3845,22 @@ export const OutboundEndpointsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type OutboundEndpointsGetInput = typeof OutboundEndpointsGetInput.Type;
+  ) as unknown as Schema.Codec<OutboundEndpointsGetInput>;
 
 // Output Schema
+export interface OutboundEndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundEndpointsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3062,8 +3880,7 @@ export const OutboundEndpointsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OutboundEndpointsGetOutput = typeof OutboundEndpointsGetOutput.Type;
+  }) as unknown as Schema.Codec<OutboundEndpointsGetOutput>;
 
 // The operation
 /**
@@ -3082,6 +3899,12 @@ export const OutboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OutboundEndpointsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  $top?: number;
+}
 export const OutboundEndpointsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3094,10 +3917,25 @@ export const OutboundEndpointsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
       apiVersion: "2025-05-01",
     }),
-  );
-export type OutboundEndpointsListInput = typeof OutboundEndpointsListInput.Type;
+  ) as unknown as Schema.Codec<OutboundEndpointsListInput>;
 
 // Output Schema
+export interface OutboundEndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OutboundEndpointsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3132,9 +3970,7 @@ export const OutboundEndpointsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OutboundEndpointsListOutput =
-  typeof OutboundEndpointsListOutput.Type;
+  }) as unknown as Schema.Codec<OutboundEndpointsListOutput>;
 
 // The operation
 /**
@@ -3153,6 +3989,13 @@ export const OutboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OutboundEndpointsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsResolverName: string;
+  outboundEndpointName: string;
+  tags?: Record<string, string>;
+}
 export const OutboundEndpointsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3166,11 +4009,22 @@ export const OutboundEndpointsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type OutboundEndpointsUpdateInput =
-  typeof OutboundEndpointsUpdateInput.Type;
+  ) as unknown as Schema.Codec<OutboundEndpointsUpdateInput>;
 
 // Output Schema
+export interface OutboundEndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundEndpointsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3190,9 +4044,7 @@ export const OutboundEndpointsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OutboundEndpointsUpdateOutput =
-  typeof OutboundEndpointsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OutboundEndpointsUpdateOutput>;
 
 // The operation
 /**
@@ -3212,6 +4064,24 @@ export const OutboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  virtualNetworkLinkName: string;
+  properties: {
+    virtualNetwork: { id: string };
+    metadata?: Record<string, string>;
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  etag?: string;
+}
 export const VirtualNetworkLinksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3241,11 +4111,22 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type VirtualNetworkLinksCreateOrUpdateInput =
-  typeof VirtualNetworkLinksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3265,9 +4146,7 @@ export const VirtualNetworkLinksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksCreateOrUpdateOutput =
-  typeof VirtualNetworkLinksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3287,6 +4166,12 @@ export const VirtualNetworkLinksCreateOrUpdate =
     outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworkLinksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  virtualNetworkLinkName: string;
+}
 export const VirtualNetworkLinksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3299,15 +4184,12 @@ export const VirtualNetworkLinksDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type VirtualNetworkLinksDeleteInput =
-  typeof VirtualNetworkLinksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksDeleteInput>;
 
 // Output Schema
+export type VirtualNetworkLinksDeleteOutput = void;
 export const VirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualNetworkLinksDeleteOutput =
-  typeof VirtualNetworkLinksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -3327,6 +4209,12 @@ export const VirtualNetworkLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  virtualNetworkLinkName: string;
+}
 export const VirtualNetworkLinksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3339,11 +4227,22 @@ export const VirtualNetworkLinksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type VirtualNetworkLinksGetInput =
-  typeof VirtualNetworkLinksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksGetInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3363,9 +4262,7 @@ export const VirtualNetworkLinksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksGetOutput =
-  typeof VirtualNetworkLinksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksGetOutput>;
 
 // The operation
 /**
@@ -3384,6 +4281,12 @@ export const VirtualNetworkLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  $top?: number;
+}
 export const VirtualNetworkLinksListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3396,11 +4299,25 @@ export const VirtualNetworkLinksListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks",
       apiVersion: "2025-05-01",
     }),
-  );
-export type VirtualNetworkLinksListInput =
-  typeof VirtualNetworkLinksListInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksListInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworkLinksListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3435,9 +4352,7 @@ export const VirtualNetworkLinksListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworkLinksListOutput =
-  typeof VirtualNetworkLinksListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksListOutput>;
 
 // The operation
 /**
@@ -3456,6 +4371,13 @@ export const VirtualNetworkLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworkLinksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dnsForwardingRulesetName: string;
+  virtualNetworkLinkName: string;
+  properties?: { metadata?: Record<string, string> };
+}
 export const VirtualNetworkLinksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3473,11 +4395,22 @@ export const VirtualNetworkLinksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
     }),
-  );
-export type VirtualNetworkLinksUpdateInput =
-  typeof VirtualNetworkLinksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworkLinksUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworkLinksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworkLinksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3497,9 +4430,7 @@ export const VirtualNetworkLinksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworkLinksUpdateOutput =
-  typeof VirtualNetworkLinksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworkLinksUpdateOutput>;
 
 // The operation
 /**

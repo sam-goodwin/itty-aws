@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -21,6 +21,760 @@ const svc = T.Service({
 // ==========================================================================
 // Schemas
 // ==========================================================================
+
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+}
+
+export const Status: Schema.Codec<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).annotate({ identifier: "Status" });
+
+export interface SqlAclEntry {
+  /** The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`. */
+  expireTime?: string;
+  /** Input only. The time-to-leave of this access control entry. */
+  ttl?: string;
+  /** A label to identify this entry. */
+  label?: string;
+  /** The allowlisted value for the access control list. */
+  value?: string;
+}
+
+export const SqlAclEntry: Schema.Codec<SqlAclEntry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SqlAclEntry" });
+
+export interface SqlIpConfig {
+  /** The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`). */
+  authorizedNetworks?: ReadonlyArray<SqlAclEntry>;
+  /** Whether the instance is assigned a public IP address or not. */
+  enableIpv4?: boolean;
+  /** The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set. */
+  privateNetwork?: string;
+  /** Whether SSL connections over IP should be enforced or not. */
+  requireSsl?: boolean;
+}
+
+export const SqlIpConfig: Schema.Codec<SqlIpConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedNetworks: Schema.optional(Schema.Array(SqlAclEntry)),
+    enableIpv4: Schema.optional(Schema.Boolean),
+    privateNetwork: Schema.optional(Schema.String),
+    requireSsl: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SqlIpConfig" });
+
+export interface CloudSqlSettings {
+  /** The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`. */
+  userLabels?: Record<string, string>;
+  /** The storage capacity available to the database, in GB. The minimum (and default) size is 10GB. */
+  dataDiskSizeGb?: string;
+  /** Input only. Initial root password. */
+  rootPassword?: string;
+  /** The Google Cloud Platform zone where your Cloud SQL database instance is located. */
+  zone?: string;
+  /** The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled. */
+  ipConfig?: SqlIpConfig;
+  /** The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. */
+  storageAutoResizeLimit?: string;
+  /** Output only. Indicates If this connection profile root password is stored. */
+  rootPasswordSet?: boolean;
+  /** The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. */
+  databaseFlags?: Record<string, string>;
+  /** The database engine type and version. */
+  databaseVersion?:
+    | "SQL_DATABASE_VERSION_UNSPECIFIED"
+    | "MYSQL_5_6"
+    | "MYSQL_5_7"
+    | "MYSQL_8_0"
+    | (string & {});
+  /** The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives. */
+  activationPolicy?:
+    | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
+    | "ALWAYS"
+    | "NEVER"
+    | (string & {});
+  /** The type of storage: `PD_SSD` (default) or `PD_HDD`. */
+  dataDiskType?:
+    | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
+    | "PD_SSD"
+    | "PD_HDD"
+    | (string & {});
+  /** [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB. */
+  autoStorageIncrease?: boolean;
+  /** The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings). */
+  tier?: string;
+  /** The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID` */
+  sourceId?: string;
+}
+
+export const CloudSqlSettings: Schema.Codec<CloudSqlSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    dataDiskSizeGb: Schema.optional(Schema.String),
+    rootPassword: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    ipConfig: Schema.optional(SqlIpConfig),
+    storageAutoResizeLimit: Schema.optional(Schema.String),
+    rootPasswordSet: Schema.optional(Schema.Boolean),
+    databaseFlags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    databaseVersion: Schema.optional(Schema.String),
+    activationPolicy: Schema.optional(Schema.String),
+    dataDiskType: Schema.optional(Schema.String),
+    autoStorageIncrease: Schema.optional(Schema.Boolean),
+    tier: Schema.optional(Schema.String),
+    sourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlSettings" });
+
+export interface CloudSqlConnectionProfile {
+  /** Output only. The Cloud SQL database instance's public IP. */
+  publicIp?: string;
+  /** Output only. The Cloud SQL instance ID that this connection profile is associated with. */
+  cloudSqlId?: string;
+  /** Output only. The Cloud SQL database instance's private IP. */
+  privateIp?: string;
+  /** Immutable. Metadata used to create the destination Cloud SQL database. */
+  settings?: CloudSqlSettings;
+}
+
+export const CloudSqlConnectionProfile: Schema.Codec<CloudSqlConnectionProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicIp: Schema.optional(Schema.String),
+    cloudSqlId: Schema.optional(Schema.String),
+    privateIp: Schema.optional(Schema.String),
+    settings: Schema.optional(CloudSqlSettings),
+  }).annotate({ identifier: "CloudSqlConnectionProfile" });
+
+export interface SslConfig {
+  /** Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'. */
+  type?:
+    | "SSL_TYPE_UNSPECIFIED"
+    | "SERVER_ONLY"
+    | "SERVER_CLIENT"
+    | (string & {});
+  /** Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host. */
+  caCertificate?: string;
+  /** Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory. */
+  clientKey?: string;
+  /** Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory. */
+  clientCertificate?: string;
+}
+
+export const SslConfig: Schema.Codec<SslConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    caCertificate: Schema.optional(Schema.String),
+    clientKey: Schema.optional(Schema.String),
+    clientCertificate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SslConfig" });
+
+export interface MySqlConnectionProfile {
+  /** SSL configuration for the destination to connect to the source database. */
+  ssl?: SslConfig;
+  /** If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source. */
+  cloudSqlId?: string;
+  /** Required. The IP or hostname of the source MySQL database. */
+  host?: string;
+  /** Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service. */
+  username?: string;
+  /** Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service. */
+  password?: string;
+  /** Output only. Indicates If this connection profile password is stored. */
+  passwordSet?: boolean;
+  /** Required. The network port of the source MySQL database. */
+  port?: number;
+}
+
+export const MySqlConnectionProfile: Schema.Codec<MySqlConnectionProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ssl: Schema.optional(SslConfig),
+    cloudSqlId: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    passwordSet: Schema.optional(Schema.Boolean),
+    port: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "MySqlConnectionProfile" });
+
+export interface ConnectionProfile {
+  /** Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
+  updateTime?: string;
+  /** Output only. The error details in case of state FAILED. */
+  error?: Status;
+  /** The connection profile display name. */
+  displayName?: string;
+  /** The database provider. */
+  provider?:
+    | "DATABASE_PROVIDER_UNSPECIFIED"
+    | "CLOUDSQL"
+    | "RDS"
+    | (string & {});
+  /** The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`. */
+  labels?: Record<string, string>;
+  /** Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
+  createTime?: string;
+  /** A CloudSQL database connection profile. */
+  cloudsql?: CloudSqlConnectionProfile;
+  /** The current connection profile state (e.g. DRAFT, READY, or FAILED). */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "DRAFT"
+    | "CREATING"
+    | "READY"
+    | "UPDATING"
+    | "DELETING"
+    | "DELETED"
+    | "FAILED"
+    | (string & {});
+  /** The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}. */
+  name?: string;
+  /** A MySQL database connection profile. */
+  mysql?: MySqlConnectionProfile;
+}
+
+export const ConnectionProfile: Schema.Codec<ConnectionProfile> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    error: Schema.optional(Status),
+    displayName: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    cloudsql: Schema.optional(CloudSqlConnectionProfile),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    mysql: Schema.optional(MySqlConnectionProfile),
+  }).annotate({ identifier: "ConnectionProfile" });
+
+export interface AuditLogConfig {
+  /** The log type that this config enables. */
+  logType?:
+    | "LOG_TYPE_UNSPECIFIED"
+    | "ADMIN_READ"
+    | "DATA_WRITE"
+    | "DATA_READ"
+    | (string & {});
+  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
+  exemptedMembers?: ReadonlyArray<string>;
+}
+
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuditLogConfig" });
+
+export interface AuditConfig {
+  /** The configuration for logging of each type of permission. */
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
+  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
+  service?: string;
+}
+
+export const AuditConfig: Schema.Codec<AuditConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditConfig" });
+
+export interface Expr {
+  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
+  description?: string;
+  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
+  location?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
+}
+
+export const Expr: Schema.Codec<Expr> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Expr" });
+
+export interface Binding {
+  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
+  members?: ReadonlyArray<string>;
+  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
+  role?: string;
+  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  condition?: Expr;
+}
+
+export const Binding: Schema.Codec<Binding> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(Schema.String)),
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "Binding" });
+
+export interface Policy {
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
+  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
+  etag?: string;
+  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  version?: number;
+  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
+  bindings?: ReadonlyArray<Binding>;
+}
+
+export const Policy: Schema.Codec<Policy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+    etag: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+    bindings: Schema.optional(Schema.Array(Binding)),
+  }).annotate({ identifier: "Policy" });
+
+export interface PromoteMigrationJobRequest {}
+
+export const PromoteMigrationJobRequest: Schema.Codec<PromoteMigrationJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "PromoteMigrationJobRequest",
+  });
+
+export interface ResumeMigrationJobRequest {}
+
+export const ResumeMigrationJobRequest: Schema.Codec<ResumeMigrationJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "ResumeMigrationJobRequest",
+  });
+
+export interface RetryInfo {
+  /** Clients should wait at least this long between retrying the same request. */
+  retryDelay?: string;
+}
+
+export const RetryInfo: Schema.Codec<RetryInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retryDelay: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetryInfo" });
+
+export interface DatabaseType {
+  /** The database engine. */
+  engine?: "DATABASE_ENGINE_UNSPECIFIED" | "MYSQL" | (string & {});
+  /** The database provider. */
+  provider?:
+    | "DATABASE_PROVIDER_UNSPECIFIED"
+    | "CLOUDSQL"
+    | "RDS"
+    | (string & {});
+}
+
+export const DatabaseType: Schema.Codec<DatabaseType> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    engine: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseType" });
+
+export interface ReverseSshConnectivity {
+  /** Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
+  vmIp?: string;
+  /** Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
+  vmPort?: number;
+  /** The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
+  vm?: string;
+  /** The name of the VPC to peer with the Cloud SQL private network. */
+  vpc?: string;
+}
+
+export const ReverseSshConnectivity: Schema.Codec<ReverseSshConnectivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmIp: Schema.optional(Schema.String),
+    vmPort: Schema.optional(Schema.Number),
+    vm: Schema.optional(Schema.String),
+    vpc: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReverseSshConnectivity" });
+
+export interface StaticIpConnectivity {}
+
+export const StaticIpConnectivity: Schema.Codec<StaticIpConnectivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StaticIpConnectivity",
+  });
+
+export interface VpcPeeringConnectivity {
+  /** The name of the VPC network to peer with the Cloud SQL private network. */
+  vpc?: string;
+}
+
+export const VpcPeeringConnectivity: Schema.Codec<VpcPeeringConnectivity> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vpc: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VpcPeeringConnectivity" });
+
+export interface MigrationJob {
+  /** Required. The resource name (URI) of the source connection profile. */
+  source?: string;
+  /** The database engine type and provider of the destination. */
+  destinationDatabase?: DatabaseType;
+  /** Required. The migration job type. */
+  type?: "TYPE_UNSPECIFIED" | "ONE_TIME" | "CONTINUOUS" | (string & {});
+  /** Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
+  updateTime?: string;
+  /** Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
+  createTime?: string;
+  /** The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`. */
+  labels?: Record<string, string>;
+  /** Required. The resource name (URI) of the destination connection profile. */
+  destination?: string;
+  /** The current migration job state. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "MAINTENANCE"
+    | "DRAFT"
+    | "CREATING"
+    | "NOT_STARTED"
+    | "RUNNING"
+    | "FAILED"
+    | "COMPLETED"
+    | "DELETING"
+    | "STOPPING"
+    | "STOPPED"
+    | "DELETED"
+    | "UPDATING"
+    | "STARTING"
+    | "RESTARTING"
+    | "RESUMING"
+    | (string & {});
+  /** The database engine type and provider of the source. */
+  sourceDatabase?: DatabaseType;
+  /** The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). */
+  dumpPath?: string;
+  /** The details needed to communicate to the source over Reverse SSH tunnel connectivity. */
+  reverseSshConnectivity?: ReverseSshConnectivity;
+  /** Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". */
+  duration?: string;
+  /** The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. */
+  name?: string;
+  /** The migration job display name. */
+  displayName?: string;
+  /** static ip connectivity data (default, no additional details needed). */
+  staticIpConnectivity?: StaticIpConnectivity;
+  /** Output only. The error details in case of state FAILED. */
+  error?: Status;
+  /** Output only. The current migration job phase. */
+  phase?:
+    | "PHASE_UNSPECIFIED"
+    | "FULL_DUMP"
+    | "CDC"
+    | "PROMOTE_IN_PROGRESS"
+    | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
+    | "PREPARING_THE_DUMP"
+    | (string & {});
+  /** The details of the VPC network that the source database is located in. */
+  vpcPeeringConnectivity?: VpcPeeringConnectivity;
+  /** Output only. If the migration job is completed, the time when it was completed. */
+  endTime?: string;
+}
+
+export const MigrationJob: Schema.Codec<MigrationJob> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    destinationDatabase: Schema.optional(DatabaseType),
+    type: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    destination: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    sourceDatabase: Schema.optional(DatabaseType),
+    dumpPath: Schema.optional(Schema.String),
+    reverseSshConnectivity: Schema.optional(ReverseSshConnectivity),
+    duration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    staticIpConnectivity: Schema.optional(StaticIpConnectivity),
+    error: Schema.optional(Status),
+    phase: Schema.optional(Schema.String),
+    vpcPeeringConnectivity: Schema.optional(VpcPeeringConnectivity),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MigrationJob" });
+
+export interface DebugInfo {
+  /** The stack trace entries indicating where the error occurred. */
+  stackEntries?: ReadonlyArray<string>;
+  /** Additional debugging information provided by the server. */
+  detail?: string;
+}
+
+export const DebugInfo: Schema.Codec<DebugInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stackEntries: Schema.optional(Schema.Array(Schema.String)),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DebugInfo" });
+
+export interface RestartMigrationJobRequest {}
+
+export const RestartMigrationJobRequest: Schema.Codec<RestartMigrationJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestartMigrationJobRequest",
+  });
+
+export interface QuotaFailureViolation {
+  /** The subject on which the quota check failed. For example, "clientip:" or "project:". */
+  subject?: string;
+  /** The enforced quota value at the time of the `QuotaFailure`. For example, if the enforced quota value at the time of the `QuotaFailure` on the number of CPUs is "10", then the value of this field would reflect this quantity. */
+  quotaValue?: string;
+  /** The new quota value being rolled out at the time of the violation. At the completion of the rollout, this value will be enforced in place of quota_value. If no rollout is in progress at the time of the violation, this field is not set. For example, if at the time of the violation a rollout is in progress changing the number of CPUs quota from 10 to 20, 20 would be the value of this field. */
+  futureQuotaValue?: string;
+  /** The metric of the violated quota. A quota metric is a named counter to measure usage, such as API requests or CPUs. When an activity occurs in a service, such as Virtual Machine allocation, one or more quota metrics may be affected. For example, "compute.googleapis.com/cpus_per_vm_family", "storage.googleapis.com/internet_egress_bandwidth". */
+  quotaMetric?: string;
+  /** The dimensions of the violated quota. Every non-global quota is enforced on a set of dimensions. While quota metric defines what to count, the dimensions specify for what aspects the counter should be increased. For example, the quota "CPUs per region per VM family" enforces a limit on the metric "compute.googleapis.com/cpus_per_vm_family" on dimensions "region" and "vm_family". And if the violation occurred in region "us-central1" and for VM family "n1", the quota_dimensions would be, { "region": "us-central1", "vm_family": "n1", } When a quota is enforced globally, the quota_dimensions would always be empty. */
+  quotaDimensions?: Record<string, string>;
+  /** The API Service from which the `QuotaFailure.Violation` originates. In some cases, Quota issues originate from an API Service other than the one that was called. In other words, a dependency of the called API Service could be the cause of the `QuotaFailure`, and this field would have the dependency API service name. For example, if the called API is Kubernetes Engine API (container.googleapis.com), and a quota violation occurs in the Kubernetes Engine API itself, this field would be "container.googleapis.com". On the other hand, if the quota violation occurs when the Kubernetes Engine API creates VMs in the Compute Engine API (compute.googleapis.com), this field would be "compute.googleapis.com". */
+  apiService?: string;
+  /** A description of how the quota check failed. Clients can use this description to find more about the quota configuration in the service's public documentation, or find the relevant quota limit to adjust through developer console. For example: "Service disabled" or "Daily Limit for read operations exceeded". */
+  description?: string;
+  /** The id of the violated quota. Also know as "limit name", this is the unique identifier of a quota in the context of an API service. For example, "CPUS-PER-VM-FAMILY-per-project-region". */
+  quotaId?: string;
+}
+
+export const QuotaFailureViolation: Schema.Codec<QuotaFailureViolation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    quotaValue: Schema.optional(Schema.String),
+    futureQuotaValue: Schema.optional(Schema.String),
+    quotaMetric: Schema.optional(Schema.String),
+    quotaDimensions: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    apiService: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    quotaId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QuotaFailureViolation" });
+
+export interface QuotaFailure {
+  /** Describes all quota violations. */
+  violations?: ReadonlyArray<QuotaFailureViolation>;
+}
+
+export const QuotaFailure: Schema.Codec<QuotaFailure> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    violations: Schema.optional(Schema.Array(QuotaFailureViolation)),
+  }).annotate({ identifier: "QuotaFailure" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface Link {
+  /** Describes what the link offers. */
+  description?: string;
+  /** The URL of the link. */
+  url?: string;
+}
+
+export const Link: Schema.Codec<Link> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Link" });
+
+export interface Help {
+  /** URL(s) pointing to additional information on handling the current error. */
+  links?: ReadonlyArray<Link>;
+}
+
+export const Help: Schema.Codec<Help> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    links: Schema.optional(Schema.Array(Link)),
+  }).annotate({ identifier: "Help" });
+
+export interface StartMigrationJobRequest {}
+
+export const StartMigrationJobRequest: Schema.Codec<StartMigrationJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "StartMigrationJobRequest",
+  });
+
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface VmCreationConfig {
+  /** Required. VM instance machine type to create. */
+  vmMachineType?: string;
+  /** The Google Cloud Platform zone to create the VM in. */
+  vmZone?: string;
+  /** The subnet name the vm needs to be created in. */
+  subnet?: string;
+}
+
+export const VmCreationConfig: Schema.Codec<VmCreationConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmMachineType: Schema.optional(Schema.String),
+    vmZone: Schema.optional(Schema.String),
+    subnet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmCreationConfig" });
+
+export interface LocalizedMessage {
+  /** The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX" */
+  locale?: string;
+  /** The localized error message in the above locale. */
+  message?: string;
+}
+
+export const LocalizedMessage: Schema.Codec<LocalizedMessage> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locale: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalizedMessage" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
+  updateMask?: string;
+}
+
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface ListConnectionProfilesResponse {
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** The response list of connection profiles. */
+  connectionProfiles?: ReadonlyArray<ConnectionProfile>;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListConnectionProfilesResponse: Schema.Codec<ListConnectionProfilesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    connectionProfiles: Schema.optional(Schema.Array(ConnectionProfile)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListConnectionProfilesResponse" });
+
+export interface PreconditionFailureViolation {
+  /** The subject, relative to the type, that failed. For example, "google.com/cloud" relative to the "TOS" type would indicate which terms of service is being referenced. */
+  subject?: string;
+  /** The type of PreconditionFailure. We recommend using a service-specific enum type to define the supported precondition violation subjects. For example, "TOS" for "Terms of Service violation". */
+  type?: string;
+  /** A description of how the precondition failed. Developers can use this description to understand how to fix the failure. For example: "Terms of service not accepted". */
+  description?: string;
+}
+
+export const PreconditionFailureViolation: Schema.Codec<PreconditionFailureViolation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreconditionFailureViolation" });
+
+export interface PreconditionFailure {
+  /** Describes all precondition violations. */
+  violations?: ReadonlyArray<PreconditionFailureViolation>;
+}
+
+export const PreconditionFailure: Schema.Codec<PreconditionFailure> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    violations: Schema.optional(Schema.Array(PreconditionFailureViolation)),
+  }).annotate({ identifier: "PreconditionFailure" });
+
+export interface VerifyMigrationJobRequest {}
+
+export const VerifyMigrationJobRequest: Schema.Codec<VerifyMigrationJobRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "VerifyMigrationJobRequest",
+  });
+
+export interface ErrorInfo {
+  /** The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE. */
+  reason?: string;
+  /** The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com". */
+  domain?: string;
+  /** Additional structured details about this error. Keys must match a regular expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than `{"instanceLimit": "100/request"}`, should be returned as, `{"instanceLimitPerRequest": "100"}`, if the client exceeds the number of instances that can be created in a single (batch) request. */
+  metadata?: Record<string, string>;
+}
+
+export const ErrorInfo: Schema.Codec<ErrorInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ErrorInfo" });
+
+export interface VmSelectionConfig {
+  /** Required. The Google Cloud Platform zone the VM is located. */
+  vmZone?: string;
+}
+
+export const VmSelectionConfig: Schema.Codec<VmSelectionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmZone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmSelectionConfig" });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface Operation {
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+}
+
+export const Operation: Schema.Codec<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "Operation" });
+
+export interface SshScript {
+  /** The ssh configuration script. */
+  script?: string;
+}
+
+export const SshScript: Schema.Codec<SshScript> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    script: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SshScript" });
 
 export interface MigrationJobVerificationError {
   /** Output only. An instance of ErrorCode specifying the error that occurred. */
@@ -44,17 +798,17 @@ export interface MigrationJobVerificationError {
     | "EXISTING_DATA"
     | "SOURCE_MAX_SUBSCRIPTIONS"
     | (string & {});
-  /** Output only. A formatted message with further details about the error and a CTA. */
-  errorMessage?: string;
   /** Output only. A specific detailed error message, if supplied by the engine. */
   errorDetailMessage?: string;
+  /** Output only. A formatted message with further details about the error and a CTA. */
+  errorMessage?: string;
 }
 
-export const MigrationJobVerificationError: Schema.Schema<MigrationJobVerificationError> =
+export const MigrationJobVerificationError: Schema.Codec<MigrationJobVerificationError> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     errorCode: Schema.optional(Schema.String),
-    errorMessage: Schema.optional(Schema.String),
     errorDetailMessage: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "MigrationJobVerificationError" });
 
 export interface RequestInfo {
@@ -64,823 +818,33 @@ export interface RequestInfo {
   servingData?: string;
 }
 
-export const RequestInfo: Schema.Schema<RequestInfo> =
+export const RequestInfo: Schema.Codec<RequestInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     servingData: Schema.optional(Schema.String),
   }).annotate({ identifier: "RequestInfo" });
 
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Status" });
-
-export interface Operation {
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-    error: Schema.optional(Status),
-  }).annotate({ identifier: "Operation" });
-
-export interface VerifyMigrationJobRequest {}
-
-export const VerifyMigrationJobRequest: Schema.Schema<VerifyMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "VerifyMigrationJobRequest",
-  });
-
-export interface RetryInfo {
-  /** Clients should wait at least this long between retrying the same request. */
-  retryDelay?: string;
-}
-
-export const RetryInfo: Schema.Schema<RetryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    retryDelay: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RetryInfo" });
-
-export interface SqlAclEntry {
-  /** The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`. */
-  expireTime?: string;
-  /** Input only. The time-to-leave of this access control entry. */
-  ttl?: string;
-  /** A label to identify this entry. */
-  label?: string;
-  /** The allowlisted value for the access control list. */
-  value?: string;
-}
-
-export const SqlAclEntry: Schema.Schema<SqlAclEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    expireTime: Schema.optional(Schema.String),
-    ttl: Schema.optional(Schema.String),
-    label: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SqlAclEntry" });
-
-export interface SqlIpConfig {
-  /** Whether the instance is assigned a public IP address or not. */
-  enableIpv4?: boolean;
-  /** The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set. */
-  privateNetwork?: string;
-  /** Whether SSL connections over IP should be enforced or not. */
-  requireSsl?: boolean;
-  /** The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`). */
-  authorizedNetworks?: ReadonlyArray<SqlAclEntry>;
-}
-
-export const SqlIpConfig: Schema.Schema<SqlIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enableIpv4: Schema.optional(Schema.Boolean),
-    privateNetwork: Schema.optional(Schema.String),
-    requireSsl: Schema.optional(Schema.Boolean),
-    authorizedNetworks: Schema.optional(Schema.Array(SqlAclEntry)),
-  }).annotate({ identifier: "SqlIpConfig" });
-
-export interface CloudSqlSettings {
-  /** The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. */
-  databaseFlags?: Record<string, string>;
-  /** Output only. Indicates If this connection profile root password is stored. */
-  rootPasswordSet?: boolean;
-  /** The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings). */
-  tier?: string;
-  /** The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled. */
-  ipConfig?: SqlIpConfig;
-  /** [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB. */
-  autoStorageIncrease?: boolean;
-  /** The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`. */
-  userLabels?: Record<string, string>;
-  /** Input only. Initial root password. */
-  rootPassword?: string;
-  /** The Google Cloud Platform zone where your Cloud SQL database instance is located. */
-  zone?: string;
-  /** The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID` */
-  sourceId?: string;
-  /** The storage capacity available to the database, in GB. The minimum (and default) size is 10GB. */
-  dataDiskSizeGb?: string;
-  /** The type of storage: `PD_SSD` (default) or `PD_HDD`. */
-  dataDiskType?:
-    | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
-    | "PD_SSD"
-    | "PD_HDD"
-    | (string & {});
-  /** The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit. */
-  storageAutoResizeLimit?: string;
-  /** The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives. */
-  activationPolicy?:
-    | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
-    | "ALWAYS"
-    | "NEVER"
-    | (string & {});
-  /** The database engine type and version. */
-  databaseVersion?:
-    | "SQL_DATABASE_VERSION_UNSPECIFIED"
-    | "MYSQL_5_6"
-    | "MYSQL_5_7"
-    | "MYSQL_8_0"
-    | (string & {});
-}
-
-export const CloudSqlSettings: Schema.Schema<CloudSqlSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    databaseFlags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    rootPasswordSet: Schema.optional(Schema.Boolean),
-    tier: Schema.optional(Schema.String),
-    ipConfig: Schema.optional(SqlIpConfig),
-    autoStorageIncrease: Schema.optional(Schema.Boolean),
-    userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    rootPassword: Schema.optional(Schema.String),
-    zone: Schema.optional(Schema.String),
-    sourceId: Schema.optional(Schema.String),
-    dataDiskSizeGb: Schema.optional(Schema.String),
-    dataDiskType: Schema.optional(Schema.String),
-    storageAutoResizeLimit: Schema.optional(Schema.String),
-    activationPolicy: Schema.optional(Schema.String),
-    databaseVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CloudSqlSettings" });
-
-export interface CloudSqlConnectionProfile {
-  /** Immutable. Metadata used to create the destination Cloud SQL database. */
-  settings?: CloudSqlSettings;
-  /** Output only. The Cloud SQL database instance's public IP. */
-  publicIp?: string;
-  /** Output only. The Cloud SQL instance ID that this connection profile is associated with. */
-  cloudSqlId?: string;
-  /** Output only. The Cloud SQL database instance's private IP. */
-  privateIp?: string;
-}
-
-export const CloudSqlConnectionProfile: Schema.Schema<CloudSqlConnectionProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    settings: Schema.optional(CloudSqlSettings),
-    publicIp: Schema.optional(Schema.String),
-    cloudSqlId: Schema.optional(Schema.String),
-    privateIp: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CloudSqlConnectionProfile" });
-
-export interface SslConfig {
-  /** Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'. */
-  type?:
-    | "SSL_TYPE_UNSPECIFIED"
-    | "SERVER_ONLY"
-    | "SERVER_CLIENT"
-    | (string & {});
-  /** Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory. */
-  clientKey?: string;
-  /** Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory. */
-  clientCertificate?: string;
-  /** Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host. */
-  caCertificate?: string;
-}
-
-export const SslConfig: Schema.Schema<SslConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    clientKey: Schema.optional(Schema.String),
-    clientCertificate: Schema.optional(Schema.String),
-    caCertificate: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SslConfig" });
-
-export interface MySqlConnectionProfile {
-  /** Output only. Indicates If this connection profile password is stored. */
-  passwordSet?: boolean;
-  /** Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service. */
-  username?: string;
-  /** Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service. */
-  password?: string;
-  /** Required. The network port of the source MySQL database. */
-  port?: number;
-  /** SSL configuration for the destination to connect to the source database. */
-  ssl?: SslConfig;
-  /** If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source. */
-  cloudSqlId?: string;
-  /** Required. The IP or hostname of the source MySQL database. */
-  host?: string;
-}
-
-export const MySqlConnectionProfile: Schema.Schema<MySqlConnectionProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    passwordSet: Schema.optional(Schema.Boolean),
-    username: Schema.optional(Schema.String),
-    password: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-    ssl: Schema.optional(SslConfig),
-    cloudSqlId: Schema.optional(Schema.String),
-    host: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MySqlConnectionProfile" });
-
-export interface ConnectionProfile {
-  /** The current connection profile state (e.g. DRAFT, READY, or FAILED). */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "DRAFT"
-    | "CREATING"
-    | "READY"
-    | "UPDATING"
-    | "DELETING"
-    | "DELETED"
-    | "FAILED"
-    | (string & {});
-  /** The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}. */
-  name?: string;
-  /** A CloudSQL database connection profile. */
-  cloudsql?: CloudSqlConnectionProfile;
-  /** The database provider. */
-  provider?:
-    | "DATABASE_PROVIDER_UNSPECIFIED"
-    | "CLOUDSQL"
-    | "RDS"
-    | (string & {});
-  /** A MySQL database connection profile. */
-  mysql?: MySqlConnectionProfile;
-  /** The connection profile display name. */
-  displayName?: string;
-  /** The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`. */
-  labels?: Record<string, string>;
-  /** Output only. The error details in case of state FAILED. */
-  error?: Status;
-  /** Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
-  updateTime?: string;
-  /** Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
-  createTime?: string;
-}
-
-export const ConnectionProfile: Schema.Schema<ConnectionProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    cloudsql: Schema.optional(CloudSqlConnectionProfile),
-    provider: Schema.optional(Schema.String),
-    mysql: Schema.optional(MySqlConnectionProfile),
-    displayName: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    error: Schema.optional(Status),
-    updateTime: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConnectionProfile" });
-
-export interface ListConnectionProfilesResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** The response list of connection profiles. */
-  connectionProfiles?: ReadonlyArray<ConnectionProfile>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListConnectionProfilesResponse: Schema.Schema<ListConnectionProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    connectionProfiles: Schema.optional(Schema.Array(ConnectionProfile)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListConnectionProfilesResponse" });
-
-export interface ReverseSshConnectivity {
-  /** The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
-  vm?: string;
-  /** The name of the VPC to peer with the Cloud SQL private network. */
-  vpc?: string;
-  /** Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
-  vmIp?: string;
-  /** Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel. */
-  vmPort?: number;
-}
-
-export const ReverseSshConnectivity: Schema.Schema<ReverseSshConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vm: Schema.optional(Schema.String),
-    vpc: Schema.optional(Schema.String),
-    vmIp: Schema.optional(Schema.String),
-    vmPort: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "ReverseSshConnectivity" });
-
-export interface LocalizedMessage {
-  /** The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX" */
-  locale?: string;
-  /** The localized error message in the above locale. */
-  message?: string;
-}
-
-export const LocalizedMessage: Schema.Schema<LocalizedMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locale: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LocalizedMessage" });
-
-export interface FieldViolation {
-  /** A description of why the request element is bad. */
-  description?: string;
-  /** Provides a localized error message for field-level errors that is safe to return to the API consumer. */
-  localizedMessage?: LocalizedMessage;
-  /** The reason of the field-level error. This is a constant value that identifies the proximate cause of the field-level error. It should uniquely identify the type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE. */
-  reason?: string;
-  /** A path that leads to a field in the request body. The value will be a sequence of dot-separated identifiers that identify a protocol buffer field. Consider the following: message CreateContactRequest { message EmailAddress { enum Type { TYPE_UNSPECIFIED = 0; HOME = 1; WORK = 2; } optional string email = 1; repeated EmailType type = 2; } string full_name = 1; repeated EmailAddress email_addresses = 2; } In this example, in proto `field` could take one of the following values: * `full_name` for a violation in the `full_name` value * `email_addresses[0].email` for a violation in the `email` field of the first `email_addresses` message * `email_addresses[2].type[1]` for a violation in the second `type` value in the third `email_addresses` message. In JSON, the same values are represented as: * `fullName` for a violation in the `fullName` value * `emailAddresses[0].email` for a violation in the `email` field of the first `emailAddresses` message * `emailAddresses[2].type[1]` for a violation in the second `type` value in the third `emailAddresses` message. */
-  field?: string;
-}
-
-export const FieldViolation: Schema.Schema<FieldViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    localizedMessage: Schema.optional(LocalizedMessage),
-    reason: Schema.optional(Schema.String),
-    field: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FieldViolation" });
-
-export interface Datamigration_BadRequest {
-  /** Describes all violations in a client request. */
-  fieldViolations?: ReadonlyArray<FieldViolation>;
-}
-
-export const Datamigration_BadRequest: Schema.Schema<Datamigration_BadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
-  }).annotate({ identifier: "Datamigration_BadRequest" });
-
-export interface StaticIpConnectivity {}
-
-export const StaticIpConnectivity: Schema.Schema<StaticIpConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StaticIpConnectivity",
-  });
-
-export interface AuditLogConfig {
-  /** The log type that this config enables. */
-  logType?:
-    | "LOG_TYPE_UNSPECIFIED"
-    | "ADMIN_READ"
-    | "DATA_WRITE"
-    | "DATA_READ"
-    | (string & {});
-  /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: ReadonlyArray<string>;
-}
-
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logType: Schema.optional(Schema.String),
-    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "AuditLogConfig" });
-
-export interface AuditConfig {
-  /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
-  service?: string;
-  /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
-}
-
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
-    auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-  }).annotate({ identifier: "AuditConfig" });
-
-export interface ErrorInfo {
-  /** The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE. */
-  reason?: string;
-  /** The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com". */
-  domain?: string;
-  /** Additional structured details about this error. Keys must match a regular expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than `{"instanceLimit": "100/request"}`, should be returned as, `{"instanceLimitPerRequest": "100"}`, if the client exceeds the number of instances that can be created in a single (batch) request. */
-  metadata?: Record<string, string>;
-}
-
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    reason: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "ErrorInfo" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface Link {
-  /** Describes what the link offers. */
-  description?: string;
-  /** The URL of the link. */
-  url?: string;
-}
-
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    description: Schema.optional(Schema.String),
-    url: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Link" });
-
-export interface Help {
-  /** URL(s) pointing to additional information on handling the current error. */
-  links?: ReadonlyArray<Link>;
-}
-
-export const Help: Schema.Schema<Help> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    links: Schema.optional(Schema.Array(Link)),
-  }).annotate({ identifier: "Help" });
-
-export interface StopMigrationJobRequest {}
-
-export const StopMigrationJobRequest: Schema.Schema<StopMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StopMigrationJobRequest",
-  });
-
-export interface VmCreationConfig {
-  /** The subnet name the vm needs to be created in. */
-  subnet?: string;
-  /** Required. VM instance machine type to create. */
-  vmMachineType?: string;
-  /** The Google Cloud Platform zone to create the VM in. */
-  vmZone?: string;
-}
-
-export const VmCreationConfig: Schema.Schema<VmCreationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subnet: Schema.optional(Schema.String),
-    vmMachineType: Schema.optional(Schema.String),
-    vmZone: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VmCreationConfig" });
-
-export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    operations: Schema.optional(Schema.Array(Operation)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListOperationsResponse" });
-
-export interface PreconditionFailureViolation {
-  /** The type of PreconditionFailure. We recommend using a service-specific enum type to define the supported precondition violation subjects. For example, "TOS" for "Terms of Service violation". */
-  type?: string;
-  /** The subject, relative to the type, that failed. For example, "google.com/cloud" relative to the "TOS" type would indicate which terms of service is being referenced. */
-  subject?: string;
-  /** A description of how the precondition failed. Developers can use this description to understand how to fix the failure. For example: "Terms of service not accepted". */
-  description?: string;
-}
-
-export const PreconditionFailureViolation: Schema.Schema<PreconditionFailureViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    subject: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PreconditionFailureViolation" });
-
-export interface PreconditionFailure {
-  /** Describes all precondition violations. */
-  violations?: ReadonlyArray<PreconditionFailureViolation>;
-}
-
-export const PreconditionFailure: Schema.Schema<PreconditionFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    violations: Schema.optional(Schema.Array(PreconditionFailureViolation)),
-  }).annotate({ identifier: "PreconditionFailure" });
-
-export interface Expr {
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
-  /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
-  location?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
-  /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
-  description?: string;
-}
-
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    expression: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Expr" });
-
-export interface Binding {
-  /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  condition?: Expr;
-  /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
-  role?: string;
-  /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: ReadonlyArray<string>;
-}
-
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    condition: Schema.optional(Expr),
-    role: Schema.optional(Schema.String),
-    members: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Binding" });
-
-export interface VpcPeeringConnectivity {
-  /** The name of the VPC network to peer with the Cloud SQL private network. */
-  vpc?: string;
-}
-
-export const VpcPeeringConnectivity: Schema.Schema<VpcPeeringConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vpc: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VpcPeeringConnectivity" });
-
-export interface SshScript {
-  /** The ssh configuration script. */
-  script?: string;
-}
-
-export const SshScript: Schema.Schema<SshScript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    script: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SshScript" });
-
-export interface DebugInfo {
-  /** The stack trace entries indicating where the error occurred. */
-  stackEntries?: ReadonlyArray<string>;
-  /** Additional debugging information provided by the server. */
-  detail?: string;
-}
-
-export const DebugInfo: Schema.Schema<DebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stackEntries: Schema.optional(Schema.Array(Schema.String)),
-    detail: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DebugInfo" });
-
-export interface DatabaseType {
-  /** The database provider. */
-  provider?:
-    | "DATABASE_PROVIDER_UNSPECIFIED"
-    | "CLOUDSQL"
-    | "RDS"
-    | (string & {});
-  /** The database engine. */
-  engine?: "DATABASE_ENGINE_UNSPECIFIED" | "MYSQL" | (string & {});
-}
-
-export const DatabaseType: Schema.Schema<DatabaseType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    provider: Schema.optional(Schema.String),
-    engine: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DatabaseType" });
-
-export interface ResumeMigrationJobRequest {}
-
-export const ResumeMigrationJobRequest: Schema.Schema<ResumeMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "ResumeMigrationJobRequest",
-  });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface MigrationJob {
-  /** The migration job display name. */
-  displayName?: string;
-  /** The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`. */
-  labels?: Record<string, string>;
-  /** Output only. The current migration job phase. */
-  phase?:
-    | "PHASE_UNSPECIFIED"
-    | "FULL_DUMP"
-    | "CDC"
-    | "PROMOTE_IN_PROGRESS"
-    | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
-    | "PREPARING_THE_DUMP"
-    | (string & {});
-  /** Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
-  createTime?: string;
-  /** The database engine type and provider of the destination. */
-  destinationDatabase?: DatabaseType;
-  /** static ip connectivity data (default, no additional details needed). */
-  staticIpConnectivity?: StaticIpConnectivity;
-  /** The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. */
-  name?: string;
-  /** The details needed to communicate to the source over Reverse SSH tunnel connectivity. */
-  reverseSshConnectivity?: ReverseSshConnectivity;
-  /** The database engine type and provider of the source. */
-  sourceDatabase?: DatabaseType;
-  /** Output only. The error details in case of state FAILED. */
-  error?: Status;
-  /** Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z". */
-  updateTime?: string;
-  /** The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). */
-  dumpPath?: string;
-  /** Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". */
-  duration?: string;
-  /** Required. The resource name (URI) of the source connection profile. */
-  source?: string;
-  /** Output only. If the migration job is completed, the time when it was completed. */
-  endTime?: string;
-  /** The details of the VPC network that the source database is located in. */
-  vpcPeeringConnectivity?: VpcPeeringConnectivity;
-  /** The current migration job state. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "MAINTENANCE"
-    | "DRAFT"
-    | "CREATING"
-    | "NOT_STARTED"
-    | "RUNNING"
-    | "FAILED"
-    | "COMPLETED"
-    | "DELETING"
-    | "STOPPING"
-    | "STOPPED"
-    | "DELETED"
-    | "UPDATING"
-    | "STARTING"
-    | "RESTARTING"
-    | "RESUMING"
-    | (string & {});
-  /** Required. The resource name (URI) of the destination connection profile. */
-  destination?: string;
-  /** Required. The migration job type. */
-  type?: "TYPE_UNSPECIFIED" | "ONE_TIME" | "CONTINUOUS" | (string & {});
-}
-
-export const MigrationJob: Schema.Schema<MigrationJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    phase: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    destinationDatabase: Schema.optional(DatabaseType),
-    staticIpConnectivity: Schema.optional(StaticIpConnectivity),
-    name: Schema.optional(Schema.String),
-    reverseSshConnectivity: Schema.optional(ReverseSshConnectivity),
-    sourceDatabase: Schema.optional(DatabaseType),
-    error: Schema.optional(Status),
-    updateTime: Schema.optional(Schema.String),
-    dumpPath: Schema.optional(Schema.String),
-    duration: Schema.optional(Schema.String),
-    source: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    vpcPeeringConnectivity: Schema.optional(VpcPeeringConnectivity),
-    state: Schema.optional(Schema.String),
-    destination: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MigrationJob" });
-
-export interface ListMigrationJobsResponse {
-  /** The list of migration jobs objects. */
-  migrationJobs?: ReadonlyArray<MigrationJob>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListMigrationJobsResponse: Schema.Schema<ListMigrationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationJobs: Schema.optional(Schema.Array(MigrationJob)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListMigrationJobsResponse" });
-
-export interface GoogleCloudClouddmsV1beta1OperationMetadata {
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-}
-
-export const GoogleCloudClouddmsV1beta1OperationMetadata: Schema.Schema<GoogleCloudClouddmsV1beta1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    target: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudClouddmsV1beta1OperationMetadata" });
-
 export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: Record<string, string>;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    locationId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Location" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelOperationRequest",
-  });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface VmSelectionConfig {
-  /** Required. The Google Cloud Platform zone the VM is located. */
-  vmZone?: string;
-}
-
-export const VmSelectionConfig: Schema.Schema<VmSelectionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vmZone: Schema.optional(Schema.String),
-  }).annotate({ identifier: "VmSelectionConfig" });
-
-export interface GenerateSshScriptRequest {
-  /** The port that will be open on the bastion host */
-  vmPort?: number;
-  /** The VM creation configuration */
-  vmCreationConfig?: VmCreationConfig;
-  /** Required. Bastion VM Instance name to use or to create. */
-  vm?: string;
-  /** The VM selection configuration */
-  vmSelectionConfig?: VmSelectionConfig;
-}
-
-export const GenerateSshScriptRequest: Schema.Schema<GenerateSshScriptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    vmPort: Schema.optional(Schema.Number),
-    vmCreationConfig: Schema.optional(VmCreationConfig),
-    vm: Schema.optional(Schema.String),
-    vmSelectionConfig: Schema.optional(VmSelectionConfig),
-  }).annotate({ identifier: "GenerateSshScriptRequest" });
-
-export interface RestartMigrationJobRequest {}
-
-export const RestartMigrationJobRequest: Schema.Schema<RestartMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RestartMigrationJobRequest",
-  });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -889,119 +853,155 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
 
-export interface QuotaFailureViolation {
-  /** A description of how the quota check failed. Clients can use this description to find more about the quota configuration in the service's public documentation, or find the relevant quota limit to adjust through developer console. For example: "Service disabled" or "Daily Limit for read operations exceeded". */
-  description?: string;
-  /** The enforced quota value at the time of the `QuotaFailure`. For example, if the enforced quota value at the time of the `QuotaFailure` on the number of CPUs is "10", then the value of this field would reflect this quantity. */
-  quotaValue?: string;
-  /** The id of the violated quota. Also know as "limit name", this is the unique identifier of a quota in the context of an API service. For example, "CPUS-PER-VM-FAMILY-per-project-region". */
-  quotaId?: string;
-  /** The new quota value being rolled out at the time of the violation. At the completion of the rollout, this value will be enforced in place of quota_value. If no rollout is in progress at the time of the violation, this field is not set. For example, if at the time of the violation a rollout is in progress changing the number of CPUs quota from 10 to 20, 20 would be the value of this field. */
-  futureQuotaValue?: string;
-  /** The subject on which the quota check failed. For example, "clientip:" or "project:". */
-  subject?: string;
-  /** The metric of the violated quota. A quota metric is a named counter to measure usage, such as API requests or CPUs. When an activity occurs in a service, such as Virtual Machine allocation, one or more quota metrics may be affected. For example, "compute.googleapis.com/cpus_per_vm_family", "storage.googleapis.com/internet_egress_bandwidth". */
-  quotaMetric?: string;
-  /** The dimensions of the violated quota. Every non-global quota is enforced on a set of dimensions. While quota metric defines what to count, the dimensions specify for what aspects the counter should be increased. For example, the quota "CPUs per region per VM family" enforces a limit on the metric "compute.googleapis.com/cpus_per_vm_family" on dimensions "region" and "vm_family". And if the violation occurred in region "us-central1" and for VM family "n1", the quota_dimensions would be, { "region": "us-central1", "vm_family": "n1", } When a quota is enforced globally, the quota_dimensions would always be empty. */
-  quotaDimensions?: Record<string, string>;
-  /** The API Service from which the `QuotaFailure.Violation` orginates. In some cases, Quota issues originate from an API Service other than the one that was called. In other words, a dependency of the called API Service could be the cause of the `QuotaFailure`, and this field would have the dependency API service name. For example, if the called API is Kubernetes Engine API (container.googleapis.com), and a quota violation occurs in the Kubernetes Engine API itself, this field would be "container.googleapis.com". On the other hand, if the quota violation occurs when the Kubernetes Engine API creates VMs in the Compute Engine API (compute.googleapis.com), this field would be "compute.googleapis.com". */
-  apiService?: string;
+export interface GoogleCloudClouddmsV1beta1OperationMetadata {
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
 }
 
-export const QuotaFailureViolation: Schema.Schema<QuotaFailureViolation> =
+export const GoogleCloudClouddmsV1beta1OperationMetadata: Schema.Codec<GoogleCloudClouddmsV1beta1OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudClouddmsV1beta1OperationMetadata" });
+
+export interface ListOperationsResponse {
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOperationsResponse" });
+
+export interface ListMigrationJobsResponse {
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** The list of migration jobs objects. */
+  migrationJobs?: ReadonlyArray<MigrationJob>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+}
+
+export const ListMigrationJobsResponse: Schema.Codec<ListMigrationJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    migrationJobs: Schema.optional(Schema.Array(MigrationJob)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMigrationJobsResponse" });
+
+export interface FieldViolation {
+  /** A description of why the request element is bad. */
+  description?: string;
+  /** The reason of the field-level error. This is a constant value that identifies the proximate cause of the field-level error. It should uniquely identify the type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE. */
+  reason?: string;
+  /** Provides a localized error message for field-level errors that is safe to return to the API consumer. */
+  localizedMessage?: LocalizedMessage;
+  /** A path that leads to a field in the request body. The value will be a sequence of dot-separated identifiers that identify a protocol buffer field. Consider the following: message CreateContactRequest { message EmailAddress { enum Type { TYPE_UNSPECIFIED = 0; HOME = 1; WORK = 2; } optional string email = 1; repeated EmailType type = 2; } string full_name = 1; repeated EmailAddress email_addresses = 2; } In this example, in proto `field` could take one of the following values: * `full_name` for a violation in the `full_name` value * `email_addresses[0].email` for a violation in the `email` field of the first `email_addresses` message * `email_addresses[2].type[1]` for a violation in the second `type` value in the third `email_addresses` message. In JSON, the same values are represented as: * `fullName` for a violation in the `fullName` value * `emailAddresses[0].email` for a violation in the `email` field of the first `emailAddresses` message * `emailAddresses[2].type[1]` for a violation in the second `type` value in the third `emailAddresses` message. */
+  field?: string;
+}
+
+export const FieldViolation: Schema.Codec<FieldViolation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
-    quotaValue: Schema.optional(Schema.String),
-    quotaId: Schema.optional(Schema.String),
-    futureQuotaValue: Schema.optional(Schema.String),
-    subject: Schema.optional(Schema.String),
-    quotaMetric: Schema.optional(Schema.String),
-    quotaDimensions: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    apiService: Schema.optional(Schema.String),
-  }).annotate({ identifier: "QuotaFailureViolation" });
+    reason: Schema.optional(Schema.String),
+    localizedMessage: Schema.optional(LocalizedMessage),
+    field: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FieldViolation" });
 
-export interface Policy {
-  /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
-  etag?: string;
-  /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  version?: number;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
-  /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: ReadonlyArray<Binding>;
+export interface Datamigration_BadRequest {
+  /** Describes all violations in a client request. */
+  fieldViolations?: ReadonlyArray<FieldViolation>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Datamigration_BadRequest: Schema.Codec<Datamigration_BadRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.Number),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    bindings: Schema.optional(Schema.Array(Binding)),
-  }).annotate({ identifier: "Policy" });
-
-export interface SetIamPolicyRequest {
-  /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
-  updateMask?: string;
-}
-
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(Policy),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface QuotaFailure {
-  /** Describes all quota violations. */
-  violations?: ReadonlyArray<QuotaFailureViolation>;
-}
-
-export const QuotaFailure: Schema.Schema<QuotaFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    violations: Schema.optional(Schema.Array(QuotaFailureViolation)),
-  }).annotate({ identifier: "QuotaFailure" });
+    fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
+  }).annotate({ identifier: "Datamigration_BadRequest" });
 
 export interface ResourceInfo {
-  /** The owner of the resource (optional). For example, "user:" or "project:". */
-  owner?: string;
-  /** The name of the resource being accessed. For example, a shared calendar name: "example.com_4fghdhgsrgh@group.calendar.google.com", if the current error is google.rpc.Code.PERMISSION_DENIED. */
-  resourceName?: string;
   /** A name for the type of resource being accessed, e.g. "sql table", "cloud storage bucket", "file", "Google calendar"; or the type URL of the resource: e.g. "type.googleapis.com/google.pubsub.v1.Topic". */
   resourceType?: string;
+  /** The owner of the resource (optional). For example, "user:" or "project:". */
+  owner?: string;
   /** Describes what error is encountered when accessing this resource. For example, updating a cloud project may require the `writer` permission on the developer console project. */
   description?: string;
+  /** The name of the resource being accessed. For example, a shared calendar name: "example.com_4fghdhgsrgh@group.calendar.google.com", if the current error is google.rpc.Code.PERMISSION_DENIED. */
+  resourceName?: string;
 }
 
-export const ResourceInfo: Schema.Schema<ResourceInfo> =
+export const ResourceInfo: Schema.Codec<ResourceInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    owner: Schema.optional(Schema.String),
-    resourceName: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
+    owner: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResourceInfo" });
 
-export interface PromoteMigrationJobRequest {}
+export interface StopMigrationJobRequest {}
 
-export const PromoteMigrationJobRequest: Schema.Schema<PromoteMigrationJobRequest> =
+export const StopMigrationJobRequest: Schema.Codec<StopMigrationJobRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "PromoteMigrationJobRequest",
+    identifier: "StopMigrationJobRequest",
   });
 
-export interface StartMigrationJobRequest {}
+export interface GenerateSshScriptRequest {
+  /** Required. Bastion VM Instance name to use or to create. */
+  vm?: string;
+  /** The port that will be open on the bastion host */
+  vmPort?: number;
+  /** The VM selection configuration */
+  vmSelectionConfig?: VmSelectionConfig;
+  /** The VM creation configuration */
+  vmCreationConfig?: VmCreationConfig;
+}
 
-export const StartMigrationJobRequest: Schema.Schema<StartMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "StartMigrationJobRequest",
-  });
+export const GenerateSshScriptRequest: Schema.Codec<GenerateSshScriptRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vm: Schema.optional(Schema.String),
+    vmPort: Schema.optional(Schema.Number),
+    vmSelectionConfig: Schema.optional(VmSelectionConfig),
+    vmCreationConfig: Schema.optional(VmCreationConfig),
+  }).annotate({ identifier: "GenerateSshScriptRequest" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 // ==========================================================================
 // Errors
@@ -1058,31 +1058,31 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
-  /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
-  extraLocationTypes?: string[];
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
+  extraLocationTypes?: string[];
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1090,7 +1090,7 @@ export const ListProjectsLocationsResponse =
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
+/** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
   ListProjectsLocationsResponse,
@@ -1117,7 +1117,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1137,844 +1137,6 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsOperationsRequest {
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** The name of the operation's parent resource. */
-  name: string;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
-
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GenerateSshScriptProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to generate the SSH script. */
-  migrationJob: string;
-  /** Request body */
-  body?: GenerateSshScriptRequest;
-}
-
-export const GenerateSshScriptProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationJob: Schema.String.pipe(T.HttpPath("migrationJob")),
-    body: Schema.optional(GenerateSshScriptRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+migrationJob}:generateSshScript",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GenerateSshScriptProjectsLocationsMigrationJobsRequest>;
-
-export type GenerateSshScriptProjectsLocationsMigrationJobsResponse = SshScript;
-export const GenerateSshScriptProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SshScript;
-
-export type GenerateSshScriptProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Generate a SSH configuration script to configure the reverse SSH connectivity. */
-export const generateSshScriptProjectsLocationsMigrationJobs: API.OperationMethod<
-  GenerateSshScriptProjectsLocationsMigrationJobsRequest,
-  GenerateSshScriptProjectsLocationsMigrationJobsResponse,
-  GenerateSshScriptProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GenerateSshScriptProjectsLocationsMigrationJobsRequest,
-  output: GenerateSshScriptProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StartProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to start. */
-  name: string;
-  /** Request body */
-  body?: StartMigrationJobRequest;
-}
-
-export const StartProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(StartMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:start", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<StartProjectsLocationsMigrationJobsRequest>;
-
-export type StartProjectsLocationsMigrationJobsResponse = Operation;
-export const StartProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type StartProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Start an already created migration job. */
-export const startProjectsLocationsMigrationJobs: API.OperationMethod<
-  StartProjectsLocationsMigrationJobsRequest,
-  StartProjectsLocationsMigrationJobsResponse,
-  StartProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartProjectsLocationsMigrationJobsRequest,
-  output: StartProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PromoteProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to promote. */
-  name: string;
-  /** Request body */
-  body?: PromoteMigrationJobRequest;
-}
-
-export const PromoteProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(PromoteMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:promote", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PromoteProjectsLocationsMigrationJobsRequest>;
-
-export type PromoteProjectsLocationsMigrationJobsResponse = Operation;
-export const PromoteProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PromoteProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Promote a migration job, stopping replication to the destination and promoting the destination to be a standalone database. */
-export const promoteProjectsLocationsMigrationJobs: API.OperationMethod<
-  PromoteProjectsLocationsMigrationJobsRequest,
-  PromoteProjectsLocationsMigrationJobsResponse,
-  PromoteProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PromoteProjectsLocationsMigrationJobsRequest,
-  output: PromoteProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsMigrationJobsRequest {
-  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
-  requestId?: string;
-  /** Required. The ID of the instance to create. */
-  migrationJobId?: string;
-  /** Required. The parent, which owns this collection of migration jobs. */
-  parent: string;
-  /** Request body */
-  body?: MigrationJob;
-}
-
-export const CreateProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    migrationJobId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("migrationJobId"),
-    ),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(MigrationJob).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+parent}/migrationJobs",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsMigrationJobsRequest>;
-
-export type CreateProjectsLocationsMigrationJobsResponse = Operation;
-export const CreateProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new migration job in a given project and location. */
-export const createProjectsLocationsMigrationJobs: API.OperationMethod<
-  CreateProjectsLocationsMigrationJobsRequest,
-  CreateProjectsLocationsMigrationJobsResponse,
-  CreateProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMigrationJobsRequest,
-  output: CreateProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsMigrationJobsRequest {
-  /** The nextPageToken value received in the previous call to migrationJobs.list, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to migrationJobs.list must match the call that provided the page token. */
-  pageToken?: string;
-  /** Sort the results based on the migration job name. Valid values are: "name", "name asc", and "name desc". */
-  orderBy?: string;
-  /** Required. The parent, which owns this collection of migrationJobs. */
-  parent: string;
-  /** The maximum number of migration jobs to return. The service may return fewer than this value. If unspecified, at most 50 migration jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A filter expression that filters migration jobs listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list migration jobs created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration jobs connecting through the specific SSH tunnel bastion. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/migrationJobs" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsMigrationJobsRequest>;
-
-export type ListProjectsLocationsMigrationJobsResponse =
-  ListMigrationJobsResponse;
-export const ListProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMigrationJobsResponse;
-
-export type ListProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists migration jobs in a given project and location. */
-export const listProjectsLocationsMigrationJobs: API.PaginatedOperationMethod<
-  ListProjectsLocationsMigrationJobsRequest,
-  ListProjectsLocationsMigrationJobsResponse,
-  ListProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMigrationJobsRequest,
-  output: ListProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface TestIamPermissionsProjectsLocationsMigrationJobsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsMigrationJobsRequest>;
-
-export type TestIamPermissionsProjectsLocationsMigrationJobsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsMigrationJobs: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsMigrationJobsRequest,
-  TestIamPermissionsProjectsLocationsMigrationJobsResponse,
-  TestIamPermissionsProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsMigrationJobsRequest,
-  output: TestIamPermissionsProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ResumeProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to resume. */
-  name: string;
-  /** Request body */
-  body?: ResumeMigrationJobRequest;
-}
-
-export const ResumeProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ResumeMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:resume", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<ResumeProjectsLocationsMigrationJobsRequest>;
-
-export type ResumeProjectsLocationsMigrationJobsResponse = Operation;
-export const ResumeProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ResumeProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Resume a migration job that is currently stopped and is resumable (was stopped during CDC phase). */
-export const resumeProjectsLocationsMigrationJobs: API.OperationMethod<
-  ResumeProjectsLocationsMigrationJobsRequest,
-  ResumeProjectsLocationsMigrationJobsResponse,
-  ResumeProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ResumeProjectsLocationsMigrationJobsRequest,
-  output: ResumeProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface VerifyProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to verify. */
-  name: string;
-  /** Request body */
-  body?: VerifyMigrationJobRequest;
-}
-
-export const VerifyProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(VerifyMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:verify", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<VerifyProjectsLocationsMigrationJobsRequest>;
-
-export type VerifyProjectsLocationsMigrationJobsResponse = Operation;
-export const VerifyProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type VerifyProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Verify a migration job, making sure the destination can reach the source and that all configuration and prerequisites are met. */
-export const verifyProjectsLocationsMigrationJobs: API.OperationMethod<
-  VerifyProjectsLocationsMigrationJobsRequest,
-  VerifyProjectsLocationsMigrationJobsResponse,
-  VerifyProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: VerifyProjectsLocationsMigrationJobsRequest,
-  output: VerifyProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsMigrationJobsRequest {
-  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
-  requestId?: string;
-  /** The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. */
-  name: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the migration job resource by the update. */
-  updateMask?: string;
-  /** Request body */
-  body?: MigrationJob;
-}
-
-export const PatchProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(MigrationJob).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsMigrationJobsRequest>;
-
-export type PatchProjectsLocationsMigrationJobsResponse = Operation;
-export const PatchProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single migration job. */
-export const patchProjectsLocationsMigrationJobs: API.OperationMethod<
-  PatchProjectsLocationsMigrationJobsRequest,
-  PatchProjectsLocationsMigrationJobsResponse,
-  PatchProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMigrationJobsRequest,
-  output: PatchProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsMigrationJobsRequest {
-  /** Required. Name of the migration job resource to get. */
-  name: string;
-}
-
-export const GetProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsMigrationJobsRequest>;
-
-export type GetProjectsLocationsMigrationJobsResponse = MigrationJob;
-export const GetProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MigrationJob;
-
-export type GetProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single migration job. */
-export const getProjectsLocationsMigrationJobs: API.OperationMethod<
-  GetProjectsLocationsMigrationJobsRequest,
-  GetProjectsLocationsMigrationJobsResponse,
-  GetProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMigrationJobsRequest,
-  output: GetProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsMigrationJobsRequest {
-  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
-  requestId?: string;
-  /** Required. Name of the migration job resource to delete. */
-  name: string;
-  /** The destination CloudSQL connection profile is always deleted with the migration job. In case of force delete, the destination CloudSQL replica database is also deleted. */
-  force?: boolean;
-}
-
-export const DeleteProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsMigrationJobsRequest>;
-
-export type DeleteProjectsLocationsMigrationJobsResponse = Operation;
-export const DeleteProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single migration job. */
-export const deleteProjectsLocationsMigrationJobs: API.OperationMethod<
-  DeleteProjectsLocationsMigrationJobsRequest,
-  DeleteProjectsLocationsMigrationJobsResponse,
-  DeleteProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMigrationJobsRequest,
-  output: DeleteProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetIamPolicyProjectsLocationsMigrationJobsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsMigrationJobsRequest>;
-
-export type SetIamPolicyProjectsLocationsMigrationJobsResponse = Policy;
-export const SetIamPolicyProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
-  SetIamPolicyProjectsLocationsMigrationJobsRequest,
-  SetIamPolicyProjectsLocationsMigrationJobsResponse,
-  SetIamPolicyProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsMigrationJobsRequest,
-  output: SetIamPolicyProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StopProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to stop. */
-  name: string;
-  /** Request body */
-  body?: StopMigrationJobRequest;
-}
-
-export const StopProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(StopMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:stop", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<StopProjectsLocationsMigrationJobsRequest>;
-
-export type StopProjectsLocationsMigrationJobsResponse = Operation;
-export const StopProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type StopProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Stops a running migration job. */
-export const stopProjectsLocationsMigrationJobs: API.OperationMethod<
-  StopProjectsLocationsMigrationJobsRequest,
-  StopProjectsLocationsMigrationJobsResponse,
-  StopProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsMigrationJobsRequest,
-  output: StopProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsMigrationJobsRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsMigrationJobsRequest>;
-
-export type GetIamPolicyProjectsLocationsMigrationJobsResponse = Policy;
-export const GetIamPolicyProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
-  GetIamPolicyProjectsLocationsMigrationJobsRequest,
-  GetIamPolicyProjectsLocationsMigrationJobsResponse,
-  GetIamPolicyProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsMigrationJobsRequest,
-  output: GetIamPolicyProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface RestartProjectsLocationsMigrationJobsRequest {
-  /** Name of the migration job resource to restart. */
-  name: string;
-  /** Request body */
-  body?: RestartMigrationJobRequest;
-}
-
-export const RestartProjectsLocationsMigrationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RestartMigrationJobRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta1/{+name}:restart", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<RestartProjectsLocationsMigrationJobsRequest>;
-
-export type RestartProjectsLocationsMigrationJobsResponse = Operation;
-export const RestartProjectsLocationsMigrationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type RestartProjectsLocationsMigrationJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Restart a stopped or failed migration job, resetting the destination instance to its original state and starting the migration process from scratch. */
-export const restartProjectsLocationsMigrationJobs: API.OperationMethod<
-  RestartProjectsLocationsMigrationJobsRequest,
-  RestartProjectsLocationsMigrationJobsResponse,
-  RestartProjectsLocationsMigrationJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RestartProjectsLocationsMigrationJobsRequest,
-  output: RestartProjectsLocationsMigrationJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsConnectionProfilesRequest {
-  /** A page token, received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token. */
-  pageToken?: string;
-  /** the order by fields for the result. */
-  orderBy?: string;
-  /** Required. The parent, which owns this collection of connection profiles. */
-  parent: string;
-  /** The maximum number of connection profiles to return. The service may return fewer than this value. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
-  pageSize?: number;
-  /** A filter expression that filters connection profiles listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list connection profiles created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For example, you could specify **mySql.username = %lt;my_username%gt;** to list all connection profiles configured to connect with a specific username. */
-  filter?: string;
-}
-
-export const ListProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+parent}/connectionProfiles" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionProfilesRequest>;
-
-export type ListProjectsLocationsConnectionProfilesResponse =
-  ListConnectionProfilesResponse;
-export const ListProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConnectionProfilesResponse;
-
-export type ListProjectsLocationsConnectionProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Retrieve a list of all connection profiles in a given project and location. */
-export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMethod<
-  ListProjectsLocationsConnectionProfilesRequest,
-  ListProjectsLocationsConnectionProfilesResponse,
-  ListProjectsLocationsConnectionProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionProfilesRequest,
-  output: ListProjectsLocationsConnectionProfilesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
@@ -1992,7 +1154,7 @@ export const DeleteProjectsLocationsConnectionProfilesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionProfilesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionProfilesRequest>;
 
 export type DeleteProjectsLocationsConnectionProfilesResponse = Operation;
 export const DeleteProjectsLocationsConnectionProfilesResponse =
@@ -2017,49 +1179,6 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SetIamPolicyProjectsLocationsConnectionProfilesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsConnectionProfilesRequest>;
-
-export type SetIamPolicyProjectsLocationsConnectionProfilesResponse = Policy;
-export const SetIamPolicyProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsConnectionProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
-export const setIamPolicyProjectsLocationsConnectionProfiles: API.OperationMethod<
-  SetIamPolicyProjectsLocationsConnectionProfilesRequest,
-  SetIamPolicyProjectsLocationsConnectionProfilesResponse,
-  SetIamPolicyProjectsLocationsConnectionProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsConnectionProfilesRequest,
-  output: SetIamPolicyProjectsLocationsConnectionProfilesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface TestIamPermissionsProjectsLocationsConnectionProfilesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2078,7 +1197,7 @@ export const TestIamPermissionsProjectsLocationsConnectionProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsConnectionProfilesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsConnectionProfilesRequest>;
 
 export type TestIamPermissionsProjectsLocationsConnectionProfilesResponse =
   TestIamPermissionsResponse;
@@ -2102,79 +1221,6 @@ export const testIamPermissionsProjectsLocationsConnectionProfiles: API.Operatio
   input: TestIamPermissionsProjectsLocationsConnectionProfilesRequest,
   output: TestIamPermissionsProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsConnectionProfilesRequest {
-  /** Required. Name of the connection profile resource to get. */
-  name: string;
-}
-
-export const GetProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionProfilesRequest>;
-
-export type GetProjectsLocationsConnectionProfilesResponse = ConnectionProfile;
-export const GetProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConnectionProfile;
-
-export type GetProjectsLocationsConnectionProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single connection profile. */
-export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
-  GetProjectsLocationsConnectionProfilesRequest,
-  GetProjectsLocationsConnectionProfilesResponse,
-  GetProjectsLocationsConnectionProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionProfilesRequest,
-  output: GetProjectsLocationsConnectionProfilesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GetIamPolicyProjectsLocationsConnectionProfilesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionProfilesRequest>;
-
-export type GetIamPolicyProjectsLocationsConnectionProfilesResponse = Policy;
-export const GetIamPolicyProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsConnectionProfilesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsConnectionProfiles: API.OperationMethod<
-  GetIamPolicyProjectsLocationsConnectionProfilesRequest,
-  GetIamPolicyProjectsLocationsConnectionProfilesResponse,
-  GetIamPolicyProjectsLocationsConnectionProfilesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsConnectionProfilesRequest,
-  output: GetIamPolicyProjectsLocationsConnectionProfilesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsConnectionProfilesRequest {
@@ -2203,7 +1249,7 @@ export const CreateProjectsLocationsConnectionProfilesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionProfilesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionProfilesRequest>;
 
 export type CreateProjectsLocationsConnectionProfilesResponse = Operation;
 export const CreateProjectsLocationsConnectionProfilesResponse =
@@ -2228,13 +1274,180 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetIamPolicyProjectsLocationsConnectionProfilesRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsConnectionProfilesRequest>;
+
+export type GetIamPolicyProjectsLocationsConnectionProfilesResponse = Policy;
+export const GetIamPolicyProjectsLocationsConnectionProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsConnectionProfiles: API.OperationMethod<
+  GetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  GetIamPolicyProjectsLocationsConnectionProfilesResponse,
+  GetIamPolicyProjectsLocationsConnectionProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  output: GetIamPolicyProjectsLocationsConnectionProfilesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetProjectsLocationsConnectionProfilesRequest {
+  /** Required. Name of the connection profile resource to get. */
+  name: string;
+}
+
+export const GetProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionProfilesRequest>;
+
+export type GetProjectsLocationsConnectionProfilesResponse = ConnectionProfile;
+export const GetProjectsLocationsConnectionProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ConnectionProfile;
+
+export type GetProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single connection profile. */
+export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
+  GetProjectsLocationsConnectionProfilesRequest,
+  GetProjectsLocationsConnectionProfilesResponse,
+  GetProjectsLocationsConnectionProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsConnectionProfilesRequest,
+  output: GetProjectsLocationsConnectionProfilesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsConnectionProfilesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsConnectionProfilesRequest>;
+
+export type SetIamPolicyProjectsLocationsConnectionProfilesResponse = Policy;
+export const SetIamPolicyProjectsLocationsConnectionProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsConnectionProfiles: API.OperationMethod<
+  SetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  SetIamPolicyProjectsLocationsConnectionProfilesResponse,
+  SetIamPolicyProjectsLocationsConnectionProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsConnectionProfilesRequest,
+  output: SetIamPolicyProjectsLocationsConnectionProfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsConnectionProfilesRequest {
+  /** The maximum number of connection profiles to return. The service may return fewer than this value. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** A page token, received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The parent, which owns this collection of connection profiles. */
+  parent: string;
+  /** the order by fields for the result. */
+  orderBy?: string;
+  /** A filter expression that filters connection profiles listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list connection profiles created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z**. You can also filter nested fields. For example, you could specify **mySql.username = %lt;my_username%gt;** to list all connection profiles configured to connect with a specific username. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsConnectionProfilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/connectionProfiles" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionProfilesRequest>;
+
+export type ListProjectsLocationsConnectionProfilesResponse =
+  ListConnectionProfilesResponse;
+export const ListProjectsLocationsConnectionProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListConnectionProfilesResponse;
+
+export type ListProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Retrieve a list of all connection profiles in a given project and location. */
+export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMethod<
+  ListProjectsLocationsConnectionProfilesRequest,
+  ListProjectsLocationsConnectionProfilesResponse,
+  ListProjectsLocationsConnectionProfilesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsConnectionProfilesRequest,
+  output: ListProjectsLocationsConnectionProfilesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}. */
   name: string;
-  /** Required. Field mask is used to specify the fields to be overwritten in the connection profile resource by the update. */
-  updateMask?: string;
   /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
+  /** Required. Field mask is used to specify the fields to be overwritten in the connection profile resource by the update. */
+  updateMask?: string;
   /** Request body */
   body?: ConnectionProfile;
 }
@@ -2242,13 +1455,13 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
 export const PatchProjectsLocationsConnectionProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ConnectionProfile).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionProfilesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionProfilesRequest>;
 
 export type PatchProjectsLocationsConnectionProfilesResponse = Operation;
 export const PatchProjectsLocationsConnectionProfilesResponse =
@@ -2270,5 +1483,792 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionProfilesRequest,
   output: PatchProjectsLocationsConnectionProfilesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:cancel", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ResumeProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to resume. */
+  name: string;
+  /** Request body */
+  body?: ResumeMigrationJobRequest;
+}
+
+export const ResumeProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ResumeMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:resume", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<ResumeProjectsLocationsMigrationJobsRequest>;
+
+export type ResumeProjectsLocationsMigrationJobsResponse = Operation;
+export const ResumeProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ResumeProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Resume a migration job that is currently stopped and is resumable (was stopped during CDC phase). */
+export const resumeProjectsLocationsMigrationJobs: API.OperationMethod<
+  ResumeProjectsLocationsMigrationJobsRequest,
+  ResumeProjectsLocationsMigrationJobsResponse,
+  ResumeProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ResumeProjectsLocationsMigrationJobsRequest,
+  output: ResumeProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsMigrationJobsRequest {
+  /** Sort the results based on the migration job name. Valid values are: "name", "name asc", and "name desc". */
+  orderBy?: string;
+  /** Required. The parent, which owns this collection of migrationJobs. */
+  parent: string;
+  /** The maximum number of migration jobs to return. The service may return fewer than this value. If unspecified, at most 50 migration jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+  pageSize?: number;
+  /** The nextPageToken value received in the previous call to migrationJobs.list, used in the subsequent request to retrieve the next page of results. On first call this should be left blank. When paginating, all other parameters provided to migrationJobs.list must match the call that provided the page token. */
+  pageToken?: string;
+  /** A filter expression that filters migration jobs listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <. For example, list migration jobs created this year by specifying **createTime %gt; 2020-01-01T00:00:00.000000000Z.** You can also filter nested fields. For example, you could specify **reverseSshConnectivity.vmIp = "1.2.3.4"** to select all migration jobs connecting through the specific SSH tunnel bastion. */
+  filter?: string;
+}
+
+export const ListProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+parent}/migrationJobs" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsMigrationJobsRequest>;
+
+export type ListProjectsLocationsMigrationJobsResponse =
+  ListMigrationJobsResponse;
+export const ListProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListMigrationJobsResponse;
+
+export type ListProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists migration jobs in a given project and location. */
+export const listProjectsLocationsMigrationJobs: API.PaginatedOperationMethod<
+  ListProjectsLocationsMigrationJobsRequest,
+  ListProjectsLocationsMigrationJobsResponse,
+  ListProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsMigrationJobsRequest,
+  output: ListProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GenerateSshScriptProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to generate the SSH script. */
+  migrationJob: string;
+  /** Request body */
+  body?: GenerateSshScriptRequest;
+}
+
+export const GenerateSshScriptProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migrationJob: Schema.String.pipe(T.HttpPath("migrationJob")),
+    body: Schema.optional(GenerateSshScriptRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+migrationJob}:generateSshScript",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GenerateSshScriptProjectsLocationsMigrationJobsRequest>;
+
+export type GenerateSshScriptProjectsLocationsMigrationJobsResponse = SshScript;
+export const GenerateSshScriptProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SshScript;
+
+export type GenerateSshScriptProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Generate a SSH configuration script to configure the reverse SSH connectivity. */
+export const generateSshScriptProjectsLocationsMigrationJobs: API.OperationMethod<
+  GenerateSshScriptProjectsLocationsMigrationJobsRequest,
+  GenerateSshScriptProjectsLocationsMigrationJobsResponse,
+  GenerateSshScriptProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateSshScriptProjectsLocationsMigrationJobsRequest,
+  output: GenerateSshScriptProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsMigrationJobsRequest {
+  /** Required. Name of the migration job resource to delete. */
+  name: string;
+  /** The destination CloudSQL connection profile is always deleted with the migration job. In case of force delete, the destination CloudSQL replica database is also deleted. */
+  force?: boolean;
+  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsMigrationJobsRequest>;
+
+export type DeleteProjectsLocationsMigrationJobsResponse = Operation;
+export const DeleteProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single migration job. */
+export const deleteProjectsLocationsMigrationJobs: API.OperationMethod<
+  DeleteProjectsLocationsMigrationJobsRequest,
+  DeleteProjectsLocationsMigrationJobsResponse,
+  DeleteProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsMigrationJobsRequest,
+  output: DeleteProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PromoteProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to promote. */
+  name: string;
+  /** Request body */
+  body?: PromoteMigrationJobRequest;
+}
+
+export const PromoteProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(PromoteMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:promote", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PromoteProjectsLocationsMigrationJobsRequest>;
+
+export type PromoteProjectsLocationsMigrationJobsResponse = Operation;
+export const PromoteProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PromoteProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Promote a migration job, stopping replication to the destination and promoting the destination to be a standalone database. */
+export const promoteProjectsLocationsMigrationJobs: API.OperationMethod<
+  PromoteProjectsLocationsMigrationJobsRequest,
+  PromoteProjectsLocationsMigrationJobsResponse,
+  PromoteProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PromoteProjectsLocationsMigrationJobsRequest,
+  output: PromoteProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface StopProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to stop. */
+  name: string;
+  /** Request body */
+  body?: StopMigrationJobRequest;
+}
+
+export const StopProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(StopMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:stop", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<StopProjectsLocationsMigrationJobsRequest>;
+
+export type StopProjectsLocationsMigrationJobsResponse = Operation;
+export const StopProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type StopProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Stops a running migration job. */
+export const stopProjectsLocationsMigrationJobs: API.OperationMethod<
+  StopProjectsLocationsMigrationJobsRequest,
+  StopProjectsLocationsMigrationJobsResponse,
+  StopProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopProjectsLocationsMigrationJobsRequest,
+  output: StopProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsMigrationJobsRequest {
+  /** Required. Name of the migration job resource to get. */
+  name: string;
+}
+
+export const GetProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsMigrationJobsRequest>;
+
+export type GetProjectsLocationsMigrationJobsResponse = MigrationJob;
+export const GetProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ MigrationJob;
+
+export type GetProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single migration job. */
+export const getProjectsLocationsMigrationJobs: API.OperationMethod<
+  GetProjectsLocationsMigrationJobsRequest,
+  GetProjectsLocationsMigrationJobsResponse,
+  GetProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsMigrationJobsRequest,
+  output: GetProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface SetIamPolicyProjectsLocationsMigrationJobsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+
+export const SetIamPolicyProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:setIamPolicy",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsMigrationJobsRequest>;
+
+export type SetIamPolicyProjectsLocationsMigrationJobsResponse = Policy;
+export const SetIamPolicyProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type SetIamPolicyProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
+export const setIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
+  SetIamPolicyProjectsLocationsMigrationJobsRequest,
+  SetIamPolicyProjectsLocationsMigrationJobsResponse,
+  SetIamPolicyProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetIamPolicyProjectsLocationsMigrationJobsRequest,
+  output: SetIamPolicyProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsMigrationJobsRequest {
+  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
+  requestId?: string;
+  /** Required. Field mask is used to specify the fields to be overwritten in the migration job resource by the update. */
+  updateMask?: string;
+  /** The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. */
+  name: string;
+  /** Request body */
+  body?: MigrationJob;
+}
+
+export const PatchProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(MigrationJob).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1beta1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsMigrationJobsRequest>;
+
+export type PatchProjectsLocationsMigrationJobsResponse = Operation;
+export const PatchProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the parameters of a single migration job. */
+export const patchProjectsLocationsMigrationJobs: API.OperationMethod<
+  PatchProjectsLocationsMigrationJobsRequest,
+  PatchProjectsLocationsMigrationJobsResponse,
+  PatchProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsMigrationJobsRequest,
+  output: PatchProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface VerifyProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to verify. */
+  name: string;
+  /** Request body */
+  body?: VerifyMigrationJobRequest;
+}
+
+export const VerifyProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(VerifyMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:verify", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<VerifyProjectsLocationsMigrationJobsRequest>;
+
+export type VerifyProjectsLocationsMigrationJobsResponse = Operation;
+export const VerifyProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type VerifyProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Verify a migration job, making sure the destination can reach the source and that all configuration and prerequisites are met. */
+export const verifyProjectsLocationsMigrationJobs: API.OperationMethod<
+  VerifyProjectsLocationsMigrationJobsRequest,
+  VerifyProjectsLocationsMigrationJobsResponse,
+  VerifyProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: VerifyProjectsLocationsMigrationJobsRequest,
+  output: VerifyProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsMigrationJobsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta1/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsMigrationJobsRequest>;
+
+export type GetIamPolicyProjectsLocationsMigrationJobsResponse = Policy;
+export const GetIamPolicyProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsMigrationJobs: API.OperationMethod<
+  GetIamPolicyProjectsLocationsMigrationJobsRequest,
+  GetIamPolicyProjectsLocationsMigrationJobsResponse,
+  GetIamPolicyProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsMigrationJobsRequest,
+  output: GetIamPolicyProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface StartProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to start. */
+  name: string;
+  /** Request body */
+  body?: StartMigrationJobRequest;
+}
+
+export const StartProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(StartMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:start", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<StartProjectsLocationsMigrationJobsRequest>;
+
+export type StartProjectsLocationsMigrationJobsResponse = Operation;
+export const StartProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type StartProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Start an already created migration job. */
+export const startProjectsLocationsMigrationJobs: API.OperationMethod<
+  StartProjectsLocationsMigrationJobsRequest,
+  StartProjectsLocationsMigrationJobsResponse,
+  StartProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartProjectsLocationsMigrationJobsRequest,
+  output: StartProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateProjectsLocationsMigrationJobsRequest {
+  /** Required. The parent, which owns this collection of migration jobs. */
+  parent: string;
+  /** A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
+  requestId?: string;
+  /** Required. The ID of the instance to create. */
+  migrationJobId?: string;
+  /** Request body */
+  body?: MigrationJob;
+}
+
+export const CreateProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    migrationJobId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("migrationJobId"),
+    ),
+    body: Schema.optional(MigrationJob).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+parent}/migrationJobs",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsLocationsMigrationJobsRequest>;
+
+export type CreateProjectsLocationsMigrationJobsResponse = Operation;
+export const CreateProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CreateProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new migration job in a given project and location. */
+export const createProjectsLocationsMigrationJobs: API.OperationMethod<
+  CreateProjectsLocationsMigrationJobsRequest,
+  CreateProjectsLocationsMigrationJobsResponse,
+  CreateProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsMigrationJobsRequest,
+  output: CreateProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface RestartProjectsLocationsMigrationJobsRequest {
+  /** Name of the migration job resource to restart. */
+  name: string;
+  /** Request body */
+  body?: RestartMigrationJobRequest;
+}
+
+export const RestartProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RestartMigrationJobRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta1/{+name}:restart", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<RestartProjectsLocationsMigrationJobsRequest>;
+
+export type RestartProjectsLocationsMigrationJobsResponse = Operation;
+export const RestartProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type RestartProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Restart a stopped or failed migration job, resetting the destination instance to its original state and starting the migration process from scratch. */
+export const restartProjectsLocationsMigrationJobs: API.OperationMethod<
+  RestartProjectsLocationsMigrationJobsRequest,
+  RestartProjectsLocationsMigrationJobsResponse,
+  RestartProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RestartProjectsLocationsMigrationJobsRequest,
+  output: RestartProjectsLocationsMigrationJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface TestIamPermissionsProjectsLocationsMigrationJobsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+
+export const TestIamPermissionsProjectsLocationsMigrationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta1/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsMigrationJobsRequest>;
+
+export type TestIamPermissionsProjectsLocationsMigrationJobsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+
+export type TestIamPermissionsProjectsLocationsMigrationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsMigrationJobs: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsMigrationJobsRequest,
+  TestIamPermissionsProjectsLocationsMigrationJobsResponse,
+  TestIamPermissionsProjectsLocationsMigrationJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TestIamPermissionsProjectsLocationsMigrationJobsRequest,
+  output: TestIamPermissionsProjectsLocationsMigrationJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

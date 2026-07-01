@@ -9,17 +9,34 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationPermissionsControllerCreateInput {
+  slug?: string;
+  name?: string;
+  description?: string | null;
+  resource_type_slug?: string;
+}
 export const AuthorizationPermissionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
     resource_type_slug: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/authorization/permissions" }));
-export type AuthorizationPermissionsControllerCreateInput =
-  typeof AuthorizationPermissionsControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/authorization/permissions" }),
+  ) as unknown as Schema.Codec<AuthorizationPermissionsControllerCreateInput>;
 
 // Output Schema
+export interface AuthorizationPermissionsControllerCreateOutput {
+  object: string;
+  id: string;
+  slug: string;
+  name: string;
+  description: string | null;
+  system: boolean;
+  resource_type_slug: string;
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationPermissionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -31,9 +48,7 @@ export const AuthorizationPermissionsControllerCreateOutput =
     resource_type_slug: Schema.String,
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type AuthorizationPermissionsControllerCreateOutput =
-  typeof AuthorizationPermissionsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationPermissionsControllerCreateOutput>;
 
 // The operation
 /**

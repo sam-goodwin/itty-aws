@@ -3,6 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface UpdateMaskingRulesInput {
+  project_id: string;
+  branch_id: string;
+  masking_rules: {
+    database_name: string;
+    schema_name: string;
+    table_name: string;
+    column_name: string;
+    masking_function?: string;
+    masking_value?: string;
+  }[];
+}
 export const UpdateMaskingRulesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -22,10 +34,19 @@ export const UpdateMaskingRulesInput =
       method: "PATCH",
       path: "/projects/{project_id}/branches/{branch_id}/masking_rules",
     }),
-  );
-export type UpdateMaskingRulesInput = typeof UpdateMaskingRulesInput.Type;
+  ) as unknown as Schema.Codec<UpdateMaskingRulesInput>;
 
 // Output Schema
+export interface UpdateMaskingRulesOutput {
+  masking_rules: {
+    database_name: string;
+    schema_name: string;
+    table_name: string;
+    column_name: string;
+    masking_function?: string;
+    masking_value?: string;
+  }[];
+}
 export const UpdateMaskingRulesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     masking_rules: Schema.Array(
@@ -38,8 +59,7 @@ export const UpdateMaskingRulesOutput =
         masking_value: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type UpdateMaskingRulesOutput = typeof UpdateMaskingRulesOutput.Type;
+  }) as unknown as Schema.Codec<UpdateMaskingRulesOutput>;
 
 // The operation
 /**
@@ -47,8 +67,6 @@ export type UpdateMaskingRulesOutput = typeof UpdateMaskingRulesOutput.Type;
  *
  * Updates the masking rules for the specified anonymized branch.
  * Masking rules define how sensitive data should be anonymized using PostgreSQL Anonymizer.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

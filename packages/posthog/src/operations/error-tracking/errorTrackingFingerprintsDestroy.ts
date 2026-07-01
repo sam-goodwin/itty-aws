@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingFingerprintsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ErrorTrackingFingerprintsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,14 @@ export const ErrorTrackingFingerprintsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/error_tracking/fingerprints/{id}/",
+      path: "/api/projects/{project_id}/error_tracking/fingerprints/{id}/",
     }),
-  );
-export type ErrorTrackingFingerprintsDestroyInput =
-  typeof ErrorTrackingFingerprintsDestroyInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingFingerprintsDestroyInput>;
 
 // Output Schema
+export type ErrorTrackingFingerprintsDestroyOutput = void;
 export const ErrorTrackingFingerprintsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ErrorTrackingFingerprintsDestroyOutput =
-  typeof ErrorTrackingFingerprintsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingFingerprintsDestroyOutput>;
 
 // The operation
 /**
@@ -33,5 +33,4 @@ export const errorTrackingFingerprintsDestroy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingFingerprintsDestroyInput,
     outputSchema: ErrorTrackingFingerprintsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

@@ -10,6 +10,7 @@
     "moduleResolution": "bundler",
     "verbatimModuleSyntax": true,
     "rewriteRelativeImportExtensions": true,
+    "allowImportingTsExtensions": true,
     "noEmit": false,
     "composite": true,
     "declaration": true,

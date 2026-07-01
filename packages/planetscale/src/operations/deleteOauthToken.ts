@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOauthTokenInput {
+  organization: string;
+  application_id: string;
+  token_id: string;
+}
 export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
@@ -13,12 +18,12 @@ export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/oauth-applications/{application_id}/tokens/{token_id}",
   }),
-);
-export type DeleteOauthTokenInput = typeof DeleteOauthTokenInput.Type;
+) as unknown as Schema.Codec<DeleteOauthTokenInput>;
 
 // Output Schema
-export const DeleteOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOauthTokenOutput = typeof DeleteOauthTokenOutput.Type;
+export type DeleteOauthTokenOutput = void;
+export const DeleteOauthTokenOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOauthTokenOutput>;
 
 // The operation
 /**

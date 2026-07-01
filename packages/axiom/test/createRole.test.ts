@@ -22,6 +22,6 @@ describe("createRole", () => {
 
       expect((error as { _tag: string })._tag).toBe("Forbidden");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

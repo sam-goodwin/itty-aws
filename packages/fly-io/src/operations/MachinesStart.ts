@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesStartInput {
+  app_name: string;
+  machine_id: string;
+}
 export const MachinesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const MachinesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/machines/{machine_id}/start",
   }),
-);
-export type MachinesStartInput = typeof MachinesStartInput.Type;
+) as unknown as Schema.Codec<MachinesStartInput>;
 
 // Output Schema
-export const MachinesStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesStartOutput = typeof MachinesStartOutput.Type;
+export type MachinesStartOutput = void;
+export const MachinesStartOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStartOutput>;
 
 // The operation
 /**

@@ -1,7 +1,21 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare EMAIL-ROUTING API
+  title: Cloudflare Email Routing API (patch overrides)
   version: 0.0.0
+  description: |
+    Restores `listRules`, which upstream `cloudflare-typescript` removed from
+    its generated `Rules` class in v6.5.0 (commit 90eea55,
+    "chore(email-routing): update codegen output"
+    https://github.com/cloudflare/cloudflare-typescript/commit/90eea555f6e84cbc4002704af4b8e1645b842acb).
+    That commit only deleted the `list()` method (and its
+    `RuleListParams`/`EmailRoutingRulesV4PagePaginationArray` types) from the
+    SDK's internal spec — the underlying `GET /zones/{zone_id}/email/routing/rules`
+    endpoint is unaffected (still documented at
+    https://developers.cloudflare.com/api/node/resources/email_routing/subresources/rules/methods/list/)
+    and `create`/`update`/`delete`/`get` for rules were untouched. This file
+    re-declares the operation exactly as it existed pre-removal so
+    `emailRouting.listRules` keeps working; drop this patch once Cloudflare
+    restores the method upstream.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: email-routing
@@ -597,6 +611,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -670,6 +691,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -797,6 +825,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -868,6 +903,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -939,6 +981,13 @@ paths:
                       - unlocked
                     description: Show the state of your account, and the type or configuration
                       error.
+                  support_subaddress:
+                    type: boolean
+                    enum:
+                      - true
+                      - false
+                    description: Whether subaddressing (plus-addressing) is honored when matching
+                      incoming mail against routing rules.
                   tag:
                     type: string
                     description: "@deprecated Email Routing settings tag. (Deprecated, replaced by
@@ -1284,36 +1333,32 @@ paths:
   /zones/{zone_id}/email/routing/rules:
     get:
       operationId: listRules
-      description: "Lists existing routing rules.  @example ```ts // Automatically
-        fetches more pages as needed. for await (const emailRoutingRule of
-        client.emailRouting.rules.list( { zone_id:
-        '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
+      summary: Lists existing routing rules.
       parameters:
         - name: zone_id
           in: path
           required: true
-          description: "Path param: Identifier."
+          description: Identifier.
           schema:
             type: string
         - name: page
           in: query
           required: false
+          description: Page number of paginated results.
           schema:
             type: number
         - name: per_page
           in: query
           required: false
+          description: Maximum number of results per page.
           schema:
             type: number
         - name: enabled
           in: query
           required: false
-          description: "Query param: Filter by enabled routing rules."
+          description: Filter by enabled routing rules.
           schema:
             type: boolean
-            enum:
-              - true
-              - false
       responses:
         "200":
           description: Success
@@ -1323,66 +1368,81 @@ paths:
                 type: object
                 properties:
                   id:
-                    type: string
+                    oneOf:
+                      - type: string
+                    nullable: true
                     description: Routing rule identifier.
                   actions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - drop
-                            - forward
-                            - worker
-                          description: Type of supported action.
-                        value:
-                          type: array
-                          items:
-                            type: string
-                      required:
-                        - type
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - drop
+                                - forward
+                                - worker
+                              description: Type of supported action.
+                            value:
+                              oneOf:
+                                - type: array
+                                  items:
+                                    type: string
+                              nullable: true
+                          required:
+                            - type
+                    nullable: true
                     description: List actions patterns.
                   enabled:
-                    type: boolean
-                    enum:
-                      - true
-                      - false
+                    oneOf:
+                      - type: boolean
+                    nullable: true
                     description: Routing rule status.
                   matchers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - all
-                            - literal
-                          description: Type of matcher.
-                        field:
-                          type: string
-                          enum:
-                            - to
-                          description: Field for type matcher.
-                        value:
-                          type: string
-                          description: Value for matcher.
-                      required:
-                        - type
+                    oneOf:
+                      - type: array
+                        items:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - all
+                                - literal
+                              description: Type of matcher.
+                            field:
+                              type: string
+                              enum:
+                                - to
+                              nullable: true
+                              description: Field for type matcher.
+                            value:
+                              oneOf:
+                                - type: string
+                              nullable: true
+                              description: Value for matcher.
+                          required:
+                            - type
+                    nullable: true
                     description: Matching patterns to forward to your actions.
                   name:
-                    type: string
+                    oneOf:
+                      - type: string
+                    nullable: true
                     description: Routing rule name.
                   priority:
-                    type: number
+                    oneOf:
+                      - type: number
+                    nullable: true
                     description: Priority of the routing rule.
                   tag:
-                    type: string
-                    description: "@deprecated Routing rule tag. (Deprecated, replaced by routing
-                      rule identifier)"
-      x-distilled-pagination-class: EmailRoutingRulesV4PagePaginationArray
+                    oneOf:
+                      - type: string
+                    nullable: true
+                    description: Routing rule tag. (Deprecated, replaced by routing rule identifier)
+      x-distilled-pagination-class: V4PagePaginationArray
     post:
       operationId: createRule
       description: "Rules consist of a set of criteria for matching emails (such as an

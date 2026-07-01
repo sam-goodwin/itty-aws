@@ -4,14 +4,55 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ActiveDirectoryConnectorsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+  activeDirectoryConnectorName: string;
+  properties: {
+    domainServiceAccountLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    provisioningState?: string;
+    spec: {
+      activeDirectory: {
+        realm: string;
+        netbiosDomainName?: string;
+        serviceAccountProvisioning?: "automatic" | "manual";
+        ouDistinguishedName?: string;
+        domainControllers?: {
+          primaryDomainController?: { hostname: string };
+          secondaryDomainControllers?: { hostname: string }[];
+        };
+      };
+      dns: {
+        domainName?: string;
+        nameserverIPAddresses: string[];
+        replicas?: number;
+        preferK8sDnsForPtrLookups?: boolean;
+      };
+    };
+    status?: {
+      lastUpdateTime?: string;
+      observedGeneration?: number;
+      state?: string;
+    };
+  };
+}
 export const ActiveDirectoryConnectorsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       domainServiceAccountLoginInformation: Schema.optional(
         Schema.Struct({
@@ -66,11 +107,22 @@ export const ActiveDirectoryConnectorsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type ActiveDirectoryConnectorsCreateInput =
-  typeof ActiveDirectoryConnectorsCreateInput.Type;
+  ) as unknown as Schema.Codec<ActiveDirectoryConnectorsCreateInput>;
 
 // Output Schema
+export interface ActiveDirectoryConnectorsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ActiveDirectoryConnectorsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -90,13 +142,17 @@ export const ActiveDirectoryConnectorsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ActiveDirectoryConnectorsCreateOutput =
-  typeof ActiveDirectoryConnectorsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ActiveDirectoryConnectorsCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces an Active Directory connector resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const ActiveDirectoryConnectorsCreate =
@@ -105,26 +161,40 @@ export const ActiveDirectoryConnectorsCreate =
     outputSchema: ActiveDirectoryConnectorsCreateOutput,
   }));
 // Input Schema
+export interface ActiveDirectoryConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+  activeDirectoryConnectorName: string;
+}
 export const ActiveDirectoryConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type ActiveDirectoryConnectorsDeleteInput =
-  typeof ActiveDirectoryConnectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ActiveDirectoryConnectorsDeleteInput>;
 
 // Output Schema
+export type ActiveDirectoryConnectorsDeleteOutput = void;
 export const ActiveDirectoryConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ActiveDirectoryConnectorsDeleteOutput =
-  typeof ActiveDirectoryConnectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActiveDirectoryConnectorsDeleteOutput>;
 
 // The operation
 /**
  * Deletes an Active Directory connector resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -132,18 +202,40 @@ export const ActiveDirectoryConnectorsDelete =
     outputSchema: ActiveDirectoryConnectorsDeleteOutput,
   }));
 // Input Schema
+export interface ActiveDirectoryConnectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+  activeDirectoryConnectorName: string;
+}
 export const ActiveDirectoryConnectorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+    activeDirectoryConnectorName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type ActiveDirectoryConnectorsGetInput =
-  typeof ActiveDirectoryConnectorsGetInput.Type;
+  ) as unknown as Schema.Codec<ActiveDirectoryConnectorsGetInput>;
 
 // Output Schema
+export interface ActiveDirectoryConnectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ActiveDirectoryConnectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -163,13 +255,17 @@ export const ActiveDirectoryConnectorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ActiveDirectoryConnectorsGetOutput =
-  typeof ActiveDirectoryConnectorsGetOutput.Type;
+  }) as unknown as Schema.Codec<ActiveDirectoryConnectorsGetOutput>;
 
 // The operation
 /**
  * Retrieves an Active Directory connector resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param activeDirectoryConnectorName - The name of the Active Directory connector instance
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -177,18 +273,41 @@ export const ActiveDirectoryConnectorsGet =
     outputSchema: ActiveDirectoryConnectorsGetOutput,
   }));
 // Input Schema
+export interface ActiveDirectoryConnectorsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+}
 export const ActiveDirectoryConnectorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
       apiVersion: "2026-01-01",
     }),
-  );
-export type ActiveDirectoryConnectorsListInput =
-  typeof ActiveDirectoryConnectorsListInput.Type;
+  ) as unknown as Schema.Codec<ActiveDirectoryConnectorsListInput>;
 
 // Output Schema
+export interface ActiveDirectoryConnectorsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ActiveDirectoryConnectorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -225,13 +344,16 @@ export const ActiveDirectoryConnectorsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ActiveDirectoryConnectorsListOutput =
-  typeof ActiveDirectoryConnectorsListOutput.Type;
+  }) as unknown as Schema.Codec<ActiveDirectoryConnectorsListOutput>;
 
 // The operation
 /**
  * List the active directory connectors associated with the given data controller.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -239,26 +361,37 @@ export const ActiveDirectoryConnectorsList =
     outputSchema: ActiveDirectoryConnectorsListOutput,
   }));
 // Input Schema
+export interface DataControllersDeleteDataControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+}
 export const DataControllersDeleteDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersDeleteDataControllerInput =
-  typeof DataControllersDeleteDataControllerInput.Type;
+  ) as unknown as Schema.Codec<DataControllersDeleteDataControllerInput>;
 
 // Output Schema
+export type DataControllersDeleteDataControllerOutput = void;
 export const DataControllersDeleteDataControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DataControllersDeleteDataControllerOutput =
-  typeof DataControllersDeleteDataControllerOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataControllersDeleteDataControllerOutput>;
 
 // The operation
 /**
  * Deletes a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersDeleteDataController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -266,18 +399,38 @@ export const DataControllersDeleteDataController =
     outputSchema: DataControllersDeleteDataControllerOutput,
   }));
 // Input Schema
+export interface DataControllersGetDataControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+}
 export const DataControllersGetDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersGetDataControllerInput =
-  typeof DataControllersGetDataControllerInput.Type;
+  ) as unknown as Schema.Codec<DataControllersGetDataControllerInput>;
 
 // Output Schema
+export interface DataControllersGetDataControllerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataControllersGetDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -297,13 +450,16 @@ export const DataControllersGetDataControllerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataControllersGetDataControllerOutput =
-  typeof DataControllersGetDataControllerOutput.Type;
+  }) as unknown as Schema.Codec<DataControllersGetDataControllerOutput>;
 
 // The operation
 /**
  * Retrieves a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersGetDataController =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -311,18 +467,39 @@ export const DataControllersGetDataController =
     outputSchema: DataControllersGetDataControllerOutput,
   }));
 // Input Schema
+export interface DataControllersListInGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DataControllersListInGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersListInGroupInput =
-  typeof DataControllersListInGroupInput.Type;
+  ) as unknown as Schema.Codec<DataControllersListInGroupInput>;
 
 // Output Schema
+export interface DataControllersListInGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataControllersListInGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -359,13 +536,15 @@ export const DataControllersListInGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataControllersListInGroupOutput =
-  typeof DataControllersListInGroupOutput.Type;
+  }) as unknown as Schema.Codec<DataControllersListInGroupOutput>;
 
 // The operation
 /**
  * List dataController resources in the resource group
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersListInGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -374,18 +553,37 @@ export const DataControllersListInGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataControllersListInSubscriptionInput {
+  subscriptionId: string;
+}
 export const DataControllersListInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersListInSubscriptionInput =
-  typeof DataControllersListInSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DataControllersListInSubscriptionInput>;
 
 // Output Schema
+export interface DataControllersListInSubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataControllersListInSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -422,13 +620,14 @@ export const DataControllersListInSubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataControllersListInSubscriptionOutput =
-  typeof DataControllersListInSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DataControllersListInSubscriptionOutput>;
 
 // The operation
 /**
  * List dataController resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const DataControllersListInSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -436,8 +635,56 @@ export const DataControllersListInSubscription =
     outputSchema: DataControllersListInSubscriptionOutput,
   }));
 // Input Schema
+export interface DataControllersPatchDataControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    infrastructure?:
+      | "azure"
+      | "gcp"
+      | "aws"
+      | "alibaba"
+      | "onpremises"
+      | "other";
+    onPremiseProperty?: {
+      id: string;
+      publicSigningKey: string;
+      signingCertificateThumbprint?: string;
+    };
+    k8sRaw?: unknown;
+    uploadWatermark?: { metrics?: string; logs?: string; usages?: string };
+    lastUploadedDate?: string;
+    basicLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    metricsDashboardCredential?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    logsDashboardCredential?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    logAnalyticsWorkspaceConfig?: { workspaceId?: string; primaryKey?: string };
+    uploadServicePrincipal?: {
+      clientId?: string;
+      tenantId?: string;
+      authority?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+    };
+    provisioningState?: string;
+    clusterId?: string;
+    extensionId?: string;
+  };
+}
 export const DataControllersPatchDataControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -510,11 +757,22 @@ export const DataControllersPatchDataControllerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersPatchDataControllerInput =
-  typeof DataControllersPatchDataControllerInput.Type;
+  ) as unknown as Schema.Codec<DataControllersPatchDataControllerInput>;
 
 // Output Schema
+export interface DataControllersPatchDataControllerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataControllersPatchDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -534,13 +792,16 @@ export const DataControllersPatchDataControllerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataControllersPatchDataControllerOutput =
-  typeof DataControllersPatchDataControllerOutput.Type;
+  }) as unknown as Schema.Codec<DataControllersPatchDataControllerOutput>;
 
 // The operation
 /**
  * Updates a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags
  * @param properties - The data controller's properties
  */
@@ -550,8 +811,58 @@ export const DataControllersPatchDataController =
     outputSchema: DataControllersPatchDataControllerOutput,
   }));
 // Input Schema
+export interface DataControllersPutDataControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dataControllerName: string;
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  properties: {
+    infrastructure?:
+      | "azure"
+      | "gcp"
+      | "aws"
+      | "alibaba"
+      | "onpremises"
+      | "other";
+    onPremiseProperty?: {
+      id: string;
+      publicSigningKey: string;
+      signingCertificateThumbprint?: string;
+    };
+    k8sRaw?: unknown;
+    uploadWatermark?: { metrics?: string; logs?: string; usages?: string };
+    lastUploadedDate?: string;
+    basicLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    metricsDashboardCredential?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    logsDashboardCredential?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    logAnalyticsWorkspaceConfig?: { workspaceId?: string; primaryKey?: string };
+    uploadServicePrincipal?: {
+      clientId?: string;
+      tenantId?: string;
+      authority?: string;
+      clientSecret?: string | Redacted.Redacted<string>;
+    };
+    provisioningState?: string;
+    clusterId?: string;
+    extensionId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DataControllersPutDataControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dataControllerName: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -629,11 +940,22 @@ export const DataControllersPutDataControllerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type DataControllersPutDataControllerInput =
-  typeof DataControllersPutDataControllerInput.Type;
+  ) as unknown as Schema.Codec<DataControllersPutDataControllerInput>;
 
 // Output Schema
+export interface DataControllersPutDataControllerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataControllersPutDataControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -653,13 +975,16 @@ export const DataControllersPutDataControllerOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataControllersPutDataControllerOutput =
-  typeof DataControllersPutDataControllerOutput.Type;
+  }) as unknown as Schema.Codec<DataControllersPutDataControllerOutput>;
 
 // The operation
 /**
  * Creates or replaces a dataController resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param dataControllerName - The name of the data controller
+ * @param api-version - The API version to use for the request
  * @param extendedLocation - The complex type of the extended location.
  * @param properties - The data controller's properties
  */
@@ -669,8 +994,36 @@ export const DataControllersPutDataController =
     outputSchema: DataControllersPutDataControllerOutput,
   }));
 // Input Schema
+export interface FailoverGroupsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+  failoverGroupName: string;
+  properties: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled" | "Accepted";
+    partnerManagedInstanceId: string;
+    spec: {
+      sharedName?: string;
+      sourceMI?: string;
+      partnerMI?: string;
+      partnerMirroringURL?: string;
+      partnerMirroringCert?: string;
+      partnerSyncMode?: "async" | "sync";
+      role:
+        | "primary"
+        | "secondary"
+        | "force-primary-allow-data-loss"
+        | "force-secondary";
+    };
+    status?: unknown;
+  };
+}
 export const FailoverGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals(["Succeeded", "Failed", "Canceled", "Accepted"]),
@@ -698,10 +1051,22 @@ export const FailoverGroupsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type FailoverGroupsCreateInput = typeof FailoverGroupsCreateInput.Type;
+  ) as unknown as Schema.Codec<FailoverGroupsCreateInput>;
 
 // Output Schema
+export interface FailoverGroupsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FailoverGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -721,12 +1086,17 @@ export const FailoverGroupsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FailoverGroupsCreateOutput = typeof FailoverGroupsCreateOutput.Type;
+  }) as unknown as Schema.Codec<FailoverGroupsCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces a failover group resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const FailoverGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -736,24 +1106,40 @@ export const FailoverGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FailoverGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+  failoverGroupName: string;
+}
 export const FailoverGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type FailoverGroupsDeleteInput = typeof FailoverGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<FailoverGroupsDeleteInput>;
 
 // Output Schema
+export type FailoverGroupsDeleteOutput = void;
 export const FailoverGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FailoverGroupsDeleteOutput = typeof FailoverGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FailoverGroupsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a failover group resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -762,18 +1148,41 @@ export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FailoverGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+  failoverGroupName: string;
+}
 export const FailoverGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+    failoverGroupName: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
     apiVersion: "2026-01-01",
   }),
-);
-export type FailoverGroupsGetInput = typeof FailoverGroupsGetInput.Type;
+) as unknown as Schema.Codec<FailoverGroupsGetInput>;
 
 // Output Schema
+export interface FailoverGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FailoverGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -793,29 +1202,58 @@ export const FailoverGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FailoverGroupsGetOutput = typeof FailoverGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<FailoverGroupsGetOutput>;
 
 // The operation
 /**
  * Retrieves a failover group resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param failoverGroupName - The name of the Failover Group
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsGetInput,
   outputSchema: FailoverGroupsGetOutput,
 }));
 // Input Schema
+export interface FailoverGroupsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+}
 export const FailoverGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
       apiVersion: "2026-01-01",
     }),
-  );
-export type FailoverGroupsListInput = typeof FailoverGroupsListInput.Type;
+  ) as unknown as Schema.Codec<FailoverGroupsListInput>;
 
 // Output Schema
+export interface FailoverGroupsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FailoverGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -852,18 +1290,23 @@ export const FailoverGroupsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FailoverGroupsListOutput = typeof FailoverGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<FailoverGroupsListOutput>;
 
 // The operation
 /**
  * List the failover groups associated with the given sql managed instance.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const FailoverGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsListInput,
   outputSchema: FailoverGroupsListOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -872,10 +1315,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.AzureArcData/operations",
     apiVersion: "2026-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name: string;
+    display: {
+      provider: string;
+      resource: string;
+      operation: string;
+      description: string;
+    };
+    origin?: "user" | "system";
+    isDataAction: boolean;
+    properties?: Record<string, unknown>;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -896,20 +1353,50 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Lists all of the available Azure Data Services on Azure Arc API operations.
+ *
+ * @param api-version - The API version to use for the request
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PostgresInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  postgresInstanceName: string;
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  properties: {
+    dataControllerId?: string;
+    admin?: string;
+    basicLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    k8sRaw?: unknown;
+    lastUploadedDate?: string;
+    provisioningState?: string;
+  };
+  sku?: {
+    name: string;
+    dev?: boolean;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PostgresInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -946,11 +1433,22 @@ export const PostgresInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesCreateInput =
-  typeof PostgresInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesCreateInput>;
 
 // Output Schema
+export interface PostgresInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PostgresInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -970,13 +1468,16 @@ export const PostgresInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PostgresInstancesCreateOutput =
-  typeof PostgresInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<PostgresInstancesCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  * @param extendedLocation - The complex type of the extended location.
  * @param properties - null
  * @param sku - Resource sku.
@@ -988,26 +1489,37 @@ export const PostgresInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PostgresInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  postgresInstanceName: string;
+}
 export const PostgresInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesDeleteInput =
-  typeof PostgresInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesDeleteInput>;
 
 // Output Schema
+export type PostgresInstancesDeleteOutput = void;
 export const PostgresInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PostgresInstancesDeleteOutput =
-  typeof PostgresInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PostgresInstancesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1016,17 +1528,38 @@ export const PostgresInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PostgresInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  postgresInstanceName: string;
+}
 export const PostgresInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesGetInput = typeof PostgresInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesGetInput>;
 
 // Output Schema
+export interface PostgresInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PostgresInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1046,12 +1579,16 @@ export const PostgresInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PostgresInstancesGetOutput = typeof PostgresInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<PostgresInstancesGetOutput>;
 
 // The operation
 /**
  * Retrieves a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1060,17 +1597,37 @@ export const PostgresInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PostgresInstancesListInput {
+  subscriptionId: string;
+}
 export const PostgresInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesListInput = typeof PostgresInstancesListInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesListInput>;
 
 // Output Schema
+export interface PostgresInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PostgresInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1107,13 +1664,14 @@ export const PostgresInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PostgresInstancesListOutput =
-  typeof PostgresInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<PostgresInstancesListOutput>;
 
 // The operation
 /**
  * List postgres Instance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1122,18 +1680,39 @@ export const PostgresInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PostgresInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PostgresInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesListByResourceGroupInput =
-  typeof PostgresInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface PostgresInstancesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PostgresInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1170,15 +1749,17 @@ export const PostgresInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PostgresInstancesListByResourceGroupOutput =
-  typeof PostgresInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PostgresInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
  * List postgres Instance resources in the resource group
  *
  * Get a postgres Instances list by Resource group name.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1186,8 +1767,28 @@ export const PostgresInstancesListByResourceGroup =
     outputSchema: PostgresInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PostgresInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  postgresInstanceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    dataControllerId?: string;
+    admin?: string;
+    basicLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    k8sRaw?: unknown;
+    lastUploadedDate?: string;
+    provisioningState?: string;
+  };
+}
 export const PostgresInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    postgresInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -1210,11 +1811,22 @@ export const PostgresInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances/{postgresInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type PostgresInstancesUpdateInput =
-  typeof PostgresInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<PostgresInstancesUpdateInput>;
 
 // Output Schema
+export interface PostgresInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PostgresInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1234,13 +1846,16 @@ export const PostgresInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PostgresInstancesUpdateOutput =
-  typeof PostgresInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PostgresInstancesUpdateOutput>;
 
 // The operation
 /**
  * Updates a postgres Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param postgresInstanceName - Name of Postgres Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
 export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1250,8 +1865,77 @@ export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlManagedInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+  properties: {
+    dataControllerId?: string;
+    admin?: string;
+    startTime?: string;
+    endTime?: string;
+    k8sRaw?: {
+      spec?: {
+        scheduling?: {
+          default?: {
+            resources?: {
+              requests?: Record<string, string>;
+              limits?: Record<string, string>;
+            };
+          };
+        };
+        replicas?: number;
+        security?: {
+          adminLoginSecret?: string;
+          serviceCertificateSecret?: string;
+          activeDirectory?: {
+            connector?: { name?: string; namespace?: string };
+            accountName?: string;
+            keytabSecret?: string;
+            encryptionTypes?: string[];
+          };
+          transparentDataEncryption?: {
+            mode?: string;
+            protectorSecret?: string;
+          };
+        };
+        settings?: {
+          network?: {
+            forceencryption?: number;
+            tlsciphers?: string;
+            tlsprotocols?: string;
+          };
+        };
+      };
+    };
+    basicLoginInformation?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    lastUploadedDate?: string;
+    provisioningState?: string;
+    activeDirectoryInformation?: { keytabInformation?: { keytab?: string } };
+    licenseType?: "BasePrice" | "LicenseIncluded" | "DisasterRecovery";
+    clusterId?: string;
+    extensionId?: string;
+  };
+  extendedLocation?: { name?: string; type?: "CustomLocation" };
+  sku?: {
+    name: "vCore";
+    tier?: "GeneralPurpose" | "BusinessCritical";
+    dev?: boolean;
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlManagedInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       dataControllerId: Schema.optional(Schema.String),
       admin: Schema.optional(Schema.String),
@@ -1371,11 +2055,22 @@ export const SqlManagedInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesCreateInput =
-  typeof SqlManagedInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesCreateInput>;
 
 // Output Schema
+export interface SqlManagedInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlManagedInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1395,13 +2090,16 @@ export const SqlManagedInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlManagedInstancesCreateOutput =
-  typeof SqlManagedInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlManagedInstancesCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  * @param extendedLocation - The complex type of the extended location.
  * @param sku - Resource sku.
@@ -1413,26 +2111,37 @@ export const SqlManagedInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlManagedInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+}
 export const SqlManagedInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesDeleteInput =
-  typeof SqlManagedInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesDeleteInput>;
 
 // Output Schema
+export type SqlManagedInstancesDeleteOutput = void;
 export const SqlManagedInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlManagedInstancesDeleteOutput =
-  typeof SqlManagedInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlManagedInstancesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1441,18 +2150,38 @@ export const SqlManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlManagedInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+}
 export const SqlManagedInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesGetInput =
-  typeof SqlManagedInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesGetInput>;
 
 // Output Schema
+export interface SqlManagedInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlManagedInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1472,13 +2201,16 @@ export const SqlManagedInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlManagedInstancesGetOutput =
-  typeof SqlManagedInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlManagedInstancesGetOutput>;
 
 // The operation
 /**
  * Retrieves a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1487,18 +2219,37 @@ export const SqlManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlManagedInstancesListInput {
+  subscriptionId: string;
+}
 export const SqlManagedInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesListInput =
-  typeof SqlManagedInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesListInput>;
 
 // Output Schema
+export interface SqlManagedInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlManagedInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1535,13 +2286,14 @@ export const SqlManagedInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlManagedInstancesListOutput =
-  typeof SqlManagedInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlManagedInstancesListOutput>;
 
 // The operation
 /**
  * List sqlManagedInstance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1550,18 +2302,39 @@ export const SqlManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlManagedInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlManagedInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesListByResourceGroupInput =
-  typeof SqlManagedInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlManagedInstancesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlManagedInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1598,15 +2371,17 @@ export const SqlManagedInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlManagedInstancesListByResourceGroupOutput =
-  typeof SqlManagedInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlManagedInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
  * List sqlManagedInstance resources in the resource group
  *
  * Gets all sqlManagedInstances in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1614,8 +2389,17 @@ export const SqlManagedInstancesListByResourceGroup =
     outputSchema: SqlManagedInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlManagedInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlManagedInstanceName: string;
+  tags?: Record<string, string>;
+}
 export const SqlManagedInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -1623,11 +2407,22 @@ export const SqlManagedInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlManagedInstancesUpdateInput =
-  typeof SqlManagedInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlManagedInstancesUpdateInput>;
 
 // Output Schema
+export interface SqlManagedInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlManagedInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1647,13 +2442,16 @@ export const SqlManagedInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlManagedInstancesUpdateOutput =
-  typeof SqlManagedInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlManagedInstancesUpdateOutput>;
 
 // The operation
 /**
  * Updates a SQL Managed Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlManagedInstanceName - Name of SQL Managed Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
 export const SqlManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1663,9 +2461,19 @@ export const SqlManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerAvailabilityGroupsAddDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+  values?: string[];
+}
 export const SqlServerAvailabilityGroupsAddDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -1673,11 +2481,22 @@ export const SqlServerAvailabilityGroupsAddDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/addDatabases",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsAddDatabasesInput =
-  typeof SqlServerAvailabilityGroupsAddDatabasesInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsAddDatabasesInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsAddDatabasesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsAddDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1697,15 +2516,16 @@ export const SqlServerAvailabilityGroupsAddDatabasesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsAddDatabasesOutput =
-  typeof SqlServerAvailabilityGroupsAddDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsAddDatabasesOutput>;
 
 // The operation
 /**
  * Request adding database(s) to an existing availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsAddDatabases =
@@ -1714,9 +2534,121 @@ export const SqlServerAvailabilityGroupsAddDatabases =
     outputSchema: SqlServerAvailabilityGroupsAddDatabasesOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+  properties: {
+    availabilityGroupId?: string;
+    serverName?: string;
+    instanceName?: string;
+    vmId?: string;
+    collectionTimestamp?: string;
+    info?: {
+      failureConditionLevel?: number;
+      healthCheckTimeout?: number;
+      automatedBackupPreferenceDescription?: string;
+      version?: number;
+      basicFeatures?: boolean;
+      dtcSupport?: boolean;
+      dbFailover?: boolean;
+      isDistributed?: boolean;
+      clusterTypeDescription?: string;
+      requiredSynchronizedSecondariesToCommit?: number;
+      isContained?: boolean;
+      primaryReplica?: string;
+      primaryRecoveryHealthDescription?: string;
+      secondaryRecoveryHealthDescription?: string;
+      synchronizationHealthDescription?: string;
+      replicationPartnerType?:
+        | "SQLServer"
+        | "AzureSQLVM"
+        | "AzureSQLManagedInstance"
+        | "Unknown";
+      listener?: {
+        dnsName?: string;
+        ipV4AddressesAndMasks?: { ipAddress?: string; mask?: string }[];
+        ipV6Addresses?: string[];
+        port?: number;
+      };
+    };
+    replicas?: {
+      value?: {
+        replicaId?: string;
+        replicaName?: string;
+        replicaResourceId?: string;
+        configure?: {
+          endpointName?: string;
+          endpointUrl?: string;
+          endpointAuthenticationMode?:
+            | "Windows_NTLM"
+            | "Windows_Kerberos"
+            | "Windows_Negotiate"
+            | "Certificate"
+            | "Windows_NTLM_Certificate"
+            | "Windows_Kerberos_Certificate"
+            | "Windows_Negotiate_Certificate"
+            | "Certificate_Windows_NTLM"
+            | "Certificate_Windows_Kerberos"
+            | "Certificate_Windows_Negotiate";
+          certificateName?: string;
+          endpointConnectLogin?: string;
+          availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+          availabilityModeDescription?: string;
+          failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+          failoverModeDescription?: string;
+          sessionTimeout?: number;
+          primaryAllowConnections?: "ALL" | "READ_WRITE";
+          primaryRoleAllowConnectionsDescription?: string;
+          secondaryAllowConnections?: "NO" | "ALL" | "READ_ONLY";
+          secondaryRoleAllowConnectionsDescription?: string;
+          replicaCreateDate?: string;
+          replicaModifyDate?: string;
+          backupPriority?: number;
+          readOnlyRoutingUrl?: string;
+          readWriteRoutingUrl?: string;
+          seedingMode?: "AUTOMATIC" | "MANUAL";
+          seedingModeDescription?: string;
+        };
+        state?: {
+          availabilityGroupReplicaRole?: string;
+          operationalStateDescription?: string;
+          recoveryHealthDescription?: string;
+          synchronizationHealthDescription?: string;
+          connectedStateDescription?: string;
+          lastConnectErrorDescription?: string;
+          lastConnectErrorTimestamp?: string;
+        };
+      }[];
+      nextLink?: string;
+    };
+    databases?: {
+      value?: {
+        databaseName?: string;
+        replicaName?: string;
+        isLocal?: boolean;
+        isPrimaryReplica?: boolean;
+        synchronizationStateDescription?: string;
+        isCommitParticipant?: boolean;
+        synchronizationHealthDescription?: string;
+        databaseStateDescription?: string;
+        isSuspended?: boolean;
+        suspendReasonDescription?: string;
+      }[];
+      nextLink?: string;
+    };
+    provisioningState?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlServerAvailabilityGroupsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       availabilityGroupId: Schema.optional(Schema.String),
       serverName: Schema.optional(Schema.String),
@@ -1889,11 +2821,22 @@ export const SqlServerAvailabilityGroupsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsCreateInput =
-  typeof SqlServerAvailabilityGroupsCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1913,15 +2856,16 @@ export const SqlServerAvailabilityGroupsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsCreateOutput =
-  typeof SqlServerAvailabilityGroupsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces an Arc Sql Server Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreate =
@@ -1930,9 +2874,62 @@ export const SqlServerAvailabilityGroupsCreate =
     outputSchema: SqlServerAvailabilityGroupsCreateOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName?: string;
+  replicas?: {
+    serverInstance?: string;
+    endpointName?: string;
+    endpointUrl?: string;
+    endpointAuthenticationMode?:
+      | "Windows_NTLM"
+      | "Windows_Kerberos"
+      | "Windows_Negotiate"
+      | "Certificate"
+      | "Windows_NTLM_Certificate"
+      | "Windows_Kerberos_Certificate"
+      | "Windows_Negotiate_Certificate"
+      | "Certificate_Windows_NTLM"
+      | "Certificate_Windows_Kerberos"
+      | "Certificate_Windows_Negotiate";
+    certificateName?: string;
+    endpointConnectLogin?: string;
+    availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+    failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+    seedingMode?: "AUTOMATIC" | "MANUAL";
+    backupPriority?: number;
+    secondaryRoleAllowConnections?: "NO" | "ALL" | "READ_ONLY";
+    secondaryRoleReadOnlyRoutingUrl?: string;
+    primaryRoleAllowConnections?: "ALL" | "READ_WRITE";
+    primaryRoleReadOnlyRoutingList?: string[];
+    sessionTimeout?: number;
+  }[];
+  databases?: string[];
+  automatedBackupPreference?:
+    | "PRIMARY"
+    | "SECONDARY_ONLY"
+    | "SECONDARY"
+    | "NONE";
+  failureConditionLevel?: 1 | 2 | 3 | 4 | 5;
+  healthCheckTimeout?: number;
+  dbFailover?: "ON" | "OFF";
+  dtcSupport?: "PER_DB" | "NONE";
+  requiredSynchronizedSecondariesToCommit?: number;
+  clusterType?: "WSFC" | "NONE";
+  listener?: {
+    dnsName?: string;
+    ipV4AddressesAndMasks?: { ipAddress?: string; mask?: string }[];
+    ipV6Addresses?: string[];
+    port?: number;
+  };
+}
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroupName: Schema.optional(Schema.String),
     replicas: Schema.optional(
       Schema.Array(
@@ -2011,11 +3008,22 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createAvailabilityGroup",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
-  typeof SqlServerAvailabilityGroupsCreateAvailabilityGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateAvailabilityGroupInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2035,15 +3043,15 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
-  typeof SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput>;
 
 // The operation
 /**
  * Create a SQL Server availability group
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroup =
@@ -2052,9 +3060,33 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroup =
     outputSchema: SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName?: string;
+  primaryAvailabilityGroup?: {
+    availabilityGroup?: string;
+    listenerUrl?: string;
+    availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+    failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+    seedingMode?: "AUTOMATIC" | "MANUAL";
+    certificateConfiguration?: { certificateName?: string };
+  };
+  secondaryAvailabilityGroup?: {
+    availabilityGroup?: string;
+    listenerUrl?: string;
+    availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+    failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+    seedingMode?: "AUTOMATIC" | "MANUAL";
+    certificateConfiguration?: { certificateName?: string };
+  };
+}
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroupName: Schema.optional(Schema.String),
     primaryAvailabilityGroup: Schema.optional(
       Schema.Struct({
@@ -2098,11 +3130,22 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createDistributedAvailabilityGroup",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
-  typeof SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2122,15 +3165,15 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput =
-  typeof SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput>;
 
 // The operation
 /**
  * Create a SQL Server distributed availability group
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup =
@@ -2141,10 +3184,84 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup =
       SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroup?: {
+    availabilityGroupName?: string;
+    replicas?: {
+      serverInstance?: string;
+      endpointName?: string;
+      endpointUrl?: string;
+      endpointAuthenticationMode?:
+        | "Windows_NTLM"
+        | "Windows_Kerberos"
+        | "Windows_Negotiate"
+        | "Certificate"
+        | "Windows_NTLM_Certificate"
+        | "Windows_Kerberos_Certificate"
+        | "Windows_Negotiate_Certificate"
+        | "Certificate_Windows_NTLM"
+        | "Certificate_Windows_Kerberos"
+        | "Certificate_Windows_Negotiate";
+      certificateName?: string;
+      endpointConnectLogin?: string;
+      availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+      failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+      seedingMode?: "AUTOMATIC" | "MANUAL";
+      backupPriority?: number;
+      secondaryRoleAllowConnections?: "NO" | "ALL" | "READ_ONLY";
+      secondaryRoleReadOnlyRoutingUrl?: string;
+      primaryRoleAllowConnections?: "ALL" | "READ_WRITE";
+      primaryRoleReadOnlyRoutingList?: string[];
+      sessionTimeout?: number;
+    }[];
+    databases?: string[];
+    automatedBackupPreference?:
+      | "PRIMARY"
+      | "SECONDARY_ONLY"
+      | "SECONDARY"
+      | "NONE";
+    failureConditionLevel?: 1 | 2 | 3 | 4 | 5;
+    healthCheckTimeout?: number;
+    dbFailover?: "ON" | "OFF";
+    dtcSupport?: "PER_DB" | "NONE";
+    requiredSynchronizedSecondariesToCommit?: number;
+    clusterType?: "WSFC" | "NONE";
+    listener?: {
+      dnsName?: string;
+      ipV4AddressesAndMasks?: { ipAddress?: string; mask?: string }[];
+      ipV6Addresses?: string[];
+      port?: number;
+    };
+  };
+  distributedAvailabilityGroup?: {
+    availabilityGroupName?: string;
+    primaryAvailabilityGroup?: {
+      availabilityGroup?: string;
+      listenerUrl?: string;
+      availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+      failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+      seedingMode?: "AUTOMATIC" | "MANUAL";
+      certificateConfiguration?: { certificateName?: string };
+    };
+    secondaryAvailabilityGroup?: {
+      availabilityGroup?: string;
+      listenerUrl?: string;
+      availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+      failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+      seedingMode?: "AUTOMATIC" | "MANUAL";
+      certificateConfiguration?: { certificateName?: string };
+    };
+  };
+  miLinkConfiguration?: { instanceAvailabilityGroupName?: string };
+}
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     availabilityGroup: Schema.optional(
       Schema.Struct({
         availabilityGroupName: Schema.optional(Schema.String),
@@ -2279,11 +3396,22 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/createManagedInstanceLink",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
-  typeof SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2303,9 +3431,7 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
-  typeof SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput>;
 
 // The operation
 /**
@@ -2313,6 +3439,7 @@ export type SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLink =
@@ -2321,30 +3448,39 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLink =
     outputSchema: SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsDeleteInput =
-  typeof SqlServerAvailabilityGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteInput>;
 
 // Output Schema
+export type SqlServerAvailabilityGroupsDeleteOutput = void;
 export const SqlServerAvailabilityGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerAvailabilityGroupsDeleteOutput =
-  typeof SqlServerAvailabilityGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteOutput>;
 
 // The operation
 /**
  * Deletes an Arc Sql Server availability group resource.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDelete =
@@ -2353,25 +3489,30 @@ export const SqlServerAvailabilityGroupsDelete =
     outputSchema: SqlServerAvailabilityGroupsDeleteOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsDeleteMiLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsDeleteMiLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/deleteMiLink",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsDeleteMiLinkInput =
-  typeof SqlServerAvailabilityGroupsDeleteMiLinkInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteMiLinkInput>;
 
 // Output Schema
+export type SqlServerAvailabilityGroupsDeleteMiLinkOutput = void;
 export const SqlServerAvailabilityGroupsDeleteMiLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerAvailabilityGroupsDeleteMiLinkOutput =
-  typeof SqlServerAvailabilityGroupsDeleteMiLinkOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteMiLinkOutput>;
 
 // The operation
 /**
@@ -2379,6 +3520,8 @@ export type SqlServerAvailabilityGroupsDeleteMiLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDeleteMiLink =
@@ -2387,20 +3530,40 @@ export const SqlServerAvailabilityGroupsDeleteMiLink =
     outputSchema: SqlServerAvailabilityGroupsDeleteMiLinkOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsDetailViewInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsDetailViewInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/getDetailView",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsDetailViewInput =
-  typeof SqlServerAvailabilityGroupsDetailViewInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsDetailViewInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsDetailViewOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsDetailViewOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2420,15 +3583,16 @@ export const SqlServerAvailabilityGroupsDetailViewOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsDetailViewOutput =
-  typeof SqlServerAvailabilityGroupsDetailViewOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsDetailViewOutput>;
 
 // The operation
 /**
  * Retrieves detailed properties of the Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDetailView =
@@ -2437,20 +3601,40 @@ export const SqlServerAvailabilityGroupsDetailView =
     outputSchema: SqlServerAvailabilityGroupsDetailViewOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsFailoverInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsFailoverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failover",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsFailoverInput =
-  typeof SqlServerAvailabilityGroupsFailoverInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsFailoverInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsFailoverOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsFailoverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2470,15 +3654,16 @@ export const SqlServerAvailabilityGroupsFailoverOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsFailoverOutput =
-  typeof SqlServerAvailabilityGroupsFailoverOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsFailoverOutput>;
 
 // The operation
 /**
  * Request manual failover of the availability group to this server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailover =
@@ -2487,10 +3672,20 @@ export const SqlServerAvailabilityGroupsFailover =
     outputSchema: SqlServerAvailabilityGroupsFailoverOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsFailoverMiLinkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+  managedInstanceId?: string;
+  force?: boolean;
+}
 export const SqlServerAvailabilityGroupsFailoverMiLinkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     managedInstanceId: Schema.optional(Schema.String),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -2499,11 +3694,22 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/failoverMiLink",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsFailoverMiLinkInput =
-  typeof SqlServerAvailabilityGroupsFailoverMiLinkInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsFailoverMiLinkInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsFailoverMiLinkOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsFailoverMiLinkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2523,9 +3729,7 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsFailoverMiLinkOutput =
-  typeof SqlServerAvailabilityGroupsFailoverMiLinkOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsFailoverMiLinkOutput>;
 
 // The operation
 /**
@@ -2533,6 +3737,8 @@ export type SqlServerAvailabilityGroupsFailoverMiLinkOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailoverMiLink =
@@ -2541,20 +3747,40 @@ export const SqlServerAvailabilityGroupsFailoverMiLink =
     outputSchema: SqlServerAvailabilityGroupsFailoverMiLinkOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/forceFailoverAllowDataLoss",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput =
-  typeof SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2574,15 +3800,16 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
-  typeof SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput>;
 
 // The operation
 /**
  * Request forced failover of the availability group to this server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss =
@@ -2591,20 +3818,40 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss =
     outputSchema: SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+}
 export const SqlServerAvailabilityGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsGetInput =
-  typeof SqlServerAvailabilityGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsGetInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2624,15 +3871,16 @@ export const SqlServerAvailabilityGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsGetOutput =
-  typeof SqlServerAvailabilityGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsGetOutput>;
 
 // The operation
 /**
  * Retrieves an Arc Sql Server availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsGet =
@@ -2641,20 +3889,41 @@ export const SqlServerAvailabilityGroupsGet =
     outputSchema: SqlServerAvailabilityGroupsGetOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerAvailabilityGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsListInput =
-  typeof SqlServerAvailabilityGroupsListInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsListInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerAvailabilityGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2691,15 +3960,15 @@ export const SqlServerAvailabilityGroupsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerAvailabilityGroupsListOutput =
-  typeof SqlServerAvailabilityGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsListOutput>;
 
 // The operation
 /**
  * List the availability group associated with the given Arc Sql Server.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsList =
@@ -2708,9 +3977,19 @@ export const SqlServerAvailabilityGroupsList =
     outputSchema: SqlServerAvailabilityGroupsListOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsRemoveDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+  values?: string[];
+}
 export const SqlServerAvailabilityGroupsRemoveDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -2718,11 +3997,22 @@ export const SqlServerAvailabilityGroupsRemoveDatabasesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}/removeDatabases",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsRemoveDatabasesInput =
-  typeof SqlServerAvailabilityGroupsRemoveDatabasesInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsRemoveDatabasesInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsRemoveDatabasesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsRemoveDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2742,15 +4032,16 @@ export const SqlServerAvailabilityGroupsRemoveDatabasesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsRemoveDatabasesOutput =
-  typeof SqlServerAvailabilityGroupsRemoveDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsRemoveDatabasesOutput>;
 
 // The operation
 /**
  * Request removing database(s) from an existing availability group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsRemoveDatabases =
@@ -2759,9 +4050,120 @@ export const SqlServerAvailabilityGroupsRemoveDatabases =
     outputSchema: SqlServerAvailabilityGroupsRemoveDatabasesOutput,
   }));
 // Input Schema
+export interface SqlServerAvailabilityGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    availabilityGroupId?: string;
+    serverName?: string;
+    instanceName?: string;
+    vmId?: string;
+    collectionTimestamp?: string;
+    info?: {
+      failureConditionLevel?: number;
+      healthCheckTimeout?: number;
+      automatedBackupPreferenceDescription?: string;
+      version?: number;
+      basicFeatures?: boolean;
+      dtcSupport?: boolean;
+      dbFailover?: boolean;
+      isDistributed?: boolean;
+      clusterTypeDescription?: string;
+      requiredSynchronizedSecondariesToCommit?: number;
+      isContained?: boolean;
+      primaryReplica?: string;
+      primaryRecoveryHealthDescription?: string;
+      secondaryRecoveryHealthDescription?: string;
+      synchronizationHealthDescription?: string;
+      replicationPartnerType?:
+        | "SQLServer"
+        | "AzureSQLVM"
+        | "AzureSQLManagedInstance"
+        | "Unknown";
+      listener?: {
+        dnsName?: string;
+        ipV4AddressesAndMasks?: { ipAddress?: string; mask?: string }[];
+        ipV6Addresses?: string[];
+        port?: number;
+      };
+    };
+    replicas?: {
+      value?: {
+        replicaId?: string;
+        replicaName?: string;
+        replicaResourceId?: string;
+        configure?: {
+          endpointName?: string;
+          endpointUrl?: string;
+          endpointAuthenticationMode?:
+            | "Windows_NTLM"
+            | "Windows_Kerberos"
+            | "Windows_Negotiate"
+            | "Certificate"
+            | "Windows_NTLM_Certificate"
+            | "Windows_Kerberos_Certificate"
+            | "Windows_Negotiate_Certificate"
+            | "Certificate_Windows_NTLM"
+            | "Certificate_Windows_Kerberos"
+            | "Certificate_Windows_Negotiate";
+          certificateName?: string;
+          endpointConnectLogin?: string;
+          availabilityMode?: "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+          availabilityModeDescription?: string;
+          failoverMode?: "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+          failoverModeDescription?: string;
+          sessionTimeout?: number;
+          primaryAllowConnections?: "ALL" | "READ_WRITE";
+          primaryRoleAllowConnectionsDescription?: string;
+          secondaryAllowConnections?: "NO" | "ALL" | "READ_ONLY";
+          secondaryRoleAllowConnectionsDescription?: string;
+          replicaCreateDate?: string;
+          replicaModifyDate?: string;
+          backupPriority?: number;
+          readOnlyRoutingUrl?: string;
+          readWriteRoutingUrl?: string;
+          seedingMode?: "AUTOMATIC" | "MANUAL";
+          seedingModeDescription?: string;
+        };
+        state?: {
+          availabilityGroupReplicaRole?: string;
+          operationalStateDescription?: string;
+          recoveryHealthDescription?: string;
+          synchronizationHealthDescription?: string;
+          connectedStateDescription?: string;
+          lastConnectErrorDescription?: string;
+          lastConnectErrorTimestamp?: string;
+        };
+      }[];
+      nextLink?: string;
+    };
+    databases?: {
+      value?: {
+        databaseName?: string;
+        replicaName?: string;
+        isLocal?: boolean;
+        isPrimaryReplica?: boolean;
+        synchronizationStateDescription?: string;
+        isCommitParticipant?: boolean;
+        synchronizationHealthDescription?: string;
+        databaseStateDescription?: string;
+        isSuspended?: boolean;
+        suspendReasonDescription?: string;
+      }[];
+      nextLink?: string;
+    };
+    provisioningState?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -2945,11 +4347,22 @@ export const SqlServerAvailabilityGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups/{availabilityGroupName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerAvailabilityGroupsUpdateInput =
-  typeof SqlServerAvailabilityGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerAvailabilityGroupsUpdateInput>;
 
 // Output Schema
+export interface SqlServerAvailabilityGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerAvailabilityGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2969,15 +4382,16 @@ export const SqlServerAvailabilityGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerAvailabilityGroupsUpdateOutput =
-  typeof SqlServerAvailabilityGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerAvailabilityGroupsUpdateOutput>;
 
 // The operation
 /**
  * Updates an existing Availability Group.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param availabilityGroupName - Name of SQL Availability Group
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsUpdate =
@@ -2986,8 +4400,212 @@ export const SqlServerAvailabilityGroupsUpdate =
     outputSchema: SqlServerAvailabilityGroupsUpdateOutput,
   }));
 // Input Schema
+export interface SqlServerDatabasesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  databaseName: string;
+  properties: {
+    collationName?: string;
+    databaseCreationDate?: string;
+    compatibilityLevel?: number;
+    sizeMB?: number;
+    logFileSizeMB?: number;
+    dataFileSizeMB?: number;
+    spaceAvailableMB?: number;
+    state?:
+      | "Online"
+      | "Restoring"
+      | "Recovering"
+      | "RecoveryPending"
+      | "Suspect"
+      | "Emergency"
+      | "Offline"
+      | "Copying"
+      | "OfflineSecondary";
+    isReadOnly?: boolean;
+    recoveryMode?: "Full" | "Bulk-logged" | "Simple";
+    databaseOptions?: {
+      isAutoCloseOn?: boolean;
+      isAutoShrinkOn?: boolean;
+      isAutoCreateStatsOn?: boolean;
+      isAutoUpdateStatsOn?: boolean;
+      isRemoteDataArchiveEnabled?: boolean;
+      isMemoryOptimizationEnabled?: boolean;
+      isEncrypted?: boolean;
+      isTrustworthyOn?: boolean;
+      isHekatonFilesOn?: boolean;
+      numberOfHekatonFiles?: number;
+    };
+    backupInformation?: { lastFullBackup?: string; lastLogBackup?: string };
+    backupPolicy?: {
+      retentionPeriodDays?: number;
+      fullBackupDays?: number;
+      differentialBackupHours?: 12 | 24;
+      transactionLogBackupMinutes?: number;
+    };
+    earliestRestoreDate?: string;
+    createMode?: "Default" | "PointInTimeRestore";
+    sourceDatabaseId?: string;
+    vmId?: string;
+    restorePointInTime?: string;
+    provisioningState?: string;
+    lastDatabaseUploadTime?: string;
+    migration?: {
+      assessment?: {
+        assessmentUploadTime?: string;
+        databaseAssessments?: {
+          appliesToMigrationTargetPlatform?: string;
+          featureId?: string;
+          issueCategory?: string;
+          moreInformation?: string;
+        }[];
+        targetReadiness?: {
+          azureSqlDatabase?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlManagedInstance?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlVirtualMachine?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+        };
+      };
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlServerDatabasesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       collationName: Schema.optional(Schema.String),
       databaseCreationDate: Schema.optional(Schema.String),
@@ -3291,11 +4909,22 @@ export const SqlServerDatabasesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerDatabasesCreateInput =
-  typeof SqlServerDatabasesCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerDatabasesCreateInput>;
 
 // Output Schema
+export interface SqlServerDatabasesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerDatabasesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3315,13 +4944,17 @@ export const SqlServerDatabasesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerDatabasesCreateOutput =
-  typeof SqlServerDatabasesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerDatabasesCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces an Arc Sql Server Database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3330,26 +4963,40 @@ export const SqlServerDatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerDatabasesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  databaseName: string;
+}
 export const SqlServerDatabasesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerDatabasesDeleteInput =
-  typeof SqlServerDatabasesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlServerDatabasesDeleteInput>;
 
 // Output Schema
+export type SqlServerDatabasesDeleteOutput = void;
 export const SqlServerDatabasesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerDatabasesDeleteOutput =
-  typeof SqlServerDatabasesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerDatabasesDeleteOutput>;
 
 // The operation
 /**
  * Deletes an Arc Sql Server database resource.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3358,17 +5005,40 @@ export const SqlServerDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerDatabasesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  databaseName: string;
+}
 export const SqlServerDatabasesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerDatabasesGetInput = typeof SqlServerDatabasesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServerDatabasesGetInput>;
 
 // Output Schema
+export interface SqlServerDatabasesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerDatabasesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3388,13 +5058,17 @@ export const SqlServerDatabasesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerDatabasesGetOutput =
-  typeof SqlServerDatabasesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerDatabasesGetOutput>;
 
 // The operation
 /**
  * Retrieves an Arc Sql Server database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3403,18 +5077,41 @@ export const SqlServerDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerDatabasesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerDatabasesListInput =
-  typeof SqlServerDatabasesListInput.Type;
+  ) as unknown as Schema.Codec<SqlServerDatabasesListInput>;
 
 // Output Schema
+export interface SqlServerDatabasesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerDatabasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3451,13 +5148,16 @@ export const SqlServerDatabasesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerDatabasesListOutput =
-  typeof SqlServerDatabasesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerDatabasesListOutput>;
 
 // The operation
 /**
  * List the databases associated with the given Arc Sql Server.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3466,8 +5166,211 @@ export const SqlServerDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerDatabasesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  databaseName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    collationName?: string;
+    databaseCreationDate?: string;
+    compatibilityLevel?: number;
+    sizeMB?: number;
+    logFileSizeMB?: number;
+    dataFileSizeMB?: number;
+    spaceAvailableMB?: number;
+    state?:
+      | "Online"
+      | "Restoring"
+      | "Recovering"
+      | "RecoveryPending"
+      | "Suspect"
+      | "Emergency"
+      | "Offline"
+      | "Copying"
+      | "OfflineSecondary";
+    isReadOnly?: boolean;
+    recoveryMode?: "Full" | "Bulk-logged" | "Simple";
+    databaseOptions?: {
+      isAutoCloseOn?: boolean;
+      isAutoShrinkOn?: boolean;
+      isAutoCreateStatsOn?: boolean;
+      isAutoUpdateStatsOn?: boolean;
+      isRemoteDataArchiveEnabled?: boolean;
+      isMemoryOptimizationEnabled?: boolean;
+      isEncrypted?: boolean;
+      isTrustworthyOn?: boolean;
+      isHekatonFilesOn?: boolean;
+      numberOfHekatonFiles?: number;
+    };
+    backupInformation?: { lastFullBackup?: string; lastLogBackup?: string };
+    backupPolicy?: {
+      retentionPeriodDays?: number;
+      fullBackupDays?: number;
+      differentialBackupHours?: 12 | 24;
+      transactionLogBackupMinutes?: number;
+    };
+    earliestRestoreDate?: string;
+    createMode?: "Default" | "PointInTimeRestore";
+    sourceDatabaseId?: string;
+    vmId?: string;
+    restorePointInTime?: string;
+    provisioningState?: string;
+    lastDatabaseUploadTime?: string;
+    migration?: {
+      assessment?: {
+        assessmentUploadTime?: string;
+        databaseAssessments?: {
+          appliesToMigrationTargetPlatform?: string;
+          featureId?: string;
+          issueCategory?: string;
+          moreInformation?: string;
+        }[];
+        targetReadiness?: {
+          azureSqlDatabase?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlManagedInstance?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlVirtualMachine?: {
+            numOfBlockerIssues?: number;
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            impactedObjectsSummary?: {
+              featureId?: string;
+              numberImpacted?: number;
+              issueCategory?: string;
+            }[];
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+        };
+      };
+    };
+  };
+}
 export const SqlServerDatabasesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -3784,11 +5687,22 @@ export const SqlServerDatabasesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases/{databaseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerDatabasesUpdateInput =
-  typeof SqlServerDatabasesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerDatabasesUpdateInput>;
 
 // Output Schema
+export interface SqlServerDatabasesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerDatabasesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3808,13 +5722,17 @@ export const SqlServerDatabasesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerDatabasesUpdateOutput =
-  typeof SqlServerDatabasesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerDatabasesUpdateOutput>;
 
 // The operation
 /**
  * Updates an existing database.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param databaseName - Name of the database
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3823,10 +5741,29 @@ export const SqlServerDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerEsuLicensesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerEsuLicenseName: string;
+  properties: {
+    billingPlan: "PAYG";
+    version: "SQL Server 2012" | "SQL Server 2014";
+    uniqueId?: string;
+    physicalCores: number;
+    activationState: "Inactive" | "Active" | "Terminated";
+    scopeType: "Tenant" | "Subscription" | "ResourceGroup";
+    activatedAt?: string;
+    terminatedAt?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlServerEsuLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       billingPlan: Schema.Literals(["PAYG"]),
       version: Schema.Literals(["SQL Server 2012", "SQL Server 2014"]),
@@ -3846,11 +5783,22 @@ export const SqlServerEsuLicensesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesCreateInput =
-  typeof SqlServerEsuLicensesCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesCreateInput>;
 
 // Output Schema
+export interface SqlServerEsuLicensesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerEsuLicensesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3870,9 +5818,7 @@ export const SqlServerEsuLicensesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerEsuLicensesCreateOutput =
-  typeof SqlServerEsuLicensesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerEsuLicensesCreateOutput>;
 
 // The operation
 /**
@@ -3880,6 +5826,7 @@ export type SqlServerEsuLicensesCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3889,25 +5836,28 @@ export const SqlServerEsuLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerEsuLicensesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerEsuLicenseName: string;
+}
 export const SqlServerEsuLicensesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesDeleteInput =
-  typeof SqlServerEsuLicensesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesDeleteInput>;
 
 // Output Schema
+export type SqlServerEsuLicensesDeleteOutput = void;
 export const SqlServerEsuLicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerEsuLicensesDeleteOutput =
-  typeof SqlServerEsuLicensesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerEsuLicensesDeleteOutput>;
 
 // The operation
 /**
@@ -3915,6 +5865,7 @@ export type SqlServerEsuLicensesDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3924,21 +5875,38 @@ export const SqlServerEsuLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerEsuLicensesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerEsuLicenseName: string;
+}
 export const SqlServerEsuLicensesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesGetInput =
-  typeof SqlServerEsuLicensesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesGetInput>;
 
 // Output Schema
+export interface SqlServerEsuLicensesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerEsuLicensesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3958,9 +5926,7 @@ export const SqlServerEsuLicensesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerEsuLicensesGetOutput =
-  typeof SqlServerEsuLicensesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerEsuLicensesGetOutput>;
 
 // The operation
 /**
@@ -3968,6 +5934,7 @@ export type SqlServerEsuLicensesGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3977,6 +5944,9 @@ export const SqlServerEsuLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerEsuLicensesListInput {
+  subscriptionId: string;
+}
 export const SqlServerEsuLicensesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3986,11 +5956,25 @@ export const SqlServerEsuLicensesListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesListInput =
-  typeof SqlServerEsuLicensesListInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesListInput>;
 
 // Output Schema
+export interface SqlServerEsuLicensesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerEsuLicensesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4027,9 +6011,7 @@ export const SqlServerEsuLicensesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerEsuLicensesListOutput =
-  typeof SqlServerEsuLicensesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerEsuLicensesListOutput>;
 
 // The operation
 /**
@@ -4045,6 +6027,10 @@ export const SqlServerEsuLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerEsuLicensesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlServerEsuLicensesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4055,11 +6041,25 @@ export const SqlServerEsuLicensesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesListByResourceGroupInput =
-  typeof SqlServerEsuLicensesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlServerEsuLicensesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerEsuLicensesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4096,9 +6096,7 @@ export const SqlServerEsuLicensesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerEsuLicensesListByResourceGroupOutput =
-  typeof SqlServerEsuLicensesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerEsuLicensesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4116,10 +6114,28 @@ export const SqlServerEsuLicensesListByResourceGroup =
     outputSchema: SqlServerEsuLicensesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlServerEsuLicensesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerEsuLicenseName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    billingPlan?: "PAYG";
+    version?: "SQL Server 2012" | "SQL Server 2014";
+    uniqueId?: string;
+    physicalCores?: number;
+    activationState?: "Inactive" | "Active" | "Terminated";
+    scopeType?: "Tenant" | "Subscription" | "ResourceGroup";
+    activatedAt?: string;
+    terminatedAt?: string;
+    tenantId?: string;
+  };
+}
 export const SqlServerEsuLicensesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -4146,11 +6162,22 @@ export const SqlServerEsuLicensesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses/{sqlServerEsuLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerEsuLicensesUpdateInput =
-  typeof SqlServerEsuLicensesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerEsuLicensesUpdateInput>;
 
 // Output Schema
+export interface SqlServerEsuLicensesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerEsuLicensesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4170,9 +6197,7 @@ export const SqlServerEsuLicensesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerEsuLicensesUpdateOutput =
-  typeof SqlServerEsuLicensesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerEsuLicensesUpdateOutput>;
 
 // The operation
 /**
@@ -4180,6 +6205,7 @@ export type SqlServerEsuLicensesUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4189,8 +6215,349 @@ export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerInstancesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  properties?: {
+    version?:
+      | "Unknown"
+      | "SQL Server 2012"
+      | "SQL Server 2014"
+      | "SQL Server 2016"
+      | "SQL Server 2017"
+      | "SQL Server 2019"
+      | "SQL Server 2022"
+      | "SQL Server 2025";
+    edition?:
+      | "Evaluation"
+      | "Enterprise"
+      | "Standard"
+      | "Web"
+      | "Developer"
+      | "Express"
+      | "Business Intelligence"
+      | "Standard Developer";
+    containerResourceId?: string;
+    vmId?: string;
+    createTime?: string;
+    vCore?: string;
+    cores?: string;
+    status?: "Connected" | "Disconnected" | "Registered" | "Unknown";
+    patchLevel?: string;
+    collation?: string;
+    dbMasterKeyExists?: boolean;
+    isHadrEnabled?: boolean;
+    traceFlags?: number[];
+    currentVersion?: string;
+    instanceName?: string;
+    tcpDynamicPorts?: string;
+    tcpStaticPorts?: string;
+    productId?: string;
+    licenseType?:
+      | "Undefined"
+      | "Free"
+      | "HADR"
+      | "ServerCAL"
+      | "LicenseOnly"
+      | "PAYG"
+      | "Paid"
+      | "FabricCapacity";
+    azureDefenderStatusLastUpdated?: string;
+    azureDefenderStatus?: "Protected" | "Unprotected" | "Unknown";
+    provisioningState?: string;
+    lastInventoryUploadTime?: string;
+    lastUsageUploadTime?: string;
+    hostType?:
+      | "Azure Virtual Machine"
+      | "Azure VMWare Virtual Machine"
+      | "Azure Kubernetes Service"
+      | "AWS VMWare Virtual Machine"
+      | "AWS Kubernetes Service"
+      | "GCP VMWare Virtual Machine"
+      | "GCP Kubernetes Service"
+      | "Container"
+      | "Virtual Machine"
+      | "Physical Server"
+      | "AWS Virtual Machine"
+      | "GCP Virtual Machine"
+      | "Other";
+    alwaysOnRole?:
+      | "None"
+      | "FailoverClusterInstance"
+      | "FailoverClusterNode"
+      | "AvailabilityGroupReplica";
+    databaseMirroringEndpoint?: {
+      endpointName?: string;
+      role?: "NONE" | "PARTNER" | "WITNESS" | "ALL";
+      isEncryptionEnabled?: boolean;
+      encryptionAlgorithm?:
+        | "NONE"
+        | "RC4"
+        | "AES"
+        | "NONE, RC4"
+        | "NONE, AES"
+        | "RC4, AES"
+        | "AES, RC4"
+        | "NONE, RC4, AES"
+        | "NONE, AES, RC4";
+      connectionAuth?:
+        | "Windows_NTLM"
+        | "Windows_Kerberos"
+        | "Windows_Negotiate"
+        | "Certificate"
+        | "Windows_NTLM_Certificate"
+        | "Windows_Kerberos_Certificate"
+        | "Windows_Negotiate_Certificate"
+        | "Certificate_Windows_NTLM"
+        | "Certificate_Windows_Kerberos"
+        | "Certificate_Windows_Negotiate";
+      port?: number;
+      isDynamicPort?: boolean;
+      ipAddress?: string;
+      certificateName?: string;
+      certificateExpiryDate?: string;
+    };
+    failoverCluster?: {
+      id?: string;
+      networkName?: string;
+      sqlInstanceIds?: string[];
+      hostNames?: string[];
+      hostIPAddresses?: { ipAddress?: string; subnetMask?: string }[];
+    };
+    backupPolicy?: {
+      retentionPeriodDays?: number;
+      fullBackupDays?: number;
+      differentialBackupHours?: 12 | 24;
+      transactionLogBackupMinutes?: number;
+    };
+    upgradeLockedUntil?: string;
+    monitoring?: { enabled?: boolean };
+    migration?: {
+      assessment?: {
+        enabled?: boolean;
+        assessmentUploadTime?: string;
+        version?: string;
+        settings?: {
+          targetLocation?: string;
+          percentile?: number;
+          lookbackPeriodInDays?: number;
+          strategy?: string;
+          currency?: string;
+          discountPercentage?: number;
+          costOptions?: {
+            computeAndStorageCostOption?: string;
+            sqlLicenseCostOption?: string;
+            windowsLicenseCostOption?: string;
+          };
+        };
+        serverAssessments?: {
+          appliesToMigrationTargetPlatform?: string;
+          featureId?: string;
+          impactedObjects?: {
+            impactDetail?: string;
+            name?: string;
+            objectType?: string;
+          }[];
+          issueCategory?: string;
+          moreInformation?: string;
+        }[];
+        skuRecommendationResults?: {
+          azureSqlDatabase?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlManagedInstance?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlVirtualMachine?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                availableVmSkus?: string[];
+                virtualMachineFamily?: string;
+              };
+              computeSize?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              virtualMachineSize?: {
+                virtualMachineFamily?: string;
+                sizeName?: string;
+                computeSize?: number;
+                azureSkuName?: string;
+                vCPUsAvailable?: number;
+                maxNetworkInterfaces?: number;
+              };
+              dataDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+              logDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+              tempDbDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+            };
+          };
+        };
+        impactedObjectsSummary?: {
+          azureSqlDatabase?: {
+            featureId?: string;
+            numberImpacted?: number;
+            issueCategory?: string;
+          }[];
+          azureSqlManagedInstance?: {
+            featureId?: string;
+            numberImpacted?: number;
+            issueCategory?: string;
+          }[];
+        };
+      };
+    };
+    bestPracticesAssessment?: {
+      enabled?: boolean;
+      schedule?: {
+        enabled?: boolean;
+        cronTrigger?: {
+          startTime?: string;
+          timeZone?: string;
+          expression?: string;
+        };
+      };
+    };
+    clientConnection?: { enabled?: boolean };
+    serviceType?: "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
+    maxServerMemoryMB?: number;
+    isMicrosoftPkiCertTrustConfigured?: boolean;
+    isDigiCertPkiCertTrustConfigured?: boolean;
+    authentication?: {
+      mode?: "Mixed" | "Windows" | "Undefined";
+      sqlServerEntraIdentity?: {
+        identityType?:
+          | "SystemAssignedManagedIdentity"
+          | "UserAssignedManagedIdentity";
+        clientId?: string;
+      }[];
+    };
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlServerInstancesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         version: Schema.optional(
@@ -4743,11 +7110,22 @@ export const SqlServerInstancesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesCreateInput =
-  typeof SqlServerInstancesCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesCreateInput>;
 
 // Output Schema
+export interface SqlServerInstancesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerInstancesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4767,13 +7145,16 @@ export const SqlServerInstancesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerInstancesCreateOutput =
-  typeof SqlServerInstancesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param properties - null
  */
 export const SqlServerInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4783,26 +7164,37 @@ export const SqlServerInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerInstancesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesDeleteInput =
-  typeof SqlServerInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesDeleteInput>;
 
 // Output Schema
+export type SqlServerInstancesDeleteOutput = void;
 export const SqlServerInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerInstancesDeleteOutput =
-  typeof SqlServerInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerInstancesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4811,17 +7203,38 @@ export const SqlServerInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerInstancesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesGetInput = typeof SqlServerInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesGetInput>;
 
 // Output Schema
+export interface SqlServerInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4841,13 +7254,16 @@ export const SqlServerInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerInstancesGetOutput =
-  typeof SqlServerInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesGetOutput>;
 
 // The operation
 /**
  * Retrieves a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4856,20 +7272,58 @@ export const SqlServerInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerInstancesGetAllAvailabilityGroupsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  availabilityGroupTypeFilter?: "CONTAINED" | "DISTRIBUTED" | "DEFAULT";
+  replicationPartnerTypeFilter?:
+    | "SQLServer"
+    | "AzureSQLVM"
+    | "AzureSQLManagedInstance"
+    | "Unknown";
+}
 export const SqlServerInstancesGetAllAvailabilityGroupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+    availabilityGroupTypeFilter: Schema.optional(
+      Schema.Literals(["CONTAINED", "DISTRIBUTED", "DEFAULT"]),
+    ),
+    replicationPartnerTypeFilter: Schema.optional(
+      Schema.Literals([
+        "SQLServer",
+        "AzureSQLVM",
+        "AzureSQLManagedInstance",
+        "Unknown",
+      ]),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getAllAvailabilityGroups",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesGetAllAvailabilityGroupsInput =
-  typeof SqlServerInstancesGetAllAvailabilityGroupsInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesGetAllAvailabilityGroupsInput>;
 
 // Output Schema
+export interface SqlServerInstancesGetAllAvailabilityGroupsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerInstancesGetAllAvailabilityGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4906,15 +7360,15 @@ export const SqlServerInstancesGetAllAvailabilityGroupsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerInstancesGetAllAvailabilityGroupsOutput =
-  typeof SqlServerInstancesGetAllAvailabilityGroupsOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesGetAllAvailabilityGroupsOutput>;
 
 // The operation
 /**
  * Retrieves full properties of all the Availability Groups in a SQL Server instance.
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesGetAllAvailabilityGroups =
@@ -4923,8 +7377,19 @@ export const SqlServerInstancesGetAllAvailabilityGroups =
     outputSchema: SqlServerInstancesGetAllAvailabilityGroupsOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesGetBestPracticesAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  reportType?: "AssessmentDataPoint" | "AssessmentSummary";
+  reportId?: string;
+  skipToken?: string;
+}
 export const SqlServerInstancesGetBestPracticesAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     reportType: Schema.optional(
       Schema.Literals(["AssessmentDataPoint", "AssessmentSummary"]),
     ),
@@ -4936,11 +7401,25 @@ export const SqlServerInstancesGetBestPracticesAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getBestPracticesAssessment",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesGetBestPracticesAssessmentInput =
-  typeof SqlServerInstancesGetBestPracticesAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesGetBestPracticesAssessmentInput>;
 
 // Output Schema
+export interface SqlServerInstancesGetBestPracticesAssessmentOutput {
+  columns: {
+    name?: string;
+    type?:
+      | "bool"
+      | "datetime"
+      | "int"
+      | "long"
+      | "double"
+      | "string"
+      | "guid"
+      | "timespan";
+  }[];
+  rows: string[][];
+  nextLink?: string;
+}
 export const SqlServerInstancesGetBestPracticesAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.Array(
@@ -4962,13 +7441,16 @@ export const SqlServerInstancesGetBestPracticesAssessmentOutput =
     ),
     rows: Schema.Array(Schema.Array(Schema.String)),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerInstancesGetBestPracticesAssessmentOutput =
-  typeof SqlServerInstancesGetBestPracticesAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesGetBestPracticesAssessmentOutput>;
 
 // The operation
 /**
  * Retrieves SQL best practices assessment results for the SQL Server instance.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param reportType - The report type that needs to be fetched. If not specified, the default is AssessmentSummary.
  * @param reportId - The GUID of the report to return best practices assessment results for. If not specified, summaries for all reports will be returned.
  * @param skipToken - The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned.
@@ -4979,8 +7461,18 @@ export const SqlServerInstancesGetBestPracticesAssessment =
     outputSchema: SqlServerInstancesGetBestPracticesAssessmentOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesGetJobsStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  featureName?: string;
+  jobType?: string;
+}
 export const SqlServerInstancesGetJobsStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.optional(Schema.String),
     jobType: Schema.optional(Schema.String),
   }).pipe(
@@ -4989,11 +7481,47 @@ export const SqlServerInstancesGetJobsStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getJobsStatus",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesGetJobsStatusInput =
-  typeof SqlServerInstancesGetJobsStatusInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesGetJobsStatusInput>;
 
 // Output Schema
+export interface SqlServerInstancesGetJobsStatusOutput {
+  jobsStatus?: {
+    id?: string;
+    instanceName?: string;
+    jobStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
+    jobException?: string;
+    backgroundJob?: {
+      state?:
+        | "Enabled"
+        | "Disabled"
+        | "Deleted"
+        | "Completed"
+        | "Faulted"
+        | "Suspended";
+      executionState?: "Waiting" | "Running";
+      startTime?: string;
+      endTime?: string;
+      lastExecutionStatus?:
+        | "Succeeded"
+        | "Completed"
+        | "Failed"
+        | "Faulted"
+        | "Postponed"
+        | "Rescheduled";
+      lastExecutionTime?: string;
+    };
+    sequencerActions?: {
+      actionId?: string;
+      state?:
+        | "NotStarted"
+        | "WaitingPredecessors"
+        | "ExecutingAction"
+        | "CreatingSuccessors"
+        | "Completed";
+      result?: "NotCompleted" | "Succeeded" | "Failed" | "TimedOut" | "Skipped";
+    }[];
+  }[];
+}
 export const SqlServerInstancesGetJobsStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobsStatus: Schema.optional(
@@ -5068,13 +7596,16 @@ export const SqlServerInstancesGetJobsStatusOutput =
         }),
       ),
     ),
-  });
-export type SqlServerInstancesGetJobsStatusOutput =
-  typeof SqlServerInstancesGetJobsStatusOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesGetJobsStatusOutput>;
 
 // The operation
 /**
  * Gets jobs status details for sql arc resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param featureName - The name of the feature to retrieve the job status for.
  * @param jobType - The type of the job to retrieve the status for.
  */
@@ -5084,8 +7615,22 @@ export const SqlServerInstancesGetJobsStatus =
     outputSchema: SqlServerInstancesGetJobsStatusOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesGetTelemetryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  datasetName: string;
+  startTime?: string;
+  endTime?: string;
+  interval?: string;
+  aggregationType?: "Average" | "Minimum" | "Maximum" | "Sum" | "Count";
+  databaseNames?: string[];
+}
 export const SqlServerInstancesGetTelemetryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     datasetName: Schema.String,
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -5100,11 +7645,25 @@ export const SqlServerInstancesGetTelemetryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getTelemetry",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesGetTelemetryInput =
-  typeof SqlServerInstancesGetTelemetryInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesGetTelemetryInput>;
 
 // Output Schema
+export interface SqlServerInstancesGetTelemetryOutput {
+  columns: {
+    name?: string;
+    type?:
+      | "bool"
+      | "datetime"
+      | "int"
+      | "long"
+      | "double"
+      | "string"
+      | "guid"
+      | "timespan";
+  }[];
+  rows: string[][];
+  nextLink?: string;
+}
 export const SqlServerInstancesGetTelemetryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     columns: Schema.Array(
@@ -5126,13 +7685,16 @@ export const SqlServerInstancesGetTelemetryOutput =
     ),
     rows: Schema.Array(Schema.Array(Schema.String)),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerInstancesGetTelemetryOutput =
-  typeof SqlServerInstancesGetTelemetryOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesGetTelemetryOutput>;
 
 // The operation
 /**
  * Retrieves SQL Server instance telemetry
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param datasetName - The name of the telemetry dataset to retrieve.
  * @param startTime - The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used.
  * @param endTime - The end time for the time range to fetch telemetry for. If not specified, the current time is used.
@@ -5146,18 +7708,37 @@ export const SqlServerInstancesGetTelemetry =
     outputSchema: SqlServerInstancesGetTelemetryOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesListInput {
+  subscriptionId: string;
+}
 export const SqlServerInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesListInput =
-  typeof SqlServerInstancesListInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesListInput>;
 
 // Output Schema
+export interface SqlServerInstancesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5194,13 +7775,14 @@ export const SqlServerInstancesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerInstancesListOutput =
-  typeof SqlServerInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesListOutput>;
 
 // The operation
 /**
  * List sqlServerInstance resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5209,18 +7791,39 @@ export const SqlServerInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerInstancesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlServerInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesListByResourceGroupInput =
-  typeof SqlServerInstancesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlServerInstancesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerInstancesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5257,15 +7860,17 @@ export const SqlServerInstancesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerInstancesListByResourceGroupOutput =
-  typeof SqlServerInstancesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesListByResourceGroupOutput>;
 
 // The operation
 /**
  * List sqlServerInstance resources in the resource group
  *
  * Gets all sqlServerInstances in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5273,18 +7878,38 @@ export const SqlServerInstancesListByResourceGroup =
     outputSchema: SqlServerInstancesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesPostUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesPostUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/postUpgrade",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesPostUpgradeInput =
-  typeof SqlServerInstancesPostUpgradeInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesPostUpgradeInput>;
 
 // Output Schema
+export interface SqlServerInstancesPostUpgradeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerInstancesPostUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5304,14 +7929,15 @@ export const SqlServerInstancesPostUpgradeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerInstancesPostUpgradeOutput =
-  typeof SqlServerInstancesPostUpgradeOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesPostUpgradeOutput>;
 
 // The operation
 /**
  * Clean up after upgrading.
  *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPostUpgrade =
@@ -5320,18 +7946,38 @@ export const SqlServerInstancesPostUpgrade =
     outputSchema: SqlServerInstancesPostUpgradeOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesPreUpgradeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesPreUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/preUpgrade",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesPreUpgradeInput =
-  typeof SqlServerInstancesPreUpgradeInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesPreUpgradeInput>;
 
 // Output Schema
+export interface SqlServerInstancesPreUpgradeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerInstancesPreUpgradeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5351,14 +7997,15 @@ export const SqlServerInstancesPreUpgradeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerInstancesPreUpgradeOutput =
-  typeof SqlServerInstancesPreUpgradeOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesPreUpgradeOutput>;
 
 // The operation
 /**
  * Request Upgrade Permission before upgrading.
  *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPreUpgrade =
@@ -5367,18 +8014,61 @@ export const SqlServerInstancesPreUpgrade =
     outputSchema: SqlServerInstancesPreUpgradeOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesRunBestPracticesAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesRunBestPracticesAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runBestPracticesAssessment",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesRunBestPracticesAssessmentInput =
-  typeof SqlServerInstancesRunBestPracticesAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesRunBestPracticesAssessmentInput>;
 
 // Output Schema
+export interface SqlServerInstancesRunBestPracticesAssessmentOutput {
+  id?: string;
+  instanceName?: string;
+  jobStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
+  jobException?: string;
+  backgroundJob?: {
+    state?:
+      | "Enabled"
+      | "Disabled"
+      | "Deleted"
+      | "Completed"
+      | "Faulted"
+      | "Suspended";
+    executionState?: "Waiting" | "Running";
+    startTime?: string;
+    endTime?: string;
+    lastExecutionStatus?:
+      | "Succeeded"
+      | "Completed"
+      | "Failed"
+      | "Faulted"
+      | "Postponed"
+      | "Rescheduled";
+    lastExecutionTime?: string;
+  };
+  sequencerActions?: {
+    actionId?: string;
+    state?:
+      | "NotStarted"
+      | "WaitingPredecessors"
+      | "ExecutingAction"
+      | "CreatingSuccessors"
+      | "Completed";
+    result?: "NotCompleted" | "Succeeded" | "Failed" | "TimedOut" | "Skipped";
+  }[];
+}
 export const SqlServerInstancesRunBestPracticesAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5442,13 +8132,16 @@ export const SqlServerInstancesRunBestPracticesAssessmentOutput =
         }),
       ),
     ),
-  });
-export type SqlServerInstancesRunBestPracticesAssessmentOutput =
-  typeof SqlServerInstancesRunBestPracticesAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesRunBestPracticesAssessmentOutput>;
 
 // The operation
 /**
  * The request to run SQL best practices assessment.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunBestPracticesAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5456,10 +8149,34 @@ export const SqlServerInstancesRunBestPracticesAssessment =
     outputSchema: SqlServerInstancesRunBestPracticesAssessmentOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesRunManagedInstanceLinkAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  azureManagedInstanceResourceId: string;
+  azureManagedInstanceRole?: "Primary" | "Secondary";
+  databaseNames: string[];
+  availabilityGroupName: string;
+  distributedAvailabilityGroupName: string;
+  assessmentCategories?: (
+    | "SqlInstance"
+    | "SqlInstanceDatabase"
+    | "ManagedInstance"
+    | "ManagedInstanceDatabase"
+    | "ManagedInstanceCrossValidation"
+    | "Certificates"
+    | "BoxToMiNetworkConnectivity"
+    | "MiToBoxNetworkConnectivity"
+    | "SqlInstanceAg"
+    | "DagCrossValidation"
+  )[];
+  sqlServerIpAddress?: string;
+}
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     azureManagedInstanceResourceId: Schema.String,
     azureManagedInstanceRole: Schema.optional(
       Schema.Literals(["Primary", "Secondary"]),
@@ -5490,11 +8207,29 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runManagedInstanceLinkAssessment",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
-  typeof SqlServerInstancesRunManagedInstanceLinkAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesRunManagedInstanceLinkAssessmentInput>;
 
 // Output Schema
+export interface SqlServerInstancesRunManagedInstanceLinkAssessmentOutput {
+  assessments?: {
+    name?: string;
+    category?:
+      | "SqlInstance"
+      | "SqlInstanceDatabase"
+      | "ManagedInstance"
+      | "ManagedInstanceDatabase"
+      | "ManagedInstanceCrossValidation"
+      | "Certificates"
+      | "BoxToMiNetworkConnectivity"
+      | "MiToBoxNetworkConnectivity"
+      | "SqlInstanceAg"
+      | "DagCrossValidation";
+    status?: "Success" | "Warning" | "Failure";
+    information?: string;
+    additionalInformation?: string;
+    failingDbs?: string[];
+  }[];
+}
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessments: Schema.optional(
@@ -5524,9 +8259,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
         }),
       ),
     ),
-  });
-export type SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
-  typeof SqlServerInstancesRunManagedInstanceLinkAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesRunManagedInstanceLinkAssessmentOutput>;
 
 // The operation
 /**
@@ -5534,6 +8267,7 @@ export type SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
  *
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for this operation.
  * @param azureManagedInstanceResourceId - The Azure SQL Managed Instance resource ID to link with the SQL Server instance.
  * @param azureManagedInstanceRole - The role of managed instance in a distributed availability group, can be Primary or Secondary.
@@ -5549,18 +8283,61 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessment =
     outputSchema: SqlServerInstancesRunManagedInstanceLinkAssessmentOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesRunMigrationAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+}
 export const SqlServerInstancesRunMigrationAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runMigrationAssessment",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesRunMigrationAssessmentInput =
-  typeof SqlServerInstancesRunMigrationAssessmentInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesRunMigrationAssessmentInput>;
 
 // Output Schema
+export interface SqlServerInstancesRunMigrationAssessmentOutput {
+  id?: string;
+  instanceName?: string;
+  jobStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
+  jobException?: string;
+  backgroundJob?: {
+    state?:
+      | "Enabled"
+      | "Disabled"
+      | "Deleted"
+      | "Completed"
+      | "Faulted"
+      | "Suspended";
+    executionState?: "Waiting" | "Running";
+    startTime?: string;
+    endTime?: string;
+    lastExecutionStatus?:
+      | "Succeeded"
+      | "Completed"
+      | "Failed"
+      | "Faulted"
+      | "Postponed"
+      | "Rescheduled";
+    lastExecutionTime?: string;
+  };
+  sequencerActions?: {
+    actionId?: string;
+    state?:
+      | "NotStarted"
+      | "WaitingPredecessors"
+      | "ExecutingAction"
+      | "CreatingSuccessors"
+      | "Completed";
+    result?: "NotCompleted" | "Succeeded" | "Failed" | "TimedOut" | "Skipped";
+  }[];
+}
 export const SqlServerInstancesRunMigrationAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5624,13 +8401,16 @@ export const SqlServerInstancesRunMigrationAssessmentOutput =
         }),
       ),
     ),
-  });
-export type SqlServerInstancesRunMigrationAssessmentOutput =
-  typeof SqlServerInstancesRunMigrationAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesRunMigrationAssessmentOutput>;
 
 // The operation
 /**
  * Runs migration assessment for SQL Server instance
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunMigrationAssessment =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5638,8 +8418,348 @@ export const SqlServerInstancesRunMigrationAssessment =
     outputSchema: SqlServerInstancesRunMigrationAssessmentOutput,
   }));
 // Input Schema
+export interface SqlServerInstancesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerInstanceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    version?:
+      | "Unknown"
+      | "SQL Server 2012"
+      | "SQL Server 2014"
+      | "SQL Server 2016"
+      | "SQL Server 2017"
+      | "SQL Server 2019"
+      | "SQL Server 2022"
+      | "SQL Server 2025";
+    edition?:
+      | "Evaluation"
+      | "Enterprise"
+      | "Standard"
+      | "Web"
+      | "Developer"
+      | "Express"
+      | "Business Intelligence"
+      | "Standard Developer";
+    containerResourceId?: string;
+    vmId?: string;
+    createTime?: string;
+    vCore?: string;
+    cores?: string;
+    status?: "Connected" | "Disconnected" | "Registered" | "Unknown";
+    patchLevel?: string;
+    collation?: string;
+    dbMasterKeyExists?: boolean;
+    isHadrEnabled?: boolean;
+    traceFlags?: number[];
+    currentVersion?: string;
+    instanceName?: string;
+    tcpDynamicPorts?: string;
+    tcpStaticPorts?: string;
+    productId?: string;
+    licenseType?:
+      | "Undefined"
+      | "Free"
+      | "HADR"
+      | "ServerCAL"
+      | "LicenseOnly"
+      | "PAYG"
+      | "Paid"
+      | "FabricCapacity";
+    azureDefenderStatusLastUpdated?: string;
+    azureDefenderStatus?: "Protected" | "Unprotected" | "Unknown";
+    provisioningState?: string;
+    lastInventoryUploadTime?: string;
+    lastUsageUploadTime?: string;
+    hostType?:
+      | "Azure Virtual Machine"
+      | "Azure VMWare Virtual Machine"
+      | "Azure Kubernetes Service"
+      | "AWS VMWare Virtual Machine"
+      | "AWS Kubernetes Service"
+      | "GCP VMWare Virtual Machine"
+      | "GCP Kubernetes Service"
+      | "Container"
+      | "Virtual Machine"
+      | "Physical Server"
+      | "AWS Virtual Machine"
+      | "GCP Virtual Machine"
+      | "Other";
+    alwaysOnRole?:
+      | "None"
+      | "FailoverClusterInstance"
+      | "FailoverClusterNode"
+      | "AvailabilityGroupReplica";
+    failoverCluster?: {
+      id?: string;
+      networkName?: string;
+      sqlInstanceIds?: string[];
+      hostNames?: string[];
+      hostIPAddresses?: { ipAddress?: string; subnetMask?: string }[];
+    };
+    backupPolicy?: {
+      retentionPeriodDays?: number;
+      fullBackupDays?: number;
+      differentialBackupHours?: 12 | 24;
+      transactionLogBackupMinutes?: number;
+    };
+    upgradeLockedUntil?: string;
+    monitoring?: { enabled?: boolean };
+    migration?: {
+      assessment?: {
+        enabled?: boolean;
+        assessmentUploadTime?: string;
+        version?: string;
+        settings?: {
+          targetLocation?: string;
+          percentile?: number;
+          lookbackPeriodInDays?: number;
+          strategy?: string;
+          currency?: string;
+          discountPercentage?: number;
+          costOptions?: {
+            computeAndStorageCostOption?: string;
+            sqlLicenseCostOption?: string;
+            windowsLicenseCostOption?: string;
+          };
+        };
+        serverAssessments?: {
+          appliesToMigrationTargetPlatform?: string;
+          featureId?: string;
+          impactedObjects?: {
+            impactDetail?: string;
+            name?: string;
+            objectType?: string;
+          }[];
+          issueCategory?: string;
+          moreInformation?: string;
+        }[];
+        skuRecommendationResults?: {
+          azureSqlDatabase?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlManagedInstance?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                computeTier?: string;
+                hardwareType?: string;
+                sqlPurchasingModel?: string;
+                sqlServiceTier?: string;
+                zoneRedundancyAvailable?: boolean;
+              };
+              computeSize?: number;
+              storageMaxSizeInMb?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              maxStorageIops?: number;
+              maxThroughputMBps?: number;
+            };
+          };
+          azureSqlVirtualMachine?: {
+            recommendationStatus?:
+              | "NotReady"
+              | "Ready"
+              | "ReadyWithConditions"
+              | "Unknown";
+            numberOfServerBlockerIssues?: number;
+            monthlyCost?: {
+              computeCost?: number;
+              storageCost?: number;
+              iopsCost?: number;
+              sqlLicenseCost?: number;
+              windowsLicenseCost?: number;
+              totalCost?: number;
+            };
+            monthlyCostOptions?: {
+              keyName?: string;
+              keyValue?: {
+                computeCost?: number;
+                storageCost?: number;
+                iopsCost?: number;
+              };
+            }[];
+            targetSku?: {
+              category?: {
+                availableVmSkus?: string[];
+                virtualMachineFamily?: string;
+              };
+              computeSize?: number;
+              predictedDataSizeInMb?: number;
+              predictedLogSizeInMb?: number;
+              virtualMachineSize?: {
+                virtualMachineFamily?: string;
+                sizeName?: string;
+                computeSize?: number;
+                azureSkuName?: string;
+                vCPUsAvailable?: number;
+                maxNetworkInterfaces?: number;
+              };
+              dataDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+              logDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+              tempDbDiskSizes?: {
+                diskType?: string;
+                redundancy?: string;
+                size?: string;
+                caching?: string;
+                maxSizeInGib?: number;
+                maxThroughputInMbps?: number;
+                maxIops?: number;
+              }[];
+            };
+          };
+        };
+        impactedObjectsSummary?: {
+          azureSqlDatabase?: {
+            featureId?: string;
+            numberImpacted?: number;
+            issueCategory?: string;
+          }[];
+          azureSqlManagedInstance?: {
+            featureId?: string;
+            numberImpacted?: number;
+            issueCategory?: string;
+          }[];
+        };
+      };
+    };
+    bestPracticesAssessment?: {
+      enabled?: boolean;
+      schedule?: {
+        enabled?: boolean;
+        cronTrigger?: {
+          startTime?: string;
+          timeZone?: string;
+          expression?: string;
+        };
+      };
+    };
+    clientConnection?: { enabled?: boolean };
+    serviceType?: "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
+    authentication?: {
+      mode?: "Mixed" | "Windows" | "Undefined";
+      sqlServerEntraIdentity?: {
+        identityType?:
+          | "SystemAssignedManagedIdentity"
+          | "UserAssignedManagedIdentity";
+        clientId?: string;
+      }[];
+    };
+    databaseMirroringEndpoint?: {
+      endpointName?: string;
+      role?: "NONE" | "PARTNER" | "WITNESS" | "ALL";
+      isEncryptionEnabled?: boolean;
+      encryptionAlgorithm?:
+        | "NONE"
+        | "RC4"
+        | "AES"
+        | "NONE, RC4"
+        | "NONE, AES"
+        | "RC4, AES"
+        | "AES, RC4"
+        | "NONE, RC4, AES"
+        | "NONE, AES, RC4";
+      connectionAuth?:
+        | "Windows_NTLM"
+        | "Windows_Kerberos"
+        | "Windows_Negotiate"
+        | "Certificate"
+        | "Windows_NTLM_Certificate"
+        | "Windows_Kerberos_Certificate"
+        | "Windows_Negotiate_Certificate"
+        | "Certificate_Windows_NTLM"
+        | "Certificate_Windows_Kerberos"
+        | "Certificate_Windows_Negotiate";
+      port?: number;
+      isDynamicPort?: boolean;
+      ipAddress?: string;
+      certificateName?: string;
+      certificateExpiryDate?: string;
+    };
+    isMicrosoftPkiCertTrustConfigured?: boolean;
+    isDigiCertPkiCertTrustConfigured?: boolean;
+    maxServerMemoryMB?: number;
+  };
+}
 export const SqlServerInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -6191,11 +9311,22 @@ export const SqlServerInstancesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerInstancesUpdateInput =
-  typeof SqlServerInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerInstancesUpdateInput>;
 
 // Output Schema
+export interface SqlServerInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6215,13 +9346,16 @@ export const SqlServerInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerInstancesUpdateOutput =
-  typeof SqlServerInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerInstancesUpdateOutput>;
 
 // The operation
 /**
  * Updates a SQL Server Instance resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerInstanceName - Name of SQL Server Instance
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  * @param properties - null
  */
@@ -6232,8 +9366,28 @@ export const SqlServerInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerLicensesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerLicenseName: string;
+  properties: {
+    billingPlan: "PAYG" | "Paid";
+    physicalCores: number;
+    licenseCategory: "Core";
+    activationState: "Activated" | "Deactivated";
+    scopeType: "Tenant" | "Subscription" | "ResourceGroup";
+    lastActivatedAt?: string;
+    lastDeactivatedAt?: string;
+    tenantId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SqlServerLicensesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       billingPlan: Schema.Literals(["PAYG", "Paid"]),
       physicalCores: Schema.Number,
@@ -6252,11 +9406,22 @@ export const SqlServerLicensesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesCreateInput =
-  typeof SqlServerLicensesCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesCreateInput>;
 
 // Output Schema
+export interface SqlServerLicensesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerLicensesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6276,13 +9441,16 @@ export const SqlServerLicensesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerLicensesCreateOutput =
-  typeof SqlServerLicensesCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerLicensesCreateOutput>;
 
 // The operation
 /**
  * Creates or replaces a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  * @param properties - SQL Server license properties
  */
 export const SqlServerLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -6292,26 +9460,37 @@ export const SqlServerLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerLicensesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerLicenseName: string;
+}
 export const SqlServerLicensesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesDeleteInput =
-  typeof SqlServerLicensesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesDeleteInput>;
 
 // Output Schema
+export type SqlServerLicensesDeleteOutput = void;
 export const SqlServerLicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlServerLicensesDeleteOutput =
-  typeof SqlServerLicensesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerLicensesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6320,17 +9499,38 @@ export const SqlServerLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerLicensesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerLicenseName: string;
+}
 export const SqlServerLicensesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesGetInput = typeof SqlServerLicensesGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesGetInput>;
 
 // Output Schema
+export interface SqlServerLicensesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerLicensesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6350,12 +9550,16 @@ export const SqlServerLicensesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerLicensesGetOutput = typeof SqlServerLicensesGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerLicensesGetOutput>;
 
 // The operation
 /**
  * Retrieves a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6364,17 +9568,37 @@ export const SqlServerLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerLicensesListInput {
+  subscriptionId: string;
+}
 export const SqlServerLicensesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesListInput = typeof SqlServerLicensesListInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesListInput>;
 
 // Output Schema
+export interface SqlServerLicensesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerLicensesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6411,13 +9635,14 @@ export const SqlServerLicensesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerLicensesListOutput =
-  typeof SqlServerLicensesListOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerLicensesListOutput>;
 
 // The operation
 /**
  * List sqlServerLicense resources in the subscription
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -6426,18 +9651,39 @@ export const SqlServerLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServerLicensesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SqlServerLicensesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesListByResourceGroupInput =
-  typeof SqlServerLicensesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesListByResourceGroupInput>;
 
 // Output Schema
+export interface SqlServerLicensesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServerLicensesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6474,15 +9720,17 @@ export const SqlServerLicensesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServerLicensesListByResourceGroupOutput =
-  typeof SqlServerLicensesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerLicensesListByResourceGroupOutput>;
 
 // The operation
 /**
  * List sqlServerLicense resources in the resource group
  *
  * Gets all sqlServerLicenses in a resource group.
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6490,8 +9738,27 @@ export const SqlServerLicensesListByResourceGroup =
     outputSchema: SqlServerLicensesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SqlServerLicensesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  sqlServerLicenseName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    billingPlan?: "PAYG" | "Paid";
+    physicalCores?: number;
+    licenseCategory?: "Core";
+    activationState?: "Activated" | "Deactivated";
+    scopeType?: "Tenant" | "Subscription" | "ResourceGroup";
+    lastActivatedAt?: string;
+    lastDeactivatedAt?: string;
+    tenantId?: string;
+  };
+}
 export const SqlServerLicensesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     properties: Schema.optional(
       Schema.Struct({
@@ -6515,11 +9782,22 @@ export const SqlServerLicensesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses/{sqlServerLicenseName}",
       apiVersion: "2026-01-01",
     }),
-  );
-export type SqlServerLicensesUpdateInput =
-  typeof SqlServerLicensesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServerLicensesUpdateInput>;
 
 // Output Schema
+export interface SqlServerLicensesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServerLicensesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6539,13 +9817,16 @@ export const SqlServerLicensesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServerLicensesUpdateOutput =
-  typeof SqlServerLicensesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServerLicensesUpdateOutput>;
 
 // The operation
 /**
  * Updates a SQL Server license resource
+ *
+ * @param subscriptionId - The ID of the Azure subscription
+ * @param resourceGroupName - The name of the Azure resource group
+ * @param sqlServerLicenseName - Name of SQL Server License
+ * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  * @param properties - null
  */

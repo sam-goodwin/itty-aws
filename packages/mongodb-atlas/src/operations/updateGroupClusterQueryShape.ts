@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupClusterQueryShapeInput {
+  groupId: string;
+  clusterName: string;
+  queryShapeHash: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupClusterQueryShapeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -16,15 +23,12 @@ export const UpdateGroupClusterQueryShapeInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash}",
     }),
-  );
-export type UpdateGroupClusterQueryShapeInput =
-  typeof UpdateGroupClusterQueryShapeInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupClusterQueryShapeInput>;
 
 // Output Schema
+export type UpdateGroupClusterQueryShapeOutput = void;
 export const UpdateGroupClusterQueryShapeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupClusterQueryShapeOutput =
-  typeof UpdateGroupClusterQueryShapeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterQueryShapeOutput>;
 
 // The operation
 /**

@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RestoreProjectBranchInput {
+  project_id: string;
+  branch_id: string;
+  source_branch_id: string;
+  source_lsn?: string;
+  source_timestamp?: string;
+  preserve_under_name?: string;
+}
 export const RestoreProjectBranchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,10 +25,102 @@ export const RestoreProjectBranchInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/restore",
     }),
-  );
-export type RestoreProjectBranchInput = typeof RestoreProjectBranchInput.Type;
+  ) as unknown as Schema.Codec<RestoreProjectBranchInput>;
 
 // Output Schema
+export interface RestoreProjectBranchOutput {
+  branch: {
+    id: string;
+    project_id: string;
+    parent_id?: string;
+    parent_lsn?: string;
+    parent_timestamp?: string;
+    name: string;
+    current_state: string;
+    pending_state?: string;
+    state_changed_at: string;
+    logical_size?: number;
+    creation_source: string;
+    primary?: boolean;
+    default: boolean;
+    protected: boolean;
+    cpu_used_sec: number;
+    compute_time_seconds: number;
+    active_time_seconds: number;
+    written_data_bytes: number;
+    data_transfer_bytes: number;
+    created_at: string;
+    updated_at: string;
+    ttl_interval_seconds?: number;
+    expires_at?: string;
+    last_reset_at?: string;
+    created_by?: { name?: string; image?: string };
+    init_source?: string;
+    restore_status?: string;
+    restored_from?: string;
+    restored_as?: string;
+    restricted_actions?: { name: string; reason: string }[];
+    recovery?: {
+      deleted_at: string;
+      recoverable_until: string;
+      deletion_method: "user" | "ttl";
+    };
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const RestoreProjectBranchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
@@ -132,14 +232,15 @@ export const RestoreProjectBranchOutput =
         total_duration_ms: Schema.Number,
       }),
     ),
-  });
-export type RestoreProjectBranchOutput = typeof RestoreProjectBranchOutput.Type;
+  }) as unknown as Schema.Codec<RestoreProjectBranchOutput>;
 
 // The operation
 /**
- * Restore branch
+ * Restore branch to a historical state
  *
  * Restores a branch to an earlier state in its own or another branch's history
+ * by specifying an LSN or timestamp.
+ * Creates a new branch from the historical state.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface CreateGroupClusterInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const CreateGroupClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,18 +22,18 @@ export const CreateGroupClusterInput =
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({ method: "POST", path: "/api/atlas/v2/groups/{groupId}/clusters" }),
-  );
-export type CreateGroupClusterInput = typeof CreateGroupClusterInput.Type;
+  ) as unknown as Schema.Codec<CreateGroupClusterInput>;
 
 // Output Schema
-export const CreateGroupClusterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateGroupClusterOutput = typeof CreateGroupClusterOutput.Type;
+export type CreateGroupClusterOutput = void;
+export const CreateGroupClusterOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOutput>;
 
 // The operation
 /**
  * Create One Cluster in One Project
  *
- * Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. To use this resource, the requesting Service Account or API Key must have the Project Owner role or Project Cluster Creator role. This feature is not available for serverless clusters.
+ * Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
  * Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

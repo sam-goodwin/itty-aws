@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateSnapshotInput {
+  project_id: string;
+  branch_id: string;
+  lsn?: string;
+  timestamp?: string;
+  name?: string;
+  expires_at?: string;
+}
 export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
@@ -15,10 +23,77 @@ export const CreateSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/projects/{project_id}/branches/{branch_id}/snapshot",
   }),
-);
-export type CreateSnapshotInput = typeof CreateSnapshotInput.Type;
+) as unknown as Schema.Codec<CreateSnapshotInput>;
 
 // Output Schema
+export interface CreateSnapshotOutput {
+  snapshot: {
+    id: string;
+    name: string;
+    lsn?: string;
+    timestamp?: string;
+    source_branch_id?: string;
+    created_at: string;
+    expires_at?: string;
+    manual?: boolean;
+    full_size?: number;
+    diff_size?: number;
+  };
+  operations: {
+    id: string;
+    project_id: string;
+    branch_id?: string;
+    endpoint_id?: string;
+    action:
+      | "create_compute"
+      | "create_timeline"
+      | "start_compute"
+      | "suspend_compute"
+      | "apply_config"
+      | "check_availability"
+      | "delete_timeline"
+      | "create_branch"
+      | "import_data"
+      | "tenant_ignore"
+      | "tenant_attach"
+      | "tenant_detach"
+      | "tenant_reattach"
+      | "replace_safekeeper"
+      | "disable_maintenance"
+      | "apply_storage_config"
+      | "prepare_secondary_pageserver"
+      | "switch_pageserver"
+      | "detach_parent_branch"
+      | "timeline_archive"
+      | "timeline_unarchive"
+      | "start_reserved_compute"
+      | "sync_dbs_and_roles_from_compute"
+      | "apply_schema_from_branch"
+      | "timeline_mark_invisible"
+      | "timeline_update_protected_config"
+      | "prewarm_replica"
+      | "promote_replica"
+      | "set_storage_non_dirty"
+      | "swap_binding_id"
+      | "finalize_migration"
+      | "mark_migration_prepared";
+    status:
+      | "scheduling"
+      | "running"
+      | "finished"
+      | "failed"
+      | "error"
+      | "cancelling"
+      | "cancelled"
+      | "skipped";
+    error?: string;
+    failures_count: number;
+    retry_at?: string;
+    created_at: string;
+    updated_at: string;
+    total_duration_ms: number;
+  }[];
+}
 export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   snapshot: Schema.Struct({
     id: Schema.String,
@@ -90,15 +165,14 @@ export const CreateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       total_duration_ms: Schema.Number,
     }),
   ),
-});
-export type CreateSnapshotOutput = typeof CreateSnapshotOutput.Type;
+}) as unknown as Schema.Codec<CreateSnapshotOutput>;
 
 // The operation
 /**
  * Create snapshot
  *
- * Create a snapshot from the specified branch using the provided parameters.
- * This endpoint may initiate an asynchronous operation.
+ * Creates a snapshot from the specified branch.
+ * This operation may initiate an asynchronous process.
  * **Note**: This endpoint is currently in Beta.
  *
  * @param project_id - The Neon project ID

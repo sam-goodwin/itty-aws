@@ -3,29 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddEndUserSolanaAccountInput {
+  userId: string;
+}
 export const AddEndUserSolanaAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }));
-export type AddEndUserSolanaAccountInput =
-  typeof AddEndUserSolanaAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/end-users/{userId}/solana" }),
+  ) as unknown as Schema.Codec<AddEndUserSolanaAccountInput>;
 
 // Output Schema
+export interface AddEndUserSolanaAccountOutput {
+  solanaAccount: { address: string; createdAt: string };
+}
 export const AddEndUserSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     solanaAccount: Schema.Struct({
       address: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type AddEndUserSolanaAccountOutput =
-  typeof AddEndUserSolanaAccountOutput.Type;
+  }) as unknown as Schema.Codec<AddEndUserSolanaAccountOutput>;
 
 // The operation
 /**
- * Add a Solana account to an end user
+ * Add Solana account to end user
  *
- * Adds a new Solana account to an existing end user. End users can have  up to 10 Solana accounts.
+ * Adds a new Solana account to an existing end user. End users can have up to 10 Solana accounts.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.
  *
  * @param userId - The ID of the end user to add the account to.

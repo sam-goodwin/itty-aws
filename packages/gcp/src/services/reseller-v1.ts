@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -29,70 +29,223 @@ export interface ResellernotifyGetwatchdetailsResponse {
   serviceAccountEmailAddresses?: ReadonlyArray<string>;
 }
 
-export const ResellernotifyGetwatchdetailsResponse: Schema.Schema<ResellernotifyGetwatchdetailsResponse> =
+export const ResellernotifyGetwatchdetailsResponse: Schema.Codec<ResellernotifyGetwatchdetailsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topicName: Schema.optional(Schema.String),
     serviceAccountEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResellernotifyGetwatchdetailsResponse" });
 
 export interface Address {
+  /** For `countryCode` information, see the ISO 3166 country code elements. Verify that country is approved for resale of Google products. This property is required when creating a new customer. */
+  countryCode?: string;
+  /** Line 3 of the address. */
+  addressLine3?: string;
+  /** The company or company division name. This is required. */
+  organizationName?: string;
+  /** Identifies the resource as a customer address. Value: `customers#address` */
+  kind?: string;
+  /** An example of a `region` value is `CA` for the state of California. */
+  region?: string;
+  /** A `postalCode` example is a postal zip code such as `94043`. This property is required when creating a new customer. */
+  postalCode?: string;
   /** The customer contact's name. This is required. */
   contactName?: string;
   /** Line 2 of the address. */
   addressLine2?: string;
   /** An example of a `locality` value is the city of `San Francisco`. */
   locality?: string;
-  /** For `countryCode` information, see the ISO 3166 country code elements. Verify that country is approved for resale of Google products. This property is required when creating a new customer. */
-  countryCode?: string;
-  /** A `postalCode` example is a postal zip code such as `94043`. This property is required when creating a new customer. */
-  postalCode?: string;
-  /** Line 3 of the address. */
-  addressLine3?: string;
-  /** Identifies the resource as a customer address. Value: `customers#address` */
-  kind?: string;
-  /** An example of a `region` value is `CA` for the state of California. */
-  region?: string;
   /** A customer's physical address. An address can be composed of one to three lines. The `addressline2` and `addressLine3` are optional. */
   addressLine1?: string;
-  /** The company or company division name. This is required. */
-  organizationName?: string;
 }
 
-export const Address: Schema.Schema<Address> =
+export const Address: Schema.Codec<Address> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countryCode: Schema.optional(Schema.String),
+    addressLine3: Schema.optional(Schema.String),
+    organizationName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    postalCode: Schema.optional(Schema.String),
     contactName: Schema.optional(Schema.String),
     addressLine2: Schema.optional(Schema.String),
     locality: Schema.optional(Schema.String),
-    countryCode: Schema.optional(Schema.String),
-    postalCode: Schema.optional(Schema.String),
-    addressLine3: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
     addressLine1: Schema.optional(Schema.String),
-    organizationName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Address" });
+
+export interface Seats {
+  /** Identifies the resource as a subscription seat setting. Value: `subscriptions#seats` */
+  kind?: string;
+  /** This is a required property and is exclusive to subscriptions with `ANNUAL_MONTHLY_PAY` and `ANNUAL_YEARLY_PAY` plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the `numberOfSeats` cannot be reduced until renewal. The reseller is invoiced based on the `numberOfSeats` value regardless of how many of these user licenses are assigned. *Note: *Google Workspace subscriptions automatically assign a license to every user. */
+  numberOfSeats?: number;
+  /** This is a required property and is exclusive to subscriptions with `FLEXIBLE` or `TRIAL` plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. *Note: *G Suite subscriptions automatically assign a license to every user. */
+  maximumNumberOfSeats?: number;
+  /** Read-only field containing the current number of users that are assigned a license for the product defined in `skuId`. This field's value is equivalent to the numerical count of users returned by the Enterprise License Manager API method: [`listForProductAndSku`](https://developers.google.com/workspace/admin/licensing/v1/reference/licenseAssignments/listForProductAndSku). */
+  licensedNumberOfSeats?: number;
+}
+
+export const Seats: Schema.Codec<Seats> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    numberOfSeats: Schema.optional(Schema.Number),
+    maximumNumberOfSeats: Schema.optional(Schema.Number),
+    licensedNumberOfSeats: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Seats" });
+
+export interface ChangePlanRequest {
+  /** The `planName` property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts. Possible values are: - `ANNUAL_MONTHLY_PAY` - The annual commitment plan with monthly payments *Caution: *`ANNUAL_MONTHLY_PAY` is returned as `ANNUAL` in all API responses. - `ANNUAL_YEARLY_PAY` - The annual commitment plan with yearly payments - `FLEXIBLE` - The flexible plan - `TRIAL` - The 30-day free trial plan */
+  planName?: string;
+  /** This is a required property. The seats property is the number of user seat licenses. */
+  seats?: Seats;
+  /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
+  purchaseOrderId?: string;
+  /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `changePlan` request in order to receive discounted rate. This property is optional. If a deal code has already been added to a subscription, this property may be left empty and the existing discounted rate will still apply (if not empty, only provide the deal code that is already present on the subscription). If a deal code has never been added to a subscription and this property is left blank, regular pricing will apply. */
+  dealCode?: string;
+  /** Identifies the resource as a subscription change plan request. Value: `subscriptions#changePlanRequest` */
+  kind?: string;
+}
+
+export const ChangePlanRequest: Schema.Codec<ChangePlanRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    planName: Schema.optional(Schema.String),
+    seats: Schema.optional(Seats),
+    purchaseOrderId: Schema.optional(Schema.String),
+    dealCode: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChangePlanRequest" });
 
 export interface PrimaryAdmin {
   /** The business email of the primary administrator of the customer. The email verification link is sent to this email address at the time of customer creation. Primary administrators have access to the customer's Admin Console, including the ability to invite and evict users and manage the administrative needs of the customer. */
   primaryEmail?: string;
 }
 
-export const PrimaryAdmin: Schema.Schema<PrimaryAdmin> =
+export const PrimaryAdmin: Schema.Codec<PrimaryAdmin> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     primaryEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrimaryAdmin" });
 
+export interface RenewalSettings {
+  /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the `renewalType` is a required property. */
+  renewalType?: string;
+  /** Identifies the resource as a subscription renewal setting. Value: `subscriptions#renewalSettings` */
+  kind?: string;
+}
+
+export const RenewalSettings: Schema.Codec<RenewalSettings> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renewalType: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenewalSettings" });
+
+export interface Subscription {
+  /** The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more information, see the API concepts. */
+  trialSettings?: { isInTrial?: boolean; trialEndTime?: string };
+  /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. */
+  renewalSettings?: RenewalSettings;
+  /** The `plan` property is required. In this version of the API, the G Suite plans are the flexible plan, annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans, see the API concepts. */
+  plan?: {
+    planName?: string;
+    commitmentInterval?: { startTime?: string; endTime?: string };
+    isCommitmentPlan?: boolean;
+  };
+  /** Identifies the resource as a Subscription. Value: `reseller#subscription` */
+  kind?: string;
+  /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
+  purchaseOrderId?: string;
+  /** This is an optional property. */
+  status?: string;
+  /** Read-only transfer related information for the subscription. For more information, see retrieve transferable subscriptions for a customer. */
+  transferInfo?: {
+    minimumTransferableSeats?: number;
+    transferabilityExpirationTime?: string;
+    currentLegacySkuId?: string;
+  };
+  /** Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see Product and SKU IDs. */
+  skuName?: string;
+  /** A required property. The `skuId` is a unique system identifier for a product's SKU assigned to a customer in the subscription. For products and SKUs available in this version of the API, see Product and SKU IDs. */
+  skuId?: string;
+  /** Read-only field that returns the current billing method for a subscription. */
+  billingMethod?: string;
+  /** This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google. */
+  customerId?: string;
+  /** This is a required property. The number and limit of user seat licenses in the plan. */
+  seats?: Seats;
+  /** The `creationTime` property is the date when subscription was created. It is in milliseconds using the Epoch format. See an example Epoch converter. */
+  creationTime?: string;
+  /** Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's `STATUS` is `SUSPENDED` until all pending suspensions are removed. Possible options include: - `PENDING_TOS_ACCEPTANCE` - The customer has not logged in and accepted the G Suite Resold Terms of Services. - `RENEWAL_WITH_TYPE_CANCEL` - The customer's commitment ended and their service was cancelled at the end of their term. - `RESELLER_INITIATED` - A manual suspension invoked by a Reseller. - `TRIAL_ENDED` - The customer's trial expired without a plan selected. - `OTHER` - The customer is suspended for an internal Google reason (e.g. abuse or otherwise). */
+  suspensionReasons?: ReadonlyArray<string>;
+  /** Primary domain name of the customer */
+  customerDomain?: string;
+  /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `insert` requests in order to receive discounted rate. This property is optional, regular pricing applies if left empty. */
+  dealCode?: string;
+  /** URL to customer's Subscriptions page in the Admin console. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task using the Subscriptions page in the Admin console. */
+  resourceUiUrl?: string;
+  /** The `subscriptionId` is the subscription identifier and is unique for each customer. This is a required property. Since a `subscriptionId` changes when a subscription is updated, we recommend not using this ID as a key for persistent data. Use the `subscriptionId` as described in retrieve all reseller subscriptions. */
+  subscriptionId?: string;
+}
+
+export const Subscription: Schema.Codec<Subscription> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trialSettings: Schema.optional(
+      Schema.Struct({
+        isInTrial: Schema.optional(Schema.Boolean),
+        trialEndTime: Schema.optional(Schema.String),
+      }),
+    ),
+    renewalSettings: Schema.optional(RenewalSettings),
+    plan: Schema.optional(
+      Schema.Struct({
+        planName: Schema.optional(Schema.String),
+        commitmentInterval: Schema.optional(
+          Schema.Struct({
+            startTime: Schema.optional(Schema.String),
+            endTime: Schema.optional(Schema.String),
+          }),
+        ),
+        isCommitmentPlan: Schema.optional(Schema.Boolean),
+      }),
+    ),
+    kind: Schema.optional(Schema.String),
+    purchaseOrderId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    transferInfo: Schema.optional(
+      Schema.Struct({
+        minimumTransferableSeats: Schema.optional(Schema.Number),
+        transferabilityExpirationTime: Schema.optional(Schema.String),
+        currentLegacySkuId: Schema.optional(Schema.String),
+      }),
+    ),
+    skuName: Schema.optional(Schema.String),
+    skuId: Schema.optional(Schema.String),
+    billingMethod: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    seats: Schema.optional(Seats),
+    creationTime: Schema.optional(Schema.String),
+    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+    customerDomain: Schema.optional(Schema.String),
+    dealCode: Schema.optional(Schema.String),
+    resourceUiUrl: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Subscription" });
+
+export interface ResellernotifyResource {
+  /** Topic name of the PubSub */
+  topicName?: string;
+}
+
+export const ResellernotifyResource: Schema.Codec<ResellernotifyResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topicName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResellernotifyResource" });
+
 export interface Customer {
+  /** A customer's address information. Each field has a limit of 255 charcters. */
+  postalAddress?: Address;
   /** Like the "Customer email" in the reseller tools, this email is the secondary contact used if something happens to the customer's service such as service outage or a security issue. This property is required when creating a new "domain" customer and should not use the same domain as `customerDomain`. The `alternateEmail` field is not necessary to create a "team" customer. */
   alternateEmail?: string;
   /** Whether the customer's primary domain has been verified. */
   customerDomainVerified?: boolean;
   /** Identifies the type of the customer. Acceptable values include: * `domain`: Implies a domain-verified customer (default). * `team`: Implies an email-verified customer. For more information, see [managed teams](https://support.google.com/a/users/answer/9939479). */
   customerType?: "customerTypeUnspecified" | "domain" | "team" | (string & {});
-  /** URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task in the Admin console. */
-  resourceUiUrl?: string;
-  /** A customer's address information. Each field has a limit of 255 charcters. */
-  postalAddress?: Address;
   /** Identifies the resource as a customer. Value: `reseller#customer` */
   kind?: string;
   /** This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google. */
@@ -103,144 +256,23 @@ export interface Customer {
   customerDomain?: string;
   /** Customer contact phone number. Must start with "+" followed by the country code. The rest of the number can be contiguous numbers or respect the phone local format conventions, but it must be a real phone number and not, for example, "123". This field is silently ignored if invalid. */
   phoneNumber?: string;
+  /** URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task in the Admin console. */
+  resourceUiUrl?: string;
 }
 
-export const Customer: Schema.Schema<Customer> =
+export const Customer: Schema.Codec<Customer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postalAddress: Schema.optional(Address),
     alternateEmail: Schema.optional(Schema.String),
     customerDomainVerified: Schema.optional(Schema.Boolean),
     customerType: Schema.optional(Schema.String),
-    resourceUiUrl: Schema.optional(Schema.String),
-    postalAddress: Schema.optional(Address),
     kind: Schema.optional(Schema.String),
     customerId: Schema.optional(Schema.String),
     primaryAdmin: Schema.optional(PrimaryAdmin),
     customerDomain: Schema.optional(Schema.String),
     phoneNumber: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Customer" });
-
-export interface RenewalSettings {
-  /** Identifies the resource as a subscription renewal setting. Value: `subscriptions#renewalSettings` */
-  kind?: string;
-  /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the `renewalType` is a required property. */
-  renewalType?: string;
-}
-
-export const RenewalSettings: Schema.Schema<RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    renewalType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RenewalSettings" });
-
-export interface Seats {
-  /** This is a required property and is exclusive to subscriptions with `FLEXIBLE` or `TRIAL` plans. This property sets the maximum number of licensed users allowed on a subscription. This quantity can be increased up to the maximum limit defined in the reseller's contract. The minimum quantity is the current number of users in the customer account. *Note: *G Suite subscriptions automatically assign a license to every user. */
-  maximumNumberOfSeats?: number;
-  /** Identifies the resource as a subscription seat setting. Value: `subscriptions#seats` */
-  kind?: string;
-  /** Read-only field containing the current number of users that are assigned a license for the product defined in `skuId`. This field's value is equivalent to the numerical count of users returned by the Enterprise License Manager API method: [`listForProductAndSku`](https://developers.google.com/workspace/admin/licensing/v1/reference/licenseAssignments/listForProductAndSku). */
-  licensedNumberOfSeats?: number;
-  /** This is a required property and is exclusive to subscriptions with `ANNUAL_MONTHLY_PAY` and `ANNUAL_YEARLY_PAY` plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the `numberOfSeats` cannot be reduced until renewal. The reseller is invoiced based on the `numberOfSeats` value regardless of how many of these user licenses are assigned. *Note: *Google Workspace subscriptions automatically assign a license to every user. */
-  numberOfSeats?: number;
-}
-
-export const Seats: Schema.Schema<Seats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maximumNumberOfSeats: Schema.optional(Schema.Number),
-    kind: Schema.optional(Schema.String),
-    licensedNumberOfSeats: Schema.optional(Schema.Number),
-    numberOfSeats: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Seats" });
-
-export interface Subscription {
-  /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `insert` requests in order to receive discounted rate. This property is optional, regular pricing applies if left empty. */
-  dealCode?: string;
-  /** Read-only field that returns the current billing method for a subscription. */
-  billingMethod?: string;
-  /** The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more information, see the API concepts. */
-  trialSettings?: { isInTrial?: boolean; trialEndTime?: string };
-  /** This is a required property. The number and limit of user seat licenses in the plan. */
-  seats?: Seats;
-  /** This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google. */
-  customerId?: string;
-  /** A required property. The `skuId` is a unique system identifier for a product's SKU assigned to a customer in the subscription. For products and SKUs available in this version of the API, see Product and SKU IDs. */
-  skuId?: string;
-  /** The `subscriptionId` is the subscription identifier and is unique for each customer. This is a required property. Since a `subscriptionId` changes when a subscription is updated, we recommend not using this ID as a key for persistent data. Use the `subscriptionId` as described in retrieve all reseller subscriptions. */
-  subscriptionId?: string;
-  /** Read-only field containing an enumerable of all the current suspension reasons for a subscription. It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's `STATUS` is `SUSPENDED` until all pending suspensions are removed. Possible options include: - `PENDING_TOS_ACCEPTANCE` - The customer has not logged in and accepted the G Suite Resold Terms of Services. - `RENEWAL_WITH_TYPE_CANCEL` - The customer's commitment ended and their service was cancelled at the end of their term. - `RESELLER_INITIATED` - A manual suspension invoked by a Reseller. - `TRIAL_ENDED` - The customer's trial expired without a plan selected. - `OTHER` - The customer is suspended for an internal Google reason (e.g. abuse or otherwise). */
-  suspensionReasons?: ReadonlyArray<string>;
-  /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. */
-  renewalSettings?: RenewalSettings;
-  /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
-  purchaseOrderId?: string;
-  /** URL to customer's Subscriptions page in the Admin console. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task using the Subscriptions page in the Admin console. */
-  resourceUiUrl?: string;
-  /** Identifies the resource as a Subscription. Value: `reseller#subscription` */
-  kind?: string;
-  /** The `plan` property is required. In this version of the API, the G Suite plans are the flexible plan, annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans, see the API concepts. */
-  plan?: {
-    commitmentInterval?: { startTime?: string; endTime?: string };
-    planName?: string;
-    isCommitmentPlan?: boolean;
-  };
-  /** Primary domain name of the customer */
-  customerDomain?: string;
-  /** The `creationTime` property is the date when subscription was created. It is in milliseconds using the Epoch format. See an example Epoch converter. */
-  creationTime?: string;
-  /** This is an optional property. */
-  status?: string;
-  /** Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU names are subject to change at Google's discretion. For products and SKUs available in this version of the API, see Product and SKU IDs. */
-  skuName?: string;
-  /** Read-only transfer related information for the subscription. For more information, see retrieve transferable subscriptions for a customer. */
-  transferInfo?: {
-    transferabilityExpirationTime?: string;
-    minimumTransferableSeats?: number;
-    currentLegacySkuId?: string;
-  };
-}
-
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dealCode: Schema.optional(Schema.String),
-    billingMethod: Schema.optional(Schema.String),
-    trialSettings: Schema.optional(
-      Schema.Struct({
-        isInTrial: Schema.optional(Schema.Boolean),
-        trialEndTime: Schema.optional(Schema.String),
-      }),
-    ),
-    seats: Schema.optional(Seats),
-    customerId: Schema.optional(Schema.String),
-    skuId: Schema.optional(Schema.String),
-    subscriptionId: Schema.optional(Schema.String),
-    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
-    renewalSettings: Schema.optional(RenewalSettings),
-    purchaseOrderId: Schema.optional(Schema.String),
     resourceUiUrl: Schema.optional(Schema.String),
-    kind: Schema.optional(Schema.String),
-    plan: Schema.optional(
-      Schema.Struct({
-        commitmentInterval: Schema.optional(
-          Schema.Struct({
-            startTime: Schema.optional(Schema.String),
-            endTime: Schema.optional(Schema.String),
-          }),
-        ),
-        planName: Schema.optional(Schema.String),
-        isCommitmentPlan: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    customerDomain: Schema.optional(Schema.String),
-    creationTime: Schema.optional(Schema.String),
-    status: Schema.optional(Schema.String),
-    skuName: Schema.optional(Schema.String),
-    transferInfo: Schema.optional(
-      Schema.Struct({
-        transferabilityExpirationTime: Schema.optional(Schema.String),
-        minimumTransferableSeats: Schema.optional(Schema.Number),
-        currentLegacySkuId: Schema.optional(Schema.String),
-      }),
-    ),
-  }).annotate({ identifier: "Subscription" });
+  }).annotate({ identifier: "Customer" });
 
 export interface Subscriptions {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -251,44 +283,12 @@ export interface Subscriptions {
   subscriptions?: ReadonlyArray<Subscription>;
 }
 
-export const Subscriptions: Schema.Schema<Subscriptions> =
+export const Subscriptions: Schema.Codec<Subscriptions> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     subscriptions: Schema.optional(Schema.Array(Subscription)),
   }).annotate({ identifier: "Subscriptions" });
-
-export interface ResellernotifyResource {
-  /** Topic name of the PubSub */
-  topicName?: string;
-}
-
-export const ResellernotifyResource: Schema.Schema<ResellernotifyResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    topicName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResellernotifyResource" });
-
-export interface ChangePlanRequest {
-  /** Identifies the resource as a subscription change plan request. Value: `subscriptions#changePlanRequest` */
-  kind?: string;
-  /** The `planName` property is required. This is the name of the subscription's payment plan. For more information about the Google payment plans, see API concepts. Possible values are: - `ANNUAL_MONTHLY_PAY` - The annual commitment plan with monthly payments *Caution: *`ANNUAL_MONTHLY_PAY` is returned as `ANNUAL` in all API responses. - `ANNUAL_YEARLY_PAY` - The annual commitment plan with yearly payments - `FLEXIBLE` - The flexible plan - `TRIAL` - The 30-day free trial plan */
-  planName?: string;
-  /** Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be included in `changePlan` request in order to receive discounted rate. This property is optional. If a deal code has already been added to a subscription, this property may be left empty and the existing discounted rate will still apply (if not empty, only provide the deal code that is already present on the subscription). If a deal code has never been added to a subscription and this property is left blank, regular pricing will apply. */
-  dealCode?: string;
-  /** This is a required property. The seats property is the number of user seat licenses. */
-  seats?: Seats;
-  /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
-  purchaseOrderId?: string;
-}
-
-export const ChangePlanRequest: Schema.Schema<ChangePlanRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kind: Schema.optional(Schema.String),
-    planName: Schema.optional(Schema.String),
-    dealCode: Schema.optional(Schema.String),
-    seats: Schema.optional(Seats),
-    purchaseOrderId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ChangePlanRequest" });
 
 // ==========================================================================
 // Errors
@@ -344,45 +344,33 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface InsertCustomersRequest {
-  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
-  customerAuthToken?: string;
-  /** Request body */
-  body?: Customer;
+export interface GetCustomersRequest {
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId: string;
 }
 
-export const InsertCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    customerAuthToken: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("customerAuthToken"),
-    ),
-    body: Schema.optional(Customer).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "apps/reseller/v1/customers", hasBody: true }),
+export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerId: Schema.String.pipe(T.HttpPath("customerId")),
+}).pipe(
+  T.Http({ method: "GET", path: "apps/reseller/v1/customers/{customerId}" }),
   svc,
-) as unknown as Schema.Schema<InsertCustomersRequest>;
+) as unknown as Schema.Codec<GetCustomersRequest>;
 
-export type InsertCustomersResponse = Customer;
-export const InsertCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export type GetCustomersResponse = Customer;
+export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type InsertCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
 
-/** Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos). */
-export const insertCustomers: API.OperationMethod<
-  InsertCustomersRequest,
-  InsertCustomersResponse,
-  InsertCustomersError,
+/** Gets a customer account. Use this operation to see a customer account already in your reseller management, or to see the minimal account information for an existing customer that you do not manage. For more information about the API response for existing customers, see [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer). */
+export const getCustomers: API.OperationMethod<
+  GetCustomersRequest,
+  GetCustomersResponse,
+  GetCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: InsertCustomersRequest,
-  output: InsertCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetCustomersRequest,
+  output: GetCustomersResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchCustomersRequest {
@@ -402,7 +390,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<PatchCustomersRequest>;
+) as unknown as Schema.Codec<PatchCustomersRequest>;
 
 export type PatchCustomersResponse = Customer;
 export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -426,33 +414,45 @@ export const patchCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetCustomersRequest {
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId: string;
+export interface InsertCustomersRequest {
+  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
+  customerAuthToken?: string;
+  /** Request body */
+  body?: Customer;
 }
 
-export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  customerId: Schema.String.pipe(T.HttpPath("customerId")),
-}).pipe(
-  T.Http({ method: "GET", path: "apps/reseller/v1/customers/{customerId}" }),
+export const InsertCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    customerAuthToken: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("customerAuthToken"),
+    ),
+    body: Schema.optional(Customer).pipe(T.HttpBody()),
+  },
+).pipe(
+  T.Http({ method: "POST", path: "apps/reseller/v1/customers", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<GetCustomersRequest>;
+) as unknown as Schema.Codec<InsertCustomersRequest>;
 
-export type GetCustomersResponse = Customer;
-export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
+export type InsertCustomersResponse = Customer;
+export const InsertCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
+export type InsertCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets a customer account. Use this operation to see a customer account already in your reseller management, or to see the minimal account information for an existing customer that you do not manage. For more information about the API response for existing customers, see [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer). */
-export const getCustomers: API.OperationMethod<
-  GetCustomersRequest,
-  GetCustomersResponse,
-  GetCustomersError,
+/** Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos). */
+export const insertCustomers: API.OperationMethod<
+  InsertCustomersRequest,
+  InsertCustomersResponse,
+  InsertCustomersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomersRequest,
-  output: GetCustomersResponse,
-  errors: [NotFound, Forbidden],
+  input: InsertCustomersRequest,
+  output: InsertCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCustomersRequest {
@@ -474,7 +474,7 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     hasBody: true,
   }),
   svc,
-) as unknown as Schema.Schema<UpdateCustomersRequest>;
+) as unknown as Schema.Codec<UpdateCustomersRequest>;
 
 export type UpdateCustomersResponse = Customer;
 export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
@@ -507,7 +507,7 @@ export const GetwatchdetailsResellernotifyRequest =
       path: "apps/reseller/v1/resellernotify/getwatchdetails",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetwatchdetailsResellernotifyRequest>;
+  ) as unknown as Schema.Codec<GetwatchdetailsResellernotifyRequest>;
 
 export type GetwatchdetailsResellernotifyResponse =
   ResellernotifyGetwatchdetailsResponse;
@@ -531,48 +531,6 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface RegisterResellernotifyRequest {
-  /** The service account which will own the created Cloud-PubSub topic. */
-  serviceAccountEmailAddress?: string;
-}
-
-export const RegisterResellernotifyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceAccountEmailAddress: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("serviceAccountEmailAddress"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "apps/reseller/v1/resellernotify/register",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RegisterResellernotifyRequest>;
-
-export type RegisterResellernotifyResponse = ResellernotifyResource;
-export const RegisterResellernotifyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
-
-export type RegisterResellernotifyError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Registers a Reseller for receiving notifications. */
-export const registerResellernotify: API.OperationMethod<
-  RegisterResellernotifyRequest,
-  RegisterResellernotifyResponse,
-  RegisterResellernotifyError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RegisterResellernotifyRequest,
-  output: RegisterResellernotifyResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface UnregisterResellernotifyRequest {
   /** The service account which owns the Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
@@ -590,7 +548,7 @@ export const UnregisterResellernotifyRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<UnregisterResellernotifyRequest>;
+  ) as unknown as Schema.Codec<UnregisterResellernotifyRequest>;
 
 export type UnregisterResellernotifyResponse = ResellernotifyResource;
 export const UnregisterResellernotifyResponse =
@@ -615,55 +573,92 @@ export const unregisterResellernotify: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ChangeRenewalSettingsSubscriptionsRequest {
-  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
-  subscriptionId: string;
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId: string;
-  /** Request body */
-  body?: RenewalSettings;
+export interface RegisterResellernotifyRequest {
+  /** The service account which will own the created Cloud-PubSub topic. */
+  serviceAccountEmailAddress?: string;
 }
 
-export const ChangeRenewalSettingsSubscriptionsRequest =
+export const RegisterResellernotifyRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-    body: Schema.optional(RenewalSettings).pipe(T.HttpBody()),
+    serviceAccountEmailAddress: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("serviceAccountEmailAddress"),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings",
+      path: "apps/reseller/v1/resellernotify/register",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangeRenewalSettingsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<RegisterResellernotifyRequest>;
 
-export type ChangeRenewalSettingsSubscriptionsResponse = Subscription;
-export const ChangeRenewalSettingsSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export type RegisterResellernotifyResponse = ResellernotifyResource;
+export const RegisterResellernotifyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
 
-export type ChangeRenewalSettingsSubscriptionsError =
+export type RegisterResellernotifyError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal). */
-export const changeRenewalSettingsSubscriptions: API.OperationMethod<
-  ChangeRenewalSettingsSubscriptionsRequest,
-  ChangeRenewalSettingsSubscriptionsResponse,
-  ChangeRenewalSettingsSubscriptionsError,
+/** Registers a Reseller for receiving notifications. */
+export const registerResellernotify: API.OperationMethod<
+  RegisterResellernotifyRequest,
+  RegisterResellernotifyResponse,
+  RegisterResellernotifyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ChangeRenewalSettingsSubscriptionsRequest,
-  output: ChangeRenewalSettingsSubscriptionsResponse,
+  input: RegisterResellernotifyRequest,
+  output: RegisterResellernotifyResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ActivateSubscriptionsRequest {
+  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
+  subscriptionId: string;
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId: string;
+}
+
+export const ActivateSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    customerId: Schema.String.pipe(T.HttpPath("customerId")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ActivateSubscriptionsRequest>;
+
+export type ActivateSubscriptionsResponse = Subscription;
+export const ActivateSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type ActivateSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription. */
+export const activateSubscriptions: API.OperationMethod<
+  ActivateSubscriptionsRequest,
+  ActivateSubscriptionsResponse,
+  ActivateSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ActivateSubscriptionsRequest,
+  output: ActivateSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSubscriptionsRequest {
-  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
-  subscriptionId: string;
   /** The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription. */
   deletionType:
     | "deletion_type_undefined"
@@ -672,26 +667,28 @@ export interface DeleteSubscriptionsRequest {
     | (string & {});
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
+  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
+  subscriptionId: string;
 }
 
 export const DeleteSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     deletionType: Schema.String.pipe(T.HttpQuery("deletionType")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse: Schema.Schema<DeleteSubscriptionsResponse> =
+export const DeleteSubscriptionsResponse: Schema.Codec<DeleteSubscriptionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     {},
-  ) as any as Schema.Schema<DeleteSubscriptionsResponse>;
+  ) as any as Schema.Codec<DeleteSubscriptionsResponse>;
 
 export type DeleteSubscriptionsError =
   | DefaultErrors
@@ -712,67 +709,24 @@ export const deleteSubscriptions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface StartPaidServiceSubscriptionsRequest {
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId: string;
-  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
-  subscriptionId: string;
-}
-
-export const StartPaidServiceSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<StartPaidServiceSubscriptionsRequest>;
-
-export type StartPaidServiceSubscriptionsResponse = Subscription;
-export const StartPaidServiceSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
-
-export type StartPaidServiceSubscriptionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Immediately move a 30-day free trial subscription to a paid service subscription. This method is only applicable if a payment plan has already been set up for the 30-day trial subscription. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service). */
-export const startPaidServiceSubscriptions: API.OperationMethod<
-  StartPaidServiceSubscriptionsRequest,
-  StartPaidServiceSubscriptionsResponse,
-  StartPaidServiceSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartPaidServiceSubscriptionsRequest,
-  output: StartPaidServiceSubscriptionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetSubscriptionsRequest {
-  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
-  subscriptionId: string;
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
+  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
+  subscriptionId: string;
 }
 
 export const GetSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
     T.Http({
       method: "GET",
       path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
     }),
     svc,
-  ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
@@ -792,64 +746,13 @@ export const getSubscriptions: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListSubscriptionsRequest {
-  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
-  customerAuthToken?: string;
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId?: string;
-  /** When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes `exam.com`, `example20.com` and `example.com`: - `exa` -- Returns all customer names that start with 'exa' which could include `exam.com`, `example20.com`, and `example.com`. A name prefix is similar to using a regular expression's asterisk, exa*. - `example` -- Returns `example20.com` and `example.com`. */
-  customerNamePrefix?: string;
-  /** Token to specify next page in the list */
-  pageToken?: string;
-  /** When retrieving a large list, the `maxResults` is the maximum number of results per page. The `nextPageToken` value takes you to the next page. The default is 20. */
-  maxResults?: number;
-}
-
-export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerAuthToken: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("customerAuthToken"),
-    ),
-    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
-    customerNamePrefix: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("customerNamePrefix"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.Http({ method: "GET", path: "apps/reseller/v1/subscriptions" }),
-    svc,
-  ) as unknown as Schema.Schema<ListSubscriptionsRequest>;
-
-export type ListSubscriptionsResponse = Subscriptions;
-export const ListSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscriptions;
-
-export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions. Optionally, this method can filter the response by a `customerNamePrefix`. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions). */
-export const listSubscriptions: API.PaginatedOperationMethod<
-  ListSubscriptionsRequest,
-  ListSubscriptionsResponse,
-  ListSubscriptionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface InsertSubscriptionsRequest {
-  /** The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product. */
-  action?: "actionUnspecified" | "buy" | "switch" | (string & {});
-  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
-  customerAuthToken?: string;
   /** The sku_id of the existing subscription to be upgraded or downgraded. This is required when action is SWITCH. */
   sourceSkuId?: string;
+  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
+  customerAuthToken?: string;
+  /** The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product. */
+  action?: "actionUnspecified" | "buy" | "switch" | (string & {});
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
   /** Request body */
@@ -858,13 +761,13 @@ export interface InsertSubscriptionsRequest {
 
 export const InsertSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
-    customerAuthToken: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("customerAuthToken"),
-    ),
     sourceSkuId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("sourceSkuId"),
     ),
+    customerAuthToken: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("customerAuthToken"),
+    ),
+    action: Schema.optional(Schema.String).pipe(T.HttpQuery("action")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
@@ -874,7 +777,7 @@ export const InsertSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<InsertSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<InsertSubscriptionsRequest>;
 
 export type InsertSubscriptionsResponse = Subscription;
 export const InsertSubscriptionsResponse =
@@ -899,17 +802,60 @@ export const insertSubscriptions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SuspendSubscriptionsRequest {
-  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
-  subscriptionId: string;
+export interface StartPaidServiceSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
+  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
+  subscriptionId: string;
+}
+
+export const StartPaidServiceSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<StartPaidServiceSubscriptionsRequest>;
+
+export type StartPaidServiceSubscriptionsResponse = Subscription;
+export const StartPaidServiceSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+
+export type StartPaidServiceSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Immediately move a 30-day free trial subscription to a paid service subscription. This method is only applicable if a payment plan has already been set up for the 30-day trial subscription. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service). */
+export const startPaidServiceSubscriptions: API.OperationMethod<
+  StartPaidServiceSubscriptionsRequest,
+  StartPaidServiceSubscriptionsResponse,
+  StartPaidServiceSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartPaidServiceSubscriptionsRequest,
+  output: StartPaidServiceSubscriptionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SuspendSubscriptionsRequest {
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId: string;
+  /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
+  subscriptionId: string;
 }
 
 export const SuspendSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
   }).pipe(
     T.Http({
       method: "POST",
@@ -917,7 +863,7 @@ export const SuspendSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SuspendSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<SuspendSubscriptionsRequest>;
 
 export type SuspendSubscriptionsResponse = Subscription;
 export const SuspendSubscriptionsResponse =
@@ -963,7 +909,7 @@ export const ChangePlanSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangePlanSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangePlanSubscriptionsRequest>;
 
 export type ChangePlanSubscriptionsResponse = Subscription;
 export const ChangePlanSubscriptionsResponse =
@@ -989,18 +935,18 @@ export const changePlanSubscriptions: API.OperationMethod<
 }));
 
 export interface ChangeSeatsSubscriptionsRequest {
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId: string;
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId: string;
   /** Request body */
   body?: Seats;
 }
 
 export const ChangeSeatsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    customerId: Schema.String.pipe(T.HttpPath("customerId")),
     body: Schema.optional(Seats).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -1009,7 +955,7 @@ export const ChangeSeatsSubscriptionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ChangeSeatsSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangeSeatsSubscriptionsRequest>;
 
 export type ChangeSeatsSubscriptionsResponse = Subscription;
 export const ChangeSeatsSubscriptionsResponse =
@@ -1034,45 +980,99 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ActivateSubscriptionsRequest {
-  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
-  customerId: string;
+export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId: string;
+  /** Request body */
+  body?: RenewalSettings;
 }
 
-export const ActivateSubscriptionsRequest =
+export const ChangeRenewalSettingsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customerId: Schema.String.pipe(T.HttpPath("customerId")),
     subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
+    customerId: Schema.String.pipe(T.HttpPath("customerId")),
+    body: Schema.optional(RenewalSettings).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate",
+      path: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ActivateSubscriptionsRequest>;
+  ) as unknown as Schema.Codec<ChangeRenewalSettingsSubscriptionsRequest>;
 
-export type ActivateSubscriptionsResponse = Subscription;
-export const ActivateSubscriptionsResponse =
+export type ChangeRenewalSettingsSubscriptionsResponse = Subscription;
+export const ChangeRenewalSettingsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ActivateSubscriptionsError =
+export type ChangeRenewalSettingsSubscriptionsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription. */
-export const activateSubscriptions: API.OperationMethod<
-  ActivateSubscriptionsRequest,
-  ActivateSubscriptionsResponse,
-  ActivateSubscriptionsError,
+/** Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal). */
+export const changeRenewalSettingsSubscriptions: API.OperationMethod<
+  ChangeRenewalSettingsSubscriptionsRequest,
+  ChangeRenewalSettingsSubscriptionsResponse,
+  ChangeRenewalSettingsSubscriptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ActivateSubscriptionsRequest,
-  output: ActivateSubscriptionsResponse,
+  input: ChangeRenewalSettingsSubscriptionsRequest,
+  output: ChangeRenewalSettingsSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListSubscriptionsRequest {
+  /** When retrieving all of your subscriptions and filtering for specific customers, you can enter a prefix for a customer name. Using an example customer group that includes `exam.com`, `example20.com` and `example.com`: - `exa` -- Returns all customer names that start with 'exa' which could include `exam.com`, `example20.com`, and `example.com`. A name prefix is similar to using a regular expression's asterisk, exa*. - `example` -- Returns `example20.com` and `example.com`. */
+  customerNamePrefix?: string;
+  /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
+  customerId?: string;
+  /** When retrieving a large list, the `maxResults` is the maximum number of results per page. The `nextPageToken` value takes you to the next page. The default is 20. */
+  maxResults?: number;
+  /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
+  customerAuthToken?: string;
+  /** Token to specify next page in the list */
+  pageToken?: string;
+}
+
+export const ListSubscriptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerNamePrefix: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("customerNamePrefix"),
+    ),
+    customerId: Schema.optional(Schema.String).pipe(T.HttpQuery("customerId")),
+    maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
+    customerAuthToken: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("customerAuthToken"),
+    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  }).pipe(
+    T.Http({ method: "GET", path: "apps/reseller/v1/subscriptions" }),
+    svc,
+  ) as unknown as Schema.Codec<ListSubscriptionsRequest>;
+
+export type ListSubscriptionsResponse = Subscriptions;
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Subscriptions;
+
+export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions. Optionally, this method can filter the response by a `customerNamePrefix`. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions). */
+export const listSubscriptions: API.PaginatedOperationMethod<
+  ListSubscriptionsRequest,
+  ListSubscriptionsResponse,
+  ListSubscriptionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListSubscriptionsRequest,
+  output: ListSubscriptionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));

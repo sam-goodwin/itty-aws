@@ -3,13 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListEvmAccountsInput {
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListEvmAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number),
   pageToken: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/evm/accounts" }));
-export type ListEvmAccountsInput = typeof ListEvmAccountsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/evm/accounts" }),
+) as unknown as Schema.Codec<ListEvmAccountsInput>;
 
 // Output Schema
+export interface ListEvmAccountsOutput {
+  accounts: {
+    address: string;
+    name?: string;
+    policies?: string[];
+    createdAt?: string;
+    updatedAt?: string;
+  }[];
+  nextPageToken?: string;
+}
 export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accounts: Schema.Array(
     Schema.Struct({
@@ -21,8 +36,7 @@ export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextPageToken: Schema.optional(Schema.String),
-});
-export type ListEvmAccountsOutput = typeof ListEvmAccountsOutput.Type;
+}) as unknown as Schema.Codec<ListEvmAccountsOutput>;
 
 // The operation
 /**

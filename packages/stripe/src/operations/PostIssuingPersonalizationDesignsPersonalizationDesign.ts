@@ -3,15 +3,56 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostIssuingPersonalizationDesignsPersonalizationDesignInput {
+  personalization_design: string;
+  card_logo?: string | "";
+  carrier_text?:
+    | {
+        footer_body?: string | "";
+        footer_title?: string | "";
+        header_body?: string | "";
+        header_title?: string | "";
+      }
+    | "";
+  expand?: string[];
+  lookup_key?: string | "";
+  metadata?: Record<string, string>;
+  name?: string | "";
+  physical_bundle?: string;
+  preferences?: { is_default: boolean };
+  transfer_lookup_key?: boolean;
+}
 export const PostIssuingPersonalizationDesignsPersonalizationDesignInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
-    card_logo: Schema.optional(Schema.Unknown),
-    carrier_text: Schema.optional(Schema.Unknown),
+    card_logo: Schema.optional(
+      Schema.Union([Schema.String, Schema.Literals([""])]),
+    ),
+    carrier_text: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          footer_body: Schema.optional(
+            Schema.Union([Schema.String, Schema.Literals([""])]),
+          ),
+          footer_title: Schema.optional(
+            Schema.Union([Schema.String, Schema.Literals([""])]),
+          ),
+          header_body: Schema.optional(
+            Schema.Union([Schema.String, Schema.Literals([""])]),
+          ),
+          header_title: Schema.optional(
+            Schema.Union([Schema.String, Schema.Literals([""])]),
+          ),
+        }),
+        Schema.Literals([""]),
+      ]),
+    ),
     expand: Schema.optional(Schema.Array(Schema.String)),
-    lookup_key: Schema.optional(Schema.Unknown),
+    lookup_key: Schema.optional(
+      Schema.Union([Schema.String, Schema.Literals([""])]),
+    ),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.Unknown),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Literals([""])])),
     physical_bundle: Schema.optional(Schema.String),
     preferences: Schema.optional(
       Schema.Struct({
@@ -25,15 +66,189 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignInput =
       path: "/v1/issuing/personalization_designs/{personalization_design}",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostIssuingPersonalizationDesignsPersonalizationDesignInput =
-  typeof PostIssuingPersonalizationDesignsPersonalizationDesignInput.Type;
+  ) as unknown as Schema.Codec<PostIssuingPersonalizationDesignsPersonalizationDesignInput>;
 
 // Output Schema
+export interface PostIssuingPersonalizationDesignsPersonalizationDesignOutput {
+  card_logo:
+    | string
+    | {
+        created: number;
+        expires_at: number | null;
+        filename: string | null;
+        id: string;
+        links?: {
+          data: {
+            created: number;
+            expired: boolean;
+            expires_at: number | null;
+            file: string | unknown;
+            id: string;
+            livemode: boolean;
+            metadata: Record<string, string>;
+            object: "file_link";
+            url: string | null;
+          }[];
+          has_more: boolean;
+          object: "list";
+          url: string;
+        } | null;
+        object: "file";
+        purpose:
+          | "account_requirement"
+          | "additional_verification"
+          | "business_icon"
+          | "business_logo"
+          | "customer_signature"
+          | "dispute_evidence"
+          | "document_provider_identity_document"
+          | "finance_report_run"
+          | "financial_account_statement"
+          | "identity_document"
+          | "identity_document_downloadable"
+          | "issuing_regulatory_reporting"
+          | "pci_document"
+          | "platform_terms_of_service"
+          | "selfie"
+          | "sigma_scheduled_query"
+          | "tax_document_user_upload"
+          | "terminal_android_apk"
+          | "terminal_reader_splashscreen"
+          | "terminal_wifi_certificate"
+          | "terminal_wifi_private_key";
+        size: number;
+        title: string | null;
+        type: string | null;
+        url: string | null;
+      }
+    | null;
+  carrier_text: {
+    footer_body: string | null;
+    footer_title: string | null;
+    header_body: string | null;
+    header_title: string | null;
+  } | null;
+  created: number;
+  id: string;
+  livemode: boolean;
+  lookup_key: string | null;
+  metadata: Record<string, string>;
+  name: string | null;
+  object: "issuing.personalization_design";
+  physical_bundle:
+    | string
+    | {
+        features: {
+          card_logo: "optional" | "required" | "unsupported";
+          carrier_text: "optional" | "required" | "unsupported";
+          second_line: "optional" | "required" | "unsupported";
+        };
+        id: string;
+        livemode: boolean;
+        name: string;
+        object: "issuing.physical_bundle";
+        status: "active" | "inactive" | "review";
+        type: "custom" | "standard";
+      };
+  preferences: { is_default: boolean; is_platform_default: boolean | null };
+  rejection_reasons: {
+    card_logo:
+      | (
+          | "geographic_location"
+          | "inappropriate"
+          | "network_name"
+          | "non_binary_image"
+          | "non_fiat_currency"
+          | "other"
+          | "other_entity"
+          | "promotional_material"
+        )[]
+      | null;
+    carrier_text:
+      | (
+          | "geographic_location"
+          | "inappropriate"
+          | "network_name"
+          | "non_fiat_currency"
+          | "other"
+          | "other_entity"
+          | "promotional_material"
+        )[]
+      | null;
+  };
+  status: "active" | "inactive" | "rejected" | "review";
+}
 export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    card_logo: Schema.Unknown,
-    carrier_text: Schema.Unknown,
+    card_logo: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          created: Schema.Number,
+          expires_at: Schema.NullOr(Schema.Number),
+          filename: Schema.NullOr(Schema.String),
+          id: Schema.String,
+          links: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                data: Schema.Array(
+                  Schema.Struct({
+                    created: Schema.Number,
+                    expired: Schema.Boolean,
+                    expires_at: Schema.NullOr(Schema.Number),
+                    file: Schema.Union([Schema.String, Schema.Unknown]),
+                    id: Schema.String,
+                    livemode: Schema.Boolean,
+                    metadata: Schema.Record(Schema.String, Schema.String),
+                    object: Schema.Literals(["file_link"]),
+                    url: Schema.NullOr(Schema.String),
+                  }),
+                ),
+                has_more: Schema.Boolean,
+                object: Schema.Literals(["list"]),
+                url: Schema.String,
+              }),
+            ),
+          ),
+          object: Schema.Literals(["file"]),
+          purpose: Schema.Literals([
+            "account_requirement",
+            "additional_verification",
+            "business_icon",
+            "business_logo",
+            "customer_signature",
+            "dispute_evidence",
+            "document_provider_identity_document",
+            "finance_report_run",
+            "financial_account_statement",
+            "identity_document",
+            "identity_document_downloadable",
+            "issuing_regulatory_reporting",
+            "pci_document",
+            "platform_terms_of_service",
+            "selfie",
+            "sigma_scheduled_query",
+            "tax_document_user_upload",
+            "terminal_android_apk",
+            "terminal_reader_splashscreen",
+            "terminal_wifi_certificate",
+            "terminal_wifi_private_key",
+          ]),
+          size: Schema.Number,
+          title: Schema.NullOr(Schema.String),
+          type: Schema.NullOr(Schema.String),
+          url: Schema.NullOr(Schema.String),
+        }),
+      ]),
+    ),
+    carrier_text: Schema.NullOr(
+      Schema.Struct({
+        footer_body: Schema.NullOr(Schema.String),
+        footer_title: Schema.NullOr(Schema.String),
+        header_body: Schema.NullOr(Schema.String),
+        header_title: Schema.NullOr(Schema.String),
+      }),
+    ),
     created: Schema.Number,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -41,7 +256,26 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["issuing.personalization_design"]),
-    physical_bundle: Schema.Unknown,
+    physical_bundle: Schema.Union([
+      Schema.String,
+      Schema.Struct({
+        features: Schema.Struct({
+          card_logo: Schema.Literals(["optional", "required", "unsupported"]),
+          carrier_text: Schema.Literals([
+            "optional",
+            "required",
+            "unsupported",
+          ]),
+          second_line: Schema.Literals(["optional", "required", "unsupported"]),
+        }),
+        id: Schema.String,
+        livemode: Schema.Boolean,
+        name: Schema.String,
+        object: Schema.Literals(["issuing.physical_bundle"]),
+        status: Schema.Literals(["active", "inactive", "review"]),
+        type: Schema.Literals(["custom", "standard"]),
+      }),
+    ]),
     preferences: Schema.Struct({
       is_default: Schema.Boolean,
       is_platform_default: Schema.NullOr(Schema.Boolean),
@@ -76,9 +310,7 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
       ),
     }),
     status: Schema.Literals(["active", "inactive", "rejected", "review"]),
-  });
-export type PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
-  typeof PostIssuingPersonalizationDesignsPersonalizationDesignOutput.Type;
+  }) as unknown as Schema.Codec<PostIssuingPersonalizationDesignsPersonalizationDesignOutput>;
 
 // The operation
 /**

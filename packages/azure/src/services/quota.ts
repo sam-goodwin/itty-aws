@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GroupQuotaLimitsListInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+}
 export const GroupQuotaLimitsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -21,10 +27,22 @@ export const GroupQuotaLimitsListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaLimits/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLimitsListInput = typeof GroupQuotaLimitsListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLimitsListInput>;
 
 // Output Schema
+export interface GroupQuotaLimitsListOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLimitsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -44,8 +62,7 @@ export const GroupQuotaLimitsListOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLimitsListOutput = typeof GroupQuotaLimitsListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLimitsListOutput>;
 
 // The operation
 /**
@@ -64,6 +81,11 @@ export const GroupQuotaLimitsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotaLimitsRequestGetInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  requestId: string;
+}
 export const GroupQuotaLimitsRequestGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -75,11 +97,22 @@ export const GroupQuotaLimitsRequestGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/groupQuotaRequests/{requestId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLimitsRequestGetInput =
-  typeof GroupQuotaLimitsRequestGetInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLimitsRequestGetInput>;
 
 // Output Schema
+export interface GroupQuotaLimitsRequestGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLimitsRequestGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -99,9 +132,7 @@ export const GroupQuotaLimitsRequestGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLimitsRequestGetOutput =
-  typeof GroupQuotaLimitsRequestGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLimitsRequestGetOutput>;
 
 // The operation
 /**
@@ -119,6 +150,12 @@ export const GroupQuotaLimitsRequestGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotaLimitsRequestListInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  $filter: string;
+}
 export const GroupQuotaLimitsRequestListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -131,11 +168,25 @@ export const GroupQuotaLimitsRequestListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaRequests",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLimitsRequestListInput =
-  typeof GroupQuotaLimitsRequestListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLimitsRequestListInput>;
 
 // Output Schema
+export interface GroupQuotaLimitsRequestListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotaLimitsRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -170,9 +221,7 @@ export const GroupQuotaLimitsRequestListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupQuotaLimitsRequestListOutput =
-  typeof GroupQuotaLimitsRequestListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLimitsRequestListOutput>;
 
 // The operation
 /**
@@ -191,6 +240,37 @@ export const GroupQuotaLimitsRequestList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotaLimitsRequestUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+    value?: {
+      properties?: {
+        resourceName?: string;
+        limit?: number;
+        comment?: string;
+        unit?: string;
+        name?: { value?: string; localizedValue?: string };
+        availableLimit?: number;
+        allocatedToSubscriptions?: {
+          value?: { subscriptionId?: string; quotaAllocated?: number }[];
+        };
+      };
+    }[];
+    nextLink?: string;
+  };
+}
 export const GroupQuotaLimitsRequestUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -253,11 +333,22 @@ export const GroupQuotaLimitsRequestUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaLimits/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLimitsRequestUpdateInput =
-  typeof GroupQuotaLimitsRequestUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLimitsRequestUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaLimitsRequestUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLimitsRequestUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -277,9 +368,7 @@ export const GroupQuotaLimitsRequestUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLimitsRequestUpdateOutput =
-  typeof GroupQuotaLimitsRequestUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLimitsRequestUpdateOutput>;
 
 // The operation
 /**
@@ -298,6 +387,26 @@ export const GroupQuotaLimitsRequestUpdate =
     outputSchema: GroupQuotaLimitsRequestUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotaLocationSettingsCreateOrUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+  properties?: {
+    enforcementEnabled?: "Enabled" | "Disabled" | "NotAvailable";
+    enforcedGroupName?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+    faultCode?: string;
+  };
+}
 export const GroupQuotaLocationSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -331,11 +440,22 @@ export const GroupQuotaLocationSettingsCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLocationSettingsCreateOrUpdateInput =
-  typeof GroupQuotaLocationSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLocationSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaLocationSettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLocationSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -355,9 +475,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLocationSettingsCreateOrUpdateOutput =
-  typeof GroupQuotaLocationSettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLocationSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -379,6 +497,12 @@ export const GroupQuotaLocationSettingsCreateOrUpdate =
     outputSchema: GroupQuotaLocationSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotaLocationSettingsGetInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+}
 export const GroupQuotaLocationSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -391,11 +515,22 @@ export const GroupQuotaLocationSettingsGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLocationSettingsGetInput =
-  typeof GroupQuotaLocationSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLocationSettingsGetInput>;
 
 // Output Schema
+export interface GroupQuotaLocationSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLocationSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -415,9 +550,7 @@ export const GroupQuotaLocationSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLocationSettingsGetOutput =
-  typeof GroupQuotaLocationSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLocationSettingsGetOutput>;
 
 // The operation
 /**
@@ -435,6 +568,26 @@ export const GroupQuotaLocationSettingsGet =
     outputSchema: GroupQuotaLocationSettingsGetOutput,
   }));
 // Input Schema
+export interface GroupQuotaLocationSettingsUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+  properties?: {
+    enforcementEnabled?: "Enabled" | "Disabled" | "NotAvailable";
+    enforcedGroupName?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+    faultCode?: string;
+  };
+}
 export const GroupQuotaLocationSettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -468,11 +621,22 @@ export const GroupQuotaLocationSettingsUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaLocationSettingsUpdateInput =
-  typeof GroupQuotaLocationSettingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaLocationSettingsUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaLocationSettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaLocationSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -492,9 +656,7 @@ export const GroupQuotaLocationSettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaLocationSettingsUpdateOutput =
-  typeof GroupQuotaLocationSettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaLocationSettingsUpdateOutput>;
 
 // The operation
 /**
@@ -516,6 +678,23 @@ export const GroupQuotaLocationSettingsUpdate =
     outputSchema: GroupQuotaLocationSettingsUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotasCreateOrUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  properties?: {
+    displayName?: string;
+    groupType?: "AllocationGroup" | "EnforcedGroup";
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+  };
+}
 export const GroupQuotasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -546,11 +725,22 @@ export const GroupQuotasCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotasCreateOrUpdateInput =
-  typeof GroupQuotasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotasCreateOrUpdateInput>;
 
 // Output Schema
+export interface GroupQuotasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -570,9 +760,7 @@ export const GroupQuotasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotasCreateOrUpdateOutput =
-  typeof GroupQuotasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -589,6 +777,10 @@ export const GroupQuotasCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotasDeleteInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+}
 export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -600,12 +792,12 @@ export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type GroupQuotasDeleteInput = typeof GroupQuotasDeleteInput.Type;
+) as unknown as Schema.Codec<GroupQuotasDeleteInput>;
 
 // Output Schema
-export const GroupQuotasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupQuotasDeleteOutput = typeof GroupQuotasDeleteOutput.Type;
+export type GroupQuotasDeleteOutput = void;
+export const GroupQuotasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotasDeleteOutput>;
 
 // The operation
 /**
@@ -620,6 +812,10 @@ export const GroupQuotasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroupQuotasDeleteOutput,
 }));
 // Input Schema
+export interface GroupQuotasGetInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+}
 export const GroupQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
   groupQuotaName: Schema.String.pipe(T.PathParam()),
@@ -629,10 +825,22 @@ export const GroupQuotasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type GroupQuotasGetInput = typeof GroupQuotasGetInput.Type;
+) as unknown as Schema.Codec<GroupQuotasGetInput>;
 
 // Output Schema
+export interface GroupQuotasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -651,8 +859,7 @@ export const GroupQuotasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GroupQuotasGetOutput = typeof GroupQuotasGetOutput.Type;
+}) as unknown as Schema.Codec<GroupQuotasGetOutput>;
 
 // The operation
 /**
@@ -667,6 +874,9 @@ export const GroupQuotasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroupQuotasGetOutput,
 }));
 // Input Schema
+export interface GroupQuotasListInput {
+  managementGroupId: string;
+}
 export const GroupQuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   managementGroupId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -675,10 +885,25 @@ export const GroupQuotasListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas",
     apiVersion: "2025-09-01",
   }),
-);
-export type GroupQuotasListInput = typeof GroupQuotasListInput.Type;
+) as unknown as Schema.Codec<GroupQuotasListInput>;
 
 // Output Schema
+export interface GroupQuotasListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -702,8 +927,7 @@ export const GroupQuotasListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type GroupQuotasListOutput = typeof GroupQuotasListOutput.Type;
+}) as unknown as Schema.Codec<GroupQuotasListOutput>;
 
 // The operation
 /**
@@ -717,6 +941,13 @@ export const GroupQuotasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroupQuotasListOutput,
 }));
 // Input Schema
+export interface GroupQuotaSubscriptionAllocationListInput {
+  managementGroupId: string;
+  subscriptionId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+}
 export const GroupQuotaSubscriptionAllocationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -730,11 +961,22 @@ export const GroupQuotaSubscriptionAllocationListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocations/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionAllocationListInput =
-  typeof GroupQuotaSubscriptionAllocationListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationListInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionAllocationListOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionAllocationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -754,9 +996,7 @@ export const GroupQuotaSubscriptionAllocationListOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionAllocationListOutput =
-  typeof GroupQuotaSubscriptionAllocationListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationListOutput>;
 
 // The operation
 /**
@@ -775,6 +1015,13 @@ export const GroupQuotaSubscriptionAllocationList =
     outputSchema: GroupQuotaSubscriptionAllocationListOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionAllocationRequestGetInput {
+  managementGroupId: string;
+  subscriptionId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  allocationId: string;
+}
 export const GroupQuotaSubscriptionAllocationRequestGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -788,11 +1035,22 @@ export const GroupQuotaSubscriptionAllocationRequestGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocationRequests/{allocationId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionAllocationRequestGetInput =
-  typeof GroupQuotaSubscriptionAllocationRequestGetInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestGetInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionAllocationRequestGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionAllocationRequestGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -812,9 +1070,7 @@ export const GroupQuotaSubscriptionAllocationRequestGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionAllocationRequestGetOutput =
-  typeof GroupQuotaSubscriptionAllocationRequestGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestGetOutput>;
 
 // The operation
 /**
@@ -833,6 +1089,13 @@ export const GroupQuotaSubscriptionAllocationRequestGet =
     outputSchema: GroupQuotaSubscriptionAllocationRequestGetOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionAllocationRequestListInput {
+  managementGroupId: string;
+  subscriptionId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  $filter: string;
+}
 export const GroupQuotaSubscriptionAllocationRequestListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -846,11 +1109,25 @@ export const GroupQuotaSubscriptionAllocationRequestListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocationRequests",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionAllocationRequestListInput =
-  typeof GroupQuotaSubscriptionAllocationRequestListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestListInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionAllocationRequestListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotaSubscriptionAllocationRequestListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -885,9 +1162,7 @@ export const GroupQuotaSubscriptionAllocationRequestListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupQuotaSubscriptionAllocationRequestListOutput =
-  typeof GroupQuotaSubscriptionAllocationRequestListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestListOutput>;
 
 // The operation
 /**
@@ -910,6 +1185,33 @@ export const GroupQuotaSubscriptionAllocationRequestList =
     outputSchema: GroupQuotaSubscriptionAllocationRequestListOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionAllocationRequestUpdateInput {
+  managementGroupId: string;
+  subscriptionId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+    value?: {
+      properties?: {
+        resourceName?: string;
+        limit?: number;
+        shareableQuota?: number;
+        name?: { value?: string; localizedValue?: string };
+      };
+    }[];
+    nextLink?: string;
+  };
+}
 export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -959,11 +1261,22 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocations/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionAllocationRequestUpdateInput =
-  typeof GroupQuotaSubscriptionAllocationRequestUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionAllocationRequestUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionAllocationRequestUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -983,9 +1296,7 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionAllocationRequestUpdateOutput =
-  typeof GroupQuotaSubscriptionAllocationRequestUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionAllocationRequestUpdateOutput>;
 
 // The operation
 /**
@@ -1004,6 +1315,11 @@ export const GroupQuotaSubscriptionAllocationRequestUpdate =
     outputSchema: GroupQuotaSubscriptionAllocationRequestUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionRequestsGetInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  requestId: string;
+}
 export const GroupQuotaSubscriptionRequestsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1015,11 +1331,22 @@ export const GroupQuotaSubscriptionRequestsGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptionRequests/{requestId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionRequestsGetInput =
-  typeof GroupQuotaSubscriptionRequestsGetInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionRequestsGetInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionRequestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionRequestsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1039,9 +1366,7 @@ export const GroupQuotaSubscriptionRequestsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionRequestsGetOutput =
-  typeof GroupQuotaSubscriptionRequestsGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionRequestsGetOutput>;
 
 // The operation
 /**
@@ -1058,6 +1383,10 @@ export const GroupQuotaSubscriptionRequestsGet =
     outputSchema: GroupQuotaSubscriptionRequestsGetOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionRequestsListInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+}
 export const GroupQuotaSubscriptionRequestsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1068,11 +1397,25 @@ export const GroupQuotaSubscriptionRequestsListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptionRequests",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionRequestsListInput =
-  typeof GroupQuotaSubscriptionRequestsListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionRequestsListInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionRequestsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotaSubscriptionRequestsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1107,9 +1450,7 @@ export const GroupQuotaSubscriptionRequestsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupQuotaSubscriptionRequestsListOutput =
-  typeof GroupQuotaSubscriptionRequestsListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionRequestsListOutput>;
 
 // The operation
 /**
@@ -1125,6 +1466,11 @@ export const GroupQuotaSubscriptionRequestsList =
     outputSchema: GroupQuotaSubscriptionRequestsListOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionsCreateOrUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  subscriptionId: string;
+}
 export const GroupQuotaSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1136,11 +1482,22 @@ export const GroupQuotaSubscriptionsCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionsCreateOrUpdateInput =
-  typeof GroupQuotaSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1160,9 +1517,7 @@ export const GroupQuotaSubscriptionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionsCreateOrUpdateOutput =
-  typeof GroupQuotaSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1179,6 +1534,11 @@ export const GroupQuotaSubscriptionsCreateOrUpdate =
     outputSchema: GroupQuotaSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionsDeleteInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  subscriptionId: string;
+}
 export const GroupQuotaSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1190,15 +1550,12 @@ export const GroupQuotaSubscriptionsDeleteInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionsDeleteInput =
-  typeof GroupQuotaSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionsDeleteInput>;
 
 // Output Schema
+export type GroupQuotaSubscriptionsDeleteOutput = void;
 export const GroupQuotaSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupQuotaSubscriptionsDeleteOutput =
-  typeof GroupQuotaSubscriptionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupQuotaSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -1215,6 +1572,11 @@ export const GroupQuotaSubscriptionsDelete =
     outputSchema: GroupQuotaSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface GroupQuotaSubscriptionsGetInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  subscriptionId: string;
+}
 export const GroupQuotaSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1226,11 +1588,22 @@ export const GroupQuotaSubscriptionsGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionsGetInput =
-  typeof GroupQuotaSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionsGetInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1250,9 +1623,7 @@ export const GroupQuotaSubscriptionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionsGetOutput =
-  typeof GroupQuotaSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -1270,6 +1641,10 @@ export const GroupQuotaSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotaSubscriptionsListInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+}
 export const GroupQuotaSubscriptionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1280,11 +1655,25 @@ export const GroupQuotaSubscriptionsListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionsListInput =
-  typeof GroupQuotaSubscriptionsListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionsListInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotaSubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1319,9 +1708,7 @@ export const GroupQuotaSubscriptionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupQuotaSubscriptionsListOutput =
-  typeof GroupQuotaSubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionsListOutput>;
 
 // The operation
 /**
@@ -1338,6 +1725,11 @@ export const GroupQuotaSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupQuotaSubscriptionsUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  subscriptionId: string;
+}
 export const GroupQuotaSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1349,11 +1741,22 @@ export const GroupQuotaSubscriptionsUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaSubscriptionsUpdateInput =
-  typeof GroupQuotaSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface GroupQuotaSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotaSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1373,9 +1776,7 @@ export const GroupQuotaSubscriptionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotaSubscriptionsUpdateOutput =
-  typeof GroupQuotaSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -1392,6 +1793,22 @@ export const GroupQuotaSubscriptionsUpdate =
     outputSchema: GroupQuotaSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface GroupQuotasUpdateInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  properties?: {
+    displayName?: string;
+    provisioningState?:
+      | "Accepted"
+      | "Created"
+      | "Invalid"
+      | "Succeeded"
+      | "Escalated"
+      | "Failed"
+      | "InProgress"
+      | "Canceled";
+  };
+}
 export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1420,10 +1837,22 @@ export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type GroupQuotasUpdateInput = typeof GroupQuotasUpdateInput.Type;
+) as unknown as Schema.Codec<GroupQuotasUpdateInput>;
 
 // Output Schema
+export interface GroupQuotasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupQuotasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1443,8 +1872,7 @@ export const GroupQuotasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupQuotasUpdateOutput = typeof GroupQuotasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotasUpdateOutput>;
 
 // The operation
 /**
@@ -1460,6 +1888,12 @@ export const GroupQuotasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroupQuotasUpdateOutput,
 }));
 // Input Schema
+export interface GroupQuotaUsagesListInput {
+  managementGroupId: string;
+  groupQuotaName: string;
+  resourceProviderName: string;
+  location: string;
+}
 export const GroupQuotaUsagesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -1472,10 +1906,25 @@ export const GroupQuotaUsagesListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationUsages/{location}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type GroupQuotaUsagesListInput = typeof GroupQuotaUsagesListInput.Type;
+  ) as unknown as Schema.Codec<GroupQuotaUsagesListInput>;
 
 // Output Schema
+export interface GroupQuotaUsagesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupQuotaUsagesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1510,8 +1959,7 @@ export const GroupQuotaUsagesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupQuotaUsagesListOutput = typeof GroupQuotaUsagesListOutput.Type;
+  }) as unknown as Schema.Codec<GroupQuotaUsagesListOutput>;
 
 // The operation
 /**
@@ -1530,6 +1978,19 @@ export const GroupQuotaUsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotaCreateOrUpdateInput {
+  scope: string;
+  resourceName: string;
+  properties?: {
+    limit?: { limitObjectType: "LimitValue" };
+    unit?: string;
+    name?: { value?: string; localizedValue?: string };
+    resourceType?: string;
+    quotaPeriod?: string;
+    isQuotaApplicable?: boolean;
+    properties?: unknown;
+  };
+}
 export const QuotaCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1560,10 +2021,22 @@ export const QuotaCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type QuotaCreateOrUpdateInput = typeof QuotaCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<QuotaCreateOrUpdateInput>;
 
 // Output Schema
+export interface QuotaCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1583,8 +2056,7 @@ export const QuotaCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QuotaCreateOrUpdateOutput = typeof QuotaCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<QuotaCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1604,6 +2076,10 @@ export const QuotaCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface QuotaGetInput {
+  scope: string;
+  resourceName: string;
+}
 export const QuotaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1613,10 +2089,22 @@ export const QuotaGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type QuotaGetInput = typeof QuotaGetInput.Type;
+) as unknown as Schema.Codec<QuotaGetInput>;
 
 // Output Schema
+export interface QuotaGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1635,8 +2123,7 @@ export const QuotaGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QuotaGetOutput = typeof QuotaGetOutput.Type;
+}) as unknown as Schema.Codec<QuotaGetOutput>;
 
 // The operation
 /**
@@ -1654,6 +2141,9 @@ export const QuotaGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaGetOutput,
 }));
 // Input Schema
+export interface QuotaListInput {
+  scope: string;
+}
 export const QuotaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1662,10 +2152,25 @@ export const QuotaListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Quota/quotas",
     apiVersion: "2025-09-01",
   }),
-);
-export type QuotaListInput = typeof QuotaListInput.Type;
+) as unknown as Schema.Codec<QuotaListInput>;
 
 // Output Schema
+export interface QuotaListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QuotaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1689,8 +2194,7 @@ export const QuotaListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type QuotaListOutput = typeof QuotaListOutput.Type;
+}) as unknown as Schema.Codec<QuotaListOutput>;
 
 // The operation
 /**
@@ -1704,6 +2208,7 @@ export const QuotaList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaListOutput,
 }));
 // Input Schema
+export interface QuotaOperationListInput {}
 export const QuotaOperationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1711,10 +2216,22 @@ export const QuotaOperationListInput =
       path: "/providers/Microsoft.Quota/operations",
       apiVersion: "2025-09-01",
     }),
-  );
-export type QuotaOperationListInput = typeof QuotaOperationListInput.Type;
+  ) as unknown as Schema.Codec<QuotaOperationListInput>;
 
 // Output Schema
+export interface QuotaOperationListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+  }[];
+  nextLink?: string;
+}
 export const QuotaOperationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1732,8 +2249,7 @@ export const QuotaOperationListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type QuotaOperationListOutput = typeof QuotaOperationListOutput.Type;
+  }) as unknown as Schema.Codec<QuotaOperationListOutput>;
 
 // The operation
 /**
@@ -1746,6 +2262,10 @@ export const QuotaOperationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaOperationListOutput,
 }));
 // Input Schema
+export interface QuotaRequestStatusGetInput {
+  scope: string;
+  id: string;
+}
 export const QuotaRequestStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1756,10 +2276,22 @@ export const QuotaRequestStatusGetInput =
       path: "/{scope}/providers/Microsoft.Quota/quotaRequests/{id}",
       apiVersion: "2025-09-01",
     }),
-  );
-export type QuotaRequestStatusGetInput = typeof QuotaRequestStatusGetInput.Type;
+  ) as unknown as Schema.Codec<QuotaRequestStatusGetInput>;
 
 // Output Schema
+export interface QuotaRequestStatusGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaRequestStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1779,9 +2311,7 @@ export const QuotaRequestStatusGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QuotaRequestStatusGetOutput =
-  typeof QuotaRequestStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<QuotaRequestStatusGetOutput>;
 
 // The operation
 /**
@@ -1798,6 +2328,12 @@ export const QuotaRequestStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotaRequestStatusListInput {
+  scope: string;
+  $filter?: string;
+  $top?: number;
+  $skiptoken?: string;
+}
 export const QuotaRequestStatusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1810,11 +2346,25 @@ export const QuotaRequestStatusListInput =
       path: "/{scope}/providers/Microsoft.Quota/quotaRequests",
       apiVersion: "2025-09-01",
     }),
-  );
-export type QuotaRequestStatusListInput =
-  typeof QuotaRequestStatusListInput.Type;
+  ) as unknown as Schema.Codec<QuotaRequestStatusListInput>;
 
 // Output Schema
+export interface QuotaRequestStatusListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const QuotaRequestStatusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1849,9 +2399,7 @@ export const QuotaRequestStatusListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type QuotaRequestStatusListOutput =
-  typeof QuotaRequestStatusListOutput.Type;
+  }) as unknown as Schema.Codec<QuotaRequestStatusListOutput>;
 
 // The operation
 /**
@@ -1875,6 +2423,19 @@ export const QuotaRequestStatusList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotaUpdateInput {
+  scope: string;
+  resourceName: string;
+  properties?: {
+    limit?: { limitObjectType: "LimitValue" };
+    unit?: string;
+    name?: { value?: string; localizedValue?: string };
+    resourceType?: string;
+    quotaPeriod?: string;
+    isQuotaApplicable?: boolean;
+    properties?: unknown;
+  };
+}
 export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1904,10 +2465,22 @@ export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type QuotaUpdateInput = typeof QuotaUpdateInput.Type;
+) as unknown as Schema.Codec<QuotaUpdateInput>;
 
 // Output Schema
+export interface QuotaUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1926,8 +2499,7 @@ export const QuotaUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QuotaUpdateOutput = typeof QuotaUpdateOutput.Type;
+}) as unknown as Schema.Codec<QuotaUpdateOutput>;
 
 // The operation
 /**
@@ -1947,6 +2519,10 @@ export const QuotaUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaUpdateOutput,
 }));
 // Input Schema
+export interface UsagesGetInput {
+  scope: string;
+  resourceName: string;
+}
 export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1956,10 +2532,22 @@ export const UsagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Quota/usages/{resourceName}",
     apiVersion: "2025-09-01",
   }),
-);
-export type UsagesGetInput = typeof UsagesGetInput.Type;
+) as unknown as Schema.Codec<UsagesGetInput>;
 
 // Output Schema
+export interface UsagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1978,8 +2566,7 @@ export const UsagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UsagesGetOutput = typeof UsagesGetOutput.Type;
+}) as unknown as Schema.Codec<UsagesGetOutput>;
 
 // The operation
 /**
@@ -1997,6 +2584,9 @@ export const UsagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UsagesGetOutput,
 }));
 // Input Schema
+export interface UsagesListInput {
+  scope: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   scope: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2005,10 +2595,25 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{scope}/providers/Microsoft.Quota/usages",
     apiVersion: "2025-09-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2032,8 +2637,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**

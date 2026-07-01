@@ -4,6 +4,30 @@ import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateDatabaseInput {
+  organizationSlug: string;
+  name: string;
+  group: string;
+  seed?: {
+    type?: "database" | "database_upload";
+    name?: string;
+    timestamp?: string;
+  };
+  size_limit?: string;
+  remote_encryption?: {
+    encryption_key?: string;
+    encryption_cipher?:
+      | "aes256gcm"
+      | "aes128gcm"
+      | "chacha20poly1305"
+      | "aegis128l"
+      | "aegis128x2"
+      | "aegis128x4"
+      | "aegis256"
+      | "aegis256x2"
+      | "aegis256x4";
+  };
+}
 export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
@@ -39,10 +63,12 @@ export const CreateDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v1/organizations/{organizationSlug}/databases",
   }),
-);
-export type CreateDatabaseInput = typeof CreateDatabaseInput.Type;
+) as unknown as Schema.Codec<CreateDatabaseInput>;
 
 // Output Schema
+export interface CreateDatabaseOutput {
+  database?: { DbId?: string; Hostname?: string; Name?: string };
+}
 export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Struct({
@@ -51,8 +77,7 @@ export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Name: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CreateDatabaseOutput = typeof CreateDatabaseOutput.Type;
+}) as unknown as Schema.Codec<CreateDatabaseOutput>;
 
 // The operation
 /**

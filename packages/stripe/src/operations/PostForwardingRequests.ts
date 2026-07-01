@@ -3,6 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostForwardingRequestsInput {
+  expand?: string[];
+  metadata?: Record<string, string>;
+  payment_method: string;
+  replacements: (
+    | "card_cvc"
+    | "card_expiry"
+    | "card_number"
+    | "cardholder_name"
+    | "request_signature"
+  )[];
+  request?: { body?: string; headers?: { name: string; value: string }[] };
+  url: string;
+}
 export const PostForwardingRequestsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -37,11 +51,39 @@ export const PostForwardingRequestsInput =
       path: "/v1/forwarding/requests",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostForwardingRequestsInput =
-  typeof PostForwardingRequestsInput.Type;
+  ) as unknown as Schema.Codec<PostForwardingRequestsInput>;
 
 // Output Schema
+export interface PostForwardingRequestsOutput {
+  created: number;
+  id: string;
+  livemode: boolean;
+  metadata?: Record<string, string> | null;
+  object: "forwarding.request";
+  payment_method: string;
+  replacements: (
+    | "card_cvc"
+    | "card_expiry"
+    | "card_number"
+    | "cardholder_name"
+    | "request_signature"
+  )[];
+  request_context: {
+    destination_duration: number;
+    destination_ip_address: string;
+  } | null;
+  request_details: {
+    body: string;
+    headers: { name: string; value: string }[];
+    http_method: "POST";
+  } | null;
+  response_details: {
+    body: string;
+    headers: { name: string; value: string }[];
+    status: number;
+  } | null;
+  url: string | null;
+}
 export const PostForwardingRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -61,13 +103,38 @@ export const PostForwardingRequestsOutput =
         "request_signature",
       ]),
     ),
-    request_context: Schema.Unknown,
-    request_details: Schema.Unknown,
-    response_details: Schema.Unknown,
+    request_context: Schema.NullOr(
+      Schema.Struct({
+        destination_duration: Schema.Number,
+        destination_ip_address: Schema.String,
+      }),
+    ),
+    request_details: Schema.NullOr(
+      Schema.Struct({
+        body: Schema.String,
+        headers: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        http_method: Schema.Literals(["POST"]),
+      }),
+    ),
+    response_details: Schema.NullOr(
+      Schema.Struct({
+        body: Schema.String,
+        headers: Schema.Array(
+          Schema.Struct({
+            name: Schema.String,
+            value: Schema.String,
+          }),
+        ),
+        status: Schema.Number,
+      }),
+    ),
     url: Schema.NullOr(Schema.String),
-  });
-export type PostForwardingRequestsOutput =
-  typeof PostForwardingRequestsOutput.Type;
+  }) as unknown as Schema.Codec<PostForwardingRequestsOutput>;
 
 // The operation
 /**

@@ -376,6 +376,13 @@ export interface TypeInfo {
   elementType?: TypeInfo; // For arrays
   properties?: PropertyInfo[]; // For objects
   name?: string; // For named types/interfaces
+  /**
+   * When set, this node is a *reference* to a hoisted top-level named schema
+   * (an `interface`/`const` emitted once at file scope). The schema and TS-type
+   * emitters short-circuit to this identifier instead of inlining the shape.
+   * Populated by the nested-schema hoisting pass in `generate.ts`.
+   */
+  ref?: string;
 }
 
 export interface PropertyInfo {

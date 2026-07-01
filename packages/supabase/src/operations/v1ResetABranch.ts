@@ -4,20 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1ResetABranchInput {
+  branch_id_or_ref: string;
+  migration_version?: string;
+}
 export const V1ResetABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/reset" }),
-);
-export type V1ResetABranchInput = typeof V1ResetABranchInput.Type;
+) as unknown as Schema.Codec<V1ResetABranchInput>;
 
 // Output Schema
+export interface V1ResetABranchOutput {
+  workflow_run_id: string;
+  message: "ok";
+}
 export const V1ResetABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   workflow_run_id: Schema.String,
   message: Schema.Literals(["ok"]),
-});
-export type V1ResetABranchOutput = typeof V1ResetABranchOutput.Type;
+}) as unknown as Schema.Codec<V1ResetABranchOutput>;
 
 // The operation
 /**

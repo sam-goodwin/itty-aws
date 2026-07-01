@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationControllerListEffectivePermissionsInput {
+  organization_membership_id: string;
+  resource_id: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const AuthorizationControllerListEffectivePermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +19,30 @@ export const AuthorizationControllerListEffectivePermissionsInput =
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/authorization/organization_memberships/{organization_membership_id}/resources/{resource_id}/permissions",
     }),
-  );
-export type AuthorizationControllerListEffectivePermissionsInput =
-  typeof AuthorizationControllerListEffectivePermissionsInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsInput>;
 
 // Output Schema
+export interface AuthorizationControllerListEffectivePermissionsOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    system?: boolean;
+    resource_type_slug?: string;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const AuthorizationControllerListEffectivePermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -46,9 +67,7 @@ export const AuthorizationControllerListEffectivePermissionsOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type AuthorizationControllerListEffectivePermissionsOutput =
-  typeof AuthorizationControllerListEffectivePermissionsOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationControllerListEffectivePermissionsOutput>;
 
 // The operation
 /**
@@ -61,7 +80,7 @@ export type AuthorizationControllerListEffectivePermissionsOutput =
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const AuthorizationControllerListEffectivePermissions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

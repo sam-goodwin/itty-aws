@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsTranslateCreateInput {
+  project_id: string;
+  text?: string;
+  target_language?: string;
+}
 export const LlmAnalyticsTranslateCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +16,17 @@ export const LlmAnalyticsTranslateCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/translate/",
+      path: "/api/projects/{project_id}/llm_analytics/translate/",
     }),
-  );
-export type LlmAnalyticsTranslateCreateInput =
-  typeof LlmAnalyticsTranslateCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsTranslateCreateInput>;
 
 // Output Schema
+export type LlmAnalyticsTranslateCreateOutput = Record<string, unknown>;
 export const LlmAnalyticsTranslateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type LlmAnalyticsTranslateCreateOutput =
-  typeof LlmAnalyticsTranslateCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<LlmAnalyticsTranslateCreateOutput>;
 
 // The operation
 /**
@@ -34,6 +38,5 @@ export const llmAnalyticsTranslateCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: LlmAnalyticsTranslateCreateInput,
     outputSchema: LlmAnalyticsTranslateCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

@@ -3,13 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetSQLSchemaInput {
+  database?: "base" | "base_sepolia" | "solana" | "hyperevm";
+  table?: string;
+}
 export const GetSQLSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  database: Schema.optional(Schema.Literals(["base", "base_sepolia"])),
+  database: Schema.optional(
+    Schema.Literals(["base", "base_sepolia", "solana", "hyperevm"]),
+  ),
   table: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/v2/data/query/schema" }));
-export type GetSQLSchemaInput = typeof GetSQLSchemaInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/data/query/schema" }),
+) as unknown as Schema.Codec<GetSQLSchemaInput>;
 
 // Output Schema
+export interface GetSQLSchemaOutput {
+  tables?: {
+    database?: string;
+    table?: string;
+    columns?: {
+      name?: string;
+      type?: string;
+      nullable?: boolean;
+      description?: string;
+      indexOrder?: number;
+    }[];
+  }[];
+}
 export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tables: Schema.optional(
     Schema.Array(
@@ -30,12 +50,11 @@ export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type GetSQLSchemaOutput = typeof GetSQLSchemaOutput.Type;
+}) as unknown as Schema.Codec<GetSQLSchemaOutput>;
 
 // The operation
 /**
- * Get schemas details
+ * Get schema details
  *
  * Retrieve the schema information for the available tables in the SQL API's indexed data.
  * This includes table names, column definitions, data types, and indexed fields.

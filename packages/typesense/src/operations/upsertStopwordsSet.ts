@@ -4,22 +4,32 @@ import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
 
 // Input Schema
+export interface UpsertStopwordsSetInput {
+  setId: string;
+  stopwords: string[];
+  locale?: string;
+}
 export const UpsertStopwordsSetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
     stopwords: Schema.Array(Schema.String),
     locale: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "PUT", path: "/stopwords/{setId}" }));
-export type UpsertStopwordsSetInput = typeof UpsertStopwordsSetInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/stopwords/{setId}" }),
+  ) as unknown as Schema.Codec<UpsertStopwordsSetInput>;
 
 // Output Schema
+export interface UpsertStopwordsSetOutput {
+  id: string;
+  stopwords: string[];
+  locale?: string;
+}
 export const UpsertStopwordsSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     stopwords: Schema.Array(Schema.String),
     locale: Schema.optional(Schema.String),
-  });
-export type UpsertStopwordsSetOutput = typeof UpsertStopwordsSetOutput.Type;
+  }) as unknown as Schema.Codec<UpsertStopwordsSetOutput>;
 
 // The operation
 /**

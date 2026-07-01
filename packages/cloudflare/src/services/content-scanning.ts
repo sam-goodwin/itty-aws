@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service content-scanning
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,34 @@ export class Forbidden extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListPayloadsResponseResult {
+  /** defines the unique ID for this custom scan expression. */
+  id?: string | null;
+  /** Defines the ruleset expression to use in matching content objects. */
+  payload?: string | null;
+}
+const ListPayloadsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      payload: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+) as unknown as Schema.Codec<ListPayloadsResponseResult>;
+
+interface Body {
+  /** Defines the ruleset expression to use in matching content objects. */
+  payload: string;
+}
+const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    payload: Schema.String,
+  }),
+) as unknown as Schema.Codec<Body>;
+
+// =============================================================================
 // ContentScanning
 // =============================================================================
 
@@ -59,7 +87,7 @@ export const GetContentScanningRequest =
         path: "/zones/{zone_id}/content-upload-scan/settings",
       }),
     ),
-  ) as unknown as Schema.Schema<GetContentScanningRequest>;
+  ) as unknown as Schema.Codec<GetContentScanningRequest>;
 
 export interface GetContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -74,7 +102,7 @@ export const GetContentScanningResponse =
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetContentScanningResponse>;
+  ) as unknown as Schema.Codec<GetContentScanningResponse>;
 
 export type GetContentScanningError = DefaultErrors | Forbidden;
 
@@ -110,7 +138,7 @@ export const CreateContentScanningRequest =
         path: "/zones/{zone_id}/content-upload-scan/settings",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateContentScanningRequest>;
+  ) as unknown as Schema.Codec<CreateContentScanningRequest>;
 
 export interface CreateContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -125,7 +153,7 @@ export const CreateContentScanningResponse =
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateContentScanningResponse>;
+  ) as unknown as Schema.Codec<CreateContentScanningResponse>;
 
 export type CreateContentScanningError =
   | DefaultErrors
@@ -164,7 +192,7 @@ export const PutContentScanningRequest =
         path: "/zones/{zone_id}/content-upload-scan/settings",
       }),
     ),
-  ) as unknown as Schema.Schema<PutContentScanningRequest>;
+  ) as unknown as Schema.Codec<PutContentScanningRequest>;
 
 export interface PutContentScanningResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -179,7 +207,7 @@ export const PutContentScanningResponse =
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutContentScanningResponse>;
+  ) as unknown as Schema.Codec<PutContentScanningResponse>;
 
 export type PutContentScanningError =
   | DefaultErrors
@@ -212,14 +240,14 @@ export const EnableContentScanningRequest =
         path: "/zones/{zone_id}/content-upload-scan/enable",
       }),
     ),
-  ) as unknown as Schema.Schema<EnableContentScanningRequest>;
+  ) as unknown as Schema.Codec<EnableContentScanningRequest>;
 
 export type EnableContentScanningResponse = unknown;
 
 export const EnableContentScanningResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<EnableContentScanningResponse>;
+  ) as unknown as Schema.Codec<EnableContentScanningResponse>;
 
 export type EnableContentScanningError = DefaultErrors;
 
@@ -249,14 +277,14 @@ export const DisableContentScanningRequest =
         path: "/zones/{zone_id}/content-upload-scan/disable",
       }),
     ),
-  ) as unknown as Schema.Schema<DisableContentScanningRequest>;
+  ) as unknown as Schema.Codec<DisableContentScanningRequest>;
 
 export type DisableContentScanningResponse = unknown;
 
 export const DisableContentScanningResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DisableContentScanningResponse>;
+  ) as unknown as Schema.Codec<DisableContentScanningResponse>;
 
 export type DisableContentScanningError = DefaultErrors;
 
@@ -290,7 +318,7 @@ export const ListPayloadsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/content-upload-scan/payloads",
       }),
     ),
-) as unknown as Schema.Schema<ListPayloadsRequest>;
+) as unknown as Schema.Codec<ListPayloadsRequest>;
 
 export interface ListPayloadsResponse {
   result: { id?: string | null; payload?: string | null }[];
@@ -299,14 +327,9 @@ export interface ListPayloadsResponse {
 export const ListPayloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          payload: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListPayloadsResponseResult),
     }),
-) as unknown as Schema.Schema<ListPayloadsResponse>;
+) as unknown as Schema.Codec<ListPayloadsResponse>;
 
 export type ListPayloadsError =
   | DefaultErrors
@@ -339,18 +362,14 @@ export const CreatePayloadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Array(
-        Schema.Struct({
-          payload: Schema.String,
-        }),
-      ).pipe(T.HttpBody()),
+      body: Schema.Array(Body).pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
         path: "/zones/{zone_id}/content-upload-scan/payloads",
       }),
     ),
-) as unknown as Schema.Schema<CreatePayloadRequest>;
+) as unknown as Schema.Codec<CreatePayloadRequest>;
 
 export interface CreatePayloadResponse {
   result: { id?: string | null; payload?: string | null }[];
@@ -359,14 +378,9 @@ export interface CreatePayloadResponse {
 export const CreatePayloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          payload: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListPayloadsResponseResult),
     }),
-) as unknown as Schema.Schema<CreatePayloadResponse>;
+) as unknown as Schema.Codec<CreatePayloadResponse>;
 
 export type CreatePayloadError =
   | DefaultErrors
@@ -406,7 +420,7 @@ export const DeletePayloadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/content-upload-scan/payloads/{expressionId}",
       }),
     ),
-) as unknown as Schema.Schema<DeletePayloadRequest>;
+) as unknown as Schema.Codec<DeletePayloadRequest>;
 
 export interface DeletePayloadResponse {
   result: { id?: string | null; payload?: string | null }[];
@@ -415,14 +429,9 @@ export interface DeletePayloadResponse {
 export const DeletePayloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          payload: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-      ),
+      result: Schema.Array(ListPayloadsResponseResult),
     }),
-) as unknown as Schema.Schema<DeletePayloadResponse>;
+) as unknown as Schema.Codec<DeletePayloadResponse>;
 
 export type DeletePayloadError =
   | DefaultErrors
@@ -463,7 +472,7 @@ export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/content-upload-scan/settings",
       }),
     ),
-) as unknown as Schema.Schema<GetSettingRequest>;
+) as unknown as Schema.Codec<GetSettingRequest>;
 
 export interface GetSettingResponse {
   /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
@@ -478,7 +487,7 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetSettingResponse>;
+) as unknown as Schema.Codec<GetSettingResponse>;
 
 export type GetSettingError = DefaultErrors | Forbidden;
 

@@ -4,12 +4,25 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetKeyInput {
+  keyId: number;
+}
 export const GetKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   keyId: Schema.Number.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/keys/{keyId}" }));
-export type GetKeyInput = typeof GetKeyInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/keys/{keyId}" }),
+) as unknown as Schema.Codec<GetKeyInput>;
 
 // Output Schema
+export interface GetKeyOutput {
+  value?: string;
+  description: string;
+  actions: string[];
+  collections: string[];
+  expires_at?: number;
+  id?: number;
+  value_prefix?: string;
+}
 export const GetKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(Schema.String),
   description: Schema.String,
@@ -18,8 +31,7 @@ export const GetKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expires_at: Schema.optional(Schema.Number),
   id: Schema.optional(Schema.Number),
   value_prefix: Schema.optional(Schema.String),
-});
-export type GetKeyOutput = typeof GetKeyOutput.Type;
+}) as unknown as Schema.Codec<GetKeyOutput>;
 
 // The operation
 /**

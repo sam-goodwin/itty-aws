@@ -4,14 +4,84 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DicomServicesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  dicomServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+    authenticationConfiguration?: { authority?: string; audiences?: string[] };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    serviceUrl?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    eventState?: "Disabled" | "Enabled" | "Updating";
+    encryption?: {
+      customerManagedKeyEncryption?: { keyEncryptionKeyUrl?: string };
+    };
+    storageConfiguration?: {
+      storageResourceId?: string;
+      fileSystemName?: string;
+    };
+    enableDataPartitions?: boolean;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DicomServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -121,11 +191,24 @@ export const DicomServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type DicomServicesCreateOrUpdateInput =
-  typeof DicomServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DicomServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface DicomServicesCreateOrUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DicomServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -149,16 +232,17 @@ export const DicomServicesCreateOrUpdateOutput =
         ),
       }),
     ),
-  });
-export type DicomServicesCreateOrUpdateOutput =
-  typeof DicomServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DicomServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a DICOM Service resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param dicomServiceName - The name of DICOM Service resource.
  */
 export const DicomServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -167,22 +251,30 @@ export const DicomServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DicomServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  dicomServiceName: string;
+  workspaceName: string;
+}
 export const DicomServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type DicomServicesDeleteInput = typeof DicomServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<DicomServicesDeleteInput>;
 
 // Output Schema
+export type DicomServicesDeleteOutput = void;
 export const DicomServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DicomServicesDeleteOutput = typeof DicomServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DicomServicesDeleteOutput>;
 
 // The operation
 /**
@@ -190,24 +282,50 @@ export type DicomServicesDeleteOutput = typeof DicomServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param dicomServiceName - The name of DICOM Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesDeleteInput,
   outputSchema: DicomServicesDeleteOutput,
 }));
 // Input Schema
+export interface DicomServicesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  dicomServiceName: string;
+}
 export const DicomServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  dicomServiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type DicomServicesGetInput = typeof DicomServicesGetInput.Type;
+) as unknown as Schema.Codec<DicomServicesGetInput>;
 
 // Output Schema
+export interface DicomServicesGetOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DicomServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     identity: Schema.optional(
@@ -232,35 +350,60 @@ export const DicomServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DicomServicesGetOutput = typeof DicomServicesGetOutput.Type;
+) as unknown as Schema.Codec<DicomServicesGetOutput>;
 
 // The operation
 /**
  * Gets the properties of the specified DICOM Service.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param dicomServiceName - The name of DICOM Service resource.
  */
 export const DicomServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesGetInput,
   outputSchema: DicomServicesGetOutput,
 }));
 // Input Schema
+export interface DicomServicesListByWorkspaceInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+}
 export const DicomServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices",
       apiVersion: "2024-03-31",
     }),
-  );
-export type DicomServicesListByWorkspaceInput =
-  typeof DicomServicesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<DicomServicesListByWorkspaceInput>;
 
 // Output Schema
+export interface DicomServicesListByWorkspaceOutput {
+  nextLink?: string;
+  value?: {
+    identity?: {
+      type:
+        | "None"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "SystemAssigned,UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+      userAssignedIdentities?: Record<
+        string,
+        { principalId?: string; clientId?: string }
+      >;
+    };
+  }[];
+}
 export const DicomServicesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -291,16 +434,16 @@ export const DicomServicesListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type DicomServicesListByWorkspaceOutput =
-  typeof DicomServicesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<DicomServicesListByWorkspaceOutput>;
 
 // The operation
 /**
  * Lists all DICOM Services for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -308,9 +451,32 @@ export const DicomServicesListByWorkspace =
     outputSchema: DicomServicesListByWorkspaceOutput,
   }));
 // Input Schema
+export interface DicomServicesUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  dicomServiceName: string;
+  workspaceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DicomServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    dicomServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -339,10 +505,24 @@ export const DicomServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type DicomServicesUpdateInput = typeof DicomServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<DicomServicesUpdateInput>;
 
 // Output Schema
+export interface DicomServicesUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DicomServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -366,35 +546,48 @@ export const DicomServicesUpdateOutput =
         ),
       }),
     ),
-  });
-export type DicomServicesUpdateOutput = typeof DicomServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DicomServicesUpdateOutput>;
 
 // The operation
 /**
  * Patch DICOM Service details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param dicomServiceName - The name of DICOM Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const DicomServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DicomServicesUpdateInput,
   outputSchema: DicomServicesUpdateOutput,
 }));
 // Input Schema
+export interface FhirDestinationsListByIotConnectorInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  iotConnectorName: string;
+}
 export const FhirDestinationsListByIotConnectorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations",
       apiVersion: "2024-03-31",
     }),
-  );
-export type FhirDestinationsListByIotConnectorInput =
-  typeof FhirDestinationsListByIotConnectorInput.Type;
+  ) as unknown as Schema.Codec<FhirDestinationsListByIotConnectorInput>;
 
 // Output Schema
+export interface FhirDestinationsListByIotConnectorOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string; etag?: string }[];
+}
 export const FhirDestinationsListByIotConnectorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -408,16 +601,17 @@ export const FhirDestinationsListByIotConnectorOutput =
         }),
       ),
     ),
-  });
-export type FhirDestinationsListByIotConnectorOutput =
-  typeof FhirDestinationsListByIotConnectorOutput.Type;
+  }) as unknown as Schema.Codec<FhirDestinationsListByIotConnectorOutput>;
 
 // The operation
 /**
  * Lists all FHIR destinations for the given IoT Connector
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const FhirDestinationsListByIotConnector =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -425,9 +619,108 @@ export const FhirDestinationsListByIotConnector =
     outputSchema: FhirDestinationsListByIotConnectorOutput,
   }));
 // Input Schema
+export interface FhirServicesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  fhirServiceName: string;
+  kind?: "fhir-Stu3" | "fhir-R4";
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+    acrConfiguration?: {
+      loginServers?: string[];
+      ociArtifacts?: {
+        loginServer?: string;
+        imageName?: string;
+        digest?: string;
+      }[];
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+      smartIdentityProviders?: {
+        authority?: string;
+        applications?: {
+          clientId?: string;
+          audience?: string;
+          allowedDataActions?: "Read"[];
+        }[];
+      }[];
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    eventState?: "Disabled" | "Enabled" | "Updating";
+    resourceVersionPolicyConfiguration?: {
+      default?: "no-version" | "versioned" | "versioned-update";
+      resourceTypeOverrides?: Record<
+        string,
+        "no-version" | "versioned" | "versioned-update"
+      >;
+    };
+    importConfiguration?: {
+      integrationDataStore?: string;
+      initialImportMode?: boolean;
+      enabled?: boolean;
+    };
+    implementationGuidesConfiguration?: { usCoreMissingData?: boolean };
+    encryption?: {
+      customerManagedKeyEncryption?: { keyEncryptionKeyUrl?: string };
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const FhirServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
     kind: Schema.optional(Schema.Literals(["fhir-Stu3", "fhir-R4"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -597,11 +890,24 @@ export const FhirServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type FhirServicesCreateOrUpdateInput =
-  typeof FhirServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FhirServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FhirServicesCreateOrUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const FhirServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -625,16 +931,17 @@ export const FhirServicesCreateOrUpdateOutput =
         ),
       }),
     ),
-  });
-export type FhirServicesCreateOrUpdateOutput =
-  typeof FhirServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FhirServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a FHIR Service resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param fhirServiceName - The name of FHIR Service resource.
  */
 export const FhirServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -643,21 +950,30 @@ export const FhirServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FhirServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  fhirServiceName: string;
+  workspaceName: string;
+}
 export const FhirServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type FhirServicesDeleteInput = typeof FhirServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<FhirServicesDeleteInput>;
 
 // Output Schema
-export const FhirServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FhirServicesDeleteOutput = typeof FhirServicesDeleteOutput.Type;
+export type FhirServicesDeleteOutput = void;
+export const FhirServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FhirServicesDeleteOutput>;
 
 // The operation
 /**
@@ -665,24 +981,50 @@ export type FhirServicesDeleteOutput = typeof FhirServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param fhirServiceName - The name of FHIR Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesDeleteInput,
   outputSchema: FhirServicesDeleteOutput,
 }));
 // Input Schema
+export interface FhirServicesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  fhirServiceName: string;
+}
 export const FhirServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  fhirServiceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type FhirServicesGetInput = typeof FhirServicesGetInput.Type;
+) as unknown as Schema.Codec<FhirServicesGetInput>;
 
 // Output Schema
+export interface FhirServicesGetOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const FhirServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   identity: Schema.optional(
     Schema.Struct({
@@ -705,35 +1047,60 @@ export const FhirServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type FhirServicesGetOutput = typeof FhirServicesGetOutput.Type;
+}) as unknown as Schema.Codec<FhirServicesGetOutput>;
 
 // The operation
 /**
  * Gets the properties of the specified FHIR Service.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param fhirServiceName - The name of FHIR Service resource.
  */
 export const FhirServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesGetInput,
   outputSchema: FhirServicesGetOutput,
 }));
 // Input Schema
+export interface FhirServicesListByWorkspaceInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+}
 export const FhirServicesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices",
       apiVersion: "2024-03-31",
     }),
-  );
-export type FhirServicesListByWorkspaceInput =
-  typeof FhirServicesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<FhirServicesListByWorkspaceInput>;
 
 // Output Schema
+export interface FhirServicesListByWorkspaceOutput {
+  nextLink?: string;
+  value?: {
+    identity?: {
+      type:
+        | "None"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "SystemAssigned,UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+      userAssignedIdentities?: Record<
+        string,
+        { principalId?: string; clientId?: string }
+      >;
+    };
+  }[];
+}
 export const FhirServicesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -764,16 +1131,16 @@ export const FhirServicesListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type FhirServicesListByWorkspaceOutput =
-  typeof FhirServicesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<FhirServicesListByWorkspaceOutput>;
 
 // The operation
 /**
  * Lists all FHIR Services for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -782,9 +1149,32 @@ export const FhirServicesListByWorkspace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FhirServicesUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  fhirServiceName: string;
+  workspaceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const FhirServicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    fhirServiceName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -813,10 +1203,24 @@ export const FhirServicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type FhirServicesUpdateInput = typeof FhirServicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<FhirServicesUpdateInput>;
 
 // Output Schema
+export interface FhirServicesUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const FhirServicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -840,24 +1244,62 @@ export const FhirServicesUpdateOutput =
         ),
       }),
     ),
-  });
-export type FhirServicesUpdateOutput = typeof FhirServicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FhirServicesUpdateOutput>;
 
 // The operation
 /**
  * Patch FHIR Service details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param fhirServiceName - The name of FHIR Service resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const FhirServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FhirServicesUpdateInput,
   outputSchema: FhirServicesUpdateOutput,
 }));
 // Input Schema
+export interface IotConnectorFhirDestinationCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  iotConnectorName: string;
+  fhirDestinationName: string;
+  properties: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  location?: string;
+}
 export const IotConnectorFhirDestinationCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals([
@@ -898,27 +1340,33 @@ export const IotConnectorFhirDestinationCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorFhirDestinationCreateOrUpdateInput =
-  typeof IotConnectorFhirDestinationCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorFhirDestinationCreateOrUpdateInput>;
 
 // Output Schema
+export interface IotConnectorFhirDestinationCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+}
 export const IotConnectorFhirDestinationCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-  });
-export type IotConnectorFhirDestinationCreateOrUpdateOutput =
-  typeof IotConnectorFhirDestinationCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IotConnectorFhirDestinationCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates an IoT Connector FHIR destination resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -926,24 +1374,32 @@ export const IotConnectorFhirDestinationCreateOrUpdate =
     outputSchema: IotConnectorFhirDestinationCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface IotConnectorFhirDestinationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  iotConnectorName: string;
+  fhirDestinationName: string;
+}
 export const IotConnectorFhirDestinationDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorFhirDestinationDeleteInput =
-  typeof IotConnectorFhirDestinationDeleteInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorFhirDestinationDeleteInput>;
 
 // Output Schema
+export type IotConnectorFhirDestinationDeleteOutput = void;
 export const IotConnectorFhirDestinationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IotConnectorFhirDestinationDeleteOutput =
-  typeof IotConnectorFhirDestinationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotConnectorFhirDestinationDeleteOutput>;
 
 // The operation
 /**
@@ -951,6 +1407,10 @@ export type IotConnectorFhirDestinationDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -958,36 +1418,53 @@ export const IotConnectorFhirDestinationDelete =
     outputSchema: IotConnectorFhirDestinationDeleteOutput,
   }));
 // Input Schema
+export interface IotConnectorFhirDestinationGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  iotConnectorName: string;
+  fhirDestinationName: string;
+}
 export const IotConnectorFhirDestinationGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    fhirDestinationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorFhirDestinationGetInput =
-  typeof IotConnectorFhirDestinationGetInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorFhirDestinationGetInput>;
 
 // Output Schema
+export interface IotConnectorFhirDestinationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+}
 export const IotConnectorFhirDestinationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-  });
-export type IotConnectorFhirDestinationGetOutput =
-  typeof IotConnectorFhirDestinationGetOutput.Type;
+  }) as unknown as Schema.Codec<IotConnectorFhirDestinationGetOutput>;
 
 // The operation
 /**
  * Gets the properties of the specified Iot Connector FHIR destination.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param fhirDestinationName - The name of IoT Connector FHIR destination resource.
  */
 export const IotConnectorFhirDestinationGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -995,9 +1472,61 @@ export const IotConnectorFhirDestinationGet =
     outputSchema: IotConnectorFhirDestinationGetOutput,
   }));
 // Input Schema
+export interface IotConnectorsCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  iotConnectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+    ingestionEndpointConfiguration?: {
+      eventHubName?: string;
+      consumerGroup?: string;
+      fullyQualifiedEventHubNamespace?: string;
+    };
+    deviceMapping?: { content?: unknown };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const IotConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1072,11 +1601,24 @@ export const IotConnectorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorsCreateOrUpdateInput =
-  typeof IotConnectorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface IotConnectorsCreateOrUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const IotConnectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -1100,16 +1642,17 @@ export const IotConnectorsCreateOrUpdateOutput =
         ),
       }),
     ),
-  });
-export type IotConnectorsCreateOrUpdateOutput =
-  typeof IotConnectorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IotConnectorsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates an IoT Connector resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const IotConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1118,22 +1661,30 @@ export const IotConnectorsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IotConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  iotConnectorName: string;
+  workspaceName: string;
+}
 export const IotConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorsDeleteInput = typeof IotConnectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorsDeleteInput>;
 
 // Output Schema
+export type IotConnectorsDeleteOutput = void;
 export const IotConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IotConnectorsDeleteOutput = typeof IotConnectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IotConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -1141,24 +1692,50 @@ export type IotConnectorsDeleteOutput = typeof IotConnectorsDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsDeleteInput,
   outputSchema: IotConnectorsDeleteOutput,
 }));
 // Input Schema
+export interface IotConnectorsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  iotConnectorName: string;
+}
 export const IotConnectorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
+  iotConnectorName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type IotConnectorsGetInput = typeof IotConnectorsGetInput.Type;
+) as unknown as Schema.Codec<IotConnectorsGetInput>;
 
 // Output Schema
+export interface IotConnectorsGetOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const IotConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     identity: Schema.optional(
@@ -1183,35 +1760,60 @@ export const IotConnectorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type IotConnectorsGetOutput = typeof IotConnectorsGetOutput.Type;
+) as unknown as Schema.Codec<IotConnectorsGetOutput>;
 
 // The operation
 /**
  * Gets the properties of the specified IoT Connector.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
+ * @param iotConnectorName - The name of IoT Connector resource.
  */
 export const IotConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsGetInput,
   outputSchema: IotConnectorsGetOutput,
 }));
 // Input Schema
+export interface IotConnectorsListByWorkspaceInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+}
 export const IotConnectorsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorsListByWorkspaceInput =
-  typeof IotConnectorsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorsListByWorkspaceInput>;
 
 // Output Schema
+export interface IotConnectorsListByWorkspaceOutput {
+  nextLink?: string;
+  value?: {
+    identity?: {
+      type:
+        | "None"
+        | "SystemAssigned"
+        | "UserAssigned"
+        | "SystemAssigned,UserAssigned";
+      principalId?: string;
+      tenantId?: string;
+      userAssignedIdentities?: Record<
+        string,
+        { principalId?: string; clientId?: string }
+      >;
+    };
+  }[];
+}
 export const IotConnectorsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1242,16 +1844,16 @@ export const IotConnectorsListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type IotConnectorsListByWorkspaceOutput =
-  typeof IotConnectorsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<IotConnectorsListByWorkspaceOutput>;
 
 // The operation
 /**
  * Lists all IoT Connectors for the given workspace
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1259,9 +1861,32 @@ export const IotConnectorsListByWorkspace =
     outputSchema: IotConnectorsListByWorkspaceOutput,
   }));
 // Input Schema
+export interface IotConnectorsUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  iotConnectorName: string;
+  workspaceName: string;
+  tags?: Record<string, string>;
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const IotConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    iotConnectorName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     identity: Schema.optional(
       Schema.Struct({
@@ -1290,10 +1915,24 @@ export const IotConnectorsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type IotConnectorsUpdateInput = typeof IotConnectorsUpdateInput.Type;
+  ) as unknown as Schema.Codec<IotConnectorsUpdateInput>;
 
 // Output Schema
+export interface IotConnectorsUpdateOutput {
+  identity?: {
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const IotConnectorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     identity: Schema.optional(
@@ -1317,34 +1956,50 @@ export const IotConnectorsUpdateOutput =
         ),
       }),
     ),
-  });
-export type IotConnectorsUpdateOutput = typeof IotConnectorsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IotConnectorsUpdateOutput>;
 
 // The operation
 /**
  * Patch an IoT Connector.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param iotConnectorName - The name of IoT Connector resource.
+ * @param workspaceName - The name of workspace resource.
  */
 export const IotConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: IotConnectorsUpdateInput,
   outputSchema: IotConnectorsUpdateOutput,
 }));
 // Input Schema
+export interface OperationResultsGetInput {
+  subscriptionId: string;
+  locationName: string;
+  operationResultId: string;
+}
 export const OperationResultsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    locationName: Schema.String.pipe(T.PathParam()),
+    operationResultId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/locations/{locationName}/operationresults/{operationResultId}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type OperationResultsGetInput = typeof OperationResultsGetInput.Type;
+  ) as unknown as Schema.Codec<OperationResultsGetInput>;
 
 // Output Schema
+export interface OperationResultsGetOutput {
+  id?: string;
+  name?: string;
+  status?: "Canceled" | "Succeeded" | "Failed" | "Requested" | "Running";
+  startTime?: string;
+  endTime?: string;
+  properties?: unknown;
+}
 export const OperationResultsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1361,8 +2016,7 @@ export const OperationResultsGetOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Unknown),
-  });
-export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationResultsGetOutput>;
 
 // The operation
 /**
@@ -1370,12 +2024,15 @@ export type OperationResultsGetOutput = typeof OperationResultsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param locationName - The location of the operation.
+ * @param operationResultId - The ID of the operation result to get.
  */
 export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1384,10 +2041,55 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HealthcareApis/operations",
     apiVersion: "2024-03-31",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    actionType?: "Internal";
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+        metricSpecifications?: {
+          name?: string;
+          displayName?: string;
+          displayDescription?: string;
+          unit?: string;
+          category?: string;
+          aggregationType?: string;
+          supportedAggregationTypes?: string[];
+          supportedTimeGrainTypes?: string[];
+          fillGapWithZero?: boolean;
+          metricFilterPattern?: string;
+          dimensions?: {
+            name?: string;
+            displayName?: string;
+            toBeExportedForShoebox?: boolean;
+          }[];
+          isInternal?: boolean;
+          sourceMdmAccount?: string;
+          sourceMdmNamespace?: string;
+          enableRegionalMdmAccount?: boolean;
+          resourceIdDimensionNameOverride?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1463,8 +2165,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1477,9 +2178,29 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1509,25 +2230,28 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Update the state of the specified private endpoint connection associated with the service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  * @param properties - Resource properties.
@@ -1538,9 +2262,17 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1548,21 +2280,20 @@ export const PrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a private endpoint connection.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
@@ -1572,9 +2303,17 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1582,25 +2321,28 @@ export const PrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
  * Gets the specified private endpoint connection associated with the service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
@@ -1610,20 +2352,28 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateEndpointConnectionsListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateEndpointConnectionsListByServiceInput =
-  typeof PrivateEndpointConnectionsListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByServiceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const PrivateEndpointConnectionsListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1635,15 +2385,15 @@ export const PrivateEndpointConnectionsListByServiceOutput =
         }),
       ),
     ),
-  });
-export type PrivateEndpointConnectionsListByServiceOutput =
-  typeof PrivateEndpointConnectionsListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByServiceOutput>;
 
 // The operation
 /**
  * Lists all private endpoint connections for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsListByService =
@@ -1652,9 +2402,17 @@ export const PrivateEndpointConnectionsListByService =
     outputSchema: PrivateEndpointConnectionsListByServiceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  groupName: string;
+}
 export const PrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1662,25 +2420,28 @@ export const PrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources/{groupName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateLinkResourcesGetInput =
-  typeof PrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const PrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesGetOutput =
-  typeof PrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
  * Gets a private link resource that need to be created for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  * @param groupName - The name of the private link resource group.
  */
@@ -1691,20 +2452,28 @@ export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourcesListByServiceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const PrivateLinkResourcesListByServiceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateLinkResources",
       apiVersion: "2024-03-31",
     }),
-  );
-export type PrivateLinkResourcesListByServiceInput =
-  typeof PrivateLinkResourcesListByServiceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByServiceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByServiceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const PrivateLinkResourcesListByServiceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1716,15 +2485,15 @@ export const PrivateLinkResourcesListByServiceOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListByServiceOutput =
-  typeof PrivateLinkResourcesListByServiceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByServiceOutput>;
 
 // The operation
 /**
  * Gets the private link resources that need to be created for a service.
  *
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourcesListByService =
@@ -1733,6 +2502,11 @@ export const PrivateLinkResourcesListByService =
     outputSchema: PrivateLinkResourcesListByServiceOutput,
   }));
 // Input Schema
+export interface ServicesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  name: string;
+  type: string;
+}
 export const ServicesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1744,19 +2518,20 @@ export const ServicesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/checkNameAvailability",
       apiVersion: "2024-03-31",
     }),
-  );
-export type ServicesCheckNameAvailabilityInput =
-  typeof ServicesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<ServicesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface ServicesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const ServicesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type ServicesCheckNameAvailabilityOutput =
-  typeof ServicesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -1771,9 +2546,90 @@ export const ServicesCheckNameAvailability =
     outputSchema: ServicesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface ServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+    accessPolicies?: { objectId: string }[];
+    cosmosDbConfiguration?: {
+      offerThroughput?: number;
+      keyVaultKeyUri?: string;
+      crossTenantCmkApplicationId?: string;
+    };
+    authenticationConfiguration?: {
+      authority?: string;
+      audience?: string;
+      smartProxyEnabled?: boolean;
+    };
+    corsConfiguration?: {
+      origins?: string[];
+      headers?: string[];
+      methods?: string[];
+      maxAge?: number;
+      allowCredentials?: boolean;
+    };
+    exportConfiguration?: { storageAccountName?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    acrConfiguration?: {
+      loginServers?: string[];
+      ociArtifacts?: {
+        loginServer?: string;
+        imageName?: string;
+        digest?: string;
+      }[];
+    };
+    importConfiguration?: {
+      integrationDataStore?: string;
+      initialImportMode?: boolean;
+      enabled?: boolean;
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const ServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -1897,11 +2753,23 @@ export const ServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type ServicesCreateOrUpdateInput =
-  typeof ServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const ServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1918,9 +2786,7 @@ export const ServicesCreateOrUpdateOutput =
         type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
       }),
     ),
-  });
-export type ServicesCreateOrUpdateOutput =
-  typeof ServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1928,6 +2794,8 @@ export type ServicesCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1936,20 +2804,27 @@ export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
+) as unknown as Schema.Codec<ServicesDeleteInput>;
 
 // Output Schema
-export const ServicesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
+export type ServicesDeleteOutput = void;
+export const ServicesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -1957,24 +2832,46 @@ export type ServicesDeleteOutput = typeof ServicesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
 // Input Schema
+export interface ServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type ServicesGetInput = typeof ServicesGetInput.Type;
+) as unknown as Schema.Codec<ServicesGetInput>;
 
 // Output Schema
+export interface ServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1990,8 +2887,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
     }),
   ),
-});
-export type ServicesGetOutput = typeof ServicesGetOutput.Type;
+}) as unknown as Schema.Codec<ServicesGetOutput>;
 
 // The operation
 /**
@@ -1999,12 +2895,17 @@ export type ServicesGetOutput = typeof ServicesGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
+export interface ServicesListInput {
+  subscriptionId: string;
+}
 export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2013,10 +2914,26 @@ export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/services",
     apiVersion: "2024-03-31",
   }),
-);
-export type ServicesListInput = typeof ServicesListInput.Type;
+) as unknown as Schema.Codec<ServicesListInput>;
 
 // Output Schema
+export interface ServicesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -2039,8 +2956,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ServicesListOutput = typeof ServicesListOutput.Type;
+}) as unknown as Schema.Codec<ServicesListOutput>;
 
 // The operation
 /**
@@ -2054,20 +2970,40 @@ export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ServicesListOutput,
 }));
 // Input Schema
+export interface ServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services",
       apiVersion: "2024-03-31",
     }),
-  );
-export type ServicesListByResourceGroupInput =
-  typeof ServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface ServicesListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+    location: string;
+    tags?: Record<string, string>;
+    etag?: string;
+    identity?: {
+      principalId?: string;
+      tenantId?: string;
+      type?: "SystemAssigned" | "None";
+    };
+  }[];
+}
 export const ServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2093,9 +3029,7 @@ export const ServicesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type ServicesListByResourceGroupOutput =
-  typeof ServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2103,6 +3037,7 @@ export type ServicesListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2111,8 +3046,17 @@ export const ServicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  tags?: Record<string, string>;
+  properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
+}
 export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   properties: Schema.optional(
     Schema.Struct({
@@ -2127,10 +3071,23 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
+) as unknown as Schema.Codec<ServicesUpdateInput>;
 
 // Output Schema
+export interface ServicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  kind: "fhir" | "fhir-Stu3" | "fhir-R4";
+  location: string;
+  tags?: Record<string, string>;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+}
 export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2146,8 +3103,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       type: Schema.optional(Schema.Literals(["SystemAssigned", "None"])),
     }),
   ),
-});
-export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
@@ -2155,15 +3111,42 @@ export type ServicesUpdateOutput = typeof ServicesUpdateOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param resourceName - The name of the service instance.
  */
 export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
 // Input Schema
+export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
@@ -2204,19 +3187,20 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof WorkspacePrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2224,6 +3208,8 @@ export type WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdate =
@@ -2232,9 +3218,17 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: WorkspacePrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface WorkspacePrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const WorkspacePrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2242,15 +3236,12 @@ export const WorkspacePrivateEndpointConnectionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateEndpointConnectionsDeleteInput =
-  typeof WorkspacePrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type WorkspacePrivateEndpointConnectionsDeleteOutput = void;
 export const WorkspacePrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacePrivateEndpointConnectionsDeleteOutput =
-  typeof WorkspacePrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2258,6 +3249,8 @@ export type WorkspacePrivateEndpointConnectionsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsDelete =
@@ -2266,9 +3259,17 @@ export const WorkspacePrivateEndpointConnectionsDelete =
     outputSchema: WorkspacePrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface WorkspacePrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const WorkspacePrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2276,19 +3277,20 @@ export const WorkspacePrivateEndpointConnectionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateEndpointConnectionsGetInput =
-  typeof WorkspacePrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface WorkspacePrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacePrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type WorkspacePrivateEndpointConnectionsGetOutput =
-  typeof WorkspacePrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2296,6 +3298,8 @@ export type WorkspacePrivateEndpointConnectionsGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const WorkspacePrivateEndpointConnectionsGet =
@@ -2304,20 +3308,28 @@ export const WorkspacePrivateEndpointConnectionsGet =
     outputSchema: WorkspacePrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface WorkspacePrivateEndpointConnectionsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateEndpointConnectionsListByWorkspaceInput =
-  typeof WorkspacePrivateEndpointConnectionsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsListByWorkspaceInput>;
 
 // Output Schema
+export interface WorkspacePrivateEndpointConnectionsListByWorkspaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2329,9 +3341,7 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
-  typeof WorkspacePrivateEndpointConnectionsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePrivateEndpointConnectionsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2339,6 +3349,8 @@ export type WorkspacePrivateEndpointConnectionsListByWorkspaceOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacePrivateEndpointConnectionsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2346,9 +3358,17 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspace =
     outputSchema: WorkspacePrivateEndpointConnectionsListByWorkspaceOutput,
   }));
 // Input Schema
+export interface WorkspacePrivateLinkResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  groupName: string;
+}
 export const WorkspacePrivateLinkResourcesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2356,19 +3376,20 @@ export const WorkspacePrivateLinkResourcesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources/{groupName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateLinkResourcesGetInput =
-  typeof WorkspacePrivateLinkResourcesGetInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateLinkResourcesGetInput>;
 
 // Output Schema
+export interface WorkspacePrivateLinkResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const WorkspacePrivateLinkResourcesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type WorkspacePrivateLinkResourcesGetOutput =
-  typeof WorkspacePrivateLinkResourcesGetOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePrivateLinkResourcesGetOutput>;
 
 // The operation
 /**
@@ -2376,6 +3397,8 @@ export type WorkspacePrivateLinkResourcesGetOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  * @param groupName - The name of the private link resource group.
  */
 export const WorkspacePrivateLinkResourcesGet =
@@ -2384,20 +3407,28 @@ export const WorkspacePrivateLinkResourcesGet =
     outputSchema: WorkspacePrivateLinkResourcesGetOutput,
   }));
 // Input Schema
+export interface WorkspacePrivateLinkResourcesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacePrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateLinkResources",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacePrivateLinkResourcesListByWorkspaceInput =
-  typeof WorkspacePrivateLinkResourcesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<WorkspacePrivateLinkResourcesListByWorkspaceInput>;
 
 // Output Schema
+export interface WorkspacePrivateLinkResourcesListByWorkspaceOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const WorkspacePrivateLinkResourcesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2409,9 +3440,7 @@ export const WorkspacePrivateLinkResourcesListByWorkspaceOutput =
         }),
       ),
     ),
-  });
-export type WorkspacePrivateLinkResourcesListByWorkspaceOutput =
-  typeof WorkspacePrivateLinkResourcesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacePrivateLinkResourcesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2419,6 +3448,8 @@ export type WorkspacePrivateLinkResourcesListByWorkspaceOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacePrivateLinkResourcesListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2426,9 +3457,46 @@ export const WorkspacePrivateLinkResourcesListByWorkspace =
     outputSchema: WorkspacePrivateLinkResourcesListByWorkspaceOutput,
   }));
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  properties?: {
+    provisioningState?:
+      | "Deleting"
+      | "Succeeded"
+      | "Creating"
+      | "Accepted"
+      | "Verifying"
+      | "Updating"
+      | "Failed"
+      | "Canceled"
+      | "Deprovisioned"
+      | "Moving"
+      | "Suspended"
+      | "Warned"
+      | "SystemMaintenance";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(
@@ -2482,25 +3550,27 @@ export const WorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a workspace resource with the specified parameters.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2509,20 +3579,27 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -2530,56 +3607,76 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   location: Schema.optional(Schema.String),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
  * Gets the properties of the specified workspace.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  nextLink?: string;
+  value?: { tags?: Record<string, string>; location?: string }[];
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2591,9 +3688,7 @@ export const WorkspacesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2601,6 +3696,7 @@ export type WorkspacesListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const WorkspacesListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2608,6 +3704,9 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2617,11 +3716,13 @@ export const WorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/workspaces",
       apiVersion: "2024-03-31",
     }),
-  );
-export type WorkspacesListBySubscriptionInput =
-  typeof WorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkspacesListBySubscriptionOutput {
+  nextLink?: string;
+  value?: { tags?: Record<string, string>; location?: string }[];
+}
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -2633,9 +3734,7 @@ export const WorkspacesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type WorkspacesListBySubscriptionOutput =
-  typeof WorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2650,8 +3749,16 @@ export const WorkspacesListBySubscription =
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface WorkspacesUpdateInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  workspaceName: string;
+  tags?: Record<string, string>;
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
   T.Http({
@@ -2659,24 +3766,28 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
     apiVersion: "2024-03-31",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  tags?: Record<string, string>;
+  location?: string;
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     location: Schema.optional(Schema.String),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**
  * Patch workspace details.
  *
+ * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param workspaceName - The name of workspace resource.
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

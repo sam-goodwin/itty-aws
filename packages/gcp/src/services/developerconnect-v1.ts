@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,9 +22,353 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface OperationMetadata {
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. API version used to start the operation. */
+  apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Name of the verb executed by the operation. */
+  verb?: string;
+  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
+  requestedCancellation?: boolean;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+}
+
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadata" });
+
+export interface GoogleCloudRun {
+  /** Required. Immutable. The name of the Cloud Run service. Format: `projects/{project}/locations/{location}/services/{service}`. */
+  serviceUri?: string;
+}
+
+export const GoogleCloudRun: Schema.Codec<GoogleCloudRun> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRun" });
+
+export interface AppHubWorkload {
+  /** Output only. The environment of the App Hub Workload. */
+  environment?: string;
+  /** Required. Output only. Immutable. The name of the App Hub Workload. Format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
+  workload?: string;
+  /** Output only. The criticality of the App Hub Workload. */
+  criticality?: string;
+}
+
+export const AppHubWorkload: Schema.Codec<AppHubWorkload> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+    workload: Schema.optional(Schema.String),
+    criticality: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppHubWorkload" });
+
+export interface AppHubService {
+  /** Output only. The environment of the App Hub Service. */
+  environment?: string;
+  /** Required. Output only. Immutable. The name of the App Hub Service. Format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
+  apphubService?: string;
+  /** Output only. The criticality of the App Hub Service. */
+  criticality?: string;
+}
+
+export const AppHubService: Schema.Codec<AppHubService> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+    apphubService: Schema.optional(Schema.String),
+    criticality: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppHubService" });
+
+export interface GKEWorkload {
+  /** Required. Immutable. The name of the GKE cluster. Format: `projects/{project}/locations/{location}/clusters/{cluster}`. */
+  cluster?: string;
+  /** Output only. The name of the GKE deployment. Format: `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`. */
+  deployment?: string;
+}
+
+export const GKEWorkload: Schema.Codec<GKEWorkload> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Schema.String),
+    deployment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GKEWorkload" });
+
+export interface RuntimeConfig {
+  /** Required. Immutable. The URI of the runtime configuration. For GKE, this is the cluster name. For Cloud Run, this is the service name. */
+  uri?: string;
+  /** Output only. The state of the Runtime. */
+  state?: "STATE_UNSPECIFIED" | "LINKED" | "UNLINKED" | (string & {});
+  /** Output only. Cloud Run runtime. */
+  googleCloudRun?: GoogleCloudRun;
+  /** Output only. App Hub Workload. */
+  appHubWorkload?: AppHubWorkload;
+  /** Output only. App Hub Service. */
+  appHubService?: AppHubService;
+  /** Output only. Google Kubernetes Engine runtime. */
+  gkeWorkload?: GKEWorkload;
+}
+
+export const RuntimeConfig: Schema.Codec<RuntimeConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    googleCloudRun: Schema.optional(GoogleCloudRun),
+    appHubWorkload: Schema.optional(AppHubWorkload),
+    appHubService: Schema.optional(AppHubService),
+    gkeWorkload: Schema.optional(GKEWorkload),
+  }).annotate({ identifier: "RuntimeConfig" });
+
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+}
+
+export const Status: Schema.Codec<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Status" });
+
+export interface Projects {
+  /** Optional. The project IDs. Format: {project} */
+  projectIds?: ReadonlyArray<string>;
+}
+
+export const Projects: Schema.Codec<Projects> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "Projects" });
+
+export interface GoogleArtifactAnalysis {
+  /** Required. The project id of the project where the provenance is stored. */
+  projectId?: string;
+}
+
+export const GoogleArtifactAnalysis: Schema.Codec<GoogleArtifactAnalysis> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleArtifactAnalysis" });
+
+export interface GoogleArtifactRegistry {
+  /** Required. Immutable. The name of the artifact registry package. */
+  artifactRegistryPackage?: string;
+  /** Required. The host project of Artifact Registry. */
+  projectId?: string;
+}
+
+export const GoogleArtifactRegistry: Schema.Codec<GoogleArtifactRegistry> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    artifactRegistryPackage: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleArtifactRegistry" });
+
+export interface ArtifactConfig {
+  /** Optional. Set if the artifact metadata is stored in Artifact analysis. */
+  googleArtifactAnalysis?: GoogleArtifactAnalysis;
+  /** Optional. Set if the artifact is stored in Artifact registry. */
+  googleArtifactRegistry?: GoogleArtifactRegistry;
+  /** Required. Immutable. The URI of the artifact that is deployed. e.g. `us-docker.pkg.dev/my-project/my-repo/image`. The URI does not include the tag / digest because it captures a lineage of artifacts. */
+  uri?: string;
+}
+
+export const ArtifactConfig: Schema.Codec<ArtifactConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleArtifactAnalysis: Schema.optional(GoogleArtifactAnalysis),
+    googleArtifactRegistry: Schema.optional(GoogleArtifactRegistry),
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ArtifactConfig" });
+
+export interface InsightsConfig {
+  /** Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig} */
+  name?: string;
+  /** Optional. The name of the App Hub Application. Format: projects/{project}/locations/{location}/applications/{application} */
+  appHubApplication?: string;
+  /** Output only. The runtime configurations where the application is deployed. */
+  runtimeConfigs?: ReadonlyArray<RuntimeConfig>;
+  /** Output only. Update timestamp. */
+  updateTime?: string;
+  /** Optional. User specified annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations. */
+  annotations?: Record<string, string>;
+  /** Output only. Create timestamp. */
+  createTime?: string;
+  /** Output only. Any errors that occurred while setting up the InsightsConfig. Each error will be in the format: `field_name: error_message`, e.g. GetAppHubApplication: Permission denied while getting App Hub application. Please grant permissions to the P4SA. */
+  errors?: ReadonlyArray<Status>;
+  /** Optional. The projects to track with the InsightsConfig. */
+  projects?: Projects;
+  /** Optional. Set of labels associated with an InsightsConfig. */
+  labels?: Record<string, string>;
+  /** Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of InsightsConfig does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance. */
+  reconciling?: boolean;
+  /** Optional. The artifact configurations of the artifacts that are deployed. */
+  artifactConfigs?: ReadonlyArray<ArtifactConfig>;
+  /** Optional. Output only. The state of the InsightsConfig. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "PENDING"
+    | "COMPLETE"
+    | "ERROR"
+    | (string & {});
+}
+
+export const InsightsConfig: Schema.Codec<InsightsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    appHubApplication: Schema.optional(Schema.String),
+    runtimeConfigs: Schema.optional(Schema.Array(RuntimeConfig)),
+    updateTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(Status)),
+    projects: Schema.optional(Projects),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reconciling: Schema.optional(Schema.Boolean),
+    artifactConfigs: Schema.optional(Schema.Array(ArtifactConfig)),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsightsConfig" });
+
+export interface ListInsightsConfigsResponse {
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** The list of InsightsConfigs. */
+  insightsConfigs?: ReadonlyArray<InsightsConfig>;
+}
+
+export const ListInsightsConfigsResponse: Schema.Codec<ListInsightsConfigsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    insightsConfigs: Schema.optional(Schema.Array(InsightsConfig)),
+  }).annotate({ identifier: "ListInsightsConfigsResponse" });
+
+export interface HttpBody {
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: ReadonlyArray<Record<string, unknown>>;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
+}
+
+export const HttpBody: Schema.Codec<HttpBody> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    extensions: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    contentType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpBody" });
+
+export interface ProcessBitbucketCloudWebhookRequest {
+  /** Required. HTTP request body. */
+  body?: HttpBody;
+}
+
+export const ProcessBitbucketCloudWebhookRequest: Schema.Codec<ProcessBitbucketCloudWebhookRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessBitbucketCloudWebhookRequest" });
+
+export interface UserRepository {
+  /** Output only. The Git proxy URL for this repo. For example: https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services that integrate with Developer Connect. */
+  gitProxyUri?: string;
+  /** Output only. The user friendly repo name (e.g., myuser/myrepo) */
+  displayName?: string;
+  /** Output only. The git clone URL of the repo. For example: https://github.com/myuser/myrepo.git */
+  cloneUri?: string;
+}
+
+export const UserRepository: Schema.Codec<UserRepository> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitProxyUri: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    cloneUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserRepository" });
+
+export interface FetchUserRepositoriesResponse {
+  /** The repositories that the user can access with this account connector. */
+  userRepos?: ReadonlyArray<UserRepository>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+}
+
+export const FetchUserRepositoriesResponse: Schema.Codec<FetchUserRepositoriesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userRepos: Schema.optional(Schema.Array(UserRepository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchUserRepositoriesResponse" });
+
+export interface ServiceDirectoryConfig {
+  /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
+  service?: string;
+}
+
+export const ServiceDirectoryConfig: Schema.Codec<ServiceDirectoryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceDirectoryConfig" });
+
+export interface GitHubEnterpriseConfig {
+  /** Output only. The URL-friendly name of the GitHub App. */
+  appSlug?: string;
+  /** Optional. ID of the installation of the GitHub App. */
+  appInstallationId?: string;
+  /** Optional. SSL certificate to use for requests to GitHub Enterprise. */
+  sslCaCertificate?: string;
+  /** Output only. The URI to navigate to in order to manage the installation associated with this GitHubEnterpriseConfig. */
+  installationUri?: string;
+  /** Optional. Immutable. GitHub Enterprise organization in which the GitHub App is created. */
+  organization?: string;
+  /** Optional. SecretManager resource containing the private key of the GitHub App, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
+  privateKeySecretVersion?: string;
+  /** Output only. GitHub Enterprise version installed at the host_uri. */
+  serverVersion?: string;
+  /** Optional. ID of the GitHub App created from the manifest. */
+  appId?: string;
+  /** Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
+  webhookSecretSecretVersion?: string;
+  /** Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Required. The URI of the GitHub Enterprise host this connection is for. */
+  hostUri?: string;
+}
+
+export const GitHubEnterpriseConfig: Schema.Codec<GitHubEnterpriseConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appSlug: Schema.optional(Schema.String),
+    appInstallationId: Schema.optional(Schema.String),
+    sslCaCertificate: Schema.optional(Schema.String),
+    installationUri: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    privateKeySecretVersion: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    hostUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GitHubEnterpriseConfig" });
+
 export interface ProviderOAuthConfig {
-  /** Required. User selected scopes to apply to the Oauth config In the event of changing scopes, user records under AccountConnector will be deleted and users will re-auth again. */
-  scopes?: ReadonlyArray<string>;
   /** Optional. Immutable. Developer Connect provided OAuth. */
   systemProviderId?:
     | "SYSTEM_PROVIDER_UNSPECIFIED"
@@ -37,42 +381,100 @@ export interface ProviderOAuthConfig {
     | "DATASTAX"
     | "DYNATRACE"
     | (string & {});
+  /** Required. User selected scopes to apply to the Oauth config In the event of changing scopes, user records under AccountConnector will be deleted and users will re-auth again. */
+  scopes?: ReadonlyArray<string>;
 }
 
-export const ProviderOAuthConfig: Schema.Schema<ProviderOAuthConfig> =
+export const ProviderOAuthConfig: Schema.Codec<ProviderOAuthConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scopes: Schema.optional(Schema.Array(Schema.String)),
     systemProviderId: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ProviderOAuthConfig" });
 
-export interface User {
-  /** Identifier. Resource name of the user, in the format `projects/* /locations/* /accountConnectors/* /users/*`. */
+export interface ArtifactDeployment {
+  /** Output only. Unique identifier of `ArtifactDeployment`. */
+  id?: string;
+  /** Output only. The summary of container status of the artifact deployment. Format as `ContainerStatusState-Reason : restartCount` e.g. "Waiting-ImagePullBackOff : 3" */
+  containerStatusSummary?: string;
+  /** Output only. The artifact that is deployed. */
+  artifactReference?: string;
+  /** Output only. The time at which the deployment was deployed. */
+  deployTime?: string;
+  /** Output only. The source commits at which this artifact was built. Extracted from provenance. */
+  sourceCommitUris?: ReadonlyArray<string>;
+  /** Output only. The time at which the deployment was undeployed, all artifacts are considered undeployed once this time is set. */
+  undeployTime?: string;
+  /** Output only. The URIs of the source code, if available. For Cloud Run source deploy for example: `gs://my-bucket/my-folder/1234567890.abcde-fdbe.zip#1234567890` */
+  sourceCodeUris?: ReadonlyArray<string>;
+  /** Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-docker.pkg.dev/my-project/my-repo/image:1.0.0 */
+  artifactAlias?: string;
+}
+
+export const ArtifactDeployment: Schema.Codec<ArtifactDeployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    containerStatusSummary: Schema.optional(Schema.String),
+    artifactReference: Schema.optional(Schema.String),
+    deployTime: Schema.optional(Schema.String),
+    sourceCommitUris: Schema.optional(Schema.Array(Schema.String)),
+    undeployTime: Schema.optional(Schema.String),
+    sourceCodeUris: Schema.optional(Schema.Array(Schema.String)),
+    artifactAlias: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ArtifactDeployment" });
+
+export interface DeploymentEvent {
+  /** Output only. The state of the DeploymentEvent. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STATE_ACTIVE"
+    | "STATE_INACTIVE"
+    | (string & {});
+  /** Output only. The artifact deployments of the DeploymentEvent. Each artifact deployment contains the artifact uri and the runtime configuration uri. For GKE, this would be all the containers images that are deployed in the pod. */
+  artifactDeployments?: ReadonlyArray<ArtifactDeployment>;
+  /** Output only. The time at which the DeploymentEvent was deployed. This would be the min of all ArtifactDeployment deploy_times. */
+  deployTime?: string;
+  /** Identifier. The name of the DeploymentEvent. This name is provided by Developer Connect insights. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
   name?: string;
-  /** Output only. The timestamp when the user was created. */
+  /** Output only. The runtime configurations where the DeploymentEvent happened. */
+  runtimeConfig?: RuntimeConfig;
+  /** Output only. The time at which the DeploymentEvent was undeployed, all artifacts are considered undeployed once this time is set. This would be the max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is still active (i.e. does not have an undeploy_time), this field will be empty. */
+  undeployTime?: string;
+  /** Output only. The update time of the DeploymentEvent. */
+  updateTime?: string;
+  /** Output only. The create time of the DeploymentEvent. */
   createTime?: string;
-  /** Output only. The timestamp when the token was last requested. */
-  lastTokenRequestTime?: string;
-  /** Output only. Developer Connect automatically converts user identity to some human readable description, e.g., email address. */
-  displayName?: string;
+  /** Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is the fully qualified replica set uri. e.g. container.googleapis.com/projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/apps/replicasets/{replica-set-id} For Cloud Run, this is the revision name. */
+  runtimeDeploymentUri?: string;
 }
 
-export const User: Schema.Schema<User> =
+export const DeploymentEvent: Schema.Codec<DeploymentEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    artifactDeployments: Schema.optional(Schema.Array(ArtifactDeployment)),
+    deployTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
+    runtimeConfig: Schema.optional(RuntimeConfig),
+    undeployTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
-    lastTokenRequestTime: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "User" });
+    runtimeDeploymentUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeploymentEvent" });
 
-export interface GoogleCloudRun {
-  /** Required. Immutable. The name of the Cloud Run service. Format: `projects/{project}/locations/{location}/services/{service}`. */
-  serviceUri?: string;
+export interface FetchReadTokenResponse {
+  /** The git_username to specify when making a git clone with the token. For example, for GitHub GitRepositoryLinks, this would be "x-access-token" */
+  gitUsername?: string;
+  /** Expiration timestamp. Can be empty if unknown or non-expiring. */
+  expirationTime?: string;
+  /** The token content. */
+  token?: string;
 }
 
-export const GoogleCloudRun: Schema.Schema<GoogleCloudRun> =
+export const FetchReadTokenResponse: Schema.Codec<FetchReadTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    serviceUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleCloudRun" });
+    gitUsername: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchReadTokenResponse" });
 
 export interface UserCredential {
   /** Required. A SecretManager resource containing the user token that authorizes the Developer Connect connection. Format: `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
@@ -81,11 +483,104 @@ export interface UserCredential {
   username?: string;
 }
 
-export const UserCredential: Schema.Schema<UserCredential> =
+export const UserCredential: Schema.Codec<UserCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userTokenSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserCredential" });
+
+export interface BitbucketDataCenterConfig {
+  /** Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
+  webhookSecretSecretVersion?: string;
+  /** Required. An http access token with the minimum `Repository read` access. It's recommended to use a system account to generate the credentials. */
+  readAuthorizerCredential?: UserCredential;
+  /** Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center instance. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Required. An http access token with the minimum `Repository admin` scope access. This is needed to create webhooks. It's recommended to use a system account to generate these credentials. */
+  authorizerCredential?: UserCredential;
+  /** Required. The URI of the Bitbucket Data Center host this connection is for. */
+  hostUri?: string;
+  /** Optional. SSL certificate authority to trust when making requests to Bitbucket Data Center. */
+  sslCaCertificate?: string;
+  /** Output only. Version of the Bitbucket Data Center server running on the `host_uri`. */
+  serverVersion?: string;
+}
+
+export const BitbucketDataCenterConfig: Schema.Codec<BitbucketDataCenterConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    authorizerCredential: Schema.optional(UserCredential),
+    hostUri: Schema.optional(Schema.String),
+    sslCaCertificate: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketDataCenterConfig" });
+
+export interface ProxyConfig {
+  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated only when `enabled` is set to `true`. This endpoint is used by other Google services that integrate with Developer Connect. */
+  httpProxyBaseUri?: string;
+  /** Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user configured under the account connector. */
+  enabled?: boolean;
+}
+
+export const ProxyConfig: Schema.Codec<ProxyConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpProxyBaseUri: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProxyConfig" });
+
+export interface GitLabConfig {
+  /** Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
+  authorizerCredential?: UserCredential;
+  /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
+  webhookSecretSecretVersion?: string;
+  /** Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
+  readAuthorizerCredential?: UserCredential;
+}
+
+export const GitLabConfig: Schema.Codec<GitLabConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizerCredential: Schema.optional(UserCredential),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+  }).annotate({ identifier: "GitLabConfig" });
+
+export interface GitProxyConfig {
+  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated only when enabled is set to true. This endpoint is used by other Google services that integrate with Developer Connect. */
+  httpProxyBaseUri?: string;
+  /** Optional. Setting this to true allows the git proxy to be used for performing git operations on the repositories linked in the connection. */
+  enabled?: boolean;
+}
+
+export const GitProxyConfig: Schema.Codec<GitProxyConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpProxyBaseUri: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GitProxyConfig" });
+
+export interface ExchangeError {
+  /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error_description */
+  description?: string;
+  /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error */
+  code?: string;
+}
+
+export const ExchangeError: Schema.Codec<ExchangeError> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExchangeError" });
+
+export interface ProcessGitHubEnterpriseWebhookRequest {
+  /** Required. HTTP request body. */
+  body?: HttpBody;
+}
+
+export const ProcessGitHubEnterpriseWebhookRequest: Schema.Codec<ProcessGitHubEnterpriseWebhookRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessGitHubEnterpriseWebhookRequest" });
 
 export interface BitbucketCloudConfig {
   /** Required. An access token with the minimum `repository`, `pullrequest` and `webhook` scope access. It can either be a workspace, project or repository access token. This is needed to create webhooks. It's recommended to use a system account to generate these credentials. */
@@ -98,7 +593,7 @@ export interface BitbucketCloudConfig {
   workspace?: string;
 }
 
-export const BitbucketCloudConfig: Schema.Schema<BitbucketCloudConfig> =
+export const BitbucketCloudConfig: Schema.Codec<BitbucketCloudConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authorizerCredential: Schema.optional(UserCredential),
     webhookSecretSecretVersion: Schema.optional(Schema.String),
@@ -106,209 +601,423 @@ export const BitbucketCloudConfig: Schema.Schema<BitbucketCloudConfig> =
     workspace: Schema.optional(Schema.String),
   }).annotate({ identifier: "BitbucketCloudConfig" });
 
-export interface Installation {
-  /** ID of the installation in GitHub. */
-  id?: string;
-  /** Either "user" or "organization". */
-  type?: string;
-  /** Name of the GitHub user or organization that owns this installation. */
-  name?: string;
+export interface CryptoKeyConfig {
+  /** Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
+  keyReference?: string;
 }
 
-export const Installation: Schema.Schema<Installation> =
+export const CryptoKeyConfig: Schema.Codec<CryptoKeyConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Installation" });
+    keyReference: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CryptoKeyConfig" });
 
-export interface FetchGitHubInstallationsResponse {
-  /** List of installations available to the OAuth user (for github.com) or all the installations (for GitHub enterprise). */
-  installations?: ReadonlyArray<Installation>;
+export interface ListDeploymentEventsResponse {
+  /** The list of DeploymentEvents. */
+  deploymentEvents?: ReadonlyArray<DeploymentEvent>;
+  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 
-export const FetchGitHubInstallationsResponse: Schema.Schema<FetchGitHubInstallationsResponse> =
+export const ListDeploymentEventsResponse: Schema.Codec<ListDeploymentEventsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    installations: Schema.optional(Schema.Array(Installation)),
-  }).annotate({ identifier: "FetchGitHubInstallationsResponse" });
-
-export interface LinkableGitRepository {
-  /** The clone uri of the repository. */
-  cloneUri?: string;
-}
-
-export const LinkableGitRepository: Schema.Schema<LinkableGitRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloneUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LinkableGitRepository" });
+    deploymentEvents: Schema.optional(Schema.Array(DeploymentEvent)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeploymentEventsResponse" });
 
 export interface GitRepositoryLink {
-  /** Output only. URI to access the linked repository through the Git Proxy. This field is only populated if the git proxy is enabled for the connection. */
-  gitProxyUri?: string;
-  /** Output only. [Output only] Update timestamp */
-  updateTime?: string;
+  /** Output only. A system-assigned unique identifier for the GitRepositoryLink. */
+  uid?: string;
+  /** Required. Git Clone URI. */
+  cloneUri?: string;
   /** Optional. Labels as key value pairs */
   labels?: Record<string, string>;
   /** Output only. Set to true when the connection is being set up or updated in the background. */
   reconciling?: boolean;
-  /** Optional. Allows clients to store small amounts of arbitrary data. */
-  annotations?: Record<string, string>;
-  /** Identifier. Resource name of the repository, in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
-  name?: string;
   /** Output only. External ID of the webhook created for the repository. */
   webhookId?: string;
-  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
-  etag?: string;
+  /** Identifier. Resource name of the repository, in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
+  name?: string;
   /** Output only. [Output only] Delete timestamp */
   deleteTime?: string;
-  /** Output only. A system-assigned unique identifier for the GitRepositoryLink. */
-  uid?: string;
+  /** Output only. URI to access the linked repository through the Git Proxy. This field is only populated if the git proxy is enabled for the connection. */
+  gitProxyUri?: string;
   /** Output only. [Output only] Create timestamp */
   createTime?: string;
-  /** Required. Git Clone URI. */
-  cloneUri?: string;
+  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
+  etag?: string;
+  /** Output only. [Output only] Update timestamp */
+  updateTime?: string;
+  /** Optional. Allows clients to store small amounts of arbitrary data. */
+  annotations?: Record<string, string>;
 }
 
-export const GitRepositoryLink: Schema.Schema<GitRepositoryLink> =
+export const GitRepositoryLink: Schema.Codec<GitRepositoryLink> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gitProxyUri: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    cloneUri: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     reconciling: Schema.optional(Schema.Boolean),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
     webhookId: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
     deleteTime: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
+    gitProxyUri: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
-    cloneUri: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "GitRepositoryLink" });
 
 export interface ListGitRepositoryLinksResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
   /** The list of GitRepositoryLinks */
   gitRepositoryLinks?: ReadonlyArray<GitRepositoryLink>;
+}
+
+export const ListGitRepositoryLinksResponse: Schema.Codec<ListGitRepositoryLinksResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    gitRepositoryLinks: Schema.optional(Schema.Array(GitRepositoryLink)),
+  }).annotate({ identifier: "ListGitRepositoryLinksResponse" });
+
+export interface Location {
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+  /** The canonical id for this location. For example: `"us-east1"`. */
+  locationId?: string;
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
+  name?: string;
+}
+
+export const Location: Schema.Codec<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Location" });
+
+export interface ListLocationsResponse {
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+}
+
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationsResponse" });
+
+export interface User {
+  /** Output only. Developer Connect automatically converts user identity to some human readable description, e.g., email address. */
+  displayName?: string;
+  /** Output only. The timestamp when the token was last requested. */
+  lastTokenRequestTime?: string;
+  /** Identifier. Resource name of the user, in the format `projects/* /locations/* /accountConnectors/* /users/*`. */
+  name?: string;
+  /** Output only. The timestamp when the user was created. */
+  createTime?: string;
+}
+
+export const User: Schema.Codec<User> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    lastTokenRequestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "User" });
+
+export interface ListUsersResponse {
+  /** The list of Users */
+  users?: ReadonlyArray<User>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
   /** Locations that could not be reached. */
   unreachable?: ReadonlyArray<string>;
 }
 
-export const ListGitRepositoryLinksResponse: Schema.Schema<ListGitRepositoryLinksResponse> =
+export const ListUsersResponse: Schema.Codec<ListUsersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    users: Schema.optional(Schema.Array(User)),
     nextPageToken: Schema.optional(Schema.String),
-    gitRepositoryLinks: Schema.optional(Schema.Array(GitRepositoryLink)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListGitRepositoryLinksResponse" });
+  }).annotate({ identifier: "ListUsersResponse" });
 
-export interface FetchLinkableGitRepositoriesResponse {
-  /** The git repositories that can be linked to the connection. */
-  linkableGitRepositories?: ReadonlyArray<LinkableGitRepository>;
+export interface CustomOAuthConfig {
+  /** Required. Input only. The client secret of the OAuth application. It will be provided as plain text, but encrypted and stored in developer connect. As INPUT_ONLY field, it will not be included in the output. */
+  clientSecret?: string;
+  /** Optional. Configuration for using Service Directory to connect to a private service. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Required. The type of the SCM provider. */
+  scmProvider?:
+    | "SCM_PROVIDER_UNKNOWN"
+    | "GITHUB_ENTERPRISE"
+    | "GITLAB_ENTERPRISE"
+    | "BITBUCKET_DATA_CENTER"
+    | (string & {});
+  /** Required. The host URI of the OAuth application. */
+  hostUri?: string;
+  /** Required. The client ID of the OAuth application. */
+  clientId?: string;
+  /** Optional. SSL certificate to use for requests to a private service. */
+  sslCaCertificate?: string;
+  /** Output only. SCM server version installed at the host URI. */
+  serverVersion?: string;
+  /** Required. Immutable. The OAuth2 token request URL. */
+  tokenUri?: string;
+  /** Optional. Disable PKCE for this OAuth config. PKCE is enabled by default. */
+  pkceDisabled?: boolean;
+  /** Required. Immutable. The OAuth2 authorization server URL. */
+  authUri?: string;
+  /** Required. The scopes to be requested during OAuth. */
+  scopes?: ReadonlyArray<string>;
+}
+
+export const CustomOAuthConfig: Schema.Codec<CustomOAuthConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientSecret: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    scmProvider: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    sslCaCertificate: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+    tokenUri: Schema.optional(Schema.String),
+    pkceDisabled: Schema.optional(Schema.Boolean),
+    authUri: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomOAuthConfig" });
+
+export interface AccountConnector {
+  /** Output only. The timestamp when the accountConnector was created. */
+  createTime?: string;
+  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
+  etag?: string;
+  /** Output only. The timestamp when the accountConnector was updated. */
+  updateTime?: string;
+  /** Optional. Allows users to store small amounts of arbitrary data. */
+  annotations?: Record<string, string>;
+  /** Output only. Start OAuth flow by clicking on this URL. */
+  oauthStartUri?: string;
+  /** Custom OAuth config. */
+  customOauthConfig?: CustomOAuthConfig;
+  /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
+  name?: string;
+  /** Optional. Labels as key value pairs */
+  labels?: Record<string, string>;
+  /** Optional. Provider OAuth config. */
+  providerOauthConfig?: ProviderOAuthConfig;
+  /** Optional. Configuration for the http and git proxy features. */
+  proxyConfig?: ProxyConfig;
+  /** Output only. A system-assigned unique identifier for the Account Connector. */
+  uid?: string;
+}
+
+export const AccountConnector: Schema.Codec<AccountConnector> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    oauthStartUri: Schema.optional(Schema.String),
+    customOauthConfig: Schema.optional(CustomOAuthConfig),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    providerOauthConfig: Schema.optional(ProviderOAuthConfig),
+    proxyConfig: Schema.optional(ProxyConfig),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountConnector" });
+
+export interface ListAccountConnectorsResponse {
+  /** The list of AccountConnectors */
+  accountConnectors?: ReadonlyArray<AccountConnector>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListAccountConnectorsResponse: Schema.Codec<ListAccountConnectorsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnectors: Schema.optional(Schema.Array(AccountConnector)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAccountConnectorsResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface FetchReadWriteTokenResponse {
+  /** The git_username to specify when making a git clone with the token. For example, for GitHub GitRepositoryLinks, this would be "x-access-token" */
+  gitUsername?: string;
+  /** Expiration timestamp. Can be empty if unknown or non-expiring. */
+  expirationTime?: string;
+  /** The token content. */
+  token?: string;
+}
+
+export const FetchReadWriteTokenResponse: Schema.Codec<FetchReadWriteTokenResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitUsername: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchReadWriteTokenResponse" });
+
+export interface FetchAccessTokenRequest {}
+
+export const FetchAccessTokenRequest: Schema.Codec<FetchAccessTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FetchAccessTokenRequest",
+  });
+
+export interface InstallationState {
+  /** Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete. */
+  message?: string;
+  /** Output only. Current step of the installation process. */
+  stage?:
+    | "STAGE_UNSPECIFIED"
+    | "PENDING_CREATE_APP"
+    | "PENDING_USER_OAUTH"
+    | "PENDING_INSTALL_APP"
+    | "COMPLETE"
+    | (string & {});
+  /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
+  actionUri?: string;
+}
+
+export const InstallationState: Schema.Codec<InstallationState> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    stage: Schema.optional(Schema.String),
+    actionUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InstallationState" });
+
+export interface BearerTokenAuthentication {
+  /** Optional. The token SecretManager secret version to authenticate as. */
+  tokenSecretVersion?: string;
+}
+
+export const BearerTokenAuthentication: Schema.Codec<BearerTokenAuthentication> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenSecretVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BearerTokenAuthentication" });
+
+export interface BasicAuthentication {
+  /** The password SecretManager secret version to authenticate as. */
+  passwordSecretVersion?: string;
+  /** Required. The username to authenticate as. */
+  username?: string;
+}
+
+export const BasicAuthentication: Schema.Codec<BasicAuthentication> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passwordSecretVersion: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BasicAuthentication" });
+
+export interface GenericHTTPEndpointConfig {
+  /** Required. Immutable. The service provider's https endpoint. */
+  hostUri?: string;
+  /** Optional. Configuration for using Service Directory to privately connect to a HTTP service provider. This should only be set if the Http service provider is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the HTTP service provider will be made over the public internet. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Optional. Bearer token authentication with a token. */
+  bearerTokenAuthentication?: BearerTokenAuthentication;
+  /** Optional. Basic authentication with username and password. */
+  basicAuthentication?: BasicAuthentication;
+  /** Optional. The SSL certificate to use for requests to the HTTP service provider. */
+  sslCaCertificate?: string;
+}
+
+export const GenericHTTPEndpointConfig: Schema.Codec<GenericHTTPEndpointConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostUri: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    bearerTokenAuthentication: Schema.optional(BearerTokenAuthentication),
+    basicAuthentication: Schema.optional(BasicAuthentication),
+    sslCaCertificate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenericHTTPEndpointConfig" });
+
+export interface GitLabEnterpriseConfig {
+  /** Optional. SSL Certificate Authority certificate to use for requests to GitLab Enterprise instance. */
+  sslCaCertificate?: string;
+  /** Output only. Version of the GitLab Enterprise server running on the `host_uri`. */
+  serverVersion?: string;
+  /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
+  webhookSecretSecretVersion?: string;
+  /** Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
+  readAuthorizerCredential?: UserCredential;
+  /** Optional. Configuration for using Service Directory to privately connect to a GitLab Enterprise instance. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet. */
+  serviceDirectoryConfig?: ServiceDirectoryConfig;
+  /** Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
+  authorizerCredential?: UserCredential;
+  /** Required. The URI of the GitLab Enterprise host this connection is for. */
+  hostUri?: string;
+}
+
+export const GitLabEnterpriseConfig: Schema.Codec<GitLabEnterpriseConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sslCaCertificate: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+    authorizerCredential: Schema.optional(UserCredential),
+    hostUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GitLabEnterpriseConfig" });
+
+export interface FetchGitRefsResponse {
+  /** Name of the refs fetched. */
+  refNames?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
 
-export const FetchLinkableGitRepositoriesResponse: Schema.Schema<FetchLinkableGitRepositoriesResponse> =
+export const FetchGitRefsResponse: Schema.Codec<FetchGitRefsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    linkableGitRepositories: Schema.optional(
-      Schema.Array(LinkableGitRepository),
-    ),
+    refNames: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FetchLinkableGitRepositoriesResponse" });
+  }).annotate({ identifier: "FetchGitRefsResponse" });
 
-export interface GoogleArtifactAnalysis {
-  /** Required. The project id of the project where the provenance is stored. */
-  projectId?: string;
+export interface ProcessGitLabEnterpriseWebhookRequest {
+  /** Required. HTTP request body. */
+  body?: HttpBody;
 }
 
-export const GoogleArtifactAnalysis: Schema.Schema<GoogleArtifactAnalysis> =
+export const ProcessGitLabEnterpriseWebhookRequest: Schema.Codec<ProcessGitLabEnterpriseWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleArtifactAnalysis" });
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
-
-export interface Operation {
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    done: Schema.optional(Schema.Boolean),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-    error: Schema.optional(Status),
-  }).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    operations: Schema.optional(Schema.Array(Operation)),
-  }).annotate({ identifier: "ListOperationsResponse" });
-
-export interface ExchangeError {
-  /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error */
-  code?: string;
-  /** https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error_description */
-  description?: string;
-}
-
-export const ExchangeError: Schema.Schema<ExchangeError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExchangeError" });
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessGitLabEnterpriseWebhookRequest" });
 
 export interface OAuthCredential {
-  /** Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format: `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
-  oauthTokenSecretVersion?: string;
   /** Output only. The username associated with this token. */
   username?: string;
+  /** Required. A SecretManager resource containing the OAuth token that authorizes the connection. Format: `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
+  oauthTokenSecretVersion?: string;
 }
 
-export const OAuthCredential: Schema.Schema<OAuthCredential> =
+export const OAuthCredential: Schema.Codec<OAuthCredential> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    oauthTokenSecretVersion: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
+    oauthTokenSecretVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthCredential" });
 
 export interface GitHubConfig {
+  /** Output only. The URI to navigate to in order to manage the installation associated with this GitHubConfig. */
+  installationUri?: string;
   /** Optional. OAuth credential of the account that authorized the GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the GitHub App of this config. */
   authorizerCredential?: OAuthCredential;
   /** Optional. GitHub App installation id. */
@@ -321,916 +1030,209 @@ export interface GitHubConfig {
     | "GEMINI_CODE_ASSIST"
     | "DATAFORM"
     | (string & {});
-  /** Output only. The URI to navigate to in order to manage the installation associated with this GitHubConfig. */
-  installationUri?: string;
 }
 
-export const GitHubConfig: Schema.Schema<GitHubConfig> =
+export const GitHubConfig: Schema.Codec<GitHubConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installationUri: Schema.optional(Schema.String),
     authorizerCredential: Schema.optional(OAuthCredential),
     appInstallationId: Schema.optional(Schema.String),
     githubApp: Schema.optional(Schema.String),
-    installationUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GitHubConfig" });
 
-export interface GitLabConfig {
-  /** Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
-  readAuthorizerCredential?: UserCredential;
-  /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
-  webhookSecretSecretVersion?: string;
-  /** Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
-  authorizerCredential?: UserCredential;
-}
+export interface CancelOperationRequest {}
 
-export const GitLabConfig: Schema.Schema<GitLabConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    readAuthorizerCredential: Schema.optional(UserCredential),
-    webhookSecretSecretVersion: Schema.optional(Schema.String),
-    authorizerCredential: Schema.optional(UserCredential),
-  }).annotate({ identifier: "GitLabConfig" });
-
-export interface ArtifactDeployment {
-  /** Output only. Unique identifier of `ArtifactDeployment`. */
-  id?: string;
-  /** Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-docker.pkg.dev/my-project/my-repo/image:1.0.0 */
-  artifactAlias?: string;
-  /** Output only. The time at which the deployment was undeployed, all artifacts are considered undeployed once this time is set. */
-  undeployTime?: string;
-  /** Output only. The artifact that is deployed. */
-  artifactReference?: string;
-  /** Output only. The source commits at which this artifact was built. Extracted from provenance. */
-  sourceCommitUris?: ReadonlyArray<string>;
-  /** Output only. The time at which the deployment was deployed. */
-  deployTime?: string;
-  /** Output only. The summary of container status of the artifact deployment. Format as `ContainerStatusState-Reason : restartCount` e.g. "Waiting-ImagePullBackOff : 3" */
-  containerStatusSummary?: string;
-}
-
-export const ArtifactDeployment: Schema.Schema<ArtifactDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    artifactAlias: Schema.optional(Schema.String),
-    undeployTime: Schema.optional(Schema.String),
-    artifactReference: Schema.optional(Schema.String),
-    sourceCommitUris: Schema.optional(Schema.Array(Schema.String)),
-    deployTime: Schema.optional(Schema.String),
-    containerStatusSummary: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ArtifactDeployment" });
-
-export interface GKEWorkload {
-  /** Output only. The name of the GKE deployment. Format: `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`. */
-  deployment?: string;
-  /** Required. Immutable. The name of the GKE cluster. Format: `projects/{project}/locations/{location}/clusters/{cluster}`. */
-  cluster?: string;
-}
-
-export const GKEWorkload: Schema.Schema<GKEWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deployment: Schema.optional(Schema.String),
-    cluster: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GKEWorkload" });
-
-export interface AppHubWorkload {
-  /** Output only. The environment of the App Hub Workload. */
-  environment?: string;
-  /** Output only. The criticality of the App Hub Workload. */
-  criticality?: string;
-  /** Required. Output only. Immutable. The name of the App Hub Workload. Format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. */
-  workload?: string;
-}
-
-export const AppHubWorkload: Schema.Schema<AppHubWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.optional(Schema.String),
-    criticality: Schema.optional(Schema.String),
-    workload: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AppHubWorkload" });
-
-export interface AppHubService {
-  /** Output only. The criticality of the App Hub Service. */
-  criticality?: string;
-  /** Output only. The environment of the App Hub Service. */
-  environment?: string;
-  /** Required. Output only. Immutable. The name of the App Hub Service. Format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. */
-  apphubService?: string;
-}
-
-export const AppHubService: Schema.Schema<AppHubService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    criticality: Schema.optional(Schema.String),
-    environment: Schema.optional(Schema.String),
-    apphubService: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AppHubService" });
-
-export interface RuntimeConfig {
-  /** Output only. Google Kubernetes Engine runtime. */
-  gkeWorkload?: GKEWorkload;
-  /** Required. Immutable. The URI of the runtime configuration. For GKE, this is the cluster name. For Cloud Run, this is the service name. */
-  uri?: string;
-  /** Output only. Cloud Run runtime. */
-  googleCloudRun?: GoogleCloudRun;
-  /** Output only. App Hub Workload. */
-  appHubWorkload?: AppHubWorkload;
-  /** Output only. The state of the Runtime. */
-  state?: "STATE_UNSPECIFIED" | "LINKED" | "UNLINKED" | (string & {});
-  /** Output only. App Hub Service. */
-  appHubService?: AppHubService;
-}
-
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gkeWorkload: Schema.optional(GKEWorkload),
-    uri: Schema.optional(Schema.String),
-    googleCloudRun: Schema.optional(GoogleCloudRun),
-    appHubWorkload: Schema.optional(AppHubWorkload),
-    state: Schema.optional(Schema.String),
-    appHubService: Schema.optional(AppHubService),
-  }).annotate({ identifier: "RuntimeConfig" });
-
-export interface DeploymentEvent {
-  /** Output only. The artifact deployments of the DeploymentEvent. Each artifact deployment contains the artifact uri and the runtime configuration uri. For GKE, this would be all the containers images that are deployed in the pod. */
-  artifactDeployments?: ReadonlyArray<ArtifactDeployment>;
-  /** Output only. The update time of the DeploymentEvent. */
-  updateTime?: string;
-  /** Output only. The runtime configurations where the DeploymentEvent happened. */
-  runtimeConfig?: RuntimeConfig;
-  /** Identifier. The name of the DeploymentEvent. This name is provided by Developer Connect insights. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
-  name?: string;
-  /** Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is the fully qualified replica set uri. e.g. container.googleapis.com/projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/apps/replicasets/{replica-set-id} For Cloud Run, this is the revision name. */
-  runtimeDeploymentUri?: string;
-  /** Output only. The time at which the DeploymentEvent was undeployed, all artifacts are considered undeployed once this time is set. This would be the max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is still active (i.e. does not have an undeploy_time), this field will be empty. */
-  undeployTime?: string;
-  /** Output only. The time at which the DeploymentEvent was deployed. This would be the min of all ArtifactDeployment deploy_times. */
-  deployTime?: string;
-  /** Output only. The create time of the DeploymentEvent. */
-  createTime?: string;
-  /** Output only. The state of the DeploymentEvent. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STATE_ACTIVE"
-    | "STATE_INACTIVE"
-    | (string & {});
-}
-
-export const DeploymentEvent: Schema.Schema<DeploymentEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    artifactDeployments: Schema.optional(Schema.Array(ArtifactDeployment)),
-    updateTime: Schema.optional(Schema.String),
-    runtimeConfig: Schema.optional(RuntimeConfig),
-    name: Schema.optional(Schema.String),
-    runtimeDeploymentUri: Schema.optional(Schema.String),
-    undeployTime: Schema.optional(Schema.String),
-    deployTime: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeploymentEvent" });
-
-export interface ListDeploymentEventsResponse {
-  /** The list of DeploymentEvents. */
-  deploymentEvents?: ReadonlyArray<DeploymentEvent>;
-  /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-}
-
-export const ListDeploymentEventsResponse: Schema.Schema<ListDeploymentEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deploymentEvents: Schema.optional(Schema.Array(DeploymentEvent)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListDeploymentEventsResponse" });
-
-export interface HttpBody {
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: ReadonlyArray<Record<string, unknown>>;
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-}
-
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.optional(Schema.String),
-    extensions: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-    contentType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HttpBody" });
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
 
 export interface ProcessGitLabWebhookRequest {
   /** Required. HTTP request body. */
   body?: HttpBody;
 }
 
-export const ProcessGitLabWebhookRequest: Schema.Schema<ProcessGitLabWebhookRequest> =
+export const ProcessGitLabWebhookRequest: Schema.Codec<ProcessGitLabWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     body: Schema.optional(HttpBody),
   }).annotate({ identifier: "ProcessGitLabWebhookRequest" });
-
-export interface InstallationState {
-  /** Output only. Current step of the installation process. */
-  stage?:
-    | "STAGE_UNSPECIFIED"
-    | "PENDING_CREATE_APP"
-    | "PENDING_USER_OAUTH"
-    | "PENDING_INSTALL_APP"
-    | "COMPLETE"
-    | (string & {});
-  /** Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete. */
-  message?: string;
-  /** Output only. Link to follow for next action. Empty string if the installation is already complete. */
-  actionUri?: string;
-}
-
-export const InstallationState: Schema.Schema<InstallationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stage: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    actionUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InstallationState" });
-
-export interface Projects {
-  /** Optional. The project IDs. Format: {project} */
-  projectIds?: ReadonlyArray<string>;
-}
-
-export const Projects: Schema.Schema<Projects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    projectIds: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "Projects" });
-
-export interface GoogleArtifactRegistry {
-  /** Required. Immutable. The name of the artifact registry package. */
-  artifactRegistryPackage?: string;
-  /** Required. The host project of Artifact Registry. */
-  projectId?: string;
-}
-
-export const GoogleArtifactRegistry: Schema.Schema<GoogleArtifactRegistry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    artifactRegistryPackage: Schema.optional(Schema.String),
-    projectId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GoogleArtifactRegistry" });
-
-export interface ArtifactConfig {
-  /** Optional. Set if the artifact is stored in Artifact registry. */
-  googleArtifactRegistry?: GoogleArtifactRegistry;
-  /** Optional. Set if the artifact metadata is stored in Artifact analysis. */
-  googleArtifactAnalysis?: GoogleArtifactAnalysis;
-  /** Required. Immutable. The URI of the artifact that is deployed. e.g. `us-docker.pkg.dev/my-project/my-repo/image`. The URI does not include the tag / digest because it captures a lineage of artifacts. */
-  uri?: string;
-}
-
-export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    googleArtifactRegistry: Schema.optional(GoogleArtifactRegistry),
-    googleArtifactAnalysis: Schema.optional(GoogleArtifactAnalysis),
-    uri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ArtifactConfig" });
-
-export interface InsightsConfig {
-  /** Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig} */
-  name?: string;
-  /** Output only. The runtime configurations where the application is deployed. */
-  runtimeConfigs?: ReadonlyArray<RuntimeConfig>;
-  /** Optional. User specified annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations. */
-  annotations?: Record<string, string>;
-  /** Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of InsightsConfig does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance. */
-  reconciling?: boolean;
-  /** Output only. Update timestamp. */
-  updateTime?: string;
-  /** Optional. Set of labels associated with an InsightsConfig. */
-  labels?: Record<string, string>;
-  /** Output only. Any errors that occurred while setting up the InsightsConfig. Each error will be in the format: `field_name: error_message`, e.g. GetAppHubApplication: Permission denied while getting App Hub application. Please grant permissions to the P4SA. */
-  errors?: ReadonlyArray<Status>;
-  /** Optional. The projects to track with the InsightsConfig. */
-  projects?: Projects;
-  /** Output only. Create timestamp. */
-  createTime?: string;
-  /** Optional. Output only. The state of the InsightsConfig. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "PENDING"
-    | "COMPLETE"
-    | "ERROR"
-    | (string & {});
-  /** Optional. The artifact configurations of the artifacts that are deployed. */
-  artifactConfigs?: ReadonlyArray<ArtifactConfig>;
-  /** Optional. The name of the App Hub Application. Format: projects/{project}/locations/{location}/applications/{application} */
-  appHubApplication?: string;
-}
-
-export const InsightsConfig: Schema.Schema<InsightsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    runtimeConfigs: Schema.optional(Schema.Array(RuntimeConfig)),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    reconciling: Schema.optional(Schema.Boolean),
-    updateTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    errors: Schema.optional(Schema.Array(Status)),
-    projects: Schema.optional(Projects),
-    createTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    artifactConfigs: Schema.optional(Schema.Array(ArtifactConfig)),
-    appHubApplication: Schema.optional(Schema.String),
-  }).annotate({ identifier: "InsightsConfig" });
-
-export interface ListInsightsConfigsResponse {
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
-  /** The list of InsightsConfigs. */
-  insightsConfigs?: ReadonlyArray<InsightsConfig>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListInsightsConfigsResponse: Schema.Schema<ListInsightsConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    insightsConfigs: Schema.optional(Schema.Array(InsightsConfig)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListInsightsConfigsResponse" });
-
-export interface FetchReadTokenRequest {}
-
-export const FetchReadTokenRequest: Schema.Schema<FetchReadTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "FetchReadTokenRequest",
-  });
-
-export interface Location {
-  /** The canonical id for this location. For example: `"us-east1"`. */
-  locationId?: string;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
-  name?: string;
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationId: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    name: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Location" });
-
-export interface ListLocationsResponse {
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locations: Schema.optional(Schema.Array(Location)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListLocationsResponse" });
-
-export interface CryptoKeyConfig {
-  /** Required. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
-  keyReference?: string;
-}
-
-export const CryptoKeyConfig: Schema.Schema<CryptoKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keyReference: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CryptoKeyConfig" });
-
-export interface ProcessBitbucketCloudWebhookRequest {
-  /** Required. HTTP request body. */
-  body?: HttpBody;
-}
-
-export const ProcessBitbucketCloudWebhookRequest: Schema.Schema<ProcessBitbucketCloudWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(HttpBody),
-  }).annotate({ identifier: "ProcessBitbucketCloudWebhookRequest" });
-
-export interface FetchReadTokenResponse {
-  /** The token content. */
-  token?: string;
-  /** Expiration timestamp. Can be empty if unknown or non-expiring. */
-  expirationTime?: string;
-  /** The git_username to specify when making a git clone with the token. For example, for GitHub GitRepositoryLinks, this would be "x-access-token" */
-  gitUsername?: string;
-}
-
-export const FetchReadTokenResponse: Schema.Schema<FetchReadTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.optional(Schema.String),
-    expirationTime: Schema.optional(Schema.String),
-    gitUsername: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FetchReadTokenResponse" });
-
-export interface ProcessGitHubEnterpriseWebhookRequest {
-  /** Required. HTTP request body. */
-  body?: HttpBody;
-}
-
-export const ProcessGitHubEnterpriseWebhookRequest: Schema.Schema<ProcessGitHubEnterpriseWebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(HttpBody),
-  }).annotate({ identifier: "ProcessGitHubEnterpriseWebhookRequest" });
 
 export interface SecureSourceManagerInstanceConfig {
   /** Required. Immutable. Secure Source Manager instance resource, formatted as `projects/* /locations/* /instances/*` */
   instance?: string;
 }
 
-export const SecureSourceManagerInstanceConfig: Schema.Schema<SecureSourceManagerInstanceConfig> =
+export const SecureSourceManagerInstanceConfig: Schema.Codec<SecureSourceManagerInstanceConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instance: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecureSourceManagerInstanceConfig" });
 
-export interface GitProxyConfig {
-  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated only when enabled is set to true. This endpoint is used by other Google services that integrate with Developer Connect. */
-  httpProxyBaseUri?: string;
-  /** Optional. Setting this to true allows the git proxy to be used for performing git operations on the repositories linked in the connection. */
-  enabled?: boolean;
+export interface Installation {
+  /** Name of the GitHub user or organization that owns this installation. */
+  name?: string;
+  /** Either "user" or "organization". */
+  type?: string;
+  /** ID of the installation in GitHub. */
+  id?: string;
 }
 
-export const GitProxyConfig: Schema.Schema<GitProxyConfig> =
+export const Installation: Schema.Codec<Installation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    httpProxyBaseUri: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "GitProxyConfig" });
-
-export interface ListUsersResponse {
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
-  /** The list of Users */
-  users?: ReadonlyArray<User>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    users: Schema.optional(Schema.Array(User)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListUsersResponse" });
-
-export interface FetchGitRefsResponse {
-  /** Name of the refs fetched. */
-  refNames?: ReadonlyArray<string>;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
-}
-
-export const FetchGitRefsResponse: Schema.Schema<FetchGitRefsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    refNames: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FetchGitRefsResponse" });
-
-export interface UserRepository {
-  /** Output only. The user friendly repo name (e.g., myuser/myrepo) */
-  displayName?: string;
-  /** Output only. The git clone URL of the repo. For example: https://github.com/myuser/myrepo.git */
-  cloneUri?: string;
-  /** Output only. The Git proxy URL for this repo. For example: https://us-west1-git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only when `proxy_config.enabled` is set to `true` in the Account Connector. This URL is used by other Google services that integrate with Developer Connect. */
-  gitProxyUri?: string;
-}
-
-export const UserRepository: Schema.Schema<UserRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    cloneUri: Schema.optional(Schema.String),
-    gitProxyUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "UserRepository" });
-
-export interface ServiceDirectoryConfig {
-  /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
-  service?: string;
-}
-
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ServiceDirectoryConfig" });
-
-export interface GitHubEnterpriseConfig {
-  /** Output only. The URI to navigate to in order to manage the installation associated with this GitHubEnterpriseConfig. */
-  installationUri?: string;
-  /** Optional. SecretManager resource containing the private key of the GitHub App, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
-  privateKeySecretVersion?: string;
-  /** Output only. GitHub Enterprise version installed at the host_uri. */
-  serverVersion?: string;
-  /** Optional. Immutable. GitHub Enterprise organization in which the GitHub App is created. */
-  organization?: string;
-  /** Required. The URI of the GitHub Enterprise host this connection is for. */
-  hostUri?: string;
-  /** Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** Output only. The URL-friendly name of the GitHub App. */
-  appSlug?: string;
-  /** Optional. ID of the GitHub App created from the manifest. */
-  appId?: string;
-  /** Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). */
-  webhookSecretSecretVersion?: string;
-  /** Optional. SSL certificate to use for requests to GitHub Enterprise. */
-  sslCaCertificate?: string;
-  /** Optional. ID of the installation of the GitHub App. */
-  appInstallationId?: string;
-}
-
-export const GitHubEnterpriseConfig: Schema.Schema<GitHubEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    installationUri: Schema.optional(Schema.String),
-    privateKeySecretVersion: Schema.optional(Schema.String),
-    serverVersion: Schema.optional(Schema.String),
-    organization: Schema.optional(Schema.String),
-    hostUri: Schema.optional(Schema.String),
-    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    appSlug: Schema.optional(Schema.String),
-    appId: Schema.optional(Schema.String),
-    webhookSecretSecretVersion: Schema.optional(Schema.String),
-    sslCaCertificate: Schema.optional(Schema.String),
-    appInstallationId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GitHubEnterpriseConfig" });
-
-export interface BitbucketDataCenterConfig {
-  /** Required. An http access token with the minimum `Repository read` access. It's recommended to use a system account to generate the credentials. */
-  readAuthorizerCredential?: UserCredential;
-  /** Required. The URI of the Bitbucket Data Center host this connection is for. */
-  hostUri?: string;
-  /** Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center instance. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** Optional. SSL certificate authority to trust when making requests to Bitbucket Data Center. */
-  sslCaCertificate?: string;
-  /** Required. An http access token with the minimum `Repository admin` scope access. This is needed to create webhooks. It's recommended to use a system account to generate these credentials. */
-  authorizerCredential?: UserCredential;
-  /** Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
-  webhookSecretSecretVersion?: string;
-  /** Output only. Version of the Bitbucket Data Center server running on the `host_uri`. */
-  serverVersion?: string;
-}
-
-export const BitbucketDataCenterConfig: Schema.Schema<BitbucketDataCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    readAuthorizerCredential: Schema.optional(UserCredential),
-    hostUri: Schema.optional(Schema.String),
-    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    sslCaCertificate: Schema.optional(Schema.String),
-    authorizerCredential: Schema.optional(UserCredential),
-    webhookSecretSecretVersion: Schema.optional(Schema.String),
-    serverVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BitbucketDataCenterConfig" });
-
-export interface BasicAuthentication {
-  /** The password SecretManager secret version to authenticate as. */
-  passwordSecretVersion?: string;
-  /** Required. The username to authenticate as. */
-  username?: string;
-}
-
-export const BasicAuthentication: Schema.Schema<BasicAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    passwordSecretVersion: Schema.optional(Schema.String),
-    username: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BasicAuthentication" });
-
-export interface BearerTokenAuthentication {
-  /** Optional. The token SecretManager secret version to authenticate as. */
-  tokenSecretVersion?: string;
-}
-
-export const BearerTokenAuthentication: Schema.Schema<BearerTokenAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tokenSecretVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BearerTokenAuthentication" });
-
-export interface GenericHTTPEndpointConfig {
-  /** Required. Immutable. The service provider's https endpoint. */
-  hostUri?: string;
-  /** Optional. Configuration for using Service Directory to privately connect to a HTTP service provider. This should only be set if the Http service provider is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the HTTP service provider will be made over the public internet. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** Optional. The SSL certificate to use for requests to the HTTP service provider. */
-  sslCaCertificate?: string;
-  /** Optional. Basic authentication with username and password. */
-  basicAuthentication?: BasicAuthentication;
-  /** Optional. Bearer token authentication with a token. */
-  bearerTokenAuthentication?: BearerTokenAuthentication;
-}
-
-export const GenericHTTPEndpointConfig: Schema.Schema<GenericHTTPEndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostUri: Schema.optional(Schema.String),
-    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    sslCaCertificate: Schema.optional(Schema.String),
-    basicAuthentication: Schema.optional(BasicAuthentication),
-    bearerTokenAuthentication: Schema.optional(BearerTokenAuthentication),
-  }).annotate({ identifier: "GenericHTTPEndpointConfig" });
-
-export interface GitLabEnterpriseConfig {
-  /** Required. A GitLab personal access token with the minimum `api` scope access and a minimum role of `maintainer`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
-  authorizerCredential?: UserCredential;
-  /** Required. The URI of the GitLab Enterprise host this connection is for. */
-  hostUri?: string;
-  /** Optional. Configuration for using Service Directory to privately connect to a GitLab Enterprise instance. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** Optional. SSL Certificate Authority certificate to use for requests to GitLab Enterprise instance. */
-  sslCaCertificate?: string;
-  /** Required. A GitLab personal access token with the minimum `read_api` scope access and a minimum role of `reporter`. The GitLab Projects visible to this Personal Access Token will control which Projects Developer Connect has access to. */
-  readAuthorizerCredential?: UserCredential;
-  /** Output only. Version of the GitLab Enterprise server running on the `host_uri`. */
-  serverVersion?: string;
-  /** Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project, formatted as `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*` (if regional secrets are supported in that location). This is used to validate webhooks. */
-  webhookSecretSecretVersion?: string;
-}
-
-export const GitLabEnterpriseConfig: Schema.Schema<GitLabEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authorizerCredential: Schema.optional(UserCredential),
-    hostUri: Schema.optional(Schema.String),
-    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    sslCaCertificate: Schema.optional(Schema.String),
-    readAuthorizerCredential: Schema.optional(UserCredential),
-    serverVersion: Schema.optional(Schema.String),
-    webhookSecretSecretVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "GitLabEnterpriseConfig" });
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Installation" });
 
 export interface Connection {
-  /** Configuration for connections to github.com. */
-  githubConfig?: GitHubConfig;
   /** Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled. */
   disabled?: boolean;
-  /** Output only. A system-assigned unique identifier for the Connection. */
-  uid?: string;
-  /** Configuration for connections to gitlab.com. */
-  gitlabConfig?: GitLabConfig;
   /** Output only. Set to true when the connection is being set up or updated in the background. */
   reconciling?: boolean;
+  /** Configuration for connections to gitlab.com. */
+  gitlabConfig?: GitLabConfig;
+  /** Output only. A system-assigned unique identifier for the Connection. */
+  uid?: string;
   /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
-  /** Configuration for connections to an instance of GitHub Enterprise. */
-  githubEnterpriseConfig?: GitHubEnterpriseConfig;
-  /** Optional. Labels as key value pairs */
-  labels?: Record<string, string>;
-  /** Configuration for connections to an instance of Secure Source Manager. */
-  secureSourceManagerInstanceConfig?: SecureSourceManagerInstanceConfig;
-  /** Output only. [Output only] Create timestamp */
-  createTime?: string;
-  /** Configuration for connections to an instance of Bitbucket Data Center. */
-  bitbucketDataCenterConfig?: BitbucketDataCenterConfig;
   /** Optional. Configuration for connections to an HTTP service provider. */
   httpConfig?: GenericHTTPEndpointConfig;
-  /** Configuration for connections to an instance of GitLab Enterprise. */
-  gitlabEnterpriseConfig?: GitLabEnterpriseConfig;
-  /** Output only. [Output only] Delete timestamp */
-  deleteTime?: string;
-  /** Identifier. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`. */
-  name?: string;
-  /** Optional. Configuration for the git proxy feature. Enabling the git proxy allows clients to perform git operations on the repositories linked in the connection. [Learn more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy). */
-  gitProxyConfig?: GitProxyConfig;
   /** Optional. Allows clients to store small amounts of arbitrary data. */
   annotations?: Record<string, string>;
   /** Optional. The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature. */
   cryptoKeyConfig?: CryptoKeyConfig;
-  /** Output only. Installation state of the Connection. */
-  installationState?: InstallationState;
+  /** Configuration for connections to an instance of Bitbucket Data Center. */
+  bitbucketDataCenterConfig?: BitbucketDataCenterConfig;
+  /** Identifier. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`. */
+  name?: string;
   /** Configuration for connections to an instance of Bitbucket Clouds. */
   bitbucketCloudConfig?: BitbucketCloudConfig;
+  /** Configuration for connections to an instance of GitLab Enterprise. */
+  gitlabEnterpriseConfig?: GitLabEnterpriseConfig;
+  /** Optional. Labels as key value pairs */
+  labels?: Record<string, string>;
+  /** Configuration for connections to github.com. */
+  githubConfig?: GitHubConfig;
   /** Output only. [Output only] Update timestamp */
   updateTime?: string;
+  /** Optional. Configuration for the git proxy feature. Enabling the git proxy allows clients to perform git operations on the repositories linked in the connection. [Learn more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy). */
+  gitProxyConfig?: GitProxyConfig;
+  /** Output only. Installation state of the Connection. */
+  installationState?: InstallationState;
+  /** Configuration for connections to an instance of Secure Source Manager. */
+  secureSourceManagerInstanceConfig?: SecureSourceManagerInstanceConfig;
+  /** Output only. [Output only] Create timestamp */
+  createTime?: string;
+  /** Output only. [Output only] Delete timestamp */
+  deleteTime?: string;
+  /** Configuration for connections to an instance of GitHub Enterprise. */
+  githubEnterpriseConfig?: GitHubEnterpriseConfig;
 }
 
-export const Connection: Schema.Schema<Connection> =
+export const Connection: Schema.Codec<Connection> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    githubConfig: Schema.optional(GitHubConfig),
     disabled: Schema.optional(Schema.Boolean),
-    uid: Schema.optional(Schema.String),
-    gitlabConfig: Schema.optional(GitLabConfig),
     reconciling: Schema.optional(Schema.Boolean),
+    gitlabConfig: Schema.optional(GitLabConfig),
+    uid: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
-    githubEnterpriseConfig: Schema.optional(GitHubEnterpriseConfig),
+    httpConfig: Schema.optional(GenericHTTPEndpointConfig),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
+    bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
+    name: Schema.optional(Schema.String),
+    bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
+    gitlabEnterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    githubConfig: Schema.optional(GitHubConfig),
+    updateTime: Schema.optional(Schema.String),
+    gitProxyConfig: Schema.optional(GitProxyConfig),
+    installationState: Schema.optional(InstallationState),
     secureSourceManagerInstanceConfig: Schema.optional(
       SecureSourceManagerInstanceConfig,
     ),
     createTime: Schema.optional(Schema.String),
-    bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
-    httpConfig: Schema.optional(GenericHTTPEndpointConfig),
-    gitlabEnterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
     deleteTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    gitProxyConfig: Schema.optional(GitProxyConfig),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
-    installationState: Schema.optional(InstallationState),
-    bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
-    updateTime: Schema.optional(Schema.String),
+    githubEnterpriseConfig: Schema.optional(GitHubEnterpriseConfig),
   }).annotate({ identifier: "Connection" });
 
-export interface ProcessBitbucketDataCenterWebhookRequest {
-  /** Required. HTTP request body. */
-  body?: HttpBody;
+export interface ListConnectionsResponse {
+  /** The list of Connection */
+  connections?: ReadonlyArray<Connection>;
+  /** A token identifying a page of results the server should return. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const ProcessBitbucketDataCenterWebhookRequest: Schema.Schema<ProcessBitbucketDataCenterWebhookRequest> =
+export const ListConnectionsResponse: Schema.Codec<ListConnectionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(HttpBody),
-  }).annotate({ identifier: "ProcessBitbucketDataCenterWebhookRequest" });
+    connections: Schema.optional(Schema.Array(Connection)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListConnectionsResponse" });
 
-export interface FetchReadWriteTokenRequest {}
-
-export const FetchReadWriteTokenRequest: Schema.Schema<FetchReadWriteTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "FetchReadWriteTokenRequest",
-  });
-
-export interface CustomOAuthConfig {
-  /** Required. Immutable. The OAuth2 authorization server URL. */
-  authUri?: string;
-  /** Required. The type of the SCM provider. */
-  scmProvider?:
-    | "SCM_PROVIDER_UNKNOWN"
-    | "GITHUB_ENTERPRISE"
-    | "GITLAB_ENTERPRISE"
-    | "BITBUCKET_DATA_CENTER"
-    | (string & {});
-  /** Required. The scopes to be requested during OAuth. */
-  scopes?: ReadonlyArray<string>;
-  /** Required. The client ID of the OAuth application. */
-  clientId?: string;
-  /** Required. Input only. The client secret of the OAuth application. It will be provided as plain text, but encrypted and stored in developer connect. As INPUT_ONLY field, it will not be included in the output. */
-  clientSecret?: string;
-  /** Optional. SSL certificate to use for requests to a private service. */
-  sslCaCertificate?: string;
-  /** Required. Immutable. The OAuth2 token request URL. */
-  tokenUri?: string;
-  /** Output only. SCM server version installed at the host URI. */
-  serverVersion?: string;
-  /** Optional. Configuration for using Service Directory to connect to a private service. */
-  serviceDirectoryConfig?: ServiceDirectoryConfig;
-  /** Optional. Disable PKCE for this OAuth config. PKCE is enabled by default. */
-  pkceDisabled?: boolean;
-  /** Required. The host URI of the OAuth application. */
-  hostUri?: string;
+export interface LinkableGitRepository {
+  /** The clone uri of the repository. */
+  cloneUri?: string;
 }
 
-export const CustomOAuthConfig: Schema.Schema<CustomOAuthConfig> =
+export const LinkableGitRepository: Schema.Codec<LinkableGitRepository> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    authUri: Schema.optional(Schema.String),
-    scmProvider: Schema.optional(Schema.String),
-    scopes: Schema.optional(Schema.Array(Schema.String)),
-    clientId: Schema.optional(Schema.String),
-    clientSecret: Schema.optional(Schema.String),
-    sslCaCertificate: Schema.optional(Schema.String),
-    tokenUri: Schema.optional(Schema.String),
-    serverVersion: Schema.optional(Schema.String),
-    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    pkceDisabled: Schema.optional(Schema.Boolean),
-    hostUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CustomOAuthConfig" });
+    cloneUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LinkableGitRepository" });
 
-export interface FetchAccessTokenResponse {
-  /** The scopes of the access token. */
-  scopes?: ReadonlyArray<string>;
-  /** The token content. */
-  token?: string;
-  /** Expiration timestamp. Can be empty if unknown or non-expiring. */
-  expirationTime?: string;
-  /** The error resulted from exchanging OAuth tokens from the service provider. */
-  exchangeError?: ExchangeError;
+export interface FetchGitHubInstallationsResponse {
+  /** List of installations available to the OAuth user (for github.com) or all the installations (for GitHub enterprise). */
+  installations?: ReadonlyArray<Installation>;
 }
 
-export const FetchAccessTokenResponse: Schema.Schema<FetchAccessTokenResponse> =
+export const FetchGitHubInstallationsResponse: Schema.Codec<FetchGitHubInstallationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scopes: Schema.optional(Schema.Array(Schema.String)),
-    token: Schema.optional(Schema.String),
-    expirationTime: Schema.optional(Schema.String),
-    exchangeError: Schema.optional(ExchangeError),
-  }).annotate({ identifier: "FetchAccessTokenResponse" });
+    installations: Schema.optional(Schema.Array(Installation)),
+  }).annotate({ identifier: "FetchGitHubInstallationsResponse" });
+
+export interface Operation {
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+}
+
+export const Operation: Schema.Codec<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Operation" });
 
 export interface FinishOAuthResponse {
   /** The error resulted from exchanging OAuth tokens from the service provider. */
   exchangeError?: ExchangeError;
 }
 
-export const FinishOAuthResponse: Schema.Schema<FinishOAuthResponse> =
+export const FinishOAuthResponse: Schema.Codec<FinishOAuthResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     exchangeError: Schema.optional(ExchangeError),
   }).annotate({ identifier: "FinishOAuthResponse" });
 
-export interface ProxyConfig {
-  /** Output only. The base URI for the HTTP proxy endpoint. Has the format `https://{generatedID}-a-h-{shortRegion}.developerconnect.dev` Populated only when `enabled` is set to `true`. This endpoint is used by other Google services that integrate with Developer Connect. */
-  httpProxyBaseUri?: string;
-  /** Optional. Setting this to true allows the git and http proxies to perform actions on behalf of the user configured under the account connector. */
-  enabled?: boolean;
-}
+export interface FetchReadWriteTokenRequest {}
 
-export const ProxyConfig: Schema.Schema<ProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    httpProxyBaseUri: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ProxyConfig" });
-
-export interface AccountConnector {
-  /** Output only. A system-assigned unique identifier for the Account Connector. */
-  uid?: string;
-  /** Custom OAuth config. */
-  customOauthConfig?: CustomOAuthConfig;
-  /** Output only. The timestamp when the accountConnector was created. */
-  createTime?: string;
-  /** Output only. Start OAuth flow by clicking on this URL. */
-  oauthStartUri?: string;
-  /** Output only. The timestamp when the accountConnector was updated. */
-  updateTime?: string;
-  /** Optional. Labels as key value pairs */
-  labels?: Record<string, string>;
-  /** Optional. Configuration for the http and git proxy features. */
-  proxyConfig?: ProxyConfig;
-  /** Optional. Provider OAuth config. */
-  providerOauthConfig?: ProviderOAuthConfig;
-  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
-  etag?: string;
-  /** Optional. Allows users to store small amounts of arbitrary data. */
-  annotations?: Record<string, string>;
-  /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
-  name?: string;
-}
-
-export const AccountConnector: Schema.Schema<AccountConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uid: Schema.optional(Schema.String),
-    customOauthConfig: Schema.optional(CustomOAuthConfig),
-    createTime: Schema.optional(Schema.String),
-    oauthStartUri: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    proxyConfig: Schema.optional(ProxyConfig),
-    providerOauthConfig: Schema.optional(ProviderOAuthConfig),
-    etag: Schema.optional(Schema.String),
-    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AccountConnector" });
-
-export interface ListConnectionsResponse {
-  /** The list of Connection */
-  connections?: ReadonlyArray<Connection>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
-}
-
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connections: Schema.optional(Schema.Array(Connection)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListConnectionsResponse" });
-
-export interface OperationMetadata {
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
-  requestedCancellation?: boolean;
-  /** Output only. API version used to start the operation. */
-  apiVersion?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. Name of the verb executed by the operation. */
-  verb?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
-}
-
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    target: Schema.optional(Schema.String),
-    requestedCancellation: Schema.optional(Schema.Boolean),
-    apiVersion: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    verb: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "OperationMetadata" });
+export const FetchReadWriteTokenRequest: Schema.Codec<FetchReadWriteTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FetchReadWriteTokenRequest",
+  });
 
 export interface StartOAuthResponse {
-  /** The client ID to the OAuth App of the service provider. */
-  clientId?: string;
-  /** The list of scopes requested by the application. */
-  scopes?: ReadonlyArray<string>;
-  /** Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 */
-  codeChallenge?: string;
   /** The authorization server URL to the OAuth flow of the service provider. */
   authUri?: string;
-  /** The ticket to be used for post processing the callback from the service provider. */
-  ticket?: string;
-  /** Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2 */
-  codeChallengeMethod?: string;
   /** The ID of the system provider. */
   systemProviderId?:
     | "SYSTEM_PROVIDER_UNSPECIFIED"
@@ -1243,94 +1245,95 @@ export interface StartOAuthResponse {
     | "DATASTAX"
     | "DYNATRACE"
     | (string & {});
+  /** Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1 */
+  codeChallenge?: string;
+  /** The ticket to be used for post processing the callback from the service provider. */
+  ticket?: string;
+  /** Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2 */
+  codeChallengeMethod?: string;
+  /** The client ID to the OAuth App of the service provider. */
+  clientId?: string;
+  /** The list of scopes requested by the application. */
+  scopes?: ReadonlyArray<string>;
 }
 
-export const StartOAuthResponse: Schema.Schema<StartOAuthResponse> =
+export const StartOAuthResponse: Schema.Codec<StartOAuthResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clientId: Schema.optional(Schema.String),
-    scopes: Schema.optional(Schema.Array(Schema.String)),
-    codeChallenge: Schema.optional(Schema.String),
     authUri: Schema.optional(Schema.String),
+    systemProviderId: Schema.optional(Schema.String),
+    codeChallenge: Schema.optional(Schema.String),
     ticket: Schema.optional(Schema.String),
     codeChallengeMethod: Schema.optional(Schema.String),
-    systemProviderId: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StartOAuthResponse" });
 
-export interface ProcessGitLabEnterpriseWebhookRequest {
-  /** Required. HTTP request body. */
-  body?: HttpBody;
+export interface ListOperationsResponse {
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
 }
 
-export const ProcessGitLabEnterpriseWebhookRequest: Schema.Schema<ProcessGitLabEnterpriseWebhookRequest> =
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(HttpBody),
-  }).annotate({ identifier: "ProcessGitLabEnterpriseWebhookRequest" });
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListOperationsResponse" });
 
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelOperationRequest",
-  });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface ListAccountConnectorsResponse {
-  /** The list of AccountConnectors */
-  accountConnectors?: ReadonlyArray<AccountConnector>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
+export interface FetchLinkableGitRepositoriesResponse {
+  /** The git repositories that can be linked to the connection. */
+  linkableGitRepositories?: ReadonlyArray<LinkableGitRepository>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
 
-export const ListAccountConnectorsResponse: Schema.Schema<ListAccountConnectorsResponse> =
+export const FetchLinkableGitRepositoriesResponse: Schema.Codec<FetchLinkableGitRepositoriesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountConnectors: Schema.optional(Schema.Array(AccountConnector)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    linkableGitRepositories: Schema.optional(
+      Schema.Array(LinkableGitRepository),
+    ),
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListAccountConnectorsResponse" });
+  }).annotate({ identifier: "FetchLinkableGitRepositoriesResponse" });
 
-export interface FetchReadWriteTokenResponse {
+export interface FetchReadTokenRequest {}
+
+export const FetchReadTokenRequest: Schema.Codec<FetchReadTokenRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "FetchReadTokenRequest",
+  });
+
+export interface FetchAccessTokenResponse {
+  /** The scopes of the access token. */
+  scopes?: ReadonlyArray<string>;
+  /** The error resulted from exchanging OAuth tokens from the service provider. */
+  exchangeError?: ExchangeError;
   /** The token content. */
   token?: string;
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
   expirationTime?: string;
-  /** The git_username to specify when making a git clone with the token. For example, for GitHub GitRepositoryLinks, this would be "x-access-token" */
-  gitUsername?: string;
 }
 
-export const FetchReadWriteTokenResponse: Schema.Schema<FetchReadWriteTokenResponse> =
+export const FetchAccessTokenResponse: Schema.Codec<FetchAccessTokenResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    exchangeError: Schema.optional(ExchangeError),
     token: Schema.optional(Schema.String),
     expirationTime: Schema.optional(Schema.String),
-    gitUsername: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FetchReadWriteTokenResponse" });
+  }).annotate({ identifier: "FetchAccessTokenResponse" });
 
-export interface FetchUserRepositoriesResponse {
-  /** The repositories that the user can access with this account connector. */
-  userRepos?: ReadonlyArray<UserRepository>;
-  /** A token identifying a page of results the server should return. */
-  nextPageToken?: string;
+export interface ProcessBitbucketDataCenterWebhookRequest {
+  /** Required. HTTP request body. */
+  body?: HttpBody;
 }
 
-export const FetchUserRepositoriesResponse: Schema.Schema<FetchUserRepositoriesResponse> =
+export const ProcessBitbucketDataCenterWebhookRequest: Schema.Codec<ProcessBitbucketDataCenterWebhookRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userRepos: Schema.optional(Schema.Array(UserRepository)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "FetchUserRepositoriesResponse" });
-
-export interface FetchAccessTokenRequest {}
-
-export const FetchAccessTokenRequest: Schema.Schema<FetchAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "FetchAccessTokenRequest",
-  });
+    body: Schema.optional(HttpBody),
+  }).annotate({ identifier: "ProcessBitbucketDataCenterWebhookRequest" });
 
 // ==========================================================================
 // Errors
@@ -1387,31 +1390,31 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
-  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
-  pageToken?: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
-  filter?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
+  filter?: string;
+  /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
+  pageToken?: string;
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1446,7 +1449,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1466,319 +1469,246 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetProjectsLocationsInsightsConfigsRequest {
-  /** Required. Name of the resource. */
-  name: string;
+export interface FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest {
+  /** Optional. The name of the repository. When specified, only the UserRepository with this name will be returned if the repository is accessible under this Account Connector for the calling user. */
+  repository?: string;
+  /** Optional. Page start. */
+  pageToken?: string;
+  /** Required. The name of the Account Connector resource in the format: `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+  /** Optional. Number of results to return in the list. Defaults to 20. */
+  pageSize?: number;
 }
 
-export const GetProjectsLocationsInsightsConfigsRequest =
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    repository: Schema.optional(Schema.String).pipe(T.HttpQuery("repository")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({
+      method: "GET",
+      path: "v1/{+accountConnector}:fetchUserRepositories",
+    }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
 
-export type GetProjectsLocationsInsightsConfigsResponse = InsightsConfig;
-export const GetProjectsLocationsInsightsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ InsightsConfig;
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  FetchUserRepositoriesResponse;
+export const FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchUserRepositoriesResponse;
 
-export type GetProjectsLocationsInsightsConfigsError =
+export type FetchUserRepositoriesProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single Insight. */
-export const getProjectsLocationsInsightsConfigs: API.OperationMethod<
-  GetProjectsLocationsInsightsConfigsRequest,
-  GetProjectsLocationsInsightsConfigsResponse,
-  GetProjectsLocationsInsightsConfigsError,
+/** FetchUserRepositories returns a list of UserRepos that are available for an account connector resource. */
+export const fetchUserRepositoriesProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
+  FetchUserRepositoriesProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInsightsConfigsRequest,
-  output: GetProjectsLocationsInsightsConfigsResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
+  output: FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface PatchProjectsLocationsInsightsConfigsRequest {
-  /** Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig} */
-  name: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Optional. If set to true, and the insightsConfig is not found a new insightsConfig will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input insightsConfig has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). */
-  allowMissing?: boolean;
-  /** Request body */
-  body?: InsightsConfig;
-}
-
-export const PatchProjectsLocationsInsightsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    allowMissing: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("allowMissing"),
-    ),
-    body: Schema.optional(InsightsConfig).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsInsightsConfigsRequest>;
-
-export type PatchProjectsLocationsInsightsConfigsResponse = Operation;
-export const PatchProjectsLocationsInsightsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsInsightsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single InsightsConfig. */
-export const patchProjectsLocationsInsightsConfigs: API.OperationMethod<
-  PatchProjectsLocationsInsightsConfigsRequest,
-  PatchProjectsLocationsInsightsConfigsResponse,
-  PatchProjectsLocationsInsightsConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInsightsConfigsRequest,
-  output: PatchProjectsLocationsInsightsConfigsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsInsightsConfigsRequest {
-  /** Required. ID of the requesting InsightsConfig. */
-  insightsConfigId?: string;
-  /** Required. Value for parent. */
+export interface CreateProjectsLocationsAccountConnectorsRequest {
+  /** Required. Location resource name as the account_connector’s parent. */
   parent: string;
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
+  /** Required. The ID to use for the AccountConnector, which will become the final component of the AccountConnector's resource name. Its format should adhere to https://google.aip.dev/122#resource-id-segments Names must be unique per-project per-location. */
+  accountConnectorId?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Request body */
-  body?: InsightsConfig;
+  body?: AccountConnector;
 }
 
-export const CreateProjectsLocationsInsightsConfigsRequest =
+export const CreateProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    insightsConfigId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("insightsConfigId"),
-    ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
-    body: Schema.optional(InsightsConfig).pipe(T.HttpBody()),
+    accountConnectorId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("accountConnectorId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(AccountConnector).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+parent}/insightsConfigs",
+      path: "v1/{+parent}/accountConnectors",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsAccountConnectorsRequest>;
 
-export type CreateProjectsLocationsInsightsConfigsResponse = Operation;
-export const CreateProjectsLocationsInsightsConfigsResponse =
+export type CreateProjectsLocationsAccountConnectorsResponse = Operation;
+export const CreateProjectsLocationsAccountConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsInsightsConfigsError =
+export type CreateProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new InsightsConfig in a given project and location. */
-export const createProjectsLocationsInsightsConfigs: API.OperationMethod<
-  CreateProjectsLocationsInsightsConfigsRequest,
-  CreateProjectsLocationsInsightsConfigsResponse,
-  CreateProjectsLocationsInsightsConfigsError,
+/** Creates a new AccountConnector in a given project and location. */
+export const createProjectsLocationsAccountConnectors: API.OperationMethod<
+  CreateProjectsLocationsAccountConnectorsRequest,
+  CreateProjectsLocationsAccountConnectorsResponse,
+  CreateProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInsightsConfigsRequest,
-  output: CreateProjectsLocationsInsightsConfigsResponse,
+  input: CreateProjectsLocationsAccountConnectorsRequest,
+  output: CreateProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsInsightsConfigsRequest {
-  /** Optional. Filtering results. See https://google.aip.dev/160 for more details. Filter string, adhering to the rules in https://google.aip.dev/160. List only InsightsConfigs matching the filter. If filter is empty, all InsightsConfigs are listed. */
-  filter?: string;
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Required. Parent value for ListInsightsConfigsRequest. */
-  parent: string;
-  /** Optional. Hint for how to order the results. */
-  orderBy?: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsInsightsConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/insightsConfigs" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightsConfigsRequest>;
-
-export type ListProjectsLocationsInsightsConfigsResponse =
-  ListInsightsConfigsResponse;
-export const ListProjectsLocationsInsightsConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInsightsConfigsResponse;
-
-export type ListProjectsLocationsInsightsConfigsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists InsightsConfigs in a given project and location. */
-export const listProjectsLocationsInsightsConfigs: API.PaginatedOperationMethod<
-  ListProjectsLocationsInsightsConfigsRequest,
-  ListProjectsLocationsInsightsConfigsResponse,
-  ListProjectsLocationsInsightsConfigsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInsightsConfigsRequest,
-  output: ListProjectsLocationsInsightsConfigsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsInsightsConfigsRequest {
-  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
-  etag?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Value for parent. */
+export interface PatchProjectsLocationsAccountConnectorsRequest {
+  /** Optional. The list of fields to be updated. */
+  updateMask?: string;
+  /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
   name: string;
+  /** Optional. If set to true, and the accountConnector is not found a new accountConnector will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input accountConnector has all the necessary */
+  allowMissing?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
+  /** Request body */
+  body?: AccountConnector;
 }
 
-export const DeleteProjectsLocationsInsightsConfigsRequest =
+export const PatchProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    allowMissing: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("allowMissing"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
+    body: Schema.optional(AccountConnector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsInsightsConfigsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsAccountConnectorsRequest>;
 
-export type DeleteProjectsLocationsInsightsConfigsResponse = Operation;
-export const DeleteProjectsLocationsInsightsConfigsResponse =
+export type PatchProjectsLocationsAccountConnectorsResponse = Operation;
+export const PatchProjectsLocationsAccountConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsInsightsConfigsError =
+export type PatchProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single Insight. */
-export const deleteProjectsLocationsInsightsConfigs: API.OperationMethod<
-  DeleteProjectsLocationsInsightsConfigsRequest,
-  DeleteProjectsLocationsInsightsConfigsResponse,
-  DeleteProjectsLocationsInsightsConfigsError,
+/** Updates the parameters of a single AccountConnector. */
+export const patchProjectsLocationsAccountConnectors: API.OperationMethod<
+  PatchProjectsLocationsAccountConnectorsRequest,
+  PatchProjectsLocationsAccountConnectorsResponse,
+  PatchProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInsightsConfigsRequest,
-  output: DeleteProjectsLocationsInsightsConfigsResponse,
+  input: PatchProjectsLocationsAccountConnectorsRequest,
+  output: PatchProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsInsightsConfigsDeploymentEventsRequest {
-  /** Required. The name of the deployment event to retrieve. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
+export interface GetProjectsLocationsAccountConnectorsRequest {
+  /** Required. Name of the resource */
   name: string;
 }
 
-export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest =
+export const GetProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsAccountConnectorsRequest>;
 
-export type GetProjectsLocationsInsightsConfigsDeploymentEventsResponse =
-  DeploymentEvent;
-export const GetProjectsLocationsInsightsConfigsDeploymentEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DeploymentEvent;
+export type GetProjectsLocationsAccountConnectorsResponse = AccountConnector;
+export const GetProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ AccountConnector;
 
-export type GetProjectsLocationsInsightsConfigsDeploymentEventsError =
+export type GetProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets a single Deployment Event. */
-export const getProjectsLocationsInsightsConfigsDeploymentEvents: API.OperationMethod<
-  GetProjectsLocationsInsightsConfigsDeploymentEventsRequest,
-  GetProjectsLocationsInsightsConfigsDeploymentEventsResponse,
-  GetProjectsLocationsInsightsConfigsDeploymentEventsError,
+/** Gets details of a single AccountConnector. */
+export const getProjectsLocationsAccountConnectors: API.OperationMethod<
+  GetProjectsLocationsAccountConnectorsRequest,
+  GetProjectsLocationsAccountConnectorsResponse,
+  GetProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInsightsConfigsDeploymentEventsRequest,
-  output: GetProjectsLocationsInsightsConfigsDeploymentEventsResponse,
+  input: GetProjectsLocationsAccountConnectorsRequest,
+  output: GetProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface ListProjectsLocationsInsightsConfigsDeploymentEventsRequest {
-  /** Optional. The maximum number of deployment events to return. The service may return fewer than this value. If unspecified, at most 50 deployment events will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
+export interface ListProjectsLocationsAccountConnectorsRequest {
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
-  /** Optional. Filter expression that matches a subset of the DeploymentEvents. https://google.aip.dev/160. */
-  filter?: string;
-  /** Optional. A page token, received from a previous `ListDeploymentEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeploymentEvents` must match the call that provided the page token. */
+  /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
-  /** Required. The parent insights config that owns this collection of deployment events. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config} */
+  /** Optional. Filtering results */
+  filter?: string;
+  /** Required. Parent value for ListAccountConnectorsRequest */
   parent: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
 }
 
-export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest =
+export const ListProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/deploymentEvents" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/accountConnectors" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsAccountConnectorsRequest>;
 
-export type ListProjectsLocationsInsightsConfigsDeploymentEventsResponse =
-  ListDeploymentEventsResponse;
-export const ListProjectsLocationsInsightsConfigsDeploymentEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentEventsResponse;
+export type ListProjectsLocationsAccountConnectorsResponse =
+  ListAccountConnectorsResponse;
+export const ListProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListAccountConnectorsResponse;
 
-export type ListProjectsLocationsInsightsConfigsDeploymentEventsError =
+export type ListProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists Deployment Events in a given insights config. */
-export const listProjectsLocationsInsightsConfigsDeploymentEvents: API.PaginatedOperationMethod<
-  ListProjectsLocationsInsightsConfigsDeploymentEventsRequest,
-  ListProjectsLocationsInsightsConfigsDeploymentEventsResponse,
-  ListProjectsLocationsInsightsConfigsDeploymentEventsError,
+/** Lists AccountConnectors in a given project and location. */
+export const listProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
+  ListProjectsLocationsAccountConnectorsRequest,
+  ListProjectsLocationsAccountConnectorsResponse,
+  ListProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInsightsConfigsDeploymentEventsRequest,
-  output: ListProjectsLocationsInsightsConfigsDeploymentEventsResponse,
+  input: ListProjectsLocationsAccountConnectorsRequest,
+  output: ListProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1786,68 +1716,430 @@ export const listProjectsLocationsInsightsConfigsDeploymentEvents: API.Paginated
   },
 }));
 
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
+export interface DeleteProjectsLocationsAccountConnectorsRequest {
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Optional. The current etag of the AccountConnectorn. If an etag is provided and does not match the current etag of the AccountConnector, deletion will be blocked and an ABORTED error will be returned. */
+  etag?: string;
+  /** Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.) */
+  force?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Name of the resource */
   name: string;
 }
 
-export const DeleteProjectsLocationsOperationsRequest =
+export const DeleteProjectsLocationsAccountConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAccountConnectorsRequest>;
 
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type DeleteProjectsLocationsAccountConnectorsResponse = Operation;
+export const DeleteProjectsLocationsAccountConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsOperationsError =
+export type DeleteProjectsLocationsAccountConnectorsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
+/** Deletes a single AccountConnector. */
+export const deleteProjectsLocationsAccountConnectors: API.OperationMethod<
+  DeleteProjectsLocationsAccountConnectorsRequest,
+  DeleteProjectsLocationsAccountConnectorsResponse,
+  DeleteProjectsLocationsAccountConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
+  input: DeleteProjectsLocationsAccountConnectorsRequest,
+  output: DeleteProjectsLocationsAccountConnectorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface FetchSelfProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. Name of the AccountConnector resource */
+  name: string;
+}
+
+export const FetchSelfProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}/users:fetchSelf" }),
+    svc,
+  ) as unknown as Schema.Codec<FetchSelfProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type FetchSelfProjectsLocationsAccountConnectorsUsersResponse = User;
+export const FetchSelfProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ User;
+
+export type FetchSelfProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Fetch the User based on the user credentials. */
+export const fetchSelfProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  FetchSelfProjectsLocationsAccountConnectorsUsersRequest,
+  FetchSelfProjectsLocationsAccountConnectorsUsersResponse,
+  FetchSelfProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchSelfProjectsLocationsAccountConnectorsUsersRequest,
+  output: FetchSelfProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+}
+
+export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+accountConnector}/users:startOAuthFlow",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
+  StartOAuthResponse;
+export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ StartOAuthResponse;
+
+export type StartOAuthFlowProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Starts OAuth flow for an account connector. */
+export const startOAuthFlowProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
+  StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
+  StartOAuthFlowProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
+  output: StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. Parent value for ListUsersRequest */
+  parent: string;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results */
+  filter?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/users" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type ListProjectsLocationsAccountConnectorsUsersResponse =
+  ListUsersResponse;
+export const ListProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
+
+export type ListProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists Users in a given project, location, and account_connector. */
+export const listProjectsLocationsAccountConnectorsUsers: API.PaginatedOperationMethod<
+  ListProjectsLocationsAccountConnectorsUsersRequest,
+  ListProjectsLocationsAccountConnectorsUsersResponse,
+  ListProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsAccountConnectorsUsersRequest,
+  output: ListProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. Name of the resource */
+  name: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
+  etag?: string;
+}
+
+export const DeleteProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type DeleteProjectsLocationsAccountConnectorsUsersResponse = Operation;
+export const DeleteProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single User. */
+export const deleteProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  DeleteProjectsLocationsAccountConnectorsUsersRequest,
+  DeleteProjectsLocationsAccountConnectorsUsersResponse,
+  DeleteProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsAccountConnectorsUsersRequest,
+  output: DeleteProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+  /** Request body */
+  body?: FetchAccessTokenRequest;
+}
+
+export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+    body: Schema.optional(FetchAccessTokenRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+accountConnector}/users:fetchAccessToken",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse =
+  FetchAccessTokenResponse;
+export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchAccessTokenResponse;
+
+export type FetchAccessTokenProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Fetches OAuth access token based on end user credentials. */
+export const fetchAccessTokenProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest,
+  FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse,
+  FetchAccessTokenProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest,
+  output: FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteSelfProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. Name of the AccountConnector resource */
+  name: string;
+}
+
+export const DeleteSelfProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}/users:deleteSelf" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteSelfProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type DeleteSelfProjectsLocationsAccountConnectorsUsersResponse =
+  Operation;
+export const DeleteSelfProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteSelfProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete the User based on the user credentials. */
+export const deleteSelfProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  DeleteSelfProjectsLocationsAccountConnectorsUsersRequest,
+  DeleteSelfProjectsLocationsAccountConnectorsUsersResponse,
+  DeleteSelfProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteSelfProjectsLocationsAccountConnectorsUsersRequest,
+  output: DeleteSelfProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
+  /** Required. The ticket to be used for post processing the callback from Google OAuth flow. */
+  "googleOauthParams.ticket"?: string;
+  /** Optional. The version info returned by Google OAuth flow. */
+  "googleOauthParams.versionInfo"?: string;
+  /** Required. The ticket to be used for post processing the callback from SCM provider. */
+  "oauthParams.ticket"?: string;
+  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
+  accountConnector: string;
+  /** Required. The code to be used for getting the token from SCM provider. */
+  "oauthParams.code"?: string;
+  /** Required. The scopes returned by Google OAuth flow. */
+  "googleOauthParams.scopes"?: string[];
+}
+
+export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "googleOauthParams.ticket": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("googleOauthParams.ticket"),
+    ),
+    "googleOauthParams.versionInfo": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("googleOauthParams.versionInfo"),
+    ),
+    "oauthParams.ticket": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("oauthParams.ticket"),
+    ),
+    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
+    "oauthParams.code": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("oauthParams.code"),
+    ),
+    "googleOauthParams.scopes": Schema.optional(
+      Schema.Array(Schema.String),
+    ).pipe(T.HttpQuery("googleOauthParams.scopes")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+accountConnector}/users:finishOAuthFlow",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
+
+export type FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
+  FinishOAuthResponse;
+export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FinishOAuthResponse;
+
+export type FinishOAuthFlowProjectsLocationsAccountConnectorsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Finishes OAuth flow for an account connector. */
+export const finishOAuthFlowProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
+  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
+  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
+  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
+  output: FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list filter. */
+  filter?: string;
+  /** The standard list page token. */
+  pageToken?: string;
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
   /** The standard list page size. */
   pageSize?: number;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The standard list filter. */
-  filter?: string;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1874,38 +2166,40 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
   name: string;
 }
 
-export const GetProjectsLocationsOperationsRequest =
+export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type GetProjectsLocationsOperationsError =
+export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -1922,7 +2216,7 @@ export const CancelProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+name}:cancel", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
@@ -1945,189 +2239,6 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsConnectionsRequest {
-  /** Optional. The current etag of the Connection. If an etag is provided and does not match the current etag of the Connection, deletion will be blocked and an ABORTED error will be returned. */
-  etag?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Name of the resource */
-  name: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
-}
-
-export const DeleteProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
-
-export type DeleteProjectsLocationsConnectionsResponse = Operation;
-export const DeleteProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single Connection. */
-export const deleteProjectsLocationsConnections: API.OperationMethod<
-  DeleteProjectsLocationsConnectionsRequest,
-  DeleteProjectsLocationsConnectionsResponse,
-  DeleteProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsRequest,
-  output: DeleteProjectsLocationsConnectionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsConnectionsRequest {
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Required. Parent value for ListConnectionsRequest */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
-
-export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
-export const ListProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
-
-export type ListProjectsLocationsConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists Connections in a given project and location. */
-export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
-  ListProjectsLocationsConnectionsRequest,
-  ListProjectsLocationsConnectionsResponse,
-  ListProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsRequest,
-  output: ListProjectsLocationsConnectionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface FetchGitHubInstallationsProjectsLocationsConnectionsRequest {
-  /** Required. The resource name of the connection in the format `projects/* /locations/* /connections/*`. */
-  connection: string;
-}
-
-export const FetchGitHubInstallationsProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connection: Schema.String.pipe(T.HttpPath("connection")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+connection}:fetchGitHubInstallations",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FetchGitHubInstallationsProjectsLocationsConnectionsRequest>;
-
-export type FetchGitHubInstallationsProjectsLocationsConnectionsResponse =
-  FetchGitHubInstallationsResponse;
-export const FetchGitHubInstallationsProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchGitHubInstallationsResponse;
-
-export type FetchGitHubInstallationsProjectsLocationsConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** FetchGitHubInstallations returns the list of GitHub Installations that are available to be added to a Connection. For github.com, only installations accessible to the authorizer token are returned. For GitHub Enterprise, all installations are returned. */
-export const fetchGitHubInstallationsProjectsLocationsConnections: API.OperationMethod<
-  FetchGitHubInstallationsProjectsLocationsConnectionsRequest,
-  FetchGitHubInstallationsProjectsLocationsConnectionsResponse,
-  FetchGitHubInstallationsProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchGitHubInstallationsProjectsLocationsConnectionsRequest,
-  output: FetchGitHubInstallationsProjectsLocationsConnectionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest {
-  /** Optional. Page start. */
-  pageToken?: string;
-  /** Required. The name of the Connection. Format: `projects/* /locations/* /connections/*`. */
-  connection: string;
-  /** Optional. Number of results to return in the list. Defaults to 20. */
-  pageSize?: number;
-}
-
-export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    connection: Schema.String.pipe(T.HttpPath("connection")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+connection}:fetchLinkableGitRepositories",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
-
-export type FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse =
-  FetchLinkableGitRepositoriesResponse;
-export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchLinkableGitRepositoriesResponse;
-
-export type FetchLinkableGitRepositoriesProjectsLocationsConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** FetchLinkableGitRepositories returns a list of git repositories from an SCM that are available to be added to a Connection. */
-export const fetchLinkableGitRepositoriesProjectsLocationsConnections: API.PaginatedOperationMethod<
-  FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest,
-  FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse,
-  FetchLinkableGitRepositoriesProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest,
-  output: FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface CreateProjectsLocationsConnectionsRequest {
@@ -2157,7 +2268,7 @@ export const CreateProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/{+parent}/connections", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsRequest>;
 
 export type CreateProjectsLocationsConnectionsResponse = Operation;
 export const CreateProjectsLocationsConnectionsResponse =
@@ -2182,51 +2293,17 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsConnectionsRequest {
-  /** Required. Name of the resource */
-  name: string;
-}
-
-export const GetProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
-
-export type GetProjectsLocationsConnectionsResponse = Connection;
-export const GetProjectsLocationsConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Connection;
-
-export type GetProjectsLocationsConnectionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single Connection. */
-export const getProjectsLocationsConnections: API.OperationMethod<
-  GetProjectsLocationsConnectionsRequest,
-  GetProjectsLocationsConnectionsResponse,
-  GetProjectsLocationsConnectionsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsRequest,
-  output: GetProjectsLocationsConnectionsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface PatchProjectsLocationsConnectionsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
   /** Identifier. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`. */
   name: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
   /** Optional. If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). */
   allowMissing?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
   /** Request body */
   body?: Connection;
 }
@@ -2234,19 +2311,19 @@ export interface PatchProjectsLocationsConnectionsRequest {
 export const PatchProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
     ),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsConnectionsRequest>;
 
 export type PatchProjectsLocationsConnectionsResponse = Operation;
 export const PatchProjectsLocationsConnectionsResponse =
@@ -2271,6 +2348,223 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface FetchGitHubInstallationsProjectsLocationsConnectionsRequest {
+  /** Required. The resource name of the connection in the format `projects/* /locations/* /connections/*`. */
+  connection: string;
+}
+
+export const FetchGitHubInstallationsProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.String.pipe(T.HttpPath("connection")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+connection}:fetchGitHubInstallations",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<FetchGitHubInstallationsProjectsLocationsConnectionsRequest>;
+
+export type FetchGitHubInstallationsProjectsLocationsConnectionsResponse =
+  FetchGitHubInstallationsResponse;
+export const FetchGitHubInstallationsProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchGitHubInstallationsResponse;
+
+export type FetchGitHubInstallationsProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** FetchGitHubInstallations returns the list of GitHub Installations that are available to be added to a Connection. For github.com, only installations accessible to the authorizer token are returned. For GitHub Enterprise, all installations are returned. */
+export const fetchGitHubInstallationsProjectsLocationsConnections: API.OperationMethod<
+  FetchGitHubInstallationsProjectsLocationsConnectionsRequest,
+  FetchGitHubInstallationsProjectsLocationsConnectionsResponse,
+  FetchGitHubInstallationsProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchGitHubInstallationsProjectsLocationsConnectionsRequest,
+  output: FetchGitHubInstallationsProjectsLocationsConnectionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest {
+  /** Required. The name of the Connection. Format: `projects/* /locations/* /connections/*`. */
+  connection: string;
+  /** Optional. Page start. */
+  pageToken?: string;
+  /** Optional. Number of results to return in the list. Defaults to 20. */
+  pageSize?: number;
+}
+
+export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.String.pipe(T.HttpPath("connection")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1/{+connection}:fetchLinkableGitRepositories",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest>;
+
+export type FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse =
+  FetchLinkableGitRepositoriesResponse;
+export const FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchLinkableGitRepositoriesResponse;
+
+export type FetchLinkableGitRepositoriesProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** FetchLinkableGitRepositories returns a list of git repositories from an SCM that are available to be added to a Connection. */
+export const fetchLinkableGitRepositoriesProjectsLocationsConnections: API.PaginatedOperationMethod<
+  FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest,
+  FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse,
+  FetchLinkableGitRepositoriesProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: FetchLinkableGitRepositoriesProjectsLocationsConnectionsRequest,
+  output: FetchLinkableGitRepositoriesProjectsLocationsConnectionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsConnectionsRequest {
+  /** Required. Name of the resource */
+  name: string;
+}
+
+export const GetProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsRequest>;
+
+export type GetProjectsLocationsConnectionsResponse = Connection;
+export const GetProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Connection;
+
+export type GetProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single Connection. */
+export const getProjectsLocationsConnections: API.OperationMethod<
+  GetProjectsLocationsConnectionsRequest,
+  GetProjectsLocationsConnectionsResponse,
+  GetProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsConnectionsRequest,
+  output: GetProjectsLocationsConnectionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsConnectionsRequest {
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
+  /** Required. Parent value for ListConnectionsRequest */
+  parent: string;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results */
+  filter?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+}
+
+export const ListProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/connections" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsRequest>;
+
+export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
+export const ListProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
+
+export type ListProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists Connections in a given project and location. */
+export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
+  ListProjectsLocationsConnectionsRequest,
+  ListProjectsLocationsConnectionsResponse,
+  ListProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsConnectionsRequest,
+  output: ListProjectsLocationsConnectionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsConnectionsRequest {
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Optional. The current etag of the Connection. If an etag is provided and does not match the current etag of the Connection, deletion will be blocked and an ABORTED error will be returned. */
+  etag?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Name of the resource */
+  name: string;
+}
+
+export const DeleteProjectsLocationsConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsRequest>;
+
+export type DeleteProjectsLocationsConnectionsResponse = Operation;
+export const DeleteProjectsLocationsConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single Connection. */
+export const deleteProjectsLocationsConnections: API.OperationMethod<
+  DeleteProjectsLocationsConnectionsRequest,
+  DeleteProjectsLocationsConnectionsResponse,
+  DeleteProjectsLocationsConnectionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsConnectionsRequest,
+  output: DeleteProjectsLocationsConnectionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest {
   /** Required. Project and location where the webhook will be received. Format: `projects/* /locations/*`. */
   parent: string;
@@ -2291,7 +2585,7 @@ export const ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
+  ) as unknown as Schema.Codec<ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsRequest>;
 
 export type ProcessGitHubEnterpriseWebhookProjectsLocationsConnectionsResponse =
   Empty;
@@ -2317,128 +2611,29 @@ export const processGitHubEnterpriseWebhookProjectsLocationsConnections: API.Ope
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Optional. Number of results to return in the list. Default to 20. */
-  pageSize?: number;
-  /** Required. The resource name of GitRepositoryLink in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
-  gitRepositoryLink: string;
-  /** Optional. Page start. */
-  pageToken?: string;
-  /** Required. Type of refs to fetch. */
-  refType?: "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH" | (string & {});
-}
-
-export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    gitRepositoryLink: Schema.String.pipe(T.HttpPath("gitRepositoryLink")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    refType: Schema.optional(Schema.String).pipe(T.HttpQuery("refType")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+gitRepositoryLink}:fetchGitRefs" }),
-    svc,
-  ) as unknown as Schema.Schema<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
-
-export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  FetchGitRefsResponse;
-export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchGitRefsResponse;
-
-export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Fetch the list of branches or tags for a given repository. */
-export const fetchGitRefsProjectsLocationsConnectionsGitRepositoryLinks: API.PaginatedOperationMethod<
-  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  output: FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-  /** Required. Parent value for ListGitRepositoryLinksRequest */
-  parent: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-}
-
-export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/gitRepositoryLinks" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
-
-export type ListProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  ListGitRepositoryLinksResponse;
-export const ListProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListGitRepositoryLinksResponse;
-
-export type ListProjectsLocationsConnectionsGitRepositoryLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists GitRepositoryLinks in a given project, location, and connection. */
-export const listProjectsLocationsConnectionsGitRepositoryLinks: API.PaginatedOperationMethod<
-  ListProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  ListProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  ListProjectsLocationsConnectionsGitRepositoryLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  output: ListProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
-  etag?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
   /** Required. Name of the resource */
   name: string;
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
+  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
+  etag?: string;
 }
 
 export const DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type DeleteProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Operation;
@@ -2464,6 +2659,54 @@ export const deleteProjectsLocationsConnectionsGitRepositoryLinks: API.Operation
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Required. The GitRepositoryLink where the webhook will be received. Format: `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
+  name: string;
+  /** Request body */
+  body?: ProcessBitbucketCloudWebhookRequest;
+}
+
+export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(ProcessBitbucketCloudWebhookRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:processBitbucketCloudWebhook",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+
+export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  Empty;
+export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying events. */
+export const processBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
+  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input:
+    ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  output:
+    ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The GitRepositoryLink where the webhook will be received. Format: `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
   name: string;
@@ -2484,7 +2727,7 @@ export const ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRep
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2512,64 +2755,29 @@ export const processBitbucketDataCenterWebhookProjectsLocationsConnectionsGitRep
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Required. Name of the resource */
-  name: string;
-}
-
-export const GetProjectsLocationsConnectionsGitRepositoryLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsGitRepositoryLinksRequest>;
-
-export type GetProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  GitRepositoryLink;
-export const GetProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GitRepositoryLink;
-
-export type GetProjectsLocationsConnectionsGitRepositoryLinksError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single GitRepositoryLink. */
-export const getProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
-  GetProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  GetProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  GetProjectsLocationsConnectionsGitRepositoryLinksError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  output: GetProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CreateProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Required. Value for parent. */
+  parent: string;
   /** Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. */
   gitRepositoryLinkId?: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
-  /** Required. Value for parent. */
-  parent: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
   /** Request body */
   body?: GitRepositoryLink;
 }
 
 export const CreateProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     gitRepositoryLinkId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("gitRepositoryLinkId"),
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
     body: Schema.optional(GitRepositoryLink).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2578,7 +2786,7 @@ export const CreateProjectsLocationsConnectionsGitRepositoryLinksRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type CreateProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Operation;
@@ -2622,7 +2830,7 @@ export const FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRe
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type FetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
   FetchReadWriteTokenResponse;
@@ -2650,96 +2858,103 @@ export const fetchReadWriteTokenProjectsLocationsConnectionsGitRepositoryLinks: 
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Required. The GitRepositoryLink where the webhook will be received. Format: `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
-  name: string;
-  /** Request body */
-  body?: ProcessBitbucketCloudWebhookRequest;
+export interface ListProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results */
+  filter?: string;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Required. Parent value for ListGitRepositoryLinksRequest */
+  parent: string;
+  /** Optional. Hint for how to order the results */
+  orderBy?: string;
 }
 
-export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest =
+export const ListProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(ProcessBitbucketCloudWebhookRequest).pipe(
-      T.HttpBody(),
-    ),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+name}:processBitbucketCloudWebhook",
-      hasBody: true,
-    }),
+    T.Http({ method: "GET", path: "v1/{+parent}/gitRepositoryLinks" }),
     svc,
-  ) as unknown as Schema.Schema<ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
-export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  Empty;
-export const ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type ListProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  ListGitRepositoryLinksResponse;
+export const ListProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListGitRepositoryLinksResponse;
 
-export type ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksError =
+export type ListProjectsLocationsConnectionsGitRepositoryLinksError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying events. */
-export const processBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
-  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksError,
+/** Lists GitRepositoryLinks in a given project, location, and connection. */
+export const listProjectsLocationsConnectionsGitRepositoryLinks: API.PaginatedOperationMethod<
+  ListProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  ListProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  ListProjectsLocationsConnectionsGitRepositoryLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input:
-    ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  output:
-    ProcessBitbucketCloudWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  output: ListProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest {
-  /** Required. The resource name of the gitRepositoryLink in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
+export interface FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Optional. Number of results to return in the list. Default to 20. */
+  pageSize?: number;
+  /** Required. Type of refs to fetch. */
+  refType?: "REF_TYPE_UNSPECIFIED" | "TAG" | "BRANCH" | (string & {});
+  /** Optional. Page start. */
+  pageToken?: string;
+  /** Required. The resource name of GitRepositoryLink in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
   gitRepositoryLink: string;
-  /** Request body */
-  body?: FetchReadTokenRequest;
 }
 
-export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest =
+export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    refType: Schema.optional(Schema.String).pipe(T.HttpQuery("refType")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     gitRepositoryLink: Schema.String.pipe(T.HttpPath("gitRepositoryLink")),
-    body: Schema.optional(FetchReadTokenRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+gitRepositoryLink}:fetchReadToken",
-      hasBody: true,
-    }),
+    T.Http({ method: "GET", path: "v1/{+gitRepositoryLink}:fetchGitRefs" }),
     svc,
-  ) as unknown as Schema.Schema<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
-export type FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  FetchReadTokenResponse;
-export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchReadTokenResponse;
+export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  FetchGitRefsResponse;
+export const FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchGitRefsResponse;
 
-export type FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksError =
+export type FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Fetches read token of a given gitRepositoryLink. */
-export const fetchReadTokenProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
-  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksError,
+/** Fetch the list of branches or tags for a given repository. */
+export const fetchGitRefsProjectsLocationsConnectionsGitRepositoryLinks: API.PaginatedOperationMethod<
+  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest,
-  output: FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  output: FetchGitRefsProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
@@ -2762,7 +2977,7 @@ export const ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitReposi
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessGitLabEnterpriseWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2790,6 +3005,85 @@ export const processGitLabEnterpriseWebhookProjectsLocationsConnectionsGitReposi
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Required. Name of the resource */
+  name: string;
+}
+
+export const GetProjectsLocationsConnectionsGitRepositoryLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+
+export type GetProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  GitRepositoryLink;
+export const GetProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ GitRepositoryLink;
+
+export type GetProjectsLocationsConnectionsGitRepositoryLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single GitRepositoryLink. */
+export const getProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
+  GetProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  GetProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  GetProjectsLocationsConnectionsGitRepositoryLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  output: GetProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest {
+  /** Required. The resource name of the gitRepositoryLink in the format `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
+  gitRepositoryLink: string;
+  /** Request body */
+  body?: FetchReadTokenRequest;
+}
+
+export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitRepositoryLink: Schema.String.pipe(T.HttpPath("gitRepositoryLink")),
+    body: Schema.optional(FetchReadTokenRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+gitRepositoryLink}:fetchReadToken",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+
+export type FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  FetchReadTokenResponse;
+export const FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchReadTokenResponse;
+
+export type FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Fetches read token of a given gitRepositoryLink. */
+export const fetchReadTokenProjectsLocationsConnectionsGitRepositoryLinks: API.OperationMethod<
+  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksRequest,
+  output: FetchReadTokenProjectsLocationsConnectionsGitRepositoryLinksResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest {
   /** Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/* /locations/* /connections/* /gitRepositoryLinks/*`. */
   name: string;
@@ -2808,7 +3102,7 @@ export const ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksR
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
+  ) as unknown as Schema.Codec<ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksRequest>;
 
 export type ProcessGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinksResponse =
   Empty;
@@ -2836,610 +3130,322 @@ export const processGitLabWebhookProjectsLocationsConnectionsGitRepositoryLinks:
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateProjectsLocationsAccountConnectorsRequest {
-  /** Required. The ID to use for the AccountConnector, which will become the final component of the AccountConnector's resource name. Its format should adhere to https://google.aip.dev/122#resource-id-segments Names must be unique per-project per-location. */
-  accountConnectorId?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Location resource name as the account_connector’s parent. */
+export interface ListProjectsLocationsInsightsConfigsRequest {
+  /** Optional. Hint for how to order the results. */
+  orderBy?: string;
+  /** Required. Parent value for ListInsightsConfigsRequest. */
   parent: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
-  /** Request body */
-  body?: AccountConnector;
+  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  pageSize?: number;
+  /** Optional. A token identifying a page of results the server should return. */
+  pageToken?: string;
+  /** Optional. Filtering results. See https://google.aip.dev/160 for more details. Filter string, adhering to the rules in https://google.aip.dev/160. List only InsightsConfigs matching the filter. If filter is empty, all InsightsConfigs are listed. */
+  filter?: string;
 }
 
-export const CreateProjectsLocationsAccountConnectorsRequest =
+export const ListProjectsLocationsInsightsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountConnectorId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("accountConnectorId"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/insightsConfigs" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightsConfigsRequest>;
+
+export type ListProjectsLocationsInsightsConfigsResponse =
+  ListInsightsConfigsResponse;
+export const ListProjectsLocationsInsightsConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListInsightsConfigsResponse;
+
+export type ListProjectsLocationsInsightsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists InsightsConfigs in a given project and location. */
+export const listProjectsLocationsInsightsConfigs: API.PaginatedOperationMethod<
+  ListProjectsLocationsInsightsConfigsRequest,
+  ListProjectsLocationsInsightsConfigsResponse,
+  ListProjectsLocationsInsightsConfigsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsInsightsConfigsRequest,
+  output: ListProjectsLocationsInsightsConfigsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsInsightsConfigsRequest {
+  /** Optional. If set, validate the request, but do not actually post it. */
+  validateOnly?: boolean;
+  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
+  etag?: string;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Required. Value for parent. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsInsightsConfigsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
-    body: Schema.optional(AccountConnector).pipe(T.HttpBody()),
+    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/accountConnectors",
-      hasBody: true,
-    }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsInsightsConfigsRequest>;
 
-export type CreateProjectsLocationsAccountConnectorsResponse = Operation;
-export const CreateProjectsLocationsAccountConnectorsResponse =
+export type DeleteProjectsLocationsInsightsConfigsResponse = Operation;
+export const DeleteProjectsLocationsInsightsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsAccountConnectorsError =
+export type DeleteProjectsLocationsInsightsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new AccountConnector in a given project and location. */
-export const createProjectsLocationsAccountConnectors: API.OperationMethod<
-  CreateProjectsLocationsAccountConnectorsRequest,
-  CreateProjectsLocationsAccountConnectorsResponse,
-  CreateProjectsLocationsAccountConnectorsError,
+/** Deletes a single Insight. */
+export const deleteProjectsLocationsInsightsConfigs: API.OperationMethod<
+  DeleteProjectsLocationsInsightsConfigsRequest,
+  DeleteProjectsLocationsInsightsConfigsResponse,
+  DeleteProjectsLocationsInsightsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAccountConnectorsRequest,
-  output: CreateProjectsLocationsAccountConnectorsResponse,
+  input: DeleteProjectsLocationsInsightsConfigsRequest,
+  output: DeleteProjectsLocationsInsightsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsAccountConnectorsRequest {
-  /** Required. Name of the resource */
+export interface GetProjectsLocationsInsightsConfigsRequest {
+  /** Required. Name of the resource. */
   name: string;
 }
 
-export const GetProjectsLocationsAccountConnectorsRequest =
+export const GetProjectsLocationsInsightsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightsConfigsRequest>;
 
-export type GetProjectsLocationsAccountConnectorsResponse = AccountConnector;
-export const GetProjectsLocationsAccountConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccountConnector;
+export type GetProjectsLocationsInsightsConfigsResponse = InsightsConfig;
+export const GetProjectsLocationsInsightsConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ InsightsConfig;
 
-export type GetProjectsLocationsAccountConnectorsError =
+export type GetProjectsLocationsInsightsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single AccountConnector. */
-export const getProjectsLocationsAccountConnectors: API.OperationMethod<
-  GetProjectsLocationsAccountConnectorsRequest,
-  GetProjectsLocationsAccountConnectorsResponse,
-  GetProjectsLocationsAccountConnectorsError,
+/** Gets details of a single Insight. */
+export const getProjectsLocationsInsightsConfigs: API.OperationMethod<
+  GetProjectsLocationsInsightsConfigsRequest,
+  GetProjectsLocationsInsightsConfigsResponse,
+  GetProjectsLocationsInsightsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAccountConnectorsRequest,
-  output: GetProjectsLocationsAccountConnectorsResponse,
+  input: GetProjectsLocationsInsightsConfigsRequest,
+  output: GetProjectsLocationsInsightsConfigsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface PatchProjectsLocationsAccountConnectorsRequest {
-  /** Optional. If set to true, and the accountConnector is not found a new accountConnector will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input accountConnector has all the necessary */
-  allowMissing?: boolean;
-  /** Optional. The list of fields to be updated. */
-  updateMask?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Identifier. The resource name of the accountConnector, in the format `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`. */
-  name: string;
+export interface PatchProjectsLocationsInsightsConfigsRequest {
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
+  /** Optional. If set to true, and the insightsConfig is not found a new insightsConfig will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input insightsConfig has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). */
+  allowMissing?: boolean;
+  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
+  requestId?: string;
+  /** Identifier. The name of the InsightsConfig. Format: projects/{project}/locations/{location}/insightsConfigs/{insightsConfig} */
+  name: string;
   /** Request body */
-  body?: AccountConnector;
+  body?: InsightsConfig;
 }
 
-export const PatchProjectsLocationsAccountConnectorsRequest =
+export const PatchProjectsLocationsInsightsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("validateOnly"),
+    ),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
     ),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-    body: Schema.optional(AccountConnector).pipe(T.HttpBody()),
+    body: Schema.optional(InsightsConfig).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsAccountConnectorsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsLocationsInsightsConfigsRequest>;
 
-export type PatchProjectsLocationsAccountConnectorsResponse = Operation;
-export const PatchProjectsLocationsAccountConnectorsResponse =
+export type PatchProjectsLocationsInsightsConfigsResponse = Operation;
+export const PatchProjectsLocationsInsightsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsAccountConnectorsError =
+export type PatchProjectsLocationsInsightsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates the parameters of a single AccountConnector. */
-export const patchProjectsLocationsAccountConnectors: API.OperationMethod<
-  PatchProjectsLocationsAccountConnectorsRequest,
-  PatchProjectsLocationsAccountConnectorsResponse,
-  PatchProjectsLocationsAccountConnectorsError,
+/** Updates the parameters of a single InsightsConfig. */
+export const patchProjectsLocationsInsightsConfigs: API.OperationMethod<
+  PatchProjectsLocationsInsightsConfigsRequest,
+  PatchProjectsLocationsInsightsConfigsResponse,
+  PatchProjectsLocationsInsightsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAccountConnectorsRequest,
-  output: PatchProjectsLocationsAccountConnectorsResponse,
+  input: PatchProjectsLocationsInsightsConfigsRequest,
+  output: PatchProjectsLocationsInsightsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest {
-  /** Required. The name of the Account Connector resource in the format: `projects/* /locations/* /accountConnectors/*`. */
-  accountConnector: string;
-  /** Optional. Number of results to return in the list. Defaults to 20. */
-  pageSize?: number;
-  /** Optional. Page start. */
-  pageToken?: string;
-  /** Optional. The name of the repository. When specified, only the UserRepository with this name will be returned if the repository is accessible under this Account Connector for the calling user. */
-  repository?: string;
-}
-
-export const FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    repository: Schema.optional(Schema.String).pipe(T.HttpQuery("repository")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+accountConnector}:fetchUserRepositories",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest>;
-
-export type FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
-  FetchUserRepositoriesResponse;
-export const FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchUserRepositoriesResponse;
-
-export type FetchUserRepositoriesProjectsLocationsAccountConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** FetchUserRepositories returns a list of UserRepos that are available for an account connector resource. */
-export const fetchUserRepositoriesProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
-  FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
-  FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
-  FetchUserRepositoriesProjectsLocationsAccountConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: FetchUserRepositoriesProjectsLocationsAccountConnectorsRequest,
-  output: FetchUserRepositoriesProjectsLocationsAccountConnectorsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsAccountConnectorsRequest {
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Name of the resource */
-  name: string;
+export interface CreateProjectsLocationsInsightsConfigsRequest {
+  /** Required. ID of the requesting InsightsConfig. */
+  insightsConfigId?: string;
   /** Optional. If set, validate the request, but do not actually post it. */
   validateOnly?: boolean;
-  /** Optional. The current etag of the AccountConnectorn. If an etag is provided and does not match the current etag of the AccountConnector, deletion will be blocked and an ABORTED error will be returned. */
-  etag?: string;
-  /** Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.) */
-  force?: boolean;
+  /** Required. Value for parent. */
+  parent: string;
+  /** Request body */
+  body?: InsightsConfig;
 }
 
-export const DeleteProjectsLocationsAccountConnectorsRequest =
+export const CreateProjectsLocationsInsightsConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    name: Schema.String.pipe(T.HttpPath("name")),
+    insightsConfigId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("insightsConfigId"),
+    ),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAccountConnectorsRequest>;
-
-export type DeleteProjectsLocationsAccountConnectorsResponse = Operation;
-export const DeleteProjectsLocationsAccountConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsAccountConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single AccountConnector. */
-export const deleteProjectsLocationsAccountConnectors: API.OperationMethod<
-  DeleteProjectsLocationsAccountConnectorsRequest,
-  DeleteProjectsLocationsAccountConnectorsResponse,
-  DeleteProjectsLocationsAccountConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAccountConnectorsRequest,
-  output: DeleteProjectsLocationsAccountConnectorsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsAccountConnectorsRequest {
-  /** Optional. A token identifying a page of results the server should return. */
-  pageToken?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. Hint for how to order the results */
-  orderBy?: string;
-  /** Required. Parent value for ListAccountConnectorsRequest */
-  parent: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
-  pageSize?: number;
-}
-
-export const ListProjectsLocationsAccountConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/accountConnectors" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAccountConnectorsRequest>;
-
-export type ListProjectsLocationsAccountConnectorsResponse =
-  ListAccountConnectorsResponse;
-export const ListProjectsLocationsAccountConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountConnectorsResponse;
-
-export type ListProjectsLocationsAccountConnectorsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists AccountConnectors in a given project and location. */
-export const listProjectsLocationsAccountConnectors: API.PaginatedOperationMethod<
-  ListProjectsLocationsAccountConnectorsRequest,
-  ListProjectsLocationsAccountConnectorsResponse,
-  ListProjectsLocationsAccountConnectorsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAccountConnectorsRequest,
-  output: ListProjectsLocationsAccountConnectorsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
-  accountConnector: string;
-  /** Request body */
-  body?: FetchAccessTokenRequest;
-}
-
-export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
-    body: Schema.optional(FetchAccessTokenRequest).pipe(T.HttpBody()),
+    body: Schema.optional(InsightsConfig).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+accountConnector}/users:fetchAccessToken",
+      path: "v1/{+parent}/insightsConfigs",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsInsightsConfigsRequest>;
 
-export type FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse =
-  FetchAccessTokenResponse;
-export const FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchAccessTokenResponse;
-
-export type FetchAccessTokenProjectsLocationsAccountConnectorsUsersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Fetches OAuth access token based on end user credentials. */
-export const fetchAccessTokenProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest,
-  FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse,
-  FetchAccessTokenProjectsLocationsAccountConnectorsUsersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchAccessTokenProjectsLocationsAccountConnectorsUsersRequest,
-  output: FetchAccessTokenProjectsLocationsAccountConnectorsUsersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. The code to be used for getting the token from SCM provider. */
-  "oauthParams.code"?: string;
-  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
-  accountConnector: string;
-  /** Required. The ticket to be used for post processing the callback from SCM provider. */
-  "oauthParams.ticket"?: string;
-  /** Required. The scopes returned by Google OAuth flow. */
-  "googleOauthParams.scopes"?: string[];
-  /** Optional. The version info returned by Google OAuth flow. */
-  "googleOauthParams.versionInfo"?: string;
-  /** Required. The ticket to be used for post processing the callback from Google OAuth flow. */
-  "googleOauthParams.ticket"?: string;
-}
-
-export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "oauthParams.code": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("oauthParams.code"),
-    ),
-    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
-    "oauthParams.ticket": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("oauthParams.ticket"),
-    ),
-    "googleOauthParams.scopes": Schema.optional(
-      Schema.Array(Schema.String),
-    ).pipe(T.HttpQuery("googleOauthParams.scopes")),
-    "googleOauthParams.versionInfo": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("googleOauthParams.versionInfo"),
-    ),
-    "googleOauthParams.ticket": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("googleOauthParams.ticket"),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+accountConnector}/users:finishOAuthFlow",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
-
-export type FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
-  FinishOAuthResponse;
-export const FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FinishOAuthResponse;
-
-export type FinishOAuthFlowProjectsLocationsAccountConnectorsUsersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Finishes OAuth flow for an account connector. */
-export const finishOAuthFlowProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
-  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
-  FinishOAuthFlowProjectsLocationsAccountConnectorsUsersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FinishOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
-  output: FinishOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsAccountConnectorsUsersRequest {
-  /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
-  etag?: string;
-  /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
-  requestId?: string;
-  /** Required. Name of the resource */
-  name: string;
-  /** Optional. If set, validate the request, but do not actually post it. */
-  validateOnly?: boolean;
-}
-
-export const DeleteProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    validateOnly: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("validateOnly"),
-    ),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsAccountConnectorsUsersRequest>;
-
-export type DeleteProjectsLocationsAccountConnectorsUsersResponse = Operation;
-export const DeleteProjectsLocationsAccountConnectorsUsersResponse =
+export type CreateProjectsLocationsInsightsConfigsResponse = Operation;
+export const CreateProjectsLocationsInsightsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsAccountConnectorsUsersError =
+export type CreateProjectsLocationsInsightsConfigsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single User. */
-export const deleteProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  DeleteProjectsLocationsAccountConnectorsUsersRequest,
-  DeleteProjectsLocationsAccountConnectorsUsersResponse,
-  DeleteProjectsLocationsAccountConnectorsUsersError,
+/** Creates a new InsightsConfig in a given project and location. */
+export const createProjectsLocationsInsightsConfigs: API.OperationMethod<
+  CreateProjectsLocationsInsightsConfigsRequest,
+  CreateProjectsLocationsInsightsConfigsResponse,
+  CreateProjectsLocationsInsightsConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAccountConnectorsUsersRequest,
-  output: DeleteProjectsLocationsAccountConnectorsUsersResponse,
+  input: CreateProjectsLocationsInsightsConfigsRequest,
+  output: CreateProjectsLocationsInsightsConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface FetchSelfProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. Name of the AccountConnector resource */
+export interface GetProjectsLocationsInsightsConfigsDeploymentEventsRequest {
+  /** Required. The name of the deployment event to retrieve. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid} */
   name: string;
 }
 
-export const FetchSelfProjectsLocationsAccountConnectorsUsersRequest =
+export const GetProjectsLocationsInsightsConfigsDeploymentEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}/users:fetchSelf" }),
+    T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<FetchSelfProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
-export type FetchSelfProjectsLocationsAccountConnectorsUsersResponse = User;
-export const FetchSelfProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ User;
+export type GetProjectsLocationsInsightsConfigsDeploymentEventsResponse =
+  DeploymentEvent;
+export const GetProjectsLocationsInsightsConfigsDeploymentEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ DeploymentEvent;
 
-export type FetchSelfProjectsLocationsAccountConnectorsUsersError =
+export type GetProjectsLocationsInsightsConfigsDeploymentEventsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Fetch the User based on the user credentials. */
-export const fetchSelfProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  FetchSelfProjectsLocationsAccountConnectorsUsersRequest,
-  FetchSelfProjectsLocationsAccountConnectorsUsersResponse,
-  FetchSelfProjectsLocationsAccountConnectorsUsersError,
+/** Gets a single Deployment Event. */
+export const getProjectsLocationsInsightsConfigsDeploymentEvents: API.OperationMethod<
+  GetProjectsLocationsInsightsConfigsDeploymentEventsRequest,
+  GetProjectsLocationsInsightsConfigsDeploymentEventsResponse,
+  GetProjectsLocationsInsightsConfigsDeploymentEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchSelfProjectsLocationsAccountConnectorsUsersRequest,
-  output: FetchSelfProjectsLocationsAccountConnectorsUsersResponse,
+  input: GetProjectsLocationsInsightsConfigsDeploymentEventsRequest,
+  output: GetProjectsLocationsInsightsConfigsDeploymentEventsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteSelfProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. Name of the AccountConnector resource */
-  name: string;
-}
-
-export const DeleteSelfProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}/users:deleteSelf" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteSelfProjectsLocationsAccountConnectorsUsersRequest>;
-
-export type DeleteSelfProjectsLocationsAccountConnectorsUsersResponse =
-  Operation;
-export const DeleteSelfProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteSelfProjectsLocationsAccountConnectorsUsersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Delete the User based on the user credentials. */
-export const deleteSelfProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  DeleteSelfProjectsLocationsAccountConnectorsUsersRequest,
-  DeleteSelfProjectsLocationsAccountConnectorsUsersResponse,
-  DeleteSelfProjectsLocationsAccountConnectorsUsersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteSelfProjectsLocationsAccountConnectorsUsersRequest,
-  output: DeleteSelfProjectsLocationsAccountConnectorsUsersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. The resource name of the AccountConnector in the format `projects/* /locations/* /accountConnectors/*`. */
-  accountConnector: string;
-}
-
-export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountConnector: Schema.String.pipe(T.HttpPath("accountConnector")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+accountConnector}/users:startOAuthFlow",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest>;
-
-export type StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
-  StartOAuthResponse;
-export const StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StartOAuthResponse;
-
-export type StartOAuthFlowProjectsLocationsAccountConnectorsUsersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Starts OAuth flow for an account connector. */
-export const startOAuthFlowProjectsLocationsAccountConnectorsUsers: API.OperationMethod<
-  StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
-  StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
-  StartOAuthFlowProjectsLocationsAccountConnectorsUsersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartOAuthFlowProjectsLocationsAccountConnectorsUsersRequest,
-  output: StartOAuthFlowProjectsLocationsAccountConnectorsUsersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsAccountConnectorsUsersRequest {
-  /** Required. Parent value for ListUsersRequest */
-  parent: string;
-  /** Optional. Hint for how to order the results */
+export interface ListProjectsLocationsInsightsConfigsDeploymentEventsRequest {
+  /** Optional. Field to use to order the list of DeploymentEvents. Expects AIP-132 format "field_name asc" or "field_name desc", e.g. "deploy_time desc" Supported fields for ordering are: deploy_time, update_time. Currently, only sorting by a single field is supported. If this field is not provided, the list will be sorted by "deploy_time desc". For more details on the ordering syntax, see https://google.aip.dev/132#ordering. */
   orderBy?: string;
-  /** Optional. Filtering results */
-  filter?: string;
-  /** Optional. A token identifying a page of results the server should return. */
+  /** Optional. A page token, received from a previous `ListDeploymentEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeploymentEvents` must match the call that provided the page token. */
   pageToken?: string;
-  /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
+  /** Optional. Filter expression that matches a subset of the DeploymentEvents. https://google.aip.dev/160. */
+  filter?: string;
+  /** Optional. The maximum number of deployment events to return. The service may return fewer than this value. If unspecified, at most 50 deployment events will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
+  /** Required. The parent insights config that owns this collection of deployment events. Format: projects/{project}/locations/{location}/insightsConfigs/{insights_config} */
+  parent: string;
 }
 
-export const ListProjectsLocationsAccountConnectorsUsersRequest =
+export const ListProjectsLocationsInsightsConfigsDeploymentEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/users" }),
+    T.Http({ method: "GET", path: "v1/{+parent}/deploymentEvents" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsAccountConnectorsUsersRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsInsightsConfigsDeploymentEventsRequest>;
 
-export type ListProjectsLocationsAccountConnectorsUsersResponse =
-  ListUsersResponse;
-export const ListProjectsLocationsAccountConnectorsUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
+export type ListProjectsLocationsInsightsConfigsDeploymentEventsResponse =
+  ListDeploymentEventsResponse;
+export const ListProjectsLocationsInsightsConfigsDeploymentEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListDeploymentEventsResponse;
 
-export type ListProjectsLocationsAccountConnectorsUsersError =
+export type ListProjectsLocationsInsightsConfigsDeploymentEventsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Lists Users in a given project, location, and account_connector. */
-export const listProjectsLocationsAccountConnectorsUsers: API.PaginatedOperationMethod<
-  ListProjectsLocationsAccountConnectorsUsersRequest,
-  ListProjectsLocationsAccountConnectorsUsersResponse,
-  ListProjectsLocationsAccountConnectorsUsersError,
+/** Lists Deployment Events in a given insights config. */
+export const listProjectsLocationsInsightsConfigsDeploymentEvents: API.PaginatedOperationMethod<
+  ListProjectsLocationsInsightsConfigsDeploymentEventsRequest,
+  ListProjectsLocationsInsightsConfigsDeploymentEventsResponse,
+  ListProjectsLocationsInsightsConfigsDeploymentEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAccountConnectorsUsersRequest,
-  output: ListProjectsLocationsAccountConnectorsUsersResponse,
+  input: ListProjectsLocationsInsightsConfigsDeploymentEventsRequest,
+  output: ListProjectsLocationsInsightsConfigsDeploymentEventsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",

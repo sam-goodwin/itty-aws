@@ -2,17 +2,54 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostV1ConnectionsByIdRotateInput {
+  id: string;
+}
 export const PostV1ConnectionsByIdRotateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v1/connections/{id}/rotate" }));
-export type PostV1ConnectionsByIdRotateInput =
-  typeof PostV1ConnectionsByIdRotateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/connections/{id}/rotate" }),
+  ) as unknown as Schema.Codec<PostV1ConnectionsByIdRotateInput>;
 
 // Output Schema
+export interface PostV1ConnectionsByIdRotateOutput {
+  data: {
+    id: string;
+    type: string;
+    url: string;
+    name: string;
+    createdAt: string;
+    kind: "postgres" | "accelerate";
+    endpoints: {
+      direct?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      pooled?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+      accelerate?: {
+        host: string;
+        port: number;
+        connectionString: Redacted.Redacted<string>;
+      };
+    };
+    connectionString: Redacted.Redacted<string>;
+    directConnection?: { host: string; pass: string; user: string } | null;
+    database: { id: string; url: string; name: string };
+    host: string | null;
+    pass: string | null;
+    user: string | null;
+  };
+}
 export const PostV1ConnectionsByIdRotateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Struct({
@@ -27,25 +64,25 @@ export const PostV1ConnectionsByIdRotateOutput =
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         pooled: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         accelerate: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
       }),
-      connectionString: SensitiveString,
+      connectionString: SensitiveOutputString,
       directConnection: Schema.optional(
         Schema.NullOr(
           Schema.Struct({
@@ -64,9 +101,7 @@ export const PostV1ConnectionsByIdRotateOutput =
       pass: Schema.NullOr(Schema.String),
       user: Schema.NullOr(Schema.String),
     }),
-  });
-export type PostV1ConnectionsByIdRotateOutput =
-  typeof PostV1ConnectionsByIdRotateOutput.Type;
+  }) as unknown as Schema.Codec<PostV1ConnectionsByIdRotateOutput>;
 
 // The operation
 /**

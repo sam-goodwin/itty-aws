@@ -4,6 +4,19 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupHostFtsMetricIndexMeasurementsInput {
+  processId: string;
+  indexName: string;
+  databaseName: string;
+  collectionName: string;
+  groupId: string;
+  granularity: string;
+  period?: string;
+  start?: string;
+  end?: string;
+  envelope?: boolean;
+  metrics: string;
+}
 export const GetGroupHostFtsMetricIndexMeasurementsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
@@ -22,15 +35,12 @@ export const GetGroupHostFtsMetricIndexMeasurementsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements",
     }),
-  );
-export type GetGroupHostFtsMetricIndexMeasurementsInput =
-  typeof GetGroupHostFtsMetricIndexMeasurementsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupHostFtsMetricIndexMeasurementsInput>;
 
 // Output Schema
+export type GetGroupHostFtsMetricIndexMeasurementsOutput = void;
 export const GetGroupHostFtsMetricIndexMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupHostFtsMetricIndexMeasurementsOutput =
-  typeof GetGroupHostFtsMetricIndexMeasurementsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupHostFtsMetricIndexMeasurementsOutput>;
 
 // The operation
 /**

@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetNeonAuthInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
@@ -11,12 +15,23 @@ export const GetNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/projects/{project_id}/branches/{branch_id}/auth",
   }),
-);
-export type GetNeonAuthInput = typeof GetNeonAuthInput.Type;
+) as unknown as Schema.Codec<GetNeonAuthInput>;
 
 // Output Schema
+export interface GetNeonAuthOutput {
+  auth_provider: "mock" | "stack" | "better_auth";
+  auth_provider_project_id: string;
+  branch_id: string;
+  db_name: string;
+  created_at: string;
+  owned_by: "user" | "neon";
+  transfer_status?: "initiated" | "finished";
+  jwks_url: string;
+  base_url?: string;
+  name?: string;
+}
 export const GetNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  auth_provider: Schema.Literals(["mock", "stack", "stack_v2", "better_auth"]),
+  auth_provider: Schema.Literals(["mock", "stack", "better_auth"]),
   auth_provider_project_id: Schema.String,
   branch_id: Schema.String,
   db_name: Schema.String,
@@ -26,14 +41,14 @@ export const GetNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   jwks_url: Schema.String,
   base_url: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
-});
-export type GetNeonAuthOutput = typeof GetNeonAuthOutput.Type;
+}) as unknown as Schema.Codec<GetNeonAuthOutput>;
 
 // The operation
 /**
- * Get details of Neon Auth for the branch
+ * Retrieve Neon Auth details for the branch
  *
- * / Fetches the details of the Neon Auth for the specified branch. You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * Retrieves the Neon Auth integration details for the specified branch,
+ * including the auth provider type and integration status.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

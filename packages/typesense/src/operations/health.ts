@@ -3,16 +3,18 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface HealthInput {}
 export const HealthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/health" }),
-);
-export type HealthInput = typeof HealthInput.Type;
+) as unknown as Schema.Codec<HealthInput>;
 
 // Output Schema
+export interface HealthOutput {
+  ok: boolean;
+}
 export const HealthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ok: Schema.Boolean,
-});
-export type HealthOutput = typeof HealthOutput.Type;
+}) as unknown as Schema.Codec<HealthOutput>;
 
 // The operation
 /**

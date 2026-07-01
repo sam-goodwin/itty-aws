@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetBouncerInput {
+  organization: string;
+  database: string;
+  branch: string;
+  bouncer: string;
+}
 export const GetBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -14,10 +20,55 @@ export const GetBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}",
   }),
-);
-export type GetBouncerInput = typeof GetBouncerInput.Type;
+) as unknown as Schema.Codec<GetBouncerInput>;
 
 // Output Schema
+export interface GetBouncerOutput {
+  id: string;
+  name: string;
+  sku: {
+    name: string;
+    display_name: string;
+    cpu: string;
+    ram: number;
+    sort_order: number;
+  };
+  target: "primary" | "replica" | "replica_az_affinity";
+  replicas_per_cell: number;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  actor: { id: string; display_name: string; avatar_url: string };
+  branch: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  parameters: {
+    id: string;
+    namespace: "pgbouncer";
+    name: string;
+    display_name: string;
+    category: string;
+    description: string;
+    immutable: boolean;
+    parameter_type: "array" | "integer" | "seconds" | "select" | "string";
+    default_value: string;
+    value: string;
+    required: boolean;
+    created_at: string;
+    updated_at: string;
+    restart: boolean;
+    max: number;
+    min: number;
+    step: number;
+    url: string;
+    options: string[];
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}
 export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -79,8 +130,7 @@ export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     }),
   ),
-});
-export type GetBouncerOutput = typeof GetBouncerOutput.Type;
+}) as unknown as Schema.Codec<GetBouncerOutput>;
 
 // The operation
 /**

@@ -4,12 +4,99 @@
  * Generated from the Kubernetes OpenAPI spec.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -173,11 +260,92 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
     }),
-  );
-export type CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof CreateAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -332,9 +500,7 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -352,6 +518,97 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicy =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -498,11 +755,96 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
     }),
-  );
-export type CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -640,9 +982,7 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -662,6 +1002,81 @@ export const createAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -795,11 +1210,80 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
     }),
-  );
-export type CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof CreateAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -924,9 +1408,7 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -945,6 +1427,108 @@ export const createAdmissionregistrationV1MutatingWebhookConfiguration =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1137,11 +1721,107 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
     }),
-  );
-export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1325,9 +2005,7 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -1345,6 +2023,98 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicy =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1490,11 +2260,97 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput 
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings",
     }),
-  );
-export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1631,9 +2487,7 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
       policyName: Schema.String,
       validationActions: Schema.Array(Schema.String),
     }),
-  });
-export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -1653,6 +2507,80 @@ export const createAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -1785,11 +2713,79 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations",
     }),
-  );
-export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -1913,9 +2909,7 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -1935,6 +2929,93 @@ export const createAdmissionregistrationV1ValidatingWebhookConfiguration =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2098,11 +3179,92 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
     }),
-  );
-export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2257,9 +3419,7 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -2279,6 +3439,97 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2425,11 +3676,96 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingIn
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
     }),
-  );
-export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2567,9 +3903,7 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -2589,6 +3923,93 @@ export const createAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -2752,11 +4173,92 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
     }),
-  );
-export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -2911,9 +4413,7 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -2932,6 +4432,97 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3078,11 +4669,96 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInp
       method: "POST",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
     }),
-  );
-export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3220,9 +4896,7 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -3242,6 +4916,26 @@ export const createAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
     errors: [Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3274,11 +4968,32 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3318,9 +5033,7 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutpu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -3391,6 +5104,26 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicy =
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3423,11 +5156,32 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3467,9 +5221,7 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -3540,6 +5292,26 @@ export const deleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
       DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3572,11 +5344,32 @@ export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3616,9 +5409,7 @@ export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput =
-  typeof DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -3689,6 +5480,26 @@ export const deleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
       DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3721,11 +5532,32 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInp
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3765,9 +5597,7 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOut
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -3838,6 +5668,26 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicy =
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -3870,11 +5720,32 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -3914,9 +5785,7 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -3987,6 +5856,26 @@ export const deleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
       DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4019,11 +5908,32 @@ export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations",
     }),
-  );
-export type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4063,9 +5973,7 @@ export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput =
-  typeof DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -4136,6 +6044,18 @@ export const deleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
       DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4160,11 +6080,32 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4204,9 +6145,7 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -4227,6 +6166,18 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4251,11 +6202,32 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4295,9 +6267,7 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -4320,6 +6290,18 @@ export const deleteAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4344,11 +6326,32 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4388,9 +6391,7 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -4412,6 +6413,18 @@ export const deleteAdmissionregistrationV1MutatingWebhookConfiguration =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4436,11 +6449,32 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4480,9 +6514,7 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -4503,6 +6535,18 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicy =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4527,11 +6571,32 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput 
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4571,9 +6636,7 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -4596,6 +6659,18 @@ export const deleteAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -4620,11 +6695,32 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4664,9 +6760,7 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -4689,6 +6783,26 @@ export const deleteAdmissionregistrationV1ValidatingWebhookConfiguration =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4721,11 +6835,32 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
     }),
-  );
-export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4765,9 +6900,7 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -4838,6 +6971,26 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -4870,11 +7023,32 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
     }),
-  );
-export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -4914,9 +7088,7 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -4987,6 +7159,18 @@ export const deleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
       DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5011,11 +7195,32 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5055,9 +7260,7 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -5080,6 +7283,18 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5104,11 +7319,32 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingIn
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5148,9 +7384,7 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -5173,6 +7407,26 @@ export const deleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5205,11 +7459,32 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
     }),
-  );
-export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5249,9 +7524,7 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -5322,6 +7595,26 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  continue?: string;
+  dryRun?: string;
+  fieldSelector?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  labelSelector?: string;
+  limit?: number;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5354,11 +7647,32 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
     }),
-  );
-export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5398,9 +7712,7 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -5471,6 +7783,18 @@ export const deleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
       DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5495,11 +7819,32 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5539,9 +7884,7 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -5563,6 +7906,18 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  gracePeriodSeconds?: number;
+  ignoreStoreReadErrorWithClusterBreakingPotential?: boolean;
+  orphanDependents?: boolean;
+  propagationPolicy?: string;
+  apiVersion?: string;
+  kind?: string;
+  preconditions?: { resourceVersion?: string; uid?: string };
+}
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -5587,11 +7942,32 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInp
       method: "DELETE",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  code?: number;
+  details?: {
+    causes?: { field?: string; message?: string; reason?: string }[];
+    group?: string;
+    kind?: string;
+    name?: string;
+    retryAfterSeconds?: number;
+    uid?: string;
+  };
+  kind?: string;
+  message?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+  reason?: string;
+  status?: string;
+}
 export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5631,9 +8007,7 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
-  });
-export type DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -5656,14 +8030,21 @@ export const deleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
+export interface GetAdmissionregistrationAPIGroupInput {}
 export const GetAdmissionregistrationAPIGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/" }),
-  );
-export type GetAdmissionregistrationAPIGroupInput =
-  typeof GetAdmissionregistrationAPIGroupInput.Type;
+  ) as unknown as Schema.Codec<GetAdmissionregistrationAPIGroupInput>;
 
 // Output Schema
+export interface GetAdmissionregistrationAPIGroupOutput {
+  apiVersion?: string;
+  kind?: string;
+  name: string;
+  preferredVersion?: { groupVersion: string; version: string };
+  serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
+  versions: { groupVersion: string; version: string }[];
+}
 export const GetAdmissionregistrationAPIGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5689,9 +8070,7 @@ export const GetAdmissionregistrationAPIGroupOutput =
         version: Schema.String,
       }),
     ),
-  });
-export type GetAdmissionregistrationAPIGroupOutput =
-  typeof GetAdmissionregistrationAPIGroupOutput.Type;
+  }) as unknown as Schema.Codec<GetAdmissionregistrationAPIGroupOutput>;
 
 // The operation
 /**
@@ -5703,14 +8082,30 @@ export const getAdmissionregistrationAPIGroup =
     outputSchema: GetAdmissionregistrationAPIGroupOutput,
   }));
 // Input Schema
+export interface GetAdmissionregistrationV1APIResourcesInput {}
 export const GetAdmissionregistrationV1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/admissionregistration.k8s.io/v1/" }),
-  );
-export type GetAdmissionregistrationV1APIResourcesInput =
-  typeof GetAdmissionregistrationV1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAdmissionregistrationV1APIResourcesInput>;
 
 // Output Schema
+export interface GetAdmissionregistrationV1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAdmissionregistrationV1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5730,9 +8125,7 @@ export const GetAdmissionregistrationV1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAdmissionregistrationV1APIResourcesOutput =
-  typeof GetAdmissionregistrationV1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAdmissionregistrationV1APIResourcesOutput>;
 
 // The operation
 /**
@@ -5744,17 +8137,33 @@ export const getAdmissionregistrationV1APIResources =
     outputSchema: GetAdmissionregistrationV1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetAdmissionregistrationV1alpha1APIResourcesInput {}
 export const GetAdmissionregistrationV1alpha1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/",
     }),
-  );
-export type GetAdmissionregistrationV1alpha1APIResourcesInput =
-  typeof GetAdmissionregistrationV1alpha1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAdmissionregistrationV1alpha1APIResourcesInput>;
 
 // Output Schema
+export interface GetAdmissionregistrationV1alpha1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5774,9 +8183,7 @@ export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAdmissionregistrationV1alpha1APIResourcesOutput =
-  typeof GetAdmissionregistrationV1alpha1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAdmissionregistrationV1alpha1APIResourcesOutput>;
 
 // The operation
 /**
@@ -5788,17 +8195,33 @@ export const getAdmissionregistrationV1alpha1APIResources =
     outputSchema: GetAdmissionregistrationV1alpha1APIResourcesOutput,
   }));
 // Input Schema
+export interface GetAdmissionregistrationV1beta1APIResourcesInput {}
 export const GetAdmissionregistrationV1beta1APIResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/",
     }),
-  );
-export type GetAdmissionregistrationV1beta1APIResourcesInput =
-  typeof GetAdmissionregistrationV1beta1APIResourcesInput.Type;
+  ) as unknown as Schema.Codec<GetAdmissionregistrationV1beta1APIResourcesInput>;
 
 // Output Schema
+export interface GetAdmissionregistrationV1beta1APIResourcesOutput {
+  apiVersion?: string;
+  groupVersion: string;
+  kind?: string;
+  resources: {
+    categories?: string[];
+    group?: string;
+    kind: string;
+    name: string;
+    namespaced: boolean;
+    shortNames?: string[];
+    singularName: string;
+    storageVersionHash?: string;
+    verbs: string[];
+    version?: string;
+  }[];
+}
 export const GetAdmissionregistrationV1beta1APIResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -5818,9 +8241,7 @@ export const GetAdmissionregistrationV1beta1APIResourcesOutput =
         version: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GetAdmissionregistrationV1beta1APIResourcesOutput =
-  typeof GetAdmissionregistrationV1beta1APIResourcesOutput.Type;
+  }) as unknown as Schema.Codec<GetAdmissionregistrationV1beta1APIResourcesOutput>;
 
 // The operation
 /**
@@ -5832,6 +8253,20 @@ export const getAdmissionregistrationV1beta1APIResources =
     outputSchema: GetAdmissionregistrationV1beta1APIResourcesOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -5851,11 +8286,103 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
     }),
-  );
-export type ListAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof ListAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchConstraints?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      mutations?: {
+        applyConfiguration?: { expression?: string };
+        jsonPatch?: { expression?: string };
+        patchType: string;
+      }[];
+      paramKind?: { apiVersion?: string; kind?: string };
+      reinvocationPolicy?: string;
+      variables?: { expression: string; name: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6035,9 +8562,7 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof ListAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -6103,6 +8628,20 @@ export const listAdmissionregistrationV1MutatingAdmissionPolicy =
     outputSchema: ListAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -6122,11 +8661,107 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings",
     }),
-  );
-export type ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      matchResources?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      paramRef?: {
+        name?: string;
+        namespace?: string;
+        parameterNotFoundAction?: string;
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      policyName?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6289,9 +8924,7 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -6358,6 +8991,20 @@ export const listAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -6377,11 +9024,99 @@ export const ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
     }),
-  );
-export type ListAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof ListAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    webhooks?: {
+      admissionReviewVersions: string[];
+      clientConfig: {
+        caBundle?: string;
+        service?: {
+          name: string;
+          namespace: string;
+          path?: string;
+          port?: number;
+        };
+        url?: string;
+      };
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchPolicy?: string;
+      name: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      reinvocationPolicy?: string;
+      rules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      sideEffects: string;
+      timeoutSeconds?: number;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6527,9 +9262,7 @@ export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof ListAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -6595,6 +9328,20 @@ export const listAdmissionregistrationV1MutatingWebhookConfiguration =
     outputSchema: ListAdmissionregistrationV1MutatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -6614,11 +9361,118 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
     }),
-  );
-export type ListAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof ListAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      auditAnnotations?: { key: string; valueExpression: string }[];
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchConstraints?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      paramKind?: { apiVersion?: string; kind?: string };
+      validations?: {
+        expression: string;
+        message?: string;
+        messageExpression?: string;
+        reason?: string;
+      }[];
+      variables?: { expression: string; name: string }[];
+    };
+    status?: {
+      conditions?: {
+        lastTransitionTime: string;
+        message: string;
+        observedGeneration?: number;
+        reason: string;
+        status: string;
+        type: string;
+      }[];
+      observedGeneration?: number;
+      typeChecking?: {
+        expressionWarnings?: { fieldRef: string; warning: string }[];
+      };
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -6827,9 +9681,7 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -6895,6 +9747,20 @@ export const listAdmissionregistrationV1ValidatingAdmissionPolicy =
     outputSchema: ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -6914,11 +9780,108 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings",
     }),
-  );
-export type ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec: {
+      matchResources?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      paramRef?: {
+        name?: string;
+        namespace?: string;
+        parameterNotFoundAction?: string;
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      policyName: string;
+      validationActions: string[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7076,9 +10039,7 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -7146,6 +10107,20 @@ export const listAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7165,11 +10140,98 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations",
     }),
-  );
-export type ListAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof ListAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    webhooks?: {
+      admissionReviewVersions: string[];
+      clientConfig: {
+        caBundle?: string;
+        service?: {
+          name: string;
+          namespace: string;
+          path?: string;
+          port?: number;
+        };
+        url?: string;
+      };
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchPolicy?: string;
+      name: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      rules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      sideEffects: string;
+      timeoutSeconds?: number;
+    }[];
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7314,9 +10376,7 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -7383,6 +10443,20 @@ export const listAdmissionregistrationV1ValidatingWebhookConfiguration =
       ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7402,11 +10476,103 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies",
     }),
-  );
-export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchConstraints?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      mutations?: {
+        applyConfiguration?: { expression?: string };
+        jsonPatch?: { expression?: string };
+        patchType: string;
+      }[];
+      paramKind?: { apiVersion?: string; kind?: string };
+      reinvocationPolicy?: string;
+      variables?: { expression: string; name: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7586,9 +10752,7 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -7655,6 +10819,20 @@ export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7674,11 +10852,107 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInpu
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings",
     }),
-  );
-export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      matchResources?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      paramRef?: {
+        name?: string;
+        namespace?: string;
+        parameterNotFoundAction?: string;
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      policyName?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -7841,9 +11115,7 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -7911,6 +11183,20 @@ export const listAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -7930,11 +11216,103 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
     }),
-  );
-export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      failurePolicy?: string;
+      matchConditions?: { expression: string; name: string }[];
+      matchConstraints?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      mutations?: {
+        applyConfiguration?: { expression?: string };
+        jsonPatch?: { expression?: string };
+        patchType: string;
+      }[];
+      paramKind?: { apiVersion?: string; kind?: string };
+      reinvocationPolicy?: string;
+      variables?: { expression: string; name: string }[];
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8114,9 +11492,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -8182,6 +11558,20 @@ export const listAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     outputSchema: ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  pretty?: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
@@ -8201,11 +11591,107 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings",
     }),
-  );
-export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  items: {
+    apiVersion?: string;
+    kind?: string;
+    metadata?: {
+      annotations?: Record<string, string>;
+      creationTimestamp?: string;
+      deletionGracePeriodSeconds?: number;
+      deletionTimestamp?: string;
+      finalizers?: string[];
+      generateName?: string;
+      generation?: number;
+      labels?: Record<string, string>;
+      managedFields?: {
+        apiVersion?: string;
+        fieldsType?: string;
+        fieldsV1?: unknown;
+        manager?: string;
+        operation?: string;
+        subresource?: string;
+        time?: string;
+      }[];
+      name?: string;
+      namespace?: string;
+      ownerReferences?: {
+        apiVersion: string;
+        blockOwnerDeletion?: boolean;
+        controller?: boolean;
+        kind: string;
+        name: string;
+        uid: string;
+      }[];
+      resourceVersion?: string;
+      selfLink?: string;
+      uid?: string;
+    };
+    spec?: {
+      matchResources?: {
+        excludeResourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+        matchPolicy?: string;
+        namespaceSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        objectSelector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+        resourceRules?: {
+          apiGroups?: string[];
+          apiVersions?: string[];
+          operations?: string[];
+          resourceNames?: string[];
+          resources?: string[];
+          scope?: string;
+        }[];
+      };
+      paramRef?: {
+        name?: string;
+        namespace?: string;
+        parameterNotFoundAction?: string;
+        selector?: {
+          matchExpressions?: {
+            key: string;
+            operator: string;
+            values?: string[];
+          }[];
+          matchLabels?: Record<string, string>;
+        };
+      };
+      policyName?: string;
+    };
+  }[];
+  kind?: string;
+  metadata?: {
+    continue?: string;
+    remainingItemCount?: number;
+    resourceVersion?: string;
+    selfLink?: string;
+    shardInfo?: { selector: string };
+  };
+}
 export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8368,9 +11854,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
         ),
       }),
     ),
-  });
-export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -8438,6 +11922,14 @@ export const listAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8451,11 +11943,92 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof PatchAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8610,9 +12183,7 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -8632,6 +12203,14 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8645,11 +12224,96 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8787,9 +12451,7 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -8811,6 +12473,14 @@ export const patchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8824,11 +12494,80 @@ export const PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof PatchAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -8953,9 +12692,7 @@ export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -8976,6 +12713,14 @@ export const patchAdmissionregistrationV1MutatingWebhookConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -8989,11 +12734,107 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9177,9 +13018,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -9199,6 +13038,14 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9212,11 +13059,97 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9353,9 +13286,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput 
       policyName: Schema.String,
       validationActions: Schema.Array(Schema.String),
     }),
-  });
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -9377,6 +13308,14 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9390,11 +13329,107 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}/status",
     }),
-  );
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9578,9 +13613,7 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
         ),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput>;
 
 // The operation
 /**
@@ -9602,6 +13635,14 @@ export const patchAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9615,11 +13656,79 @@ export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9743,9 +13852,7 @@ export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -9767,6 +13874,14 @@ export const patchAdmissionregistrationV1ValidatingWebhookConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9780,11 +13895,92 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -9939,9 +14135,7 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -9962,6 +14156,14 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -9975,11 +14177,96 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInp
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10117,9 +14404,7 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOut
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -10141,6 +14426,14 @@ export const patchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10154,11 +14447,92 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10313,9 +14687,7 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -10336,6 +14708,14 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  force?: boolean;
+}
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10349,11 +14729,96 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInpu
       method: "PATCH",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10491,9 +14956,7 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutp
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -10515,6 +14978,10 @@ export const patchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10524,11 +14991,92 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof ReadAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10683,9 +15231,7 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -10701,6 +15247,10 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicy =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10710,11 +15260,96 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -10852,9 +15487,7 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -10871,6 +15504,10 @@ export const readAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -10880,11 +15517,80 @@ export const ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof ReadAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11009,9 +15715,7 @@ export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -11027,6 +15731,10 @@ export const readAdmissionregistrationV1MutatingWebhookConfiguration =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11036,11 +15744,107 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11224,9 +16028,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -11242,6 +16044,10 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicy =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11251,11 +16057,97 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11392,9 +16284,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
       policyName: Schema.String,
       validationActions: Schema.Array(Schema.String),
     }),
-  });
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -11412,6 +16302,10 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11421,11 +16315,107 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}/status",
     }),
-  );
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11609,9 +16599,7 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
         ),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput>;
 
 // The operation
 /**
@@ -11629,6 +16617,10 @@ export const readAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11638,11 +16630,79 @@ export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11766,9 +16826,7 @@ export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -11785,6 +16843,10 @@ export const readAdmissionregistrationV1ValidatingWebhookConfiguration =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11794,11 +16856,92 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -11953,9 +17096,7 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -11972,6 +17113,10 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -11981,11 +17126,96 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInpu
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12123,9 +17353,7 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -12143,6 +17371,10 @@ export const readAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -12152,11 +17384,92 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12311,9 +17624,7 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -12329,6 +17640,10 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+}
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -12338,11 +17653,96 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12480,9 +17880,7 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -12500,6 +17898,94 @@ export const readAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
     errors: [NotFound] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -12664,11 +18150,92 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -12823,9 +18390,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -12844,6 +18409,98 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -12991,11 +18648,96 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13133,9 +18875,7 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput 
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -13156,6 +18896,82 @@ export const replaceAdmissionregistrationV1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -13290,11 +19106,80 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    reinvocationPolicy?: string;
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13419,9 +19304,7 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
         }),
       ),
     ),
-  });
-export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -13442,6 +19325,109 @@ export const replaceAdmissionregistrationV1MutatingWebhookConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -13635,11 +19621,107 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -13823,9 +19905,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -13844,6 +19924,99 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -13990,11 +20163,97 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName: string;
+    validationActions: string[];
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14131,9 +20390,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutpu
       policyName: Schema.String,
       validationActions: Schema.Array(Schema.String),
     }),
-  });
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -14154,6 +20411,109 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -14347,11 +20707,107 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput 
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}/status",
     }),
-  );
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    auditAnnotations?: { key: string; valueExpression: string }[];
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramKind?: { apiVersion?: string; kind?: string };
+    validations?: {
+      expression: string;
+      message?: string;
+      messageExpression?: string;
+      reason?: string;
+    }[];
+    variables?: { expression: string; name: string }[];
+  };
+  status?: {
+    conditions?: {
+      lastTransitionTime: string;
+      message: string;
+      observedGeneration?: number;
+      reason: string;
+      status: string;
+      type: string;
+    }[];
+    observedGeneration?: number;
+    typeChecking?: {
+      expressionWarnings?: { fieldRef: string; warning: string }[];
+    };
+  };
+}
 export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14535,9 +20991,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput
         ),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
-  typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput>;
 
 // The operation
 /**
@@ -14558,6 +21012,81 @@ export const replaceAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -14691,11 +21220,79 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  webhooks?: {
+    admissionReviewVersions: string[];
+    clientConfig: {
+      caBundle?: string;
+      service?: {
+        name: string;
+        namespace: string;
+        path?: string;
+        port?: number;
+      };
+      url?: string;
+    };
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchPolicy?: string;
+    name: string;
+    namespaceSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    objectSelector?: {
+      matchExpressions?: { key: string; operator: string; values?: string[] }[];
+      matchLabels?: Record<string, string>;
+    };
+    rules?: {
+      apiGroups?: string[];
+      apiVersions?: string[];
+      operations?: string[];
+      resources?: string[];
+      scope?: string;
+    }[];
+    sideEffects: string;
+    timeoutSeconds?: number;
+  }[];
+}
 export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -14819,9 +21416,7 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput 
         }),
       ),
     ),
-  });
-export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -14842,6 +21437,94 @@ export const replaceAdmissionregistrationV1ValidatingWebhookConfiguration =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15006,11 +21689,92 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15165,9 +21929,7 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -15188,6 +21950,98 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15335,11 +22189,96 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingI
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15477,9 +22416,7 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingO
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -15500,6 +22437,94 @@ export const replaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding 
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15664,11 +22689,92 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    failurePolicy?: string;
+    matchConditions?: { expression: string; name: string }[];
+    matchConstraints?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    mutations?: {
+      applyConfiguration?: { expression?: string };
+      jsonPatch?: { expression?: string };
+      patchType: string;
+    }[];
+    paramKind?: { apiVersion?: string; kind?: string };
+    reinvocationPolicy?: string;
+    variables?: { expression: string; name: string }[];
+  };
+}
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -15823,9 +22929,7 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
         ),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -15846,6 +22950,98 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicy =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  pretty?: string;
+  dryRun?: string;
+  fieldManager?: string;
+  fieldValidation?: string;
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -15993,11 +23189,96 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingIn
       method: "PUT",
       path: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  apiVersion?: string;
+  kind?: string;
+  metadata?: {
+    annotations?: Record<string, string>;
+    creationTimestamp?: string;
+    deletionGracePeriodSeconds?: number;
+    deletionTimestamp?: string;
+    finalizers?: string[];
+    generateName?: string;
+    generation?: number;
+    labels?: Record<string, string>;
+    managedFields?: {
+      apiVersion?: string;
+      fieldsType?: string;
+      fieldsV1?: unknown;
+      manager?: string;
+      operation?: string;
+      subresource?: string;
+      time?: string;
+    }[];
+    name?: string;
+    namespace?: string;
+    ownerReferences?: {
+      apiVersion: string;
+      blockOwnerDeletion?: boolean;
+      controller?: boolean;
+      kind: string;
+      name: string;
+      uid: string;
+    }[];
+    resourceVersion?: string;
+    selfLink?: string;
+    uid?: string;
+  };
+  spec?: {
+    matchResources?: {
+      excludeResourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+      matchPolicy?: string;
+      namespaceSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      objectSelector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+      resourceRules?: {
+        apiGroups?: string[];
+        apiVersions?: string[];
+        operations?: string[];
+        resourceNames?: string[];
+        resources?: string[];
+        scope?: string;
+      }[];
+    };
+    paramRef?: {
+      name?: string;
+      namespace?: string;
+      parameterNotFoundAction?: string;
+      selector?: {
+        matchExpressions?: {
+          key: string;
+          operator: string;
+          values?: string[];
+        }[];
+        matchLabels?: Record<string, string>;
+      };
+    };
+    policyName?: string;
+  };
+}
 export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
@@ -16135,9 +23416,7 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOu
         policyName: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -16158,6 +23437,21 @@ export const replaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -16178,18 +23472,18 @@ export const WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -16256,6 +23550,21 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicy =
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -16276,18 +23585,18 @@ export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -16356,6 +23665,20 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBinding =
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -16375,18 +23698,18 @@ export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicybindings",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput>;
 
 // The operation
 /**
@@ -16454,6 +23777,20 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyBindingList =
       WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -16473,18 +23810,18 @@ export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
-  typeof WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput>;
 
 // The operation
 /**
@@ -16550,6 +23887,21 @@ export const watchAdmissionregistrationV1MutatingAdmissionPolicyList =
     outputSchema: WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -16570,18 +23922,18 @@ export const WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
-  typeof WatchAdmissionregistrationV1MutatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
-  typeof WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -16649,6 +24001,20 @@ export const watchAdmissionregistrationV1MutatingWebhookConfiguration =
       WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -16668,18 +24034,18 @@ export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations",
     }),
-  );
-export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
-  typeof WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
-  typeof WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput>;
 
 // The operation
 /**
@@ -16747,6 +24113,21 @@ export const watchAdmissionregistrationV1MutatingWebhookConfigurationList =
       WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -16767,18 +24148,18 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -16845,6 +24226,21 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicy =
     outputSchema: WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -16865,18 +24261,18 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicybindings/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -16945,6 +24341,20 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -16964,18 +24374,18 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInp
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicybindings",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput>;
 
 // The operation
 /**
@@ -17043,6 +24453,20 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyBindingList =
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17062,18 +24486,18 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
-  typeof WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput>;
 
 // The operation
 /**
@@ -17140,6 +24564,21 @@ export const watchAdmissionregistrationV1ValidatingAdmissionPolicyList =
       WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17160,18 +24599,18 @@ export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
-  typeof WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
-  typeof WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput>;
 
 // The operation
 /**
@@ -17240,6 +24679,20 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfiguration =
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17259,18 +24712,18 @@ export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations",
     }),
-  );
-export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput =
-  typeof WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
-  typeof WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput>;
 
 // The operation
 /**
@@ -17338,6 +24791,21 @@ export const watchAdmissionregistrationV1ValidatingWebhookConfigurationList =
       WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17358,18 +24826,18 @@ export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -17437,6 +24905,21 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicy =
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17457,18 +24940,18 @@ export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInp
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -17537,6 +25020,20 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17556,18 +25053,18 @@ export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingLis
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicybindings",
     }),
-  );
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput>;
 
 // The operation
 /**
@@ -17635,6 +25132,20 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingLis
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17654,18 +25165,18 @@ export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput 
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1alpha1/watch/mutatingadmissionpolicies",
     }),
-  );
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
-  typeof WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput>;
 
 // The operation
 /**
@@ -17733,6 +25244,21 @@ export const watchAdmissionregistrationV1alpha1MutatingAdmissionPolicyList =
       WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17753,18 +25279,18 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicies/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput>;
 
 // The operation
 /**
@@ -17832,6 +25358,21 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicy =
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput {
+  name: string;
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
@@ -17852,18 +25393,18 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInpu
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicybindings/{name}",
     }),
-  );
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput>;
 
 // The operation
 /**
@@ -17932,6 +25473,20 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -17951,18 +25506,18 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicybindings",
     }),
-  );
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput>;
 
 // The operation
 /**
@@ -18030,6 +25585,20 @@ export const watchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList
       WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput,
   }));
 // Input Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput {
+  allowWatchBookmarks?: boolean;
+  continue?: string;
+  fieldSelector?: string;
+  labelSelector?: string;
+  limit?: number;
+  pretty?: string;
+  resourceVersion?: string;
+  resourceVersionMatch?: string;
+  sendInitialEvents?: boolean;
+  shardSelector?: string;
+  timeoutSeconds?: number;
+  watch?: boolean;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -18049,18 +25618,18 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
       method: "GET",
       path: "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingadmissionpolicies",
     }),
-  );
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput.Type;
+  ) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput>;
 
 // Output Schema
+export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput {
+  object: unknown;
+  type: string;
+}
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
-  });
-export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
-  typeof WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput.Type;
+  }) as unknown as Schema.Codec<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput>;
 
 // The operation
 /**

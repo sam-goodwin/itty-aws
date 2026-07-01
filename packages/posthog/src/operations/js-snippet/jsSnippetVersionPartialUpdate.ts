@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface JsSnippetVersionPartialUpdateInput {
+  project_id: string;
+  js_snippet_version?: string | null;
+}
 export const JsSnippetVersionPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,15 @@ export const JsSnippetVersionPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/js-snippet/version/",
     }),
-  );
-export type JsSnippetVersionPartialUpdateInput =
-  typeof JsSnippetVersionPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<JsSnippetVersionPartialUpdateInput>;
 
 // Output Schema
+export type JsSnippetVersionPartialUpdateOutput = Record<string, unknown>;
 export const JsSnippetVersionPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type JsSnippetVersionPartialUpdateOutput =
-  typeof JsSnippetVersionPartialUpdateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<JsSnippetVersionPartialUpdateOutput>;
 
 // The operation
 /**

@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignEvmTransactionWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  transaction: string;
+  walletSecretId?: string;
+}
 export const SignEvmTransactionWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +22,20 @@ export const SignEvmTransactionWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/evm/sign/transaction",
     }),
-  );
-export type SignEvmTransactionWithEndUserAccountInput =
-  typeof SignEvmTransactionWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SignEvmTransactionWithEndUserAccountInput>;
 
 // Output Schema
+export interface SignEvmTransactionWithEndUserAccountOutput {
+  signedTransaction: string;
+}
 export const SignEvmTransactionWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedTransaction: Schema.String,
-  });
-export type SignEvmTransactionWithEndUserAccountOutput =
-  typeof SignEvmTransactionWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SignEvmTransactionWithEndUserAccountOutput>;
 
 // The operation
 /**
- * Sign a transaction with end user EVM account
+ * Sign transaction via end user EVM account
  *
  * Signs a transaction with the given end user EVM account.
  * The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).

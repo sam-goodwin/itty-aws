@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsJiraProjectsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsJiraProjectsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,22 @@ export const IntegrationsJiraProjectsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/jira_projects/",
     }),
-  );
-export type IntegrationsJiraProjectsRetrieveInput =
-  typeof IntegrationsJiraProjectsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsJiraProjectsRetrieveInput>;
 
 // Output Schema
+export interface IntegrationsJiraProjectsRetrieveOutput {
+  projects: { id: string; key: string; name: string }[];
+}
 export const IntegrationsJiraProjectsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsJiraProjectsRetrieveOutput =
-  typeof IntegrationsJiraProjectsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projects: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        key: Schema.String,
+        name: Schema.String,
+      }),
+    ),
+  }) as unknown as Schema.Codec<IntegrationsJiraProjectsRetrieveOutput>;
 
 // The operation
 /**

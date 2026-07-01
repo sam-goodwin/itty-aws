@@ -4,12 +4,34 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AvailabilitySetsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  availabilitySetResourceName: string;
+  properties?: {
+    availabilitySetName?: string;
+    vmmServerId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AvailabilitySetsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -45,11 +67,22 @@ export const AvailabilitySetsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsCreateOrUpdateInput =
-  typeof AvailabilitySetsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AvailabilitySetsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvailabilitySetsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -69,9 +102,7 @@ export const AvailabilitySetsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvailabilitySetsCreateOrUpdateOutput =
-  typeof AvailabilitySetsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilitySetsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -90,26 +121,30 @@ export const AvailabilitySetsCreateOrUpdate =
     outputSchema: AvailabilitySetsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AvailabilitySetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  availabilitySetResourceName: string;
+  force?: "true" | "false";
+}
 export const AvailabilitySetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     availabilitySetResourceName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsDeleteInput =
-  typeof AvailabilitySetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsDeleteInput>;
 
 // Output Schema
+export type AvailabilitySetsDeleteOutput = void;
 export const AvailabilitySetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AvailabilitySetsDeleteOutput =
-  typeof AvailabilitySetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AvailabilitySetsDeleteOutput>;
 
 // The operation
 /**
@@ -120,6 +155,7 @@ export type AvailabilitySetsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param availabilitySetResourceName - Name of the AvailabilitySet.
  */
 export const AvailabilitySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -129,6 +165,11 @@ export const AvailabilitySetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AvailabilitySetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  availabilitySetResourceName: string;
+}
 export const AvailabilitySetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -140,10 +181,22 @@ export const AvailabilitySetsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsGetInput = typeof AvailabilitySetsGetInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsGetInput>;
 
 // Output Schema
+export interface AvailabilitySetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvailabilitySetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -163,8 +216,7 @@ export const AvailabilitySetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvailabilitySetsGetOutput = typeof AvailabilitySetsGetOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilitySetsGetOutput>;
 
 // The operation
 /**
@@ -182,6 +234,10 @@ export const AvailabilitySetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AvailabilitySetsGetOutput,
 }));
 // Input Schema
+export interface AvailabilitySetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AvailabilitySetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -192,11 +248,25 @@ export const AvailabilitySetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsListByResourceGroupInput =
-  typeof AvailabilitySetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsListByResourceGroupInput>;
 
 // Output Schema
+export interface AvailabilitySetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvailabilitySetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -231,9 +301,7 @@ export const AvailabilitySetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilitySetsListByResourceGroupOutput =
-  typeof AvailabilitySetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilitySetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -251,6 +319,9 @@ export const AvailabilitySetsListByResourceGroup =
     outputSchema: AvailabilitySetsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AvailabilitySetsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AvailabilitySetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -260,11 +331,25 @@ export const AvailabilitySetsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/availabilitySets",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsListBySubscriptionInput =
-  typeof AvailabilitySetsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsListBySubscriptionInput>;
 
 // Output Schema
+export interface AvailabilitySetsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvailabilitySetsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -299,9 +384,7 @@ export const AvailabilitySetsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvailabilitySetsListBySubscriptionOutput =
-  typeof AvailabilitySetsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilitySetsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -318,6 +401,12 @@ export const AvailabilitySetsListBySubscription =
     outputSchema: AvailabilitySetsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AvailabilitySetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  availabilitySetResourceName: string;
+  tags?: Record<string, string>;
+}
 export const AvailabilitySetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -330,11 +419,22 @@ export const AvailabilitySetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type AvailabilitySetsUpdateInput =
-  typeof AvailabilitySetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AvailabilitySetsUpdateInput>;
 
 // Output Schema
+export interface AvailabilitySetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvailabilitySetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -354,9 +454,7 @@ export const AvailabilitySetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvailabilitySetsUpdateOutput =
-  typeof AvailabilitySetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AvailabilitySetsUpdateOutput>;
 
 // The operation
 /**
@@ -376,6 +474,43 @@ export const AvailabilitySetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudResourceName: string;
+  properties?: {
+    inventoryItemId?: string;
+    uuid?: string;
+    vmmServerId?: string;
+    cloudName?: string;
+    cloudCapacity?: {
+      cpuCount?: number;
+      memoryMB?: number;
+      vmCount?: number;
+      storageGB?: number;
+    };
+    storageQoSPolicies?: {
+      name?: string;
+      id?: string;
+      iopsMaximum?: number;
+      iopsMinimum?: number;
+      bandwidthLimit?: number;
+      policyId?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CloudsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -433,10 +568,22 @@ export const CloudsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type CloudsCreateOrUpdateInput = typeof CloudsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CloudsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CloudsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -456,8 +603,7 @@ export const CloudsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CloudsCreateOrUpdateOutput = typeof CloudsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CloudsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -477,22 +623,29 @@ export const CloudsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudResourceName: string;
+  force?: "true" | "false";
+}
 export const CloudsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cloudResourceName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Literals(["true", "false"])),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type CloudsDeleteInput = typeof CloudsDeleteInput.Type;
+) as unknown as Schema.Codec<CloudsDeleteInput>;
 
 // Output Schema
-export const CloudsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CloudsDeleteOutput = typeof CloudsDeleteOutput.Type;
+export type CloudsDeleteOutput = void;
+export const CloudsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudsDeleteOutput>;
 
 // The operation
 /**
@@ -503,6 +656,7 @@ export type CloudsDeleteOutput = typeof CloudsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param cloudResourceName - Name of the Cloud.
  */
 export const CloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -510,6 +664,11 @@ export const CloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CloudsDeleteOutput,
 }));
 // Input Schema
+export interface CloudsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudResourceName: string;
+}
 export const CloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -520,10 +679,22 @@ export const CloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type CloudsGetInput = typeof CloudsGetInput.Type;
+) as unknown as Schema.Codec<CloudsGetInput>;
 
 // Output Schema
+export interface CloudsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -542,8 +713,7 @@ export const CloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CloudsGetOutput = typeof CloudsGetOutput.Type;
+}) as unknown as Schema.Codec<CloudsGetOutput>;
 
 // The operation
 /**
@@ -561,6 +731,10 @@ export const CloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CloudsGetOutput,
 }));
 // Input Schema
+export interface CloudsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CloudsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -571,11 +745,25 @@ export const CloudsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds",
       apiVersion: "2025-03-13",
     }),
-  );
-export type CloudsListByResourceGroupInput =
-  typeof CloudsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CloudsListByResourceGroupInput>;
 
 // Output Schema
+export interface CloudsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -610,9 +798,7 @@ export const CloudsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudsListByResourceGroupOutput =
-  typeof CloudsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CloudsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -631,6 +817,9 @@ export const CloudsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CloudsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -640,11 +829,25 @@ export const CloudsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/clouds",
       apiVersion: "2025-03-13",
     }),
-  );
-export type CloudsListBySubscriptionInput =
-  typeof CloudsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CloudsListBySubscriptionInput>;
 
 // Output Schema
+export interface CloudsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const CloudsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -679,9 +882,7 @@ export const CloudsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type CloudsListBySubscriptionOutput =
-  typeof CloudsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CloudsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -699,6 +900,12 @@ export const CloudsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CloudsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  cloudResourceName: string;
+  tags?: Record<string, string>;
+}
 export const CloudsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -710,10 +917,22 @@ export const CloudsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type CloudsUpdateInput = typeof CloudsUpdateInput.Type;
+) as unknown as Schema.Codec<CloudsUpdateInput>;
 
 // Output Schema
+export interface CloudsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CloudsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -732,8 +951,7 @@ export const CloudsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type CloudsUpdateOutput = typeof CloudsUpdateOutput.Type;
+}) as unknown as Schema.Codec<CloudsUpdateOutput>;
 
 // The operation
 /**
@@ -751,8 +969,33 @@ export const CloudsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CloudsUpdateOutput,
 }));
 // Input Schema
+export interface GuestAgentsCreateInput {
+  resourceUri: string;
+  properties?: {
+    uuid?: string;
+    credentials?: {
+      username: string;
+      password: string | Redacted.Redacted<string>;
+    };
+    httpProxyConfig?: { httpsProxy?: string };
+    provisioningAction?: "install" | "uninstall" | "repair";
+    status?: string;
+    customResourceName?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+    privateLinkScopeResourceId?: string;
+  };
+}
 export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         uuid: Schema.optional(Schema.String),
@@ -794,10 +1037,22 @@ export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2025-03-13",
   }),
-);
-export type GuestAgentsCreateInput = typeof GuestAgentsCreateInput.Type;
+) as unknown as Schema.Codec<GuestAgentsCreateInput>;
 
 // Output Schema
+export interface GuestAgentsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestAgentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -817,8 +1072,7 @@ export const GuestAgentsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GuestAgentsCreateOutput = typeof GuestAgentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<GuestAgentsCreateOutput>;
 
 // The operation
 /**
@@ -827,26 +1081,32 @@ export type GuestAgentsCreateOutput = typeof GuestAgentsCreateOutput.Type;
  * Create Or Update GuestAgent.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsCreateInput,
   outputSchema: GuestAgentsCreateOutput,
 }));
 // Input Schema
+export interface GuestAgentsDeleteInput {
+  resourceUri: string;
+}
 export const GuestAgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2025-03-13",
   }),
-);
-export type GuestAgentsDeleteInput = typeof GuestAgentsDeleteInput.Type;
+) as unknown as Schema.Codec<GuestAgentsDeleteInput>;
 
 // Output Schema
-export const GuestAgentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GuestAgentsDeleteOutput = typeof GuestAgentsDeleteOutput.Type;
+export type GuestAgentsDeleteOutput = void;
+export const GuestAgentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestAgentsDeleteOutput>;
 
 // The operation
 /**
@@ -855,24 +1115,40 @@ export type GuestAgentsDeleteOutput = typeof GuestAgentsDeleteOutput.Type;
  * Implements GuestAgent DELETE method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsDeleteInput,
   outputSchema: GuestAgentsDeleteOutput,
 }));
 // Input Schema
-export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface GuestAgentsGetInput {
+  resourceUri: string;
+}
+export const GuestAgentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2025-03-13",
   }),
-);
-export type GuestAgentsGetInput = typeof GuestAgentsGetInput.Type;
+) as unknown as Schema.Codec<GuestAgentsGetInput>;
 
 // Output Schema
+export interface GuestAgentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GuestAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -891,8 +1167,7 @@ export const GuestAgentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type GuestAgentsGetOutput = typeof GuestAgentsGetOutput.Type;
+}) as unknown as Schema.Codec<GuestAgentsGetOutput>;
 
 // The operation
 /**
@@ -901,24 +1176,44 @@ export type GuestAgentsGetOutput = typeof GuestAgentsGetOutput.Type;
  * Implements GuestAgent GET method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: GuestAgentsGetInput,
   outputSchema: GuestAgentsGetOutput,
 }));
 // Input Schema
+export interface GuestAgentsListByVirtualMachineInstanceInput {
+  resourceUri: string;
+}
 export const GuestAgentsListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents",
       apiVersion: "2025-03-13",
     }),
-  );
-export type GuestAgentsListByVirtualMachineInstanceInput =
-  typeof GuestAgentsListByVirtualMachineInstanceInput.Type;
+  ) as unknown as Schema.Codec<GuestAgentsListByVirtualMachineInstanceInput>;
 
 // Output Schema
+export interface GuestAgentsListByVirtualMachineInstanceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GuestAgentsListByVirtualMachineInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -953,9 +1248,7 @@ export const GuestAgentsListByVirtualMachineInstanceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GuestAgentsListByVirtualMachineInstanceOutput =
-  typeof GuestAgentsListByVirtualMachineInstanceOutput.Type;
+  }) as unknown as Schema.Codec<GuestAgentsListByVirtualMachineInstanceOutput>;
 
 // The operation
 /**
@@ -964,6 +1257,7 @@ export type GuestAgentsListByVirtualMachineInstanceOutput =
  * Returns the list of GuestAgent of the given vm.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const GuestAgentsListByVirtualMachineInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -971,6 +1265,32 @@ export const GuestAgentsListByVirtualMachineInstance =
     outputSchema: GuestAgentsListByVirtualMachineInstanceOutput,
   }));
 // Input Schema
+export interface InventoryItemsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  inventoryItemResourceName: string;
+  properties?: {
+    inventoryType:
+      | "Cloud"
+      | "VirtualNetwork"
+      | "VirtualMachine"
+      | "VirtualMachineTemplate";
+    managedResourceId?: string;
+    uuid?: string;
+    inventoryItemName?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  kind?: string;
+}
 export const InventoryItemsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1009,10 +1329,22 @@ export const InventoryItemsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type InventoryItemsCreateInput = typeof InventoryItemsCreateInput.Type;
+  ) as unknown as Schema.Codec<InventoryItemsCreateInput>;
 
 // Output Schema
+export interface InventoryItemsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InventoryItemsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1032,8 +1364,7 @@ export const InventoryItemsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InventoryItemsCreateOutput = typeof InventoryItemsCreateOutput.Type;
+  }) as unknown as Schema.Codec<InventoryItemsCreateOutput>;
 
 // The operation
 /**
@@ -1054,6 +1385,12 @@ export const InventoryItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InventoryItemsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  inventoryItemResourceName: string;
+}
 export const InventoryItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1066,13 +1403,12 @@ export const InventoryItemsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type InventoryItemsDeleteInput = typeof InventoryItemsDeleteInput.Type;
+  ) as unknown as Schema.Codec<InventoryItemsDeleteInput>;
 
 // Output Schema
+export type InventoryItemsDeleteOutput = void;
 export const InventoryItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type InventoryItemsDeleteOutput = typeof InventoryItemsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InventoryItemsDeleteOutput>;
 
 // The operation
 /**
@@ -1093,6 +1429,12 @@ export const InventoryItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InventoryItemsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  inventoryItemResourceName: string;
+}
 export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1106,10 +1448,22 @@ export const InventoryItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type InventoryItemsGetInput = typeof InventoryItemsGetInput.Type;
+) as unknown as Schema.Codec<InventoryItemsGetInput>;
 
 // Output Schema
+export interface InventoryItemsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InventoryItemsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1129,8 +1483,7 @@ export const InventoryItemsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type InventoryItemsGetOutput = typeof InventoryItemsGetOutput.Type;
+  }) as unknown as Schema.Codec<InventoryItemsGetOutput>;
 
 // The operation
 /**
@@ -1149,6 +1502,11 @@ export const InventoryItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InventoryItemsGetOutput,
 }));
 // Input Schema
+export interface InventoryItemsListByVmmServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+}
 export const InventoryItemsListByVmmServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1160,11 +1518,25 @@ export const InventoryItemsListByVmmServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems",
       apiVersion: "2025-03-13",
     }),
-  );
-export type InventoryItemsListByVmmServerInput =
-  typeof InventoryItemsListByVmmServerInput.Type;
+  ) as unknown as Schema.Codec<InventoryItemsListByVmmServerInput>;
 
 // Output Schema
+export interface InventoryItemsListByVmmServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InventoryItemsListByVmmServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1199,9 +1571,7 @@ export const InventoryItemsListByVmmServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InventoryItemsListByVmmServerOutput =
-  typeof InventoryItemsListByVmmServerOutput.Type;
+  }) as unknown as Schema.Codec<InventoryItemsListByVmmServerOutput>;
 
 // The operation
 /**
@@ -1220,6 +1590,7 @@ export const InventoryItemsListByVmmServer =
     outputSchema: InventoryItemsListByVmmServerOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1228,10 +1599,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ScVmm/operations",
     apiVersion: "2025-03-13",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1254,8 +1639,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1268,8 +1652,14 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface VirtualMachineInstancesCreateCheckpointInput {
+  resourceUri: string;
+  name?: string;
+  description?: string;
+}
 export const VirtualMachineInstancesCreateCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).pipe(
@@ -1278,15 +1668,12 @@ export const VirtualMachineInstancesCreateCheckpointInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/createCheckpoint",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesCreateCheckpointInput =
-  typeof VirtualMachineInstancesCreateCheckpointInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesCreateCheckpointInput>;
 
 // Output Schema
+export type VirtualMachineInstancesCreateCheckpointOutput = void;
 export const VirtualMachineInstancesCreateCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesCreateCheckpointOutput =
-  typeof VirtualMachineInstancesCreateCheckpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesCreateCheckpointOutput>;
 
 // The operation
 /**
@@ -1295,6 +1682,7 @@ export type VirtualMachineInstancesCreateCheckpointOutput =
  * Creates a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesCreateCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1302,8 +1690,106 @@ export const VirtualMachineInstancesCreateCheckpoint =
     outputSchema: VirtualMachineInstancesCreateCheckpointOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesCreateOrUpdateInput {
+  resourceUri: string;
+  properties?: {
+    availabilitySets?: { id?: string; name?: string }[];
+    osProfile?: {
+      adminUsername?: string;
+      adminPassword?: string | Redacted.Redacted<string>;
+      computerName?: string;
+      osType?: "Windows" | "Linux" | "Other";
+      osSku?: string;
+      osVersion?: string;
+      domainName?: string;
+      domainUsername?: string;
+      domainPassword?: string | Redacted.Redacted<string>;
+      workgroup?: string;
+      productKey?: string;
+      timezone?: number;
+      runOnceCommands?: string;
+    };
+    hardwareProfile?: {
+      memoryMB?: number;
+      cpuCount?: number;
+      limitCpuForMigration?: "true" | "false";
+      dynamicMemoryEnabled?: "true" | "false";
+      dynamicMemoryMaxMB?: number;
+      dynamicMemoryMinMB?: number;
+      isHighlyAvailable?: "true" | "false";
+    };
+    networkProfile?: {
+      networkInterfaces?: {
+        name?: string;
+        displayName?: string;
+        ipv4Addresses?: string[];
+        ipv6Addresses?: string[];
+        macAddress?: string;
+        virtualNetworkId?: string;
+        networkName?: string;
+        ipv4AddressType?: "Dynamic" | "Static";
+        ipv6AddressType?: "Dynamic" | "Static";
+        macAddressType?: "Dynamic" | "Static";
+        nicId?: string;
+      }[];
+    };
+    storageProfile?: {
+      disks?: {
+        name?: string;
+        displayName?: string;
+        diskId?: string;
+        diskSizeGB?: number;
+        maxDiskSizeGB?: number;
+        bus?: number;
+        lun?: number;
+        busType?: string;
+        vhdType?: string;
+        volumeType?: string;
+        vhdFormatType?: string;
+        templateDiskId?: string;
+        storageQoSPolicy?: { name?: string; id?: string };
+        createDiffDisk?: "true" | "false";
+      }[];
+    };
+    infrastructureProfile?: {
+      inventoryItemId?: string;
+      vmmServerId?: string;
+      cloudId?: string;
+      templateId?: string;
+      vmName?: string;
+      uuid?: string;
+      lastRestoredVMCheckpoint?: {
+        parentCheckpointID?: string;
+        checkpointID?: string;
+        name?: string;
+        description?: string;
+      };
+      checkpoints?: {
+        parentCheckpointID?: string;
+        checkpointID?: string;
+        name?: string;
+        description?: string;
+      }[];
+      checkpointType?: string;
+      generation?: number;
+      biosGuid?: string;
+    };
+    powerState?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+}
 export const VirtualMachineInstancesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         availabilitySets: Schema.optional(
@@ -1464,11 +1950,22 @@ export const VirtualMachineInstancesCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesCreateOrUpdateInput =
-  typeof VirtualMachineInstancesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1488,9 +1985,7 @@ export const VirtualMachineInstancesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesCreateOrUpdateOutput =
-  typeof VirtualMachineInstancesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1499,6 +1994,7 @@ export type VirtualMachineInstancesCreateOrUpdateOutput =
  * The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1506,8 +2002,15 @@ export const VirtualMachineInstancesCreateOrUpdate =
     outputSchema: VirtualMachineInstancesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesDeleteInput {
+  resourceUri: string;
+  force?: "true" | "false";
+  deleteFromHost?: "true" | "false";
+}
 export const VirtualMachineInstancesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
     deleteFromHost: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
@@ -1515,15 +2018,12 @@ export const VirtualMachineInstancesDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesDeleteInput =
-  typeof VirtualMachineInstancesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesDeleteInput>;
 
 // Output Schema
+export type VirtualMachineInstancesDeleteOutput = void;
 export const VirtualMachineInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesDeleteOutput =
-  typeof VirtualMachineInstancesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -1532,6 +2032,8 @@ export type VirtualMachineInstancesDeleteOutput =
  * The operation to delete a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
+ * @param force - Forces the resource to be deleted.
  * @param deleteFromHost - Whether to disable the VM from azure and also delete it from Vmm.
  */
 export const VirtualMachineInstancesDelete =
@@ -1540,8 +2042,13 @@ export const VirtualMachineInstancesDelete =
     outputSchema: VirtualMachineInstancesDeleteOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesDeleteCheckpointInput {
+  resourceUri: string;
+  id?: string;
+}
 export const VirtualMachineInstancesDeleteCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1549,15 +2056,12 @@ export const VirtualMachineInstancesDeleteCheckpointInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/deleteCheckpoint",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesDeleteCheckpointInput =
-  typeof VirtualMachineInstancesDeleteCheckpointInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesDeleteCheckpointInput>;
 
 // Output Schema
+export type VirtualMachineInstancesDeleteCheckpointOutput = void;
 export const VirtualMachineInstancesDeleteCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesDeleteCheckpointOutput =
-  typeof VirtualMachineInstancesDeleteCheckpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesDeleteCheckpointOutput>;
 
 // The operation
 /**
@@ -1566,6 +2070,7 @@ export type VirtualMachineInstancesDeleteCheckpointOutput =
  * Deletes a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesDeleteCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1573,18 +2078,34 @@ export const VirtualMachineInstancesDeleteCheckpoint =
     outputSchema: VirtualMachineInstancesDeleteCheckpointOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesGetInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesGetInput =
-  typeof VirtualMachineInstancesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesGetInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1604,9 +2125,7 @@ export const VirtualMachineInstancesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesGetOutput =
-  typeof VirtualMachineInstancesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesGetOutput>;
 
 // The operation
 /**
@@ -1615,6 +2134,7 @@ export type VirtualMachineInstancesGetOutput =
  * Retrieves information about a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1623,18 +2143,37 @@ export const VirtualMachineInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesListInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesListInput =
-  typeof VirtualMachineInstancesListInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesListInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachineInstancesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1669,9 +2208,7 @@ export const VirtualMachineInstancesListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachineInstancesListOutput =
-  typeof VirtualMachineInstancesListOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesListOutput>;
 
 // The operation
 /**
@@ -1680,6 +2217,7 @@ export type VirtualMachineInstancesListOutput =
  * Lists all of the virtual machine instances within the specified parent resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1688,22 +2226,24 @@ export const VirtualMachineInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesRestartInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesRestartInput =
-  typeof VirtualMachineInstancesRestartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesRestartInput>;
 
 // Output Schema
+export type VirtualMachineInstancesRestartOutput = void;
 export const VirtualMachineInstancesRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesRestartOutput =
-  typeof VirtualMachineInstancesRestartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesRestartOutput>;
 
 // The operation
 /**
@@ -1712,6 +2252,7 @@ export type VirtualMachineInstancesRestartOutput =
  * The operation to restart a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesRestart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1719,8 +2260,13 @@ export const VirtualMachineInstancesRestart =
     outputSchema: VirtualMachineInstancesRestartOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesRestoreCheckpointInput {
+  resourceUri: string;
+  id?: string;
+}
 export const VirtualMachineInstancesRestoreCheckpointInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -1728,15 +2274,12 @@ export const VirtualMachineInstancesRestoreCheckpointInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restoreCheckpoint",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesRestoreCheckpointInput =
-  typeof VirtualMachineInstancesRestoreCheckpointInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesRestoreCheckpointInput>;
 
 // Output Schema
+export type VirtualMachineInstancesRestoreCheckpointOutput = void;
 export const VirtualMachineInstancesRestoreCheckpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesRestoreCheckpointOutput =
-  typeof VirtualMachineInstancesRestoreCheckpointOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesRestoreCheckpointOutput>;
 
 // The operation
 /**
@@ -1745,6 +2288,7 @@ export type VirtualMachineInstancesRestoreCheckpointOutput =
  * Restores to a checkpoint in virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesRestoreCheckpoint =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1752,22 +2296,24 @@ export const VirtualMachineInstancesRestoreCheckpoint =
     outputSchema: VirtualMachineInstancesRestoreCheckpointOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesStartInput {
+  resourceUri: string;
+}
 export const VirtualMachineInstancesStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesStartInput =
-  typeof VirtualMachineInstancesStartInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesStartInput>;
 
 // Output Schema
+export type VirtualMachineInstancesStartOutput = void;
 export const VirtualMachineInstancesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesStartOutput =
-  typeof VirtualMachineInstancesStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesStartOutput>;
 
 // The operation
 /**
@@ -1776,6 +2322,7 @@ export type VirtualMachineInstancesStartOutput =
  * The operation to start a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesStart =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1783,8 +2330,13 @@ export const VirtualMachineInstancesStart =
     outputSchema: VirtualMachineInstancesStartOutput,
   }));
 // Input Schema
+export interface VirtualMachineInstancesStopInput {
+  resourceUri: string;
+  skipShutdown?: "true" | "false";
+}
 export const VirtualMachineInstancesStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     skipShutdown: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
@@ -1792,15 +2344,12 @@ export const VirtualMachineInstancesStopInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/stop",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesStopInput =
-  typeof VirtualMachineInstancesStopInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesStopInput>;
 
 // Output Schema
+export type VirtualMachineInstancesStopOutput = void;
 export const VirtualMachineInstancesStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineInstancesStopOutput =
-  typeof VirtualMachineInstancesStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineInstancesStopOutput>;
 
 // The operation
 /**
@@ -1809,6 +2358,7 @@ export type VirtualMachineInstancesStopOutput =
  * The operation to power off (stop) a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1817,8 +2367,47 @@ export const VirtualMachineInstancesStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineInstancesUpdateInput {
+  resourceUri: string;
+  properties?: {
+    availabilitySets?: { id?: string; name?: string }[];
+    hardwareProfile?: {
+      memoryMB?: number;
+      cpuCount?: number;
+      limitCpuForMigration?: "true" | "false";
+      dynamicMemoryEnabled?: "true" | "false";
+      dynamicMemoryMaxMB?: number;
+      dynamicMemoryMinMB?: number;
+    };
+    networkProfile?: {
+      networkInterfaces?: {
+        name?: string;
+        macAddress?: string;
+        virtualNetworkId?: string;
+        ipv4AddressType?: "Dynamic" | "Static";
+        ipv6AddressType?: "Dynamic" | "Static";
+        macAddressType?: "Dynamic" | "Static";
+        nicId?: string;
+      }[];
+    };
+    storageProfile?: {
+      disks?: {
+        name?: string;
+        diskId?: string;
+        diskSizeGB?: number;
+        bus?: number;
+        lun?: number;
+        busType?: string;
+        vhdType?: string;
+        storageQoSPolicy?: { name?: string; id?: string };
+      }[];
+    };
+    infrastructureProfile?: { checkpointType?: string };
+  };
+}
 export const VirtualMachineInstancesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         availabilitySets: Schema.optional(
@@ -1902,11 +2491,22 @@ export const VirtualMachineInstancesUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineInstancesUpdateInput =
-  typeof VirtualMachineInstancesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineInstancesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineInstancesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineInstancesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1926,9 +2526,7 @@ export const VirtualMachineInstancesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineInstancesUpdateOutput =
-  typeof VirtualMachineInstancesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineInstancesUpdateOutput>;
 
 // The operation
 /**
@@ -1937,6 +2535,7 @@ export type VirtualMachineInstancesUpdateOutput =
  * The operation to update a virtual machine instance.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VirtualMachineInstancesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1944,6 +2543,69 @@ export const VirtualMachineInstancesUpdate =
     outputSchema: VirtualMachineInstancesUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachineTemplatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineTemplateName: string;
+  properties?: {
+    inventoryItemId?: string;
+    uuid?: string;
+    vmmServerId?: string;
+    osType?: "Windows" | "Linux" | "Other";
+    osName?: string;
+    computerName?: string;
+    memoryMB?: number;
+    cpuCount?: number;
+    limitCpuForMigration?: "true" | "false";
+    dynamicMemoryEnabled?: "true" | "false";
+    isCustomizable?: "true" | "false";
+    dynamicMemoryMaxMB?: number;
+    dynamicMemoryMinMB?: number;
+    isHighlyAvailable?: "true" | "false";
+    generation?: number;
+    networkInterfaces?: {
+      name?: string;
+      displayName?: string;
+      ipv4Addresses?: string[];
+      ipv6Addresses?: string[];
+      macAddress?: string;
+      virtualNetworkId?: string;
+      networkName?: string;
+      ipv4AddressType?: "Dynamic" | "Static";
+      ipv6AddressType?: "Dynamic" | "Static";
+      macAddressType?: "Dynamic" | "Static";
+      nicId?: string;
+    }[];
+    disks?: {
+      name?: string;
+      displayName?: string;
+      diskId?: string;
+      diskSizeGB?: number;
+      maxDiskSizeGB?: number;
+      bus?: number;
+      lun?: number;
+      busType?: string;
+      vhdType?: string;
+      volumeType?: string;
+      vhdFormatType?: string;
+      templateDiskId?: string;
+      storageQoSPolicy?: { name?: string; id?: string };
+      createDiffDisk?: "true" | "false";
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VirtualMachineTemplatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2046,11 +2708,22 @@ export const VirtualMachineTemplatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesCreateOrUpdateInput =
-  typeof VirtualMachineTemplatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineTemplatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2070,9 +2743,7 @@ export const VirtualMachineTemplatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineTemplatesCreateOrUpdateOutput =
-  typeof VirtualMachineTemplatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2091,26 +2762,30 @@ export const VirtualMachineTemplatesCreateOrUpdate =
     outputSchema: VirtualMachineTemplatesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualMachineTemplatesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineTemplateName: string;
+  force?: "true" | "false";
+}
 export const VirtualMachineTemplatesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualMachineTemplateName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesDeleteInput =
-  typeof VirtualMachineTemplatesDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesDeleteInput>;
 
 // Output Schema
+export type VirtualMachineTemplatesDeleteOutput = void;
 export const VirtualMachineTemplatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualMachineTemplatesDeleteOutput =
-  typeof VirtualMachineTemplatesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachineTemplatesDeleteOutput>;
 
 // The operation
 /**
@@ -2121,6 +2796,7 @@ export type VirtualMachineTemplatesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param virtualMachineTemplateName - Name of the VirtualMachineTemplate.
  */
 export const VirtualMachineTemplatesDelete =
@@ -2129,6 +2805,11 @@ export const VirtualMachineTemplatesDelete =
     outputSchema: VirtualMachineTemplatesDeleteOutput,
   }));
 // Input Schema
+export interface VirtualMachineTemplatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineTemplateName: string;
+}
 export const VirtualMachineTemplatesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2140,11 +2821,22 @@ export const VirtualMachineTemplatesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesGetInput =
-  typeof VirtualMachineTemplatesGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesGetInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineTemplatesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2164,9 +2856,7 @@ export const VirtualMachineTemplatesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineTemplatesGetOutput =
-  typeof VirtualMachineTemplatesGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesGetOutput>;
 
 // The operation
 /**
@@ -2186,6 +2876,10 @@ export const VirtualMachineTemplatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualMachineTemplatesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const VirtualMachineTemplatesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2196,11 +2890,25 @@ export const VirtualMachineTemplatesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesListByResourceGroupInput =
-  typeof VirtualMachineTemplatesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesListByResourceGroupInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachineTemplatesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2235,9 +2943,7 @@ export const VirtualMachineTemplatesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachineTemplatesListByResourceGroupOutput =
-  typeof VirtualMachineTemplatesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2255,6 +2961,9 @@ export const VirtualMachineTemplatesListByResourceGroup =
     outputSchema: VirtualMachineTemplatesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VirtualMachineTemplatesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const VirtualMachineTemplatesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2264,11 +2973,25 @@ export const VirtualMachineTemplatesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/virtualMachineTemplates",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesListBySubscriptionInput =
-  typeof VirtualMachineTemplatesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesListBySubscriptionInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualMachineTemplatesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2303,9 +3026,7 @@ export const VirtualMachineTemplatesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualMachineTemplatesListBySubscriptionOutput =
-  typeof VirtualMachineTemplatesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2322,6 +3043,12 @@ export const VirtualMachineTemplatesListBySubscription =
     outputSchema: VirtualMachineTemplatesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VirtualMachineTemplatesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualMachineTemplateName: string;
+  tags?: Record<string, string>;
+}
 export const VirtualMachineTemplatesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2334,11 +3061,22 @@ export const VirtualMachineTemplatesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualMachineTemplatesUpdateInput =
-  typeof VirtualMachineTemplatesUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualMachineTemplatesUpdateInput>;
 
 // Output Schema
+export interface VirtualMachineTemplatesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualMachineTemplatesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2358,9 +3096,7 @@ export const VirtualMachineTemplatesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualMachineTemplatesUpdateOutput =
-  typeof VirtualMachineTemplatesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualMachineTemplatesUpdateOutput>;
 
 // The operation
 /**
@@ -2379,6 +3115,29 @@ export const VirtualMachineTemplatesUpdate =
     outputSchema: VirtualMachineTemplatesUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworksCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  properties?: {
+    inventoryItemId?: string;
+    uuid?: string;
+    vmmServerId?: string;
+    networkName?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VirtualNetworksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2416,11 +3175,22 @@ export const VirtualNetworksCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksCreateOrUpdateInput =
-  typeof VirtualNetworksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2440,9 +3210,7 @@ export const VirtualNetworksCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksCreateOrUpdateOutput =
-  typeof VirtualNetworksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2461,25 +3229,30 @@ export const VirtualNetworksCreateOrUpdate =
     outputSchema: VirtualNetworksCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface VirtualNetworksDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  force?: "true" | "false";
+}
 export const VirtualNetworksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
+    force: Schema.optional(Schema.Literals(["true", "false"])),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksDeleteInput>;
 
 // Output Schema
+export type VirtualNetworksDeleteOutput = void;
 export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VirtualNetworksDeleteOutput =
-  typeof VirtualNetworksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -2490,6 +3263,7 @@ export type VirtualNetworksDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param virtualNetworkName - Name of the VirtualNetwork.
  */
 export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -2499,6 +3273,11 @@ export const VirtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VirtualNetworksGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+}
 export const VirtualNetworksGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2510,10 +3289,22 @@ export const VirtualNetworksGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksGetInput = typeof VirtualNetworksGetInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksGetInput>;
 
 // Output Schema
+export interface VirtualNetworksGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2533,8 +3324,7 @@ export const VirtualNetworksGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksGetOutput = typeof VirtualNetworksGetOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksGetOutput>;
 
 // The operation
 /**
@@ -2552,6 +3342,10 @@ export const VirtualNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VirtualNetworksGetOutput,
 }));
 // Input Schema
+export interface VirtualNetworksListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const VirtualNetworksListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2562,11 +3356,25 @@ export const VirtualNetworksListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksListByResourceGroupInput =
-  typeof VirtualNetworksListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListByResourceGroupInput>;
 
 // Output Schema
+export interface VirtualNetworksListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworksListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2601,9 +3409,7 @@ export const VirtualNetworksListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksListByResourceGroupOutput =
-  typeof VirtualNetworksListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2621,6 +3427,9 @@ export const VirtualNetworksListByResourceGroup =
     outputSchema: VirtualNetworksListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VirtualNetworksListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const VirtualNetworksListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2630,11 +3439,25 @@ export const VirtualNetworksListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/virtualNetworks",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksListBySubscriptionInput =
-  typeof VirtualNetworksListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksListBySubscriptionInput>;
 
 // Output Schema
+export interface VirtualNetworksListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualNetworksListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2669,9 +3492,7 @@ export const VirtualNetworksListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualNetworksListBySubscriptionOutput =
-  typeof VirtualNetworksListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2688,6 +3509,12 @@ export const VirtualNetworksListBySubscription =
     outputSchema: VirtualNetworksListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VirtualNetworksUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  virtualNetworkName: string;
+  tags?: Record<string, string>;
+}
 export const VirtualNetworksUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2700,10 +3527,22 @@ export const VirtualNetworksUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
+  ) as unknown as Schema.Codec<VirtualNetworksUpdateInput>;
 
 // Output Schema
+export interface VirtualNetworksUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VirtualNetworksUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2723,9 +3562,7 @@ export const VirtualNetworksUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualNetworksUpdateOutput =
-  typeof VirtualNetworksUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VirtualNetworksUpdateOutput>;
 
 // The operation
 /**
@@ -2745,18 +3582,34 @@ export const VirtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VmInstanceHybridIdentityMetadatasGetInput {
+  resourceUri: string;
+}
 export const VmInstanceHybridIdentityMetadatasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VmInstanceHybridIdentityMetadatasGetInput =
-  typeof VmInstanceHybridIdentityMetadatasGetInput.Type;
+  ) as unknown as Schema.Codec<VmInstanceHybridIdentityMetadatasGetInput>;
 
 // Output Schema
+export interface VmInstanceHybridIdentityMetadatasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmInstanceHybridIdentityMetadatasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2776,9 +3629,7 @@ export const VmInstanceHybridIdentityMetadatasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmInstanceHybridIdentityMetadatasGetOutput =
-  typeof VmInstanceHybridIdentityMetadatasGetOutput.Type;
+  }) as unknown as Schema.Codec<VmInstanceHybridIdentityMetadatasGetOutput>;
 
 // The operation
 /**
@@ -2787,6 +3638,7 @@ export type VmInstanceHybridIdentityMetadatasGetOutput =
  * Implements HybridIdentityMetadata GET method.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VmInstanceHybridIdentityMetadatasGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2794,18 +3646,37 @@ export const VmInstanceHybridIdentityMetadatasGet =
     outputSchema: VmInstanceHybridIdentityMetadatasGetOutput,
   }));
 // Input Schema
+export interface VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput {
+  resourceUri: string;
+}
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput =
-  typeof VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput.Type;
+  ) as unknown as Schema.Codec<VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceInput>;
 
 // Output Schema
+export interface VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2840,9 +3711,7 @@ export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput =
-  typeof VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput.Type;
+  }) as unknown as Schema.Codec<VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput>;
 
 // The operation
 /**
@@ -2851,6 +3720,7 @@ export type VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput 
  * Returns the list of HybridIdentityMetadata of the given VM.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2860,6 +3730,35 @@ export const VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance =
       VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceOutput,
   }));
 // Input Schema
+export interface VmmServersCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  properties?: {
+    credentials?: {
+      username?: string;
+      password?: string | Redacted.Redacted<string>;
+    };
+    fqdn: string;
+    port?: number;
+    connectionStatus?: string;
+    errorMessage?: string;
+    uuid?: string;
+    version?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Created";
+  };
+  extendedLocation: { type?: string; name?: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const VmmServersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2905,11 +3804,22 @@ export const VmmServersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VmmServersCreateOrUpdateInput =
-  typeof VmmServersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<VmmServersCreateOrUpdateInput>;
 
 // Output Schema
+export interface VmmServersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmmServersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2929,9 +3839,7 @@ export const VmmServersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmmServersCreateOrUpdateOutput =
-  typeof VmmServersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<VmmServersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2951,22 +3859,29 @@ export const VmmServersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VmmServersDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  force?: "true" | "false";
+}
 export const VmmServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   vmmServerName: Schema.String.pipe(T.PathParam()),
+  force: Schema.optional(Schema.Literals(["true", "false"])),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type VmmServersDeleteInput = typeof VmmServersDeleteInput.Type;
+) as unknown as Schema.Codec<VmmServersDeleteInput>;
 
 // Output Schema
-export const VmmServersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VmmServersDeleteOutput = typeof VmmServersDeleteOutput.Type;
+export type VmmServersDeleteOutput = void;
+export const VmmServersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VmmServersDeleteOutput>;
 
 // The operation
 /**
@@ -2977,6 +3892,7 @@ export type VmmServersDeleteOutput = typeof VmmServersDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param force - Forces the resource to be deleted.
  * @param vmmServerName - Name of the VmmServer.
  */
 export const VmmServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2984,6 +3900,11 @@ export const VmmServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VmmServersDeleteOutput,
 }));
 // Input Schema
+export interface VmmServersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+}
 export const VmmServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2994,10 +3915,22 @@ export const VmmServersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type VmmServersGetInput = typeof VmmServersGetInput.Type;
+) as unknown as Schema.Codec<VmmServersGetInput>;
 
 // Output Schema
+export interface VmmServersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmmServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3016,8 +3949,7 @@ export const VmmServersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type VmmServersGetOutput = typeof VmmServersGetOutput.Type;
+}) as unknown as Schema.Codec<VmmServersGetOutput>;
 
 // The operation
 /**
@@ -3035,6 +3967,10 @@ export const VmmServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: VmmServersGetOutput,
 }));
 // Input Schema
+export interface VmmServersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const VmmServersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3045,11 +3981,25 @@ export const VmmServersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VmmServersListByResourceGroupInput =
-  typeof VmmServersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<VmmServersListByResourceGroupInput>;
 
 // Output Schema
+export interface VmmServersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmmServersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3084,9 +4034,7 @@ export const VmmServersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmmServersListByResourceGroupOutput =
-  typeof VmmServersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<VmmServersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3104,6 +4052,9 @@ export const VmmServersListByResourceGroup =
     outputSchema: VmmServersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface VmmServersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const VmmServersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3113,11 +4064,25 @@ export const VmmServersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/vmmServers",
       apiVersion: "2025-03-13",
     }),
-  );
-export type VmmServersListBySubscriptionInput =
-  typeof VmmServersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<VmmServersListBySubscriptionInput>;
 
 // Output Schema
+export interface VmmServersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmmServersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3152,9 +4117,7 @@ export const VmmServersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmmServersListBySubscriptionOutput =
-  typeof VmmServersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<VmmServersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3171,6 +4134,12 @@ export const VmmServersListBySubscription =
     outputSchema: VmmServersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface VmmServersUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmmServerName: string;
+  tags?: Record<string, string>;
+}
 export const VmmServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3182,10 +4151,22 @@ export const VmmServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
     apiVersion: "2025-03-13",
   }),
-);
-export type VmmServersUpdateInput = typeof VmmServersUpdateInput.Type;
+) as unknown as Schema.Codec<VmmServersUpdateInput>;
 
 // Output Schema
+export interface VmmServersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmmServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3206,8 +4187,7 @@ export const VmmServersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type VmmServersUpdateOutput = typeof VmmServersUpdateOutput.Type;
+) as unknown as Schema.Codec<VmmServersUpdateOutput>;
 
 // The operation
 /**

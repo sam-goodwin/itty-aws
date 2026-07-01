@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetTerminalLocationsInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetTerminalLocationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -15,10 +21,51 @@ export const GetTerminalLocationsInput =
       path: "/v1/terminal/locations",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetTerminalLocationsInput = typeof GetTerminalLocationsInput.Type;
+  ) as unknown as Schema.Codec<GetTerminalLocationsInput>;
 
 // Output Schema
+export interface GetTerminalLocationsOutput {
+  data: {
+    address: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+    };
+    address_kana?: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+      town: string | null;
+    };
+    address_kanji?: {
+      city: string | null;
+      country: string | null;
+      line1: string | null;
+      line2: string | null;
+      postal_code: string | null;
+      state: string | null;
+      town: string | null;
+    };
+    configuration_overrides?: string;
+    display_name: string;
+    display_name_kana?: string;
+    display_name_kanji?: string;
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    object: "terminal.location";
+    phone?: string;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetTerminalLocationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -67,8 +114,7 @@ export const GetTerminalLocationsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetTerminalLocationsOutput = typeof GetTerminalLocationsOutput.Type;
+  }) as unknown as Schema.Codec<GetTerminalLocationsOutput>;
 
 // The operation
 /**

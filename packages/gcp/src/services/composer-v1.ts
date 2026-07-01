@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,6 +22,731 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+}
+
+export const Status: Schema.Codec<Status> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    code: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Status" });
+
+export interface Operation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+}
+
+export const Operation: Schema.Codec<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Status),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "Operation" });
+
+export interface Line {
+  /** Number of the line. */
+  lineNumber?: number;
+  /** Text content of the log line. */
+  content?: string;
+}
+
+export const Line: Schema.Codec<Line> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineNumber: Schema.optional(Schema.Number),
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Line" });
+
+export interface ScheduledSnapshotsConfig {
+  /** Optional. Time zone that sets the context to interpret snapshot_creation_schedule. */
+  timeZone?: string;
+  /** Optional. Whether scheduled snapshots creation is enabled. */
+  enabled?: boolean;
+  /** Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution. */
+  snapshotCreationSchedule?: string;
+  /** Optional. The Cloud Storage location for storing automatically created snapshots. */
+  snapshotLocation?: string;
+}
+
+export const ScheduledSnapshotsConfig: Schema.Codec<ScheduledSnapshotsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeZone: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    snapshotCreationSchedule: Schema.optional(Schema.String),
+    snapshotLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScheduledSnapshotsConfig" });
+
+export interface RecoveryConfig {
+  /** Optional. The configuration for scheduled snapshot creation mechanism. */
+  scheduledSnapshotsConfig?: ScheduledSnapshotsConfig;
+}
+
+export const RecoveryConfig: Schema.Codec<RecoveryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scheduledSnapshotsConfig: Schema.optional(ScheduledSnapshotsConfig),
+  }).annotate({ identifier: "RecoveryConfig" });
+
+export interface EncryptionConfig {
+  /** Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used. */
+  kmsKeyName?: string;
+}
+
+export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EncryptionConfig" });
+
+export interface WorkerResource {
+  /** Optional. CPU request and limit for a single Airflow worker replica. */
+  cpu?: number;
+  /** Optional. Memory (GB) request and limit for a single Airflow worker replica. */
+  memoryGb?: number;
+  /** Optional. Minimum number of workers for autoscaling. */
+  minCount?: number;
+  /** Optional. Storage (GB) request and limit for a single Airflow worker replica. */
+  storageGb?: number;
+  /** Optional. Maximum number of workers for autoscaling. */
+  maxCount?: number;
+}
+
+export const WorkerResource: Schema.Codec<WorkerResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.Number),
+    memoryGb: Schema.optional(Schema.Number),
+    minCount: Schema.optional(Schema.Number),
+    storageGb: Schema.optional(Schema.Number),
+    maxCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "WorkerResource" });
+
+export interface SchedulerResource {
+  /** Optional. Storage (GB) request and limit for a single Airflow scheduler replica. */
+  storageGb?: number;
+  /** Optional. The number of schedulers. */
+  count?: number;
+  /** Optional. CPU request and limit for a single Airflow scheduler replica. */
+  cpu?: number;
+  /** Optional. Memory (GB) request and limit for a single Airflow scheduler replica. */
+  memoryGb?: number;
+}
+
+export const SchedulerResource: Schema.Codec<SchedulerResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageGb: Schema.optional(Schema.Number),
+    count: Schema.optional(Schema.Number),
+    cpu: Schema.optional(Schema.Number),
+    memoryGb: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SchedulerResource" });
+
+export interface TriggererResource {
+  /** Optional. CPU request and limit for a single Airflow triggerer replica. */
+  cpu?: number;
+  /** Optional. Memory (GB) request and limit for a single Airflow triggerer replica. */
+  memoryGb?: number;
+  /** Optional. The number of triggerers. */
+  count?: number;
+}
+
+export const TriggererResource: Schema.Codec<TriggererResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.Number),
+    memoryGb: Schema.optional(Schema.Number),
+    count: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TriggererResource" });
+
+export interface WebServerResource {
+  /** Optional. Storage (GB) request and limit for Airflow web server. */
+  storageGb?: number;
+  /** Optional. CPU request and limit for Airflow web server. */
+  cpu?: number;
+  /** Optional. Memory (GB) request and limit for Airflow web server. */
+  memoryGb?: number;
+}
+
+export const WebServerResource: Schema.Codec<WebServerResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageGb: Schema.optional(Schema.Number),
+    cpu: Schema.optional(Schema.Number),
+    memoryGb: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "WebServerResource" });
+
+export interface DagProcessorResource {
+  /** Optional. Storage (GB) request and limit for a single Airflow DAG processor replica. */
+  storageGb?: number;
+  /** Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created. */
+  count?: number;
+  /** Optional. CPU request and limit for a single Airflow DAG processor replica. */
+  cpu?: number;
+  /** Optional. Memory (GB) request and limit for a single Airflow DAG processor replica. */
+  memoryGb?: number;
+}
+
+export const DagProcessorResource: Schema.Codec<DagProcessorResource> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageGb: Schema.optional(Schema.Number),
+    count: Schema.optional(Schema.Number),
+    cpu: Schema.optional(Schema.Number),
+    memoryGb: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DagProcessorResource" });
+
+export interface WorkloadsConfig {
+  /** Optional. Resources used by Airflow workers. */
+  worker?: WorkerResource;
+  /** Optional. Resources used by Airflow schedulers. */
+  scheduler?: SchedulerResource;
+  /** Optional. Resources used by Airflow triggerers. */
+  triggerer?: TriggererResource;
+  /** Optional. Resources used by Airflow web server. */
+  webServer?: WebServerResource;
+  /** Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+  dagProcessor?: DagProcessorResource;
+}
+
+export const WorkloadsConfig: Schema.Codec<WorkloadsConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    worker: Schema.optional(WorkerResource),
+    scheduler: Schema.optional(SchedulerResource),
+    triggerer: Schema.optional(TriggererResource),
+    webServer: Schema.optional(WebServerResource),
+    dagProcessor: Schema.optional(DagProcessorResource),
+  }).annotate({ identifier: "WorkloadsConfig" });
+
+export interface AirflowMetadataRetentionPolicyConfig {
+  /** Optional. Retention can be either enabled or disabled. */
+  retentionMode?:
+    | "RETENTION_MODE_UNSPECIFIED"
+    | "RETENTION_MODE_ENABLED"
+    | "RETENTION_MODE_DISABLED"
+    | (string & {});
+  /** Optional. How many days data should be retained for. */
+  retentionDays?: number;
+}
+
+export const AirflowMetadataRetentionPolicyConfig: Schema.Codec<AirflowMetadataRetentionPolicyConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionMode: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AirflowMetadataRetentionPolicyConfig" });
+
+export interface TaskLogsRetentionConfig {
+  /** Optional. The mode of storage for Airflow workers task logs. */
+  storageMode?:
+    | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
+    | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
+    | "CLOUD_LOGGING_ONLY"
+    | (string & {});
+}
+
+export const TaskLogsRetentionConfig: Schema.Codec<TaskLogsRetentionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TaskLogsRetentionConfig" });
+
+export interface DataRetentionConfig {
+  /** Optional. The retention policy for airflow metadata database. */
+  airflowMetadataRetentionConfig?: AirflowMetadataRetentionPolicyConfig;
+  /** Optional. The configuration settings for task logs retention */
+  taskLogsRetentionConfig?: TaskLogsRetentionConfig;
+}
+
+export const DataRetentionConfig: Schema.Codec<DataRetentionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    airflowMetadataRetentionConfig: Schema.optional(
+      AirflowMetadataRetentionPolicyConfig,
+    ),
+    taskLogsRetentionConfig: Schema.optional(TaskLogsRetentionConfig),
+  }).annotate({ identifier: "DataRetentionConfig" });
+
+export interface PrivateClusterConfig {
+  /** Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used. */
+  masterIpv4CidrBlock?: string;
+  /** Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. */
+  masterIpv4ReservedRange?: string;
+  /** Optional. If `true`, access to the public endpoint of the GKE cluster is denied. */
+  enablePrivateEndpoint?: boolean;
+}
+
+export const PrivateClusterConfig: Schema.Codec<PrivateClusterConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    masterIpv4CidrBlock: Schema.optional(Schema.String),
+    masterIpv4ReservedRange: Schema.optional(Schema.String),
+    enablePrivateEndpoint: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PrivateClusterConfig" });
+
+export interface NetworkingConfig {
+  /** Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment. */
+  connectionType?:
+    | "CONNECTION_TYPE_UNSPECIFIED"
+    | "VPC_PEERING"
+    | "PRIVATE_SERVICE_CONNECT"
+    | (string & {});
+}
+
+export const NetworkingConfig: Schema.Codec<NetworkingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkingConfig" });
+
+export interface PrivateEnvironmentConfig {
+  /** Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. */
+  cloudComposerConnectionSubnetwork?: string;
+  /** Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment. */
+  privateClusterConfig?: PrivateClusterConfig;
+  /** Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`. */
+  enablePrivatelyUsedPublicIps?: boolean;
+  /** Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
+  cloudComposerNetworkIpv4CidrBlock?: string;
+  /** Optional. Networking type for the environment, either private or public. */
+  networkingType?:
+    | "NETWORKING_TYPE_UNSPECIFIED"
+    | "PRIVATE"
+    | "PUBLIC"
+    | (string & {});
+  /** Output only. The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  webServerIpv4ReservedRange?: string;
+  /** Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use `networking_type` instead. */
+  enablePrivateEnvironment?: boolean;
+  /** Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`. */
+  cloudSqlIpv4CidrBlock?: string;
+  /** Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  webServerIpv4CidrBlock?: string;
+  /** Output only. The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
+  cloudComposerNetworkIpv4ReservedRange?: string;
+  /** Optional. Configuration for the network connections configuration in the environment. */
+  networkingConfig?: NetworkingConfig;
+  /** Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+  enablePrivateBuildsOnly?: boolean;
+}
+
+export const PrivateEnvironmentConfig: Schema.Codec<PrivateEnvironmentConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudComposerConnectionSubnetwork: Schema.optional(Schema.String),
+    privateClusterConfig: Schema.optional(PrivateClusterConfig),
+    enablePrivatelyUsedPublicIps: Schema.optional(Schema.Boolean),
+    cloudComposerNetworkIpv4CidrBlock: Schema.optional(Schema.String),
+    networkingType: Schema.optional(Schema.String),
+    webServerIpv4ReservedRange: Schema.optional(Schema.String),
+    enablePrivateEnvironment: Schema.optional(Schema.Boolean),
+    cloudSqlIpv4CidrBlock: Schema.optional(Schema.String),
+    webServerIpv4CidrBlock: Schema.optional(Schema.String),
+    cloudComposerNetworkIpv4ReservedRange: Schema.optional(Schema.String),
+    networkingConfig: Schema.optional(NetworkingConfig),
+    enablePrivateBuildsOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PrivateEnvironmentConfig" });
+
+export interface DatabaseConfig {
+  /** Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  machineType?: string;
+  /** Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*. */
+  zone?: string;
+}
+
+export const DatabaseConfig: Schema.Codec<DatabaseConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseConfig" });
+
+export interface AllowedIpRange {
+  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`. */
+  value?: string;
+  /** Optional. User-provided description. It must contain at most 300 characters. */
+  description?: string;
+}
+
+export const AllowedIpRange: Schema.Codec<AllowedIpRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AllowedIpRange" });
+
+export interface WebServerNetworkAccessControl {
+  /** A collection of allowed IP ranges with descriptions. */
+  allowedIpRanges?: ReadonlyArray<AllowedIpRange>;
+}
+
+export const WebServerNetworkAccessControl: Schema.Codec<WebServerNetworkAccessControl> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedIpRanges: Schema.optional(Schema.Array(AllowedIpRange)),
+  }).annotate({ identifier: "WebServerNetworkAccessControl" });
+
+export interface MaintenanceWindow {
+  /** Required. Start time of the first recurrence of the maintenance window. */
+  startTime?: string;
+  /** Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`. */
+  endTime?: string;
+  /** Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`. */
+  recurrence?: string;
+}
+
+export const MaintenanceWindow: Schema.Codec<MaintenanceWindow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    recurrence: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MaintenanceWindow" });
+
+export interface CidrBlock {
+  /** CIDR block that must be specified in CIDR notation. */
+  cidrBlock?: string;
+  /** User-defined name that identifies the CIDR block. */
+  displayName?: string;
+}
+
+export const CidrBlock: Schema.Codec<CidrBlock> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cidrBlock: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CidrBlock" });
+
+export interface MasterAuthorizedNetworksConfig {
+  /** Up to 50 external networks that could access Kubernetes master through HTTPS. */
+  cidrBlocks?: ReadonlyArray<CidrBlock>;
+  /** Optional. Whether or not master authorized networks feature is enabled. */
+  enabled?: boolean;
+}
+
+export const MasterAuthorizedNetworksConfig: Schema.Codec<MasterAuthorizedNetworksConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "MasterAuthorizedNetworksConfig" });
+
+export interface CloudDataLineageIntegration {
+  /** Optional. Whether or not Cloud Data Lineage integration is enabled. */
+  enabled?: boolean;
+}
+
+export const CloudDataLineageIntegration: Schema.Codec<CloudDataLineageIntegration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CloudDataLineageIntegration" });
+
+export interface SoftwareConfig {
+  /** Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. */
+  schedulerCount?: number;
+  /** Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
+  imageVersion?: string;
+  /** Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3. */
+  pythonVersion?: string;
+  /** Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+  webServerPluginsMode?:
+    | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
+    | "PLUGINS_DISABLED"
+    | "PLUGINS_ENABLED"
+    | (string & {});
+  /** Optional. The configuration for Cloud Data Lineage integration. */
+  cloudDataLineageIntegration?: CloudDataLineageIntegration;
+  /** Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden. */
+  airflowConfigOverrides?: Record<string, string>;
+  /** Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER` */
+  envVariables?: Record<string, string>;
+  /** Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value. */
+  pypiPackages?: Record<string, string>;
+}
+
+export const SoftwareConfig: Schema.Codec<SoftwareConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schedulerCount: Schema.optional(Schema.Number),
+    imageVersion: Schema.optional(Schema.String),
+    pythonVersion: Schema.optional(Schema.String),
+    webServerPluginsMode: Schema.optional(Schema.String),
+    cloudDataLineageIntegration: Schema.optional(CloudDataLineageIntegration),
+    airflowConfigOverrides: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    envVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    pypiPackages: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "SoftwareConfig" });
+
+export interface IPAllocationPolicy {
+  /** Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. */
+  clusterSecondaryRangeName?: string;
+  /** Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. */
+  servicesSecondaryRangeName?: string;
+  /** Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
+  clusterIpv4CidrBlock?: string;
+  /** Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
+  servicesIpv4CidrBlock?: string;
+  /** Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters. */
+  useIpAliases?: boolean;
+}
+
+export const IPAllocationPolicy: Schema.Codec<IPAllocationPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterSecondaryRangeName: Schema.optional(Schema.String),
+    servicesSecondaryRangeName: Schema.optional(Schema.String),
+    clusterIpv4CidrBlock: Schema.optional(Schema.String),
+    servicesIpv4CidrBlock: Schema.optional(Schema.String),
+    useIpAliases: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IPAllocationPolicy" });
+
+export interface NodeConfig {
+  /** Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  machineType?: string;
+  /** Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`. */
+  network?: string;
+  /** Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+  composerNetworkAttachment?: string;
+  /** Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  oauthScopes?: ReadonlyArray<string>;
+  /** Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  diskSizeGb?: number;
+  /** Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  location?: string;
+  /** Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. */
+  serviceAccount?: string;
+  /** Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent */
+  enableIpMasqAgent?: boolean;
+  /** Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location. */
+  subnetwork?: string;
+  /** Optional. The configuration for controlling how IPs are allocated in the GKE cluster. */
+  ipAllocationPolicy?: IPAllocationPolicy;
+  /** Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. */
+  tags?: ReadonlyArray<string>;
+  /** Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+  composerInternalIpv4CidrBlock?: string;
+}
+
+export const NodeConfig: Schema.Codec<NodeConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    composerNetworkAttachment: Schema.optional(Schema.String),
+    oauthScopes: Schema.optional(Schema.Array(Schema.String)),
+    diskSizeGb: Schema.optional(Schema.Number),
+    location: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    enableIpMasqAgent: Schema.optional(Schema.Boolean),
+    subnetwork: Schema.optional(Schema.String),
+    ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    composerInternalIpv4CidrBlock: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NodeConfig" });
+
+export interface WebServerConfig {
+  /** Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values. */
+  machineType?: string;
+}
+
+export const WebServerConfig: Schema.Codec<WebServerConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WebServerConfig" });
+
+export interface EnvironmentConfig {
+  /** Output only. The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)). */
+  airflowByoidUri?: string;
+  /** Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer. */
+  resilienceMode?:
+    | "RESILIENCE_MODE_UNSPECIFIED"
+    | "HIGH_RESILIENCE"
+    | (string & {});
+  /** Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
+  recoveryConfig?: RecoveryConfig;
+  /** Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)). */
+  airflowUri?: string;
+  /** Output only. The Kubernetes Engine cluster used to run this environment. */
+  gkeCluster?: string;
+  /** Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
+  environmentSize?:
+    | "ENVIRONMENT_SIZE_UNSPECIFIED"
+    | "ENVIRONMENT_SIZE_SMALL"
+    | "ENVIRONMENT_SIZE_MEDIUM"
+    | "ENVIRONMENT_SIZE_LARGE"
+    | "ENVIRONMENT_SIZE_EXTRA_LARGE"
+    | (string & {});
+  /** Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. */
+  encryptionConfig?: EncryptionConfig;
+  /** Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
+  workloadsConfig?: WorkloadsConfig;
+  /** Optional. The configuration setting for Airflow database data retention mechanism. */
+  dataRetentionConfig?: DataRetentionConfig;
+  /** Optional. The configuration used for the Private IP Cloud Composer environment. */
+  privateEnvironmentConfig?: PrivateEnvironmentConfig;
+  /** Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. */
+  databaseConfig?: DatabaseConfig;
+  /** The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  nodeCount?: number;
+  /** Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. */
+  webServerNetworkAccessControl?: WebServerNetworkAccessControl;
+  /** Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled. */
+  masterAuthorizedNetworksConfig?: MasterAuthorizedNetworksConfig;
+  /** Optional. The configuration settings for software inside the environment. */
+  softwareConfig?: SoftwareConfig;
+  /** Optional. The configuration used for the Kubernetes Engine cluster. */
+  nodeConfig?: NodeConfig;
+  /** Optional. The configuration settings for the Airflow web server App Engine instance. */
+  webServerConfig?: WebServerConfig;
+  /** Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix. */
+  dagGcsPrefix?: string;
+}
+
+export const EnvironmentConfig: Schema.Codec<EnvironmentConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    airflowByoidUri: Schema.optional(Schema.String),
+    resilienceMode: Schema.optional(Schema.String),
+    recoveryConfig: Schema.optional(RecoveryConfig),
+    airflowUri: Schema.optional(Schema.String),
+    gkeCluster: Schema.optional(Schema.String),
+    environmentSize: Schema.optional(Schema.String),
+    encryptionConfig: Schema.optional(EncryptionConfig),
+    workloadsConfig: Schema.optional(WorkloadsConfig),
+    dataRetentionConfig: Schema.optional(DataRetentionConfig),
+    privateEnvironmentConfig: Schema.optional(PrivateEnvironmentConfig),
+    databaseConfig: Schema.optional(DatabaseConfig),
+    nodeCount: Schema.optional(Schema.Number),
+    webServerNetworkAccessControl: Schema.optional(
+      WebServerNetworkAccessControl,
+    ),
+    maintenanceWindow: Schema.optional(MaintenanceWindow),
+    masterAuthorizedNetworksConfig: Schema.optional(
+      MasterAuthorizedNetworksConfig,
+    ),
+    softwareConfig: Schema.optional(SoftwareConfig),
+    nodeConfig: Schema.optional(NodeConfig),
+    webServerConfig: Schema.optional(WebServerConfig),
+    dagGcsPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnvironmentConfig" });
+
+export interface StorageConfig {
+  /** Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix. */
+  bucket?: string;
+}
+
+export const StorageConfig: Schema.Codec<StorageConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StorageConfig" });
+
+export interface Environment {
+  /** Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created. */
+  uuid?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzs?: boolean;
+  /** Optional. Configuration parameters for this environment. */
+  config?: EnvironmentConfig;
+  /** Output only. The time at which this environment was created. */
+  createTime?: string;
+  /** Output only. Reserved for future use. */
+  satisfiesPzi?: boolean;
+  /** Optional. Storage configuration for this environment. */
+  storageConfig?: StorageConfig;
+  /** Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size. */
+  labels?: Record<string, string>;
+  /** The current state of the environment. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "RUNNING"
+    | "UPDATING"
+    | "DELETING"
+    | "ERROR"
+    | (string & {});
+  /** Output only. The time at which this environment was last modified. */
+  updateTime?: string;
+  /** Identifier. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. */
+  name?: string;
+}
+
+export const Environment: Schema.Codec<Environment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uuid: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    config: Schema.optional(EnvironmentConfig),
+    createTime: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    storageConfig: Schema.optional(StorageConfig),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Environment" });
+
+export interface ListEnvironmentsResponse {
+  /** The list of environments returned by a ListEnvironmentsRequest. */
+  environments?: ReadonlyArray<Environment>;
+  /** The page token used to query for the next page if one exists. */
+  nextPageToken?: string;
+}
+
+export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(Schema.Array(Environment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
+
+export interface SaveSnapshotRequest {
+  /** Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots". */
+  snapshotLocation?: string;
+}
+
+export const SaveSnapshotRequest: Schema.Codec<SaveSnapshotRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshotLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SaveSnapshotRequest" });
+
+export interface UserWorkloadsSecret {
+  /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
+  name?: string;
+  /** Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" } */
+  data?: Record<string, string>;
+}
+
+export const UserWorkloadsSecret: Schema.Codec<UserWorkloadsSecret> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "UserWorkloadsSecret" });
+
+export interface ExitInfo {
+  /** Error message. Empty if there was no error. */
+  error?: string;
+  /** The exit code from the command execution. */
+  exitCode?: number;
+}
+
+export const ExitInfo: Schema.Codec<ExitInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Schema.String),
+    exitCode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ExitInfo" });
+
+export interface PollAirflowCommandResponse {
+  /** Output from the command execution. It may not contain the full output and the caller may need to poll for more lines. */
+  output?: ReadonlyArray<Line>;
+  /** The result exit status of the command. */
+  exitInfo?: ExitInfo;
+  /** Whether the command execution has finished and there is no more output. */
+  outputEnd?: boolean;
+}
+
+export const PollAirflowCommandResponse: Schema.Codec<PollAirflowCommandResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    output: Schema.optional(Schema.Array(Line)),
+    exitInfo: Schema.optional(ExitInfo),
+    outputEnd: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PollAirflowCommandResponse" });
+
 export interface UserWorkloadsConfigMap {
   /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
   name?: string;
@@ -29,51 +754,54 @@ export interface UserWorkloadsConfigMap {
   data?: Record<string, string>;
 }
 
-export const UserWorkloadsConfigMap: Schema.Schema<UserWorkloadsConfigMap> =
+export const UserWorkloadsConfigMap: Schema.Codec<UserWorkloadsConfigMap> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "UserWorkloadsConfigMap" });
 
-export interface ExitInfo {
-  /** The exit code from the command execution. */
-  exitCode?: number;
-  /** Error message. Empty if there was no error. */
-  error?: string;
-}
+export interface DatabaseFailoverRequest {}
 
-export const ExitInfo: Schema.Schema<ExitInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    exitCode: Schema.optional(Schema.Number),
-    error: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExitInfo" });
-
-export interface DatabaseFailoverResponse {}
-
-export const DatabaseFailoverResponse: Schema.Schema<DatabaseFailoverResponse> =
+export const DatabaseFailoverRequest: Schema.Codec<DatabaseFailoverRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DatabaseFailoverResponse",
+    identifier: "DatabaseFailoverRequest",
   });
 
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
+export interface ExecuteAirflowCommandRequest {
+  /** Airflow command. */
+  command?: string;
+  /** Airflow subcommand. */
+  subcommand?: string;
+  /** Parameters for the Airflow command/subcommand as an array of arguments. It may contain positional arguments like `["my-dag-id"]`, key-value parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like `["-f"]`. */
+  parameters?: ReadonlyArray<string>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const ExecuteAirflowCommandRequest: Schema.Codec<ExecuteAirflowCommandRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
+    command: Schema.optional(Schema.String),
+    subcommand: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ExecuteAirflowCommandRequest" });
+
+export interface ListOperationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+}
+
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  }).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ComposerWorkloadStatus {
+  /** Output only. Detailed message of the status. */
+  detailedStatusMessage?: string;
   /** Output only. Workload state. */
   state?:
     | "COMPOSER_WORKLOAD_STATE_UNSPECIFIED"
@@ -84,22 +812,18 @@ export interface ComposerWorkloadStatus {
     | "SUCCEEDED"
     | "FAILED"
     | (string & {});
-  /** Output only. Detailed message of the status. */
-  detailedStatusMessage?: string;
   /** Output only. Text to provide more descriptive status. */
   statusMessage?: string;
 }
 
-export const ComposerWorkloadStatus: Schema.Schema<ComposerWorkloadStatus> =
+export const ComposerWorkloadStatus: Schema.Codec<ComposerWorkloadStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
     detailedStatusMessage: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComposerWorkloadStatus" });
 
 export interface ComposerWorkload {
-  /** Name of a workload. */
-  name?: string;
   /** Type of a workload. */
   type?:
     | "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED"
@@ -114,14 +838,70 @@ export interface ComposerWorkload {
     | (string & {});
   /** Output only. Status of a workload. */
   status?: ComposerWorkloadStatus;
+  /** Name of a workload. */
+  name?: string;
 }
 
-export const ComposerWorkload: Schema.Schema<ComposerWorkload> =
+export const ComposerWorkload: Schema.Codec<ComposerWorkload> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     status: Schema.optional(ComposerWorkloadStatus),
+    name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ComposerWorkload" });
+
+export interface Composer_Date {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  day?: number;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  month?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  year?: number;
+}
+
+export const Composer_Date: Schema.Codec<Composer_Date> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Composer_Date" });
+
+export interface ImageVersion {
+  /** The date of the version release. */
+  releaseDate?: Composer_Date;
+  /** supported python versions */
+  supportedPythonVersions?: ReadonlyArray<string>;
+  /** Whether it is impossible to create an environment with the image version. */
+  creationDisabled?: boolean;
+  /** The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b.c" */
+  imageVersionId?: string;
+  /** Whether this is the default ImageVersion used by Composer during environment creation if no input ImageVersion is specified. */
+  isDefault?: boolean;
+  /** Whether it is impossible to upgrade an environment running with the image version. */
+  upgradeDisabled?: boolean;
+}
+
+export const ImageVersion: Schema.Codec<ImageVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseDate: Schema.optional(Composer_Date),
+    supportedPythonVersions: Schema.optional(Schema.Array(Schema.String)),
+    creationDisabled: Schema.optional(Schema.Boolean),
+    imageVersionId: Schema.optional(Schema.String),
+    isDefault: Schema.optional(Schema.Boolean),
+    upgradeDisabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ImageVersion" });
+
+export interface ListImageVersionsResponse {
+  /** The list of supported ImageVersions in a location. */
+  imageVersions?: ReadonlyArray<ImageVersion>;
+  /** The page token used to query for the next page if one exists. */
+  nextPageToken?: string;
+}
+
+export const ListImageVersionsResponse: Schema.Codec<ListImageVersionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageVersions: Schema.optional(Schema.Array(ImageVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListImageVersionsResponse" });
 
 export interface ListWorkloadsResponse {
   /** The list of environment workloads. */
@@ -130,679 +910,64 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
+export const ListWorkloadsResponse: Schema.Codec<ListWorkloadsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workloads: Schema.optional(Schema.Array(ComposerWorkload)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListWorkloadsResponse" });
 
-export interface IPAllocationPolicy {
-  /** Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. */
-  clusterSecondaryRangeName?: string;
-  /** Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
-  clusterIpv4CidrBlock?: string;
-  /** Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters. */
-  useIpAliases?: boolean;
-  /** Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. */
-  servicesSecondaryRangeName?: string;
-  /** Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
-  servicesIpv4CidrBlock?: string;
-}
+export interface LoadSnapshotResponse {}
 
-export const IPAllocationPolicy: Schema.Schema<IPAllocationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    clusterSecondaryRangeName: Schema.optional(Schema.String),
-    clusterIpv4CidrBlock: Schema.optional(Schema.String),
-    useIpAliases: Schema.optional(Schema.Boolean),
-    servicesSecondaryRangeName: Schema.optional(Schema.String),
-    servicesIpv4CidrBlock: Schema.optional(Schema.String),
-  }).annotate({ identifier: "IPAllocationPolicy" });
+export const LoadSnapshotResponse: Schema.Codec<LoadSnapshotResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "LoadSnapshotResponse",
+  });
 
-export interface NodeConfig {
-  /** Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  composerNetworkAttachment?: string;
-  /** Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  machineType?: string;
-  /** Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. */
-  tags?: ReadonlyArray<string>;
-  /** Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  diskSizeGb?: number;
-  /** Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  location?: string;
-  /** Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`. */
-  network?: string;
-  /** Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  composerInternalIpv4CidrBlock?: string;
-  /** Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  oauthScopes?: ReadonlyArray<string>;
-  /** Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. */
-  serviceAccount?: string;
-  /** Optional. The configuration for controlling how IPs are allocated in the GKE cluster. */
-  ipAllocationPolicy?: IPAllocationPolicy;
-  /** Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent */
-  enableIpMasqAgent?: boolean;
-  /** Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location. */
-  subnetwork?: string;
-}
-
-export const NodeConfig: Schema.Schema<NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    composerNetworkAttachment: Schema.optional(Schema.String),
-    machineType: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Array(Schema.String)),
-    diskSizeGb: Schema.optional(Schema.Number),
-    location: Schema.optional(Schema.String),
-    network: Schema.optional(Schema.String),
-    composerInternalIpv4CidrBlock: Schema.optional(Schema.String),
-    oauthScopes: Schema.optional(Schema.Array(Schema.String)),
-    serviceAccount: Schema.optional(Schema.String),
-    ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
-    enableIpMasqAgent: Schema.optional(Schema.Boolean),
-    subnetwork: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NodeConfig" });
-
-export interface Operation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    error: Schema.optional(Status),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Operation" });
-
-export interface ListOperationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    operations: Schema.optional(Schema.Array(Operation)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListOperationsResponse" });
-
-export interface SaveSnapshotResponse {
-  /** The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the snapshot creation was successful. */
+export interface LoadSnapshotRequest {
+  /** Whether or not to skip setting Airflow overrides when loading the environment's state. */
+  skipAirflowOverridesSetting?: boolean;
+  /** Whether or not to skip setting environment variables when loading the environment's state. */
+  skipEnvironmentVariablesSetting?: boolean;
+  /** Whether or not to skip installing Pypi packages when loading the environment's state. */
+  skipPypiPackagesInstallation?: boolean;
+  /** A Cloud Storage path to a snapshot to load, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". */
   snapshotPath?: string;
+  /** Whether or not to skip copying Cloud Storage data when loading the environment's state. */
+  skipGcsDataCopying?: boolean;
 }
 
-export const SaveSnapshotResponse: Schema.Schema<SaveSnapshotResponse> =
+export const LoadSnapshotRequest: Schema.Codec<LoadSnapshotRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skipAirflowOverridesSetting: Schema.optional(Schema.Boolean),
+    skipEnvironmentVariablesSetting: Schema.optional(Schema.Boolean),
+    skipPypiPackagesInstallation: Schema.optional(Schema.Boolean),
     snapshotPath: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SaveSnapshotResponse" });
+    skipGcsDataCopying: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "LoadSnapshotRequest" });
 
-export interface SchedulerResource {
-  /** Optional. Memory (GB) request and limit for a single Airflow scheduler replica. */
-  memoryGb?: number;
-  /** Optional. Storage (GB) request and limit for a single Airflow scheduler replica. */
-  storageGb?: number;
-  /** Optional. CPU request and limit for a single Airflow scheduler replica. */
-  cpu?: number;
-  /** Optional. The number of schedulers. */
-  count?: number;
-}
-
-export const SchedulerResource: Schema.Schema<SchedulerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    memoryGb: Schema.optional(Schema.Number),
-    storageGb: Schema.optional(Schema.Number),
-    cpu: Schema.optional(Schema.Number),
-    count: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "SchedulerResource" });
-
-export interface ScheduledSnapshotsConfig {
-  /** Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution. */
-  snapshotCreationSchedule?: string;
-  /** Optional. Whether scheduled snapshots creation is enabled. */
-  enabled?: boolean;
-  /** Optional. The Cloud Storage location for storing automatically created snapshots. */
-  snapshotLocation?: string;
-  /** Optional. Time zone that sets the context to interpret snapshot_creation_schedule. */
-  timeZone?: string;
-}
-
-export const ScheduledSnapshotsConfig: Schema.Schema<ScheduledSnapshotsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    snapshotCreationSchedule: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-    snapshotLocation: Schema.optional(Schema.String),
-    timeZone: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ScheduledSnapshotsConfig" });
-
-export interface RecoveryConfig {
-  /** Optional. The configuration for scheduled snapshot creation mechanism. */
-  scheduledSnapshotsConfig?: ScheduledSnapshotsConfig;
-}
-
-export const RecoveryConfig: Schema.Schema<RecoveryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    scheduledSnapshotsConfig: Schema.optional(ScheduledSnapshotsConfig),
-  }).annotate({ identifier: "RecoveryConfig" });
-
-export interface StorageConfig {
-  /** Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix. */
-  bucket?: string;
-}
-
-export const StorageConfig: Schema.Schema<StorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bucket: Schema.optional(Schema.String),
-  }).annotate({ identifier: "StorageConfig" });
-
-export interface TriggererResource {
-  /** Optional. Memory (GB) request and limit for a single Airflow triggerer replica. */
-  memoryGb?: number;
-  /** Optional. CPU request and limit for a single Airflow triggerer replica. */
-  cpu?: number;
-  /** Optional. The number of triggerers. */
-  count?: number;
-}
-
-export const TriggererResource: Schema.Schema<TriggererResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    memoryGb: Schema.optional(Schema.Number),
-    cpu: Schema.optional(Schema.Number),
-    count: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "TriggererResource" });
-
-export interface WorkerResource {
-  /** Optional. Maximum number of workers for autoscaling. */
-  maxCount?: number;
-  /** Optional. Memory (GB) request and limit for a single Airflow worker replica. */
-  memoryGb?: number;
-  /** Optional. Storage (GB) request and limit for a single Airflow worker replica. */
-  storageGb?: number;
-  /** Optional. Minimum number of workers for autoscaling. */
-  minCount?: number;
-  /** Optional. CPU request and limit for a single Airflow worker replica. */
-  cpu?: number;
-}
-
-export const WorkerResource: Schema.Schema<WorkerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maxCount: Schema.optional(Schema.Number),
-    memoryGb: Schema.optional(Schema.Number),
-    storageGb: Schema.optional(Schema.Number),
-    minCount: Schema.optional(Schema.Number),
-    cpu: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "WorkerResource" });
-
-export interface WebServerResource {
-  /** Optional. Memory (GB) request and limit for Airflow web server. */
-  memoryGb?: number;
-  /** Optional. Storage (GB) request and limit for Airflow web server. */
-  storageGb?: number;
-  /** Optional. CPU request and limit for Airflow web server. */
-  cpu?: number;
-}
-
-export const WebServerResource: Schema.Schema<WebServerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    memoryGb: Schema.optional(Schema.Number),
-    storageGb: Schema.optional(Schema.Number),
-    cpu: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "WebServerResource" });
-
-export interface DagProcessorResource {
-  /** Optional. CPU request and limit for a single Airflow DAG processor replica. */
-  cpu?: number;
-  /** Optional. Memory (GB) request and limit for a single Airflow DAG processor replica. */
-  memoryGb?: number;
-  /** Optional. Storage (GB) request and limit for a single Airflow DAG processor replica. */
-  storageGb?: number;
-  /** Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created. */
-  count?: number;
-}
-
-export const DagProcessorResource: Schema.Schema<DagProcessorResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cpu: Schema.optional(Schema.Number),
-    memoryGb: Schema.optional(Schema.Number),
-    storageGb: Schema.optional(Schema.Number),
-    count: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "DagProcessorResource" });
-
-export interface WorkloadsConfig {
-  /** Optional. Resources used by Airflow triggerers. */
-  triggerer?: TriggererResource;
-  /** Optional. Resources used by Airflow schedulers. */
-  scheduler?: SchedulerResource;
-  /** Optional. Resources used by Airflow workers. */
-  worker?: WorkerResource;
-  /** Optional. Resources used by Airflow web server. */
-  webServer?: WebServerResource;
-  /** Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  dagProcessor?: DagProcessorResource;
-}
-
-export const WorkloadsConfig: Schema.Schema<WorkloadsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    triggerer: Schema.optional(TriggererResource),
-    scheduler: Schema.optional(SchedulerResource),
-    worker: Schema.optional(WorkerResource),
-    webServer: Schema.optional(WebServerResource),
-    dagProcessor: Schema.optional(DagProcessorResource),
-  }).annotate({ identifier: "WorkloadsConfig" });
-
-export interface AllowedIpRange {
-  /** IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`. */
-  value?: string;
-  /** Optional. User-provided description. It must contain at most 300 characters. */
-  description?: string;
-}
-
-export const AllowedIpRange: Schema.Schema<AllowedIpRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AllowedIpRange" });
-
-export interface WebServerNetworkAccessControl {
-  /** A collection of allowed IP ranges with descriptions. */
-  allowedIpRanges?: ReadonlyArray<AllowedIpRange>;
-}
-
-export const WebServerNetworkAccessControl: Schema.Schema<WebServerNetworkAccessControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowedIpRanges: Schema.optional(Schema.Array(AllowedIpRange)),
-  }).annotate({ identifier: "WebServerNetworkAccessControl" });
-
-export interface AirflowMetadataRetentionPolicyConfig {
-  /** Optional. How many days data should be retained for. */
-  retentionDays?: number;
-  /** Optional. Retention can be either enabled or disabled. */
-  retentionMode?:
-    | "RETENTION_MODE_UNSPECIFIED"
-    | "RETENTION_MODE_ENABLED"
-    | "RETENTION_MODE_DISABLED"
+export interface ConfigConflict {
+  /** Conflict type. It can be blocking or non-blocking. */
+  type?:
+    | "CONFLICT_TYPE_UNSPECIFIED"
+    | "BLOCKING"
+    | "NON_BLOCKING"
     | (string & {});
+  /** Conflict message. */
+  message?: string;
 }
 
-export const AirflowMetadataRetentionPolicyConfig: Schema.Schema<AirflowMetadataRetentionPolicyConfig> =
+export const ConfigConflict: Schema.Codec<ConfigConflict> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    retentionDays: Schema.optional(Schema.Number),
-    retentionMode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AirflowMetadataRetentionPolicyConfig" });
+    type: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigConflict" });
 
-export interface TaskLogsRetentionConfig {
-  /** Optional. The mode of storage for Airflow workers task logs. */
-  storageMode?:
-    | "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
-    | "CLOUD_LOGGING_AND_CLOUD_STORAGE"
-    | "CLOUD_LOGGING_ONLY"
-    | (string & {});
-}
+export interface DatabaseFailoverResponse {}
 
-export const TaskLogsRetentionConfig: Schema.Schema<TaskLogsRetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storageMode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TaskLogsRetentionConfig" });
-
-export interface DataRetentionConfig {
-  /** Optional. The retention policy for airflow metadata database. */
-  airflowMetadataRetentionConfig?: AirflowMetadataRetentionPolicyConfig;
-  /** Optional. The configuration settings for task logs retention */
-  taskLogsRetentionConfig?: TaskLogsRetentionConfig;
-}
-
-export const DataRetentionConfig: Schema.Schema<DataRetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    airflowMetadataRetentionConfig: Schema.optional(
-      AirflowMetadataRetentionPolicyConfig,
-    ),
-    taskLogsRetentionConfig: Schema.optional(TaskLogsRetentionConfig),
-  }).annotate({ identifier: "DataRetentionConfig" });
-
-export interface EncryptionConfig {
-  /** Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used. */
-  kmsKeyName?: string;
-}
-
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kmsKeyName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "EncryptionConfig" });
-
-export interface WebServerConfig {
-  /** Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values. */
-  machineType?: string;
-}
-
-export const WebServerConfig: Schema.Schema<WebServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    machineType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "WebServerConfig" });
-
-export interface PrivateClusterConfig {
-  /** Optional. If `true`, access to the public endpoint of the GKE cluster is denied. */
-  enablePrivateEndpoint?: boolean;
-  /** Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. */
-  masterIpv4ReservedRange?: string;
-  /** Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used. */
-  masterIpv4CidrBlock?: string;
-}
-
-export const PrivateClusterConfig: Schema.Schema<PrivateClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enablePrivateEndpoint: Schema.optional(Schema.Boolean),
-    masterIpv4ReservedRange: Schema.optional(Schema.String),
-    masterIpv4CidrBlock: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PrivateClusterConfig" });
-
-export interface NetworkingConfig {
-  /** Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment. */
-  connectionType?:
-    | "CONNECTION_TYPE_UNSPECIFIED"
-    | "VPC_PEERING"
-    | "PRIVATE_SERVICE_CONNECT"
-    | (string & {});
-}
-
-export const NetworkingConfig: Schema.Schema<NetworkingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    connectionType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "NetworkingConfig" });
-
-export interface PrivateEnvironmentConfig {
-  /** Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use `networking_type` instead. */
-  enablePrivateEnvironment?: boolean;
-  /** Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment. */
-  privateClusterConfig?: PrivateClusterConfig;
-  /** Optional. Configuration for the network connections configuration in the environment. */
-  networkingConfig?: NetworkingConfig;
-  /** Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  cloudComposerNetworkIpv4CidrBlock?: string;
-  /** Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  webServerIpv4CidrBlock?: string;
-  /** Output only. The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  cloudComposerNetworkIpv4ReservedRange?: string;
-  /** Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`. */
-  cloudSqlIpv4CidrBlock?: string;
-  /** Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. */
-  cloudComposerConnectionSubnetwork?: string;
-  /** Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  enablePrivateBuildsOnly?: boolean;
-  /** Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`. */
-  enablePrivatelyUsedPublicIps?: boolean;
-  /** Output only. The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  webServerIpv4ReservedRange?: string;
-  /** Optional. Networking type for the environment, either private or public. */
-  networkingType?:
-    | "NETWORKING_TYPE_UNSPECIFIED"
-    | "PRIVATE"
-    | "PUBLIC"
-    | (string & {});
-}
-
-export const PrivateEnvironmentConfig: Schema.Schema<PrivateEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enablePrivateEnvironment: Schema.optional(Schema.Boolean),
-    privateClusterConfig: Schema.optional(PrivateClusterConfig),
-    networkingConfig: Schema.optional(NetworkingConfig),
-    cloudComposerNetworkIpv4CidrBlock: Schema.optional(Schema.String),
-    webServerIpv4CidrBlock: Schema.optional(Schema.String),
-    cloudComposerNetworkIpv4ReservedRange: Schema.optional(Schema.String),
-    cloudSqlIpv4CidrBlock: Schema.optional(Schema.String),
-    cloudComposerConnectionSubnetwork: Schema.optional(Schema.String),
-    enablePrivateBuildsOnly: Schema.optional(Schema.Boolean),
-    enablePrivatelyUsedPublicIps: Schema.optional(Schema.Boolean),
-    webServerIpv4ReservedRange: Schema.optional(Schema.String),
-    networkingType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PrivateEnvironmentConfig" });
-
-export interface DatabaseConfig {
-  /** Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*. */
-  zone?: string;
-  /** Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  machineType?: string;
-}
-
-export const DatabaseConfig: Schema.Schema<DatabaseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zone: Schema.optional(Schema.String),
-    machineType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DatabaseConfig" });
-
-export interface MaintenanceWindow {
-  /** Required. Start time of the first recurrence of the maintenance window. */
-  startTime?: string;
-  /** Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`. */
-  recurrence?: string;
-  /** Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`. */
-  endTime?: string;
-}
-
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    startTime: Schema.optional(Schema.String),
-    recurrence: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MaintenanceWindow" });
-
-export interface CidrBlock {
-  /** User-defined name that identifies the CIDR block. */
-  displayName?: string;
-  /** CIDR block that must be specified in CIDR notation. */
-  cidrBlock?: string;
-}
-
-export const CidrBlock: Schema.Schema<CidrBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    cidrBlock: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CidrBlock" });
-
-export interface MasterAuthorizedNetworksConfig {
-  /** Optional. Whether or not master authorized networks feature is enabled. */
-  enabled?: boolean;
-  /** Up to 50 external networks that could access Kubernetes master through HTTPS. */
-  cidrBlocks?: ReadonlyArray<CidrBlock>;
-}
-
-export const MasterAuthorizedNetworksConfig: Schema.Schema<MasterAuthorizedNetworksConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.optional(Schema.Boolean),
-    cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
-  }).annotate({ identifier: "MasterAuthorizedNetworksConfig" });
-
-export interface CloudDataLineageIntegration {
-  /** Optional. Whether or not Cloud Data Lineage integration is enabled. */
-  enabled?: boolean;
-}
-
-export const CloudDataLineageIntegration: Schema.Schema<CloudDataLineageIntegration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "CloudDataLineageIntegration" });
-
-export interface SoftwareConfig {
-  /** Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. */
-  schedulerCount?: number;
-  /** Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER` */
-  envVariables?: Record<string, string>;
-  /** Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
-  imageVersion?: string;
-  /** Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value. */
-  pypiPackages?: Record<string, string>;
-  /** Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3. */
-  pythonVersion?: string;
-  /** Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-  webServerPluginsMode?:
-    | "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
-    | "PLUGINS_DISABLED"
-    | "PLUGINS_ENABLED"
-    | (string & {});
-  /** Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden. */
-  airflowConfigOverrides?: Record<string, string>;
-  /** Optional. The configuration for Cloud Data Lineage integration. */
-  cloudDataLineageIntegration?: CloudDataLineageIntegration;
-}
-
-export const SoftwareConfig: Schema.Schema<SoftwareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    schedulerCount: Schema.optional(Schema.Number),
-    envVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    imageVersion: Schema.optional(Schema.String),
-    pypiPackages: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    pythonVersion: Schema.optional(Schema.String),
-    webServerPluginsMode: Schema.optional(Schema.String),
-    airflowConfigOverrides: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    cloudDataLineageIntegration: Schema.optional(CloudDataLineageIntegration),
-  }).annotate({ identifier: "SoftwareConfig" });
-
-export interface EnvironmentConfig {
-  /** Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  workloadsConfig?: WorkloadsConfig;
-  /** Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix. */
-  dagGcsPrefix?: string;
-  /** Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied. */
-  webServerNetworkAccessControl?: WebServerNetworkAccessControl;
-  /** Optional. The configuration used for the Kubernetes Engine cluster. */
-  nodeConfig?: NodeConfig;
-  /** Optional. The configuration setting for Airflow database data retention mechanism. */
-  dataRetentionConfig?: DataRetentionConfig;
-  /** The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  nodeCount?: number;
-  /** Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  environmentSize?:
-    | "ENVIRONMENT_SIZE_UNSPECIFIED"
-    | "ENVIRONMENT_SIZE_SMALL"
-    | "ENVIRONMENT_SIZE_MEDIUM"
-    | "ENVIRONMENT_SIZE_LARGE"
-    | "ENVIRONMENT_SIZE_EXTRA_LARGE"
-    | (string & {});
-  /** Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)). */
-  airflowUri?: string;
-  /** Output only. The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)). */
-  airflowByoidUri?: string;
-  /** Output only. The Kubernetes Engine cluster used to run this environment. */
-  gkeCluster?: string;
-  /** Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated. */
-  encryptionConfig?: EncryptionConfig;
-  /** Optional. The configuration settings for the Airflow web server App Engine instance. */
-  webServerConfig?: WebServerConfig;
-  /** Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer. */
-  resilienceMode?:
-    | "RESILIENCE_MODE_UNSPECIFIED"
-    | "HIGH_RESILIENCE"
-    | (string & {});
-  /** Optional. The configuration used for the Private IP Cloud Composer environment. */
-  privateEnvironmentConfig?: PrivateEnvironmentConfig;
-  /** Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. */
-  databaseConfig?: DatabaseConfig;
-  /** Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week. */
-  maintenanceWindow?: MaintenanceWindow;
-  /** Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
-  recoveryConfig?: RecoveryConfig;
-  /** Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled. */
-  masterAuthorizedNetworksConfig?: MasterAuthorizedNetworksConfig;
-  /** Optional. The configuration settings for software inside the environment. */
-  softwareConfig?: SoftwareConfig;
-}
-
-export const EnvironmentConfig: Schema.Schema<EnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    workloadsConfig: Schema.optional(WorkloadsConfig),
-    dagGcsPrefix: Schema.optional(Schema.String),
-    webServerNetworkAccessControl: Schema.optional(
-      WebServerNetworkAccessControl,
-    ),
-    nodeConfig: Schema.optional(NodeConfig),
-    dataRetentionConfig: Schema.optional(DataRetentionConfig),
-    nodeCount: Schema.optional(Schema.Number),
-    environmentSize: Schema.optional(Schema.String),
-    airflowUri: Schema.optional(Schema.String),
-    airflowByoidUri: Schema.optional(Schema.String),
-    gkeCluster: Schema.optional(Schema.String),
-    encryptionConfig: Schema.optional(EncryptionConfig),
-    webServerConfig: Schema.optional(WebServerConfig),
-    resilienceMode: Schema.optional(Schema.String),
-    privateEnvironmentConfig: Schema.optional(PrivateEnvironmentConfig),
-    databaseConfig: Schema.optional(DatabaseConfig),
-    maintenanceWindow: Schema.optional(MaintenanceWindow),
-    recoveryConfig: Schema.optional(RecoveryConfig),
-    masterAuthorizedNetworksConfig: Schema.optional(
-      MasterAuthorizedNetworksConfig,
-    ),
-    softwareConfig: Schema.optional(SoftwareConfig),
-  }).annotate({ identifier: "EnvironmentConfig" });
-
-export interface Environment {
-  /** Optional. Storage configuration for this environment. */
-  storageConfig?: StorageConfig;
-  /** Output only. The time at which this environment was created. */
-  createTime?: string;
-  /** Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size. */
-  labels?: Record<string, string>;
-  /** Output only. Reserved for future use. */
-  satisfiesPzi?: boolean;
-  /** The current state of the environment. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "RUNNING"
-    | "UPDATING"
-    | "DELETING"
-    | "ERROR"
-    | (string & {});
-  /** Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created. */
-  uuid?: string;
-  /** Identifier. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. */
-  name?: string;
-  /** Output only. Reserved for future use. */
-  satisfiesPzs?: boolean;
-  /** Optional. Configuration parameters for this environment. */
-  config?: EnvironmentConfig;
-  /** Output only. The time at which this environment was last modified. */
-  updateTime?: string;
-}
-
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storageConfig: Schema.optional(StorageConfig),
-    createTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    satisfiesPzi: Schema.optional(Schema.Boolean),
-    state: Schema.optional(Schema.String),
-    uuid: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    satisfiesPzs: Schema.optional(Schema.Boolean),
-    config: Schema.optional(EnvironmentConfig),
-    updateTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Environment" });
-
-export interface ListEnvironmentsResponse {
-  /** The list of environments returned by a ListEnvironmentsRequest. */
-  environments?: ReadonlyArray<Environment>;
-  /** The page token used to query for the next page if one exists. */
-  nextPageToken?: string;
-}
-
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environments: Schema.optional(Schema.Array(Environment)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListEnvironmentsResponse" });
+export const DatabaseFailoverResponse: Schema.Codec<DatabaseFailoverResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "DatabaseFailoverResponse",
+  });
 
 export interface ListUserWorkloadsConfigMapsResponse {
   /** The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest. */
@@ -811,7 +976,7 @@ export interface ListUserWorkloadsConfigMapsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserWorkloadsConfigMapsResponse: Schema.Schema<ListUserWorkloadsConfigMapsResponse> =
+export const ListUserWorkloadsConfigMapsResponse: Schema.Codec<ListUserWorkloadsConfigMapsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userWorkloadsConfigMaps: Schema.optional(
       Schema.Array(UserWorkloadsConfigMap),
@@ -819,112 +984,153 @@ export const ListUserWorkloadsConfigMapsResponse: Schema.Schema<ListUserWorkload
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListUserWorkloadsConfigMapsResponse" });
 
-export interface ConfigConflict {
-  /** Conflict message. */
-  message?: string;
-  /** Conflict type. It can be blocking or non-blocking. */
-  type?:
-    | "CONFLICT_TYPE_UNSPECIFIED"
-    | "BLOCKING"
-    | "NON_BLOCKING"
-    | (string & {});
+export interface PollAirflowCommandRequest {
+  /** Line number from which new logs should be fetched. */
+  nextLineNumber?: number;
+  /** The unique ID of the command execution. */
+  executionId?: string;
+  /** The namespace of the pod where the command is executed. */
+  podNamespace?: string;
+  /** The name of the pod where the command is executed. */
+  pod?: string;
 }
 
-export const ConfigConflict: Schema.Schema<ConfigConflict> =
+export const PollAirflowCommandRequest: Schema.Codec<PollAirflowCommandRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ConfigConflict" });
+    nextLineNumber: Schema.optional(Schema.Number),
+    executionId: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PollAirflowCommandRequest" });
 
 export interface CheckUpgradeResponse {
-  /** Composer image for which the build was happening. */
-  imageVersion?: string;
-  /** Output only. Extract from a docker image build log containing information about pypi modules conflicts. */
-  pypiConflictBuildLogExtract?: string;
-  /** Output only. Url for a docker build log of an upgraded image. */
-  buildLogUri?: string;
   /** Output only. Whether build has succeeded or failed on modules conflicts. */
   containsPypiModulesConflict?:
     | "CONFLICT_RESULT_UNSPECIFIED"
     | "CONFLICT"
     | "NO_CONFLICT"
     | (string & {});
+  /** Output only. Url for a docker build log of an upgraded image. */
+  buildLogUri?: string;
+  /** Output only. Extract from a docker image build log containing information about pypi modules conflicts. */
+  pypiConflictBuildLogExtract?: string;
   /** Pypi dependencies specified in the environment configuration, at the time when the build was triggered. */
   pypiDependencies?: Record<string, string>;
+  /** Composer image for which the build was happening. */
+  imageVersion?: string;
   /** Output only. Contains information about environment configuration that is incompatible with the new image version, except for pypi modules conflicts. */
   configConflicts?: ReadonlyArray<ConfigConflict>;
 }
 
-export const CheckUpgradeResponse: Schema.Schema<CheckUpgradeResponse> =
+export const CheckUpgradeResponse: Schema.Codec<CheckUpgradeResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    imageVersion: Schema.optional(Schema.String),
-    pypiConflictBuildLogExtract: Schema.optional(Schema.String),
-    buildLogUri: Schema.optional(Schema.String),
     containsPypiModulesConflict: Schema.optional(Schema.String),
+    buildLogUri: Schema.optional(Schema.String),
+    pypiConflictBuildLogExtract: Schema.optional(Schema.String),
     pypiDependencies: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
+    imageVersion: Schema.optional(Schema.String),
     configConflicts: Schema.optional(Schema.Array(ConfigConflict)),
   }).annotate({ identifier: "CheckUpgradeResponse" });
+
+export interface RestartWebServerRequest {}
+
+export const RestartWebServerRequest: Schema.Codec<RestartWebServerRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "RestartWebServerRequest",
+  });
+
+export interface StopAirflowCommandRequest {
+  /** The name of the pod where the command is executed. */
+  pod?: string;
+  /** The unique ID of the command execution. */
+  executionId?: string;
+  /** The namespace of the pod where the command is executed. */
+  podNamespace?: string;
+  /** If true, the execution is terminated forcefully (SIGKILL). If false, the execution is stopped gracefully, giving it time for cleanup. */
+  force?: boolean;
+}
+
+export const StopAirflowCommandRequest: Schema.Codec<StopAirflowCommandRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pod: Schema.optional(Schema.String),
+    executionId: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "StopAirflowCommandRequest" });
+
+export interface ExecuteAirflowCommandResponse {
+  /** The unique ID of the command execution for polling. */
+  executionId?: string;
+  /** The namespace of the pod where the command is executed. */
+  podNamespace?: string;
+  /** Error message. Empty if there was no error. */
+  error?: string;
+  /** The name of the pod where the command is executed. */
+  pod?: string;
+}
+
+export const ExecuteAirflowCommandResponse: Schema.Codec<ExecuteAirflowCommandResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExecuteAirflowCommandResponse" });
+
+export interface SaveSnapshotResponse {
+  /** The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the snapshot creation was successful. */
+  snapshotPath?: string;
+}
+
+export const SaveSnapshotResponse: Schema.Codec<SaveSnapshotResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshotPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SaveSnapshotResponse" });
 
 export interface CheckUpgradeRequest {
   /** Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
   imageVersion?: string;
 }
 
-export const CheckUpgradeRequest: Schema.Schema<CheckUpgradeRequest> =
+export const CheckUpgradeRequest: Schema.Codec<CheckUpgradeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     imageVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "CheckUpgradeRequest" });
 
-export interface ExecuteAirflowCommandRequest {
-  /** Parameters for the Airflow command/subcommand as an array of arguments. It may contain positional arguments like `["my-dag-id"]`, key-value parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like `["-f"]`. */
-  parameters?: ReadonlyArray<string>;
-  /** Airflow subcommand. */
-  subcommand?: string;
-  /** Airflow command. */
-  command?: string;
+export interface FetchDatabasePropertiesResponse {
+  /** The Compute Engine zone that the instance is currently serving from. */
+  primaryGceZone?: string;
+  /** The Compute Engine zone that the failover instance is currently serving from for a regional Cloud SQL instance. */
+  secondaryGceZone?: string;
+  /** The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only fail over to the failover replica when the status is true. */
+  isFailoverReplicaAvailable?: boolean;
 }
 
-export const ExecuteAirflowCommandRequest: Schema.Schema<ExecuteAirflowCommandRequest> =
+export const FetchDatabasePropertiesResponse: Schema.Codec<FetchDatabasePropertiesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parameters: Schema.optional(Schema.Array(Schema.String)),
-    subcommand: Schema.optional(Schema.String),
-    command: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExecuteAirflowCommandRequest" });
+    primaryGceZone: Schema.optional(Schema.String),
+    secondaryGceZone: Schema.optional(Schema.String),
+    isFailoverReplicaAvailable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FetchDatabasePropertiesResponse" });
 
-export interface Line {
-  /** Number of the line. */
-  lineNumber?: number;
-  /** Text content of the log line. */
-  content?: string;
+export interface ListUserWorkloadsSecretsResponse {
+  /** The list of Secrets returned by a ListUserWorkloadsSecretsRequest. */
+  userWorkloadsSecrets?: ReadonlyArray<UserWorkloadsSecret>;
+  /** The page token used to query for the next page if one exists. */
+  nextPageToken?: string;
 }
 
-export const Line: Schema.Schema<Line> =
+export const ListUserWorkloadsSecretsResponse: Schema.Codec<ListUserWorkloadsSecretsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lineNumber: Schema.optional(Schema.Number),
-    content: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Line" });
-
-export interface PollAirflowCommandResponse {
-  /** Output from the command execution. It may not contain the full output and the caller may need to poll for more lines. */
-  output?: ReadonlyArray<Line>;
-  /** The result exit status of the command. */
-  exitInfo?: ExitInfo;
-  /** Whether the command execution has finished and there is no more output. */
-  outputEnd?: boolean;
-}
-
-export const PollAirflowCommandResponse: Schema.Schema<PollAirflowCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    output: Schema.optional(Schema.Array(Line)),
-    exitInfo: Schema.optional(ExitInfo),
-    outputEnd: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "PollAirflowCommandResponse" });
+    userWorkloadsSecrets: Schema.optional(Schema.Array(UserWorkloadsSecret)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserWorkloadsSecretsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
@@ -936,112 +1142,13 @@ export interface StopAirflowCommandResponse {
   isDone?: boolean;
 }
 
-export const StopAirflowCommandResponse: Schema.Schema<StopAirflowCommandResponse> =
+export const StopAirflowCommandResponse: Schema.Codec<StopAirflowCommandResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     output: Schema.optional(Schema.Array(Schema.String)),
     isDone: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "StopAirflowCommandResponse" });
 
-export interface SaveSnapshotRequest {
-  /** Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots". */
-  snapshotLocation?: string;
-}
-
-export const SaveSnapshotRequest: Schema.Schema<SaveSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    snapshotLocation: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SaveSnapshotRequest" });
-
-export interface RestartWebServerRequest {}
-
-export const RestartWebServerRequest: Schema.Schema<RestartWebServerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "RestartWebServerRequest",
-  });
-
-export interface ExecuteAirflowCommandResponse {
-  /** The name of the pod where the command is executed. */
-  pod?: string;
-  /** The namespace of the pod where the command is executed. */
-  podNamespace?: string;
-  /** Error message. Empty if there was no error. */
-  error?: string;
-  /** The unique ID of the command execution for polling. */
-  executionId?: string;
-}
-
-export const ExecuteAirflowCommandResponse: Schema.Schema<ExecuteAirflowCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pod: Schema.optional(Schema.String),
-    podNamespace: Schema.optional(Schema.String),
-    error: Schema.optional(Schema.String),
-    executionId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExecuteAirflowCommandResponse" });
-
-export interface Composer_Date {
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  year?: number;
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  day?: number;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  month?: number;
-}
-
-export const Composer_Date: Schema.Schema<Composer_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    year: Schema.optional(Schema.Number),
-    day: Schema.optional(Schema.Number),
-    month: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "Composer_Date" });
-
-export interface ImageVersion {
-  /** Whether it is impossible to upgrade an environment running with the image version. */
-  upgradeDisabled?: boolean;
-  /** Whether this is the default ImageVersion used by Composer during environment creation if no input ImageVersion is specified. */
-  isDefault?: boolean;
-  /** The date of the version release. */
-  releaseDate?: Composer_Date;
-  /** The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b.c" */
-  imageVersionId?: string;
-  /** supported python versions */
-  supportedPythonVersions?: ReadonlyArray<string>;
-  /** Whether it is impossible to create an environment with the image version. */
-  creationDisabled?: boolean;
-}
-
-export const ImageVersion: Schema.Schema<ImageVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    upgradeDisabled: Schema.optional(Schema.Boolean),
-    isDefault: Schema.optional(Schema.Boolean),
-    releaseDate: Schema.optional(Composer_Date),
-    imageVersionId: Schema.optional(Schema.String),
-    supportedPythonVersions: Schema.optional(Schema.Array(Schema.String)),
-    creationDisabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "ImageVersion" });
-
-export interface ListImageVersionsResponse {
-  /** The list of supported ImageVersions in a location. */
-  imageVersions?: ReadonlyArray<ImageVersion>;
-  /** The page token used to query for the next page if one exists. */
-  nextPageToken?: string;
-}
-
-export const ListImageVersionsResponse: Schema.Schema<ListImageVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    imageVersions: Schema.optional(Schema.Array(ImageVersion)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListImageVersionsResponse" });
-
-export interface DatabaseFailoverRequest {}
-
-export const DatabaseFailoverRequest: Schema.Schema<DatabaseFailoverRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "DatabaseFailoverRequest",
-  });
-
 export interface OperationMetadata {
-  /** Output only. The resource being operated on, as a [relative resource name]( /apis/design/resource_names#relative_resource_name). */
-  resource?: string;
   /** Output only. The type of operation being performed. */
   operationType?:
     | "TYPE_UNSPECIFIED"
@@ -1054,12 +1161,10 @@ export interface OperationMetadata {
     | "DATABASE_FAILOVER"
     | "MIGRATE"
     | (string & {});
-  /** Output only. The time the operation was submitted to the server. */
-  createTime?: string;
+  /** Output only. The resource being operated on, as a [relative resource name]( /apis/design/resource_names#relative_resource_name). */
+  resource?: string;
   /** Output only. The time when the operation terminated, regardless of its success. This field is unset if the operation is still ongoing. */
   endTime?: string;
-  /** Output only. The UUID of the resource being operated on. */
-  resourceUuid?: string;
   /** Output only. The current operation state. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1069,126 +1174,21 @@ export interface OperationMetadata {
     | "SUCCESSFUL"
     | "FAILED"
     | (string & {});
+  /** Output only. The time the operation was submitted to the server. */
+  createTime?: string;
+  /** Output only. The UUID of the resource being operated on. */
+  resourceUuid?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.optional(Schema.String),
     operationType: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
-    resourceUuid: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    resourceUuid: Schema.optional(Schema.String),
   }).annotate({ identifier: "OperationMetadata" });
-
-export interface FetchDatabasePropertiesResponse {
-  /** The Compute Engine zone that the failover instance is currently serving from for a regional Cloud SQL instance. */
-  secondaryGceZone?: string;
-  /** The Compute Engine zone that the instance is currently serving from. */
-  primaryGceZone?: string;
-  /** The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only fail over to the failover replica when the status is true. */
-  isFailoverReplicaAvailable?: boolean;
-}
-
-export const FetchDatabasePropertiesResponse: Schema.Schema<FetchDatabasePropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    secondaryGceZone: Schema.optional(Schema.String),
-    primaryGceZone: Schema.optional(Schema.String),
-    isFailoverReplicaAvailable: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "FetchDatabasePropertiesResponse" });
-
-export interface UserWorkloadsSecret {
-  /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
-  name?: string;
-  /** Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example": "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" } */
-  data?: Record<string, string>;
-}
-
-export const UserWorkloadsSecret: Schema.Schema<UserWorkloadsSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "UserWorkloadsSecret" });
-
-export interface ListUserWorkloadsSecretsResponse {
-  /** The list of Secrets returned by a ListUserWorkloadsSecretsRequest. */
-  userWorkloadsSecrets?: ReadonlyArray<UserWorkloadsSecret>;
-  /** The page token used to query for the next page if one exists. */
-  nextPageToken?: string;
-}
-
-export const ListUserWorkloadsSecretsResponse: Schema.Schema<ListUserWorkloadsSecretsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userWorkloadsSecrets: Schema.optional(Schema.Array(UserWorkloadsSecret)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListUserWorkloadsSecretsResponse" });
-
-export interface LoadSnapshotResponse {}
-
-export const LoadSnapshotResponse: Schema.Schema<LoadSnapshotResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "LoadSnapshotResponse",
-  });
-
-export interface LoadSnapshotRequest {
-  /** Whether or not to skip copying Cloud Storage data when loading the environment's state. */
-  skipGcsDataCopying?: boolean;
-  /** Whether or not to skip installing Pypi packages when loading the environment's state. */
-  skipPypiPackagesInstallation?: boolean;
-  /** Whether or not to skip setting Airflow overrides when loading the environment's state. */
-  skipAirflowOverridesSetting?: boolean;
-  /** Whether or not to skip setting environment variables when loading the environment's state. */
-  skipEnvironmentVariablesSetting?: boolean;
-  /** A Cloud Storage path to a snapshot to load, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". */
-  snapshotPath?: string;
-}
-
-export const LoadSnapshotRequest: Schema.Schema<LoadSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skipGcsDataCopying: Schema.optional(Schema.Boolean),
-    skipPypiPackagesInstallation: Schema.optional(Schema.Boolean),
-    skipAirflowOverridesSetting: Schema.optional(Schema.Boolean),
-    skipEnvironmentVariablesSetting: Schema.optional(Schema.Boolean),
-    snapshotPath: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LoadSnapshotRequest" });
-
-export interface StopAirflowCommandRequest {
-  /** The unique ID of the command execution. */
-  executionId?: string;
-  /** If true, the execution is terminated forcefully (SIGKILL). If false, the execution is stopped gracefully, giving it time for cleanup. */
-  force?: boolean;
-  /** The name of the pod where the command is executed. */
-  pod?: string;
-  /** The namespace of the pod where the command is executed. */
-  podNamespace?: string;
-}
-
-export const StopAirflowCommandRequest: Schema.Schema<StopAirflowCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    executionId: Schema.optional(Schema.String),
-    force: Schema.optional(Schema.Boolean),
-    pod: Schema.optional(Schema.String),
-    podNamespace: Schema.optional(Schema.String),
-  }).annotate({ identifier: "StopAirflowCommandRequest" });
-
-export interface PollAirflowCommandRequest {
-  /** The unique ID of the command execution. */
-  executionId?: string;
-  /** Line number from which new logs should be fetched. */
-  nextLineNumber?: number;
-  /** The name of the pod where the command is executed. */
-  pod?: string;
-  /** The namespace of the pod where the command is executed. */
-  podNamespace?: string;
-}
-
-export const PollAirflowCommandRequest: Schema.Schema<PollAirflowCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    executionId: Schema.optional(Schema.String),
-    nextLineNumber: Schema.optional(Schema.Number),
-    pod: Schema.optional(Schema.String),
-    podNamespace: Schema.optional(Schema.String),
-  }).annotate({ identifier: "PollAirflowCommandRequest" });
 
 // ==========================================================================
 // Errors
@@ -1244,32 +1244,68 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
   /** The standard list filter. */
   filter?: string;
-  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
   /** The standard list page size. */
   pageSize?: number;
   /** The standard list page token. */
   pageToken?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
+  /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
 }
 
 export const ListProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
     ),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/operations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
@@ -1296,42 +1332,6 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   },
 }));
 
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
@@ -1343,7 +1343,7 @@ export const GetProjectsLocationsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
@@ -1366,6 +1366,254 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface ListProjectsLocationsImageVersionsRequest {
+  /** The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** The maximum number of image_versions to return. */
+  pageSize?: number;
+  /** List ImageVersions in the given project and location, in the form: "projects/{projectId}/locations/{locationId}" */
+  parent: string;
+  /** Whether or not image versions from old releases should be included. */
+  includePastReleases?: boolean;
+}
+
+export const ListProjectsLocationsImageVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    includePastReleases: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("includePastReleases"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/imageVersions" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsImageVersionsRequest>;
+
+export type ListProjectsLocationsImageVersionsResponse =
+  ListImageVersionsResponse;
+export const ListProjectsLocationsImageVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListImageVersionsResponse;
+
+export type ListProjectsLocationsImageVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** List ImageVersions for provided location. */
+export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
+  ListProjectsLocationsImageVersionsRequest,
+  ListProjectsLocationsImageVersionsResponse,
+  ListProjectsLocationsImageVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsImageVersionsRequest,
+  output: ListProjectsLocationsImageVersionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsEnvironmentsRequest {
+  /** The resource name of the environment to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  name: string;
+}
+
+export const GetProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsEnvironmentsRequest>;
+
+export type GetProjectsLocationsEnvironmentsResponse = Environment;
+export const GetProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Environment;
+
+export type GetProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Get an existing environment. */
+export const getProjectsLocationsEnvironments: API.OperationMethod<
+  GetProjectsLocationsEnvironmentsRequest,
+  GetProjectsLocationsEnvironmentsResponse,
+  GetProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsEnvironmentsRequest,
+  output: GetProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
+  /** The resource name of the target environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  environment: string;
+  /** Request body */
+  body?: LoadSnapshotRequest;
+}
+
+export const LoadSnapshotProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.String.pipe(T.HttpPath("environment")),
+    body: Schema.optional(LoadSnapshotRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+environment}:loadSnapshot",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<LoadSnapshotProjectsLocationsEnvironmentsRequest>;
+
+export type LoadSnapshotProjectsLocationsEnvironmentsResponse = Operation;
+export const LoadSnapshotProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type LoadSnapshotProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of environment's specified in LoadSnapshotRequest is loaded into the environment. */
+export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
+  LoadSnapshotProjectsLocationsEnvironmentsRequest,
+  LoadSnapshotProjectsLocationsEnvironmentsResponse,
+  LoadSnapshotProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: LoadSnapshotProjectsLocationsEnvironmentsRequest,
+  output: LoadSnapshotProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsEnvironmentsRequest {
+  /** The environment to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  name: string;
+}
+
+export const DeleteProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEnvironmentsRequest>;
+
+export type DeleteProjectsLocationsEnvironmentsResponse = Operation;
+export const DeleteProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Delete an environment. */
+export const deleteProjectsLocationsEnvironments: API.OperationMethod<
+  DeleteProjectsLocationsEnvironmentsRequest,
+  DeleteProjectsLocationsEnvironmentsResponse,
+  DeleteProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsEnvironmentsRequest,
+  output: DeleteProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
+  /** Required. The resource name of the environment to check upgrade for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  environment: string;
+  /** Request body */
+  body?: CheckUpgradeRequest;
+}
+
+export const CheckUpgradeProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.String.pipe(T.HttpPath("environment")),
+    body: Schema.optional(CheckUpgradeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+environment}:checkUpgrade",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CheckUpgradeProjectsLocationsEnvironmentsRequest>;
+
+export type CheckUpgradeProjectsLocationsEnvironmentsResponse = Operation;
+export const CheckUpgradeProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CheckUpgradeProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Check if an upgrade operation on the environment will succeed. In case of problems detailed info can be found in the returned Operation. */
+export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
+  CheckUpgradeProjectsLocationsEnvironmentsRequest,
+  CheckUpgradeProjectsLocationsEnvironmentsResponse,
+  CheckUpgradeProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CheckUpgradeProjectsLocationsEnvironmentsRequest,
+  output: CheckUpgradeProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsEnvironmentsRequest {
+  /** The relative resource name of the environment to update, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  name: string;
+  /** Required. A comma-separated list of paths, relative to `Environment`, of fields to update. For example, to set the version of scikit-learn to install in the environment to 0.19.0 and to remove an existing installation of numpy, the `updateMask` parameter would include the following two `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and "config.softwareConfig.pypiPackages.numpy". The included patch environment would specify the scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{ "scikit-learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages other than scikit-learn and numpy will be unaffected. Only one update type may be included in a single request's `updateMask`. For example, one cannot update both the PyPI packages and labels in the same request. However, it is possible to update multiple members of a map field simultaneously in the same request. For example, to set the labels "label1" and "label2" while clearing "label3" (assuming it already exists), one can provide the paths "labels.label1", "labels.label2", and "labels.label3" and populate the patch environment as follows: { "labels":{ "label1":"new-label1-value" "label2":"new-label2-value" } } Note that in the above example, any existing labels that are not included in the `updateMask` will be unaffected. It is also possible to replace an entire map field by providing the map field's path in the `updateMask`. The new value of the field will be that which is provided in the patch environment. For example, to delete all pre-existing user-specified PyPI packages and install botocore at version 1.7.14, the `updateMask` would contain the path "config.softwareConfig.pypiPackages", and the patch environment would be the following: { "config":{ "softwareConfig":{ "pypiPackages":{ "botocore":"==1.7.14" } } } } **Note:** Only the following fields can be updated: * `config.softwareConfig.pypiPackages` * Replace all custom custom PyPI packages. If a replacement package map is not included in `environment`, all custom PyPI packages are cleared. It is an error to provide both this mask and a mask specifying an individual package. * `config.softwareConfig.pypiPackages.`packagename * Update the custom PyPI package *packagename*, preserving other packages. To delete the package, include it in `updateMask`, and omit the mapping for it in `environment.config.softwareConfig.pypiPackages`. It is an error to provide both a mask of this form and the `config.softwareConfig.pypiPackages` mask. * `labels` * Replace all environment labels. If a replacement labels map is not included in `environment`, all labels are cleared. It is an error to provide both this mask and a mask specifying one or more individual labels. * `labels.`labelName * Set the label named *labelName*, while preserving other labels. To delete the label, include it in `updateMask` and omit its mapping in `environment.labels`. It is an error to provide both a mask of this form and the `labels` mask. * `config.nodeCount` * Horizontally scale the number of nodes in the environment. An integer greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerNetworkAccessControl` * Replace the environment's current `WebServerNetworkAccessControl`. * `config.softwareConfig.airflowConfigOverrides` * Replace all Apache Airflow config overrides. If a replacement config overrides map is not included in `environment`, all config overrides are cleared. It is an error to provide both this mask and a mask specifying one or more individual config overrides. * `config.softwareConfig.airflowConfigOverrides.`section-name * Override the Apache Airflow config property *name* in the section named *section*, preserving other properties. To delete the property override, include it in `updateMask` and omit its mapping in `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a mask of this form and the `config.softwareConfig.airflowConfigOverrides` mask. * `config.softwareConfig.envVariables` * Replace all environment variables. If a replacement environment variable map is not included in `environment`, all custom environment variables are cleared. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers in Airflow. A positive integer not greater than the number of nodes must be provided in the `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
+  updateMask?: string;
+  /** Request body */
+  body?: Environment;
+}
+
+export const PatchProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Environment).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsEnvironmentsRequest>;
+
+export type PatchProjectsLocationsEnvironmentsResponse = Operation;
+export const PatchProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Update an environment. */
+export const patchProjectsLocationsEnvironments: API.OperationMethod<
+  PatchProjectsLocationsEnvironmentsRequest,
+  PatchProjectsLocationsEnvironmentsResponse,
+  PatchProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsEnvironmentsRequest,
+  output: PatchProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface PollAirflowCommandProjectsLocationsEnvironmentsRequest {
   /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
@@ -1384,7 +1632,7 @@ export const PollAirflowCommandProjectsLocationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<PollAirflowCommandProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<PollAirflowCommandProjectsLocationsEnvironmentsRequest>;
 
 export type PollAirflowCommandProjectsLocationsEnvironmentsResponse =
   PollAirflowCommandResponse;
@@ -1410,83 +1658,6 @@ export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
-  /** The resource name of the source environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  environment: string;
-  /** Request body */
-  body?: SaveSnapshotRequest;
-}
-
-export const SaveSnapshotProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.String.pipe(T.HttpPath("environment")),
-    body: Schema.optional(SaveSnapshotRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+environment}:saveSnapshot",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SaveSnapshotProjectsLocationsEnvironmentsRequest>;
-
-export type SaveSnapshotProjectsLocationsEnvironmentsResponse = Operation;
-export const SaveSnapshotProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type SaveSnapshotProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of environment's state is stored in a location specified in the SaveSnapshotRequest. */
-export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
-  SaveSnapshotProjectsLocationsEnvironmentsRequest,
-  SaveSnapshotProjectsLocationsEnvironmentsResponse,
-  SaveSnapshotProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SaveSnapshotProjectsLocationsEnvironmentsRequest,
-  output: SaveSnapshotProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsEnvironmentsRequest {
-  /** The resource name of the environment to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  name: string;
-}
-
-export const GetProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsRequest>;
-
-export type GetProjectsLocationsEnvironmentsResponse = Environment;
-export const GetProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
-
-export type GetProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Get an existing environment. */
-export const getProjectsLocationsEnvironments: API.OperationMethod<
-  GetProjectsLocationsEnvironmentsRequest,
-  GetProjectsLocationsEnvironmentsResponse,
-  GetProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEnvironmentsRequest,
-  output: GetProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface DatabaseFailoverProjectsLocationsEnvironmentsRequest {
   /** Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
@@ -1505,7 +1676,7 @@ export const DatabaseFailoverProjectsLocationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<DatabaseFailoverProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<DatabaseFailoverProjectsLocationsEnvironmentsRequest>;
 
 export type DatabaseFailoverProjectsLocationsEnvironmentsResponse = Operation;
 export const DatabaseFailoverProjectsLocationsEnvironmentsResponse =
@@ -1530,47 +1701,42 @@ export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
-  /** Required. The resource name of the environment to restart the web server for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  name: string;
-  /** Request body */
-  body?: RestartWebServerRequest;
+export interface FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest {
+  /** Required. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  environment: string;
 }
 
-export const RestartWebServerProjectsLocationsEnvironmentsRequest =
+export const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(RestartWebServerRequest).pipe(T.HttpBody()),
+    environment: Schema.String.pipe(T.HttpPath("environment")),
   }).pipe(
     T.Http({
-      method: "POST",
-      path: "v1/{+name}:restartWebServer",
-      hasBody: true,
+      method: "GET",
+      path: "v1/{+environment}:fetchDatabaseProperties",
     }),
     svc,
-  ) as unknown as Schema.Schema<RestartWebServerProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
 
-export type RestartWebServerProjectsLocationsEnvironmentsResponse = Operation;
-export const RestartWebServerProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse =
+  FetchDatabasePropertiesResponse;
+export const FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ FetchDatabasePropertiesResponse;
 
-export type RestartWebServerProjectsLocationsEnvironmentsError =
+export type FetchDatabasePropertiesProjectsLocationsEnvironmentsError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Restart Airflow web server. */
-export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
-  RestartWebServerProjectsLocationsEnvironmentsRequest,
-  RestartWebServerProjectsLocationsEnvironmentsResponse,
-  RestartWebServerProjectsLocationsEnvironmentsError,
+/** Fetches database properties. */
+export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.OperationMethod<
+  FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
+  FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse,
+  FetchDatabasePropertiesProjectsLocationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RestartWebServerProjectsLocationsEnvironmentsRequest,
-  output: RestartWebServerProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
+  output: FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest {
@@ -1591,7 +1757,7 @@ export const ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest>;
 
 export type ExecuteAirflowCommandProjectsLocationsEnvironmentsResponse =
   ExecuteAirflowCommandResponse;
@@ -1617,234 +1783,67 @@ export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMe
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest {
-  /** Required. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  environment: string;
-}
-
-export const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.String.pipe(T.HttpPath("environment")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{+environment}:fetchDatabaseProperties",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
-
-export type FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse =
-  FetchDatabasePropertiesResponse;
-export const FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchDatabasePropertiesResponse;
-
-export type FetchDatabasePropertiesProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Fetches database properties. */
-export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.OperationMethod<
-  FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
-  FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse,
-  FetchDatabasePropertiesProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
-  output: FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
-  /** The resource name of the target environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
+  /** The resource name of the source environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   environment: string;
   /** Request body */
-  body?: LoadSnapshotRequest;
+  body?: SaveSnapshotRequest;
 }
 
-export const LoadSnapshotProjectsLocationsEnvironmentsRequest =
+export const SaveSnapshotProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     environment: Schema.String.pipe(T.HttpPath("environment")),
-    body: Schema.optional(LoadSnapshotRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SaveSnapshotRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{+environment}:loadSnapshot",
+      path: "v1/{+environment}:saveSnapshot",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<LoadSnapshotProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<SaveSnapshotProjectsLocationsEnvironmentsRequest>;
 
-export type LoadSnapshotProjectsLocationsEnvironmentsResponse = Operation;
-export const LoadSnapshotProjectsLocationsEnvironmentsResponse =
+export type SaveSnapshotProjectsLocationsEnvironmentsResponse = Operation;
+export const SaveSnapshotProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type LoadSnapshotProjectsLocationsEnvironmentsError =
+export type SaveSnapshotProjectsLocationsEnvironmentsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of environment's specified in LoadSnapshotRequest is loaded into the environment. */
-export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
-  LoadSnapshotProjectsLocationsEnvironmentsRequest,
-  LoadSnapshotProjectsLocationsEnvironmentsResponse,
-  LoadSnapshotProjectsLocationsEnvironmentsError,
+/** Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of environment's state is stored in a location specified in the SaveSnapshotRequest. */
+export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
+  SaveSnapshotProjectsLocationsEnvironmentsRequest,
+  SaveSnapshotProjectsLocationsEnvironmentsResponse,
+  SaveSnapshotProjectsLocationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: LoadSnapshotProjectsLocationsEnvironmentsRequest,
-  output: LoadSnapshotProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
-  /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
-  environment: string;
-  /** Request body */
-  body?: StopAirflowCommandRequest;
-}
-
-export const StopAirflowCommandProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.String.pipe(T.HttpPath("environment")),
-    body: Schema.optional(StopAirflowCommandRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+environment}:stopAirflowCommand",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<StopAirflowCommandProjectsLocationsEnvironmentsRequest>;
-
-export type StopAirflowCommandProjectsLocationsEnvironmentsResponse =
-  StopAirflowCommandResponse;
-export const StopAirflowCommandProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StopAirflowCommandResponse;
-
-export type StopAirflowCommandProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Stops Airflow CLI command execution. */
-export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
-  StopAirflowCommandProjectsLocationsEnvironmentsRequest,
-  StopAirflowCommandProjectsLocationsEnvironmentsResponse,
-  StopAirflowCommandProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StopAirflowCommandProjectsLocationsEnvironmentsRequest,
-  output: StopAirflowCommandProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsEnvironmentsRequest {
-  /** Required. A comma-separated list of paths, relative to `Environment`, of fields to update. For example, to set the version of scikit-learn to install in the environment to 0.19.0 and to remove an existing installation of numpy, the `updateMask` parameter would include the following two `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and "config.softwareConfig.pypiPackages.numpy". The included patch environment would specify the scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{ "scikit-learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages other than scikit-learn and numpy will be unaffected. Only one update type may be included in a single request's `updateMask`. For example, one cannot update both the PyPI packages and labels in the same request. However, it is possible to update multiple members of a map field simultaneously in the same request. For example, to set the labels "label1" and "label2" while clearing "label3" (assuming it already exists), one can provide the paths "labels.label1", "labels.label2", and "labels.label3" and populate the patch environment as follows: { "labels":{ "label1":"new-label1-value" "label2":"new-label2-value" } } Note that in the above example, any existing labels that are not included in the `updateMask` will be unaffected. It is also possible to replace an entire map field by providing the map field's path in the `updateMask`. The new value of the field will be that which is provided in the patch environment. For example, to delete all pre-existing user-specified PyPI packages and install botocore at version 1.7.14, the `updateMask` would contain the path "config.softwareConfig.pypiPackages", and the patch environment would be the following: { "config":{ "softwareConfig":{ "pypiPackages":{ "botocore":"==1.7.14" } } } } **Note:** Only the following fields can be updated: * `config.softwareConfig.pypiPackages` * Replace all custom custom PyPI packages. If a replacement package map is not included in `environment`, all custom PyPI packages are cleared. It is an error to provide both this mask and a mask specifying an individual package. * `config.softwareConfig.pypiPackages.`packagename * Update the custom PyPI package *packagename*, preserving other packages. To delete the package, include it in `updateMask`, and omit the mapping for it in `environment.config.softwareConfig.pypiPackages`. It is an error to provide both a mask of this form and the `config.softwareConfig.pypiPackages` mask. * `labels` * Replace all environment labels. If a replacement labels map is not included in `environment`, all labels are cleared. It is an error to provide both this mask and a mask specifying one or more individual labels. * `labels.`labelName * Set the label named *labelName*, while preserving other labels. To delete the label, include it in `updateMask` and omit its mapping in `environment.labels`. It is an error to provide both a mask of this form and the `labels` mask. * `config.nodeCount` * Horizontally scale the number of nodes in the environment. An integer greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerNetworkAccessControl` * Replace the environment's current `WebServerNetworkAccessControl`. * `config.softwareConfig.airflowConfigOverrides` * Replace all Apache Airflow config overrides. If a replacement config overrides map is not included in `environment`, all config overrides are cleared. It is an error to provide both this mask and a mask specifying one or more individual config overrides. * `config.softwareConfig.airflowConfigOverrides.`section-name * Override the Apache Airflow config property *name* in the section named *section*, preserving other properties. To delete the property override, include it in `updateMask` and omit its mapping in `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a mask of this form and the `config.softwareConfig.airflowConfigOverrides` mask. * `config.softwareConfig.envVariables` * Replace all environment variables. If a replacement environment variable map is not included in `environment`, all custom environment variables are cleared. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers in Airflow. A positive integer not greater than the number of nodes must be provided in the `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  updateMask?: string;
-  /** The relative resource name of the environment to update, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  name: string;
-  /** Request body */
-  body?: Environment;
-}
-
-export const PatchProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(Environment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsEnvironmentsRequest>;
-
-export type PatchProjectsLocationsEnvironmentsResponse = Operation;
-export const PatchProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Update an environment. */
-export const patchProjectsLocationsEnvironments: API.OperationMethod<
-  PatchProjectsLocationsEnvironmentsRequest,
-  PatchProjectsLocationsEnvironmentsResponse,
-  PatchProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsEnvironmentsRequest,
-  output: PatchProjectsLocationsEnvironmentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
-  /** Required. The resource name of the environment to check upgrade for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  environment: string;
-  /** Request body */
-  body?: CheckUpgradeRequest;
-}
-
-export const CheckUpgradeProjectsLocationsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environment: Schema.String.pipe(T.HttpPath("environment")),
-    body: Schema.optional(CheckUpgradeRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+environment}:checkUpgrade",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CheckUpgradeProjectsLocationsEnvironmentsRequest>;
-
-export type CheckUpgradeProjectsLocationsEnvironmentsResponse = Operation;
-export const CheckUpgradeProjectsLocationsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CheckUpgradeProjectsLocationsEnvironmentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Check if an upgrade operation on the environment will succeed. In case of problems detailed info can be found in the returned Operation. */
-export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
-  CheckUpgradeProjectsLocationsEnvironmentsRequest,
-  CheckUpgradeProjectsLocationsEnvironmentsResponse,
-  CheckUpgradeProjectsLocationsEnvironmentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CheckUpgradeProjectsLocationsEnvironmentsRequest,
-  output: CheckUpgradeProjectsLocationsEnvironmentsResponse,
+  input: SaveSnapshotProjectsLocationsEnvironmentsRequest,
+  output: SaveSnapshotProjectsLocationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsEnvironmentsRequest {
+  /** List environments in the given project and location, in the form: "projects/{projectId}/locations/{locationId}" */
+  parent: string;
   /** The maximum number of environments to return. */
   pageSize?: number;
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
-  /** List environments in the given project and location, in the form: "projects/{projectId}/locations/{locationId}" */
-  parent: string;
 }
 
 export const ListProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/environments" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnvironmentsRequest>;
 
 export type ListProjectsLocationsEnvironmentsResponse =
   ListEnvironmentsResponse;
@@ -1872,39 +1871,90 @@ export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
   },
 }));
 
-export interface DeleteProjectsLocationsEnvironmentsRequest {
-  /** The environment to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
+  /** Required. The resource name of the environment to restart the web server for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   name: string;
+  /** Request body */
+  body?: RestartWebServerRequest;
 }
 
-export const DeleteProjectsLocationsEnvironmentsRequest =
+export const RestartWebServerProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(RestartWebServerRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
+    T.Http({
+      method: "POST",
+      path: "v1/{+name}:restartWebServer",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<RestartWebServerProjectsLocationsEnvironmentsRequest>;
 
-export type DeleteProjectsLocationsEnvironmentsResponse = Operation;
-export const DeleteProjectsLocationsEnvironmentsResponse =
+export type RestartWebServerProjectsLocationsEnvironmentsResponse = Operation;
+export const RestartWebServerProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsEnvironmentsError =
+export type RestartWebServerProjectsLocationsEnvironmentsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Delete an environment. */
-export const deleteProjectsLocationsEnvironments: API.OperationMethod<
-  DeleteProjectsLocationsEnvironmentsRequest,
-  DeleteProjectsLocationsEnvironmentsResponse,
-  DeleteProjectsLocationsEnvironmentsError,
+/** Restart Airflow web server. */
+export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
+  RestartWebServerProjectsLocationsEnvironmentsRequest,
+  RestartWebServerProjectsLocationsEnvironmentsResponse,
+  RestartWebServerProjectsLocationsEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEnvironmentsRequest,
-  output: DeleteProjectsLocationsEnvironmentsResponse,
+  input: RestartWebServerProjectsLocationsEnvironmentsRequest,
+  output: RestartWebServerProjectsLocationsEnvironmentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
+  /** The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". */
+  environment: string;
+  /** Request body */
+  body?: StopAirflowCommandRequest;
+}
+
+export const StopAirflowCommandProjectsLocationsEnvironmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.String.pipe(T.HttpPath("environment")),
+    body: Schema.optional(StopAirflowCommandRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+environment}:stopAirflowCommand",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<StopAirflowCommandProjectsLocationsEnvironmentsRequest>;
+
+export type StopAirflowCommandProjectsLocationsEnvironmentsResponse =
+  StopAirflowCommandResponse;
+export const StopAirflowCommandProjectsLocationsEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ StopAirflowCommandResponse;
+
+export type StopAirflowCommandProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Stops Airflow CLI command execution. */
+export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
+  StopAirflowCommandProjectsLocationsEnvironmentsRequest,
+  StopAirflowCommandProjectsLocationsEnvironmentsResponse,
+  StopAirflowCommandProjectsLocationsEnvironmentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopAirflowCommandProjectsLocationsEnvironmentsRequest,
+  output: StopAirflowCommandProjectsLocationsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -1926,7 +1976,7 @@ export const CreateProjectsLocationsEnvironmentsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEnvironmentsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEnvironmentsRequest>;
 
 export type CreateProjectsLocationsEnvironmentsResponse = Operation;
 export const CreateProjectsLocationsEnvironmentsResponse =
@@ -1952,26 +2002,26 @@ export const createProjectsLocationsEnvironments: API.OperationMethod<
 }));
 
 export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
-  /** Optional. The maximum number of environments to return. */
-  pageSize?: number;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
   /** Required. The environment name to get workloads for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
   parent: string;
   /** Optional. The list filter. Currently only supports equality on the type field. The value of a field specified in the filter expression must be one ComposerWorkloadType enum option. It's possible to get multiple types using "OR" operator, e.g.: "type=SCHEDULER OR type=CELERY_WORKER". If not specified, all items are returned. */
   filter?: string;
+  /** Optional. The maximum number of environments to return. */
+  pageSize?: number;
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
 }
 
 export const ListProjectsLocationsEnvironmentsWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/workloads" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
 
 export type ListProjectsLocationsEnvironmentsWorkloadsResponse =
   ListWorkloadsResponse;
@@ -1999,207 +2049,6 @@ export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationM
   },
 }));
 
-export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
-  /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
-  name: string;
-  /** Request body */
-  body?: UserWorkloadsConfigMap;
-}
-
-export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(UserWorkloadsConfigMap).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
-export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  UserWorkloadsConfigMap;
-export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
-
-export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
-  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
-  /** Optional. The maximum number of ConfigMaps to return. */
-  pageSize?: number;
-  /** Optional. The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** Required. List ConfigMaps in the given environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  parent: string;
-}
-
-export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/userWorkloadsConfigMaps" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
-export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  ListUserWorkloadsConfigMapsResponse;
-export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListUserWorkloadsConfigMapsResponse;
-
-export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.PaginatedOperationMethod<
-  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
-  /** Required. The ConfigMap to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
-  name: string;
-}
-
-export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
-export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  Empty;
-export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
-  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
-  /** Required. The environment name to create a ConfigMap for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  parent: string;
-  /** Request body */
-  body?: UserWorkloadsConfigMap;
-}
-
-export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(UserWorkloadsConfigMap).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{+parent}/userWorkloadsConfigMaps",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
-export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  UserWorkloadsConfigMap;
-export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
-
-export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
-  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
-  /** Required. The resource name of the ConfigMap to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
-  name: string;
-}
-
-export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
-
-export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  UserWorkloadsConfigMap;
-export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
-
-export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
-export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
-  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
-  output: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
   /** Required. The resource name of the Secret to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
   name: string;
@@ -2211,7 +2060,7 @@ export const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type GetProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   UserWorkloadsSecret;
@@ -2236,23 +2085,23 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operation
 }));
 
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
-  /** Required. List Secrets in the given environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
-  parent: string;
-  /** Optional. The maximum number of Secrets to return. */
-  pageSize?: number;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
+  /** Optional. The maximum number of Secrets to return. */
+  pageSize?: number;
+  /** Required. List Secrets in the given environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  parent: string;
 }
 
 export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/userWorkloadsSecrets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type ListProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   ListUserWorkloadsSecretsResponse;
@@ -2291,7 +2140,7 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   Empty;
@@ -2335,7 +2184,7 @@ export const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   UserWorkloadsSecret;
@@ -2375,7 +2224,7 @@ export const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   }).pipe(
     T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
+  ) as unknown as Schema.Codec<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
 export type UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   UserWorkloadsSecret;
@@ -2401,52 +2250,203 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsImageVersionsRequest {
-  /** List ImageVersions in the given project and location, in the form: "projects/{projectId}/locations/{locationId}" */
-  parent: string;
-  /** The maximum number of image_versions to return. */
-  pageSize?: number;
-  /** The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-  /** Whether or not image versions from old releases should be included. */
-  includePastReleases?: boolean;
+export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
+  /** Required. The ConfigMap to delete, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
+  name: string;
 }
 
-export const ListProjectsLocationsImageVersionsRequest =
+export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    includePastReleases: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("includePastReleases"),
-    ),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{+parent}/imageVersions" }),
+    T.Http({ method: "DELETE", path: "v1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsImageVersionsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
-export type ListProjectsLocationsImageVersionsResponse =
-  ListImageVersionsResponse;
-export const ListProjectsLocationsImageVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListImageVersionsResponse;
+export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  Empty;
+export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ListProjectsLocationsImageVersionsError =
+export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
+  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  output: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
+  /** Required. The resource name of the ConfigMap to get, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
+  name: string;
+}
+
+export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+
+export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  UserWorkloadsConfigMap;
+export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
+
+export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** List ImageVersions for provided location. */
-export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
-  ListProjectsLocationsImageVersionsRequest,
-  ListProjectsLocationsImageVersionsResponse,
-  ListProjectsLocationsImageVersionsError,
+/** Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
+  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  output: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
+  /** Optional. The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
+  /** Optional. The maximum number of ConfigMaps to return. */
+  pageSize?: number;
+  /** Required. List ConfigMaps in the given environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  parent: string;
+}
+
+export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1/{+parent}/userWorkloadsConfigMaps" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+
+export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  ListUserWorkloadsConfigMapsResponse;
+export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListUserWorkloadsConfigMapsResponse;
+
+export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.PaginatedOperationMethod<
+  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsImageVersionsRequest,
-  output: ListProjectsLocationsImageVersionsResponse,
+  input: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  output: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
   },
+}));
+
+export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
+  /** Required. The environment name to create a ConfigMap for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" */
+  parent: string;
+  /** Request body */
+  body?: UserWorkloadsConfigMap;
+}
+
+export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(UserWorkloadsConfigMap).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1/{+parent}/userWorkloadsConfigMaps",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+
+export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  UserWorkloadsConfigMap;
+export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
+
+export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
+  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  output: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
+  /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
+  name: string;
+  /** Request body */
+  body?: UserWorkloadsConfigMap;
+}
+
+export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(UserWorkloadsConfigMap).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PUT", path: "v1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
+
+export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  UserWorkloadsConfigMap;
+export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
+
+export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
+export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
+  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
+  output: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

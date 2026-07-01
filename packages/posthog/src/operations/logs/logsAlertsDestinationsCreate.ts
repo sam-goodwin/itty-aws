@@ -4,11 +4,20 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsAlertsDestinationsCreateInput {
+  id: string;
+  project_id: string;
+  type?: "slack" | "webhook" | "teams";
+  slack_workspace_id?: number;
+  slack_channel_id?: string;
+  slack_channel_name?: string;
+  webhook_url?: string;
+}
 export const LogsAlertsDestinationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    type: Schema.optional(Schema.Literals(["slack", "webhook"])),
+    type: Schema.optional(Schema.Literals(["slack", "webhook", "teams"])),
     slack_workspace_id: Schema.optional(Schema.Number),
     slack_channel_id: Schema.optional(Schema.String),
     slack_channel_name: Schema.optional(Schema.String),
@@ -18,17 +27,16 @@ export const LogsAlertsDestinationsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/logs/alerts/{id}/destinations/",
     }),
-  );
-export type LogsAlertsDestinationsCreateInput =
-  typeof LogsAlertsDestinationsCreateInput.Type;
+  ) as unknown as Schema.Codec<LogsAlertsDestinationsCreateInput>;
 
 // Output Schema
+export interface LogsAlertsDestinationsCreateOutput {
+  hog_function_ids?: string[];
+}
 export const LogsAlertsDestinationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     hog_function_ids: Schema.optional(Schema.Array(Schema.String)),
-  });
-export type LogsAlertsDestinationsCreateOutput =
-  typeof LogsAlertsDestinationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<LogsAlertsDestinationsCreateOutput>;
 
 // The operation
 /**

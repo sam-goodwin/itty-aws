@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface FabricCapacitiesCheckNameAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  name?: string;
+  type?: string;
+}
 export const FabricCapacitiesCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21,19 +27,20 @@ export const FabricCapacitiesCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/locations/{location}/checkNameAvailability",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesCheckNameAvailabilityInput =
-  typeof FabricCapacitiesCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface FabricCapacitiesCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const FabricCapacitiesCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type FabricCapacitiesCheckNameAvailabilityOutput =
-  typeof FabricCapacitiesCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -51,6 +58,37 @@ export const FabricCapacitiesCheckNameAvailability =
     outputSchema: FabricCapacitiesCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface FabricCapacitiesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+  properties: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Deleting"
+      | "Provisioning"
+      | "Updating";
+    state?:
+      | "Active"
+      | "Provisioning"
+      | "Failed"
+      | "Updating"
+      | "Deleting"
+      | "Suspending"
+      | "Suspended"
+      | "Pausing"
+      | "Paused"
+      | "Resuming"
+      | "Scaling"
+      | "Preparing";
+    administration: { members: string[] };
+  };
+  sku: { name: string; tier: "Fabric" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FabricCapacitiesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -99,11 +137,22 @@ export const FabricCapacitiesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesCreateOrUpdateInput =
-  typeof FabricCapacitiesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesCreateOrUpdateInput>;
 
 // Output Schema
+export interface FabricCapacitiesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FabricCapacitiesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -123,9 +172,7 @@ export const FabricCapacitiesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FabricCapacitiesCreateOrUpdateOutput =
-  typeof FabricCapacitiesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -142,6 +189,11 @@ export const FabricCapacitiesCreateOrUpdate =
     outputSchema: FabricCapacitiesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FabricCapacitiesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+}
 export const FabricCapacitiesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -153,15 +205,12 @@ export const FabricCapacitiesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesDeleteInput =
-  typeof FabricCapacitiesDeleteInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesDeleteInput>;
 
 // Output Schema
+export type FabricCapacitiesDeleteOutput = void;
 export const FabricCapacitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FabricCapacitiesDeleteOutput =
-  typeof FabricCapacitiesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesDeleteOutput>;
 
 // The operation
 /**
@@ -179,6 +228,11 @@ export const FabricCapacitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FabricCapacitiesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+}
 export const FabricCapacitiesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -190,10 +244,22 @@ export const FabricCapacitiesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesGetInput = typeof FabricCapacitiesGetInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesGetInput>;
 
 // Output Schema
+export interface FabricCapacitiesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FabricCapacitiesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -213,8 +279,7 @@ export const FabricCapacitiesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FabricCapacitiesGetOutput = typeof FabricCapacitiesGetOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesGetOutput>;
 
 // The operation
 /**
@@ -230,6 +295,10 @@ export const FabricCapacitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: FabricCapacitiesGetOutput,
 }));
 // Input Schema
+export interface FabricCapacitiesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const FabricCapacitiesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -240,11 +309,25 @@ export const FabricCapacitiesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesListByResourceGroupInput =
-  typeof FabricCapacitiesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesListByResourceGroupInput>;
 
 // Output Schema
+export interface FabricCapacitiesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FabricCapacitiesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -279,9 +362,7 @@ export const FabricCapacitiesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FabricCapacitiesListByResourceGroupOutput =
-  typeof FabricCapacitiesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -297,6 +378,9 @@ export const FabricCapacitiesListByResourceGroup =
     outputSchema: FabricCapacitiesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface FabricCapacitiesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const FabricCapacitiesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -306,11 +390,25 @@ export const FabricCapacitiesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/capacities",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesListBySubscriptionInput =
-  typeof FabricCapacitiesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesListBySubscriptionInput>;
 
 // Output Schema
+export interface FabricCapacitiesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FabricCapacitiesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -345,9 +443,7 @@ export const FabricCapacitiesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FabricCapacitiesListBySubscriptionOutput =
-  typeof FabricCapacitiesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -362,6 +458,9 @@ export const FabricCapacitiesListBySubscription =
     outputSchema: FabricCapacitiesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface FabricCapacitiesListSkusInput {
+  subscriptionId: string;
+}
 export const FabricCapacitiesListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -371,11 +470,13 @@ export const FabricCapacitiesListSkusInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Fabric/skus",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesListSkusInput =
-  typeof FabricCapacitiesListSkusInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesListSkusInput>;
 
 // Output Schema
+export interface FabricCapacitiesListSkusOutput {
+  value: { resourceType: string; name: string; locations: string[] }[];
+  nextLink?: string;
+}
 export const FabricCapacitiesListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -386,9 +487,7 @@ export const FabricCapacitiesListSkusOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FabricCapacitiesListSkusOutput =
-  typeof FabricCapacitiesListSkusOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesListSkusOutput>;
 
 // The operation
 /**
@@ -404,6 +503,11 @@ export const FabricCapacitiesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FabricCapacitiesListSkusForCapacityInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+}
 export const FabricCapacitiesListSkusForCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -415,11 +519,13 @@ export const FabricCapacitiesListSkusForCapacityInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/skus",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesListSkusForCapacityInput =
-  typeof FabricCapacitiesListSkusForCapacityInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesListSkusForCapacityInput>;
 
 // Output Schema
+export interface FabricCapacitiesListSkusForCapacityOutput {
+  value: { resourceType: string; sku: { name: string; tier: "Fabric" } }[];
+  nextLink?: string;
+}
 export const FabricCapacitiesListSkusForCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -432,9 +538,7 @@ export const FabricCapacitiesListSkusForCapacityOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FabricCapacitiesListSkusForCapacityOutput =
-  typeof FabricCapacitiesListSkusForCapacityOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesListSkusForCapacityOutput>;
 
 // The operation
 /**
@@ -451,6 +555,11 @@ export const FabricCapacitiesListSkusForCapacity =
     outputSchema: FabricCapacitiesListSkusForCapacityOutput,
   }));
 // Input Schema
+export interface FabricCapacitiesResumeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+}
 export const FabricCapacitiesResumeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -462,15 +571,12 @@ export const FabricCapacitiesResumeInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/resume",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesResumeInput =
-  typeof FabricCapacitiesResumeInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesResumeInput>;
 
 // Output Schema
+export type FabricCapacitiesResumeOutput = void;
 export const FabricCapacitiesResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FabricCapacitiesResumeOutput =
-  typeof FabricCapacitiesResumeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesResumeOutput>;
 
 // The operation
 /**
@@ -488,6 +594,11 @@ export const FabricCapacitiesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FabricCapacitiesSuspendInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+}
 export const FabricCapacitiesSuspendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -499,15 +610,12 @@ export const FabricCapacitiesSuspendInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/suspend",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesSuspendInput =
-  typeof FabricCapacitiesSuspendInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesSuspendInput>;
 
 // Output Schema
+export type FabricCapacitiesSuspendOutput = void;
 export const FabricCapacitiesSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FabricCapacitiesSuspendOutput =
-  typeof FabricCapacitiesSuspendOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesSuspendOutput>;
 
 // The operation
 /**
@@ -525,6 +633,14 @@ export const FabricCapacitiesSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FabricCapacitiesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  capacityName: string;
+  sku?: { name: string; tier: "Fabric" };
+  tags?: Record<string, string>;
+  properties?: { administration?: { members: string[] } };
+}
 export const FabricCapacitiesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -552,11 +668,22 @@ export const FabricCapacitiesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
     }),
-  );
-export type FabricCapacitiesUpdateInput =
-  typeof FabricCapacitiesUpdateInput.Type;
+  ) as unknown as Schema.Codec<FabricCapacitiesUpdateInput>;
 
 // Output Schema
+export interface FabricCapacitiesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FabricCapacitiesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -576,9 +703,7 @@ export const FabricCapacitiesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FabricCapacitiesUpdateOutput =
-  typeof FabricCapacitiesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FabricCapacitiesUpdateOutput>;
 
 // The operation
 /**
@@ -596,6 +721,7 @@ export const FabricCapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -604,10 +730,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Fabric/operations",
     apiVersion: "2023-11-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -630,8 +770,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**

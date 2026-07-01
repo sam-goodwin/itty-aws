@@ -4,13 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ApplyUpdatesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ApplyUpdatesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -21,11 +29,22 @@ export const ApplyUpdatesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ApplyUpdatesCreateOrUpdateInput =
-  typeof ApplyUpdatesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplyUpdatesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplyUpdatesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplyUpdatesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -45,9 +64,7 @@ export const ApplyUpdatesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplyUpdatesCreateOrUpdateOutput =
-  typeof ApplyUpdatesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplyUpdatesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -55,10 +72,12 @@ export type ApplyUpdatesCreateOrUpdateOutput =
  *
  * Apply maintenance updates to resource
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -67,8 +86,18 @@ export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplyUpdatesCreateOrUpdateParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ApplyUpdatesCreateOrUpdateParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -81,11 +110,22 @@ export const ApplyUpdatesCreateOrUpdateParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/default",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ApplyUpdatesCreateOrUpdateParentInput =
-  typeof ApplyUpdatesCreateOrUpdateParentInput.Type;
+  ) as unknown as Schema.Codec<ApplyUpdatesCreateOrUpdateParentInput>;
 
 // Output Schema
+export interface ApplyUpdatesCreateOrUpdateParentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplyUpdatesCreateOrUpdateParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -105,9 +145,7 @@ export const ApplyUpdatesCreateOrUpdateParentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplyUpdatesCreateOrUpdateParentOutput =
-  typeof ApplyUpdatesCreateOrUpdateParentOutput.Type;
+  }) as unknown as Schema.Codec<ApplyUpdatesCreateOrUpdateParentOutput>;
 
 // The operation
 /**
@@ -115,12 +153,14 @@ export type ApplyUpdatesCreateOrUpdateParentOutput =
  *
  * Apply maintenance updates to resource with parent
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesCreateOrUpdateParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -128,7 +168,16 @@ export const ApplyUpdatesCreateOrUpdateParent =
     outputSchema: ApplyUpdatesCreateOrUpdateParentOutput,
   }));
 // Input Schema
+export interface ApplyUpdatesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+  applyUpdateName: string;
+}
 export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -140,10 +189,22 @@ export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
     apiVersion: "2023-04-01",
   }),
-);
-export type ApplyUpdatesGetInput = typeof ApplyUpdatesGetInput.Type;
+) as unknown as Schema.Codec<ApplyUpdatesGetInput>;
 
 // Output Schema
+export interface ApplyUpdatesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -162,8 +223,7 @@ export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApplyUpdatesGetOutput = typeof ApplyUpdatesGetOutput.Type;
+}) as unknown as Schema.Codec<ApplyUpdatesGetOutput>;
 
 // The operation
 /**
@@ -171,19 +231,32 @@ export type ApplyUpdatesGetOutput = typeof ApplyUpdatesGetOutput.Type;
  *
  * Track maintenance updates to resource
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplyUpdatesGetInput,
   outputSchema: ApplyUpdatesGetOutput,
 }));
 // Input Schema
+export interface ApplyUpdatesGetParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+  applyUpdateName: string;
+}
 export const ApplyUpdatesGetParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -197,10 +270,22 @@ export const ApplyUpdatesGetParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/applyUpdates/{applyUpdateName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ApplyUpdatesGetParentInput = typeof ApplyUpdatesGetParentInput.Type;
+  ) as unknown as Schema.Codec<ApplyUpdatesGetParentInput>;
 
 // Output Schema
+export interface ApplyUpdatesGetParentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplyUpdatesGetParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -220,9 +305,7 @@ export const ApplyUpdatesGetParentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplyUpdatesGetParentOutput =
-  typeof ApplyUpdatesGetParentOutput.Type;
+  }) as unknown as Schema.Codec<ApplyUpdatesGetParentOutput>;
 
 // The operation
 /**
@@ -230,6 +313,7 @@ export type ApplyUpdatesGetParentOutput =
  *
  * Track maintenance updates to resource with parent
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -237,6 +321,7 @@ export type ApplyUpdatesGetParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param applyUpdateName - applyUpdate Id
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -245,8 +330,43 @@ export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -300,11 +420,22 @@ export const ConfigurationAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsCreateOrUpdateInput =
-  typeof ConfigurationAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -324,9 +455,7 @@ export const ConfigurationAssignmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsCreateOrUpdateOutput =
-  typeof ConfigurationAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -334,11 +463,13 @@ export type ConfigurationAssignmentsCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -346,8 +477,45 @@ export const ConfigurationAssignmentsCreateOrUpdate =
     outputSchema: ConfigurationAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsCreateOrUpdateParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsCreateOrUpdateParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -403,11 +571,22 @@ export const ConfigurationAssignmentsCreateOrUpdateParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsCreateOrUpdateParentInput =
-  typeof ConfigurationAssignmentsCreateOrUpdateParentInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsCreateOrUpdateParentInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsCreateOrUpdateParentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -427,9 +606,7 @@ export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
-  typeof ConfigurationAssignmentsCreateOrUpdateParentOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsCreateOrUpdateParentOutput>;
 
 // The operation
 /**
@@ -437,6 +614,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -444,6 +622,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdateParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -451,8 +630,17 @@ export const ConfigurationAssignmentsCreateOrUpdateParent =
     outputSchema: ConfigurationAssignmentsCreateOrUpdateParentOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -464,11 +652,22 @@ export const ConfigurationAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsDeleteInput =
-  typeof ConfigurationAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsDeleteInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -488,9 +687,7 @@ export const ConfigurationAssignmentsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsDeleteOutput =
-  typeof ConfigurationAssignmentsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -498,11 +695,13 @@ export type ConfigurationAssignmentsDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -510,8 +709,19 @@ export const ConfigurationAssignmentsDelete =
     outputSchema: ConfigurationAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsDeleteParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsDeleteParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -525,11 +735,22 @@ export const ConfigurationAssignmentsDeleteParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsDeleteParentInput =
-  typeof ConfigurationAssignmentsDeleteParentInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsDeleteParentInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsDeleteParentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsDeleteParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -549,9 +770,7 @@ export const ConfigurationAssignmentsDeleteParentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsDeleteParentOutput =
-  typeof ConfigurationAssignmentsDeleteParentOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsDeleteParentOutput>;
 
 // The operation
 /**
@@ -559,6 +778,7 @@ export type ConfigurationAssignmentsDeleteParentOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -566,6 +786,7 @@ export type ConfigurationAssignmentsDeleteParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDeleteParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -573,8 +794,40 @@ export const ConfigurationAssignmentsDeleteParent =
     outputSchema: ConfigurationAssignmentsDeleteParentOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -625,11 +878,22 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
-  typeof ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -649,9 +913,7 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
-  typeof ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -659,8 +921,10 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -668,8 +932,14 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
     outputSchema: ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForResourceGroupDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsForResourceGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -678,11 +948,22 @@ export const ConfigurationAssignmentsForResourceGroupDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForResourceGroupDeleteInput =
-  typeof ConfigurationAssignmentsForResourceGroupDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupDeleteInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForResourceGroupDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -702,9 +983,7 @@ export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForResourceGroupDeleteOutput =
-  typeof ConfigurationAssignmentsForResourceGroupDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupDeleteOutput>;
 
 // The operation
 /**
@@ -712,8 +991,10 @@ export type ConfigurationAssignmentsForResourceGroupDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -721,8 +1002,14 @@ export const ConfigurationAssignmentsForResourceGroupDelete =
     outputSchema: ConfigurationAssignmentsForResourceGroupDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForResourceGroupGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsForResourceGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -731,11 +1018,22 @@ export const ConfigurationAssignmentsForResourceGroupGetInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForResourceGroupGetInput =
-  typeof ConfigurationAssignmentsForResourceGroupGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupGetInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForResourceGroupGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -755,9 +1053,7 @@ export const ConfigurationAssignmentsForResourceGroupGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForResourceGroupGetOutput =
-  typeof ConfigurationAssignmentsForResourceGroupGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupGetOutput>;
 
 // The operation
 /**
@@ -765,8 +1061,10 @@ export type ConfigurationAssignmentsForResourceGroupGetOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -774,8 +1072,40 @@ export const ConfigurationAssignmentsForResourceGroupGet =
     outputSchema: ConfigurationAssignmentsForResourceGroupGetOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForResourceGroupUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -826,11 +1156,22 @@ export const ConfigurationAssignmentsForResourceGroupUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForResourceGroupUpdateInput =
-  typeof ConfigurationAssignmentsForResourceGroupUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupUpdateInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForResourceGroupUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -850,9 +1191,7 @@ export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForResourceGroupUpdateOutput =
-  typeof ConfigurationAssignmentsForResourceGroupUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForResourceGroupUpdateOutput>;
 
 // The operation
 /**
@@ -860,8 +1199,10 @@ export type ConfigurationAssignmentsForResourceGroupUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -869,8 +1210,39 @@ export const ConfigurationAssignmentsForResourceGroupUpdate =
     outputSchema: ConfigurationAssignmentsForResourceGroupUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput {
+  subscriptionId: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -920,11 +1292,22 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
-  typeof ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -944,9 +1327,7 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
-  typeof ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -954,7 +1335,9 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -962,8 +1345,13 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
     outputSchema: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForSubscriptionsDeleteInput {
+  subscriptionId: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -971,11 +1359,22 @@ export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForSubscriptionsDeleteInput =
-  typeof ConfigurationAssignmentsForSubscriptionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsDeleteInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForSubscriptionsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -995,9 +1394,7 @@ export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForSubscriptionsDeleteOutput =
-  typeof ConfigurationAssignmentsForSubscriptionsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -1005,7 +1402,9 @@ export type ConfigurationAssignmentsForSubscriptionsDeleteOutput =
  *
  * Unregister configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Unique configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1013,8 +1412,13 @@ export const ConfigurationAssignmentsForSubscriptionsDelete =
     outputSchema: ConfigurationAssignmentsForSubscriptionsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForSubscriptionsGetInput {
+  subscriptionId: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsForSubscriptionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1022,11 +1426,22 @@ export const ConfigurationAssignmentsForSubscriptionsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForSubscriptionsGetInput =
-  typeof ConfigurationAssignmentsForSubscriptionsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsGetInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForSubscriptionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1046,9 +1461,7 @@ export const ConfigurationAssignmentsForSubscriptionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForSubscriptionsGetOutput =
-  typeof ConfigurationAssignmentsForSubscriptionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -1056,7 +1469,9 @@ export type ConfigurationAssignmentsForSubscriptionsGetOutput =
  *
  * Get configuration assignment for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1064,8 +1479,39 @@ export const ConfigurationAssignmentsForSubscriptionsGet =
     outputSchema: ConfigurationAssignmentsForSubscriptionsGetOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsForSubscriptionsUpdateInput {
+  subscriptionId: string;
+  configurationAssignmentName: string;
+  location?: string;
+  properties?: {
+    maintenanceConfigurationId?: string;
+    resourceId?: string;
+    filter?: {
+      resourceTypes?: string[];
+      resourceGroups?: string[];
+      osTypes?: string[];
+      locations?: string[];
+      tagSettings?: {
+        tags?: Record<string, string[]>;
+        filterOperator?: "All" | "Any";
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -1115,11 +1561,22 @@ export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsForSubscriptionsUpdateInput =
-  typeof ConfigurationAssignmentsForSubscriptionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsUpdateInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsForSubscriptionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1139,9 +1596,7 @@ export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsForSubscriptionsUpdateOutput =
-  typeof ConfigurationAssignmentsForSubscriptionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsForSubscriptionsUpdateOutput>;
 
 // The operation
 /**
@@ -1149,7 +1604,9 @@ export type ConfigurationAssignmentsForSubscriptionsUpdateOutput =
  *
  * Register configuration for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1157,8 +1614,17 @@ export const ConfigurationAssignmentsForSubscriptionsUpdate =
     outputSchema: ConfigurationAssignmentsForSubscriptionsUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -1170,11 +1636,22 @@ export const ConfigurationAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsGetInput =
-  typeof ConfigurationAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsGetInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1194,9 +1671,7 @@ export const ConfigurationAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsGetOutput =
-  typeof ConfigurationAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -1204,11 +1679,13 @@ export type ConfigurationAssignmentsGetOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1217,8 +1694,19 @@ export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationAssignmentsGetParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+  configurationAssignmentName: string;
+}
 export const ConfigurationAssignmentsGetParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -1232,11 +1720,22 @@ export const ConfigurationAssignmentsGetParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsGetParentInput =
-  typeof ConfigurationAssignmentsGetParentInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsGetParentInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsGetParentOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationAssignmentsGetParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1256,9 +1755,7 @@ export const ConfigurationAssignmentsGetParentOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationAssignmentsGetParentOutput =
-  typeof ConfigurationAssignmentsGetParentOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsGetParentOutput>;
 
 // The operation
 /**
@@ -1266,6 +1763,7 @@ export type ConfigurationAssignmentsGetParentOutput =
  *
  * Get configuration assignment for resource..
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
@@ -1273,6 +1771,7 @@ export type ConfigurationAssignmentsGetParentOutput =
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
  * @param configurationAssignmentName - Configuration assignment name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsGetParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1280,8 +1779,16 @@ export const ConfigurationAssignmentsGetParent =
     outputSchema: ConfigurationAssignmentsGetParentOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ConfigurationAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
@@ -1292,11 +1799,24 @@ export const ConfigurationAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsListInput =
-  typeof ConfigurationAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsListInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ConfigurationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1332,9 +1852,7 @@ export const ConfigurationAssignmentsListOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationAssignmentsListOutput =
-  typeof ConfigurationAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsListOutput>;
 
 // The operation
 /**
@@ -1342,10 +1860,12 @@ export type ConfigurationAssignmentsListOutput =
  *
  * List configurationAssignments for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1353,8 +1873,18 @@ export const ConfigurationAssignmentsList =
     outputSchema: ConfigurationAssignmentsListOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsListParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ConfigurationAssignmentsListParentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -1367,11 +1897,24 @@ export const ConfigurationAssignmentsListParentInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsListParentInput =
-  typeof ConfigurationAssignmentsListParentInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsListParentInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsListParentOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ConfigurationAssignmentsListParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1407,9 +1950,7 @@ export const ConfigurationAssignmentsListParentOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationAssignmentsListParentOutput =
-  typeof ConfigurationAssignmentsListParentOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsListParentOutput>;
 
 // The operation
 /**
@@ -1417,12 +1958,14 @@ export type ConfigurationAssignmentsListParentOutput =
  *
  * List configurationAssignments for resource.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsListParent =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1430,18 +1973,36 @@ export const ConfigurationAssignmentsListParent =
     outputSchema: ConfigurationAssignmentsListParentOutput,
   }));
 // Input Schema
+export interface ConfigurationAssignmentsWithinSubscriptionListInput {
+  subscriptionId: string;
+}
 export const ConfigurationAssignmentsWithinSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments",
       apiVersion: "2023-04-01",
     }),
-  );
-export type ConfigurationAssignmentsWithinSubscriptionListInput =
-  typeof ConfigurationAssignmentsWithinSubscriptionListInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationAssignmentsWithinSubscriptionListInput>;
 
 // Output Schema
+export interface ConfigurationAssignmentsWithinSubscriptionListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ConfigurationAssignmentsWithinSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1477,13 +2038,14 @@ export const ConfigurationAssignmentsWithinSubscriptionListOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationAssignmentsWithinSubscriptionListOutput =
-  typeof ConfigurationAssignmentsWithinSubscriptionListOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationAssignmentsWithinSubscriptionListOutput>;
 
 // The operation
 /**
  * [UNSUPPORTED] Get configuration assignment within a subscription. This API is not implemented yet.
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsWithinSubscriptionList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1491,8 +2053,61 @@ export const ConfigurationAssignmentsWithinSubscriptionList =
     outputSchema: ConfigurationAssignmentsWithinSubscriptionListOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: {
+    namespace?: string;
+    extensionProperties?: Record<string, string>;
+    maintenanceScope?:
+      | "Host"
+      | "Resource"
+      | "OSImage"
+      | "Extension"
+      | "InGuestPatch"
+      | "SQLDB"
+      | "SQLManagedInstance";
+    maintenanceWindow?: {
+      startDateTime?: string;
+      expirationDateTime?: string;
+      duration?: string;
+      timeZone?: string;
+      recurEvery?: string;
+    };
+    visibility?: "Custom" | "Public";
+    installPatches?: {
+      rebootSetting?: "IfRequired" | "Never" | "Always";
+      windowsParameters?: {
+        kbNumbersToExclude?: string[];
+        kbNumbersToInclude?: string[];
+        classificationsToInclude?: string[];
+        excludeKbsRequiringReboot?: boolean;
+      };
+      linuxParameters?: {
+        packageNameMasksToExclude?: string[];
+        packageNameMasksToInclude?: string[];
+        classificationsToInclude?: string[];
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1583,11 +2198,22 @@ export const MaintenanceConfigurationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsCreateOrUpdateInput =
-  typeof MaintenanceConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1607,16 +2233,16 @@ export const MaintenanceConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MaintenanceConfigurationsCreateOrUpdateOutput =
-  typeof MaintenanceConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or Update configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1624,8 +2250,14 @@ export const MaintenanceConfigurationsCreateOrUpdate =
     outputSchema: MaintenanceConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const MaintenanceConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1634,11 +2266,22 @@ export const MaintenanceConfigurationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsDeleteInput =
-  typeof MaintenanceConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsDeleteInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1658,16 +2301,16 @@ export const MaintenanceConfigurationsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MaintenanceConfigurationsDeleteOutput =
-  typeof MaintenanceConfigurationsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsDeleteOutput>;
 
 // The operation
 /**
  * Delete Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1675,8 +2318,13 @@ export const MaintenanceConfigurationsDelete =
     outputSchema: MaintenanceConfigurationsDeleteOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsForResourceGroupListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MaintenanceConfigurationsForResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1684,11 +2332,24 @@ export const MaintenanceConfigurationsForResourceGroupListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsForResourceGroupListInput =
-  typeof MaintenanceConfigurationsForResourceGroupListInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsForResourceGroupListInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsForResourceGroupListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const MaintenanceConfigurationsForResourceGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1724,15 +2385,15 @@ export const MaintenanceConfigurationsForResourceGroupListOutput =
         }),
       ),
     ),
-  });
-export type MaintenanceConfigurationsForResourceGroupListOutput =
-  typeof MaintenanceConfigurationsForResourceGroupListOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsForResourceGroupListOutput>;
 
 // The operation
 /**
  * Get Configuration records within a subscription and resource group
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsForResourceGroupList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1740,8 +2401,14 @@ export const MaintenanceConfigurationsForResourceGroupList =
     outputSchema: MaintenanceConfigurationsForResourceGroupListOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const MaintenanceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1750,11 +2417,22 @@ export const MaintenanceConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsGetInput =
-  typeof MaintenanceConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsGetInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1774,16 +2452,16 @@ export const MaintenanceConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MaintenanceConfigurationsGetOutput =
-  typeof MaintenanceConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsGetOutput>;
 
 // The operation
 /**
  * Get Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1791,18 +2469,36 @@ export const MaintenanceConfigurationsGet =
     outputSchema: MaintenanceConfigurationsGetOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsListInput {
+  subscriptionId: string;
+}
 export const MaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/maintenanceConfigurations",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsListInput =
-  typeof MaintenanceConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsListInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const MaintenanceConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1838,13 +2534,14 @@ export const MaintenanceConfigurationsListOutput =
         }),
       ),
     ),
-  });
-export type MaintenanceConfigurationsListOutput =
-  typeof MaintenanceConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsListOutput>;
 
 // The operation
 /**
  * Get Configuration records within a subscription
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1852,8 +2549,61 @@ export const MaintenanceConfigurationsList =
     outputSchema: MaintenanceConfigurationsListOutput,
   }));
 // Input Schema
+export interface MaintenanceConfigurationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  location?: string;
+  tags?: Record<string, string>;
+  properties?: {
+    namespace?: string;
+    extensionProperties?: Record<string, string>;
+    maintenanceScope?:
+      | "Host"
+      | "Resource"
+      | "OSImage"
+      | "Extension"
+      | "InGuestPatch"
+      | "SQLDB"
+      | "SQLManagedInstance";
+    maintenanceWindow?: {
+      startDateTime?: string;
+      expirationDateTime?: string;
+      duration?: string;
+      timeZone?: string;
+      recurEvery?: string;
+    };
+    visibility?: "Custom" | "Public";
+    installPatches?: {
+      rebootSetting?: "IfRequired" | "Never" | "Always";
+      windowsParameters?: {
+        kbNumbersToExclude?: string[];
+        kbNumbersToInclude?: string[];
+        classificationsToInclude?: string[];
+        excludeKbsRequiringReboot?: boolean;
+      };
+      linuxParameters?: {
+        packageNameMasksToExclude?: string[];
+        packageNameMasksToInclude?: string[];
+        classificationsToInclude?: string[];
+      };
+    };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1944,11 +2694,22 @@ export const MaintenanceConfigurationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/maintenanceConfigurations/{resourceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type MaintenanceConfigurationsUpdateInput =
-  typeof MaintenanceConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<MaintenanceConfigurationsUpdateInput>;
 
 // Output Schema
+export interface MaintenanceConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MaintenanceConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1968,16 +2729,16 @@ export const MaintenanceConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MaintenanceConfigurationsUpdateOutput =
-  typeof MaintenanceConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MaintenanceConfigurationsUpdateOutput>;
 
 // The operation
 /**
  * Patch configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource Group Name
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1985,6 +2746,7 @@ export const MaintenanceConfigurationsUpdate =
     outputSchema: MaintenanceConfigurationsUpdateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1993,10 +2755,23 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Maintenance/operations",
     apiVersion: "2023-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+    isDataAction?: boolean;
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2016,22 +2791,28 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * List available operations
  *
  * List the available operations supported by the Microsoft.Maintenance resource provider
+ *
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PublicMaintenanceConfigurationsGetInput {
+  subscriptionId: string;
+  resourceName: string;
+}
 export const PublicMaintenanceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2039,11 +2820,22 @@ export const PublicMaintenanceConfigurationsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/{resourceName}",
       apiVersion: "2023-04-01",
     }),
-  );
-export type PublicMaintenanceConfigurationsGetInput =
-  typeof PublicMaintenanceConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<PublicMaintenanceConfigurationsGetInput>;
 
 // Output Schema
+export interface PublicMaintenanceConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublicMaintenanceConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2063,15 +2855,15 @@ export const PublicMaintenanceConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PublicMaintenanceConfigurationsGetOutput =
-  typeof PublicMaintenanceConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<PublicMaintenanceConfigurationsGetOutput>;
 
 // The operation
 /**
  * Get Public Maintenance Configuration record
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceName - Maintenance Configuration Name
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2079,18 +2871,36 @@ export const PublicMaintenanceConfigurationsGet =
     outputSchema: PublicMaintenanceConfigurationsGetOutput,
   }));
 // Input Schema
+export interface PublicMaintenanceConfigurationsListInput {
+  subscriptionId: string;
+}
 export const PublicMaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations",
       apiVersion: "2023-04-01",
     }),
-  );
-export type PublicMaintenanceConfigurationsListInput =
-  typeof PublicMaintenanceConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<PublicMaintenanceConfigurationsListInput>;
 
 // Output Schema
+export interface PublicMaintenanceConfigurationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PublicMaintenanceConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2126,13 +2936,14 @@ export const PublicMaintenanceConfigurationsListOutput =
         }),
       ),
     ),
-  });
-export type PublicMaintenanceConfigurationsListOutput =
-  typeof PublicMaintenanceConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<PublicMaintenanceConfigurationsListOutput>;
 
 // The operation
 /**
  * Get Public Maintenance Configuration records
+ *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2140,7 +2951,15 @@ export const PublicMaintenanceConfigurationsList =
     outputSchema: PublicMaintenanceConfigurationsListOutput,
   }));
 // Input Schema
+export interface UpdatesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
@@ -2151,10 +2970,26 @@ export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
     apiVersion: "2023-04-01",
   }),
-);
-export type UpdatesListInput = typeof UpdatesListInput.Type;
+) as unknown as Schema.Codec<UpdatesListInput>;
 
 // Output Schema
+export interface UpdatesListOutput {
+  value?: {
+    maintenanceScope?:
+      | "Host"
+      | "Resource"
+      | "OSImage"
+      | "Extension"
+      | "InGuestPatch"
+      | "SQLDB"
+      | "SQLManagedInstance";
+    impactType?: "None" | "Freeze" | "Restart" | "Redeploy";
+    status?: "Pending" | "InProgress" | "Completed" | "RetryNow" | "RetryLater";
+    impactDurationInSec?: number;
+    notBefore?: string;
+    properties?: { resourceId?: string };
+  }[];
+}
 export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -2192,8 +3027,7 @@ export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type UpdatesListOutput = typeof UpdatesListOutput.Type;
+}) as unknown as Schema.Codec<UpdatesListOutput>;
 
 // The operation
 /**
@@ -2201,18 +3035,30 @@ export type UpdatesListOutput = typeof UpdatesListOutput.Type;
  *
  * Get updates to resources.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListInput,
   outputSchema: UpdatesListOutput,
 }));
 // Input Schema
+export interface UpdatesListParentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  providerName: string;
+  resourceParentType: string;
+  resourceParentName: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
     resourceParentType: Schema.String.pipe(T.PathParam()),
@@ -2226,10 +3072,26 @@ export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
     apiVersion: "2023-04-01",
   }),
-);
-export type UpdatesListParentInput = typeof UpdatesListParentInput.Type;
+) as unknown as Schema.Codec<UpdatesListParentInput>;
 
 // Output Schema
+export interface UpdatesListParentOutput {
+  value?: {
+    maintenanceScope?:
+      | "Host"
+      | "Resource"
+      | "OSImage"
+      | "Extension"
+      | "InGuestPatch"
+      | "SQLDB"
+      | "SQLManagedInstance";
+    impactType?: "None" | "Freeze" | "Restart" | "Redeploy";
+    status?: "Pending" | "InProgress" | "Completed" | "RetryNow" | "RetryLater";
+    impactDurationInSec?: number;
+    notBefore?: string;
+    properties?: { resourceId?: string };
+  }[];
+}
 export const UpdatesListParentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2268,8 +3130,7 @@ export const UpdatesListParentOutput =
         }),
       ),
     ),
-  });
-export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
+  }) as unknown as Schema.Codec<UpdatesListParentOutput>;
 
 // The operation
 /**
@@ -2277,12 +3138,14 @@ export type UpdatesListParentOutput = typeof UpdatesListParentOutput.Type;
  *
  * Get updates to resources.
  *
+ * @param subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param resourceGroupName - Resource group name
  * @param providerName - Resource provider name
  * @param resourceParentType - Resource parent type
  * @param resourceParentName - Resource parent identifier
  * @param resourceType - Resource type
  * @param resourceName - Resource identifier
+ * @param api-version - Version of the API to be used with the client request.
  */
 export const UpdatesListParent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListParentInput,

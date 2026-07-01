@@ -4,36 +4,54 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
-export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface NotificationGetInput {
+  subscription: string;
+  notification: string;
+  principalId: string;
+}
+export const NotificationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.String.pipe(T.PathParam()),
+  notification: Schema.String.pipe(T.PathParam()),
+  principalId: Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotification/{notification}",
     apiVersion: "2021-03-03",
   }),
-);
-export type NotificationGetInput = typeof NotificationGetInput.Type;
+) as unknown as Schema.Codec<NotificationGetInput>;
 
 // Output Schema
+export interface NotificationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const NotificationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type NotificationGetOutput = typeof NotificationGetOutput.Type;
+}) as unknown as Schema.Codec<NotificationGetOutput>;
 
 // The operation
+/**
+ *
+ * @param subscription - user's subscription id
+ * @param notification - the notification id
+ * @param principalId - user's principal id
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NotificationGetInput,
   outputSchema: NotificationGetOutput,
 }));
 // Input Schema
+export interface NotificationGetOperationsInput {}
 export const NotificationGetOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -41,11 +59,24 @@ export const NotificationGetOperationsInput =
       path: "/providers/Microsoft.MarketplaceNotifications/operations",
       apiVersion: "2021-03-03",
     }),
-  );
-export type NotificationGetOperationsInput =
-  typeof NotificationGetOperationsInput.Type;
+  ) as unknown as Schema.Codec<NotificationGetOperationsInput>;
 
 // Output Schema
+export interface NotificationGetOperationsOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      resource?: string;
+      provider?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const NotificationGetOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -67,11 +98,13 @@ export const NotificationGetOperationsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationGetOperationsOutput =
-  typeof NotificationGetOperationsOutput.Type;
+  }) as unknown as Schema.Codec<NotificationGetOperationsOutput>;
 
 // The operation
+/**
+ *
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationGetOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: NotificationGetOperationsInput,
@@ -79,18 +112,28 @@ export const NotificationGetOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NotificationsListInput {
+  subscription: string;
+  principalId: string;
+}
 export const NotificationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    subscription: Schema.String.pipe(T.PathParam()),
+    principalId: Schema.String,
+  },
 ).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotifications",
     apiVersion: "2021-03-03",
   }),
-);
-export type NotificationsListInput = typeof NotificationsListInput.Type;
+) as unknown as Schema.Codec<NotificationsListInput>;
 
 // Output Schema
+export interface NotificationsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+  nextLink?: string;
+}
 export const NotificationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -103,10 +146,15 @@ export const NotificationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NotificationsListOutput = typeof NotificationsListOutput.Type;
+  }) as unknown as Schema.Codec<NotificationsListOutput>;
 
 // The operation
+/**
+ *
+ * @param subscription - user's subscription id
+ * @param principalId - user's principal id
+ * @param api-version - The API version to use for the request.
+ */
 export const NotificationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: NotificationsListInput,
   outputSchema: NotificationsListOutput,

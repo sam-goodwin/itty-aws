@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,65 +22,65 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface AddFirebaseRequest {}
-
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "AddFirebaseRequest",
-  });
-
 export interface Bucket {
   /** Output only. Resource name of the bucket. */
   name?: string;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
+export const Bucket: Schema.Codec<Bucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Bucket" });
 
 export interface DefaultBucket {
+  /** Immutable. Location of the default bucket. */
+  location?: string;
   /** Output only. Underlying bucket resource. */
   bucket?: Bucket;
   /** Immutable. Storage class of the default bucket. Supported values are available at https://cloud.google.com/storage/docs/storage-classes#classes. */
   storageClass?: string;
   /** Identifier. Resource name of the default bucket. */
   name?: string;
-  /** Immutable. Location of the default bucket. */
-  location?: string;
 }
 
-export const DefaultBucket: Schema.Schema<DefaultBucket> =
+export const DefaultBucket: Schema.Codec<DefaultBucket> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
     bucket: Schema.optional(Bucket),
     storageClass: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
   }).annotate({ identifier: "DefaultBucket" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
+export const Empty: Schema.Codec<Empty> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface ListBucketsResponse {
-  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
   /** The list of linked buckets. */
   buckets?: ReadonlyArray<Bucket>;
+  /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
 }
 
-export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
+export const ListBucketsResponse: Schema.Codec<ListBucketsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
     buckets: Schema.optional(Schema.Array(Bucket)),
+    nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListBucketsResponse" });
+
+export interface AddFirebaseRequest {}
+
+export const AddFirebaseRequest: Schema.Codec<AddFirebaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "AddFirebaseRequest",
+  });
 
 export interface RemoveFirebaseRequest {}
 
-export const RemoveFirebaseRequest: Schema.Schema<RemoveFirebaseRequest> =
+export const RemoveFirebaseRequest: Schema.Codec<RemoveFirebaseRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveFirebaseRequest",
   });
@@ -150,7 +150,7 @@ export const GetDefaultBucketProjectsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetDefaultBucketProjectsRequest>;
+  ) as unknown as Schema.Codec<GetDefaultBucketProjectsRequest>;
 
 export type GetDefaultBucketProjectsResponse = DefaultBucket;
 export const GetDefaultBucketProjectsResponse =
@@ -184,7 +184,7 @@ export const DeleteDefaultBucketProjectsRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteDefaultBucketProjectsRequest>;
+  ) as unknown as Schema.Codec<DeleteDefaultBucketProjectsRequest>;
 
 export type DeleteDefaultBucketProjectsResponse = Empty;
 export const DeleteDefaultBucketProjectsResponse =
@@ -226,7 +226,7 @@ export const ListProjectsBucketsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/buckets" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsBucketsRequest>;
 
 export type ListProjectsBucketsResponse = ListBucketsResponse;
 export const ListProjectsBucketsResponse =
@@ -268,7 +268,7 @@ export const AddFirebaseProjectsBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AddFirebaseProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<AddFirebaseProjectsBucketsRequest>;
 
 export type AddFirebaseProjectsBucketsResponse = Bucket;
 export const AddFirebaseProjectsBucketsResponse =
@@ -293,6 +293,36 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetProjectsBucketsRequest {
+  /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
+  name: string;
+}
+
+export const GetProjectsBucketsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsBucketsRequest>;
+
+export type GetProjectsBucketsResponse = Bucket;
+export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+
+export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets a single linked storage bucket. */
+export const getProjectsBuckets: API.OperationMethod<
+  GetProjectsBucketsRequest,
+  GetProjectsBucketsResponse,
+  GetProjectsBucketsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsBucketsRequest,
+  output: GetProjectsBucketsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface RemoveFirebaseProjectsBucketsRequest {
   /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
   bucket: string;
@@ -311,7 +341,7 @@ export const RemoveFirebaseProjectsBucketsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RemoveFirebaseProjectsBucketsRequest>;
+  ) as unknown as Schema.Codec<RemoveFirebaseProjectsBucketsRequest>;
 
 export type RemoveFirebaseProjectsBucketsResponse = Empty;
 export const RemoveFirebaseProjectsBucketsResponse =
@@ -336,36 +366,6 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsBucketsRequest {
-  /** Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. */
-  name: string;
-}
-
-export const GetProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsBucketsRequest>;
-
-export type GetProjectsBucketsResponse = Bucket;
-export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
-
-export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets a single linked storage bucket. */
-export const getProjectsBuckets: API.OperationMethod<
-  GetProjectsBucketsRequest,
-  GetProjectsBucketsResponse,
-  GetProjectsBucketsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsBucketsRequest,
-  output: GetProjectsBucketsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface CreateProjectsDefaultBucketRequest {
   /** Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`. */
   parent: string;
@@ -384,7 +384,7 @@ export const CreateProjectsDefaultBucketRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsDefaultBucketRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsDefaultBucketRequest>;
 
 export type CreateProjectsDefaultBucketResponse = DefaultBucket;
 export const CreateProjectsDefaultBucketResponse =

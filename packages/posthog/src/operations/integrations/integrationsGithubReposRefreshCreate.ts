@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsGithubReposRefreshCreateInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsGithubReposRefreshCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,12 @@ export const IntegrationsGithubReposRefreshCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/integrations/{id}/github_repos/refresh/",
     }),
-  );
-export type IntegrationsGithubReposRefreshCreateInput =
-  typeof IntegrationsGithubReposRefreshCreateInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGithubReposRefreshCreateInput>;
 
 // Output Schema
+export interface IntegrationsGithubReposRefreshCreateOutput {
+  repositories?: { id?: number; name?: string; full_name?: string }[];
+}
 export const IntegrationsGithubReposRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
@@ -29,9 +34,7 @@ export const IntegrationsGithubReposRefreshCreateOutput =
         }),
       ),
     ),
-  });
-export type IntegrationsGithubReposRefreshCreateOutput =
-  typeof IntegrationsGithubReposRefreshCreateOutput.Type;
+  }) as unknown as Schema.Codec<IntegrationsGithubReposRefreshCreateOutput>;
 
 // The operation
 /**

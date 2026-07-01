@@ -4,19 +4,24 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateDocumentsInput {
+  collectionName: string;
+  updateDocumentsParameters?: string;
+}
 export const UpdateDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   updateDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "PATCH", path: "/collections/{collectionName}/documents" }),
-);
-export type UpdateDocumentsInput = typeof UpdateDocumentsInput.Type;
+) as unknown as Schema.Codec<UpdateDocumentsInput>;
 
 // Output Schema
+export interface UpdateDocumentsOutput {
+  num_updated: number;
+}
 export const UpdateDocumentsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   num_updated: Schema.Number,
-});
-export type UpdateDocumentsOutput = typeof UpdateDocumentsOutput.Type;
+}) as unknown as Schema.Codec<UpdateDocumentsOutput>;
 
 // The operation
 /**

@@ -4,23 +4,59 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface MarketplaceRegistrationDefinitionsGetInput {
+  scope: string;
+  marketplaceIdentifier: string;
+}
 export const MarketplaceRegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type MarketplaceRegistrationDefinitionsGetInput =
-  typeof MarketplaceRegistrationDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsGetInput>;
 
 // Output Schema
+export interface MarketplaceRegistrationDefinitionsGetOutput {
+  properties?: {
+    managedByTenantId: string;
+    authorizations: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      delegatedRoleDefinitionIds?: string[];
+    }[];
+    eligibleAuthorizations?: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      justInTimeAccessPolicy?: {
+        multiFactorAuthProvider: "Azure" | "None";
+        maximumActivationDuration?: string;
+        managedByTenantApprovers?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+        }[];
+      };
+    }[];
+    offerDisplayName?: string;
+    publisherDisplayName?: string;
+    planDisplayName?: string;
+  };
+  plan?: { name: string; publisher: string; product: string; version: string };
+  id?: string;
+  type?: string;
+  name?: string;
+}
 export const MarketplaceRegistrationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -75,13 +111,15 @@ export const MarketplaceRegistrationDefinitionsGetOutput =
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-  });
-export type MarketplaceRegistrationDefinitionsGetOutput =
-  typeof MarketplaceRegistrationDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsGetOutput>;
 
 // The operation
 /**
  * Get the marketplace registration definition for the marketplace identifier.
+ *
+ * @param scope - The scope of the resource.
+ * @param marketplaceIdentifier - The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -89,18 +127,62 @@ export const MarketplaceRegistrationDefinitionsGet =
     outputSchema: MarketplaceRegistrationDefinitionsGetOutput,
   }));
 // Input Schema
+export interface MarketplaceRegistrationDefinitionsListInput {
+  scope: string;
+  $filter?: string;
+}
 export const MarketplaceRegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
       apiVersion: "2022-10-01",
     }),
-  );
-export type MarketplaceRegistrationDefinitionsListInput =
-  typeof MarketplaceRegistrationDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsListInput>;
 
 // Output Schema
+export interface MarketplaceRegistrationDefinitionsListOutput {
+  value?: {
+    properties?: {
+      managedByTenantId: string;
+      authorizations: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        delegatedRoleDefinitionIds?: string[];
+      }[];
+      eligibleAuthorizations?: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        justInTimeAccessPolicy?: {
+          multiFactorAuthProvider: "Azure" | "None";
+          maximumActivationDuration?: string;
+          managedByTenantApprovers?: {
+            principalId: string;
+            principalIdDisplayName?: string;
+          }[];
+        };
+      }[];
+      offerDisplayName?: string;
+      publisherDisplayName?: string;
+      planDisplayName?: string;
+    };
+    plan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      version: string;
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceRegistrationDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -169,13 +251,15 @@ export const MarketplaceRegistrationDefinitionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceRegistrationDefinitionsListOutput =
-  typeof MarketplaceRegistrationDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsListOutput>;
 
 // The operation
 /**
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
+ *
+ * @param scope - The scope of the resource.
+ * @param $filter - The filter query parameter to filter managed services resources by.
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -183,18 +267,52 @@ export const MarketplaceRegistrationDefinitionsList =
     outputSchema: MarketplaceRegistrationDefinitionsListOutput,
   }));
 // Input Schema
+export interface MarketplaceRegistrationDefinitionsWithoutScopeGetInput {
+  marketplaceIdentifier: string;
+}
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
-  typeof MarketplaceRegistrationDefinitionsWithoutScopeGetInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsWithoutScopeGetInput>;
 
 // Output Schema
+export interface MarketplaceRegistrationDefinitionsWithoutScopeGetOutput {
+  properties?: {
+    managedByTenantId: string;
+    authorizations: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      delegatedRoleDefinitionIds?: string[];
+    }[];
+    eligibleAuthorizations?: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      justInTimeAccessPolicy?: {
+        multiFactorAuthProvider: "Azure" | "None";
+        maximumActivationDuration?: string;
+        managedByTenantApprovers?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+        }[];
+      };
+    }[];
+    offerDisplayName?: string;
+    publisherDisplayName?: string;
+    planDisplayName?: string;
+  };
+  plan?: { name: string; publisher: string; product: string; version: string };
+  id?: string;
+  type?: string;
+  name?: string;
+}
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -249,13 +367,14 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-  });
-export type MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
-  typeof MarketplaceRegistrationDefinitionsWithoutScopeGetOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsWithoutScopeGetOutput>;
 
 // The operation
 /**
  * Get the marketplace registration definition for the marketplace identifier.
+ *
+ * @param marketplaceIdentifier - The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -263,18 +382,60 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeGetOutput,
   }));
 // Input Schema
+export interface MarketplaceRegistrationDefinitionsWithoutScopeListInput {
+  $filter?: string;
+}
 export const MarketplaceRegistrationDefinitionsWithoutScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions",
       apiVersion: "2022-10-01",
     }),
-  );
-export type MarketplaceRegistrationDefinitionsWithoutScopeListInput =
-  typeof MarketplaceRegistrationDefinitionsWithoutScopeListInput.Type;
+  ) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsWithoutScopeListInput>;
 
 // Output Schema
+export interface MarketplaceRegistrationDefinitionsWithoutScopeListOutput {
+  value?: {
+    properties?: {
+      managedByTenantId: string;
+      authorizations: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        delegatedRoleDefinitionIds?: string[];
+      }[];
+      eligibleAuthorizations?: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        justInTimeAccessPolicy?: {
+          multiFactorAuthProvider: "Azure" | "None";
+          maximumActivationDuration?: string;
+          managedByTenantApprovers?: {
+            principalId: string;
+            principalIdDisplayName?: string;
+          }[];
+        };
+      }[];
+      offerDisplayName?: string;
+      publisherDisplayName?: string;
+      planDisplayName?: string;
+    };
+    plan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      version: string;
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+  }[];
+  nextLink?: string;
+}
 export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -343,13 +504,14 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
-  typeof MarketplaceRegistrationDefinitionsWithoutScopeListOutput.Type;
+  }) as unknown as Schema.Codec<MarketplaceRegistrationDefinitionsWithoutScopeListOutput>;
 
 // The operation
 /**
  * Gets a list of the marketplace registration definitions for the marketplace identifier.
+ *
+ * @param $filter - The filter query parameter to filter managed services resources by.
+ * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -357,6 +519,7 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeList =
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeListOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -365,10 +528,20 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ManagedServices/operations",
     apiVersion: "2022-10-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -385,30 +558,45 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
  * Gets a list of the operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationsWithScopeListInput {
+  scope: string;
+}
 export const OperationsWithScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/operations",
       apiVersion: "2022-10-01",
     }),
-  );
-export type OperationsWithScopeListInput =
-  typeof OperationsWithScopeListInput.Type;
+  ) as unknown as Schema.Codec<OperationsWithScopeListInput>;
 
 // Output Schema
+export interface OperationsWithScopeListOutput {
+  value?: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+  }[];
+}
 export const OperationsWithScopeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -426,13 +614,14 @@ export const OperationsWithScopeListOutput =
         }),
       ),
     ),
-  });
-export type OperationsWithScopeListOutput =
-  typeof OperationsWithScopeListOutput.Type;
+  }) as unknown as Schema.Codec<OperationsWithScopeListOutput>;
 
 // The operation
 /**
  * Gets a list of the operations with the scope.
+ *
+ * @param scope - The scope of the resource.
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -441,8 +630,100 @@ export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistrationAssignmentsCreateOrUpdateInput {
+  scope: string;
+  registrationAssignmentId: string;
+  properties?: {
+    registrationDefinitionId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    registrationDefinition?: {
+      properties?: {
+        description?: string;
+        authorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          delegatedRoleDefinitionIds?: string[];
+        }[];
+        eligibleAuthorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          justInTimeAccessPolicy?: {
+            multiFactorAuthProvider: "Azure" | "None";
+            maximumActivationDuration?: string;
+            managedByTenantApprovers?: {
+              principalId: string;
+              principalIdDisplayName?: string;
+            }[];
+          };
+        }[];
+        registrationDefinitionName?: string;
+        provisioningState?:
+          | "NotSpecified"
+          | "Accepted"
+          | "Running"
+          | "Ready"
+          | "Creating"
+          | "Created"
+          | "Deleting"
+          | "Deleted"
+          | "Canceled"
+          | "Failed"
+          | "Succeeded"
+          | "Updating";
+        manageeTenantId?: string;
+        manageeTenantName?: string;
+        managedByTenantId?: string;
+        managedByTenantName?: string;
+      };
+      plan?: {
+        name: string;
+        publisher: string;
+        product: string;
+        version: string;
+      };
+      id?: string;
+      type?: string;
+      name?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    };
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -594,11 +875,97 @@ export const RegistrationAssignmentsCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationAssignmentsCreateOrUpdateInput =
-  typeof RegistrationAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistrationAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistrationAssignmentsCreateOrUpdateOutput {
+  properties?: {
+    registrationDefinitionId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    registrationDefinition?: {
+      properties?: {
+        description?: string;
+        authorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          delegatedRoleDefinitionIds?: string[];
+        }[];
+        eligibleAuthorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          justInTimeAccessPolicy?: {
+            multiFactorAuthProvider: "Azure" | "None";
+            maximumActivationDuration?: string;
+            managedByTenantApprovers?: {
+              principalId: string;
+              principalIdDisplayName?: string;
+            }[];
+          };
+        }[];
+        registrationDefinitionName?: string;
+        provisioningState?:
+          | "NotSpecified"
+          | "Accepted"
+          | "Running"
+          | "Ready"
+          | "Creating"
+          | "Created"
+          | "Deleting"
+          | "Deleted"
+          | "Canceled"
+          | "Failed"
+          | "Succeeded"
+          | "Updating";
+        manageeTenantId?: string;
+        manageeTenantName?: string;
+        managedByTenantId?: string;
+        managedByTenantName?: string;
+      };
+      plan?: {
+        name: string;
+        publisher: string;
+        product: string;
+        version: string;
+      };
+      id?: string;
+      type?: string;
+      name?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    };
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -746,13 +1113,15 @@ export const RegistrationAssignmentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistrationAssignmentsCreateOrUpdateOutput =
-  typeof RegistrationAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -760,26 +1129,34 @@ export const RegistrationAssignmentsCreateOrUpdate =
     outputSchema: RegistrationAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistrationAssignmentsDeleteInput {
+  scope: string;
+  registrationAssignmentId: string;
+}
 export const RegistrationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationAssignmentsDeleteInput =
-  typeof RegistrationAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistrationAssignmentsDeleteInput>;
 
 // Output Schema
+export type RegistrationAssignmentsDeleteOutput = void;
 export const RegistrationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistrationAssignmentsDeleteOutput =
-  typeof RegistrationAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationAssignmentsDeleteOutput>;
 
 // The operation
 /**
  * Deletes the specified registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -787,18 +1164,113 @@ export const RegistrationAssignmentsDelete =
     outputSchema: RegistrationAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface RegistrationAssignmentsGetInput {
+  scope: string;
+  registrationAssignmentId: string;
+  $expandRegistrationDefinition?: boolean;
+}
 export const RegistrationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationAssignmentId: Schema.String.pipe(T.PathParam()),
+    $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationAssignmentsGetInput =
-  typeof RegistrationAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistrationAssignmentsGetInput>;
 
 // Output Schema
+export interface RegistrationAssignmentsGetOutput {
+  properties?: {
+    registrationDefinitionId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    registrationDefinition?: {
+      properties?: {
+        description?: string;
+        authorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          delegatedRoleDefinitionIds?: string[];
+        }[];
+        eligibleAuthorizations?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+          roleDefinitionId: string;
+          justInTimeAccessPolicy?: {
+            multiFactorAuthProvider: "Azure" | "None";
+            maximumActivationDuration?: string;
+            managedByTenantApprovers?: {
+              principalId: string;
+              principalIdDisplayName?: string;
+            }[];
+          };
+        }[];
+        registrationDefinitionName?: string;
+        provisioningState?:
+          | "NotSpecified"
+          | "Accepted"
+          | "Running"
+          | "Ready"
+          | "Creating"
+          | "Created"
+          | "Deleting"
+          | "Deleted"
+          | "Canceled"
+          | "Failed"
+          | "Succeeded"
+          | "Updating";
+        manageeTenantId?: string;
+        manageeTenantName?: string;
+        managedByTenantId?: string;
+        managedByTenantName?: string;
+      };
+      plan?: {
+        name: string;
+        publisher: string;
+        product: string;
+        version: string;
+      };
+      id?: string;
+      type?: string;
+      name?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    };
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -946,13 +1418,16 @@ export const RegistrationAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistrationAssignmentsGetOutput =
-  typeof RegistrationAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationAssignmentsGetOutput>;
 
 // The operation
 /**
  * Gets the details of the specified registration assignment.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationAssignmentId - The GUID of the registration assignment.
+ * @param $expandRegistrationDefinition - The flag indicating whether to return the registration definition details along with the registration assignment details.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -961,18 +1436,120 @@ export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistrationAssignmentsListInput {
+  scope: string;
+  $expandRegistrationDefinition?: boolean;
+  $filter?: string;
+}
 export const RegistrationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationAssignments",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationAssignmentsListInput =
-  typeof RegistrationAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<RegistrationAssignmentsListInput>;
 
 // Output Schema
+export interface RegistrationAssignmentsListOutput {
+  value?: {
+    properties?: {
+      registrationDefinitionId: string;
+      provisioningState?:
+        | "NotSpecified"
+        | "Accepted"
+        | "Running"
+        | "Ready"
+        | "Creating"
+        | "Created"
+        | "Deleting"
+        | "Deleted"
+        | "Canceled"
+        | "Failed"
+        | "Succeeded"
+        | "Updating";
+      registrationDefinition?: {
+        properties?: {
+          description?: string;
+          authorizations?: {
+            principalId: string;
+            principalIdDisplayName?: string;
+            roleDefinitionId: string;
+            delegatedRoleDefinitionIds?: string[];
+          }[];
+          eligibleAuthorizations?: {
+            principalId: string;
+            principalIdDisplayName?: string;
+            roleDefinitionId: string;
+            justInTimeAccessPolicy?: {
+              multiFactorAuthProvider: "Azure" | "None";
+              maximumActivationDuration?: string;
+              managedByTenantApprovers?: {
+                principalId: string;
+                principalIdDisplayName?: string;
+              }[];
+            };
+          }[];
+          registrationDefinitionName?: string;
+          provisioningState?:
+            | "NotSpecified"
+            | "Accepted"
+            | "Running"
+            | "Ready"
+            | "Creating"
+            | "Created"
+            | "Deleting"
+            | "Deleted"
+            | "Canceled"
+            | "Failed"
+            | "Succeeded"
+            | "Updating";
+          manageeTenantId?: string;
+          manageeTenantName?: string;
+          managedByTenantId?: string;
+          managedByTenantName?: string;
+        };
+        plan?: {
+          name: string;
+          publisher: string;
+          product: string;
+          version: string;
+        };
+        id?: string;
+        type?: string;
+        name?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      };
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistrationAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1143,13 +1720,16 @@ export const RegistrationAssignmentsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistrationAssignmentsListOutput =
-  typeof RegistrationAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationAssignmentsListOutput>;
 
 // The operation
 /**
  * Gets a list of the registration assignments.
+ *
+ * @param scope - The scope of the resource.
+ * @param $expandRegistrationDefinition - The flag indicating whether to return the registration definition details along with the registration assignment details.
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter query parameter to filter managed services resources by.
  */
 export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1158,8 +1738,66 @@ export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistrationDefinitionsCreateOrUpdateInput {
+  registrationDefinitionId: string;
+  scope: string;
+  properties?: {
+    description?: string;
+    authorizations: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      delegatedRoleDefinitionIds?: string[];
+    }[];
+    eligibleAuthorizations?: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      justInTimeAccessPolicy?: {
+        multiFactorAuthProvider: "Azure" | "None";
+        maximumActivationDuration?: string;
+        managedByTenantApprovers?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+        }[];
+      };
+    }[];
+    registrationDefinitionName?: string;
+    managedByTenantId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    manageeTenantId?: string;
+    manageeTenantName?: string;
+    managedByTenantName?: string;
+  };
+  plan?: { name: string; publisher: string; product: string; version: string };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+    scope: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1250,11 +1888,63 @@ export const RegistrationDefinitionsCreateOrUpdateInput =
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationDefinitionsCreateOrUpdateInput =
-  typeof RegistrationDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RegistrationDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RegistrationDefinitionsCreateOrUpdateOutput {
+  properties?: {
+    description?: string;
+    authorizations: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      delegatedRoleDefinitionIds?: string[];
+    }[];
+    eligibleAuthorizations?: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      justInTimeAccessPolicy?: {
+        multiFactorAuthProvider: "Azure" | "None";
+        maximumActivationDuration?: string;
+        managedByTenantApprovers?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+        }[];
+      };
+    }[];
+    registrationDefinitionName?: string;
+    managedByTenantId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    manageeTenantId?: string;
+    manageeTenantName?: string;
+    managedByTenantName?: string;
+  };
+  plan?: { name: string; publisher: string; product: string; version: string };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1341,13 +2031,15 @@ export const RegistrationDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistrationDefinitionsCreateOrUpdateOutput =
-  typeof RegistrationDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a registration definition.
+ *
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1355,26 +2047,34 @@ export const RegistrationDefinitionsCreateOrUpdate =
     outputSchema: RegistrationDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RegistrationDefinitionsDeleteInput {
+  registrationDefinitionId: string;
+  scope: string;
+}
 export const RegistrationDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+    scope: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationDefinitionsDeleteInput =
-  typeof RegistrationDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RegistrationDefinitionsDeleteInput>;
 
 // Output Schema
+export type RegistrationDefinitionsDeleteOutput = void;
 export const RegistrationDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RegistrationDefinitionsDeleteOutput =
-  typeof RegistrationDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationDefinitionsDeleteOutput>;
 
 // The operation
 /**
  * Deletes the registration definition.
+ *
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1382,18 +2082,77 @@ export const RegistrationDefinitionsDelete =
     outputSchema: RegistrationDefinitionsDeleteOutput,
   }));
 // Input Schema
+export interface RegistrationDefinitionsGetInput {
+  scope: string;
+  registrationDefinitionId: string;
+}
 export const RegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    registrationDefinitionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationDefinitionsGetInput =
-  typeof RegistrationDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<RegistrationDefinitionsGetInput>;
 
 // Output Schema
+export interface RegistrationDefinitionsGetOutput {
+  properties?: {
+    description?: string;
+    authorizations: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      delegatedRoleDefinitionIds?: string[];
+    }[];
+    eligibleAuthorizations?: {
+      principalId: string;
+      principalIdDisplayName?: string;
+      roleDefinitionId: string;
+      justInTimeAccessPolicy?: {
+        multiFactorAuthProvider: "Azure" | "None";
+        maximumActivationDuration?: string;
+        managedByTenantApprovers?: {
+          principalId: string;
+          principalIdDisplayName?: string;
+        }[];
+      };
+    }[];
+    registrationDefinitionName?: string;
+    managedByTenantId: string;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    manageeTenantId?: string;
+    manageeTenantName?: string;
+    managedByTenantName?: string;
+  };
+  plan?: { name: string; publisher: string; product: string; version: string };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RegistrationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -1480,13 +2239,15 @@ export const RegistrationDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RegistrationDefinitionsGetOutput =
-  typeof RegistrationDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationDefinitionsGetOutput>;
 
 // The operation
 /**
  * Gets the registration definition details.
+ *
+ * @param scope - The scope of the resource.
+ * @param registrationDefinitionId - The GUID of the registration definition.
+ * @param api-version - The API version to use for this operation.
  */
 export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1495,18 +2256,85 @@ export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RegistrationDefinitionsListInput {
+  scope: string;
+  $filter?: string;
+}
 export const RegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.String.pipe(T.PathParam()),
+    $filter: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions",
       apiVersion: "2022-10-01",
     }),
-  );
-export type RegistrationDefinitionsListInput =
-  typeof RegistrationDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<RegistrationDefinitionsListInput>;
 
 // Output Schema
+export interface RegistrationDefinitionsListOutput {
+  value?: {
+    properties?: {
+      description?: string;
+      authorizations: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        delegatedRoleDefinitionIds?: string[];
+      }[];
+      eligibleAuthorizations?: {
+        principalId: string;
+        principalIdDisplayName?: string;
+        roleDefinitionId: string;
+        justInTimeAccessPolicy?: {
+          multiFactorAuthProvider: "Azure" | "None";
+          maximumActivationDuration?: string;
+          managedByTenantApprovers?: {
+            principalId: string;
+            principalIdDisplayName?: string;
+          }[];
+        };
+      }[];
+      registrationDefinitionName?: string;
+      managedByTenantId: string;
+      provisioningState?:
+        | "NotSpecified"
+        | "Accepted"
+        | "Running"
+        | "Ready"
+        | "Creating"
+        | "Created"
+        | "Deleting"
+        | "Deleted"
+        | "Canceled"
+        | "Failed"
+        | "Succeeded"
+        | "Updating";
+      manageeTenantId?: string;
+      manageeTenantName?: string;
+      managedByTenantName?: string;
+    };
+    plan?: {
+      name: string;
+      publisher: string;
+      product: string;
+      version: string;
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RegistrationDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1617,13 +2445,15 @@ export const RegistrationDefinitionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RegistrationDefinitionsListOutput =
-  typeof RegistrationDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<RegistrationDefinitionsListOutput>;
 
 // The operation
 /**
  * Gets a list of the registration definitions.
+ *
+ * @param scope - The scope of the resource.
+ * @param api-version - The API version to use for this operation.
+ * @param $filter - The filter query parameter to filter managed services resources by.
  */
 export const RegistrationDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

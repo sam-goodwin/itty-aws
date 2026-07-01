@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1RestorePitrBackupInput {
+  ref: string;
+  recovery_time_target_unix: number;
+}
 export const V1RestorePitrBackupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -13,13 +17,12 @@ export const V1RestorePitrBackupInput =
       method: "POST",
       path: "/v1/projects/{ref}/database/backups/restore-pitr",
     }),
-  );
-export type V1RestorePitrBackupInput = typeof V1RestorePitrBackupInput.Type;
+  ) as unknown as Schema.Codec<V1RestorePitrBackupInput>;
 
 // Output Schema
+export type V1RestorePitrBackupOutput = void;
 export const V1RestorePitrBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type V1RestorePitrBackupOutput = typeof V1RestorePitrBackupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestorePitrBackupOutput>;
 
 // The operation
 /**

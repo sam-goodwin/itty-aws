@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsReviewQueueItemsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  queue_id?: string;
+}
 export const LlmAnalyticsReviewQueueItemsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,13 +16,41 @@ export const LlmAnalyticsReviewQueueItemsPartialUpdateInput =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "/api/environments/{project_id}/llm_analytics/review_queue_items/{id}/",
+      path: "/api/projects/{project_id}/llm_analytics/review_queue_items/{id}/",
     }),
-  );
-export type LlmAnalyticsReviewQueueItemsPartialUpdateInput =
-  typeof LlmAnalyticsReviewQueueItemsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsPartialUpdateInput>;
 
 // Output Schema
+export interface LlmAnalyticsReviewQueueItemsPartialUpdateOutput {
+  id?: string;
+  queue_id?: string;
+  queue_name?: string;
+  trace_id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  team?: number;
+}
 export const LlmAnalyticsReviewQueueItemsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -40,14 +72,28 @@ export const LlmAnalyticsReviewQueueItemsPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     team: Schema.optional(Schema.Number),
-  });
-export type LlmAnalyticsReviewQueueItemsPartialUpdateOutput =
-  typeof LlmAnalyticsReviewQueueItemsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsReviewQueueItemsPartialUpdateOutput>;
 
 // The operation
 /**
@@ -59,5 +105,4 @@ export const llmAnalyticsReviewQueueItemsPartialUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsReviewQueueItemsPartialUpdateInput,
     outputSchema: LlmAnalyticsReviewQueueItemsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

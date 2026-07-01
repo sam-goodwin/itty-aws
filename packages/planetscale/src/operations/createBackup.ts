@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CreateBackupInput {
+  organization: string;
+  database: string;
+  branch: string;
+  name?: string;
+  retention_unit?: "hour" | "day" | "week" | "month" | "year";
+  retention_value?: number;
+  emergency?: boolean;
+}
 export const CreateBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -19,10 +28,67 @@ export const CreateBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/backups",
   }),
-);
-export type CreateBackupInput = typeof CreateBackupInput.Type;
+) as unknown as Schema.Codec<CreateBackupInput>;
 
 // Output Schema
+export interface CreateBackupOutput {
+  id: string;
+  name: string;
+  state: "pending" | "running" | "success" | "failed" | "canceled" | "ignored";
+  size: number;
+  estimated_storage_cost: number;
+  created_at: string;
+  updated_at: string;
+  started_at: string | null;
+  expires_at: string | null;
+  completed_at: string | null;
+  deleted_at: string | null;
+  pvc_size: number;
+  uncompressed_size: number;
+  protected: boolean;
+  required: boolean;
+  restored_branches: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  }[];
+  actor: { id: string; display_name: string; avatar_url: string } | null;
+  backup_policy?: {
+    id: string;
+    display_name: string;
+    name: string;
+    target: "production" | "development";
+    retention_value: number;
+    retention_unit: string;
+    frequency_value: number;
+    frequency_unit: string;
+    schedule_time: string | null;
+    schedule_day: number | null;
+    schedule_week: number | null;
+    created_at: string;
+    updated_at: string;
+    last_ran_at: string | null;
+    next_run_at: string | null;
+    required: boolean;
+  } | null;
+  schema_snapshot?: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    linted_at: string | null;
+    url: string;
+  } | null;
+  database_branch?: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  } | null;
+}
 export const CreateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -43,6 +109,7 @@ export const CreateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   completed_at: Schema.NullOr(Schema.String),
   deleted_at: Schema.NullOr(Schema.String),
   pvc_size: Schema.Number,
+  uncompressed_size: Schema.Number,
   protected: Schema.Boolean,
   required: Schema.Boolean,
   restored_branches: Schema.Array(
@@ -106,8 +173,7 @@ export const CreateBackupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type CreateBackupOutput = typeof CreateBackupOutput.Type;
+}) as unknown as Schema.Codec<CreateBackupOutput>;
 
 // The operation
 /**

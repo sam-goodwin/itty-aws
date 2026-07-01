@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service acm
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -65,6 +65,93 @@ export class PreviousJobInProgress extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListCustomTrustStoresResponseResult {
+  /** Identifier. */
+  id: string;
+  /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
+  certificate: string;
+  /** When the certificate expires. */
+  expiresOn: string;
+  /** The certificate authority that issued the certificate. */
+  issuer: string;
+  /** The type of hash used for the certificate. */
+  signature: string;
+  /** Status of the zone's custom SSL. */
+  status:
+    | "initializing"
+    | "pending_deployment"
+    | "active"
+    | "pending_deletion"
+    | "deleted"
+    | "expired"
+    | (string & {});
+  /** When the certificate was last modified. */
+  updatedAt: string;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn: string;
+}
+const ListCustomTrustStoresResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      certificate: Schema.String,
+      expiresOn: Schema.String,
+      issuer: Schema.String,
+      signature: Schema.String,
+      status: Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "active",
+          "pending_deletion",
+          "deleted",
+          "expired",
+        ]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      uploadedOn: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        certificate: "certificate",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        signature: "signature",
+        status: "status",
+        updatedAt: "updated_at",
+        uploadedOn: "uploaded_on",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListCustomTrustStoresResponseResult>;
+
+interface ListCustomTrustStoresResponseResultInfo {
+  count?: number | null;
+  page?: number | null;
+  perPage?: number | null;
+  totalCount?: number | null;
+}
+const ListCustomTrustStoresResponseResultInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        count: "count",
+        page: "page",
+        perPage: "per_page",
+        totalCount: "total_count",
+      }),
+    ),
+  ) as unknown as Schema.Codec<ListCustomTrustStoresResponseResultInfo>;
+
+// =============================================================================
 // CustomTrustStore
 // =============================================================================
 
@@ -87,7 +174,7 @@ export const GetCustomTrustStoreRequest =
         path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetCustomTrustStoreRequest>;
+  ) as unknown as Schema.Codec<GetCustomTrustStoreRequest>;
 
 export interface GetCustomTrustStoreResponse {
   /** Identifier. */
@@ -150,7 +237,7 @@ export const GetCustomTrustStoreResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetCustomTrustStoreResponse>;
+  ) as unknown as Schema.Codec<GetCustomTrustStoreResponse>;
 
 export type GetCustomTrustStoreError =
   | DefaultErrors
@@ -200,7 +287,7 @@ export const ListCustomTrustStoresRequest =
         path: "/zones/{zone_id}/acm/custom_trust_store",
       }),
     ),
-  ) as unknown as Schema.Schema<ListCustomTrustStoresRequest>;
+  ) as unknown as Schema.Codec<ListCustomTrustStoresRequest>;
 
 export interface ListCustomTrustStoresResponse {
   result: {
@@ -231,63 +318,12 @@ export interface ListCustomTrustStoresResponse {
 export const ListCustomTrustStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          certificate: Schema.String,
-          expiresOn: Schema.String,
-          issuer: Schema.String,
-          signature: Schema.String,
-          status: Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "active",
-              "pending_deletion",
-              "deleted",
-              "expired",
-            ]),
-            Schema.String,
-          ]),
-          updatedAt: Schema.String,
-          uploadedOn: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            certificate: "certificate",
-            expiresOn: "expires_on",
-            issuer: "issuer",
-            signature: "signature",
-            status: "status",
-            updatedAt: "updated_at",
-            uploadedOn: "uploaded_on",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListCustomTrustStoresResponseResult),
       resultInfo: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            perPage: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            totalCount: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              count: "count",
-              page: "page",
-              perPage: "per_page",
-              totalCount: "total_count",
-            }),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([ListCustomTrustStoresResponseResultInfo, Schema.Null]),
       ),
     }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Schema<ListCustomTrustStoresResponse>;
+  ) as unknown as Schema.Codec<ListCustomTrustStoresResponse>;
 
 export type ListCustomTrustStoresError =
   | DefaultErrors
@@ -330,7 +366,7 @@ export const CreateCustomTrustStoreRequest =
         path: "/zones/{zone_id}/acm/custom_trust_store",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateCustomTrustStoreRequest>;
+  ) as unknown as Schema.Codec<CreateCustomTrustStoreRequest>;
 
 export interface CreateCustomTrustStoreResponse {
   /** Identifier. */
@@ -393,7 +429,7 @@ export const CreateCustomTrustStoreResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateCustomTrustStoreResponse>;
+  ) as unknown as Schema.Codec<CreateCustomTrustStoreResponse>;
 
 export type CreateCustomTrustStoreError =
   | DefaultErrors
@@ -435,7 +471,7 @@ export const DeleteCustomTrustStoreRequest =
         path: "/zones/{zone_id}/acm/custom_trust_store/{customOriginTrustStoreId}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteCustomTrustStoreRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomTrustStoreRequest>;
 
 export interface DeleteCustomTrustStoreResponse {
   /** Identifier. */
@@ -447,7 +483,7 @@ export const DeleteCustomTrustStoreResponse =
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteCustomTrustStoreResponse>;
+  ) as unknown as Schema.Codec<DeleteCustomTrustStoreResponse>;
 
 export type DeleteCustomTrustStoreError =
   | DefaultErrors
@@ -486,7 +522,7 @@ export const GetTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/acm/total_tls" })),
-) as unknown as Schema.Schema<GetTotalTlRequest>;
+) as unknown as Schema.Codec<GetTotalTlRequest>;
 
 export interface GetTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -527,7 +563,7 @@ export const GetTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetTotalTlResponse>;
+) as unknown as Schema.Codec<GetTotalTlResponse>;
 
 export type GetTotalTlError =
   | DefaultErrors
@@ -577,7 +613,7 @@ export const UpdateTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       }),
       T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
     ),
-) as unknown as Schema.Schema<UpdateTotalTlRequest>;
+) as unknown as Schema.Codec<UpdateTotalTlRequest>;
 
 export interface UpdateTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -618,7 +654,7 @@ export const UpdateTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<UpdateTotalTlResponse>;
+) as unknown as Schema.Codec<UpdateTotalTlResponse>;
 
 export type UpdateTotalTlError =
   | DefaultErrors
@@ -672,7 +708,7 @@ export const EditTotalTlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       }),
       T.Http({ method: "POST", path: "/zones/{zone_id}/acm/total_tls" }),
     ),
-) as unknown as Schema.Schema<EditTotalTlRequest>;
+) as unknown as Schema.Codec<EditTotalTlRequest>;
 
 export interface EditTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -713,7 +749,7 @@ export const EditTotalTlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<EditTotalTlResponse>;
+) as unknown as Schema.Codec<EditTotalTlResponse>;
 
 export type EditTotalTlError = DefaultErrors;
 

@@ -3,25 +3,31 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddEndUserEvmAccountInput {
+  userId: string;
+}
 export const AddEndUserEvmAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "POST", path: "/v2/end-users/{userId}/evm" }));
-export type AddEndUserEvmAccountInput = typeof AddEndUserEvmAccountInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/end-users/{userId}/evm" }),
+  ) as unknown as Schema.Codec<AddEndUserEvmAccountInput>;
 
 // Output Schema
+export interface AddEndUserEvmAccountOutput {
+  evmAccount: { address: string; createdAt: string };
+}
 export const AddEndUserEvmAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evmAccount: Schema.Struct({
       address: Schema.String,
       createdAt: Schema.String,
     }),
-  });
-export type AddEndUserEvmAccountOutput = typeof AddEndUserEvmAccountOutput.Type;
+  }) as unknown as Schema.Codec<AddEndUserEvmAccountOutput>;
 
 // The operation
 /**
- * Add an EVM account to an end user
+ * Add EVM account to end user
  *
  * Adds a new EVM EOA account to an existing end user. End users can have up to 10 EVM accounts.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionsMetricsRetrieveInput {
+  id: string;
+  project_id: string;
+  after?: string;
+  before?: string;
+  breakdown_by?: "name" | "kind";
+  instance_id?: string;
+  interval?: "hour" | "day" | "week";
+  kind?: string;
+  name?: string;
+}
 export const HogFunctionsMetricsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,11 +31,13 @@ export const HogFunctionsMetricsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_functions/{id}/metrics/",
     }),
-  );
-export type HogFunctionsMetricsRetrieveInput =
-  typeof HogFunctionsMetricsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionsMetricsRetrieveInput>;
 
 // Output Schema
+export interface HogFunctionsMetricsRetrieveOutput {
+  labels?: string[];
+  series?: { name?: string; values?: number[] }[];
+}
 export const HogFunctionsMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
@@ -36,9 +49,7 @@ export const HogFunctionsMetricsRetrieveOutput =
         }),
       ),
     ),
-  });
-export type HogFunctionsMetricsRetrieveOutput =
-  typeof HogFunctionsMetricsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<HogFunctionsMetricsRetrieveOutput>;
 
 // The operation
 /**

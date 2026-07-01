@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service ai-security
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -41,6 +41,23 @@ export class ZoneNotAuthorized extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface Topic {
+  /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
+  label: string;
+  /** Description of the topic category. Must contain only printable ASCII characters. */
+  topic: string;
+}
+const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    label: Schema.String,
+    topic: Schema.String,
+  }),
+) as unknown as Schema.Codec<Topic>;
+
+// =============================================================================
 // AiSecurity
 // =============================================================================
 
@@ -56,7 +73,7 @@ export const GetAiSecurityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/ai-security/settings" }),
     ),
-) as unknown as Schema.Schema<GetAiSecurityRequest>;
+) as unknown as Schema.Codec<GetAiSecurityRequest>;
 
 export interface GetAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
@@ -68,7 +85,7 @@ export const GetAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetAiSecurityResponse>;
+) as unknown as Schema.Codec<GetAiSecurityResponse>;
 
 export type GetAiSecurityError =
   | DefaultErrors
@@ -102,7 +119,7 @@ export const PutAiSecurityRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "PUT", path: "/zones/{zone_id}/ai-security/settings" }),
     ),
-) as unknown as Schema.Schema<PutAiSecurityRequest>;
+) as unknown as Schema.Codec<PutAiSecurityRequest>;
 
 export interface PutAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
@@ -114,7 +131,7 @@ export const PutAiSecurityResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PutAiSecurityResponse>;
+) as unknown as Schema.Codec<PutAiSecurityResponse>;
 
 export type PutAiSecurityError =
   | DefaultErrors
@@ -152,7 +169,7 @@ export const GetCustomTopicRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/ai-security/custom-topics",
       }),
     ),
-) as unknown as Schema.Schema<GetCustomTopicRequest>;
+) as unknown as Schema.Codec<GetCustomTopicRequest>;
 
 export interface GetCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
@@ -162,19 +179,9 @@ export interface GetCustomTopicResponse {
 export const GetCustomTopicResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      topics: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              label: Schema.String,
-              topic: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      topics: Schema.optional(Schema.Union([Schema.Array(Topic), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetCustomTopicResponse>;
+  ) as unknown as Schema.Codec<GetCustomTopicResponse>;
 
 export type GetCustomTopicError =
   | DefaultErrors
@@ -204,21 +211,14 @@ export const PutCustomTopicRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      topics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            label: Schema.String,
-            topic: Schema.String,
-          }),
-        ),
-      ),
+      topics: Schema.optional(Schema.Array(Topic)),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/zones/{zone_id}/ai-security/custom-topics",
       }),
     ),
-) as unknown as Schema.Schema<PutCustomTopicRequest>;
+) as unknown as Schema.Codec<PutCustomTopicRequest>;
 
 export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
@@ -228,19 +228,9 @@ export interface PutCustomTopicResponse {
 export const PutCustomTopicResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
-      topics: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              label: Schema.String,
-              topic: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
+      topics: Schema.optional(Schema.Union([Schema.Array(Topic), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutCustomTopicResponse>;
+  ) as unknown as Schema.Codec<PutCustomTopicResponse>;
 
 export type PutCustomTopicError =
   | DefaultErrors

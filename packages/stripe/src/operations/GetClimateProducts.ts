@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetClimateProductsInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetClimateProductsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
@@ -15,10 +21,46 @@ export const GetClimateProductsInput =
       path: "/v1/climate/products",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetClimateProductsInput = typeof GetClimateProductsInput.Type;
+  ) as unknown as Schema.Codec<GetClimateProductsInput>;
 
 // Output Schema
+export interface GetClimateProductsOutput {
+  data: {
+    created: number;
+    current_prices_per_metric_ton: Record<
+      string,
+      { amount_fees: number; amount_subtotal: number; amount_total: number }
+    >;
+    delivery_year: number | null;
+    id: string;
+    livemode: boolean;
+    metric_tons_available: string;
+    name: string;
+    object: "climate.product";
+    suppliers: {
+      id: string;
+      info_url: string;
+      livemode: boolean;
+      locations: {
+        city: string | null;
+        country: string;
+        latitude: number | null;
+        longitude: number | null;
+        region: string | null;
+      }[];
+      name: string;
+      object: "climate.supplier";
+      removal_pathway:
+        | "biomass_carbon_removal_and_storage"
+        | "direct_air_capture"
+        | "enhanced_weathering"
+        | "marine_carbon_removal";
+    }[];
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetClimateProductsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -67,8 +109,7 @@ export const GetClimateProductsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetClimateProductsOutput = typeof GetClimateProductsOutput.Type;
+  }) as unknown as Schema.Codec<GetClimateProductsOutput>;
 
 // The operation
 /**

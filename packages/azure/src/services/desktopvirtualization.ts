@@ -4,16 +4,62 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AppAttachPackageCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  appAttachPackageName: string;
+  properties: {
+    provisioningState?: "Succeeded" | "Provisioning" | "Failed" | "Canceled";
+    image?: {
+      packageAlias?: string;
+      imagePath?: string;
+      packageName?: string;
+      packageFamilyName?: string;
+      packageFullName?: string;
+      displayName?: string | null;
+      packageRelativePath?: string;
+      isRegularRegistration?: boolean;
+      isActive?: boolean;
+      packageDependencies?:
+        | { dependencyName?: string; publisher?: string; minVersion?: string }[]
+        | null;
+      version?: string;
+      lastUpdated?: string;
+      packageApplications?: {
+        appId?: string;
+        description?: string;
+        appUserModelID?: string;
+        friendlyName?: string;
+        iconImageName?: string;
+        rawIcon?: string;
+        rawPng?: string;
+      }[];
+      certificateName?: string | null;
+      certificateExpiry?: string | null;
+      isPackageTimestamped?: "Timestamped" | "NotTimestamped" | null;
+    };
+    hostPoolReferences?: string[];
+    keyVaultURL?: string;
+    failHealthCheckOnStagingFailure?:
+      | "Unhealthy"
+      | "NeedsAssistance"
+      | "DoNotFail";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AppAttachPackageCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       provisioningState: Schema.optional(
         Schema.Literals(["Succeeded", "Provisioning", "Failed", "Canceled"]),
@@ -76,11 +122,22 @@ export const AppAttachPackageCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageCreateOrUpdateInput =
-  typeof AppAttachPackageCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageCreateOrUpdateInput>;
 
 // Output Schema
+export interface AppAttachPackageCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppAttachPackageCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -100,9 +157,7 @@ export const AppAttachPackageCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppAttachPackageCreateOrUpdateOutput =
-  typeof AppAttachPackageCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -111,6 +166,7 @@ export type AppAttachPackageCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -118,25 +174,28 @@ export const AppAttachPackageCreateOrUpdate =
     outputSchema: AppAttachPackageCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AppAttachPackageDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  appAttachPackageName: string;
+}
 export const AppAttachPackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageDeleteInput =
-  typeof AppAttachPackageDeleteInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageDeleteInput>;
 
 // Output Schema
+export type AppAttachPackageDeleteOutput = void;
 export const AppAttachPackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AppAttachPackageDeleteOutput =
-  typeof AppAttachPackageDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppAttachPackageDeleteOutput>;
 
 // The operation
 /**
@@ -145,6 +204,7 @@ export type AppAttachPackageDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -153,20 +213,38 @@ export const AppAttachPackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppAttachPackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  appAttachPackageName: string;
+}
 export const AppAttachPackageGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageGetInput = typeof AppAttachPackageGetInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageGetInput>;
 
 // Output Schema
+export interface AppAttachPackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppAttachPackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -186,8 +264,7 @@ export const AppAttachPackageGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppAttachPackageGetOutput = typeof AppAttachPackageGetOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageGetOutput>;
 
 // The operation
 /**
@@ -196,16 +273,33 @@ export type AppAttachPackageGetOutput = typeof AppAttachPackageGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: AppAttachPackageGetInput,
   outputSchema: AppAttachPackageGetOutput,
 }));
 // Input Schema
+export interface AppAttachPackageInfoImportInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  path?: string;
+  packageArchitecture?:
+    | "ARM"
+    | "ARM64"
+    | "x86"
+    | "x64"
+    | "Neutral"
+    | "x86a64"
+    | "ALL"
+    | null;
+}
 export const AppAttachPackageInfoImportInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     path: Schema.optional(Schema.String),
     packageArchitecture: Schema.optional(
       Schema.NullOr(
@@ -226,11 +320,25 @@ export const AppAttachPackageInfoImportInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/importAppAttachPackageInfo",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageInfoImportInput =
-  typeof AppAttachPackageInfoImportInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageInfoImportInput>;
 
 // Output Schema
+export interface AppAttachPackageInfoImportOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppAttachPackageInfoImportOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -267,9 +375,7 @@ export const AppAttachPackageInfoImportOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppAttachPackageInfoImportOutput =
-  typeof AppAttachPackageInfoImportOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageInfoImportOutput>;
 
 // The operation
 /**
@@ -278,6 +384,7 @@ export type AppAttachPackageInfoImportOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const AppAttachPackageInfoImport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -286,6 +393,11 @@ export const AppAttachPackageInfoImport = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AppAttachPackageListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+}
 export const AppAttachPackageListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -297,11 +409,25 @@ export const AppAttachPackageListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageListByResourceGroupInput =
-  typeof AppAttachPackageListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageListByResourceGroupInput>;
 
 // Output Schema
+export interface AppAttachPackageListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppAttachPackageListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -338,9 +464,7 @@ export const AppAttachPackageListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppAttachPackageListByResourceGroupOutput =
-  typeof AppAttachPackageListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -357,6 +481,10 @@ export const AppAttachPackageListByResourceGroup =
     outputSchema: AppAttachPackageListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AppAttachPackageListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const AppAttachPackageListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -367,11 +495,25 @@ export const AppAttachPackageListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageListBySubscriptionInput =
-  typeof AppAttachPackageListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageListBySubscriptionInput>;
 
 // Output Schema
+export interface AppAttachPackageListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AppAttachPackageListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -408,9 +550,7 @@ export const AppAttachPackageListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AppAttachPackageListBySubscriptionOutput =
-  typeof AppAttachPackageListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -426,10 +566,63 @@ export const AppAttachPackageListBySubscription =
     outputSchema: AppAttachPackageListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AppAttachPackageUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  appAttachPackageName: string;
+  properties?: {
+    image?: {
+      packageAlias?: string;
+      imagePath?: string;
+      packageName?: string;
+      packageFamilyName?: string;
+      packageFullName?: string;
+      displayName?: string | null;
+      packageRelativePath?: string;
+      isRegularRegistration?: boolean;
+      isActive?: boolean;
+      packageDependencies?:
+        | { dependencyName?: string; publisher?: string; minVersion?: string }[]
+        | null;
+      version?: string;
+      lastUpdated?: string;
+      packageApplications?: {
+        appId?: string;
+        description?: string;
+        appUserModelID?: string;
+        friendlyName?: string;
+        iconImageName?: string;
+        rawIcon?: string;
+        rawPng?: string;
+      }[];
+      certificateName?: string | null;
+      certificateExpiry?: string | null;
+      isPackageTimestamped?: "Timestamped" | "NotTimestamped" | null;
+    };
+    hostPoolReferences?: string[];
+    keyVaultURL?: string;
+    failHealthCheckOnStagingFailure?:
+      | "Unhealthy"
+      | "NeedsAssistance"
+      | "DoNotFail";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppAttachPackageUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    appAttachPackageName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         image: Schema.optional(
@@ -506,11 +699,22 @@ export const AppAttachPackageUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type AppAttachPackageUpdateInput =
-  typeof AppAttachPackageUpdateInput.Type;
+  ) as unknown as Schema.Codec<AppAttachPackageUpdateInput>;
 
 // Output Schema
+export interface AppAttachPackageUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AppAttachPackageUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -530,9 +734,7 @@ export const AppAttachPackageUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AppAttachPackageUpdateOutput =
-  typeof AppAttachPackageUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AppAttachPackageUpdateOutput>;
 
 // The operation
 /**
@@ -541,6 +743,7 @@ export type AppAttachPackageUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param appAttachPackageName - The name of the App Attach package
  */
 export const AppAttachPackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -549,10 +752,58 @@ export const AppAttachPackageUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  managedBy?: string;
+  kind?: string;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    objectId?: string;
+    description?: string;
+    friendlyName?: string;
+    hostPoolArmPath: string;
+    workspaceArmPath?: string;
+    applicationGroupType: "RemoteApp" | "Desktop";
+    cloudPcResource?: boolean | null;
+    showInFeed?: boolean;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ApplicationGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -615,11 +866,22 @@ export const ApplicationGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsCreateOrUpdateInput =
-  typeof ApplicationGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -639,9 +901,7 @@ export const ApplicationGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationGroupsCreateOrUpdateOutput =
-  typeof ApplicationGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -650,6 +910,7 @@ export type ApplicationGroupsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -657,25 +918,28 @@ export const ApplicationGroupsCreateOrUpdate =
     outputSchema: ApplicationGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+}
 export const ApplicationGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsDeleteInput =
-  typeof ApplicationGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsDeleteInput>;
 
 // Output Schema
+export type ApplicationGroupsDeleteOutput = void;
 export const ApplicationGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationGroupsDeleteOutput =
-  typeof ApplicationGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -684,6 +948,7 @@ export type ApplicationGroupsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -692,20 +957,38 @@ export const ApplicationGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+}
 export const ApplicationGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsGetInput = typeof ApplicationGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsGetInput>;
 
 // Output Schema
+export interface ApplicationGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -725,8 +1008,7 @@ export const ApplicationGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationGroupsGetOutput = typeof ApplicationGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationGroupsGetOutput>;
 
 // The operation
 /**
@@ -735,6 +1017,7 @@ export type ApplicationGroupsGetOutput = typeof ApplicationGroupsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -743,6 +1026,14 @@ export const ApplicationGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationGroupsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ApplicationGroupsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -757,11 +1048,25 @@ export const ApplicationGroupsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsListByResourceGroupInput =
-  typeof ApplicationGroupsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsListByResourceGroupInput>;
 
 // Output Schema
+export interface ApplicationGroupsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationGroupsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -798,9 +1103,7 @@ export const ApplicationGroupsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationGroupsListByResourceGroupOutput =
-  typeof ApplicationGroupsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationGroupsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -820,6 +1123,10 @@ export const ApplicationGroupsListByResourceGroup =
     outputSchema: ApplicationGroupsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ApplicationGroupsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const ApplicationGroupsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -830,11 +1137,25 @@ export const ApplicationGroupsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/applicationGroups",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsListBySubscriptionInput =
-  typeof ApplicationGroupsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsListBySubscriptionInput>;
 
 // Output Schema
+export interface ApplicationGroupsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationGroupsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -871,9 +1192,7 @@ export const ApplicationGroupsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationGroupsListBySubscriptionOutput =
-  typeof ApplicationGroupsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationGroupsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -889,10 +1208,33 @@ export const ApplicationGroupsListBySubscription =
     outputSchema: ApplicationGroupsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ApplicationGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  tags?: Record<string, string> | null;
+  properties?: {
+    description?: string;
+    friendlyName?: string;
+    showInFeed?: boolean;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
@@ -926,11 +1268,22 @@ export const ApplicationGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationGroupsUpdateInput =
-  typeof ApplicationGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationGroupsUpdateInput>;
 
 // Output Schema
+export interface ApplicationGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -950,9 +1303,7 @@ export const ApplicationGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationGroupsUpdateOutput =
-  typeof ApplicationGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -961,6 +1312,7 @@ export type ApplicationGroupsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  */
 export const ApplicationGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -969,10 +1321,45 @@ export const ApplicationGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  applicationName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    objectId?: string;
+    description?: string;
+    friendlyName?: string;
+    filePath?: string;
+    msixPackageFamilyName?: string | null;
+    msixPackageApplicationId?: string | null;
+    applicationType?: "InBuilt" | "MsixApplication";
+    commandLineSetting: "DoNotAllow" | "Allow" | "Require";
+    commandLineArguments?: string;
+    showInPortal?: boolean;
+    iconPath?: string;
+    iconIndex?: number;
+    iconHash?: string;
+    iconContent?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -1014,11 +1401,22 @@ export const ApplicationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationsCreateOrUpdateInput =
-  typeof ApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1038,9 +1436,7 @@ export const ApplicationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsCreateOrUpdateOutput =
-  typeof ApplicationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1049,6 +1445,8 @@ export type ApplicationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1057,22 +1455,30 @@ export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteInput>;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
+export type ApplicationsDeleteOutput = void;
+export const ApplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -1081,25 +1487,47 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
   outputSchema: ApplicationsDeleteOutput,
 }));
 // Input Schema
+export interface ApplicationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  applicationName: string;
+}
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  applicationName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
+) as unknown as Schema.Codec<ApplicationsGetInput>;
 
 // Output Schema
+export interface ApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1118,8 +1546,7 @@ export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
+}) as unknown as Schema.Codec<ApplicationsGetOutput>;
 
 // The operation
 /**
@@ -1128,15 +1555,26 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
   outputSchema: ApplicationsGetOutput,
 }));
 // Input Schema
+export interface ApplicationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1146,10 +1584,25 @@ export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications",
     apiVersion: "2025-10-10",
   }),
-);
-export type ApplicationsListInput = typeof ApplicationsListInput.Type;
+) as unknown as Schema.Codec<ApplicationsListInput>;
 
 // Output Schema
+export interface ApplicationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -1187,8 +1640,7 @@ export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ApplicationsListOutput = typeof ApplicationsListOutput.Type;
+) as unknown as Schema.Codec<ApplicationsListOutput>;
 
 // The operation
 /**
@@ -1197,6 +1649,7 @@ export type ApplicationsListOutput = typeof ApplicationsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -1206,10 +1659,31 @@ export const ApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationsListOutput,
 }));
 // Input Schema
+export interface ApplicationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  applicationName: string;
+  properties?: {
+    description?: string;
+    friendlyName?: string;
+    filePath?: string;
+    commandLineSetting?: "DoNotAllow" | "Allow" | "Require";
+    commandLineArguments?: string;
+    showInPortal?: boolean;
+    iconPath?: string;
+    iconIndex?: number;
+    msixPackageFamilyName?: string | null;
+    msixPackageApplicationId?: string | null;
+    applicationType?: "InBuilt" | "MsixApplication";
+  };
+}
 export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
+    applicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -1235,10 +1709,22 @@ export const ApplicationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateInput>;
 
 // Output Schema
+export interface ApplicationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1258,8 +1744,7 @@ export const ApplicationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -1268,25 +1753,47 @@ export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param applicationName - The name of the application within the specified application group
  */
 export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
   outputSchema: ApplicationsUpdateOutput,
 }));
 // Input Schema
+export interface DesktopsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  desktopName: string;
+}
 export const DesktopsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  desktopName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type DesktopsGetInput = typeof DesktopsGetInput.Type;
+) as unknown as Schema.Codec<DesktopsGetInput>;
 
 // Output Schema
+export interface DesktopsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DesktopsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1305,8 +1812,7 @@ export const DesktopsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DesktopsGetOutput = typeof DesktopsGetOutput.Type;
+}) as unknown as Schema.Codec<DesktopsGetOutput>;
 
 // The operation
 /**
@@ -1315,15 +1821,26 @@ export type DesktopsGetOutput = typeof DesktopsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param desktopName - The name of the desktop within the specified desktop group
  */
 export const DesktopsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DesktopsGetInput,
   outputSchema: DesktopsGetOutput,
 }));
 // Input Schema
+export interface DesktopsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const DesktopsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -1333,10 +1850,25 @@ export const DesktopsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops",
     apiVersion: "2025-10-10",
   }),
-);
-export type DesktopsListInput = typeof DesktopsListInput.Type;
+) as unknown as Schema.Codec<DesktopsListInput>;
 
 // Output Schema
+export interface DesktopsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DesktopsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1372,8 +1904,7 @@ export const DesktopsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type DesktopsListOutput = typeof DesktopsListOutput.Type;
+}) as unknown as Schema.Codec<DesktopsListOutput>;
 
 // The operation
 /**
@@ -1382,6 +1913,7 @@ export type DesktopsListOutput = typeof DesktopsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -1391,9 +1923,18 @@ export const DesktopsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DesktopsListOutput,
 }));
 // Input Schema
+export interface DesktopsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  desktopName: string;
+  properties?: { description?: string; friendlyName?: string };
+}
 export const DesktopsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  applicationGroupName: Schema.String.pipe(T.PathParam()),
+  desktopName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -1406,10 +1947,22 @@ export const DesktopsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type DesktopsUpdateInput = typeof DesktopsUpdateInput.Type;
+) as unknown as Schema.Codec<DesktopsUpdateInput>;
 
 // Output Schema
+export interface DesktopsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DesktopsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1428,8 +1981,7 @@ export const DesktopsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DesktopsUpdateOutput = typeof DesktopsUpdateOutput.Type;
+}) as unknown as Schema.Codec<DesktopsUpdateOutput>;
 
 // The operation
 /**
@@ -1438,16 +1990,135 @@ export type DesktopsUpdateOutput = typeof DesktopsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
+ * @param desktopName - The name of the desktop within the specified desktop group
  */
 export const DesktopsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DesktopsUpdateInput,
   outputSchema: DesktopsUpdateOutput,
 }));
 // Input Schema
+export interface HostPoolsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  managedBy?: string;
+  kind?: string;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    objectId?: string;
+    friendlyName?: string;
+    description?: string;
+    hostPoolType: "Personal" | "Pooled" | "BYODesktop";
+    personalDesktopAssignmentType?: "Automatic" | "Direct" | null;
+    customRdpProperty?: string;
+    maxSessionLimit?: number | null;
+    loadBalancerType:
+      | "BreadthFirst"
+      | "DepthFirst"
+      | "Persistent"
+      | "MultiplePersistent";
+    ring?: number | null;
+    validationEnvironment?: boolean | null;
+    registrationInfo?: {
+      expirationTime?: string | null;
+      token?: string;
+      registrationTokenOperation?: "Delete" | "None" | "Update";
+    };
+    vmTemplate?: string;
+    applicationGroupReferences?: string[] | null;
+    appAttachPackageReferences?: string[];
+    ssoadfsAuthority?: string;
+    ssoClientId?: string;
+    ssoClientSecretKeyVaultPath?: string | Redacted.Redacted<string>;
+    ssoSecretType?:
+      | "SharedKey"
+      | "Certificate"
+      | "SharedKeyInKeyVault"
+      | "CertificateInKeyVault"
+      | null;
+    preferredAppGroupType: "None" | "Desktop" | "RailApplications";
+    startVMOnConnect?: boolean | null;
+    cloudPcResource?: boolean | null;
+    publicNetworkAccess?:
+      | "Enabled"
+      | "Disabled"
+      | "EnabledForSessionHostsOnly"
+      | "EnabledForClientsOnly"
+      | null;
+    agentUpdate?: {
+      type?: "Default" | "Scheduled";
+      useSessionHostLocalTime?: boolean;
+      maintenanceWindowTimeZone?: string;
+      maintenanceWindows?:
+        | {
+            hour?: number;
+            dayOfWeek?:
+              | "Monday"
+              | "Tuesday"
+              | "Wednesday"
+              | "Thursday"
+              | "Friday"
+              | "Saturday"
+              | "Sunday";
+          }[]
+        | null;
+    };
+    privateEndpointConnections?:
+      | {
+          id?: string;
+          name?: string;
+          type?: string;
+          systemData?: {
+            createdBy?: string;
+            createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+            createdAt?: string;
+            lastModifiedBy?: string;
+            lastModifiedByType?:
+              | "User"
+              | "Application"
+              | "ManagedIdentity"
+              | "Key";
+            lastModifiedAt?: string;
+          };
+        }[]
+      | null;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const HostPoolsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -1625,11 +2296,22 @@ export const HostPoolsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type HostPoolsCreateOrUpdateInput =
-  typeof HostPoolsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<HostPoolsCreateOrUpdateInput>;
 
 // Output Schema
+export interface HostPoolsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HostPoolsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1649,9 +2331,7 @@ export const HostPoolsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HostPoolsCreateOrUpdateOutput =
-  typeof HostPoolsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HostPoolsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1660,6 +2340,7 @@ export type HostPoolsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1668,9 +2349,16 @@ export const HostPoolsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HostPoolsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  force?: boolean;
+}
 export const HostPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   force: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({
@@ -1678,12 +2366,12 @@ export const HostPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type HostPoolsDeleteInput = typeof HostPoolsDeleteInput.Type;
+) as unknown as Schema.Codec<HostPoolsDeleteInput>;
 
 // Output Schema
-export const HostPoolsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HostPoolsDeleteOutput = typeof HostPoolsDeleteOutput.Type;
+export type HostPoolsDeleteOutput = void;
+export const HostPoolsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HostPoolsDeleteOutput>;
 
 // The operation
 /**
@@ -1692,6 +2380,7 @@ export type HostPoolsDeleteOutput = typeof HostPoolsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param force - Force flag to delete sessionHost.
  */
 export const HostPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1699,19 +2388,37 @@ export const HostPoolsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HostPoolsDeleteOutput,
 }));
 // Input Schema
+export interface HostPoolsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+}
 export const HostPoolsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type HostPoolsGetInput = typeof HostPoolsGetInput.Type;
+) as unknown as Schema.Codec<HostPoolsGetInput>;
 
 // Output Schema
+export interface HostPoolsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HostPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1730,8 +2437,7 @@ export const HostPoolsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type HostPoolsGetOutput = typeof HostPoolsGetOutput.Type;
+}) as unknown as Schema.Codec<HostPoolsGetOutput>;
 
 // The operation
 /**
@@ -1740,12 +2446,19 @@ export type HostPoolsGetOutput = typeof HostPoolsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostPoolsGetInput,
   outputSchema: HostPoolsGetOutput,
 }));
 // Input Schema
+export interface HostPoolsListInput {
+  subscriptionId: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const HostPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
@@ -1757,10 +2470,25 @@ export const HostPoolsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/hostPools",
     apiVersion: "2025-10-10",
   }),
-);
-export type HostPoolsListInput = typeof HostPoolsListInput.Type;
+) as unknown as Schema.Codec<HostPoolsListInput>;
 
 // Output Schema
+export interface HostPoolsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HostPoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1796,8 +2524,7 @@ export const HostPoolsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type HostPoolsListOutput = typeof HostPoolsListOutput.Type;
+}) as unknown as Schema.Codec<HostPoolsListOutput>;
 
 // The operation
 /**
@@ -1814,6 +2541,13 @@ export const HostPoolsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HostPoolsListOutput,
 }));
 // Input Schema
+export interface HostPoolsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const HostPoolsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1827,11 +2561,25 @@ export const HostPoolsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools",
       apiVersion: "2025-10-10",
     }),
-  );
-export type HostPoolsListByResourceGroupInput =
-  typeof HostPoolsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<HostPoolsListByResourceGroupInput>;
 
 // Output Schema
+export interface HostPoolsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HostPoolsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1868,9 +2616,7 @@ export const HostPoolsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HostPoolsListByResourceGroupOutput =
-  typeof HostPoolsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<HostPoolsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1889,21 +2635,29 @@ export const HostPoolsListByResourceGroup =
     outputSchema: HostPoolsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface HostPoolsListRegistrationTokensInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+}
 export const HostPoolsListRegistrationTokensInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/listRegistrationTokens",
       apiVersion: "2025-10-10",
     }),
-  );
-export type HostPoolsListRegistrationTokensInput =
-  typeof HostPoolsListRegistrationTokensInput.Type;
+  ) as unknown as Schema.Codec<HostPoolsListRegistrationTokensInput>;
 
 // Output Schema
+export interface HostPoolsListRegistrationTokensOutput {
+  value?: { expirationTime?: string | null; token?: string }[];
+  nextLink?: string;
+}
 export const HostPoolsListRegistrationTokensOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1915,9 +2669,7 @@ export const HostPoolsListRegistrationTokensOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HostPoolsListRegistrationTokensOutput =
-  typeof HostPoolsListRegistrationTokensOutput.Type;
+  }) as unknown as Schema.Codec<HostPoolsListRegistrationTokensOutput>;
 
 // The operation
 /**
@@ -1926,6 +2678,7 @@ export type HostPoolsListRegistrationTokensOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsListRegistrationTokens =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1933,21 +2686,30 @@ export const HostPoolsListRegistrationTokens =
     outputSchema: HostPoolsListRegistrationTokensOutput,
   }));
 // Input Schema
+export interface HostPoolsRetrieveRegistrationTokenInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+}
 export const HostPoolsRetrieveRegistrationTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       apiVersion: "2025-10-10",
     }),
-  );
-export type HostPoolsRetrieveRegistrationTokenInput =
-  typeof HostPoolsRetrieveRegistrationTokenInput.Type;
+  ) as unknown as Schema.Codec<HostPoolsRetrieveRegistrationTokenInput>;
 
 // Output Schema
+export interface HostPoolsRetrieveRegistrationTokenOutput {
+  expirationTime?: string | null;
+  token?: string;
+  registrationTokenOperation?: "Delete" | "None" | "Update";
+}
 export const HostPoolsRetrieveRegistrationTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expirationTime: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1955,9 +2717,7 @@ export const HostPoolsRetrieveRegistrationTokenOutput =
     registrationTokenOperation: Schema.optional(
       Schema.Literals(["Delete", "None", "Update"]),
     ),
-  });
-export type HostPoolsRetrieveRegistrationTokenOutput =
-  typeof HostPoolsRetrieveRegistrationTokenOutput.Type;
+  }) as unknown as Schema.Codec<HostPoolsRetrieveRegistrationTokenOutput>;
 
 // The operation
 /**
@@ -1966,6 +2726,7 @@ export type HostPoolsRetrieveRegistrationTokenOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsRetrieveRegistrationToken =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1973,9 +2734,86 @@ export const HostPoolsRetrieveRegistrationToken =
     outputSchema: HostPoolsRetrieveRegistrationTokenOutput,
   }));
 // Input Schema
+export interface HostPoolsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  tags?: Record<string, string> | null;
+  properties?: {
+    friendlyName?: string;
+    description?: string;
+    customRdpProperty?: string;
+    maxSessionLimit?: number | null;
+    personalDesktopAssignmentType?: "Automatic" | "Direct" | null;
+    loadBalancerType?:
+      | "BreadthFirst"
+      | "DepthFirst"
+      | "Persistent"
+      | "MultiplePersistent";
+    ring?: number | null;
+    validationEnvironment?: boolean | null;
+    registrationInfo?: {
+      expirationTime?: string | null;
+      registrationTokenOperation?: "Delete" | "None" | "Update";
+    };
+    vmTemplate?: string;
+    ssoadfsAuthority?: string;
+    ssoClientId?: string;
+    ssoClientSecretKeyVaultPath?: string | Redacted.Redacted<string>;
+    ssoSecretType?:
+      | "SharedKey"
+      | "Certificate"
+      | "SharedKeyInKeyVault"
+      | "CertificateInKeyVault"
+      | null;
+    preferredAppGroupType?: "None" | "Desktop" | "RailApplications";
+    startVMOnConnect?: boolean | null;
+    publicNetworkAccess?:
+      | "Enabled"
+      | "Disabled"
+      | "EnabledForSessionHostsOnly"
+      | "EnabledForClientsOnly"
+      | null;
+    agentUpdate?: {
+      type?: "Default" | "Scheduled";
+      useSessionHostLocalTime?: boolean;
+      maintenanceWindowTimeZone?: string;
+      maintenanceWindows?:
+        | {
+            hour?: number;
+            dayOfWeek?:
+              | "Monday"
+              | "Tuesday"
+              | "Wednesday"
+              | "Thursday"
+              | "Friday"
+              | "Saturday"
+              | "Sunday";
+          }[]
+        | null;
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HostPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
@@ -2093,10 +2931,22 @@ export const HostPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type HostPoolsUpdateInput = typeof HostPoolsUpdateInput.Type;
+) as unknown as Schema.Codec<HostPoolsUpdateInput>;
 
 // Output Schema
+export interface HostPoolsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HostPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2115,8 +2965,7 @@ export const HostPoolsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type HostPoolsUpdateOutput = typeof HostPoolsUpdateOutput.Type;
+}) as unknown as Schema.Codec<HostPoolsUpdateOutput>;
 
 // The operation
 /**
@@ -2125,15 +2974,23 @@ export type HostPoolsUpdateOutput = typeof HostPoolsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const HostPoolsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: HostPoolsUpdateInput,
   outputSchema: HostPoolsUpdateOutput,
 }));
 // Input Schema
+export interface MsixImagesExpandInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  uri?: string;
+}
 export const MsixImagesExpandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   uri: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -2141,10 +2998,25 @@ export const MsixImagesExpandInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage",
     apiVersion: "2025-10-10",
   }),
-);
-export type MsixImagesExpandInput = typeof MsixImagesExpandInput.Type;
+) as unknown as Schema.Codec<MsixImagesExpandInput>;
 
 // Output Schema
+export interface MsixImagesExpandOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MsixImagesExpandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2182,8 +3054,7 @@ export const MsixImagesExpandOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type MsixImagesExpandOutput = typeof MsixImagesExpandOutput.Type;
+) as unknown as Schema.Codec<MsixImagesExpandOutput>;
 
 // The operation
 /**
@@ -2192,16 +3063,61 @@ export type MsixImagesExpandOutput = typeof MsixImagesExpandOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  */
 export const MsixImagesExpand = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MsixImagesExpandInput,
   outputSchema: MsixImagesExpandOutput,
 }));
 // Input Schema
+export interface MSIXPackagesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  msixPackageFullName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    imagePath?: string;
+    packageName?: string;
+    packageFamilyName?: string;
+    displayName?: string | null;
+    packageRelativePath?: string;
+    isRegularRegistration?: boolean;
+    isActive?: boolean;
+    packageDependencies?: {
+      dependencyName?: string;
+      publisher?: string;
+      minVersion?: string;
+    }[];
+    version?: string;
+    lastUpdated?: string;
+    packageApplications?: {
+      appId?: string;
+      description?: string;
+      appUserModelID?: string;
+      friendlyName?: string;
+      iconImageName?: string;
+      rawIcon?: string;
+      rawPng?: string;
+    }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const MSIXPackagesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -2258,11 +3174,22 @@ export const MSIXPackagesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type MSIXPackagesCreateOrUpdateInput =
-  typeof MSIXPackagesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<MSIXPackagesCreateOrUpdateInput>;
 
 // Output Schema
+export interface MSIXPackagesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MSIXPackagesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2282,9 +3209,7 @@ export const MSIXPackagesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MSIXPackagesCreateOrUpdateOutput =
-  typeof MSIXPackagesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MSIXPackagesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2293,6 +3218,8 @@ export type MSIXPackagesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2301,22 +3228,30 @@ export const MSIXPackagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MSIXPackagesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  msixPackageFullName: string;
+}
 export const MSIXPackagesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type MSIXPackagesDeleteInput = typeof MSIXPackagesDeleteInput.Type;
+  ) as unknown as Schema.Codec<MSIXPackagesDeleteInput>;
 
 // Output Schema
-export const MSIXPackagesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MSIXPackagesDeleteOutput = typeof MSIXPackagesDeleteOutput.Type;
+export type MSIXPackagesDeleteOutput = void;
+export const MSIXPackagesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MSIXPackagesDeleteOutput>;
 
 // The operation
 /**
@@ -2325,25 +3260,47 @@ export type MSIXPackagesDeleteOutput = typeof MSIXPackagesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesDeleteInput,
   outputSchema: MSIXPackagesDeleteOutput,
 }));
 // Input Schema
+export interface MSIXPackagesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  msixPackageFullName: string;
+}
 export const MSIXPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  msixPackageFullName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type MSIXPackagesGetInput = typeof MSIXPackagesGetInput.Type;
+) as unknown as Schema.Codec<MSIXPackagesGetInput>;
 
 // Output Schema
+export interface MSIXPackagesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MSIXPackagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2362,8 +3319,7 @@ export const MSIXPackagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type MSIXPackagesGetOutput = typeof MSIXPackagesGetOutput.Type;
+}) as unknown as Schema.Codec<MSIXPackagesGetOutput>;
 
 // The operation
 /**
@@ -2372,15 +3328,26 @@ export type MSIXPackagesGetOutput = typeof MSIXPackagesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesGetInput,
   outputSchema: MSIXPackagesGetOutput,
 }));
 // Input Schema
+export interface MSIXPackagesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -2390,10 +3357,25 @@ export const MSIXPackagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages",
     apiVersion: "2025-10-10",
   }),
-);
-export type MSIXPackagesListInput = typeof MSIXPackagesListInput.Type;
+) as unknown as Schema.Codec<MSIXPackagesListInput>;
 
 // Output Schema
+export interface MSIXPackagesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MSIXPackagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -2431,8 +3413,7 @@ export const MSIXPackagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type MSIXPackagesListOutput = typeof MSIXPackagesListOutput.Type;
+) as unknown as Schema.Codec<MSIXPackagesListOutput>;
 
 // The operation
 /**
@@ -2441,6 +3422,7 @@ export type MSIXPackagesListOutput = typeof MSIXPackagesListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -2450,10 +3432,34 @@ export const MSIXPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: MSIXPackagesListOutput,
 }));
 // Input Schema
+export interface MSIXPackagesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  msixPackageFullName: string;
+  properties?: {
+    isActive?: boolean;
+    isRegularRegistration?: boolean;
+    displayName?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MSIXPackagesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    msixPackageFullName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         isActive: Schema.optional(Schema.Boolean),
@@ -2484,10 +3490,22 @@ export const MSIXPackagesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type MSIXPackagesUpdateInput = typeof MSIXPackagesUpdateInput.Type;
+  ) as unknown as Schema.Codec<MSIXPackagesUpdateInput>;
 
 // Output Schema
+export interface MSIXPackagesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MSIXPackagesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2507,8 +3525,7 @@ export const MSIXPackagesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MSIXPackagesUpdateOutput = typeof MSIXPackagesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MSIXPackagesUpdateOutput>;
 
 // The operation
 /**
@@ -2517,12 +3534,15 @@ export type MSIXPackagesUpdateOutput = typeof MSIXPackagesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param msixPackageFullName - The version specific package full name of the MSIX package within specified hostpool
  */
 export const MSIXPackagesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: MSIXPackagesUpdateInput,
   outputSchema: MSIXPackagesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -2531,10 +3551,31 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DesktopVirtualization/operations",
     apiVersion: "2025-10-10",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    isDataAction?: boolean;
+    properties?: {
+      serviceSpecification?: {
+        logSpecifications?: {
+          name?: string;
+          displayName?: string;
+          blobDuration?: string;
+        }[];
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -2568,8 +3609,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -2582,10 +3622,17 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2593,15 +3640,12 @@ export const PrivateEndpointConnectionsDeleteByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteByHostPoolInput =
-  typeof PrivateEndpointConnectionsDeleteByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteByHostPoolInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteByHostPoolOutput = void;
 export const PrivateEndpointConnectionsDeleteByHostPoolOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteByHostPoolOutput =
-  typeof PrivateEndpointConnectionsDeleteByHostPoolOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteByHostPoolOutput>;
 
 // The operation
 /**
@@ -2610,6 +3654,7 @@ export type PrivateEndpointConnectionsDeleteByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDeleteByHostPool =
@@ -2618,10 +3663,17 @@ export const PrivateEndpointConnectionsDeleteByHostPool =
     outputSchema: PrivateEndpointConnectionsDeleteByHostPoolOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2629,15 +3681,12 @@ export const PrivateEndpointConnectionsDeleteByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteByWorkspaceInput =
-  typeof PrivateEndpointConnectionsDeleteByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteByWorkspaceInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteByWorkspaceOutput = void;
 export const PrivateEndpointConnectionsDeleteByWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteByWorkspaceOutput =
-  typeof PrivateEndpointConnectionsDeleteByWorkspaceOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2646,6 +3695,7 @@ export type PrivateEndpointConnectionsDeleteByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDeleteByWorkspace =
@@ -2654,10 +3704,17 @@ export const PrivateEndpointConnectionsDeleteByWorkspace =
     outputSchema: PrivateEndpointConnectionsDeleteByWorkspaceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2665,11 +3722,22 @@ export const PrivateEndpointConnectionsGetByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsGetByHostPoolInput =
-  typeof PrivateEndpointConnectionsGetByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetByHostPoolInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetByHostPoolOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2689,9 +3757,7 @@ export const PrivateEndpointConnectionsGetByHostPoolOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetByHostPoolOutput =
-  typeof PrivateEndpointConnectionsGetByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetByHostPoolOutput>;
 
 // The operation
 /**
@@ -2700,6 +3766,7 @@ export type PrivateEndpointConnectionsGetByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGetByHostPool =
@@ -2708,10 +3775,17 @@ export const PrivateEndpointConnectionsGetByHostPool =
     outputSchema: PrivateEndpointConnectionsGetByHostPoolOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2719,11 +3793,22 @@ export const PrivateEndpointConnectionsGetByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsGetByWorkspaceInput =
-  typeof PrivateEndpointConnectionsGetByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetByWorkspaceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetByWorkspaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2743,9 +3828,7 @@ export const PrivateEndpointConnectionsGetByWorkspaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetByWorkspaceOutput =
-  typeof PrivateEndpointConnectionsGetByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2754,6 +3837,7 @@ export type PrivateEndpointConnectionsGetByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGetByWorkspace =
@@ -2762,10 +3846,19 @@ export const PrivateEndpointConnectionsGetByWorkspace =
     outputSchema: PrivateEndpointConnectionsGetByWorkspaceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const PrivateEndpointConnectionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -2775,11 +3868,25 @@ export const PrivateEndpointConnectionsListByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsListByHostPoolInput =
-  typeof PrivateEndpointConnectionsListByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByHostPoolInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByHostPoolOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2816,9 +3923,7 @@ export const PrivateEndpointConnectionsListByHostPoolOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByHostPoolOutput =
-  typeof PrivateEndpointConnectionsListByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByHostPoolOutput>;
 
 // The operation
 /**
@@ -2827,6 +3932,7 @@ export type PrivateEndpointConnectionsListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -2837,21 +3943,41 @@ export const PrivateEndpointConnectionsListByHostPool =
     outputSchema: PrivateEndpointConnectionsListByHostPoolOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const PrivateEndpointConnectionsListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsListByWorkspaceInput =
-  typeof PrivateEndpointConnectionsListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListByWorkspaceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2888,9 +4014,7 @@ export const PrivateEndpointConnectionsListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsListByWorkspaceOutput =
-  typeof PrivateEndpointConnectionsListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -2899,6 +4023,7 @@ export type PrivateEndpointConnectionsListByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const PrivateEndpointConnectionsListByWorkspace =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2906,10 +4031,27 @@ export const PrivateEndpointConnectionsListByWorkspace =
     outputSchema: PrivateEndpointConnectionsListByWorkspaceOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsUpdateByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2937,11 +4079,22 @@ export const PrivateEndpointConnectionsUpdateByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateByHostPoolInput =
-  typeof PrivateEndpointConnectionsUpdateByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateByHostPoolInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsUpdateByHostPoolOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsUpdateByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2961,9 +4114,7 @@ export const PrivateEndpointConnectionsUpdateByHostPoolOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsUpdateByHostPoolOutput =
-  typeof PrivateEndpointConnectionsUpdateByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateByHostPoolOutput>;
 
 // The operation
 /**
@@ -2972,6 +4123,7 @@ export type PrivateEndpointConnectionsUpdateByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsUpdateByHostPool =
@@ -2980,10 +4132,27 @@ export const PrivateEndpointConnectionsUpdateByHostPool =
     outputSchema: PrivateEndpointConnectionsUpdateByHostPoolOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsUpdateByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionsUpdateByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -3011,11 +4180,22 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateEndpointConnectionsUpdateByWorkspaceInput =
-  typeof PrivateEndpointConnectionsUpdateByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateByWorkspaceInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsUpdateByWorkspaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsUpdateByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3035,9 +4215,7 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsUpdateByWorkspaceOutput =
-  typeof PrivateEndpointConnectionsUpdateByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsUpdateByWorkspaceOutput>;
 
 // The operation
 /**
@@ -3046,6 +4224,7 @@ export type PrivateEndpointConnectionsUpdateByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsUpdateByWorkspace =
@@ -3054,10 +4233,19 @@ export const PrivateEndpointConnectionsUpdateByWorkspace =
     outputSchema: PrivateEndpointConnectionsUpdateByWorkspaceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const PrivateLinkResourcesListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3067,11 +4255,25 @@ export const PrivateLinkResourcesListByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateLinkResources",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateLinkResourcesListByHostPoolInput =
-  typeof PrivateLinkResourcesListByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByHostPoolInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByHostPoolOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3108,9 +4310,7 @@ export const PrivateLinkResourcesListByHostPoolOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByHostPoolOutput =
-  typeof PrivateLinkResourcesListByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByHostPoolOutput>;
 
 // The operation
 /**
@@ -3119,6 +4319,7 @@ export type PrivateLinkResourcesListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3129,10 +4330,19 @@ export const PrivateLinkResourcesListByHostPool =
     outputSchema: PrivateLinkResourcesListByHostPoolOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListByWorkspaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const PrivateLinkResourcesListByWorkspaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3142,11 +4352,25 @@ export const PrivateLinkResourcesListByWorkspaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateLinkResources",
       apiVersion: "2025-10-10",
     }),
-  );
-export type PrivateLinkResourcesListByWorkspaceInput =
-  typeof PrivateLinkResourcesListByWorkspaceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListByWorkspaceInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListByWorkspaceOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesListByWorkspaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3183,9 +4407,7 @@ export const PrivateLinkResourcesListByWorkspaceOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesListByWorkspaceOutput =
-  typeof PrivateLinkResourcesListByWorkspaceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListByWorkspaceOutput>;
 
 // The operation
 /**
@@ -3194,6 +4416,7 @@ export type PrivateLinkResourcesListByWorkspaceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3204,10 +4427,62 @@ export const PrivateLinkResourcesListByWorkspace =
     outputSchema: PrivateLinkResourcesListByWorkspaceOutput,
   }));
 // Input Schema
+export interface ScalingPlanPersonalSchedulesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    daysOfWeek?: (
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday"
+    )[];
+    rampUpStartTime?: { hour: number; minute: number };
+    rampUpAutoStartHosts?: "None" | "WithAssignedUser" | "All";
+    rampUpStartVMOnConnect?: "Enable" | "Disable";
+    rampUpActionOnDisconnect?: "None" | "Deallocate";
+    rampUpMinutesToWaitOnDisconnect?: number;
+    rampUpActionOnLogoff?: "None" | "Deallocate";
+    rampUpMinutesToWaitOnLogoff?: number;
+    peakStartTime?: { hour: number; minute: number };
+    peakStartVMOnConnect?: "Enable" | "Disable";
+    peakActionOnDisconnect?: "None" | "Deallocate";
+    peakMinutesToWaitOnDisconnect?: number;
+    peakActionOnLogoff?: "None" | "Deallocate";
+    peakMinutesToWaitOnLogoff?: number;
+    rampDownStartTime?: { hour: number; minute: number };
+    rampDownStartVMOnConnect?: "Enable" | "Disable";
+    rampDownActionOnDisconnect?: "None" | "Deallocate";
+    rampDownMinutesToWaitOnDisconnect?: number;
+    rampDownActionOnLogoff?: "None" | "Deallocate" | "Hibernate";
+    rampDownMinutesToWaitOnLogoff?: number;
+    offPeakStartTime?: { hour: number; minute: number };
+    offPeakStartVMOnConnect?: "Enable" | "Disable";
+    offPeakActionOnDisconnect?: "None" | "Deallocate" | "Hibernate";
+    offPeakMinutesToWaitOnDisconnect?: number;
+    offPeakActionOnLogoff?: "None" | "Deallocate" | "Hibernate";
+    offPeakMinutesToWaitOnLogoff?: number;
+  };
+}
 export const ScalingPlanPersonalSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3314,11 +4589,22 @@ export const ScalingPlanPersonalSchedulesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPersonalSchedulesCreateInput =
-  typeof ScalingPlanPersonalSchedulesCreateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesCreateInput>;
 
 // Output Schema
+export interface ScalingPlanPersonalSchedulesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPersonalSchedulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3338,9 +4624,7 @@ export const ScalingPlanPersonalSchedulesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPersonalSchedulesCreateOutput =
-  typeof ScalingPlanPersonalSchedulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesCreateOutput>;
 
 // The operation
 /**
@@ -3349,6 +4633,8 @@ export type ScalingPlanPersonalSchedulesCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3356,25 +4642,30 @@ export const ScalingPlanPersonalSchedulesCreate =
     outputSchema: ScalingPlanPersonalSchedulesCreateOutput,
   }));
 // Input Schema
+export interface ScalingPlanPersonalSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+}
 export const ScalingPlanPersonalSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPersonalSchedulesDeleteInput =
-  typeof ScalingPlanPersonalSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesDeleteInput>;
 
 // Output Schema
+export type ScalingPlanPersonalSchedulesDeleteOutput = void;
 export const ScalingPlanPersonalSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScalingPlanPersonalSchedulesDeleteOutput =
-  typeof ScalingPlanPersonalSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScalingPlanPersonalSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -3383,6 +4674,8 @@ export type ScalingPlanPersonalSchedulesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3390,21 +4683,40 @@ export const ScalingPlanPersonalSchedulesDelete =
     outputSchema: ScalingPlanPersonalSchedulesDeleteOutput,
   }));
 // Input Schema
+export interface ScalingPlanPersonalSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+}
 export const ScalingPlanPersonalSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPersonalSchedulesGetInput =
-  typeof ScalingPlanPersonalSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesGetInput>;
 
 // Output Schema
+export interface ScalingPlanPersonalSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPersonalSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3424,9 +4736,7 @@ export const ScalingPlanPersonalSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPersonalSchedulesGetOutput =
-  typeof ScalingPlanPersonalSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesGetOutput>;
 
 // The operation
 /**
@@ -3435,6 +4745,8 @@ export type ScalingPlanPersonalSchedulesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3442,10 +4754,19 @@ export const ScalingPlanPersonalSchedulesGet =
     outputSchema: ScalingPlanPersonalSchedulesGetOutput,
   }));
 // Input Schema
+export interface ScalingPlanPersonalSchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ScalingPlanPersonalSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3455,11 +4776,25 @@ export const ScalingPlanPersonalSchedulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPersonalSchedulesListInput =
-  typeof ScalingPlanPersonalSchedulesListInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesListInput>;
 
 // Output Schema
+export interface ScalingPlanPersonalSchedulesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScalingPlanPersonalSchedulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3496,9 +4831,7 @@ export const ScalingPlanPersonalSchedulesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScalingPlanPersonalSchedulesListOutput =
-  typeof ScalingPlanPersonalSchedulesListOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesListOutput>;
 
 // The operation
 /**
@@ -3507,6 +4840,7 @@ export type ScalingPlanPersonalSchedulesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3517,10 +4851,54 @@ export const ScalingPlanPersonalSchedulesList =
     outputSchema: ScalingPlanPersonalSchedulesListOutput,
   }));
 // Input Schema
+export interface ScalingPlanPersonalSchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+  properties?: {
+    daysOfWeek?: (
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday"
+    )[];
+    rampUpStartTime?: { hour: number; minute: number };
+    rampUpAutoStartHosts?: "None" | "WithAssignedUser" | "All";
+    rampUpStartVMOnConnect?: "Enable" | "Disable";
+    rampUpActionOnDisconnect?: "None" | "Deallocate";
+    rampUpMinutesToWaitOnDisconnect?: number;
+    rampUpActionOnLogoff?: "None" | "Deallocate";
+    rampUpMinutesToWaitOnLogoff?: number;
+    peakStartTime?: { hour: number; minute: number };
+    peakStartVMOnConnect?: "Enable" | "Disable";
+    peakActionOnDisconnect?: "None" | "Deallocate";
+    peakMinutesToWaitOnDisconnect?: number;
+    peakActionOnLogoff?: "None" | "Deallocate";
+    peakMinutesToWaitOnLogoff?: number;
+    rampDownStartTime?: { hour: number; minute: number };
+    rampDownStartVMOnConnect?: "Enable" | "Disable";
+    rampDownActionOnDisconnect?: "None" | "Deallocate";
+    rampDownMinutesToWaitOnDisconnect?: number;
+    rampDownActionOnLogoff?: "None" | "Deallocate" | "Hibernate";
+    rampDownMinutesToWaitOnLogoff?: number;
+    offPeakStartTime?: { hour: number; minute: number };
+    offPeakStartVMOnConnect?: "Enable" | "Disable";
+    offPeakActionOnDisconnect?: "None" | "Deallocate" | "Hibernate";
+    offPeakMinutesToWaitOnDisconnect?: number;
+    offPeakActionOnLogoff?: "None" | "Deallocate" | "Hibernate";
+    offPeakMinutesToWaitOnLogoff?: number;
+  };
+}
 export const ScalingPlanPersonalSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         daysOfWeek: Schema.optional(
@@ -3615,11 +4993,22 @@ export const ScalingPlanPersonalSchedulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPersonalSchedulesUpdateInput =
-  typeof ScalingPlanPersonalSchedulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesUpdateInput>;
 
 // Output Schema
+export interface ScalingPlanPersonalSchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPersonalSchedulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3639,9 +5028,7 @@ export const ScalingPlanPersonalSchedulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPersonalSchedulesUpdateOutput =
-  typeof ScalingPlanPersonalSchedulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPersonalSchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -3650,6 +5037,8 @@ export type ScalingPlanPersonalSchedulesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPersonalSchedulesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3657,10 +5046,56 @@ export const ScalingPlanPersonalSchedulesUpdate =
     outputSchema: ScalingPlanPersonalSchedulesUpdateOutput,
   }));
 // Input Schema
+export interface ScalingPlanPooledSchedulesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    daysOfWeek?: (
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday"
+    )[];
+    rampUpStartTime?: { hour: number; minute: number };
+    rampUpLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampUpMinimumHostsPct?: number;
+    rampUpCapacityThresholdPct?: number;
+    peakStartTime?: { hour: number; minute: number };
+    peakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampDownStartTime?: { hour: number; minute: number };
+    rampDownLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampDownMinimumHostsPct?: number;
+    rampDownCapacityThresholdPct?: number;
+    rampDownForceLogoffUsers?: boolean;
+    rampDownStopHostsWhen?: "ZeroSessions" | "ZeroActiveSessions";
+    rampDownWaitTimeMinutes?: number;
+    rampDownNotificationMessage?: string;
+    offPeakStartTime?: { hour: number; minute: number };
+    offPeakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ScalingPlanPooledSchedulesCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     systemData: Schema.optional(
       Schema.Struct({
         createdBy: Schema.optional(Schema.String),
@@ -3745,11 +5180,22 @@ export const ScalingPlanPooledSchedulesCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPooledSchedulesCreateInput =
-  typeof ScalingPlanPooledSchedulesCreateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPooledSchedulesCreateInput>;
 
 // Output Schema
+export interface ScalingPlanPooledSchedulesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPooledSchedulesCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3769,9 +5215,7 @@ export const ScalingPlanPooledSchedulesCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPooledSchedulesCreateOutput =
-  typeof ScalingPlanPooledSchedulesCreateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPooledSchedulesCreateOutput>;
 
 // The operation
 /**
@@ -3780,6 +5224,8 @@ export type ScalingPlanPooledSchedulesCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3787,25 +5233,30 @@ export const ScalingPlanPooledSchedulesCreate =
     outputSchema: ScalingPlanPooledSchedulesCreateOutput,
   }));
 // Input Schema
+export interface ScalingPlanPooledSchedulesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+}
 export const ScalingPlanPooledSchedulesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPooledSchedulesDeleteInput =
-  typeof ScalingPlanPooledSchedulesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPooledSchedulesDeleteInput>;
 
 // Output Schema
+export type ScalingPlanPooledSchedulesDeleteOutput = void;
 export const ScalingPlanPooledSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScalingPlanPooledSchedulesDeleteOutput =
-  typeof ScalingPlanPooledSchedulesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScalingPlanPooledSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -3814,6 +5265,8 @@ export type ScalingPlanPooledSchedulesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3821,21 +5274,40 @@ export const ScalingPlanPooledSchedulesDelete =
     outputSchema: ScalingPlanPooledSchedulesDeleteOutput,
   }));
 // Input Schema
+export interface ScalingPlanPooledSchedulesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+}
 export const ScalingPlanPooledSchedulesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPooledSchedulesGetInput =
-  typeof ScalingPlanPooledSchedulesGetInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPooledSchedulesGetInput>;
 
 // Output Schema
+export interface ScalingPlanPooledSchedulesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPooledSchedulesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3855,9 +5327,7 @@ export const ScalingPlanPooledSchedulesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPooledSchedulesGetOutput =
-  typeof ScalingPlanPooledSchedulesGetOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPooledSchedulesGetOutput>;
 
 // The operation
 /**
@@ -3866,6 +5336,8 @@ export type ScalingPlanPooledSchedulesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3873,10 +5345,19 @@ export const ScalingPlanPooledSchedulesGet =
     outputSchema: ScalingPlanPooledSchedulesGetOutput,
   }));
 // Input Schema
+export interface ScalingPlanPooledSchedulesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ScalingPlanPooledSchedulesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -3886,11 +5367,25 @@ export const ScalingPlanPooledSchedulesListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPooledSchedulesListInput =
-  typeof ScalingPlanPooledSchedulesListInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPooledSchedulesListInput>;
 
 // Output Schema
+export interface ScalingPlanPooledSchedulesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScalingPlanPooledSchedulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3927,9 +5422,7 @@ export const ScalingPlanPooledSchedulesListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScalingPlanPooledSchedulesListOutput =
-  typeof ScalingPlanPooledSchedulesListOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPooledSchedulesListOutput>;
 
 // The operation
 /**
@@ -3938,6 +5431,7 @@ export type ScalingPlanPooledSchedulesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -3948,10 +5442,56 @@ export const ScalingPlanPooledSchedulesList =
     outputSchema: ScalingPlanPooledSchedulesListOutput,
   }));
 // Input Schema
+export interface ScalingPlanPooledSchedulesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  scalingPlanScheduleName: string;
+  properties?: {
+    daysOfWeek?: (
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday"
+    )[];
+    rampUpStartTime?: { hour: number; minute: number };
+    rampUpLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampUpMinimumHostsPct?: number;
+    rampUpCapacityThresholdPct?: number;
+    peakStartTime?: { hour: number; minute: number };
+    peakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampDownStartTime?: { hour: number; minute: number };
+    rampDownLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    rampDownMinimumHostsPct?: number;
+    rampDownCapacityThresholdPct?: number;
+    rampDownForceLogoffUsers?: boolean;
+    rampDownStopHostsWhen?: "ZeroSessions" | "ZeroActiveSessions";
+    rampDownWaitTimeMinutes?: number;
+    rampDownNotificationMessage?: string;
+    offPeakStartTime?: { hour: number; minute: number };
+    offPeakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPooledSchedulesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
+    scalingPlanScheduleName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         daysOfWeek: Schema.optional(
@@ -4038,11 +5578,22 @@ export const ScalingPlanPooledSchedulesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlanPooledSchedulesUpdateInput =
-  typeof ScalingPlanPooledSchedulesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlanPooledSchedulesUpdateInput>;
 
 // Output Schema
+export interface ScalingPlanPooledSchedulesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlanPooledSchedulesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4062,9 +5613,7 @@ export const ScalingPlanPooledSchedulesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlanPooledSchedulesUpdateOutput =
-  typeof ScalingPlanPooledSchedulesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlanPooledSchedulesUpdateOutput>;
 
 // The operation
 /**
@@ -4073,6 +5622,8 @@ export type ScalingPlanPooledSchedulesUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
+ * @param scalingPlanScheduleName - The name of the ScalingPlanSchedule
  */
 export const ScalingPlanPooledSchedulesUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4080,10 +5631,88 @@ export const ScalingPlanPooledSchedulesUpdate =
     outputSchema: ScalingPlanPooledSchedulesUpdateOutput,
   }));
 // Input Schema
+export interface ScalingPlansCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  managedBy?: string;
+  kind?: string;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties: {
+    objectId?: string;
+    description?: string;
+    friendlyName?: string;
+    timeZone: string;
+    hostPoolType?: "Pooled";
+    exclusionTag?: string;
+    schedules?: {
+      name?: string;
+      daysOfWeek?: (
+        | "Sunday"
+        | "Monday"
+        | "Tuesday"
+        | "Wednesday"
+        | "Thursday"
+        | "Friday"
+        | "Saturday"
+      )[];
+      rampUpStartTime?: { hour: number; minute: number };
+      rampUpLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampUpMinimumHostsPct?: number;
+      rampUpCapacityThresholdPct?: number;
+      peakStartTime?: { hour: number; minute: number };
+      peakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampDownStartTime?: { hour: number; minute: number };
+      rampDownLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampDownMinimumHostsPct?: number;
+      rampDownCapacityThresholdPct?: number;
+      rampDownForceLogoffUsers?: boolean;
+      rampDownStopHostsWhen?: "ZeroSessions" | "ZeroActiveSessions";
+      rampDownWaitTimeMinutes?: number;
+      rampDownNotificationMessage?: string;
+      offPeakStartTime?: { hour: number; minute: number };
+      offPeakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    }[];
+    hostPoolReferences?: {
+      hostPoolArmPath?: string;
+      scalingPlanEnabled?: boolean;
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ScalingPlansCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -4218,10 +5847,22 @@ export const ScalingPlansCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansCreateInput = typeof ScalingPlansCreateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansCreateInput>;
 
 // Output Schema
+export interface ScalingPlansCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlansCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4241,8 +5882,7 @@ export const ScalingPlansCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlansCreateOutput = typeof ScalingPlansCreateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlansCreateOutput>;
 
 // The operation
 /**
@@ -4251,28 +5891,35 @@ export type ScalingPlansCreateOutput = typeof ScalingPlansCreateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansCreateInput,
   outputSchema: ScalingPlansCreateOutput,
 }));
 // Input Schema
+export interface ScalingPlansDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+}
 export const ScalingPlansDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansDeleteInput = typeof ScalingPlansDeleteInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansDeleteInput>;
 
 // Output Schema
-export const ScalingPlansDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ScalingPlansDeleteOutput = typeof ScalingPlansDeleteOutput.Type;
+export type ScalingPlansDeleteOutput = void;
+export const ScalingPlansDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScalingPlansDeleteOutput>;
 
 // The operation
 /**
@@ -4281,25 +5928,44 @@ export type ScalingPlansDeleteOutput = typeof ScalingPlansDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansDeleteInput,
   outputSchema: ScalingPlansDeleteOutput,
 }));
 // Input Schema
+export interface ScalingPlansGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+}
 export const ScalingPlansGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  scalingPlanName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type ScalingPlansGetInput = typeof ScalingPlansGetInput.Type;
+) as unknown as Schema.Codec<ScalingPlansGetInput>;
 
 // Output Schema
+export interface ScalingPlansGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4318,8 +5984,7 @@ export const ScalingPlansGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ScalingPlansGetOutput = typeof ScalingPlansGetOutput.Type;
+}) as unknown as Schema.Codec<ScalingPlansGetOutput>;
 
 // The operation
 /**
@@ -4328,16 +5993,26 @@ export type ScalingPlansGetOutput = typeof ScalingPlansGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansGetInput,
   outputSchema: ScalingPlansGetOutput,
 }));
 // Input Schema
+export interface ScalingPlansListByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ScalingPlansListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -4347,11 +6022,25 @@ export const ScalingPlansListByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/scalingPlans",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansListByHostPoolInput =
-  typeof ScalingPlansListByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansListByHostPoolInput>;
 
 // Output Schema
+export interface ScalingPlansListByHostPoolOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScalingPlansListByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4388,9 +6077,7 @@ export const ScalingPlansListByHostPoolOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScalingPlansListByHostPoolOutput =
-  typeof ScalingPlansListByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlansListByHostPoolOutput>;
 
 // The operation
 /**
@@ -4399,6 +6086,7 @@ export type ScalingPlansListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4410,6 +6098,13 @@ export const ScalingPlansListByHostPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ScalingPlansListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ScalingPlansListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4423,11 +6118,25 @@ export const ScalingPlansListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansListByResourceGroupInput =
-  typeof ScalingPlansListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansListByResourceGroupInput>;
 
 // Output Schema
+export interface ScalingPlansListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScalingPlansListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4464,9 +6173,7 @@ export const ScalingPlansListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScalingPlansListByResourceGroupOutput =
-  typeof ScalingPlansListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlansListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4485,6 +6192,12 @@ export const ScalingPlansListByResourceGroup =
     outputSchema: ScalingPlansListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ScalingPlansListBySubscriptionInput {
+  subscriptionId: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const ScalingPlansListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4497,11 +6210,25 @@ export const ScalingPlansListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/scalingPlans",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansListBySubscriptionInput =
-  typeof ScalingPlansListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansListBySubscriptionInput>;
 
 // Output Schema
+export interface ScalingPlansListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ScalingPlansListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4538,9 +6265,7 @@ export const ScalingPlansListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ScalingPlansListBySubscriptionOutput =
-  typeof ScalingPlansListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlansListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4558,10 +6283,55 @@ export const ScalingPlansListBySubscription =
     outputSchema: ScalingPlansListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ScalingPlansUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scalingPlanName: string;
+  tags?: Record<string, string> | null;
+  properties?: {
+    description?: string;
+    friendlyName?: string;
+    timeZone?: string;
+    exclusionTag?: string;
+    schedules?: {
+      name?: string;
+      daysOfWeek?: (
+        | "Sunday"
+        | "Monday"
+        | "Tuesday"
+        | "Wednesday"
+        | "Thursday"
+        | "Friday"
+        | "Saturday"
+      )[];
+      rampUpStartTime?: { hour: number; minute: number };
+      rampUpLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampUpMinimumHostsPct?: number;
+      rampUpCapacityThresholdPct?: number;
+      peakStartTime?: { hour: number; minute: number };
+      peakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampDownStartTime?: { hour: number; minute: number };
+      rampDownLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+      rampDownMinimumHostsPct?: number;
+      rampDownCapacityThresholdPct?: number;
+      rampDownForceLogoffUsers?: boolean;
+      rampDownStopHostsWhen?: "ZeroSessions" | "ZeroActiveSessions";
+      rampDownWaitTimeMinutes?: number;
+      rampDownNotificationMessage?: string;
+      offPeakStartTime?: { hour: number; minute: number };
+      offPeakLoadBalancingAlgorithm?: "BreadthFirst" | "DepthFirst";
+    }[];
+    hostPoolReferences?: {
+      hostPoolArmPath?: string;
+      scalingPlanEnabled?: boolean;
+    }[];
+  };
+}
 export const ScalingPlansUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    scalingPlanName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(
       Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
     ),
@@ -4653,10 +6423,22 @@ export const ScalingPlansUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type ScalingPlansUpdateInput = typeof ScalingPlansUpdateInput.Type;
+  ) as unknown as Schema.Codec<ScalingPlansUpdateInput>;
 
 // Output Schema
+export interface ScalingPlansUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ScalingPlansUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4676,8 +6458,7 @@ export const ScalingPlansUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ScalingPlansUpdateOutput = typeof ScalingPlansUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ScalingPlansUpdateOutput>;
 
 // The operation
 /**
@@ -4686,16 +6467,26 @@ export type ScalingPlansUpdateOutput = typeof ScalingPlansUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param scalingPlanName - The name of the scaling plan.
  */
 export const ScalingPlansUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ScalingPlansUpdateInput,
   outputSchema: ScalingPlansUpdateOutput,
 }));
 // Input Schema
+export interface SessionHostsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  force?: boolean;
+}
 export const SessionHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -4703,12 +6494,12 @@ export const SessionHostsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type SessionHostsDeleteInput = typeof SessionHostsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SessionHostsDeleteInput>;
 
 // Output Schema
-export const SessionHostsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionHostsDeleteOutput = typeof SessionHostsDeleteOutput.Type;
+export type SessionHostsDeleteOutput = void;
+export const SessionHostsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionHostsDeleteOutput>;
 
 // The operation
 /**
@@ -4717,6 +6508,8 @@ export type SessionHostsDeleteOutput = typeof SessionHostsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param force - Force flag to force sessionHost deletion even when userSession exists.
  */
 export const SessionHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4724,19 +6517,39 @@ export const SessionHostsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SessionHostsDeleteOutput,
 }));
 // Input Schema
+export interface SessionHostsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+}
 export const SessionHostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type SessionHostsGetInput = typeof SessionHostsGetInput.Type;
+) as unknown as Schema.Codec<SessionHostsGetInput>;
 
 // Output Schema
+export interface SessionHostsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SessionHostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4755,8 +6568,7 @@ export const SessionHostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SessionHostsGetOutput = typeof SessionHostsGetOutput.Type;
+}) as unknown as Schema.Codec<SessionHostsGetOutput>;
 
 // The operation
 /**
@@ -4765,15 +6577,26 @@ export type SessionHostsGetOutput = typeof SessionHostsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  */
 export const SessionHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: SessionHostsGetInput,
   outputSchema: SessionHostsGetOutput,
 }));
 // Input Schema
+export interface SessionHostsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const SessionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -4783,10 +6606,25 @@ export const SessionHostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts",
     apiVersion: "2025-10-10",
   }),
-);
-export type SessionHostsListInput = typeof SessionHostsListInput.Type;
+) as unknown as Schema.Codec<SessionHostsListInput>;
 
 // Output Schema
+export interface SessionHostsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SessionHostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -4824,8 +6662,7 @@ export const SessionHostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type SessionHostsListOutput = typeof SessionHostsListOutput.Type;
+) as unknown as Schema.Codec<SessionHostsListOutput>;
 
 // The operation
 /**
@@ -4834,6 +6671,7 @@ export type SessionHostsListOutput = typeof SessionHostsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4843,10 +6681,35 @@ export const SessionHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SessionHostsListOutput,
 }));
 // Input Schema
+export interface SessionHostsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  force?: boolean;
+  properties?: {
+    allowNewSession?: boolean;
+    assignedUser?: string;
+    friendlyName?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SessionHostsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
     properties: Schema.optional(
       Schema.Struct({
@@ -4878,10 +6741,22 @@ export const SessionHostsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type SessionHostsUpdateInput = typeof SessionHostsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SessionHostsUpdateInput>;
 
 // Output Schema
+export interface SessionHostsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SessionHostsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4901,8 +6776,7 @@ export const SessionHostsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SessionHostsUpdateOutput = typeof SessionHostsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SessionHostsUpdateOutput>;
 
 // The operation
 /**
@@ -4911,6 +6785,8 @@ export type SessionHostsUpdateOutput = typeof SessionHostsUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param force - Force flag to update assign, unassign or reassign personal desktop.
  */
 export const SessionHostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4918,10 +6794,19 @@ export const SessionHostsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SessionHostsUpdateOutput,
 }));
 // Input Schema
+export interface StartMenuItemsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  applicationGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const StartMenuItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    applicationGroupName: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
     initialSkip: Schema.optional(Schema.Number),
@@ -4931,10 +6816,25 @@ export const StartMenuItemsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/startMenuItems",
       apiVersion: "2025-10-10",
     }),
-  );
-export type StartMenuItemsListInput = typeof StartMenuItemsListInput.Type;
+  ) as unknown as Schema.Codec<StartMenuItemsListInput>;
 
 // Output Schema
+export interface StartMenuItemsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const StartMenuItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4971,8 +6871,7 @@ export const StartMenuItemsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type StartMenuItemsListOutput = typeof StartMenuItemsListOutput.Type;
+  }) as unknown as Schema.Codec<StartMenuItemsListOutput>;
 
 // The operation
 /**
@@ -4981,6 +6880,7 @@ export type StartMenuItemsListOutput = typeof StartMenuItemsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param applicationGroupName - The name of the application group
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -4990,10 +6890,21 @@ export const StartMenuItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: StartMenuItemsListOutput,
 }));
 // Input Schema
+export interface UserSessionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  userSessionId: string;
+  force?: boolean;
+}
 export const UserSessionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
     force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
@@ -5001,12 +6912,12 @@ export const UserSessionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type UserSessionsDeleteInput = typeof UserSessionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<UserSessionsDeleteInput>;
 
 // Output Schema
-export const UserSessionsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserSessionsDeleteOutput = typeof UserSessionsDeleteOutput.Type;
+export type UserSessionsDeleteOutput = void;
+export const UserSessionsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserSessionsDeleteOutput>;
 
 // The operation
 /**
@@ -5015,6 +6926,9 @@ export type UserSessionsDeleteOutput = typeof UserSessionsDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  * @param force - Force flag to login off userSession.
  */
 export const UserSessionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5022,25 +6936,32 @@ export const UserSessionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UserSessionsDeleteOutput,
 }));
 // Input Schema
+export interface UserSessionsDisconnectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  userSessionId: string;
+}
 export const UserSessionsDisconnectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}/disconnect",
       apiVersion: "2025-10-10",
     }),
-  );
-export type UserSessionsDisconnectInput =
-  typeof UserSessionsDisconnectInput.Type;
+  ) as unknown as Schema.Codec<UserSessionsDisconnectInput>;
 
 // Output Schema
+export type UserSessionsDisconnectOutput = void;
 export const UserSessionsDisconnectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserSessionsDisconnectOutput =
-  typeof UserSessionsDisconnectOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserSessionsDisconnectOutput>;
 
 // The operation
 /**
@@ -5049,6 +6970,9 @@ export type UserSessionsDisconnectOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsDisconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5057,19 +6981,41 @@ export const UserSessionsDisconnect = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UserSessionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  userSessionId: string;
+}
 export const UserSessionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
+  userSessionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}",
     apiVersion: "2025-10-10",
   }),
-);
-export type UserSessionsGetInput = typeof UserSessionsGetInput.Type;
+) as unknown as Schema.Codec<UserSessionsGetInput>;
 
 // Output Schema
+export interface UserSessionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const UserSessionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5088,8 +7034,7 @@ export const UserSessionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type UserSessionsGetOutput = typeof UserSessionsGetOutput.Type;
+}) as unknown as Schema.Codec<UserSessionsGetOutput>;
 
 // The operation
 /**
@@ -5098,15 +7043,29 @@ export type UserSessionsGetOutput = typeof UserSessionsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: UserSessionsGetInput,
   outputSchema: UserSessionsGetOutput,
 }));
 // Input Schema
+export interface UserSessionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const UserSessionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  hostPoolName: Schema.String.pipe(T.PathParam()),
+  sessionHostName: Schema.String.pipe(T.PathParam()),
   pageSize: Schema.optional(Schema.Number),
   isDescending: Schema.optional(Schema.Boolean),
   initialSkip: Schema.optional(Schema.Number),
@@ -5116,10 +7075,25 @@ export const UserSessionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions",
     apiVersion: "2025-10-10",
   }),
-);
-export type UserSessionsListInput = typeof UserSessionsListInput.Type;
+) as unknown as Schema.Codec<UserSessionsListInput>;
 
 // Output Schema
+export interface UserSessionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UserSessionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -5157,8 +7131,7 @@ export const UserSessionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type UserSessionsListOutput = typeof UserSessionsListOutput.Type;
+) as unknown as Schema.Codec<UserSessionsListOutput>;
 
 // The operation
 /**
@@ -5167,6 +7140,8 @@ export type UserSessionsListOutput = typeof UserSessionsListOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
  * @param initialSkip - Initial number of items to skip.
@@ -5176,10 +7151,20 @@ export const UserSessionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: UserSessionsListOutput,
 }));
 // Input Schema
+export interface UserSessionsListByHostPoolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  $filter?: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const UserSessionsListByHostPoolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     pageSize: Schema.optional(Schema.Number),
     isDescending: Schema.optional(Schema.Boolean),
@@ -5190,11 +7175,25 @@ export const UserSessionsListByHostPoolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/userSessions",
       apiVersion: "2025-10-10",
     }),
-  );
-export type UserSessionsListByHostPoolInput =
-  typeof UserSessionsListByHostPoolInput.Type;
+  ) as unknown as Schema.Codec<UserSessionsListByHostPoolInput>;
 
 // Output Schema
+export interface UserSessionsListByHostPoolOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const UserSessionsListByHostPoolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5231,9 +7230,7 @@ export const UserSessionsListByHostPoolOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type UserSessionsListByHostPoolOutput =
-  typeof UserSessionsListByHostPoolOutput.Type;
+  }) as unknown as Schema.Codec<UserSessionsListByHostPoolOutput>;
 
 // The operation
 /**
@@ -5242,6 +7239,7 @@ export type UserSessionsListByHostPoolOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
  * @param $filter - OData filter expression. Valid properties for filtering are userprincipalname and sessionstate.
  * @param pageSize - Number of items per page.
  * @param isDescending - Indicates whether the collection is descending.
@@ -5254,10 +7252,22 @@ export const UserSessionsListByHostPool = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface UserSessionsSendMessageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  hostPoolName: string;
+  sessionHostName: string;
+  userSessionId: string;
+  messageTitle?: string;
+  messageBody?: string;
+}
 export const UserSessionsSendMessageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    hostPoolName: Schema.String.pipe(T.PathParam()),
+    sessionHostName: Schema.String.pipe(T.PathParam()),
+    userSessionId: Schema.String.pipe(T.PathParam()),
     messageTitle: Schema.optional(Schema.String),
     messageBody: Schema.optional(Schema.String),
   }).pipe(
@@ -5266,15 +7276,12 @@ export const UserSessionsSendMessageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions/{userSessionId}/sendMessage",
       apiVersion: "2025-10-10",
     }),
-  );
-export type UserSessionsSendMessageInput =
-  typeof UserSessionsSendMessageInput.Type;
+  ) as unknown as Schema.Codec<UserSessionsSendMessageInput>;
 
 // Output Schema
+export type UserSessionsSendMessageOutput = void;
 export const UserSessionsSendMessageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserSessionsSendMessageOutput =
-  typeof UserSessionsSendMessageOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserSessionsSendMessageOutput>;
 
 // The operation
 /**
@@ -5283,6 +7290,9 @@ export type UserSessionsSendMessageOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param hostPoolName - The name of the host pool within the specified resource group
+ * @param sessionHostName - The name of the session host within the specified host pool
+ * @param userSessionId - The name of the user session within the specified session host
  */
 export const UserSessionsSendMessage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5291,10 +7301,75 @@ export const UserSessionsSendMessage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  managedBy?: string;
+  kind?: string;
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  properties?: {
+    objectId?: string;
+    description?: string;
+    friendlyName?: string;
+    applicationGroupReferences?: string[] | null;
+    cloudPcResource?: boolean | null;
+    publicNetworkAccess?: "Enabled" | "Disabled" | null;
+    privateEndpointConnections?:
+      | {
+          id?: string;
+          name?: string;
+          type?: string;
+          systemData?: {
+            createdBy?: string;
+            createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+            createdAt?: string;
+            lastModifiedBy?: string;
+            lastModifiedByType?:
+              | "User"
+              | "Application"
+              | "ManagedIdentity"
+              | "Key";
+            lastModifiedAt?: string;
+          };
+        }[]
+      | null;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const WorkspacesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    workspaceName: Schema.String.pipe(T.PathParam()),
     managedBy: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     etag: Schema.optional(Schema.String),
@@ -5396,11 +7471,22 @@ export const WorkspacesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
       apiVersion: "2025-10-10",
     }),
-  );
-export type WorkspacesCreateOrUpdateInput =
-  typeof WorkspacesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesCreateOrUpdateInput>;
 
 // Output Schema
+export interface WorkspacesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5420,9 +7506,7 @@ export const WorkspacesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WorkspacesCreateOrUpdateOutput =
-  typeof WorkspacesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5431,6 +7515,7 @@ export type WorkspacesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5439,21 +7524,27 @@ export const WorkspacesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WorkspacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
+) as unknown as Schema.Codec<WorkspacesDeleteInput>;
 
 // Output Schema
-export const WorkspacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
+export type WorkspacesDeleteOutput = void;
+export const WorkspacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -5462,25 +7553,44 @@ export type WorkspacesDeleteOutput = typeof WorkspacesDeleteOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesDeleteInput,
   outputSchema: WorkspacesDeleteOutput,
 }));
 // Input Schema
+export interface WorkspacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+}
 export const WorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type WorkspacesGetInput = typeof WorkspacesGetInput.Type;
+) as unknown as Schema.Codec<WorkspacesGetInput>;
 
 // Output Schema
+export interface WorkspacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5499,8 +7609,7 @@ export const WorkspacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
+}) as unknown as Schema.Codec<WorkspacesGetOutput>;
 
 // The operation
 /**
@@ -5509,12 +7618,20 @@ export type WorkspacesGetOutput = typeof WorkspacesGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesGetInput,
   outputSchema: WorkspacesGetOutput,
 }));
 // Input Schema
+export interface WorkspacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  pageSize?: number;
+  isDescending?: boolean;
+  initialSkip?: number;
+}
 export const WorkspacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5528,11 +7645,25 @@ export const WorkspacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces",
       apiVersion: "2025-10-10",
     }),
-  );
-export type WorkspacesListByResourceGroupInput =
-  typeof WorkspacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListByResourceGroupInput>;
 
 // Output Schema
+export interface WorkspacesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5569,9 +7700,7 @@ export const WorkspacesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListByResourceGroupOutput =
-  typeof WorkspacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5590,6 +7719,9 @@ export const WorkspacesListByResourceGroup =
     outputSchema: WorkspacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface WorkspacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const WorkspacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5599,11 +7731,25 @@ export const WorkspacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/workspaces",
       apiVersion: "2025-10-10",
     }),
-  );
-export type WorkspacesListBySubscriptionInput =
-  typeof WorkspacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<WorkspacesListBySubscriptionInput>;
 
 // Output Schema
+export interface WorkspacesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WorkspacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5640,9 +7786,7 @@ export const WorkspacesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WorkspacesListBySubscriptionOutput =
-  typeof WorkspacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<WorkspacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5657,9 +7801,22 @@ export const WorkspacesListBySubscription =
     outputSchema: WorkspacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface WorkspacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  workspaceName: string;
+  tags?: Record<string, string> | null;
+  properties?: {
+    description?: string;
+    friendlyName?: string;
+    applicationGroupReferences?: string[] | null;
+    publicNetworkAccess?: "Enabled" | "Disabled" | null;
+  };
+}
 export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  workspaceName: Schema.String.pipe(T.PathParam()),
   tags: Schema.optional(
     Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
   ),
@@ -5681,10 +7838,22 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}",
     apiVersion: "2025-10-10",
   }),
-);
-export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateInput>;
 
 // Output Schema
+export interface WorkspacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5705,8 +7874,7 @@ export const WorkspacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
+) as unknown as Schema.Codec<WorkspacesUpdateOutput>;
 
 // The operation
 /**
@@ -5715,6 +7883,7 @@ export type WorkspacesUpdateOutput = typeof WorkspacesUpdateOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param workspaceName - The name of the workspace
  */
 export const WorkspacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: WorkspacesUpdateInput,

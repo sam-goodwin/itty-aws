@@ -2,9 +2,17 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface V1DeleteProjectApiKeyInput {
+  ref: string;
+  id: string;
+  reveal?: boolean;
+  was_compromised?: boolean;
+  reason?: string;
+}
 export const V1DeleteProjectApiKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -14,13 +22,24 @@ export const V1DeleteProjectApiKeyInput =
     reason: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/api-keys/{id}" }),
-  );
-export type V1DeleteProjectApiKeyInput = typeof V1DeleteProjectApiKeyInput.Type;
+  ) as unknown as Schema.Codec<V1DeleteProjectApiKeyInput>;
 
 // Output Schema
+export interface V1DeleteProjectApiKeyOutput {
+  api_key?: Redacted.Redacted<string> | null;
+  id?: string | null;
+  type?: "legacy" | "publishable" | "secret" | null;
+  prefix?: string | null;
+  name: string;
+  description?: string | null;
+  hash?: string | null;
+  secret_jwt_template?: Record<string, unknown> | null;
+  inserted_at?: string | null;
+  updated_at?: string | null;
+}
 export const V1DeleteProjectApiKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    api_key: Schema.optional(SensitiveNullableString),
+    api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
       Schema.NullOr(Schema.Literals(["legacy", "publishable", "secret"])),
@@ -34,9 +53,7 @@ export const V1DeleteProjectApiKeyOutput =
     ),
     inserted_at: Schema.optional(Schema.NullOr(Schema.String)),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type V1DeleteProjectApiKeyOutput =
-  typeof V1DeleteProjectApiKeyOutput.Type;
+  }) as unknown as Schema.Codec<V1DeleteProjectApiKeyOutput>;
 
 // The operation
 /**

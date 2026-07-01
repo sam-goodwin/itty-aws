@@ -4,11 +4,14 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface BestPracticesGetInput {
+  bestPracticeName: string;
+}
 export const BestPracticesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   bestPracticeName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -17,10 +20,23 @@ export const BestPracticesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}",
     apiVersion: "2022-05-04",
   }),
-);
-export type BestPracticesGetInput = typeof BestPracticesGetInput.Type;
+) as unknown as Schema.Codec<BestPracticesGetInput>;
 
 // Output Schema
+export interface BestPracticesGetOutput {
+  id?: string;
+  type?: string;
+  name?: string;
+  properties?: { configuration?: unknown };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BestPracticesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -46,8 +62,7 @@ export const BestPracticesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type BestPracticesGetOutput = typeof BestPracticesGetOutput.Type;
+) as unknown as Schema.Codec<BestPracticesGetOutput>;
 
 // The operation
 /**
@@ -61,6 +76,7 @@ export const BestPracticesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BestPracticesGetOutput,
 }));
 // Input Schema
+export interface BestPracticesListByTenantInput {}
 export const BestPracticesListByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -68,11 +84,25 @@ export const BestPracticesListByTenantInput =
       path: "/providers/Microsoft.Automanage/bestPractices",
       apiVersion: "2022-05-04",
     }),
-  );
-export type BestPracticesListByTenantInput =
-  typeof BestPracticesListByTenantInput.Type;
+  ) as unknown as Schema.Codec<BestPracticesListByTenantInput>;
 
 // Output Schema
+export interface BestPracticesListByTenantOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    name?: string;
+    properties?: { configuration?: unknown };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const BestPracticesListByTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -113,9 +143,7 @@ export const BestPracticesListByTenantOutput =
         }),
       ),
     ),
-  });
-export type BestPracticesListByTenantOutput =
-  typeof BestPracticesListByTenantOutput.Type;
+  }) as unknown as Schema.Codec<BestPracticesListByTenantOutput>;
 
 // The operation
 /**
@@ -130,6 +158,10 @@ export const BestPracticesListByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BestPracticesVersionsGetInput {
+  bestPracticeName: string;
+  versionName: string;
+}
 export const BestPracticesVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bestPracticeName: Schema.String.pipe(T.PathParam()),
@@ -140,11 +172,23 @@ export const BestPracticesVersionsGetInput =
       path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type BestPracticesVersionsGetInput =
-  typeof BestPracticesVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<BestPracticesVersionsGetInput>;
 
 // Output Schema
+export interface BestPracticesVersionsGetOutput {
+  id?: string;
+  type?: string;
+  name?: string;
+  properties?: { configuration?: unknown };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BestPracticesVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -169,9 +213,7 @@ export const BestPracticesVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BestPracticesVersionsGetOutput =
-  typeof BestPracticesVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<BestPracticesVersionsGetOutput>;
 
 // The operation
 /**
@@ -188,6 +230,9 @@ export const BestPracticesVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BestPracticesVersionsListByTenantInput {
+  bestPracticeName: string;
+}
 export const BestPracticesVersionsListByTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bestPracticeName: Schema.String.pipe(T.PathParam()),
@@ -197,11 +242,25 @@ export const BestPracticesVersionsListByTenantInput =
       path: "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions",
       apiVersion: "2022-05-04",
     }),
-  );
-export type BestPracticesVersionsListByTenantInput =
-  typeof BestPracticesVersionsListByTenantInput.Type;
+  ) as unknown as Schema.Codec<BestPracticesVersionsListByTenantInput>;
 
 // Output Schema
+export interface BestPracticesVersionsListByTenantOutput {
+  value?: {
+    id?: string;
+    type?: string;
+    name?: string;
+    properties?: { configuration?: unknown };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const BestPracticesVersionsListByTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -242,9 +301,7 @@ export const BestPracticesVersionsListByTenantOutput =
         }),
       ),
     ),
-  });
-export type BestPracticesVersionsListByTenantOutput =
-  typeof BestPracticesVersionsListByTenantOutput.Type;
+  }) as unknown as Schema.Codec<BestPracticesVersionsListByTenantOutput>;
 
 // The operation
 /**
@@ -259,11 +316,32 @@ export const BestPracticesVersionsListByTenant =
     outputSchema: BestPracticesVersionsListByTenantOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsCreateOrUpdateInput {
+  configurationProfileAssignmentName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+  properties?: {
+    configurationProfile?: string;
+    targetId?: string;
+    status?: string;
+  };
+  managedBy?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationProfileAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         configurationProfile: Schema.optional(Schema.String),
@@ -292,19 +370,20 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsCreateOrUpdateInput =
-  typeof ConfigurationProfileAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileAssignmentsCreateOrUpdateOutput =
-  typeof ConfigurationProfileAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -313,6 +392,7 @@ export type ConfigurationProfileAssignmentsCreateOrUpdateOutput =
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsCreateOrUpdate =
@@ -321,26 +401,30 @@ export const ConfigurationProfileAssignmentsCreateOrUpdate =
     outputSchema: ConfigurationProfileAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsDeleteInput {
+  resourceGroupName: string;
+  configurationProfileAssignmentName: string;
+  subscriptionId: string;
+  vmName: string;
+}
 export const ConfigurationProfileAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsDeleteInput =
-  typeof ConfigurationProfileAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsDeleteInput>;
 
 // Output Schema
+export type ConfigurationProfileAssignmentsDeleteOutput = void;
 export const ConfigurationProfileAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationProfileAssignmentsDeleteOutput =
-  typeof ConfigurationProfileAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationProfileAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -349,6 +433,7 @@ export type ConfigurationProfileAssignmentsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsDelete =
@@ -357,30 +442,38 @@ export const ConfigurationProfileAssignmentsDelete =
     outputSchema: ConfigurationProfileAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsGetInput {
+  resourceGroupName: string;
+  configurationProfileAssignmentName: string;
+  subscriptionId: string;
+  vmName: string;
+}
 export const ConfigurationProfileAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsGetInput =
-  typeof ConfigurationProfileAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsGetInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileAssignmentsGetOutput =
-  typeof ConfigurationProfileAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -389,6 +482,7 @@ export type ConfigurationProfileAssignmentsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsGet =
@@ -397,6 +491,10 @@ export const ConfigurationProfileAssignmentsGet =
     outputSchema: ConfigurationProfileAssignmentsGetOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsListInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ConfigurationProfileAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -407,11 +505,12 @@ export const ConfigurationProfileAssignmentsListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfileAssignments",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsListInput =
-  typeof ConfigurationProfileAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsListOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfileAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -423,9 +522,7 @@ export const ConfigurationProfileAssignmentsListOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfileAssignmentsListOutput =
-  typeof ConfigurationProfileAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListOutput>;
 
 // The operation
 /**
@@ -441,21 +538,28 @@ export const ConfigurationProfileAssignmentsList =
     outputSchema: ConfigurationProfileAssignmentsListOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsListByClusterNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+}
 export const ConfigurationProfileAssignmentsListByClusterNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsListByClusterNameInput =
-  typeof ConfigurationProfileAssignmentsListByClusterNameInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByClusterNameInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsListByClusterNameOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfileAssignmentsListByClusterNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -467,9 +571,7 @@ export const ConfigurationProfileAssignmentsListByClusterNameOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfileAssignmentsListByClusterNameOutput =
-  typeof ConfigurationProfileAssignmentsListByClusterNameOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByClusterNameOutput>;
 
 // The operation
 /**
@@ -477,6 +579,7 @@ export type ConfigurationProfileAssignmentsListByClusterNameOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByClusterName =
@@ -485,21 +588,28 @@ export const ConfigurationProfileAssignmentsListByClusterName =
     outputSchema: ConfigurationProfileAssignmentsListByClusterNameOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsListByMachineNameInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+}
 export const ConfigurationProfileAssignmentsListByMachineNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsListByMachineNameInput =
-  typeof ConfigurationProfileAssignmentsListByMachineNameInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByMachineNameInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsListByMachineNameOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfileAssignmentsListByMachineNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -511,9 +621,7 @@ export const ConfigurationProfileAssignmentsListByMachineNameOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfileAssignmentsListByMachineNameOutput =
-  typeof ConfigurationProfileAssignmentsListByMachineNameOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByMachineNameOutput>;
 
 // The operation
 /**
@@ -521,6 +629,7 @@ export type ConfigurationProfileAssignmentsListByMachineNameOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByMachineName =
@@ -529,6 +638,9 @@ export const ConfigurationProfileAssignmentsListByMachineName =
     outputSchema: ConfigurationProfileAssignmentsListByMachineNameOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConfigurationProfileAssignmentsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -538,11 +650,12 @@ export const ConfigurationProfileAssignmentsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfileAssignments",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsListBySubscriptionInput =
-  typeof ConfigurationProfileAssignmentsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListBySubscriptionInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfileAssignmentsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -554,9 +667,7 @@ export const ConfigurationProfileAssignmentsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfileAssignmentsListBySubscriptionOutput =
-  typeof ConfigurationProfileAssignmentsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -571,21 +682,28 @@ export const ConfigurationProfileAssignmentsListBySubscription =
     outputSchema: ConfigurationProfileAssignmentsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileAssignmentsListByVirtualMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  vmName: string;
+}
 export const ConfigurationProfileAssignmentsListByVirtualMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileAssignmentsListByVirtualMachinesInput =
-  typeof ConfigurationProfileAssignmentsListByVirtualMachinesInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByVirtualMachinesInput>;
 
 // Output Schema
+export interface ConfigurationProfileAssignmentsListByVirtualMachinesOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -597,9 +715,7 @@ export const ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
-  typeof ConfigurationProfileAssignmentsListByVirtualMachinesOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileAssignmentsListByVirtualMachinesOutput>;
 
 // The operation
 /**
@@ -607,6 +723,7 @@ export type ConfigurationProfileAssignmentsListByVirtualMachinesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const ConfigurationProfileAssignmentsListByVirtualMachines =
@@ -615,10 +732,31 @@ export const ConfigurationProfileAssignmentsListByVirtualMachines =
     outputSchema: ConfigurationProfileAssignmentsListByVirtualMachinesOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationProfileAssignmentName: string;
+  properties?: {
+    configurationProfile?: string;
+    targetId?: string;
+    status?: string;
+  };
+  managedBy?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -648,19 +786,20 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCIAssignmentsCreateOrUpdateInput =
-  typeof ConfigurationProfileHCIAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
-  typeof ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -668,6 +807,7 @@ export type ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param api-version - The API version to use for this operation.
  */
@@ -677,10 +817,17 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdate =
     outputSchema: ConfigurationProfileHCIAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCIAssignmentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationProfileAssignmentName: string;
+}
 export const ConfigurationProfileHCIAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -688,15 +835,12 @@ export const ConfigurationProfileHCIAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCIAssignmentsDeleteInput =
-  typeof ConfigurationProfileHCIAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsDeleteInput>;
 
 // Output Schema
+export type ConfigurationProfileHCIAssignmentsDeleteOutput = void;
 export const ConfigurationProfileHCIAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationProfileHCIAssignmentsDeleteOutput =
-  typeof ConfigurationProfileHCIAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -704,6 +848,7 @@ export type ConfigurationProfileHCIAssignmentsDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
@@ -713,10 +858,17 @@ export const ConfigurationProfileHCIAssignmentsDelete =
     outputSchema: ConfigurationProfileHCIAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCIAssignmentsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  clusterName: string;
+  configurationProfileAssignmentName: string;
+}
 export const ConfigurationProfileHCIAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -724,19 +876,20 @@ export const ConfigurationProfileHCIAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCIAssignmentsGetInput =
-  typeof ConfigurationProfileHCIAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsGetInput>;
 
 // Output Schema
+export interface ConfigurationProfileHCIAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileHCIAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileHCIAssignmentsGetOutput =
-  typeof ConfigurationProfileHCIAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileHCIAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -744,6 +897,7 @@ export type ConfigurationProfileHCIAssignmentsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -753,10 +907,31 @@ export const ConfigurationProfileHCIAssignmentsGet =
     outputSchema: ConfigurationProfileHCIAssignmentsGetOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  configurationProfileAssignmentName: string;
+  properties?: {
+    configurationProfile?: string;
+    targetId?: string;
+    status?: string;
+  };
+  managedBy?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -786,19 +961,20 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput =
-  typeof ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
-  typeof ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -806,6 +982,7 @@ export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment. Only default is supported.
  * @param api-version - The API version to use for this operation.
  */
@@ -815,10 +992,17 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdate =
     outputSchema: ConfigurationProfileHCRPAssignmentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCRPAssignmentsDeleteInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  machineName: string;
+  configurationProfileAssignmentName: string;
+}
 export const ConfigurationProfileHCRPAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -826,15 +1010,12 @@ export const ConfigurationProfileHCRPAssignmentsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCRPAssignmentsDeleteInput =
-  typeof ConfigurationProfileHCRPAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsDeleteInput>;
 
 // Output Schema
+export type ConfigurationProfileHCRPAssignmentsDeleteOutput = void;
 export const ConfigurationProfileHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
-  typeof ConfigurationProfileHCRPAssignmentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -842,6 +1023,7 @@ export type ConfigurationProfileHCRPAssignmentsDeleteOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - Name of the configuration profile assignment
  * @param api-version - The API version to use for this operation.
  */
@@ -851,10 +1033,17 @@ export const ConfigurationProfileHCRPAssignmentsDelete =
     outputSchema: ConfigurationProfileHCRPAssignmentsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationProfileHCRPAssignmentsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  machineName: string;
+  configurationProfileAssignmentName: string;
+}
 export const ConfigurationProfileHCRPAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -862,19 +1051,20 @@ export const ConfigurationProfileHCRPAssignmentsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfileHCRPAssignmentsGetInput =
-  typeof ConfigurationProfileHCRPAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsGetInput>;
 
 // Output Schema
+export interface ConfigurationProfileHCRPAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfileHCRPAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfileHCRPAssignmentsGetOutput =
-  typeof ConfigurationProfileHCRPAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfileHCRPAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -882,6 +1072,7 @@ export type ConfigurationProfileHCRPAssignmentsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -891,6 +1082,22 @@ export const ConfigurationProfileHCRPAssignmentsGet =
     outputSchema: ConfigurationProfileHCRPAssignmentsGetOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesCreateOrUpdateInput {
+  configurationProfileName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties?: { configuration?: unknown };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigurationProfilesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -923,19 +1130,20 @@ export const ConfigurationProfilesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesCreateOrUpdateInput =
-  typeof ConfigurationProfilesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfilesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfilesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfilesCreateOrUpdateOutput =
-  typeof ConfigurationProfilesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -952,6 +1160,11 @@ export const ConfigurationProfilesCreateOrUpdate =
     outputSchema: ConfigurationProfilesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesDeleteInput {
+  resourceGroupName: string;
+  configurationProfileName: string;
+  subscriptionId: string;
+}
 export const ConfigurationProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -963,15 +1176,12 @@ export const ConfigurationProfilesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesDeleteInput =
-  typeof ConfigurationProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesDeleteInput>;
 
 // Output Schema
+export type ConfigurationProfilesDeleteOutput = void;
 export const ConfigurationProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationProfilesDeleteOutput =
-  typeof ConfigurationProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -989,6 +1199,11 @@ export const ConfigurationProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationProfilesGetInput {
+  configurationProfileName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -1000,19 +1215,20 @@ export const ConfigurationProfilesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesGetInput =
-  typeof ConfigurationProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesGetInput>;
 
 // Output Schema
+export interface ConfigurationProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfilesGetOutput =
-  typeof ConfigurationProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesGetOutput>;
 
 // The operation
 /**
@@ -1030,6 +1246,10 @@ export const ConfigurationProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationProfilesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1040,11 +1260,12 @@ export const ConfigurationProfilesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesListByResourceGroupInput =
-  typeof ConfigurationProfilesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesListByResourceGroupInput>;
 
 // Output Schema
+export interface ConfigurationProfilesListByResourceGroupOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfilesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1056,9 +1277,7 @@ export const ConfigurationProfilesListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfilesListByResourceGroupOutput =
-  typeof ConfigurationProfilesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1074,6 +1293,9 @@ export const ConfigurationProfilesListByResourceGroup =
     outputSchema: ConfigurationProfilesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConfigurationProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1083,11 +1305,12 @@ export const ConfigurationProfilesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/configurationProfiles",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesListBySubscriptionInput =
-  typeof ConfigurationProfilesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesListBySubscriptionInput>;
 
 // Output Schema
+export interface ConfigurationProfilesListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1099,9 +1322,7 @@ export const ConfigurationProfilesListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfilesListBySubscriptionOutput =
-  typeof ConfigurationProfilesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1116,6 +1337,13 @@ export const ConfigurationProfilesListBySubscription =
     outputSchema: ConfigurationProfilesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesUpdateInput {
+  configurationProfileName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties?: { configuration?: unknown };
+  tags?: Record<string, string>;
+}
 export const ConfigurationProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -1133,19 +1361,20 @@ export const ConfigurationProfilesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesUpdateInput =
-  typeof ConfigurationProfilesUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfilesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfilesUpdateOutput =
-  typeof ConfigurationProfilesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesUpdateOutput>;
 
 // The operation
 /**
@@ -1163,6 +1392,23 @@ export const ConfigurationProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationProfilesVersionsCreateOrUpdateInput {
+  configurationProfileName: string;
+  versionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties?: { configuration?: unknown };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigurationProfilesVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -1196,19 +1442,20 @@ export const ConfigurationProfilesVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesVersionsCreateOrUpdateInput =
-  typeof ConfigurationProfilesVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationProfilesVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfilesVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfilesVersionsCreateOrUpdateOutput =
-  typeof ConfigurationProfilesVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1226,6 +1473,12 @@ export const ConfigurationProfilesVersionsCreateOrUpdate =
     outputSchema: ConfigurationProfilesVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesVersionsDeleteInput {
+  resourceGroupName: string;
+  configurationProfileName: string;
+  versionName: string;
+  subscriptionId: string;
+}
 export const ConfigurationProfilesVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1238,15 +1491,12 @@ export const ConfigurationProfilesVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesVersionsDeleteInput =
-  typeof ConfigurationProfilesVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesVersionsDeleteInput>;
 
 // Output Schema
+export type ConfigurationProfilesVersionsDeleteOutput = void;
 export const ConfigurationProfilesVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationProfilesVersionsDeleteOutput =
-  typeof ConfigurationProfilesVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationProfilesVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -1264,6 +1514,12 @@ export const ConfigurationProfilesVersionsDelete =
     outputSchema: ConfigurationProfilesVersionsDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesVersionsGetInput {
+  configurationProfileName: string;
+  versionName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationProfilesVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -1276,19 +1532,20 @@ export const ConfigurationProfilesVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesVersionsGetInput =
-  typeof ConfigurationProfilesVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesVersionsGetInput>;
 
 // Output Schema
+export interface ConfigurationProfilesVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ConfigurationProfilesVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ConfigurationProfilesVersionsGetOutput =
-  typeof ConfigurationProfilesVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesVersionsGetOutput>;
 
 // The operation
 /**
@@ -1306,6 +1563,11 @@ export const ConfigurationProfilesVersionsGet =
     outputSchema: ConfigurationProfilesVersionsGetOutput,
   }));
 // Input Schema
+export interface ConfigurationProfilesVersionsListChildResourcesInput {
+  configurationProfileName: string;
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationProfilesVersionsListChildResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     configurationProfileName: Schema.String.pipe(T.PathParam()),
@@ -1317,11 +1579,12 @@ export const ConfigurationProfilesVersionsListChildResourcesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ConfigurationProfilesVersionsListChildResourcesInput =
-  typeof ConfigurationProfilesVersionsListChildResourcesInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationProfilesVersionsListChildResourcesInput>;
 
 // Output Schema
+export interface ConfigurationProfilesVersionsListChildResourcesOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ConfigurationProfilesVersionsListChildResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1333,9 +1596,7 @@ export const ConfigurationProfilesVersionsListChildResourcesOutput =
         }),
       ),
     ),
-  });
-export type ConfigurationProfilesVersionsListChildResourcesOutput =
-  typeof ConfigurationProfilesVersionsListChildResourcesOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationProfilesVersionsListChildResourcesOutput>;
 
 // The operation
 /**
@@ -1352,9 +1613,17 @@ export const ConfigurationProfilesVersionsListChildResources =
     outputSchema: ConfigurationProfilesVersionsListChildResourcesOutput,
   }));
 // Input Schema
+export interface HCIReportsGetInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  clusterName: string;
+  configurationProfileAssignmentName: string;
+  reportName: string;
+}
 export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1363,16 +1632,19 @@ export const HCIReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
     apiVersion: "2022-05-04",
   }),
-);
-export type HCIReportsGetInput = typeof HCIReportsGetInput.Type;
+) as unknown as Schema.Codec<HCIReportsGetInput>;
 
 // Output Schema
+export interface HCIReportsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const HCIReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type HCIReportsGetOutput = typeof HCIReportsGetOutput.Type;
+}) as unknown as Schema.Codec<HCIReportsGetOutput>;
 
 // The operation
 /**
@@ -1380,6 +1652,7 @@ export type HCIReportsGetOutput = typeof HCIReportsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
@@ -1389,10 +1662,17 @@ export const HCIReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HCIReportsGetOutput,
 }));
 // Input Schema
+export interface HCIReportsListByConfigurationProfileAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  clusterName: string;
+  configurationProfileAssignmentName: string;
+}
 export const HCIReportsListByConfigurationProfileAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    clusterName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1400,11 +1680,12 @@ export const HCIReportsListByConfigurationProfileAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
       apiVersion: "2022-05-04",
     }),
-  );
-export type HCIReportsListByConfigurationProfileAssignmentsInput =
-  typeof HCIReportsListByConfigurationProfileAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<HCIReportsListByConfigurationProfileAssignmentsInput>;
 
 // Output Schema
+export interface HCIReportsListByConfigurationProfileAssignmentsOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const HCIReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1416,9 +1697,7 @@ export const HCIReportsListByConfigurationProfileAssignmentsOutput =
         }),
       ),
     ),
-  });
-export type HCIReportsListByConfigurationProfileAssignmentsOutput =
-  typeof HCIReportsListByConfigurationProfileAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<HCIReportsListByConfigurationProfileAssignmentsOutput>;
 
 // The operation
 /**
@@ -1426,6 +1705,7 @@ export type HCIReportsListByConfigurationProfileAssignmentsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param clusterName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -1435,9 +1715,17 @@ export const HCIReportsListByConfigurationProfileAssignments =
     outputSchema: HCIReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
+export interface HCRPReportsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  configurationProfileAssignmentName: string;
+  reportName: string;
+}
 export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
+  machineName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1446,16 +1734,19 @@ export const HCRPReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
     apiVersion: "2022-05-04",
   }),
-);
-export type HCRPReportsGetInput = typeof HCRPReportsGetInput.Type;
+) as unknown as Schema.Codec<HCRPReportsGetInput>;
 
 // Output Schema
+export interface HCRPReportsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const HCRPReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type HCRPReportsGetOutput = typeof HCRPReportsGetOutput.Type;
+}) as unknown as Schema.Codec<HCRPReportsGetOutput>;
 
 // The operation
 /**
@@ -1463,6 +1754,7 @@ export type HCRPReportsGetOutput = typeof HCRPReportsGetOutput.Type;
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param api-version - The API version to use for this operation.
@@ -1472,10 +1764,17 @@ export const HCRPReportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HCRPReportsGetOutput,
 }));
 // Input Schema
+export interface HCRPReportsListByConfigurationProfileAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  machineName: string;
+  configurationProfileAssignmentName: string;
+}
 export const HCRPReportsListByConfigurationProfileAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1483,11 +1782,12 @@ export const HCRPReportsListByConfigurationProfileAssignmentsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
       apiVersion: "2022-05-04",
     }),
-  );
-export type HCRPReportsListByConfigurationProfileAssignmentsInput =
-  typeof HCRPReportsListByConfigurationProfileAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<HCRPReportsListByConfigurationProfileAssignmentsInput>;
 
 // Output Schema
+export interface HCRPReportsListByConfigurationProfileAssignmentsOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const HCRPReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1499,9 +1799,7 @@ export const HCRPReportsListByConfigurationProfileAssignmentsOutput =
         }),
       ),
     ),
-  });
-export type HCRPReportsListByConfigurationProfileAssignmentsOutput =
-  typeof HCRPReportsListByConfigurationProfileAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<HCRPReportsListByConfigurationProfileAssignmentsOutput>;
 
 // The operation
 /**
@@ -1509,6 +1807,7 @@ export type HCRPReportsListByConfigurationProfileAssignmentsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param machineName - The name of the Arc machine.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param api-version - The API version to use for this operation.
  */
@@ -1518,6 +1817,7 @@ export const HCRPReportsListByConfigurationProfileAssignments =
     outputSchema: HCRPReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1526,10 +1826,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Automanage/operations",
     apiVersion: "2022-05-04",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -1552,8 +1866,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1566,27 +1879,38 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ReportsGetInput {
+  resourceGroupName: string;
+  configurationProfileAssignmentName: string;
+  reportName: string;
+  subscriptionId: string;
+  vmName: string;
+}
 export const ReportsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
   reportName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
+  vmName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
     apiVersion: "2022-05-04",
   }),
-);
-export type ReportsGetInput = typeof ReportsGetInput.Type;
+) as unknown as Schema.Codec<ReportsGetInput>;
 
 // Output Schema
+export interface ReportsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ReportsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ReportsGetOutput = typeof ReportsGetOutput.Type;
+}) as unknown as Schema.Codec<ReportsGetOutput>;
 
 // The operation
 /**
@@ -1596,6 +1920,7 @@ export type ReportsGetOutput = typeof ReportsGetOutput.Type;
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
  * @param reportName - The report name.
  * @param subscriptionId - The ID of the target subscription.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const reportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1603,22 +1928,30 @@ export const reportsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ReportsGetOutput,
 }));
 // Input Schema
+export interface ReportsListByConfigurationProfileAssignmentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationProfileAssignmentName: string;
+  vmName: string;
+}
 export const ReportsListByConfigurationProfileAssignmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationProfileAssignmentName: Schema.String.pipe(T.PathParam()),
+    vmName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ReportsListByConfigurationProfileAssignmentsInput =
-  typeof ReportsListByConfigurationProfileAssignmentsInput.Type;
+  ) as unknown as Schema.Codec<ReportsListByConfigurationProfileAssignmentsInput>;
 
 // Output Schema
+export interface ReportsListByConfigurationProfileAssignmentsOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ReportsListByConfigurationProfileAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1630,9 +1963,7 @@ export const ReportsListByConfigurationProfileAssignmentsOutput =
         }),
       ),
     ),
-  });
-export type ReportsListByConfigurationProfileAssignmentsOutput =
-  typeof ReportsListByConfigurationProfileAssignmentsOutput.Type;
+  }) as unknown as Schema.Codec<ReportsListByConfigurationProfileAssignmentsOutput>;
 
 // The operation
 /**
@@ -1641,6 +1972,7 @@ export type ReportsListByConfigurationProfileAssignmentsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param configurationProfileAssignmentName - The configuration profile assignment name.
+ * @param vmName - The name of the virtual machine.
  * @param api-version - The API version to use for this operation.
  */
 export const reportsListByConfigurationProfileAssignments =
@@ -1649,6 +1981,9 @@ export const reportsListByConfigurationProfileAssignments =
     outputSchema: ReportsListByConfigurationProfileAssignmentsOutput,
   }));
 // Input Schema
+export interface ServicePrincipalsGetInput {
+  subscriptionId: string;
+}
 export const ServicePrincipalsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1658,17 +1993,20 @@ export const ServicePrincipalsGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ServicePrincipalsGetInput = typeof ServicePrincipalsGetInput.Type;
+  ) as unknown as Schema.Codec<ServicePrincipalsGetInput>;
 
 // Output Schema
+export interface ServicePrincipalsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ServicePrincipalsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type ServicePrincipalsGetOutput = typeof ServicePrincipalsGetOutput.Type;
+  }) as unknown as Schema.Codec<ServicePrincipalsGetOutput>;
 
 // The operation
 /**
@@ -1684,6 +2022,9 @@ export const ServicePrincipalsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServicePrincipalsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ServicePrincipalsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1693,11 +2034,12 @@ export const ServicePrincipalsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals",
       apiVersion: "2022-05-04",
     }),
-  );
-export type ServicePrincipalsListBySubscriptionInput =
-  typeof ServicePrincipalsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ServicePrincipalsListBySubscriptionInput>;
 
 // Output Schema
+export interface ServicePrincipalsListBySubscriptionOutput {
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ServicePrincipalsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1709,9 +2051,7 @@ export const ServicePrincipalsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type ServicePrincipalsListBySubscriptionOutput =
-  typeof ServicePrincipalsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ServicePrincipalsListBySubscriptionOutput>;
 
 // The operation
 /**

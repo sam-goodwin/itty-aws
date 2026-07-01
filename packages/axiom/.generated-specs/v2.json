@@ -246,6 +246,7 @@
                       "description": "This is an example dataset",
                       "id": "example-dataset",
                       "name": "example-dataset",
+                      "updatedAt": "2020-01-01T00:00:00Z",
                       "who": "John Doe"
                     },
                     {
@@ -253,6 +254,7 @@
                       "description": "This is an example dataset",
                       "id": "example-dataset-2",
                       "name": "example-dataset-2",
+                      "updatedAt": "2020-02-01T00:00:00Z",
                       "who": "Foo Bar"
                     }
                   ]
@@ -3030,6 +3032,91 @@
           }
         }
       }
+    },
+    "/v2/dashboards/uid/{uid}/charts/{chartId}": {
+      "patch": {
+        "tags": [
+          "dashboards"
+        ],
+        "summary": "Patch dashboard chart",
+        "description": "Patch a single chart in a dashboard by chart ID.",
+        "operationId": "patchDashboardChart",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chartId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DashboardChartPatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated dashboard",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardWriteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid dashboard chart patch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dashboard or chart not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardError"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Version conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3953,6 +4040,34 @@
           }
         }
       },
+      "DashboardChartPatchDocument": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "DashboardChartPatchRequest": {
+        "type": "object",
+        "required": [
+          "chart"
+        ],
+        "properties": {
+          "chart": {
+            "$ref": "#/components/schemas/DashboardChartPatchDocument",
+            "description": "JSON merge patch applied to the existing chart. If id is present, it must match the chartId path parameter."
+          },
+          "message": {
+            "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean",
+            "default": false
+          },
+          "version": {
+            "description": "Required when overwrite is false.",
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
       "DashboardDocument": {
         "type": "object",
         "additionalProperties": true,
@@ -4127,6 +4242,7 @@
           "name",
           "description",
           "created",
+          "updatedAt",
           "who",
           "kind"
         ],
@@ -4146,6 +4262,11 @@
           },
           "edgeDeployment": {
             "description": "Edge deployment of the dataset",
+            "type": "string",
+            "x-omitempty": true
+          },
+          "edgeDeploymentUrl": {
+            "description": "URL of the edge deployment",
             "type": "string",
             "x-omitempty": true
           },
@@ -4184,6 +4305,11 @@
             "description": "ID of the org that shared this resource, if it's shared",
             "type": "string"
           },
+          "updatedAt": {
+            "description": "The RFC3339-formatted time when the dataset was last updated.",
+            "type": "string",
+            "format": "date-time"
+          },
           "useRetentionPeriod": {
             "description": "Whether to use the retention period",
             "type": "boolean",
@@ -4200,6 +4326,7 @@
           "id": "string",
           "kind": "axiom:events:v1",
           "name": "string",
+          "updatedAt": "2022-07-20T02:35:14.137Z",
           "who": "string"
         }
       },
@@ -4641,9 +4768,7 @@
           "features",
           "billingPeriodStart",
           "billingPeriodEnd",
-          "defaultRegion",
           "defaultEdgeDeployment",
-          "regions",
           "edgeDeployments"
         ],
         "properties": {
@@ -4660,10 +4785,6 @@
             "format": "date-time"
           },
           "defaultEdgeDeployment": {
-            "type": "string",
-            "x-omitempty": true
-          },
-          "defaultRegion": {
             "type": "string",
             "x-omitempty": true
           },
@@ -4734,13 +4855,6 @@
             "type": "integer",
             "format": "uint64"
           },
-          "regions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "x-omitempty": true
-          },
           "storageAllowanceGB": {
             "type": "integer",
             "format": "uint64"
@@ -4749,13 +4863,12 @@
             "type": "string",
             "enum": [
               "personal",
-              "basicDirect",
-              "teamMonthlyDirect",
               "teamMonthlyAws",
               "axiomCloud",
               "teamPlus",
               "enterprise",
-              "comped"
+              "comped",
+              "accelerator"
             ]
           },
           "validFrom": {
@@ -5025,6 +5138,12 @@
               "AnomalyDetection"
             ],
             "example": "Threshold"
+          },
+          "updatedAt": {
+            "description": "Timestamp when the monitor was last updated",
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-03-20T10:30:00Z"
           }
         }
       },
@@ -5129,6 +5248,13 @@
           },
           "properties": {
             "$ref": "#/components/schemas/NotifierProperties"
+          },
+          "updatedAt": {
+            "description": "Timestamp when the notifier was last updated",
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "example": "2024-01-15T11:00:00Z"
           }
         }
       },
@@ -5232,9 +5358,6 @@
           "defaultEdgeDeployment": {
             "type": "string"
           },
-          "defaultRegion": {
-            "type": "string"
-          },
           "firstFailedPayment": {
             "type": "string"
           },
@@ -5272,13 +5395,12 @@
             "type": "string",
             "enum": [
               "personal",
-              "basicDirect",
-              "teamMonthlyDirect",
               "teamMonthlyAws",
               "axiomCloud",
               "teamPlus",
               "enterprise",
-              "comped"
+              "comped",
+              "accelerator"
             ]
           },
           "planCreated": {
@@ -5442,61 +5564,6 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
-          }
-        }
-      },
-      "Region": {
-        "type": "object",
-        "required": [
-          "id",
-          "instanceName",
-          "regionType",
-          "regionCloud",
-          "domain",
-          "description"
-        ],
-        "properties": {
-          "description": {
-            "description": "Region description",
-            "type": "string"
-          },
-          "domain": {
-            "description": "Region domain",
-            "type": "string"
-          },
-          "environmentDefault": {
-            "description": "Whether the region is the default region for the environment",
-            "type": "boolean"
-          },
-          "id": {
-            "description": "Unique region identifier",
-            "type": "string"
-          },
-          "instanceName": {
-            "description": "Human-readable region name",
-            "type": "string"
-          },
-          "regionCloud": {
-            "description": "Region cloud",
-            "type": "string"
-          },
-          "regionType": {
-            "description": "Region type",
-            "type": "string"
-          }
-        }
-      },
-      "Regions": {
-        "type": "object",
-        "required": [
-          "axiom"
-        ],
-        "properties": {
-          "axiom": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Region"
-            }
           }
         }
       },
@@ -7359,7 +7426,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/TimeSeriesNonMetricsAplQuery"
+            "$ref": "#/components/schemas/TimeSeriesChartQuery"
           }
         },
         "required": [
@@ -7400,6 +7467,17 @@
       },
       "OverrideDashboardCompareAgainst": {
         "type": "boolean"
+      },
+      "TimeSeriesChartQuery": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/TimeSeriesNonMetricsAplQuery"
+          },
+          {
+            "$ref": "#/components/schemas/TimeSeriesNativeMplQuery"
+          }
+        ],
+        "title": "ChartQuery"
       },
       "AplString": {
         "type": "string",
@@ -7500,6 +7578,7 @@
       },
       "DefaultLimit": {
         "type": "integer",
+        "minimum": 0,
         "exclusiveMinimum": true,
         "maximum": 1000000
       },
@@ -7526,6 +7605,7 @@
       },
       "MaxBinAutoGroups": {
         "type": "integer",
+        "minimum": 0,
         "exclusiveMinimum": true,
         "maximum": 10000
       },
@@ -7556,6 +7636,28 @@
         ],
         "additionalProperties": false,
         "title": "APL"
+      },
+      "TimeSeriesNativeMplQuery": {
+        "type": "object",
+        "properties": {
+          "mpl": {
+            "$ref": "#/components/schemas/MplString"
+          },
+          "queryOptions": {
+            "$ref": "#/components/schemas/TimeSeriesQueryOptions"
+          }
+        },
+        "required": [
+          "mpl"
+        ],
+        "additionalProperties": false,
+        "title": "MPL"
+      },
+      "MplString": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500000,
+        "title": "MplString"
       },
       "Aggregation": {
         "type": "object",
@@ -7785,7 +7887,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/HeatmapNonMetricsAplQuery"
+            "$ref": "#/components/schemas/HeatmapChartQuery"
           }
         },
         "required": [
@@ -7795,6 +7897,17 @@
         ],
         "additionalProperties": false,
         "title": "Heatmap"
+      },
+      "HeatmapChartQuery": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/HeatmapNonMetricsAplQuery"
+          },
+          {
+            "$ref": "#/components/schemas/HeatmapNativeMplQuery"
+          }
+        ],
+        "title": "ChartQuery"
       },
       "HeatmapQueryOptions": {
         "type": "object",
@@ -7827,6 +7940,22 @@
         "additionalProperties": false,
         "title": "APL"
       },
+      "HeatmapNativeMplQuery": {
+        "type": "object",
+        "properties": {
+          "mpl": {
+            "$ref": "#/components/schemas/MplString"
+          },
+          "queryOptions": {
+            "$ref": "#/components/schemas/HeatmapQueryOptions"
+          }
+        },
+        "required": [
+          "mpl"
+        ],
+        "additionalProperties": false,
+        "title": "MPL"
+      },
       "LogStreamChart": {
         "type": "object",
         "properties": {
@@ -7845,7 +7974,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           },
           "tableSettings": {
             "$ref": "#/components/schemas/TableSettings"
@@ -7859,6 +7988,17 @@
         "additionalProperties": false,
         "title": "Log stream"
       },
+      "SimpleChartQuery": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+          },
+          {
+            "$ref": "#/components/schemas/SimpleNativeMplQuery"
+          }
+        ],
+        "title": "ChartQuery"
+      },
       "SimpleNonMetricsAplQuery": {
         "type": "object",
         "properties": {
@@ -7871,6 +8011,19 @@
         ],
         "additionalProperties": false,
         "title": "APL"
+      },
+      "SimpleNativeMplQuery": {
+        "type": "object",
+        "properties": {
+          "mpl": {
+            "$ref": "#/components/schemas/MplString"
+          }
+        },
+        "required": [
+          "mpl"
+        ],
+        "additionalProperties": false,
+        "title": "MPL"
       },
       "TableSettings": {
         "type": "object",
@@ -7908,6 +8061,7 @@
           },
           "width": {
             "type": "integer",
+            "minimum": 0,
             "exclusiveMinimum": true,
             "maximum": 9007199254740991
           }
@@ -7967,7 +8121,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           }
         },
         "required": [
@@ -7996,7 +8150,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           }
         },
         "required": [
@@ -8025,7 +8179,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           },
           "tableSettings": {
             "$ref": "#/components/schemas/TableSettings"
@@ -8057,7 +8211,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           }
         },
         "required": [
@@ -8086,7 +8240,7 @@
             "maxLength": 500
           },
           "query": {
-            "$ref": "#/components/schemas/SimpleNonMetricsAplQuery"
+            "$ref": "#/components/schemas/SimpleChartQuery"
           },
           "colorScheme": {
             "type": "string",
@@ -8355,7 +8509,7 @@
         "title": "Filter bar"
       },
       "SmartFilterConfig": {
-        "oneOf": [
+        "anyOf": [
           {
             "$ref": "#/components/schemas/SmartFilterSearch"
           },
@@ -8367,9 +8521,55 @@
       "SmartFilterSearch": {
         "type": "object",
         "properties": {
-          "__isPlaceholderData": {
-            "$ref": "#/components/schemas/SmartFilterIsPlaceholderData"
+          "id": {
+            "$ref": "#/components/schemas/SmartFilterId"
           },
+          "name": {
+            "$ref": "#/components/schemas/SmartFilterName"
+          },
+          "active": {
+            "$ref": "#/components/schemas/SmartFilterActive"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "search"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type"
+        ],
+        "additionalProperties": false,
+        "title": "SmartFilterSearch"
+      },
+      "SmartFilterId": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "SmartFilterName": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "SmartFilterActive": {
+        "type": "boolean"
+      },
+      "SmartFilterSelect": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/SmartFilterSelectList"
+          },
+          {
+            "$ref": "#/components/schemas/SmartFilterSelectQuery"
+          }
+        ],
+        "title": "SmartFilterSelect"
+      },
+      "SmartFilterSelectList": {
+        "type": "object",
+        "properties": {
           "id": {
             "$ref": "#/components/schemas/SmartFilterId"
           },
@@ -8382,36 +8582,27 @@
           "options": {
             "$ref": "#/components/schemas/SmartFilterOptions"
           },
-          "datasetId": {
-            "$ref": "#/components/schemas/SmartFilterDatasetId"
-          },
           "type": {
             "type": "string",
             "enum": [
-              "search"
+              "select"
+            ]
+          },
+          "selectType": {
+            "type": "string",
+            "enum": [
+              "list"
             ]
           }
         },
         "required": [
           "id",
-          "type"
+          "name",
+          "type",
+          "selectType"
         ],
         "additionalProperties": false,
-        "title": "SmartFilterSearch"
-      },
-      "SmartFilterIsPlaceholderData": {
-        "type": "boolean"
-      },
-      "SmartFilterId": {
-        "type": "string",
-        "maxLength": 200
-      },
-      "SmartFilterName": {
-        "type": "string",
-        "maxLength": 200
-      },
-      "SmartFilterActive": {
-        "type": "boolean"
+        "title": "SmartFilterSelectList"
       },
       "SmartFilterOptions": {
         "anyOf": [
@@ -8440,10 +8631,6 @@
       "SmartFilterOption": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "maxLength": 200
-          },
           "key": {
             "type": "string",
             "maxLength": 500
@@ -8454,6 +8641,9 @@
           },
           "default": {
             "type": "boolean"
+          },
+          "unset": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -8462,16 +8652,9 @@
         ],
         "additionalProperties": false
       },
-      "SmartFilterDatasetId": {
-        "type": "string",
-        "maxLength": 200
-      },
-      "SmartFilterSelect": {
+      "SmartFilterSelectQuery": {
         "type": "object",
         "properties": {
-          "__isPlaceholderData": {
-            "$ref": "#/components/schemas/SmartFilterIsPlaceholderData"
-          },
           "id": {
             "$ref": "#/components/schemas/SmartFilterId"
           },
@@ -8482,10 +8665,33 @@
             "$ref": "#/components/schemas/SmartFilterActive"
           },
           "options": {
-            "$ref": "#/components/schemas/SmartFilterOptions"
-          },
-          "datasetId": {
-            "$ref": "#/components/schemas/SmartFilterDatasetId"
+            "description": "Pre-defined options merged with the dynamic options returned by `query` at runtime. Typically used to seed a default option (for example an \"All\" entry with `unset: true`) so the filter has a sensible initial selection before — or independent of — query results.",
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "maxItems": 200,
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SmartFilterOption"
+                    }
+                  },
+                  {
+                    "type": "string",
+                    "nullable": true,
+                    "enum": [
+                      null
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "enum": [
+                      ""
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           "type": {
             "type": "string",
@@ -8494,42 +8700,70 @@
             ]
           },
           "selectType": {
-            "$ref": "#/components/schemas/SmartFilterSelectType"
+            "type": "string",
+            "enum": [
+              "query"
+            ]
           },
-          "apl": {
-            "$ref": "#/components/schemas/SmartFilterApl"
+          "query": {
+            "$ref": "#/components/schemas/SmartFilterQuery"
           }
         },
         "required": [
           "id",
-          "type"
+          "name",
+          "type",
+          "selectType"
         ],
         "additionalProperties": false,
-        "title": "SmartFilterSelect"
+        "title": "SmartFilterSelectQuery"
       },
-      "SmartFilterSelectType": {
-        "nullable": true,
-        "type": "string",
-        "enum": [
-          "list",
-          "apl",
-          ""
-        ]
-      },
-      "SmartFilterApl": {
-        "title": "SmartFilterApl",
-        "allOf": [
+      "SmartFilterQuery": {
+        "anyOf": [
           {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/AplQuery"
-              },
-              {
-                "$ref": "#/components/schemas/EmptyAplObject"
-              }
-            ]
+            "$ref": "#/components/schemas/SmartFilterAplQuery"
+          },
+          {
+            "$ref": "#/components/schemas/SmartFilterNativeMplQuery"
           }
-        ]
+        ],
+        "title": "SmartFilterQuery"
+      },
+      "SmartFilterAplQuery": {
+        "type": "object",
+        "properties": {
+          "apl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500000,
+            "description": "APL query that returns the list of options for the filter dropdown. The result must contain a `key` column and a `value` column — Axiom interprets each row as a `{ key, value }` pair for an option. Use `distinct` to collapse the source field to unique values, then `project` to expose the `key` and `value` columns.\n\nExample:\n```\n['dataset-name'] | distinct field_name | project key=field_name, value=field_name\n```"
+          }
+        },
+        "required": [
+          "apl"
+        ],
+        "additionalProperties": false,
+        "title": "APL"
+      },
+      "SmartFilterNativeMplQuery": {
+        "type": "object",
+        "properties": {
+          "mpl": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500000,
+            "description": "MPL query that returns the list of options for the filter dropdown. The query must group by exactly one tag — Axiom uses each distinct value of that tag as both the key and the value of an option. Use `align using last` to simplify the query.\n\nExample:\n```\ndataset:metric | align using last | group by tag using count\n```"
+          }
+        },
+        "required": [
+          "mpl"
+        ],
+        "additionalProperties": false,
+        "title": "MPL"
+      },
+      "SmartFilterDatasetId": {
+        "type": "string",
+        "maxLength": 200
       },
       "NonMetricsAplQuery": {
         "type": "object",
@@ -8546,22 +8780,6 @@
         ],
         "additionalProperties": false,
         "title": "APL"
-      },
-      "EmptyAplObject": {
-        "type": "object",
-        "properties": {
-          "apl": {
-            "type": "string",
-            "enum": [
-              ""
-            ]
-          }
-        },
-        "required": [
-          "apl"
-        ],
-        "additionalProperties": {},
-        "title": "EmptyAplObject"
       },
       "LogoUrl": {
         "type": "string",
@@ -8675,6 +8893,7 @@
         "properties": {
           "rowHeight": {
             "type": "integer",
+            "minimum": 0,
             "exclusiveMinimum": true,
             "maximum": 9007199254740991
           }

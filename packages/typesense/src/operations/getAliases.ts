@@ -3,12 +3,17 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetAliasesInput {}
 export const GetAliasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/aliases" }));
-export type GetAliasesInput = typeof GetAliasesInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/aliases" }),
+) as unknown as Schema.Codec<GetAliasesInput>;
 
 // Output Schema
+export interface GetAliasesOutput {
+  aliases: { name: string; collection_name: string }[];
+}
 export const GetAliasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   aliases: Schema.Array(
     Schema.Struct({
@@ -16,8 +21,7 @@ export const GetAliasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       collection_name: Schema.String,
     }),
   ),
-});
-export type GetAliasesOutput = typeof GetAliasesOutput.Type;
+}) as unknown as Schema.Codec<GetAliasesOutput>;
 
 // The operation
 /**

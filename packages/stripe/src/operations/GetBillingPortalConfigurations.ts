@@ -3,6 +3,14 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetBillingPortalConfigurationsInput {
+  active?: boolean;
+  ending_before?: string;
+  expand?: string;
+  is_default?: boolean;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetBillingPortalConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.optional(Schema.Boolean),
@@ -17,17 +25,122 @@ export const GetBillingPortalConfigurationsInput =
       path: "/v1/billing_portal/configurations",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBillingPortalConfigurationsInput =
-  typeof GetBillingPortalConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<GetBillingPortalConfigurationsInput>;
 
 // Output Schema
+export interface GetBillingPortalConfigurationsOutput {
+  data: {
+    active: boolean;
+    application:
+      | string
+      | { id: string; name: string | null; object: "application" }
+      | {
+          deleted: true;
+          id: string;
+          name: string | null;
+          object: "application";
+        }
+      | null;
+    business_profile: {
+      headline: string | null;
+      privacy_policy_url: string | null;
+      terms_of_service_url: string | null;
+    };
+    created: number;
+    default_return_url: string | null;
+    features: {
+      customer_update: {
+        allowed_updates: (
+          | "address"
+          | "email"
+          | "name"
+          | "phone"
+          | "shipping"
+          | "tax_id"
+        )[];
+        enabled: boolean;
+      };
+      invoice_history: { enabled: boolean };
+      payment_method_update: {
+        enabled: boolean;
+        payment_method_configuration: string | null;
+      };
+      subscription_cancel: {
+        cancellation_reason: {
+          enabled: boolean;
+          options: (
+            | "customer_service"
+            | "low_quality"
+            | "missing_features"
+            | "other"
+            | "switched_service"
+            | "too_complex"
+            | "too_expensive"
+            | "unused"
+          )[];
+        };
+        enabled: boolean;
+        mode: "at_period_end" | "immediately";
+        proration_behavior: "always_invoice" | "create_prorations" | "none";
+      };
+      subscription_update: {
+        billing_cycle_anchor: "now" | "unchanged" | null;
+        default_allowed_updates: ("price" | "promotion_code" | "quantity")[];
+        enabled: boolean;
+        products?:
+          | {
+              adjustable_quantity: {
+                enabled: boolean;
+                maximum: number | null;
+                minimum: number;
+              };
+              prices: string[];
+              product: string;
+            }[]
+          | null;
+        proration_behavior: "always_invoice" | "create_prorations" | "none";
+        schedule_at_period_end: {
+          conditions: {
+            type: "decreasing_item_amount" | "shortening_interval";
+          }[];
+        };
+        trial_update_behavior: "continue_trial" | "end_trial";
+      };
+    };
+    id: string;
+    is_default: boolean;
+    livemode: boolean;
+    login_page: { enabled: boolean; url: string | null };
+    metadata: Record<string, string> | null;
+    name: string | null;
+    object: "billing_portal.configuration";
+    updated: number;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetBillingPortalConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         active: Schema.Boolean,
-        application: Schema.Unknown,
+        application: Schema.NullOr(
+          Schema.Union([
+            Schema.String,
+            Schema.Struct({
+              id: Schema.String,
+              name: Schema.NullOr(Schema.String),
+              object: Schema.Literals(["application"]),
+            }),
+            Schema.Struct({
+              deleted: Schema.Literals([true]),
+              id: Schema.String,
+              name: Schema.NullOr(Schema.String),
+              object: Schema.Literals(["application"]),
+            }),
+          ]),
+        ),
         business_profile: Schema.Struct({
           headline: Schema.NullOr(Schema.String),
           privacy_policy_url: Schema.NullOr(Schema.String),
@@ -140,9 +253,7 @@ export const GetBillingPortalConfigurationsOutput =
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
-  });
-export type GetBillingPortalConfigurationsOutput =
-  typeof GetBillingPortalConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<GetBillingPortalConfigurationsOutput>;
 
 // The operation
 /**

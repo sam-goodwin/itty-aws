@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteKeyspaceInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace: string;
+}
 export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const DeleteKeyspaceInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}",
   }),
-);
-export type DeleteKeyspaceInput = typeof DeleteKeyspaceInput.Type;
+) as unknown as Schema.Codec<DeleteKeyspaceInput>;
 
 // Output Schema
-export const DeleteKeyspaceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteKeyspaceOutput = typeof DeleteKeyspaceOutput.Type;
+export type DeleteKeyspaceOutput = void;
+export const DeleteKeyspaceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKeyspaceOutput>;
 
 // The operation
 /**

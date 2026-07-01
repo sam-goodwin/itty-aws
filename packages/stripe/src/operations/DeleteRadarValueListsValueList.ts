@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface DeleteRadarValueListsValueListInput {
+  value_list: string;
+}
 export const DeleteRadarValueListsValueListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value_list: Schema.String.pipe(T.PathParam()),
@@ -12,19 +15,20 @@ export const DeleteRadarValueListsValueListInput =
       path: "/v1/radar/value_lists/{value_list}",
       contentType: "form-urlencoded",
     }),
-  );
-export type DeleteRadarValueListsValueListInput =
-  typeof DeleteRadarValueListsValueListInput.Type;
+  ) as unknown as Schema.Codec<DeleteRadarValueListsValueListInput>;
 
 // Output Schema
+export interface DeleteRadarValueListsValueListOutput {
+  deleted: true;
+  id: string;
+  object: "radar.value_list";
+}
 export const DeleteRadarValueListsValueListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["radar.value_list"]),
-  });
-export type DeleteRadarValueListsValueListOutput =
-  typeof DeleteRadarValueListsValueListOutput.Type;
+  }) as unknown as Schema.Codec<DeleteRadarValueListsValueListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DisableGroupBackupCompliancePolicyInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DisableGroupBackupCompliancePolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,21 +19,18 @@ export const DisableGroupBackupCompliancePolicyInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy",
     }),
-  );
-export type DisableGroupBackupCompliancePolicyInput =
-  typeof DisableGroupBackupCompliancePolicyInput.Type;
+  ) as unknown as Schema.Codec<DisableGroupBackupCompliancePolicyInput>;
 
 // Output Schema
+export type DisableGroupBackupCompliancePolicyOutput = void;
 export const DisableGroupBackupCompliancePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DisableGroupBackupCompliancePolicyOutput =
-  typeof DisableGroupBackupCompliancePolicyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableGroupBackupCompliancePolicyOutput>;
 
 // The operation
 /**
  * Disable Backup Compliance Policy Settings
  *
- * Disables the Backup Compliance Policy settings with the specified project. As a prerequisite, a support ticket needs to be file first, instructions in https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Disables the Backup Compliance Policy settings with the specified project. As a prerequisite, a support ticket needs to be file first, instructions in https://www.mongodb.com/docs/atlas/backup/cloud-backup/backup-compliance-policy/.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

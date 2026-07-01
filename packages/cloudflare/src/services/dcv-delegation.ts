@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service dcv-delegation
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -28,7 +28,7 @@ export const GetDcvDelegationRequest =
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/dcv_delegation/uuid" }),
     ),
-  ) as unknown as Schema.Schema<GetDcvDelegationRequest>;
+  ) as unknown as Schema.Codec<GetDcvDelegationRequest>;
 
 export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
@@ -40,7 +40,7 @@ export const GetDcvDelegationResponse =
     Schema.Struct({
       uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetDcvDelegationResponse>;
+  ) as unknown as Schema.Codec<GetDcvDelegationResponse>;
 
 export type GetDcvDelegationError = DefaultErrors;
 

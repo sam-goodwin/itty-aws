@@ -4,21 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1UpdatePgsodiumConfigInput {
+  ref: string;
+  root_key: string;
+}
 export const V1UpdatePgsodiumConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     root_key: Schema.String,
-  }).pipe(T.Http({ method: "PUT", path: "/v1/projects/{ref}/pgsodium" }));
-export type V1UpdatePgsodiumConfigInput =
-  typeof V1UpdatePgsodiumConfigInput.Type;
+  }).pipe(
+    T.Http({ method: "PUT", path: "/v1/projects/{ref}/pgsodium" }),
+  ) as unknown as Schema.Codec<V1UpdatePgsodiumConfigInput>;
 
 // Output Schema
+export interface V1UpdatePgsodiumConfigOutput {
+  root_key: string;
+}
 export const V1UpdatePgsodiumConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     root_key: Schema.String,
-  });
-export type V1UpdatePgsodiumConfigOutput =
-  typeof V1UpdatePgsodiumConfigOutput.Type;
+  }) as unknown as Schema.Codec<V1UpdatePgsodiumConfigOutput>;
 
 // The operation
 /**

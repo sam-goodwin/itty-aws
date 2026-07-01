@@ -1,8 +1,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostCustomersCustomerSourcesIdVerifyInput {
+  customer: string;
+  id: string;
+  amounts?: number[];
+  expand?: string[];
+}
 export const PostCustomersCustomerSourcesIdVerifyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -15,11 +26,30 @@ export const PostCustomersCustomerSourcesIdVerifyInput =
       path: "/v1/customers/{customer}/sources/{id}/verify",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostCustomersCustomerSourcesIdVerifyInput =
-  typeof PostCustomersCustomerSourcesIdVerifyInput.Type;
+  ) as unknown as Schema.Codec<PostCustomersCustomerSourcesIdVerifyInput>;
 
 // Output Schema
+export interface PostCustomersCustomerSourcesIdVerifyOutput {
+  account?: unknown;
+  account_holder_name: string | null;
+  account_holder_type: string | null;
+  account_type: string | null;
+  available_payout_methods?: ("instant" | "standard")[] | null;
+  bank_name: string | null;
+  country: string;
+  currency: string;
+  customer?: unknown;
+  default_for_currency?: boolean | null;
+  fingerprint: string | null;
+  future_requirements?: unknown;
+  id: string;
+  last4: string;
+  metadata?: Record<string, string> | null;
+  object: "bank_account";
+  requirements?: unknown;
+  routing_number: string | null;
+  status: string;
+}
 export const PostCustomersCustomerSourcesIdVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.Unknown),
@@ -45,9 +75,7 @@ export const PostCustomersCustomerSourcesIdVerifyOutput =
     requirements: Schema.optional(Schema.Unknown),
     routing_number: Schema.NullOr(Schema.String),
     status: Schema.String,
-  });
-export type PostCustomersCustomerSourcesIdVerifyOutput =
-  typeof PostCustomersCustomerSourcesIdVerifyOutput.Type;
+  }) as unknown as Schema.Codec<PostCustomersCustomerSourcesIdVerifyOutput>;
 
 // The operation
 /**

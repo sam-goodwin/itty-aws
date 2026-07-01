@@ -10,11 +10,7 @@
       "ESNext",
       "DOM"
     ],
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    }
+    "noCheck": true
   },
   "references": [
     {

@@ -4,14 +4,25 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GroupsTypesListInput {
+  project_id: string;
+}
 export const GroupsTypesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/groups_types/" }),
-);
-export type GroupsTypesListInput = typeof GroupsTypesListInput.Type;
+) as unknown as Schema.Codec<GroupsTypesListInput>;
 
 // Output Schema
+export type GroupsTypesListOutput = {
+  group_type?: string;
+  group_type_index?: number;
+  name_singular?: string | null;
+  name_plural?: string | null;
+  detail_dashboard?: number | null;
+  default_columns?: string[] | null;
+  created_at?: string | null;
+}[];
 export const GroupsTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     group_type: Schema.optional(Schema.String),
@@ -24,8 +35,7 @@ export const GroupsTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     ),
     created_at: Schema.optional(Schema.NullOr(Schema.String)),
   }),
-);
-export type GroupsTypesListOutput = typeof GroupsTypesListOutput.Type;
+) as unknown as Schema.Codec<GroupsTypesListOutput>;
 
 // The operation
 /**

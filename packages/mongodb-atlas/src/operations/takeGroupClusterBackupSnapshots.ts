@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TakeGroupClusterBackupSnapshotsInput {
+  groupId: string;
+  clusterName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const TakeGroupClusterBackupSnapshotsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,22 +21,18 @@ export const TakeGroupClusterBackupSnapshotsInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots",
     }),
-  );
-export type TakeGroupClusterBackupSnapshotsInput =
-  typeof TakeGroupClusterBackupSnapshotsInput.Type;
+  ) as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsInput>;
 
 // Output Schema
+export type TakeGroupClusterBackupSnapshotsOutput = void;
 export const TakeGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TakeGroupClusterBackupSnapshotsOutput =
-  typeof TakeGroupClusterBackupSnapshotsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TakeGroupClusterBackupSnapshotsOutput>;
 
 // The operation
 /**
  * Take One On-Demand Snapshot
  *
  * Takes one on-demand snapshot for the specified cluster. Atlas takes on-demand snapshots immediately and scheduled snapshots at regular intervals. If an on-demand snapshot with a status of `queued` or `inProgress` exists, before taking another snapshot, wait until Atlas completes processing the previously taken on-demand snapshot.
- * To use this resource, the requesting Service Account or API Key must have the Project Backup Manager role or Project Backup Creator role.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

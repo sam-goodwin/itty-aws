@@ -4,11 +4,48 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ArtifactManifestsCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    artifactManifestState?:
+      | "Unknown"
+      | "Uploading"
+      | "Uploaded"
+      | "Validating"
+      | "ValidationFailed"
+      | "Succeeded";
+    artifacts?: {
+      artifactName?: string;
+      artifactType?:
+        | "Unknown"
+        | "OCIArtifact"
+        | "VhdImageFile"
+        | "ArmTemplate"
+        | "ImageFile";
+      artifactVersion?: string;
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ArtifactManifestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -67,11 +104,22 @@ export const ArtifactManifestsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsCreateOrUpdateInput =
-  typeof ArtifactManifestsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ArtifactManifestsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactManifestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -91,9 +139,7 @@ export const ArtifactManifestsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactManifestsCreateOrUpdateOutput =
-  typeof ArtifactManifestsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -112,6 +158,13 @@ export const ArtifactManifestsCreateOrUpdate =
     outputSchema: ArtifactManifestsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ArtifactManifestsDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+}
 export const ArtifactManifestsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -125,15 +178,12 @@ export const ArtifactManifestsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsDeleteInput =
-  typeof ArtifactManifestsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsDeleteInput>;
 
 // Output Schema
+export type ArtifactManifestsDeleteOutput = void;
 export const ArtifactManifestsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactManifestsDeleteOutput =
-  typeof ArtifactManifestsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactManifestsDeleteOutput>;
 
 // The operation
 /**
@@ -153,6 +203,13 @@ export const ArtifactManifestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactManifestsGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+}
 export const ArtifactManifestsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -166,10 +223,22 @@ export const ArtifactManifestsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsGetInput = typeof ArtifactManifestsGetInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsGetInput>;
 
 // Output Schema
+export interface ArtifactManifestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactManifestsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -189,8 +258,7 @@ export const ArtifactManifestsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactManifestsGetOutput = typeof ArtifactManifestsGetOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsGetOutput>;
 
 // The operation
 /**
@@ -210,6 +278,12 @@ export const ArtifactManifestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactManifestsListByArtifactStoreInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ArtifactManifestsListByArtifactStoreInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -222,11 +296,25 @@ export const ArtifactManifestsListByArtifactStoreInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsListByArtifactStoreInput =
-  typeof ArtifactManifestsListByArtifactStoreInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsListByArtifactStoreInput>;
 
 // Output Schema
+export interface ArtifactManifestsListByArtifactStoreOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArtifactManifestsListByArtifactStoreOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -263,9 +351,7 @@ export const ArtifactManifestsListByArtifactStoreOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactManifestsListByArtifactStoreOutput =
-  typeof ArtifactManifestsListByArtifactStoreOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsListByArtifactStoreOutput>;
 
 // The operation
 /**
@@ -283,6 +369,13 @@ export const ArtifactManifestsListByArtifactStore =
     outputSchema: ArtifactManifestsListByArtifactStoreOutput,
   }));
 // Input Schema
+export interface ArtifactManifestsListCredentialInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+}
 export const ArtifactManifestsListCredentialInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -296,11 +389,15 @@ export const ArtifactManifestsListCredentialInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/listCredential",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsListCredentialInput =
-  typeof ArtifactManifestsListCredentialInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsListCredentialInput>;
 
 // Output Schema
+export interface ArtifactManifestsListCredentialOutput {
+  credentialType:
+    | "Unknown"
+    | "AzureContainerRegistryScopedToken"
+    | "AzureStorageAccountToken";
+}
 export const ArtifactManifestsListCredentialOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     credentialType: Schema.Literals([
@@ -308,9 +405,7 @@ export const ArtifactManifestsListCredentialOutput =
       "AzureContainerRegistryScopedToken",
       "AzureStorageAccountToken",
     ]),
-  });
-export type ArtifactManifestsListCredentialOutput =
-  typeof ArtifactManifestsListCredentialOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsListCredentialOutput>;
 
 // The operation
 /**
@@ -329,6 +424,14 @@ export const ArtifactManifestsListCredential =
     outputSchema: ArtifactManifestsListCredentialOutput,
   }));
 // Input Schema
+export interface ArtifactManifestsUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const ArtifactManifestsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -343,11 +446,22 @@ export const ArtifactManifestsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsUpdateInput =
-  typeof ArtifactManifestsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsUpdateInput>;
 
 // Output Schema
+export interface ArtifactManifestsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactManifestsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -367,9 +481,7 @@ export const ArtifactManifestsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactManifestsUpdateOutput =
-  typeof ArtifactManifestsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsUpdateOutput>;
 
 // The operation
 /**
@@ -390,6 +502,20 @@ export const ArtifactManifestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactManifestsUpdateStateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactManifestName: string;
+  subscriptionId: string;
+  artifactManifestState?:
+    | "Unknown"
+    | "Uploading"
+    | "Uploaded"
+    | "Validating"
+    | "ValidationFailed"
+    | "Succeeded";
+}
 export const ArtifactManifestsUpdateStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -413,11 +539,18 @@ export const ArtifactManifestsUpdateStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/updateState",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactManifestsUpdateStateInput =
-  typeof ArtifactManifestsUpdateStateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactManifestsUpdateStateInput>;
 
 // Output Schema
+export interface ArtifactManifestsUpdateStateOutput {
+  artifactManifestState?:
+    | "Unknown"
+    | "Uploading"
+    | "Uploaded"
+    | "Validating"
+    | "ValidationFailed"
+    | "Succeeded";
+}
 export const ArtifactManifestsUpdateStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifactManifestState: Schema.optional(
@@ -430,9 +563,7 @@ export const ArtifactManifestsUpdateStateOutput =
         "Succeeded",
       ]),
     ),
-  });
-export type ArtifactManifestsUpdateStateOutput =
-  typeof ArtifactManifestsUpdateStateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactManifestsUpdateStateOutput>;
 
 // The operation
 /**
@@ -451,6 +582,13 @@ export const ArtifactManifestsUpdateState =
     outputSchema: ArtifactManifestsUpdateStateOutput,
   }));
 // Input Schema
+export interface ArtifactStoresAddNetworkFabricControllerEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  networkFabricControllerIds?: { id?: string }[];
+}
 export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -470,15 +608,12 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/addNetworkFabricControllerEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresAddNetworkFabricControllerEndPointsInput =
-  typeof ArtifactStoresAddNetworkFabricControllerEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresAddNetworkFabricControllerEndPointsInput>;
 
 // Output Schema
+export type ArtifactStoresAddNetworkFabricControllerEndPointsOutput = void;
 export const ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactStoresAddNetworkFabricControllerEndPointsOutput =
-  typeof ArtifactStoresAddNetworkFabricControllerEndPointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresAddNetworkFabricControllerEndPointsOutput>;
 
 // The operation
 /**
@@ -496,6 +631,13 @@ export const ArtifactStoresAddNetworkFabricControllerEndPoints =
     outputSchema: ArtifactStoresAddNetworkFabricControllerEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresApprovePrivateEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  manualPrivateEndPointConnections?: { id?: string }[];
+}
 export const ArtifactStoresApprovePrivateEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -515,15 +657,12 @@ export const ArtifactStoresApprovePrivateEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/approvePrivateEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresApprovePrivateEndPointsInput =
-  typeof ArtifactStoresApprovePrivateEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresApprovePrivateEndPointsInput>;
 
 // Output Schema
+export type ArtifactStoresApprovePrivateEndPointsOutput = void;
 export const ArtifactStoresApprovePrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactStoresApprovePrivateEndPointsOutput =
-  typeof ArtifactStoresApprovePrivateEndPointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresApprovePrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -541,6 +680,30 @@ export const ArtifactStoresApprovePrivateEndPoints =
     outputSchema: ArtifactStoresApprovePrivateEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    storeType?: "Unknown" | "AzureContainerRegistry" | "AzureStorageAccount";
+    backingResourcePublicNetworkAccess?: "Enabled" | "Disabled";
+    replicationStrategy?: "Unknown" | "SingleReplication";
+    managedResourceGroupConfiguration?: { name?: string; location?: string };
+    storageResourceId?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ArtifactStoresCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -591,11 +754,22 @@ export const ArtifactStoresCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresCreateOrUpdateInput =
-  typeof ArtifactStoresCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresCreateOrUpdateInput>;
 
 // Output Schema
+export interface ArtifactStoresCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactStoresCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -615,9 +789,7 @@ export const ArtifactStoresCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactStoresCreateOrUpdateOutput =
-  typeof ArtifactStoresCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -635,6 +807,12 @@ export const ArtifactStoresCreateOrUpdate =
     outputSchema: ArtifactStoresCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ArtifactStoresDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ArtifactStoresDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -647,13 +825,12 @@ export const ArtifactStoresDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresDeleteInput = typeof ArtifactStoresDeleteInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresDeleteInput>;
 
 // Output Schema
+export type ArtifactStoresDeleteOutput = void;
 export const ArtifactStoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactStoresDeleteOutput = typeof ArtifactStoresDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteOutput>;
 
 // The operation
 /**
@@ -672,6 +849,13 @@ export const ArtifactStoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  networkFabricControllerIds?: { id?: string }[];
+}
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -691,15 +875,12 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
-  typeof ArtifactStoresDeleteNetworkFabricControllerEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresDeleteNetworkFabricControllerEndPointsInput>;
 
 // Output Schema
+export type ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput = void;
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput =
-  typeof ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput>;
 
 // The operation
 /**
@@ -717,6 +898,12 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPoints =
     outputSchema: ArtifactStoresDeleteNetworkFabricControllerEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ArtifactStoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -730,10 +917,22 @@ export const ArtifactStoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type ArtifactStoresGetInput = typeof ArtifactStoresGetInput.Type;
+) as unknown as Schema.Codec<ArtifactStoresGetInput>;
 
 // Output Schema
+export interface ArtifactStoresGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactStoresGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -753,8 +952,7 @@ export const ArtifactStoresGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactStoresGetOutput = typeof ArtifactStoresGetOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresGetOutput>;
 
 // The operation
 /**
@@ -771,6 +969,11 @@ export const ArtifactStoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ArtifactStoresGetOutput,
 }));
 // Input Schema
+export interface ArtifactStoresListByPublisherInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+}
 export const ArtifactStoresListByPublisherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -782,11 +985,25 @@ export const ArtifactStoresListByPublisherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresListByPublisherInput =
-  typeof ArtifactStoresListByPublisherInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresListByPublisherInput>;
 
 // Output Schema
+export interface ArtifactStoresListByPublisherOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ArtifactStoresListByPublisherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -823,9 +1040,7 @@ export const ArtifactStoresListByPublisherOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactStoresListByPublisherOutput =
-  typeof ArtifactStoresListByPublisherOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresListByPublisherOutput>;
 
 // The operation
 /**
@@ -842,6 +1057,12 @@ export const ArtifactStoresListByPublisher =
     outputSchema: ArtifactStoresListByPublisherOutput,
   }));
 // Input Schema
+export interface ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -854,11 +1075,13 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listNetworkFabricControllerPrivateEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
-  typeof ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput>;
 
 // Output Schema
+export interface ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput {
+  value?: { networkFabricControllerIds?: { id?: string }[] }[];
+  nextLink?: string;
+}
 export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -875,9 +1098,7 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput =
-  typeof ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -896,6 +1117,12 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPoints =
       ArtifactStoresListNetworkFabricControllerPrivateEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresListPrivateEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ArtifactStoresListPrivateEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -908,11 +1135,13 @@ export const ArtifactStoresListPrivateEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listPrivateEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresListPrivateEndPointsInput =
-  typeof ArtifactStoresListPrivateEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresListPrivateEndPointsInput>;
 
 // Output Schema
+export interface ArtifactStoresListPrivateEndPointsOutput {
+  value?: { manualPrivateEndPointConnections?: { id?: string }[] }[];
+  nextLink?: string;
+}
 export const ArtifactStoresListPrivateEndPointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -929,9 +1158,7 @@ export const ArtifactStoresListPrivateEndPointsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ArtifactStoresListPrivateEndPointsOutput =
-  typeof ArtifactStoresListPrivateEndPointsOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresListPrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -949,6 +1176,13 @@ export const ArtifactStoresListPrivateEndPoints =
     outputSchema: ArtifactStoresListPrivateEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresRemovePrivateEndPointsInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  manualPrivateEndPointConnections?: { id?: string }[];
+}
 export const ArtifactStoresRemovePrivateEndPointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -968,15 +1202,12 @@ export const ArtifactStoresRemovePrivateEndPointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/removePrivateEndPoints",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresRemovePrivateEndPointsInput =
-  typeof ArtifactStoresRemovePrivateEndPointsInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresRemovePrivateEndPointsInput>;
 
 // Output Schema
+export type ArtifactStoresRemovePrivateEndPointsOutput = void;
 export const ArtifactStoresRemovePrivateEndPointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ArtifactStoresRemovePrivateEndPointsOutput =
-  typeof ArtifactStoresRemovePrivateEndPointsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ArtifactStoresRemovePrivateEndPointsOutput>;
 
 // The operation
 /**
@@ -994,6 +1225,13 @@ export const ArtifactStoresRemovePrivateEndPoints =
     outputSchema: ArtifactStoresRemovePrivateEndPointsOutput,
   }));
 // Input Schema
+export interface ArtifactStoresUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const ArtifactStoresUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1007,10 +1245,22 @@ export const ArtifactStoresUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ArtifactStoresUpdateInput = typeof ArtifactStoresUpdateInput.Type;
+  ) as unknown as Schema.Codec<ArtifactStoresUpdateInput>;
 
 // Output Schema
+export interface ArtifactStoresUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ArtifactStoresUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1030,8 +1280,7 @@ export const ArtifactStoresUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ArtifactStoresUpdateOutput = typeof ArtifactStoresUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ArtifactStoresUpdateOutput>;
 
 // The operation
 /**
@@ -1051,6 +1300,12 @@ export const ArtifactStoresUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ComponentsGetInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  componentName: string;
+  subscriptionId: string;
+}
 export const ComponentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   networkFunctionName: Schema.String.pipe(T.PathParam()),
@@ -1062,10 +1317,22 @@ export const ComponentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/components/{componentName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type ComponentsGetInput = typeof ComponentsGetInput.Type;
+) as unknown as Schema.Codec<ComponentsGetInput>;
 
 // Output Schema
+export interface ComponentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ComponentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1084,8 +1351,7 @@ export const ComponentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ComponentsGetOutput = typeof ComponentsGetOutput.Type;
+}) as unknown as Schema.Codec<ComponentsGetOutput>;
 
 // The operation
 /**
@@ -1102,6 +1368,11 @@ export const ComponentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ComponentsGetOutput,
 }));
 // Input Schema
+export interface ComponentsListByNetworkFunctionInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  networkFunctionName: string;
+}
 export const ComponentsListByNetworkFunctionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1113,11 +1384,25 @@ export const ComponentsListByNetworkFunctionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/components",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ComponentsListByNetworkFunctionInput =
-  typeof ComponentsListByNetworkFunctionInput.Type;
+  ) as unknown as Schema.Codec<ComponentsListByNetworkFunctionInput>;
 
 // Output Schema
+export interface ComponentsListByNetworkFunctionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ComponentsListByNetworkFunctionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1154,9 +1439,7 @@ export const ComponentsListByNetworkFunctionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ComponentsListByNetworkFunctionOutput =
-  typeof ComponentsListByNetworkFunctionOutput.Type;
+  }) as unknown as Schema.Codec<ComponentsListByNetworkFunctionOutput>;
 
 // The operation
 /**
@@ -1173,6 +1456,28 @@ export const ComponentsListByNetworkFunction =
     outputSchema: ComponentsListByNetworkFunctionOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  configurationGroupSchemaName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+    description?: string;
+    schemaDefinition?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigurationGroupSchemasCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1208,11 +1513,22 @@ export const ConfigurationGroupSchemasCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasCreateOrUpdateInput =
-  typeof ConfigurationGroupSchemasCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationGroupSchemasCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupSchemasCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1232,9 +1548,7 @@ export const ConfigurationGroupSchemasCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupSchemasCreateOrUpdateOutput =
-  typeof ConfigurationGroupSchemasCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupSchemasCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1252,6 +1566,12 @@ export const ConfigurationGroupSchemasCreateOrUpdate =
     outputSchema: ConfigurationGroupSchemasCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  configurationGroupSchemaName: string;
+  subscriptionId: string;
+}
 export const ConfigurationGroupSchemasDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1264,15 +1584,12 @@ export const ConfigurationGroupSchemasDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasDeleteInput =
-  typeof ConfigurationGroupSchemasDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasDeleteInput>;
 
 // Output Schema
+export type ConfigurationGroupSchemasDeleteOutput = void;
 export const ConfigurationGroupSchemasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationGroupSchemasDeleteOutput =
-  typeof ConfigurationGroupSchemasDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupSchemasDeleteOutput>;
 
 // The operation
 /**
@@ -1290,6 +1607,12 @@ export const ConfigurationGroupSchemasDelete =
     outputSchema: ConfigurationGroupSchemasDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  configurationGroupSchemaName: string;
+  subscriptionId: string;
+}
 export const ConfigurationGroupSchemasGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1302,11 +1625,22 @@ export const ConfigurationGroupSchemasGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasGetInput =
-  typeof ConfigurationGroupSchemasGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasGetInput>;
 
 // Output Schema
+export interface ConfigurationGroupSchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupSchemasGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1326,9 +1660,7 @@ export const ConfigurationGroupSchemasGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupSchemasGetOutput =
-  typeof ConfigurationGroupSchemasGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupSchemasGetOutput>;
 
 // The operation
 /**
@@ -1346,6 +1678,11 @@ export const ConfigurationGroupSchemasGet =
     outputSchema: ConfigurationGroupSchemasGetOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasListByPublisherInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+}
 export const ConfigurationGroupSchemasListByPublisherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1357,11 +1694,25 @@ export const ConfigurationGroupSchemasListByPublisherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasListByPublisherInput =
-  typeof ConfigurationGroupSchemasListByPublisherInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasListByPublisherInput>;
 
 // Output Schema
+export interface ConfigurationGroupSchemasListByPublisherOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationGroupSchemasListByPublisherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1398,9 +1749,7 @@ export const ConfigurationGroupSchemasListByPublisherOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationGroupSchemasListByPublisherOutput =
-  typeof ConfigurationGroupSchemasListByPublisherOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupSchemasListByPublisherOutput>;
 
 // The operation
 /**
@@ -1417,6 +1766,13 @@ export const ConfigurationGroupSchemasListByPublisher =
     outputSchema: ConfigurationGroupSchemasListByPublisherOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  configurationGroupSchemaName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const ConfigurationGroupSchemasUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1430,11 +1786,22 @@ export const ConfigurationGroupSchemasUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasUpdateInput =
-  typeof ConfigurationGroupSchemasUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasUpdateInput>;
 
 // Output Schema
+export interface ConfigurationGroupSchemasUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupSchemasUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1454,9 +1821,7 @@ export const ConfigurationGroupSchemasUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupSchemasUpdateOutput =
-  typeof ConfigurationGroupSchemasUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupSchemasUpdateOutput>;
 
 // The operation
 /**
@@ -1475,6 +1840,13 @@ export const ConfigurationGroupSchemasUpdate =
     outputSchema: ConfigurationGroupSchemasUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupSchemasUpdateStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  configurationGroupSchemaName: string;
+  versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+}
 export const ConfigurationGroupSchemasUpdateStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1490,19 +1862,18 @@ export const ConfigurationGroupSchemasUpdateStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}/updateState",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupSchemasUpdateStateInput =
-  typeof ConfigurationGroupSchemasUpdateStateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupSchemasUpdateStateInput>;
 
 // Output Schema
+export interface ConfigurationGroupSchemasUpdateStateOutput {
+  versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+}
 export const ConfigurationGroupSchemasUpdateStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
       Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
     ),
-  });
-export type ConfigurationGroupSchemasUpdateStateOutput =
-  typeof ConfigurationGroupSchemasUpdateStateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupSchemasUpdateStateOutput>;
 
 // The operation
 /**
@@ -1520,6 +1891,32 @@ export const ConfigurationGroupSchemasUpdateState =
     outputSchema: ConfigurationGroupSchemasUpdateStateOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupValuesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationGroupValueName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    publisherName?: string;
+    publisherScope?: "Unknown" | "Private";
+    configurationGroupSchemaName?: string;
+    configurationGroupSchemaOfferingLocation?: string;
+    configurationGroupSchemaResourceReference?: {
+      idType: "Unknown" | "Open" | "Secret";
+    };
+    configurationType: "Unknown" | "Secret" | "Open";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ConfigurationGroupValuesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1563,11 +1960,22 @@ export const ConfigurationGroupValuesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesCreateOrUpdateInput =
-  typeof ConfigurationGroupValuesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ConfigurationGroupValuesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupValuesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1587,9 +1995,7 @@ export const ConfigurationGroupValuesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupValuesCreateOrUpdateOutput =
-  typeof ConfigurationGroupValuesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupValuesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1606,6 +2012,11 @@ export const ConfigurationGroupValuesCreateOrUpdate =
     outputSchema: ConfigurationGroupValuesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupValuesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationGroupValueName: string;
+}
 export const ConfigurationGroupValuesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1617,15 +2028,12 @@ export const ConfigurationGroupValuesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesDeleteInput =
-  typeof ConfigurationGroupValuesDeleteInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesDeleteInput>;
 
 // Output Schema
+export type ConfigurationGroupValuesDeleteOutput = void;
 export const ConfigurationGroupValuesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ConfigurationGroupValuesDeleteOutput =
-  typeof ConfigurationGroupValuesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConfigurationGroupValuesDeleteOutput>;
 
 // The operation
 /**
@@ -1642,6 +2050,11 @@ export const ConfigurationGroupValuesDelete =
     outputSchema: ConfigurationGroupValuesDeleteOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupValuesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationGroupValueName: string;
+}
 export const ConfigurationGroupValuesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1653,11 +2066,22 @@ export const ConfigurationGroupValuesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesGetInput =
-  typeof ConfigurationGroupValuesGetInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesGetInput>;
 
 // Output Schema
+export interface ConfigurationGroupValuesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupValuesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1677,9 +2101,7 @@ export const ConfigurationGroupValuesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupValuesGetOutput =
-  typeof ConfigurationGroupValuesGetOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupValuesGetOutput>;
 
 // The operation
 /**
@@ -1697,6 +2119,10 @@ export const ConfigurationGroupValuesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ConfigurationGroupValuesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ConfigurationGroupValuesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1707,11 +2133,25 @@ export const ConfigurationGroupValuesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesListByResourceGroupInput =
-  typeof ConfigurationGroupValuesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesListByResourceGroupInput>;
 
 // Output Schema
+export interface ConfigurationGroupValuesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationGroupValuesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1748,9 +2188,7 @@ export const ConfigurationGroupValuesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationGroupValuesListByResourceGroupOutput =
-  typeof ConfigurationGroupValuesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupValuesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1766,6 +2204,9 @@ export const ConfigurationGroupValuesListByResourceGroup =
     outputSchema: ConfigurationGroupValuesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupValuesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ConfigurationGroupValuesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1775,11 +2216,25 @@ export const ConfigurationGroupValuesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/configurationGroupValues",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesListBySubscriptionInput =
-  typeof ConfigurationGroupValuesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesListBySubscriptionInput>;
 
 // Output Schema
+export interface ConfigurationGroupValuesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ConfigurationGroupValuesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1816,9 +2271,7 @@ export const ConfigurationGroupValuesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ConfigurationGroupValuesListBySubscriptionOutput =
-  typeof ConfigurationGroupValuesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupValuesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1833,6 +2286,12 @@ export const ConfigurationGroupValuesListBySubscription =
     outputSchema: ConfigurationGroupValuesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ConfigurationGroupValuesUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  configurationGroupValueName: string;
+  tags?: Record<string, string>;
+}
 export const ConfigurationGroupValuesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1845,11 +2304,22 @@ export const ConfigurationGroupValuesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ConfigurationGroupValuesUpdateTagsInput =
-  typeof ConfigurationGroupValuesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<ConfigurationGroupValuesUpdateTagsInput>;
 
 // Output Schema
+export interface ConfigurationGroupValuesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ConfigurationGroupValuesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1869,9 +2339,7 @@ export const ConfigurationGroupValuesUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ConfigurationGroupValuesUpdateTagsOutput =
-  typeof ConfigurationGroupValuesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<ConfigurationGroupValuesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -1889,6 +2357,26 @@ export const ConfigurationGroupValuesUpdateTags =
     outputSchema: ConfigurationGroupValuesUpdateTagsOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionGroupsCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    description?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1920,11 +2408,22 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
-  typeof NetworkFunctionDefinitionGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1944,9 +2443,7 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionGroupsCreateOrUpdateOutput =
-  typeof NetworkFunctionDefinitionGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1964,6 +2461,12 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdate =
     outputSchema: NetworkFunctionDefinitionGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionGroupsDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1976,15 +2479,12 @@ export const NetworkFunctionDefinitionGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionGroupsDeleteInput =
-  typeof NetworkFunctionDefinitionGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsDeleteInput>;
 
 // Output Schema
+export type NetworkFunctionDefinitionGroupsDeleteOutput = void;
 export const NetworkFunctionDefinitionGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFunctionDefinitionGroupsDeleteOutput =
-  typeof NetworkFunctionDefinitionGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -2002,6 +2502,12 @@ export const NetworkFunctionDefinitionGroupsDelete =
     outputSchema: NetworkFunctionDefinitionGroupsDeleteOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionGroupsGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2014,11 +2520,22 @@ export const NetworkFunctionDefinitionGroupsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionGroupsGetInput =
-  typeof NetworkFunctionDefinitionGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsGetInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2038,9 +2555,7 @@ export const NetworkFunctionDefinitionGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionGroupsGetOutput =
-  typeof NetworkFunctionDefinitionGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsGetOutput>;
 
 // The operation
 /**
@@ -2058,6 +2573,11 @@ export const NetworkFunctionDefinitionGroupsGet =
     outputSchema: NetworkFunctionDefinitionGroupsGetOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionGroupsListByPublisherInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionGroupsListByPublisherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2069,11 +2589,25 @@ export const NetworkFunctionDefinitionGroupsListByPublisherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionGroupsListByPublisherInput =
-  typeof NetworkFunctionDefinitionGroupsListByPublisherInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsListByPublisherInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionGroupsListByPublisherOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFunctionDefinitionGroupsListByPublisherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2110,9 +2644,7 @@ export const NetworkFunctionDefinitionGroupsListByPublisherOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFunctionDefinitionGroupsListByPublisherOutput =
-  typeof NetworkFunctionDefinitionGroupsListByPublisherOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsListByPublisherOutput>;
 
 // The operation
 /**
@@ -2129,6 +2661,13 @@ export const NetworkFunctionDefinitionGroupsListByPublisher =
     outputSchema: NetworkFunctionDefinitionGroupsListByPublisherOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionGroupsUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const NetworkFunctionDefinitionGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2142,11 +2681,22 @@ export const NetworkFunctionDefinitionGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionGroupsUpdateInput =
-  typeof NetworkFunctionDefinitionGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsUpdateInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2166,9 +2716,7 @@ export const NetworkFunctionDefinitionGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionGroupsUpdateOutput =
-  typeof NetworkFunctionDefinitionGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -2187,6 +2735,39 @@ export const NetworkFunctionDefinitionGroupsUpdate =
     outputSchema: NetworkFunctionDefinitionGroupsUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  networkFunctionDefinitionVersionName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    versionState?:
+      | "Unknown"
+      | "Preview"
+      | "Validating"
+      | "ValidationFailed"
+      | "Active"
+      | "Deprecated";
+    description?: string;
+    deployParameters?: string;
+    networkFunctionType:
+      | "Unknown"
+      | "VirtualNetworkFunction"
+      | "ContainerizedNetworkFunction";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2235,11 +2816,22 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
-  typeof NetworkFunctionDefinitionVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2259,9 +2851,7 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionVersionsCreateOrUpdateOutput =
-  typeof NetworkFunctionDefinitionVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2280,6 +2870,13 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdate =
     outputSchema: NetworkFunctionDefinitionVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  networkFunctionDefinitionVersionName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2293,15 +2890,12 @@ export const NetworkFunctionDefinitionVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsDeleteInput =
-  typeof NetworkFunctionDefinitionVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsDeleteInput>;
 
 // Output Schema
+export type NetworkFunctionDefinitionVersionsDeleteOutput = void;
 export const NetworkFunctionDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFunctionDefinitionVersionsDeleteOutput =
-  typeof NetworkFunctionDefinitionVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -2320,6 +2914,13 @@ export const NetworkFunctionDefinitionVersionsDelete =
     outputSchema: NetworkFunctionDefinitionVersionsDeleteOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  networkFunctionDefinitionVersionName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2333,11 +2934,22 @@ export const NetworkFunctionDefinitionVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsGetInput =
-  typeof NetworkFunctionDefinitionVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsGetInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2357,9 +2969,7 @@ export const NetworkFunctionDefinitionVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionVersionsGetOutput =
-  typeof NetworkFunctionDefinitionVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsGetOutput>;
 
 // The operation
 /**
@@ -2378,6 +2988,12 @@ export const NetworkFunctionDefinitionVersionsGet =
     outputSchema: NetworkFunctionDefinitionVersionsGetOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2390,11 +3006,25 @@ export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGro
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput =
-  typeof NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2431,9 +3061,7 @@ export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGro
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput =
-  typeof NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput>;
 
 // The operation
 /**
@@ -2453,6 +3081,14 @@ export const NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGro
       NetworkFunctionDefinitionVersionsListByNetworkFunctionDefinitionGroupOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  networkFunctionDefinitionVersionName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const NetworkFunctionDefinitionVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2467,11 +3103,22 @@ export const NetworkFunctionDefinitionVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsUpdateInput =
-  typeof NetworkFunctionDefinitionVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsUpdateInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionDefinitionVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2491,9 +3138,7 @@ export const NetworkFunctionDefinitionVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionDefinitionVersionsUpdateOutput =
-  typeof NetworkFunctionDefinitionVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -2513,6 +3158,20 @@ export const NetworkFunctionDefinitionVersionsUpdate =
     outputSchema: NetworkFunctionDefinitionVersionsUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionDefinitionVersionsUpdateStateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  networkFunctionDefinitionGroupName: string;
+  networkFunctionDefinitionVersionName: string;
+  subscriptionId: string;
+  versionState?:
+    | "Unknown"
+    | "Preview"
+    | "Validating"
+    | "ValidationFailed"
+    | "Active"
+    | "Deprecated";
+}
 export const NetworkFunctionDefinitionVersionsUpdateStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2536,11 +3195,18 @@ export const NetworkFunctionDefinitionVersionsUpdateStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}/updateState",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionDefinitionVersionsUpdateStateInput =
-  typeof NetworkFunctionDefinitionVersionsUpdateStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsUpdateStateInput>;
 
 // Output Schema
+export interface NetworkFunctionDefinitionVersionsUpdateStateOutput {
+  versionState?:
+    | "Unknown"
+    | "Preview"
+    | "Validating"
+    | "ValidationFailed"
+    | "Active"
+    | "Deprecated";
+}
 export const NetworkFunctionDefinitionVersionsUpdateStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
@@ -2553,9 +3219,7 @@ export const NetworkFunctionDefinitionVersionsUpdateStateOutput =
         "Deprecated",
       ]),
     ),
-  });
-export type NetworkFunctionDefinitionVersionsUpdateStateOutput =
-  typeof NetworkFunctionDefinitionVersionsUpdateStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionDefinitionVersionsUpdateStateOutput>;
 
 // The operation
 /**
@@ -2574,6 +3238,55 @@ export const NetworkFunctionDefinitionVersionsUpdateState =
     outputSchema: NetworkFunctionDefinitionVersionsUpdateStateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionsCreateOrUpdateInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    publisherName?: string;
+    publisherScope?: "Unknown" | "Private";
+    networkFunctionDefinitionGroupName?: string;
+    networkFunctionDefinitionVersion?: string;
+    networkFunctionDefinitionOfferingLocation?: string;
+    networkFunctionDefinitionVersionResourceReference?: {
+      idType: "Unknown" | "Open" | "Secret";
+    };
+    nfviType?:
+      | "Unknown"
+      | "AzureArcKubernetes"
+      | "AzureCore"
+      | "AzureOperatorNexus";
+    nfviId?: string;
+    allowSoftwareUpdate?: boolean;
+    configurationType: "Unknown" | "Secret" | "Open";
+    roleOverrideValues?: string[];
+  };
+  etag?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkFunctionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2653,11 +3366,22 @@ export const NetworkFunctionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsCreateOrUpdateInput =
-  typeof NetworkFunctionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkFunctionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2677,9 +3401,7 @@ export const NetworkFunctionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionsCreateOrUpdateOutput =
-  typeof NetworkFunctionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2696,6 +3418,11 @@ export const NetworkFunctionsCreateOrUpdate =
     outputSchema: NetworkFunctionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkFunctionsDeleteInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2707,15 +3434,12 @@ export const NetworkFunctionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsDeleteInput =
-  typeof NetworkFunctionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsDeleteInput>;
 
 // Output Schema
+export type NetworkFunctionsDeleteOutput = void;
 export const NetworkFunctionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFunctionsDeleteOutput =
-  typeof NetworkFunctionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsDeleteOutput>;
 
 // The operation
 /**
@@ -2733,6 +3457,18 @@ export const NetworkFunctionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkFunctionsExecuteRequestInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  subscriptionId: string;
+  serviceEndpoint: string;
+  requestMetadata: {
+    relativePath: string;
+    httpMethod: "Unknown" | "Post" | "Put" | "Get" | "Patch" | "Delete";
+    serializedBody: string;
+    apiVersion?: string;
+  };
+}
 export const NetworkFunctionsExecuteRequestInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2758,15 +3494,12 @@ export const NetworkFunctionsExecuteRequestInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/executeRequest",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsExecuteRequestInput =
-  typeof NetworkFunctionsExecuteRequestInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsExecuteRequestInput>;
 
 // Output Schema
+export type NetworkFunctionsExecuteRequestOutput = void;
 export const NetworkFunctionsExecuteRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkFunctionsExecuteRequestOutput =
-  typeof NetworkFunctionsExecuteRequestOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFunctionsExecuteRequestOutput>;
 
 // The operation
 /**
@@ -2783,6 +3516,11 @@ export const NetworkFunctionsExecuteRequest =
     outputSchema: NetworkFunctionsExecuteRequestOutput,
   }));
 // Input Schema
+export interface NetworkFunctionsGetInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2794,10 +3532,22 @@ export const NetworkFunctionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsGetInput = typeof NetworkFunctionsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsGetInput>;
 
 // Output Schema
+export interface NetworkFunctionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2817,8 +3567,7 @@ export const NetworkFunctionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionsGetOutput = typeof NetworkFunctionsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionsGetOutput>;
 
 // The operation
 /**
@@ -2834,6 +3583,10 @@ export const NetworkFunctionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NetworkFunctionsGetOutput,
 }));
 // Input Schema
+export interface NetworkFunctionsListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const NetworkFunctionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2844,11 +3597,25 @@ export const NetworkFunctionsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsListByResourceGroupInput =
-  typeof NetworkFunctionsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsListByResourceGroupInput>;
 
 // Output Schema
+export interface NetworkFunctionsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFunctionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2885,9 +3652,7 @@ export const NetworkFunctionsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFunctionsListByResourceGroupOutput =
-  typeof NetworkFunctionsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2903,6 +3668,9 @@ export const NetworkFunctionsListByResourceGroup =
     outputSchema: NetworkFunctionsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NetworkFunctionsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NetworkFunctionsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2912,11 +3680,25 @@ export const NetworkFunctionsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/networkFunctions",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsListBySubscriptionInput =
-  typeof NetworkFunctionsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsListBySubscriptionInput>;
 
 // Output Schema
+export interface NetworkFunctionsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkFunctionsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -2953,9 +3735,7 @@ export const NetworkFunctionsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkFunctionsListBySubscriptionOutput =
-  typeof NetworkFunctionsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2970,6 +3750,12 @@ export const NetworkFunctionsListBySubscription =
     outputSchema: NetworkFunctionsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NetworkFunctionsUpdateTagsInput {
+  resourceGroupName: string;
+  networkFunctionName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const NetworkFunctionsUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2982,11 +3768,22 @@ export const NetworkFunctionsUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkFunctionsUpdateTagsInput =
-  typeof NetworkFunctionsUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<NetworkFunctionsUpdateTagsInput>;
 
 // Output Schema
+export interface NetworkFunctionsUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkFunctionsUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3006,9 +3803,7 @@ export const NetworkFunctionsUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkFunctionsUpdateTagsOutput =
-  typeof NetworkFunctionsUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkFunctionsUpdateTagsOutput>;
 
 // The operation
 /**
@@ -3027,6 +3822,26 @@ export const NetworkFunctionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NetworkServiceDesignGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    description?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkServiceDesignGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3058,11 +3873,22 @@ export const NetworkServiceDesignGroupsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignGroupsCreateOrUpdateInput =
-  typeof NetworkServiceDesignGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkServiceDesignGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3082,9 +3908,7 @@ export const NetworkServiceDesignGroupsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignGroupsCreateOrUpdateOutput =
-  typeof NetworkServiceDesignGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3102,6 +3926,12 @@ export const NetworkServiceDesignGroupsCreateOrUpdate =
     outputSchema: NetworkServiceDesignGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+}
 export const NetworkServiceDesignGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3114,15 +3944,12 @@ export const NetworkServiceDesignGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignGroupsDeleteInput =
-  typeof NetworkServiceDesignGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignGroupsDeleteInput>;
 
 // Output Schema
+export type NetworkServiceDesignGroupsDeleteOutput = void;
 export const NetworkServiceDesignGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkServiceDesignGroupsDeleteOutput =
-  typeof NetworkServiceDesignGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -3140,6 +3967,12 @@ export const NetworkServiceDesignGroupsDelete =
     outputSchema: NetworkServiceDesignGroupsDeleteOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+}
 export const NetworkServiceDesignGroupsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3152,11 +3985,22 @@ export const NetworkServiceDesignGroupsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignGroupsGetInput =
-  typeof NetworkServiceDesignGroupsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignGroupsGetInput>;
 
 // Output Schema
+export interface NetworkServiceDesignGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3176,9 +4020,7 @@ export const NetworkServiceDesignGroupsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignGroupsGetOutput =
-  typeof NetworkServiceDesignGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignGroupsGetOutput>;
 
 // The operation
 /**
@@ -3196,6 +4038,11 @@ export const NetworkServiceDesignGroupsGet =
     outputSchema: NetworkServiceDesignGroupsGetOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignGroupsListByPublisherInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+}
 export const NetworkServiceDesignGroupsListByPublisherInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3207,11 +4054,25 @@ export const NetworkServiceDesignGroupsListByPublisherInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignGroupsListByPublisherInput =
-  typeof NetworkServiceDesignGroupsListByPublisherInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignGroupsListByPublisherInput>;
 
 // Output Schema
+export interface NetworkServiceDesignGroupsListByPublisherOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkServiceDesignGroupsListByPublisherOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3248,9 +4109,7 @@ export const NetworkServiceDesignGroupsListByPublisherOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkServiceDesignGroupsListByPublisherOutput =
-  typeof NetworkServiceDesignGroupsListByPublisherOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignGroupsListByPublisherOutput>;
 
 // The operation
 /**
@@ -3267,6 +4126,13 @@ export const NetworkServiceDesignGroupsListByPublisher =
     outputSchema: NetworkServiceDesignGroupsListByPublisherOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  tags?: Record<string, string>;
+}
 export const NetworkServiceDesignGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3280,11 +4146,22 @@ export const NetworkServiceDesignGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignGroupsUpdateInput =
-  typeof NetworkServiceDesignGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignGroupsUpdateInput>;
 
 // Output Schema
+export interface NetworkServiceDesignGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3304,9 +4181,7 @@ export const NetworkServiceDesignGroupsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignGroupsUpdateOutput =
-  typeof NetworkServiceDesignGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -3325,6 +4200,39 @@ export const NetworkServiceDesignGroupsUpdate =
     outputSchema: NetworkServiceDesignGroupsUpdateOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  networkServiceDesignVersionName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+    description?: string;
+    configurationGroupSchemaReferences?: Record<string, { id?: string }>;
+    nfvisFromSite?: Record<string, { name?: string; type?: string }>;
+    resourceElementTemplates?: {
+      name?: string;
+      type: "Unknown" | "ArmResourceDefinition" | "NetworkFunctionDefinition";
+      dependsOnProfile?: {
+        installDependsOn?: string[];
+        uninstallDependsOn?: string[];
+        updateDependsOn?: string[];
+      };
+    }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NetworkServiceDesignVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3400,11 +4308,22 @@ export const NetworkServiceDesignVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsCreateOrUpdateInput =
-  typeof NetworkServiceDesignVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface NetworkServiceDesignVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3424,9 +4343,7 @@ export const NetworkServiceDesignVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignVersionsCreateOrUpdateOutput =
-  typeof NetworkServiceDesignVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3445,6 +4362,13 @@ export const NetworkServiceDesignVersionsCreateOrUpdate =
     outputSchema: NetworkServiceDesignVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  networkServiceDesignVersionName: string;
+}
 export const NetworkServiceDesignVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3458,15 +4382,12 @@ export const NetworkServiceDesignVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsDeleteInput =
-  typeof NetworkServiceDesignVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsDeleteInput>;
 
 // Output Schema
+export type NetworkServiceDesignVersionsDeleteOutput = void;
 export const NetworkServiceDesignVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkServiceDesignVersionsDeleteOutput =
-  typeof NetworkServiceDesignVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkServiceDesignVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -3485,6 +4406,13 @@ export const NetworkServiceDesignVersionsDelete =
     outputSchema: NetworkServiceDesignVersionsDeleteOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  networkServiceDesignVersionName: string;
+}
 export const NetworkServiceDesignVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3498,11 +4426,22 @@ export const NetworkServiceDesignVersionsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsGetInput =
-  typeof NetworkServiceDesignVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsGetInput>;
 
 // Output Schema
+export interface NetworkServiceDesignVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3522,9 +4461,7 @@ export const NetworkServiceDesignVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignVersionsGetOutput =
-  typeof NetworkServiceDesignVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignVersionsGetOutput>;
 
 // The operation
 /**
@@ -3543,6 +4480,12 @@ export const NetworkServiceDesignVersionsGet =
     outputSchema: NetworkServiceDesignVersionsGetOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+}
 export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3555,11 +4498,25 @@ export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput =
-  typeof NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsListByNetworkServiceDesignGroupInput>;
 
 // Output Schema
+export interface NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3596,9 +4553,7 @@ export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput =
-  typeof NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput>;
 
 // The operation
 /**
@@ -3618,6 +4573,14 @@ export const NetworkServiceDesignVersionsListByNetworkServiceDesignGroup =
       NetworkServiceDesignVersionsListByNetworkServiceDesignGroupOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  networkServiceDesignVersionName: string;
+  tags?: Record<string, string>;
+}
 export const NetworkServiceDesignVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3632,11 +4595,22 @@ export const NetworkServiceDesignVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsUpdateInput =
-  typeof NetworkServiceDesignVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsUpdateInput>;
 
 // Output Schema
+export interface NetworkServiceDesignVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkServiceDesignVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3656,9 +4630,7 @@ export const NetworkServiceDesignVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkServiceDesignVersionsUpdateOutput =
-  typeof NetworkServiceDesignVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignVersionsUpdateOutput>;
 
 // The operation
 /**
@@ -3678,6 +4650,14 @@ export const NetworkServiceDesignVersionsUpdate =
     outputSchema: NetworkServiceDesignVersionsUpdateOutput,
   }));
 // Input Schema
+export interface NetworkServiceDesignVersionsUpdateStateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publisherName: string;
+  networkServiceDesignGroupName: string;
+  networkServiceDesignVersionName: string;
+  versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+}
 export const NetworkServiceDesignVersionsUpdateStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3694,19 +4674,18 @@ export const NetworkServiceDesignVersionsUpdateStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}/updateState",
       apiVersion: "2024-04-15",
     }),
-  );
-export type NetworkServiceDesignVersionsUpdateStateInput =
-  typeof NetworkServiceDesignVersionsUpdateStateInput.Type;
+  ) as unknown as Schema.Codec<NetworkServiceDesignVersionsUpdateStateInput>;
 
 // Output Schema
+export interface NetworkServiceDesignVersionsUpdateStateOutput {
+  versionState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+}
 export const NetworkServiceDesignVersionsUpdateStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     versionState: Schema.optional(
       Schema.Literals(["Unknown", "Preview", "Active", "Deprecated"]),
     ),
-  });
-export type NetworkServiceDesignVersionsUpdateStateOutput =
-  typeof NetworkServiceDesignVersionsUpdateStateOutput.Type;
+  }) as unknown as Schema.Codec<NetworkServiceDesignVersionsUpdateStateOutput>;
 
 // The operation
 /**
@@ -3725,6 +4704,7 @@ export const NetworkServiceDesignVersionsUpdateState =
     outputSchema: NetworkServiceDesignVersionsUpdateStateOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -3733,10 +4713,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HybridNetwork/operations",
     apiVersion: "2024-04-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3759,8 +4753,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -3773,6 +4766,13 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface ProxyArtifactGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+  artifactName: string;
+}
 export const ProxyArtifactGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
@@ -3785,10 +4785,25 @@ export const ProxyArtifactGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions",
     apiVersion: "2024-04-15",
   }),
-);
-export type ProxyArtifactGetInput = typeof ProxyArtifactGetInput.Type;
+) as unknown as Schema.Codec<ProxyArtifactGetInput>;
 
 // Output Schema
+export interface ProxyArtifactGetOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProxyArtifactGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -3826,8 +4841,7 @@ export const ProxyArtifactGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ProxyArtifactGetOutput = typeof ProxyArtifactGetOutput.Type;
+) as unknown as Schema.Codec<ProxyArtifactGetOutput>;
 
 // The operation
 /**
@@ -3845,6 +4859,12 @@ export const ProxyArtifactGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProxyArtifactGetOutput,
 }));
 // Input Schema
+export interface ProxyArtifactListInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  subscriptionId: string;
+}
 export const ProxyArtifactListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3858,10 +4878,25 @@ export const ProxyArtifactListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifacts",
     apiVersion: "2024-04-15",
   }),
-);
-export type ProxyArtifactListInput = typeof ProxyArtifactListInput.Type;
+) as unknown as Schema.Codec<ProxyArtifactListInput>;
 
 // Output Schema
+export interface ProxyArtifactListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProxyArtifactListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3898,8 +4933,7 @@ export const ProxyArtifactListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProxyArtifactListOutput = typeof ProxyArtifactListOutput.Type;
+  }) as unknown as Schema.Codec<ProxyArtifactListOutput>;
 
 // The operation
 /**
@@ -3916,6 +4950,17 @@ export const ProxyArtifactList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProxyArtifactListOutput,
 }));
 // Input Schema
+export interface ProxyArtifactUpdateStateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  artifactStoreName: string;
+  artifactVersionName: string;
+  subscriptionId: string;
+  artifactName: string;
+  properties?: {
+    artifactState?: "Unknown" | "Preview" | "Active" | "Deprecated";
+  };
+}
 export const ProxyArtifactUpdateStateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3937,11 +4982,22 @@ export const ProxyArtifactUpdateStateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions/{artifactVersionName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type ProxyArtifactUpdateStateInput =
-  typeof ProxyArtifactUpdateStateInput.Type;
+  ) as unknown as Schema.Codec<ProxyArtifactUpdateStateInput>;
 
 // Output Schema
+export interface ProxyArtifactUpdateStateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProxyArtifactUpdateStateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3961,9 +5017,7 @@ export const ProxyArtifactUpdateStateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProxyArtifactUpdateStateOutput =
-  typeof ProxyArtifactUpdateStateOutput.Type;
+  }) as unknown as Schema.Codec<ProxyArtifactUpdateStateOutput>;
 
 // The operation
 /**
@@ -3984,6 +5038,38 @@ export const ProxyArtifactUpdateState = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PublishersCreateOrUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    scope?: "Unknown" | "Private";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PublishersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4037,11 +5123,22 @@ export const PublishersCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type PublishersCreateOrUpdateInput =
-  typeof PublishersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PublishersCreateOrUpdateInput>;
 
 // Output Schema
+export interface PublishersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublishersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4061,9 +5158,7 @@ export const PublishersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PublishersCreateOrUpdateOutput =
-  typeof PublishersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PublishersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4081,6 +5176,11 @@ export const PublishersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PublishersDeleteInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+}
 export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
@@ -4091,12 +5191,12 @@ export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type PublishersDeleteInput = typeof PublishersDeleteInput.Type;
+) as unknown as Schema.Codec<PublishersDeleteInput>;
 
 // Output Schema
-export const PublishersDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PublishersDeleteOutput = typeof PublishersDeleteOutput.Type;
+export type PublishersDeleteOutput = void;
+export const PublishersDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PublishersDeleteOutput>;
 
 // The operation
 /**
@@ -4112,6 +5212,11 @@ export const PublishersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PublishersDeleteOutput,
 }));
 // Input Schema
+export interface PublishersGetInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+}
 export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
@@ -4122,10 +5227,22 @@ export const PublishersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type PublishersGetInput = typeof PublishersGetInput.Type;
+) as unknown as Schema.Codec<PublishersGetInput>;
 
 // Output Schema
+export interface PublishersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4144,8 +5261,7 @@ export const PublishersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PublishersGetOutput = typeof PublishersGetOutput.Type;
+}) as unknown as Schema.Codec<PublishersGetOutput>;
 
 // The operation
 /**
@@ -4161,6 +5277,10 @@ export const PublishersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PublishersGetOutput,
 }));
 // Input Schema
+export interface PublishersListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const PublishersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4171,11 +5291,25 @@ export const PublishersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers",
       apiVersion: "2024-04-15",
     }),
-  );
-export type PublishersListByResourceGroupInput =
-  typeof PublishersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PublishersListByResourceGroupInput>;
 
 // Output Schema
+export interface PublishersListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublishersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4212,9 +5346,7 @@ export const PublishersListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PublishersListByResourceGroupOutput =
-  typeof PublishersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PublishersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4230,6 +5362,9 @@ export const PublishersListByResourceGroup =
     outputSchema: PublishersListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PublishersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PublishersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4239,11 +5374,25 @@ export const PublishersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/publishers",
       apiVersion: "2024-04-15",
     }),
-  );
-export type PublishersListBySubscriptionInput =
-  typeof PublishersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PublishersListBySubscriptionInput>;
 
 // Output Schema
+export interface PublishersListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublishersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4280,9 +5429,7 @@ export const PublishersListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PublishersListBySubscriptionOutput =
-  typeof PublishersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PublishersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4297,6 +5444,12 @@ export const PublishersListBySubscription =
     outputSchema: PublishersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PublishersUpdateInput {
+  resourceGroupName: string;
+  publisherName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const PublishersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   publisherName: Schema.String.pipe(T.PathParam()),
@@ -4308,10 +5461,22 @@ export const PublishersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type PublishersUpdateInput = typeof PublishersUpdateInput.Type;
+) as unknown as Schema.Codec<PublishersUpdateInput>;
 
 // Output Schema
+export interface PublishersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublishersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -4332,8 +5497,7 @@ export const PublishersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type PublishersUpdateOutput = typeof PublishersUpdateOutput.Type;
+) as unknown as Schema.Codec<PublishersUpdateOutput>;
 
 // The operation
 /**
@@ -4350,6 +5514,57 @@ export const PublishersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PublishersUpdateOutput,
 }));
 // Input Schema
+export interface SiteNetworkServicesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteNetworkServiceName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    managedResourceGroupConfiguration?: { name?: string; location?: string };
+    siteReference?: { id?: string };
+    publisherName?: string;
+    publisherScope?: "Unknown" | "Private";
+    networkServiceDesignGroupName?: string;
+    networkServiceDesignVersionName?: string;
+    networkServiceDesignVersionOfferingLocation?: string;
+    networkServiceDesignVersionResourceReference?: {
+      idType: "Unknown" | "Open" | "Secret";
+    };
+    desiredStateConfigurationGroupValueReferences?: Record<
+      string,
+      { id?: string }
+    >;
+    lastStateNetworkServiceDesignVersionName?: string;
+    lastStateConfigurationGroupValueReferences?: Record<
+      string,
+      { id?: string }
+    >;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned,UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    > | null;
+  };
+  sku?: { name: "Basic" | "Standard"; tier?: "Basic" | "Standard" };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SiteNetworkServicesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4452,11 +5667,22 @@ export const SiteNetworkServicesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesCreateOrUpdateInput =
-  typeof SiteNetworkServicesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SiteNetworkServicesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteNetworkServicesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4476,9 +5702,7 @@ export const SiteNetworkServicesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteNetworkServicesCreateOrUpdateOutput =
-  typeof SiteNetworkServicesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SiteNetworkServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4495,6 +5719,11 @@ export const SiteNetworkServicesCreateOrUpdate =
     outputSchema: SiteNetworkServicesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SiteNetworkServicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteNetworkServiceName: string;
+}
 export const SiteNetworkServicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4506,15 +5735,12 @@ export const SiteNetworkServicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesDeleteInput =
-  typeof SiteNetworkServicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesDeleteInput>;
 
 // Output Schema
+export type SiteNetworkServicesDeleteOutput = void;
 export const SiteNetworkServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SiteNetworkServicesDeleteOutput =
-  typeof SiteNetworkServicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SiteNetworkServicesDeleteOutput>;
 
 // The operation
 /**
@@ -4532,6 +5758,11 @@ export const SiteNetworkServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SiteNetworkServicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteNetworkServiceName: string;
+}
 export const SiteNetworkServicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4543,11 +5774,22 @@ export const SiteNetworkServicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesGetInput =
-  typeof SiteNetworkServicesGetInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesGetInput>;
 
 // Output Schema
+export interface SiteNetworkServicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteNetworkServicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4567,9 +5809,7 @@ export const SiteNetworkServicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteNetworkServicesGetOutput =
-  typeof SiteNetworkServicesGetOutput.Type;
+  }) as unknown as Schema.Codec<SiteNetworkServicesGetOutput>;
 
 // The operation
 /**
@@ -4587,6 +5827,10 @@ export const SiteNetworkServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SiteNetworkServicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SiteNetworkServicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4597,11 +5841,25 @@ export const SiteNetworkServicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesListByResourceGroupInput =
-  typeof SiteNetworkServicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesListByResourceGroupInput>;
 
 // Output Schema
+export interface SiteNetworkServicesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SiteNetworkServicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4638,9 +5896,7 @@ export const SiteNetworkServicesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SiteNetworkServicesListByResourceGroupOutput =
-  typeof SiteNetworkServicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SiteNetworkServicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4656,6 +5912,9 @@ export const SiteNetworkServicesListByResourceGroup =
     outputSchema: SiteNetworkServicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SiteNetworkServicesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SiteNetworkServicesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4665,11 +5924,25 @@ export const SiteNetworkServicesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/siteNetworkServices",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesListBySubscriptionInput =
-  typeof SiteNetworkServicesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesListBySubscriptionInput>;
 
 // Output Schema
+export interface SiteNetworkServicesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SiteNetworkServicesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4706,9 +5979,7 @@ export const SiteNetworkServicesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SiteNetworkServicesListBySubscriptionOutput =
-  typeof SiteNetworkServicesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SiteNetworkServicesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4723,6 +5994,12 @@ export const SiteNetworkServicesListBySubscription =
     outputSchema: SiteNetworkServicesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SiteNetworkServicesUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteNetworkServiceName: string;
+  tags?: Record<string, string>;
+}
 export const SiteNetworkServicesUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4735,11 +6012,22 @@ export const SiteNetworkServicesUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SiteNetworkServicesUpdateTagsInput =
-  typeof SiteNetworkServicesUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<SiteNetworkServicesUpdateTagsInput>;
 
 // Output Schema
+export interface SiteNetworkServicesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SiteNetworkServicesUpdateTagsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4759,9 +6047,7 @@ export const SiteNetworkServicesUpdateTagsOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SiteNetworkServicesUpdateTagsOutput =
-  typeof SiteNetworkServicesUpdateTagsOutput.Type;
+  }) as unknown as Schema.Codec<SiteNetworkServicesUpdateTagsOutput>;
 
 // The operation
 /**
@@ -4779,6 +6065,33 @@ export const SiteNetworkServicesUpdateTags =
     outputSchema: SiteNetworkServicesUpdateTagsOutput,
   }));
 // Input Schema
+export interface SitesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Accepted"
+      | "Deleting"
+      | "Failed"
+      | "Canceled"
+      | "Deleted"
+      | "Converging";
+    nfvis?: {
+      name?: string;
+      nfviType:
+        | "Unknown"
+        | "AzureArcKubernetes"
+        | "AzureCore"
+        | "AzureOperatorNexus";
+    }[];
+    siteNetworkServiceReferences?: { id?: string }[];
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SitesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4828,10 +6141,22 @@ export const SitesCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesCreateOrUpdateInput>;
 
 // Output Schema
+export interface SitesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4851,8 +6176,7 @@ export const SitesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesCreateOrUpdateOutput = typeof SitesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4868,6 +6192,11 @@ export const SitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface SitesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4878,12 +6207,12 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type SitesDeleteInput = typeof SitesDeleteInput.Type;
+) as unknown as Schema.Codec<SitesDeleteInput>;
 
 // Output Schema
-export const SitesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SitesDeleteOutput = typeof SitesDeleteOutput.Type;
+export type SitesDeleteOutput = void;
+export const SitesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesDeleteOutput>;
 
 // The operation
 /**
@@ -4899,6 +6228,11 @@ export const SitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesDeleteOutput,
 }));
 // Input Schema
+export interface SitesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4909,10 +6243,22 @@ export const SitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type SitesGetInput = typeof SitesGetInput.Type;
+) as unknown as Schema.Codec<SitesGetInput>;
 
 // Output Schema
+export interface SitesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4931,8 +6277,7 @@ export const SitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SitesGetOutput = typeof SitesGetOutput.Type;
+}) as unknown as Schema.Codec<SitesGetOutput>;
 
 // The operation
 /**
@@ -4948,6 +6293,10 @@ export const SitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesGetOutput,
 }));
 // Input Schema
+export interface SitesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4958,11 +6307,25 @@ export const SitesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SitesListByResourceGroupInput =
-  typeof SitesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SitesListByResourceGroupInput>;
 
 // Output Schema
+export interface SitesListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4999,9 +6362,7 @@ export const SitesListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesListByResourceGroupOutput =
-  typeof SitesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SitesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5018,6 +6379,9 @@ export const SitesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5027,11 +6391,25 @@ export const SitesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridNetwork/sites",
       apiVersion: "2024-04-15",
     }),
-  );
-export type SitesListBySubscriptionInput =
-  typeof SitesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SitesListBySubscriptionInput>;
 
 // Output Schema
+export interface SitesListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -5068,9 +6446,7 @@ export const SitesListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesListBySubscriptionOutput =
-  typeof SitesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SitesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -5086,6 +6462,12 @@ export const SitesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+}
 export const SitesUpdateTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5097,10 +6479,22 @@ export const SitesUpdateTagsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
     apiVersion: "2024-04-15",
   }),
-);
-export type SitesUpdateTagsInput = typeof SitesUpdateTagsInput.Type;
+) as unknown as Schema.Codec<SitesUpdateTagsInput>;
 
 // Output Schema
+export interface SitesUpdateTagsOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesUpdateTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5119,8 +6513,7 @@ export const SitesUpdateTagsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SitesUpdateTagsOutput = typeof SitesUpdateTagsOutput.Type;
+}) as unknown as Schema.Codec<SitesUpdateTagsOutput>;
 
 // The operation
 /**

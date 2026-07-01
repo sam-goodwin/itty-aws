@@ -2,9 +2,15 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetProjectBranchRolePasswordInput {
+  project_id: string;
+  branch_id: string;
+  role_name: string;
+}
 export const GetProjectBranchRolePasswordInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -15,27 +21,23 @@ export const GetProjectBranchRolePasswordInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/roles/{role_name}/reveal_password",
     }),
-  );
-export type GetProjectBranchRolePasswordInput =
-  typeof GetProjectBranchRolePasswordInput.Type;
+  ) as unknown as Schema.Codec<GetProjectBranchRolePasswordInput>;
 
 // Output Schema
+export interface GetProjectBranchRolePasswordOutput {
+  password: Redacted.Redacted<string>;
+}
 export const GetProjectBranchRolePasswordOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    password: SensitiveString,
-  });
-export type GetProjectBranchRolePasswordOutput =
-  typeof GetProjectBranchRolePasswordOutput.Type;
+    password: SensitiveOutputString,
+  }) as unknown as Schema.Codec<GetProjectBranchRolePasswordOutput>;
 
 // The operation
 /**
  * Retrieve role password
  *
  * Retrieves the password for the specified Postgres role, if possible.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `branch_id` by listing the project's branches.
- * You can obtain the `role_name` by listing the roles for a branch.
- * For related information, see [Manage roles](https://neon.tech/docs/manage/roles/).
+ * For related information, see [Manage roles](https://neon.com/docs/manage/roles/).
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID

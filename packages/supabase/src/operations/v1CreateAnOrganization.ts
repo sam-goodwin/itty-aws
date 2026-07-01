@@ -4,22 +4,28 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1CreateAnOrganizationInput {
+  name: string;
+}
 export const V1CreateAnOrganizationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/v1/organizations" }));
-export type V1CreateAnOrganizationInput =
-  typeof V1CreateAnOrganizationInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v1/organizations" }),
+  ) as unknown as Schema.Codec<V1CreateAnOrganizationInput>;
 
 // Output Schema
+export interface V1CreateAnOrganizationOutput {
+  id: string;
+  slug: string;
+  name: string;
+}
 export const V1CreateAnOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
     slug: Schema.String,
     name: Schema.String,
-  });
-export type V1CreateAnOrganizationOutput =
-  typeof V1CreateAnOrganizationOutput.Type;
+  }) as unknown as Schema.Codec<V1CreateAnOrganizationOutput>;
 
 // The operation
 /**

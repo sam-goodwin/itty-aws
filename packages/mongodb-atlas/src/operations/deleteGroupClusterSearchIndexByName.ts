@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterSearchIndexByNameInput {
+  groupId: string;
+  clusterName: string;
+  collectionName: string;
+  databaseName: string;
+  indexName: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupClusterSearchIndexByNameInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const DeleteGroupClusterSearchIndexByNameInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
     }),
-  );
-export type DeleteGroupClusterSearchIndexByNameInput =
-  typeof DeleteGroupClusterSearchIndexByNameInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterSearchIndexByNameInput>;
 
 // Output Schema
+export type DeleteGroupClusterSearchIndexByNameOutput = void;
 export const DeleteGroupClusterSearchIndexByNameOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterSearchIndexByNameOutput =
-  typeof DeleteGroupClusterSearchIndexByNameOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterSearchIndexByNameOutput>;
 
 // The operation
 /**
  * Remove One Atlas Search Index by Name
  *
- * Removes one Atlas Search index that you identified with its database, collection, and name. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. This deletion is eventually consistent.
+ * Removes one Atlas Search index that you identified with its database, collection, and name. This deletion is eventually consistent.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

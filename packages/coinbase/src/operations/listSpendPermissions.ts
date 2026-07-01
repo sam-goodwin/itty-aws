@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListSpendPermissionsInput {
+  address: string;
+  pageSize?: number;
+  pageToken?: string;
+}
 export const ListSpendPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,38 @@ export const ListSpendPermissionsInput =
       method: "GET",
       path: "/v2/evm/smart-accounts/{address}/spend-permissions/list",
     }),
-  );
-export type ListSpendPermissionsInput = typeof ListSpendPermissionsInput.Type;
+  ) as unknown as Schema.Codec<ListSpendPermissionsInput>;
 
 // Output Schema
+export interface ListSpendPermissionsOutput {
+  spendPermissions: {
+    permission: {
+      account: string;
+      spender: string;
+      token: string;
+      allowance: string;
+      period: string;
+      start: string;
+      end: string;
+      salt: string;
+      extraData: string;
+    };
+    permissionHash: string;
+    revoked: boolean;
+    revokedAt?: string;
+    createdAt: string;
+    network:
+      | "base"
+      | "base-sepolia"
+      | "ethereum"
+      | "ethereum-sepolia"
+      | "optimism"
+      | "arbitrum"
+      | "avalanche"
+      | "polygon";
+  }[];
+  nextPageToken?: string;
+}
 export const ListSpendPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spendPermissions: Schema.Array(
@@ -49,8 +82,7 @@ export const ListSpendPermissionsOutput =
       }),
     ),
     nextPageToken: Schema.optional(Schema.String),
-  });
-export type ListSpendPermissionsOutput = typeof ListSpendPermissionsOutput.Type;
+  }) as unknown as Schema.Codec<ListSpendPermissionsOutput>;
 
 // The operation
 /**

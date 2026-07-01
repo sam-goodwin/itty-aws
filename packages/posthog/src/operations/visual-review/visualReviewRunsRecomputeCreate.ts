@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsRecomputeCreateInput {
+  id: string;
+  project_id: string;
+}
 export const VisualReviewRunsRecomputeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,43 @@ export const VisualReviewRunsRecomputeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/recompute/",
     }),
-  );
-export type VisualReviewRunsRecomputeCreateInput =
-  typeof VisualReviewRunsRecomputeCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsRecomputeCreateInput>;
 
 // Output Schema
+export interface VisualReviewRunsRecomputeCreateOutput {
+  run?: {
+    approved_by?: { id?: number; first_name?: string; email?: string } | null;
+    search_match_type?: "exact" | "similar" | null;
+    id?: string;
+    repo_id?: string;
+    status?: string;
+    run_type?: string;
+    commit_sha?: string;
+    branch?: string;
+    pr_number?: number | null;
+    approved?: boolean;
+    approved_at?: string | null;
+    summary?: {
+      total?: number;
+      changed?: number;
+      new?: number;
+      removed?: number;
+      unchanged?: number;
+      unresolved?: number;
+      tolerated_matched?: number;
+    };
+    error_message?: string | null;
+    created_at?: string;
+    completed_at?: string | null;
+    is_stale?: boolean;
+    superseded_by_id?: string | null;
+    metadata?: Record<string, unknown>;
+  };
+  counts_changed?: boolean;
+  unresolved?: number;
+  ci_rerun_triggered?: boolean;
+  ci_rerun_error?: string | null;
+}
 export const VisualReviewRunsRecomputeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run: Schema.optional(
@@ -30,6 +66,9 @@ export const VisualReviewRunsRecomputeCreateOutput =
               email: Schema.optional(Schema.String),
             }),
           ),
+        ),
+        search_match_type: Schema.optional(
+          Schema.NullOr(Schema.Literals(["exact", "similar"])),
         ),
         id: Schema.optional(Schema.String),
         repo_id: Schema.optional(Schema.String),
@@ -63,9 +102,7 @@ export const VisualReviewRunsRecomputeCreateOutput =
     unresolved: Schema.optional(Schema.Number),
     ci_rerun_triggered: Schema.optional(Schema.Boolean),
     ci_rerun_error: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type VisualReviewRunsRecomputeCreateOutput =
-  typeof VisualReviewRunsRecomputeCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsRecomputeCreateOutput>;
 
 // The operation
 /**

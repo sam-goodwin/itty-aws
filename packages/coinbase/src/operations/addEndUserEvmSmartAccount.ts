@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddEndUserEvmSmartAccountInput {
+  userId: string;
+  enableSpendPermissions?: boolean;
+}
 export const AddEndUserEvmSmartAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,16 @@ export const AddEndUserEvmSmartAccountInput =
       method: "POST",
       path: "/v2/end-users/{userId}/evm-smart-account",
     }),
-  );
-export type AddEndUserEvmSmartAccountInput =
-  typeof AddEndUserEvmSmartAccountInput.Type;
+  ) as unknown as Schema.Codec<AddEndUserEvmSmartAccountInput>;
 
 // Output Schema
+export interface AddEndUserEvmSmartAccountOutput {
+  evmSmartAccount: {
+    address: string;
+    ownerAddresses: string[];
+    createdAt: string;
+  };
+}
 export const AddEndUserEvmSmartAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     evmSmartAccount: Schema.Struct({
@@ -24,13 +33,11 @@ export const AddEndUserEvmSmartAccountOutput =
       ownerAddresses: Schema.Array(Schema.String),
       createdAt: Schema.String,
     }),
-  });
-export type AddEndUserEvmSmartAccountOutput =
-  typeof AddEndUserEvmSmartAccountOutput.Type;
+  }) as unknown as Schema.Codec<AddEndUserEvmSmartAccountOutput>;
 
 // The operation
 /**
- * Add an EVM smart account to an end user
+ * Add EVM smart account to end user
  *
  * Creates an EVM smart account for an existing end user. The backend will create a new EVM EOA account to serve as the owner of the smart account.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.

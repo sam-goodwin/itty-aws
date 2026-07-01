@@ -4,16 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetNetworkRestrictionsInput {
+  ref: string;
+}
 export const V1GetNetworkRestrictionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/network-restrictions" }),
-  );
-export type V1GetNetworkRestrictionsInput =
-  typeof V1GetNetworkRestrictionsInput.Type;
+  ) as unknown as Schema.Codec<V1GetNetworkRestrictionsInput>;
 
 // Output Schema
+export interface V1GetNetworkRestrictionsOutput {
+  entitlement: "disallowed" | "allowed";
+  config: { dbAllowedCidrs?: string[]; dbAllowedCidrsV6?: string[] };
+  old_config?: { dbAllowedCidrs?: string[]; dbAllowedCidrsV6?: string[] };
+  status: "stored" | "applied";
+  updated_at?: string;
+  applied_at?: string;
+}
 export const V1GetNetworkRestrictionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlement: Schema.Literals(["disallowed", "allowed"]),
@@ -30,9 +39,7 @@ export const V1GetNetworkRestrictionsOutput =
     status: Schema.Literals(["stored", "applied"]),
     updated_at: Schema.optional(Schema.String),
     applied_at: Schema.optional(Schema.String),
-  });
-export type V1GetNetworkRestrictionsOutput =
-  typeof V1GetNetworkRestrictionsOutput.Type;
+  }) as unknown as Schema.Codec<V1GetNetworkRestrictionsOutput>;
 
 // The operation
 /**

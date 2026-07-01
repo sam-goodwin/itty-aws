@@ -4,14 +4,34 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsControllerFindBySlugInput {
+  slug: string;
+}
 export const FeatureFlagsControllerFindBySlugInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/feature-flags/{slug}" }));
-export type FeatureFlagsControllerFindBySlugInput =
-  typeof FeatureFlagsControllerFindBySlugInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/feature-flags/{slug}" }),
+  ) as unknown as Schema.Codec<FeatureFlagsControllerFindBySlugInput>;
 
 // Output Schema
+export interface FeatureFlagsControllerFindBySlugOutput {
+  object?: string;
+  id?: string;
+  slug?: string;
+  name?: string;
+  description?: string | null;
+  owner?: {
+    email: string;
+    first_name: string | null;
+    last_name: string | null;
+  } | null;
+  tags?: string[];
+  enabled?: boolean;
+  default_value?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
 export const FeatureFlagsControllerFindBySlugOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -19,15 +39,21 @@ export const FeatureFlagsControllerFindBySlugOutput =
     slug: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
-    owner: Schema.optional(Schema.Unknown),
+    owner: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          email: Schema.String,
+          first_name: Schema.NullOr(Schema.String),
+          last_name: Schema.NullOr(Schema.String),
+        }),
+      ),
+    ),
     tags: Schema.optional(Schema.Array(Schema.String)),
     enabled: Schema.optional(Schema.Boolean),
     default_value: Schema.optional(Schema.Boolean),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type FeatureFlagsControllerFindBySlugOutput =
-  typeof FeatureFlagsControllerFindBySlugOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsControllerFindBySlugOutput>;
 
 // The operation
 /**

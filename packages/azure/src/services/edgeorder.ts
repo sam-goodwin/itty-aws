@@ -4,11 +4,42 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AddressesCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  addressName: string;
+  properties: {
+    addressClassification?: "Shipping" | "Site";
+    shippingAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      streetAddress3?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country: string;
+      postalCode?: string;
+      zipExtendedCode?: string;
+      companyName?: string;
+      addressType?: "None" | "Residential" | "Commercial";
+    };
+    contactDetails?: {
+      contactName?: string;
+      phone?: string;
+      phoneExtension?: string;
+      mobile?: string;
+      emailList?: string[];
+    };
+    addressValidationStatus?: "Valid" | "Invalid" | "Ambiguous";
+    provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AddressesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -57,10 +88,22 @@ export const AddressesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type AddressesCreateInput = typeof AddressesCreateInput.Type;
+) as unknown as Schema.Codec<AddressesCreateInput>;
 
 // Output Schema
+export interface AddressesCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AddressesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -79,8 +122,7 @@ export const AddressesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AddressesCreateOutput = typeof AddressesCreateOutput.Type;
+}) as unknown as Schema.Codec<AddressesCreateOutput>;
 
 // The operation
 /**
@@ -97,6 +139,11 @@ export const AddressesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddressesCreateOutput,
 }));
 // Input Schema
+export interface AddressesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  addressName: string;
+}
 export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -107,12 +154,12 @@ export const AddressesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type AddressesDeleteInput = typeof AddressesDeleteInput.Type;
+) as unknown as Schema.Codec<AddressesDeleteInput>;
 
 // Output Schema
-export const AddressesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddressesDeleteOutput = typeof AddressesDeleteOutput.Type;
+export type AddressesDeleteOutput = void;
+export const AddressesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddressesDeleteOutput>;
 
 // The operation
 /**
@@ -128,6 +175,11 @@ export const AddressesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddressesDeleteOutput,
 }));
 // Input Schema
+export interface AddressesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  addressName: string;
+}
 export const AddressesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -138,10 +190,22 @@ export const AddressesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type AddressesGetInput = typeof AddressesGetInput.Type;
+) as unknown as Schema.Codec<AddressesGetInput>;
 
 // Output Schema
+export interface AddressesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AddressesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -160,8 +224,7 @@ export const AddressesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AddressesGetOutput = typeof AddressesGetOutput.Type;
+}) as unknown as Schema.Codec<AddressesGetOutput>;
 
 // The operation
 /**
@@ -177,6 +240,13 @@ export const AddressesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddressesGetOutput,
 }));
 // Input Schema
+export interface AddressesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const AddressesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -190,11 +260,25 @@ export const AddressesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
       apiVersion: "2024-02-01",
     }),
-  );
-export type AddressesListByResourceGroupInput =
-  typeof AddressesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AddressesListByResourceGroupInput>;
 
 // Output Schema
+export interface AddressesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AddressesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -229,9 +313,7 @@ export const AddressesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AddressesListByResourceGroupOutput =
-  typeof AddressesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AddressesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -250,6 +332,12 @@ export const AddressesListByResourceGroup =
     outputSchema: AddressesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AddressesListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const AddressesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -262,11 +350,25 @@ export const AddressesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
       apiVersion: "2024-02-01",
     }),
-  );
-export type AddressesListBySubscriptionInput =
-  typeof AddressesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AddressesListBySubscriptionInput>;
 
 // Output Schema
+export interface AddressesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AddressesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -301,9 +403,7 @@ export const AddressesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AddressesListBySubscriptionOutput =
-  typeof AddressesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AddressesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -322,6 +422,33 @@ export const AddressesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AddressesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  addressName: string;
+  properties?: {
+    shippingAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      streetAddress3?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country: string;
+      postalCode?: string;
+      zipExtendedCode?: string;
+      companyName?: string;
+      addressType?: "None" | "Residential" | "Commercial";
+    };
+    contactDetails?: {
+      contactName?: string;
+      phone?: string;
+      phoneExtension?: string;
+      mobile?: string;
+      emailList?: string[];
+    };
+  };
+  tags?: Record<string, string>;
+}
 export const AddressesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -362,10 +489,22 @@ export const AddressesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type AddressesUpdateInput = typeof AddressesUpdateInput.Type;
+) as unknown as Schema.Codec<AddressesUpdateInput>;
 
 // Output Schema
+export interface AddressesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AddressesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -384,8 +523,7 @@ export const AddressesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AddressesUpdateOutput = typeof AddressesUpdateOutput.Type;
+}) as unknown as Schema.Codec<AddressesUpdateOutput>;
 
 // The operation
 /**
@@ -402,6 +540,7 @@ export const AddressesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AddressesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -410,10 +549,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.EdgeOrder/operations",
     apiVersion: "2024-02-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -436,8 +589,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -450,6 +602,12 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OrderItemsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+  reason: string;
+}
 export const OrderItemsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -461,12 +619,12 @@ export const OrderItemsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/cancel",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsCancelInput = typeof OrderItemsCancelInput.Type;
+) as unknown as Schema.Codec<OrderItemsCancelInput>;
 
 // Output Schema
-export const OrderItemsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrderItemsCancelOutput = typeof OrderItemsCancelOutput.Type;
+export type OrderItemsCancelOutput = void;
+export const OrderItemsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsCancelOutput>;
 
 // The operation
 /**
@@ -482,6 +640,311 @@ export const OrderItemsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsCancelOutput,
 }));
 // Input Schema
+export interface OrderItemsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+  properties: {
+    orderItemDetails: {
+      productDetails: {
+        displayInfo?: {
+          productFamilyDisplayName?: string;
+          configurationDisplayName?: string;
+        };
+        hierarchyInformation: {
+          productFamilyName?: string;
+          productLineName?: string;
+          productName?: string;
+          configurationName?: string;
+          configurationIdDisplayName?: string;
+        };
+        productDoubleEncryptionStatus?: "Disabled" | "Enabled";
+        identificationType?: "NotSupported" | "SerialNumber";
+        parentDeviceDetails?: {
+          serialNumber?: string;
+          displaySerialNumber?: string;
+          managementResourceId?: string;
+          managementResourceTenantId?: string;
+          provisioningSupport?: "CloudBased" | "Manual";
+          provisioningDetails?: {
+            quantity?: number;
+            provisioningArmId?: string;
+            provisioningEndPoint?: string;
+            serialNumber?: string;
+            vendorName?: string;
+            readyToConnectArmId?: string;
+            managementResourceArmId?: string;
+            uniqueDeviceIdentifier?: string;
+            autoProvisioningStatus?: "Enabled" | "Disabled";
+            devicePresenceVerification?: {
+              status?: "NotInitiated" | "Completed";
+              message?: string;
+            };
+          };
+        };
+        parentProvisioningDetails?: {
+          quantity?: number;
+          provisioningArmId?: string;
+          provisioningEndPoint?: string;
+          serialNumber?: string;
+          vendorName?: string;
+          readyToConnectArmId?: string;
+          managementResourceArmId?: string;
+          uniqueDeviceIdentifier?: string;
+          autoProvisioningStatus?: "Enabled" | "Disabled";
+          devicePresenceVerification?: {
+            status?: "NotInitiated" | "Completed";
+            message?: string;
+          };
+        };
+        optInAdditionalConfigurations?: {
+          hierarchyInformation: {
+            productFamilyName?: string;
+            productLineName?: string;
+            productName?: string;
+            configurationName?: string;
+            configurationIdDisplayName?: string;
+          };
+          quantity: number;
+          provisioningDetails?: {
+            quantity?: number;
+            provisioningArmId?: string;
+            provisioningEndPoint?: string;
+            serialNumber?: string;
+            vendorName?: string;
+            readyToConnectArmId?: string;
+            managementResourceArmId?: string;
+            uniqueDeviceIdentifier?: string;
+            autoProvisioningStatus?: "Enabled" | "Disabled";
+            devicePresenceVerification?: {
+              status?: "NotInitiated" | "Completed";
+              message?: string;
+            };
+          }[];
+        }[];
+        childConfigurationDeviceDetails?: {
+          displayInfo?: {
+            productFamilyDisplayName?: string;
+            configurationDisplayName?: string;
+          };
+          hierarchyInformation?: {
+            productFamilyName?: string;
+            productLineName?: string;
+            productName?: string;
+            configurationName?: string;
+            configurationIdDisplayName?: string;
+          };
+          quantity?: number;
+          identificationType?: "NotSupported" | "SerialNumber";
+          deviceDetails?: {
+            serialNumber?: string;
+            displaySerialNumber?: string;
+            managementResourceId?: string;
+            managementResourceTenantId?: string;
+            provisioningSupport?: "CloudBased" | "Manual";
+            provisioningDetails?: {
+              quantity?: number;
+              provisioningArmId?: string;
+              provisioningEndPoint?: string;
+              serialNumber?: string;
+              vendorName?: string;
+              readyToConnectArmId?: string;
+              managementResourceArmId?: string;
+              uniqueDeviceIdentifier?: string;
+              autoProvisioningStatus?: "Enabled" | "Disabled";
+              devicePresenceVerification?: {
+                status?: "NotInitiated" | "Completed";
+                message?: string;
+              };
+            };
+          }[];
+          termCommitmentInformation?: {
+            termCommitmentType: "None" | "Trial" | "Timed";
+            termCommitmentTypeDuration?: string;
+            pendingDaysForTerm?: number;
+          };
+        }[];
+        termCommitmentInformation?: {
+          termCommitmentType: "None" | "Trial" | "Timed";
+          termCommitmentTypeDuration?: string;
+          pendingDaysForTerm?: number;
+        };
+      };
+      orderItemType: "Purchase" | "Rental" | "External";
+      orderItemMode?: "Default" | "DoNotFulfill";
+      siteDetails?: { siteId: string };
+      currentStage?: {
+        stageStatus?:
+          | "None"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Cancelled"
+          | "Cancelling";
+        stageName?:
+          | "Placed"
+          | "InReview"
+          | "Confirmed"
+          | "ReadyToShip"
+          | "Shipped"
+          | "Delivered"
+          | "ReadyToSetup"
+          | "InUse"
+          | "ReturnInitiated"
+          | "ReturnPickedUp"
+          | "ReturnedToMicrosoft"
+          | "ReturnCompleted"
+          | "Cancelled";
+        displayName?: string;
+        startTime?: string;
+      };
+      orderItemStageHistory?: {
+        stageStatus?:
+          | "None"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Cancelled"
+          | "Cancelling";
+        stageName?:
+          | "Placed"
+          | "InReview"
+          | "Confirmed"
+          | "ReadyToShip"
+          | "Shipped"
+          | "Delivered"
+          | "ReadyToSetup"
+          | "InUse"
+          | "ReturnInitiated"
+          | "ReturnPickedUp"
+          | "ReturnedToMicrosoft"
+          | "ReturnCompleted"
+          | "Cancelled";
+        displayName?: string;
+        startTime?: string;
+      }[];
+      preferences?: {
+        notificationPreferences?: {
+          stageName: "Shipped" | "Delivered";
+          sendNotification: boolean;
+        }[];
+        transportPreferences?: {
+          preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+        };
+        encryptionPreferences?: {
+          doubleEncryptionStatus?: "Disabled" | "Enabled";
+        };
+        managementResourcePreferences?: {
+          preferredManagementResourceId?: string;
+        };
+        termCommitmentPreferences?: {
+          preferredTermCommitmentType: "None" | "Trial" | "Timed";
+          preferredTermCommitmentDuration?: string;
+        };
+      };
+      forwardShippingDetails?: {
+        carrierName?: string;
+        carrierDisplayName?: string;
+        trackingId?: string;
+        trackingUrl?: string;
+      };
+      reverseShippingDetails?: {
+        sasKeyForLabel?: string;
+        carrierName?: string;
+        carrierDisplayName?: string;
+        trackingId?: string;
+        trackingUrl?: string;
+      };
+      notificationEmailList?: string[];
+      cancellationReason?: string;
+      cancellationStatus?:
+        | "Cancellable"
+        | "CancellableWithFee"
+        | "NotCancellable";
+      deletionStatus?: "Allowed" | "NotAllowed";
+      returnReason?: string;
+      returnStatus?: "Returnable" | "ReturnableWithFee" | "NotReturnable";
+      managementRpDetailsList?: { resourceProviderNamespace?: string }[];
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    addressDetails?: {
+      forwardAddress: {
+        addressClassification?: "Shipping" | "Site";
+        shippingAddress?: {
+          streetAddress1?: string;
+          streetAddress2?: string;
+          streetAddress3?: string;
+          city?: string;
+          stateOrProvince?: string;
+          country: string;
+          postalCode?: string;
+          zipExtendedCode?: string;
+          companyName?: string;
+          addressType?: "None" | "Residential" | "Commercial";
+        };
+        contactDetails?: {
+          contactName?: string;
+          phone?: string;
+          phoneExtension?: string;
+          mobile?: string;
+          emailList?: string[];
+        };
+        addressValidationStatus?: "Valid" | "Invalid" | "Ambiguous";
+        provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+      };
+      returnAddress?: {
+        addressClassification?: "Shipping" | "Site";
+        shippingAddress?: {
+          streetAddress1?: string;
+          streetAddress2?: string;
+          streetAddress3?: string;
+          city?: string;
+          stateOrProvince?: string;
+          country: string;
+          postalCode?: string;
+          zipExtendedCode?: string;
+          companyName?: string;
+          addressType?: "None" | "Residential" | "Commercial";
+        };
+        contactDetails?: {
+          contactName?: string;
+          phone?: string;
+          phoneExtension?: string;
+          mobile?: string;
+          emailList?: string[];
+        };
+        addressValidationStatus?: "Valid" | "Invalid" | "Ambiguous";
+        provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+      };
+    };
+    startTime?: string;
+    orderId: string;
+    provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+  };
+  identity?: {
+    type?: string;
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const OrderItemsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -985,10 +1448,22 @@ export const OrderItemsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsCreateInput = typeof OrderItemsCreateInput.Type;
+) as unknown as Schema.Codec<OrderItemsCreateInput>;
 
 // Output Schema
+export interface OrderItemsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrderItemsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1009,8 +1484,7 @@ export const OrderItemsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type OrderItemsCreateOutput = typeof OrderItemsCreateOutput.Type;
+) as unknown as Schema.Codec<OrderItemsCreateOutput>;
 
 // The operation
 /**
@@ -1027,6 +1501,11 @@ export const OrderItemsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsCreateOutput,
 }));
 // Input Schema
+export interface OrderItemsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+}
 export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1037,12 +1516,12 @@ export const OrderItemsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsDeleteInput = typeof OrderItemsDeleteInput.Type;
+) as unknown as Schema.Codec<OrderItemsDeleteInput>;
 
 // Output Schema
-export const OrderItemsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrderItemsDeleteOutput = typeof OrderItemsDeleteOutput.Type;
+export type OrderItemsDeleteOutput = void;
+export const OrderItemsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsDeleteOutput>;
 
 // The operation
 /**
@@ -1058,6 +1537,12 @@ export const OrderItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsDeleteOutput,
 }));
 // Input Schema
+export interface OrderItemsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+  $expand?: string;
+}
 export const OrderItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1069,10 +1554,22 @@ export const OrderItemsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsGetInput = typeof OrderItemsGetInput.Type;
+) as unknown as Schema.Codec<OrderItemsGetInput>;
 
 // Output Schema
+export interface OrderItemsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrderItemsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1091,8 +1588,7 @@ export const OrderItemsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OrderItemsGetOutput = typeof OrderItemsGetOutput.Type;
+}) as unknown as Schema.Codec<OrderItemsGetOutput>;
 
 // The operation
 /**
@@ -1109,6 +1605,14 @@ export const OrderItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsGetOutput,
 }));
 // Input Schema
+export interface OrderItemsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $expand?: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const OrderItemsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1123,11 +1627,25 @@ export const OrderItemsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems",
       apiVersion: "2024-02-01",
     }),
-  );
-export type OrderItemsListByResourceGroupInput =
-  typeof OrderItemsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<OrderItemsListByResourceGroupInput>;
 
 // Output Schema
+export interface OrderItemsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrderItemsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1162,9 +1680,7 @@ export const OrderItemsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrderItemsListByResourceGroupOutput =
-  typeof OrderItemsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<OrderItemsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1184,6 +1700,13 @@ export const OrderItemsListByResourceGroup =
     outputSchema: OrderItemsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface OrderItemsListBySubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+  $expand?: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const OrderItemsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1197,11 +1720,25 @@ export const OrderItemsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orderItems",
       apiVersion: "2024-02-01",
     }),
-  );
-export type OrderItemsListBySubscriptionInput =
-  typeof OrderItemsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<OrderItemsListBySubscriptionInput>;
 
 // Output Schema
+export interface OrderItemsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrderItemsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1236,9 +1773,7 @@ export const OrderItemsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrderItemsListBySubscriptionOutput =
-  typeof OrderItemsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<OrderItemsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1257,6 +1792,38 @@ export const OrderItemsListBySubscription =
     outputSchema: OrderItemsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface OrderItemsReturnInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+  returnAddress?: {
+    addressClassification?: "Shipping" | "Site";
+    shippingAddress?: {
+      streetAddress1?: string;
+      streetAddress2?: string;
+      streetAddress3?: string;
+      city?: string;
+      stateOrProvince?: string;
+      country: string;
+      postalCode?: string;
+      zipExtendedCode?: string;
+      companyName?: string;
+      addressType?: "None" | "Residential" | "Commercial";
+    };
+    contactDetails?: {
+      contactName?: string;
+      phone?: string;
+      phoneExtension?: string;
+      mobile?: string;
+      emailList?: string[];
+    };
+    addressValidationStatus?: "Valid" | "Invalid" | "Ambiguous";
+    provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+  };
+  returnReason: string;
+  serviceTag?: string;
+  shippingBoxRequired?: boolean;
+}
 export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1308,12 +1875,12 @@ export const OrderItemsReturnInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/return",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsReturnInput = typeof OrderItemsReturnInput.Type;
+) as unknown as Schema.Codec<OrderItemsReturnInput>;
 
 // Output Schema
-export const OrderItemsReturnOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OrderItemsReturnOutput = typeof OrderItemsReturnOutput.Type;
+export type OrderItemsReturnOutput = void;
+export const OrderItemsReturnOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrderItemsReturnOutput>;
 
 // The operation
 /**
@@ -1329,6 +1896,87 @@ export const OrderItemsReturn = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsReturnOutput,
 }));
 // Input Schema
+export interface OrderItemsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  orderItemName: string;
+  properties?: {
+    forwardAddress?: {
+      addressClassification?: "Shipping" | "Site";
+      shippingAddress?: {
+        streetAddress1?: string;
+        streetAddress2?: string;
+        streetAddress3?: string;
+        city?: string;
+        stateOrProvince?: string;
+        country: string;
+        postalCode?: string;
+        zipExtendedCode?: string;
+        companyName?: string;
+        addressType?: "None" | "Residential" | "Commercial";
+      };
+      contactDetails?: {
+        contactName?: string;
+        phone?: string;
+        phoneExtension?: string;
+        mobile?: string;
+        emailList?: string[];
+      };
+      addressValidationStatus?: "Valid" | "Invalid" | "Ambiguous";
+      provisioningState?: "Creating" | "Succeeded" | "Failed" | "Canceled";
+    };
+    preferences?: {
+      notificationPreferences?: {
+        stageName: "Shipped" | "Delivered";
+        sendNotification: boolean;
+      }[];
+      transportPreferences?: {
+        preferredShipmentType: "CustomerManaged" | "MicrosoftManaged";
+      };
+      encryptionPreferences?: {
+        doubleEncryptionStatus?: "Disabled" | "Enabled";
+      };
+      managementResourcePreferences?: {
+        preferredManagementResourceId?: string;
+      };
+      termCommitmentPreferences?: {
+        preferredTermCommitmentType: "None" | "Trial" | "Timed";
+        preferredTermCommitmentDuration?: string;
+      };
+    };
+    notificationEmailList?: string[];
+    orderItemDetails?: {
+      productDetails?: {
+        parentProvisioningDetails?: {
+          quantity?: number;
+          provisioningArmId?: string;
+          provisioningEndPoint?: string;
+          serialNumber?: string;
+          vendorName?: string;
+          readyToConnectArmId?: string;
+          managementResourceArmId?: string;
+          uniqueDeviceIdentifier?: string;
+          autoProvisioningStatus?: "Enabled" | "Disabled";
+          devicePresenceVerification?: {
+            status?: "NotInitiated" | "Completed";
+            message?: string;
+          };
+        };
+      };
+      siteDetails?: { siteId: string };
+    };
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type?: string;
+    principalId?: string;
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const OrderItemsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1477,10 +2125,22 @@ export const OrderItemsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrderItemsUpdateInput = typeof OrderItemsUpdateInput.Type;
+) as unknown as Schema.Codec<OrderItemsUpdateInput>;
 
 // Output Schema
+export interface OrderItemsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrderItemsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1501,8 +2161,7 @@ export const OrderItemsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type OrderItemsUpdateOutput = typeof OrderItemsUpdateOutput.Type;
+) as unknown as Schema.Codec<OrderItemsUpdateOutput>;
 
 // The operation
 /**
@@ -1519,6 +2178,12 @@ export const OrderItemsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrderItemsUpdateOutput,
 }));
 // Input Schema
+export interface OrdersGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  location: string;
+  orderName: string;
+}
 export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1530,10 +2195,22 @@ export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
     apiVersion: "2024-02-01",
   }),
-);
-export type OrdersGetInput = typeof OrdersGetInput.Type;
+) as unknown as Schema.Codec<OrdersGetInput>;
 
 // Output Schema
+export interface OrdersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1552,8 +2229,7 @@ export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OrdersGetOutput = typeof OrdersGetOutput.Type;
+}) as unknown as Schema.Codec<OrdersGetOutput>;
 
 // The operation
 /**
@@ -1570,6 +2246,12 @@ export const OrdersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OrdersGetOutput,
 }));
 // Input Schema
+export interface OrdersListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const OrdersListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1582,11 +2264,25 @@ export const OrdersListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders",
       apiVersion: "2024-02-01",
     }),
-  );
-export type OrdersListByResourceGroupInput =
-  typeof OrdersListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<OrdersListByResourceGroupInput>;
 
 // Output Schema
+export interface OrdersListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrdersListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1621,9 +2317,7 @@ export const OrdersListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrdersListByResourceGroupOutput =
-  typeof OrdersListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<OrdersListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1642,6 +2336,11 @@ export const OrdersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OrdersListBySubscriptionInput {
+  subscriptionId: string;
+  $skipToken?: string;
+  $top?: number;
+}
 export const OrdersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1653,11 +2352,25 @@ export const OrdersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders",
       apiVersion: "2024-02-01",
     }),
-  );
-export type OrdersListBySubscriptionInput =
-  typeof OrdersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<OrdersListBySubscriptionInput>;
 
 // Output Schema
+export interface OrdersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const OrdersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1692,9 +2405,7 @@ export const OrdersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type OrdersListBySubscriptionOutput =
-  typeof OrdersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<OrdersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1712,6 +2423,41 @@ export const OrdersListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProductsAndConfigurationsListConfigurationsInput {
+  subscriptionId: string;
+  $skipToken?: string;
+  configurationFilter?: {
+    hierarchyInformation: {
+      productFamilyName?: string;
+      productLineName?: string;
+      productName?: string;
+      configurationName?: string;
+      configurationIdDisplayName?: string;
+    };
+    filterableProperty?: {
+      type: "ShipToCountries" | "DoubleEncryptionStatus";
+      supportedValues: string[];
+    }[];
+    childConfigurationFilter?: {
+      hierarchyInformations?: {
+        productFamilyName?: string;
+        productLineName?: string;
+        productName?: string;
+        configurationName?: string;
+        configurationIdDisplayName?: string;
+      }[];
+      childConfigurationTypes?: (
+        | "DeviceConfiguration"
+        | "AdditionalConfiguration"
+      )[];
+    };
+  };
+  customerSubscriptionDetails?: {
+    registeredFeatures?: { name?: string; state?: string }[];
+    locationPlacementId?: string;
+    quotaId: string;
+  };
+}
 export const ProductsAndConfigurationsListConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1781,11 +2527,84 @@ export const ProductsAndConfigurationsListConfigurationsInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listConfigurations",
       apiVersion: "2024-02-01",
     }),
-  );
-export type ProductsAndConfigurationsListConfigurationsInput =
-  typeof ProductsAndConfigurationsListConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<ProductsAndConfigurationsListConfigurationsInput>;
 
 // Output Schema
+export interface ProductsAndConfigurationsListConfigurationsOutput {
+  value: {
+    properties?: {
+      displayName?: string;
+      description?: {
+        descriptionType?: "Base";
+        shortDescription?: string;
+        longDescription?: string;
+        keywords?: string[];
+        attributes?: string[];
+        links?: {
+          linkType?:
+            | "Generic"
+            | "TermsAndConditions"
+            | "Specification"
+            | "Documentation"
+            | "KnowMore"
+            | "SignUp"
+            | "Discoverable";
+          linkUrl?: string;
+        }[];
+      };
+      imageInformation?: {
+        imageType?: "MainImage" | "BulletImage" | "GenericImage";
+        imageUrl?: string;
+      }[];
+      costInformation?: {
+        billingMeterDetails?: {
+          name?: string;
+          meterDetails?: {
+            billingType: "Pav2" | "Purchase";
+            multiplier?: number;
+            chargingType?: "PerOrder" | "PerDevice";
+          };
+          meteringType?: "OneTime" | "Recurring" | "Adhoc";
+          frequency?: string;
+          termTypeDetails?: {
+            termType: "None" | "Trial" | "Timed";
+            termTypeDuration: string;
+          };
+        }[];
+        billingInfoUrl?: string;
+      };
+      availabilityInformation?: {
+        availabilityStage?:
+          | "Available"
+          | "Preview"
+          | "Signup"
+          | "Discoverable"
+          | "ComingSoon"
+          | "Unavailable"
+          | "Deprecated";
+        disabledReason?:
+          | "None"
+          | "Country"
+          | "Region"
+          | "Feature"
+          | "OfferType"
+          | "NoSubscriptionInfo"
+          | "NotAvailable"
+          | "OutOfStock";
+        disabledReasonMessage?: string;
+      };
+      hierarchyInformation?: {
+        productFamilyName?: string;
+        productLineName?: string;
+        productName?: string;
+        configurationName?: string;
+        configurationIdDisplayName?: string;
+      };
+      fulfilledBy?: "Microsoft" | "External";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductsAndConfigurationsListConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1910,9 +2729,7 @@ export const ProductsAndConfigurationsListConfigurationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductsAndConfigurationsListConfigurationsOutput =
-  typeof ProductsAndConfigurationsListConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<ProductsAndConfigurationsListConfigurationsOutput>;
 
 // The operation
 /**
@@ -1928,6 +2745,23 @@ export const ProductsAndConfigurationsListConfigurations =
     outputSchema: ProductsAndConfigurationsListConfigurationsOutput,
   }));
 // Input Schema
+export interface ProductsAndConfigurationsListProductFamiliesInput {
+  subscriptionId: string;
+  $expand?: string;
+  $skipToken?: string;
+  filterableProperties: Record<
+    string,
+    {
+      type: "ShipToCountries" | "DoubleEncryptionStatus";
+      supportedValues: string[];
+    }[]
+  >;
+  customerSubscriptionDetails?: {
+    registeredFeatures?: { name?: string; state?: string }[];
+    locationPlacementId?: string;
+    quotaId: string;
+  };
+}
 export const ProductsAndConfigurationsListProductFamiliesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1962,11 +2796,84 @@ export const ProductsAndConfigurationsListProductFamiliesInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listProductFamilies",
       apiVersion: "2024-02-01",
     }),
-  );
-export type ProductsAndConfigurationsListProductFamiliesInput =
-  typeof ProductsAndConfigurationsListProductFamiliesInput.Type;
+  ) as unknown as Schema.Codec<ProductsAndConfigurationsListProductFamiliesInput>;
 
 // Output Schema
+export interface ProductsAndConfigurationsListProductFamiliesOutput {
+  value: {
+    properties?: {
+      displayName?: string;
+      description?: {
+        descriptionType?: "Base";
+        shortDescription?: string;
+        longDescription?: string;
+        keywords?: string[];
+        attributes?: string[];
+        links?: {
+          linkType?:
+            | "Generic"
+            | "TermsAndConditions"
+            | "Specification"
+            | "Documentation"
+            | "KnowMore"
+            | "SignUp"
+            | "Discoverable";
+          linkUrl?: string;
+        }[];
+      };
+      imageInformation?: {
+        imageType?: "MainImage" | "BulletImage" | "GenericImage";
+        imageUrl?: string;
+      }[];
+      costInformation?: {
+        billingMeterDetails?: {
+          name?: string;
+          meterDetails?: {
+            billingType: "Pav2" | "Purchase";
+            multiplier?: number;
+            chargingType?: "PerOrder" | "PerDevice";
+          };
+          meteringType?: "OneTime" | "Recurring" | "Adhoc";
+          frequency?: string;
+          termTypeDetails?: {
+            termType: "None" | "Trial" | "Timed";
+            termTypeDuration: string;
+          };
+        }[];
+        billingInfoUrl?: string;
+      };
+      availabilityInformation?: {
+        availabilityStage?:
+          | "Available"
+          | "Preview"
+          | "Signup"
+          | "Discoverable"
+          | "ComingSoon"
+          | "Unavailable"
+          | "Deprecated";
+        disabledReason?:
+          | "None"
+          | "Country"
+          | "Region"
+          | "Feature"
+          | "OfferType"
+          | "NoSubscriptionInfo"
+          | "NotAvailable"
+          | "OutOfStock";
+        disabledReasonMessage?: string;
+      };
+      hierarchyInformation?: {
+        productFamilyName?: string;
+        productLineName?: string;
+        productName?: string;
+        configurationName?: string;
+        configurationIdDisplayName?: string;
+      };
+      fulfilledBy?: "Microsoft" | "External";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductsAndConfigurationsListProductFamiliesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2091,9 +2998,7 @@ export const ProductsAndConfigurationsListProductFamiliesOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductsAndConfigurationsListProductFamiliesOutput =
-  typeof ProductsAndConfigurationsListProductFamiliesOutput.Type;
+  }) as unknown as Schema.Codec<ProductsAndConfigurationsListProductFamiliesOutput>;
 
 // The operation
 /**
@@ -2110,6 +3015,10 @@ export const ProductsAndConfigurationsListProductFamilies =
     outputSchema: ProductsAndConfigurationsListProductFamiliesOutput,
   }));
 // Input Schema
+export interface ProductsAndConfigurationsListProductFamiliesMetadataInput {
+  subscriptionId: string;
+  $skipToken?: string;
+}
 export const ProductsAndConfigurationsListProductFamiliesMetadataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2120,11 +3029,84 @@ export const ProductsAndConfigurationsListProductFamiliesMetadataInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata",
       apiVersion: "2024-02-01",
     }),
-  );
-export type ProductsAndConfigurationsListProductFamiliesMetadataInput =
-  typeof ProductsAndConfigurationsListProductFamiliesMetadataInput.Type;
+  ) as unknown as Schema.Codec<ProductsAndConfigurationsListProductFamiliesMetadataInput>;
 
 // Output Schema
+export interface ProductsAndConfigurationsListProductFamiliesMetadataOutput {
+  value: {
+    properties?: {
+      displayName?: string;
+      description?: {
+        descriptionType?: "Base";
+        shortDescription?: string;
+        longDescription?: string;
+        keywords?: string[];
+        attributes?: string[];
+        links?: {
+          linkType?:
+            | "Generic"
+            | "TermsAndConditions"
+            | "Specification"
+            | "Documentation"
+            | "KnowMore"
+            | "SignUp"
+            | "Discoverable";
+          linkUrl?: string;
+        }[];
+      };
+      imageInformation?: {
+        imageType?: "MainImage" | "BulletImage" | "GenericImage";
+        imageUrl?: string;
+      }[];
+      costInformation?: {
+        billingMeterDetails?: {
+          name?: string;
+          meterDetails?: {
+            billingType: "Pav2" | "Purchase";
+            multiplier?: number;
+            chargingType?: "PerOrder" | "PerDevice";
+          };
+          meteringType?: "OneTime" | "Recurring" | "Adhoc";
+          frequency?: string;
+          termTypeDetails?: {
+            termType: "None" | "Trial" | "Timed";
+            termTypeDuration: string;
+          };
+        }[];
+        billingInfoUrl?: string;
+      };
+      availabilityInformation?: {
+        availabilityStage?:
+          | "Available"
+          | "Preview"
+          | "Signup"
+          | "Discoverable"
+          | "ComingSoon"
+          | "Unavailable"
+          | "Deprecated";
+        disabledReason?:
+          | "None"
+          | "Country"
+          | "Region"
+          | "Feature"
+          | "OfferType"
+          | "NoSubscriptionInfo"
+          | "NotAvailable"
+          | "OutOfStock";
+        disabledReasonMessage?: string;
+      };
+      hierarchyInformation?: {
+        productFamilyName?: string;
+        productLineName?: string;
+        productName?: string;
+        configurationName?: string;
+        configurationIdDisplayName?: string;
+      };
+      fulfilledBy?: "Microsoft" | "External";
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProductsAndConfigurationsListProductFamiliesMetadataOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2249,9 +3231,7 @@ export const ProductsAndConfigurationsListProductFamiliesMetadataOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProductsAndConfigurationsListProductFamiliesMetadataOutput =
-  typeof ProductsAndConfigurationsListProductFamiliesMetadataOutput.Type;
+  }) as unknown as Schema.Codec<ProductsAndConfigurationsListProductFamiliesMetadataOutput>;
 
 // The operation
 /**

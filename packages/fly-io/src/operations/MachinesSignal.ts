@@ -4,6 +4,25 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesSignalInput {
+  app_name: string;
+  machine_id: string;
+  signal?:
+    | "SIGABRT"
+    | "SIGALRM"
+    | "SIGFPE"
+    | "SIGHUP"
+    | "SIGILL"
+    | "SIGINT"
+    | "SIGKILL"
+    | "SIGPIPE"
+    | "SIGQUIT"
+    | "SIGSEGV"
+    | "SIGTERM"
+    | "SIGTRAP"
+    | "SIGUSR1"
+    | "SIGUSR2";
+}
 export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
@@ -30,12 +49,12 @@ export const MachinesSignalInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/machines/{machine_id}/signal",
   }),
-);
-export type MachinesSignalInput = typeof MachinesSignalInput.Type;
+) as unknown as Schema.Codec<MachinesSignalInput>;
 
 // Output Schema
-export const MachinesSignalOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MachinesSignalOutput = typeof MachinesSignalOutput.Type;
+export type MachinesSignalOutput = void;
+export const MachinesSignalOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesSignalOutput>;
 
 // The operation
 /**

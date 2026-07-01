@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface HogFunctionTemplatesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  template_id?: string;
+  type?: string;
+  types?: string;
+}
 export const HogFunctionTemplatesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,39 @@ export const HogFunctionTemplatesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/hog_function_templates/",
     }),
-  );
-export type HogFunctionTemplatesListInput =
-  typeof HogFunctionTemplatesListInput.Type;
+  ) as unknown as Schema.Codec<HogFunctionTemplatesListInput>;
 
 // Output Schema
+export interface HogFunctionTemplatesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string | null;
+    code?: string;
+    code_language?: string;
+    inputs_schema?: unknown;
+    type?: string;
+    status?: string;
+    category?: unknown;
+    free?: boolean;
+    icon_url?: string | null;
+    filters?: unknown;
+    masking?: unknown;
+    mapping_templates?:
+      | {
+          name?: string;
+          include_by_default?: boolean | null;
+          use_all_events_by_default?: boolean | null;
+          filters?: unknown;
+          inputs?: unknown;
+          inputs_schema?: unknown;
+        }[]
+      | null;
+  }[];
+}
 export const HogFunctionTemplatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -41,8 +77,8 @@ export const HogFunctionTemplatesListOutput =
           category: Schema.optional(Schema.Unknown),
           free: Schema.optional(Schema.Boolean),
           icon_url: Schema.optional(Schema.NullOr(Schema.String)),
-          filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          filters: Schema.optional(Schema.Unknown),
+          masking: Schema.optional(Schema.Unknown),
           mapping_templates: Schema.optional(
             Schema.NullOr(
               Schema.Array(
@@ -54,9 +90,9 @@ export const HogFunctionTemplatesListOutput =
                   use_all_events_by_default: Schema.optional(
                     Schema.NullOr(Schema.Boolean),
                   ),
-                  filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                  inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
+                  filters: Schema.optional(Schema.Unknown),
+                  inputs: Schema.optional(Schema.Unknown),
+                  inputs_schema: Schema.optional(Schema.Unknown),
                 }),
               ),
             ),
@@ -64,9 +100,7 @@ export const HogFunctionTemplatesListOutput =
         }),
       ),
     ),
-  });
-export type HogFunctionTemplatesListOutput =
-  typeof HogFunctionTemplatesListOutput.Type;
+  }) as unknown as Schema.Codec<HogFunctionTemplatesListOutput>;
 
 // The operation
 /**

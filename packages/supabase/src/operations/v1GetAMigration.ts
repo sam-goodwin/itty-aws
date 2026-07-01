@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface V1GetAMigrationInput {
+  ref: string;
+  version: string;
+}
 export const V1GetAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,17 @@ export const V1GetAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/projects/{ref}/database/migrations/{version}",
   }),
-);
-export type V1GetAMigrationInput = typeof V1GetAMigrationInput.Type;
+) as unknown as Schema.Codec<V1GetAMigrationInput>;
 
 // Output Schema
+export interface V1GetAMigrationOutput {
+  version: string;
+  name?: string;
+  statements?: string[];
+  rollback?: string[];
+  created_by?: string;
+  idempotency_key?: string;
+}
 export const V1GetAMigrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   version: Schema.String,
   name: Schema.optional(Schema.String),
@@ -23,8 +34,7 @@ export const V1GetAMigrationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rollback: Schema.optional(Schema.Array(Schema.String)),
   created_by: Schema.optional(Schema.String),
   idempotency_key: Schema.optional(Schema.String),
-});
-export type V1GetAMigrationOutput = typeof V1GetAMigrationOutput.Type;
+}) as unknown as Schema.Codec<V1GetAMigrationOutput>;
 
 // The operation
 /**

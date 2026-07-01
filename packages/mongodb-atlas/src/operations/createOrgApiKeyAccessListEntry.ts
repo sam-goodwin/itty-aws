@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface CreateOrgApiKeyAccessListEntryInput {
+  orgId: string;
+  apiUserId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const CreateOrgApiKeyAccessListEntryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const CreateOrgApiKeyAccessListEntryInput =
       method: "POST",
       path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList",
     }),
-  );
-export type CreateOrgApiKeyAccessListEntryInput =
-  typeof CreateOrgApiKeyAccessListEntryInput.Type;
+  ) as unknown as Schema.Codec<CreateOrgApiKeyAccessListEntryInput>;
 
 // Output Schema
+export type CreateOrgApiKeyAccessListEntryOutput = void;
 export const CreateOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CreateOrgApiKeyAccessListEntryOutput =
-  typeof CreateOrgApiKeyAccessListEntryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**
  * Create One Access List Entry for One Organization API Key
  *
- * Creates the access list entries for the specified organization API key. Resources require all API requests originate from IP addresses on the API access list. To use this resource, the requesting Service Account or API Key must have the Read Write role.
+ * Creates the access list entries for the specified organization API key. Resources require all API requests originate from IP addresses on the API access list.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param includeCount - Flag that indicates whether the response returns the total number of items (`totalCount`) in the response.

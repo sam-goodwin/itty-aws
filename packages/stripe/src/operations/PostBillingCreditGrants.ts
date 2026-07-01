@@ -1,8 +1,28 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostBillingCreditGrantsInput {
+  amount: { monetary?: { currency: string; value: number }; type: "monetary" };
+  applicability_config: {
+    scope: { price_type?: "metered"; prices?: { id: string }[] };
+  };
+  category?: "paid" | "promotional";
+  customer?: string;
+  customer_account?: string;
+  effective_at?: number;
+  expand?: string[];
+  expires_at?: number;
+  metadata?: Record<string, string>;
+  name?: string;
+  priority?: number;
+}
 export const PostBillingCreditGrantsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
@@ -41,15 +61,55 @@ export const PostBillingCreditGrantsInput =
       path: "/v1/billing/credit_grants",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostBillingCreditGrantsInput =
-  typeof PostBillingCreditGrantsInput.Type;
+  ) as unknown as Schema.Codec<PostBillingCreditGrantsInput>;
 
 // Output Schema
+export interface PostBillingCreditGrantsOutput {
+  amount: {
+    monetary: { currency: string; value: number } | null;
+    type: "monetary";
+  };
+  applicability_config: {
+    scope: { price_type?: "metered"; prices?: { id: string | null }[] };
+  };
+  category: "paid" | "promotional";
+  created: number;
+  customer: unknown;
+  customer_account: string | null;
+  effective_at: number | null;
+  expires_at: number | null;
+  id: string;
+  livemode: boolean;
+  metadata: Record<string, string>;
+  name: string | null;
+  object: "billing.credit_grant";
+  priority: number | null;
+  test_clock:
+    | string
+    | {
+        created: number;
+        deletes_after: number;
+        frozen_time: number;
+        id: string;
+        livemode: boolean;
+        name: string | null;
+        object: "test_helpers.test_clock";
+        status: "advancing" | "internal_failure" | "ready";
+        status_details: { advancing?: { target_frozen_time: number } };
+      }
+    | null;
+  updated: number;
+  voided_at: number | null;
+}
 export const PostBillingCreditGrantsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
-      monetary: Schema.Unknown,
+      monetary: Schema.NullOr(
+        Schema.Struct({
+          currency: Schema.String,
+          value: Schema.Number,
+        }),
+      ),
       type: Schema.Literals(["monetary"]),
     }),
     applicability_config: Schema.Struct({
@@ -75,13 +135,32 @@ export const PostBillingCreditGrantsOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["billing.credit_grant"]),
-    priority: Schema.optional(Schema.NullOr(Schema.Number)),
-    test_clock: Schema.Unknown,
+    priority: Schema.NullOr(Schema.Number),
+    test_clock: Schema.NullOr(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          created: Schema.Number,
+          deletes_after: Schema.Number,
+          frozen_time: Schema.Number,
+          id: Schema.String,
+          livemode: Schema.Boolean,
+          name: Schema.NullOr(Schema.String),
+          object: Schema.Literals(["test_helpers.test_clock"]),
+          status: Schema.Literals(["advancing", "internal_failure", "ready"]),
+          status_details: Schema.Struct({
+            advancing: Schema.optional(
+              Schema.Struct({
+                target_frozen_time: Schema.Number,
+              }),
+            ),
+          }),
+        }),
+      ]),
+    ),
     updated: Schema.Number,
     voided_at: Schema.NullOr(Schema.Number),
-  });
-export type PostBillingCreditGrantsOutput =
-  typeof PostBillingCreditGrantsOutput.Type;
+  }) as unknown as Schema.Codec<PostBillingCreditGrantsOutput>;
 
 // The operation
 /**

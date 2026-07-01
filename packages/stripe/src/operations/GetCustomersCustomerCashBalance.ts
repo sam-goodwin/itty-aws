@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetCustomersCustomerCashBalanceInput {
+  customer: string;
+  expand?: string;
+}
 export const GetCustomersCustomerCashBalanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,20 @@ export const GetCustomersCustomerCashBalanceInput =
       path: "/v1/customers/{customer}/cash_balance",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetCustomersCustomerCashBalanceInput =
-  typeof GetCustomersCustomerCashBalanceInput.Type;
+  ) as unknown as Schema.Codec<GetCustomersCustomerCashBalanceInput>;
 
 // Output Schema
+export interface GetCustomersCustomerCashBalanceOutput {
+  available: Record<string, number> | null;
+  customer: string;
+  customer_account: string | null;
+  livemode: boolean;
+  object: "cash_balance";
+  settings: {
+    reconciliation_mode: "automatic" | "manual";
+    using_merchant_default: boolean;
+  };
+}
 export const GetCustomersCustomerCashBalanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available: Schema.NullOr(Schema.Record(Schema.String, Schema.Number)),
@@ -29,9 +42,7 @@ export const GetCustomersCustomerCashBalanceOutput =
       reconciliation_mode: Schema.Literals(["automatic", "manual"]),
       using_merchant_default: Schema.Boolean,
     }),
-  });
-export type GetCustomersCustomerCashBalanceOutput =
-  typeof GetCustomersCustomerCashBalanceOutput.Type;
+  }) as unknown as Schema.Codec<GetCustomersCustomerCashBalanceOutput>;
 
 // The operation
 /**

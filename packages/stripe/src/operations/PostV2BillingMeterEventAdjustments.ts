@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostV2BillingMeterEventAdjustmentsInput {
+  cancel: { identifier: string };
+  event_name: string;
+  type: "cancel";
+}
 export const PostV2BillingMeterEventAdjustmentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
@@ -12,11 +17,19 @@ export const PostV2BillingMeterEventAdjustmentsInput =
     type: Schema.Literals(["cancel"]),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/billing/meter_event_adjustments" }),
-  );
-export type PostV2BillingMeterEventAdjustmentsInput =
-  typeof PostV2BillingMeterEventAdjustmentsInput.Type;
+  ) as unknown as Schema.Codec<PostV2BillingMeterEventAdjustmentsInput>;
 
 // Output Schema
+export interface PostV2BillingMeterEventAdjustmentsOutput {
+  cancel: { identifier: string };
+  created: string;
+  event_name: string;
+  id: string;
+  livemode: boolean;
+  object: "v2.billing.meter_event_adjustment";
+  status: "complete" | "pending";
+  type: "cancel";
+}
 export const PostV2BillingMeterEventAdjustmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     cancel: Schema.Struct({
@@ -29,9 +42,7 @@ export const PostV2BillingMeterEventAdjustmentsOutput =
     object: Schema.Literals(["v2.billing.meter_event_adjustment"]),
     status: Schema.Literals(["complete", "pending"]),
     type: Schema.Literals(["cancel"]),
-  });
-export type PostV2BillingMeterEventAdjustmentsOutput =
-  typeof PostV2BillingMeterEventAdjustmentsOutput.Type;
+  }) as unknown as Schema.Codec<PostV2BillingMeterEventAdjustmentsOutput>;
 
 // The operation
 /**

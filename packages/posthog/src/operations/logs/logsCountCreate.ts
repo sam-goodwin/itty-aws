@@ -4,6 +4,41 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LogsCountCreateInput {
+  project_id: string;
+  query?: {
+    dateRange?: { date_from?: string | null; date_to?: string | null };
+    severityLevels?: (
+      | "trace"
+      | "debug"
+      | "info"
+      | "warn"
+      | "error"
+      | "fatal"
+    )[];
+    serviceNames?: string[];
+    searchTerm?: string;
+    filterGroup?: {
+      key?: string;
+      type?: "log" | "log_attribute" | "log_resource_attribute";
+      operator?:
+        | "exact"
+        | "is_not"
+        | "icontains"
+        | "not_icontains"
+        | "regex"
+        | "not_regex"
+        | "gt"
+        | "lt"
+        | "is_date_exact"
+        | "is_date_before"
+        | "is_date_after"
+        | "is_set"
+        | "is_not_set";
+      value?: unknown;
+    }[];
+  };
+}
 export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   query: Schema.optional(
@@ -49,7 +84,7 @@ export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 "is_not_set",
               ]),
             ),
-            value: Schema.optional(Schema.NullOr(Schema.Unknown)),
+            value: Schema.optional(Schema.Unknown),
           }),
         ),
       ),
@@ -57,14 +92,15 @@ export const LogsCountCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
 }).pipe(
   T.Http({ method: "POST", path: "/api/projects/{project_id}/logs/count/" }),
-);
-export type LogsCountCreateInput = typeof LogsCountCreateInput.Type;
+) as unknown as Schema.Codec<LogsCountCreateInput>;
 
 // Output Schema
+export interface LogsCountCreateOutput {
+  count?: number;
+}
 export const LogsCountCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
-});
-export type LogsCountCreateOutput = typeof LogsCountCreateOutput.Type;
+}) as unknown as Schema.Codec<LogsCountCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface V1GetProjectFunctionCombinedStatsInput {
+  ref: string;
+  interval: "15min" | "1hr" | "3hr" | "1day";
+  function_id: string;
+}
 export const V1GetProjectFunctionCombinedStatsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,49 @@ export const V1GetProjectFunctionCombinedStatsInput =
       method: "GET",
       path: "/v1/projects/{ref}/analytics/endpoints/functions.combined-stats",
     }),
-  );
-export type V1GetProjectFunctionCombinedStatsInput =
-  typeof V1GetProjectFunctionCombinedStatsInput.Type;
+  ) as unknown as Schema.Codec<V1GetProjectFunctionCombinedStatsInput>;
 
 // Output Schema
+export interface V1GetProjectFunctionCombinedStatsOutput {
+  result?: unknown[];
+  error?:
+    | string
+    | {
+        code: number;
+        errors: {
+          domain: string;
+          location: string;
+          locationType: string;
+          message: string;
+          reason: string;
+        }[];
+        message: string;
+        status: string;
+      };
+}
 export const V1GetProjectFunctionCombinedStatsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Array(Schema.Unknown)),
-    error: Schema.optional(Schema.Unknown),
-  });
-export type V1GetProjectFunctionCombinedStatsOutput =
-  typeof V1GetProjectFunctionCombinedStatsOutput.Type;
+    error: Schema.optional(
+      Schema.Union([
+        Schema.String,
+        Schema.Struct({
+          code: Schema.Number,
+          errors: Schema.Array(
+            Schema.Struct({
+              domain: Schema.String,
+              location: Schema.String,
+              locationType: Schema.String,
+              message: Schema.String,
+              reason: Schema.String,
+            }),
+          ),
+          message: Schema.String,
+          status: Schema.String,
+        }),
+      ]),
+    ),
+  }) as unknown as Schema.Codec<V1GetProjectFunctionCombinedStatsOutput>;
 
 // The operation
 /**

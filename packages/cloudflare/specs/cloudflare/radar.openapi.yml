@@ -144,6 +144,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -376,6 +380,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -795,6 +803,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -978,6 +990,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -1164,6 +1180,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -1371,6 +1391,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -1585,6 +1609,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -1773,6 +1801,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -1980,6 +2012,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -2255,6 +2291,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -3058,6 +3098,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -3435,6 +3479,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -3795,6 +3843,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -4119,6 +4171,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -4455,6 +4511,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -4781,6 +4841,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -5146,6 +5210,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -5506,6 +5574,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -5856,6 +5928,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -6085,6 +6161,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -6306,6 +6386,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -6521,6 +6605,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -6801,6 +6889,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -7020,6 +7112,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -7263,6 +7359,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -7515,6 +7615,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -7727,6 +7831,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -7971,6 +8079,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -8198,6 +8310,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -8449,6 +8565,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -8732,6 +8852,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -9025,6 +9149,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -9273,6 +9401,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -9556,6 +9688,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -9819,6 +9955,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -10071,6 +10211,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -10303,6 +10447,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -10532,6 +10680,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -10761,6 +10913,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -10996,6 +11152,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -11329,6 +11489,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -11634,6 +11798,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -11927,6 +12095,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -12249,6 +12421,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -12578,6 +12754,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -12827,6 +13007,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -13138,6 +13322,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -13440,6 +13628,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -13733,6 +13925,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -14033,6 +14229,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -14255,6 +14455,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -14618,6 +14822,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -14995,6 +15203,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -15227,6 +15439,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -15644,6 +15860,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -17618,6 +17838,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -17893,6 +18117,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -18126,6 +18354,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -18303,6 +18535,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -18542,6 +18778,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -18809,6 +19049,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -19114,6 +19358,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -19427,6 +19675,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -19634,6 +19886,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -19854,6 +20110,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -20198,6 +20458,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -20546,6 +20810,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -20860,6 +21128,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -21188,6 +21460,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -21517,6 +21793,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -21926,6 +22206,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -23030,6 +23314,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -23374,6 +23662,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -23728,6 +24020,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -24113,6 +24409,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -24493,6 +24793,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -24923,6 +25227,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -25350,6 +25658,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -25711,6 +26023,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -26088,6 +26404,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -26326,6 +26646,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -26564,6 +26888,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -26802,6 +27130,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -27042,6 +27374,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -27277,6 +27613,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -27537,6 +27877,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -27800,6 +28144,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -28063,6 +28411,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -28328,6 +28680,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -28587,6 +28943,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -28824,6 +29184,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -29056,6 +29420,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -29288,6 +29656,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -29530,6 +29902,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -29768,6 +30144,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -29997,6 +30377,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -30239,6 +30623,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -30489,6 +30877,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -30746,6 +31138,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -31003,6 +31399,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -31270,6 +31670,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -31532,6 +31936,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -31785,6 +32193,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -32052,6 +32464,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -32303,6 +32719,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -32559,6 +32979,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -32815,6 +33239,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -33071,6 +33499,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -33377,6 +33809,12 @@ paths:
                           type: string
                         countryName:
                           type: string
+                        estimatedUsers:
+                          type: object
+                          properties:
+                            estimatedUsers:
+                              type: number
+                              description: Total estimated users.
                         name:
                           type: string
                         aka:
@@ -33389,6 +33827,7 @@ paths:
                         - asn
                         - country
                         - countryName
+                        - estimatedUsers
                         - name
                 required:
                   - asns
@@ -33957,6 +34396,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -34250,6 +34693,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -34834,6 +35281,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -35127,6 +35578,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -35400,6 +35855,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -35750,6 +36209,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -36148,6 +36611,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -36355,6 +36822,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -36606,6 +37077,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -36832,6 +37307,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -37039,6 +37518,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -37273,6 +37756,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -37551,6 +38038,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -37917,6 +38408,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -38186,6 +38681,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -38521,6 +39020,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -38973,6 +39476,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -39247,6 +39754,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -39515,6 +40026,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -39876,6 +40391,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -40158,6 +40677,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -40512,6 +41035,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -40889,6 +41416,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -41254,6 +41785,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -41547,6 +42082,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -41854,6 +42393,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -42160,6 +42703,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -42467,6 +43014,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -42774,6 +43325,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -43082,6 +43637,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -43390,6 +43949,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -43693,6 +44256,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -43998,6 +44565,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -44308,6 +44879,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -44615,6 +45190,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -44921,6 +45500,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -45228,6 +45811,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -45535,6 +46122,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -45843,6 +46434,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -46151,6 +46746,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -46454,6 +47053,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -46759,6 +47362,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -47052,6 +47659,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -47379,6 +47990,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -47686,6 +48301,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -47989,6 +48608,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -48189,6 +48812,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -48409,6 +49036,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -48667,6 +49298,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -48937,6 +49572,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -49159,6 +49798,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -49420,6 +50063,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -49651,6 +50298,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -49884,6 +50535,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -50087,6 +50742,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -50442,6 +51101,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -50751,6 +51414,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -51042,6 +51709,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -51356,6 +52027,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -51593,6 +52268,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -51828,6 +52507,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -52024,6 +52707,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -52256,6 +52943,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -52500,6 +53191,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -52826,6 +53521,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -53148,6 +53847,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -53355,6 +54058,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -53725,6 +54432,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -53922,6 +54633,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -54229,6 +54944,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -54551,6 +55270,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -54943,6 +55666,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -55607,6 +56334,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -56004,6 +56735,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -56278,6 +57013,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -56536,6 +57275,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -56800,6 +57543,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -57078,6 +57825,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -57368,6 +58119,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -57685,6 +58440,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -57924,6 +58683,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -58262,6 +59025,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -58495,6 +59262,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -58794,6 +59565,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -59209,6 +59984,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -59455,6 +60234,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -59695,6 +60478,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -60020,6 +60807,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -60255,6 +61046,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -60489,6 +61284,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -60699,6 +61498,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -60926,6 +61729,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -61264,6 +62071,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -61621,6 +62432,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -61840,6 +62655,10 @@ paths:
                                       type: string
                                     startDate:
                                       type: string
+                                    tags:
+                                      type: array
+                                      items:
+                                        type: string
                                   required:
                                     - dataSource
                                     - description
@@ -62068,6 +62887,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -62320,6 +63143,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -62616,6 +63443,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -62906,6 +63737,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -63221,6 +64056,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -63552,6 +64391,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -63916,6 +64759,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -64293,6 +65140,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -64532,6 +65383,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -64789,6 +65644,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -65020,6 +65879,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -65277,6 +66140,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -65582,6 +66449,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -65879,6 +66750,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -66169,6 +67044,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -66494,6 +67373,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -66821,6 +67704,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description
@@ -67140,6 +68027,10 @@ paths:
                                   type: string
                                 startDate:
                                   type: string
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
                               required:
                                 - dataSource
                                 - description

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgApiKeyInput {
+  orgId: string;
+  apiUserId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const GetOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}",
   }),
-);
-export type GetOrgApiKeyInput = typeof GetOrgApiKeyInput.Type;
+) as unknown as Schema.Codec<GetOrgApiKeyInput>;
 
 // Output Schema
-export const GetOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgApiKeyOutput = typeof GetOrgApiKeyOutput.Type;
+export type GetOrgApiKeyOutput = void;
+export const GetOrgApiKeyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyOutput>;
 
 // The operation
 /**
  * Return One Organization API Key
  *
- * Returns one organization API key. The organization API keys grant programmatic access to an organization. You can't use the API key to log into MongoDB Cloud through the user interface. To use this resource, the requesting Service Account or API Key must have the  Organization Member role.
+ * Returns one organization API key. The organization API keys grant programmatic access to an organization. You can't use the API key to log into MongoDB Cloud through the user interface.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.

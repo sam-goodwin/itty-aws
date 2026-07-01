@@ -3,6 +3,35 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetFilesInput {
+  created?: string;
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  purpose?:
+    | "account_requirement"
+    | "additional_verification"
+    | "business_icon"
+    | "business_logo"
+    | "customer_signature"
+    | "dispute_evidence"
+    | "document_provider_identity_document"
+    | "finance_report_run"
+    | "financial_account_statement"
+    | "identity_document"
+    | "identity_document_downloadable"
+    | "issuing_regulatory_reporting"
+    | "pci_document"
+    | "platform_terms_of_service"
+    | "selfie"
+    | "sigma_scheduled_query"
+    | "tax_document_user_upload"
+    | "terminal_android_apk"
+    | "terminal_reader_splashscreen"
+    | "terminal_wifi_certificate"
+    | "terminal_wifi_private_key";
+  starting_after?: string;
+}
 export const GetFilesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -36,10 +65,63 @@ export const GetFilesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   starting_after: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/files", contentType: "form-urlencoded" }),
-);
-export type GetFilesInput = typeof GetFilesInput.Type;
+) as unknown as Schema.Codec<GetFilesInput>;
 
 // Output Schema
+export interface GetFilesOutput {
+  data: {
+    created: number;
+    expires_at: number | null;
+    filename: string | null;
+    id: string;
+    links?: {
+      data: {
+        created: number;
+        expired: boolean;
+        expires_at: number | null;
+        file: string | unknown;
+        id: string;
+        livemode: boolean;
+        metadata: Record<string, string>;
+        object: "file_link";
+        url: string | null;
+      }[];
+      has_more: boolean;
+      object: "list";
+      url: string;
+    } | null;
+    object: "file";
+    purpose:
+      | "account_requirement"
+      | "additional_verification"
+      | "business_icon"
+      | "business_logo"
+      | "customer_signature"
+      | "dispute_evidence"
+      | "document_provider_identity_document"
+      | "finance_report_run"
+      | "financial_account_statement"
+      | "identity_document"
+      | "identity_document_downloadable"
+      | "issuing_regulatory_reporting"
+      | "pci_document"
+      | "platform_terms_of_service"
+      | "selfie"
+      | "sigma_scheduled_query"
+      | "tax_document_user_upload"
+      | "terminal_android_apk"
+      | "terminal_reader_splashscreen"
+      | "terminal_wifi_certificate"
+      | "terminal_wifi_private_key";
+    size: number;
+    title: string | null;
+    type: string | null;
+    url: string | null;
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
@@ -55,7 +137,7 @@ export const GetFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 created: Schema.Number,
                 expired: Schema.Boolean,
                 expires_at: Schema.NullOr(Schema.Number),
-                file: Schema.Unknown,
+                file: Schema.Union([Schema.String, Schema.Unknown]),
                 id: Schema.String,
                 livemode: Schema.Boolean,
                 metadata: Schema.Record(Schema.String, Schema.String),
@@ -102,8 +184,7 @@ export const GetFilesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,
-});
-export type GetFilesOutput = typeof GetFilesOutput.Type;
+}) as unknown as Schema.Codec<GetFilesOutput>;
 
 // The operation
 /**

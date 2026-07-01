@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DashboardsCollaboratorsListInput {
+  dashboard_id: number;
+  project_id: string;
+}
 export const DashboardsCollaboratorsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dashboard_id: Schema.Number.pipe(T.PathParam()),
@@ -13,11 +17,38 @@ export const DashboardsCollaboratorsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/",
     }),
-  );
-export type DashboardsCollaboratorsListInput =
-  typeof DashboardsCollaboratorsListInput.Type;
+  ) as unknown as Schema.Codec<DashboardsCollaboratorsListInput>;
 
 // Output Schema
+export type DashboardsCollaboratorsListOutput = {
+  id?: string;
+  dashboard_id?: number;
+  user?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  level?: 21 | 37;
+  added_at?: string;
+  updated_at?: string;
+  user_uuid?: string;
+}[];
 export const DashboardsCollaboratorsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -36,7 +67,23 @@ export const DashboardsCollaboratorsListOutput =
             hedgehog_config: Schema.optional(
               Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
             ),
-            role_at_organization: Schema.optional(Schema.Unknown),
+            role_at_organization: Schema.optional(
+              Schema.NullOr(
+                Schema.Union([
+                  Schema.Literals([
+                    "engineering",
+                    "data",
+                    "product",
+                    "founder",
+                    "leadership",
+                    "marketing",
+                    "sales",
+                    "other",
+                  ]),
+                  Schema.Literals([""]),
+                ]),
+              ),
+            ),
           }),
         ),
       ),
@@ -45,9 +92,7 @@ export const DashboardsCollaboratorsListOutput =
       updated_at: Schema.optional(Schema.String),
       user_uuid: Schema.optional(Schema.String),
     }),
-  );
-export type DashboardsCollaboratorsListOutput =
-  typeof DashboardsCollaboratorsListOutput.Type;
+  ) as unknown as Schema.Codec<DashboardsCollaboratorsListOutput>;
 
 // The operation
 /**

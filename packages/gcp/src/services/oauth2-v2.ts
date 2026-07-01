@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -39,7 +39,7 @@ export interface Tokeninfo {
   verified_email?: boolean;
 }
 
-export const Tokeninfo: Schema.Schema<Tokeninfo> =
+export const Tokeninfo: Schema.Codec<Tokeninfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audience: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -75,7 +75,7 @@ export interface Userinfo {
   verified_email?: boolean;
 }
 
-export const Userinfo: Schema.Schema<Userinfo> =
+export const Userinfo: Schema.Codec<Userinfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     family_name: Schema.optional(Schema.String),
@@ -153,7 +153,7 @@ export const TokeninfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "POST", path: "oauth2/v2/tokeninfo", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<TokeninfoRequest>;
+) as unknown as Schema.Codec<TokeninfoRequest>;
 
 export type TokeninfoResponse = Tokeninfo;
 export const TokeninfoResponse = /*@__PURE__*/ /*#__PURE__*/ Tokeninfo;
@@ -183,7 +183,7 @@ export const GetUserinfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "oauth2/v2/userinfo" }),
   svc,
-) as unknown as Schema.Schema<GetUserinfoRequest>;
+) as unknown as Schema.Codec<GetUserinfoRequest>;
 
 export type GetUserinfoResponse = Userinfo;
 export const GetUserinfoResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;
@@ -208,7 +208,7 @@ export const GetUserinfoV2MeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "userinfo/v2/me" }),
   svc,
-) as unknown as Schema.Schema<GetUserinfoV2MeRequest>;
+) as unknown as Schema.Codec<GetUserinfoV2MeRequest>;
 
 export type GetUserinfoV2MeResponse = Userinfo;
 export const GetUserinfoV2MeResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;

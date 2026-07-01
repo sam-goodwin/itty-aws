@@ -4,11 +4,17 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CopilotSettingsCreateOrUpdateInput {
+  properties?: {
+    accessControlEnabled: boolean;
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+  };
+}
 export const CopilotSettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -25,11 +31,22 @@ export const CopilotSettingsCreateOrUpdateInput =
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CopilotSettingsCreateOrUpdateInput =
-  typeof CopilotSettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CopilotSettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CopilotSettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CopilotSettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -49,9 +66,7 @@ export const CopilotSettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CopilotSettingsCreateOrUpdateOutput =
-  typeof CopilotSettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CopilotSettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -65,6 +80,7 @@ export const CopilotSettingsCreateOrUpdate =
     outputSchema: CopilotSettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CopilotSettingsDeleteInput {}
 export const CopilotSettingsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -72,14 +88,12 @@ export const CopilotSettingsDeleteInput =
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CopilotSettingsDeleteInput = typeof CopilotSettingsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CopilotSettingsDeleteInput>;
 
 // Output Schema
+export type CopilotSettingsDeleteOutput = void;
 export const CopilotSettingsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CopilotSettingsDeleteOutput =
-  typeof CopilotSettingsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CopilotSettingsDeleteOutput>;
 
 // The operation
 /**
@@ -94,6 +108,7 @@ export const CopilotSettingsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CopilotSettingsGetInput {}
 export const CopilotSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -101,10 +116,22 @@ export const CopilotSettingsGetInput =
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CopilotSettingsGetInput = typeof CopilotSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<CopilotSettingsGetInput>;
 
 // Output Schema
+export interface CopilotSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CopilotSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -124,8 +151,7 @@ export const CopilotSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CopilotSettingsGetOutput = typeof CopilotSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<CopilotSettingsGetOutput>;
 
 // The operation
 /**
@@ -138,6 +164,9 @@ export const CopilotSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CopilotSettingsGetOutput,
 }));
 // Input Schema
+export interface CopilotSettingsUpdateInput {
+  properties?: { accessControlEnabled?: boolean };
+}
 export const CopilotSettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -151,10 +180,22 @@ export const CopilotSettingsUpdateInput =
       path: "/providers/Microsoft.PortalServices/copilotSettings/default",
       apiVersion: "2024-04-01",
     }),
-  );
-export type CopilotSettingsUpdateInput = typeof CopilotSettingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CopilotSettingsUpdateInput>;
 
 // Output Schema
+export interface CopilotSettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CopilotSettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -174,9 +215,7 @@ export const CopilotSettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CopilotSettingsUpdateOutput =
-  typeof CopilotSettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CopilotSettingsUpdateOutput>;
 
 // The operation
 /**
@@ -191,6 +230,7 @@ export const CopilotSettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -199,10 +239,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.PortalServices/operations",
     apiVersion: "2024-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -225,8 +279,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -238,3 +291,42 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
+// Input Schema
+export interface PortalTenantCompilefileInput {
+  contents: Record<string, unknown>;
+  stringSource?: Record<string, unknown>;
+  files?: Record<string, unknown>;
+}
+export const PortalTenantCompilefileInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.Record(Schema.String, Schema.Unknown),
+    stringSource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    files: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/providers/Microsoft.PortalServices/compilefile",
+      apiVersion: "2025-11-01",
+    }),
+  ) as unknown as Schema.Codec<PortalTenantCompilefileInput>;
+
+// Output Schema
+export type PortalTenantCompilefileOutput = Record<string, unknown>;
+export const PortalTenantCompilefileOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<PortalTenantCompilefileOutput>;
+
+// The operation
+/**
+ * Compiles a file using inline content.
+ *
+ * @param api-version - The API version to use for this operation.
+ */
+export const PortalTenantCompilefile = /*@__PURE__*/ /*#__PURE__*/ API.make(
+  () => ({
+    inputSchema: PortalTenantCompilefileInput,
+    outputSchema: PortalTenantCompilefileOutput,
+  }),
+);

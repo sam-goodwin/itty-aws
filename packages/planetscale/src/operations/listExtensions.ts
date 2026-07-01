@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListExtensionsInput {
+  organization: string;
+  database: string;
+  branch: string;
+}
 export const ListExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -13,17 +18,65 @@ export const ListExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/extensions",
   }),
-);
-export type ListExtensionsInput = typeof ListExtensionsInput.Type;
+) as unknown as Schema.Codec<ListExtensionsInput>;
 
 // Output Schema
+export type ListExtensionsOutput = {
+  id: string;
+  name: string;
+  description: string;
+  internal: boolean;
+  loader:
+    | "shared_preload_libraries"
+    | "session_preload_libraries"
+    | "create_extension";
+  url: string;
+  available: boolean;
+  unavailable_reason: string;
+  parameters: {
+    id: string;
+    name: string;
+    display_name: string;
+    namespace: "patroni" | "pgconf" | "pgbouncer";
+    category: string;
+    description: string;
+    extension: boolean;
+    immutable: boolean;
+    parameter_type:
+      | "array"
+      | "boolean"
+      | "bytes"
+      | "float"
+      | "integer"
+      | "seconds"
+      | "select"
+      | "string"
+      | "time";
+    default_value: string;
+    value: string;
+    required: boolean;
+    created_at: string;
+    updated_at: string;
+    restart: boolean;
+    max: number;
+    min: number;
+    step: number;
+    url: string;
+    options: string[];
+    actor: { id: string; display_name: string; avatar_url: string };
+  }[];
+}[];
 export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     description: Schema.String,
     internal: Schema.Boolean,
-    shared_preload_allowed: Schema.Boolean,
+    loader: Schema.Literals([
+      "shared_preload_libraries",
+      "session_preload_libraries",
+      "create_extension",
+    ]),
     url: Schema.String,
     available: Schema.Boolean,
     unavailable_reason: Schema.String,
@@ -67,8 +120,7 @@ export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
       }),
     ),
   }),
-);
-export type ListExtensionsOutput = typeof ListExtensionsOutput.Type;
+) as unknown as Schema.Codec<ListExtensionsOutput>;
 
 // The operation
 /**

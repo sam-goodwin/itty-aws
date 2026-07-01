@@ -4,6 +4,66 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingPlaylistsRecordingsCreateInput {
+  project_id: string;
+  session_recording_id: string;
+  short_id: string;
+  id?: number;
+  name?: string | null;
+  derived_name?: string | null;
+  description?: string;
+  pinned?: boolean;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  deleted?: boolean;
+  filters?: unknown;
+  last_modified_at?: string;
+  last_modified_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  recordings_counts?: Record<string, Record<string, number | boolean | null>>;
+  type?: "collection" | "filters" | null;
+  is_synthetic?: boolean;
+  _create_in_folder?: string;
+}
 export const SessionRecordingPlaylistsRecordingsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,7 +88,23 @@ export const SessionRecordingPlaylistsRecordingsCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -48,17 +124,38 @@ export const SessionRecordingPlaylistsRecordingsCreateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     recordings_counts: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Record(Schema.String, Schema.Unknown),
+        Schema.Record(
+          Schema.String,
+          Schema.NullOr(Schema.Union([Schema.Number, Schema.Boolean])),
+        ),
       ),
     ),
-    type: Schema.optional(Schema.Unknown),
+    type: Schema.optional(
+      Schema.NullOr(Schema.Literals(["collection", "filters"])),
+    ),
     is_synthetic: Schema.optional(Schema.Boolean),
     _create_in_folder: Schema.optional(Schema.String),
   }).pipe(
@@ -66,15 +163,12 @@ export const SessionRecordingPlaylistsRecordingsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/{session_recording_id}/",
     }),
-  );
-export type SessionRecordingPlaylistsRecordingsCreateInput =
-  typeof SessionRecordingPlaylistsRecordingsCreateInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsCreateInput>;
 
 // Output Schema
+export type SessionRecordingPlaylistsRecordingsCreateOutput = void;
 export const SessionRecordingPlaylistsRecordingsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionRecordingPlaylistsRecordingsCreateOutput =
-  typeof SessionRecordingPlaylistsRecordingsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsCreateOutput>;
 
 // The operation
 /**

@@ -3,12 +3,25 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetActiveRegionsInput {
+  org_id?: string;
+}
 export const GetActiveRegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_id: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/regions" }));
-export type GetActiveRegionsInput = typeof GetActiveRegionsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/regions" }),
+) as unknown as Schema.Codec<GetActiveRegionsInput>;
 
 // Output Schema
+export interface GetActiveRegionsOutput {
+  regions: {
+    region_id: string;
+    name: string;
+    default: boolean;
+    geo_lat: string;
+    geo_long: string;
+  }[];
+}
 export const GetActiveRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     regions: Schema.Array(
@@ -21,8 +34,7 @@ export const GetActiveRegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type GetActiveRegionsOutput = typeof GetActiveRegionsOutput.Type;
+) as unknown as Schema.Codec<GetActiveRegionsOutput>;
 
 // The operation
 /**

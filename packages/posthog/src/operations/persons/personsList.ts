@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsListInput {
+  project_id: string;
+  distinct_id?: string;
+  email?: string;
+  format?: "csv" | "json";
+  limit?: number;
+  offset?: number;
+  properties?: string;
+  search?: string;
+}
 export const PersonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   distinct_id: Schema.optional(Schema.String),
@@ -13,10 +23,25 @@ export const PersonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   offset: Schema.optional(Schema.Number),
   properties: Schema.optional(Schema.String),
   search: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/projects/{project_id}/persons/" }));
-export type PersonsListInput = typeof PersonsListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/projects/{project_id}/persons/" }),
+) as unknown as Schema.Codec<PersonsListInput>;
 
 // Output Schema
+export interface PersonsListOutput {
+  next?: string | null;
+  previous?: string | null;
+  count?: number;
+  results?: {
+    id?: number;
+    name?: string;
+    distinct_ids?: string[];
+    properties?: unknown;
+    created_at?: string;
+    uuid?: string;
+    last_seen_at?: string | null;
+  }[];
+}
 export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -34,8 +59,7 @@ export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type PersonsListOutput = typeof PersonsListOutput.Type;
+}) as unknown as Schema.Codec<PersonsListOutput>;
 
 // The operation
 /**

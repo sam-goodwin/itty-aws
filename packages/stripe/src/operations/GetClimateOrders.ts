@@ -3,6 +3,12 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetClimateOrdersInput {
+  ending_before?: string;
+  expand?: string;
+  limit?: number;
+  starting_after?: string;
+}
 export const GetClimateOrdersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -14,10 +20,105 @@ export const GetClimateOrdersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/climate/orders",
     contentType: "form-urlencoded",
   }),
-);
-export type GetClimateOrdersInput = typeof GetClimateOrdersInput.Type;
+) as unknown as Schema.Codec<GetClimateOrdersInput>;
 
 // Output Schema
+export interface GetClimateOrdersOutput {
+  data: {
+    amount_fees: number;
+    amount_subtotal: number;
+    amount_total: number;
+    beneficiary?: { public_name: string };
+    canceled_at: number | null;
+    cancellation_reason: "expired" | "product_unavailable" | "requested" | null;
+    certificate: string | null;
+    confirmed_at: number | null;
+    created: number;
+    currency: string;
+    delayed_at: number | null;
+    delivered_at: number | null;
+    delivery_details: {
+      delivered_at: number;
+      location: {
+        city: string | null;
+        country: string;
+        latitude: number | null;
+        longitude: number | null;
+        region: string | null;
+      } | null;
+      metric_tons: string;
+      registry_url: string | null;
+      supplier: {
+        id: string;
+        info_url: string;
+        livemode: boolean;
+        locations: {
+          city: string | null;
+          country: string;
+          latitude: number | null;
+          longitude: number | null;
+          region: string | null;
+        }[];
+        name: string;
+        object: "climate.supplier";
+        removal_pathway:
+          | "biomass_carbon_removal_and_storage"
+          | "direct_air_capture"
+          | "enhanced_weathering"
+          | "marine_carbon_removal";
+      };
+    }[];
+    expected_delivery_year: number;
+    id: string;
+    livemode: boolean;
+    metadata: Record<string, string>;
+    metric_tons: string;
+    object: "climate.order";
+    product:
+      | string
+      | {
+          created: number;
+          current_prices_per_metric_ton: Record<
+            string,
+            {
+              amount_fees: number;
+              amount_subtotal: number;
+              amount_total: number;
+            }
+          >;
+          delivery_year: number | null;
+          id: string;
+          livemode: boolean;
+          metric_tons_available: string;
+          name: string;
+          object: "climate.product";
+          suppliers: {
+            id: string;
+            info_url: string;
+            livemode: boolean;
+            locations: {
+              city: string | null;
+              country: string;
+              latitude: number | null;
+              longitude: number | null;
+              region: string | null;
+            }[];
+            name: string;
+            object: "climate.supplier";
+            removal_pathway:
+              | "biomass_carbon_removal_and_storage"
+              | "direct_air_capture"
+              | "enhanced_weathering"
+              | "marine_carbon_removal";
+          }[];
+        };
+    product_substituted_at: number | null;
+    status: "awaiting_funds" | "canceled" | "confirmed" | "delivered" | "open";
+  }[];
+  has_more: boolean;
+  object: "list";
+  url: string;
+}
 export const GetClimateOrdersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     data: Schema.Array(
@@ -43,7 +144,15 @@ export const GetClimateOrdersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         delivery_details: Schema.Array(
           Schema.Struct({
             delivered_at: Schema.Number,
-            location: Schema.Unknown,
+            location: Schema.NullOr(
+              Schema.Struct({
+                city: Schema.NullOr(Schema.String),
+                country: Schema.String,
+                latitude: Schema.NullOr(Schema.Number),
+                longitude: Schema.NullOr(Schema.Number),
+                region: Schema.NullOr(Schema.String),
+              }),
+            ),
             metric_tons: Schema.String,
             registry_url: Schema.NullOr(Schema.String),
             supplier: Schema.Struct({
@@ -76,7 +185,50 @@ export const GetClimateOrdersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         metadata: Schema.Record(Schema.String, Schema.String),
         metric_tons: Schema.String,
         object: Schema.Literals(["climate.order"]),
-        product: Schema.Unknown,
+        product: Schema.Union([
+          Schema.String,
+          Schema.Struct({
+            created: Schema.Number,
+            current_prices_per_metric_ton: Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                amount_fees: Schema.Number,
+                amount_subtotal: Schema.Number,
+                amount_total: Schema.Number,
+              }),
+            ),
+            delivery_year: Schema.NullOr(Schema.Number),
+            id: Schema.String,
+            livemode: Schema.Boolean,
+            metric_tons_available: Schema.String,
+            name: Schema.String,
+            object: Schema.Literals(["climate.product"]),
+            suppliers: Schema.Array(
+              Schema.Struct({
+                id: Schema.String,
+                info_url: Schema.String,
+                livemode: Schema.Boolean,
+                locations: Schema.Array(
+                  Schema.Struct({
+                    city: Schema.NullOr(Schema.String),
+                    country: Schema.String,
+                    latitude: Schema.NullOr(Schema.Number),
+                    longitude: Schema.NullOr(Schema.Number),
+                    region: Schema.NullOr(Schema.String),
+                  }),
+                ),
+                name: Schema.String,
+                object: Schema.Literals(["climate.supplier"]),
+                removal_pathway: Schema.Literals([
+                  "biomass_carbon_removal_and_storage",
+                  "direct_air_capture",
+                  "enhanced_weathering",
+                  "marine_carbon_removal",
+                ]),
+              }),
+            ),
+          }),
+        ]),
         product_substituted_at: Schema.NullOr(Schema.Number),
         status: Schema.Literals([
           "awaiting_funds",
@@ -91,8 +243,7 @@ export const GetClimateOrdersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     object: Schema.Literals(["list"]),
     url: Schema.String,
   },
-);
-export type GetClimateOrdersOutput = typeof GetClimateOrdersOutput.Type;
+) as unknown as Schema.Codec<GetClimateOrdersOutput>;
 
 // The operation
 /**

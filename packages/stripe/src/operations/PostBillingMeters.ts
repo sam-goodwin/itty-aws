@@ -3,6 +3,15 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostBillingMetersInput {
+  customer_mapping?: { event_payload_key: string; type: "by_id" };
+  default_aggregation: { formula: "count" | "last" | "sum" };
+  display_name: string;
+  event_name: string;
+  event_time_window?: "day" | "hour";
+  expand?: string[];
+  value_settings?: { event_payload_key: string };
+}
 export const PostBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     customer_mapping: Schema.optional(
@@ -30,10 +39,24 @@ export const PostBillingMetersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/v1/billing/meters",
     contentType: "form-urlencoded",
   }),
-);
-export type PostBillingMetersInput = typeof PostBillingMetersInput.Type;
+) as unknown as Schema.Codec<PostBillingMetersInput>;
 
 // Output Schema
+export interface PostBillingMetersOutput {
+  created: number;
+  customer_mapping: { event_payload_key: string; type: "by_id" };
+  default_aggregation: { formula: "count" | "last" | "sum" };
+  display_name: string;
+  event_name: string;
+  event_time_window: "day" | "hour" | null;
+  id: string;
+  livemode: boolean;
+  object: "billing.meter";
+  status: "active" | "inactive";
+  status_transitions: { deactivated_at: number | null };
+  updated: number;
+  value_settings: { event_payload_key: string };
+}
 export const PostBillingMetersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -58,8 +81,7 @@ export const PostBillingMetersOutput =
     value_settings: Schema.Struct({
       event_payload_key: Schema.String,
     }),
-  });
-export type PostBillingMetersOutput = typeof PostBillingMetersOutput.Type;
+  }) as unknown as Schema.Codec<PostBillingMetersOutput>;
 
 // The operation
 /**

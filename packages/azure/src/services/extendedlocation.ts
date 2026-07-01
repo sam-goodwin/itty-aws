@@ -4,15 +4,45 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CustomLocationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  properties?: {
+    authentication?: { type?: string; value?: string };
+    clusterExtensionIds?: string[];
+    displayName?: string;
+    hostResourceId?: string;
+    hostType?: "Kubernetes";
+    namespace?: string;
+    provisioningState?: string;
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const CustomLocationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -58,19 +88,20 @@ export const CustomLocationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsCreateOrUpdateInput =
-  typeof CustomLocationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface CustomLocationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CustomLocationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CustomLocationsCreateOrUpdateOutput =
-  typeof CustomLocationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -81,6 +112,7 @@ export type CustomLocationsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -88,24 +120,28 @@ export const CustomLocationsCreateOrUpdate =
     outputSchema: CustomLocationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CustomLocationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const CustomLocationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsDeleteInput = typeof CustomLocationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsDeleteInput>;
 
 // Output Schema
+export type CustomLocationsDeleteOutput = void;
 export const CustomLocationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CustomLocationsDeleteOutput =
-  typeof CustomLocationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomLocationsDeleteOutput>;
 
 // The operation
 /**
@@ -116,6 +152,7 @@ export type CustomLocationsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -124,27 +161,36 @@ export const CustomLocationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CustomLocationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const CustomLocationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsGetInput = typeof CustomLocationsGetInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsGetInput>;
 
 // Output Schema
+export interface CustomLocationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CustomLocationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CustomLocationsGetOutput = typeof CustomLocationsGetOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsGetOutput>;
 
 // The operation
 /**
@@ -155,12 +201,17 @@ export type CustomLocationsGetOutput = typeof CustomLocationsGetOutput.Type;
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: CustomLocationsGetInput,
   outputSchema: CustomLocationsGetOutput,
 }));
 // Input Schema
+export interface CustomLocationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CustomLocationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -171,11 +222,13 @@ export const CustomLocationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsListByResourceGroupInput =
-  typeof CustomLocationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsListByResourceGroupInput>;
 
 // Output Schema
+export interface CustomLocationsListByResourceGroupOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const CustomLocationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -188,9 +241,7 @@ export const CustomLocationsListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type CustomLocationsListByResourceGroupOutput =
-  typeof CustomLocationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -208,6 +259,9 @@ export const CustomLocationsListByResourceGroup =
     outputSchema: CustomLocationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface CustomLocationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CustomLocationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -217,11 +271,13 @@ export const CustomLocationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ExtendedLocation/customLocations",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsListBySubscriptionInput =
-  typeof CustomLocationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsListBySubscriptionInput>;
 
 // Output Schema
+export interface CustomLocationsListBySubscriptionOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const CustomLocationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -234,9 +290,7 @@ export const CustomLocationsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type CustomLocationsListBySubscriptionOutput =
-  typeof CustomLocationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -253,21 +307,29 @@ export const CustomLocationsListBySubscription =
     outputSchema: CustomLocationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface CustomLocationsListEnabledResourceTypesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+}
 export const CustomLocationsListEnabledResourceTypesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}/enabledResourceTypes",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsListEnabledResourceTypesInput =
-  typeof CustomLocationsListEnabledResourceTypesInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsListEnabledResourceTypesInput>;
 
 // Output Schema
+export interface CustomLocationsListEnabledResourceTypesOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const CustomLocationsListEnabledResourceTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -280,9 +342,7 @@ export const CustomLocationsListEnabledResourceTypesOutput =
         }),
       ),
     ),
-  });
-export type CustomLocationsListEnabledResourceTypesOutput =
-  typeof CustomLocationsListEnabledResourceTypesOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsListEnabledResourceTypesOutput>;
 
 // The operation
 /**
@@ -293,6 +353,7 @@ export type CustomLocationsListEnabledResourceTypesOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsListEnabledResourceTypes =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -300,6 +361,7 @@ export const CustomLocationsListEnabledResourceTypes =
     outputSchema: CustomLocationsListEnabledResourceTypesOutput,
   }));
 // Input Schema
+export interface CustomLocationsListOperationsInput {}
 export const CustomLocationsListOperationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -307,11 +369,23 @@ export const CustomLocationsListOperationsInput =
       path: "/providers/Microsoft.ExtendedLocation/operations",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsListOperationsInput =
-  typeof CustomLocationsListOperationsInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsListOperationsInput>;
 
 // Output Schema
+export interface CustomLocationsListOperationsOutput {
+  nextLink?: string;
+  value: {
+    display?: {
+      description?: string;
+      operation?: string;
+      provider?: string;
+      resource?: string;
+    };
+    isDataAction?: boolean;
+    name?: string;
+    origin?: string;
+  }[];
+}
 export const CustomLocationsListOperationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -330,9 +404,7 @@ export const CustomLocationsListOperationsOutput =
         origin: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CustomLocationsListOperationsOutput =
-  typeof CustomLocationsListOperationsOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsListOperationsOutput>;
 
 // The operation
 /**
@@ -346,10 +418,31 @@ export const CustomLocationsListOperations =
     outputSchema: CustomLocationsListOperationsOutput,
   }));
 // Input Schema
+export interface CustomLocationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "None";
+  };
+  properties?: {
+    authentication?: { type?: string; value?: string };
+    clusterExtensionIds?: string[];
+    displayName?: string;
+    hostResourceId?: string;
+    hostType?: "Kubernetes";
+    namespace?: string;
+    provisioningState?: string;
+  };
+  tags?: Record<string, string>;
+}
 export const CustomLocationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    resourceName: Schema.String.pipe(T.PathParam()),
     identity: Schema.optional(
       Schema.Struct({
         principalId: Schema.optional(Schema.String),
@@ -380,18 +473,20 @@ export const CustomLocationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
     }),
-  );
-export type CustomLocationsUpdateInput = typeof CustomLocationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<CustomLocationsUpdateInput>;
 
 // Output Schema
+export interface CustomLocationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const CustomLocationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type CustomLocationsUpdateOutput =
-  typeof CustomLocationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CustomLocationsUpdateOutput>;
 
 // The operation
 /**
@@ -402,6 +497,7 @@ export type CustomLocationsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param resourceName - Custom Locations name.
  */
 export const CustomLocationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

@@ -3,6 +3,22 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SendEvmTransactionInput {
+  address: string;
+  network:
+    | "base"
+    | "base-sepolia"
+    | "ethereum"
+    | "ethereum-sepolia"
+    | "avalanche"
+    | "polygon"
+    | "optimism"
+    | "arbitrum"
+    | "arbitrum-sepolia"
+    | "world"
+    | "world-sepolia";
+  transaction: string;
+}
 export const SendEvmTransactionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -15,6 +31,9 @@ export const SendEvmTransactionInput =
       "polygon",
       "optimism",
       "arbitrum",
+      "arbitrum-sepolia",
+      "world",
+      "world-sepolia",
     ]),
     transaction: Schema.String,
   }).pipe(
@@ -22,19 +41,20 @@ export const SendEvmTransactionInput =
       method: "POST",
       path: "/v2/evm/accounts/{address}/send/transaction",
     }),
-  );
-export type SendEvmTransactionInput = typeof SendEvmTransactionInput.Type;
+  ) as unknown as Schema.Codec<SendEvmTransactionInput>;
 
 // Output Schema
+export interface SendEvmTransactionOutput {
+  transactionHash: string;
+}
 export const SendEvmTransactionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     transactionHash: Schema.String,
-  });
-export type SendEvmTransactionOutput = typeof SendEvmTransactionOutput.Type;
+  }) as unknown as Schema.Codec<SendEvmTransactionOutput>;
 
 // The operation
 /**
- * Send a transaction
+ * Send transaction
  *
  * Signs a transaction with the given EVM account and sends it to the indicated supported network. This API handles nonce management and gas estimation, leaving the developer to provide only the minimal set of fields necessary to send the transaction. The transaction should be serialized as a hex string using [RLP](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/).
  * The transaction must be an [EIP-1559 dynamic fee transaction](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md).

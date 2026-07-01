@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ActionsDestroyInput {
+  id: number;
+  project_id: string;
+  format?: "csv" | "json";
+}
 export const ActionsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
@@ -13,12 +18,12 @@ export const ActionsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/api/projects/{project_id}/actions/{id}/",
   }),
-);
-export type ActionsDestroyInput = typeof ActionsDestroyInput.Type;
+) as unknown as Schema.Codec<ActionsDestroyInput>;
 
 // Output Schema
-export const ActionsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ActionsDestroyOutput = typeof ActionsDestroyOutput.Type;
+export type ActionsDestroyOutput = void;
+export const ActionsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActionsDestroyOutput>;
 
 // The operation
 /**

@@ -4,6 +4,14 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsDeletionStatusListInput {
+  project_id: string;
+  format?: "csv" | "json";
+  limit?: number;
+  offset?: number;
+  person_uuid?: string;
+  status?: "all" | "completed" | "pending";
+}
 export const PersonsDeletionStatusListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -17,11 +25,20 @@ export const PersonsDeletionStatusListInput =
       method: "GET",
       path: "/api/projects/{project_id}/persons/deletion_status/",
     }),
-  );
-export type PersonsDeletionStatusListInput =
-  typeof PersonsDeletionStatusListInput.Type;
+  ) as unknown as Schema.Codec<PersonsDeletionStatusListInput>;
 
 // Output Schema
+export interface PersonsDeletionStatusListOutput {
+  next?: string | null;
+  previous?: string | null;
+  count?: number;
+  results?: {
+    person_uuid?: string;
+    created_at?: string;
+    status?: string;
+    delete_verified_at?: string | null;
+  }[];
+}
 export const PersonsDeletionStatusListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     next: Schema.optional(Schema.NullOr(Schema.String)),
@@ -37,9 +54,7 @@ export const PersonsDeletionStatusListOutput =
         }),
       ),
     ),
-  });
-export type PersonsDeletionStatusListOutput =
-  typeof PersonsDeletionStatusListOutput.Type;
+  }) as unknown as Schema.Codec<PersonsDeletionStatusListOutput>;
 
 // The operation
 /**

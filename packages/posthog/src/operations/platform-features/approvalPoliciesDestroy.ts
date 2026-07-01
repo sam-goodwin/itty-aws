@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ApprovalPoliciesDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const ApprovalPoliciesDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,17 +14,14 @@ export const ApprovalPoliciesDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/approval_policies/{id}/",
+      path: "/api/projects/{project_id}/approval_policies/{id}/",
     }),
-  );
-export type ApprovalPoliciesDestroyInput =
-  typeof ApprovalPoliciesDestroyInput.Type;
+  ) as unknown as Schema.Codec<ApprovalPoliciesDestroyInput>;
 
 // Output Schema
+export type ApprovalPoliciesDestroyOutput = void;
 export const ApprovalPoliciesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApprovalPoliciesDestroyOutput =
-  typeof ApprovalPoliciesDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApprovalPoliciesDestroyOutput>;
 
 // The operation
 /**
@@ -33,6 +33,5 @@ export const approvalPoliciesDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: ApprovalPoliciesDestroyInput,
     outputSchema: ApprovalPoliciesDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

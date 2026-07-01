@@ -3,6 +3,26 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateOnrampSessionInput {
+  purchaseCurrency: string;
+  destinationNetwork: string;
+  destinationAddress: string;
+  paymentAmount?: string;
+  purchaseAmount?: string;
+  paymentCurrency?: string;
+  paymentMethod?:
+    | "CARD"
+    | "ACH"
+    | "APPLE_PAY"
+    | "PAYPAL"
+    | "FIAT_WALLET"
+    | "CRYPTO_WALLET";
+  country?: string;
+  subdivision?: string;
+  redirectUrl?: string;
+  clientIp?: string;
+  partnerUserRef?: string;
+}
 export const CreateOnrampSessionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     purchaseCurrency: Schema.String,
@@ -26,10 +46,28 @@ export const CreateOnrampSessionInput =
     redirectUrl: Schema.optional(Schema.String),
     clientIp: Schema.optional(Schema.String),
     partnerUserRef: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/v2/onramp/sessions" }));
-export type CreateOnrampSessionInput = typeof CreateOnrampSessionInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/v2/onramp/sessions" }),
+  ) as unknown as Schema.Codec<CreateOnrampSessionInput>;
 
 // Output Schema
+export interface CreateOnrampSessionOutput {
+  session: { onrampUrl: string };
+  quote?: {
+    paymentTotal: string;
+    paymentSubtotal: string;
+    paymentCurrency: string;
+    purchaseAmount: string;
+    purchaseCurrency: string;
+    destinationNetwork: string;
+    fees: {
+      type: "FEE_TYPE_NETWORK" | "FEE_TYPE_EXCHANGE";
+      amount: string;
+      currency: string;
+    }[];
+    exchangeRate: string;
+  };
+}
 export const CreateOnrampSessionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session: Schema.Struct({
@@ -53,8 +91,7 @@ export const CreateOnrampSessionOutput =
         exchangeRate: Schema.String,
       }),
     ),
-  });
-export type CreateOnrampSessionOutput = typeof CreateOnrampSessionOutput.Type;
+  }) as unknown as Schema.Codec<CreateOnrampSessionOutput>;
 
 // The operation
 /**

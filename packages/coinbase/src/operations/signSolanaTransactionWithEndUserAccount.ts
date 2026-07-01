@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface SignSolanaTransactionWithEndUserAccountInput {
+  userId: string;
+  projectID?: string;
+  address: string;
+  transaction: string;
+  walletSecretId?: string;
+}
 export const SignSolanaTransactionWithEndUserAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +22,20 @@ export const SignSolanaTransactionWithEndUserAccountInput =
       method: "POST",
       path: "/v2/embedded-wallet-api/end-users/{userId}/solana/sign/transaction",
     }),
-  );
-export type SignSolanaTransactionWithEndUserAccountInput =
-  typeof SignSolanaTransactionWithEndUserAccountInput.Type;
+  ) as unknown as Schema.Codec<SignSolanaTransactionWithEndUserAccountInput>;
 
 // Output Schema
+export interface SignSolanaTransactionWithEndUserAccountOutput {
+  signedTransaction: string;
+}
 export const SignSolanaTransactionWithEndUserAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     signedTransaction: Schema.String,
-  });
-export type SignSolanaTransactionWithEndUserAccountOutput =
-  typeof SignSolanaTransactionWithEndUserAccountOutput.Type;
+  }) as unknown as Schema.Codec<SignSolanaTransactionWithEndUserAccountOutput>;
 
 // The operation
 /**
- * Sign a transaction with end user Solana account
+ * Sign transaction via end user Solana account
  *
  * Signs a transaction with the given end user Solana account.
  * The unsigned transaction should be serialized into a byte array and then encoded as base64.

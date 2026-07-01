@@ -3,6 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostAppsSecretsInput {
+  expand?: string[];
+  expires_at?: number;
+  name: string;
+  payload: string;
+  scope: { type: "account" | "user"; user?: string };
+}
 export const PostAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   expires_at: Schema.optional(Schema.Number),
@@ -18,10 +25,20 @@ export const PostAppsSecretsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/v1/apps/secrets",
     contentType: "form-urlencoded",
   }),
-);
-export type PostAppsSecretsInput = typeof PostAppsSecretsInput.Type;
+) as unknown as Schema.Codec<PostAppsSecretsInput>;
 
 // Output Schema
+export interface PostAppsSecretsOutput {
+  created: number;
+  deleted?: boolean;
+  expires_at: number | null;
+  id: string;
+  livemode: boolean;
+  name: string;
+  object: "apps.secret";
+  payload?: string | null;
+  scope: { type: "account" | "user"; user?: string };
+}
 export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   created: Schema.Number,
   deleted: Schema.optional(Schema.Boolean),
@@ -35,8 +52,7 @@ export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.Literals(["account", "user"]),
     user: Schema.optional(Schema.String),
   }),
-});
-export type PostAppsSecretsOutput = typeof PostAppsSecretsOutput.Type;
+}) as unknown as Schema.Codec<PostAppsSecretsOutput>;
 
 // The operation
 /**

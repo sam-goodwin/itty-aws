@@ -9,6 +9,24 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface PortalSessionsControllerCreateInput {
+  return_url?: string;
+  success_url?: string;
+  organization?: string;
+  intent?:
+    | "sso"
+    | "dsync"
+    | "audit_logs"
+    | "log_streams"
+    | "domain_verification"
+    | "certificate_renewal"
+    | "bring_your_own_key";
+  intent_options?: {
+    sso?: { bookmark_slug?: string; provider_type?: string };
+    domain_verification?: { domain_name?: string };
+  };
+  it_contact_emails?: string[];
+}
 export const PortalSessionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     return_url: Schema.optional(Schema.String),
@@ -41,17 +59,18 @@ export const PortalSessionsControllerCreateInput =
       }),
     ),
     it_contact_emails: Schema.optional(Schema.Array(Schema.String)),
-  }).pipe(T.Http({ method: "POST", path: "/portal/generate_link" }));
-export type PortalSessionsControllerCreateInput =
-  typeof PortalSessionsControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/portal/generate_link" }),
+  ) as unknown as Schema.Codec<PortalSessionsControllerCreateInput>;
 
 // Output Schema
+export interface PortalSessionsControllerCreateOutput {
+  link?: string;
+}
 export const PortalSessionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.String),
-  });
-export type PortalSessionsControllerCreateOutput =
-  typeof PortalSessionsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<PortalSessionsControllerCreateOutput>;
 
 // The operation
 /**

@@ -4,21 +4,26 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SsoControllerLogoutAuthorizeInput {
+  profile_id: string;
+}
 export const SsoControllerLogoutAuthorizeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profile_id: Schema.String,
-  }).pipe(T.Http({ method: "POST", path: "/sso/logout/authorize" }));
-export type SsoControllerLogoutAuthorizeInput =
-  typeof SsoControllerLogoutAuthorizeInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/sso/logout/authorize" }),
+  ) as unknown as Schema.Codec<SsoControllerLogoutAuthorizeInput>;
 
 // Output Schema
+export interface SsoControllerLogoutAuthorizeOutput {
+  logout_url?: string;
+  logout_token?: string;
+}
 export const SsoControllerLogoutAuthorizeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logout_url: Schema.optional(Schema.String),
     logout_token: Schema.optional(Schema.String),
-  });
-export type SsoControllerLogoutAuthorizeOutput =
-  typeof SsoControllerLogoutAuthorizeOutput.Type;
+  }) as unknown as Schema.Codec<SsoControllerLogoutAuthorizeOutput>;
 
 // The operation
 /**

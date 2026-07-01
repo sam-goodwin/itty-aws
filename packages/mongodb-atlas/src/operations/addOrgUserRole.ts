@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface AddOrgUserRoleInput {
+  orgId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const AddOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const AddOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:addRole",
   }),
-);
-export type AddOrgUserRoleInput = typeof AddOrgUserRoleInput.Type;
+) as unknown as Schema.Codec<AddOrgUserRoleInput>;
 
 // Output Schema
-export const AddOrgUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AddOrgUserRoleOutput = typeof AddOrgUserRoleOutput.Type;
+export type AddOrgUserRoleOutput = void;
+export const AddOrgUserRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddOrgUserRoleOutput>;
 
 // The operation
 /**
  * Add One Organization Role to One MongoDB Cloud User
  *
- * Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Adds one organization-level role to the MongoDB Cloud user. You can add a role to an active user or a user that has not yet accepted the invitation to join the organization.
  * **Note**: This operation is atomic.
  * **Note**: This resource cannot be used to add a role to users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *

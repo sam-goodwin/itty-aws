@@ -4,6 +4,17 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgUsersInput {
+  orgId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  username?: string;
+  orgMembershipStatus?: string;
+  orgMembershipStatuses?: string;
+}
 export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -13,18 +24,21 @@ export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageNum: Schema.optional(Schema.Number),
   username: Schema.optional(Schema.String),
   orgMembershipStatus: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/users" }));
-export type ListOrgUsersInput = typeof ListOrgUsersInput.Type;
+  orgMembershipStatuses: Schema.optional(Schema.String),
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/users" }),
+) as unknown as Schema.Codec<ListOrgUsersInput>;
 
 // Output Schema
-export const ListOrgUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgUsersOutput = typeof ListOrgUsersOutput.Type;
+export type ListOrgUsersOutput = void;
+export const ListOrgUsersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgUsersOutput>;
 
 // The operation
 /**
  * Return All MongoDB Cloud Users in One Organization
  *
- * Returns details about the pending and active MongoDB Cloud users associated with the specified organization. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+ * Returns details about the pending and active MongoDB Cloud users associated with the specified organization.
  * **Note**: This resource cannot be used to view details about users invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  * **Note**: To return both pending and active users, use v2-{2025-02-19} or later. If using a deprecated version, only active users will be returned. Deprecated versions: v2-{2023-01-01}
  *
@@ -35,7 +49,8 @@ export type ListOrgUsersOutput = typeof ListOrgUsersOutput.Type;
  * @param itemsPerPage - Number of items that the response returns per page.
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param username - Email address to filter users by. Not supported in deprecated versions.
- * @param orgMembershipStatus - Organization membership status to filter users by. If you exclude this parameter, this resource returns both pending and active users. Not supported in deprecated versions.
+ * @param orgMembershipStatus - Deprecated: Use `orgMembershipStatuses` instead. Organization membership status to filter users by. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
+ * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions.
  */
 export const listOrgUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListOrgUsersInput,

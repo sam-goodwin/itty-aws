@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupFlexClusterInput {
+  groupId: string;
+  name: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteGroupFlexClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const DeleteGroupFlexClusterInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
     }),
-  );
-export type DeleteGroupFlexClusterInput =
-  typeof DeleteGroupFlexClusterInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupFlexClusterInput>;
 
 // Output Schema
+export type DeleteGroupFlexClusterOutput = void;
 export const DeleteGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupFlexClusterOutput =
-  typeof DeleteGroupFlexClusterOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupFlexClusterOutput>;
 
 // The operation
 /**
  * Remove One Flex Cluster from One Project
  *
- * Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Removes one flex cluster from the specified project. The flex cluster must have termination protection disabled in order to be deleted.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

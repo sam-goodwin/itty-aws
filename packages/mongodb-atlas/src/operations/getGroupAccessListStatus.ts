@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAccessListStatusInput {
+  groupId: string;
+  entryValue: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetGroupAccessListStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const GetGroupAccessListStatusInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status",
     }),
-  );
-export type GetGroupAccessListStatusInput =
-  typeof GetGroupAccessListStatusInput.Type;
+  ) as unknown as Schema.Codec<GetGroupAccessListStatusInput>;
 
 // Output Schema
+export type GetGroupAccessListStatusOutput = void;
 export const GetGroupAccessListStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAccessListStatusOutput =
-  typeof GetGroupAccessListStatusOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAccessListStatusOutput>;
 
 // The operation
 /**

@@ -4,12 +4,35 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetCurrentUserInput {}
 export const GetCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/user" }));
-export type GetCurrentUserInput = typeof GetCurrentUserInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/user" }),
+) as unknown as Schema.Codec<GetCurrentUserInput>;
 
 // Output Schema
+export interface GetCurrentUserOutput {
+  id: string;
+  display_name: string;
+  name?: string | null;
+  email: string;
+  avatar_url: string;
+  created_at: string;
+  updated_at: string;
+  two_factor_auth_configured: boolean;
+  default_organization?: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  } | null;
+  sso?: boolean | null;
+  managed?: boolean | null;
+  directory_managed?: boolean | null;
+  email_verified?: boolean | null;
+}
 export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   display_name: Schema.String,
@@ -34,8 +57,7 @@ export const GetCurrentUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
   directory_managed: Schema.optional(Schema.NullOr(Schema.Boolean)),
   email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-});
-export type GetCurrentUserOutput = typeof GetCurrentUserOutput.Type;
+}) as unknown as Schema.Codec<GetCurrentUserOutput>;
 
 // The operation
 /**

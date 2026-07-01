@@ -3,6 +3,129 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostAccountsAccountPersonsInput {
+  account: string;
+  additional_tos_acceptances?: {
+    account?: { date?: number; ip?: string; user_agent?: string | "" };
+  };
+  address?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    state?: string;
+  };
+  address_kana?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    state?: string;
+    town?: string;
+  };
+  address_kanji?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    state?: string;
+    town?: string;
+  };
+  dob?: { day: number; month: number; year: number } | "";
+  documents?: {
+    company_authorization?: { files?: (string | "")[] };
+    passport?: { files?: (string | "")[] };
+    visa?: { files?: (string | "")[] };
+  };
+  email?: string;
+  expand?: string[];
+  first_name?: string;
+  first_name_kana?: string;
+  first_name_kanji?: string;
+  full_name_aliases?: string[] | "";
+  gender?: string;
+  id_number?: string;
+  id_number_secondary?: string;
+  last_name?: string;
+  last_name_kana?: string;
+  last_name_kanji?: string;
+  maiden_name?: string;
+  metadata?: Record<string, string> | "";
+  nationality?: string;
+  person_token?: string;
+  phone?: string;
+  political_exposure?: "existing" | "none";
+  registered_address?: {
+    city?: string;
+    country?: string;
+    line1?: string;
+    line2?: string;
+    postal_code?: string;
+    state?: string;
+  };
+  relationship?: {
+    authorizer?: boolean;
+    director?: boolean;
+    executive?: boolean;
+    legal_guardian?: boolean;
+    owner?: boolean;
+    percent_ownership?: number | "";
+    representative?: boolean;
+    title?: string;
+  };
+  ssn_last_4?: string;
+  us_cfpb_data?: {
+    ethnicity_details?: {
+      ethnicity?: (
+        | "cuban"
+        | "hispanic_or_latino"
+        | "mexican"
+        | "not_hispanic_or_latino"
+        | "other_hispanic_or_latino"
+        | "prefer_not_to_answer"
+        | "puerto_rican"
+      )[];
+      ethnicity_other?: string;
+    };
+    race_details?: {
+      race?: (
+        | "african_american"
+        | "american_indian_or_alaska_native"
+        | "asian"
+        | "asian_indian"
+        | "black_or_african_american"
+        | "chinese"
+        | "ethiopian"
+        | "filipino"
+        | "guamanian_or_chamorro"
+        | "haitian"
+        | "jamaican"
+        | "japanese"
+        | "korean"
+        | "native_hawaiian"
+        | "native_hawaiian_or_other_pacific_islander"
+        | "nigerian"
+        | "other_asian"
+        | "other_black_or_african_american"
+        | "other_pacific_islander"
+        | "prefer_not_to_answer"
+        | "samoan"
+        | "somali"
+        | "vietnamese"
+        | "white"
+      )[];
+      race_other?: string;
+    };
+    self_identified_gender?: string;
+  };
+  verification?: {
+    additional_document?: { back?: string; front?: string };
+    document?: { back?: string; front?: string };
+  };
+}
 export const PostAccountsAccountPersonsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
@@ -12,7 +135,9 @@ export const PostAccountsAccountPersonsInput =
           Schema.Struct({
             date: Schema.optional(Schema.Number),
             ip: Schema.optional(Schema.String),
-            user_agent: Schema.optional(Schema.Unknown),
+            user_agent: Schema.optional(
+              Schema.Union([Schema.String, Schema.Literals([""])]),
+            ),
           }),
         ),
       }),
@@ -49,22 +174,43 @@ export const PostAccountsAccountPersonsInput =
         town: Schema.optional(Schema.String),
       }),
     ),
-    dob: Schema.optional(Schema.Unknown),
+    dob: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          day: Schema.Number,
+          month: Schema.Number,
+          year: Schema.Number,
+        }),
+        Schema.Literals([""]),
+      ]),
+    ),
     documents: Schema.optional(
       Schema.Struct({
         company_authorization: Schema.optional(
           Schema.Struct({
-            files: Schema.optional(Schema.Array(Schema.Unknown)),
+            files: Schema.optional(
+              Schema.Array(
+                Schema.Union([Schema.String, Schema.Literals([""])]),
+              ),
+            ),
           }),
         ),
         passport: Schema.optional(
           Schema.Struct({
-            files: Schema.optional(Schema.Array(Schema.Unknown)),
+            files: Schema.optional(
+              Schema.Array(
+                Schema.Union([Schema.String, Schema.Literals([""])]),
+              ),
+            ),
           }),
         ),
         visa: Schema.optional(
           Schema.Struct({
-            files: Schema.optional(Schema.Array(Schema.Unknown)),
+            files: Schema.optional(
+              Schema.Array(
+                Schema.Union([Schema.String, Schema.Literals([""])]),
+              ),
+            ),
           }),
         ),
       }),
@@ -74,7 +220,9 @@ export const PostAccountsAccountPersonsInput =
     first_name: Schema.optional(Schema.String),
     first_name_kana: Schema.optional(Schema.String),
     first_name_kanji: Schema.optional(Schema.String),
-    full_name_aliases: Schema.optional(Schema.Unknown),
+    full_name_aliases: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Literals([""])]),
+    ),
     gender: Schema.optional(Schema.String),
     id_number: Schema.optional(Schema.String),
     id_number_secondary: Schema.optional(Schema.String),
@@ -82,7 +230,12 @@ export const PostAccountsAccountPersonsInput =
     last_name_kana: Schema.optional(Schema.String),
     last_name_kanji: Schema.optional(Schema.String),
     maiden_name: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Unknown),
+    metadata: Schema.optional(
+      Schema.Union([
+        Schema.Record(Schema.String, Schema.String),
+        Schema.Literals([""]),
+      ]),
+    ),
     nationality: Schema.optional(Schema.String),
     person_token: Schema.optional(Schema.String),
     phone: Schema.optional(Schema.String),
@@ -104,7 +257,9 @@ export const PostAccountsAccountPersonsInput =
         executive: Schema.optional(Schema.Boolean),
         legal_guardian: Schema.optional(Schema.Boolean),
         owner: Schema.optional(Schema.Boolean),
-        percent_ownership: Schema.optional(Schema.Unknown),
+        percent_ownership: Schema.optional(
+          Schema.Union([Schema.Number, Schema.Literals([""])]),
+        ),
         representative: Schema.optional(Schema.Boolean),
         title: Schema.optional(Schema.String),
       }),
@@ -190,17 +345,367 @@ export const PostAccountsAccountPersonsInput =
       path: "/v1/accounts/{account}/persons",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostAccountsAccountPersonsInput =
-  typeof PostAccountsAccountPersonsInput.Type;
+  ) as unknown as Schema.Codec<PostAccountsAccountPersonsInput>;
 
 // Output Schema
+export interface PostAccountsAccountPersonsOutput {
+  account?: string;
+  additional_tos_acceptances?: {
+    account: {
+      date: number | null;
+      ip: string | null;
+      user_agent: string | null;
+    } | null;
+  };
+  address?: {
+    city: string | null;
+    country: string | null;
+    line1: string | null;
+    line2: string | null;
+    postal_code: string | null;
+    state: string | null;
+  };
+  address_kana?: {
+    city: string | null;
+    country: string | null;
+    line1: string | null;
+    line2: string | null;
+    postal_code: string | null;
+    state: string | null;
+    town: string | null;
+  } | null;
+  address_kanji?: {
+    city: string | null;
+    country: string | null;
+    line1: string | null;
+    line2: string | null;
+    postal_code: string | null;
+    state: string | null;
+    town: string | null;
+  } | null;
+  created: number;
+  dob?: { day: number | null; month: number | null; year: number | null };
+  email?: string | null;
+  first_name?: string | null;
+  first_name_kana?: string | null;
+  first_name_kanji?: string | null;
+  full_name_aliases?: string[];
+  future_requirements?: unknown;
+  gender?: string | null;
+  id: string;
+  id_number_provided?: boolean;
+  id_number_secondary_provided?: boolean;
+  last_name?: string | null;
+  last_name_kana?: string | null;
+  last_name_kanji?: string | null;
+  maiden_name?: string | null;
+  metadata?: Record<string, string>;
+  nationality?: string | null;
+  object: "person";
+  phone?: string | null;
+  political_exposure?: "existing" | "none";
+  registered_address?: {
+    city: string | null;
+    country: string | null;
+    line1: string | null;
+    line2: string | null;
+    postal_code: string | null;
+    state: string | null;
+  };
+  relationship?: {
+    authorizer: boolean | null;
+    director: boolean | null;
+    executive: boolean | null;
+    legal_guardian: boolean | null;
+    owner: boolean | null;
+    percent_ownership: number | null;
+    representative: boolean | null;
+    title: string | null;
+  };
+  requirements?: unknown;
+  ssn_last_4_provided?: boolean;
+  us_cfpb_data?: {
+    ethnicity_details: {
+      ethnicity:
+        | (
+            | "cuban"
+            | "hispanic_or_latino"
+            | "mexican"
+            | "not_hispanic_or_latino"
+            | "other_hispanic_or_latino"
+            | "prefer_not_to_answer"
+            | "puerto_rican"
+          )[]
+        | null;
+      ethnicity_other: string | null;
+    } | null;
+    race_details: {
+      race:
+        | (
+            | "african_american"
+            | "american_indian_or_alaska_native"
+            | "asian"
+            | "asian_indian"
+            | "black_or_african_american"
+            | "chinese"
+            | "ethiopian"
+            | "filipino"
+            | "guamanian_or_chamorro"
+            | "haitian"
+            | "jamaican"
+            | "japanese"
+            | "korean"
+            | "native_hawaiian"
+            | "native_hawaiian_or_other_pacific_islander"
+            | "nigerian"
+            | "other_asian"
+            | "other_black_or_african_american"
+            | "other_pacific_islander"
+            | "prefer_not_to_answer"
+            | "samoan"
+            | "somali"
+            | "vietnamese"
+            | "white"
+          )[]
+        | null;
+      race_other: string | null;
+    } | null;
+    self_identified_gender: string | null;
+  } | null;
+  verification?: {
+    additional_document?: {
+      back:
+        | string
+        | {
+            created: number;
+            expires_at: number | null;
+            filename: string | null;
+            id: string;
+            links?: {
+              data: {
+                created: number;
+                expired: boolean;
+                expires_at: number | null;
+                file: string | unknown;
+                id: string;
+                livemode: boolean;
+                metadata: Record<string, string>;
+                object: "file_link";
+                url: string | null;
+              }[];
+              has_more: boolean;
+              object: "list";
+              url: string;
+            } | null;
+            object: "file";
+            purpose:
+              | "account_requirement"
+              | "additional_verification"
+              | "business_icon"
+              | "business_logo"
+              | "customer_signature"
+              | "dispute_evidence"
+              | "document_provider_identity_document"
+              | "finance_report_run"
+              | "financial_account_statement"
+              | "identity_document"
+              | "identity_document_downloadable"
+              | "issuing_regulatory_reporting"
+              | "pci_document"
+              | "platform_terms_of_service"
+              | "selfie"
+              | "sigma_scheduled_query"
+              | "tax_document_user_upload"
+              | "terminal_android_apk"
+              | "terminal_reader_splashscreen"
+              | "terminal_wifi_certificate"
+              | "terminal_wifi_private_key";
+            size: number;
+            title: string | null;
+            type: string | null;
+            url: string | null;
+          }
+        | null;
+      details: string | null;
+      details_code: string | null;
+      front:
+        | string
+        | {
+            created: number;
+            expires_at: number | null;
+            filename: string | null;
+            id: string;
+            links?: {
+              data: {
+                created: number;
+                expired: boolean;
+                expires_at: number | null;
+                file: string | unknown;
+                id: string;
+                livemode: boolean;
+                metadata: Record<string, string>;
+                object: "file_link";
+                url: string | null;
+              }[];
+              has_more: boolean;
+              object: "list";
+              url: string;
+            } | null;
+            object: "file";
+            purpose:
+              | "account_requirement"
+              | "additional_verification"
+              | "business_icon"
+              | "business_logo"
+              | "customer_signature"
+              | "dispute_evidence"
+              | "document_provider_identity_document"
+              | "finance_report_run"
+              | "financial_account_statement"
+              | "identity_document"
+              | "identity_document_downloadable"
+              | "issuing_regulatory_reporting"
+              | "pci_document"
+              | "platform_terms_of_service"
+              | "selfie"
+              | "sigma_scheduled_query"
+              | "tax_document_user_upload"
+              | "terminal_android_apk"
+              | "terminal_reader_splashscreen"
+              | "terminal_wifi_certificate"
+              | "terminal_wifi_private_key";
+            size: number;
+            title: string | null;
+            type: string | null;
+            url: string | null;
+          }
+        | null;
+    } | null;
+    details?: string | null;
+    details_code?: string | null;
+    document?: {
+      back:
+        | string
+        | {
+            created: number;
+            expires_at: number | null;
+            filename: string | null;
+            id: string;
+            links?: {
+              data: {
+                created: number;
+                expired: boolean;
+                expires_at: number | null;
+                file: string | unknown;
+                id: string;
+                livemode: boolean;
+                metadata: Record<string, string>;
+                object: "file_link";
+                url: string | null;
+              }[];
+              has_more: boolean;
+              object: "list";
+              url: string;
+            } | null;
+            object: "file";
+            purpose:
+              | "account_requirement"
+              | "additional_verification"
+              | "business_icon"
+              | "business_logo"
+              | "customer_signature"
+              | "dispute_evidence"
+              | "document_provider_identity_document"
+              | "finance_report_run"
+              | "financial_account_statement"
+              | "identity_document"
+              | "identity_document_downloadable"
+              | "issuing_regulatory_reporting"
+              | "pci_document"
+              | "platform_terms_of_service"
+              | "selfie"
+              | "sigma_scheduled_query"
+              | "tax_document_user_upload"
+              | "terminal_android_apk"
+              | "terminal_reader_splashscreen"
+              | "terminal_wifi_certificate"
+              | "terminal_wifi_private_key";
+            size: number;
+            title: string | null;
+            type: string | null;
+            url: string | null;
+          }
+        | null;
+      details: string | null;
+      details_code: string | null;
+      front:
+        | string
+        | {
+            created: number;
+            expires_at: number | null;
+            filename: string | null;
+            id: string;
+            links?: {
+              data: {
+                created: number;
+                expired: boolean;
+                expires_at: number | null;
+                file: string | unknown;
+                id: string;
+                livemode: boolean;
+                metadata: Record<string, string>;
+                object: "file_link";
+                url: string | null;
+              }[];
+              has_more: boolean;
+              object: "list";
+              url: string;
+            } | null;
+            object: "file";
+            purpose:
+              | "account_requirement"
+              | "additional_verification"
+              | "business_icon"
+              | "business_logo"
+              | "customer_signature"
+              | "dispute_evidence"
+              | "document_provider_identity_document"
+              | "finance_report_run"
+              | "financial_account_statement"
+              | "identity_document"
+              | "identity_document_downloadable"
+              | "issuing_regulatory_reporting"
+              | "pci_document"
+              | "platform_terms_of_service"
+              | "selfie"
+              | "sigma_scheduled_query"
+              | "tax_document_user_upload"
+              | "terminal_android_apk"
+              | "terminal_reader_splashscreen"
+              | "terminal_wifi_certificate"
+              | "terminal_wifi_private_key";
+            size: number;
+            title: string | null;
+            type: string | null;
+            url: string | null;
+          }
+        | null;
+    };
+    status: string;
+  };
+}
 export const PostAccountsAccountPersonsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
-        account: Schema.Unknown,
+        account: Schema.NullOr(
+          Schema.Struct({
+            date: Schema.NullOr(Schema.Number),
+            ip: Schema.NullOr(Schema.String),
+            user_agent: Schema.NullOr(Schema.String),
+          }),
+        ),
       }),
     ),
     address: Schema.optional(
@@ -213,8 +718,32 @@ export const PostAccountsAccountPersonsOutput =
         state: Schema.NullOr(Schema.String),
       }),
     ),
-    address_kana: Schema.optional(Schema.Unknown),
-    address_kanji: Schema.optional(Schema.Unknown),
+    address_kana: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+          town: Schema.NullOr(Schema.String),
+        }),
+      ),
+    ),
+    address_kanji: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          city: Schema.NullOr(Schema.String),
+          country: Schema.NullOr(Schema.String),
+          line1: Schema.NullOr(Schema.String),
+          line2: Schema.NullOr(Schema.String),
+          postal_code: Schema.NullOr(Schema.String),
+          state: Schema.NullOr(Schema.String),
+          town: Schema.NullOr(Schema.String),
+        }),
+      ),
+    ),
     created: Schema.Number,
     dob: Schema.optional(
       Schema.Struct({
@@ -266,26 +795,350 @@ export const PostAccountsAccountPersonsOutput =
     ),
     requirements: Schema.optional(Schema.Unknown),
     ssn_last_4_provided: Schema.optional(Schema.Boolean),
-    us_cfpb_data: Schema.optional(Schema.Unknown),
+    us_cfpb_data: Schema.optional(
+      Schema.NullOr(
+        Schema.Struct({
+          ethnicity_details: Schema.NullOr(
+            Schema.Struct({
+              ethnicity: Schema.NullOr(
+                Schema.Array(
+                  Schema.Literals([
+                    "cuban",
+                    "hispanic_or_latino",
+                    "mexican",
+                    "not_hispanic_or_latino",
+                    "other_hispanic_or_latino",
+                    "prefer_not_to_answer",
+                    "puerto_rican",
+                  ]),
+                ),
+              ),
+              ethnicity_other: Schema.NullOr(Schema.String),
+            }),
+          ),
+          race_details: Schema.NullOr(
+            Schema.Struct({
+              race: Schema.NullOr(
+                Schema.Array(
+                  Schema.Literals([
+                    "african_american",
+                    "american_indian_or_alaska_native",
+                    "asian",
+                    "asian_indian",
+                    "black_or_african_american",
+                    "chinese",
+                    "ethiopian",
+                    "filipino",
+                    "guamanian_or_chamorro",
+                    "haitian",
+                    "jamaican",
+                    "japanese",
+                    "korean",
+                    "native_hawaiian",
+                    "native_hawaiian_or_other_pacific_islander",
+                    "nigerian",
+                    "other_asian",
+                    "other_black_or_african_american",
+                    "other_pacific_islander",
+                    "prefer_not_to_answer",
+                    "samoan",
+                    "somali",
+                    "vietnamese",
+                    "white",
+                  ]),
+                ),
+              ),
+              race_other: Schema.NullOr(Schema.String),
+            }),
+          ),
+          self_identified_gender: Schema.NullOr(Schema.String),
+        }),
+      ),
+    ),
     verification: Schema.optional(
       Schema.Struct({
-        additional_document: Schema.optional(Schema.Unknown),
+        additional_document: Schema.optional(
+          Schema.NullOr(
+            Schema.Struct({
+              back: Schema.NullOr(
+                Schema.Union([
+                  Schema.String,
+                  Schema.Struct({
+                    created: Schema.Number,
+                    expires_at: Schema.NullOr(Schema.Number),
+                    filename: Schema.NullOr(Schema.String),
+                    id: Schema.String,
+                    links: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Struct({
+                          data: Schema.Array(
+                            Schema.Struct({
+                              created: Schema.Number,
+                              expired: Schema.Boolean,
+                              expires_at: Schema.NullOr(Schema.Number),
+                              file: Schema.Union([
+                                Schema.String,
+                                Schema.Unknown,
+                              ]),
+                              id: Schema.String,
+                              livemode: Schema.Boolean,
+                              metadata: Schema.Record(
+                                Schema.String,
+                                Schema.String,
+                              ),
+                              object: Schema.Literals(["file_link"]),
+                              url: Schema.NullOr(Schema.String),
+                            }),
+                          ),
+                          has_more: Schema.Boolean,
+                          object: Schema.Literals(["list"]),
+                          url: Schema.String,
+                        }),
+                      ),
+                    ),
+                    object: Schema.Literals(["file"]),
+                    purpose: Schema.Literals([
+                      "account_requirement",
+                      "additional_verification",
+                      "business_icon",
+                      "business_logo",
+                      "customer_signature",
+                      "dispute_evidence",
+                      "document_provider_identity_document",
+                      "finance_report_run",
+                      "financial_account_statement",
+                      "identity_document",
+                      "identity_document_downloadable",
+                      "issuing_regulatory_reporting",
+                      "pci_document",
+                      "platform_terms_of_service",
+                      "selfie",
+                      "sigma_scheduled_query",
+                      "tax_document_user_upload",
+                      "terminal_android_apk",
+                      "terminal_reader_splashscreen",
+                      "terminal_wifi_certificate",
+                      "terminal_wifi_private_key",
+                    ]),
+                    size: Schema.Number,
+                    title: Schema.NullOr(Schema.String),
+                    type: Schema.NullOr(Schema.String),
+                    url: Schema.NullOr(Schema.String),
+                  }),
+                ]),
+              ),
+              details: Schema.NullOr(Schema.String),
+              details_code: Schema.NullOr(Schema.String),
+              front: Schema.NullOr(
+                Schema.Union([
+                  Schema.String,
+                  Schema.Struct({
+                    created: Schema.Number,
+                    expires_at: Schema.NullOr(Schema.Number),
+                    filename: Schema.NullOr(Schema.String),
+                    id: Schema.String,
+                    links: Schema.optional(
+                      Schema.NullOr(
+                        Schema.Struct({
+                          data: Schema.Array(
+                            Schema.Struct({
+                              created: Schema.Number,
+                              expired: Schema.Boolean,
+                              expires_at: Schema.NullOr(Schema.Number),
+                              file: Schema.Union([
+                                Schema.String,
+                                Schema.Unknown,
+                              ]),
+                              id: Schema.String,
+                              livemode: Schema.Boolean,
+                              metadata: Schema.Record(
+                                Schema.String,
+                                Schema.String,
+                              ),
+                              object: Schema.Literals(["file_link"]),
+                              url: Schema.NullOr(Schema.String),
+                            }),
+                          ),
+                          has_more: Schema.Boolean,
+                          object: Schema.Literals(["list"]),
+                          url: Schema.String,
+                        }),
+                      ),
+                    ),
+                    object: Schema.Literals(["file"]),
+                    purpose: Schema.Literals([
+                      "account_requirement",
+                      "additional_verification",
+                      "business_icon",
+                      "business_logo",
+                      "customer_signature",
+                      "dispute_evidence",
+                      "document_provider_identity_document",
+                      "finance_report_run",
+                      "financial_account_statement",
+                      "identity_document",
+                      "identity_document_downloadable",
+                      "issuing_regulatory_reporting",
+                      "pci_document",
+                      "platform_terms_of_service",
+                      "selfie",
+                      "sigma_scheduled_query",
+                      "tax_document_user_upload",
+                      "terminal_android_apk",
+                      "terminal_reader_splashscreen",
+                      "terminal_wifi_certificate",
+                      "terminal_wifi_private_key",
+                    ]),
+                    size: Schema.Number,
+                    title: Schema.NullOr(Schema.String),
+                    type: Schema.NullOr(Schema.String),
+                    url: Schema.NullOr(Schema.String),
+                  }),
+                ]),
+              ),
+            }),
+          ),
+        ),
         details: Schema.optional(Schema.NullOr(Schema.String)),
         details_code: Schema.optional(Schema.NullOr(Schema.String)),
         document: Schema.optional(
           Schema.Struct({
-            back: Schema.Unknown,
+            back: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  created: Schema.Number,
+                  expires_at: Schema.NullOr(Schema.Number),
+                  filename: Schema.NullOr(Schema.String),
+                  id: Schema.String,
+                  links: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        data: Schema.Array(
+                          Schema.Struct({
+                            created: Schema.Number,
+                            expired: Schema.Boolean,
+                            expires_at: Schema.NullOr(Schema.Number),
+                            file: Schema.Union([Schema.String, Schema.Unknown]),
+                            id: Schema.String,
+                            livemode: Schema.Boolean,
+                            metadata: Schema.Record(
+                              Schema.String,
+                              Schema.String,
+                            ),
+                            object: Schema.Literals(["file_link"]),
+                            url: Schema.NullOr(Schema.String),
+                          }),
+                        ),
+                        has_more: Schema.Boolean,
+                        object: Schema.Literals(["list"]),
+                        url: Schema.String,
+                      }),
+                    ),
+                  ),
+                  object: Schema.Literals(["file"]),
+                  purpose: Schema.Literals([
+                    "account_requirement",
+                    "additional_verification",
+                    "business_icon",
+                    "business_logo",
+                    "customer_signature",
+                    "dispute_evidence",
+                    "document_provider_identity_document",
+                    "finance_report_run",
+                    "financial_account_statement",
+                    "identity_document",
+                    "identity_document_downloadable",
+                    "issuing_regulatory_reporting",
+                    "pci_document",
+                    "platform_terms_of_service",
+                    "selfie",
+                    "sigma_scheduled_query",
+                    "tax_document_user_upload",
+                    "terminal_android_apk",
+                    "terminal_reader_splashscreen",
+                    "terminal_wifi_certificate",
+                    "terminal_wifi_private_key",
+                  ]),
+                  size: Schema.Number,
+                  title: Schema.NullOr(Schema.String),
+                  type: Schema.NullOr(Schema.String),
+                  url: Schema.NullOr(Schema.String),
+                }),
+              ]),
+            ),
             details: Schema.NullOr(Schema.String),
             details_code: Schema.NullOr(Schema.String),
-            front: Schema.Unknown,
+            front: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  created: Schema.Number,
+                  expires_at: Schema.NullOr(Schema.Number),
+                  filename: Schema.NullOr(Schema.String),
+                  id: Schema.String,
+                  links: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Struct({
+                        data: Schema.Array(
+                          Schema.Struct({
+                            created: Schema.Number,
+                            expired: Schema.Boolean,
+                            expires_at: Schema.NullOr(Schema.Number),
+                            file: Schema.Union([Schema.String, Schema.Unknown]),
+                            id: Schema.String,
+                            livemode: Schema.Boolean,
+                            metadata: Schema.Record(
+                              Schema.String,
+                              Schema.String,
+                            ),
+                            object: Schema.Literals(["file_link"]),
+                            url: Schema.NullOr(Schema.String),
+                          }),
+                        ),
+                        has_more: Schema.Boolean,
+                        object: Schema.Literals(["list"]),
+                        url: Schema.String,
+                      }),
+                    ),
+                  ),
+                  object: Schema.Literals(["file"]),
+                  purpose: Schema.Literals([
+                    "account_requirement",
+                    "additional_verification",
+                    "business_icon",
+                    "business_logo",
+                    "customer_signature",
+                    "dispute_evidence",
+                    "document_provider_identity_document",
+                    "finance_report_run",
+                    "financial_account_statement",
+                    "identity_document",
+                    "identity_document_downloadable",
+                    "issuing_regulatory_reporting",
+                    "pci_document",
+                    "platform_terms_of_service",
+                    "selfie",
+                    "sigma_scheduled_query",
+                    "tax_document_user_upload",
+                    "terminal_android_apk",
+                    "terminal_reader_splashscreen",
+                    "terminal_wifi_certificate",
+                    "terminal_wifi_private_key",
+                  ]),
+                  size: Schema.Number,
+                  title: Schema.NullOr(Schema.String),
+                  type: Schema.NullOr(Schema.String),
+                  url: Schema.NullOr(Schema.String),
+                }),
+              ]),
+            ),
           }),
         ),
         status: Schema.String,
       }),
     ),
-  });
-export type PostAccountsAccountPersonsOutput =
-  typeof PostAccountsAccountPersonsOutput.Type;
+  }) as unknown as Schema.Codec<PostAccountsAccountPersonsOutput>;
 
 // The operation
 /**

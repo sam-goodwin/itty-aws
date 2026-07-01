@@ -4,14 +4,29 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface SecretkeysListInput {
+  app_name: string;
+  min_version?: string;
+  types?: string;
+}
 export const SecretkeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
   types: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/apps/{app_name}/secretkeys" }));
-export type SecretkeysListInput = typeof SecretkeysListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/apps/{app_name}/secretkeys" }),
+) as unknown as Schema.Codec<SecretkeysListInput>;
 
 // Output Schema
+export interface SecretkeysListOutput {
+  secret_keys?: {
+    created_at?: string;
+    name?: string;
+    public_key?: number[];
+    type?: string;
+    updated_at?: string;
+  }[];
+}
 export const SecretkeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secret_keys: Schema.optional(
     Schema.Array(
@@ -24,8 +39,7 @@ export const SecretkeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type SecretkeysListOutput = typeof SecretkeysListOutput.Type;
+}) as unknown as Schema.Codec<SecretkeysListOutput>;
 
 // The operation
 /**

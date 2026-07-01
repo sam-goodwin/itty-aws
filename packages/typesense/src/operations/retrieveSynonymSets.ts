@@ -3,13 +3,23 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface RetrieveSynonymSetsInput {}
 export const RetrieveSynonymSetsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/synonym_sets" }),
-  );
-export type RetrieveSynonymSetsInput = typeof RetrieveSynonymSetsInput.Type;
+  ) as unknown as Schema.Codec<RetrieveSynonymSetsInput>;
 
 // Output Schema
+export type RetrieveSynonymSetsOutput = {
+  items: {
+    id: string;
+    synonyms: string[];
+    root?: string;
+    locale?: string;
+    symbols_to_index?: string[];
+  }[];
+  name: string;
+}[];
 export const RetrieveSynonymSetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
@@ -24,8 +34,7 @@ export const RetrieveSynonymSetsOutput =
       ),
       name: Schema.String,
     }),
-  );
-export type RetrieveSynonymSetsOutput = typeof RetrieveSynonymSetsOutput.Type;
+  ) as unknown as Schema.Codec<RetrieveSynonymSetsOutput>;
 
 // The operation
 /**

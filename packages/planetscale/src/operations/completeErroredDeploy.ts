@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface CompleteErroredDeployInput {
+  organization: string;
+  database: string;
+  number: number;
+}
 export const CompleteErroredDeployInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,184 @@ export const CompleteErroredDeployInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/complete-deploy",
     }),
-  );
-export type CompleteErroredDeployInput = typeof CompleteErroredDeployInput.Type;
+  ) as unknown as Schema.Codec<CompleteErroredDeployInput>;
 
 // Output Schema
+export interface CompleteErroredDeployOutput {
+  id: string;
+  number: number;
+  actor: { id: string; display_name: string; avatar_url: string };
+  closed_by?: { id: string; display_name: string; avatar_url: string } | null;
+  branch: string;
+  branch_id: string;
+  branch_deleted: boolean;
+  branch_deleted_by?: {
+    id: string;
+    display_name: string;
+    avatar_url: string;
+  } | null;
+  branch_deleted_at: string | null;
+  into_branch: string;
+  into_branch_sharded: boolean;
+  into_branch_shard_count: number;
+  into_branch_keyspace_count: number;
+  approved: boolean;
+  state: "open" | "closed";
+  deployment_state:
+    | "pending"
+    | "ready"
+    | "no_changes"
+    | "queued"
+    | "submitting"
+    | "in_progress"
+    | "pending_cutover"
+    | "in_progress_vschema"
+    | "in_progress_cancel"
+    | "in_progress_cutover"
+    | "complete"
+    | "complete_cancel"
+    | "complete_error"
+    | "complete_pending_revert"
+    | "in_progress_revert"
+    | "in_progress_revert_vschema"
+    | "complete_revert"
+    | "complete_revert_error"
+    | "cancelled"
+    | "error";
+  deployment: {
+    id: string;
+    auto_cutover: boolean;
+    auto_delete_branch: boolean;
+    created_at: string;
+    cutover_at: string | null;
+    cutover_expiring: boolean;
+    deploy_check_errors?: string | null;
+    finished_at: string | null;
+    force_cutover_requested_at: string | null;
+    queued_at: string | null;
+    ready_to_cutover_at: string | null;
+    started_at: string | null;
+    state:
+      | "pending"
+      | "ready"
+      | "no_changes"
+      | "queued"
+      | "submitting"
+      | "in_progress"
+      | "pending_cutover"
+      | "in_progress_vschema"
+      | "in_progress_cancel"
+      | "in_progress_cutover"
+      | "complete"
+      | "complete_cancel"
+      | "complete_error"
+      | "complete_pending_revert"
+      | "in_progress_revert"
+      | "in_progress_revert_vschema"
+      | "complete_revert"
+      | "complete_revert_error"
+      | "cancelled"
+      | "error";
+    submitted_at: string | null;
+    updated_at: string;
+    into_branch: string;
+    deploy_request_number: number;
+    deployable: boolean;
+    preceding_deployments: Record<string, unknown>[];
+    deploy_operations: {
+      id: string;
+      state:
+        | "pending"
+        | "queued"
+        | "in_progress"
+        | "complete"
+        | "cancelled"
+        | "error";
+      keyspace_name: string;
+      table_name: string;
+      operation_name: string;
+      eta_seconds: number | null;
+      progress_percentage: number | null;
+      deploy_error_docs_url: string | null;
+      ddl_statement: string;
+      syntax_highlighted_ddl: string;
+      created_at: string;
+      updated_at: string;
+      throttled_at: string | null;
+      can_drop_data: boolean;
+      table_locked: boolean;
+      table_recently_used: boolean;
+      table_recently_used_at: string | null;
+      removed_foreign_key_names: string[] | null;
+      deploy_errors: string | null;
+    }[];
+    deploy_operation_summaries: {
+      id: string;
+      created_at: string;
+      deploy_errors: string;
+      ddl_statement: string;
+      eta_seconds: number;
+      keyspace_name: string;
+      operation_name: string;
+      progress_percentage: number;
+      state: "pending" | "in_progress" | "complete" | "cancelled" | "error";
+      syntax_highlighted_ddl: string;
+      table_name: string;
+      table_recently_used_at: string | null;
+      throttled_at: string | null;
+      removed_foreign_key_names: string[];
+      shard_count: number;
+      shard_names: string[];
+      can_drop_data: boolean;
+      table_recently_used: boolean;
+      sharded: boolean;
+      operations: {
+        id: string;
+        shard: string;
+        state:
+          | "pending"
+          | "queued"
+          | "in_progress"
+          | "complete"
+          | "cancelled"
+          | "error";
+        progress_percentage: number;
+        eta_seconds: number;
+      }[];
+    }[];
+    lint_errors: Record<string, unknown>[];
+    sequential_diff_dependencies: Record<string, unknown>[];
+    lookup_vindex_operations: Record<string, unknown>[];
+    throttler_configurations?: Record<string, unknown> | null;
+    deployment_revert_request: Record<string, unknown> | null;
+    actor?: { id: string; display_name: string; avatar_url: string } | null;
+    cutover_actor?: {
+      id: string;
+      display_name: string;
+      avatar_url: string;
+    } | null;
+    cancelled_actor?: {
+      id: string;
+      display_name: string;
+      avatar_url: string;
+    } | null;
+    schema_last_updated_at: string | null;
+    table_locked: boolean;
+    locked_table_name?: string | null;
+    instant_ddl: boolean;
+    instant_ddl_eligible: boolean;
+    queue_paused: boolean;
+    queue_pause_reason: string | null;
+  };
+  num_comments: number;
+  html_url: string;
+  notes: string;
+  html_body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  deployed_at: string | null;
+}
 export const CompleteErroredDeployOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
@@ -52,6 +231,7 @@ export const CompleteErroredDeployOutput =
     into_branch: Schema.String,
     into_branch_sharded: Schema.Boolean,
     into_branch_shard_count: Schema.Number,
+    into_branch_keyspace_count: Schema.Number,
     approved: Schema.Boolean,
     state: Schema.Literals(["open", "closed"]),
     deployment_state: Schema.Literals([
@@ -85,6 +265,7 @@ export const CompleteErroredDeployOutput =
       cutover_expiring: Schema.Boolean,
       deploy_check_errors: Schema.optional(Schema.NullOr(Schema.String)),
       finished_at: Schema.NullOr(Schema.String),
+      force_cutover_requested_at: Schema.NullOr(Schema.String),
       queued_at: Schema.NullOr(Schema.String),
       ready_to_cutover_at: Schema.NullOr(Schema.String),
       started_at: Schema.NullOr(Schema.String),
@@ -239,7 +420,7 @@ export const CompleteErroredDeployOutput =
       instant_ddl: Schema.Boolean,
       instant_ddl_eligible: Schema.Boolean,
       queue_paused: Schema.Boolean,
-      queue_pause_reason: Schema.String,
+      queue_pause_reason: Schema.NullOr(Schema.String),
     }),
     num_comments: Schema.Number,
     html_url: Schema.String,
@@ -249,9 +430,7 @@ export const CompleteErroredDeployOutput =
     updated_at: Schema.String,
     closed_at: Schema.NullOr(Schema.String),
     deployed_at: Schema.NullOr(Schema.String),
-  });
-export type CompleteErroredDeployOutput =
-  typeof CompleteErroredDeployOutput.Type;
+  }) as unknown as Schema.Codec<CompleteErroredDeployOutput>;
 
 // The operation
 /**

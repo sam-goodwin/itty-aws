@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetNeonAuthEmailAndPasswordConfigInput {
+  project_id: string;
+  branch_id: string;
+}
 export const GetNeonAuthEmailAndPasswordConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,18 @@ export const GetNeonAuthEmailAndPasswordConfigInput =
       method: "GET",
       path: "/projects/{project_id}/branches/{branch_id}/auth/email_and_password",
     }),
-  );
-export type GetNeonAuthEmailAndPasswordConfigInput =
-  typeof GetNeonAuthEmailAndPasswordConfigInput.Type;
+  ) as unknown as Schema.Codec<GetNeonAuthEmailAndPasswordConfigInput>;
 
 // Output Schema
+export interface GetNeonAuthEmailAndPasswordConfigOutput {
+  enabled: boolean;
+  email_verification_method: "link" | "otp";
+  require_email_verification: boolean;
+  auto_sign_in_after_verification: boolean;
+  send_verification_email_on_sign_up: boolean;
+  send_verification_email_on_sign_in: boolean;
+  disable_sign_up: boolean;
+}
 export const GetNeonAuthEmailAndPasswordConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
@@ -26,15 +37,14 @@ export const GetNeonAuthEmailAndPasswordConfigOutput =
     send_verification_email_on_sign_up: Schema.Boolean,
     send_verification_email_on_sign_in: Schema.Boolean,
     disable_sign_up: Schema.Boolean,
-  });
-export type GetNeonAuthEmailAndPasswordConfigOutput =
-  typeof GetNeonAuthEmailAndPasswordConfigOutput.Type;
+  }) as unknown as Schema.Codec<GetNeonAuthEmailAndPasswordConfigOutput>;
 
 // The operation
 /**
- * Get email and password configuration
+ * Retrieve email and password configuration
  *
- * Gets the email and password authentication configuration for Neon Auth
+ * Retrieves the email and password authentication configuration for the specified branch's Neon Auth integration,
+ * including whether it is enabled and the email verification method.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

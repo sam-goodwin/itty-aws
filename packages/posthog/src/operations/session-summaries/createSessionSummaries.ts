@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface CreateSessionSummariesInput {
+  project_id: string;
+  session_ids?: string[];
+  focus_area?: string;
+}
 export const CreateSessionSummariesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,20 +16,20 @@ export const CreateSessionSummariesInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/session_summaries/create_session_summaries/",
+      path: "/api/projects/{project_id}/session_summaries/create_session_summaries/",
     }),
-  );
-export type CreateSessionSummariesInput =
-  typeof CreateSessionSummariesInput.Type;
+  ) as unknown as Schema.Codec<CreateSessionSummariesInput>;
 
 // Output Schema
+export interface CreateSessionSummariesOutput {
+  session_ids?: string[];
+  focus_area?: string;
+}
 export const CreateSessionSummariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     session_ids: Schema.optional(Schema.Array(Schema.String)),
     focus_area: Schema.optional(Schema.String),
-  });
-export type CreateSessionSummariesOutput =
-  typeof CreateSessionSummariesOutput.Type;
+  }) as unknown as Schema.Codec<CreateSessionSummariesOutput>;
 
 // The operation
 /**
@@ -37,6 +41,5 @@ export const createSessionSummaries = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: CreateSessionSummariesInput,
     outputSchema: CreateSessionSummariesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }),
 );

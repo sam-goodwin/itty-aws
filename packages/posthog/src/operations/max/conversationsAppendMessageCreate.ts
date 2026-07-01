@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ConversationsAppendMessageCreateInput {
+  conversation: string;
+  project_id: string;
+  content?: string;
+}
 export const ConversationsAppendMessageCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
@@ -12,19 +16,18 @@ export const ConversationsAppendMessageCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/conversations/{conversation}/append_message/",
+      path: "/api/projects/{project_id}/conversations/{conversation}/append_message/",
     }),
-  );
-export type ConversationsAppendMessageCreateInput =
-  typeof ConversationsAppendMessageCreateInput.Type;
+  ) as unknown as Schema.Codec<ConversationsAppendMessageCreateInput>;
 
 // Output Schema
+export interface ConversationsAppendMessageCreateOutput {
+  content?: string;
+}
 export const ConversationsAppendMessageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
-  });
-export type ConversationsAppendMessageCreateOutput =
-  typeof ConversationsAppendMessageCreateOutput.Type;
+  }) as unknown as Schema.Codec<ConversationsAppendMessageCreateOutput>;
 
 // The operation
 /**
@@ -39,5 +42,4 @@ export const conversationsAppendMessageCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: ConversationsAppendMessageCreateInput,
     outputSchema: ConversationsAppendMessageCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

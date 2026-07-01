@@ -4,15 +4,63 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ApplicationDefinitionsCreateOrUpdateInput {
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+  subscriptionId: string;
+  properties: {
+    lockLevel: "CanNotDelete" | "ReadOnly" | "None";
+    displayName?: string;
+    isEnabled?: boolean;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ApplicationResourceTemplate"
+        | "CreateUiDefinition"
+        | "MainTemplateParameters";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    description?: string;
+    packageFileUri?: string;
+    mainTemplate?: unknown;
+    createUiDefinition?: unknown;
+    notificationPolicy?: { notificationEndpoints: { uri: string }[] };
+    lockingPolicy?: {
+      allowedActions?: string[];
+      allowedDataActions?: string[];
+    };
+    deploymentPolicy?: {
+      deploymentMode: "NotSpecified" | "Incremental" | "Complete";
+    };
+    managementPolicy?: { mode?: "NotSpecified" | "Unmanaged" | "Managed" };
+    policies?: {
+      name?: string;
+      policyDefinitionId?: string;
+      parameters?: string;
+    }[];
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       lockLevel: Schema.Literals(["CanNotDelete", "ReadOnly", "None"]),
       displayName: Schema.optional(Schema.String),
@@ -101,11 +149,16 @@ export const ApplicationDefinitionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationDefinitionsCreateOrUpdateInput =
-  typeof ApplicationDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -113,9 +166,7 @@ export const ApplicationDefinitionsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationDefinitionsCreateOrUpdateOutput =
-  typeof ApplicationDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -123,6 +174,8 @@ export type ApplicationDefinitionsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -130,25 +183,28 @@ export const ApplicationDefinitionsCreateOrUpdate =
     outputSchema: ApplicationDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsDeleteInput {
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+  subscriptionId: string;
+}
 export const ApplicationDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationDefinitionsDeleteInput =
-  typeof ApplicationDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsDeleteInput>;
 
 // Output Schema
+export type ApplicationDefinitionsDeleteOutput = void;
 export const ApplicationDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationDefinitionsDeleteOutput =
-  typeof ApplicationDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -156,6 +212,8 @@ export type ApplicationDefinitionsDeleteOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition to delete.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -163,21 +221,32 @@ export const ApplicationDefinitionsDelete =
     outputSchema: ApplicationDefinitionsDeleteOutput,
   }));
 // Input Schema
+export interface ApplicationDefinitionsGetInput {
+  resourceGroupName: string;
+  applicationDefinitionName: string;
+  subscriptionId: string;
+}
 export const ApplicationDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationDefinitionName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationDefinitionsGetInput =
-  typeof ApplicationDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsGetInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -185,9 +254,7 @@ export const ApplicationDefinitionsGetOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationDefinitionsGetOutput =
-  typeof ApplicationDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -195,6 +262,8 @@ export type ApplicationDefinitionsGetOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationDefinitionName - The name of the managed application definition.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -203,20 +272,33 @@ export const ApplicationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationDefinitionsListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ApplicationDefinitionsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationDefinitionsListByResourceGroupInput =
-  typeof ApplicationDefinitionsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ApplicationDefinitionsListByResourceGroupInput>;
 
 // Output Schema
+export interface ApplicationDefinitionsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ApplicationDefinitionsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -231,15 +313,15 @@ export const ApplicationDefinitionsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationDefinitionsListByResourceGroupOutput =
-  typeof ApplicationDefinitionsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationDefinitionsListByResourceGroupOutput>;
 
 // The operation
 /**
  * Lists the managed application definitions in a resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationDefinitionsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -247,10 +329,92 @@ export const ApplicationDefinitionsListByResourceGroup =
     outputSchema: ApplicationDefinitionsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ApplicationsCreateOrUpdateInput {
+  resourceGroupName: string;
+  applicationName: string;
+  subscriptionId: string;
+  properties: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  };
+  kind: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       managedResourceGroupId: Schema.optional(Schema.String),
       applicationDefinitionId: Schema.optional(Schema.String),
@@ -399,11 +563,16 @@ export const ApplicationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsCreateOrUpdateInput =
-  typeof ApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ApplicationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -411,9 +580,7 @@ export const ApplicationsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationsCreateOrUpdateOutput =
-  typeof ApplicationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -421,6 +588,8 @@ export type ApplicationsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -429,6 +598,85 @@ export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsCreateOrUpdateByIdInput {
+  applicationId: string;
+  properties: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  };
+  kind: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsCreateOrUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -580,11 +828,16 @@ export const ApplicationsCreateOrUpdateByIdInput =
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsCreateOrUpdateByIdInput =
-  typeof ApplicationsCreateOrUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsCreateOrUpdateByIdInput>;
 
 // Output Schema
+export interface ApplicationsCreateOrUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsCreateOrUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -592,15 +845,14 @@ export const ApplicationsCreateOrUpdateByIdOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationsCreateOrUpdateByIdOutput =
-  typeof ApplicationsCreateOrUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsCreateOrUpdateByIdOutput>;
 
 // The operation
 /**
  * Creates a new managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsCreateOrUpdateById =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -608,22 +860,28 @@ export const ApplicationsCreateOrUpdateById =
     outputSchema: ApplicationsCreateOrUpdateByIdOutput,
   }));
 // Input Schema
+export interface ApplicationsDeleteInput {
+  resourceGroupName: string;
+  applicationName: string;
+  subscriptionId: string;
+}
 export const ApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteInput>;
 
 // Output Schema
-export const ApplicationsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
+export type ApplicationsDeleteOutput = void;
+export const ApplicationsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -631,12 +889,17 @@ export type ApplicationsDeleteOutput = typeof ApplicationsDeleteOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
   outputSchema: ApplicationsDeleteOutput,
 }));
 // Input Schema
+export interface ApplicationsDeleteByIdInput {
+  applicationId: string;
+}
 export const ApplicationsDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -646,21 +909,19 @@ export const ApplicationsDeleteByIdInput =
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsDeleteByIdInput =
-  typeof ApplicationsDeleteByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsDeleteByIdInput>;
 
 // Output Schema
+export type ApplicationsDeleteByIdOutput = void;
 export const ApplicationsDeleteByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsDeleteByIdOutput =
-  typeof ApplicationsDeleteByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteByIdOutput>;
 
 // The operation
 /**
  * Deletes the managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -669,27 +930,38 @@ export const ApplicationsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationsGetInput {
+  resourceGroupName: string;
+  applicationName: string;
+  subscriptionId: string;
+}
 export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   applicationName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
     apiVersion: "2019-07-01",
   }),
-);
-export type ApplicationsGetInput = typeof ApplicationsGetInput.Type;
+) as unknown as Schema.Codec<ApplicationsGetInput>;
 
 // Output Schema
+export interface ApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
+}) as unknown as Schema.Codec<ApplicationsGetOutput>;
 
 // The operation
 /**
@@ -697,12 +969,17 @@ export type ApplicationsGetOutput = typeof ApplicationsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
   outputSchema: ApplicationsGetOutput,
 }));
 // Input Schema
+export interface ApplicationsGetByIdInput {
+  applicationId: string;
+}
 export const ApplicationsGetByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -712,10 +989,16 @@ export const ApplicationsGetByIdInput =
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsGetByIdInput = typeof ApplicationsGetByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsGetByIdInput>;
 
 // Output Schema
+export interface ApplicationsGetByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsGetByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -723,34 +1006,47 @@ export const ApplicationsGetByIdOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationsGetByIdOutput = typeof ApplicationsGetByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsGetByIdOutput>;
 
 // The operation
 /**
  * Gets the managed application.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetByIdInput,
   outputSchema: ApplicationsGetByIdOutput,
 }));
 // Input Schema
+export interface ApplicationsListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const ApplicationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsListByResourceGroupInput =
-  typeof ApplicationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListByResourceGroupInput>;
 
 // Output Schema
+export interface ApplicationsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -765,15 +1061,15 @@ export const ApplicationsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationsListByResourceGroupOutput =
-  typeof ApplicationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListByResourceGroupOutput>;
 
 // The operation
 /**
  * Gets all the applications within a resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -781,18 +1077,31 @@ export const ApplicationsListByResourceGroup =
     outputSchema: ApplicationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ApplicationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ApplicationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsListBySubscriptionInput =
-  typeof ApplicationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsListBySubscriptionInput>;
 
 // Output Schema
+export interface ApplicationsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ApplicationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -807,13 +1116,14 @@ export const ApplicationsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationsListBySubscriptionOutput =
-  typeof ApplicationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsListBySubscriptionOutput>;
 
 // The operation
 /**
  * Gets all the applications within a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -821,25 +1131,28 @@ export const ApplicationsListBySubscription =
     outputSchema: ApplicationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ApplicationsRefreshPermissionsInput {
+  resourceGroupName: string;
+  applicationName: string;
+  subscriptionId: string;
+}
 export const ApplicationsRefreshPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsRefreshPermissionsInput =
-  typeof ApplicationsRefreshPermissionsInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsRefreshPermissionsInput>;
 
 // Output Schema
+export type ApplicationsRefreshPermissionsOutput = void;
 export const ApplicationsRefreshPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationsRefreshPermissionsOutput =
-  typeof ApplicationsRefreshPermissionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsRefreshPermissionsOutput>;
 
 // The operation
 /**
@@ -847,6 +1160,8 @@ export type ApplicationsRefreshPermissionsOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsRefreshPermissions =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -854,10 +1169,92 @@ export const ApplicationsRefreshPermissions =
     outputSchema: ApplicationsRefreshPermissionsOutput,
   }));
 // Input Schema
+export interface ApplicationsUpdateInput {
+  resourceGroupName: string;
+  applicationName: string;
+  subscriptionId: string;
+  properties?: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     applicationName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         managedResourceGroupId: Schema.optional(Schema.String),
@@ -1008,10 +1405,16 @@ export const ApplicationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateInput>;
 
 // Output Schema
+export interface ApplicationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1019,8 +1422,7 @@ export const ApplicationsUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -1028,12 +1430,93 @@ export type ApplicationsUpdateOutput = typeof ApplicationsUpdateOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param applicationName - The name of the managed application.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
   outputSchema: ApplicationsUpdateOutput,
 }));
 // Input Schema
+export interface ApplicationsUpdateByIdInput {
+  applicationId: string;
+  properties: {
+    managedResourceGroupId?: string;
+    applicationDefinitionId?: string;
+    parameters?: unknown;
+    outputs?: unknown;
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    billingDetails?: { resourceUsageId?: string };
+    jitAccessPolicy?: {
+      jitAccessEnabled: boolean;
+      jitApprovalMode?: "NotSpecified" | "AutoApprove" | "ManualApprove";
+      jitApprovers?: {
+        id: string;
+        type?: "user" | "group";
+        displayName?: string;
+      }[];
+      maximumJitAccessDuration?: string;
+    };
+    publisherTenantId?: string;
+    authorizations?: { principalId: string; roleDefinitionId: string }[];
+    managementMode?: "NotSpecified" | "Unmanaged" | "Managed";
+    customerSupport?: { contactName?: string; email: string; phone: string };
+    supportUrls?: { publicAzure?: string; governmentCloud?: string };
+    artifacts?: {
+      name:
+        | "NotSpecified"
+        | "ViewDefinition"
+        | "Authorizations"
+        | "CustomRoleDefinition";
+      uri: string;
+      type: "NotSpecified" | "Template" | "Custom";
+    }[];
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  plan?: {
+    name: string;
+    publisher: string;
+    product: string;
+    promotionCode?: string;
+    version: string;
+  };
+  kind: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; tenantId?: string }
+    >;
+  };
+  managedBy?: string;
+  sku?: {
+    name: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+}
 export const ApplicationsUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.PathParam()),
@@ -1185,11 +1668,16 @@ export const ApplicationsUpdateByIdInput =
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type ApplicationsUpdateByIdInput =
-  typeof ApplicationsUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ApplicationsUpdateByIdInput>;
 
 // Output Schema
+export interface ApplicationsUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationsUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1197,15 +1685,14 @@ export const ApplicationsUpdateByIdOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ApplicationsUpdateByIdOutput =
-  typeof ApplicationsUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationsUpdateByIdOutput>;
 
 // The operation
 /**
  * Updates an existing managed application. The only value that can be updated via PATCH currently is the tags.
  *
  * @param applicationId - The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+ * @param api-version - The API version to use for this operation.
  */
 export const ApplicationsUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1214,6 +1701,7 @@ export const ApplicationsUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AuthorizationOperationsListInput {}
 export const AuthorizationOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -1221,11 +1709,16 @@ export const AuthorizationOperationsListInput =
       path: "/providers/Microsoft.Authorization/operations",
       apiVersion: "2020-05-01",
     }),
-  );
-export type AuthorizationOperationsListInput =
-  typeof AuthorizationOperationsListInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationOperationsListInput>;
 
 // Output Schema
+export interface AuthorizationOperationsListOutput {
+  value?: {
+    name?: string;
+    display?: { provider?: string; resource?: string; operation?: string };
+  }[];
+  nextLink?: string;
+}
 export const AuthorizationOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -1243,9 +1736,7 @@ export const AuthorizationOperationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AuthorizationOperationsListOutput =
-  typeof AuthorizationOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationOperationsListOutput>;
 
 // The operation
 /**
@@ -1260,46 +1751,88 @@ export const AuthorizationOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
-export const ChangesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ChangesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  resourceType: string;
+  resourceName: string;
+  changeResourceId: string;
+}
+export const ChangesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  changeResourceId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes/{changeResourceId}",
     apiVersion: "2022-05-01",
   }),
-);
-export type ChangesGetInput = typeof ChangesGetInput.Type;
+) as unknown as Schema.Codec<ChangesGetInput>;
 
 // Output Schema
+export interface ChangesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const ChangesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type ChangesGetOutput = typeof ChangesGetOutput.Type;
+}) as unknown as Schema.Codec<ChangesGetOutput>;
 
 // The operation
 /**
  * Obtains the specified change resource for the target resource
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+ * @param resourceGroupName - The name of the resource group.
+ * @param resourceProviderNamespace - The name of the resource provider namespace.
+ * @param resourceType - The name of the resource type.
+ * @param resourceName - The name of the resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param changeResourceId - The ID of the change resource
  */
 export const ChangesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChangesGetInput,
   outputSchema: ChangesGetOutput,
 }));
 // Input Schema
-export const ChangesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface ChangesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  resourceType: string;
+  resourceName: string;
+  $top?: number;
+  $skipToken?: string;
+}
+export const ChangesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+  $top: Schema.optional(Schema.Number),
+  $skipToken: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Resources/changes",
     apiVersion: "2022-05-01",
   }),
-);
-export type ChangesListInput = typeof ChangesListInput.Type;
+) as unknown as Schema.Codec<ChangesListInput>;
 
 // Output Schema
+export interface ChangesListOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const ChangesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -1311,18 +1844,30 @@ export const ChangesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ChangesListOutput = typeof ChangesListOutput.Type;
+}) as unknown as Schema.Codec<ChangesListOutput>;
 
 // The operation
 /**
  * Obtains a list of change resources from the past 14 days for the target resource
+ *
+ * @param subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+ * @param resourceGroupName - The name of the resource group.
+ * @param resourceProviderNamespace - The name of the resource provider namespace.
+ * @param resourceType - The name of the resource type.
+ * @param resourceName - The name of the resource.
+ * @param api-version - The API version to be used with the HTTP request.
+ * @param $top - (Optional) Set the maximum number of results per response.
+ * @param $skipToken - (Optional) The page-continuation token
  */
 export const ChangesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ChangesListInput,
   outputSchema: ChangesListOutput,
 }));
 // Input Schema
+export interface CheckResourceNameInput {
+  name: string;
+  type: string;
+}
 export const CheckResourceNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String,
@@ -1334,17 +1879,20 @@ export const CheckResourceNameInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Resources/checkResourceName",
     apiVersion: "2022-12-01",
   }),
-);
-export type CheckResourceNameInput = typeof CheckResourceNameInput.Type;
+) as unknown as Schema.Codec<CheckResourceNameInput>;
 
 // Output Schema
+export interface CheckResourceNameOutput {
+  name?: string;
+  type?: string;
+  status?: "Allowed" | "Reserved";
+}
 export const CheckResourceNameOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Literals(["Allowed", "Reserved"])),
-  });
-export type CheckResourceNameOutput = typeof CheckResourceNameOutput.Type;
+  }) as unknown as Schema.Codec<CheckResourceNameOutput>;
 
 // The operation
 /**
@@ -1359,6 +1907,10 @@ export const checkResourceName = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CheckResourceNameOutput,
 }));
 // Input Schema
+export interface DataBoundariesGetScopeInput {
+  scope: string;
+  default: "default";
+}
 export const DataBoundariesGetScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1369,11 +1921,22 @@ export const DataBoundariesGetScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/dataBoundaries/{default}",
       apiVersion: "2024-08-01",
     }),
-  );
-export type DataBoundariesGetScopeInput =
-  typeof DataBoundariesGetScopeInput.Type;
+  ) as unknown as Schema.Codec<DataBoundariesGetScopeInput>;
 
 // Output Schema
+export interface DataBoundariesGetScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataBoundariesGetScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1393,9 +1956,7 @@ export const DataBoundariesGetScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataBoundariesGetScopeOutput =
-  typeof DataBoundariesGetScopeOutput.Type;
+  }) as unknown as Schema.Codec<DataBoundariesGetScopeOutput>;
 
 // The operation
 /**
@@ -1412,6 +1973,9 @@ export const DataBoundariesGetScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataBoundariesGetTenantInput {
+  default: "default";
+}
 export const DataBoundariesGetTenantInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
@@ -1421,11 +1985,22 @@ export const DataBoundariesGetTenantInput =
       path: "/providers/Microsoft.Resources/dataBoundaries/{default}",
       apiVersion: "2024-08-01",
     }),
-  );
-export type DataBoundariesGetTenantInput =
-  typeof DataBoundariesGetTenantInput.Type;
+  ) as unknown as Schema.Codec<DataBoundariesGetTenantInput>;
 
 // Output Schema
+export interface DataBoundariesGetTenantOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataBoundariesGetTenantOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1445,9 +2020,7 @@ export const DataBoundariesGetTenantOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataBoundariesGetTenantOutput =
-  typeof DataBoundariesGetTenantOutput.Type;
+  }) as unknown as Schema.Codec<DataBoundariesGetTenantOutput>;
 
 // The operation
 /**
@@ -1463,6 +2036,20 @@ export const DataBoundariesGetTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DataBoundariesPutInput {
+  default: "default";
+  properties?: {
+    dataBoundary?: "NotDefined" | "Global" | "EU";
+    provisioningState?:
+      | "Accepted"
+      | "Running"
+      | "Creating"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+  };
+}
 export const DataBoundariesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     default: Schema.Literals(["default"]).pipe(T.PathParam()),
@@ -1491,10 +2078,22 @@ export const DataBoundariesPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Resources/dataBoundaries/{default}",
     apiVersion: "2024-08-01",
   }),
-);
-export type DataBoundariesPutInput = typeof DataBoundariesPutInput.Type;
+) as unknown as Schema.Codec<DataBoundariesPutInput>;
 
 // Output Schema
+export interface DataBoundariesPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataBoundariesPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1514,8 +2113,7 @@ export const DataBoundariesPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataBoundariesPutOutput = typeof DataBoundariesPutOutput.Type;
+  }) as unknown as Schema.Codec<DataBoundariesPutOutput>;
 
 // The operation
 /**
@@ -1529,6 +2127,9 @@ export const DataBoundariesPut = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DataBoundariesPutOutput,
 }));
 // Input Schema
+export interface DataPolicyManifestsGetByPolicyModeInput {
+  policyMode: string;
+}
 export const DataPolicyManifestsGetByPolicyModeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyMode: Schema.String.pipe(T.PathParam()),
@@ -1536,13 +2137,24 @@ export const DataPolicyManifestsGetByPolicyModeInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/dataPolicyManifests/{policyMode}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type DataPolicyManifestsGetByPolicyModeInput =
-  typeof DataPolicyManifestsGetByPolicyModeInput.Type;
+  ) as unknown as Schema.Codec<DataPolicyManifestsGetByPolicyModeInput>;
 
 // Output Schema
+export interface DataPolicyManifestsGetByPolicyModeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DataPolicyManifestsGetByPolicyModeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1562,9 +2174,7 @@ export const DataPolicyManifestsGetByPolicyModeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DataPolicyManifestsGetByPolicyModeOutput =
-  typeof DataPolicyManifestsGetByPolicyModeOutput.Type;
+  }) as unknown as Schema.Codec<DataPolicyManifestsGetByPolicyModeOutput>;
 
 // The operation
 /**
@@ -1581,6 +2191,9 @@ export const DataPolicyManifestsGetByPolicyMode =
     outputSchema: DataPolicyManifestsGetByPolicyModeOutput,
   }));
 // Input Schema
+export interface DataPolicyManifestsListInput {
+  $filter?: string;
+}
 export const DataPolicyManifestsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -1588,13 +2201,27 @@ export const DataPolicyManifestsListInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/dataPolicyManifests",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type DataPolicyManifestsListInput =
-  typeof DataPolicyManifestsListInput.Type;
+  ) as unknown as Schema.Codec<DataPolicyManifestsListInput>;
 
 // Output Schema
+export interface DataPolicyManifestsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DataPolicyManifestsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1629,9 +2256,7 @@ export const DataPolicyManifestsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DataPolicyManifestsListOutput =
-  typeof DataPolicyManifestsListOutput.Type;
+  }) as unknown as Schema.Codec<DataPolicyManifestsListOutput>;
 
 // The operation
 /**
@@ -1649,6 +2274,10 @@ export const DataPolicyManifestsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DecompileBicepInput {
+  subscriptionId: string;
+  template: string;
+}
 export const DecompileBicepInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   template: Schema.String,
@@ -1658,10 +2287,13 @@ export const DecompileBicepInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/decompileBicep",
     apiVersion: "2023-11-01",
   }),
-);
-export type DecompileBicepInput = typeof DecompileBicepInput.Type;
+) as unknown as Schema.Codec<DecompileBicepInput>;
 
 // Output Schema
+export interface DecompileBicepOutput {
+  files: { path?: string; contents?: string }[];
+  entryPoint: string;
+}
 export const DecompileBicepOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   files: Schema.Array(
     Schema.Struct({
@@ -1670,8 +2302,7 @@ export const DecompileBicepOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   entryPoint: Schema.String,
-});
-export type DecompileBicepOutput = typeof DecompileBicepOutput.Type;
+}) as unknown as Schema.Codec<DecompileBicepOutput>;
 
 // The operation
 /**
@@ -1685,6 +2316,12 @@ export const DecompileBicep = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DecompileBicepOutput,
 }));
 // Input Schema
+export interface DeploymentOperationsGetInput {
+  resourceGroupName: string;
+  deploymentName: string;
+  operationId: string;
+  subscriptionId: string;
+}
 export const DeploymentOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1697,11 +2334,76 @@ export const DeploymentOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations/{operationId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsGetInput =
-  typeof DeploymentOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsGetInput>;
 
 // Output Schema
+export interface DeploymentOperationsGetOutput {
+  id?: string;
+  operationId?: string;
+  properties?: {
+    provisioningOperation?:
+      | "NotSpecified"
+      | "Create"
+      | "Delete"
+      | "Waiting"
+      | "AzureAsyncOperationWaiting"
+      | "ResourceCacheWaiting"
+      | "Action"
+      | "Read"
+      | "EvaluateDeploymentOutput"
+      | "DeploymentCleanup";
+    provisioningState?: string;
+    timestamp?: string;
+    duration?: string;
+    serviceRequestId?: string;
+    statusCode?: string;
+    statusMessage?: {
+      status?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    targetResource?: {
+      id?: string;
+      resourceName?: string;
+      resourceType?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      identifiers?: unknown;
+      apiVersion?: string;
+      symbolicName?: string;
+    };
+    request?: { content?: unknown };
+    response?: { content?: unknown };
+  };
+}
 export const DeploymentOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1806,9 +2508,7 @@ export const DeploymentOperationsGetOutput =
         ),
       }),
     ),
-  });
-export type DeploymentOperationsGetOutput =
-  typeof DeploymentOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsGetOutput>;
 
 // The operation
 /**
@@ -1827,6 +2527,11 @@ export const DeploymentOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentOperationsGetAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+  operationId: string;
+}
 export const DeploymentOperationsGetAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -1838,11 +2543,76 @@ export const DeploymentOperationsGetAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsGetAtManagementGroupScopeInput =
-  typeof DeploymentOperationsGetAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsGetAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsGetAtManagementGroupScopeOutput {
+  id?: string;
+  operationId?: string;
+  properties?: {
+    provisioningOperation?:
+      | "NotSpecified"
+      | "Create"
+      | "Delete"
+      | "Waiting"
+      | "AzureAsyncOperationWaiting"
+      | "ResourceCacheWaiting"
+      | "Action"
+      | "Read"
+      | "EvaluateDeploymentOutput"
+      | "DeploymentCleanup";
+    provisioningState?: string;
+    timestamp?: string;
+    duration?: string;
+    serviceRequestId?: string;
+    statusCode?: string;
+    statusMessage?: {
+      status?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    targetResource?: {
+      id?: string;
+      resourceName?: string;
+      resourceType?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      identifiers?: unknown;
+      apiVersion?: string;
+      symbolicName?: string;
+    };
+    request?: { content?: unknown };
+    response?: { content?: unknown };
+  };
+}
 export const DeploymentOperationsGetAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1947,9 +2717,7 @@ export const DeploymentOperationsGetAtManagementGroupScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentOperationsGetAtManagementGroupScopeOutput =
-  typeof DeploymentOperationsGetAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsGetAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -1966,6 +2734,11 @@ export const DeploymentOperationsGetAtManagementGroupScope =
     outputSchema: DeploymentOperationsGetAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsGetAtScopeInput {
+  scope: string;
+  deploymentName: string;
+  operationId: string;
+}
 export const DeploymentOperationsGetAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -1977,11 +2750,76 @@ export const DeploymentOperationsGetAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsGetAtScopeInput =
-  typeof DeploymentOperationsGetAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsGetAtScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsGetAtScopeOutput {
+  id?: string;
+  operationId?: string;
+  properties?: {
+    provisioningOperation?:
+      | "NotSpecified"
+      | "Create"
+      | "Delete"
+      | "Waiting"
+      | "AzureAsyncOperationWaiting"
+      | "ResourceCacheWaiting"
+      | "Action"
+      | "Read"
+      | "EvaluateDeploymentOutput"
+      | "DeploymentCleanup";
+    provisioningState?: string;
+    timestamp?: string;
+    duration?: string;
+    serviceRequestId?: string;
+    statusCode?: string;
+    statusMessage?: {
+      status?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    targetResource?: {
+      id?: string;
+      resourceName?: string;
+      resourceType?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      identifiers?: unknown;
+      apiVersion?: string;
+      symbolicName?: string;
+    };
+    request?: { content?: unknown };
+    response?: { content?: unknown };
+  };
+}
 export const DeploymentOperationsGetAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2086,9 +2924,7 @@ export const DeploymentOperationsGetAtScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentOperationsGetAtScopeOutput =
-  typeof DeploymentOperationsGetAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsGetAtScopeOutput>;
 
 // The operation
 /**
@@ -2105,6 +2941,11 @@ export const DeploymentOperationsGetAtScope =
     outputSchema: DeploymentOperationsGetAtScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsGetAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+  operationId: string;
+}
 export const DeploymentOperationsGetAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2116,11 +2957,76 @@ export const DeploymentOperationsGetAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsGetAtSubscriptionScopeInput =
-  typeof DeploymentOperationsGetAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsGetAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsGetAtSubscriptionScopeOutput {
+  id?: string;
+  operationId?: string;
+  properties?: {
+    provisioningOperation?:
+      | "NotSpecified"
+      | "Create"
+      | "Delete"
+      | "Waiting"
+      | "AzureAsyncOperationWaiting"
+      | "ResourceCacheWaiting"
+      | "Action"
+      | "Read"
+      | "EvaluateDeploymentOutput"
+      | "DeploymentCleanup";
+    provisioningState?: string;
+    timestamp?: string;
+    duration?: string;
+    serviceRequestId?: string;
+    statusCode?: string;
+    statusMessage?: {
+      status?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    targetResource?: {
+      id?: string;
+      resourceName?: string;
+      resourceType?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      identifiers?: unknown;
+      apiVersion?: string;
+      symbolicName?: string;
+    };
+    request?: { content?: unknown };
+    response?: { content?: unknown };
+  };
+}
 export const DeploymentOperationsGetAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2225,9 +3131,7 @@ export const DeploymentOperationsGetAtSubscriptionScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentOperationsGetAtSubscriptionScopeOutput =
-  typeof DeploymentOperationsGetAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsGetAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -2244,6 +3148,10 @@ export const DeploymentOperationsGetAtSubscriptionScope =
     outputSchema: DeploymentOperationsGetAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsGetAtTenantScopeInput {
+  deploymentName: string;
+  operationId: string;
+}
 export const DeploymentOperationsGetAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -2254,11 +3162,76 @@ export const DeploymentOperationsGetAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/operations/{operationId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsGetAtTenantScopeInput =
-  typeof DeploymentOperationsGetAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsGetAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsGetAtTenantScopeOutput {
+  id?: string;
+  operationId?: string;
+  properties?: {
+    provisioningOperation?:
+      | "NotSpecified"
+      | "Create"
+      | "Delete"
+      | "Waiting"
+      | "AzureAsyncOperationWaiting"
+      | "ResourceCacheWaiting"
+      | "Action"
+      | "Read"
+      | "EvaluateDeploymentOutput"
+      | "DeploymentCleanup";
+    provisioningState?: string;
+    timestamp?: string;
+    duration?: string;
+    serviceRequestId?: string;
+    statusCode?: string;
+    statusMessage?: {
+      status?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    };
+    targetResource?: {
+      id?: string;
+      resourceName?: string;
+      resourceType?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      identifiers?: unknown;
+      apiVersion?: string;
+      symbolicName?: string;
+    };
+    request?: { content?: unknown };
+    response?: { content?: unknown };
+  };
+}
 export const DeploymentOperationsGetAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2363,9 +3336,7 @@ export const DeploymentOperationsGetAtTenantScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentOperationsGetAtTenantScopeOutput =
-  typeof DeploymentOperationsGetAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsGetAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -2381,6 +3352,12 @@ export const DeploymentOperationsGetAtTenantScope =
     outputSchema: DeploymentOperationsGetAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+  $top?: number;
+}
 export const DeploymentOperationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2393,11 +3370,79 @@ export const DeploymentOperationsListInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/deployments/{deploymentName}/operations",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsListInput =
-  typeof DeploymentOperationsListInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsListInput>;
 
 // Output Schema
+export interface DeploymentOperationsListOutput {
+  value: {
+    id?: string;
+    operationId?: string;
+    properties?: {
+      provisioningOperation?:
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup";
+      provisioningState?: string;
+      timestamp?: string;
+      duration?: string;
+      serviceRequestId?: string;
+      statusCode?: string;
+      statusMessage?: {
+        status?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      };
+      targetResource?: {
+        id?: string;
+        resourceName?: string;
+        resourceType?: string;
+        extension?: {
+          alias?: string;
+          name?: string;
+          version?: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?:
+                | "String"
+                | "Int"
+                | "Bool"
+                | "Array"
+                | "Object"
+                | "SecureString"
+                | "SecureObject";
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        identifiers?: unknown;
+        apiVersion?: string;
+        symbolicName?: string;
+      };
+      request?: { content?: unknown };
+      response?: { content?: unknown };
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentOperationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2507,9 +3552,7 @@ export const DeploymentOperationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentOperationsListOutput =
-  typeof DeploymentOperationsListOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsListOutput>;
 
 // The operation
 /**
@@ -2528,6 +3571,11 @@ export const DeploymentOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentOperationsListAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+  $top?: number;
+}
 export const DeploymentOperationsListAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -2539,11 +3587,79 @@ export const DeploymentOperationsListAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsListAtManagementGroupScopeInput =
-  typeof DeploymentOperationsListAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsListAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsListAtManagementGroupScopeOutput {
+  value: {
+    id?: string;
+    operationId?: string;
+    properties?: {
+      provisioningOperation?:
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup";
+      provisioningState?: string;
+      timestamp?: string;
+      duration?: string;
+      serviceRequestId?: string;
+      statusCode?: string;
+      statusMessage?: {
+        status?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      };
+      targetResource?: {
+        id?: string;
+        resourceName?: string;
+        resourceType?: string;
+        extension?: {
+          alias?: string;
+          name?: string;
+          version?: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?:
+                | "String"
+                | "Int"
+                | "Bool"
+                | "Array"
+                | "Object"
+                | "SecureString"
+                | "SecureObject";
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        identifiers?: unknown;
+        apiVersion?: string;
+        symbolicName?: string;
+      };
+      request?: { content?: unknown };
+      response?: { content?: unknown };
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentOperationsListAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2653,9 +3769,7 @@ export const DeploymentOperationsListAtManagementGroupScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentOperationsListAtManagementGroupScopeOutput =
-  typeof DeploymentOperationsListAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsListAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -2672,6 +3786,11 @@ export const DeploymentOperationsListAtManagementGroupScope =
     outputSchema: DeploymentOperationsListAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsListAtScopeInput {
+  scope: string;
+  deploymentName: string;
+  $top?: number;
+}
 export const DeploymentOperationsListAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -2683,11 +3802,79 @@ export const DeploymentOperationsListAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsListAtScopeInput =
-  typeof DeploymentOperationsListAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsListAtScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsListAtScopeOutput {
+  value: {
+    id?: string;
+    operationId?: string;
+    properties?: {
+      provisioningOperation?:
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup";
+      provisioningState?: string;
+      timestamp?: string;
+      duration?: string;
+      serviceRequestId?: string;
+      statusCode?: string;
+      statusMessage?: {
+        status?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      };
+      targetResource?: {
+        id?: string;
+        resourceName?: string;
+        resourceType?: string;
+        extension?: {
+          alias?: string;
+          name?: string;
+          version?: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?:
+                | "String"
+                | "Int"
+                | "Bool"
+                | "Array"
+                | "Object"
+                | "SecureString"
+                | "SecureObject";
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        identifiers?: unknown;
+        apiVersion?: string;
+        symbolicName?: string;
+      };
+      request?: { content?: unknown };
+      response?: { content?: unknown };
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentOperationsListAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2797,9 +3984,7 @@ export const DeploymentOperationsListAtScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentOperationsListAtScopeOutput =
-  typeof DeploymentOperationsListAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsListAtScopeOutput>;
 
 // The operation
 /**
@@ -2816,6 +4001,11 @@ export const DeploymentOperationsListAtScope =
     outputSchema: DeploymentOperationsListAtScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsListAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+  $top?: number;
+}
 export const DeploymentOperationsListAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2827,11 +4017,79 @@ export const DeploymentOperationsListAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsListAtSubscriptionScopeInput =
-  typeof DeploymentOperationsListAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsListAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsListAtSubscriptionScopeOutput {
+  value: {
+    id?: string;
+    operationId?: string;
+    properties?: {
+      provisioningOperation?:
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup";
+      provisioningState?: string;
+      timestamp?: string;
+      duration?: string;
+      serviceRequestId?: string;
+      statusCode?: string;
+      statusMessage?: {
+        status?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      };
+      targetResource?: {
+        id?: string;
+        resourceName?: string;
+        resourceType?: string;
+        extension?: {
+          alias?: string;
+          name?: string;
+          version?: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?:
+                | "String"
+                | "Int"
+                | "Bool"
+                | "Array"
+                | "Object"
+                | "SecureString"
+                | "SecureObject";
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        identifiers?: unknown;
+        apiVersion?: string;
+        symbolicName?: string;
+      };
+      request?: { content?: unknown };
+      response?: { content?: unknown };
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentOperationsListAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2941,9 +4199,7 @@ export const DeploymentOperationsListAtSubscriptionScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentOperationsListAtSubscriptionScopeOutput =
-  typeof DeploymentOperationsListAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsListAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -2960,6 +4216,10 @@ export const DeploymentOperationsListAtSubscriptionScope =
     outputSchema: DeploymentOperationsListAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentOperationsListAtTenantScopeInput {
+  deploymentName: string;
+  $top?: number;
+}
 export const DeploymentOperationsListAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -2970,11 +4230,79 @@ export const DeploymentOperationsListAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/operations",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentOperationsListAtTenantScopeInput =
-  typeof DeploymentOperationsListAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentOperationsListAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentOperationsListAtTenantScopeOutput {
+  value: {
+    id?: string;
+    operationId?: string;
+    properties?: {
+      provisioningOperation?:
+        | "NotSpecified"
+        | "Create"
+        | "Delete"
+        | "Waiting"
+        | "AzureAsyncOperationWaiting"
+        | "ResourceCacheWaiting"
+        | "Action"
+        | "Read"
+        | "EvaluateDeploymentOutput"
+        | "DeploymentCleanup";
+      provisioningState?: string;
+      timestamp?: string;
+      duration?: string;
+      serviceRequestId?: string;
+      statusCode?: string;
+      statusMessage?: {
+        status?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        };
+      };
+      targetResource?: {
+        id?: string;
+        resourceName?: string;
+        resourceType?: string;
+        extension?: {
+          alias?: string;
+          name?: string;
+          version?: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?:
+                | "String"
+                | "Int"
+                | "Bool"
+                | "Array"
+                | "Object"
+                | "SecureString"
+                | "SecureObject";
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        identifiers?: unknown;
+        apiVersion?: string;
+        symbolicName?: string;
+      };
+      request?: { content?: unknown };
+      response?: { content?: unknown };
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentOperationsListAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3084,9 +4412,7 @@ export const DeploymentOperationsListAtTenantScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentOperationsListAtTenantScopeOutput =
-  typeof DeploymentOperationsListAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentOperationsListAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -3102,6 +4428,7 @@ export const DeploymentOperationsListAtTenantScope =
     outputSchema: DeploymentOperationsListAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCalculateTemplateHashInput {}
 export const DeploymentsCalculateTemplateHashInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
@@ -3109,18 +4436,18 @@ export const DeploymentsCalculateTemplateHashInput =
       path: "/providers/Microsoft.Resources/calculateTemplateHash",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCalculateTemplateHashInput =
-  typeof DeploymentsCalculateTemplateHashInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCalculateTemplateHashInput>;
 
 // Output Schema
+export interface DeploymentsCalculateTemplateHashOutput {
+  minifiedTemplate?: string;
+  templateHash?: string;
+}
 export const DeploymentsCalculateTemplateHashOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     minifiedTemplate: Schema.optional(Schema.String),
     templateHash: Schema.optional(Schema.String),
-  });
-export type DeploymentsCalculateTemplateHashOutput =
-  typeof DeploymentsCalculateTemplateHashOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCalculateTemplateHashOutput>;
 
 // The operation
 /**
@@ -3134,6 +4461,11 @@ export const DeploymentsCalculateTemplateHash =
     outputSchema: DeploymentsCalculateTemplateHashOutput,
   }));
 // Input Schema
+export interface DeploymentsCancelInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3146,12 +4478,12 @@ export const DeploymentsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
     apiVersion: "2025-04-01",
   }),
-);
-export type DeploymentsCancelInput = typeof DeploymentsCancelInput.Type;
+) as unknown as Schema.Codec<DeploymentsCancelInput>;
 
 // Output Schema
-export const DeploymentsCancelOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsCancelOutput = typeof DeploymentsCancelOutput.Type;
+export type DeploymentsCancelOutput = void;
+export const DeploymentsCancelOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsCancelOutput>;
 
 // The operation
 /**
@@ -3169,6 +4501,10 @@ export const DeploymentsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsCancelOutput,
 }));
 // Input Schema
+export interface DeploymentsCancelAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+}
 export const DeploymentsCancelAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -3179,15 +4515,12 @@ export const DeploymentsCancelAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCancelAtManagementGroupScopeInput =
-  typeof DeploymentsCancelAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCancelAtManagementGroupScopeInput>;
 
 // Output Schema
+export type DeploymentsCancelAtManagementGroupScopeOutput = void;
 export const DeploymentsCancelAtManagementGroupScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsCancelAtManagementGroupScopeOutput =
-  typeof DeploymentsCancelAtManagementGroupScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsCancelAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -3205,6 +4538,10 @@ export const DeploymentsCancelAtManagementGroupScope =
     outputSchema: DeploymentsCancelAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCancelAtScopeInput {
+  scope: string;
+  deploymentName: string;
+}
 export const DeploymentsCancelAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3215,15 +4552,12 @@ export const DeploymentsCancelAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCancelAtScopeInput =
-  typeof DeploymentsCancelAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCancelAtScopeInput>;
 
 // Output Schema
+export type DeploymentsCancelAtScopeOutput = void;
 export const DeploymentsCancelAtScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsCancelAtScopeOutput =
-  typeof DeploymentsCancelAtScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsCancelAtScopeOutput>;
 
 // The operation
 /**
@@ -3242,6 +4576,10 @@ export const DeploymentsCancelAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsCancelAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+}
 export const DeploymentsCancelAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3252,15 +4590,12 @@ export const DeploymentsCancelAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCancelAtSubscriptionScopeInput =
-  typeof DeploymentsCancelAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCancelAtSubscriptionScopeInput>;
 
 // Output Schema
+export type DeploymentsCancelAtSubscriptionScopeOutput = void;
 export const DeploymentsCancelAtSubscriptionScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsCancelAtSubscriptionScopeOutput =
-  typeof DeploymentsCancelAtSubscriptionScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsCancelAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -3278,6 +4613,9 @@ export const DeploymentsCancelAtSubscriptionScope =
     outputSchema: DeploymentsCancelAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCancelAtTenantScopeInput {
+  deploymentName: string;
+}
 export const DeploymentsCancelAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -3287,15 +4625,12 @@ export const DeploymentsCancelAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/cancel",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCancelAtTenantScopeInput =
-  typeof DeploymentsCancelAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCancelAtTenantScopeInput>;
 
 // Output Schema
+export type DeploymentsCancelAtTenantScopeOutput = void;
 export const DeploymentsCancelAtTenantScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsCancelAtTenantScopeOutput =
-  typeof DeploymentsCancelAtTenantScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsCancelAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -3312,6 +4647,80 @@ export const DeploymentsCancelAtTenantScope =
     outputSchema: DeploymentsCancelAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3447,11 +4856,22 @@ export const DeploymentsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateInput =
-  typeof DeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3471,9 +4891,7 @@ export const DeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateOutput =
-  typeof DeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3493,6 +4911,72 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsCreateOrUpdateAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+}
 export const DeploymentsCreateOrUpdateAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -3613,11 +5097,22 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateAtManagementGroupScopeInput =
-  typeof DeploymentsCreateOrUpdateAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateAtManagementGroupScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3637,9 +5132,7 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateAtManagementGroupScopeOutput =
-  typeof DeploymentsCreateOrUpdateAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -3657,6 +5150,79 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScope =
     outputSchema: DeploymentsCreateOrUpdateAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateAtScopeInput {
+  scope: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsCreateOrUpdateAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -3791,11 +5357,22 @@ export const DeploymentsCreateOrUpdateAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateAtScopeInput =
-  typeof DeploymentsCreateOrUpdateAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtScopeInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateAtScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3815,9 +5392,7 @@ export const DeploymentsCreateOrUpdateAtScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateAtScopeOutput =
-  typeof DeploymentsCreateOrUpdateAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtScopeOutput>;
 
 // The operation
 /**
@@ -3835,6 +5410,79 @@ export const DeploymentsCreateOrUpdateAtScope =
     outputSchema: DeploymentsCreateOrUpdateAtScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsCreateOrUpdateAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3969,11 +5617,22 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateAtSubscriptionScopeInput =
-  typeof DeploymentsCreateOrUpdateAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateAtSubscriptionScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3993,9 +5652,7 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateAtSubscriptionScopeOutput =
-  typeof DeploymentsCreateOrUpdateAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -4013,6 +5670,71 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScope =
     outputSchema: DeploymentsCreateOrUpdateAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsCreateOrUpdateAtTenantScopeInput {
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+}
 export const DeploymentsCreateOrUpdateAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -4132,11 +5854,22 @@ export const DeploymentsCreateOrUpdateAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateAtTenantScopeInput =
-  typeof DeploymentsCreateOrUpdateAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateAtTenantScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4156,9 +5889,7 @@ export const DeploymentsCreateOrUpdateAtTenantScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateAtTenantScopeOutput =
-  typeof DeploymentsCreateOrUpdateAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -4175,9 +5906,26 @@ export const DeploymentsCreateOrUpdateAtTenantScope =
     outputSchema: DeploymentsCreateOrUpdateAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentScriptsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+  kind: "AzurePowerShell" | "AzureCLI";
+  identity?: {
+    type?: "UserAssigned";
+    tenantId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const DeploymentScriptsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals(["AzurePowerShell", "AzureCLI"]),
     identity: Schema.optional(
@@ -4203,11 +5951,22 @@ export const DeploymentScriptsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsCreateInput =
-  typeof DeploymentScriptsCreateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsCreateInput>;
 
 // Output Schema
+export interface DeploymentScriptsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentScriptsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4227,9 +5986,7 @@ export const DeploymentScriptsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentScriptsCreateOutput =
-  typeof DeploymentScriptsCreateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsCreateOutput>;
 
 // The operation
 /**
@@ -4237,6 +5994,7 @@ export type DeploymentScriptsCreateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4246,9 +6004,15 @@ export const DeploymentScriptsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentScriptsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+}
 export const DeploymentScriptsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4256,15 +6020,12 @@ export const DeploymentScriptsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsDeleteInput =
-  typeof DeploymentScriptsDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsDeleteInput>;
 
 // Output Schema
+export type DeploymentScriptsDeleteOutput = void;
 export const DeploymentScriptsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentScriptsDeleteOutput =
-  typeof DeploymentScriptsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentScriptsDeleteOutput>;
 
 // The operation
 /**
@@ -4272,6 +6033,7 @@ export type DeploymentScriptsDeleteOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4281,9 +6043,15 @@ export const DeploymentScriptsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentScriptsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+}
 export const DeploymentScriptsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4291,10 +6059,22 @@ export const DeploymentScriptsGetInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsGetInput = typeof DeploymentScriptsGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsGetInput>;
 
 // Output Schema
+export interface DeploymentScriptsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentScriptsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4314,8 +6094,7 @@ export const DeploymentScriptsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentScriptsGetOutput = typeof DeploymentScriptsGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsGetOutput>;
 
 // The operation
 /**
@@ -4323,6 +6102,7 @@ export type DeploymentScriptsGetOutput = typeof DeploymentScriptsGetOutput.Type;
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4332,9 +6112,15 @@ export const DeploymentScriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentScriptsGetLogsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+}
 export const DeploymentScriptsGetLogsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4342,11 +6128,24 @@ export const DeploymentScriptsGetLogsInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}/logs",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsGetLogsInput =
-  typeof DeploymentScriptsGetLogsInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsGetLogsInput>;
 
 // Output Schema
+export interface DeploymentScriptsGetLogsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const DeploymentScriptsGetLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4382,9 +6181,7 @@ export const DeploymentScriptsGetLogsOutput =
         }),
       ),
     ),
-  });
-export type DeploymentScriptsGetLogsOutput =
-  typeof DeploymentScriptsGetLogsOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsGetLogsOutput>;
 
 // The operation
 /**
@@ -4392,6 +6189,7 @@ export type DeploymentScriptsGetLogsOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsGetLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4401,9 +6199,16 @@ export const DeploymentScriptsGetLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentScriptsGetLogsDefaultInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+  tail?: number;
+}
 export const DeploymentScriptsGetLogsDefaultInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     tail: Schema.optional(Schema.Number),
   }).pipe(
@@ -4412,11 +6217,22 @@ export const DeploymentScriptsGetLogsDefaultInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}/logs/default",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsGetLogsDefaultInput =
-  typeof DeploymentScriptsGetLogsDefaultInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsGetLogsDefaultInput>;
 
 // Output Schema
+export interface DeploymentScriptsGetLogsDefaultOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentScriptsGetLogsDefaultOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4436,9 +6252,7 @@ export const DeploymentScriptsGetLogsDefaultOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentScriptsGetLogsDefaultOutput =
-  typeof DeploymentScriptsGetLogsDefaultOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsGetLogsDefaultOutput>;
 
 // The operation
 /**
@@ -4446,6 +6260,7 @@ export type DeploymentScriptsGetLogsDefaultOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  * @param tail - The number of lines to show from the tail of the deployment script log. Valid value is a positive number up to 1000. If 'tail' is not provided, all available logs are shown up to container instance log capacity of 4mb.
  */
@@ -4455,20 +6270,39 @@ export const DeploymentScriptsGetLogsDefault =
     outputSchema: DeploymentScriptsGetLogsDefaultOutput,
   }));
 // Input Schema
+export interface DeploymentScriptsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DeploymentScriptsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsListByResourceGroupInput =
-  typeof DeploymentScriptsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsListByResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentScriptsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentScriptsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4505,9 +6339,7 @@ export const DeploymentScriptsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentScriptsListByResourceGroupOutput =
-  typeof DeploymentScriptsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4515,6 +6347,7 @@ export type DeploymentScriptsListByResourceGroupOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DeploymentScriptsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4522,6 +6355,9 @@ export const DeploymentScriptsListByResourceGroup =
     outputSchema: DeploymentScriptsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentScriptsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const DeploymentScriptsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4531,11 +6367,25 @@ export const DeploymentScriptsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentScripts",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsListBySubscriptionInput =
-  typeof DeploymentScriptsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsListBySubscriptionInput>;
 
 // Output Schema
+export interface DeploymentScriptsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentScriptsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -4572,9 +6422,7 @@ export const DeploymentScriptsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentScriptsListBySubscriptionOutput =
-  typeof DeploymentScriptsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4589,9 +6437,19 @@ export const DeploymentScriptsListBySubscription =
     outputSchema: DeploymentScriptsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentScriptsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  scriptName: string;
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const DeploymentScriptsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
     scriptName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
@@ -4603,11 +6461,22 @@ export const DeploymentScriptsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
       apiVersion: "2023-08-01",
     }),
-  );
-export type DeploymentScriptsUpdateInput =
-  typeof DeploymentScriptsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentScriptsUpdateInput>;
 
 // Output Schema
+export interface DeploymentScriptsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentScriptsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4627,9 +6496,7 @@ export const DeploymentScriptsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentScriptsUpdateOutput =
-  typeof DeploymentScriptsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentScriptsUpdateOutput>;
 
 // The operation
 /**
@@ -4637,6 +6504,7 @@ export type DeploymentScriptsUpdateOutput =
  *
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param scriptName - Name of the deployment script.
  */
 export const DeploymentScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -4646,6 +6514,11 @@ export const DeploymentScriptsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4658,12 +6531,12 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
+) as unknown as Schema.Codec<DeploymentsDeleteInput>;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
+export type DeploymentsDeleteOutput = void;
+export const DeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -4681,6 +6554,10 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
+export interface DeploymentsDeleteAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -4691,15 +6568,12 @@ export const DeploymentsDeleteAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsDeleteAtManagementGroupScopeInput =
-  typeof DeploymentsDeleteAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsDeleteAtManagementGroupScopeInput>;
 
 // Output Schema
+export type DeploymentsDeleteAtManagementGroupScopeOutput = void;
 export const DeploymentsDeleteAtManagementGroupScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteAtManagementGroupScopeOutput =
-  typeof DeploymentsDeleteAtManagementGroupScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -4717,6 +6591,10 @@ export const DeploymentsDeleteAtManagementGroupScope =
     outputSchema: DeploymentsDeleteAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsDeleteAtScopeInput {
+  scope: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -4727,15 +6605,12 @@ export const DeploymentsDeleteAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsDeleteAtScopeInput =
-  typeof DeploymentsDeleteAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsDeleteAtScopeInput>;
 
 // Output Schema
+export type DeploymentsDeleteAtScopeOutput = void;
 export const DeploymentsDeleteAtScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteAtScopeOutput =
-  typeof DeploymentsDeleteAtScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteAtScopeOutput>;
 
 // The operation
 /**
@@ -4754,6 +6629,10 @@ export const DeploymentsDeleteAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4764,15 +6643,12 @@ export const DeploymentsDeleteAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsDeleteAtSubscriptionScopeInput =
-  typeof DeploymentsDeleteAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsDeleteAtSubscriptionScopeInput>;
 
 // Output Schema
+export type DeploymentsDeleteAtSubscriptionScopeOutput = void;
 export const DeploymentsDeleteAtSubscriptionScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteAtSubscriptionScopeOutput =
-  typeof DeploymentsDeleteAtSubscriptionScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -4790,6 +6666,9 @@ export const DeploymentsDeleteAtSubscriptionScope =
     outputSchema: DeploymentsDeleteAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsDeleteAtTenantScopeInput {
+  deploymentName: string;
+}
 export const DeploymentsDeleteAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -4799,15 +6678,12 @@ export const DeploymentsDeleteAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsDeleteAtTenantScopeInput =
-  typeof DeploymentsDeleteAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsDeleteAtTenantScopeInput>;
 
 // Output Schema
+export type DeploymentsDeleteAtTenantScopeOutput = void;
 export const DeploymentsDeleteAtTenantScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteAtTenantScopeOutput =
-  typeof DeploymentsDeleteAtTenantScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -4824,6 +6700,11 @@ export const DeploymentsDeleteAtTenantScope =
     outputSchema: DeploymentsDeleteAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsExportTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsExportTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4835,17 +6716,16 @@ export const DeploymentsExportTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsExportTemplateInput =
-  typeof DeploymentsExportTemplateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsExportTemplateInput>;
 
 // Output Schema
+export interface DeploymentsExportTemplateOutput {
+  template?: unknown;
+}
 export const DeploymentsExportTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
-  });
-export type DeploymentsExportTemplateOutput =
-  typeof DeploymentsExportTemplateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsExportTemplateOutput>;
 
 // The operation
 /**
@@ -4863,6 +6743,10 @@ export const DeploymentsExportTemplate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsExportTemplateAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+}
 export const DeploymentsExportTemplateAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -4873,17 +6757,16 @@ export const DeploymentsExportTemplateAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsExportTemplateAtManagementGroupScopeInput =
-  typeof DeploymentsExportTemplateAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsExportTemplateAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsExportTemplateAtManagementGroupScopeOutput {
+  template?: unknown;
+}
 export const DeploymentsExportTemplateAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
-  });
-export type DeploymentsExportTemplateAtManagementGroupScopeOutput =
-  typeof DeploymentsExportTemplateAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsExportTemplateAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -4899,6 +6782,10 @@ export const DeploymentsExportTemplateAtManagementGroupScope =
     outputSchema: DeploymentsExportTemplateAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsExportTemplateAtScopeInput {
+  scope: string;
+  deploymentName: string;
+}
 export const DeploymentsExportTemplateAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -4909,17 +6796,16 @@ export const DeploymentsExportTemplateAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsExportTemplateAtScopeInput =
-  typeof DeploymentsExportTemplateAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsExportTemplateAtScopeInput>;
 
 // Output Schema
+export interface DeploymentsExportTemplateAtScopeOutput {
+  template?: unknown;
+}
 export const DeploymentsExportTemplateAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
-  });
-export type DeploymentsExportTemplateAtScopeOutput =
-  typeof DeploymentsExportTemplateAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsExportTemplateAtScopeOutput>;
 
 // The operation
 /**
@@ -4935,6 +6821,10 @@ export const DeploymentsExportTemplateAtScope =
     outputSchema: DeploymentsExportTemplateAtScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsExportTemplateAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+}
 export const DeploymentsExportTemplateAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4945,17 +6835,16 @@ export const DeploymentsExportTemplateAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsExportTemplateAtSubscriptionScopeInput =
-  typeof DeploymentsExportTemplateAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsExportTemplateAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsExportTemplateAtSubscriptionScopeOutput {
+  template?: unknown;
+}
 export const DeploymentsExportTemplateAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
-  });
-export type DeploymentsExportTemplateAtSubscriptionScopeOutput =
-  typeof DeploymentsExportTemplateAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsExportTemplateAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -4971,6 +6860,9 @@ export const DeploymentsExportTemplateAtSubscriptionScope =
     outputSchema: DeploymentsExportTemplateAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsExportTemplateAtTenantScopeInput {
+  deploymentName: string;
+}
 export const DeploymentsExportTemplateAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -4980,17 +6872,16 @@ export const DeploymentsExportTemplateAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsExportTemplateAtTenantScopeInput =
-  typeof DeploymentsExportTemplateAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsExportTemplateAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsExportTemplateAtTenantScopeOutput {
+  template?: unknown;
+}
 export const DeploymentsExportTemplateAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
-  });
-export type DeploymentsExportTemplateAtTenantScopeOutput =
-  typeof DeploymentsExportTemplateAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsExportTemplateAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -5005,6 +6896,11 @@ export const DeploymentsExportTemplateAtTenantScope =
     outputSchema: DeploymentsExportTemplateAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5015,10 +6911,22 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
+) as unknown as Schema.Codec<DeploymentsGetInput>;
 
 // Output Schema
+export interface DeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5037,8 +6945,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsGetOutput>;
 
 // The operation
 /**
@@ -5054,6 +6961,10 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
+export interface DeploymentsGetAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+}
 export const DeploymentsGetAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -5064,11 +6975,22 @@ export const DeploymentsGetAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsGetAtManagementGroupScopeInput =
-  typeof DeploymentsGetAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsGetAtManagementGroupScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5088,9 +7010,7 @@ export const DeploymentsGetAtManagementGroupScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsGetAtManagementGroupScopeOutput =
-  typeof DeploymentsGetAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -5106,6 +7026,10 @@ export const DeploymentsGetAtManagementGroupScope =
     outputSchema: DeploymentsGetAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsGetAtScopeInput {
+  scope: string;
+  deploymentName: string;
+}
 export const DeploymentsGetAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -5116,10 +7040,22 @@ export const DeploymentsGetAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsGetAtScopeInput = typeof DeploymentsGetAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetAtScopeInput>;
 
 // Output Schema
+export interface DeploymentsGetAtScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5139,9 +7075,7 @@ export const DeploymentsGetAtScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsGetAtScopeOutput =
-  typeof DeploymentsGetAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetAtScopeOutput>;
 
 // The operation
 /**
@@ -5158,6 +7092,10 @@ export const DeploymentsGetAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsGetAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+}
 export const DeploymentsGetAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5168,11 +7106,22 @@ export const DeploymentsGetAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsGetAtSubscriptionScopeInput =
-  typeof DeploymentsGetAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsGetAtSubscriptionScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5192,9 +7141,7 @@ export const DeploymentsGetAtSubscriptionScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsGetAtSubscriptionScopeOutput =
-  typeof DeploymentsGetAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -5210,6 +7157,9 @@ export const DeploymentsGetAtSubscriptionScope =
     outputSchema: DeploymentsGetAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsGetAtTenantScopeInput {
+  deploymentName: string;
+}
 export const DeploymentsGetAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -5219,11 +7169,22 @@ export const DeploymentsGetAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsGetAtTenantScopeInput =
-  typeof DeploymentsGetAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsGetAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsGetAtTenantScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5243,9 +7204,7 @@ export const DeploymentsGetAtTenantScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsGetAtTenantScopeOutput =
-  typeof DeploymentsGetAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsGetAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -5261,6 +7220,11 @@ export const DeploymentsGetAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsListAtManagementGroupScopeInput {
+  groupId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DeploymentsListAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -5272,11 +7236,25 @@ export const DeploymentsListAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsListAtManagementGroupScopeInput =
-  typeof DeploymentsListAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsListAtManagementGroupScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5311,9 +7289,7 @@ export const DeploymentsListAtManagementGroupScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListAtManagementGroupScopeOutput =
-  typeof DeploymentsListAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -5330,6 +7306,11 @@ export const DeploymentsListAtManagementGroupScope =
     outputSchema: DeploymentsListAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsListAtScopeInput {
+  scope: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DeploymentsListAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -5341,11 +7322,25 @@ export const DeploymentsListAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsListAtScopeInput =
-  typeof DeploymentsListAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListAtScopeInput>;
 
 // Output Schema
+export interface DeploymentsListAtScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5380,9 +7375,7 @@ export const DeploymentsListAtScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListAtScopeOutput =
-  typeof DeploymentsListAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListAtScopeOutput>;
 
 // The operation
 /**
@@ -5400,6 +7393,11 @@ export const DeploymentsListAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsListAtSubscriptionScopeInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DeploymentsListAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5411,11 +7409,25 @@ export const DeploymentsListAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsListAtSubscriptionScopeInput =
-  typeof DeploymentsListAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsListAtSubscriptionScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5450,9 +7462,7 @@ export const DeploymentsListAtSubscriptionScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListAtSubscriptionScopeOutput =
-  typeof DeploymentsListAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -5469,6 +7479,10 @@ export const DeploymentsListAtSubscriptionScope =
     outputSchema: DeploymentsListAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsListAtTenantScopeInput {
+  $filter?: string;
+  $top?: number;
+}
 export const DeploymentsListAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -5479,11 +7493,25 @@ export const DeploymentsListAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsListAtTenantScopeInput =
-  typeof DeploymentsListAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsListAtTenantScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5518,9 +7546,7 @@ export const DeploymentsListAtTenantScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListAtTenantScopeOutput =
-  typeof DeploymentsListAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -5536,6 +7562,12 @@ export const DeploymentsListAtTenantScope =
     outputSchema: DeploymentsListAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $top?: number;
+}
 export const DeploymentsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5548,11 +7580,25 @@ export const DeploymentsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsListByResourceGroupInput =
-  typeof DeploymentsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListByResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5587,9 +7633,7 @@ export const DeploymentsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentsListByResourceGroupOutput =
-  typeof DeploymentsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -5607,6 +7651,226 @@ export const DeploymentsListByResourceGroup =
     outputSchema: DeploymentsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksCreateOrUpdateAtManagementGroupInput {
+  managementGroupId: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -5987,11 +8251,22 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksCreateOrUpdateAtManagementGroupInput =
-  typeof DeploymentStacksCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6011,9 +8286,7 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksCreateOrUpdateAtManagementGroupOutput =
-  typeof DeploymentStacksCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -6029,6 +8302,227 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroup =
     outputSchema: DeploymentStacksCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksCreateOrUpdateAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksCreateOrUpdateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6410,11 +8904,22 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksCreateOrUpdateAtResourceGroupInput =
-  typeof DeploymentStacksCreateOrUpdateAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksCreateOrUpdateAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksCreateOrUpdateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6434,9 +8939,7 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksCreateOrUpdateAtResourceGroupOutput =
-  typeof DeploymentStacksCreateOrUpdateAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6453,6 +8956,226 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroup =
     outputSchema: DeploymentStacksCreateOrUpdateAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksCreateOrUpdateAtSubscriptionInput {
+  subscriptionId: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksCreateOrUpdateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6833,11 +9556,22 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksCreateOrUpdateAtSubscriptionInput =
-  typeof DeploymentStacksCreateOrUpdateAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtSubscriptionInput>;
 
 // Output Schema
+export interface DeploymentStacksCreateOrUpdateAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksCreateOrUpdateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6857,9 +9591,7 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksCreateOrUpdateAtSubscriptionOutput =
-  typeof DeploymentStacksCreateOrUpdateAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksCreateOrUpdateAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6875,25 +9607,44 @@ export const DeploymentStacksCreateOrUpdateAtSubscription =
     outputSchema: DeploymentStacksCreateOrUpdateAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksDeleteAtManagementGroupInput {
+  managementGroupId: string;
+  deploymentStackName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksDeleteAtManagementGroupInput =
-  typeof DeploymentStacksDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksDeleteAtManagementGroupInput>;
 
 // Output Schema
+export type DeploymentStacksDeleteAtManagementGroupOutput = void;
 export const DeploymentStacksDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksDeleteAtManagementGroupOutput =
-  typeof DeploymentStacksDeleteAtManagementGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -6902,6 +9653,11 @@ export type DeploymentStacksDeleteAtManagementGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param managementGroupId - The management group ID.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtManagementGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6909,26 +9665,46 @@ export const DeploymentStacksDeleteAtManagementGroup =
     outputSchema: DeploymentStacksDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksDeleteAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStackName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksDeleteAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksDeleteAtResourceGroupInput =
-  typeof DeploymentStacksDeleteAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksDeleteAtResourceGroupInput>;
 
 // Output Schema
+export type DeploymentStacksDeleteAtResourceGroupOutput = void;
 export const DeploymentStacksDeleteAtResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksDeleteAtResourceGroupOutput =
-  typeof DeploymentStacksDeleteAtResourceGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksDeleteAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -6938,6 +9714,11 @@ export type DeploymentStacksDeleteAtResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6945,25 +9726,44 @@ export const DeploymentStacksDeleteAtResourceGroup =
     outputSchema: DeploymentStacksDeleteAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksDeleteAtSubscriptionInput {
+  subscriptionId: string;
+  deploymentStackName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksDeleteAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deploymentStackName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksDeleteAtSubscriptionInput =
-  typeof DeploymentStacksDeleteAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksDeleteAtSubscriptionInput>;
 
 // Output Schema
+export type DeploymentStacksDeleteAtSubscriptionOutput = void;
 export const DeploymentStacksDeleteAtSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksDeleteAtSubscriptionOutput =
-  typeof DeploymentStacksDeleteAtSubscriptionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksDeleteAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -6972,6 +9772,11 @@ export type DeploymentStacksDeleteAtSubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deploymentStackName - Name of the deployment stack.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksDeleteAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -6979,6 +9784,10 @@ export const DeploymentStacksDeleteAtSubscription =
     outputSchema: DeploymentStacksDeleteAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksExportTemplateAtManagementGroupInput {
+  managementGroupId: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksExportTemplateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -6989,11 +9798,19 @@ export const DeploymentStacksExportTemplateAtManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/exportTemplate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksExportTemplateAtManagementGroupInput =
-  typeof DeploymentStacksExportTemplateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtManagementGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksExportTemplateAtManagementGroupOutput {
+  template?: Record<string, unknown>;
+  templateLink?: {
+    uri?: string;
+    id?: string;
+    relativePath?: string;
+    queryString?: string;
+    contentVersion?: string;
+  };
+}
 export const DeploymentStacksExportTemplateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7006,9 +9823,7 @@ export const DeploymentStacksExportTemplateAtManagementGroupOutput =
         contentVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksExportTemplateAtManagementGroupOutput =
-  typeof DeploymentStacksExportTemplateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -7024,6 +9839,11 @@ export const DeploymentStacksExportTemplateAtManagementGroup =
     outputSchema: DeploymentStacksExportTemplateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksExportTemplateAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksExportTemplateAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7035,11 +9855,19 @@ export const DeploymentStacksExportTemplateAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/exportTemplate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksExportTemplateAtResourceGroupInput =
-  typeof DeploymentStacksExportTemplateAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksExportTemplateAtResourceGroupOutput {
+  template?: Record<string, unknown>;
+  templateLink?: {
+    uri?: string;
+    id?: string;
+    relativePath?: string;
+    queryString?: string;
+    contentVersion?: string;
+  };
+}
 export const DeploymentStacksExportTemplateAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7052,9 +9880,7 @@ export const DeploymentStacksExportTemplateAtResourceGroupOutput =
         contentVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksExportTemplateAtResourceGroupOutput =
-  typeof DeploymentStacksExportTemplateAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -7071,6 +9897,10 @@ export const DeploymentStacksExportTemplateAtResourceGroup =
     outputSchema: DeploymentStacksExportTemplateAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksExportTemplateAtSubscriptionInput {
+  subscriptionId: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksExportTemplateAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7081,11 +9911,19 @@ export const DeploymentStacksExportTemplateAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/exportTemplate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksExportTemplateAtSubscriptionInput =
-  typeof DeploymentStacksExportTemplateAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtSubscriptionInput>;
 
 // Output Schema
+export interface DeploymentStacksExportTemplateAtSubscriptionOutput {
+  template?: Record<string, unknown>;
+  templateLink?: {
+    uri?: string;
+    id?: string;
+    relativePath?: string;
+    queryString?: string;
+    contentVersion?: string;
+  };
+}
 export const DeploymentStacksExportTemplateAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7098,9 +9936,7 @@ export const DeploymentStacksExportTemplateAtSubscriptionOutput =
         contentVersion: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksExportTemplateAtSubscriptionOutput =
-  typeof DeploymentStacksExportTemplateAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksExportTemplateAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -7116,6 +9952,10 @@ export const DeploymentStacksExportTemplateAtSubscription =
     outputSchema: DeploymentStacksExportTemplateAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksGetAtManagementGroupInput {
+  managementGroupId: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -7126,11 +9966,22 @@ export const DeploymentStacksGetAtManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksGetAtManagementGroupInput =
-  typeof DeploymentStacksGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksGetAtManagementGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7150,9 +10001,7 @@ export const DeploymentStacksGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksGetAtManagementGroupOutput =
-  typeof DeploymentStacksGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -7168,6 +10017,11 @@ export const DeploymentStacksGetAtManagementGroup =
     outputSchema: DeploymentStacksGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksGetAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksGetAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7179,11 +10033,22 @@ export const DeploymentStacksGetAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksGetAtResourceGroupInput =
-  typeof DeploymentStacksGetAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksGetAtResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksGetAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksGetAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7203,9 +10068,7 @@ export const DeploymentStacksGetAtResourceGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksGetAtResourceGroupOutput =
-  typeof DeploymentStacksGetAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksGetAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -7222,6 +10085,10 @@ export const DeploymentStacksGetAtResourceGroup =
     outputSchema: DeploymentStacksGetAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksGetAtSubscriptionInput {
+  subscriptionId: string;
+  deploymentStackName: string;
+}
 export const DeploymentStacksGetAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7232,11 +10099,22 @@ export const DeploymentStacksGetAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksGetAtSubscriptionInput =
-  typeof DeploymentStacksGetAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksGetAtSubscriptionInput>;
 
 // Output Schema
+export interface DeploymentStacksGetAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksGetAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7256,9 +10134,7 @@ export const DeploymentStacksGetAtSubscriptionOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksGetAtSubscriptionOutput =
-  typeof DeploymentStacksGetAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksGetAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -7274,6 +10150,9 @@ export const DeploymentStacksGetAtSubscription =
     outputSchema: DeploymentStacksGetAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksListAtManagementGroupInput {
+  managementGroupId: string;
+}
 export const DeploymentStacksListAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -7283,11 +10162,25 @@ export const DeploymentStacksListAtManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksListAtManagementGroupInput =
-  typeof DeploymentStacksListAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksListAtManagementGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksListAtManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksListAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7322,9 +10215,7 @@ export const DeploymentStacksListAtManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksListAtManagementGroupOutput =
-  typeof DeploymentStacksListAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksListAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -7339,6 +10230,10 @@ export const DeploymentStacksListAtManagementGroup =
     outputSchema: DeploymentStacksListAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksListAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DeploymentStacksListAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7349,11 +10244,25 @@ export const DeploymentStacksListAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksListAtResourceGroupInput =
-  typeof DeploymentStacksListAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksListAtResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksListAtResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksListAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7388,9 +10297,7 @@ export const DeploymentStacksListAtResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksListAtResourceGroupOutput =
-  typeof DeploymentStacksListAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksListAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -7406,6 +10313,9 @@ export const DeploymentStacksListAtResourceGroup =
     outputSchema: DeploymentStacksListAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksListAtSubscriptionInput {
+  subscriptionId: string;
+}
 export const DeploymentStacksListAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7415,11 +10325,25 @@ export const DeploymentStacksListAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksListAtSubscriptionInput =
-  typeof DeploymentStacksListAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksListAtSubscriptionInput>;
 
 // Output Schema
+export interface DeploymentStacksListAtSubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksListAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7454,9 +10378,7 @@ export const DeploymentStacksListAtSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksListAtSubscriptionOutput =
-  typeof DeploymentStacksListAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksListAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -7471,6 +10393,226 @@ export const DeploymentStacksListAtSubscription =
     outputSchema: DeploymentStacksListAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksValidateStackAtManagementGroupInput {
+  managementGroupId: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksValidateStackAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -7851,11 +10993,113 @@ export const DeploymentStacksValidateStackAtManagementGroupInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksValidateStackAtManagementGroupInput =
-  typeof DeploymentStacksValidateStackAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksValidateStackAtManagementGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksValidateStackAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  properties?: {
+    actionOnUnmanage?: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    correlationId?: string;
+    denySettings?: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    deploymentScope?: string;
+    description?: string;
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentStacksValidateStackAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8032,9 +11276,7 @@ export const DeploymentStacksValidateStackAtManagementGroupOutput =
         ),
       }),
     ),
-  });
-export type DeploymentStacksValidateStackAtManagementGroupOutput =
-  typeof DeploymentStacksValidateStackAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksValidateStackAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -8050,6 +11292,227 @@ export const DeploymentStacksValidateStackAtManagementGroup =
     outputSchema: DeploymentStacksValidateStackAtManagementGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksValidateStackAtResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksValidateStackAtResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8431,11 +11894,113 @@ export const DeploymentStacksValidateStackAtResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksValidateStackAtResourceGroupInput =
-  typeof DeploymentStacksValidateStackAtResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksValidateStackAtResourceGroupInput>;
 
 // Output Schema
+export interface DeploymentStacksValidateStackAtResourceGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  properties?: {
+    actionOnUnmanage?: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    correlationId?: string;
+    denySettings?: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    deploymentScope?: string;
+    description?: string;
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentStacksValidateStackAtResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8612,9 +12177,7 @@ export const DeploymentStacksValidateStackAtResourceGroupOutput =
         ),
       }),
     ),
-  });
-export type DeploymentStacksValidateStackAtResourceGroupOutput =
-  typeof DeploymentStacksValidateStackAtResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksValidateStackAtResourceGroupOutput>;
 
 // The operation
 /**
@@ -8631,6 +12194,226 @@ export const DeploymentStacksValidateStackAtResourceGroup =
     outputSchema: DeploymentStacksValidateStackAtResourceGroupOutput,
   }));
 // Input Schema
+export interface DeploymentStacksValidateStackAtSubscriptionInput {
+  subscriptionId: string;
+  deploymentStackName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    bypassStackOutOfSyncError?: boolean;
+    detachedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deletedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    failedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+      error?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: {
+          code?: string;
+          message?: string;
+          target?: string;
+          details?: unknown[];
+          additionalInfo?: { type?: string; info?: unknown }[];
+        }[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      };
+    }[];
+    resources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    deploymentId?: string;
+    outputs?: Record<string, unknown>;
+    duration?: string;
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksValidateStackAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9011,11 +12794,113 @@ export const DeploymentStacksValidateStackAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksValidateStackAtSubscriptionInput =
-  typeof DeploymentStacksValidateStackAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksValidateStackAtSubscriptionInput>;
 
 // Output Schema
+export interface DeploymentStacksValidateStackAtSubscriptionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  properties?: {
+    actionOnUnmanage?: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    correlationId?: string;
+    denySettings?: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    deploymentScope?: string;
+    description?: string;
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        name: string;
+        version: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?: string;
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      type?: string;
+      identifiers?: Record<string, unknown>;
+      apiVersion?: string;
+    }[];
+    deploymentExtensions?: {
+      name: string;
+      version: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentStacksValidateStackAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9192,9 +13077,7 @@ export const DeploymentStacksValidateStackAtSubscriptionOutput =
         ),
       }),
     ),
-  });
-export type DeploymentStacksValidateStackAtSubscriptionOutput =
-  typeof DeploymentStacksValidateStackAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksValidateStackAtSubscriptionOutput>;
 
 // The operation
 /**
@@ -9210,6 +13093,201 @@ export const DeploymentStacksValidateStackAtSubscription =
     outputSchema: DeploymentStacksValidateStackAtSubscriptionOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput {
+  managementGroupId: string;
+  deploymentStacksWhatIfResultName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    deploymentStackResourceId: string;
+    deploymentStackLastModified?: string;
+    retentionInterval: string;
+    changes?: {
+      resourceChanges: {
+        id?: string;
+        extension?: {
+          name: string;
+          version: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?: string;
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        type?: string;
+        identifiers?: Record<string, unknown>;
+        apiVersion?: string;
+        deploymentId?: string;
+        symbolicName?: string;
+        changeType:
+          | "create"
+          | "delete"
+          | "detach"
+          | "modify"
+          | "noChange"
+          | "unsupported";
+        changeCertainty: "definite" | "potential";
+        managementStatusChange?: {
+          before?: "managed" | "unmanaged" | "unknown";
+          after?: "managed" | "unmanaged" | "unknown";
+        };
+        denyStatusChange?: {
+          before?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+          after?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+        };
+        unsupportedReason?: string;
+        resourceConfigurationChanges?: {
+          before?: Record<string, unknown>;
+          after?: Record<string, unknown>;
+          delta?: {
+            before?: unknown;
+            after?: unknown;
+            path: string;
+            changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+            children?: unknown[];
+          }[];
+        };
+      }[];
+      denySettingsChange: {
+        before?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        after?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        delta?: {
+          before?: unknown;
+          after?: unknown;
+          path: string;
+          changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+          children?: unknown[];
+        }[];
+      };
+      deploymentScopeChange?: { before?: string; after?: string };
+    };
+    diagnostics?: {
+      level: "info" | "warning" | "error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -9568,11 +13646,22 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9592,9 +13681,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput 
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9612,25 +13699,44 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdate =
       DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput {
+  managementGroupId: string;
+  deploymentStacksWhatIfResultName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupDeleteInput>;
 
 // Output Schema
+export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput = void;
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput>;
 
 // The operation
 /**
@@ -9639,6 +13745,11 @@ export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param managementGroupId - The management group ID.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtManagementGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -9646,6 +13757,10 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupDelete =
     outputSchema: DeploymentStacksWhatIfResultsAtManagementGroupDeleteOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupGetInput {
+  managementGroupId: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -9656,11 +13771,22 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupGetInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtManagementGroupGetInput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupGetInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9680,9 +13806,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtManagementGroupGetOutput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupGetOutput>;
 
 // The operation
 /**
@@ -9698,6 +13822,9 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupGet =
     outputSchema: DeploymentStacksWhatIfResultsAtManagementGroupGetOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupListInput {
+  managementGroupId: string;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -9707,11 +13834,25 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupListInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtManagementGroupListInput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupListInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupListInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9746,9 +13887,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksWhatIfResultsAtManagementGroupListOutput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupListOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupListOutput>;
 
 // The operation
 /**
@@ -9763,6 +13902,10 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupList =
     outputSchema: DeploymentStacksWhatIfResultsAtManagementGroupListOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput {
+  managementGroupId: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -9773,11 +13916,22 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput =
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9797,9 +13951,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput =
-  typeof DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput>;
 
 // The operation
 /**
@@ -9815,6 +13967,202 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIf =
     outputSchema: DeploymentStacksWhatIfResultsAtManagementGroupWhatIfOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStacksWhatIfResultName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    deploymentStackResourceId: string;
+    deploymentStackLastModified?: string;
+    retentionInterval: string;
+    changes?: {
+      resourceChanges: {
+        id?: string;
+        extension?: {
+          name: string;
+          version: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?: string;
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        type?: string;
+        identifiers?: Record<string, unknown>;
+        apiVersion?: string;
+        deploymentId?: string;
+        symbolicName?: string;
+        changeType:
+          | "create"
+          | "delete"
+          | "detach"
+          | "modify"
+          | "noChange"
+          | "unsupported";
+        changeCertainty: "definite" | "potential";
+        managementStatusChange?: {
+          before?: "managed" | "unmanaged" | "unknown";
+          after?: "managed" | "unmanaged" | "unknown";
+        };
+        denyStatusChange?: {
+          before?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+          after?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+        };
+        unsupportedReason?: string;
+        resourceConfigurationChanges?: {
+          before?: Record<string, unknown>;
+          after?: Record<string, unknown>;
+          delta?: {
+            before?: unknown;
+            after?: unknown;
+            path: string;
+            changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+            children?: unknown[];
+          }[];
+        };
+      }[];
+      denySettingsChange: {
+        before?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        after?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        delta?: {
+          before?: unknown;
+          after?: unknown;
+          path: string;
+          changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+          children?: unknown[];
+        }[];
+      };
+      deploymentScopeChange?: { before?: string; after?: string };
+    };
+    diagnostics?: {
+      level: "info" | "warning" | "error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10174,11 +14522,22 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10198,9 +14557,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10219,26 +14576,46 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdate =
       DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStacksWhatIfResultName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupDeleteInput>;
 
 // Output Schema
+export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput = void;
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput>;
 
 // The operation
 /**
@@ -10248,6 +14625,11 @@ export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtResourceGroupDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10255,6 +14637,11 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupDelete =
     outputSchema: DeploymentStacksWhatIfResultsAtResourceGroupDeleteOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10266,11 +14653,22 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtResourceGroupGetInput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupGetInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10290,9 +14688,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtResourceGroupGetOutput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupGetOutput>;
 
 // The operation
 /**
@@ -10309,6 +14705,10 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupGet =
     outputSchema: DeploymentStacksWhatIfResultsAtResourceGroupGetOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10319,11 +14719,25 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtResourceGroupListInput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupListInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupListInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10358,9 +14772,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksWhatIfResultsAtResourceGroupListOutput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupListOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupListOutput>;
 
 // The operation
 /**
@@ -10376,6 +14788,11 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupList =
     outputSchema: DeploymentStacksWhatIfResultsAtResourceGroupListOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10387,11 +14804,22 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10411,9 +14839,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput =
-  typeof DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput>;
 
 // The operation
 /**
@@ -10430,6 +14856,201 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIf =
     outputSchema: DeploymentStacksWhatIfResultsAtResourceGroupWhatIfOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput {
+  subscriptionId: string;
+  deploymentStacksWhatIfResultName: string;
+  properties?: {
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        target?: string;
+        details?: unknown[];
+        additionalInfo?: { type?: string; info?: unknown }[];
+      }[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    template?: Record<string, unknown>;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      queryString?: string;
+      contentVersion?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        type?: string;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?: string;
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    actionOnUnmanage: {
+      resources: "delete" | "detach";
+      resourceGroups?: "delete" | "detach";
+      managementGroups?: "delete" | "detach";
+      resourcesWithoutDeleteSupport?: "detach" | "fail";
+    };
+    debugSetting?: { detailLevel?: string };
+    deploymentScope?: string;
+    description?: string;
+    denySettings: {
+      mode: "denyDelete" | "denyWriteAndDelete" | "none";
+      excludedPrincipals?: string[];
+      excludedActions?: string[];
+      applyToChildScopes?: boolean;
+    };
+    provisioningState?:
+      | "creating"
+      | "validating"
+      | "waiting"
+      | "deploying"
+      | "canceling"
+      | "updatingDenyAssignments"
+      | "deletingResources"
+      | "succeeded"
+      | "failed"
+      | "canceled"
+      | "deleting"
+      | "initializing"
+      | "running";
+    correlationId?: string;
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+    deploymentStackResourceId: string;
+    deploymentStackLastModified?: string;
+    retentionInterval: string;
+    changes?: {
+      resourceChanges: {
+        id?: string;
+        extension?: {
+          name: string;
+          version: string;
+          configId?: string;
+          config?: Record<
+            string,
+            {
+              type?: string;
+              value?: unknown;
+              keyVaultReference?: {
+                keyVault: { id: string };
+                secretName: string;
+                secretVersion?: string;
+              };
+            }
+          >;
+        };
+        type?: string;
+        identifiers?: Record<string, unknown>;
+        apiVersion?: string;
+        deploymentId?: string;
+        symbolicName?: string;
+        changeType:
+          | "create"
+          | "delete"
+          | "detach"
+          | "modify"
+          | "noChange"
+          | "unsupported";
+        changeCertainty: "definite" | "potential";
+        managementStatusChange?: {
+          before?: "managed" | "unmanaged" | "unknown";
+          after?: "managed" | "unmanaged" | "unknown";
+        };
+        denyStatusChange?: {
+          before?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+          after?:
+            | "denyDelete"
+            | "notSupported"
+            | "inapplicable"
+            | "denyWriteAndDelete"
+            | "removedBySystem"
+            | "none"
+            | "unknown";
+        };
+        unsupportedReason?: string;
+        resourceConfigurationChanges?: {
+          before?: Record<string, unknown>;
+          after?: Record<string, unknown>;
+          delta?: {
+            before?: unknown;
+            after?: unknown;
+            path: string;
+            changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+            children?: unknown[];
+          }[];
+        };
+      }[];
+      denySettingsChange: {
+        before?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        after?: {
+          mode: "denyDelete" | "denyWriteAndDelete" | "none";
+          excludedPrincipals?: string[];
+          excludedActions?: string[];
+          applyToChildScopes?: boolean;
+        };
+        delta?: {
+          before?: unknown;
+          after?: unknown;
+          path: string;
+          changeType: "array" | "create" | "delete" | "modify" | "noEffect";
+          children?: unknown[];
+        }[];
+      };
+      deploymentScopeChange?: { before?: string; after?: string };
+    };
+    diagnostics?: {
+      level: "info" | "warning" | "error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10788,11 +15409,22 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10812,9 +15444,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10831,25 +15461,44 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdate =
       DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput {
+  subscriptionId: string;
+  deploymentStacksWhatIfResultName: string;
+  "unmanageAction.Resources"?: "delete" | "detach";
+  "unmanageAction.ResourceGroups"?: "delete" | "detach";
+  "unmanageAction.ManagementGroups"?: "delete" | "detach";
+  "unmanageAction.ResourcesWithoutDeleteSupport"?: "detach" | "fail";
+  bypassStackOutOfSyncError?: boolean;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     deploymentStacksWhatIfResultName: Schema.String.pipe(T.PathParam()),
+    "unmanageAction.Resources": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourceGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ManagementGroups": Schema.optional(
+      Schema.Literals(["delete", "detach"]),
+    ),
+    "unmanageAction.ResourcesWithoutDeleteSupport": Schema.optional(
+      Schema.Literals(["detach", "fail"]),
+    ),
+    bypassStackOutOfSyncError: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionDeleteInput>;
 
 // Output Schema
+export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput = void;
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput>;
 
 // The operation
 /**
@@ -10858,6 +15507,11 @@ export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param deploymentStacksWhatIfResultName - Name of the deployment stack what-if result.
+ * @param unmanageAction.Resources - Flag to indicate delete rather than detach for unmanaged resources.
+ * @param unmanageAction.ResourceGroups - Flag to indicate delete rather than detach for unmanaged resource groups.
+ * @param unmanageAction.ManagementGroups - Flag to indicate delete rather than detach for unmanaged management groups.
+ * @param unmanageAction.ResourcesWithoutDeleteSupport - Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+ * @param bypassStackOutOfSyncError - Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
  */
 export const DeploymentStacksWhatIfResultsAtSubscriptionDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -10865,6 +15519,10 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionDelete =
     outputSchema: DeploymentStacksWhatIfResultsAtSubscriptionDeleteOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionGetInput {
+  subscriptionId: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10875,11 +15533,22 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtSubscriptionGetInput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionGetInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionGetInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10899,9 +15568,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtSubscriptionGetOutput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionGetOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionGetOutput>;
 
 // The operation
 /**
@@ -10917,6 +15584,9 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionGet =
     outputSchema: DeploymentStacksWhatIfResultsAtSubscriptionGetOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionListInput {
+  subscriptionId: string;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10926,11 +15596,25 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionListInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtSubscriptionListInput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionListInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionListInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -10965,9 +15649,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DeploymentStacksWhatIfResultsAtSubscriptionListOutput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionListOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionListOutput>;
 
 // The operation
 /**
@@ -10982,6 +15664,10 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionList =
     outputSchema: DeploymentStacksWhatIfResultsAtSubscriptionListOutput,
   }));
 // Input Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput {
+  subscriptionId: string;
+  deploymentStacksWhatIfResultName: string;
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10992,11 +15678,22 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
     }),
-  );
-export type DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput.Type;
+  ) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput>;
 
 // Output Schema
+export interface DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11016,9 +15713,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput =
-  typeof DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput>;
 
 // The operation
 /**
@@ -11034,6 +15729,80 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIf =
     outputSchema: DeploymentStacksWhatIfResultsAtSubscriptionWhatIfOutput,
   }));
 // Input Schema
+export interface DeploymentsValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11169,10 +15938,238 @@ export const DeploymentsValidateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsValidateInput = typeof DeploymentsValidateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsValidateInput>;
 
 // Output Schema
+export interface DeploymentsValidateOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    correlationId?: string;
+    timestamp?: string;
+    duration?: string;
+    outputs?: unknown;
+    providers?: {
+      id?: string;
+      namespace?: string;
+      registrationState?: string;
+      registrationPolicy?: string;
+      resourceTypes?: {
+        resourceType?: string;
+        locations?: string[];
+        locationMappings?: {
+          location?: string;
+          type?: string;
+          extendedLocations?: string[];
+        }[];
+        aliases?: {
+          name?: string;
+          paths?: {
+            path?: string;
+            apiVersions?: string[];
+            pattern?: {
+              phrase?: string;
+              variable?: string;
+              type?: "NotSpecified" | "Extract";
+            };
+            metadata?: {
+              type?:
+                | "NotSpecified"
+                | "Any"
+                | "String"
+                | "Object"
+                | "Array"
+                | "Integer"
+                | "Number"
+                | "Boolean";
+              attributes?: "None" | "Modifiable";
+            };
+          }[];
+          type?: "NotSpecified" | "PlainText" | "Mask";
+          defaultPath?: string;
+          defaultPattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          defaultMetadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        apiVersions?: string[];
+        defaultApiVersion?: string;
+        zoneMappings?: { location?: string; zones?: string[] }[];
+        apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+        capabilities?: string;
+        properties?: Record<string, string>;
+      }[];
+      providerAuthorizationConsentState?:
+        | "NotSpecified"
+        | "Required"
+        | "NotRequired"
+        | "Consented";
+    }[];
+    dependencies?: {
+      dependsOn?: {
+        id?: string;
+        resourceType?: string;
+        resourceName?: string;
+      }[];
+      id?: string;
+      resourceType?: string;
+      resourceName?: string;
+    }[];
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: unknown;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensions?: {
+      alias?: string;
+      name?: string;
+      version?: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    mode?: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      provisioningState?: string;
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    templateHash?: string;
+    outputResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -11578,8 +16575,7 @@ export const DeploymentsValidateOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsValidateOutput = typeof DeploymentsValidateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsValidateOutput>;
 
 // The operation
 /**
@@ -11595,6 +16591,72 @@ export const DeploymentsValidate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsValidateOutput,
 }));
 // Input Schema
+export interface DeploymentsValidateAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+}
 export const DeploymentsValidateAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -11715,11 +16777,238 @@ export const DeploymentsValidateAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsValidateAtManagementGroupScopeInput =
-  typeof DeploymentsValidateAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsValidateAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsValidateAtManagementGroupScopeOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    correlationId?: string;
+    timestamp?: string;
+    duration?: string;
+    outputs?: unknown;
+    providers?: {
+      id?: string;
+      namespace?: string;
+      registrationState?: string;
+      registrationPolicy?: string;
+      resourceTypes?: {
+        resourceType?: string;
+        locations?: string[];
+        locationMappings?: {
+          location?: string;
+          type?: string;
+          extendedLocations?: string[];
+        }[];
+        aliases?: {
+          name?: string;
+          paths?: {
+            path?: string;
+            apiVersions?: string[];
+            pattern?: {
+              phrase?: string;
+              variable?: string;
+              type?: "NotSpecified" | "Extract";
+            };
+            metadata?: {
+              type?:
+                | "NotSpecified"
+                | "Any"
+                | "String"
+                | "Object"
+                | "Array"
+                | "Integer"
+                | "Number"
+                | "Boolean";
+              attributes?: "None" | "Modifiable";
+            };
+          }[];
+          type?: "NotSpecified" | "PlainText" | "Mask";
+          defaultPath?: string;
+          defaultPattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          defaultMetadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        apiVersions?: string[];
+        defaultApiVersion?: string;
+        zoneMappings?: { location?: string; zones?: string[] }[];
+        apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+        capabilities?: string;
+        properties?: Record<string, string>;
+      }[];
+      providerAuthorizationConsentState?:
+        | "NotSpecified"
+        | "Required"
+        | "NotRequired"
+        | "Consented";
+    }[];
+    dependencies?: {
+      dependsOn?: {
+        id?: string;
+        resourceType?: string;
+        resourceName?: string;
+      }[];
+      id?: string;
+      resourceType?: string;
+      resourceName?: string;
+    }[];
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: unknown;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensions?: {
+      alias?: string;
+      name?: string;
+      version?: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    mode?: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      provisioningState?: string;
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    templateHash?: string;
+    outputResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsValidateAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -12125,9 +17414,7 @@ export const DeploymentsValidateAtManagementGroupScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsValidateAtManagementGroupScopeOutput =
-  typeof DeploymentsValidateAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsValidateAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -12143,6 +17430,79 @@ export const DeploymentsValidateAtManagementGroupScope =
     outputSchema: DeploymentsValidateAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsValidateAtScopeInput {
+  scope: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsValidateAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -12277,11 +17637,238 @@ export const DeploymentsValidateAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsValidateAtScopeInput =
-  typeof DeploymentsValidateAtScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsValidateAtScopeInput>;
 
 // Output Schema
+export interface DeploymentsValidateAtScopeOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    correlationId?: string;
+    timestamp?: string;
+    duration?: string;
+    outputs?: unknown;
+    providers?: {
+      id?: string;
+      namespace?: string;
+      registrationState?: string;
+      registrationPolicy?: string;
+      resourceTypes?: {
+        resourceType?: string;
+        locations?: string[];
+        locationMappings?: {
+          location?: string;
+          type?: string;
+          extendedLocations?: string[];
+        }[];
+        aliases?: {
+          name?: string;
+          paths?: {
+            path?: string;
+            apiVersions?: string[];
+            pattern?: {
+              phrase?: string;
+              variable?: string;
+              type?: "NotSpecified" | "Extract";
+            };
+            metadata?: {
+              type?:
+                | "NotSpecified"
+                | "Any"
+                | "String"
+                | "Object"
+                | "Array"
+                | "Integer"
+                | "Number"
+                | "Boolean";
+              attributes?: "None" | "Modifiable";
+            };
+          }[];
+          type?: "NotSpecified" | "PlainText" | "Mask";
+          defaultPath?: string;
+          defaultPattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          defaultMetadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        apiVersions?: string[];
+        defaultApiVersion?: string;
+        zoneMappings?: { location?: string; zones?: string[] }[];
+        apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+        capabilities?: string;
+        properties?: Record<string, string>;
+      }[];
+      providerAuthorizationConsentState?:
+        | "NotSpecified"
+        | "Required"
+        | "NotRequired"
+        | "Consented";
+    }[];
+    dependencies?: {
+      dependsOn?: {
+        id?: string;
+        resourceType?: string;
+        resourceName?: string;
+      }[];
+      id?: string;
+      resourceType?: string;
+      resourceName?: string;
+    }[];
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: unknown;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensions?: {
+      alias?: string;
+      name?: string;
+      version?: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    mode?: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      provisioningState?: string;
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    templateHash?: string;
+    outputResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsValidateAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -12687,9 +18274,7 @@ export const DeploymentsValidateAtScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsValidateAtScopeOutput =
-  typeof DeploymentsValidateAtScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsValidateAtScopeOutput>;
 
 // The operation
 /**
@@ -12706,6 +18291,79 @@ export const DeploymentsValidateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsValidateAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+  identity?: {
+    type: "None" | "UserAssigned";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const DeploymentsValidateAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12840,11 +18498,238 @@ export const DeploymentsValidateAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsValidateAtSubscriptionScopeInput =
-  typeof DeploymentsValidateAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsValidateAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsValidateAtSubscriptionScopeOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    correlationId?: string;
+    timestamp?: string;
+    duration?: string;
+    outputs?: unknown;
+    providers?: {
+      id?: string;
+      namespace?: string;
+      registrationState?: string;
+      registrationPolicy?: string;
+      resourceTypes?: {
+        resourceType?: string;
+        locations?: string[];
+        locationMappings?: {
+          location?: string;
+          type?: string;
+          extendedLocations?: string[];
+        }[];
+        aliases?: {
+          name?: string;
+          paths?: {
+            path?: string;
+            apiVersions?: string[];
+            pattern?: {
+              phrase?: string;
+              variable?: string;
+              type?: "NotSpecified" | "Extract";
+            };
+            metadata?: {
+              type?:
+                | "NotSpecified"
+                | "Any"
+                | "String"
+                | "Object"
+                | "Array"
+                | "Integer"
+                | "Number"
+                | "Boolean";
+              attributes?: "None" | "Modifiable";
+            };
+          }[];
+          type?: "NotSpecified" | "PlainText" | "Mask";
+          defaultPath?: string;
+          defaultPattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          defaultMetadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        apiVersions?: string[];
+        defaultApiVersion?: string;
+        zoneMappings?: { location?: string; zones?: string[] }[];
+        apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+        capabilities?: string;
+        properties?: Record<string, string>;
+      }[];
+      providerAuthorizationConsentState?:
+        | "NotSpecified"
+        | "Required"
+        | "NotRequired"
+        | "Consented";
+    }[];
+    dependencies?: {
+      dependsOn?: {
+        id?: string;
+        resourceType?: string;
+        resourceName?: string;
+      }[];
+      id?: string;
+      resourceType?: string;
+      resourceName?: string;
+    }[];
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: unknown;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensions?: {
+      alias?: string;
+      name?: string;
+      version?: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    mode?: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      provisioningState?: string;
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    templateHash?: string;
+    outputResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsValidateAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -13250,9 +19135,7 @@ export const DeploymentsValidateAtSubscriptionScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsValidateAtSubscriptionScopeOutput =
-  typeof DeploymentsValidateAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsValidateAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -13268,6 +19151,71 @@ export const DeploymentsValidateAtSubscriptionScope =
     outputSchema: DeploymentsValidateAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsValidateAtTenantScopeInput {
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+  tags?: Record<string, string>;
+}
 export const DeploymentsValidateAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -13387,11 +19335,238 @@ export const DeploymentsValidateAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsValidateAtTenantScopeInput =
-  typeof DeploymentsValidateAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsValidateAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsValidateAtTenantScopeOutput {
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    correlationId?: string;
+    timestamp?: string;
+    duration?: string;
+    outputs?: unknown;
+    providers?: {
+      id?: string;
+      namespace?: string;
+      registrationState?: string;
+      registrationPolicy?: string;
+      resourceTypes?: {
+        resourceType?: string;
+        locations?: string[];
+        locationMappings?: {
+          location?: string;
+          type?: string;
+          extendedLocations?: string[];
+        }[];
+        aliases?: {
+          name?: string;
+          paths?: {
+            path?: string;
+            apiVersions?: string[];
+            pattern?: {
+              phrase?: string;
+              variable?: string;
+              type?: "NotSpecified" | "Extract";
+            };
+            metadata?: {
+              type?:
+                | "NotSpecified"
+                | "Any"
+                | "String"
+                | "Object"
+                | "Array"
+                | "Integer"
+                | "Number"
+                | "Boolean";
+              attributes?: "None" | "Modifiable";
+            };
+          }[];
+          type?: "NotSpecified" | "PlainText" | "Mask";
+          defaultPath?: string;
+          defaultPattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          defaultMetadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        apiVersions?: string[];
+        defaultApiVersion?: string;
+        zoneMappings?: { location?: string; zones?: string[] }[];
+        apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+        capabilities?: string;
+        properties?: Record<string, string>;
+      }[];
+      providerAuthorizationConsentState?:
+        | "NotSpecified"
+        | "Required"
+        | "NotRequired"
+        | "Consented";
+    }[];
+    dependencies?: {
+      dependsOn?: {
+        id?: string;
+        resourceType?: string;
+        resourceName?: string;
+      }[];
+      id?: string;
+      resourceType?: string;
+      resourceName?: string;
+    }[];
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: unknown;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensions?: {
+      alias?: string;
+      name?: string;
+      version?: string;
+      configId?: string;
+      config?: Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >;
+    }[];
+    mode?: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      provisioningState?: string;
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    templateHash?: string;
+    outputResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    validatedResources?: {
+      id?: string;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      resourceType?: string;
+      identifiers?: unknown;
+      apiVersion?: string;
+    }[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsValidateAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     error: Schema.optional(
@@ -13797,9 +19972,7 @@ export const DeploymentsValidateAtTenantScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsValidateAtTenantScopeOutput =
-  typeof DeploymentsValidateAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsValidateAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -13814,6 +19987,72 @@ export const DeploymentsValidateAtTenantScope =
     outputSchema: DeploymentsValidateAtTenantScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsWhatIfInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsWhatIfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13935,10 +20174,136 @@ export const DeploymentsWhatIfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
     apiVersion: "2025-04-01",
   }),
-);
-export type DeploymentsWhatIfInput = typeof DeploymentsWhatIfInput.Type;
+) as unknown as Schema.Codec<DeploymentsWhatIfInput>;
 
 // Output Schema
+export interface DeploymentsWhatIfOutput {
+  status?: string;
+  properties?: {
+    changes?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    potentialChanges?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const DeploymentsWhatIfOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
@@ -14130,8 +20495,7 @@ export const DeploymentsWhatIfOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsWhatIfOutput = typeof DeploymentsWhatIfOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsWhatIfOutput>;
 
 // The operation
 /**
@@ -14147,6 +20511,71 @@ export const DeploymentsWhatIf = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsWhatIfOutput,
 }));
 // Input Schema
+export interface DeploymentsWhatIfAtManagementGroupScopeInput {
+  groupId: string;
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsWhatIfAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14266,11 +20695,136 @@ export const DeploymentsWhatIfAtManagementGroupScopeInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsWhatIfAtManagementGroupScopeInput =
-  typeof DeploymentsWhatIfAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsWhatIfAtManagementGroupScopeInput>;
 
 // Output Schema
+export interface DeploymentsWhatIfAtManagementGroupScopeOutput {
+  status?: string;
+  properties?: {
+    changes?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    potentialChanges?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const DeploymentsWhatIfAtManagementGroupScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
@@ -14462,9 +21016,7 @@ export const DeploymentsWhatIfAtManagementGroupScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsWhatIfAtManagementGroupScopeOutput =
-  typeof DeploymentsWhatIfAtManagementGroupScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsWhatIfAtManagementGroupScopeOutput>;
 
 // The operation
 /**
@@ -14480,6 +21032,71 @@ export const DeploymentsWhatIfAtManagementGroupScope =
     outputSchema: DeploymentsWhatIfAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsWhatIfAtSubscriptionScopeInput {
+  subscriptionId: string;
+  deploymentName: string;
+  location?: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsWhatIfAtSubscriptionScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14599,11 +21216,136 @@ export const DeploymentsWhatIfAtSubscriptionScopeInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsWhatIfAtSubscriptionScopeInput =
-  typeof DeploymentsWhatIfAtSubscriptionScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsWhatIfAtSubscriptionScopeInput>;
 
 // Output Schema
+export interface DeploymentsWhatIfAtSubscriptionScopeOutput {
+  status?: string;
+  properties?: {
+    changes?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    potentialChanges?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const DeploymentsWhatIfAtSubscriptionScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
@@ -14795,9 +21537,7 @@ export const DeploymentsWhatIfAtSubscriptionScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsWhatIfAtSubscriptionScopeOutput =
-  typeof DeploymentsWhatIfAtSubscriptionScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsWhatIfAtSubscriptionScopeOutput>;
 
 // The operation
 /**
@@ -14813,6 +21553,70 @@ export const DeploymentsWhatIfAtSubscriptionScope =
     outputSchema: DeploymentsWhatIfAtSubscriptionScopeOutput,
   }));
 // Input Schema
+export interface DeploymentsWhatIfAtTenantScopeInput {
+  deploymentName: string;
+  location: string;
+  properties: {
+    template?: unknown;
+    templateLink?: {
+      uri?: string;
+      id?: string;
+      relativePath?: string;
+      contentVersion?: string;
+      queryString?: string;
+    };
+    parameters?: Record<
+      string,
+      {
+        value?: unknown;
+        reference?: {
+          keyVault: { id: string };
+          secretName: string;
+          secretVersion?: string;
+        };
+        expression?: string;
+      }
+    >;
+    externalInputs?: Record<string, { value: unknown }>;
+    externalInputDefinitions?: Record<
+      string,
+      { kind: string; config?: unknown }
+    >;
+    parametersLink?: { uri: string; contentVersion?: string };
+    extensionConfigs?: Record<
+      string,
+      Record<
+        string,
+        {
+          type?:
+            | "String"
+            | "Int"
+            | "Bool"
+            | "Array"
+            | "Object"
+            | "SecureString"
+            | "SecureObject";
+          value?: unknown;
+          keyVaultReference?: {
+            keyVault: { id: string };
+            secretName: string;
+            secretVersion?: string;
+          };
+        }
+      >
+    >;
+    mode: "Incremental" | "Complete";
+    debugSetting?: { detailLevel?: string };
+    onErrorDeployment?: {
+      type?: "LastSuccessful" | "SpecificDeployment";
+      deploymentName?: string;
+    };
+    expressionEvaluationOptions?: {
+      scope?: "NotSpecified" | "Outer" | "Inner";
+    };
+    validationLevel?: "Template" | "Provider" | "ProviderNoRbac";
+  };
+}
 export const DeploymentsWhatIfAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deploymentName: Schema.String.pipe(T.PathParam()),
@@ -14931,11 +21735,136 @@ export const DeploymentsWhatIfAtTenantScopeInput =
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
     }),
-  );
-export type DeploymentsWhatIfAtTenantScopeInput =
-  typeof DeploymentsWhatIfAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsWhatIfAtTenantScopeInput>;
 
 // Output Schema
+export interface DeploymentsWhatIfAtTenantScopeOutput {
+  status?: string;
+  properties?: {
+    changes?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    potentialChanges?: {
+      resourceId?: string;
+      deploymentId?: string;
+      symbolicName?: string;
+      identifiers?: unknown;
+      extension?: {
+        alias?: string;
+        name?: string;
+        version?: string;
+        configId?: string;
+        config?: Record<
+          string,
+          {
+            type?:
+              | "String"
+              | "Int"
+              | "Bool"
+              | "Array"
+              | "Object"
+              | "SecureString"
+              | "SecureObject";
+            value?: unknown;
+            keyVaultReference?: {
+              keyVault: { id: string };
+              secretName: string;
+              secretVersion?: string;
+            };
+          }
+        >;
+      };
+      changeType:
+        | "Create"
+        | "Delete"
+        | "Ignore"
+        | "Deploy"
+        | "NoChange"
+        | "Modify"
+        | "Unsupported";
+      unsupportedReason?: string;
+      before?: unknown;
+      after?: unknown;
+      delta?: {
+        path: string;
+        propertyChangeType:
+          | "Create"
+          | "Delete"
+          | "Modify"
+          | "Array"
+          | "NoEffect";
+        before?: unknown;
+        after?: unknown;
+        children?: unknown[];
+      }[];
+    }[];
+    diagnostics?: {
+      level: "Warning" | "Info" | "Error";
+      code: string;
+      message: string;
+      target?: string;
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+  };
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const DeploymentsWhatIfAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
@@ -15127,9 +22056,7 @@ export const DeploymentsWhatIfAtTenantScopeOutput =
         ),
       }),
     ),
-  });
-export type DeploymentsWhatIfAtTenantScopeOutput =
-  typeof DeploymentsWhatIfAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsWhatIfAtTenantScopeOutput>;
 
 // The operation
 /**
@@ -15144,19 +22071,30 @@ export const DeploymentsWhatIfAtTenantScope =
     outputSchema: DeploymentsWhatIfAtTenantScopeOutput,
   }));
 // Input Schema
+export interface FeaturesGetInput {
+  resourceProviderNamespace: string;
+  featureName: string;
+  subscriptionId: string;
+}
 export const FeaturesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/{resourceProviderNamespace}/features/{featureName}",
     apiVersion: "2021-07-01",
   }),
-);
-export type FeaturesGetInput = typeof FeaturesGetInput.Type;
+) as unknown as Schema.Codec<FeaturesGetInput>;
 
 // Output Schema
+export interface FeaturesGetOutput {
+  name?: string;
+  properties?: { state?: string };
+  id?: string;
+  type?: string;
+}
 export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   properties: Schema.optional(
@@ -15166,8 +22104,7 @@ export const FeaturesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-});
-export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
+}) as unknown as Schema.Codec<FeaturesGetOutput>;
 
 // The operation
 /**
@@ -15175,24 +22112,39 @@ export type FeaturesGetOutput = typeof FeaturesGetOutput.Type;
  *
  * @param resourceProviderNamespace - The resource provider namespace for the feature.
  * @param featureName - The name of the feature to get.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesGetInput,
   outputSchema: FeaturesGetOutput,
 }));
 // Input Schema
+export interface FeaturesListInput {
+  resourceProviderNamespace: string;
+  subscriptionId: string;
+}
 export const FeaturesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/{resourceProviderNamespace}/features",
     apiVersion: "2021-07-01",
   }),
-);
-export type FeaturesListInput = typeof FeaturesListInput.Type;
+) as unknown as Schema.Codec<FeaturesListInput>;
 
 // Output Schema
+export interface FeaturesListOutput {
+  value?: {
+    name?: string;
+    properties?: { state?: string };
+    id?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const FeaturesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -15209,32 +22161,44 @@ export const FeaturesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FeaturesListOutput = typeof FeaturesListOutput.Type;
+}) as unknown as Schema.Codec<FeaturesListOutput>;
 
 // The operation
 /**
  * Gets all the preview features in a provider namespace that are available through AFEC for the subscription.
  *
  * @param resourceProviderNamespace - The namespace of the resource provider for getting features.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesListInput,
   outputSchema: FeaturesListOutput,
 }));
 // Input Schema
-export const FeaturesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface FeaturesListAllInput {
+  subscriptionId: string;
+}
+export const FeaturesListAllInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/features",
     apiVersion: "2021-07-01",
   }),
-);
-export type FeaturesListAllInput = typeof FeaturesListAllInput.Type;
+) as unknown as Schema.Codec<FeaturesListAllInput>;
 
 // Output Schema
+export interface FeaturesListAllOutput {
+  value?: {
+    name?: string;
+    properties?: { state?: string };
+    id?: string;
+    type?: string;
+  }[];
+  nextLink?: string;
+}
 export const FeaturesListAllOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -15251,31 +22215,44 @@ export const FeaturesListAllOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type FeaturesListAllOutput = typeof FeaturesListAllOutput.Type;
+}) as unknown as Schema.Codec<FeaturesListAllOutput>;
 
 // The operation
 /**
  * Gets all the preview features that are available through AFEC for the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesListAll = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesListAllInput,
   outputSchema: FeaturesListAllOutput,
 }));
 // Input Schema
+export interface FeaturesRegisterInput {
+  resourceProviderNamespace: string;
+  featureName: string;
+  subscriptionId: string;
+}
 export const FeaturesRegisterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   featureName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/{resourceProviderNamespace}/features/{featureName}/register",
     apiVersion: "2021-07-01",
   }),
-);
-export type FeaturesRegisterInput = typeof FeaturesRegisterInput.Type;
+) as unknown as Schema.Codec<FeaturesRegisterInput>;
 
 // Output Schema
+export interface FeaturesRegisterOutput {
+  name?: string;
+  properties?: { state?: string };
+  id?: string;
+  type?: string;
+}
 export const FeaturesRegisterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.optional(Schema.String),
@@ -15287,8 +22264,7 @@ export const FeaturesRegisterOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   },
-);
-export type FeaturesRegisterOutput = typeof FeaturesRegisterOutput.Type;
+) as unknown as Schema.Codec<FeaturesRegisterOutput>;
 
 // The operation
 /**
@@ -15296,26 +22272,39 @@ export type FeaturesRegisterOutput = typeof FeaturesRegisterOutput.Type;
  *
  * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param featureName - The name of the feature to register.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesRegisterInput,
   outputSchema: FeaturesRegisterOutput,
 }));
 // Input Schema
+export interface FeaturesUnregisterInput {
+  resourceProviderNamespace: string;
+  featureName: string;
+  subscriptionId: string;
+}
 export const FeaturesUnregisterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/{resourceProviderNamespace}/features/{featureName}/unregister",
       apiVersion: "2021-07-01",
     }),
-  );
-export type FeaturesUnregisterInput = typeof FeaturesUnregisterInput.Type;
+  ) as unknown as Schema.Codec<FeaturesUnregisterInput>;
 
 // Output Schema
+export interface FeaturesUnregisterOutput {
+  name?: string;
+  properties?: { state?: string };
+  id?: string;
+  type?: string;
+}
 export const FeaturesUnregisterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
@@ -15326,8 +22315,7 @@ export const FeaturesUnregisterOutput =
     ),
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type FeaturesUnregisterOutput = typeof FeaturesUnregisterOutput.Type;
+  }) as unknown as Schema.Codec<FeaturesUnregisterOutput>;
 
 // The operation
 /**
@@ -15335,16 +22323,66 @@ export type FeaturesUnregisterOutput = typeof FeaturesUnregisterOutput.Type;
  *
  * @param resourceProviderNamespace - The namespace of the resource provider.
  * @param featureName - The name of the feature to unregister.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const FeaturesUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: FeaturesUnregisterInput,
   outputSchema: FeaturesUnregisterOutput,
 }));
 // Input Schema
+export interface JitRequestsCreateOrUpdateInput {
+  resourceGroupName: string;
+  jitRequestName: string;
+  subscriptionId: string;
+  properties?: {
+    applicationResourceId: string;
+    publisherTenantId?: string;
+    jitAuthorizationPolicies: {
+      principalId: string;
+      roleDefinitionId: string;
+    }[];
+    jitSchedulingPolicy: {
+      type: "NotSpecified" | "Once" | "Recurring";
+      duration: string;
+      startTime: string;
+    };
+    provisioningState?:
+      | "NotSpecified"
+      | "Accepted"
+      | "Running"
+      | "Ready"
+      | "Creating"
+      | "Created"
+      | "Deleting"
+      | "Deleted"
+      | "Canceled"
+      | "Failed"
+      | "Succeeded"
+      | "Updating";
+    jitRequestState?:
+      | "NotSpecified"
+      | "Pending"
+      | "Approved"
+      | "Denied"
+      | "Failed"
+      | "Canceled"
+      | "Expired"
+      | "Timeout";
+    createdBy?: { oid?: string; puid?: string; applicationId?: string };
+    updatedBy?: { oid?: string; puid?: string; applicationId?: string };
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         applicationResourceId: Schema.String,
@@ -15415,11 +22453,16 @@ export const JitRequestsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
       apiVersion: "2019-07-01",
     }),
-  );
-export type JitRequestsCreateOrUpdateInput =
-  typeof JitRequestsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsCreateOrUpdateInput>;
 
 // Output Schema
+export interface JitRequestsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15427,9 +22470,7 @@ export const JitRequestsCreateOrUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type JitRequestsCreateOrUpdateOutput =
-  typeof JitRequestsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -15437,6 +22478,8 @@ export type JitRequestsCreateOrUpdateOutput =
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -15445,10 +22488,16 @@ export const jitRequestsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface JitRequestsDeleteInput {
+  resourceGroupName: string;
+  jitRequestName: string;
+  subscriptionId: string;
+}
 export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
   T.Http({
@@ -15456,12 +22505,12 @@ export const JitRequestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2019-07-01",
   }),
-);
-export type JitRequestsDeleteInput = typeof JitRequestsDeleteInput.Type;
+) as unknown as Schema.Codec<JitRequestsDeleteInput>;
 
 // Output Schema
-export const JitRequestsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
+export type JitRequestsDeleteOutput = void;
+export const JitRequestsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JitRequestsDeleteOutput>;
 
 // The operation
 /**
@@ -15469,33 +22518,46 @@ export type JitRequestsDeleteOutput = typeof JitRequestsDeleteOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsDeleteInput,
   outputSchema: JitRequestsDeleteOutput,
 }));
 // Input Schema
+export interface JitRequestsGetInput {
+  resourceGroupName: string;
+  jitRequestName: string;
+  subscriptionId: string;
+}
 export const JitRequestsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jitRequestName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2019-07-01",
   }),
-);
-export type JitRequestsGetInput = typeof JitRequestsGetInput.Type;
+) as unknown as Schema.Codec<JitRequestsGetInput>;
 
 // Output Schema
+export interface JitRequestsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type JitRequestsGetOutput = typeof JitRequestsGetOutput.Type;
+}) as unknown as Schema.Codec<JitRequestsGetOutput>;
 
 // The operation
 /**
@@ -15503,26 +22565,41 @@ export type JitRequestsGetOutput = typeof JitRequestsGetOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const JitRequestsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsGetInput,
   outputSchema: JitRequestsGetOutput,
 }));
 // Input Schema
+export interface JitRequestsListByResourceGroupInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+}
 export const JitRequestsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests",
       apiVersion: "2019-07-01",
     }),
-  );
-export type JitRequestsListByResourceGroupInput =
-  typeof JitRequestsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsListByResourceGroupInput>;
 
 // Output Schema
+export interface JitRequestsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const JitRequestsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -15537,15 +22614,15 @@ export const JitRequestsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JitRequestsListByResourceGroupOutput =
-  typeof JitRequestsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsListByResourceGroupOutput>;
 
 // The operation
 /**
  * Retrieves all JIT requests within the resource group.
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15553,18 +22630,31 @@ export const jitRequestsListByResourceGroup =
     outputSchema: JitRequestsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface JitRequestsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const JitRequestsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
       apiVersion: "2019-07-01",
     }),
-  );
-export type JitRequestsListBySubscriptionInput =
-  typeof JitRequestsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<JitRequestsListBySubscriptionInput>;
 
 // Output Schema
+export interface JitRequestsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const JitRequestsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -15579,13 +22669,14 @@ export const JitRequestsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type JitRequestsListBySubscriptionOutput =
-  typeof JitRequestsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsListBySubscriptionOutput>;
 
 // The operation
 /**
  * Retrieves all JIT requests within the subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const jitRequestsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15593,10 +22684,17 @@ export const jitRequestsListBySubscription =
     outputSchema: JitRequestsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface JitRequestsUpdateInput {
+  resourceGroupName: string;
+  jitRequestName: string;
+  subscriptionId: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jitRequestName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
 ).pipe(
@@ -15605,10 +22703,16 @@ export const JitRequestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
     apiVersion: "2019-07-01",
   }),
-);
-export type JitRequestsUpdateInput = typeof JitRequestsUpdateInput.Type;
+) as unknown as Schema.Codec<JitRequestsUpdateInput>;
 
 // Output Schema
+export interface JitRequestsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+  tags?: Record<string, string>;
+}
 export const JitRequestsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15616,8 +22720,7 @@ export const JitRequestsUpdateOutput =
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type JitRequestsUpdateOutput = typeof JitRequestsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<JitRequestsUpdateOutput>;
 
 // The operation
 /**
@@ -15625,12 +22728,15 @@ export type JitRequestsUpdateOutput = typeof JitRequestsUpdateOutput.Type;
  *
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jitRequestName - The name of the JIT request.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const JitRequestsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: JitRequestsUpdateInput,
   outputSchema: JitRequestsUpdateOutput,
 }));
 // Input Schema
+export interface ListOperationsInput {}
 export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -15639,10 +22745,16 @@ export const ListOperationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Features/operations",
     apiVersion: "2021-07-01",
   }),
-);
-export type ListOperationsInput = typeof ListOperationsInput.Type;
+) as unknown as Schema.Codec<ListOperationsInput>;
 
 // Output Schema
+export interface ListOperationsOutput {
+  value?: {
+    name?: string;
+    display?: { provider?: string; resource?: string; operation?: string };
+  }[];
+  nextLink?: string;
+}
 export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -15659,22 +22771,45 @@ export const ListOperationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ListOperationsOutput = typeof ListOperationsOutput.Type;
+}) as unknown as Schema.Codec<ListOperationsOutput>;
 
 // The operation
 /**
  * Lists all of the available Microsoft.Features REST API operations.
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const ListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListOperationsInput,
   outputSchema: ListOperationsOutput,
 }));
 // Input Schema
+export interface ManagementLocksCreateOrUpdateAtResourceGroupLevelInput {
+  resourceGroupName: string;
+  lockName: string;
+  subscriptionId: string;
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15709,11 +22844,27 @@ export const ManagementLocksCreateOrUpdateAtResourceGroupLevelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksCreateOrUpdateAtResourceGroupLevelInput =
-  typeof ManagementLocksCreateOrUpdateAtResourceGroupLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtResourceGroupLevelInput>;
 
 // Output Schema
+export interface ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -15744,9 +22895,7 @@ export const ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput =
-  typeof ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput>;
 
 // The operation
 /**
@@ -15757,6 +22906,7 @@ export type ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group to lock.
  * @param lockName - The lock name. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15764,6 +22914,31 @@ export const ManagementLocksCreateOrUpdateAtResourceGroupLevel =
     outputSchema: ManagementLocksCreateOrUpdateAtResourceGroupLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksCreateOrUpdateAtResourceLevelInput {
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  lockName: string;
+  subscriptionId: string;
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtResourceLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -15772,6 +22947,7 @@ export const ManagementLocksCreateOrUpdateAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15806,11 +22982,27 @@ export const ManagementLocksCreateOrUpdateAtResourceLevelInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksCreateOrUpdateAtResourceLevelInput =
-  typeof ManagementLocksCreateOrUpdateAtResourceLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtResourceLevelInput>;
 
 // Output Schema
+export interface ManagementLocksCreateOrUpdateAtResourceLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtResourceLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -15841,9 +23033,7 @@ export const ManagementLocksCreateOrUpdateAtResourceLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksCreateOrUpdateAtResourceLevelOutput =
-  typeof ManagementLocksCreateOrUpdateAtResourceLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtResourceLevelOutput>;
 
 // The operation
 /**
@@ -15858,6 +23048,7 @@ export type ManagementLocksCreateOrUpdateAtResourceLevelOutput =
  * @param resourceName - The name of the resource to lock.
  * @param lockName - The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15865,9 +23056,30 @@ export const ManagementLocksCreateOrUpdateAtResourceLevel =
     outputSchema: ManagementLocksCreateOrUpdateAtResourceLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksCreateOrUpdateAtSubscriptionLevelInput {
+  lockName: string;
+  subscriptionId: string;
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       level: Schema.Literals(["NotSpecified", "CanNotDelete", "ReadOnly"]),
       notes: Schema.optional(Schema.String),
@@ -15902,11 +23114,27 @@ export const ManagementLocksCreateOrUpdateAtSubscriptionLevelInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksCreateOrUpdateAtSubscriptionLevelInput =
-  typeof ManagementLocksCreateOrUpdateAtSubscriptionLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtSubscriptionLevelInput>;
 
 // Output Schema
+export interface ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -15937,9 +23165,7 @@ export const ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput =
-  typeof ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput>;
 
 // The operation
 /**
@@ -15949,6 +23175,7 @@ export type ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \\, ?, /, or any control characters.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -15956,6 +23183,26 @@ export const ManagementLocksCreateOrUpdateAtSubscriptionLevel =
     outputSchema: ManagementLocksCreateOrUpdateAtSubscriptionLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksCreateOrUpdateByScopeInput {
+  scope: string;
+  lockName: string;
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -15994,11 +23241,27 @@ export const ManagementLocksCreateOrUpdateByScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksCreateOrUpdateByScopeInput =
-  typeof ManagementLocksCreateOrUpdateByScopeInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateByScopeInput>;
 
 // Output Schema
+export interface ManagementLocksCreateOrUpdateByScopeOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksCreateOrUpdateByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -16029,9 +23292,7 @@ export const ManagementLocksCreateOrUpdateByScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksCreateOrUpdateByScopeOutput =
-  typeof ManagementLocksCreateOrUpdateByScopeOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksCreateOrUpdateByScopeOutput>;
 
 // The operation
 /**
@@ -16047,25 +23308,28 @@ export const ManagementLocksCreateOrUpdateByScope =
     outputSchema: ManagementLocksCreateOrUpdateByScopeOutput,
   }));
 // Input Schema
+export interface ManagementLocksDeleteAtResourceGroupLevelInput {
+  resourceGroupName: string;
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksDeleteAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksDeleteAtResourceGroupLevelInput =
-  typeof ManagementLocksDeleteAtResourceGroupLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksDeleteAtResourceGroupLevelInput>;
 
 // Output Schema
+export type ManagementLocksDeleteAtResourceGroupLevelOutput = void;
 export const ManagementLocksDeleteAtResourceGroupLevelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementLocksDeleteAtResourceGroupLevelOutput =
-  typeof ManagementLocksDeleteAtResourceGroupLevelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementLocksDeleteAtResourceGroupLevelOutput>;
 
 // The operation
 /**
@@ -16076,6 +23340,7 @@ export type ManagementLocksDeleteAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group containing the lock.
  * @param lockName - The name of lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16083,6 +23348,15 @@ export const ManagementLocksDeleteAtResourceGroupLevel =
     outputSchema: ManagementLocksDeleteAtResourceGroupLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksDeleteAtResourceLevelInput {
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksDeleteAtResourceLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -16091,21 +23365,19 @@ export const ManagementLocksDeleteAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksDeleteAtResourceLevelInput =
-  typeof ManagementLocksDeleteAtResourceLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksDeleteAtResourceLevelInput>;
 
 // Output Schema
+export type ManagementLocksDeleteAtResourceLevelOutput = void;
 export const ManagementLocksDeleteAtResourceLevelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementLocksDeleteAtResourceLevelOutput =
-  typeof ManagementLocksDeleteAtResourceLevelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementLocksDeleteAtResourceLevelOutput>;
 
 // The operation
 /**
@@ -16120,6 +23392,7 @@ export type ManagementLocksDeleteAtResourceLevelOutput =
  * @param resourceName - The name of the resource with the lock to delete.
  * @param lockName - The name of the lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16127,24 +23400,26 @@ export const ManagementLocksDeleteAtResourceLevel =
     outputSchema: ManagementLocksDeleteAtResourceLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksDeleteAtSubscriptionLevelInput {
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksDeleteAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksDeleteAtSubscriptionLevelInput =
-  typeof ManagementLocksDeleteAtSubscriptionLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksDeleteAtSubscriptionLevelInput>;
 
 // Output Schema
+export type ManagementLocksDeleteAtSubscriptionLevelOutput = void;
 export const ManagementLocksDeleteAtSubscriptionLevelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementLocksDeleteAtSubscriptionLevelOutput =
-  typeof ManagementLocksDeleteAtSubscriptionLevelOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementLocksDeleteAtSubscriptionLevelOutput>;
 
 // The operation
 /**
@@ -16154,6 +23429,7 @@ export type ManagementLocksDeleteAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of lock to delete.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksDeleteAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16161,6 +23437,10 @@ export const ManagementLocksDeleteAtSubscriptionLevel =
     outputSchema: ManagementLocksDeleteAtSubscriptionLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksDeleteByScopeInput {
+  scope: string;
+  lockName: string;
+}
 export const ManagementLocksDeleteByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -16171,15 +23451,12 @@ export const ManagementLocksDeleteByScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksDeleteByScopeInput =
-  typeof ManagementLocksDeleteByScopeInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksDeleteByScopeInput>;
 
 // Output Schema
+export type ManagementLocksDeleteByScopeOutput = void;
 export const ManagementLocksDeleteByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ManagementLocksDeleteByScopeOutput =
-  typeof ManagementLocksDeleteByScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagementLocksDeleteByScopeOutput>;
 
 // The operation
 /**
@@ -16195,21 +23472,43 @@ export const ManagementLocksDeleteByScope =
     outputSchema: ManagementLocksDeleteByScopeOutput,
   }));
 // Input Schema
+export interface ManagementLocksGetAtResourceGroupLevelInput {
+  resourceGroupName: string;
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksGetAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksGetAtResourceGroupLevelInput =
-  typeof ManagementLocksGetAtResourceGroupLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksGetAtResourceGroupLevelInput>;
 
 // Output Schema
+export interface ManagementLocksGetAtResourceGroupLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksGetAtResourceGroupLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -16240,9 +23539,7 @@ export const ManagementLocksGetAtResourceGroupLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksGetAtResourceGroupLevelOutput =
-  typeof ManagementLocksGetAtResourceGroupLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksGetAtResourceGroupLevelOutput>;
 
 // The operation
 /**
@@ -16251,6 +23548,7 @@ export type ManagementLocksGetAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the locked resource group.
  * @param lockName - The name of the lock to get.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16258,6 +23556,15 @@ export const ManagementLocksGetAtResourceGroupLevel =
     outputSchema: ManagementLocksGetAtResourceGroupLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksGetAtResourceLevelInput {
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksGetAtResourceLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -16266,17 +23573,34 @@ export const ManagementLocksGetAtResourceLevelInput =
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksGetAtResourceLevelInput =
-  typeof ManagementLocksGetAtResourceLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksGetAtResourceLevelInput>;
 
 // Output Schema
+export interface ManagementLocksGetAtResourceLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksGetAtResourceLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -16307,9 +23631,7 @@ export const ManagementLocksGetAtResourceLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksGetAtResourceLevelOutput =
-  typeof ManagementLocksGetAtResourceLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksGetAtResourceLevelOutput>;
 
 // The operation
 /**
@@ -16322,6 +23644,7 @@ export type ManagementLocksGetAtResourceLevelOutput =
  * @param resourceName - The name of the resource.
  * @param lockName - The name of lock.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16329,20 +23652,41 @@ export const ManagementLocksGetAtResourceLevel =
     outputSchema: ManagementLocksGetAtResourceLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksGetAtSubscriptionLevelInput {
+  lockName: string;
+  subscriptionId: string;
+}
 export const ManagementLocksGetAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     lockName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksGetAtSubscriptionLevelInput =
-  typeof ManagementLocksGetAtSubscriptionLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksGetAtSubscriptionLevelInput>;
 
 // Output Schema
+export interface ManagementLocksGetAtSubscriptionLevelOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksGetAtSubscriptionLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -16373,9 +23717,7 @@ export const ManagementLocksGetAtSubscriptionLevelOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksGetAtSubscriptionLevelOutput =
-  typeof ManagementLocksGetAtSubscriptionLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksGetAtSubscriptionLevelOutput>;
 
 // The operation
 /**
@@ -16383,6 +23725,7 @@ export type ManagementLocksGetAtSubscriptionLevelOutput =
  *
  * @param lockName - The name of the lock to get.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksGetAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16390,6 +23733,10 @@ export const ManagementLocksGetAtSubscriptionLevel =
     outputSchema: ManagementLocksGetAtSubscriptionLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksGetByScopeInput {
+  scope: string;
+  lockName: string;
+}
 export const ManagementLocksGetByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -16400,11 +23747,27 @@ export const ManagementLocksGetByScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/locks/{lockName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksGetByScopeInput =
-  typeof ManagementLocksGetByScopeInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksGetByScopeInput>;
 
 // Output Schema
+export interface ManagementLocksGetByScopeOutput {
+  properties: {
+    level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+    notes?: string;
+    owners?: { applicationId?: string }[];
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagementLocksGetByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
@@ -16435,9 +23798,7 @@ export const ManagementLocksGetByScopeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagementLocksGetByScopeOutput =
-  typeof ManagementLocksGetByScopeOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksGetByScopeOutput>;
 
 // The operation
 /**
@@ -16454,9 +23815,15 @@ export const ManagementLocksGetByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagementLocksListAtResourceGroupLevelInput {
+  resourceGroupName: string;
+  subscriptionId: string;
+  $filter?: string;
+}
 export const ManagementLocksListAtResourceGroupLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16464,11 +23831,30 @@ export const ManagementLocksListAtResourceGroupLevelInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksListAtResourceGroupLevelInput =
-  typeof ManagementLocksListAtResourceGroupLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksListAtResourceGroupLevelInput>;
 
 // Output Schema
+export interface ManagementLocksListAtResourceGroupLevelOutput {
+  value?: {
+    properties: {
+      level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+      notes?: string;
+      owners?: { applicationId?: string }[];
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementLocksListAtResourceGroupLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -16520,9 +23906,7 @@ export const ManagementLocksListAtResourceGroupLevelOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementLocksListAtResourceGroupLevelOutput =
-  typeof ManagementLocksListAtResourceGroupLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksListAtResourceGroupLevelOutput>;
 
 // The operation
 /**
@@ -16531,6 +23915,7 @@ export type ManagementLocksListAtResourceGroupLevelOutput =
  * @param resourceGroupName - The name of the resource group containing the locks to get.
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtResourceGroupLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16538,6 +23923,15 @@ export const ManagementLocksListAtResourceGroupLevel =
     outputSchema: ManagementLocksListAtResourceGroupLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksListAtResourceLevelInput {
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  subscriptionId: string;
+  $filter?: string;
+}
 export const ManagementLocksListAtResourceLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -16545,6 +23939,7 @@ export const ManagementLocksListAtResourceLevelInput =
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16552,11 +23947,30 @@ export const ManagementLocksListAtResourceLevelInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/locks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksListAtResourceLevelInput =
-  typeof ManagementLocksListAtResourceLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksListAtResourceLevelInput>;
 
 // Output Schema
+export interface ManagementLocksListAtResourceLevelOutput {
+  value?: {
+    properties: {
+      level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+      notes?: string;
+      owners?: { applicationId?: string }[];
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementLocksListAtResourceLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -16608,9 +24022,7 @@ export const ManagementLocksListAtResourceLevelOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementLocksListAtResourceLevelOutput =
-  typeof ManagementLocksListAtResourceLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksListAtResourceLevelOutput>;
 
 // The operation
 /**
@@ -16623,6 +24035,7 @@ export type ManagementLocksListAtResourceLevelOutput =
  * @param resourceName - The name of the locked resource.
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtResourceLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16630,8 +24043,13 @@ export const ManagementLocksListAtResourceLevel =
     outputSchema: ManagementLocksListAtResourceLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksListAtSubscriptionLevelInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const ManagementLocksListAtSubscriptionLevelInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -16639,11 +24057,30 @@ export const ManagementLocksListAtSubscriptionLevelInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/locks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksListAtSubscriptionLevelInput =
-  typeof ManagementLocksListAtSubscriptionLevelInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksListAtSubscriptionLevelInput>;
 
 // Output Schema
+export interface ManagementLocksListAtSubscriptionLevelOutput {
+  value?: {
+    properties: {
+      level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+      notes?: string;
+      owners?: { applicationId?: string }[];
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementLocksListAtSubscriptionLevelOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -16695,9 +24132,7 @@ export const ManagementLocksListAtSubscriptionLevelOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementLocksListAtSubscriptionLevelOutput =
-  typeof ManagementLocksListAtSubscriptionLevelOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksListAtSubscriptionLevelOutput>;
 
 // The operation
 /**
@@ -16705,6 +24140,7 @@ export type ManagementLocksListAtSubscriptionLevelOutput =
  *
  * @param $filter - The filter to apply on the operation.
  * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ManagementLocksListAtSubscriptionLevel =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -16712,6 +24148,10 @@ export const ManagementLocksListAtSubscriptionLevel =
     outputSchema: ManagementLocksListAtSubscriptionLevelOutput,
   }));
 // Input Schema
+export interface ManagementLocksListByScopeInput {
+  scope: string;
+  $filter?: string;
+}
 export const ManagementLocksListByScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -16722,11 +24162,30 @@ export const ManagementLocksListByScopeInput =
       path: "/{scope}/providers/Microsoft.Authorization/locks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ManagementLocksListByScopeInput =
-  typeof ManagementLocksListByScopeInput.Type;
+  ) as unknown as Schema.Codec<ManagementLocksListByScopeInput>;
 
 // Output Schema
+export interface ManagementLocksListByScopeOutput {
+  value?: {
+    properties: {
+      level: "NotSpecified" | "CanNotDelete" | "ReadOnly";
+      notes?: string;
+      owners?: { applicationId?: string }[];
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ManagementLocksListByScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -16778,9 +24237,7 @@ export const ManagementLocksListByScopeOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ManagementLocksListByScopeOutput =
-  typeof ManagementLocksListByScopeOutput.Type;
+  }) as unknown as Schema.Codec<ManagementLocksListByScopeOutput>;
 
 // The operation
 /**
@@ -16797,6 +24254,7 @@ export const ManagementLocksListByScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -16805,15 +24263,30 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Resources/operations",
     apiVersion: "2025-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
         display: Schema.optional(
           Schema.Struct({
             provider: Schema.optional(Schema.String),
@@ -16822,22 +24295,97 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             description: Schema.optional(Schema.String),
           }),
         ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
       }),
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
- * Lists all of the available Microsoft.Resources REST API operations.
+ * List the operations for the provider
+ *
+ * @param api-version - The API version to use for this operation.
  */
 export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PolicyAssignmentsCreateInput {
+  scope: string;
+  policyAssignmentName: string;
+  properties?: {
+    displayName?: string;
+    policyDefinitionId?: string;
+    definitionVersion?: string;
+    latestDefinitionVersion?: string;
+    effectiveDefinitionVersion?: string;
+    scope?: string;
+    notScopes?: string[];
+    parameters?: Record<string, { value?: unknown }>;
+    description?: string;
+    metadata?: unknown;
+    enforcementMode?: "Default" | "DoNotEnforce" | "Enroll";
+    nonComplianceMessages?: {
+      message: string;
+      policyDefinitionReferenceId?: string;
+    }[];
+    resourceSelectors?: {
+      name?: string;
+      selectors?: {
+        kind?:
+          | "resourceLocation"
+          | "resourceType"
+          | "resourceWithoutLocation"
+          | "policyDefinitionReferenceId"
+          | "resourcePercentage"
+          | "userPrincipalId"
+          | "groupPrincipalId";
+        in?: string[];
+        notIn?: string[];
+        progress?: number;
+      }[];
+    }[];
+    overrides?: {
+      kind?: "policyEffect" | "definitionVersion";
+      value?: string;
+      selectors?: {
+        kind?:
+          | "resourceLocation"
+          | "resourceType"
+          | "resourceWithoutLocation"
+          | "policyDefinitionReferenceId"
+          | "resourcePercentage"
+          | "userPrincipalId"
+          | "groupPrincipalId";
+        in?: string[];
+        notIn?: string[];
+        progress?: number;
+      }[];
+    }[];
+    assignmentType?: "NotSpecified" | "System" | "SystemHidden" | "Custom";
+    instanceId?: string;
+    selfServeExemptionSettings?: {
+      enabled?: boolean;
+      policyDefinitionReferenceIds?: string[];
+    };
+  };
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const PolicyAssignmentsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -16885,10 +24433,14 @@ export const PolicyAssignmentsCreateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -16911,10 +24463,14 @@ export const PolicyAssignmentsCreateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -16958,13 +24514,24 @@ export const PolicyAssignmentsCreateInput =
     T.Http({
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsCreateInput =
-  typeof PolicyAssignmentsCreateInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsCreateInput>;
 
 // Output Schema
+export interface PolicyAssignmentsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyAssignmentsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16984,9 +24551,7 @@ export const PolicyAssignmentsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyAssignmentsCreateOutput =
-  typeof PolicyAssignmentsCreateOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsCreateOutput>;
 
 // The operation
 /**
@@ -17003,6 +24568,10 @@ export const PolicyAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyAssignmentsDeleteInput {
+  scope: string;
+  policyAssignmentName: string;
+}
 export const PolicyAssignmentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -17011,13 +24580,24 @@ export const PolicyAssignmentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsDeleteInput =
-  typeof PolicyAssignmentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsDeleteInput>;
 
 // Output Schema
+export interface PolicyAssignmentsDeleteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyAssignmentsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17037,9 +24617,7 @@ export const PolicyAssignmentsDeleteOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyAssignmentsDeleteOutput =
-  typeof PolicyAssignmentsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -17056,6 +24634,11 @@ export const PolicyAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyAssignmentsGetInput {
+  scope: string;
+  policyAssignmentName: string;
+  $expand?: string;
+}
 export const PolicyAssignmentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -17065,12 +24648,24 @@ export const PolicyAssignmentsGetInput =
     T.Http({
       method: "GET",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsGetInput = typeof PolicyAssignmentsGetInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsGetInput>;
 
 // Output Schema
+export interface PolicyAssignmentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyAssignmentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17090,8 +24685,7 @@ export const PolicyAssignmentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyAssignmentsGetOutput = typeof PolicyAssignmentsGetOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsGetOutput>;
 
 // The operation
 /**
@@ -17109,6 +24703,12 @@ export const PolicyAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyAssignmentsListInput {
+  subscriptionId: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicyAssignmentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17119,12 +24719,27 @@ export const PolicyAssignmentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsListInput = typeof PolicyAssignmentsListInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsListInput>;
 
 // Output Schema
+export interface PolicyAssignmentsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17159,9 +24774,7 @@ export const PolicyAssignmentsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyAssignmentsListOutput =
-  typeof PolicyAssignmentsListOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsListOutput>;
 
 // The operation
 /**
@@ -17182,6 +24795,12 @@ export const PolicyAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyAssignmentsListForManagementGroupInput {
+  managementGroupId: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicyAssignmentsListForManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -17192,13 +24811,27 @@ export const PolicyAssignmentsListForManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsListForManagementGroupInput =
-  typeof PolicyAssignmentsListForManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsListForManagementGroupInput>;
 
 // Output Schema
+export interface PolicyAssignmentsListForManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyAssignmentsListForManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17233,9 +24866,7 @@ export const PolicyAssignmentsListForManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyAssignmentsListForManagementGroupOutput =
-  typeof PolicyAssignmentsListForManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsListForManagementGroupOutput>;
 
 // The operation
 /**
@@ -17255,6 +24886,17 @@ export const PolicyAssignmentsListForManagementGroup =
     outputSchema: PolicyAssignmentsListForManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyAssignmentsListForResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicyAssignmentsListForResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17270,13 +24912,27 @@ export const PolicyAssignmentsListForResourceInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsListForResourceInput =
-  typeof PolicyAssignmentsListForResourceInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsListForResourceInput>;
 
 // Output Schema
+export interface PolicyAssignmentsListForResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyAssignmentsListForResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17311,9 +24967,7 @@ export const PolicyAssignmentsListForResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyAssignmentsListForResourceOutput =
-  typeof PolicyAssignmentsListForResourceOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsListForResourceOutput>;
 
 // The operation
 /**
@@ -17338,6 +24992,13 @@ export const PolicyAssignmentsListForResource =
     outputSchema: PolicyAssignmentsListForResourceOutput,
   }));
 // Input Schema
+export interface PolicyAssignmentsListForResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicyAssignmentsListForResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17349,13 +25010,27 @@ export const PolicyAssignmentsListForResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsListForResourceGroupInput =
-  typeof PolicyAssignmentsListForResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsListForResourceGroupInput>;
 
 // Output Schema
+export interface PolicyAssignmentsListForResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyAssignmentsListForResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17390,9 +25065,7 @@ export const PolicyAssignmentsListForResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyAssignmentsListForResourceGroupOutput =
-  typeof PolicyAssignmentsListForResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsListForResourceGroupOutput>;
 
 // The operation
 /**
@@ -17411,6 +25084,59 @@ export const PolicyAssignmentsListForResourceGroup =
     outputSchema: PolicyAssignmentsListForResourceGroupOutput,
   }));
 // Input Schema
+export interface PolicyAssignmentsUpdateInput {
+  scope: string;
+  policyAssignmentName: string;
+  properties?: {
+    resourceSelectors?: {
+      name?: string;
+      selectors?: {
+        kind?:
+          | "resourceLocation"
+          | "resourceType"
+          | "resourceWithoutLocation"
+          | "policyDefinitionReferenceId"
+          | "resourcePercentage"
+          | "userPrincipalId"
+          | "groupPrincipalId";
+        in?: string[];
+        notIn?: string[];
+        progress?: number;
+      }[];
+    }[];
+    overrides?: {
+      kind?: "policyEffect" | "definitionVersion";
+      value?: string;
+      selectors?: {
+        kind?:
+          | "resourceLocation"
+          | "resourceType"
+          | "resourceWithoutLocation"
+          | "policyDefinitionReferenceId"
+          | "resourcePercentage"
+          | "userPrincipalId"
+          | "groupPrincipalId";
+        in?: string[];
+        notIn?: string[];
+        progress?: number;
+      }[];
+    }[];
+    selfServeExemptionSettings?: {
+      enabled?: boolean;
+      policyDefinitionReferenceIds?: string[];
+    };
+  };
+  location?: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const PolicyAssignmentsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -17430,10 +25156,14 @@ export const PolicyAssignmentsUpdateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -17456,10 +25186,14 @@ export const PolicyAssignmentsUpdateInput =
                         "resourceType",
                         "resourceWithoutLocation",
                         "policyDefinitionReferenceId",
+                        "resourcePercentage",
+                        "userPrincipalId",
+                        "groupPrincipalId",
                       ]),
                     ),
                     in: Schema.optional(Schema.Array(Schema.String)),
                     notIn: Schema.optional(Schema.Array(Schema.String)),
+                    progress: Schema.optional(Schema.Number),
                   }),
                 ),
               ),
@@ -17499,13 +25233,24 @@ export const PolicyAssignmentsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyAssignmentsUpdateInput =
-  typeof PolicyAssignmentsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PolicyAssignmentsUpdateInput>;
 
 // Output Schema
+export interface PolicyAssignmentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyAssignmentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17525,9 +25270,7 @@ export const PolicyAssignmentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyAssignmentsUpdateOutput =
-  typeof PolicyAssignmentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PolicyAssignmentsUpdateOutput>;
 
 // The operation
 /**
@@ -17544,6 +25287,48 @@ export const PolicyAssignmentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    mode?: string;
+    displayName?: string;
+    description?: string;
+    policyRule?: unknown;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    version?: string;
+    versions?: string[];
+    externalEvaluationEnforcementSettings?: {
+      missingTokenAction?: string;
+      resultLifespan?: string;
+      endpointSettings?: { kind?: string; details?: unknown };
+      roleDefinitionIds?: string[];
+    };
+  };
+}
 export const PolicyDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17608,13 +25393,24 @@ export const PolicyDefinitionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsCreateOrUpdateInput =
-  typeof PolicyDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PolicyDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17634,9 +25430,7 @@ export const PolicyDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionsCreateOrUpdateOutput =
-  typeof PolicyDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -17652,6 +25446,48 @@ export const PolicyDefinitionsCreateOrUpdate =
     outputSchema: PolicyDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionsCreateOrUpdateAtManagementGroupInput {
+  managementGroupId: string;
+  policyDefinitionName: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    mode?: string;
+    displayName?: string;
+    description?: string;
+    policyRule?: unknown;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    version?: string;
+    versions?: string[];
+    externalEvaluationEnforcementSettings?: {
+      missingTokenAction?: string;
+      resultLifespan?: string;
+      endpointSettings?: { kind?: string; details?: unknown };
+      roleDefinitionIds?: string[];
+    };
+  };
+}
 export const PolicyDefinitionsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -17716,13 +25552,24 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsCreateOrUpdateAtManagementGroupInput =
-  typeof PolicyDefinitionsCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17742,9 +25589,7 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput =
-  typeof PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -17760,6 +25605,10 @@ export const PolicyDefinitionsCreateOrUpdateAtManagementGroup =
     outputSchema: PolicyDefinitionsCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionsDeleteInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+}
 export const PolicyDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17768,17 +25617,14 @@ export const PolicyDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsDeleteInput =
-  typeof PolicyDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsDeleteInput>;
 
 // Output Schema
+export type PolicyDefinitionsDeleteOutput = void;
 export const PolicyDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyDefinitionsDeleteOutput =
-  typeof PolicyDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -17795,6 +25641,10 @@ export const PolicyDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionsDeleteAtManagementGroupInput {
+  managementGroupId: string;
+  policyDefinitionName: string;
+}
 export const PolicyDefinitionsDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -17803,17 +25653,14 @@ export const PolicyDefinitionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsDeleteAtManagementGroupInput =
-  typeof PolicyDefinitionsDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsDeleteAtManagementGroupInput>;
 
 // Output Schema
+export type PolicyDefinitionsDeleteAtManagementGroupOutput = void;
 export const PolicyDefinitionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyDefinitionsDeleteAtManagementGroupOutput =
-  typeof PolicyDefinitionsDeleteAtManagementGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyDefinitionsDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -17829,6 +25676,10 @@ export const PolicyDefinitionsDeleteAtManagementGroup =
     outputSchema: PolicyDefinitionsDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionsGetInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+}
 export const PolicyDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17837,12 +25688,24 @@ export const PolicyDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsGetInput = typeof PolicyDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsGetInput>;
 
 // Output Schema
+export interface PolicyDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17862,8 +25725,7 @@ export const PolicyDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionsGetOutput = typeof PolicyDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -17880,6 +25742,10 @@ export const PolicyDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionsGetAtManagementGroupInput {
+  managementGroupId: string;
+  policyDefinitionName: string;
+}
 export const PolicyDefinitionsGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -17888,13 +25754,24 @@ export const PolicyDefinitionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsGetAtManagementGroupInput =
-  typeof PolicyDefinitionsGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsGetAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionsGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17914,9 +25791,7 @@ export const PolicyDefinitionsGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionsGetAtManagementGroupOutput =
-  typeof PolicyDefinitionsGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -17932,6 +25807,9 @@ export const PolicyDefinitionsGetAtManagementGroup =
     outputSchema: PolicyDefinitionsGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionsGetBuiltInInput {
+  policyDefinitionName: string;
+}
 export const PolicyDefinitionsGetBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -17939,13 +25817,24 @@ export const PolicyDefinitionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsGetBuiltInInput =
-  typeof PolicyDefinitionsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsGetBuiltInInput>;
 
 // Output Schema
+export interface PolicyDefinitionsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17965,9 +25854,7 @@ export const PolicyDefinitionsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionsGetBuiltInOutput =
-  typeof PolicyDefinitionsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsGetBuiltInOutput>;
 
 // The operation
 /**
@@ -17983,6 +25870,11 @@ export const PolicyDefinitionsGetBuiltIn = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionsListInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PolicyDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17992,12 +25884,27 @@ export const PolicyDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsListInput = typeof PolicyDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsListInput>;
 
 // Output Schema
+export interface PolicyDefinitionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18032,9 +25939,7 @@ export const PolicyDefinitionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionsListOutput =
-  typeof PolicyDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsListOutput>;
 
 // The operation
 /**
@@ -18052,6 +25957,10 @@ export const PolicyDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionsListBuiltInInput {
+  $filter?: string;
+  $top?: number;
+}
 export const PolicyDefinitionsListBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -18060,13 +25969,27 @@ export const PolicyDefinitionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsListBuiltInInput =
-  typeof PolicyDefinitionsListBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsListBuiltInInput>;
 
 // Output Schema
+export interface PolicyDefinitionsListBuiltInOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionsListBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18101,9 +26024,7 @@ export const PolicyDefinitionsListBuiltInOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionsListBuiltInOutput =
-  typeof PolicyDefinitionsListBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsListBuiltInOutput>;
 
 // The operation
 /**
@@ -18119,6 +26040,11 @@ export const PolicyDefinitionsListBuiltIn =
     outputSchema: PolicyDefinitionsListBuiltInOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionsListByManagementGroupInput {
+  managementGroupId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const PolicyDefinitionsListByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -18128,13 +26054,27 @@ export const PolicyDefinitionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionsListByManagementGroupInput =
-  typeof PolicyDefinitionsListByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionsListByManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionsListByManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionsListByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18169,9 +26109,7 @@ export const PolicyDefinitionsListByManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionsListByManagementGroupOutput =
-  typeof PolicyDefinitionsListByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionsListByManagementGroupOutput>;
 
 // The operation
 /**
@@ -18188,6 +26126,48 @@ export const PolicyDefinitionsListByManagementGroup =
     outputSchema: PolicyDefinitionsListByManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    mode?: string;
+    displayName?: string;
+    description?: string;
+    policyRule?: unknown;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    version?: string;
+    externalEvaluationEnforcementSettings?: {
+      missingTokenAction?: string;
+      resultLifespan?: string;
+      endpointSettings?: { kind?: string; details?: unknown };
+      roleDefinitionIds?: string[];
+    };
+  };
+}
 export const PolicyDefinitionVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18252,13 +26232,24 @@ export const PolicyDefinitionVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsCreateOrUpdateInput =
-  typeof PolicyDefinitionVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18278,9 +26269,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionVersionsCreateOrUpdateOutput =
-  typeof PolicyDefinitionVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -18297,6 +26286,48 @@ export const PolicyDefinitionVersionsCreateOrUpdate =
     outputSchema: PolicyDefinitionVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput {
+  managementGroupName: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    mode?: string;
+    displayName?: string;
+    description?: string;
+    policyRule?: unknown;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    version?: string;
+    externalEvaluationEnforcementSettings?: {
+      missingTokenAction?: string;
+      resultLifespan?: string;
+      endpointSettings?: { kind?: string; details?: unknown };
+      roleDefinitionIds?: string[];
+    };
+  };
+}
 export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -18361,13 +26392,24 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
-  typeof PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18387,9 +26429,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
-  typeof PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -18406,6 +26446,11 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroup =
     outputSchema: PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsDeleteInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicyDefinitionVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18415,17 +26460,14 @@ export const PolicyDefinitionVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsDeleteInput =
-  typeof PolicyDefinitionVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsDeleteInput>;
 
 // Output Schema
+export type PolicyDefinitionVersionsDeleteOutput = void;
 export const PolicyDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyDefinitionVersionsDeleteOutput =
-  typeof PolicyDefinitionVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyDefinitionVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -18442,6 +26484,11 @@ export const PolicyDefinitionVersionsDelete =
     outputSchema: PolicyDefinitionVersionsDeleteOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsDeleteAtManagementGroupInput {
+  managementGroupName: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicyDefinitionVersionsDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -18451,17 +26498,14 @@ export const PolicyDefinitionVersionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsDeleteAtManagementGroupInput =
-  typeof PolicyDefinitionVersionsDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsDeleteAtManagementGroupInput>;
 
 // Output Schema
+export type PolicyDefinitionVersionsDeleteAtManagementGroupOutput = void;
 export const PolicyDefinitionVersionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicyDefinitionVersionsDeleteAtManagementGroupOutput =
-  typeof PolicyDefinitionVersionsDeleteAtManagementGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicyDefinitionVersionsDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -18478,6 +26522,11 @@ export const PolicyDefinitionVersionsDeleteAtManagementGroup =
     outputSchema: PolicyDefinitionVersionsDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsGetInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicyDefinitionVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18487,13 +26536,24 @@ export const PolicyDefinitionVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsGetInput =
-  typeof PolicyDefinitionVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsGetInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18513,9 +26573,7 @@ export const PolicyDefinitionVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionVersionsGetOutput =
-  typeof PolicyDefinitionVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsGetOutput>;
 
 // The operation
 /**
@@ -18533,6 +26591,11 @@ export const PolicyDefinitionVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicyDefinitionVersionsGetAtManagementGroupInput {
+  managementGroupName: string;
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicyDefinitionVersionsGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -18542,13 +26605,24 @@ export const PolicyDefinitionVersionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsGetAtManagementGroupInput =
-  typeof PolicyDefinitionVersionsGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsGetAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionVersionsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18568,9 +26642,7 @@ export const PolicyDefinitionVersionsGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionVersionsGetAtManagementGroupOutput =
-  typeof PolicyDefinitionVersionsGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -18587,6 +26659,10 @@ export const PolicyDefinitionVersionsGetAtManagementGroup =
     outputSchema: PolicyDefinitionVersionsGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsGetBuiltInInput {
+  policyDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicyDefinitionVersionsGetBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -18595,13 +26671,24 @@ export const PolicyDefinitionVersionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsGetBuiltInInput =
-  typeof PolicyDefinitionVersionsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsGetBuiltInInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicyDefinitionVersionsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18621,9 +26708,7 @@ export const PolicyDefinitionVersionsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicyDefinitionVersionsGetBuiltInOutput =
-  typeof PolicyDefinitionVersionsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsGetBuiltInOutput>;
 
 // The operation
 /**
@@ -18639,6 +26724,11 @@ export const PolicyDefinitionVersionsGetBuiltIn =
     outputSchema: PolicyDefinitionVersionsGetBuiltInOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListInput {
+  subscriptionId: string;
+  policyDefinitionName: string;
+  $top?: number;
+}
 export const PolicyDefinitionVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18648,13 +26738,27 @@ export const PolicyDefinitionVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListInput =
-  typeof PolicyDefinitionVersionsListInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18689,9 +26793,7 @@ export const PolicyDefinitionVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListOutput =
-  typeof PolicyDefinitionVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListOutput>;
 
 // The operation
 /**
@@ -18708,6 +26810,9 @@ export const PolicyDefinitionVersionsList =
     outputSchema: PolicyDefinitionVersionsListOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListAllInput {
+  subscriptionId: string;
+}
 export const PolicyDefinitionVersionsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18715,13 +26820,27 @@ export const PolicyDefinitionVersionsListAllInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListAllInput =
-  typeof PolicyDefinitionVersionsListAllInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListAllOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18756,9 +26875,7 @@ export const PolicyDefinitionVersionsListAllOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListAllOutput =
-  typeof PolicyDefinitionVersionsListAllOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllOutput>;
 
 // The operation
 /**
@@ -18775,6 +26892,9 @@ export const PolicyDefinitionVersionsListAll =
     outputSchema: PolicyDefinitionVersionsListAllOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListAllAtManagementGroupInput {
+  managementGroupName: string;
+}
 export const PolicyDefinitionVersionsListAllAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -18782,13 +26902,27 @@ export const PolicyDefinitionVersionsListAllAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListAllAtManagementGroupInput =
-  typeof PolicyDefinitionVersionsListAllAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListAllAtManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListAllAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18823,9 +26957,7 @@ export const PolicyDefinitionVersionsListAllAtManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListAllAtManagementGroupOutput =
-  typeof PolicyDefinitionVersionsListAllAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -18842,18 +26974,33 @@ export const PolicyDefinitionVersionsListAllAtManagementGroup =
     outputSchema: PolicyDefinitionVersionsListAllAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListAllBuiltinsInput {}
 export const PolicyDefinitionVersionsListAllBuiltinsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Authorization/listPolicyDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListAllBuiltinsInput =
-  typeof PolicyDefinitionVersionsListAllBuiltinsInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllBuiltinsInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListAllBuiltinsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListAllBuiltinsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18888,9 +27035,7 @@ export const PolicyDefinitionVersionsListAllBuiltinsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListAllBuiltinsOutput =
-  typeof PolicyDefinitionVersionsListAllBuiltinsOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListAllBuiltinsOutput>;
 
 // The operation
 /**
@@ -18906,6 +27051,10 @@ export const PolicyDefinitionVersionsListAllBuiltins =
     outputSchema: PolicyDefinitionVersionsListAllBuiltinsOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListBuiltInInput {
+  policyDefinitionName: string;
+  $top?: number;
+}
 export const PolicyDefinitionVersionsListBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policyDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -18914,13 +27063,27 @@ export const PolicyDefinitionVersionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListBuiltInInput =
-  typeof PolicyDefinitionVersionsListBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListBuiltInInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListBuiltInOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18955,9 +27118,7 @@ export const PolicyDefinitionVersionsListBuiltInOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListBuiltInOutput =
-  typeof PolicyDefinitionVersionsListBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListBuiltInOutput>;
 
 // The operation
 /**
@@ -18973,6 +27134,11 @@ export const PolicyDefinitionVersionsListBuiltIn =
     outputSchema: PolicyDefinitionVersionsListBuiltInOutput,
   }));
 // Input Schema
+export interface PolicyDefinitionVersionsListByManagementGroupInput {
+  managementGroupName: string;
+  policyDefinitionName: string;
+  $top?: number;
+}
 export const PolicyDefinitionVersionsListByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -18982,13 +27148,27 @@ export const PolicyDefinitionVersionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyDefinitionVersionsListByManagementGroupInput =
-  typeof PolicyDefinitionVersionsListByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyDefinitionVersionsListByManagementGroupInput>;
 
 // Output Schema
+export interface PolicyDefinitionVersionsListByManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicyDefinitionVersionsListByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19023,9 +27203,7 @@ export const PolicyDefinitionVersionsListByManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicyDefinitionVersionsListByManagementGroupOutput =
-  typeof PolicyDefinitionVersionsListByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyDefinitionVersionsListByManagementGroupOutput>;
 
 // The operation
 /**
@@ -19042,6 +27220,56 @@ export const PolicyDefinitionVersionsListByManagementGroup =
     outputSchema: PolicyDefinitionVersionsListByManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsCreateOrUpdateInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    displayName?: string;
+    description?: string;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    policyDefinitions: {
+      policyDefinitionId: string;
+      definitionVersion?: string;
+      latestDefinitionVersion?: string;
+      effectiveDefinitionVersion?: string;
+      parameters?: Record<string, { value?: unknown }>;
+      policyDefinitionReferenceId?: string;
+      groupNames?: string[];
+    }[];
+    policyDefinitionGroups?: {
+      name: string;
+      displayName?: string;
+      category?: string;
+      description?: string;
+      additionalMetadataId?: string;
+    }[];
+    version?: string;
+    versions?: string[];
+  };
+}
 export const PolicySetDefinitionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19120,13 +27348,24 @@ export const PolicySetDefinitionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsCreateOrUpdateInput =
-  typeof PolicySetDefinitionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19146,9 +27385,7 @@ export const PolicySetDefinitionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionsCreateOrUpdateOutput =
-  typeof PolicySetDefinitionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -19164,6 +27401,56 @@ export const PolicySetDefinitionsCreateOrUpdate =
     outputSchema: PolicySetDefinitionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput {
+  managementGroupId: string;
+  policySetDefinitionName: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    displayName?: string;
+    description?: string;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    policyDefinitions: {
+      policyDefinitionId: string;
+      definitionVersion?: string;
+      latestDefinitionVersion?: string;
+      effectiveDefinitionVersion?: string;
+      parameters?: Record<string, { value?: unknown }>;
+      policyDefinitionReferenceId?: string;
+      groupNames?: string[];
+    }[];
+    policyDefinitionGroups?: {
+      name: string;
+      displayName?: string;
+      category?: string;
+      description?: string;
+      additionalMetadataId?: string;
+    }[];
+    version?: string;
+    versions?: string[];
+  };
+}
 export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -19242,13 +27529,24 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput =
-  typeof PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19268,9 +27566,7 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput =
-  typeof PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -19286,6 +27582,10 @@ export const PolicySetDefinitionsCreateOrUpdateAtManagementGroup =
     outputSchema: PolicySetDefinitionsCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsDeleteInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+}
 export const PolicySetDefinitionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19294,17 +27594,14 @@ export const PolicySetDefinitionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsDeleteInput =
-  typeof PolicySetDefinitionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsDeleteInput>;
 
 // Output Schema
+export type PolicySetDefinitionsDeleteOutput = void;
 export const PolicySetDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicySetDefinitionsDeleteOutput =
-  typeof PolicySetDefinitionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicySetDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -19321,6 +27618,10 @@ export const PolicySetDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicySetDefinitionsDeleteAtManagementGroupInput {
+  managementGroupId: string;
+  policySetDefinitionName: string;
+}
 export const PolicySetDefinitionsDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -19329,17 +27630,14 @@ export const PolicySetDefinitionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsDeleteAtManagementGroupInput =
-  typeof PolicySetDefinitionsDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsDeleteAtManagementGroupInput>;
 
 // Output Schema
+export type PolicySetDefinitionsDeleteAtManagementGroupOutput = void;
 export const PolicySetDefinitionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicySetDefinitionsDeleteAtManagementGroupOutput =
-  typeof PolicySetDefinitionsDeleteAtManagementGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicySetDefinitionsDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -19355,6 +27653,11 @@ export const PolicySetDefinitionsDeleteAtManagementGroup =
     outputSchema: PolicySetDefinitionsDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsGetInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19364,13 +27667,24 @@ export const PolicySetDefinitionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsGetInput =
-  typeof PolicySetDefinitionsGetInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsGetInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19390,9 +27704,7 @@ export const PolicySetDefinitionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionsGetOutput =
-  typeof PolicySetDefinitionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsGetOutput>;
 
 // The operation
 /**
@@ -19410,6 +27722,11 @@ export const PolicySetDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicySetDefinitionsGetAtManagementGroupInput {
+  managementGroupId: string;
+  policySetDefinitionName: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionsGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -19419,13 +27736,24 @@ export const PolicySetDefinitionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsGetAtManagementGroupInput =
-  typeof PolicySetDefinitionsGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsGetAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19445,9 +27773,7 @@ export const PolicySetDefinitionsGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionsGetAtManagementGroupOutput =
-  typeof PolicySetDefinitionsGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -19464,6 +27790,10 @@ export const PolicySetDefinitionsGetAtManagementGroup =
     outputSchema: PolicySetDefinitionsGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsGetBuiltInInput {
+  policySetDefinitionName: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionsGetBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policySetDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -19472,13 +27802,24 @@ export const PolicySetDefinitionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsGetBuiltInInput =
-  typeof PolicySetDefinitionsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsGetBuiltInInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19498,9 +27839,7 @@ export const PolicySetDefinitionsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionsGetBuiltInOutput =
-  typeof PolicySetDefinitionsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsGetBuiltInOutput>;
 
 // The operation
 /**
@@ -19516,6 +27855,12 @@ export const PolicySetDefinitionsGetBuiltIn =
     outputSchema: PolicySetDefinitionsGetBuiltInOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsListInput {
+  subscriptionId: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19526,13 +27871,27 @@ export const PolicySetDefinitionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsListInput =
-  typeof PolicySetDefinitionsListInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsListInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19567,9 +27926,7 @@ export const PolicySetDefinitionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionsListOutput =
-  typeof PolicySetDefinitionsListOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsListOutput>;
 
 // The operation
 /**
@@ -19588,6 +27945,11 @@ export const PolicySetDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PolicySetDefinitionsListBuiltInInput {
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionsListBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
@@ -19597,13 +27959,27 @@ export const PolicySetDefinitionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsListBuiltInInput =
-  typeof PolicySetDefinitionsListBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsListBuiltInInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsListBuiltInOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionsListBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19638,9 +28014,7 @@ export const PolicySetDefinitionsListBuiltInOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionsListBuiltInOutput =
-  typeof PolicySetDefinitionsListBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsListBuiltInOutput>;
 
 // The operation
 /**
@@ -19657,6 +28031,12 @@ export const PolicySetDefinitionsListBuiltIn =
     outputSchema: PolicySetDefinitionsListBuiltInOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionsListByManagementGroupInput {
+  managementGroupId: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionsListByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupId: Schema.String.pipe(T.PathParam()),
@@ -19667,13 +28047,27 @@ export const PolicySetDefinitionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionsListByManagementGroupInput =
-  typeof PolicySetDefinitionsListByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionsListByManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionsListByManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionsListByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19708,9 +28102,7 @@ export const PolicySetDefinitionsListByManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionsListByManagementGroupOutput =
-  typeof PolicySetDefinitionsListByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionsListByManagementGroupOutput>;
 
 // The operation
 /**
@@ -19728,6 +28120,56 @@ export const PolicySetDefinitionsListByManagementGroup =
     outputSchema: PolicySetDefinitionsListByManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    displayName?: string;
+    description?: string;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    policyDefinitions: {
+      policyDefinitionId: string;
+      definitionVersion?: string;
+      latestDefinitionVersion?: string;
+      effectiveDefinitionVersion?: string;
+      parameters?: Record<string, { value?: unknown }>;
+      policyDefinitionReferenceId?: string;
+      groupNames?: string[];
+    }[];
+    policyDefinitionGroups?: {
+      name: string;
+      displayName?: string;
+      category?: string;
+      description?: string;
+      additionalMetadataId?: string;
+    }[];
+    version?: string;
+  };
+}
 export const PolicySetDefinitionVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19806,13 +28248,24 @@ export const PolicySetDefinitionVersionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsCreateOrUpdateInput =
-  typeof PolicySetDefinitionVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19832,9 +28285,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionVersionsCreateOrUpdateOutput =
-  typeof PolicySetDefinitionVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -19851,6 +28302,56 @@ export const PolicySetDefinitionVersionsCreateOrUpdate =
     outputSchema: PolicySetDefinitionVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput {
+  managementGroupName: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+  properties?: {
+    policyType?: "NotSpecified" | "BuiltIn" | "Custom" | "Static";
+    displayName?: string;
+    description?: string;
+    metadata?: unknown;
+    parameters?: Record<
+      string,
+      {
+        type?:
+          | "String"
+          | "Array"
+          | "Object"
+          | "Boolean"
+          | "Integer"
+          | "Float"
+          | "DateTime";
+        allowedValues?: unknown[];
+        defaultValue?: unknown;
+        schema?: unknown;
+        metadata?: {
+          displayName?: string;
+          description?: string;
+          strongType?: string;
+          assignPermissions?: boolean;
+        };
+      }
+    >;
+    policyDefinitions: {
+      policyDefinitionId: string;
+      definitionVersion?: string;
+      latestDefinitionVersion?: string;
+      effectiveDefinitionVersion?: string;
+      parameters?: Record<string, { value?: unknown }>;
+      policyDefinitionReferenceId?: string;
+      groupNames?: string[];
+    }[];
+    policyDefinitionGroups?: {
+      name: string;
+      displayName?: string;
+      category?: string;
+      description?: string;
+      additionalMetadataId?: string;
+    }[];
+    version?: string;
+  };
+}
 export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -19929,13 +28430,24 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
     T.Http({
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput =
-  typeof PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19955,9 +28467,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput =
-  typeof PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -19976,6 +28486,11 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup =
       PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsDeleteInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicySetDefinitionVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19985,17 +28500,14 @@ export const PolicySetDefinitionVersionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsDeleteInput =
-  typeof PolicySetDefinitionVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsDeleteInput>;
 
 // Output Schema
+export type PolicySetDefinitionVersionsDeleteOutput = void;
 export const PolicySetDefinitionVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicySetDefinitionVersionsDeleteOutput =
-  typeof PolicySetDefinitionVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicySetDefinitionVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -20012,6 +28524,11 @@ export const PolicySetDefinitionVersionsDelete =
     outputSchema: PolicySetDefinitionVersionsDeleteOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsDeleteAtManagementGroupInput {
+  managementGroupName: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+}
 export const PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -20021,17 +28538,14 @@ export const PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsDeleteAtManagementGroupInput =
-  typeof PolicySetDefinitionVersionsDeleteAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsDeleteAtManagementGroupInput>;
 
 // Output Schema
+export type PolicySetDefinitionVersionsDeleteAtManagementGroupOutput = void;
 export const PolicySetDefinitionVersionsDeleteAtManagementGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PolicySetDefinitionVersionsDeleteAtManagementGroupOutput =
-  typeof PolicySetDefinitionVersionsDeleteAtManagementGroupOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PolicySetDefinitionVersionsDeleteAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -20048,6 +28562,12 @@ export const PolicySetDefinitionVersionsDeleteAtManagementGroup =
     outputSchema: PolicySetDefinitionVersionsDeleteAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsGetInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionVersionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20058,13 +28578,24 @@ export const PolicySetDefinitionVersionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsGetInput =
-  typeof PolicySetDefinitionVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20084,9 +28615,7 @@ export const PolicySetDefinitionVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionVersionsGetOutput =
-  typeof PolicySetDefinitionVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetOutput>;
 
 // The operation
 /**
@@ -20104,6 +28633,12 @@ export const PolicySetDefinitionVersionsGet =
     outputSchema: PolicySetDefinitionVersionsGetOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsGetAtManagementGroupInput {
+  managementGroupName: string;
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionVersionsGetAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -20114,13 +28649,24 @@ export const PolicySetDefinitionVersionsGetAtManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsGetAtManagementGroupInput =
-  typeof PolicySetDefinitionVersionsGetAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsGetAtManagementGroupOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionVersionsGetAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20140,9 +28686,7 @@ export const PolicySetDefinitionVersionsGetAtManagementGroupOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionVersionsGetAtManagementGroupOutput =
-  typeof PolicySetDefinitionVersionsGetAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -20160,6 +28704,11 @@ export const PolicySetDefinitionVersionsGetAtManagementGroup =
     outputSchema: PolicySetDefinitionVersionsGetAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsGetBuiltInInput {
+  policySetDefinitionName: string;
+  policyDefinitionVersion: string;
+  $expand?: string;
+}
 export const PolicySetDefinitionVersionsGetBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policySetDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -20169,13 +28718,24 @@ export const PolicySetDefinitionVersionsGetBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions/{policyDefinitionVersion}",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsGetBuiltInInput =
-  typeof PolicySetDefinitionVersionsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetBuiltInInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PolicySetDefinitionVersionsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20195,9 +28755,7 @@ export const PolicySetDefinitionVersionsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PolicySetDefinitionVersionsGetBuiltInOutput =
-  typeof PolicySetDefinitionVersionsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsGetBuiltInOutput>;
 
 // The operation
 /**
@@ -20214,6 +28772,12 @@ export const PolicySetDefinitionVersionsGetBuiltIn =
     outputSchema: PolicySetDefinitionVersionsGetBuiltInOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListInput {
+  subscriptionId: string;
+  policySetDefinitionName: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionVersionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20224,13 +28788,27 @@ export const PolicySetDefinitionVersionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListInput =
-  typeof PolicySetDefinitionVersionsListInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20265,9 +28843,7 @@ export const PolicySetDefinitionVersionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListOutput =
-  typeof PolicySetDefinitionVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListOutput>;
 
 // The operation
 /**
@@ -20285,6 +28861,9 @@ export const PolicySetDefinitionVersionsList =
     outputSchema: PolicySetDefinitionVersionsListOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListAllInput {
+  subscriptionId: string;
+}
 export const PolicySetDefinitionVersionsListAllInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20292,13 +28871,27 @@ export const PolicySetDefinitionVersionsListAllInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListAllInput =
-  typeof PolicySetDefinitionVersionsListAllInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListAllOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListAllOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20333,9 +28926,7 @@ export const PolicySetDefinitionVersionsListAllOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListAllOutput =
-  typeof PolicySetDefinitionVersionsListAllOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllOutput>;
 
 // The operation
 /**
@@ -20352,6 +28943,9 @@ export const PolicySetDefinitionVersionsListAll =
     outputSchema: PolicySetDefinitionVersionsListAllOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListAllAtManagementGroupInput {
+  managementGroupName: string;
+}
 export const PolicySetDefinitionVersionsListAllAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -20359,13 +28953,27 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListAllAtManagementGroupInput =
-  typeof PolicySetDefinitionVersionsListAllAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListAllAtManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListAllAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20400,9 +29008,7 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListAllAtManagementGroupOutput =
-  typeof PolicySetDefinitionVersionsListAllAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -20419,18 +29025,33 @@ export const PolicySetDefinitionVersionsListAllAtManagementGroup =
     outputSchema: PolicySetDefinitionVersionsListAllAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListAllBuiltinsInput {}
 export const PolicySetDefinitionVersionsListAllBuiltinsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Authorization/listPolicySetDefinitionVersions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListAllBuiltinsInput =
-  typeof PolicySetDefinitionVersionsListAllBuiltinsInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllBuiltinsInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListAllBuiltinsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListAllBuiltinsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20465,9 +29086,7 @@ export const PolicySetDefinitionVersionsListAllBuiltinsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListAllBuiltinsOutput =
-  typeof PolicySetDefinitionVersionsListAllBuiltinsOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListAllBuiltinsOutput>;
 
 // The operation
 /**
@@ -20483,6 +29102,11 @@ export const PolicySetDefinitionVersionsListAllBuiltins =
     outputSchema: PolicySetDefinitionVersionsListAllBuiltinsOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListBuiltInInput {
+  policySetDefinitionName: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionVersionsListBuiltInInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     policySetDefinitionName: Schema.String.pipe(T.PathParam()),
@@ -20492,13 +29116,27 @@ export const PolicySetDefinitionVersionsListBuiltInInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListBuiltInInput =
-  typeof PolicySetDefinitionVersionsListBuiltInInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListBuiltInInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListBuiltInOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20533,9 +29171,7 @@ export const PolicySetDefinitionVersionsListBuiltInOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListBuiltInOutput =
-  typeof PolicySetDefinitionVersionsListBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListBuiltInOutput>;
 
 // The operation
 /**
@@ -20552,6 +29188,12 @@ export const PolicySetDefinitionVersionsListBuiltIn =
     outputSchema: PolicySetDefinitionVersionsListBuiltInOutput,
   }));
 // Input Schema
+export interface PolicySetDefinitionVersionsListByManagementGroupInput {
+  managementGroupName: string;
+  policySetDefinitionName: string;
+  $expand?: string;
+  $top?: number;
+}
 export const PolicySetDefinitionVersionsListByManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -20562,13 +29204,27 @@ export const PolicySetDefinitionVersionsListByManagementGroupInput =
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}/versions",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicySetDefinitionVersionsListByManagementGroupInput =
-  typeof PolicySetDefinitionVersionsListByManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicySetDefinitionVersionsListByManagementGroupInput>;
 
 // Output Schema
+export interface PolicySetDefinitionVersionsListByManagementGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PolicySetDefinitionVersionsListByManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20603,9 +29259,7 @@ export const PolicySetDefinitionVersionsListByManagementGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PolicySetDefinitionVersionsListByManagementGroupOutput =
-  typeof PolicySetDefinitionVersionsListByManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicySetDefinitionVersionsListByManagementGroupOutput>;
 
 // The operation
 /**
@@ -20623,6 +29277,11 @@ export const PolicySetDefinitionVersionsListByManagementGroup =
     outputSchema: PolicySetDefinitionVersionsListByManagementGroupOutput,
   }));
 // Input Schema
+export interface PolicyTokensAcquireInput {
+  subscriptionId: string;
+  operation: { uri: string; httpMethod: string; content?: unknown };
+  changeReference?: string;
+}
 export const PolicyTokensAcquireInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20636,12 +29295,53 @@ export const PolicyTokensAcquireInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/acquirePolicyToken",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyTokensAcquireInput = typeof PolicyTokensAcquireInput.Type;
+  ) as unknown as Schema.Codec<PolicyTokensAcquireInput>;
 
 // Output Schema
+export interface PolicyTokensAcquireOutput {
+  result?: "Succeeded" | "Failed";
+  requestDetails?: {
+    uri: string;
+    resourceId: string;
+    apiVersion: string;
+    authorizationAction: string;
+    httpMethod: string;
+    contentHash: string;
+  };
+  message?: string;
+  retryAfter?: string;
+  results?: {
+    policyInfo?: {
+      policyDefinitionId?: string;
+      policySetDefinitionId?: string;
+      policyDefinitionReferenceId?: string;
+      policySetDefinitionName?: string;
+      policySetDefinitionVersion?: string;
+      policyDefinitionName?: string;
+      policyDefinitionVersion?: string;
+      policyDefinitionEffect?: string;
+      policyAssignmentId?: string;
+      policyAssignmentName?: string;
+      policyAssignmentVersion?: string;
+      policyAssignmentScope?: string;
+    };
+    result?: "Succeeded" | "Failed";
+    endpointKind?: string;
+    message?: string;
+    retryAfter?: string;
+    claims?: unknown;
+    policyAction?: "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
+    policyEvaluationDetails?: unknown;
+    additionalInfo?: unknown;
+    expiration?: string;
+  }[];
+  changeReference?: string;
+  token?: string;
+  tokenId?: string;
+  expiration?: string;
+}
 export const PolicyTokensAcquireOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20666,25 +29366,14 @@ export const PolicyTokensAcquireOutput =
               policySetDefinitionId: Schema.optional(Schema.String),
               policyDefinitionReferenceId: Schema.optional(Schema.String),
               policySetDefinitionName: Schema.optional(Schema.String),
-              policySetDefinitionDisplayName: Schema.optional(Schema.String),
               policySetDefinitionVersion: Schema.optional(Schema.String),
-              policySetDefinitionCategory: Schema.optional(Schema.String),
               policyDefinitionName: Schema.optional(Schema.String),
-              policyDefinitionDisplayName: Schema.optional(Schema.String),
               policyDefinitionVersion: Schema.optional(Schema.String),
               policyDefinitionEffect: Schema.optional(Schema.String),
-              policyDefinitionGroupNames: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
               policyAssignmentId: Schema.optional(Schema.String),
               policyAssignmentName: Schema.optional(Schema.String),
-              policyAssignmentDisplayName: Schema.optional(Schema.String),
               policyAssignmentVersion: Schema.optional(Schema.String),
               policyAssignmentScope: Schema.optional(Schema.String),
-              resourceLocation: Schema.optional(Schema.String),
-              ancestors: Schema.optional(Schema.String),
-              complianceReasonCode: Schema.optional(Schema.String),
-              policyExemptionIds: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
           result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20705,8 +29394,7 @@ export const PolicyTokensAcquireOutput =
     token: Schema.optional(Schema.String),
     tokenId: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
-  });
-export type PolicyTokensAcquireOutput = typeof PolicyTokensAcquireOutput.Type;
+  }) as unknown as Schema.Codec<PolicyTokensAcquireOutput>;
 
 // The operation
 /**
@@ -20722,6 +29410,11 @@ export const PolicyTokensAcquire = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PolicyTokensAcquireOutput,
 }));
 // Input Schema
+export interface PolicyTokensAcquireAtManagementGroupInput {
+  managementGroupName: string;
+  operation: { uri: string; httpMethod: string; content?: unknown };
+  changeReference?: string;
+}
 export const PolicyTokensAcquireAtManagementGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     managementGroupName: Schema.String.pipe(T.PathParam()),
@@ -20735,13 +29428,53 @@ export const PolicyTokensAcquireAtManagementGroupInput =
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/Microsoft.Authorization/acquirePolicyToken",
-      apiVersion: "2025-11-01",
+      apiVersion: "2026-06-01",
     }),
-  );
-export type PolicyTokensAcquireAtManagementGroupInput =
-  typeof PolicyTokensAcquireAtManagementGroupInput.Type;
+  ) as unknown as Schema.Codec<PolicyTokensAcquireAtManagementGroupInput>;
 
 // Output Schema
+export interface PolicyTokensAcquireAtManagementGroupOutput {
+  result?: "Succeeded" | "Failed";
+  requestDetails?: {
+    uri: string;
+    resourceId: string;
+    apiVersion: string;
+    authorizationAction: string;
+    httpMethod: string;
+    contentHash: string;
+  };
+  message?: string;
+  retryAfter?: string;
+  results?: {
+    policyInfo?: {
+      policyDefinitionId?: string;
+      policySetDefinitionId?: string;
+      policyDefinitionReferenceId?: string;
+      policySetDefinitionName?: string;
+      policySetDefinitionVersion?: string;
+      policyDefinitionName?: string;
+      policyDefinitionVersion?: string;
+      policyDefinitionEffect?: string;
+      policyAssignmentId?: string;
+      policyAssignmentName?: string;
+      policyAssignmentVersion?: string;
+      policyAssignmentScope?: string;
+    };
+    result?: "Succeeded" | "Failed";
+    endpointKind?: string;
+    message?: string;
+    retryAfter?: string;
+    claims?: unknown;
+    policyAction?: "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
+    policyEvaluationDetails?: unknown;
+    additionalInfo?: unknown;
+    expiration?: string;
+  }[];
+  changeReference?: string;
+  token?: string;
+  tokenId?: string;
+  expiration?: string;
+}
 export const PolicyTokensAcquireAtManagementGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20766,25 +29499,14 @@ export const PolicyTokensAcquireAtManagementGroupOutput =
               policySetDefinitionId: Schema.optional(Schema.String),
               policyDefinitionReferenceId: Schema.optional(Schema.String),
               policySetDefinitionName: Schema.optional(Schema.String),
-              policySetDefinitionDisplayName: Schema.optional(Schema.String),
               policySetDefinitionVersion: Schema.optional(Schema.String),
-              policySetDefinitionCategory: Schema.optional(Schema.String),
               policyDefinitionName: Schema.optional(Schema.String),
-              policyDefinitionDisplayName: Schema.optional(Schema.String),
               policyDefinitionVersion: Schema.optional(Schema.String),
               policyDefinitionEffect: Schema.optional(Schema.String),
-              policyDefinitionGroupNames: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
               policyAssignmentId: Schema.optional(Schema.String),
               policyAssignmentName: Schema.optional(Schema.String),
-              policyAssignmentDisplayName: Schema.optional(Schema.String),
               policyAssignmentVersion: Schema.optional(Schema.String),
               policyAssignmentScope: Schema.optional(Schema.String),
-              resourceLocation: Schema.optional(Schema.String),
-              ancestors: Schema.optional(Schema.String),
-              complianceReasonCode: Schema.optional(Schema.String),
-              policyExemptionIds: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
           result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
@@ -20805,9 +29527,7 @@ export const PolicyTokensAcquireAtManagementGroupOutput =
     token: Schema.optional(Schema.String),
     tokenId: Schema.optional(Schema.String),
     expiration: Schema.optional(Schema.String),
-  });
-export type PolicyTokensAcquireAtManagementGroupOutput =
-  typeof PolicyTokensAcquireAtManagementGroupOutput.Type;
+  }) as unknown as Schema.Codec<PolicyTokensAcquireAtManagementGroupOutput>;
 
 // The operation
 /**
@@ -20824,26 +29544,34 @@ export const PolicyTokensAcquireAtManagementGroup =
     outputSchema: PolicyTokensAcquireAtManagementGroupOutput,
   }));
 // Input Schema
+export interface PrivateLinkAssociationDeleteInput {
+  groupId: string;
+  plaId: string;
+}
 export const PrivateLinkAssociationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations/{plaId}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type PrivateLinkAssociationDeleteInput =
-  typeof PrivateLinkAssociationDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkAssociationDeleteInput>;
 
 // Output Schema
+export type PrivateLinkAssociationDeleteOutput = void;
 export const PrivateLinkAssociationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateLinkAssociationDeleteOutput =
-  typeof PrivateLinkAssociationDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkAssociationDeleteOutput>;
 
 // The operation
 /**
  * Delete a PrivateLinkAssociation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20851,18 +29579,34 @@ export const PrivateLinkAssociationDelete =
     outputSchema: PrivateLinkAssociationDeleteOutput,
   }));
 // Input Schema
+export interface PrivateLinkAssociationGetInput {
+  groupId: string;
+  plaId: string;
+}
 export const PrivateLinkAssociationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations/{plaId}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type PrivateLinkAssociationGetInput =
-  typeof PrivateLinkAssociationGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkAssociationGetInput>;
 
 // Output Schema
+export interface PrivateLinkAssociationGetOutput {
+  properties?: {
+    privateLink?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    tenantID?: string;
+    scope?: string;
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+}
 export const PrivateLinkAssociationGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -20878,13 +29622,15 @@ export const PrivateLinkAssociationGetOutput =
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-  });
-export type PrivateLinkAssociationGetOutput =
-  typeof PrivateLinkAssociationGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkAssociationGetOutput>;
 
 // The operation
 /**
  * Get a single private link association
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20893,18 +29639,34 @@ export const PrivateLinkAssociationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkAssociationListInput {
+  groupId: string;
+}
 export const PrivateLinkAssociationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations",
       apiVersion: "2020-05-01",
     }),
-  );
-export type PrivateLinkAssociationListInput =
-  typeof PrivateLinkAssociationListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkAssociationListInput>;
 
 // Output Schema
+export interface PrivateLinkAssociationListOutput {
+  value?: {
+    properties?: {
+      privateLink?: string;
+      publicNetworkAccess?: "Enabled" | "Disabled";
+      tenantID?: string;
+      scope?: string;
+    };
+    id?: string;
+    type?: string;
+    name?: string;
+  }[];
+}
 export const PrivateLinkAssociationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -20926,13 +29688,14 @@ export const PrivateLinkAssociationListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkAssociationListOutput =
-  typeof PrivateLinkAssociationListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkAssociationListOutput>;
 
 // The operation
 /**
  * Get a private link association for a management group scope
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
  */
 export const PrivateLinkAssociationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20941,8 +29704,18 @@ export const PrivateLinkAssociationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkAssociationPutInput {
+  groupId: string;
+  plaId: string;
+  properties?: {
+    privateLink?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+  };
+}
 export const PrivateLinkAssociationPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupId: Schema.String.pipe(T.PathParam()),
+    plaId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         privateLink: Schema.optional(Schema.String),
@@ -20957,11 +29730,20 @@ export const PrivateLinkAssociationPutInput =
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Authorization/privateLinkAssociations/{plaId}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type PrivateLinkAssociationPutInput =
-  typeof PrivateLinkAssociationPutInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkAssociationPutInput>;
 
 // Output Schema
+export interface PrivateLinkAssociationPutOutput {
+  properties?: {
+    privateLink?: string;
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    tenantID?: string;
+    scope?: string;
+  };
+  id?: string;
+  type?: string;
+  name?: string;
+}
 export const PrivateLinkAssociationPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -20977,13 +29759,15 @@ export const PrivateLinkAssociationPutOutput =
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-  });
-export type PrivateLinkAssociationPutOutput =
-  typeof PrivateLinkAssociationPutOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkAssociationPutOutput>;
 
 // The operation
 /**
  * Create a PrivateLinkAssociation
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param groupId - The management group ID.
+ * @param plaId - The ID of the PLA
  */
 export const PrivateLinkAssociationPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -20992,8 +29776,14 @@ export const PrivateLinkAssociationPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProviderResourceTypesListInput {
+  subscriptionId: string;
+  resourceProviderNamespace: string;
+  $expand?: string;
+}
 export const ProviderResourceTypesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -21002,137 +29792,194 @@ export const ProviderResourceTypesListInput =
       path: "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ProviderResourceTypesListInput =
-  typeof ProviderResourceTypesListInput.Type;
+  ) as unknown as Schema.Codec<ProviderResourceTypesListInput>;
 
 // Output Schema
+export interface ProviderResourceTypesListOutput {
+  value: {
+    resourceType?: string;
+    locations?: string[];
+    locationMappings?: {
+      location?: string;
+      type?: string;
+      extendedLocations?: string[];
+    }[];
+    aliases?: {
+      name?: string;
+      paths?: {
+        path?: string;
+        apiVersions?: string[];
+        pattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        metadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      type?: "NotSpecified" | "PlainText" | "Mask";
+      defaultPath?: string;
+      defaultPattern?: {
+        phrase?: string;
+        variable?: string;
+        type?: "NotSpecified" | "Extract";
+      };
+      defaultMetadata?: {
+        type?:
+          | "NotSpecified"
+          | "Any"
+          | "String"
+          | "Object"
+          | "Array"
+          | "Integer"
+          | "Number"
+          | "Boolean";
+        attributes?: "None" | "Modifiable";
+      };
+    }[];
+    apiVersions?: string[];
+    defaultApiVersion?: string;
+    zoneMappings?: { location?: string; zones?: string[] }[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    capabilities?: string;
+    properties?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const ProviderResourceTypesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          resourceType: Schema.optional(Schema.String),
-          locations: Schema.optional(Schema.Array(Schema.String)),
-          locationMappings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                location: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                extendedLocations: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
+    value: Schema.Array(
+      Schema.Struct({
+        resourceType: Schema.optional(Schema.String),
+        locations: Schema.optional(Schema.Array(Schema.String)),
+        locationMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.optional(Schema.String),
+              type: Schema.optional(Schema.String),
+              extendedLocations: Schema.optional(Schema.Array(Schema.String)),
+            }),
           ),
-          aliases: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                paths: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      path: Schema.optional(Schema.String),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      pattern: Schema.optional(
-                        Schema.Struct({
-                          phrase: Schema.optional(Schema.String),
-                          variable: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals(["NotSpecified", "Extract"]),
-                          ),
-                        }),
-                      ),
-                      metadata: Schema.optional(
-                        Schema.Struct({
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "NotSpecified",
-                              "Any",
-                              "String",
-                              "Object",
-                              "Array",
-                              "Integer",
-                              "Number",
-                              "Boolean",
-                            ]),
-                          ),
-                          attributes: Schema.optional(
-                            Schema.Literals(["None", "Modifiable"]),
-                          ),
-                        }),
-                      ),
-                    }),
+        ),
+        aliases: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              paths: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    path: Schema.optional(Schema.String),
+                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
+                    pattern: Schema.optional(
+                      Schema.Struct({
+                        phrase: Schema.optional(Schema.String),
+                        variable: Schema.optional(Schema.String),
+                        type: Schema.optional(
+                          Schema.Literals(["NotSpecified", "Extract"]),
+                        ),
+                      }),
+                    ),
+                    metadata: Schema.optional(
+                      Schema.Struct({
+                        type: Schema.optional(
+                          Schema.Literals([
+                            "NotSpecified",
+                            "Any",
+                            "String",
+                            "Object",
+                            "Array",
+                            "Integer",
+                            "Number",
+                            "Boolean",
+                          ]),
+                        ),
+                        attributes: Schema.optional(
+                          Schema.Literals(["None", "Modifiable"]),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              type: Schema.optional(
+                Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
+              ),
+              defaultPath: Schema.optional(Schema.String),
+              defaultPattern: Schema.optional(
+                Schema.Struct({
+                  phrase: Schema.optional(Schema.String),
+                  variable: Schema.optional(Schema.String),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "Extract"]),
                   ),
-                ),
-                type: Schema.optional(
-                  Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
-                ),
-                defaultPath: Schema.optional(Schema.String),
-                defaultPattern: Schema.optional(
-                  Schema.Struct({
-                    phrase: Schema.optional(Schema.String),
-                    variable: Schema.optional(Schema.String),
-                    type: Schema.optional(
-                      Schema.Literals(["NotSpecified", "Extract"]),
-                    ),
-                  }),
-                ),
-                defaultMetadata: Schema.optional(
-                  Schema.Struct({
-                    type: Schema.optional(
-                      Schema.Literals([
-                        "NotSpecified",
-                        "Any",
-                        "String",
-                        "Object",
-                        "Array",
-                        "Integer",
-                        "Number",
-                        "Boolean",
-                      ]),
-                    ),
-                    attributes: Schema.optional(
-                      Schema.Literals(["None", "Modifiable"]),
-                    ),
-                  }),
-                ),
-              }),
-            ),
+                }),
+              ),
+              defaultMetadata: Schema.optional(
+                Schema.Struct({
+                  type: Schema.optional(
+                    Schema.Literals([
+                      "NotSpecified",
+                      "Any",
+                      "String",
+                      "Object",
+                      "Array",
+                      "Integer",
+                      "Number",
+                      "Boolean",
+                    ]),
+                  ),
+                  attributes: Schema.optional(
+                    Schema.Literals(["None", "Modifiable"]),
+                  ),
+                }),
+              ),
+            }),
           ),
-          apiVersions: Schema.optional(Schema.Array(Schema.String)),
-          defaultApiVersion: Schema.optional(Schema.String),
-          zoneMappings: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                location: Schema.optional(Schema.String),
-                zones: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
+        ),
+        apiVersions: Schema.optional(Schema.Array(Schema.String)),
+        defaultApiVersion: Schema.optional(Schema.String),
+        zoneMappings: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              location: Schema.optional(Schema.String),
+              zones: Schema.optional(Schema.Array(Schema.String)),
+            }),
           ),
-          apiProfiles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                profileVersion: Schema.optional(Schema.String),
-                apiVersion: Schema.optional(Schema.String),
-              }),
-            ),
+        ),
+        apiProfiles: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              profileVersion: Schema.optional(Schema.String),
+              apiVersion: Schema.optional(Schema.String),
+            }),
           ),
-          capabilities: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
+        ),
+        capabilities: Schema.optional(Schema.String),
+        properties: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProviderResourceTypesListOutput =
-  typeof ProviderResourceTypesListOutput.Type;
+  }) as unknown as Schema.Codec<ProviderResourceTypesListOutput>;
 
 // The operation
 /**
  * List the resource types for a specified resource provider.
  *
- * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param $expand - The $expand query parameter.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
 export const ProviderResourceTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -21142,8 +29989,14 @@ export const ProviderResourceTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProvidersGetInput {
+  resourceProviderNamespace: string;
+  subscriptionId: string;
+  $expand?: string;
+}
 export const ProvidersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -21151,10 +30004,78 @@ export const ProvidersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}",
     apiVersion: "2025-04-01",
   }),
-);
-export type ProvidersGetInput = typeof ProvidersGetInput.Type;
+) as unknown as Schema.Codec<ProvidersGetInput>;
 
 // Output Schema
+export interface ProvidersGetOutput {
+  id?: string;
+  namespace?: string;
+  registrationState?: string;
+  registrationPolicy?: string;
+  resourceTypes?: {
+    resourceType?: string;
+    locations?: string[];
+    locationMappings?: {
+      location?: string;
+      type?: string;
+      extendedLocations?: string[];
+    }[];
+    aliases?: {
+      name?: string;
+      paths?: {
+        path?: string;
+        apiVersions?: string[];
+        pattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        metadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      type?: "NotSpecified" | "PlainText" | "Mask";
+      defaultPath?: string;
+      defaultPattern?: {
+        phrase?: string;
+        variable?: string;
+        type?: "NotSpecified" | "Extract";
+      };
+      defaultMetadata?: {
+        type?:
+          | "NotSpecified"
+          | "Any"
+          | "String"
+          | "Object"
+          | "Array"
+          | "Integer"
+          | "Number"
+          | "Boolean";
+        attributes?: "None" | "Modifiable";
+      };
+    }[];
+    apiVersions?: string[];
+    defaultApiVersion?: string;
+    zoneMappings?: { location?: string; zones?: string[] }[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    capabilities?: string;
+    properties?: Record<string, string>;
+  }[];
+  providerAuthorizationConsentState?:
+    | "NotSpecified"
+    | "Required"
+    | "NotRequired"
+    | "Consented";
+}
 export const ProvidersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   namespace: Schema.optional(Schema.String),
@@ -21277,21 +30198,26 @@ export const ProvidersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   providerAuthorizationConsentState: Schema.optional(
     Schema.Literals(["NotSpecified", "Required", "NotRequired", "Consented"]),
   ),
-});
-export type ProvidersGetOutput = typeof ProvidersGetOutput.Type;
+}) as unknown as Schema.Codec<ProvidersGetOutput>;
 
 // The operation
 /**
  * Gets the specified resource provider.
  *
+ * @param api-version - The API version to use for this operation.
  * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
  * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProvidersGetInput,
   outputSchema: ProvidersGetOutput,
 }));
 // Input Schema
+export interface ProvidersGetAtTenantScopeInput {
+  resourceProviderNamespace: string;
+  $expand?: string;
+}
 export const ProvidersGetAtTenantScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -21302,11 +30228,78 @@ export const ProvidersGetAtTenantScopeInput =
       path: "/providers/{resourceProviderNamespace}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ProvidersGetAtTenantScopeInput =
-  typeof ProvidersGetAtTenantScopeInput.Type;
+  ) as unknown as Schema.Codec<ProvidersGetAtTenantScopeInput>;
 
 // Output Schema
+export interface ProvidersGetAtTenantScopeOutput {
+  id?: string;
+  namespace?: string;
+  registrationState?: string;
+  registrationPolicy?: string;
+  resourceTypes?: {
+    resourceType?: string;
+    locations?: string[];
+    locationMappings?: {
+      location?: string;
+      type?: string;
+      extendedLocations?: string[];
+    }[];
+    aliases?: {
+      name?: string;
+      paths?: {
+        path?: string;
+        apiVersions?: string[];
+        pattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        metadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      type?: "NotSpecified" | "PlainText" | "Mask";
+      defaultPath?: string;
+      defaultPattern?: {
+        phrase?: string;
+        variable?: string;
+        type?: "NotSpecified" | "Extract";
+      };
+      defaultMetadata?: {
+        type?:
+          | "NotSpecified"
+          | "Any"
+          | "String"
+          | "Object"
+          | "Array"
+          | "Integer"
+          | "Number"
+          | "Boolean";
+        attributes?: "None" | "Modifiable";
+      };
+    }[];
+    apiVersions?: string[];
+    defaultApiVersion?: string;
+    zoneMappings?: { location?: string; zones?: string[] }[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    capabilities?: string;
+    properties?: Record<string, string>;
+  }[];
+  providerAuthorizationConsentState?:
+    | "NotSpecified"
+    | "Required"
+    | "NotRequired"
+    | "Consented";
+}
 export const ProvidersGetAtTenantScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21430,14 +30423,13 @@ export const ProvidersGetAtTenantScopeOutput =
     providerAuthorizationConsentState: Schema.optional(
       Schema.Literals(["NotSpecified", "Required", "NotRequired", "Consented"]),
     ),
-  });
-export type ProvidersGetAtTenantScopeOutput =
-  typeof ProvidersGetAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<ProvidersGetAtTenantScopeOutput>;
 
 // The operation
 /**
  * Gets the specified resource provider at the tenant level.
  *
+ * @param api-version - The API version to use for this operation.
  * @param $expand - The $expand query parameter. For example, to include property aliases in response, use $expand=resourceTypes/aliases.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
@@ -21448,7 +30440,12 @@ export const ProvidersGetAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProvidersListInput {
+  subscriptionId: string;
+  $expand?: string;
+}
 export const ProvidersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $expand: Schema.optional(Schema.String),
 }).pipe(
   T.Http({
@@ -21456,13 +30453,318 @@ export const ProvidersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers",
     apiVersion: "2025-04-01",
   }),
-);
-export type ProvidersListInput = typeof ProvidersListInput.Type;
+) as unknown as Schema.Codec<ProvidersListInput>;
 
 // Output Schema
+export interface ProvidersListOutput {
+  value: {
+    id?: string;
+    namespace?: string;
+    registrationState?: string;
+    registrationPolicy?: string;
+    resourceTypes?: {
+      resourceType?: string;
+      locations?: string[];
+      locationMappings?: {
+        location?: string;
+        type?: string;
+        extendedLocations?: string[];
+      }[];
+      aliases?: {
+        name?: string;
+        paths?: {
+          path?: string;
+          apiVersions?: string[];
+          pattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          metadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        type?: "NotSpecified" | "PlainText" | "Mask";
+        defaultPath?: string;
+        defaultPattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        defaultMetadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      apiVersions?: string[];
+      defaultApiVersion?: string;
+      zoneMappings?: { location?: string; zones?: string[] }[];
+      apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+      capabilities?: string;
+      properties?: Record<string, string>;
+    }[];
+    providerAuthorizationConsentState?:
+      | "NotSpecified"
+      | "Required"
+      | "NotRequired"
+      | "Consented";
+  }[];
+  nextLink?: string;
+}
 export const ProvidersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      namespace: Schema.optional(Schema.String),
+      registrationState: Schema.optional(Schema.String),
+      registrationPolicy: Schema.optional(Schema.String),
+      resourceTypes: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            resourceType: Schema.optional(Schema.String),
+            locations: Schema.optional(Schema.Array(Schema.String)),
+            locationMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
+                  extendedLocations: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            ),
+            aliases: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(Schema.String),
+                  paths: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        path: Schema.optional(Schema.String),
+                        apiVersions: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        pattern: Schema.optional(
+                          Schema.Struct({
+                            phrase: Schema.optional(Schema.String),
+                            variable: Schema.optional(Schema.String),
+                            type: Schema.optional(
+                              Schema.Literals(["NotSpecified", "Extract"]),
+                            ),
+                          }),
+                        ),
+                        metadata: Schema.optional(
+                          Schema.Struct({
+                            type: Schema.optional(
+                              Schema.Literals([
+                                "NotSpecified",
+                                "Any",
+                                "String",
+                                "Object",
+                                "Array",
+                                "Integer",
+                                "Number",
+                                "Boolean",
+                              ]),
+                            ),
+                            attributes: Schema.optional(
+                              Schema.Literals(["None", "Modifiable"]),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  type: Schema.optional(
+                    Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
+                  ),
+                  defaultPath: Schema.optional(Schema.String),
+                  defaultPattern: Schema.optional(
+                    Schema.Struct({
+                      phrase: Schema.optional(Schema.String),
+                      variable: Schema.optional(Schema.String),
+                      type: Schema.optional(
+                        Schema.Literals(["NotSpecified", "Extract"]),
+                      ),
+                    }),
+                  ),
+                  defaultMetadata: Schema.optional(
+                    Schema.Struct({
+                      type: Schema.optional(
+                        Schema.Literals([
+                          "NotSpecified",
+                          "Any",
+                          "String",
+                          "Object",
+                          "Array",
+                          "Integer",
+                          "Number",
+                          "Boolean",
+                        ]),
+                      ),
+                      attributes: Schema.optional(
+                        Schema.Literals(["None", "Modifiable"]),
+                      ),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            apiVersions: Schema.optional(Schema.Array(Schema.String)),
+            defaultApiVersion: Schema.optional(Schema.String),
+            zoneMappings: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  location: Schema.optional(Schema.String),
+                  zones: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            apiProfiles: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  profileVersion: Schema.optional(Schema.String),
+                  apiVersion: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            capabilities: Schema.optional(Schema.String),
+            properties: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+      ),
+      providerAuthorizationConsentState: Schema.optional(
+        Schema.Literals([
+          "NotSpecified",
+          "Required",
+          "NotRequired",
+          "Consented",
+        ]),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ProvidersListOutput>;
+
+// The operation
+/**
+ * Gets all resource providers for a subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param subscriptionId - The ID of the target subscription.
+ */
+export const ProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  inputSchema: ProvidersListInput,
+  outputSchema: ProvidersListOutput,
+}));
+// Input Schema
+export interface ProvidersListAtTenantScopeInput {
+  $expand?: string;
+}
+export const ProvidersListAtTenantScopeInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $expand: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({ method: "GET", path: "/providers", apiVersion: "2025-04-01" }),
+  ) as unknown as Schema.Codec<ProvidersListAtTenantScopeInput>;
+
+// Output Schema
+export interface ProvidersListAtTenantScopeOutput {
+  value: {
+    id?: string;
+    namespace?: string;
+    registrationState?: string;
+    registrationPolicy?: string;
+    resourceTypes?: {
+      resourceType?: string;
+      locations?: string[];
+      locationMappings?: {
+        location?: string;
+        type?: string;
+        extendedLocations?: string[];
+      }[];
+      aliases?: {
+        name?: string;
+        paths?: {
+          path?: string;
+          apiVersions?: string[];
+          pattern?: {
+            phrase?: string;
+            variable?: string;
+            type?: "NotSpecified" | "Extract";
+          };
+          metadata?: {
+            type?:
+              | "NotSpecified"
+              | "Any"
+              | "String"
+              | "Object"
+              | "Array"
+              | "Integer"
+              | "Number"
+              | "Boolean";
+            attributes?: "None" | "Modifiable";
+          };
+        }[];
+        type?: "NotSpecified" | "PlainText" | "Mask";
+        defaultPath?: string;
+        defaultPattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        defaultMetadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      apiVersions?: string[];
+      defaultApiVersion?: string;
+      zoneMappings?: { location?: string; zones?: string[] }[];
+      apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+      capabilities?: string;
+      properties?: Record<string, string>;
+    }[];
+    providerAuthorizationConsentState?:
+      | "NotSpecified"
+      | "Required"
+      | "NotRequired"
+      | "Consented";
+  }[];
+  nextLink?: string;
+}
+export const ProvidersListAtTenantScopeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
         namespace: Schema.optional(Schema.String),
@@ -21596,180 +30898,15 @@ export const ProvidersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         ),
       }),
     ),
-  ),
-  nextLink: Schema.optional(Schema.String),
-});
-export type ProvidersListOutput = typeof ProvidersListOutput.Type;
-
-// The operation
-/**
- * Gets all resource providers for a subscription.
- *
- * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
- */
-export const ProvidersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ProvidersListInput,
-  outputSchema: ProvidersListOutput,
-}));
-// Input Schema
-export const ProvidersListAtTenantScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    $expand: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({ method: "GET", path: "/providers", apiVersion: "2025-04-01" }),
-  );
-export type ProvidersListAtTenantScopeInput =
-  typeof ProvidersListAtTenantScopeInput.Type;
-
-// Output Schema
-export const ProvidersListAtTenantScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          registrationState: Schema.optional(Schema.String),
-          registrationPolicy: Schema.optional(Schema.String),
-          resourceTypes: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                resourceType: Schema.optional(Schema.String),
-                locations: Schema.optional(Schema.Array(Schema.String)),
-                locationMappings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      location: Schema.optional(Schema.String),
-                      type: Schema.optional(Schema.String),
-                      extendedLocations: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                    }),
-                  ),
-                ),
-                aliases: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      paths: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            path: Schema.optional(Schema.String),
-                            apiVersions: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                            pattern: Schema.optional(
-                              Schema.Struct({
-                                phrase: Schema.optional(Schema.String),
-                                variable: Schema.optional(Schema.String),
-                                type: Schema.optional(
-                                  Schema.Literals(["NotSpecified", "Extract"]),
-                                ),
-                              }),
-                            ),
-                            metadata: Schema.optional(
-                              Schema.Struct({
-                                type: Schema.optional(
-                                  Schema.Literals([
-                                    "NotSpecified",
-                                    "Any",
-                                    "String",
-                                    "Object",
-                                    "Array",
-                                    "Integer",
-                                    "Number",
-                                    "Boolean",
-                                  ]),
-                                ),
-                                attributes: Schema.optional(
-                                  Schema.Literals(["None", "Modifiable"]),
-                                ),
-                              }),
-                            ),
-                          }),
-                        ),
-                      ),
-                      type: Schema.optional(
-                        Schema.Literals(["NotSpecified", "PlainText", "Mask"]),
-                      ),
-                      defaultPath: Schema.optional(Schema.String),
-                      defaultPattern: Schema.optional(
-                        Schema.Struct({
-                          phrase: Schema.optional(Schema.String),
-                          variable: Schema.optional(Schema.String),
-                          type: Schema.optional(
-                            Schema.Literals(["NotSpecified", "Extract"]),
-                          ),
-                        }),
-                      ),
-                      defaultMetadata: Schema.optional(
-                        Schema.Struct({
-                          type: Schema.optional(
-                            Schema.Literals([
-                              "NotSpecified",
-                              "Any",
-                              "String",
-                              "Object",
-                              "Array",
-                              "Integer",
-                              "Number",
-                              "Boolean",
-                            ]),
-                          ),
-                          attributes: Schema.optional(
-                            Schema.Literals(["None", "Modifiable"]),
-                          ),
-                        }),
-                      ),
-                    }),
-                  ),
-                ),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                defaultApiVersion: Schema.optional(Schema.String),
-                zoneMappings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      location: Schema.optional(Schema.String),
-                      zones: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                apiProfiles: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      profileVersion: Schema.optional(Schema.String),
-                      apiVersion: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                capabilities: Schema.optional(Schema.String),
-                properties: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          ),
-          providerAuthorizationConsentState: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Required",
-              "NotRequired",
-              "Consented",
-            ]),
-          ),
-        }),
-      ),
-    ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProvidersListAtTenantScopeOutput =
-  typeof ProvidersListAtTenantScopeOutput.Type;
+  }) as unknown as Schema.Codec<ProvidersListAtTenantScopeOutput>;
 
 // The operation
 /**
  * Gets all resource providers for the tenant.
  *
- * @param $expand - The properties to include in the results. For example, use &$expand=metadata in the query string to retrieve resource provider metadata. To include property aliases in response, use $expand=resourceTypes/aliases.
+ * @param api-version - The API version to use for this operation.
+ * @param $expand - The properties to include in the results.
  */
 export const ProvidersListAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -21778,8 +30915,13 @@ export const ProvidersListAtTenantScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProvidersProviderPermissionsInput {
+  subscriptionId: string;
+  resourceProviderNamespace: string;
+}
 export const ProvidersProviderPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21787,77 +30929,104 @@ export const ProvidersProviderPermissionsInput =
       path: "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ProvidersProviderPermissionsInput =
-  typeof ProvidersProviderPermissionsInput.Type;
+  ) as unknown as Schema.Codec<ProvidersProviderPermissionsInput>;
 
 // Output Schema
+export interface ProvidersProviderPermissionsOutput {
+  value: {
+    applicationId?: string;
+    roleDefinition?: {
+      id?: string;
+      name?: string;
+      isServiceRole?: boolean;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+      }[];
+      scopes?: string[];
+    };
+    managedByRoleDefinition?: {
+      id?: string;
+      name?: string;
+      isServiceRole?: boolean;
+      permissions?: {
+        actions?: string[];
+        notActions?: string[];
+        dataActions?: string[];
+        notDataActions?: string[];
+      }[];
+      scopes?: string[];
+    };
+    providerAuthorizationConsentState?:
+      | "NotSpecified"
+      | "Required"
+      | "NotRequired"
+      | "Consented";
+  }[];
+  nextLink?: string;
+}
 export const ProvidersProviderPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          applicationId: Schema.optional(Schema.String),
-          roleDefinition: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              isServiceRole: Schema.optional(Schema.Boolean),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
+    value: Schema.Array(
+      Schema.Struct({
+        applicationId: Schema.optional(Schema.String),
+        roleDefinition: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            isServiceRole: Schema.optional(Schema.Boolean),
+            permissions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                  notActions: Schema.optional(Schema.Array(Schema.String)),
+                  dataActions: Schema.optional(Schema.Array(Schema.String)),
+                  notDataActions: Schema.optional(Schema.Array(Schema.String)),
+                }),
               ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          managedByRoleDefinition: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              isServiceRole: Schema.optional(Schema.Boolean),
-              permissions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    actions: Schema.optional(Schema.Array(Schema.String)),
-                    notActions: Schema.optional(Schema.Array(Schema.String)),
-                    dataActions: Schema.optional(Schema.Array(Schema.String)),
-                    notDataActions: Schema.optional(
-                      Schema.Array(Schema.String),
-                    ),
-                  }),
-                ),
+            ),
+            scopes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        managedByRoleDefinition: Schema.optional(
+          Schema.Struct({
+            id: Schema.optional(Schema.String),
+            name: Schema.optional(Schema.String),
+            isServiceRole: Schema.optional(Schema.Boolean),
+            permissions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  actions: Schema.optional(Schema.Array(Schema.String)),
+                  notActions: Schema.optional(Schema.Array(Schema.String)),
+                  dataActions: Schema.optional(Schema.Array(Schema.String)),
+                  notDataActions: Schema.optional(Schema.Array(Schema.String)),
+                }),
               ),
-              scopes: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-          providerAuthorizationConsentState: Schema.optional(
-            Schema.Literals([
-              "NotSpecified",
-              "Required",
-              "NotRequired",
-              "Consented",
-            ]),
-          ),
-        }),
-      ),
+            ),
+            scopes: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        providerAuthorizationConsentState: Schema.optional(
+          Schema.Literals([
+            "NotSpecified",
+            "Required",
+            "NotRequired",
+            "Consented",
+          ]),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProvidersProviderPermissionsOutput =
-  typeof ProvidersProviderPermissionsOutput.Type;
+  }) as unknown as Schema.Codec<ProvidersProviderPermissionsOutput>;
 
 // The operation
 /**
  * Get the provider permissions.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider.
  */
 export const ProvidersProviderPermissions =
@@ -21866,8 +31035,14 @@ export const ProvidersProviderPermissions =
     outputSchema: ProvidersProviderPermissionsOutput,
   }));
 // Input Schema
+export interface ProvidersRegisterInput {
+  subscriptionId: string;
+  resourceProviderNamespace: string;
+  thirdPartyProviderConsent?: { consentToAuthorization?: boolean };
+}
 export const ProvidersRegisterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     thirdPartyProviderConsent: Schema.optional(
       Schema.Struct({
@@ -21881,10 +31056,78 @@ export const ProvidersRegisterInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register",
     apiVersion: "2025-04-01",
   }),
-);
-export type ProvidersRegisterInput = typeof ProvidersRegisterInput.Type;
+) as unknown as Schema.Codec<ProvidersRegisterInput>;
 
 // Output Schema
+export interface ProvidersRegisterOutput {
+  id?: string;
+  namespace?: string;
+  registrationState?: string;
+  registrationPolicy?: string;
+  resourceTypes?: {
+    resourceType?: string;
+    locations?: string[];
+    locationMappings?: {
+      location?: string;
+      type?: string;
+      extendedLocations?: string[];
+    }[];
+    aliases?: {
+      name?: string;
+      paths?: {
+        path?: string;
+        apiVersions?: string[];
+        pattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        metadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      type?: "NotSpecified" | "PlainText" | "Mask";
+      defaultPath?: string;
+      defaultPattern?: {
+        phrase?: string;
+        variable?: string;
+        type?: "NotSpecified" | "Extract";
+      };
+      defaultMetadata?: {
+        type?:
+          | "NotSpecified"
+          | "Any"
+          | "String"
+          | "Object"
+          | "Array"
+          | "Integer"
+          | "Number"
+          | "Boolean";
+        attributes?: "None" | "Modifiable";
+      };
+    }[];
+    apiVersions?: string[];
+    defaultApiVersion?: string;
+    zoneMappings?: { location?: string; zones?: string[] }[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    capabilities?: string;
+    properties?: Record<string, string>;
+  }[];
+  providerAuthorizationConsentState?:
+    | "NotSpecified"
+    | "Required"
+    | "NotRequired"
+    | "Consented";
+}
 export const ProvidersRegisterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22008,13 +31251,14 @@ export const ProvidersRegisterOutput =
     providerAuthorizationConsentState: Schema.optional(
       Schema.Literals(["NotSpecified", "Required", "NotRequired", "Consented"]),
     ),
-  });
-export type ProvidersRegisterOutput = typeof ProvidersRegisterOutput.Type;
+  }) as unknown as Schema.Codec<ProvidersRegisterOutput>;
 
 // The operation
 /**
  * Registers a subscription with a resource provider.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider to register.
  */
 export const ProvidersRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22022,30 +31266,33 @@ export const ProvidersRegister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProvidersRegisterOutput,
 }));
 // Input Schema
+export interface ProvidersRegisterAtManagementGroupScopeInput {
+  resourceProviderNamespace: string;
+  groupId: string;
+}
 export const ProvidersRegisterAtManagementGroupScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
+    groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ProvidersRegisterAtManagementGroupScopeInput =
-  typeof ProvidersRegisterAtManagementGroupScopeInput.Type;
+  ) as unknown as Schema.Codec<ProvidersRegisterAtManagementGroupScopeInput>;
 
 // Output Schema
+export type ProvidersRegisterAtManagementGroupScopeOutput = void;
 export const ProvidersRegisterAtManagementGroupScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProvidersRegisterAtManagementGroupScopeOutput =
-  typeof ProvidersRegisterAtManagementGroupScopeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProvidersRegisterAtManagementGroupScopeOutput>;
 
 // The operation
 /**
  * Registers a management group with a resource provider. Use this operation to register a resource provider with resource types that can be deployed at the management group scope. It does not recursively register subscriptions within the management group. Instead, you must register subscriptions individually.
  *
- * @param resourceProviderNamespace - The namespace of the resource provider to register.
+ * @param api-version - The API version to use for this operation.
+ * @param resourceProviderNamespace - The management group ID.The namespace of the resource provider to register.
  */
 export const ProvidersRegisterAtManagementGroupScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22053,8 +31300,13 @@ export const ProvidersRegisterAtManagementGroupScope =
     outputSchema: ProvidersRegisterAtManagementGroupScopeOutput,
   }));
 // Input Schema
+export interface ProvidersUnregisterInput {
+  subscriptionId: string;
+  resourceProviderNamespace: string;
+}
 export const ProvidersUnregisterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22062,10 +31314,78 @@ export const ProvidersUnregisterInput =
       path: "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ProvidersUnregisterInput = typeof ProvidersUnregisterInput.Type;
+  ) as unknown as Schema.Codec<ProvidersUnregisterInput>;
 
 // Output Schema
+export interface ProvidersUnregisterOutput {
+  id?: string;
+  namespace?: string;
+  registrationState?: string;
+  registrationPolicy?: string;
+  resourceTypes?: {
+    resourceType?: string;
+    locations?: string[];
+    locationMappings?: {
+      location?: string;
+      type?: string;
+      extendedLocations?: string[];
+    }[];
+    aliases?: {
+      name?: string;
+      paths?: {
+        path?: string;
+        apiVersions?: string[];
+        pattern?: {
+          phrase?: string;
+          variable?: string;
+          type?: "NotSpecified" | "Extract";
+        };
+        metadata?: {
+          type?:
+            | "NotSpecified"
+            | "Any"
+            | "String"
+            | "Object"
+            | "Array"
+            | "Integer"
+            | "Number"
+            | "Boolean";
+          attributes?: "None" | "Modifiable";
+        };
+      }[];
+      type?: "NotSpecified" | "PlainText" | "Mask";
+      defaultPath?: string;
+      defaultPattern?: {
+        phrase?: string;
+        variable?: string;
+        type?: "NotSpecified" | "Extract";
+      };
+      defaultMetadata?: {
+        type?:
+          | "NotSpecified"
+          | "Any"
+          | "String"
+          | "Object"
+          | "Array"
+          | "Integer"
+          | "Number"
+          | "Boolean";
+        attributes?: "None" | "Modifiable";
+      };
+    }[];
+    apiVersions?: string[];
+    defaultApiVersion?: string;
+    zoneMappings?: { location?: string; zones?: string[] }[];
+    apiProfiles?: { profileVersion?: string; apiVersion?: string }[];
+    capabilities?: string;
+    properties?: Record<string, string>;
+  }[];
+  providerAuthorizationConsentState?:
+    | "NotSpecified"
+    | "Required"
+    | "NotRequired"
+    | "Consented";
+}
 export const ProvidersUnregisterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22189,13 +31509,14 @@ export const ProvidersUnregisterOutput =
     providerAuthorizationConsentState: Schema.optional(
       Schema.Literals(["NotSpecified", "Required", "NotRequired", "Consented"]),
     ),
-  });
-export type ProvidersUnregisterOutput = typeof ProvidersUnregisterOutput.Type;
+  }) as unknown as Schema.Codec<ProvidersUnregisterOutput>;
 
 // The operation
 /**
  * Unregisters a subscription from a resource provider.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceProviderNamespace - The namespace of the resource provider to unregister.
  */
 export const ProvidersUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22203,53 +31524,76 @@ export const ProvidersUnregister = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProvidersUnregisterOutput,
 }));
 // Input Schema
+export interface ResourceGroupsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  properties?: { provisioningState?: string };
+  managedBy?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ResourceGroupsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Struct({
         provisioningState: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
     managedBy: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    location: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourceGroupsCreateOrUpdateInput =
-  typeof ResourceGroupsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ResourceGroupsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ResourceGroupsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourceGroupsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourceGroupsCreateOrUpdateOutput =
-  typeof ResourceGroupsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ResourceGroupsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a resource group.
  *
- * @param resourceGroupName - The name of the resource group to create or update. Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22257,8 +31601,14 @@ export const ResourceGroupsCreateOrUpdate =
     outputSchema: ResourceGroupsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ResourceGroupsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  forceDeletionTypes?: string;
+}
 export const ResourceGroupsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     forceDeletionTypes: Schema.optional(Schema.String),
   }).pipe(
@@ -22267,13 +31617,12 @@ export const ResourceGroupsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourceGroupsDeleteInput = typeof ResourceGroupsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ResourceGroupsDeleteInput>;
 
 // Output Schema
+export type ResourceGroupsDeleteOutput = void;
 export const ResourceGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourceGroupsDeleteOutput = typeof ResourceGroupsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -22281,7 +31630,9 @@ export type ResourceGroupsDeleteOutput = typeof ResourceGroupsDeleteOutput.Type;
  *
  * When you delete a resource group, all of its resources are also deleted. Deleting a resource group deletes all of its template deployments and currently stored operations.
  *
- * @param resourceGroupName - The name of the resource group to delete. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  * @param forceDeletionTypes - The resource types you want to force delete. Currently, only the following is supported: forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
  */
 export const ResourceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -22291,8 +31642,16 @@ export const ResourceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourceGroupsExportTemplateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resources?: string[];
+  options?: string;
+  outputFormat?: "Json" | "Bicep";
+}
 export const ResourceGroupsExportTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     options: Schema.optional(Schema.String),
@@ -22303,11 +31662,26 @@ export const ResourceGroupsExportTemplateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/exportTemplate",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourceGroupsExportTemplateInput =
-  typeof ResourceGroupsExportTemplateInput.Type;
+  ) as unknown as Schema.Codec<ResourceGroupsExportTemplateInput>;
 
 // Output Schema
+export interface ResourceGroupsExportTemplateOutput {
+  template?: unknown;
+  output?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    }[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const ResourceGroupsExportTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     template: Schema.optional(Schema.Unknown),
@@ -22345,15 +31719,15 @@ export const ResourceGroupsExportTemplateOutput =
         ),
       }),
     ),
-  });
-export type ResourceGroupsExportTemplateOutput =
-  typeof ResourceGroupsExportTemplateOutput.Type;
+  }) as unknown as Schema.Codec<ResourceGroupsExportTemplateOutput>;
 
 // The operation
 /**
  * Captures the specified resource group as a template.
  *
- * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsExportTemplate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22361,8 +31735,13 @@ export const ResourceGroupsExportTemplate =
     outputSchema: ResourceGroupsExportTemplateOutput,
   }));
 // Input Schema
+export interface ResourceGroupsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ResourceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   },
 ).pipe(
@@ -22371,30 +31750,49 @@ export const ResourceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type ResourceGroupsGetInput = typeof ResourceGroupsGetInput.Type;
+) as unknown as Schema.Codec<ResourceGroupsGetInput>;
 
 // Output Schema
+export interface ResourceGroupsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourceGroupsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourceGroupsGetOutput = typeof ResourceGroupsGetOutput.Type;
+  }) as unknown as Schema.Codec<ResourceGroupsGetOutput>;
 
 // The operation
 /**
  * Gets a resource group.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22402,8 +31800,14 @@ export const ResourceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourceGroupsGetOutput,
 }));
 // Input Schema
+export interface ResourceGroupsListInput {
+  subscriptionId: string;
+  $filter?: string;
+  $top?: number;
+}
 export const ResourceGroupsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -22412,37 +31816,67 @@ export const ResourceGroupsListInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourceGroupsListInput = typeof ResourceGroupsListInput.Type;
+  ) as unknown as Schema.Codec<ResourceGroupsListInput>;
 
 // Output Schema
+export interface ResourceGroupsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ResourceGroupsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          properties: Schema.optional(
-            Schema.Struct({
-              provisioningState: Schema.optional(Schema.String),
-            }),
-          ),
-          location: Schema.String,
-          managedBy: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceGroupsListOutput = typeof ResourceGroupsListOutput.Type;
+  }) as unknown as Schema.Codec<ResourceGroupsListOutput>;
 
 // The operation
 /**
  * Gets all the resource groups for a subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param $filter - The filter to apply on the operation.<br><br>You can filter by tag names and values. For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
  * @param $top - The number of results to return. If null is passed, returns all resource groups.
  */
@@ -22451,8 +31885,17 @@ export const ResourceGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourceGroupsListOutput,
 }));
 // Input Schema
+export interface ResourceGroupsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  name?: string;
+  properties?: { provisioningState?: string };
+  managedBy?: string;
+  tags?: Record<string, string>;
+}
 export const ResourceGroupsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -22468,25 +31911,42 @@ export const ResourceGroupsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourceGroupsUpdateInput = typeof ResourceGroupsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ResourceGroupsUpdateInput>;
 
 // Output Schema
+export interface ResourceGroupsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourceGroupsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        provisioningState: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    location: Schema.String,
-    managedBy: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourceGroupsUpdateOutput = typeof ResourceGroupsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ResourceGroupsUpdateOutput>;
 
 // The operation
 /**
@@ -22494,7 +31954,9 @@ export type ResourceGroupsUpdateOutput = typeof ResourceGroupsUpdateOutput.Type;
  *
  * Resource groups can be updated through a simple PATCH operation to a group address. The format of the request is the same as that for creating a resource group. If a field is unspecified, the current value is retained.
  *
- * @param resourceGroupName - The name of the resource group to update. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourceGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -22503,6 +31965,13 @@ export const ResourceGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourceLinksCreateOrUpdateInput {
+  linkId: string;
+  id?: string;
+  name?: string;
+  type?: unknown;
+  properties?: { sourceId?: string; targetId: string; notes?: string };
+}
 export const ResourceLinksCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkId: Schema.String.pipe(T.PathParam()),
@@ -22518,11 +31987,15 @@ export const ResourceLinksCreateOrUpdateInput =
     ),
   }).pipe(
     T.Http({ method: "PUT", path: "/{linkId}", apiVersion: "2016-09-01" }),
-  );
-export type ResourceLinksCreateOrUpdateInput =
-  typeof ResourceLinksCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ResourceLinksCreateOrUpdateInput>;
 
 // Output Schema
+export interface ResourceLinksCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: unknown;
+  properties?: { sourceId?: string; targetId: string; notes?: string };
+}
 export const ResourceLinksCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22535,15 +32008,14 @@ export const ResourceLinksCreateOrUpdateOutput =
         notes: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ResourceLinksCreateOrUpdateOutput =
-  typeof ResourceLinksCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ResourceLinksCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a resource link between the specified resources.
  *
  * @param linkId - The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -22552,36 +32024,49 @@ export const ResourceLinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourceLinksDeleteInput {
+  linkId: string;
+}
 export const ResourceLinksDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     linkId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/{linkId}", apiVersion: "2016-09-01" }),
-  );
-export type ResourceLinksDeleteInput = typeof ResourceLinksDeleteInput.Type;
+  ) as unknown as Schema.Codec<ResourceLinksDeleteInput>;
 
 // Output Schema
+export type ResourceLinksDeleteOutput = void;
 export const ResourceLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourceLinksDeleteOutput = typeof ResourceLinksDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceLinksDeleteOutput>;
 
 // The operation
 /**
  * Deletes a resource link with the specified ID.
  *
  * @param linkId - The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourceLinksDeleteInput,
   outputSchema: ResourceLinksDeleteOutput,
 }));
 // Input Schema
+export interface ResourceLinksGetInput {
+  linkId: string;
+}
 export const ResourceLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   linkId: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/{linkId}", apiVersion: "2016-09-01" }));
-export type ResourceLinksGetInput = typeof ResourceLinksGetInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/{linkId}", apiVersion: "2016-09-01" }),
+) as unknown as Schema.Codec<ResourceLinksGetInput>;
 
 // Output Schema
+export interface ResourceLinksGetOutput {
+  id?: string;
+  name?: string;
+  type?: unknown;
+  properties?: { sourceId?: string; targetId: string; notes?: string };
+}
 export const ResourceLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -22595,20 +32080,24 @@ export const ResourceLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type ResourceLinksGetOutput = typeof ResourceLinksGetOutput.Type;
+) as unknown as Schema.Codec<ResourceLinksGetOutput>;
 
 // The operation
 /**
  * Gets a resource link with the specified ID.
  *
  * @param linkId - The fully qualified Id of the resource link. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourceLinksGetInput,
   outputSchema: ResourceLinksGetOutput,
 }));
 // Input Schema
+export interface ResourceLinksListAtSourceScopeInput {
+  scope: string;
+  $filter?: "atScope()";
+}
 export const ResourceLinksListAtSourceScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
@@ -22619,11 +32108,18 @@ export const ResourceLinksListAtSourceScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/links",
       apiVersion: "2016-09-01",
     }),
-  );
-export type ResourceLinksListAtSourceScopeInput =
-  typeof ResourceLinksListAtSourceScopeInput.Type;
+  ) as unknown as Schema.Codec<ResourceLinksListAtSourceScopeInput>;
 
 // Output Schema
+export interface ResourceLinksListAtSourceScopeOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: unknown;
+    properties?: { sourceId?: string; targetId: string; notes?: string };
+  }[];
+  nextLink?: string;
+}
 export const ResourceLinksListAtSourceScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22641,9 +32137,7 @@ export const ResourceLinksListAtSourceScopeOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceLinksListAtSourceScopeOutput =
-  typeof ResourceLinksListAtSourceScopeOutput.Type;
+  }) as unknown as Schema.Codec<ResourceLinksListAtSourceScopeOutput>;
 
 // The operation
 /**
@@ -22651,6 +32145,7 @@ export type ResourceLinksListAtSourceScopeOutput =
  *
  * @param scope - The fully qualified ID of the scope for getting the resource links. For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup.
  * @param $filter - The filter to apply when getting resource links. To get links only at the specified scope (not below the scope), use Filter.atScope().
+ * @param api-version - The API version to use for the operation.
  */
 export const ResourceLinksListAtSourceScope =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22658,8 +32153,13 @@ export const ResourceLinksListAtSourceScope =
     outputSchema: ResourceLinksListAtSourceScopeOutput,
   }));
 // Input Schema
+export interface ResourceLinksListAtSubscriptionInput {
+  subscriptionId: string;
+  $filter?: string;
+}
 export const ResourceLinksListAtSubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -22667,11 +32167,18 @@ export const ResourceLinksListAtSubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/links",
       apiVersion: "2016-09-01",
     }),
-  );
-export type ResourceLinksListAtSubscriptionInput =
-  typeof ResourceLinksListAtSubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ResourceLinksListAtSubscriptionInput>;
 
 // Output Schema
+export interface ResourceLinksListAtSubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: unknown;
+    properties?: { sourceId?: string; targetId: string; notes?: string };
+  }[];
+  nextLink?: string;
+}
 export const ResourceLinksListAtSubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22689,15 +32196,15 @@ export const ResourceLinksListAtSubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourceLinksListAtSubscriptionOutput =
-  typeof ResourceLinksListAtSubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ResourceLinksListAtSubscriptionOutput>;
 
 // The operation
 /**
  * Gets all the linked resources for the subscription.
  *
  * @param $filter - The filter to apply on the list resource links operation. The supported filter for list resource links is targetId. For example, $filter=targetId eq {value}
+ * @param api-version - The API version to use for the operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const ResourceLinksListAtSubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22705,30 +32212,37 @@ export const ResourceLinksListAtSubscription =
     outputSchema: ResourceLinksListAtSubscriptionOutput,
   }));
 // Input Schema
+export interface ResourceManagementPrivateLinkDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rmplName: string;
+}
 export const ResourceManagementPrivateLinkDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/resourceManagementPrivateLinks/{rmplName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ResourceManagementPrivateLinkDeleteInput =
-  typeof ResourceManagementPrivateLinkDeleteInput.Type;
+  ) as unknown as Schema.Codec<ResourceManagementPrivateLinkDeleteInput>;
 
 // Output Schema
+export type ResourceManagementPrivateLinkDeleteOutput = void;
 export const ResourceManagementPrivateLinkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourceManagementPrivateLinkDeleteOutput =
-  typeof ResourceManagementPrivateLinkDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourceManagementPrivateLinkDeleteOutput>;
 
 // The operation
 /**
  * Delete a resource management private link.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22736,20 +32250,32 @@ export const ResourceManagementPrivateLinkDelete =
     outputSchema: ResourceManagementPrivateLinkDeleteOutput,
   }));
 // Input Schema
+export interface ResourceManagementPrivateLinkGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rmplName: string;
+}
 export const ResourceManagementPrivateLinkGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/resourceManagementPrivateLinks/{rmplName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ResourceManagementPrivateLinkGetInput =
-  typeof ResourceManagementPrivateLinkGetInput.Type;
+  ) as unknown as Schema.Codec<ResourceManagementPrivateLinkGetInput>;
 
 // Output Schema
+export interface ResourceManagementPrivateLinkGetOutput {
+  properties?: { privateEndpointConnections?: string[] };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+}
 export const ResourceManagementPrivateLinkGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -22763,15 +32289,16 @@ export const ResourceManagementPrivateLinkGetOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  });
-export type ResourceManagementPrivateLinkGetOutput =
-  typeof ResourceManagementPrivateLinkGetOutput.Type;
+  }) as unknown as Schema.Codec<ResourceManagementPrivateLinkGetOutput>;
 
 // The operation
 /**
  * Get a resource management private link(resource-level).
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22779,18 +32306,30 @@ export const ResourceManagementPrivateLinkGet =
     outputSchema: ResourceManagementPrivateLinkGetOutput,
   }));
 // Input Schema
+export interface ResourceManagementPrivateLinkListInput {
+  subscriptionId: string;
+}
 export const ResourceManagementPrivateLinkListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/resourceManagementPrivateLinks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ResourceManagementPrivateLinkListInput =
-  typeof ResourceManagementPrivateLinkListInput.Type;
+  ) as unknown as Schema.Codec<ResourceManagementPrivateLinkListInput>;
 
 // Output Schema
+export interface ResourceManagementPrivateLinkListOutput {
+  value?: {
+    properties?: { privateEndpointConnections?: string[] };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+  }[];
+}
 export const ResourceManagementPrivateLinkListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -22810,13 +32349,14 @@ export const ResourceManagementPrivateLinkListOutput =
         }),
       ),
     ),
-  });
-export type ResourceManagementPrivateLinkListOutput =
-  typeof ResourceManagementPrivateLinkListOutput.Type;
+  }) as unknown as Schema.Codec<ResourceManagementPrivateLinkListOutput>;
 
 // The operation
 /**
  * Get all the resource management private links in a subscription.
+ *
+ * @param subscriptionId - The ID of the target subscription.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourceManagementPrivateLinkList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22824,8 +32364,13 @@ export const ResourceManagementPrivateLinkList =
     outputSchema: ResourceManagementPrivateLinkListOutput,
   }));
 // Input Schema
+export interface ResourceManagementPrivateLinkListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ResourceManagementPrivateLinkListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22833,11 +32378,18 @@ export const ResourceManagementPrivateLinkListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/resourceManagementPrivateLinks",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ResourceManagementPrivateLinkListByResourceGroupInput =
-  typeof ResourceManagementPrivateLinkListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ResourceManagementPrivateLinkListByResourceGroupInput>;
 
 // Output Schema
+export interface ResourceManagementPrivateLinkListByResourceGroupOutput {
+  value?: {
+    properties?: { privateEndpointConnections?: string[] };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+  }[];
+}
 export const ResourceManagementPrivateLinkListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -22857,15 +32409,15 @@ export const ResourceManagementPrivateLinkListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type ResourceManagementPrivateLinkListByResourceGroupOutput =
-  typeof ResourceManagementPrivateLinkListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ResourceManagementPrivateLinkListByResourceGroupOutput>;
 
 // The operation
 /**
  * Get all the resource management private links in a resource group.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourceManagementPrivateLinkListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22873,9 +32425,17 @@ export const ResourceManagementPrivateLinkListByResourceGroup =
     outputSchema: ResourceManagementPrivateLinkListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ResourceManagementPrivateLinkPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  rmplName: string;
+  location?: string;
+}
 export const ResourceManagementPrivateLinkPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    rmplName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -22883,11 +32443,16 @@ export const ResourceManagementPrivateLinkPutInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/resourceManagementPrivateLinks/{rmplName}",
       apiVersion: "2020-05-01",
     }),
-  );
-export type ResourceManagementPrivateLinkPutInput =
-  typeof ResourceManagementPrivateLinkPutInput.Type;
+  ) as unknown as Schema.Codec<ResourceManagementPrivateLinkPutInput>;
 
 // Output Schema
+export interface ResourceManagementPrivateLinkPutOutput {
+  properties?: { privateEndpointConnections?: string[] };
+  id?: string;
+  name?: string;
+  type?: string;
+  location?: string;
+}
 export const ResourceManagementPrivateLinkPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -22901,15 +32466,16 @@ export const ResourceManagementPrivateLinkPutOutput =
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-  });
-export type ResourceManagementPrivateLinkPutOutput =
-  typeof ResourceManagementPrivateLinkPutOutput.Type;
+  }) as unknown as Schema.Codec<ResourceManagementPrivateLinkPutOutput>;
 
 // The operation
 /**
  * Create a resource management group private link.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param api-version - The API version to use for this operation.
+ * @param rmplName - The name of the resource management private link.
  */
 export const ResourceManagementPrivateLinkPut =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22917,13 +32483,68 @@ export const ResourceManagementPrivateLinkPut =
     outputSchema: ResourceManagementPrivateLinkPutOutput,
   }));
 // Input Schema
+export interface ResourcesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  properties?: unknown;
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  managedBy?: string;
+  sku?: {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  extendedLocation?: { type?: "EdgeZone"; name?: string };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     parentResourcePath: Schema.String.pipe(T.PathParam()),
     resourceType: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -22933,7 +32554,6 @@ export const ResourcesCreateOrUpdateInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -22969,9 +32589,6 @@ export const ResourcesCreateOrUpdateInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -22980,44 +32597,77 @@ export const ResourcesCreateOrUpdateInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesCreateOrUpdateInput =
-  typeof ResourcesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ResourcesCreateOrUpdateInput>;
 
 // Output Schema
+export interface ResourcesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourcesCreateOrUpdateOutput =
-  typeof ResourcesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ResourcesCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates a resource.
  *
- * @param resourceGroupName - The name of the resource group for the resource. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource to create.
- * @param resourceName - The name of the resource to create.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23026,9 +32676,58 @@ export const ResourcesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourcesCreateOrUpdateByIdInput {
+  resourceId: string;
+  properties?: unknown;
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  managedBy?: string;
+  sku?: {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  extendedLocation?: { type?: "EdgeZone"; name?: string };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesCreateOrUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -23038,7 +32737,6 @@ export const ResourcesCreateOrUpdateByIdInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -23074,9 +32772,6 @@ export const ResourcesCreateOrUpdateByIdInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -23085,36 +32780,67 @@ export const ResourcesCreateOrUpdateByIdInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({ method: "PUT", path: "/{resourceId}", apiVersion: "2025-04-01" }),
-  );
-export type ResourcesCreateOrUpdateByIdInput =
-  typeof ResourcesCreateOrUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ResourcesCreateOrUpdateByIdInput>;
 
 // Output Schema
+export interface ResourcesCreateOrUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesCreateOrUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourcesCreateOrUpdateByIdOutput =
-  typeof ResourcesCreateOrUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ResourcesCreateOrUpdateByIdOutput>;
 
 // The operation
 /**
  * Create a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesCreateOrUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23123,7 +32849,16 @@ export const ResourcesCreateOrUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourcesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ResourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
@@ -23135,29 +32870,33 @@ export const ResourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type ResourcesDeleteInput = typeof ResourcesDeleteInput.Type;
+) as unknown as Schema.Codec<ResourcesDeleteInput>;
 
 // Output Schema
-export const ResourcesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourcesDeleteOutput = typeof ResourcesDeleteOutput.Type;
+export type ResourcesDeleteOutput = void;
+export const ResourcesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourcesDeleteOutput>;
 
 // The operation
 /**
  * Deletes a resource.
  *
- * @param resourceGroupName - The name of the resource group that contains the resource to delete. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
  * @param resourceType - The resource type.
- * @param resourceName - The name of the resource to delete.
- * @param api-version - The API version to use for the operation.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesDeleteInput,
   outputSchema: ResourcesDeleteOutput,
 }));
 // Input Schema
+export interface ResourcesDeleteByIdInput {
+  resourceId: string;
+}
 export const ResourcesDeleteByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
@@ -23167,27 +32906,34 @@ export const ResourcesDeleteByIdInput =
       path: "/{resourceId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesDeleteByIdInput = typeof ResourcesDeleteByIdInput.Type;
+  ) as unknown as Schema.Codec<ResourcesDeleteByIdInput>;
 
 // Output Schema
+export type ResourcesDeleteByIdOutput = void;
 export const ResourcesDeleteByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourcesDeleteByIdOutput = typeof ResourcesDeleteByIdOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourcesDeleteByIdOutput>;
 
 // The operation
 /**
  * Deletes a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesDeleteByIdInput,
   outputSchema: ResourcesDeleteByIdOutput,
 }));
 // Input Schema
+export interface ResourcesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+}
 export const ResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
@@ -23199,79 +32945,123 @@ export const ResourcesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type ResourcesGetInput = typeof ResourcesGetInput.Type;
+) as unknown as Schema.Codec<ResourcesGetInput>;
 
 // Output Schema
+export interface ResourcesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  extendedLocation: Schema.optional(
+  systemData: Schema.optional(
     Schema.Struct({
-      type: Schema.optional(Schema.Literals(["EdgeZone"])),
-      name: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ResourcesGetOutput = typeof ResourcesGetOutput.Type;
+}) as unknown as Schema.Codec<ResourcesGetOutput>;
 
 // The operation
 /**
  * Gets a resource.
  *
+ * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource.
- * @param resourceName - The name of the resource to get.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesGetInput,
   outputSchema: ResourcesGetOutput,
 }));
 // Input Schema
+export interface ResourcesGetByIdInput {
+  resourceId: string;
+}
 export const ResourcesGetByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/{resourceId}", apiVersion: "2025-04-01" }),
-);
-export type ResourcesGetByIdInput = typeof ResourcesGetByIdInput.Type;
+) as unknown as Schema.Codec<ResourcesGetByIdInput>;
 
 // Output Schema
+export interface ResourcesGetByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesGetByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
-);
-export type ResourcesGetByIdOutput = typeof ResourcesGetByIdOutput.Type;
+) as unknown as Schema.Codec<ResourcesGetByIdOutput>;
 
 // The operation
 /**
  * Gets a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesGetByIdInput,
   outputSchema: ResourcesGetByIdOutput,
 }));
 // Input Schema
+export interface ResourcesListInput {
+  subscriptionId: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const ResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $expand: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -23281,36 +33071,56 @@ export const ResourcesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resources",
     apiVersion: "2025-04-01",
   }),
-);
-export type ResourcesListInput = typeof ResourcesListInput.Type;
+) as unknown as Schema.Codec<ResourcesListInput>;
 
 // Output Schema
+export interface ResourcesListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ResourcesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        location: Schema.optional(Schema.String),
-        extendedLocation: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["EdgeZone"])),
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ResourcesListOutput = typeof ResourcesListOutput.Type;
+}) as unknown as Schema.Codec<ResourcesListOutput>;
 
 // The operation
 /**
  * Get all the resources in a subscription.
  *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  * @param $filter - The filter to apply on the operation.<br><br>Filter comparison operators include `eq` (equals) and `ne` (not equals) and may be used with the following properties: `location`, `resourceType`, `name`, `resourceGroup`, `identity`, `identity/principalId`, `plan`, `plan/publisher`, `plan/product`, `plan/name`, `plan/version`, and `plan/promotionCode`.<br><br>For example, to filter by a resource type, use `$filter=resourceType eq 'Microsoft.Network/virtualNetworks'`<br><br><br>`substringof(value, property)` can  be used to filter for substrings of the following currently-supported properties: `name` and `resourceGroup`<br><br>For example, to get all resources with 'demo' anywhere in the resource name, use `$filter=substringof('demo', name)`<br><br>Multiple substring operations can also be combined using `and`/`or` operators.<br><br>Note that any truncated number of results queried via `$top` may also not be compatible when using a filter.<br><br><br>Resources can be filtered by tag names and values. For example, to filter for a tag name and value, use `$filter=tagName eq 'tag1' and tagValue eq 'Value1'`. Note that when resources are filtered by tag name and value, <b>the original tags for each resource will not be returned in the results.</b> Any list of additional properties queried via `$expand` may also not be compatible when filtering by tag names/values. <br><br>For tag names only, resources can be filtered by prefix using the following syntax: `$filter=startswith(tagName, 'depart')`. This query will return all resources with a tag name prefixed by the phrase `depart` (i.e.`department`, `departureDate`, `departureTime`, etc.)<br><br><br>Note that some properties can be combined when filtering resources, which include the following: `substringof() and/or resourceType`, `plan and plan/publisher and plan/name`, and `identity and identity/principalId`.
  * @param $expand - Comma-separated list of additional properties to be included in the response. Valid values include `createdTime`, `changedTime` and `provisioningState`. For example, `$expand=createdTime,changedTime`.
  * @param $top - The number of recommendations per page if a paged version of this API is being used.
@@ -23320,8 +33130,16 @@ export const ResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourcesListOutput,
 }));
 // Input Schema
+export interface ResourcesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $filter?: string;
+  $expand?: string;
+  $top?: number;
+}
 export const ResourcesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $expand: Schema.optional(Schema.String),
@@ -23329,43 +33147,71 @@ export const ResourcesListByResourceGroupInput =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/resources",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesListByResourceGroupInput =
-  typeof ResourcesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ResourcesListByResourceGroupInput>;
 
 // Output Schema
+export interface ResourcesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ResourcesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          extendedLocation: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(Schema.Literals(["EdgeZone"])),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+    value: Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ResourcesListByResourceGroupOutput =
-  typeof ResourcesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ResourcesListByResourceGroupOutput>;
 
 // The operation
 /**
  * Get all the resources for a resource group.
  *
- * @param resourceGroupName - The resource group with the resources to get.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group to get. The name is case insensitive.
  * @param $filter - The filter to apply on the operation.<br><br>The properties you can use for eq (equals) or ne (not equals) are: location, resourceType, name, resourceGroup, identity, identity/principalId, plan, plan/publisher, plan/product, plan/name, plan/version, and plan/promotionCode.<br><br>For example, to filter by a resource type, use: $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value, property) in the filter. The properties you can use for substring are: name and resourceGroup.<br><br>For example, to get all resources with 'demo' anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can link more than one substringof together by adding and/or operators.<br><br>You can filter by tag names and values. For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'. When you filter by a tag name and value, the tags for each resource are not returned in the results.<br><br>You can use some properties together when filtering. The combinations you can use are: substringof and/or resourceType, plan and plan/publisher and plan/name, identity and identity/principalId.
  * @param $expand - Comma-separated list of additional properties to be included in the response. Valid values include `createdTime`, `changedTime` and `provisioningState`. For example, `$expand=createdTime,changedTime`.
  * @param $top - The number of results to return. If null is passed, returns all resources.
@@ -23376,26 +33222,30 @@ export const ResourcesListByResourceGroup =
     outputSchema: ResourcesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ResourcesMoveResourcesInput {
+  subscriptionId: string;
+  sourceResourceGroupName: string;
+  resources?: string[];
+  targetResourceGroup?: string;
+}
 export const ResourcesMoveResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     sourceResourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     targetResourceGroup: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{sourceResourceGroupName}/moveResources",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesMoveResourcesInput =
-  typeof ResourcesMoveResourcesInput.Type;
+  ) as unknown as Schema.Codec<ResourcesMoveResourcesInput>;
 
 // Output Schema
+export type ResourcesMoveResourcesOutput = void;
 export const ResourcesMoveResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourcesMoveResourcesOutput =
-  typeof ResourcesMoveResourcesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourcesMoveResourcesOutput>;
 
 // The operation
 /**
@@ -23403,7 +33253,9 @@ export type ResourcesMoveResourcesOutput =
  *
  * The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. When moving resources, both the source group and the target group are locked for the duration of the operation. Write and delete operations are blocked on the groups until the move completes.
  *
- * @param sourceResourceGroupName - The name of the resource group from the source subscription containing the resources to be moved.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param sourceResourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourcesMoveResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -23412,12 +33264,67 @@ export const ResourcesMoveResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ResourcesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  resourceProviderNamespace: string;
+  parentResourcePath: string;
+  resourceType: string;
+  resourceName: string;
+  properties?: unknown;
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  managedBy?: string;
+  sku?: {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  extendedLocation?: { type?: "EdgeZone"; name?: string };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
   parentResourcePath: Schema.String.pipe(T.PathParam()),
   resourceType: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(Schema.Unknown),
   plan: Schema.optional(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -23427,7 +33334,6 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       version: Schema.optional(Schema.String),
     }),
   ),
-  properties: Schema.optional(Schema.Unknown),
   kind: Schema.optional(Schema.String),
   managedBy: Schema.optional(Schema.String),
   sku: Schema.optional(
@@ -23463,9 +33369,6 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
   location: Schema.optional(Schema.String),
   extendedLocation: Schema.optional(
     Schema.Struct({
@@ -23474,50 +33377,134 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type ResourcesUpdateInput = typeof ResourcesUpdateInput.Type;
+) as unknown as Schema.Codec<ResourcesUpdateInput>;
 
 // Output Schema
+export interface ResourcesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  location: Schema.optional(Schema.String),
-  extendedLocation: Schema.optional(
+  systemData: Schema.optional(
     Schema.Struct({
-      type: Schema.optional(Schema.Literals(["EdgeZone"])),
-      name: Schema.optional(Schema.String),
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-});
-export type ResourcesUpdateOutput = typeof ResourcesUpdateOutput.Type;
+}) as unknown as Schema.Codec<ResourcesUpdateOutput>;
 
 // The operation
 /**
  * Updates a resource.
  *
- * @param resourceGroupName - The name of the resource group for the resource. The name is case insensitive.
- * @param resourceProviderNamespace - The namespace of the resource provider.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group containing the resource to get. The name is case insensitive.
+ * @param resourceProviderNamespace - The resource provider of the resource to check.
  * @param parentResourcePath - The parent resource identity.
- * @param resourceType - The resource type of the resource to update.
- * @param resourceName - The name of the resource to update.
- * @param api-version - The API version to use for the operation.
+ * @param resourceType - The resource type.
+ * @param resourceName - The name of the resource to check whether it exists.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesUpdateInput,
   outputSchema: ResourcesUpdateOutput,
 }));
 // Input Schema
+export interface ResourcesUpdateByIdInput {
+  resourceId: string;
+  properties?: unknown;
+  plan?: {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
+  };
+  kind?: string;
+  managedBy?: string;
+  sku?: {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type?:
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned"
+      | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  location?: string;
+  extendedLocation?: { type?: "EdgeZone"; name?: string };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesUpdateByIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceId: Schema.String.pipe(T.PathParam()),
+    properties: Schema.optional(Schema.Unknown),
     plan: Schema.optional(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -23527,7 +33514,6 @@ export const ResourcesUpdateByIdInput =
         version: Schema.optional(Schema.String),
       }),
     ),
-    properties: Schema.optional(Schema.Unknown),
     kind: Schema.optional(Schema.String),
     managedBy: Schema.optional(Schema.String),
     sku: Schema.optional(
@@ -23563,9 +33549,6 @@ export const ResourcesUpdateByIdInput =
         ),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -23574,64 +33557,101 @@ export const ResourcesUpdateByIdInput =
       }),
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/{resourceId}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesUpdateByIdInput = typeof ResourcesUpdateByIdInput.Type;
+  ) as unknown as Schema.Codec<ResourcesUpdateByIdInput>;
 
 // Output Schema
+export interface ResourcesUpdateByIdOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ResourcesUpdateByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    extendedLocation: Schema.optional(
+    systemData: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["EdgeZone"])),
-        name: Schema.optional(Schema.String),
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  });
-export type ResourcesUpdateByIdOutput = typeof ResourcesUpdateByIdOutput.Type;
+  }) as unknown as Schema.Codec<ResourcesUpdateByIdOutput>;
 
 // The operation
 /**
- * Updates a resource by ID.
+ * Update a resource by ID.
  *
- * @param resourceId - The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
- * @param api-version - The API version to use for the operation.
+ * @param api-version - The API version to use for this operation.
  */
 export const ResourcesUpdateById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ResourcesUpdateByIdInput,
   outputSchema: ResourcesUpdateByIdOutput,
 }));
 // Input Schema
+export interface ResourcesValidateMoveResourcesInput {
+  subscriptionId: string;
+  sourceResourceGroupName: string;
+  resources?: string[];
+  targetResourceGroup?: string;
+}
 export const ResourcesValidateMoveResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
     sourceResourceGroupName: Schema.String.pipe(T.PathParam()),
     resources: Schema.optional(Schema.Array(Schema.String)),
     targetResourceGroup: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources",
+      path: "/subscriptions/{subscriptionId}/resourcegroups/{sourceResourceGroupName}/validateMoveResources",
       apiVersion: "2025-04-01",
     }),
-  );
-export type ResourcesValidateMoveResourcesInput =
-  typeof ResourcesValidateMoveResourcesInput.Type;
+  ) as unknown as Schema.Codec<ResourcesValidateMoveResourcesInput>;
 
 // Output Schema
+export type ResourcesValidateMoveResourcesOutput = void;
 export const ResourcesValidateMoveResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ResourcesValidateMoveResourcesOutput =
-  typeof ResourcesValidateMoveResourcesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ResourcesValidateMoveResourcesOutput>;
 
 // The operation
 /**
@@ -23639,7 +33659,9 @@ export type ResourcesValidateMoveResourcesOutput =
  *
  * This operation checks whether the specified resources can be moved to the target. The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. If validation succeeds, it returns HTTP response code 204 (no content). If validation fails, it returns HTTP response code 409 (Conflict) with an error message. Retrieve the URL in the Location header value to check the result of the long-running operation.
  *
- * @param sourceResourceGroupName - The name of the resource group from the source subscription containing the resources to be validated for move.
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param sourceResourceGroupName - The name of the resource group to get. The name is case insensitive.
  */
 export const ResourcesValidateMoveResources =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23647,6 +33669,15 @@ export const ResourcesValidateMoveResources =
     outputSchema: ResourcesValidateMoveResourcesOutput,
   }));
 // Input Schema
+export interface ResourceValidatorValidateResourcesInput {
+  provider: string;
+  type: string;
+  location?: string;
+  scope: string;
+  resources: { apiVersion: string; onlyIfNotExists?: boolean }[];
+  validationType?: "ArmFull" | "ArmPartial";
+  performPreflightWithoutRbacWriteCheck?: boolean;
+}
 export const ResourceValidatorValidateResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     provider: Schema.String,
@@ -23667,19 +33698,18 @@ export const ResourceValidatorValidateResourcesInput =
       path: "/providers/Microsoft.Resources/validateResources",
       apiVersion: "2022-06-01",
     }),
-  );
-export type ResourceValidatorValidateResourcesInput =
-  typeof ResourceValidatorValidateResourcesInput.Type;
+  ) as unknown as Schema.Codec<ResourceValidatorValidateResourcesInput>;
 
 // Output Schema
+export interface ResourceValidatorValidateResourcesOutput {
+  properties: { validatedResources: string[] };
+}
 export const ResourceValidatorValidateResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       validatedResources: Schema.Array(Schema.String),
     }),
-  });
-export type ResourceValidatorValidateResourcesOutput =
-  typeof ResourceValidatorValidateResourcesOutput.Type;
+  }) as unknown as Schema.Codec<ResourceValidatorValidateResourcesOutput>;
 
 // The operation
 /**
@@ -23693,8 +33723,48 @@ export const ResourceValidatorValidateResources =
     outputSchema: ResourceValidatorValidateResourcesOutput,
   }));
 // Input Schema
+export interface SubscriptionFeatureRegistrationsCreateOrUpdateInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  featureName: string;
+  properties?: {
+    tenantId?: string;
+    subscriptionId?: string;
+    featureName?: string;
+    displayName?: string;
+    providerNamespace?: string;
+    state?:
+      | "NotSpecified"
+      | "NotRegistered"
+      | "Pending"
+      | "Registering"
+      | "Registered"
+      | "Unregistering"
+      | "Unregistered";
+    authorizationProfile?: {
+      requestedTime?: string;
+      requester?: string;
+      requesterObjectId?: string;
+      approvedTime?: string;
+      approver?: string;
+    };
+    metadata?: Record<string, string>;
+    releaseDate?: string;
+    registrationDate?: string;
+    documentationLink?: string;
+    approvalType?: "NotSpecified" | "ApprovalRequired" | "AutoApproval";
+    shouldFeatureDisplayInPortal?: boolean;
+    description?: string;
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SubscriptionFeatureRegistrationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         tenantId: Schema.optional(Schema.String),
@@ -23742,23 +33812,29 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations/{featureName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type SubscriptionFeatureRegistrationsCreateOrUpdateInput =
-  typeof SubscriptionFeatureRegistrationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SubscriptionFeatureRegistrationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SubscriptionFeatureRegistrationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SubscriptionFeatureRegistrationsCreateOrUpdateOutput =
-  typeof SubscriptionFeatureRegistrationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update a feature registration.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23766,26 +33842,37 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdate =
     outputSchema: SubscriptionFeatureRegistrationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SubscriptionFeatureRegistrationsDeleteInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  featureName: string;
+}
 export const SubscriptionFeatureRegistrationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations/{featureName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type SubscriptionFeatureRegistrationsDeleteInput =
-  typeof SubscriptionFeatureRegistrationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsDeleteInput>;
 
 // Output Schema
+export type SubscriptionFeatureRegistrationsDeleteOutput = void;
 export const SubscriptionFeatureRegistrationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SubscriptionFeatureRegistrationsDeleteOutput =
-  typeof SubscriptionFeatureRegistrationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SubscriptionFeatureRegistrationsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a feature registration
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsDelete =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23793,30 +33880,45 @@ export const SubscriptionFeatureRegistrationsDelete =
     outputSchema: SubscriptionFeatureRegistrationsDeleteOutput,
   }));
 // Input Schema
+export interface SubscriptionFeatureRegistrationsGetInput {
+  subscriptionId: string;
+  providerNamespace: string;
+  featureName: string;
+}
 export const SubscriptionFeatureRegistrationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+    featureName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations/{featureName}",
       apiVersion: "2021-07-01",
     }),
-  );
-export type SubscriptionFeatureRegistrationsGetInput =
-  typeof SubscriptionFeatureRegistrationsGetInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsGetInput>;
 
 // Output Schema
+export interface SubscriptionFeatureRegistrationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+}
 export const SubscriptionFeatureRegistrationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-  });
-export type SubscriptionFeatureRegistrationsGetOutput =
-  typeof SubscriptionFeatureRegistrationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsGetOutput>;
 
 // The operation
 /**
  * Returns a feature registration
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
+ * @param featureName - The feature name.
  */
 export const SubscriptionFeatureRegistrationsGet =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23824,18 +33926,25 @@ export const SubscriptionFeatureRegistrationsGet =
     outputSchema: SubscriptionFeatureRegistrationsGetOutput,
   }));
 // Input Schema
+export interface SubscriptionFeatureRegistrationsListAllBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SubscriptionFeatureRegistrationsListAllBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/subscriptionFeatureRegistrations",
       apiVersion: "2021-07-01",
     }),
-  );
-export type SubscriptionFeatureRegistrationsListAllBySubscriptionInput =
-  typeof SubscriptionFeatureRegistrationsListAllBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsListAllBySubscriptionInput>;
 
 // Output Schema
+export interface SubscriptionFeatureRegistrationsListAllBySubscriptionOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const SubscriptionFeatureRegistrationsListAllBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -23848,13 +33957,14 @@ export const SubscriptionFeatureRegistrationsListAllBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type SubscriptionFeatureRegistrationsListAllBySubscriptionOutput =
-  typeof SubscriptionFeatureRegistrationsListAllBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsListAllBySubscriptionOutput>;
 
 // The operation
 /**
  * Returns subscription feature registrations for given subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
  */
 export const SubscriptionFeatureRegistrationsListAllBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23862,18 +33972,27 @@ export const SubscriptionFeatureRegistrationsListAllBySubscription =
     outputSchema: SubscriptionFeatureRegistrationsListAllBySubscriptionOutput,
   }));
 // Input Schema
+export interface SubscriptionFeatureRegistrationsListBySubscriptionInput {
+  subscriptionId: string;
+  providerNamespace: string;
+}
 export const SubscriptionFeatureRegistrationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    providerNamespace: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Features/featureProviders/{providerNamespace}/subscriptionFeatureRegistrations",
       apiVersion: "2021-07-01",
     }),
-  );
-export type SubscriptionFeatureRegistrationsListBySubscriptionInput =
-  typeof SubscriptionFeatureRegistrationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsListBySubscriptionInput>;
 
 // Output Schema
+export interface SubscriptionFeatureRegistrationsListBySubscriptionOutput {
+  nextLink?: string;
+  value?: { id?: string; name?: string; type?: string }[];
+}
 export const SubscriptionFeatureRegistrationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -23886,13 +34005,15 @@ export const SubscriptionFeatureRegistrationsListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type SubscriptionFeatureRegistrationsListBySubscriptionOutput =
-  typeof SubscriptionFeatureRegistrationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionFeatureRegistrationsListBySubscriptionOutput>;
 
 // The operation
 /**
  * Returns subscription feature registrations for given subscription and provider namespace.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The Azure subscription ID.
+ * @param providerNamespace - The provider namespace.
  */
 export const SubscriptionFeatureRegistrationsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23900,6 +34021,11 @@ export const SubscriptionFeatureRegistrationsListBySubscription =
     outputSchema: SubscriptionFeatureRegistrationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SubscriptionsCheckZonePeersInput {
+  subscriptionId: string;
+  location?: string;
+  subscriptionIds?: string[];
+}
 export const SubscriptionsCheckZonePeersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -23911,11 +34037,17 @@ export const SubscriptionsCheckZonePeersInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/checkZonePeers/",
       apiVersion: "2022-12-01",
     }),
-  );
-export type SubscriptionsCheckZonePeersInput =
-  typeof SubscriptionsCheckZonePeersInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsCheckZonePeersInput>;
 
 // Output Schema
+export interface SubscriptionsCheckZonePeersOutput {
+  subscriptionId?: string;
+  location?: string;
+  availabilityZonePeers?: {
+    availabilityZone?: string;
+    peers?: { subscriptionId?: string; availabilityZone?: string }[];
+  }[];
+}
 export const SubscriptionsCheckZonePeersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
@@ -23935,9 +34067,7 @@ export const SubscriptionsCheckZonePeersOutput =
         }),
       ),
     ),
-  });
-export type SubscriptionsCheckZonePeersOutput =
-  typeof SubscriptionsCheckZonePeersOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsCheckZonePeersOutput>;
 
 // The operation
 /**
@@ -23953,6 +34083,9 @@ export const SubscriptionsCheckZonePeers = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SubscriptionsGetInput {
+  subscriptionId: string;
+}
 export const SubscriptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -23961,10 +34094,24 @@ export const SubscriptionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}",
     apiVersion: "2022-12-01",
   }),
-);
-export type SubscriptionsGetInput = typeof SubscriptionsGetInput.Type;
+) as unknown as Schema.Codec<SubscriptionsGetInput>;
 
 // Output Schema
+export interface SubscriptionsGetOutput {
+  id?: string;
+  subscriptionId?: string;
+  displayName?: string;
+  tenantId?: string;
+  state?: "Enabled" | "Warned" | "PastDue" | "Disabled" | "Deleted";
+  subscriptionPolicies?: {
+    locationPlacementId?: string;
+    quotaId?: string;
+    spendingLimit?: "On" | "Off" | "CurrentPeriodOff";
+  };
+  authorizationSource?: string;
+  managedByTenants?: { tenantId?: string }[];
+  tags?: Record<string, string>;
+}
 export const SubscriptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -23993,8 +34140,7 @@ export const SubscriptionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   },
-);
-export type SubscriptionsGetOutput = typeof SubscriptionsGetOutput.Type;
+) as unknown as Schema.Codec<SubscriptionsGetOutput>;
 
 // The operation
 /**
@@ -24008,14 +34154,32 @@ export const SubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SubscriptionsGetOutput,
 }));
 // Input Schema
+export interface SubscriptionsListInput {}
 export const SubscriptionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({ method: "GET", path: "/subscriptions", apiVersion: "2022-12-01" }),
-);
-export type SubscriptionsListInput = typeof SubscriptionsListInput.Type;
+) as unknown as Schema.Codec<SubscriptionsListInput>;
 
 // Output Schema
+export interface SubscriptionsListOutput {
+  value: {
+    id?: string;
+    subscriptionId?: string;
+    displayName?: string;
+    tenantId?: string;
+    state?: "Enabled" | "Warned" | "PastDue" | "Disabled" | "Deleted";
+    subscriptionPolicies?: {
+      locationPlacementId?: string;
+      quotaId?: string;
+      spendingLimit?: "On" | "Off" | "CurrentPeriodOff";
+    };
+    authorizationSource?: string;
+    managedByTenants?: { tenantId?: string }[];
+    tags?: Record<string, string>;
+  }[];
+  nextLink?: string;
+}
 export const SubscriptionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -24054,8 +34218,7 @@ export const SubscriptionsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SubscriptionsListOutput = typeof SubscriptionsListOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsListOutput>;
 
 // The operation
 /**
@@ -24068,6 +34231,10 @@ export const SubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SubscriptionsListOutput,
 }));
 // Input Schema
+export interface SubscriptionsListLocationsInput {
+  subscriptionId: string;
+  includeExtendedLocations?: boolean;
+}
 export const SubscriptionsListLocationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -24078,11 +34245,35 @@ export const SubscriptionsListLocationsInput =
       path: "/subscriptions/{subscriptionId}/locations",
       apiVersion: "2022-12-01",
     }),
-  );
-export type SubscriptionsListLocationsInput =
-  typeof SubscriptionsListLocationsInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionsListLocationsInput>;
 
 // Output Schema
+export interface SubscriptionsListLocationsOutput {
+  value?: {
+    id?: string;
+    subscriptionId?: string;
+    name?: string;
+    type?: "Region" | "EdgeZone";
+    displayName?: string;
+    regionalDisplayName?: string;
+    metadata?: {
+      regionType?: "Physical" | "Logical";
+      regionCategory?: "Recommended" | "Extended" | "Other";
+      geography?: string;
+      geographyGroup?: string;
+      longitude?: string;
+      latitude?: string;
+      physicalLocation?: string;
+      pairedRegion?: { name?: string; id?: string; subscriptionId?: string }[];
+      homeLocation?: string;
+    };
+    availabilityZoneMappings?: {
+      logicalZone?: string;
+      physicalZone?: string;
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const SubscriptionsListLocationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -24131,9 +34322,7 @@ export const SubscriptionsListLocationsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SubscriptionsListLocationsOutput =
-  typeof SubscriptionsListLocationsOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionsListLocationsOutput>;
 
 // The operation
 /**
@@ -24152,19 +34341,33 @@ export const SubscriptionsListLocations = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TagsCreateOrUpdateInput {
+  tagName: string;
+  subscriptionId: string;
+}
 export const TagsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/tagNames/{tagName}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type TagsCreateOrUpdateInput = typeof TagsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TagsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TagsCreateOrUpdateOutput {
+  id?: string;
+  tagName?: string;
+  count?: { type?: string; value?: number };
+  values?: {
+    id?: string;
+    tagValue?: string;
+    count?: { type?: string; value?: number };
+  }[];
+}
 export const TagsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -24189,8 +34392,7 @@ export const TagsCreateOrUpdateOutput =
         }),
       ),
     ),
-  });
-export type TagsCreateOrUpdateOutput = typeof TagsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TagsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -24198,18 +34400,22 @@ export type TagsCreateOrUpdateOutput = typeof TagsCreateOrUpdateOutput.Type;
  *
  * This operation allows adding a name to the list of predefined tag names for the given subscription. A tag name can have a maximum of 512 characters and is case-insensitive. Tag names cannot have the following prefixes which are reserved for Azure use: 'microsoft', 'azure', 'windows'.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag to create.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsCreateOrUpdateInput,
   outputSchema: TagsCreateOrUpdateOutput,
 }));
 // Input Schema
+export interface TagsCreateOrUpdateAtScopeInput {
+  scope: string;
+  properties: { tags?: Record<string, string> };
+}
 export const TagsCreateOrUpdateAtScopeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
+    scope: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     }),
@@ -24219,28 +34425,51 @@ export const TagsCreateOrUpdateAtScopeInput =
       path: "/{scope}/providers/Microsoft.Resources/tags/default",
       apiVersion: "2025-04-01",
     }),
-  );
-export type TagsCreateOrUpdateAtScopeInput =
-  typeof TagsCreateOrUpdateAtScopeInput.Type;
+  ) as unknown as Schema.Codec<TagsCreateOrUpdateAtScopeInput>;
 
 // Output Schema
+export interface TagsCreateOrUpdateAtScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagsCreateOrUpdateAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  });
-export type TagsCreateOrUpdateAtScopeOutput =
-  typeof TagsCreateOrUpdateAtScopeOutput.Type;
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<TagsCreateOrUpdateAtScopeOutput>;
 
 // The operation
 /**
  * Creates or updates the entire set of tags on a resource or subscription.
  *
  * This operation allows adding or replacing the entire set of tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsCreateOrUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24249,21 +34478,30 @@ export const TagsCreateOrUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TagsCreateOrUpdateValueInput {
+  tagName: string;
+  tagValue: string;
+  subscriptionId: string;
+}
 export const TagsCreateOrUpdateValueInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tagName: Schema.String.pipe(T.PathParam()),
     tagValue: Schema.String.pipe(T.PathParam()),
+    subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}",
       apiVersion: "2025-04-01",
     }),
-  );
-export type TagsCreateOrUpdateValueInput =
-  typeof TagsCreateOrUpdateValueInput.Type;
+  ) as unknown as Schema.Codec<TagsCreateOrUpdateValueInput>;
 
 // Output Schema
+export interface TagsCreateOrUpdateValueOutput {
+  id?: string;
+  tagValue?: string;
+  count?: { type?: string; value?: number };
+}
 export const TagsCreateOrUpdateValueOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -24274,9 +34512,7 @@ export const TagsCreateOrUpdateValueOutput =
         value: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type TagsCreateOrUpdateValueOutput =
-  typeof TagsCreateOrUpdateValueOutput.Type;
+  }) as unknown as Schema.Codec<TagsCreateOrUpdateValueOutput>;
 
 // The operation
 /**
@@ -24284,8 +34520,10 @@ export type TagsCreateOrUpdateValueOutput =
  *
  * This operation allows adding a value to the list of predefined values for an existing predefined tag name. A tag value can have a maximum of 256 characters.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
  * @param tagValue - The value of the tag to create.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsCreateOrUpdateValue = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24294,20 +34532,25 @@ export const TagsCreateOrUpdateValue = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TagsDeleteInput {
+  tagName: string;
+  subscriptionId: string;
+}
 export const TagsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/tagNames/{tagName}",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsDeleteInput = typeof TagsDeleteInput.Type;
+) as unknown as Schema.Codec<TagsDeleteInput>;
 
 // Output Schema
-export const TagsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TagsDeleteOutput = typeof TagsDeleteOutput.Type;
+export type TagsDeleteOutput = void;
+export const TagsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TagsDeleteOutput>;
 
 // The operation
 /**
@@ -24315,52 +34558,68 @@ export type TagsDeleteOutput = typeof TagsDeleteOutput.Type;
  *
  * This operation allows deleting a name from the list of predefined tag names for the given subscription. The name being deleted must not be in use as a tag name for any resource. All predefined values for the given name must have already been deleted.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteInput,
   outputSchema: TagsDeleteOutput,
 }));
 // Input Schema
+export interface TagsDeleteAtScopeInput {
+  scope: string;
+}
 export const TagsDeleteAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+  {
+    scope: Schema.String.pipe(T.PathParam()),
+  },
 ).pipe(
   T.Http({
     method: "DELETE",
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsDeleteAtScopeInput = typeof TagsDeleteAtScopeInput.Type;
+) as unknown as Schema.Codec<TagsDeleteAtScopeInput>;
 
 // Output Schema
-export const TagsDeleteAtScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TagsDeleteAtScopeOutput = typeof TagsDeleteAtScopeOutput.Type;
+export type TagsDeleteAtScopeOutput = void;
+export const TagsDeleteAtScopeOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TagsDeleteAtScopeOutput>;
 
 // The operation
 /**
  * Deletes the entire set of tags on a resource or subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsDeleteAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteAtScopeInput,
   outputSchema: TagsDeleteAtScopeOutput,
 }));
 // Input Schema
+export interface TagsDeleteValueInput {
+  tagName: string;
+  tagValue: string;
+  subscriptionId: string;
+}
 export const TagsDeleteValueInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tagName: Schema.String.pipe(T.PathParam()),
   tagValue: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsDeleteValueInput = typeof TagsDeleteValueInput.Type;
+) as unknown as Schema.Codec<TagsDeleteValueInput>;
 
 // Output Schema
-export const TagsDeleteValueOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TagsDeleteValueOutput = typeof TagsDeleteValueOutput.Type;
+export type TagsDeleteValueOutput = void;
+export const TagsDeleteValueOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TagsDeleteValueOutput>;
 
 // The operation
 /**
@@ -24368,101 +34627,154 @@ export type TagsDeleteValueOutput = typeof TagsDeleteValueOutput.Type;
  *
  * This operation allows deleting a value from the list of predefined values for an existing predefined tag name. The value being deleted must not be in use as a tag value for the given tag name for any resource.
  *
+ * @param api-version - The API version to use for this operation.
  * @param tagName - The name of the tag.
  * @param tagValue - The value of the tag to delete.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsDeleteValue = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsDeleteValueInput,
   outputSchema: TagsDeleteValueOutput,
 }));
 // Input Schema
-export const TagsGetAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface TagsGetAtScopeInput {
+  scope: string;
+}
+export const TagsGetAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsGetAtScopeInput = typeof TagsGetAtScopeInput.Type;
+) as unknown as Schema.Codec<TagsGetAtScopeInput>;
 
 // Output Schema
+export interface TagsGetAtScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagsGetAtScopeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
-  properties: Schema.Struct({
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }),
-});
-export type TagsGetAtScopeOutput = typeof TagsGetAtScopeOutput.Type;
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<TagsGetAtScopeOutput>;
 
 // The operation
 /**
  * Gets the entire set of tags on a resource or subscription.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsGetAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsGetAtScopeInput,
   outputSchema: TagsGetAtScopeOutput,
 }));
 // Input Schema
-export const TagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export interface TagsListInput {
+  subscriptionId: string;
+}
+export const TagsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/tagNames",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsListInput = typeof TagsListInput.Type;
+) as unknown as Schema.Codec<TagsListInput>;
 
 // Output Schema
+export interface TagsListOutput {
+  value: {
+    id?: string;
+    tagName?: string;
+    count?: { type?: string; value?: number };
+    values?: {
+      id?: string;
+      tagValue?: string;
+      count?: { type?: string; value?: number };
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const TagsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        tagName: Schema.optional(Schema.String),
-        count: Schema.optional(
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      tagName: Schema.optional(Schema.String),
+      count: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+          value: Schema.optional(Schema.Number),
+        }),
+      ),
+      values: Schema.optional(
+        Schema.Array(
           Schema.Struct({
-            type: Schema.optional(Schema.String),
-            value: Schema.optional(Schema.Number),
+            id: Schema.optional(Schema.String),
+            tagValue: Schema.optional(Schema.String),
+            count: Schema.optional(
+              Schema.Struct({
+                type: Schema.optional(Schema.String),
+                value: Schema.optional(Schema.Number),
+              }),
+            ),
           }),
         ),
-        values: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              tagValue: Schema.optional(Schema.String),
-              count: Schema.optional(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  value: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
-    ),
+      ),
+    }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TagsListOutput = typeof TagsListOutput.Type;
+}) as unknown as Schema.Codec<TagsListOutput>;
 
 // The operation
 /**
  * Gets a summary of tag usage under the subscription.
  *
  * This operation performs a union of predefined tags, resource tags, resource group tags and subscription tags, and returns a summary of usage for each tag name and value under the given subscription. In case of a large number of tags, this operation may return a previously cached result.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
  */
 export const TagsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsListInput,
   outputSchema: TagsListOutput,
 }));
 // Input Schema
+export interface TagsUpdateAtScopeInput {
+  scope: string;
+  operation?: "Replace" | "Merge" | "Delete";
+  properties?: { tags?: Record<string, string> };
+}
 export const TagsUpdateAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
+    scope: Schema.String.pipe(T.PathParam()),
     operation: Schema.optional(Schema.Literals(["Replace", "Merge", "Delete"])),
     properties: Schema.optional(
       Schema.Struct({
@@ -24476,34 +34788,89 @@ export const TagsUpdateAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
     apiVersion: "2025-04-01",
   }),
-);
-export type TagsUpdateAtScopeInput = typeof TagsUpdateAtScopeInput.Type;
+) as unknown as Schema.Codec<TagsUpdateAtScopeInput>;
 
 // Output Schema
+export interface TagsUpdateAtScopeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TagsUpdateAtScopeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
-    properties: Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  });
-export type TagsUpdateAtScopeOutput = typeof TagsUpdateAtScopeOutput.Type;
+    systemData: Schema.optional(
+      Schema.Struct({
+        createdBy: Schema.optional(Schema.String),
+        createdByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        createdAt: Schema.optional(Schema.String),
+        lastModifiedBy: Schema.optional(Schema.String),
+        lastModifiedByType: Schema.optional(
+          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+        ),
+        lastModifiedAt: Schema.optional(Schema.String),
+      }),
+    ),
+  }) as unknown as Schema.Codec<TagsUpdateAtScopeOutput>;
 
 // The operation
 /**
  * Selectively updates the set of tags on a resource or subscription.
  *
  * This operation allows replacing, merging or selectively deleting tags on the specified resource or subscription. The specified entity can have a maximum of 50 tags at the end of the operation. The 'replace' option replaces the entire set of existing tags with a new set. The 'merge' option allows adding tags with new names and updating the values of tags with existing names. The 'delete' option allows selectively deleting tags based on given names or name/value pairs.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const TagsUpdateAtScope = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TagsUpdateAtScopeInput,
   outputSchema: TagsUpdateAtScopeOutput,
 }));
 // Input Schema
+export interface TemplateSpecsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  location: string;
+  properties?: {
+    description?: string;
+    displayName?: string;
+    metadata?: unknown;
+    versions?: Record<
+      string,
+      { description?: string; timeCreated?: string; timeModified?: string }
+    >;
+  };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
     location: Schema.String,
     properties: Schema.optional(
       Schema.Struct({
@@ -24546,11 +34913,22 @@ export const TemplateSpecsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsCreateOrUpdateInput =
-  typeof TemplateSpecsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TemplateSpecsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -24570,13 +34948,16 @@ export const TemplateSpecsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecsCreateOrUpdateOutput =
-  typeof TemplateSpecsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24585,42 +34966,76 @@ export const TemplateSpecsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+}
 export const TemplateSpecsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsDeleteInput = typeof TemplateSpecsDeleteInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsDeleteInput>;
 
 // Output Schema
+export type TemplateSpecsDeleteOutput = void;
 export const TemplateSpecsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TemplateSpecsDeleteOutput = typeof TemplateSpecsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TemplateSpecsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a Template Spec by name. When operation completes, status code 200 returned without content.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsDeleteInput,
   outputSchema: TemplateSpecsDeleteOutput,
 }));
 // Input Schema
-export const TemplateSpecsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface TemplateSpecsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  $expand?: "versions";
+}
+export const TemplateSpecsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  templateSpecName: Schema.String.pipe(T.PathParam()),
+  $expand: Schema.optional(Schema.Literals(["versions"])),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
     apiVersion: "2022-02-01",
   }),
-);
-export type TemplateSpecsGetInput = typeof TemplateSpecsGetInput.Type;
+) as unknown as Schema.Codec<TemplateSpecsGetInput>;
 
 // Output Schema
+export interface TemplateSpecsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -24641,30 +35056,53 @@ export const TemplateSpecsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type TemplateSpecsGetOutput = typeof TemplateSpecsGetOutput.Type;
+) as unknown as Schema.Codec<TemplateSpecsGetOutput>;
 
 // The operation
 /**
  * Gets a Template Spec with a given name.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsGetInput,
   outputSchema: TemplateSpecsGetOutput,
 }));
 // Input Schema
+export interface TemplateSpecsGetBuiltInInput {
+  templateSpecName: string;
+  $expand?: "versions";
+}
 export const TemplateSpecsGetBuiltInInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsGetBuiltInInput =
-  typeof TemplateSpecsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsGetBuiltInInput>;
 
 // Output Schema
+export interface TemplateSpecsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -24684,13 +35122,15 @@ export const TemplateSpecsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecsGetBuiltInOutput =
-  typeof TemplateSpecsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsGetBuiltInOutput>;
 
 // The operation
 /**
  * Gets a built-in Template Spec with a given name.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsGetBuiltIn = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24699,18 +35139,37 @@ export const TemplateSpecsGetBuiltIn = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecsListBuiltInsInput {
+  $expand?: "versions";
+}
 export const TemplateSpecsListBuiltInsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsListBuiltInsInput =
-  typeof TemplateSpecsListBuiltInsInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsListBuiltInsInput>;
 
 // Output Schema
+export interface TemplateSpecsListBuiltInsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TemplateSpecsListBuiltInsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -24747,13 +35206,14 @@ export const TemplateSpecsListBuiltInsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TemplateSpecsListBuiltInsOutput =
-  typeof TemplateSpecsListBuiltInsOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsListBuiltInsOutput>;
 
 // The operation
 /**
  * Lists built-in Template Specs.
+ *
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListBuiltIns = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24762,18 +35222,41 @@ export const TemplateSpecsListBuiltIns = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  $expand?: "versions";
+}
 export const TemplateSpecsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsListByResourceGroupInput =
-  typeof TemplateSpecsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsListByResourceGroupInput>;
 
 // Output Schema
+export interface TemplateSpecsListByResourceGroupOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TemplateSpecsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -24810,13 +35293,16 @@ export const TemplateSpecsListByResourceGroupOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TemplateSpecsListByResourceGroupOutput =
-  typeof TemplateSpecsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsListByResourceGroupOutput>;
 
 // The operation
 /**
  * Lists all the Template Specs within the specified resource group.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListByResourceGroup =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -24824,18 +35310,39 @@ export const TemplateSpecsListByResourceGroup =
     outputSchema: TemplateSpecsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface TemplateSpecsListBySubscriptionInput {
+  subscriptionId: string;
+  $expand?: "versions";
+}
 export const TemplateSpecsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    $expand: Schema.optional(Schema.Literals(["versions"])),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/templateSpecs/",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsListBySubscriptionInput =
-  typeof TemplateSpecsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsListBySubscriptionInput>;
 
 // Output Schema
+export interface TemplateSpecsListBySubscriptionOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TemplateSpecsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -24872,13 +35379,15 @@ export const TemplateSpecsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TemplateSpecsListBySubscriptionOutput =
-  typeof TemplateSpecsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsListBySubscriptionOutput>;
 
 // The operation
 /**
  * Lists all the Template Specs within the specified subscriptions.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param $expand - Allows for expansion of additional Template Spec details in the response. Optional.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsListBySubscription =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -24886,8 +35395,28 @@ export const TemplateSpecsListBySubscription =
     outputSchema: TemplateSpecsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface TemplateSpecsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -24912,10 +35441,22 @@ export const TemplateSpecsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecsUpdateInput = typeof TemplateSpecsUpdateInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecsUpdateInput>;
 
 // Output Schema
+export interface TemplateSpecsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -24935,20 +35476,54 @@ export const TemplateSpecsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecsUpdateOutput = typeof TemplateSpecsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecsUpdateOutput>;
 
 // The operation
 /**
  * Updates Template Spec tags with specified values.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: TemplateSpecsUpdateInput,
   outputSchema: TemplateSpecsUpdateOutput,
 }));
 // Input Schema
+export interface TemplateSpecVersionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  templateSpecVersion: string;
+  location: string;
+  properties: {
+    description?: string;
+    linkedTemplates?: { path: string; template: unknown }[];
+    metadata?: unknown;
+    mainTemplate?: unknown;
+    uiFormDefinition?: unknown;
+  };
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
     location: Schema.String,
     properties: Schema.Struct({
       description: Schema.optional(Schema.String),
@@ -24988,11 +35563,22 @@ export const TemplateSpecVersionsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsCreateOrUpdateInput =
-  typeof TemplateSpecVersionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25012,13 +35598,17 @@ export const TemplateSpecVersionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecVersionsCreateOrUpdateOutput =
-  typeof TemplateSpecVersionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Creates or updates a Template Spec version.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param templateSpecVersion - The version of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsCreateOrUpdate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25026,26 +35616,40 @@ export const TemplateSpecVersionsCreateOrUpdate =
     outputSchema: TemplateSpecVersionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TemplateSpecVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  templateSpecVersion: string;
+}
 export const TemplateSpecVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsDeleteInput =
-  typeof TemplateSpecVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsDeleteInput>;
 
 // Output Schema
+export type TemplateSpecVersionsDeleteOutput = void;
 export const TemplateSpecVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TemplateSpecVersionsDeleteOutput =
-  typeof TemplateSpecVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TemplateSpecVersionsDeleteOutput>;
 
 // The operation
 /**
  * Deletes a specific version from a Template Spec. When operation completes, status code 200 returned without content.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25054,18 +35658,40 @@ export const TemplateSpecVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  templateSpecVersion: string;
+}
 export const TemplateSpecVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsGetInput =
-  typeof TemplateSpecVersionsGetInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsGetInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25085,13 +35711,17 @@ export const TemplateSpecVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecVersionsGetOutput =
-  typeof TemplateSpecVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsGetOutput>;
 
 // The operation
 /**
  * Gets a Template Spec version from a specific Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25100,18 +35730,36 @@ export const TemplateSpecVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecVersionsGetBuiltInInput {
+  templateSpecName: string;
+  templateSpecVersion: string;
+}
 export const TemplateSpecVersionsGetBuiltInInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsGetBuiltInInput =
-  typeof TemplateSpecVersionsGetBuiltInInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsGetBuiltInInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsGetBuiltInOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsGetBuiltInOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25131,13 +35779,15 @@ export const TemplateSpecVersionsGetBuiltInOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecVersionsGetBuiltInOutput =
-  typeof TemplateSpecVersionsGetBuiltInOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsGetBuiltInOutput>;
 
 // The operation
 /**
  * Gets a Template Spec version from a specific built-in Template Spec.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsGetBuiltIn =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25145,18 +35795,41 @@ export const TemplateSpecVersionsGetBuiltIn =
     outputSchema: TemplateSpecVersionsGetBuiltInOutput,
   }));
 // Input Schema
+export interface TemplateSpecVersionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+}
 export const TemplateSpecVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsListInput =
-  typeof TemplateSpecVersionsListInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsListInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TemplateSpecVersionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -25193,13 +35866,16 @@ export const TemplateSpecVersionsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TemplateSpecVersionsListOutput =
-  typeof TemplateSpecVersionsListOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsListOutput>;
 
 // The operation
 /**
  * Lists all the Template Spec versions in the specified Template Spec.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25208,18 +35884,37 @@ export const TemplateSpecVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TemplateSpecVersionsListBuiltInsInput {
+  templateSpecName: string;
+}
 export const TemplateSpecVersionsListBuiltInsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.Resources/builtInTemplateSpecs/{templateSpecName}/versions",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsListBuiltInsInput =
-  typeof TemplateSpecVersionsListBuiltInsInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsListBuiltInsInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsListBuiltInsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TemplateSpecVersionsListBuiltInsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -25256,13 +35951,14 @@ export const TemplateSpecVersionsListBuiltInsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TemplateSpecVersionsListBuiltInsOutput =
-  typeof TemplateSpecVersionsListBuiltInsOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsListBuiltInsOutput>;
 
 // The operation
 /**
  * Lists all the Template Spec versions in the specified built-in Template Spec.
+ *
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
  */
 export const TemplateSpecVersionsListBuiltIns =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -25270,8 +35966,30 @@ export const TemplateSpecVersionsListBuiltIns =
     outputSchema: TemplateSpecVersionsListBuiltInsOutput,
   }));
 // Input Schema
+export interface TemplateSpecVersionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  templateSpecName: string;
+  templateSpecVersion: string;
+  tags?: Record<string, string>;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    templateSpecName: Schema.String.pipe(T.PathParam()),
+    templateSpecVersion: Schema.String.pipe(T.PathParam()),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -25296,11 +36014,22 @@ export const TemplateSpecVersionsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/templateSpecs/{templateSpecName}/versions/{templateSpecVersion}",
       apiVersion: "2022-02-01",
     }),
-  );
-export type TemplateSpecVersionsUpdateInput =
-  typeof TemplateSpecVersionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<TemplateSpecVersionsUpdateInput>;
 
 // Output Schema
+export interface TemplateSpecVersionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TemplateSpecVersionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25320,13 +36049,17 @@ export const TemplateSpecVersionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TemplateSpecVersionsUpdateOutput =
-  typeof TemplateSpecVersionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TemplateSpecVersionsUpdateOutput>;
 
 // The operation
 /**
  * Updates Template Spec Version tags with specified values.
+ *
+ * @param subscriptionId - Subscription Id which forms part of the URI for every service call.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param templateSpecName - Name of the Template Spec.
+ * @param api-version - Client Api version.
+ * @param templateSpecVersion - The version of the Template Spec.
  */
 export const TemplateSpecVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -25335,12 +36068,29 @@ export const TemplateSpecVersionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TenantsListInput {}
 export const TenantsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "GET", path: "/tenants", apiVersion: "2022-12-01" }));
-export type TenantsListInput = typeof TenantsListInput.Type;
+).pipe(
+  T.Http({ method: "GET", path: "/tenants", apiVersion: "2022-12-01" }),
+) as unknown as Schema.Codec<TenantsListInput>;
 
 // Output Schema
+export interface TenantsListOutput {
+  value: {
+    id?: string;
+    tenantId?: string;
+    tenantCategory?: "Home" | "ProjectedBy" | "ManagedBy";
+    country?: string;
+    countryCode?: string;
+    displayName?: string;
+    domains?: string[];
+    defaultDomain?: string;
+    tenantType?: string;
+    tenantBrandingLogoUrl?: string;
+  }[];
+  nextLink?: string;
+}
 export const TenantsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -25359,8 +36109,7 @@ export const TenantsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type TenantsListOutput = typeof TenantsListOutput.Type;
+}) as unknown as Schema.Codec<TenantsListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface VisualReviewRunsAddSnapshotsCreateInput {
+  id: string;
+  project_id: string;
+  snapshots?: {
+    identifier?: string;
+    content_hash?: string;
+    width?: number | null;
+    height?: number | null;
+    metadata?: Record<string, unknown>;
+  }[];
+  baseline_hashes?: Record<string, string>;
+}
 export const VisualReviewRunsAddSnapshotsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -29,11 +41,17 @@ export const VisualReviewRunsAddSnapshotsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/visual_review/runs/{id}/add-snapshots/",
     }),
-  );
-export type VisualReviewRunsAddSnapshotsCreateInput =
-  typeof VisualReviewRunsAddSnapshotsCreateInput.Type;
+  ) as unknown as Schema.Codec<VisualReviewRunsAddSnapshotsCreateInput>;
 
 // Output Schema
+export interface VisualReviewRunsAddSnapshotsCreateOutput {
+  added?: number;
+  uploads?: {
+    content_hash?: string;
+    url?: string;
+    fields?: Record<string, string>;
+  }[];
+}
 export const VisualReviewRunsAddSnapshotsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     added: Schema.optional(Schema.Number),
@@ -46,9 +64,7 @@ export const VisualReviewRunsAddSnapshotsCreateOutput =
         }),
       ),
     ),
-  });
-export type VisualReviewRunsAddSnapshotsCreateOutput =
-  typeof VisualReviewRunsAddSnapshotsCreateOutput.Type;
+  }) as unknown as Schema.Codec<VisualReviewRunsAddSnapshotsCreateOutput>;
 
 // The operation
 /**

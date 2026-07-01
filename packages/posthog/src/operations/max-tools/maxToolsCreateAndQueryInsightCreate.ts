@@ -1,9 +1,13 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface MaxToolsCreateAndQueryInsightCreateInput {
+  project_id: string;
+  query?: string;
+  insight_type?: "trends" | "funnel" | "retention" | "sql";
+}
 export const MaxToolsCreateAndQueryInsightCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,17 +18,17 @@ export const MaxToolsCreateAndQueryInsightCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/max_tools/create_and_query_insight/",
+      path: "/api/projects/{project_id}/max_tools/create_and_query_insight/",
     }),
-  );
-export type MaxToolsCreateAndQueryInsightCreateInput =
-  typeof MaxToolsCreateAndQueryInsightCreateInput.Type;
+  ) as unknown as Schema.Codec<MaxToolsCreateAndQueryInsightCreateInput>;
 
 // Output Schema
+export type MaxToolsCreateAndQueryInsightCreateOutput = Record<string, unknown>;
 export const MaxToolsCreateAndQueryInsightCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type MaxToolsCreateAndQueryInsightCreateOutput =
-  typeof MaxToolsCreateAndQueryInsightCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<MaxToolsCreateAndQueryInsightCreateOutput>;
 
 // The operation
 /**
@@ -35,5 +39,4 @@ export const maxToolsCreateAndQueryInsightCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: MaxToolsCreateAndQueryInsightCreateInput,
     outputSchema: MaxToolsCreateAndQueryInsightCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

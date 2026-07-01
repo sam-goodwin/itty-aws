@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface IntegrationsGoogleConversionActionsRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const IntegrationsGoogleConversionActionsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const IntegrationsGoogleConversionActionsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/integrations/{id}/google_conversion_actions/",
     }),
-  );
-export type IntegrationsGoogleConversionActionsRetrieveInput =
-  typeof IntegrationsGoogleConversionActionsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<IntegrationsGoogleConversionActionsRetrieveInput>;
 
 // Output Schema
+export type IntegrationsGoogleConversionActionsRetrieveOutput = void;
 export const IntegrationsGoogleConversionActionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type IntegrationsGoogleConversionActionsRetrieveOutput =
-  typeof IntegrationsGoogleConversionActionsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGoogleConversionActionsRetrieveOutput>;
 
 // The operation
 /**

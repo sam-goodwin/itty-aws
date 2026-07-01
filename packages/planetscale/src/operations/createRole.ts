@@ -3,8 +3,33 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateRoleInput {
+  organization: string;
+  database: string;
+  branch: string;
+  name?: string;
+  ttl?: number;
+  inherited_roles?: (
+    | "pscale_managed"
+    | "pg_checkpoint"
+    | "pg_create_subscription"
+    | "pg_maintain"
+    | "pg_monitor"
+    | "pg_read_all_data"
+    | "pg_read_all_settings"
+    | "pg_read_all_stats"
+    | "pg_signal_backend"
+    | "pg_stat_scan_tables"
+    | "pg_use_reserved_connections"
+    | "pg_write_all_data"
+    | "postgres"
+  )[];
+  require_where_on_delete?: string;
+  require_where_on_update?: string;
+}
 export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -37,10 +62,57 @@ export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}/roles",
   }),
-);
-export type CreateRoleInput = typeof CreateRoleInput.Type;
+) as unknown as Schema.Codec<CreateRoleInput>;
 
 // Output Schema
+export interface CreateRoleOutput {
+  id: string;
+  name: string;
+  access_host_url: string;
+  private_access_host_url: string;
+  private_connection_service_name: string;
+  username: string;
+  base_username: string;
+  password: Redacted.Redacted<string> | null;
+  database_name: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+  expires_at: string | null;
+  dropped_at: string | null;
+  disabled_at: string | null;
+  drop_failed: string | null;
+  expired: boolean;
+  default: boolean;
+  ttl: number | null;
+  inherited_roles: (
+    | "pscale_managed"
+    | "pg_checkpoint"
+    | "pg_create_subscription"
+    | "pg_maintain"
+    | "pg_monitor"
+    | "pg_read_all_data"
+    | "pg_read_all_settings"
+    | "pg_read_all_stats"
+    | "pg_signal_backend"
+    | "pg_stat_scan_tables"
+    | "pg_use_reserved_connections"
+    | "pg_write_all_data"
+    | "postgres"
+  )[];
+  branch: {
+    id: string;
+    name: string;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string | null;
+  };
+  actor: { id: string; display_name: string; avatar_url: string };
+  query_safety_settings: {
+    require_where_on_delete: "off" | "warn" | "on";
+    require_where_on_update: "off" | "warn" | "on";
+  };
+}
 export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
@@ -94,8 +166,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     require_where_on_delete: Schema.Literals(["off", "warn", "on"]),
     require_where_on_update: Schema.Literals(["off", "warn", "on"]),
   }),
-});
-export type CreateRoleOutput = typeof CreateRoleOutput.Type;
+}) as unknown as Schema.Codec<CreateRoleOutput>;
 
 // The operation
 /**

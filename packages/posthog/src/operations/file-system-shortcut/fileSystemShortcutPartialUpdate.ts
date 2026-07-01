@@ -4,6 +4,16 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemShortcutPartialUpdateInput {
+  id: string;
+  project_id: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -12,17 +22,25 @@ export const FileSystemShortcutPartialUpdateInput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PATCH",
       path: "/api/projects/{project_id}/file_system_shortcut/{id}/",
     }),
-  );
-export type FileSystemShortcutPartialUpdateInput =
-  typeof FileSystemShortcutPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutPartialUpdateInput>;
 
 // Output Schema
+export interface FileSystemShortcutPartialUpdateOutput {
+  id?: string;
+  path?: string;
+  type?: string;
+  ref?: string | null;
+  href?: string | null;
+  order?: number;
+  created_at?: string;
+}
 export const FileSystemShortcutPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -30,10 +48,9 @@ export const FileSystemShortcutPartialUpdateOutput =
     type: Schema.optional(Schema.String),
     ref: Schema.optional(Schema.NullOr(Schema.String)),
     href: Schema.optional(Schema.NullOr(Schema.String)),
+    order: Schema.optional(Schema.Number),
     created_at: Schema.optional(Schema.String),
-  });
-export type FileSystemShortcutPartialUpdateOutput =
-  typeof FileSystemShortcutPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemShortcutPartialUpdateOutput>;
 
 // The operation
 /**

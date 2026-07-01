@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,31 +22,21 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface DownloadModelResponse {
-  /** Output only. A download URI for the model/zip file. */
-  downloadUri?: string;
-  /** Output only. The time that the download URI link expires. If the link has expired, the REST call must be repeated. */
-  expireTime?: string;
-  /** Output only. The format of the model being downloaded. */
-  modelFormat?: "MODEL_FORMAT_UNSPECIFIED" | "TFLITE" | (string & {});
-  /** Output only. The size of the file(s), if this information is available. */
+export interface TfLiteModel {
+  /** Output only. The size of the TFLite model */
   sizeBytes?: string;
+  /** The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file. */
+  gcsTfliteUri?: string;
+  /** The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API) */
+  automlModel?: string;
 }
 
-export const DownloadModelResponse: Schema.Schema<DownloadModelResponse> =
+export const TfLiteModel: Schema.Codec<TfLiteModel> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    downloadUri: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
-    modelFormat: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DownloadModelResponse" });
+    gcsTfliteUri: Schema.optional(Schema.String),
+    automlModel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TfLiteModel" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -57,7 +47,7 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -73,27 +63,109 @@ export interface ModelState {
   published?: boolean;
 }
 
-export const ModelState: Schema.Schema<ModelState> =
+export const ModelState: Schema.Codec<ModelState> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     validationError: Schema.optional(Status),
     published: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ModelState" });
 
-export interface TfLiteModel {
-  /** The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file. */
-  gcsTfliteUri?: string;
-  /** The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API) */
-  automlModel?: string;
-  /** Output only. The size of the TFLite model */
+export interface Operation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+}
+
+export const Operation: Schema.Codec<Operation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Status),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Operation" });
+
+export interface Model {
+  /** Output only. Timestamp when this model was created in Firebase ML. */
+  createTime?: string;
+  /** A TFLite Model */
+  tfliteModel?: TfLiteModel;
+  /** Output only. The model_hash will change if a new file is available for download. */
+  modelHash?: string;
+  /** State common to all model types. Includes publishing and validation information. */
+  state?: ModelState;
+  /** Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3 */
+  etag?: string;
+  /** The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. */
+  name?: string;
+  /** Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter. */
+  displayName?: string;
+  /** User defined tags which can be used to group/filter models during listing */
+  tags?: ReadonlyArray<string>;
+  /** Output only. Lists operation ids associated with this model whose status is NOT done. */
+  activeOperations?: ReadonlyArray<Operation>;
+  /** Output only. Timestamp when this model was updated in Firebase ML. */
+  updateTime?: string;
+}
+
+export const Model: Schema.Codec<Model> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    tfliteModel: Schema.optional(TfLiteModel),
+    modelHash: Schema.optional(Schema.String),
+    state: Schema.optional(ModelState),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    activeOperations: Schema.optional(Schema.Array(Operation)),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Model" });
+
+export interface ListModelsResponse {
+  /** The list of models */
+  models?: ReadonlyArray<Model>;
+  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
+  nextPageToken?: string;
+}
+
+export const ListModelsResponse: Schema.Codec<ListModelsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    models: Schema.optional(Schema.Array(Model)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListModelsResponse" });
+
+export interface DownloadModelResponse {
+  /** Output only. The format of the model being downloaded. */
+  modelFormat?: "MODEL_FORMAT_UNSPECIFIED" | "TFLITE" | (string & {});
+  /** Output only. A download URI for the model/zip file. */
+  downloadUri?: string;
+  /** Output only. The time that the download URI link expires. If the link has expired, the REST call must be repeated. */
+  expireTime?: string;
+  /** Output only. The size of the file(s), if this information is available. */
   sizeBytes?: string;
 }
 
-export const TfLiteModel: Schema.Schema<TfLiteModel> =
+export const DownloadModelResponse: Schema.Codec<DownloadModelResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    gcsTfliteUri: Schema.optional(Schema.String),
-    automlModel: Schema.optional(Schema.String),
+    modelFormat: Schema.optional(Schema.String),
+    downloadUri: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
     sizeBytes: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TfLiteModel" });
+  }).annotate({ identifier: "DownloadModelResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
 
 export interface ModelOperationMetadata {
   basicOperationStatus?:
@@ -105,83 +177,11 @@ export interface ModelOperationMetadata {
   name?: string;
 }
 
-export const ModelOperationMetadata: Schema.Schema<ModelOperationMetadata> =
+export const ModelOperationMetadata: Schema.Codec<ModelOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     basicOperationStatus: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "ModelOperationMetadata" });
-
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    error: Schema.optional(Status),
-    done: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Operation" });
-
-export interface Model {
-  /** User defined tags which can be used to group/filter models during listing */
-  tags?: ReadonlyArray<string>;
-  /** Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter. */
-  displayName?: string;
-  /** Output only. Lists operation ids associated with this model whose status is NOT done. */
-  activeOperations?: ReadonlyArray<Operation>;
-  /** State common to all model types. Includes publishing and validation information. */
-  state?: ModelState;
-  /** Output only. The model_hash will change if a new file is available for download. */
-  modelHash?: string;
-  /** Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3 */
-  etag?: string;
-  /** Output only. Timestamp when this model was updated in Firebase ML. */
-  updateTime?: string;
-  /** A TFLite Model */
-  tfliteModel?: TfLiteModel;
-  /** The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. */
-  name?: string;
-  /** Output only. Timestamp when this model was created in Firebase ML. */
-  createTime?: string;
-}
-
-export const Model: Schema.Schema<Model> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tags: Schema.optional(Schema.Array(Schema.String)),
-    displayName: Schema.optional(Schema.String),
-    activeOperations: Schema.optional(Schema.Array(Operation)),
-    state: Schema.optional(ModelState),
-    modelHash: Schema.optional(Schema.String),
-    etag: Schema.optional(Schema.String),
-    updateTime: Schema.optional(Schema.String),
-    tfliteModel: Schema.optional(TfLiteModel),
-    name: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Model" });
-
-export interface ListModelsResponse {
-  /** The list of models */
-  models?: ReadonlyArray<Model>;
-  /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
-  nextPageToken?: string;
-}
-
-export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    models: Schema.optional(Schema.Array(Model)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListModelsResponse" });
 
 // ==========================================================================
 // Errors
@@ -237,59 +237,68 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface DeleteProjectsModelsRequest {
-  /** Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` */
-  name: string;
+export interface ListProjectsModelsRequest {
+  /** Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' */
+  parent: string;
+  /** A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc" */
+  filter?: string;
+  /** The maximum number of items to return */
+  pageSize?: number;
+  /** The next_page_token value returned from a previous List request, if any. */
+  pageToken?: string;
 }
 
-export const DeleteProjectsModelsRequest =
+export const ListProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta2/{+name}" }),
+    T.Http({ method: "GET", path: "v1beta2/{+parent}/models" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsModelsRequest>;
 
-export type DeleteProjectsModelsResponse = Empty;
-export const DeleteProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type ListProjectsModelsResponse = ListModelsResponse;
+export const ListProjectsModelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListModelsResponse;
 
-export type DeleteProjectsModelsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type ListProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
-/** Deletes a model */
-export const deleteProjectsModels: API.OperationMethod<
-  DeleteProjectsModelsRequest,
-  DeleteProjectsModelsResponse,
-  DeleteProjectsModelsError,
+/** Lists the models */
+export const listProjectsModels: API.PaginatedOperationMethod<
+  ListProjectsModelsRequest,
+  ListProjectsModelsResponse,
+  ListProjectsModelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsModelsRequest,
-  output: DeleteProjectsModelsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsModelsRequest,
+  output: ListProjectsModelsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface PatchProjectsModelsRequest {
-  /** The update mask */
-  updateMask?: string;
   /** The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. */
   name: string;
+  /** The update mask */
+  updateMask?: string;
   /** Request body */
   body?: Model;
 }
 
 export const PatchProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Model).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "PATCH", path: "v1beta2/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsModelsRequest>;
 
 export type PatchProjectsModelsResponse = Operation;
 export const PatchProjectsModelsResponse =
@@ -325,7 +334,7 @@ export const GetProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsModelsRequest>;
 
 export type GetProjectsModelsResponse = Model;
 export const GetProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
@@ -344,6 +353,41 @@ export const getProjectsModels: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface DeleteProjectsModelsRequest {
+  /** Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` */
+  name: string;
+}
+
+export const DeleteProjectsModelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta2/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsModelsRequest>;
+
+export type DeleteProjectsModelsResponse = Empty;
+export const DeleteProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a model */
+export const deleteProjectsModels: API.OperationMethod<
+  DeleteProjectsModelsRequest,
+  DeleteProjectsModelsResponse,
+  DeleteProjectsModelsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsModelsRequest,
+  output: DeleteProjectsModelsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface DownloadProjectsModelsRequest {
   /** Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}` */
   name: string;
@@ -355,7 +399,7 @@ export const DownloadProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}:download" }),
     svc,
-  ) as unknown as Schema.Schema<DownloadProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<DownloadProjectsModelsRequest>;
 
 export type DownloadProjectsModelsResponse = DownloadModelResponse;
 export const DownloadProjectsModelsResponse =
@@ -389,7 +433,7 @@ export const CreateProjectsModelsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1beta2/{+parent}/models", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsModelsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsModelsRequest>;
 
 export type CreateProjectsModelsResponse = Operation;
 export const CreateProjectsModelsResponse =
@@ -414,50 +458,6 @@ export const createProjectsModels: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsModelsRequest {
-  /** The maximum number of items to return */
-  pageSize?: number;
-  /** Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' */
-  parent: string;
-  /** A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc" */
-  filter?: string;
-  /** The next_page_token value returned from a previous List request, if any. */
-  pageToken?: string;
-}
-
-export const ListProjectsModelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/{+parent}/models" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsModelsRequest>;
-
-export type ListProjectsModelsResponse = ListModelsResponse;
-export const ListProjectsModelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListModelsResponse;
-
-export type ListProjectsModelsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists the models */
-export const listProjectsModels: API.PaginatedOperationMethod<
-  ListProjectsModelsRequest,
-  ListProjectsModelsResponse,
-  ListProjectsModelsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsModelsRequest,
-  output: ListProjectsModelsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
@@ -469,7 +469,7 @@ export const GetProjectsOperationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta2/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
 export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =

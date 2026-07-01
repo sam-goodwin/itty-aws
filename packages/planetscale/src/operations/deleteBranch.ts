@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface DeleteBranchInput {
+  organization: string;
+  database: string;
+  branch: string;
+  delete_descendants?: boolean;
+}
 export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -14,12 +20,12 @@ export const DeleteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}/branches/{branch}",
   }),
-);
-export type DeleteBranchInput = typeof DeleteBranchInput.Type;
+) as unknown as Schema.Codec<DeleteBranchInput>;
 
 // Output Schema
-export const DeleteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteBranchOutput = typeof DeleteBranchOutput.Type;
+export type DeleteBranchOutput = void;
+export const DeleteBranchOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBranchOutput>;
 
 // The operation
 /**

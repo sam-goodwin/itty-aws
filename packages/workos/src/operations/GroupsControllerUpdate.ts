@@ -9,6 +9,12 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerUpdateInput {
+  organizationId: string;
+  groupId: string;
+  name?: string;
+  description?: string | null;
+}
 export const GroupsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -20,11 +26,18 @@ export const GroupsControllerUpdateInput =
       method: "PATCH",
       path: "/organizations/{organizationId}/groups/{groupId}",
     }),
-  );
-export type GroupsControllerUpdateInput =
-  typeof GroupsControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerUpdateInput>;
 
 // Output Schema
+export interface GroupsControllerUpdateOutput {
+  object?: string;
+  id?: string;
+  organization_id?: string;
+  name?: string;
+  description?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
 export const GroupsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -34,9 +47,7 @@ export const GroupsControllerUpdateOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type GroupsControllerUpdateOutput =
-  typeof GroupsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<GroupsControllerUpdateOutput>;
 
 // The operation
 /**

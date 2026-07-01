@@ -4,6 +4,17 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface PersonsPartialUpdateInput {
+  id: string;
+  project_id: string;
+  format?: "csv" | "json";
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -20,10 +31,18 @@ export const PersonsPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/persons/{id}/",
     }),
-  );
-export type PersonsPartialUpdateInput = typeof PersonsPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<PersonsPartialUpdateInput>;
 
 // Output Schema
+export interface PersonsPartialUpdateOutput {
+  id?: number;
+  name?: string;
+  distinct_ids?: string[];
+  properties?: unknown;
+  created_at?: string;
+  uuid?: string;
+  last_seen_at?: string | null;
+}
 export const PersonsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
@@ -33,8 +52,7 @@ export const PersonsPartialUpdateOutput =
     created_at: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type PersonsPartialUpdateOutput = typeof PersonsPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PersonsPartialUpdateOutput>;
 
 // The operation
 /**

@@ -4,12 +4,26 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface ApplicationCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  properties?: {
+    displayName?: string;
+    allowUpdates?: boolean;
+    defaultVersion?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -32,10 +46,22 @@ export const ApplicationCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type ApplicationCreateInput = typeof ApplicationCreateInput.Type;
+) as unknown as Schema.Codec<ApplicationCreateInput>;
 
 // Output Schema
+export interface ApplicationCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -55,8 +81,7 @@ export const ApplicationCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationCreateOutput = typeof ApplicationCreateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationCreateOutput>;
 
 // The operation
 /**
@@ -73,6 +98,12 @@ export const ApplicationCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationCreateOutput,
 }));
 // Input Schema
+export interface ApplicationDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+}
 export const ApplicationDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -86,12 +117,12 @@ export const ApplicationDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type ApplicationDeleteInput = typeof ApplicationDeleteInput.Type;
+) as unknown as Schema.Codec<ApplicationDeleteInput>;
 
 // Output Schema
-export const ApplicationDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationDeleteOutput = typeof ApplicationDeleteOutput.Type;
+export type ApplicationDeleteOutput = void;
+export const ApplicationDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationDeleteOutput>;
 
 // The operation
 /**
@@ -108,6 +139,12 @@ export const ApplicationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationDeleteOutput,
 }));
 // Input Schema
+export interface ApplicationGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+}
 export const ApplicationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -119,10 +156,22 @@ export const ApplicationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type ApplicationGetInput = typeof ApplicationGetInput.Type;
+) as unknown as Schema.Codec<ApplicationGetInput>;
 
 // Output Schema
+export interface ApplicationGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -141,8 +190,7 @@ export const ApplicationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ApplicationGetOutput = typeof ApplicationGetOutput.Type;
+}) as unknown as Schema.Codec<ApplicationGetOutput>;
 
 // The operation
 /**
@@ -159,6 +207,12 @@ export const ApplicationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationGetOutput,
 }));
 // Input Schema
+export interface ApplicationListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  maxresults?: number;
+}
 export const ApplicationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -170,10 +224,25 @@ export const ApplicationListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications",
     apiVersion: "2025-06-01",
   }),
-);
-export type ApplicationListInput = typeof ApplicationListInput.Type;
+) as unknown as Schema.Codec<ApplicationListInput>;
 
 // Output Schema
+export interface ApplicationListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -197,8 +266,7 @@ export const ApplicationListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ApplicationListOutput = typeof ApplicationListOutput.Type;
+}) as unknown as Schema.Codec<ApplicationListOutput>;
 
 // The operation
 /**
@@ -215,6 +283,14 @@ export const ApplicationList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationListOutput,
 }));
 // Input Schema
+export interface ApplicationPackageActivateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  versionName: string;
+  format: string;
+}
 export const ApplicationPackageActivateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -229,11 +305,22 @@ export const ApplicationPackageActivateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}/activate",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ApplicationPackageActivateInput =
-  typeof ApplicationPackageActivateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationPackageActivateInput>;
 
 // Output Schema
+export interface ApplicationPackageActivateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationPackageActivateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -253,9 +340,7 @@ export const ApplicationPackageActivateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationPackageActivateOutput =
-  typeof ApplicationPackageActivateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationPackageActivateOutput>;
 
 // The operation
 /**
@@ -275,6 +360,22 @@ export const ApplicationPackageActivate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationPackageCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  versionName: string;
+  properties?: {
+    state?: "Pending" | "Active";
+    format?: string;
+    storageUrl?: string;
+    storageUrlExpiry?: string;
+    lastActivationTime?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationPackageCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -299,11 +400,22 @@ export const ApplicationPackageCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ApplicationPackageCreateInput =
-  typeof ApplicationPackageCreateInput.Type;
+  ) as unknown as Schema.Codec<ApplicationPackageCreateInput>;
 
 // Output Schema
+export interface ApplicationPackageCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationPackageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -323,9 +435,7 @@ export const ApplicationPackageCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationPackageCreateOutput =
-  typeof ApplicationPackageCreateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationPackageCreateOutput>;
 
 // The operation
 /**
@@ -345,6 +455,13 @@ export const ApplicationPackageCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationPackageDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  versionName: string;
+}
 export const ApplicationPackageDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -358,15 +475,12 @@ export const ApplicationPackageDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ApplicationPackageDeleteInput =
-  typeof ApplicationPackageDeleteInput.Type;
+  ) as unknown as Schema.Codec<ApplicationPackageDeleteInput>;
 
 // Output Schema
+export type ApplicationPackageDeleteOutput = void;
 export const ApplicationPackageDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ApplicationPackageDeleteOutput =
-  typeof ApplicationPackageDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationPackageDeleteOutput>;
 
 // The operation
 /**
@@ -386,6 +500,13 @@ export const ApplicationPackageDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationPackageGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  versionName: string;
+}
 export const ApplicationPackageGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -399,10 +520,22 @@ export const ApplicationPackageGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions/{versionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ApplicationPackageGetInput = typeof ApplicationPackageGetInput.Type;
+  ) as unknown as Schema.Codec<ApplicationPackageGetInput>;
 
 // Output Schema
+export interface ApplicationPackageGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationPackageGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -422,9 +555,7 @@ export const ApplicationPackageGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationPackageGetOutput =
-  typeof ApplicationPackageGetOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationPackageGetOutput>;
 
 // The operation
 /**
@@ -444,6 +575,13 @@ export const ApplicationPackageGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationPackageListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  maxresults?: number;
+}
 export const ApplicationPackageListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -457,11 +595,25 @@ export const ApplicationPackageListInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions",
       apiVersion: "2025-06-01",
     }),
-  );
-export type ApplicationPackageListInput =
-  typeof ApplicationPackageListInput.Type;
+  ) as unknown as Schema.Codec<ApplicationPackageListInput>;
 
 // Output Schema
+export interface ApplicationPackageListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ApplicationPackageListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -496,9 +648,7 @@ export const ApplicationPackageListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ApplicationPackageListOutput =
-  typeof ApplicationPackageListOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationPackageListOutput>;
 
 // The operation
 /**
@@ -518,6 +668,19 @@ export const ApplicationPackageList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ApplicationUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  applicationName: string;
+  properties?: {
+    displayName?: string;
+    allowUpdates?: boolean;
+    defaultVersion?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const ApplicationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -540,10 +703,22 @@ export const ApplicationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type ApplicationUpdateInput = typeof ApplicationUpdateInput.Type;
+) as unknown as Schema.Codec<ApplicationUpdateInput>;
 
 // Output Schema
+export interface ApplicationUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ApplicationUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -563,8 +738,7 @@ export const ApplicationUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ApplicationUpdateOutput = typeof ApplicationUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ApplicationUpdateOutput>;
 
 // The operation
 /**
@@ -581,6 +755,49 @@ export const ApplicationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ApplicationUpdateOutput,
 }));
 // Input Schema
+export interface BatchAccountCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  location: string;
+  tags?: Record<string, string>;
+  properties?: {
+    autoStorage?: {
+      storageAccountId: string;
+      authenticationMode?: "StorageKeys" | "BatchAccountManagedIdentity";
+      nodeIdentityReference?: { resourceId?: string };
+    };
+    poolAllocationMode?: "BatchService" | "UserSubscription";
+    keyVaultReference?: { id: string; url: string };
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    networkProfile?: {
+      accountAccess?: {
+        defaultAction: "Allow" | "Deny";
+        ipRules?: { action: "Allow"; value: string }[];
+      };
+      nodeManagementAccess?: {
+        defaultAction: "Allow" | "Deny";
+        ipRules?: { action: "Allow"; value: string }[];
+      };
+    };
+    encryption?: {
+      keySource?: "Microsoft.Batch" | "Microsoft.KeyVault";
+      keyVaultProperties?: { keyIdentifier?: string };
+    };
+    allowedAuthenticationModes?:
+      | ("SharedKey" | "AAD" | "TaskAuthenticationToken")[]
+      | null;
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const BatchAccountCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -688,10 +905,22 @@ export const BatchAccountCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountCreateInput = typeof BatchAccountCreateInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountCreateInput>;
 
 // Output Schema
+export interface BatchAccountCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchAccountCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -711,8 +940,7 @@ export const BatchAccountCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchAccountCreateOutput = typeof BatchAccountCreateOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountCreateOutput>;
 
 // The operation
 /**
@@ -728,6 +956,11 @@ export const BatchAccountCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountCreateOutput,
 }));
 // Input Schema
+export interface BatchAccountDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -739,12 +972,12 @@ export const BatchAccountDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountDeleteInput = typeof BatchAccountDeleteInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountDeleteInput>;
 
 // Output Schema
-export const BatchAccountDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchAccountDeleteOutput = typeof BatchAccountDeleteOutput.Type;
+export type BatchAccountDeleteOutput = void;
+export const BatchAccountDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchAccountDeleteOutput>;
 
 // The operation
 /**
@@ -760,6 +993,11 @@ export const BatchAccountDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountDeleteOutput,
 }));
 // Input Schema
+export interface BatchAccountGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -770,10 +1008,22 @@ export const BatchAccountGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type BatchAccountGetInput = typeof BatchAccountGetInput.Type;
+) as unknown as Schema.Codec<BatchAccountGetInput>;
 
 // Output Schema
+export interface BatchAccountGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchAccountGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -792,8 +1042,7 @@ export const BatchAccountGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type BatchAccountGetOutput = typeof BatchAccountGetOutput.Type;
+}) as unknown as Schema.Codec<BatchAccountGetOutput>;
 
 // The operation
 /**
@@ -809,6 +1058,12 @@ export const BatchAccountGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountGetOutput,
 }));
 // Input Schema
+export interface BatchAccountGetDetectorInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  detectorId: string;
+}
 export const BatchAccountGetDetectorInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -821,11 +1076,22 @@ export const BatchAccountGetDetectorInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors/{detectorId}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountGetDetectorInput =
-  typeof BatchAccountGetDetectorInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountGetDetectorInput>;
 
 // Output Schema
+export interface BatchAccountGetDetectorOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchAccountGetDetectorOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -845,9 +1111,7 @@ export const BatchAccountGetDetectorOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchAccountGetDetectorOutput =
-  typeof BatchAccountGetDetectorOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountGetDetectorOutput>;
 
 // The operation
 /**
@@ -866,6 +1130,11 @@ export const BatchAccountGetDetector = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchAccountGetKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountGetKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -877,17 +1146,20 @@ export const BatchAccountGetKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/listKeys",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountGetKeysInput = typeof BatchAccountGetKeysInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountGetKeysInput>;
 
 // Output Schema
+export interface BatchAccountGetKeysOutput {
+  accountName?: string;
+  primary?: string;
+  secondary?: string;
+}
 export const BatchAccountGetKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     primary: Schema.optional(Schema.String),
     secondary: Schema.optional(Schema.String),
-  });
-export type BatchAccountGetKeysOutput = typeof BatchAccountGetKeysOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountGetKeysOutput>;
 
 // The operation
 /**
@@ -905,6 +1177,9 @@ export const BatchAccountGetKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountGetKeysOutput,
 }));
 // Input Schema
+export interface BatchAccountListInput {
+  subscriptionId: string;
+}
 export const BatchAccountListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -913,10 +1188,25 @@ export const BatchAccountListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/batchAccounts",
     apiVersion: "2025-06-01",
   }),
-);
-export type BatchAccountListInput = typeof BatchAccountListInput.Type;
+) as unknown as Schema.Codec<BatchAccountListInput>;
 
 // Output Schema
+export interface BatchAccountListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BatchAccountListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -952,8 +1242,7 @@ export const BatchAccountListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type BatchAccountListOutput = typeof BatchAccountListOutput.Type;
+) as unknown as Schema.Codec<BatchAccountListOutput>;
 
 // The operation
 /**
@@ -967,6 +1256,10 @@ export const BatchAccountList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountListOutput,
 }));
 // Input Schema
+export interface BatchAccountListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const BatchAccountListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -977,11 +1270,25 @@ export const BatchAccountListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountListByResourceGroupInput =
-  typeof BatchAccountListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountListByResourceGroupInput>;
 
 // Output Schema
+export interface BatchAccountListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BatchAccountListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1016,9 +1323,7 @@ export const BatchAccountListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BatchAccountListByResourceGroupOutput =
-  typeof BatchAccountListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1034,6 +1339,11 @@ export const BatchAccountListByResourceGroup =
     outputSchema: BatchAccountListByResourceGroupOutput,
   }));
 // Input Schema
+export interface BatchAccountListDetectorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountListDetectorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1045,11 +1355,25 @@ export const BatchAccountListDetectorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountListDetectorsInput =
-  typeof BatchAccountListDetectorsInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountListDetectorsInput>;
 
 // Output Schema
+export interface BatchAccountListDetectorsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BatchAccountListDetectorsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1084,9 +1408,7 @@ export const BatchAccountListDetectorsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BatchAccountListDetectorsOutput =
-  typeof BatchAccountListDetectorsOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountListDetectorsOutput>;
 
 // The operation
 /**
@@ -1104,6 +1426,11 @@ export const BatchAccountListDetectors = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchAccountListOutboundNetworkDependenciesEndpointsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountListOutboundNetworkDependenciesEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1115,11 +1442,20 @@ export const BatchAccountListOutboundNetworkDependenciesEndpointsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/outboundNetworkDependenciesEndpoints",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountListOutboundNetworkDependenciesEndpointsInput =
-  typeof BatchAccountListOutboundNetworkDependenciesEndpointsInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountListOutboundNetworkDependenciesEndpointsInput>;
 
 // Output Schema
+export interface BatchAccountListOutboundNetworkDependenciesEndpointsOutput {
+  value: {
+    category?: string;
+    endpoints?: {
+      domainName?: string;
+      description?: string;
+      endpointDetails?: { port?: number }[];
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1143,9 +1479,7 @@ export const BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BatchAccountListOutboundNetworkDependenciesEndpointsOutput =
-  typeof BatchAccountListOutboundNetworkDependenciesEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountListOutboundNetworkDependenciesEndpointsOutput>;
 
 // The operation
 /**
@@ -1162,6 +1496,12 @@ export const BatchAccountListOutboundNetworkDependenciesEndpoints =
     outputSchema: BatchAccountListOutboundNetworkDependenciesEndpointsOutput,
   }));
 // Input Schema
+export interface BatchAccountRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyName: "Primary" | "Secondary";
+}
 export const BatchAccountRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1174,19 +1514,20 @@ export const BatchAccountRegenerateKeyInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/regenerateKeys",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountRegenerateKeyInput =
-  typeof BatchAccountRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountRegenerateKeyInput>;
 
 // Output Schema
+export interface BatchAccountRegenerateKeyOutput {
+  accountName?: string;
+  primary?: string;
+  secondary?: string;
+}
 export const BatchAccountRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     primary: Schema.optional(Schema.String),
     secondary: Schema.optional(Schema.String),
-  });
-export type BatchAccountRegenerateKeyOutput =
-  typeof BatchAccountRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -1206,6 +1547,11 @@ export const BatchAccountRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BatchAccountSynchronizeAutoStorageKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const BatchAccountSynchronizeAutoStorageKeysInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1217,15 +1563,12 @@ export const BatchAccountSynchronizeAutoStorageKeysInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/syncAutoStorageKeys",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountSynchronizeAutoStorageKeysInput =
-  typeof BatchAccountSynchronizeAutoStorageKeysInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountSynchronizeAutoStorageKeysInput>;
 
 // Output Schema
+export type BatchAccountSynchronizeAutoStorageKeysOutput = void;
 export const BatchAccountSynchronizeAutoStorageKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type BatchAccountSynchronizeAutoStorageKeysOutput =
-  typeof BatchAccountSynchronizeAutoStorageKeysOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BatchAccountSynchronizeAutoStorageKeysOutput>;
 
 // The operation
 /**
@@ -1242,6 +1585,46 @@ export const BatchAccountSynchronizeAutoStorageKeys =
     outputSchema: BatchAccountSynchronizeAutoStorageKeysOutput,
   }));
 // Input Schema
+export interface BatchAccountUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    autoStorage?: {
+      storageAccountId: string;
+      authenticationMode?: "StorageKeys" | "BatchAccountManagedIdentity";
+      nodeIdentityReference?: { resourceId?: string };
+    };
+    encryption?: {
+      keySource?: "Microsoft.Batch" | "Microsoft.KeyVault";
+      keyVaultProperties?: { keyIdentifier?: string };
+    };
+    allowedAuthenticationModes?:
+      | ("SharedKey" | "AAD" | "TaskAuthenticationToken")[]
+      | null;
+    publicNetworkAccess?: "Enabled" | "Disabled" | "SecuredByPerimeter";
+    networkProfile?: {
+      accountAccess?: {
+        defaultAction: "Allow" | "Deny";
+        ipRules?: { action: "Allow"; value: string }[];
+      };
+      nodeManagementAccess?: {
+        defaultAction: "Allow" | "Deny";
+        ipRules?: { action: "Allow"; value: string }[];
+      };
+    };
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "SystemAssigned" | "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const BatchAccountUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1339,10 +1722,22 @@ export const BatchAccountUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type BatchAccountUpdateInput = typeof BatchAccountUpdateInput.Type;
+  ) as unknown as Schema.Codec<BatchAccountUpdateInput>;
 
 // Output Schema
+export interface BatchAccountUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BatchAccountUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1362,8 +1757,7 @@ export const BatchAccountUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BatchAccountUpdateOutput = typeof BatchAccountUpdateOutput.Type;
+  }) as unknown as Schema.Codec<BatchAccountUpdateOutput>;
 
 // The operation
 /**
@@ -1379,6 +1773,12 @@ export const BatchAccountUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: BatchAccountUpdateOutput,
 }));
 // Input Schema
+export interface LocationCheckNameAvailabilityInput {
+  subscriptionId: string;
+  locationName: string;
+  name: string;
+  type: "Microsoft.Batch/batchAccounts";
+}
 export const LocationCheckNameAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1391,19 +1791,20 @@ export const LocationCheckNameAvailabilityInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/checkNameAvailability",
       apiVersion: "2025-06-01",
     }),
-  );
-export type LocationCheckNameAvailabilityInput =
-  typeof LocationCheckNameAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<LocationCheckNameAvailabilityInput>;
 
 // Output Schema
+export interface LocationCheckNameAvailabilityOutput {
+  nameAvailable?: boolean;
+  reason?: "Invalid" | "AlreadyExists";
+  message?: string;
+}
 export const LocationCheckNameAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
-  });
-export type LocationCheckNameAvailabilityOutput =
-  typeof LocationCheckNameAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<LocationCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -1419,6 +1820,10 @@ export const LocationCheckNameAvailability =
     outputSchema: LocationCheckNameAvailabilityOutput,
   }));
 // Input Schema
+export interface LocationGetQuotasInput {
+  subscriptionId: string;
+  locationName: string;
+}
 export const LocationGetQuotasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1430,15 +1835,16 @@ export const LocationGetQuotasInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/quotas",
     apiVersion: "2025-06-01",
   }),
-);
-export type LocationGetQuotasInput = typeof LocationGetQuotasInput.Type;
+) as unknown as Schema.Codec<LocationGetQuotasInput>;
 
 // Output Schema
+export interface LocationGetQuotasOutput {
+  accountQuota?: number;
+}
 export const LocationGetQuotasOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountQuota: Schema.optional(Schema.Number),
-  });
-export type LocationGetQuotasOutput = typeof LocationGetQuotasOutput.Type;
+  }) as unknown as Schema.Codec<LocationGetQuotasOutput>;
 
 // The operation
 /**
@@ -1453,6 +1859,12 @@ export const LocationGetQuotas = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: LocationGetQuotasOutput,
 }));
 // Input Schema
+export interface LocationListSupportedVirtualMachineSkusInput {
+  subscriptionId: string;
+  locationName: string;
+  maxresults?: number;
+  $filter?: string;
+}
 export const LocationListSupportedVirtualMachineSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1465,11 +1877,18 @@ export const LocationListSupportedVirtualMachineSkusInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/virtualMachineSkus",
       apiVersion: "2025-06-01",
     }),
-  );
-export type LocationListSupportedVirtualMachineSkusInput =
-  typeof LocationListSupportedVirtualMachineSkusInput.Type;
+  ) as unknown as Schema.Codec<LocationListSupportedVirtualMachineSkusInput>;
 
 // Output Schema
+export interface LocationListSupportedVirtualMachineSkusOutput {
+  value: {
+    name?: string;
+    familyName?: string;
+    capabilities?: { name?: string; value?: string }[];
+    batchSupportEndOfLife?: string;
+  }[];
+  nextLink?: string;
+}
 export const LocationListSupportedVirtualMachineSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1488,9 +1907,7 @@ export const LocationListSupportedVirtualMachineSkusOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type LocationListSupportedVirtualMachineSkusOutput =
-  typeof LocationListSupportedVirtualMachineSkusOutput.Type;
+  }) as unknown as Schema.Codec<LocationListSupportedVirtualMachineSkusOutput>;
 
 // The operation
 /**
@@ -1508,6 +1925,12 @@ export const LocationListSupportedVirtualMachineSkus =
     outputSchema: LocationListSupportedVirtualMachineSkusOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterGetConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const NetworkSecurityPerimeterGetConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1522,11 +1945,22 @@ export const NetworkSecurityPerimeterGetConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type NetworkSecurityPerimeterGetConfigurationInput =
-  typeof NetworkSecurityPerimeterGetConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterGetConfigurationInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterGetConfigurationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkSecurityPerimeterGetConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1546,9 +1980,7 @@ export const NetworkSecurityPerimeterGetConfigurationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkSecurityPerimeterGetConfigurationOutput =
-  typeof NetworkSecurityPerimeterGetConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterGetConfigurationOutput>;
 
 // The operation
 /**
@@ -1566,6 +1998,11 @@ export const NetworkSecurityPerimeterGetConfiguration =
     outputSchema: NetworkSecurityPerimeterGetConfigurationOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterListConfigurationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const NetworkSecurityPerimeterListConfigurationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1577,11 +2014,25 @@ export const NetworkSecurityPerimeterListConfigurationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations",
       apiVersion: "2025-06-01",
     }),
-  );
-export type NetworkSecurityPerimeterListConfigurationsInput =
-  typeof NetworkSecurityPerimeterListConfigurationsInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterListConfigurationsInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterListConfigurationsOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkSecurityPerimeterListConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1616,9 +2067,7 @@ export const NetworkSecurityPerimeterListConfigurationsOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkSecurityPerimeterListConfigurationsOutput =
-  typeof NetworkSecurityPerimeterListConfigurationsOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterListConfigurationsOutput>;
 
 // The operation
 /**
@@ -1635,6 +2084,12 @@ export const NetworkSecurityPerimeterListConfigurations =
     outputSchema: NetworkSecurityPerimeterListConfigurationsOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterReconcileConfigurationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  networkSecurityPerimeterConfigurationName: string;
+}
 export const NetworkSecurityPerimeterReconcileConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1649,15 +2104,12 @@ export const NetworkSecurityPerimeterReconcileConfigurationInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
       apiVersion: "2025-06-01",
     }),
-  );
-export type NetworkSecurityPerimeterReconcileConfigurationInput =
-  typeof NetworkSecurityPerimeterReconcileConfigurationInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterReconcileConfigurationInput>;
 
 // Output Schema
+export type NetworkSecurityPerimeterReconcileConfigurationOutput = void;
 export const NetworkSecurityPerimeterReconcileConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NetworkSecurityPerimeterReconcileConfigurationOutput =
-  typeof NetworkSecurityPerimeterReconcileConfigurationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkSecurityPerimeterReconcileConfigurationOutput>;
 
 // The operation
 /**
@@ -1675,6 +2127,7 @@ export const NetworkSecurityPerimeterReconcileConfiguration =
     outputSchema: NetworkSecurityPerimeterReconcileConfigurationOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -1683,10 +2136,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Batch/operations",
     apiVersion: "2025-06-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      operation?: string;
+      resource?: string;
+      description?: string;
+    };
+    origin?: string;
+    properties?: unknown;
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -1705,8 +2172,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -1719,6 +2185,301 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PoolCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+  properties?: {
+    displayName?: string;
+    lastModified?: string;
+    creationTime?: string;
+    provisioningState?: "Succeeded" | "Deleting";
+    provisioningStateTransitionTime?: string;
+    allocationState?: "Steady" | "Resizing" | "Stopping";
+    allocationStateTransitionTime?: string;
+    vmSize?: string;
+    deploymentConfiguration?: {
+      virtualMachineConfiguration?: {
+        imageReference: {
+          publisher?: string;
+          offer?: string;
+          sku?: string;
+          version?: string;
+          id?: string;
+          sharedGalleryImageId?: string;
+          communityGalleryImageId?: string;
+        };
+        nodeAgentSkuId: string;
+        windowsConfiguration?: { enableAutomaticUpdates?: boolean };
+        dataDisks?: {
+          lun: number;
+          caching?: "None" | "ReadOnly" | "ReadWrite";
+          diskSizeGB: number;
+          managedDisk?: {
+            storageAccountType?:
+              | "Standard_LRS"
+              | "Premium_LRS"
+              | "StandardSSD_LRS";
+            securityProfile?: {
+              securityEncryptionType?:
+                | "NonPersistedTPM"
+                | "VMGuestStateOnly"
+                | "DiskWithVMGuestState";
+              diskEncryptionSet?: { id: string };
+            };
+            diskEncryptionSet?: { id: string };
+          };
+        }[];
+        licenseType?: string;
+        containerConfiguration?: {
+          type: "DockerCompatible" | "CriCompatible";
+          containerImageNames?: string[];
+          containerRegistries?: {
+            username?: string;
+            password?: string | Redacted.Redacted<string>;
+            registryServer?: string;
+            identityReference?: { resourceId?: string };
+          }[];
+        };
+        diskEncryptionConfiguration?: {
+          targets?: ("OsDisk" | "TemporaryDisk")[];
+          customerManagedKey?: {
+            keyUrl?: string;
+            rotationToLatestKeyVersionEnabled?: boolean;
+            identityReference?: { resourceId?: string };
+          };
+        };
+        nodePlacementConfiguration?: { policy?: "Regional" | "Zonal" };
+        extensions?: {
+          name: string;
+          publisher: string;
+          type: string;
+          typeHandlerVersion?: string;
+          autoUpgradeMinorVersion?: boolean;
+          enableAutomaticUpgrade?: boolean;
+          settings?: unknown;
+          protectedSettings?: unknown;
+          provisionAfterExtensions?: string[];
+        }[];
+        osDisk?: {
+          ephemeralOSDiskSettings?: { placement?: "CacheDisk" };
+          caching?: "None" | "ReadOnly" | "ReadWrite";
+          managedDisk?: {
+            storageAccountType?:
+              | "Standard_LRS"
+              | "Premium_LRS"
+              | "StandardSSD_LRS";
+            securityProfile?: {
+              securityEncryptionType?:
+                | "NonPersistedTPM"
+                | "VMGuestStateOnly"
+                | "DiskWithVMGuestState";
+              diskEncryptionSet?: { id: string };
+            };
+            diskEncryptionSet?: { id: string };
+          };
+          diskSizeGB?: number;
+          writeAcceleratorEnabled?: boolean;
+        };
+        securityProfile?: {
+          securityType?: "trustedLaunch" | "confidentialVM";
+          encryptionAtHost?: boolean;
+          uefiSettings?: { secureBootEnabled?: boolean; vTpmEnabled?: boolean };
+          proxyAgentSettings?: {
+            enabled?: boolean;
+            imds?: {
+              mode?: "Audit" | "Enforce";
+              inVMAccessControlProfileReferenceId?: string;
+            };
+            wireServer?: {
+              mode?: "Audit" | "Enforce";
+              inVMAccessControlProfileReferenceId?: string;
+            };
+          };
+        };
+        serviceArtifactReference?: { id: string };
+      };
+    };
+    currentDedicatedNodes?: number;
+    currentLowPriorityNodes?: number;
+    scaleSettings?: {
+      fixedScale?: {
+        resizeTimeout?: string;
+        targetDedicatedNodes?: number;
+        targetLowPriorityNodes?: number;
+        nodeDeallocationOption?:
+          | "Requeue"
+          | "Terminate"
+          | "TaskCompletion"
+          | "RetainedData";
+      };
+      autoScale?: { formula: string; evaluationInterval?: string };
+    };
+    autoScaleRun?: {
+      evaluationTime: string;
+      results?: string;
+      error?: { code: string; message: string; details?: unknown[] };
+    };
+    interNodeCommunication?: "Enabled" | "Disabled";
+    networkConfiguration?: {
+      subnetId?: string;
+      dynamicVnetAssignmentScope?: "none" | "job";
+      endpointConfiguration?: {
+        inboundNatPools: {
+          name: string;
+          protocol: "TCP" | "UDP";
+          backendPort: number;
+          frontendPortRangeStart: number;
+          frontendPortRangeEnd: number;
+          networkSecurityGroupRules?: {
+            priority: number;
+            access: "Allow" | "Deny";
+            sourceAddressPrefix: string;
+            sourcePortRanges?: string[];
+          }[];
+        }[];
+      };
+      publicIPAddressConfiguration?: {
+        provision?: "BatchManaged" | "UserManaged" | "NoPublicIPAddresses";
+        ipAddressIds?: string[];
+        ipFamilies?: ("IPv4" | "IPv6")[];
+        ipTags?: { ipTagType?: string; tag?: string }[];
+      };
+      enableAcceleratedNetworking?: boolean;
+    };
+    taskSlotsPerNode?: number;
+    taskSchedulingPolicy?: {
+      jobDefaultOrder?: "None" | "CreationTime";
+      nodeFillType: "Spread" | "Pack";
+    };
+    userAccounts?: {
+      name: string;
+      password: string | Redacted.Redacted<string>;
+      elevationLevel?: "NonAdmin" | "Admin";
+      linuxUserConfiguration?: {
+        uid?: number;
+        gid?: number;
+        sshPrivateKey?: string;
+      };
+      windowsUserConfiguration?: { loginMode?: "Batch" | "Interactive" };
+    }[];
+    metadata?: { name: string; value: string }[];
+    startTask?: {
+      commandLine?: string;
+      resourceFiles?: {
+        autoStorageContainerName?: string;
+        storageContainerUrl?: string;
+        httpUrl?: string;
+        blobPrefix?: string;
+        filePath?: string;
+        fileMode?: string;
+        identityReference?: { resourceId?: string };
+      }[];
+      environmentSettings?: { name: string; value?: string }[];
+      userIdentity?: {
+        userName?: string;
+        autoUser?: {
+          scope?: "Task" | "Pool";
+          elevationLevel?: "NonAdmin" | "Admin";
+        };
+      };
+      maxTaskRetryCount?: number;
+      waitForSuccess?: boolean;
+      containerSettings?: {
+        containerRunOptions?: string;
+        imageName: string;
+        registry?: {
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          registryServer?: string;
+          identityReference?: { resourceId?: string };
+        };
+        workingDirectory?: "TaskWorkingDirectory" | "ContainerImageDefault";
+        containerHostBatchBindMounts?: {
+          source?:
+            | "Shared"
+            | "Startup"
+            | "VfsMounts"
+            | "Task"
+            | "JobPrep"
+            | "Applications";
+          isReadOnly?: boolean;
+        }[];
+      };
+    };
+    applicationPackages?: { id: string; version?: string }[];
+    resizeOperationStatus?: {
+      targetDedicatedNodes?: number;
+      targetLowPriorityNodes?: number;
+      resizeTimeout?: string;
+      nodeDeallocationOption?:
+        | "Requeue"
+        | "Terminate"
+        | "TaskCompletion"
+        | "RetainedData";
+      startTime?: string;
+      errors?: { code: string; message: string; details?: unknown[] }[];
+    };
+    mountConfiguration?: {
+      azureBlobFileSystemConfiguration?: {
+        accountName: string;
+        containerName: string;
+        accountKey?: string;
+        sasKey?: string;
+        blobfuseOptions?: string;
+        relativeMountPath: string;
+        identityReference?: { resourceId?: string };
+      };
+      nfsMountConfiguration?: {
+        source: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+      };
+      cifsMountConfiguration?: {
+        userName: string;
+        source: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+        password: string | Redacted.Redacted<string>;
+      };
+      azureFileShareConfiguration?: {
+        accountName: string;
+        azureFileUrl: string;
+        accountKey: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+      };
+    }[];
+    upgradePolicy?: {
+      mode: "automatic" | "manual" | "rolling";
+      automaticOSUpgradePolicy?: {
+        disableAutomaticRollback?: boolean;
+        enableAutomaticOSUpgrade?: boolean;
+        useRollingUpgradePolicy?: boolean;
+        osRollingUpgradeDeferral?: boolean;
+      };
+      rollingUpgradePolicy?: {
+        enableCrossZoneUpgrade?: boolean;
+        maxBatchInstancePercent?: number;
+        maxUnhealthyInstancePercent?: number;
+        maxUnhealthyUpgradedInstancePercent?: number;
+        pauseTimeBetweenBatches?: string;
+        prioritizeUnhealthyInstances?: boolean;
+        rollbackFailedInstancesOnPolicyBreach?: boolean;
+      };
+    };
+  };
+  identity?: {
+    type: "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const PoolCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2322,10 +3083,22 @@ export const PoolCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type PoolCreateInput = typeof PoolCreateInput.Type;
+) as unknown as Schema.Codec<PoolCreateInput>;
 
 // Output Schema
+export interface PoolCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2344,8 +3117,7 @@ export const PoolCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolCreateOutput = typeof PoolCreateOutput.Type;
+}) as unknown as Schema.Codec<PoolCreateOutput>;
 
 // The operation
 /**
@@ -2364,6 +3136,12 @@ export const PoolCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolCreateOutput,
 }));
 // Input Schema
+export interface PoolDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+}
 export const PoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2375,12 +3153,12 @@ export const PoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type PoolDeleteInput = typeof PoolDeleteInput.Type;
+) as unknown as Schema.Codec<PoolDeleteInput>;
 
 // Output Schema
-export const PoolDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PoolDeleteOutput = typeof PoolDeleteOutput.Type;
+export type PoolDeleteOutput = void;
+export const PoolDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoolDeleteOutput>;
 
 // The operation
 /**
@@ -2397,6 +3175,12 @@ export const PoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolDeleteOutput,
 }));
 // Input Schema
+export interface PoolDisableAutoScaleInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+}
 export const PoolDisableAutoScaleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2409,10 +3193,22 @@ export const PoolDisableAutoScaleInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}/disableAutoScale",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PoolDisableAutoScaleInput = typeof PoolDisableAutoScaleInput.Type;
+  ) as unknown as Schema.Codec<PoolDisableAutoScaleInput>;
 
 // Output Schema
+export interface PoolDisableAutoScaleOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolDisableAutoScaleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2432,8 +3228,7 @@ export const PoolDisableAutoScaleOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PoolDisableAutoScaleOutput = typeof PoolDisableAutoScaleOutput.Type;
+  }) as unknown as Schema.Codec<PoolDisableAutoScaleOutput>;
 
 // The operation
 /**
@@ -2452,6 +3247,12 @@ export const PoolDisableAutoScale = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+}
 export const PoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2463,10 +3264,22 @@ export const PoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type PoolGetInput = typeof PoolGetInput.Type;
+) as unknown as Schema.Codec<PoolGetInput>;
 
 // Output Schema
+export interface PoolGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2485,8 +3298,7 @@ export const PoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolGetOutput = typeof PoolGetOutput.Type;
+}) as unknown as Schema.Codec<PoolGetOutput>;
 
 // The operation
 /**
@@ -2503,6 +3315,14 @@ export const PoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolGetOutput,
 }));
 // Input Schema
+export interface PoolListByBatchAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  maxresults?: number;
+  $select?: string;
+  $filter?: string;
+}
 export const PoolListByBatchAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2517,11 +3337,25 @@ export const PoolListByBatchAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PoolListByBatchAccountInput =
-  typeof PoolListByBatchAccountInput.Type;
+  ) as unknown as Schema.Codec<PoolListByBatchAccountInput>;
 
 // Output Schema
+export interface PoolListByBatchAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PoolListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2556,9 +3390,7 @@ export const PoolListByBatchAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PoolListByBatchAccountOutput =
-  typeof PoolListByBatchAccountOutput.Type;
+  }) as unknown as Schema.Codec<PoolListByBatchAccountOutput>;
 
 // The operation
 /**
@@ -2591,6 +3423,12 @@ export const PoolListByBatchAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PoolStopResizeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+}
 export const PoolStopResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2602,10 +3440,22 @@ export const PoolStopResizeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}/stopResize",
     apiVersion: "2025-06-01",
   }),
-);
-export type PoolStopResizeInput = typeof PoolStopResizeInput.Type;
+) as unknown as Schema.Codec<PoolStopResizeInput>;
 
 // Output Schema
+export interface PoolStopResizeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolStopResizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2624,8 +3474,7 @@ export const PoolStopResizeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolStopResizeOutput = typeof PoolStopResizeOutput.Type;
+}) as unknown as Schema.Codec<PoolStopResizeOutput>;
 
 // The operation
 /**
@@ -2644,6 +3493,301 @@ export const PoolStopResize = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolStopResizeOutput,
 }));
 // Input Schema
+export interface PoolUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  poolName: string;
+  properties?: {
+    displayName?: string;
+    lastModified?: string;
+    creationTime?: string;
+    provisioningState?: "Succeeded" | "Deleting";
+    provisioningStateTransitionTime?: string;
+    allocationState?: "Steady" | "Resizing" | "Stopping";
+    allocationStateTransitionTime?: string;
+    vmSize?: string;
+    deploymentConfiguration?: {
+      virtualMachineConfiguration?: {
+        imageReference: {
+          publisher?: string;
+          offer?: string;
+          sku?: string;
+          version?: string;
+          id?: string;
+          sharedGalleryImageId?: string;
+          communityGalleryImageId?: string;
+        };
+        nodeAgentSkuId: string;
+        windowsConfiguration?: { enableAutomaticUpdates?: boolean };
+        dataDisks?: {
+          lun: number;
+          caching?: "None" | "ReadOnly" | "ReadWrite";
+          diskSizeGB: number;
+          managedDisk?: {
+            storageAccountType?:
+              | "Standard_LRS"
+              | "Premium_LRS"
+              | "StandardSSD_LRS";
+            securityProfile?: {
+              securityEncryptionType?:
+                | "NonPersistedTPM"
+                | "VMGuestStateOnly"
+                | "DiskWithVMGuestState";
+              diskEncryptionSet?: { id: string };
+            };
+            diskEncryptionSet?: { id: string };
+          };
+        }[];
+        licenseType?: string;
+        containerConfiguration?: {
+          type: "DockerCompatible" | "CriCompatible";
+          containerImageNames?: string[];
+          containerRegistries?: {
+            username?: string;
+            password?: string | Redacted.Redacted<string>;
+            registryServer?: string;
+            identityReference?: { resourceId?: string };
+          }[];
+        };
+        diskEncryptionConfiguration?: {
+          targets?: ("OsDisk" | "TemporaryDisk")[];
+          customerManagedKey?: {
+            keyUrl?: string;
+            rotationToLatestKeyVersionEnabled?: boolean;
+            identityReference?: { resourceId?: string };
+          };
+        };
+        nodePlacementConfiguration?: { policy?: "Regional" | "Zonal" };
+        extensions?: {
+          name: string;
+          publisher: string;
+          type: string;
+          typeHandlerVersion?: string;
+          autoUpgradeMinorVersion?: boolean;
+          enableAutomaticUpgrade?: boolean;
+          settings?: unknown;
+          protectedSettings?: unknown;
+          provisionAfterExtensions?: string[];
+        }[];
+        osDisk?: {
+          ephemeralOSDiskSettings?: { placement?: "CacheDisk" };
+          caching?: "None" | "ReadOnly" | "ReadWrite";
+          managedDisk?: {
+            storageAccountType?:
+              | "Standard_LRS"
+              | "Premium_LRS"
+              | "StandardSSD_LRS";
+            securityProfile?: {
+              securityEncryptionType?:
+                | "NonPersistedTPM"
+                | "VMGuestStateOnly"
+                | "DiskWithVMGuestState";
+              diskEncryptionSet?: { id: string };
+            };
+            diskEncryptionSet?: { id: string };
+          };
+          diskSizeGB?: number;
+          writeAcceleratorEnabled?: boolean;
+        };
+        securityProfile?: {
+          securityType?: "trustedLaunch" | "confidentialVM";
+          encryptionAtHost?: boolean;
+          uefiSettings?: { secureBootEnabled?: boolean; vTpmEnabled?: boolean };
+          proxyAgentSettings?: {
+            enabled?: boolean;
+            imds?: {
+              mode?: "Audit" | "Enforce";
+              inVMAccessControlProfileReferenceId?: string;
+            };
+            wireServer?: {
+              mode?: "Audit" | "Enforce";
+              inVMAccessControlProfileReferenceId?: string;
+            };
+          };
+        };
+        serviceArtifactReference?: { id: string };
+      };
+    };
+    currentDedicatedNodes?: number;
+    currentLowPriorityNodes?: number;
+    scaleSettings?: {
+      fixedScale?: {
+        resizeTimeout?: string;
+        targetDedicatedNodes?: number;
+        targetLowPriorityNodes?: number;
+        nodeDeallocationOption?:
+          | "Requeue"
+          | "Terminate"
+          | "TaskCompletion"
+          | "RetainedData";
+      };
+      autoScale?: { formula: string; evaluationInterval?: string };
+    };
+    autoScaleRun?: {
+      evaluationTime: string;
+      results?: string;
+      error?: { code: string; message: string; details?: unknown[] };
+    };
+    interNodeCommunication?: "Enabled" | "Disabled";
+    networkConfiguration?: {
+      subnetId?: string;
+      dynamicVnetAssignmentScope?: "none" | "job";
+      endpointConfiguration?: {
+        inboundNatPools: {
+          name: string;
+          protocol: "TCP" | "UDP";
+          backendPort: number;
+          frontendPortRangeStart: number;
+          frontendPortRangeEnd: number;
+          networkSecurityGroupRules?: {
+            priority: number;
+            access: "Allow" | "Deny";
+            sourceAddressPrefix: string;
+            sourcePortRanges?: string[];
+          }[];
+        }[];
+      };
+      publicIPAddressConfiguration?: {
+        provision?: "BatchManaged" | "UserManaged" | "NoPublicIPAddresses";
+        ipAddressIds?: string[];
+        ipFamilies?: ("IPv4" | "IPv6")[];
+        ipTags?: { ipTagType?: string; tag?: string }[];
+      };
+      enableAcceleratedNetworking?: boolean;
+    };
+    taskSlotsPerNode?: number;
+    taskSchedulingPolicy?: {
+      jobDefaultOrder?: "None" | "CreationTime";
+      nodeFillType: "Spread" | "Pack";
+    };
+    userAccounts?: {
+      name: string;
+      password: string | Redacted.Redacted<string>;
+      elevationLevel?: "NonAdmin" | "Admin";
+      linuxUserConfiguration?: {
+        uid?: number;
+        gid?: number;
+        sshPrivateKey?: string;
+      };
+      windowsUserConfiguration?: { loginMode?: "Batch" | "Interactive" };
+    }[];
+    metadata?: { name: string; value: string }[];
+    startTask?: {
+      commandLine?: string;
+      resourceFiles?: {
+        autoStorageContainerName?: string;
+        storageContainerUrl?: string;
+        httpUrl?: string;
+        blobPrefix?: string;
+        filePath?: string;
+        fileMode?: string;
+        identityReference?: { resourceId?: string };
+      }[];
+      environmentSettings?: { name: string; value?: string }[];
+      userIdentity?: {
+        userName?: string;
+        autoUser?: {
+          scope?: "Task" | "Pool";
+          elevationLevel?: "NonAdmin" | "Admin";
+        };
+      };
+      maxTaskRetryCount?: number;
+      waitForSuccess?: boolean;
+      containerSettings?: {
+        containerRunOptions?: string;
+        imageName: string;
+        registry?: {
+          username?: string;
+          password?: string | Redacted.Redacted<string>;
+          registryServer?: string;
+          identityReference?: { resourceId?: string };
+        };
+        workingDirectory?: "TaskWorkingDirectory" | "ContainerImageDefault";
+        containerHostBatchBindMounts?: {
+          source?:
+            | "Shared"
+            | "Startup"
+            | "VfsMounts"
+            | "Task"
+            | "JobPrep"
+            | "Applications";
+          isReadOnly?: boolean;
+        }[];
+      };
+    };
+    applicationPackages?: { id: string; version?: string }[];
+    resizeOperationStatus?: {
+      targetDedicatedNodes?: number;
+      targetLowPriorityNodes?: number;
+      resizeTimeout?: string;
+      nodeDeallocationOption?:
+        | "Requeue"
+        | "Terminate"
+        | "TaskCompletion"
+        | "RetainedData";
+      startTime?: string;
+      errors?: { code: string; message: string; details?: unknown[] }[];
+    };
+    mountConfiguration?: {
+      azureBlobFileSystemConfiguration?: {
+        accountName: string;
+        containerName: string;
+        accountKey?: string;
+        sasKey?: string;
+        blobfuseOptions?: string;
+        relativeMountPath: string;
+        identityReference?: { resourceId?: string };
+      };
+      nfsMountConfiguration?: {
+        source: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+      };
+      cifsMountConfiguration?: {
+        userName: string;
+        source: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+        password: string | Redacted.Redacted<string>;
+      };
+      azureFileShareConfiguration?: {
+        accountName: string;
+        azureFileUrl: string;
+        accountKey: string;
+        relativeMountPath: string;
+        mountOptions?: string;
+      };
+    }[];
+    upgradePolicy?: {
+      mode: "automatic" | "manual" | "rolling";
+      automaticOSUpgradePolicy?: {
+        disableAutomaticRollback?: boolean;
+        enableAutomaticOSUpgrade?: boolean;
+        useRollingUpgradePolicy?: boolean;
+        osRollingUpgradeDeferral?: boolean;
+      };
+      rollingUpgradePolicy?: {
+        enableCrossZoneUpgrade?: boolean;
+        maxBatchInstancePercent?: number;
+        maxUnhealthyInstancePercent?: number;
+        maxUnhealthyUpgradedInstancePercent?: number;
+        pauseTimeBetweenBatches?: string;
+        prioritizeUnhealthyInstances?: boolean;
+        rollbackFailedInstancesOnPolicyBreach?: boolean;
+      };
+    };
+  };
+  identity?: {
+    type: "UserAssigned" | "None";
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const PoolUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3247,10 +4391,22 @@ export const PoolUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools/{poolName}",
     apiVersion: "2025-06-01",
   }),
-);
-export type PoolUpdateInput = typeof PoolUpdateInput.Type;
+) as unknown as Schema.Codec<PoolUpdateInput>;
 
 // Output Schema
+export interface PoolUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PoolUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3269,8 +4425,7 @@ export const PoolUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type PoolUpdateOutput = typeof PoolUpdateOutput.Type;
+}) as unknown as Schema.Codec<PoolUpdateOutput>;
 
 // The operation
 /**
@@ -3288,6 +4443,12 @@ export const PoolUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: PoolUpdateOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3300,15 +4461,12 @@ export const PrivateEndpointConnectionDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateEndpointConnectionDeleteInput =
-  typeof PrivateEndpointConnectionDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionDeleteOutput = void;
 export const PrivateEndpointConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionDeleteOutput =
-  typeof PrivateEndpointConnectionDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -3326,6 +4484,12 @@ export const PrivateEndpointConnectionDelete =
     outputSchema: PrivateEndpointConnectionDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3338,11 +4502,22 @@ export const PrivateEndpointConnectionGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateEndpointConnectionGetInput =
-  typeof PrivateEndpointConnectionGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3362,9 +4537,7 @@ export const PrivateEndpointConnectionGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionGetOutput =
-  typeof PrivateEndpointConnectionGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionGetOutput>;
 
 // The operation
 /**
@@ -3382,6 +4555,12 @@ export const PrivateEndpointConnectionGet =
     outputSchema: PrivateEndpointConnectionGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionListByBatchAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  maxresults?: number;
+}
 export const PrivateEndpointConnectionListByBatchAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3394,11 +4573,25 @@ export const PrivateEndpointConnectionListByBatchAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateEndpointConnectionListByBatchAccountInput =
-  typeof PrivateEndpointConnectionListByBatchAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionListByBatchAccountInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionListByBatchAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3433,9 +4626,7 @@ export const PrivateEndpointConnectionListByBatchAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionListByBatchAccountOutput =
-  typeof PrivateEndpointConnectionListByBatchAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionListByBatchAccountOutput>;
 
 // The operation
 /**
@@ -3453,6 +4644,30 @@ export const PrivateEndpointConnectionListByBatchAccount =
     outputSchema: PrivateEndpointConnectionListByBatchAccountOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    provisioningState?:
+      | "Creating"
+      | "Updating"
+      | "Deleting"
+      | "Succeeded"
+      | "Failed"
+      | "Cancelled";
+    privateEndpoint?: { id?: string };
+    groupIds?: string[];
+    privateLinkServiceConnectionState?: {
+      status: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const PrivateEndpointConnectionUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3499,11 +4714,22 @@ export const PrivateEndpointConnectionUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateEndpointConnectionUpdateInput =
-  typeof PrivateEndpointConnectionUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3523,9 +4749,7 @@ export const PrivateEndpointConnectionUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionUpdateOutput =
-  typeof PrivateEndpointConnectionUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionUpdateOutput>;
 
 // The operation
 /**
@@ -3544,6 +4768,12 @@ export const PrivateEndpointConnectionUpdate =
     outputSchema: PrivateEndpointConnectionUpdateOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3556,11 +4786,22 @@ export const PrivateLinkResourceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateLinkResourceGetInput =
-  typeof PrivateLinkResourceGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3580,9 +4821,7 @@ export const PrivateLinkResourceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourceGetOutput =
-  typeof PrivateLinkResourceGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceGetOutput>;
 
 // The operation
 /**
@@ -3601,6 +4840,12 @@ export const PrivateLinkResourceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PrivateLinkResourceListByBatchAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  maxresults?: number;
+}
 export const PrivateLinkResourceListByBatchAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3613,11 +4858,25 @@ export const PrivateLinkResourceListByBatchAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateLinkResources",
       apiVersion: "2025-06-01",
     }),
-  );
-export type PrivateLinkResourceListByBatchAccountInput =
-  typeof PrivateLinkResourceListByBatchAccountInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceListByBatchAccountInput>;
 
 // Output Schema
+export interface PrivateLinkResourceListByBatchAccountOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourceListByBatchAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3652,9 +4911,7 @@ export const PrivateLinkResourceListByBatchAccountOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourceListByBatchAccountOutput =
-  typeof PrivateLinkResourceListByBatchAccountOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceListByBatchAccountOutput>;
 
 // The operation
 /**

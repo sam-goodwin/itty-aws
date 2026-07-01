@@ -4,6 +4,9 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserInvitesControllerGetByTokenInput {
+  token: string;
+}
 export const UserlandUserInvitesControllerGetByTokenInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token: Schema.String.pipe(T.PathParam()),
@@ -12,11 +15,26 @@ export const UserlandUserInvitesControllerGetByTokenInput =
       method: "GET",
       path: "/user_management/invitations/by_token/{token}",
     }),
-  );
-export type UserlandUserInvitesControllerGetByTokenInput =
-  typeof UserlandUserInvitesControllerGetByTokenInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserInvitesControllerGetByTokenInput>;
 
 // Output Schema
+export interface UserlandUserInvitesControllerGetByTokenOutput {
+  object?: string;
+  id?: string;
+  email?: string;
+  state?: "pending" | "accepted" | "expired" | "revoked";
+  accepted_at?: string | null;
+  revoked_at?: string | null;
+  expires_at?: string;
+  organization_id?: string | null;
+  inviter_user_id?: string | null;
+  accepted_user_id?: string | null;
+  role_slug?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  token?: string;
+  accept_invitation_url?: string;
+}
 export const UserlandUserInvitesControllerGetByTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -36,9 +54,7 @@ export const UserlandUserInvitesControllerGetByTokenOutput =
     updated_at: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
     accept_invitation_url: Schema.optional(Schema.String),
-  });
-export type UserlandUserInvitesControllerGetByTokenOutput =
-  typeof UserlandUserInvitesControllerGetByTokenOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserInvitesControllerGetByTokenOutput>;
 
 // The operation
 /**

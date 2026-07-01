@@ -4,18 +4,24 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteSynonymSetInput {
+  synonymSetName: string;
+}
 export const DeleteSynonymSetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   synonymSetName: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/synonym_sets/{synonymSetName}" }));
-export type DeleteSynonymSetInput = typeof DeleteSynonymSetInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/synonym_sets/{synonymSetName}" }),
+) as unknown as Schema.Codec<DeleteSynonymSetInput>;
 
 // Output Schema
+export interface DeleteSynonymSetOutput {
+  name: string;
+}
 export const DeleteSynonymSetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String,
   },
-);
-export type DeleteSynonymSetOutput = typeof DeleteSynonymSetOutput.Type;
+) as unknown as Schema.Codec<DeleteSynonymSetOutput>;
 
 // The operation
 /**

@@ -3,8 +3,16 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface CreateWebhookInput {
+  organization: string;
+  database: string;
+  url: string;
+  enabled?: boolean;
+  events?: string[];
+}
 export const CreateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -16,10 +24,41 @@ export const CreateWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/webhooks",
   }),
-);
-export type CreateWebhookInput = typeof CreateWebhookInput.Type;
+) as unknown as Schema.Codec<CreateWebhookInput>;
 
 // Output Schema
+export interface CreateWebhookOutput {
+  id: string;
+  url: string;
+  secret: Redacted.Redacted<string>;
+  enabled: boolean;
+  last_sent_result: string | null;
+  last_sent_success: boolean | null;
+  last_sent_at: string | null;
+  created_at: string;
+  updated_at: string;
+  events: (
+    | "branch.ready"
+    | "branch.anomaly"
+    | "branch.out_of_memory"
+    | "branch.primary_promoted"
+    | "branch.schema_recommendation"
+    | "branch.sleeping"
+    | "branch.start_maintenance"
+    | "cluster.storage"
+    | "database.access_request"
+    | "deploy_request.closed"
+    | "deploy_request.errored"
+    | "deploy_request.in_progress"
+    | "deploy_request.opened"
+    | "deploy_request.pending_cutover"
+    | "deploy_request.queued"
+    | "deploy_request.reverted"
+    | "deploy_request.schema_applied"
+    | "keyspace.storage"
+    | "webhook.test"
+  )[];
+}
 export const CreateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   url: Schema.String,
@@ -53,8 +92,7 @@ export const CreateWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "webhook.test",
     ]),
   ),
-});
-export type CreateWebhookOutput = typeof CreateWebhookOutput.Type;
+}) as unknown as Schema.Codec<CreateWebhookOutput>;
 
 // The operation
 /**

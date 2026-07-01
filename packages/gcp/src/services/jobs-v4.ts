@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,6 +22,58 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Money {
+  /** The three-letter currency code defined in ISO 4217. */
+  currencyCode?: string;
+  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
+  units?: string;
+  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
+  nanos?: number;
+}
+
+export const Money: Schema.Codec<Money> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    units: Schema.optional(Schema.String),
+    nanos: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Money" });
+
+export interface ProcessingOptions {
+  /** Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY. */
+  htmlSanitization?:
+    | "HTML_SANITIZATION_UNSPECIFIED"
+    | "HTML_SANITIZATION_DISABLED"
+    | "SIMPLE_FORMATTING_ONLY"
+    | (string & {});
+  /** If set to `true`, the service does not attempt to resolve a more precise address for the job. */
+  disableStreetAddressResolution?: boolean;
+}
+
+export const ProcessingOptions: Schema.Codec<ProcessingOptions> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    htmlSanitization: Schema.optional(Schema.String),
+    disableStreetAddressResolution: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ProcessingOptions" });
+
+export interface CustomAttribute {
+  /** Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported. */
+  longValues?: ReadonlyArray<string>;
+  /** If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false. */
+  filterable?: boolean;
+  /** Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed. */
+  stringValues?: ReadonlyArray<string>;
+  /** If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false. */
+  keywordSearchable?: boolean;
+}
+
+export const CustomAttribute: Schema.Codec<CustomAttribute> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    longValues: Schema.optional(Schema.Array(Schema.String)),
+    filterable: Schema.optional(Schema.Boolean),
+    stringValues: Schema.optional(Schema.Array(Schema.String)),
+    keywordSearchable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CustomAttribute" });
+
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
@@ -29,53 +81,57 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
+export const LatLng: Schema.Codec<LatLng> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
 
 export interface PostalAddress {
-  /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
-  sortingCode?: string;
+  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
+  locality?: string;
+  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
+  revision?: number;
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
-  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
-  languageCode?: string;
+  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
+  administrativeArea?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
   addressLines?: ReadonlyArray<string>;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
-  /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
-  locality?: string;
-  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: ReadonlyArray<string>;
-  /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
-  revision?: number;
+  /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
+  sortingCode?: string;
   /** Optional. The name of the organization at the address. */
   organization?: string;
-  /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
-  administrativeArea?: string;
+  /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
+  languageCode?: string;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
+  /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
+  recipients?: ReadonlyArray<string>;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
+export const PostalAddress: Schema.Codec<PostalAddress> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sortingCode: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
     postalCode: Schema.optional(Schema.String),
-    languageCode: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
     regionCode: Schema.optional(Schema.String),
-    locality: Schema.optional(Schema.String),
-    recipients: Schema.optional(Schema.Array(Schema.String)),
-    revision: Schema.optional(Schema.Number),
+    sortingCode: Schema.optional(Schema.String),
     organization: Schema.optional(Schema.String),
-    administrativeArea: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
     sublocality: Schema.optional(Schema.String),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PostalAddress" });
 
 export interface Location {
+  /** An object representing a latitude/longitude pair. */
+  latLng?: LatLng;
+  /** Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from google.type.LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles. */
+  radiusMiles?: number;
   /** The type of a location, which corresponds to the address lines field of google.type.PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType.NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType.LOCALITY. */
   locationType?:
     | "LOCATION_TYPE_UNSPECIFIED"
@@ -90,20 +146,16 @@ export interface Location {
     | "NEIGHBORHOOD"
     | "STREET_ADDRESS"
     | (string & {});
-  /** An object representing a latitude/longitude pair. */
-  latLng?: LatLng;
   /** Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location. */
   postalAddress?: PostalAddress;
-  /** Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from google.type.LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles. */
-  radiusMiles?: number;
 }
 
-export const Location: Schema.Schema<Location> =
+export const Location: Schema.Codec<Location> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationType: Schema.optional(Schema.String),
     latLng: Schema.optional(LatLng),
-    postalAddress: Schema.optional(PostalAddress),
     radiusMiles: Schema.optional(Schema.Number),
+    locationType: Schema.optional(Schema.String),
+    postalAddress: Schema.optional(PostalAddress),
   }).annotate({ identifier: "Location" });
 
 export interface JobDerivedInfo {
@@ -146,90 +198,48 @@ export interface JobDerivedInfo {
   >;
 }
 
-export const JobDerivedInfo: Schema.Schema<JobDerivedInfo> =
+export const JobDerivedInfo: Schema.Codec<JobDerivedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     jobCategories: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "JobDerivedInfo" });
 
-export interface CustomAttribute {
-  /** If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false. */
-  filterable?: boolean;
-  /** Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed. */
-  stringValues?: ReadonlyArray<string>;
-  /** If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false. */
-  keywordSearchable?: boolean;
-  /** Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported. */
-  longValues?: ReadonlyArray<string>;
-}
-
-export const CustomAttribute: Schema.Schema<CustomAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterable: Schema.optional(Schema.Boolean),
-    stringValues: Schema.optional(Schema.Array(Schema.String)),
-    keywordSearchable: Schema.optional(Schema.Boolean),
-    longValues: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "CustomAttribute" });
-
 export interface ApplicationInfo {
-  /** Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000. */
-  uris?: ReadonlyArray<string>;
   /** Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255. */
   emails?: ReadonlyArray<string>;
+  /** Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000. */
+  uris?: ReadonlyArray<string>;
   /** Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000. */
   instruction?: string;
 }
 
-export const ApplicationInfo: Schema.Schema<ApplicationInfo> =
+export const ApplicationInfo: Schema.Codec<ApplicationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uris: Schema.optional(Schema.Array(Schema.String)),
     emails: Schema.optional(Schema.Array(Schema.String)),
+    uris: Schema.optional(Schema.Array(Schema.String)),
     instruction: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApplicationInfo" });
 
-export interface Money {
-  /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
-  nanos?: number;
-  /** The three-letter currency code defined in ISO 4217. */
-  currencyCode?: string;
-  /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
-  units?: string;
-}
-
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nanos: Schema.optional(Schema.Number),
-    currencyCode: Schema.optional(Schema.String),
-    units: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Money" });
-
 export interface CompensationRange {
-  /** The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation. */
-  maxCompensation?: Money;
   /** The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation. */
   minCompensation?: Money;
+  /** The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation. */
+  maxCompensation?: Money;
 }
 
-export const CompensationRange: Schema.Schema<CompensationRange> =
+export const CompensationRange: Schema.Codec<CompensationRange> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    maxCompensation: Schema.optional(Money),
     minCompensation: Schema.optional(Money),
+    maxCompensation: Schema.optional(Money),
   }).annotate({ identifier: "CompensationRange" });
 
 export interface CompensationEntry {
-  /** Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED. */
-  unit?:
-    | "COMPENSATION_UNIT_UNSPECIFIED"
-    | "HOURLY"
-    | "DAILY"
-    | "WEEKLY"
-    | "MONTHLY"
-    | "YEARLY"
-    | "ONE_TIME"
-    | "OTHER_COMPENSATION_UNIT"
-    | (string & {});
+  /** Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus. */
+  description?: string;
   /** Compensation range. */
   range?: CompensationRange;
+  /** Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1 */
+  expectedUnitsPerYear?: number;
   /** Compensation amount. */
   amount?: Money;
   /** Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED. */
@@ -244,91 +254,46 @@ export interface CompensationEntry {
     | "TIPS"
     | "OTHER_COMPENSATION_TYPE"
     | (string & {});
-  /** Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1 */
-  expectedUnitsPerYear?: number;
-  /** Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus. */
-  description?: string;
+  /** Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED. */
+  unit?:
+    | "COMPENSATION_UNIT_UNSPECIFIED"
+    | "HOURLY"
+    | "DAILY"
+    | "WEEKLY"
+    | "MONTHLY"
+    | "YEARLY"
+    | "ONE_TIME"
+    | "OTHER_COMPENSATION_UNIT"
+    | (string & {});
 }
 
-export const CompensationEntry: Schema.Schema<CompensationEntry> =
+export const CompensationEntry: Schema.Codec<CompensationEntry> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unit: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
     range: Schema.optional(CompensationRange),
+    expectedUnitsPerYear: Schema.optional(Schema.Number),
     amount: Schema.optional(Money),
     type: Schema.optional(Schema.String),
-    expectedUnitsPerYear: Schema.optional(Schema.Number),
-    description: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
   }).annotate({ identifier: "CompensationEntry" });
 
 export interface CompensationInfo {
-  /** Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
-  annualizedTotalCompensationRange?: CompensationRange;
   /** Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job. */
   entries?: ReadonlyArray<CompensationEntry>;
+  /** Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
+  annualizedTotalCompensationRange?: CompensationRange;
   /** Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
   annualizedBaseCompensationRange?: CompensationRange;
 }
 
-export const CompensationInfo: Schema.Schema<CompensationInfo> =
+export const CompensationInfo: Schema.Codec<CompensationInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    annualizedTotalCompensationRange: Schema.optional(CompensationRange),
     entries: Schema.optional(Schema.Array(CompensationEntry)),
+    annualizedTotalCompensationRange: Schema.optional(CompensationRange),
     annualizedBaseCompensationRange: Schema.optional(CompensationRange),
   }).annotate({ identifier: "CompensationInfo" });
 
-export interface ProcessingOptions {
-  /** If set to `true`, the service does not attempt to resolve a more precise address for the job. */
-  disableStreetAddressResolution?: boolean;
-  /** Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY. */
-  htmlSanitization?:
-    | "HTML_SANITIZATION_UNSPECIFIED"
-    | "HTML_SANITIZATION_DISABLED"
-    | "SIMPLE_FORMATTING_ONLY"
-    | (string & {});
-}
-
-export const ProcessingOptions: Schema.Schema<ProcessingOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    disableStreetAddressResolution: Schema.optional(Schema.Boolean),
-    htmlSanitization: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ProcessingOptions" });
-
 export interface Job {
-  /** The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored. */
-  jobEndTime?: string;
-  /** Output only. Derived details about the job posting. */
-  derivedInfo?: JobDerivedInfo;
-  /** The experience level associated with the job, such as "Entry Level". */
-  jobLevel?:
-    | "JOB_LEVEL_UNSPECIFIED"
-    | "ENTRY_LEVEL"
-    | "EXPERIENCED"
-    | "MANAGER"
-    | "DIRECTOR"
-    | "EXECUTIVE"
-    | (string & {});
-  /** The desired education degrees for the job, such as Bachelors, Masters. */
-  degreeTypes?: ReadonlyArray<
-    | "DEGREE_TYPE_UNSPECIFIED"
-    | "PRIMARY_EDUCATION"
-    | "LOWER_SECONDARY_EDUCATION"
-    | "UPPER_SECONDARY_EDUCATION"
-    | "ADULT_REMEDIAL_EDUCATION"
-    | "ASSOCIATES_OR_EQUIVALENT"
-    | "BACHELORS_OR_EQUIVALENT"
-    | "MASTERS_OR_EQUIVALENT"
-    | "DOCTORAL_OR_EQUIVALENT"
-    | (string & {})
-  >;
-  /** The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended. */
-  postingRegion?:
-    | "POSTING_REGION_UNSPECIFIED"
-    | "ADMINISTRATIVE_AREA"
-    | "NATION"
-    | "TELECOMMUTE"
-    | (string & {});
-  /** Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000. */
-  description?: string;
   /** The benefits included with the job. */
   jobBenefits?: ReadonlyArray<
     | "JOB_BENEFIT_UNSPECIFIED"
@@ -345,26 +310,48 @@ export interface Job {
     | "VISION"
     | (string & {})
   >;
-  /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
-  name?: string;
-  /** A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000. */
-  responsibilities?: string;
-  /** Output only. Display name of the company listing the job. */
-  companyDisplayName?: string;
-  /** Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255. */
-  requisitionId?: string;
-  /** Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz". */
-  company?: string;
+  /** A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0. */
+  promotionValue?: number;
   /** The language of the posting. This field is distinct from any requirements for fluency that are associated with the job. Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }. If this field is unspecified and Job.description is present, detected language code based on Job.description is assigned, otherwise defaults to 'en_US'. */
   languageCode?: string;
-  /** The timestamp this job posting was most recently published. The default value is the time the request arrives at the server. Invalid timestamps are ignored. */
-  postingPublishTime?: string;
-  /** Output only. The timestamp when this job posting was created. */
-  postingCreateTime?: string;
   /** Strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', and so on.) as multiple jobs with the same company, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500. */
   addresses?: ReadonlyArray<string>;
+  /** Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500. */
+  title?: string;
+  /** The desired education degrees for the job, such as Bachelors, Masters. */
+  degreeTypes?: ReadonlyArray<
+    | "DEGREE_TYPE_UNSPECIFIED"
+    | "PRIMARY_EDUCATION"
+    | "LOWER_SECONDARY_EDUCATION"
+    | "UPPER_SECONDARY_EDUCATION"
+    | "ADULT_REMEDIAL_EDUCATION"
+    | "ASSOCIATES_OR_EQUIVALENT"
+    | "BACHELORS_OR_EQUIVALENT"
+    | "MASTERS_OR_EQUIVALENT"
+    | "DOCTORAL_OR_EQUIVALENT"
+    | (string & {})
+  >;
+  /** The experience level associated with the job, such as "Entry Level". */
+  jobLevel?:
+    | "JOB_LEVEL_UNSPECIFIED"
+    | "ENTRY_LEVEL"
+    | "EXPERIENCED"
+    | "MANAGER"
+    | "DIRECTOR"
+    | "EXECUTIVE"
+    | (string & {});
+  /** The timestamp this job posting was most recently published. The default value is the time the request arrives at the server. Invalid timestamps are ignored. */
+  postingPublishTime?: string;
+  /** Options for job processing. */
+  processingOptions?: ProcessingOptions;
   /** A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: `a-zA-Z*`. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB. */
   customAttributes?: Record<string, CustomAttribute>;
+  /** Output only. The timestamp when this job posting was created. */
+  postingCreateTime?: string;
+  /** Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz". */
+  company?: string;
+  /** A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000. */
+  responsibilities?: string;
   /** The employment type(s) of a job, for example, full time or part time. */
   employmentTypes?: ReadonlyArray<
     | "EMPLOYMENT_TYPE_UNSPECIFIED"
@@ -380,26 +367,33 @@ export interface Job {
     | "OTHER_EMPLOYMENT_TYPE"
     | (string & {})
   >;
+  /** Output only. Derived details about the job posting. */
+  derivedInfo?: JobDerivedInfo;
   /** The department or functional area within the company with the open position. The maximum number of allowed characters is 255. */
   department?: string;
-  /** Job application information. */
-  applicationInfo?: ApplicationInfo;
+  /** Output only. Display name of the company listing the job. */
+  companyDisplayName?: string;
   /** A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000. */
   incentives?: string;
-  /** A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000. */
-  qualifications?: string;
-  /** Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500. */
-  title?: string;
-  /** Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee. */
-  compensationInfo?: CompensationInfo;
   /** Strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be listed by the ListJobs API, but it can be retrieved with the GetJob API or updated with the UpdateJob API or deleted with the DeleteJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum number of open jobs over previous 7 days. If this threshold is exceeded, expired jobs are cleaned out in order of earliest expire time. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. If the timestamp is before the instant request is made, the job is treated as expired immediately on creation. This kind of job can not be updated. And when creating a job with past timestamp, the posting_publish_time must be set before posting_expire_time. The purpose of this feature is to allow other objects, such as ApplicationInfo, to refer a job that didn't exist in the system prior to becoming expired. If you want to modify a job that was expired on creation, delete it and create a new one. If this value isn't provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value isn't provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include job_end_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated. */
   postingExpireTime?: string;
-  /** A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0. */
-  promotionValue?: number;
+  /** Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255. */
+  requisitionId?: string;
+  /** Job application information. */
+  applicationInfo?: ApplicationInfo;
   /** Output only. The timestamp when this job posting was last updated. */
   postingUpdateTime?: string;
-  /** Options for job processing. */
-  processingOptions?: ProcessingOptions;
+  /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
+  name?: string;
+  /** The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended. */
+  postingRegion?:
+    | "POSTING_REGION_UNSPECIFIED"
+    | "ADMINISTRATIVE_AREA"
+    | "NATION"
+    | "TELECOMMUTE"
+    | (string & {});
+  /** Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000. */
+  description?: string;
   /** Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified. */
   visibility?:
     | "VISIBILITY_UNSPECIFIED"
@@ -409,93 +403,176 @@ export interface Job {
     | (string & {});
   /** The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored. */
   jobStartTime?: string;
+  /** A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000. */
+  qualifications?: string;
+  /** Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee. */
+  compensationInfo?: CompensationInfo;
+  /** The end timestamp of the job. Typically this field is used for contracting engagements. Invalid timestamps are ignored. */
+  jobEndTime?: string;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobEndTime: Schema.optional(Schema.String),
-    derivedInfo: Schema.optional(JobDerivedInfo),
-    jobLevel: Schema.optional(Schema.String),
-    degreeTypes: Schema.optional(Schema.Array(Schema.String)),
-    postingRegion: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
     jobBenefits: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-    responsibilities: Schema.optional(Schema.String),
-    companyDisplayName: Schema.optional(Schema.String),
-    requisitionId: Schema.optional(Schema.String),
-    company: Schema.optional(Schema.String),
+    promotionValue: Schema.optional(Schema.Number),
     languageCode: Schema.optional(Schema.String),
-    postingPublishTime: Schema.optional(Schema.String),
-    postingCreateTime: Schema.optional(Schema.String),
     addresses: Schema.optional(Schema.Array(Schema.String)),
+    title: Schema.optional(Schema.String),
+    degreeTypes: Schema.optional(Schema.Array(Schema.String)),
+    jobLevel: Schema.optional(Schema.String),
+    postingPublishTime: Schema.optional(Schema.String),
+    processingOptions: Schema.optional(ProcessingOptions),
     customAttributes: Schema.optional(
       Schema.Record(Schema.String, CustomAttribute),
     ),
+    postingCreateTime: Schema.optional(Schema.String),
+    company: Schema.optional(Schema.String),
+    responsibilities: Schema.optional(Schema.String),
     employmentTypes: Schema.optional(Schema.Array(Schema.String)),
+    derivedInfo: Schema.optional(JobDerivedInfo),
     department: Schema.optional(Schema.String),
-    applicationInfo: Schema.optional(ApplicationInfo),
+    companyDisplayName: Schema.optional(Schema.String),
     incentives: Schema.optional(Schema.String),
-    qualifications: Schema.optional(Schema.String),
-    title: Schema.optional(Schema.String),
-    compensationInfo: Schema.optional(CompensationInfo),
     postingExpireTime: Schema.optional(Schema.String),
-    promotionValue: Schema.optional(Schema.Number),
+    requisitionId: Schema.optional(Schema.String),
+    applicationInfo: Schema.optional(ApplicationInfo),
     postingUpdateTime: Schema.optional(Schema.String),
-    processingOptions: Schema.optional(ProcessingOptions),
+    name: Schema.optional(Schema.String),
+    postingRegion: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
     visibility: Schema.optional(Schema.String),
     jobStartTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Job" });
+    qualifications: Schema.optional(Schema.String),
+    compensationInfo: Schema.optional(CompensationInfo),
+    jobEndTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "Job" });
 
-export interface BatchUpdateJobsRequest {
-  /** Strongly recommended for the best service experience. Be aware that it will also increase latency when checking the status of a batch operation. If update_mask is provided, only the specified fields in Job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. If update_mask is provided, The Job inside JobResult will only contains fields that is updated, plus the Id of the Job. Otherwise, Job will include all fields, which can yield a very large response. */
-  updateMask?: string;
-  /** Required. The jobs to be updated. A maximum of 200 jobs can be updated in a batch. */
-  jobs?: ReadonlyArray<Job>;
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: ReadonlyArray<Record<string, unknown>>;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
 }
 
-export const BatchUpdateJobsRequest: Schema.Schema<BatchUpdateJobsRequest> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
-    jobs: Schema.optional(Schema.Array(Job)),
-  }).annotate({ identifier: "BatchUpdateJobsRequest" });
+    code: Schema.optional(Schema.Number),
+    details: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Status" });
+
+export interface JobResult {
+  /** Here Job only contains basic information including name, company, language_code and requisition_id, use getJob method to retrieve detailed information of the created/updated job. */
+  job?: Job;
+  /** The status of the job processed. This field is populated if the processing of the job fails. */
+  status?: Status;
+}
+
+export const JobResult: Schema.Codec<JobResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    job: Schema.optional(Job),
+    status: Schema.optional(Status),
+  }).annotate({ identifier: "JobResult" });
+
+export interface BatchCreateJobsResponse {
+  /** List of job mutation results from a batch create operation. It can change until operation status is FINISHED, FAILED or CANCELLED. */
+  jobResults?: ReadonlyArray<JobResult>;
+}
+
+export const BatchCreateJobsResponse: Schema.Codec<BatchCreateJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobResults: Schema.optional(Schema.Array(JobResult)),
+  }).annotate({ identifier: "BatchCreateJobsResponse" });
 
 export interface CommuteInfo {
-  /** Location used as the destination in the commute calculation. */
-  jobLocation?: Location;
   /** The number of seconds required to travel to the job location from the query location. A duration of 0 seconds indicates that the job isn't reachable within the requested duration, but was returned as part of an expanded query. */
   travelDuration?: string;
+  /** Location used as the destination in the commute calculation. */
+  jobLocation?: Location;
 }
 
-export const CommuteInfo: Schema.Schema<CommuteInfo> =
+export const CommuteInfo: Schema.Codec<CommuteInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobLocation: Schema.optional(Location),
     travelDuration: Schema.optional(Schema.String),
+    jobLocation: Schema.optional(Location),
   }).annotate({ identifier: "CommuteInfo" });
 
-export interface MatchingJob {
-  /** Commute information which is generated based on specified CommuteFilter. */
-  commuteInfo?: CommuteInfo;
-  /** A summary of the job with core information that's displayed on the search results listing page. */
-  jobSummary?: string;
-  /** Contains snippets of text from the Job.title field most closely matching a search query's keywords, if available. The matching query keywords are enclosed in HTML bold tags. */
-  jobTitleSnippet?: string;
-  /** Job resource that matches the specified SearchJobsRequest. */
-  job?: Job;
-  /** Contains snippets of text from the Job.description and similar fields that most closely match a search query's keywords, if available. All HTML tags in the original fields are stripped when returned in this field, and matching query keywords are enclosed in HTML bold tags. */
-  searchTextSnippet?: string;
+export interface HistogramQuery {
+  /** An expression specifies a histogram request against matching jobs for searches. See SearchJobsRequest.histogram_queries for details about syntax. */
+  histogramQuery?: string;
 }
 
-export const MatchingJob: Schema.Schema<MatchingJob> =
+export const HistogramQuery: Schema.Codec<HistogramQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    commuteInfo: Schema.optional(CommuteInfo),
-    jobSummary: Schema.optional(Schema.String),
-    jobTitleSnippet: Schema.optional(Schema.String),
-    job: Schema.optional(Job),
-    searchTextSnippet: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MatchingJob" });
+    histogramQuery: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HistogramQuery" });
+
+export interface TimeOfDay {
+  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
+  nanos?: number;
+  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
+  minutes?: number;
+  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
+  seconds?: number;
+  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
+  hours?: number;
+}
+
+export const TimeOfDay: Schema.Codec<TimeOfDay> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nanos: Schema.optional(Schema.Number),
+    minutes: Schema.optional(Schema.Number),
+    seconds: Schema.optional(Schema.Number),
+    hours: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TimeOfDay" });
+
+export interface ResponseMetadata {
+  /** A unique id associated with this call. This id is logged for tracking purposes. */
+  requestId?: string;
+}
+
+export const ResponseMetadata: Schema.Codec<ResponseMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponseMetadata" });
+
+export interface Tenant {
+  /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  name?: string;
+  /** Required. Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255. */
+  externalId?: string;
+}
+
+export const Tenant: Schema.Codec<Tenant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    externalId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Tenant" });
+
+export interface ListTenantsResponse {
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+  /** Tenants for the current client. */
+  tenants?: ReadonlyArray<Tenant>;
+}
+
+export const ListTenantsResponse: Schema.Codec<ListTenantsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    metadata: Schema.optional(ResponseMetadata),
+    tenants: Schema.optional(Schema.Array(Tenant)),
+  }).annotate({ identifier: "ListTenantsResponse" });
 
 export interface JobEvent {
+  /** Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example, "projects/foo/tenants/bar/jobs/baz". */
+  jobs?: ReadonlyArray<string>;
   /** Required. The type of the event (see JobEventType). */
   type?:
     | "JOB_EVENT_TYPE_UNSPECIFIED"
@@ -515,358 +592,34 @@ export interface JobEvent {
     | "SENT_CV"
     | "INTERVIEW_GRANTED"
     | (string & {});
-  /** Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example, "projects/foo/tenants/bar/jobs/baz". */
-  jobs?: ReadonlyArray<string>;
 }
 
-export const JobEvent: Schema.Schema<JobEvent> =
+export const JobEvent: Schema.Codec<JobEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
     jobs: Schema.optional(Schema.Array(Schema.String)),
+    type: Schema.optional(Schema.String),
   }).annotate({ identifier: "JobEvent" });
 
-export interface ClientEvent {
-  /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
-  jobEvent?: JobEvent;
-  /** Notes about the event provided by recruiters or other users, for example, feedback on why a job was bookmarked. */
-  eventNotes?: string;
-  /** Required. A unique identifier, generated by the client application. */
-  eventId?: string;
-  /** Required. The timestamp of the event. */
-  createTime?: string;
-  /** Strongly recommended for the best service experience. A unique ID generated in the API responses. It can be found in ResponseMetadata.request_id. */
-  requestId?: string;
-}
-
-export const ClientEvent: Schema.Schema<ClientEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobEvent: Schema.optional(JobEvent),
-    eventNotes: Schema.optional(Schema.String),
-    eventId: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ClientEvent" });
-
-export interface CompletionResult {
-  /** The suggestion for the query. */
-  suggestion?: string;
-  /** The URI of the company image for COMPANY_NAME. */
-  imageUri?: string;
-  /** The completion topic. */
-  type?:
-    | "COMPLETION_TYPE_UNSPECIFIED"
-    | "JOB_TITLE"
-    | "COMPANY_NAME"
-    | "COMBINED"
-    | (string & {});
-}
-
-export const CompletionResult: Schema.Schema<CompletionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    suggestion: Schema.optional(Schema.String),
-    imageUri: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CompletionResult" });
-
-export interface ResponseMetadata {
-  /** A unique id associated with this call. This id is logged for tracking purposes. */
-  requestId?: string;
-}
-
-export const ResponseMetadata: Schema.Schema<ResponseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ResponseMetadata" });
-
-export interface CompleteQueryResponse {
-  /** Results of the matching job/company candidates. */
-  completionResults?: ReadonlyArray<CompletionResult>;
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
-}
-
-export const CompleteQueryResponse: Schema.Schema<CompleteQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    completionResults: Schema.optional(Schema.Array(CompletionResult)),
-    metadata: Schema.optional(ResponseMetadata),
-  }).annotate({ identifier: "CompleteQueryResponse" });
-
-export interface ListJobsResponse {
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-  /** The Jobs for a given company. The maximum number of items returned is based on the limit field provided in the request. */
-  jobs?: ReadonlyArray<Job>;
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
-}
-
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    jobs: Schema.optional(Schema.Array(Job)),
-    metadata: Schema.optional(ResponseMetadata),
-  }).annotate({ identifier: "ListJobsResponse" });
-
-export interface SpellingCorrection {
-  /** Correction output consisting of the corrected keyword string. */
-  correctedText?: string;
-  /** Corrected output with html tags to highlight the corrected words. Corrected words are called out with the "*...*" html tags. For example, the user input query is "software enginear", where the second word, "enginear," is incorrect. It should be "engineer". When spelling correction is enabled, this value is "software *engineer*". */
-  correctedHtml?: string;
-  /** Indicates if the query was corrected by the spell checker. */
-  corrected?: boolean;
-}
-
-export const SpellingCorrection: Schema.Schema<SpellingCorrection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    correctedText: Schema.optional(Schema.String),
-    correctedHtml: Schema.optional(Schema.String),
-    corrected: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "SpellingCorrection" });
-
-export interface BatchDeleteJobsRequest {
-  /** The names of the jobs to delete. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs can be deleted in a batch. */
-  names?: ReadonlyArray<string>;
-}
-
-export const BatchDeleteJobsRequest: Schema.Schema<BatchDeleteJobsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    names: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "BatchDeleteJobsRequest" });
-
-export interface CompanyDerivedInfo {
-  /** A structured headquarters location of the company, resolved from Company.headquarters_address if provided. */
-  headquartersLocation?: Location;
-}
-
-export const CompanyDerivedInfo: Schema.Schema<CompanyDerivedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    headquartersLocation: Schema.optional(Location),
-  }).annotate({ identifier: "CompanyDerivedInfo" });
-
-export interface LocationFilter {
-  /** Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecommuting is considered by the service as a special location). Job.posting_region indicates if a job permits telecommuting. If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED, telecommuting jobs are searched, and address and lat_lng are ignored. If not set or set to TelecommutePreference.TELECOMMUTE_EXCLUDED, the telecommute status of the jobs is ignored. Jobs that have PostingRegion.TELECOMMUTE and have additional Job.addresses may still be matched based on other location filters using address or lat_lng. This filter can be used by itself to search exclusively for telecommuting jobs, or it can be combined with another location filter to search for a combination of job locations, such as "Mountain View" or "telecommuting" jobs. However, when used in combination with other location filters, telecommuting jobs can be treated as less relevant than other jobs in the search response. This field is only used for job search requests. */
-  telecommutePreference?:
-    | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
-    | "TELECOMMUTE_EXCLUDED"
-    | "TELECOMMUTE_ALLOWED"
-    | "TELECOMMUTE_JOBS_EXCLUDED"
-    | (string & {});
-  /** The latitude and longitude of the geographic center to search from. This field is ignored if `address` is provided. */
-  latLng?: LatLng;
-  /** CLDR region code of the country/region. This field may be used in two ways: 1) If telecommute preference is not set, this field is used address ambiguity of the user-input address. For example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK". This region code biases the address resolution toward a specific country or territory. If this field is not set, address resolution is biased toward the United States by default. 2) If telecommute preference is set to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to the region specified in this field. If this field is not set, the telecommute job locations will not be See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
-  regionCode?: string;
-  /** The distance_in_miles is applied when the location being searched for is identified as a city or smaller. This field is ignored if the location being searched for is a state or larger. */
-  distanceInMiles?: number;
-  /** The address name, such as "Mountain View" or "Bay Area". */
-  address?: string;
-}
-
-export const LocationFilter: Schema.Schema<LocationFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    telecommutePreference: Schema.optional(Schema.String),
-    latLng: Schema.optional(LatLng),
-    regionCode: Schema.optional(Schema.String),
-    distanceInMiles: Schema.optional(Schema.Number),
-    address: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LocationFilter" });
-
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: ReadonlyArray<Record<string, unknown>>;
-}
-
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    code: Schema.optional(Schema.Number),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-    ),
-  }).annotate({ identifier: "Status" });
-
-export interface JobResult {
-  /** Here Job only contains basic information including name, company, language_code and requisition_id, use getJob method to retrieve detailed information of the created/updated job. */
-  job?: Job;
-  /** The status of the job processed. This field is populated if the processing of the job fails. */
-  status?: Status;
-}
-
-export const JobResult: Schema.Schema<JobResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    job: Schema.optional(Job),
-    status: Schema.optional(Status),
-  }).annotate({ identifier: "JobResult" });
-
-export interface BatchUpdateJobsResponse {
-  /** List of job mutation results from a batch update operation. It can change until operation status is FINISHED, FAILED or CANCELLED. */
-  jobResults?: ReadonlyArray<JobResult>;
-}
-
-export const BatchUpdateJobsResponse: Schema.Schema<BatchUpdateJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobResults: Schema.optional(Schema.Array(JobResult)),
-  }).annotate({ identifier: "BatchUpdateJobsResponse" });
-
-export interface Tenant {
-  /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  name?: string;
-  /** Required. Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255. */
-  externalId?: string;
-}
-
-export const Tenant: Schema.Schema<Tenant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    externalId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Tenant" });
-
-export interface TimeOfDay {
-  /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
-  hours?: number;
-  /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
-  seconds?: number;
-  /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
-  minutes?: number;
-  /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
-  nanos?: number;
-}
-
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hours: Schema.optional(Schema.Number),
-    seconds: Schema.optional(Schema.Number),
-    minutes: Schema.optional(Schema.Number),
-    nanos: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "TimeOfDay" });
-
-export interface CommuteFilter {
-  /** If `true`, jobs without street level addresses may also be returned. For city level addresses, the city center is used. For state and coarser level addresses, text matching is used. If this field is set to `false` or isn't specified, only jobs that include street level addresses will be returned by commute search. */
-  allowImpreciseAddresses?: boolean;
-  /** Required. The latitude and longitude of the location to calculate the commute time from. */
-  startCoordinates?: LatLng;
-  /** Required. The maximum travel time in seconds. The maximum allowed value is `3600s` (one hour). Format is `123s`. */
-  travelDuration?: string;
-  /** Required. The method of transportation to calculate the commute time for. */
-  commuteMethod?:
-    | "COMMUTE_METHOD_UNSPECIFIED"
-    | "DRIVING"
-    | "TRANSIT"
-    | "WALKING"
-    | "CYCLING"
-    | "TRANSIT_ACCESSIBLE"
-    | (string & {});
-  /** Specifies the traffic density to use when calculating commute time. */
-  roadTraffic?:
-    | "ROAD_TRAFFIC_UNSPECIFIED"
-    | "TRAFFIC_FREE"
-    | "BUSY_HOUR"
-    | (string & {});
-  /** The departure time used to calculate traffic impact, represented as google.type.TimeOfDay in local time zone. Currently traffic model is restricted to hour level resolution. */
-  departureTime?: TimeOfDay;
-}
-
-export const CommuteFilter: Schema.Schema<CommuteFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowImpreciseAddresses: Schema.optional(Schema.Boolean),
-    startCoordinates: Schema.optional(LatLng),
-    travelDuration: Schema.optional(Schema.String),
-    commuteMethod: Schema.optional(Schema.String),
-    roadTraffic: Schema.optional(Schema.String),
-    departureTime: Schema.optional(TimeOfDay),
-  }).annotate({ identifier: "CommuteFilter" });
-
-export interface Company {
-  /** Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500. */
-  eeoText?: string;
-  /** This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes. */
-  keywordSearchableJobCustomAttributes?: ReadonlyArray<string>;
-  /** Output only. Derived details about the company. */
-  derivedInfo?: CompanyDerivedInfo;
-  /** The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com". */
-  careerSiteUri?: string;
-  /** Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
-  name?: string;
-  /** Required. The display name of the company, for example, "Google LLC". */
-  displayName?: string;
-  /** The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255. */
-  websiteUri?: string;
-  /** Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255. */
-  externalId?: string;
-  /** The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location. */
-  headquartersAddress?: string;
-  /** A URI that hosts the employer's company logo. */
-  imageUri?: string;
-  /** Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy. */
-  suspended?: boolean;
-  /** The employer's company size. */
-  size?:
-    | "COMPANY_SIZE_UNSPECIFIED"
-    | "MINI"
-    | "SMALL"
-    | "SMEDIUM"
+export interface CustomRankingInfo {
+  /** Required. Controls over how important the score of CustomRankingInfo.ranking_expression gets applied to job's final ranking position. An error is thrown if not specified. */
+  importanceLevel?:
+    | "IMPORTANCE_LEVEL_UNSPECIFIED"
+    | "NONE"
+    | "LOW"
+    | "MILD"
     | "MEDIUM"
-    | "BIG"
-    | "BIGGER"
-    | "GIANT"
+    | "HIGH"
+    | "EXTREME"
     | (string & {});
-  /** Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided. */
-  hiringAgency?: boolean;
+  /** Required. Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). A combination of the ranking expression and relevance score is used to determine job's final ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are: +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key, integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust calculation precedence. The expression must be < 200 characters in length. The expression is considered invalid for a job if the expression references custom attributes that are not populated on the job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5) */
+  rankingExpression?: string;
 }
 
-export const Company: Schema.Schema<Company> =
+export const CustomRankingInfo: Schema.Codec<CustomRankingInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    eeoText: Schema.optional(Schema.String),
-    keywordSearchableJobCustomAttributes: Schema.optional(
-      Schema.Array(Schema.String),
-    ),
-    derivedInfo: Schema.optional(CompanyDerivedInfo),
-    careerSiteUri: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    websiteUri: Schema.optional(Schema.String),
-    externalId: Schema.optional(Schema.String),
-    headquartersAddress: Schema.optional(Schema.String),
-    imageUri: Schema.optional(Schema.String),
-    suspended: Schema.optional(Schema.Boolean),
-    size: Schema.optional(Schema.String),
-    hiringAgency: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "Company" });
-
-export interface BatchCreateJobsRequest {
-  /** Required. The jobs to be created. A maximum of 200 jobs can be created in a batch. */
-  jobs?: ReadonlyArray<Job>;
-}
-
-export const BatchCreateJobsRequest: Schema.Schema<BatchCreateJobsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobs: Schema.optional(Schema.Array(Job)),
-  }).annotate({ identifier: "BatchCreateJobsRequest" });
-
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-}
-
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    error: Schema.optional(Status),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "Operation" });
+    importanceLevel: Schema.optional(Schema.String),
+    rankingExpression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomRankingInfo" });
 
 export interface CompensationFilter {
   /** Required. Specify desired `base compensation entry's` CompensationInfo.CompensationUnit. */
@@ -895,7 +648,7 @@ export interface CompensationFilter {
   includeJobsWithUnspecifiedCompensationRange?: boolean;
 }
 
-export const CompensationFilter: Schema.Schema<CompensationFilter> =
+export const CompensationFilter: Schema.Codec<CompensationFilter> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.Array(Schema.String)),
     type: Schema.optional(Schema.String),
@@ -905,76 +658,84 @@ export const CompensationFilter: Schema.Schema<CompensationFilter> =
     ),
   }).annotate({ identifier: "CompensationFilter" });
 
-export interface ListCompaniesResponse {
-  /** Companies for the current client. */
-  companies?: ReadonlyArray<Company>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
+export interface CompanyDerivedInfo {
+  /** A structured headquarters location of the company, resolved from Company.headquarters_address if provided. */
+  headquartersLocation?: Location;
 }
 
-export const ListCompaniesResponse: Schema.Schema<ListCompaniesResponse> =
+export const CompanyDerivedInfo: Schema.Codec<CompanyDerivedInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    companies: Schema.optional(Schema.Array(Company)),
-    nextPageToken: Schema.optional(Schema.String),
-    metadata: Schema.optional(ResponseMetadata),
-  }).annotate({ identifier: "ListCompaniesResponse" });
+    headquartersLocation: Schema.optional(Location),
+  }).annotate({ identifier: "CompanyDerivedInfo" });
 
-export interface HistogramQuery {
-  /** An expression specifies a histogram request against matching jobs for searches. See SearchJobsRequest.histogram_queries for details about syntax. */
-  histogramQuery?: string;
-}
-
-export const HistogramQuery: Schema.Schema<HistogramQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    histogramQuery: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HistogramQuery" });
-
-export interface DeviceInfo {
-  /** A device-specific ID. The ID must be a unique identifier that distinguishes the device from other devices. */
-  id?: string;
-  /** Type of the device. */
-  deviceType?:
-    | "DEVICE_TYPE_UNSPECIFIED"
-    | "WEB"
-    | "MOBILE_WEB"
-    | "ANDROID"
-    | "IOS"
-    | "BOT"
-    | "OTHER"
+export interface Company {
+  /** This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes. */
+  keywordSearchableJobCustomAttributes?: ReadonlyArray<string>;
+  /** Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255. */
+  externalId?: string;
+  /** Required. The display name of the company, for example, "Google LLC". */
+  displayName?: string;
+  /** Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy. */
+  suspended?: boolean;
+  /** Output only. Derived details about the company. */
+  derivedInfo?: CompanyDerivedInfo;
+  /** A URI that hosts the employer's company logo. */
+  imageUri?: string;
+  /** The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255. */
+  websiteUri?: string;
+  /** The employer's company size. */
+  size?:
+    | "COMPANY_SIZE_UNSPECIFIED"
+    | "MINI"
+    | "SMALL"
+    | "SMEDIUM"
+    | "MEDIUM"
+    | "BIG"
+    | "BIGGER"
+    | "GIANT"
     | (string & {});
+  /** Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
+  name?: string;
+  /** The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location. */
+  headquartersAddress?: string;
+  /** Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided. */
+  hiringAgency?: boolean;
+  /** The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com". */
+  careerSiteUri?: string;
+  /** Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500. */
+  eeoText?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
+export const Company: Schema.Codec<Company> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
-    deviceType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DeviceInfo" });
-
-export interface BatchCreateJobsResponse {
-  /** List of job mutation results from a batch create operation. It can change until operation status is FINISHED, FAILED or CANCELLED. */
-  jobResults?: ReadonlyArray<JobResult>;
-}
-
-export const BatchCreateJobsResponse: Schema.Schema<BatchCreateJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobResults: Schema.optional(Schema.Array(JobResult)),
-  }).annotate({ identifier: "BatchCreateJobsResponse" });
+    keywordSearchableJobCustomAttributes: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    externalId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    suspended: Schema.optional(Schema.Boolean),
+    derivedInfo: Schema.optional(CompanyDerivedInfo),
+    imageUri: Schema.optional(Schema.String),
+    websiteUri: Schema.optional(Schema.String),
+    size: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    headquartersAddress: Schema.optional(Schema.String),
+    hiringAgency: Schema.optional(Schema.Boolean),
+    careerSiteUri: Schema.optional(Schema.String),
+    eeoText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Company" });
 
 export interface BatchOperationMetadata {
-  /** Count of total item(s) inside an operation. */
-  totalCount?: number;
-  /** The time when the batch operation status is updated. The metadata and the update_time is refreshed every minute otherwise cached data is returned. */
-  updateTime?: string;
-  /** More detailed information about operation state. */
-  stateDescription?: string;
-  /** Count of failed item(s) inside an operation. */
-  failureCount?: number;
   /** The time when the batch operation is created. */
   createTime?: string;
   /** The time when the batch operation is finished and google.longrunning.Operation.done is set to `true`. */
   endTime?: string;
+  /** More detailed information about operation state. */
+  stateDescription?: string;
+  /** Count of total item(s) inside an operation. */
+  totalCount?: number;
+  /** Count of failed item(s) inside an operation. */
+  failureCount?: number;
   /** The state of a long running operation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -987,152 +748,369 @@ export interface BatchOperationMetadata {
     | (string & {});
   /** Count of successful item(s) inside an operation. */
   successCount?: number;
+  /** The time when the batch operation status is updated. The metadata and the update_time is refreshed every minute otherwise cached data is returned. */
+  updateTime?: string;
 }
 
-export const BatchOperationMetadata: Schema.Schema<BatchOperationMetadata> =
+export const BatchOperationMetadata: Schema.Codec<BatchOperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    totalCount: Schema.optional(Schema.Number),
-    updateTime: Schema.optional(Schema.String),
-    stateDescription: Schema.optional(Schema.String),
-    failureCount: Schema.optional(Schema.Number),
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
+    stateDescription: Schema.optional(Schema.String),
+    totalCount: Schema.optional(Schema.Number),
+    failureCount: Schema.optional(Schema.Number),
     state: Schema.optional(Schema.String),
     successCount: Schema.optional(Schema.Number),
+    updateTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "BatchOperationMetadata" });
 
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface HistogramQueryResult {
-  /** A map from the values of the facet associated with distinct values to the number of matching entries with corresponding value. The key format is: * (for string histogram) string values stored in the field. * (for named numeric bucket) name specified in `bucket()` function, like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`. * (for anonymous numeric bucket) range formatted as `-`, for example, `0-1000`, `MIN-0`, and `0-MAX`. */
-  histogram?: Record<string, string>;
-  /** Requested histogram expression. */
-  histogramQuery?: string;
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
 }
 
-export const HistogramQueryResult: Schema.Schema<HistogramQueryResult> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    histogram: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    histogramQuery: Schema.optional(Schema.String),
-  }).annotate({ identifier: "HistogramQueryResult" });
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "Operation" });
 
-export interface SearchJobsResponse {
-  /** The Job entities that match the specified SearchJobsRequest. */
-  matchingJobs?: ReadonlyArray<MatchingJob>;
-  /** If query broadening is enabled, we may append additional results from the broadened query. This number indicates how many of the jobs returned in the jobs field are from the broadened query. These results are always at the end of the jobs list. In particular, a value of 0, or if the field isn't set, all the jobs in the jobs list are from the original (without broadening) query. If this field is non-zero, subsequent requests with offset after this result set should contain all broadened results. */
-  broadenedQueryJobsCount?: number;
-  /** The histogram results that match with specified SearchJobsRequest.histogram_queries. */
-  histogramQueryResults?: ReadonlyArray<HistogramQueryResult>;
-  /** Number of jobs that match the specified query. Note: This size is precise only if the total is less than 100,000. */
-  totalSize?: number;
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
-  /** The location filters that the service applied to the specified query. If any filters are lat-lng based, the Location.location_type is Location.LocationType.LOCATION_TYPE_UNSPECIFIED. */
-  locationFilters?: ReadonlyArray<Location>;
-  /** The spell checking result, and correction. */
-  spellCorrection?: SpellingCorrection;
-  /** The token that specifies the starting position of the next page of results. This field is empty if there are no more results. */
-  nextPageToken?: string;
+export interface ClientEvent {
+  /** Required. A unique identifier, generated by the client application. */
+  eventId?: string;
+  /** Notes about the event provided by recruiters or other users, for example, feedback on why a job was bookmarked. */
+  eventNotes?: string;
+  /** Required. The timestamp of the event. */
+  createTime?: string;
+  /** Strongly recommended for the best service experience. A unique ID generated in the API responses. It can be found in ResponseMetadata.request_id. */
+  requestId?: string;
+  /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
+  jobEvent?: JobEvent;
 }
 
-export const SearchJobsResponse: Schema.Schema<SearchJobsResponse> =
+export const ClientEvent: Schema.Codec<ClientEvent> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    matchingJobs: Schema.optional(Schema.Array(MatchingJob)),
-    broadenedQueryJobsCount: Schema.optional(Schema.Number),
-    histogramQueryResults: Schema.optional(Schema.Array(HistogramQueryResult)),
-    totalSize: Schema.optional(Schema.Number),
-    metadata: Schema.optional(ResponseMetadata),
-    locationFilters: Schema.optional(Schema.Array(Location)),
-    spellCorrection: Schema.optional(SpellingCorrection),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SearchJobsResponse" });
+    eventId: Schema.optional(Schema.String),
+    eventNotes: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    jobEvent: Schema.optional(JobEvent),
+  }).annotate({ identifier: "ClientEvent" });
 
-export interface CustomRankingInfo {
-  /** Required. Controls over how important the score of CustomRankingInfo.ranking_expression gets applied to job's final ranking position. An error is thrown if not specified. */
-  importanceLevel?:
-    | "IMPORTANCE_LEVEL_UNSPECIFIED"
-    | "NONE"
-    | "LOW"
-    | "MILD"
-    | "MEDIUM"
-    | "HIGH"
-    | "EXTREME"
-    | (string & {});
-  /** Required. Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). A combination of the ranking expression and relevance score is used to determine job's final ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are: +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key, integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust calculation precedence. The expression must be < 200 characters in length. The expression is considered invalid for a job if the expression references custom attributes that are not populated on the job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5) */
-  rankingExpression?: string;
+export interface BatchUpdateJobsRequest {
+  /** Required. The jobs to be updated. A maximum of 200 jobs can be updated in a batch. */
+  jobs?: ReadonlyArray<Job>;
+  /** Strongly recommended for the best service experience. Be aware that it will also increase latency when checking the status of a batch operation. If update_mask is provided, only the specified fields in Job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. If update_mask is provided, The Job inside JobResult will only contains fields that is updated, plus the Id of the Job. Otherwise, Job will include all fields, which can yield a very large response. */
+  updateMask?: string;
 }
 
-export const CustomRankingInfo: Schema.Schema<CustomRankingInfo> =
+export const BatchUpdateJobsRequest: Schema.Codec<BatchUpdateJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    importanceLevel: Schema.optional(Schema.String),
-    rankingExpression: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CustomRankingInfo" });
-
-export interface RequestMetadata {
-  /** Only set when any of domain, session_id and user_id isn't available for some reason. It is highly recommended not to set this field and provide accurate domain, session_id and user_id for the best service experience. */
-  allowMissingIds?: boolean;
-  /** Required if allow_missing_ids is unset or `false`. A unique user identification string, as determined by the client. To have the strongest positive impact on search quality make sure the client-level is unique. Obfuscate this field for privacy concerns before providing it to the service. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique user ID. The maximum number of allowed characters is 255. */
-  userId?: string;
-  /** Required if allow_missing_ids is unset or `false`. A unique session identification string. A session is defined as the duration of an end user's interaction with the service over a certain period. Obfuscate this field for privacy concerns before providing it to the service. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique session ID. The maximum number of allowed characters is 255. */
-  sessionId?: string;
-  /** Required if allow_missing_ids is unset or `false`. The client-defined scope or source of the service call, which typically is the domain on which the service has been implemented and is currently being run. For example, if the service is being run by client *Foo, Inc.*, on job board www.foo.com and career site www.bar.com, then this field is set to "foo.com" for use on the job board, and "bar.com" for use on the career site. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique domain. The maximum number of allowed characters is 255. */
-  domain?: string;
-  /** The type of device used by the job seeker at the time of the call to the service. */
-  deviceInfo?: DeviceInfo;
-}
-
-export const RequestMetadata: Schema.Schema<RequestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    allowMissingIds: Schema.optional(Schema.Boolean),
-    userId: Schema.optional(Schema.String),
-    sessionId: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-    deviceInfo: Schema.optional(DeviceInfo),
-  }).annotate({ identifier: "RequestMetadata" });
-
-export interface TimestampRange {
-  /** End of the period (exclusive). */
-  endTime?: string;
-  /** Begin of the period (inclusive). */
-  startTime?: string;
-}
-
-export const TimestampRange: Schema.Schema<TimestampRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TimestampRange" });
+    jobs: Schema.optional(Schema.Array(Job)),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BatchUpdateJobsRequest" });
 
 export interface BatchDeleteJobsResponse {
   /** List of job mutation results from a batch delete operation. It can change until operation status is FINISHED, FAILED or CANCELLED. */
   jobResults?: ReadonlyArray<JobResult>;
 }
 
-export const BatchDeleteJobsResponse: Schema.Schema<BatchDeleteJobsResponse> =
+export const BatchDeleteJobsResponse: Schema.Codec<BatchDeleteJobsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobResults: Schema.optional(Schema.Array(JobResult)),
   }).annotate({ identifier: "BatchDeleteJobsResponse" });
 
+export interface ListJobsResponse {
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+  /** The Jobs for a given company. The maximum number of items returned is based on the limit field provided in the request. */
+  jobs?: ReadonlyArray<Job>;
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+}
+
+export const ListJobsResponse: Schema.Codec<ListJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(ResponseMetadata),
+    jobs: Schema.optional(Schema.Array(Job)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListJobsResponse" });
+
+export interface MatchingJob {
+  /** Commute information which is generated based on specified CommuteFilter. */
+  commuteInfo?: CommuteInfo;
+  /** Contains snippets of text from the Job.title field most closely matching a search query's keywords, if available. The matching query keywords are enclosed in HTML bold tags. */
+  jobTitleSnippet?: string;
+  /** Job resource that matches the specified SearchJobsRequest. */
+  job?: Job;
+  /** Contains snippets of text from the Job.description and similar fields that most closely match a search query's keywords, if available. All HTML tags in the original fields are stripped when returned in this field, and matching query keywords are enclosed in HTML bold tags. */
+  searchTextSnippet?: string;
+  /** A summary of the job with core information that's displayed on the search results listing page. */
+  jobSummary?: string;
+}
+
+export const MatchingJob: Schema.Codec<MatchingJob> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commuteInfo: Schema.optional(CommuteInfo),
+    jobTitleSnippet: Schema.optional(Schema.String),
+    job: Schema.optional(Job),
+    searchTextSnippet: Schema.optional(Schema.String),
+    jobSummary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MatchingJob" });
+
+export interface HistogramQueryResult {
+  /** Requested histogram expression. */
+  histogramQuery?: string;
+  /** A map from the values of the facet associated with distinct values to the number of matching entries with corresponding value. The key format is: * (for string histogram) string values stored in the field. * (for named numeric bucket) name specified in `bucket()` function, like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`. * (for anonymous numeric bucket) range formatted as `-`, for example, `0-1000`, `MIN-0`, and `0-MAX`. */
+  histogram?: Record<string, string>;
+}
+
+export const HistogramQueryResult: Schema.Codec<HistogramQueryResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    histogramQuery: Schema.optional(Schema.String),
+    histogram: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "HistogramQueryResult" });
+
+export interface SpellingCorrection {
+  /** Indicates if the query was corrected by the spell checker. */
+  corrected?: boolean;
+  /** Corrected output with html tags to highlight the corrected words. Corrected words are called out with the "*...*" html tags. For example, the user input query is "software enginear", where the second word, "enginear," is incorrect. It should be "engineer". When spelling correction is enabled, this value is "software *engineer*". */
+  correctedHtml?: string;
+  /** Correction output consisting of the corrected keyword string. */
+  correctedText?: string;
+}
+
+export const SpellingCorrection: Schema.Codec<SpellingCorrection> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    corrected: Schema.optional(Schema.Boolean),
+    correctedHtml: Schema.optional(Schema.String),
+    correctedText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SpellingCorrection" });
+
+export interface SearchJobsResponse {
+  /** The Job entities that match the specified SearchJobsRequest. */
+  matchingJobs?: ReadonlyArray<MatchingJob>;
+  /** The histogram results that match with specified SearchJobsRequest.histogram_queries. */
+  histogramQueryResults?: ReadonlyArray<HistogramQueryResult>;
+  /** If query broadening is enabled, we may append additional results from the broadened query. This number indicates how many of the jobs returned in the jobs field are from the broadened query. These results are always at the end of the jobs list. In particular, a value of 0, or if the field isn't set, all the jobs in the jobs list are from the original (without broadening) query. If this field is non-zero, subsequent requests with offset after this result set should contain all broadened results. */
+  broadenedQueryJobsCount?: number;
+  /** The token that specifies the starting position of the next page of results. This field is empty if there are no more results. */
+  nextPageToken?: string;
+  /** Number of jobs that match the specified query. Note: This size is precise only if the total is less than 100,000. */
+  totalSize?: number;
+  /** The location filters that the service applied to the specified query. If any filters are lat-lng based, the Location.location_type is Location.LocationType.LOCATION_TYPE_UNSPECIFIED. */
+  locationFilters?: ReadonlyArray<Location>;
+  /** The spell checking result, and correction. */
+  spellCorrection?: SpellingCorrection;
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+}
+
+export const SearchJobsResponse: Schema.Codec<SearchJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchingJobs: Schema.optional(Schema.Array(MatchingJob)),
+    histogramQueryResults: Schema.optional(Schema.Array(HistogramQueryResult)),
+    broadenedQueryJobsCount: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+    locationFilters: Schema.optional(Schema.Array(Location)),
+    spellCorrection: Schema.optional(SpellingCorrection),
+    metadata: Schema.optional(ResponseMetadata),
+  }).annotate({ identifier: "SearchJobsResponse" });
+
+export interface BatchDeleteJobsRequest {
+  /** The names of the jobs to delete. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs can be deleted in a batch. */
+  names?: ReadonlyArray<string>;
+}
+
+export const BatchDeleteJobsRequest: Schema.Codec<BatchDeleteJobsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeleteJobsRequest" });
+
+export interface DeviceInfo {
+  /** Type of the device. */
+  deviceType?:
+    | "DEVICE_TYPE_UNSPECIFIED"
+    | "WEB"
+    | "MOBILE_WEB"
+    | "ANDROID"
+    | "IOS"
+    | "BOT"
+    | "OTHER"
+    | (string & {});
+  /** A device-specific ID. The ID must be a unique identifier that distinguishes the device from other devices. */
+  id?: string;
+}
+
+export const DeviceInfo: Schema.Codec<DeviceInfo> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceType: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceInfo" });
+
+export interface RequestMetadata {
+  /** Required if allow_missing_ids is unset or `false`. A unique session identification string. A session is defined as the duration of an end user's interaction with the service over a certain period. Obfuscate this field for privacy concerns before providing it to the service. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique session ID. The maximum number of allowed characters is 255. */
+  sessionId?: string;
+  /** Only set when any of domain, session_id and user_id isn't available for some reason. It is highly recommended not to set this field and provide accurate domain, session_id and user_id for the best service experience. */
+  allowMissingIds?: boolean;
+  /** The type of device used by the job seeker at the time of the call to the service. */
+  deviceInfo?: DeviceInfo;
+  /** Required if allow_missing_ids is unset or `false`. A unique user identification string, as determined by the client. To have the strongest positive impact on search quality make sure the client-level is unique. Obfuscate this field for privacy concerns before providing it to the service. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique user ID. The maximum number of allowed characters is 255. */
+  userId?: string;
+  /** Required if allow_missing_ids is unset or `false`. The client-defined scope or source of the service call, which typically is the domain on which the service has been implemented and is currently being run. For example, if the service is being run by client *Foo, Inc.*, on job board www.foo.com and career site www.bar.com, then this field is set to "foo.com" for use on the job board, and "bar.com" for use on the career site. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique domain. The maximum number of allowed characters is 255. */
+  domain?: string;
+}
+
+export const RequestMetadata: Schema.Codec<RequestMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionId: Schema.optional(Schema.String),
+    allowMissingIds: Schema.optional(Schema.Boolean),
+    deviceInfo: Schema.optional(DeviceInfo),
+    userId: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestMetadata" });
+
+export interface CompletionResult {
+  /** The completion topic. */
+  type?:
+    | "COMPLETION_TYPE_UNSPECIFIED"
+    | "JOB_TITLE"
+    | "COMPANY_NAME"
+    | "COMBINED"
+    | (string & {});
+  /** The URI of the company image for COMPANY_NAME. */
+  imageUri?: string;
+  /** The suggestion for the query. */
+  suggestion?: string;
+}
+
+export const CompletionResult: Schema.Codec<CompletionResult> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+    suggestion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompletionResult" });
+
+export interface LocationFilter {
+  /** The latitude and longitude of the geographic center to search from. This field is ignored if `address` is provided. */
+  latLng?: LatLng;
+  /** The address name, such as "Mountain View" or "Bay Area". */
+  address?: string;
+  /** CLDR region code of the country/region. This field may be used in two ways: 1) If telecommute preference is not set, this field is used address ambiguity of the user-input address. For example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK". This region code biases the address resolution toward a specific country or territory. If this field is not set, address resolution is biased toward the United States by default. 2) If telecommute preference is set to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to the region specified in this field. If this field is not set, the telecommute job locations will not be See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
+  regionCode?: string;
+  /** Allows the client to return jobs without a set location, specifically, telecommuting jobs (telecommuting is considered by the service as a special location). Job.posting_region indicates if a job permits telecommuting. If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED, telecommuting jobs are searched, and address and lat_lng are ignored. If not set or set to TelecommutePreference.TELECOMMUTE_EXCLUDED, the telecommute status of the jobs is ignored. Jobs that have PostingRegion.TELECOMMUTE and have additional Job.addresses may still be matched based on other location filters using address or lat_lng. This filter can be used by itself to search exclusively for telecommuting jobs, or it can be combined with another location filter to search for a combination of job locations, such as "Mountain View" or "telecommuting" jobs. However, when used in combination with other location filters, telecommuting jobs can be treated as less relevant than other jobs in the search response. This field is only used for job search requests. */
+  telecommutePreference?:
+    | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
+    | "TELECOMMUTE_EXCLUDED"
+    | "TELECOMMUTE_ALLOWED"
+    | "TELECOMMUTE_JOBS_EXCLUDED"
+    | (string & {});
+  /** The distance_in_miles is applied when the location being searched for is identified as a city or smaller. This field is ignored if the location being searched for is a state or larger. */
+  distanceInMiles?: number;
+}
+
+export const LocationFilter: Schema.Codec<LocationFilter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latLng: Schema.optional(LatLng),
+    address: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    telecommutePreference: Schema.optional(Schema.String),
+    distanceInMiles: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LocationFilter" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface CommuteFilter {
+  /** Required. The maximum travel time in seconds. The maximum allowed value is `3600s` (one hour). Format is `123s`. */
+  travelDuration?: string;
+  /** Required. The latitude and longitude of the location to calculate the commute time from. */
+  startCoordinates?: LatLng;
+  /** Required. The method of transportation to calculate the commute time for. */
+  commuteMethod?:
+    | "COMMUTE_METHOD_UNSPECIFIED"
+    | "DRIVING"
+    | "TRANSIT"
+    | "WALKING"
+    | "CYCLING"
+    | "TRANSIT_ACCESSIBLE"
+    | (string & {});
+  /** Specifies the traffic density to use when calculating commute time. */
+  roadTraffic?:
+    | "ROAD_TRAFFIC_UNSPECIFIED"
+    | "TRAFFIC_FREE"
+    | "BUSY_HOUR"
+    | (string & {});
+  /** If `true`, jobs without street level addresses may also be returned. For city level addresses, the city center is used. For state and coarser level addresses, text matching is used. If this field is set to `false` or isn't specified, only jobs that include street level addresses will be returned by commute search. */
+  allowImpreciseAddresses?: boolean;
+  /** The departure time used to calculate traffic impact, represented as google.type.TimeOfDay in local time zone. Currently traffic model is restricted to hour level resolution. */
+  departureTime?: TimeOfDay;
+}
+
+export const CommuteFilter: Schema.Codec<CommuteFilter> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    travelDuration: Schema.optional(Schema.String),
+    startCoordinates: Schema.optional(LatLng),
+    commuteMethod: Schema.optional(Schema.String),
+    roadTraffic: Schema.optional(Schema.String),
+    allowImpreciseAddresses: Schema.optional(Schema.Boolean),
+    departureTime: Schema.optional(TimeOfDay),
+  }).annotate({ identifier: "CommuteFilter" });
+
+export interface BatchCreateJobsRequest {
+  /** Required. The jobs to be created. A maximum of 200 jobs can be created in a batch. */
+  jobs?: ReadonlyArray<Job>;
+}
+
+export const BatchCreateJobsRequest: Schema.Codec<BatchCreateJobsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(Job)),
+  }).annotate({ identifier: "BatchCreateJobsRequest" });
+
+export interface TimestampRange {
+  /** Begin of the period (inclusive). */
+  startTime?: string;
+  /** End of the period (exclusive). */
+  endTime?: string;
+}
+
+export const TimestampRange: Schema.Codec<TimestampRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimestampRange" });
+
 export interface JobQuery {
-  /** This filter specifies the company Company.display_name of the jobs to search against. The company name must match the value exactly. Alternatively, the value being searched for can be wrapped in different match operators. `SUBSTRING_MATCH([value])` The company name must contain a case insensitive substring match of the value. Using this function may increase latency. Sample Value: `SUBSTRING_MATCH(google)` `MULTI_WORD_TOKEN_MATCH([value])` The value will be treated as a multi word token and the company name must contain a case insensitive match of the value. Using this function may increase latency. Sample Value: `MULTI_WORD_TOKEN_MATCH(google)` If a value isn't specified, jobs within the search results are associated with any company. If multiple values are specified, jobs within the search results may be associated with any of the specified companies. At most 20 company display name filters are allowed. */
-  companyDisplayNames?: ReadonlyArray<string>;
-  /** This filter specifies the company entities to search against. If a value isn't specified, jobs are searched for against all companies. If multiple values are specified, jobs are searched against the companies specified. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz". At most 20 company filters are allowed. */
-  companies?: ReadonlyArray<string>;
   /** Allows filtering jobs by commute time with different travel methods (for example, driving or public transit). Note: This only works when you specify a CommuteMethod. In this case, location_filters is ignored. Currently we don't support sorting by commute time. */
   commuteFilter?: CommuteFilter;
+  /** This search filter is applied only to Job.compensation_info. For example, if the filter is specified as "Hourly job with per-hour compensation > $15", only jobs meeting these criteria are searched. If a filter isn't defined, all open jobs are searched. */
+  compensationFilter?: CompensationFilter;
+  /** This filter specifies a structured syntax to match against the Job.custom_attributes marked as `filterable`. The syntax for this expression is a subset of SQL syntax. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is a custom field key and the right of the operator is a number or a quoted string. You must escape backslash (\\) and quote (\") characters. Supported functions are `LOWER([field_name])` to perform a case insensitive match and `EMPTY([field_name])` to filter on the existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 100 comparisons or functions are allowed in the expression. The expression must be < 10000 bytes in length. Sample Query: `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND driving_years > 10` */
+  customAttributeFilter?: string;
+  /** The query string that matches against the job title, description, and location fields. The maximum number of allowed characters is 255. */
+  query?: string;
+  /** This filter specifies the company entities to search against. If a value isn't specified, jobs are searched for against all companies. If multiple values are specified, jobs are searched against the companies specified. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz". At most 20 company filters are allowed. */
+  companies?: ReadonlyArray<string>;
   /** The location filter specifies geo-regions containing the jobs to search against. See LocationFilter for more information. If a location value isn't specified, jobs fitting the other search criteria are retrieved regardless of where they're located. If multiple values are specified, jobs are retrieved from any of the specified locations. If different values are specified for the LocationFilter.distance_in_miles parameter, the maximum provided distance is used for all locations. At most 5 location filters are allowed. */
   locationFilters?: ReadonlyArray<LocationFilter>;
   /** Jobs published within a range specified by this filter are searched against. */
   publishTimeRange?: TimestampRange;
-  /** The query string that matches against the job title, description, and location fields. The maximum number of allowed characters is 255. */
-  query?: string;
-  /** This filter specifies a structured syntax to match against the Job.custom_attributes marked as `filterable`. The syntax for this expression is a subset of SQL syntax. Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the left of the operator is a custom field key and the right of the operator is a number or a quoted string. You must escape backslash (\\) and quote (\") characters. Supported functions are `LOWER([field_name])` to perform a case insensitive match and `EMPTY([field_name])` to filter on the existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3 levels of nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 100 comparisons or functions are allowed in the expression. The expression must be < 10000 bytes in length. Sample Query: `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND driving_years > 10` */
-  customAttributeFilter?: string;
   /** This flag controls the spell-check feature. If false, the service attempts to correct a misspelled query, for example, "enginee" is corrected to "engineer". Defaults to false: a spell check is performed. */
   disableSpellCheck?: boolean;
   /** The employment type filter specifies the employment type of jobs to search against, such as EmploymentType.FULL_TIME. If a value isn't specified, jobs in the search results includes any employment type. If multiple values are specified, jobs in the search results include any of the specified employment types. */
@@ -1150,14 +1128,12 @@ export interface JobQuery {
     | "OTHER_EMPLOYMENT_TYPE"
     | (string & {})
   >;
-  /** This search filter is applied only to Job.compensation_info. For example, if the filter is specified as "Hourly job with per-hour compensation > $15", only jobs meeting these criteria are searched. If a filter isn't defined, all open jobs are searched. */
-  compensationFilter?: CompensationFilter;
-  /** This filter specifies the locale of jobs to search against, for example, "en-US". If a value isn't specified, the search results can contain jobs in any locale. Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10 language code filters are allowed. */
-  languageCodes?: ReadonlyArray<string>;
-  /** This filter specifies a list of job names to be excluded during search. At most 400 excluded job names are allowed. */
-  excludedJobs?: ReadonlyArray<string>;
   /** The language code of query. For example, "en-US". This field helps to better interpret the query. If a value isn't specified, the query language code is automatically detected, which may not be accurate. Language code should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). */
   queryLanguageCode?: string;
+  /** This filter specifies a list of job names to be excluded during search. At most 400 excluded job names are allowed. */
+  excludedJobs?: ReadonlyArray<string>;
+  /** This filter specifies the company Company.display_name of the jobs to search against. The company name must match the value exactly. Alternatively, the value being searched for can be wrapped in different match operators. `SUBSTRING_MATCH([value])` The company name must contain a case insensitive substring match of the value. Using this function may increase latency. Sample Value: `SUBSTRING_MATCH(google)` `MULTI_WORD_TOKEN_MATCH([value])` The value will be treated as a multi word token and the company name must contain a case insensitive match of the value. Using this function may increase latency. Sample Value: `MULTI_WORD_TOKEN_MATCH(google)` If a value isn't specified, jobs within the search results are associated with any company. If multiple values are specified, jobs within the search results may be associated with any of the specified companies. At most 20 company display name filters are allowed. */
+  companyDisplayNames?: ReadonlyArray<string>;
   /** The category filter specifies the categories of jobs to search against. See JobCategory for more information. If a value isn't specified, jobs from any category are searched against. If multiple values are specified, jobs from any of the specified categories are searched against. */
   jobCategories?: ReadonlyArray<
     | "JOB_CATEGORY_UNSPECIFIED"
@@ -1193,52 +1169,31 @@ export interface JobQuery {
     | "TRANSPORTATION_AND_LOGISTICS"
     | (string & {})
   >;
+  /** This filter specifies the locale of jobs to search against, for example, "en-US". If a value isn't specified, the search results can contain jobs in any locale. Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10 language code filters are allowed. */
+  languageCodes?: ReadonlyArray<string>;
 }
 
-export const JobQuery: Schema.Schema<JobQuery> =
+export const JobQuery: Schema.Codec<JobQuery> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    companyDisplayNames: Schema.optional(Schema.Array(Schema.String)),
-    companies: Schema.optional(Schema.Array(Schema.String)),
     commuteFilter: Schema.optional(CommuteFilter),
+    compensationFilter: Schema.optional(CompensationFilter),
+    customAttributeFilter: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    companies: Schema.optional(Schema.Array(Schema.String)),
     locationFilters: Schema.optional(Schema.Array(LocationFilter)),
     publishTimeRange: Schema.optional(TimestampRange),
-    query: Schema.optional(Schema.String),
-    customAttributeFilter: Schema.optional(Schema.String),
     disableSpellCheck: Schema.optional(Schema.Boolean),
     employmentTypes: Schema.optional(Schema.Array(Schema.String)),
-    compensationFilter: Schema.optional(CompensationFilter),
-    languageCodes: Schema.optional(Schema.Array(Schema.String)),
-    excludedJobs: Schema.optional(Schema.Array(Schema.String)),
     queryLanguageCode: Schema.optional(Schema.String),
+    excludedJobs: Schema.optional(Schema.Array(Schema.String)),
+    companyDisplayNames: Schema.optional(Schema.Array(Schema.String)),
     jobCategories: Schema.optional(Schema.Array(Schema.String)),
+    languageCodes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "JobQuery" });
 
-export interface ListTenantsResponse {
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
-  /** Tenants for the current client. */
-  tenants?: ReadonlyArray<Tenant>;
-  /** A token to retrieve the next page of results. */
-  nextPageToken?: string;
-}
-
-export const ListTenantsResponse: Schema.Schema<ListTenantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(ResponseMetadata),
-    tenants: Schema.optional(Schema.Array(Tenant)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListTenantsResponse" });
-
 export interface SearchJobsRequest {
-  /** The criteria determining how search results are sorted. Default is `"relevance desc"`. Supported options are: * `"relevance desc"`: By relevance descending, as determined by the API algorithms. Relevance thresholding of query results is only available with this ordering. * `"posting_publish_time desc"`: By Job.posting_publish_time descending. * `"posting_update_time desc"`: By Job.posting_update_time descending. * `"title"`: By Job.title ascending. * `"title desc"`: By Job.title descending. * `"annualized_base_compensation"`: By job's CompensationInfo.annualized_base_compensation_range ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_base_compensation desc"`: By job's CompensationInfo.annualized_base_compensation_range descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_total_compensation"`: By job's CompensationInfo.annualized_total_compensation_range ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_total_compensation desc"`: By job's CompensationInfo.annualized_total_compensation_range descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"custom_ranking desc"`: By the relevance score adjusted to the SearchJobsRequest.CustomRankingInfo.ranking_expression with weight factor assigned by SearchJobsRequest.CustomRankingInfo.importance_level in descending order. * Location sorting: Use the special syntax to order jobs by distance: `"distance_from('Hawaii')"`: Order by distance from Hawaii. `"distance_from(19.89, 155.5)"`: Order by distance from a coordinate. `"distance_from('Hawaii'), distance_from('Puerto Rico')"`: Order by multiple locations. See details below. `"distance_from('Hawaii'), distance_from(19.89, 155.5)"`: Order by multiple locations. See details below. The string can have a maximum of 256 characters. When multiple distance centers are provided, a job that is close to any of the distance centers would have a high rank. When a job has multiple locations, the job location closest to one of the distance centers will be used. Jobs that don't have locations will be ranked at the bottom. Distance is calculated with a precision of 11.3 meters (37.4 feet). Diversification strategy is still applied unless explicitly disabled in diversification_level. */
-  orderBy?: string;
-  /** Controls what keyword match options to use. If both keyword_match_mode and disable_keyword_match are set, keyword_match_mode will take precedence. Defaults to KeywordMatchMode.KEYWORD_MATCH_ALL if no value is specified. */
-  keywordMatchMode?:
-    | "KEYWORD_MATCH_MODE_UNSPECIFIED"
-    | "KEYWORD_MATCH_DISABLED"
-    | "KEYWORD_MATCH_ALL"
-    | "KEYWORD_MATCH_TITLE_ONLY"
-    | (string & {});
+  /** Query used to search against jobs, such as keyword, location filters, etc. */
+  jobQuery?: JobQuery;
   /** The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_SMALL if no value is specified. */
   jobView?:
     | "JOB_VIEW_UNSPECIFIED"
@@ -1247,18 +1202,6 @@ export interface SearchJobsRequest {
     | "JOB_VIEW_SMALL"
     | "JOB_VIEW_FULL"
     | (string & {});
-  /** An integer that specifies the current offset (that is, starting result location, amongst the jobs deemed by the API as relevant) in search results. This field is only considered if page_token is unset. The maximum allowed value is 5000. Otherwise an error is thrown. For example, 0 means to return results starting from the first matching job, and 10 means to return from the 11th job. This can be used for pagination, (for example, pageSize = 10 and offset = 10 means to return from the second page). */
-  offset?: number;
-  /** Optional. The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of precision and recall to deliver both highly accurate results and comprehensive coverage of relevant information. */
-  relevanceThreshold?:
-    | "RELEVANCE_THRESHOLD_UNSPECIFIED"
-    | "LOWEST"
-    | "LOW"
-    | "MEDIUM"
-    | "HIGH"
-    | (string & {});
-  /** A limit on the number of jobs returned in the search results. Increasing this value above the default value of 10 can increase search response time. The value can be between 1 and 100. */
-  maxPageSize?: number;
   /** An expression specifies a histogram request against matching jobs. Expression syntax is an aggregation function call with histogram facets and other options. Available aggregation function calls are: * `count(string_histogram_facet)`: Count the number of matching entities, for each distinct attribute value. * `count(numeric_histogram_facet, list of buckets)`: Count the number of matching entities within each bucket. A maximum of 200 histogram buckets are supported. Data types: * Histogram facet: facet names with format `a-zA-Z+`. * String: string like "any string with backslash escape for quote(\")." * Number: whole number and floating point number like 10, -1 and -0.01. * List: list of elements with comma(,) separator surrounded by square brackets, for example, [1, 2, 3] and ["one", "two", "three"]. Built-in constants: * MIN (minimum number similar to java Double.MIN_VALUE) * MAX (maximum number similar to java Double.MAX_VALUE) Built-in functions: * bucket(start, end[, label]): bucket built-in function creates a bucket with range of start, end). Note that the end is exclusive, for example, bucket(1, MAX, "positive number") or bucket(1, 10). Job histogram facets: * company_display_name: histogram by [Job.company_display_name. * employment_type: histogram by Job.employment_types, for example, "FULL_TIME", "PART_TIME". * company_size (DEPRECATED): histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day: histogram by the Job.posting_publish_time in days. Must specify list of numeric buckets in spec. * publish_time_in_month: histogram by the Job.posting_publish_time in months. Must specify list of numeric buckets in spec. * publish_time_in_year: histogram by the Job.posting_publish_time in years. Must specify list of numeric buckets in spec. * degree_types: histogram by the Job.degree_types, for example, "Bachelors", "Masters". * job_level: histogram by the Job.job_level, for example, "Entry Level". * country: histogram by the country code of jobs, for example, "US", "FR". * admin1: histogram by the admin1 code of jobs, which is a global placeholder referring to the state, province, or the particular term a country uses to define the geographic structure below the country level, for example, "CA", "IL". * city: histogram by a combination of the "city name, admin1 code". For example, "Mountain View, CA", "New York, NY". * admin1_country: histogram by a combination of the "admin1 code, country", for example, "CA, US", "IL, US". * city_coordinate: histogram by the city center's GPS coordinates (latitude and longitude), for example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, customers may need to refresh them periodically. * locale: histogram by the Job.language_code, for example, "en-US", "fr-FR". * language: histogram by the language subtag of the Job.language_code, for example, "en", "fr". * category: histogram by the JobCategory, for example, "COMPUTER_AND_IT", "HEALTHCARE". * base_compensation_unit: histogram by the CompensationInfo.CompensationUnit of base salary, for example, "WEEKLY", "MONTHLY". * base_compensation: histogram by the base salary. Must specify list of numeric buckets to group results by. * annualized_base_compensation: histogram by the base annualized salary. Must specify list of numeric buckets to group results by. * annualized_total_compensation: histogram by the total annualized salary. Must specify list of numeric buckets to group results by. * string_custom_attribute: histogram by string Job.custom_attributes. Values can be accessed via square bracket notations like string_custom_attribute["key1"]. * numeric_custom_attribute: histogram by numeric Job.custom_attributes. Values can be accessed via square bracket notations like numeric_custom_attribute["key1"]. Must specify list of numeric buckets to group results by. Example expressions: * `count(admin1)` * `count(base_compensation, [bucket(1000, 10000), bucket(10000, 100000), bucket(100000, MAX)])` * `count(string_custom_attribute["some-string-custom-attribute"])` * `count(numeric_custom_attribute["some-numeric-custom-attribute"], [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative")])` */
   histogramQueries?: ReadonlyArray<HistogramQuery>;
   /** The token specifying the current offset within search results. See SearchJobsResponse.next_page_token for an explanation of how to obtain the next set of query results. */
@@ -1273,42 +1216,100 @@ export interface SearchJobsRequest {
     | "MAX_THREE_PER_COMPANY"
     | "DIVERSIFY_BY_LOOSER_SIMILARITY"
     | (string & {});
-  /** Controls whether to broaden the search when it produces sparse results. Broadened queries append results to the end of the matching results list. Defaults to false. */
-  enableBroadening?: boolean;
-  /** This field is deprecated. Please use SearchJobsRequest.keyword_match_mode going forward. To migrate, disable_keyword_match set to false maps to KeywordMatchMode.KEYWORD_MATCH_ALL, and disable_keyword_match set to true maps to KeywordMatchMode.KEYWORD_MATCH_DISABLED. If SearchJobsRequest.keyword_match_mode is set, this field is ignored. Controls whether to disable exact keyword match on Job.title, Job.description, Job.company_display_name, Job.addresses, Job.qualifications. When disable keyword match is turned off, a keyword match returns jobs that do not match given category filters when there are matching keywords. For example, for the query "program manager," a result is returned even if the job posting has the title "software developer," which doesn't fall into "program manager" ontology, but does have "program manager" appearing in its description. For queries like "cloud" that don't contain title or location specific ontology, jobs with "cloud" keyword matches are returned regardless of this flag's value. Use Company.keyword_searchable_job_custom_attributes if company-specific globally matched custom field/attribute string values are needed. Enabling keyword match improves recall of subsequent search requests. Defaults to false. */
-  disableKeywordMatch?: boolean;
-  /** Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). */
-  customRankingInfo?: CustomRankingInfo;
   /** Required. The meta information collected about the job searcher, used to improve the search quality of the service. The identifiers (such as `user_id`) are provided by users, and must be unique and consistent. */
   requestMetadata?: RequestMetadata;
+  /** An integer that specifies the current offset (that is, starting result location, amongst the jobs deemed by the API as relevant) in search results. This field is only considered if page_token is unset. The maximum allowed value is 5000. Otherwise an error is thrown. For example, 0 means to return results starting from the first matching job, and 10 means to return from the 11th job. This can be used for pagination, (for example, pageSize = 10 and offset = 10 means to return from the second page). */
+  offset?: number;
   /** Mode of a search. Defaults to SearchMode.JOB_SEARCH. */
   searchMode?:
     | "SEARCH_MODE_UNSPECIFIED"
     | "JOB_SEARCH"
     | "FEATURED_JOB_SEARCH"
     | (string & {});
-  /** Query used to search against jobs, such as keyword, location filters, etc. */
-  jobQuery?: JobQuery;
+  /** Controls what keyword match options to use. If both keyword_match_mode and disable_keyword_match are set, keyword_match_mode will take precedence. Defaults to KeywordMatchMode.KEYWORD_MATCH_ALL if no value is specified. */
+  keywordMatchMode?:
+    | "KEYWORD_MATCH_MODE_UNSPECIFIED"
+    | "KEYWORD_MATCH_DISABLED"
+    | "KEYWORD_MATCH_ALL"
+    | "KEYWORD_MATCH_TITLE_ONLY"
+    | (string & {});
+  /** The criteria determining how search results are sorted. Default is `"relevance desc"`. Supported options are: * `"relevance desc"`: By relevance descending, as determined by the API algorithms. Relevance thresholding of query results is only available with this ordering. * `"posting_publish_time desc"`: By Job.posting_publish_time descending. * `"posting_update_time desc"`: By Job.posting_update_time descending. * `"title"`: By Job.title ascending. * `"title desc"`: By Job.title descending. * `"annualized_base_compensation"`: By job's CompensationInfo.annualized_base_compensation_range ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_base_compensation desc"`: By job's CompensationInfo.annualized_base_compensation_range descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_total_compensation"`: By job's CompensationInfo.annualized_total_compensation_range ascending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"annualized_total_compensation desc"`: By job's CompensationInfo.annualized_total_compensation_range descending. Jobs whose annualized base compensation is unspecified are put at the end of search results. * `"custom_ranking desc"`: By the relevance score adjusted to the SearchJobsRequest.CustomRankingInfo.ranking_expression with weight factor assigned by SearchJobsRequest.CustomRankingInfo.importance_level in descending order. * Location sorting: Use the special syntax to order jobs by distance: `"distance_from('Hawaii')"`: Order by distance from Hawaii. `"distance_from(19.89, 155.5)"`: Order by distance from a coordinate. `"distance_from('Hawaii'), distance_from('Puerto Rico')"`: Order by multiple locations. See details below. `"distance_from('Hawaii'), distance_from(19.89, 155.5)"`: Order by multiple locations. See details below. The string can have a maximum of 256 characters. When multiple distance centers are provided, a job that is close to any of the distance centers would have a high rank. When a job has multiple locations, the job location closest to one of the distance centers will be used. Jobs that don't have locations will be ranked at the bottom. Distance is calculated with a precision of 11.3 meters (37.4 feet). Diversification strategy is still applied unless explicitly disabled in diversification_level. */
+  orderBy?: string;
+  /** Optional. The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of precision and recall to deliver both highly accurate results and comprehensive coverage of relevant information. */
+  relevanceThreshold?:
+    | "RELEVANCE_THRESHOLD_UNSPECIFIED"
+    | "LOWEST"
+    | "LOW"
+    | "MEDIUM"
+    | "HIGH"
+    | (string & {});
+  /** Controls whether to broaden the search when it produces sparse results. Broadened queries append results to the end of the matching results list. Defaults to false. */
+  enableBroadening?: boolean;
+  /** A limit on the number of jobs returned in the search results. Increasing this value above the default value of 10 can increase search response time. The value can be between 1 and 100. */
+  maxPageSize?: number;
+  /** Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). */
+  customRankingInfo?: CustomRankingInfo;
+  /** This field is deprecated. Please use SearchJobsRequest.keyword_match_mode going forward. To migrate, disable_keyword_match set to false maps to KeywordMatchMode.KEYWORD_MATCH_ALL, and disable_keyword_match set to true maps to KeywordMatchMode.KEYWORD_MATCH_DISABLED. If SearchJobsRequest.keyword_match_mode is set, this field is ignored. Controls whether to disable exact keyword match on Job.title, Job.description, Job.company_display_name, Job.addresses, Job.qualifications. When disable keyword match is turned off, a keyword match returns jobs that do not match given category filters when there are matching keywords. For example, for the query "program manager," a result is returned even if the job posting has the title "software developer," which doesn't fall into "program manager" ontology, but does have "program manager" appearing in its description. For queries like "cloud" that don't contain title or location specific ontology, jobs with "cloud" keyword matches are returned regardless of this flag's value. Use Company.keyword_searchable_job_custom_attributes if company-specific globally matched custom field/attribute string values are needed. Enabling keyword match improves recall of subsequent search requests. Defaults to false. */
+  disableKeywordMatch?: boolean;
 }
 
-export const SearchJobsRequest: Schema.Schema<SearchJobsRequest> =
+export const SearchJobsRequest: Schema.Codec<SearchJobsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    orderBy: Schema.optional(Schema.String),
-    keywordMatchMode: Schema.optional(Schema.String),
+    jobQuery: Schema.optional(JobQuery),
     jobView: Schema.optional(Schema.String),
-    offset: Schema.optional(Schema.Number),
-    relevanceThreshold: Schema.optional(Schema.String),
-    maxPageSize: Schema.optional(Schema.Number),
     histogramQueries: Schema.optional(Schema.Array(HistogramQuery)),
     pageToken: Schema.optional(Schema.String),
     diversificationLevel: Schema.optional(Schema.String),
-    enableBroadening: Schema.optional(Schema.Boolean),
-    disableKeywordMatch: Schema.optional(Schema.Boolean),
-    customRankingInfo: Schema.optional(CustomRankingInfo),
     requestMetadata: Schema.optional(RequestMetadata),
+    offset: Schema.optional(Schema.Number),
     searchMode: Schema.optional(Schema.String),
-    jobQuery: Schema.optional(JobQuery),
+    keywordMatchMode: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+    relevanceThreshold: Schema.optional(Schema.String),
+    enableBroadening: Schema.optional(Schema.Boolean),
+    maxPageSize: Schema.optional(Schema.Number),
+    customRankingInfo: Schema.optional(CustomRankingInfo),
+    disableKeywordMatch: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SearchJobsRequest" });
+
+export interface BatchUpdateJobsResponse {
+  /** List of job mutation results from a batch update operation. It can change until operation status is FINISHED, FAILED or CANCELLED. */
+  jobResults?: ReadonlyArray<JobResult>;
+}
+
+export const BatchUpdateJobsResponse: Schema.Codec<BatchUpdateJobsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobResults: Schema.optional(Schema.Array(JobResult)),
+  }).annotate({ identifier: "BatchUpdateJobsResponse" });
+
+export interface ListCompaniesResponse {
+  /** Companies for the current client. */
+  companies?: ReadonlyArray<Company>;
+  /** A token to retrieve the next page of results. */
+  nextPageToken?: string;
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+}
+
+export const ListCompaniesResponse: Schema.Codec<ListCompaniesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    companies: Schema.optional(Schema.Array(Company)),
+    nextPageToken: Schema.optional(Schema.String),
+    metadata: Schema.optional(ResponseMetadata),
+  }).annotate({ identifier: "ListCompaniesResponse" });
+
+export interface CompleteQueryResponse {
+  /** Results of the matching job/company candidates. */
+  completionResults?: ReadonlyArray<CompletionResult>;
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+}
+
+export const CompleteQueryResponse: Schema.Codec<CompleteQueryResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completionResults: Schema.optional(Schema.Array(CompletionResult)),
+    metadata: Schema.optional(ResponseMetadata),
+  }).annotate({ identifier: "CompleteQueryResponse" });
 
 // ==========================================================================
 // Errors
@@ -1364,78 +1365,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface GetProjectsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v4/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
-
-export type GetProjectsOperationsResponse = Operation;
-export const GetProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsOperations: API.OperationMethod<
-  GetProjectsOperationsRequest,
-  GetProjectsOperationsResponse,
-  GetProjectsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsOperationsRequest,
-  output: GetProjectsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface PatchProjectsTenantsRequest {
-  /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  name: string;
-  /** Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in tenant are updated. Otherwise all the fields are updated. A field mask to specify the tenant fields to be updated. Only top level fields of Tenant are supported. */
-  updateMask?: string;
-  /** Request body */
-  body?: Tenant;
-}
-
-export const PatchProjectsTenantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Tenant).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsRequest>;
-
-export type PatchProjectsTenantsResponse = Tenant;
-export const PatchProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
-
-export type PatchProjectsTenantsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates specified tenant. */
-export const patchProjectsTenants: API.OperationMethod<
-  PatchProjectsTenantsRequest,
-  PatchProjectsTenantsResponse,
-  PatchProjectsTenantsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsTenantsRequest,
-  output: PatchProjectsTenantsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetProjectsTenantsRequest {
   /** Required. The resource name of the tenant to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   name: string;
@@ -1447,7 +1376,7 @@ export const GetProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsRequest>;
 
 export type GetProjectsTenantsResponse = Tenant;
 export const GetProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
@@ -1466,39 +1395,63 @@ export const getProjectsTenants: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsTenantsRequest {
-  /** Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  name: string;
+export interface CompleteQueryProjectsTenantsRequest {
+  /** Required. The query used to generate suggestions. The maximum number of allowed characters is 255. */
+  query?: string;
+  /** The completion topic. The default is CompletionType.COMBINED. */
+  type?:
+    | "COMPLETION_TYPE_UNSPECIFIED"
+    | "JOB_TITLE"
+    | "COMPANY_NAME"
+    | "COMBINED"
+    | (string & {});
+  /** Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  tenant: string;
+  /** The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. */
+  languageCodes?: string[];
+  /** If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
+  company?: string;
+  /** The scope of the completion. The defaults is CompletionScope.PUBLIC. */
+  scope?: "COMPLETION_SCOPE_UNSPECIFIED" | "TENANT" | "PUBLIC" | (string & {});
+  /** Required. Completion result count. The maximum allowed page size is 10. */
+  pageSize?: number;
 }
 
-export const DeleteProjectsTenantsRequest =
+export const CompleteQueryProjectsTenantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
+    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+    tenant: Schema.String.pipe(T.HttpPath("tenant")),
+    languageCodes: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("languageCodes"),
+    ),
+    company: Schema.optional(Schema.String).pipe(T.HttpQuery("company")),
+    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v4/{+name}" }),
+    T.Http({ method: "GET", path: "v4/{+tenant}:completeQuery" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<CompleteQueryProjectsTenantsRequest>;
 
-export type DeleteProjectsTenantsResponse = Empty;
-export const DeleteProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export type CompleteQueryProjectsTenantsResponse = CompleteQueryResponse;
+export const CompleteQueryProjectsTenantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ CompleteQueryResponse;
 
-export type DeleteProjectsTenantsError =
+export type CompleteQueryProjectsTenantsError =
   | DefaultErrors
   | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  | Forbidden;
 
-/** Deletes specified tenant. */
-export const deleteProjectsTenants: API.OperationMethod<
-  DeleteProjectsTenantsRequest,
-  DeleteProjectsTenantsResponse,
-  DeleteProjectsTenantsError,
+/** Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box. */
+export const completeQueryProjectsTenants: API.OperationMethod<
+  CompleteQueryProjectsTenantsRequest,
+  CompleteQueryProjectsTenantsResponse,
+  CompleteQueryProjectsTenantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTenantsRequest,
-  output: DeleteProjectsTenantsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: CompleteQueryProjectsTenantsRequest,
+  output: CompleteQueryProjectsTenantsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsTenantsRequest {
@@ -1515,7 +1468,7 @@ export const CreateProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/tenants", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsRequest>;
 
 export type CreateProjectsTenantsResponse = Tenant;
 export const CreateProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
@@ -1539,63 +1492,80 @@ export const createProjectsTenants: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CompleteQueryProjectsTenantsRequest {
-  /** Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  tenant: string;
-  /** If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
-  company?: string;
-  /** Required. Completion result count. The maximum allowed page size is 10. */
-  pageSize?: number;
-  /** Required. The query used to generate suggestions. The maximum number of allowed characters is 255. */
-  query?: string;
-  /** The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. */
-  languageCodes?: string[];
-  /** The scope of the completion. The defaults is CompletionScope.PUBLIC. */
-  scope?: "COMPLETION_SCOPE_UNSPECIFIED" | "TENANT" | "PUBLIC" | (string & {});
-  /** The completion topic. The default is CompletionType.COMBINED. */
-  type?:
-    | "COMPLETION_TYPE_UNSPECIFIED"
-    | "JOB_TITLE"
-    | "COMPANY_NAME"
-    | "COMBINED"
-    | (string & {});
+export interface PatchProjectsTenantsRequest {
+  /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  name: string;
+  /** Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in tenant are updated. Otherwise all the fields are updated. A field mask to specify the tenant fields to be updated. Only top level fields of Tenant are supported. */
+  updateMask?: string;
+  /** Request body */
+  body?: Tenant;
 }
 
-export const CompleteQueryProjectsTenantsRequest =
+export const PatchProjectsTenantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    tenant: Schema.String.pipe(T.HttpPath("tenant")),
-    company: Schema.optional(Schema.String).pipe(T.HttpQuery("company")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
-    languageCodes: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("languageCodes"),
-    ),
-    scope: Schema.optional(Schema.String).pipe(T.HttpQuery("scope")),
-    type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(Tenant).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v4/{+tenant}:completeQuery" }),
+    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CompleteQueryProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTenantsRequest>;
 
-export type CompleteQueryProjectsTenantsResponse = CompleteQueryResponse;
-export const CompleteQueryProjectsTenantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CompleteQueryResponse;
+export type PatchProjectsTenantsResponse = Tenant;
+export const PatchProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
 
-export type CompleteQueryProjectsTenantsError =
+export type PatchProjectsTenantsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box. */
-export const completeQueryProjectsTenants: API.OperationMethod<
-  CompleteQueryProjectsTenantsRequest,
-  CompleteQueryProjectsTenantsResponse,
-  CompleteQueryProjectsTenantsError,
+/** Updates specified tenant. */
+export const patchProjectsTenants: API.OperationMethod<
+  PatchProjectsTenantsRequest,
+  PatchProjectsTenantsResponse,
+  PatchProjectsTenantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CompleteQueryProjectsTenantsRequest,
-  output: CompleteQueryProjectsTenantsResponse,
-  errors: [NotFound, Forbidden],
+  input: PatchProjectsTenantsRequest,
+  output: PatchProjectsTenantsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsTenantsRequest {
+  /** Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  name: string;
+}
+
+export const DeleteProjectsTenantsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v4/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsRequest>;
+
+export type DeleteProjectsTenantsResponse = Empty;
+export const DeleteProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes specified tenant. */
+export const deleteProjectsTenants: API.OperationMethod<
+  DeleteProjectsTenantsRequest,
+  DeleteProjectsTenantsResponse,
+  DeleteProjectsTenantsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsTenantsRequest,
+  output: DeleteProjectsTenantsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsRequest {
@@ -1615,7 +1585,7 @@ export const ListProjectsTenantsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+parent}/tenants" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTenantsRequest>;
 
 export type ListProjectsTenantsResponse = ListTenantsResponse;
 export const ListProjectsTenantsResponse =
@@ -1639,94 +1609,6 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
   },
 }));
 
-export interface ListProjectsTenantsCompaniesRequest {
-  /** Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. */
-  requireOpenJobs?: boolean;
-  /** The starting indicator from which to return results. */
-  pageToken?: string;
-  /** The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. */
-  pageSize?: number;
-}
-
-export const ListProjectsTenantsCompaniesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    requireOpenJobs: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("requireOpenJobs"),
-    ),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v4/{+parent}/companies" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsCompaniesRequest>;
-
-export type ListProjectsTenantsCompaniesResponse = ListCompaniesResponse;
-export const ListProjectsTenantsCompaniesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListCompaniesResponse;
-
-export type ListProjectsTenantsCompaniesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists all companies associated with the project. */
-export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
-  ListProjectsTenantsCompaniesRequest,
-  ListProjectsTenantsCompaniesResponse,
-  ListProjectsTenantsCompaniesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTenantsCompaniesRequest,
-  output: ListProjectsTenantsCompaniesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateProjectsTenantsCompaniesRequest {
-  /** Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Request body */
-  body?: Company;
-}
-
-export const CreateProjectsTenantsCompaniesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(Company).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v4/{+parent}/companies", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsCompaniesRequest>;
-
-export type CreateProjectsTenantsCompaniesResponse = Company;
-export const CreateProjectsTenantsCompaniesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Company;
-
-export type CreateProjectsTenantsCompaniesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new company entity. */
-export const createProjectsTenantsCompanies: API.OperationMethod<
-  CreateProjectsTenantsCompaniesRequest,
-  CreateProjectsTenantsCompaniesResponse,
-  CreateProjectsTenantsCompaniesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsTenantsCompaniesRequest,
-  output: CreateProjectsTenantsCompaniesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetProjectsTenantsCompaniesRequest {
   /** Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/api-test-project/tenants/foo/companies/bar". */
   name: string;
@@ -1738,7 +1620,7 @@ export const GetProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsCompaniesRequest>;
 
 export type GetProjectsTenantsCompaniesResponse = Company;
 export const GetProjectsTenantsCompaniesResponse =
@@ -1772,7 +1654,7 @@ export const DeleteProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsCompaniesRequest>;
 
 export type DeleteProjectsTenantsCompaniesResponse = Empty;
 export const DeleteProjectsTenantsCompaniesResponse =
@@ -1797,6 +1679,55 @@ export const deleteProjectsTenantsCompanies: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface ListProjectsTenantsCompaniesRequest {
+  /** The starting indicator from which to return results. */
+  pageToken?: string;
+  /** Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. */
+  requireOpenJobs?: boolean;
+  /** Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  parent: string;
+  /** The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. */
+  pageSize?: number;
+}
+
+export const ListProjectsTenantsCompaniesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    requireOpenJobs: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("requireOpenJobs"),
+    ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v4/{+parent}/companies" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsTenantsCompaniesRequest>;
+
+export type ListProjectsTenantsCompaniesResponse = ListCompaniesResponse;
+export const ListProjectsTenantsCompaniesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListCompaniesResponse;
+
+export type ListProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists all companies associated with the project. */
+export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
+  ListProjectsTenantsCompaniesRequest,
+  ListProjectsTenantsCompaniesResponse,
+  ListProjectsTenantsCompaniesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsTenantsCompaniesRequest,
+  output: ListProjectsTenantsCompaniesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
 export interface PatchProjectsTenantsCompaniesRequest {
   /** Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
   name: string;
@@ -1814,7 +1745,7 @@ export const PatchProjectsTenantsCompaniesRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsCompaniesRequest>;
+  ) as unknown as Schema.Codec<PatchProjectsTenantsCompaniesRequest>;
 
 export type PatchProjectsTenantsCompaniesResponse = Company;
 export const PatchProjectsTenantsCompaniesResponse =
@@ -1839,6 +1770,45 @@ export const patchProjectsTenantsCompanies: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateProjectsTenantsCompaniesRequest {
+  /** Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  parent: string;
+  /** Request body */
+  body?: Company;
+}
+
+export const CreateProjectsTenantsCompaniesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Company).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v4/{+parent}/companies", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateProjectsTenantsCompaniesRequest>;
+
+export type CreateProjectsTenantsCompaniesResponse = Company;
+export const CreateProjectsTenantsCompaniesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Company;
+
+export type CreateProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new company entity. */
+export const createProjectsTenantsCompanies: API.OperationMethod<
+  CreateProjectsTenantsCompaniesRequest,
+  CreateProjectsTenantsCompaniesResponse,
+  CreateProjectsTenantsCompaniesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsTenantsCompaniesRequest,
+  output: CreateProjectsTenantsCompaniesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface CreateProjectsTenantsClientEventsRequest {
   /** Required. Resource name of the tenant under which the event is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   parent: string;
@@ -1857,7 +1827,7 @@ export const CreateProjectsTenantsClientEventsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsClientEventsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsClientEventsRequest>;
 
 export type CreateProjectsTenantsClientEventsResponse = ClientEvent;
 export const CreateProjectsTenantsClientEventsResponse =
@@ -1882,46 +1852,126 @@ export const createProjectsTenantsClientEvents: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchCreateProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
+export interface SearchProjectsTenantsJobsRequest {
+  /** Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
-  body?: BatchCreateJobsRequest;
+  body?: SearchJobsRequest;
 }
 
-export const BatchCreateProjectsTenantsJobsRequest =
+export const SearchProjectsTenantsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchCreateJobsRequest).pipe(T.HttpBody()),
+    body: Schema.optional(SearchJobsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v4/{+parent}/jobs:batchCreate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v4/{+parent}/jobs:search", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BatchCreateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<SearchProjectsTenantsJobsRequest>;
 
-export type BatchCreateProjectsTenantsJobsResponse = Operation;
-export const BatchCreateProjectsTenantsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type SearchProjectsTenantsJobsResponse = SearchJobsResponse;
+export const SearchProjectsTenantsJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SearchJobsResponse;
 
-export type BatchCreateProjectsTenantsJobsError =
+export type SearchProjectsTenantsJobsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Begins executing a batch create jobs operation. */
-export const batchCreateProjectsTenantsJobs: API.OperationMethod<
-  BatchCreateProjectsTenantsJobsRequest,
-  BatchCreateProjectsTenantsJobsResponse,
-  BatchCreateProjectsTenantsJobsError,
+/** Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against. */
+export const searchProjectsTenantsJobs: API.OperationMethod<
+  SearchProjectsTenantsJobsRequest,
+  SearchProjectsTenantsJobsResponse,
+  SearchProjectsTenantsJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsTenantsJobsRequest,
-  output: BatchCreateProjectsTenantsJobsResponse,
+  input: SearchProjectsTenantsJobsRequest,
+  output: SearchProjectsTenantsJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsTenantsJobsRequest {
+  /** Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. */
+  updateMask?: string;
+  /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
+  name: string;
+  /** Request body */
+  body?: Job;
+}
+
+export const PatchProjectsTenantsJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(Job).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsTenantsJobsRequest>;
+
+export type PatchProjectsTenantsJobsResponse = Job;
+export const PatchProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+
+export type PatchProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes. */
+export const patchProjectsTenantsJobs: API.OperationMethod<
+  PatchProjectsTenantsJobsRequest,
+  PatchProjectsTenantsJobsResponse,
+  PatchProjectsTenantsJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsTenantsJobsRequest,
+  output: PatchProjectsTenantsJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchUpdateProjectsTenantsJobsRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
+  parent: string;
+  /** Request body */
+  body?: BatchUpdateJobsRequest;
+}
+
+export const BatchUpdateProjectsTenantsJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchUpdateJobsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v4/{+parent}/jobs:batchUpdate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<BatchUpdateProjectsTenantsJobsRequest>;
+
+export type BatchUpdateProjectsTenantsJobsResponse = Operation;
+export const BatchUpdateProjectsTenantsJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type BatchUpdateProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Begins executing a batch update jobs operation. */
+export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
+  BatchUpdateProjectsTenantsJobsRequest,
+  BatchUpdateProjectsTenantsJobsResponse,
+  BatchUpdateProjectsTenantsJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchUpdateProjectsTenantsJobsRequest,
+  output: BatchUpdateProjectsTenantsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -1939,7 +1989,7 @@ export const CreateProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v4/{+parent}/jobs", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsTenantsJobsRequest>;
 
 export type CreateProjectsTenantsJobsResponse = Job;
 export const CreateProjectsTenantsJobsResponse =
@@ -1964,86 +2014,15 @@ export const createProjectsTenantsJobs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchDeleteProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeleteJobsRequest;
-}
-
-export const BatchDeleteProjectsTenantsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchDeleteJobsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v4/{+parent}/jobs:batchDelete",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<BatchDeleteProjectsTenantsJobsRequest>;
-
-export type BatchDeleteProjectsTenantsJobsResponse = Operation;
-export const BatchDeleteProjectsTenantsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type BatchDeleteProjectsTenantsJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Begins executing a batch delete jobs operation. */
-export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
-  BatchDeleteProjectsTenantsJobsRequest,
-  BatchDeleteProjectsTenantsJobsResponse,
-  BatchDeleteProjectsTenantsJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsTenantsJobsRequest,
-  output: BatchDeleteProjectsTenantsJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsTenantsJobsRequest {
-  /** Required. The resource name of the job to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". */
-  name: string;
-}
-
-export const DeleteProjectsTenantsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v4/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsTenantsJobsRequest>;
-
-export type DeleteProjectsTenantsJobsResponse = Empty;
-export const DeleteProjectsTenantsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsTenantsJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes. */
-export const deleteProjectsTenantsJobs: API.OperationMethod<
-  DeleteProjectsTenantsJobsRequest,
-  DeleteProjectsTenantsJobsResponse,
-  DeleteProjectsTenantsJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTenantsJobsRequest,
-  output: DeleteProjectsTenantsJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface ListProjectsTenantsJobsRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
+  parent: string;
+  /** Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" * companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" */
+  filter?: string;
+  /** The starting point of a query result. */
+  pageToken?: string;
+  /** The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. */
+  pageSize?: number;
   /** The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. */
   jobView?:
     | "JOB_VIEW_UNSPECIFIED"
@@ -2052,27 +2031,19 @@ export interface ListProjectsTenantsJobsRequest {
     | "JOB_VIEW_SMALL"
     | "JOB_VIEW_FULL"
     | (string & {});
-  /** The starting point of a query result. */
-  pageToken?: string;
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" * companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" */
-  filter?: string;
-  /** The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. */
-  pageSize?: number;
 }
 
 export const ListProjectsTenantsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    jobView: Schema.optional(Schema.String).pipe(T.HttpQuery("jobView")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    jobView: Schema.optional(Schema.String).pipe(T.HttpQuery("jobView")),
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+parent}/jobs" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsTenantsJobsRequest>;
 
 export type ListProjectsTenantsJobsResponse = ListJobsResponse;
 export const ListProjectsTenantsJobsResponse =
@@ -2107,7 +2078,7 @@ export const GetProjectsTenantsJobsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsTenantsJobsRequest>;
 
 export type GetProjectsTenantsJobsResponse = Job;
 export const GetProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
@@ -2126,44 +2097,125 @@ export const getProjectsTenantsJobs: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface PatchProjectsTenantsJobsRequest {
-  /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
-  name: string;
-  /** Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. */
-  updateMask?: string;
+export interface BatchCreateProjectsTenantsJobsRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
+  parent: string;
   /** Request body */
-  body?: Job;
+  body?: BatchCreateJobsRequest;
 }
 
-export const PatchProjectsTenantsJobsRequest =
+export const BatchCreateProjectsTenantsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Job).pipe(T.HttpBody()),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchCreateJobsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v4/{+name}", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v4/{+parent}/jobs:batchCreate",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<PatchProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<BatchCreateProjectsTenantsJobsRequest>;
 
-export type PatchProjectsTenantsJobsResponse = Job;
-export const PatchProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export type BatchCreateProjectsTenantsJobsResponse = Operation;
+export const BatchCreateProjectsTenantsJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsTenantsJobsError =
+export type BatchCreateProjectsTenantsJobsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes. */
-export const patchProjectsTenantsJobs: API.OperationMethod<
-  PatchProjectsTenantsJobsRequest,
-  PatchProjectsTenantsJobsResponse,
-  PatchProjectsTenantsJobsError,
+/** Begins executing a batch create jobs operation. */
+export const batchCreateProjectsTenantsJobs: API.OperationMethod<
+  BatchCreateProjectsTenantsJobsRequest,
+  BatchCreateProjectsTenantsJobsResponse,
+  BatchCreateProjectsTenantsJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsTenantsJobsRequest,
-  output: PatchProjectsTenantsJobsResponse,
+  input: BatchCreateProjectsTenantsJobsRequest,
+  output: BatchCreateProjectsTenantsJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsTenantsJobsRequest {
+  /** Required. The resource name of the job to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". */
+  name: string;
+}
+
+export const DeleteProjectsTenantsJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v4/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsTenantsJobsRequest>;
+
+export type DeleteProjectsTenantsJobsResponse = Empty;
+export const DeleteProjectsTenantsJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes. */
+export const deleteProjectsTenantsJobs: API.OperationMethod<
+  DeleteProjectsTenantsJobsRequest,
+  DeleteProjectsTenantsJobsResponse,
+  DeleteProjectsTenantsJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsTenantsJobsRequest,
+  output: DeleteProjectsTenantsJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface BatchDeleteProjectsTenantsJobsRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeleteJobsRequest;
+}
+
+export const BatchDeleteProjectsTenantsJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(BatchDeleteJobsRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v4/{+parent}/jobs:batchDelete",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<BatchDeleteProjectsTenantsJobsRequest>;
+
+export type BatchDeleteProjectsTenantsJobsResponse = Operation;
+export const BatchDeleteProjectsTenantsJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type BatchDeleteProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Begins executing a batch delete jobs operation. */
+export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
+  BatchDeleteProjectsTenantsJobsRequest,
+  BatchDeleteProjectsTenantsJobsResponse,
+  BatchDeleteProjectsTenantsJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteProjectsTenantsJobsRequest,
+  output: BatchDeleteProjectsTenantsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2185,7 +2237,7 @@ export const SearchForAlertProjectsTenantsJobsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SearchForAlertProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<SearchForAlertProjectsTenantsJobsRequest>;
 
 export type SearchForAlertProjectsTenantsJobsResponse = SearchJobsResponse;
 export const SearchForAlertProjectsTenantsJobsResponse =
@@ -2210,84 +2262,33 @@ export const searchForAlertProjectsTenantsJobs: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface BatchUpdateProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Request body */
-  body?: BatchUpdateJobsRequest;
+export interface GetProjectsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
 }
 
-export const BatchUpdateProjectsTenantsJobsRequest =
+export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(BatchUpdateJobsRequest).pipe(T.HttpBody()),
+    name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v4/{+parent}/jobs:batchUpdate",
-      hasBody: true,
-    }),
+    T.Http({ method: "GET", path: "v4/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<BatchUpdateProjectsTenantsJobsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsOperationsRequest>;
 
-export type BatchUpdateProjectsTenantsJobsResponse = Operation;
-export const BatchUpdateProjectsTenantsJobsResponse =
+export type GetProjectsOperationsResponse = Operation;
+export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchUpdateProjectsTenantsJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
-/** Begins executing a batch update jobs operation. */
-export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
-  BatchUpdateProjectsTenantsJobsRequest,
-  BatchUpdateProjectsTenantsJobsResponse,
-  BatchUpdateProjectsTenantsJobsError,
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsOperations: API.OperationMethod<
+  GetProjectsOperationsRequest,
+  GetProjectsOperationsResponse,
+  GetProjectsOperationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsTenantsJobsRequest,
-  output: BatchUpdateProjectsTenantsJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SearchProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Request body */
-  body?: SearchJobsRequest;
-}
-
-export const SearchProjectsTenantsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SearchJobsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v4/{+parent}/jobs:search", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<SearchProjectsTenantsJobsRequest>;
-
-export type SearchProjectsTenantsJobsResponse = SearchJobsResponse;
-export const SearchProjectsTenantsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchJobsResponse;
-
-export type SearchProjectsTenantsJobsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against. */
-export const searchProjectsTenantsJobs: API.OperationMethod<
-  SearchProjectsTenantsJobsRequest,
-  SearchProjectsTenantsJobsResponse,
-  SearchProjectsTenantsJobsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SearchProjectsTenantsJobsRequest,
-  output: SearchProjectsTenantsJobsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+  input: GetProjectsOperationsRequest,
+  output: GetProjectsOperationsResponse,
+  errors: [NotFound, Forbidden],
 }));

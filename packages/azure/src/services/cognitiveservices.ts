@@ -4,11 +4,21 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AccountCapabilityHostsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  capabilityHostName: string;
+  properties: {
+    description?: string | null;
+    tags?: Record<string, string> | null;
+  };
+}
 export const AccountCapabilityHostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -25,13 +35,24 @@ export const AccountCapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountCapabilityHostsCreateOrUpdateInput =
-  typeof AccountCapabilityHostsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccountCapabilityHostsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AccountCapabilityHostsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountCapabilityHostsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -51,9 +72,7 @@ export const AccountCapabilityHostsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountCapabilityHostsCreateOrUpdateOutput =
-  typeof AccountCapabilityHostsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccountCapabilityHostsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -71,6 +90,12 @@ export const AccountCapabilityHostsCreateOrUpdate =
     outputSchema: AccountCapabilityHostsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AccountCapabilityHostsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  capabilityHostName: string;
+}
 export const AccountCapabilityHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -81,17 +106,14 @@ export const AccountCapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountCapabilityHostsDeleteInput =
-  typeof AccountCapabilityHostsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AccountCapabilityHostsDeleteInput>;
 
 // Output Schema
+export type AccountCapabilityHostsDeleteOutput = void;
 export const AccountCapabilityHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountCapabilityHostsDeleteOutput =
-  typeof AccountCapabilityHostsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountCapabilityHostsDeleteOutput>;
 
 // The operation
 /**
@@ -109,6 +131,12 @@ export const AccountCapabilityHostsDelete =
     outputSchema: AccountCapabilityHostsDeleteOutput,
   }));
 // Input Schema
+export interface AccountCapabilityHostsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  capabilityHostName: string;
+}
 export const AccountCapabilityHostsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -119,13 +147,24 @@ export const AccountCapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountCapabilityHostsGetInput =
-  typeof AccountCapabilityHostsGetInput.Type;
+  ) as unknown as Schema.Codec<AccountCapabilityHostsGetInput>;
 
 // Output Schema
+export interface AccountCapabilityHostsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountCapabilityHostsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -145,9 +184,7 @@ export const AccountCapabilityHostsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountCapabilityHostsGetOutput =
-  typeof AccountCapabilityHostsGetOutput.Type;
+  }) as unknown as Schema.Codec<AccountCapabilityHostsGetOutput>;
 
 // The operation
 /**
@@ -166,6 +203,11 @@ export const AccountCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountCapabilityHostsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountCapabilityHostsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -175,13 +217,27 @@ export const AccountCapabilityHostsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountCapabilityHostsListInput =
-  typeof AccountCapabilityHostsListInput.Type;
+  ) as unknown as Schema.Codec<AccountCapabilityHostsListInput>;
 
 // Output Schema
+export interface AccountCapabilityHostsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AccountCapabilityHostsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -218,9 +274,7 @@ export const AccountCapabilityHostsListOutput =
         }),
       ),
     ),
-  });
-export type AccountCapabilityHostsListOutput =
-  typeof AccountCapabilityHostsListOutput.Type;
+  }) as unknown as Schema.Codec<AccountCapabilityHostsListOutput>;
 
 // The operation
 /**
@@ -238,6 +292,173 @@ export const AccountCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectionName: string;
+  properties: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const AccountConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -420,13 +641,24 @@ export const AccountConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountConnectionsCreateInput =
-  typeof AccountConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<AccountConnectionsCreateInput>;
 
 // Output Schema
+export interface AccountConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -446,9 +678,7 @@ export const AccountConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountConnectionsCreateOutput =
-  typeof AccountConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AccountConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -467,6 +697,12 @@ export const AccountConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectionName: string;
+}
 export const AccountConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -477,17 +713,14 @@ export const AccountConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountConnectionsDeleteInput =
-  typeof AccountConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AccountConnectionsDeleteInput>;
 
 // Output Schema
+export type AccountConnectionsDeleteOutput = void;
 export const AccountConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountConnectionsDeleteOutput =
-  typeof AccountConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -506,6 +739,12 @@ export const AccountConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectionName: string;
+}
 export const AccountConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -516,12 +755,24 @@ export const AccountConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountConnectionsGetInput = typeof AccountConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<AccountConnectionsGetInput>;
 
 // Output Schema
+export interface AccountConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -541,9 +792,7 @@ export const AccountConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountConnectionsGetOutput =
-  typeof AccountConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<AccountConnectionsGetOutput>;
 
 // The operation
 /**
@@ -562,6 +811,14 @@ export const AccountConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  target?: string;
+  category?: string;
+  includeAll?: boolean;
+}
 export const AccountConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -574,13 +831,27 @@ export const AccountConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountConnectionsListInput =
-  typeof AccountConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<AccountConnectionsListInput>;
 
 // Output Schema
+export interface AccountConnectionsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AccountConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -617,9 +888,7 @@ export const AccountConnectionsListOutput =
         }),
       ),
     ),
-  });
-export type AccountConnectionsListOutput =
-  typeof AccountConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<AccountConnectionsListOutput>;
 
 // The operation
 /**
@@ -640,6 +909,173 @@ export const AccountConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  connectionName: string;
+  properties?: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const AccountConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -824,13 +1260,24 @@ export const AccountConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountConnectionsUpdateInput =
-  typeof AccountConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AccountConnectionsUpdateInput>;
 
 // Output Schema
+export interface AccountConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -850,9 +1297,7 @@ export const AccountConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AccountConnectionsUpdateOutput =
-  typeof AccountConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AccountConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -871,6 +1316,163 @@ export const AccountConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled"
+      | "ResolvingDNS";
+    endpoint?: string;
+    internalId?: string;
+    capabilities?: { name?: string; value?: string }[];
+    isMigrated?: boolean;
+    migrationToken?: string;
+    skuChangeInfo?: {
+      countOfDowngrades?: number;
+      countOfUpgradesAfterDowngrades?: number;
+      lastChangeDate?: string;
+    };
+    customSubDomainName?: string;
+    networkAcls?: {
+      defaultAction?: "Allow" | "Deny";
+      bypass?: "None" | "AzureServices";
+      ipRules?: { value: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        state?: string;
+        ignoreMissingVnetServiceEndpoint?: boolean;
+      }[];
+    };
+    encryption?: {
+      keyVaultProperties?: {
+        keyName?: string;
+        keyVersion?: string;
+        keyVaultUri?: string;
+        identityClientId?: string;
+      };
+      keySource?: "Microsoft.CognitiveServices" | "Microsoft.KeyVault";
+    };
+    userOwnedStorage?: { resourceId?: string; identityClientId?: string }[];
+    amlWorkspace?: { resourceId?: string; identityClientId?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    apiProperties?: {
+      qnaRuntimeEndpoint?: string;
+      qnaAzureSearchEndpointKey?: string;
+      qnaAzureSearchEndpointId?: string;
+      statisticsEnabled?: boolean;
+      eventHubConnectionString?: string;
+      storageAccountConnectionString?: string;
+      aadClientId?: string;
+      aadTenantId?: string;
+      superUser?: string;
+      websiteName?: string;
+    };
+    dateCreated?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+    dynamicThrottlingEnabled?: boolean;
+    storedCompletionsDisabled?: boolean;
+    quotaLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+    restrictOutboundNetworkAccess?: boolean;
+    allowedFqdnList?: string[];
+    disableLocalAuth?: boolean;
+    endpoints?: Record<string, string>;
+    restore?: boolean;
+    deletionDate?: string;
+    scheduledPurgeDate?: string;
+    locations?: {
+      routingMethod?: "Priority" | "Weighted" | "Performance";
+      regions?: { name?: string; value?: number; customsubdomain?: string }[];
+    };
+    commitmentPlanAssociations?: {
+      commitmentPlanId?: string;
+      commitmentPlanLocation?: string;
+    }[];
+    abusePenalty?: {
+      action?: "Throttle" | "Block";
+      rateLimitPercentage?: number;
+      expiration?: string;
+    };
+    raiMonitorConfig?: {
+      adxStorageResourceId?: string;
+      identityClientId?: string;
+    };
+    networkInjections?: {
+      scenario?: "none" | "agent";
+      subnetArmId?: string;
+      useMicrosoftManagedNetwork?: boolean;
+    }[];
+    allowProjectManagement?: boolean;
+    defaultProject?: string;
+    associatedProjects?: string[];
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    tenantId?: string;
+    principalId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1164,33 +1766,28 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsCreateInput = typeof AccountsCreateInput.Type;
+) as unknown as Schema.Codec<AccountsCreateInput>;
 
 // Output Schema
+export interface AccountsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1209,8 +1806,7 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AccountsCreateOutput = typeof AccountsCreateOutput.Type;
+}) as unknown as Schema.Codec<AccountsCreateOutput>;
 
 // The operation
 /**
@@ -1226,6 +1822,11 @@ export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsCreateOutput,
 }));
 // Input Schema
+export interface AccountsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1234,14 +1835,14 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
+) as unknown as Schema.Codec<AccountsDeleteInput>;
 
 // Output Schema
-export const AccountsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AccountsDeleteOutput = typeof AccountsDeleteOutput.Type;
+export type AccountsDeleteOutput = void;
+export const AccountsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -1257,6 +1858,11 @@ export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsDeleteOutput,
 }));
 // Input Schema
+export interface AccountsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1265,12 +1871,24 @@ export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsGetInput = typeof AccountsGetInput.Type;
+) as unknown as Schema.Codec<AccountsGetInput>;
 
 // Output Schema
+export interface AccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -1289,8 +1907,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AccountsGetOutput = typeof AccountsGetOutput.Type;
+}) as unknown as Schema.Codec<AccountsGetOutput>;
 
 // The operation
 /**
@@ -1306,18 +1923,36 @@ export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsGetOutput,
 }));
 // Input Schema
+export interface AccountsListInput {
+  subscriptionId: string;
+}
 export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsListInput = typeof AccountsListInput.Type;
+) as unknown as Schema.Codec<AccountsListInput>;
 
 // Output Schema
+export interface AccountsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -1353,8 +1988,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type AccountsListOutput = typeof AccountsListOutput.Type;
+}) as unknown as Schema.Codec<AccountsListOutput>;
 
 // The operation
 /**
@@ -1368,6 +2002,10 @@ export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListOutput,
 }));
 // Input Schema
+export interface AccountsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AccountsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1376,13 +2014,27 @@ export const AccountsListByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountsListByResourceGroupInput =
-  typeof AccountsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AccountsListByResourceGroupInput>;
 
 // Output Schema
+export interface AccountsListByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AccountsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1419,9 +2071,7 @@ export const AccountsListByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type AccountsListByResourceGroupOutput =
-  typeof AccountsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1438,6 +2088,11 @@ export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsListKeysInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1446,19 +2101,21 @@ export const AccountsListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsListKeysInput = typeof AccountsListKeysInput.Type;
+) as unknown as Schema.Codec<AccountsListKeysInput>;
 
 // Output Schema
+export interface AccountsListKeysOutput {
+  key1?: string;
+  key2?: string;
+}
 export const AccountsListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   },
-);
-export type AccountsListKeysOutput = typeof AccountsListKeysOutput.Type;
+) as unknown as Schema.Codec<AccountsListKeysOutput>;
 
 // The operation
 /**
@@ -1474,6 +2131,11 @@ export const AccountsListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListKeysOutput,
 }));
 // Input Schema
+export interface AccountsListModelsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsListModelsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1483,12 +2145,34 @@ export const AccountsListModelsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountsListModelsInput = typeof AccountsListModelsInput.Type;
+  ) as unknown as Schema.Codec<AccountsListModelsInput>;
 
 // Output Schema
+export interface AccountsListModelsOutput {
+  nextLink?: string;
+  value?: {
+    publisher?: string;
+    format?: string;
+    name?: string;
+    version?: string;
+    source?: string;
+    sourceAccount?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+  }[];
+}
 export const AccountsListModelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1529,8 +2213,7 @@ export const AccountsListModelsOutput =
         }),
       ),
     ),
-  });
-export type AccountsListModelsOutput = typeof AccountsListModelsOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListModelsOutput>;
 
 // The operation
 /**
@@ -1546,6 +2229,11 @@ export const AccountsListModels = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListModelsOutput,
 }));
 // Input Schema
+export interface AccountsListSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1554,12 +2242,23 @@ export const AccountsListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsListSkusInput = typeof AccountsListSkusInput.Type;
+) as unknown as Schema.Codec<AccountsListSkusInput>;
 
 // Output Schema
+export interface AccountsListSkusOutput {
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+  }[];
+}
 export const AccountsListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.optional(
@@ -1587,8 +2286,7 @@ export const AccountsListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type AccountsListSkusOutput = typeof AccountsListSkusOutput.Type;
+) as unknown as Schema.Codec<AccountsListSkusOutput>;
 
 // The operation
 /**
@@ -1604,6 +2302,12 @@ export const AccountsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListSkusOutput,
 }));
 // Input Schema
+export interface AccountsListUsagesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  $filter?: string;
+}
 export const AccountsListUsagesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1614,12 +2318,30 @@ export const AccountsListUsagesInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/usages",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountsListUsagesInput = typeof AccountsListUsagesInput.Type;
+  ) as unknown as Schema.Codec<AccountsListUsagesInput>;
 
 // Output Schema
+export interface AccountsListUsagesOutput {
+  nextLink?: string;
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+    nextResetTime?: string;
+    status?: "Included" | "Blocked" | "InOverage" | "Unknown";
+  }[];
+}
 export const AccountsListUsagesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -1653,8 +2375,7 @@ export const AccountsListUsagesOutput =
         }),
       ),
     ),
-  });
-export type AccountsListUsagesOutput = typeof AccountsListUsagesOutput.Type;
+  }) as unknown as Schema.Codec<AccountsListUsagesOutput>;
 
 // The operation
 /**
@@ -1671,6 +2392,12 @@ export const AccountsListUsages = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsListUsagesOutput,
 }));
 // Input Schema
+export interface AccountsRegenerateKeyInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  keyName: "Key1" | "Key2";
+}
 export const AccountsRegenerateKeyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1681,19 +2408,20 @@ export const AccountsRegenerateKeyInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/regenerateKey",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AccountsRegenerateKeyInput = typeof AccountsRegenerateKeyInput.Type;
+  ) as unknown as Schema.Codec<AccountsRegenerateKeyInput>;
 
 // Output Schema
+export interface AccountsRegenerateKeyOutput {
+  key1?: string;
+  key2?: string;
+}
 export const AccountsRegenerateKeyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
-  });
-export type AccountsRegenerateKeyOutput =
-  typeof AccountsRegenerateKeyOutput.Type;
+  }) as unknown as Schema.Codec<AccountsRegenerateKeyOutput>;
 
 // The operation
 /**
@@ -1711,6 +2439,163 @@ export const AccountsRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AccountsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled"
+      | "ResolvingDNS";
+    endpoint?: string;
+    internalId?: string;
+    capabilities?: { name?: string; value?: string }[];
+    isMigrated?: boolean;
+    migrationToken?: string;
+    skuChangeInfo?: {
+      countOfDowngrades?: number;
+      countOfUpgradesAfterDowngrades?: number;
+      lastChangeDate?: string;
+    };
+    customSubDomainName?: string;
+    networkAcls?: {
+      defaultAction?: "Allow" | "Deny";
+      bypass?: "None" | "AzureServices";
+      ipRules?: { value: string }[];
+      virtualNetworkRules?: {
+        id: string;
+        state?: string;
+        ignoreMissingVnetServiceEndpoint?: boolean;
+      }[];
+    };
+    encryption?: {
+      keyVaultProperties?: {
+        keyName?: string;
+        keyVersion?: string;
+        keyVaultUri?: string;
+        identityClientId?: string;
+      };
+      keySource?: "Microsoft.CognitiveServices" | "Microsoft.KeyVault";
+    };
+    userOwnedStorage?: { resourceId?: string; identityClientId?: string }[];
+    amlWorkspace?: { resourceId?: string; identityClientId?: string };
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    publicNetworkAccess?: "Enabled" | "Disabled";
+    apiProperties?: {
+      qnaRuntimeEndpoint?: string;
+      qnaAzureSearchEndpointKey?: string;
+      qnaAzureSearchEndpointId?: string;
+      statisticsEnabled?: boolean;
+      eventHubConnectionString?: string;
+      storageAccountConnectionString?: string;
+      aadClientId?: string;
+      aadTenantId?: string;
+      superUser?: string;
+      websiteName?: string;
+    };
+    dateCreated?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+    dynamicThrottlingEnabled?: boolean;
+    storedCompletionsDisabled?: boolean;
+    quotaLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+    restrictOutboundNetworkAccess?: boolean;
+    allowedFqdnList?: string[];
+    disableLocalAuth?: boolean;
+    endpoints?: Record<string, string>;
+    restore?: boolean;
+    deletionDate?: string;
+    scheduledPurgeDate?: string;
+    locations?: {
+      routingMethod?: "Priority" | "Weighted" | "Performance";
+      regions?: { name?: string; value?: number; customsubdomain?: string }[];
+    };
+    commitmentPlanAssociations?: {
+      commitmentPlanId?: string;
+      commitmentPlanLocation?: string;
+    }[];
+    abusePenalty?: {
+      action?: "Throttle" | "Block";
+      rateLimitPercentage?: number;
+      expiration?: string;
+    };
+    raiMonitorConfig?: {
+      adxStorageResourceId?: string;
+      identityClientId?: string;
+    };
+    networkInjections?: {
+      scenario?: "none" | "agent";
+      subnetArmId?: string;
+      useMicrosoftManagedNetwork?: boolean;
+    }[];
+    allowProjectManagement?: boolean;
+    defaultProject?: string;
+    associatedProjects?: string[];
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    tenantId?: string;
+    principalId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2004,33 +2889,28 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
+) as unknown as Schema.Codec<AccountsUpdateInput>;
 
 // Output Schema
+export interface AccountsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -2049,8 +2929,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AccountsUpdateOutput = typeof AccountsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AccountsUpdateOutput>;
 
 // The operation
 /**
@@ -2066,6 +2945,17 @@ export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AccountsUpdateOutput,
 }));
 // Input Schema
+export interface AgentApplicationsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+  properties: {
+    description?: string | null;
+    tags?: Record<string, string> | null;
+  };
+}
 export const AgentApplicationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2083,13 +2973,24 @@ export const AgentApplicationsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsCreateOrUpdateInput =
-  typeof AgentApplicationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AgentApplicationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentApplicationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2109,9 +3010,7 @@ export const AgentApplicationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentApplicationsCreateOrUpdateOutput =
-  typeof AgentApplicationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2130,6 +3029,13 @@ export const AgentApplicationsCreateOrUpdate =
     outputSchema: AgentApplicationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AgentApplicationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+}
 export const AgentApplicationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2141,17 +3047,14 @@ export const AgentApplicationsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsDeleteInput =
-  typeof AgentApplicationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsDeleteInput>;
 
 // Output Schema
+export type AgentApplicationsDeleteOutput = void;
 export const AgentApplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentApplicationsDeleteOutput =
-  typeof AgentApplicationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -2171,6 +3074,13 @@ export const AgentApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentApplicationsDisableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+}
 export const AgentApplicationsDisableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2182,17 +3092,14 @@ export const AgentApplicationsDisableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/disable",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsDisableInput =
-  typeof AgentApplicationsDisableInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsDisableInput>;
 
 // Output Schema
+export type AgentApplicationsDisableOutput = void;
 export const AgentApplicationsDisableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentApplicationsDisableOutput =
-  typeof AgentApplicationsDisableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsDisableOutput>;
 
 // The operation
 /**
@@ -2212,6 +3119,13 @@ export const AgentApplicationsDisable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentApplicationsEnableInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+}
 export const AgentApplicationsEnableInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2223,17 +3137,14 @@ export const AgentApplicationsEnableInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/enable",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsEnableInput =
-  typeof AgentApplicationsEnableInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsEnableInput>;
 
 // Output Schema
+export type AgentApplicationsEnableOutput = void;
 export const AgentApplicationsEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentApplicationsEnableOutput =
-  typeof AgentApplicationsEnableOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsEnableOutput>;
 
 // The operation
 /**
@@ -2253,6 +3164,13 @@ export const AgentApplicationsEnable = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentApplicationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+}
 export const AgentApplicationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2264,12 +3182,24 @@ export const AgentApplicationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsGetInput = typeof AgentApplicationsGetInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsGetInput>;
 
 // Output Schema
+export interface AgentApplicationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentApplicationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2289,8 +3219,7 @@ export const AgentApplicationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentApplicationsGetOutput = typeof AgentApplicationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsGetOutput>;
 
 // The operation
 /**
@@ -2310,6 +3239,19 @@ export const AgentApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentApplicationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  count?: number;
+  $skip?: number;
+  $skipToken?: string;
+  names?: string;
+  searchText?: string;
+  orderBy?: string;
+  orderByAsc?: boolean;
+}
 export const AgentApplicationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2327,12 +3269,27 @@ export const AgentApplicationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsListInput = typeof AgentApplicationsListInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsListInput>;
 
 // Output Schema
+export interface AgentApplicationsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AgentApplicationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2369,9 +3326,7 @@ export const AgentApplicationsListOutput =
         }),
       ),
     ),
-  });
-export type AgentApplicationsListOutput =
-  typeof AgentApplicationsListOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsListOutput>;
 
 // The operation
 /**
@@ -2397,6 +3352,13 @@ export const AgentApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentApplicationsListAgentsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  name: string;
+}
 export const AgentApplicationsListAgentsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2408,13 +3370,33 @@ export const AgentApplicationsListAgentsInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{name}/listAgents",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentApplicationsListAgentsInput =
-  typeof AgentApplicationsListAgentsInput.Type;
+  ) as unknown as Schema.Codec<AgentApplicationsListAgentsInput>;
 
 // Output Schema
+export interface AgentApplicationsListAgentsOutput {
+  nextLink?: string | null;
+  value?:
+    | {
+        id?: string;
+        name?: string;
+        type?: string;
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      }[]
+    | null;
+}
 export const AgentApplicationsListAgentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2453,9 +3435,7 @@ export const AgentApplicationsListAgentsOutput =
         ),
       ),
     ),
-  });
-export type AgentApplicationsListAgentsOutput =
-  typeof AgentApplicationsListAgentsOutput.Type;
+  }) as unknown as Schema.Codec<AgentApplicationsListAgentsOutput>;
 
 // The operation
 /**
@@ -2475,6 +3455,18 @@ export const AgentApplicationsListAgents = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentDeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  deploymentName: string;
+  properties: {
+    description?: string | null;
+    tags?: Record<string, string> | null;
+  };
+}
 export const AgentDeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2493,13 +3485,24 @@ export const AgentDeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsCreateOrUpdateInput =
-  typeof AgentDeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface AgentDeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentDeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2519,9 +3522,7 @@ export const AgentDeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentDeploymentsCreateOrUpdateOutput =
-  typeof AgentDeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AgentDeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -2541,6 +3542,14 @@ export const AgentDeploymentsCreateOrUpdate =
     outputSchema: AgentDeploymentsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AgentDeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const AgentDeploymentsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2553,17 +3562,14 @@ export const AgentDeploymentsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsDeleteInput =
-  typeof AgentDeploymentsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsDeleteInput>;
 
 // Output Schema
+export type AgentDeploymentsDeleteOutput = void;
 export const AgentDeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentDeploymentsDeleteOutput =
-  typeof AgentDeploymentsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -2584,6 +3590,14 @@ export const AgentDeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentDeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const AgentDeploymentsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2596,12 +3610,24 @@ export const AgentDeploymentsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsGetInput = typeof AgentDeploymentsGetInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsGetInput>;
 
 // Output Schema
+export interface AgentDeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AgentDeploymentsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2621,8 +3647,7 @@ export const AgentDeploymentsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AgentDeploymentsGetOutput = typeof AgentDeploymentsGetOutput.Type;
+  }) as unknown as Schema.Codec<AgentDeploymentsGetOutput>;
 
 // The operation
 /**
@@ -2641,6 +3666,18 @@ export const AgentDeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AgentDeploymentsGetOutput,
 }));
 // Input Schema
+export interface AgentDeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  count?: number;
+  $skipToken?: string;
+  names?: string;
+  orderBy?: string;
+  orderByAsc?: boolean;
+}
 export const AgentDeploymentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2657,12 +3694,27 @@ export const AgentDeploymentsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsListInput = typeof AgentDeploymentsListInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsListInput>;
 
 // Output Schema
+export interface AgentDeploymentsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const AgentDeploymentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2699,8 +3751,7 @@ export const AgentDeploymentsListOutput =
         }),
       ),
     ),
-  });
-export type AgentDeploymentsListOutput = typeof AgentDeploymentsListOutput.Type;
+  }) as unknown as Schema.Codec<AgentDeploymentsListOutput>;
 
 // The operation
 /**
@@ -2725,6 +3776,14 @@ export const AgentDeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentDeploymentsStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const AgentDeploymentsStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2737,16 +3796,14 @@ export const AgentDeploymentsStartInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/start",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsStartInput = typeof AgentDeploymentsStartInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsStartInput>;
 
 // Output Schema
+export type AgentDeploymentsStartOutput = void;
 export const AgentDeploymentsStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentDeploymentsStartOutput =
-  typeof AgentDeploymentsStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStartOutput>;
 
 // The operation
 /**
@@ -2767,6 +3824,14 @@ export const AgentDeploymentsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AgentDeploymentsStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  appName: string;
+  deploymentName: string;
+}
 export const AgentDeploymentsStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2779,15 +3844,14 @@ export const AgentDeploymentsStopInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments/{deploymentName}/stop",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type AgentDeploymentsStopInput = typeof AgentDeploymentsStopInput.Type;
+  ) as unknown as Schema.Codec<AgentDeploymentsStopInput>;
 
 // Output Schema
+export type AgentDeploymentsStopOutput = void;
 export const AgentDeploymentsStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AgentDeploymentsStopOutput = typeof AgentDeploymentsStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentDeploymentsStopOutput>;
 
 // The operation
 /**
@@ -2808,6 +3872,37 @@ export const AgentDeploymentsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CalculateModelCapacityInput {
+  subscriptionId: string;
+  model?: {
+    publisher?: string;
+    format?: string;
+    name?: string;
+    version?: string;
+    source?: string;
+    sourceAccount?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+  };
+  skuName?: string;
+  workloads?: {
+    requestPerMinute?: number;
+    requestParameters?: {
+      avgPromptTokens?: number;
+      avgGeneratedTokens?: number;
+    };
+  }[];
+}
 export const CalculateModelCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2864,13 +3959,35 @@ export const CalculateModelCapacityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/calculateModelCapacity",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CalculateModelCapacityInput =
-  typeof CalculateModelCapacityInput.Type;
+  ) as unknown as Schema.Codec<CalculateModelCapacityInput>;
 
 // Output Schema
+export interface CalculateModelCapacityOutput {
+  model?: {
+    publisher?: string;
+    format?: string;
+    name?: string;
+    version?: string;
+    source?: string;
+    sourceAccount?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+  };
+  skuName?: string;
+  estimatedCapacity?: { value?: number; deployableValue?: number };
+}
 export const CalculateModelCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     model: Schema.optional(
@@ -2915,9 +4032,7 @@ export const CalculateModelCapacityOutput =
         deployableValue: Schema.optional(Schema.Number),
       }),
     ),
-  });
-export type CalculateModelCapacityOutput =
-  typeof CalculateModelCapacityOutput.Type;
+  }) as unknown as Schema.Codec<CalculateModelCapacityOutput>;
 
 // The operation
 /**
@@ -2933,6 +4048,12 @@ export const calculateModelCapacity = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CheckDomainAvailabilityInput {
+  subscriptionId: string;
+  subdomainName: string;
+  type: string;
+  kind?: string;
+}
 export const CheckDomainAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2943,13 +4064,18 @@ export const CheckDomainAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/checkDomainAvailability",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CheckDomainAvailabilityInput =
-  typeof CheckDomainAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CheckDomainAvailabilityInput>;
 
 // Output Schema
+export interface CheckDomainAvailabilityOutput {
+  isSubdomainAvailable?: boolean;
+  reason?: string;
+  subdomainName?: string;
+  type?: string;
+  kind?: string;
+}
 export const CheckDomainAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isSubdomainAvailable: Schema.optional(Schema.Boolean),
@@ -2957,9 +4083,7 @@ export const CheckDomainAvailabilityOutput =
     subdomainName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-  });
-export type CheckDomainAvailabilityOutput =
-  typeof CheckDomainAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<CheckDomainAvailabilityOutput>;
 
 // The operation
 /**
@@ -2975,6 +4099,13 @@ export const CheckDomainAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CheckSkuAvailabilityInput {
+  subscriptionId: string;
+  location: string;
+  skus: string[];
+  kind: string;
+  type: string;
+}
 export const CheckSkuAvailabilityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2986,12 +4117,21 @@ export const CheckSkuAvailabilityInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CheckSkuAvailabilityInput = typeof CheckSkuAvailabilityInput.Type;
+  ) as unknown as Schema.Codec<CheckSkuAvailabilityInput>;
 
 // Output Schema
+export interface CheckSkuAvailabilityOutput {
+  value?: {
+    kind?: string;
+    type?: string;
+    skuName?: string;
+    skuAvailable?: boolean;
+    reason?: string;
+    message?: string;
+  }[];
+}
 export const CheckSkuAvailabilityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3006,8 +4146,7 @@ export const CheckSkuAvailabilityOutput =
         }),
       ),
     ),
-  });
-export type CheckSkuAvailabilityOutput = typeof CheckSkuAvailabilityOutput.Type;
+  }) as unknown as Schema.Codec<CheckSkuAvailabilityOutput>;
 
 // The operation
 /**
@@ -3024,6 +4163,63 @@ export const CheckSkuAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommitmentPlansCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  commitmentPlanName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    commitmentPlanGuid?: string;
+    hostingModel?:
+      | "Web"
+      | "ConnectedContainer"
+      | "DisconnectedContainer"
+      | "ProvisionedWeb";
+    planType?: string;
+    current?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    autoRenew?: boolean;
+    next?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    last?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    provisioningIssues?: string[];
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+}
 export const CommitmentPlansCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3120,34 +4316,28 @@ export const CommitmentPlansCreateOrUpdateInput =
         capacity: Schema.optional(Schema.Number),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansCreateOrUpdateInput =
-  typeof CommitmentPlansCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdateInput>;
 
 // Output Schema
+export interface CommitmentPlansCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3167,9 +4357,7 @@ export const CommitmentPlansCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansCreateOrUpdateOutput =
-  typeof CommitmentPlansCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3187,6 +4375,15 @@ export const CommitmentPlansCreateOrUpdate =
     outputSchema: CommitmentPlansCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface CommitmentPlansCreateOrUpdateAssociationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+  commitmentPlanAssociationName: string;
+  properties?: { accountId?: string };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const CommitmentPlansCreateOrUpdateAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3204,13 +4401,24 @@ export const CommitmentPlansCreateOrUpdateAssociationInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansCreateOrUpdateAssociationInput =
-  typeof CommitmentPlansCreateOrUpdateAssociationInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdateAssociationInput>;
 
 // Output Schema
+export interface CommitmentPlansCreateOrUpdateAssociationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansCreateOrUpdateAssociationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3230,9 +4438,7 @@ export const CommitmentPlansCreateOrUpdateAssociationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansCreateOrUpdateAssociationOutput =
-  typeof CommitmentPlansCreateOrUpdateAssociationOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdateAssociationOutput>;
 
 // The operation
 /**
@@ -3250,6 +4456,62 @@ export const CommitmentPlansCreateOrUpdateAssociation =
     outputSchema: CommitmentPlansCreateOrUpdateAssociationOutput,
   }));
 // Input Schema
+export interface CommitmentPlansCreateOrUpdatePlanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    commitmentPlanGuid?: string;
+    hostingModel?:
+      | "Web"
+      | "ConnectedContainer"
+      | "DisconnectedContainer"
+      | "ProvisionedWeb";
+    planType?: string;
+    current?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    autoRenew?: boolean;
+    next?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    last?: {
+      tier?: string;
+      count?: number;
+      quota?: { quantity?: number; unit?: string };
+      startDate?: string;
+      endDate?: string;
+    };
+    provisioningIssues?: string[];
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  kind?: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+}
 export const CommitmentPlansCreateOrUpdatePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3345,34 +4607,28 @@ export const CommitmentPlansCreateOrUpdatePlanInput =
         capacity: Schema.optional(Schema.Number),
       }),
     ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansCreateOrUpdatePlanInput =
-  typeof CommitmentPlansCreateOrUpdatePlanInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdatePlanInput>;
 
 // Output Schema
+export interface CommitmentPlansCreateOrUpdatePlanOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansCreateOrUpdatePlanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3392,9 +4648,7 @@ export const CommitmentPlansCreateOrUpdatePlanOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansCreateOrUpdatePlanOutput =
-  typeof CommitmentPlansCreateOrUpdatePlanOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansCreateOrUpdatePlanOutput>;
 
 // The operation
 /**
@@ -3411,6 +4665,12 @@ export const CommitmentPlansCreateOrUpdatePlan =
     outputSchema: CommitmentPlansCreateOrUpdatePlanOutput,
   }));
 // Input Schema
+export interface CommitmentPlansDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  commitmentPlanName: string;
+}
 export const CommitmentPlansDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3421,16 +4681,14 @@ export const CommitmentPlansDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansDeleteInput = typeof CommitmentPlansDeleteInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansDeleteInput>;
 
 // Output Schema
+export type CommitmentPlansDeleteOutput = void;
 export const CommitmentPlansDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommitmentPlansDeleteOutput =
-  typeof CommitmentPlansDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteOutput>;
 
 // The operation
 /**
@@ -3449,6 +4707,12 @@ export const CommitmentPlansDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommitmentPlansDeleteAssociationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+  commitmentPlanAssociationName: string;
+}
 export const CommitmentPlansDeleteAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3459,17 +4723,14 @@ export const CommitmentPlansDeleteAssociationInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansDeleteAssociationInput =
-  typeof CommitmentPlansDeleteAssociationInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansDeleteAssociationInput>;
 
 // Output Schema
+export type CommitmentPlansDeleteAssociationOutput = void;
 export const CommitmentPlansDeleteAssociationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommitmentPlansDeleteAssociationOutput =
-  typeof CommitmentPlansDeleteAssociationOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeleteAssociationOutput>;
 
 // The operation
 /**
@@ -3487,6 +4748,11 @@ export const CommitmentPlansDeleteAssociation =
     outputSchema: CommitmentPlansDeleteAssociationOutput,
   }));
 // Input Schema
+export interface CommitmentPlansDeletePlanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+}
 export const CommitmentPlansDeletePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3496,17 +4762,14 @@ export const CommitmentPlansDeletePlanInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansDeletePlanInput =
-  typeof CommitmentPlansDeletePlanInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansDeletePlanInput>;
 
 // Output Schema
+export type CommitmentPlansDeletePlanOutput = void;
 export const CommitmentPlansDeletePlanOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type CommitmentPlansDeletePlanOutput =
-  typeof CommitmentPlansDeletePlanOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CommitmentPlansDeletePlanOutput>;
 
 // The operation
 /**
@@ -3524,6 +4787,12 @@ export const CommitmentPlansDeletePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommitmentPlansGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  commitmentPlanName: string;
+}
 export const CommitmentPlansGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3534,12 +4803,24 @@ export const CommitmentPlansGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansGetInput = typeof CommitmentPlansGetInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansGetInput>;
 
 // Output Schema
+export interface CommitmentPlansGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3559,8 +4840,7 @@ export const CommitmentPlansGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansGetOutput = typeof CommitmentPlansGetOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansGetOutput>;
 
 // The operation
 /**
@@ -3577,6 +4857,12 @@ export const CommitmentPlansGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CommitmentPlansGetOutput,
 }));
 // Input Schema
+export interface CommitmentPlansGetAssociationInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+  commitmentPlanAssociationName: string;
+}
 export const CommitmentPlansGetAssociationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3587,13 +4873,24 @@ export const CommitmentPlansGetAssociationInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations/{commitmentPlanAssociationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansGetAssociationInput =
-  typeof CommitmentPlansGetAssociationInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansGetAssociationInput>;
 
 // Output Schema
+export interface CommitmentPlansGetAssociationOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansGetAssociationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3613,9 +4910,7 @@ export const CommitmentPlansGetAssociationOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansGetAssociationOutput =
-  typeof CommitmentPlansGetAssociationOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansGetAssociationOutput>;
 
 // The operation
 /**
@@ -3633,6 +4928,11 @@ export const CommitmentPlansGetAssociation =
     outputSchema: CommitmentPlansGetAssociationOutput,
   }));
 // Input Schema
+export interface CommitmentPlansGetPlanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+}
 export const CommitmentPlansGetPlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3642,13 +4942,24 @@ export const CommitmentPlansGetPlanInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansGetPlanInput =
-  typeof CommitmentPlansGetPlanInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansGetPlanInput>;
 
 // Output Schema
+export interface CommitmentPlansGetPlanOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansGetPlanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3668,9 +4979,7 @@ export const CommitmentPlansGetPlanOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansGetPlanOutput =
-  typeof CommitmentPlansGetPlanOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansGetPlanOutput>;
 
 // The operation
 /**
@@ -3688,6 +4997,11 @@ export const CommitmentPlansGetPlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommitmentPlansListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const CommitmentPlansListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3697,12 +5011,27 @@ export const CommitmentPlansListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansListInput = typeof CommitmentPlansListInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansListInput>;
 
 // Output Schema
+export interface CommitmentPlansListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const CommitmentPlansListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3739,8 +5068,7 @@ export const CommitmentPlansListOutput =
         }),
       ),
     ),
-  });
-export type CommitmentPlansListOutput = typeof CommitmentPlansListOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansListOutput>;
 
 // The operation
 /**
@@ -3756,6 +5084,11 @@ export const CommitmentPlansList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CommitmentPlansListOutput,
 }));
 // Input Schema
+export interface CommitmentPlansListAssociationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+}
 export const CommitmentPlansListAssociationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3765,13 +5098,27 @@ export const CommitmentPlansListAssociationsInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansListAssociationsInput =
-  typeof CommitmentPlansListAssociationsInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansListAssociationsInput>;
 
 // Output Schema
+export interface CommitmentPlansListAssociationsOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const CommitmentPlansListAssociationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3808,9 +5155,7 @@ export const CommitmentPlansListAssociationsOutput =
         }),
       ),
     ),
-  });
-export type CommitmentPlansListAssociationsOutput =
-  typeof CommitmentPlansListAssociationsOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansListAssociationsOutput>;
 
 // The operation
 /**
@@ -3827,6 +5172,10 @@ export const CommitmentPlansListAssociations =
     outputSchema: CommitmentPlansListAssociationsOutput,
   }));
 // Input Schema
+export interface CommitmentPlansListPlansByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const CommitmentPlansListPlansByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3835,13 +5184,27 @@ export const CommitmentPlansListPlansByResourceGroupInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansListPlansByResourceGroupInput =
-  typeof CommitmentPlansListPlansByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansListPlansByResourceGroupInput>;
 
 // Output Schema
+export interface CommitmentPlansListPlansByResourceGroupOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const CommitmentPlansListPlansByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3878,9 +5241,7 @@ export const CommitmentPlansListPlansByResourceGroupOutput =
         }),
       ),
     ),
-  });
-export type CommitmentPlansListPlansByResourceGroupOutput =
-  typeof CommitmentPlansListPlansByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansListPlansByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3896,6 +5257,9 @@ export const CommitmentPlansListPlansByResourceGroup =
     outputSchema: CommitmentPlansListPlansByResourceGroupOutput,
   }));
 // Input Schema
+export interface CommitmentPlansListPlansBySubscriptionInput {
+  subscriptionId: string;
+}
 export const CommitmentPlansListPlansBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3903,13 +5267,27 @@ export const CommitmentPlansListPlansBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansListPlansBySubscriptionInput =
-  typeof CommitmentPlansListPlansBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansListPlansBySubscriptionInput>;
 
 // Output Schema
+export interface CommitmentPlansListPlansBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const CommitmentPlansListPlansBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -3946,9 +5324,7 @@ export const CommitmentPlansListPlansBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type CommitmentPlansListPlansBySubscriptionOutput =
-  typeof CommitmentPlansListPlansBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansListPlansBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3963,6 +5339,19 @@ export const CommitmentPlansListPlansBySubscription =
     outputSchema: CommitmentPlansListPlansBySubscriptionOutput,
   }));
 // Input Schema
+export interface CommitmentPlansUpdatePlanInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  commitmentPlanName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const CommitmentPlansUpdatePlanInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3990,13 +5379,24 @@ export const CommitmentPlansUpdatePlanInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentPlansUpdatePlanInput =
-  typeof CommitmentPlansUpdatePlanInput.Type;
+  ) as unknown as Schema.Codec<CommitmentPlansUpdatePlanInput>;
 
 // Output Schema
+export interface CommitmentPlansUpdatePlanOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const CommitmentPlansUpdatePlanOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4016,9 +5416,7 @@ export const CommitmentPlansUpdatePlanOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type CommitmentPlansUpdatePlanOutput =
-  typeof CommitmentPlansUpdatePlanOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentPlansUpdatePlanOutput>;
 
 // The operation
 /**
@@ -4036,6 +5434,10 @@ export const CommitmentPlansUpdatePlan = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface CommitmentTiersListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const CommitmentTiersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4044,12 +5446,28 @@ export const CommitmentTiersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type CommitmentTiersListInput = typeof CommitmentTiersListInput.Type;
+  ) as unknown as Schema.Codec<CommitmentTiersListInput>;
 
 // Output Schema
+export interface CommitmentTiersListOutput {
+  nextLink?: string;
+  value?: {
+    kind?: string;
+    skuName?: string;
+    hostingModel?:
+      | "Web"
+      | "ConnectedContainer"
+      | "DisconnectedContainer"
+      | "ProvisionedWeb";
+    planType?: string;
+    tier?: string;
+    maxCount?: number;
+    quota?: { quantity?: number; unit?: string };
+    cost?: { commitmentMeterId?: string; overageMeterId?: string };
+  }[];
+}
 export const CommitmentTiersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4084,8 +5502,7 @@ export const CommitmentTiersListOutput =
         }),
       ),
     ),
-  });
-export type CommitmentTiersListOutput = typeof CommitmentTiersListOutput.Type;
+  }) as unknown as Schema.Codec<CommitmentTiersListOutput>;
 
 // The operation
 /**
@@ -4100,6 +5517,15 @@ export const CommitmentTiersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: CommitmentTiersListOutput,
 }));
 // Input Schema
+export interface DefenderForAISettingsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  defenderForAISettingName: string;
+  properties?: { state?: "Disabled" | "Enabled" };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const DefenderForAISettingsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4117,13 +5543,24 @@ export const DefenderForAISettingsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DefenderForAISettingsCreateOrUpdateInput =
-  typeof DefenderForAISettingsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DefenderForAISettingsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DefenderForAISettingsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DefenderForAISettingsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4143,9 +5580,7 @@ export const DefenderForAISettingsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DefenderForAISettingsCreateOrUpdateOutput =
-  typeof DefenderForAISettingsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DefenderForAISettingsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4163,6 +5598,12 @@ export const DefenderForAISettingsCreateOrUpdate =
     outputSchema: DefenderForAISettingsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface DefenderForAISettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  defenderForAISettingName: string;
+}
 export const DefenderForAISettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4173,13 +5614,24 @@ export const DefenderForAISettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DefenderForAISettingsGetInput =
-  typeof DefenderForAISettingsGetInput.Type;
+  ) as unknown as Schema.Codec<DefenderForAISettingsGetInput>;
 
 // Output Schema
+export interface DefenderForAISettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DefenderForAISettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4199,9 +5651,7 @@ export const DefenderForAISettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DefenderForAISettingsGetOutput =
-  typeof DefenderForAISettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<DefenderForAISettingsGetOutput>;
 
 // The operation
 /**
@@ -4220,6 +5670,11 @@ export const DefenderForAISettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DefenderForAISettingsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DefenderForAISettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4229,13 +5684,27 @@ export const DefenderForAISettingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DefenderForAISettingsListInput =
-  typeof DefenderForAISettingsListInput.Type;
+  ) as unknown as Schema.Codec<DefenderForAISettingsListInput>;
 
 // Output Schema
+export interface DefenderForAISettingsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const DefenderForAISettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4272,9 +5741,7 @@ export const DefenderForAISettingsListOutput =
         }),
       ),
     ),
-  });
-export type DefenderForAISettingsListOutput =
-  typeof DefenderForAISettingsListOutput.Type;
+  }) as unknown as Schema.Codec<DefenderForAISettingsListOutput>;
 
 // The operation
 /**
@@ -4292,6 +5759,15 @@ export const DefenderForAISettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DefenderForAISettingsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  defenderForAISettingName: string;
+  properties?: { state?: "Disabled" | "Enabled" };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const DefenderForAISettingsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4309,13 +5785,24 @@ export const DefenderForAISettingsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings/{defenderForAISettingName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DefenderForAISettingsUpdateInput =
-  typeof DefenderForAISettingsUpdateInput.Type;
+  ) as unknown as Schema.Codec<DefenderForAISettingsUpdateInput>;
 
 // Output Schema
+export interface DefenderForAISettingsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DefenderForAISettingsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4335,9 +5822,7 @@ export const DefenderForAISettingsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DefenderForAISettingsUpdateOutput =
-  typeof DefenderForAISettingsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DefenderForAISettingsUpdateOutput>;
 
 // The operation
 /**
@@ -4356,6 +5841,12 @@ export const DefenderForAISettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeletedAccountsGetInput {
+  subscriptionId: string;
+  location: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DeletedAccountsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4366,12 +5857,24 @@ export const DeletedAccountsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DeletedAccountsGetInput = typeof DeletedAccountsGetInput.Type;
+  ) as unknown as Schema.Codec<DeletedAccountsGetInput>;
 
 // Output Schema
+export interface DeletedAccountsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeletedAccountsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4391,8 +5894,7 @@ export const DeletedAccountsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeletedAccountsGetOutput = typeof DeletedAccountsGetOutput.Type;
+  }) as unknown as Schema.Codec<DeletedAccountsGetOutput>;
 
 // The operation
 /**
@@ -4409,6 +5911,9 @@ export const DeletedAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeletedAccountsGetOutput,
 }));
 // Input Schema
+export interface DeletedAccountsListInput {
+  subscriptionId: string;
+}
 export const DeletedAccountsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4416,12 +5921,27 @@ export const DeletedAccountsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DeletedAccountsListInput = typeof DeletedAccountsListInput.Type;
+  ) as unknown as Schema.Codec<DeletedAccountsListInput>;
 
 // Output Schema
+export interface DeletedAccountsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const DeletedAccountsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4458,8 +5978,7 @@ export const DeletedAccountsListOutput =
         }),
       ),
     ),
-  });
-export type DeletedAccountsListOutput = typeof DeletedAccountsListOutput.Type;
+  }) as unknown as Schema.Codec<DeletedAccountsListOutput>;
 
 // The operation
 /**
@@ -4473,6 +5992,12 @@ export const DeletedAccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeletedAccountsListOutput,
 }));
 // Input Schema
+export interface DeletedAccountsPurgeInput {
+  subscriptionId: string;
+  location: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DeletedAccountsPurgeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4483,15 +6008,14 @@ export const DeletedAccountsPurgeInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroupName}/deletedAccounts/{accountName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DeletedAccountsPurgeInput = typeof DeletedAccountsPurgeInput.Type;
+  ) as unknown as Schema.Codec<DeletedAccountsPurgeInput>;
 
 // Output Schema
+export type DeletedAccountsPurgeOutput = void;
 export const DeletedAccountsPurgeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeletedAccountsPurgeOutput = typeof DeletedAccountsPurgeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeletedAccountsPurgeOutput>;
 
 // The operation
 /**
@@ -4510,6 +6034,113 @@ export const DeletedAccountsPurge = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Disabled"
+      | "Canceled";
+    model?: {
+      publisher?: string;
+      format?: string;
+      name?: string;
+      version?: string;
+      source?: string;
+      sourceAccount?: string;
+      callRateLimit?: {
+        count?: number;
+        renewalPeriod?: number;
+        rules?: {
+          key?: string;
+          renewalPeriod?: number;
+          count?: number;
+          minCount?: number;
+          dynamicThrottlingEnabled?: boolean;
+          matchPatterns?: { path?: string; method?: string }[];
+        }[];
+      };
+    };
+    scaleSettings?: {
+      scaleType?: "Standard" | "Manual";
+      capacity?: number;
+      activeCapacity?: number;
+    };
+    capabilities?: Record<string, string>;
+    raiPolicyName?: string;
+    callRateLimit?: {
+      count?: number;
+      renewalPeriod?: number;
+      rules?: {
+        key?: string;
+        renewalPeriod?: number;
+        count?: number;
+        minCount?: number;
+        dynamicThrottlingEnabled?: boolean;
+        matchPatterns?: { path?: string; method?: string }[];
+      }[];
+    };
+    rateLimits?: {
+      key?: string;
+      renewalPeriod?: number;
+      count?: number;
+      minCount?: number;
+      dynamicThrottlingEnabled?: boolean;
+      matchPatterns?: { path?: string; method?: string }[];
+    }[];
+    versionUpgradeOption?:
+      | "OnceNewDefaultVersionAvailable"
+      | "OnceCurrentVersionExpired"
+      | "NoAutoUpgrade";
+    dynamicThrottlingEnabled?: boolean;
+    currentCapacity?: number;
+    capacitySettings?: { designatedCapacity?: number; priority?: number };
+    parentDeploymentName?: string;
+    spilloverDeploymentName?: string;
+    serviceTier?: "Default" | "Priority";
+    deploymentState?: "Running" | "Paused";
+    routing?: {
+      mode?: "cost" | "balanced" | "quality";
+      models?: {
+        publisher?: string;
+        format?: string;
+        name?: string;
+        version?: string;
+        source?: string;
+        sourceAccount?: string;
+        callRateLimit?: {
+          count?: number;
+          renewalPeriod?: number;
+          rules?: {
+            key?: string;
+            renewalPeriod?: number;
+            count?: number;
+            minCount?: number;
+            dynamicThrottlingEnabled?: boolean;
+            matchPatterns?: { path?: string; method?: string }[];
+          }[];
+        };
+      }[];
+    };
+  };
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const DeploymentsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4644,7 +6275,7 @@ export const DeploymentsCreateOrUpdateInput =
         routing: Schema.optional(
           Schema.Struct({
             mode: Schema.optional(
-              Schema.Literals(["cost", "balanced", "accuracy"]),
+              Schema.Literals(["cost", "balanced", "quality"]),
             ),
             models: Schema.optional(
               Schema.Array(
@@ -4712,13 +6343,24 @@ export const DeploymentsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DeploymentsCreateOrUpdateInput =
-  typeof DeploymentsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsCreateOrUpdateInput>;
 
 // Output Schema
+export interface DeploymentsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4738,9 +6380,7 @@ export const DeploymentsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsCreateOrUpdateOutput =
-  typeof DeploymentsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -4759,6 +6399,12 @@ export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface DeploymentsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+}
 export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4770,14 +6416,14 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
+) as unknown as Schema.Codec<DeploymentsDeleteInput>;
 
 // Output Schema
-export const DeploymentsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeploymentsDeleteOutput = typeof DeploymentsDeleteOutput.Type;
+export type DeploymentsDeleteOutput = void;
+export const DeploymentsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -4794,6 +6440,12 @@ export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsDeleteOutput,
 }));
 // Input Schema
+export interface DeploymentsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+}
 export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4803,12 +6455,24 @@ export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsGetInput = typeof DeploymentsGetInput.Type;
+) as unknown as Schema.Codec<DeploymentsGetInput>;
 
 // Output Schema
+export interface DeploymentsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4827,8 +6491,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type DeploymentsGetOutput = typeof DeploymentsGetOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsGetOutput>;
 
 // The operation
 /**
@@ -4845,6 +6508,11 @@ export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsGetOutput,
 }));
 // Input Schema
+export interface DeploymentsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4853,12 +6521,27 @@ export const DeploymentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsListInput = typeof DeploymentsListInput.Type;
+) as unknown as Schema.Codec<DeploymentsListInput>;
 
 // Output Schema
+export interface DeploymentsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -4894,8 +6577,7 @@ export const DeploymentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type DeploymentsListOutput = typeof DeploymentsListOutput.Type;
+}) as unknown as Schema.Codec<DeploymentsListOutput>;
 
 // The operation
 /**
@@ -4911,6 +6593,12 @@ export const DeploymentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListOutput,
 }));
 // Input Schema
+export interface DeploymentsListSkusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+}
 export const DeploymentsListSkusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4921,12 +6609,31 @@ export const DeploymentsListSkusInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type DeploymentsListSkusInput = typeof DeploymentsListSkusInput.Type;
+  ) as unknown as Schema.Codec<DeploymentsListSkusInput>;
 
 // Output Schema
+export interface DeploymentsListSkusOutput {
+  nextLink?: string;
+  value?: {
+    resourceType?: string;
+    sku?: {
+      name: string;
+      tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+      size?: string;
+      family?: string;
+      capacity?: number;
+    };
+    capacity?: {
+      minimum?: number;
+      maximum?: number;
+      step?: number;
+      default?: number;
+      allowedValues?: number[];
+    };
+  }[];
+}
 export const DeploymentsListSkusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -4963,8 +6670,7 @@ export const DeploymentsListSkusOutput =
         }),
       ),
     ),
-  });
-export type DeploymentsListSkusOutput = typeof DeploymentsListSkusOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsListSkusOutput>;
 
 // The operation
 /**
@@ -4981,6 +6687,12 @@ export const DeploymentsListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsListSkusOutput,
 }));
 // Input Schema
+export interface DeploymentsPauseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+}
 export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4990,12 +6702,24 @@ export const DeploymentsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/pause",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsPauseInput = typeof DeploymentsPauseInput.Type;
+) as unknown as Schema.Codec<DeploymentsPauseInput>;
 
 // Output Schema
+export interface DeploymentsPauseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -5016,8 +6740,7 @@ export const DeploymentsPauseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type DeploymentsPauseOutput = typeof DeploymentsPauseOutput.Type;
+) as unknown as Schema.Codec<DeploymentsPauseOutput>;
 
 // The operation
 /**
@@ -5036,6 +6759,12 @@ export const DeploymentsPause = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsPauseOutput,
 }));
 // Input Schema
+export interface DeploymentsResumeInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+}
 export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5047,12 +6776,24 @@ export const DeploymentsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/resume",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsResumeInput = typeof DeploymentsResumeInput.Type;
+) as unknown as Schema.Codec<DeploymentsResumeInput>;
 
 // Output Schema
+export interface DeploymentsResumeOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsResumeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5072,8 +6813,7 @@ export const DeploymentsResumeOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsResumeOutput = typeof DeploymentsResumeOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsResumeOutput>;
 
 // The operation
 /**
@@ -5092,6 +6832,20 @@ export const DeploymentsResume = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsResumeOutput,
 }));
 // Input Schema
+export interface DeploymentsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  deploymentName: string;
+  sku?: {
+    name: string;
+    tier?: "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
+    size?: string;
+    family?: string;
+    capacity?: number;
+  };
+  tags?: Record<string, string>;
+}
 export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5121,12 +6875,24 @@ export const DeploymentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type DeploymentsUpdateInput = typeof DeploymentsUpdateInput.Type;
+) as unknown as Schema.Codec<DeploymentsUpdateInput>;
 
 // Output Schema
+export interface DeploymentsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const DeploymentsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5146,8 +6912,7 @@ export const DeploymentsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DeploymentsUpdateOutput = typeof DeploymentsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<DeploymentsUpdateOutput>;
 
 // The operation
 /**
@@ -5164,6 +6929,23 @@ export const DeploymentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: DeploymentsUpdateOutput,
 }));
 // Input Schema
+export interface EncryptionScopesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+  properties?: {
+    keyVaultProperties?: {
+      keyName?: string;
+      keyVersion?: string;
+      keyVaultUri?: string;
+      identityClientId?: string;
+    };
+    keySource?: "Microsoft.CognitiveServices" | "Microsoft.KeyVault";
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const EncryptionScopesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5194,13 +6976,24 @@ export const EncryptionScopesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type EncryptionScopesCreateOrUpdateInput =
-  typeof EncryptionScopesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesCreateOrUpdateInput>;
 
 // Output Schema
+export interface EncryptionScopesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EncryptionScopesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5220,9 +7013,7 @@ export const EncryptionScopesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EncryptionScopesCreateOrUpdateOutput =
-  typeof EncryptionScopesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -5240,6 +7031,12 @@ export const EncryptionScopesCreateOrUpdate =
     outputSchema: EncryptionScopesCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface EncryptionScopesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+}
 export const EncryptionScopesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5250,17 +7047,14 @@ export const EncryptionScopesDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type EncryptionScopesDeleteInput =
-  typeof EncryptionScopesDeleteInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesDeleteInput>;
 
 // Output Schema
+export type EncryptionScopesDeleteOutput = void;
 export const EncryptionScopesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EncryptionScopesDeleteOutput =
-  typeof EncryptionScopesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EncryptionScopesDeleteOutput>;
 
 // The operation
 /**
@@ -5279,6 +7073,12 @@ export const EncryptionScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EncryptionScopesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  encryptionScopeName: string;
+}
 export const EncryptionScopesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5289,12 +7089,24 @@ export const EncryptionScopesGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type EncryptionScopesGetInput = typeof EncryptionScopesGetInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesGetInput>;
 
 // Output Schema
+export interface EncryptionScopesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EncryptionScopesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5314,8 +7126,7 @@ export const EncryptionScopesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EncryptionScopesGetOutput = typeof EncryptionScopesGetOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesGetOutput>;
 
 // The operation
 /**
@@ -5332,6 +7143,11 @@ export const EncryptionScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EncryptionScopesGetOutput,
 }));
 // Input Schema
+export interface EncryptionScopesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const EncryptionScopesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5341,12 +7157,27 @@ export const EncryptionScopesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type EncryptionScopesListInput = typeof EncryptionScopesListInput.Type;
+  ) as unknown as Schema.Codec<EncryptionScopesListInput>;
 
 // Output Schema
+export interface EncryptionScopesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const EncryptionScopesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5383,8 +7214,7 @@ export const EncryptionScopesListOutput =
         }),
       ),
     ),
-  });
-export type EncryptionScopesListOutput = typeof EncryptionScopesListOutput.Type;
+  }) as unknown as Schema.Codec<EncryptionScopesListOutput>;
 
 // The operation
 /**
@@ -5402,6 +7232,13 @@ export const EncryptionScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface LocationBasedModelCapacitiesListInput {
+  subscriptionId: string;
+  location: string;
+  modelFormat: string;
+  modelName: string;
+  modelVersion: string;
+}
 export const LocationBasedModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5413,13 +7250,27 @@ export const LocationBasedModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type LocationBasedModelCapacitiesListInput =
-  typeof LocationBasedModelCapacitiesListInput.Type;
+  ) as unknown as Schema.Codec<LocationBasedModelCapacitiesListInput>;
 
 // Output Schema
+export interface LocationBasedModelCapacitiesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const LocationBasedModelCapacitiesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5456,9 +7307,7 @@ export const LocationBasedModelCapacitiesListOutput =
         }),
       ),
     ),
-  });
-export type LocationBasedModelCapacitiesListOutput =
-  typeof LocationBasedModelCapacitiesListOutput.Type;
+  }) as unknown as Schema.Codec<LocationBasedModelCapacitiesListOutput>;
 
 // The operation
 /**
@@ -5477,6 +7326,12 @@ export const LocationBasedModelCapacitiesList =
     outputSchema: LocationBasedModelCapacitiesListOutput,
   }));
 // Input Schema
+export interface ManagedNetworkProvisionsProvisionManagedNetworkInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+}
 export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5487,19 +7342,18 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/provision",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
-  typeof ManagedNetworkProvisionsProvisionManagedNetworkInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkProvisionsProvisionManagedNetworkInput>;
 
 // Output Schema
+export interface ManagedNetworkProvisionsProvisionManagedNetworkOutput {
+  status?: "Inactive" | "Active";
+}
 export const ManagedNetworkProvisionsProvisionManagedNetworkOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Inactive", "Active"])),
-  });
-export type ManagedNetworkProvisionsProvisionManagedNetworkOutput =
-  typeof ManagedNetworkProvisionsProvisionManagedNetworkOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkProvisionsProvisionManagedNetworkOutput>;
 
 // The operation
 /**
@@ -5517,6 +7371,53 @@ export const ManagedNetworkProvisionsProvisionManagedNetwork =
     outputSchema: ManagedNetworkProvisionsProvisionManagedNetworkOutput,
   }));
 // Input Schema
+export interface ManagedNetworkSettingsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+}
+export const ManagedNetworkSettingsDeleteInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptionId: Schema.String.pipe(T.PathParam()),
+    resourceGroupName: Schema.String.pipe(T.PathParam()),
+    accountName: Schema.String.pipe(T.PathParam()),
+    managedNetworkName: Schema.String.pipe(T.PathParam()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
+      apiVersion: "2026-05-01",
+    }),
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsDeleteInput>;
+
+// Output Schema
+export type ManagedNetworkSettingsDeleteOutput = void;
+export const ManagedNetworkSettingsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ManagedNetworkSettingsDeleteOutput>;
+
+// The operation
+/**
+ * Delete API for managed network settings of a cognitive services account.
+ *
+ * @param api-version - The API version to use for this operation.
+ * @param subscriptionId - The ID of the target subscription.
+ * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param accountName - The name of Cognitive Services account.
+ * @param managedNetworkName - Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
+ */
+export const ManagedNetworkSettingsDelete =
+  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    inputSchema: ManagedNetworkSettingsDeleteInput,
+    outputSchema: ManagedNetworkSettingsDeleteOutput,
+  }));
+// Input Schema
+export interface ManagedNetworkSettingsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+}
 export const ManagedNetworkSettingsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5527,13 +7428,24 @@ export const ManagedNetworkSettingsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ManagedNetworkSettingsGetInput =
-  typeof ManagedNetworkSettingsGetInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsGetInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedNetworkSettingsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5553,9 +7465,7 @@ export const ManagedNetworkSettingsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedNetworkSettingsGetOutput =
-  typeof ManagedNetworkSettingsGetOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsGetOutput>;
 
 // The operation
 /**
@@ -5574,6 +7484,11 @@ export const ManagedNetworkSettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedNetworkSettingsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const ManagedNetworkSettingsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5583,13 +7498,27 @@ export const ManagedNetworkSettingsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ManagedNetworkSettingsListInput =
-  typeof ManagedNetworkSettingsListInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsListInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ManagedNetworkSettingsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5626,9 +7555,7 @@ export const ManagedNetworkSettingsListOutput =
         }),
       ),
     ),
-  });
-export type ManagedNetworkSettingsListOutput =
-  typeof ManagedNetworkSettingsListOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsListOutput>;
 
 // The operation
 /**
@@ -5646,6 +7573,54 @@ export const ManagedNetworkSettingsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedNetworkSettingsPatchInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  properties?: {
+    managedNetwork?: {
+      isolationMode?:
+        | "Disabled"
+        | "AllowInternetOutbound"
+        | "AllowOnlyApprovedOutbound";
+      networkId?: string;
+      outboundRules?: Record<
+        string,
+        {
+          category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+          status?:
+            | "Inactive"
+            | "Active"
+            | "Provisioning"
+            | "Deleting"
+            | "Failed";
+          type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+          errorInformation?: string;
+          parentRuleNames?: string[];
+        }
+      > | null;
+      status?: { status?: "Inactive" | "Active" };
+      firewallSku?: "Standard" | "Basic";
+      managedNetworkKind?: "V1" | "V2";
+      firewallPublicIpAddress?: string | null;
+      provisioningState?:
+        | "Deferred"
+        | "Updating"
+        | "Succeeded"
+        | "Failed"
+        | "Deleting"
+        | "Deleted";
+    };
+    provisioningState?:
+      | "Deferred"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Deleted";
+  };
+}
 export const ManagedNetworkSettingsPatchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5741,13 +7716,24 @@ export const ManagedNetworkSettingsPatchInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ManagedNetworkSettingsPatchInput =
-  typeof ManagedNetworkSettingsPatchInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsPatchInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsPatchOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedNetworkSettingsPatchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5767,9 +7753,7 @@ export const ManagedNetworkSettingsPatchOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedNetworkSettingsPatchOutput =
-  typeof ManagedNetworkSettingsPatchOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsPatchOutput>;
 
 // The operation
 /**
@@ -5788,6 +7772,54 @@ export const ManagedNetworkSettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ManagedNetworkSettingsPutInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  properties?: {
+    managedNetwork?: {
+      isolationMode?:
+        | "Disabled"
+        | "AllowInternetOutbound"
+        | "AllowOnlyApprovedOutbound";
+      networkId?: string;
+      outboundRules?: Record<
+        string,
+        {
+          category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+          status?:
+            | "Inactive"
+            | "Active"
+            | "Provisioning"
+            | "Deleting"
+            | "Failed";
+          type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+          errorInformation?: string;
+          parentRuleNames?: string[];
+        }
+      > | null;
+      status?: { status?: "Inactive" | "Active" };
+      firewallSku?: "Standard" | "Basic";
+      managedNetworkKind?: "V1" | "V2";
+      firewallPublicIpAddress?: string | null;
+      provisioningState?:
+        | "Deferred"
+        | "Updating"
+        | "Succeeded"
+        | "Failed"
+        | "Deleting"
+        | "Deleted";
+    };
+    provisioningState?:
+      | "Deferred"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Deleted";
+  };
+}
 export const ManagedNetworkSettingsPutInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5883,13 +7915,24 @@ export const ManagedNetworkSettingsPutInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ManagedNetworkSettingsPutInput =
-  typeof ManagedNetworkSettingsPutInput.Type;
+  ) as unknown as Schema.Codec<ManagedNetworkSettingsPutInput>;
 
 // Output Schema
+export interface ManagedNetworkSettingsPutOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ManagedNetworkSettingsPutOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5909,9 +7952,7 @@ export const ManagedNetworkSettingsPutOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ManagedNetworkSettingsPutOutput =
-  typeof ManagedNetworkSettingsPutOutput.Type;
+  }) as unknown as Schema.Codec<ManagedNetworkSettingsPutOutput>;
 
 // The operation
 /**
@@ -5930,6 +7971,12 @@ export const ManagedNetworkSettingsPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ModelCapacitiesListInput {
+  subscriptionId: string;
+  modelFormat: string;
+  modelName: string;
+  modelVersion: string;
+}
 export const ModelCapacitiesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5940,12 +7987,27 @@ export const ModelCapacitiesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ModelCapacitiesListInput = typeof ModelCapacitiesListInput.Type;
+  ) as unknown as Schema.Codec<ModelCapacitiesListInput>;
 
 // Output Schema
+export interface ModelCapacitiesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ModelCapacitiesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -5982,8 +8044,7 @@ export const ModelCapacitiesListOutput =
         }),
       ),
     ),
-  });
-export type ModelCapacitiesListOutput = typeof ModelCapacitiesListOutput.Type;
+  }) as unknown as Schema.Codec<ModelCapacitiesListOutput>;
 
 // The operation
 /**
@@ -6000,6 +8061,10 @@ export const ModelCapacitiesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelCapacitiesListOutput,
 }));
 // Input Schema
+export interface ModelsListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -6007,12 +8072,39 @@ export const ModelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ModelsListInput = typeof ModelsListInput.Type;
+) as unknown as Schema.Codec<ModelsListInput>;
 
 // Output Schema
+export interface ModelsListOutput {
+  nextLink?: string;
+  value?: {
+    model?: {
+      publisher?: string;
+      format?: string;
+      name?: string;
+      version?: string;
+      source?: string;
+      sourceAccount?: string;
+      callRateLimit?: {
+        count?: number;
+        renewalPeriod?: number;
+        rules?: {
+          key?: string;
+          renewalPeriod?: number;
+          count?: number;
+          minCount?: number;
+          dynamicThrottlingEnabled?: boolean;
+          matchPatterns?: { path?: string; method?: string }[];
+        }[];
+      };
+    };
+    kind?: string;
+    skuName?: string;
+    description?: string;
+  }[];
+}
 export const ModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -6059,8 +8151,7 @@ export const ModelsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ModelsListOutput = typeof ModelsListOutput.Type;
+}) as unknown as Schema.Codec<ModelsListOutput>;
 
 // The operation
 /**
@@ -6075,6 +8166,12 @@ export const ModelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ModelsListOutput,
 }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  nspConfigurationName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6085,13 +8182,24 @@ export const NetworkSecurityPerimeterConfigurationsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsGetInput =
-  typeof NetworkSecurityPerimeterConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkSecurityPerimeterConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6111,9 +8219,7 @@ export const NetworkSecurityPerimeterConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkSecurityPerimeterConfigurationsGetOutput =
-  typeof NetworkSecurityPerimeterConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsGetOutput>;
 
 // The operation
 /**
@@ -6131,6 +8237,11 @@ export const NetworkSecurityPerimeterConfigurationsGet =
     outputSchema: NetworkSecurityPerimeterConfigurationsGetOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6140,13 +8251,27 @@ export const NetworkSecurityPerimeterConfigurationsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsListInput =
-  typeof NetworkSecurityPerimeterConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NetworkSecurityPerimeterConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6183,9 +8308,7 @@ export const NetworkSecurityPerimeterConfigurationsListOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NetworkSecurityPerimeterConfigurationsListOutput =
-  typeof NetworkSecurityPerimeterConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsListOutput>;
 
 // The operation
 /**
@@ -6202,6 +8325,12 @@ export const NetworkSecurityPerimeterConfigurationsList =
     outputSchema: NetworkSecurityPerimeterConfigurationsListOutput,
   }));
 // Input Schema
+export interface NetworkSecurityPerimeterConfigurationsReconcileInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  nspConfigurationName: string;
+}
 export const NetworkSecurityPerimeterConfigurationsReconcileInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6212,13 +8341,24 @@ export const NetworkSecurityPerimeterConfigurationsReconcileInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations/{nspConfigurationName}/reconcile",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type NetworkSecurityPerimeterConfigurationsReconcileInput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileInput.Type;
+  ) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileInput>;
 
 // Output Schema
+export interface NetworkSecurityPerimeterConfigurationsReconcileOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6238,9 +8378,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NetworkSecurityPerimeterConfigurationsReconcileOutput =
-  typeof NetworkSecurityPerimeterConfigurationsReconcileOutput.Type;
+  }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileOutput>;
 
 // The operation
 /**
@@ -6258,18 +8396,33 @@ export const NetworkSecurityPerimeterConfigurationsReconcile =
     outputSchema: NetworkSecurityPerimeterConfigurationsReconcileOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.CognitiveServices/operations",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -6292,8 +8445,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -6306,6 +8458,20 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OutboundRuleCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  ruleName: string;
+  properties: {
+    category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+    status?: "Inactive" | "Active" | "Provisioning" | "Deleting" | "Failed";
+    type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+    errorInformation?: string;
+    parentRuleNames?: string[];
+  };
+}
 export const OutboundRuleCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6339,13 +8505,24 @@ export const OutboundRuleCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type OutboundRuleCreateOrUpdateInput =
-  typeof OutboundRuleCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<OutboundRuleCreateOrUpdateInput>;
 
 // Output Schema
+export interface OutboundRuleCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundRuleCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6365,9 +8542,7 @@ export const OutboundRuleCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type OutboundRuleCreateOrUpdateOutput =
-  typeof OutboundRuleCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<OutboundRuleCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6387,6 +8562,13 @@ export const OutboundRuleCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OutboundRuleDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  ruleName: string;
+}
 export const OutboundRuleDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6398,14 +8580,14 @@ export const OutboundRuleDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type OutboundRuleDeleteInput = typeof OutboundRuleDeleteInput.Type;
+  ) as unknown as Schema.Codec<OutboundRuleDeleteInput>;
 
 // Output Schema
-export const OutboundRuleDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type OutboundRuleDeleteOutput = typeof OutboundRuleDeleteOutput.Type;
+export type OutboundRuleDeleteOutput = void;
+export const OutboundRuleDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundRuleDeleteOutput>;
 
 // The operation
 /**
@@ -6423,6 +8605,13 @@ export const OutboundRuleDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OutboundRuleDeleteOutput,
 }));
 // Input Schema
+export interface OutboundRuleGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  ruleName: string;
+}
 export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6433,12 +8622,24 @@ export const OutboundRuleGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules/{ruleName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type OutboundRuleGetInput = typeof OutboundRuleGetInput.Type;
+) as unknown as Schema.Codec<OutboundRuleGetInput>;
 
 // Output Schema
+export interface OutboundRuleGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundRuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -6457,8 +8658,7 @@ export const OutboundRuleGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type OutboundRuleGetOutput = typeof OutboundRuleGetOutput.Type;
+}) as unknown as Schema.Codec<OutboundRuleGetOutput>;
 
 // The operation
 /**
@@ -6476,6 +8676,12 @@ export const OutboundRuleGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OutboundRuleGetOutput,
 }));
 // Input Schema
+export interface OutboundRuleListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+}
 export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -6485,12 +8691,27 @@ export const OutboundRuleListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type OutboundRuleListInput = typeof OutboundRuleListInput.Type;
+) as unknown as Schema.Codec<OutboundRuleListInput>;
 
 // Output Schema
+export interface OutboundRuleListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const OutboundRuleListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     nextLink: Schema.optional(Schema.String),
@@ -6528,8 +8749,7 @@ export const OutboundRuleListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       ),
     ),
   },
-);
-export type OutboundRuleListOutput = typeof OutboundRuleListOutput.Type;
+) as unknown as Schema.Codec<OutboundRuleListOutput>;
 
 // The operation
 /**
@@ -6546,6 +8766,51 @@ export const OutboundRuleList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OutboundRuleListOutput,
 }));
 // Input Schema
+export interface OutboundRulesPostInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  managedNetworkName: string;
+  properties?: {
+    isolationMode?:
+      | "Disabled"
+      | "AllowInternetOutbound"
+      | "AllowOnlyApprovedOutbound";
+    networkId?: string;
+    outboundRules?: Record<
+      string,
+      {
+        category?: "Required" | "Recommended" | "UserDefined" | "Dependency";
+        status?: "Inactive" | "Active" | "Provisioning" | "Deleting" | "Failed";
+        type: "FQDN" | "PrivateEndpoint" | "ServiceTag";
+        errorInformation?: string;
+        parentRuleNames?: string[];
+      }
+    > | null;
+    status?: { status?: "Inactive" | "Active" };
+    firewallSku?: "Standard" | "Basic";
+    managedNetworkKind?: "V1" | "V2";
+    firewallPublicIpAddress?: string | null;
+    provisioningState?:
+      | "Deferred"
+      | "Updating"
+      | "Succeeded"
+      | "Failed"
+      | "Deleting"
+      | "Deleted";
+  };
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6637,12 +8902,27 @@ export const OutboundRulesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type OutboundRulesPostInput = typeof OutboundRulesPostInput.Type;
+) as unknown as Schema.Codec<OutboundRulesPostInput>;
 
 // Output Schema
+export interface OutboundRulesPostOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const OutboundRulesPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -6679,8 +8959,7 @@ export const OutboundRulesPostOutput =
         }),
       ),
     ),
-  });
-export type OutboundRulesPostOutput = typeof OutboundRulesPostOutput.Type;
+  }) as unknown as Schema.Codec<OutboundRulesPostOutput>;
 
 // The operation
 /**
@@ -6697,6 +8976,24 @@ export const OutboundRulesPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OutboundRulesPostOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+    groupIds?: string[];
+  };
+  etag?: string;
+  location?: string;
+}
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6729,13 +9026,24 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type PrivateEndpointConnectionsCreateOrUpdateInput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6755,9 +9063,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsCreateOrUpdateOutput =
-  typeof PrivateEndpointConnectionsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -6775,6 +9081,12 @@ export const PrivateEndpointConnectionsCreateOrUpdate =
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6785,17 +9097,14 @@ export const PrivateEndpointConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type PrivateEndpointConnectionsDeleteInput =
-  typeof PrivateEndpointConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionsDeleteOutput =
-  typeof PrivateEndpointConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -6813,6 +9122,12 @@ export const PrivateEndpointConnectionsDelete =
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6823,13 +9138,24 @@ export const PrivateEndpointConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type PrivateEndpointConnectionsGetInput =
-  typeof PrivateEndpointConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6849,9 +9175,7 @@ export const PrivateEndpointConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionsGetOutput =
-  typeof PrivateEndpointConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsGetOutput>;
 
 // The operation
 /**
@@ -6869,6 +9193,11 @@ export const PrivateEndpointConnectionsGet =
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateEndpointConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6878,13 +9207,26 @@ export const PrivateEndpointConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateEndpointConnections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type PrivateEndpointConnectionsListInput =
-  typeof PrivateEndpointConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsListInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateEndpointConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6920,9 +9262,7 @@ export const PrivateEndpointConnectionsListOutput =
         }),
       ),
     ),
-  });
-export type PrivateEndpointConnectionsListOutput =
-  typeof PrivateEndpointConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsListOutput>;
 
 // The operation
 /**
@@ -6939,6 +9279,11 @@ export const PrivateEndpointConnectionsList =
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const PrivateLinkResourcesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6948,13 +9293,26 @@ export const PrivateLinkResourcesListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/privateLinkResources",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type PrivateLinkResourcesListInput =
-  typeof PrivateLinkResourcesListInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesListInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesListOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const PrivateLinkResourcesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -6990,9 +9348,7 @@ export const PrivateLinkResourcesListOutput =
         }),
       ),
     ),
-  });
-export type PrivateLinkResourcesListOutput =
-  typeof PrivateLinkResourcesListOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesListOutput>;
 
 // The operation
 /**
@@ -7010,6 +9366,26 @@ export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectCapabilityHostsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  capabilityHostName: string;
+  properties: {
+    aiServicesConnections?: string[] | null;
+    vectorStoreConnections?: string[] | null;
+    storageConnections?: string[] | null;
+    threadStorageConnections?: string[] | null;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Creating"
+      | "Updating"
+      | "Deleting";
+  };
+}
 export const ProjectCapabilityHostsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7045,13 +9421,24 @@ export const ProjectCapabilityHostsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectCapabilityHostsCreateOrUpdateInput =
-  typeof ProjectCapabilityHostsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectCapabilityHostsCreateOrUpdateInput>;
 
 // Output Schema
+export interface ProjectCapabilityHostsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCapabilityHostsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7071,9 +9458,7 @@ export const ProjectCapabilityHostsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCapabilityHostsCreateOrUpdateOutput =
-  typeof ProjectCapabilityHostsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCapabilityHostsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -7092,6 +9477,13 @@ export const ProjectCapabilityHostsCreateOrUpdate =
     outputSchema: ProjectCapabilityHostsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface ProjectCapabilityHostsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  capabilityHostName: string;
+}
 export const ProjectCapabilityHostsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7103,17 +9495,14 @@ export const ProjectCapabilityHostsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectCapabilityHostsDeleteInput =
-  typeof ProjectCapabilityHostsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProjectCapabilityHostsDeleteInput>;
 
 // Output Schema
+export type ProjectCapabilityHostsDeleteOutput = void;
 export const ProjectCapabilityHostsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectCapabilityHostsDeleteOutput =
-  typeof ProjectCapabilityHostsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectCapabilityHostsDeleteOutput>;
 
 // The operation
 /**
@@ -7132,6 +9521,13 @@ export const ProjectCapabilityHostsDelete =
     outputSchema: ProjectCapabilityHostsDeleteOutput,
   }));
 // Input Schema
+export interface ProjectCapabilityHostsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  capabilityHostName: string;
+}
 export const ProjectCapabilityHostsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7143,13 +9539,24 @@ export const ProjectCapabilityHostsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts/{capabilityHostName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectCapabilityHostsGetInput =
-  typeof ProjectCapabilityHostsGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectCapabilityHostsGetInput>;
 
 // Output Schema
+export interface ProjectCapabilityHostsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectCapabilityHostsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7169,9 +9576,7 @@ export const ProjectCapabilityHostsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectCapabilityHostsGetOutput =
-  typeof ProjectCapabilityHostsGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCapabilityHostsGetOutput>;
 
 // The operation
 /**
@@ -7191,6 +9596,12 @@ export const ProjectCapabilityHostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectCapabilityHostsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+}
 export const ProjectCapabilityHostsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7201,13 +9612,27 @@ export const ProjectCapabilityHostsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectCapabilityHostsListInput =
-  typeof ProjectCapabilityHostsListInput.Type;
+  ) as unknown as Schema.Codec<ProjectCapabilityHostsListInput>;
 
 // Output Schema
+export interface ProjectCapabilityHostsListOutput {
+  nextLink?: string | null;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ProjectCapabilityHostsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
@@ -7244,9 +9669,7 @@ export const ProjectCapabilityHostsListOutput =
         }),
       ),
     ),
-  });
-export type ProjectCapabilityHostsListOutput =
-  typeof ProjectCapabilityHostsListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectCapabilityHostsListOutput>;
 
 // The operation
 /**
@@ -7265,6 +9688,174 @@ export const ProjectCapabilityHostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectConnectionsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  connectionName: string;
+  properties: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const ProjectConnectionsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7448,13 +10039,24 @@ export const ProjectConnectionsCreateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectConnectionsCreateInput =
-  typeof ProjectConnectionsCreateInput.Type;
+  ) as unknown as Schema.Codec<ProjectConnectionsCreateInput>;
 
 // Output Schema
+export interface ProjectConnectionsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectConnectionsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7474,9 +10076,7 @@ export const ProjectConnectionsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectConnectionsCreateOutput =
-  typeof ProjectConnectionsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectConnectionsCreateOutput>;
 
 // The operation
 /**
@@ -7496,6 +10096,13 @@ export const ProjectConnectionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectConnectionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  connectionName: string;
+}
 export const ProjectConnectionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7507,17 +10114,14 @@ export const ProjectConnectionsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectConnectionsDeleteInput =
-  typeof ProjectConnectionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ProjectConnectionsDeleteInput>;
 
 // Output Schema
+export type ProjectConnectionsDeleteOutput = void;
 export const ProjectConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectConnectionsDeleteOutput =
-  typeof ProjectConnectionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -7537,6 +10141,13 @@ export const ProjectConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectConnectionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  connectionName: string;
+}
 export const ProjectConnectionsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7548,12 +10159,24 @@ export const ProjectConnectionsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectConnectionsGetInput = typeof ProjectConnectionsGetInput.Type;
+  ) as unknown as Schema.Codec<ProjectConnectionsGetInput>;
 
 // Output Schema
+export interface ProjectConnectionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectConnectionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7573,9 +10196,7 @@ export const ProjectConnectionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectConnectionsGetOutput =
-  typeof ProjectConnectionsGetOutput.Type;
+  }) as unknown as Schema.Codec<ProjectConnectionsGetOutput>;
 
 // The operation
 /**
@@ -7595,6 +10216,15 @@ export const ProjectConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectConnectionsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  target?: string;
+  category?: string;
+  includeAll?: boolean;
+}
 export const ProjectConnectionsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7608,13 +10238,27 @@ export const ProjectConnectionsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectConnectionsListInput =
-  typeof ProjectConnectionsListInput.Type;
+  ) as unknown as Schema.Codec<ProjectConnectionsListInput>;
 
 // Output Schema
+export interface ProjectConnectionsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ProjectConnectionsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -7651,9 +10295,7 @@ export const ProjectConnectionsListOutput =
         }),
       ),
     ),
-  });
-export type ProjectConnectionsListOutput =
-  typeof ProjectConnectionsListOutput.Type;
+  }) as unknown as Schema.Codec<ProjectConnectionsListOutput>;
 
 // The operation
 /**
@@ -7675,6 +10317,174 @@ export const ProjectConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectConnectionsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  connectionName: string;
+  properties?: {
+    authType:
+      | "PAT"
+      | "ManagedIdentity"
+      | "UsernamePassword"
+      | "None"
+      | "SAS"
+      | "AccountKey"
+      | "ServicePrincipal"
+      | "AccessKey"
+      | "ApiKey"
+      | "CustomKeys"
+      | "OAuth2"
+      | "AAD"
+      | "DelegatedSAS"
+      | "ProjectManagedIdentity"
+      | "AccountManagedIdentity"
+      | "UserEntraToken"
+      | "AgentUserImpersonation"
+      | "AgenticIdentityToken"
+      | "AgenticUser";
+    category?:
+      | "PythonFeed"
+      | "ContainerRegistry"
+      | "Git"
+      | "S3"
+      | "Snowflake"
+      | "AzureKeyVault"
+      | "AzureSqlDb"
+      | "AzureSynapseAnalytics"
+      | "AzureMySqlDb"
+      | "AzurePostgresDb"
+      | "ADLSGen2"
+      | "AzureContainerAppEnvironment"
+      | "Redis"
+      | "ApiKey"
+      | "AzureOpenAI"
+      | "AIServices"
+      | "CognitiveSearch"
+      | "CognitiveService"
+      | "CustomKeys"
+      | "AzureBlob"
+      | "AzureStorageAccount"
+      | "AzureOneLake"
+      | "CosmosDb"
+      | "CosmosDbMongoDbApi"
+      | "AzureDataExplorer"
+      | "AzureMariaDb"
+      | "AzureDatabricksDeltaLake"
+      | "AzureSqlMi"
+      | "AzureTableStorage"
+      | "AmazonRdsForOracle"
+      | "AmazonRdsForSqlServer"
+      | "AmazonRedshift"
+      | "Db2"
+      | "Drill"
+      | "GoogleBigQuery"
+      | "Greenplum"
+      | "Hbase"
+      | "Hive"
+      | "Impala"
+      | "Informix"
+      | "MariaDb"
+      | "MicrosoftAccess"
+      | "MySql"
+      | "Netezza"
+      | "Oracle"
+      | "Phoenix"
+      | "PostgreSql"
+      | "Presto"
+      | "SapOpenHub"
+      | "SapBw"
+      | "SapHana"
+      | "SapTable"
+      | "Spark"
+      | "SqlServer"
+      | "Sybase"
+      | "Teradata"
+      | "Vertica"
+      | "Pinecone"
+      | "Databricks"
+      | "Cassandra"
+      | "Couchbase"
+      | "MongoDbV2"
+      | "MongoDbAtlas"
+      | "AmazonS3Compatible"
+      | "FileServer"
+      | "FtpServer"
+      | "GoogleCloudStorage"
+      | "Hdfs"
+      | "OracleCloudStorage"
+      | "Sftp"
+      | "GenericHttp"
+      | "ODataRest"
+      | "Odbc"
+      | "GenericRest"
+      | "RemoteTool"
+      | "AmazonMws"
+      | "Concur"
+      | "Dynamics"
+      | "DynamicsAx"
+      | "DynamicsCrm"
+      | "GoogleAdWords"
+      | "Hubspot"
+      | "Jira"
+      | "Magento"
+      | "Marketo"
+      | "Office365"
+      | "Eloqua"
+      | "Responsys"
+      | "OracleServiceCloud"
+      | "PayPal"
+      | "QuickBooks"
+      | "Salesforce"
+      | "SalesforceServiceCloud"
+      | "SalesforceMarketingCloud"
+      | "SapCloudForCustomer"
+      | "SapEcc"
+      | "ServiceNow"
+      | "SharePointOnlineList"
+      | "Shopify"
+      | "Square"
+      | "WebTable"
+      | "Xero"
+      | "Zoho"
+      | "GenericContainerRegistry"
+      | "Elasticsearch"
+      | "AppInsights"
+      | "AppConfig"
+      | "OpenAI"
+      | "Serp"
+      | "BingLLMSearch"
+      | "Serverless"
+      | "ManagedOnlineEndpoint"
+      | "ApiManagement"
+      | "ModelGateway"
+      | "GroundingWithBingSearch"
+      | "GroundingWithCustomSearch"
+      | "Sharepoint"
+      | "MicrosoftFabric"
+      | "PowerPlatformEnvironment"
+      | "RemoteA2A";
+    createdByWorkspaceArmId?: string;
+    error?: string;
+    expiryTime?: string;
+    group?:
+      | "Azure"
+      | "AzureAI"
+      | "Database"
+      | "NoSQL"
+      | "File"
+      | "GenericProtocol"
+      | "ServicesAndApps";
+    isSharedToAll?: boolean;
+    metadata?: Record<string, string>;
+    peRequirement?: "Required" | "NotRequired" | "NotApplicable";
+    peStatus?: "Inactive" | "Active" | "NotApplicable";
+    sharedUserList?: string[];
+    target?: string;
+    useWorkspaceManagedIdentity?: boolean;
+  };
+}
 export const ProjectConnectionsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7860,13 +10670,24 @@ export const ProjectConnectionsUpdateInput =
     T.Http({
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections/{connectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type ProjectConnectionsUpdateInput =
-  typeof ProjectConnectionsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProjectConnectionsUpdateInput>;
 
 // Output Schema
+export interface ProjectConnectionsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectConnectionsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7886,9 +10707,7 @@ export const ProjectConnectionsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ProjectConnectionsUpdateOutput =
-  typeof ProjectConnectionsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProjectConnectionsUpdateOutput>;
 
 // The operation
 /**
@@ -7908,6 +10727,43 @@ export const ProjectConnectionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ProjectsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled"
+      | "ResolvingDNS";
+    displayName?: string;
+    description?: string;
+    endpoints?: Record<string, string>;
+    isDefault?: boolean;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    tenantId?: string;
+    principalId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -7959,33 +10815,28 @@ export const ProjectsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ProjectsCreateInput = typeof ProjectsCreateInput.Type;
+) as unknown as Schema.Codec<ProjectsCreateInput>;
 
 // Output Schema
+export interface ProjectsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8004,8 +10855,7 @@ export const ProjectsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsCreateOutput = typeof ProjectsCreateOutput.Type;
+}) as unknown as Schema.Codec<ProjectsCreateOutput>;
 
 // The operation
 /**
@@ -8022,6 +10872,12 @@ export const ProjectsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsCreateOutput,
 }));
 // Input Schema
+export interface ProjectsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+}
 export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8031,14 +10887,14 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
+) as unknown as Schema.Codec<ProjectsDeleteInput>;
 
 // Output Schema
-export const ProjectsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ProjectsDeleteOutput = typeof ProjectsDeleteOutput.Type;
+export type ProjectsDeleteOutput = void;
+export const ProjectsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProjectsDeleteOutput>;
 
 // The operation
 /**
@@ -8055,6 +10911,12 @@ export const ProjectsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsDeleteOutput,
 }));
 // Input Schema
+export interface ProjectsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+}
 export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8064,12 +10926,24 @@ export const ProjectsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ProjectsGetInput = typeof ProjectsGetInput.Type;
+) as unknown as Schema.Codec<ProjectsGetInput>;
 
 // Output Schema
+export interface ProjectsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8088,8 +10962,7 @@ export const ProjectsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsGetOutput = typeof ProjectsGetOutput.Type;
+}) as unknown as Schema.Codec<ProjectsGetOutput>;
 
 // The operation
 /**
@@ -8106,6 +10979,11 @@ export const ProjectsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsGetOutput,
 }));
 // Input Schema
+export interface ProjectsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8114,12 +10992,27 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ProjectsListInput = typeof ProjectsListInput.Type;
+) as unknown as Schema.Codec<ProjectsListInput>;
 
 // Output Schema
+export interface ProjectsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -8155,8 +11048,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ProjectsListOutput = typeof ProjectsListOutput.Type;
+}) as unknown as Schema.Codec<ProjectsListOutput>;
 
 // The operation
 /**
@@ -8172,6 +11064,43 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsListOutput,
 }));
 // Input Schema
+export interface ProjectsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  projectName: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "Creating"
+      | "Deleting"
+      | "Moving"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled"
+      | "ResolvingDNS";
+    displayName?: string;
+    description?: string;
+    endpoints?: Record<string, string>;
+    isDefault?: boolean;
+  };
+  tags?: Record<string, string>;
+  location?: string;
+  etag?: string;
+  identity?: {
+    type?:
+      | "None"
+      | "SystemAssigned"
+      | "UserAssigned"
+      | "SystemAssigned, UserAssigned";
+    tenantId?: string;
+    principalId?: string;
+    userAssignedIdentities?: Record<
+      string,
+      { principalId?: string; clientId?: string }
+    >;
+  };
+}
 export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8223,33 +11152,28 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-  id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  type: Schema.optional(Schema.String),
-  systemData: Schema.optional(
-    Schema.Struct({
-      createdBy: Schema.optional(Schema.String),
-      createdByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedBy: Schema.optional(Schema.String),
-      lastModifiedByType: Schema.optional(
-        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ),
 }).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
+) as unknown as Schema.Codec<ProjectsUpdateInput>;
 
 // Output Schema
+export interface ProjectsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8268,8 +11192,7 @@ export const ProjectsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type ProjectsUpdateOutput = typeof ProjectsUpdateOutput.Type;
+}) as unknown as Schema.Codec<ProjectsUpdateOutput>;
 
 // The operation
 /**
@@ -8286,6 +11209,21 @@ export const ProjectsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsUpdateOutput,
 }));
 // Input Schema
+export interface QuotaTiersCreateOrUpdateInput {
+  subscriptionId: string;
+  default: string;
+  properties?: {
+    currentTierName?: string;
+    tierUpgradePolicy?: "OnceUpgradeIsAvailable" | "NoAutoUpgrade";
+    assignmentDate?: string;
+    tierUpgradeEligibilityInfo?: {
+      nextTierName?: string | null;
+      upgradeAvailabilityStatus?: "Available" | "NotAvailable";
+      upgradeApplicableDate?: string | null;
+      upgradeUnavailabilityReason?: string | null;
+    };
+  };
+}
 export const QuotaTiersCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8317,13 +11255,24 @@ export const QuotaTiersCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type QuotaTiersCreateOrUpdateInput =
-  typeof QuotaTiersCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<QuotaTiersCreateOrUpdateInput>;
 
 // Output Schema
+export interface QuotaTiersCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaTiersCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8343,9 +11292,7 @@ export const QuotaTiersCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type QuotaTiersCreateOrUpdateOutput =
-  typeof QuotaTiersCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<QuotaTiersCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8364,6 +11311,10 @@ export const QuotaTiersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface QuotaTiersGetInput {
+  subscriptionId: string;
+  default: string;
+}
 export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
@@ -8371,12 +11322,24 @@ export const QuotaTiersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type QuotaTiersGetInput = typeof QuotaTiersGetInput.Type;
+) as unknown as Schema.Codec<QuotaTiersGetInput>;
 
 // Output Schema
+export interface QuotaTiersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaTiersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -8395,8 +11358,7 @@ export const QuotaTiersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type QuotaTiersGetOutput = typeof QuotaTiersGetOutput.Type;
+}) as unknown as Schema.Codec<QuotaTiersGetOutput>;
 
 // The operation
 /**
@@ -8413,6 +11375,9 @@ export const QuotaTiersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaTiersGetOutput,
 }));
 // Input Schema
+export interface QuotaTiersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const QuotaTiersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8420,13 +11385,27 @@ export const QuotaTiersListBySubscriptionInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type QuotaTiersListBySubscriptionInput =
-  typeof QuotaTiersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<QuotaTiersListBySubscriptionInput>;
 
 // Output Schema
+export interface QuotaTiersListBySubscriptionOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const QuotaTiersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -8463,9 +11442,7 @@ export const QuotaTiersListBySubscriptionOutput =
         }),
       ),
     ),
-  });
-export type QuotaTiersListBySubscriptionOutput =
-  typeof QuotaTiersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<QuotaTiersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -8480,6 +11457,21 @@ export const QuotaTiersListBySubscription =
     outputSchema: QuotaTiersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface QuotaTiersUpdateInput {
+  subscriptionId: string;
+  default: string;
+  properties?: {
+    currentTierName?: string;
+    tierUpgradePolicy?: "OnceUpgradeIsAvailable" | "NoAutoUpgrade";
+    assignmentDate?: string;
+    tierUpgradeEligibilityInfo?: {
+      nextTierName?: string | null;
+      upgradeAvailabilityStatus?: "Available" | "NotAvailable";
+      upgradeApplicableDate?: string | null;
+      upgradeUnavailabilityReason?: string | null;
+    };
+  };
+}
 export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   default: Schema.String.pipe(T.PathParam()),
@@ -8508,12 +11500,24 @@ export const QuotaTiersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers/{default}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type QuotaTiersUpdateInput = typeof QuotaTiersUpdateInput.Type;
+) as unknown as Schema.Codec<QuotaTiersUpdateInput>;
 
 // Output Schema
+export interface QuotaTiersUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const QuotaTiersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -8534,8 +11538,7 @@ export const QuotaTiersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type QuotaTiersUpdateOutput = typeof QuotaTiersUpdateOutput.Type;
+) as unknown as Schema.Codec<QuotaTiersUpdateOutput>;
 
 // The operation
 /**
@@ -8552,6 +11555,12 @@ export const QuotaTiersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: QuotaTiersUpdateOutput,
 }));
 // Input Schema
+export interface RaiBlocklistItemsBatchAddInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+}
 export const RaiBlocklistItemsBatchAddInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8562,13 +11571,24 @@ export const RaiBlocklistItemsBatchAddInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/addRaiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsBatchAddInput =
-  typeof RaiBlocklistItemsBatchAddInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsBatchAddInput>;
 
 // Output Schema
+export interface RaiBlocklistItemsBatchAddOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiBlocklistItemsBatchAddOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8588,9 +11608,7 @@ export const RaiBlocklistItemsBatchAddOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiBlocklistItemsBatchAddOutput =
-  typeof RaiBlocklistItemsBatchAddOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistItemsBatchAddOutput>;
 
 // The operation
 /**
@@ -8609,6 +11627,12 @@ export const RaiBlocklistItemsBatchAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiBlocklistItemsBatchDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+}
 export const RaiBlocklistItemsBatchDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8619,17 +11643,14 @@ export const RaiBlocklistItemsBatchDeleteInput =
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/deleteRaiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsBatchDeleteInput =
-  typeof RaiBlocklistItemsBatchDeleteInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsBatchDeleteInput>;
 
 // Output Schema
+export type RaiBlocklistItemsBatchDeleteOutput = void;
 export const RaiBlocklistItemsBatchDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiBlocklistItemsBatchDeleteOutput =
-  typeof RaiBlocklistItemsBatchDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsBatchDeleteOutput>;
 
 // The operation
 /**
@@ -8647,6 +11668,16 @@ export const RaiBlocklistItemsBatchDelete =
     outputSchema: RaiBlocklistItemsBatchDeleteOutput,
   }));
 // Input Schema
+export interface RaiBlocklistItemsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+  raiBlocklistItemName: string;
+  properties?: { pattern?: string; isRegex?: boolean };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiBlocklistItemsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8666,13 +11697,24 @@ export const RaiBlocklistItemsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsCreateOrUpdateInput =
-  typeof RaiBlocklistItemsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiBlocklistItemsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiBlocklistItemsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8692,9 +11734,7 @@ export const RaiBlocklistItemsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiBlocklistItemsCreateOrUpdateOutput =
-  typeof RaiBlocklistItemsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistItemsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8713,6 +11753,13 @@ export const RaiBlocklistItemsCreateOrUpdate =
     outputSchema: RaiBlocklistItemsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RaiBlocklistItemsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+  raiBlocklistItemName: string;
+}
 export const RaiBlocklistItemsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8724,17 +11771,14 @@ export const RaiBlocklistItemsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsDeleteInput =
-  typeof RaiBlocklistItemsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsDeleteInput>;
 
 // Output Schema
+export type RaiBlocklistItemsDeleteOutput = void;
 export const RaiBlocklistItemsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiBlocklistItemsDeleteOutput =
-  typeof RaiBlocklistItemsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistItemsDeleteOutput>;
 
 // The operation
 /**
@@ -8754,6 +11798,13 @@ export const RaiBlocklistItemsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiBlocklistItemsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+  raiBlocklistItemName: string;
+}
 export const RaiBlocklistItemsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8765,12 +11816,24 @@ export const RaiBlocklistItemsGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems/{raiBlocklistItemName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsGetInput = typeof RaiBlocklistItemsGetInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsGetInput>;
 
 // Output Schema
+export interface RaiBlocklistItemsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiBlocklistItemsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8790,8 +11853,7 @@ export const RaiBlocklistItemsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiBlocklistItemsGetOutput = typeof RaiBlocklistItemsGetOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistItemsGetOutput>;
 
 // The operation
 /**
@@ -8811,6 +11873,12 @@ export const RaiBlocklistItemsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiBlocklistItemsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+}
 export const RaiBlocklistItemsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8821,12 +11889,27 @@ export const RaiBlocklistItemsListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistItemsListInput = typeof RaiBlocklistItemsListInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistItemsListInput>;
 
 // Output Schema
+export interface RaiBlocklistItemsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiBlocklistItemsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -8863,9 +11946,7 @@ export const RaiBlocklistItemsListOutput =
         }),
       ),
     ),
-  });
-export type RaiBlocklistItemsListOutput =
-  typeof RaiBlocklistItemsListOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistItemsListOutput>;
 
 // The operation
 /**
@@ -8884,6 +11965,15 @@ export const RaiBlocklistItemsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiBlocklistsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+  properties?: { description?: string };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiBlocklistsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8901,13 +11991,24 @@ export const RaiBlocklistsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistsCreateOrUpdateInput =
-  typeof RaiBlocklistsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiBlocklistsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiBlocklistsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8927,9 +12028,7 @@ export const RaiBlocklistsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiBlocklistsCreateOrUpdateOutput =
-  typeof RaiBlocklistsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -8948,6 +12047,12 @@ export const RaiBlocklistsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiBlocklistsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+}
 export const RaiBlocklistsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8958,15 +12063,14 @@ export const RaiBlocklistsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiBlocklistsDeleteInput = typeof RaiBlocklistsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RaiBlocklistsDeleteInput>;
 
 // Output Schema
+export type RaiBlocklistsDeleteOutput = void;
 export const RaiBlocklistsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiBlocklistsDeleteOutput = typeof RaiBlocklistsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiBlocklistsDeleteOutput>;
 
 // The operation
 /**
@@ -8983,6 +12087,12 @@ export const RaiBlocklistsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiBlocklistsDeleteOutput,
 }));
 // Input Schema
+export interface RaiBlocklistsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiBlocklistName: string;
+}
 export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -8992,12 +12102,24 @@ export const RaiBlocklistsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiBlocklistsGetInput = typeof RaiBlocklistsGetInput.Type;
+) as unknown as Schema.Codec<RaiBlocklistsGetInput>;
 
 // Output Schema
+export interface RaiBlocklistsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiBlocklistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -9018,8 +12140,7 @@ export const RaiBlocklistsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RaiBlocklistsGetOutput = typeof RaiBlocklistsGetOutput.Type;
+) as unknown as Schema.Codec<RaiBlocklistsGetOutput>;
 
 // The operation
 /**
@@ -9036,6 +12157,11 @@ export const RaiBlocklistsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiBlocklistsGetOutput,
 }));
 // Input Schema
+export interface RaiBlocklistsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9046,12 +12172,27 @@ export const RaiBlocklistsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiBlocklistsListInput = typeof RaiBlocklistsListInput.Type;
+) as unknown as Schema.Codec<RaiBlocklistsListInput>;
 
 // Output Schema
+export interface RaiBlocklistsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiBlocklistsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -9088,8 +12229,7 @@ export const RaiBlocklistsListOutput =
         }),
       ),
     ),
-  });
-export type RaiBlocklistsListOutput = typeof RaiBlocklistsListOutput.Type;
+  }) as unknown as Schema.Codec<RaiBlocklistsListOutput>;
 
 // The operation
 /**
@@ -9105,6 +12245,11 @@ export const RaiBlocklistsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiBlocklistsListOutput,
 }));
 // Input Schema
+export interface RaiContentFiltersGetInput {
+  subscriptionId: string;
+  location: string;
+  filterName: string;
+}
 export const RaiContentFiltersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9114,12 +12259,24 @@ export const RaiContentFiltersGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters/{filterName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiContentFiltersGetInput = typeof RaiContentFiltersGetInput.Type;
+  ) as unknown as Schema.Codec<RaiContentFiltersGetInput>;
 
 // Output Schema
+export interface RaiContentFiltersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiContentFiltersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9139,8 +12296,7 @@ export const RaiContentFiltersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiContentFiltersGetOutput = typeof RaiContentFiltersGetOutput.Type;
+  }) as unknown as Schema.Codec<RaiContentFiltersGetOutput>;
 
 // The operation
 /**
@@ -9158,6 +12314,10 @@ export const RaiContentFiltersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiContentFiltersListInput {
+  subscriptionId: string;
+  location: string;
+}
 export const RaiContentFiltersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9166,12 +12326,27 @@ export const RaiContentFiltersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiContentFiltersListInput = typeof RaiContentFiltersListInput.Type;
+  ) as unknown as Schema.Codec<RaiContentFiltersListInput>;
 
 // Output Schema
+export interface RaiContentFiltersListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiContentFiltersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -9208,9 +12383,7 @@ export const RaiContentFiltersListOutput =
         }),
       ),
     ),
-  });
-export type RaiContentFiltersListOutput =
-  typeof RaiContentFiltersListOutput.Type;
+  }) as unknown as Schema.Codec<RaiContentFiltersListOutput>;
 
 // The operation
 /**
@@ -9227,6 +12400,23 @@ export const RaiContentFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiExternalSafetyProviderCreateOrUpdateInput {
+  subscriptionId: string;
+  safetyProviderName: string;
+  properties?: {
+    providerId?: string;
+    providerName?: string;
+    mode?: string;
+    url?: string;
+    secretName?: string;
+    managedIdentity?: string;
+    keyVaultUri?: string;
+    createdAt?: string;
+    lastModifiedAt?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiExternalSafetyProviderCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9250,13 +12440,24 @@ export const RaiExternalSafetyProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiExternalSafetyProviderCreateOrUpdateInput =
-  typeof RaiExternalSafetyProviderCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiExternalSafetyProviderCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiExternalSafetyProviderCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiExternalSafetyProviderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9276,9 +12477,7 @@ export const RaiExternalSafetyProviderCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiExternalSafetyProviderCreateOrUpdateOutput =
-  typeof RaiExternalSafetyProviderCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiExternalSafetyProviderCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9294,6 +12493,10 @@ export const RaiExternalSafetyProviderCreateOrUpdate =
     outputSchema: RaiExternalSafetyProviderCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface RaiExternalSafetyProviderDeleteInput {
+  subscriptionId: string;
+  safetyProviderName: string;
+}
 export const RaiExternalSafetyProviderDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9302,17 +12505,14 @@ export const RaiExternalSafetyProviderDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiExternalSafetyProviderDeleteInput =
-  typeof RaiExternalSafetyProviderDeleteInput.Type;
+  ) as unknown as Schema.Codec<RaiExternalSafetyProviderDeleteInput>;
 
 // Output Schema
+export type RaiExternalSafetyProviderDeleteOutput = void;
 export const RaiExternalSafetyProviderDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiExternalSafetyProviderDeleteOutput =
-  typeof RaiExternalSafetyProviderDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiExternalSafetyProviderDeleteOutput>;
 
 // The operation
 /**
@@ -9328,6 +12528,10 @@ export const RaiExternalSafetyProviderDelete =
     outputSchema: RaiExternalSafetyProviderDeleteOutput,
   }));
 // Input Schema
+export interface RaiExternalSafetyProviderGetInput {
+  subscriptionId: string;
+  safetyProviderName: string;
+}
 export const RaiExternalSafetyProviderGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9336,13 +12540,24 @@ export const RaiExternalSafetyProviderGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiExternalSafetyProviderGetInput =
-  typeof RaiExternalSafetyProviderGetInput.Type;
+  ) as unknown as Schema.Codec<RaiExternalSafetyProviderGetInput>;
 
 // Output Schema
+export interface RaiExternalSafetyProviderGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiExternalSafetyProviderGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9362,9 +12577,7 @@ export const RaiExternalSafetyProviderGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiExternalSafetyProviderGetOutput =
-  typeof RaiExternalSafetyProviderGetOutput.Type;
+  }) as unknown as Schema.Codec<RaiExternalSafetyProviderGetOutput>;
 
 // The operation
 /**
@@ -9380,6 +12593,9 @@ export const RaiExternalSafetyProviderGet =
     outputSchema: RaiExternalSafetyProviderGetOutput,
   }));
 // Input Schema
+export interface RaiExternalSafetyProvidersListInput {
+  subscriptionId: string;
+}
 export const RaiExternalSafetyProvidersListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9387,13 +12603,27 @@ export const RaiExternalSafetyProvidersListInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiExternalSafetyProvidersListInput =
-  typeof RaiExternalSafetyProvidersListInput.Type;
+  ) as unknown as Schema.Codec<RaiExternalSafetyProvidersListInput>;
 
 // Output Schema
+export interface RaiExternalSafetyProvidersListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiExternalSafetyProvidersListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -9430,9 +12660,7 @@ export const RaiExternalSafetyProvidersListOutput =
         }),
       ),
     ),
-  });
-export type RaiExternalSafetyProvidersListOutput =
-  typeof RaiExternalSafetyProvidersListOutput.Type;
+  }) as unknown as Schema.Codec<RaiExternalSafetyProvidersListOutput>;
 
 // The operation
 /**
@@ -9447,6 +12675,35 @@ export const RaiExternalSafetyProvidersList =
     outputSchema: RaiExternalSafetyProvidersListOutput,
   }));
 // Input Schema
+export interface RaiPoliciesCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiPolicyName: string;
+  properties?: {
+    type?: "UserManaged" | "SystemManaged";
+    mode?: "Default" | "Deferred" | "Blocking" | "Asynchronous_filter";
+    basePolicyName?: string;
+    contentFilters?: {
+      name?: string;
+      enabled?: boolean;
+      severityThreshold?: "Low" | "Medium" | "High";
+      blocking?: boolean;
+      source?:
+        | "Prompt"
+        | "Completion"
+        | "PreToolCall"
+        | "PostToolCall"
+        | "PreRun"
+        | "PostRun";
+      action?: "None" | "BLOCKING" | "ANNOTATING" | "HITL" | "RETRY";
+    }[];
+    customBlocklists?: { blocklistName?: string; blocking?: boolean }[];
+    safetyProviders?: { safetyProviderName?: string; blocking?: boolean }[];
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiPoliciesCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9522,13 +12779,24 @@ export const RaiPoliciesCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiPoliciesCreateOrUpdateInput =
-  typeof RaiPoliciesCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiPoliciesCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiPoliciesCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiPoliciesCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9548,9 +12816,7 @@ export const RaiPoliciesCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiPoliciesCreateOrUpdateOutput =
-  typeof RaiPoliciesCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiPoliciesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9569,6 +12835,12 @@ export const RaiPoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiPoliciesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiPolicyName: string;
+}
 export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9580,14 +12852,14 @@ export const RaiPoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiPoliciesDeleteInput = typeof RaiPoliciesDeleteInput.Type;
+) as unknown as Schema.Codec<RaiPoliciesDeleteInput>;
 
 // Output Schema
-export const RaiPoliciesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiPoliciesDeleteOutput = typeof RaiPoliciesDeleteOutput.Type;
+export type RaiPoliciesDeleteOutput = void;
+export const RaiPoliciesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -9604,6 +12876,12 @@ export const RaiPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiPoliciesDeleteOutput,
 }));
 // Input Schema
+export interface RaiPoliciesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiPolicyName: string;
+}
 export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9613,12 +12891,24 @@ export const RaiPoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies/{raiPolicyName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiPoliciesGetInput = typeof RaiPoliciesGetInput.Type;
+) as unknown as Schema.Codec<RaiPoliciesGetInput>;
 
 // Output Schema
+export interface RaiPoliciesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiPoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -9637,8 +12927,7 @@ export const RaiPoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RaiPoliciesGetOutput = typeof RaiPoliciesGetOutput.Type;
+}) as unknown as Schema.Codec<RaiPoliciesGetOutput>;
 
 // The operation
 /**
@@ -9655,6 +12944,11 @@ export const RaiPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiPoliciesGetOutput,
 }));
 // Input Schema
+export interface RaiPoliciesListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9663,12 +12957,27 @@ export const RaiPoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiPoliciesListInput = typeof RaiPoliciesListInput.Type;
+) as unknown as Schema.Codec<RaiPoliciesListInput>;
 
 // Output Schema
+export interface RaiPoliciesListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiPoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -9704,8 +13013,7 @@ export const RaiPoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type RaiPoliciesListOutput = typeof RaiPoliciesListOutput.Type;
+}) as unknown as Schema.Codec<RaiPoliciesListOutput>;
 
 // The operation
 /**
@@ -9721,6 +13029,19 @@ export const RaiPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiPoliciesListOutput,
 }));
 // Input Schema
+export interface RaiToolLabelsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiToolConnectionName: string;
+  properties?: {
+    toolConnectionName: string;
+    accountScope?: { labelValues?: Record<string, string> };
+    projectScopes?: { project: string; labelValues: Record<string, string> }[];
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiToolLabelsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9753,13 +13074,24 @@ export const RaiToolLabelsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiToolLabelsCreateOrUpdateInput =
-  typeof RaiToolLabelsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiToolLabelsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiToolLabelsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiToolLabelsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9779,9 +13111,7 @@ export const RaiToolLabelsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiToolLabelsCreateOrUpdateOutput =
-  typeof RaiToolLabelsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiToolLabelsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -9800,6 +13130,12 @@ export const RaiToolLabelsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiToolLabelsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiToolConnectionName: string;
+}
 export const RaiToolLabelsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9810,15 +13146,14 @@ export const RaiToolLabelsDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiToolLabelsDeleteInput = typeof RaiToolLabelsDeleteInput.Type;
+  ) as unknown as Schema.Codec<RaiToolLabelsDeleteInput>;
 
 // Output Schema
+export type RaiToolLabelsDeleteOutput = void;
 export const RaiToolLabelsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiToolLabelsDeleteOutput = typeof RaiToolLabelsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiToolLabelsDeleteOutput>;
 
 // The operation
 /**
@@ -9835,6 +13170,12 @@ export const RaiToolLabelsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiToolLabelsDeleteOutput,
 }));
 // Input Schema
+export interface RaiToolLabelsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiToolConnectionName: string;
+}
 export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -9844,12 +13185,24 @@ export const RaiToolLabelsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels/{raiToolConnectionName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiToolLabelsGetInput = typeof RaiToolLabelsGetInput.Type;
+) as unknown as Schema.Codec<RaiToolLabelsGetInput>;
 
 // Output Schema
+export interface RaiToolLabelsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiToolLabelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -9870,8 +13223,7 @@ export const RaiToolLabelsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type RaiToolLabelsGetOutput = typeof RaiToolLabelsGetOutput.Type;
+) as unknown as Schema.Codec<RaiToolLabelsGetOutput>;
 
 // The operation
 /**
@@ -9888,6 +13240,11 @@ export const RaiToolLabelsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiToolLabelsGetOutput,
 }));
 // Input Schema
+export interface RaiToolLabelsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9898,12 +13255,27 @@ export const RaiToolLabelsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiToolLabelsListInput = typeof RaiToolLabelsListInput.Type;
+) as unknown as Schema.Codec<RaiToolLabelsListInput>;
 
 // Output Schema
+export interface RaiToolLabelsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiToolLabelsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
@@ -9940,8 +13312,7 @@ export const RaiToolLabelsListOutput =
         }),
       ),
     ),
-  });
-export type RaiToolLabelsListOutput = typeof RaiToolLabelsListOutput.Type;
+  }) as unknown as Schema.Codec<RaiToolLabelsListOutput>;
 
 // The operation
 /**
@@ -9957,6 +13328,24 @@ export const RaiToolLabelsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiToolLabelsListOutput,
 }));
 // Input Schema
+export interface RaiTopicsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiTopicName: string;
+  properties?: {
+    topicId?: string;
+    topicName?: string;
+    description?: string;
+    sampleBlobUrl?: string;
+    status?: string;
+    failedReason?: string;
+    createdAt?: string;
+    lastModifiedAt?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const RaiTopicsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9981,13 +13370,24 @@ export const RaiTopicsCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type RaiTopicsCreateOrUpdateInput =
-  typeof RaiTopicsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<RaiTopicsCreateOrUpdateInput>;
 
 // Output Schema
+export interface RaiTopicsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiTopicsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10007,9 +13407,7 @@ export const RaiTopicsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RaiTopicsCreateOrUpdateOutput =
-  typeof RaiTopicsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<RaiTopicsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10028,6 +13426,12 @@ export const RaiTopicsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RaiTopicsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiTopicName: string;
+}
 export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10037,14 +13441,14 @@ export const RaiTopicsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiTopicsDeleteInput = typeof RaiTopicsDeleteInput.Type;
+) as unknown as Schema.Codec<RaiTopicsDeleteInput>;
 
 // Output Schema
-export const RaiTopicsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RaiTopicsDeleteOutput = typeof RaiTopicsDeleteOutput.Type;
+export type RaiTopicsDeleteOutput = void;
+export const RaiTopicsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RaiTopicsDeleteOutput>;
 
 // The operation
 /**
@@ -10061,6 +13465,12 @@ export const RaiTopicsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiTopicsDeleteOutput,
 }));
 // Input Schema
+export interface RaiTopicsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  raiTopicName: string;
+}
 export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10070,12 +13480,24 @@ export const RaiTopicsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics/{raiTopicName}",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiTopicsGetInput = typeof RaiTopicsGetInput.Type;
+) as unknown as Schema.Codec<RaiTopicsGetInput>;
 
 // Output Schema
+export interface RaiTopicsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RaiTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -10094,8 +13516,7 @@ export const RaiTopicsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type RaiTopicsGetOutput = typeof RaiTopicsGetOutput.Type;
+}) as unknown as Schema.Codec<RaiTopicsGetOutput>;
 
 // The operation
 /**
@@ -10112,6 +13533,11 @@ export const RaiTopicsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiTopicsGetOutput,
 }));
 // Input Schema
+export interface RaiTopicsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+}
 export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -10120,12 +13546,27 @@ export const RaiTopicsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type RaiTopicsListInput = typeof RaiTopicsListInput.Type;
+) as unknown as Schema.Codec<RaiTopicsListInput>;
 
 // Output Schema
+export interface RaiTopicsListOutput {
+  nextLink?: string;
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+}
 export const RaiTopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -10161,8 +13602,7 @@ export const RaiTopicsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type RaiTopicsListOutput = typeof RaiTopicsListOutput.Type;
+}) as unknown as Schema.Codec<RaiTopicsListOutput>;
 
 // The operation
 /**
@@ -10178,18 +13618,36 @@ export const RaiTopicsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: RaiTopicsListOutput,
 }));
 // Input Schema
+export interface ResourceSkusListInput {
+  subscriptionId: string;
+}
 export const ResourceSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/skus",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type ResourceSkusListInput = typeof ResourceSkusListInput.Type;
+) as unknown as Schema.Codec<ResourceSkusListInput>;
 
 // Output Schema
+export interface ResourceSkusListOutput {
+  value: {
+    resourceType?: string;
+    name?: string;
+    tier?: string;
+    kind?: string;
+    locations?: string[];
+    restrictions?: {
+      type?: "Location" | "Zone";
+      values?: string[];
+      restrictionInfo?: { locations?: string[]; zones?: string[] };
+      reasonCode?: "QuotaId" | "NotAvailableForSubscription";
+    }[];
+  }[];
+  nextLink?: string;
+}
 export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     value: Schema.Array(
@@ -10220,8 +13678,7 @@ export const ResourceSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
     nextLink: Schema.optional(Schema.String),
   },
-);
-export type ResourceSkusListOutput = typeof ResourceSkusListOutput.Type;
+) as unknown as Schema.Codec<ResourceSkusListOutput>;
 
 // The operation
 /**
@@ -10235,6 +13692,33 @@ export const ResourceSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ResourceSkusListOutput,
 }));
 // Input Schema
+export interface SubscriptionRaiPolicyCreateOrUpdateInput {
+  subscriptionId: string;
+  raiPolicyName: string;
+  properties?: {
+    type?: "UserManaged" | "SystemManaged";
+    mode?: "Default" | "Deferred" | "Blocking" | "Asynchronous_filter";
+    basePolicyName?: string;
+    contentFilters?: {
+      name?: string;
+      enabled?: boolean;
+      severityThreshold?: "Low" | "Medium" | "High";
+      blocking?: boolean;
+      source?:
+        | "Prompt"
+        | "Completion"
+        | "PreToolCall"
+        | "PostToolCall"
+        | "PreRun"
+        | "PostRun";
+      action?: "None" | "BLOCKING" | "ANNOTATING" | "HITL" | "RETRY";
+    }[];
+    customBlocklists?: { blocklistName?: string; blocking?: boolean }[];
+    safetyProviders?: { safetyProviderName?: string; blocking?: boolean }[];
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const SubscriptionRaiPolicyCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10308,13 +13792,24 @@ export const SubscriptionRaiPolicyCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type SubscriptionRaiPolicyCreateOrUpdateInput =
-  typeof SubscriptionRaiPolicyCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionRaiPolicyCreateOrUpdateInput>;
 
 // Output Schema
+export interface SubscriptionRaiPolicyCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SubscriptionRaiPolicyCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10334,9 +13829,7 @@ export const SubscriptionRaiPolicyCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SubscriptionRaiPolicyCreateOrUpdateOutput =
-  typeof SubscriptionRaiPolicyCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionRaiPolicyCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10352,6 +13845,10 @@ export const SubscriptionRaiPolicyCreateOrUpdate =
     outputSchema: SubscriptionRaiPolicyCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SubscriptionRaiPolicyDeleteInput {
+  subscriptionId: string;
+  raiPolicyName: string;
+}
 export const SubscriptionRaiPolicyDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10360,17 +13857,14 @@ export const SubscriptionRaiPolicyDeleteInput =
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type SubscriptionRaiPolicyDeleteInput =
-  typeof SubscriptionRaiPolicyDeleteInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionRaiPolicyDeleteInput>;
 
 // Output Schema
+export type SubscriptionRaiPolicyDeleteOutput = void;
 export const SubscriptionRaiPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SubscriptionRaiPolicyDeleteOutput =
-  typeof SubscriptionRaiPolicyDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SubscriptionRaiPolicyDeleteOutput>;
 
 // The operation
 /**
@@ -10387,6 +13881,10 @@ export const SubscriptionRaiPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SubscriptionRaiPolicyGetInput {
+  subscriptionId: string;
+  raiPolicyName: string;
+}
 export const SubscriptionRaiPolicyGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10395,13 +13893,24 @@ export const SubscriptionRaiPolicyGetInput =
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiPolicy/{raiPolicyName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type SubscriptionRaiPolicyGetInput =
-  typeof SubscriptionRaiPolicyGetInput.Type;
+  ) as unknown as Schema.Codec<SubscriptionRaiPolicyGetInput>;
 
 // Output Schema
+export interface SubscriptionRaiPolicyGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SubscriptionRaiPolicyGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10421,9 +13930,7 @@ export const SubscriptionRaiPolicyGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SubscriptionRaiPolicyGetOutput =
-  typeof SubscriptionRaiPolicyGetOutput.Type;
+  }) as unknown as Schema.Codec<SubscriptionRaiPolicyGetOutput>;
 
 // The operation
 /**
@@ -10440,6 +13947,25 @@ export const SubscriptionRaiPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TestRaiExternalSafetyProviderCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  accountName: string;
+  safetyProviderName: string;
+  properties?: {
+    providerId?: string;
+    providerName?: string;
+    mode?: string;
+    url?: string;
+    secretName?: string;
+    managedIdentity?: string;
+    keyVaultUri?: string;
+    createdAt?: string;
+    lastModifiedAt?: string;
+  };
+  etag?: string;
+  tags?: Record<string, string>;
+}
 export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10465,13 +13991,24 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateInput =
     T.Http({
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/testRaiExternalSafetyProvider/{safetyProviderName}",
-      apiVersion: "2026-03-01",
+      apiVersion: "2026-05-01",
     }),
-  );
-export type TestRaiExternalSafetyProviderCreateOrUpdateInput =
-  typeof TestRaiExternalSafetyProviderCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TestRaiExternalSafetyProviderCreateOrUpdateInput>;
 
 // Output Schema
+export interface TestRaiExternalSafetyProviderCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TestRaiExternalSafetyProviderCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10491,9 +14028,7 @@ export const TestRaiExternalSafetyProviderCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TestRaiExternalSafetyProviderCreateOrUpdateOutput =
-  typeof TestRaiExternalSafetyProviderCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TestRaiExternalSafetyProviderCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -10511,6 +14046,11 @@ export const TestRaiExternalSafetyProviderCreateOrUpdate =
     outputSchema: TestRaiExternalSafetyProviderCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface UsagesListInput {
+  subscriptionId: string;
+  location: string;
+  $filter?: string;
+}
 export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   location: Schema.String.pipe(T.PathParam()),
@@ -10519,12 +14059,30 @@ export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/usages",
-    apiVersion: "2026-03-01",
+    apiVersion: "2026-05-01",
   }),
-);
-export type UsagesListInput = typeof UsagesListInput.Type;
+) as unknown as Schema.Codec<UsagesListInput>;
 
 // Output Schema
+export interface UsagesListOutput {
+  nextLink?: string;
+  value?: {
+    unit?:
+      | "Count"
+      | "Bytes"
+      | "Seconds"
+      | "Percent"
+      | "CountPerSecond"
+      | "BytesPerSecond"
+      | "Milliseconds";
+    name?: { value?: string; localizedValue?: string };
+    quotaPeriod?: string;
+    limit?: number;
+    currentValue?: number;
+    nextResetTime?: string;
+    status?: "Included" | "Blocked" | "InOverage" | "Unknown";
+  }[];
+}
 export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
@@ -10557,8 +14115,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type UsagesListOutput = typeof UsagesListOutput.Type;
+}) as unknown as Schema.Codec<UsagesListOutput>;
 
 // The operation
 /**

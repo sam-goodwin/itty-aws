@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateGroupUserSecurityInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpdateGroupUserSecurityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,21 +19,18 @@ export const UpdateGroupUserSecurityInput =
       method: "PATCH",
       path: "/api/atlas/v2/groups/{groupId}/userSecurity",
     }),
-  );
-export type UpdateGroupUserSecurityInput =
-  typeof UpdateGroupUserSecurityInput.Type;
+  ) as unknown as Schema.Codec<UpdateGroupUserSecurityInput>;
 
 // Output Schema
+export type UpdateGroupUserSecurityOutput = void;
 export const UpdateGroupUserSecurityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateGroupUserSecurityOutput =
-  typeof UpdateGroupUserSecurityOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupUserSecurityOutput>;
 
 // The operation
 /**
  * Update LDAP or X.509 Configuration
  *
- * Edits the LDAP configuration for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Edits the LDAP configuration for the specified project.
  * Updating this configuration triggers a rolling restart of the database.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

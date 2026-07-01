@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupStreamConnectionsInput {
+  groupId: string;
+  tenantName: string;
+  envelope?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+}
 export const ListGroupStreamConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -17,21 +25,18 @@ export const ListGroupStreamConnectionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
     }),
-  );
-export type ListGroupStreamConnectionsInput =
-  typeof ListGroupStreamConnectionsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupStreamConnectionsInput>;
 
 // Output Schema
+export type ListGroupStreamConnectionsOutput = void;
 export const ListGroupStreamConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupStreamConnectionsOutput =
-  typeof ListGroupStreamConnectionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamConnectionsOutput>;
 
 // The operation
 /**
  * Return All Connections of the Stream Workspaces
  *
- * Returns all connections of the stream workspace for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Data Access roles, Project Owner role or Project Stream Processing Owner role.
+ * Returns all connections of the stream workspace for the specified project.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

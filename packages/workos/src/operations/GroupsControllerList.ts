@@ -4,19 +4,38 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GroupsControllerListInput {
+  organizationId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const GroupsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organizationId}/groups" }),
-  );
-export type GroupsControllerListInput = typeof GroupsControllerListInput.Type;
+  ) as unknown as Schema.Codec<GroupsControllerListInput>;
 
 // Output Schema
+export interface GroupsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    organization_id?: string;
+    name?: string;
+    description?: string | null;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const GroupsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -39,8 +58,7 @@ export const GroupsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type GroupsControllerListOutput = typeof GroupsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<GroupsControllerListOutput>;
 
 // The operation
 /**
@@ -52,7 +70,7 @@ export type GroupsControllerListOutput = typeof GroupsControllerListOutput.Type;
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const GroupsControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({

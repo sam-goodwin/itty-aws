@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ReassignRoleObjectsInput {
+  organization: string;
+  database: string;
+  branch: string;
+  id: string;
+  successor: string;
+}
 export const ReassignRoleObjectsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -16,13 +23,12 @@ export const ReassignRoleObjectsInput =
       method: "POST",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/roles/{id}/reassign",
     }),
-  );
-export type ReassignRoleObjectsInput = typeof ReassignRoleObjectsInput.Type;
+  ) as unknown as Schema.Codec<ReassignRoleObjectsInput>;
 
 // Output Schema
+export type ReassignRoleObjectsOutput = void;
 export const ReassignRoleObjectsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ReassignRoleObjectsOutput = typeof ReassignRoleObjectsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReassignRoleObjectsOutput>;
 
 // The operation
 /**

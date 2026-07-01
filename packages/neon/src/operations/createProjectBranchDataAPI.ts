@@ -3,6 +3,29 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface CreateProjectBranchDataAPIInput {
+  project_id: string;
+  branch_id: string;
+  database_name: string;
+  auth_provider?: "neon_auth" | "external";
+  jwks_url?: string;
+  provider_name?: string;
+  jwt_audience?: string;
+  add_default_grants?: boolean;
+  skip_auth_schema?: boolean;
+  settings?: {
+    db_aggregates_enabled?: boolean;
+    db_anon_role?: string;
+    db_extra_search_path?: string;
+    db_max_rows?: number;
+    db_schemas?: string[];
+    jwt_role_claim_key?: string;
+    jwt_cache_max_lifetime?: number;
+    openapi_mode?: string;
+    server_cors_allowed_origins?: string;
+    server_timing_enabled?: boolean;
+  };
+}
 export const CreateProjectBranchDataAPIInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -33,24 +56,23 @@ export const CreateProjectBranchDataAPIInput =
       method: "POST",
       path: "/projects/{project_id}/branches/{branch_id}/data-api/{database_name}",
     }),
-  );
-export type CreateProjectBranchDataAPIInput =
-  typeof CreateProjectBranchDataAPIInput.Type;
+  ) as unknown as Schema.Codec<CreateProjectBranchDataAPIInput>;
 
 // Output Schema
+export interface CreateProjectBranchDataAPIOutput {
+  url: string;
+}
 export const CreateProjectBranchDataAPIOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     url: Schema.String,
-  });
-export type CreateProjectBranchDataAPIOutput =
-  typeof CreateProjectBranchDataAPIOutput.Type;
+  }) as unknown as Schema.Codec<CreateProjectBranchDataAPIOutput>;
 
 // The operation
 /**
  * Create Neon Data API
  *
  * Creates a new instance of Neon Data API in the specified branch.
- * You can obtain the `project_id` and `branch_id` by listing the projects and branches for your Neon account.
+ * The Data API exposes a REST interface over the branch database. The `database_name` path parameter determines which database the API serves.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID

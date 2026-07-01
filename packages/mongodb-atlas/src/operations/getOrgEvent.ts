@@ -4,6 +4,13 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgEventInput {
+  orgId: string;
+  eventId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeRaw?: boolean;
+}
 export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   eventId: Schema.String.pipe(T.PathParam()),
@@ -15,18 +22,18 @@ export const GetOrgEventInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/events/{eventId}",
   }),
-);
-export type GetOrgEventInput = typeof GetOrgEventInput.Type;
+) as unknown as Schema.Codec<GetOrgEventInput>;
 
 // Output Schema
-export const GetOrgEventOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgEventOutput = typeof GetOrgEventOutput.Type;
+export type GetOrgEventOutput = void;
+export const GetOrgEventOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgEventOutput>;
 
 // The operation
 /**
  * Return One Event from One Organization
  *
- * Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role. Use the Return Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
+ * Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. Use the Return Events from One Organization endpoint to retrieve all events to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

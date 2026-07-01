@@ -4,11 +4,26 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AksAssessmentOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  properties?: {
+    provisioningState?:
+      | "Unknown"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "InProgress";
+  };
+  eTag?: string;
+}
 export const AksAssessmentOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -35,11 +50,22 @@ export const AksAssessmentOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksAssessmentOperationsCreateInput =
-  typeof AksAssessmentOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<AksAssessmentOperationsCreateInput>;
 
 // Output Schema
+export interface AksAssessmentOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AksAssessmentOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -59,9 +85,7 @@ export const AksAssessmentOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AksAssessmentOperationsCreateOutput =
-  typeof AksAssessmentOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AksAssessmentOperationsCreateOutput>;
 
 // The operation
 /**
@@ -79,6 +103,12 @@ export const AksAssessmentOperationsCreate =
     outputSchema: AksAssessmentOperationsCreateOutput,
   }));
 // Input Schema
+export interface AksAssessmentOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+}
 export const AksAssessmentOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -91,15 +121,12 @@ export const AksAssessmentOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksAssessmentOperationsDeleteInput =
-  typeof AksAssessmentOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AksAssessmentOperationsDeleteInput>;
 
 // Output Schema
+export type AksAssessmentOperationsDeleteOutput = void;
 export const AksAssessmentOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AksAssessmentOperationsDeleteOutput =
-  typeof AksAssessmentOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AksAssessmentOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -117,6 +144,12 @@ export const AksAssessmentOperationsDelete =
     outputSchema: AksAssessmentOperationsDeleteOutput,
   }));
 // Input Schema
+export interface AksAssessmentOperationsDownloadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+}
 export const AksAssessmentOperationsDownloadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -129,18 +162,18 @@ export const AksAssessmentOperationsDownloadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksAssessmentOperationsDownloadUrlInput =
-  typeof AksAssessmentOperationsDownloadUrlInput.Type;
+  ) as unknown as Schema.Codec<AksAssessmentOperationsDownloadUrlInput>;
 
 // Output Schema
+export interface AksAssessmentOperationsDownloadUrlOutput {
+  assessmentReportUrl: string;
+  expirationTime: string;
+}
 export const AksAssessmentOperationsDownloadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
-  });
-export type AksAssessmentOperationsDownloadUrlOutput =
-  typeof AksAssessmentOperationsDownloadUrlOutput.Type;
+  }) as unknown as Schema.Codec<AksAssessmentOperationsDownloadUrlOutput>;
 
 // The operation
 /**
@@ -158,6 +191,12 @@ export const AksAssessmentOperationsDownloadUrl =
     outputSchema: AksAssessmentOperationsDownloadUrlOutput,
   }));
 // Input Schema
+export interface AksAssessmentOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+}
 export const AksAssessmentOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -170,11 +209,22 @@ export const AksAssessmentOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksAssessmentOperationsGetInput =
-  typeof AksAssessmentOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AksAssessmentOperationsGetInput>;
 
 // Output Schema
+export interface AksAssessmentOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AksAssessmentOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -194,9 +244,7 @@ export const AksAssessmentOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AksAssessmentOperationsGetOutput =
-  typeof AksAssessmentOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AksAssessmentOperationsGetOutput>;
 
 // The operation
 /**
@@ -215,6 +263,15 @@ export const AksAssessmentOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AksAssessmentOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  continuationToken?: string;
+  $top?: number;
+  $filter?: string;
+  totalRecordCount?: number;
+}
 export const AksAssessmentOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -230,11 +287,25 @@ export const AksAssessmentOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksAssessmentOperationsListByAssessmentProjectInput =
-  typeof AksAssessmentOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<AksAssessmentOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface AksAssessmentOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AksAssessmentOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -269,9 +340,7 @@ export const AksAssessmentOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AksAssessmentOperationsListByAssessmentProjectOutput =
-  typeof AksAssessmentOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<AksAssessmentOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -292,6 +361,13 @@ export const AksAssessmentOperationsListByAssessmentProject =
     outputSchema: AksAssessmentOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface AksClusterOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  clusterName: string;
+}
 export const AksClusterOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -305,11 +381,22 @@ export const AksClusterOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/clusters/{clusterName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksClusterOperationsGetInput =
-  typeof AksClusterOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AksClusterOperationsGetInput>;
 
 // Output Schema
+export interface AksClusterOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AksClusterOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -329,9 +416,7 @@ export const AksClusterOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AksClusterOperationsGetOutput =
-  typeof AksClusterOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AksClusterOperationsGetOutput>;
 
 // The operation
 /**
@@ -351,6 +436,13 @@ export const AksClusterOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AksClusterOperationsListByAksAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  $filter?: string;
+}
 export const AksClusterOperationsListByAksAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -364,11 +456,25 @@ export const AksClusterOperationsListByAksAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/clusters",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksClusterOperationsListByAksAssessmentInput =
-  typeof AksClusterOperationsListByAksAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AksClusterOperationsListByAksAssessmentInput>;
 
 // Output Schema
+export interface AksClusterOperationsListByAksAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AksClusterOperationsListByAksAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -403,9 +509,7 @@ export const AksClusterOperationsListByAksAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AksClusterOperationsListByAksAssessmentOutput =
-  typeof AksClusterOperationsListByAksAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AksClusterOperationsListByAksAssessmentOutput>;
 
 // The operation
 /**
@@ -424,6 +528,13 @@ export const AksClusterOperationsListByAksAssessment =
     outputSchema: AksClusterOperationsListByAksAssessmentOutput,
   }));
 // Input Schema
+export interface AksCostDetailOperationsListByAksAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  $filter?: string;
+}
 export const AksCostDetailOperationsListByAksAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -437,11 +548,25 @@ export const AksCostDetailOperationsListByAksAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/costDetails",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksCostDetailOperationsListByAksAssessmentInput =
-  typeof AksCostDetailOperationsListByAksAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AksCostDetailOperationsListByAksAssessmentInput>;
 
 // Output Schema
+export interface AksCostDetailOperationsListByAksAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AksCostDetailOperationsListByAksAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -476,9 +601,7 @@ export const AksCostDetailOperationsListByAksAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AksCostDetailOperationsListByAksAssessmentOutput =
-  typeof AksCostDetailOperationsListByAksAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AksCostDetailOperationsListByAksAssessmentOutput>;
 
 // The operation
 /**
@@ -497,6 +620,12 @@ export const AksCostDetailOperationsListByAksAssessment =
     outputSchema: AksCostDetailOperationsListByAksAssessmentOutput,
   }));
 // Input Schema
+export interface AksOptionsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentOptionsName: string;
+}
 export const AksOptionsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -509,11 +638,22 @@ export const AksOptionsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessmentOptions/{assessmentOptionsName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksOptionsOperationsGetInput =
-  typeof AksOptionsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AksOptionsOperationsGetInput>;
 
 // Output Schema
+export interface AksOptionsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AksOptionsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -533,9 +673,7 @@ export const AksOptionsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AksOptionsOperationsGetOutput =
-  typeof AksOptionsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AksOptionsOperationsGetOutput>;
 
 // The operation
 /**
@@ -554,6 +692,11 @@ export const AksOptionsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AksOptionsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AksOptionsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -565,11 +708,25 @@ export const AksOptionsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessmentOptions",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksOptionsOperationsListByAssessmentProjectInput =
-  typeof AksOptionsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<AksOptionsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface AksOptionsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AksOptionsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -604,9 +761,7 @@ export const AksOptionsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AksOptionsOperationsListByAssessmentProjectOutput =
-  typeof AksOptionsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<AksOptionsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -623,6 +778,13 @@ export const AksOptionsOperationsListByAssessmentProject =
     outputSchema: AksOptionsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface AksSummaryOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  summaryName: string;
+}
 export const AksSummaryOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -636,11 +798,22 @@ export const AksSummaryOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/summaries/{summaryName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksSummaryOperationsGetInput =
-  typeof AksSummaryOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AksSummaryOperationsGetInput>;
 
 // Output Schema
+export interface AksSummaryOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AksSummaryOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -660,9 +833,7 @@ export const AksSummaryOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AksSummaryOperationsGetOutput =
-  typeof AksSummaryOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AksSummaryOperationsGetOutput>;
 
 // The operation
 /**
@@ -682,6 +853,12 @@ export const AksSummaryOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AksSummaryOperationsListByAksAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+}
 export const AksSummaryOperationsListByAksAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -694,11 +871,25 @@ export const AksSummaryOperationsListByAksAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/summaries",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AksSummaryOperationsListByAksAssessmentInput =
-  typeof AksSummaryOperationsListByAksAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AksSummaryOperationsListByAksAssessmentInput>;
 
 // Output Schema
+export interface AksSummaryOperationsListByAksAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AksSummaryOperationsListByAksAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -733,9 +924,7 @@ export const AksSummaryOperationsListByAksAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AksSummaryOperationsListByAksAssessmentOutput =
-  typeof AksSummaryOperationsListByAksAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AksSummaryOperationsListByAksAssessmentOutput>;
 
 // The operation
 /**
@@ -753,6 +942,14 @@ export const AksSummaryOperationsListByAksAssessment =
     outputSchema: AksSummaryOperationsListByAksAssessmentOutput,
   }));
 // Input Schema
+export interface AssessedMachinesOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  assessedMachineName: string;
+}
 export const AssessedMachinesOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -767,11 +964,22 @@ export const AssessedMachinesOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines/{assessedMachineName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedMachinesOperationsGetInput =
-  typeof AssessedMachinesOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedMachinesOperationsGetInput>;
 
 // Output Schema
+export interface AssessedMachinesOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedMachinesOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -791,9 +999,7 @@ export const AssessedMachinesOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedMachinesOperationsGetOutput =
-  typeof AssessedMachinesOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedMachinesOperationsGetOutput>;
 
 // The operation
 /**
@@ -813,6 +1019,17 @@ export const AssessedMachinesOperationsGet =
     outputSchema: AssessedMachinesOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedMachinesOperationsListByAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedMachinesOperationsListByAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -830,11 +1047,25 @@ export const AssessedMachinesOperationsListByAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedMachinesOperationsListByAssessmentInput =
-  typeof AssessedMachinesOperationsListByAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AssessedMachinesOperationsListByAssessmentInput>;
 
 // Output Schema
+export interface AssessedMachinesOperationsListByAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedMachinesOperationsListByAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -869,9 +1100,7 @@ export const AssessedMachinesOperationsListByAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedMachinesOperationsListByAssessmentOutput =
-  typeof AssessedMachinesOperationsListByAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AssessedMachinesOperationsListByAssessmentOutput>;
 
 // The operation
 /**
@@ -894,6 +1123,14 @@ export const AssessedMachinesOperationsListByAssessment =
     outputSchema: AssessedMachinesOperationsListByAssessmentOutput,
   }));
 // Input Schema
+export interface AssessedSqlDatabaseV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  assessedSqlDatabaseName: string;
+}
 export const AssessedSqlDatabaseV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -908,11 +1145,22 @@ export const AssessedSqlDatabaseV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases/{assessedSqlDatabaseName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlDatabaseV2OperationsGetInput =
-  typeof AssessedSqlDatabaseV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedSqlDatabaseV2OperationsGetInput>;
 
 // Output Schema
+export interface AssessedSqlDatabaseV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedSqlDatabaseV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -932,9 +1180,7 @@ export const AssessedSqlDatabaseV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedSqlDatabaseV2OperationsGetOutput =
-  typeof AssessedSqlDatabaseV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedSqlDatabaseV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -954,6 +1200,17 @@ export const AssessedSqlDatabaseV2OperationsGet =
     outputSchema: AssessedSqlDatabaseV2OperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -971,11 +1228,25 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input =
-  typeof AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Input>;
 
 // Output Schema
+export interface AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1010,9 +1281,7 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output =
-  typeof AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output>;
 
 // The operation
 /**
@@ -1035,6 +1304,14 @@ export const AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2 =
     outputSchema: AssessedSqlDatabaseV2OperationsListBySqlAssessmentV2Output,
   }));
 // Input Schema
+export interface AssessedSqlInstanceV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  assessedSqlInstanceName: string;
+}
 export const AssessedSqlInstanceV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1049,11 +1326,22 @@ export const AssessedSqlInstanceV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances/{assessedSqlInstanceName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlInstanceV2OperationsGetInput =
-  typeof AssessedSqlInstanceV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedSqlInstanceV2OperationsGetInput>;
 
 // Output Schema
+export interface AssessedSqlInstanceV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedSqlInstanceV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1073,9 +1361,7 @@ export const AssessedSqlInstanceV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedSqlInstanceV2OperationsGetOutput =
-  typeof AssessedSqlInstanceV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedSqlInstanceV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -1095,6 +1381,17 @@ export const AssessedSqlInstanceV2OperationsGet =
     outputSchema: AssessedSqlInstanceV2OperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1112,11 +1409,25 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input =
-  typeof AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Input>;
 
 // Output Schema
+export interface AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1151,9 +1462,7 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output =
-  typeof AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output>;
 
 // The operation
 /**
@@ -1176,6 +1485,14 @@ export const AssessedSqlInstanceV2OperationsListBySqlAssessmentV2 =
     outputSchema: AssessedSqlInstanceV2OperationsListBySqlAssessmentV2Output,
   }));
 // Input Schema
+export interface AssessedSqlMachinesOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  assessedSqlMachineName: string;
+}
 export const AssessedSqlMachinesOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1190,11 +1507,22 @@ export const AssessedSqlMachinesOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines/{assessedSqlMachineName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlMachinesOperationsGetInput =
-  typeof AssessedSqlMachinesOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedSqlMachinesOperationsGetInput>;
 
 // Output Schema
+export interface AssessedSqlMachinesOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedSqlMachinesOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1214,9 +1542,7 @@ export const AssessedSqlMachinesOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedSqlMachinesOperationsGetOutput =
-  typeof AssessedSqlMachinesOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedSqlMachinesOperationsGetOutput>;
 
 // The operation
 /**
@@ -1236,6 +1562,17 @@ export const AssessedSqlMachinesOperationsGet =
     outputSchema: AssessedSqlMachinesOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedSqlMachinesOperationsListBySqlAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1253,11 +1590,25 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlMachinesOperationsListBySqlAssessmentV2Input =
-  typeof AssessedSqlMachinesOperationsListBySqlAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<AssessedSqlMachinesOperationsListBySqlAssessmentV2Input>;
 
 // Output Schema
+export interface AssessedSqlMachinesOperationsListBySqlAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1292,9 +1643,7 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedSqlMachinesOperationsListBySqlAssessmentV2Output =
-  typeof AssessedSqlMachinesOperationsListBySqlAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<AssessedSqlMachinesOperationsListBySqlAssessmentV2Output>;
 
 // The operation
 /**
@@ -1317,6 +1666,14 @@ export const AssessedSqlMachinesOperationsListBySqlAssessmentV2 =
     outputSchema: AssessedSqlMachinesOperationsListBySqlAssessmentV2Output,
   }));
 // Input Schema
+export interface AssessedSqlRecommendedEntityOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  recommendedAssessedEntityName: string;
+}
 export const AssessedSqlRecommendedEntityOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1331,11 +1688,22 @@ export const AssessedSqlRecommendedEntityOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/recommendedAssessedEntities/{recommendedAssessedEntityName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlRecommendedEntityOperationsGetInput =
-  typeof AssessedSqlRecommendedEntityOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedSqlRecommendedEntityOperationsGetInput>;
 
 // Output Schema
+export interface AssessedSqlRecommendedEntityOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedSqlRecommendedEntityOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1355,9 +1723,7 @@ export const AssessedSqlRecommendedEntityOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedSqlRecommendedEntityOperationsGetOutput =
-  typeof AssessedSqlRecommendedEntityOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedSqlRecommendedEntityOperationsGetOutput>;
 
 // The operation
 /**
@@ -1377,6 +1743,17 @@ export const AssessedSqlRecommendedEntityOperationsGet =
     outputSchema: AssessedSqlRecommendedEntityOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1394,11 +1771,25 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/recommendedAssessedEntities",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input =
-  typeof AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Input>;
 
 // Output Schema
+export interface AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1433,9 +1824,7 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output =
-  typeof AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output>;
 
 // The operation
 /**
@@ -1460,6 +1849,13 @@ export const AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2 =
       AssessedSqlRecommendedEntityOperationsListBySqlAssessmentV2Output,
   }));
 // Input Schema
+export interface AssessedWebApplicationOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  assessedWorkload: string;
+}
 export const AssessedWebApplicationOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1473,11 +1869,22 @@ export const AssessedWebApplicationOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps/{assessedWorkload}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedWebApplicationOperationsGetInput =
-  typeof AssessedWebApplicationOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedWebApplicationOperationsGetInput>;
 
 // Output Schema
+export interface AssessedWebApplicationOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedWebApplicationOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1497,9 +1904,7 @@ export const AssessedWebApplicationOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedWebApplicationOperationsGetOutput =
-  typeof AssessedWebApplicationOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedWebApplicationOperationsGetOutput>;
 
 // The operation
 /**
@@ -1518,6 +1923,16 @@ export const AssessedWebApplicationOperationsGet =
     outputSchema: AssessedWebApplicationOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedWebApplicationOperationsListByAksAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentName: string;
+  continuationToken?: string;
+  $top?: number;
+  $filter?: string;
+  totalRecordCount?: number;
+}
 export const AssessedWebApplicationOperationsListByAksAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1534,11 +1949,25 @@ export const AssessedWebApplicationOperationsListByAksAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedWebApplicationOperationsListByAksAssessmentInput =
-  typeof AssessedWebApplicationOperationsListByAksAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AssessedWebApplicationOperationsListByAksAssessmentInput>;
 
 // Output Schema
+export interface AssessedWebApplicationOperationsListByAksAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedWebApplicationOperationsListByAksAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1573,9 +2002,7 @@ export const AssessedWebApplicationOperationsListByAksAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedWebApplicationOperationsListByAksAssessmentOutput =
-  typeof AssessedWebApplicationOperationsListByAksAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AssessedWebApplicationOperationsListByAksAssessmentOutput>;
 
 // The operation
 /**
@@ -1597,6 +2024,14 @@ export const AssessedWebApplicationOperationsListByAksAssessment =
     outputSchema: AssessedWebApplicationOperationsListByAksAssessmentOutput,
   }));
 // Input Schema
+export interface AssessedWebAppV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  assessedWebAppName: string;
+}
 export const AssessedWebAppV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1611,11 +2046,22 @@ export const AssessedWebAppV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps/{assessedWebAppName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedWebAppV2OperationsGetInput =
-  typeof AssessedWebAppV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessedWebAppV2OperationsGetInput>;
 
 // Output Schema
+export interface AssessedWebAppV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessedWebAppV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1635,9 +2081,7 @@ export const AssessedWebAppV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessedWebAppV2OperationsGetOutput =
-  typeof AssessedWebAppV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessedWebAppV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -1657,6 +2101,17 @@ export const AssessedWebAppV2OperationsGet =
     outputSchema: AssessedWebAppV2OperationsGetOutput,
   }));
 // Input Schema
+export interface AssessedWebAppV2OperationsListByWebAppAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1674,11 +2129,25 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessedWebAppV2OperationsListByWebAppAssessmentV2Input =
-  typeof AssessedWebAppV2OperationsListByWebAppAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<AssessedWebAppV2OperationsListByWebAppAssessmentV2Input>;
 
 // Output Schema
+export interface AssessedWebAppV2OperationsListByWebAppAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1713,9 +2182,7 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessedWebAppV2OperationsListByWebAppAssessmentV2Output =
-  typeof AssessedWebAppV2OperationsListByWebAppAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<AssessedWebAppV2OperationsListByWebAppAssessmentV2Output>;
 
 // The operation
 /**
@@ -1738,6 +2205,12 @@ export const AssessedWebAppV2OperationsListByWebAppAssessmentV2 =
     outputSchema: AssessedWebAppV2OperationsListByWebAppAssessmentV2Output,
   }));
 // Input Schema
+export interface AssessmentOptionsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentOptionsName: string;
+}
 export const AssessmentOptionsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1750,11 +2223,22 @@ export const AssessmentOptionsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions/{assessmentOptionsName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentOptionsOperationsGetInput =
-  typeof AssessmentOptionsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessmentOptionsOperationsGetInput>;
 
 // Output Schema
+export interface AssessmentOptionsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentOptionsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1774,9 +2258,7 @@ export const AssessmentOptionsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentOptionsOperationsGetOutput =
-  typeof AssessmentOptionsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentOptionsOperationsGetOutput>;
 
 // The operation
 /**
@@ -1794,6 +2276,11 @@ export const AssessmentOptionsOperationsGet =
     outputSchema: AssessmentOptionsOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessmentOptionsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AssessmentOptionsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1805,11 +2292,25 @@ export const AssessmentOptionsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentOptionsOperationsListByAssessmentProjectInput =
-  typeof AssessmentOptionsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<AssessmentOptionsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface AssessmentOptionsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessmentOptionsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1844,9 +2345,7 @@ export const AssessmentOptionsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessmentOptionsOperationsListByAssessmentProjectOutput =
-  typeof AssessmentOptionsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentOptionsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -1863,6 +2362,23 @@ export const AssessmentOptionsOperationsListByAssessmentProject =
     outputSchema: AssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AssessmentProjectsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1891,11 +2407,22 @@ export const AssessmentProjectsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsCreateInput =
-  typeof AssessmentProjectsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsCreateInput>;
 
 // Output Schema
+export interface AssessmentProjectsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentProjectsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1915,9 +2442,7 @@ export const AssessmentProjectsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentProjectsOperationsCreateOutput =
-  typeof AssessmentProjectsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -1934,6 +2459,11 @@ export const AssessmentProjectsOperationsCreate =
     outputSchema: AssessmentProjectsOperationsCreateOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AssessmentProjectsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1945,15 +2475,12 @@ export const AssessmentProjectsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsDeleteInput =
-  typeof AssessmentProjectsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsDeleteInput>;
 
 // Output Schema
+export type AssessmentProjectsOperationsDeleteOutput = void;
 export const AssessmentProjectsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssessmentProjectsOperationsDeleteOutput =
-  typeof AssessmentProjectsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentProjectsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -1970,6 +2497,11 @@ export const AssessmentProjectsOperationsDelete =
     outputSchema: AssessmentProjectsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AssessmentProjectsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1981,11 +2513,22 @@ export const AssessmentProjectsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsGetInput =
-  typeof AssessmentProjectsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsGetInput>;
 
 // Output Schema
+export interface AssessmentProjectsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentProjectsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2005,9 +2548,7 @@ export const AssessmentProjectsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentProjectsOperationsGetOutput =
-  typeof AssessmentProjectsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectsOperationsGetOutput>;
 
 // The operation
 /**
@@ -2024,6 +2565,10 @@ export const AssessmentProjectsOperationsGet =
     outputSchema: AssessmentProjectsOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AssessmentProjectsOperationsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2034,11 +2579,25 @@ export const AssessmentProjectsOperationsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsListByResourceGroupInput =
-  typeof AssessmentProjectsOperationsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsListByResourceGroupInput>;
 
 // Output Schema
+export interface AssessmentProjectsOperationsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessmentProjectsOperationsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2073,9 +2632,7 @@ export const AssessmentProjectsOperationsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessmentProjectsOperationsListByResourceGroupOutput =
-  typeof AssessmentProjectsOperationsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectsOperationsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2091,6 +2648,9 @@ export const AssessmentProjectsOperationsListByResourceGroup =
     outputSchema: AssessmentProjectsOperationsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AssessmentProjectsOperationsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2100,11 +2660,25 @@ export const AssessmentProjectsOperationsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/assessmentProjects",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsListBySubscriptionInput =
-  typeof AssessmentProjectsOperationsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsListBySubscriptionInput>;
 
 // Output Schema
+export interface AssessmentProjectsOperationsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessmentProjectsOperationsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2139,9 +2713,7 @@ export const AssessmentProjectsOperationsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessmentProjectsOperationsListBySubscriptionOutput =
-  typeof AssessmentProjectsOperationsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectsOperationsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -2156,6 +2728,28 @@ export const AssessmentProjectsOperationsListBySubscription =
     outputSchema: AssessmentProjectsOperationsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AssessmentProjectsOperationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    assessmentSolutionId?: string;
+    projectStatus?: "Active" | "Inactive";
+    customerWorkspaceId?: string;
+    customerWorkspaceLocation?: string;
+    publicNetworkAccess?: string;
+    customerStorageAccountArmId?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const AssessmentProjectsOperationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2189,11 +2783,22 @@ export const AssessmentProjectsOperationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectsOperationsUpdateInput =
-  typeof AssessmentProjectsOperationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectsOperationsUpdateInput>;
 
 // Output Schema
+export interface AssessmentProjectsOperationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentProjectsOperationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2213,9 +2818,7 @@ export const AssessmentProjectsOperationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentProjectsOperationsUpdateOutput =
-  typeof AssessmentProjectsOperationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectsOperationsUpdateOutput>;
 
 // The operation
 /**
@@ -2232,6 +2835,12 @@ export const AssessmentProjectsOperationsUpdate =
     outputSchema: AssessmentProjectsOperationsUpdateOutput,
   }));
 // Input Schema
+export interface AssessmentProjectSummaryOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  projectSummaryName: string;
+}
 export const AssessmentProjectSummaryOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2244,11 +2853,22 @@ export const AssessmentProjectSummaryOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/projectSummary/{projectSummaryName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectSummaryOperationsGetInput =
-  typeof AssessmentProjectSummaryOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectSummaryOperationsGetInput>;
 
 // Output Schema
+export interface AssessmentProjectSummaryOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentProjectSummaryOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2268,9 +2888,7 @@ export const AssessmentProjectSummaryOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentProjectSummaryOperationsGetOutput =
-  typeof AssessmentProjectSummaryOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectSummaryOperationsGetOutput>;
 
 // The operation
 /**
@@ -2288,6 +2906,11 @@ export const AssessmentProjectSummaryOperationsGet =
     outputSchema: AssessmentProjectSummaryOperationsGetOutput,
   }));
 // Input Schema
+export interface AssessmentProjectSummaryOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2299,11 +2922,25 @@ export const AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/projectSummary",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentProjectSummaryOperationsListByAssessmentProjectInput =
-  typeof AssessmentProjectSummaryOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<AssessmentProjectSummaryOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface AssessmentProjectSummaryOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessmentProjectSummaryOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2338,9 +2975,7 @@ export const AssessmentProjectSummaryOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessmentProjectSummaryOperationsListByAssessmentProjectOutput =
-  typeof AssessmentProjectSummaryOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentProjectSummaryOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -2358,6 +2993,23 @@ export const AssessmentProjectSummaryOperationsListByAssessmentProject =
       AssessmentProjectSummaryOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface AssessmentsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const AssessmentsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2386,11 +3038,22 @@ export const AssessmentsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentsOperationsCreateInput =
-  typeof AssessmentsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<AssessmentsOperationsCreateInput>;
 
 // Output Schema
+export interface AssessmentsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2410,9 +3073,7 @@ export const AssessmentsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentsOperationsCreateOutput =
-  typeof AssessmentsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -2432,6 +3093,13 @@ export const AssessmentsOperationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssessmentsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AssessmentsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2445,15 +3113,12 @@ export const AssessmentsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentsOperationsDeleteInput =
-  typeof AssessmentsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AssessmentsOperationsDeleteInput>;
 
 // Output Schema
+export type AssessmentsOperationsDeleteOutput = void;
 export const AssessmentsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssessmentsOperationsDeleteOutput =
-  typeof AssessmentsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssessmentsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -2473,6 +3138,13 @@ export const AssessmentsOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssessmentsOperationsDownloadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AssessmentsOperationsDownloadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2486,18 +3158,18 @@ export const AssessmentsOperationsDownloadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentsOperationsDownloadUrlInput =
-  typeof AssessmentsOperationsDownloadUrlInput.Type;
+  ) as unknown as Schema.Codec<AssessmentsOperationsDownloadUrlInput>;
 
 // Output Schema
+export interface AssessmentsOperationsDownloadUrlOutput {
+  assessmentReportUrl: string;
+  expirationTime: string;
+}
 export const AssessmentsOperationsDownloadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
-  });
-export type AssessmentsOperationsDownloadUrlOutput =
-  typeof AssessmentsOperationsDownloadUrlOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentsOperationsDownloadUrlOutput>;
 
 // The operation
 /**
@@ -2518,6 +3190,13 @@ export const AssessmentsOperationsDownloadUrl =
     outputSchema: AssessmentsOperationsDownloadUrlOutput,
   }));
 // Input Schema
+export interface AssessmentsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AssessmentsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2531,11 +3210,22 @@ export const AssessmentsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentsOperationsGetInput =
-  typeof AssessmentsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AssessmentsOperationsGetInput>;
 
 // Output Schema
+export interface AssessmentsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssessmentsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2555,9 +3245,7 @@ export const AssessmentsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssessmentsOperationsGetOutput =
-  typeof AssessmentsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentsOperationsGetOutput>;
 
 // The operation
 /**
@@ -2577,6 +3265,12 @@ export const AssessmentsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssessmentsOperationsListByGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const AssessmentsOperationsListByGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2589,11 +3283,25 @@ export const AssessmentsOperationsListByGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AssessmentsOperationsListByGroupInput =
-  typeof AssessmentsOperationsListByGroupInput.Type;
+  ) as unknown as Schema.Codec<AssessmentsOperationsListByGroupInput>;
 
 // Output Schema
+export interface AssessmentsOperationsListByGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssessmentsOperationsListByGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2628,9 +3336,7 @@ export const AssessmentsOperationsListByGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssessmentsOperationsListByGroupOutput =
-  typeof AssessmentsOperationsListByGroupOutput.Type;
+  }) as unknown as Schema.Codec<AssessmentsOperationsListByGroupOutput>;
 
 // The operation
 /**
@@ -2648,6 +3354,14 @@ export const AssessmentsOperationsListByGroup =
     outputSchema: AssessmentsOperationsListByGroupOutput,
   }));
 // Input Schema
+export interface AvsAssessedMachinesOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  avsAssessedMachineName: string;
+}
 export const AvsAssessedMachinesOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2662,11 +3376,22 @@ export const AvsAssessedMachinesOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/avsAssessedMachines/{avsAssessedMachineName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessedMachinesOperationsGetInput =
-  typeof AvsAssessedMachinesOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessedMachinesOperationsGetInput>;
 
 // Output Schema
+export interface AvsAssessedMachinesOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvsAssessedMachinesOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2686,9 +3411,7 @@ export const AvsAssessedMachinesOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvsAssessedMachinesOperationsGetOutput =
-  typeof AvsAssessedMachinesOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessedMachinesOperationsGetOutput>;
 
 // The operation
 /**
@@ -2708,6 +3431,17 @@ export const AvsAssessedMachinesOperationsGet =
     outputSchema: AvsAssessedMachinesOperationsGetOutput,
   }));
 // Input Schema
+export interface AvsAssessedMachinesOperationsListByAvsAssessmentInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const AvsAssessedMachinesOperationsListByAvsAssessmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2725,11 +3459,25 @@ export const AvsAssessedMachinesOperationsListByAvsAssessmentInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/avsAssessedMachines",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessedMachinesOperationsListByAvsAssessmentInput =
-  typeof AvsAssessedMachinesOperationsListByAvsAssessmentInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessedMachinesOperationsListByAvsAssessmentInput>;
 
 // Output Schema
+export interface AvsAssessedMachinesOperationsListByAvsAssessmentOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvsAssessedMachinesOperationsListByAvsAssessmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2764,9 +3512,7 @@ export const AvsAssessedMachinesOperationsListByAvsAssessmentOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvsAssessedMachinesOperationsListByAvsAssessmentOutput =
-  typeof AvsAssessedMachinesOperationsListByAvsAssessmentOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessedMachinesOperationsListByAvsAssessmentOutput>;
 
 // The operation
 /**
@@ -2789,6 +3535,12 @@ export const AvsAssessedMachinesOperationsListByAvsAssessment =
     outputSchema: AvsAssessedMachinesOperationsListByAvsAssessmentOutput,
   }));
 // Input Schema
+export interface AvsAssessmentOptionsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  avsAssessmentOptionsName: string;
+}
 export const AvsAssessmentOptionsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2801,11 +3553,22 @@ export const AvsAssessmentOptionsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions/{avsAssessmentOptionsName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentOptionsOperationsGetInput =
-  typeof AvsAssessmentOptionsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentOptionsOperationsGetInput>;
 
 // Output Schema
+export interface AvsAssessmentOptionsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvsAssessmentOptionsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2825,9 +3588,7 @@ export const AvsAssessmentOptionsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvsAssessmentOptionsOperationsGetOutput =
-  typeof AvsAssessmentOptionsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentOptionsOperationsGetOutput>;
 
 // The operation
 /**
@@ -2845,6 +3606,11 @@ export const AvsAssessmentOptionsOperationsGet =
     outputSchema: AvsAssessmentOptionsOperationsGetOutput,
   }));
 // Input Schema
+export interface AvsAssessmentOptionsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2856,11 +3622,25 @@ export const AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentOptionsOperationsListByAssessmentProjectInput =
-  typeof AvsAssessmentOptionsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentOptionsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface AvsAssessmentOptionsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvsAssessmentOptionsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2895,9 +3675,7 @@ export const AvsAssessmentOptionsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvsAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  typeof AvsAssessmentOptionsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentOptionsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -2914,6 +3692,23 @@ export const AvsAssessmentOptionsOperationsListByAssessmentProject =
     outputSchema: AvsAssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface AvsAssessmentsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const AvsAssessmentsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2942,11 +3737,22 @@ export const AvsAssessmentsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentsOperationsCreateInput =
-  typeof AvsAssessmentsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentsOperationsCreateInput>;
 
 // Output Schema
+export interface AvsAssessmentsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvsAssessmentsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2966,9 +3772,7 @@ export const AvsAssessmentsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvsAssessmentsOperationsCreateOutput =
-  typeof AvsAssessmentsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -2987,6 +3791,13 @@ export const AvsAssessmentsOperationsCreate =
     outputSchema: AvsAssessmentsOperationsCreateOutput,
   }));
 // Input Schema
+export interface AvsAssessmentsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AvsAssessmentsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3000,15 +3811,12 @@ export const AvsAssessmentsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentsOperationsDeleteInput =
-  typeof AvsAssessmentsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentsOperationsDeleteInput>;
 
 // Output Schema
+export type AvsAssessmentsOperationsDeleteOutput = void;
 export const AvsAssessmentsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AvsAssessmentsOperationsDeleteOutput =
-  typeof AvsAssessmentsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AvsAssessmentsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -3027,6 +3835,13 @@ export const AvsAssessmentsOperationsDelete =
     outputSchema: AvsAssessmentsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface AvsAssessmentsOperationsDownloadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AvsAssessmentsOperationsDownloadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3040,18 +3855,18 @@ export const AvsAssessmentsOperationsDownloadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentsOperationsDownloadUrlInput =
-  typeof AvsAssessmentsOperationsDownloadUrlInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentsOperationsDownloadUrlInput>;
 
 // Output Schema
+export interface AvsAssessmentsOperationsDownloadUrlOutput {
+  assessmentReportUrl: string;
+  expirationTime: string;
+}
 export const AvsAssessmentsOperationsDownloadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
-  });
-export type AvsAssessmentsOperationsDownloadUrlOutput =
-  typeof AvsAssessmentsOperationsDownloadUrlOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentsOperationsDownloadUrlOutput>;
 
 // The operation
 /**
@@ -3072,6 +3887,13 @@ export const AvsAssessmentsOperationsDownloadUrl =
     outputSchema: AvsAssessmentsOperationsDownloadUrlOutput,
   }));
 // Input Schema
+export interface AvsAssessmentsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const AvsAssessmentsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3085,11 +3907,22 @@ export const AvsAssessmentsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentsOperationsGetInput =
-  typeof AvsAssessmentsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentsOperationsGetInput>;
 
 // Output Schema
+export interface AvsAssessmentsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AvsAssessmentsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3109,9 +3942,7 @@ export const AvsAssessmentsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AvsAssessmentsOperationsGetOutput =
-  typeof AvsAssessmentsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentsOperationsGetOutput>;
 
 // The operation
 /**
@@ -3131,6 +3962,12 @@ export const AvsAssessmentsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AvsAssessmentsOperationsListByGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const AvsAssessmentsOperationsListByGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3143,11 +3980,25 @@ export const AvsAssessmentsOperationsListByGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments",
       apiVersion: "2024-01-15",
     }),
-  );
-export type AvsAssessmentsOperationsListByGroupInput =
-  typeof AvsAssessmentsOperationsListByGroupInput.Type;
+  ) as unknown as Schema.Codec<AvsAssessmentsOperationsListByGroupInput>;
 
 // Output Schema
+export interface AvsAssessmentsOperationsListByGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AvsAssessmentsOperationsListByGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3182,9 +4033,7 @@ export const AvsAssessmentsOperationsListByGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AvsAssessmentsOperationsListByGroupOutput =
-  typeof AvsAssessmentsOperationsListByGroupOutput.Type;
+  }) as unknown as Schema.Codec<AvsAssessmentsOperationsListByGroupOutput>;
 
 // The operation
 /**
@@ -3202,21 +4051,53 @@ export const AvsAssessmentsOperationsListByGroup =
     outputSchema: AvsAssessmentsOperationsListByGroupOutput,
   }));
 // Input Schema
+export interface DatabaseInstancesControllerGetDatabaseInstanceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  databaseInstanceName: string;
+}
 export const DatabaseInstancesControllerGetDatabaseInstanceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    databaseInstanceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type DatabaseInstancesControllerGetDatabaseInstanceInput =
-  typeof DatabaseInstancesControllerGetDatabaseInstanceInput.Type;
+  ) as unknown as Schema.Codec<DatabaseInstancesControllerGetDatabaseInstanceInput>;
 
 // Output Schema
+export interface DatabaseInstancesControllerGetDatabaseInstanceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    discoveryData?: {
+      lastUpdatedTime?: string;
+      id?: string;
+      instanceId?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      instanceName?: string;
+      instanceVersion?: string;
+      instanceType?: string;
+      hostName?: string;
+      ipAddress?: string;
+      portNumber?: number;
+      extendedInfo?: Record<string, string>;
+    }[];
+    summary?: Record<
+      string,
+      { databasesAssessedCount?: number; migrationReadyCount?: number }
+    >;
+    lastUpdatedTime?: string;
+  };
+}
 export const DatabaseInstancesControllerGetDatabaseInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3256,9 +4137,7 @@ export const DatabaseInstancesControllerGetDatabaseInstanceOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabaseInstancesControllerGetDatabaseInstanceOutput =
-  typeof DatabaseInstancesControllerGetDatabaseInstanceOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseInstancesControllerGetDatabaseInstanceOutput>;
 
 // The operation
 /**
@@ -3266,6 +4145,8 @@ export type DatabaseInstancesControllerGetDatabaseInstanceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param databaseInstanceName - Unique name of a database instance in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const DatabaseInstancesControllerGetDatabaseInstance =
@@ -3274,21 +4155,58 @@ export const DatabaseInstancesControllerGetDatabaseInstance =
     outputSchema: DatabaseInstancesControllerGetDatabaseInstanceOutput,
   }));
 // Input Schema
+export interface DatabaseInstancesControllerListDatabaseInstancesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const DatabaseInstancesControllerListDatabaseInstancesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances",
       apiVersion: "2023-01-01",
     }),
-  );
-export type DatabaseInstancesControllerListDatabaseInstancesInput =
-  typeof DatabaseInstancesControllerListDatabaseInstancesInput.Type;
+  ) as unknown as Schema.Codec<DatabaseInstancesControllerListDatabaseInstancesInput>;
 
 // Output Schema
+export interface DatabaseInstancesControllerListDatabaseInstancesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      discoveryData?: {
+        lastUpdatedTime?: string;
+        id?: string;
+        instanceId?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        instanceName?: string;
+        instanceVersion?: string;
+        instanceType?: string;
+        hostName?: string;
+        ipAddress?: string;
+        portNumber?: number;
+        extendedInfo?: Record<string, string>;
+      }[];
+      summary?: Record<
+        string,
+        { databasesAssessedCount?: number; migrationReadyCount?: number }
+      >;
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabaseInstancesControllerListDatabaseInstancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3335,9 +4253,7 @@ export const DatabaseInstancesControllerListDatabaseInstancesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabaseInstancesControllerListDatabaseInstancesOutput =
-  typeof DatabaseInstancesControllerListDatabaseInstancesOutput.Type;
+  }) as unknown as Schema.Codec<DatabaseInstancesControllerListDatabaseInstancesOutput>;
 
 // The operation
 /**
@@ -3345,7 +4261,10 @@ export type DatabaseInstancesControllerListDatabaseInstancesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabaseInstancesControllerListDatabaseInstances =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3353,21 +4272,52 @@ export const DatabaseInstancesControllerListDatabaseInstances =
     outputSchema: DatabaseInstancesControllerListDatabaseInstancesOutput,
   }));
 // Input Schema
+export interface DatabasesControllerGetDatabaseInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  databaseName: string;
+}
 export const DatabasesControllerGetDatabaseInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases/{databaseName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type DatabasesControllerGetDatabaseInput =
-  typeof DatabasesControllerGetDatabaseInput.Type;
+  ) as unknown as Schema.Codec<DatabasesControllerGetDatabaseInput>;
 
 // Output Schema
+export interface DatabasesControllerGetDatabaseOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    assessmentData?: {
+      assessmentId?: string;
+      id?: string;
+      migrationBlockersCount?: number;
+      breakingChangesCount?: number;
+      isReadyForMigration?: boolean;
+      assessmentTargetType?: string;
+      lastAssessedTime?: string;
+      compatibilityLevel?: string;
+      databaseSizeInMB?: string;
+      lastUpdatedTime?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      instanceId?: string;
+      databaseName?: string;
+      extendedInfo?: Record<string, string>;
+    }[];
+    lastUpdatedTime?: string;
+  };
+}
 export const DatabasesControllerGetDatabaseOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3401,9 +4351,7 @@ export const DatabasesControllerGetDatabaseOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type DatabasesControllerGetDatabaseOutput =
-  typeof DatabasesControllerGetDatabaseOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesControllerGetDatabaseOutput>;
 
 // The operation
 /**
@@ -3411,6 +4359,8 @@ export type DatabasesControllerGetDatabaseOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param databaseName - Unique name of a database in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const DatabasesControllerGetDatabase =
@@ -3419,21 +4369,57 @@ export const DatabasesControllerGetDatabase =
     outputSchema: DatabasesControllerGetDatabaseOutput,
   }));
 // Input Schema
+export interface DatabasesControllerListDatabasesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const DatabasesControllerListDatabasesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases",
       apiVersion: "2023-01-01",
     }),
-  );
-export type DatabasesControllerListDatabasesInput =
-  typeof DatabasesControllerListDatabasesInput.Type;
+  ) as unknown as Schema.Codec<DatabasesControllerListDatabasesInput>;
 
 // Output Schema
+export interface DatabasesControllerListDatabasesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      assessmentData?: {
+        assessmentId?: string;
+        id?: string;
+        migrationBlockersCount?: number;
+        breakingChangesCount?: number;
+        isReadyForMigration?: boolean;
+        assessmentTargetType?: string;
+        lastAssessedTime?: string;
+        compatibilityLevel?: string;
+        databaseSizeInMB?: string;
+        lastUpdatedTime?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        instanceId?: string;
+        databaseName?: string;
+        extendedInfo?: Record<string, string>;
+      }[];
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const DatabasesControllerListDatabasesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3474,9 +4460,7 @@ export const DatabasesControllerListDatabasesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type DatabasesControllerListDatabasesOutput =
-  typeof DatabasesControllerListDatabasesOutput.Type;
+  }) as unknown as Schema.Codec<DatabasesControllerListDatabasesOutput>;
 
 // The operation
 /**
@@ -3484,7 +4468,10 @@ export type DatabasesControllerListDatabasesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const DatabasesControllerListDatabases =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3492,6 +4479,17 @@ export const DatabasesControllerListDatabases =
     outputSchema: DatabasesControllerListDatabasesOutput,
   }));
 // Input Schema
+export interface DependencyMapControllerClientGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  processGroupName?: string;
+  processName?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const DependencyMapControllerClientGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3514,15 +4512,12 @@ export const DependencyMapControllerClientGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type DependencyMapControllerClientGroupMembersInput =
-  typeof DependencyMapControllerClientGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<DependencyMapControllerClientGroupMembersInput>;
 
 // Output Schema
+export type DependencyMapControllerClientGroupMembersOutput = unknown;
 export const DependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DependencyMapControllerClientGroupMembersOutput =
-  typeof DependencyMapControllerClientGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -3539,6 +4534,13 @@ export const DependencyMapControllerClientGroupMembers =
     outputSchema: DependencyMapControllerClientGroupMembersOutput,
   }));
 // Input Schema
+export interface DependencyMapControllerExportDependenciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const DependencyMapControllerExportDependenciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3552,15 +4554,12 @@ export const DependencyMapControllerExportDependenciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
     }),
-  );
-export type DependencyMapControllerExportDependenciesInput =
-  typeof DependencyMapControllerExportDependenciesInput.Type;
+  ) as unknown as Schema.Codec<DependencyMapControllerExportDependenciesInput>;
 
 // Output Schema
+export type DependencyMapControllerExportDependenciesOutput = unknown;
 export const DependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DependencyMapControllerExportDependenciesOutput =
-  typeof DependencyMapControllerExportDependenciesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -3577,6 +4576,14 @@ export const DependencyMapControllerExportDependencies =
     outputSchema: DependencyMapControllerExportDependenciesOutput,
   }));
 // Input Schema
+export interface DependencyMapControllerGenerateCoarseMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const DependencyMapControllerGenerateCoarseMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3596,15 +4603,12 @@ export const DependencyMapControllerGenerateCoarseMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type DependencyMapControllerGenerateCoarseMapInput =
-  typeof DependencyMapControllerGenerateCoarseMapInput.Type;
+  ) as unknown as Schema.Codec<DependencyMapControllerGenerateCoarseMapInput>;
 
 // Output Schema
+export type DependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const DependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DependencyMapControllerGenerateCoarseMapOutput =
-  typeof DependencyMapControllerGenerateCoarseMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -3621,6 +4625,15 @@ export const DependencyMapControllerGenerateCoarseMap =
     outputSchema: DependencyMapControllerGenerateCoarseMapOutput,
   }));
 // Input Schema
+export interface DependencyMapControllerGenerateDetailedMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const DependencyMapControllerGenerateDetailedMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3641,15 +4654,12 @@ export const DependencyMapControllerGenerateDetailedMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type DependencyMapControllerGenerateDetailedMapInput =
-  typeof DependencyMapControllerGenerateDetailedMapInput.Type;
+  ) as unknown as Schema.Codec<DependencyMapControllerGenerateDetailedMapInput>;
 
 // Output Schema
+export type DependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const DependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DependencyMapControllerGenerateDetailedMapOutput =
-  typeof DependencyMapControllerGenerateDetailedMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -3666,6 +4676,15 @@ export const DependencyMapControllerGenerateDetailedMap =
     outputSchema: DependencyMapControllerGenerateDetailedMapOutput,
   }));
 // Input Schema
+export interface DependencyMapControllerServerGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  serverPort?: number;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const DependencyMapControllerServerGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3686,15 +4705,12 @@ export const DependencyMapControllerServerGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type DependencyMapControllerServerGroupMembersInput =
-  typeof DependencyMapControllerServerGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<DependencyMapControllerServerGroupMembersInput>;
 
 // Output Schema
+export type DependencyMapControllerServerGroupMembersOutput = unknown;
 export const DependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type DependencyMapControllerServerGroupMembersOutput =
-  typeof DependencyMapControllerServerGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<DependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -3711,25 +4727,32 @@ export const DependencyMapControllerServerGroupMembers =
     outputSchema: DependencyMapControllerServerGroupMembersOutput,
   }));
 // Input Schema
+export interface EventsControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  eventName: string;
+}
 export const EventsControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    eventName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type EventsControllerDeleteInput =
-  typeof EventsControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<EventsControllerDeleteInput>;
 
 // Output Schema
+export interface EventsControllerDeleteOutput {}
 export const EventsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type EventsControllerDeleteOutput =
-  typeof EventsControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<EventsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -3739,6 +4762,8 @@ export type EventsControllerDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const EventsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3748,21 +4773,41 @@ export const EventsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventsControllerGetEventInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  eventName: string;
+}
 export const EventsControllerGetEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    eventName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type EventsControllerGetEventInput =
-  typeof EventsControllerGetEventInput.Type;
+  ) as unknown as Schema.Codec<EventsControllerGetEventInput>;
 
 // Output Schema
+export interface EventsControllerGetEventOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    instanceType?: string;
+    errorCode?: string;
+    errorMessage?: string;
+    recommendation?: string;
+    possibleCauses?: string;
+    solution?: string;
+    clientRequestId?: string;
+  };
+}
 export const EventsControllerGetEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3779,9 +4824,7 @@ export const EventsControllerGetEventOutput =
         clientRequestId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EventsControllerGetEventOutput =
-  typeof EventsControllerGetEventOutput.Type;
+  }) as unknown as Schema.Codec<EventsControllerGetEventOutput>;
 
 // The operation
 /**
@@ -3789,6 +4832,8 @@ export type EventsControllerGetEventOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param eventName - Unique name of an event within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const EventsControllerGetEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -3798,21 +4843,44 @@ export const EventsControllerGetEvent = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EventsControllerListEventsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+}
 export const EventsControllerListEventsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents",
       apiVersion: "2023-01-01",
     }),
-  );
-export type EventsControllerListEventsInput =
-  typeof EventsControllerListEventsInput.Type;
+  ) as unknown as Schema.Codec<EventsControllerListEventsInput>;
 
 // Output Schema
+export interface EventsControllerListEventsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      instanceType?: string;
+      errorCode?: string;
+      errorMessage?: string;
+      recommendation?: string;
+      possibleCauses?: string;
+      solution?: string;
+      clientRequestId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EventsControllerListEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -3836,9 +4904,7 @@ export const EventsControllerListEventsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type EventsControllerListEventsOutput =
-  typeof EventsControllerListEventsOutput.Type;
+  }) as unknown as Schema.Codec<EventsControllerListEventsOutput>;
 
 // The operation
 /**
@@ -3846,7 +4912,9 @@ export type EventsControllerListEventsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
  */
 export const EventsControllerListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3855,6 +4923,22 @@ export const EventsControllerListEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const GroupsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3882,11 +4966,22 @@ export const GroupsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type GroupsOperationsCreateInput =
-  typeof GroupsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<GroupsOperationsCreateInput>;
 
 // Output Schema
+export interface GroupsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3906,9 +5001,7 @@ export const GroupsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupsOperationsCreateOutput =
-  typeof GroupsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<GroupsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -3927,6 +5020,12 @@ export const GroupsOperationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const GroupsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3939,15 +5038,12 @@ export const GroupsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type GroupsOperationsDeleteInput =
-  typeof GroupsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<GroupsOperationsDeleteInput>;
 
 // Output Schema
+export type GroupsOperationsDeleteOutput = void;
 export const GroupsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GroupsOperationsDeleteOutput =
-  typeof GroupsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -3966,6 +5062,12 @@ export const GroupsOperationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface GroupsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const GroupsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3978,10 +5080,22 @@ export const GroupsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type GroupsOperationsGetInput = typeof GroupsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<GroupsOperationsGetInput>;
 
 // Output Schema
+export interface GroupsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4001,8 +5115,7 @@ export const GroupsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupsOperationsGetOutput = typeof GroupsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<GroupsOperationsGetOutput>;
 
 // The operation
 /**
@@ -4019,6 +5132,11 @@ export const GroupsOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: GroupsOperationsGetOutput,
 }));
 // Input Schema
+export interface GroupsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const GroupsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4030,11 +5148,25 @@ export const GroupsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups",
       apiVersion: "2024-01-15",
     }),
-  );
-export type GroupsOperationsListByAssessmentProjectInput =
-  typeof GroupsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<GroupsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface GroupsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const GroupsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4069,9 +5201,7 @@ export const GroupsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type GroupsOperationsListByAssessmentProjectOutput =
-  typeof GroupsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<GroupsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -4088,6 +5218,14 @@ export const GroupsOperationsListByAssessmentProject =
     outputSchema: GroupsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface GroupsOperationsUpdateMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  eTag?: string;
+  properties?: { operationType?: "Add" | "Remove"; machines?: string[] };
+}
 export const GroupsOperationsUpdateMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4107,11 +5245,22 @@ export const GroupsOperationsUpdateMachinesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/updateMachines",
       apiVersion: "2024-01-15",
     }),
-  );
-export type GroupsOperationsUpdateMachinesInput =
-  typeof GroupsOperationsUpdateMachinesInput.Type;
+  ) as unknown as Schema.Codec<GroupsOperationsUpdateMachinesInput>;
 
 // Output Schema
+export interface GroupsOperationsUpdateMachinesOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const GroupsOperationsUpdateMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4131,9 +5280,7 @@ export const GroupsOperationsUpdateMachinesOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type GroupsOperationsUpdateMachinesOutput =
-  typeof GroupsOperationsUpdateMachinesOutput.Type;
+  }) as unknown as Schema.Codec<GroupsOperationsUpdateMachinesOutput>;
 
 // The operation
 /**
@@ -4153,6 +5300,52 @@ export const GroupsOperationsUpdateMachines =
     outputSchema: GroupsOperationsUpdateMachinesOutput,
   }));
 // Input Schema
+export interface HypervClusterControllerCreateClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  clusterName: string;
+  properties?: {
+    createdTimestamp?: string;
+    updatedTimestamp?: string;
+    fqdn?: string;
+    functionalLevel?: number;
+    status?: string;
+    runAsAccountId?: string;
+    hostFqdnList?: string[];
+    errors?: {
+      message?: string;
+      messageParameters?: Record<string, string>;
+      applianceName?: string;
+      id?: number;
+      code?: string;
+      possibleCauses?: string;
+      recommendedAction?: string;
+      severity?: string;
+      summaryMessage?: string;
+      source?:
+        | "RefreshFabricLayout"
+        | "RefreshFabricLayoutGuest"
+        | "RefreshFabricLayoutDependencyMap";
+      updatedTimeStamp?: string;
+      runAsAccountId?: string;
+      discoveryScope?:
+        | "AppsAndRoles"
+        | "DependencyMap"
+        | "StaticData"
+        | "SQLServerConnectionInfo"
+        | "DiscoveryTargets";
+    }[];
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const HypervClusterControllerCreateClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4222,11 +5415,22 @@ export const HypervClusterControllerCreateClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervClusterControllerCreateClusterInput =
-  typeof HypervClusterControllerCreateClusterInput.Type;
+  ) as unknown as Schema.Codec<HypervClusterControllerCreateClusterInput>;
 
 // Output Schema
+export interface HypervClusterControllerCreateClusterOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervClusterControllerCreateClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4246,9 +5450,7 @@ export const HypervClusterControllerCreateClusterOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervClusterControllerCreateClusterOutput =
-  typeof HypervClusterControllerCreateClusterOutput.Type;
+  }) as unknown as Schema.Codec<HypervClusterControllerCreateClusterOutput>;
 
 // The operation
 /**
@@ -4266,6 +5468,12 @@ export const HypervClusterControllerCreateCluster =
     outputSchema: HypervClusterControllerCreateClusterOutput,
   }));
 // Input Schema
+export interface HypervClusterControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  clusterName: string;
+}
 export const HypervClusterControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4278,15 +5486,12 @@ export const HypervClusterControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervClusterControllerDeleteInput =
-  typeof HypervClusterControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<HypervClusterControllerDeleteInput>;
 
 // Output Schema
+export type HypervClusterControllerDeleteOutput = void;
 export const HypervClusterControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HypervClusterControllerDeleteOutput =
-  typeof HypervClusterControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervClusterControllerDeleteOutput>;
 
 // The operation
 /**
@@ -4304,6 +5509,12 @@ export const HypervClusterControllerDelete =
     outputSchema: HypervClusterControllerDeleteOutput,
   }));
 // Input Schema
+export interface HypervClusterControllerGetClusterInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  clusterName: string;
+}
 export const HypervClusterControllerGetClusterInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4316,11 +5527,22 @@ export const HypervClusterControllerGetClusterInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervClusterControllerGetClusterInput =
-  typeof HypervClusterControllerGetClusterInput.Type;
+  ) as unknown as Schema.Codec<HypervClusterControllerGetClusterInput>;
 
 // Output Schema
+export interface HypervClusterControllerGetClusterOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervClusterControllerGetClusterOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4340,9 +5562,7 @@ export const HypervClusterControllerGetClusterOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervClusterControllerGetClusterOutput =
-  typeof HypervClusterControllerGetClusterOutput.Type;
+  }) as unknown as Schema.Codec<HypervClusterControllerGetClusterOutput>;
 
 // The operation
 /**
@@ -4360,6 +5580,12 @@ export const HypervClusterControllerGetCluster =
     outputSchema: HypervClusterControllerGetClusterOutput,
   }));
 // Input Schema
+export interface HypervClusterControllerListByHypervSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+}
 export const HypervClusterControllerListByHypervSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4372,11 +5598,25 @@ export const HypervClusterControllerListByHypervSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervClusterControllerListByHypervSiteInput =
-  typeof HypervClusterControllerListByHypervSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervClusterControllerListByHypervSiteInput>;
 
 // Output Schema
+export interface HypervClusterControllerListByHypervSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervClusterControllerListByHypervSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4411,9 +5651,7 @@ export const HypervClusterControllerListByHypervSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervClusterControllerListByHypervSiteOutput =
-  typeof HypervClusterControllerListByHypervSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervClusterControllerListByHypervSiteOutput>;
 
 // The operation
 /**
@@ -4431,6 +5669,22 @@ export const HypervClusterControllerListByHypervSite =
     outputSchema: HypervClusterControllerListByHypervSiteOutput,
   }));
 // Input Schema
+export interface HypervCollectorsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  hypervCollectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const HypervCollectorsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4458,11 +5712,22 @@ export const HypervCollectorsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type HypervCollectorsOperationsCreateInput =
-  typeof HypervCollectorsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<HypervCollectorsOperationsCreateInput>;
 
 // Output Schema
+export interface HypervCollectorsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervCollectorsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4482,9 +5747,7 @@ export const HypervCollectorsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervCollectorsOperationsCreateOutput =
-  typeof HypervCollectorsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<HypervCollectorsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -4502,6 +5765,12 @@ export const HypervCollectorsOperationsCreate =
     outputSchema: HypervCollectorsOperationsCreateOutput,
   }));
 // Input Schema
+export interface HypervCollectorsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  hypervCollectorName: string;
+}
 export const HypervCollectorsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4514,15 +5783,12 @@ export const HypervCollectorsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type HypervCollectorsOperationsDeleteInput =
-  typeof HypervCollectorsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<HypervCollectorsOperationsDeleteInput>;
 
 // Output Schema
+export type HypervCollectorsOperationsDeleteOutput = void;
 export const HypervCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HypervCollectorsOperationsDeleteOutput =
-  typeof HypervCollectorsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -4540,6 +5806,12 @@ export const HypervCollectorsOperationsDelete =
     outputSchema: HypervCollectorsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface HypervCollectorsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  hypervCollectorName: string;
+}
 export const HypervCollectorsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4552,11 +5824,22 @@ export const HypervCollectorsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type HypervCollectorsOperationsGetInput =
-  typeof HypervCollectorsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<HypervCollectorsOperationsGetInput>;
 
 // Output Schema
+export interface HypervCollectorsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervCollectorsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4576,9 +5859,7 @@ export const HypervCollectorsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervCollectorsOperationsGetOutput =
-  typeof HypervCollectorsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervCollectorsOperationsGetOutput>;
 
 // The operation
 /**
@@ -4596,6 +5877,11 @@ export const HypervCollectorsOperationsGet =
     outputSchema: HypervCollectorsOperationsGetOutput,
   }));
 // Input Schema
+export interface HypervCollectorsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const HypervCollectorsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4607,11 +5893,25 @@ export const HypervCollectorsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type HypervCollectorsOperationsListByAssessmentProjectInput =
-  typeof HypervCollectorsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<HypervCollectorsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface HypervCollectorsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervCollectorsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4646,9 +5946,7 @@ export const HypervCollectorsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervCollectorsOperationsListByAssessmentProjectOutput =
-  typeof HypervCollectorsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<HypervCollectorsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -4665,6 +5963,17 @@ export const HypervCollectorsOperationsListByAssessmentProject =
     outputSchema: HypervCollectorsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerClientGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  processGroupName?: string;
+  processName?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const HypervDependencyMapControllerClientGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4687,15 +5996,12 @@ export const HypervDependencyMapControllerClientGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerClientGroupMembersInput =
-  typeof HypervDependencyMapControllerClientGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerClientGroupMembersInput>;
 
 // Output Schema
+export type HypervDependencyMapControllerClientGroupMembersOutput = unknown;
 export const HypervDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervDependencyMapControllerClientGroupMembersOutput =
-  typeof HypervDependencyMapControllerClientGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -4712,6 +6018,13 @@ export const HypervDependencyMapControllerClientGroupMembers =
     outputSchema: HypervDependencyMapControllerClientGroupMembersOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerExportDependenciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const HypervDependencyMapControllerExportDependenciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4725,15 +6038,12 @@ export const HypervDependencyMapControllerExportDependenciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerExportDependenciesInput =
-  typeof HypervDependencyMapControllerExportDependenciesInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerExportDependenciesInput>;
 
 // Output Schema
+export type HypervDependencyMapControllerExportDependenciesOutput = unknown;
 export const HypervDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervDependencyMapControllerExportDependenciesOutput =
-  typeof HypervDependencyMapControllerExportDependenciesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -4750,6 +6060,14 @@ export const HypervDependencyMapControllerExportDependencies =
     outputSchema: HypervDependencyMapControllerExportDependenciesOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerGenerateCoarseMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const HypervDependencyMapControllerGenerateCoarseMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4769,15 +6087,12 @@ export const HypervDependencyMapControllerGenerateCoarseMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerGenerateCoarseMapInput =
-  typeof HypervDependencyMapControllerGenerateCoarseMapInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerGenerateCoarseMapInput>;
 
 // Output Schema
+export type HypervDependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const HypervDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervDependencyMapControllerGenerateCoarseMapOutput =
-  typeof HypervDependencyMapControllerGenerateCoarseMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -4794,6 +6109,15 @@ export const HypervDependencyMapControllerGenerateCoarseMap =
     outputSchema: HypervDependencyMapControllerGenerateCoarseMapOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerGenerateDetailedMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const HypervDependencyMapControllerGenerateDetailedMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4814,15 +6138,12 @@ export const HypervDependencyMapControllerGenerateDetailedMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerGenerateDetailedMapInput =
-  typeof HypervDependencyMapControllerGenerateDetailedMapInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerGenerateDetailedMapInput>;
 
 // Output Schema
+export type HypervDependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const HypervDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervDependencyMapControllerGenerateDetailedMapOutput =
-  typeof HypervDependencyMapControllerGenerateDetailedMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -4839,6 +6160,15 @@ export const HypervDependencyMapControllerGenerateDetailedMap =
     outputSchema: HypervDependencyMapControllerGenerateDetailedMapOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerServerGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  serverPort?: number;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const HypervDependencyMapControllerServerGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4859,15 +6189,12 @@ export const HypervDependencyMapControllerServerGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerServerGroupMembersInput =
-  typeof HypervDependencyMapControllerServerGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerServerGroupMembersInput>;
 
 // Output Schema
+export type HypervDependencyMapControllerServerGroupMembersOutput = unknown;
 export const HypervDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervDependencyMapControllerServerGroupMembersOutput =
-  typeof HypervDependencyMapControllerServerGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -4884,6 +6211,12 @@ export const HypervDependencyMapControllerServerGroupMembers =
     outputSchema: HypervDependencyMapControllerServerGroupMembersOutput,
   }));
 // Input Schema
+export interface HypervDependencyMapControllerUpdateDependencyMapStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
+}
 export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4903,15 +6236,13 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervDependencyMapControllerUpdateDependencyMapStatusInput =
-  typeof HypervDependencyMapControllerUpdateDependencyMapStatusInput.Type;
+  ) as unknown as Schema.Codec<HypervDependencyMapControllerUpdateDependencyMapStatusInput>;
 
 // Output Schema
-export const HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 export type HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
-  typeof HypervDependencyMapControllerUpdateDependencyMapStatusOutput.Type;
+  unknown;
+export const HypervDependencyMapControllerUpdateDependencyMapStatusOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervDependencyMapControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -4929,6 +6260,50 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatus =
     outputSchema: HypervDependencyMapControllerUpdateDependencyMapStatusOutput,
   }));
 // Input Schema
+export interface HypervHostControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  hostName: string;
+  properties?: {
+    createdTimestamp?: string;
+    updatedTimestamp?: string;
+    fqdn?: string;
+    runAsAccountId?: string;
+    version?: string;
+    errors?: {
+      message?: string;
+      messageParameters?: Record<string, string>;
+      applianceName?: string;
+      id?: number;
+      code?: string;
+      possibleCauses?: string;
+      recommendedAction?: string;
+      severity?: string;
+      summaryMessage?: string;
+      source?:
+        | "RefreshFabricLayout"
+        | "RefreshFabricLayoutGuest"
+        | "RefreshFabricLayoutDependencyMap";
+      updatedTimeStamp?: string;
+      runAsAccountId?: string;
+      discoveryScope?:
+        | "AppsAndRoles"
+        | "DependencyMap"
+        | "StaticData"
+        | "SQLServerConnectionInfo"
+        | "DiscoveryTargets";
+    }[];
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const HypervHostControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4996,11 +6371,22 @@ export const HypervHostControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervHostControllerCreateInput =
-  typeof HypervHostControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<HypervHostControllerCreateInput>;
 
 // Output Schema
+export interface HypervHostControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervHostControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5020,9 +6406,7 @@ export const HypervHostControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervHostControllerCreateOutput =
-  typeof HypervHostControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<HypervHostControllerCreateOutput>;
 
 // The operation
 /**
@@ -5041,6 +6425,12 @@ export const HypervHostControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervHostControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  hostName: string;
+}
 export const HypervHostControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5053,15 +6443,12 @@ export const HypervHostControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervHostControllerDeleteInput =
-  typeof HypervHostControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<HypervHostControllerDeleteInput>;
 
 // Output Schema
+export type HypervHostControllerDeleteOutput = void;
 export const HypervHostControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HypervHostControllerDeleteOutput =
-  typeof HypervHostControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervHostControllerDeleteOutput>;
 
 // The operation
 /**
@@ -5080,6 +6467,12 @@ export const HypervHostControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervHostControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  hostName: string;
+}
 export const HypervHostControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5092,11 +6485,22 @@ export const HypervHostControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervHostControllerGetInput =
-  typeof HypervHostControllerGetInput.Type;
+  ) as unknown as Schema.Codec<HypervHostControllerGetInput>;
 
 // Output Schema
+export interface HypervHostControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervHostControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5116,9 +6520,7 @@ export const HypervHostControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervHostControllerGetOutput =
-  typeof HypervHostControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervHostControllerGetOutput>;
 
 // The operation
 /**
@@ -5137,6 +6539,12 @@ export const HypervHostControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervHostControllerListByHypervSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+}
 export const HypervHostControllerListByHypervSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5149,11 +6557,25 @@ export const HypervHostControllerListByHypervSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervHostControllerListByHypervSiteInput =
-  typeof HypervHostControllerListByHypervSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervHostControllerListByHypervSiteInput>;
 
 // Output Schema
+export interface HypervHostControllerListByHypervSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervHostControllerListByHypervSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5188,9 +6610,7 @@ export const HypervHostControllerListByHypervSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervHostControllerListByHypervSiteOutput =
-  typeof HypervHostControllerListByHypervSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervHostControllerListByHypervSiteOutput>;
 
 // The operation
 /**
@@ -5208,6 +6628,12 @@ export const HypervHostControllerListByHypervSite =
     outputSchema: HypervHostControllerListByHypervSiteOutput,
   }));
 // Input Schema
+export interface HypervJobsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const HypervJobsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5220,11 +6646,22 @@ export const HypervJobsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/jobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervJobsControllerGetInput =
-  typeof HypervJobsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<HypervJobsControllerGetInput>;
 
 // Output Schema
+export interface HypervJobsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervJobsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5244,9 +6681,7 @@ export const HypervJobsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervJobsControllerGetOutput =
-  typeof HypervJobsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervJobsControllerGetOutput>;
 
 // The operation
 /**
@@ -5265,6 +6700,11 @@ export const HypervJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervJobsControllerListByVmwareSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervJobsControllerListByVmwareSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5276,11 +6716,25 @@ export const HypervJobsControllerListByVmwareSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/jobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervJobsControllerListByVmwareSiteInput =
-  typeof HypervJobsControllerListByVmwareSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervJobsControllerListByVmwareSiteInput>;
 
 // Output Schema
+export interface HypervJobsControllerListByVmwareSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervJobsControllerListByVmwareSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5315,9 +6769,7 @@ export const HypervJobsControllerListByVmwareSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervJobsControllerListByVmwareSiteOutput =
-  typeof HypervJobsControllerListByVmwareSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervJobsControllerListByVmwareSiteOutput>;
 
 // The operation
 /**
@@ -5334,6 +6786,12 @@ export const HypervJobsControllerListByVmwareSite =
     outputSchema: HypervJobsControllerListByVmwareSiteOutput,
   }));
 // Input Schema
+export interface HypervJobsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const HypervJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -5345,10 +6803,22 @@ export const HypervJobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/jobs/{jobName}",
     apiVersion: "2023-06-06",
   }),
-);
-export type HypervJobsGetInput = typeof HypervJobsGetInput.Type;
+) as unknown as Schema.Codec<HypervJobsGetInput>;
 
 // Output Schema
+export interface HypervJobsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -5367,8 +6837,7 @@ export const HypervJobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type HypervJobsGetOutput = typeof HypervJobsGetOutput.Type;
+}) as unknown as Schema.Codec<HypervJobsGetOutput>;
 
 // The operation
 /**
@@ -5385,6 +6854,11 @@ export const HypervJobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: HypervJobsGetOutput,
 }));
 // Input Schema
+export interface HypervJobsListByHypervSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervJobsListByHypervSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5396,11 +6870,25 @@ export const HypervJobsListByHypervSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/jobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervJobsListByHypervSiteInput =
-  typeof HypervJobsListByHypervSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervJobsListByHypervSiteInput>;
 
 // Output Schema
+export interface HypervJobsListByHypervSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervJobsListByHypervSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5435,9 +6923,7 @@ export const HypervJobsListByHypervSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervJobsListByHypervSiteOutput =
-  typeof HypervJobsListByHypervSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervJobsListByHypervSiteOutput>;
 
 // The operation
 /**
@@ -5455,6 +6941,12 @@ export const HypervJobsListByHypervSite = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervMachinesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const HypervMachinesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5467,11 +6959,22 @@ export const HypervMachinesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervMachinesControllerGetInput =
-  typeof HypervMachinesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<HypervMachinesControllerGetInput>;
 
 // Output Schema
+export interface HypervMachinesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervMachinesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5491,9 +6994,7 @@ export const HypervMachinesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervMachinesControllerGetOutput =
-  typeof HypervMachinesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervMachinesControllerGetOutput>;
 
 // The operation
 /**
@@ -5512,6 +7013,15 @@ export const HypervMachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervMachinesControllerListByHypervSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+  top?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const HypervMachinesControllerListByHypervSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5527,11 +7037,25 @@ export const HypervMachinesControllerListByHypervSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervMachinesControllerListByHypervSiteInput =
-  typeof HypervMachinesControllerListByHypervSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervMachinesControllerListByHypervSiteInput>;
 
 // Output Schema
+export interface HypervMachinesControllerListByHypervSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervMachinesControllerListByHypervSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5566,9 +7090,7 @@ export const HypervMachinesControllerListByHypervSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervMachinesControllerListByHypervSiteOutput =
-  typeof HypervMachinesControllerListByHypervSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervMachinesControllerListByHypervSiteOutput>;
 
 // The operation
 /**
@@ -5589,6 +7111,39 @@ export const HypervMachinesControllerListByHypervSite =
     outputSchema: HypervMachinesControllerListByHypervSiteOutput,
   }));
 // Input Schema
+export interface HypervMachinesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  properties?: {
+    firmware?: string;
+    runAsAccountId?: string;
+    productSupportStatus?: {
+      currentVersion?: string;
+      esuStatus?: "Unknown" | "Active" | "InActive";
+      supportStatus?: "Unknown" | "Mainstream" | "Extended";
+      supportEndDate?: string;
+      esuYear?:
+        | "Unknown"
+        | "FirstYear"
+        | "SecondYear"
+        | "ThirdYear"
+        | "UpgradeYear";
+    };
+    numberOfProcessorCore?: number;
+    allocatedMemoryInMb?: number;
+    operatingSystemDetails?: {
+      osType?: string;
+      osName?: string;
+      osVersion?: string;
+      osArchitecture?: string;
+    };
+    biosSerialNumber?: string;
+    biosGuid?: string;
+    tags?: Record<string, string>;
+  };
+}
 export const HypervMachinesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5641,11 +7196,22 @@ export const HypervMachinesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervMachinesControllerUpdateInput =
-  typeof HypervMachinesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<HypervMachinesControllerUpdateInput>;
 
 // Output Schema
+export interface HypervMachinesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervMachinesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5665,9 +7231,7 @@ export const HypervMachinesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervMachinesControllerUpdateOutput =
-  typeof HypervMachinesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HypervMachinesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -5685,6 +7249,16 @@ export const HypervMachinesControllerUpdate =
     outputSchema: HypervMachinesControllerUpdateOutput,
   }));
 // Input Schema
+export interface HypervMachinesControllerUpdatePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  value: {
+    machineArmId: string;
+    dependencyMapping: string;
+    tags: Record<string, string>;
+  }[];
+}
 export const HypervMachinesControllerUpdatePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5703,15 +7277,12 @@ export const HypervMachinesControllerUpdatePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervMachinesControllerUpdatePropertiesInput =
-  typeof HypervMachinesControllerUpdatePropertiesInput.Type;
+  ) as unknown as Schema.Codec<HypervMachinesControllerUpdatePropertiesInput>;
 
 // Output Schema
+export type HypervMachinesControllerUpdatePropertiesOutput = unknown;
 export const HypervMachinesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervMachinesControllerUpdatePropertiesOutput =
-  typeof HypervMachinesControllerUpdatePropertiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervMachinesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -5729,6 +7300,12 @@ export const HypervMachinesControllerUpdateProperties =
     outputSchema: HypervMachinesControllerUpdatePropertiesOutput,
   }));
 // Input Schema
+export interface HypervOperationsStatusControllerGetHypervOperationsStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  operationStatusName: string;
+}
 export const HypervOperationsStatusControllerGetHypervOperationsStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5741,11 +7318,18 @@ export const HypervOperationsStatusControllerGetHypervOperationsStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/operationsStatus/{operationStatusName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervOperationsStatusControllerGetHypervOperationsStatusInput =
-  typeof HypervOperationsStatusControllerGetHypervOperationsStatusInput.Type;
+  ) as unknown as Schema.Codec<HypervOperationsStatusControllerGetHypervOperationsStatusInput>;
 
 // Output Schema
+export interface HypervOperationsStatusControllerGetHypervOperationsStatusOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  properties?: { result?: string };
+}
 export const HypervOperationsStatusControllerGetHypervOperationsStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5764,9 +7348,7 @@ export const HypervOperationsStatusControllerGetHypervOperationsStatusOutput =
         result: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervOperationsStatusControllerGetHypervOperationsStatusOutput =
-  typeof HypervOperationsStatusControllerGetHypervOperationsStatusOutput.Type;
+  }) as unknown as Schema.Codec<HypervOperationsStatusControllerGetHypervOperationsStatusOutput>;
 
 // The operation
 /**
@@ -5785,6 +7367,12 @@ export const HypervOperationsStatusControllerGetHypervOperationsStatus =
       HypervOperationsStatusControllerGetHypervOperationsStatusOutput,
   }));
 // Input Schema
+export interface HypervRunAsAccountsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  accountName: string;
+}
 export const HypervRunAsAccountsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5797,11 +7385,22 @@ export const HypervRunAsAccountsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/runAsAccounts/{accountName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervRunAsAccountsControllerGetInput =
-  typeof HypervRunAsAccountsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<HypervRunAsAccountsControllerGetInput>;
 
 // Output Schema
+export interface HypervRunAsAccountsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervRunAsAccountsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -5821,9 +7420,7 @@ export const HypervRunAsAccountsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervRunAsAccountsControllerGetOutput =
-  typeof HypervRunAsAccountsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervRunAsAccountsControllerGetOutput>;
 
 // The operation
 /**
@@ -5841,6 +7438,11 @@ export const HypervRunAsAccountsControllerGet =
     outputSchema: HypervRunAsAccountsControllerGetOutput,
   }));
 // Input Schema
+export interface HypervRunAsAccountsControllerListByHypervSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervRunAsAccountsControllerListByHypervSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5852,11 +7454,25 @@ export const HypervRunAsAccountsControllerListByHypervSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/runAsAccounts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervRunAsAccountsControllerListByHypervSiteInput =
-  typeof HypervRunAsAccountsControllerListByHypervSiteInput.Type;
+  ) as unknown as Schema.Codec<HypervRunAsAccountsControllerListByHypervSiteInput>;
 
 // Output Schema
+export interface HypervRunAsAccountsControllerListByHypervSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervRunAsAccountsControllerListByHypervSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -5891,9 +7507,7 @@ export const HypervRunAsAccountsControllerListByHypervSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervRunAsAccountsControllerListByHypervSiteOutput =
-  typeof HypervRunAsAccountsControllerListByHypervSiteOutput.Type;
+  }) as unknown as Schema.Codec<HypervRunAsAccountsControllerListByHypervSiteOutput>;
 
 // The operation
 /**
@@ -5910,6 +7524,11 @@ export const HypervRunAsAccountsControllerListByHypervSite =
     outputSchema: HypervRunAsAccountsControllerListByHypervSiteOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerComputeErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerComputeErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5921,11 +7540,22 @@ export const HypervSitesControllerComputeErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/computeErrorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerComputeErrorSummaryInput =
-  typeof HypervSitesControllerComputeErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerComputeErrorSummaryInput>;
 
 // Output Schema
+export interface HypervSitesControllerComputeErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const HypervSitesControllerComputeErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -5940,9 +7570,7 @@ export const HypervSitesControllerComputeErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervSitesControllerComputeErrorSummaryOutput =
-  typeof HypervSitesControllerComputeErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerComputeErrorSummaryOutput>;
 
 // The operation
 /**
@@ -5959,6 +7587,11 @@ export const HypervSitesControllerComputeErrorSummary =
     outputSchema: HypervSitesControllerComputeErrorSummaryOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerComputeusageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerComputeusageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -5970,20 +7603,22 @@ export const HypervSitesControllerComputeusageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/computeusage",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerComputeusageInput =
-  typeof HypervSitesControllerComputeusageInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerComputeusageInput>;
 
 // Output Schema
+export interface HypervSitesControllerComputeusageOutput {
+  machineCount?: number;
+  runAsAccountCount?: number;
+  hostCount?: number;
+  clusterCount?: number;
+}
 export const HypervSitesControllerComputeusageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     hostCount: Schema.optional(Schema.Number),
     clusterCount: Schema.optional(Schema.Number),
-  });
-export type HypervSitesControllerComputeusageOutput =
-  typeof HypervSitesControllerComputeusageOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerComputeusageOutput>;
 
 // The operation
 /**
@@ -6000,6 +7635,42 @@ export const HypervSitesControllerComputeusage =
     outputSchema: HypervSitesControllerComputeusageOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    masterSiteId?: string;
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const HypervSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6051,11 +7722,22 @@ export const HypervSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerCreateInput =
-  typeof HypervSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerCreateInput>;
 
 // Output Schema
+export interface HypervSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6075,9 +7757,7 @@ export const HypervSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervSitesControllerCreateOutput =
-  typeof HypervSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -6095,6 +7775,11 @@ export const HypervSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6106,15 +7791,12 @@ export const HypervSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerDeleteInput =
-  typeof HypervSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerDeleteInput>;
 
 // Output Schema
+export type HypervSitesControllerDeleteOutput = void;
 export const HypervSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type HypervSitesControllerDeleteOutput =
-  typeof HypervSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HypervSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -6132,6 +7814,11 @@ export const HypervSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervSitesControllerExportApplicationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerExportApplicationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6143,15 +7830,12 @@ export const HypervSitesControllerExportApplicationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerExportApplicationsInput =
-  typeof HypervSitesControllerExportApplicationsInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerExportApplicationsInput>;
 
 // Output Schema
+export type HypervSitesControllerExportApplicationsOutput = unknown;
 export const HypervSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervSitesControllerExportApplicationsOutput =
-  typeof HypervSitesControllerExportApplicationsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -6169,6 +7853,18 @@ export const HypervSitesControllerExportApplications =
     outputSchema: HypervSitesControllerExportApplicationsOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerExportMachineErrorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    discoveryScope?:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+}
 export const HypervSitesControllerExportMachineErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6192,15 +7888,12 @@ export const HypervSitesControllerExportMachineErrorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerExportMachineErrorsInput =
-  typeof HypervSitesControllerExportMachineErrorsInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerExportMachineErrorsInput>;
 
 // Output Schema
+export type HypervSitesControllerExportMachineErrorsOutput = unknown;
 export const HypervSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type HypervSitesControllerExportMachineErrorsOutput =
-  typeof HypervSitesControllerExportMachineErrorsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<HypervSitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -6218,6 +7911,11 @@ export const HypervSitesControllerExportMachineErrors =
     outputSchema: HypervSitesControllerExportMachineErrorsOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6229,11 +7927,22 @@ export const HypervSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerGetInput =
-  typeof HypervSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerGetInput>;
 
 // Output Schema
+export interface HypervSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6253,9 +7962,7 @@ export const HypervSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervSitesControllerGetOutput =
-  typeof HypervSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -6273,6 +7980,11 @@ export const HypervSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervSitesControllerListHealthSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerListHealthSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6284,11 +7996,30 @@ export const HypervSitesControllerListHealthSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/listHealthSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerListHealthSummaryInput =
-  typeof HypervSitesControllerListHealthSummaryInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerListHealthSummaryInput>;
 
 // Output Schema
+export interface HypervSitesControllerListHealthSummaryOutput {
+  value: {
+    applianceName?: string;
+    errorMessage?: string;
+    summaryMessage?: string;
+    errorId?: number;
+    errorCode?: string;
+    affectedObjectsCount?: number;
+    hitCount?: number;
+    severity?: string;
+    remediationGuidance?: string;
+    affectedResourceType?: string;
+    affectedResources?: string[];
+    fabricLayoutUpdateSources?: (
+      | "RefreshFabricLayout"
+      | "RefreshFabricLayoutGuest"
+      | "RefreshFabricLayoutDependencyMap"
+    )[];
+  }[];
+  nextLink?: string;
+}
 export const HypervSitesControllerListHealthSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6316,9 +8047,7 @@ export const HypervSitesControllerListHealthSummaryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervSitesControllerListHealthSummaryOutput =
-  typeof HypervSitesControllerListHealthSummaryOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerListHealthSummaryOutput>;
 
 // The operation
 /**
@@ -6335,6 +8064,11 @@ export const HypervSitesControllerListHealthSummary =
     outputSchema: HypervSitesControllerListHealthSummaryOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const HypervSitesControllerSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6346,20 +8080,22 @@ export const HypervSitesControllerSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/summary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerSummaryInput =
-  typeof HypervSitesControllerSummaryInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerSummaryInput>;
 
 // Output Schema
+export interface HypervSitesControllerSummaryOutput {
+  machineCount?: number;
+  runAsAccountCount?: number;
+  hostCount?: number;
+  clusterCount?: number;
+}
 export const HypervSitesControllerSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     hostCount: Schema.optional(Schema.Number),
     clusterCount: Schema.optional(Schema.Number),
-  });
-export type HypervSitesControllerSummaryOutput =
-  typeof HypervSitesControllerSummaryOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerSummaryOutput>;
 
 // The operation
 /**
@@ -6376,6 +8112,39 @@ export const HypervSitesControllerSummary =
     outputSchema: HypervSitesControllerSummaryOutput,
   }));
 // Input Schema
+export interface HypervSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const HypervSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6424,11 +8193,22 @@ export const HypervSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesControllerUpdateInput =
-  typeof HypervSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesControllerUpdateInput>;
 
 // Output Schema
+export interface HypervSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6448,9 +8228,7 @@ export const HypervSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervSitesControllerUpdateOutput =
-  typeof HypervSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -6468,6 +8246,10 @@ export const HypervSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface HypervSitesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const HypervSitesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6478,11 +8260,25 @@ export const HypervSitesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesListByResourceGroupInput =
-  typeof HypervSitesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesListByResourceGroupInput>;
 
 // Output Schema
+export interface HypervSitesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervSitesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6517,9 +8313,7 @@ export const HypervSitesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervSitesListByResourceGroupOutput =
-  typeof HypervSitesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -6537,6 +8331,9 @@ export const HypervSitesListByResourceGroup =
     outputSchema: HypervSitesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface HypervSitesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const HypervSitesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6546,11 +8343,25 @@ export const HypervSitesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/hypervSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSitesListBySubscriptionInput =
-  typeof HypervSitesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<HypervSitesListBySubscriptionInput>;
 
 // Output Schema
+export interface HypervSitesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervSitesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6585,9 +8396,7 @@ export const HypervSitesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervSitesListBySubscriptionOutput =
-  typeof HypervSitesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<HypervSitesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -6604,6 +8413,13 @@ export const HypervSitesListBySubscription =
     outputSchema: HypervSitesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  default: "default";
+}
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6617,11 +8433,22 @@ export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  typeof HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput.Type;
+  ) as unknown as Schema.Codec<HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryInput>;
 
 // Output Schema
+export interface HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6641,9 +8468,7 @@ export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  typeof HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput.Type;
+  }) as unknown as Schema.Codec<HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput>;
 
 // The operation
 /**
@@ -6664,6 +8489,12 @@ export const HypervSoftwareInventoriesControllerGetMachineSoftwareInventory =
       HypervSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput,
   }));
 // Input Schema
+export interface HypervSoftwareInventoriesControllerListByHypervMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const HypervSoftwareInventoriesControllerListByHypervMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6676,11 +8507,25 @@ export const HypervSoftwareInventoriesControllerListByHypervMachineInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareinventories",
       apiVersion: "2023-06-06",
     }),
-  );
-export type HypervSoftwareInventoriesControllerListByHypervMachineInput =
-  typeof HypervSoftwareInventoriesControllerListByHypervMachineInput.Type;
+  ) as unknown as Schema.Codec<HypervSoftwareInventoriesControllerListByHypervMachineInput>;
 
 // Output Schema
+export interface HypervSoftwareInventoriesControllerListByHypervMachineOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const HypervSoftwareInventoriesControllerListByHypervMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6715,9 +8560,7 @@ export const HypervSoftwareInventoriesControllerListByHypervMachineOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type HypervSoftwareInventoriesControllerListByHypervMachineOutput =
-  typeof HypervSoftwareInventoriesControllerListByHypervMachineOutput.Type;
+  }) as unknown as Schema.Codec<HypervSoftwareInventoriesControllerListByHypervMachineOutput>;
 
 // The operation
 /**
@@ -6735,6 +8578,13 @@ export const HypervSoftwareInventoriesControllerListByHypervMachine =
     outputSchema: HypervSoftwareInventoriesControllerListByHypervMachineOutput,
   }));
 // Input Schema
+export interface IisWebApplicationsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webApplicationName: string;
+}
 export const IisWebApplicationsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6748,11 +8598,22 @@ export const IisWebApplicationsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications/{webApplicationName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type IisWebApplicationsControllerGetInput =
-  typeof IisWebApplicationsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<IisWebApplicationsControllerGetInput>;
 
 // Output Schema
+export interface IisWebApplicationsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IisWebApplicationsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6772,9 +8633,7 @@ export const IisWebApplicationsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IisWebApplicationsControllerGetOutput =
-  typeof IisWebApplicationsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<IisWebApplicationsControllerGetOutput>;
 
 // The operation
 /**
@@ -6793,6 +8652,16 @@ export const IisWebApplicationsControllerGet =
     outputSchema: IisWebApplicationsControllerGetOutput,
   }));
 // Input Schema
+export interface IisWebApplicationsControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const IisWebApplicationsControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6809,11 +8678,25 @@ export const IisWebApplicationsControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type IisWebApplicationsControllerListByWebAppSiteInput =
-  typeof IisWebApplicationsControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<IisWebApplicationsControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface IisWebApplicationsControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IisWebApplicationsControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -6848,9 +8731,7 @@ export const IisWebApplicationsControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IisWebApplicationsControllerListByWebAppSiteOutput =
-  typeof IisWebApplicationsControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<IisWebApplicationsControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -6872,6 +8753,14 @@ export const IisWebApplicationsControllerListByWebAppSite =
     outputSchema: IisWebApplicationsControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface IisWebApplicationsControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webApplicationName: string;
+  properties?: { tags?: Record<string, string> };
+}
 export const IisWebApplicationsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6890,11 +8779,22 @@ export const IisWebApplicationsControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications/{webApplicationName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type IisWebApplicationsControllerUpdateInput =
-  typeof IisWebApplicationsControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<IisWebApplicationsControllerUpdateInput>;
 
 // Output Schema
+export interface IisWebApplicationsControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IisWebApplicationsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6914,9 +8814,7 @@ export const IisWebApplicationsControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IisWebApplicationsControllerUpdateOutput =
-  typeof IisWebApplicationsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<IisWebApplicationsControllerUpdateOutput>;
 
 // The operation
 /**
@@ -6935,6 +8833,13 @@ export const IisWebApplicationsControllerUpdate =
     outputSchema: IisWebApplicationsControllerUpdateOutput,
   }));
 // Input Schema
+export interface IisWebServersControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webServerName: string;
+}
 export const IisWebServersControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -6948,11 +8853,22 @@ export const IisWebServersControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebServers/{webServerName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type IisWebServersControllerGetInput =
-  typeof IisWebServersControllerGetInput.Type;
+  ) as unknown as Schema.Codec<IisWebServersControllerGetInput>;
 
 // Output Schema
+export interface IisWebServersControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const IisWebServersControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -6972,9 +8888,7 @@ export const IisWebServersControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type IisWebServersControllerGetOutput =
-  typeof IisWebServersControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<IisWebServersControllerGetOutput>;
 
 // The operation
 /**
@@ -6994,6 +8908,16 @@ export const IisWebServersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface IisWebServersControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const IisWebServersControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7010,11 +8934,25 @@ export const IisWebServersControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebServers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type IisWebServersControllerListByWebAppSiteInput =
-  typeof IisWebServersControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<IisWebServersControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface IisWebServersControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const IisWebServersControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7049,9 +8987,7 @@ export const IisWebServersControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type IisWebServersControllerListByWebAppSiteOutput =
-  typeof IisWebServersControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<IisWebServersControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -7073,6 +9009,22 @@ export const IisWebServersControllerListByWebAppSite =
     outputSchema: IisWebServersControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface ImportCollectorsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  importCollectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const ImportCollectorsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7100,11 +9052,22 @@ export const ImportCollectorsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ImportCollectorsOperationsCreateInput =
-  typeof ImportCollectorsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<ImportCollectorsOperationsCreateInput>;
 
 // Output Schema
+export interface ImportCollectorsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportCollectorsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7124,9 +9087,7 @@ export const ImportCollectorsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportCollectorsOperationsCreateOutput =
-  typeof ImportCollectorsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ImportCollectorsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -7144,6 +9105,12 @@ export const ImportCollectorsOperationsCreate =
     outputSchema: ImportCollectorsOperationsCreateOutput,
   }));
 // Input Schema
+export interface ImportCollectorsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  importCollectorName: string;
+}
 export const ImportCollectorsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7156,15 +9123,12 @@ export const ImportCollectorsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ImportCollectorsOperationsDeleteInput =
-  typeof ImportCollectorsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ImportCollectorsOperationsDeleteInput>;
 
 // Output Schema
+export type ImportCollectorsOperationsDeleteOutput = void;
 export const ImportCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ImportCollectorsOperationsDeleteOutput =
-  typeof ImportCollectorsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -7182,6 +9146,12 @@ export const ImportCollectorsOperationsDelete =
     outputSchema: ImportCollectorsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface ImportCollectorsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  importCollectorName: string;
+}
 export const ImportCollectorsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7194,11 +9164,22 @@ export const ImportCollectorsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ImportCollectorsOperationsGetInput =
-  typeof ImportCollectorsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<ImportCollectorsOperationsGetInput>;
 
 // Output Schema
+export interface ImportCollectorsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportCollectorsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7218,9 +9199,7 @@ export const ImportCollectorsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportCollectorsOperationsGetOutput =
-  typeof ImportCollectorsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ImportCollectorsOperationsGetOutput>;
 
 // The operation
 /**
@@ -7238,6 +9217,11 @@ export const ImportCollectorsOperationsGet =
     outputSchema: ImportCollectorsOperationsGetOutput,
   }));
 // Input Schema
+export interface ImportCollectorsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ImportCollectorsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7249,11 +9233,25 @@ export const ImportCollectorsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ImportCollectorsOperationsListByAssessmentProjectInput =
-  typeof ImportCollectorsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<ImportCollectorsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface ImportCollectorsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportCollectorsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7288,9 +9286,7 @@ export const ImportCollectorsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportCollectorsOperationsListByAssessmentProjectOutput =
-  typeof ImportCollectorsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<ImportCollectorsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -7307,6 +9303,12 @@ export const ImportCollectorsOperationsListByAssessmentProject =
     outputSchema: ImportCollectorsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const ImportJobsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7319,11 +9321,22 @@ export const ImportJobsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/jobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerGetInput =
-  typeof ImportJobsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerGetInput>;
 
 // Output Schema
+export interface ImportJobsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportJobsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7343,9 +9356,7 @@ export const ImportJobsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportJobsControllerGetOutput =
-  typeof ImportJobsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerGetOutput>;
 
 // The operation
 /**
@@ -7364,6 +9375,12 @@ export const ImportJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImportJobsControllerGetDeletejobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const ImportJobsControllerGetDeletejobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7376,11 +9393,22 @@ export const ImportJobsControllerGetDeletejobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteJobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerGetDeletejobInput =
-  typeof ImportJobsControllerGetDeletejobInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerGetDeletejobInput>;
 
 // Output Schema
+export interface ImportJobsControllerGetDeletejobOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportJobsControllerGetDeletejobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7400,9 +9428,7 @@ export const ImportJobsControllerGetDeletejobOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportJobsControllerGetDeletejobOutput =
-  typeof ImportJobsControllerGetDeletejobOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerGetDeletejobOutput>;
 
 // The operation
 /**
@@ -7420,6 +9446,12 @@ export const ImportJobsControllerGetDeletejob =
     outputSchema: ImportJobsControllerGetDeletejobOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerGetExportjobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const ImportJobsControllerGetExportjobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7432,11 +9464,19 @@ export const ImportJobsControllerGetExportjobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportJobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerGetExportjobInput =
-  typeof ImportJobsControllerGetExportjobInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerGetExportjobInput>;
 
 // Output Schema
+export interface ImportJobsControllerGetExportjobOutput {
+  type?: string;
+  properties?: { blobName?: string; sasUri?: string };
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  displayName?: string;
+}
 export const ImportJobsControllerGetExportjobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
@@ -7452,9 +9492,7 @@ export const ImportJobsControllerGetExportjobOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerGetExportjobOutput =
-  typeof ImportJobsControllerGetExportjobOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerGetExportjobOutput>;
 
 // The operation
 /**
@@ -7472,6 +9510,12 @@ export const ImportJobsControllerGetExportjob =
     outputSchema: ImportJobsControllerGetExportjobOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerGetImportjobInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const ImportJobsControllerGetImportjobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7484,11 +9528,37 @@ export const ImportJobsControllerGetImportjobInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importJobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerGetImportjobInput =
-  typeof ImportJobsControllerGetImportjobInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerGetImportjobInput>;
 
 // Output Schema
+export interface ImportJobsControllerGetImportjobOutput {
+  type?: string;
+  properties?: {
+    blobName?: string;
+    blobSasUri?: string;
+    jobResult?:
+      | "Unknown"
+      | "Completed"
+      | "CompletedWithWarnings"
+      | "CompletedWithErrors"
+      | "Failed"
+      | "WaitingForBlobUpload"
+      | "InProgress";
+    numberOfMachinesImported?: number;
+    blobCreationTimeStamp?: string;
+    errorSummary?: {
+      errors?: string[];
+      errorCount?: number;
+      warningCount?: number;
+    };
+  };
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  displayName?: string;
+}
 export const ImportJobsControllerGetImportjobOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
@@ -7524,9 +9594,7 @@ export const ImportJobsControllerGetImportjobOutput =
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerGetImportjobOutput =
-  typeof ImportJobsControllerGetImportjobOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerGetImportjobOutput>;
 
 // The operation
 /**
@@ -7544,6 +9612,11 @@ export const ImportJobsControllerGetImportjob =
     outputSchema: ImportJobsControllerGetImportjobOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerListByImportSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportJobsControllerListByImportSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7555,11 +9628,25 @@ export const ImportJobsControllerListByImportSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/jobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerListByImportSiteInput =
-  typeof ImportJobsControllerListByImportSiteInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerListByImportSiteInput>;
 
 // Output Schema
+export interface ImportJobsControllerListByImportSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportJobsControllerListByImportSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7594,9 +9681,7 @@ export const ImportJobsControllerListByImportSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerListByImportSiteOutput =
-  typeof ImportJobsControllerListByImportSiteOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerListByImportSiteOutput>;
 
 // The operation
 /**
@@ -7613,6 +9698,11 @@ export const ImportJobsControllerListByImportSite =
     outputSchema: ImportJobsControllerListByImportSiteOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerListDeletejobsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportJobsControllerListDeletejobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7624,11 +9714,25 @@ export const ImportJobsControllerListDeletejobsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteJobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerListDeletejobsInput =
-  typeof ImportJobsControllerListDeletejobsInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerListDeletejobsInput>;
 
 // Output Schema
+export interface ImportJobsControllerListDeletejobsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportJobsControllerListDeletejobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7665,9 +9769,7 @@ export const ImportJobsControllerListDeletejobsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerListDeletejobsOutput =
-  typeof ImportJobsControllerListDeletejobsOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerListDeletejobsOutput>;
 
 // The operation
 /**
@@ -7684,6 +9786,11 @@ export const ImportJobsControllerListDeletejobs =
     outputSchema: ImportJobsControllerListDeletejobsOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerListExportjobsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportJobsControllerListExportjobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7695,11 +9802,22 @@ export const ImportJobsControllerListExportjobsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportJobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerListExportjobsInput =
-  typeof ImportJobsControllerListExportjobsInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerListExportjobsInput>;
 
 // Output Schema
+export interface ImportJobsControllerListExportjobsOutput {
+  value?: {
+    type?: string;
+    properties?: { blobName?: string; sasUri?: string };
+    id?: string;
+    name?: string;
+    status?: string;
+    startTime?: string;
+    endTime?: string;
+    displayName?: string;
+  }[];
+  nextLink?: string;
+}
 export const ImportJobsControllerListExportjobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7722,9 +9840,7 @@ export const ImportJobsControllerListExportjobsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerListExportjobsOutput =
-  typeof ImportJobsControllerListExportjobsOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerListExportjobsOutput>;
 
 // The operation
 /**
@@ -7741,6 +9857,11 @@ export const ImportJobsControllerListExportjobs =
     outputSchema: ImportJobsControllerListExportjobsOutput,
   }));
 // Input Schema
+export interface ImportJobsControllerListImportjobsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportJobsControllerListImportjobsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7752,11 +9873,40 @@ export const ImportJobsControllerListImportjobsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importJobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportJobsControllerListImportjobsInput =
-  typeof ImportJobsControllerListImportjobsInput.Type;
+  ) as unknown as Schema.Codec<ImportJobsControllerListImportjobsInput>;
 
 // Output Schema
+export interface ImportJobsControllerListImportjobsOutput {
+  value?: {
+    type?: string;
+    properties?: {
+      blobName?: string;
+      blobSasUri?: string;
+      jobResult?:
+        | "Unknown"
+        | "Completed"
+        | "CompletedWithWarnings"
+        | "CompletedWithErrors"
+        | "Failed"
+        | "WaitingForBlobUpload"
+        | "InProgress";
+      numberOfMachinesImported?: number;
+      blobCreationTimeStamp?: string;
+      errorSummary?: {
+        errors?: string[];
+        errorCount?: number;
+        warningCount?: number;
+      };
+    };
+    id?: string;
+    name?: string;
+    status?: string;
+    startTime?: string;
+    endTime?: string;
+    displayName?: string;
+  }[];
+  nextLink?: string;
+}
 export const ImportJobsControllerListImportjobsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -7799,9 +9949,7 @@ export const ImportJobsControllerListImportjobsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportJobsControllerListImportjobsOutput =
-  typeof ImportJobsControllerListImportjobsOutput.Type;
+  }) as unknown as Schema.Codec<ImportJobsControllerListImportjobsOutput>;
 
 // The operation
 /**
@@ -7818,6 +9966,12 @@ export const ImportJobsControllerListImportjobs =
     outputSchema: ImportJobsControllerListImportjobsOutput,
   }));
 // Input Schema
+export interface ImportMachinesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const ImportMachinesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7830,15 +9984,12 @@ export const ImportMachinesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportMachinesControllerDeleteInput =
-  typeof ImportMachinesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<ImportMachinesControllerDeleteInput>;
 
 // Output Schema
+export type ImportMachinesControllerDeleteOutput = void;
 export const ImportMachinesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ImportMachinesControllerDeleteOutput =
-  typeof ImportMachinesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportMachinesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -7856,6 +10007,12 @@ export const ImportMachinesControllerDelete =
     outputSchema: ImportMachinesControllerDeleteOutput,
   }));
 // Input Schema
+export interface ImportMachinesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const ImportMachinesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7868,11 +10025,22 @@ export const ImportMachinesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportMachinesControllerGetInput =
-  typeof ImportMachinesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ImportMachinesControllerGetInput>;
 
 // Output Schema
+export interface ImportMachinesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportMachinesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -7892,9 +10060,7 @@ export const ImportMachinesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportMachinesControllerGetOutput =
-  typeof ImportMachinesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ImportMachinesControllerGetOutput>;
 
 // The operation
 /**
@@ -7913,6 +10079,15 @@ export const ImportMachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImportMachinesControllerListByImportSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const ImportMachinesControllerListByImportSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -7928,11 +10103,25 @@ export const ImportMachinesControllerListByImportSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportMachinesControllerListByImportSiteInput =
-  typeof ImportMachinesControllerListByImportSiteInput.Type;
+  ) as unknown as Schema.Codec<ImportMachinesControllerListByImportSiteInput>;
 
 // Output Schema
+export interface ImportMachinesControllerListByImportSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportMachinesControllerListByImportSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -7967,9 +10156,7 @@ export const ImportMachinesControllerListByImportSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportMachinesControllerListByImportSiteOutput =
-  typeof ImportMachinesControllerListByImportSiteOutput.Type;
+  }) as unknown as Schema.Codec<ImportMachinesControllerListByImportSiteOutput>;
 
 // The operation
 /**
@@ -7990,6 +10177,26 @@ export const ImportMachinesControllerListByImportSite =
     outputSchema: ImportMachinesControllerListByImportSiteOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    discoverySolutionId?: string;
+    masterSiteId?: string;
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ImportSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8021,11 +10228,22 @@ export const ImportSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerCreateInput =
-  typeof ImportSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerCreateInput>;
 
 // Output Schema
+export interface ImportSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8045,9 +10263,7 @@ export const ImportSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportSitesControllerCreateOutput =
-  typeof ImportSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -8065,6 +10281,11 @@ export const ImportSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImportSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8076,15 +10297,12 @@ export const ImportSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerDeleteInput =
-  typeof ImportSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerDeleteInput>;
 
 // Output Schema
+export type ImportSitesControllerDeleteOutput = void;
 export const ImportSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ImportSitesControllerDeleteOutput =
-  typeof ImportSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -8102,6 +10320,11 @@ export const ImportSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImportSitesControllerDeleteImportedMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportSitesControllerDeleteImportedMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8113,18 +10336,18 @@ export const ImportSitesControllerDeleteImportedMachinesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteImportedMachines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerDeleteImportedMachinesInput =
-  typeof ImportSitesControllerDeleteImportedMachinesInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerDeleteImportedMachinesInput>;
 
 // Output Schema
+export interface ImportSitesControllerDeleteImportedMachinesOutput {
+  jobArmId?: string;
+  uri?: string;
+}
 export const ImportSitesControllerDeleteImportedMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
-  });
-export type ImportSitesControllerDeleteImportedMachinesOutput =
-  typeof ImportSitesControllerDeleteImportedMachinesOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerDeleteImportedMachinesOutput>;
 
 // The operation
 /**
@@ -8141,6 +10364,13 @@ export const ImportSitesControllerDeleteImportedMachines =
     outputSchema: ImportSitesControllerDeleteImportedMachinesOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerExportUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobArmId?: string;
+  uri?: string;
+}
 export const ImportSitesControllerExportUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8154,18 +10384,18 @@ export const ImportSitesControllerExportUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportUri",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerExportUriInput =
-  typeof ImportSitesControllerExportUriInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerExportUriInput>;
 
 // Output Schema
+export interface ImportSitesControllerExportUriOutput {
+  jobArmId?: string;
+  uri?: string;
+}
 export const ImportSitesControllerExportUriOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
-  });
-export type ImportSitesControllerExportUriOutput =
-  typeof ImportSitesControllerExportUriOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerExportUriOutput>;
 
 // The operation
 /**
@@ -8182,6 +10412,11 @@ export const ImportSitesControllerExportUri =
     outputSchema: ImportSitesControllerExportUriOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ImportSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8193,11 +10428,22 @@ export const ImportSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerGetInput =
-  typeof ImportSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerGetInput>;
 
 // Output Schema
+export interface ImportSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8217,9 +10463,7 @@ export const ImportSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportSitesControllerGetOutput =
-  typeof ImportSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -8237,6 +10481,13 @@ export const ImportSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ImportSitesControllerImportUriInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobArmId?: string;
+  uri?: string;
+}
 export const ImportSitesControllerImportUriInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8250,18 +10501,18 @@ export const ImportSitesControllerImportUriInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importUri",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerImportUriInput =
-  typeof ImportSitesControllerImportUriInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerImportUriInput>;
 
 // Output Schema
+export interface ImportSitesControllerImportUriOutput {
+  jobArmId?: string;
+  uri?: string;
+}
 export const ImportSitesControllerImportUriOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     jobArmId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
-  });
-export type ImportSitesControllerImportUriOutput =
-  typeof ImportSitesControllerImportUriOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerImportUriOutput>;
 
 // The operation
 /**
@@ -8278,6 +10529,10 @@ export const ImportSitesControllerImportUri =
     outputSchema: ImportSitesControllerImportUriOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ImportSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8288,11 +10543,25 @@ export const ImportSitesControllerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerListByResourceGroupInput =
-  typeof ImportSitesControllerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerListByResourceGroupInput>;
 
 // Output Schema
+export interface ImportSitesControllerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportSitesControllerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8327,9 +10596,7 @@ export const ImportSitesControllerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportSitesControllerListByResourceGroupOutput =
-  typeof ImportSitesControllerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -8345,6 +10612,9 @@ export const ImportSitesControllerListByResourceGroup =
     outputSchema: ImportSitesControllerListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ImportSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8354,11 +10624,25 @@ export const ImportSitesControllerListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/importSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerListBySubscriptionInput =
-  typeof ImportSitesControllerListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerListBySubscriptionInput>;
 
 // Output Schema
+export interface ImportSitesControllerListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ImportSitesControllerListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8393,9 +10677,7 @@ export const ImportSitesControllerListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ImportSitesControllerListBySubscriptionOutput =
-  typeof ImportSitesControllerListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -8410,6 +10692,23 @@ export const ImportSitesControllerListBySubscription =
     outputSchema: ImportSitesControllerListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ImportSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    discoverySolutionId?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const ImportSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8438,11 +10737,22 @@ export const ImportSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ImportSitesControllerUpdateInput =
-  typeof ImportSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<ImportSitesControllerUpdateInput>;
 
 // Output Schema
+export interface ImportSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ImportSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8462,9 +10772,7 @@ export const ImportSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ImportSitesControllerUpdateOutput =
-  typeof ImportSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ImportSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -8482,6 +10790,12 @@ export const ImportSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const MachinesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8494,10 +10808,22 @@ export const MachinesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MachinesControllerGetInput = typeof MachinesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerGetInput>;
 
 // Output Schema
+export interface MachinesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8517,9 +10843,7 @@ export const MachinesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachinesControllerGetOutput =
-  typeof MachinesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<MachinesControllerGetOutput>;
 
 // The operation
 /**
@@ -8538,21 +10862,91 @@ export const MachinesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesControllerGetMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  machineName: string;
+}
 export const MachinesControllerGetMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    machineName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines/{machineName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MachinesControllerGetMachineInput =
-  typeof MachinesControllerGetMachineInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerGetMachineInput>;
 
 // Output Schema
+export interface MachinesControllerGetMachineOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    discoveryData?: {
+      id?: string;
+      osType?: string;
+      osName?: string;
+      osVersion?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      machineId?: string;
+      machineManagerId?: string;
+      fabricType?: string;
+      lastUpdatedTime?: string;
+      machineName?: string;
+      ipAddresses?: string[];
+      fqdn?: string;
+      biosId?: string;
+      macAddresses?: string[];
+      extendedInfo?: Record<string, string>;
+    }[];
+    assessmentData?: {
+      id?: string;
+      assessmentId?: string;
+      targetVMSize?: string;
+      targetVMLocation?: string;
+      targetStorageType?: Record<string, string>;
+      enqueueTime?: string;
+      solutionName?: string;
+      machineId?: string;
+      machineManagerId?: string;
+      fabricType?: string;
+      lastUpdatedTime?: string;
+      machineName?: string;
+      ipAddresses?: string[];
+      fqdn?: string;
+      biosId?: string;
+      macAddresses?: string[];
+      extendedInfo?: Record<string, string>;
+    }[];
+    migrationData?: {
+      id?: string;
+      migrationPhase?: string;
+      migrationTested?: boolean;
+      replicationProgressPercentage?: number;
+      targetVMArmId?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      machineId?: string;
+      machineManagerId?: string;
+      fabricType?: string;
+      lastUpdatedTime?: string;
+      machineName?: string;
+      ipAddresses?: string[];
+      fqdn?: string;
+      biosId?: string;
+      macAddresses?: string[];
+      extendedInfo?: Record<string, string>;
+    }[];
+    lastUpdatedTime?: string;
+  };
+}
 export const MachinesControllerGetMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -8639,9 +11033,7 @@ export const MachinesControllerGetMachineOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachinesControllerGetMachineOutput =
-  typeof MachinesControllerGetMachineOutput.Type;
+  }) as unknown as Schema.Codec<MachinesControllerGetMachineOutput>;
 
 // The operation
 /**
@@ -8649,6 +11041,8 @@ export type MachinesControllerGetMachineOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param machineName - Unique name of a machine in Azure migration hub.
  * @param api-version - The API version to use for this operation.
  */
 export const MachinesControllerGetMachine =
@@ -8657,6 +11051,15 @@ export const MachinesControllerGetMachine =
     outputSchema: MachinesControllerGetMachineOutput,
   }));
 // Input Schema
+export interface MachinesControllerListByVmwareSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+  top?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const MachinesControllerListByVmwareSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8672,11 +11075,25 @@ export const MachinesControllerListByVmwareSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MachinesControllerListByVmwareSiteInput =
-  typeof MachinesControllerListByVmwareSiteInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerListByVmwareSiteInput>;
 
 // Output Schema
+export interface MachinesControllerListByVmwareSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachinesControllerListByVmwareSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -8711,9 +11128,7 @@ export const MachinesControllerListByVmwareSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachinesControllerListByVmwareSiteOutput =
-  typeof MachinesControllerListByVmwareSiteOutput.Type;
+  }) as unknown as Schema.Codec<MachinesControllerListByVmwareSiteOutput>;
 
 // The operation
 /**
@@ -8734,21 +11149,96 @@ export const MachinesControllerListByVmwareSite =
     outputSchema: MachinesControllerListByVmwareSiteOutput,
   }));
 // Input Schema
+export interface MachinesControllerListMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const MachinesControllerListMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MachinesControllerListMachinesInput =
-  typeof MachinesControllerListMachinesInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerListMachinesInput>;
 
 // Output Schema
+export interface MachinesControllerListMachinesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      discoveryData?: {
+        id?: string;
+        osType?: string;
+        osName?: string;
+        osVersion?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        machineId?: string;
+        machineManagerId?: string;
+        fabricType?: string;
+        lastUpdatedTime?: string;
+        machineName?: string;
+        ipAddresses?: string[];
+        fqdn?: string;
+        biosId?: string;
+        macAddresses?: string[];
+        extendedInfo?: Record<string, string>;
+      }[];
+      assessmentData?: {
+        id?: string;
+        assessmentId?: string;
+        targetVMSize?: string;
+        targetVMLocation?: string;
+        targetStorageType?: Record<string, string>;
+        enqueueTime?: string;
+        solutionName?: string;
+        machineId?: string;
+        machineManagerId?: string;
+        fabricType?: string;
+        lastUpdatedTime?: string;
+        machineName?: string;
+        ipAddresses?: string[];
+        fqdn?: string;
+        biosId?: string;
+        macAddresses?: string[];
+        extendedInfo?: Record<string, string>;
+      }[];
+      migrationData?: {
+        id?: string;
+        migrationPhase?: string;
+        migrationTested?: boolean;
+        replicationProgressPercentage?: number;
+        targetVMArmId?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        machineId?: string;
+        machineManagerId?: string;
+        fabricType?: string;
+        lastUpdatedTime?: string;
+        machineName?: string;
+        ipAddresses?: string[];
+        fqdn?: string;
+        biosId?: string;
+        macAddresses?: string[];
+        extendedInfo?: Record<string, string>;
+      }[];
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachinesControllerListMachinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -8844,9 +11334,7 @@ export const MachinesControllerListMachinesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachinesControllerListMachinesOutput =
-  typeof MachinesControllerListMachinesOutput.Type;
+  }) as unknown as Schema.Codec<MachinesControllerListMachinesOutput>;
 
 // The operation
 /**
@@ -8854,7 +11342,10 @@ export type MachinesControllerListMachinesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const MachinesControllerListMachines =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8862,6 +11353,12 @@ export const MachinesControllerListMachines =
     outputSchema: MachinesControllerListMachinesOutput,
   }));
 // Input Schema
+export interface MachinesControllerStartInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const MachinesControllerStartInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8874,15 +11371,12 @@ export const MachinesControllerStartInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/start",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MachinesControllerStartInput =
-  typeof MachinesControllerStartInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerStartInput>;
 
 // Output Schema
+export type MachinesControllerStartOutput = unknown;
 export const MachinesControllerStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type MachinesControllerStartOutput =
-  typeof MachinesControllerStartOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStartOutput>;
 
 // The operation
 /**
@@ -8901,6 +11395,12 @@ export const MachinesControllerStart = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesControllerStopInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const MachinesControllerStopInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8913,15 +11413,12 @@ export const MachinesControllerStopInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/stop",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MachinesControllerStopInput =
-  typeof MachinesControllerStopInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerStopInput>;
 
 // Output Schema
+export type MachinesControllerStopOutput = unknown;
 export const MachinesControllerStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type MachinesControllerStopOutput =
-  typeof MachinesControllerStopOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<MachinesControllerStopOutput>;
 
 // The operation
 /**
@@ -8940,6 +11437,39 @@ export const MachinesControllerStop = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  properties?: {
+    firmware?: string;
+    runAsAccountId?: string;
+    productSupportStatus?: {
+      currentVersion?: string;
+      esuStatus?: "Unknown" | "Active" | "InActive";
+      supportStatus?: "Unknown" | "Mainstream" | "Extended";
+      supportEndDate?: string;
+      esuYear?:
+        | "Unknown"
+        | "FirstYear"
+        | "SecondYear"
+        | "ThirdYear"
+        | "UpgradeYear";
+    };
+    numberOfProcessorCore?: number;
+    allocatedMemoryInMb?: number;
+    operatingSystemDetails?: {
+      osType?: string;
+      osName?: string;
+      osVersion?: string;
+      osArchitecture?: string;
+    };
+    biosSerialNumber?: string;
+    biosGuid?: string;
+    tags?: Record<string, string>;
+  };
+}
 export const MachinesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -8992,11 +11522,22 @@ export const MachinesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MachinesControllerUpdateInput =
-  typeof MachinesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<MachinesControllerUpdateInput>;
 
 // Output Schema
+export interface MachinesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9016,9 +11557,7 @@ export const MachinesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachinesControllerUpdateOutput =
-  typeof MachinesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MachinesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -9037,6 +11576,12 @@ export const MachinesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  machineName: string;
+}
 export const MachinesOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9049,10 +11594,22 @@ export const MachinesOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/machines/{machineName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type MachinesOperationsGetInput = typeof MachinesOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<MachinesOperationsGetInput>;
 
 // Output Schema
+export interface MachinesOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MachinesOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9072,9 +11629,7 @@ export const MachinesOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MachinesOperationsGetOutput =
-  typeof MachinesOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<MachinesOperationsGetOutput>;
 
 // The operation
 /**
@@ -9093,6 +11648,15 @@ export const MachinesOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MachinesOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const MachinesOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9108,11 +11672,25 @@ export const MachinesOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/machines",
       apiVersion: "2024-01-15",
     }),
-  );
-export type MachinesOperationsListByAssessmentProjectInput =
-  typeof MachinesOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<MachinesOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface MachinesOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MachinesOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9147,9 +11725,7 @@ export const MachinesOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MachinesOperationsListByAssessmentProjectOutput =
-  typeof MachinesOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<MachinesOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -9170,6 +11746,41 @@ export const MachinesOperationsListByAssessmentProject =
     outputSchema: MachinesOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface MasterSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    allowMultipleSites?: boolean;
+    sites?: string[];
+    customerStorageAccountArmId?: string;
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+    nestedSites?: string[];
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const MasterSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9238,11 +11849,22 @@ export const MasterSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerCreateInput =
-  typeof MasterSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerCreateInput>;
 
 // Output Schema
+export interface MasterSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MasterSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9262,9 +11884,7 @@ export const MasterSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MasterSitesControllerCreateOutput =
-  typeof MasterSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -9282,6 +11902,11 @@ export const MasterSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MasterSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const MasterSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9293,15 +11918,12 @@ export const MasterSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerDeleteInput =
-  typeof MasterSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerDeleteInput>;
 
 // Output Schema
+export type MasterSitesControllerDeleteOutput = void;
 export const MasterSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MasterSitesControllerDeleteOutput =
-  typeof MasterSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MasterSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -9319,6 +11941,12 @@ export const MasterSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MasterSitesControllerErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  applianceName?: string;
+}
 export const MasterSitesControllerErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9331,11 +11959,22 @@ export const MasterSitesControllerErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/errorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerErrorSummaryInput =
-  typeof MasterSitesControllerErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerErrorSummaryInput>;
 
 // Output Schema
+export interface MasterSitesControllerErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const MasterSitesControllerErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -9350,9 +11989,7 @@ export const MasterSitesControllerErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MasterSitesControllerErrorSummaryOutput =
-  typeof MasterSitesControllerErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerErrorSummaryOutput>;
 
 // The operation
 /**
@@ -9369,6 +12006,11 @@ export const MasterSitesControllerErrorSummary =
     outputSchema: MasterSitesControllerErrorSummaryOutput,
   }));
 // Input Schema
+export interface MasterSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const MasterSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9380,11 +12022,22 @@ export const MasterSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerGetInput =
-  typeof MasterSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerGetInput>;
 
 // Output Schema
+export interface MasterSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MasterSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9404,9 +12057,7 @@ export const MasterSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MasterSitesControllerGetOutput =
-  typeof MasterSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -9426,6 +12077,10 @@ export const MasterSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MasterSitesControllerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const MasterSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9436,11 +12091,25 @@ export const MasterSitesControllerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerListByResourceGroupInput =
-  typeof MasterSitesControllerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerListByResourceGroupInput>;
 
 // Output Schema
+export interface MasterSitesControllerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MasterSitesControllerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9475,9 +12144,7 @@ export const MasterSitesControllerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MasterSitesControllerListByResourceGroupOutput =
-  typeof MasterSitesControllerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -9495,6 +12162,9 @@ export const MasterSitesControllerListByResourceGroup =
     outputSchema: MasterSitesControllerListByResourceGroupOutput,
   }));
 // Input Schema
+export interface MasterSitesControllerListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const MasterSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9504,11 +12174,25 @@ export const MasterSitesControllerListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/masterSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerListBySubscriptionInput =
-  typeof MasterSitesControllerListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerListBySubscriptionInput>;
 
 // Output Schema
+export interface MasterSitesControllerListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const MasterSitesControllerListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -9543,9 +12227,7 @@ export const MasterSitesControllerListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type MasterSitesControllerListBySubscriptionOutput =
-  typeof MasterSitesControllerListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -9562,6 +12244,18 @@ export const MasterSitesControllerListBySubscription =
     outputSchema: MasterSitesControllerListBySubscriptionOutput,
   }));
 // Input Schema
+export interface MasterSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    allowMultipleSites?: boolean;
+    sites?: string[];
+    customerStorageAccountArmId?: string;
+  };
+}
 export const MasterSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9584,11 +12278,22 @@ export const MasterSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesControllerUpdateInput =
-  typeof MasterSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesControllerUpdateInput>;
 
 // Output Schema
+export interface MasterSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MasterSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9608,9 +12313,7 @@ export const MasterSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MasterSitesControllerUpdateOutput =
-  typeof MasterSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -9628,6 +12331,12 @@ export const MasterSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  operationStatusName: string;
+}
 export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -9640,11 +12349,18 @@ export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/operationsStatus/{operationStatusName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput =
-  typeof MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput.Type;
+  ) as unknown as Schema.Codec<MasterSitesOperationsStatusControllerGetVmwareOperationStatusInput>;
 
 // Output Schema
+export interface MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  properties?: { result?: string };
+}
 export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -9663,9 +12379,7 @@ export const MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput
         result: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput =
-  typeof MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput.Type;
+  }) as unknown as Schema.Codec<MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput>;
 
 // The operation
 /**
@@ -9685,25 +12399,28 @@ export const MasterSitesOperationsStatusControllerGetVmwareOperationStatus =
       MasterSitesOperationsStatusControllerGetVmwareOperationStatusOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerDeleteMigrateProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const MigrateProjectsControllerDeleteMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerDeleteMigrateProjectInput =
-  typeof MigrateProjectsControllerDeleteMigrateProjectInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerDeleteMigrateProjectInput>;
 
 // Output Schema
+export type MigrateProjectsControllerDeleteMigrateProjectOutput = void;
 export const MigrateProjectsControllerDeleteMigrateProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type MigrateProjectsControllerDeleteMigrateProjectOutput =
-  typeof MigrateProjectsControllerDeleteMigrateProjectOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MigrateProjectsControllerDeleteMigrateProjectOutput>;
 
 // The operation
 /**
@@ -9713,6 +12430,7 @@ export type MigrateProjectsControllerDeleteMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerDeleteMigrateProject =
@@ -9721,21 +12439,111 @@ export const MigrateProjectsControllerDeleteMigrateProject =
     outputSchema: MigrateProjectsControllerDeleteMigrateProjectOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerGetMigrateProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const MigrateProjectsControllerGetMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerGetMigrateProjectInput =
-  typeof MigrateProjectsControllerGetMigrateProjectInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerGetMigrateProjectInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerGetMigrateProjectOutput {
+  properties?: {
+    registeredTools?: (
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown"
+    )[];
+    serviceEndpoint?: string;
+    summary?: Record<
+      string,
+      {
+        instanceType?: string;
+        refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+        lastSummaryRefreshedTime?: string;
+        extendedSummary?: Record<string, string>;
+      }
+    >;
+    lastSummaryRefreshedTime?: string;
+    refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+    utilityStorageAccountId?: string;
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      eTag?: string;
+      properties?: {
+        provisioningState?:
+          | "Accepted"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled";
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      };
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  eTag?: string;
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrateProjectsControllerGetMigrateProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -9887,9 +12695,7 @@ export const MigrateProjectsControllerGetMigrateProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrateProjectsControllerGetMigrateProjectOutput =
-  typeof MigrateProjectsControllerGetMigrateProjectOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerGetMigrateProjectOutput>;
 
 // The operation
 /**
@@ -9899,6 +12705,7 @@ export type MigrateProjectsControllerGetMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetMigrateProject =
@@ -9907,10 +12714,43 @@ export const MigrateProjectsControllerGetMigrateProject =
     outputSchema: MigrateProjectsControllerGetMigrateProjectOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerGetToolRegistrationDetailsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  tool?:
+    | "ServerDiscovery"
+    | "ServerAssessment"
+    | "ServerMigration"
+    | "Cloudamize"
+    | "Turbonomic"
+    | "Zerto"
+    | "CorentTech"
+    | "ServerAssessmentV1"
+    | "ServerMigration_Replication"
+    | "Carbonite"
+    | "DataMigrationAssistant"
+    | "DatabaseMigrationService"
+    | "Device42"
+    | "JetStream"
+    | "RackWare"
+    | "UnifyCloud"
+    | "Flexera"
+    | "ServerDiscovery_Import"
+    | "Lakeside"
+    | "AppServiceMigrationAssistant"
+    | "Movere"
+    | "CloudSphere"
+    | "Modernization"
+    | "ServerMigration_DataReplication"
+    | "Unknown";
+  applicationDetails?: { tenantId?: string; applicationId?: string };
+}
 export const MigrateProjectsControllerGetToolRegistrationDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     tool: Schema.optional(
       Schema.Literals([
         "ServerDiscovery",
@@ -9952,24 +12792,25 @@ export const MigrateProjectsControllerGetToolRegistrationDetailsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registrationDetails",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerGetToolRegistrationDetailsInput =
-  typeof MigrateProjectsControllerGetToolRegistrationDetailsInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerGetToolRegistrationDetailsInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerGetToolRegistrationDetailsOutput {
+  serviceEndpoint?: string;
+  oneTimeKey?: string;
+}
 export const MigrateProjectsControllerGetToolRegistrationDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serviceEndpoint: Schema.optional(Schema.String),
     oneTimeKey: Schema.optional(Schema.String),
-  });
-export type MigrateProjectsControllerGetToolRegistrationDetailsOutput =
-  typeof MigrateProjectsControllerGetToolRegistrationDetailsOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerGetToolRegistrationDetailsOutput>;
 
 // The operation
 /**
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerGetToolRegistrationDetails =
@@ -9978,10 +12819,100 @@ export const MigrateProjectsControllerGetToolRegistrationDetails =
     outputSchema: MigrateProjectsControllerGetToolRegistrationDetailsOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerPatchMigrateProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  properties?: {
+    registeredTools?: (
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown"
+    )[];
+    serviceEndpoint?: string;
+    summary?: Record<
+      string,
+      {
+        instanceType?: string;
+        refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+        lastSummaryRefreshedTime?: string;
+        extendedSummary?: Record<string, string>;
+      }
+    >;
+    lastSummaryRefreshedTime?: string;
+    refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+    utilityStorageAccountId?: string;
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      eTag?: string;
+      properties?: {
+        provisioningState?:
+          | "Accepted"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled";
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      };
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  eTag?: string;
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrateProjectsControllerPatchMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -10137,11 +13068,95 @@ export const MigrateProjectsControllerPatchMigrateProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerPatchMigrateProjectInput =
-  typeof MigrateProjectsControllerPatchMigrateProjectInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerPatchMigrateProjectInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerPatchMigrateProjectOutput {
+  properties?: {
+    registeredTools?: (
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown"
+    )[];
+    serviceEndpoint?: string;
+    summary?: Record<
+      string,
+      {
+        instanceType?: string;
+        refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+        lastSummaryRefreshedTime?: string;
+        extendedSummary?: Record<string, string>;
+      }
+    >;
+    lastSummaryRefreshedTime?: string;
+    refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+    utilityStorageAccountId?: string;
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      eTag?: string;
+      properties?: {
+        provisioningState?:
+          | "Accepted"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled";
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      };
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  eTag?: string;
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrateProjectsControllerPatchMigrateProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -10293,9 +13308,7 @@ export const MigrateProjectsControllerPatchMigrateProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrateProjectsControllerPatchMigrateProjectOutput =
-  typeof MigrateProjectsControllerPatchMigrateProjectOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerPatchMigrateProjectOutput>;
 
 // The operation
 /**
@@ -10305,6 +13318,7 @@ export type MigrateProjectsControllerPatchMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPatchMigrateProject =
@@ -10313,10 +13327,100 @@ export const MigrateProjectsControllerPatchMigrateProject =
     outputSchema: MigrateProjectsControllerPatchMigrateProjectOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerPutMigrateProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  properties?: {
+    registeredTools?: (
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown"
+    )[];
+    serviceEndpoint?: string;
+    summary?: Record<
+      string,
+      {
+        instanceType?: string;
+        refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+        lastSummaryRefreshedTime?: string;
+        extendedSummary?: Record<string, string>;
+      }
+    >;
+    lastSummaryRefreshedTime?: string;
+    refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+    utilityStorageAccountId?: string;
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      eTag?: string;
+      properties?: {
+        provisioningState?:
+          | "Accepted"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled";
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      };
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  eTag?: string;
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrateProjectsControllerPutMigrateProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
         registeredTools: Schema.optional(
@@ -10472,11 +13576,95 @@ export const MigrateProjectsControllerPutMigrateProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerPutMigrateProjectInput =
-  typeof MigrateProjectsControllerPutMigrateProjectInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerPutMigrateProjectInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerPutMigrateProjectOutput {
+  properties?: {
+    registeredTools?: (
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown"
+    )[];
+    serviceEndpoint?: string;
+    summary?: Record<
+      string,
+      {
+        instanceType?: string;
+        refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+        lastSummaryRefreshedTime?: string;
+        extendedSummary?: Record<string, string>;
+      }
+    >;
+    lastSummaryRefreshedTime?: string;
+    refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+    utilityStorageAccountId?: string;
+    publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+    privateEndpointConnections?: {
+      id?: string;
+      name?: string;
+      type?: string;
+      eTag?: string;
+      properties?: {
+        provisioningState?:
+          | "Accepted"
+          | "InProgress"
+          | "Succeeded"
+          | "Failed"
+          | "Canceled";
+        privateEndpoint?: { id?: string };
+        privateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      };
+      systemData?: {
+        createdBy?: string;
+        createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        createdAt?: string;
+        lastModifiedBy?: string;
+        lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+        lastModifiedAt?: string;
+      };
+    }[];
+  };
+  eTag?: string;
+  location?: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const MigrateProjectsControllerPutMigrateProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     properties: Schema.optional(
@@ -10628,9 +13816,7 @@ export const MigrateProjectsControllerPutMigrateProjectOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type MigrateProjectsControllerPutMigrateProjectOutput =
-  typeof MigrateProjectsControllerPutMigrateProjectOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerPutMigrateProjectOutput>;
 
 // The operation
 /**
@@ -10641,6 +13827,7 @@ export type MigrateProjectsControllerPutMigrateProjectOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerPutMigrateProject =
@@ -10649,10 +13836,17 @@ export const MigrateProjectsControllerPutMigrateProject =
     outputSchema: MigrateProjectsControllerPutMigrateProjectOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerRefreshSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  goal?: "Servers" | "Databases";
+}
 export const MigrateProjectsControllerRefreshSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     goal: Schema.optional(Schema.Literals(["Servers", "Databases"])),
   }).pipe(
     T.Http({
@@ -10660,17 +13854,16 @@ export const MigrateProjectsControllerRefreshSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/refreshSummary",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerRefreshSummaryInput =
-  typeof MigrateProjectsControllerRefreshSummaryInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerRefreshSummaryInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerRefreshSummaryOutput {
+  isRefreshed?: boolean;
+}
 export const MigrateProjectsControllerRefreshSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isRefreshed: Schema.optional(Schema.Boolean),
-  });
-export type MigrateProjectsControllerRefreshSummaryOutput =
-  typeof MigrateProjectsControllerRefreshSummaryOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerRefreshSummaryOutput>;
 
 // The operation
 /**
@@ -10678,6 +13871,7 @@ export type MigrateProjectsControllerRefreshSummaryOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRefreshSummary =
@@ -10686,10 +13880,42 @@ export const MigrateProjectsControllerRefreshSummary =
     outputSchema: MigrateProjectsControllerRefreshSummaryOutput,
   }));
 // Input Schema
+export interface MigrateProjectsControllerRegisterToolInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  tool?:
+    | "ServerDiscovery"
+    | "ServerAssessment"
+    | "ServerMigration"
+    | "Cloudamize"
+    | "Turbonomic"
+    | "Zerto"
+    | "CorentTech"
+    | "ServerAssessmentV1"
+    | "ServerMigration_Replication"
+    | "Carbonite"
+    | "DataMigrationAssistant"
+    | "DatabaseMigrationService"
+    | "Device42"
+    | "JetStream"
+    | "RackWare"
+    | "UnifyCloud"
+    | "Flexera"
+    | "ServerDiscovery_Import"
+    | "Lakeside"
+    | "AppServiceMigrationAssistant"
+    | "Movere"
+    | "CloudSphere"
+    | "Modernization"
+    | "ServerMigration_DataReplication"
+    | "Unknown";
+}
 export const MigrateProjectsControllerRegisterToolInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     tool: Schema.optional(
       Schema.Literals([
         "ServerDiscovery",
@@ -10725,17 +13951,16 @@ export const MigrateProjectsControllerRegisterToolInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool",
       apiVersion: "2023-01-01",
     }),
-  );
-export type MigrateProjectsControllerRegisterToolInput =
-  typeof MigrateProjectsControllerRegisterToolInput.Type;
+  ) as unknown as Schema.Codec<MigrateProjectsControllerRegisterToolInput>;
 
 // Output Schema
+export interface MigrateProjectsControllerRegisterToolOutput {
+  isRegistered?: boolean;
+}
 export const MigrateProjectsControllerRegisterToolOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isRegistered: Schema.optional(Schema.Boolean),
-  });
-export type MigrateProjectsControllerRegisterToolOutput =
-  typeof MigrateProjectsControllerRegisterToolOutput.Type;
+  }) as unknown as Schema.Codec<MigrateProjectsControllerRegisterToolOutput>;
 
 // The operation
 /**
@@ -10743,6 +13968,7 @@ export type MigrateProjectsControllerRegisterToolOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const MigrateProjectsControllerRegisterTool =
@@ -10751,6 +13977,7 @@ export const MigrateProjectsControllerRegisterTool =
     outputSchema: MigrateProjectsControllerRegisterToolOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -10759,10 +13986,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.Migrate/operations",
     apiVersion: "2024-01-15",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -10785,8 +14026,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -10799,6 +14039,29 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  peConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+}
 export const PrivateEndpointConnectionControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10846,11 +14109,22 @@ export const PrivateEndpointConnectionControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateEndpointConnectionControllerCreateInput =
-  typeof PrivateEndpointConnectionControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -10870,9 +14144,7 @@ export const PrivateEndpointConnectionControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionControllerCreateOutput =
-  typeof PrivateEndpointConnectionControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionControllerCreateOutput>;
 
 // The operation
 /**
@@ -10890,6 +14162,12 @@ export const PrivateEndpointConnectionControllerCreate =
     outputSchema: PrivateEndpointConnectionControllerCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  peConnectionName: string;
+}
 export const PrivateEndpointConnectionControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -10902,15 +14180,12 @@ export const PrivateEndpointConnectionControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateEndpointConnectionControllerDeleteInput =
-  typeof PrivateEndpointConnectionControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionControllerDeleteOutput = void;
 export const PrivateEndpointConnectionControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionControllerDeleteOutput =
-  typeof PrivateEndpointConnectionControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeleteOutput>;
 
 // The operation
 /**
@@ -10928,10 +14203,17 @@ export const PrivateEndpointConnectionControllerDelete =
     outputSchema: PrivateEndpointConnectionControllerDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  peConnectionName: string;
+}
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10939,11 +14221,57 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionI
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput =
-  typeof PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput =
+  | "Continue"
+  | "SwitchingProtocols"
+  | "OK"
+  | "Created"
+  | "Accepted"
+  | "NonAuthoritativeInformation"
+  | "NoContent"
+  | "ResetContent"
+  | "PartialContent"
+  | "MultipleChoices"
+  | "Ambiguous"
+  | "MovedPermanently"
+  | "Moved"
+  | "Found"
+  | "Redirect"
+  | "SeeOther"
+  | "RedirectMethod"
+  | "NotModified"
+  | "UseProxy"
+  | "Unused"
+  | "TemporaryRedirect"
+  | "RedirectKeepVerb"
+  | "BadRequest"
+  | "Unauthorized"
+  | "PaymentRequired"
+  | "Forbidden"
+  | "NotFound"
+  | "MethodNotAllowed"
+  | "NotAcceptable"
+  | "ProxyAuthenticationRequired"
+  | "RequestTimeout"
+  | "Conflict"
+  | "Gone"
+  | "LengthRequired"
+  | "PreconditionFailed"
+  | "RequestEntityTooLarge"
+  | "RequestUriTooLong"
+  | "UnsupportedMediaType"
+  | "RequestedRangeNotSatisfiable"
+  | "ExpectationFailed"
+  | "UpgradeRequired"
+  | "InternalServerError"
+  | "NotImplemented"
+  | "BadGateway"
+  | "ServiceUnavailable"
+  | "GatewayTimeout"
+  | "HttpVersionNotSupported";
 export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Literals([
     "Continue",
@@ -10993,9 +14321,7 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionO
     "ServiceUnavailable",
     "GatewayTimeout",
     "HttpVersionNotSupported",
-  ]);
-export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput =
-  typeof PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput.Type;
+  ]) as unknown as Schema.Codec<PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -11005,6 +14331,7 @@ export type PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11016,6 +14343,12 @@ export const PrivateEndpointConnectionControllerDeletePrivateEndpointConnection 
       PrivateEndpointConnectionControllerDeletePrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  peConnectionName: string;
+}
 export const PrivateEndpointConnectionControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11028,11 +14361,22 @@ export const PrivateEndpointConnectionControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateEndpointConnectionControllerGetInput =
-  typeof PrivateEndpointConnectionControllerGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11052,9 +14396,7 @@ export const PrivateEndpointConnectionControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionControllerGetOutput =
-  typeof PrivateEndpointConnectionControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionControllerGetOutput>;
 
 // The operation
 /**
@@ -11072,10 +14414,17 @@ export const PrivateEndpointConnectionControllerGet =
     outputSchema: PrivateEndpointConnectionControllerGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  peConnectionName: string;
+}
 export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11083,11 +14432,37 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInpu
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput =
-  typeof PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerGetPrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "InProgress"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11140,9 +14515,7 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutp
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput =
-  typeof PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -11152,6 +14525,7 @@ export type PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutpu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11163,6 +14537,11 @@ export const PrivateEndpointConnectionControllerGetPrivateEndpointConnection =
       PrivateEndpointConnectionControllerGetPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerListByMasterSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const PrivateEndpointConnectionControllerListByMasterSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11174,11 +14553,25 @@ export const PrivateEndpointConnectionControllerListByMasterSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateEndpointConnectionControllerListByMasterSiteInput =
-  typeof PrivateEndpointConnectionControllerListByMasterSiteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerListByMasterSiteInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionControllerListByMasterSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionControllerListByMasterSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11213,9 +14606,7 @@ export const PrivateEndpointConnectionControllerListByMasterSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionControllerListByMasterSiteOutput =
-  typeof PrivateEndpointConnectionControllerListByMasterSiteOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionControllerListByMasterSiteOutput>;
 
 // The operation
 /**
@@ -11232,10 +14623,43 @@ export const PrivateEndpointConnectionControllerListByMasterSite =
     outputSchema: PrivateEndpointConnectionControllerListByMasterSiteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  peConnectionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "InProgress"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     peConnectionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11293,11 +14717,37 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInpu
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput =
-  typeof PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionControllerPutPrivateEndpointConnectionInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    provisioningState?:
+      | "Accepted"
+      | "InProgress"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState?: {
+      status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+      description?: string;
+      actionsRequired?: string;
+    };
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11350,9 +14800,7 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutp
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput =
-  typeof PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -11362,6 +14810,7 @@ export type PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutpu
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param peConnectionName - Private endpoint connection name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11373,6 +14822,12 @@ export const PrivateEndpointConnectionControllerPutPrivateEndpointConnection =
       PrivateEndpointConnectionControllerPutPrivateEndpointConnectionOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11385,15 +14840,12 @@ export const PrivateEndpointConnectionOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateEndpointConnectionOperationsDeleteInput =
-  typeof PrivateEndpointConnectionOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsDeleteInput>;
 
 // Output Schema
+export type PrivateEndpointConnectionOperationsDeleteOutput = void;
 export const PrivateEndpointConnectionOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PrivateEndpointConnectionOperationsDeleteOutput =
-  typeof PrivateEndpointConnectionOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -11411,6 +14863,12 @@ export const PrivateEndpointConnectionOperationsDelete =
     outputSchema: PrivateEndpointConnectionOperationsDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  privateEndpointConnectionName: string;
+}
 export const PrivateEndpointConnectionOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11423,11 +14881,22 @@ export const PrivateEndpointConnectionOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateEndpointConnectionOperationsGetInput =
-  typeof PrivateEndpointConnectionOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11447,9 +14916,7 @@ export const PrivateEndpointConnectionOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionOperationsGetOutput =
-  typeof PrivateEndpointConnectionOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsGetOutput>;
 
 // The operation
 /**
@@ -11467,6 +14934,11 @@ export const PrivateEndpointConnectionOperationsGet =
     outputSchema: PrivateEndpointConnectionOperationsGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11478,11 +14950,25 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateEndpointConnectionOperationsListByAssessmentProjectInput =
-  typeof PrivateEndpointConnectionOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -11517,9 +15003,7 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionOperationsListByAssessmentProjectOutput =
-  typeof PrivateEndpointConnectionOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -11538,6 +15022,22 @@ export const PrivateEndpointConnectionOperationsListByAssessmentProject =
       PrivateEndpointConnectionOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionOperationsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  privateEndpointConnectionName: string;
+  properties?: {
+    groupIds?: string[];
+    privateEndpoint?: { id?: string };
+    privateLinkServiceConnectionState: {
+      status?: "Pending" | "Approved" | "Rejected";
+      description?: string;
+      actionsRequired?: string;
+    };
+    provisioningState?: "Succeeded" | "Creating" | "Deleting" | "Failed";
+  };
+}
 export const PrivateEndpointConnectionOperationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -11570,11 +15070,22 @@ export const PrivateEndpointConnectionOperationsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateEndpointConnectionOperationsUpdateInput =
-  typeof PrivateEndpointConnectionOperationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsUpdateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionOperationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionOperationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11594,9 +15105,7 @@ export const PrivateEndpointConnectionOperationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionOperationsUpdateOutput =
-  typeof PrivateEndpointConnectionOperationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionOperationsUpdateOutput>;
 
 // The operation
 /**
@@ -11614,10 +15123,72 @@ export const PrivateEndpointConnectionOperationsUpdate =
     outputSchema: PrivateEndpointConnectionOperationsUpdateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionProxyControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  pecProxyName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    remotePrivateEndpoint?: {
+      id?: string;
+      manualPrivateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceProxies?: {
+        id?: string;
+        groupConnectivityInformation?: {
+          id?: string;
+          groupId?: string;
+          memberName?: string;
+          customerVisibleFqdns?: string[];
+          internalFqdn?: string;
+          redirectMapId?: string;
+          privateLinkServiceArmRegion?: string;
+        }[];
+        remotePrivateEndpointConnection?: { id?: string };
+        remotePrivateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      }[];
+      connectionDetails?: {
+        id?: string;
+        privateIpAddress?: string;
+        linkIdentifier?: string;
+        groupId?: string;
+        memberName?: string;
+      }[];
+    };
+    status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionProxyControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -11729,11 +15300,66 @@ export const PrivateEndpointConnectionProxyControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionProxyControllerCreateInput =
-  typeof PrivateEndpointConnectionProxyControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerCreateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionProxyControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    remotePrivateEndpoint?: {
+      id?: string;
+      manualPrivateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceProxies?: {
+        id?: string;
+        groupConnectivityInformation?: {
+          id?: string;
+          groupId?: string;
+          memberName?: string;
+          customerVisibleFqdns?: string[];
+          internalFqdn?: string;
+          redirectMapId?: string;
+          privateLinkServiceArmRegion?: string;
+        }[];
+        remotePrivateEndpointConnection?: { id?: string };
+        remotePrivateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      }[];
+      connectionDetails?: {
+        id?: string;
+        privateIpAddress?: string;
+        linkIdentifier?: string;
+        groupId?: string;
+        memberName?: string;
+      }[];
+    };
+    status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionProxyControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -11840,9 +15466,7 @@ export const PrivateEndpointConnectionProxyControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionProxyControllerCreateOutput =
-  typeof PrivateEndpointConnectionProxyControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerCreateOutput>;
 
 // The operation
 /**
@@ -11852,6 +15476,7 @@ export type PrivateEndpointConnectionProxyControllerCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private endpoint proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11861,10 +15486,17 @@ export const PrivateEndpointConnectionProxyControllerCreate =
     outputSchema: PrivateEndpointConnectionProxyControllerCreateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionProxyControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  pecProxyName: string;
+}
 export const PrivateEndpointConnectionProxyControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11872,15 +15504,14 @@ export const PrivateEndpointConnectionProxyControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionProxyControllerDeleteInput =
-  typeof PrivateEndpointConnectionProxyControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerDeleteInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionProxyControllerDeleteOutput {}
 export const PrivateEndpointConnectionProxyControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type PrivateEndpointConnectionProxyControllerDeleteOutput =
-  typeof PrivateEndpointConnectionProxyControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerDeleteOutput>;
 
 // The operation
 /**
@@ -11890,6 +15521,7 @@ export type PrivateEndpointConnectionProxyControllerDeleteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private endpoint proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -11899,10 +15531,17 @@ export const PrivateEndpointConnectionProxyControllerDelete =
     outputSchema: PrivateEndpointConnectionProxyControllerDeleteOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionProxyControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  pecProxyName: string;
+}
 export const PrivateEndpointConnectionProxyControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -11910,11 +15549,66 @@ export const PrivateEndpointConnectionProxyControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionProxyControllerGetInput =
-  typeof PrivateEndpointConnectionProxyControllerGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerGetInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionProxyControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    remotePrivateEndpoint?: {
+      id?: string;
+      manualPrivateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceProxies?: {
+        id?: string;
+        groupConnectivityInformation?: {
+          id?: string;
+          groupId?: string;
+          memberName?: string;
+          customerVisibleFqdns?: string[];
+          internalFqdn?: string;
+          redirectMapId?: string;
+          privateLinkServiceArmRegion?: string;
+        }[];
+        remotePrivateEndpointConnection?: { id?: string };
+        remotePrivateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      }[];
+      connectionDetails?: {
+        id?: string;
+        privateIpAddress?: string;
+        linkIdentifier?: string;
+        groupId?: string;
+        memberName?: string;
+      }[];
+    };
+    status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionProxyControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12021,9 +15715,7 @@ export const PrivateEndpointConnectionProxyControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionProxyControllerGetOutput =
-  typeof PrivateEndpointConnectionProxyControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerGetOutput>;
 
 // The operation
 /**
@@ -12033,6 +15725,7 @@ export type PrivateEndpointConnectionProxyControllerGetOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private link proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12042,21 +15735,85 @@ export const PrivateEndpointConnectionProxyControllerGet =
     outputSchema: PrivateEndpointConnectionProxyControllerGetOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput =
-  typeof PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    eTag?: string;
+    properties?: {
+      remotePrivateEndpoint?: {
+        id?: string;
+        manualPrivateLinkServiceConnections?: {
+          id?: string;
+          name?: string;
+          groupIds?: string[];
+          requestMessage?: string;
+        }[];
+        privateLinkServiceConnections?: {
+          id?: string;
+          name?: string;
+          groupIds?: string[];
+          requestMessage?: string;
+        }[];
+        privateLinkServiceProxies?: {
+          id?: string;
+          groupConnectivityInformation?: {
+            id?: string;
+            groupId?: string;
+            memberName?: string;
+            customerVisibleFqdns?: string[];
+            internalFqdn?: string;
+            redirectMapId?: string;
+            privateLinkServiceArmRegion?: string;
+          }[];
+          remotePrivateEndpointConnection?: { id?: string };
+          remotePrivateLinkServiceConnectionState?: {
+            status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+            description?: string;
+            actionsRequired?: string;
+          };
+        }[];
+        connectionDetails?: {
+          id?: string;
+          privateIpAddress?: string;
+          linkIdentifier?: string;
+          groupId?: string;
+          memberName?: string;
+        }[];
+      };
+      status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12186,9 +15943,7 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput =
-  typeof PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput>;
 
 // The operation
 /**
@@ -12198,6 +15953,7 @@ export type PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectio
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxies =
@@ -12208,10 +15964,72 @@ export const PrivateEndpointConnectionProxyControllerListPrivateEndpointConnecti
       PrivateEndpointConnectionProxyControllerListPrivateEndpointConnectionProxiesOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionProxyControllerValidateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  pecProxyName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    remotePrivateEndpoint?: {
+      id?: string;
+      manualPrivateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceProxies?: {
+        id?: string;
+        groupConnectivityInformation?: {
+          id?: string;
+          groupId?: string;
+          memberName?: string;
+          customerVisibleFqdns?: string[];
+          internalFqdn?: string;
+          redirectMapId?: string;
+          privateLinkServiceArmRegion?: string;
+        }[];
+        remotePrivateEndpointConnection?: { id?: string };
+        remotePrivateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      }[];
+      connectionDetails?: {
+        id?: string;
+        privateIpAddress?: string;
+        linkIdentifier?: string;
+        groupId?: string;
+        memberName?: string;
+      }[];
+    };
+    status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionProxyControllerValidateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     pecProxyName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -12323,11 +16141,66 @@ export const PrivateEndpointConnectionProxyControllerValidateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies/{pecProxyName}/validate",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionProxyControllerValidateInput =
-  typeof PrivateEndpointConnectionProxyControllerValidateInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerValidateInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionProxyControllerValidateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  eTag?: string;
+  properties?: {
+    remotePrivateEndpoint?: {
+      id?: string;
+      manualPrivateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceConnections?: {
+        id?: string;
+        name?: string;
+        groupIds?: string[];
+        requestMessage?: string;
+      }[];
+      privateLinkServiceProxies?: {
+        id?: string;
+        groupConnectivityInformation?: {
+          id?: string;
+          groupId?: string;
+          memberName?: string;
+          customerVisibleFqdns?: string[];
+          internalFqdn?: string;
+          redirectMapId?: string;
+          privateLinkServiceArmRegion?: string;
+        }[];
+        remotePrivateEndpointConnection?: { id?: string };
+        remotePrivateLinkServiceConnectionState?: {
+          status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+          description?: string;
+          actionsRequired?: string;
+        };
+      }[];
+      connectionDetails?: {
+        id?: string;
+        privateIpAddress?: string;
+        linkIdentifier?: string;
+        groupId?: string;
+        memberName?: string;
+      }[];
+    };
+    status?: "Succeeded" | "Failed" | "Cancelled" | "Running";
+  };
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateEndpointConnectionProxyControllerValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12434,9 +16307,7 @@ export const PrivateEndpointConnectionProxyControllerValidateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateEndpointConnectionProxyControllerValidateOutput =
-  typeof PrivateEndpointConnectionProxyControllerValidateOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionProxyControllerValidateOutput>;
 
 // The operation
 /**
@@ -12446,6 +16317,7 @@ export type PrivateEndpointConnectionProxyControllerValidateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param pecProxyName - Private link proxy name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12455,21 +16327,56 @@ export const PrivateEndpointConnectionProxyControllerValidate =
     outputSchema: PrivateEndpointConnectionProxyControllerValidateOutput,
   }));
 // Input Schema
+export interface PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput =
-  typeof PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput.Type;
+  ) as unknown as Schema.Codec<PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsInput>;
 
 // Output Schema
+export interface PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    eTag?: string;
+    properties?: {
+      provisioningState?:
+        | "Accepted"
+        | "InProgress"
+        | "Succeeded"
+        | "Failed"
+        | "Canceled";
+      privateEndpoint?: { id?: string };
+      privateLinkServiceConnectionState?: {
+        status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+        description?: string;
+        actionsRequired?: string;
+      };
+    };
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12539,9 +16446,7 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOu
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput =
-  typeof PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput.Type;
+  }) as unknown as Schema.Codec<PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput>;
 
 // The operation
 /**
@@ -12551,6 +16456,7 @@ export type PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOut
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnections =
@@ -12561,10 +16467,17 @@ export const PrivateEndpointConnectionsControllerGetPrivateEndpointConnections =
       PrivateEndpointConnectionsControllerGetPrivateEndpointConnectionsOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourceControllerGetPrivateLinkResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourceControllerGetPrivateLinkResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
     privateLinkResourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12572,11 +16485,19 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateLinkResourceControllerGetPrivateLinkResourceInput =
-  typeof PrivateLinkResourceControllerGetPrivateLinkResourceInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceControllerGetPrivateLinkResourceInput>;
 
 // Output Schema
+export interface PrivateLinkResourceControllerGetPrivateLinkResourceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    requiredMembers?: string[];
+    requiredZoneNames?: string[];
+    groupId?: string;
+  };
+}
 export const PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12589,9 +16510,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
         groupId: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
-  typeof PrivateLinkResourceControllerGetPrivateLinkResourceOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceControllerGetPrivateLinkResourceOutput>;
 
 // The operation
 /**
@@ -12601,6 +16520,7 @@ export type PrivateLinkResourceControllerGetPrivateLinkResourceOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param privateLinkResourceName - Private Link resource name.
  * @param api-version - The API version to use for this operation.
  */
@@ -12610,21 +16530,38 @@ export const PrivateLinkResourceControllerGetPrivateLinkResource =
     outputSchema: PrivateLinkResourceControllerGetPrivateLinkResourceOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourceControllerGetPrivateLinkResourcesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources",
       apiVersion: "2023-01-01",
     }),
-  );
-export type PrivateLinkResourceControllerGetPrivateLinkResourcesInput =
-  typeof PrivateLinkResourceControllerGetPrivateLinkResourcesInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceControllerGetPrivateLinkResourcesInput>;
 
 // Output Schema
+export interface PrivateLinkResourceControllerGetPrivateLinkResourcesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      requiredMembers?: string[];
+      requiredZoneNames?: string[];
+      groupId?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -12644,9 +16581,7 @@ export const PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
-  typeof PrivateLinkResourceControllerGetPrivateLinkResourcesOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceControllerGetPrivateLinkResourcesOutput>;
 
 // The operation
 /**
@@ -12656,6 +16591,7 @@ export type PrivateLinkResourceControllerGetPrivateLinkResourcesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const PrivateLinkResourceControllerGetPrivateLinkResources =
@@ -12664,6 +16600,12 @@ export const PrivateLinkResourceControllerGetPrivateLinkResources =
     outputSchema: PrivateLinkResourceControllerGetPrivateLinkResourcesOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourceOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourceOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12676,11 +16618,22 @@ export const PrivateLinkResourceOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateLinkResourceOperationsGetInput =
-  typeof PrivateLinkResourceOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceOperationsGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourceOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourceOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12700,9 +16653,7 @@ export const PrivateLinkResourceOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourceOperationsGetOutput =
-  typeof PrivateLinkResourceOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceOperationsGetOutput>;
 
 // The operation
 /**
@@ -12720,6 +16671,11 @@ export const PrivateLinkResourceOperationsGet =
     outputSchema: PrivateLinkResourceOperationsGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourceOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const PrivateLinkResourceOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12731,11 +16687,25 @@ export const PrivateLinkResourceOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources",
       apiVersion: "2024-01-15",
     }),
-  );
-export type PrivateLinkResourceOperationsListByAssessmentProjectInput =
-  typeof PrivateLinkResourceOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourceOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface PrivateLinkResourceOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourceOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -12770,9 +16740,7 @@ export const PrivateLinkResourceOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourceOperationsListByAssessmentProjectOutput =
-  typeof PrivateLinkResourceOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourceOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -12789,6 +16757,12 @@ export const PrivateLinkResourceOperationsListByAssessmentProject =
     outputSchema: PrivateLinkResourceOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  privateLinkResourceName: string;
+}
 export const PrivateLinkResourcesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12801,11 +16775,22 @@ export const PrivateLinkResourcesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateLinkResources/{privateLinkResourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateLinkResourcesControllerGetInput =
-  typeof PrivateLinkResourcesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesControllerGetInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PrivateLinkResourcesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -12825,9 +16810,7 @@ export const PrivateLinkResourcesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PrivateLinkResourcesControllerGetOutput =
-  typeof PrivateLinkResourcesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesControllerGetOutput>;
 
 // The operation
 /**
@@ -12845,6 +16828,11 @@ export const PrivateLinkResourcesControllerGet =
     outputSchema: PrivateLinkResourcesControllerGetOutput,
   }));
 // Input Schema
+export interface PrivateLinkResourcesControllerListByMasterSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const PrivateLinkResourcesControllerListByMasterSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -12856,11 +16844,25 @@ export const PrivateLinkResourcesControllerListByMasterSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateLinkResources",
       apiVersion: "2023-06-06",
     }),
-  );
-export type PrivateLinkResourcesControllerListByMasterSiteInput =
-  typeof PrivateLinkResourcesControllerListByMasterSiteInput.Type;
+  ) as unknown as Schema.Codec<PrivateLinkResourcesControllerListByMasterSiteInput>;
 
 // Output Schema
+export interface PrivateLinkResourcesControllerListByMasterSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PrivateLinkResourcesControllerListByMasterSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -12895,9 +16897,7 @@ export const PrivateLinkResourcesControllerListByMasterSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PrivateLinkResourcesControllerListByMasterSiteOutput =
-  typeof PrivateLinkResourcesControllerListByMasterSiteOutput.Type;
+  }) as unknown as Schema.Codec<PrivateLinkResourcesControllerListByMasterSiteOutput>;
 
 // The operation
 /**
@@ -12914,6 +16914,10 @@ export const PrivateLinkResourcesControllerListByMasterSite =
     outputSchema: PrivateLinkResourcesControllerListByMasterSiteOutput,
   }));
 // Input Schema
+export interface ProjectsListInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -12923,10 +16927,106 @@ export const ProjectsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects",
     apiVersion: "2023-01-01",
   }),
-);
-export type ProjectsListInput = typeof ProjectsListInput.Type;
+) as unknown as Schema.Codec<ProjectsListInput>;
 
 // Output Schema
+export interface ProjectsListOutput {
+  value?: {
+    properties?: {
+      registeredTools?: (
+        | "ServerDiscovery"
+        | "ServerAssessment"
+        | "ServerMigration"
+        | "Cloudamize"
+        | "Turbonomic"
+        | "Zerto"
+        | "CorentTech"
+        | "ServerAssessmentV1"
+        | "ServerMigration_Replication"
+        | "Carbonite"
+        | "DataMigrationAssistant"
+        | "DatabaseMigrationService"
+        | "Device42"
+        | "JetStream"
+        | "RackWare"
+        | "UnifyCloud"
+        | "Flexera"
+        | "ServerDiscovery_Import"
+        | "Lakeside"
+        | "AppServiceMigrationAssistant"
+        | "Movere"
+        | "CloudSphere"
+        | "Modernization"
+        | "ServerMigration_DataReplication"
+        | "Unknown"
+      )[];
+      serviceEndpoint?: string;
+      summary?: Record<
+        string,
+        {
+          instanceType?: string;
+          refreshSummaryState?:
+            | "Started"
+            | "InProgress"
+            | "Completed"
+            | "Failed";
+          lastSummaryRefreshedTime?: string;
+          extendedSummary?: Record<string, string>;
+        }
+      >;
+      lastSummaryRefreshedTime?: string;
+      refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+      utilityStorageAccountId?: string;
+      publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+      privateEndpointConnections?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        eTag?: string;
+        properties?: {
+          provisioningState?:
+            | "Accepted"
+            | "InProgress"
+            | "Succeeded"
+            | "Failed"
+            | "Canceled";
+          privateEndpoint?: { id?: string };
+          privateLinkServiceConnectionState?: {
+            status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+            description?: string;
+            actionsRequired?: string;
+          };
+        };
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      }[];
+    };
+    eTag?: string;
+    location?: string;
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -13094,8 +17194,7 @@ export const ProjectsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type ProjectsListOutput = typeof ProjectsListOutput.Type;
+}) as unknown as Schema.Codec<ProjectsListOutput>;
 
 // The operation
 /**
@@ -13112,6 +17211,9 @@ export const ProjectsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: ProjectsListOutput,
 }));
 // Input Schema
+export interface ProjectsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ProjectsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13121,11 +17223,106 @@ export const ProjectsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/migrateProjects",
       apiVersion: "2023-01-01",
     }),
-  );
-export type ProjectsListBySubscriptionInput =
-  typeof ProjectsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ProjectsListBySubscriptionInput>;
 
 // Output Schema
+export interface ProjectsListBySubscriptionOutput {
+  value?: {
+    properties?: {
+      registeredTools?: (
+        | "ServerDiscovery"
+        | "ServerAssessment"
+        | "ServerMigration"
+        | "Cloudamize"
+        | "Turbonomic"
+        | "Zerto"
+        | "CorentTech"
+        | "ServerAssessmentV1"
+        | "ServerMigration_Replication"
+        | "Carbonite"
+        | "DataMigrationAssistant"
+        | "DatabaseMigrationService"
+        | "Device42"
+        | "JetStream"
+        | "RackWare"
+        | "UnifyCloud"
+        | "Flexera"
+        | "ServerDiscovery_Import"
+        | "Lakeside"
+        | "AppServiceMigrationAssistant"
+        | "Movere"
+        | "CloudSphere"
+        | "Modernization"
+        | "ServerMigration_DataReplication"
+        | "Unknown"
+      )[];
+      serviceEndpoint?: string;
+      summary?: Record<
+        string,
+        {
+          instanceType?: string;
+          refreshSummaryState?:
+            | "Started"
+            | "InProgress"
+            | "Completed"
+            | "Failed";
+          lastSummaryRefreshedTime?: string;
+          extendedSummary?: Record<string, string>;
+        }
+      >;
+      lastSummaryRefreshedTime?: string;
+      refreshSummaryState?: "Started" | "InProgress" | "Completed" | "Failed";
+      utilityStorageAccountId?: string;
+      publicNetworkAccess?: "NotSpecified" | "Enabled" | "Disabled";
+      privateEndpointConnections?: {
+        id?: string;
+        name?: string;
+        type?: string;
+        eTag?: string;
+        properties?: {
+          provisioningState?:
+            | "Accepted"
+            | "InProgress"
+            | "Succeeded"
+            | "Failed"
+            | "Canceled";
+          privateEndpoint?: { id?: string };
+          privateLinkServiceConnectionState?: {
+            status?: "Approved" | "Pending" | "Rejected" | "Disconnected";
+            description?: string;
+            actionsRequired?: string;
+          };
+        };
+        systemData?: {
+          createdBy?: string;
+          createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+          createdAt?: string;
+          lastModifiedBy?: string;
+          lastModifiedByType?:
+            | "User"
+            | "Application"
+            | "ManagedIdentity"
+            | "Key";
+          lastModifiedAt?: string;
+        };
+      }[];
+    };
+    eTag?: string;
+    location?: string;
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ProjectsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -13299,9 +17496,7 @@ export const ProjectsListBySubscriptionOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ProjectsListBySubscriptionOutput =
-  typeof ProjectsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ProjectsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -13319,6 +17514,12 @@ export const ProjectsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunAsAccountsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  accountName: string;
+}
 export const RunAsAccountsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13331,11 +17532,22 @@ export const RunAsAccountsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/runAsAccounts/{accountName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type RunAsAccountsControllerGetInput =
-  typeof RunAsAccountsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<RunAsAccountsControllerGetInput>;
 
 // Output Schema
+export interface RunAsAccountsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const RunAsAccountsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13355,9 +17567,7 @@ export const RunAsAccountsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type RunAsAccountsControllerGetOutput =
-  typeof RunAsAccountsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<RunAsAccountsControllerGetOutput>;
 
 // The operation
 /**
@@ -13376,6 +17586,11 @@ export const RunAsAccountsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface RunAsAccountsControllerListByVmwareSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const RunAsAccountsControllerListByVmwareSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13387,11 +17602,25 @@ export const RunAsAccountsControllerListByVmwareSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/runAsAccounts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type RunAsAccountsControllerListByVmwareSiteInput =
-  typeof RunAsAccountsControllerListByVmwareSiteInput.Type;
+  ) as unknown as Schema.Codec<RunAsAccountsControllerListByVmwareSiteInput>;
 
 // Output Schema
+export interface RunAsAccountsControllerListByVmwareSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const RunAsAccountsControllerListByVmwareSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -13426,9 +17655,7 @@ export const RunAsAccountsControllerListByVmwareSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type RunAsAccountsControllerListByVmwareSiteOutput =
-  typeof RunAsAccountsControllerListByVmwareSiteOutput.Type;
+  }) as unknown as Schema.Codec<RunAsAccountsControllerListByVmwareSiteOutput>;
 
 // The operation
 /**
@@ -13445,6 +17672,22 @@ export const RunAsAccountsControllerListByVmwareSite =
     outputSchema: RunAsAccountsControllerListByVmwareSiteOutput,
   }));
 // Input Schema
+export interface ServerCollectorsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  serverCollectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const ServerCollectorsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13472,11 +17715,22 @@ export const ServerCollectorsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ServerCollectorsOperationsCreateInput =
-  typeof ServerCollectorsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<ServerCollectorsOperationsCreateInput>;
 
 // Output Schema
+export interface ServerCollectorsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerCollectorsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13496,9 +17750,7 @@ export const ServerCollectorsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerCollectorsOperationsCreateOutput =
-  typeof ServerCollectorsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ServerCollectorsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -13516,6 +17768,12 @@ export const ServerCollectorsOperationsCreate =
     outputSchema: ServerCollectorsOperationsCreateOutput,
   }));
 // Input Schema
+export interface ServerCollectorsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  serverCollectorName: string;
+}
 export const ServerCollectorsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13528,15 +17786,12 @@ export const ServerCollectorsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ServerCollectorsOperationsDeleteInput =
-  typeof ServerCollectorsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServerCollectorsOperationsDeleteInput>;
 
 // Output Schema
+export type ServerCollectorsOperationsDeleteOutput = void;
 export const ServerCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServerCollectorsOperationsDeleteOutput =
-  typeof ServerCollectorsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -13554,6 +17809,12 @@ export const ServerCollectorsOperationsDelete =
     outputSchema: ServerCollectorsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface ServerCollectorsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  serverCollectorName: string;
+}
 export const ServerCollectorsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13566,11 +17827,22 @@ export const ServerCollectorsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ServerCollectorsOperationsGetInput =
-  typeof ServerCollectorsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<ServerCollectorsOperationsGetInput>;
 
 // Output Schema
+export interface ServerCollectorsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerCollectorsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13590,9 +17862,7 @@ export const ServerCollectorsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerCollectorsOperationsGetOutput =
-  typeof ServerCollectorsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ServerCollectorsOperationsGetOutput>;
 
 // The operation
 /**
@@ -13610,6 +17880,11 @@ export const ServerCollectorsOperationsGet =
     outputSchema: ServerCollectorsOperationsGetOutput,
   }));
 // Input Schema
+export interface ServerCollectorsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const ServerCollectorsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13621,11 +17896,25 @@ export const ServerCollectorsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type ServerCollectorsOperationsListByAssessmentProjectInput =
-  typeof ServerCollectorsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<ServerCollectorsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface ServerCollectorsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerCollectorsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -13660,9 +17949,7 @@ export const ServerCollectorsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerCollectorsOperationsListByAssessmentProjectOutput =
-  typeof ServerCollectorsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<ServerCollectorsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -13679,6 +17966,17 @@ export const ServerCollectorsOperationsListByAssessmentProject =
     outputSchema: ServerCollectorsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface ServerDependencyMapControllerClientGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  processGroupName?: string;
+  processName?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const ServerDependencyMapControllerClientGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13701,15 +17999,12 @@ export const ServerDependencyMapControllerClientGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerDependencyMapControllerClientGroupMembersInput =
-  typeof ServerDependencyMapControllerClientGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<ServerDependencyMapControllerClientGroupMembersInput>;
 
 // Output Schema
+export type ServerDependencyMapControllerClientGroupMembersOutput = unknown;
 export const ServerDependencyMapControllerClientGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerDependencyMapControllerClientGroupMembersOutput =
-  typeof ServerDependencyMapControllerClientGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerClientGroupMembersOutput>;
 
 // The operation
 /**
@@ -13726,6 +18021,13 @@ export const ServerDependencyMapControllerClientGroupMembers =
     outputSchema: ServerDependencyMapControllerClientGroupMembersOutput,
   }));
 // Input Schema
+export interface ServerDependencyMapControllerExportDependenciesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+}
 export const ServerDependencyMapControllerExportDependenciesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13739,15 +18041,12 @@ export const ServerDependencyMapControllerExportDependenciesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerDependencyMapControllerExportDependenciesInput =
-  typeof ServerDependencyMapControllerExportDependenciesInput.Type;
+  ) as unknown as Schema.Codec<ServerDependencyMapControllerExportDependenciesInput>;
 
 // Output Schema
+export type ServerDependencyMapControllerExportDependenciesOutput = unknown;
 export const ServerDependencyMapControllerExportDependenciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerDependencyMapControllerExportDependenciesOutput =
-  typeof ServerDependencyMapControllerExportDependenciesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerExportDependenciesOutput>;
 
 // The operation
 /**
@@ -13764,6 +18063,14 @@ export const ServerDependencyMapControllerExportDependencies =
     outputSchema: ServerDependencyMapControllerExportDependenciesOutput,
   }));
 // Input Schema
+export interface ServerDependencyMapControllerGenerateCoarseMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const ServerDependencyMapControllerGenerateCoarseMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13783,15 +18090,12 @@ export const ServerDependencyMapControllerGenerateCoarseMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerDependencyMapControllerGenerateCoarseMapInput =
-  typeof ServerDependencyMapControllerGenerateCoarseMapInput.Type;
+  ) as unknown as Schema.Codec<ServerDependencyMapControllerGenerateCoarseMapInput>;
 
 // Output Schema
+export type ServerDependencyMapControllerGenerateCoarseMapOutput = unknown;
 export const ServerDependencyMapControllerGenerateCoarseMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerDependencyMapControllerGenerateCoarseMapOutput =
-  typeof ServerDependencyMapControllerGenerateCoarseMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateCoarseMapOutput>;
 
 // The operation
 /**
@@ -13808,6 +18112,15 @@ export const ServerDependencyMapControllerGenerateCoarseMap =
     outputSchema: ServerDependencyMapControllerGenerateCoarseMapOutput,
   }));
 // Input Schema
+export interface ServerDependencyMapControllerGenerateDetailedMapInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineId?: string;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const ServerDependencyMapControllerGenerateDetailedMapInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13828,15 +18141,12 @@ export const ServerDependencyMapControllerGenerateDetailedMapInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerDependencyMapControllerGenerateDetailedMapInput =
-  typeof ServerDependencyMapControllerGenerateDetailedMapInput.Type;
+  ) as unknown as Schema.Codec<ServerDependencyMapControllerGenerateDetailedMapInput>;
 
 // Output Schema
+export type ServerDependencyMapControllerGenerateDetailedMapOutput = unknown;
 export const ServerDependencyMapControllerGenerateDetailedMapOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerDependencyMapControllerGenerateDetailedMapOutput =
-  typeof ServerDependencyMapControllerGenerateDetailedMapOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerGenerateDetailedMapOutput>;
 
 // The operation
 /**
@@ -13853,6 +18163,15 @@ export const ServerDependencyMapControllerGenerateDetailedMap =
     outputSchema: ServerDependencyMapControllerGenerateDetailedMapOutput,
   }));
 // Input Schema
+export interface ServerDependencyMapControllerServerGroupMembersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  serverPort?: number;
+  startTime?: string;
+  endTime?: string;
+  filters?: { machineIds?: string[]; processIds?: string[] };
+}
 export const ServerDependencyMapControllerServerGroupMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13873,15 +18192,12 @@ export const ServerDependencyMapControllerServerGroupMembersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerDependencyMapControllerServerGroupMembersInput =
-  typeof ServerDependencyMapControllerServerGroupMembersInput.Type;
+  ) as unknown as Schema.Codec<ServerDependencyMapControllerServerGroupMembersInput>;
 
 // Output Schema
+export type ServerDependencyMapControllerServerGroupMembersOutput = unknown;
 export const ServerDependencyMapControllerServerGroupMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerDependencyMapControllerServerGroupMembersOutput =
-  typeof ServerDependencyMapControllerServerGroupMembersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerDependencyMapControllerServerGroupMembersOutput>;
 
 // The operation
 /**
@@ -13898,6 +18214,12 @@ export const ServerDependencyMapControllerServerGroupMembers =
     outputSchema: ServerDependencyMapControllerServerGroupMembersOutput,
   }));
 // Input Schema
+export interface ServerJobsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  jobName: string;
+}
 export const ServerJobsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13910,11 +18232,22 @@ export const ServerJobsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/jobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerJobsControllerGetInput =
-  typeof ServerJobsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ServerJobsControllerGetInput>;
 
 // Output Schema
+export interface ServerJobsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerJobsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -13934,9 +18267,7 @@ export const ServerJobsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerJobsControllerGetOutput =
-  typeof ServerJobsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ServerJobsControllerGetOutput>;
 
 // The operation
 /**
@@ -13955,6 +18286,11 @@ export const ServerJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerJobsControllerListByServerSiteResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerJobsControllerListByServerSiteResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -13966,11 +18302,25 @@ export const ServerJobsControllerListByServerSiteResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/jobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerJobsControllerListByServerSiteResourceInput =
-  typeof ServerJobsControllerListByServerSiteResourceInput.Type;
+  ) as unknown as Schema.Codec<ServerJobsControllerListByServerSiteResourceInput>;
 
 // Output Schema
+export interface ServerJobsControllerListByServerSiteResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerJobsControllerListByServerSiteResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14005,9 +18355,7 @@ export const ServerJobsControllerListByServerSiteResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerJobsControllerListByServerSiteResourceOutput =
-  typeof ServerJobsControllerListByServerSiteResourceOutput.Type;
+  }) as unknown as Schema.Codec<ServerJobsControllerListByServerSiteResourceOutput>;
 
 // The operation
 /**
@@ -14024,6 +18372,12 @@ export const ServerJobsControllerListByServerSiteResource =
     outputSchema: ServerJobsControllerListByServerSiteResourceOutput,
   }));
 // Input Schema
+export interface ServerOperationsStatusControllerGetServerSiteOperationsStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  operationStatusName: string;
+}
 export const ServerOperationsStatusControllerGetServerSiteOperationsStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14036,11 +18390,18 @@ export const ServerOperationsStatusControllerGetServerSiteOperationsStatusInput 
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/operationsStatus/{operationStatusName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerOperationsStatusControllerGetServerSiteOperationsStatusInput =
-  typeof ServerOperationsStatusControllerGetServerSiteOperationsStatusInput.Type;
+  ) as unknown as Schema.Codec<ServerOperationsStatusControllerGetServerSiteOperationsStatusInput>;
 
 // Output Schema
+export interface ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  properties?: { result?: string };
+}
 export const ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14059,9 +18420,7 @@ export const ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput
         result: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput =
-  typeof ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput.Type;
+  }) as unknown as Schema.Codec<ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput>;
 
 // The operation
 /**
@@ -14081,6 +18440,12 @@ export const ServerOperationsStatusControllerGetServerSiteOperationsStatus =
       ServerOperationsStatusControllerGetServerSiteOperationsStatusOutput,
   }));
 // Input Schema
+export interface ServerRunAsAccountsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  accountName: string;
+}
 export const ServerRunAsAccountsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14093,11 +18458,22 @@ export const ServerRunAsAccountsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts/{accountName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerRunAsAccountsControllerGetInput =
-  typeof ServerRunAsAccountsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ServerRunAsAccountsControllerGetInput>;
 
 // Output Schema
+export interface ServerRunAsAccountsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerRunAsAccountsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14117,9 +18493,7 @@ export const ServerRunAsAccountsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerRunAsAccountsControllerGetOutput =
-  typeof ServerRunAsAccountsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ServerRunAsAccountsControllerGetOutput>;
 
 // The operation
 /**
@@ -14137,6 +18511,11 @@ export const ServerRunAsAccountsControllerGet =
     outputSchema: ServerRunAsAccountsControllerGetOutput,
   }));
 // Input Schema
+export interface ServerRunAsAccountsControllerListByServerSiteResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerRunAsAccountsControllerListByServerSiteResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14148,11 +18527,25 @@ export const ServerRunAsAccountsControllerListByServerSiteResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerRunAsAccountsControllerListByServerSiteResourceInput =
-  typeof ServerRunAsAccountsControllerListByServerSiteResourceInput.Type;
+  ) as unknown as Schema.Codec<ServerRunAsAccountsControllerListByServerSiteResourceInput>;
 
 // Output Schema
+export interface ServerRunAsAccountsControllerListByServerSiteResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerRunAsAccountsControllerListByServerSiteResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14187,9 +18580,7 @@ export const ServerRunAsAccountsControllerListByServerSiteResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerRunAsAccountsControllerListByServerSiteResourceOutput =
-  typeof ServerRunAsAccountsControllerListByServerSiteResourceOutput.Type;
+  }) as unknown as Schema.Codec<ServerRunAsAccountsControllerListByServerSiteResourceOutput>;
 
 // The operation
 /**
@@ -14206,6 +18597,12 @@ export const ServerRunAsAccountsControllerListByServerSiteResource =
     outputSchema: ServerRunAsAccountsControllerListByServerSiteResourceOutput,
   }));
 // Input Schema
+export interface ServersControllerDeleteMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const ServersControllerDeleteMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14218,15 +18615,12 @@ export const ServersControllerDeleteMachineInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServersControllerDeleteMachineInput =
-  typeof ServersControllerDeleteMachineInput.Type;
+  ) as unknown as Schema.Codec<ServersControllerDeleteMachineInput>;
 
 // Output Schema
+export type ServersControllerDeleteMachineOutput = void;
 export const ServersControllerDeleteMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServersControllerDeleteMachineOutput =
-  typeof ServersControllerDeleteMachineOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersControllerDeleteMachineOutput>;
 
 // The operation
 /**
@@ -14244,6 +18638,12 @@ export const ServersControllerDeleteMachine =
     outputSchema: ServersControllerDeleteMachineOutput,
   }));
 // Input Schema
+export interface ServersControllerGetMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const ServersControllerGetMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14256,11 +18656,22 @@ export const ServersControllerGetMachineInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServersControllerGetMachineInput =
-  typeof ServersControllerGetMachineInput.Type;
+  ) as unknown as Schema.Codec<ServersControllerGetMachineInput>;
 
 // Output Schema
+export interface ServersControllerGetMachineOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServersControllerGetMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14280,9 +18691,7 @@ export const ServersControllerGetMachineOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServersControllerGetMachineOutput =
-  typeof ServersControllerGetMachineOutput.Type;
+  }) as unknown as Schema.Codec<ServersControllerGetMachineOutput>;
 
 // The operation
 /**
@@ -14301,6 +18710,15 @@ export const ServersControllerGetMachine = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServersControllerListByServerSiteResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const ServersControllerListByServerSiteResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14316,11 +18734,25 @@ export const ServersControllerListByServerSiteResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServersControllerListByServerSiteResourceInput =
-  typeof ServersControllerListByServerSiteResourceInput.Type;
+  ) as unknown as Schema.Codec<ServersControllerListByServerSiteResourceInput>;
 
 // Output Schema
+export interface ServersControllerListByServerSiteResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServersControllerListByServerSiteResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14355,9 +18787,7 @@ export const ServersControllerListByServerSiteResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServersControllerListByServerSiteResourceOutput =
-  typeof ServersControllerListByServerSiteResourceOutput.Type;
+  }) as unknown as Schema.Codec<ServersControllerListByServerSiteResourceOutput>;
 
 // The operation
 /**
@@ -14378,6 +18808,66 @@ export const ServersControllerListByServerSiteResource =
     outputSchema: ServersControllerListByServerSiteResourceOutput,
   }));
 // Input Schema
+export interface ServersControllerUpdateMachineInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  properties?: {
+    fqdn?: string;
+    networkAdapters?: {
+      nicId?: string;
+      macAddress?: string;
+      ipAddressList?: string[];
+      networkName?: string;
+      ipAddressType?: string;
+    }[];
+    hydratedFqdn?: string;
+    disks?: {
+      id?: string;
+      generatedId?: string;
+      maxSizeInBytes?: number;
+      name?: string;
+      diskType?: string;
+      lun?: number;
+      path?: string;
+    }[];
+    validationRequired?: string;
+    firmware?: string;
+    runAsAccountId?: string;
+    productSupportStatus?: {
+      currentVersion?: string;
+      esuStatus?: "Unknown" | "Active" | "InActive";
+      supportStatus?: "Unknown" | "Mainstream" | "Extended";
+      supportEndDate?: string;
+      esuYear?:
+        | "Unknown"
+        | "FirstYear"
+        | "SecondYear"
+        | "ThirdYear"
+        | "UpgradeYear";
+    };
+    numberOfProcessorCore?: number;
+    allocatedMemoryInMb?: number;
+    operatingSystemDetails?: {
+      osType?: string;
+      osName?: string;
+      osVersion?: string;
+      osArchitecture?: string;
+    };
+    biosSerialNumber?: string;
+    biosGuid?: string;
+    tags?: Record<string, unknown>;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const ServersControllerUpdateMachineInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14468,11 +18958,22 @@ export const ServersControllerUpdateMachineInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServersControllerUpdateMachineInput =
-  typeof ServersControllerUpdateMachineInput.Type;
+  ) as unknown as Schema.Codec<ServersControllerUpdateMachineInput>;
 
 // Output Schema
+export interface ServersControllerUpdateMachineOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServersControllerUpdateMachineOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14492,9 +18993,7 @@ export const ServersControllerUpdateMachineOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServersControllerUpdateMachineOutput =
-  typeof ServersControllerUpdateMachineOutput.Type;
+  }) as unknown as Schema.Codec<ServersControllerUpdateMachineOutput>;
 
 // The operation
 /**
@@ -14512,6 +19011,11 @@ export const ServersControllerUpdateMachine =
     outputSchema: ServersControllerUpdateMachineOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerComputeErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerComputeErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14523,11 +19027,22 @@ export const ServerSitesControllerComputeErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/computeErrorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerComputeErrorSummaryInput =
-  typeof ServerSitesControllerComputeErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerComputeErrorSummaryInput>;
 
 // Output Schema
+export interface ServerSitesControllerComputeErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const ServerSitesControllerComputeErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -14542,9 +19057,7 @@ export const ServerSitesControllerComputeErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerSitesControllerComputeErrorSummaryOutput =
-  typeof ServerSitesControllerComputeErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerComputeErrorSummaryOutput>;
 
 // The operation
 /**
@@ -14561,6 +19074,11 @@ export const ServerSitesControllerComputeErrorSummary =
     outputSchema: ServerSitesControllerComputeErrorSummaryOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerComputeusageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerComputeusageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14572,18 +19090,18 @@ export const ServerSitesControllerComputeusageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/computeusage",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerComputeusageInput =
-  typeof ServerSitesControllerComputeusageInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerComputeusageInput>;
 
 // Output Schema
+export interface ServerSitesControllerComputeusageOutput {
+  runAsAccounts: number;
+  serverCount: number;
+}
 export const ServerSitesControllerComputeusageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runAsAccounts: Schema.Number,
     serverCount: Schema.Number,
-  });
-export type ServerSitesControllerComputeusageOutput =
-  typeof ServerSitesControllerComputeusageOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerComputeusageOutput>;
 
 // The operation
 /**
@@ -14600,6 +19118,42 @@ export const ServerSitesControllerComputeusage =
     outputSchema: ServerSitesControllerComputeusageOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    masterSiteId?: string;
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const ServerSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14651,11 +19205,22 @@ export const ServerSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerCreateInput =
-  typeof ServerSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerCreateInput>;
 
 // Output Schema
+export interface ServerSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14675,9 +19240,7 @@ export const ServerSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerSitesControllerCreateOutput =
-  typeof ServerSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -14695,6 +19258,11 @@ export const ServerSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14706,15 +19274,12 @@ export const ServerSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerDeleteInput =
-  typeof ServerSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerDeleteInput>;
 
 // Output Schema
+export type ServerSitesControllerDeleteOutput = void;
 export const ServerSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServerSitesControllerDeleteOutput =
-  typeof ServerSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServerSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -14732,6 +19297,11 @@ export const ServerSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerSitesControllerExportApplicationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerExportApplicationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14743,15 +19313,12 @@ export const ServerSitesControllerExportApplicationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerExportApplicationsInput =
-  typeof ServerSitesControllerExportApplicationsInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerExportApplicationsInput>;
 
 // Output Schema
+export type ServerSitesControllerExportApplicationsOutput = unknown;
 export const ServerSitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerSitesControllerExportApplicationsOutput =
-  typeof ServerSitesControllerExportApplicationsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -14769,6 +19336,18 @@ export const ServerSitesControllerExportApplications =
     outputSchema: ServerSitesControllerExportApplicationsOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerExportMachineErrorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    discoveryScope?:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+}
 export const ServerSitesControllerExportMachineErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14792,15 +19371,12 @@ export const ServerSitesControllerExportMachineErrorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerExportMachineErrorsInput =
-  typeof ServerSitesControllerExportMachineErrorsInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerExportMachineErrorsInput>;
 
 // Output Schema
+export type ServerSitesControllerExportMachineErrorsOutput = unknown;
 export const ServerSitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerSitesControllerExportMachineErrorsOutput =
-  typeof ServerSitesControllerExportMachineErrorsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -14818,6 +19394,11 @@ export const ServerSitesControllerExportMachineErrors =
     outputSchema: ServerSitesControllerExportMachineErrorsOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14829,11 +19410,22 @@ export const ServerSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerGetInput =
-  typeof ServerSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerGetInput>;
 
 // Output Schema
+export interface ServerSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -14853,9 +19445,7 @@ export const ServerSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerSitesControllerGetOutput =
-  typeof ServerSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -14873,6 +19463,10 @@ export const ServerSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerSitesControllerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const ServerSitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14883,11 +19477,25 @@ export const ServerSitesControllerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerListByResourceGroupInput =
-  typeof ServerSitesControllerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerListByResourceGroupInput>;
 
 // Output Schema
+export interface ServerSitesControllerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerSitesControllerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14922,9 +19530,7 @@ export const ServerSitesControllerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerSitesControllerListByResourceGroupOutput =
-  typeof ServerSitesControllerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -14940,6 +19546,9 @@ export const ServerSitesControllerListByResourceGroup =
     outputSchema: ServerSitesControllerListByResourceGroupOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const ServerSitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -14949,11 +19558,25 @@ export const ServerSitesControllerListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/serverSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerListBySubscriptionInput =
-  typeof ServerSitesControllerListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerListBySubscriptionInput>;
 
 // Output Schema
+export interface ServerSitesControllerListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerSitesControllerListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -14988,9 +19611,7 @@ export const ServerSitesControllerListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerSitesControllerListBySubscriptionOutput =
-  typeof ServerSitesControllerListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -15005,6 +19626,11 @@ export const ServerSitesControllerListBySubscription =
     outputSchema: ServerSitesControllerListBySubscriptionOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerListHealthSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerListHealthSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15016,11 +19642,30 @@ export const ServerSitesControllerListHealthSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/listHealthSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerListHealthSummaryInput =
-  typeof ServerSitesControllerListHealthSummaryInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerListHealthSummaryInput>;
 
 // Output Schema
+export interface ServerSitesControllerListHealthSummaryOutput {
+  value: {
+    applianceName?: string;
+    errorMessage?: string;
+    summaryMessage?: string;
+    errorId?: number;
+    errorCode?: string;
+    affectedObjectsCount?: number;
+    hitCount?: number;
+    severity?: string;
+    remediationGuidance?: string;
+    affectedResourceType?: string;
+    affectedResources?: string[];
+    fabricLayoutUpdateSources?: (
+      | "RefreshFabricLayout"
+      | "RefreshFabricLayoutGuest"
+      | "RefreshFabricLayoutDependencyMap"
+    )[];
+  }[];
+  nextLink?: string;
+}
 export const ServerSitesControllerListHealthSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15048,9 +19693,7 @@ export const ServerSitesControllerListHealthSummaryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerSitesControllerListHealthSummaryOutput =
-  typeof ServerSitesControllerListHealthSummaryOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerListHealthSummaryOutput>;
 
 // The operation
 /**
@@ -15067,6 +19710,11 @@ export const ServerSitesControllerListHealthSummary =
     outputSchema: ServerSitesControllerListHealthSummaryOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerRefreshSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerRefreshSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15078,15 +19726,12 @@ export const ServerSitesControllerRefreshSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/refreshSite",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerRefreshSiteInput =
-  typeof ServerSitesControllerRefreshSiteInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerRefreshSiteInput>;
 
 // Output Schema
+export type ServerSitesControllerRefreshSiteOutput = unknown;
 export const ServerSitesControllerRefreshSiteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerSitesControllerRefreshSiteOutput =
-  typeof ServerSitesControllerRefreshSiteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerRefreshSiteOutput>;
 
 // The operation
 /**
@@ -15103,6 +19748,11 @@ export const ServerSitesControllerRefreshSite =
     outputSchema: ServerSitesControllerRefreshSiteOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const ServerSitesControllerSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15114,18 +19764,18 @@ export const ServerSitesControllerSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/summary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerSummaryInput =
-  typeof ServerSitesControllerSummaryInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerSummaryInput>;
 
 // Output Schema
+export interface ServerSitesControllerSummaryOutput {
+  runAsAccountCount?: number;
+  serverCount?: number;
+}
 export const ServerSitesControllerSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     runAsAccountCount: Schema.optional(Schema.Number),
     serverCount: Schema.optional(Schema.Number),
-  });
-export type ServerSitesControllerSummaryOutput =
-  typeof ServerSitesControllerSummaryOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerSummaryOutput>;
 
 // The operation
 /**
@@ -15142,6 +19792,31 @@ export const ServerSitesControllerSummary =
     outputSchema: ServerSitesControllerSummaryOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+  };
+}
 export const ServerSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15179,11 +19854,22 @@ export const ServerSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerUpdateInput =
-  typeof ServerSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerUpdateInput>;
 
 // Output Schema
+export interface ServerSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15203,9 +19889,7 @@ export const ServerSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerSitesControllerUpdateOutput =
-  typeof ServerSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServerSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -15223,6 +19907,12 @@ export const ServerSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServerSitesControllerUpdateDependencyMapStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
+}
 export const ServerSitesControllerUpdateDependencyMapStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15242,15 +19932,12 @@ export const ServerSitesControllerUpdateDependencyMapStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerUpdateDependencyMapStatusInput =
-  typeof ServerSitesControllerUpdateDependencyMapStatusInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerUpdateDependencyMapStatusInput>;
 
 // Output Schema
+export type ServerSitesControllerUpdateDependencyMapStatusOutput = unknown;
 export const ServerSitesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerSitesControllerUpdateDependencyMapStatusOutput =
-  typeof ServerSitesControllerUpdateDependencyMapStatusOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -15268,6 +19955,16 @@ export const ServerSitesControllerUpdateDependencyMapStatus =
     outputSchema: ServerSitesControllerUpdateDependencyMapStatusOutput,
   }));
 // Input Schema
+export interface ServerSitesControllerUpdatePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  value: {
+    machineArmId: string;
+    dependencyMapping: string;
+    tags: Record<string, string>;
+  }[];
+}
 export const ServerSitesControllerUpdatePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15286,15 +19983,12 @@ export const ServerSitesControllerUpdatePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSitesControllerUpdatePropertiesInput =
-  typeof ServerSitesControllerUpdatePropertiesInput.Type;
+  ) as unknown as Schema.Codec<ServerSitesControllerUpdatePropertiesInput>;
 
 // Output Schema
+export type ServerSitesControllerUpdatePropertiesOutput = unknown;
 export const ServerSitesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type ServerSitesControllerUpdatePropertiesOutput =
-  typeof ServerSitesControllerUpdatePropertiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<ServerSitesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -15311,6 +20005,13 @@ export const ServerSitesControllerUpdateProperties =
     outputSchema: ServerSitesControllerUpdatePropertiesOutput,
   }));
 // Input Schema
+export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  default: "default";
+}
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15324,11 +20025,22 @@ export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  typeof ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput.Type;
+  ) as unknown as Schema.Codec<ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryInput>;
 
 // Output Schema
+export interface ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15348,9 +20060,7 @@ export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  typeof ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput.Type;
+  }) as unknown as Schema.Codec<ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput>;
 
 // The operation
 /**
@@ -15371,6 +20081,12 @@ export const ServerSoftwareInventoriesControllerGetMachineSoftwareInventory =
       ServerSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput,
   }));
 // Input Schema
+export interface ServerSoftwareInventoriesControllerListByServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const ServerSoftwareInventoriesControllerListByServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15383,11 +20099,25 @@ export const ServerSoftwareInventoriesControllerListByServerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}/softwareinventories",
       apiVersion: "2023-06-06",
     }),
-  );
-export type ServerSoftwareInventoriesControllerListByServerInput =
-  typeof ServerSoftwareInventoriesControllerListByServerInput.Type;
+  ) as unknown as Schema.Codec<ServerSoftwareInventoriesControllerListByServerInput>;
 
 // Output Schema
+export interface ServerSoftwareInventoriesControllerListByServerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServerSoftwareInventoriesControllerListByServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15422,9 +20152,7 @@ export const ServerSoftwareInventoriesControllerListByServerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServerSoftwareInventoriesControllerListByServerOutput =
-  typeof ServerSoftwareInventoriesControllerListByServerOutput.Type;
+  }) as unknown as Schema.Codec<ServerSoftwareInventoriesControllerListByServerOutput>;
 
 // The operation
 /**
@@ -15442,6 +20170,11 @@ export const ServerSoftwareInventoriesControllerListByServer =
     outputSchema: ServerSoftwareInventoriesControllerListByServerOutput,
   }));
 // Input Schema
+export interface SitesControllerComputeErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerComputeErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15453,11 +20186,22 @@ export const SitesControllerComputeErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/computeErrorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerComputeErrorSummaryInput =
-  typeof SitesControllerComputeErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerComputeErrorSummaryInput>;
 
 // Output Schema
+export interface SitesControllerComputeErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const SitesControllerComputeErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -15472,9 +20216,7 @@ export const SitesControllerComputeErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesControllerComputeErrorSummaryOutput =
-  typeof SitesControllerComputeErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerComputeErrorSummaryOutput>;
 
 // The operation
 /**
@@ -15491,6 +20233,11 @@ export const SitesControllerComputeErrorSummary =
     outputSchema: SitesControllerComputeErrorSummaryOutput,
   }));
 // Input Schema
+export interface SitesControllerComputeusageInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerComputeusageInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15502,19 +20249,20 @@ export const SitesControllerComputeusageInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/computeusage",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerComputeusageInput =
-  typeof SitesControllerComputeusageInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerComputeusageInput>;
 
 // Output Schema
+export interface SitesControllerComputeusageOutput {
+  machineCount?: number;
+  runAsAccountCount?: number;
+  vCenterCount?: number;
+}
 export const SitesControllerComputeusageOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     vCenterCount: Schema.optional(Schema.Number),
-  });
-export type SitesControllerComputeusageOutput =
-  typeof SitesControllerComputeusageOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerComputeusageOutput>;
 
 // The operation
 /**
@@ -15532,6 +20280,43 @@ export const SitesControllerComputeusage = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    masterSiteId?: string;
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+  eTag?: string;
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15584,10 +20369,22 @@ export const SitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerCreateInput = typeof SitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerCreateInput>;
 
 // Output Schema
+export interface SitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15607,9 +20404,7 @@ export const SitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesControllerCreateOutput =
-  typeof SitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -15627,6 +20422,11 @@ export const SitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15638,14 +20438,12 @@ export const SitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerDeleteInput = typeof SitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerDeleteInput>;
 
 // Output Schema
+export type SitesControllerDeleteOutput = void;
 export const SitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SitesControllerDeleteOutput =
-  typeof SitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -15663,6 +20461,11 @@ export const SitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesControllerExportApplicationsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerExportApplicationsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15674,15 +20477,12 @@ export const SitesControllerExportApplicationsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerExportApplicationsInput =
-  typeof SitesControllerExportApplicationsInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerExportApplicationsInput>;
 
 // Output Schema
+export type SitesControllerExportApplicationsOutput = unknown;
 export const SitesControllerExportApplicationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SitesControllerExportApplicationsOutput =
-  typeof SitesControllerExportApplicationsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportApplicationsOutput>;
 
 // The operation
 /**
@@ -15700,6 +20500,18 @@ export const SitesControllerExportApplications =
     outputSchema: SitesControllerExportApplicationsOutput,
   }));
 // Input Schema
+export interface SitesControllerExportMachineErrorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  properties?: {
+    discoveryScope?:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+}
 export const SitesControllerExportMachineErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15723,15 +20535,12 @@ export const SitesControllerExportMachineErrorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerExportMachineErrorsInput =
-  typeof SitesControllerExportMachineErrorsInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerExportMachineErrorsInput>;
 
 // Output Schema
+export type SitesControllerExportMachineErrorsOutput = unknown;
 export const SitesControllerExportMachineErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SitesControllerExportMachineErrorsOutput =
-  typeof SitesControllerExportMachineErrorsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachineErrorsOutput>;
 
 // The operation
 /**
@@ -15749,6 +20558,12 @@ export const SitesControllerExportMachineErrors =
     outputSchema: SitesControllerExportMachineErrorsOutput,
   }));
 // Input Schema
+export interface SitesControllerExportMachinesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+}
 export const SitesControllerExportMachinesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15761,15 +20576,12 @@ export const SitesControllerExportMachinesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerExportMachinesInput =
-  typeof SitesControllerExportMachinesInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerExportMachinesInput>;
 
 // Output Schema
+export type SitesControllerExportMachinesOutput = unknown;
 export const SitesControllerExportMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SitesControllerExportMachinesOutput =
-  typeof SitesControllerExportMachinesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SitesControllerExportMachinesOutput>;
 
 // The operation
 /**
@@ -15787,6 +20599,11 @@ export const SitesControllerExportMachines =
     outputSchema: SitesControllerExportMachinesOutput,
   }));
 // Input Schema
+export interface SitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15798,10 +20615,22 @@ export const SitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerGetInput = typeof SitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerGetInput>;
 
 // Output Schema
+export interface SitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -15821,8 +20650,7 @@ export const SitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesControllerGetOutput = typeof SitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerGetOutput>;
 
 // The operation
 /**
@@ -15838,6 +20666,10 @@ export const SitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SitesControllerGetOutput,
 }));
 // Input Schema
+export interface SitesControllerListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SitesControllerListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15848,11 +20680,25 @@ export const SitesControllerListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerListByResourceGroupInput =
-  typeof SitesControllerListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerListByResourceGroupInput>;
 
 // Output Schema
+export interface SitesControllerListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesControllerListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15887,9 +20733,7 @@ export const SitesControllerListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesControllerListByResourceGroupOutput =
-  typeof SitesControllerListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -15907,6 +20751,9 @@ export const SitesControllerListByResourceGroup =
     outputSchema: SitesControllerListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SitesControllerListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SitesControllerListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15916,11 +20763,25 @@ export const SitesControllerListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/vmwareSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerListBySubscriptionInput =
-  typeof SitesControllerListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerListBySubscriptionInput>;
 
 // Output Schema
+export interface SitesControllerListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SitesControllerListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -15955,9 +20816,7 @@ export const SitesControllerListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesControllerListBySubscriptionOutput =
-  typeof SitesControllerListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -15974,6 +20833,11 @@ export const SitesControllerListBySubscription =
     outputSchema: SitesControllerListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SitesControllerListHealthSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerListHealthSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -15985,11 +20849,30 @@ export const SitesControllerListHealthSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/listHealthSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerListHealthSummaryInput =
-  typeof SitesControllerListHealthSummaryInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerListHealthSummaryInput>;
 
 // Output Schema
+export interface SitesControllerListHealthSummaryOutput {
+  value: {
+    applianceName?: string;
+    errorMessage?: string;
+    summaryMessage?: string;
+    errorId?: number;
+    errorCode?: string;
+    affectedObjectsCount?: number;
+    hitCount?: number;
+    severity?: string;
+    remediationGuidance?: string;
+    affectedResourceType?: string;
+    affectedResources?: string[];
+    fabricLayoutUpdateSources?: (
+      | "RefreshFabricLayout"
+      | "RefreshFabricLayoutGuest"
+      | "RefreshFabricLayoutDependencyMap"
+    )[];
+  }[];
+  nextLink?: string;
+}
 export const SitesControllerListHealthSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -16017,9 +20900,7 @@ export const SitesControllerListHealthSummaryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SitesControllerListHealthSummaryOutput =
-  typeof SitesControllerListHealthSummaryOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerListHealthSummaryOutput>;
 
 // The operation
 /**
@@ -16036,6 +20917,11 @@ export const SitesControllerListHealthSummary =
     outputSchema: SitesControllerListHealthSummaryOutput,
   }));
 // Input Schema
+export interface SitesControllerSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SitesControllerSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16047,19 +20933,20 @@ export const SitesControllerSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/summary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerSummaryInput =
-  typeof SitesControllerSummaryInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerSummaryInput>;
 
 // Output Schema
+export interface SitesControllerSummaryOutput {
+  machineCount?: number;
+  runAsAccountCount?: number;
+  vCenterCount?: number;
+}
 export const SitesControllerSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     machineCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
     vCenterCount: Schema.optional(Schema.Number),
-  });
-export type SitesControllerSummaryOutput =
-  typeof SitesControllerSummaryOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerSummaryOutput>;
 
 // The operation
 /**
@@ -16077,6 +20964,39 @@ export const SitesControllerSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    servicePrincipalIdentityDetails?: {
+      tenantId?: string;
+      applicationId?: string;
+      objectId?: string;
+      audience?: string;
+      aadAuthority?: string;
+      rawCertData?: string;
+    };
+    agentDetails?: {
+      id?: string;
+      version?: string;
+      lastHeartBeatUtc?: string;
+      keyVaultUri?: string;
+      keyVaultId?: string;
+    };
+    applianceName?: string;
+    discoverySolutionId?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const SitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16125,10 +21045,22 @@ export const SitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SitesControllerUpdateInput = typeof SitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<SitesControllerUpdateInput>;
 
 // Output Schema
+export interface SitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16148,9 +21080,7 @@ export const SitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SitesControllerUpdateOutput =
-  typeof SitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -16168,25 +21098,32 @@ export const SitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionsControllerCleanupDataInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+}
 export const SolutionsControllerCleanupDataInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/cleanupData",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerCleanupDataInput =
-  typeof SolutionsControllerCleanupDataInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerCleanupDataInput>;
 
 // Output Schema
+export interface SolutionsControllerCleanupDataOutput {}
 export const SolutionsControllerCleanupDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type SolutionsControllerCleanupDataOutput =
-  typeof SolutionsControllerCleanupDataOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<SolutionsControllerCleanupDataOutput>;
 
 // The operation
 /**
@@ -16194,6 +21131,8 @@ export type SolutionsControllerCleanupDataOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerCleanupData =
@@ -16202,10 +21141,65 @@ export const SolutionsControllerCleanupData =
     outputSchema: SolutionsControllerCleanupDataOutput,
   }));
 // Input Schema
+export interface SolutionsControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    tool?:
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown";
+    purpose?: "Discovery" | "Assessment" | "Migration";
+    goal?:
+      | "Servers"
+      | "Databases"
+      | "DesktopVirtualization"
+      | "WebApplications"
+      | "DataCenter";
+    status?: "Inactive" | "Active";
+    cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+    summary?: { instanceType?: string };
+    details?: {
+      groupCount?: number;
+      assessmentCount?: number;
+      extendedDetails?: Record<string, string>;
+    };
+  };
+}
 export const SolutionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16285,11 +21279,58 @@ export const SolutionsControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerCreateInput =
-  typeof SolutionsControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerCreateInput>;
 
 // Output Schema
+export interface SolutionsControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    tool?:
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown";
+    purpose?: "Discovery" | "Assessment" | "Migration";
+    goal?:
+      | "Servers"
+      | "Databases"
+      | "DesktopVirtualization"
+      | "WebApplications"
+      | "DataCenter";
+    status?: "Inactive" | "Active";
+    cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+    summary?: { instanceType?: string };
+    details?: {
+      groupCount?: number;
+      assessmentCount?: number;
+      extendedDetails?: Record<string, string>;
+    };
+  };
+}
 export const SolutionsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16365,9 +21406,7 @@ export const SolutionsControllerCreateOutput =
         ),
       }),
     ),
-  });
-export type SolutionsControllerCreateOutput =
-  typeof SolutionsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsControllerCreateOutput>;
 
 // The operation
 /**
@@ -16375,6 +21414,8 @@ export type SolutionsControllerCreateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -16384,25 +21425,32 @@ export const SolutionsControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionsControllerDeleteSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+}
 export const SolutionsControllerDeleteSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerDeleteSolutionInput =
-  typeof SolutionsControllerDeleteSolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerDeleteSolutionInput>;
 
 // Output Schema
+export interface SolutionsControllerDeleteSolutionOutput {}
 export const SolutionsControllerDeleteSolutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({});
-export type SolutionsControllerDeleteSolutionOutput =
-  typeof SolutionsControllerDeleteSolutionOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+    {},
+  ) as unknown as Schema.Codec<SolutionsControllerDeleteSolutionOutput>;
 
 // The operation
 /**
@@ -16412,6 +21460,8 @@ export type SolutionsControllerDeleteSolutionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerDeleteSolution =
@@ -16420,27 +21470,34 @@ export const SolutionsControllerDeleteSolution =
     outputSchema: SolutionsControllerDeleteSolutionOutput,
   }));
 // Input Schema
+export interface SolutionsControllerGetConfigInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+}
 export const SolutionsControllerGetConfigInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/getConfig",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerGetConfigInput =
-  typeof SolutionsControllerGetConfigInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerGetConfigInput>;
 
 // Output Schema
+export interface SolutionsControllerGetConfigOutput {
+  publisherSasUri?: string;
+}
 export const SolutionsControllerGetConfigOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     publisherSasUri: Schema.optional(Schema.String),
-  });
-export type SolutionsControllerGetConfigOutput =
-  typeof SolutionsControllerGetConfigOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsControllerGetConfigOutput>;
 
 // The operation
 /**
@@ -16448,6 +21505,8 @@ export type SolutionsControllerGetConfigOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetConfig =
@@ -16456,21 +21515,76 @@ export const SolutionsControllerGetConfig =
     outputSchema: SolutionsControllerGetConfigOutput,
   }));
 // Input Schema
+export interface SolutionsControllerGetSolutionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+}
 export const SolutionsControllerGetSolutionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerGetSolutionInput =
-  typeof SolutionsControllerGetSolutionInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerGetSolutionInput>;
 
 // Output Schema
+export interface SolutionsControllerGetSolutionOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    tool?:
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown";
+    purpose?: "Discovery" | "Assessment" | "Migration";
+    goal?:
+      | "Servers"
+      | "Databases"
+      | "DesktopVirtualization"
+      | "WebApplications"
+      | "DataCenter";
+    status?: "Inactive" | "Active";
+    cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+    summary?: { instanceType?: string };
+    details?: {
+      groupCount?: number;
+      assessmentCount?: number;
+      extendedDetails?: Record<string, string>;
+    };
+  };
+}
 export const SolutionsControllerGetSolutionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16546,9 +21660,7 @@ export const SolutionsControllerGetSolutionOutput =
         ),
       }),
     ),
-  });
-export type SolutionsControllerGetSolutionOutput =
-  typeof SolutionsControllerGetSolutionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsControllerGetSolutionOutput>;
 
 // The operation
 /**
@@ -16556,6 +21668,8 @@ export type SolutionsControllerGetSolutionOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerGetSolution =
@@ -16564,21 +21678,77 @@ export const SolutionsControllerGetSolution =
     outputSchema: SolutionsControllerGetSolutionOutput,
   }));
 // Input Schema
+export interface SolutionsControllerListSolutionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+}
 export const SolutionsControllerListSolutionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerListSolutionsInput =
-  typeof SolutionsControllerListSolutionsInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerListSolutionsInput>;
 
 // Output Schema
+export interface SolutionsControllerListSolutionsOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    etag?: string;
+    properties?: {
+      tool?:
+        | "ServerDiscovery"
+        | "ServerAssessment"
+        | "ServerMigration"
+        | "Cloudamize"
+        | "Turbonomic"
+        | "Zerto"
+        | "CorentTech"
+        | "ServerAssessmentV1"
+        | "ServerMigration_Replication"
+        | "Carbonite"
+        | "DataMigrationAssistant"
+        | "DatabaseMigrationService"
+        | "Device42"
+        | "JetStream"
+        | "RackWare"
+        | "UnifyCloud"
+        | "Flexera"
+        | "ServerDiscovery_Import"
+        | "Lakeside"
+        | "AppServiceMigrationAssistant"
+        | "Movere"
+        | "CloudSphere"
+        | "Modernization"
+        | "ServerMigration_DataReplication"
+        | "Unknown";
+      purpose?: "Discovery" | "Assessment" | "Migration";
+      goal?:
+        | "Servers"
+        | "Databases"
+        | "DesktopVirtualization"
+        | "WebApplications"
+        | "DataCenter";
+      status?: "Inactive" | "Active";
+      cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+      summary?: { instanceType?: string };
+      details?: {
+        groupCount?: number;
+        assessmentCount?: number;
+        extendedDetails?: Record<string, string>;
+      };
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionsControllerListSolutionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -16661,9 +21831,7 @@ export const SolutionsControllerListSolutionsOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionsControllerListSolutionsOutput =
-  typeof SolutionsControllerListSolutionsOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsControllerListSolutionsOutput>;
 
 // The operation
 /**
@@ -16671,6 +21839,7 @@ export type SolutionsControllerListSolutionsOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerListSolutions =
@@ -16679,10 +21848,65 @@ export const SolutionsControllerListSolutions =
     outputSchema: SolutionsControllerListSolutionsOutput,
   }));
 // Input Schema
+export interface SolutionsControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  solutionName: string;
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    tool?:
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown";
+    purpose?: "Discovery" | "Assessment" | "Migration";
+    goal?:
+      | "Servers"
+      | "Databases"
+      | "DesktopVirtualization"
+      | "WebApplications"
+      | "DataCenter";
+    status?: "Inactive" | "Active";
+    cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+    summary?: { instanceType?: string };
+    details?: {
+      groupCount?: number;
+      assessmentCount?: number;
+      extendedDetails?: Record<string, string>;
+    };
+  };
+}
 export const SolutionsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    solutionName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -16762,11 +21986,58 @@ export const SolutionsControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type SolutionsControllerUpdateInput =
-  typeof SolutionsControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionsControllerUpdateInput>;
 
 // Output Schema
+export interface SolutionsControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  etag?: string;
+  properties?: {
+    tool?:
+      | "ServerDiscovery"
+      | "ServerAssessment"
+      | "ServerMigration"
+      | "Cloudamize"
+      | "Turbonomic"
+      | "Zerto"
+      | "CorentTech"
+      | "ServerAssessmentV1"
+      | "ServerMigration_Replication"
+      | "Carbonite"
+      | "DataMigrationAssistant"
+      | "DatabaseMigrationService"
+      | "Device42"
+      | "JetStream"
+      | "RackWare"
+      | "UnifyCloud"
+      | "Flexera"
+      | "ServerDiscovery_Import"
+      | "Lakeside"
+      | "AppServiceMigrationAssistant"
+      | "Movere"
+      | "CloudSphere"
+      | "Modernization"
+      | "ServerMigration_DataReplication"
+      | "Unknown";
+    purpose?: "Discovery" | "Assessment" | "Migration";
+    goal?:
+      | "Servers"
+      | "Databases"
+      | "DesktopVirtualization"
+      | "WebApplications"
+      | "DataCenter";
+    status?: "Inactive" | "Active";
+    cleanupState?: "None" | "Started" | "InProgress" | "Completed" | "Failed";
+    summary?: { instanceType?: string };
+    details?: {
+      groupCount?: number;
+      assessmentCount?: number;
+      extendedDetails?: Record<string, string>;
+    };
+  };
+}
 export const SolutionsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16842,9 +22113,7 @@ export const SolutionsControllerUpdateOutput =
         ),
       }),
     ),
-  });
-export type SolutionsControllerUpdateOutput =
-  typeof SolutionsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionsControllerUpdateOutput>;
 
 // The operation
 /**
@@ -16854,6 +22123,8 @@ export type SolutionsControllerUpdateOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param solutionName - Unique name of a migration solution within a migrate project.
  * @param api-version - The API version to use for this operation.
  */
 export const SolutionsControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -16863,6 +22134,12 @@ export const SolutionsControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlAssessmentOptionsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentOptionsName: string;
+}
 export const SqlAssessmentOptionsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16875,11 +22152,22 @@ export const SqlAssessmentOptionsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions/{assessmentOptionsName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentOptionsOperationsGetInput =
-  typeof SqlAssessmentOptionsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentOptionsOperationsGetInput>;
 
 // Output Schema
+export interface SqlAssessmentOptionsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlAssessmentOptionsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -16899,9 +22187,7 @@ export const SqlAssessmentOptionsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlAssessmentOptionsOperationsGetOutput =
-  typeof SqlAssessmentOptionsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentOptionsOperationsGetOutput>;
 
 // The operation
 /**
@@ -16919,6 +22205,11 @@ export const SqlAssessmentOptionsOperationsGet =
     outputSchema: SqlAssessmentOptionsOperationsGetOutput,
   }));
 // Input Schema
+export interface SqlAssessmentOptionsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -16930,11 +22221,25 @@ export const SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentOptionsOperationsListByAssessmentProjectInput =
-  typeof SqlAssessmentOptionsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentOptionsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface SqlAssessmentOptionsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlAssessmentOptionsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -16969,9 +22274,7 @@ export const SqlAssessmentOptionsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  typeof SqlAssessmentOptionsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentOptionsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -16988,6 +22291,23 @@ export const SqlAssessmentOptionsOperationsListByAssessmentProject =
     outputSchema: SqlAssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2OperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const SqlAssessmentV2OperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17016,11 +22336,22 @@ export const SqlAssessmentV2OperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2OperationsCreateInput =
-  typeof SqlAssessmentV2OperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2OperationsCreateInput>;
 
 // Output Schema
+export interface SqlAssessmentV2OperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlAssessmentV2OperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17040,9 +22371,7 @@ export const SqlAssessmentV2OperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlAssessmentV2OperationsCreateOutput =
-  typeof SqlAssessmentV2OperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2OperationsCreateOutput>;
 
 // The operation
 /**
@@ -17061,6 +22390,13 @@ export const SqlAssessmentV2OperationsCreate =
     outputSchema: SqlAssessmentV2OperationsCreateOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2OperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const SqlAssessmentV2OperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17074,15 +22410,12 @@ export const SqlAssessmentV2OperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2OperationsDeleteInput =
-  typeof SqlAssessmentV2OperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2OperationsDeleteInput>;
 
 // Output Schema
+export type SqlAssessmentV2OperationsDeleteOutput = void;
 export const SqlAssessmentV2OperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlAssessmentV2OperationsDeleteOutput =
-  typeof SqlAssessmentV2OperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlAssessmentV2OperationsDeleteOutput>;
 
 // The operation
 /**
@@ -17101,6 +22434,13 @@ export const SqlAssessmentV2OperationsDelete =
     outputSchema: SqlAssessmentV2OperationsDeleteOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2OperationsDownloadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const SqlAssessmentV2OperationsDownloadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17114,18 +22454,18 @@ export const SqlAssessmentV2OperationsDownloadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2OperationsDownloadUrlInput =
-  typeof SqlAssessmentV2OperationsDownloadUrlInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2OperationsDownloadUrlInput>;
 
 // Output Schema
+export interface SqlAssessmentV2OperationsDownloadUrlOutput {
+  assessmentReportUrl: string;
+  expirationTime: string;
+}
 export const SqlAssessmentV2OperationsDownloadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
-  });
-export type SqlAssessmentV2OperationsDownloadUrlOutput =
-  typeof SqlAssessmentV2OperationsDownloadUrlOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2OperationsDownloadUrlOutput>;
 
 // The operation
 /**
@@ -17146,6 +22486,13 @@ export const SqlAssessmentV2OperationsDownloadUrl =
     outputSchema: SqlAssessmentV2OperationsDownloadUrlOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const SqlAssessmentV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17159,11 +22506,22 @@ export const SqlAssessmentV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2OperationsGetInput =
-  typeof SqlAssessmentV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2OperationsGetInput>;
 
 // Output Schema
+export interface SqlAssessmentV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlAssessmentV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17183,9 +22541,7 @@ export const SqlAssessmentV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlAssessmentV2OperationsGetOutput =
-  typeof SqlAssessmentV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -17204,6 +22560,12 @@ export const SqlAssessmentV2OperationsGet =
     outputSchema: SqlAssessmentV2OperationsGetOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2OperationsListByGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const SqlAssessmentV2OperationsListByGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17216,11 +22578,25 @@ export const SqlAssessmentV2OperationsListByGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2OperationsListByGroupInput =
-  typeof SqlAssessmentV2OperationsListByGroupInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2OperationsListByGroupInput>;
 
 // Output Schema
+export interface SqlAssessmentV2OperationsListByGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlAssessmentV2OperationsListByGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17255,9 +22631,7 @@ export const SqlAssessmentV2OperationsListByGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlAssessmentV2OperationsListByGroupOutput =
-  typeof SqlAssessmentV2OperationsListByGroupOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2OperationsListByGroupOutput>;
 
 // The operation
 /**
@@ -17275,6 +22649,14 @@ export const SqlAssessmentV2OperationsListByGroup =
     outputSchema: SqlAssessmentV2OperationsListByGroupOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2SummaryOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  summaryName: string;
+}
 export const SqlAssessmentV2SummaryOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17289,11 +22671,22 @@ export const SqlAssessmentV2SummaryOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries/{summaryName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2SummaryOperationsGetInput =
-  typeof SqlAssessmentV2SummaryOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2SummaryOperationsGetInput>;
 
 // Output Schema
+export interface SqlAssessmentV2SummaryOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlAssessmentV2SummaryOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17313,9 +22706,7 @@ export const SqlAssessmentV2SummaryOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlAssessmentV2SummaryOperationsGetOutput =
-  typeof SqlAssessmentV2SummaryOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2SummaryOperationsGetOutput>;
 
 // The operation
 /**
@@ -17335,6 +22726,13 @@ export const SqlAssessmentV2SummaryOperationsGet =
     outputSchema: SqlAssessmentV2SummaryOperationsGetOutput,
   }));
 // Input Schema
+export interface SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17348,11 +22746,25 @@ export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input =
-  typeof SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Input>;
 
 // Output Schema
+export interface SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17387,9 +22799,7 @@ export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output =
-  typeof SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output>;
 
 // The operation
 /**
@@ -17408,6 +22818,13 @@ export const SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2 =
     outputSchema: SqlAssessmentV2SummaryOperationsListBySqlAssessmentV2Output,
   }));
 // Input Schema
+export interface SqlAvailabilityGroupsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  sqlAvailabilityGroupName: string;
+}
 export const SqlAvailabilityGroupsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17421,11 +22838,22 @@ export const SqlAvailabilityGroupsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlAvailabilityGroups/{sqlAvailabilityGroupName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlAvailabilityGroupsControllerGetInput =
-  typeof SqlAvailabilityGroupsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlAvailabilityGroupsControllerGetInput>;
 
 // Output Schema
+export interface SqlAvailabilityGroupsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlAvailabilityGroupsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17445,9 +22873,7 @@ export const SqlAvailabilityGroupsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlAvailabilityGroupsControllerGetOutput =
-  typeof SqlAvailabilityGroupsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlAvailabilityGroupsControllerGetOutput>;
 
 // The operation
 /**
@@ -17466,6 +22892,16 @@ export const SqlAvailabilityGroupsControllerGet =
     outputSchema: SqlAvailabilityGroupsControllerGetOutput,
   }));
 // Input Schema
+export interface SqlAvailabilityGroupsControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const SqlAvailabilityGroupsControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17482,11 +22918,25 @@ export const SqlAvailabilityGroupsControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlAvailabilityGroups",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlAvailabilityGroupsControllerListBySqlSiteInput =
-  typeof SqlAvailabilityGroupsControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlAvailabilityGroupsControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlAvailabilityGroupsControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlAvailabilityGroupsControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17521,9 +22971,7 @@ export const SqlAvailabilityGroupsControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlAvailabilityGroupsControllerListBySqlSiteOutput =
-  typeof SqlAvailabilityGroupsControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlAvailabilityGroupsControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -17545,6 +22993,22 @@ export const SqlAvailabilityGroupsControllerListBySqlSite =
     outputSchema: SqlAvailabilityGroupsControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlCollectorOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const SqlCollectorOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17572,11 +23036,22 @@ export const SqlCollectorOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlCollectorOperationsCreateInput =
-  typeof SqlCollectorOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlCollectorOperationsCreateInput>;
 
 // Output Schema
+export interface SqlCollectorOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlCollectorOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17596,9 +23071,7 @@ export const SqlCollectorOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlCollectorOperationsCreateOutput =
-  typeof SqlCollectorOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlCollectorOperationsCreateOutput>;
 
 // The operation
 /**
@@ -17616,6 +23089,12 @@ export const SqlCollectorOperationsCreate =
     outputSchema: SqlCollectorOperationsCreateOutput,
   }));
 // Input Schema
+export interface SqlCollectorOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+}
 export const SqlCollectorOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17628,15 +23107,12 @@ export const SqlCollectorOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlCollectorOperationsDeleteInput =
-  typeof SqlCollectorOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlCollectorOperationsDeleteInput>;
 
 // Output Schema
+export type SqlCollectorOperationsDeleteOutput = void;
 export const SqlCollectorOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlCollectorOperationsDeleteOutput =
-  typeof SqlCollectorOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlCollectorOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -17654,6 +23130,12 @@ export const SqlCollectorOperationsDelete =
     outputSchema: SqlCollectorOperationsDeleteOutput,
   }));
 // Input Schema
+export interface SqlCollectorOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+}
 export const SqlCollectorOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17666,11 +23148,22 @@ export const SqlCollectorOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlCollectorOperationsGetInput =
-  typeof SqlCollectorOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<SqlCollectorOperationsGetInput>;
 
 // Output Schema
+export interface SqlCollectorOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlCollectorOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17690,9 +23183,7 @@ export const SqlCollectorOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlCollectorOperationsGetOutput =
-  typeof SqlCollectorOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlCollectorOperationsGetOutput>;
 
 // The operation
 /**
@@ -17711,6 +23202,11 @@ export const SqlCollectorOperationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlCollectorOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const SqlCollectorOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17722,11 +23218,25 @@ export const SqlCollectorOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type SqlCollectorOperationsListByAssessmentProjectInput =
-  typeof SqlCollectorOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<SqlCollectorOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface SqlCollectorOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlCollectorOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17761,9 +23271,7 @@ export const SqlCollectorOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlCollectorOperationsListByAssessmentProjectOutput =
-  typeof SqlCollectorOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<SqlCollectorOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -17780,6 +23288,13 @@ export const SqlCollectorOperationsListByAssessmentProject =
     outputSchema: SqlCollectorOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface SqlDatabasesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  sqlDatabaseName: string;
+}
 export const SqlDatabasesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17793,11 +23308,22 @@ export const SqlDatabasesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlDatabases/{sqlDatabaseName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDatabasesControllerGetInput =
-  typeof SqlDatabasesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlDatabasesControllerGetInput>;
 
 // Output Schema
+export interface SqlDatabasesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlDatabasesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17817,9 +23343,7 @@ export const SqlDatabasesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlDatabasesControllerGetOutput =
-  typeof SqlDatabasesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlDatabasesControllerGetOutput>;
 
 // The operation
 /**
@@ -17839,6 +23363,16 @@ export const SqlDatabasesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlDatabasesControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const SqlDatabasesControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17855,11 +23389,25 @@ export const SqlDatabasesControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlDatabases",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDatabasesControllerListBySqlSiteInput =
-  typeof SqlDatabasesControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlDatabasesControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlDatabasesControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlDatabasesControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -17894,9 +23442,7 @@ export const SqlDatabasesControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlDatabasesControllerListBySqlSiteOutput =
-  typeof SqlDatabasesControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlDatabasesControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -17918,6 +23464,24 @@ export const SqlDatabasesControllerListBySqlSite =
     outputSchema: SqlDatabasesControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlDiscoverySiteDataSourceControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  discoverySiteDataSourceName: string;
+  properties?: {
+    discoverySiteId?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const SqlDiscoverySiteDataSourceControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -17947,11 +23511,22 @@ export const SqlDiscoverySiteDataSourceControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDiscoverySiteDataSourceControllerCreateInput =
-  typeof SqlDiscoverySiteDataSourceControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerCreateInput>;
 
 // Output Schema
+export interface SqlDiscoverySiteDataSourceControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlDiscoverySiteDataSourceControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -17971,9 +23546,7 @@ export const SqlDiscoverySiteDataSourceControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlDiscoverySiteDataSourceControllerCreateOutput =
-  typeof SqlDiscoverySiteDataSourceControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerCreateOutput>;
 
 // The operation
 /**
@@ -17992,6 +23565,13 @@ export const SqlDiscoverySiteDataSourceControllerCreate =
     outputSchema: SqlDiscoverySiteDataSourceControllerCreateOutput,
   }));
 // Input Schema
+export interface SqlDiscoverySiteDataSourceControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  discoverySiteDataSourceName: string;
+}
 export const SqlDiscoverySiteDataSourceControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18005,15 +23585,12 @@ export const SqlDiscoverySiteDataSourceControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDiscoverySiteDataSourceControllerDeleteInput =
-  typeof SqlDiscoverySiteDataSourceControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerDeleteInput>;
 
 // Output Schema
+export type SqlDiscoverySiteDataSourceControllerDeleteOutput = void;
 export const SqlDiscoverySiteDataSourceControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlDiscoverySiteDataSourceControllerDeleteOutput =
-  typeof SqlDiscoverySiteDataSourceControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerDeleteOutput>;
 
 // The operation
 /**
@@ -18032,6 +23609,13 @@ export const SqlDiscoverySiteDataSourceControllerDelete =
     outputSchema: SqlDiscoverySiteDataSourceControllerDeleteOutput,
   }));
 // Input Schema
+export interface SqlDiscoverySiteDataSourceControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  discoverySiteDataSourceName: string;
+}
 export const SqlDiscoverySiteDataSourceControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18045,11 +23629,22 @@ export const SqlDiscoverySiteDataSourceControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDiscoverySiteDataSourceControllerGetInput =
-  typeof SqlDiscoverySiteDataSourceControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerGetInput>;
 
 // Output Schema
+export interface SqlDiscoverySiteDataSourceControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlDiscoverySiteDataSourceControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18069,9 +23664,7 @@ export const SqlDiscoverySiteDataSourceControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlDiscoverySiteDataSourceControllerGetOutput =
-  typeof SqlDiscoverySiteDataSourceControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerGetOutput>;
 
 // The operation
 /**
@@ -18090,6 +23683,12 @@ export const SqlDiscoverySiteDataSourceControllerGet =
     outputSchema: SqlDiscoverySiteDataSourceControllerGetOutput,
   }));
 // Input Schema
+export interface SqlDiscoverySiteDataSourceControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18102,11 +23701,25 @@ export const SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlDiscoverySiteDataSourceControllerListBySqlSiteInput =
-  typeof SqlDiscoverySiteDataSourceControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18141,9 +23754,7 @@ export const SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput =
-  typeof SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -18161,6 +23772,13 @@ export const SqlDiscoverySiteDataSourceControllerListBySqlSite =
     outputSchema: SqlDiscoverySiteDataSourceControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlJobsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  jobName: string;
+}
 export const SqlJobsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18174,10 +23792,22 @@ export const SqlJobsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/jobs/{jobName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlJobsControllerGetInput = typeof SqlJobsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlJobsControllerGetInput>;
 
 // Output Schema
+export interface SqlJobsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlJobsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18197,8 +23827,7 @@ export const SqlJobsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlJobsControllerGetOutput = typeof SqlJobsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlJobsControllerGetOutput>;
 
 // The operation
 /**
@@ -18220,6 +23849,12 @@ export const SqlJobsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlJobsControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlJobsControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18232,11 +23867,25 @@ export const SqlJobsControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/jobs",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlJobsControllerListBySqlSiteInput =
-  typeof SqlJobsControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlJobsControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlJobsControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlJobsControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18271,9 +23920,7 @@ export const SqlJobsControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlJobsControllerListBySqlSiteOutput =
-  typeof SqlJobsControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlJobsControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -18293,6 +23940,13 @@ export const SqlJobsControllerListBySqlSite =
     outputSchema: SqlJobsControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlOperationsStatusControllerGetSqlOperationStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  operationStatusName: string;
+}
 export const SqlOperationsStatusControllerGetSqlOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18306,11 +23960,18 @@ export const SqlOperationsStatusControllerGetSqlOperationStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/operationsStatus/{operationStatusName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlOperationsStatusControllerGetSqlOperationStatusInput =
-  typeof SqlOperationsStatusControllerGetSqlOperationStatusInput.Type;
+  ) as unknown as Schema.Codec<SqlOperationsStatusControllerGetSqlOperationStatusInput>;
 
 // Output Schema
+export interface SqlOperationsStatusControllerGetSqlOperationStatusOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  properties?: { result?: string };
+}
 export const SqlOperationsStatusControllerGetSqlOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18329,9 +23990,7 @@ export const SqlOperationsStatusControllerGetSqlOperationStatusOutput =
         result: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlOperationsStatusControllerGetSqlOperationStatusOutput =
-  typeof SqlOperationsStatusControllerGetSqlOperationStatusOutput.Type;
+  }) as unknown as Schema.Codec<SqlOperationsStatusControllerGetSqlOperationStatusOutput>;
 
 // The operation
 /**
@@ -18350,6 +24009,13 @@ export const SqlOperationsStatusControllerGetSqlOperationStatus =
     outputSchema: SqlOperationsStatusControllerGetSqlOperationStatusOutput,
   }));
 // Input Schema
+export interface SqlRunAsAccountsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  accountName: string;
+}
 export const SqlRunAsAccountsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18363,11 +24029,22 @@ export const SqlRunAsAccountsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/runAsAccounts/{accountName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlRunAsAccountsControllerGetInput =
-  typeof SqlRunAsAccountsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlRunAsAccountsControllerGetInput>;
 
 // Output Schema
+export interface SqlRunAsAccountsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlRunAsAccountsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18387,9 +24064,7 @@ export const SqlRunAsAccountsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlRunAsAccountsControllerGetOutput =
-  typeof SqlRunAsAccountsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlRunAsAccountsControllerGetOutput>;
 
 // The operation
 /**
@@ -18408,6 +24083,12 @@ export const SqlRunAsAccountsControllerGet =
     outputSchema: SqlRunAsAccountsControllerGetOutput,
   }));
 // Input Schema
+export interface SqlRunAsAccountsControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlRunAsAccountsControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18420,11 +24101,25 @@ export const SqlRunAsAccountsControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/runAsAccounts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlRunAsAccountsControllerListBySqlSiteInput =
-  typeof SqlRunAsAccountsControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlRunAsAccountsControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlRunAsAccountsControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlRunAsAccountsControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18459,9 +24154,7 @@ export const SqlRunAsAccountsControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlRunAsAccountsControllerListBySqlSiteOutput =
-  typeof SqlRunAsAccountsControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlRunAsAccountsControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -18479,6 +24172,13 @@ export const SqlRunAsAccountsControllerListBySqlSite =
     outputSchema: SqlRunAsAccountsControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlServersControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  sqlServerName: string;
+}
 export const SqlServersControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18492,11 +24192,22 @@ export const SqlServersControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers/{sqlServerName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlServersControllerGetInput =
-  typeof SqlServersControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlServersControllerGetInput>;
 
 // Output Schema
+export interface SqlServersControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServersControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18516,9 +24227,7 @@ export const SqlServersControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServersControllerGetOutput =
-  typeof SqlServersControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlServersControllerGetOutput>;
 
 // The operation
 /**
@@ -18538,6 +24247,16 @@ export const SqlServersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlServersControllerListBySqlSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const SqlServersControllerListBySqlSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18554,11 +24273,25 @@ export const SqlServersControllerListBySqlSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlServersControllerListBySqlSiteInput =
-  typeof SqlServersControllerListBySqlSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlServersControllerListBySqlSiteInput>;
 
 // Output Schema
+export interface SqlServersControllerListBySqlSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlServersControllerListBySqlSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -18593,9 +24326,7 @@ export const SqlServersControllerListBySqlSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlServersControllerListBySqlSiteOutput =
-  typeof SqlServersControllerListBySqlSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlServersControllerListBySqlSiteOutput>;
 
 // The operation
 /**
@@ -18617,6 +24348,84 @@ export const SqlServersControllerListBySqlSite =
     outputSchema: SqlServersControllerListBySqlSiteOutput,
   }));
 // Input Schema
+export interface SqlServersControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  sqlServerName: string;
+  properties?: {
+    numberOfAgDatabases?: number;
+    sqlFciProperties?: {
+      state?:
+        | "Unknown"
+        | "Inherited"
+        | "Initializing"
+        | "Online"
+        | "Offline"
+        | "Failed"
+        | "Pending"
+        | "OnlinePending"
+        | "OfflinePending";
+      networkName?: string;
+      isMultiSubnet?: boolean;
+      sharedDiskCount?: number;
+    };
+    productSupportStatus?: {
+      currentVersion?: string;
+      esuStatus?: "Unknown" | "Active" | "InActive";
+      supportStatus?: "Unknown" | "Mainstream" | "Extended";
+      supportEndDate?: string;
+      esuYear?:
+        | "Unknown"
+        | "FirstYear"
+        | "SecondYear"
+        | "ThirdYear"
+        | "UpgradeYear";
+    };
+    version?: string;
+    numberOfUserDatabases?: number;
+    sumOfUserDatabasesSizeInMb?: number;
+    tempDbSizeInMb?: number;
+    maxServerMemoryInUseInMb?: number;
+    visibleOnlineCoreCount?: number;
+    numOfLogins?: number;
+    physicalCpuCount?: number;
+    logicalCpuCount?: number;
+    engineEdition?: string;
+    edition?: string;
+    isHighAvailabilityEnabled?: boolean;
+    isClustered?: boolean;
+    hyperthreadRatio?: number;
+    sqlStartTime?: string;
+    runAsAccountId?: string;
+    hydratedRunAsAccountId?: string;
+    hostName?: string;
+    sqlServerName?: string;
+    portNumber?: number;
+    tags?: Record<string, unknown>;
+    isDeleted?: boolean;
+    createdTimestamp?: string;
+    updatedTimestamp?: string;
+    status?:
+      | "Unknown"
+      | "ContinuePending"
+      | "Paused"
+      | "PausePending"
+      | "Running"
+      | "StartPending"
+      | "Stopped"
+      | "StopPending";
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const SqlServersControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18723,11 +24532,22 @@ export const SqlServersControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers/{sqlServerName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlServersControllerUpdateInput =
-  typeof SqlServersControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlServersControllerUpdateInput>;
 
 // Output Schema
+export interface SqlServersControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlServersControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18747,9 +24567,7 @@ export const SqlServersControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlServersControllerUpdateOutput =
-  typeof SqlServersControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlServersControllerUpdateOutput>;
 
 // The operation
 /**
@@ -18769,6 +24587,42 @@ export const SqlServersControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  properties?: {
+    siteAppliancePropertiesCollection?: {
+      servicePrincipalIdentityDetails?: {
+        tenantId?: string;
+        applicationId?: string;
+        objectId?: string;
+        audience?: string;
+        aadAuthority?: string;
+        rawCertData?: string;
+      };
+      agentDetails?: {
+        id?: string;
+        version?: string;
+        lastHeartBeatUtc?: string;
+        keyVaultUri?: string;
+        keyVaultId?: string;
+      };
+      applianceName?: string;
+    }[];
+    discoveryScenario?: "Migrate" | "DR";
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const SqlSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18824,11 +24678,22 @@ export const SqlSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerCreateInput =
-  typeof SqlSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerCreateInput>;
 
 // Output Schema
+export interface SqlSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -18848,9 +24713,7 @@ export const SqlSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlSitesControllerCreateOutput =
-  typeof SqlSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -18869,6 +24732,12 @@ export const SqlSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18881,15 +24750,12 @@ export const SqlSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerDeleteInput =
-  typeof SqlSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerDeleteInput>;
 
 // Output Schema
+export type SqlSitesControllerDeleteOutput = void;
 export const SqlSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SqlSitesControllerDeleteOutput =
-  typeof SqlSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -18908,6 +24774,13 @@ export const SqlSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  applianceName?: string;
+}
 export const SqlSitesControllerErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18921,11 +24794,22 @@ export const SqlSitesControllerErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/errorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerErrorSummaryInput =
-  typeof SqlSitesControllerErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerErrorSummaryInput>;
 
 // Output Schema
+export interface SqlSitesControllerErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const SqlSitesControllerErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -18940,9 +24824,7 @@ export const SqlSitesControllerErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlSitesControllerErrorSummaryOutput =
-  typeof SqlSitesControllerErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerErrorSummaryOutput>;
 
 // The operation
 /**
@@ -18960,6 +24842,12 @@ export const SqlSitesControllerErrorSummary =
     outputSchema: SqlSitesControllerErrorSummaryOutput,
   }));
 // Input Schema
+export interface SqlSitesControllerExportSqlServerErrorsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlSitesControllerExportSqlServerErrorsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -18972,15 +24860,12 @@ export const SqlSitesControllerExportSqlServerErrorsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServerErrors",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerExportSqlServerErrorsInput =
-  typeof SqlSitesControllerExportSqlServerErrorsInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerExportSqlServerErrorsInput>;
 
 // Output Schema
+export type SqlSitesControllerExportSqlServerErrorsOutput = unknown;
 export const SqlSitesControllerExportSqlServerErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SqlSitesControllerExportSqlServerErrorsOutput =
-  typeof SqlSitesControllerExportSqlServerErrorsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServerErrorsOutput>;
 
 // The operation
 /**
@@ -18998,6 +24883,14 @@ export const SqlSitesControllerExportSqlServerErrors =
     outputSchema: SqlSitesControllerExportSqlServerErrorsOutput,
   }));
 // Input Schema
+export interface SqlSitesControllerExportSqlServersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  applianceName?: string;
+  filter?: string;
+}
 export const SqlSitesControllerExportSqlServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19012,15 +24905,12 @@ export const SqlSitesControllerExportSqlServersInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerExportSqlServersInput =
-  typeof SqlSitesControllerExportSqlServersInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerExportSqlServersInput>;
 
 // Output Schema
+export type SqlSitesControllerExportSqlServersOutput = unknown;
 export const SqlSitesControllerExportSqlServersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SqlSitesControllerExportSqlServersOutput =
-  typeof SqlSitesControllerExportSqlServersOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerExportSqlServersOutput>;
 
 // The operation
 /**
@@ -19038,6 +24928,12 @@ export const SqlSitesControllerExportSqlServers =
     outputSchema: SqlSitesControllerExportSqlServersOutput,
   }));
 // Input Schema
+export interface SqlSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19050,10 +24946,22 @@ export const SqlSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerGetInput = typeof SqlSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerGetInput>;
 
 // Output Schema
+export interface SqlSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19073,9 +24981,7 @@ export const SqlSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlSitesControllerGetOutput =
-  typeof SqlSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -19094,6 +25000,11 @@ export const SqlSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerListByMasterSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const SqlSitesControllerListByMasterSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19105,11 +25016,25 @@ export const SqlSitesControllerListByMasterSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerListByMasterSiteInput =
-  typeof SqlSitesControllerListByMasterSiteInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerListByMasterSiteInput>;
 
 // Output Schema
+export interface SqlSitesControllerListByMasterSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SqlSitesControllerListByMasterSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19144,9 +25069,7 @@ export const SqlSitesControllerListByMasterSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SqlSitesControllerListByMasterSiteOutput =
-  typeof SqlSitesControllerListByMasterSiteOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerListByMasterSiteOutput>;
 
 // The operation
 /**
@@ -19163,6 +25086,13 @@ export const SqlSitesControllerListByMasterSite =
     outputSchema: SqlSitesControllerListByMasterSiteOutput,
   }));
 // Input Schema
+export interface SqlSitesControllerRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  applianceName?: string;
+}
 export const SqlSitesControllerRefreshInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19176,15 +25106,12 @@ export const SqlSitesControllerRefreshInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/refresh",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerRefreshInput =
-  typeof SqlSitesControllerRefreshInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerRefreshInput>;
 
 // Output Schema
+export type SqlSitesControllerRefreshOutput = unknown;
 export const SqlSitesControllerRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type SqlSitesControllerRefreshOutput =
-  typeof SqlSitesControllerRefreshOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<SqlSitesControllerRefreshOutput>;
 
 // The operation
 /**
@@ -19203,6 +25130,12 @@ export const SqlSitesControllerRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+}
 export const SqlSitesControllerSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19215,19 +25148,20 @@ export const SqlSitesControllerSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/summary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerSummaryInput =
-  typeof SqlSitesControllerSummaryInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerSummaryInput>;
 
 // Output Schema
+export interface SqlSitesControllerSummaryOutput {
+  serverCount?: number;
+  databaseCount?: number;
+  runAsAccountCount?: number;
+}
 export const SqlSitesControllerSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     serverCount: Schema.optional(Schema.Number),
     databaseCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
-  });
-export type SqlSitesControllerSummaryOutput =
-  typeof SqlSitesControllerSummaryOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerSummaryOutput>;
 
 // The operation
 /**
@@ -19246,6 +25180,33 @@ export const SqlSitesControllerSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SqlSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  sqlSiteName: string;
+  properties?: {
+    siteAppliancePropertiesCollection?: {
+      servicePrincipalIdentityDetails?: {
+        tenantId?: string;
+        applicationId?: string;
+        objectId?: string;
+        audience?: string;
+        aadAuthority?: string;
+        rawCertData?: string;
+      };
+      agentDetails?: {
+        id?: string;
+        version?: string;
+        lastHeartBeatUtc?: string;
+        keyVaultUri?: string;
+        keyVaultId?: string;
+      };
+      applianceName?: string;
+    }[];
+    discoveryScenario?: "Migrate" | "DR";
+  };
+}
 export const SqlSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19289,11 +25250,22 @@ export const SqlSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type SqlSitesControllerUpdateInput =
-  typeof SqlSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<SqlSitesControllerUpdateInput>;
 
 // Output Schema
+export interface SqlSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SqlSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19313,9 +25285,7 @@ export const SqlSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SqlSitesControllerUpdateOutput =
-  typeof SqlSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SqlSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -19334,6 +25304,13 @@ export const SqlSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface TomcatWebApplicationsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webApplicationName: string;
+}
 export const TomcatWebApplicationsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19347,11 +25324,22 @@ export const TomcatWebApplicationsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications/{webApplicationName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type TomcatWebApplicationsControllerGetInput =
-  typeof TomcatWebApplicationsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<TomcatWebApplicationsControllerGetInput>;
 
 // Output Schema
+export interface TomcatWebApplicationsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TomcatWebApplicationsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19371,9 +25359,7 @@ export const TomcatWebApplicationsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TomcatWebApplicationsControllerGetOutput =
-  typeof TomcatWebApplicationsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<TomcatWebApplicationsControllerGetOutput>;
 
 // The operation
 /**
@@ -19392,6 +25378,16 @@ export const TomcatWebApplicationsControllerGet =
     outputSchema: TomcatWebApplicationsControllerGetOutput,
   }));
 // Input Schema
+export interface TomcatWebApplicationsControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const TomcatWebApplicationsControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19408,11 +25404,25 @@ export const TomcatWebApplicationsControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type TomcatWebApplicationsControllerListByWebAppSiteInput =
-  typeof TomcatWebApplicationsControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<TomcatWebApplicationsControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface TomcatWebApplicationsControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TomcatWebApplicationsControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19447,9 +25457,7 @@ export const TomcatWebApplicationsControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TomcatWebApplicationsControllerListByWebAppSiteOutput =
-  typeof TomcatWebApplicationsControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<TomcatWebApplicationsControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -19471,6 +25479,13 @@ export const TomcatWebApplicationsControllerListByWebAppSite =
     outputSchema: TomcatWebApplicationsControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface TomcatWebApplicationsControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webApplicationName: string;
+}
 export const TomcatWebApplicationsControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19484,11 +25499,22 @@ export const TomcatWebApplicationsControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications/{webApplicationName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type TomcatWebApplicationsControllerUpdateInput =
-  typeof TomcatWebApplicationsControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<TomcatWebApplicationsControllerUpdateInput>;
 
 // Output Schema
+export interface TomcatWebApplicationsControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TomcatWebApplicationsControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19508,9 +25534,7 @@ export const TomcatWebApplicationsControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TomcatWebApplicationsControllerUpdateOutput =
-  typeof TomcatWebApplicationsControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TomcatWebApplicationsControllerUpdateOutput>;
 
 // The operation
 /**
@@ -19529,6 +25553,13 @@ export const TomcatWebApplicationsControllerUpdate =
     outputSchema: TomcatWebApplicationsControllerUpdateOutput,
   }));
 // Input Schema
+export interface TomcatWebServersControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webServerName: string;
+}
 export const TomcatWebServersControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19542,11 +25573,22 @@ export const TomcatWebServersControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebServers/{webServerName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type TomcatWebServersControllerGetInput =
-  typeof TomcatWebServersControllerGetInput.Type;
+  ) as unknown as Schema.Codec<TomcatWebServersControllerGetInput>;
 
 // Output Schema
+export interface TomcatWebServersControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TomcatWebServersControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19566,9 +25608,7 @@ export const TomcatWebServersControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TomcatWebServersControllerGetOutput =
-  typeof TomcatWebServersControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<TomcatWebServersControllerGetOutput>;
 
 // The operation
 /**
@@ -19587,6 +25627,16 @@ export const TomcatWebServersControllerGet =
     outputSchema: TomcatWebServersControllerGetOutput,
   }));
 // Input Schema
+export interface TomcatWebServersControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const TomcatWebServersControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19603,11 +25653,25 @@ export const TomcatWebServersControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebServers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type TomcatWebServersControllerListByWebAppSiteInput =
-  typeof TomcatWebServersControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<TomcatWebServersControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface TomcatWebServersControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TomcatWebServersControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19642,9 +25706,7 @@ export const TomcatWebServersControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TomcatWebServersControllerListByWebAppSiteOutput =
-  typeof TomcatWebServersControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<TomcatWebServersControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -19666,6 +25728,54 @@ export const TomcatWebServersControllerListByWebAppSite =
     outputSchema: TomcatWebServersControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface VcenterControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  vcenterName: string;
+  properties?: {
+    runAsAccountId?: string;
+    errors?: {
+      message?: string;
+      messageParameters?: Record<string, string>;
+      applianceName?: string;
+      id?: number;
+      code?: string;
+      possibleCauses?: string;
+      recommendedAction?: string;
+      severity?: string;
+      summaryMessage?: string;
+      source?:
+        | "RefreshFabricLayout"
+        | "RefreshFabricLayoutGuest"
+        | "RefreshFabricLayoutDependencyMap";
+      updatedTimeStamp?: string;
+      runAsAccountId?: string;
+      discoveryScope?:
+        | "AppsAndRoles"
+        | "DependencyMap"
+        | "StaticData"
+        | "SQLServerConnectionInfo"
+        | "DiscoveryTargets";
+    }[];
+    createdTimestamp?: string;
+    updatedTimestamp?: string;
+    fqdn?: string;
+    port?: string;
+    version?: string;
+    perfStatisticsLevel?: string;
+    instanceUuid?: string;
+    friendlyName?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const VcenterControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19737,11 +25847,22 @@ export const VcenterControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VcenterControllerCreateInput =
-  typeof VcenterControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<VcenterControllerCreateInput>;
 
 // Output Schema
+export interface VcenterControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VcenterControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19761,9 +25882,7 @@ export const VcenterControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VcenterControllerCreateOutput =
-  typeof VcenterControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<VcenterControllerCreateOutput>;
 
 // The operation
 /**
@@ -19782,6 +25901,12 @@ export const VcenterControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VcenterControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  vcenterName: string;
+}
 export const VcenterControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19794,15 +25919,12 @@ export const VcenterControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VcenterControllerDeleteInput =
-  typeof VcenterControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<VcenterControllerDeleteInput>;
 
 // Output Schema
+export type VcenterControllerDeleteOutput = void;
 export const VcenterControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VcenterControllerDeleteOutput =
-  typeof VcenterControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VcenterControllerDeleteOutput>;
 
 // The operation
 /**
@@ -19821,6 +25943,12 @@ export const VcenterControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VcenterControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  vcenterName: string;
+}
 export const VcenterControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19833,10 +25961,22 @@ export const VcenterControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VcenterControllerGetInput = typeof VcenterControllerGetInput.Type;
+  ) as unknown as Schema.Codec<VcenterControllerGetInput>;
 
 // Output Schema
+export interface VcenterControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VcenterControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -19856,8 +25996,7 @@ export const VcenterControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VcenterControllerGetOutput = typeof VcenterControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<VcenterControllerGetOutput>;
 
 // The operation
 /**
@@ -19876,6 +26015,12 @@ export const VcenterControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VcenterControllerListByVmwareSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  filter?: string;
+}
 export const VcenterControllerListByVmwareSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -19888,11 +26033,25 @@ export const VcenterControllerListByVmwareSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VcenterControllerListByVmwareSiteInput =
-  typeof VcenterControllerListByVmwareSiteInput.Type;
+  ) as unknown as Schema.Codec<VcenterControllerListByVmwareSiteInput>;
 
 // Output Schema
+export interface VcenterControllerListByVmwareSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VcenterControllerListByVmwareSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -19927,9 +26086,7 @@ export const VcenterControllerListByVmwareSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VcenterControllerListByVmwareSiteOutput =
-  typeof VcenterControllerListByVmwareSiteOutput.Type;
+  }) as unknown as Schema.Codec<VcenterControllerListByVmwareSiteOutput>;
 
 // The operation
 /**
@@ -19947,21 +26104,64 @@ export const VcenterControllerListByVmwareSite =
     outputSchema: VcenterControllerListByVmwareSiteOutput,
   }));
 // Input Schema
+export interface VirtualDesktopUserControllerGetVirtualDesktopUserInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  virtualDesktopUserName: string;
+}
 export const VirtualDesktopUserControllerGetVirtualDesktopUserInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    virtualDesktopUserName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers/{virtualDesktopUserName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type VirtualDesktopUserControllerGetVirtualDesktopUserInput =
-  typeof VirtualDesktopUserControllerGetVirtualDesktopUserInput.Type;
+  ) as unknown as Schema.Codec<VirtualDesktopUserControllerGetVirtualDesktopUserInput>;
 
 // Output Schema
+export interface VirtualDesktopUserControllerGetVirtualDesktopUserOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    assessmentData?: {
+      lastUpdatedTime?: string;
+      userId?: string;
+      id?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      userName?: string;
+      userAccount?: string;
+      country?: string;
+      state?: string;
+      city?: string;
+      devicesUsed?: string[];
+      virtualization?: string;
+      totalApplicationsCount?: number;
+      criticalApplications?: string[];
+      osUsed?: string[];
+      multiUserWindows10?: boolean;
+      windows7?: boolean;
+      persona?: string;
+      assessmentId?: string;
+      targetLocation?: string;
+      isReadyForMigration?: boolean;
+      targetAzureVmSize?: string;
+      targetStorageType?: string;
+      activeWeeklyHours?: number;
+      userExperienceScore?: number;
+      egressBandwidthWeekly?: number;
+      extendedInfo?: Record<string, string>;
+    }[];
+    lastUpdatedTime?: string;
+  };
+}
 export const VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20009,9 +26209,7 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
-  typeof VirtualDesktopUserControllerGetVirtualDesktopUserOutput.Type;
+  }) as unknown as Schema.Codec<VirtualDesktopUserControllerGetVirtualDesktopUserOutput>;
 
 // The operation
 /**
@@ -20019,6 +26217,8 @@ export type VirtualDesktopUserControllerGetVirtualDesktopUserOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param virtualDesktopUserName - The ARM name of the webserver to be fetched.
  * @param api-version - The API version to use for this operation.
  */
 export const VirtualDesktopUserControllerGetVirtualDesktopUser =
@@ -20027,21 +26227,69 @@ export const VirtualDesktopUserControllerGetVirtualDesktopUser =
     outputSchema: VirtualDesktopUserControllerGetVirtualDesktopUserOutput,
   }));
 // Input Schema
+export interface VirtualDesktopUserControllerListVirtualDesktopUsersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const VirtualDesktopUserControllerListVirtualDesktopUsersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers",
       apiVersion: "2023-01-01",
     }),
-  );
-export type VirtualDesktopUserControllerListVirtualDesktopUsersInput =
-  typeof VirtualDesktopUserControllerListVirtualDesktopUsersInput.Type;
+  ) as unknown as Schema.Codec<VirtualDesktopUserControllerListVirtualDesktopUsersInput>;
 
 // Output Schema
+export interface VirtualDesktopUserControllerListVirtualDesktopUsersOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      assessmentData?: {
+        lastUpdatedTime?: string;
+        userId?: string;
+        id?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        userName?: string;
+        userAccount?: string;
+        country?: string;
+        state?: string;
+        city?: string;
+        devicesUsed?: string[];
+        virtualization?: string;
+        totalApplicationsCount?: number;
+        criticalApplications?: string[];
+        osUsed?: string[];
+        multiUserWindows10?: boolean;
+        windows7?: boolean;
+        persona?: string;
+        assessmentId?: string;
+        targetLocation?: string;
+        isReadyForMigration?: boolean;
+        targetAzureVmSize?: string;
+        targetStorageType?: string;
+        activeWeeklyHours?: number;
+        userExperienceScore?: number;
+        egressBandwidthWeekly?: number;
+        extendedInfo?: Record<string, string>;
+      }[];
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -20096,9 +26344,7 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
-  typeof VirtualDesktopUserControllerListVirtualDesktopUsersOutput.Type;
+  }) as unknown as Schema.Codec<VirtualDesktopUserControllerListVirtualDesktopUsersOutput>;
 
 // The operation
 /**
@@ -20106,7 +26352,10 @@ export type VirtualDesktopUserControllerListVirtualDesktopUsersOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const VirtualDesktopUserControllerListVirtualDesktopUsers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -20114,6 +26363,22 @@ export const VirtualDesktopUserControllerListVirtualDesktopUsers =
     outputSchema: VirtualDesktopUserControllerListVirtualDesktopUsersOutput,
   }));
 // Input Schema
+export interface VmwareCollectorsOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  vmWareCollectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const VmwareCollectorsOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20141,11 +26406,22 @@ export const VmwareCollectorsOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type VmwareCollectorsOperationsCreateInput =
-  typeof VmwareCollectorsOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<VmwareCollectorsOperationsCreateInput>;
 
 // Output Schema
+export interface VmwareCollectorsOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmwareCollectorsOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20165,9 +26441,7 @@ export const VmwareCollectorsOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmwareCollectorsOperationsCreateOutput =
-  typeof VmwareCollectorsOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<VmwareCollectorsOperationsCreateOutput>;
 
 // The operation
 /**
@@ -20185,6 +26459,12 @@ export const VmwareCollectorsOperationsCreate =
     outputSchema: VmwareCollectorsOperationsCreateOutput,
   }));
 // Input Schema
+export interface VmwareCollectorsOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  vmWareCollectorName: string;
+}
 export const VmwareCollectorsOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20197,15 +26477,12 @@ export const VmwareCollectorsOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type VmwareCollectorsOperationsDeleteInput =
-  typeof VmwareCollectorsOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<VmwareCollectorsOperationsDeleteInput>;
 
 // Output Schema
+export type VmwareCollectorsOperationsDeleteOutput = void;
 export const VmwareCollectorsOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type VmwareCollectorsOperationsDeleteOutput =
-  typeof VmwareCollectorsOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VmwareCollectorsOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -20223,6 +26500,12 @@ export const VmwareCollectorsOperationsDelete =
     outputSchema: VmwareCollectorsOperationsDeleteOutput,
   }));
 // Input Schema
+export interface VmwareCollectorsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  vmWareCollectorName: string;
+}
 export const VmwareCollectorsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20235,11 +26518,22 @@ export const VmwareCollectorsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type VmwareCollectorsOperationsGetInput =
-  typeof VmwareCollectorsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<VmwareCollectorsOperationsGetInput>;
 
 // Output Schema
+export interface VmwareCollectorsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmwareCollectorsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20259,9 +26553,7 @@ export const VmwareCollectorsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmwareCollectorsOperationsGetOutput =
-  typeof VmwareCollectorsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<VmwareCollectorsOperationsGetOutput>;
 
 // The operation
 /**
@@ -20279,6 +26571,11 @@ export const VmwareCollectorsOperationsGet =
     outputSchema: VmwareCollectorsOperationsGetOutput,
   }));
 // Input Schema
+export interface VmwareCollectorsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const VmwareCollectorsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20290,11 +26587,25 @@ export const VmwareCollectorsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type VmwareCollectorsOperationsListByAssessmentProjectInput =
-  typeof VmwareCollectorsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<VmwareCollectorsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface VmwareCollectorsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmwareCollectorsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20329,9 +26640,7 @@ export const VmwareCollectorsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmwareCollectorsOperationsListByAssessmentProjectOutput =
-  typeof VmwareCollectorsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<VmwareCollectorsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -20348,6 +26657,12 @@ export const VmwareCollectorsOperationsListByAssessmentProject =
     outputSchema: VmwareCollectorsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface VmwareHostControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  hostName: string;
+}
 export const VmwareHostControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20360,11 +26675,22 @@ export const VmwareHostControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwareHostControllerGetInput =
-  typeof VmwareHostControllerGetInput.Type;
+  ) as unknown as Schema.Codec<VmwareHostControllerGetInput>;
 
 // Output Schema
+export interface VmwareHostControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmwareHostControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20384,9 +26710,7 @@ export const VmwareHostControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmwareHostControllerGetOutput =
-  typeof VmwareHostControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<VmwareHostControllerGetOutput>;
 
 // The operation
 /**
@@ -20405,6 +26729,11 @@ export const VmwareHostControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface VmwareHostControllerListByVmwareSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const VmwareHostControllerListByVmwareSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20416,11 +26745,25 @@ export const VmwareHostControllerListByVmwareSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/hosts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwareHostControllerListByVmwareSiteInput =
-  typeof VmwareHostControllerListByVmwareSiteInput.Type;
+  ) as unknown as Schema.Codec<VmwareHostControllerListByVmwareSiteInput>;
 
 // Output Schema
+export interface VmwareHostControllerListByVmwareSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmwareHostControllerListByVmwareSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20455,9 +26798,7 @@ export const VmwareHostControllerListByVmwareSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmwareHostControllerListByVmwareSiteOutput =
-  typeof VmwareHostControllerListByVmwareSiteOutput.Type;
+  }) as unknown as Schema.Codec<VmwareHostControllerListByVmwareSiteOutput>;
 
 // The operation
 /**
@@ -20474,6 +26815,12 @@ export const VmwareHostControllerListByVmwareSite =
     outputSchema: VmwareHostControllerListByVmwareSiteOutput,
   }));
 // Input Schema
+export interface VmwareOperationsStatusGetVmwareOperationStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  operationStatusName: string;
+}
 export const VmwareOperationsStatusGetVmwareOperationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20486,11 +26833,18 @@ export const VmwareOperationsStatusGetVmwareOperationStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/operationsStatus/{operationStatusName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwareOperationsStatusGetVmwareOperationStatusInput =
-  typeof VmwareOperationsStatusGetVmwareOperationStatusInput.Type;
+  ) as unknown as Schema.Codec<VmwareOperationsStatusGetVmwareOperationStatusInput>;
 
 // Output Schema
+export interface VmwareOperationsStatusGetVmwareOperationStatusOutput {
+  id?: string;
+  name?: string;
+  status?: string;
+  startTime?: string;
+  endTime?: string;
+  error?: { code?: string; message?: string };
+  properties?: { result?: string };
+}
 export const VmwareOperationsStatusGetVmwareOperationStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20509,9 +26863,7 @@ export const VmwareOperationsStatusGetVmwareOperationStatusOutput =
         result: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmwareOperationsStatusGetVmwareOperationStatusOutput =
-  typeof VmwareOperationsStatusGetVmwareOperationStatusOutput.Type;
+  }) as unknown as Schema.Codec<VmwareOperationsStatusGetVmwareOperationStatusOutput>;
 
 // The operation
 /**
@@ -20529,6 +26881,12 @@ export const VmwareOperationsStatusGetVmwareOperationStatus =
     outputSchema: VmwareOperationsStatusGetVmwareOperationStatusOutput,
   }));
 // Input Schema
+export interface VmwarePropertiesControllerUpdateDependencyMapStatusInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machines?: { machineId?: string; isDependencyMapToBeEnabled?: boolean }[];
+}
 export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20548,15 +26906,12 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwarePropertiesControllerUpdateDependencyMapStatusInput =
-  typeof VmwarePropertiesControllerUpdateDependencyMapStatusInput.Type;
+  ) as unknown as Schema.Codec<VmwarePropertiesControllerUpdateDependencyMapStatusInput>;
 
 // Output Schema
+export type VmwarePropertiesControllerUpdateDependencyMapStatusOutput = unknown;
 export const VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type VmwarePropertiesControllerUpdateDependencyMapStatusOutput =
-  typeof VmwarePropertiesControllerUpdateDependencyMapStatusOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateDependencyMapStatusOutput>;
 
 // The operation
 /**
@@ -20575,6 +26930,16 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatus =
     outputSchema: VmwarePropertiesControllerUpdateDependencyMapStatusOutput,
   }));
 // Input Schema
+export interface VmwarePropertiesControllerUpdatePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  value: {
+    machineArmId: string;
+    dependencyMapping: string;
+    tags: Record<string, string>;
+  }[];
+}
 export const VmwarePropertiesControllerUpdatePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20593,15 +26958,12 @@ export const VmwarePropertiesControllerUpdatePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwarePropertiesControllerUpdatePropertiesInput =
-  typeof VmwarePropertiesControllerUpdatePropertiesInput.Type;
+  ) as unknown as Schema.Codec<VmwarePropertiesControllerUpdatePropertiesInput>;
 
 // Output Schema
+export type VmwarePropertiesControllerUpdatePropertiesOutput = unknown;
 export const VmwarePropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type VmwarePropertiesControllerUpdatePropertiesOutput =
-  typeof VmwarePropertiesControllerUpdatePropertiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -20618,6 +26980,12 @@ export const VmwarePropertiesControllerUpdateProperties =
     outputSchema: VmwarePropertiesControllerUpdatePropertiesOutput,
   }));
 // Input Schema
+export interface VmwarePropertiesControllerUpdateRunAsAccountInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machines?: { machineId?: string; runAsAccountId?: string }[];
+}
 export const VmwarePropertiesControllerUpdateRunAsAccountInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20637,15 +27005,12 @@ export const VmwarePropertiesControllerUpdateRunAsAccountInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateRunAsAccount",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwarePropertiesControllerUpdateRunAsAccountInput =
-  typeof VmwarePropertiesControllerUpdateRunAsAccountInput.Type;
+  ) as unknown as Schema.Codec<VmwarePropertiesControllerUpdateRunAsAccountInput>;
 
 // Output Schema
+export type VmwarePropertiesControllerUpdateRunAsAccountOutput = unknown;
 export const VmwarePropertiesControllerUpdateRunAsAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type VmwarePropertiesControllerUpdateRunAsAccountOutput =
-  typeof VmwarePropertiesControllerUpdateRunAsAccountOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateRunAsAccountOutput>;
 
 // The operation
 /**
@@ -20663,6 +27028,12 @@ export const VmwarePropertiesControllerUpdateRunAsAccount =
     outputSchema: VmwarePropertiesControllerUpdateRunAsAccountOutput,
   }));
 // Input Schema
+export interface VmwarePropertiesControllerUpdateTagsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machines?: { machineId?: string; tags?: Record<string, string> }[];
+}
 export const VmwarePropertiesControllerUpdateTagsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20682,15 +27053,12 @@ export const VmwarePropertiesControllerUpdateTagsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateTags",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwarePropertiesControllerUpdateTagsInput =
-  typeof VmwarePropertiesControllerUpdateTagsInput.Type;
+  ) as unknown as Schema.Codec<VmwarePropertiesControllerUpdateTagsInput>;
 
 // Output Schema
+export type VmwarePropertiesControllerUpdateTagsOutput = unknown;
 export const VmwarePropertiesControllerUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type VmwarePropertiesControllerUpdateTagsOutput =
-  typeof VmwarePropertiesControllerUpdateTagsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<VmwarePropertiesControllerUpdateTagsOutput>;
 
 // The operation
 /**
@@ -20708,6 +27076,13 @@ export const VmwarePropertiesControllerUpdateTags =
     outputSchema: VmwarePropertiesControllerUpdateTagsOutput,
   }));
 // Input Schema
+export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+  default: "default";
+}
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20721,11 +27096,22 @@ export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/softwareInventories/{default}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput =
-  typeof VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput.Type;
+  ) as unknown as Schema.Codec<VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryInput>;
 
 // Output Schema
+export interface VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20745,9 +27131,7 @@ export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutpu
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput =
-  typeof VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput.Type;
+  }) as unknown as Schema.Codec<VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput>;
 
 // The operation
 /**
@@ -20768,6 +27152,12 @@ export const VmwareSoftwareInventoriesControllerGetMachineSoftwareInventory =
       VmwareSoftwareInventoriesControllerGetMachineSoftwareInventoryOutput,
   }));
 // Input Schema
+export interface VmwareSoftwareInventoriesControllerListByMachineResourceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  machineName: string;
+}
 export const VmwareSoftwareInventoriesControllerListByMachineResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20780,11 +27170,25 @@ export const VmwareSoftwareInventoriesControllerListByMachineResourceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/softwareinventories",
       apiVersion: "2023-06-06",
     }),
-  );
-export type VmwareSoftwareInventoriesControllerListByMachineResourceInput =
-  typeof VmwareSoftwareInventoriesControllerListByMachineResourceInput.Type;
+  ) as unknown as Schema.Codec<VmwareSoftwareInventoriesControllerListByMachineResourceInput>;
 
 // Output Schema
+export interface VmwareSoftwareInventoriesControllerListByMachineResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const VmwareSoftwareInventoriesControllerListByMachineResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20819,9 +27223,7 @@ export const VmwareSoftwareInventoriesControllerListByMachineResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type VmwareSoftwareInventoriesControllerListByMachineResourceOutput =
-  typeof VmwareSoftwareInventoriesControllerListByMachineResourceOutput.Type;
+  }) as unknown as Schema.Codec<VmwareSoftwareInventoriesControllerListByMachineResourceOutput>;
 
 // The operation
 /**
@@ -20840,6 +27242,12 @@ export const VmwareSoftwareInventoriesControllerListByMachineResource =
       VmwareSoftwareInventoriesControllerListByMachineResourceOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentOptionsOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  assessmentOptionsName: string;
+}
 export const WebAppAssessmentOptionsOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20852,11 +27260,22 @@ export const WebAppAssessmentOptionsOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions/{assessmentOptionsName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentOptionsOperationsGetInput =
-  typeof WebAppAssessmentOptionsOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentOptionsOperationsGetInput>;
 
 // Output Schema
+export interface WebAppAssessmentOptionsOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppAssessmentOptionsOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -20876,9 +27295,7 @@ export const WebAppAssessmentOptionsOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppAssessmentOptionsOperationsGetOutput =
-  typeof WebAppAssessmentOptionsOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentOptionsOperationsGetOutput>;
 
 // The operation
 /**
@@ -20896,6 +27313,11 @@ export const WebAppAssessmentOptionsOperationsGet =
     outputSchema: WebAppAssessmentOptionsOperationsGetOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentOptionsOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20907,11 +27329,25 @@ export const WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentOptionsOperationsListByAssessmentProjectInput =
-  typeof WebAppAssessmentOptionsOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentOptionsOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -20946,9 +27382,7 @@ export const WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput =
-  typeof WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -20966,6 +27400,23 @@ export const WebAppAssessmentOptionsOperationsListByAssessmentProject =
       WebAppAssessmentOptionsOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2OperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const WebAppAssessmentV2OperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -20994,11 +27445,22 @@ export const WebAppAssessmentV2OperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2OperationsCreateInput =
-  typeof WebAppAssessmentV2OperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2OperationsCreateInput>;
 
 // Output Schema
+export interface WebAppAssessmentV2OperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppAssessmentV2OperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21018,9 +27480,7 @@ export const WebAppAssessmentV2OperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppAssessmentV2OperationsCreateOutput =
-  typeof WebAppAssessmentV2OperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2OperationsCreateOutput>;
 
 // The operation
 /**
@@ -21039,6 +27499,13 @@ export const WebAppAssessmentV2OperationsCreate =
     outputSchema: WebAppAssessmentV2OperationsCreateOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2OperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const WebAppAssessmentV2OperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21052,15 +27519,12 @@ export const WebAppAssessmentV2OperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2OperationsDeleteInput =
-  typeof WebAppAssessmentV2OperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2OperationsDeleteInput>;
 
 // Output Schema
+export type WebAppAssessmentV2OperationsDeleteOutput = void;
 export const WebAppAssessmentV2OperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebAppAssessmentV2OperationsDeleteOutput =
-  typeof WebAppAssessmentV2OperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppAssessmentV2OperationsDeleteOutput>;
 
 // The operation
 /**
@@ -21079,6 +27543,13 @@ export const WebAppAssessmentV2OperationsDelete =
     outputSchema: WebAppAssessmentV2OperationsDeleteOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2OperationsDownloadUrlInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const WebAppAssessmentV2OperationsDownloadUrlInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21092,18 +27563,18 @@ export const WebAppAssessmentV2OperationsDownloadUrlInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2OperationsDownloadUrlInput =
-  typeof WebAppAssessmentV2OperationsDownloadUrlInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2OperationsDownloadUrlInput>;
 
 // Output Schema
+export interface WebAppAssessmentV2OperationsDownloadUrlOutput {
+  assessmentReportUrl: string;
+  expirationTime: string;
+}
 export const WebAppAssessmentV2OperationsDownloadUrlOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     assessmentReportUrl: Schema.String,
     expirationTime: Schema.String,
-  });
-export type WebAppAssessmentV2OperationsDownloadUrlOutput =
-  typeof WebAppAssessmentV2OperationsDownloadUrlOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2OperationsDownloadUrlOutput>;
 
 // The operation
 /**
@@ -21124,6 +27595,13 @@ export const WebAppAssessmentV2OperationsDownloadUrl =
     outputSchema: WebAppAssessmentV2OperationsDownloadUrlOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const WebAppAssessmentV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21137,11 +27615,22 @@ export const WebAppAssessmentV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2OperationsGetInput =
-  typeof WebAppAssessmentV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2OperationsGetInput>;
 
 // Output Schema
+export interface WebAppAssessmentV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppAssessmentV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21161,9 +27650,7 @@ export const WebAppAssessmentV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppAssessmentV2OperationsGetOutput =
-  typeof WebAppAssessmentV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -21182,6 +27669,12 @@ export const WebAppAssessmentV2OperationsGet =
     outputSchema: WebAppAssessmentV2OperationsGetOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2OperationsListByGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+}
 export const WebAppAssessmentV2OperationsListByGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21194,11 +27687,25 @@ export const WebAppAssessmentV2OperationsListByGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2OperationsListByGroupInput =
-  typeof WebAppAssessmentV2OperationsListByGroupInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2OperationsListByGroupInput>;
 
 // Output Schema
+export interface WebAppAssessmentV2OperationsListByGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppAssessmentV2OperationsListByGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -21233,9 +27740,7 @@ export const WebAppAssessmentV2OperationsListByGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppAssessmentV2OperationsListByGroupOutput =
-  typeof WebAppAssessmentV2OperationsListByGroupOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2OperationsListByGroupOutput>;
 
 // The operation
 /**
@@ -21253,6 +27758,14 @@ export const WebAppAssessmentV2OperationsListByGroup =
     outputSchema: WebAppAssessmentV2OperationsListByGroupOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2SummaryOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  summaryName: string;
+}
 export const WebAppAssessmentV2SummaryOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21267,11 +27780,22 @@ export const WebAppAssessmentV2SummaryOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/summaries/{summaryName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2SummaryOperationsGetInput =
-  typeof WebAppAssessmentV2SummaryOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2SummaryOperationsGetInput>;
 
 // Output Schema
+export interface WebAppAssessmentV2SummaryOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppAssessmentV2SummaryOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21291,9 +27815,7 @@ export const WebAppAssessmentV2SummaryOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppAssessmentV2SummaryOperationsGetOutput =
-  typeof WebAppAssessmentV2SummaryOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2SummaryOperationsGetOutput>;
 
 // The operation
 /**
@@ -21313,6 +27835,13 @@ export const WebAppAssessmentV2SummaryOperationsGet =
     outputSchema: WebAppAssessmentV2SummaryOperationsGetOutput,
   }));
 // Input Schema
+export interface WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+}
 export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21326,11 +27855,25 @@ export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/summaries",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input =
-  typeof WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Input>;
 
 // Output Schema
+export interface WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -21365,9 +27908,7 @@ export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output =
-  typeof WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output>;
 
 // The operation
 /**
@@ -21388,6 +27929,22 @@ export const WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2 =
       WebAppAssessmentV2SummaryOperationsListByWebAppAssessmentV2Output,
   }));
 // Input Schema
+export interface WebAppCollectorOperationsCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+  properties?: {
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted";
+  };
+}
 export const WebAppCollectorOperationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21415,11 +27972,22 @@ export const WebAppCollectorOperationsCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppCollectorOperationsCreateInput =
-  typeof WebAppCollectorOperationsCreateInput.Type;
+  ) as unknown as Schema.Codec<WebAppCollectorOperationsCreateInput>;
 
 // Output Schema
+export interface WebAppCollectorOperationsCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppCollectorOperationsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21439,9 +28007,7 @@ export const WebAppCollectorOperationsCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppCollectorOperationsCreateOutput =
-  typeof WebAppCollectorOperationsCreateOutput.Type;
+  }) as unknown as Schema.Codec<WebAppCollectorOperationsCreateOutput>;
 
 // The operation
 /**
@@ -21459,6 +28025,12 @@ export const WebAppCollectorOperationsCreate =
     outputSchema: WebAppCollectorOperationsCreateOutput,
   }));
 // Input Schema
+export interface WebAppCollectorOperationsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+}
 export const WebAppCollectorOperationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21471,15 +28043,12 @@ export const WebAppCollectorOperationsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppCollectorOperationsDeleteInput =
-  typeof WebAppCollectorOperationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebAppCollectorOperationsDeleteInput>;
 
 // Output Schema
+export type WebAppCollectorOperationsDeleteOutput = void;
 export const WebAppCollectorOperationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebAppCollectorOperationsDeleteOutput =
-  typeof WebAppCollectorOperationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppCollectorOperationsDeleteOutput>;
 
 // The operation
 /**
@@ -21497,6 +28066,12 @@ export const WebAppCollectorOperationsDelete =
     outputSchema: WebAppCollectorOperationsDeleteOutput,
   }));
 // Input Schema
+export interface WebAppCollectorOperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  collectorName: string;
+}
 export const WebAppCollectorOperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21509,11 +28084,22 @@ export const WebAppCollectorOperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppCollectorOperationsGetInput =
-  typeof WebAppCollectorOperationsGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppCollectorOperationsGetInput>;
 
 // Output Schema
+export interface WebAppCollectorOperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppCollectorOperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21533,9 +28119,7 @@ export const WebAppCollectorOperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppCollectorOperationsGetOutput =
-  typeof WebAppCollectorOperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppCollectorOperationsGetOutput>;
 
 // The operation
 /**
@@ -21553,6 +28137,11 @@ export const WebAppCollectorOperationsGet =
     outputSchema: WebAppCollectorOperationsGetOutput,
   }));
 // Input Schema
+export interface WebAppCollectorOperationsListByAssessmentProjectInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+}
 export const WebAppCollectorOperationsListByAssessmentProjectInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21564,11 +28153,25 @@ export const WebAppCollectorOperationsListByAssessmentProjectInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppCollectorOperationsListByAssessmentProjectInput =
-  typeof WebAppCollectorOperationsListByAssessmentProjectInput.Type;
+  ) as unknown as Schema.Codec<WebAppCollectorOperationsListByAssessmentProjectInput>;
 
 // Output Schema
+export interface WebAppCollectorOperationsListByAssessmentProjectOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppCollectorOperationsListByAssessmentProjectOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -21603,9 +28206,7 @@ export const WebAppCollectorOperationsListByAssessmentProjectOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppCollectorOperationsListByAssessmentProjectOutput =
-  typeof WebAppCollectorOperationsListByAssessmentProjectOutput.Type;
+  }) as unknown as Schema.Codec<WebAppCollectorOperationsListByAssessmentProjectOutput>;
 
 // The operation
 /**
@@ -21622,6 +28223,24 @@ export const WebAppCollectorOperationsListByAssessmentProject =
     outputSchema: WebAppCollectorOperationsListByAssessmentProjectOutput,
   }));
 // Input Schema
+export interface WebAppDiscoverySiteDataSourcesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  discoverySiteDataSourceName: string;
+  properties?: {
+    discoverySiteId?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const WebAppDiscoverySiteDataSourcesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21651,11 +28270,22 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppDiscoverySiteDataSourcesControllerCreateInput =
-  typeof WebAppDiscoverySiteDataSourcesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerCreateInput>;
 
 // Output Schema
+export interface WebAppDiscoverySiteDataSourcesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppDiscoverySiteDataSourcesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21675,9 +28305,7 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppDiscoverySiteDataSourcesControllerCreateOutput =
-  typeof WebAppDiscoverySiteDataSourcesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerCreateOutput>;
 
 // The operation
 /**
@@ -21696,6 +28324,13 @@ export const WebAppDiscoverySiteDataSourcesControllerCreate =
     outputSchema: WebAppDiscoverySiteDataSourcesControllerCreateOutput,
   }));
 // Input Schema
+export interface WebAppDiscoverySiteDataSourcesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  discoverySiteDataSourceName: string;
+}
 export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21709,15 +28344,12 @@ export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppDiscoverySiteDataSourcesControllerDeleteInput =
-  typeof WebAppDiscoverySiteDataSourcesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerDeleteInput>;
 
 // Output Schema
+export type WebAppDiscoverySiteDataSourcesControllerDeleteOutput = void;
 export const WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebAppDiscoverySiteDataSourcesControllerDeleteOutput =
-  typeof WebAppDiscoverySiteDataSourcesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -21736,6 +28368,13 @@ export const WebAppDiscoverySiteDataSourcesControllerDelete =
     outputSchema: WebAppDiscoverySiteDataSourcesControllerDeleteOutput,
   }));
 // Input Schema
+export interface WebAppDiscoverySiteDataSourcesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  discoverySiteDataSourceName: string;
+}
 export const WebAppDiscoverySiteDataSourcesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21749,11 +28388,22 @@ export const WebAppDiscoverySiteDataSourcesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppDiscoverySiteDataSourcesControllerGetInput =
-  typeof WebAppDiscoverySiteDataSourcesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerGetInput>;
 
 // Output Schema
+export interface WebAppDiscoverySiteDataSourcesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppDiscoverySiteDataSourcesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21773,9 +28423,7 @@ export const WebAppDiscoverySiteDataSourcesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppDiscoverySiteDataSourcesControllerGetOutput =
-  typeof WebAppDiscoverySiteDataSourcesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerGetOutput>;
 
 // The operation
 /**
@@ -21794,6 +28442,12 @@ export const WebAppDiscoverySiteDataSourcesControllerGet =
     outputSchema: WebAppDiscoverySiteDataSourcesControllerGetOutput,
   }));
 // Input Schema
+export interface WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+}
 export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21806,11 +28460,25 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput =
-  typeof WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -21845,9 +28513,7 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput =
-  typeof WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -21866,6 +28532,13 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSite =
       WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface WebAppExtendedMachinesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  extendedMachineName: string;
+}
 export const WebAppExtendedMachinesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21879,11 +28552,22 @@ export const WebAppExtendedMachinesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/extendedMachines/{extendedMachineName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppExtendedMachinesControllerGetInput =
-  typeof WebAppExtendedMachinesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppExtendedMachinesControllerGetInput>;
 
 // Output Schema
+export interface WebAppExtendedMachinesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppExtendedMachinesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -21903,9 +28587,7 @@ export const WebAppExtendedMachinesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppExtendedMachinesControllerGetOutput =
-  typeof WebAppExtendedMachinesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppExtendedMachinesControllerGetOutput>;
 
 // The operation
 /**
@@ -21924,6 +28606,16 @@ export const WebAppExtendedMachinesControllerGet =
     outputSchema: WebAppExtendedMachinesControllerGetOutput,
   }));
 // Input Schema
+export interface WebAppExtendedMachinesControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const WebAppExtendedMachinesControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -21940,11 +28632,25 @@ export const WebAppExtendedMachinesControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/extendedMachines",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppExtendedMachinesControllerListByWebAppSiteInput =
-  typeof WebAppExtendedMachinesControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<WebAppExtendedMachinesControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface WebAppExtendedMachinesControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppExtendedMachinesControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -21979,9 +28685,7 @@ export const WebAppExtendedMachinesControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppExtendedMachinesControllerListByWebAppSiteOutput =
-  typeof WebAppExtendedMachinesControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebAppExtendedMachinesControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -22003,6 +28707,16 @@ export const WebAppExtendedMachinesControllerListByWebAppSite =
     outputSchema: WebAppExtendedMachinesControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface WebApplicationsControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const WebApplicationsControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22019,11 +28733,25 @@ export const WebApplicationsControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webApplications",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebApplicationsControllerListByWebAppSiteInput =
-  typeof WebApplicationsControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<WebApplicationsControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface WebApplicationsControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebApplicationsControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22058,9 +28786,7 @@ export const WebApplicationsControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebApplicationsControllerListByWebAppSiteOutput =
-  typeof WebApplicationsControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebApplicationsControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -22082,6 +28808,13 @@ export const WebApplicationsControllerListByWebAppSite =
     outputSchema: WebApplicationsControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface WebAppPropertiesControllerUpdatePropertiesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  webApps?: { webAppArmId?: string; tags?: Record<string, string> }[];
+}
 export const WebAppPropertiesControllerUpdatePropertiesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22102,15 +28835,12 @@ export const WebAppPropertiesControllerUpdatePropertiesInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/updateProperties",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppPropertiesControllerUpdatePropertiesInput =
-  typeof WebAppPropertiesControllerUpdatePropertiesInput.Type;
+  ) as unknown as Schema.Codec<WebAppPropertiesControllerUpdatePropertiesInput>;
 
 // Output Schema
+export type WebAppPropertiesControllerUpdatePropertiesOutput = unknown;
 export const WebAppPropertiesControllerUpdatePropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type WebAppPropertiesControllerUpdatePropertiesOutput =
-  typeof WebAppPropertiesControllerUpdatePropertiesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppPropertiesControllerUpdatePropertiesOutput>;
 
 // The operation
 /**
@@ -22129,6 +28859,13 @@ export const WebAppPropertiesControllerUpdateProperties =
     outputSchema: WebAppPropertiesControllerUpdatePropertiesOutput,
   }));
 // Input Schema
+export interface WebAppRunAsAccountsControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  accountName: string;
+}
 export const WebAppRunAsAccountsControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22142,11 +28879,22 @@ export const WebAppRunAsAccountsControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/runasaccounts/{accountName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppRunAsAccountsControllerGetInput =
-  typeof WebAppRunAsAccountsControllerGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppRunAsAccountsControllerGetInput>;
 
 // Output Schema
+export interface WebAppRunAsAccountsControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppRunAsAccountsControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22166,9 +28914,7 @@ export const WebAppRunAsAccountsControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppRunAsAccountsControllerGetOutput =
-  typeof WebAppRunAsAccountsControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppRunAsAccountsControllerGetOutput>;
 
 // The operation
 /**
@@ -22187,6 +28933,12 @@ export const WebAppRunAsAccountsControllerGet =
     outputSchema: WebAppRunAsAccountsControllerGetOutput,
   }));
 // Input Schema
+export interface WebAppRunAsAccountsControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+}
 export const WebAppRunAsAccountsControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22199,11 +28951,25 @@ export const WebAppRunAsAccountsControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/runasaccounts",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppRunAsAccountsControllerListByWebAppSiteInput =
-  typeof WebAppRunAsAccountsControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<WebAppRunAsAccountsControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface WebAppRunAsAccountsControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppRunAsAccountsControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22238,9 +29004,7 @@ export const WebAppRunAsAccountsControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppRunAsAccountsControllerListByWebAppSiteOutput =
-  typeof WebAppRunAsAccountsControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebAppRunAsAccountsControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -22258,6 +29022,14 @@ export const WebAppRunAsAccountsControllerListByWebAppSite =
     outputSchema: WebAppRunAsAccountsControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface WebAppServicePlanV2OperationsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  webAppServicePlanName: string;
+}
 export const WebAppServicePlanV2OperationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22272,11 +29044,22 @@ export const WebAppServicePlanV2OperationsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans/{webAppServicePlanName}",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppServicePlanV2OperationsGetInput =
-  typeof WebAppServicePlanV2OperationsGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppServicePlanV2OperationsGetInput>;
 
 // Output Schema
+export interface WebAppServicePlanV2OperationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppServicePlanV2OperationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22296,9 +29079,7 @@ export const WebAppServicePlanV2OperationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppServicePlanV2OperationsGetOutput =
-  typeof WebAppServicePlanV2OperationsGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppServicePlanV2OperationsGetOutput>;
 
 // The operation
 /**
@@ -22318,6 +29099,17 @@ export const WebAppServicePlanV2OperationsGet =
     outputSchema: WebAppServicePlanV2OperationsGetOutput,
   }));
 // Input Schema
+export interface WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input {
+  subscriptionId: string;
+  resourceGroupName: string;
+  projectName: string;
+  groupName: string;
+  assessmentName: string;
+  $filter?: string;
+  pageSize?: number;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22335,11 +29127,25 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans",
       apiVersion: "2024-01-15",
     }),
-  );
-export type WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input =
-  typeof WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input.Type;
+  ) as unknown as Schema.Codec<WebAppServicePlanV2OperationsListByWebAppAssessmentV2Input>;
 
 // Output Schema
+export interface WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22374,9 +29180,7 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output =
-  typeof WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output.Type;
+  }) as unknown as Schema.Codec<WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output>;
 
 // The operation
 /**
@@ -22399,6 +29203,42 @@ export const WebAppServicePlanV2OperationsListByWebAppAssessmentV2 =
     outputSchema: WebAppServicePlanV2OperationsListByWebAppAssessmentV2Output,
   }));
 // Input Schema
+export interface WebAppSitesControllerCreateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  properties?: {
+    siteAppliancePropertiesCollection?: {
+      servicePrincipalIdentityDetails?: {
+        tenantId?: string;
+        applicationId?: string;
+        objectId?: string;
+        audience?: string;
+        aadAuthority?: string;
+        rawCertData?: string;
+      };
+      agentDetails?: {
+        id?: string;
+        version?: string;
+        lastHeartBeatUtc?: string;
+        keyVaultUri?: string;
+        keyVaultId?: string;
+      };
+      applianceName?: string;
+    }[];
+    discoveryScenario?: "Migrate" | "DR";
+    serviceEndpoint?: string;
+    provisioningState?:
+      | "Created"
+      | "Updated"
+      | "Running"
+      | "Completed"
+      | "Failed"
+      | "Succeeded"
+      | "Canceled";
+  };
+}
 export const WebAppSitesControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22454,11 +29294,22 @@ export const WebAppSitesControllerCreateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerCreateInput =
-  typeof WebAppSitesControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerCreateInput>;
 
 // Output Schema
+export interface WebAppSitesControllerCreateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppSitesControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22478,9 +29329,7 @@ export const WebAppSitesControllerCreateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppSitesControllerCreateOutput =
-  typeof WebAppSitesControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerCreateOutput>;
 
 // The operation
 /**
@@ -22499,6 +29348,12 @@ export const WebAppSitesControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebAppSitesControllerDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+}
 export const WebAppSitesControllerDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22511,15 +29366,12 @@ export const WebAppSitesControllerDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerDeleteInput =
-  typeof WebAppSitesControllerDeleteInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerDeleteInput>;
 
 // Output Schema
+export type WebAppSitesControllerDeleteOutput = void;
 export const WebAppSitesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type WebAppSitesControllerDeleteOutput =
-  typeof WebAppSitesControllerDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebAppSitesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -22538,6 +29390,13 @@ export const WebAppSitesControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebAppSitesControllerErrorSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  applianceName?: string;
+}
 export const WebAppSitesControllerErrorSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22551,11 +29410,22 @@ export const WebAppSitesControllerErrorSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/errorSummary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerErrorSummaryInput =
-  typeof WebAppSitesControllerErrorSummaryInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerErrorSummaryInput>;
 
 // Output Schema
+export interface WebAppSitesControllerErrorSummaryOutput {
+  applianceName: string;
+  discoveryScopeErrorSummaries: {
+    affectedResourceType: string;
+    affectedObjectsCount: number;
+    discoveryScope:
+      | "AppsAndRoles"
+      | "DependencyMap"
+      | "StaticData"
+      | "SQLServerConnectionInfo";
+  };
+  nextLink?: string;
+}
 export const WebAppSitesControllerErrorSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     applianceName: Schema.String,
@@ -22570,9 +29440,7 @@ export const WebAppSitesControllerErrorSummaryOutput =
       ]),
     }),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppSitesControllerErrorSummaryOutput =
-  typeof WebAppSitesControllerErrorSummaryOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerErrorSummaryOutput>;
 
 // The operation
 /**
@@ -22590,6 +29458,13 @@ export const WebAppSitesControllerErrorSummary =
     outputSchema: WebAppSitesControllerErrorSummaryOutput,
   }));
 // Input Schema
+export interface WebAppSitesControllerExportInventoryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+}
 export const WebAppSitesControllerExportInventoryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22603,15 +29478,12 @@ export const WebAppSitesControllerExportInventoryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/exportInventory",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerExportInventoryInput =
-  typeof WebAppSitesControllerExportInventoryInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerExportInventoryInput>;
 
 // Output Schema
+export type WebAppSitesControllerExportInventoryOutput = unknown;
 export const WebAppSitesControllerExportInventoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type WebAppSitesControllerExportInventoryOutput =
-  typeof WebAppSitesControllerExportInventoryOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerExportInventoryOutput>;
 
 // The operation
 /**
@@ -22629,6 +29501,12 @@ export const WebAppSitesControllerExportInventory =
     outputSchema: WebAppSitesControllerExportInventoryOutput,
   }));
 // Input Schema
+export interface WebAppSitesControllerGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+}
 export const WebAppSitesControllerGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22641,11 +29519,22 @@ export const WebAppSitesControllerGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerGetInput =
-  typeof WebAppSitesControllerGetInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerGetInput>;
 
 // Output Schema
+export interface WebAppSitesControllerGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppSitesControllerGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22665,9 +29554,7 @@ export const WebAppSitesControllerGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppSitesControllerGetOutput =
-  typeof WebAppSitesControllerGetOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerGetOutput>;
 
 // The operation
 /**
@@ -22686,6 +29573,11 @@ export const WebAppSitesControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebAppSitesControllerListByMasterSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+}
 export const WebAppSitesControllerListByMasterSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22697,11 +29589,25 @@ export const WebAppSitesControllerListByMasterSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerListByMasterSiteInput =
-  typeof WebAppSitesControllerListByMasterSiteInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerListByMasterSiteInput>;
 
 // Output Schema
+export interface WebAppSitesControllerListByMasterSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebAppSitesControllerListByMasterSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -22736,9 +29642,7 @@ export const WebAppSitesControllerListByMasterSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebAppSitesControllerListByMasterSiteOutput =
-  typeof WebAppSitesControllerListByMasterSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerListByMasterSiteOutput>;
 
 // The operation
 /**
@@ -22755,6 +29659,13 @@ export const WebAppSitesControllerListByMasterSite =
     outputSchema: WebAppSitesControllerListByMasterSiteOutput,
   }));
 // Input Schema
+export interface WebAppSitesControllerRefreshInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  applianceName?: string;
+}
 export const WebAppSitesControllerRefreshInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22768,15 +29679,12 @@ export const WebAppSitesControllerRefreshInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/refresh",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerRefreshInput =
-  typeof WebAppSitesControllerRefreshInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerRefreshInput>;
 
 // Output Schema
+export type WebAppSitesControllerRefreshOutput = unknown;
 export const WebAppSitesControllerRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type WebAppSitesControllerRefreshOutput =
-  typeof WebAppSitesControllerRefreshOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<WebAppSitesControllerRefreshOutput>;
 
 // The operation
 /**
@@ -22794,6 +29702,12 @@ export const WebAppSitesControllerRefresh =
     outputSchema: WebAppSitesControllerRefreshOutput,
   }));
 // Input Schema
+export interface WebAppSitesControllerSummaryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+}
 export const WebAppSitesControllerSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22806,19 +29720,20 @@ export const WebAppSitesControllerSummaryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/summary",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerSummaryInput =
-  typeof WebAppSitesControllerSummaryInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerSummaryInput>;
 
 // Output Schema
+export interface WebAppSitesControllerSummaryOutput {
+  webServerCount?: number;
+  webApplicationCount?: number;
+  runAsAccountCount?: number;
+}
 export const WebAppSitesControllerSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     webServerCount: Schema.optional(Schema.Number),
     webApplicationCount: Schema.optional(Schema.Number),
     runAsAccountCount: Schema.optional(Schema.Number),
-  });
-export type WebAppSitesControllerSummaryOutput =
-  typeof WebAppSitesControllerSummaryOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerSummaryOutput>;
 
 // The operation
 /**
@@ -22836,6 +29751,33 @@ export const WebAppSitesControllerSummary =
     outputSchema: WebAppSitesControllerSummaryOutput,
   }));
 // Input Schema
+export interface WebAppSitesControllerUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  properties?: {
+    siteAppliancePropertiesCollection?: {
+      servicePrincipalIdentityDetails?: {
+        tenantId?: string;
+        applicationId?: string;
+        objectId?: string;
+        audience?: string;
+        aadAuthority?: string;
+        rawCertData?: string;
+      };
+      agentDetails?: {
+        id?: string;
+        version?: string;
+        lastHeartBeatUtc?: string;
+        keyVaultUri?: string;
+        keyVaultId?: string;
+      };
+      applianceName?: string;
+    }[];
+    discoveryScenario?: "Migrate" | "DR";
+  };
+}
 export const WebAppSitesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -22879,11 +29821,22 @@ export const WebAppSitesControllerUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebAppSitesControllerUpdateInput =
-  typeof WebAppSitesControllerUpdateInput.Type;
+  ) as unknown as Schema.Codec<WebAppSitesControllerUpdateInput>;
 
 // Output Schema
+export interface WebAppSitesControllerUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const WebAppSitesControllerUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22903,9 +29856,7 @@ export const WebAppSitesControllerUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebAppSitesControllerUpdateOutput =
-  typeof WebAppSitesControllerUpdateOutput.Type;
+  }) as unknown as Schema.Codec<WebAppSitesControllerUpdateOutput>;
 
 // The operation
 /**
@@ -22924,21 +29875,61 @@ export const WebAppSitesControllerUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface WebServersControllerGetWebServerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  webServerId: string;
+}
 export const WebServersControllerGetWebServerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    webServerId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webServers/{webServerId}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type WebServersControllerGetWebServerInput =
-  typeof WebServersControllerGetWebServerInput.Type;
+  ) as unknown as Schema.Codec<WebServersControllerGetWebServerInput>;
 
 // Output Schema
+export interface WebServersControllerGetWebServerOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    discoveryData?: {
+      id?: string;
+      osName?: string;
+      osVersion?: string;
+      cpuCores?: number;
+      memoryInMb?: string;
+      webServerType?: string;
+      webServerVersion?: string;
+      portList?: number[];
+      lastUpdatedTime?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      webServerId?: string;
+      webServerName?: string;
+      extendedInfo?: Record<string, string>;
+    }[];
+    summary?: Record<
+      string,
+      {
+        discoveredCount?: number;
+        assessedCount?: number;
+        readyForMigration?: number;
+        migratingCount?: number;
+        migratedCount?: number;
+      }
+    >;
+    lastUpdatedTime?: string;
+  };
+}
 export const WebServersControllerGetWebServerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -22983,9 +29974,7 @@ export const WebServersControllerGetWebServerOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebServersControllerGetWebServerOutput =
-  typeof WebServersControllerGetWebServerOutput.Type;
+  }) as unknown as Schema.Codec<WebServersControllerGetWebServerOutput>;
 
 // The operation
 /**
@@ -22993,6 +29982,8 @@ export type WebServersControllerGetWebServerOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param webServerId - The ARM name of the virtual desktop user.
  * @param api-version - The API version to use for this operation.
  */
 export const WebServersControllerGetWebServer =
@@ -23001,6 +29992,16 @@ export const WebServersControllerGetWebServer =
     outputSchema: WebServersControllerGetWebServerOutput,
   }));
 // Input Schema
+export interface WebServersControllerListByWebAppSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  siteName: string;
+  webAppSiteName: string;
+  filter?: string;
+  top?: string;
+  continuationToken?: string;
+  totalRecordCount?: number;
+}
 export const WebServersControllerListByWebAppSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -23017,11 +30018,25 @@ export const WebServersControllerListByWebAppSiteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webServers",
       apiVersion: "2023-06-06",
     }),
-  );
-export type WebServersControllerListByWebAppSiteInput =
-  typeof WebServersControllerListByWebAppSiteInput.Type;
+  ) as unknown as Schema.Codec<WebServersControllerListByWebAppSiteInput>;
 
 // Output Schema
+export interface WebServersControllerListByWebAppSiteOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebServersControllerListByWebAppSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -23056,9 +30071,7 @@ export const WebServersControllerListByWebAppSiteOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebServersControllerListByWebAppSiteOutput =
-  typeof WebServersControllerListByWebAppSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebServersControllerListByWebAppSiteOutput>;
 
 // The operation
 /**
@@ -23080,21 +30093,66 @@ export const WebServersControllerListByWebAppSite =
     outputSchema: WebServersControllerListByWebAppSiteOutput,
   }));
 // Input Schema
+export interface WebServersControllerListWebServersInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const WebServersControllerListWebServersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webServers",
       apiVersion: "2023-01-01",
     }),
-  );
-export type WebServersControllerListWebServersInput =
-  typeof WebServersControllerListWebServersInput.Type;
+  ) as unknown as Schema.Codec<WebServersControllerListWebServersInput>;
 
 // Output Schema
+export interface WebServersControllerListWebServersOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      discoveryData?: {
+        id?: string;
+        osName?: string;
+        osVersion?: string;
+        cpuCores?: number;
+        memoryInMb?: string;
+        webServerType?: string;
+        webServerVersion?: string;
+        portList?: number[];
+        lastUpdatedTime?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        webServerId?: string;
+        webServerName?: string;
+        extendedInfo?: Record<string, string>;
+      }[];
+      summary?: Record<
+        string,
+        {
+          discoveredCount?: number;
+          assessedCount?: number;
+          readyForMigration?: number;
+          migratingCount?: number;
+          migratedCount?: number;
+        }
+      >;
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebServersControllerListWebServersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -23146,9 +30204,7 @@ export const WebServersControllerListWebServersOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebServersControllerListWebServersOutput =
-  typeof WebServersControllerListWebServersOutput.Type;
+  }) as unknown as Schema.Codec<WebServersControllerListWebServersOutput>;
 
 // The operation
 /**
@@ -23156,7 +30212,10 @@ export type WebServersControllerListWebServersOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebServersControllerListWebServers =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -23164,21 +30223,80 @@ export const WebServersControllerListWebServers =
     outputSchema: WebServersControllerListWebServersOutput,
   }));
 // Input Schema
+export interface WebSitesControllerGetWebSiteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  webSiteName: string;
+}
 export const WebSitesControllerGetWebSiteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    webSiteName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webSites/{webSiteName}",
       apiVersion: "2023-01-01",
     }),
-  );
-export type WebSitesControllerGetWebSiteInput =
-  typeof WebSitesControllerGetWebSiteInput.Type;
+  ) as unknown as Schema.Codec<WebSitesControllerGetWebSiteInput>;
 
 // Output Schema
+export interface WebSitesControllerGetWebSiteOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  properties?: {
+    discoveryData?: {
+      lastUpdatedTime?: string;
+      id?: string;
+      webServerId?: string;
+      webServerType?: string;
+      webSiteName?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      port?: number;
+      extendedInfo?: Record<string, string>;
+    }[];
+    assessmentData?: {
+      assessmentId?: string;
+      id?: string;
+      isReadyForMigration?: boolean;
+      assessmentTargetType?: string;
+      migrationBlockersCount?: number;
+      successList?: string[];
+      warningList?: string[];
+      errorList?: string[];
+      framework?: string;
+      frameworkVersion?: string;
+      lastUpdatedTime?: string;
+      webServerId?: string;
+      webServerType?: string;
+      webSiteName?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      port?: number;
+      extendedInfo?: Record<string, string>;
+    }[];
+    migrationData?: {
+      id?: string;
+      migrationPhase?: string;
+      progressPercentage?: number;
+      targetAppServiceArmId?: string;
+      lastUpdatedTime?: string;
+      webServerId?: string;
+      webServerType?: string;
+      webSiteName?: string;
+      enqueueTime?: string;
+      solutionName?: string;
+      port?: number;
+      extendedInfo?: Record<string, string>;
+    }[];
+    lastUpdatedTime?: string;
+  };
+}
 export const WebSitesControllerGetWebSiteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -23252,9 +30370,7 @@ export const WebSitesControllerGetWebSiteOutput =
         lastUpdatedTime: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type WebSitesControllerGetWebSiteOutput =
-  typeof WebSitesControllerGetWebSiteOutput.Type;
+  }) as unknown as Schema.Codec<WebSitesControllerGetWebSiteOutput>;
 
 // The operation
 /**
@@ -23262,6 +30378,8 @@ export type WebSitesControllerGetWebSiteOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
+ * @param webSiteName - The ARM name of the website to be fetched.
  * @param api-version - The API version to use for this operation.
  */
 export const WebSitesControllerGetWebSite =
@@ -23270,21 +30388,85 @@ export const WebSitesControllerGetWebSite =
     outputSchema: WebSitesControllerGetWebSiteOutput,
   }));
 // Input Schema
+export interface WebSitesControllerListWebSitesInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  migrateProjectName: string;
+  continuationToken?: string;
+  pageSize?: number;
+}
 export const WebSitesControllerListWebSitesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
+    migrateProjectName: Schema.String.pipe(T.PathParam()),
+    continuationToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webSites",
       apiVersion: "2023-01-01",
     }),
-  );
-export type WebSitesControllerListWebSitesInput =
-  typeof WebSitesControllerListWebSitesInput.Type;
+  ) as unknown as Schema.Codec<WebSitesControllerListWebSitesInput>;
 
 // Output Schema
+export interface WebSitesControllerListWebSitesOutput {
+  value?: {
+    id?: string;
+    name?: string;
+    type?: string;
+    properties?: {
+      discoveryData?: {
+        lastUpdatedTime?: string;
+        id?: string;
+        webServerId?: string;
+        webServerType?: string;
+        webSiteName?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        port?: number;
+        extendedInfo?: Record<string, string>;
+      }[];
+      assessmentData?: {
+        assessmentId?: string;
+        id?: string;
+        isReadyForMigration?: boolean;
+        assessmentTargetType?: string;
+        migrationBlockersCount?: number;
+        successList?: string[];
+        warningList?: string[];
+        errorList?: string[];
+        framework?: string;
+        frameworkVersion?: string;
+        lastUpdatedTime?: string;
+        webServerId?: string;
+        webServerType?: string;
+        webSiteName?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        port?: number;
+        extendedInfo?: Record<string, string>;
+      }[];
+      migrationData?: {
+        id?: string;
+        migrationPhase?: string;
+        progressPercentage?: number;
+        targetAppServiceArmId?: string;
+        lastUpdatedTime?: string;
+        webServerId?: string;
+        webServerType?: string;
+        webSiteName?: string;
+        enqueueTime?: string;
+        solutionName?: string;
+        port?: number;
+        extendedInfo?: Record<string, string>;
+      }[];
+      lastUpdatedTime?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const WebSitesControllerListWebSitesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.optional(
@@ -23365,9 +30547,7 @@ export const WebSitesControllerListWebSitesOutput =
       ),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type WebSitesControllerListWebSitesOutput =
-  typeof WebSitesControllerListWebSitesOutput.Type;
+  }) as unknown as Schema.Codec<WebSitesControllerListWebSitesOutput>;
 
 // The operation
 /**
@@ -23375,7 +30555,10 @@ export type WebSitesControllerListWebSitesOutput =
  *
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
+ * @param migrateProjectName - Name of the Azure Migrate project.
  * @param api-version - The API version to use for this operation.
+ * @param continuationToken - The continuation token.
+ * @param pageSize - The number of items to be returned in a single page. This value is honored only if it is less than the 100.
  */
 export const WebSitesControllerListWebSites =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,51 +22,183 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
-export interface SasPortalOrganization {
-  /** Id of organization */
-  id?: string;
-  /** Name of organization */
+export interface SasPortalSetupSasAnalyticsResponse {}
+
+export const SasPortalSetupSasAnalyticsResponse: Schema.Codec<SasPortalSetupSasAnalyticsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SasPortalSetupSasAnalyticsResponse",
+  });
+
+export interface SasPortalDeviceModel {
+  /** The software version of the device. */
+  softwareVersion?: string;
+  /** The name of the device vendor. */
+  vendor?: string;
+  /** The name of the device model. */
+  name?: string;
+  /** The firmware version of the device. */
+  firmwareVersion?: string;
+  /** The hardware version of the device. */
+  hardwareVersion?: string;
+}
+
+export const SasPortalDeviceModel: Schema.Codec<SasPortalDeviceModel> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    softwareVersion: Schema.optional(Schema.String),
+    vendor: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    firmwareVersion: Schema.optional(Schema.String),
+    hardwareVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalDeviceModel" });
+
+export interface SasPortalEmpty {}
+
+export const SasPortalEmpty: Schema.Codec<SasPortalEmpty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SasPortalEmpty",
+  });
+
+export interface SasPortalNode {
+  /** The node's display name. */
+  displayName?: string;
+  /** Output only. Resource name. */
+  name?: string;
+  /** User ids used by the devices belonging to this node. */
+  sasUserIds?: ReadonlyArray<string>;
+}
+
+export const SasPortalNode: Schema.Codec<SasPortalNode> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SasPortalNode" });
+
+export interface SasPortalCustomer {
+  /** Output only. Resource name of the customer. */
+  name?: string;
+  /** User IDs used by the devices belonging to this customer. */
+  sasUserIds?: ReadonlyArray<string>;
+  /** Required. Name of the organization that the customer entity represents. */
   displayName?: string;
 }
 
-export const SasPortalOrganization: Schema.Schema<SasPortalOrganization> =
+export const SasPortalCustomer: Schema.Codec<SasPortalCustomer> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalOrganization" });
+  }).annotate({ identifier: "SasPortalCustomer" });
 
-export interface SasPortalListLegacyOrganizationsResponse {
-  /** Optional. Legacy SAS organizations. */
-  organizations?: ReadonlyArray<SasPortalOrganization>;
+export interface SasPortalListCustomersResponse {
+  /** A pagination token returned from a previous call to ListCustomers that indicates from where listing should continue. If the field is missing or empty, it means there are no more customers. */
+  nextPageToken?: string;
+  /** The list of customers that match the request. */
+  customers?: ReadonlyArray<SasPortalCustomer>;
 }
 
-export const SasPortalListLegacyOrganizationsResponse: Schema.Schema<SasPortalListLegacyOrganizationsResponse> =
+export const SasPortalListCustomersResponse: Schema.Codec<SasPortalListCustomersResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizations: Schema.optional(Schema.Array(SasPortalOrganization)),
-  }).annotate({ identifier: "SasPortalListLegacyOrganizationsResponse" });
+    nextPageToken: Schema.optional(Schema.String),
+    customers: Schema.optional(Schema.Array(SasPortalCustomer)),
+  }).annotate({ identifier: "SasPortalListCustomersResponse" });
 
-export interface SasPortalMoveDeploymentRequest {
-  /** Required. The name of the new parent resource node or customer to reparent the deployment under. */
-  destination?: string;
+export interface SasPortalMigrateOrganizationRequest {
+  /** Required. Id of the SAS organization to be migrated. */
+  organizationId?: string;
 }
 
-export const SasPortalMoveDeploymentRequest: Schema.Schema<SasPortalMoveDeploymentRequest> =
+export const SasPortalMigrateOrganizationRequest: Schema.Codec<SasPortalMigrateOrganizationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destination: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalMoveDeploymentRequest" });
+    organizationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMigrateOrganizationRequest" });
 
 export interface SasPortalAssignment {
-  /** The identities the role is assigned to. It can have the following values: * `{user_email}`: An email address that represents a specific Google account. For example: `alice@gmail.com`. * `{group_email}`: An email address that represents a Google group. For example, `viewers@gmail.com`. */
-  members?: ReadonlyArray<string>;
   /** Required. Role that is assigned to `members`. */
   role?: string;
+  /** The identities the role is assigned to. It can have the following values: * `{user_email}`: An email address that represents a specific Google account. For example: `alice@gmail.com`. * `{group_email}`: An email address that represents a Google group. For example, `viewers@gmail.com`. */
+  members?: ReadonlyArray<string>;
 }
 
-export const SasPortalAssignment: Schema.Schema<SasPortalAssignment> =
+export const SasPortalAssignment: Schema.Codec<SasPortalAssignment> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
+    members: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SasPortalAssignment" });
+
+export interface SasPortalPolicy {
+  /** List of assignments */
+  assignments?: ReadonlyArray<SasPortalAssignment>;
+  /** The etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to GetPolicy, and systems are expected to put that etag in the request to SetPolicy to ensure that their change will be applied to the same version of the policy. If no etag is provided in the call to GetPolicy, then the existing policy is overwritten blindly. */
+  etag?: string;
+}
+
+export const SasPortalPolicy: Schema.Codec<SasPortalPolicy> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignments: Schema.optional(Schema.Array(SasPortalAssignment)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalPolicy" });
+
+export interface SasPortalSetPolicyRequest {
+  /** Required. The resource for which the policy is being specified. This policy replaces any existing policy. */
+  resource?: string;
+  /** Optional. Set the field as `true` to disable the onboarding notification. */
+  disableNotification?: boolean;
+  /** Required. The policy to be applied to the `resource`. */
+  policy?: SasPortalPolicy;
+}
+
+export const SasPortalSetPolicyRequest: Schema.Codec<SasPortalSetPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    disableNotification: Schema.optional(Schema.Boolean),
+    policy: Schema.optional(SasPortalPolicy),
+  }).annotate({ identifier: "SasPortalSetPolicyRequest" });
+
+export interface SasPortalDeployment {
+  /** Output only. Resource name. */
+  name?: string;
+  /** User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID. */
+  sasUserIds?: ReadonlyArray<string>;
+  /** The deployment's display name. */
+  displayName?: string;
+  /** Output only. The FCC Registration Numbers (FRNs) copied from its direct parent. */
+  frns?: ReadonlyArray<string>;
+}
+
+export const SasPortalDeployment: Schema.Codec<SasPortalDeployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    frns: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SasPortalDeployment" });
+
+export interface SasPortalGcpProjectDeployment {
+  /** Whether SAS analytics has been enabled. */
+  hasEnabledAnalytics?: boolean;
+  /** Deployment associated with the GCP project. */
+  deployment?: SasPortalDeployment;
+}
+
+export const SasPortalGcpProjectDeployment: Schema.Codec<SasPortalGcpProjectDeployment> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasEnabledAnalytics: Schema.optional(Schema.Boolean),
+    deployment: Schema.optional(SasPortalDeployment),
+  }).annotate({ identifier: "SasPortalGcpProjectDeployment" });
+
+export interface SasPortalUpdateSignedDeviceRequest {
+  /** Required. The JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
+  encodedDevice?: string;
+  /** Required. Unique installer ID (CPI ID) from the Certified Professional Installers database. */
+  installerId?: string;
+}
+
+export const SasPortalUpdateSignedDeviceRequest: Schema.Codec<SasPortalUpdateSignedDeviceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodedDevice: Schema.optional(Schema.String),
+    installerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalUpdateSignedDeviceRequest" });
 
 export interface SasPortalDeviceAirInterface {
   /** Conditional. This field specifies the radio access technology that is used for the CBSD. */
@@ -86,31 +218,295 @@ export interface SasPortalDeviceAirInterface {
   supportedSpec?: string;
 }
 
-export const SasPortalDeviceAirInterface: Schema.Schema<SasPortalDeviceAirInterface> =
+export const SasPortalDeviceAirInterface: Schema.Codec<SasPortalDeviceAirInterface> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     radioTechnology: Schema.optional(Schema.String),
     supportedSpec: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalDeviceAirInterface" });
 
-export interface SasPortalDeploymentAssociation {
-  /** User id of the deployment. */
-  userId?: string;
-  /** GCP project id of the associated project. */
-  gcpProjectId?: string;
+export interface SasPortalInstallationParams {
+  /** Device antenna height in meters. When the `heightType` parameter value is "AGL", the antenna height should be given relative to ground level. When the `heightType` parameter value is "AMSL", it is given with respect to WGS84 datum. */
+  height?: number;
+  /** Whether the device antenna is indoor or not. `true`: indoor. `false`: outdoor. */
+  indoorDeployment?: boolean;
+  /** If present, this parameter specifies whether the CBSD is a CPE-CBSD or not. */
+  cpeCbsdIndication?: boolean;
+  /** Specifies how the height is measured. */
+  heightType?:
+    | "HEIGHT_TYPE_UNSPECIFIED"
+    | "HEIGHT_TYPE_AGL"
+    | "HEIGHT_TYPE_AMSL"
+    | (string & {});
+  /** Boresight direction of the horizontal plane of the antenna in degrees with respect to true north. The value of this parameter is an integer with a value between 0 and 359 inclusive. A value of 0 degrees means true north; a value of 90 degrees means east. This parameter is optional for Category A devices and conditional for Category B devices. */
+  antennaAzimuth?: number;
+  /** If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets. */
+  antennaModel?: string;
+  /** Peak antenna gain in dBi. This parameter is a double with a value between -127 and +128 (dBi) inclusive. Part of Release 2 to support floating-point value */
+  antennaGain?: number;
+  /** Longitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -180.000000 to +180.000000. Positive values represent longitudes east of the prime meridian; negative values west of the prime meridian. */
+  longitude?: number;
+  /** Antenna downtilt in degrees and is an integer with a value between -90 and +90 inclusive; a negative value means the antenna is tilted up (above horizontal). This parameter is optional for Category A devices and conditional for Category B devices. */
+  antennaDowntilt?: number;
+  /** A positive number in meters to indicate accuracy of the device antenna horizontal location. This optional parameter should only be present if its value is less than the FCC requirement of 50 meters. */
+  horizontalAccuracy?: number;
+  /** This parameter is the maximum device EIRP in units of dBm/10MHz and is an integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not included, SAS interprets it as maximum allowable EIRP in units of dBm/10MHz for device category. */
+  eirpCapability?: number;
+  /** 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees. This parameter is an unsigned integer having a value between 0 and 360 (degrees) inclusive; it is optional for Category A devices and conditional for Category B devices. */
+  antennaBeamwidth?: number;
+  /** Latitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -90.000000 to +90.000000. Positive values represent latitudes north of the equator; negative values south of the equator. */
+  latitude?: number;
+  /** A positive number in meters to indicate accuracy of the device antenna vertical location. This optional parameter should only be present if its value is less than the FCC requirement of 3 meters. */
+  verticalAccuracy?: number;
 }
 
-export const SasPortalDeploymentAssociation: Schema.Schema<SasPortalDeploymentAssociation> =
+export const SasPortalInstallationParams: Schema.Codec<SasPortalInstallationParams> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    height: Schema.optional(Schema.Number),
+    indoorDeployment: Schema.optional(Schema.Boolean),
+    cpeCbsdIndication: Schema.optional(Schema.Boolean),
+    heightType: Schema.optional(Schema.String),
+    antennaAzimuth: Schema.optional(Schema.Number),
+    antennaModel: Schema.optional(Schema.String),
+    antennaGain: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+    antennaDowntilt: Schema.optional(Schema.Number),
+    horizontalAccuracy: Schema.optional(Schema.Number),
+    eirpCapability: Schema.optional(Schema.Number),
+    antennaBeamwidth: Schema.optional(Schema.Number),
+    latitude: Schema.optional(Schema.Number),
+    verticalAccuracy: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalInstallationParams" });
+
+export interface SasPortalDeviceConfig {
+  /** State of the configuration. */
+  state?: "DEVICE_CONFIG_STATE_UNSPECIFIED" | "DRAFT" | "FINAL" | (string & {});
+  /** Output only. The last time the device configuration was edited. */
+  updateTime?: string;
+  /** FCC category of the device. */
+  category?:
+    | "DEVICE_CATEGORY_UNSPECIFIED"
+    | "DEVICE_CATEGORY_A"
+    | "DEVICE_CATEGORY_B"
+    | (string & {});
+  /** Information about this device's air interface. */
+  airInterface?: SasPortalDeviceAirInterface;
+  /** Installation parameters for the device. */
+  installationParams?: SasPortalInstallationParams;
+  /** Measurement reporting capabilities of the device. */
+  measurementCapabilities?: ReadonlyArray<
+    | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
+    | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
+    | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
+    | (string & {})
+  >;
+  /** The identifier of a device user. */
+  userId?: string;
+  /** Information about this device model. */
+  model?: SasPortalDeviceModel;
+  /** The call sign of the device operator. */
+  callSign?: string;
+  /** Output only. Whether the configuration has been signed by a CPI. */
+  isSigned?: boolean;
+}
+
+export const SasPortalDeviceConfig: Schema.Codec<SasPortalDeviceConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    airInterface: Schema.optional(SasPortalDeviceAirInterface),
+    installationParams: Schema.optional(SasPortalInstallationParams),
+    measurementCapabilities: Schema.optional(Schema.Array(Schema.String)),
     userId: Schema.optional(Schema.String),
-    gcpProjectId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalDeploymentAssociation" });
+    model: Schema.optional(SasPortalDeviceModel),
+    callSign: Schema.optional(Schema.String),
+    isSigned: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SasPortalDeviceConfig" });
 
-export interface SasPortalSetupSasAnalyticsMetadata {}
+export interface SasPortalFrequencyRange {
+  /** The highest frequency of the frequency range in MHz. */
+  highFrequencyMhz?: number;
+  /** The lowest frequency of the frequency range in MHz. */
+  lowFrequencyMhz?: number;
+}
 
-export const SasPortalSetupSasAnalyticsMetadata: Schema.Schema<SasPortalSetupSasAnalyticsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SasPortalSetupSasAnalyticsMetadata",
-  });
+export const SasPortalFrequencyRange: Schema.Codec<SasPortalFrequencyRange> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    highFrequencyMhz: Schema.optional(Schema.Number),
+    lowFrequencyMhz: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalFrequencyRange" });
+
+export interface SasPortalDpaMoveList {
+  /** The ID of the DPA. */
+  dpaId?: string;
+  /** The frequency range that the move list affects. */
+  frequencyRange?: SasPortalFrequencyRange;
+}
+
+export const SasPortalDpaMoveList: Schema.Codec<SasPortalDpaMoveList> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dpaId: Schema.optional(Schema.String),
+    frequencyRange: Schema.optional(SasPortalFrequencyRange),
+  }).annotate({ identifier: "SasPortalDpaMoveList" });
+
+export interface SasPortalDeviceGrant {
+  /** If the grant is suspended, the reason(s) for suspension. */
+  suspensionReason?: ReadonlyArray<string>;
+  /** State of the grant. */
+  state?:
+    | "GRANT_STATE_UNSPECIFIED"
+    | "GRANT_STATE_GRANTED"
+    | "GRANT_STATE_TERMINATED"
+    | "GRANT_STATE_SUSPENDED"
+    | "GRANT_STATE_AUTHORIZED"
+    | "GRANT_STATE_EXPIRED"
+    | (string & {});
+  /** The transmission frequency range. */
+  frequencyRange?: SasPortalFrequencyRange;
+  /** The expiration time of the grant. */
+  expireTime?: string;
+  /** Grant Id. */
+  grantId?: string;
+  /** Type of channel used. */
+  channelType?:
+    | "CHANNEL_TYPE_UNSPECIFIED"
+    | "CHANNEL_TYPE_GAA"
+    | "CHANNEL_TYPE_PAL"
+    | (string & {});
+  /** The transmit expiration time of the last heartbeat. */
+  lastHeartbeatTransmitExpireTime?: string;
+  /** The DPA move lists on which this grant appears. */
+  moveList?: ReadonlyArray<SasPortalDpaMoveList>;
+  /** Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant. The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the average (RMS) EIRP that would be measured by the procedure defined in FCC part 96.41(e)(3). */
+  maxEirp?: number;
+}
+
+export const SasPortalDeviceGrant: Schema.Codec<SasPortalDeviceGrant> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suspensionReason: Schema.optional(Schema.Array(Schema.String)),
+    state: Schema.optional(Schema.String),
+    frequencyRange: Schema.optional(SasPortalFrequencyRange),
+    expireTime: Schema.optional(Schema.String),
+    grantId: Schema.optional(Schema.String),
+    channelType: Schema.optional(Schema.String),
+    lastHeartbeatTransmitExpireTime: Schema.optional(Schema.String),
+    moveList: Schema.optional(Schema.Array(SasPortalDpaMoveList)),
+    maxEirp: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalDeviceGrant" });
+
+export interface SasPortalNrqzValidation {
+  /** Device longitude that's associated with the validation. */
+  longitude?: number;
+  /** State of the NRQZ validation info. */
+  state?: "STATE_UNSPECIFIED" | "DRAFT" | "FINAL" | (string & {});
+  /** Validation case ID. */
+  caseId?: string;
+  /** Device latitude that's associated with the validation. */
+  latitude?: number;
+  /** CPI who signed the validation. */
+  cpiId?: string;
+}
+
+export const SasPortalNrqzValidation: Schema.Codec<SasPortalNrqzValidation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    longitude: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    caseId: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    cpiId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalNrqzValidation" });
+
+export interface SasPortalDeviceMetadata {
+  /** Interference Coordination Group (ICG). A group of CBSDs that manage their own interference with the group. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
+  interferenceCoordinationGroup?: string;
+  /** Common Channel Group (CCG). A group of CBSDs in the same ICG requesting a common primary channel assignment. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
+  commonChannelGroup?: string;
+  /** If populated, the Antenna Model Pattern to use. Format is: `RecordCreatorId:PatternId` */
+  antennaModel?: string;
+  /** Output only. Set to `true` if a CPI has validated that they have coordinated with the National Quiet Zone office. */
+  nrqzValidated?: boolean;
+  /** Output only. National Radio Quiet Zone validation info. */
+  nrqzValidation?: SasPortalNrqzValidation;
+}
+
+export const SasPortalDeviceMetadata: Schema.Codec<SasPortalDeviceMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interferenceCoordinationGroup: Schema.optional(Schema.String),
+    commonChannelGroup: Schema.optional(Schema.String),
+    antennaModel: Schema.optional(Schema.String),
+    nrqzValidated: Schema.optional(Schema.Boolean),
+    nrqzValidation: Schema.optional(SasPortalNrqzValidation),
+  }).annotate({ identifier: "SasPortalDeviceMetadata" });
+
+export interface SasPortalChannelWithScore {
+  /** The frequency range of the channel. */
+  frequencyRange?: SasPortalFrequencyRange;
+  /** The channel score, normalized to be in the range [0,100]. */
+  score?: number;
+}
+
+export const SasPortalChannelWithScore: Schema.Codec<SasPortalChannelWithScore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frequencyRange: Schema.optional(SasPortalFrequencyRange),
+    score: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalChannelWithScore" });
+
+export interface SasPortalDevice {
+  /** The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid for FccID format. Accept underscores and periods because some test-SAS customers use them. */
+  fccId?: string;
+  /** Output only. Device state. */
+  state?:
+    | "DEVICE_STATE_UNSPECIFIED"
+    | "RESERVED"
+    | "REGISTERED"
+    | "DEREGISTERED"
+    | (string & {});
+  /** Device display name. */
+  displayName?: string;
+  /** Configuration of the device, as specified via SAS Portal API. */
+  preloadedConfig?: SasPortalDeviceConfig;
+  /** Output only. Grants held by the device. */
+  grants?: ReadonlyArray<SasPortalDeviceGrant>;
+  /** Output only. Current configuration of the device as registered to the SAS. */
+  activeConfig?: SasPortalDeviceConfig;
+  /** Device parameters that can be overridden by both SAS Portal and SAS registration requests. */
+  deviceMetadata?: SasPortalDeviceMetadata;
+  /** Output only. Current channels with scores. */
+  currentChannels?: ReadonlyArray<SasPortalChannelWithScore>;
+  /** Output only. The resource path name. */
+  name?: string;
+  /** A serial number assigned to the device by the device manufacturer. */
+  serialNumber?: string;
+  /** Only ranges that are within the allowlists are available for new grants. */
+  grantRangeAllowlists?: ReadonlyArray<SasPortalFrequencyRange>;
+}
+
+export const SasPortalDevice: Schema.Codec<SasPortalDevice> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fccId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    preloadedConfig: Schema.optional(SasPortalDeviceConfig),
+    grants: Schema.optional(Schema.Array(SasPortalDeviceGrant)),
+    activeConfig: Schema.optional(SasPortalDeviceConfig),
+    deviceMetadata: Schema.optional(SasPortalDeviceMetadata),
+    currentChannels: Schema.optional(Schema.Array(SasPortalChannelWithScore)),
+    name: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    grantRangeAllowlists: Schema.optional(
+      Schema.Array(SasPortalFrequencyRange),
+    ),
+  }).annotate({ identifier: "SasPortalDevice" });
+
+export interface SasPortalSignDeviceRequest {
+  /** Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set. */
+  device?: SasPortalDevice;
+}
+
+export const SasPortalSignDeviceRequest: Schema.Codec<SasPortalSignDeviceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(SasPortalDevice),
+  }).annotate({ identifier: "SasPortalSignDeviceRequest" });
 
 export interface SasPortalCreateSignedDeviceRequest {
   /** Required. JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
@@ -119,71 +515,137 @@ export interface SasPortalCreateSignedDeviceRequest {
   installerId?: string;
 }
 
-export const SasPortalCreateSignedDeviceRequest: Schema.Schema<SasPortalCreateSignedDeviceRequest> =
+export const SasPortalCreateSignedDeviceRequest: Schema.Codec<SasPortalCreateSignedDeviceRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     encodedDevice: Schema.optional(Schema.String),
     installerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalCreateSignedDeviceRequest" });
 
-export interface SasPortalProvisionDeploymentResponse {
-  /** Optional. Optional error message if the provisioning request is not successful. */
-  errorMessage?: string;
+export interface SasPortalValidateInstallerRequest {
+  /** Required. JSON Web Token signed using a CPI private key. Payload must include a "secret" claim whose value is the secret. */
+  encodedSecret?: string;
+  /** Required. Unique installer id (CPI ID) from the Certified Professional Installers database. */
+  installerId?: string;
+  /** Required. Secret returned by the GenerateSecret. */
+  secret?: string;
 }
 
-export const SasPortalProvisionDeploymentResponse: Schema.Schema<SasPortalProvisionDeploymentResponse> =
+export const SasPortalValidateInstallerRequest: Schema.Codec<SasPortalValidateInstallerRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errorMessage: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalProvisionDeploymentResponse" });
+    encodedSecret: Schema.optional(Schema.String),
+    installerId: Schema.optional(Schema.String),
+    secret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalValidateInstallerRequest" });
+
+export interface SasPortalSetupSasAnalyticsRequest {
+  /** Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional */
+  userId?: string;
+}
+
+export const SasPortalSetupSasAnalyticsRequest: Schema.Codec<SasPortalSetupSasAnalyticsRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalSetupSasAnalyticsRequest" });
+
+export interface SasPortalListGcpProjectDeploymentsResponse {
+  /** Optional. Deployments associated with the GCP project */
+  deployments?: ReadonlyArray<SasPortalGcpProjectDeployment>;
+}
+
+export const SasPortalListGcpProjectDeploymentsResponse: Schema.Codec<SasPortalListGcpProjectDeploymentsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(SasPortalGcpProjectDeployment)),
+  }).annotate({ identifier: "SasPortalListGcpProjectDeploymentsResponse" });
+
+export interface SasPortalGenerateSecretResponse {
+  /** The secret generated by the string and used by ValidateInstaller. */
+  secret?: string;
+}
+
+export const SasPortalGenerateSecretResponse: Schema.Codec<SasPortalGenerateSecretResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalGenerateSecretResponse" });
+
+export interface SasPortalDeploymentAssociation {
+  /** GCP project id of the associated project. */
+  gcpProjectId?: string;
+  /** User id of the deployment. */
+  userId?: string;
+}
+
+export const SasPortalDeploymentAssociation: Schema.Codec<SasPortalDeploymentAssociation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcpProjectId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalDeploymentAssociation" });
+
+export interface SasPortalMigrateOrganizationResponse {
+  /** Optional. A list of deployment association that were created for the migration, or current associations if they already exist. */
+  deploymentAssociation?: ReadonlyArray<SasPortalDeploymentAssociation>;
+}
+
+export const SasPortalMigrateOrganizationResponse: Schema.Codec<SasPortalMigrateOrganizationResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentAssociation: Schema.optional(
+      Schema.Array(SasPortalDeploymentAssociation),
+    ),
+  }).annotate({ identifier: "SasPortalMigrateOrganizationResponse" });
+
+export interface SasPortalGenerateSecretRequest {}
+
+export const SasPortalGenerateSecretRequest: Schema.Codec<SasPortalGenerateSecretRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SasPortalGenerateSecretRequest",
+  });
+
+export interface SasPortalValidateInstallerResponse {}
+
+export const SasPortalValidateInstallerResponse: Schema.Codec<SasPortalValidateInstallerResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "SasPortalValidateInstallerResponse",
+  });
 
 export interface SasPortalStatus {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: ReadonlyArray<Record<string, unknown>>;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
 
-export const SasPortalStatus: Schema.Schema<SasPortalStatus> =
+export const SasPortalStatus: Schema.Codec<SasPortalStatus> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
+    message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
   }).annotate({ identifier: "SasPortalStatus" });
 
-export interface SasPortalOperation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: Record<string, unknown>;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: SasPortalStatus;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: Record<string, unknown>;
+export interface SasPortalListNodesResponse {
+  /** The nodes that match the request. */
+  nodes?: ReadonlyArray<SasPortalNode>;
+  /** A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes. */
+  nextPageToken?: string;
 }
 
-export const SasPortalOperation: Schema.Schema<SasPortalOperation> =
+export const SasPortalListNodesResponse: Schema.Codec<SasPortalListNodesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    done: Schema.optional(Schema.Boolean),
-    name: Schema.optional(Schema.String),
-    error: Schema.optional(SasPortalStatus),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  }).annotate({ identifier: "SasPortalOperation" });
+    nodes: Schema.optional(Schema.Array(SasPortalNode)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListNodesResponse" });
 
-export interface SasPortalTestPermissionsResponse {
-  /** A set of permissions that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
+export interface SasPortalGetPolicyRequest {
+  /** Required. The resource for which the policy is being requested. */
+  resource?: string;
 }
 
-export const SasPortalTestPermissionsResponse: Schema.Schema<SasPortalTestPermissionsResponse> =
+export const SasPortalGetPolicyRequest: Schema.Codec<SasPortalGetPolicyRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "SasPortalTestPermissionsResponse" });
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalGetPolicyRequest" });
 
 export interface SasPortalMigrateOrganizationMetadata {
   /** Output only. Current operation state */
@@ -196,52 +658,115 @@ export interface SasPortalMigrateOrganizationMetadata {
     | (string & {});
 }
 
-export const SasPortalMigrateOrganizationMetadata: Schema.Schema<SasPortalMigrateOrganizationMetadata> =
+export const SasPortalMigrateOrganizationMetadata: Schema.Codec<SasPortalMigrateOrganizationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     operationState: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMigrateOrganizationMetadata" });
 
-export interface SasPortalFrequencyRange {
-  /** The lowest frequency of the frequency range in MHz. */
-  lowFrequencyMhz?: number;
-  /** The highest frequency of the frequency range in MHz. */
-  highFrequencyMhz?: number;
+export interface SasPortalListDevicesResponse {
+  /** The devices that match the request. */
+  devices?: ReadonlyArray<SasPortalDevice>;
+  /** A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices. */
+  nextPageToken?: string;
 }
 
-export const SasPortalFrequencyRange: Schema.Schema<SasPortalFrequencyRange> =
+export const SasPortalListDevicesResponse: Schema.Codec<SasPortalListDevicesResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lowFrequencyMhz: Schema.optional(Schema.Number),
-    highFrequencyMhz: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "SasPortalFrequencyRange" });
+    devices: Schema.optional(Schema.Array(SasPortalDevice)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListDevicesResponse" });
 
-export interface SasPortalDpaMoveList {
-  /** The ID of the DPA. */
-  dpaId?: string;
-  /** The frequency range that the move list affects. */
-  frequencyRange?: SasPortalFrequencyRange;
+export interface SasPortalTestPermissionsResponse {
+  /** A set of permissions that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
 }
 
-export const SasPortalDpaMoveList: Schema.Schema<SasPortalDpaMoveList> =
+export const SasPortalTestPermissionsResponse: Schema.Codec<SasPortalTestPermissionsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dpaId: Schema.optional(Schema.String),
-    frequencyRange: Schema.optional(SasPortalFrequencyRange),
-  }).annotate({ identifier: "SasPortalDpaMoveList" });
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SasPortalTestPermissionsResponse" });
 
-export interface SasPortalValidateInstallerRequest {
-  /** Required. JSON Web Token signed using a CPI private key. Payload must include a "secret" claim whose value is the secret. */
-  encodedSecret?: string;
-  /** Required. Secret returned by the GenerateSecret. */
-  secret?: string;
-  /** Required. Unique installer id (CPI ID) from the Certified Professional Installers database. */
-  installerId?: string;
+export interface SasPortalListDeploymentsResponse {
+  /** The deployments that match the request. */
+  deployments?: ReadonlyArray<SasPortalDeployment>;
+  /** A pagination token returned from a previous call to ListDeployments that indicates from where listing should continue. If the field is missing or empty, it means there are no more deployments. */
+  nextPageToken?: string;
 }
 
-export const SasPortalValidateInstallerRequest: Schema.Schema<SasPortalValidateInstallerRequest> =
+export const SasPortalListDeploymentsResponse: Schema.Codec<SasPortalListDeploymentsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encodedSecret: Schema.optional(Schema.String),
-    secret: Schema.optional(Schema.String),
-    installerId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalValidateInstallerRequest" });
+    deployments: Schema.optional(Schema.Array(SasPortalDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListDeploymentsResponse" });
+
+export interface SasPortalProvisionDeploymentResponse {
+  /** Optional. Optional error message if the provisioning request is not successful. */
+  errorMessage?: string;
+}
+
+export const SasPortalProvisionDeploymentResponse: Schema.Codec<SasPortalProvisionDeploymentResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalProvisionDeploymentResponse" });
+
+export interface SasPortalOrganization {
+  /** Id of organization */
+  id?: string;
+  /** Name of organization */
+  displayName?: string;
+}
+
+export const SasPortalOrganization: Schema.Codec<SasPortalOrganization> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalOrganization" });
+
+export interface SasPortalListLegacyOrganizationsResponse {
+  /** Optional. Legacy SAS organizations. */
+  organizations?: ReadonlyArray<SasPortalOrganization>;
+}
+
+export const SasPortalListLegacyOrganizationsResponse: Schema.Codec<SasPortalListLegacyOrganizationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(Schema.Array(SasPortalOrganization)),
+  }).annotate({ identifier: "SasPortalListLegacyOrganizationsResponse" });
+
+export interface SasPortalMoveDeviceRequest {
+  /** Required. The name of the new parent resource node or customer to reparent the device under. */
+  destination?: string;
+}
+
+export const SasPortalMoveDeviceRequest: Schema.Codec<SasPortalMoveDeviceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMoveDeviceRequest" });
+
+export interface SasPortalMoveDeploymentRequest {
+  /** Required. The name of the new parent resource node or customer to reparent the deployment under. */
+  destination?: string;
+}
+
+export const SasPortalMoveDeploymentRequest: Schema.Codec<SasPortalMoveDeploymentRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMoveDeploymentRequest" });
+
+export interface SasPortalProvisionDeploymentRequest {
+  /** Optional. If this field is set, and a new SAS Portal Organization needs to be created, its display name will be set to the value of this field. */
+  newOrganizationDisplayName?: string;
+  /** Optional. If this field is set, and a new SAS Portal Deployment needs to be created, its display name will be set to the value of this field. */
+  newDeploymentDisplayName?: string;
+  /** Optional. If this field is set then a new deployment will be created under the organization specified by this id. */
+  organizationId?: string;
+}
+
+export const SasPortalProvisionDeploymentRequest: Schema.Codec<SasPortalProvisionDeploymentRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newOrganizationDisplayName: Schema.optional(Schema.String),
+    newDeploymentDisplayName: Schema.optional(Schema.String),
+    organizationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalProvisionDeploymentRequest" });
 
 export interface SasPortalTestPermissionsRequest {
   /** Required. The resource for which the permissions are being requested. */
@@ -250,575 +775,50 @@ export interface SasPortalTestPermissionsRequest {
   permissions?: ReadonlyArray<string>;
 }
 
-export const SasPortalTestPermissionsRequest: Schema.Schema<SasPortalTestPermissionsRequest> =
+export const SasPortalTestPermissionsRequest: Schema.Codec<SasPortalTestPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SasPortalTestPermissionsRequest" });
 
-export interface SasPortalCustomer {
-  /** Required. Name of the organization that the customer entity represents. */
-  displayName?: string;
-  /** Output only. Resource name of the customer. */
-  name?: string;
-  /** User IDs used by the devices belonging to this customer. */
-  sasUserIds?: ReadonlyArray<string>;
-}
+export interface SasPortalSetupSasAnalyticsMetadata {}
 
-export const SasPortalCustomer: Schema.Schema<SasPortalCustomer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "SasPortalCustomer" });
-
-export interface SasPortalChannelWithScore {
-  /** The frequency range of the channel. */
-  frequencyRange?: SasPortalFrequencyRange;
-  /** The channel score, normalized to be in the range [0,100]. */
-  score?: number;
-}
-
-export const SasPortalChannelWithScore: Schema.Schema<SasPortalChannelWithScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    frequencyRange: Schema.optional(SasPortalFrequencyRange),
-    score: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "SasPortalChannelWithScore" });
-
-export interface SasPortalDeviceModel {
-  /** The name of the device model. */
-  name?: string;
-  /** The name of the device vendor. */
-  vendor?: string;
-  /** The software version of the device. */
-  softwareVersion?: string;
-  /** The firmware version of the device. */
-  firmwareVersion?: string;
-  /** The hardware version of the device. */
-  hardwareVersion?: string;
-}
-
-export const SasPortalDeviceModel: Schema.Schema<SasPortalDeviceModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    vendor: Schema.optional(Schema.String),
-    softwareVersion: Schema.optional(Schema.String),
-    firmwareVersion: Schema.optional(Schema.String),
-    hardwareVersion: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalDeviceModel" });
-
-export interface SasPortalInstallationParams {
-  /** If present, this parameter specifies whether the CBSD is a CPE-CBSD or not. */
-  cpeCbsdIndication?: boolean;
-  /** 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees. This parameter is an unsigned integer having a value between 0 and 360 (degrees) inclusive; it is optional for Category A devices and conditional for Category B devices. */
-  antennaBeamwidth?: number;
-  /** Boresight direction of the horizontal plane of the antenna in degrees with respect to true north. The value of this parameter is an integer with a value between 0 and 359 inclusive. A value of 0 degrees means true north; a value of 90 degrees means east. This parameter is optional for Category A devices and conditional for Category B devices. */
-  antennaAzimuth?: number;
-  /** Device antenna height in meters. When the `heightType` parameter value is "AGL", the antenna height should be given relative to ground level. When the `heightType` parameter value is "AMSL", it is given with respect to WGS84 datum. */
-  height?: number;
-  /** Peak antenna gain in dBi. This parameter is a double with a value between -127 and +128 (dBi) inclusive. Part of Release 2 to support floating-point value */
-  antennaGain?: number;
-  /** Antenna downtilt in degrees and is an integer with a value between -90 and +90 inclusive; a negative value means the antenna is tilted up (above horizontal). This parameter is optional for Category A devices and conditional for Category B devices. */
-  antennaDowntilt?: number;
-  /** If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets. */
-  antennaModel?: string;
-  /** Specifies how the height is measured. */
-  heightType?:
-    | "HEIGHT_TYPE_UNSPECIFIED"
-    | "HEIGHT_TYPE_AGL"
-    | "HEIGHT_TYPE_AMSL"
-    | (string & {});
-  /** Whether the device antenna is indoor or not. `true`: indoor. `false`: outdoor. */
-  indoorDeployment?: boolean;
-  /** A positive number in meters to indicate accuracy of the device antenna vertical location. This optional parameter should only be present if its value is less than the FCC requirement of 3 meters. */
-  verticalAccuracy?: number;
-  /** This parameter is the maximum device EIRP in units of dBm/10MHz and is an integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not included, SAS interprets it as maximum allowable EIRP in units of dBm/10MHz for device category. */
-  eirpCapability?: number;
-  /** Longitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -180.000000 to +180.000000. Positive values represent longitudes east of the prime meridian; negative values west of the prime meridian. */
-  longitude?: number;
-  /** A positive number in meters to indicate accuracy of the device antenna horizontal location. This optional parameter should only be present if its value is less than the FCC requirement of 50 meters. */
-  horizontalAccuracy?: number;
-  /** Latitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -90.000000 to +90.000000. Positive values represent latitudes north of the equator; negative values south of the equator. */
-  latitude?: number;
-}
-
-export const SasPortalInstallationParams: Schema.Schema<SasPortalInstallationParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cpeCbsdIndication: Schema.optional(Schema.Boolean),
-    antennaBeamwidth: Schema.optional(Schema.Number),
-    antennaAzimuth: Schema.optional(Schema.Number),
-    height: Schema.optional(Schema.Number),
-    antennaGain: Schema.optional(Schema.Number),
-    antennaDowntilt: Schema.optional(Schema.Number),
-    antennaModel: Schema.optional(Schema.String),
-    heightType: Schema.optional(Schema.String),
-    indoorDeployment: Schema.optional(Schema.Boolean),
-    verticalAccuracy: Schema.optional(Schema.Number),
-    eirpCapability: Schema.optional(Schema.Number),
-    longitude: Schema.optional(Schema.Number),
-    horizontalAccuracy: Schema.optional(Schema.Number),
-    latitude: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "SasPortalInstallationParams" });
-
-export interface SasPortalDeviceConfig {
-  /** The identifier of a device user. */
-  userId?: string;
-  /** Output only. Whether the configuration has been signed by a CPI. */
-  isSigned?: boolean;
-  /** Information about this device model. */
-  model?: SasPortalDeviceModel;
-  /** Measurement reporting capabilities of the device. */
-  measurementCapabilities?: ReadonlyArray<
-    | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
-    | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
-    | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
-    | (string & {})
-  >;
-  /** Output only. The last time the device configuration was edited. */
-  updateTime?: string;
-  /** Installation parameters for the device. */
-  installationParams?: SasPortalInstallationParams;
-  /** FCC category of the device. */
-  category?:
-    | "DEVICE_CATEGORY_UNSPECIFIED"
-    | "DEVICE_CATEGORY_A"
-    | "DEVICE_CATEGORY_B"
-    | (string & {});
-  /** The call sign of the device operator. */
-  callSign?: string;
-  /** Information about this device's air interface. */
-  airInterface?: SasPortalDeviceAirInterface;
-  /** State of the configuration. */
-  state?: "DEVICE_CONFIG_STATE_UNSPECIFIED" | "DRAFT" | "FINAL" | (string & {});
-}
-
-export const SasPortalDeviceConfig: Schema.Schema<SasPortalDeviceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.optional(Schema.String),
-    isSigned: Schema.optional(Schema.Boolean),
-    model: Schema.optional(SasPortalDeviceModel),
-    measurementCapabilities: Schema.optional(Schema.Array(Schema.String)),
-    updateTime: Schema.optional(Schema.String),
-    installationParams: Schema.optional(SasPortalInstallationParams),
-    category: Schema.optional(Schema.String),
-    callSign: Schema.optional(Schema.String),
-    airInterface: Schema.optional(SasPortalDeviceAirInterface),
-    state: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalDeviceConfig" });
-
-export interface SasPortalDeviceGrant {
-  /** State of the grant. */
-  state?:
-    | "GRANT_STATE_UNSPECIFIED"
-    | "GRANT_STATE_GRANTED"
-    | "GRANT_STATE_TERMINATED"
-    | "GRANT_STATE_SUSPENDED"
-    | "GRANT_STATE_AUTHORIZED"
-    | "GRANT_STATE_EXPIRED"
-    | (string & {});
-  /** Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant. The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the average (RMS) EIRP that would be measured by the procedure defined in FCC part 96.41(e)(3). */
-  maxEirp?: number;
-  /** Grant Id. */
-  grantId?: string;
-  /** The expiration time of the grant. */
-  expireTime?: string;
-  /** If the grant is suspended, the reason(s) for suspension. */
-  suspensionReason?: ReadonlyArray<string>;
-  /** The transmit expiration time of the last heartbeat. */
-  lastHeartbeatTransmitExpireTime?: string;
-  /** The transmission frequency range. */
-  frequencyRange?: SasPortalFrequencyRange;
-  /** Type of channel used. */
-  channelType?:
-    | "CHANNEL_TYPE_UNSPECIFIED"
-    | "CHANNEL_TYPE_GAA"
-    | "CHANNEL_TYPE_PAL"
-    | (string & {});
-  /** The DPA move lists on which this grant appears. */
-  moveList?: ReadonlyArray<SasPortalDpaMoveList>;
-}
-
-export const SasPortalDeviceGrant: Schema.Schema<SasPortalDeviceGrant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    maxEirp: Schema.optional(Schema.Number),
-    grantId: Schema.optional(Schema.String),
-    expireTime: Schema.optional(Schema.String),
-    suspensionReason: Schema.optional(Schema.Array(Schema.String)),
-    lastHeartbeatTransmitExpireTime: Schema.optional(Schema.String),
-    frequencyRange: Schema.optional(SasPortalFrequencyRange),
-    channelType: Schema.optional(Schema.String),
-    moveList: Schema.optional(Schema.Array(SasPortalDpaMoveList)),
-  }).annotate({ identifier: "SasPortalDeviceGrant" });
-
-export interface SasPortalNrqzValidation {
-  /** Validation case ID. */
-  caseId?: string;
-  /** Device latitude that's associated with the validation. */
-  latitude?: number;
-  /** Device longitude that's associated with the validation. */
-  longitude?: number;
-  /** State of the NRQZ validation info. */
-  state?: "STATE_UNSPECIFIED" | "DRAFT" | "FINAL" | (string & {});
-  /** CPI who signed the validation. */
-  cpiId?: string;
-}
-
-export const SasPortalNrqzValidation: Schema.Schema<SasPortalNrqzValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    caseId: Schema.optional(Schema.String),
-    latitude: Schema.optional(Schema.Number),
-    longitude: Schema.optional(Schema.Number),
-    state: Schema.optional(Schema.String),
-    cpiId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalNrqzValidation" });
-
-export interface SasPortalDeviceMetadata {
-  /** Interference Coordination Group (ICG). A group of CBSDs that manage their own interference with the group. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
-  interferenceCoordinationGroup?: string;
-  /** If populated, the Antenna Model Pattern to use. Format is: `RecordCreatorId:PatternId` */
-  antennaModel?: string;
-  /** Output only. National Radio Quiet Zone validation info. */
-  nrqzValidation?: SasPortalNrqzValidation;
-  /** Common Channel Group (CCG). A group of CBSDs in the same ICG requesting a common primary channel assignment. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
-  commonChannelGroup?: string;
-  /** Output only. Set to `true` if a CPI has validated that they have coordinated with the National Quiet Zone office. */
-  nrqzValidated?: boolean;
-}
-
-export const SasPortalDeviceMetadata: Schema.Schema<SasPortalDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    interferenceCoordinationGroup: Schema.optional(Schema.String),
-    antennaModel: Schema.optional(Schema.String),
-    nrqzValidation: Schema.optional(SasPortalNrqzValidation),
-    commonChannelGroup: Schema.optional(Schema.String),
-    nrqzValidated: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "SasPortalDeviceMetadata" });
-
-export interface SasPortalDevice {
-  /** Output only. Current configuration of the device as registered to the SAS. */
-  activeConfig?: SasPortalDeviceConfig;
-  /** Output only. Device state. */
-  state?:
-    | "DEVICE_STATE_UNSPECIFIED"
-    | "RESERVED"
-    | "REGISTERED"
-    | "DEREGISTERED"
-    | (string & {});
-  /** Output only. Grants held by the device. */
-  grants?: ReadonlyArray<SasPortalDeviceGrant>;
-  /** Device display name. */
-  displayName?: string;
-  /** Output only. Current channels with scores. */
-  currentChannels?: ReadonlyArray<SasPortalChannelWithScore>;
-  /** The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid for FccID format. Accept underscores and periods because some test-SAS customers use them. */
-  fccId?: string;
-  /** A serial number assigned to the device by the device manufacturer. */
-  serialNumber?: string;
-  /** Device parameters that can be overridden by both SAS Portal and SAS registration requests. */
-  deviceMetadata?: SasPortalDeviceMetadata;
-  /** Configuration of the device, as specified via SAS Portal API. */
-  preloadedConfig?: SasPortalDeviceConfig;
-  /** Only ranges that are within the allowlists are available for new grants. */
-  grantRangeAllowlists?: ReadonlyArray<SasPortalFrequencyRange>;
-  /** Output only. The resource path name. */
-  name?: string;
-}
-
-export const SasPortalDevice: Schema.Schema<SasPortalDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    activeConfig: Schema.optional(SasPortalDeviceConfig),
-    state: Schema.optional(Schema.String),
-    grants: Schema.optional(Schema.Array(SasPortalDeviceGrant)),
-    displayName: Schema.optional(Schema.String),
-    currentChannels: Schema.optional(Schema.Array(SasPortalChannelWithScore)),
-    fccId: Schema.optional(Schema.String),
-    serialNumber: Schema.optional(Schema.String),
-    deviceMetadata: Schema.optional(SasPortalDeviceMetadata),
-    preloadedConfig: Schema.optional(SasPortalDeviceConfig),
-    grantRangeAllowlists: Schema.optional(
-      Schema.Array(SasPortalFrequencyRange),
-    ),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalDevice" });
-
-export interface SasPortalSignDeviceRequest {
-  /** Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set. */
-  device?: SasPortalDevice;
-}
-
-export const SasPortalSignDeviceRequest: Schema.Schema<SasPortalSignDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    device: Schema.optional(SasPortalDevice),
-  }).annotate({ identifier: "SasPortalSignDeviceRequest" });
-
-export interface SasPortalListDevicesResponse {
-  /** A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices. */
-  nextPageToken?: string;
-  /** The devices that match the request. */
-  devices?: ReadonlyArray<SasPortalDevice>;
-}
-
-export const SasPortalListDevicesResponse: Schema.Schema<SasPortalListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    devices: Schema.optional(Schema.Array(SasPortalDevice)),
-  }).annotate({ identifier: "SasPortalListDevicesResponse" });
-
-export interface SasPortalMoveDeviceRequest {
-  /** Required. The name of the new parent resource node or customer to reparent the device under. */
-  destination?: string;
-}
-
-export const SasPortalMoveDeviceRequest: Schema.Schema<SasPortalMoveDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destination: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalMoveDeviceRequest" });
-
-export interface SasPortalDeployment {
-  /** Output only. Resource name. */
-  name?: string;
-  /** The deployment's display name. */
-  displayName?: string;
-  /** User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID. */
-  sasUserIds?: ReadonlyArray<string>;
-  /** Output only. The FCC Registration Numbers (FRNs) copied from its direct parent. */
-  frns?: ReadonlyArray<string>;
-}
-
-export const SasPortalDeployment: Schema.Schema<SasPortalDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-    frns: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "SasPortalDeployment" });
-
-export interface SasPortalGetPolicyRequest {
-  /** Required. The resource for which the policy is being requested. */
-  resource?: string;
-}
-
-export const SasPortalGetPolicyRequest: Schema.Schema<SasPortalGetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalGetPolicyRequest" });
-
-export interface SasPortalListCustomersResponse {
-  /** The list of customers that match the request. */
-  customers?: ReadonlyArray<SasPortalCustomer>;
-  /** A pagination token returned from a previous call to ListCustomers that indicates from where listing should continue. If the field is missing or empty, it means there are no more customers. */
-  nextPageToken?: string;
-}
-
-export const SasPortalListCustomersResponse: Schema.Schema<SasPortalListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customers: Schema.optional(Schema.Array(SasPortalCustomer)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalListCustomersResponse" });
-
-export interface SasPortalValidateInstallerResponse {}
-
-export const SasPortalValidateInstallerResponse: Schema.Schema<SasPortalValidateInstallerResponse> =
+export const SasPortalSetupSasAnalyticsMetadata: Schema.Codec<SasPortalSetupSasAnalyticsMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SasPortalValidateInstallerResponse",
+    identifier: "SasPortalSetupSasAnalyticsMetadata",
   });
-
-export interface SasPortalListDeploymentsResponse {
-  /** A pagination token returned from a previous call to ListDeployments that indicates from where listing should continue. If the field is missing or empty, it means there are no more deployments. */
-  nextPageToken?: string;
-  /** The deployments that match the request. */
-  deployments?: ReadonlyArray<SasPortalDeployment>;
-}
-
-export const SasPortalListDeploymentsResponse: Schema.Schema<SasPortalListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    deployments: Schema.optional(Schema.Array(SasPortalDeployment)),
-  }).annotate({ identifier: "SasPortalListDeploymentsResponse" });
-
-export interface SasPortalUpdateSignedDeviceRequest {
-  /** Required. The JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
-  encodedDevice?: string;
-  /** Required. Unique installer ID (CPI ID) from the Certified Professional Installers database. */
-  installerId?: string;
-}
-
-export const SasPortalUpdateSignedDeviceRequest: Schema.Schema<SasPortalUpdateSignedDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    encodedDevice: Schema.optional(Schema.String),
-    installerId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalUpdateSignedDeviceRequest" });
-
-export interface SasPortalNode {
-  /** Output only. Resource name. */
-  name?: string;
-  /** The node's display name. */
-  displayName?: string;
-  /** User ids used by the devices belonging to this node. */
-  sasUserIds?: ReadonlyArray<string>;
-}
-
-export const SasPortalNode: Schema.Schema<SasPortalNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    displayName: Schema.optional(Schema.String),
-    sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "SasPortalNode" });
-
-export interface SasPortalListNodesResponse {
-  /** The nodes that match the request. */
-  nodes?: ReadonlyArray<SasPortalNode>;
-  /** A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes. */
-  nextPageToken?: string;
-}
-
-export const SasPortalListNodesResponse: Schema.Schema<SasPortalListNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nodes: Schema.optional(Schema.Array(SasPortalNode)),
-    nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalListNodesResponse" });
-
-export interface SasPortalMigrateOrganizationResponse {
-  /** Optional. A list of deployment association that were created for the migration, or current associations if they already exist. */
-  deploymentAssociation?: ReadonlyArray<SasPortalDeploymentAssociation>;
-}
-
-export const SasPortalMigrateOrganizationResponse: Schema.Schema<SasPortalMigrateOrganizationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deploymentAssociation: Schema.optional(
-      Schema.Array(SasPortalDeploymentAssociation),
-    ),
-  }).annotate({ identifier: "SasPortalMigrateOrganizationResponse" });
-
-export interface SasPortalGcpProjectDeployment {
-  /** Whether SAS analytics has been enabled. */
-  hasEnabledAnalytics?: boolean;
-  /** Deployment associated with the GCP project. */
-  deployment?: SasPortalDeployment;
-}
-
-export const SasPortalGcpProjectDeployment: Schema.Schema<SasPortalGcpProjectDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hasEnabledAnalytics: Schema.optional(Schema.Boolean),
-    deployment: Schema.optional(SasPortalDeployment),
-  }).annotate({ identifier: "SasPortalGcpProjectDeployment" });
-
-export interface SasPortalListGcpProjectDeploymentsResponse {
-  /** Optional. Deployments associated with the GCP project */
-  deployments?: ReadonlyArray<SasPortalGcpProjectDeployment>;
-}
-
-export const SasPortalListGcpProjectDeploymentsResponse: Schema.Schema<SasPortalListGcpProjectDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    deployments: Schema.optional(Schema.Array(SasPortalGcpProjectDeployment)),
-  }).annotate({ identifier: "SasPortalListGcpProjectDeploymentsResponse" });
 
 export interface SasPortalMoveNodeRequest {
   /** Required. The name of the new parent resource node or customer to reparent the node under. */
   destination?: string;
 }
 
-export const SasPortalMoveNodeRequest: Schema.Schema<SasPortalMoveNodeRequest> =
+export const SasPortalMoveNodeRequest: Schema.Codec<SasPortalMoveNodeRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
   }).annotate({ identifier: "SasPortalMoveNodeRequest" });
 
-export interface SasPortalMigrateOrganizationRequest {
-  /** Required. Id of the SAS organization to be migrated. */
-  organizationId?: string;
+export interface SasPortalOperation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: SasPortalStatus;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: Record<string, unknown>;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: Record<string, unknown>;
 }
 
-export const SasPortalMigrateOrganizationRequest: Schema.Schema<SasPortalMigrateOrganizationRequest> =
+export const SasPortalOperation: Schema.Codec<SasPortalOperation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organizationId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalMigrateOrganizationRequest" });
-
-export interface SasPortalEmpty {}
-
-export const SasPortalEmpty: Schema.Schema<SasPortalEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SasPortalEmpty",
-  });
-
-export interface SasPortalProvisionDeploymentRequest {
-  /** Optional. If this field is set, and a new SAS Portal Deployment needs to be created, its display name will be set to the value of this field. */
-  newDeploymentDisplayName?: string;
-  /** Optional. If this field is set then a new deployment will be created under the organization specified by this id. */
-  organizationId?: string;
-  /** Optional. If this field is set, and a new SAS Portal Organization needs to be created, its display name will be set to the value of this field. */
-  newOrganizationDisplayName?: string;
-}
-
-export const SasPortalProvisionDeploymentRequest: Schema.Schema<SasPortalProvisionDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    newDeploymentDisplayName: Schema.optional(Schema.String),
-    organizationId: Schema.optional(Schema.String),
-    newOrganizationDisplayName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalProvisionDeploymentRequest" });
-
-export interface SasPortalGenerateSecretRequest {}
-
-export const SasPortalGenerateSecretRequest: Schema.Schema<SasPortalGenerateSecretRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SasPortalGenerateSecretRequest",
-  });
-
-export interface SasPortalPolicy {
-  /** List of assignments */
-  assignments?: ReadonlyArray<SasPortalAssignment>;
-  /** The etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to GetPolicy, and systems are expected to put that etag in the request to SetPolicy to ensure that their change will be applied to the same version of the policy. If no etag is provided in the call to GetPolicy, then the existing policy is overwritten blindly. */
-  etag?: string;
-}
-
-export const SasPortalPolicy: Schema.Schema<SasPortalPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    assignments: Schema.optional(Schema.Array(SasPortalAssignment)),
-    etag: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalPolicy" });
-
-export interface SasPortalSetupSasAnalyticsResponse {}
-
-export const SasPortalSetupSasAnalyticsResponse: Schema.Schema<SasPortalSetupSasAnalyticsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "SasPortalSetupSasAnalyticsResponse",
-  });
-
-export interface SasPortalSetPolicyRequest {
-  /** Required. The policy to be applied to the `resource`. */
-  policy?: SasPortalPolicy;
-  /** Optional. Set the field as `true` to disable the onboarding notification. */
-  disableNotification?: boolean;
-  /** Required. The resource for which the policy is being specified. This policy replaces any existing policy. */
-  resource?: string;
-}
-
-export const SasPortalSetPolicyRequest: Schema.Schema<SasPortalSetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    policy: Schema.optional(SasPortalPolicy),
-    disableNotification: Schema.optional(Schema.Boolean),
-    resource: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalSetPolicyRequest" });
-
-export interface SasPortalSetupSasAnalyticsRequest {
-  /** Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional */
-  userId?: string;
-}
-
-export const SasPortalSetupSasAnalyticsRequest: Schema.Schema<SasPortalSetupSasAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    userId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalSetupSasAnalyticsRequest" });
-
-export interface SasPortalGenerateSecretResponse {
-  /** The secret generated by the string and used by ValidateInstaller. */
-  secret?: string;
-}
-
-export const SasPortalGenerateSecretResponse: Schema.Schema<SasPortalGenerateSecretResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    secret: Schema.optional(Schema.String),
-  }).annotate({ identifier: "SasPortalGenerateSecretResponse" });
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(SasPortalStatus),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "SasPortalOperation" });
 
 // ==========================================================================
 // Errors
@@ -874,109 +874,6 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface TestPoliciesRequest {
-  /** Request body */
-  body?: SasPortalTestPermissionsRequest;
-}
-
-export const TestPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(SasPortalTestPermissionsRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1alpha1/policies:test", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<TestPoliciesRequest>;
-
-export type TestPoliciesResponse = SasPortalTestPermissionsResponse;
-export const TestPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalTestPermissionsResponse;
-
-export type TestPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. */
-export const testPolicies: API.OperationMethod<
-  TestPoliciesRequest,
-  TestPoliciesResponse,
-  TestPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestPoliciesRequest,
-  output: TestPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SetPoliciesRequest {
-  /** Request body */
-  body?: SasPortalSetPolicyRequest;
-}
-
-export const SetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(SasPortalSetPolicyRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1alpha1/policies:set", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<SetPoliciesRequest>;
-
-export type SetPoliciesResponse = SasPortalPolicy;
-export const SetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
-
-export type SetPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy. */
-export const setPolicies: API.OperationMethod<
-  SetPoliciesRequest,
-  SetPoliciesResponse,
-  SetPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetPoliciesRequest,
-  output: SetPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetPoliciesRequest {
-  /** Request body */
-  body?: SasPortalGetPolicyRequest;
-}
-
-export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  body: Schema.optional(SasPortalGetPolicyRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1alpha1/policies:get", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<GetPoliciesRequest>;
-
-export type GetPoliciesResponse = SasPortalPolicy;
-export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
-
-export type GetPoliciesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getPolicies: API.OperationMethod<
-  GetPoliciesRequest,
-  GetPoliciesResponse,
-  GetPoliciesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPoliciesRequest,
-  output: GetPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface GetNodesRequest {
   /** Required. The name of the node. */
   name: string;
@@ -987,7 +884,7 @@ export const GetNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNodesRequest>;
+) as unknown as Schema.Codec<GetNodesRequest>;
 
 export type GetNodesResponse = SasPortalNode;
 export const GetNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
@@ -1006,326 +903,43 @@ export const getNodes: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface GetNodesDeploymentsRequest {
-  /** Required. The name of the deployment. */
-  name: string;
-}
-
-export const GetNodesDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetNodesDeploymentsRequest>;
-
-export type GetNodesDeploymentsResponse = SasPortalDeployment;
-export const GetNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
-
-export type GetNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a requested deployment. */
-export const getNodesDeployments: API.OperationMethod<
-  GetNodesDeploymentsRequest,
-  GetNodesDeploymentsResponse,
-  GetNodesDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetNodesDeploymentsRequest,
-  output: GetNodesDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteNodesDeploymentsRequest {
-  /** Required. The name of the deployment. */
-  name: string;
-}
-
-export const DeleteNodesDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteNodesDeploymentsRequest>;
-
-export type DeleteNodesDeploymentsResponse = SasPortalEmpty;
-export const DeleteNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
-
-export type DeleteNodesDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a deployment. */
-export const deleteNodesDeployments: API.OperationMethod<
-  DeleteNodesDeploymentsRequest,
-  DeleteNodesDeploymentsResponse,
-  DeleteNodesDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteNodesDeploymentsRequest,
-  output: DeleteNodesDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListNodesDeploymentsRequest {
-  /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
-  parent: string;
-  /** The maximum number of deployments to return in the response. */
+export interface ListNodesDevicesRequest {
+  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
-  /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
-  filter?: string;
-}
-
-export const ListNodesDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
-    svc,
-  ) as unknown as Schema.Schema<ListNodesDeploymentsRequest>;
-
-export type ListNodesDeploymentsResponse = SasPortalListDeploymentsResponse;
-export const ListNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
-
-export type ListNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists deployments. */
-export const listNodesDeployments: API.PaginatedOperationMethod<
-  ListNodesDeploymentsRequest,
-  ListNodesDeploymentsResponse,
-  ListNodesDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesDeploymentsRequest,
-  output: ListNodesDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface MoveNodesDeploymentsRequest {
-  /** Required. The name of the deployment to move. */
-  name: string;
-  /** Request body */
-  body?: SasPortalMoveDeploymentRequest;
-}
-
-export const MoveNodesDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalMoveDeploymentRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<MoveNodesDeploymentsRequest>;
-
-export type MoveNodesDeploymentsResponse = SasPortalOperation;
-export const MoveNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MoveNodesDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a deployment under another node or customer. */
-export const moveNodesDeployments: API.OperationMethod<
-  MoveNodesDeploymentsRequest,
-  MoveNodesDeploymentsResponse,
-  MoveNodesDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveNodesDeploymentsRequest,
-  output: MoveNodesDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchNodesDeploymentsRequest {
-  /** Output only. Resource name. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: SasPortalDeployment;
-}
-
-export const PatchNodesDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchNodesDeploymentsRequest>;
-
-export type PatchNodesDeploymentsResponse = SasPortalDeployment;
-export const PatchNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
-
-export type PatchNodesDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing deployment. */
-export const patchNodesDeployments: API.OperationMethod<
-  PatchNodesDeploymentsRequest,
-  PatchNodesDeploymentsResponse,
-  PatchNodesDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchNodesDeploymentsRequest,
-  output: PatchNodesDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateNodesDeploymentsDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalDevice;
-}
-
-export const CreateNodesDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/devices",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateNodesDeploymentsDevicesRequest>;
-
-export type CreateNodesDeploymentsDevicesResponse = SasPortalDevice;
-export const CreateNodesDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type CreateNodesDeploymentsDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a device under a node or customer. */
-export const createNodesDeploymentsDevices: API.OperationMethod<
-  CreateNodesDeploymentsDevicesRequest,
-  CreateNodesDeploymentsDevicesResponse,
-  CreateNodesDeploymentsDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateNodesDeploymentsDevicesRequest,
-  output: CreateNodesDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateSignedNodesDeploymentsDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalCreateSignedDeviceRequest;
-}
-
-export const CreateSignedNodesDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/devices:createSigned",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesDeploymentsDevicesRequest>;
-
-export type CreateSignedNodesDeploymentsDevicesResponse = SasPortalDevice;
-export const CreateSignedNodesDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type CreateSignedNodesDeploymentsDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a signed device under a node or customer. */
-export const createSignedNodesDeploymentsDevices: API.OperationMethod<
-  CreateSignedNodesDeploymentsDevicesRequest,
-  CreateSignedNodesDeploymentsDevicesResponse,
-  CreateSignedNodesDeploymentsDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateSignedNodesDeploymentsDevicesRequest,
-  output: CreateSignedNodesDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListNodesDeploymentsDevicesRequest {
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
   /** Required. The name of the parent resource. */
   parent: string;
-  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
-  pageSize?: number;
 }
 
-export const ListNodesDeploymentsDevicesRequest =
+export const ListNodesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesDevicesRequest>;
 
-export type ListNodesDeploymentsDevicesResponse = SasPortalListDevicesResponse;
-export const ListNodesDeploymentsDevicesResponse =
+export type ListNodesDevicesResponse = SasPortalListDevicesResponse;
+export const ListNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListNodesDeploymentsDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+export type ListNodesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices under a node or customer. */
-export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
-  ListNodesDeploymentsDevicesRequest,
-  ListNodesDeploymentsDevicesResponse,
-  ListNodesDeploymentsDevicesError,
+export const listNodesDevices: API.PaginatedOperationMethod<
+  ListNodesDevicesRequest,
+  ListNodesDevicesResponse,
+  ListNodesDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesDeploymentsDevicesRequest,
-  output: ListNodesDeploymentsDevicesResponse,
+  input: ListNodesDevicesRequest,
+  output: ListNodesDevicesResponse,
   errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
@@ -1345,7 +959,7 @@ export const GetNodesDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
   svc,
-) as unknown as Schema.Schema<GetNodesDevicesRequest>;
+) as unknown as Schema.Codec<GetNodesDevicesRequest>;
 
 export type GetNodesDevicesResponse = SasPortalDevice;
 export const GetNodesDevicesResponse =
@@ -1383,7 +997,7 @@ export const CreateNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesDevicesRequest>;
 
 export type CreateNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesDevicesResponse =
@@ -1408,6 +1022,174 @@ export const createNodesDevices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface PatchNodesDevicesRequest {
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Output only. The resource path name. */
+  name: string;
+  /** Request body */
+  body?: SasPortalDevice;
+}
+
+export const PatchNodesDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchNodesDevicesRequest>;
+
+export type PatchNodesDevicesResponse = SasPortalDevice;
+export const PatchNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type PatchNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a device. */
+export const patchNodesDevices: API.OperationMethod<
+  PatchNodesDevicesRequest,
+  PatchNodesDevicesResponse,
+  PatchNodesDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchNodesDevicesRequest,
+  output: PatchNodesDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteNodesDevicesRequest {
+  /** Required. The name of the device. */
+  name: string;
+}
+
+export const DeleteNodesDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteNodesDevicesRequest>;
+
+export type DeleteNodesDevicesResponse = SasPortalEmpty;
+export const DeleteNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type DeleteNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a device. */
+export const deleteNodesDevices: API.OperationMethod<
+  DeleteNodesDevicesRequest,
+  DeleteNodesDevicesResponse,
+  DeleteNodesDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteNodesDevicesRequest,
+  output: DeleteNodesDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateSignedNodesDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalCreateSignedDeviceRequest;
+}
+
+export const CreateSignedNodesDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices:createSigned",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateSignedNodesDevicesRequest>;
+
+export type CreateSignedNodesDevicesResponse = SasPortalDevice;
+export const CreateSignedNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type CreateSignedNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a signed device under a node or customer. */
+export const createSignedNodesDevices: API.OperationMethod<
+  CreateSignedNodesDevicesRequest,
+  CreateSignedNodesDevicesResponse,
+  CreateSignedNodesDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateSignedNodesDevicesRequest,
+  output: CreateSignedNodesDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateSignedNodesDevicesRequest {
+  /** Required. The name of the device to update. */
+  name: string;
+  /** Request body */
+  body?: SasPortalUpdateSignedDeviceRequest;
+}
+
+export const UpdateSignedNodesDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1alpha1/{+name}:updateSigned",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateSignedNodesDevicesRequest>;
+
+export type UpdateSignedNodesDevicesResponse = SasPortalDevice;
+export const UpdateSignedNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type UpdateSignedNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a signed device. */
+export const updateSignedNodesDevices: API.OperationMethod<
+  UpdateSignedNodesDevicesRequest,
+  UpdateSignedNodesDevicesResponse,
+  UpdateSignedNodesDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSignedNodesDevicesRequest,
+  output: UpdateSignedNodesDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface MoveNodesDevicesRequest {
   /** Required. The name of the device to move. */
   name: string;
@@ -1422,7 +1204,7 @@ export const MoveNodesDevicesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<MoveNodesDevicesRequest>;
 
 export type MoveNodesDevicesResponse = SasPortalOperation;
 export const MoveNodesDevicesResponse =
@@ -1465,7 +1247,7 @@ export const SignDeviceNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SignDeviceNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<SignDeviceNodesDevicesRequest>;
 
 export type SignDeviceNodesDevicesResponse = SasPortalEmpty;
 export const SignDeviceNodesDevicesResponse =
@@ -1490,95 +1272,253 @@ export const signDeviceNodesDevices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface DeleteNodesDevicesRequest {
-  /** Required. The name of the device. */
+export interface PatchNodesDeploymentsRequest {
+  /** Output only. Resource name. */
+  name: string;
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: SasPortalDeployment;
+}
+
+export const PatchNodesDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchNodesDeploymentsRequest>;
+
+export type PatchNodesDeploymentsResponse = SasPortalDeployment;
+export const PatchNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+
+export type PatchNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing deployment. */
+export const patchNodesDeployments: API.OperationMethod<
+  PatchNodesDeploymentsRequest,
+  PatchNodesDeploymentsResponse,
+  PatchNodesDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchNodesDeploymentsRequest,
+  output: PatchNodesDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MoveNodesDeploymentsRequest {
+  /** Required. The name of the deployment to move. */
+  name: string;
+  /** Request body */
+  body?: SasPortalMoveDeploymentRequest;
+}
+
+export const MoveNodesDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalMoveDeploymentRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<MoveNodesDeploymentsRequest>;
+
+export type MoveNodesDeploymentsResponse = SasPortalOperation;
+export const MoveNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
+
+export type MoveNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a deployment under another node or customer. */
+export const moveNodesDeployments: API.OperationMethod<
+  MoveNodesDeploymentsRequest,
+  MoveNodesDeploymentsResponse,
+  MoveNodesDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveNodesDeploymentsRequest,
+  output: MoveNodesDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteNodesDeploymentsRequest {
+  /** Required. The name of the deployment. */
   name: string;
 }
 
-export const DeleteNodesDevicesRequest =
+export const DeleteNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesDeploymentsRequest>;
 
-export type DeleteNodesDevicesResponse = SasPortalEmpty;
-export const DeleteNodesDevicesResponse =
+export type DeleteNodesDeploymentsResponse = SasPortalEmpty;
+export const DeleteNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteNodesDevicesError =
+export type DeleteNodesDeploymentsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a device. */
-export const deleteNodesDevices: API.OperationMethod<
-  DeleteNodesDevicesRequest,
-  DeleteNodesDevicesResponse,
-  DeleteNodesDevicesError,
+/** Deletes a deployment. */
+export const deleteNodesDeployments: API.OperationMethod<
+  DeleteNodesDeploymentsRequest,
+  DeleteNodesDeploymentsResponse,
+  DeleteNodesDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteNodesDevicesRequest,
-  output: DeleteNodesDevicesResponse,
+  input: DeleteNodesDeploymentsRequest,
+  output: DeleteNodesDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface UpdateSignedNodesDevicesRequest {
-  /** Required. The name of the device to update. */
-  name: string;
-  /** Request body */
-  body?: SasPortalUpdateSignedDeviceRequest;
+export interface ListNodesDeploymentsRequest {
+  /** The maximum number of deployments to return in the response. */
+  pageSize?: number;
+  /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
+  parent: string;
+  /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
+  filter?: string;
 }
 
-export const UpdateSignedNodesDevicesRequest =
+export const ListNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/{+name}:updateSigned",
-      hasBody: true,
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<UpdateSignedNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesDeploymentsRequest>;
 
-export type UpdateSignedNodesDevicesResponse = SasPortalDevice;
-export const UpdateSignedNodesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+export type ListNodesDeploymentsResponse = SasPortalListDeploymentsResponse;
+export const ListNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
 
-export type UpdateSignedNodesDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type ListNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
-/** Updates a signed device. */
-export const updateSignedNodesDevices: API.OperationMethod<
-  UpdateSignedNodesDevicesRequest,
-  UpdateSignedNodesDevicesResponse,
-  UpdateSignedNodesDevicesError,
+/** Lists deployments. */
+export const listNodesDeployments: API.PaginatedOperationMethod<
+  ListNodesDeploymentsRequest,
+  ListNodesDeploymentsResponse,
+  ListNodesDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateSignedNodesDevicesRequest,
-  output: UpdateSignedNodesDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNodesDeploymentsRequest,
+  output: ListNodesDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
-export interface CreateSignedNodesDevicesRequest {
+export interface GetNodesDeploymentsRequest {
+  /** Required. The name of the deployment. */
+  name: string;
+}
+
+export const GetNodesDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetNodesDeploymentsRequest>;
+
+export type GetNodesDeploymentsResponse = SasPortalDeployment;
+export const GetNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+
+export type GetNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a requested deployment. */
+export const getNodesDeployments: API.OperationMethod<
+  GetNodesDeploymentsRequest,
+  GetNodesDeploymentsResponse,
+  GetNodesDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetNodesDeploymentsRequest,
+  output: GetNodesDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListNodesDeploymentsDevicesRequest {
+  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
+  pageSize?: number;
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
+  filter?: string;
+}
+
+export const ListNodesDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
+    svc,
+  ) as unknown as Schema.Codec<ListNodesDeploymentsDevicesRequest>;
+
+export type ListNodesDeploymentsDevicesResponse = SasPortalListDevicesResponse;
+export const ListNodesDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
+
+export type ListNodesDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists devices under a node or customer. */
+export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
+  ListNodesDeploymentsDevicesRequest,
+  ListNodesDeploymentsDevicesResponse,
+  ListNodesDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNodesDeploymentsDevicesRequest,
+  output: ListNodesDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateSignedNodesDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
 
-export const CreateSignedNodesDevicesRequest =
+export const CreateSignedNodesDeploymentsDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
@@ -1591,13 +1531,13 @@ export const CreateSignedNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedNodesDeploymentsDevicesRequest>;
 
-export type CreateSignedNodesDevicesResponse = SasPortalDevice;
-export const CreateSignedNodesDevicesResponse =
+export type CreateSignedNodesDeploymentsDevicesResponse = SasPortalDevice;
+export const CreateSignedNodesDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedNodesDevicesError =
+export type CreateSignedNodesDeploymentsDevicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -1605,101 +1545,87 @@ export type CreateSignedNodesDevicesError =
   | Conflict;
 
 /** Creates a signed device under a node or customer. */
-export const createSignedNodesDevices: API.OperationMethod<
-  CreateSignedNodesDevicesRequest,
-  CreateSignedNodesDevicesResponse,
-  CreateSignedNodesDevicesError,
+export const createSignedNodesDeploymentsDevices: API.OperationMethod<
+  CreateSignedNodesDeploymentsDevicesRequest,
+  CreateSignedNodesDeploymentsDevicesResponse,
+  CreateSignedNodesDeploymentsDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateSignedNodesDevicesRequest,
-  output: CreateSignedNodesDevicesResponse,
+  input: CreateSignedNodesDeploymentsDevicesRequest,
+  output: CreateSignedNodesDeploymentsDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchNodesDevicesRequest {
-  /** Output only. The resource path name. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
+export interface CreateNodesDeploymentsDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
   /** Request body */
   body?: SasPortalDevice;
 }
 
-export const PatchNodesDevicesRequest =
+export const CreateNodesDeploymentsDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<PatchNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesDeploymentsDevicesRequest>;
 
-export type PatchNodesDevicesResponse = SasPortalDevice;
-export const PatchNodesDevicesResponse =
+export type CreateNodesDeploymentsDevicesResponse = SasPortalDevice;
+export const CreateNodesDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type PatchNodesDevicesError =
+export type CreateNodesDeploymentsDevicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a device. */
-export const patchNodesDevices: API.OperationMethod<
-  PatchNodesDevicesRequest,
-  PatchNodesDevicesResponse,
-  PatchNodesDevicesError,
+/** Creates a device under a node or customer. */
+export const createNodesDeploymentsDevices: API.OperationMethod<
+  CreateNodesDeploymentsDevicesRequest,
+  CreateNodesDeploymentsDevicesResponse,
+  CreateNodesDeploymentsDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchNodesDevicesRequest,
-  output: PatchNodesDevicesResponse,
+  input: CreateNodesDeploymentsDevicesRequest,
+  output: CreateNodesDeploymentsDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListNodesDevicesRequest {
-  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
-  filter?: string;
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
-  pageSize?: number;
+export interface GetNodesNodesRequest {
+  /** Required. The name of the node. */
+  name: string;
 }
 
-export const ListNodesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
-    svc,
-  ) as unknown as Schema.Schema<ListNodesDevicesRequest>;
+export const GetNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetNodesNodesRequest>;
 
-export type ListNodesDevicesResponse = SasPortalListDevicesResponse;
-export const ListNodesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
+export type GetNodesNodesResponse = SasPortalNode;
+export const GetNodesNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type ListNodesDevicesError = DefaultErrors | NotFound | Forbidden;
+export type GetNodesNodesError = DefaultErrors | NotFound | Forbidden;
 
-/** Lists devices under a node or customer. */
-export const listNodesDevices: API.PaginatedOperationMethod<
-  ListNodesDevicesRequest,
-  ListNodesDevicesResponse,
-  ListNodesDevicesError,
+/** Returns a requested node. */
+export const getNodesNodes: API.OperationMethod<
+  GetNodesNodesRequest,
+  GetNodesNodesResponse,
+  GetNodesNodesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesDevicesRequest,
-  output: ListNodesDevicesResponse,
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetNodesNodesRequest,
+  output: GetNodesNodesResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface DeleteNodesNodesRequest {
@@ -1713,7 +1639,7 @@ export const DeleteNodesNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteNodesNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteNodesNodesRequest>;
 
 export type DeleteNodesNodesResponse = SasPortalEmpty;
 export const DeleteNodesNodesResponse =
@@ -1739,10 +1665,10 @@ export const deleteNodesNodes: API.OperationMethod<
 }));
 
 export interface ListNodesNodesRequest {
-  /** Required. The parent resource name, for example, "nodes/1". */
-  parent: string;
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
+  /** Required. The parent resource name, for example, "nodes/1". */
+  parent: string;
   /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
@@ -1750,14 +1676,14 @@ export interface ListNodesNodesRequest {
 }
 
 export const ListNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  parent: Schema.String.pipe(T.HttpPath("parent")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  parent: Schema.String.pipe(T.HttpPath("parent")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
   svc,
-) as unknown as Schema.Schema<ListNodesNodesRequest>;
+) as unknown as Schema.Codec<ListNodesNodesRequest>;
 
 export type ListNodesNodesResponse = SasPortalListNodesResponse;
 export const ListNodesNodesResponse =
@@ -1795,7 +1721,7 @@ export const CreateNodesNodesRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesRequest>;
 
 export type CreateNodesNodesResponse = SasPortalNode;
 export const CreateNodesNodesResponse =
@@ -1820,44 +1746,6 @@ export const createNodesNodes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface MoveNodesNodesRequest {
-  /** Required. The name of the node to move. */
-  name: string;
-  /** Request body */
-  body?: SasPortalMoveNodeRequest;
-}
-
-export const MoveNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-  body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<MoveNodesNodesRequest>;
-
-export type MoveNodesNodesResponse = SasPortalOperation;
-export const MoveNodesNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MoveNodesNodesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a node under another node or customer. */
-export const moveNodesNodes: API.OperationMethod<
-  MoveNodesNodesRequest,
-  MoveNodesNodesResponse,
-  MoveNodesNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveNodesNodesRequest,
-  output: MoveNodesNodesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface PatchNodesNodesRequest {
   /** Output only. Resource name. */
   name: string;
@@ -1876,7 +1764,7 @@ export const PatchNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<PatchNodesNodesRequest>;
+) as unknown as Schema.Codec<PatchNodesNodesRequest>;
 
 export type PatchNodesNodesResponse = SasPortalNode;
 export const PatchNodesNodesResponse =
@@ -1901,101 +1789,65 @@ export const patchNodesNodes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetNodesNodesRequest {
-  /** Required. The name of the node. */
+export interface MoveNodesNodesRequest {
+  /** Required. The name of the node to move. */
   name: string;
-}
-
-export const GetNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetNodesNodesRequest>;
-
-export type GetNodesNodesResponse = SasPortalNode;
-export const GetNodesNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
-
-export type GetNodesNodesError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a requested node. */
-export const getNodesNodes: API.OperationMethod<
-  GetNodesNodesRequest,
-  GetNodesNodesResponse,
-  GetNodesNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetNodesNodesRequest,
-  output: GetNodesNodesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateSignedNodesNodesDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
   /** Request body */
-  body?: SasPortalCreateSignedDeviceRequest;
+  body?: SasPortalMoveNodeRequest;
 }
 
-export const CreateSignedNodesNodesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/devices:createSigned",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateSignedNodesNodesDevicesRequest>;
+export const MoveNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
+  svc,
+) as unknown as Schema.Codec<MoveNodesNodesRequest>;
 
-export type CreateSignedNodesNodesDevicesResponse = SasPortalDevice;
-export const CreateSignedNodesNodesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+export type MoveNodesNodesResponse = SasPortalOperation;
+export const MoveNodesNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type CreateSignedNodesNodesDevicesError =
+export type MoveNodesNodesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a signed device under a node or customer. */
-export const createSignedNodesNodesDevices: API.OperationMethod<
-  CreateSignedNodesNodesDevicesRequest,
-  CreateSignedNodesNodesDevicesResponse,
-  CreateSignedNodesNodesDevicesError,
+/** Moves a node under another node or customer. */
+export const moveNodesNodes: API.OperationMethod<
+  MoveNodesNodesRequest,
+  MoveNodesNodesResponse,
+  MoveNodesNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateSignedNodesNodesDevicesRequest,
-  output: CreateSignedNodesNodesDevicesResponse,
+  input: MoveNodesNodesRequest,
+  output: MoveNodesNodesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodesDevicesRequest {
+  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
+  pageSize?: number;
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
   /** Required. The name of the parent resource. */
   parent: string;
-  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
-  pageSize?: number;
 }
 
 export const ListNodesNodesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodesDevicesRequest>;
 
 export type ListNodesNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesNodesDevicesResponse =
@@ -2037,7 +1889,7 @@ export const CreateNodesNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesDevicesRequest>;
 
 export type CreateNodesNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesNodesDevicesResponse =
@@ -2062,94 +1914,99 @@ export const createNodesNodesDevices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListNodesNodesNodesRequest {
-  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
-  filter?: string;
-  /** Required. The parent resource name, for example, "nodes/1". */
-  parent: string;
-  /** The maximum number of nodes to return in the response. */
-  pageSize?: number;
-}
-
-export const ListNodesNodesNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
-    svc,
-  ) as unknown as Schema.Schema<ListNodesNodesNodesRequest>;
-
-export type ListNodesNodesNodesResponse = SasPortalListNodesResponse;
-export const ListNodesNodesNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
-
-export type ListNodesNodesNodesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists nodes. */
-export const listNodesNodesNodes: API.PaginatedOperationMethod<
-  ListNodesNodesNodesRequest,
-  ListNodesNodesNodesResponse,
-  ListNodesNodesNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesNodesNodesRequest,
-  output: ListNodesNodesNodesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateNodesNodesNodesRequest {
-  /** Required. The parent resource name where the node is to be created. */
+export interface CreateSignedNodesNodesDevicesRequest {
+  /** Required. The name of the parent resource. */
   parent: string;
   /** Request body */
-  body?: SasPortalNode;
+  body?: SasPortalCreateSignedDeviceRequest;
 }
 
-export const CreateNodesNodesNodesRequest =
+export const CreateSignedNodesNodesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
+    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices:createSigned",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedNodesNodesDevicesRequest>;
 
-export type CreateNodesNodesNodesResponse = SasPortalNode;
-export const CreateNodesNodesNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
+export type CreateSignedNodesNodesDevicesResponse = SasPortalDevice;
+export const CreateSignedNodesNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateNodesNodesNodesError =
+export type CreateSignedNodesNodesDevicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new node. */
-export const createNodesNodesNodes: API.OperationMethod<
-  CreateNodesNodesNodesRequest,
-  CreateNodesNodesNodesResponse,
-  CreateNodesNodesNodesError,
+/** Creates a signed device under a node or customer. */
+export const createSignedNodesNodesDevices: API.OperationMethod<
+  CreateSignedNodesNodesDevicesRequest,
+  CreateSignedNodesNodesDevicesResponse,
+  CreateSignedNodesNodesDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateNodesNodesNodesRequest,
-  output: CreateNodesNodesNodesResponse,
+  input: CreateSignedNodesNodesDevicesRequest,
+  output: CreateSignedNodesNodesDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateNodesNodesDeploymentsRequest {
+  /** Required. The parent resource name where the deployment is to be created. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalDeployment;
+}
+
+export const CreateNodesNodesDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/deployments",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateNodesNodesDeploymentsRequest>;
+
+export type CreateNodesNodesDeploymentsResponse = SasPortalDeployment;
+export const CreateNodesNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+
+export type CreateNodesNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a new deployment. */
+export const createNodesNodesDeployments: API.OperationMethod<
+  CreateNodesNodesDeploymentsRequest,
+  CreateNodesNodesDeploymentsResponse,
+  CreateNodesNodesDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateNodesNodesDeploymentsRequest,
+  output: CreateNodesNodesDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodesDeploymentsRequest {
-  /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
-  parent: string;
   /** The maximum number of deployments to return in the response. */
   pageSize?: number;
+  /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
+  parent: string;
   /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
@@ -2158,14 +2015,14 @@ export interface ListNodesNodesDeploymentsRequest {
 
 export const ListNodesNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListNodesNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListNodesNodesDeploymentsRequest>;
 
 export type ListNodesNodesDeploymentsResponse =
   SasPortalListDeploymentsResponse;
@@ -2193,47 +2050,649 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CreateNodesNodesDeploymentsRequest {
-  /** Required. The parent resource name where the deployment is to be created. */
+export interface CreateNodesNodesNodesRequest {
+  /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
-  body?: SasPortalDeployment;
+  body?: SasPortalNode;
 }
 
-export const CreateNodesNodesDeploymentsRequest =
+export const CreateNodesNodesNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
+    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/deployments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateNodesNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateNodesNodesNodesRequest>;
 
-export type CreateNodesNodesDeploymentsResponse = SasPortalDeployment;
-export const CreateNodesNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+export type CreateNodesNodesNodesResponse = SasPortalNode;
+export const CreateNodesNodesNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateNodesNodesDeploymentsError =
+export type CreateNodesNodesNodesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new deployment. */
-export const createNodesNodesDeployments: API.OperationMethod<
-  CreateNodesNodesDeploymentsRequest,
-  CreateNodesNodesDeploymentsResponse,
-  CreateNodesNodesDeploymentsError,
+/** Creates a new node. */
+export const createNodesNodesNodes: API.OperationMethod<
+  CreateNodesNodesNodesRequest,
+  CreateNodesNodesNodesResponse,
+  CreateNodesNodesNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateNodesNodesDeploymentsRequest,
-  output: CreateNodesNodesDeploymentsResponse,
+  input: CreateNodesNodesNodesRequest,
+  output: CreateNodesNodesNodesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListNodesNodesNodesRequest {
+  /** Required. The parent resource name, for example, "nodes/1". */
+  parent: string;
+  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
+  filter?: string;
+  /** The maximum number of nodes to return in the response. */
+  pageSize?: number;
+}
+
+export const ListNodesNodesNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
+    svc,
+  ) as unknown as Schema.Codec<ListNodesNodesNodesRequest>;
+
+export type ListNodesNodesNodesResponse = SasPortalListNodesResponse;
+export const ListNodesNodesNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
+
+export type ListNodesNodesNodesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists nodes. */
+export const listNodesNodesNodes: API.PaginatedOperationMethod<
+  ListNodesNodesNodesRequest,
+  ListNodesNodesNodesResponse,
+  ListNodesNodesNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListNodesNodesNodesRequest,
+  output: ListNodesNodesNodesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface ValidateInstallerRequest {
+  /** Request body */
+  body?: SasPortalValidateInstallerRequest;
+}
+
+export const ValidateInstallerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(SasPortalValidateInstallerRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/installer:validate",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ValidateInstallerRequest>;
+
+export type ValidateInstallerResponse = SasPortalValidateInstallerResponse;
+export const ValidateInstallerResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalValidateInstallerResponse;
+
+export type ValidateInstallerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Validates the identity of a Certified Professional Installer (CPI). */
+export const validateInstaller: API.OperationMethod<
+  ValidateInstallerRequest,
+  ValidateInstallerResponse,
+  ValidateInstallerError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ValidateInstallerRequest,
+  output: ValidateInstallerResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GenerateSecretInstallerRequest {
+  /** Request body */
+  body?: SasPortalGenerateSecretRequest;
+}
+
+export const GenerateSecretInstallerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(SasPortalGenerateSecretRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/installer:generateSecret",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<GenerateSecretInstallerRequest>;
+
+export type GenerateSecretInstallerResponse = SasPortalGenerateSecretResponse;
+export const GenerateSecretInstallerResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalGenerateSecretResponse;
+
+export type GenerateSecretInstallerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Generates a secret to be used with the ValidateInstaller. */
+export const generateSecretInstaller: API.OperationMethod<
+  GenerateSecretInstallerRequest,
+  GenerateSecretInstallerResponse,
+  GenerateSecretInstallerError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateSecretInstallerRequest,
+  output: GenerateSecretInstallerResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetDeploymentsRequest {
+  /** Required. The name of the deployment. */
+  name: string;
+}
+
+export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetDeploymentsRequest>;
+
+export type GetDeploymentsResponse = SasPortalDeployment;
+export const GetDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+
+export type GetDeploymentsError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a requested deployment. */
+export const getDeployments: API.OperationMethod<
+  GetDeploymentsRequest,
+  GetDeploymentsResponse,
+  GetDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDeploymentsRequest,
+  output: GetDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchDeploymentsDevicesRequest {
+  /** Output only. The resource path name. */
+  name: string;
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: SasPortalDevice;
+}
+
+export const PatchDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchDeploymentsDevicesRequest>;
+
+export type PatchDeploymentsDevicesResponse = SasPortalDevice;
+export const PatchDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type PatchDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a device. */
+export const patchDeploymentsDevices: API.OperationMethod<
+  PatchDeploymentsDevicesRequest,
+  PatchDeploymentsDevicesResponse,
+  PatchDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchDeploymentsDevicesRequest,
+  output: PatchDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MoveDeploymentsDevicesRequest {
+  /** Required. The name of the device to move. */
+  name: string;
+  /** Request body */
+  body?: SasPortalMoveDeviceRequest;
+}
+
+export const MoveDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<MoveDeploymentsDevicesRequest>;
+
+export type MoveDeploymentsDevicesResponse = SasPortalOperation;
+export const MoveDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
+
+export type MoveDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a device under another node or customer. */
+export const moveDeploymentsDevices: API.OperationMethod<
+  MoveDeploymentsDevicesRequest,
+  MoveDeploymentsDevicesResponse,
+  MoveDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveDeploymentsDevicesRequest,
+  output: MoveDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SignDeviceDeploymentsDevicesRequest {
+  /** Output only. The resource path name. */
+  name: string;
+  /** Request body */
+  body?: SasPortalSignDeviceRequest;
+}
+
+export const SignDeviceDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalSignDeviceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+name}:signDevice",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SignDeviceDeploymentsDevicesRequest>;
+
+export type SignDeviceDeploymentsDevicesResponse = SasPortalEmpty;
+export const SignDeviceDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type SignDeviceDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Signs a device. */
+export const signDeviceDeploymentsDevices: API.OperationMethod<
+  SignDeviceDeploymentsDevicesRequest,
+  SignDeviceDeploymentsDevicesResponse,
+  SignDeviceDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SignDeviceDeploymentsDevicesRequest,
+  output: SignDeviceDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteDeploymentsDevicesRequest {
+  /** Required. The name of the device. */
+  name: string;
+}
+
+export const DeleteDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteDeploymentsDevicesRequest>;
+
+export type DeleteDeploymentsDevicesResponse = SasPortalEmpty;
+export const DeleteDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type DeleteDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a device. */
+export const deleteDeploymentsDevices: API.OperationMethod<
+  DeleteDeploymentsDevicesRequest,
+  DeleteDeploymentsDevicesResponse,
+  DeleteDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteDeploymentsDevicesRequest,
+  output: DeleteDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetDeploymentsDevicesRequest {
+  /** Required. The name of the device. */
+  name: string;
+}
+
+export const GetDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetDeploymentsDevicesRequest>;
+
+export type GetDeploymentsDevicesResponse = SasPortalDevice;
+export const GetDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type GetDeploymentsDevicesError = DefaultErrors | NotFound | Forbidden;
+
+/** Gets details about a device. */
+export const getDeploymentsDevices: API.OperationMethod<
+  GetDeploymentsDevicesRequest,
+  GetDeploymentsDevicesResponse,
+  GetDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDeploymentsDevicesRequest,
+  output: GetDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface UpdateSignedDeploymentsDevicesRequest {
+  /** Required. The name of the device to update. */
+  name: string;
+  /** Request body */
+  body?: SasPortalUpdateSignedDeviceRequest;
+}
+
+export const UpdateSignedDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1alpha1/{+name}:updateSigned",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateSignedDeploymentsDevicesRequest>;
+
+export type UpdateSignedDeploymentsDevicesResponse = SasPortalDevice;
+export const UpdateSignedDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type UpdateSignedDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a signed device. */
+export const updateSignedDeploymentsDevices: API.OperationMethod<
+  UpdateSignedDeploymentsDevicesRequest,
+  UpdateSignedDeploymentsDevicesResponse,
+  UpdateSignedDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSignedDeploymentsDevicesRequest,
+  output: UpdateSignedDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MigrateOrganizationCustomersRequest {
+  /** Request body */
+  body?: SasPortalMigrateOrganizationRequest;
+}
+
+export const MigrateOrganizationCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(SasPortalMigrateOrganizationRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/customers:migrateOrganization",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<MigrateOrganizationCustomersRequest>;
+
+export type MigrateOrganizationCustomersResponse = SasPortalOperation;
+export const MigrateOrganizationCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
+
+export type MigrateOrganizationCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Migrates a SAS organization to the cloud. This will create GCP projects for each deployment and associate them. The SAS Organization is linked to the gcp project that called the command. go/sas-legacy-customer-migration */
+export const migrateOrganizationCustomers: API.OperationMethod<
+  MigrateOrganizationCustomersRequest,
+  MigrateOrganizationCustomersResponse,
+  MigrateOrganizationCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MigrateOrganizationCustomersRequest,
+  output: MigrateOrganizationCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListGcpProjectDeploymentsCustomersRequest {}
+
+export const ListGcpProjectDeploymentsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1alpha1/customers:listGcpProjectDeployments",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ListGcpProjectDeploymentsCustomersRequest>;
+
+export type ListGcpProjectDeploymentsCustomersResponse =
+  SasPortalListGcpProjectDeploymentsResponse;
+export const ListGcpProjectDeploymentsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListGcpProjectDeploymentsResponse;
+
+export type ListGcpProjectDeploymentsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a list of SAS deployments associated with current GCP project. Includes whether SAS analytics has been enabled or not. */
+export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
+  ListGcpProjectDeploymentsCustomersRequest,
+  ListGcpProjectDeploymentsCustomersResponse,
+  ListGcpProjectDeploymentsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListGcpProjectDeploymentsCustomersRequest,
+  output: ListGcpProjectDeploymentsCustomersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface PatchCustomersRequest {
+  /** Output only. Resource name of the customer. */
+  name: string;
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: SasPortalCustomer;
+}
+
+export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(SasPortalCustomer).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+  svc,
+) as unknown as Schema.Codec<PatchCustomersRequest>;
+
+export type PatchCustomersResponse = SasPortalCustomer;
+export const PatchCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
+
+export type PatchCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing customer. */
+export const patchCustomers: API.OperationMethod<
+  PatchCustomersRequest,
+  PatchCustomersResponse,
+  PatchCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchCustomersRequest,
+  output: PatchCustomersResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListLegacyOrganizationsCustomersRequest {}
+
+export const ListLegacyOrganizationsCustomersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      path: "v1alpha1/customers:listLegacyOrganizations",
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ListLegacyOrganizationsCustomersRequest>;
+
+export type ListLegacyOrganizationsCustomersResponse =
+  SasPortalListLegacyOrganizationsResponse;
+export const ListLegacyOrganizationsCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListLegacyOrganizationsResponse;
+
+export type ListLegacyOrganizationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Returns a list of legacy organizations. */
+export const listLegacyOrganizationsCustomers: API.OperationMethod<
+  ListLegacyOrganizationsCustomersRequest,
+  ListLegacyOrganizationsCustomersResponse,
+  ListLegacyOrganizationsCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListLegacyOrganizationsCustomersRequest,
+  output: ListLegacyOrganizationsCustomersResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListCustomersRequest {
+  /** A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The maximum number of customers to return in the response. */
+  pageSize?: number;
+}
+
+export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha1/customers" }),
+  svc,
+) as unknown as Schema.Codec<ListCustomersRequest>;
+
+export type ListCustomersResponse = SasPortalListCustomersResponse;
+export const ListCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListCustomersResponse;
+
+export type ListCustomersError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a list of requested customers. */
+export const listCustomers: API.PaginatedOperationMethod<
+  ListCustomersRequest,
+  ListCustomersResponse,
+  ListCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomersRequest,
+  output: ListCustomersResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetCustomersRequest {
+  /** Required. The name of the customer. */
+  name: string;
+}
+
+export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+  svc,
+) as unknown as Schema.Codec<GetCustomersRequest>;
+
+export type GetCustomersResponse = SasPortalCustomer;
+export const GetCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
+
+export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a requested customer. */
+export const getCustomers: API.OperationMethod<
+  GetCustomersRequest,
+  GetCustomersResponse,
+  GetCustomersError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCustomersRequest,
+  output: GetCustomersResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ProvisionDeploymentCustomersRequest {
@@ -2253,7 +2712,7 @@ export const ProvisionDeploymentCustomersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<ProvisionDeploymentCustomersRequest>;
+  ) as unknown as Schema.Codec<ProvisionDeploymentCustomersRequest>;
 
 export type ProvisionDeploymentCustomersResponse =
   SasPortalProvisionDeploymentResponse;
@@ -2279,102 +2738,6 @@ export const provisionDeploymentCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetCustomersRequest {
-  /** Required. The name of the customer. */
-  name: string;
-}
-
-export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
-  svc,
-) as unknown as Schema.Schema<GetCustomersRequest>;
-
-export type GetCustomersResponse = SasPortalCustomer;
-export const GetCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
-
-export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a requested customer. */
-export const getCustomers: API.OperationMethod<
-  GetCustomersRequest,
-  GetCustomersResponse,
-  GetCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomersRequest,
-  output: GetCustomersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListGcpProjectDeploymentsCustomersRequest {}
-
-export const ListGcpProjectDeploymentsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers:listGcpProjectDeployments",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListGcpProjectDeploymentsCustomersRequest>;
-
-export type ListGcpProjectDeploymentsCustomersResponse =
-  SasPortalListGcpProjectDeploymentsResponse;
-export const ListGcpProjectDeploymentsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListGcpProjectDeploymentsResponse;
-
-export type ListGcpProjectDeploymentsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a list of SAS deployments associated with current GCP project. Includes whether SAS analytics has been enabled or not. */
-export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
-  ListGcpProjectDeploymentsCustomersRequest,
-  ListGcpProjectDeploymentsCustomersResponse,
-  ListGcpProjectDeploymentsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListGcpProjectDeploymentsCustomersRequest,
-  output: ListGcpProjectDeploymentsCustomersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListLegacyOrganizationsCustomersRequest {}
-
-export const ListLegacyOrganizationsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers:listLegacyOrganizations",
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ListLegacyOrganizationsCustomersRequest>;
-
-export type ListLegacyOrganizationsCustomersResponse =
-  SasPortalListLegacyOrganizationsResponse;
-export const ListLegacyOrganizationsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListLegacyOrganizationsResponse;
-
-export type ListLegacyOrganizationsCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Returns a list of legacy organizations. */
-export const listLegacyOrganizationsCustomers: API.OperationMethod<
-  ListLegacyOrganizationsCustomersRequest,
-  ListLegacyOrganizationsCustomersResponse,
-  ListLegacyOrganizationsCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListLegacyOrganizationsCustomersRequest,
-  output: ListLegacyOrganizationsCustomersResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface SetupSasAnalyticsCustomersRequest {
   /** Request body */
   body?: SasPortalSetupSasAnalyticsRequest;
@@ -2390,7 +2753,7 @@ export const SetupSasAnalyticsCustomersRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetupSasAnalyticsCustomersRequest>;
+  ) as unknown as Schema.Codec<SetupSasAnalyticsCustomersRequest>;
 
 export type SetupSasAnalyticsCustomersResponse = SasPortalOperation;
 export const SetupSasAnalyticsCustomersResponse =
@@ -2415,656 +2778,35 @@ export const setupSasAnalyticsCustomers: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface MigrateOrganizationCustomersRequest {
-  /** Request body */
-  body?: SasPortalMigrateOrganizationRequest;
-}
-
-export const MigrateOrganizationCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(SasPortalMigrateOrganizationRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers:migrateOrganization",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<MigrateOrganizationCustomersRequest>;
-
-export type MigrateOrganizationCustomersResponse = SasPortalOperation;
-export const MigrateOrganizationCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MigrateOrganizationCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Migrates a SAS organization to the cloud. This will create GCP projects for each deployment and associate them. The SAS Organization is linked to the gcp project that called the command. go/sas-legacy-customer-migration */
-export const migrateOrganizationCustomers: API.OperationMethod<
-  MigrateOrganizationCustomersRequest,
-  MigrateOrganizationCustomersResponse,
-  MigrateOrganizationCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MigrateOrganizationCustomersRequest,
-  output: MigrateOrganizationCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListCustomersRequest {
-  /** A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The maximum number of customers to return in the response. */
-  pageSize?: number;
-}
-
-export const ListCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-  pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/customers" }),
-  svc,
-) as unknown as Schema.Schema<ListCustomersRequest>;
-
-export type ListCustomersResponse = SasPortalListCustomersResponse;
-export const ListCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListCustomersResponse;
-
-export type ListCustomersError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a list of requested customers. */
-export const listCustomers: API.PaginatedOperationMethod<
-  ListCustomersRequest,
-  ListCustomersResponse,
-  ListCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersRequest,
-  output: ListCustomersResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchCustomersRequest {
-  /** Output only. Resource name of the customer. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: SasPortalCustomer;
-}
-
-export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
-  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-  body: Schema.optional(SasPortalCustomer).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
-  svc,
-) as unknown as Schema.Schema<PatchCustomersRequest>;
-
-export type PatchCustomersResponse = SasPortalCustomer;
-export const PatchCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
-
-export type PatchCustomersError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates an existing customer. */
-export const patchCustomers: API.OperationMethod<
-  PatchCustomersRequest,
-  PatchCustomersResponse,
-  PatchCustomersError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchCustomersRequest,
-  output: PatchCustomersResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteCustomersDevicesRequest {
-  /** Required. The name of the device. */
+export interface GetCustomersNodesRequest {
+  /** Required. The name of the node. */
   name: string;
 }
 
-export const DeleteCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteCustomersDevicesRequest>;
-
-export type DeleteCustomersDevicesResponse = SasPortalEmpty;
-export const DeleteCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
-
-export type DeleteCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a device. */
-export const deleteCustomersDevices: API.OperationMethod<
-  DeleteCustomersDevicesRequest,
-  DeleteCustomersDevicesResponse,
-  DeleteCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteCustomersDevicesRequest,
-  output: DeleteCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateCustomersDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalDevice;
-}
-
-export const CreateCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/devices",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateCustomersDevicesRequest>;
-
-export type CreateCustomersDevicesResponse = SasPortalDevice;
-export const CreateCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type CreateCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a device under a node or customer. */
-export const createCustomersDevices: API.OperationMethod<
-  CreateCustomersDevicesRequest,
-  CreateCustomersDevicesResponse,
-  CreateCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersDevicesRequest,
-  output: CreateCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface MoveCustomersDevicesRequest {
-  /** Required. The name of the device to move. */
-  name: string;
-  /** Request body */
-  body?: SasPortalMoveDeviceRequest;
-}
-
-export const MoveCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<MoveCustomersDevicesRequest>;
-
-export type MoveCustomersDevicesResponse = SasPortalOperation;
-export const MoveCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MoveCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a device under another node or customer. */
-export const moveCustomersDevices: API.OperationMethod<
-  MoveCustomersDevicesRequest,
-  MoveCustomersDevicesResponse,
-  MoveCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveCustomersDevicesRequest,
-  output: MoveCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface SignDeviceCustomersDevicesRequest {
-  /** Output only. The resource path name. */
-  name: string;
-  /** Request body */
-  body?: SasPortalSignDeviceRequest;
-}
-
-export const SignDeviceCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalSignDeviceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+name}:signDevice",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SignDeviceCustomersDevicesRequest>;
-
-export type SignDeviceCustomersDevicesResponse = SasPortalEmpty;
-export const SignDeviceCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
-
-export type SignDeviceCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Signs a device. */
-export const signDeviceCustomersDevices: API.OperationMethod<
-  SignDeviceCustomersDevicesRequest,
-  SignDeviceCustomersDevicesResponse,
-  SignDeviceCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SignDeviceCustomersDevicesRequest,
-  output: SignDeviceCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetCustomersDevicesRequest {
-  /** Required. The name of the device. */
-  name: string;
-}
-
-export const GetCustomersDevicesRequest =
+export const GetCustomersNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
+  ) as unknown as Schema.Codec<GetCustomersNodesRequest>;
 
-export type GetCustomersDevicesResponse = SasPortalDevice;
-export const GetCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type GetCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets details about a device. */
-export const getCustomersDevices: API.OperationMethod<
-  GetCustomersDevicesRequest,
-  GetCustomersDevicesResponse,
-  GetCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomersDevicesRequest,
-  output: GetCustomersDevicesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListCustomersDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
-  pageSize?: number;
-  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
-  filter?: string;
-}
-
-export const ListCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
-    svc,
-  ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
-
-export type ListCustomersDevicesResponse = SasPortalListDevicesResponse;
-export const ListCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
-
-export type ListCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists devices under a node or customer. */
-export const listCustomersDevices: API.PaginatedOperationMethod<
-  ListCustomersDevicesRequest,
-  ListCustomersDevicesResponse,
-  ListCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersDevicesRequest,
-  output: ListCustomersDevicesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface PatchCustomersDevicesRequest {
-  /** Output only. The resource path name. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: SasPortalDevice;
-}
-
-export const PatchCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchCustomersDevicesRequest>;
-
-export type PatchCustomersDevicesResponse = SasPortalDevice;
-export const PatchCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type PatchCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a device. */
-export const patchCustomersDevices: API.OperationMethod<
-  PatchCustomersDevicesRequest,
-  PatchCustomersDevicesResponse,
-  PatchCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchCustomersDevicesRequest,
-  output: PatchCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateSignedCustomersDevicesRequest {
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalCreateSignedDeviceRequest;
-}
-
-export const CreateSignedCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/devices:createSigned",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersDevicesRequest>;
-
-export type CreateSignedCustomersDevicesResponse = SasPortalDevice;
-export const CreateSignedCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type CreateSignedCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a signed device under a node or customer. */
-export const createSignedCustomersDevices: API.OperationMethod<
-  CreateSignedCustomersDevicesRequest,
-  CreateSignedCustomersDevicesResponse,
-  CreateSignedCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateSignedCustomersDevicesRequest,
-  output: CreateSignedCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateSignedCustomersDevicesRequest {
-  /** Required. The name of the device to update. */
-  name: string;
-  /** Request body */
-  body?: SasPortalUpdateSignedDeviceRequest;
-}
-
-export const UpdateSignedCustomersDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/{+name}:updateSigned",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateSignedCustomersDevicesRequest>;
-
-export type UpdateSignedCustomersDevicesResponse = SasPortalDevice;
-export const UpdateSignedCustomersDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type UpdateSignedCustomersDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a signed device. */
-export const updateSignedCustomersDevices: API.OperationMethod<
-  UpdateSignedCustomersDevicesRequest,
-  UpdateSignedCustomersDevicesResponse,
-  UpdateSignedCustomersDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateSignedCustomersDevicesRequest,
-  output: UpdateSignedCustomersDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchCustomersNodesRequest {
-  /** Output only. Resource name. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
-  /** Request body */
-  body?: SasPortalNode;
-}
-
-export const PatchCustomersNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchCustomersNodesRequest>;
-
-export type PatchCustomersNodesResponse = SasPortalNode;
-export const PatchCustomersNodesResponse =
+export type GetCustomersNodesResponse = SasPortalNode;
+export const GetCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type PatchCustomersNodesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+export type GetCustomersNodesError = DefaultErrors | NotFound | Forbidden;
 
-/** Updates an existing node. */
-export const patchCustomersNodes: API.OperationMethod<
-  PatchCustomersNodesRequest,
-  PatchCustomersNodesResponse,
-  PatchCustomersNodesError,
+/** Returns a requested node. */
+export const getCustomersNodes: API.OperationMethod<
+  GetCustomersNodesRequest,
+  GetCustomersNodesResponse,
+  GetCustomersNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchCustomersNodesRequest,
-  output: PatchCustomersNodesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateCustomersNodesRequest {
-  /** Required. The parent resource name where the node is to be created. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalNode;
-}
-
-export const CreateCustomersNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesRequest>;
-
-export type CreateCustomersNodesResponse = SasPortalNode;
-export const CreateCustomersNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
-
-export type CreateCustomersNodesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new node. */
-export const createCustomersNodes: API.OperationMethod<
-  CreateCustomersNodesRequest,
-  CreateCustomersNodesResponse,
-  CreateCustomersNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersNodesRequest,
-  output: CreateCustomersNodesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface MoveCustomersNodesRequest {
-  /** Required. The name of the node to move. */
-  name: string;
-  /** Request body */
-  body?: SasPortalMoveNodeRequest;
-}
-
-export const MoveCustomersNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<MoveCustomersNodesRequest>;
-
-export type MoveCustomersNodesResponse = SasPortalOperation;
-export const MoveCustomersNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MoveCustomersNodesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Moves a node under another node or customer. */
-export const moveCustomersNodes: API.OperationMethod<
-  MoveCustomersNodesRequest,
-  MoveCustomersNodesResponse,
-  MoveCustomersNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveCustomersNodesRequest,
-  output: MoveCustomersNodesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListCustomersNodesRequest {
-  /** Required. The parent resource name, for example, "nodes/1". */
-  parent: string;
-  /** The maximum number of nodes to return in the response. */
-  pageSize?: number;
-  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
-  filter?: string;
-}
-
-export const ListCustomersNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
-    svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesRequest>;
-
-export type ListCustomersNodesResponse = SasPortalListNodesResponse;
-export const ListCustomersNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
-
-export type ListCustomersNodesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists nodes. */
-export const listCustomersNodes: API.PaginatedOperationMethod<
-  ListCustomersNodesRequest,
-  ListCustomersNodesResponse,
-  ListCustomersNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersNodesRequest,
-  output: ListCustomersNodesResponse,
+  input: GetCustomersNodesRequest,
+  output: GetCustomersNodesResponse,
   errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface DeleteCustomersNodesRequest {
@@ -3078,7 +2820,7 @@ export const DeleteCustomersNodesRequest =
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<DeleteCustomersNodesRequest>;
 
 export type DeleteCustomersNodesResponse = SasPortalEmpty;
 export const DeleteCustomersNodesResponse =
@@ -3103,35 +2845,215 @@ export const deleteCustomersNodes: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetCustomersNodesRequest {
-  /** Required. The name of the node. */
-  name: string;
+export interface ListCustomersNodesRequest {
+  /** The maximum number of nodes to return in the response. */
+  pageSize?: number;
+  /** Required. The parent resource name, for example, "nodes/1". */
+  parent: string;
+  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
+  filter?: string;
 }
 
-export const GetCustomersNodesRequest =
+export const ListCustomersNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersNodesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesRequest>;
 
-export type GetCustomersNodesResponse = SasPortalNode;
-export const GetCustomersNodesResponse =
+export type ListCustomersNodesResponse = SasPortalListNodesResponse;
+export const ListCustomersNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
+
+export type ListCustomersNodesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists nodes. */
+export const listCustomersNodes: API.PaginatedOperationMethod<
+  ListCustomersNodesRequest,
+  ListCustomersNodesResponse,
+  ListCustomersNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomersNodesRequest,
+  output: ListCustomersNodesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateCustomersNodesRequest {
+  /** Required. The parent resource name where the node is to be created. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalNode;
+}
+
+export const CreateCustomersNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CreateCustomersNodesRequest>;
+
+export type CreateCustomersNodesResponse = SasPortalNode;
+export const CreateCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type GetCustomersNodesError = DefaultErrors | NotFound | Forbidden;
+export type CreateCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Returns a requested node. */
-export const getCustomersNodes: API.OperationMethod<
-  GetCustomersNodesRequest,
-  GetCustomersNodesResponse,
-  GetCustomersNodesError,
+/** Creates a new node. */
+export const createCustomersNodes: API.OperationMethod<
+  CreateCustomersNodesRequest,
+  CreateCustomersNodesResponse,
+  CreateCustomersNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomersNodesRequest,
-  output: GetCustomersNodesResponse,
+  input: CreateCustomersNodesRequest,
+  output: CreateCustomersNodesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchCustomersNodesRequest {
+  /** Output only. Resource name. */
+  name: string;
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Request body */
+  body?: SasPortalNode;
+}
+
+export const PatchCustomersNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchCustomersNodesRequest>;
+
+export type PatchCustomersNodesResponse = SasPortalNode;
+export const PatchCustomersNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
+
+export type PatchCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates an existing node. */
+export const patchCustomersNodes: API.OperationMethod<
+  PatchCustomersNodesRequest,
+  PatchCustomersNodesResponse,
+  PatchCustomersNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchCustomersNodesRequest,
+  output: PatchCustomersNodesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MoveCustomersNodesRequest {
+  /** Required. The name of the node to move. */
+  name: string;
+  /** Request body */
+  body?: SasPortalMoveNodeRequest;
+}
+
+export const MoveCustomersNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<MoveCustomersNodesRequest>;
+
+export type MoveCustomersNodesResponse = SasPortalOperation;
+export const MoveCustomersNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
+
+export type MoveCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a node under another node or customer. */
+export const moveCustomersNodes: API.OperationMethod<
+  MoveCustomersNodesRequest,
+  MoveCustomersNodesResponse,
+  MoveCustomersNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveCustomersNodesRequest,
+  output: MoveCustomersNodesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListCustomersNodesDevicesRequest {
+  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
+  filter?: string;
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
+  pageSize?: number;
+}
+
+export const ListCustomersNodesDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
+    svc,
+  ) as unknown as Schema.Codec<ListCustomersNodesDevicesRequest>;
+
+export type ListCustomersNodesDevicesResponse = SasPortalListDevicesResponse;
+export const ListCustomersNodesDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
+
+export type ListCustomersNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists devices under a node or customer. */
+export const listCustomersNodesDevices: API.PaginatedOperationMethod<
+  ListCustomersNodesDevicesRequest,
+  ListCustomersNodesDevicesResponse,
+  ListCustomersNodesDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomersNodesDevicesRequest,
+  output: ListCustomersNodesDevicesResponse,
   errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
 }));
 
 export interface CreateCustomersNodesDevicesRequest {
@@ -3152,7 +3074,7 @@ export const CreateCustomersNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesDevicesRequest>;
 
 export type CreateCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateCustomersNodesDevicesResponse =
@@ -3197,7 +3119,7 @@ export const CreateSignedCustomersNodesDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersNodesDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedCustomersNodesDevicesRequest>;
 
 export type CreateSignedCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersNodesDevicesResponse =
@@ -3222,134 +3144,47 @@ export const createSignedCustomersNodesDevices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListCustomersNodesDevicesRequest {
-  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
-  filter?: string;
-  /** Required. The name of the parent resource. */
-  parent: string;
-  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
-  pageSize?: number;
-}
-
-export const ListCustomersNodesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
-    svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesDevicesRequest>;
-
-export type ListCustomersNodesDevicesResponse = SasPortalListDevicesResponse;
-export const ListCustomersNodesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
-
-export type ListCustomersNodesDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists devices under a node or customer. */
-export const listCustomersNodesDevices: API.PaginatedOperationMethod<
-  ListCustomersNodesDevicesRequest,
-  ListCustomersNodesDevicesResponse,
-  ListCustomersNodesDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersNodesDevicesRequest,
-  output: ListCustomersNodesDevicesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface CreateCustomersNodesNodesRequest {
-  /** Required. The parent resource name where the node is to be created. */
+export interface CreateCustomersNodesDeploymentsRequest {
+  /** Required. The parent resource name where the deployment is to be created. */
   parent: string;
   /** Request body */
-  body?: SasPortalNode;
+  body?: SasPortalDeployment;
 }
 
-export const CreateCustomersNodesNodesRequest =
+export const CreateCustomersNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
+    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/deployments",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesNodesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesDeploymentsRequest>;
 
-export type CreateCustomersNodesNodesResponse = SasPortalNode;
-export const CreateCustomersNodesNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
+export type CreateCustomersNodesDeploymentsResponse = SasPortalDeployment;
+export const CreateCustomersNodesDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type CreateCustomersNodesNodesError =
+export type CreateCustomersNodesDeploymentsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new node. */
-export const createCustomersNodesNodes: API.OperationMethod<
-  CreateCustomersNodesNodesRequest,
-  CreateCustomersNodesNodesResponse,
-  CreateCustomersNodesNodesError,
+/** Creates a new deployment. */
+export const createCustomersNodesDeployments: API.OperationMethod<
+  CreateCustomersNodesDeploymentsRequest,
+  CreateCustomersNodesDeploymentsResponse,
+  CreateCustomersNodesDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersNodesNodesRequest,
-  output: CreateCustomersNodesNodesResponse,
+  input: CreateCustomersNodesDeploymentsRequest,
+  output: CreateCustomersNodesDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListCustomersNodesNodesRequest {
-  /** Required. The parent resource name, for example, "nodes/1". */
-  parent: string;
-  /** The maximum number of nodes to return in the response. */
-  pageSize?: number;
-  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
-  pageToken?: string;
-  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
-  filter?: string;
-}
-
-export const ListCustomersNodesNodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
-    svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesNodesRequest>;
-
-export type ListCustomersNodesNodesResponse = SasPortalListNodesResponse;
-export const ListCustomersNodesNodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
-
-export type ListCustomersNodesNodesError = DefaultErrors | NotFound | Forbidden;
-
-/** Lists nodes. */
-export const listCustomersNodesNodes: API.PaginatedOperationMethod<
-  ListCustomersNodesNodesRequest,
-  ListCustomersNodesNodesResponse,
-  ListCustomersNodesNodesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersNodesNodesRequest,
-  output: ListCustomersNodesNodesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface ListCustomersNodesDeploymentsRequest {
@@ -3372,7 +3207,7 @@ export const ListCustomersNodesDeploymentsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersNodesDeploymentsRequest>;
 
 export type ListCustomersNodesDeploymentsResponse =
   SasPortalListDeploymentsResponse;
@@ -3400,78 +3235,455 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
   },
 }));
 
-export interface CreateCustomersNodesDeploymentsRequest {
-  /** Required. The parent resource name where the deployment is to be created. */
+export interface CreateCustomersNodesNodesRequest {
+  /** Required. The parent resource name where the node is to be created. */
   parent: string;
   /** Request body */
-  body?: SasPortalDeployment;
+  body?: SasPortalNode;
 }
 
-export const CreateCustomersNodesDeploymentsRequest =
+export const CreateCustomersNodesNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
+    body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/deployments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{+parent}/nodes", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersNodesDeploymentsRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersNodesNodesRequest>;
 
-export type CreateCustomersNodesDeploymentsResponse = SasPortalDeployment;
-export const CreateCustomersNodesDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+export type CreateCustomersNodesNodesResponse = SasPortalNode;
+export const CreateCustomersNodesNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateCustomersNodesDeploymentsError =
+export type CreateCustomersNodesNodesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new deployment. */
-export const createCustomersNodesDeployments: API.OperationMethod<
-  CreateCustomersNodesDeploymentsRequest,
-  CreateCustomersNodesDeploymentsResponse,
-  CreateCustomersNodesDeploymentsError,
+/** Creates a new node. */
+export const createCustomersNodesNodes: API.OperationMethod<
+  CreateCustomersNodesNodesRequest,
+  CreateCustomersNodesNodesResponse,
+  CreateCustomersNodesNodesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersNodesDeploymentsRequest,
-  output: CreateCustomersNodesDeploymentsResponse,
+  input: CreateCustomersNodesNodesRequest,
+  output: CreateCustomersNodesNodesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetCustomersDeploymentsRequest {
-  /** Required. The name of the deployment. */
+export interface ListCustomersNodesNodesRequest {
+  /** The maximum number of nodes to return in the response. */
+  pageSize?: number;
+  /** Required. The parent resource name, for example, "nodes/1". */
+  parent: string;
+  /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. */
+  filter?: string;
+}
+
+export const ListCustomersNodesNodesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/nodes" }),
+    svc,
+  ) as unknown as Schema.Codec<ListCustomersNodesNodesRequest>;
+
+export type ListCustomersNodesNodesResponse = SasPortalListNodesResponse;
+export const ListCustomersNodesNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
+
+export type ListCustomersNodesNodesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists nodes. */
+export const listCustomersNodesNodes: API.PaginatedOperationMethod<
+  ListCustomersNodesNodesRequest,
+  ListCustomersNodesNodesResponse,
+  ListCustomersNodesNodesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomersNodesNodesRequest,
+  output: ListCustomersNodesNodesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetCustomersDevicesRequest {
+  /** Required. The name of the device. */
   name: string;
 }
 
-export const GetCustomersDeploymentsRequest =
+export const GetCustomersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<GetCustomersDevicesRequest>;
 
-export type GetCustomersDeploymentsResponse = SasPortalDeployment;
-export const GetCustomersDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+export type GetCustomersDevicesResponse = SasPortalDevice;
+export const GetCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type GetCustomersDeploymentsError = DefaultErrors | NotFound | Forbidden;
+export type GetCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
-/** Returns a requested deployment. */
-export const getCustomersDeployments: API.OperationMethod<
-  GetCustomersDeploymentsRequest,
-  GetCustomersDeploymentsResponse,
-  GetCustomersDeploymentsError,
+/** Gets details about a device. */
+export const getCustomersDevices: API.OperationMethod<
+  GetCustomersDevicesRequest,
+  GetCustomersDevicesResponse,
+  GetCustomersDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomersDeploymentsRequest,
-  output: GetCustomersDeploymentsResponse,
+  input: GetCustomersDevicesRequest,
+  output: GetCustomersDevicesResponse,
   errors: [NotFound, Forbidden],
+}));
+
+export interface ListCustomersDevicesRequest {
+  /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
+  pageToken?: string;
+  /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
+  filter?: string;
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
+  pageSize?: number;
+}
+
+export const ListCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
+    svc,
+  ) as unknown as Schema.Codec<ListCustomersDevicesRequest>;
+
+export type ListCustomersDevicesResponse = SasPortalListDevicesResponse;
+export const ListCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
+
+export type ListCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
+
+/** Lists devices under a node or customer. */
+export const listCustomersDevices: API.PaginatedOperationMethod<
+  ListCustomersDevicesRequest,
+  ListCustomersDevicesResponse,
+  ListCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomersDevicesRequest,
+  output: ListCustomersDevicesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CreateCustomersDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalDevice;
+}
+
+export const CreateCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateCustomersDevicesRequest>;
+
+export type CreateCustomersDevicesResponse = SasPortalDevice;
+export const CreateCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type CreateCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a device under a node or customer. */
+export const createCustomersDevices: API.OperationMethod<
+  CreateCustomersDevicesRequest,
+  CreateCustomersDevicesResponse,
+  CreateCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateCustomersDevicesRequest,
+  output: CreateCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchCustomersDevicesRequest {
+  /** Fields to be updated. */
+  updateMask?: string;
+  /** Output only. The resource path name. */
+  name: string;
+  /** Request body */
+  body?: SasPortalDevice;
+}
+
+export const PatchCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchCustomersDevicesRequest>;
+
+export type PatchCustomersDevicesResponse = SasPortalDevice;
+export const PatchCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type PatchCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a device. */
+export const patchCustomersDevices: API.OperationMethod<
+  PatchCustomersDevicesRequest,
+  PatchCustomersDevicesResponse,
+  PatchCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchCustomersDevicesRequest,
+  output: PatchCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteCustomersDevicesRequest {
+  /** Required. The name of the device. */
+  name: string;
+}
+
+export const DeleteCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteCustomersDevicesRequest>;
+
+export type DeleteCustomersDevicesResponse = SasPortalEmpty;
+export const DeleteCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type DeleteCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a device. */
+export const deleteCustomersDevices: API.OperationMethod<
+  DeleteCustomersDevicesRequest,
+  DeleteCustomersDevicesResponse,
+  DeleteCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCustomersDevicesRequest,
+  output: DeleteCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CreateSignedCustomersDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalCreateSignedDeviceRequest;
+}
+
+export const CreateSignedCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalCreateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices:createSigned",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateSignedCustomersDevicesRequest>;
+
+export type CreateSignedCustomersDevicesResponse = SasPortalDevice;
+export const CreateSignedCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type CreateSignedCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a signed device under a node or customer. */
+export const createSignedCustomersDevices: API.OperationMethod<
+  CreateSignedCustomersDevicesRequest,
+  CreateSignedCustomersDevicesResponse,
+  CreateSignedCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateSignedCustomersDevicesRequest,
+  output: CreateSignedCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface UpdateSignedCustomersDevicesRequest {
+  /** Required. The name of the device to update. */
+  name: string;
+  /** Request body */
+  body?: SasPortalUpdateSignedDeviceRequest;
+}
+
+export const UpdateSignedCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
+      T.HttpBody(),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "v1alpha1/{+name}:updateSigned",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<UpdateSignedCustomersDevicesRequest>;
+
+export type UpdateSignedCustomersDevicesResponse = SasPortalDevice;
+export const UpdateSignedCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type UpdateSignedCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a signed device. */
+export const updateSignedCustomersDevices: API.OperationMethod<
+  UpdateSignedCustomersDevicesRequest,
+  UpdateSignedCustomersDevicesResponse,
+  UpdateSignedCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSignedCustomersDevicesRequest,
+  output: UpdateSignedCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface MoveCustomersDevicesRequest {
+  /** Required. The name of the device to move. */
+  name: string;
+  /** Request body */
+  body?: SasPortalMoveDeviceRequest;
+}
+
+export const MoveCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<MoveCustomersDevicesRequest>;
+
+export type MoveCustomersDevicesResponse = SasPortalOperation;
+export const MoveCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
+
+export type MoveCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Moves a device under another node or customer. */
+export const moveCustomersDevices: API.OperationMethod<
+  MoveCustomersDevicesRequest,
+  MoveCustomersDevicesResponse,
+  MoveCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveCustomersDevicesRequest,
+  output: MoveCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SignDeviceCustomersDevicesRequest {
+  /** Output only. The resource path name. */
+  name: string;
+  /** Request body */
+  body?: SasPortalSignDeviceRequest;
+}
+
+export const SignDeviceCustomersDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(SasPortalSignDeviceRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+name}:signDevice",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<SignDeviceCustomersDevicesRequest>;
+
+export type SignDeviceCustomersDevicesResponse = SasPortalEmpty;
+export const SignDeviceCustomersDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type SignDeviceCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Signs a device. */
+export const signDeviceCustomersDevices: API.OperationMethod<
+  SignDeviceCustomersDevicesRequest,
+  SignDeviceCustomersDevicesResponse,
+  SignDeviceCustomersDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SignDeviceCustomersDevicesRequest,
+  output: SignDeviceCustomersDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersDeploymentsRequest {
@@ -3491,7 +3703,7 @@ export const PatchCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<PatchCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<PatchCustomersDeploymentsRequest>;
 
 export type PatchCustomersDeploymentsResponse = SasPortalDeployment;
 export const PatchCustomersDeploymentsResponse =
@@ -3516,49 +3728,6 @@ export const patchCustomersDeployments: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface CreateCustomersDeploymentsRequest {
-  /** Required. The parent resource name where the deployment is to be created. */
-  parent: string;
-  /** Request body */
-  body?: SasPortalDeployment;
-}
-
-export const CreateCustomersDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+parent}/deployments",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateCustomersDeploymentsRequest>;
-
-export type CreateCustomersDeploymentsResponse = SasPortalDeployment;
-export const CreateCustomersDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
-
-export type CreateCustomersDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a new deployment. */
-export const createCustomersDeployments: API.OperationMethod<
-  CreateCustomersDeploymentsRequest,
-  CreateCustomersDeploymentsResponse,
-  CreateCustomersDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersDeploymentsRequest,
-  output: CreateCustomersDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface MoveCustomersDeploymentsRequest {
   /** Required. The name of the deployment to move. */
   name: string;
@@ -3573,7 +3742,7 @@ export const MoveCustomersDeploymentsRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<MoveCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<MoveCustomersDeploymentsRequest>;
 
 export type MoveCustomersDeploymentsResponse = SasPortalOperation;
 export const MoveCustomersDeploymentsResponse =
@@ -3598,27 +3767,94 @@ export const moveCustomersDeployments: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetCustomersDeploymentsRequest {
+  /** Required. The name of the deployment. */
+  name: string;
+}
+
+export const GetCustomersDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetCustomersDeploymentsRequest>;
+
+export type GetCustomersDeploymentsResponse = SasPortalDeployment;
+export const GetCustomersDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+
+export type GetCustomersDeploymentsError = DefaultErrors | NotFound | Forbidden;
+
+/** Returns a requested deployment. */
+export const getCustomersDeployments: API.OperationMethod<
+  GetCustomersDeploymentsRequest,
+  GetCustomersDeploymentsResponse,
+  GetCustomersDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCustomersDeploymentsRequest,
+  output: GetCustomersDeploymentsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface DeleteCustomersDeploymentsRequest {
+  /** Required. The name of the deployment. */
+  name: string;
+}
+
+export const DeleteCustomersDeploymentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteCustomersDeploymentsRequest>;
+
+export type DeleteCustomersDeploymentsResponse = SasPortalEmpty;
+export const DeleteCustomersDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+
+export type DeleteCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a deployment. */
+export const deleteCustomersDeployments: API.OperationMethod<
+  DeleteCustomersDeploymentsRequest,
+  DeleteCustomersDeploymentsResponse,
+  DeleteCustomersDeploymentsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCustomersDeploymentsRequest,
+  output: DeleteCustomersDeploymentsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListCustomersDeploymentsRequest {
+  /** The maximum number of deployments to return in the response. */
+  pageSize?: number;
   /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
   filter?: string;
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
-  /** The maximum number of deployments to return in the response. */
-  pageSize?: number;
 }
 
 export const ListCustomersDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/deployments" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDeploymentsRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDeploymentsRequest>;
 
 export type ListCustomersDeploymentsResponse = SasPortalListDeploymentsResponse;
 export const ListCustomersDeploymentsResponse =
@@ -3645,82 +3881,46 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
   },
 }));
 
-export interface DeleteCustomersDeploymentsRequest {
-  /** Required. The name of the deployment. */
-  name: string;
-}
-
-export const DeleteCustomersDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteCustomersDeploymentsRequest>;
-
-export type DeleteCustomersDeploymentsResponse = SasPortalEmpty;
-export const DeleteCustomersDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
-
-export type DeleteCustomersDeploymentsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a deployment. */
-export const deleteCustomersDeployments: API.OperationMethod<
-  DeleteCustomersDeploymentsRequest,
-  DeleteCustomersDeploymentsResponse,
-  DeleteCustomersDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteCustomersDeploymentsRequest,
-  output: DeleteCustomersDeploymentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CreateCustomersDeploymentsDevicesRequest {
-  /** Required. The name of the parent resource. */
+export interface CreateCustomersDeploymentsRequest {
+  /** Required. The parent resource name where the deployment is to be created. */
   parent: string;
   /** Request body */
-  body?: SasPortalDevice;
+  body?: SasPortalDeployment;
 }
 
-export const CreateCustomersDeploymentsDevicesRequest =
+export const CreateCustomersDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+    body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/{+parent}/devices",
+      path: "v1alpha1/{+parent}/deployments",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateCustomersDeploymentsRequest>;
 
-export type CreateCustomersDeploymentsDevicesResponse = SasPortalDevice;
-export const CreateCustomersDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+export type CreateCustomersDeploymentsResponse = SasPortalDeployment;
+export const CreateCustomersDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type CreateCustomersDeploymentsDevicesError =
+export type CreateCustomersDeploymentsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a device under a node or customer. */
-export const createCustomersDeploymentsDevices: API.OperationMethod<
-  CreateCustomersDeploymentsDevicesRequest,
-  CreateCustomersDeploymentsDevicesResponse,
-  CreateCustomersDeploymentsDevicesError,
+/** Creates a new deployment. */
+export const createCustomersDeployments: API.OperationMethod<
+  CreateCustomersDeploymentsRequest,
+  CreateCustomersDeploymentsResponse,
+  CreateCustomersDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateCustomersDeploymentsDevicesRequest,
-  output: CreateCustomersDeploymentsDevicesResponse,
+  input: CreateCustomersDeploymentsRequest,
+  output: CreateCustomersDeploymentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3744,7 +3944,7 @@ export const CreateSignedCustomersDeploymentsDevicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateSignedCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<CreateSignedCustomersDeploymentsDevicesRequest>;
 
 export type CreateSignedCustomersDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersDeploymentsDevicesResponse =
@@ -3769,27 +3969,70 @@ export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface CreateCustomersDeploymentsDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
+  /** Request body */
+  body?: SasPortalDevice;
+}
+
+export const CreateCustomersDeploymentsDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1alpha1/{+parent}/devices",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CreateCustomersDeploymentsDevicesRequest>;
+
+export type CreateCustomersDeploymentsDevicesResponse = SasPortalDevice;
+export const CreateCustomersDeploymentsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+
+export type CreateCustomersDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Creates a device under a node or customer. */
+export const createCustomersDeploymentsDevices: API.OperationMethod<
+  CreateCustomersDeploymentsDevicesRequest,
+  CreateCustomersDeploymentsDevicesResponse,
+  CreateCustomersDeploymentsDevicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateCustomersDeploymentsDevicesRequest,
+  output: CreateCustomersDeploymentsDevicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListCustomersDeploymentsDevicesRequest {
+  /** Required. The name of the parent resource. */
+  parent: string;
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
-  /** Required. The name of the parent resource. */
-  parent: string;
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
 }
 
 export const ListCustomersDeploymentsDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+parent}/devices" }),
     svc,
-  ) as unknown as Schema.Schema<ListCustomersDeploymentsDevicesRequest>;
+  ) as unknown as Schema.Codec<ListCustomersDeploymentsDevicesRequest>;
 
 export type ListCustomersDeploymentsDevicesResponse =
   SasPortalListDevicesResponse;
@@ -3817,348 +4060,105 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
   },
 }));
 
-export interface GetDeploymentsRequest {
-  /** Required. The name of the deployment. */
-  name: string;
+export interface SetPoliciesRequest {
+  /** Request body */
+  body?: SasPortalSetPolicyRequest;
 }
 
-export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.String.pipe(T.HttpPath("name")),
+export const SetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(SasPortalSetPolicyRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
+  T.Http({ method: "POST", path: "v1alpha1/policies:set", hasBody: true }),
   svc,
-) as unknown as Schema.Schema<GetDeploymentsRequest>;
+) as unknown as Schema.Codec<SetPoliciesRequest>;
 
-export type GetDeploymentsResponse = SasPortalDeployment;
-export const GetDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
+export type SetPoliciesResponse = SasPortalPolicy;
+export const SetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
 
-export type GetDeploymentsError = DefaultErrors | NotFound | Forbidden;
-
-/** Returns a requested deployment. */
-export const getDeployments: API.OperationMethod<
-  GetDeploymentsRequest,
-  GetDeploymentsResponse,
-  GetDeploymentsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDeploymentsRequest,
-  output: GetDeploymentsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface MoveDeploymentsDevicesRequest {
-  /** Required. The name of the device to move. */
-  name: string;
-  /** Request body */
-  body?: SasPortalMoveDeviceRequest;
-}
-
-export const MoveDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1alpha1/{+name}:move", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<MoveDeploymentsDevicesRequest>;
-
-export type MoveDeploymentsDevicesResponse = SasPortalOperation;
-export const MoveDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
-
-export type MoveDeploymentsDevicesError =
+export type SetPoliciesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Moves a device under another node or customer. */
-export const moveDeploymentsDevices: API.OperationMethod<
-  MoveDeploymentsDevicesRequest,
-  MoveDeploymentsDevicesResponse,
-  MoveDeploymentsDevicesError,
+/** Sets the access control policy on the specified resource. Replaces any existing policy. */
+export const setPolicies: API.OperationMethod<
+  SetPoliciesRequest,
+  SetPoliciesResponse,
+  SetPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveDeploymentsDevicesRequest,
-  output: MoveDeploymentsDevicesResponse,
+  input: SetPoliciesRequest,
+  output: SetPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface PatchDeploymentsDevicesRequest {
-  /** Output only. The resource path name. */
-  name: string;
-  /** Fields to be updated. */
-  updateMask?: string;
+export interface GetPoliciesRequest {
   /** Request body */
-  body?: SasPortalDevice;
+  body?: SasPortalGetPolicyRequest;
 }
 
-export const PatchDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1alpha1/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchDeploymentsDevicesRequest>;
+export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(SasPortalGetPolicyRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1alpha1/policies:get", hasBody: true }),
+  svc,
+) as unknown as Schema.Codec<GetPoliciesRequest>;
 
-export type PatchDeploymentsDevicesResponse = SasPortalDevice;
-export const PatchDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
+export type GetPoliciesResponse = SasPortalPolicy;
+export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
 
-export type PatchDeploymentsDevicesError =
+export type GetPoliciesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Updates a device. */
-export const patchDeploymentsDevices: API.OperationMethod<
-  PatchDeploymentsDevicesRequest,
-  PatchDeploymentsDevicesResponse,
-  PatchDeploymentsDevicesError,
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getPolicies: API.OperationMethod<
+  GetPoliciesRequest,
+  GetPoliciesResponse,
+  GetPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchDeploymentsDevicesRequest,
-  output: PatchDeploymentsDevicesResponse,
+  input: GetPoliciesRequest,
+  output: GetPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface SignDeviceDeploymentsDevicesRequest {
-  /** Output only. The resource path name. */
-  name: string;
+export interface TestPoliciesRequest {
   /** Request body */
-  body?: SasPortalSignDeviceRequest;
+  body?: SasPortalTestPermissionsRequest;
 }
 
-export const SignDeviceDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalSignDeviceRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/{+name}:signDevice",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SignDeviceDeploymentsDevicesRequest>;
+export const TestPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(SasPortalTestPermissionsRequest).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({ method: "POST", path: "v1alpha1/policies:test", hasBody: true }),
+  svc,
+) as unknown as Schema.Codec<TestPoliciesRequest>;
 
-export type SignDeviceDeploymentsDevicesResponse = SasPortalEmpty;
-export const SignDeviceDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
+export type TestPoliciesResponse = SasPortalTestPermissionsResponse;
+export const TestPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ SasPortalTestPermissionsResponse;
 
-export type SignDeviceDeploymentsDevicesError =
+export type TestPoliciesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Signs a device. */
-export const signDeviceDeploymentsDevices: API.OperationMethod<
-  SignDeviceDeploymentsDevicesRequest,
-  SignDeviceDeploymentsDevicesResponse,
-  SignDeviceDeploymentsDevicesError,
+/** Returns permissions that a caller has on the specified resource. */
+export const testPolicies: API.OperationMethod<
+  TestPoliciesRequest,
+  TestPoliciesResponse,
+  TestPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SignDeviceDeploymentsDevicesRequest,
-  output: SignDeviceDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteDeploymentsDevicesRequest {
-  /** Required. The name of the device. */
-  name: string;
-}
-
-export const DeleteDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteDeploymentsDevicesRequest>;
-
-export type DeleteDeploymentsDevicesResponse = SasPortalEmpty;
-export const DeleteDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
-
-export type DeleteDeploymentsDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a device. */
-export const deleteDeploymentsDevices: API.OperationMethod<
-  DeleteDeploymentsDevicesRequest,
-  DeleteDeploymentsDevicesResponse,
-  DeleteDeploymentsDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentsDevicesRequest,
-  output: DeleteDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface UpdateSignedDeploymentsDevicesRequest {
-  /** Required. The name of the device to update. */
-  name: string;
-  /** Request body */
-  body?: SasPortalUpdateSignedDeviceRequest;
-}
-
-export const UpdateSignedDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(SasPortalUpdateSignedDeviceRequest).pipe(
-      T.HttpBody(),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/{+name}:updateSigned",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<UpdateSignedDeploymentsDevicesRequest>;
-
-export type UpdateSignedDeploymentsDevicesResponse = SasPortalDevice;
-export const UpdateSignedDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type UpdateSignedDeploymentsDevicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a signed device. */
-export const updateSignedDeploymentsDevices: API.OperationMethod<
-  UpdateSignedDeploymentsDevicesRequest,
-  UpdateSignedDeploymentsDevicesResponse,
-  UpdateSignedDeploymentsDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateSignedDeploymentsDevicesRequest,
-  output: UpdateSignedDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetDeploymentsDevicesRequest {
-  /** Required. The name of the device. */
-  name: string;
-}
-
-export const GetDeploymentsDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetDeploymentsDevicesRequest>;
-
-export type GetDeploymentsDevicesResponse = SasPortalDevice;
-export const GetDeploymentsDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
-
-export type GetDeploymentsDevicesError = DefaultErrors | NotFound | Forbidden;
-
-/** Gets details about a device. */
-export const getDeploymentsDevices: API.OperationMethod<
-  GetDeploymentsDevicesRequest,
-  GetDeploymentsDevicesResponse,
-  GetDeploymentsDevicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDeploymentsDevicesRequest,
-  output: GetDeploymentsDevicesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface GenerateSecretInstallerRequest {
-  /** Request body */
-  body?: SasPortalGenerateSecretRequest;
-}
-
-export const GenerateSecretInstallerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(SasPortalGenerateSecretRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/installer:generateSecret",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<GenerateSecretInstallerRequest>;
-
-export type GenerateSecretInstallerResponse = SasPortalGenerateSecretResponse;
-export const GenerateSecretInstallerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalGenerateSecretResponse;
-
-export type GenerateSecretInstallerError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Generates a secret to be used with the ValidateInstaller. */
-export const generateSecretInstaller: API.OperationMethod<
-  GenerateSecretInstallerRequest,
-  GenerateSecretInstallerResponse,
-  GenerateSecretInstallerError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GenerateSecretInstallerRequest,
-  output: GenerateSecretInstallerResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ValidateInstallerRequest {
-  /** Request body */
-  body?: SasPortalValidateInstallerRequest;
-}
-
-export const ValidateInstallerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    body: Schema.optional(SasPortalValidateInstallerRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/installer:validate",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ValidateInstallerRequest>;
-
-export type ValidateInstallerResponse = SasPortalValidateInstallerResponse;
-export const ValidateInstallerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SasPortalValidateInstallerResponse;
-
-export type ValidateInstallerError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Validates the identity of a Certified Professional Installer (CPI). */
-export const validateInstaller: API.OperationMethod<
-  ValidateInstallerRequest,
-  ValidateInstallerResponse,
-  ValidateInstallerError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ValidateInstallerRequest,
-  output: ValidateInstallerResponse,
+  input: TestPoliciesRequest,
+  output: TestPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

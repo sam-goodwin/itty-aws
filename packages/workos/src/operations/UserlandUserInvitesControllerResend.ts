@@ -4,6 +4,100 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface UserlandUserInvitesControllerResendInput {
+  id: string;
+  locale?:
+    | "af"
+    | "am"
+    | "ar"
+    | "bg"
+    | "bn"
+    | "bs"
+    | "ca"
+    | "cs"
+    | "da"
+    | "de"
+    | "de-DE"
+    | "el"
+    | "en"
+    | "en-AU"
+    | "en-CA"
+    | "en-GB"
+    | "en-US"
+    | "es"
+    | "es-419"
+    | "es-ES"
+    | "es-US"
+    | "et"
+    | "fa"
+    | "fi"
+    | "fil"
+    | "fr"
+    | "fr-BE"
+    | "fr-CA"
+    | "fr-FR"
+    | "fy"
+    | "gl"
+    | "gu"
+    | "ha"
+    | "he"
+    | "hi"
+    | "hr"
+    | "hu"
+    | "hy"
+    | "id"
+    | "is"
+    | "it"
+    | "it-IT"
+    | "ja"
+    | "jv"
+    | "ka"
+    | "kk"
+    | "km"
+    | "kn"
+    | "ko"
+    | "lt"
+    | "lv"
+    | "mk"
+    | "ml"
+    | "mn"
+    | "mr"
+    | "ms"
+    | "my"
+    | "nb"
+    | "ne"
+    | "nl"
+    | "nl-BE"
+    | "nl-NL"
+    | "nn"
+    | "no"
+    | "pa"
+    | "pl"
+    | "pt"
+    | "pt-BR"
+    | "pt-PT"
+    | "ro"
+    | "ru"
+    | "sk"
+    | "sl"
+    | "sq"
+    | "sr"
+    | "sv"
+    | "sw"
+    | "ta"
+    | "te"
+    | "th"
+    | "tr"
+    | "uk"
+    | "ur"
+    | "uz"
+    | "vi"
+    | "zh"
+    | "zh-CN"
+    | "zh-HK"
+    | "zh-TW"
+    | "zu";
+}
 export const UserlandUserInvitesControllerResendInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -106,11 +200,26 @@ export const UserlandUserInvitesControllerResendInput =
       method: "POST",
       path: "/user_management/invitations/{id}/resend",
     }),
-  );
-export type UserlandUserInvitesControllerResendInput =
-  typeof UserlandUserInvitesControllerResendInput.Type;
+  ) as unknown as Schema.Codec<UserlandUserInvitesControllerResendInput>;
 
 // Output Schema
+export interface UserlandUserInvitesControllerResendOutput {
+  object?: string;
+  id?: string;
+  email?: string;
+  state?: "pending" | "accepted" | "expired" | "revoked";
+  accepted_at?: string | null;
+  revoked_at?: string | null;
+  expires_at?: string;
+  organization_id?: string | null;
+  inviter_user_id?: string | null;
+  accepted_user_id?: string | null;
+  role_slug?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  token?: string;
+  accept_invitation_url?: string;
+}
 export const UserlandUserInvitesControllerResendOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -130,9 +239,7 @@ export const UserlandUserInvitesControllerResendOutput =
     updated_at: Schema.optional(Schema.String),
     token: Schema.optional(Schema.String),
     accept_invitation_url: Schema.optional(Schema.String),
-  });
-export type UserlandUserInvitesControllerResendOutput =
-  typeof UserlandUserInvitesControllerResendOutput.Type;
+  }) as unknown as Schema.Codec<UserlandUserInvitesControllerResendOutput>;
 
 // The operation
 /**

@@ -4,6 +4,20 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgInvoicesInput {
+  orgId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  viewLinkedInvoices?: boolean;
+  statusNames?: string;
+  fromDate?: string;
+  toDate?: string;
+  sortBy?: "START_DATE" | "END_DATE";
+  orderBy?: "desc" | "asc";
+}
 export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -17,18 +31,20 @@ export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   toDate: Schema.optional(Schema.String),
   sortBy: Schema.optional(Schema.Literals(["START_DATE", "END_DATE"])),
   orderBy: Schema.optional(Schema.Literals(["desc", "asc"])),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices" }));
-export type ListOrgInvoicesInput = typeof ListOrgInvoicesInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/invoices" }),
+) as unknown as Schema.Codec<ListOrgInvoicesInput>;
 
 // Output Schema
-export const ListOrgInvoicesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgInvoicesOutput = typeof ListOrgInvoicesOutput.Type;
+export type ListOrgInvoicesOutput = void;
+export const ListOrgInvoicesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicesOutput>;
 
 // The operation
 /**
  * Return All Invoices for One Organization
  *
- * Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting Service Account or API Key must have the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role.
+ * Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. If you have a cross-organization setup, you can view linked invoices if you have the Organization Billing Admin or Organization Owner role.
  * To compute the total owed amount of the invoices - sum up total owed of each invoice. It could be computed as a sum of owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EndpointsRetrieveInput {
+  name: string;
+  project_id: string;
+}
 export const EndpointsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     name: Schema.String.pipe(T.PathParam()),
@@ -14,10 +18,87 @@ export const EndpointsRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "GET",
     path: "/api/projects/{project_id}/endpoints/{name}/",
   }),
-);
-export type EndpointsRetrieveInput = typeof EndpointsRetrieveInput.Type;
+) as unknown as Schema.Codec<EndpointsRetrieveInput>;
 
 // Output Schema
+export interface EndpointsRetrieveOutput {
+  id?: string;
+  name?: string;
+  description?: string | null;
+  query?: unknown;
+  is_active?: boolean;
+  data_freshness_seconds?: number;
+  endpoint_path?: string;
+  url?: string | null;
+  ui_url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  is_materialized?: boolean;
+  current_version?: number;
+  current_version_id?: string | null;
+  versions_count?: number;
+  derived_from_insight?: string | null;
+  last_executed_at?: string | null;
+  materialization?: {
+    name?: string;
+    status?: string;
+    can_materialize?: boolean;
+    reason?: string | null;
+    last_materialized_at?: string | null;
+    error?: string;
+    saved_query_id?: string | null;
+  };
+  bucket_overrides?: Record<string, unknown> | null;
+  columns?: { name?: string; type?: string }[];
+  tags?: string[];
+  version?: number;
+  version_id?: string;
+  endpoint_is_active?: boolean;
+  version_created_at?: string;
+  version_updated_at?: string | null;
+  version_created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+}
 export const EndpointsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -25,7 +106,7 @@ export const EndpointsRetrieveOutput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     query: Schema.optional(Schema.Unknown),
     is_active: Schema.optional(Schema.Boolean),
-    cache_age_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
+    data_freshness_seconds: Schema.optional(Schema.Number),
     endpoint_path: Schema.optional(Schema.String),
     url: Schema.optional(Schema.NullOr(Schema.String)),
     ui_url: Schema.optional(Schema.NullOr(Schema.String)),
@@ -44,7 +125,23 @@ export const EndpointsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -62,7 +159,6 @@ export const EndpointsRetrieveOutput =
         reason: Schema.optional(Schema.NullOr(Schema.String)),
         last_materialized_at: Schema.optional(Schema.NullOr(Schema.String)),
         error: Schema.optional(Schema.String),
-        sync_frequency: Schema.optional(Schema.NullOr(Schema.String)),
         saved_query_id: Schema.optional(Schema.NullOr(Schema.String)),
       }),
     ),
@@ -77,6 +173,7 @@ export const EndpointsRetrieveOutput =
         }),
       ),
     ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
     version: Schema.optional(Schema.Number),
     version_id: Schema.optional(Schema.String),
     endpoint_is_active: Schema.optional(Schema.Boolean),
@@ -95,12 +192,27 @@ export const EndpointsRetrieveOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
-  });
-export type EndpointsRetrieveOutput = typeof EndpointsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsRetrieveOutput>;
 
 // The operation
 /**

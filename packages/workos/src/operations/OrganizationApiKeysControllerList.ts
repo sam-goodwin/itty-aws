@@ -4,52 +4,66 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationApiKeysControllerListInput {
+  organizationId: string;
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const OrganizationApiKeysControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "GET", path: "/organizations/{organizationId}/api_keys" }),
-  );
-export type OrganizationApiKeysControllerListInput =
-  typeof OrganizationApiKeysControllerListInput.Type;
+  ) as unknown as Schema.Codec<OrganizationApiKeysControllerListInput>;
 
 // Output Schema
+export interface OrganizationApiKeysControllerListOutput {
+  object: string;
+  data: {
+    object: string;
+    id: string;
+    owner: { type: string; id: string };
+    name: string;
+    obfuscated_value: string;
+    last_used_at: string | null;
+    expires_at: string | null;
+    permissions: string[];
+    created_at: string;
+    updated_at: string;
+  }[];
+  list_metadata: { before: string | null; after: string | null };
+}
 export const OrganizationApiKeysControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          owner: Schema.optional(
-            Schema.Struct({
-              type: Schema.String,
-              id: Schema.String,
-            }),
-          ),
-          name: Schema.optional(Schema.String),
-          obfuscated_value: Schema.optional(Schema.String),
-          last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-          permissions: Schema.optional(Schema.Array(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    list_metadata: Schema.optional(
+    object: Schema.String,
+    data: Schema.Array(
       Schema.Struct({
-        before: Schema.NullOr(Schema.String),
-        after: Schema.NullOr(Schema.String),
+        object: Schema.String,
+        id: Schema.String,
+        owner: Schema.Struct({
+          type: Schema.String,
+          id: Schema.String,
+        }),
+        name: Schema.String,
+        obfuscated_value: Schema.String,
+        last_used_at: Schema.NullOr(Schema.String),
+        expires_at: Schema.NullOr(Schema.String),
+        permissions: Schema.Array(Schema.String),
+        created_at: Schema.String,
+        updated_at: Schema.String,
       }),
     ),
-  });
-export type OrganizationApiKeysControllerListOutput =
-  typeof OrganizationApiKeysControllerListOutput.Type;
+    list_metadata: Schema.Struct({
+      before: Schema.NullOr(Schema.String),
+      after: Schema.NullOr(Schema.String),
+    }),
+  }) as unknown as Schema.Codec<OrganizationApiKeysControllerListOutput>;
 
 // The operation
 /**

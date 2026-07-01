@@ -3,16 +3,20 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface FlushAnalyticsInput {}
 export const FlushAnalyticsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
-).pipe(T.Http({ method: "POST", path: "/analytics/flush" }));
-export type FlushAnalyticsInput = typeof FlushAnalyticsInput.Type;
+).pipe(
+  T.Http({ method: "POST", path: "/analytics/flush" }),
+) as unknown as Schema.Codec<FlushAnalyticsInput>;
 
 // Output Schema
+export interface FlushAnalyticsOutput {
+  ok: boolean;
+}
 export const FlushAnalyticsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ok: Schema.Boolean,
-});
-export type FlushAnalyticsOutput = typeof FlushAnalyticsOutput.Type;
+}) as unknown as Schema.Codec<FlushAnalyticsOutput>;
 
 // The operation
 /**

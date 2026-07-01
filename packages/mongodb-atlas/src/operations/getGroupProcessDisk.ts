@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupProcessDiskInput {
+  partitionName: string;
+  groupId: string;
+  processId: string;
+  envelope?: boolean;
+}
 export const GetGroupProcessDiskInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     partitionName: Schema.String.pipe(T.PathParam()),
@@ -15,19 +21,18 @@ export const GetGroupProcessDiskInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}",
     }),
-  );
-export type GetGroupProcessDiskInput = typeof GetGroupProcessDiskInput.Type;
+  ) as unknown as Schema.Codec<GetGroupProcessDiskInput>;
 
 // Output Schema
+export type GetGroupProcessDiskOutput = void;
 export const GetGroupProcessDiskOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupProcessDiskOutput = typeof GetGroupProcessDiskOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDiskOutput>;
 
 // The operation
 /**
  * Return Measurements for One Disk
  *
- * Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns measurement details for one disk or partition for the specified host for the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param partitionName - Human-readable label of the disk or partition to which the measurements apply.

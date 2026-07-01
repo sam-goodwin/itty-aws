@@ -4,15 +4,31 @@ import * as T from "../traits.ts";
 import { Conflict } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationDomainsControllerCreateInput {
+  domain?: string;
+  organization_id?: string;
+}
 export const OrganizationDomainsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "POST", path: "/organization_domains" }));
-export type OrganizationDomainsControllerCreateInput =
-  typeof OrganizationDomainsControllerCreateInput.Type;
+  }).pipe(
+    T.Http({ method: "POST", path: "/organization_domains" }),
+  ) as unknown as Schema.Codec<OrganizationDomainsControllerCreateInput>;
 
 // Output Schema
+export interface OrganizationDomainsControllerCreateOutput {
+  object: string;
+  id: string;
+  organization_id: string;
+  domain: string;
+  state?: "failed" | "legacy_verified" | "pending" | "unverified" | "verified";
+  verification_prefix?: string;
+  verification_token?: string;
+  verification_strategy?: "dns" | "manual";
+  created_at: string;
+  updated_at: string;
+}
 export const OrganizationDomainsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.String,
@@ -33,9 +49,7 @@ export const OrganizationDomainsControllerCreateOutput =
     verification_strategy: Schema.optional(Schema.Literals(["dns", "manual"])),
     created_at: Schema.String,
     updated_at: Schema.String,
-  });
-export type OrganizationDomainsControllerCreateOutput =
-  typeof OrganizationDomainsControllerCreateOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationDomainsControllerCreateOutput>;
 
 // The operation
 /**

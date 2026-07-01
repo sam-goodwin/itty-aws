@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteNotifierInput {
+  id: string;
+}
 export const DeleteNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/notifiers/{id}" }));
-export type DeleteNotifierInput = typeof DeleteNotifierInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/notifiers/{id}" }),
+) as unknown as Schema.Codec<DeleteNotifierInput>;
 
 // Output Schema
-export const DeleteNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteNotifierOutput = typeof DeleteNotifierOutput.Type;
+export type DeleteNotifierOutput = void;
+export const DeleteNotifierOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteNotifierOutput>;
 
 // The operation
 /**

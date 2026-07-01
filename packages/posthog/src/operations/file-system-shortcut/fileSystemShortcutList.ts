@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface FileSystemShortcutListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const FileSystemShortcutListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,23 @@ export const FileSystemShortcutListInput =
       method: "GET",
       path: "/api/projects/{project_id}/file_system_shortcut/",
     }),
-  );
-export type FileSystemShortcutListInput =
-  typeof FileSystemShortcutListInput.Type;
+  ) as unknown as Schema.Codec<FileSystemShortcutListInput>;
 
 // Output Schema
+export interface FileSystemShortcutListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    path?: string;
+    type?: string;
+    ref?: string | null;
+    href?: string | null;
+    order?: number;
+    created_at?: string;
+  }[];
+}
 export const FileSystemShortcutListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -32,13 +49,12 @@ export const FileSystemShortcutListOutput =
           type: Schema.optional(Schema.String),
           ref: Schema.optional(Schema.NullOr(Schema.String)),
           href: Schema.optional(Schema.NullOr(Schema.String)),
+          order: Schema.optional(Schema.Number),
           created_at: Schema.optional(Schema.String),
         }),
       ),
     ),
-  });
-export type FileSystemShortcutListOutput =
-  typeof FileSystemShortcutListOutput.Type;
+  }) as unknown as Schema.Codec<FileSystemShortcutListOutput>;
 
 // The operation
 /**

@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListDatabaseRegionsInput {
+  organization: string;
+  database: string;
+  page?: number;
+  per_page?: number;
+}
 export const ListDatabaseRegionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,10 +21,29 @@ export const ListDatabaseRegionsInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/regions",
     }),
-  );
-export type ListDatabaseRegionsInput = typeof ListDatabaseRegionsInput.Type;
+  ) as unknown as Schema.Codec<ListDatabaseRegionsInput>;
 
 // Output Schema
+export interface ListDatabaseRegionsOutput {
+  type: string;
+  current_page: number;
+  next_page: number | null;
+  next_page_url: string | null;
+  prev_page: number | null;
+  prev_page_url: string | null;
+  data: {
+    id: string;
+    provider: string;
+    enabled: boolean;
+    public_ip_addresses: string[];
+    display_name: string;
+    location: string;
+    slug: string;
+    current_default: boolean;
+    mysql_supported: boolean;
+    postgresql_supported: boolean;
+  }[];
+}
 export const ListDatabaseRegionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     type: Schema.String,
@@ -41,8 +66,7 @@ export const ListDatabaseRegionsOutput =
         postgresql_supported: Schema.Boolean,
       }),
     ),
-  });
-export type ListDatabaseRegionsOutput = typeof ListDatabaseRegionsOutput.Type;
+  }) as unknown as Schema.Codec<ListDatabaseRegionsOutput>;
 
 // The operation
 /**

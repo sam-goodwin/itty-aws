@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetDatabaseInput {
+  organizationSlug: string;
+  databaseName: string;
+}
 export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,23 @@ export const GetDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/organizations/{organizationSlug}/databases/{databaseName}",
   }),
-);
-export type GetDatabaseInput = typeof GetDatabaseInput.Type;
+) as unknown as Schema.Codec<GetDatabaseInput>;
 
 // Output Schema
+export interface GetDatabaseOutput {
+  database?: {
+    Name?: string;
+    DbId?: string;
+    Hostname?: string;
+    block_reads?: boolean;
+    block_writes?: boolean;
+    regions?: string[];
+    primaryRegion?: string;
+    group?: string;
+    delete_protection?: boolean;
+    parent?: { id?: string; name?: string; branched_at?: string } | null;
+  };
+}
 export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Struct({
@@ -39,8 +56,7 @@ export const GetDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     }),
   ),
-});
-export type GetDatabaseOutput = typeof GetDatabaseOutput.Type;
+}) as unknown as Schema.Codec<GetDatabaseOutput>;
 
 // The operation
 /**

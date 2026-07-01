@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteDatabaseInput {
+  organization: string;
+  database: string;
+}
 export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -12,12 +16,12 @@ export const DeleteDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/organizations/{organization}/databases/{database}",
   }),
-);
-export type DeleteDatabaseInput = typeof DeleteDatabaseInput.Type;
+) as unknown as Schema.Codec<DeleteDatabaseInput>;
 
 // Output Schema
-export const DeleteDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteDatabaseOutput = typeof DeleteDatabaseOutput.Type;
+export type DeleteDatabaseOutput = void;
+export const DeleteDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatabaseOutput>;
 
 // The operation
 /**

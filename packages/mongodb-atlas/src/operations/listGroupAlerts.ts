@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupAlertsInput {
+  groupId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  status?: "OPEN" | "TRACKING" | "CLOSED";
+}
 export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -14,18 +23,18 @@ export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   status: Schema.optional(Schema.Literals(["OPEN", "TRACKING", "CLOSED"])),
 }).pipe(
   T.Http({ method: "GET", path: "/api/atlas/v2/groups/{groupId}/alerts" }),
-);
-export type ListGroupAlertsInput = typeof ListGroupAlertsInput.Type;
+) as unknown as Schema.Codec<ListGroupAlertsInput>;
 
 // Output Schema
-export const ListGroupAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupAlertsOutput = typeof ListGroupAlertsOutput.Type;
+export type ListGroupAlertsOutput = void;
+export const ListGroupAlertsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertsOutput>;
 
 // The operation
 /**
  * Return All Alerts from One Project
  *
- * Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

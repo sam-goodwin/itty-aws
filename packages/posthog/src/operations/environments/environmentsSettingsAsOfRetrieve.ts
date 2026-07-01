@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EnvironmentsSettingsAsOfRetrieveInput {
+  id: number;
+  project_id: string;
+}
 export const EnvironmentsSettingsAsOfRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const EnvironmentsSettingsAsOfRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/environments/{id}/settings_as_of/",
     }),
-  );
-export type EnvironmentsSettingsAsOfRetrieveInput =
-  typeof EnvironmentsSettingsAsOfRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EnvironmentsSettingsAsOfRetrieveInput>;
 
 // Output Schema
+export type EnvironmentsSettingsAsOfRetrieveOutput = void;
 export const EnvironmentsSettingsAsOfRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EnvironmentsSettingsAsOfRetrieveOutput =
-  typeof EnvironmentsSettingsAsOfRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsSettingsAsOfRetrieveOutput>;
 
 // The operation
 /**

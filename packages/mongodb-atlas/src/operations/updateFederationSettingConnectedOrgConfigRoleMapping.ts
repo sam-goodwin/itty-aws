@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UpdateFederationSettingConnectedOrgConfigRoleMappingInput {
+  federationSettingsId: string;
+  id: string;
+  orgId: string;
+  envelope?: boolean;
+}
 export const UpdateFederationSettingConnectedOrgConfigRoleMappingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
@@ -15,21 +21,18 @@ export const UpdateFederationSettingConnectedOrgConfigRoleMappingInput =
       method: "PUT",
       path: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
     }),
-  );
-export type UpdateFederationSettingConnectedOrgConfigRoleMappingInput =
-  typeof UpdateFederationSettingConnectedOrgConfigRoleMappingInput.Type;
+  ) as unknown as Schema.Codec<UpdateFederationSettingConnectedOrgConfigRoleMappingInput>;
 
 // Output Schema
+export type UpdateFederationSettingConnectedOrgConfigRoleMappingOutput = void;
 export const UpdateFederationSettingConnectedOrgConfigRoleMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpdateFederationSettingConnectedOrgConfigRoleMappingOutput =
-  typeof UpdateFederationSettingConnectedOrgConfigRoleMappingOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateFederationSettingConnectedOrgConfigRoleMappingOutput>;
 
 // The operation
 /**
  * Update One Role Mapping in One Organization
  *
- * Updates one role mapping in the specified organization in the specified federation. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Updates one role mapping in the specified organization in the specified federation.
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  * @param id - Unique 24-hexadecimal digit string that identifies the role mapping that you want to update.

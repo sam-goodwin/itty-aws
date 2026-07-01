@@ -4,6 +4,18 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ObjectMediaPreviewsCreateInput {
+  project_id: string;
+  id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -21,11 +33,20 @@ export const ObjectMediaPreviewsCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/object_media_previews/",
     }),
-  );
-export type ObjectMediaPreviewsCreateInput =
-  typeof ObjectMediaPreviewsCreateInput.Type;
+  ) as unknown as Schema.Codec<ObjectMediaPreviewsCreateInput>;
 
 // Output Schema
+export interface ObjectMediaPreviewsCreateOutput {
+  id?: string;
+  created_at?: string;
+  updated_at?: string | null;
+  media_url?: string;
+  media_type?: string;
+  metadata?: unknown;
+  uploaded_media_id?: string | null;
+  exported_asset_id?: string | null;
+  event_definition_id?: string | null;
+}
 export const ObjectMediaPreviewsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -37,9 +58,7 @@ export const ObjectMediaPreviewsCreateOutput =
     uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
     exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
     event_definition_id: Schema.optional(Schema.NullOr(Schema.String)),
-  });
-export type ObjectMediaPreviewsCreateOutput =
-  typeof ObjectMediaPreviewsCreateOutput.Type;
+  }) as unknown as Schema.Codec<ObjectMediaPreviewsCreateOutput>;
 
 // The operation
 /**

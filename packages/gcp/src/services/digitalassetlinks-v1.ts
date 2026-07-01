@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -27,7 +27,7 @@ export interface WebAsset {
   site?: string;
 }
 
-export const WebAsset: Schema.Schema<WebAsset> =
+export const WebAsset: Schema.Codec<WebAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     site: Schema.optional(Schema.String),
   }).annotate({ identifier: "WebAsset" });
@@ -37,7 +37,7 @@ export interface CertificateInfo {
   sha256Fingerprint?: string;
 }
 
-export const CertificateInfo: Schema.Schema<CertificateInfo> =
+export const CertificateInfo: Schema.Codec<CertificateInfo> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     sha256Fingerprint: Schema.optional(Schema.String),
   }).annotate({ identifier: "CertificateInfo" });
@@ -49,7 +49,7 @@ export interface AndroidAppAsset {
   certificate?: CertificateInfo;
 }
 
-export const AndroidAppAsset: Schema.Schema<AndroidAppAsset> =
+export const AndroidAppAsset: Schema.Codec<AndroidAppAsset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     packageName: Schema.optional(Schema.String),
     certificate: Schema.optional(CertificateInfo),
@@ -62,37 +62,38 @@ export interface Asset {
   androidApp?: AndroidAppAsset;
 }
 
-export const Asset: Schema.Schema<Asset> =
+export const Asset: Schema.Codec<Asset> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     web: Schema.optional(WebAsset),
     androidApp: Schema.optional(AndroidAppAsset),
   }).annotate({ identifier: "Asset" });
 
-export interface StatementTemplate {
-  /** The target that the source is declaring the relationship with. If omitted, you must specify a BulkCheckRequest.default_target to use here. */
-  target?: Asset;
-  /** The source asset that is asserting the statement. If omitted, you must specify a BulkCheckRequest.default_source value to use here. */
+export interface Statement {
+  /** Every statement has a source asset. REQUIRED */
   source?: Asset;
-  /** The relationship being asserted between the source and target. If omitted, you must specify a BulkCheckRequest.default_relation value to use here. */
+  /** Every statement has a target asset. REQUIRED */
+  target?: Asset;
+  /** The relation identifies the use of the statement as intended by the source asset's owner (that is, the person or entity who issued the statement). Every complete statement has a relation. We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use case of the statement. Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported relations. Example: `delegate_permission/common.handle_all_urls` REQUIRED */
   relation?: string;
+  /** Statements may specify relation level extensions/payloads to express more details when declaring permissions to grant from the source asset to the target asset. These relation extensions should be specified in the `relation_extensions` object, keyed by the relation type they're associated with. { relation: ["delegate_permission/common.handle_all_urls"], target: {...}, relation_extensions: { "delegate_permission/common.handle_all_urls": { ...handle_all_urls specific payload specified here... } } } When requested, and specified in the statement file, the API will return relation_extensions associated with the statement's relation type. i.e. the API will only return relation_extensions specified for "delegate_permission/common.handle_all_urls" if this statement object's relation type is "delegate_permission/common.handle_all_urls". */
+  relationExtensions?: Record<string, unknown>;
 }
 
-export const StatementTemplate: Schema.Schema<StatementTemplate> =
+export const Statement: Schema.Codec<Statement> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    target: Schema.optional(Asset),
     source: Schema.optional(Asset),
+    target: Schema.optional(Asset),
     relation: Schema.optional(Schema.String),
-  }).annotate({ identifier: "StatementTemplate" });
+    relationExtensions: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "Statement" });
 
 export interface CheckResponse {
-  /** Statements may specify relation level extensions/payloads to express more details when declaring permissions to grant from the source asset to the target asset. When requested, the API will return relation_extensions specified in any and all statements linking the requested source and target assets by the relation specified in the request. */
-  relationExtensions?: ReadonlyArray<Record<string, unknown>>;
-  /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
-  maxAge?: string;
-  /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
-  debugString?: string;
   /** Set to true if the assets specified in the request are linked by the relation specified in the request. */
   linked?: boolean;
+  /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
+  maxAge?: string;
   /** Error codes that describe the result of the Check operation. NOTE: Error codes may be populated even when `linked` is true. The error codes do not necessarily imply that the request failed, but rather, specify any errors encountered in the statements file(s) which may or may not impact whether the server determines the requested source and target to be linked. */
   errorCode?: ReadonlyArray<
     | "ERROR_CODE_UNSPECIFIED"
@@ -108,90 +109,66 @@ export interface CheckResponse {
     | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
     | (string & {})
   >;
+  /** Statements may specify relation level extensions/payloads to express more details when declaring permissions to grant from the source asset to the target asset. When requested, the API will return relation_extensions specified in any and all statements linking the requested source and target assets by the relation specified in the request. */
+  relationExtensions?: ReadonlyArray<Record<string, unknown>>;
+  /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
+  debugString?: string;
 }
 
-export const CheckResponse: Schema.Schema<CheckResponse> =
+export const CheckResponse: Schema.Codec<CheckResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linked: Schema.optional(Schema.Boolean),
+    maxAge: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.Array(Schema.String)),
     relationExtensions: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
-    maxAge: Schema.optional(Schema.String),
     debugString: Schema.optional(Schema.String),
-    linked: Schema.optional(Schema.Boolean),
-    errorCode: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CheckResponse" });
 
+export interface StatementTemplate {
+  /** The relationship being asserted between the source and target. If omitted, you must specify a BulkCheckRequest.default_relation value to use here. */
+  relation?: string;
+  /** The source asset that is asserting the statement. If omitted, you must specify a BulkCheckRequest.default_source value to use here. */
+  source?: Asset;
+  /** The target that the source is declaring the relationship with. If omitted, you must specify a BulkCheckRequest.default_target to use here. */
+  target?: Asset;
+}
+
+export const StatementTemplate: Schema.Codec<StatementTemplate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relation: Schema.optional(Schema.String),
+    source: Schema.optional(Asset),
+    target: Schema.optional(Asset),
+  }).annotate({ identifier: "StatementTemplate" });
+
 export interface BulkCheckRequest {
-  /** List of statements to check. For each statement, you can omit a field if the corresponding default_* field below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be ignored. */
-  statements?: ReadonlyArray<StatementTemplate>;
-  /** If specified, will be used in any given template statement that doesn’t specify a relation. */
-  defaultRelation?: string;
   /** If specified, will be used in any given template statement that doesn’t specify a source. */
   defaultSource?: Asset;
+  /** List of statements to check. For each statement, you can omit a field if the corresponding default_* field below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be ignored. */
+  statements?: ReadonlyArray<StatementTemplate>;
   /** If specified, will be used in any given template statement that doesn’t specify a target. */
   defaultTarget?: Asset;
+  /** If specified, will be used in any given template statement that doesn’t specify a relation. */
+  defaultRelation?: string;
   /** Same configuration as in CheckRequest; all statement checks will use the same configuration. */
   returnRelationExtensions?: boolean;
 }
 
-export const BulkCheckRequest: Schema.Schema<BulkCheckRequest> =
+export const BulkCheckRequest: Schema.Codec<BulkCheckRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statements: Schema.optional(Schema.Array(StatementTemplate)),
-    defaultRelation: Schema.optional(Schema.String),
     defaultSource: Schema.optional(Asset),
+    statements: Schema.optional(Schema.Array(StatementTemplate)),
     defaultTarget: Schema.optional(Asset),
+    defaultRelation: Schema.optional(Schema.String),
     returnRelationExtensions: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "BulkCheckRequest" });
 
-export interface BulkCheckResponse {
-  /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
-  checkResults?: ReadonlyArray<CheckResponse>;
-  /** Error code for the entire request. Present only if the entire request failed. Individual check errors will not trigger the presence of this field. */
-  bulkErrorCode?:
-    | "ERROR_CODE_UNSPECIFIED"
-    | "ERROR_CODE_INVALID_QUERY"
-    | "ERROR_CODE_FETCH_ERROR"
-    | "ERROR_CODE_FAILED_SSL_VALIDATION"
-    | "ERROR_CODE_REDIRECT"
-    | "ERROR_CODE_TOO_LARGE"
-    | "ERROR_CODE_MALFORMED_HTTP_RESPONSE"
-    | "ERROR_CODE_WRONG_CONTENT_TYPE"
-    | "ERROR_CODE_MALFORMED_CONTENT"
-    | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-    | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
-    | (string & {});
-}
-
-export const BulkCheckResponse: Schema.Schema<BulkCheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    checkResults: Schema.optional(Schema.Array(CheckResponse)),
-    bulkErrorCode: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BulkCheckResponse" });
-
-export interface Statement {
-  /** Statements may specify relation level extensions/payloads to express more details when declaring permissions to grant from the source asset to the target asset. These relation extensions should be specified in the `relation_extensions` object, keyed by the relation type they're associated with. { relation: ["delegate_permission/common.handle_all_urls"], target: {...}, relation_extensions: { "delegate_permission/common.handle_all_urls": { ...handle_all_urls specific payload specified here... } } } When requested, and specified in the statement file, the API will return relation_extensions associated with the statement's relation type. i.e. the API will only return relation_extensions specified for "delegate_permission/common.handle_all_urls" if this statement object's relation type is "delegate_permission/common.handle_all_urls". */
-  relationExtensions?: Record<string, unknown>;
-  /** Every statement has a target asset. REQUIRED */
-  target?: Asset;
-  /** Every statement has a source asset. REQUIRED */
-  source?: Asset;
-  /** The relation identifies the use of the statement as intended by the source asset's owner (that is, the person or entity who issued the statement). Every complete statement has a relation. We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use case of the statement. Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported relations. Example: `delegate_permission/common.handle_all_urls` REQUIRED */
-  relation?: string;
-}
-
-export const Statement: Schema.Schema<Statement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    relationExtensions: Schema.optional(
-      Schema.Record(Schema.String, Schema.Unknown),
-    ),
-    target: Schema.optional(Asset),
-    source: Schema.optional(Asset),
-    relation: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Statement" });
-
 export interface ListResponse {
-  /** A list of all the matching statements that have been found. */
-  statements?: ReadonlyArray<Statement>;
+  /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
+  maxAge?: string;
+  /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
+  debugString?: string;
   /** Error codes that describe the result of the List operation. */
   errorCode?: ReadonlyArray<
     | "ERROR_CODE_UNSPECIFIED"
@@ -207,19 +184,42 @@ export interface ListResponse {
     | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
     | (string & {})
   >;
-  /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
-  maxAge?: string;
-  /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
-  debugString?: string;
+  /** A list of all the matching statements that have been found. */
+  statements?: ReadonlyArray<Statement>;
 }
 
-export const ListResponse: Schema.Schema<ListResponse> =
+export const ListResponse: Schema.Codec<ListResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    statements: Schema.optional(Schema.Array(Statement)),
-    errorCode: Schema.optional(Schema.Array(Schema.String)),
     maxAge: Schema.optional(Schema.String),
     debugString: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.Array(Schema.String)),
+    statements: Schema.optional(Schema.Array(Statement)),
   }).annotate({ identifier: "ListResponse" });
+
+export interface BulkCheckResponse {
+  /** Error code for the entire request. Present only if the entire request failed. Individual check errors will not trigger the presence of this field. */
+  bulkErrorCode?:
+    | "ERROR_CODE_UNSPECIFIED"
+    | "ERROR_CODE_INVALID_QUERY"
+    | "ERROR_CODE_FETCH_ERROR"
+    | "ERROR_CODE_FAILED_SSL_VALIDATION"
+    | "ERROR_CODE_REDIRECT"
+    | "ERROR_CODE_TOO_LARGE"
+    | "ERROR_CODE_MALFORMED_HTTP_RESPONSE"
+    | "ERROR_CODE_WRONG_CONTENT_TYPE"
+    | "ERROR_CODE_MALFORMED_CONTENT"
+    | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
+    | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+    | (string & {});
+  /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
+  checkResults?: ReadonlyArray<CheckResponse>;
+}
+
+export const BulkCheckResponse: Schema.Codec<BulkCheckResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bulkErrorCode: Schema.optional(Schema.String),
+    checkResults: Schema.optional(Schema.Array(CheckResponse)),
+  }).annotate({ identifier: "BulkCheckResponse" });
 
 // ==========================================================================
 // Errors
@@ -275,103 +275,54 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // Operations
 // ==========================================================================
 
-export interface ListStatementsRequest {
-  /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
-  "source.web.site"?: string;
+export interface CheckAssetlinksRequest {
   /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
   "source.androidApp.certificate.sha256Fingerprint"?: string;
-  /** Whether to return any relation_extensions payloads specified in the source digital asset links statements. If this is set to `false` (default), relation_extensions specified will not be returned, even if they are specified in the DAL statement file. If set to `true`, the API will propagate relation_extensions associated with each statement's relation type, if specified in the DAL statement file. */
-  returnRelationExtensions?: boolean;
-  /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
-  "source.androidApp.packageName"?: string;
-  /** Use only associations that match the specified relation. See the [`Statement`](#Statement) message for a detailed definition of relation strings. For a query to match a statement, one of the following must be true: * both the query's and the statement's relation strings match exactly, or * the query's relation string is empty or missing. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
-  relation?: string;
-}
-
-export const ListStatementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  "source.web.site": Schema.optional(Schema.String).pipe(
-    T.HttpQuery("source.web.site"),
-  ),
-  "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
-    Schema.String,
-  ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
-  returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("returnRelationExtensions"),
-  ),
-  "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
-    T.HttpQuery("source.androidApp.packageName"),
-  ),
-  relation: Schema.optional(Schema.String).pipe(T.HttpQuery("relation")),
-}).pipe(
-  T.Http({ method: "GET", path: "v1/statements:list" }),
-  svc,
-) as unknown as Schema.Schema<ListStatementsRequest>;
-
-export type ListStatementsResponse = ListResponse;
-export const ListStatementsResponse = /*@__PURE__*/ /*#__PURE__*/ ListResponse;
-
-export type ListStatementsError = DefaultErrors | NotFound | Forbidden;
-
-/** Retrieves a list of all statements from a given source that match the specified target and statement string. The API guarantees that all statements with secure source assets, such as HTTPS websites or Android apps, have been made in a secure way by the owner of those assets, as described in the [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md). Specifically, you should consider that for insecure websites (that is, where the URL starts with `http://` instead of `https://`), this guarantee cannot be made. The `List` command is most useful in cases where the API client wants to know all the ways in which two assets are related, or enumerate all the relationships from a particular source asset. Example: a feature that helps users navigate to related items. When a mobile app is running on a device, the feature would make it easy to navigate to the corresponding web site or Google+ profile. */
-export const listStatements: API.OperationMethod<
-  ListStatementsRequest,
-  ListStatementsResponse,
-  ListStatementsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ListStatementsRequest,
-  output: ListStatementsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CheckAssetlinksRequest {
-  /** Whether to return relation_extensions payloads specified in the source Digital Asset Links statements linking the requested source and target assets by the requested relation type. If this is set to `false` (default), relation_extensions specified will not be returned, even if they are specified in the DAL statement file. If set to `true`, the API will propagate any and all relation_extensions, across statements, linking the source and target assets by the requested relation type, if specified in the DAL statement file. */
-  returnRelationExtensions?: boolean;
-  /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
-  "source.androidApp.packageName"?: string;
   /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
   "target.web.site"?: string;
   /** Query string for the relation. We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use case of the statement. Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported relations. For a query to match an asset link, both the query's and the asset link's relation strings must match exactly. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
   relation?: string;
-  /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
-  "source.web.site"?: string;
-  /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
-  "source.androidApp.certificate.sha256Fingerprint"?: string;
   /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
   "target.androidApp.packageName"?: string;
+  /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
+  "source.web.site"?: string;
+  /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
+  "source.androidApp.packageName"?: string;
   /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
   "target.androidApp.certificate.sha256Fingerprint"?: string;
+  /** Whether to return relation_extensions payloads specified in the source Digital Asset Links statements linking the requested source and target assets by the requested relation type. If this is set to `false` (default), relation_extensions specified will not be returned, even if they are specified in the DAL statement file. If set to `true`, the API will propagate any and all relation_extensions, across statements, linking the source and target assets by the requested relation type, if specified in the DAL statement file. */
+  returnRelationExtensions?: boolean;
 }
 
 export const CheckAssetlinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnRelationExtensions"),
-    ),
-    "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("source.androidApp.packageName"),
-    ),
+    "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
+      Schema.String,
+    ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
     "target.web.site": Schema.optional(Schema.String).pipe(
       T.HttpQuery("target.web.site"),
     ),
     relation: Schema.optional(Schema.String).pipe(T.HttpQuery("relation")),
+    "target.androidApp.packageName": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("target.androidApp.packageName"),
+    ),
     "source.web.site": Schema.optional(Schema.String).pipe(
       T.HttpQuery("source.web.site"),
     ),
-    "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
-      Schema.String,
-    ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
-    "target.androidApp.packageName": Schema.optional(Schema.String).pipe(
-      T.HttpQuery("target.androidApp.packageName"),
+    "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
+      T.HttpQuery("source.androidApp.packageName"),
     ),
     "target.androidApp.certificate.sha256Fingerprint": Schema.optional(
       Schema.String,
     ).pipe(T.HttpQuery("target.androidApp.certificate.sha256Fingerprint")),
+    returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnRelationExtensions"),
+    ),
   },
 ).pipe(
   T.Http({ method: "GET", path: "v1/assetlinks:check" }),
   svc,
-) as unknown as Schema.Schema<CheckAssetlinksRequest>;
+) as unknown as Schema.Codec<CheckAssetlinksRequest>;
 
 export type CheckAssetlinksResponse = CheckResponse;
 export const CheckAssetlinksResponse =
@@ -402,7 +353,7 @@ export const BulkCheckAssetlinksRequest =
   }).pipe(
     T.Http({ method: "POST", path: "v1/assetlinks:bulkCheck", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<BulkCheckAssetlinksRequest>;
+  ) as unknown as Schema.Codec<BulkCheckAssetlinksRequest>;
 
 export type BulkCheckAssetlinksResponse = BulkCheckResponse;
 export const BulkCheckAssetlinksResponse =
@@ -425,4 +376,53 @@ export const bulkCheckAssetlinks: API.OperationMethod<
   input: BulkCheckAssetlinksRequest,
   output: BulkCheckAssetlinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListStatementsRequest {
+  /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
+  "source.web.site"?: string;
+  /** Use only associations that match the specified relation. See the [`Statement`](#Statement) message for a detailed definition of relation strings. For a query to match a statement, one of the following must be true: * both the query's and the statement's relation strings match exactly, or * the query's relation string is empty or missing. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
+  relation?: string;
+  /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
+  "source.androidApp.packageName"?: string;
+  /** Whether to return any relation_extensions payloads specified in the source digital asset links statements. If this is set to `false` (default), relation_extensions specified will not be returned, even if they are specified in the DAL statement file. If set to `true`, the API will propagate relation_extensions associated with each statement's relation type, if specified in the DAL statement file. */
+  returnRelationExtensions?: boolean;
+  /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
+  "source.androidApp.certificate.sha256Fingerprint"?: string;
+}
+
+export const ListStatementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "source.web.site": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("source.web.site"),
+  ),
+  relation: Schema.optional(Schema.String).pipe(T.HttpQuery("relation")),
+  "source.androidApp.packageName": Schema.optional(Schema.String).pipe(
+    T.HttpQuery("source.androidApp.packageName"),
+  ),
+  returnRelationExtensions: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("returnRelationExtensions"),
+  ),
+  "source.androidApp.certificate.sha256Fingerprint": Schema.optional(
+    Schema.String,
+  ).pipe(T.HttpQuery("source.androidApp.certificate.sha256Fingerprint")),
+}).pipe(
+  T.Http({ method: "GET", path: "v1/statements:list" }),
+  svc,
+) as unknown as Schema.Codec<ListStatementsRequest>;
+
+export type ListStatementsResponse = ListResponse;
+export const ListStatementsResponse = /*@__PURE__*/ /*#__PURE__*/ ListResponse;
+
+export type ListStatementsError = DefaultErrors | NotFound | Forbidden;
+
+/** Retrieves a list of all statements from a given source that match the specified target and statement string. The API guarantees that all statements with secure source assets, such as HTTPS websites or Android apps, have been made in a secure way by the owner of those assets, as described in the [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md). Specifically, you should consider that for insecure websites (that is, where the URL starts with `http://` instead of `https://`), this guarantee cannot be made. The `List` command is most useful in cases where the API client wants to know all the ways in which two assets are related, or enumerate all the relationships from a particular source asset. Example: a feature that helps users navigate to related items. When a mobile app is running on a device, the feature would make it easy to navigate to the corresponding web site or Google+ profile. */
+export const listStatements: API.OperationMethod<
+  ListStatementsRequest,
+  ListStatementsResponse,
+  ListStatementsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListStatementsRequest,
+  output: ListStatementsResponse,
+  errors: [NotFound, Forbidden],
 }));

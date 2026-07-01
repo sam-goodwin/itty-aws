@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetOrgInvoiceCsvInput {
+  orgId: string;
+  invoiceId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   invoiceId: Schema.String.pipe(T.PathParam()),
@@ -14,18 +20,18 @@ export const GetOrgInvoiceCsvInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv",
   }),
-);
-export type GetOrgInvoiceCsvInput = typeof GetOrgInvoiceCsvInput.Type;
+) as unknown as Schema.Codec<GetOrgInvoiceCsvInput>;
 
 // Output Schema
-export const GetOrgInvoiceCsvOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetOrgInvoiceCsvOutput = typeof GetOrgInvoiceCsvOutput.Type;
+export type GetOrgInvoiceCsvOutput = void;
+export const GetOrgInvoiceCsvOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgInvoiceCsvOutput>;
 
 // The operation
 /**
  * Return One Invoice as CSV for One Organization
  *
- * Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting Service Account or API Key have at least the Organization Billing Viewer, Organization Billing Admin, or Organization Owner role. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
+ * Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. If you have a cross-organization setup, you can query for a linked invoice if you have the Organization Billing Admin or Organization Owner Role.
  * To compute the total owed amount of the invoice - sum up total owed amount of each payment included into the invoice. To compute payment's owed amount - use formula `totalBilledCents` * `unitPrice` + `salesTax` - `startingBalanceCents`.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

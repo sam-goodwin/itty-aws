@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupCloudProviderAccessInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const ListGroupCloudProviderAccessInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -14,21 +19,18 @@ export const ListGroupCloudProviderAccessInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
     }),
-  );
-export type ListGroupCloudProviderAccessInput =
-  typeof ListGroupCloudProviderAccessInput.Type;
+  ) as unknown as Schema.Codec<ListGroupCloudProviderAccessInput>;
 
 // Output Schema
+export type ListGroupCloudProviderAccessOutput = void;
 export const ListGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupCloudProviderAccessOutput =
-  typeof ListGroupCloudProviderAccessOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupCloudProviderAccessOutput>;
 
 // The operation
 /**
  * Return All Cloud Provider Access Roles
  *
- * Returns all cloud provider access roles with access to the specified project. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+ * Returns all cloud provider access roles with access to the specified project.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.

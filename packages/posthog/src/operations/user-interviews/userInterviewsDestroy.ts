@@ -1,9 +1,12 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UserInterviewsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const UserInterviewsDestroyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -11,16 +14,14 @@ export const UserInterviewsDestroyInput =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/api/environments/{project_id}/user_interviews/{id}/",
+      path: "/api/projects/{project_id}/user_interviews/{id}/",
     }),
-  );
-export type UserInterviewsDestroyInput = typeof UserInterviewsDestroyInput.Type;
+  ) as unknown as Schema.Codec<UserInterviewsDestroyInput>;
 
 // Output Schema
+export type UserInterviewsDestroyOutput = void;
 export const UserInterviewsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UserInterviewsDestroyOutput =
-  typeof UserInterviewsDestroyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserInterviewsDestroyOutput>;
 
 // The operation
 /**
@@ -32,6 +33,5 @@ export const userInterviewsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserInterviewsDestroyInput,
     outputSchema: UserInterviewsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
   }),
 );

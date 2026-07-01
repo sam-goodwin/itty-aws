@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesSetMemoryLimitInput {
+  app_name: string;
+  machine_id: string;
+  limit_mb?: number;
+}
 export const MachinesSetMemoryLimitInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
@@ -14,18 +19,18 @@ export const MachinesSetMemoryLimitInput =
       method: "PUT",
       path: "/apps/{app_name}/machines/{machine_id}/memory",
     }),
-  );
-export type MachinesSetMemoryLimitInput =
-  typeof MachinesSetMemoryLimitInput.Type;
+  ) as unknown as Schema.Codec<MachinesSetMemoryLimitInput>;
 
 // Output Schema
+export interface MachinesSetMemoryLimitOutput {
+  available_mb?: number;
+  limit_mb?: number;
+}
 export const MachinesSetMemoryLimitOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     available_mb: Schema.optional(Schema.Number),
     limit_mb: Schema.optional(Schema.Number),
-  });
-export type MachinesSetMemoryLimitOutput =
-  typeof MachinesSetMemoryLimitOutput.Type;
+  }) as unknown as Schema.Codec<MachinesSetMemoryLimitOutput>;
 
 // The operation
 /**

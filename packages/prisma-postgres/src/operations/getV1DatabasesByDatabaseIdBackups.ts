@@ -4,17 +4,31 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface GetV1DatabasesByDatabaseIdBackupsInput {
+  databaseId: string;
+  limit?: number;
+}
 export const GetV1DatabasesByDatabaseIdBackupsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/databases/{databaseId}/backups" }),
-  );
-export type GetV1DatabasesByDatabaseIdBackupsInput =
-  typeof GetV1DatabasesByDatabaseIdBackupsInput.Type;
+  ) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdBackupsInput>;
 
 // Output Schema
+export interface GetV1DatabasesByDatabaseIdBackupsOutput {
+  data: {
+    id: string;
+    backupType: "full" | "incremental";
+    createdAt: string;
+    size?: number;
+    status: "running" | "completed" | "failed" | "unknown";
+    type?: string;
+  }[];
+  meta: { backupRetentionDays: number };
+  pagination: { hasMore: boolean; limit: number | null };
+}
 export const GetV1DatabasesByDatabaseIdBackupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
@@ -32,11 +46,9 @@ export const GetV1DatabasesByDatabaseIdBackupsOutput =
     }),
     pagination: Schema.Struct({
       hasMore: Schema.Boolean,
-      limit: Schema.Unknown,
+      limit: Schema.NullOr(Schema.Number),
     }),
-  });
-export type GetV1DatabasesByDatabaseIdBackupsOutput =
-  typeof GetV1DatabasesByDatabaseIdBackupsOutput.Type;
+  }) as unknown as Schema.Codec<GetV1DatabasesByDatabaseIdBackupsOutput>;
 
 // The operation
 /**

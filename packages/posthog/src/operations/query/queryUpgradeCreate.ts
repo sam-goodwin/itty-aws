@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface QueryUpgradeCreateInput {
+  project_id: string;
+  query?: unknown;
+}
 export const QueryUpgradeCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,16 @@ export const QueryUpgradeCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/query/upgrade/",
     }),
-  );
-export type QueryUpgradeCreateInput = typeof QueryUpgradeCreateInput.Type;
+  ) as unknown as Schema.Codec<QueryUpgradeCreateInput>;
 
 // Output Schema
+export interface QueryUpgradeCreateOutput {
+  query?: unknown;
+}
 export const QueryUpgradeCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.Unknown),
-  });
-export type QueryUpgradeCreateOutput = typeof QueryUpgradeCreateOutput.Type;
+  }) as unknown as Schema.Codec<QueryUpgradeCreateOutput>;
 
 // The operation
 /**

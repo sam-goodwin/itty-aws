@@ -3,6 +3,9 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListGroupsInput {
+  organizationSlug: string;
+}
 export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -10,10 +13,19 @@ export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/v1/organizations/{organizationSlug}/groups",
   }),
-);
-export type ListGroupsInput = typeof ListGroupsInput.Type;
+) as unknown as Schema.Codec<ListGroupsInput>;
 
 // Output Schema
+export interface ListGroupsOutput {
+  groups?: {
+    name?: string;
+    version?: string;
+    uuid?: string;
+    locations?: string[];
+    primary?: string;
+    delete_protection?: boolean;
+  }[];
+}
 export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   groups: Schema.optional(
     Schema.Array(
@@ -27,8 +39,7 @@ export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type ListGroupsOutput = typeof ListGroupsOutput.Type;
+}) as unknown as Schema.Codec<ListGroupsOutput>;
 
 // The operation
 /**

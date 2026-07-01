@@ -4,12 +4,24 @@ import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface GetGroupByIdInput {
+  id: string;
+}
 export const GetGroupByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "GET", path: "/v2/rbac/groups/{id}" }));
-export type GetGroupByIdInput = typeof GetGroupByIdInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/v2/rbac/groups/{id}" }),
+) as unknown as Schema.Codec<GetGroupByIdInput>;
 
 // Output Schema
+export interface GetGroupByIdOutput {
+  description?: string;
+  isManaged?: boolean;
+  members?: ReadonlyArray<string>;
+  name: string;
+  roles?: ReadonlyArray<string>;
+  id: string;
+}
 export const GetGroupByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   description: Schema.optional(Schema.String),
   isManaged: Schema.optional(Schema.Boolean),
@@ -17,8 +29,7 @@ export const GetGroupByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   roles: Schema.optional(Schema.Array(Schema.String)),
   id: Schema.String,
-});
-export type GetGroupByIdOutput = typeof GetGroupByIdOutput.Type;
+}) as unknown as Schema.Codec<GetGroupByIdOutput>;
 
 // The operation
 /**

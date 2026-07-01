@@ -4,17 +4,21 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface AlertsDestroyInput {
+  id: string;
+  project_id: string;
+}
 export const AlertsDestroyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/api/projects/{project_id}/alerts/{id}/" }),
-);
-export type AlertsDestroyInput = typeof AlertsDestroyInput.Type;
+) as unknown as Schema.Codec<AlertsDestroyInput>;
 
 // Output Schema
-export const AlertsDestroyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AlertsDestroyOutput = typeof AlertsDestroyOutput.Type;
+export type AlertsDestroyOutput = void;
+export const AlertsDestroyOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AlertsDestroyOutput>;
 
 // The operation
 /**

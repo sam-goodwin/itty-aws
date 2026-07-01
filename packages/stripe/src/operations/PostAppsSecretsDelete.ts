@@ -3,6 +3,11 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PostAppsSecretsDeleteInput {
+  expand?: string[];
+  name: string;
+  scope: { type: "account" | "user"; user?: string };
+}
 export const PostAppsSecretsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -17,10 +22,20 @@ export const PostAppsSecretsDeleteInput =
       path: "/v1/apps/secrets/delete",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostAppsSecretsDeleteInput = typeof PostAppsSecretsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PostAppsSecretsDeleteInput>;
 
 // Output Schema
+export interface PostAppsSecretsDeleteOutput {
+  created: number;
+  deleted?: boolean;
+  expires_at: number | null;
+  id: string;
+  livemode: boolean;
+  name: string;
+  object: "apps.secret";
+  payload?: string | null;
+  scope: { type: "account" | "user"; user?: string };
+}
 export const PostAppsSecretsDeleteOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created: Schema.Number,
@@ -35,9 +50,7 @@ export const PostAppsSecretsDeleteOutput =
       type: Schema.Literals(["account", "user"]),
       user: Schema.optional(Schema.String),
     }),
-  });
-export type PostAppsSecretsDeleteOutput =
-  typeof PostAppsSecretsDeleteOutput.Type;
+  }) as unknown as Schema.Codec<PostAppsSecretsDeleteOutput>;
 
 // The operation
 /**

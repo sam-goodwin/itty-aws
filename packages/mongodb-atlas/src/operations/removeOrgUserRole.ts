@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface RemoveOrgUserRoleInput {
+  orgId: string;
+  userId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     orgId: Schema.String.pipe(T.PathParam()),
@@ -16,18 +22,18 @@ export const RemoveOrgUserRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole",
   }),
-);
-export type RemoveOrgUserRoleInput = typeof RemoveOrgUserRoleInput.Type;
+) as unknown as Schema.Codec<RemoveOrgUserRoleInput>;
 
 // Output Schema
-export const RemoveOrgUserRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type RemoveOrgUserRoleOutput = typeof RemoveOrgUserRoleOutput.Type;
+export type RemoveOrgUserRoleOutput = void;
+export const RemoveOrgUserRoleOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrgUserRoleOutput>;
 
 // The operation
 /**
  * Remove One Organization Role from One MongoDB Cloud User
  *
- * Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times. To use this resource, the requesting Service Account or API Key must have the Organization Owner role.
+ * Removes one organization-level role from the MongoDB Cloud user. You can remove a role from an active user or a user that has not yet accepted the invitation to join the organization. To replace a user's only role, add the new role before removing the old role. A user must have at least one role at all times.
  * **Note**: This operation is atomic.
  * **Note**: This resource cannot be used to remove a role from users invited using the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
  *

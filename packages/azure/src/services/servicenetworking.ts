@@ -4,11 +4,31 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface AssociationsInterfaceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  associationName: string;
+  properties?: {
+    associationType: "subnets";
+    subnet?: { id: string };
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AssociationsInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -44,11 +64,22 @@ export const AssociationsInterfaceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type AssociationsInterfaceCreateOrUpdateInput =
-  typeof AssociationsInterfaceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<AssociationsInterfaceCreateOrUpdateInput>;
 
 // Output Schema
+export interface AssociationsInterfaceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssociationsInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -68,9 +99,7 @@ export const AssociationsInterfaceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssociationsInterfaceCreateOrUpdateOutput =
-  typeof AssociationsInterfaceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AssociationsInterfaceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -88,6 +117,12 @@ export const AssociationsInterfaceCreateOrUpdate =
     outputSchema: AssociationsInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface AssociationsInterfaceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  associationName: string;
+}
 export const AssociationsInterfaceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -100,15 +135,12 @@ export const AssociationsInterfaceDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type AssociationsInterfaceDeleteInput =
-  typeof AssociationsInterfaceDeleteInput.Type;
+  ) as unknown as Schema.Codec<AssociationsInterfaceDeleteInput>;
 
 // Output Schema
+export type AssociationsInterfaceDeleteOutput = void;
 export const AssociationsInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssociationsInterfaceDeleteOutput =
-  typeof AssociationsInterfaceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociationsInterfaceDeleteOutput>;
 
 // The operation
 /**
@@ -127,6 +159,12 @@ export const AssociationsInterfaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssociationsInterfaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  associationName: string;
+}
 export const AssociationsInterfaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -139,11 +177,22 @@ export const AssociationsInterfaceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type AssociationsInterfaceGetInput =
-  typeof AssociationsInterfaceGetInput.Type;
+  ) as unknown as Schema.Codec<AssociationsInterfaceGetInput>;
 
 // Output Schema
+export interface AssociationsInterfaceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssociationsInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -163,9 +212,7 @@ export const AssociationsInterfaceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssociationsInterfaceGetOutput =
-  typeof AssociationsInterfaceGetOutput.Type;
+  }) as unknown as Schema.Codec<AssociationsInterfaceGetOutput>;
 
 // The operation
 /**
@@ -184,6 +231,11 @@ export const AssociationsInterfaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssociationsInterfaceListByTrafficControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+}
 export const AssociationsInterfaceListByTrafficControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -195,11 +247,25 @@ export const AssociationsInterfaceListByTrafficControllerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations",
       apiVersion: "2025-01-01",
     }),
-  );
-export type AssociationsInterfaceListByTrafficControllerInput =
-  typeof AssociationsInterfaceListByTrafficControllerInput.Type;
+  ) as unknown as Schema.Codec<AssociationsInterfaceListByTrafficControllerInput>;
 
 // Output Schema
+export interface AssociationsInterfaceListByTrafficControllerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssociationsInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -234,9 +300,7 @@ export const AssociationsInterfaceListByTrafficControllerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssociationsInterfaceListByTrafficControllerOutput =
-  typeof AssociationsInterfaceListByTrafficControllerOutput.Type;
+  }) as unknown as Schema.Codec<AssociationsInterfaceListByTrafficControllerOutput>;
 
 // The operation
 /**
@@ -253,6 +317,14 @@ export const AssociationsInterfaceListByTrafficController =
     outputSchema: AssociationsInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
+export interface AssociationsInterfaceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  associationName: string;
+  tags?: Record<string, string>;
+  properties?: { associationType?: "subnets"; subnet?: { id?: string } };
+}
 export const AssociationsInterfaceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -276,11 +348,22 @@ export const AssociationsInterfaceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type AssociationsInterfaceUpdateInput =
-  typeof AssociationsInterfaceUpdateInput.Type;
+  ) as unknown as Schema.Codec<AssociationsInterfaceUpdateInput>;
 
 // Output Schema
+export interface AssociationsInterfaceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssociationsInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -300,9 +383,7 @@ export const AssociationsInterfaceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssociationsInterfaceUpdateOutput =
-  typeof AssociationsInterfaceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AssociationsInterfaceUpdateOutput>;
 
 // The operation
 /**
@@ -321,6 +402,25 @@ export const AssociationsInterfaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FrontendsInterfaceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  frontendName: string;
+  properties?: {
+    fqdn?: string;
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const FrontendsInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -351,11 +451,22 @@ export const FrontendsInterfaceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type FrontendsInterfaceCreateOrUpdateInput =
-  typeof FrontendsInterfaceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<FrontendsInterfaceCreateOrUpdateInput>;
 
 // Output Schema
+export interface FrontendsInterfaceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FrontendsInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -375,9 +486,7 @@ export const FrontendsInterfaceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FrontendsInterfaceCreateOrUpdateOutput =
-  typeof FrontendsInterfaceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FrontendsInterfaceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -395,6 +504,12 @@ export const FrontendsInterfaceCreateOrUpdate =
     outputSchema: FrontendsInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface FrontendsInterfaceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  frontendName: string;
+}
 export const FrontendsInterfaceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -407,15 +522,12 @@ export const FrontendsInterfaceDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type FrontendsInterfaceDeleteInput =
-  typeof FrontendsInterfaceDeleteInput.Type;
+  ) as unknown as Schema.Codec<FrontendsInterfaceDeleteInput>;
 
 // Output Schema
+export type FrontendsInterfaceDeleteOutput = void;
 export const FrontendsInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type FrontendsInterfaceDeleteOutput =
-  typeof FrontendsInterfaceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FrontendsInterfaceDeleteOutput>;
 
 // The operation
 /**
@@ -434,6 +546,12 @@ export const FrontendsInterfaceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FrontendsInterfaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  frontendName: string;
+}
 export const FrontendsInterfaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -446,10 +564,22 @@ export const FrontendsInterfaceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type FrontendsInterfaceGetInput = typeof FrontendsInterfaceGetInput.Type;
+  ) as unknown as Schema.Codec<FrontendsInterfaceGetInput>;
 
 // Output Schema
+export interface FrontendsInterfaceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FrontendsInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -469,9 +599,7 @@ export const FrontendsInterfaceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FrontendsInterfaceGetOutput =
-  typeof FrontendsInterfaceGetOutput.Type;
+  }) as unknown as Schema.Codec<FrontendsInterfaceGetOutput>;
 
 // The operation
 /**
@@ -490,6 +618,11 @@ export const FrontendsInterfaceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface FrontendsInterfaceListByTrafficControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+}
 export const FrontendsInterfaceListByTrafficControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -501,11 +634,25 @@ export const FrontendsInterfaceListByTrafficControllerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends",
       apiVersion: "2025-01-01",
     }),
-  );
-export type FrontendsInterfaceListByTrafficControllerInput =
-  typeof FrontendsInterfaceListByTrafficControllerInput.Type;
+  ) as unknown as Schema.Codec<FrontendsInterfaceListByTrafficControllerInput>;
 
 // Output Schema
+export interface FrontendsInterfaceListByTrafficControllerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const FrontendsInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -540,9 +687,7 @@ export const FrontendsInterfaceListByTrafficControllerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type FrontendsInterfaceListByTrafficControllerOutput =
-  typeof FrontendsInterfaceListByTrafficControllerOutput.Type;
+  }) as unknown as Schema.Codec<FrontendsInterfaceListByTrafficControllerOutput>;
 
 // The operation
 /**
@@ -559,6 +704,13 @@ export const FrontendsInterfaceListByTrafficController =
     outputSchema: FrontendsInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
+export interface FrontendsInterfaceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  frontendName: string;
+  tags?: Record<string, string>;
+}
 export const FrontendsInterfaceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -572,11 +724,22 @@ export const FrontendsInterfaceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type FrontendsInterfaceUpdateInput =
-  typeof FrontendsInterfaceUpdateInput.Type;
+  ) as unknown as Schema.Codec<FrontendsInterfaceUpdateInput>;
 
 // Output Schema
+export interface FrontendsInterfaceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const FrontendsInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -596,9 +759,7 @@ export const FrontendsInterfaceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type FrontendsInterfaceUpdateOutput =
-  typeof FrontendsInterfaceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<FrontendsInterfaceUpdateOutput>;
 
 // The operation
 /**
@@ -617,6 +778,7 @@ export const FrontendsInterfaceUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -625,10 +787,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.ServiceNetworking/operations",
     apiVersion: "2025-01-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -651,8 +827,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -665,6 +840,26 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface SecurityPoliciesInterfaceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  securityPolicyName: string;
+  properties?: {
+    policyType?: "waf";
+    wafPolicy?: { id: string };
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SecurityPoliciesInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -700,11 +895,22 @@ export const SecurityPoliciesInterfaceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SecurityPoliciesInterfaceCreateOrUpdateInput =
-  typeof SecurityPoliciesInterfaceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecurityPoliciesInterfaceCreateOrUpdateInput>;
 
 // Output Schema
+export interface SecurityPoliciesInterfaceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecurityPoliciesInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -724,9 +930,7 @@ export const SecurityPoliciesInterfaceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecurityPoliciesInterfaceCreateOrUpdateOutput =
-  typeof SecurityPoliciesInterfaceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecurityPoliciesInterfaceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -744,6 +948,12 @@ export const SecurityPoliciesInterfaceCreateOrUpdate =
     outputSchema: SecurityPoliciesInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SecurityPoliciesInterfaceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  securityPolicyName: string;
+}
 export const SecurityPoliciesInterfaceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -756,15 +966,12 @@ export const SecurityPoliciesInterfaceDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SecurityPoliciesInterfaceDeleteInput =
-  typeof SecurityPoliciesInterfaceDeleteInput.Type;
+  ) as unknown as Schema.Codec<SecurityPoliciesInterfaceDeleteInput>;
 
 // Output Schema
+export type SecurityPoliciesInterfaceDeleteOutput = void;
 export const SecurityPoliciesInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SecurityPoliciesInterfaceDeleteOutput =
-  typeof SecurityPoliciesInterfaceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityPoliciesInterfaceDeleteOutput>;
 
 // The operation
 /**
@@ -782,6 +989,12 @@ export const SecurityPoliciesInterfaceDelete =
     outputSchema: SecurityPoliciesInterfaceDeleteOutput,
   }));
 // Input Schema
+export interface SecurityPoliciesInterfaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  securityPolicyName: string;
+}
 export const SecurityPoliciesInterfaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -794,11 +1007,22 @@ export const SecurityPoliciesInterfaceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SecurityPoliciesInterfaceGetInput =
-  typeof SecurityPoliciesInterfaceGetInput.Type;
+  ) as unknown as Schema.Codec<SecurityPoliciesInterfaceGetInput>;
 
 // Output Schema
+export interface SecurityPoliciesInterfaceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecurityPoliciesInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -818,9 +1042,7 @@ export const SecurityPoliciesInterfaceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecurityPoliciesInterfaceGetOutput =
-  typeof SecurityPoliciesInterfaceGetOutput.Type;
+  }) as unknown as Schema.Codec<SecurityPoliciesInterfaceGetOutput>;
 
 // The operation
 /**
@@ -838,6 +1060,11 @@ export const SecurityPoliciesInterfaceGet =
     outputSchema: SecurityPoliciesInterfaceGetOutput,
   }));
 // Input Schema
+export interface SecurityPoliciesInterfaceListByTrafficControllerInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+}
 export const SecurityPoliciesInterfaceListByTrafficControllerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -849,11 +1076,25 @@ export const SecurityPoliciesInterfaceListByTrafficControllerInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SecurityPoliciesInterfaceListByTrafficControllerInput =
-  typeof SecurityPoliciesInterfaceListByTrafficControllerInput.Type;
+  ) as unknown as Schema.Codec<SecurityPoliciesInterfaceListByTrafficControllerInput>;
 
 // Output Schema
+export interface SecurityPoliciesInterfaceListByTrafficControllerOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SecurityPoliciesInterfaceListByTrafficControllerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -888,9 +1129,7 @@ export const SecurityPoliciesInterfaceListByTrafficControllerOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SecurityPoliciesInterfaceListByTrafficControllerOutput =
-  typeof SecurityPoliciesInterfaceListByTrafficControllerOutput.Type;
+  }) as unknown as Schema.Codec<SecurityPoliciesInterfaceListByTrafficControllerOutput>;
 
 // The operation
 /**
@@ -907,6 +1146,14 @@ export const SecurityPoliciesInterfaceListByTrafficController =
     outputSchema: SecurityPoliciesInterfaceListByTrafficControllerOutput,
   }));
 // Input Schema
+export interface SecurityPoliciesInterfaceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  securityPolicyName: string;
+  tags?: Record<string, string>;
+  properties?: { wafPolicy?: { id?: string } };
+}
 export const SecurityPoliciesInterfaceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -929,11 +1176,22 @@ export const SecurityPoliciesInterfaceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies/{securityPolicyName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type SecurityPoliciesInterfaceUpdateInput =
-  typeof SecurityPoliciesInterfaceUpdateInput.Type;
+  ) as unknown as Schema.Codec<SecurityPoliciesInterfaceUpdateInput>;
 
 // Output Schema
+export interface SecurityPoliciesInterfaceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SecurityPoliciesInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -953,9 +1211,7 @@ export const SecurityPoliciesInterfaceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SecurityPoliciesInterfaceUpdateOutput =
-  typeof SecurityPoliciesInterfaceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SecurityPoliciesInterfaceUpdateOutput>;
 
 // The operation
 /**
@@ -973,6 +1229,28 @@ export const SecurityPoliciesInterfaceUpdate =
     outputSchema: SecurityPoliciesInterfaceUpdateOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  properties?: {
+    configurationEndpoints?: string[];
+    frontends?: { id: string }[];
+    associations?: { id: string }[];
+    securityPolicies?: { id: string }[];
+    securityPolicyConfigurations?: { wafSecurityPolicy?: { id: string } };
+    provisioningState?:
+      | "Provisioning"
+      | "Updating"
+      | "Deleting"
+      | "Accepted"
+      | "Succeeded"
+      | "Failed"
+      | "Canceled";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const TrafficControllerInterfaceCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1032,11 +1310,22 @@ export const TrafficControllerInterfaceCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceCreateOrUpdateInput =
-  typeof TrafficControllerInterfaceCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceCreateOrUpdateInput>;
 
 // Output Schema
+export interface TrafficControllerInterfaceCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrafficControllerInterfaceCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1056,9 +1345,7 @@ export const TrafficControllerInterfaceCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrafficControllerInterfaceCreateOrUpdateOutput =
-  typeof TrafficControllerInterfaceCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TrafficControllerInterfaceCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1075,6 +1362,11 @@ export const TrafficControllerInterfaceCreateOrUpdate =
     outputSchema: TrafficControllerInterfaceCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+}
 export const TrafficControllerInterfaceDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1086,15 +1378,12 @@ export const TrafficControllerInterfaceDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceDeleteInput =
-  typeof TrafficControllerInterfaceDeleteInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceDeleteInput>;
 
 // Output Schema
+export type TrafficControllerInterfaceDeleteOutput = void;
 export const TrafficControllerInterfaceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TrafficControllerInterfaceDeleteOutput =
-  typeof TrafficControllerInterfaceDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrafficControllerInterfaceDeleteOutput>;
 
 // The operation
 /**
@@ -1111,6 +1400,11 @@ export const TrafficControllerInterfaceDelete =
     outputSchema: TrafficControllerInterfaceDeleteOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+}
 export const TrafficControllerInterfaceGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1122,11 +1416,22 @@ export const TrafficControllerInterfaceGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceGetInput =
-  typeof TrafficControllerInterfaceGetInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceGetInput>;
 
 // Output Schema
+export interface TrafficControllerInterfaceGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrafficControllerInterfaceGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1146,9 +1451,7 @@ export const TrafficControllerInterfaceGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrafficControllerInterfaceGetOutput =
-  typeof TrafficControllerInterfaceGetOutput.Type;
+  }) as unknown as Schema.Codec<TrafficControllerInterfaceGetOutput>;
 
 // The operation
 /**
@@ -1165,6 +1468,10 @@ export const TrafficControllerInterfaceGet =
     outputSchema: TrafficControllerInterfaceGetOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const TrafficControllerInterfaceListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1175,11 +1482,25 @@ export const TrafficControllerInterfaceListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceListByResourceGroupInput =
-  typeof TrafficControllerInterfaceListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceListByResourceGroupInput>;
 
 // Output Schema
+export interface TrafficControllerInterfaceListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TrafficControllerInterfaceListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1214,9 +1535,7 @@ export const TrafficControllerInterfaceListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TrafficControllerInterfaceListByResourceGroupOutput =
-  typeof TrafficControllerInterfaceListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<TrafficControllerInterfaceListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1232,6 +1551,9 @@ export const TrafficControllerInterfaceListByResourceGroup =
     outputSchema: TrafficControllerInterfaceListByResourceGroupOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const TrafficControllerInterfaceListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1241,11 +1563,25 @@ export const TrafficControllerInterfaceListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceListBySubscriptionInput =
-  typeof TrafficControllerInterfaceListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceListBySubscriptionInput>;
 
 // Output Schema
+export interface TrafficControllerInterfaceListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const TrafficControllerInterfaceListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1280,9 +1616,7 @@ export const TrafficControllerInterfaceListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type TrafficControllerInterfaceListBySubscriptionOutput =
-  typeof TrafficControllerInterfaceListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<TrafficControllerInterfaceListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1297,6 +1631,15 @@ export const TrafficControllerInterfaceListBySubscription =
     outputSchema: TrafficControllerInterfaceListBySubscriptionOutput,
   }));
 // Input Schema
+export interface TrafficControllerInterfaceUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  trafficControllerName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    securityPolicyConfigurations?: { wafSecurityPolicy?: { id?: string } };
+  };
+}
 export const TrafficControllerInterfaceUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1322,11 +1665,22 @@ export const TrafficControllerInterfaceUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}",
       apiVersion: "2025-01-01",
     }),
-  );
-export type TrafficControllerInterfaceUpdateInput =
-  typeof TrafficControllerInterfaceUpdateInput.Type;
+  ) as unknown as Schema.Codec<TrafficControllerInterfaceUpdateInput>;
 
 // Output Schema
+export interface TrafficControllerInterfaceUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const TrafficControllerInterfaceUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1346,9 +1700,7 @@ export const TrafficControllerInterfaceUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type TrafficControllerInterfaceUpdateOutput =
-  typeof TrafficControllerInterfaceUpdateOutput.Type;
+  }) as unknown as Schema.Codec<TrafficControllerInterfaceUpdateOutput>;
 
 // The operation
 /**

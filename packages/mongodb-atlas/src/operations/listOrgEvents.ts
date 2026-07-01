@@ -4,6 +4,18 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListOrgEventsInput {
+  orgId: string;
+  envelope?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+  pretty?: boolean;
+  eventType?: string;
+  includeRaw?: boolean;
+  maxDate?: string;
+  minDate?: string;
+}
 export const ListOrgEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -15,18 +27,20 @@ export const ListOrgEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   includeRaw: Schema.optional(Schema.Boolean),
   maxDate: Schema.optional(Schema.String),
   minDate: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/events" }));
-export type ListOrgEventsInput = typeof ListOrgEventsInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/api/atlas/v2/orgs/{orgId}/events" }),
+) as unknown as Schema.Codec<ListOrgEventsInput>;
 
 // Output Schema
-export const ListOrgEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListOrgEventsOutput = typeof ListOrgEventsOutput.Type;
+export type ListOrgEventsOutput = void;
+export const ListOrgEventsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgEventsOutput>;
 
 // The operation
 /**
  * Return Events from One Organization
  *
- * Returns events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting Service Account or API Key must have the Organization Member role.
+ * Returns events for the specified organization. Events identify significant database, billing, or security activities or status changes.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProductToursListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+  search?: string;
+}
 export const ProductToursListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
@@ -11,10 +17,79 @@ export const ProductToursListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   search: Schema.optional(Schema.String),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/product_tours/" }),
-);
-export type ProductToursListInput = typeof ProductToursListInput.Type;
+) as unknown as Schema.Codec<ProductToursListInput>;
 
 // Output Schema
+export interface ProductToursListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    name?: string;
+    description?: string;
+    internal_targeting_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    linked_flag?: {
+      id?: number;
+      team_id?: number;
+      name?: string;
+      key?: string;
+      filters?: Record<string, unknown>;
+      deleted?: boolean;
+      active?: boolean;
+      ensure_experience_continuity?: boolean | null;
+      version?: number | null;
+      evaluation_runtime?: "server" | "client" | "all" | "" | null;
+      bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+      evaluation_contexts?: string[];
+    };
+    targeting_flag_filters?: Record<string, unknown> | null;
+    content?: unknown;
+    draft_content?: unknown;
+    has_draft?: boolean;
+    auto_launch?: boolean;
+    start_date?: string | null;
+    end_date?: string | null;
+    created_at?: string;
+    created_by?: {
+      id?: number;
+      uuid?: string;
+      distinct_id?: string | null;
+      first_name?: string;
+      last_name?: string;
+      email?: string;
+      is_email_verified?: boolean | null;
+      hedgehog_config?: Record<string, unknown> | null;
+      role_at_organization?:
+        | "engineering"
+        | "data"
+        | "product"
+        | "founder"
+        | "leadership"
+        | "marketing"
+        | "sales"
+        | "other"
+        | ""
+        | null;
+    } | null;
+    updated_at?: string;
+    archived?: boolean;
+    search_match_type?: "exact" | "similar" | null;
+  }[];
+}
 export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     count: Schema.optional(Schema.Number),
@@ -40,12 +115,23 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ensure_experience_continuity: Schema.optional(
                 Schema.NullOr(Schema.Boolean),
               ),
-              has_encrypted_payloads: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
               version: Schema.optional(Schema.NullOr(Schema.Number)),
-              evaluation_runtime: Schema.optional(Schema.Unknown),
-              bucketing_identifier: Schema.optional(Schema.Unknown),
+              evaluation_runtime: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["server", "client", "all"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
+              bucketing_identifier: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["distinct_id", "device_id"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
               evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
@@ -63,12 +149,23 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               ensure_experience_continuity: Schema.optional(
                 Schema.NullOr(Schema.Boolean),
               ),
-              has_encrypted_payloads: Schema.optional(
-                Schema.NullOr(Schema.Boolean),
-              ),
               version: Schema.optional(Schema.NullOr(Schema.Number)),
-              evaluation_runtime: Schema.optional(Schema.Unknown),
-              bucketing_identifier: Schema.optional(Schema.Unknown),
+              evaluation_runtime: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["server", "client", "all"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
+              bucketing_identifier: Schema.optional(
+                Schema.NullOr(
+                  Schema.Union([
+                    Schema.Literals(["distinct_id", "device_id"]),
+                    Schema.Literals([""]),
+                  ]),
+                ),
+              ),
               evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
             }),
           ),
@@ -76,7 +173,7 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
           content: Schema.optional(Schema.Unknown),
-          draft_content: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          draft_content: Schema.optional(Schema.Unknown),
           has_draft: Schema.optional(Schema.Boolean),
           auto_launch: Schema.optional(Schema.Boolean),
           start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -97,18 +194,36 @@ export const ProductToursListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                 hedgehog_config: Schema.optional(
                   Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
                 ),
-                role_at_organization: Schema.optional(Schema.Unknown),
+                role_at_organization: Schema.optional(
+                  Schema.NullOr(
+                    Schema.Union([
+                      Schema.Literals([
+                        "engineering",
+                        "data",
+                        "product",
+                        "founder",
+                        "leadership",
+                        "marketing",
+                        "sales",
+                        "other",
+                      ]),
+                      Schema.Literals([""]),
+                    ]),
+                  ),
+                ),
               }),
             ),
           ),
           updated_at: Schema.optional(Schema.String),
           archived: Schema.optional(Schema.Boolean),
+          search_match_type: Schema.optional(
+            Schema.NullOr(Schema.Literals(["exact", "similar"])),
+          ),
         }),
       ),
     ),
   },
-);
-export type ProductToursListOutput = typeof ProductToursListOutput.Type;
+) as unknown as Schema.Codec<ProductToursListOutput>;
 
 // The operation
 /**
@@ -116,7 +231,7 @@ export type ProductToursListOutput = typeof ProductToursListOutput.Type;
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
- * @param search - A search term.
+ * @param search - Fuzzy match against product tour `name` and `description` using Postgres trigram word similarity. Supports typos and prefix-as-you-type.
  */
 export const productToursList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ProductToursListInput,

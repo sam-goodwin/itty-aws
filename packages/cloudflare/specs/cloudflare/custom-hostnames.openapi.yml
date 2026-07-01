@@ -1270,7 +1270,8 @@ paths:
           required: false
           description: "Query param: Hostname ID to match against. This ID was generated
             and returned during the initial custom_hostname creation. This
-            parameter cannot be used with the 'hostname' parameter."
+            parameter cannot be used with the 'hostname', 'hostname.exact',
+            'hostname.contain', or 'hostname.startsWith' parameters."
           schema:
             type: string
         - name: certificate_authority
@@ -1309,7 +1310,18 @@ paths:
               contain:
                 type: string
                 description: Filters hostnames by a substring match on the hostname value. This
-                  parameter cannot be used with the 'id' parameter.
+                  parameter cannot be used with the 'id', 'hostname',
+                  'hostname.exact', or 'hostname.startsWith' parameters.
+              exact:
+                type: string
+                description: Fully qualified domain name to match against. This parameter cannot
+                  be used with the 'id', 'hostname', 'hostname.contain', or
+                  'hostname.startsWith' parameters.
+              startsWith:
+                type: string
+                description: Filters hostnames by a prefix match on the hostname value. This
+                  parameter cannot be used with the 'id', 'hostname',
+                  'hostname.exact', or 'hostname.contain' parameters.
         - name: hostname_status
           in: query
           required: false

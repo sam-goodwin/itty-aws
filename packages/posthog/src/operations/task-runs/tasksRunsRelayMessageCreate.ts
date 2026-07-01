@@ -4,6 +4,12 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface TasksRunsRelayMessageCreateInput {
+  id: string;
+  project_id: string;
+  task_id: string;
+  text?: string;
+}
 export const TasksRunsRelayMessageCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -15,18 +21,18 @@ export const TasksRunsRelayMessageCreateInput =
       method: "POST",
       path: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/relay_message/",
     }),
-  );
-export type TasksRunsRelayMessageCreateInput =
-  typeof TasksRunsRelayMessageCreateInput.Type;
+  ) as unknown as Schema.Codec<TasksRunsRelayMessageCreateInput>;
 
 // Output Schema
+export interface TasksRunsRelayMessageCreateOutput {
+  status?: string;
+  relay_id?: string;
+}
 export const TasksRunsRelayMessageCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.String),
     relay_id: Schema.optional(Schema.String),
-  });
-export type TasksRunsRelayMessageCreateOutput =
-  typeof TasksRunsRelayMessageCreateOutput.Type;
+  }) as unknown as Schema.Codec<TasksRunsRelayMessageCreateOutput>;
 
 // The operation
 /**
@@ -34,7 +40,6 @@ export type TasksRunsRelayMessageCreateOutput =
  *
  * Queue a Slack relay workflow to post a run message into the mapped Slack thread.
  *
- * @param id - A UUID string identifying this task run.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const tasksRunsRelayMessageCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(

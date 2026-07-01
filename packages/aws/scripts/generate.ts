@@ -2981,7 +2981,7 @@ const generateClient = Effect.fn(function* (
       import * as HttpClient from "effect/unstable/http/HttpClient";
       __EFFECT_IMPORT__
       __REDACTED_IMPORT__
-      import * as S from "effect/Schema";
+      import * as S from "@distilled.cloud/core/schema";
       __STREAM_IMPORT__
       import * as API from "../client/api.ts";
       import * as T from "../traits.ts";

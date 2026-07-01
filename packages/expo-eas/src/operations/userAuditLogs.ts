@@ -30,6 +30,7 @@ export const UserAuditLogsOutput = Schema.Struct({
         "PasswordEntity",
         "SSOUserEntity",
         "UserEntity",
+        "UserPasskeyCredentialEntity",
         "UserPermissionEntity",
         "UserSecondFactorBackupCodesEntity",
         "UserSecondFactorDeviceEntity",

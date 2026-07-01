@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetConnectionURIInput {
+  project_id: string;
+  branch_id?: string;
+  endpoint_id?: string;
+  database_name: string;
+  role_name: string;
+  pooled?: boolean;
+}
 export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.optional(Schema.String),
@@ -13,25 +21,24 @@ export const GetConnectionURIInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pooled: Schema.optional(Schema.Boolean),
 }).pipe(
   T.Http({ method: "GET", path: "/projects/{project_id}/connection_uri" }),
-);
-export type GetConnectionURIInput = typeof GetConnectionURIInput.Type;
+) as unknown as Schema.Codec<GetConnectionURIInput>;
 
 // Output Schema
+export interface GetConnectionURIOutput {
+  uri: string;
+}
 export const GetConnectionURIOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     uri: Schema.String,
   },
-);
-export type GetConnectionURIOutput = typeof GetConnectionURIOutput.Type;
+) as unknown as Schema.Codec<GetConnectionURIOutput>;
 
 // The operation
 /**
  * Retrieve connection URI
  *
  * Retrieves a connection URI for the specified database.
- * You can obtain a `project_id` by listing the projects for your Neon account.
- * You can obtain the `database_name` by listing the databases for a branch.
- * You can obtain a `role_name` by listing the roles for a branch.
+ * The URI uses the standard PostgreSQL connection string format. Set `pooled=true` to include the `-pooler` suffix for a connection pooler URI.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID. Defaults to your project's default `branch_id` if not specified.

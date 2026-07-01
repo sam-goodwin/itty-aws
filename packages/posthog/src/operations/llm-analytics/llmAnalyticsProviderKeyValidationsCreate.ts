@@ -1,26 +1,31 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsProviderKeyValidationsCreateInput {
+  project_id: string;
+}
 export const LlmAnalyticsProviderKeyValidationsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/provider_key_validations/",
+      path: "/api/projects/{project_id}/llm_analytics/provider_key_validations/",
     }),
-  );
-export type LlmAnalyticsProviderKeyValidationsCreateInput =
-  typeof LlmAnalyticsProviderKeyValidationsCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeyValidationsCreateInput>;
 
 // Output Schema
+export type LlmAnalyticsProviderKeyValidationsCreateOutput = Record<
+  string,
+  unknown
+>;
 export const LlmAnalyticsProviderKeyValidationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, Schema.Unknown);
-export type LlmAnalyticsProviderKeyValidationsCreateOutput =
-  typeof LlmAnalyticsProviderKeyValidationsCreateOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Record(
+    Schema.String,
+    Schema.Unknown,
+  ) as unknown as Schema.Codec<LlmAnalyticsProviderKeyValidationsCreateOutput>;
 
 // The operation
 /**
@@ -32,5 +37,4 @@ export const llmAnalyticsProviderKeyValidationsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeyValidationsCreateInput,
     outputSchema: LlmAnalyticsProviderKeyValidationsCreateOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

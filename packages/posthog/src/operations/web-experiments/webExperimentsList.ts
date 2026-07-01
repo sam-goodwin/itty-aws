@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface WebExperimentsListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const WebExperimentsListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,10 +19,21 @@ export const WebExperimentsListInput =
       method: "GET",
       path: "/api/projects/{project_id}/web_experiments/",
     }),
-  );
-export type WebExperimentsListInput = typeof WebExperimentsListInput.Type;
+  ) as unknown as Schema.Codec<WebExperimentsListInput>;
 
 // Output Schema
+export interface WebExperimentsListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: number;
+    name?: string;
+    created_at?: string;
+    feature_flag_key?: string;
+    variants?: unknown;
+  }[];
+}
 export const WebExperimentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -34,8 +50,7 @@ export const WebExperimentsListOutput =
         }),
       ),
     ),
-  });
-export type WebExperimentsListOutput = typeof WebExperimentsListOutput.Type;
+  }) as unknown as Schema.Codec<WebExperimentsListOutput>;
 
 // The operation
 /**

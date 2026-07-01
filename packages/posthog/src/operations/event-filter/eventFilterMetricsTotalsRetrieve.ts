@@ -1,28 +1,29 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface EventFilterMetricsTotalsRetrieveInput {
+  project_id: string;
+}
 export const EventFilterMetricsTotalsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
       method: "GET",
-      path: "/api/environments/{project_id}/event_filter/metrics/totals/",
+      path: "/api/projects/{project_id}/event_filter/metrics/totals/",
     }),
-  );
-export type EventFilterMetricsTotalsRetrieveInput =
-  typeof EventFilterMetricsTotalsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<EventFilterMetricsTotalsRetrieveInput>;
 
 // Output Schema
+export interface EventFilterMetricsTotalsRetrieveOutput {
+  totals?: Record<string, number>;
+}
 export const EventFilterMetricsTotalsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     totals: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-  });
-export type EventFilterMetricsTotalsRetrieveOutput =
-  typeof EventFilterMetricsTotalsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<EventFilterMetricsTotalsRetrieveOutput>;
 
 // The operation
 /**
@@ -38,5 +39,4 @@ export const eventFilterMetricsTotalsRetrieve =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: EventFilterMetricsTotalsRetrieveInput,
     outputSchema: EventFilterMetricsTotalsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
   }));

@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
 
 // Input Schema
+export interface UnarchiveGroupInput {
+  organizationSlug: string;
+  groupName: string;
+}
 export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
   groupName: Schema.String.pipe(T.PathParam()),
@@ -12,10 +16,19 @@ export const UnarchiveGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/v1/organizations/{organizationSlug}/groups/{groupName}/unarchive",
   }),
-);
-export type UnarchiveGroupInput = typeof UnarchiveGroupInput.Type;
+) as unknown as Schema.Codec<UnarchiveGroupInput>;
 
 // Output Schema
+export interface UnarchiveGroupOutput {
+  group?: {
+    name?: string;
+    version?: string;
+    uuid?: string;
+    locations?: string[];
+    primary?: string;
+    delete_protection?: boolean;
+  };
+}
 export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   group: Schema.optional(
     Schema.Struct({
@@ -27,8 +40,7 @@ export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       delete_protection: Schema.optional(Schema.Boolean),
     }),
   ),
-});
-export type UnarchiveGroupOutput = typeof UnarchiveGroupOutput.Type;
+}) as unknown as Schema.Codec<UnarchiveGroupOutput>;
 
 // The operation
 /**

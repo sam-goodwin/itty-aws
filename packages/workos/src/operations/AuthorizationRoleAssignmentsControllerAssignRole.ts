@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationRoleAssignmentsControllerAssignRoleInput {
+  organization_membership_id: string;
+  role_slug: string;
+}
 export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
@@ -13,32 +17,34 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
       method: "POST",
       path: "/authorization/organization_memberships/{organization_membership_id}/role_assignments",
     }),
-  );
-export type AuthorizationRoleAssignmentsControllerAssignRoleInput =
-  typeof AuthorizationRoleAssignmentsControllerAssignRoleInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerAssignRoleInput>;
 
 // Output Schema
+export interface AuthorizationRoleAssignmentsControllerAssignRoleOutput {
+  object: string;
+  id: string;
+  organization_membership_id: string;
+  role: { slug?: string };
+  resource: { id: string; external_id: string; resource_type_slug: string };
+  created_at: string;
+  updated_at: string;
+}
 export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    role: Schema.optional(
-      Schema.Struct({
-        slug: Schema.optional(Schema.String),
-      }),
-    ),
-    resource: Schema.optional(
-      Schema.Struct({
-        id: Schema.String,
-        external_id: Schema.String,
-        resource_type_slug: Schema.String,
-      }),
-    ),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationRoleAssignmentsControllerAssignRoleOutput =
-  typeof AuthorizationRoleAssignmentsControllerAssignRoleOutput.Type;
+    object: Schema.String,
+    id: Schema.String,
+    organization_membership_id: Schema.String,
+    role: Schema.Struct({
+      slug: Schema.optional(Schema.String),
+    }),
+    resource: Schema.Struct({
+      id: Schema.String,
+      external_id: Schema.String,
+      resource_type_slug: Schema.String,
+    }),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+  }) as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerAssignRoleOutput>;
 
 // The operation
 /**

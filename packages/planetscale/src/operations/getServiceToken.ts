@@ -3,8 +3,13 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 import { SensitiveOutputNullableString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetServiceTokenInput {
+  organization: string;
+  id: string;
+}
 export const GetServiceTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
@@ -13,10 +18,70 @@ export const GetServiceTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "GET",
     path: "/organizations/{organization}/service-tokens/{id}",
   }),
-);
-export type GetServiceTokenInput = typeof GetServiceTokenInput.Type;
+) as unknown as Schema.Codec<GetServiceTokenInput>;
 
 // Output Schema
+export interface GetServiceTokenOutput {
+  id: string;
+  name?: string | null;
+  display_name: string;
+  token?: Redacted.Redacted<string> | null;
+  plain_text_refresh_token?: Redacted.Redacted<string> | null;
+  avatar_url: string;
+  created_at: string;
+  updated_at: string;
+  expires_at?: string | null;
+  last_used_at?: string | null;
+  actor_id: string | null;
+  actor_display_name: string | null;
+  actor_type: string | null;
+  service_token_accesses?:
+    | {
+        id: string;
+        access: string;
+        description: string;
+        resource_name: string;
+        resource_id: string;
+        resource_type: string;
+        resource: {
+          id: string;
+          name: string;
+          created_at: string;
+          updated_at: string;
+          deleted_at: string | null;
+        };
+      }[]
+    | null;
+  oauth_accesses_by_resource?: {
+    database: {
+      databases: {
+        name: string;
+        id: string;
+        organization: string;
+        url: string;
+      }[];
+      accesses: { name: string; description: string }[];
+    };
+    organization: {
+      organizations: { name: string; id: string; url: string }[];
+      accesses: { name: string; description: string }[];
+    };
+    branch: {
+      branches: {
+        name: string;
+        id: string;
+        database: string;
+        organization: string;
+        url: string;
+      }[];
+      accesses: { name: string; description: string }[];
+    };
+    user: {
+      users: { name: string; id: string }[];
+      accesses: { name: string; description: string }[];
+    };
+  } | null;
+}
 export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -120,8 +185,7 @@ export const GetServiceTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-});
-export type GetServiceTokenOutput = typeof GetServiceTokenOutput.Type;
+}) as unknown as Schema.Codec<GetServiceTokenOutput>;
 
 // The operation
 /**

@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface TestWebhookInput {
+  organization: string;
+  database: string;
+  id: string;
+}
 export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -13,12 +18,12 @@ export const TestWebhookInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/organizations/{organization}/databases/{database}/webhooks/{id}/test",
   }),
-);
-export type TestWebhookInput = typeof TestWebhookInput.Type;
+) as unknown as Schema.Codec<TestWebhookInput>;
 
 // Output Schema
-export const TestWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type TestWebhookOutput = typeof TestWebhookOutput.Type;
+export type TestWebhookOutput = void;
+export const TestWebhookOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TestWebhookOutput>;
 
 // The operation
 /**

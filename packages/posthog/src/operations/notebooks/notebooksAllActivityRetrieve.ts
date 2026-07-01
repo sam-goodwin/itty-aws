@@ -4,6 +4,9 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface NotebooksAllActivityRetrieveInput {
+  project_id: string;
+}
 export const NotebooksAllActivityRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -12,15 +15,12 @@ export const NotebooksAllActivityRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/notebooks/activity/",
     }),
-  );
-export type NotebooksAllActivityRetrieveInput =
-  typeof NotebooksAllActivityRetrieveInput.Type;
+  ) as unknown as Schema.Codec<NotebooksAllActivityRetrieveInput>;
 
 // Output Schema
+export type NotebooksAllActivityRetrieveOutput = void;
 export const NotebooksAllActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NotebooksAllActivityRetrieveOutput =
-  typeof NotebooksAllActivityRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksAllActivityRetrieveOutput>;
 
 // The operation
 /**

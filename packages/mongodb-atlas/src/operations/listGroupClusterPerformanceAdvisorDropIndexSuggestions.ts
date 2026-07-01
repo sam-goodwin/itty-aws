@@ -4,6 +4,10 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput {
+  groupId: string;
+  clusterName: string;
+}
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -13,21 +17,18 @@ export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/performanceAdvisor/dropIndexSuggestions",
     }),
-  );
-export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput =
-  typeof ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput.Type;
+  ) as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsInput>;
 
 // Output Schema
+export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput = void;
 export const ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput =
-  typeof ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsOutput>;
 
 // The operation
 /**
  * Return All Suggested Indexes to Drop
  *
- * Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+ * Returns the indexes that the Performance Advisor suggests to drop. The Performance Advisor suggests dropping unused, redundant, and hidden indexes to improve write performance and increase storage space.
  *
  * @param groupId - Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.
 

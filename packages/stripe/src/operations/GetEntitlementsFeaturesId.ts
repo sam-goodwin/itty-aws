@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetEntitlementsFeaturesIdInput {
+  id: string;
+  expand?: string;
+}
 export const GetEntitlementsFeaturesIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,18 @@ export const GetEntitlementsFeaturesIdInput =
       path: "/v1/entitlements/features/{id}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetEntitlementsFeaturesIdInput =
-  typeof GetEntitlementsFeaturesIdInput.Type;
+  ) as unknown as Schema.Codec<GetEntitlementsFeaturesIdInput>;
 
 // Output Schema
+export interface GetEntitlementsFeaturesIdOutput {
+  active: boolean;
+  id: string;
+  livemode: boolean;
+  lookup_key: string;
+  metadata: Record<string, string>;
+  name: string;
+  object: "entitlements.feature";
+}
 export const GetEntitlementsFeaturesIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
@@ -27,9 +38,7 @@ export const GetEntitlementsFeaturesIdOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     object: Schema.Literals(["entitlements.feature"]),
-  });
-export type GetEntitlementsFeaturesIdOutput =
-  typeof GetEntitlementsFeaturesIdOutput.Type;
+  }) as unknown as Schema.Codec<GetEntitlementsFeaturesIdOutput>;
 
 // The operation
 /**

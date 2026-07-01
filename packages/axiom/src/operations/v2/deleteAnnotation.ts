@@ -4,14 +4,19 @@ import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface DeleteAnnotationInput {
+  id: string;
+}
 export const DeleteAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-}).pipe(T.Http({ method: "DELETE", path: "/v2/annotations/{id}" }));
-export type DeleteAnnotationInput = typeof DeleteAnnotationInput.Type;
+}).pipe(
+  T.Http({ method: "DELETE", path: "/v2/annotations/{id}" }),
+) as unknown as Schema.Codec<DeleteAnnotationInput>;
 
 // Output Schema
-export const DeleteAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteAnnotationOutput = typeof DeleteAnnotationOutput.Type;
+export type DeleteAnnotationOutput = void;
+export const DeleteAnnotationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteAnnotationOutput>;
 
 // The operation
 /**

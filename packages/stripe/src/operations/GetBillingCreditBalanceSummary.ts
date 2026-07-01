@@ -1,8 +1,19 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface GetBillingCreditBalanceSummaryInput {
+  customer?: string;
+  customer_account?: string;
+  expand?: string;
+  filter: string;
+}
 export const GetBillingCreditBalanceSummaryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
@@ -15,21 +26,45 @@ export const GetBillingCreditBalanceSummaryInput =
       path: "/v1/billing/credit_balance_summary",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetBillingCreditBalanceSummaryInput =
-  typeof GetBillingCreditBalanceSummaryInput.Type;
+  ) as unknown as Schema.Codec<GetBillingCreditBalanceSummaryInput>;
 
 // Output Schema
+export interface GetBillingCreditBalanceSummaryOutput {
+  balances: {
+    available_balance: {
+      monetary: { currency: string; value: number } | null;
+      type: "monetary";
+    };
+    ledger_balance: {
+      monetary: { currency: string; value: number } | null;
+      type: "monetary";
+    };
+  }[];
+  customer: unknown;
+  customer_account: string | null;
+  livemode: boolean;
+  object: "billing.credit_balance_summary";
+}
 export const GetBillingCreditBalanceSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     balances: Schema.Array(
       Schema.Struct({
         available_balance: Schema.Struct({
-          monetary: Schema.Unknown,
+          monetary: Schema.NullOr(
+            Schema.Struct({
+              currency: Schema.String,
+              value: Schema.Number,
+            }),
+          ),
           type: Schema.Literals(["monetary"]),
         }),
         ledger_balance: Schema.Struct({
-          monetary: Schema.Unknown,
+          monetary: Schema.NullOr(
+            Schema.Struct({
+              currency: Schema.String,
+              value: Schema.Number,
+            }),
+          ),
           type: Schema.Literals(["monetary"]),
         }),
       }),
@@ -38,9 +73,7 @@ export const GetBillingCreditBalanceSummaryOutput =
     customer_account: Schema.NullOr(Schema.String),
     livemode: Schema.Boolean,
     object: Schema.Literals(["billing.credit_balance_summary"]),
-  });
-export type GetBillingCreditBalanceSummaryOutput =
-  typeof GetBillingCreditBalanceSummaryOutput.Type;
+  }) as unknown as Schema.Codec<GetBillingCreditBalanceSummaryOutput>;
 
 // The operation
 /**

@@ -4,12 +4,43 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { SensitiveString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface AssetEndpointProfilesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetEndpointProfileName: string;
+  properties?: {
+    uuid?: string;
+    targetAddress: string;
+    endpointProfileType: string;
+    authentication?: {
+      method: "Anonymous" | "Certificate" | "UsernamePassword";
+      usernamePasswordCredentials?: {
+        usernameSecretName: string;
+        passwordSecretName: string | Redacted.Redacted<string>;
+      };
+      x509Credentials?: { certificateSecretName: string };
+    };
+    additionalConfiguration?: string;
+    discoveredAssetEndpointProfileRef?: string;
+    status?: { errors?: { code?: number; message?: string }[] };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  extendedLocation: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AssetEndpointProfilesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -77,11 +108,22 @@ export const AssetEndpointProfilesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesCreateOrReplaceInput =
-  typeof AssetEndpointProfilesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesCreateOrReplaceInput>;
 
 // Output Schema
+export interface AssetEndpointProfilesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetEndpointProfilesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -101,9 +143,7 @@ export const AssetEndpointProfilesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssetEndpointProfilesCreateOrReplaceOutput =
-  typeof AssetEndpointProfilesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<AssetEndpointProfilesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -120,6 +160,11 @@ export const AssetEndpointProfilesCreateOrReplace =
     outputSchema: AssetEndpointProfilesCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface AssetEndpointProfilesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetEndpointProfileName: string;
+}
 export const AssetEndpointProfilesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -131,15 +176,12 @@ export const AssetEndpointProfilesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesDeleteInput =
-  typeof AssetEndpointProfilesDeleteInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesDeleteInput>;
 
 // Output Schema
+export type AssetEndpointProfilesDeleteOutput = void;
 export const AssetEndpointProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssetEndpointProfilesDeleteOutput =
-  typeof AssetEndpointProfilesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssetEndpointProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -157,6 +199,11 @@ export const AssetEndpointProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetEndpointProfilesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetEndpointProfileName: string;
+}
 export const AssetEndpointProfilesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -168,11 +215,22 @@ export const AssetEndpointProfilesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesGetInput =
-  typeof AssetEndpointProfilesGetInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesGetInput>;
 
 // Output Schema
+export interface AssetEndpointProfilesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetEndpointProfilesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -192,9 +250,7 @@ export const AssetEndpointProfilesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssetEndpointProfilesGetOutput =
-  typeof AssetEndpointProfilesGetOutput.Type;
+  }) as unknown as Schema.Codec<AssetEndpointProfilesGetOutput>;
 
 // The operation
 /**
@@ -212,6 +268,10 @@ export const AssetEndpointProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetEndpointProfilesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AssetEndpointProfilesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -222,11 +282,25 @@ export const AssetEndpointProfilesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesListByResourceGroupInput =
-  typeof AssetEndpointProfilesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesListByResourceGroupInput>;
 
 // Output Schema
+export interface AssetEndpointProfilesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssetEndpointProfilesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -261,9 +335,7 @@ export const AssetEndpointProfilesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssetEndpointProfilesListByResourceGroupOutput =
-  typeof AssetEndpointProfilesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AssetEndpointProfilesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -279,6 +351,9 @@ export const AssetEndpointProfilesListByResourceGroup =
     outputSchema: AssetEndpointProfilesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface AssetEndpointProfilesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AssetEndpointProfilesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -288,11 +363,25 @@ export const AssetEndpointProfilesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesListBySubscriptionInput =
-  typeof AssetEndpointProfilesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesListBySubscriptionInput>;
 
 // Output Schema
+export interface AssetEndpointProfilesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssetEndpointProfilesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -327,9 +416,7 @@ export const AssetEndpointProfilesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssetEndpointProfilesListBySubscriptionOutput =
-  typeof AssetEndpointProfilesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AssetEndpointProfilesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -344,6 +431,25 @@ export const AssetEndpointProfilesListBySubscription =
     outputSchema: AssetEndpointProfilesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface AssetEndpointProfilesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetEndpointProfileName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    targetAddress?: string;
+    endpointProfileType?: string;
+    authentication?: {
+      method?: "Anonymous" | "Certificate" | "UsernamePassword";
+      usernamePasswordCredentials?: {
+        usernameSecretName?: string;
+        passwordSecretName?: string | Redacted.Redacted<string>;
+      };
+      x509Credentials?: { certificateSecretName?: string };
+    };
+    additionalConfiguration?: string;
+  };
+}
 export const AssetEndpointProfilesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -381,11 +487,22 @@ export const AssetEndpointProfilesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetEndpointProfilesUpdateInput =
-  typeof AssetEndpointProfilesUpdateInput.Type;
+  ) as unknown as Schema.Codec<AssetEndpointProfilesUpdateInput>;
 
 // Output Schema
+export interface AssetEndpointProfilesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetEndpointProfilesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -405,9 +522,7 @@ export const AssetEndpointProfilesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssetEndpointProfilesUpdateOutput =
-  typeof AssetEndpointProfilesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<AssetEndpointProfilesUpdateOutput>;
 
 // The operation
 /**
@@ -425,6 +540,78 @@ export const AssetEndpointProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetsCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetName: string;
+  properties?: {
+    uuid?: string;
+    enabled?: boolean;
+    externalAssetId?: string;
+    displayName?: string;
+    description?: string;
+    assetEndpointProfileRef: string;
+    version?: number;
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    discoveredAssetRefs?: string[];
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultTopic?: { path: string; retain?: "Keep" | "Never" };
+    datasets?: {
+      name: string;
+      datasetConfiguration?: string;
+      topic?: { path: string; retain?: "Keep" | "Never" };
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+      }[];
+    }[];
+    events?: {
+      name: string;
+      eventNotifier: string;
+      eventConfiguration?: string;
+      topic?: { path: string; retain?: "Keep" | "Never" };
+    }[];
+    status?: {
+      errors?: { code?: number; message?: string }[];
+      version?: number;
+      datasets?: {
+        name: string;
+        messageSchemaReference?: {
+          schemaRegistryNamespace: string;
+          schemaName: string;
+          schemaVersion: string;
+        };
+      }[];
+      events?: {
+        name: string;
+        messageSchemaReference?: {
+          schemaRegistryNamespace: string;
+          schemaName: string;
+          schemaVersion: string;
+        };
+      }[];
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  extendedLocation: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const AssetsCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -561,10 +748,22 @@ export const AssetsCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetsCreateOrReplaceInput = typeof AssetsCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<AssetsCreateOrReplaceInput>;
 
 // Output Schema
+export interface AssetsCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -584,9 +783,7 @@ export const AssetsCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type AssetsCreateOrReplaceOutput =
-  typeof AssetsCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<AssetsCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -604,6 +801,11 @@ export const AssetsCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetName: string;
+}
 export const AssetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -614,12 +816,12 @@ export const AssetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type AssetsDeleteInput = typeof AssetsDeleteInput.Type;
+) as unknown as Schema.Codec<AssetsDeleteInput>;
 
 // Output Schema
-export const AssetsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type AssetsDeleteOutput = typeof AssetsDeleteOutput.Type;
+export type AssetsDeleteOutput = void;
+export const AssetsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssetsDeleteOutput>;
 
 // The operation
 /**
@@ -635,6 +837,11 @@ export const AssetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AssetsDeleteOutput,
 }));
 // Input Schema
+export interface AssetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetName: string;
+}
 export const AssetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -645,10 +852,22 @@ export const AssetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type AssetsGetInput = typeof AssetsGetInput.Type;
+) as unknown as Schema.Codec<AssetsGetInput>;
 
 // Output Schema
+export interface AssetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -667,8 +886,7 @@ export const AssetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AssetsGetOutput = typeof AssetsGetOutput.Type;
+}) as unknown as Schema.Codec<AssetsGetOutput>;
 
 // The operation
 /**
@@ -684,6 +902,10 @@ export const AssetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AssetsGetOutput,
 }));
 // Input Schema
+export interface AssetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const AssetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -694,11 +916,25 @@ export const AssetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetsListByResourceGroupInput =
-  typeof AssetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<AssetsListByResourceGroupInput>;
 
 // Output Schema
+export interface AssetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -733,9 +969,7 @@ export const AssetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssetsListByResourceGroupOutput =
-  typeof AssetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<AssetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -752,6 +986,9 @@ export const AssetsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const AssetsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -761,11 +998,25 @@ export const AssetsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
       apiVersion: "2026-04-01",
     }),
-  );
-export type AssetsListBySubscriptionInput =
-  typeof AssetsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<AssetsListBySubscriptionInput>;
 
 // Output Schema
+export interface AssetsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const AssetsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -800,9 +1051,7 @@ export const AssetsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type AssetsListBySubscriptionOutput =
-  typeof AssetsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<AssetsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -818,6 +1067,45 @@ export const AssetsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface AssetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  assetName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    enabled?: boolean;
+    displayName?: string;
+    description?: string;
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultTopic?: { path?: string; retain?: "Keep" | "Never" };
+    datasets?: {
+      name: string;
+      datasetConfiguration?: string;
+      topic?: { path: string; retain?: "Keep" | "Never" };
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+      }[];
+    }[];
+    events?: {
+      name: string;
+      eventNotifier: string;
+      eventConfiguration?: string;
+      topic?: { path: string; retain?: "Keep" | "Never" };
+    }[];
+  };
+}
 export const AssetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -891,10 +1179,22 @@ export const AssetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type AssetsUpdateInput = typeof AssetsUpdateInput.Type;
+) as unknown as Schema.Codec<AssetsUpdateInput>;
 
 // Output Schema
+export interface AssetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const AssetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -913,8 +1213,7 @@ export const AssetsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type AssetsUpdateOutput = typeof AssetsUpdateOutput.Type;
+}) as unknown as Schema.Codec<AssetsUpdateOutput>;
 
 // The operation
 /**
@@ -930,6 +1229,10 @@ export const AssetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: AssetsUpdateOutput,
 }));
 // Input Schema
+export interface BillingContainersGetInput {
+  subscriptionId: string;
+  billingContainerName: string;
+}
 export const BillingContainersGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -940,10 +1243,22 @@ export const BillingContainersGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BillingContainersGetInput = typeof BillingContainersGetInput.Type;
+  ) as unknown as Schema.Codec<BillingContainersGetInput>;
 
 // Output Schema
+export interface BillingContainersGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const BillingContainersGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -963,8 +1278,7 @@ export const BillingContainersGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type BillingContainersGetOutput = typeof BillingContainersGetOutput.Type;
+  }) as unknown as Schema.Codec<BillingContainersGetOutput>;
 
 // The operation
 /**
@@ -981,6 +1295,9 @@ export const BillingContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface BillingContainersListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const BillingContainersListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -990,11 +1307,25 @@ export const BillingContainersListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
       apiVersion: "2026-04-01",
     }),
-  );
-export type BillingContainersListBySubscriptionInput =
-  typeof BillingContainersListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<BillingContainersListBySubscriptionInput>;
 
 // Output Schema
+export interface BillingContainersListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const BillingContainersListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1029,9 +1360,7 @@ export const BillingContainersListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type BillingContainersListBySubscriptionOutput =
-  typeof BillingContainersListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<BillingContainersListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -1046,6 +1375,207 @@ export const BillingContainersListBySubscription =
     outputSchema: BillingContainersListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NamespaceAssetsCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  assetName: string;
+  properties?: {
+    uuid?: string;
+    enabled?: boolean;
+    externalAssetId?: string;
+    displayName?: string;
+    description?: string;
+    deviceRef: { deviceName: string; endpointName: string };
+    assetTypeRefs?: string[];
+    version?: number;
+    lastTransitionTime?: string;
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    discoveredAssetRefs?: string[];
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultStreamsConfiguration?: string;
+    defaultManagementGroupsConfiguration?: string;
+    defaultDatasetsDestinations?: {
+      target: "Mqtt" | "BrokerStateStore" | "Storage";
+    }[];
+    defaultEventsDestinations?: { target: "Mqtt" | "Storage" }[];
+    defaultStreamsDestinations?: { target: "Mqtt" | "Storage" }[];
+    datasets?: {
+      name: string;
+      dataSource?: string;
+      typeRef?: string;
+      datasetConfiguration?: string;
+      destinations?: { target: "Mqtt" | "BrokerStateStore" | "Storage" }[];
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+        typeRef?: string;
+      }[];
+    }[];
+    eventGroups?: {
+      name: string;
+      dataSource?: string;
+      eventGroupConfiguration?: string;
+      defaultDestinations?: { target: "Mqtt" | "Storage" }[];
+      typeRef?: string;
+      events?: {
+        name: string;
+        dataSource?: string;
+        eventConfiguration?: string;
+        destinations?: { target: "Mqtt" | "Storage" }[];
+        typeRef?: string;
+      }[];
+    }[];
+    streams?: {
+      name: string;
+      streamConfiguration?: string;
+      typeRef?: string;
+      destinations?: { target: "Mqtt" | "Storage" }[];
+    }[];
+    managementGroups?: {
+      name: string;
+      dataSource?: string;
+      managementGroupConfiguration?: string;
+      typeRef?: string;
+      defaultTopic?: string;
+      defaultTimeoutInSeconds?: number;
+      actions?: {
+        name: string;
+        actionConfiguration?: string;
+        targetUri: string;
+        typeRef?: string;
+        topic?: string;
+        actionType?: "Call" | "Read" | "Write";
+        timeoutInSeconds?: number;
+      }[];
+    }[];
+    status?: {
+      config?: {
+        version?: number;
+        lastTransitionTime?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            info?: string;
+            correlationId?: string;
+          }[];
+        };
+      };
+      datasets?: {
+        name: string;
+        messageSchemaReference?: {
+          schemaRegistryNamespace: string;
+          schemaName: string;
+          schemaVersion: string;
+        };
+        error?: {
+          code?: string;
+          message?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            info?: string;
+            correlationId?: string;
+          }[];
+        };
+      }[];
+      eventGroups?: {
+        name: string;
+        events?: {
+          name: string;
+          messageSchemaReference?: {
+            schemaRegistryNamespace: string;
+            schemaName: string;
+            schemaVersion: string;
+          };
+          error?: {
+            code?: string;
+            message?: string;
+            details?: {
+              code?: string;
+              message?: string;
+              info?: string;
+              correlationId?: string;
+            }[];
+          };
+        }[];
+      }[];
+      streams?: {
+        name: string;
+        messageSchemaReference?: {
+          schemaRegistryNamespace: string;
+          schemaName: string;
+          schemaVersion: string;
+        };
+        error?: {
+          code?: string;
+          message?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            info?: string;
+            correlationId?: string;
+          }[];
+        };
+      }[];
+      managementGroups?: {
+        name: string;
+        actions?: {
+          name: string;
+          requestMessageSchemaReference?: {
+            schemaRegistryNamespace: string;
+            schemaName: string;
+            schemaVersion: string;
+          };
+          responseMessageSchemaReference?: {
+            schemaRegistryNamespace: string;
+            schemaName: string;
+            schemaVersion: string;
+          };
+          error?: {
+            code?: string;
+            message?: string;
+            details?: {
+              code?: string;
+              message?: string;
+              info?: string;
+              correlationId?: string;
+            }[];
+          };
+        }[];
+      }[];
+      healthState?: {
+        status?: "Unknown" | "Available" | "Degraded" | "Unavailable";
+        lastTransitionTime?: string;
+        lastUpdateTime?: string;
+        message?: string;
+        reasonCode?: string;
+      };
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  extendedLocation: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespaceAssetsCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1417,11 +1947,22 @@ export const NamespaceAssetsCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsCreateOrReplaceInput =
-  typeof NamespaceAssetsCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsCreateOrReplaceInput>;
 
 // Output Schema
+export interface NamespaceAssetsCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceAssetsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1441,9 +1982,7 @@ export const NamespaceAssetsCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceAssetsCreateOrReplaceOutput =
-  typeof NamespaceAssetsCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceAssetsCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -1461,6 +2000,12 @@ export const NamespaceAssetsCreateOrReplace =
     outputSchema: NamespaceAssetsCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface NamespaceAssetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  assetName: string;
+}
 export const NamespaceAssetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1473,14 +2018,12 @@ export const NamespaceAssetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsDeleteInput = typeof NamespaceAssetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsDeleteInput>;
 
 // Output Schema
+export type NamespaceAssetsDeleteOutput = void;
 export const NamespaceAssetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceAssetsDeleteOutput =
-  typeof NamespaceAssetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceAssetsDeleteOutput>;
 
 // The operation
 /**
@@ -1499,6 +2042,15 @@ export const NamespaceAssetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespaceAssetsExecuteActionInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  assetName: string;
+  managementActionName: string;
+  managementGroupName: string;
+  payload?: Record<string, unknown>;
+}
 export const NamespaceAssetsExecuteActionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1514,11 +2066,26 @@ export const NamespaceAssetsExecuteActionInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsExecuteActionInput =
-  typeof NamespaceAssetsExecuteActionInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsExecuteActionInput>;
 
 // Output Schema
+export interface NamespaceAssetsExecuteActionOutput {
+  status: "Succeeded" | "Failed" | "Canceled" | "InProgress";
+  managementActionName: string;
+  managementGroupName: string;
+  assetResourceId: string;
+  response?: string;
+  error?: {
+    code?: string;
+    message?: string;
+    details?: {
+      code?: string;
+      message?: string;
+      info?: string;
+      correlationId?: string;
+    }[];
+  };
+}
 export const NamespaceAssetsExecuteActionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     status: Schema.Literals(["Succeeded", "Failed", "Canceled", "InProgress"]),
@@ -1542,9 +2109,7 @@ export const NamespaceAssetsExecuteActionOutput =
         ),
       }),
     ),
-  });
-export type NamespaceAssetsExecuteActionOutput =
-  typeof NamespaceAssetsExecuteActionOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceAssetsExecuteActionOutput>;
 
 // The operation
 /**
@@ -1562,6 +2127,12 @@ export const NamespaceAssetsExecuteAction =
     outputSchema: NamespaceAssetsExecuteActionOutput,
   }));
 // Input Schema
+export interface NamespaceAssetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  assetName: string;
+}
 export const NamespaceAssetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1574,10 +2145,22 @@ export const NamespaceAssetsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsGetInput = typeof NamespaceAssetsGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsGetInput>;
 
 // Output Schema
+export interface NamespaceAssetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceAssetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1597,8 +2180,7 @@ export const NamespaceAssetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceAssetsGetOutput = typeof NamespaceAssetsGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceAssetsGetOutput>;
 
 // The operation
 /**
@@ -1615,6 +2197,11 @@ export const NamespaceAssetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespaceAssetsGetOutput,
 }));
 // Input Schema
+export interface NamespaceAssetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespaceAssetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1626,11 +2213,25 @@ export const NamespaceAssetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsListByResourceGroupInput =
-  typeof NamespaceAssetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespaceAssetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespaceAssetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1665,9 +2266,7 @@ export const NamespaceAssetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceAssetsListByResourceGroupOutput =
-  typeof NamespaceAssetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceAssetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1684,6 +2283,87 @@ export const NamespaceAssetsListByResourceGroup =
     outputSchema: NamespaceAssetsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespaceAssetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  assetName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    enabled?: boolean;
+    displayName?: string;
+    description?: string;
+    assetTypeRefs?: string[];
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultStreamsConfiguration?: string;
+    defaultManagementGroupsConfiguration?: string;
+    defaultDatasetsDestinations?: {
+      target: "Mqtt" | "BrokerStateStore" | "Storage";
+    }[];
+    defaultEventsDestinations?: { target: "Mqtt" | "Storage" }[];
+    defaultStreamsDestinations?: { target: "Mqtt" | "Storage" }[];
+    datasets?: {
+      name: string;
+      dataSource?: string;
+      typeRef?: string;
+      datasetConfiguration?: string;
+      destinations?: { target: "Mqtt" | "BrokerStateStore" | "Storage" }[];
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+        typeRef?: string;
+      }[];
+    }[];
+    eventGroups?: {
+      name: string;
+      dataSource?: string;
+      eventGroupConfiguration?: string;
+      defaultDestinations?: { target: "Mqtt" | "Storage" }[];
+      typeRef?: string;
+      events?: {
+        name: string;
+        dataSource?: string;
+        eventConfiguration?: string;
+        destinations?: { target: "Mqtt" | "Storage" }[];
+        typeRef?: string;
+      }[];
+    }[];
+    streams?: {
+      name: string;
+      streamConfiguration?: string;
+      typeRef?: string;
+      destinations?: { target: "Mqtt" | "Storage" }[];
+    }[];
+    managementGroups?: {
+      name: string;
+      dataSource?: string;
+      managementGroupConfiguration?: string;
+      typeRef?: string;
+      defaultTopic?: string;
+      defaultTimeoutInSeconds?: number;
+      actions?: {
+        name: string;
+        actionConfiguration?: string;
+        targetUri: string;
+        typeRef?: string;
+        topic?: string;
+        actionType?: "Call" | "Read" | "Write";
+        timeoutInSeconds?: number;
+      }[];
+    }[];
+  };
+}
 export const NamespaceAssetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1849,10 +2529,22 @@ export const NamespaceAssetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceAssetsUpdateInput = typeof NamespaceAssetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceAssetsUpdateInput>;
 
 // Output Schema
+export interface NamespaceAssetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceAssetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1872,9 +2564,7 @@ export const NamespaceAssetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceAssetsUpdateOutput =
-  typeof NamespaceAssetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceAssetsUpdateOutput>;
 
 // The operation
 /**
@@ -1893,6 +2583,103 @@ export const NamespaceAssetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespaceDevicesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  deviceName: string;
+  properties?: {
+    uuid?: string;
+    enabled?: boolean;
+    externalDeviceId?: string;
+    discoveredDeviceRef?: string;
+    manufacturer?: string;
+    model?: string;
+    operatingSystem?: string;
+    operatingSystemVersion?: string;
+    endpoints?: {
+      inbound?: Record<
+        string,
+        {
+          endpointType: string;
+          address: string;
+          version?: string;
+          authentication?: {
+            method: "Anonymous" | "Certificate" | "UsernamePassword";
+            usernamePasswordCredentials?: {
+              usernameSecretName: string;
+              passwordSecretName: string | Redacted.Redacted<string>;
+            };
+            x509Credentials?: {
+              certificateSecretName: string;
+              keySecretName?: string;
+              intermediateCertificatesSecretName?: string;
+            };
+          };
+          trustSettings?: { trustList?: string };
+          additionalConfiguration?: string;
+        }
+      >;
+      outbound?: {
+        assigned: Record<string, { endpointType?: string; address: string }>;
+        unassigned?: Record<string, { endpointType?: string; address: string }>;
+      };
+    };
+    attributes?: Record<string, unknown>;
+    status?: {
+      config?: {
+        version?: number;
+        lastTransitionTime?: string;
+        error?: {
+          code?: string;
+          message?: string;
+          details?: {
+            code?: string;
+            message?: string;
+            info?: string;
+            correlationId?: string;
+          }[];
+        };
+      };
+      endpoints?: {
+        inbound?: Record<
+          string,
+          {
+            error?: {
+              code?: string;
+              message?: string;
+              details?: {
+                code?: string;
+                message?: string;
+                info?: string;
+                correlationId?: string;
+              }[];
+            };
+            healthState?: {
+              status?: "Unknown" | "Available" | "Degraded" | "Unavailable";
+              lastTransitionTime?: string;
+              lastUpdateTime?: string;
+              message?: string;
+              reasonCode?: string;
+            };
+          }
+        >;
+      };
+    };
+    version?: number;
+    lastTransitionTime?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  etag?: string;
+  extendedLocation?: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespaceDevicesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2073,11 +2860,22 @@ export const NamespaceDevicesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDevicesCreateOrReplaceInput =
-  typeof NamespaceDevicesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDevicesCreateOrReplaceInput>;
 
 // Output Schema
+export interface NamespaceDevicesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDevicesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2097,9 +2895,7 @@ export const NamespaceDevicesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDevicesCreateOrReplaceOutput =
-  typeof NamespaceDevicesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDevicesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -2117,6 +2913,12 @@ export const NamespaceDevicesCreateOrReplace =
     outputSchema: NamespaceDevicesCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface NamespaceDevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  deviceName: string;
+}
 export const NamespaceDevicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2129,15 +2931,12 @@ export const NamespaceDevicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDevicesDeleteInput =
-  typeof NamespaceDevicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDevicesDeleteInput>;
 
 // Output Schema
+export type NamespaceDevicesDeleteOutput = void;
 export const NamespaceDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceDevicesDeleteOutput =
-  typeof NamespaceDevicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -2156,6 +2955,12 @@ export const NamespaceDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespaceDevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  deviceName: string;
+}
 export const NamespaceDevicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2168,10 +2973,22 @@ export const NamespaceDevicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDevicesGetInput = typeof NamespaceDevicesGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDevicesGetInput>;
 
 // Output Schema
+export interface NamespaceDevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2191,8 +3008,7 @@ export const NamespaceDevicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDevicesGetOutput = typeof NamespaceDevicesGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDevicesGetOutput>;
 
 // The operation
 /**
@@ -2209,6 +3025,11 @@ export const NamespaceDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespaceDevicesGetOutput,
 }));
 // Input Schema
+export interface NamespaceDevicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespaceDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2220,11 +3041,25 @@ export const NamespaceDevicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDevicesListByResourceGroupInput =
-  typeof NamespaceDevicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDevicesListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespaceDevicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespaceDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2259,9 +3094,7 @@ export const NamespaceDevicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceDevicesListByResourceGroupOutput =
-  typeof NamespaceDevicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDevicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2278,6 +3111,49 @@ export const NamespaceDevicesListByResourceGroup =
     outputSchema: NamespaceDevicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespaceDevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  deviceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    operatingSystemVersion?: string;
+    endpoints?: {
+      inbound?: Record<
+        string,
+        {
+          endpointType?: string;
+          address?: string;
+          version?: string;
+          authentication?: {
+            method?: "Anonymous" | "Certificate" | "UsernamePassword";
+            usernamePasswordCredentials?: {
+              usernameSecretName?: string;
+              passwordSecretName?: string | Redacted.Redacted<string>;
+            };
+            x509Credentials?: {
+              certificateSecretName?: string;
+              keySecretName?: string;
+              intermediateCertificatesSecretName?: string;
+            };
+          };
+          trustSettings?: { trustList?: string };
+          additionalConfiguration?: string;
+        }
+      >;
+      outbound?: {
+        assigned?: Record<string, { endpointType?: string; address?: string }>;
+        unassigned?: Record<
+          string,
+          { endpointType?: string; address?: string }
+        >;
+      };
+    };
+    attributes?: Record<string, unknown>;
+    enabled?: boolean;
+  };
+}
 export const NamespaceDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2368,11 +3244,22 @@ export const NamespaceDevicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDevicesUpdateInput =
-  typeof NamespaceDevicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDevicesUpdateInput>;
 
 // Output Schema
+export interface NamespaceDevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2392,9 +3279,7 @@ export const NamespaceDevicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDevicesUpdateOutput =
-  typeof NamespaceDevicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDevicesUpdateOutput>;
 
 // The operation
 /**
@@ -2413,6 +3298,104 @@ export const NamespaceDevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespaceDiscoveredAssetsCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredAssetName: string;
+  properties?: {
+    deviceRef: { deviceName: string; endpointName: string };
+    displayName?: string;
+    assetTypeRefs?: string[];
+    description?: string;
+    discoveryId: string;
+    externalAssetId?: string;
+    version: number;
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultStreamsConfiguration?: string;
+    defaultManagementGroupsConfiguration?: string;
+    defaultDatasetsDestinations?: {
+      target: "Mqtt" | "BrokerStateStore" | "Storage";
+    }[];
+    defaultEventsDestinations?: { target: "Mqtt" | "Storage" }[];
+    defaultStreamsDestinations?: { target: "Mqtt" | "Storage" }[];
+    datasets?: {
+      name: string;
+      dataSource?: string;
+      typeRef?: string;
+      datasetConfiguration?: string;
+      destinations?: { target: "Mqtt" | "BrokerStateStore" | "Storage" }[];
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+        lastUpdatedOn?: string;
+        typeRef?: string;
+      }[];
+      lastUpdatedOn?: string;
+    }[];
+    eventGroups?: {
+      name: string;
+      dataSource?: string;
+      eventGroupConfiguration?: string;
+      defaultDestinations?: { target: "Mqtt" | "Storage" }[];
+      typeRef?: string;
+      events?: {
+        name: string;
+        dataSource?: string;
+        eventConfiguration?: string;
+        destinations?: { target: "Mqtt" | "Storage" }[];
+        typeRef?: string;
+        lastUpdatedOn?: string;
+      }[];
+    }[];
+    streams?: {
+      name: string;
+      streamConfiguration?: string;
+      typeRef?: string;
+      destinations?: { target: "Mqtt" | "Storage" }[];
+      lastUpdatedOn?: string;
+    }[];
+    managementGroups?: {
+      name: string;
+      managementGroupConfiguration?: string;
+      typeRef?: string;
+      dataSource?: string;
+      defaultTopic?: string;
+      defaultTimeoutInSeconds?: number;
+      actions?: {
+        name: string;
+        actionConfiguration?: string;
+        targetUri: string;
+        typeRef?: string;
+        topic?: string;
+        actionType?: "Call" | "Read" | "Write";
+        timeoutInSeconds?: number;
+        lastUpdatedOn?: string;
+      }[];
+      lastUpdatedOn?: string;
+    }[];
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  extendedLocation: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespaceDiscoveredAssetsCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2604,11 +3587,22 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredAssetsCreateOrReplaceInput =
-  typeof NamespaceDiscoveredAssetsCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredAssetsCreateOrReplaceInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredAssetsCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredAssetsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2628,9 +3622,7 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredAssetsCreateOrReplaceOutput =
-  typeof NamespaceDiscoveredAssetsCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredAssetsCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -2648,6 +3640,12 @@ export const NamespaceDiscoveredAssetsCreateOrReplace =
     outputSchema: NamespaceDiscoveredAssetsCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredAssetsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredAssetName: string;
+}
 export const NamespaceDiscoveredAssetsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2660,15 +3658,12 @@ export const NamespaceDiscoveredAssetsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredAssetsDeleteInput =
-  typeof NamespaceDiscoveredAssetsDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredAssetsDeleteInput>;
 
 // Output Schema
+export type NamespaceDiscoveredAssetsDeleteOutput = void;
 export const NamespaceDiscoveredAssetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceDiscoveredAssetsDeleteOutput =
-  typeof NamespaceDiscoveredAssetsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceDiscoveredAssetsDeleteOutput>;
 
 // The operation
 /**
@@ -2686,6 +3681,12 @@ export const NamespaceDiscoveredAssetsDelete =
     outputSchema: NamespaceDiscoveredAssetsDeleteOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredAssetsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredAssetName: string;
+}
 export const NamespaceDiscoveredAssetsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2698,11 +3699,22 @@ export const NamespaceDiscoveredAssetsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredAssetsGetInput =
-  typeof NamespaceDiscoveredAssetsGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredAssetsGetInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredAssetsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredAssetsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -2722,9 +3734,7 @@ export const NamespaceDiscoveredAssetsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredAssetsGetOutput =
-  typeof NamespaceDiscoveredAssetsGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredAssetsGetOutput>;
 
 // The operation
 /**
@@ -2742,6 +3752,11 @@ export const NamespaceDiscoveredAssetsGet =
     outputSchema: NamespaceDiscoveredAssetsGetOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredAssetsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespaceDiscoveredAssetsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2753,11 +3768,25 @@ export const NamespaceDiscoveredAssetsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredAssetsListByResourceGroupInput =
-  typeof NamespaceDiscoveredAssetsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredAssetsListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredAssetsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespaceDiscoveredAssetsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -2792,9 +3821,7 @@ export const NamespaceDiscoveredAssetsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceDiscoveredAssetsListByResourceGroupOutput =
-  typeof NamespaceDiscoveredAssetsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredAssetsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -2811,6 +3838,95 @@ export const NamespaceDiscoveredAssetsListByResourceGroup =
     outputSchema: NamespaceDiscoveredAssetsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredAssetsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredAssetName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    deviceRef?: { deviceName?: string; endpointName?: string };
+    displayName?: string;
+    assetTypeRefs?: string[];
+    description?: string;
+    discoveryId?: string;
+    version?: number;
+    manufacturer?: string;
+    manufacturerUri?: string;
+    model?: string;
+    productCode?: string;
+    hardwareRevision?: string;
+    softwareRevision?: string;
+    documentationUri?: string;
+    serialNumber?: string;
+    attributes?: Record<string, unknown>;
+    defaultDatasetsConfiguration?: string;
+    defaultEventsConfiguration?: string;
+    defaultStreamsConfiguration?: string;
+    defaultManagementGroupsConfiguration?: string;
+    defaultDatasetsDestinations?: {
+      target: "Mqtt" | "BrokerStateStore" | "Storage";
+    }[];
+    defaultEventsDestinations?: { target: "Mqtt" | "Storage" }[];
+    defaultStreamsDestinations?: { target: "Mqtt" | "Storage" }[];
+    datasets?: {
+      name: string;
+      dataSource?: string;
+      typeRef?: string;
+      datasetConfiguration?: string;
+      destinations?: { target: "Mqtt" | "BrokerStateStore" | "Storage" }[];
+      dataPoints?: {
+        name: string;
+        dataSource: string;
+        dataPointConfiguration?: string;
+        lastUpdatedOn?: string;
+        typeRef?: string;
+      }[];
+      lastUpdatedOn?: string;
+    }[];
+    eventGroups?: {
+      name: string;
+      dataSource?: string;
+      eventGroupConfiguration?: string;
+      defaultDestinations?: { target: "Mqtt" | "Storage" }[];
+      typeRef?: string;
+      events?: {
+        name: string;
+        dataSource?: string;
+        eventConfiguration?: string;
+        destinations?: { target: "Mqtt" | "Storage" }[];
+        typeRef?: string;
+        lastUpdatedOn?: string;
+      }[];
+    }[];
+    streams?: {
+      name: string;
+      streamConfiguration?: string;
+      typeRef?: string;
+      destinations?: { target: "Mqtt" | "Storage" }[];
+      lastUpdatedOn?: string;
+    }[];
+    managementGroups?: {
+      name: string;
+      managementGroupConfiguration?: string;
+      typeRef?: string;
+      dataSource?: string;
+      defaultTopic?: string;
+      defaultTimeoutInSeconds?: number;
+      actions?: {
+        name: string;
+        actionConfiguration?: string;
+        targetUri: string;
+        typeRef?: string;
+        topic?: string;
+        actionType?: "Call" | "Read" | "Write";
+        timeoutInSeconds?: number;
+        lastUpdatedOn?: string;
+      }[];
+      lastUpdatedOn?: string;
+    }[];
+  };
+}
 export const NamespaceDiscoveredAssetsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2989,11 +4105,22 @@ export const NamespaceDiscoveredAssetsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredAssetsUpdateInput =
-  typeof NamespaceDiscoveredAssetsUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredAssetsUpdateInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredAssetsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredAssetsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3013,9 +4140,7 @@ export const NamespaceDiscoveredAssetsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredAssetsUpdateOutput =
-  typeof NamespaceDiscoveredAssetsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredAssetsUpdateOutput>;
 
 // The operation
 /**
@@ -3033,6 +4158,51 @@ export const NamespaceDiscoveredAssetsUpdate =
     outputSchema: NamespaceDiscoveredAssetsUpdateOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredDevicesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredDeviceName: string;
+  properties?: {
+    externalDeviceId?: string;
+    endpoints?: {
+      inbound?: Record<
+        string,
+        {
+          endpointType: string;
+          address: string;
+          version?: string;
+          supportedAuthenticationMethods?: (
+            | "Anonymous"
+            | "Certificate"
+            | "UsernamePassword"
+          )[];
+          additionalConfiguration?: string;
+          lastUpdatedOn?: string;
+        }
+      >;
+      outbound?: {
+        assigned: Record<string, { endpointType?: string; address: string }>;
+      };
+    };
+    manufacturer?: string;
+    model?: string;
+    operatingSystem?: string;
+    operatingSystemVersion?: string;
+    attributes?: Record<string, unknown>;
+    discoveryId: string;
+    version: number;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  extendedLocation: { type: string; name: string };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespaceDiscoveredDevicesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3110,11 +4280,22 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredDevicesCreateOrReplaceInput =
-  typeof NamespaceDiscoveredDevicesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredDevicesCreateOrReplaceInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredDevicesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredDevicesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3134,9 +4315,7 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredDevicesCreateOrReplaceOutput =
-  typeof NamespaceDiscoveredDevicesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredDevicesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -3154,6 +4333,12 @@ export const NamespaceDiscoveredDevicesCreateOrReplace =
     outputSchema: NamespaceDiscoveredDevicesCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredDevicesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredDeviceName: string;
+}
 export const NamespaceDiscoveredDevicesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3166,15 +4351,12 @@ export const NamespaceDiscoveredDevicesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredDevicesDeleteInput =
-  typeof NamespaceDiscoveredDevicesDeleteInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredDevicesDeleteInput>;
 
 // Output Schema
+export type NamespaceDiscoveredDevicesDeleteOutput = void;
 export const NamespaceDiscoveredDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespaceDiscoveredDevicesDeleteOutput =
-  typeof NamespaceDiscoveredDevicesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespaceDiscoveredDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -3192,6 +4374,12 @@ export const NamespaceDiscoveredDevicesDelete =
     outputSchema: NamespaceDiscoveredDevicesDeleteOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredDevicesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredDeviceName: string;
+}
 export const NamespaceDiscoveredDevicesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3204,11 +4392,22 @@ export const NamespaceDiscoveredDevicesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredDevicesGetInput =
-  typeof NamespaceDiscoveredDevicesGetInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredDevicesGetInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredDevicesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredDevicesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3228,9 +4427,7 @@ export const NamespaceDiscoveredDevicesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredDevicesGetOutput =
-  typeof NamespaceDiscoveredDevicesGetOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredDevicesGetOutput>;
 
 // The operation
 /**
@@ -3248,6 +4445,11 @@ export const NamespaceDiscoveredDevicesGet =
     outputSchema: NamespaceDiscoveredDevicesGetOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredDevicesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespaceDiscoveredDevicesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3259,11 +4461,25 @@ export const NamespaceDiscoveredDevicesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredDevicesListByResourceGroupInput =
-  typeof NamespaceDiscoveredDevicesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredDevicesListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredDevicesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespaceDiscoveredDevicesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3298,9 +4514,7 @@ export const NamespaceDiscoveredDevicesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespaceDiscoveredDevicesListByResourceGroupOutput =
-  typeof NamespaceDiscoveredDevicesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredDevicesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3317,6 +4531,40 @@ export const NamespaceDiscoveredDevicesListByResourceGroup =
     outputSchema: NamespaceDiscoveredDevicesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespaceDiscoveredDevicesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  discoveredDeviceName: string;
+  tags?: Record<string, string>;
+  properties?: {
+    externalDeviceId?: string;
+    endpoints?: {
+      inbound?: Record<
+        string,
+        {
+          endpointType?: string;
+          address?: string;
+          version?: string;
+          supportedAuthenticationMethods?: (
+            | "Anonymous"
+            | "Certificate"
+            | "UsernamePassword"
+          )[];
+          additionalConfiguration?: string;
+          lastUpdatedOn?: string;
+        }
+      >;
+      outbound?: {
+        assigned?: Record<string, { endpointType?: string; address?: string }>;
+      };
+    };
+    operatingSystemVersion?: string;
+    attributes?: Record<string, unknown>;
+    discoveryId?: string;
+    version?: number;
+  };
+}
 export const NamespaceDiscoveredDevicesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3379,11 +4627,22 @@ export const NamespaceDiscoveredDevicesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespaceDiscoveredDevicesUpdateInput =
-  typeof NamespaceDiscoveredDevicesUpdateInput.Type;
+  ) as unknown as Schema.Codec<NamespaceDiscoveredDevicesUpdateInput>;
 
 // Output Schema
+export interface NamespaceDiscoveredDevicesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespaceDiscoveredDevicesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3403,9 +4662,7 @@ export const NamespaceDiscoveredDevicesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespaceDiscoveredDevicesUpdateOutput =
-  typeof NamespaceDiscoveredDevicesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<NamespaceDiscoveredDevicesUpdateOutput>;
 
 // The operation
 /**
@@ -3423,6 +4680,44 @@ export const NamespaceDiscoveredDevicesUpdate =
     outputSchema: NamespaceDiscoveredDevicesUpdateOutput,
   }));
 // Input Schema
+export interface NamespacesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  properties?: {
+    uuid?: string;
+    messaging?: {
+      endpoints?: Record<
+        string,
+        { endpointType?: string; address: string; resourceId?: string }
+      >;
+    };
+    management?: {
+      endpoints?: Record<
+        string,
+        {
+          endpointType: string;
+          address: string;
+          scopeId: string;
+          resourceId: string;
+        }
+      >;
+    };
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const NamespacesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3486,11 +4781,22 @@ export const NamespacesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespacesCreateOrReplaceInput =
-  typeof NamespacesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<NamespacesCreateOrReplaceInput>;
 
 // Output Schema
+export interface NamespacesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -3510,9 +4816,7 @@ export const NamespacesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type NamespacesCreateOrReplaceOutput =
-  typeof NamespacesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -3530,6 +4834,11 @@ export const NamespacesCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface NamespacesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3540,12 +4849,12 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
+) as unknown as Schema.Codec<NamespacesDeleteInput>;
 
 // Output Schema
-export const NamespacesDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type NamespacesDeleteOutput = typeof NamespacesDeleteOutput.Type;
+export type NamespacesDeleteOutput = void;
+export const NamespacesDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NamespacesDeleteOutput>;
 
 // The operation
 /**
@@ -3561,6 +4870,11 @@ export const NamespacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesDeleteOutput,
 }));
 // Input Schema
+export interface NamespacesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+}
 export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3571,10 +4885,22 @@ export const NamespacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type NamespacesGetInput = typeof NamespacesGetInput.Type;
+) as unknown as Schema.Codec<NamespacesGetInput>;
 
 // Output Schema
+export interface NamespacesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -3593,8 +4919,7 @@ export const NamespacesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type NamespacesGetOutput = typeof NamespacesGetOutput.Type;
+}) as unknown as Schema.Codec<NamespacesGetOutput>;
 
 // The operation
 /**
@@ -3610,6 +4935,10 @@ export const NamespacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesGetOutput,
 }));
 // Input Schema
+export interface NamespacesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const NamespacesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3620,11 +4949,25 @@ export const NamespacesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespacesListByResourceGroupInput =
-  typeof NamespacesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListByResourceGroupInput>;
 
 // Output Schema
+export interface NamespacesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3659,9 +5002,7 @@ export const NamespacesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListByResourceGroupOutput =
-  typeof NamespacesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -3677,6 +5018,9 @@ export const NamespacesListByResourceGroup =
     outputSchema: NamespacesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface NamespacesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const NamespacesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3686,11 +5030,25 @@ export const NamespacesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
       apiVersion: "2026-04-01",
     }),
-  );
-export type NamespacesListBySubscriptionInput =
-  typeof NamespacesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<NamespacesListBySubscriptionInput>;
 
 // Output Schema
+export interface NamespacesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const NamespacesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -3725,9 +5083,7 @@ export const NamespacesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type NamespacesListBySubscriptionOutput =
-  typeof NamespacesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -3742,6 +5098,13 @@ export const NamespacesListBySubscription =
     outputSchema: NamespacesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface NamespacesMigrateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  scope?: "Resources";
+  resourceIds?: string[];
+}
 export const NamespacesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3756,10 +5119,25 @@ export const NamespacesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
     apiVersion: "2026-04-01",
   }),
-);
-export type NamespacesMigrateInput = typeof NamespacesMigrateInput.Type;
+) as unknown as Schema.Codec<NamespacesMigrateInput>;
 
 // Output Schema
+export interface NamespacesMigrateOutput {
+  migrateResults?: {
+    resourceId?: string;
+    result?: "Succeeded" | "Failed";
+    error?: {
+      code?: string;
+      message?: string;
+      details?: {
+        code?: string;
+        message?: string;
+        info?: string;
+        correlationId?: string;
+      }[];
+    };
+  }[];
+}
 export const NamespacesMigrateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     migrateResults: Schema.optional(
@@ -3786,8 +5164,7 @@ export const NamespacesMigrateOutput =
         }),
       ),
     ),
-  });
-export type NamespacesMigrateOutput = typeof NamespacesMigrateOutput.Type;
+  }) as unknown as Schema.Codec<NamespacesMigrateOutput>;
 
 // The operation
 /**
@@ -3803,6 +5180,36 @@ export const NamespacesMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesMigrateOutput,
 }));
 // Input Schema
+export interface NamespacesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  namespaceName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  tags?: Record<string, string>;
+  properties?: {
+    messaging?: {
+      endpoints?: Record<
+        string,
+        { endpointType?: string; address: string; resourceId?: string }
+      >;
+    };
+    management?: {
+      endpoints?: Record<
+        string,
+        {
+          endpointType: string;
+          address: string;
+          scopeId: string;
+          resourceId: string;
+        }
+      >;
+    };
+  };
+}
 export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3854,10 +5261,22 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateInput>;
 
 // Output Schema
+export interface NamespacesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -3878,8 +5297,7 @@ export const NamespacesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type NamespacesUpdateOutput = typeof NamespacesUpdateOutput.Type;
+) as unknown as Schema.Codec<NamespacesUpdateOutput>;
 
 // The operation
 /**
@@ -3895,6 +5313,7 @@ export const NamespacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: NamespacesUpdateOutput,
 }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -3903,10 +5322,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.DeviceRegistry/operations",
     apiVersion: "2026-04-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -3929,8 +5362,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -3943,6 +5375,11 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface OperationStatusGetInput {
+  subscriptionId: string;
+  location: string;
+  operationId: string;
+}
 export const OperationStatusGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3954,10 +5391,42 @@ export const OperationStatusGetInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type OperationStatusGetInput = typeof OperationStatusGetInput.Type;
+  ) as unknown as Schema.Codec<OperationStatusGetInput>;
 
 // Output Schema
+export interface OperationStatusGetOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const OperationStatusGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4013,8 +5482,7 @@ export const OperationStatusGetOutput =
         ),
       }),
     ),
-  });
-export type OperationStatusGetOutput = typeof OperationStatusGetOutput.Type;
+  }) as unknown as Schema.Codec<OperationStatusGetOutput>;
 
 // The operation
 /**
@@ -4030,6 +5498,31 @@ export const OperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationStatusGetOutput,
 }));
 // Input Schema
+export interface SchemaRegistriesCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  properties?: {
+    uuid?: string;
+    namespace: string;
+    displayName?: string;
+    description?: string;
+    storageAccountContainerUrl: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const SchemaRegistriesCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4068,11 +5561,22 @@ export const SchemaRegistriesCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesCreateOrReplaceInput =
-  typeof SchemaRegistriesCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesCreateOrReplaceInput>;
 
 // Output Schema
+export interface SchemaRegistriesCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaRegistriesCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4092,9 +5596,7 @@ export const SchemaRegistriesCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaRegistriesCreateOrReplaceOutput =
-  typeof SchemaRegistriesCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<SchemaRegistriesCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -4111,6 +5613,11 @@ export const SchemaRegistriesCreateOrReplace =
     outputSchema: SchemaRegistriesCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface SchemaRegistriesDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+}
 export const SchemaRegistriesDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4122,15 +5629,12 @@ export const SchemaRegistriesDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesDeleteInput =
-  typeof SchemaRegistriesDeleteInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesDeleteInput>;
 
 // Output Schema
+export type SchemaRegistriesDeleteOutput = void;
 export const SchemaRegistriesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemaRegistriesDeleteOutput =
-  typeof SchemaRegistriesDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemaRegistriesDeleteOutput>;
 
 // The operation
 /**
@@ -4148,6 +5652,11 @@ export const SchemaRegistriesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaRegistriesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+}
 export const SchemaRegistriesGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4159,10 +5668,22 @@ export const SchemaRegistriesGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesGetInput = typeof SchemaRegistriesGetInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesGetInput>;
 
 // Output Schema
+export interface SchemaRegistriesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaRegistriesGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4182,8 +5703,7 @@ export const SchemaRegistriesGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaRegistriesGetOutput = typeof SchemaRegistriesGetOutput.Type;
+  }) as unknown as Schema.Codec<SchemaRegistriesGetOutput>;
 
 // The operation
 /**
@@ -4199,6 +5719,10 @@ export const SchemaRegistriesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemaRegistriesGetOutput,
 }));
 // Input Schema
+export interface SchemaRegistriesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SchemaRegistriesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4209,11 +5733,25 @@ export const SchemaRegistriesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesListByResourceGroupInput =
-  typeof SchemaRegistriesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesListByResourceGroupInput>;
 
 // Output Schema
+export interface SchemaRegistriesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemaRegistriesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4248,9 +5786,7 @@ export const SchemaRegistriesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemaRegistriesListByResourceGroupOutput =
-  typeof SchemaRegistriesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SchemaRegistriesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -4266,6 +5802,9 @@ export const SchemaRegistriesListByResourceGroup =
     outputSchema: SchemaRegistriesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SchemaRegistriesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SchemaRegistriesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4275,11 +5814,25 @@ export const SchemaRegistriesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesListBySubscriptionInput =
-  typeof SchemaRegistriesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesListBySubscriptionInput>;
 
 // Output Schema
+export interface SchemaRegistriesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemaRegistriesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4314,9 +5867,7 @@ export const SchemaRegistriesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemaRegistriesListBySubscriptionOutput =
-  typeof SchemaRegistriesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SchemaRegistriesListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -4331,6 +5882,18 @@ export const SchemaRegistriesListBySubscription =
     outputSchema: SchemaRegistriesListBySubscriptionOutput,
   }));
 // Input Schema
+export interface SchemaRegistriesUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  identity?: {
+    principalId?: string;
+    tenantId?: string;
+    type: "None" | "SystemAssigned";
+  };
+  tags?: Record<string, string>;
+  properties?: { displayName?: string; description?: string };
+}
 export const SchemaRegistriesUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4356,11 +5919,22 @@ export const SchemaRegistriesUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaRegistriesUpdateInput =
-  typeof SchemaRegistriesUpdateInput.Type;
+  ) as unknown as Schema.Codec<SchemaRegistriesUpdateInput>;
 
 // Output Schema
+export interface SchemaRegistriesUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaRegistriesUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4380,9 +5954,7 @@ export const SchemaRegistriesUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaRegistriesUpdateOutput =
-  typeof SchemaRegistriesUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SchemaRegistriesUpdateOutput>;
 
 // The operation
 /**
@@ -4400,6 +5972,26 @@ export const SchemaRegistriesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+  properties?: {
+    uuid?: string;
+    displayName?: string;
+    description?: string;
+    format: "JsonSchema/draft-07" | "Delta/1.0";
+    schemaType: "MessageSchema";
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+    tags?: Record<string, string>;
+  };
+}
 export const SchemasCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4431,11 +6023,22 @@ export const SchemasCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemasCreateOrReplaceInput =
-  typeof SchemasCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<SchemasCreateOrReplaceInput>;
 
 // Output Schema
+export interface SchemasCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4455,9 +6058,7 @@ export const SchemasCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemasCreateOrReplaceOutput =
-  typeof SchemasCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<SchemasCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -4476,6 +6077,12 @@ export const SchemasCreateOrReplace = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemasDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+}
 export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4487,12 +6094,12 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
+) as unknown as Schema.Codec<SchemasDeleteInput>;
 
 // Output Schema
-export const SchemasDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemasDeleteOutput = typeof SchemasDeleteOutput.Type;
+export type SchemasDeleteOutput = void;
+export const SchemasDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemasDeleteOutput>;
 
 // The operation
 /**
@@ -4509,6 +6116,12 @@ export const SchemasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemasDeleteOutput,
 }));
 // Input Schema
+export interface SchemasGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+}
 export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -4520,10 +6133,22 @@ export const SchemasGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type SchemasGetInput = typeof SchemasGetInput.Type;
+) as unknown as Schema.Codec<SchemasGetInput>;
 
 // Output Schema
+export interface SchemasGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -4542,8 +6167,7 @@ export const SchemasGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type SchemasGetOutput = typeof SchemasGetOutput.Type;
+}) as unknown as Schema.Codec<SchemasGetOutput>;
 
 // The operation
 /**
@@ -4560,6 +6184,11 @@ export const SchemasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemasGetOutput,
 }));
 // Input Schema
+export interface SchemasListBySchemaRegistryInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+}
 export const SchemasListBySchemaRegistryInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4571,11 +6200,25 @@ export const SchemasListBySchemaRegistryInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemasListBySchemaRegistryInput =
-  typeof SchemasListBySchemaRegistryInput.Type;
+  ) as unknown as Schema.Codec<SchemasListBySchemaRegistryInput>;
 
 // Output Schema
+export interface SchemasListBySchemaRegistryOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemasListBySchemaRegistryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4610,9 +6253,7 @@ export const SchemasListBySchemaRegistryOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemasListBySchemaRegistryOutput =
-  typeof SchemasListBySchemaRegistryOutput.Type;
+  }) as unknown as Schema.Codec<SchemasListBySchemaRegistryOutput>;
 
 // The operation
 /**
@@ -4630,6 +6271,25 @@ export const SchemasListBySchemaRegistry = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaVersionsCreateOrReplaceInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+  schemaVersionName: string;
+  properties?: {
+    uuid?: string;
+    description?: string;
+    schemaContent: string;
+    hash?: string;
+    provisioningState?:
+      | "Succeeded"
+      | "Failed"
+      | "Canceled"
+      | "Accepted"
+      | "Deleting";
+  };
+}
 export const SchemaVersionsCreateOrReplaceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4660,11 +6320,22 @@ export const SchemaVersionsCreateOrReplaceInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaVersionsCreateOrReplaceInput =
-  typeof SchemaVersionsCreateOrReplaceInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsCreateOrReplaceInput>;
 
 // Output Schema
+export interface SchemaVersionsCreateOrReplaceOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaVersionsCreateOrReplaceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4684,9 +6355,7 @@ export const SchemaVersionsCreateOrReplaceOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaVersionsCreateOrReplaceOutput =
-  typeof SchemaVersionsCreateOrReplaceOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsCreateOrReplaceOutput>;
 
 // The operation
 /**
@@ -4705,6 +6374,13 @@ export const SchemaVersionsCreateOrReplace =
     outputSchema: SchemaVersionsCreateOrReplaceOutput,
   }));
 // Input Schema
+export interface SchemaVersionsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+  schemaVersionName: string;
+}
 export const SchemaVersionsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4718,13 +6394,12 @@ export const SchemaVersionsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsDeleteInput>;
 
 // Output Schema
+export type SchemaVersionsDeleteOutput = void;
 export const SchemaVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SchemaVersionsDeleteOutput = typeof SchemaVersionsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SchemaVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -4744,6 +6419,13 @@ export const SchemaVersionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SchemaVersionsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+  schemaVersionName: string;
+}
 export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4758,10 +6440,22 @@ export const SchemaVersionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
     apiVersion: "2026-04-01",
   }),
-);
-export type SchemaVersionsGetInput = typeof SchemaVersionsGetInput.Type;
+) as unknown as Schema.Codec<SchemaVersionsGetInput>;
 
 // Output Schema
+export interface SchemaVersionsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SchemaVersionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -4781,8 +6475,7 @@ export const SchemaVersionsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SchemaVersionsGetOutput = typeof SchemaVersionsGetOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsGetOutput>;
 
 // The operation
 /**
@@ -4800,6 +6493,12 @@ export const SchemaVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SchemaVersionsGetOutput,
 }));
 // Input Schema
+export interface SchemaVersionsListBySchemaInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  schemaRegistryName: string;
+  schemaName: string;
+}
 export const SchemaVersionsListBySchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -4812,11 +6511,25 @@ export const SchemaVersionsListBySchemaInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
       apiVersion: "2026-04-01",
     }),
-  );
-export type SchemaVersionsListBySchemaInput =
-  typeof SchemaVersionsListBySchemaInput.Type;
+  ) as unknown as Schema.Codec<SchemaVersionsListBySchemaInput>;
 
 // Output Schema
+export interface SchemaVersionsListBySchemaOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SchemaVersionsListBySchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -4851,9 +6564,7 @@ export const SchemaVersionsListBySchemaOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SchemaVersionsListBySchemaOutput =
-  typeof SchemaVersionsListBySchemaOutput.Type;
+  }) as unknown as Schema.Codec<SchemaVersionsListBySchemaOutput>;
 
 // The operation
 /**

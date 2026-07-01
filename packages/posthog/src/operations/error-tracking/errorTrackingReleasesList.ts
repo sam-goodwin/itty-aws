@@ -4,6 +4,11 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ErrorTrackingReleasesListInput {
+  project_id: string;
+  limit?: number;
+  offset?: number;
+}
 export const ErrorTrackingReleasesListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,23 @@ export const ErrorTrackingReleasesListInput =
       method: "GET",
       path: "/api/projects/{project_id}/error_tracking/releases/",
     }),
-  );
-export type ErrorTrackingReleasesListInput =
-  typeof ErrorTrackingReleasesListInput.Type;
+  ) as unknown as Schema.Codec<ErrorTrackingReleasesListInput>;
 
 // Output Schema
+export interface ErrorTrackingReleasesListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: {
+    id?: string;
+    hash_id?: string;
+    team_id?: number;
+    created_at?: string;
+    metadata?: Record<string, unknown> | null;
+    version?: string;
+    project?: string;
+  }[];
+}
 export const ErrorTrackingReleasesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
@@ -31,15 +48,15 @@ export const ErrorTrackingReleasesListOutput =
           hash_id: Schema.optional(Schema.String),
           team_id: Schema.optional(Schema.Number),
           created_at: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
+          metadata: Schema.optional(
+            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
+          ),
           version: Schema.optional(Schema.String),
           project: Schema.optional(Schema.String),
         }),
       ),
     ),
-  });
-export type ErrorTrackingReleasesListOutput =
-  typeof ErrorTrackingReleasesListOutput.Type;
+  }) as unknown as Schema.Codec<ErrorTrackingReleasesListOutput>;
 
 // The operation
 /**

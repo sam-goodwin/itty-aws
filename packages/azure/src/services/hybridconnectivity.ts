@@ -4,13 +4,23 @@
  * Generated from the Azure REST API specs.
  * DO NOT EDIT - regenerate with: bun run generate
  */
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface EndpointsCreateOrUpdateInput {
+  resourceUri: string;
+  endpointName: string;
+  properties?: {
+    type: "default" | "custom";
+    resourceId?: string;
+    provisioningState?: string;
+  };
+}
 export const EndpointsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -25,11 +35,22 @@ export const EndpointsCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type EndpointsCreateOrUpdateInput =
-  typeof EndpointsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<EndpointsCreateOrUpdateInput>;
 
 // Output Schema
+export interface EndpointsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -49,15 +70,14 @@ export const EndpointsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EndpointsCreateOrUpdateOutput =
-  typeof EndpointsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create or update the endpoint to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -67,7 +87,12 @@ export const EndpointsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EndpointsDeleteInput {
+  resourceUri: string;
+  endpointName: string;
+}
 export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -75,18 +100,19 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
+) as unknown as Schema.Codec<EndpointsDeleteInput>;
 
 // Output Schema
-export const EndpointsDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type EndpointsDeleteOutput = typeof EndpointsDeleteOutput.Type;
+export type EndpointsDeleteOutput = void;
+export const EndpointsDeleteOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
 // The operation
 /**
  * Deletes the endpoint access to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -94,7 +120,12 @@ export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsDeleteOutput,
 }));
 // Input Schema
+export interface EndpointsGetInput {
+  resourceUri: string;
+  endpointName: string;
+}
 export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -102,10 +133,22 @@ export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type EndpointsGetInput = typeof EndpointsGetInput.Type;
+) as unknown as Schema.Codec<EndpointsGetInput>;
 
 // Output Schema
+export interface EndpointsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -124,14 +167,14 @@ export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EndpointsGetOutput = typeof EndpointsGetOutput.Type;
+}) as unknown as Schema.Codec<EndpointsGetOutput>;
 
 // The operation
 /**
  * Gets the endpoint to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -139,18 +182,36 @@ export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsGetOutput,
 }));
 // Input Schema
-export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export interface EndpointsListInput {
+  resourceUri: string;
+}
+export const EndpointsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints",
     apiVersion: "2024-12-01",
   }),
-);
-export type EndpointsListInput = typeof EndpointsListInput.Type;
+) as unknown as Schema.Codec<EndpointsListInput>;
 
 // Output Schema
+export interface EndpointsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
@@ -174,22 +235,29 @@ export const EndpointsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     }),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type EndpointsListOutput = typeof EndpointsListOutput.Type;
+}) as unknown as Schema.Codec<EndpointsListOutput>;
 
 // The operation
 /**
  * List of endpoints to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const EndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: EndpointsListInput,
   outputSchema: EndpointsListOutput,
 }));
 // Input Schema
+export interface EndpointsListCredentialsInput {
+  resourceUri: string;
+  endpointName: string;
+  expiresin?: number;
+  serviceName?: "SSH" | "WAC";
+}
 export const EndpointsListCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
     serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
@@ -199,11 +267,19 @@ export const EndpointsListCredentialsInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listCredentials",
       apiVersion: "2024-12-01",
     }),
-  );
-export type EndpointsListCredentialsInput =
-  typeof EndpointsListCredentialsInput.Type;
+  ) as unknown as Schema.Codec<EndpointsListCredentialsInput>;
 
 // Output Schema
+export interface EndpointsListCredentialsOutput {
+  relay?: {
+    namespaceName: string;
+    namespaceNameSuffix: string;
+    hybridConnectionName: string;
+    accessKey?: string;
+    expiresOn?: number;
+    serviceConfigurationToken?: string;
+  };
+}
 export const EndpointsListCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relay: Schema.optional(
@@ -216,15 +292,14 @@ export const EndpointsListCredentialsOutput =
         serviceConfigurationToken: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type EndpointsListCredentialsOutput =
-  typeof EndpointsListCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsListCredentialsOutput>;
 
 // The operation
 /**
  * Gets the endpoint access credentials to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
@@ -235,8 +310,15 @@ export const EndpointsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface EndpointsListIngressGatewayCredentialsInput {
+  resourceUri: string;
+  endpointName: string;
+  expiresin?: number;
+  serviceName?: "SSH" | "WAC";
+}
 export const EndpointsListIngressGatewayCredentialsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     expiresin: Schema.optional(Schema.Number),
     serviceName: Schema.optional(Schema.Literals(["SSH", "WAC"])),
@@ -246,11 +328,23 @@ export const EndpointsListIngressGatewayCredentialsInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listIngressGatewayCredentials",
       apiVersion: "2024-12-01",
     }),
-  );
-export type EndpointsListIngressGatewayCredentialsInput =
-  typeof EndpointsListIngressGatewayCredentialsInput.Type;
+  ) as unknown as Schema.Codec<EndpointsListIngressGatewayCredentialsInput>;
 
 // Output Schema
+export interface EndpointsListIngressGatewayCredentialsOutput {
+  relay?: {
+    namespaceName: string;
+    namespaceNameSuffix: string;
+    hybridConnectionName: string;
+    accessKey?: string;
+    expiresOn?: number;
+    serviceConfigurationToken?: string;
+  };
+  ingress?: {
+    hostname: string;
+    aadProfile: { serverId: string; tenantId: string };
+  };
+}
 export const EndpointsListIngressGatewayCredentialsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     relay: Schema.optional(
@@ -272,15 +366,14 @@ export const EndpointsListIngressGatewayCredentialsOutput =
         }),
       }),
     ),
-  });
-export type EndpointsListIngressGatewayCredentialsOutput =
-  typeof EndpointsListIngressGatewayCredentialsOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsListIngressGatewayCredentialsOutput>;
 
 // The operation
 /**
  * Gets the ingress gateway endpoint credentials
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param expiresin - The is how long the endpoint access token is valid (in seconds).
  */
@@ -290,8 +383,16 @@ export const EndpointsListIngressGatewayCredentials =
     outputSchema: EndpointsListIngressGatewayCredentialsOutput,
   }));
 // Input Schema
+export interface EndpointsListManagedProxyDetailsInput {
+  resourceUri: string;
+  endpointName: string;
+  service: string;
+  hostname?: string;
+  serviceName?: "SSH" | "WAC";
+}
 export const EndpointsListManagedProxyDetailsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     service: Schema.String,
     hostname: Schema.optional(Schema.String),
@@ -302,24 +403,25 @@ export const EndpointsListManagedProxyDetailsInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/listManagedProxyDetails",
       apiVersion: "2024-12-01",
     }),
-  );
-export type EndpointsListManagedProxyDetailsInput =
-  typeof EndpointsListManagedProxyDetailsInput.Type;
+  ) as unknown as Schema.Codec<EndpointsListManagedProxyDetailsInput>;
 
 // Output Schema
+export interface EndpointsListManagedProxyDetailsOutput {
+  proxy: string;
+  expiresOn: number;
+}
 export const EndpointsListManagedProxyDetailsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     proxy: Schema.String,
     expiresOn: Schema.Number,
-  });
-export type EndpointsListManagedProxyDetailsOutput =
-  typeof EndpointsListManagedProxyDetailsOutput.Type;
+  }) as unknown as Schema.Codec<EndpointsListManagedProxyDetailsOutput>;
 
 // The operation
 /**
  * Fetches the managed proxy details
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsListManagedProxyDetails =
@@ -328,7 +430,17 @@ export const EndpointsListManagedProxyDetails =
     outputSchema: EndpointsListManagedProxyDetailsOutput,
   }));
 // Input Schema
+export interface EndpointsUpdateInput {
+  resourceUri: string;
+  endpointName: string;
+  properties?: {
+    type: "default" | "custom";
+    resourceId?: string;
+    provisioningState?: string;
+  };
+}
 export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   endpointName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -343,10 +455,22 @@ export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}",
     apiVersion: "2024-12-01",
   }),
-);
-export type EndpointsUpdateInput = typeof EndpointsUpdateInput.Type;
+) as unknown as Schema.Codec<EndpointsUpdateInput>;
 
 // Output Schema
+export interface EndpointsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -365,14 +489,14 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;
+}) as unknown as Schema.Codec<EndpointsUpdateOutput>;
 
 // The operation
 /**
  * Update the endpoint to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -380,6 +504,14 @@ export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: EndpointsUpdateOutput,
 }));
 // Input Schema
+export interface GenerateAwsTemplatePostInput {
+  subscriptionId: string;
+  connectorId: string;
+  solutionTypes?: {
+    solutionType: string;
+    solutionSettings?: Record<string, string>;
+  }[];
+}
 export const GenerateAwsTemplatePostInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -400,15 +532,12 @@ export const GenerateAwsTemplatePostInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/generateAwsTemplate",
       apiVersion: "2024-12-01",
     }),
-  );
-export type GenerateAwsTemplatePostInput =
-  typeof GenerateAwsTemplatePostInput.Type;
+  ) as unknown as Schema.Codec<GenerateAwsTemplatePostInput>;
 
 // Output Schema
+export type GenerateAwsTemplatePostOutput = unknown;
 export const GenerateAwsTemplatePostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
-export type GenerateAwsTemplatePostOutput =
-  typeof GenerateAwsTemplatePostOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GenerateAwsTemplatePostOutput>;
 
 // The operation
 /**
@@ -424,7 +553,13 @@ export const GenerateAwsTemplatePost = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface InventoryGetInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+  inventoryId: string;
+}
 export const InventoryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
   solutionConfiguration: Schema.String.pipe(T.PathParam()),
   inventoryId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -433,10 +568,22 @@ export const InventoryGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory/{inventoryId}",
     apiVersion: "2024-12-01",
   }),
-);
-export type InventoryGetInput = typeof InventoryGetInput.Type;
+) as unknown as Schema.Codec<InventoryGetInput>;
 
 // Output Schema
+export interface InventoryGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const InventoryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -455,14 +602,14 @@ export const InventoryGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       lastModifiedAt: Schema.optional(Schema.String),
     }),
   ),
-});
-export type InventoryGetOutput = typeof InventoryGetOutput.Type;
+}) as unknown as Schema.Codec<InventoryGetOutput>;
 
 // The operation
 /**
  * Get a InventoryResource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  * @param inventoryId - Inventory resource
  */
@@ -471,8 +618,13 @@ export const InventoryGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: InventoryGetOutput,
 }));
 // Input Schema
+export interface InventoryListBySolutionConfigurationInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+}
 export const InventoryListBySolutionConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -480,11 +632,25 @@ export const InventoryListBySolutionConfigurationInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/inventory",
       apiVersion: "2024-12-01",
     }),
-  );
-export type InventoryListBySolutionConfigurationInput =
-  typeof InventoryListBySolutionConfigurationInput.Type;
+  ) as unknown as Schema.Codec<InventoryListBySolutionConfigurationInput>;
 
 // Output Schema
+export interface InventoryListBySolutionConfigurationOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const InventoryListBySolutionConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -519,15 +685,14 @@ export const InventoryListBySolutionConfigurationOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type InventoryListBySolutionConfigurationOutput =
-  typeof InventoryListBySolutionConfigurationOutput.Type;
+  }) as unknown as Schema.Codec<InventoryListBySolutionConfigurationOutput>;
 
 // The operation
 /**
  * List InventoryResource resources by SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const InventoryListBySolutionConfiguration =
@@ -536,6 +701,7 @@ export const InventoryListBySolutionConfiguration =
     outputSchema: InventoryListBySolutionConfigurationOutput,
   }));
 // Input Schema
+export interface OperationsListInput {}
 export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
@@ -544,10 +710,24 @@ export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     path: "/providers/Microsoft.HybridConnectivity/operations",
     apiVersion: "2024-12-01",
   }),
-);
-export type OperationsListInput = typeof OperationsListInput.Type;
+) as unknown as Schema.Codec<OperationsListInput>;
 
 // Output Schema
+export interface OperationsListOutput {
+  value?: {
+    name?: string;
+    isDataAction?: boolean;
+    display?: {
+      provider?: string;
+      resource?: string;
+      operation?: string;
+      description?: string;
+    };
+    origin?: "user" | "system" | "user,system";
+    actionType?: "Internal";
+  }[];
+  nextLink?: string;
+}
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
@@ -570,8 +750,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   nextLink: Schema.optional(Schema.String),
-});
-export type OperationsListOutput = typeof OperationsListOutput.Type;
+}) as unknown as Schema.Codec<OperationsListOutput>;
 
 // The operation
 /**
@@ -584,6 +763,23 @@ export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
+export interface PublicCloudConnectorsCreateOrUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publicCloudConnector: string;
+  properties?: {
+    awsCloudProfile: {
+      accountId: string;
+      excludedAccounts?: string[];
+      isOrganizationalAccount?: boolean;
+    };
+    hostType: "AWS";
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    connectorPrimaryIdentifier?: string;
+  };
+  tags?: Record<string, string>;
+  location: string;
+}
 export const PublicCloudConnectorsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -611,11 +807,22 @@ export const PublicCloudConnectorsCreateOrUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsCreateOrUpdateInput =
-  typeof PublicCloudConnectorsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsCreateOrUpdateInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublicCloudConnectorsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -635,9 +842,7 @@ export const PublicCloudConnectorsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PublicCloudConnectorsCreateOrUpdateOutput =
-  typeof PublicCloudConnectorsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -654,6 +859,11 @@ export const PublicCloudConnectorsCreateOrUpdate =
     outputSchema: PublicCloudConnectorsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface PublicCloudConnectorsDeleteInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publicCloudConnector: string;
+}
 export const PublicCloudConnectorsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -665,15 +875,12 @@ export const PublicCloudConnectorsDeleteInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsDeleteInput =
-  typeof PublicCloudConnectorsDeleteInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsDeleteInput>;
 
 // Output Schema
+export type PublicCloudConnectorsDeleteOutput = void;
 export const PublicCloudConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type PublicCloudConnectorsDeleteOutput =
-  typeof PublicCloudConnectorsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PublicCloudConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -691,6 +898,11 @@ export const PublicCloudConnectorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PublicCloudConnectorsGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publicCloudConnector: string;
+}
 export const PublicCloudConnectorsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -702,11 +914,22 @@ export const PublicCloudConnectorsGetInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsGetInput =
-  typeof PublicCloudConnectorsGetInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsGetInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublicCloudConnectorsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -726,9 +949,7 @@ export const PublicCloudConnectorsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PublicCloudConnectorsGetOutput =
-  typeof PublicCloudConnectorsGetOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsGetOutput>;
 
 // The operation
 /**
@@ -746,6 +967,10 @@ export const PublicCloudConnectorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface PublicCloudConnectorsListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const PublicCloudConnectorsListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -756,11 +981,25 @@ export const PublicCloudConnectorsListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsListByResourceGroupInput =
-  typeof PublicCloudConnectorsListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsListByResourceGroupInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublicCloudConnectorsListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -795,9 +1034,7 @@ export const PublicCloudConnectorsListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PublicCloudConnectorsListByResourceGroupOutput =
-  typeof PublicCloudConnectorsListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -813,6 +1050,9 @@ export const PublicCloudConnectorsListByResourceGroup =
     outputSchema: PublicCloudConnectorsListByResourceGroupOutput,
   }));
 // Input Schema
+export interface PublicCloudConnectorsListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const PublicCloudConnectorsListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -822,11 +1062,25 @@ export const PublicCloudConnectorsListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/publicCloudConnectors",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsListBySubscriptionInput =
-  typeof PublicCloudConnectorsListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsListBySubscriptionInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const PublicCloudConnectorsListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -861,9 +1115,7 @@ export const PublicCloudConnectorsListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type PublicCloudConnectorsListBySubscriptionOutput =
-  typeof PublicCloudConnectorsListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsListBySubscriptionOutput>;
 
 // The operation
 /**
@@ -878,6 +1130,11 @@ export const PublicCloudConnectorsListBySubscription =
     outputSchema: PublicCloudConnectorsListBySubscriptionOutput,
   }));
 // Input Schema
+export interface PublicCloudConnectorsTestPermissionsInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publicCloudConnector: string;
+}
 export const PublicCloudConnectorsTestPermissionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -889,11 +1146,42 @@ export const PublicCloudConnectorsTestPermissionsInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}/testPermissions",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsTestPermissionsInput =
-  typeof PublicCloudConnectorsTestPermissionsInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsTestPermissionsInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsTestPermissionsOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const PublicCloudConnectorsTestPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -949,9 +1237,7 @@ export const PublicCloudConnectorsTestPermissionsOutput =
         ),
       }),
     ),
-  });
-export type PublicCloudConnectorsTestPermissionsOutput =
-  typeof PublicCloudConnectorsTestPermissionsOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsTestPermissionsOutput>;
 
 // The operation
 /**
@@ -968,6 +1254,13 @@ export const PublicCloudConnectorsTestPermissions =
     outputSchema: PublicCloudConnectorsTestPermissionsOutput,
   }));
 // Input Schema
+export interface PublicCloudConnectorsUpdateInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  publicCloudConnector: string;
+  properties?: { awsCloudProfile?: { excludedAccounts?: string[] } };
+  tags?: Record<string, string>;
+}
 export const PublicCloudConnectorsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -989,11 +1282,22 @@ export const PublicCloudConnectorsUpdateInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type PublicCloudConnectorsUpdateInput =
-  typeof PublicCloudConnectorsUpdateInput.Type;
+  ) as unknown as Schema.Codec<PublicCloudConnectorsUpdateInput>;
 
 // Output Schema
+export interface PublicCloudConnectorsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const PublicCloudConnectorsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1013,9 +1317,7 @@ export const PublicCloudConnectorsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type PublicCloudConnectorsUpdateOutput =
-  typeof PublicCloudConnectorsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<PublicCloudConnectorsUpdateOutput>;
 
 // The operation
 /**
@@ -1033,8 +1335,25 @@ export const PublicCloudConnectorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceConfigurationsCreateOrupdateInput {
+  resourceUri: string;
+  endpointName: string;
+  serviceConfigurationName: string;
+  properties?: {
+    serviceName: "SSH" | "WAC";
+    resourceId?: string;
+    port?: number;
+    provisioningState?:
+      | "Succeeded"
+      | "Creating"
+      | "Updating"
+      | "Failed"
+      | "Canceled";
+  };
+}
 export const ServiceConfigurationsCreateOrupdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1059,11 +1378,22 @@ export const ServiceConfigurationsCreateOrupdateInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type ServiceConfigurationsCreateOrupdateInput =
-  typeof ServiceConfigurationsCreateOrupdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceConfigurationsCreateOrupdateInput>;
 
 // Output Schema
+export interface ServiceConfigurationsCreateOrupdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceConfigurationsCreateOrupdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1083,15 +1413,14 @@ export const ServiceConfigurationsCreateOrupdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceConfigurationsCreateOrupdateOutput =
-  typeof ServiceConfigurationsCreateOrupdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceConfigurationsCreateOrupdateOutput>;
 
 // The operation
 /**
  * Create or update a service in serviceConfiguration for the endpoint resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1101,8 +1430,14 @@ export const ServiceConfigurationsCreateOrupdate =
     outputSchema: ServiceConfigurationsCreateOrupdateOutput,
   }));
 // Input Schema
+export interface ServiceConfigurationsDeleteInput {
+  resourceUri: string;
+  endpointName: string;
+  serviceConfigurationName: string;
+}
 export const ServiceConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1111,21 +1446,19 @@ export const ServiceConfigurationsDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type ServiceConfigurationsDeleteInput =
-  typeof ServiceConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<ServiceConfigurationsDeleteInput>;
 
 // Output Schema
+export type ServiceConfigurationsDeleteOutput = void;
 export const ServiceConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type ServiceConfigurationsDeleteOutput =
-  typeof ServiceConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceConfigurationsDeleteOutput>;
 
 // The operation
 /**
  * Deletes the service details to the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1136,8 +1469,14 @@ export const ServiceConfigurationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceConfigurationsGetInput {
+  resourceUri: string;
+  endpointName: string;
+  serviceConfigurationName: string;
+}
 export const ServiceConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1146,11 +1485,22 @@ export const ServiceConfigurationsGetInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type ServiceConfigurationsGetInput =
-  typeof ServiceConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<ServiceConfigurationsGetInput>;
 
 // Output Schema
+export interface ServiceConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1170,15 +1520,14 @@ export const ServiceConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceConfigurationsGetOutput =
-  typeof ServiceConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<ServiceConfigurationsGetOutput>;
 
 // The operation
 /**
  * Gets the details about the service to the resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1189,8 +1538,13 @@ export const ServiceConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface ServiceConfigurationsListByEndpointResourceInput {
+  resourceUri: string;
+  endpointName: string;
+}
 export const ServiceConfigurationsListByEndpointResourceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1198,11 +1552,25 @@ export const ServiceConfigurationsListByEndpointResourceInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations",
       apiVersion: "2024-12-01",
     }),
-  );
-export type ServiceConfigurationsListByEndpointResourceInput =
-  typeof ServiceConfigurationsListByEndpointResourceInput.Type;
+  ) as unknown as Schema.Codec<ServiceConfigurationsListByEndpointResourceInput>;
 
 // Output Schema
+export interface ServiceConfigurationsListByEndpointResourceOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const ServiceConfigurationsListByEndpointResourceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1237,9 +1605,7 @@ export const ServiceConfigurationsListByEndpointResourceOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type ServiceConfigurationsListByEndpointResourceOutput =
-  typeof ServiceConfigurationsListByEndpointResourceOutput.Type;
+  }) as unknown as Schema.Codec<ServiceConfigurationsListByEndpointResourceOutput>;
 
 // The operation
 /**
@@ -1248,6 +1614,7 @@ export type ServiceConfigurationsListByEndpointResourceOutput =
  * API to enumerate registered services in service configurations under a Endpoint Resource
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  */
 export const ServiceConfigurationsListByEndpointResource =
@@ -1256,8 +1623,15 @@ export const ServiceConfigurationsListByEndpointResource =
     outputSchema: ServiceConfigurationsListByEndpointResourceOutput,
   }));
 // Input Schema
+export interface ServiceConfigurationsUpdateInput {
+  resourceUri: string;
+  endpointName: string;
+  serviceConfigurationName: string;
+  properties?: { port?: number };
+}
 export const ServiceConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     endpointName: Schema.String.pipe(T.PathParam()),
     serviceConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1271,11 +1645,22 @@ export const ServiceConfigurationsUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/endpoints/{endpointName}/serviceConfigurations/{serviceConfigurationName}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type ServiceConfigurationsUpdateInput =
-  typeof ServiceConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<ServiceConfigurationsUpdateInput>;
 
 // Output Schema
+export interface ServiceConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const ServiceConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1295,15 +1680,14 @@ export const ServiceConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type ServiceConfigurationsUpdateOutput =
-  typeof ServiceConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ServiceConfigurationsUpdateOutput>;
 
 // The operation
 /**
  * Update the service details in the service configurations of the target resource.
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param endpointName - The endpoint name.
  * @param serviceConfigurationName - The service name.
  */
@@ -1314,8 +1698,21 @@ export const ServiceConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionConfigurationsCreateOrUpdateInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+  properties?: {
+    provisioningState?: "Succeeded" | "Failed" | "Canceled";
+    solutionType: string;
+    solutionSettings?: Record<string, string>;
+    status?: "New" | "InProgress" | "Completed" | "Failed";
+    statusDetails?: string;
+    lastSyncTime?: string;
+  };
+}
 export const SolutionConfigurationsCreateOrUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1339,11 +1736,22 @@ export const SolutionConfigurationsCreateOrUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsCreateOrUpdateInput =
-  typeof SolutionConfigurationsCreateOrUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsCreateOrUpdateInput>;
 
 // Output Schema
+export interface SolutionConfigurationsCreateOrUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionConfigurationsCreateOrUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1363,15 +1771,14 @@ export const SolutionConfigurationsCreateOrUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionConfigurationsCreateOrUpdateOutput =
-  typeof SolutionConfigurationsCreateOrUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionConfigurationsCreateOrUpdateOutput>;
 
 // The operation
 /**
  * Create a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsCreateOrUpdate =
@@ -1380,8 +1787,13 @@ export const SolutionConfigurationsCreateOrUpdate =
     outputSchema: SolutionConfigurationsCreateOrUpdateOutput,
   }));
 // Input Schema
+export interface SolutionConfigurationsDeleteInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+}
 export const SolutionConfigurationsDeleteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1389,21 +1801,19 @@ export const SolutionConfigurationsDeleteInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsDeleteInput =
-  typeof SolutionConfigurationsDeleteInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsDeleteInput>;
 
 // Output Schema
+export type SolutionConfigurationsDeleteOutput = void;
 export const SolutionConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SolutionConfigurationsDeleteOutput =
-  typeof SolutionConfigurationsDeleteOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SolutionConfigurationsDeleteOutput>;
 
 // The operation
 /**
  * Delete a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsDelete =
@@ -1412,8 +1822,13 @@ export const SolutionConfigurationsDelete =
     outputSchema: SolutionConfigurationsDeleteOutput,
   }));
 // Input Schema
+export interface SolutionConfigurationsGetInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+}
 export const SolutionConfigurationsGetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1421,11 +1836,22 @@ export const SolutionConfigurationsGetInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsGetInput =
-  typeof SolutionConfigurationsGetInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsGetInput>;
 
 // Output Schema
+export interface SolutionConfigurationsGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionConfigurationsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1445,15 +1871,14 @@ export const SolutionConfigurationsGetOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionConfigurationsGetOutput =
-  typeof SolutionConfigurationsGetOutput.Type;
+  }) as unknown as Schema.Codec<SolutionConfigurationsGetOutput>;
 
 // The operation
 /**
  * Get a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -1463,18 +1888,37 @@ export const SolutionConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionConfigurationsListInput {
+  resourceUri: string;
+}
 export const SolutionConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsListInput =
-  typeof SolutionConfigurationsListInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsListInput>;
 
 // Output Schema
+export interface SolutionConfigurationsListOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionConfigurationsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1509,15 +1953,14 @@ export const SolutionConfigurationsListOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionConfigurationsListOutput =
-  typeof SolutionConfigurationsListOutput.Type;
+  }) as unknown as Schema.Codec<SolutionConfigurationsListOutput>;
 
 // The operation
 /**
  * List SolutionConfiguration resources by parent
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1526,8 +1969,13 @@ export const SolutionConfigurationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
   }),
 );
 // Input Schema
+export interface SolutionConfigurationsSyncNowInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+}
 export const SolutionConfigurationsSyncNowInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1535,11 +1983,42 @@ export const SolutionConfigurationsSyncNowInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}/syncNow",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsSyncNowInput =
-  typeof SolutionConfigurationsSyncNowInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsSyncNowInput>;
 
 // Output Schema
+export interface SolutionConfigurationsSyncNowOutput {
+  id?: string;
+  resourceId?: string;
+  name?: string;
+  status: string;
+  percentComplete?: number;
+  startTime?: string;
+  endTime?: string;
+  operations?: {
+    id?: string;
+    resourceId?: string;
+    name?: string;
+    status: string;
+    percentComplete?: number;
+    startTime?: string;
+    endTime?: string;
+    operations?: unknown[];
+    error?: {
+      code?: string;
+      message?: string;
+      target?: string;
+      details?: unknown[];
+      additionalInfo?: { type?: string; info?: unknown }[];
+    };
+  }[];
+  error?: {
+    code?: string;
+    message?: string;
+    target?: string;
+    details?: unknown[];
+    additionalInfo?: { type?: string; info?: unknown }[];
+  };
+}
 export const SolutionConfigurationsSyncNowOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1595,15 +2074,14 @@ export const SolutionConfigurationsSyncNowOutput =
         ),
       }),
     ),
-  });
-export type SolutionConfigurationsSyncNowOutput =
-  typeof SolutionConfigurationsSyncNowOutput.Type;
+  }) as unknown as Schema.Codec<SolutionConfigurationsSyncNowOutput>;
 
 // The operation
 /**
  * Trigger immediate sync with source cloud
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsSyncNow =
@@ -1612,8 +2090,17 @@ export const SolutionConfigurationsSyncNow =
     outputSchema: SolutionConfigurationsSyncNowOutput,
   }));
 // Input Schema
+export interface SolutionConfigurationsUpdateInput {
+  resourceUri: string;
+  solutionConfiguration: string;
+  properties?: {
+    solutionType?: string;
+    solutionSettings?: Record<string, string>;
+  };
+}
 export const SolutionConfigurationsUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.String.pipe(T.PathParam()),
     solutionConfiguration: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1629,11 +2116,22 @@ export const SolutionConfigurationsUpdateInput =
       path: "/{resourceUri}/providers/Microsoft.HybridConnectivity/solutionConfigurations/{solutionConfiguration}",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionConfigurationsUpdateInput =
-  typeof SolutionConfigurationsUpdateInput.Type;
+  ) as unknown as Schema.Codec<SolutionConfigurationsUpdateInput>;
 
 // Output Schema
+export interface SolutionConfigurationsUpdateOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionConfigurationsUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -1653,15 +2151,14 @@ export const SolutionConfigurationsUpdateOutput =
         lastModifiedAt: Schema.optional(Schema.String),
       }),
     ),
-  });
-export type SolutionConfigurationsUpdateOutput =
-  typeof SolutionConfigurationsUpdateOutput.Type;
+  }) as unknown as Schema.Codec<SolutionConfigurationsUpdateOutput>;
 
 // The operation
 /**
  * Update a SolutionConfiguration
  *
  * @param api-version - The API version to use for this operation.
+ * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param solutionConfiguration - Represent Solution Configuration Resource.
  */
 export const SolutionConfigurationsUpdate =
@@ -1670,6 +2167,11 @@ export const SolutionConfigurationsUpdate =
     outputSchema: SolutionConfigurationsUpdateOutput,
   }));
 // Input Schema
+export interface SolutionTypesGetInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+  solutionType: string;
+}
 export const SolutionTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1680,10 +2182,22 @@ export const SolutionTypesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes/{solutionType}",
     apiVersion: "2024-12-01",
   }),
-);
-export type SolutionTypesGetInput = typeof SolutionTypesGetInput.Type;
+) as unknown as Schema.Codec<SolutionTypesGetInput>;
 
 // Output Schema
+export interface SolutionTypesGetOutput {
+  id?: string;
+  name?: string;
+  type?: string;
+  systemData?: {
+    createdBy?: string;
+    createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    createdAt?: string;
+    lastModifiedBy?: string;
+    lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+    lastModifiedAt?: string;
+  };
+}
 export const SolutionTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     id: Schema.optional(Schema.String),
@@ -1704,8 +2218,7 @@ export const SolutionTypesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       }),
     ),
   },
-);
-export type SolutionTypesGetOutput = typeof SolutionTypesGetOutput.Type;
+) as unknown as Schema.Codec<SolutionTypesGetOutput>;
 
 // The operation
 /**
@@ -1721,6 +2234,10 @@ export const SolutionTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   outputSchema: SolutionTypesGetOutput,
 }));
 // Input Schema
+export interface SolutionTypesListByResourceGroupInput {
+  subscriptionId: string;
+  resourceGroupName: string;
+}
 export const SolutionTypesListByResourceGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1731,11 +2248,25 @@ export const SolutionTypesListByResourceGroupInput =
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/solutionTypes",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionTypesListByResourceGroupInput =
-  typeof SolutionTypesListByResourceGroupInput.Type;
+  ) as unknown as Schema.Codec<SolutionTypesListByResourceGroupInput>;
 
 // Output Schema
+export interface SolutionTypesListByResourceGroupOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionTypesListByResourceGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1770,9 +2301,7 @@ export const SolutionTypesListByResourceGroupOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionTypesListByResourceGroupOutput =
-  typeof SolutionTypesListByResourceGroupOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTypesListByResourceGroupOutput>;
 
 // The operation
 /**
@@ -1788,6 +2317,9 @@ export const SolutionTypesListByResourceGroup =
     outputSchema: SolutionTypesListByResourceGroupOutput,
   }));
 // Input Schema
+export interface SolutionTypesListBySubscriptionInput {
+  subscriptionId: string;
+}
 export const SolutionTypesListBySubscriptionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1797,11 +2329,25 @@ export const SolutionTypesListBySubscriptionInput =
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridConnectivity/solutionTypes",
       apiVersion: "2024-12-01",
     }),
-  );
-export type SolutionTypesListBySubscriptionInput =
-  typeof SolutionTypesListBySubscriptionInput.Type;
+  ) as unknown as Schema.Codec<SolutionTypesListBySubscriptionInput>;
 
 // Output Schema
+export interface SolutionTypesListBySubscriptionOutput {
+  value: {
+    id?: string;
+    name?: string;
+    type?: string;
+    systemData?: {
+      createdBy?: string;
+      createdByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      createdAt?: string;
+      lastModifiedBy?: string;
+      lastModifiedByType?: "User" | "Application" | "ManagedIdentity" | "Key";
+      lastModifiedAt?: string;
+    };
+  }[];
+  nextLink?: string;
+}
 export const SolutionTypesListBySubscriptionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value: Schema.Array(
@@ -1836,9 +2382,7 @@ export const SolutionTypesListBySubscriptionOutput =
       }),
     ),
     nextLink: Schema.optional(Schema.String),
-  });
-export type SolutionTypesListBySubscriptionOutput =
-  typeof SolutionTypesListBySubscriptionOutput.Type;
+  }) as unknown as Schema.Codec<SolutionTypesListBySubscriptionOutput>;
 
 // The operation
 /**

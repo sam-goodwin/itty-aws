@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface MachinesExecInput {
+  app_name: string;
+  machine_id: string;
+  cmd?: string;
+  command?: string[];
+  container?: string;
+  stdin?: string;
+  timeout?: number;
+}
 export const MachinesExecInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
@@ -17,17 +26,21 @@ export const MachinesExecInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/apps/{app_name}/machines/{machine_id}/exec",
   }),
-);
-export type MachinesExecInput = typeof MachinesExecInput.Type;
+) as unknown as Schema.Codec<MachinesExecInput>;
 
 // Output Schema
+export interface MachinesExecOutput {
+  exit_code?: number;
+  exit_signal?: number;
+  stderr?: string;
+  stdout?: string;
+}
 export const MachinesExecOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   exit_code: Schema.optional(Schema.Number),
   exit_signal: Schema.optional(Schema.Number),
   stderr: Schema.optional(Schema.String),
   stdout: Schema.optional(Schema.String),
-});
-export type MachinesExecOutput = typeof MachinesExecOutput.Type;
+}) as unknown as Schema.Codec<MachinesExecOutput>;
 
 // The operation
 /**

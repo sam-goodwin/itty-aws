@@ -4,17 +4,44 @@ import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface FeatureFlagsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+}
 export const FeatureFlagsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
-  }).pipe(T.Http({ method: "GET", path: "/feature-flags" }));
-export type FeatureFlagsControllerListInput =
-  typeof FeatureFlagsControllerListInput.Type;
+    order: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({ method: "GET", path: "/feature-flags" }),
+  ) as unknown as Schema.Codec<FeatureFlagsControllerListInput>;
 
 // Output Schema
+export interface FeatureFlagsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    slug?: string;
+    name?: string;
+    description?: string | null;
+    owner?: {
+      email: string;
+      first_name: string | null;
+      last_name: string | null;
+    } | null;
+    tags?: string[];
+    enabled?: boolean;
+    default_value?: boolean;
+    created_at?: string;
+    updated_at?: string;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const FeatureFlagsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -26,7 +53,15 @@ export const FeatureFlagsControllerListOutput =
           slug: Schema.optional(Schema.String),
           name: Schema.optional(Schema.String),
           description: Schema.optional(Schema.NullOr(Schema.String)),
-          owner: Schema.optional(Schema.Unknown),
+          owner: Schema.optional(
+            Schema.NullOr(
+              Schema.Struct({
+                email: Schema.String,
+                first_name: Schema.NullOr(Schema.String),
+                last_name: Schema.NullOr(Schema.String),
+              }),
+            ),
+          ),
           tags: Schema.optional(Schema.Array(Schema.String)),
           enabled: Schema.optional(Schema.Boolean),
           default_value: Schema.optional(Schema.Boolean),
@@ -41,9 +76,7 @@ export const FeatureFlagsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type FeatureFlagsControllerListOutput =
-  typeof FeatureFlagsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<FeatureFlagsControllerListOutput>;
 
 // The operation
 /**

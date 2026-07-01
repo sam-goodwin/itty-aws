@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface ListOrganizationVPCEndpointsInput {
+  org_id: string;
+  region_id: string;
+}
 export const ListOrganizationVPCEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
@@ -12,11 +16,12 @@ export const ListOrganizationVPCEndpointsInput =
       method: "GET",
       path: "/organizations/{org_id}/vpc/region/{region_id}/vpc_endpoints",
     }),
-  );
-export type ListOrganizationVPCEndpointsInput =
-  typeof ListOrganizationVPCEndpointsInput.Type;
+  ) as unknown as Schema.Codec<ListOrganizationVPCEndpointsInput>;
 
 // Output Schema
+export interface ListOrganizationVPCEndpointsOutput {
+  endpoints: { vpc_endpoint_id: string; label: string }[];
+}
 export const ListOrganizationVPCEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     endpoints: Schema.Array(
@@ -25,9 +30,7 @@ export const ListOrganizationVPCEndpointsOutput =
         label: Schema.String,
       }),
     ),
-  });
-export type ListOrganizationVPCEndpointsOutput =
-  typeof ListOrganizationVPCEndpointsOutput.Type;
+  }) as unknown as Schema.Codec<ListOrganizationVPCEndpointsOutput>;
 
 // The operation
 /**

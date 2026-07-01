@@ -4,14 +4,45 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface UserHomeSettingsRetrieveInput {
+  uuid: string;
+}
 export const UserHomeSettingsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
-  }).pipe(T.Http({ method: "GET", path: "/api/user_home_settings/{uuid}/" }));
-export type UserHomeSettingsRetrieveInput =
-  typeof UserHomeSettingsRetrieveInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/api/user_home_settings/{uuid}/" }),
+  ) as unknown as Schema.Codec<UserHomeSettingsRetrieveInput>;
 
 // Output Schema
+export interface UserHomeSettingsRetrieveOutput {
+  tabs?: {
+    id?: string;
+    pathname?: string;
+    search?: string;
+    hash?: string;
+    title?: string;
+    customTitle?: string | null;
+    iconType?: string;
+    sceneId?: string | null;
+    sceneKey?: string | null;
+    sceneParams?: unknown;
+    pinned?: boolean;
+  }[];
+  homepage?: {
+    id?: string;
+    pathname?: string;
+    search?: string;
+    hash?: string;
+    title?: string;
+    customTitle?: string | null;
+    iconType?: string;
+    sceneId?: string | null;
+    sceneKey?: string | null;
+    sceneParams?: unknown;
+    pinned?: boolean;
+  } | null;
+}
 export const UserHomeSettingsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tabs: Schema.optional(
@@ -48,11 +79,12 @@ export const UserHomeSettingsRetrieveOutput =
         }),
       ),
     ),
-  });
-export type UserHomeSettingsRetrieveOutput =
-  typeof UserHomeSettingsRetrieveOutput.Type;
+  }) as unknown as Schema.Codec<UserHomeSettingsRetrieveOutput>;
 
 // The operation
+/**
+ * Get the authenticated user's pinned sidebar tabs and configured homepage for the current team. Pass `@me` as the UUID.
+ */
 export const userHomeSettingsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
     inputSchema: UserHomeSettingsRetrieveInput,

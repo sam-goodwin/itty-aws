@@ -4,6 +4,49 @@ import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
+export interface UpdateRoleInput {
+  id: string;
+  datasetCapabilities?: Record<
+    string,
+    {
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    }
+  >;
+  description?: string;
+  members?: ReadonlyArray<string>;
+  name: string;
+  orgCapabilities?: {
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+  };
+  viewCapabilities?: Record<
+    string,
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
+  >;
+}
 export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   datasetCapabilities: Schema.optional(
@@ -88,10 +131,54 @@ export const UpdateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-}).pipe(T.Http({ method: "PUT", path: "/v2/rbac/roles/{id}" }));
-export type UpdateRoleInput = typeof UpdateRoleInput.Type;
+}).pipe(
+  T.Http({ method: "PUT", path: "/v2/rbac/roles/{id}" }),
+) as unknown as Schema.Codec<UpdateRoleInput>;
 
 // Output Schema
+export interface UpdateRoleOutput {
+  datasetCapabilities?: Record<
+    string,
+    {
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    }
+  >;
+  description?: string;
+  members?: ReadonlyArray<string>;
+  name: string;
+  orgCapabilities?: {
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+  };
+  viewCapabilities?: Record<
+    string,
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
+  >;
+  id: string;
+}
 export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
@@ -176,8 +263,7 @@ export const UpdateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   id: Schema.String,
-});
-export type UpdateRoleOutput = typeof UpdateRoleOutput.Type;
+}) as unknown as Schema.Codec<UpdateRoleOutput>;
 
 // The operation
 /**

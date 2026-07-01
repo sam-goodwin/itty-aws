@@ -4,6 +4,11 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput {
+  organizationId: string;
+  slug: string;
+  permissionSlug: string;
+}
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
@@ -14,11 +19,21 @@ export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionI
       method: "DELETE",
       path: "/authorization/organizations/{organizationId}/roles/{slug}/permissions/{permissionSlug}",
     }),
-  );
-export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput =
-  typeof AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput.Type;
+  ) as unknown as Schema.Codec<AuthorizationOrganizationRolePermissionsControllerRemovePermissionInput>;
 
 // Output Schema
+export interface AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput {
+  slug?: string;
+  object?: string;
+  id?: string;
+  name?: string;
+  description?: string | null;
+  type?: "EnvironmentRole" | "OrganizationRole";
+  resource_type_slug?: string;
+  permissions?: string[];
+  created_at?: string;
+  updated_at?: string;
+}
 export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     slug: Schema.optional(Schema.String),
@@ -33,9 +48,7 @@ export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionO
     permissions: Schema.optional(Schema.Array(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-  });
-export type AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput =
-  typeof AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput.Type;
+  }) as unknown as Schema.Codec<AuthorizationOrganizationRolePermissionsControllerRemovePermissionOutput>;
 
 // The operation
 /**

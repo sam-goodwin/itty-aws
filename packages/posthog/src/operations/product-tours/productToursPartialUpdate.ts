@@ -4,6 +4,71 @@ import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface ProductToursPartialUpdateInput {
+  id: string;
+  project_id: string;
+  name?: string;
+  description?: string;
+  internal_targeting_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag_id?: number | null;
+  targeting_flag_filters?: unknown;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at?: string;
+  archived?: boolean;
+  creation_context?: "app" | "toolbar";
+}
 export const ProductToursPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
@@ -22,10 +87,23 @@ export const ProductToursPartialUpdateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -41,15 +119,28 @@ export const ProductToursPartialUpdateInput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
     linked_flag_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     content: Schema.optional(Schema.Unknown),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -68,7 +159,23 @@ export const ProductToursPartialUpdateInput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
@@ -80,11 +187,73 @@ export const ProductToursPartialUpdateInput =
       method: "PATCH",
       path: "/api/projects/{project_id}/product_tours/{id}/",
     }),
-  );
-export type ProductToursPartialUpdateInput =
-  typeof ProductToursPartialUpdateInput.Type;
+  ) as unknown as Schema.Codec<ProductToursPartialUpdateInput>;
 
 // Output Schema
+export interface ProductToursPartialUpdateOutput {
+  id?: string;
+  name?: string;
+  description?: string;
+  internal_targeting_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag?: {
+    id?: number;
+    team_id?: number;
+    name?: string;
+    key?: string;
+    filters?: Record<string, unknown>;
+    deleted?: boolean;
+    active?: boolean;
+    ensure_experience_continuity?: boolean | null;
+    version?: number | null;
+    evaluation_runtime?: "server" | "client" | "all" | "" | null;
+    bucketing_identifier?: "distinct_id" | "device_id" | "" | null;
+    evaluation_contexts?: string[];
+  };
+  linked_flag_id?: number | null;
+  targeting_flag_filters?: unknown;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  created_at?: string;
+  created_by?: {
+    id?: number;
+    uuid?: string;
+    distinct_id?: string | null;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    is_email_verified?: boolean | null;
+    hedgehog_config?: Record<string, unknown> | null;
+    role_at_organization?:
+      | "engineering"
+      | "data"
+      | "product"
+      | "founder"
+      | "leadership"
+      | "marketing"
+      | "sales"
+      | "other"
+      | ""
+      | null;
+  } | null;
+  updated_at?: string;
+  archived?: boolean;
+  creation_context?: "app" | "toolbar";
+}
 export const ProductToursPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -102,10 +271,23 @@ export const ProductToursPartialUpdateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
@@ -121,15 +303,28 @@ export const ProductToursPartialUpdateOutput =
         ensure_experience_continuity: Schema.optional(
           Schema.NullOr(Schema.Boolean),
         ),
-        has_encrypted_payloads: Schema.optional(Schema.NullOr(Schema.Boolean)),
         version: Schema.optional(Schema.NullOr(Schema.Number)),
-        evaluation_runtime: Schema.optional(Schema.Unknown),
-        bucketing_identifier: Schema.optional(Schema.Unknown),
+        evaluation_runtime: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["server", "client", "all"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
+        bucketing_identifier: Schema.optional(
+          Schema.NullOr(
+            Schema.Union([
+              Schema.Literals(["distinct_id", "device_id"]),
+              Schema.Literals([""]),
+            ]),
+          ),
+        ),
         evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
       }),
     ),
     linked_flag_id: Schema.optional(Schema.NullOr(Schema.Number)),
-    targeting_flag_filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
+    targeting_flag_filters: Schema.optional(Schema.Unknown),
     content: Schema.optional(Schema.Unknown),
     auto_launch: Schema.optional(Schema.Boolean),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -148,16 +343,30 @@ export const ProductToursPartialUpdateOutput =
           hedgehog_config: Schema.optional(
             Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
           ),
-          role_at_organization: Schema.optional(Schema.Unknown),
+          role_at_organization: Schema.optional(
+            Schema.NullOr(
+              Schema.Union([
+                Schema.Literals([
+                  "engineering",
+                  "data",
+                  "product",
+                  "founder",
+                  "leadership",
+                  "marketing",
+                  "sales",
+                  "other",
+                ]),
+                Schema.Literals([""]),
+              ]),
+            ),
+          ),
         }),
       ),
     ),
     updated_at: Schema.optional(Schema.String),
     archived: Schema.optional(Schema.Boolean),
     creation_context: Schema.optional(Schema.Literals(["app", "toolbar"])),
-  });
-export type ProductToursPartialUpdateOutput =
-  typeof ProductToursPartialUpdateOutput.Type;
+  }) as unknown as Schema.Codec<ProductToursPartialUpdateOutput>;
 
 // The operation
 /**

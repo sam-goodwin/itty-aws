@@ -3,7 +3,7 @@
 // DO NOT EDIT - Generated from GCP Discovery Document
 // ==========================================================================
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
@@ -22,44 +22,539 @@ const svc = T.Service({
 // Schemas
 // ==========================================================================
 
+export interface Lake {
+  /** The Lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id} */
+  name?: string;
+}
+
+export const Lake: Schema.Codec<Lake> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Lake" });
+
+export interface DataplexConfig {
+  /** Optional. A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
+  lakeResources?: Record<string, Lake>;
+}
+
+export const DataplexConfig: Schema.Codec<DataplexConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lakeResources: Schema.optional(Schema.Record(Schema.String, Lake)),
+  }).annotate({ identifier: "DataplexConfig" });
+
+export interface ExportMetadataRequest {
+  /** A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing exported files will be created below it. */
+  destinationGcsFolder?: string;
+  /** Optional. The type of the database dump. If unspecified, defaults to MYSQL. */
+  databaseDumpType?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+}
+
+export const ExportMetadataRequest: Schema.Codec<ExportMetadataRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationGcsFolder: Schema.optional(Schema.String),
+    databaseDumpType: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportMetadataRequest" });
+
+export interface Consumer {
+  /** Output only. The URI of the endpoint used to access the metastore service. */
+  endpointUri?: string;
+  /** Output only. The location of the endpoint URI. Format: projects/{project}/locations/{location}. */
+  endpointLocation?: string;
+  /** Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id} */
+  subnetwork?: string;
+}
+
+export const Consumer: Schema.Codec<Consumer> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointUri: Schema.optional(Schema.String),
+    endpointLocation: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Consumer" });
+
+export interface RestoreServiceRequest {
+  /** Optional. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}. Mutually exclusive with backup_location, and exactly one of the two must be set. */
+  backup?: string;
+  /** Optional. The type of restore. If unspecified, defaults to METADATA_ONLY. */
+  restoreType?:
+    | "RESTORE_TYPE_UNSPECIFIED"
+    | "FULL"
+    | "METADATA_ONLY"
+    | (string & {});
+  /** Optional. A Cloud Storage URI specifying the location of the backup artifacts, namely - backup avro files under "avro/", backup_metastore.json and service.json, in the following form:gs://. Mutually exclusive with backup, and exactly one of the two must be set. */
+  backupLocation?: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+}
+
+export const RestoreServiceRequest: Schema.Codec<RestoreServiceRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backup: Schema.optional(Schema.String),
+    restoreType: Schema.optional(Schema.String),
+    backupLocation: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestoreServiceRequest" });
+
+export interface HiveMetastoreVersion {
+  /** The semantic version of the Hive Metastore software. */
+  version?: string;
+  /** Whether version will be chosen by the server if a metastore service is created with a HiveMetastoreConfig that omits the version. */
+  isDefault?: boolean;
+}
+
+export const HiveMetastoreVersion: Schema.Codec<HiveMetastoreVersion> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    isDefault: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "HiveMetastoreVersion" });
+
+export interface LatestBackup {
+  /** Output only. The current state of the backup. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "IN_PROGRESS"
+    | "SUCCEEDED"
+    | "FAILED"
+    | (string & {});
+  /** Output only. The duration of the backup completion. */
+  duration?: string;
+  /** Output only. The time when the backup was started. */
+  startTime?: string;
+  /** Output only. The ID of an in-progress scheduled backup. Empty if no backup is in progress. */
+  backupId?: string;
+}
+
+export const LatestBackup: Schema.Codec<LatestBackup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    backupId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LatestBackup" });
+
+export interface ScheduledBackup {
+  /** Optional. Defines whether the scheduled backup is enabled. The default value is false. */
+  enabled?: boolean;
+  /** Output only. The details of the latest scheduled backup. */
+  latestBackup?: LatestBackup;
+  /** Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC. */
+  timeZone?: string;
+  /** Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it. */
+  backupLocation?: string;
+  /** Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups. */
+  cronSchedule?: string;
+  /** Output only. The time when the next backups execution is scheduled to start. */
+  nextScheduledTime?: string;
+}
+
+export const ScheduledBackup: Schema.Codec<ScheduledBackup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    latestBackup: Schema.optional(LatestBackup),
+    timeZone: Schema.optional(Schema.String),
+    backupLocation: Schema.optional(Schema.String),
+    cronSchedule: Schema.optional(Schema.String),
+    nextScheduledTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScheduledBackup" });
+
+export interface CloudSQLConnectionConfig {
+  /** Required. The network port of the database. */
+  port?: number;
+  /** Required. Cloud SQL database connection name (project_id:region:instance_name) */
+  instanceConnectionName?: string;
+  /** Required. The private IP address of the Cloud SQL instance. */
+  ipAddress?: string;
+  /** Required. The username that Dataproc Metastore service will use to connect to the database. */
+  username?: string;
+  /** Required. The relative resource name of the subnetwork to be used for Private Service Connect. Note that this cannot be a regular subnet and is used only for NAT. (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets) This subnet is used to publish the SOCKS5 proxy service. The subnet size must be at least /29 and it should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
+  natSubnet?: string;
+  /** Required. The hive database name. */
+  hiveDatabaseName?: string;
+  /** Required. Input only. The password for the user that Dataproc Metastore service will be using to connect to the database. This field is not returned on request. */
+  password?: string;
+  /** Required. The relative resource name of the subnetwork to deploy the SOCKS5 proxy service in. The subnetwork should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
+  proxySubnet?: string;
+}
+
+export const CloudSQLConnectionConfig: Schema.Codec<CloudSQLConnectionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+    instanceConnectionName: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    natSubnet: Schema.optional(Schema.String),
+    hiveDatabaseName: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    proxySubnet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSQLConnectionConfig" });
+
+export interface Location {
+  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
+  displayName?: string;
+  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
+  name?: string;
+  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
+  labels?: Record<string, string>;
+  /** The canonical id for this location. For example: "us-east1". */
+  locationId?: string;
+  /** Service-specific metadata. For example the available capacity at the given location. */
+  metadata?: Record<string, unknown>;
+}
+
+export const Location: Schema.Codec<Location> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    locationId: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "Location" });
+
+export interface BackendMetastore {
+  /** The type of the backend metastore. */
+  metastoreType?:
+    | "METASTORE_TYPE_UNSPECIFIED"
+    | "DATAPLEX"
+    | "BIGQUERY"
+    | "DATAPROC_METASTORE"
+    | (string & {});
+  /** The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id} */
+  name?: string;
+}
+
+export const BackendMetastore: Schema.Codec<BackendMetastore> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metastoreType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackendMetastore" });
+
+export interface Federation {
+  /** Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`. */
+  name?: string;
+  /** Output only. The time when the metastore federation was created. */
+  createTime?: string;
+  /** Output only. The globally unique resource identifier of the metastore federation. */
+  uid?: string;
+  /** A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number. */
+  backendMetastores?: Record<string, BackendMetastore>;
+  /** User-defined labels for the metastore federation. */
+  labels?: Record<string, string>;
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
+  tags?: Record<string, string>;
+  /** Output only. The current state of the federation. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "UPDATING"
+    | "DELETING"
+    | "ERROR"
+    | (string & {});
+  /** Immutable. The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version. */
+  version?: string;
+  /** Output only. The time when the metastore federation was last updated. */
+  updateTime?: string;
+  /** Output only. The federation endpoint. */
+  endpointUri?: string;
+  /** Output only. Additional information about the current state of the metastore federation, if available. */
+  stateMessage?: string;
+}
+
+export const Federation: Schema.Codec<Federation> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    backendMetastores: Schema.optional(
+      Schema.Record(Schema.String, BackendMetastore),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    endpointUri: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Federation" });
+
+export interface MultiRegionMetadata {
+  /** The regions constituting the multi-region. */
+  constituentRegions?: ReadonlyArray<string>;
+  /** The continent for this multi-region. */
+  continent?: string;
+  /** The Spanner witness region for this multi-region. */
+  witnessRegion?: string;
+}
+
+export const MultiRegionMetadata: Schema.Codec<MultiRegionMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constituentRegions: Schema.optional(Schema.Array(Schema.String)),
+    continent: Schema.optional(Schema.String),
+    witnessRegion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MultiRegionMetadata" });
+
+export interface CustomRegionMetadata {
+  /** The Spanner witness region for this custom region. */
+  witnessRegion?: string;
+  /** The read-write regions for this custom region. */
+  requiredReadWriteRegions?: ReadonlyArray<string>;
+  /** The read-only regions for this custom region. */
+  optionalReadOnlyRegions?: ReadonlyArray<string>;
+}
+
+export const CustomRegionMetadata: Schema.Codec<CustomRegionMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    witnessRegion: Schema.optional(Schema.String),
+    requiredReadWriteRegions: Schema.optional(Schema.Array(Schema.String)),
+    optionalReadOnlyRegions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomRegionMetadata" });
+
+export interface LocationMetadata {
+  /** The versions of Hive Metastore that can be used when creating a new metastore service in this location. The server guarantees that exactly one HiveMetastoreVersion in the list will set is_default. */
+  supportedHiveMetastoreVersions?: ReadonlyArray<HiveMetastoreVersion>;
+  /** Deprecated: Use a single region service instead. The multi-region metadata if the current region is a multi-region. */
+  multiRegionMetadata?: MultiRegionMetadata;
+  /** Deprecated: Use a single region service instead. Possible configurations supported if the current region is a custom region. */
+  customRegionMetadata?: ReadonlyArray<CustomRegionMetadata>;
+}
+
+export const LocationMetadata: Schema.Codec<LocationMetadata> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportedHiveMetastoreVersions: Schema.optional(
+      Schema.Array(HiveMetastoreVersion),
+    ),
+    multiRegionMetadata: Schema.optional(MultiRegionMetadata),
+    customRegionMetadata: Schema.optional(Schema.Array(CustomRegionMetadata)),
+  }).annotate({ identifier: "LocationMetadata" });
+
+export interface ListFederationsResponse {
+  /** The services in the specified location. */
+  federations?: ReadonlyArray<Federation>;
+  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListFederationsResponse: Schema.Codec<ListFederationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    federations: Schema.optional(Schema.Array(Federation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFederationsResponse" });
+
+export interface CdcConfig {
+  /** Required. The URL of the subnetwork resource to create the VM instance hosting the reverse proxy in. More context in https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy The subnetwork should reside in the network provided in the request that Datastream will peer to and should be in the same region as Datastream, in the following format. projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
+  reverseProxySubnet?: string;
+  /** Required. A /29 CIDR IP range for peering with datastream. */
+  subnetIpRange?: string;
+  /** Optional. The root path inside the Cloud Storage bucket. The stream event data will be written to this path. The default value is /migration. */
+  rootPath?: string;
+  /** Required. Fully qualified name of the Cloud SQL instance's VPC network or the shared VPC network that Datastream will peer to, in the following format: projects/{project_id}/locations/global/networks/{network_id}. More context in https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity */
+  vpcNetwork?: string;
+  /** Required. Input only. The password for the user that Datastream service should use for the MySQL connection. This field is not returned on request. */
+  password?: string;
+  /** Required. The username that the Datastream service should use for the MySQL connection. */
+  username?: string;
+  /** Optional. The bucket to write the intermediate stream event data in. The bucket name must be without any prefix like "gs://". See the bucket naming requirements (https://cloud.google.com/storage/docs/buckets#naming). This field is optional. If not set, the Artifacts Cloud Storage bucket will be used. */
+  bucket?: string;
+}
+
+export const CdcConfig: Schema.Codec<CdcConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reverseProxySubnet: Schema.optional(Schema.String),
+    subnetIpRange: Schema.optional(Schema.String),
+    rootPath: Schema.optional(Schema.String),
+    vpcNetwork: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    username: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CdcConfig" });
+
+export interface CloudSQLMigrationConfig {
+  /** Required. Configuration information to establish customer database connection before the cutover phase of migration */
+  cloudSqlConnectionConfig?: CloudSQLConnectionConfig;
+  /** Required. Configuration information to start the Change Data Capture (CDC) streams from customer database to backend database of Dataproc Metastore. Dataproc Metastore switches to using its backend database after the cutover phase of migration. */
+  cdcConfig?: CdcConfig;
+}
+
+export const CloudSQLMigrationConfig: Schema.Codec<CloudSQLMigrationConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudSqlConnectionConfig: Schema.optional(CloudSQLConnectionConfig),
+    cdcConfig: Schema.optional(CdcConfig),
+  }).annotate({ identifier: "CloudSQLMigrationConfig" });
+
+export interface MigrationExecution {
+  /** Output only. The time when the migration execution finished. */
+  endTime?: string;
+  /** Output only. The relative resource name of the migration execution, in the following form: projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id} */
+  name?: string;
+  /** Output only. The current state of the migration execution. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "STARTING"
+    | "RUNNING"
+    | "CANCELLING"
+    | "AWAITING_USER_ACTION"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "CANCELLED"
+    | "DELETING"
+    | (string & {});
+  /** Output only. Deprecated: Phase was designed for incoming migrations to Dataproc Metastore, not applicable when migrating away from it. The current phase of the migration execution. */
+  phase?: "PHASE_UNSPECIFIED" | "REPLICATION" | "CUTOVER" | (string & {});
+  /** Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the backend database to Dataproc Metastore. */
+  cloudSqlMigrationConfig?: CloudSQLMigrationConfig;
+  /** Output only. The time when the migration execution was started. */
+  createTime?: string;
+  /** Output only. Additional information about the current state of the migration execution. */
+  stateMessage?: string;
+}
+
+export const MigrationExecution: Schema.Codec<MigrationExecution> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    phase: Schema.optional(Schema.String),
+    cloudSqlMigrationConfig: Schema.optional(CloudSQLMigrationConfig),
+    createTime: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MigrationExecution" });
+
+export interface ListMigrationExecutionsResponse {
+  /** The migration executions on the specified service. */
+  migrationExecutions?: ReadonlyArray<MigrationExecution>;
+  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListMigrationExecutionsResponse: Schema.Codec<ListMigrationExecutionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migrationExecutions: Schema.optional(Schema.Array(MigrationExecution)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListMigrationExecutionsResponse" });
+
+export interface RootCACertificate {
+  /** Deprecated: Use a single region service instead. The root CA certificate in PEM format. The maximum length is 65536 bytes. */
+  certificate?: string;
+  /** Deprecated: Use a single region service instead. The certificate expiration time in timestamp format. */
+  expirationTime?: string;
+}
+
+export const RootCACertificate: Schema.Codec<RootCACertificate> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificate: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RootCACertificate" });
+
+export interface CustomRegionConfig {
+  /** Required. The list of read-write regions where the metastore service runs in. These regions should be part (or subset) of the multi-region. */
+  readWriteRegions?: ReadonlyArray<string>;
+  /** Optional. The list of read-only regions where the metastore service runs in. These regions should be part (or subset) of the multi-region. */
+  readOnlyRegions?: ReadonlyArray<string>;
+}
+
+export const CustomRegionConfig: Schema.Codec<CustomRegionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readWriteRegions: Schema.optional(Schema.Array(Schema.String)),
+    readOnlyRegions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomRegionConfig" });
+
+export interface MultiRegionConfig {
+  /** Output only. Deprecated: Use a single region service instead. The list of root CA certificates that a gRPC client uses to connect to a multi-regional Dataproc Metastore service. */
+  certificates?: ReadonlyArray<RootCACertificate>;
+  /** Immutable. Deprecated: Use a single region service instead. */
+  customRegionConfig?: CustomRegionConfig;
+}
+
+export const MultiRegionConfig: Schema.Codec<MultiRegionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificates: Schema.optional(Schema.Array(RootCACertificate)),
+    customRegionConfig: Schema.optional(CustomRegionConfig),
+  }).annotate({ identifier: "MultiRegionConfig" });
+
+export interface AlterTablePropertiesRequest {
+  /** A map that describes the desired values to mutate. If update_mask is empty, the properties will not update. Otherwise, the properties only alters the value whose associated paths exist in the update mask */
+  properties?: Record<string, string>;
+  /** A field mask that specifies the metadata table properties that are overwritten by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask.For example, given the target properties: properties { a: 1 b: 2 } And an update properties: properties { a: 2 b: 3 c: 4 } then if the field mask is:paths: "properties.b", "properties.c"then the result will be: properties { a: 1 b: 3 c: 4 } */
+  updateMask?: string;
+  /** Required. The name of the table containing the properties you're altering in the following format.databases/{database_id}/tables/{table_id} */
+  tableName?: string;
+}
+
+export const AlterTablePropertiesRequest: Schema.Codec<AlterTablePropertiesRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateMask: Schema.optional(Schema.String),
+    tableName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlterTablePropertiesRequest" });
+
 export interface MessageSet {}
 
-export const MessageSet: Schema.Schema<MessageSet> =
+export const MessageSet: Schema.Codec<MessageSet> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MessageSet",
   });
 
 export interface StatusProto {
-  /** copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional string space = 2; // Space to which this status belongs */
-  space?: string;
-  /** Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1; */
-  code?: number;
   /** message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5; */
   messageSet?: MessageSet;
-  /** Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3; */
-  message?: string;
+  /** copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional string space = 2; // Space to which this status belongs */
+  space?: string;
   /** copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6; */
   canonicalCode?: number;
+  /** Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1; */
+  code?: number;
+  /** Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3; */
+  message?: string;
 }
 
-export const StatusProto: Schema.Schema<StatusProto> =
+export const StatusProto: Schema.Codec<StatusProto> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    space: Schema.optional(Schema.String),
-    code: Schema.optional(Schema.Number),
     messageSet: Schema.optional(MessageSet),
-    message: Schema.optional(Schema.String),
+    space: Schema.optional(Schema.String),
     canonicalCode: Schema.optional(Schema.Number),
+    code: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
   }).annotate({ identifier: "StatusProto" });
 
+export interface MetadataExport {
+  /** Output only. The type of the database dump. */
+  databaseDumpType?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
+  /** Output only. The current state of the export. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "RUNNING"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "CANCELLED"
+    | (string & {});
+  /** Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated. */
+  destinationGcsUri?: string;
+  /** Output only. The time when the export ended. */
+  endTime?: string;
+  /** Output only. The time when the export started. */
+  startTime?: string;
+}
+
+export const MetadataExport: Schema.Codec<MetadataExport> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseDumpType: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    destinationGcsUri: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MetadataExport" });
+
 export interface Restore {
-  /** Output only. The type of restore. */
-  type?: "RESTORE_TYPE_UNSPECIFIED" | "FULL" | "METADATA_ONLY" | (string & {});
-  /** Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
-  backup?: string;
   /** Output only. The restore details containing the revision of the service to be restored to, in format of JSON. */
   details?: string;
-  /** Output only. The time when the restore started. */
-  startTime?: string;
   /** Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///. */
   backupLocation?: string;
   /** Output only. The current state of the restore. */
@@ -70,86 +565,420 @@ export interface Restore {
     | "FAILED"
     | "CANCELLED"
     | (string & {});
+  /** Output only. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
+  backup?: string;
   /** Output only. The time when the restore ended. */
   endTime?: string;
+  /** Output only. The time when the restore started. */
+  startTime?: string;
+  /** Output only. The type of restore. */
+  type?: "RESTORE_TYPE_UNSPECIFIED" | "FULL" | "METADATA_ONLY" | (string & {});
 }
 
-export const Restore: Schema.Schema<Restore> =
+export const Restore: Schema.Codec<Restore> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    backup: Schema.optional(Schema.String),
     details: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
     backupLocation: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Restore" });
-
-export interface MetadataExport {
-  /** Output only. A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated. */
-  destinationGcsUri?: string;
-  /** Output only. The current state of the export. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "RUNNING"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "CANCELLED"
-    | (string & {});
-  /** Output only. The type of the database dump. */
-  databaseDumpType?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
-  /** Output only. The time when the export ended. */
-  endTime?: string;
-  /** Output only. The time when the export started. */
-  startTime?: string;
-}
-
-export const MetadataExport: Schema.Schema<MetadataExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationGcsUri: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    databaseDumpType: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MetadataExport" });
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Restore" });
 
 export interface MetadataManagementActivity {
-  /** Output only. The latest restores of the metastore service. */
-  restores?: ReadonlyArray<Restore>;
   /** Output only. The latest metadata exports of the metastore service. */
   metadataExports?: ReadonlyArray<MetadataExport>;
+  /** Output only. The latest restores of the metastore service. */
+  restores?: ReadonlyArray<Restore>;
 }
 
-export const MetadataManagementActivity: Schema.Schema<MetadataManagementActivity> =
+export const MetadataManagementActivity: Schema.Codec<MetadataManagementActivity> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    restores: Schema.optional(Schema.Array(Restore)),
     metadataExports: Schema.optional(Schema.Array(MetadataExport)),
+    restores: Schema.optional(Schema.Array(Restore)),
   }).annotate({ identifier: "MetadataManagementActivity" });
 
-export interface CompleteMigrationRequest {}
+export interface RemoveIamPolicyResponse {
+  /** True if the policy is successfully removed. */
+  success?: boolean;
+}
 
-export const CompleteMigrationRequest: Schema.Schema<CompleteMigrationRequest> =
+export const RemoveIamPolicyResponse: Schema.Codec<RemoveIamPolicyResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    success: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RemoveIamPolicyResponse" });
+
+export interface Secret {
+  /** Optional. The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}. */
+  cloudSecret?: string;
+}
+
+export const Secret: Schema.Codec<Secret> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudSecret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Secret" });
+
+export interface KerberosConfig {
+  /** Optional. A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly. */
+  krb5ConfigGcsUri?: string;
+  /** Optional. A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC). */
+  keytab?: Secret;
+  /** Optional. A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format. */
+  principal?: string;
+}
+
+export const KerberosConfig: Schema.Codec<KerberosConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    krb5ConfigGcsUri: Schema.optional(Schema.String),
+    keytab: Schema.optional(Secret),
+    principal: Schema.optional(Schema.String),
+  }).annotate({ identifier: "KerberosConfig" });
+
+export interface MaintenanceWindow {
+  /** Optional. The hour of day (0-23) when the window starts. */
+  hourOfDay?: number;
+  /** Optional. The day of week, when the window starts. */
+  dayOfWeek?:
+    | "DAY_OF_WEEK_UNSPECIFIED"
+    | "MONDAY"
+    | "TUESDAY"
+    | "WEDNESDAY"
+    | "THURSDAY"
+    | "FRIDAY"
+    | "SATURDAY"
+    | "SUNDAY"
+    | (string & {});
+}
+
+export const MaintenanceWindow: Schema.Codec<MaintenanceWindow> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hourOfDay: Schema.optional(Schema.Number),
+    dayOfWeek: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MaintenanceWindow" });
+
+export interface LimitConfig {
+  /** Optional. The highest scaling factor that the service should be autoscaled to. */
+  maxScalingFactor?: number;
+  /** Optional. The lowest scaling factor that the service should be autoscaled to. */
+  minScalingFactor?: number;
+}
+
+export const LimitConfig: Schema.Codec<LimitConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxScalingFactor: Schema.optional(Schema.Number),
+    minScalingFactor: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LimitConfig" });
+
+export interface AutoscalingConfig {
+  /** Output only. The scaling factor of a service with autoscaling enabled. */
+  autoscalingFactor?: number;
+  /** Optional. The LimitConfig of the service. */
+  limitConfig?: LimitConfig;
+  /** Optional. Whether or not autoscaling is enabled for this service. */
+  autoscalingEnabled?: boolean;
+}
+
+export const AutoscalingConfig: Schema.Codec<AutoscalingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoscalingFactor: Schema.optional(Schema.Number),
+    limitConfig: Schema.optional(LimitConfig),
+    autoscalingEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AutoscalingConfig" });
+
+export interface ScalingConfig {
+  /** Optional. The autoscaling configuration. */
+  autoscalingConfig?: AutoscalingConfig;
+  /** An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1)) */
+  instanceSize?:
+    | "INSTANCE_SIZE_UNSPECIFIED"
+    | "EXTRA_SMALL"
+    | "SMALL"
+    | "MEDIUM"
+    | "LARGE"
+    | "EXTRA_LARGE"
+    | (string & {});
+  /** Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0. */
+  scalingFactor?: number;
+}
+
+export const ScalingConfig: Schema.Codec<ScalingConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoscalingConfig: Schema.optional(AutoscalingConfig),
+    instanceSize: Schema.optional(Schema.String),
+    scalingFactor: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ScalingConfig" });
+
+export interface NetworkConfig {
+  /** Optional. Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network. */
+  customRoutesEnabled?: boolean;
+  /** Immutable. The consumer-side network configuration for the Dataproc Metastore instance. */
+  consumers?: ReadonlyArray<Consumer>;
+}
+
+export const NetworkConfig: Schema.Codec<NetworkConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customRoutesEnabled: Schema.optional(Schema.Boolean),
+    consumers: Schema.optional(Schema.Array(Consumer)),
+  }).annotate({ identifier: "NetworkConfig" });
+
+export interface TelemetryConfig {
+  /** Optional. The output format of the Dataproc Metastore service's logs. */
+  logFormat?: "LOG_FORMAT_UNSPECIFIED" | "LEGACY" | "JSON" | (string & {});
+}
+
+export const TelemetryConfig: Schema.Codec<TelemetryConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logFormat: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TelemetryConfig" });
+
+export interface DataCatalogConfig {
+  /** Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog. */
+  enabled?: boolean;
+}
+
+export const DataCatalogConfig: Schema.Codec<DataCatalogConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataCatalogConfig" });
+
+export interface MetadataIntegration {
+  /** Optional. The integration config for the Data Catalog service. */
+  dataCatalogConfig?: DataCatalogConfig;
+  /** Optional. The integration config for the Dataplex service. */
+  dataplexConfig?: DataplexConfig;
+}
+
+export const MetadataIntegration: Schema.Codec<MetadataIntegration> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataCatalogConfig: Schema.optional(DataCatalogConfig),
+    dataplexConfig: Schema.optional(DataplexConfig),
+  }).annotate({ identifier: "MetadataIntegration" });
+
+export interface AuxiliaryVersionConfig {
+  /** Output only. The network configuration contains the endpoint URI(s) of the auxiliary Hive metastore service. */
+  networkConfig?: NetworkConfig;
+  /** Optional. The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version. */
+  version?: string;
+  /** Optional. A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence. */
+  configOverrides?: Record<string, string>;
+}
+
+export const AuxiliaryVersionConfig: Schema.Codec<AuxiliaryVersionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkConfig: Schema.optional(NetworkConfig),
+    version: Schema.optional(Schema.String),
+    configOverrides: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "AuxiliaryVersionConfig" });
+
+export interface HiveMetastoreConfig {
+  /** Immutable. The Hive metastore schema version. */
+  version?: string;
+  /** Optional. Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service. */
+  kerberosConfig?: KerberosConfig;
+  /** Optional. The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT. */
+  endpointProtocol?:
+    | "ENDPOINT_PROTOCOL_UNSPECIFIED"
+    | "THRIFT"
+    | "GRPC"
+    | (string & {});
+  /** Optional. A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig. */
+  configOverrides?: Record<string, string>;
+  /** Optional. A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen. */
+  auxiliaryVersions?: Record<string, AuxiliaryVersionConfig>;
+}
+
+export const HiveMetastoreConfig: Schema.Codec<HiveMetastoreConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    kerberosConfig: Schema.optional(KerberosConfig),
+    endpointProtocol: Schema.optional(Schema.String),
+    configOverrides: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    auxiliaryVersions: Schema.optional(
+      Schema.Record(Schema.String, AuxiliaryVersionConfig),
+    ),
+  }).annotate({ identifier: "HiveMetastoreConfig" });
+
+export interface EncryptionConfig {
+  /** Optional. The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}. */
+  kmsKey?: string;
+  /** Optional. The list of fully qualified customer provided Cloud KMS key names for the multi-regional service. Each key must be in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}. */
+  kmsKeys?: ReadonlyArray<string>;
+}
+
+export const EncryptionConfig: Schema.Codec<EncryptionConfig> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKey: Schema.optional(Schema.String),
+    kmsKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EncryptionConfig" });
+
+export interface Service {
+  /** Optional. The configuration of scheduled backup for the metastore service. */
+  scheduledBackup?: ScheduledBackup;
+  /** Optional. The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** Output only. The current state of the metastore service. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "ACTIVE"
+    | "SUSPENDING"
+    | "SUSPENDED"
+    | "UPDATING"
+    | "DELETING"
+    | "ERROR"
+    | "AUTOSCALING"
+    | "MIGRATING"
+    | (string & {});
+  /** Optional. The tier of the service. */
+  tier?: "TIER_UNSPECIFIED" | "DEVELOPER" | "ENTERPRISE" | (string & {});
+  /** Output only. The time when the metastore service was created. */
+  createTime?: string;
+  /** Output only. The URI of the endpoint used to access the metastore service. */
+  endpointUri?: string;
+  /** User-defined labels for the metastore service. */
+  labels?: Record<string, string>;
+  /** Optional. Scaling configuration of the metastore service. */
+  scalingConfig?: ScalingConfig;
+  /** Output only. The globally unique resource identifier of the metastore service. */
+  uid?: string;
+  /** Optional. The configuration specifying the network settings for the Dataproc Metastore service. */
+  networkConfig?: NetworkConfig;
+  /** Output only. The metadata management activities of the metastore service. */
+  metadataManagementActivity?: MetadataManagementActivity;
+  /** Immutable. The database type that the Metastore service stores its data. */
+  databaseType?:
+    | "DATABASE_TYPE_UNSPECIFIED"
+    | "MYSQL"
+    | "SPANNER"
+    | (string & {});
+  /** Output only. Additional information about the current state of the metastore service, if available. */
+  stateMessage?: string;
+  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
+  tags?: Record<string, string>;
+  /** Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}. */
+  network?: string;
+  /** Optional. The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON. */
+  telemetryConfig?: TelemetryConfig;
+  /** Optional. Deprecated: Use a single region service instead. Specifies the multi-region configuration information for the Hive metastore service. */
+  multiRegionConfig?: MultiRegionConfig;
+  /** Immutable. The release channel of the service. If unspecified, defaults to STABLE. */
+  releaseChannel?:
+    | "RELEASE_CHANNEL_UNSPECIFIED"
+    | "CANARY"
+    | "STABLE"
+    | (string & {});
+  /** Optional. Indicates if the dataproc metastore should be protected against accidental deletions. */
+  deletionProtection?: boolean;
+  /** Optional. The TCP port at which the metastore service is reached. Default: 9083. */
+  port?: number;
+  /** Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored. */
+  artifactGcsUri?: string;
+  /** Output only. The time when the metastore service was last updated. */
+  updateTime?: string;
+  /** Optional. The setting that defines how metastore metadata should be integrated with external services and systems. */
+  metadataIntegration?: MetadataIntegration;
+  /** Configuration information specific to running Hive metastore software as the metastore service. */
+  hiveMetastoreConfig?: HiveMetastoreConfig;
+  /** Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated. */
+  encryptionConfig?: EncryptionConfig;
+  /** Immutable. Identifier. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}. */
+  name?: string;
+}
+
+export const Service: Schema.Codec<Service> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scheduledBackup: Schema.optional(ScheduledBackup),
+    maintenanceWindow: Schema.optional(MaintenanceWindow),
+    state: Schema.optional(Schema.String),
+    tier: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endpointUri: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    scalingConfig: Schema.optional(ScalingConfig),
+    uid: Schema.optional(Schema.String),
+    networkConfig: Schema.optional(NetworkConfig),
+    metadataManagementActivity: Schema.optional(MetadataManagementActivity),
+    databaseType: Schema.optional(Schema.String),
+    stateMessage: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    network: Schema.optional(Schema.String),
+    telemetryConfig: Schema.optional(TelemetryConfig),
+    multiRegionConfig: Schema.optional(MultiRegionConfig),
+    releaseChannel: Schema.optional(Schema.String),
+    deletionProtection: Schema.optional(Schema.Boolean),
+    port: Schema.optional(Schema.Number),
+    artifactGcsUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    metadataIntegration: Schema.optional(MetadataIntegration),
+    hiveMetastoreConfig: Schema.optional(HiveMetastoreConfig),
+    encryptionConfig: Schema.optional(EncryptionConfig),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Service" });
+
+export interface Backup {
+  /** Immutable. Identifier. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id} */
+  name?: string;
+  /** Output only. The time when the backup finished creating. */
+  endTime?: string;
+  /** Output only. The time when the backup was started. */
+  createTime?: string;
+  /** Optional. The description of the backup. */
+  description?: string;
+  /** Output only. Services that are restoring from the backup. */
+  restoringServices?: ReadonlyArray<string>;
+  /** Output only. The current state of the backup. */
+  state?:
+    | "STATE_UNSPECIFIED"
+    | "CREATING"
+    | "DELETING"
+    | "ACTIVE"
+    | "FAILED"
+    | "RESTORING"
+    | (string & {});
+  /** Output only. The revision of the service at the time of backup. */
+  serviceRevision?: Service;
+}
+
+export const Backup: Schema.Codec<Backup> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    restoringServices: Schema.optional(Schema.Array(Schema.String)),
+    state: Schema.optional(Schema.String),
+    serviceRevision: Schema.optional(Service),
+  }).annotate({ identifier: "Backup" });
+
+export interface AlterMetadataResourceLocationResponse {}
+
+export const AlterMetadataResourceLocationResponse: Schema.Codec<AlterMetadataResourceLocationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CompleteMigrationRequest",
+    identifier: "AlterMetadataResourceLocationResponse",
   });
 
 export interface Expr {
-  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
-  title?: string;
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
-  /** Textual representation of an expression in Common Expression Language syntax. */
-  expression?: string;
+  /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
+  title?: string;
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
+  /** Textual representation of an expression in Common Expression Language syntax. */
+  expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
+export const Expr: Schema.Codec<Expr> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    title: Schema.optional(Schema.String),
     location: Schema.optional(Schema.String),
-    expression: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
+    expression: Schema.optional(Schema.String),
   }).annotate({ identifier: "Expr" });
 
 export interface Binding {
@@ -161,7 +990,7 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
+export const Binding: Schema.Codec<Binding> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     condition: Schema.optional(Expr),
@@ -180,7 +1009,7 @@ export interface AuditLogConfig {
   exemptedMembers?: ReadonlyArray<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
+export const AuditLogConfig: Schema.Codec<AuditLogConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -193,1010 +1022,40 @@ export interface AuditConfig {
   auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
+export const AuditConfig: Schema.Codec<AuditConfig> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
   }).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
-  /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
-  bindings?: ReadonlyArray<Binding>;
   /** Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
-  /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost. */
   etag?: string;
+  /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
+  bindings?: ReadonlyArray<Binding>;
+  /** Specifies cloud audit logging configuration for this policy. */
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
+export const Policy: Schema.Codec<Policy> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bindings: Schema.optional(Schema.Array(Binding)),
     version: Schema.optional(Schema.Number),
-    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
     etag: Schema.optional(Schema.String),
+    bindings: Schema.optional(Schema.Array(Binding)),
+    auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
   }).annotate({ identifier: "Policy" });
 
-export interface SetIamPolicyRequest {
-  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag" */
-  updateMask?: string;
-  /** REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
-  policy?: Policy;
+export interface QueryMetadataRequest {
+  /** Required. A read-only SQL query to execute against the metadata database. The query cannot change or mutate the data. */
+  query?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
+export const QueryMetadataRequest: Schema.Codec<QueryMetadataRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateMask: Schema.optional(Schema.String),
-    policy: Schema.optional(Policy),
-  }).annotate({ identifier: "SetIamPolicyRequest" });
-
-export interface CompleteMigrationResponse {
-  /** The relative resource name of the migration execution, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
-  migrationExecution?: string;
-}
-
-export const CompleteMigrationResponse: Schema.Schema<CompleteMigrationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationExecution: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CompleteMigrationResponse" });
-
-export interface Consumer {
-  /** Output only. The URI of the endpoint used to access the metastore service. */
-  endpointUri?: string;
-  /** Output only. The location of the endpoint URI. Format: projects/{project}/locations/{location}. */
-  endpointLocation?: string;
-  /** Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id} */
-  subnetwork?: string;
-}
-
-export const Consumer: Schema.Schema<Consumer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpointUri: Schema.optional(Schema.String),
-    endpointLocation: Schema.optional(Schema.String),
-    subnetwork: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Consumer" });
-
-export interface NetworkConfig {
-  /** Optional. Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network. */
-  customRoutesEnabled?: boolean;
-  /** Immutable. The consumer-side network configuration for the Dataproc Metastore instance. */
-  consumers?: ReadonlyArray<Consumer>;
-}
-
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customRoutesEnabled: Schema.optional(Schema.Boolean),
-    consumers: Schema.optional(Schema.Array(Consumer)),
-  }).annotate({ identifier: "NetworkConfig" });
-
-export interface AuxiliaryVersionConfig {
-  /** Optional. A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence. */
-  configOverrides?: Record<string, string>;
-  /** Optional. The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version. */
-  version?: string;
-  /** Output only. The network configuration contains the endpoint URI(s) of the auxiliary Hive metastore service. */
-  networkConfig?: NetworkConfig;
-}
-
-export const AuxiliaryVersionConfig: Schema.Schema<AuxiliaryVersionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configOverrides: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    version: Schema.optional(Schema.String),
-    networkConfig: Schema.optional(NetworkConfig),
-  }).annotate({ identifier: "AuxiliaryVersionConfig" });
-
-export interface LimitConfig {
-  /** Optional. The lowest scaling factor that the service should be autoscaled to. */
-  minScalingFactor?: number;
-  /** Optional. The highest scaling factor that the service should be autoscaled to. */
-  maxScalingFactor?: number;
-}
-
-export const LimitConfig: Schema.Schema<LimitConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    minScalingFactor: Schema.optional(Schema.Number),
-    maxScalingFactor: Schema.optional(Schema.Number),
-  }).annotate({ identifier: "LimitConfig" });
-
-export interface AutoscalingConfig {
-  /** Output only. The scaling factor of a service with autoscaling enabled. */
-  autoscalingFactor?: number;
-  /** Optional. Whether or not autoscaling is enabled for this service. */
-  autoscalingEnabled?: boolean;
-  /** Optional. The LimitConfig of the service. */
-  limitConfig?: LimitConfig;
-}
-
-export const AutoscalingConfig: Schema.Schema<AutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    autoscalingFactor: Schema.optional(Schema.Number),
-    autoscalingEnabled: Schema.optional(Schema.Boolean),
-    limitConfig: Schema.optional(LimitConfig),
-  }).annotate({ identifier: "AutoscalingConfig" });
-
-export interface HiveMetastoreVersion {
-  /** The semantic version of the Hive Metastore software. */
-  version?: string;
-  /** Whether version will be chosen by the server if a metastore service is created with a HiveMetastoreConfig that omits the version. */
-  isDefault?: boolean;
-}
-
-export const HiveMetastoreVersion: Schema.Schema<HiveMetastoreVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    version: Schema.optional(Schema.String),
-    isDefault: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "HiveMetastoreVersion" });
-
-export interface MultiRegionMetadata {
-  /** The Spanner witness region for this multi-region. */
-  witnessRegion?: string;
-  /** The continent for this multi-region. */
-  continent?: string;
-  /** The regions constituting the multi-region. */
-  constituentRegions?: ReadonlyArray<string>;
-}
-
-export const MultiRegionMetadata: Schema.Schema<MultiRegionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    witnessRegion: Schema.optional(Schema.String),
-    continent: Schema.optional(Schema.String),
-    constituentRegions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "MultiRegionMetadata" });
-
-export interface QueryMetadataResponse {
-  /** The manifest URI is link to a JSON instance in Cloud Storage. This instance manifests immediately along with QueryMetadataResponse. The content of the URI is not retriable until the long-running operation query against the metadata finishes. */
-  resultManifestUri?: string;
-}
-
-export const QueryMetadataResponse: Schema.Schema<QueryMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resultManifestUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "QueryMetadataResponse" });
-
-export interface CdcConfig {
-  /** Required. A /29 CIDR IP range for peering with datastream. */
-  subnetIpRange?: string;
-  /** Required. Fully qualified name of the Cloud SQL instance's VPC network or the shared VPC network that Datastream will peer to, in the following format: projects/{project_id}/locations/global/networks/{network_id}. More context in https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity */
-  vpcNetwork?: string;
-  /** Required. Input only. The password for the user that Datastream service should use for the MySQL connection. This field is not returned on request. */
-  password?: string;
-  /** Optional. The bucket to write the intermediate stream event data in. The bucket name must be without any prefix like "gs://". See the bucket naming requirements (https://cloud.google.com/storage/docs/buckets#naming). This field is optional. If not set, the Artifacts Cloud Storage bucket will be used. */
-  bucket?: string;
-  /** Required. The URL of the subnetwork resource to create the VM instance hosting the reverse proxy in. More context in https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy The subnetwork should reside in the network provided in the request that Datastream will peer to and should be in the same region as Datastream, in the following format. projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
-  reverseProxySubnet?: string;
-  /** Required. The username that the Datastream service should use for the MySQL connection. */
-  username?: string;
-  /** Optional. The root path inside the Cloud Storage bucket. The stream event data will be written to this path. The default value is /migration. */
-  rootPath?: string;
-}
-
-export const CdcConfig: Schema.Schema<CdcConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subnetIpRange: Schema.optional(Schema.String),
-    vpcNetwork: Schema.optional(Schema.String),
-    password: Schema.optional(Schema.String),
-    bucket: Schema.optional(Schema.String),
-    reverseProxySubnet: Schema.optional(Schema.String),
-    username: Schema.optional(Schema.String),
-    rootPath: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CdcConfig" });
-
-export interface CloudSQLConnectionConfig {
-  /** Required. The network port of the database. */
-  port?: number;
-  /** Required. The relative resource name of the subnetwork to deploy the SOCKS5 proxy service in. The subnetwork should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
-  proxySubnet?: string;
-  /** Required. The username that Dataproc Metastore service will use to connect to the database. */
-  username?: string;
-  /** Required. Cloud SQL database connection name (project_id:region:instance_name) */
-  instanceConnectionName?: string;
-  /** Required. The hive database name. */
-  hiveDatabaseName?: string;
-  /** Required. Input only. The password for the user that Dataproc Metastore service will be using to connect to the database. This field is not returned on request. */
-  password?: string;
-  /** Required. The relative resource name of the subnetwork to be used for Private Service Connect. Note that this cannot be a regular subnet and is used only for NAT. (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets) This subnet is used to publish the SOCKS5 proxy service. The subnet size must be at least /29 and it should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id} */
-  natSubnet?: string;
-  /** Required. The private IP address of the Cloud SQL instance. */
-  ipAddress?: string;
-}
-
-export const CloudSQLConnectionConfig: Schema.Schema<CloudSQLConnectionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    port: Schema.optional(Schema.Number),
-    proxySubnet: Schema.optional(Schema.String),
-    username: Schema.optional(Schema.String),
-    instanceConnectionName: Schema.optional(Schema.String),
-    hiveDatabaseName: Schema.optional(Schema.String),
-    password: Schema.optional(Schema.String),
-    natSubnet: Schema.optional(Schema.String),
-    ipAddress: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CloudSQLConnectionConfig" });
-
-export interface CloudSQLMigrationConfig {
-  /** Required. Configuration information to start the Change Data Capture (CDC) streams from customer database to backend database of Dataproc Metastore. Dataproc Metastore switches to using its backend database after the cutover phase of migration. */
-  cdcConfig?: CdcConfig;
-  /** Required. Configuration information to establish customer database connection before the cutover phase of migration */
-  cloudSqlConnectionConfig?: CloudSQLConnectionConfig;
-}
-
-export const CloudSQLMigrationConfig: Schema.Schema<CloudSQLMigrationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cdcConfig: Schema.optional(CdcConfig),
-    cloudSqlConnectionConfig: Schema.optional(CloudSQLConnectionConfig),
-  }).annotate({ identifier: "CloudSQLMigrationConfig" });
-
-export interface Empty {}
-
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "Empty",
-  });
-
-export interface LatestBackup {
-  /** Output only. The current state of the backup. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "IN_PROGRESS"
-    | "SUCCEEDED"
-    | "FAILED"
-    | (string & {});
-  /** Output only. The ID of an in-progress scheduled backup. Empty if no backup is in progress. */
-  backupId?: string;
-  /** Output only. The duration of the backup completion. */
-  duration?: string;
-  /** Output only. The time when the backup was started. */
-  startTime?: string;
-}
-
-export const LatestBackup: Schema.Schema<LatestBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    backupId: Schema.optional(Schema.String),
-    duration: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "LatestBackup" });
-
-export interface ScheduledBackup {
-  /** Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC. */
-  timeZone?: string;
-  /** Output only. The time when the next backups execution is scheduled to start. */
-  nextScheduledTime?: string;
-  /** Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it. */
-  backupLocation?: string;
-  /** Output only. The details of the latest scheduled backup. */
-  latestBackup?: LatestBackup;
-  /** Optional. Defines whether the scheduled backup is enabled. The default value is false. */
-  enabled?: boolean;
-  /** Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups. */
-  cronSchedule?: string;
-}
-
-export const ScheduledBackup: Schema.Schema<ScheduledBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    timeZone: Schema.optional(Schema.String),
-    nextScheduledTime: Schema.optional(Schema.String),
-    backupLocation: Schema.optional(Schema.String),
-    latestBackup: Schema.optional(LatestBackup),
-    enabled: Schema.optional(Schema.Boolean),
-    cronSchedule: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ScheduledBackup" });
-
-export interface Lake {
-  /** The Lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id} */
-  name?: string;
-}
-
-export const Lake: Schema.Schema<Lake> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Lake" });
-
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsRequest" });
-
-export interface Secret {
-  /** Optional. The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}. */
-  cloudSecret?: string;
-}
-
-export const Secret: Schema.Schema<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudSecret: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Secret" });
-
-export interface KerberosConfig {
-  /** Optional. A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC). */
-  keytab?: Secret;
-  /** Optional. A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format. */
-  principal?: string;
-  /** Optional. A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly. */
-  krb5ConfigGcsUri?: string;
-}
-
-export const KerberosConfig: Schema.Schema<KerberosConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    keytab: Schema.optional(Secret),
-    principal: Schema.optional(Schema.String),
-    krb5ConfigGcsUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "KerberosConfig" });
-
-export interface ScalingConfig {
-  /** An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1)) */
-  instanceSize?:
-    | "INSTANCE_SIZE_UNSPECIFIED"
-    | "EXTRA_SMALL"
-    | "SMALL"
-    | "MEDIUM"
-    | "LARGE"
-    | "EXTRA_LARGE"
-    | (string & {});
-  /** Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0. */
-  scalingFactor?: number;
-  /** Optional. The autoscaling configuration. */
-  autoscalingConfig?: AutoscalingConfig;
-}
-
-export const ScalingConfig: Schema.Schema<ScalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instanceSize: Schema.optional(Schema.String),
-    scalingFactor: Schema.optional(Schema.Number),
-    autoscalingConfig: Schema.optional(AutoscalingConfig),
-  }).annotate({ identifier: "ScalingConfig" });
-
-export interface MoveTableToDatabaseRequest {
-  /** Required. The name of the database where the table resides. */
-  dbName?: string;
-  /** Required. The name of the database where the table should be moved. */
-  destinationDbName?: string;
-  /** Required. The name of the table to be moved. */
-  tableName?: string;
-}
-
-export const MoveTableToDatabaseRequest: Schema.Schema<MoveTableToDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dbName: Schema.optional(Schema.String),
-    destinationDbName: Schema.optional(Schema.String),
-    tableName: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MoveTableToDatabaseRequest" });
-
-export interface MoveTableToDatabaseResponse {}
-
-export const MoveTableToDatabaseResponse: Schema.Schema<MoveTableToDatabaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "MoveTableToDatabaseResponse",
-  });
-
-export interface DataCatalogConfig {
-  /** Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog. */
-  enabled?: boolean;
-}
-
-export const DataCatalogConfig: Schema.Schema<DataCatalogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "DataCatalogConfig" });
-
-export interface RemoveIamPolicyRequest {
-  /** Optional. Removes IAM policy attached to database or table asynchronously when it is set. The default is false. */
-  asynchronous?: boolean;
-}
-
-export const RemoveIamPolicyRequest: Schema.Schema<RemoveIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    asynchronous: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "RemoveIamPolicyRequest" });
-
-export interface RestoreServiceRequest {
-  /** Optional. A Cloud Storage URI specifying the location of the backup artifacts, namely - backup avro files under "avro/", backup_metastore.json and service.json, in the following form:gs://. Mutually exclusive with backup, and exactly one of the two must be set. */
-  backupLocation?: string;
-  /** Optional. The type of restore. If unspecified, defaults to METADATA_ONLY. */
-  restoreType?:
-    | "RESTORE_TYPE_UNSPECIFIED"
-    | "FULL"
-    | "METADATA_ONLY"
-    | (string & {});
-  /** Optional. The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}. Mutually exclusive with backup_location, and exactly one of the two must be set. */
-  backup?: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-}
-
-export const RestoreServiceRequest: Schema.Schema<RestoreServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backupLocation: Schema.optional(Schema.String),
-    restoreType: Schema.optional(Schema.String),
-    backup: Schema.optional(Schema.String),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RestoreServiceRequest" });
-
-export interface RootCACertificate {
-  /** Deprecated: Use a single region service instead. The root CA certificate in PEM format. The maximum length is 65536 bytes. */
-  certificate?: string;
-  /** Deprecated: Use a single region service instead. The certificate expiration time in timestamp format. */
-  expirationTime?: string;
-}
-
-export const RootCACertificate: Schema.Schema<RootCACertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certificate: Schema.optional(Schema.String),
-    expirationTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "RootCACertificate" });
-
-export interface CustomRegionConfig {
-  /** Optional. The list of read-only regions where the metastore service runs in. These regions should be part (or subset) of the multi-region. */
-  readOnlyRegions?: ReadonlyArray<string>;
-  /** Required. The list of read-write regions where the metastore service runs in. These regions should be part (or subset) of the multi-region. */
-  readWriteRegions?: ReadonlyArray<string>;
-}
-
-export const CustomRegionConfig: Schema.Schema<CustomRegionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    readOnlyRegions: Schema.optional(Schema.Array(Schema.String)),
-    readWriteRegions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "CustomRegionConfig" });
-
-export interface MultiRegionConfig {
-  /** Output only. Deprecated: Use a single region service instead. The list of root CA certificates that a gRPC client uses to connect to a multi-regional Dataproc Metastore service. */
-  certificates?: ReadonlyArray<RootCACertificate>;
-  /** Immutable. Deprecated: Use a single region service instead. */
-  customRegionConfig?: CustomRegionConfig;
-}
-
-export const MultiRegionConfig: Schema.Schema<MultiRegionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certificates: Schema.optional(Schema.Array(RootCACertificate)),
-    customRegionConfig: Schema.optional(CustomRegionConfig),
-  }).annotate({ identifier: "MultiRegionConfig" });
-
-export interface EncryptionConfig {
-  /** Optional. The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}. */
-  kmsKey?: string;
-  /** Optional. The list of fully qualified customer provided Cloud KMS key names for the multi-regional service. Each key must be in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}. */
-  kmsKeys?: ReadonlyArray<string>;
-}
-
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kmsKey: Schema.optional(Schema.String),
-    kmsKeys: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "EncryptionConfig" });
-
-export interface DataplexConfig {
-  /** Optional. A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
-  lakeResources?: Record<string, Lake>;
-}
-
-export const DataplexConfig: Schema.Schema<DataplexConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    lakeResources: Schema.optional(Schema.Record(Schema.String, Lake)),
-  }).annotate({ identifier: "DataplexConfig" });
-
-export interface MetadataIntegration {
-  /** Optional. The integration config for the Dataplex service. */
-  dataplexConfig?: DataplexConfig;
-  /** Optional. The integration config for the Data Catalog service. */
-  dataCatalogConfig?: DataCatalogConfig;
-}
-
-export const MetadataIntegration: Schema.Schema<MetadataIntegration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    dataplexConfig: Schema.optional(DataplexConfig),
-    dataCatalogConfig: Schema.optional(DataCatalogConfig),
-  }).annotate({ identifier: "MetadataIntegration" });
-
-export interface MaintenanceWindow {
-  /** Optional. The hour of day (0-23) when the window starts. */
-  hourOfDay?: number;
-  /** Optional. The day of week, when the window starts. */
-  dayOfWeek?:
-    | "DAY_OF_WEEK_UNSPECIFIED"
-    | "MONDAY"
-    | "TUESDAY"
-    | "WEDNESDAY"
-    | "THURSDAY"
-    | "FRIDAY"
-    | "SATURDAY"
-    | "SUNDAY"
-    | (string & {});
-}
-
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hourOfDay: Schema.optional(Schema.Number),
-    dayOfWeek: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MaintenanceWindow" });
-
-export interface TelemetryConfig {
-  /** Optional. The output format of the Dataproc Metastore service's logs. */
-  logFormat?: "LOG_FORMAT_UNSPECIFIED" | "LEGACY" | "JSON" | (string & {});
-}
-
-export const TelemetryConfig: Schema.Schema<TelemetryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    logFormat: Schema.optional(Schema.String),
-  }).annotate({ identifier: "TelemetryConfig" });
-
-export interface HiveMetastoreConfig {
-  /** Optional. A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig. */
-  configOverrides?: Record<string, string>;
-  /** Optional. The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT. */
-  endpointProtocol?:
-    | "ENDPOINT_PROTOCOL_UNSPECIFIED"
-    | "THRIFT"
-    | "GRPC"
-    | (string & {});
-  /** Optional. A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen. */
-  auxiliaryVersions?: Record<string, AuxiliaryVersionConfig>;
-  /** Immutable. The Hive metastore schema version. */
-  version?: string;
-  /** Optional. Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service. */
-  kerberosConfig?: KerberosConfig;
-}
-
-export const HiveMetastoreConfig: Schema.Schema<HiveMetastoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    configOverrides: Schema.optional(
-      Schema.Record(Schema.String, Schema.String),
-    ),
-    endpointProtocol: Schema.optional(Schema.String),
-    auxiliaryVersions: Schema.optional(
-      Schema.Record(Schema.String, AuxiliaryVersionConfig),
-    ),
-    version: Schema.optional(Schema.String),
-    kerberosConfig: Schema.optional(KerberosConfig),
-  }).annotate({ identifier: "HiveMetastoreConfig" });
-
-export interface Service {
-  /** Output only. The time when the metastore service was created. */
-  createTime?: string;
-  /** Optional. Deprecated: Use a single region service instead. Specifies the multi-region configuration information for the Hive metastore service. */
-  multiRegionConfig?: MultiRegionConfig;
-  /** Immutable. Identifier. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}. */
-  name?: string;
-  /** Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated. */
-  encryptionConfig?: EncryptionConfig;
-  /** Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored. */
-  artifactGcsUri?: string;
-  /** Optional. Indicates if the dataproc metastore should be protected against accidental deletions. */
-  deletionProtection?: boolean;
-  /** Optional. The configuration of scheduled backup for the metastore service. */
-  scheduledBackup?: ScheduledBackup;
-  /** Optional. The setting that defines how metastore metadata should be integrated with external services and systems. */
-  metadataIntegration?: MetadataIntegration;
-  /** Optional. The configuration specifying the network settings for the Dataproc Metastore service. */
-  networkConfig?: NetworkConfig;
-  /** Optional. The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type. */
-  maintenanceWindow?: MaintenanceWindow;
-  /** Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}. */
-  network?: string;
-  /** User-defined labels for the metastore service. */
-  labels?: Record<string, string>;
-  /** Optional. The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON. */
-  telemetryConfig?: TelemetryConfig;
-  /** Immutable. The release channel of the service. If unspecified, defaults to STABLE. */
-  releaseChannel?:
-    | "RELEASE_CHANNEL_UNSPECIFIED"
-    | "CANARY"
-    | "STABLE"
-    | (string & {});
-  /** Configuration information specific to running Hive metastore software as the metastore service. */
-  hiveMetastoreConfig?: HiveMetastoreConfig;
-  /** Output only. The current state of the metastore service. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "ACTIVE"
-    | "SUSPENDING"
-    | "SUSPENDED"
-    | "UPDATING"
-    | "DELETING"
-    | "ERROR"
-    | "AUTOSCALING"
-    | "MIGRATING"
-    | (string & {});
-  /** Output only. The globally unique resource identifier of the metastore service. */
-  uid?: string;
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
-  tags?: Record<string, string>;
-  /** Optional. Scaling configuration of the metastore service. */
-  scalingConfig?: ScalingConfig;
-  /** Output only. The URI of the endpoint used to access the metastore service. */
-  endpointUri?: string;
-  /** Optional. The tier of the service. */
-  tier?: "TIER_UNSPECIFIED" | "DEVELOPER" | "ENTERPRISE" | (string & {});
-  /** Output only. The metadata management activities of the metastore service. */
-  metadataManagementActivity?: MetadataManagementActivity;
-  /** Output only. The time when the metastore service was last updated. */
-  updateTime?: string;
-  /** Output only. Additional information about the current state of the metastore service, if available. */
-  stateMessage?: string;
-  /** Optional. The TCP port at which the metastore service is reached. Default: 9083. */
-  port?: number;
-  /** Immutable. The database type that the Metastore service stores its data. */
-  databaseType?:
-    | "DATABASE_TYPE_UNSPECIFIED"
-    | "MYSQL"
-    | "SPANNER"
-    | (string & {});
-}
-
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createTime: Schema.optional(Schema.String),
-    multiRegionConfig: Schema.optional(MultiRegionConfig),
-    name: Schema.optional(Schema.String),
-    encryptionConfig: Schema.optional(EncryptionConfig),
-    artifactGcsUri: Schema.optional(Schema.String),
-    deletionProtection: Schema.optional(Schema.Boolean),
-    scheduledBackup: Schema.optional(ScheduledBackup),
-    metadataIntegration: Schema.optional(MetadataIntegration),
-    networkConfig: Schema.optional(NetworkConfig),
-    maintenanceWindow: Schema.optional(MaintenanceWindow),
-    network: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    telemetryConfig: Schema.optional(TelemetryConfig),
-    releaseChannel: Schema.optional(Schema.String),
-    hiveMetastoreConfig: Schema.optional(HiveMetastoreConfig),
-    state: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    scalingConfig: Schema.optional(ScalingConfig),
-    endpointUri: Schema.optional(Schema.String),
-    tier: Schema.optional(Schema.String),
-    metadataManagementActivity: Schema.optional(MetadataManagementActivity),
-    updateTime: Schema.optional(Schema.String),
-    stateMessage: Schema.optional(Schema.String),
-    port: Schema.optional(Schema.Number),
-    databaseType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Service" });
-
-export interface Backup {
-  /** Output only. The current state of the backup. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "DELETING"
-    | "ACTIVE"
-    | "FAILED"
-    | "RESTORING"
-    | (string & {});
-  /** Optional. The description of the backup. */
-  description?: string;
-  /** Output only. The time when the backup finished creating. */
-  endTime?: string;
-  /** Output only. The revision of the service at the time of backup. */
-  serviceRevision?: Service;
-  /** Output only. The time when the backup was started. */
-  createTime?: string;
-  /** Output only. Services that are restoring from the backup. */
-  restoringServices?: ReadonlyArray<string>;
-  /** Immutable. Identifier. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id} */
-  name?: string;
-}
-
-export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    serviceRevision: Schema.optional(Service),
-    createTime: Schema.optional(Schema.String),
-    restoringServices: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Backup" });
-
-export interface ListBackupsResponse {
-  /** The backups of the specified service. */
-  backups?: ReadonlyArray<Backup>;
-  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    backups: Schema.optional(Schema.Array(Backup)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListBackupsResponse" });
-
-export interface MigrationExecution {
-  /** Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the backend database to Dataproc Metastore. */
-  cloudSqlMigrationConfig?: CloudSQLMigrationConfig;
-  /** Output only. The time when the migration execution finished. */
-  endTime?: string;
-  /** Output only. The current state of the migration execution. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "STARTING"
-    | "RUNNING"
-    | "CANCELLING"
-    | "AWAITING_USER_ACTION"
-    | "SUCCEEDED"
-    | "FAILED"
-    | "CANCELLED"
-    | "DELETING"
-    | (string & {});
-  /** Output only. Additional information about the current state of the migration execution. */
-  stateMessage?: string;
-  /** Output only. The relative resource name of the migration execution, in the following form: projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id} */
-  name?: string;
-  /** Output only. Deprecated: Phase was designed for incoming migrations to Dataproc Metastore, not applicable when migrating away from it. The current phase of the migration execution. */
-  phase?: "PHASE_UNSPECIFIED" | "REPLICATION" | "CUTOVER" | (string & {});
-  /** Output only. The time when the migration execution was started. */
-  createTime?: string;
-}
-
-export const MigrationExecution: Schema.Schema<MigrationExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    cloudSqlMigrationConfig: Schema.optional(CloudSQLMigrationConfig),
-    endTime: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    stateMessage: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    phase: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-  }).annotate({ identifier: "MigrationExecution" });
-
-export interface StartMigrationRequest {
-  /** Required. The configuration details for the migration. */
-  migrationExecution?: MigrationExecution;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-}
-
-export const StartMigrationRequest: Schema.Schema<StartMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationExecution: Schema.optional(MigrationExecution),
-    requestId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "StartMigrationRequest" });
-
-export interface Location {
-  /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
-  labels?: Record<string, string>;
-  /** Service-specific metadata. For example the available capacity at the given location. */
-  metadata?: Record<string, unknown>;
-  /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
-  displayName?: string;
-  /** Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1" */
-  name?: string;
-  /** The canonical id for this location. For example: "us-east1". */
-  locationId?: string;
-}
-
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    displayName: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    locationId: Schema.optional(Schema.String),
-  }).annotate({ identifier: "Location" });
-
-export interface DatabaseDump {
-  /** Optional. The type of the database dump. If unspecified, defaults to MYSQL. */
-  type?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
-  /** Optional. The name of the source database. */
-  sourceDatabase?: string;
-  /** The type of the database. */
-  databaseType?: "DATABASE_TYPE_UNSPECIFIED" | "MYSQL" | (string & {});
-  /** Optional. A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://. */
-  gcsUri?: string;
-}
-
-export const DatabaseDump: Schema.Schema<DatabaseDump> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    type: Schema.optional(Schema.String),
-    sourceDatabase: Schema.optional(Schema.String),
-    databaseType: Schema.optional(Schema.String),
-    gcsUri: Schema.optional(Schema.String),
-  }).annotate({ identifier: "DatabaseDump" });
-
-export interface BackendMetastore {
-  /** The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id} */
-  name?: string;
-  /** The type of the backend metastore. */
-  metastoreType?:
-    | "METASTORE_TYPE_UNSPECIFIED"
-    | "DATAPLEX"
-    | "BIGQUERY"
-    | "DATAPROC_METASTORE"
-    | (string & {});
-}
-
-export const BackendMetastore: Schema.Schema<BackendMetastore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.optional(Schema.String),
-    metastoreType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "BackendMetastore" });
-
-export interface Federation {
-  /** Output only. The current state of the federation. */
-  state?:
-    | "STATE_UNSPECIFIED"
-    | "CREATING"
-    | "ACTIVE"
-    | "UPDATING"
-    | "DELETING"
-    | "ERROR"
-    | (string & {});
-  /** Output only. Additional information about the current state of the metastore federation, if available. */
-  stateMessage?: string;
-  /** Output only. The globally unique resource identifier of the metastore federation. */
-  uid?: string;
-  /** Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing" */
-  tags?: Record<string, string>;
-  /** Immutable. The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version. */
-  version?: string;
-  /** Output only. The federation endpoint. */
-  endpointUri?: string;
-  /** Output only. The time when the metastore federation was created. */
-  createTime?: string;
-  /** Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`. */
-  name?: string;
-  /** A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number. */
-  backendMetastores?: Record<string, BackendMetastore>;
-  /** Output only. The time when the metastore federation was last updated. */
-  updateTime?: string;
-  /** User-defined labels for the metastore federation. */
-  labels?: Record<string, string>;
-}
-
-export const Federation: Schema.Schema<Federation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    state: Schema.optional(Schema.String),
-    stateMessage: Schema.optional(Schema.String),
-    uid: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    version: Schema.optional(Schema.String),
-    endpointUri: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    backendMetastores: Schema.optional(
-      Schema.Record(Schema.String, BackendMetastore),
-    ),
-    updateTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "Federation" });
-
-export interface ListFederationsResponse {
-  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** The services in the specified location. */
-  federations?: ReadonlyArray<Federation>;
-}
-
-export const ListFederationsResponse: Schema.Schema<ListFederationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    federations: Schema.optional(Schema.Array(Federation)),
-  }).annotate({ identifier: "ListFederationsResponse" });
-
-export interface AlterMetadataResourceLocationResponse {}
-
-export const AlterMetadataResourceLocationResponse: Schema.Schema<AlterMetadataResourceLocationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "AlterMetadataResourceLocationResponse",
-  });
-
-export interface CancelMigrationRequest {}
-
-export const CancelMigrationRequest: Schema.Schema<CancelMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelMigrationRequest",
-  });
-
-export interface TestIamPermissionsResponse {
-  /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
-  permissions?: ReadonlyArray<string>;
-}
-
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "TestIamPermissionsResponse" });
-
-export interface ErrorDetails {
-  /** Additional structured details about this error.Keys define the failure items. Value describes the exception or details of the item. */
-  details?: Record<string, string>;
-}
-
-export const ErrorDetails: Schema.Schema<ErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  }).annotate({ identifier: "ErrorDetails" });
-
-export interface AlterTablePropertiesRequest {
-  /** A map that describes the desired values to mutate. If update_mask is empty, the properties will not update. Otherwise, the properties only alters the value whose associated paths exist in the update mask */
-  properties?: Record<string, string>;
-  /** Required. The name of the table containing the properties you're altering in the following format.databases/{database_id}/tables/{table_id} */
-  tableName?: string;
-  /** A field mask that specifies the metadata table properties that are overwritten by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask.For example, given the target properties: properties { a: 1 b: 2 } And an update properties: properties { a: 2 b: 3 c: 4 } then if the field mask is:paths: "properties.b", "properties.c"then the result will be: properties { a: 1 b: 3 c: 4 } */
-  updateMask?: string;
-}
-
-export const AlterTablePropertiesRequest: Schema.Schema<AlterTablePropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    tableName: Schema.optional(Schema.String),
-    updateMask: Schema.optional(Schema.String),
-  }).annotate({ identifier: "AlterTablePropertiesRequest" });
-
-export interface CancelMigrationResponse {
-  /** The relative resource name of the migration execution, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
-  migrationExecution?: string;
-}
-
-export const CancelMigrationResponse: Schema.Schema<CancelMigrationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationExecution: Schema.optional(Schema.String),
-  }).annotate({ identifier: "CancelMigrationResponse" });
-
-export interface CustomRegionMetadata {
-  /** The read-write regions for this custom region. */
-  requiredReadWriteRegions?: ReadonlyArray<string>;
-  /** The Spanner witness region for this custom region. */
-  witnessRegion?: string;
-  /** The read-only regions for this custom region. */
-  optionalReadOnlyRegions?: ReadonlyArray<string>;
-}
-
-export const CustomRegionMetadata: Schema.Schema<CustomRegionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requiredReadWriteRegions: Schema.optional(Schema.Array(Schema.String)),
-    witnessRegion: Schema.optional(Schema.String),
-    optionalReadOnlyRegions: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "CustomRegionMetadata" });
-
-export interface CancelOperationRequest {}
-
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
-    identifier: "CancelOperationRequest",
-  });
-
-export interface ExportMetadataRequest {
-  /** A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing exported files will be created below it. */
-  destinationGcsFolder?: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Optional. The type of the database dump. If unspecified, defaults to MYSQL. */
-  databaseDumpType?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
-}
-
-export const ExportMetadataRequest: Schema.Schema<ExportMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    destinationGcsFolder: Schema.optional(Schema.String),
-    requestId: Schema.optional(Schema.String),
-    databaseDumpType: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ExportMetadataRequest" });
-
-export interface ListLocationsResponse {
-  /** The standard List next-page token. */
-  nextPageToken?: string;
-  /** A list of locations that matches the specified filter in the request. */
-  locations?: ReadonlyArray<Location>;
-}
-
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    nextPageToken: Schema.optional(Schema.String),
-    locations: Schema.optional(Schema.Array(Location)),
-  }).annotate({ identifier: "ListLocationsResponse" });
+    query: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryMetadataRequest" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1207,7 +1066,7 @@ export interface Status {
   details?: ReadonlyArray<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
+export const Status: Schema.Codec<Status> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
@@ -1219,48 +1078,170 @@ export const Status: Schema.Schema<Status> =
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
   name?: string;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
-  response?: Record<string, unknown>;
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: Record<string, unknown>;
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
   done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
+  response?: Record<string, unknown>;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
+export const Operation: Schema.Codec<Operation> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
-    error: Schema.optional(Status),
-    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
   }).annotate({ identifier: "Operation" });
 
-export interface ListOperationsResponse {
-  /** A list of operations that matches the specified filter in the request. */
-  operations?: ReadonlyArray<Operation>;
-  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: ReadonlyArray<string>;
-  /** The standard List next-page token. */
-  nextPageToken?: string;
+export interface CancelMigrationRequest {}
+
+export const CancelMigrationRequest: Schema.Codec<CancelMigrationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelMigrationRequest",
+  });
+
+export interface CancelMigrationResponse {
+  /** The relative resource name of the migration execution, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
+  migrationExecution?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
+export const CancelMigrationResponse: Schema.Codec<CancelMigrationResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    operations: Schema.optional(Schema.Array(Operation)),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    migrationExecution: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelMigrationResponse" });
+
+export interface ListServicesResponse {
+  /** The services in the specified location. */
+  services?: ReadonlyArray<Service>;
+  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+}
+
+export const ListServicesResponse: Schema.Codec<ListServicesResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    services: Schema.optional(Schema.Array(Service)),
     nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListServicesResponse" });
+
+export interface Empty {}
+
+export const Empty: Schema.Codec<Empty> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "Empty",
+  });
+
+export interface CancelOperationRequest {}
+
+export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CancelOperationRequest",
+  });
+
+export interface ListOperationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
+  unreachable?: ReadonlyArray<string>;
+  /** A list of operations that matches the specified filter in the request. */
+  operations?: ReadonlyArray<Operation>;
+}
+
+export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
   }).annotate({ identifier: "ListOperationsResponse" });
 
+export interface RemoveIamPolicyRequest {
+  /** Optional. Removes IAM policy attached to database or table asynchronously when it is set. The default is false. */
+  asynchronous?: boolean;
+}
+
+export const RemoveIamPolicyRequest: Schema.Codec<RemoveIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asynchronous: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RemoveIamPolicyRequest" });
+
+export interface CompleteMigrationResponse {
+  /** The relative resource name of the migration execution, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
+  migrationExecution?: string;
+}
+
+export const CompleteMigrationResponse: Schema.Codec<CompleteMigrationResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migrationExecution: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompleteMigrationResponse" });
+
+export interface ListBackupsResponse {
+  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
+  nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
+  /** The backups of the specified service. */
+  backups?: ReadonlyArray<Backup>;
+}
+
+export const ListBackupsResponse: Schema.Codec<ListBackupsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    backups: Schema.optional(Schema.Array(Backup)),
+  }).annotate({ identifier: "ListBackupsResponse" });
+
+export interface ErrorDetails {
+  /** Additional structured details about this error.Keys define the failure items. Value describes the exception or details of the item. */
+  details?: Record<string, string>;
+}
+
+export const ErrorDetails: Schema.Codec<ErrorDetails> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ErrorDetails" });
+
+export interface TestIamPermissionsResponse {
+  /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
+  permissions?: ReadonlyArray<string>;
+}
+
+export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
+
+export interface DatabaseDump {
+  /** Optional. A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://. */
+  gcsUri?: string;
+  /** Optional. The name of the source database. */
+  sourceDatabase?: string;
+  /** The type of the database. */
+  databaseType?: "DATABASE_TYPE_UNSPECIFIED" | "MYSQL" | (string & {});
+  /** Optional. The type of the database dump. If unspecified, defaults to MYSQL. */
+  type?: "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO" | (string & {});
+}
+
+export const DatabaseDump: Schema.Codec<DatabaseDump> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUri: Schema.optional(Schema.String),
+    sourceDatabase: Schema.optional(Schema.String),
+    databaseType: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseDump" });
+
 export interface MetadataImport {
-  /** Output only. The time when the metadata import was last updated. */
-  updateTime?: string;
+  /** Immutable. A database dump from a pre-existing metastore's database. */
+  databaseDump?: DatabaseDump;
   /** Output only. The time when the metadata import finished. */
   endTime?: string;
-  /** Optional. The description of the metadata import. */
-  description?: string;
+  /** Immutable. Identifier. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}. */
+  name?: string;
   /** Output only. The current state of the metadata import. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1269,151 +1250,170 @@ export interface MetadataImport {
     | "UPDATING"
     | "FAILED"
     | (string & {});
-  /** Immutable. Identifier. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}. */
-  name?: string;
-  /** Immutable. A database dump from a pre-existing metastore's database. */
-  databaseDump?: DatabaseDump;
+  /** Optional. The description of the metadata import. */
+  description?: string;
   /** Output only. The time when the metadata import was started. */
   createTime?: string;
+  /** Output only. The time when the metadata import was last updated. */
+  updateTime?: string;
 }
 
-export const MetadataImport: Schema.Schema<MetadataImport> =
+export const MetadataImport: Schema.Codec<MetadataImport> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    updateTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    state: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
     databaseDump: Schema.optional(DatabaseDump),
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "MetadataImport" });
 
 export interface ListMetadataImportsResponse {
   /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
+  /** Locations that could not be reached. */
+  unreachable?: ReadonlyArray<string>;
   /** The imports in the specified service. */
   metadataImports?: ReadonlyArray<MetadataImport>;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
 }
 
-export const ListMetadataImportsResponse: Schema.Schema<ListMetadataImportsResponse> =
+export const ListMetadataImportsResponse: Schema.Codec<ListMetadataImportsResponse> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
-    metadataImports: Schema.optional(Schema.Array(MetadataImport)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
+    metadataImports: Schema.optional(Schema.Array(MetadataImport)),
   }).annotate({ identifier: "ListMetadataImportsResponse" });
 
-export interface QueryMetadataRequest {
-  /** Required. A read-only SQL query to execute against the metadata database. The query cannot change or mutate the data. */
-  query?: string;
-}
-
-export const QueryMetadataRequest: Schema.Schema<QueryMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    query: Schema.optional(Schema.String),
-  }).annotate({ identifier: "QueryMetadataRequest" });
-
 export interface AlterMetadataResourceLocationRequest {
-  /** Required. The new location URI for the metadata resource. */
-  locationUri?: string;
   /** Required. The relative metadata resource name in the following format.databases/{database_id} or databases/{database_id}/tables/{table_id} or databases/{database_id}/tables/{table_id}/partitions/{partition_id} */
   resourceName?: string;
+  /** Required. The new location URI for the metadata resource. */
+  locationUri?: string;
 }
 
-export const AlterMetadataResourceLocationRequest: Schema.Schema<AlterMetadataResourceLocationRequest> =
+export const AlterMetadataResourceLocationRequest: Schema.Codec<AlterMetadataResourceLocationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    locationUri: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
+    locationUri: Schema.optional(Schema.String),
   }).annotate({ identifier: "AlterMetadataResourceLocationRequest" });
 
-export interface RemoveIamPolicyResponse {
-  /** True if the policy is successfully removed. */
-  success?: boolean;
+export interface StartMigrationRequest {
+  /** Required. The configuration details for the migration. */
+  migrationExecution?: MigrationExecution;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
 }
 
-export const RemoveIamPolicyResponse: Schema.Schema<RemoveIamPolicyResponse> =
+export const StartMigrationRequest: Schema.Codec<StartMigrationRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.optional(Schema.Boolean),
-  }).annotate({ identifier: "RemoveIamPolicyResponse" });
-
-export interface LocationMetadata {
-  /** The versions of Hive Metastore that can be used when creating a new metastore service in this location. The server guarantees that exactly one HiveMetastoreVersion in the list will set is_default. */
-  supportedHiveMetastoreVersions?: ReadonlyArray<HiveMetastoreVersion>;
-  /** Deprecated: Use a single region service instead. Possible configurations supported if the current region is a custom region. */
-  customRegionMetadata?: ReadonlyArray<CustomRegionMetadata>;
-  /** Deprecated: Use a single region service instead. The multi-region metadata if the current region is a multi-region. */
-  multiRegionMetadata?: MultiRegionMetadata;
-}
-
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    supportedHiveMetastoreVersions: Schema.optional(
-      Schema.Array(HiveMetastoreVersion),
-    ),
-    customRegionMetadata: Schema.optional(Schema.Array(CustomRegionMetadata)),
-    multiRegionMetadata: Schema.optional(MultiRegionMetadata),
-  }).annotate({ identifier: "LocationMetadata" });
-
-export interface ListMigrationExecutionsResponse {
-  /** The migration executions on the specified service. */
-  migrationExecutions?: ReadonlyArray<MigrationExecution>;
-  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-}
-
-export const ListMigrationExecutionsResponse: Schema.Schema<ListMigrationExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    migrationExecutions: Schema.optional(Schema.Array(MigrationExecution)),
-    nextPageToken: Schema.optional(Schema.String),
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-  }).annotate({ identifier: "ListMigrationExecutionsResponse" });
+    migrationExecution: Schema.optional(MigrationExecution),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StartMigrationRequest" });
 
 export interface OperationMetadata {
   /** Output only. Name of the verb executed by the operation. */
   verb?: string;
-  /** Output only. Server-defined resource path for the target of the operation. */
-  target?: string;
-  /** Output only. Human-readable status of the operation, if any. */
-  statusMessage?: string;
-  /** Output only. The time the operation was created. */
-  createTime?: string;
-  /** Output only. The time the operation finished running. */
-  endTime?: string;
   /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
   requestedCancellation?: boolean;
   /** Output only. API version used to start the operation. */
   apiVersion?: string;
+  /** Output only. The time the operation finished running. */
+  endTime?: string;
+  /** Output only. Human-readable status of the operation, if any. */
+  statusMessage?: string;
+  /** Output only. The time the operation was created. */
+  createTime?: string;
+  /** Output only. Server-defined resource path for the target of the operation. */
+  target?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
+export const OperationMetadata: Schema.Codec<OperationMetadata> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
-    target: Schema.optional(Schema.String),
-    statusMessage: Schema.optional(Schema.String),
-    createTime: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
     apiVersion: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
   }).annotate({ identifier: "OperationMetadata" });
 
-export interface ListServicesResponse {
-  /** Locations that could not be reached. */
-  unreachable?: ReadonlyArray<string>;
-  /** The services in the specified location. */
-  services?: ReadonlyArray<Service>;
-  /** A token that can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
-  nextPageToken?: string;
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: ReadonlyArray<string>;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
+export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    unreachable: Schema.optional(Schema.Array(Schema.String)),
-    services: Schema.optional(Schema.Array(Service)),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+export interface QueryMetadataResponse {
+  /** The manifest URI is link to a JSON instance in Cloud Storage. This instance manifests immediately along with QueryMetadataResponse. The content of the URI is not retriable until the long-running operation query against the metadata finishes. */
+  resultManifestUri?: string;
+}
+
+export const QueryMetadataResponse: Schema.Codec<QueryMetadataResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultManifestUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryMetadataResponse" });
+
+export interface MoveTableToDatabaseRequest {
+  /** Required. The name of the table to be moved. */
+  tableName?: string;
+  /** Required. The name of the database where the table should be moved. */
+  destinationDbName?: string;
+  /** Required. The name of the database where the table resides. */
+  dbName?: string;
+}
+
+export const MoveTableToDatabaseRequest: Schema.Codec<MoveTableToDatabaseRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableName: Schema.optional(Schema.String),
+    destinationDbName: Schema.optional(Schema.String),
+    dbName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveTableToDatabaseRequest" });
+
+export interface SetIamPolicyRequest {
+  /** REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
+  policy?: Policy;
+  /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag" */
+  updateMask?: string;
+}
+
+export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetIamPolicyRequest" });
+
+export interface CompleteMigrationRequest {}
+
+export const CompleteMigrationRequest: Schema.Codec<CompleteMigrationRequest> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "CompleteMigrationRequest",
+  });
+
+export interface MoveTableToDatabaseResponse {}
+
+export const MoveTableToDatabaseResponse: Schema.Codec<MoveTableToDatabaseResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+    identifier: "MoveTableToDatabaseResponse",
+  });
+
+export interface ListLocationsResponse {
+  /** The standard List next-page token. */
+  nextPageToken?: string;
+  /** A list of locations that matches the specified filter in the request. */
+  locations?: ReadonlyArray<Location>;
+}
+
+export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
-  }).annotate({ identifier: "ListServicesResponse" });
+    locations: Schema.optional(Schema.Array(Location)),
+  }).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Errors
@@ -1470,31 +1470,31 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 // ==========================================================================
 
 export interface ListProjectsLocationsRequest {
+  /** The maximum number of results to return. If not set, the service selects a default. */
+  pageSize?: number;
+  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
+  filter?: string;
   /** The resource that owns the locations collection, if applicable. */
   name: string;
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: string[];
-  /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). */
-  filter?: string;
-  /** The maximum number of results to return. If not set, the service selects a default. */
-  pageSize?: number;
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
 
 export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
     ),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}/locations" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsRequest>;
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
@@ -1529,7 +1529,7 @@ export const GetProjectsLocationsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
@@ -1549,783 +1549,61 @@ export const getProjectsLocations: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be deleted. */
-  name: string;
-}
-
-export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
-
-export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type DeleteProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
-export const deleteProjectsLocationsOperations: API.OperationMethod<
-  DeleteProjectsLocationsOperationsRequest,
-  DeleteProjectsLocationsOperationsResponse,
-  DeleteProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: DeleteProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: CancelOperationRequest;
-}
-
-export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
-
-export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
-
-export type CancelProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
-export const cancelProjectsLocationsOperations: API.OperationMethod<
-  CancelProjectsLocationsOperationsRequest,
-  CancelProjectsLocationsOperationsResponse,
-  CancelProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: CancelProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-
-export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
-
-export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type GetProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
-export const getProjectsLocationsOperations: API.OperationMethod<
-  GetProjectsLocationsOperationsRequest,
-  GetProjectsLocationsOperationsResponse,
-  GetProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GetProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface ListProjectsLocationsOperationsRequest {
-  /** The standard list page token. */
-  pageToken?: string;
-  /** The name of the operation's parent resource. */
-  name: string;
-  /** The standard list filter. */
-  filter?: string;
-  /** The standard list page size. */
-  pageSize?: number;
-  /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
-  returnPartialSuccess?: boolean;
-}
-
-export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    name: Schema.String.pipe(T.HttpPath("name")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("returnPartialSuccess"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}/operations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
-
-export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
-export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
-
-export type ListProjectsLocationsOperationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
-export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
-  ListProjectsLocationsOperationsRequest,
-  ListProjectsLocationsOperationsResponse,
-  ListProjectsLocationsOperationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListProjectsLocationsOperationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface ListProjectsLocationsFederationsRequest {
-  /** Optional. A page token, received from a previous ListFederationServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to ListFederationServices must match the call that provided the page token. */
-  pageToken?: string;
-  /** Required. The relative resource name of the location of metastore federations to list, in the following form: projects/{project_number}/locations/{location_id}. */
-  parent: string;
-  /** Optional. The maximum number of federations to return. The response may contain less than the maximum number. If unspecified, no more than 500 services are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
-  pageSize?: number;
-  /** Optional. The filter to apply to list results. */
-  filter?: string;
-  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
-  orderBy?: string;
-}
-
-export const ListProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/federations" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsFederationsRequest>;
-
-export type ListProjectsLocationsFederationsResponse = ListFederationsResponse;
-export const ListProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFederationsResponse;
-
-export type ListProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists federations in a project and location. */
-export const listProjectsLocationsFederations: API.PaginatedOperationMethod<
-  ListProjectsLocationsFederationsRequest,
-  ListProjectsLocationsFederationsResponse,
-  ListProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsFederationsRequest,
-  output: ListProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
-}));
-
-export interface SetIamPolicyProjectsLocationsFederationsRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-
-export const SetIamPolicyProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+resource}:setIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsFederationsRequest>;
-
-export type SetIamPolicyProjectsLocationsFederationsResponse = Policy;
-export const SetIamPolicyProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type SetIamPolicyProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
-export const setIamPolicyProjectsLocationsFederations: API.OperationMethod<
-  SetIamPolicyProjectsLocationsFederationsRequest,
-  SetIamPolicyProjectsLocationsFederationsResponse,
-  SetIamPolicyProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsFederationsRequest,
-  output: SetIamPolicyProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface DeleteProjectsLocationsFederationsRequest {
-  /** Required. The relative resource name of the metastore federation to delete, in the following form:projects/{project_number}/locations/{location_id}/federations/{federation_id}. */
+export interface DeleteProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
   name: string;
   /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
   requestId?: string;
 }
 
-export const DeleteProjectsLocationsFederationsRequest =
+export const DeleteProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsFederationsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsServicesRequest>;
 
-export type DeleteProjectsLocationsFederationsResponse = Operation;
-export const DeleteProjectsLocationsFederationsResponse =
+export type DeleteProjectsLocationsServicesResponse = Operation;
+export const DeleteProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsFederationsError =
+export type DeleteProjectsLocationsServicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single federation. */
-export const deleteProjectsLocationsFederations: API.OperationMethod<
-  DeleteProjectsLocationsFederationsRequest,
-  DeleteProjectsLocationsFederationsResponse,
-  DeleteProjectsLocationsFederationsError,
+/** Deletes a single service. */
+export const deleteProjectsLocationsServices: API.OperationMethod<
+  DeleteProjectsLocationsServicesRequest,
+  DeleteProjectsLocationsServicesResponse,
+  DeleteProjectsLocationsServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsFederationsRequest,
-  output: DeleteProjectsLocationsFederationsResponse,
+  input: DeleteProjectsLocationsServicesRequest,
+  output: DeleteProjectsLocationsServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetProjectsLocationsFederationsRequest {
-  /** Required. The relative resource name of the metastore federation to retrieve, in the following form:projects/{project_number}/locations/{location_id}/federations/{federation_id}. */
-  name: string;
-}
-
-export const GetProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsFederationsRequest>;
-
-export type GetProjectsLocationsFederationsResponse = Federation;
-export const GetProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Federation;
-
-export type GetProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the details of a single federation. */
-export const getProjectsLocationsFederations: API.OperationMethod<
-  GetProjectsLocationsFederationsRequest,
-  GetProjectsLocationsFederationsResponse,
-  GetProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFederationsRequest,
-  output: GetProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface CreateProjectsLocationsFederationsRequest {
-  /** Required. The relative resource name of the location in which to create a federation service, in the following form:projects/{project_number}/locations/{location_id}. */
-  parent: string;
-  /** Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
-  federationId?: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Request body */
-  body?: Federation;
-}
-
-export const CreateProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    federationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("federationId"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Federation).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+parent}/federations",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsFederationsRequest>;
-
-export type CreateProjectsLocationsFederationsResponse = Operation;
-export const CreateProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CreateProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Creates a metastore federation in a project and location. */
-export const createProjectsLocationsFederations: API.OperationMethod<
-  CreateProjectsLocationsFederationsRequest,
-  CreateProjectsLocationsFederationsResponse,
-  CreateProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFederationsRequest,
-  output: CreateProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsFederationsRequest {
-  /** Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`. */
-  name: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Required. A field mask used to specify the fields to be overwritten in the metastore federation resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
-  updateMask?: string;
-  /** Request body */
-  body?: Federation;
-}
-
-export const PatchProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Federation).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsFederationsRequest>;
-
-export type PatchProjectsLocationsFederationsResponse = Operation;
-export const PatchProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the fields of a federation. */
-export const patchProjectsLocationsFederations: API.OperationMethod<
-  PatchProjectsLocationsFederationsRequest,
-  PatchProjectsLocationsFederationsResponse,
-  PatchProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsFederationsRequest,
-  output: PatchProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface TestIamPermissionsProjectsLocationsFederationsRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-
-export const TestIamPermissionsProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+resource}:testIamPermissions",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsFederationsRequest>;
-
-export type TestIamPermissionsProjectsLocationsFederationsResponse =
-  TestIamPermissionsResponse;
-export const TestIamPermissionsProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
-
-export type TestIamPermissionsProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsFederations: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsFederationsRequest,
-  TestIamPermissionsProjectsLocationsFederationsResponse,
-  TestIamPermissionsProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsFederationsRequest,
-  output: TestIamPermissionsProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsFederationsRequest {
-  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsFederationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFederationsRequest>;
-
-export type GetIamPolicyProjectsLocationsFederationsResponse = Policy;
-export const GetIamPolicyProjectsLocationsFederationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsFederationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsFederations: API.OperationMethod<
-  GetIamPolicyProjectsLocationsFederationsRequest,
-  GetIamPolicyProjectsLocationsFederationsResponse,
-  GetIamPolicyProjectsLocationsFederationsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsFederationsRequest,
-  output: GetIamPolicyProjectsLocationsFederationsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface RemoveIamPolicyProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the dataplane resource to remove IAM policy, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/databases/{database_id} or projects/{project_id}/locations/{location_id}/services/{service_id}/databases/{database_id}/tables/{table_id}. */
-  resource: string;
-  /** Request body */
-  body?: RemoveIamPolicyRequest;
-}
-
-export const RemoveIamPolicyProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    body: Schema.optional(RemoveIamPolicyRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+resource}:removeIamPolicy",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<RemoveIamPolicyProjectsLocationsServicesRequest>;
-
-export type RemoveIamPolicyProjectsLocationsServicesResponse =
-  RemoveIamPolicyResponse;
-export const RemoveIamPolicyProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RemoveIamPolicyResponse;
-
-export type RemoveIamPolicyProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Removes the attached IAM policies for a resource */
-export const removeIamPolicyProjectsLocationsServices: API.OperationMethod<
-  RemoveIamPolicyProjectsLocationsServicesRequest,
-  RemoveIamPolicyProjectsLocationsServicesResponse,
-  RemoveIamPolicyProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RemoveIamPolicyProjectsLocationsServicesRequest,
-  output: RemoveIamPolicyProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface MoveTableToDatabaseProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to mutate metadata, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
-  /** Request body */
-  body?: MoveTableToDatabaseRequest;
-}
-
-export const MoveTableToDatabaseProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(MoveTableToDatabaseRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+service}:moveTableToDatabase",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<MoveTableToDatabaseProjectsLocationsServicesRequest>;
-
-export type MoveTableToDatabaseProjectsLocationsServicesResponse = Operation;
-export const MoveTableToDatabaseProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type MoveTableToDatabaseProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Move a table to another database. */
-export const moveTableToDatabaseProjectsLocationsServices: API.OperationMethod<
-  MoveTableToDatabaseProjectsLocationsServicesRequest,
-  MoveTableToDatabaseProjectsLocationsServicesResponse,
-  MoveTableToDatabaseProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: MoveTableToDatabaseProjectsLocationsServicesRequest,
-  output: MoveTableToDatabaseProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ExportMetadataProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to run export, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
-  /** Request body */
-  body?: ExportMetadataRequest;
-}
-
-export const ExportMetadataProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(ExportMetadataRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+service}:exportMetadata",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<ExportMetadataProjectsLocationsServicesRequest>;
-
-export type ExportMetadataProjectsLocationsServicesResponse = Operation;
-export const ExportMetadataProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type ExportMetadataProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Exports metadata from a service. */
-export const exportMetadataProjectsLocationsServices: API.OperationMethod<
-  ExportMetadataProjectsLocationsServicesRequest,
-  ExportMetadataProjectsLocationsServicesResponse,
-  ExportMetadataProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ExportMetadataProjectsLocationsServicesRequest,
-  output: ExportMetadataProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface StartMigrationProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to start migrating to, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
-  /** Request body */
-  body?: StartMigrationRequest;
-}
-
-export const StartMigrationProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(StartMigrationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+service}:startMigration",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<StartMigrationProjectsLocationsServicesRequest>;
-
-export type StartMigrationProjectsLocationsServicesResponse = Operation;
-export const StartMigrationProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type StartMigrationProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Starts the Managed Migration process. */
-export const startMigrationProjectsLocationsServices: API.OperationMethod<
-  StartMigrationProjectsLocationsServicesRequest,
-  StartMigrationProjectsLocationsServicesResponse,
-  StartMigrationProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: StartMigrationProjectsLocationsServicesRequest,
-  output: StartMigrationProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface CancelMigrationProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to cancel the ongoing migration to, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
-  /** Request body */
-  body?: CancelMigrationRequest;
-}
-
-export const CancelMigrationProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(CancelMigrationRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+service}:cancelMigration",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<CancelMigrationProjectsLocationsServicesRequest>;
-
-export type CancelMigrationProjectsLocationsServicesResponse = Operation;
-export const CancelMigrationProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type CancelMigrationProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Cancels the ongoing Managed Migration process. */
-export const cancelMigrationProjectsLocationsServices: API.OperationMethod<
-  CancelMigrationProjectsLocationsServicesRequest,
-  CancelMigrationProjectsLocationsServicesResponse,
-  CancelMigrationProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CancelMigrationProjectsLocationsServicesRequest,
-  output: CancelMigrationProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface GetIamPolicyProjectsLocationsServicesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-
-export const GetIamPolicyProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesRequest>;
-
-export type GetIamPolicyProjectsLocationsServicesResponse = Policy;
-export const GetIamPolicyProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServices: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServicesRequest,
-  GetIamPolicyProjectsLocationsServicesResponse,
-  GetIamPolicyProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServicesRequest,
-  output: GetIamPolicyProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsServicesRequest {
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
-  serviceId?: string;
   /** Required. The relative resource name of the location in which to create a metastore service, in the following form:projects/{project_number}/locations/{location_id}. */
   parent: string;
+  /** Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
+  serviceId?: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
   /** Request body */
   body?: Service;
 }
 
 export const CreateProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    serviceId: Schema.optional(Schema.String).pipe(T.HttpQuery("serviceId")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
+    serviceId: Schema.optional(Schema.String).pipe(T.HttpQuery("serviceId")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -2334,7 +1612,7 @@ export const CreateProjectsLocationsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsServicesRequest>;
 
 export type CreateProjectsLocationsServicesResponse = Operation;
 export const CreateProjectsLocationsServicesResponse =
@@ -2359,49 +1637,6 @@ export const createProjectsLocationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface AlterTablePropertiesProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the Dataproc Metastore service that's being used to mutate metadata table properties, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
-  /** Request body */
-  body?: AlterTablePropertiesRequest;
-}
-
-export const AlterTablePropertiesProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(AlterTablePropertiesRequest).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/{+service}:alterTableProperties",
-      hasBody: true,
-    }),
-    svc,
-  ) as unknown as Schema.Schema<AlterTablePropertiesProjectsLocationsServicesRequest>;
-
-export type AlterTablePropertiesProjectsLocationsServicesResponse = Operation;
-export const AlterTablePropertiesProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type AlterTablePropertiesProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Alter metadata table properties. */
-export const alterTablePropertiesProjectsLocationsServices: API.OperationMethod<
-  AlterTablePropertiesProjectsLocationsServicesRequest,
-  AlterTablePropertiesProjectsLocationsServicesResponse,
-  AlterTablePropertiesProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AlterTablePropertiesProjectsLocationsServicesRequest,
-  output: AlterTablePropertiesProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
 export interface TestIamPermissionsProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2420,7 +1655,7 @@ export const TestIamPermissionsProjectsLocationsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsServicesRequest>;
 
 export type TestIamPermissionsProjectsLocationsServicesResponse =
   TestIamPermissionsResponse;
@@ -2446,142 +1681,48 @@ export const testIamPermissionsProjectsLocationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface RestoreProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to run restore, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}. */
-  service: string;
+export interface RemoveIamPolicyProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the dataplane resource to remove IAM policy, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/databases/{database_id} or projects/{project_id}/locations/{location_id}/services/{service_id}/databases/{database_id}/tables/{table_id}. */
+  resource: string;
   /** Request body */
-  body?: RestoreServiceRequest;
+  body?: RemoveIamPolicyRequest;
 }
 
-export const RestoreProjectsLocationsServicesRequest =
+export const RemoveIamPolicyProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(RestoreServiceRequest).pipe(T.HttpBody()),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(RemoveIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{+service}:restore",
+      path: "v1beta/{+resource}:removeIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<RestoreProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<RemoveIamPolicyProjectsLocationsServicesRequest>;
 
-export type RestoreProjectsLocationsServicesResponse = Operation;
-export const RestoreProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type RemoveIamPolicyProjectsLocationsServicesResponse =
+  RemoveIamPolicyResponse;
+export const RemoveIamPolicyProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ RemoveIamPolicyResponse;
 
-export type RestoreProjectsLocationsServicesError =
+export type RemoveIamPolicyProjectsLocationsServicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Restores a service from a backup. */
-export const restoreProjectsLocationsServices: API.OperationMethod<
-  RestoreProjectsLocationsServicesRequest,
-  RestoreProjectsLocationsServicesResponse,
-  RestoreProjectsLocationsServicesError,
+/** Removes the attached IAM policies for a resource */
+export const removeIamPolicyProjectsLocationsServices: API.OperationMethod<
+  RemoveIamPolicyProjectsLocationsServicesRequest,
+  RemoveIamPolicyProjectsLocationsServicesResponse,
+  RemoveIamPolicyProjectsLocationsServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: RestoreProjectsLocationsServicesRequest,
-  output: RestoreProjectsLocationsServicesResponse,
+  input: RemoveIamPolicyProjectsLocationsServicesRequest,
+  output: RemoveIamPolicyProjectsLocationsServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsServicesRequest {
-  /** Immutable. Identifier. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}. */
-  name: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Required. A field mask used to specify the fields to be overwritten in the metastore service resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
-  updateMask?: string;
-  /** Request body */
-  body?: Service;
-}
-
-export const PatchProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(Service).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsServicesRequest>;
-
-export type PatchProjectsLocationsServicesResponse = Operation;
-export const PatchProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates the parameters of a single service. */
-export const patchProjectsLocationsServices: API.OperationMethod<
-  PatchProjectsLocationsServicesRequest,
-  PatchProjectsLocationsServicesResponse,
-  PatchProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsServicesRequest,
-  output: PatchProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface ListProjectsLocationsServicesRequest {
-  /** Optional. A page token, received from a previous DataprocMetastore.ListServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListServices must match the call that provided the page token. */
-  pageToken?: string;
-  /** Optional. The maximum number of services to return. The response may contain less than the maximum number. If unspecified, no more than 500 services are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
-  pageSize?: number;
-  /** Optional. The filter to apply to list results. */
-  filter?: string;
-  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
-  orderBy?: string;
-  /** Required. The relative resource name of the location of metastore services to list, in the following form:projects/{project_number}/locations/{location_id}. */
-  parent: string;
-}
-
-export const ListProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/services" }),
-    svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsServicesRequest>;
-
-export type ListProjectsLocationsServicesResponse = ListServicesResponse;
-export const ListProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
-
-export type ListProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Lists services in a project and location. */
-export const listProjectsLocationsServices: API.PaginatedOperationMethod<
-  ListProjectsLocationsServicesRequest,
-  ListProjectsLocationsServicesResponse,
-  ListProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServicesRequest,
-  output: ListProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
 }));
 
 export interface CompleteMigrationProjectsLocationsServicesRequest {
@@ -2602,7 +1743,7 @@ export const CompleteMigrationProjectsLocationsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CompleteMigrationProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<CompleteMigrationProjectsLocationsServicesRequest>;
 
 export type CompleteMigrationProjectsLocationsServicesResponse = Operation;
 export const CompleteMigrationProjectsLocationsServicesResponse =
@@ -2645,7 +1786,7 @@ export const SetIamPolicyProjectsLocationsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsServicesRequest>;
 
 export type SetIamPolicyProjectsLocationsServicesResponse = Policy;
 export const SetIamPolicyProjectsLocationsServicesResponse =
@@ -2670,6 +1811,142 @@ export const setIamPolicyProjectsLocationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface MoveTableToDatabaseProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to mutate metadata, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: MoveTableToDatabaseRequest;
+}
+
+export const MoveTableToDatabaseProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(MoveTableToDatabaseRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:moveTableToDatabase",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<MoveTableToDatabaseProjectsLocationsServicesRequest>;
+
+export type MoveTableToDatabaseProjectsLocationsServicesResponse = Operation;
+export const MoveTableToDatabaseProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type MoveTableToDatabaseProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Move a table to another database. */
+export const moveTableToDatabaseProjectsLocationsServices: API.OperationMethod<
+  MoveTableToDatabaseProjectsLocationsServicesRequest,
+  MoveTableToDatabaseProjectsLocationsServicesResponse,
+  MoveTableToDatabaseProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: MoveTableToDatabaseProjectsLocationsServicesRequest,
+  output: MoveTableToDatabaseProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ListProjectsLocationsServicesRequest {
+  /** Optional. The filter to apply to list results. */
+  filter?: string;
+  /** Optional. The maximum number of services to return. The response may contain less than the maximum number. If unspecified, no more than 500 services are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
+  pageSize?: number;
+  /** Required. The relative resource name of the location of metastore services to list, in the following form:projects/{project_number}/locations/{location_id}. */
+  parent: string;
+  /** Optional. A page token, received from a previous DataprocMetastore.ListServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListServices must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/services" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsServicesRequest>;
+
+export type ListProjectsLocationsServicesResponse = ListServicesResponse;
+export const ListProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
+
+export type ListProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists services in a project and location. */
+export const listProjectsLocationsServices: API.PaginatedOperationMethod<
+  ListProjectsLocationsServicesRequest,
+  ListProjectsLocationsServicesResponse,
+  ListProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsServicesRequest,
+  output: ListProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface CancelMigrationProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to cancel the ongoing migration to, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: CancelMigrationRequest;
+}
+
+export const CancelMigrationProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(CancelMigrationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:cancelMigration",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<CancelMigrationProjectsLocationsServicesRequest>;
+
+export type CancelMigrationProjectsLocationsServicesResponse = Operation;
+export const CancelMigrationProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type CancelMigrationProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Cancels the ongoing Managed Migration process. */
+export const cancelMigrationProjectsLocationsServices: API.OperationMethod<
+  CancelMigrationProjectsLocationsServicesRequest,
+  CancelMigrationProjectsLocationsServicesResponse,
+  CancelMigrationProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelMigrationProjectsLocationsServicesRequest,
+  output: CancelMigrationProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface GetProjectsLocationsServicesRequest {
   /** Required. The relative resource name of the metastore service to retrieve, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
   name: string;
@@ -2681,7 +1958,7 @@ export const GetProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsServicesRequest>;
 
 export type GetProjectsLocationsServicesResponse = Service;
 export const GetProjectsLocationsServicesResponse =
@@ -2704,85 +1981,46 @@ export const getProjectsLocationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
-  name: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-}
-
-export const DeleteProjectsLocationsServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRequest>;
-
-export type DeleteProjectsLocationsServicesResponse = Operation;
-export const DeleteProjectsLocationsServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type DeleteProjectsLocationsServicesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Deletes a single service. */
-export const deleteProjectsLocationsServices: API.OperationMethod<
-  DeleteProjectsLocationsServicesRequest,
-  DeleteProjectsLocationsServicesResponse,
-  DeleteProjectsLocationsServicesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServicesRequest,
-  output: DeleteProjectsLocationsServicesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface QueryMetadataProjectsLocationsServicesRequest {
-  /** Required. The relative resource name of the metastore service to query metadata, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+export interface RestoreProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to run restore, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}. */
   service: string;
   /** Request body */
-  body?: QueryMetadataRequest;
+  body?: RestoreServiceRequest;
 }
 
-export const QueryMetadataProjectsLocationsServicesRequest =
+export const RestoreProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     service: Schema.String.pipe(T.HttpPath("service")),
-    body: Schema.optional(QueryMetadataRequest).pipe(T.HttpBody()),
+    body: Schema.optional(RestoreServiceRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{+service}:queryMetadata",
+      path: "v1beta/{+service}:restore",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<QueryMetadataProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<RestoreProjectsLocationsServicesRequest>;
 
-export type QueryMetadataProjectsLocationsServicesResponse = Operation;
-export const QueryMetadataProjectsLocationsServicesResponse =
+export type RestoreProjectsLocationsServicesResponse = Operation;
+export const RestoreProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type QueryMetadataProjectsLocationsServicesError =
+export type RestoreProjectsLocationsServicesError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Query Dataproc Metastore metadata. */
-export const queryMetadataProjectsLocationsServices: API.OperationMethod<
-  QueryMetadataProjectsLocationsServicesRequest,
-  QueryMetadataProjectsLocationsServicesResponse,
-  QueryMetadataProjectsLocationsServicesError,
+/** Restores a service from a backup. */
+export const restoreProjectsLocationsServices: API.OperationMethod<
+  RestoreProjectsLocationsServicesRequest,
+  RestoreProjectsLocationsServicesResponse,
+  RestoreProjectsLocationsServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: QueryMetadataProjectsLocationsServicesRequest,
-  output: QueryMetadataProjectsLocationsServicesResponse,
+  input: RestoreProjectsLocationsServicesRequest,
+  output: RestoreProjectsLocationsServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -2806,7 +2044,7 @@ export const AlterLocationProjectsLocationsServicesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<AlterLocationProjectsLocationsServicesRequest>;
+  ) as unknown as Schema.Codec<AlterLocationProjectsLocationsServicesRequest>;
 
 export type AlterLocationProjectsLocationsServicesResponse = Operation;
 export const AlterLocationProjectsLocationsServicesResponse =
@@ -2831,6 +2069,388 @@ export const alterLocationProjectsLocationsServices: API.OperationMethod<
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface StartMigrationProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to start migrating to, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: StartMigrationRequest;
+}
+
+export const StartMigrationProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(StartMigrationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:startMigration",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<StartMigrationProjectsLocationsServicesRequest>;
+
+export type StartMigrationProjectsLocationsServicesResponse = Operation;
+export const StartMigrationProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type StartMigrationProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts the Managed Migration process. */
+export const startMigrationProjectsLocationsServices: API.OperationMethod<
+  StartMigrationProjectsLocationsServicesRequest,
+  StartMigrationProjectsLocationsServicesResponse,
+  StartMigrationProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartMigrationProjectsLocationsServicesRequest,
+  output: StartMigrationProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface AlterTablePropertiesProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the Dataproc Metastore service that's being used to mutate metadata table properties, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: AlterTablePropertiesRequest;
+}
+
+export const AlterTablePropertiesProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(AlterTablePropertiesRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:alterTableProperties",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<AlterTablePropertiesProjectsLocationsServicesRequest>;
+
+export type AlterTablePropertiesProjectsLocationsServicesResponse = Operation;
+export const AlterTablePropertiesProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type AlterTablePropertiesProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Alter metadata table properties. */
+export const alterTablePropertiesProjectsLocationsServices: API.OperationMethod<
+  AlterTablePropertiesProjectsLocationsServicesRequest,
+  AlterTablePropertiesProjectsLocationsServicesResponse,
+  AlterTablePropertiesProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AlterTablePropertiesProjectsLocationsServicesRequest,
+  output: AlterTablePropertiesProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface QueryMetadataProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to query metadata, in the following format:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: QueryMetadataRequest;
+}
+
+export const QueryMetadataProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(QueryMetadataRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:queryMetadata",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<QueryMetadataProjectsLocationsServicesRequest>;
+
+export type QueryMetadataProjectsLocationsServicesResponse = Operation;
+export const QueryMetadataProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type QueryMetadataProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Query Dataproc Metastore metadata. */
+export const queryMetadataProjectsLocationsServices: API.OperationMethod<
+  QueryMetadataProjectsLocationsServicesRequest,
+  QueryMetadataProjectsLocationsServicesResponse,
+  QueryMetadataProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: QueryMetadataProjectsLocationsServicesRequest,
+  output: QueryMetadataProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsServicesRequest {
+  /** Required. A field mask used to specify the fields to be overwritten in the metastore service resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
+  updateMask?: string;
+  /** Immutable. Identifier. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}. */
+  name: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+  /** Request body */
+  body?: Service;
+}
+
+export const PatchProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Service).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsServicesRequest>;
+
+export type PatchProjectsLocationsServicesResponse = Operation;
+export const PatchProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the parameters of a single service. */
+export const patchProjectsLocationsServices: API.OperationMethod<
+  PatchProjectsLocationsServicesRequest,
+  PatchProjectsLocationsServicesResponse,
+  PatchProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsServicesRequest,
+  output: PatchProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface ExportMetadataProjectsLocationsServicesRequest {
+  /** Required. The relative resource name of the metastore service to run export, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}. */
+  service: string;
+  /** Request body */
+  body?: ExportMetadataRequest;
+}
+
+export const ExportMetadataProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.String.pipe(T.HttpPath("service")),
+    body: Schema.optional(ExportMetadataRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+service}:exportMetadata",
+      hasBody: true,
+    }),
+    svc,
+  ) as unknown as Schema.Codec<ExportMetadataProjectsLocationsServicesRequest>;
+
+export type ExportMetadataProjectsLocationsServicesResponse = Operation;
+export const ExportMetadataProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type ExportMetadataProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Exports metadata from a service. */
+export const exportMetadataProjectsLocationsServices: API.OperationMethod<
+  ExportMetadataProjectsLocationsServicesRequest,
+  ExportMetadataProjectsLocationsServicesResponse,
+  ExportMetadataProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExportMetadataProjectsLocationsServicesRequest,
+  output: ExportMetadataProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetIamPolicyProjectsLocationsServicesRequest {
+  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsServicesRequest>;
+
+export type GetIamPolicyProjectsLocationsServicesResponse = Policy;
+export const GetIamPolicyProjectsLocationsServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsServices: API.OperationMethod<
+  GetIamPolicyProjectsLocationsServicesRequest,
+  GetIamPolicyProjectsLocationsServicesResponse,
+  GetIamPolicyProjectsLocationsServicesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsServicesRequest,
+  output: GetIamPolicyProjectsLocationsServicesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsServicesMigrationExecutionsRequest {
+  /** Optional. The filter to apply to list results. */
+  filter?: string;
+  /** Optional. The maximum number of migration executions to return. The response may contain less than the maximum number. If unspecified, no more than 500 migration executions are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
+  pageSize?: number;
+  /** Required. The relative resource name of the service whose migration executions to list, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions. */
+  parent: string;
+  /** Optional. A page token, received from a previous DataprocMetastore.ListMigrationExecutions call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListMigrationExecutions must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsServicesMigrationExecutionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/migrationExecutions" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsServicesMigrationExecutionsRequest>;
+
+export type ListProjectsLocationsServicesMigrationExecutionsResponse =
+  ListMigrationExecutionsResponse;
+export const ListProjectsLocationsServicesMigrationExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListMigrationExecutionsResponse;
+
+export type ListProjectsLocationsServicesMigrationExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists migration executions on a service. */
+export const listProjectsLocationsServicesMigrationExecutions: API.PaginatedOperationMethod<
+  ListProjectsLocationsServicesMigrationExecutionsRequest,
+  ListProjectsLocationsServicesMigrationExecutionsResponse,
+  ListProjectsLocationsServicesMigrationExecutionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsServicesMigrationExecutionsRequest,
+  output: ListProjectsLocationsServicesMigrationExecutionsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsServicesMigrationExecutionsRequest {
+  /** Required. The relative resource name of the migrationExecution to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
+  name: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsServicesMigrationExecutionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsServicesMigrationExecutionsRequest>;
+
+export type DeleteProjectsLocationsServicesMigrationExecutionsResponse =
+  Operation;
+export const DeleteProjectsLocationsServicesMigrationExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsServicesMigrationExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single migration execution. */
+export const deleteProjectsLocationsServicesMigrationExecutions: API.OperationMethod<
+  DeleteProjectsLocationsServicesMigrationExecutionsRequest,
+  DeleteProjectsLocationsServicesMigrationExecutionsResponse,
+  DeleteProjectsLocationsServicesMigrationExecutionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsServicesMigrationExecutionsRequest,
+  output: DeleteProjectsLocationsServicesMigrationExecutionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsServicesMigrationExecutionsRequest {
+  /** Required. The relative resource name of the migration execution to retrieve, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
+  name: string;
+}
+
+export const GetProjectsLocationsServicesMigrationExecutionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsServicesMigrationExecutionsRequest>;
+
+export type GetProjectsLocationsServicesMigrationExecutionsResponse =
+  MigrationExecution;
+export const GetProjectsLocationsServicesMigrationExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ MigrationExecution;
+
+export type GetProjectsLocationsServicesMigrationExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single migration execution. */
+export const getProjectsLocationsServicesMigrationExecutions: API.OperationMethod<
+  GetProjectsLocationsServicesMigrationExecutionsRequest,
+  GetProjectsLocationsServicesMigrationExecutionsResponse,
+  GetProjectsLocationsServicesMigrationExecutionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsServicesMigrationExecutionsRequest,
+  output: GetProjectsLocationsServicesMigrationExecutionsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface SetIamPolicyProjectsLocationsServicesDatabasesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2849,7 +2469,7 @@ export const SetIamPolicyProjectsLocationsServicesDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServicesDatabasesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsServicesDatabasesRequest>;
 
 export type SetIamPolicyProjectsLocationsServicesDatabasesResponse = Policy;
 export const SetIamPolicyProjectsLocationsServicesDatabasesResponse =
@@ -2874,6 +2494,45 @@ export const setIamPolicyProjectsLocationsServicesDatabases: API.OperationMethod
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetIamPolicyProjectsLocationsServicesDatabasesRequest {
+  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsServicesDatabasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsServicesDatabasesRequest>;
+
+export type GetIamPolicyProjectsLocationsServicesDatabasesResponse = Policy;
+export const GetIamPolicyProjectsLocationsServicesDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsServicesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsServicesDatabases: API.OperationMethod<
+  GetIamPolicyProjectsLocationsServicesDatabasesRequest,
+  GetIamPolicyProjectsLocationsServicesDatabasesResponse,
+  GetIamPolicyProjectsLocationsServicesDatabasesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsServicesDatabasesRequest,
+  output: GetIamPolicyProjectsLocationsServicesDatabasesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface TestIamPermissionsProjectsLocationsServicesDatabasesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2892,7 +2551,7 @@ export const TestIamPermissionsProjectsLocationsServicesDatabasesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServicesDatabasesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsServicesDatabasesRequest>;
 
 export type TestIamPermissionsProjectsLocationsServicesDatabasesResponse =
   TestIamPermissionsResponse;
@@ -2918,45 +2577,6 @@ export const testIamPermissionsProjectsLocationsServicesDatabases: API.Operation
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsLocationsServicesDatabasesRequest {
-  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-
-export const GetIamPolicyProjectsLocationsServicesDatabasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
-    ),
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
-    svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesDatabasesRequest>;
-
-export type GetIamPolicyProjectsLocationsServicesDatabasesResponse = Policy;
-export const GetIamPolicyProjectsLocationsServicesDatabasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
-
-export type GetIamPolicyProjectsLocationsServicesDatabasesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServicesDatabases: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServicesDatabasesRequest,
-  GetIamPolicyProjectsLocationsServicesDatabasesResponse,
-  GetIamPolicyProjectsLocationsServicesDatabasesError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServicesDatabasesRequest,
-  output: GetIamPolicyProjectsLocationsServicesDatabasesResponse,
-  errors: [NotFound, Forbidden],
-}));
-
 export interface SetIamPolicyProjectsLocationsServicesDatabasesTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -2975,7 +2595,7 @@ export const SetIamPolicyProjectsLocationsServicesDatabasesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServicesDatabasesTablesRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsServicesDatabasesTablesRequest>;
 
 export type SetIamPolicyProjectsLocationsServicesDatabasesTablesResponse =
   Policy;
@@ -3001,6 +2621,46 @@ export const setIamPolicyProjectsLocationsServicesDatabasesTables: API.Operation
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
+export interface GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest {
+  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+
+export const GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest>;
+
+export type GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse =
+  Policy;
+export const GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsServicesDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsServicesDatabasesTables: API.OperationMethod<
+  GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest,
+  GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse,
+  GetIamPolicyProjectsLocationsServicesDatabasesTablesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest,
+  output: GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse,
+  errors: [NotFound, Forbidden],
+}));
+
 export interface TestIamPermissionsProjectsLocationsServicesDatabasesTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -3019,7 +2679,7 @@ export const TestIamPermissionsProjectsLocationsServicesDatabasesTablesRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServicesDatabasesTablesRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsServicesDatabasesTablesRequest>;
 
 export type TestIamPermissionsProjectsLocationsServicesDatabasesTablesResponse =
   TestIamPermissionsResponse;
@@ -3045,44 +2705,55 @@ export const testIamPermissionsProjectsLocationsServicesDatabasesTables: API.Ope
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
+export interface CreateProjectsLocationsServicesMetadataImportsRequest {
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+  /** Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
+  metadataImportId?: string;
+  /** Required. The relative resource name of the service in which to create a metastore import, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
+  parent: string;
+  /** Request body */
+  body?: MetadataImport;
 }
 
-export const GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest =
+export const CreateProjectsLocationsServicesMetadataImportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    resource: Schema.String.pipe(T.HttpPath("resource")),
-    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
-      T.HttpQuery("options.requestedPolicyVersion"),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    metadataImportId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("metadataImportId"),
     ),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(MetadataImport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+parent}/metadataImports",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsServicesMetadataImportsRequest>;
 
-export type GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse =
-  Policy;
-export const GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Policy;
+export type CreateProjectsLocationsServicesMetadataImportsResponse = Operation;
+export const CreateProjectsLocationsServicesMetadataImportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetIamPolicyProjectsLocationsServicesDatabasesTablesError =
+export type CreateProjectsLocationsServicesMetadataImportsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
-export const getIamPolicyProjectsLocationsServicesDatabasesTables: API.OperationMethod<
-  GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest,
-  GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse,
-  GetIamPolicyProjectsLocationsServicesDatabasesTablesError,
+/** Creates a new MetadataImport in a given project and location. */
+export const createProjectsLocationsServicesMetadataImports: API.OperationMethod<
+  CreateProjectsLocationsServicesMetadataImportsRequest,
+  CreateProjectsLocationsServicesMetadataImportsResponse,
+  CreateProjectsLocationsServicesMetadataImportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServicesDatabasesTablesRequest,
-  output: GetIamPolicyProjectsLocationsServicesDatabasesTablesResponse,
-  errors: [NotFound, Forbidden],
+  input: CreateProjectsLocationsServicesMetadataImportsRequest,
+  output: CreateProjectsLocationsServicesMetadataImportsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsServicesMetadataImportsRequest {
@@ -3096,7 +2767,7 @@ export const GetProjectsLocationsServicesMetadataImportsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsServicesMetadataImportsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsServicesMetadataImportsRequest>;
 
 export type GetProjectsLocationsServicesMetadataImportsResponse =
   MetadataImport;
@@ -3120,30 +2791,75 @@ export const getProjectsLocationsServicesMetadataImports: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
+export interface PatchProjectsLocationsServicesMetadataImportsRequest {
+  /** Immutable. Identifier. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}. */
+  name: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+  /** Required. A field mask used to specify the fields to be overwritten in the metadata import resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
+  updateMask?: string;
+  /** Request body */
+  body?: MetadataImport;
+}
+
+export const PatchProjectsLocationsServicesMetadataImportsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    body: Schema.optional(MetadataImport).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsServicesMetadataImportsRequest>;
+
+export type PatchProjectsLocationsServicesMetadataImportsResponse = Operation;
+export const PatchProjectsLocationsServicesMetadataImportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsServicesMetadataImportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates a single import. Only the description field of MetadataImport is supported to be updated. */
+export const patchProjectsLocationsServicesMetadataImports: API.OperationMethod<
+  PatchProjectsLocationsServicesMetadataImportsRequest,
+  PatchProjectsLocationsServicesMetadataImportsResponse,
+  PatchProjectsLocationsServicesMetadataImportsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsServicesMetadataImportsRequest,
+  output: PatchProjectsLocationsServicesMetadataImportsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
 export interface ListProjectsLocationsServicesMetadataImportsRequest {
-  /** Optional. A page token, received from a previous DataprocMetastore.ListServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListServices must match the call that provided the page token. */
-  pageToken?: string;
-  /** Required. The relative resource name of the service whose metadata imports to list, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports. */
-  parent: string;
   /** Optional. The maximum number of imports to return. The response may contain less than the maximum number. If unspecified, no more than 500 imports are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
   pageSize?: number;
   /** Optional. The filter to apply to list results. */
   filter?: string;
+  /** Optional. A page token, received from a previous DataprocMetastore.ListServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListServices must match the call that provided the page token. */
+  pageToken?: string;
+  /** Required. The relative resource name of the service whose metadata imports to list, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports. */
+  parent: string;
   /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
   orderBy?: string;
 }
 
 export const ListProjectsLocationsServicesMetadataImportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
-    parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/metadataImports" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsServicesMetadataImportsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsServicesMetadataImportsRequest>;
 
 export type ListProjectsLocationsServicesMetadataImportsResponse =
   ListMetadataImportsResponse;
@@ -3171,99 +2887,46 @@ export const listProjectsLocationsServicesMetadataImports: API.PaginatedOperatio
   },
 }));
 
-export interface CreateProjectsLocationsServicesMetadataImportsRequest {
-  /** Required. The relative resource name of the service in which to create a metastore import, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
-  parent: string;
-  /** Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
-  metadataImportId?: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
+export interface SetIamPolicyProjectsLocationsServicesBackupsRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
   /** Request body */
-  body?: MetadataImport;
+  body?: SetIamPolicyRequest;
 }
 
-export const CreateProjectsLocationsServicesMetadataImportsRequest =
+export const SetIamPolicyProjectsLocationsServicesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    metadataImportId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("metadataImportId"),
-    ),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(MetadataImport).pipe(T.HttpBody()),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/{+parent}/metadataImports",
+      path: "v1beta/{+resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsServicesMetadataImportsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsServicesBackupsRequest>;
 
-export type CreateProjectsLocationsServicesMetadataImportsResponse = Operation;
-export const CreateProjectsLocationsServicesMetadataImportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type SetIamPolicyProjectsLocationsServicesBackupsResponse = Policy;
+export const SetIamPolicyProjectsLocationsServicesBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type CreateProjectsLocationsServicesMetadataImportsError =
+export type SetIamPolicyProjectsLocationsServicesBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new MetadataImport in a given project and location. */
-export const createProjectsLocationsServicesMetadataImports: API.OperationMethod<
-  CreateProjectsLocationsServicesMetadataImportsRequest,
-  CreateProjectsLocationsServicesMetadataImportsResponse,
-  CreateProjectsLocationsServicesMetadataImportsError,
+/** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
+export const setIamPolicyProjectsLocationsServicesBackups: API.OperationMethod<
+  SetIamPolicyProjectsLocationsServicesBackupsRequest,
+  SetIamPolicyProjectsLocationsServicesBackupsResponse,
+  SetIamPolicyProjectsLocationsServicesBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsServicesMetadataImportsRequest,
-  output: CreateProjectsLocationsServicesMetadataImportsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict],
-}));
-
-export interface PatchProjectsLocationsServicesMetadataImportsRequest {
-  /** Immutable. Identifier. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}. */
-  name: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
-  /** Required. A field mask used to specify the fields to be overwritten in the metadata import resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
-  updateMask?: string;
-  /** Request body */
-  body?: MetadataImport;
-}
-
-export const PatchProjectsLocationsServicesMetadataImportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(MetadataImport).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
-    svc,
-  ) as unknown as Schema.Schema<PatchProjectsLocationsServicesMetadataImportsRequest>;
-
-export type PatchProjectsLocationsServicesMetadataImportsResponse = Operation;
-export const PatchProjectsLocationsServicesMetadataImportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
-
-export type PatchProjectsLocationsServicesMetadataImportsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
-
-/** Updates a single import. Only the description field of MetadataImport is supported to be updated. */
-export const patchProjectsLocationsServicesMetadataImports: API.OperationMethod<
-  PatchProjectsLocationsServicesMetadataImportsRequest,
-  PatchProjectsLocationsServicesMetadataImportsResponse,
-  PatchProjectsLocationsServicesMetadataImportsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsServicesMetadataImportsRequest,
-  output: PatchProjectsLocationsServicesMetadataImportsResponse,
+  input: SetIamPolicyProjectsLocationsServicesBackupsRequest,
+  output: SetIamPolicyProjectsLocationsServicesBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
@@ -3283,7 +2946,7 @@ export const GetIamPolicyProjectsLocationsServicesBackupsRequest =
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
     svc,
-  ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsServicesBackupsRequest>;
 
 export type GetIamPolicyProjectsLocationsServicesBackupsResponse = Policy;
 export const GetIamPolicyProjectsLocationsServicesBackupsResponse =
@@ -3306,49 +2969,77 @@ export const getIamPolicyProjectsLocationsServicesBackups: API.OperationMethod<
   errors: [NotFound, Forbidden],
 }));
 
-export interface CreateProjectsLocationsServicesBackupsRequest {
-  /** Required. The relative resource name of the service in which to create a backup of the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
-  parent: string;
-  /** Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
-  backupId?: string;
+export interface DeleteProjectsLocationsServicesBackupsRequest {
+  /** Required. The relative resource name of the backup to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
+  name: string;
   /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
   requestId?: string;
-  /** Request body */
-  body?: Backup;
 }
 
-export const CreateProjectsLocationsServicesBackupsRequest =
+export const DeleteProjectsLocationsServicesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    parent: Schema.String.pipe(T.HttpPath("parent")),
-    backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
+    name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
-    body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "POST", path: "v1beta/{+parent}/backups", hasBody: true }),
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<CreateProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsServicesBackupsRequest>;
 
-export type CreateProjectsLocationsServicesBackupsResponse = Operation;
-export const CreateProjectsLocationsServicesBackupsResponse =
+export type DeleteProjectsLocationsServicesBackupsResponse = Operation;
+export const DeleteProjectsLocationsServicesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsServicesBackupsError =
+export type DeleteProjectsLocationsServicesBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Creates a new backup in a given project and location. */
-export const createProjectsLocationsServicesBackups: API.OperationMethod<
-  CreateProjectsLocationsServicesBackupsRequest,
-  CreateProjectsLocationsServicesBackupsResponse,
-  CreateProjectsLocationsServicesBackupsError,
+/** Deletes a single backup. */
+export const deleteProjectsLocationsServicesBackups: API.OperationMethod<
+  DeleteProjectsLocationsServicesBackupsRequest,
+  DeleteProjectsLocationsServicesBackupsResponse,
+  DeleteProjectsLocationsServicesBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsServicesBackupsRequest,
-  output: CreateProjectsLocationsServicesBackupsResponse,
+  input: DeleteProjectsLocationsServicesBackupsRequest,
+  output: DeleteProjectsLocationsServicesBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface GetProjectsLocationsServicesBackupsRequest {
+  /** Required. The relative resource name of the backup to retrieve, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
+  name: string;
+}
+
+export const GetProjectsLocationsServicesBackupsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsServicesBackupsRequest>;
+
+export type GetProjectsLocationsServicesBackupsResponse = Backup;
+export const GetProjectsLocationsServicesBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Backup;
+
+export type GetProjectsLocationsServicesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets details of a single backup. */
+export const getProjectsLocationsServicesBackups: API.OperationMethod<
+  GetProjectsLocationsServicesBackupsRequest,
+  GetProjectsLocationsServicesBackupsResponse,
+  GetProjectsLocationsServicesBackupsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsServicesBackupsRequest,
+  output: GetProjectsLocationsServicesBackupsResponse,
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsServicesBackupsRequest {
@@ -3369,7 +3060,7 @@ export const TestIamPermissionsProjectsLocationsServicesBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<TestIamPermissionsProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsServicesBackupsRequest>;
 
 export type TestIamPermissionsProjectsLocationsServicesBackupsResponse =
   TestIamPermissionsResponse;
@@ -3395,103 +3086,75 @@ export const testIamPermissionsProjectsLocationsServicesBackups: API.OperationMe
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsServicesBackupsRequest {
-  /** Required. The relative resource name of the backup to retrieve, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
-  name: string;
-}
-
-export const GetProjectsLocationsServicesBackupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-  }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+name}" }),
-    svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsServicesBackupsRequest>;
-
-export type GetProjectsLocationsServicesBackupsResponse = Backup;
-export const GetProjectsLocationsServicesBackupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Backup;
-
-export type GetProjectsLocationsServicesBackupsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
-
-/** Gets details of a single backup. */
-export const getProjectsLocationsServicesBackups: API.OperationMethod<
-  GetProjectsLocationsServicesBackupsRequest,
-  GetProjectsLocationsServicesBackupsResponse,
-  GetProjectsLocationsServicesBackupsError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServicesBackupsRequest,
-  output: GetProjectsLocationsServicesBackupsResponse,
-  errors: [NotFound, Forbidden],
-}));
-
-export interface DeleteProjectsLocationsServicesBackupsRequest {
-  /** Required. The relative resource name of the backup to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}. */
-  name: string;
+export interface CreateProjectsLocationsServicesBackupsRequest {
   /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
   requestId?: string;
+  /** Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
+  backupId?: string;
+  /** Required. The relative resource name of the service in which to create a backup of the following form:projects/{project_number}/locations/{location_id}/services/{service_id}. */
+  parent: string;
+  /** Request body */
+  body?: Backup;
 }
 
-export const DeleteProjectsLocationsServicesBackupsRequest =
+export const CreateProjectsLocationsServicesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    backupId: Schema.optional(Schema.String).pipe(T.HttpQuery("backupId")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    T.Http({ method: "POST", path: "v1beta/{+parent}/backups", hasBody: true }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsServicesBackupsRequest>;
 
-export type DeleteProjectsLocationsServicesBackupsResponse = Operation;
-export const DeleteProjectsLocationsServicesBackupsResponse =
+export type CreateProjectsLocationsServicesBackupsResponse = Operation;
+export const CreateProjectsLocationsServicesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsServicesBackupsError =
+export type CreateProjectsLocationsServicesBackupsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single backup. */
-export const deleteProjectsLocationsServicesBackups: API.OperationMethod<
-  DeleteProjectsLocationsServicesBackupsRequest,
-  DeleteProjectsLocationsServicesBackupsResponse,
-  DeleteProjectsLocationsServicesBackupsError,
+/** Creates a new backup in a given project and location. */
+export const createProjectsLocationsServicesBackups: API.OperationMethod<
+  CreateProjectsLocationsServicesBackupsRequest,
+  CreateProjectsLocationsServicesBackupsResponse,
+  CreateProjectsLocationsServicesBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServicesBackupsRequest,
-  output: DeleteProjectsLocationsServicesBackupsResponse,
+  input: CreateProjectsLocationsServicesBackupsRequest,
+  output: CreateProjectsLocationsServicesBackupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsServicesBackupsRequest {
-  /** Optional. A page token, received from a previous DataprocMetastore.ListBackups call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListBackups must match the call that provided the page token. */
-  pageToken?: string;
   /** Required. The relative resource name of the service whose backups to list, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups. */
   parent: string;
-  /** Optional. The maximum number of backups to return. The response may contain less than the maximum number. If unspecified, no more than 500 backups are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
-  pageSize?: number;
-  /** Optional. The filter to apply to list results. */
-  filter?: string;
+  /** Optional. A page token, received from a previous DataprocMetastore.ListBackups call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListBackups must match the call that provided the page token. */
+  pageToken?: string;
   /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
   orderBy?: string;
+  /** Optional. The filter to apply to list results. */
+  filter?: string;
+  /** Optional. The maximum number of backups to return. The response may contain less than the maximum number. If unspecified, no more than 500 backups are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
+  pageSize?: number;
 }
 
 export const ListProjectsLocationsServicesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+parent}/backups" }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<ListProjectsLocationsServicesBackupsRequest>;
 
 export type ListProjectsLocationsServicesBackupsResponse = ListBackupsResponse;
 export const ListProjectsLocationsServicesBackupsResponse =
@@ -3518,14 +3181,259 @@ export const listProjectsLocationsServicesBackups: API.PaginatedOperationMethod<
   },
 }));
 
-export interface SetIamPolicyProjectsLocationsServicesBackupsRequest {
+export interface GetProjectsLocationsOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+
+export const GetProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
+
+export type GetProjectsLocationsOperationsResponse = Operation;
+export const GetProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
+export const getProjectsLocationsOperations: API.OperationMethod<
+  GetProjectsLocationsOperationsRequest,
+  GetProjectsLocationsOperationsResponse,
+  GetProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProjectsLocationsOperationsRequest,
+  output: GetProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsOperationsRequest {
+  /** The name of the operation's parent resource. */
+  name: string;
+  /** The standard list page token. */
+  pageToken?: string;
+  /** The standard list page size. */
+  pageSize?: number;
+  /** The standard list filter. */
+  filter?: string;
+  /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
+  returnPartialSuccess?: boolean;
+}
+
+export const ListProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("returnPartialSuccess"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+name}/operations" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsOperationsRequest>;
+
+export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
+export const ListProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
+export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
+  ListProjectsLocationsOperationsRequest,
+  ListProjectsLocationsOperationsResponse,
+  ListProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface DeleteProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be deleted. */
+  name: string;
+}
+
+export const DeleteProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
+
+export type DeleteProjectsLocationsOperationsResponse = Empty;
+export const DeleteProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
+export const deleteProjectsLocationsOperations: API.OperationMethod<
+  DeleteProjectsLocationsOperationsRequest,
+  DeleteProjectsLocationsOperationsResponse,
+  DeleteProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: DeleteProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: CancelOperationRequest;
+}
+
+export const CancelProjectsLocationsOperationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "v1beta/{+name}:cancel", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
+
+export type CancelProjectsLocationsOperationsResponse = Empty;
+export const CancelProjectsLocationsOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Empty;
+
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
+export const cancelProjectsLocationsOperations: API.OperationMethod<
+  CancelProjectsLocationsOperationsRequest,
+  CancelProjectsLocationsOperationsResponse,
+  CancelProjectsLocationsOperationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelProjectsLocationsOperationsRequest,
+  output: CancelProjectsLocationsOperationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface DeleteProjectsLocationsFederationsRequest {
+  /** Required. The relative resource name of the metastore federation to delete, in the following form:projects/{project_number}/locations/{location_id}/federations/{federation_id}. */
+  name: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+}
+
+export const DeleteProjectsLocationsFederationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+  }).pipe(
+    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    svc,
+  ) as unknown as Schema.Codec<DeleteProjectsLocationsFederationsRequest>;
+
+export type DeleteProjectsLocationsFederationsResponse = Operation;
+export const DeleteProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type DeleteProjectsLocationsFederationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Deletes a single federation. */
+export const deleteProjectsLocationsFederations: API.OperationMethod<
+  DeleteProjectsLocationsFederationsRequest,
+  DeleteProjectsLocationsFederationsResponse,
+  DeleteProjectsLocationsFederationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteProjectsLocationsFederationsRequest,
+  output: DeleteProjectsLocationsFederationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface PatchProjectsLocationsFederationsRequest {
+  /** Required. A field mask used to specify the fields to be overwritten in the metastore federation resource by the update. Fields specified in the update_mask are relative to the resource (not to the full request). A field is overwritten if it is in the mask. */
+  updateMask?: string;
+  /** Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`. */
+  name: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+  /** Request body */
+  body?: Federation;
+}
+
+export const PatchProjectsLocationsFederationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+    name: Schema.String.pipe(T.HttpPath("name")),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Federation).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
+    svc,
+  ) as unknown as Schema.Codec<PatchProjectsLocationsFederationsRequest>;
+
+export type PatchProjectsLocationsFederationsResponse = Operation;
+export const PatchProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
+
+export type PatchProjectsLocationsFederationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
+
+/** Updates the fields of a federation. */
+export const patchProjectsLocationsFederations: API.OperationMethod<
+  PatchProjectsLocationsFederationsRequest,
+  PatchProjectsLocationsFederationsResponse,
+  PatchProjectsLocationsFederationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchProjectsLocationsFederationsRequest,
+  output: PatchProjectsLocationsFederationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
+}));
+
+export interface SetIamPolicyProjectsLocationsFederationsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
 
-export const SetIamPolicyProjectsLocationsServicesBackupsRequest =
+export const SetIamPolicyProjectsLocationsFederationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
@@ -3536,13 +3444,13 @@ export const SetIamPolicyProjectsLocationsServicesBackupsRequest =
       hasBody: true,
     }),
     svc,
-  ) as unknown as Schema.Schema<SetIamPolicyProjectsLocationsServicesBackupsRequest>;
+  ) as unknown as Schema.Codec<SetIamPolicyProjectsLocationsFederationsRequest>;
 
-export type SetIamPolicyProjectsLocationsServicesBackupsResponse = Policy;
-export const SetIamPolicyProjectsLocationsServicesBackupsResponse =
+export type SetIamPolicyProjectsLocationsFederationsResponse = Policy;
+export const SetIamPolicyProjectsLocationsFederationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsServicesBackupsError =
+export type SetIamPolicyProjectsLocationsFederationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
@@ -3550,139 +3458,231 @@ export type SetIamPolicyProjectsLocationsServicesBackupsError =
   | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
-export const setIamPolicyProjectsLocationsServicesBackups: API.OperationMethod<
-  SetIamPolicyProjectsLocationsServicesBackupsRequest,
-  SetIamPolicyProjectsLocationsServicesBackupsResponse,
-  SetIamPolicyProjectsLocationsServicesBackupsError,
+export const setIamPolicyProjectsLocationsFederations: API.OperationMethod<
+  SetIamPolicyProjectsLocationsFederationsRequest,
+  SetIamPolicyProjectsLocationsFederationsResponse,
+  SetIamPolicyProjectsLocationsFederationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServicesBackupsRequest,
-  output: SetIamPolicyProjectsLocationsServicesBackupsResponse,
+  input: SetIamPolicyProjectsLocationsFederationsRequest,
+  output: SetIamPolicyProjectsLocationsFederationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface GetProjectsLocationsServicesMigrationExecutionsRequest {
-  /** Required. The relative resource name of the migration execution to retrieve, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
+export interface GetIamPolicyProjectsLocationsFederationsRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+
+export const GetIamPolicyProjectsLocationsFederationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
+      T.HttpQuery("options.requestedPolicyVersion"),
+    ),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+resource}:getIamPolicy" }),
+    svc,
+  ) as unknown as Schema.Codec<GetIamPolicyProjectsLocationsFederationsRequest>;
+
+export type GetIamPolicyProjectsLocationsFederationsResponse = Policy;
+export const GetIamPolicyProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Policy;
+
+export type GetIamPolicyProjectsLocationsFederationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
+export const getIamPolicyProjectsLocationsFederations: API.OperationMethod<
+  GetIamPolicyProjectsLocationsFederationsRequest,
+  GetIamPolicyProjectsLocationsFederationsResponse,
+  GetIamPolicyProjectsLocationsFederationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetIamPolicyProjectsLocationsFederationsRequest,
+  output: GetIamPolicyProjectsLocationsFederationsResponse,
+  errors: [NotFound, Forbidden],
+}));
+
+export interface ListProjectsLocationsFederationsRequest {
+  /** Optional. The filter to apply to list results. */
+  filter?: string;
+  /** Optional. The maximum number of federations to return. The response may contain less than the maximum number. If unspecified, no more than 500 services are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
+  pageSize?: number;
+  /** Required. The relative resource name of the location of metastore federations to list, in the following form: projects/{project_number}/locations/{location_id}. */
+  parent: string;
+  /** Optional. A page token, received from a previous ListFederationServices call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to ListFederationServices must match the call that provided the page token. */
+  pageToken?: string;
+  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
+  orderBy?: string;
+}
+
+export const ListProjectsLocationsFederationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
+    parent: Schema.String.pipe(T.HttpPath("parent")),
+    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
+    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+  }).pipe(
+    T.Http({ method: "GET", path: "v1beta/{+parent}/federations" }),
+    svc,
+  ) as unknown as Schema.Codec<ListProjectsLocationsFederationsRequest>;
+
+export type ListProjectsLocationsFederationsResponse = ListFederationsResponse;
+export const ListProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ ListFederationsResponse;
+
+export type ListProjectsLocationsFederationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
+
+/** Lists federations in a project and location. */
+export const listProjectsLocationsFederations: API.PaginatedOperationMethod<
+  ListProjectsLocationsFederationsRequest,
+  ListProjectsLocationsFederationsResponse,
+  ListProjectsLocationsFederationsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProjectsLocationsFederationsRequest,
+  output: ListProjectsLocationsFederationsResponse,
+  errors: [NotFound, Forbidden],
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  },
+}));
+
+export interface GetProjectsLocationsFederationsRequest {
+  /** Required. The relative resource name of the metastore federation to retrieve, in the following form:projects/{project_number}/locations/{location_id}/federations/{federation_id}. */
   name: string;
 }
 
-export const GetProjectsLocationsServicesMigrationExecutionsRequest =
+export const GetProjectsLocationsFederationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
     svc,
-  ) as unknown as Schema.Schema<GetProjectsLocationsServicesMigrationExecutionsRequest>;
+  ) as unknown as Schema.Codec<GetProjectsLocationsFederationsRequest>;
 
-export type GetProjectsLocationsServicesMigrationExecutionsResponse =
-  MigrationExecution;
-export const GetProjectsLocationsServicesMigrationExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MigrationExecution;
+export type GetProjectsLocationsFederationsResponse = Federation;
+export const GetProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Federation;
 
-export type GetProjectsLocationsServicesMigrationExecutionsError =
+export type GetProjectsLocationsFederationsError =
   | DefaultErrors
   | NotFound
   | Forbidden;
 
-/** Gets details of a single migration execution. */
-export const getProjectsLocationsServicesMigrationExecutions: API.OperationMethod<
-  GetProjectsLocationsServicesMigrationExecutionsRequest,
-  GetProjectsLocationsServicesMigrationExecutionsResponse,
-  GetProjectsLocationsServicesMigrationExecutionsError,
+/** Gets the details of a single federation. */
+export const getProjectsLocationsFederations: API.OperationMethod<
+  GetProjectsLocationsFederationsRequest,
+  GetProjectsLocationsFederationsResponse,
+  GetProjectsLocationsFederationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServicesMigrationExecutionsRequest,
-  output: GetProjectsLocationsServicesMigrationExecutionsResponse,
+  input: GetProjectsLocationsFederationsRequest,
+  output: GetProjectsLocationsFederationsResponse,
   errors: [NotFound, Forbidden],
 }));
 
-export interface DeleteProjectsLocationsServicesMigrationExecutionsRequest {
-  /** Required. The relative resource name of the migrationExecution to delete, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}. */
-  name: string;
-  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
-  requestId?: string;
+export interface TestIamPermissionsProjectsLocationsFederationsRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
 }
 
-export const DeleteProjectsLocationsServicesMigrationExecutionsRequest =
+export const TestIamPermissionsProjectsLocationsFederationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    name: Schema.String.pipe(T.HttpPath("name")),
-    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    resource: Schema.String.pipe(T.HttpPath("resource")),
+    body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+resource}:testIamPermissions",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesMigrationExecutionsRequest>;
+  ) as unknown as Schema.Codec<TestIamPermissionsProjectsLocationsFederationsRequest>;
 
-export type DeleteProjectsLocationsServicesMigrationExecutionsResponse =
-  Operation;
-export const DeleteProjectsLocationsServicesMigrationExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export type TestIamPermissionsProjectsLocationsFederationsResponse =
+  TestIamPermissionsResponse;
+export const TestIamPermissionsProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type DeleteProjectsLocationsServicesMigrationExecutionsError =
+export type TestIamPermissionsProjectsLocationsFederationsError =
   | DefaultErrors
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict;
 
-/** Deletes a single migration execution. */
-export const deleteProjectsLocationsServicesMigrationExecutions: API.OperationMethod<
-  DeleteProjectsLocationsServicesMigrationExecutionsRequest,
-  DeleteProjectsLocationsServicesMigrationExecutionsResponse,
-  DeleteProjectsLocationsServicesMigrationExecutionsError,
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const testIamPermissionsProjectsLocationsFederations: API.OperationMethod<
+  TestIamPermissionsProjectsLocationsFederationsRequest,
+  TestIamPermissionsProjectsLocationsFederationsResponse,
+  TestIamPermissionsProjectsLocationsFederationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServicesMigrationExecutionsRequest,
-  output: DeleteProjectsLocationsServicesMigrationExecutionsResponse,
+  input: TestIamPermissionsProjectsLocationsFederationsRequest,
+  output: TestIamPermissionsProjectsLocationsFederationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
-export interface ListProjectsLocationsServicesMigrationExecutionsRequest {
-  /** Optional. A page token, received from a previous DataprocMetastore.ListMigrationExecutions call. Provide this token to retrieve the subsequent page.To retrieve the first page, supply an empty page token.When paginating, other parameters provided to DataprocMetastore.ListMigrationExecutions must match the call that provided the page token. */
-  pageToken?: string;
-  /** Required. The relative resource name of the service whose migration executions to list, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions. */
+export interface CreateProjectsLocationsFederationsRequest {
+  /** Required. The relative resource name of the location in which to create a federation service, in the following form:projects/{project_number}/locations/{location_id}. */
   parent: string;
-  /** Optional. The maximum number of migration executions to return. The response may contain less than the maximum number. If unspecified, no more than 500 migration executions are returned. The maximum value is 1000; values above 1000 are changed to 1000. */
-  pageSize?: number;
-  /** Optional. The filter to apply to list results. */
-  filter?: string;
-  /** Optional. Specify the ordering of results as described in Sorting Order (https://cloud.google.com/apis/design/design_patterns#sorting_order). If not specified, the results will be sorted in the default order. */
-  orderBy?: string;
+  /** Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens. */
+  federationId?: string;
+  /** Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported. */
+  requestId?: string;
+  /** Request body */
+  body?: Federation;
 }
 
-export const ListProjectsLocationsServicesMigrationExecutionsRequest =
+export const CreateProjectsLocationsFederationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
-    pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
-    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    federationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("federationId"),
+    ),
+    requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
+    body: Schema.optional(Federation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/{+parent}/migrationExecutions" }),
+    T.Http({
+      method: "POST",
+      path: "v1beta/{+parent}/federations",
+      hasBody: true,
+    }),
     svc,
-  ) as unknown as Schema.Schema<ListProjectsLocationsServicesMigrationExecutionsRequest>;
+  ) as unknown as Schema.Codec<CreateProjectsLocationsFederationsRequest>;
 
-export type ListProjectsLocationsServicesMigrationExecutionsResponse =
-  ListMigrationExecutionsResponse;
-export const ListProjectsLocationsServicesMigrationExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMigrationExecutionsResponse;
+export type CreateProjectsLocationsFederationsResponse = Operation;
+export const CreateProjectsLocationsFederationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ListProjectsLocationsServicesMigrationExecutionsError =
+export type CreateProjectsLocationsFederationsError =
   | DefaultErrors
   | NotFound
-  | Forbidden;
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
-/** Lists migration executions on a service. */
-export const listProjectsLocationsServicesMigrationExecutions: API.PaginatedOperationMethod<
-  ListProjectsLocationsServicesMigrationExecutionsRequest,
-  ListProjectsLocationsServicesMigrationExecutionsResponse,
-  ListProjectsLocationsServicesMigrationExecutionsError,
+/** Creates a metastore federation in a project and location. */
+export const createProjectsLocationsFederations: API.OperationMethod<
+  CreateProjectsLocationsFederationsRequest,
+  CreateProjectsLocationsFederationsResponse,
+  CreateProjectsLocationsFederationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServicesMigrationExecutionsRequest,
-  output: ListProjectsLocationsServicesMigrationExecutionsResponse,
-  errors: [NotFound, Forbidden],
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  },
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateProjectsLocationsFederationsRequest,
+  output: CreateProjectsLocationsFederationsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

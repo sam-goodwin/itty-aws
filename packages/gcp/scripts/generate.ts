@@ -361,7 +361,7 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
     "// ==========================================================================",
   );
   lines.push("");
-  lines.push('import * as Schema from "effect/Schema";');
+  lines.push('import * as Schema from "@distilled.cloud/core/schema";');
   lines.push('import * as API from "../client/api.ts";');
   lines.push('import * as T from "../traits.ts";');
   lines.push("__CATEGORY_IMPORT__");
@@ -553,6 +553,31 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
 // Schema Generation
 // =============================================================================
 
+/**
+ * Maximum depth of inlined anonymous `Schema.Struct({...})` value expressions.
+ *
+ * Some GCP discovery schemas (e.g. `books-v1`'s `Volume` / `Dictlayerdata`)
+ * declare anonymous objects nested 6+ levels deep. Emitting that as a single
+ * deeply-nested `Schema.Struct({ ... Schema.Struct({ ... }) ... })` value
+ * triggers super-linear (effectively exponential) behavior in oxfmt's
+ * line-reflow algorithm — a single such file takes minutes to format and
+ * makes `bun generate` appear to hang. (The corresponding TS *type* literal
+ * formats instantly; only the value expression is pathological.)
+ *
+ * Beyond this depth we stop recursing and emit a generic `Schema.Unknown`
+ * (a passthrough at decode time). The hand-emitted `interface` keeps the full
+ * nested shape, so callers still get precise static types; only deep runtime
+ * validation is relaxed. Schemas where this cap fires are emitted with an
+ * `as any as Schema.Codec<Name>` cast since the struct's inferred `Type` no
+ * longer structurally matches the interface.
+ */
+const MAX_INLINE_SCHEMA_DEPTH = 4;
+
+interface SchemaExprContext {
+  /** Set to true when the depth cap forced a `Schema.Unknown` fallback. */
+  capped: boolean;
+}
+
 function generateSchema(
   name: string,
   schema: SchemaObject,
@@ -579,7 +604,7 @@ function generateSchema(
     lines.push("");
 
     // Generate Effect Schema. Always annotate the export with an
-    // explicit `Schema.Schema<Name>` type — without it, TS infers the
+    // explicit `Schema.Codec<Name>` type — without it, TS infers the
     // full structural type and serializes it into the .d.ts, which
     // breaks with TS7056 ("inferred type exceeds the maximum length
     // the compiler will serialize") on very wide schemas (e.g.
@@ -587,36 +612,55 @@ function generateSchema(
     // optional cross-referenced fields). Annotating short-circuits
     // serialization. Recursive schemas need `Schema.suspend` to break
     // the cycle; non-recursive ones can use `Schema.Struct` directly.
-    if (isRecursive) {
-      lines.push(
-        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
-      );
-    } else {
-      lines.push(
-        `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
-      );
-    }
+    // Build the field lines first so we know whether the depth cap fired
+    // (which decides whether the export needs an `as any` cast).
+    const ctx: SchemaExprContext = { capped: false };
+    const fieldLines: string[] = [];
     for (const [propName, propSchema] of Object.entries(schema.properties)) {
-      const schemaExpr = propertyToSchemaExpr(propSchema, allSchemas, renames);
+      const schemaExpr = propertyToSchemaExpr(
+        propSchema,
+        allSchemas,
+        renames,
+        0,
+        ctx,
+      );
       const isRequired = schema.required?.includes(propName);
       if (isRequired) {
-        lines.push(`  ${safePropName(propName)}: ${schemaExpr},`);
+        fieldLines.push(`  ${safePropName(propName)}: ${schemaExpr},`);
       } else {
-        lines.push(
+        fieldLines.push(
           `  ${safePropName(propName)}: Schema.optional(${schemaExpr}),`,
         );
       }
     }
+
+    if (isRecursive) {
+      lines.push(
+        `export const ${name}: Schema.Codec<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({`,
+      );
+    } else {
+      lines.push(
+        `export const ${name}: Schema.Codec<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+      );
+    }
+    lines.push(...fieldLines);
     if (isRecursive) {
       // Recursive schemas need the double-cast: `Schema.suspend` returns
-      // a thunk that TS can't resolve back to `Schema.Schema<Name>`
+      // a thunk that TS can't resolve back to `Schema.Codec<Name>`
       // because of the `Name → Name` cycle.
       lines.push(
-        `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Schema<${name}>;`,
+        `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Codec<${name}>;`,
+      );
+    } else if (ctx.capped) {
+      // The depth cap replaced one or more deeply-nested structs with
+      // `Schema.Unknown`, so the struct's inferred `Type` no longer
+      // structurally matches the interface — cast through `any`.
+      lines.push(
+        `}).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Codec<${name}>;`,
       );
     } else {
       // Non-recursive: the `Schema.Struct<Fields>` returned by Effect
-      // is structurally assignable to `Schema.Schema<Name>` (the
+      // is structurally assignable to `Schema.Codec<Name>` (the
       // generated `interface Name` mirrors the struct fields), so the
       // explicit type annotation on `export const` is enough — no cast
       // needed.
@@ -638,7 +682,7 @@ function generateSchema(
     );
     lines.push(`export type ${name} = Record<string, ${valType}>;`);
     lines.push(
-      `export const ${name}: Schema.Schema<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, ${valSchema}) as any as Schema.Schema<${name}>;`,
+      `export const ${name}: Schema.Codec<${name}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Record(Schema.String, ${valSchema}) as any as Schema.Codec<${name}>;`,
     );
   } else if (schema.enum) {
     // Enum type - open union
@@ -729,8 +773,12 @@ function propertyToSchemaExpr(
   prop: PropertySchema,
   allSchemas: Record<string, SchemaObject>,
   renames?: Map<string, string>,
+  depth: number = 0,
+  ctx?: SchemaExprContext,
 ): string {
   if (prop.$ref) {
+    // A `$ref` resolves to a named top-level schema, so it doesn't deepen the
+    // inline expression regardless of how nested the referenced schema is.
     return renames?.get(prop.$ref) ?? prop.$ref;
   }
 
@@ -752,19 +800,26 @@ function propertyToSchemaExpr(
 
     case "array":
       if (prop.items) {
-        return `Schema.Array(${propertyToSchemaExpr(prop.items, allSchemas, renames)})`;
+        return `Schema.Array(${propertyToSchemaExpr(prop.items, allSchemas, renames, depth + 1, ctx)})`;
       }
       return "Schema.Array(Schema.Unknown)";
 
     case "object":
       if (prop.additionalProperties) {
-        return `Schema.Record(Schema.String, ${propertyToSchemaExpr(prop.additionalProperties, allSchemas, renames)})`;
+        return `Schema.Record(Schema.String, ${propertyToSchemaExpr(prop.additionalProperties, allSchemas, renames, depth + 1, ctx)})`;
       }
       if (prop.properties) {
+        // Cap inline struct nesting — see MAX_INLINE_SCHEMA_DEPTH. Beyond the
+        // cap we emit a passthrough `Schema.Unknown` instead of recursing into
+        // another `Schema.Struct({...})`, which is what makes oxfmt blow up.
+        if (depth >= MAX_INLINE_SCHEMA_DEPTH) {
+          if (ctx) ctx.capped = true;
+          return "Schema.Unknown";
+        }
         const fields = Object.entries(prop.properties)
           .map(
             ([k, v]) =>
-              `${safePropName(k)}: Schema.optional(${propertyToSchemaExpr(v, allSchemas, renames)})`,
+              `${safePropName(k)}: Schema.optional(${propertyToSchemaExpr(v, allSchemas, renames, depth + 1, ctx)})`,
           )
           .join(", ");
         return `Schema.Struct({ ${fields} })`;
@@ -1037,7 +1092,7 @@ function generateOperation(
     `  T.Http({ method: ${JSON.stringify(op.httpMethod)}, path: ${JSON.stringify(op.path)}${resolvedRequestRef || op.httpMethod === "POST" || op.httpMethod === "PUT" || op.httpMethod === "PATCH" ? ", hasBody: true" : ""} }),`,
   );
   lines.push(`  svc,`);
-  lines.push(`) as unknown as Schema.Schema<${inputName}>;`);
+  lines.push(`) as unknown as Schema.Codec<${inputName}>;`);
   lines.push("");
 
   // Generate response type and schema
@@ -1049,7 +1104,7 @@ function generateOperation(
   } else {
     lines.push(`export interface ${outputName} {}`);
     lines.push(
-      `export const ${outputName}: Schema.Schema<${outputName}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}) as any as Schema.Schema<${outputName}>;`,
+      `export const ${outputName}: Schema.Codec<${outputName}> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}) as any as Schema.Codec<${outputName}>;`,
     );
   }
   lines.push("");

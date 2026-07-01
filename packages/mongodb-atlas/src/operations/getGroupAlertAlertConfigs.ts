@@ -4,6 +4,15 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetGroupAlertAlertConfigsInput {
+  groupId: string;
+  alertId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  includeCount?: boolean;
+  itemsPerPage?: number;
+  pageNum?: number;
+}
 export const GetGroupAlertAlertConfigsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -18,21 +27,18 @@ export const GetGroupAlertAlertConfigsInput =
       method: "GET",
       path: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs",
     }),
-  );
-export type GetGroupAlertAlertConfigsInput =
-  typeof GetGroupAlertAlertConfigsInput.Type;
+  ) as unknown as Schema.Codec<GetGroupAlertAlertConfigsInput>;
 
 // Output Schema
+export type GetGroupAlertAlertConfigsOutput = void;
 export const GetGroupAlertAlertConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type GetGroupAlertAlertConfigsOutput =
-  typeof GetGroupAlertAlertConfigsOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertAlertConfigsOutput>;
 
 // The operation
 /**
  * Return All Alert Configurations Set for One Alert
  *
- * Returns all alert configurations set for the specified alert. To use this resource, the requesting Service Account or API Key must have the Project Read Only role. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
+ * Returns all alert configurations set for the specified alert. Use the Return All Alerts from One Project endpoint to retrieve all alerts to which the authenticated user has access.
  * This resource remains under revision and may change.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

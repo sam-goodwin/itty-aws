@@ -4,41 +4,56 @@ import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationApiKeysControllerCreateInput {
+  organizationId: string;
+  name?: string;
+  permissions?: string[];
+  expires_at?: string;
+}
 export const OrganizationApiKeysControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     permissions: Schema.optional(Schema.Array(Schema.String)),
+    expires_at: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/organizations/{organizationId}/api_keys",
     }),
-  );
-export type OrganizationApiKeysControllerCreateInput =
-  typeof OrganizationApiKeysControllerCreateInput.Type;
+  ) as unknown as Schema.Codec<OrganizationApiKeysControllerCreateInput>;
 
 // Output Schema
+export interface OrganizationApiKeysControllerCreateOutput {
+  object: string;
+  id: string;
+  owner: { type: string; id: string };
+  name: string;
+  obfuscated_value: string;
+  last_used_at: string | null;
+  expires_at: string | null;
+  permissions: string[];
+  created_at: string;
+  updated_at: string;
+  value: string;
+}
 export const OrganizationApiKeysControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.optional(Schema.String),
-    id: Schema.optional(Schema.String),
-    owner: Schema.optional(
-      Schema.Struct({
-        type: Schema.String,
-        id: Schema.String,
-      }),
-    ),
-    name: Schema.optional(Schema.String),
-    obfuscated_value: Schema.optional(Schema.String),
-    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-    permissions: Schema.optional(Schema.Array(Schema.String)),
-    created_at: Schema.optional(Schema.String),
-    updated_at: Schema.optional(Schema.String),
-    value: Schema.optional(Schema.String),
-  });
-export type OrganizationApiKeysControllerCreateOutput =
-  typeof OrganizationApiKeysControllerCreateOutput.Type;
+    object: Schema.String,
+    id: Schema.String,
+    owner: Schema.Struct({
+      type: Schema.String,
+      id: Schema.String,
+    }),
+    name: Schema.String,
+    obfuscated_value: Schema.String,
+    last_used_at: Schema.NullOr(Schema.String),
+    expires_at: Schema.NullOr(Schema.String),
+    permissions: Schema.Array(Schema.String),
+    created_at: Schema.String,
+    updated_at: Schema.String,
+    value: Schema.String,
+  }) as unknown as Schema.Codec<OrganizationApiKeysControllerCreateOutput>;
 
 // The operation
 /**

@@ -4,6 +4,14 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteGroupClusterGlobalWriteManagedNamespacesInput {
+  clusterName: string;
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+  db?: string;
+  collection?: string;
+}
 export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -17,21 +25,18 @@ export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
       method: "DELETE",
       path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
     }),
-  );
-export type DeleteGroupClusterGlobalWriteManagedNamespacesInput =
-  typeof DeleteGroupClusterGlobalWriteManagedNamespacesInput.Type;
+  ) as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesInput>;
 
 // Output Schema
+export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput = void;
 export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  typeof DeleteGroupClusterGlobalWriteManagedNamespacesOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesOutput>;
 
 // The operation
 /**
  * Remove One Managed Namespace from One Global Cluster
  *
- * Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. To use this resource, the requesting Service Account or API Key must have the Project Data Access Admin role. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+ * Removes one managed namespace within the specified global cluster. A managed namespace identifies a collection using the database name, the dot separator, and the collection name. Deleting a managed namespace does not remove the associated collection or data. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.

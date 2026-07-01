@@ -10,6 +10,11 @@ import {
 } from "../errors.ts";
 
 // Input Schema
+export interface UpgradeGroupClusterTenantUpgradeInput {
+  groupId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const UpgradeGroupClusterTenantUpgradeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
@@ -20,21 +25,18 @@ export const UpgradeGroupClusterTenantUpgradeInput =
       method: "POST",
       path: "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade",
     }),
-  );
-export type UpgradeGroupClusterTenantUpgradeInput =
-  typeof UpgradeGroupClusterTenantUpgradeInput.Type;
+  ) as unknown as Schema.Codec<UpgradeGroupClusterTenantUpgradeInput>;
 
 // Output Schema
+export type UpgradeGroupClusterTenantUpgradeOutput = void;
 export const UpgradeGroupClusterTenantUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type UpgradeGroupClusterTenantUpgradeOutput =
-  typeof UpgradeGroupClusterTenantUpgradeOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpgradeGroupClusterTenantUpgradeOutput>;
 
 // The operation
 /**
  * Upgrade One Shared-Tier Cluster
  *
- * Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. To use this resource, the requesting Service Account or API Key must have the Project Cluster Manager role. Each project supports up to 25 clusters.
+ * Upgrades a shared-tier cluster to a Flex or Dedicated (M10+) cluster in the specified project. Each project supports up to 25 clusters.
  * This endpoint can also be used to upgrade Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) API or former M2/M5 clusters that have been migrated to Flex clusters, using `instanceSizeName` to “M2” or “M5” until January 2026. This functionality will be available until January 22, 2026, after which it will only be available for M0 clusters. Please use the Upgrade Flex Cluster endpoint instead.
  *
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.

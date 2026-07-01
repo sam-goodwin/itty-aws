@@ -5,7 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service web3
  */
 
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -49,6 +49,125 @@ export class Web3HostnameNotFound extends T.applyErrorMatchers(
 ) {}
 
 // =============================================================================
+// Shared nested schemas (hoisted, module-private)
+// =============================================================================
+
+interface ListHostnamesResponseResult {
+  /** Specify the identifier of the hostname. */
+  id?: string | null;
+  createdOn?: string | null;
+  /** Specify an optional description of the hostname. */
+  description?: string | null;
+  /** Specify the DNSLink value used if the target is ipfs. */
+  dnslink?: string | null;
+  modifiedOn?: string | null;
+  /** Specify the hostname that points to the target gateway via CNAME. */
+  name?: string | null;
+  /** Specifies the status of the hostname's activation. */
+  status?: "active" | "pending" | "deleting" | "error" | (string & {}) | null;
+  /** Specify the target gateway of the hostname. */
+  target?: "ethereum" | "ipfs" | "ipfs_universal_path" | (string & {}) | null;
+}
+const ListHostnamesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      dnslink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["active", "pending", "deleting", "error"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      target: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        dnslink: "dnslink",
+        modifiedOn: "modified_on",
+        name: "name",
+        status: "status",
+        target: "target",
+      }),
+    ),
+) as unknown as Schema.Codec<ListHostnamesResponseResult>;
+
+interface Entry {
+  /** Specify the CID or content path of content to block. */
+  content?: string | null;
+  /** Specify an optional description of the content list entry. */
+  description?: string | null;
+  /** Specify the type of content list entry to block. */
+  type?: "cid" | "content_path" | (string & {}) | null;
+}
+const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<Entry>;
+
+interface Entry2 {
+  /** Specify the identifier of the hostname. */
+  id?: string | null;
+  /** Specify the CID or content path of content to block. */
+  content?: string | null;
+  createdOn?: string | null;
+  /** Specify an optional description of the content list entry. */
+  description?: string | null;
+  modifiedOn?: string | null;
+  /** Specify the type of content list entry to block. */
+  type?: "cid" | "content_path" | (string & {}) | null;
+}
+const Entry2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["cid", "content_path"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      content: "content",
+      createdOn: "created_on",
+      description: "description",
+      modifiedOn: "modified_on",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<Entry2>;
+
+// =============================================================================
 // Hostname
 // =============================================================================
 
@@ -69,7 +188,7 @@ export const GetHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/web3/hostnames/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<GetHostnameRequest>;
+) as unknown as Schema.Codec<GetHostnameRequest>;
 
 export interface GetHostnameResponse {
   /** Specify the identifier of the hostname. */
@@ -129,7 +248,7 @@ export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<GetHostnameResponse>;
+) as unknown as Schema.Codec<GetHostnameResponse>;
 
 export type GetHostnameError = DefaultErrors | Web3HostnameNotFound | Forbidden;
 
@@ -154,7 +273,7 @@ export const ListHostnamesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/web3/hostnames" })),
-) as unknown as Schema.Schema<ListHostnamesRequest>;
+) as unknown as Schema.Codec<ListHostnamesRequest>;
 
 export interface ListHostnamesResponse {
   result: {
@@ -172,53 +291,9 @@ export interface ListHostnamesResponse {
 export const ListHostnamesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      result: Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          createdOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          dnslink: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          modifiedOn: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          status: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["active", "pending", "deleting", "error"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-          target: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["ethereum", "ipfs", "ipfs_universal_path"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            createdOn: "created_on",
-            description: "description",
-            dnslink: "dnslink",
-            modifiedOn: "modified_on",
-            name: "name",
-            status: "status",
-            target: "target",
-          }),
-        ),
-      ),
+      result: Schema.Array(ListHostnamesResponseResult),
     }),
-) as unknown as Schema.Schema<ListHostnamesResponse>;
+) as unknown as Schema.Codec<ListHostnamesResponse>;
 
 export type ListHostnamesError = DefaultErrors | Forbidden;
 
@@ -264,7 +339,7 @@ export const CreateHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     }).pipe(
       T.Http({ method: "POST", path: "/zones/{zone_id}/web3/hostnames" }),
     ),
-) as unknown as Schema.Schema<CreateHostnameRequest>;
+) as unknown as Schema.Codec<CreateHostnameRequest>;
 
 export interface CreateHostnameResponse {
   /** Specify the identifier of the hostname. */
@@ -324,7 +399,7 @@ export const CreateHostnameResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateHostnameResponse>;
+  ) as unknown as Schema.Codec<CreateHostnameResponse>;
 
 export type CreateHostnameError =
   | DefaultErrors
@@ -365,7 +440,7 @@ export const PatchHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/web3/hostnames/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<PatchHostnameRequest>;
+) as unknown as Schema.Codec<PatchHostnameRequest>;
 
 export interface PatchHostnameResponse {
   /** Specify the identifier of the hostname. */
@@ -425,7 +500,7 @@ export const PatchHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         }),
       )
       .pipe(T.ResponsePath("result")),
-) as unknown as Schema.Schema<PatchHostnameResponse>;
+) as unknown as Schema.Codec<PatchHostnameResponse>;
 
 export type PatchHostnameError =
   | DefaultErrors
@@ -460,7 +535,7 @@ export const DeleteHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         path: "/zones/{zone_id}/web3/hostnames/{identifier}",
       }),
     ),
-) as unknown as Schema.Schema<DeleteHostnameRequest>;
+) as unknown as Schema.Codec<DeleteHostnameRequest>;
 
 export interface DeleteHostnameResponse {
   /** Specify the identifier of the hostname. */
@@ -472,7 +547,7 @@ export const DeleteHostnameResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteHostnameResponse>;
+  ) as unknown as Schema.Codec<DeleteHostnameResponse>;
 
 export type DeleteHostnameError =
   | DefaultErrors
@@ -511,7 +586,7 @@ export const GetHostnameIpfsUniversalPathContentListRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
       }),
     ),
-  ) as unknown as Schema.Schema<GetHostnameIpfsUniversalPathContentListRequest>;
+  ) as unknown as Schema.Codec<GetHostnameIpfsUniversalPathContentListRequest>;
 
 export interface GetHostnameIpfsUniversalPathContentListResponse {
   /** Behavior of the content list. */
@@ -525,7 +600,7 @@ export const GetHostnameIpfsUniversalPathContentListResponse =
         Schema.Union([Schema.Literal("block"), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetHostnameIpfsUniversalPathContentListResponse>;
+  ) as unknown as Schema.Codec<GetHostnameIpfsUniversalPathContentListResponse>;
 
 export type GetHostnameIpfsUniversalPathContentListError =
   | DefaultErrors
@@ -564,25 +639,14 @@ export const PutHostnameIpfsUniversalPathContentListRequest =
       identifier: Schema.String.pipe(T.HttpPath("identifier")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       action: Schema.Literal("block"),
-      entries: Schema.Array(
-        Schema.Struct({
-          content: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["cid", "content_path"]),
-              Schema.String,
-            ]),
-          ),
-        }),
-      ),
+      entries: Schema.Array(Entry),
     }).pipe(
       T.Http({
         method: "PUT",
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
       }),
     ),
-  ) as unknown as Schema.Schema<PutHostnameIpfsUniversalPathContentListRequest>;
+  ) as unknown as Schema.Codec<PutHostnameIpfsUniversalPathContentListRequest>;
 
 export interface PutHostnameIpfsUniversalPathContentListResponse {
   /** Behavior of the content list. */
@@ -596,7 +660,7 @@ export const PutHostnameIpfsUniversalPathContentListResponse =
         Schema.Union([Schema.Literal("block"), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
+  ) as unknown as Schema.Codec<PutHostnameIpfsUniversalPathContentListResponse>;
 
 export type PutHostnameIpfsUniversalPathContentListError =
   | DefaultErrors
@@ -640,7 +704,7 @@ export const GetHostnameIpfsUniversalPathContentListEntryRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{contentListEntryIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<GetHostnameIpfsUniversalPathContentListEntryRequest>;
+  ) as unknown as Schema.Codec<GetHostnameIpfsUniversalPathContentListEntryRequest>;
 
 export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
@@ -684,7 +748,7 @@ export const GetHostnameIpfsUniversalPathContentListEntryResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<GetHostnameIpfsUniversalPathContentListEntryResponse>;
+  ) as unknown as Schema.Codec<GetHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export type GetHostnameIpfsUniversalPathContentListEntryError = DefaultErrors;
 
@@ -716,7 +780,7 @@ export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
       }),
     ),
-  ) as unknown as Schema.Schema<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
+  ) as unknown as Schema.Codec<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
 
 export interface ListHostnameIpfsUniversalPathContentListEntriesResponse {
   /** Provides content list entries. */
@@ -736,47 +800,10 @@ export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entries: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              content: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              createdOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              description: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              modifiedOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              type: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["cid", "content_path"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                content: "content",
-                createdOn: "created_on",
-                description: "description",
-                modifiedOn: "modified_on",
-                type: "type",
-              }),
-            ),
-          ),
-          Schema.Null,
-        ]),
+        Schema.Union([Schema.Array(Entry2), Schema.Null]),
       ),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<ListHostnameIpfsUniversalPathContentListEntriesResponse>;
+  ) as unknown as Schema.Codec<ListHostnameIpfsUniversalPathContentListEntriesResponse>;
 
 export type ListHostnameIpfsUniversalPathContentListEntriesError =
   | DefaultErrors
@@ -824,7 +851,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
       }),
     ),
-  ) as unknown as Schema.Schema<CreateHostnameIpfsUniversalPathContentListEntryRequest>;
+  ) as unknown as Schema.Codec<CreateHostnameIpfsUniversalPathContentListEntryRequest>;
 
 export interface CreateHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
@@ -868,7 +895,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<CreateHostnameIpfsUniversalPathContentListEntryResponse>;
+  ) as unknown as Schema.Codec<CreateHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export type CreateHostnameIpfsUniversalPathContentListEntryError =
   DefaultErrors;
@@ -917,7 +944,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{contentListEntryIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<UpdateHostnameIpfsUniversalPathContentListEntryRequest>;
+  ) as unknown as Schema.Codec<UpdateHostnameIpfsUniversalPathContentListEntryRequest>;
 
 export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
@@ -961,7 +988,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;
+  ) as unknown as Schema.Codec<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export type UpdateHostnameIpfsUniversalPathContentListEntryError =
   DefaultErrors;
@@ -998,7 +1025,7 @@ export const DeleteHostnameIpfsUniversalPathContentListEntryRequest =
         path: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{contentListEntryIdentifier}",
       }),
     ),
-  ) as unknown as Schema.Schema<DeleteHostnameIpfsUniversalPathContentListEntryRequest>;
+  ) as unknown as Schema.Codec<DeleteHostnameIpfsUniversalPathContentListEntryRequest>;
 
 export interface DeleteHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
@@ -1010,7 +1037,7 @@ export const DeleteHostnameIpfsUniversalPathContentListEntryResponse =
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Schema<DeleteHostnameIpfsUniversalPathContentListEntryResponse>;
+  ) as unknown as Schema.Codec<DeleteHostnameIpfsUniversalPathContentListEntryResponse>;
 
 export type DeleteHostnameIpfsUniversalPathContentListEntryError =
   DefaultErrors;

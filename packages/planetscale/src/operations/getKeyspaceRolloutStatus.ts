@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface GetKeyspaceRolloutStatusInput {
+  organization: string;
+  database: string;
+  branch: string;
+  keyspace: string;
+}
 export const GetKeyspaceRolloutStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
@@ -15,11 +21,19 @@ export const GetKeyspaceRolloutStatusInput =
       method: "GET",
       path: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/rollout-status",
     }),
-  );
-export type GetKeyspaceRolloutStatusInput =
-  typeof GetKeyspaceRolloutStatusInput.Type;
+  ) as unknown as Schema.Codec<GetKeyspaceRolloutStatusInput>;
 
 // Output Schema
+export interface GetKeyspaceRolloutStatusOutput {
+  name: string;
+  state: string;
+  shards: {
+    name: string;
+    last_rollout_started_at: string;
+    last_rollout_finished_at: string;
+    state: string;
+  }[];
+}
 export const GetKeyspaceRolloutStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
@@ -32,9 +46,7 @@ export const GetKeyspaceRolloutStatusOutput =
         state: Schema.String,
       }),
     ),
-  });
-export type GetKeyspaceRolloutStatusOutput =
-  typeof GetKeyspaceRolloutStatusOutput.Type;
+  }) as unknown as Schema.Codec<GetKeyspaceRolloutStatusOutput>;
 
 // The operation
 /**

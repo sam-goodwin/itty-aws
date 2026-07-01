@@ -4,13 +4,35 @@ import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
 
 // Input Schema
+export interface AppsListInput {
+  org_slug: string;
+  app_role?: string;
+}
 export const AppsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_slug: Schema.String,
   app_role: Schema.optional(Schema.String),
-}).pipe(T.Http({ method: "GET", path: "/apps" }));
-export type AppsListInput = typeof AppsListInput.Type;
+}).pipe(
+  T.Http({ method: "GET", path: "/apps" }),
+) as unknown as Schema.Codec<AppsListInput>;
 
 // Output Schema
+export interface AppsListOutput {
+  apps?: {
+    id?: string;
+    internal_numeric_id?: number;
+    machine_count?: number;
+    name?: string;
+    network?: string;
+    organization?: {
+      internal_numeric_id?: number;
+      name?: string;
+      slug?: string;
+    };
+    status?: string;
+    volume_count?: number;
+  }[];
+  total_apps?: number;
+}
 export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   apps: Schema.optional(
     Schema.Array(
@@ -33,8 +55,7 @@ export const AppsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   total_apps: Schema.optional(Schema.Number),
-});
-export type AppsListOutput = typeof AppsListOutput.Type;
+}) as unknown as Schema.Codec<AppsListOutput>;
 
 // The operation
 /**

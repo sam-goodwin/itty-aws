@@ -3,6 +3,10 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface GetRadarValueListsValueListInput {
+  value_list: string;
+  expand?: string;
+}
 export const GetRadarValueListsValueListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     value_list: Schema.String.pipe(T.PathParam()),
@@ -13,11 +17,46 @@ export const GetRadarValueListsValueListInput =
       path: "/v1/radar/value_lists/{value_list}",
       contentType: "form-urlencoded",
     }),
-  );
-export type GetRadarValueListsValueListInput =
-  typeof GetRadarValueListsValueListInput.Type;
+  ) as unknown as Schema.Codec<GetRadarValueListsValueListInput>;
 
 // Output Schema
+export interface GetRadarValueListsValueListOutput {
+  alias: string;
+  created: number;
+  created_by: string;
+  id: string;
+  item_type:
+    | "account"
+    | "card_bin"
+    | "card_fingerprint"
+    | "case_sensitive_string"
+    | "country"
+    | "crypto_fingerprint"
+    | "customer_id"
+    | "email"
+    | "ip_address"
+    | "sepa_debit_fingerprint"
+    | "string"
+    | "us_bank_account_fingerprint";
+  list_items: {
+    data: {
+      created: number;
+      created_by: string;
+      id: string;
+      livemode: boolean;
+      object: "radar.value_list_item";
+      value: string;
+      value_list: string;
+    }[];
+    has_more: boolean;
+    object: "list";
+    url: string;
+  };
+  livemode: boolean;
+  metadata: Record<string, string>;
+  name: string;
+  object: "radar.value_list";
+}
 export const GetRadarValueListsValueListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     alias: Schema.String,
@@ -25,6 +64,7 @@ export const GetRadarValueListsValueListOutput =
     created_by: Schema.String,
     id: Schema.String,
     item_type: Schema.Literals([
+      "account",
       "card_bin",
       "card_fingerprint",
       "case_sensitive_string",
@@ -57,9 +97,7 @@ export const GetRadarValueListsValueListOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     name: Schema.String,
     object: Schema.Literals(["radar.value_list"]),
-  });
-export type GetRadarValueListsValueListOutput =
-  typeof GetRadarValueListsValueListOutput.Type;
+  }) as unknown as Schema.Codec<GetRadarValueListsValueListOutput>;
 
 // The operation
 /**

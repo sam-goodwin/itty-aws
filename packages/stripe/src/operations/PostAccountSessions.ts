@@ -1,9 +1,139 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
+import * as Redacted from "effect/Redacted";
 
 // Input Schema
+export interface PostAccountSessionsInput {
+  account: string;
+  components: {
+    account_management?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        external_account_collection?: boolean;
+      };
+    };
+    account_onboarding?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        external_account_collection?: boolean;
+      };
+    };
+    balance_report?: { enabled: boolean; features?: {} };
+    balances?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        edit_payout_schedule?: boolean;
+        external_account_collection?: boolean;
+        instant_payouts?: boolean;
+        standard_payouts?: boolean;
+      };
+    };
+    disputes_list?: {
+      enabled: boolean;
+      features?: {
+        capture_payments?: boolean;
+        destination_on_behalf_of_charge_management?: boolean;
+        dispute_management?: boolean;
+        refund_management?: boolean;
+      };
+    };
+    documents?: { enabled: boolean; features?: {} };
+    financial_account?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        external_account_collection?: boolean;
+        send_money?: boolean;
+        transfer_balance?: boolean;
+      };
+    };
+    financial_account_transactions?: {
+      enabled: boolean;
+      features?: { card_spend_dispute_management?: boolean };
+    };
+    instant_payouts_promotion?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        external_account_collection?: boolean;
+        instant_payouts?: boolean;
+      };
+    };
+    issuing_card?: {
+      enabled: boolean;
+      features?: {
+        card_management?: boolean;
+        card_spend_dispute_management?: boolean;
+        cardholder_management?: boolean;
+        spend_control_management?: boolean;
+      };
+    };
+    issuing_cards_list?: {
+      enabled: boolean;
+      features?: {
+        card_management?: boolean;
+        card_spend_dispute_management?: boolean;
+        cardholder_management?: boolean;
+        disable_stripe_user_authentication?: boolean;
+        spend_control_management?: boolean;
+      };
+    };
+    notification_banner?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        external_account_collection?: boolean;
+      };
+    };
+    payment_details?: {
+      enabled: boolean;
+      features?: {
+        capture_payments?: boolean;
+        destination_on_behalf_of_charge_management?: boolean;
+        dispute_management?: boolean;
+        refund_management?: boolean;
+      };
+    };
+    payment_disputes?: {
+      enabled: boolean;
+      features?: {
+        destination_on_behalf_of_charge_management?: boolean;
+        dispute_management?: boolean;
+        refund_management?: boolean;
+      };
+    };
+    payments?: {
+      enabled: boolean;
+      features?: {
+        capture_payments?: boolean;
+        destination_on_behalf_of_charge_management?: boolean;
+        dispute_management?: boolean;
+        refund_management?: boolean;
+      };
+    };
+    payout_details?: { enabled: boolean; features?: {} };
+    payout_reconciliation_report?: { enabled: boolean; features?: {} };
+    payouts?: {
+      enabled: boolean;
+      features?: {
+        disable_stripe_user_authentication?: boolean;
+        edit_payout_schedule?: boolean;
+        external_account_collection?: boolean;
+        instant_payouts?: boolean;
+        standard_payouts?: boolean;
+      };
+    };
+    payouts_list?: { enabled: boolean; features?: {} };
+    tax_registrations?: { enabled: boolean; features?: {} };
+    tax_settings?: { enabled: boolean; features?: {} };
+  };
+  expand?: string[];
+}
 export const PostAccountSessionsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
@@ -32,6 +162,12 @@ export const PostAccountSessionsInput =
               external_account_collection: Schema.optional(Schema.Boolean),
             }),
           ),
+        }),
+      ),
+      balance_report: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          features: Schema.optional(Schema.Struct({})),
         }),
       ),
       balances: Schema.optional(
@@ -202,6 +338,12 @@ export const PostAccountSessionsInput =
           features: Schema.optional(Schema.Struct({})),
         }),
       ),
+      payout_reconciliation_report: Schema.optional(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+          features: Schema.optional(Schema.Struct({})),
+        }),
+      ),
       payouts: Schema.optional(
         Schema.Struct({
           enabled: Schema.Boolean,
@@ -244,14 +386,145 @@ export const PostAccountSessionsInput =
       path: "/v1/account_sessions",
       contentType: "form-urlencoded",
     }),
-  );
-export type PostAccountSessionsInput = typeof PostAccountSessionsInput.Type;
+  ) as unknown as Schema.Codec<PostAccountSessionsInput>;
 
 // Output Schema
+export interface PostAccountSessionsOutput {
+  account: string;
+  client_secret: Redacted.Redacted<string>;
+  components: {
+    account_management: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        external_account_collection: boolean;
+      };
+    };
+    account_onboarding: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        external_account_collection: boolean;
+      };
+    };
+    balance_report: { enabled: boolean; features: {} };
+    balances: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        edit_payout_schedule: boolean;
+        external_account_collection: boolean;
+        instant_payouts: boolean;
+        standard_payouts: boolean;
+      };
+    };
+    disputes_list: {
+      enabled: boolean;
+      features: {
+        capture_payments: boolean;
+        destination_on_behalf_of_charge_management: boolean;
+        dispute_management: boolean;
+        refund_management: boolean;
+      };
+    };
+    documents: { enabled: boolean; features: {} };
+    financial_account: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        external_account_collection: boolean;
+        send_money: boolean;
+        transfer_balance: boolean;
+      };
+    };
+    financial_account_transactions: {
+      enabled: boolean;
+      features: { card_spend_dispute_management: boolean };
+    };
+    instant_payouts_promotion: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        external_account_collection: boolean;
+        instant_payouts: boolean;
+      };
+    };
+    issuing_card: {
+      enabled: boolean;
+      features: {
+        card_management: boolean;
+        card_spend_dispute_management: boolean;
+        cardholder_management: boolean;
+        spend_control_management: boolean;
+      };
+    };
+    issuing_cards_list: {
+      enabled: boolean;
+      features: {
+        card_management: boolean;
+        card_spend_dispute_management: boolean;
+        cardholder_management: boolean;
+        disable_stripe_user_authentication: boolean;
+        spend_control_management: boolean;
+      };
+    };
+    notification_banner: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        external_account_collection: boolean;
+      };
+    };
+    payment_details: {
+      enabled: boolean;
+      features: {
+        capture_payments: boolean;
+        destination_on_behalf_of_charge_management: boolean;
+        dispute_management: boolean;
+        refund_management: boolean;
+      };
+    };
+    payment_disputes: {
+      enabled: boolean;
+      features: {
+        destination_on_behalf_of_charge_management: boolean;
+        dispute_management: boolean;
+        refund_management: boolean;
+      };
+    };
+    payments: {
+      enabled: boolean;
+      features: {
+        capture_payments: boolean;
+        destination_on_behalf_of_charge_management: boolean;
+        dispute_management: boolean;
+        refund_management: boolean;
+      };
+    };
+    payout_details: { enabled: boolean; features: {} };
+    payout_reconciliation_report: { enabled: boolean; features: {} };
+    payouts: {
+      enabled: boolean;
+      features: {
+        disable_stripe_user_authentication: boolean;
+        edit_payout_schedule: boolean;
+        external_account_collection: boolean;
+        instant_payouts: boolean;
+        standard_payouts: boolean;
+      };
+    };
+    payouts_list: { enabled: boolean; features: {} };
+    tax_registrations: { enabled: boolean; features: {} };
+    tax_settings: { enabled: boolean; features: {} };
+  };
+  expires_at: number;
+  livemode: boolean;
+  object: "account_session";
+}
 export const PostAccountSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
-    client_secret: SensitiveString,
+    client_secret: SensitiveOutputString,
     components: Schema.Struct({
       account_management: Schema.Struct({
         enabled: Schema.Boolean,
@@ -266,6 +539,10 @@ export const PostAccountSessionsOutput =
           disable_stripe_user_authentication: Schema.Boolean,
           external_account_collection: Schema.Boolean,
         }),
+      }),
+      balance_report: Schema.Struct({
+        enabled: Schema.Boolean,
+        features: Schema.Struct({}),
       }),
       balances: Schema.Struct({
         enabled: Schema.Boolean,
@@ -369,6 +646,10 @@ export const PostAccountSessionsOutput =
         enabled: Schema.Boolean,
         features: Schema.Struct({}),
       }),
+      payout_reconciliation_report: Schema.Struct({
+        enabled: Schema.Boolean,
+        features: Schema.Struct({}),
+      }),
       payouts: Schema.Struct({
         enabled: Schema.Boolean,
         features: Schema.Struct({
@@ -395,8 +676,7 @@ export const PostAccountSessionsOutput =
     expires_at: Schema.Number,
     livemode: Schema.Boolean,
     object: Schema.Literals(["account_session"]),
-  });
-export type PostAccountSessionsOutput = typeof PostAccountSessionsOutput.Type;
+  }) as unknown as Schema.Codec<PostAccountSessionsOutput>;
 
 // The operation
 /**

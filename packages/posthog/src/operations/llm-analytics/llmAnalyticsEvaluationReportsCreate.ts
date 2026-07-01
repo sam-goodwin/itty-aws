@@ -1,9 +1,29 @@
 import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
-import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface LlmAnalyticsEvaluationReportsCreateInput {
+  project_id: string;
+  id?: string;
+  evaluation?: string;
+  frequency?: "scheduled" | "every_n";
+  rrule?: string;
+  starts_at?: string | null;
+  timezone_name?: string;
+  next_delivery_date?: string | null;
+  delivery_targets?: unknown;
+  max_sample_size?: number;
+  enabled?: boolean;
+  deleted?: boolean;
+  last_delivered_at?: string | null;
+  report_prompt_guidance?: string;
+  trigger_threshold?: number | null;
+  cooldown_minutes?: number;
+  daily_run_cap?: number;
+  created_by?: number | null;
+  created_at?: string;
+}
 export const LlmAnalyticsEvaluationReportsCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -28,13 +48,31 @@ export const LlmAnalyticsEvaluationReportsCreateInput =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/api/environments/{project_id}/llm_analytics/evaluation_reports/",
+      path: "/api/projects/{project_id}/llm_analytics/evaluation_reports/",
     }),
-  );
-export type LlmAnalyticsEvaluationReportsCreateInput =
-  typeof LlmAnalyticsEvaluationReportsCreateInput.Type;
+  ) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsCreateInput>;
 
 // Output Schema
+export interface LlmAnalyticsEvaluationReportsCreateOutput {
+  id?: string;
+  evaluation?: string;
+  frequency?: "scheduled" | "every_n";
+  rrule?: string;
+  starts_at?: string | null;
+  timezone_name?: string;
+  next_delivery_date?: string | null;
+  delivery_targets?: unknown;
+  max_sample_size?: number;
+  enabled?: boolean;
+  deleted?: boolean;
+  last_delivered_at?: string | null;
+  report_prompt_guidance?: string;
+  trigger_threshold?: number | null;
+  cooldown_minutes?: number;
+  daily_run_cap?: number;
+  created_by?: number | null;
+  created_at?: string;
+}
 export const LlmAnalyticsEvaluationReportsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
@@ -55,9 +93,7 @@ export const LlmAnalyticsEvaluationReportsCreateOutput =
     daily_run_cap: Schema.optional(Schema.Number),
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     created_at: Schema.optional(Schema.String),
-  });
-export type LlmAnalyticsEvaluationReportsCreateOutput =
-  typeof LlmAnalyticsEvaluationReportsCreateOutput.Type;
+  }) as unknown as Schema.Codec<LlmAnalyticsEvaluationReportsCreateOutput>;
 
 // The operation
 /**
@@ -69,5 +105,4 @@ export const llmAnalyticsEvaluationReportsCreate =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsEvaluationReportsCreateInput,
     outputSchema: LlmAnalyticsEvaluationReportsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
   }));

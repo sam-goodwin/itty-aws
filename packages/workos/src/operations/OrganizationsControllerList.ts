@@ -4,19 +4,59 @@ import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
+export interface OrganizationsControllerListInput {
+  before?: string;
+  after?: string;
+  limit?: number;
+  order?: string;
+  domains?: string;
+  search?: string;
+}
 export const OrganizationsControllerListInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
-    order: Schema.optional(Schema.Literals(["normal", "desc", "asc"])),
+    order: Schema.optional(Schema.String),
     domains: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
-  }).pipe(T.Http({ method: "GET", path: "/organizations" }));
-export type OrganizationsControllerListInput =
-  typeof OrganizationsControllerListInput.Type;
+  }).pipe(
+    T.Http({ method: "GET", path: "/organizations" }),
+  ) as unknown as Schema.Codec<OrganizationsControllerListInput>;
 
 // Output Schema
+export interface OrganizationsControllerListOutput {
+  object?: string;
+  data?: {
+    object?: string;
+    id?: string;
+    name?: string;
+    domains?: {
+      object: string;
+      id: string;
+      organization_id: string;
+      domain: string;
+      state?:
+        | "failed"
+        | "legacy_verified"
+        | "pending"
+        | "unverified"
+        | "verified";
+      verification_prefix?: string;
+      verification_token?: string;
+      verification_strategy?: "dns" | "manual";
+      created_at: string;
+      updated_at: string;
+    }[];
+    metadata?: Record<string, string>;
+    external_id?: string | null;
+    stripe_customer_id?: string;
+    created_at?: string;
+    updated_at?: string;
+    allow_profiles_outside_organization?: boolean;
+  }[];
+  list_metadata?: { before: string | null; after: string | null };
+}
 export const OrganizationsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
@@ -69,9 +109,7 @@ export const OrganizationsControllerListOutput =
         after: Schema.NullOr(Schema.String),
       }),
     ),
-  });
-export type OrganizationsControllerListOutput =
-  typeof OrganizationsControllerListOutput.Type;
+  }) as unknown as Schema.Codec<OrganizationsControllerListOutput>;
 
 // The operation
 /**
@@ -82,7 +120,7 @@ export type OrganizationsControllerListOutput =
  * @param before - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`.
  * @param after - An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `after="obj_123"` to fetch a new batch of objects after `"obj_123"`.
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
- * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to descending.
+ * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  * @param domains - The domains of an Organization. Any Organization with a matching domain will be returned.
  * @param search - Searchable text for an Organization. Matches against the organization name.
  */

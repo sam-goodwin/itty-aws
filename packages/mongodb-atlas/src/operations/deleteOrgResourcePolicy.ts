@@ -4,6 +4,12 @@ import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
+export interface DeleteOrgResourcePolicyInput {
+  orgId: string;
+  resourcePolicyId: string;
+  envelope?: boolean;
+  pretty?: boolean;
+}
 export const DeleteOrgResourcePolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
@@ -15,15 +21,12 @@ export const DeleteOrgResourcePolicyInput =
       method: "DELETE",
       path: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
     }),
-  );
-export type DeleteOrgResourcePolicyInput =
-  typeof DeleteOrgResourcePolicyInput.Type;
+  ) as unknown as Schema.Codec<DeleteOrgResourcePolicyInput>;
 
 // Output Schema
+export type DeleteOrgResourcePolicyOutput = void;
 export const DeleteOrgResourcePolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type DeleteOrgResourcePolicyOutput =
-  typeof DeleteOrgResourcePolicyOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOrgResourcePolicyOutput>;
 
 // The operation
 /**

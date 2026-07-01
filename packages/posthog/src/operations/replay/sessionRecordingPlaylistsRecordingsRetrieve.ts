@@ -4,6 +4,10 @@ import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
 
 // Input Schema
+export interface SessionRecordingPlaylistsRecordingsRetrieveInput {
+  project_id: string;
+  short_id: string;
+}
 export const SessionRecordingPlaylistsRecordingsRetrieveInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
@@ -13,15 +17,12 @@ export const SessionRecordingPlaylistsRecordingsRetrieveInput =
       method: "GET",
       path: "/api/projects/{project_id}/session_recording_playlists/{short_id}/recordings/",
     }),
-  );
-export type SessionRecordingPlaylistsRecordingsRetrieveInput =
-  typeof SessionRecordingPlaylistsRecordingsRetrieveInput.Type;
+  ) as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsRetrieveInput>;
 
 // Output Schema
+export type SessionRecordingPlaylistsRecordingsRetrieveOutput = void;
 export const SessionRecordingPlaylistsRecordingsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
-export type SessionRecordingPlaylistsRecordingsRetrieveOutput =
-  typeof SessionRecordingPlaylistsRecordingsRetrieveOutput.Type;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SessionRecordingPlaylistsRecordingsRetrieveOutput>;
 
 // The operation
 /**

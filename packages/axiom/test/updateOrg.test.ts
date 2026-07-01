@@ -68,7 +68,7 @@ describe("updateOrg", () => {
 
       await runEffect(effect);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -86,6 +86,6 @@ describe("updateOrg", () => {
 
       expect((error as { _tag: string })._tag).toBe("InternalServerError");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

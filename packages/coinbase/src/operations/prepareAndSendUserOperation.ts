@@ -3,6 +3,28 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
+export interface PrepareAndSendUserOperationInput {
+  address: string;
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  paymasterUrl?: string;
+  paymasterContext?: Record<string, unknown>;
+}
 export const PrepareAndSendUserOperationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
@@ -27,16 +49,53 @@ export const PrepareAndSendUserOperationInput =
       }),
     ),
     paymasterUrl: Schema.optional(Schema.String),
+    paymasterContext: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       path: "/v2/evm/smart-accounts/{address}/user-operations/prepare-and-send",
     }),
-  );
-export type PrepareAndSendUserOperationInput =
-  typeof PrepareAndSendUserOperationInput.Type;
+  ) as unknown as Schema.Codec<PrepareAndSendUserOperationInput>;
 
 // Output Schema
+export interface PrepareAndSendUserOperationOutput {
+  network:
+    | "base-sepolia"
+    | "base"
+    | "arbitrum"
+    | "optimism"
+    | "zora"
+    | "polygon"
+    | "bnb"
+    | "avalanche"
+    | "ethereum"
+    | "ethereum-sepolia";
+  userOpHash: string;
+  calls: {
+    to: string;
+    value: string;
+    data: string;
+    overrideGasLimit?: string;
+  }[];
+  status:
+    | "pending"
+    | "signed"
+    | "broadcast"
+    | "complete"
+    | "dropped"
+    | "failed";
+  transactionHash?: string;
+  receipts?: {
+    revert?: { data: string; message: string };
+    transactionHash?: string;
+    blockHash?: string;
+    blockNumber?: number;
+    gasUsed?: string;
+  }[];
+  expiresAt?: string;
+}
 export const PrepareAndSendUserOperationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     network: Schema.Literals([
@@ -85,13 +144,12 @@ export const PrepareAndSendUserOperationOutput =
         }),
       ),
     ),
-  });
-export type PrepareAndSendUserOperationOutput =
-  typeof PrepareAndSendUserOperationOutput.Type;
+    expiresAt: Schema.optional(Schema.String),
+  }) as unknown as Schema.Codec<PrepareAndSendUserOperationOutput>;
 
 // The operation
 /**
- * Prepare and send a user operation for EVM Smart Account
+ * Prepare and send user operation
  *
  * Prepares, signs, and sends a user operation for an EVM Smart Account. This API can be used only if the owner on Smart Account is a CDP EVM Account.
  *
